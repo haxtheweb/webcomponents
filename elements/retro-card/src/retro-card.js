@@ -71,8 +71,8 @@ class RetroCard extends SimpleColors {
   _clickCard(e) {
     if (
       window.HaxStore &&
-      window.HaxStore.ready &&
       window.HaxStore.instance &&
+      window.HaxStore.instance.ready &&
       window.HaxStore.instance.editMode
     ) {
       // do not do default

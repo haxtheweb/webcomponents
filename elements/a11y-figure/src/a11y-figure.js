@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit-element/lit-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { A11yDetails } from "@lrnwebcomponents/a11y-details/a11y-details.js";
 /**
  * `a11y-figure`
@@ -314,14 +313,6 @@ class A11yFigure extends A11yDetails {
     ) {
       this.detailsObserver.disconnect();
     }
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(A11yFigure.haxProperties, A11yFigure.tag, this);
   }
 }
 customElements.define("a11y-figure", A11yFigure);

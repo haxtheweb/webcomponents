@@ -2,6 +2,7 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import { HAXStore } from "./hax-store.js";
 /**
  * `hax-app-search`
  * `An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that we can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`
@@ -186,24 +187,17 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
     // support specialized appending data that is a string
     // to allow devs more flexibility
     if (
-      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint !=
-        null &&
+      HAXStore.connectionRewrites.appendUploadEndPoint != null &&
       params.__HAXAPPENDUPLOADENDPOINT__
     ) {
-      queryString =
-        window.HaxStore.instance.connectionRewrites.appendUploadEndPoint + "&";
+      queryString = HAXStore.connectionRewrites.appendUploadEndPoint + "&";
     }
     // specialized support for an internal facing path which requires a JWT
     // this is deep in the weeds but is useful in allowing for safely
     // searching internal app paths that leverage JWT for security
-    if (
-      window.HaxStore.instance.connectionRewrites.appendJwt != null &&
-      params.__HAXJWT__
-    ) {
-      params[
-        window.HaxStore.instance.connectionRewrites.appendJwt
-      ] = localStorage.getItem(
-        window.HaxStore.instance.connectionRewrites.appendJwt
+    if (HAXStore.connectionRewrites.appendJwt != null && params.__HAXJWT__) {
+      params[HAXStore.connectionRewrites.appendJwt] = localStorage.getItem(
+        HAXStore.connectionRewrites.appendJwt
       );
     }
     queryString = queryString + this.queryStringData(params);
@@ -533,12 +527,12 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
           if (typeof map.gizmo.type !== typeof undefined) {
             media[i].type = this._resolveObjectPath(map.gizmo.type, data[i]);
           } else if (typeof map.gizmo.mimetype !== typeof undefined) {
-            media[i].type = window.HaxStore.mimeTypeToGizmoType(
+            media[i].type = HAXStore.mimeTypeToGizmoType(
               this._resolveObjectPath(map.gizmo.mimetype, data[i])
             );
-          } else if (window.HaxStore.guessGizmoType(map.gizmo) != "*") {
+          } else if (HAXStore.guessGizmoType(map.gizmo) != "*") {
             // try and guess the type based on file ending
-            media[i].type = window.HaxStore.guessGizmoType(map.gizmo);
+            media[i].type = HAXStore.guessGizmoType(map.gizmo);
           }
         }
         // this will trigger an aggressive repaint of the items

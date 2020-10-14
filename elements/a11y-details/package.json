@@ -40,7 +40,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/absolute-position-behavior": "^2.7.10",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.7.10",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

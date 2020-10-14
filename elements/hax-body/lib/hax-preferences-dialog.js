@@ -6,6 +6,8 @@ import {
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import { HAXStore } from "./hax-store.js";
+
 /**
  * `hax-preferences-dialog`
  * @element hax-preferences-dialog
@@ -177,9 +179,9 @@ class HaxPreferencesDialog extends winEventsElement(LitElement) {
    * Notice preferences have changed.
    */
   _preferencesChanged(newValue) {
-    if (this.schema && window.HaxStore.ready) {
+    if (this.schema && HAXStore.ready) {
       this.schemaValues = newValue;
-      window.HaxStore.write("globalPreferences", newValue, this);
+      HAXStore.write("globalPreferences", newValue, this);
     }
   }
   __valueChangedEvent(e) {

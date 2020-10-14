@@ -880,7 +880,7 @@
     },
     {
       "name": "simple-fields-upload",
-      "description": "`simple-fields-upload` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nEvents:\n\n  * `value-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `upload-before` {`CustomEvent<any>`} - \n\n  * `upload-response` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `description` {`string`} - \n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `label` {`string`} - \n\n  * `no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `options` {`any[]`} - \n\n  * `no-voice-record` {`boolean`} - No Voice Recording\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `description` {`string`} - \n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `label` {`string`} - \n\n  * `noCamera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `options` {`any[]`} - \n\n  * `noVoiceRecord` {`boolean`} - No Voice Recording\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`simple-fields-upload` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nEvents:\n\n  * `value-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `upload-before` {`CustomEvent<any>`} - \n\n  * `upload-response` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `description` {`string`} - \n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `label` {`string`} - \n\n  * `no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `options` {`any[]`} - \n\n  * `no-voice-record` {`boolean`} - No Voice Recording\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `description` {`string`} - \n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `label` {`string`} - \n\n  * `noCamera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `options` {`any[]`} - \n\n  * `noVoiceRecord` {`boolean`} - No Voice Recording\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "description",
@@ -920,10 +920,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         },
         {
           "name": "onvalue-changed",

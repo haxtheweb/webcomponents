@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+
 /**
 `app-editor-hax`
 stand alone editor intended for use in a larger application
@@ -53,7 +55,7 @@ class AppEditorHax extends LitElement {
    */
   save() {
     // convert the body area to content
-    let content = window.HaxStore.instance.activeHaxBody.haxToContent();
+    let content = HAXStore.activeHaxBody.haxToContent();
     // fire event so apps can react correctly
     this.dispatchEvent(
       new CustomEvent("app-editor-hax-save", {
@@ -70,7 +72,7 @@ class AppEditorHax extends LitElement {
    */
   import(html) {
     // import the HTML blob to get going
-    window.HaxStore.instance.activeHaxBody.importContent(html);
+    HAXStore.activeHaxBody.importContent(html);
     // fire event just letting things know this happened
     this.dispatchEvent(
       new CustomEvent("app-editor-hax-import", {

@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 /**
  * `h-a-x`
  * @element h-a-x
@@ -158,7 +158,7 @@ class HAX extends HTMLElement {
             ...JSON.parse(this.getAttribute("app-store")),
           };
           if (typeof appStore === "object") {
-            window.HaxStore.instance.appStore = appStore;
+            HAXStore.appStore = appStore;
           }
         } catch (e) {
           console.warn(e);
@@ -166,9 +166,9 @@ class HAX extends HTMLElement {
         if (this.hidePanelOps === "hide-panel-ops") {
           this.hidePanelOps = true;
         }
-        window.HaxStore.instance.haxTray.hidePanelOps = this.hidePanelOps;
-        window.HaxStore.instance.haxTray.offsetMargin = this.offsetMargin;
-        window.HaxStore.instance.haxTray.elementAlign = this.elementAlign;
+        HAXStore.haxTray.hidePanelOps = this.hidePanelOps;
+        HAXStore.haxTray.offsetMargin = this.offsetMargin;
+        HAXStore.haxTray.elementAlign = this.elementAlign;
       }, 0);
     }
   }
@@ -188,7 +188,7 @@ class HAX extends HTMLElement {
             body += nodes[i].outerHTML;
           }
         }
-        window.HaxStore.instance.activeHaxBody.importContent(body);
+        HAXStore.activeHaxBody.importContent(body);
       }
     }
   }
@@ -234,7 +234,7 @@ class HAX extends HTMLElement {
     if (this.__rendered) {
       this.setAttribute("element-align", newValue);
       // bind to the hax store global on change
-      window.HaxStore.instance.haxTray.elementAlign = newValue;
+      HAXStore.haxTray.elementAlign = newValue;
     }
   }
   get offsetMargin() {
@@ -244,7 +244,7 @@ class HAX extends HTMLElement {
     this.setAttribute("offset-margin", newValue);
     if (this.__rendered) {
       // bind to the hax store global on change
-      window.HaxStore.instance.haxTray.offsetMargin = newValue;
+      HAXStore.haxTray.offsetMargin = newValue;
     }
   }
   get hidePanelOps() {
@@ -255,7 +255,7 @@ class HAX extends HTMLElement {
       this.setAttribute("hide-panel-ops", "hide-panel-ops");
       if (this.__rendered) {
         // bind to the hax store global on change
-        window.HaxStore.instance.haxTray.hidePanelOps = newValue;
+        HAXStore.haxTray.hidePanelOps = newValue;
       }
     }
   }
@@ -266,7 +266,7 @@ class HAX extends HTMLElement {
     this.setAttribute("app-store", newValue);
     if (this.__rendered) {
       // bind to the hax store global on change
-      window.HaxStore.instance.appStore = {
+      HAXStore.appStore = {
         ...JSON.parse(this.getAttribute("app-store")),
       };
     }

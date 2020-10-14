@@ -202,7 +202,7 @@ export class HAXWiring {
       if (
         typeof window.HaxStore !== typeof undefined &&
         window.HaxStore.instance != null &&
-        window.HaxStore.ready
+        window.HaxStore.instance.ready
       ) {
         return this.setHaxProperties(props, tag, context, true);
       } else {
@@ -213,6 +213,7 @@ export class HAXWiring {
      * HAX store is ready so now we can fire events
      */
     this._haxStoreReady = (e) => {
+      console.log("?");
       if (
         e.detail &&
         typeof this.tagName !== typeof undefined &&
@@ -804,7 +805,7 @@ export const HAXElement = function (SuperClass) {
       if (
         typeof window.HaxStore !== typeof undefined &&
         window.HaxStore.instance != null &&
-        window.HaxStore.ready
+        window.HaxStore.instance.ready
       ) {
         return this.HAXWiring.setHaxProperties(props, tag, context, true);
       } else {
@@ -917,7 +918,7 @@ window.HAXBehaviors.PropertiesBehaviors = {
     if (
       typeof window.HaxStore !== typeof undefined &&
       window.HaxStore.instance != null &&
-      window.HaxStore.ready
+      window.HaxStore.instance.ready
     ) {
       return window.HAXWiring.setHaxProperties(props, tag, context, true);
     } else {

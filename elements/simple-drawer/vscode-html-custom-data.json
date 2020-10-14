@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "simple-drawer",
-      "description": "`simple-drawer`\n`a singleton drawer element`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `simple-drawer-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-drawer-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `align` {`string`} - alignment of the drawer\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `align` {`string`} - alignment of the drawer\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`simple-drawer`\n`a singleton drawer element`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `simple-drawer-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-drawer-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `align` {`string`} - alignment of the drawer\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `align` {`string`} - alignment of the drawer\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "invokedBy",
@@ -40,10 +40,6 @@
           "valueSet": "v"
         },
         {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        },
-        {
           "name": "onresize",
           "description": "`resize` {`Event`} - "
         },
@@ -59,7 +55,7 @@
     },
     {
       "name": "simple-drawer",
-      "description": "`simple-drawer`\n`a singleton drawer element`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `simple-drawer-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-drawer-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `align` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `closeLabel` {`string`} - \n\n  * `closeIcon` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`simple-drawer`\n`a singleton drawer element`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `simple-drawer-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-drawer-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `align` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `closeLabel` {`string`} - \n\n  * `closeIcon` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "accent-color",
@@ -69,10 +65,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         },
         {
           "name": "onresize",

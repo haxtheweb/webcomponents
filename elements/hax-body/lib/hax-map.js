@@ -1,6 +1,8 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-icon/iron-icon.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+
 /**
  * `hax-map`
  * @element hax-map
@@ -87,13 +89,13 @@ class HaxMap extends SimpleColors {
     this.title = "Content map";
   }
   updateHAXMap() {
-    let list = window.HaxStore.htmlToHaxElements(
-      window.HaxStore.instance.activeHaxBody.haxToContent()
+    let list = HAXStore.htmlToHaxElements(
+      HAXStore.activeHaxBody.haxToContent()
     );
     this.calcStats(list);
     let elements = [];
     for (var i = 0; i < list.length; i++) {
-      let def = window.HaxStore.instance.haxSchemaFromTag(list[i].tag);
+      let def = HAXStore.haxSchemaFromTag(list[i].tag);
       if (def.gizmo) {
         elements.push({
           icon: def.gizmo.icon,
@@ -119,13 +121,10 @@ class HaxMap extends SimpleColors {
    * Calculate statistics from the array of hax elements
    */
   calcStats(elements) {
-    if (elements && window.HaxStore.instance.activeHaxBody.innerText) {
+    if (elements && HAXStore.activeHaxBody.innerText) {
       let counts = {
-        c: window.HaxStore.instance.activeHaxBody.innerText.length,
-        w: parseInt(
-          window.HaxStore.instance.activeHaxBody.innerText.split(/\s+/g)
-            .length - 1
-        ),
+        c: HAXStore.activeHaxBody.innerText.length,
+        w: parseInt(HAXStore.activeHaxBody.innerText.split(/\s+/g).length - 1),
         h: 0,
         p: 0,
         e: 0,
@@ -212,7 +211,7 @@ class HaxMap extends SimpleColors {
     }
     if (target.getAttribute("data-index")) {
       let activeChild =
-        window.HaxStore.instance.activeHaxBody.children[
+        HAXStore.activeHaxBody.children[
           parseInt(target.getAttribute("data-index"))
         ];
       activeChild.classList.add("blinkfocus");

@@ -98,10 +98,6 @@ class HAXTrayButton extends SimpleColors {
           align-items: center;
           margin: 1px 0;
           transition: all 0.5ms ease-in-out;
-          --hax-contextual-action-color: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
-          );
         }
         :host([disabled]) {
           pointer-events: none;

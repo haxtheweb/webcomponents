@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import { HAXStore } from "./hax-store.js";
 /**
  * `hax-ce-context`
  * `A context menu that provides common custom-element based authoring options.
@@ -95,21 +96,20 @@ class HaxCeContext extends winEventsElement(LitElement) {
    * HAX properties changed, update buttons available.
    */
   _computeValues() {
-    let instance = window.HaxStore.instance;
-    if (instance.activeNode != null) {
-      if (!instance.isTextElement(instance.activeNode)) {
-        if (instance.activeNode.tagName == "GRID-PLATE") {
+    if (HAXStore.activeNode != null) {
+      if (!HAXStore.isTextElement(HAXStore.activeNode)) {
+        if (HAXStore.activeNode.tagName == "GRID-PLATE") {
           this.disableTransform = true;
           this.activeTagName = "Grid";
           this.activeTagIcon = "hax:3/3/3/3";
         } else {
           // detect if this can be transformed into anything else
-          this.disableTransform = !instance.activeHaxBody.canTansformNode(
-            instance.activeNode
+          this.disableTransform = !HAXStore.activeHaxBody.canTansformNode(
+            HAXStore.activeNode
           );
-          if (instance.activeGizmo) {
-            this.activeTagName = instance.activeGizmo.title;
-            this.activeTagIcon = instance.activeGizmo.icon;
+          if (HAXStore.activeGizmo) {
+            this.activeTagName = HAXStore.activeGizmo.title;
+            this.activeTagIcon = HAXStore.activeGizmo.icon;
           }
         }
       }

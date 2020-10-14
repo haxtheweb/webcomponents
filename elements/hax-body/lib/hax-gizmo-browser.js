@@ -4,6 +4,7 @@ import {
   winEventsElement,
   haxElementToNode,
 } from "@lrnwebcomponents/utils/utils.js";
+import { HAXStore } from "./hax-store.js";
 
 /**
  * `hax-gizmo-browser`
@@ -101,14 +102,14 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
    */
   _dragStart(e) {
     // create the tag
-    let schema = window.HaxStore.instance.haxSchemaFromTag(e.target.eventData);
+    let schema = HAXStore.haxSchemaFromTag(e.target.eventData);
     var target;
     if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
       target = haxElementToNode(schema.demoSchema[0]);
     } else {
       target = document.createElement(e.target.eventData);
     }
-    window.HaxStore.instance.__dragTarget = target;
+    HAXStore.__dragTarget = target;
     if (e.dataTransfer) {
       this.crt = target.cloneNode(true);
       if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
@@ -178,7 +179,7 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
    * Reset this browser.
    */
   resetBrowser() {
-    this.__gizmoList = window.HaxStore.instance.gizmoList.filter((gizmo, i) => {
+    this.__gizmoList = HAXStore.gizmoList.filter((gizmo, i) => {
       // remove inline and hidden references
       if (gizmo.meta && (gizmo.meta.inlineOnly || gizmo.meta.hidden)) {
         return false;

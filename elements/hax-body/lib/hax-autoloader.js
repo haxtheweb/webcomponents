@@ -4,6 +4,7 @@ import {
   HAXWiring,
 } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import { varGet } from "@lrnwebcomponents/utils/utils.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 
 /**
  * `hax-autoloader`
@@ -27,7 +28,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
     ];
   }
   render() {
-    return html` <slot></slot> `;
+    return html`<slot></slot>`;
   }
   static get tag() {
     return "hax-autoloader";
@@ -136,8 +137,8 @@ class HaxAutoloader extends HAXElement(LitElement) {
             );
             if (!window.customElements.get(name)) {
               let nameLocation = varGet(
-                window.HaxStore,
-                "instance.__appStoreData.autoloader." + name,
+                HAXStore,
+                "__appStoreData.autoloader." + name,
                 `@lrnwebcomponents/${name}/${name}.js`
               );
               import(`${basePath}../../../${nameLocation}`)

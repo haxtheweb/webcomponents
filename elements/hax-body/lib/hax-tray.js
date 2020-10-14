@@ -14,14 +14,15 @@ import {
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 import "./hax-map.js";
 import "./hax-preferences-dialog.js";
-import { HAXTourFinder } from "./HAXTourFinder.js";
+import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
+import { HAXStore } from "./hax-store.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
  * @element hax-tray
  */
-class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
+class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   /**
    * Convention we use
    */
@@ -33,6 +34,7 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
    */
   constructor() {
     super();
+    this.tourName = "hax";
     this.__winEvents = {
       "can-redo-changed": "_redoChanged",
       "can-undo-changed": "_undoChanged",
@@ -764,10 +766,10 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
   }
   _refreshLists(e) {
     this.shadowRoot.querySelector("#bloxbrowser").bloxList = [
-      ...window.HaxStore.instance.bloxList,
+      ...HAXStore.bloxList,
     ];
     this.shadowRoot.querySelector("#staxbrowser").staxList = [
-      ...window.HaxStore.instance.staxList,
+      ...HAXStore.staxList,
     ];
   }
   /**
@@ -814,7 +816,7 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
             content: target.blox[i].content,
             properties: target.blox[i].properties,
           });
-          content += window.HaxStore.nodeToContent(node);
+          content += HAXStore.nodeToContent(node);
         }
         // generate a hax element
         let blox = {
@@ -847,7 +849,7 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
           innerContent = "";
         }
         // most likely empty values but just to be safe
-        let element = window.HaxStore.haxElementPrototype(
+        let element = HAXStore.haxElementPrototype(
           gizmo,
           properties,
           innerContent
@@ -887,23 +889,19 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
         this.shadowRoot.querySelector("hax-map").updateHAXMap();
         break;
       case "open-export-dialog":
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxExport,
-          this
-        );
+        HAXStore.write("openDrawer", HAXStore.haxExport, this);
         break;
       case "start-tour":
         window.SimpleTourManager.requestAvailability().startTour("hax");
         break;
       case "undo":
-        window.HaxStore.instance.activeHaxBody.undo();
+        HAXStore.activeHaxBody.undo();
         break;
       case "redo":
-        window.HaxStore.instance.activeHaxBody.redo();
+        HAXStore.activeHaxBody.redo();
         break;
       case "cancel":
-        window.HaxStore.write("editMode", false, this);
+        HAXStore.write("editMode", false, this);
         this.dispatchEvent(
           new CustomEvent("hax-cancel", {
             bubbles: true,
@@ -1236,10 +1234,9 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
     // see if we can get schema off of this.
     if (
       activeNode.tagName &&
-      window.HaxStore.instance.elementList[activeNode.tagName.toLowerCase()]
+      HAXStore.elementList[activeNode.tagName.toLowerCase()]
     ) {
-      let props =
-        window.HaxStore.instance.elementList[activeNode.tagName.toLowerCase()];
+      let props = HAXStore.elementList[activeNode.tagName.toLowerCase()];
       // generate a human name for this
       if (typeof props.gizmo.title === typeof undefined) {
         this.humanName = activeNode.tagName.replace("-", " ").toLowerCase();
@@ -1596,7 +1593,7 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
                   const cloneIt = tmpel.cloneNode(true);
                   setAhead = true;
                   // inject the slotted content but use text nodes if this is a text element
-                  if (window.HaxStore.instance.isTextElement(this.activeNode)) {
+                  if (HAXStore.isTextElement(this.activeNode)) {
                     this.activeNode.innerHTML = tmpel.innerHTML;
                   } else {
                     // wipe just the slot in question
@@ -1659,7 +1656,7 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
    */
   _clickEditButton(e) {
     this.editMode = true;
-    window.HaxStore.write("editMode", true, this);
+    HAXStore.write("editMode", true, this);
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
@@ -1674,7 +1671,7 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
    */
   _clickSaveButton(e) {
     this.editMode = false;
-    window.HaxStore.write("editMode", false, this);
+    HAXStore.write("editMode", false, this);
     this.dispatchEvent(
       new CustomEvent("hax-save", {
         bubbles: true,

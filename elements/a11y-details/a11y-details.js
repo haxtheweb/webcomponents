@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `a11y-details`
  * accessible progressive disclosure with detail and summary
@@ -303,14 +302,6 @@ class A11yDetails extends LitElement {
     this.closeText = "";
     this.openText = "";
     this.tag = A11yDetails.tag;
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(A11yDetails.haxProperties, A11yDetails.tag, this);
   }
   /**
    * life cycle, element is removed from the DOM

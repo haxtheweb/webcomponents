@@ -4,6 +4,7 @@ import {
   winEventsElement,
   stripMSWord,
 } from "@lrnwebcomponents/utils/utils.js";
+import { HAXStore } from "./hax-store.js";
 /**
  * `hax-export-dialog`
  * @element hax-export-dialog
@@ -149,8 +150,8 @@ class HaxExportDialog extends winEventsElement(
   }
   openedChanged(e) {
     // force close event to align data model if clicking away
-    if (!e.detail.value && window.HaxStore.instance.openDrawer === this) {
-      window.HaxStore.write("openDrawer", false, this);
+    if (!e.detail.value && HAXStore.openDrawer === this) {
+      HAXStore.write("openDrawer", false, this);
     }
   }
   closeEvent(e) {
@@ -219,7 +220,7 @@ class HaxExportDialog extends winEventsElement(
   download(e) {
     const data = this.contentToFile(false);
     this.downloadFromData(data, "html", "my-new-code");
-    window.HaxStore.toast("HTML content downloaded");
+    HAXStore.toast("HTML content downloaded");
   }
 
   /**
@@ -228,7 +229,7 @@ class HaxExportDialog extends winEventsElement(
   downloadfull(e) {
     const data = this.contentToFile(true);
     this.downloadFromData(data, "html", "my-new-webpage");
-    window.HaxStore.toast("Working offline copy downloaded");
+    HAXStore.toast("Working offline copy downloaded");
   }
 
   /**
@@ -237,8 +238,8 @@ class HaxExportDialog extends winEventsElement(
   importContent(e) {
     // import contents of this text area into the activeHaxBody
     const htmlBody = this.shadowRoot.querySelector("#textarea").value;
-    window.HaxStore.toast("Content updated");
-    window.HaxStore.instance.activeHaxBody.importContent(htmlBody);
+    HAXStore.toast("Content updated");
+    HAXStore.activeHaxBody.importContent(htmlBody);
     this.close();
   }
 
@@ -248,8 +249,8 @@ class HaxExportDialog extends winEventsElement(
   scrubContent(e) {
     // import contents of this text area into the activeHaxBody
     const htmlBody = this.shadowRoot.querySelector("#textarea").value;
-    window.HaxStore.toast("Scrubbed, Content updated");
-    window.HaxStore.instance.activeHaxBody.importContent(stripMSWord(htmlBody));
+    HAXStore.toast("Scrubbed, Content updated");
+    HAXStore.activeHaxBody.importContent(stripMSWord(htmlBody));
     this.close();
   }
 
@@ -264,14 +265,14 @@ class HaxExportDialog extends winEventsElement(
     hiddenarea.select();
     document.execCommand("copy");
     hiddenarea.setAttribute("hidden", "hidden");
-    window.HaxStore.toast("Copied HTML content");
+    HAXStore.toast("Copied HTML content");
   }
 
   /**
    * HTML to HAX Elements
    */
   htmlToHaxElements(e) {
-    let elements = window.HaxStore.htmlToHaxElements(
+    let elements = HAXStore.htmlToHaxElements(
       this.shadowRoot.querySelector("#textarea").value
     );
     var str = JSON.stringify(elements, null, 2);
@@ -284,18 +285,18 @@ class HaxExportDialog extends winEventsElement(
     document.execCommand("copy");
     hiddenarea.value = val;
     hiddenarea.setAttribute("hidden", "hidden");
-    window.HaxStore.toast("Copied hax elements to clipboard");
+    HAXStore.toast("Copied hax elements to clipboard");
   }
 
   /**
    * Output entire thing as a file.
    */
   contentToFile(full) {
-    let body = window.HaxStore.instance.activeHaxBody.haxToContent();
+    let body = HAXStore.activeHaxBody.haxToContent();
     var content = body;
     // if you want full HTML headers or not
     if (full) {
-      let elementList = window.HaxStore.instance.elementList;
+      let elementList = HAXStore.elementList;
       // @todo obviously not sustainable
       let url = "https://lrnwebcomponents.github.io/hax-body/components";
       content = `

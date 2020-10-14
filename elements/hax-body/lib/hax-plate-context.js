@@ -1,5 +1,6 @@
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
-import { HAXTourFinder } from "./HAXTourFinder.js";
+import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
+import { HAXStore } from "./hax-store.js";
 
 /**
  * `hax-plate-context`
@@ -8,9 +9,10 @@ import { HAXTourFinder } from "./HAXTourFinder.js";
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  * - grid plate - the container / full HTML tag which can have operations applied to it.
  */
-class HaxPlateContext extends HAXTourFinder(winEventsElement(HTMLElement)) {
+class HaxPlateContext extends SimpleTourFinder(winEventsElement(HTMLElement)) {
   constructor(delayRender = false) {
     super();
+    this.tourName = "hax";
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
@@ -37,10 +39,6 @@ class HaxPlateContext extends HAXTourFinder(winEventsElement(HTMLElement)) {
       display: block;
       margin-top: -2px;
       background-color:white;
-      --hax-contextual-action-color: var(
-        --simple-colors-default-theme-cyan-8,
-        #007999
-      );
     }
     hax-context-item {
       display: block;
@@ -204,7 +202,7 @@ class HaxPlateContext extends HAXTourFinder(winEventsElement(HTMLElement)) {
   }
   __updatePlatePosition() {
     setTimeout(() => {
-      let active = window.HaxStore.instance.activeNode;
+      let active = HAXStore.activeNode;
       let right = this.shadowRoot.querySelector("#right");
       let rightremove = this.shadowRoot.querySelector("#rightremove");
       // support for enabling or disabling
@@ -253,15 +251,15 @@ class HaxPlateContext extends HAXTourFinder(winEventsElement(HTMLElement)) {
    * When we end dragging ensure we remove the mover class.
    */
   _dragEnd(e) {
-    window.HaxStore.instance._lockContextPosition = false;
+    HAXStore._lockContextPosition = false;
   }
   /**
    * Drag start so we know what target to set
    */
   _dragStart(e) {
-    let target = window.HaxStore.instance.activeNode;
-    window.HaxStore.instance.__dragTarget = target;
-    window.HaxStore.instance._lockContextPosition = true;
+    let target = HAXStore.activeNode;
+    HAXStore.__dragTarget = target;
+    HAXStore._lockContextPosition = true;
     target.classList.add("hax-moving");
     if (e.dataTransfer) {
       e.dataTransfer.effectAllowed = "move";

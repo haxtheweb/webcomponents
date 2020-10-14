@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import "./hax-tray-button.js";
+import { HAXStore } from "./hax-store.js";
 
 /**
  * `hax-app-browser`
@@ -118,7 +119,7 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
     // item bubbled up
     if (typeof e.detail !== typeof undefined) {
       this.searching = true;
-      window.HaxStore.write("activeApp", this.appList[e.detail], this);
+      HAXStore.write("activeApp", this.appList[e.detail], this);
     }
   }
 
@@ -164,7 +165,7 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
    */
   resetBrowser() {
     this.searching = false;
-    this.appList = [...window.HaxStore.instance.appList];
+    this.appList = [...HAXStore.appList];
   }
 }
 window.customElements.define(HaxAppBrowser.tag, HaxAppBrowser);

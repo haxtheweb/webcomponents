@@ -50,12 +50,6 @@
           "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
-        },
-        {
-          "name": "colors",
-          "description": "make the default theme dark?",
-          "type": "object",
-          "default": "\"colors\""
         }
       ],
       "properties": [
@@ -116,9 +110,6 @@
         },
         {
           "name": "colors",
-          "attribute": "colors",
-          "description": "make the default theme dark?",
-          "type": "object",
           "default": "\"colors\""
         }
       ]
@@ -172,12 +163,6 @@
           "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
-        },
-        {
-          "name": "colors",
-          "description": "make the default theme dark?",
-          "type": "object",
-          "default": "\"colors\""
         }
       ],
       "properties": [
@@ -238,9 +223,6 @@
         },
         {
           "name": "colors",
-          "attribute": "colors",
-          "description": "make the default theme dark?",
-          "type": "object",
           "default": "\"colors\""
         }
       ]

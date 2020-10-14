@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "hero-banner",
-      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `button-text` {`string`} - button label\n\n  * `button-link` {`string`} - url for the button\n\n  * `aria-decsribedby` {`string`} - accessible long description\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\n  * `ariaDescribedby` {`string`} - accessible long description\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `button-text` {`string`} - button label\n\n  * `button-link` {`string`} - url for the button\n\n  * `aria-decsribedby` {`string`} - accessible long description\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\n  * `ariaDescribedby` {`string`} - accessible long description\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "title",
@@ -37,16 +37,12 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     },
     {
       "name": "hero-banner",
-      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `button-text` {`string`} - button label\n\n  * `button-link` {`string`} - url for the button\n\n  * `aria-decsribedby` {`string`} - accessible long description\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\n  * `ariaDescribedby` {`string`} - accessible long description\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `button-text` {`string`} - button label\n\n  * `button-link` {`string`} - url for the button\n\n  * `aria-decsribedby` {`string`} - accessible long description\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\n  * `ariaDescribedby` {`string`} - accessible long description\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "title",
@@ -80,10 +76,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     }

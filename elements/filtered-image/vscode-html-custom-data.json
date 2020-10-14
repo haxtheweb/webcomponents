@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "filtered-image",
-      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nAttributes:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nAttributes:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "__id",
@@ -49,10 +49,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     },
@@ -92,7 +88,7 @@
     },
     {
       "name": "filtered-image",
-      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "accent-color",
@@ -102,10 +98,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     }

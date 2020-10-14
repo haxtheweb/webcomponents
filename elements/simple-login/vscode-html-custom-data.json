@@ -36,7 +36,7 @@
     },
     {
       "name": "simple-login",
-      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - \n\nAttributes:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `user-input-label` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `password-input-label` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `login-btn-text` {`string`} - Login button label\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `userInputLabel` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `passwordInputLabel` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `loginBtnText` {`string`} - Login button label\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - \n\nAttributes:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `user-input-label` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `password-input-label` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `login-btn-text` {`string`} - Login button label\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `userInputLabel` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `passwordInputLabel` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `loginBtnText` {`string`} - Login button label\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "title",
@@ -93,10 +93,6 @@
           "valueSet": "v"
         },
         {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        },
-        {
           "name": "onsimple-login-login",
           "description": "`simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - "
         }
@@ -104,7 +100,7 @@
     },
     {
       "name": "simple-login",
-      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - \n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `password` {`string`} - \n\n  * `username` {`string`} - \n\n  * `loading` {`boolean`} - \n\n  * `userInputLabel` {`string`} - \n\n  * `userInputErrMsg` {`string`} - \n\n  * `passwordInputLabel` {`string`} - \n\n  * `passwordInputErrMsg` {`string`} - \n\n  * `loginBtnText` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - \n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `password` {`string`} - \n\n  * `username` {`string`} - \n\n  * `loading` {`boolean`} - \n\n  * `userInputLabel` {`string`} - \n\n  * `userInputErrMsg` {`string`} - \n\n  * `passwordInputLabel` {`string`} - \n\n  * `passwordInputErrMsg` {`string`} - \n\n  * `loginBtnText` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "accent-color",
@@ -114,10 +110,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         },
         {
           "name": "onsimple-login-login",

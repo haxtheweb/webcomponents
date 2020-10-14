@@ -8,7 +8,7 @@ import {
 } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 class Store {
   constructor() {
     this.location = null;
@@ -644,7 +644,7 @@ class HAXCMSSiteStore extends HTMLElement {
     autorun(() => {
       const editMode = toJS(store.editMode);
       // trap for early setup
-      if (window.HaxStore && window.HaxStore.write) {
+      if (HAXStore && HAXStore.write) {
         window.dispatchEvent(
           new CustomEvent("haxcms-edit-mode-changed", {
             bubbles: true,
@@ -653,14 +653,11 @@ class HAXCMSSiteStore extends HTMLElement {
             detail: editMode,
           })
         );
-        window.HaxStore.write("editMode", editMode, window.HaxStore.instance);
+        HAXStore.write("editMode", editMode, HAXStore);
         // @todo hack to keep voice controls active if enabled
-        if (
-          window.HaxStore.instance &&
-          window.HaxStore.instance.globalPreferences.haxVoiceCommands
-        ) {
+        if (HAXStore.globalPreferences.haxVoiceCommands) {
           setTimeout(() => {
-            window.HaxStore.instance.__hal.auto = true;
+            HAXStore.__hal.auto = true;
           }, 10);
         }
       }

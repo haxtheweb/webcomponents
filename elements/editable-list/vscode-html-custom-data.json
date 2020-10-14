@@ -34,7 +34,7 @@
     },
     {
       "name": "editable-list-item",
-      "description": "`editable-list-item`\n`an individual list item`\n\nEvents:\n\n  * `edit-mode-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `editable-list-item-delete` {`CustomEvent<{ element: this; }>`} - \n\nAttributes:\n\n  * `value` {`string`} - The value that gets bound into the text field\n\n  * `edit-mode` {`boolean`} - ability to edit the items in the list\n\n  * `editing` {`boolean`} - Editing state of the item\n\n  * `can-edit` {`boolean`} - Permission to edit this\n\n  * `can-delete` {`boolean`} - Permission to delete this\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `value` {`string`} - The value that gets bound into the text field\n\n  * `editMode` {`boolean`} - ability to edit the items in the list\n\n  * `editing` {`boolean`} - Editing state of the item\n\n  * `canEdit` {`boolean`} - Permission to edit this\n\n  * `canDelete` {`boolean`} - Permission to delete this\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`editable-list-item`\n`an individual list item`\n\nEvents:\n\n  * `edit-mode-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `editable-list-item-delete` {`CustomEvent<{ element: this; }>`} - \n\nAttributes:\n\n  * `value` {`string`} - The value that gets bound into the text field\n\n  * `edit-mode` {`boolean`} - ability to edit the items in the list\n\n  * `editing` {`boolean`} - Editing state of the item\n\n  * `can-edit` {`boolean`} - Permission to edit this\n\n  * `can-delete` {`boolean`} - Permission to delete this\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `value` {`string`} - The value that gets bound into the text field\n\n  * `editMode` {`boolean`} - ability to edit the items in the list\n\n  * `editing` {`boolean`} - Editing state of the item\n\n  * `canEdit` {`boolean`} - Permission to edit this\n\n  * `canDelete` {`boolean`} - Permission to delete this\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "value",
@@ -68,10 +68,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         },
         {
           "name": "onedit-mode-changed",

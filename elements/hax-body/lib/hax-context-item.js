@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
+import { HAXStore } from "./hax-store.js";
 /**
  * `hax-context-item`
  * @element hax-context-item
@@ -211,7 +212,7 @@ class HaxContextItem extends LitElement {
    */
   _storeSelection(e) {
     if (!this.disabled) {
-      window.HaxStore._tmpSelection = window.HaxStore.getSelection();
+      HAXStore._tmpSelection = HAXStore.getSelection();
     }
   }
   /**

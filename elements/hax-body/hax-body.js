@@ -7,8 +7,10 @@ import {
   generateResourceID,
   nodeToHaxElement,
   haxElementToNode,
+  camelToDash,
 } from "@lrnwebcomponents/utils/utils.js";
 import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
+import { HAXStore } from "./lib/hax-store.js";
 
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
@@ -126,14 +128,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             #009dc7
           );
           --hax-contextual-action-color: var(
-            --simple-colors-default-theme-cyan-8,
+            --simple-colors-default-theme-grey-12,
             #007999
           );
-          --hax-body-editable-outline: 1px solid
+          --hax-body-editable-outline: 0px solid
             var(--simple-colors-default-theme-grey-4, #eeeeee);
           --hax-body-active-outline-hover: 1px solid
             var(--simple-colors-default-theme-grey-4, #eeeeee);
-          --hax-body-active-outline: 1px solid
+          --hax-body-active-outline: 0px solid
             var(
               --hax-contextual-action-hover-color,
               var(--simple-colors-default-theme-cyan-7, #009dc7)
@@ -314,7 +316,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           outline: var(--hax-body-active-drag-outline);
         }
         :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*):before {
-          outline: var(--hax-body-editable-outline);
+          outline: 1px var(--simple-colors-default-theme-grey-2) solid;
           background-color: var(--hax-body-possible-target-background-color);
           content: " ";
           width: 100%;
@@ -381,7 +383,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       import("./lib/hax-ce-context.js");
       import("./lib/hax-plate-context.js");
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
-      this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
+      this.polyfillSafe = HAXStore.computePolyfillSafe();
       this.addEventListener(
         "hax-context-item-selected",
         this._haxContextOperation.bind(this)
@@ -404,8 +406,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    */
   dragEndBody(e) {
     this.__manageFakeEndCap(false);
-    window.HaxStore.instance._lockContextPosition = false;
-    let children = window.HaxStore.instance.activeHaxBody.children;
+    HAXStore._lockContextPosition = false;
+    let children = HAXStore.activeHaxBody.children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
       if (typeof children[i].classList !== typeof undefined) {
@@ -419,7 +421,25 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   }
   _mouseDown(e) {
     this.__mouseDown = true;
-    if (this.__focusLogic(e.target)) {
+    let target = e.target;
+    // resolve to the closest ediable element if possible
+    // otherwise keep the target we had
+    // @todo need to test more situations for this..
+    /*
+    if (target.closest("[draggable]") != null) {
+      target = target.closest("[draggable]");
+    }
+    else if (target.closest("[slot]") != null) {
+      target = target.closest("[slot]");
+    }
+    else if (target.closest("[data-hax-ray]") != null) {
+      target = target.closest("[data-hax-ray]");
+    }
+    else if (target.closest("[contenteditable]") != null) {
+      target = target.closest("[contenteditable]");
+    }
+    */
+    if (this.__focusLogic(target)) {
       e.stopPropagation();
       e.stopImmediatePropagation();
     }
@@ -509,7 +529,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         type: Object,
       },
       /**
-       * Text hax-store has detected is selected currently.
+       * State has detected is selected currently.
        */
       haxSelectedText: {
         type: String,
@@ -569,13 +589,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.shadowRoot.querySelector("slot").addEventListener("mouseup", (e) => {
       if (!this.openDrawer && this.editMode) {
         setTimeout(() => {
-          const tmp = window.HaxStore.getSelection();
-          window.HaxStore._tmpSelection = tmp;
-          window.HaxStore.write("haxSelectedText", tmp.toString(), this);
+          const tmp = HAXStore.getSelection();
+          HAXStore._tmpSelection = tmp;
+          HAXStore.write("haxSelectedText", tmp.toString(), this);
           try {
-            const range = window.HaxStore.getRange();
+            const range = HAXStore.getRange();
             if (range.cloneRange) {
-              window.HaxStore._tmpRange = range.cloneRange();
+              HAXStore._tmpRange = range.cloneRange();
             }
           } catch (e) {
             console.warn(e);
@@ -584,7 +604,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
     });
     // in case we miss this on the initial setup. possible in auto opening environments.
-    this.editMode = window.HaxStore.instance.editMode;
+    this.editMode = HAXStore.editMode;
     // ensure this resets every append
     this.__tabTrap = false;
     this.__ready = true;
@@ -660,7 +680,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 if (!this.___moveLock && !mutFind) {
                   mutFind = true;
                   this.activeNode = node;
-                  window.HaxStore.write("activeNode", node, this);
+                  HAXStore.write("activeNode", node, this);
                 } else {
                   this.___moveLock = false;
                 }
@@ -782,11 +802,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.editMode &&
       this.getAttribute("contenteditable")
     ) {
-      let sel = window.HaxStore.getSelection();
+      let sel = HAXStore.getSelection();
       if (sel.anchorNode != null) {
         switch (e.key) {
           case "Tab":
-            if (window.HaxStore.instance.isTextElement(this.activeNode)) {
+            if (HAXStore.isTextElement(this.activeNode)) {
               if (e.detail.keyboardEvent) {
                 e.detail.keyboardEvent.preventDefault();
                 e.detail.keyboardEvent.stopPropagation();
@@ -811,21 +831,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           case "ArrowLeft":
           case "ArrowRight":
             setTimeout(() => {
-              const tmp = window.HaxStore.getSelection();
-              window.HaxStore._tmpSelection = tmp;
-              window.HaxStore.write("haxSelectedText", tmp.toString(), this);
-              const rng = window.HaxStore.getRange();
+              const tmp = HAXStore.getSelection();
+              HAXStore._tmpSelection = tmp;
+              HAXStore.write("haxSelectedText", tmp.toString(), this);
+              const rng = HAXStore.getRange();
               if (
                 rng.commonAncestorContainer &&
                 this.activeNode !== rng.commonAncestorContainer &&
                 typeof rng.commonAncestorContainer.focus === "function"
               ) {
                 if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
-                  if (
-                    window.HaxStore.instance.isTextElement(
-                      rng.commonAncestorContainer
-                    )
-                  ) {
+                  if (HAXStore.isTextElement(rng.commonAncestorContainer)) {
                     this.setAttribute("contenteditable", true);
                   } else {
                     this.removeAttribute("contenteditable");
@@ -846,7 +862,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   rng.commonAncestorContainer.parentNode.tagName !== "HAX-BODY"
                 ) {
                   if (
-                    window.HaxStore.instance.isTextElement(
+                    HAXStore.isTextElement(
                       rng.commonAncestorContainer.parentNode
                     )
                   ) {
@@ -858,7 +874,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   this.__focusLogic(rng.commonAncestorContainer.parentNode);
                 } else {
                   this.activeNode = rng.commonAncestorContainer;
-                  window.HaxStore.write(
+                  HAXStore.write(
                     "activeNode",
                     rng.commonAncestorContainer,
                     this
@@ -890,21 +906,21 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           .querySelector("#textcontextmenu")
           .classList.contains("hax-active-hover") &&
         this.activeNode &&
-        window.HaxStore.instance.isTextElement(this.activeNode)
+        HAXStore.isTextElement(this.activeNode)
       ) {
         this.__dropActiveHover();
       } else if (
         !this.openDrawer &&
         this.editMode &&
         this.activeNode &&
-        window.HaxStore.instance.isTextElement(this.activeNode)
+        HAXStore.isTextElement(this.activeNode)
       ) {
         // If the user has paused for awhile, show the menu
         clearTimeout(this.__positionContextTimer);
         this.__positionContextTimer = setTimeout(() => {
           // always on active if we were just typing
           this.positionContextMenus();
-        }, 1500);
+        }, 2500);
       }
     }, 50);
   }
@@ -1025,15 +1041,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // see if we have a gizmo as it's not a requirement to registration
     // as well as having handlers since mapping is not required either
     if (
-      typeof window.HaxStore.instance.elementList[element.tag] !==
+      typeof HAXStore.elementList[element.tag] !== typeof undefined &&
+      HAXStore.elementList[element.tag].gizmo !== false &&
+      typeof HAXStore.elementList[element.tag].gizmo.handles !==
         typeof undefined &&
-      window.HaxStore.instance.elementList[element.tag].gizmo !== false &&
-      typeof window.HaxStore.instance.elementList[element.tag].gizmo.handles !==
-        typeof undefined &&
-      window.HaxStore.instance.elementList[element.tag].gizmo.handles.length > 0
+      HAXStore.elementList[element.tag].gizmo.handles.length > 0
     ) {
       // get the haxProperties for this item
-      let gizmo = window.HaxStore.instance.elementList[element.tag].gizmo;
+      let gizmo = HAXStore.elementList[element.tag].gizmo;
       // walk through each handler
       for (var i = 0; i < gizmo.handles.length; i++) {
         // walk the properties defined as they would be to the
@@ -1063,21 +1078,21 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
       }
     }
-    let haxElements = window.HaxStore.guessGizmo(type, props, skipPropMatch);
+    let haxElements = HAXStore.guessGizmo(type, props, skipPropMatch);
     // see if we got anything
     if (haxElements.length > 0) {
       // hand off to hax-app-picker to deal with the rest of this
       let tag = activeNode.tagName.toLowerCase();
       let humanName = tag.replace("-", " ");
       if (
-        typeof window.HaxStore.instance.elementList[tag] !== typeof undefined &&
-        window.HaxStore.instance.elementList[tag].gizmo !== false
+        typeof HAXStore.elementList[tag] !== typeof undefined &&
+        HAXStore.elementList[tag].gizmo !== false
       ) {
-        humanName = window.HaxStore.instance.elementList[tag].gizmo.title;
+        humanName = HAXStore.elementList[tag].gizmo.title;
       }
       if (!testOnly) {
-        window.HaxStore.instance.activePlaceHolder = this.activeNode;
-        window.HaxStore.instance.haxAppPicker.presentOptions(
+        HAXStore.activePlaceHolder = this.activeNode;
+        HAXStore.haxAppPicker.presentOptions(
           haxElements,
           "__convert",
           `Transform ${humanName} to..`,
@@ -1086,7 +1101,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
     } else {
       if (!testOnly) {
-        window.HaxStore.toast("Sorry, this can not be transformed!", 5000);
+        HAXStore.toast("Sorry, this can not be transformed!", 5000);
       }
     }
     return haxElements;
@@ -1142,7 +1157,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     const newNode = frag.cloneNode(true);
     // support for properties if they exist
     for (var property in properties) {
-      let attributeName = window.HaxStore.camelToDash(property);
+      let attributeName = camelToDash(property);
       if (properties.hasOwnProperty(property)) {
         // special supporting for boolean because html is weird :p
         if (properties[property] === true) {
@@ -1181,21 +1196,16 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // special support for a drag and drop into a place-holder tag
     // as this is a more aggressive operation then the others
     if (
-      window.HaxStore.instance.activePlaceHolder !== null &&
-      typeof window.HaxStore.instance.activePlaceHolder.style !==
-        typeof undefined
+      HAXStore.activePlaceHolder !== null &&
+      typeof HAXStore.activePlaceHolder.style !== typeof undefined
     ) {
       // replicate styles so that it doesn't jar the UI
-      newNode.style.width =
-        window.HaxStore.instance.activePlaceHolder.style.width;
-      newNode.style.float =
-        window.HaxStore.instance.activePlaceHolder.style.float;
-      newNode.style.margin =
-        window.HaxStore.instance.activePlaceHolder.style.margin;
-      newNode.style.display =
-        window.HaxStore.instance.activePlaceHolder.style.display;
-      this.haxReplaceNode(window.HaxStore.instance.activePlaceHolder, newNode);
-      window.HaxStore.instance.activePlaceHolder = null;
+      newNode.style.width = HAXStore.activePlaceHolder.style.width;
+      newNode.style.float = HAXStore.activePlaceHolder.style.float;
+      newNode.style.margin = HAXStore.activePlaceHolder.style.margin;
+      newNode.style.display = HAXStore.activePlaceHolder.style.display;
+      this.haxReplaceNode(HAXStore.activePlaceHolder, newNode);
+      HAXStore.activePlaceHolder = null;
     }
     // insert at active insert point if we have one
     else if (this.activeNode.parentNode != null) {
@@ -1230,7 +1240,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     }
     this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
     this.activeNode = newNode;
-    window.HaxStore.write("activeNode", newNode, this);
+    HAXStore.write("activeNode", newNode, this);
     // wait so that the DOM can have the node to then attach to
     this.scrollHere(newNode);
     this.positionContextMenus();
@@ -1245,7 +1255,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     var __active = this.activeNode;
     // null this to drop hax based classes
     this.activeNode = null;
-    window.HaxStore.write("activeNode", null, this);
+    HAXStore.write("activeNode", null, this);
     let children =
       this.shadowRoot.querySelector("#body").localName === "slot"
         ? this.shadowRoot.querySelector("#body").assignedNodes({
@@ -1264,7 +1274,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           "grid-plate-active-item"
         );
         children[i].contentEditable = false;
-        content += window.HaxStore.nodeToContent(children[i]);
+        content += HAXStore.nodeToContent(children[i]);
         if (children[i].tagName.toLowerCase() === "grid-plate") {
           this._applyContentEditable(this.editMode, children[i]);
         }
@@ -1304,7 +1314,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       re = new RegExp(string, "g");
       content = content.replace(re, "");
       // now all tags we have defined as valid
-      let tags = window.HaxStore.instance.validTagList;
+      let tags = HAXStore.validTagList;
       for (var i in tags) {
         string = "style-scope " + tags[i];
         re = new RegExp(string, "g");
@@ -1323,7 +1333,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // re-apply contenteditable if needed
     this._applyContentEditable(this.editMode);
     // set active again
-    window.HaxStore.write("activeNode", __active, this);
+    HAXStore.write("activeNode", __active, this);
     // oh one last thing. escape all script/style tags
     content = encapScript(content);
     return content;
@@ -1334,8 +1344,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   haxDuplicateNode(node) {
     // convert the node to a hax element
     let haxElement = nodeToHaxElement(node, null);
-    var props =
-      window.HaxStore.instance.elementList[node.tagName.toLowerCase()];
+    var props = HAXStore.elementList[node.tagName.toLowerCase()];
     // support for tag defining which properties NOT to save
     // for simplification, everything is an attribute during this
     // operation
@@ -1365,7 +1374,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     });
     if (
       nodeClone.tagName.toLowerCase() === "webview" &&
-      window.HaxStore.instance._isSandboxed &&
+      HAXStore._isSandboxed &&
       typeof nodeClone.guestinstance !== typeof undefined
     ) {
       delete nodeClone.guestinstance;
@@ -1376,7 +1385,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     } else {
       node.parentNode.appendChild(nodeClone);
     }
-    window.HaxStore.write("activeNode", nodeClone, this);
+    HAXStore.write("activeNode", nodeClone, this);
     return true;
   }
   /**
@@ -1405,22 +1414,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // sanity chekc and ensure we are not told to lock position of all menus
     clearTimeout(this.__positionContextTimer);
     this.__positionContextTimer = setTimeout(() => {
-      if (
-        node &&
-        !window.HaxStore.instance._lockContextPosition &&
-        this.__ready
-      ) {
+      if (node && !HAXStore._lockContextPosition && this.__ready) {
         // menu width starts out w/ the plate context which is a set size
         let menuWidth = 140;
         let tag = node.tagName.toLowerCase();
-        if (window.HaxStore.instance._isSandboxed && tag === "webview") {
+        if (HAXStore._isSandboxed && tag === "webview") {
           tag = "iframe";
         }
-        let props = window.HaxStore.instance.elementList[tag];
+        let props = HAXStore.elementList[tag];
         // try and work against anything NOT a P tag
         if (
           typeof props !== typeof undefined &&
-          !window.HaxStore.instance.isTextElement(node)
+          !HAXStore.isTextElement(node)
         ) {
           this._hideContextMenu(
             this.shadowRoot.querySelector("#textcontextmenu")
@@ -1471,13 +1476,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           );
         }
         // special case for node not matching container yet it being editable
-        if (node && !window.HaxStore.instance.isTextElement(node)) {
+        if (node && !HAXStore.isTextElement(node)) {
           node.removeAttribute("contenteditable");
         } else if (node) {
           node.setAttribute("contenteditable", true);
         }
       }
-    }, 0);
+    }, 10);
   }
   /**
    * Move grid plate around
@@ -1550,7 +1555,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             });
             // whatever was moved out last use as active now
             this.activeNode = cloneEl;
-            window.HaxStore.write("activeNode", cloneEl, this);
+            HAXStore.write("activeNode", cloneEl, this);
             setTimeout(() => {
               node.remove();
             }, 0);
@@ -1713,7 +1718,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.haxInsert("p", "", {}, false);
       try {
         var range = document.createRange();
-        var sel = window.HaxStore.getSelection();
+        var sel = HAXStore.getSelection();
         range.setStart(this.activeNode, 0);
         range.collapse(true);
         sel.removeAllRanges();
@@ -1723,7 +1728,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         console.warn(e);
       }
     }
-    window.HaxStore.write("activeNode", this.activeNode, this);
+    HAXStore.write("activeNode", this.activeNode, this);
     try {
       return node.remove();
     } catch (e) {
@@ -1750,7 +1755,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         if (typeof fragment.firstChild.tagName !== typeof undefined) {
           // ensure import doesn't import non-sandbox safe things!
           if (
-            window.HaxStore.instance._isSandboxed &&
+            HAXStore._isSandboxed &&
             fragment.firstChild.tagName.toLowerCase() === "iframe"
           ) {
             // Create a replacement tag of the desired type
@@ -1791,7 +1796,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       case "text-tag":
         // trigger the default selected value in context menu to match
         this.activeNode = this.haxChangeTagName(this.activeNode, detail.value);
-        window.HaxStore.write("activeNode", this.activeNode, this);
+        HAXStore.write("activeNode", this.activeNode, this);
         this.positionContextMenus();
         break;
       case "text-tag-ul":
@@ -1799,7 +1804,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
           "ul";
         this.activeNode = this.haxChangeTagName(this.activeNode, "ul");
-        window.HaxStore.write("activeNode", this.activeNode, this);
+        HAXStore.write("activeNode", this.activeNode, this);
         this.positionContextMenus();
         break;
       case "text-tag-ol":
@@ -1807,23 +1812,23 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
           "ol";
         this.activeNode = this.haxChangeTagName(this.activeNode, "ol");
-        window.HaxStore.write("activeNode", this.activeNode, this);
+        HAXStore.write("activeNode", this.activeNode, this);
         this.positionContextMenus();
         break;
       case "hax-plate-add-element":
         // support for the Other call, otherwise its a specific element + props
         if (detail.value == "other") {
-          window.HaxStore.instance.haxInsertAnything({});
+          HAXStore.haxInsertAnything({});
           return true;
         }
         // insert from here
         let addData = JSON.parse(detail.value);
         this.haxInsert(addData.tag, addData.content, addData.properties, false);
         // focus on 1st row w/ cursor if this a text element
-        if (window.HaxStore.instance.isTextElement(addData)) {
+        if (HAXStore.isTextElement(addData)) {
           try {
             var range = document.createRange();
-            var sel = window.HaxStore.getSelection();
+            var sel = HAXStore.getSelection();
             range.setStart(this.activeNode, 0);
             range.collapse(true);
             sel.removeAllRanges();
@@ -1901,7 +1906,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // HTML is stupid and allows this
       if (
         containerNode.tagName === "SPAN" &&
-        window.HaxStore.instance.isTextElement(containerNode.parentNode) &&
+        HAXStore.isTextElement(containerNode.parentNode) &&
         containerNode.parentNode.getAttribute("slot") == ""
       ) {
         containerNode = target.parentNode;
@@ -1947,9 +1952,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }
           // we only allow disconnected node from container when
           // the container is a grid plate
-          else if (
-            !window.HaxStore.instance.isGridPlateElement(containerNode)
-          ) {
+          else if (!HAXStore.isGridPlateElement(containerNode)) {
             activeNode = containerNode;
           }
         }
@@ -1969,15 +1972,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           !activeNode.classList.contains("ignore-activation")
         ) {
           this.activeNode = activeNode;
-          window.HaxStore.write("activeNode", activeNode, this);
+          HAXStore.write("activeNode", activeNode, this);
           setTimeout(() => {
-            if (
-              !this.__mouseDown &&
-              window.HaxStore.instance.isTextElement(activeNode)
-            ) {
+            if (!this.__mouseDown && HAXStore.isTextElement(activeNode)) {
               try {
                 var range = document.createRange();
-                var sel = window.HaxStore.getSelection();
+                var sel = HAXStore.getSelection();
                 range.setStart(this.activeNode, 0);
                 range.collapse(true);
                 sel.removeAllRanges();
@@ -2056,7 +2056,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           this.haxInsert("p", "", {}, false);
           try {
             var range = document.createRange();
-            var sel = window.HaxStore.getSelection();
+            var sel = HAXStore.getSelection();
             range.setStart(this.activeNode, 0);
             range.collapse(true);
             sel.removeAllRanges();
@@ -2175,13 +2175,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     let listenerMethod;
     // create the hax-ray x ray googles thing
     let haxRay = node.tagName.replace("-", " ").toLowerCase();
-    let i = window.HaxStore.instance.gizmoList.findIndex((j) => {
+    let i = HAXStore.gizmoList.findIndex((j) => {
       if (j) {
         return j.tag === node.tagName.toLowerCase();
       }
     });
     if (i !== -1) {
-      haxRay = window.HaxStore.instance.gizmoList[i].title;
+      haxRay = HAXStore.gizmoList[i].title;
     }
     // oooooo snap, drag and drop..
     if (status) {
@@ -2270,9 +2270,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.undoManagerStackLogic({});
       // esnure we clear the gravity scrolling drag effect
       clearTimeout(gravityScrollTimer);
-      window.HaxStore.instance._lockContextPosition = false;
+      HAXStore._lockContextPosition = false;
       // trick the tray into forcing active to be Configure
-      window.HaxStore.instance.haxTray.activeTab = "item-1";
+      HAXStore.haxTray.activeTab = "item-1";
       var target = null;
       if (e.path && e.path[0]) {
         target = e.path[0];
@@ -2283,7 +2283,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
       // establish an activeNode /container based on drop poisition
       this.activeNode = target;
-      window.HaxStore.write("activeNode", target, this);
+      HAXStore.write("activeNode", target, this);
       // walk the children and remove the draggable state needed
       let children = this.querySelectorAll(
         ".hax-hovered, .hax-moving, .grid-plate-active-item"
@@ -2342,7 +2342,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           );
         } else {
           // set taget based on drag target
-          target = window.HaxStore.instance.__dragTarget;
+          target = HAXStore.__dragTarget;
           var local = e.target;
           // if we have a slot on what we dropped into then we need to mirror that item
           // and place ourselves below it in the DOM
@@ -2370,7 +2370,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           // position arrows / set focus in case the DOM got updated above
           if (target && typeof target.focus === "function") {
             this.activeNode = target;
-            window.HaxStore.write("activeNode", this.activeNode, this);
+            HAXStore.write("activeNode", this.activeNode, this);
             // fire event saying that we dropped an item and gained
             // focus which should prioritize certain actions over a
             // normal focus shift
@@ -2391,7 +2391,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
     }
     // reset this after the drop happens
-    window.HaxStore.instance.__dragTarget = null;
+    HAXStore.__dragTarget = null;
     this.__manageFakeEndCap(false);
   }
   /**
@@ -2597,8 +2597,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         newValue.classList.add("hax-active");
       }, 0);
       if (
-        window.HaxStore.instance.isTextElement(newValue) ||
-        window.HaxStore.instance.isGridPlateElement(newValue)
+        HAXStore.isTextElement(newValue) ||
+        HAXStore.isGridPlateElement(newValue)
       ) {
         newValue.setAttribute("contenteditable", true);
         this.setAttribute("contenteditable", true);
@@ -2676,9 +2676,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     let node = this.activeNode.parentNode;
     const activeNodeTagName = this.activeNode.parentNode.tagName;
     // try selection / tab block since range can cause issues
-    if (window.HaxStore.getRange().cloneRange) {
+    if (HAXStore.getRange().cloneRange) {
       try {
-        let range = window.HaxStore.getRange().cloneRange();
+        let range = HAXStore.getRange().cloneRange();
         var tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
           tagTest = range.commonAncestorContainer.parentNode.tagName;
@@ -2716,9 +2716,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     let node = this.activeNode.parentNode;
     const activeNodeTagName = this.activeNode.parentNode.tagName;
     // try selection / tab block since range can cause issues
-    if (window.HaxStore.getRange().cloneRange) {
+    if (HAXStore.getRange().cloneRange) {
       try {
-        let range = window.HaxStore.getRange().cloneRange();
+        let range = HAXStore.getRange().cloneRange();
         var tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
           tagTest = range.commonAncestorContainer.parentNode.tagName;

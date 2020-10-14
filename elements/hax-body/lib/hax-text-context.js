@@ -7,7 +7,8 @@ import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
-import { HAXTourFinder } from "./HAXTourFinder.js";
+import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
+import { HAXStore } from "./hax-store.js";
 
 /**
  * `hax-text-context`
@@ -16,17 +17,13 @@ import { HAXTourFinder } from "./HAXTourFinder.js";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  */
-class HaxTextContext extends HAXTourFinder(winEventsElement(LitElement)) {
+class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
   static get styles() {
     return [
       css`
         :host {
           display: block;
           pointer-events: none;
-          --hax-contextual-action-color: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
-          );
         }
         hax-context-item-textop:not(:defined),
         hax-context-item-menu:not(:defined),
@@ -92,6 +89,7 @@ class HaxTextContext extends HAXTourFinder(winEventsElement(LitElement)) {
   }
   constructor() {
     super();
+    this.tourName = "hax";
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
@@ -167,7 +165,7 @@ class HaxTextContext extends HAXTourFinder(winEventsElement(LitElement)) {
     // update our icon if global changes what we are pointing to
     if (
       e.detail.property == "activeNode" &&
-      window.HaxStore.instance.isTextElement(e.detail.value) &&
+      HAXStore.isTextElement(e.detail.value) &&
       this.shadowRoot.querySelector(
         '#textformat paper-item[value="' +
           e.detail.value.tagName.toLowerCase() +
@@ -198,7 +196,7 @@ class HaxTextContext extends HAXTourFinder(winEventsElement(LitElement)) {
         >
           <style slot="style">
             simple-popover-manager paper-item {
-              color: var(--simple-colors-default-theme-cyan-8);
+              color: black;
               font-size: 10px !important;
               margin: 0;
               padding: 2px;
@@ -478,7 +476,7 @@ class HaxTextContext extends HAXTourFinder(winEventsElement(LitElement)) {
    */
   _computeShowIndent(realSelectedValue) {
     if (
-      window.HaxStore.instance.computePolyfillSafe() &&
+      HAXStore.computePolyfillSafe() &&
       (realSelectedValue == "ol" || realSelectedValue == "ul")
     ) {
       return true;
@@ -490,7 +488,7 @@ class HaxTextContext extends HAXTourFinder(winEventsElement(LitElement)) {
    */
   _haxContextOperation(e) {
     let detail = e.detail;
-    let selection = window.HaxStore.getSelection();
+    let selection = HAXStore.getSelection();
     let prevent = false;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
@@ -503,39 +501,31 @@ class HaxTextContext extends HAXTourFinder(winEventsElement(LitElement)) {
         }
         break;
       case "insert-inline-gizmo":
-        if (
-          window.HaxStore._tmpSelection &&
-          window.HaxStore.instance.editMode
-        ) {
+        if (HAXStore._tmpSelection && HAXStore.editMode) {
           try {
             if (
-              window.HaxStore._tmpRange.startContainer.parentNode.parentNode
+              HAXStore._tmpRange.startContainer.parentNode.parentNode
                 .tagName === "HAX-BODY" ||
-              window.HaxStore._tmpRange.startContainer.parentNode.parentNode
-                .parentNode.tagName === "HAX-BODY"
+              HAXStore._tmpRange.startContainer.parentNode.parentNode.parentNode
+                .tagName === "HAX-BODY"
             ) {
-              window.HaxStore.instance.activePlaceHolder =
-                window.HaxStore._tmpRange;
-              window.HaxStore.write(
-                "activePlaceHolder",
-                window.HaxStore._tmpRange,
-                this
-              );
+              HAXStore.activePlaceHolder = HAXStore._tmpRange;
+              HAXStore.write("activePlaceHolder", HAXStore._tmpRange, this);
             }
           } catch (err) {}
         }
-        if (window.HaxStore.instance.activePlaceHolder != null) {
+        if (HAXStore.activePlaceHolder != null) {
           // store placeholder because if this all goes through we'll want
           // to kill the originating text
           let values = {
-            text: window.HaxStore.instance.activePlaceHolder.toString(),
+            text: HAXStore.activePlaceHolder.toString(),
           };
           let type = "inline";
-          let haxElements = window.HaxStore.guessGizmo(type, values);
+          let haxElements = HAXStore.guessGizmo(type, values);
           // see if we got anything
           if (haxElements.length > 0) {
             // hand off to hax-app-picker to deal with the rest of this
-            window.HaxStore.instance.haxAppPicker.presentOptions(
+            HAXStore.haxAppPicker.presentOptions(
               haxElements,
               type,
               "Transform selected text to..",

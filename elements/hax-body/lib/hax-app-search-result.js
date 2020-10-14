@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { HAXStore } from "./hax-store.js";
 /**
  * `hax-source`
  * @element hax-source
@@ -120,7 +121,7 @@ class HaxAppSearchResult extends LitElement {
   _dragStart(e) {
     // create the tag
     let target = this.cloneNode(true);
-    window.HaxStore.instance.__dragTarget = target;
+    HAXStore.__dragTarget = target;
     if (e.dataTransfer) {
       this.crt = target;
       this.crt.style.position = "absolute";
@@ -160,9 +161,9 @@ class HaxAppSearchResult extends LitElement {
         gizmoType == "undefined") &&
       map.source
     ) {
-      gizmoType = window.HaxStore.guessGizmoType(map);
+      gizmoType = HAXStore.guessGizmoType(map);
     }
-    let haxElements = window.HaxStore.guessGizmo(gizmoType, map, false, true);
+    let haxElements = HAXStore.guessGizmo(gizmoType, map, false, true);
     // see if we got anything
     if (haxElements.length > 0) {
       if (haxElements.length === 1) {
@@ -178,7 +179,7 @@ class HaxAppSearchResult extends LitElement {
         }
       } else {
         // hand off to hax-app-picker to deal with the rest of this
-        window.HaxStore.instance.haxAppPicker.presentOptions(
+        HAXStore.haxAppPicker.presentOptions(
           haxElements,
           gizmoType,
           "How would you like to display this " + gizmoType + "?",
@@ -186,7 +187,7 @@ class HaxAppSearchResult extends LitElement {
         );
       }
     } else {
-      window.HaxStore.toast("Sorry, HAX can't handle that link yet.");
+      HAXStore.toast("Sorry, HAX can't handle that link yet.");
     }
   }
 }

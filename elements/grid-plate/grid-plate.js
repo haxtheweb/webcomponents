@@ -1076,7 +1076,8 @@ class GridPlate extends LitElement {
       // support global hax store target
       if (
         window.HaxStore &&
-        window.HaxStore.ready &&
+        window.HaxStore.instance &&
+        window.HaxStore.instance.ready &&
         window.HaxStore.instance.__dragTarget
       ) {
         target = window.HaxStore.instance.__dragTarget;
@@ -1100,7 +1101,11 @@ class GridPlate extends LitElement {
           }
         }
         // support hax and dropping back inside grid plate
-        if (window.HaxStore && window.HaxStore.ready) {
+        if (
+          window.HaxStore &&
+          window.HaxStore.instance &&
+          window.HaxStore.instance.ready
+        ) {
           let childrenHAX = window.HaxStore.instance.activeHaxBody.children;
           window.HaxStore.instance.activeHaxBody.haxMover = false;
           // walk the children and apply the draggable state needed
@@ -1157,15 +1162,15 @@ class GridPlate extends LitElement {
         // support for hax
         if (
           window.HaxStore &&
-          window.HaxStore.ready &&
-          window.HaxStore.instance
+          window.HaxStore.instance &&
+          window.HaxStore.instance.ready
         ) {
           if (
             target &&
             target.parentNode &&
             target.parentNode.tagName === "GRID-PLATE"
           ) {
-            window.HaxStore.write("activeNode", target, this);
+            HAXStore.write("activeNode", target, this);
             setTimeout(() => {
               window.HaxStore.instance.activeHaxBody.positionContextMenus(
                 target,
@@ -1184,7 +1189,11 @@ class GridPlate extends LitElement {
    */
   dragStart(e) {
     if (this.editMode) {
-      if (window.HaxStore && window.HaxStore.ready) {
+      if (
+        window.HaxStore &&
+        window.HaxStore.instance &&
+        window.HaxStore.instance.ready
+      ) {
         window.HaxStore.instance.__dragTarget = this.activeItem;
       } else {
         this.__dragTarget = this.activeItem;

@@ -1,7 +1,10 @@
-export const HAXTourFinder = function (SuperClass) {
+import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
+
+export const SimpleTourFinder = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      this.tourName = "default";
     }
     /**
      * Called every time the element is inserted into the DOM. Useful for
@@ -13,7 +16,7 @@ export const HAXTourFinder = function (SuperClass) {
         super.connectedCallback();
       }
       if (!super.firstUpdated) {
-        this.discoverHAXTourStops();
+        this.discoverSimpleTourStops();
       }
     }
     /**
@@ -32,10 +35,10 @@ export const HAXTourFinder = function (SuperClass) {
       if (super.firstUpdated) {
         super.firstUpdated(changedProperties);
       }
-      this.discoverHAXTourStops();
+      this.discoverSimpleTourStops();
     }
     // find all items and automatically register with the tour
-    discoverHAXTourStops() {
+    discoverSimpleTourStops() {
       let items = this.shadowRoot.querySelectorAll("[data-simple-tour-stop]");
       items.forEach((el) => {
         try {
@@ -52,7 +55,7 @@ export const HAXTourFinder = function (SuperClass) {
           let content = el.querySelector("[data-stop-content]").innerHTML
             ? el.querySelector("[data-stop-content]").innerHTML
             : "";
-          window.HaxStore.instance.addToTour(el, title, content);
+          SimpleTourManager.createTourStop(this.tourName, el, title, content);
         } catch (e) {
           console.warn(e);
         }
