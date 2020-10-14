@@ -1498,30 +1498,36 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             // this is a special internal held "property" for layout stuff
             else if (key === "layout" && prop === "__position") {
               setAhead = true;
-              this.dispatchEvent(
-                new CustomEvent("hax-context-item-selected", {
-                  bubbles: true,
-                  composed: true,
-                  detail: {
-                    eventName: settings[key][prop],
-                    value: settings[key][prop],
-                  },
-                })
-              );
+              clearTimeout(this.__contextValueDebounce);
+              this.__contextValueDebounce = setTimeout(() => {
+                this.dispatchEvent(
+                  new CustomEvent("hax-context-item-selected", {
+                    bubbles: true,
+                    composed: true,
+                    detail: {
+                      eventName: settings[key][prop],
+                      value: settings[key][prop],
+                    },
+                  })
+                );
+              }, 50);
             }
             // this is a special internal held "property" for layout stuff
             else if (key === "layout" && prop === "__scale") {
               setAhead = true;
-              this.dispatchEvent(
-                new CustomEvent("hax-context-item-selected", {
-                  bubbles: true,
-                  composed: true,
-                  detail: {
-                    eventName: "hax-size-change",
-                    value: settings[key][prop],
-                  },
-                })
-              );
+              clearTimeout(this.__contextSizeDebounce);
+              this.__contextSizeDebounce = setTimeout(() => {
+                this.dispatchEvent(
+                  new CustomEvent("hax-context-item-selected", {
+                    bubbles: true,
+                    composed: true,
+                    detail: {
+                      eventName: "hax-size-change",
+                      value: settings[key][prop],
+                    },
+                  })
+                );
+              }, 50);
             }
             // try and set the pop directly if it is a prop already set
             // check on prototype, then in properties object if it has one

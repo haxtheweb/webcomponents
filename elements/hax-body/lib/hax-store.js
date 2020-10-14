@@ -2220,9 +2220,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             properties,
             false
           );
-          this.activeHaxBody.shadowRoot.querySelector(
-            "#textcontextmenu"
-          ).highlightOps = false;
         } else {
           this.activeHaxBody.haxInsert(
             details.tag,

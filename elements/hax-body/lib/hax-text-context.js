@@ -453,17 +453,19 @@ class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
         } else {
           this._showLists = false;
         }
-        this.dispatchEvent(
-          new CustomEvent("hax-context-item-selected", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: {
-              eventName: "text-tag",
-              value: this.realSelectedValue,
-            },
-          })
-        );
+        if (oldValue && HAXStore.ready) {
+          this.dispatchEvent(
+            new CustomEvent("hax-context-item-selected", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: {
+                eventName: "text-tag",
+                value: this.realSelectedValue,
+              },
+            })
+          );
+        }
       }
       // calculate boolean status of having text
       if (propName == "haxSelectedText") {
@@ -492,14 +494,6 @@ class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
     let prevent = false;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
-      case "close-menu":
-        // force selection menu closed if open
-        if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
-          this.shadowRoot.querySelector(
-            "simple-popover-selection"
-          ).opened = false;
-        }
-        break;
       case "insert-inline-gizmo":
         if (HAXStore._tmpSelection && HAXStore.editMode) {
           try {

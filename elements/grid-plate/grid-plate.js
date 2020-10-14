@@ -1170,7 +1170,7 @@ class GridPlate extends LitElement {
             target.parentNode &&
             target.parentNode.tagName === "GRID-PLATE"
           ) {
-            HAXStore.write("activeNode", target, this);
+            window.HaxStore.instance.write("activeNode", target, this);
             setTimeout(() => {
               window.HaxStore.instance.activeHaxBody.positionContextMenus(
                 target,

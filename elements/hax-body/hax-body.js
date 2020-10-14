@@ -619,6 +619,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
         this._editModeChanged(this[propName], oldValue);
+        if (this[propName]) {
+          this._activeNodeChanged(this.activeNode);
+          setTimeout(() => {
+            this.activeNode.focus();
+          }, 0);
+        }
       }
       if (propName == "globalPreferences") {
         this._globalPreferencesUpdated(this[propName], oldValue);
@@ -730,16 +736,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this._observer.observe(this, {
       childList: true,
     });
-    setTimeout(() => {
-      window.addEventListener("keydown", this._onKeyDown.bind(this));
-      window.addEventListener("keypress", this._onKeyPress.bind(this));
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      window.addEventListener("scroll", this._keepContextVisible.bind(this));
-      window.addEventListener("resize", this._keepContextVisible.bind(this));
-    }, 0);
+    window.addEventListener("keydown", this._onKeyDown.bind(this));
+    window.addEventListener("keypress", this._onKeyPress.bind(this));
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    window.addEventListener("scroll", this._keepContextVisible.bind(this));
+    window.addEventListener("resize", this._keepContextVisible.bind(this));
   }
   /**
    * HTMLElement
@@ -881,9 +885,83 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   );
                   this.positionContextMenus();
                 }
-              } else {
               }
-            }, 50);
+            }, 10);
+            break;
+          default:
+            // we only care about contextual ops in a paragraph
+            // delay a micro-task to ensure activenode's innerText is set
+            setTimeout(() => {
+              if (
+                this.activeNode.tagName === "P" &&
+                ["1", "#", "`", ">", "-", "!"].includes(
+                  this.activeNode.textContent[0]
+                )
+              ) {
+                // ensure the "whitespace character" has been replaced w/ a normal space
+                const guess = this.activeNode.textContent.replaceAll(/ /g, " ");
+                // ensures that the user has done a matching action and a " " spacebar to ensure they
+                // are ready to commit the action
+                if (guess[guess.length - 1] === " ") {
+                  // look for advanced detections for contextual operations
+                  let map = {
+                    "#": "h2",
+                    "##": "h3",
+                    "###": "h4",
+                    "####": "h5",
+                    "#####": "h6",
+                    "-": "ul",
+                    "1.": "ol",
+                    "---": "hr",
+                    "```": "code",
+                    ">": "blockquote",
+                  };
+                  // see if our map matches
+                  if (map[guess.replace(" ", "")]) {
+                    let el = document.createElement(
+                      map[guess.replace(" ", "")]
+                    );
+                    // silly thing for contenteditable to show it as full space height
+                    el.innerHTML = "<br />";
+                    if (["UL", "OL"].includes(el.tagName)) {
+                      el.innerHTML = "<li></li>";
+                    }
+                    this.haxReplaceNode(this.activeNode, el);
+                    this.__focusLogic(el);
+                    // breaks should jump just PAST the break
+                    // and add a p since it's a divider really
+                    if (el.tagName === "HR") {
+                      // then insert a P which will assume active status
+                      this.haxInsert("p", "", {}, false);
+                    }
+                  }
+                  // look for wildcard / web component pro insert mode
+                  else if (guess[0] === "!") {
+                    let tag = guess.replace("!", "").replaceAll(/ /g, "");
+                    // see if this exists
+                    if (HAXStore.elementList[tag]) {
+                      // generate schema from the tag
+                      let schema = HAXStore.haxSchemaFromTag(tag);
+                      let target;
+                      if (
+                        schema.gizmo.tag &&
+                        schema.demoSchema &&
+                        schema.demoSchema[0]
+                      ) {
+                        target = haxElementToNode(schema.demoSchema[0]);
+                      } else {
+                        target = document.createElement(tag);
+                      }
+                      this.haxReplaceNode(this.activeNode, target);
+                      this.__focusLogic(target);
+                    } else {
+                      // do nothing, we tried to be a pro but failed :(
+                      HAXStore.toast(`${tag} is not a valid tag`);
+                    }
+                  }
+                }
+              }
+            }, 0);
             break;
         }
         if (
@@ -1227,6 +1305,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             newNode,
             this.activeNode.parentNode.nextElementSibling
           );
+        } else if (
+          this.activeNode.parentNode &&
+          this.activeNode.nextElementSibling
+        ) {
+          this.activeNode.parentNode.insertBefore(
+            newNode,
+            this.activeNode.nextElementSibling
+          );
         } else if (this.activeNode.parentNode) {
           this.activeNode.parentNode.insertBefore(newNode, this.activeNode);
         } else {
@@ -1238,12 +1324,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // send this into the root, which should filter it back down into the slot
       this.appendChild(newNode);
     }
-    this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
-    this.activeNode = newNode;
-    HAXStore.write("activeNode", newNode, this);
-    // wait so that the DOM can have the node to then attach to
-    this.scrollHere(newNode);
-    this.positionContextMenus();
+    this.shadowRoot.querySelector("#textcontextmenu").s = false;
+    setTimeout(() => {
+      this.__focusLogic(newNode);
+      // wait so that the DOM can have the node to then attach to
+      this.scrollHere(newNode);
+    }, 0);
     return true;
   }
   /**
@@ -1404,8 +1490,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (hidePlate) {
       this._hideContextMenu(this.shadowRoot.querySelector("#platecontextmenu"));
     }
-    // force context menu state to closed
-    this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
   }
   /**
    * Reposition context menus to match an element.
@@ -1644,21 +1728,30 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Convert an element from one tag to another.
    */
-  haxChangeTagName(node, tagName) {
+  haxChangeTagName(node, tagName, maintainContent = true) {
     // Create a replacement tag of the desired type
     var replacement = document.createElement(tagName);
     // Grab all of the original's attributes, and pass them to the replacement
     for (var i = 0, l = node.attributes.length; i < l; ++i) {
-      var nodeName = node.attributes.item(i).nodeName;
-      var value = node.attributes.item(i).value;
-      replacement.setAttribute(nodeName, value);
+      let nodeName = node.attributes.item(i).nodeName;
+      let value = node.attributes.item(i).value;
+      try {
+        replacement.setAttribute(nodeName, value);
+      } catch (e) {
+        console.warn(node.attributes);
+        console.warn(e);
+      }
     }
     // Persist contents
     // account for empty list and ordered list items
-    replacement.innerHTML = node.innerHTML.trim();
+    if (maintainContent) {
+      replacement.innerHTML = node.innerHTML.trim();
+    } else {
+      replacement.innerHTML = "<br />";
+    }
     if (tagName == "ul" || tagName == "ol") {
-      if (replacement.innerHTML == "") {
-        replacement.innerHTML = "<li></li>";
+      if (replacement.innerHTML == "<br />") {
+        replacement.innerHTML = "<li><br /></li>";
       } else if (
         !(
           node.tagName.toLowerCase() == "ul" ||
@@ -1688,16 +1781,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // Switch!
     try {
       node.replaceWith(replacement);
-      // focus on the thing switched to
-      setTimeout(() => {
-        let children = replacement.children;
-        // see if there's a child element and focus that instead if there is
-        if (children[0] && children.tagName) {
-          children[0].focus();
-        } else {
-          replacement.focus();
-        }
-      }, 50);
+      if (maintainContent) {
+        // focus on the thing switched to
+        setTimeout(() => {
+          let children = replacement.children;
+          // see if there's a child element and focus that instead if there is
+          if (children[0] && children.tagName) {
+            children[0].focus();
+          } else {
+            replacement.focus();
+          }
+        }, 10);
+      }
     } catch (e) {
       console.warn(e);
       console.warn(replacement);
@@ -2593,9 +2688,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // this is nessecary because the context menu gets appended into
       // the document
       // only hide if we change containers
-      setTimeout(() => {
-        newValue.classList.add("hax-active");
-      }, 0);
+      newValue.classList.add("hax-active");
       if (
         HAXStore.isTextElement(newValue) ||
         HAXStore.isGridPlateElement(newValue)

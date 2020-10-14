@@ -1,4 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@polymer/paper-item/paper-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
 class HaxToolbar extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -69,16 +73,6 @@ class HaxToolbar extends LitElement {
     this.selected = false;
     this.hideMore = false;
     this.inline = false;
-    setTimeout(() => {
-      import("@polymer/paper-item/paper-item.js");
-      import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
-      import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-      import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
-      this.addEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
-      );
-    }, 0);
   }
   render() {
     return html`
@@ -129,28 +123,6 @@ class HaxToolbar extends LitElement {
         reflect: true,
       },
     };
-  }
-
-  /**
-   * Respond to simple modifications.
-   */
-  _haxContextOperation(e) {
-    let detail = e.detail;
-    // support a simple insert event to bubble up or everything else
-    switch (detail.eventName) {
-      case "close-menu":
-        setTimeout(() => {
-          this.shadowRoot
-            .querySelector("#moremenu")
-            .shadowRoot.querySelector("#menu")
-            .hideMenu();
-          this.shadowRoot
-            .querySelector("#justify")
-            .shadowRoot.querySelector("#menu")
-            .hideMenu();
-        }, 200);
-        break;
-    }
   }
 }
 window.customElements.define(HaxToolbar.tag, HaxToolbar);
