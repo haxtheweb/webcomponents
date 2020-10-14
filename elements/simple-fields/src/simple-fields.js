@@ -146,6 +146,7 @@ class SimpleFields extends SimpleFieldsLite {
   constructor() {
     super();
     this.activeTabs = {};
+    this.disableResponsive = false;
     this.addEventListener("active-tab-changed", this._handleActiveTab);
     if ("requestIdleCallback" in window) {
       // Use requestIdleCallback to schedule work.
@@ -354,6 +355,7 @@ class SimpleFields extends SimpleFieldsLite {
                     layoutBreakpoint: "layoutBreakpoint",
                     iconBreakpoint: "iconBreakpoint",
                     sticky: "sticky",
+                    disableResponsive: this.disableResponsive,
                   },
                 },
               },

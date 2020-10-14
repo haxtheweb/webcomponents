@@ -56,7 +56,6 @@ class RelativeHeading extends RelativeHeadingLite {
   }
 
   get button() {
-    console.log(this.disableLink);
     return this.disableLink
       ? html``
       : html`

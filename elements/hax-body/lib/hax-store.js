@@ -360,24 +360,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object,
       },
       /**
-       * Hax app picker element.
-       */
-      haxAppPicker: {
-        type: Object,
-      },
-      /**
-       * Hax stax picker element.
-       */
-      haxStaxPicker: {
-        type: Object,
-      },
-      /**
-       * Hax stax picker element.
-       */
-      haxBloxPicker: {
-        type: Object,
-      },
-      /**
        * Hax autoloader element.
        */
       haxAutoloader: {
@@ -407,18 +389,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
        * Possible appStore endpoint for loading in things dynamically.
        */
       appStore: {
-        type: Object,
-      },
-      /**
-       * HAX Toast message.
-       */
-      haxToast: {
-        type: Object,
-      },
-      /**
-       * Hax export dialog element.
-       */
-      haxExport: {
         type: Object,
       },
       /**
@@ -717,7 +687,19 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         })
       );
       // now process the dynamic imports
-      this._handleDynamicImports(items, haxAutoloader);
+      if ("requestIdleCallback" in window) {
+        // Use requestIdleCallback to schedule work.
+        requestIdleCallback(
+          this._handleDynamicImports(items, haxAutoloader).bind(this),
+          {
+            timeout: 200,
+          }
+        );
+      } else {
+        setTimeout(() => {
+          this._handleDynamicImports(items, haxAutoloader);
+        }, 200);
+      }
     }
   }
   // simple path from a url modifier
@@ -734,28 +716,20 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   async _handleDynamicImports(items, haxAutoloader) {
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     for (var i in items) {
-      // seems redundant but this can help polyfill'ed browsers
-      if (!window.customElements.get(i)) {
+      // try to skip an import
+      if (window.customElements.get(i)) {
+        if (window.customElements.get(i).haxProperties) {
+          this.setHaxProperties(window.customElements.get(i).haxProperties, i);
+        } else {
+          // edge case of no definition
+          haxAutoloader.appendChild(document.createElement(i));
+        }
+      } else {
+        // we have to import and then respond to it being imported by checking again
         await import(`${basePath}../../../${items[i]}`)
           .then((response) => {
-            let hasClass = false;
-            for (var cVal in response) {
-              // get the custom element definition we used to add that file
-              let CEClass = response[cVal];
-              if (typeof CEClass.getHaxProperties === "function") {
-                this.setHaxProperties(CEClass.getHaxProperties(), i);
-                hasClass = true;
-              } else if (typeof CEClass.HAXWiring === "function") {
-                this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
-                hasClass = true;
-              } else if (CEClass.haxProperties) {
-                this.setHaxProperties(CEClass.haxProperties, i);
-                hasClass = true;
-              }
-            }
-            // fallback for things that don't export a class
+            // see if it imported now
             if (
-              !hasClass &&
               window.customElements.get(i) &&
               window.customElements.get(i).haxProperties
             ) {
@@ -763,27 +737,17 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
                 window.customElements.get(i).haxProperties,
                 i
               );
+            } else {
+              // edge case of no definition
+              haxAutoloader.appendChild(document.createElement(i));
             }
           })
           .catch((error) => {
             /* Error handling */
             console.warn(error);
+            // also try putting it in the autoloader and hope for the best
+            haxAutoloader.appendChild(document.createElement(i));
           });
-      } else {
-        // get the custom element definition we used to add that file
-        let CEClass = window.customElements.get(i);
-        if (typeof CEClass.getHaxProperties === "function") {
-          this.setHaxProperties(CEClass.getHaxProperties(), i);
-        } else if (typeof CEClass.HAXWiring === "function") {
-          this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
-        } else if (CEClass.haxProperties) {
-          this.setHaxProperties(CEClass.haxProperties, i);
-        } else {
-          // this is the less optimized / legacy polymer element method to inlcude
-          // this item. It's a good reason to skip on this though because you'll
-          // have a faster boot up time with newer ES6 methods then previous ones.
-          haxAutoloader.appendChild(document.createElement(i));
-        }
       }
     }
   }
@@ -896,23 +860,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       if (["__ready", "__appStoreData", "haxAutoloader"].includes(propName)) {
         loadAppStoreData = true;
       }
-      if (
-        [
-          "haxAutoloader",
-          "activeHaxBody",
-          "haxToast",
-          "haxExport",
-          "haxAppPicker",
-          "haxTray",
-        ].includes(propName)
-      ) {
+      if (["haxAutoloader", "activeHaxBody", "haxTray"].includes(propName)) {
         // allow this to verify if everything is here or not
         this._storePiecesAllHere(
           this.haxAutoloader,
           this.activeHaxBody,
-          this.haxToast,
-          this.haxExport,
-          this.haxAppPicker,
           this.haxTray
         );
       }
@@ -1014,23 +966,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     }
   }
-  _storePiecesAllHere(
-    haxAutoloader,
-    activeHaxBody,
-    haxToast,
-    haxExport,
-    haxAppPicker,
-    haxTray
-  ) {
-    if (
-      !this.__ready &&
-      activeHaxBody &&
-      haxAutoloader &&
-      haxToast &&
-      haxExport &&
-      haxAppPicker &&
-      haxTray
-    ) {
+  _storePiecesAllHere(haxAutoloader, activeHaxBody, haxTray) {
+    if (!this.__ready && activeHaxBody && haxAutoloader && haxTray) {
       // send that hax store is ready to go so now we can setup the rest
       this.dispatchEvent(
         new CustomEvent("hax-store-ready", {
@@ -1549,7 +1486,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       esModule.setPassiveTouchGestures(true);
     });
     import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
-      this.haxToast = window.SimpleToast.requestAvailability();
+      window.SimpleToast.requestAvailability();
     });
 
     import("@lrnwebcomponents/media-behaviors/media-behaviors.js");
@@ -2092,6 +2029,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * A standard event for registering the different pieces of HAX that check in
    * at run time. This allows for additional flexibility down the road as well as
    * registering pieces we never thought of for custom environments.
+   * This also ensures that there are object references in the central store
+   * but that load at an unknown time during spin up.
    *
    * @param {CustomEvent} e an event that has the piece to register and the object
    */
@@ -2102,7 +2041,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   }
 
   /**
-   * Close all drawers
+   * open / close drawers
    */
   openDrawersCallback(active = false, oldValue) {
     // walk all drawers, close everything
@@ -2872,3 +2811,55 @@ window.HaxStore.requestAvailability = function () {
 };
 // export the singleton so everyone can directly reference it
 export const HAXStore = window.HaxStore.requestAvailability();
+
+// debugging / developer console shortcuts
+window.Hax = window.Hax || {};
+window.Hax.add = function (tag) {
+  if (HAXStore.elementList[tag]) {
+    // generate schema from the tag
+    let schema = HAXStore.haxSchemaFromTag(tag);
+    let target;
+    if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
+      target = haxElementToNode(schema.demoSchema[0]);
+    } else {
+      target = document.createElement(tag);
+    }
+    HAXStore.activeHaxBody.haxReplaceNode(HAXStore.activeNode, target);
+    HAXStore.activeHaxBody.__focusLogic(target);
+  } else {
+    // do nothing, we tried to be a pro but failed :(
+    HAXStore.toast(`${tag} is not a valid tag`);
+  }
+};
+window.Hax.delete = function () {
+  if (HAXStore.activeNode != null) {
+    HAXStore.activeHaxBody.haxDeleteNode(HAXStore.activeNode);
+  }
+};
+window.Hax.duplicate = function () {
+  HAXStore.activeHaxBody.haxDuplicateNode(HAXStore.activeNode);
+};
+
+window.Hax.move = function (dir = true) {
+  if (dir) {
+    HAXStore.activeHaxBody.haxMoveGridPlate("up", HAXStore.activeNode);
+  } else {
+    HAXStore.activeHaxBody.haxMoveGridPlate("down", HAXStore.activeNode);
+  }
+};
+
+window.Hax.grid = function (op = true) {
+  if (HAXStore.activeNode.parentNode.tagName === "HAX-BODY") {
+    HAXStore.activeHaxBody.haxGridPlateOps(HAXStore.activeNode, "right", op);
+  } else {
+    HAXStore.activeHaxBody.haxGridPlateOps(
+      HAXStore.activeNode.parentNode,
+      "right",
+      op
+    );
+  }
+};
+
+window.Hax.set = function (key, value) {
+  HAXStore.write(key, value, window);
+};

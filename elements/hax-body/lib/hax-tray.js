@@ -714,7 +714,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               anything!
             </div>
             <div slot="content">
-              <simple-fields id="settingsform"></simple-fields>
+              <simple-fields
+                id="settingsform"
+                disable-responsive
+              ></simple-fields>
             </div>
           </a11y-collapse>
           <a11y-collapse id="searchapps" accordion data-simple-tour-stop>
@@ -1455,12 +1458,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         });
       }
       this.__activePropSchema = props;
-      this.shadowRoot.querySelector("#settingsform").fields = [
-        ...this.activeSchema,
-      ];
-      this.shadowRoot.querySelector("#settingsform").value = {
-        ...this.activeValue,
-      };
+      this.shadowRoot.querySelector("#settingsform").fields = this.activeSchema;
+      this.shadowRoot.querySelector("#settingsform").value = this.activeValue;
     }
   }
   /**

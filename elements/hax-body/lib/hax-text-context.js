@@ -147,7 +147,6 @@ class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
       },
     ];
     this.realSelectedValue = "p";
-    this.selection = false;
     this.formatIcon = "hax:format-textblock";
     this.isSafari = this._isSafari();
   }
@@ -182,11 +181,7 @@ class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
   }
   render() {
     return html`
-      <hax-toolbar
-        .selected="${this.selection}"
-        ?hide-more="${!this.hasSelectedText}"
-        id="toolbar"
-      >
+      <hax-toolbar ?hide-more="${!this.hasSelectedText}" id="toolbar">
         <simple-popover-selection
           slot="primary"
           @simple-popover-selection-changed="${this.textFormatChanged}"
@@ -402,12 +397,6 @@ class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
         type: String,
       },
       /**
-       * Selection tracking
-       */
-      selection: {
-        type: Boolean,
-      },
-      /**
        * Selected item icon
        */
       formatIcon: {
@@ -426,6 +415,18 @@ class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
   textFormatChanged(e) {
     // set internally
     this.updateTextIconSelection(e.detail.getAttribute("value"));
+    // notify up above that we want to change the tag
+    this.dispatchEvent(
+      new CustomEvent("hax-context-item-selected", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          eventName: "text-tag",
+          value: this.realSelectedValue,
+        },
+      })
+    );
   }
   updateTextIconSelection(tag) {
     this.realSelectedValue = tag;
@@ -446,25 +447,12 @@ class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       // computed based on these changing
-      if (propName == "realSelectedValue" && this.shadowRoot) {
+      if (propName == "realSelectedValue") {
         this._showIndent = this._computeShowIndent(this.realSelectedValue);
         if (this.realSelectedValue == "p") {
           this._showLists = true;
         } else {
           this._showLists = false;
-        }
-        if (oldValue && HAXStore.ready) {
-          this.dispatchEvent(
-            new CustomEvent("hax-context-item-selected", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: {
-                eventName: "text-tag",
-                value: this.realSelectedValue,
-              },
-            })
-          );
         }
       }
       // calculate boolean status of having text

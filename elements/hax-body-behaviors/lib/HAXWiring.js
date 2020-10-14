@@ -213,7 +213,6 @@ export class HAXWiring {
      * HAX store is ready so now we can fire events
      */
     this._haxStoreReady = (e) => {
-      console.log("?");
       if (
         e.detail &&
         typeof this.tagName !== typeof undefined &&

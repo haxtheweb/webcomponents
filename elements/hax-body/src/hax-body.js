@@ -369,6 +369,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     super();
     // lock to ensure we don't flood events on hitting the up / down arrows
     // as we use a mutation observer to manage draggable bindings
+    this.__ignoreActive = false;
     this.__mouseMoving = false;
     this.___moveLock = false;
     this.editMode = false;
@@ -646,9 +647,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // mutation observer that ensures state of hax applied correctly
     this._observer = new MutationObserver((mutations) => {
       var mutFind = false;
-      if (!this.__mouseMoving && !this.undoStackIgnore && !this.__fakeEndCap) {
+      console.log(this.__tabTrap);
+      if (
+        !this.__ignoreActive &&
+        !this.__mouseMoving &&
+        !this.undoStackIgnore &&
+        !this.__fakeEndCap
+      ) {
+        if (this.__tabTrap) {
+          console.log(mutations);
+        }
         mutations.forEach((mutation) => {
-          // if we've got new nodes, we have to react to that
           if (mutation.addedNodes.length > 0) {
             mutation.addedNodes.forEach((node) => {
               if (this._validElementTest(node)) {
@@ -731,6 +740,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             });
           }
         });
+      } else if (this.__ignoreActive) {
+        this.__ignoreActive = false;
       }
     });
     this._observer.observe(this, {
@@ -797,7 +808,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }
           this.positionContextMenus();
         }
-      }, 50);
+      }, 10);
     }
   }
   _onKeyDown(e) {
@@ -806,6 +817,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.editMode &&
       this.getAttribute("contenteditable")
     ) {
+      this.__manageFakeEndCap(false);
       let sel = HAXStore.getSelection();
       if (sel.anchorNode != null) {
         switch (e.key) {
@@ -1324,12 +1336,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // send this into the root, which should filter it back down into the slot
       this.appendChild(newNode);
     }
-    this.shadowRoot.querySelector("#textcontextmenu").s = false;
+    this.shadowRoot.querySelector("#textcontextmenu").hasSelectedText = false;
     setTimeout(() => {
       this.__focusLogic(newNode);
       // wait so that the DOM can have the node to then attach to
       this.scrollHere(newNode);
-    }, 0);
+    }, 10);
     return true;
   }
   /**
@@ -1498,7 +1510,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // sanity chekc and ensure we are not told to lock position of all menus
     clearTimeout(this.__positionContextTimer);
     this.__positionContextTimer = setTimeout(() => {
-      if (node && !HAXStore._lockContextPosition && this.__ready) {
+      if (
+        node &&
+        node.tagName &&
+        !HAXStore._lockContextPosition &&
+        this.__ready
+      ) {
         // menu width starts out w/ the plate context which is a set size
         let menuWidth = 140;
         let tag = node.tagName.toLowerCase();
@@ -1560,7 +1577,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           );
         }
         // special case for node not matching container yet it being editable
-        if (node && !HAXStore.isTextElement(node)) {
+        if (node && node.tagName !== "HR" && !HAXStore.isTextElement(node)) {
           node.removeAttribute("contenteditable");
         } else if (node) {
           node.setAttribute("contenteditable", true);
@@ -2209,9 +2226,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (typeof node.tagName !== typeof undefined) {
       if (
         // ignore hax internal tags
-        node.tagName.substring(0, 4) !== "HAX-" ||
-        // hax logo is special cause
-        node.tagName === "HAX-LOGO" ||
+        node.tagName !== "HAX-BODY" ||
         // special place holder in drag and drop
         node.tagName !== "FAKE-HAX-BODY-END"
       ) {
@@ -2672,9 +2687,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * React to a new node being set to active.
    */
-  _activeNodeChanged(newValue, oldValue) {
+  async _activeNodeChanged(newValue, oldValue) {
     // remove anything currently with the active class
-    this.querySelectorAll(".hax-active").forEach((el) => {
+    await this.querySelectorAll(".hax-active").forEach((el) => {
       el.classList.remove("hax-active");
     });
     if (
@@ -2691,6 +2706,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       newValue.classList.add("hax-active");
       if (
         HAXStore.isTextElement(newValue) ||
+        newValue.tagName === "HR" ||
         HAXStore.isGridPlateElement(newValue)
       ) {
         newValue.setAttribute("contenteditable", true);
@@ -2781,8 +2797,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           ["UL", "OL", "LI"].includes(tagTest)
         ) {
           if (this.polyfillSafe) {
-            document.execCommand("indent");
             this.__tabTrap = true;
+            document.execCommand("indent");
           }
         } else {
           while (!focus) {
@@ -2821,8 +2837,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           ["UL", "OL", "LI"].includes(tagTest)
         ) {
           if (this.polyfillSafe) {
-            document.execCommand("outdent");
             this.__tabTrap = true;
+            document.execCommand("outdent");
           }
         } else {
           if (node != null) {

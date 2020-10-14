@@ -964,9 +964,16 @@ class SimpleFieldsLite extends LitElement {
    */
   _schemaChanged(newValue, oldValue) {
     if (newValue && newValue !== oldValue) {
-      setTimeout(() => {
-        this.rebuildForm();
-      }, 0);
+      if ("requestIdleCallback" in window) {
+        // Use requestIdleCallback to schedule work.
+        requestIdleCallback(this.rebuildForm.bind(this), {
+          timeout: 10,
+        });
+      } else {
+        setTimeout(() => {
+          this.rebuildForm();
+        }, 10);
+      }
       this.dispatchEvent(
         new CustomEvent("schema-changed", {
           bubbles: true,
