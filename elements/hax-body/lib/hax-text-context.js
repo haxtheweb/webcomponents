@@ -616,10 +616,12 @@ class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
        * Naughty, naughty shadyDOM. Fortunately this is only IE11/Edge
        */
       case "text-indent":
+        HAXStore.activeHaxBody.__indentTrap = true;
         document.execCommand("indent");
         prevent = true;
         break;
       case "text-outdent":
+        HAXStore.activeHaxBody.__indentTrap = true;
         document.execCommand("outdent");
         prevent = true;
         break;

@@ -190,10 +190,8 @@ class HaxPlateContext extends SimpleTourFinder(winEventsElement(HTMLElement)) {
     setTimeout(() => {
       if (
         e.detail &&
-        typeof e.detail.value !== typeof undefined &&
-        e.detail.property &&
         this.getAttribute("on-screen") != null &&
-        ["activeNode"].includes(e.detail.property)
+        e.detail.property == "activeNode"
       ) {
         // when activeNode changes make sure we reposition
         this.__updatePlatePosition();

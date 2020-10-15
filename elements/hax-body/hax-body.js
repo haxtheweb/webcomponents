@@ -647,20 +647,33 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // mutation observer that ensures state of hax applied correctly
     this._observer = new MutationObserver((mutations) => {
       var mutFind = false;
-      console.log(this.__tabTrap);
       if (
         !this.__ignoreActive &&
         !this.__mouseMoving &&
         !this.undoStackIgnore &&
         !this.__fakeEndCap
       ) {
-        if (this.__tabTrap) {
-          console.log(mutations);
-        }
         mutations.forEach((mutation) => {
           if (mutation.addedNodes.length > 0) {
             mutation.addedNodes.forEach((node) => {
               if (this._validElementTest(node)) {
+                // trap for user hitting the outdent / indent keys or tabbing
+                // browser will try and wrap text in a span when it's added to
+                // the top level of the document (for no reason)
+                if (this.__indentTrap) {
+                  // span should not be created, we want a paragraph for this
+                  if (node.tagName === "SPAN") {
+                    if (node.parentNode === this) {
+                      this.haxChangeTagName(node, "p", true);
+                    } else if (node.parentNode.tagName === "LI") {
+                      node.parentNode.innerHTML = node.textContent;
+                    }
+                  }
+                  // we don't want BR's injected at top of body area
+                  else if (node.tagName === "BR") {
+                    node.remove();
+                  }
+                }
                 // edge case, thing is moved around in the dom so let's do the opposite
                 // this is something that has PART of these applies
                 // let's make sure that we maintain state associated with contenteditable
@@ -701,6 +714,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 }
               }
             });
+            if (this.__indentTrap) {
+              setTimeout(() => {
+                this.__indentTrap = false;
+              }, 0);
+            }
           }
           // if we dropped nodes via the UI (delete event basically)
           if (mutation.removedNodes.length > 0) {
@@ -746,6 +764,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     });
     this._observer.observe(this, {
       childList: true,
+      subtree: true,
     });
     window.addEventListener("keydown", this._onKeyDown.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
@@ -2781,12 +2800,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Find the next thing to tab forward to.
    */
   _tabKeyPressed() {
-    let focus = false;
-    let node = this.activeNode.parentNode;
-    const activeNodeTagName = this.activeNode.parentNode.tagName;
     // try selection / tab block since range can cause issues
-    if (HAXStore.getRange().cloneRange) {
+    if (this.activeNode && HAXStore.getRange().cloneRange) {
       try {
+        let focus = false;
+        let node = this.activeNode.parentNode;
+        const activeNodeTagName = this.activeNode.parentNode.tagName;
         let range = HAXStore.getRange().cloneRange();
         var tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
@@ -2798,6 +2817,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         ) {
           if (this.polyfillSafe) {
             this.__tabTrap = true;
+            this.__indentTrap = true;
             document.execCommand("indent");
           }
         } else {
@@ -2822,11 +2842,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Move back through things when tab back pressed
    */
   _tabBackKeyPressed() {
-    let node = this.activeNode.parentNode;
-    const activeNodeTagName = this.activeNode.parentNode.tagName;
     // try selection / tab block since range can cause issues
-    if (HAXStore.getRange().cloneRange) {
+    if (this.activeNode && HAXStore.getRange().cloneRange) {
       try {
+        let node = this.activeNode.parentNode;
+        const activeNodeTagName = this.activeNode.parentNode.tagName;
         let range = HAXStore.getRange().cloneRange();
         var tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
@@ -2838,6 +2858,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         ) {
           if (this.polyfillSafe) {
             this.__tabTrap = true;
+            this.__indentTrap = true;
             document.execCommand("outdent");
           }
         } else {

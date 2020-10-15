@@ -812,7 +812,7 @@ class SimpleFieldsLite extends LitElement {
    * clears form
    */
   _clearForm() {
-    this.querySelectorAll("*").forEach((child) => child.remove());
+    this.innerHTML = "";
     this.__formElementsArray = [];
   }
 

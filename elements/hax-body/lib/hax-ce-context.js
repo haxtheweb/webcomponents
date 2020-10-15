@@ -47,16 +47,8 @@ class HaxCeContext extends winEventsElement(LitElement) {
    * Store updated, sync.
    */
   _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      if (e.detail.property === "activeNode") {
-        setTimeout(() => {
-          this._computeValues();
-        }, 0);
-      }
+    if (e.detail && e.detail.property === "activeNode") {
+      this._computeValues();
     }
   }
   render() {
