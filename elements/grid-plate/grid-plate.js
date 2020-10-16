@@ -4,7 +4,6 @@ import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 class GridPlateLayoutOptions {
   constructor() {
     this.resizeTimer = null;
-    this.activeItem = null;
     this.layouts = {
       1: {
         columnLayout: "1: full width",
@@ -158,17 +157,6 @@ class GridPlate extends LitElement {
           --grid-plate-row-margin: 0px;
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
-          --grid-plate-editable-border-color: var(
-            --simple-colors-default-theme-grey-4,
-            #dddddd
-          );
-          --grid-plate-active-border-color: var(
-            --simple-colors-default-theme-grey-4,
-            #eeeeee
-          );
-          --grid-plate-target-background-color: inherit;
-          --grid-plate-possible-target-background-color: transparent;
-          --grid-plate-selected-background-color: #ffffff;
         }
         :host .row {
           width: 100%;
@@ -179,110 +167,49 @@ class GridPlate extends LitElement {
           margin: var(--grid-plate-row-margin);
           padding: var(--grid-plate-row-padding);
         }
+        .column.active {
+          outline: 2px solid var(--simple-colors-default-theme-cyan-7, #009dc7) !important;
+          outline-offset: -2px;
+        }
         :host .column {
           width: 100%;
           flex: 0 0 auto;
         }
-        :host([edit-mode]) .column {
-          min-height: 150px;
-          transition: 0.2s color linear, 0.2s background-color linear;
-        }
-        :host([edit-mode]) {
-          min-height: 150px;
-        }
-        :host([edit-mode]) .column {
-          outline: 1px dashed var(--grid-plate-editable-border-color);
-        }
         :host .column:empty[style="min-height: unset;"] {
           display: none;
           outline: none;
-        }
-        :host([edit-mode]) .column[style="min-height: unset;"]:not(:empty) {
-          display: block;
-          opacity: 0.4;
-        }
-        :host([edit-mode])
-          .column[style="min-height: unset;"]:not(:empty):hover {
-          opacity: 1;
-        }
-        :host([edit-mode])
-          .column[style="min-height: unset;"]:not(:empty):before {
-          margin: var(--grid-plate-item-margin);
-          color: red;
-          font-size: 14px;
-          font-weight: bold;
-          padding: 0px;
         }
         :host .column ::slotted(*) {
           margin: var(--grid-plate-item-margin);
           padding: var(--grid-plate-item-margin);
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
-          transition: 0.2s color linear, 0.2s background-color linear;
-        }
-        :host([edit-mode]) .column ::slotted(img) {
-          display: block;
-        }
-        :host([edit-mode]) .column ::slotted(*:focus),
-        :host([edit-mode]) .column ::slotted(*:hover),
-        :host([edit-mode]) .column ::slotted(*:active) {
-          outline: 1px solid var(--grid-plate-editable-border-color);
-        }
-        :host([edit-mode]) .column ::slotted(ol:focus),
-        :host([edit-mode]) .column ::slotted(ol:hover),
-        :host([edit-mode]) .column ::slotted(ol:active),
-        :host([edit-mode]) .column ::slotted(ul:focus),
-        :host([edit-mode]) .column ::slotted(ul:hover),
-        :host([edit-mode]) .column ::slotted(ul:active) {
-          outline-offset: 8px;
-        }
-        :host([edit-mode].hax-hovered) .column ::slotted(img),
-        :host([edit-mode].hax-hovered) .column ::slotted(*):before {
-          background-color: var(
-            --grid-plate-target-background-color
-          ) !important;
-          outline: solid 1px var(--grid-plate-active-border-color);
-          content: " ";
-          width: 100%;
-          display: block;
-          position: relative;
-          margin: -20px 0 0 0;
-          z-index: 2;
-          height: 20px;
-        }
-        :host([edit-mode]) .column.hax-hovered {
-          background-color: var(
-            --grid-plate-target-background-color
-          ) !important;
-          outline: solid 1px var(--grid-plate-active-border-color);
-          z-index: 2;
+          transition: var(
+            --grid-plate-col-transition,
+            0.2s color linear,
+            0.2s background-color linear
+          );
         }
       `,
     ];
   }
   constructor() {
     super();
-    this.droppable = false;
-    this.ignoreHax = false;
     this.breakpointSm = 900;
     this.breakpointMd = 1200;
     this.breakpointLg = 1500;
     this.breakpointXl = 1800;
     this.columns = 6;
     this.disableResponsive = false;
-    this.editMode = false;
-    if (window.HaxStore && window.HaxStore.instance) {
-      this.editMode = window.HaxStore.instance.editMode;
-    }
     this.layout = "1-1";
     this.layouts = new GridPlateLayoutOptions().layouts;
     this.responsiveSize = "xs";
-    setTimeout(() => {
-      this.addEventListener("focusin", this._focusIn.bind(this));
-      // capture keydown events
-      this.addEventListener("keydown", this._onKeyDown.bind(this));
-    }, 0);
     window.ResponsiveUtility.requestAvailability();
+    this.addEventListener("drop", (e) => {
+      this.shadowRoot.querySelectorAll(".active").forEach((el) => {
+        el.classList.remove("active");
+      });
+    });
   }
   /**
    * LitElement render
@@ -364,84 +291,32 @@ class GridPlate extends LitElement {
         // from outside this element or dragging between grid plates
         // so we need to disconnect the handlers from here and pick them
         // up in the new plate
-        if (this.editMode) {
-          mutation.addedNodes.forEach((node) => {
-            if (node.tagName) {
-              // verify this has a slot set otherwise we need to set one on the fly
-              // otherwise this won't show up. This could be incorrectly formed HTML
-              // DOM that was pushed in via an outside system or edge cases of things
-              // dropping in without a slot set in anyway
-              // validate slot name, otherwise force it to col-1
-              if (
-                node.getAttribute("slot") == null ||
-                !this.validateElementSlot(node)
-              ) {
-                if (this.__slot) {
-                  node.setAttribute("slot", this.__slot);
-                  this.__slot = null;
-                } else {
-                  node.setAttribute("slot", "col-1");
-                }
-              }
-              // event timeout is to help w/ between grid plate drops
-              setTimeout(() => {
-                node.addEventListener("drop", this.dropEvent.bind(this));
-                node.addEventListener("dragenter", this.dragEnter.bind(this));
-                node.addEventListener("dragleave", this.dragLeave.bind(this));
-                node.addEventListener("dragover", function (e) {
-                  e.preventDefault();
-                });
-                // UX normalization
-                if (node.tagName === "IMG") {
-                  node.setAttribute("draggable", false);
-                }
-                // ensure they can be focused
-                node.setAttribute("tabindex", 0);
-              }, 50);
+        mutation.addedNodes.forEach((node) => {
+          if (node.tagName) {
+            // verify this has a slot set otherwise we need to set one on the fly
+            // otherwise this won't show up. This could be incorrectly formed HTML
+            // DOM that was pushed in via an outside system or edge cases of things
+            // dropping in without a slot set in anyway
+            // validate slot name, otherwise force it to col-1
+            if (
+              node.getAttribute("slot") == null ||
+              !this.validateElementSlot(node)
+            ) {
+              node.setAttribute("slot", "col-1");
             }
-          });
-          mutation.removedNodes.forEach((node) => {
-            if (node.tagName) {
-              node.removeEventListener("drop", this.dropEvent.bind(this));
-              node.removeEventListener("dragenter", this.dragEnter.bind(this));
-              node.removeEventListener("dragleave", this.dragLeave.bind(this));
-              node.removeEventListener("dragover", function (e) {
-                e.preventDefault();
-              });
-              if (node.tagName === "IMG") {
-                node.removeAttribute("draggable");
-              }
-              // ensure they can be focused
-              node.removeAttribute("tabindex");
-            }
-          });
-        }
+          }
+        });
       });
     });
     this.observer.observe(this, {
       childList: true,
     });
-    // listen for HAX if it's around
-    window.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    this.resize();
-  }
-  _onKeyDown(e) {
-    if (this.editMode) {
-      switch (e.key) {
-        case "Enter":
-          this.__slot = this.activeItem.getAttribute("slot");
-          return true;
-          break;
-      }
-    }
   }
   /**
    * life cycle
    */
   firstUpdated(changedProperties) {
+    this.resize();
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
@@ -459,11 +334,11 @@ class GridPlate extends LitElement {
     for (var j = 1; j <= this.columns; j++) {
       if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
         let col = this.shadowRoot.querySelector("#col" + j);
-        col.addEventListener("drop", this.dropEvent.bind(this));
-        col.addEventListener("dragenter", this.dragEnter.bind(this));
-        col.addEventListener("dragleave", this.dragLeave.bind(this));
-        col.addEventListener("dragover", function (e) {
-          e.preventDefault();
+        col.addEventListener("dragenter", (e) => {
+          e.target.classList.add("active");
+        });
+        col.addEventListener("dragleave", (e) => {
+          e.target.classList.remove("active");
         });
       }
     }
@@ -478,15 +353,13 @@ class GridPlate extends LitElement {
    * life cycle
    */
   disconnectedCallback() {
-    // listen for HAX if it's around
-    window.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
     // clean up mutation observer
     this.observer.disconnect();
     super.disconnectedCallback();
   }
+  /**
+   * Wire to HAX
+   */
   static get haxProperties() {
     return {
       canScale: true,
@@ -559,37 +432,12 @@ class GridPlate extends LitElement {
         ],
       },
       saveOptions: {
-        unsetAttributes: [
-          "edit-mode",
-          "active-item",
-          "layouts",
-          "columns",
-          "options",
-          "droppable",
-          "ignorehax",
-          "activeitem",
-          "responsive-width",
-        ],
+        unsetAttributes: ["layouts", "columns", "options", "responsive-width"],
       },
     };
   }
   static get properties() {
     return {
-      /**
-       * allows other systems to trigger editMode in grid plate via property for D&D
-       */
-      droppable: {
-        type: Boolean,
-        reflect: true,
-      },
-      /**
-       * Flag for when using grid-plate in a system WITH hax yet not wanting to
-       * be activated (like a HAXcms / other CMS theme layer)
-       */
-      ignoreHax: {
-        type: Boolean,
-        attribute: "ignore-hax",
-      },
       /**
        * Custom small breakpoint for the layouts; only updated on attached
        */
@@ -626,20 +474,11 @@ class GridPlate extends LitElement {
         reflect: true,
       },
       /**
-       * disables responsive layouts for HAX preview
+       * disables responsive layouts
        */
       disableResponsive: {
         type: Boolean,
         attribute: "disable-responsive",
-      },
-      /**
-       * If the grid plate is in a state where its items
-       * can be modified as far as order or column placement.
-       */
-      editMode: {
-        reflect: true,
-        type: Boolean,
-        attribute: "edit-mode",
       },
       /**
        * an object with a layout's column sizes
@@ -690,23 +529,17 @@ class GridPlate extends LitElement {
           propName
         )
       ) {
-        this.__columnWidths = this._getColumnWidths(
-          this.responsiveSize,
-          this.layout,
-          this.layouts,
-          this.disableResponsive
-        );
+        clearTimeout(this.__calcWidthLock);
+        this.__calcWidthLock = setTimeout(() => {
+          this.__columnWidths = this._getColumnWidths(
+            this.responsiveSize,
+            this.layout,
+            this.layouts,
+            this.disableResponsive
+          );
+        }, 0);
       }
       switch (propName) {
-        // observer
-        case "droppable":
-          this._droppableChanged(this[propName], oldValue);
-          break;
-        // observer
-        case "editMode":
-          this._editModeChanged(this[propName], oldValue);
-          this.resize();
-          break;
         // observer, ensure we are sized correctly after widths change
         case "__columnWidths":
           // widths changed because of layout somehow, wait for the resize transition
@@ -726,20 +559,6 @@ class GridPlate extends LitElement {
   }
   resize() {
     window.dispatchEvent(new Event("resize"));
-  }
-  /**
-   * Implements preProcessHaxInsertContent to clean up output on save
-   */
-  preProcessHaxInsertContent(detail) {
-    // ensure this is wiped to avoid issues in building
-    delete detail.properties.activeItem;
-    return detail;
-  }
-
-  _droppableChanged(newValue) {
-    if (newValue) {
-      this.editMode = true;
-    }
   }
   /**
    * Determines if the item can move a set number of slots.
@@ -766,59 +585,6 @@ class GridPlate extends LitElement {
       col = item.getAttribute("slot").split("-"),
       dest = parseInt(col[1]) + dir;
     item.setAttribute("slot", "col-" + dest);
-  }
-
-  /**
-   * Determines if the item can move a set number of slots.
-   *
-   * @param {object} the item
-   * @param {boolean} move item before previous? (false for move item after next)
-   * @returns {boolean} if the item can move a set number of slots
-   */
-  canMoveOrder(item, before) {
-    let slot = item.getAttribute("slot");
-    let nodes = this.shadowRoot
-      .querySelector(`slot[name='${slot}']`)
-      .assignedNodes({ flatten: true });
-    let target = null,
-      position = 0;
-    for (var i in nodes) {
-      if (item === nodes[i]) {
-        position = i;
-      }
-    }
-    if (before && parseInt(position) - 1 >= 0) {
-      target = nodes[parseInt(position) - 1];
-    } else if (!before && parseInt(position) + 1 <= nodes.length - 1) {
-      target = nodes[parseInt(position) + 1];
-    }
-    return target !== null && typeof target !== typeof undefined;
-  }
-  /**
-   * Moves an item's order within a slot.
-   *
-   * @param {object} the item
-   * @param {boolean} move item before previous? (false for move item after next)
-   */
-  moveOrder(item, before = true) {
-    let slot = item.getAttribute("slot");
-    let nodes = this.shadowRoot
-      .querySelector(`slot[name='${slot}']`)
-      .assignedNodes({ flatten: true });
-    let target = null,
-      position = 0;
-    for (var i in nodes) {
-      if (item === nodes[i]) {
-        position = i;
-      }
-    }
-    if (before) {
-      target = nodes[parseInt(position) - 1];
-      this.insertBefore(this.activeItem, target);
-    } else {
-      target = nodes[parseInt(position) + 1];
-      this.insertBefore(target, this.activeItem);
-    }
   }
   /**
    * gets the column widths based on selected layout and current responsive width
@@ -886,91 +652,6 @@ class GridPlate extends LitElement {
     return __columnWidths.length;
   }
   /**
-   * Focus / tab / click event normalization
-   */
-  _focusIn(e) {
-    if (this.editMode) {
-      var local = e.target;
-      // only activate if we touch something that's in the slot of the grid plate
-      if (local.parentNode === this) {
-        this.activeItem = local;
-      }
-    }
-  }
-  /**
-   * Notice edit state has changed
-   */
-  _editModeChanged(newValue, oldValue) {
-    // flipping from false to true
-    if (newValue && !oldValue) {
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (children[i].tagName) {
-          children[i].addEventListener("drop", this.dropEvent.bind(this));
-          children[i].addEventListener("dragenter", this.dragEnter.bind(this));
-          children[i].addEventListener("dragleave", this.dragLeave.bind(this));
-          children[i].addEventListener("dragover", function (e) {
-            e.preventDefault();
-          });
-          if (children[i].tagName === "IMG") {
-            children[i].setAttribute("draggable", false);
-          }
-          // ensure they can be focused
-          children[i].setAttribute("tabindex", 0);
-        }
-      }
-    }
-    // flipping from true to false
-    else if (!newValue && oldValue) {
-      // unset active to clean up state
-      this.activeItem = null;
-      let children = this.children;
-      // walk the children and remove the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].tagName !== typeof undefined) {
-          children[i].removeEventListener("drop", this.dropEvent.bind(this));
-          children[i].removeEventListener(
-            "dragenter",
-            this.dragEnter.bind(this)
-          );
-          children[i].removeEventListener(
-            "dragleave",
-            this.dragLeave.bind(this)
-          );
-          children[i].removeEventListener("dragover", function (e) {
-            e.preventDefault();
-          });
-          if (children[i].tagName === "IMG") {
-            children[i].removeAttribute("draggable");
-          }
-          children[i].removeAttribute("tabindex");
-        }
-      }
-    }
-  }
-  /**
-   * Enter an element, meaning we've over it while dragging
-   */
-  dragEnter(e) {
-    if (this.editMode) {
-      e.preventDefault();
-      if (e.target && e.target.classList) {
-        e.target.classList.add("hax-hovered");
-        this.classList.add("hax-hovered");
-      }
-    }
-  }
-  /**
-   * Leaving an element while dragging.
-   */
-  dragLeave(e) {
-    if (this.editMode && e.target && e.target.classList) {
-      e.target.classList.remove("hax-hovered");
-      this.classList.remove("hax-hovered");
-    }
-  }
-  /**
    * Sort children based on slot name
    */
   __sortChildren() {
@@ -1006,144 +687,6 @@ class GridPlate extends LitElement {
       });
     } catch (error) {
       console.warn(error);
-    }
-  }
-  /**
-   * Drop an item onto another
-   */
-  dropEvent(e) {
-    if (this.editMode) {
-      var target = this.activeItem;
-      if (this.__dragTarget) {
-        target = this.__dragTarget;
-      }
-      // support global hax store target
-      if (
-        window.HaxStore &&
-        window.HaxStore.instance &&
-        window.HaxStore.instance.ready &&
-        window.HaxStore.instance.__dragTarget
-      ) {
-        target = window.HaxStore.instance.__dragTarget;
-        window.HaxStore.instance.__dragTarget = null;
-      }
-      setTimeout(() => {
-        let children = this.querySelectorAll(".hax-hovered");
-        // walk the children and apply the draggable state needed
-        for (var i in children) {
-          if (typeof children[i].classList !== typeof undefined) {
-            children[i].classList.remove("hax-hovered");
-          }
-        }
-        for (var j = 1; j <= this.columns; j++) {
-          if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-            this.shadowRoot
-              .querySelector("#col" + j)
-              .classList.remove("hax-hovered");
-          }
-        }
-        // support hax and dropping back inside grid plate
-        if (
-          window.HaxStore &&
-          window.HaxStore.instance &&
-          window.HaxStore.instance.ready
-        ) {
-          let childrenHAX = window.HaxStore.instance.activeHaxBody.children;
-          window.HaxStore.instance.activeHaxBody.haxMover = false;
-          // walk the children and apply the draggable state needed
-          for (var i in childrenHAX) {
-            if (childrenHAX[i].classList) {
-              childrenHAX[i].classList.remove("hax-hovered");
-            }
-          }
-        }
-        // sort the children by slot to ensure they are in the correct semantic order
-        this.__sortChildren();
-      }, 100);
-      // edge case, something caused this to drag and it tried to do
-      // itself into itself
-      if (target === this) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        return false;
-      }
-      var local = e.target;
-      // if we have a slot on what we dropped into then we need to mirror that item
-      // and place ourselves below it in the DOM
-      if (
-        target &&
-        typeof local !== typeof undefined &&
-        local.getAttribute("slot") != null &&
-        local.parentNode &&
-        target !== local
-      ) {
-        target.setAttribute("slot", local.getAttribute("slot"));
-        local.parentNode.insertBefore(target, local);
-        // ensure that if we caught this event we process it
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-      }
-      // special case for dropping on an empty column or between items
-      // which could involve a miss on the column
-      else if (
-        target &&
-        local.tagName === "DIV" &&
-        local.classList.contains("column")
-      ) {
-        var col = local.id.replace("col", "");
-        target.setAttribute("slot", "col-" + col);
-        this.appendChild(target);
-        // ensure that if we caught this event we process it
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-      }
-      setTimeout(() => {
-        // support for hax
-        if (
-          window.HaxStore &&
-          window.HaxStore.instance &&
-          window.HaxStore.instance.ready
-        ) {
-          if (
-            target &&
-            target.parentNode &&
-            target.parentNode.tagName === "GRID-PLATE"
-          ) {
-            window.HaxStore.instance.write("activeNode", target, this);
-            setTimeout(() => {
-              window.HaxStore.instance.activeHaxBody.positionContextMenus(
-                target,
-                target.parentNode
-              );
-            }, 10);
-          }
-        }
-        this.activeItem = null;
-      }, 0);
-    }
-  }
-
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      if (typeof e.detail.value === "object") {
-        this[e.detail.property] = null;
-      }
-      if (e.detail.property === "editMode" && this.ignoreHax) {
-        // do nothing, we were told to ignore hax
-      } else {
-        // if HAX modified our edit state then hide operations
-        this[e.detail.property] = e.detail.value;
-      }
     }
   }
 }

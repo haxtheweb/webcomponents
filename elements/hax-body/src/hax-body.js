@@ -405,13 +405,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   dragEndBody(e) {
     this.__manageFakeEndCap(false);
     HAXStore._lockContextPosition = false;
-    let children = HAXStore.activeHaxBody.children;
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (typeof children[i].classList !== typeof undefined) {
-        children[i].classList.remove("hax-hovered");
-      }
-    }
+    this.querySelectorAll(".hax-hovered").forEach((el) => {
+      el.classList.remove("hax-hovered");
+    });
   }
   _mouseDown(e) {
     this.__mouseDown = true;
@@ -649,6 +645,16 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         mutations.forEach((mutation) => {
           if (mutation.addedNodes.length > 0) {
             mutation.addedNodes.forEach((node) => {
+              // notice the slot being set during an enter event
+              // and ensure we replicate it
+              if (this.__slot) {
+                node.setAttribute("slot", this.__slot);
+                this.__slot = null;
+              }
+              // force images to NOT be draggable as we will manage D&D
+              if (node.tagName === "IMG") {
+                node.setAttribute("draggable", false);
+              }
               if (this._validElementTest(node)) {
                 // trap for user hitting the outdent / indent keys or tabbing
                 // browser will try and wrap text in a span when it's added to
@@ -851,6 +857,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             }
             break;
           case "Enter":
+            this.__slot = this.activeNode.getAttribute("slot");
             this.setAttribute("contenteditable", true);
           case "Backspace":
           case "Delete":
@@ -2345,23 +2352,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    */
   undoManagerStackLogic(mutations) {
     if (!this.__mouseMoving) {
-      let children = this.querySelectorAll(".hax-hovered");
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("hax-hovered");
-          // special support for grid plates as they manage internal drag/drop
-          if (children[i].tagName === "GRID-PLATE") {
-            //children[i].dropEvent(e);
-            for (var j in children[i].children) {
-              if (
-                typeof children[i].children[j].classList !== typeof undefined
-              ) {
-                children[i].children[j].classList.remove("hax-hovered");
-              }
-            }
-          }
-        }
-      }
+      this.querySelectorAll(".hax-hovered").forEach((el) => {
+        el.classList.remove("hax-hovered");
+      });
       super.undoManagerStackLogic(mutations);
     }
   }
@@ -2392,23 +2385,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.activeNode = target;
       HAXStore.write("activeNode", target, this);
       // walk the children and remove the draggable state needed
-      let children = this.querySelectorAll(".hax-hovered");
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("hax-hovered");
-          // special support for grid plates as they manage internal drag/drop
-          if (children[i].tagName === "GRID-PLATE") {
-            children[i].dropEvent(e);
-            for (var j in children[i].children) {
-              if (
-                typeof children[i].children[j].classList !== typeof undefined
-              ) {
-                children[i].children[j].classList.remove("hax-hovered");
-              }
-            }
-          }
-        }
-      }
+      this.querySelectorAll(".hax-hovered").forEach((el) => {
+        el.classList.remove("hax-hovered");
+      });
       // this helps ensure that what gets drag and dropped is a file
       // this prevents issues with selecting and dragging text (which triggers drag/drop)
       // as well as compatibility with things that are legit in a draggable state
@@ -2441,22 +2420,43 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           // set taget based on drag target
           target = HAXStore.__dragTarget;
           var local = e.target;
+          if (
+            e.target.closest("grid-plate") &&
+            e.target.parentNode != e.target.closest("grid-plate")
+          ) {
+            local = e.target.closest("grid-plate");
+          } else if (e.target.closest("[contenteditable],img")) {
+            local = e.target.closest("[contenteditable],img");
+          }
           // if we have a slot on what we dropped into then we need to mirror that item
           // and place ourselves below it in the DOM
-          if (
-            (target &&
-              target != null &&
-              typeof target.removeAttribute === "function" &&
-              typeof local !== typeof undefined &&
-              target !== local &&
-              target !== local.parentNode &&
-              target.parentNode === this) ||
-            local.parentNode === this
-          ) {
+          if (local && target && target !== local) {
             // incase this came from a grid plate, drop the slot so it works
             try {
-              target.removeAttribute("slot");
-              local.parentNode.insertBefore(target, local);
+              if (
+                !["GRID-PLATE", "HAX-BODY"].includes(local.tagName) ||
+                e.path[0].tagName === "GRID-PLATE"
+              ) {
+                if (local.getAttribute("slot")) {
+                  target.setAttribute("slot", local.getAttribute("slot"));
+                } else if (e.path[0].classList.contains("column")) {
+                  target.setAttribute(
+                    "slot",
+                    e.path[0].getAttribute("id").replace("col", "col-")
+                  );
+                } else {
+                  target.removeAttribute("slot");
+                }
+                local.parentNode.insertBefore(target, local);
+              } else {
+                if (e.path[0].classList.contains("column")) {
+                  target.setAttribute(
+                    "slot",
+                    e.path[0].getAttribute("id").replace("col", "col-")
+                  );
+                }
+                local.appendChild(target);
+              }
             } catch (e) {
               console.warn(e);
             }
