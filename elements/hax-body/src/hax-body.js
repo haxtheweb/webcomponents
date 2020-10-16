@@ -312,9 +312,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           display: none;
         }
         /* drag and drop */
-        :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
-          outline: var(--hax-body-active-drag-outline);
-        }
         :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*):before {
           outline: 1px var(--simple-colors-default-theme-grey-2) solid;
           background-color: var(--hax-body-possible-target-background-color);
@@ -412,11 +409,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // walk the children and apply the draggable state needed
     for (var i in children) {
       if (typeof children[i].classList !== typeof undefined) {
-        children[i].classList.remove(
-          "hax-hovered",
-          "hax-moving",
-          "grid-plate-active-item"
-        );
+        children[i].classList.remove("hax-hovered");
       }
     }
   }
@@ -1385,11 +1378,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       if (this._validElementTest(children[i])) {
         children[i].removeAttribute("data-hax-ray");
         // remove some of the protected classes though they shouldn't leak through
-        children[i].classList.remove(
-          "hax-moving",
-          "hax-hovered",
-          "grid-plate-active-item"
-        );
+        children[i].classList.remove("hax-hovered");
         children[i].contentEditable = false;
         content += HAXStore.nodeToContent(children[i]);
         if (children[i].tagName.toLowerCase() === "grid-plate") {
@@ -1669,7 +1658,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 // remove slot name
                 cloneEl = el.cloneNode(true);
                 cloneEl.removeAttribute("slot");
-                cloneEl.classList.remove("hax-moving");
                 node.parentNode.insertBefore(cloneEl, node);
               }
             });
@@ -2357,16 +2345,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    */
   undoManagerStackLogic(mutations) {
     if (!this.__mouseMoving) {
-      let children = this.querySelectorAll(
-        ".hax-hovered, .hax-moving, .grid-plate-active-item"
-      );
+      let children = this.querySelectorAll(".hax-hovered");
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove(
-            "hax-hovered",
-            "hax-moving",
-            "grid-plate-active-item"
-          );
+          children[i].classList.remove("hax-hovered");
           // special support for grid plates as they manage internal drag/drop
           if (children[i].tagName === "GRID-PLATE") {
             //children[i].dropEvent(e);
@@ -2374,11 +2356,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
               if (
                 typeof children[i].children[j].classList !== typeof undefined
               ) {
-                children[i].children[j].classList.remove(
-                  "hax-hovered",
-                  "hax-moving",
-                  "grid-plate-active-item"
-                );
+                children[i].children[j].classList.remove("hax-hovered");
               }
             }
           }
@@ -2414,16 +2392,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.activeNode = target;
       HAXStore.write("activeNode", target, this);
       // walk the children and remove the draggable state needed
-      let children = this.querySelectorAll(
-        ".hax-hovered, .hax-moving, .grid-plate-active-item"
-      );
+      let children = this.querySelectorAll(".hax-hovered");
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove(
-            "hax-hovered",
-            "hax-moving",
-            "grid-plate-active-item"
-          );
+          children[i].classList.remove("hax-hovered");
           // special support for grid plates as they manage internal drag/drop
           if (children[i].tagName === "GRID-PLATE") {
             children[i].dropEvent(e);
@@ -2431,11 +2403,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
               if (
                 typeof children[i].children[j].classList !== typeof undefined
               ) {
-                children[i].children[j].classList.remove(
-                  "hax-hovered",
-                  "hax-moving",
-                  "grid-plate-active-item"
-                );
+                children[i].children[j].classList.remove("hax-hovered");
               }
             }
           }

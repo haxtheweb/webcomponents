@@ -258,7 +258,6 @@ class HaxPlateContext extends SimpleTourFinder(winEventsElement(HTMLElement)) {
     let target = HAXStore.activeNode;
     HAXStore.__dragTarget = target;
     HAXStore._lockContextPosition = true;
-    target.classList.add("hax-moving");
     if (e.dataTransfer) {
       e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.dropEffect = "move";

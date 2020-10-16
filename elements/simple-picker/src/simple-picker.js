@@ -119,8 +119,8 @@ class SimplePicker extends LitElement {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "value") this._valueChanged(this.value, oldValue);
-      if (propName === "options") this._optionsChanged(this.value, oldValue);
+      if (propName === "value") this._valueChanged();
+      if (propName === "options") this._optionsChanged();
     });
     /**
      * Fires when properties change
@@ -271,8 +271,8 @@ class SimplePicker extends LitElement {
    * @param {object} oldValue old value for picker
    * @returns {void}
    */
-  _valueChanged(newValue, oldValue) {
-    this._setSelectedOption(newValue, oldValue);
+  _valueChanged() {
+    this._setSelectedOption();
     /**
      * fires when value changes
      * @event value-changed
@@ -290,15 +290,15 @@ class SimplePicker extends LitElement {
    * @param {object} oldValue old options for picker
    * @returns {void}
    */
-  _optionsChanged(newValue, oldValue) {
-    this._setSelectedOption(newValue, oldValue);
+  _optionsChanged() {
+    this._setSelectedOption();
   }
 
   /**
    * sets selected option to a given option's id
    * @returns {void}
    */
-  _setSelectedOption(newVal, oldVal) {
+  _setSelectedOption() {
     let sel =
       !this.allowNull &&
       (this.options || []).length > 0 &&

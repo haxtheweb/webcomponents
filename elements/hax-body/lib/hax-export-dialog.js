@@ -360,11 +360,10 @@ class HaxExportDialog extends winEventsElement(
    * open the dialog
    */
   open() {
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");
-    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
-
     this.opened = true;
     this.shadowRoot.querySelector("#textarea").editorValue = this.contentToFile(
       false

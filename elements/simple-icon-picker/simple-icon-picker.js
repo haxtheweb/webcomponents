@@ -2,7 +2,6 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
 import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
 
@@ -15,21 +14,14 @@ import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
  * @demo ./demo/index.html
  */
 class SimpleIconPicker extends SimplePicker {
-  //styles function
-  static get styles() {
-    return [...super.styles, css``];
-  }
-
   // properties available to the custom element for data binding
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * Allow a null option to be selected?
        */
       allowNull: {
-        name: "allowNull",
         type: Boolean,
       },
       /**
@@ -42,7 +34,6 @@ class SimpleIconPicker extends SimplePicker {
     ]```
       */
       icons: {
-        name: "icons",
         type: Array,
       },
 
@@ -50,7 +41,6 @@ class SimpleIconPicker extends SimplePicker {
        * The value of the option.
        */
       value: {
-        name: "value",
         type: String,
         reflect: true,
       },
@@ -59,7 +49,6 @@ class SimpleIconPicker extends SimplePicker {
        * the maximum number of options per row
        */
       optionsPerRow: {
-        name: "optionsPerRow",
         type: Number,
       },
 
@@ -72,9 +61,7 @@ class SimpleIconPicker extends SimplePicker {
       
     ]```
       */
-
       __iconList: {
-        name: "__iconList",
         type: Array,
       },
     };
@@ -107,7 +94,19 @@ class SimpleIconPicker extends SimplePicker {
       if (
         ["optionsPerRow", "icons", "allowNull", "__iconList"].includes(propName)
       ) {
-        this._getOptions(this[propName], oldValue);
+        clearTimeout(this.__rebuild);
+        this.__rebuild = setTimeout(() => {
+          if ("requestIdleCallback" in window) {
+            // Use requestIdleCallback to schedule work.
+            requestIdleCallback(this._getOptions.bind(this), {
+              timeout: 1000,
+            });
+          } else {
+            setTimeout(() => {
+              this._getOptions();
+            }, 1000);
+          }
+        }, 0);
       }
       if (propName == "value") {
         /**
@@ -162,7 +161,6 @@ class SimpleIconPicker extends SimplePicker {
   _getOptions() {
     let icons =
         typeof this.icons === "string" ? JSON.parse(this.icons) : this.icons,
-      collapse = this.shadowRoot.querySelector("#collapse"),
       cols = this.optionsPerRow;
     if (icons.length === 0 && this.__iconList && this.__iconList.length > 0)
       icons = this.__iconList;
