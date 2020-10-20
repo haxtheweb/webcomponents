@@ -786,16 +786,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     }
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
-      case "search-selected":
-        this.dispatchEvent(
-          new CustomEvent("hax-search-source-updated", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: detail.index,
-          })
-        );
-        break;
       case "insert-stax":
         this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(

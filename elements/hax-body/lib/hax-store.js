@@ -419,12 +419,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object,
       },
       /**
-       * Available apps of things supplying media / content.
-       */
-      appList: {
-        type: Array,
-      },
-      /**
        * Available hax stax which are just re-usable templates
        */
       staxList: {
@@ -435,12 +429,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
        */
       bloxList: {
         type: Array,
-      },
-      /**
-       * Globally active app, used for brokering communications
-       */
-      activeApp: {
-        type: Object,
       },
       /**
        * Valid tag list, tag only and including primatives for a baseline.
@@ -1473,6 +1461,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       globalPreferences: observable,
       activeGizmo: computed,
       editMode: observable,
+      appList: observable,
+      activeApp: observable,
     });
     autorun(() => {
       this._globalPreferencesChanged(toJS(this.globalPreferences));

@@ -1,18 +1,15 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
-import {
-  winEventsElement,
-  haxElementToNode,
-} from "@lrnwebcomponents/utils/utils.js";
+import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
-
+import { autorun, toJS } from "mobx";
 /**
  * `hax-gizmo-browser`
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
  * @microcopy - the mental model for this element
  * - gizmo - silly name for the general public when talking about custom elements and what it provides in the end.
  */
-class HaxGizmoBrowser extends winEventsElement(LitElement) {
+class HaxGizmoBrowser extends LitElement {
   static get styles() {
     return [
       css`
@@ -35,9 +32,6 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
   }
   constructor() {
     super();
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-    };
     this.__gizmoList = [];
     this.filtered = [];
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
@@ -153,33 +147,21 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
       }
     });
   }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      this.shadowRoot &&
-      e.detail &&
-      e.detail.value &&
-      e.detail.property === "gizmoList"
-    ) {
-      this.resetBrowser();
-    }
-  }
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // probably not required but just to be safe
-    this.resetBrowser();
+    autorun(() => {
+      this.resetBrowser(toJS(HAXStore.gizmoList));
+    });
   }
 
   /**
    * Reset this browser.
    */
-  resetBrowser() {
-    this.__gizmoList = HAXStore.gizmoList.filter((gizmo, i) => {
+  resetBrowser(list) {
+    this.__gizmoList = list.filter((gizmo, i) => {
       // remove inline and hidden references
       if (gizmo && gizmo.meta && (gizmo.meta.inlineOnly || gizmo.meta.hidden)) {
         return false;

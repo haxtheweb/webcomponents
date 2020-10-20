@@ -1,8 +1,9 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
+import { autorun, toJS } from "mobx";
+
 /**
  * `hax-app-search`
  * `An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that we can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`
@@ -11,7 +12,7 @@ import { HAXStore } from "./hax-store.js";
  * - hax-body - the text are ultimately we are trying to insert this item into
  * @element hax-app-search
  */
-class HaxAppSearch extends winEventsElement(SimpleColors) {
+class HaxAppSearch extends SimpleColors {
   /**
    * LitElement constructable styles enhancement
    */
@@ -79,10 +80,6 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
   }
   constructor() {
     super();
-    // window based events managed in winEventsElement
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-    };
     this.auto = false;
     this.headers = {};
     this.method = "GET";
@@ -96,6 +93,9 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");
+    autorun(() => {
+      this.activeApp = toJS(HAXStore.activeApp);
+    });
   }
   /**
    * LitElement life cycle - render callback
@@ -322,7 +322,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
    * Active app has changed.
    */
   _resetAppSearch(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined && newValue !== null) {
+    if (newValue && newValue.details) {
       let app = newValue;
       var requestParams = {};
       this.label = app.details.title;
@@ -392,18 +392,6 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
       } else {
         this.auto = true;
       }
-    }
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      this[e.detail.property] = e.detail.value;
     }
   }
 
