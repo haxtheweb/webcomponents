@@ -160,6 +160,7 @@ class GridPlate extends LitElement {
         }
         :host .row {
           width: 100%;
+          overflow-wrap: break-word;
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between;
@@ -192,8 +193,11 @@ class GridPlate extends LitElement {
           );
         }
         :host([data-hax-ray]) .column {
-          outline: 2px auto var(--simple-colors-default-theme-grey-4, #eeeeee);
-          outline-offset: -2px;
+          outline: 1px solid var(--simple-colors-default-theme-grey-2, #eeeeee);
+          outline-offset: -8px;
+        }
+        :host([data-hax-ray]) .column:hover {
+          outline: 1px solid var(--simple-colors-default-theme-grey-4, #eeeeee);
         }
         :host([data-hax-ray]) div ::slotted(*.active):before {
           outline: 1px var(--simple-colors-default-theme-grey-2) solid;
@@ -221,7 +225,7 @@ class GridPlate extends LitElement {
               --simple-colors-default-theme-cyan-7,
               #009dc7
             ) !important;
-            outline: 0px solid
+            outline: 1px solid
               var(--simple-colors-default-theme-cyan-7, #009dc7);
           }
         }

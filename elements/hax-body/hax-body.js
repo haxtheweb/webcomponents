@@ -856,6 +856,19 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           case "Enter":
             this.__slot = this.activeNode.getAttribute("slot");
             this.setAttribute("contenteditable", true);
+            if (
+              this.activeNode.tagName === "P" &&
+              ["1", "#", "`", ">", "-", "!"].includes(
+                this.activeNode.textContent[0]
+              )
+            ) {
+              // ensure the "whitespace character" has been replaced w/ a normal space
+              const guess = this.activeNode.textContent.replaceAll(/ /g, " ");
+              // ensures that the user has done a matching action and a " " spacebar to ensure they
+              // are ready to commit the action
+              this.keyboardShortCutProcess(guess);
+            }
+            break;
           case "Backspace":
           case "Delete":
           case "ArrowUp":
@@ -914,7 +927,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   this.positionContextMenus();
                 }
               }
-            }, 10);
+            }, 0);
             break;
           default:
             // we only care about contextual ops in a paragraph
@@ -931,62 +944,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 // ensures that the user has done a matching action and a " " spacebar to ensure they
                 // are ready to commit the action
                 if (guess[guess.length - 1] === " ") {
-                  // look for advanced detections for contextual operations
-                  let map = {
-                    "#": "h2",
-                    "##": "h3",
-                    "###": "h4",
-                    "####": "h5",
-                    "#####": "h6",
-                    "-": "ul",
-                    "1.": "ol",
-                    "---": "hr",
-                    "```": "code",
-                    ">": "blockquote",
-                  };
-                  // see if our map matches
-                  if (map[guess.replace(" ", "")]) {
-                    let el = document.createElement(
-                      map[guess.replace(" ", "")]
-                    );
-                    // silly thing for contenteditable to show it as full space height
-                    el.innerHTML = "<br />";
-                    if (["UL", "OL"].includes(el.tagName)) {
-                      el.innerHTML = "<li></li>";
-                    }
-                    this.haxReplaceNode(this.activeNode, el);
-                    this.__focusLogic(el);
-                    // breaks should jump just PAST the break
-                    // and add a p since it's a divider really
-                    if (el.tagName === "HR") {
-                      // then insert a P which will assume active status
-                      this.haxInsert("p", "", {}, false);
-                    }
-                  }
-                  // look for wildcard / web component pro insert mode
-                  else if (guess[0] === "!") {
-                    let tag = guess.replace("!", "").replaceAll(/ /g, "");
-                    // see if this exists
-                    if (HAXStore.elementList[tag]) {
-                      // generate schema from the tag
-                      let schema = HAXStore.haxSchemaFromTag(tag);
-                      let target;
-                      if (
-                        schema.gizmo.tag &&
-                        schema.demoSchema &&
-                        schema.demoSchema[0]
-                      ) {
-                        target = haxElementToNode(schema.demoSchema[0]);
-                      } else {
-                        target = document.createElement(tag);
-                      }
-                      this.haxReplaceNode(this.activeNode, target);
-                      this.__focusLogic(target);
-                    } else {
-                      // do nothing, we tried to be a pro but failed :(
-                      HAXStore.toast(`${tag} is not a valid tag`);
-                    }
-                  }
+                  this.keyboardShortCutProcess(guess);
                 }
               }
             }, 0);
@@ -999,6 +957,58 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         ) {
           this.__dropActiveHover();
         }
+      }
+    }
+  }
+  keyboardShortCutProcess(guess) {
+    // look for advanced detections for contextual operations
+    let map = {
+      "#": "h2",
+      "##": "h3",
+      "###": "h4",
+      "####": "h5",
+      "#####": "h6",
+      "-": "ul",
+      "1.": "ol",
+      "---": "hr",
+      "```": "code",
+      ">": "blockquote",
+    };
+    // see if our map matches
+    if (map[guess.replace(" ", "")]) {
+      let el = document.createElement(map[guess.replace(" ", "")]);
+      // silly thing for contenteditable to show it as full space height
+      el.innerHTML = "<br />";
+      if (["UL", "OL"].includes(el.tagName)) {
+        el.innerHTML = "<li></li>";
+      }
+      this.haxReplaceNode(this.activeNode, el);
+      this.__focusLogic(el);
+      // breaks should jump just PAST the break
+      // and add a p since it's a divider really
+      if (el.tagName === "HR") {
+        // then insert a P which will assume active status
+        this.haxInsert("p", "", {}, false);
+      }
+    }
+    // look for wildcard / web component pro insert mode
+    else if (guess[0] === "!") {
+      let tag = guess.replace("!", "").replaceAll(/ /g, "");
+      // see if this exists
+      if (HAXStore.elementList[tag]) {
+        // generate schema from the tag
+        let schema = HAXStore.haxSchemaFromTag(tag);
+        let target;
+        if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
+          target = haxElementToNode(schema.demoSchema[0]);
+        } else {
+          target = document.createElement(tag);
+        }
+        this.haxReplaceNode(this.activeNode, target);
+        this.__focusLogic(target);
+      } else {
+        // do nothing, we tried to be a pro but failed :(
+        HAXStore.toast(`${tag} is not a valid tag`);
       }
     }
   }
@@ -1111,9 +1121,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       let p = document.createElement("p");
       p.innerHTML = "<br/>";
       this.haxReplaceNode(this.activeNode, p);
-      // set active to this p tag
-      this.activeNode.parentNode.setAttribute("contenteditable", true);
       this.__focusLogic(p);
+      if (this.activeNode.parentNode) {
+        this.activeNode.parentNode.setAttribute("contenteditable", true);
+      }
     } else {
       this.replaceElementWorkflow();
     }
@@ -1733,6 +1744,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         node.remove();
       }, 0);
     }
+    // edge case where we need to force form to update
+    HAXStore.haxTray.refreshActiveNodeForm();
   }
   /**
    * Convert an element from one tag to another.

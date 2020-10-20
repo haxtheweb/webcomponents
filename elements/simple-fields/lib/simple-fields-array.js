@@ -216,9 +216,6 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
      */
     this.dispatchEvent(
       new CustomEvent("toggle", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
         detail: this,
       })
     );

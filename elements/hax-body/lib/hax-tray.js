@@ -188,6 +188,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             --simple-colors-default-theme-green-8,
             #00762e
           );
+          --simple-fields-margin: 4px;
+          --simple-fields-font-size: 12px;
         }
         #searchapps {
           --hax-tray-panel-accent-text: var(
@@ -1200,9 +1202,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
           this.shadowRoot.querySelector("#settingscollapse").disabled = false;
-          // process fields
-          this.activeHaxElement = nodeToHaxElement(this.activeNode, null);
-          this._setupForm();
+          this.refreshActiveNodeForm();
         } else {
           this.activeTagName = "Select an element to configure";
           this.activeTagIcon = "icons:settings";
@@ -1210,6 +1210,13 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
       }
     });
+  }
+  /**
+   * refresh / rebuild the form based on active item
+   */
+  refreshActiveNodeForm() {
+    this.activeHaxElement = nodeToHaxElement(this.activeNode, null);
+    this._setupForm();
   }
   /**
    * When the preview node is updated, pull schema associated with it
