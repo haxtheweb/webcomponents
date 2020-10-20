@@ -181,7 +181,7 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
   resetBrowser() {
     this.__gizmoList = HAXStore.gizmoList.filter((gizmo, i) => {
       // remove inline and hidden references
-      if (gizmo.meta && (gizmo.meta.inlineOnly || gizmo.meta.hidden)) {
+      if (gizmo && gizmo.meta && (gizmo.meta.inlineOnly || gizmo.meta.hidden)) {
         return false;
       }
       return true;

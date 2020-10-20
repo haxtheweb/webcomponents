@@ -1,18 +1,13 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
-import {
-  winEventsElement,
-  stripMSWord,
-} from "@lrnwebcomponents/utils/utils.js";
+import { stripMSWord } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 /**
  * `hax-export-dialog`
  * @element hax-export-dialog
  * `Export dialog with all export options and settings provided.`
  */
-class HaxExportDialog extends winEventsElement(
-  MtzFileDownloadBehaviors(LitElement)
-) {
+class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
   static get styles() {
     return [
       css`
@@ -151,7 +146,7 @@ class HaxExportDialog extends winEventsElement(
   openedChanged(e) {
     // force close event to align data model if clicking away
     if (!e.detail.value && HAXStore.openDrawer === this) {
-      HAXStore.write("openDrawer", false, this);
+      HAXStore.openDrawer = false;
     }
   }
   closeEvent(e) {
@@ -172,12 +167,6 @@ class HaxExportDialog extends winEventsElement(
       opened: {
         type: Boolean,
       },
-      /**
-       * Access to the global properties object.
-       */
-      globalPreferences: {
-        type: Object,
-      },
     };
   }
   /**
@@ -196,22 +185,6 @@ class HaxExportDialog extends winEventsElement(
         },
       })
     );
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      if (typeof e.detail.value === "object") {
-        this[e.detail.property] = { ...e.detail.value };
-      } else {
-        this[e.detail.property] = e.detail.value;
-      }
-    }
   }
 
   /**
@@ -341,9 +314,6 @@ class HaxExportDialog extends winEventsElement(
 
   constructor() {
     super();
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-    };
     this.title = "View page source";
     this.fileTypes = {
       CSV: "text/csv",
@@ -353,7 +323,6 @@ class HaxExportDialog extends winEventsElement(
       HTML: "text/html",
     };
     this.opened = false;
-    this.globalPreferences = {};
     import("@polymer/paper-dialog/paper-dialog.js");
   }
   /**

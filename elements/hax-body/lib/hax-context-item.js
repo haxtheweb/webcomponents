@@ -64,7 +64,7 @@ class HaxContextItem extends LitElement {
         ?default="${this.default}"
         ?menu="${this.menu}"
       >
-        ${this.more
+        ${this.more && !this.disabled
           ? html` <iron-icon icon="icons:expand-more"></iron-icon> `
           : ``}
         <slot></slot>

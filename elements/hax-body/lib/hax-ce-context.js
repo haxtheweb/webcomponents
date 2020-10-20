@@ -1,6 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import { autorun, toJS } from "mobx";
 /**
  * `hax-ce-context`
  * `A context menu that provides common custom-element based authoring options.
@@ -8,16 +10,13 @@ import { HAXStore } from "./hax-store.js";
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
  * @element hax-ce-context
  */
-class HaxCeContext extends winEventsElement(LitElement) {
+class HaxCeContext extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
       css`
-        :host *[hidden] {
-          display: none;
-        }
         :host {
           display: block;
         }
@@ -32,24 +31,12 @@ class HaxCeContext extends winEventsElement(LitElement) {
       `,
     ];
   }
-  constructor() {
-    super();
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-    };
-    this.haxProperties = {};
-    setTimeout(() => {
-      import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-      import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
-    }, 0);
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (e.detail && e.detail.property === "activeNode") {
-      this._computeValues();
-    }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "onScreen" && this.onScreen) {
+        this._computeValues();
+      }
+    });
   }
   render() {
     return html`
@@ -76,6 +63,11 @@ class HaxCeContext extends winEventsElement(LitElement) {
       disableTransform: {
         type: Boolean,
       },
+      onScreen: {
+        type: Boolean,
+        attribute: "on-screen",
+        reflect: true,
+      },
       activeTagIcon: {
         type: String,
       },
@@ -84,20 +76,28 @@ class HaxCeContext extends winEventsElement(LitElement) {
       },
     };
   }
+  firstUpdated() {
+    autorun(() => {
+      this.activeNode = toJS(HAXStore.activeNode);
+      if (this.activeNode && this.activeNode.classList) {
+        this._computeValues();
+      }
+    });
+  }
   /**
    * HAX properties changed, update buttons available.
    */
   _computeValues() {
-    if (HAXStore.activeNode != null) {
-      if (!HAXStore.isTextElement(HAXStore.activeNode)) {
-        if (HAXStore.activeNode.tagName == "GRID-PLATE") {
+    if (HAXStore.activeHaxBody && this.activeNode != null) {
+      if (!HAXStore.isTextElement(this.activeNode)) {
+        if (this.activeNode.tagName == "GRID-PLATE") {
           this.disableTransform = true;
           this.activeTagName = "Grid";
           this.activeTagIcon = "hax:3/3/3/3";
         } else {
           // detect if this can be transformed into anything else
           this.disableTransform = !HAXStore.activeHaxBody.canTansformNode(
-            HAXStore.activeNode
+            this.activeNode
           );
           if (HAXStore.activeGizmo) {
             this.activeTagName = HAXStore.activeGizmo.title;

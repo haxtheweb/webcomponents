@@ -77,7 +77,7 @@
     "@polymer/paper-toast": "^3.0.1",
     "@polymer/polymer": "^3.3.1",
     "@vaadin/router": "^1.5.2",
-    "mobx": "5.15.6",
+    "mobx": "6.0.1",
     "web-social-share": "6.4.1"
   },
   "devDependencies": {

@@ -196,24 +196,25 @@ class HaxPlateContext extends SimpleTourFinder(winEventsElement(HTMLElement)) {
         // when activeNode changes make sure we reposition
         this.__updatePlatePosition();
       }
-    }, 10);
+    }, 0);
   }
   __updatePlatePosition() {
-    setTimeout(() => {
-      let active = HAXStore.activeNode;
-      let right = this.shadowRoot.querySelector("#right");
-      let rightremove = this.shadowRoot.querySelector("#rightremove");
-      // support for enabling or disabling
-      right.disabled = false;
-      rightremove.disabled = false;
-      if (active && active.tagName == "GRID-PLATE") {
-        if (active.layout == "1-1-1-1-1-1") {
-          right.disabled = true;
-        }
-      } else {
-        rightremove.disabled = true;
+    let active = HAXStore.activeNode;
+    if (active.parentNode.tagName === "GRID-PLATE") {
+      active = active.parentNode;
+    }
+    let right = this.shadowRoot.querySelector("#right");
+    let rightremove = this.shadowRoot.querySelector("#rightremove");
+    // support for enabling or disabling
+    right.disabled = false;
+    rightremove.disabled = false;
+    if (active && active.tagName == "GRID-PLATE") {
+      if (active.layout == "1-1-1-1-1-1") {
+        right.disabled = true;
       }
-    }, 100);
+    } else {
+      rightremove.disabled = true;
+    }
   }
   render() {
     this.shadowRoot.innerHTML = null;

@@ -36,6 +36,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "mobx": "6.0.1",
     "@lrnwebcomponents/a11y-collapse": "^2.7.10",
     "@lrnwebcomponents/app-datepicker": "^2.0.9",
     "@lrnwebcomponents/code-editor": "^2.7.10",

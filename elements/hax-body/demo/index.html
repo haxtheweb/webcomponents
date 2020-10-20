@@ -6,6 +6,13 @@
     <title>HAX: h-a-x Demo</title>
   </head>
   <body>
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "development"
+        }
+      };
+    </script>
     <div style="padding:100px 300px 100px 100px;">
     <h-a-x app-store='{"url": "appstore.json"}' offset-margin="0px 0px 0px 48px" element-align="right">
       <p>stuff and things</p>

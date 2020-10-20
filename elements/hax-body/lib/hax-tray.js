@@ -17,6 +17,7 @@ import "./hax-preferences-dialog.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 import { HAXStore } from "./hax-store.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
+import { autorun, toJS } from "mobx";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -39,7 +40,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       "can-redo-changed": "_redoChanged",
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
     this.activeValue = {
       settings: {
@@ -60,6 +60,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     this.activeTagName = "Select an element to configure";
     this.activeTagIcon = "icons:settings";
     this.__setup = false;
+    this.__tipText = "Edit content";
     setTimeout(() => {
       import("./hax-tray-button.js");
       import("@polymer/iron-icon/iron-icon.js");
@@ -87,6 +88,18 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       import("./hax-blox-browser.js");
       import("./hax-stax-browser.js");
     }, 0);
+    autorun(() => {
+      this.activeGizmo = toJS(HAXStore.activeGizmo);
+    });
+    autorun(() => {
+      this.activeNode = toJS(HAXStore.activeNode);
+    });
+    autorun(() => {
+      this.globalPreferences = toJS(HAXStore.globalPreferences);
+    });
+    autorun(() => {
+      this.editMode = toJS(HAXStore.editMode);
+    });
   }
   _expandSettingsPanel(e) {
     this.shadowRoot.querySelector("#settingscollapse").expand();
@@ -96,25 +109,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   }
   _undoChanged(e) {
     this.canUndo = e.detail.value;
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      if (
-        e.detail.property === "globalPreferences" ||
-        e.detail.property === "activeGizmo" ||
-        e.detail.property === "activeNode"
-      ) {
-        this[e.detail.property] = {};
-      }
-      this[e.detail.property] = e.detail.value;
-    }
   }
   /**
    * LitElement render styles
@@ -904,7 +898,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         HAXStore.activeHaxBody.redo();
         break;
       case "cancel":
-        HAXStore.write("editMode", false, this);
+        this.editMode = false;
         this.dispatchEvent(
           new CustomEvent("hax-cancel", {
             bubbles: true,
@@ -1137,7 +1131,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
-        this._editModeChanged(this[propName], oldValue);
+        this._editModeChanged(this[propName]);
       }
       if (propName == "offsetMargin") {
         setTimeout(() => {
@@ -1647,7 +1641,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   /**
    * _editModeChanged
    */
-  _editModeChanged(newValue, oldValue) {
+  _editModeChanged(newValue) {
     if (typeof newValue !== typeof undefined && newValue) {
       this.__tipText = "Save content";
       this.shadowRoot.querySelector("#button").icon = "save";

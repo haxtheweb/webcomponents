@@ -11,6 +11,7 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import { HAXStore } from "./lib/hax-store.js";
+import { autorun, toJS } from "mobx";
 
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
@@ -91,6 +92,9 @@ Custom property | Description | Default
  * @element hax-body
  */
 class HaxBody extends UndoManagerBehaviors(SimpleColors) {
+  static get tag() {
+    return "hax-body";
+  }
   /**
    * LitElement constructable styles enhancement
    */
@@ -398,6 +402,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.addEventListener("drop", this.dropEvent.bind(this));
       this.addEventListener("click", this.clickEvent.bind(this));
     }, 0);
+    autorun(() => {
+      this.globalPreferences = toJS(HAXStore.globalPreferences);
+    });
   }
   /**
    * When we end dragging ensure we remove the mover class.
@@ -415,20 +422,15 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // resolve to the closest ediable element if possible
     // otherwise keep the target we had
     // @todo need to test more situations for this..
-    /*
-    if (target.closest("[draggable]") != null) {
+    if (target.closest("[draggable]")) {
       target = target.closest("[draggable]");
-    }
-    else if (target.closest("[slot]") != null) {
+    } else if (target.closest("[slot]")) {
       target = target.closest("[slot]");
-    }
-    else if (target.closest("[data-hax-ray]") != null) {
+    } else if (target.closest("[data-hax-ray]")) {
       target = target.closest("[data-hax-ray]");
-    }
-    else if (target.closest("[contenteditable]") != null) {
+    } else if (target.closest("[contenteditable]")) {
       target = target.closest("[contenteditable]");
     }
-    */
     if (this.__focusLogic(target)) {
       e.stopPropagation();
       e.stopImmediatePropagation();
@@ -447,9 +449,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     clearTimeout(gravityScrollTimer);
     this.__manageFakeEndCap(false);
   }
-  static get tag() {
-    return "hax-body";
-  }
   clickEvent(e) {
     // failsafe to clear to the gravity scrolling
     clearTimeout(gravityScrollTimer);
@@ -465,10 +464,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       fake.style.height = "20px";
       fake.style.zIndex = "2";
       fake.style.display = "block";
-      fake.classList.add("hax-move");
       this.__fakeEndCap = fake;
       this.haxMover = true;
       this.appendChild(this.__fakeEndCap);
+      this.__applyNodeEditableState(this.__fakeEndCap, true);
     } else if (!create && this.__fakeEndCap) {
       this.__fakeEndCap.remove();
       this.haxMover = false;
@@ -611,9 +610,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         this._editModeChanged(this[propName], oldValue);
         if (this[propName]) {
           this._activeNodeChanged(this.activeNode);
-          setTimeout(() => {
-            this.activeNode.focus();
-          }, 0);
+          this.activeNode.focus();
         }
       }
       if (propName == "globalPreferences") {
@@ -645,17 +642,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         mutations.forEach((mutation) => {
           if (mutation.addedNodes.length > 0) {
             mutation.addedNodes.forEach((node) => {
-              // notice the slot being set during an enter event
-              // and ensure we replicate it
-              if (this.__slot) {
-                node.setAttribute("slot", this.__slot);
-                this.__slot = null;
-              }
-              // force images to NOT be draggable as we will manage D&D
-              if (node.tagName === "IMG") {
-                node.setAttribute("draggable", false);
-              }
               if (this._validElementTest(node)) {
+                // notice the slot being set during an enter event
+                // and ensure we replicate it
+                if (this.__slot) {
+                  node.setAttribute("slot", this.__slot);
+                  this.__slot = null;
+                }
+                // force images to NOT be draggable as we will manage D&D
+                if (node.tagName === "IMG") {
+                  node.setAttribute("draggable", false);
+                }
                 // trap for user hitting the outdent / indent keys or tabbing
                 // browser will try and wrap text in a span when it's added to
                 // the top level of the document (for no reason)
@@ -2237,17 +2234,35 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * We have special support for the hax-logo because it's hax.
    */
   _validElementTest(node) {
-    if (typeof node.tagName !== typeof undefined) {
+    // ignore hax internal tags
+    // search results can be drag'ed from their panel for exact placement
+    // special place holder in drag and drop
+    if (
+      node.tagName &&
+      !["HAX-BODY", "HAX-APP-SEARCH-RESULT", "FAKE-HAX-BODY-END"].includes(
+        node.tagName
+      )
+    ) {
+      // special case of SPAN as it can often get embedded places without actually
+      // being the thing that should grad actual block level focus
+      // this would be like a B or I tag grabbing focus as well
       if (
-        // ignore hax internal tags
-        node.tagName !== "HAX-BODY" ||
-        // special place holder in drag and drop
-        node.tagName !== "FAKE-HAX-BODY-END"
+        this._HTMLInlineTextDecorationTest(node) &&
+        node.parentNode != "HAX-BODY"
       ) {
-        return true;
+        return false;
       }
+      return true;
     }
     return false;
+  }
+  /**
+   * test for inline tags
+   */
+  _HTMLInlineTextDecorationTest(node) {
+    return ["span", "b", "strong", "i", "em"].includes(
+      node.tagName.toLowerCase()
+    );
   }
   /**
    * Test if this is an HTML primative
@@ -2374,12 +2389,23 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // trick the tray into forcing active to be Configure
       HAXStore.haxTray.activeTab = "item-1";
       var target = null;
-      if (e.path && e.path[0]) {
-        target = e.path[0];
+      if (
+        e.target.closest("grid-plate") &&
+        e.target.parentNode != e.target.closest("grid-plate")
+      ) {
+        target = e.target.closest("grid-plate");
+      } else if (e.target.closest("[contenteditable],img")) {
+        target = e.target.closest("[contenteditable],img");
       } else if (e.originalTarget) {
         target = e.originalTarget;
       } else {
         target = e.target;
+      }
+      // account for slot drop on a place holder
+      if (target.getAttribute("slot")) {
+        this.__slot = target.getAttribute("slot");
+      } else if (e.path[0].classList.contains("column")) {
+        this.__slot = e.path[0].getAttribute("id").replace("col", "col-");
       }
       // establish an activeNode /container based on drop poisition
       this.activeNode = target;
@@ -2387,6 +2413,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // walk the children and remove the draggable state needed
       this.querySelectorAll(".hax-hovered").forEach((el) => {
         el.classList.remove("hax-hovered");
+      });
+      // remove grid-plate drops
+      this.querySelectorAll(".active").forEach((el) => {
+        el.classList.remove("active");
       });
       // this helps ensure that what gets drag and dropped is a file
       // this prevents issues with selecting and dragging text (which triggers drag/drop)
@@ -2430,7 +2460,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }
           // if we have a slot on what we dropped into then we need to mirror that item
           // and place ourselves below it in the DOM
-          if (local && target && target !== local) {
+          if (
+            local &&
+            target &&
+            this._validElementTest(target) &&
+            target !== local
+          ) {
             // incase this came from a grid plate, drop the slot so it works
             try {
               if (
@@ -2455,6 +2490,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                     e.path[0].getAttribute("id").replace("col", "col-")
                   );
                 }
+                // account for drop target of main body yet still having a slot attr
+                else if (
+                  local.tagName === "HAX-BODY" &&
+                  target.getAttribute("slot")
+                ) {
+                  target.removeAttribute("slot");
+                }
                 local.appendChild(target);
               }
             } catch (e) {
@@ -2465,7 +2507,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             e.stopPropagation();
           }
           // position arrows / set focus in case the DOM got updated above
-          if (target && typeof target.focus === "function") {
+          if (
+            target &&
+            this._validElementTest(target) &&
+            typeof target.focus === "function"
+          ) {
             this.activeNode = target;
             HAXStore.write("activeNode", this.activeNode, this);
             // fire event saying that we dropped an item and gained
@@ -2758,6 +2804,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    */
   _hideContextMenu(menu) {
     menu.removeAttribute("on-screen");
+    menu.visible = false;
     menu.classList.remove(
       "hax-context-visible",
       "hax-active-hover",

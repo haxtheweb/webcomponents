@@ -1,5 +1,4 @@
 import { html, css, LitElement } from "lit-element/lit-element.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import {
   HaxSchematizer,
   HaxElementizer,
@@ -7,13 +6,14 @@ import {
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { HAXStore } from "./hax-store.js";
+import { autorun, toJS } from "mobx";
 
 /**
  * `hax-preferences-dialog`
  * @element hax-preferences-dialog
  * `Export dialog with all export options and settings provided.`
  */
-class HaxPreferencesDialog extends winEventsElement(LitElement) {
+class HaxPreferencesDialog extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
@@ -54,9 +54,6 @@ class HaxPreferencesDialog extends winEventsElement(LitElement) {
   }
   constructor() {
     super();
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-    };
     this.ghLink =
       "https://github.com/elmsln/issues/issues/new?body=URL%20base:%20" +
       window.location.pathname +
@@ -83,22 +80,9 @@ class HaxPreferencesDialog extends winEventsElement(LitElement) {
       haxRayMode: false,
       haxVoiceCommands: false,
     };
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      // notify when any of these change
-      if (propName == "preferences") {
-        this._preferencesChanged(this[propName]);
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-              bubbles: true,
-              composed: true,
-            },
-          })
-        );
-      }
+    autorun(() => {
+      this.globalPreferences = toJS(HAXStore.globalPreferences);
+      this.schemaValues = toJS(HAXStore.globalPreferences);
     });
   }
   render() {
@@ -145,7 +129,7 @@ class HaxPreferencesDialog extends winEventsElement(LitElement) {
       /**
        * Preferences managed for everything global about HAX.
        */
-      preferences: {
+      globalPreferences: {
         type: Object,
       },
     };
@@ -160,33 +144,9 @@ class HaxPreferencesDialog extends winEventsElement(LitElement) {
       .querySelector("#settingsform")
       .addEventListener("value-changed", this.__valueChangedEvent.bind(this));
   }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property &&
-      e.detail.property === "globalPreferences" &&
-      e.detail.owner !== this
-    ) {
-      this.preferences = { ...e.detail.value };
-    }
-  }
-
-  /**
-   * Notice preferences have changed.
-   */
-  _preferencesChanged(newValue) {
-    if (this.schema && HAXStore.ready) {
-      this.schemaValues = newValue;
-      HAXStore.write("globalPreferences", newValue, this);
-    }
-  }
   __valueChangedEvent(e) {
     if (e.detail.value) {
-      this.preferences = { ...e.detail.value };
+      HAXStore.globalPreferences = { ...e.detail.value };
     }
   }
 

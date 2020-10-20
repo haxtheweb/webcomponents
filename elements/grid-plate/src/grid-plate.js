@@ -174,6 +174,7 @@ class GridPlate extends LitElement {
         :host .column {
           width: 100%;
           flex: 0 0 auto;
+          min-height: 50px;
         }
         :host .column:empty[style="min-height: unset;"] {
           display: none;
@@ -190,6 +191,40 @@ class GridPlate extends LitElement {
             0.2s background-color linear
           );
         }
+        :host([data-hax-ray]) .column {
+          outline: 2px auto var(--simple-colors-default-theme-grey-4, #eeeeee);
+          outline-offset: -2px;
+        }
+        :host([data-hax-ray]) div ::slotted(*.active):before {
+          outline: 1px var(--simple-colors-default-theme-grey-2) solid;
+          background-color: inherit;
+          content: " ";
+          width: 100%;
+          display: block;
+          position: relative;
+          margin: -10px 0 0 0;
+          z-index: 2;
+          height: 10px;
+        }
+        :host([data-hax-ray]) div ::slotted(img.active),
+        :host([data-hax-ray]) div ::slotted(*.active):before {
+          background-color: var(
+            --simple-colors-default-theme-cyan-7,
+            #009dc7
+          ) !important;
+          outline: 1px solid var(--simple-colors-default-theme-cyan-7, #009dc7);
+        }
+
+        @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
+          :host([data-hax-ray]) div ::slotted(*.active) {
+            background-color: var(
+              --simple-colors-default-theme-cyan-7,
+              #009dc7
+            ) !important;
+            outline: 0px solid
+              var(--simple-colors-default-theme-cyan-7, #009dc7);
+          }
+        }
       `,
     ];
   }
@@ -205,11 +240,6 @@ class GridPlate extends LitElement {
     this.layouts = new GridPlateLayoutOptions().layouts;
     this.responsiveSize = "xs";
     window.ResponsiveUtility.requestAvailability();
-    this.addEventListener("drop", (e) => {
-      this.shadowRoot.querySelectorAll(".active").forEach((el) => {
-        el.classList.remove("active");
-      });
-    });
   }
   /**
    * LitElement render
@@ -280,39 +310,6 @@ class GridPlate extends LitElement {
     );
   }
   /**
-   * HTMLElement
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        // only need to apply this when we're in editMode
-        // this implies something was added dynamically or drag and drop
-        // from outside this element or dragging between grid plates
-        // so we need to disconnect the handlers from here and pick them
-        // up in the new plate
-        mutation.addedNodes.forEach((node) => {
-          if (node.tagName) {
-            // verify this has a slot set otherwise we need to set one on the fly
-            // otherwise this won't show up. This could be incorrectly formed HTML
-            // DOM that was pushed in via an outside system or edge cases of things
-            // dropping in without a slot set in anyway
-            // validate slot name, otherwise force it to col-1
-            if (
-              node.getAttribute("slot") == null ||
-              !this.validateElementSlot(node)
-            ) {
-              node.setAttribute("slot", "col-1");
-            }
-          }
-        });
-      });
-    });
-    this.observer.observe(this, {
-      childList: true,
-    });
-  }
-  /**
    * life cycle
    */
   firstUpdated(changedProperties) {
@@ -330,32 +327,12 @@ class GridPlate extends LitElement {
         },
       })
     );
-    // apply handlers to the columns themselves
-    for (var j = 1; j <= this.columns; j++) {
-      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-        let col = this.shadowRoot.querySelector("#col" + j);
-        col.addEventListener("dragenter", (e) => {
-          e.target.classList.add("active");
-        });
-        col.addEventListener("dragleave", (e) => {
-          e.target.classList.remove("active");
-        });
-      }
-    }
     this.__columnWidths = this._getColumnWidths(
       this.responsiveSize,
       this.layout,
       this.layouts,
       this.disableResponsive
     );
-  }
-  /**
-   * life cycle
-   */
-  disconnectedCallback() {
-    // clean up mutation observer
-    this.observer.disconnect();
-    super.disconnectedCallback();
   }
   /**
    * Wire to HAX
@@ -519,10 +496,83 @@ class GridPlate extends LitElement {
       __columnWidths: {
         type: String,
       },
+      dataHaxRay: {
+        type: String,
+        reflect: true,
+        attribute: "data-hax-ray",
+      },
     };
+  }
+  _dragEnter(e) {
+    e.target.classList.add("active");
+  }
+  _dragLeave(e) {
+    e.target.classList.remove("active");
+  }
+  _dropEvent(e) {
+    this.querySelectorAll(".active").forEach((el) => {
+      el.classList.remove("active");
+    });
+    this.shadowRoot.querySelectorAll(".active").forEach((el) => {
+      el.classList.remove("active");
+    });
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "dataHaxRay" && this.shadowRoot) {
+        if (this[propName]) {
+          // apply handlers to the columns themselves
+          this.addEventListener("drop", this._dropEvent);
+          for (var j = 1; j <= this.columns; j++) {
+            if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+              let col = this.shadowRoot.querySelector("#col" + j);
+              col.addEventListener("dragenter", this._dragEnter);
+              col.addEventListener("dragleave", this._dragLeave);
+            }
+          }
+          this.observer = new MutationObserver((mutations) => {
+            if (!this.__sorting) {
+              mutations.forEach((mutation) => {
+                // this implies something was added dynamically or drag and drop
+                // from outside this element or dragging between grid plates
+                // so we need to disconnect the handlers from here and pick them
+                // up in the new plate
+                mutation.addedNodes.forEach((node) => {
+                  if (node.tagName) {
+                    // verify this has a slot set otherwise we need to set one on the fly
+                    // otherwise this won't show up. This could be incorrectly formed HTML
+                    // DOM that was pushed in via an outside system or edge cases of things
+                    // dropping in without a slot set in anyway
+                    // validate slot name, otherwise force it to col-1
+                    if (
+                      node.getAttribute("slot") == null ||
+                      !this.validateElementSlot(node)
+                    ) {
+                      node.setAttribute("slot", "col-1");
+                    }
+                  }
+                });
+              });
+              this.__sortChildren();
+            }
+          });
+          this.observer.observe(this, {
+            childList: true,
+          });
+        } else {
+          if (this.observer) {
+            this.observer.disconnect();
+          }
+          this.removeEventListener("drop", this._dropEvent);
+          for (var j = 1; j <= this.columns; j++) {
+            if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+              let col = this.shadowRoot.querySelector("#col" + j);
+              col.removeEventListener("dragenter", this._dragEnter);
+              col.removeEventListener("dragleave", this._dragLeave);
+            }
+          }
+        }
+      }
       // if any of these changed, update col widths
       if (
         ["responsiveSize", "layout", "layouts", "disableResponsive"].includes(
@@ -654,15 +704,13 @@ class GridPlate extends LitElement {
   /**
    * Sort children based on slot name
    */
-  __sortChildren() {
+  async __sortChildren() {
+    this.__sorting = true;
     try {
       // select all direct children w/ a slot attribute and convert to an Array
       let children = Array.prototype.reduce.call(
-        this.children,
+        this.querySelectorAll("[slot]"),
         function (acc, e) {
-          if (e.slot) {
-            acc.push(e);
-          }
           return acc;
         },
         []
@@ -679,7 +727,7 @@ class GridPlate extends LitElement {
       });
       // loop through and append these back into the grid plate.
       // which will put them in the right order
-      children.forEach((el) => {
+      await children.forEach((el) => {
         // sanity check that we only move things that are a direct child
         if (el.parentNode === this) {
           this.appendChild(el);
@@ -688,6 +736,7 @@ class GridPlate extends LitElement {
     } catch (error) {
       console.warn(error);
     }
+    this.__sorting = false;
   }
 }
 window.customElements.define(GridPlate.tag, GridPlate);

@@ -9,6 +9,16 @@ import {
   validURL,
   camelToDash,
 } from "@lrnwebcomponents/utils/utils.js";
+import {
+  observable,
+  makeObservable,
+  computed,
+  configure,
+  autorun,
+  toJS,
+} from "mobx";
+
+configure({ enforceActions: false }); // strict mode off
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
  * @element hax-store
@@ -61,7 +71,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           // reset match per gizmo
           let match = false;
           // ensure this gizmo can handle things
-          if (gizmo.handles) {
+          if (gizmo && gizmo.handles) {
             for (var i = 0; i < gizmo.handles.length; i++) {
               // WHAT!??!?!?!?!
               if (
@@ -332,9 +342,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Boolean,
         attribute: "voice-debug",
       },
-      activeGizmo: {
-        type: Object,
-      },
       voiceRespondsTo: {
         type: String,
         attribute: "voice-responses-to",
@@ -392,22 +399,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object,
       },
       /**
-       * Active Node.
-       */
-      activeNode: {
-        type: Object,
-      },
-      /**
        * Session object bridged in from a session method of some kind
        */
       sessionObject: {
         type: Object,
-      },
-      /**
-       * editMode
-       */
-      editMode: {
-        type: Boolean,
       },
       /**
        * skip the exit trap to prevent losing data
@@ -415,12 +410,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       skipExitTrap: {
         type: Boolean,
       },
-      /**
-       * Available gizmos.
-       */
-      gizmoList: {
-        type: Array,
-      },
+
       /**
        * Available elements keyed by tagName and with
        * their haxProperties centrally registered.
@@ -445,13 +435,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
        */
       bloxList: {
         type: Array,
-      },
-      /**
-       * Global preferences that HAX can write to and
-       * other elements can use to go off of.
-       */
-      globalPreferences: {
-        type: Object,
       },
       /**
        * Globally active app, used for brokering communications
@@ -752,13 +735,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
   _editModeChanged(newValue) {
-    if (newValue && this.globalPreferences.haxVoiceCommands && this.__hal) {
-      this.__hal.auto = true;
-    } else {
-      this.__hal.auto = false;
+    if (this.__hal) {
+      if (newValue && this.globalPreferences.haxVoiceCommands) {
+        this.__hal.auto = true;
+      } else {
+        this.__hal.auto = false;
+      }
     }
   }
-  _globalPreferencesChanged(newValue, oldValue) {
+  _globalPreferencesChanged(newValue) {
     // regardless of what it is, reflect it globally but only after setup
     if (
       this.__storageDataProcessed &&
@@ -846,16 +831,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       if (propName == "appStore") {
         this._appStoreChanged(this[propName], oldValue);
       }
-      if (propName == "globalPreferences") {
-        this._globalPreferencesChanged(this[propName], oldValue);
-      }
-      if (propName == "editMode") {
-        this._editModeChanged(this[propName], oldValue);
-      }
-      if (propName == "activeNode") {
-        this.activeGizmo = this._calculateActiveGizmo(this[propName]);
-        this.write("activeGizmo", this.activeGizmo, this);
-      }
       // composite obervation
       if (["__ready", "__appStoreData", "haxAutoloader"].includes(propName)) {
         loadAppStoreData = true;
@@ -878,7 +853,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
   _calculateActiveGizmo(activeNode) {
-    if (activeNode == null) {
+    if (activeNode == null || !activeNode.tagName) {
       return null;
     }
     for (var gizmoposition in this.gizmoList) {
@@ -1465,9 +1440,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.sessionObject = {};
     this.editMode = false;
     this.skipExitTrap = false;
-    this.gizmoList = [];
     this.elementList = {};
     this.appList = [];
+    this.gizmoList = [];
     this.staxList = [];
     this.bloxList = [];
     this.globalPreferences = {};
@@ -1491,6 +1466,20 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
 
     import("@lrnwebcomponents/media-behaviors/media-behaviors.js");
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
+    // mobx
+    makeObservable(this, {
+      gizmoList: observable,
+      activeNode: observable,
+      globalPreferences: observable,
+      activeGizmo: computed,
+      editMode: observable,
+    });
+    autorun(() => {
+      this._globalPreferencesChanged(toJS(this.globalPreferences));
+    });
+    autorun(() => {
+      this._editModeChanged(toJS(this.editMode));
+    });
   }
   /**
    * Build HAX property definitions for primitives that we support.
@@ -2110,7 +2099,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       // ensure better UX for text based operations
       this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
-      if (details.replace && details.replacement) {
+      if (details.replace || details.replacement || details.nextToActive) {
         let node = haxElementToNode({
           tag: details.tag,
           content: details.content,
@@ -2119,6 +2108,16 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         if (this.activePlaceHolder) {
           this.activeHaxBody.haxReplaceNode(this.activePlaceHolder, node);
           this.activePlaceHolder = null;
+        } else if (details.nextToActive && this.activeNode) {
+          // special support for an active slot
+          if (
+            this.activeHaxBody.__slot &&
+            this.activeNode.tagName === "GRID-PLATE"
+          ) {
+            this.activeNode.appendChild(node);
+          } else {
+            this.activeNode.parentNode.insertBefore(node, this.activeNode);
+          }
         } else {
           this.activeHaxBody.haxReplaceNode(this.activeNode, node);
         }
@@ -2138,17 +2137,17 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         }
         // set it to nothing
         this.activePlaceHolder = null;
-      } else if (this.activeNode.parentNode.tagName != "HAX-BODY") {
+      } else if (
+        this.activeNode.parentNode &&
+        this.activeNode.parentNode.tagName != "HAX-BODY"
+      ) {
         let node = haxElementToNode({
           tag: details.tag,
           content: details.content,
           properties: properties,
         });
         // allow for inserting things into things but not grid plate
-        if (
-          this.activeNode.parentNode &&
-          this.activeNode.parentNode.tagName === "GRID-PLATE"
-        ) {
+        if (this.activeNode.parentNode.tagName === "GRID-PLATE") {
           // support slot if we have one on the activeNode (most likely)
           if (this.activeNode.getAttribute("slot") != null) {
             node.setAttribute("slot", this.activeNode.getAttribute("slot"));
@@ -2175,25 +2174,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           false
         );
       }
-      // shift the last used thing to the front of the array
-      // that way the list is actually sorted based on usage
-      // delay though in the event other things depend on the array
-      // as it currently exists
-      setTimeout(() => {
-        let gizmoList = this.gizmoList;
-        for (var gizmoposition in gizmoList) {
-          let gizmo = gizmoList[gizmoposition];
-          // find the tag and then move this position to the front of the array
-          if (gizmo.tag === details.tag) {
-            let tmp = gizmoList[gizmoposition];
-            delete gizmoList[gizmoposition];
-            this.gizmoList.unshift(tmp);
-          }
-        }
-        // spread for accurate data usage locally, then write store globally
-        this.gizmoList = [...gizmoList];
-        this.write("gizmoList", gizmoList, this);
-      }, 10);
     }
   }
   /**
@@ -2271,12 +2251,16 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       e.detail.property &&
       e.detail.owner
     ) {
-      if (e.detail.value == null) {
-        this[e.detail.property] = null;
-      } else if (typeof e.detail.value === "object") {
-        this[e.detail.property] = {};
+      // only update US if we didn't originate this message
+      if (e.detail.owner !== this) {
+        if (e.detail.value == null) {
+          this[e.detail.property] = null;
+        } else if (typeof e.detail.value === "object") {
+          this[e.detail.property] = {};
+        }
+        this[e.detail.property] = e.detail.value;
       }
-      this[e.detail.property] = e.detail.value;
+      // tell everyone regardless
       this.dispatchEvent(
         new CustomEvent("hax-store-property-updated", {
           bubbles: true,
@@ -2768,13 +2752,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   _haxStoreRegisterProperties(e) {
     if (e.detail && e.detail.properties && e.detail.tag) {
       // only register tag if we don't know about it already
-      if (typeof this.elementList[e.detail.tag] === typeof undefined) {
+      if (!this.elementList[e.detail.tag]) {
         // look for a gizmo; it's not required, technically.
         let gizmo = e.detail.properties.gizmo;
         if (gizmo) {
           gizmo.tag = e.detail.tag;
           let gizmos = this.gizmoList;
           gizmos.push(gizmo);
+          this.gizmoList = [...gizmos];
           this.write("gizmoList", gizmos, this);
         }
         this.elementList[e.detail.tag] = e.detail.properties;
@@ -2795,6 +2780,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this.haxAutoloader.removeChild(e.target);
       }
     }
+  }
+  get activeGizmo() {
+    let gizmo = toJS(this._calculateActiveGizmo(this.activeNode));
+    this.write("activeGizmo", gizmo, this);
+    return gizmo;
   }
 }
 window.customElements.define(HaxStore.tag, HaxStore);

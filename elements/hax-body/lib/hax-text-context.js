@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
@@ -9,6 +8,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 import { HAXStore } from "./hax-store.js";
+import { autorun, toJS } from "mobx";
 
 /**
  * `hax-text-context`
@@ -17,7 +17,7 @@ import { HAXStore } from "./hax-store.js";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  */
-class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
+class HaxTextContext extends SimpleTourFinder(LitElement) {
   static get styles() {
     return [
       css`
@@ -90,9 +90,6 @@ class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
   constructor() {
     super();
     this.tourName = "hax";
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-    };
     setTimeout(() => {
       this.addEventListener(
         "hax-context-item-selected",
@@ -149,35 +146,25 @@ class HaxTextContext extends SimpleTourFinder(winEventsElement(LitElement)) {
     this.realSelectedValue = "p";
     this.formatIcon = "hax:format-textblock";
     this.isSafari = this._isSafari();
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      this[e.detail.property] = e.detail.value;
-    }
-    // update our icon if global changes what we are pointing to
-    if (
-      e.detail.property == "activeNode" &&
-      HAXStore.isTextElement(e.detail.value) &&
-      this.shadowRoot.querySelector(
-        '#textformat paper-item[value="' +
-          e.detail.value.tagName.toLowerCase() +
-          '"]'
-      )
-    ) {
-      if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
+    autorun(() => {
+      const activeNode = toJS(HAXStore.activeNode);
+      // update our icon if global changes what we are pointing to
+      if (
+        HAXStore.isTextElement(activeNode) &&
         this.shadowRoot.querySelector(
-          "simple-popover-selection"
-        ).opened = false;
+          '#textformat paper-item[value="' +
+            activeNode.tagName.toLowerCase() +
+            '"]'
+        )
+      ) {
+        if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
+          this.shadowRoot.querySelector(
+            "simple-popover-selection"
+          ).opened = false;
+        }
+        this.updateTextIconSelection(activeNode.tagName.toLowerCase());
       }
-      this.updateTextIconSelection(e.detail.value.tagName.toLowerCase());
-    }
+    });
   }
   render() {
     return html`
