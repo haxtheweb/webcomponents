@@ -172,14 +172,68 @@ class GridPlate extends LitElement {
           outline: 2px solid var(--simple-colors-default-theme-cyan-7, #009dc7) !important;
           outline-offset: -2px;
         }
+        :host([disable-responsive]) .column {
+          overflow: hidden;
+        }
         :host .column {
           width: 100%;
           flex: 0 0 auto;
           min-height: 50px;
+          transition: var(
+            --grid-plate-col-transition,
+            0.5s width ease-in-out,
+            0.5s padding ease-in-out,
+            0.5s margin ease-in-out
+          );
         }
-        :host .column:empty[style="min-height: unset;"] {
+        :host([data-hax-ray]) .column[style="min-height: unset;"] {
+          display: block !important;
+          opacity: 0.4;
+        }
+        /* make sure that animation for nothing to 2 col doesn't jar layout */
+        :host([layout="1-1"]) #col1 {
+          width: 50%;
+        }
+        :host([layout="1-1-1"]) #col1 {
+          width: 33.33%;
+        }
+        :host([layout="1-1-1-1"]) #col1 {
+          width: 25%;
+        }
+        :host([layout="1-1-1-1-1"]) #col1 {
+          width: 20%;
+        }
+        :host([layout="1-1-1-1-1-1"]) #col1 {
+          width: 16.66%;
+        }
+        :host .column[style="min-height: unset;"] {
           display: none;
           outline: none;
+        }
+        :host([data-hax-ray]) .column[style="min-height: unset;"] {
+          width: 0;
+        }
+
+        :host([data-hax-ray]) .column.has-nodes[style="min-height: unset;"] {
+          width: 100%;
+          transition: none;
+        }
+        :host([data-hax-ray]) .column[style="min-height: unset;"]:hover {
+          opacity: 1;
+        }
+        :host([data-hax-ray])
+          .column[style="min-height: unset;"]:hover::before {
+          content: "Hidden by column layout";
+          position: sticky;
+          display: inline-flex;
+          background-color: black;
+          color: white;
+          padding: 0px 8px;
+          font-size: 12px;
+          line-height: 16px;
+          margin: 12px 13px;
+          float: right;
+          width: 124px;
         }
         :host .column ::slotted(*) {
           margin: var(--grid-plate-item-margin);
@@ -188,19 +242,26 @@ class GridPlate extends LitElement {
           max-width: -webkit-fill-available;
           transition: var(
             --grid-plate-col-transition,
-            0.2s color linear,
-            0.2s background-color linear
+            0.5s color ease-in-out,
+            0.5s background-color ease-in-out
           );
         }
+        :host([data-hax-ray]) .column ::slotted(*) {
+          outline: 1px solid var(--simple-colors-default-theme-grey-4, #eeeeee);
+          outline-offset: -8px;
+        }
+        :host([data-hax-ray]) .column ::slotted(*:hover) {
+          outline: 1px solid var(--simple-colors-default-theme-grey-8, #eeeeee);
+        }
         :host([data-hax-ray]) .column {
-          outline: 1px solid var(--simple-colors-default-theme-grey-2, #eeeeee);
+          outline: 1px solid var(--simple-colors-default-theme-grey-4, #eeeeee);
           outline-offset: -8px;
         }
         :host([data-hax-ray]) .column:hover {
-          outline: 1px solid var(--simple-colors-default-theme-grey-4, #eeeeee);
+          outline: 1px solid var(--simple-colors-default-theme-grey-8, #eeeeee);
         }
         :host([data-hax-ray]) div ::slotted(*.active):before {
-          outline: 1px var(--simple-colors-default-theme-grey-2) solid;
+          outline: 1px var(--simple-colors-default-theme-grey-4) solid;
           background-color: inherit;
           content: " ";
           width: 100%;
@@ -521,18 +582,46 @@ class GridPlate extends LitElement {
       el.classList.remove("active");
     });
   }
+  /**
+   * Use slot events to track which slots have nodes and apply to the shadowRoot
+   * column wrappers. This helps with trasitions and animations
+   */
+  _slotMonitor(e) {
+    // sanity, we have a local slot
+    if (
+      e.path[0] &&
+      e.path[0].assignedNodes &&
+      e.path[0].assignedNodes().length
+    ) {
+      // has nodes so we can make sure to track this elsewhere
+      this.shadowRoot
+        .querySelector("#" + e.path[0].getAttribute("name").replace("-", ""))
+        .classList.add("has-nodes");
+    } else {
+      this.shadowRoot
+        .querySelector("#" + e.path[0].getAttribute("name").replace("-", ""))
+        .classList.remove("has-nodes");
+    }
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "dataHaxRay" && this.shadowRoot) {
         if (this[propName]) {
           // apply handlers to the columns themselves
-          this.addEventListener("drop", this._dropEvent);
+          this.addEventListener("drop", this._dropEvent.bind(this));
           for (var j = 1; j <= this.columns; j++) {
             if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
               let col = this.shadowRoot.querySelector("#col" + j);
-              col.addEventListener("dragenter", this._dragEnter);
-              col.addEventListener("dragleave", this._dragLeave);
+              col.addEventListener("dragenter", this._dragEnter.bind(this));
+              col.addEventListener("dragleave", this._dragLeave.bind(this));
             }
+          }
+          let slots = this.shadowRoot.querySelectorAll("slot");
+          for (var j = 0; j < slots.length; j++) {
+            slots[j].addEventListener(
+              "slotchange",
+              this._slotMonitor.bind(this)
+            );
           }
           this.observer = new MutationObserver((mutations) => {
             if (!this.__sorting) {
@@ -567,13 +656,20 @@ class GridPlate extends LitElement {
           if (this.observer) {
             this.observer.disconnect();
           }
-          this.removeEventListener("drop", this._dropEvent);
+          this.removeEventListener("drop", this._dropEvent.bind(this));
           for (var j = 1; j <= this.columns; j++) {
             if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
               let col = this.shadowRoot.querySelector("#col" + j);
-              col.removeEventListener("dragenter", this._dragEnter);
-              col.removeEventListener("dragleave", this._dragLeave);
+              col.removeEventListener("dragenter", this._dragEnter.bind(this));
+              col.removeEventListener("dragleave", this._dragLeave.bind(this));
             }
+          }
+          let slots = this.shadowRoot.querySelectorAll("slot");
+          for (var j = 0; j < slots.length; j++) {
+            slots[j].removeEventListener(
+              "slotchange",
+              this._slotMonitor.bind(this)
+            );
           }
         }
       }

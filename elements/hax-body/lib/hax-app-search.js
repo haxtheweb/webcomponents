@@ -44,7 +44,8 @@ class HaxAppSearch extends SimpleColors {
         }
         #itemlist {
           min-height: 172px;
-          border: 1px solid #222222;
+          text-align: center;
+          align-items: center;
         }
         hax-app-search-inputs {
           min-height: 80px;
@@ -63,7 +64,6 @@ class HaxAppSearch extends SimpleColors {
         .tos-text ul {
           padding: 4px;
           margin: 0 16px;
-        }
         }
         .tos-text a {
           font-size: 12px;

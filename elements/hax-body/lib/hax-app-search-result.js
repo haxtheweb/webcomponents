@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HAXStore } from "./hax-store.js";
+import "@polymer/iron-image/iron-image.js";
 /**
  * `hax-source`
  * @element hax-source
@@ -8,52 +9,57 @@ import { HAXStore } from "./hax-store.js";
 class HaxAppSearchResult extends LitElement {
   constructor() {
     super();
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-styles/paper-styles.js");
   }
   static get styles() {
     return [
       css`
         :host {
-          display: inline-flex;
-          width: 49%;
-          height: 220px;
-          background-color: var(--hax-color-bg-accent);
+          display: inline-block;
+          width: 47%;
+          margin: 1%;
+          background-color: var(
+            --hax-color-bg-accent,
+            var(--simple-colors-default-theme-cyan-7, #009dc7)
+          );
           color: var(--hax-color-text);
         }
-        paper-button.button {
+        button {
           margin: 0;
-          padding: 7px;
+          padding: 0;
           display: block;
           border-radius: 0;
           border: none;
           width: 100%;
-          outline: 2px solid black;
-          background-image: none;
+          outline: 1px solid black;
           text-align: unset;
+          opacity: 0.8;
+          transition: 0.2s opacity ease-in-out, 0.2s outline-color ease-in-out;
         }
-        paper-button:hover,
-        paper-button:focus,
-        paper-button:active {
+        button:hover,
+        button:focus,
+        button:active {
           background-color: #eeeeee;
-          outline: 2px solid var(--hax-color-bg-accent);
+          outline-color: var(--simple-colors-default-theme-purple-8, #8a009b);
+          outline-width: 4px;
+          outline-style: solid;
+          opacity: 1;
         }
         .detail-wrapper {
-          padding: 0 8px;
+          padding: 0px;
           overflow: hidden;
           font-family: "Noto Serif", serif;
         }
         .title {
-          font-size: 14px;
+          font-size: 12px;
           overflow: hidden;
           font-weight: bold;
           text-transform: none;
-          padding-bottom: 4px;
+          padding: 0;
+          height: 30px;
           text-align: center;
         }
         .image {
-          height: 152px;
+          height: 150px;
           width: 100%;
           background-color: var(--simple-colors-default-theme-cyan-7, #009dc7);
         }
@@ -71,12 +77,11 @@ class HaxAppSearchResult extends LitElement {
 
   render() {
     return html`
-      <paper-button
+      <button
         draggable="true"
         @click="${this._itemSelected}"
         @dragstart="${this._dragStart}"
         @dragend="${this._dragEnd}"
-        class="button"
         title="${this.details}"
       >
         <iron-image
@@ -90,7 +95,7 @@ class HaxAppSearchResult extends LitElement {
         <div class="detail-wrapper">
           <div class="title">${this.title.substr(0, 40)}</div>
         </div>
-      </paper-button>
+      </button>
     `;
   }
   static get tag() {

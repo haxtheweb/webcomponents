@@ -147,6 +147,9 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
     this.formatIcon = "hax:format-textblock";
     this.isSafari = this._isSafari();
     autorun(() => {
+      this.hasSelectedText = toJS(HAXStore.haxSelectedText).length > 0;
+    });
+    autorun(() => {
       const activeNode = toJS(HAXStore.activeNode);
       // update our icon if global changes what we are pointing to
       if (
@@ -378,12 +381,6 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         reflect: true,
       },
       /**
-       * Text hax-store has detected is selected currently.
-       */
-      haxSelectedText: {
-        type: String,
-      },
-      /**
        * Selected item icon
        */
       formatIcon: {
@@ -442,10 +439,6 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           this._showLists = false;
         }
       }
-      // calculate boolean status of having text
-      if (propName == "haxSelectedText") {
-        this.hasSelectedText = this[propName].length > 0;
-      }
     });
   }
   /**
@@ -479,7 +472,6 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
                 .tagName === "HAX-BODY"
             ) {
               HAXStore.activePlaceHolder = HAXStore._tmpRange;
-              HAXStore.write("activePlaceHolder", HAXStore._tmpRange, this);
             }
           } catch (err) {}
         }

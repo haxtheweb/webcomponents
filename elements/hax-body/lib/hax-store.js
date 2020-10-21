@@ -1374,6 +1374,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   constructor() {
     super();
+    this.haxSelectedText = "";
     this.__winEvents = {
       "hax-register-properties": "_haxStoreRegisterProperties",
       "hax-consent-tap": "_haxConsentTap",
@@ -1463,6 +1464,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       editMode: observable,
       appList: observable,
       activeApp: observable,
+      haxSelectedText: observable,
     });
     autorun(() => {
       this._globalPreferencesChanged(toJS(this.globalPreferences));
@@ -2089,7 +2091,27 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       // ensure better UX for text based operations
       this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
-      if (details.replace || details.replacement || details.nextToActive) {
+      if (
+        typeof details.__type !== typeof undefined &&
+        details.__type === "inline"
+      ) {
+        let node = haxElementToNode({
+          tag: details.tag,
+          content: details.content,
+          properties: properties,
+        });
+        // replace what WAS the active selection w/ this new node
+        if (this.activePlaceHolder !== null) {
+          this.activePlaceHolder.deleteContents();
+          this.activePlaceHolder.insertNode(node);
+        }
+        // set it to nothing
+        this.activePlaceHolder = null;
+      } else if (
+        details.replace ||
+        details.replacement ||
+        details.nextToActive
+      ) {
         let node = haxElementToNode({
           tag: details.tag,
           content: details.content,
@@ -2111,22 +2133,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         } else {
           this.activeHaxBody.haxReplaceNode(this.activeNode, node);
         }
-      } else if (
-        typeof details.__type !== typeof undefined &&
-        details.__type === "inline"
-      ) {
-        let node = haxElementToNode({
-          tag: details.tag,
-          content: details.content,
-          properties: properties,
-        });
-        // replace what WAS the active selection w/ this new node
-        if (this.activePlaceHolder !== null) {
-          this.activePlaceHolder.deleteContents();
-          this.activePlaceHolder.insertNode(node);
-        }
-        // set it to nothing
-        this.activePlaceHolder = null;
       } else if (
         this.activeNode.parentNode &&
         this.activeNode.parentNode.tagName != "HAX-BODY"
@@ -2829,15 +2835,7 @@ window.Hax.move = function (dir = true) {
 };
 
 window.Hax.grid = function (op = true) {
-  if (HAXStore.activeNode.parentNode.tagName === "HAX-BODY") {
-    HAXStore.activeHaxBody.haxGridPlateOps(HAXStore.activeNode, "right", op);
-  } else {
-    HAXStore.activeHaxBody.haxGridPlateOps(
-      HAXStore.activeNode.parentNode,
-      "right",
-      op
-    );
-  }
+  HAXStore.activeHaxBody.haxGridPlateOps(op);
 };
 
 window.Hax.set = function (key, value) {

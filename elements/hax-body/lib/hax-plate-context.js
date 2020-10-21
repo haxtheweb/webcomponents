@@ -1,7 +1,6 @@
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 import { HAXStore } from "./hax-store.js";
-
+import { autorun, toJS } from "mobx";
 /**
  * `hax-plate-context`
  * `A context menu that provides common grid plate based authoring options.`
@@ -9,13 +8,10 @@ import { HAXStore } from "./hax-store.js";
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  * - grid plate - the container / full HTML tag which can have operations applied to it.
  */
-class HaxPlateContext extends SimpleTourFinder(winEventsElement(HTMLElement)) {
+class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
   constructor(delayRender = false) {
     super();
     this.tourName = "hax";
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-    };
     // set tag for later use
     this.tag = HaxPlateContext.tag;
     this.template = document.createElement("template");
@@ -28,6 +24,12 @@ class HaxPlateContext extends SimpleTourFinder(winEventsElement(HTMLElement)) {
       import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
     }, 0);
+    autorun(() => {
+      const activeNode = toJS(HAXStore.activeNode);
+      if (activeNode && this.getAttribute("on-screen")) {
+        this.__updatePlatePosition(activeNode);
+      }
+    });
   }
   static get tag() {
     return "hax-plate-context";
@@ -183,26 +185,7 @@ class HaxPlateContext extends SimpleTourFinder(winEventsElement(HTMLElement)) {
   </div>
   `;
   }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    setTimeout(() => {
-      if (
-        e.detail &&
-        this.getAttribute("on-screen") != null &&
-        e.detail.property == "activeNode"
-      ) {
-        // when activeNode changes make sure we reposition
-        this.__updatePlatePosition();
-      }
-    }, 0);
-  }
-  __updatePlatePosition() {
-    let active = HAXStore.activeNode;
-    if (active.parentNode.tagName === "GRID-PLATE") {
-      active = active.parentNode;
-    }
+  __updatePlatePosition(active) {
     let right = this.shadowRoot.querySelector("#right");
     let rightremove = this.shadowRoot.querySelector("#rightremove");
     // support for enabling or disabling
@@ -228,14 +211,12 @@ class HaxPlateContext extends SimpleTourFinder(winEventsElement(HTMLElement)) {
 
   connectedCallback() {
     super.connectedCallback();
-    setTimeout(() => {
-      this.shadowRoot
-        .querySelector("#drag")
-        .addEventListener("dragstart", this._dragStart);
-      this.shadowRoot
-        .querySelector("#drag")
-        .addEventListener("dragend", this._dragEnd);
-    }, 0);
+    this.shadowRoot
+      .querySelector("#drag")
+      .addEventListener("dragstart", this._dragStart);
+    this.shadowRoot
+      .querySelector("#drag")
+      .addEventListener("dragend", this._dragEnd);
   }
   disconnectedCallback() {
     this.shadowRoot
@@ -256,7 +237,7 @@ class HaxPlateContext extends SimpleTourFinder(winEventsElement(HTMLElement)) {
    * Drag start so we know what target to set
    */
   _dragStart(e) {
-    let target = HAXStore.activeNode;
+    let target = toJS(HAXStore.activeNode);
     HAXStore.__dragTarget = target;
     HAXStore._lockContextPosition = true;
     if (e.dataTransfer) {

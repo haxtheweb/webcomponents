@@ -379,7 +379,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // xray goggles for tags visualized in context, developer thing
     this.haxRayMode = false;
     this.activeNode = null;
-    this.haxSelectedText = "";
     setTimeout(() => {
       import("./lib/hax-text-context.js");
       import("./lib/hax-ce-context.js");
@@ -518,12 +517,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         type: Object,
       },
       /**
-       * State has detected is selected currently.
-       */
-      haxSelectedText: {
-        type: String,
-      },
-      /**
        * State of if we are editing or not.
        */
       editMode: {
@@ -580,7 +573,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         setTimeout(() => {
           const tmp = HAXStore.getSelection();
           HAXStore._tmpSelection = tmp;
-          HAXStore.write("haxSelectedText", tmp.toString(), this);
+          HAXStore.haxSelectedText = tmp.toString();
           try {
             const range = HAXStore.getRange();
             if (range.cloneRange) {
@@ -878,7 +871,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             setTimeout(() => {
               const tmp = HAXStore.getSelection();
               HAXStore._tmpSelection = tmp;
-              HAXStore.write("haxSelectedText", tmp.toString(), this);
+              HAXStore.haxSelectedText = tmp.toString();
               const rng = HAXStore.getRange();
               if (
                 rng.commonAncestorContainer &&
@@ -892,7 +885,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                     this.removeAttribute("contenteditable");
                   }
                   rng.commonAncestorContainer.focus();
-                  this.__focusLogic(rng.commonAncestorContainer);
+                  this.__focusLogic(rng.commonAncestorContainer, false);
                 }
               }
               // need to check on the parent too if this was a text node
@@ -916,15 +909,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                     this.removeAttribute("contenteditable");
                   }
                   rng.commonAncestorContainer.parentNode.focus();
-                  this.__focusLogic(rng.commonAncestorContainer.parentNode);
-                } else {
-                  this.activeNode = rng.commonAncestorContainer;
-                  HAXStore.write(
-                    "activeNode",
-                    rng.commonAncestorContainer,
-                    this
+                  this.__focusLogic(
+                    rng.commonAncestorContainer.parentNode,
+                    false
                   );
-                  this.positionContextMenus();
+                } else {
+                  rng.commonAncestorContainer.focus();
+                  this.__focusLogic(rng.commonAncestorContainer, false);
                 }
               }
             }, 0);
@@ -1635,7 +1626,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Inject / modify a grid plate where something currently lives
    */
-  async haxGridPlateOps(node, side, add = true) {
+  async haxGridPlateOps(add = true, side = "right", node = this.activeNode) {
     // allow splitting the grid plate that is already there
     let changed = false;
     if (node.tagName === "GRID-PLATE") {
@@ -1672,7 +1663,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
               if (el.tagName) {
                 // remove slot name
                 cloneEl = el.cloneNode(true);
-                cloneEl.removeAttribute("slot");
+                if (node.getAttribute("slot")) {
+                  cloneEl.setAttribute("slot", node.getAttribute("slot"));
+                } else {
+                  cloneEl.removeAttribute("slot");
+                }
                 node.parentNode.insertBefore(cloneEl, node);
               }
             });
@@ -1732,6 +1727,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       let grid = document.createElement("grid-plate");
       grid.layout = "1-1";
       grid.disableResponsive = true;
+      if (node.getAttribute("slot")) {
+        grid.setAttribute("slot", node.getAttribute("slot"));
+      }
       let col = "2";
       if (side == "right") {
         col = "1";
@@ -1746,6 +1744,23 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     }
     // edge case where we need to force form to update
     HAXStore.haxTray.refreshActiveNodeForm();
+    // we have an animation so after the animation finishes ensure the menus
+    // are in the correct position; weird looking I know but it helps ensure
+    // that visually we have a transition that animates in a similar fashion
+    // to the menu that's manipulating the location of the item itself
+    // while matching the ease
+    setTimeout(() => {
+      this.positionContextMenus();
+      setTimeout(() => {
+        this.positionContextMenus();
+        setTimeout(() => {
+          this.positionContextMenus();
+          setTimeout(() => {
+            this.positionContextMenus();
+          }, 200);
+        }, 100);
+      }, 200);
+    }, 100);
   }
   /**
    * Convert an element from one tag to another.
@@ -1755,6 +1770,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     try {
       if (node == null) {
         node = this.__oldActiveNode;
+      }
+      if (!node.replaceWith && HAXStore._tmpRange) {
+        node = HAXStore._tmpRange;
+        HAXStore._tmpRange = null;
       }
       node.replaceWith(replacement);
       // test for slots to match
@@ -1951,30 +1970,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         HAXStore.write("activeNode", this.activeNode, this);
         this.positionContextMenus();
         break;
-      case "hax-plate-add-element":
-        // support for the Other call, otherwise its a specific element + props
-        if (detail.value == "other") {
-          HAXStore.haxInsertAnything({});
-          return true;
-        }
-        // insert from here
-        let addData = JSON.parse(detail.value);
-        this.haxInsert(addData.tag, addData.content, addData.properties, false);
-        // focus on 1st row w/ cursor if this a text element
-        if (HAXStore.isTextElement(addData)) {
-          try {
-            var range = document.createRange();
-            var sel = HAXStore.getSelection();
-            range.setStart(this.activeNode, 0);
-            range.collapse(true);
-            sel.removeAllRanges();
-            sel.addRange(range);
-            this.activeNode.focus();
-          } catch (e) {
-            console.warn(e);
-          }
-        }
-        break;
       case "text-align-left":
         this.activeNode.style.textAlign = null;
         break;
@@ -1986,18 +1981,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // grid plate based operations
       // allow for transforming this haxElement into another one
       case "hax-plate-create-right":
-        if (this.activeNode.parentNode.tagName === "HAX-BODY") {
-          this.haxGridPlateOps(this.activeNode, "right");
-        } else {
-          this.haxGridPlateOps(this.activeNode.parentNode, "right");
-        }
+        this.haxGridPlateOps();
         break;
       case "hax-plate-remove-right":
-        if (this.activeNode.parentNode.tagName === "HAX-BODY") {
-          this.haxGridPlateOps(this.activeNode, "right", false);
-        } else {
-          this.haxGridPlateOps(this.activeNode.parentNode, "right", false);
-        }
+        this.haxGridPlateOps(false);
         break;
       // duplicate the active item or container
       case "hax-plate-duplicate":
@@ -2031,8 +2018,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Focus a target and update the data model to reflect this.
    * This helps ensure that keyboard and non click based focusing
    * registers the same as click events
+   * @param target object - dom node to focus on
+   * @param autoFocus boolean - whether to auto focus / place cursor
    */
-  __focusLogic(target) {
+  __focusLogic(target, autoFocus = true) {
     let stopProp = false;
     // only worry about these when we are in edit mode
     // and there is no drawer open
@@ -2110,7 +2099,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           this.activeNode = activeNode;
           HAXStore.write("activeNode", activeNode, this);
           setTimeout(() => {
-            if (!this.__mouseDown && HAXStore.isTextElement(activeNode)) {
+            if (
+              autoFocus &&
+              !this.__mouseDown &&
+              HAXStore.isTextElement(activeNode)
+            ) {
               try {
                 var range = document.createRange();
                 var sel = HAXStore.getSelection();
@@ -2415,10 +2408,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         target = e.target;
       }
       // account for slot drop on a place holder
-      if (target.getAttribute("slot")) {
-        this.__slot = target.getAttribute("slot");
-      } else if (e.path[0].classList.contains("column")) {
+      if (e.path[0].classList.contains("column")) {
         this.__slot = e.path[0].getAttribute("id").replace("col", "col-");
+      } else if (target.getAttribute("slot")) {
+        this.__slot = target.getAttribute("slot");
       }
       // establish an activeNode /container based on drop poisition
       this.activeNode = target;
