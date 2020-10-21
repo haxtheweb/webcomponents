@@ -447,7 +447,9 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
   _computeShowIndent(realSelectedValue) {
     if (
       HAXStore.computePolyfillSafe() &&
-      (realSelectedValue == "ol" || realSelectedValue == "ul")
+      (realSelectedValue == "li" ||
+        realSelectedValue == "ol" ||
+        realSelectedValue == "ul")
     ) {
       return true;
     }

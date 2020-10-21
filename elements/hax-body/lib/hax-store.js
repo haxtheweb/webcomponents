@@ -1194,6 +1194,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         return false;
       } else {
         for (var i in haxElements) {
+          // special support for pasting into a list of items
+          if (
+            haxElements[i].tag == "p" &&
+            ["li", "ol", "ul"].includes(this.activeNode.tagName.toLowerCase())
+          ) {
+            haxElements[i].tag = "li";
+          }
           // special traps for word / other styles bleeding through
           delete haxElements[i].properties.style;
           delete haxElements[i].properties.start;
@@ -1221,15 +1228,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         // tee up a wrapper so we can walk and put every element in
         let newNodes = document.createElement("div");
         // defined so that we can
-        let siblingEl;
         newNodes.innerHTML = newContent;
-        if (range && sel && typeof range.deleteContents === "function") {
-          range.deleteContents();
+        if (range && sel) {
           for (var i in newNodes.children) {
-            // delete nodes that are empty paragraphs
+            // delete nodes that are empty text elements
             if (
               newNodes.children[i].tagName &&
-              newNodes.children[i].tagName === "P" &&
+              this.isTextElement(newNodes.children[i]) &&
               newNodes.children[i].innerHTML === ""
             ) {
               newNodes.children[i].remove();
@@ -1242,60 +1247,91 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               this._positionCursorInNode(txt, txt.length);
             }, 0);
           } else {
-            let activeEl;
-            while (newNodes.lastElementChild) {
-              // sanity check and then insert our new paste node right AFTER the thing we are pasting in the middle of
-              // this hopefully captures complex HTML pastes and inserts them in a logical way
+            var _enterSplit, activeEl, siblingEl;
+            // only insert a P if we are splitting something
+            if (
+              this.activeNode.innerText.trim() != "" &&
+              range.endOffset != this.activeNode.innerText.length
+            ) {
+              _enterSplit = true;
+              document.execCommand("insertParagraph");
+            }
+            // sanity check and then insert our new paste node right AFTER the thing we are pasting in the middle of
+            // this hopefully captures complex HTML pastes and inserts them in a logical way
+            if (
+              range.commonAncestorContainer &&
+              range.commonAncestorContainer.parentNode
+            ) {
               if (
-                range.commonAncestorContainer &&
-                range.commonAncestorContainer.parentNode
+                !siblingEl &&
+                this.activeNode != range.commonAncestorContainer
               ) {
-                if (
-                  !siblingEl &&
-                  this.activeNode != range.commonAncestorContainer
-                ) {
-                  siblingEl =
-                    range.commonAncestorContainer.parentNode.nextElementSibling;
-                  if (!siblingEl) {
-                    siblingEl = range.commonAncestorContainer;
-                  }
+                siblingEl = range.commonAncestorContainer.parentNode;
+                if (!siblingEl) {
+                  siblingEl = range.commonAncestorContainer;
                 }
-                activeEl = newNodes.lastElementChild;
-                // should always be there but just in case there was no range
-                // so we avoid an infinite loop
-                if (siblingEl) {
-                  // account for a potential textnode
-                  if (
-                    siblingEl.getAttribute &&
-                    siblingEl.getAttribute("slot")
-                  ) {
-                    activeEl.setAttribute(
-                      "slot",
-                      siblingEl.getAttribute("slot")
-                    );
-                  }
-                  siblingEl.parentNode.insertBefore(activeEl, siblingEl);
+              }
+            }
+            while (newNodes.firstElementChild) {
+              activeEl = newNodes.firstElementChild;
+              // should always be there but just in case there was no range
+              // so we avoid an infinite loop
+              if (siblingEl) {
+                // account for a potential textnode
+                if (siblingEl.getAttribute && siblingEl.getAttribute("slot")) {
+                  activeEl.setAttribute("slot", siblingEl.getAttribute("slot"));
                 }
-                // attempt insert after active
-                else if (this.activeNode) {
-                  if (this.activeNode.getAttribute("slot")) {
-                    activeEl.setAttribute(
-                      "slot",
-                      this.activeNode.getAttribute("slot")
-                    );
-                  }
+                // if we split an item at the very front with the enter key
+                // and we are pasting in complex content then we need to
+                // make sure that we move things AHEAD of what will be moved down
+                if (_enterSplit) {
+                  this.activeHaxBody.haxReplaceNode(
+                    siblingEl.previousElementSibling,
+                    activeEl
+                  );
+                  _enterSplit = false;
+                } else {
+                  siblingEl.parentNode.insertBefore(
+                    activeEl,
+                    siblingEl.nextElementSibling
+                  );
+                }
+              }
+              // attempt insert after active
+              else if (this.activeNode) {
+                if (this.activeNode.getAttribute("slot")) {
+                  activeEl.setAttribute(
+                    "slot",
+                    this.activeNode.getAttribute("slot")
+                  );
+                }
+                // if we have an empty element we are hitting paste on
+                // then leverage it for the 1st item as opposed to making a new line
+                if (this.activeNode.innerText.trim() == "") {
+                  this.activeHaxBody.haxReplaceNode(this.activeNode, activeEl);
+                } else {
                   this.activeNode.parentNode.insertBefore(
                     activeEl,
                     this.activeNode.nextElementSibling
                   );
                 }
-                // shouldn't be possible but just to be safe
-                else {
-                  this.activeHaxBody.appendChild(activeEl);
-                }
-                siblingEl = activeEl;
               }
+              // shouldn't be possible but just to be safe
+              else {
+                this.activeHaxBody.appendChild(activeEl);
+              }
+              siblingEl = activeEl;
             }
+            setTimeout(() => {
+              if (activeEl && activeEl.childNodes && activeEl.childNodes[0]) {
+                this._positionCursorInNode(
+                  activeEl.childNodes[0],
+                  activeEl.childNodes[0].length
+                );
+                activeEl = null;
+                siblingEl = null;
+              }
+            }, 0);
           }
         }
       } catch (e) {

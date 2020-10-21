@@ -829,6 +829,26 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       let sel = HAXStore.getSelection();
       if (sel.anchorNode != null) {
         switch (e.key) {
+          case "Z":
+          case "z":
+            // trab for undo / redo
+            if (e.ctrlKey) {
+              if (e.shiftKey) {
+                console.log("redo");
+                this.redo();
+              } else {
+                this.undo();
+              }
+              if (e.detail.keyboardEvent) {
+                e.detail.keyboardEvent.preventDefault();
+                e.detail.keyboardEvent.stopPropagation();
+                e.detail.keyboardEvent.stopImmediatePropagation();
+              }
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+            }
+            break;
           case "Tab":
             if (HAXStore.isTextElement(this.activeNode)) {
               if (e.detail.keyboardEvent) {
@@ -2055,13 +2075,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           stopProp = true;
         } else {
           while (
+            containerNode.parentNode &&
             containerNode.parentNode.tagName &&
             containerNode.parentNode.tagName != "HAX-BODY"
           ) {
             // make sure active is set after closest legit element
             if (
               activeNode === null &&
-              containerNode.tagName !== "LI" &&
               containerNode.tagName !== "B" &&
               containerNode.tagName !== "I" &&
               containerNode.tagName !== "STRONG" &&
