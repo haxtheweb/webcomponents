@@ -2564,7 +2564,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (propvals.class == "" || propvals.class == "hax-active") {
       delete propvals.class;
     }
-    console.log(propvals);
     // run through the rest and print to the dom
     for (var i in propvals) {
       if (propvals[i] === true) {
