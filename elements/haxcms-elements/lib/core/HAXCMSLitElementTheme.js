@@ -6,7 +6,7 @@ import { css, LitElement } from "lit-element/lit-element.js";
 import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 /**
  * LitElement Version of HAXCMSTheme
  */

@@ -20,6 +20,12 @@ class HaxToolbarItem extends LitElement {
           pointer-events: none;
           opacity: 0.5;
         }
+        :host([danger]) {
+          --hax-contextual-action-hover-color: var(
+            --simple-colors-default-theme-red-8,
+            #ff7777
+          );
+        }
         :host([menu]) {
           width: 100%;
           position: relative;
@@ -118,6 +124,9 @@ class HaxToolbarItem extends LitElement {
           background-color: #aaaaaa;
           color: #ffffff;
         }
+        :host([circle]) paper-button {
+          border-radius: 50%;
+        }
         :host([large]) paper-button {
           border-radius: 0;
           width: unset;
@@ -188,10 +197,12 @@ class HaxToolbarItem extends LitElement {
   }
   constructor() {
     super();
+    this.circle = false;
     this.corner = "";
     this.large = false;
     this.disabled = false;
     this.dark = false;
+    this.danger = false;
     this.menu = false;
     this.mini = false;
     this.icon = "";
@@ -216,6 +227,10 @@ class HaxToolbarItem extends LitElement {
         type: String,
         reflect: true,
       },
+      circle: {
+        type: Boolean,
+        reflect: true,
+      },
       height: {
         type: String,
       },
@@ -230,6 +245,10 @@ class HaxToolbarItem extends LitElement {
        * Inverted display mode
        */
       dark: {
+        type: Boolean,
+        reflect: true,
+      },
+      danger: {
         type: Boolean,
         reflect: true,
       },

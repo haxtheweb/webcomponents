@@ -890,7 +890,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         HAXStore.activeHaxBody.redo();
         break;
       case "cancel":
-        this.editMode = false;
+        HAXStore.editMode = false;
         this.dispatchEvent(
           new CustomEvent("hax-cancel", {
             bubbles: true,
@@ -1651,7 +1651,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    * Edit clicked, activate
    */
   _clickEditButton(e) {
-    this.editMode = true;
     HAXStore.editMode = true;
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
@@ -1666,8 +1665,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    * Toggle the drawer when the button is clicked.
    */
   _clickSaveButton(e) {
-    this.editMode = false;
-    HAXStore.write("editMode", false, this);
+    HAXStore.editMode = false;
     this.dispatchEvent(
       new CustomEvent("hax-save", {
         bubbles: true,

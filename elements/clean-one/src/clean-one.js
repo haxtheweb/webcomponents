@@ -8,7 +8,7 @@ import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/uti
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 

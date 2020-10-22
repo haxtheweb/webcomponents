@@ -5,7 +5,7 @@
 import { LitElement } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { objectValFromStringPos } from "@lrnwebcomponents/utils/utils.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 /**
  * `site-query`
  * `Query the JSON Outline Schema manifest and return a resulting array`

@@ -240,7 +240,7 @@ class CmsHax extends LitElement {
         HAXStore.haxTray.elementAlign = elementAlign;
       }, 0);
       if (openDefault) {
-        HAXStore.write("editMode", openDefault, this);
+        HAXStore.editMode = openDefault;
       }
     }
   }

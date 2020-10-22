@@ -4,7 +4,7 @@
  */
 import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";

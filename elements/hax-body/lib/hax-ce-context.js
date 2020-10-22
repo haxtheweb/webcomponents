@@ -25,7 +25,7 @@ class HaxCeContext extends LitElement {
         }
         :host(.hax-context-pin-top) hax-toolbar {
           position: fixed;
-          top: 40px;
+          top: 0px;
           flex-direction: column;
         }
       `,

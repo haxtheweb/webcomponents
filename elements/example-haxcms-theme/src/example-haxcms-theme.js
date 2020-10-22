@@ -10,7 +10,7 @@ import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 // While not needing to directly implement mobx classes this can let you do more advanced
 // integrations with the store and listening for updates to properties elsewhere in the application
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 /**
  * `example-haxcms-theme`
  * @element example-haxcms-theme

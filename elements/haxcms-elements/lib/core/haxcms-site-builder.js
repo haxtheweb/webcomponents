@@ -6,7 +6,7 @@ import {
   wipeSlot,
   varExists,
 } from "@lrnwebcomponents/utils/utils.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 import { store } from "./haxcms-site-store.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 /**

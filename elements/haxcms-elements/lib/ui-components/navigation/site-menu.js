@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/map-menu/map-menu.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 /**
@@ -158,26 +158,27 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     e.detail.trackIcon = this.trackIcon;
     // now work on the user data object in the theme layer
     let userData = JSON.parse(window.localStorage.getItem("HAXCMSSystemData"));
-    if (
-      userData.manifests &&
-      typeof userData.manifests[this.routerManifest.id] === typeof undefined
-    ) {
-      userData.manifests[this.routerManifest.id] = {
-        accessData: {},
+    if (userData.manifests) {
+      if (
+        typeof userData.manifests[this.routerManifest.id] === typeof undefined
+      ) {
+        userData.manifests[this.routerManifest.id] = {
+          accessData: {},
+        };
+      }
+      // edge case when switching rapidly
+      if (!userData.manifests[this.routerManifest.id].accessData) {
+        userData.manifests[this.routerManifest.id].accessData = {};
+      }
+      userData.manifests[this.routerManifest.id].accessData[e.detail.id] = {
+        timestamp: Math.floor(Date.now() / 1000),
+        trackIcon: this.trackIcon,
       };
-    }
-    // edge case when switching rapidly
-    if (!userData.manifests[this.routerManifest.id].accessData) {
-      userData.manifests[this.routerManifest.id].accessData = {};
-    }
-    userData.manifests[this.routerManifest.id].accessData[e.detail.id] = {
-      timestamp: Math.floor(Date.now() / 1000),
-      trackIcon: this.trackIcon,
-    };
-    for (var i in this.routerManifest.items) {
-      if (this.routerManifest.items[i].id === e.detail.id) {
-        this.routerManifest.items[i].metadata.accessData =
-          userData.manifests[this.routerManifest.id].accessData[e.detail.id];
+      for (var i in this.routerManifest.items) {
+        if (this.routerManifest.items[i].id === e.detail.id) {
+          this.routerManifest.items[i].metadata.accessData =
+            userData.manifests[this.routerManifest.id].accessData[e.detail.id];
+        }
       }
     }
     // save this back to the system data

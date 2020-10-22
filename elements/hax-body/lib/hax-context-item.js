@@ -12,6 +12,7 @@ import { HAXStore } from "./hax-store.js";
 class HaxContextItem extends LitElement {
   constructor() {
     super();
+    this.danger = false;
     this.light = false;
     this.action = false;
     this.large = false;
@@ -49,6 +50,8 @@ class HaxContextItem extends LitElement {
       <hax-toolbar-item
         ?disabled="${this.disabled}"
         ?light="${this.light}"
+        ?circle="${this.circle}"
+        ?danger="${this.danger}"
         ?action="${this.action}"
         ?mini="${this.mini}"
         ?large="${this.large}"
@@ -81,6 +84,15 @@ class HaxContextItem extends LitElement {
        * Light theme for toolbar item.
        */
       light: {
+        type: Boolean,
+      },
+      circle: {
+        type: Boolean,
+      },
+      /**
+       * color shift for dangerous operation
+       */
+      danger: {
         type: Boolean,
       },
       /**

@@ -81,7 +81,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         }
         :host(.hax-context-pin-top) hax-toolbar {
           position: fixed;
-          top: 40px;
+          top: 0px;
           flex-direction: column;
         }
       `,
@@ -440,6 +440,11 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         }
       }
     });
+  }
+  firstUpdated() {
+    this.updateTextIconSelection(
+      toJS(HAXStore.activeNode).tagName.toLowerCase()
+    );
   }
   /**
    * Show indentation on lists

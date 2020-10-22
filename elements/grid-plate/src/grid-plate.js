@@ -169,7 +169,7 @@ class GridPlate extends LitElement {
           padding: var(--grid-plate-row-padding);
         }
         .column.active {
-          outline: 2px solid var(--simple-colors-default-theme-cyan-7, #009dc7) !important;
+          outline: 2px solid var(--simple-colors-default-theme-grey-12, #009dc7) !important;
           outline-offset: -2px;
         }
         :host([disable-responsive]) .column {
@@ -179,6 +179,8 @@ class GridPlate extends LitElement {
           width: 100%;
           flex: 0 0 auto;
           min-height: 50px;
+        }
+        :host([ready]) .column {
           transition: var(
             --grid-plate-col-transition,
             0.5s width ease-in-out,
@@ -240,6 +242,8 @@ class GridPlate extends LitElement {
           padding: var(--grid-plate-item-margin);
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
+        }
+        :host([ready]) .column ::slotted(*) {
           transition: var(
             --grid-plate-col-transition,
             0.5s color ease-in-out,
@@ -247,15 +251,15 @@ class GridPlate extends LitElement {
           );
         }
         :host([data-hax-ray]) .column ::slotted(*) {
-          outline: 1px solid var(--simple-colors-default-theme-grey-4, #eeeeee);
-          outline-offset: -8px;
+          outline: 1px solid var(--simple-colors-default-theme-grey-2, #eeeeee);
+          outline-offset: -2px;
         }
         :host([data-hax-ray]) .column ::slotted(*:hover) {
           outline: 1px solid var(--simple-colors-default-theme-grey-8, #eeeeee);
         }
         :host([data-hax-ray]) .column {
-          outline: 1px solid var(--simple-colors-default-theme-grey-4, #eeeeee);
-          outline-offset: -8px;
+          outline: 1px solid var(--simple-colors-default-theme-grey-2, #eeeeee);
+          outline-offset: -2px;
         }
         :host([data-hax-ray]) .column:hover {
           outline: 1px solid var(--simple-colors-default-theme-grey-8, #eeeeee);
@@ -274,20 +278,20 @@ class GridPlate extends LitElement {
         :host([data-hax-ray]) div ::slotted(img.active),
         :host([data-hax-ray]) div ::slotted(*.active):before {
           background-color: var(
-            --simple-colors-default-theme-cyan-7,
+            --simple-colors-default-theme-grey-12,
             #009dc7
           ) !important;
-          outline: 1px solid var(--simple-colors-default-theme-cyan-7, #009dc7);
+          outline: 1px solid var(--simple-colors-default-theme-grey-12, #009dc7);
         }
 
         @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
           :host([data-hax-ray]) div ::slotted(*.active) {
             background-color: var(
-              --simple-colors-default-theme-cyan-7,
+              --simple-colors-default-theme-grey-12,
               #009dc7
             ) !important;
             outline: 1px solid
-              var(--simple-colors-default-theme-cyan-7, #009dc7);
+              var(--simple-colors-default-theme-grey-12, #009dc7);
           }
         }
       `,
@@ -295,6 +299,7 @@ class GridPlate extends LitElement {
   }
   constructor() {
     super();
+    this.ready = false;
     this.breakpointSm = 900;
     this.breakpointMd = 1200;
     this.breakpointLg = 1500;
@@ -398,6 +403,9 @@ class GridPlate extends LitElement {
       this.layouts,
       this.disableResponsive
     );
+    setTimeout(() => {
+      this.ready = true;
+    }, 100);
   }
   /**
    * Wire to HAX
@@ -474,12 +482,22 @@ class GridPlate extends LitElement {
         ],
       },
       saveOptions: {
-        unsetAttributes: ["layouts", "columns", "options", "responsive-width"],
+        unsetAttributes: [
+          "ready",
+          "layouts",
+          "columns",
+          "options",
+          "responsive-width",
+        ],
       },
     };
   }
   static get properties() {
     return {
+      ready: {
+        type: Boolean,
+        reflect: true,
+      },
       /**
        * Custom small breakpoint for the layouts; only updated on attached
        */

@@ -84,8 +84,8 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
     }
     :host(.hax-context-pin-top) .area {
       position: fixed;
-      top: 40px;
-      margin-left: -30px;
+      top: 28px;
+      margin-left: -2px;
       flex-direction: column;
     }
     </style>
@@ -171,6 +171,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
     </hax-context-item>
   <hax-context-item
     mini
+    danger
     action
     icon="delete"
     label="Remove"
@@ -240,6 +241,11 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
     let target = toJS(HAXStore.activeNode);
     HAXStore.__dragTarget = target;
     HAXStore._lockContextPosition = true;
+    // wipe the add context menu for motion
+    HAXStore.activeHaxBody.__activeHover = null;
+    HAXStore.activeHaxBody._hideContextMenu(
+      HAXStore.activeHaxBody.contextMenus.add
+    );
     if (e.dataTransfer) {
       e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.dropEffect = "move";

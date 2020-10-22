@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
