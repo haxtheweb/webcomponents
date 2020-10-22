@@ -150,6 +150,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       this.hasSelectedText = toJS(HAXStore.haxSelectedText).length > 0;
     });
     autorun(() => {
+      const editMode = toJS(HAXStore.editMode);
       const activeNode = toJS(HAXStore.activeNode);
       // update our icon if global changes what we are pointing to
       if (
@@ -442,9 +443,11 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
     });
   }
   firstUpdated() {
-    this.updateTextIconSelection(
-      toJS(HAXStore.activeNode).tagName.toLowerCase()
-    );
+    if (toJS(HAXStore.activeNode).tagName) {
+      this.updateTextIconSelection(
+        toJS(HAXStore.activeNode).tagName.toLowerCase()
+      );
+    }
   }
   /**
    * Show indentation on lists

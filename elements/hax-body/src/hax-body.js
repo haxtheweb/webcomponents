@@ -1491,6 +1491,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           } else {
             active.parentNode.insertBefore(newNode, active.nextElementSibling);
           }
+          // test for the LAST item in a group, insert at top and it'll flow to the end
+        } else if (
+          active.parentNode &&
+          active.parentNode.children[active.parentNode.children.length - 1] ===
+            active
+        ) {
+          if (this.__addAbove) {
+            active.parentNode.insertBefore(newNode, active);
+          } else {
+            active.parentNode.appendChild(newNode);
+          }
         } else if (active.parentNode) {
           active.parentNode.insertBefore(newNode, active);
         } else {
