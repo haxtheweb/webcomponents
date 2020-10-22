@@ -1652,7 +1652,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   _clickEditButton(e) {
     this.editMode = true;
-    HAXStore.write("editMode", true, this);
+    HAXStore.editMode = true;
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,

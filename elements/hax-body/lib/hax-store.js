@@ -1383,6 +1383,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "webview",
     ];
   }
+  /**
+   * Types that we deem as valid
+   */
   __validGizmoTypes() {
     return [
       "data",
@@ -2124,8 +2127,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         }
         delete properties.innerText;
       }
-      // ensure better UX for text based operations
-      this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
       if (
         typeof details.__type !== typeof undefined &&
@@ -2187,24 +2188,17 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.activeHaxBody.haxInsert(
             details.tag,
             details.content,
-            properties,
-            false
+            properties
           );
         } else {
           this.activeHaxBody.haxInsert(
             details.tag,
             details.content,
-            properties,
-            false
+            properties
           );
         }
       } else {
-        this.activeHaxBody.haxInsert(
-          details.tag,
-          details.content,
-          properties,
-          false
-        );
+        this.activeHaxBody.haxInsert(details.tag, details.content, properties);
       }
     }
   }
@@ -2232,8 +2226,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this.activeHaxBody.haxInsert(
           e.detail[i].tag,
           e.detail[i].content,
-          properties,
-          false
+          properties
         );
       }
     }

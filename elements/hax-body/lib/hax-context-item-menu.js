@@ -1,8 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/paper-item/paper-item.js";
-import "@polymer/neon-animation/neon-animation.js";
 /**
  * `hax-context-item-menu`
  * `An icon / button that has support for multiple options via drop down.`
@@ -36,7 +34,7 @@ class HaxContextItemMenu extends LitElement {
     this.action = false;
     this.direction = "top";
     this.icon = "editor:text-fields";
-    this.label = "editor:text-fields";
+    this.label = "";
   }
   render() {
     return html`

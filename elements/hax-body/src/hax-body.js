@@ -155,6 +155,30 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           );
           --hax-body-possible-target-background-color: inherit;
         }
+        #addincontext.hax-context-menu {
+          margin: 0;
+          border: 0;
+          border-radius: 50%;
+          padding: 0;
+          background-color: white;
+          color: black;
+          height: 24px;
+          width: 24px;
+          opacity: 0.5;
+          display: block;
+          transition: 0.2s opacity ease-in-out;
+        }
+        #addincontext:hover,
+        #addincontext:active,
+        #addincontext:focus {
+          opacity: 1;
+        }
+        #addincontext iron-icon {
+          margin: 0;
+          padding: 0;
+          height: 24px;
+          width: 24px;
+        }
         .hax-context-menu {
           padding: 0;
           margin-left: -5000px;
@@ -165,8 +189,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           float: left;
           display: block;
           pointer-events: none;
-          transition: 0.2s top ease-in-out, 0.2s left ease-in-out,
-            0.2s visibility ease-in-out, 0.2s opacity ease-in-out;
+          transition: 0.2s top ease-in-out, 0.2s left ease-in-out;
         }
         #textcontextmenu.hax-context-menu {
           z-index: 1000;
@@ -177,7 +200,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           pointer-events: all;
           opacity: 1;
         }
-        .hax-context-visible.hax-active-hover {
+        .hax-context-menu-active {
           margin-left: unset;
         }
         :host([edit-mode]) #bodycontainer ::slotted(p) {
@@ -228,7 +251,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           caret-color: var(--hax-color-text);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.blinkfocus) {
-          outline: 8px solid var(--hax-contextual-action-hover-color);
+          outline: 4px solid var(--hax-contextual-action-hover-color);
         }
         :host([edit-mode])
           #bodycontainer
@@ -371,7 +394,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // lock to ensure we don't flood events on hitting the up / down arrows
     // as we use a mutation observer to manage draggable bindings
     this.__ignoreActive = false;
-    this.__mouseMoving = false;
+    this.__dragMoving = false;
     this.___moveLock = false;
     this.editMode = false;
     this.haxMover = false;
@@ -394,6 +417,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         this.replacePlaceholder.bind(this)
       );
       this.addEventListener("focusin", this._focusIn.bind(this));
+      this.addEventListener("mousemove", this._mouseMove.bind(this));
       this.addEventListener("mousedown", this._mouseDown.bind(this));
       this.addEventListener("mouseup", this._mouseUp.bind(this));
       this.addEventListener("dragenter", this.dragEnterBody.bind(this));
@@ -403,6 +427,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     }, 0);
     autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
+    });
+    autorun(() => {
+      this.editMode = toJS(HAXStore.editMode);
     });
   }
   /**
@@ -414,6 +441,101 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.querySelectorAll(".hax-hovered").forEach((el) => {
       el.classList.remove("hax-hovered");
     });
+  }
+  _mouseMove(e) {
+    if (this.editMode && HAXStore.ready) {
+      clearTimeout(this.__mouseTimer);
+      this.__mouseTimer = setTimeout(() => {
+        this.__addActiveVisible();
+        let target = e.path[0].closest("[data-hax-ray]");
+        if (target) {
+          this.__activeHover = target;
+          let activeRect = this.__activeHover.getBoundingClientRect();
+          let addRect = this.contextMenus.add.getBoundingClientRect();
+          // calculate mouse position relative to the element on page
+          // and position the add above or below as a result
+          // this is bonkers :)
+          let distance =
+            (e.pageY - (activeRect.top + window.scrollY)) / activeRect.height;
+          let height = -addRect.height - 1;
+          if (distance > 0.5) {
+            height = activeRect.height + 1;
+            this.__addAbove = false;
+          } else {
+            this.__addAbove = true;
+          }
+          // wow, we have an in context addition menu just like that
+          this._positionContextMenu(
+            this.contextMenus.add,
+            this.__activeHover,
+            activeRect.width / 2 - addRect.width / 2,
+            height
+          );
+        } else if (e.path[0].closest("#addincontext")) {
+          // on button, do nothing and bail early
+        } else if (
+          e.path[0].closest(".column") &&
+          e.path[3] &&
+          e.path[3].closest("grid-plate")
+        ) {
+          let addRect = this.contextMenus.add.getBoundingClientRect();
+          let height = -addRect.height - 1;
+          let activeRect, posMenuEl;
+          // weird but we need the structure of grid plate here unfortunately
+          // if it has nodes in the column we are active on then we need
+          // to defer to the grid level because you could always force a node
+          if (!e.path[0].closest(".column:not(.has-nodes")) {
+            // way out of a column to the host of the template
+            this.__activeHover = e.path[0].closest(
+              ".column"
+            ).parentNode.parentNode.host;
+            posMenuEl = this.__activeHover;
+            activeRect = this.__activeHover.getBoundingClientRect();
+            let distance =
+              (e.pageY - (activeRect.top + window.scrollY)) / activeRect.height;
+            if (distance > 0.5) {
+              height = activeRect.height + 1;
+              this.__addAbove = false;
+            } else {
+              this.__addAbove = true;
+            }
+          } else {
+            // to avoid a later loop, we force this to "false"
+            this.__addAbove = false;
+            // this is a grid column so get it's ID to understand it's slot
+            // this leverages our internal __slot hack that gets picked up
+            // by our MO in order to automatically set __slot on a node anywhere
+            // it's inserted in the body area leveraging alternative logic to
+            // figure out which it should place where
+            this.__slot = e.path[0]
+              .closest(".column")
+              .getAttribute("id")
+              .replace("col", "col-");
+            // based on what we learned we don't have nodes in the path column
+            // but we KNOW there MUST be an element somewhere in this
+            this.__activeHover = e.path[0].closest(
+              ".column"
+            ).parentNode.parentNode.host.children[0];
+            // we focus on the column unlike anything else
+            activeRect = e.path[0].closest(".column").getBoundingClientRect();
+            // right in the middle of the column
+            height = activeRect.height / 2 - addRect.height / 2;
+            posMenuEl = e.path[0].closest(".column");
+          }
+
+          // wow, we have an in context addition menu just like that
+          this._positionContextMenu(
+            this.contextMenus.add,
+            posMenuEl,
+            activeRect.width / 2 - addRect.width / 2,
+            height
+          );
+        } else if (e.path[0].closest("#bodycontainer")) {
+          this.__activeHover = null;
+          this._hideContextMenu(this.contextMenus.add);
+        }
+      }, 600);
+    }
   }
   _mouseDown(e) {
     this.__mouseDown = true;
@@ -496,6 +618,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         id="cecontextmenu"
         class="hax-context-menu ignore-activation"
       ></hax-ce-context>
+      <button id="addincontext" class="hax-context-menu ignore-activation">
+        <iron-icon icon="icons:add-circle"></iron-icon>
+      </button>
       <hax-plate-context
         id="platecontextmenu"
         class="hax-context-menu ignore-activation"
@@ -565,9 +690,21 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     } catch (e) {
       console.warn(e);
     }
-    this.shadowRoot
-      .querySelector("slot")
-      .addEventListener("mousemove", this.hoverEvent.bind(this));
+    this.contextMenus = {
+      text: this.shadowRoot.querySelector("#textcontextmenu"),
+      plate: this.shadowRoot.querySelector("#platecontextmenu"),
+      ce: this.shadowRoot.querySelector("#cecontextmenu"),
+      add: this.shadowRoot.querySelector("#addincontext"),
+    };
+    // wire up our in context add button
+    this.contextMenus.add.addEventListener(
+      "click",
+      this._addInContextClick.bind(this)
+    );
+    // track and store range on mouse up. this helps w/ Safari focus selection
+    // issues as well as any "tap" event from a phone knowing what text
+    // WAS selected prior to an operation that might lose focus / selection
+    // during the workflow like replacing an element in context / inline
     this.shadowRoot.querySelector("slot").addEventListener("mouseup", (e) => {
       if (!this.openDrawer && this.editMode) {
         setTimeout(() => {
@@ -593,6 +730,22 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+  }
+  /**
+   * Handle adding an item in context based on where the context add
+   * was set to follow
+   */
+  _addInContextClick(e) {
+    // break mouse trap so we auto focus the insert
+    this.__mouseDown = false;
+    if (this.__addAbove && this.__activeHover.previousElementSibling) {
+      this.__activeHover = this.__activeHover.previousElementSibling;
+    }
+    // active will be set via this
+    this.haxInsert("p", "", {}, this.__activeHover);
+    // drop active hover to reset state
+    this.__activeHover = null;
+    this._hideContextMenu(this.contextMenus.add);
   }
   /**
    * LitElement life cycle - properties changed callback
@@ -628,7 +781,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       var mutFind = false;
       if (
         !this.__ignoreActive &&
-        !this.__mouseMoving &&
+        !this.__dragMoving &&
         !this.undoStackIgnore &&
         !this.__fakeEndCap
       ) {
@@ -788,31 +941,21 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.__contextVisibleLock = setTimeout(() => {
         // see if the text context menu is visible
         let el = false;
-        if (
-          this.shadowRoot
-            .querySelector("#textcontextmenu")
-            .classList.contains("hax-context-visible")
-        ) {
-          el = this.shadowRoot.querySelector("#textcontextmenu");
+        if (this.contextMenus.text.classList.contains("hax-context-visible")) {
+          el = this.contextMenus.text;
         } else if (
-          this.shadowRoot
-            .querySelector("#cecontextmenu")
-            .classList.contains("hax-context-visible")
+          this.contextMenus.ce.classList.contains("hax-context-visible")
         ) {
-          el = this.shadowRoot.querySelector("#cecontextmenu");
+          el = this.contextMenus.ce;
         }
         // if we see it, ensure we don't have the pin
         if (el) {
           if (this.elementMidViewport()) {
             el.classList.add("hax-context-pin-top");
-            this.shadowRoot
-              .querySelector("#platecontextmenu")
-              .classList.add("hax-context-pin-top");
+            this.contextMenus.plate.classList.add("hax-context-pin-top");
           } else {
             el.classList.remove("hax-context-pin-top");
-            this.shadowRoot
-              .querySelector("#platecontextmenu")
-              .classList.remove("hax-context-pin-top");
+            this.contextMenus.plate.classList.remove("hax-context-pin-top");
           }
           this.positionContextMenus();
         }
@@ -825,6 +968,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.editMode &&
       this.getAttribute("contenteditable")
     ) {
+      this.__dropActiveVisible();
       this.__manageFakeEndCap(false);
       let sel = HAXStore.getSelection();
       if (sel.anchorNode != null) {
@@ -961,13 +1105,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             }, 0);
             break;
         }
-        if (
-          this.shadowRoot
-            .querySelector("#platecontextmenu")
-            .classList.contains("hax-active-hover")
-        ) {
-          this.__dropActiveHover();
-        }
       }
     }
   }
@@ -999,7 +1136,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // and add a p since it's a divider really
       if (el.tagName === "HR") {
         // then insert a P which will assume active status
-        this.haxInsert("p", "", {}, false);
+        this.haxInsert("p", "", {});
       }
     }
     // look for wildcard / web component pro insert mode
@@ -1029,16 +1166,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       if (
         !this.openDrawer &&
         this.editMode &&
-        this.shadowRoot
-          .querySelector("#textcontextmenu")
-          .classList.contains("hax-active-hover") &&
-        this.activeNode &&
-        HAXStore.isTextElement(this.activeNode)
-      ) {
-        this.__dropActiveHover();
-      } else if (
-        !this.openDrawer &&
-        this.editMode &&
         this.activeNode &&
         HAXStore.isTextElement(this.activeNode)
       ) {
@@ -1046,75 +1173,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         clearTimeout(this.__positionContextTimer);
         this.__positionContextTimer = setTimeout(() => {
           // always on active if we were just typing
+          this.__addActiveVisible();
           this.positionContextMenus();
         }, 2500);
       }
     }, 50);
   }
-  /**
-   * on mouse over then fire the hax ray value if we have one
-   */
-  hoverEvent(e) {
-    if (!this.openDrawer && this.editMode) {
-      if (e.target && e.target.getAttribute("data-hax-ray") != null) {
-        this.__activeHover = e.target;
-      } else if (
-        e.target &&
-        e.target.parentNode &&
-        e.target.parentNode.getAttribute("data-hax-ray") != null
-      ) {
-        this.__activeHover = e.target.parentNode;
-      }
-      if (
-        !this.shadowRoot
-          .querySelector("#platecontextmenu")
-          .classList.contains("hax-active-hover")
-      ) {
-        let local = e.target;
-        // see if the target is relevent when showing the edit menu operations
-        if (
-          e.target === this.shadowRoot.querySelector("#cecontextmenu") ||
-          e.target === this.shadowRoot.querySelector("#textcontextmenu") ||
-          e.target === this.shadowRoot.querySelector("#platecontextmenu") ||
-          local === this.activeNode ||
-          local === this.activeNode.parentNode ||
-          e.target === this.activeNode ||
-          e.target === this.activeNode.parentNode ||
-          local.parentNode === this.activeNode.parentNode ||
-          local.parentNode.parentNode === this.activeNode.parentNode ||
-          local.parentNode.parentNode.parentNode === this.activeNode.parentNode
-        ) {
-          this.positionContextMenus();
-          this.__addActiveHover();
-          this.__typeLock = false;
-        } else {
-          this.__dropActiveHover();
-        }
-      }
-    }
-  }
-  __addActiveHover() {
-    this.shadowRoot
-      .querySelector("#cecontextmenu")
-      .classList.add("hax-active-hover");
-    this.shadowRoot
-      .querySelector("#textcontextmenu")
-      .classList.add("hax-active-hover");
-    this.shadowRoot
-      .querySelector("#platecontextmenu")
-      .classList.add("hax-active-hover");
-  }
-  __dropActiveHover() {
-    this.shadowRoot
-      .querySelector("#cecontextmenu")
-      .classList.remove("hax-active-hover");
-    this.shadowRoot
-      .querySelector("#textcontextmenu")
-      .classList.remove("hax-active-hover");
-    this.shadowRoot
-      .querySelector("#platecontextmenu")
-      .classList.remove("hax-active-hover");
-  }
+
   /**
    * Only true if we are scrolling and part way through an element
    */
@@ -1271,8 +1336,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Insert new tag + content into the local DOM as a node.
    */
-  haxInsert(tag, content, properties = {}) {
-    this.__activeHover = null;
+  haxInsert(tag, content, properties = {}, active = this.activeNode) {
     // verify this tag is a valid one
     // create a new element fragment w/ content in it
     // if this is a custom-element it won't expand though
@@ -1336,35 +1400,28 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       HAXStore.activePlaceHolder = null;
     }
     // insert at active insert point if we have one
-    else if (this.activeNode.parentNode != null) {
+    else if (active.parentNode != null) {
       // allow for inserting things into things but not grid plate
-      if (
-        this.activeNode.parentNode.tagName === "GRID-PLATE" &&
-        this.activeNode.parentNode !== this.activeNode
-      ) {
-        if (this.activeNode.getAttribute("slot") != null) {
-          newNode.setAttribute("slot", this.activeNode.getAttribute("slot"));
+      if (active.parentNode.tagName === "GRID-PLATE") {
+        if (active.getAttribute("slot") != null) {
+          newNode.setAttribute("slot", active.getAttribute("slot"));
         }
-        this.activeNode.parentNode.insertBefore(newNode, this.activeNode);
+        // special in context add for grids
+        if (this.__addAbove) {
+          active.parentNode.insertBefore(newNode, active);
+        } else {
+          active.parentNode.insertBefore(newNode, active.nextElementSibling);
+        }
       } else {
-        if (
-          this.activeNode.parentNode &&
-          this.activeNode.parentNode.nextElementSibling
-        ) {
-          this.activeNode.parentNode.nextElementSibling.parentNode.insertBefore(
+        if (active.parentNode && active.parentNode.nextElementSibling) {
+          active.parentNode.nextElementSibling.parentNode.insertBefore(
             newNode,
-            this.activeNode.parentNode.nextElementSibling
+            active.parentNode.nextElementSibling
           );
-        } else if (
-          this.activeNode.parentNode &&
-          this.activeNode.nextElementSibling
-        ) {
-          this.activeNode.parentNode.insertBefore(
-            newNode,
-            this.activeNode.nextElementSibling
-          );
-        } else if (this.activeNode.parentNode) {
-          this.activeNode.parentNode.insertBefore(newNode, this.activeNode);
+        } else if (active.parentNode && active.nextElementSibling) {
+          active.parentNode.insertBefore(newNode, active.nextElementSibling);
+        } else if (active.parentNode) {
+          active.parentNode.insertBefore(newNode, active);
         } else {
           // something odd happened let's just make sure we insert this safely
           this.appendChild(newNode);
@@ -1374,12 +1431,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // send this into the root, which should filter it back down into the slot
       this.appendChild(newNode);
     }
-    this.shadowRoot.querySelector("#textcontextmenu").hasSelectedText = false;
+    this.contextMenus.text.hasSelectedText = false;
     setTimeout(() => {
       this.__focusLogic(newNode);
       // wait so that the DOM can have the node to then attach to
       this.scrollHere(newNode);
-    }, 10);
+    }, 0);
     return true;
   }
   /**
@@ -1530,11 +1587,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     clearTimeout(this.__contextVisibleLock);
     clearTimeout(this.__positionContextTimer);
     // primary context menus
-    this._hideContextMenu(this.shadowRoot.querySelector("#textcontextmenu"));
-    this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
+    this._hideContextMenu(this.contextMenus.text);
+    this._hideContextMenu(this.contextMenus.ce);
     // secondary menus and clean up areas
     if (hidePlate) {
-      this._hideContextMenu(this.shadowRoot.querySelector("#platecontextmenu"));
+      this._hideContextMenu(this.contextMenus.plate);
     }
   }
   /**
@@ -1562,50 +1619,27 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           typeof props !== typeof undefined &&
           !HAXStore.isTextElement(node)
         ) {
-          this._hideContextMenu(
-            this.shadowRoot.querySelector("#textcontextmenu")
-          );
+          this._hideContextMenu(this.contextMenus.text);
           props.element = node;
-          this._positionContextMenu(
-            this.shadowRoot.querySelector("#cecontextmenu"),
-            node,
-            -1,
-            -30
-          );
+          this._positionContextMenu(this.contextMenus.ce, node, -1, -30);
           menuWidth += 28;
         } else {
-          this._hideContextMenu(
-            this.shadowRoot.querySelector("#cecontextmenu")
-          );
-          this._positionContextMenu(
-            this.shadowRoot.querySelector("#textcontextmenu"),
-            node,
-            -1,
-            -30
-          );
+          this._hideContextMenu(this.contextMenus.ce);
+          this._positionContextMenu(this.contextMenus.text, node, -1, -30);
           // text menu can expand based on selection
-          let textRect = this.shadowRoot
-            .querySelector("#textcontextmenu")
-            .getBoundingClientRect();
+          let textRect = this.contextMenus.text.getBoundingClientRect();
           menuWidth += textRect.width;
         }
         let activeRect = node.getBoundingClientRect();
         // need to account for the item being small than the menu
         if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
-          this._positionContextMenu(
-            this.shadowRoot.querySelector("#platecontextmenu"),
-            node,
-            -1,
-            -58
-          );
+          this._positionContextMenu(this.contextMenus.plate, node, -1, -58);
         } else {
           this._positionContextMenu(
-            this.shadowRoot.querySelector("#platecontextmenu"),
+            this.contextMenus.plate,
             node,
             activeRect.width -
-              this.shadowRoot
-                .querySelector("#platecontextmenu")
-                .getBoundingClientRect().width +
+              this.contextMenus.plate.getBoundingClientRect().width +
               2,
             -28
           );
@@ -1617,7 +1651,27 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           node.setAttribute("contenteditable", true);
         }
       }
-    }, 10);
+    }, 0);
+  }
+  /**
+   * No idea how to describe these name wise but basically we want to only
+   * show the menus when we need them. This toggle allows us the ability
+   * to hide the context menus while the user is engaged in typing or
+   * other actions where the in-context menus are distracting
+   */
+  __addActiveVisible() {
+    for (var i in this.contextMenus) {
+      if (i != "add" || this.__activeHover) {
+        this.contextMenus[i].classList.add("hax-context-menu-active");
+      }
+    }
+  }
+  __dropActiveVisible() {
+    for (var i in this.contextMenus) {
+      this.contextMenus[i].classList.remove("hax-context-menu-active");
+    }
+    // force hiding add menu
+    this._hideContextMenu(this.contextMenus.add);
   }
   /**
    * Move grid plate around
@@ -1719,11 +1773,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
       // if left, nudge everything over 1, right simple
       if (changed) {
-        let platecontextmenu = this.shadowRoot.querySelector(
-          "#platecontextmenu"
-        );
-        let right = platecontextmenu.shadowRoot.querySelector("#right");
-        let rightremove = platecontextmenu.shadowRoot.querySelector(
+        let right = this.contextMenus.plate.shadowRoot.querySelector("#right");
+        let rightremove = this.contextMenus.plate.shadowRoot.querySelector(
           "#rightremove"
         );
         right.disabled = false;
@@ -1890,7 +1941,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.activeNode = node.nextElementSibling;
     } else {
       // implies nothing; let's not allow NOTHING as it breaks user context
-      this.haxInsert("p", "", {}, false);
+      this.haxInsert("p", "", {});
       try {
         var range = document.createRange();
         var sel = HAXStore.getSelection();
@@ -1976,16 +2027,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         break;
       case "text-tag-ul":
         // trigger the default selected value in context menu to match
-        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
-          "ul";
+        this.contextMenus.text.realSelectedValue = "ul";
         this.activeNode = this.haxChangeTagName(this.activeNode, "ul");
         HAXStore.write("activeNode", this.activeNode, this);
         this.positionContextMenus();
         break;
       case "text-tag-ol":
         // trigger the default selected value in context menu to match
-        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
-          "ol";
+        this.contextMenus.text.realSelectedValue = "ol";
         this.activeNode = this.haxChangeTagName(this.activeNode, "ol");
         HAXStore.write("activeNode", this.activeNode, this);
         this.positionContextMenus();
@@ -2111,11 +2160,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         } else if (containerNode.classList.contains("ignore-activation")) {
           stopProp = true;
         }
-        // test for active node changing
-        if (
-          this.activeNode !== activeNode &&
-          !activeNode.classList.contains("ignore-activation")
-        ) {
+        // test for ignore edge case
+        if (!activeNode.classList.contains("ignore-activation")) {
           this.activeNode = activeNode;
           HAXStore.write("activeNode", activeNode, this);
           setTimeout(() => {
@@ -2202,7 +2248,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         if (this.children && this.children[0] && this.children[0].focus) {
           this.__focusLogic(this.children[0]);
         } else {
-          this.haxInsert("p", "", {}, false);
+          this.haxInsert("p", "", {});
           try {
             var range = document.createRange();
             var sel = HAXStore.getSelection();
@@ -2360,7 +2406,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     node[listenerMethod]("dragenter", this.dragEnter.bind(this));
     node[listenerMethod]("dragleave", this.dragLeave.bind(this));
     node[listenerMethod]("dragover", (e) => {
-      this.__mouseMoving = true;
+      this.__dragMoving = true;
       e.preventDefault();
     });
     // additional things for text based elements
@@ -2392,7 +2438,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * do not bleed over into state changes
    */
   undoManagerStackLogic(mutations) {
-    if (!this.__mouseMoving) {
+    if (!this.__dragMoving) {
       this.querySelectorAll(".hax-hovered").forEach((el) => {
         el.classList.remove("hax-hovered");
       });
@@ -2404,7 +2450,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    */
   dropEvent(e) {
     if (!this.openDrawer && this.editMode) {
-      this.__mouseMoving = false;
+      this.__dragMoving = false;
       // make sure that IF we had mutations they don't fire till AFTER
       // this prevents issues where the mutation record was combined
       // and then blocked because of being moved
@@ -2568,7 +2614,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    */
   dragEnter(e) {
     if (!this.openDrawer && this.editMode && e.target) {
-      this.__mouseMoving = true;
+      this.__dragMoving = true;
       e.preventDefault();
       if (e.target && e.target.classList) {
         e.target.classList.add("hax-hovered");
@@ -2739,7 +2785,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    */
   dragLeave(e) {
     if (!this.openDrawer && this.editMode && e.target && e.target.classList) {
-      this.__mouseMoving = true;
+      this.__dragMoving = true;
       e.target.classList.remove("hax-hovered");
     }
   }
@@ -2776,7 +2822,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
       // why you no position yo?
       this.positionContextMenus();
-      this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue = tag;
+      this.contextMenus.text.realSelectedValue = tag;
     }
     // just hide menus if we don't have an active item
     else if (newValue === null) {
@@ -2817,13 +2863,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
     }
     menu.setAttribute("on-screen", "on-screen");
-    menu.classList.add("hax-context-visible");
-    // text we want to operate this way
-    if (this.__activeHover) {
-      menu.classList.add("hax-active-hover");
-      menu.style.marginLeft = "";
-      this.__typeLock = false;
-    }
+    menu.classList.add("hax-context-visible", "hax-context-menu-active");
   }
   /**
    * Simple hide / reset of whatever menu it's handed.
@@ -2833,8 +2873,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     menu.visible = false;
     menu.classList.remove(
       "hax-context-visible",
-      "hax-active-hover",
-      "hax-context-pin-top"
+      "hax-context-pin-top",
+      "hax-context-menu-active"
     );
   }
   /**
