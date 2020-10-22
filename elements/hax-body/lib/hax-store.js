@@ -2557,7 +2557,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (typeof propvals.id !== typeof undefined && propvals.id === "") {
       delete propvals.id;
     }
-    // run through the properties
+    // drop these known things we never want to save
+    delete propvals.draggable;
+    delete propvals.contenteditable;
+    delete propvals["data-hax-ray"];
+    if (propvals.class == "" || propvals.class == "hax-active") {
+      delete propvals.class;
+    }
+    console.log(propvals);
+    // run through the rest and print to the dom
     for (var i in propvals) {
       if (propvals[i] === true) {
         content += " " + i;
@@ -2869,4 +2877,12 @@ window.Hax.grid = function (op = true) {
 
 window.Hax.set = function (key, value) {
   HAXStore.write(key, value, window);
+};
+
+window.Hax.export = function () {
+  return HAXStore.activeHaxBody.haxToContent();
+};
+
+window.Hax.import = function (htmlContent = "<p></p>") {
+  return HAXStore.activeHaxBody.importContent(htmlContent);
 };
