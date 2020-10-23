@@ -2571,6 +2571,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.querySelectorAll(".active").forEach((el) => {
         el.classList.remove("active");
       });
+      // var for the local drop target
+      var local;
       // this helps ensure that what gets drag and dropped is a file
       // this prevents issues with selecting and dragging text (which triggers drag/drop)
       // as well as compatibility with things that are legit in a draggable state
@@ -2587,7 +2589,42 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           e.stopImmediatePropagation();
           // inject a placeholder P tag which we will then immediately replace
           let tmp = document.createElement("p");
-          this.activeNode.parentNode.insertBefore(tmp, this.activeNode);
+          if (
+            e.target.closest("grid-plate") &&
+            e.target.parentNode != e.target.closest("grid-plate")
+          ) {
+            local = e.target.closest("grid-plate");
+          } else if (e.target.closest("[contenteditable],img")) {
+            local = e.target.closest("[contenteditable],img");
+          }
+          if (
+            !["GRID-PLATE", "HAX-BODY"].includes(local.tagName) ||
+            e.path[0].tagName === "GRID-PLATE"
+          ) {
+            if (local.getAttribute("slot")) {
+              tmp.setAttribute("slot", local.getAttribute("slot"));
+            } else if (e.path[0].classList.contains("column")) {
+              tmp.setAttribute(
+                "slot",
+                e.path[0].getAttribute("id").replace("col", "col-")
+              );
+            } else {
+              tmp.removeAttribute("slot");
+            }
+            local.parentNode.insertBefore(tmp, local);
+          } else {
+            if (e.path[0].classList.contains("column")) {
+              tmp.setAttribute(
+                "slot",
+                e.path[0].getAttribute("id").replace("col", "col-")
+              );
+            }
+            // account for drop target of main body yet still having a slot attr
+            else if (local.tagName === "HAX-BODY" && tmp.getAttribute("slot")) {
+              tmp.removeAttribute("slot");
+            }
+            local.appendChild(tmp);
+          }
           // this placeholder will be immediately replaced
           e.placeHolderElement = tmp;
           // fire this specialized event up so things like HAX can intercept
@@ -2602,7 +2639,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         } else {
           // set taget based on drag target
           target = HAXStore.__dragTarget;
-          var local = e.target;
+          local = e.target;
           if (
             e.target.closest("grid-plate") &&
             e.target.parentNode != e.target.closest("grid-plate")
