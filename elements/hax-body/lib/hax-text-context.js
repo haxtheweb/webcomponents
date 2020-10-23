@@ -444,8 +444,11 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       }
     });
   }
-  firstUpdated() {
-    if (toJS(HAXStore.activeNode).tagName) {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    if (toJS(HAXStore.activeNode) && toJS(HAXStore.activeNode).tagName) {
       this.updateTextIconSelection(
         toJS(HAXStore.activeNode).tagName.toLowerCase()
       );

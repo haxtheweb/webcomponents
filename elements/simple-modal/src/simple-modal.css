@@ -19,7 +19,7 @@ paper-dialog-scrollable:not(:defined) {
   display: flex;
   flex-direction: column;
   margin: 15px auto;
-  z-index: 1000;
+  z-index: var(--simple-modal-z-index, 1000) !important;
   height: var(--simple-modal-height, auto);
   width: var(--simple-modal-width, auto);
   min-width: var(--simple-modal-min-width, unset);

@@ -407,6 +407,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       );
       this.addEventListener("focusin", this._focusIn.bind(this));
       this.addEventListener("mousemove", this._mouseMove.bind(this));
+      this.addEventListener("mouseleave", this._mouseLeave.bind(this));
       this.addEventListener("touchstart", this._mouseMove.bind(this), {
         passive: true,
       });
@@ -436,6 +437,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.querySelectorAll(".hax-hovered").forEach((el) => {
       el.classList.remove("hax-hovered");
     });
+  }
+  _mouseLeave(e) {
+    if (this.editMode && HAXStore.ready) {
+      clearTimeout(this.__mouseQuickTimer);
+      clearTimeout(this.__mouseTimer);
+      this.__activeHover = null;
+      this._hideContextMenu(this.contextMenus.add);
+    }
   }
   _mouseMove(e) {
     if (this.editMode && HAXStore.ready) {
@@ -670,9 +679,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         attribute: "hax-mover",
         reflect: true,
       },
-      openDrawer: {
-        type: Object,
-      },
       /**
        * State of if we are editing or not.
        */
@@ -738,7 +744,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // WAS selected prior to an operation that might lose focus / selection
     // during the workflow like replacing an element in context / inline
     this.shadowRoot.querySelector("slot").addEventListener("mouseup", (e) => {
-      if (!this.openDrawer && this.editMode) {
+      if (this.editMode) {
         setTimeout(() => {
           const tmp = HAXStore.getSelection();
           HAXStore._tmpSelection = tmp;
@@ -994,7 +1000,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Keep the context menu visible if needed
    */
   _keepContextVisible(e = null) {
-    if (!this.openDrawer && this.editMode) {
+    if (this.editMode) {
       clearTimeout(this.__contextVisibleLock);
       this.__contextVisibleLock = setTimeout(() => {
         // see if the text context menu is visible
@@ -1023,10 +1029,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   _onKeyDown(e) {
     // make sure we don't have an open drawer, and editing, and we are not focused on tray
     if (
-      !this.openDrawer &&
       this.editMode &&
-      document.activeElement.tagName !== "HAX-TRAY"
+      document.activeElement.tagName !== "HAX-TRAY" &&
+      document.activeElement.tagName !== "BODY" &&
+      document.activeElement.tagName !== "SIMPLE-MODAL"
     ) {
+      console.log(document.activeElement);
       // if we are NOT editing and delete key is hit, delete the element
       if (!this.getAttribute("contenteditable")) {
         switch (e.key) {
@@ -1237,7 +1245,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     clearTimeout(this.__keyPress);
     this.__keyPress = setTimeout(() => {
       if (
-        !this.openDrawer &&
         this.editMode &&
         this.activeNode &&
         HAXStore.isTextElement(this.activeNode)
@@ -2173,7 +2180,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     let stopProp = false;
     // only worry about these when we are in edit mode
     // and there is no drawer open
-    if (!this.openDrawer && this.editMode && !this.__tabTrap) {
+    if (this.editMode && !this.__tabTrap) {
       let containerNode = target;
       // edge case, thing selected is inside a paragraph tag
       // HTML is stupid and allows this
@@ -2531,7 +2538,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Drop an item onto another
    */
   dropEvent(e) {
-    if (!this.openDrawer && this.editMode) {
+    if (this.editMode) {
       this.__dragMoving = false;
       // make sure that IF we had mutations they don't fire till AFTER
       // this prevents issues where the mutation record was combined
@@ -2730,7 +2737,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
-    if (!this.openDrawer && this.editMode && e.target) {
+    if (this.editMode && e.target) {
       this.__dragMoving = true;
       e.preventDefault();
       if (e.target && e.target.classList) {
@@ -2901,7 +2908,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Leaving an element while dragging.
    */
   dragLeave(e) {
-    if (!this.openDrawer && this.editMode && e.target && e.target.classList) {
+    if (this.editMode && e.target && e.target.classList) {
       this.__dragMoving = true;
       e.target.classList.remove("hax-hovered");
     }

@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./simple-fields-array-item.js";
@@ -36,19 +35,19 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
         }
         #description {
           flex: 1 1 auto;
-          padding: var(--simple-fields-margin-small, 8px) 0;
-          margin-right: var(--simple-fields-margin, 16px);
+          padding: var(--simple-fields-margin-small, 2px) 0;
+          margin-right: var(--simple-fields-margin, 8px);
           min-height: 24px;
         }
         #add {
           float: right;
         }
-        paper-button {
+        button {
           font-family: var(--simple-fields-detail-font-family, sans-serif);
           font-size: var(--simple-fields-detail-font-size, 12px);
           line-height: var(--simple-fields-detail-line-height, 22px);
-          padding: var(--simple-fields-margin-small, 8px);
-          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+          padding: var(--simple-fields-margin-small, 2px);
+          margin: 0 var(--simple-fields-margin-small, 2px) 0 0;
           z-index: 1;
           text-transform: unset;
         }
@@ -84,7 +83,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
     return html`
       <div id="top">
         ${this.desc}
-        <paper-button
+        <button
           id="expand"
           controls="item-fields"
           @click="${(e) => this.toggle()}"
@@ -95,18 +94,18 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
             aria-hidden="true"
             icon="expand-more"
           ></iron-icon>
-        </paper-button>
+        </button>
       </div>
       <div id="item-fields" aria-live="polite">
         <slot></slot>
-        <paper-button
+        <button
           id="add"
           controls="item-fields"
           @click="${(e) => this._handleAdd()}"
         >
           Add Item
           <iron-icon aria-hidden="true" icon="add"></iron-icon>
-        </paper-button>
+        </button>
       </div>
     `;
   }
@@ -189,7 +188,13 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
   focus(index) {
     if (this.childNodes && index) {
       if (this.childNodes.length < index) index = this.childNodes.length - 1;
-      this.childNodes[index].focus();
+      // account for delete of 1st item
+      if (index == -1) {
+        index = 0;
+      }
+      if (this.childNodes.length != 0) {
+        this.childNodes[index].focus();
+      }
     } else if (this.shadowRoot) {
       let id = !this.childNodes ? "add" : "expand";
       this.shadowRoot.getElementById(id).focus();

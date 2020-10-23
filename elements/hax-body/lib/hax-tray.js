@@ -588,7 +588,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             <slot name="tray-buttons-pre"></slot>
             <hax-tray-button
               mini
-              event-name="open-export-dialog"
+              id="exportbtn"
               icon="code"
               label="View page source"
               voice-command="view (page) source"
@@ -877,9 +877,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         ).hidden;
         this.shadowRoot.querySelector("hax-map").updateHAXMap();
         break;
-      case "open-export-dialog":
-        HAXStore.write("openDrawer", HAXStore.haxExport, this);
-        break;
       case "start-tour":
         window.SimpleTourManager.requestAvailability().startTour("hax");
         break;
@@ -916,6 +913,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       },
       offsetMargin: {
         type: String,
+        attribute: "offset-margin",
       },
       collapsed: {
         type: Boolean,

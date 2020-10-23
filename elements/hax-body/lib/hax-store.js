@@ -335,9 +335,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   static get properties() {
     return {
       ...super.properties,
-      openDrawer: {
-        type: Object,
-      },
       voiceDebug: {
         type: Boolean,
         attribute: "voice-debug",
@@ -813,9 +810,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
     let loadAppStoreData = false;
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "openDrawer") {
-        this.openDrawersCallback(this[propName], oldValue);
-      }
       if (propName == "appStore") {
         this._appStoreChanged(this[propName], oldValue);
       }
@@ -828,7 +822,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this._storePiecesAllHere(
           this.haxAutoloader,
           this.activeHaxBody,
-          this.haxTray
+          this.haxTray,
+          this.haxExport
         );
       }
     });
@@ -929,8 +924,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     }
   }
-  _storePiecesAllHere(haxAutoloader, activeHaxBody, haxTray) {
-    if (!this.__ready && activeHaxBody && haxAutoloader && haxTray) {
+  _storePiecesAllHere(haxAutoloader, activeHaxBody, haxTray, haxExport) {
+    if (
+      !this.__ready &&
+      activeHaxBody &&
+      haxAutoloader &&
+      haxTray &&
+      haxExport
+    ) {
       // send that hax store is ready to go so now we can setup the rest
       this.dispatchEvent(
         new CustomEvent("hax-store-ready", {
@@ -941,6 +942,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         })
       );
       this.ready = true;
+      // associate the export button in the tray to the dialog
+      HAXStore.haxExport.shadowRoot
+        .querySelector("#dialog")
+        .associateEvents(haxTray.shadowRoot.querySelector("#exportbtn"));
       this.__ready = true;
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
@@ -1036,9 +1041,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       this.voiceRespondsTo = `(${text})`;
       // @todo this needs to now update the previous commands somehow to match
       // the new activation name
-    };
-    this.voiceCommands[`${this.voiceRespondsTo} close`] = () => {
-      this.write("openDrawer", false, this);
     };
   }
   /**
@@ -2057,39 +2059,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   _haxStorePieceRegistrationManager(e) {
     if (e.detail && e.detail.piece && e.detail.object) {
       this[e.detail.piece] = e.detail.object;
-    }
-  }
-
-  /**
-   * open / close drawers
-   */
-  openDrawersCallback(active = false, oldValue) {
-    // walk all drawers, close everything
-    // except active. This also will allow them
-    // to close everything then.
-    let drawers = ["haxAppPicker", "haxExport"];
-    for (var i in drawers) {
-      if (active === this[drawers[i]]) {
-        active.open();
-        setTimeout(() => {
-          if (
-            active.querySelector(
-              "simple-fields-field,textarea,button,hax-tray-button"
-            ) != null
-          ) {
-            active
-              .querySelector(
-                "simple-fields-field,textarea,button,hax-tray-button"
-              )
-              .focus();
-          }
-          var evt = document.createEvent("UIEvents");
-          evt.initUIEvent("resize", true, false, window, 0);
-          window.dispatchEvent(evt);
-        }, 325);
-      } else {
-        this[drawers[i]].close();
-      }
     }
   }
 

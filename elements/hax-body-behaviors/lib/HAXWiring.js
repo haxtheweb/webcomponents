@@ -302,10 +302,15 @@ export class HAXWiring {
           // support possible dynamic import of iconset
           // this would be if the user defined their own icons
           if (typeof props.gizmo.iconLib !== typeof undefined) {
-            const basePath = this.pathFromUrl(
-              decodeURIComponent(import.meta.url)
-            );
-            import(`${basePath}../../../${props.gizmo.iconLib}`);
+            var basePath;
+            if (window.WCGlobalBasePath) {
+              basePath = window.WCGlobalBasePath;
+            } else {
+              basePath =
+                this.pathFromUrl(decodeURIComponent(import.meta.url)) +
+                "../../../";
+            }
+            import(`${basePath}${props.gizmo.iconLib}`);
           }
         }
         // while not required, this is where all the raw power of this

@@ -12,8 +12,13 @@ class SimpleLoginCamera extends HTMLElement {
   }
   constructor() {
     super();
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}../../../msr/MediaStreamRecorder.min.js`;
+    if (window.WCGlobalBasePath) {
+      this.basePath = window.WCGlobalBasePath;
+    } else {
+      this.basePath =
+        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
+    }
+    const location = `${this.basePath}msr/MediaStreamRecorder.min.js`;
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("msr", location);
     window.addEventListener("es-bridge-msr-loaded", this._msrLoaded.bind(this));

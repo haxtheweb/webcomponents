@@ -3,11 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-dialog/paper-dialog.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `simple-modal`
  * `A simple modal that ensures accessibility and stack order context appropriately`
@@ -55,7 +50,7 @@ class SimpleModal extends LitElement {
           display: flex;
           flex-direction: column;
           margin: 15px auto;
-          z-index: 1000;
+          z-index: var(--simple-modal-z-index, 1000) !important;
           height: var(--simple-modal-height, auto);
           width: var(--simple-modal-width, auto);
           min-width: var(--simple-modal-min-width, unset);
@@ -152,85 +147,39 @@ class SimpleModal extends LitElement {
 
   // render function
   render() {
-    return html` <custom-style>
-        <style>
-          :host paper-dialog ::slotted(*) {
-            @apply --simple-modal-content;
-          }
-
-          #dialog {
-            @apply --simple-modal-dialog;
-          }
-
-          #titlebar {
-            @apply --simple-modal-top;
-          }
-
-          #headerbar {
-            @apply --simple-modal-headerbar;
-          }
-
-          h2 {
-            @apply --simple-modal-title;
-          }
-
-          #close {
-            @apply --simple-modal-close;
-          }
-
-          #close iron-icon {
-            @apply --simple-modal-close-icon;
-          }
-
-          #simple-modal-content {
-            --paper-dialog-scrollable: {
-              padding: 0;
-            }
-            @apply --simple-modal-content-container;
-          }
-          .buttons {
-            @apply --simple-modal-buttons;
-          }
-          .buttons ::slotted(*) {
-            @apply --simple-modal-button;
-          }
-        </style>
-      </custom-style>
-      <paper-dialog
-        id="dialog"
-        always-on-top
-        aria-describedby="simple-modal-content"
-        aria-label="${this._getAriaLabel(this.title)}"
-        aria-labelledby="${this._getAriaLabelledby(this.title)}"
-        aria-modal="true"
-        role="dialog"
-        ?opened="${this.opened}"
-        @opened-changed="${this.openedChangedEvent}"
-        ?modal="${this.modal}"
-        with-backdrop
-      >
-        <div id="titlebar">
-          <h2 id="simple-modal-title" ?hidden="${!this.title}">
-            ${this.title}
-          </h2>
-          <div></div>
-          <paper-button
-            id="close"
-            dialog-dismiss
-            ?hidden="${!this.opened}"
-            label="${this.closeLabel}"
-          >
-            <iron-icon aria-hidden="true" icon="${this.closeIcon}"></iron-icon>
-          </paper-button>
-        </div>
-        <div id="headerbar"><slot name="header"></slot></div>
-        <paper-dialog-scrollable id="simple-modal-content">
-          <slot name="content"></slot>
-        </paper-dialog-scrollable>
-        <div class="buttons">
-          <slot name="buttons"></slot>
-        </div>
-      </paper-dialog>`;
+    return html` <paper-dialog
+      id="dialog"
+      always-on-top
+      aria-describedby="simple-modal-content"
+      aria-label="${this._getAriaLabel(this.title)}"
+      aria-labelledby="${this._getAriaLabelledby(this.title)}"
+      aria-modal="true"
+      role="dialog"
+      ?opened="${this.opened}"
+      @opened-changed="${this.openedChangedEvent}"
+      ?modal="${this.modal}"
+      with-backdrop
+    >
+      <div id="titlebar">
+        <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
+        <div></div>
+        <button
+          id="close"
+          dialog-dismiss
+          ?hidden="${!this.opened}"
+          label="${this.closeLabel}"
+        >
+          <iron-icon aria-hidden="true" icon="${this.closeIcon}"></iron-icon>
+        </button>
+      </div>
+      <div id="headerbar"><slot name="header"></slot></div>
+      <paper-dialog-scrollable id="simple-modal-content">
+        <slot name="content"></slot>
+      </paper-dialog-scrollable>
+      <div class="buttons">
+        <slot name="buttons"></slot>
+      </div>
+    </paper-dialog>`;
   }
 
   // properties available to the custom element for data binding
@@ -297,8 +246,8 @@ class SimpleModal extends LitElement {
     this.closeIcon = "close";
     this.modal = false;
     setTimeout(() => {
+      import("@polymer/paper-dialog/paper-dialog.js");
       import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
-      import("@polymer/paper-button/paper-button.js");
       import("@polymer/iron-icons/iron-icons.js");
       import("@polymer/iron-icon/iron-icon.js");
     }, 0);
@@ -415,6 +364,7 @@ class SimpleModal extends LitElement {
     if (styles) {
       [
         "--simple-modal-width",
+        "--simple-modal-z-index",
         "--simple-modal-height",
         "--simple-modal-min-width",
         "--simple-modal-min-height",

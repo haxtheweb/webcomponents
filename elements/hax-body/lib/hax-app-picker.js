@@ -1,167 +1,114 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
+import "./hax-picker.js";
 /**
- `hax-app-picker`
- A picker for selecting an item from a list of apps / hax gizmos which require
- a decision to be made. This is used when multiple things match either on upload
- in the add operation of the app or in the gizmo selection to render through,
- such as having multiple ways of presenting an image.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - data - this is the app data model for an element which expresses itself to hax
-*/
+ * `hax-app-picker`
+ * `app pop over + picker with options`
+ */
 class HaxAppPicker extends LitElement {
   static get styles() {
     return [
       css`
-        :host {
-          display: block;
-        }
-        iron-icon:not(:defined),
-        paper-dialog:not(:defined) {
-          display: none;
-        }
-        #closedialog {
-          float: right;
-          top: 15px;
-          right: 0;
-          position: absolute;
-          padding: 8px;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-          background-color: transparent;
-          width: 40px;
-          height: 40px;
-          min-width: unset;
-        }
-        #dialog {
-          min-width: 400px;
-          min-height: 108px;
-          max-height: 60vh;
-          max-width: 50vw;
-          overflow: hidden;
-          border-radius: 16px;
-          z-index: 1000000;
-          border: 2px solid var(--hax-color-border-outline);
-          background-color: #ffffff;
-          --hax-tray-panel-accent-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
+        simple-modal-template {
+          --simple-modal-z-index: 100000001;
+          --simple-modal-width: auto;
+          --simple-modal-height: auto;
+          --simple-modal-min-width: 45vw;
+          --simple-modal-min-height: 40vh;
+          --simple-modal-max-width: unset;
+          --simple-modal-max-height: unset;
+          --simple-modal-titlebar-color: black;
+          --simple-modal-titlebar-background: #ddd;
+          --simple-modal-header-color: black;
+          --simple-modal-header-background: #ccc;
+          --simple-modal-content-container-color: black;
+          --simple-modal-content-container-background: #ffffff;
+          --simple-modal-buttons-color: blue;
+          --simple-modal-buttons-background: #fff;
+          --simple-modal-button-color: var(--simple-modal-buttons-color);
+          --simple-modal-button-background: var(
+            --simple-modal-buttons-background-color
           );
-          --hax-tray-panel-accent: var(
-            --simple-colors-default-theme-purple-8,
-            #8a009b
-          );
-        }
-        .button-list {
-          display: block;
-          text-align: left;
-          margin: 0px;
-          max-width: 50vw;
-          overflow-x: hidden;
-          overflow-y: auto;
-          display: flex;
-          justify-content: space-evenly;
-          flex-wrap: wrap;
-        }
-        #title {
-          color: var(--hax-color-menu-heading-color, black);
-        }
-        #title {
-          padding: 16px;
-          border-bottom: 2px solid var(--hax-color-border-outline);
-          margin: 0;
-          width: calc(100% - 32px);
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
         }
       `,
     ];
   }
   constructor() {
     super();
-    this._elements = [];
-    this.selectionList = [];
-    this.title = "Pick an options";
-    this.pickerType = "gizmo";
-    this.opened = false;
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-dialog/paper-dialog.js");
-    setTimeout(() => {
-      this.addEventListener("iron-overlay-canceled", this.close.bind(this));
-      this.addEventListener("iron-overlay-closed", this.close.bind(this));
-    }, 0);
+    this.title = "Select an option";
   }
-  render() {
-    return html`
-      <paper-dialog id="dialog" ?opened="${this.opened}">
-        <h3 id="title">${this.title}</h3>
-        <div class="button-list">
-          ${this.selectionList.map(
-            (element, index) => html`
-              <hax-tray-button
-                id="picker-item-${index}"
-                @click="${this._selected}"
-                data-selected="${index}"
-                label="${element.title}"
-                icon="${element.icon}"
-                color="${element.color}"
-                ?color-meaning="${this.selectionList.length === 2}"
-              >
-              </hax-tray-button>
-            `
-          )}
-        </div>
-        <button id="closedialog" @click="${this.closeEvent}">
-          <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
-        </button>
-      </paper-dialog>
-    `;
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("simple-modal-show", this.modalToggle.bind(this));
   }
-  static get tag() {
-    return "hax-app-picker";
+  disconnectedCallback() {
+    window.removeEventListener(
+      "simple-modal-show",
+      this.modalToggle.bind(this)
+    );
+    super.disconnectedCallback();
   }
-  closeEvent(e) {
-    this.opened = false;
+  /**
+   * a bit hacky but gets around the cloning element and events issue
+   */
+  modalToggle(e) {
+    if (e.detail.id == "hax-picker") {
+      // present options AFTER we know the picker has opened :)
+      e.detail.elements.content.children[0].buildOptions(
+        this.elements,
+        this.type,
+        this.title,
+        this.pickerType,
+        this.target
+      );
+    }
   }
   static get properties() {
     return {
-      /**
-       * raw element set
-       */
-      _elements: {
-        type: Array,
-      },
-      /**
-       * Refactored list for selection purposes
-       */
-      selectionList: {
-        type: Array,
-      },
       /**
        * Title for the dialog
        */
       title: {
         type: String,
       },
-      /**
-       * Allow multiple uses
-       */
-      pickerType: {
-        type: String,
-        attribute: "picker-type",
-      },
-      /**
-       * Opened status to bind to the dialog box being open
-       */
-      opened: {
-        type: Boolean,
-      },
     };
   }
-  firstUpdated(changedProperties) {
+  /**
+   * Bridge since everything calls here
+   */
+  presentOptions(
+    elements,
+    type = "element",
+    title = "Select an option",
+    pickerType = "gizmo",
+    target = window
+  ) {
+    this.elements = elements;
+    this.type = type;
+    this.title = title;
+    this.pickerType = pickerType;
+    this.target = target;
+    setTimeout(() => {
+      this.shadowRoot
+        .querySelector('[modal-id="hax-picker"]')
+        .openModal(target);
+    }, 0);
+  }
+  render() {
+    return html`
+      <simple-modal-template .title="${this.title}" modal-id="hax-picker">
+        <hax-picker slot="content"></hax-picker>
+      </simple-modal-template>
+    `;
+  }
+  static get tag() {
+    return "hax-app-picker";
+  }
+  /**
+   * Attached to the DOM, now fire that we exist.
+   */
+  firstUpdated() {
+    // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {
         bubbles: true,
@@ -173,118 +120,6 @@ class HaxAppPicker extends LitElement {
         },
       })
     );
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "opened") {
-        this._openedChanged(this[propName], oldValue);
-      }
-    });
-  }
-
-  /**
-   * Close the picker and ensure body locking is off.
-   */
-  close() {
-    this.opened = false;
-  }
-
-  /**
-   * Open status changed
-   */
-  _openedChanged(newValue, oldValue) {
-    if (newValue) {
-      // lock the background
-      document.body.style.overflow = "hidden";
-    } else {
-      this.selectionList = [];
-      document.body.style.overflow = null;
-    }
-  }
-
-  /**
-   * Present options to the user with a modal and selection method that
-   * shifts itself to be above everything (stack order)
-   * @param  [array] elements  a list of elements for presenting to the user
-   * to select between.
-   */
-  presentOptions(
-    elements,
-    type = "element",
-    title = "Select an option",
-    pickerType = "gizmo"
-  ) {
-    // wipe existing
-    this.title = title;
-    this.pickerType = pickerType;
-    var tmp = [];
-    switch (pickerType) {
-      // hax gizmo selector
-      case "gizmo":
-        for (var i in elements) {
-          elements[i].__type = type;
-          tmp.push({
-            icon: elements[i].gizmo.icon,
-            title: elements[i].gizmo.title,
-            color: elements[i].gizmo.color,
-          });
-        }
-        break;
-      // app selector
-      case "app":
-        for (var i in elements) {
-          tmp.push({
-            icon: elements[i].details.icon,
-            title: elements[i].details.title,
-            color: elements[i].details.color,
-          });
-        }
-        break;
-      // we don't know what to do with this
-      default:
-        tmp = elements;
-        break;
-    }
-    this._elements = elements;
-    this.selectionList = [...tmp];
-    this.opened = true;
-    // try to focus on option 0
-    setTimeout(() => {
-      this.shadowRoot.querySelector("#picker-item-0").focus();
-    }, 50);
-  }
-  /**
-   * Handle the user selecting an app.
-   */
-  _selected(e) {
-    let key = e.target.getAttribute("data-selected");
-    e.preventDefault();
-    e.stopPropagation();
-    if (typeof this._elements[key] !== typeof undefined) {
-      // haxElement is a unique case
-      if (this.pickerType == "gizmo") {
-        this._elements[key].replace = true;
-        this.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this._elements[key],
-          })
-        );
-      } else {
-        // bubble this up
-        this.dispatchEvent(
-          new CustomEvent("hax-app-picker-selection", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this._elements[key],
-          })
-        );
-      }
-    }
-    this.opened = false;
   }
 }
 window.customElements.define(HaxAppPicker.tag, HaxAppPicker);
