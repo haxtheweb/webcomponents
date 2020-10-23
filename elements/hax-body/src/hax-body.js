@@ -284,7 +284,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*[contenteditable] *::-moz-selection) {
-          background-color: var(--hax-body-highlight, --paper-yellow-300);
+          background-color: var(
+            --hax-body-highlight,
+            var(--simple-colors-default-theme-yellow-2, yellow)
+          );
           color: black;
         }
         :host([edit-mode])
@@ -293,7 +296,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*[contenteditable] *::selection) {
-          background-color: var(--hax-body-highlight, --paper-yellow-300);
+          background-color: var(
+            --hax-body-highlight,
+            var(--simple-colors-default-theme-yellow-2, yellow)
+          );
           color: black;
         }
         #bodycontainer {
@@ -827,7 +833,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   this.__slot = null;
                 }
                 // force images to NOT be draggable as we will manage D&D
-                if (node.tagName === "IMG") {
+                if (node.tagName == "IMG") {
                   node.setAttribute("draggable", false);
                 }
                 // trap for user hitting the outdent / indent keys or tabbing
@@ -2046,41 +2052,43 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (clear) {
       wipeSlot(this, "*");
     }
-    html = encapScript(html);
-    let fragment = document.createElement("div");
-    fragment.insertAdjacentHTML("beforeend", html);
-    while (fragment.firstChild !== null) {
-      if (typeof fragment.firstChild.tagName !== typeof undefined) {
-        // ensure import doesn't import non-sandbox safe things!
-        if (
-          HAXStore._isSandboxed &&
-          fragment.firstChild.tagName.toLowerCase() === "iframe"
-        ) {
-          // Create a replacement tag of the desired type
-          var replacement = document.createElement("webview");
-          // Grab all of the original's attributes, and pass them to the replacement
-          for (
-            var j = 0, l = fragment.firstChild.attributes.length;
-            j < l;
-            ++j
+    setTimeout(() => {
+      html = encapScript(html);
+      let fragment = document.createElement("div");
+      fragment.insertAdjacentHTML("beforeend", html);
+      while (fragment.firstChild !== null) {
+        if (typeof fragment.firstChild.tagName !== typeof undefined) {
+          // ensure import doesn't import non-sandbox safe things!
+          if (
+            HAXStore._isSandboxed &&
+            fragment.firstChild.tagName.toLowerCase() === "iframe"
           ) {
-            var nodeName = fragment.firstChild.attributes.item(j).nodeName;
-            var value = fragment.firstChild.attributes.item(j).value;
-            if (nodeName === "height" || nodeName === "width") {
-              replacement.style[nodeName] == value;
+            // Create a replacement tag of the desired type
+            var replacement = document.createElement("webview");
+            // Grab all of the original's attributes, and pass them to the replacement
+            for (
+              var j = 0, l = fragment.firstChild.attributes.length;
+              j < l;
+              ++j
+            ) {
+              var nodeName = fragment.firstChild.attributes.item(j).nodeName;
+              var value = fragment.firstChild.attributes.item(j).value;
+              if (nodeName === "height" || nodeName === "width") {
+                replacement.style[nodeName] == value;
+              }
+              replacement.setAttribute(nodeName, value);
             }
-            replacement.setAttribute(nodeName, value);
+            this.appendChild(replacement);
+          } else {
+            this.appendChild(fragment.firstChild);
           }
-          this.appendChild(replacement);
         } else {
-          this.appendChild(fragment.firstChild);
+          // @todo might want to support appending or keeping track of comments / non tags
+          // but this is not a must have
+          fragment.removeChild(fragment.firstChild);
         }
-      } else {
-        // @todo might want to support appending or keeping track of comments / non tags
-        // but this is not a must have
-        fragment.removeChild(fragment.firstChild);
       }
-    }
+    }, 0);
   }
   /**
    * Respond to hax operations.
@@ -2382,9 +2390,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // special place holder in drag and drop
     if (
       node.tagName &&
-      !["HAX-BODY", "HAX-APP-SEARCH-RESULT", "FAKE-HAX-BODY-END"].includes(
-        node.tagName
-      )
+      ![
+        "TEMPLATE",
+        "HAX-BODY",
+        "HAX-APP-SEARCH-RESULT",
+        "FAKE-HAX-BODY-END",
+      ].includes(node.tagName)
     ) {
       // special case of SPAN as it can often get embedded places without actually
       // being the thing that should grad actual block level focus

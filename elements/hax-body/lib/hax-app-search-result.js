@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HAXStore } from "./hax-store.js";
-import "@polymer/iron-image/iron-image.js";
 /**
  * `hax-source`
  * @element hax-source
@@ -84,14 +83,7 @@ class HaxAppSearchResult extends LitElement {
         @dragend="${this._dragEnd}"
         title="${this.details}"
       >
-        <iron-image
-          alt=""
-          class="image"
-          src="${this.image}"
-          preload=""
-          fade=""
-          sizing="cover"
-        ></iron-image>
+        <img loading="lazy" class="image" src="${this.image}" />
         <div class="detail-wrapper">
           <div class="title">${this.title.substr(0, 40)}</div>
         </div>
