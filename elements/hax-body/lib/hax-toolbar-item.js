@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 class HaxToolbarItem extends LitElement {
   static get styles() {
@@ -10,6 +9,7 @@ class HaxToolbarItem extends LitElement {
           box-sizing: border-box;
           height: 36px;
           width: 36px;
+          --hax-contextual-action-text-color: white;
         }
         :host([large]),
         :host([mini]) {
@@ -42,14 +42,14 @@ class HaxToolbarItem extends LitElement {
           font-weight: 400;
           line-height: 24px;
         }
-        :host([menu]) paper-button {
+        :host([menu]) button {
           -webkit-justify-content: flex-start;
           justify-content: flex-start;
         }
         #label {
           padding-left: 5px;
         }
-        paper-button {
+        button {
           display: flex;
           align-items: center;
           min-width: 0;
@@ -70,14 +70,10 @@ class HaxToolbarItem extends LitElement {
             --hax-contextual-action-text-color,
             var(--simple-colors-default-theme-grey-1, #fff)
           );
-          --paper-button-ink-color: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
-          );
         }
-        :host(:not([disabled])) paper-button:active,
-        :host(:not([disabled])) paper-button:hover,
-        :host(:not([disabled])) paper-button:focus {
+        :host(:not([disabled])) button:active,
+        :host(:not([disabled])) button:hover,
+        :host(:not([disabled])) button:focus {
           background-color: var(
             --hax-contextual-action-hover-color,
             var(--simple-colors-default-theme-cyan-7, #009dc7)
@@ -93,18 +89,18 @@ class HaxToolbarItem extends LitElement {
             );
           z-index: 2;
         }
-        :host([default]) paper-button {
+        :host([default]) button {
           background: black;
         }
-        :host([dark]:not([disabled])) paper-button {
+        :host([dark]:not([disabled])) button {
           background-color: var(--hax-color-text);
           color: var(--hax-color-bg-accent);
         }
-        :host([dark]:not([disabled])) paper-button:hover {
+        :host([dark]:not([disabled])) button:hover {
           background-color: var(--hax-color-bg-accent);
           color: var(--hax-color-text);
         }
-        :host([dark]) paper-button:active {
+        :host([dark]) button:active {
           background: var(--hax-color-bg-accent);
           color: var(--hax-color-text);
         }
@@ -114,39 +110,40 @@ class HaxToolbarItem extends LitElement {
           padding: 0;
           margin: 0;
         }
-        :host([mini]) paper-button {
+        :host([mini]) button {
           width: 28px;
           height: 28px;
           padding: 1px;
           border: none;
         }
-        :host([light]) paper-button {
+        :host([light]) button {
           background-color: #aaaaaa;
           color: #ffffff;
         }
-        :host([circle]) paper-button {
+        :host([circle]) button {
           border-radius: 50%;
+          display: block;
         }
-        :host([large]) paper-button {
+        :host([large]) button {
           border-radius: 0;
           width: unset;
           padding: 0px;
           border: 0px;
         }
-        :host([mini]:not([disabled])) paper-button:active,
-        :host([mini]:not([disabled])) paper-button:hover,
-        :host([mini]:not([disabled])) paper-button:focus {
+        :host([mini]:not([disabled])) button:active,
+        :host([mini]:not([disabled])) button:hover,
+        :host([mini]:not([disabled])) button:focus {
           outline: unset;
           border: 1px solid
             var(--hax-color-accent1, --simple-colors-default-theme-light-blue-7);
         }
-        :host([menu]) paper-button {
+        :host([menu]) button {
           padding: 0 8px;
           width: 100%;
           height: 36px;
         }
-        :host([menu]:not([disabled])) paper-button:hover {
-          color: #000000;
+        :host([menu]:not([disabled])) button:hover {
+          color: white;
         }
         .flip-icon {
           transform: rotateY(180deg);
@@ -166,7 +163,7 @@ class HaxToolbarItem extends LitElement {
   }
   render() {
     return html`
-      <paper-button
+      <button
         .disabled="${this.disabled}"
         id="btn"
         tabindex="0"
@@ -180,7 +177,7 @@ class HaxToolbarItem extends LitElement {
           >${this.label}</span
         >
         <slot></slot>
-      </paper-button>
+      </button>
       <simple-tooltip
         for="btn"
         ?hidden="${this.tooltip == "" ? true : false}"

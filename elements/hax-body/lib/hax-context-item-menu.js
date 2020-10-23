@@ -141,7 +141,7 @@ class HaxContextItemMenu extends LitElement {
       var j = 0;
       // check for tag match since we have to filter out text nodes
       for (var i = 0, len = children.length; i < len; i++) {
-        if (children[i].tagName === "PAPER-ITEM") {
+        if (children[i].tagName === "BUTTON") {
           if (j === newValue) {
             item = children[i];
             len = i;

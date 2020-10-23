@@ -1,10 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
-import "@polymer/neon-animation/neon-animation.js";
 
 class HaxToolbarMenu extends LitElement {
   static get styles() {

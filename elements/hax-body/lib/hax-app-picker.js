@@ -19,7 +19,6 @@ class HaxAppPicker extends LitElement {
           display: block;
         }
         iron-icon:not(:defined),
-        paper-button:not(:defined),
         paper-dialog:not(:defined) {
           display: none;
         }
@@ -88,7 +87,6 @@ class HaxAppPicker extends LitElement {
     this.title = "Pick an options";
     this.pickerType = "gizmo";
     this.opened = false;
-    import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-dialog/paper-dialog.js");
     setTimeout(() => {
@@ -116,9 +114,9 @@ class HaxAppPicker extends LitElement {
             `
           )}
         </div>
-        <paper-button id="closedialog" @click="${this.closeEvent}">
+        <button id="closedialog" @click="${this.closeEvent}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
-        </paper-button>
+        </button>
       </paper-dialog>
     `;
   }

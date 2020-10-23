@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
@@ -50,16 +49,18 @@ class HaxToolbar extends LitElement {
           z-index: 2;
         }
         #moremenu hax-context-item,
-        #moremenu ::slotted(paper-item),
-        paper-item {
+        #moremenu ::slotted(button),
+        button {
           height: 32px;
           padding: 0;
           min-width: 100px;
+          color: white !important;
+          border: 0;
         }
 
         #moremenu hax-context-item:hover,
-        :host #moremenu ::slotted(paper-item:hover),
-        paper-item:hover {
+        :host #moremenu ::slotted(button:hover),
+        button:hover {
           cursor: pointer;
         }
         .convert-button {
@@ -89,7 +90,7 @@ class HaxToolbar extends LitElement {
           event-name="hax-plate-op"
           reset-on-select
         >
-          <paper-item value="" hidden></paper-item>
+          <button value="" hidden></button>
           <slot name="more"></slot>
         </hax-context-item-menu>
       </div>

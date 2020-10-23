@@ -19,7 +19,6 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
           z-index: 1000;
         }
         iron-icon:not(:defined),
-        paper-button:not(:defined),
         paper-dialog:not(:defined) {
           display: none;
         }
@@ -105,7 +104,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
           <div id="buttons" class="buttons">
             <hax-tray-button
               label="Update source"
-              color="red"
+              accent-color="red"
               ?color-meaning="${true}"
               icon="icons:code"
               @click="${this.importContent}"
@@ -137,9 +136,9 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
             </hax-tray-button>
           </div>
         </div>
-        <paper-button id="closedialog" @click="${this.closeEvent}">
+        <button id="closedialog" @click="${this.closeEvent}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
-        </paper-button>
+        </button>
       </paper-dialog>
     `;
   }
@@ -331,7 +330,6 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
   open() {
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");
     this.opened = true;
     this.shadowRoot.querySelector("#textarea").editorValue = this.contentToFile(

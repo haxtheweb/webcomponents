@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-item/paper-item.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
@@ -29,7 +28,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         hax-context-item-menu:not(:defined),
         hax-context-item:not(:defined),
         hax-toolbar:not(:defined),
-        paper-item:not(:defined),
+        button:not(:defined),
         iron-icon:not(:defined) {
           display: none;
         }
@@ -49,7 +48,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         #toolbar {
           overflow: hidden;
         }
-        paper-item {
+        button {
           color: black;
           -webkit-justify-content: flex-start;
           justify-content: flex-start;
@@ -59,7 +58,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           padding: 0 4px;
           min-height: 24px;
         }
-        paper-item:hover {
+        button:hover {
           cursor: pointer;
           color: black;
         }
@@ -156,9 +155,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       if (
         HAXStore.isTextElement(activeNode) &&
         this.shadowRoot.querySelector(
-          '#textformat paper-item[value="' +
-            activeNode.tagName.toLowerCase() +
-            '"]'
+          '#textformat button[value="' + activeNode.tagName.toLowerCase() + '"]'
         )
       ) {
         if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
@@ -181,14 +178,19 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           id="textformat"
         >
           <style slot="style">
-            simple-popover-manager paper-item {
+            simple-popover-manager button {
               color: black;
               font-size: 10px !important;
               margin: 0;
               padding: 2px;
               min-height: unset;
+              width: 100%;
+              display: flex;
+              justify-content: start;
+              align-items: center;
+              border: 0;
             }
-            simple-popover-manager paper-item iron-icon {
+            simple-popover-manager button iron-icon {
               width: 18px;
               margin-right: 8px;
             }
@@ -209,10 +211,10 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           </hax-context-item>
           ${this.formattingList.map(
             (val) =>
-              html` <paper-item slot="options" value="${val.value}">
+              html` <button slot="options" value="${val.value}">
                 <iron-icon icon="${val.icon}"></iron-icon>
                 ${val.text}
-              </paper-item>`
+              </button>`
           )}
         </simple-popover-selection>
         <hax-context-item-textop
@@ -424,7 +426,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         .removeAttribute("data-simple-popover-selection-active");
     }
     let localItem = this.shadowRoot.querySelector(
-      '#textformat paper-item[value="' + this.realSelectedValue + '"]'
+      '#textformat button[value="' + this.realSelectedValue + '"]'
     );
     localItem.setAttribute("data-simple-popover-selection-active", true);
     this.formatIcon = localItem.querySelector("iron-icon").getAttribute("icon");
@@ -518,7 +520,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         document.execCommand("underline");
         prevent = true;
         // silly hack to account for trigging a selection from
-        // inside the menu that isn't from a paper-item
+        // inside the menu that isn't from default
         this.shadowRoot
           .querySelector("#toolbar")
           .shadowRoot.querySelector("#moremenu")
@@ -529,7 +531,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         document.execCommand("subscript");
         prevent = true;
         // silly hack to account for trigging a selection from
-        // inside the menu that isn't from a paper-item
+        // inside the menu that isn't from a default
         this.shadowRoot
           .querySelector("#toolbar")
           .shadowRoot.querySelector("#moremenu")
@@ -540,7 +542,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         document.execCommand("superscript");
         prevent = true;
         // silly hack to account for trigging a selection from
-        // inside the menu that isn't from a paper-item
+        // inside the menu that isn't from a default
         this.shadowRoot
           .querySelector("#toolbar")
           .shadowRoot.querySelector("#moremenu")
@@ -555,7 +557,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         document.execCommand("strikeThrough");
         prevent = true;
         // silly hack to account for trigging a selection from
-        // inside the menu that isn't from a paper-item
+        // inside the menu that isn't from the default
         this.shadowRoot
           .querySelector("#toolbar")
           .shadowRoot.querySelector("#moremenu")

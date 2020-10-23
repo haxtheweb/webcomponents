@@ -2046,44 +2046,41 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (clear) {
       wipeSlot(this, "*");
     }
-    // pause quickly to ensure wipe goes through successfully
-    setTimeout(() => {
-      html = encapScript(html);
-      let fragment = document.createElement("div");
-      fragment.insertAdjacentHTML("beforeend", html);
-      while (fragment.firstChild !== null) {
-        if (typeof fragment.firstChild.tagName !== typeof undefined) {
-          // ensure import doesn't import non-sandbox safe things!
-          if (
-            HAXStore._isSandboxed &&
-            fragment.firstChild.tagName.toLowerCase() === "iframe"
+    html = encapScript(html);
+    let fragment = document.createElement("div");
+    fragment.insertAdjacentHTML("beforeend", html);
+    while (fragment.firstChild !== null) {
+      if (typeof fragment.firstChild.tagName !== typeof undefined) {
+        // ensure import doesn't import non-sandbox safe things!
+        if (
+          HAXStore._isSandboxed &&
+          fragment.firstChild.tagName.toLowerCase() === "iframe"
+        ) {
+          // Create a replacement tag of the desired type
+          var replacement = document.createElement("webview");
+          // Grab all of the original's attributes, and pass them to the replacement
+          for (
+            var j = 0, l = fragment.firstChild.attributes.length;
+            j < l;
+            ++j
           ) {
-            // Create a replacement tag of the desired type
-            var replacement = document.createElement("webview");
-            // Grab all of the original's attributes, and pass them to the replacement
-            for (
-              var j = 0, l = fragment.firstChild.attributes.length;
-              j < l;
-              ++j
-            ) {
-              var nodeName = fragment.firstChild.attributes.item(j).nodeName;
-              var value = fragment.firstChild.attributes.item(j).value;
-              if (nodeName === "height" || nodeName === "width") {
-                replacement.style[nodeName] == value;
-              }
-              replacement.setAttribute(nodeName, value);
+            var nodeName = fragment.firstChild.attributes.item(j).nodeName;
+            var value = fragment.firstChild.attributes.item(j).value;
+            if (nodeName === "height" || nodeName === "width") {
+              replacement.style[nodeName] == value;
             }
-            this.appendChild(replacement);
-          } else {
-            this.appendChild(fragment.firstChild);
+            replacement.setAttribute(nodeName, value);
           }
+          this.appendChild(replacement);
         } else {
-          // @todo might want to support appending or keeping track of comments / non tags
-          // but this is not a must have
-          fragment.removeChild(fragment.firstChild);
+          this.appendChild(fragment.firstChild);
         }
+      } else {
+        // @todo might want to support appending or keeping track of comments / non tags
+        // but this is not a must have
+        fragment.removeChild(fragment.firstChild);
       }
-    }, 50);
+    }
   }
   /**
    * Respond to hax operations.

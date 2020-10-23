@@ -20,7 +20,6 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
       this.render();
     }
     setTimeout(() => {
-      import("@polymer/paper-item/paper-item.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
     }, 0);
@@ -62,7 +61,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
     .area:hover {
       opacity: 1;
     }
-    paper-item {
+    button {
       background-color: var(--hax-contextual-action-color);
       -webkit-justify-content: flex-start;
       justify-content: flex-start;
@@ -73,7 +72,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
       color: white;
     }
     #drag hax-context-item:hover,
-    paper-item:hover {
+    button:hover {
       cursor: pointer;
       color: black;
     }
@@ -101,7 +100,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
         reset-on-select
         data-simple-tour-stop
         data-stop-title="label">
-        <paper-item hidden value=""></paper-item>
+        <button hidden value=""></button>
         <hax-context-item
           action
           mini
