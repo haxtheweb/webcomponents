@@ -3,7 +3,7 @@ import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
@@ -22,9 +22,6 @@ class HaxPreferencesDialog extends LitElement {
       css`
         :host {
           display: block;
-        }
-        iron-icon:not(:defined) {
-          display: none;
         }
         .title {
           position: relative;
@@ -88,7 +85,7 @@ class HaxPreferencesDialog extends LitElement {
   render() {
     return html`
       <h3 class="title">
-        <iron-icon icon="icons:settings"></iron-icon> ${this.title}
+        <simple-icon icon="hax:settings"></simple-icon> ${this.title}
       </h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <simple-fields

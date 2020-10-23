@@ -90,7 +90,6 @@ class HaxToolbar extends LitElement {
           event-name="hax-plate-op"
           reset-on-select
         >
-          <button value="" hidden></button>
           <slot name="more"></slot>
         </hax-context-item-menu>
       </div>

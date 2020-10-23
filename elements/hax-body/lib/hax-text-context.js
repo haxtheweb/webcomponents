@@ -35,9 +35,6 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         :host [hidden] {
           display: none;
         }
-        simple-popover-selection {
-          display: inline-flex;
-        }
         .selected-buttons {
           transition: 0.1s all ease-in-out;
           width: 0;
@@ -93,6 +90,10 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       this.addEventListener(
         "hax-context-item-selected",
         this._haxContextOperation.bind(this)
+      );
+      window.addEventListener(
+        "hax-context-item-selected",
+        this._haxInMenuContextOperation.bind(this)
       );
     }, 0);
     this.formattingList = [
@@ -401,6 +402,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
   }
   textFormatChanged(e) {
     // set internally
+    this.shadowRoot.querySelector("simple-popover-selection").opened = false;
     this.updateTextIconSelection(e.detail.getAttribute("value"));
     // notify up above that we want to change the tag
     this.dispatchEvent(
@@ -471,6 +473,41 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
   /**
    * Respond to simple modifications.
    */
+  _haxInMenuContextOperation(e) {
+    let detail = e.detail;
+    let prevent = false;
+    // support a simple insert event to bubble up or everything else
+    switch (detail.eventName) {
+      case "text-underline":
+        document.execCommand("underline");
+        prevent = true;
+        break;
+      case "text-subscript":
+        document.execCommand("subscript");
+        prevent = true;
+        break;
+      case "text-superscript":
+        document.execCommand("superscript");
+        prevent = true;
+        break;
+      case "text-strikethrough":
+        document.execCommand("strikeThrough");
+        prevent = true;
+        break;
+    }
+    if (prevent) {
+      if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
+        this.shadowRoot.querySelector(
+          "simple-popover-selection"
+        ).opened = false;
+      }
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
+  /**
+   * Respond to simple modifications.
+   */
   _haxContextOperation(e) {
     let detail = e.detail;
     let selection = HAXStore.getSelection();
@@ -519,53 +556,9 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         document.execCommand("italic");
         prevent = true;
         break;
-      case "text-underline":
-        document.execCommand("underline");
-        prevent = true;
-        // silly hack to account for trigging a selection from
-        // inside the menu that isn't from default
-        this.shadowRoot
-          .querySelector("#toolbar")
-          .shadowRoot.querySelector("#moremenu")
-          .shadowRoot.querySelector("#menu")
-          .hideMenu();
-        break;
-      case "text-subscript":
-        document.execCommand("subscript");
-        prevent = true;
-        // silly hack to account for trigging a selection from
-        // inside the menu that isn't from a default
-        this.shadowRoot
-          .querySelector("#toolbar")
-          .shadowRoot.querySelector("#moremenu")
-          .shadowRoot.querySelector("#menu")
-          .hideMenu();
-        break;
-      case "text-superscript":
-        document.execCommand("superscript");
-        prevent = true;
-        // silly hack to account for trigging a selection from
-        // inside the menu that isn't from a default
-        this.shadowRoot
-          .querySelector("#toolbar")
-          .shadowRoot.querySelector("#moremenu")
-          .shadowRoot.querySelector("#menu")
-          .hideMenu();
-        break;
       case "text-remove-format":
         document.execCommand("removeFormat");
         prevent = true;
-        break;
-      case "text-strikethrough":
-        document.execCommand("strikeThrough");
-        prevent = true;
-        // silly hack to account for trigging a selection from
-        // inside the menu that isn't from the default
-        this.shadowRoot
-          .querySelector("#toolbar")
-          .shadowRoot.querySelector("#moremenu")
-          .shadowRoot.querySelector("#menu")
-          .hideMenu();
         break;
       case "text-link":
         var href = "";

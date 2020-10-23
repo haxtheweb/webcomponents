@@ -100,11 +100,12 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
         reset-on-select
         data-simple-tour-stop
         data-stop-title="label">
-        <button hidden value=""></button>
         <hax-context-item
           action
           mini
-          icon="hardware:keyboard-arrow-up"
+          dark
+          simple
+          icon="hax:keyboard-arrow-up"
           label="Move up"
           event-name="hax-plate-up"
           direction="left"
@@ -112,7 +113,9 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
         <hax-context-item
           action
           mini
-          icon="hardware:keyboard-arrow-down"
+          dark
+          simple
+          icon="hax:keyboard-arrow-down"
           label="Move down"
           event-name="hax-plate-down"
           direction="left"

@@ -398,10 +398,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
       this.polyfillSafe = HAXStore.computePolyfillSafe();
       this.addEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
-      );
-      this.addEventListener(
         "place-holder-replace",
         this.replacePlaceholder.bind(this)
       );
@@ -968,6 +964,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       childList: true,
       subtree: true,
     });
+    window.addEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
     window.addEventListener("keydown", this._onKeyDown.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
     document.body.addEventListener(
@@ -993,6 +993,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     );
     window.removeEventListener("scroll", this._keepContextVisible.bind(this));
     window.removeEventListener("resize", this._keepContextVisible.bind(this));
+    window.removeEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
     this._observer.disconnect();
     super.disconnectedCallback();
   }
@@ -1034,7 +1038,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       document.activeElement.tagName !== "BODY" &&
       document.activeElement.tagName !== "SIMPLE-MODAL"
     ) {
-      console.log(document.activeElement);
       // if we are NOT editing and delete key is hit, delete the element
       if (!this.getAttribute("contenteditable")) {
         switch (e.key) {

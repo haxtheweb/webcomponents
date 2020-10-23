@@ -38,6 +38,9 @@ class SimpleIcon extends SimpleColors {
         feFlood {
           flood-color: var(--simple-colors-default-theme-accent-8, #000000);
         }
+        svg {
+          pointer-events: none;
+        }
       `,
     ];
   }

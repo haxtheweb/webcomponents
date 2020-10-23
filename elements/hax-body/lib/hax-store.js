@@ -1487,6 +1487,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this._isSandboxed = typeof test.reload === "function";
     // imports app, blox, stax definitions
     import("./hax-app.js");
+    // where all our icons live for simple-icon
+    import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
     import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
       esModule.setPassiveTouchGestures(true);
     });
@@ -2845,6 +2847,10 @@ window.Hax.grid = function (op = true) {
 
 window.Hax.set = function (key, value) {
   HAXStore.write(key, value, window);
+};
+
+window.Hax.get = function (key) {
+  return HAXStore[key];
 };
 
 window.Hax.export = function () {

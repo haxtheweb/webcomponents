@@ -1,6 +1,7 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 
 /**
@@ -62,7 +63,8 @@ class HaxMap extends SimpleColors {
           margin: 4px;
           padding: 0;
         }
-        ul iron-icon {
+        ul iron-icon,
+        ul simple-icon {
           padding: 0 8px;
         }
         a {
@@ -159,7 +161,7 @@ class HaxMap extends SimpleColors {
   render() {
     return html`
       <h3 class="title">
-        <iron-icon icon="maps:map"></iron-icon> ${this.title}
+        <simple-icon icon="hax:map"></simple-icon> ${this.title}
       </h3>
       <div class="container">
         <table>

@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@polymer/iron-icon/iron-icon.js";
 class HaxToolbarItem extends LitElement {
   static get styles() {
     return [
@@ -54,6 +56,7 @@ class HaxToolbarItem extends LitElement {
           align-items: center;
           min-width: 0;
           margin: 0;
+          border: 0px;
           text-transform: none;
           padding: 0;
           border-radius: 0;
@@ -64,8 +67,9 @@ class HaxToolbarItem extends LitElement {
           min-width: unset;
           background-color: var(
             --hax-contextual-action-color,
-            var(--simple-colors-default-theme-cyan-8, #007999)
+            var(--simple-colors-default-theme-grey-12, #007999)
           );
+
           color: var(
             --hax-contextual-action-text-color,
             var(--simple-colors-default-theme-grey-1, #fff)
@@ -76,7 +80,7 @@ class HaxToolbarItem extends LitElement {
         :host(:not([disabled])) button:focus {
           background-color: var(
             --hax-contextual-action-hover-color,
-            var(--simple-colors-default-theme-cyan-7, #009dc7)
+            var(--simple-colors-default-theme-grey-8, #009dc7)
           );
           color: var(
             --hax-contextual-action-text-color,
@@ -85,7 +89,7 @@ class HaxToolbarItem extends LitElement {
           outline: 1px solid
             var(
               --hax-contextual-action-color,
-              var(--simple-colors-default-theme-cyan-8, #007999)
+              var(--simple-colors-default-theme-grey-8, #007999)
             );
           z-index: 2;
         }
@@ -104,6 +108,7 @@ class HaxToolbarItem extends LitElement {
           background: var(--hax-color-bg-accent);
           color: var(--hax-color-text);
         }
+        simple-icon,
         iron-icon {
           width: 20px;
           height: 20px;
@@ -114,7 +119,7 @@ class HaxToolbarItem extends LitElement {
           width: 28px;
           height: 28px;
           padding: 1px;
-          border: none;
+          border: 0px;
         }
         :host([light]) button {
           background-color: #aaaaaa;
@@ -169,10 +174,17 @@ class HaxToolbarItem extends LitElement {
         tabindex="0"
         .title="${this.tooltip}"
       >
-        <iron-icon
-          icon="${this.icon}"
-          ?hidden="${this.icon == "" ? true : false}"
-        ></iron-icon>
+        ${this.simple
+          ? html` <simple-icon
+              ?dark="${!this.dark}"
+              icon="${this.icon}"
+              ?hidden="${this.icon == "" ? true : false}"
+            ></simple-icon>`
+          : html` <iron-icon
+              icon="${this.icon}"
+              ?hidden="${this.icon == "" ? true : false}"
+            ></iron-icon>`}
+
         <span id="label" ?hidden="${this.label == "" ? true : false}"
           >${this.label}</span
         >
@@ -194,6 +206,7 @@ class HaxToolbarItem extends LitElement {
   }
   constructor() {
     super();
+    this.simple = false;
     this.circle = false;
     this.corner = "";
     this.large = false;
@@ -223,6 +236,9 @@ class HaxToolbarItem extends LitElement {
       corner: {
         type: String,
         reflect: true,
+      },
+      simple: {
+        type: Boolean,
       },
       circle: {
         type: Boolean,

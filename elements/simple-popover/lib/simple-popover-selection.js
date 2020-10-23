@@ -18,8 +18,17 @@ class SimplePopoverSelection extends LitElement {
       let div = document.createElement("div");
       render(div, window.SimplePopoverManager.requestAvailability());
       let slot = this.querySelectorAll('[slot="options"]');
+      // account for nesting in a single option area
+      if (
+        slot.length === 1 &&
+        slot[0].children &&
+        slot[0].children.length === 1 &&
+        slot[0].children[0].tagName === "SLOT"
+      ) {
+        slot = slot[0].children[0].assignedNodes({ flatten: true });
+      }
       for (var i in slot) {
-        if (slot[i].cloneNode) {
+        if (slot[i].cloneNode && slot[i].tagName) {
           let clone = slot[i].cloneNode(true);
           clone.removeAttribute("slot");
           div.appendChild(clone);

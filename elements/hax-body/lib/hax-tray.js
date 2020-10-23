@@ -63,6 +63,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     this.__tipText = "Edit content";
     setTimeout(() => {
       import("./hax-tray-button.js");
+      // @todo replace all icons w/ simple-iconset
+      import("@lrnwebcomponents/simple-icon/simple-icon.js");
       import("@polymer/iron-icon/iron-icon.js");
       import("@polymer/iron-icons/iron-icons.js");
       import("@polymer/iron-icons/editor-icons.js");
@@ -127,12 +129,12 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             #fff
           );
           --hax-contextual-action-color: var(
-            --simple-colors-default-theme-cyan-7,
+            --simple-colors-default-theme-grey-12,
             #009dc7
           );
           --hax-contextual-action-hover-color: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
+            --simple-colors-default-theme-grey-8,
+            #009dc7
           );
           --simple-fields-accent-color: var(
             --simple-colors-default-theme-cyan-8,
@@ -140,7 +142,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           );
           --a11y-tabs-focus-color: var(
             --hax-contextual-action-hover-color,
-            var(--simple-colors-default-theme-cyan-8, #007999)
+            var(--simple-colors-default-theme-grey-8, #009dc7)
           );
         }
         .wrapper {
@@ -376,6 +378,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           max-height: 70vh;
           overflow: auto;
         }
+        simple-icon,
         iron-icon {
           margin-right: 8px;
         }
@@ -683,7 +686,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           <slot name="tray-collapse-pre"></slot>
           <a11y-collapse id="addcollapse" accordion data-simple-tour-stop>
             <div slot="heading" data-stop-title>
-              <iron-icon icon="icons:add"></iron-icon> Add Content
+              <simple-icon icon="hax:add"></simple-icon> Add Content
             </div>
             <div slot="tour" data-stop-content>
               When you want to add any content to the page from text, to images,
@@ -718,7 +721,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           </a11y-collapse>
           <a11y-collapse id="searchapps" accordion data-simple-tour-stop>
             <div slot="heading" data-stop-title>
-              <iron-icon icon="icons:search"></iron-icon> Search
+              <simple-icon icon="hax:search-clear"></simple-icon> Search
             </div>
             <div slot="tour" data-stop-content>
               Search for media and content anywhere that your copy of HAX has
@@ -736,7 +739,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             data-simple-tour-stop
           >
             <div slot="heading" data-stop-title>
-              <iron-icon icon="hax:templates"></iron-icon>Templates & Layouts
+              <simple-icon icon="hax:templates"></simple-icon>Templates &
+              Layouts
             </div>
             <div slot="tour" data-stop-content>
               Predefined layouts and templated areas. use this to rapidly create
