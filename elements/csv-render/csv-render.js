@@ -91,7 +91,7 @@ class CsvRender extends SimpleColors {
           position: absolute;
           left: calc(50% - 70px);
         }
-        #download paper-button {
+        #download button {
           color: var(--simple-colors-default-theme-accent-6);
           border-radius: 36px;
           width: 36px;
@@ -100,15 +100,17 @@ class CsvRender extends SimpleColors {
           padding: 0;
           margin: 0;
           display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
         iron-icon {
           display: inline-flex;
           margin: 0;
           padding: 0;
         }
-        #download paper-button:hover,
-        #download paper-button:focus,
-        #download paper-button:active {
+        #download button:hover,
+        #download button:focus,
+        #download button:active {
           color: var(--simple-colors-default-theme-accent-8);
           outline: 2px solid var(--simple-colors-default-theme-accent-6);
         }
@@ -127,7 +129,6 @@ class CsvRender extends SimpleColors {
     import("@polymer/iron-ajax/iron-ajax.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   /**
@@ -161,9 +162,7 @@ class CsvRender extends SimpleColors {
         size="small"
       ></hexagon-loader>
       <a href="${this.dataSource}" id="download" tabindex="-1">
-        <paper-button
-          ><iron-icon icon="file-download"></iron-icon
-        ></paper-button>
+        <button><iron-icon icon="file-download"></iron-icon></button>
       </a>
       <simple-tooltip for="download" animation-delay="200" offset="14"
         >Download table data</simple-tooltip

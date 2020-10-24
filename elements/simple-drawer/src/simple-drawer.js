@@ -11,7 +11,6 @@ import "@polymer/polymer/lib/elements/custom-style.js";
 
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/neon-animation/neon-animation.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 // register globally so we can make sure there is only one
