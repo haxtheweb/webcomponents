@@ -19,6 +19,7 @@
    */
   "hidden": {
     "type": "Boolean",
+    "reflect": true,
     "attribute": "hidden"
   },
   /**

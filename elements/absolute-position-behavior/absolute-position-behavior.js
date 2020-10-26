@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "./lib/absolute-position-state-manager";
+import "./lib/absolute-position-state-manager.js";
 
 /**
  * `absolute-position-behavior`
@@ -18,7 +18,7 @@ class AbsolutePositionBehavior extends LitElement {
       css`
         :host {
           display: inline-block;
-          z-index: 99999999;
+          z-index: 99999999999;
           position: absolute;
         }
 
@@ -59,6 +59,7 @@ class AbsolutePositionBehavior extends LitElement {
        */
       hidden: {
         type: Boolean,
+        reflect: true,
         attribute: "hidden",
       },
       /**

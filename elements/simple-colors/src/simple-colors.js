@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import { SimpleColorsSharedStylesGlobal } from "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 const SimpleColorsSuper = function (SuperClass) {
   return class extends SuperClass {
     /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -12,8 +12,7 @@ const SimpleColorsSuper = function (SuperClass) {
       super();
       this.accentColor = "grey";
       this.dark = false;
-      this.__utils = window.SimpleColorsSharedStyles.requestAvailability();
-      this.colors = window.SimpleColorsSharedStyles.colors;
+      this.colors = SimpleColorsSharedStylesGlobal.colors;
     }
 
     static get tag() {
@@ -27,7 +26,7 @@ const SimpleColorsSuper = function (SuperClass) {
      * @param {number} the inverted shade
      */
     invertShade(shade) {
-      return this.__utils.invertShade(shade);
+      return SimpleColorsSharedStylesGlobal.invertShade(shade);
     }
 
     /**
@@ -37,7 +36,7 @@ const SimpleColorsSuper = function (SuperClass) {
      * @param {object} an object that includes the theme, color, and shade information
      */
     getColorInfo(colorName) {
-      return this.__utils.getColorInfo(colorName);
+      return SimpleColorsSharedStylesGlobal.getColorInfo(colorName);
     }
 
     /**
@@ -49,7 +48,7 @@ const SimpleColorsSuper = function (SuperClass) {
      * @returns {string} the CSS Variable
      */
     makeVariable(color = "grey", shade = 1, theme = "default") {
-      return this.__utils.makeVariable(
+      return SimpleColorsSharedStylesGlobal.makeVariable(
         (color = "grey"),
         (shade = 1),
         (theme = "default")
@@ -67,7 +66,11 @@ const SimpleColorsSuper = function (SuperClass) {
      * @param {object} all of the WCAG 2.0 AA-compliant colors and shades
      */
     getContrastingColors(colorName, colorShade, isLarge) {
-      return this.__utils.getContrastingColors(colorName, colorShade, isLarge);
+      return SimpleColorsSharedStylesGlobal.getContrastingColors(
+        colorName,
+        colorShade,
+        isLarge
+      );
     }
 
     /**
@@ -82,7 +85,7 @@ const SimpleColorsSuper = function (SuperClass) {
      * @param {array} all of the WCAG 2.0 AA-compliant shades of the contrasting color
      */
     getContrastingShades(isLarge, colorName, colorShade, contrastName) {
-      return this.__utils.getContrastingShades(
+      return SimpleColorsSharedStylesGlobal.getContrastingShades(
         isLarge,
         colorName,
         colorShade,
@@ -107,7 +110,7 @@ const SimpleColorsSuper = function (SuperClass) {
       contrastName,
       contrastShade
     ) {
-      return this.__utils.isContrastCompliant(
+      return SimpleColorsSharedStylesGlobal.isContrastCompliant(
         isLarge,
         colorName,
         colorShade,

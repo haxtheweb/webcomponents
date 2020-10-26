@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsLite } from "./lib/simple-fields-lite.js";
+import "./lib/simple-fields-field.js";
 /**
  * `simple-fields`
  * Uses JSON Schema to display a series of fields
@@ -192,6 +193,10 @@ class SimpleFields extends SimpleFieldsLite {
         type: Object,
         attribute: "active-path",
       },
+      disableResponsive: {
+        type: Boolean,
+        attribute: "disable-responsive",
+      },
     };
   }
 
@@ -205,15 +210,9 @@ class SimpleFields extends SimpleFieldsLite {
   constructor() {
     super();
     this.activeTabs = {};
-    this.addEventListener("active-tab-changed", this._handleActiveTab);
+    this.disableResponsive = false;
     setTimeout(() => {
-      import("./lib/simple-fields-field.js");
-      import("./lib/simple-fields-tabs.js");
-      import("./lib/simple-fields-code.js");
-      import("./lib/simple-fields-upload.js");
-      import("@lrnwebcomponents/simple-picker/simple-picker.js");
-      import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
-      import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
+      this.addEventListener("active-tab-changed", this._handleActiveTab);
     }, 0);
   }
 
@@ -294,6 +293,7 @@ class SimpleFields extends SimpleFieldsLite {
           },
           "simple-picker": {
             defaultSettings: {
+              import: "@lrnwebcomponents/simple-picker/simple-picker.js",
               element: "simple-picker",
               attributes: {
                 autofocus: true,
@@ -362,6 +362,8 @@ class SimpleFields extends SimpleFieldsLite {
           },
           markup: {
             defaultSettings: {
+              import:
+                "@lrnwebcomponents/simple-fields/lib/simple-fields-code.js",
               element: "simple-fields-code",
               setValueProperty: "editorValue",
               noWrap: true,
@@ -400,9 +402,13 @@ class SimpleFields extends SimpleFieldsLite {
             format: {
               tabs: {
                 defaultSettings: {
+                  import:
+                    "@lrnwebcomponents/simple-fields/lib/simple-fields-tabs.js",
                   element: "simple-fields-tabs",
                   noWrap: true,
                   child: {
+                    import:
+                      "@lrnwebcomponents/simple-fields/lib/simple-fields-tab.js",
                     element: "simple-fields-tab",
                     noWrap: true,
                     labelSlot: "label",
@@ -412,6 +418,7 @@ class SimpleFields extends SimpleFieldsLite {
                     layoutBreakpoint: "layoutBreakpoint",
                     iconBreakpoint: "iconBreakpoint",
                     sticky: "sticky",
+                    disableResponsive: this.disableResponsive,
                   },
                 },
               },
@@ -451,6 +458,8 @@ class SimpleFields extends SimpleFieldsLite {
               },
               colorpicker: {
                 defaultSettings: {
+                  import:
+                    "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js",
                   element: "simple-colors-picker",
                   attributes: {
                     autofocus: true,
@@ -499,6 +508,8 @@ class SimpleFields extends SimpleFieldsLite {
               },
               fileupload: {
                 defaultSettings: {
+                  import:
+                    "@lrnwebcomponents/simple-fields/lib/simple-fields-upload.js",
                   element: "simple-fields-upload",
                   noWrap: true,
                   attributes: {
@@ -508,6 +519,8 @@ class SimpleFields extends SimpleFieldsLite {
               },
               iconpicker: {
                 defaultSettings: {
+                  import:
+                    "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js",
                   element: "simple-icon-picker",
                   attributes: {
                     autofocus: true,

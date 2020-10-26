@@ -32,6 +32,11 @@
           "type": "string"
         },
         {
+          "name": "no-colorize",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
@@ -42,12 +47,6 @@
           "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
-        },
-        {
-          "name": "colors",
-          "description": "make the default theme dark?",
-          "type": "object",
-          "default": "\"colors\""
         }
       ],
       "properties": [
@@ -60,6 +59,12 @@
           "name": "icon",
           "attribute": "icon",
           "type": "string"
+        },
+        {
+          "name": "noColorize",
+          "attribute": "no-colorize",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "accentColor",
@@ -77,9 +82,6 @@
         },
         {
           "name": "colors",
-          "attribute": "colors",
-          "description": "make the default theme dark?",
-          "type": "object",
           "default": "\"colors\""
         }
       ]
@@ -98,6 +100,11 @@
           "type": "string"
         },
         {
+          "name": "no-colorize",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
@@ -108,12 +115,6 @@
           "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
-        },
-        {
-          "name": "colors",
-          "description": "make the default theme dark?",
-          "type": "object",
-          "default": "\"colors\""
         }
       ],
       "properties": [
@@ -126,6 +127,12 @@
           "name": "icon",
           "attribute": "icon",
           "type": "string"
+        },
+        {
+          "name": "noColorize",
+          "attribute": "no-colorize",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "accentColor",
@@ -143,9 +150,6 @@
         },
         {
           "name": "colors",
-          "attribute": "colors",
-          "description": "make the default theme dark?",
-          "type": "object",
           "default": "\"colors\""
         }
       ]

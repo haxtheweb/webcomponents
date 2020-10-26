@@ -4,7 +4,7 @@
  */
 import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
@@ -14,6 +14,7 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./haxcms-site-dashboard.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 /**
  * `haxcms-site-editor`
  * `haxcms editor element that provides all editing capabilities`
@@ -512,7 +513,7 @@ class HAXCMSSiteEditor extends LitElement {
     window.addEventListener("haxcms-create-node", this.createNode.bind(this));
     window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
 
-    if (window.HaxStore.ready) {
+    if (HAXStore.ready) {
       let detail = {
         detail: true,
       };
@@ -928,7 +929,7 @@ class HAXCMSSiteEditor extends LitElement {
 
   _storeReadyToGo(event) {
     if (event.detail) {
-      window.HaxStore.instance.connectionRewrites.appendJwt = "jwt";
+      HAXStore.connectionRewrites.appendJwt = "jwt";
     }
   }
   /**
@@ -967,7 +968,7 @@ class HAXCMSSiteEditor extends LitElement {
   _manifestChanged(newValue) {
     if (this.activeItem && newValue.metadata) {
       // set upload manager to point to this location in a more dynamic fashion
-      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint =
+      HAXStore.connectionRewrites.appendUploadEndPoint =
         "siteName=" +
         newValue.metadata.site.name +
         "&nodeId=" +
@@ -988,7 +989,7 @@ class HAXCMSSiteEditor extends LitElement {
   _activeItemChanged(newValue, oldValue) {
     if (newValue && this.manifest) {
       // set upload manager to point to this location in a more dynamic fashion
-      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint =
+      HAXStore.connectionRewrites.appendUploadEndPoint =
         "siteName=" +
         this.manifest.metadata.site.name +
         "&nodeId=" +
@@ -1189,7 +1190,7 @@ class HAXCMSSiteEditor extends LitElement {
   saveNode(e) {
     // send the request
     if (this.saveNodePath) {
-      let body = window.HaxStore.instance.activeHaxBody.haxToContent();
+      let body = HAXStore.activeHaxBody.haxToContent();
       this.querySelector("#nodeupdateajax").body = {
         jwt: this.jwt,
         site: {
@@ -1198,7 +1199,7 @@ class HAXCMSSiteEditor extends LitElement {
         node: {
           id: this.activeItem.id,
           body: body,
-          schema: window.HaxStore.htmlToHaxElements(body),
+          schema: HAXStore.htmlToHaxElements(body),
         },
       };
       this.querySelector("#nodeupdateajax").generateRequest();
@@ -1276,8 +1277,8 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   _bodyChanged(e) {
-    if (window.HaxStore.instance.activeHaxBody) {
-      window.HaxStore.instance.activeHaxBody.importContent(e.detail);
+    if (HAXStore.activeHaxBody) {
+      HAXStore.activeHaxBody.importContent(e.detail);
     }
   }
   /**

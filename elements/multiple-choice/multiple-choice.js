@@ -18,7 +18,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         :host {
           display: block;
           padding: 16px 16px 54px 16px;
-          background-color: var(--simple-colors-default-theme-grey-1);
           color: var(--simple-colors-default-theme-grey-12);
           --paper-checkbox-unchecked-color: var(
             --simple-colors-default-theme-grey-12
@@ -239,7 +238,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         <paper-toast
           id="toast"
           scroll-action="cancel"
-          duration="6000"
+          duration="4000"
           position-target="${this.positionTarget}"
           class="fit-bottom ${this.__toastColor}"
         >

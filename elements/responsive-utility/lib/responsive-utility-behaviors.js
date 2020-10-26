@@ -1,5 +1,5 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
-import { ResponsiveUtility } from "../responsive-utility.js";
+import { html } from "lit-element/lit-element.js";
+import "../responsive-utility.js";
 /**
  * `responsive-utility-behaviors`
  * A superclass to that custom elements can extend to automatically use ResponsiveUtility.
@@ -66,7 +66,7 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
     }
 
     render() {
-      return html` <slot></slot> `;
+      return html`<slot></slot>`;
     }
 
     constructor() {
@@ -76,42 +76,47 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
       this.md = 900;
       this.lg = 1200;
       this.xl = 1500;
+      this.disableResponsive = false;
     }
     /**
      * init the utility & register element
      */
     firstUpdated() {
       super.firstUpdated();
-      window.ResponsiveUtility.requestAvailability();
-      this.dispatchEvent(
-        new CustomEvent("responsive-element", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: {
-            attribute: "responsive-size",
-            custom: "responsive-width",
-            element: this,
-            sm: this.sm,
-            md: this.md,
-            lg: this.lg,
-            xl: this.xl,
-          },
-        })
-      );
+      if (!this.disableResponsive) {
+        window.ResponsiveUtility.requestAvailability();
+        this.dispatchEvent(
+          new CustomEvent("responsive-element", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              attribute: "responsive-size",
+              custom: "responsive-width",
+              element: this,
+              sm: this.sm,
+              md: this.md,
+              lg: this.lg,
+              xl: this.xl,
+            },
+          })
+        );
+      }
     }
     /**
      * detached the element
      */
     disconnectedCallback() {
-      this.dispatchEvent(
-        new CustomEvent("responsive-element-deleted", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
+      if (!this.disableResponsive) {
+        this.dispatchEvent(
+          new CustomEvent("responsive-element-deleted", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this,
+          })
+        );
+      }
       super.disconnectedCallback();
     }
   };

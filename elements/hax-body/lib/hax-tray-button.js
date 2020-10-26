@@ -1,6 +1,5 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `hax-tray-button`
@@ -20,7 +19,7 @@ class HAXTrayButton extends SimpleColors {
     this.icon = null;
     this.colorMeaning = false;
     this._defaultHoverColor = "cyan";
-    this._defaultColor = "blue-grey";
+    this._defaultColor = "cyan";
     this.accentColor = this._defaultColor;
     this.hoverAccentColor = this._defaultColor;
     this.addEventListener("focusin", this._focusIn.bind(this));
@@ -93,15 +92,23 @@ class HAXTrayButton extends SimpleColors {
       ...super.styles,
       css`
         :host {
+          --hax-tray-panel-accent-text: var(
+            --simple-colors-default-theme-grey-1,
+            #fff
+          );
+          --hax-tray-panel-accent: var(
+            --simple-colors-default-theme-purple-8,
+            #8a009b
+          );
+          --simple-fields-accent-color: var(
+            --simple-colors-default-theme-purple-8,
+            #8a009b
+          );
           display: inline-flex;
           flex-direction: column;
           align-items: center;
           margin: 1px 0;
           transition: all 0.5ms ease-in-out;
-          --hax-contextual-action-color: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
-          );
         }
         :host([disabled]) {
           pointer-events: none;
@@ -129,14 +136,14 @@ class HAXTrayButton extends SimpleColors {
         :host([wide]) .item-label {
           width: unset;
         }
-        :host([wide]) paper-button {
+        :host([wide]) button {
           align-items: center;
           justify-content: space-around;
         }
         .flip-icon {
           transform: rotateY(180deg);
         }
-        paper-button {
+        button {
           text-transform: none;
           color: var(
             --hax-quick-button-accent-text,
@@ -153,16 +160,18 @@ class HAXTrayButton extends SimpleColors {
             );
           min-width: unset;
           cursor: pointer;
+          align-items: center;
           height: 40px;
           display: flex;
+          width: 100%;
           padding: 4px;
           margin: 0px;
           border-radius: 0;
           transition: all 0.5ms ease-in-out;
         }
-        paper-button:active,
-        paper-button:focus,
-        paper-button:hover {
+        button:active,
+        button:focus,
+        button:hover {
           color: var(
             --hax-tray-panel-accent-text,
             var(--simple-colors-default-theme-grey-1, #fff)
@@ -177,18 +186,18 @@ class HAXTrayButton extends SimpleColors {
           );
           transition: all 0.5ms ease-in-out;
         }
-        paper-button iron-icon {
+        button iron-icon {
           display: inline-block;
         }
         :host([mini]) {
           height: 30px;
           width: 30px;
         }
-        :host([mini]) paper-button {
+        :host([mini]) button {
           height: 30px;
           width: 30px;
         }
-        :host([mini]) paper-button iron-icon {
+        :host([mini]) button iron-icon {
           height: 18px;
           width: 18px;
         }
@@ -229,7 +238,7 @@ class HAXTrayButton extends SimpleColors {
   }
   render() {
     return html`
-      <paper-button
+      <button
         title="${this.label}"
         ?disabled="${this.disabled}"
         @click="${this._fireEvent}"
@@ -244,7 +253,7 @@ class HAXTrayButton extends SimpleColors {
         ${this.mini
           ? html``
           : html` <div class="item-label">${this.label}</div> `}
-      </paper-button>
+      </button>
       ${this.mini ? html` <simple-tooltip>${this.label}</simple-tooltip> ` : ``}
     `;
   }

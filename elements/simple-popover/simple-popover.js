@@ -65,18 +65,26 @@ class SimplePopover extends AbsolutePositionBehavior {
           width: unset;
         }
 
+        :host {
+          pointer-events: none;
+        }
+
         #content {
           margin: 0;
+          pointer-events: all;
           padding: var(--simple-popover-padding, 10px);
           color: var(--simple-popover-color, #222);
           background-color: var(--simple-popover-background-color, white);
           border: 1px solid var(--simple-popover-border-color, #bbb);
-          min-height: 20px;
           border-radius: var(--simple-popover-border-radius, 3px);
           box-shadow: var(
             --simple-popover-box-shadow,
             rgba(60, 64, 67, 0.3) 0px 4px 8px 3px
           );
+          min-height: 20px;
+          max-height: 200px;
+          overflow: auto;
+          scroll-behavior: smooth;
         }
 
         #pointer-outer {

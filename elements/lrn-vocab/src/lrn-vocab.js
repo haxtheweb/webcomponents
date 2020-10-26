@@ -67,6 +67,18 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
    * Request the singleton dialog open
    */
   openDialog(e) {
+    if (
+      window.HaxStore &&
+      window.HaxStore.instance &&
+      window.HaxStore.instance.ready &&
+      window.HaxStore.instance.editMode
+    ) {
+      // do not do default
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      return false;
+    }
     let c = document.createElement("div");
     for (var id in this.children) {
       if (this.children[id].cloneNode) {

@@ -1,0 +1,8 @@
+{
+  "link": {
+    "type": String
+  },
+  "title": {
+    "type": String
+  }
+}

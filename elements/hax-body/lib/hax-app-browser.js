@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import "./hax-tray-button.js";
+import { HAXStore } from "./hax-store.js";
+import { autorun, toJS } from "mobx";
 
 /**
  * `hax-app-browser`
@@ -11,7 +12,7 @@ import "./hax-tray-button.js";
  * - hax-app - expression of how to communicate and visualize a data source
  * - gizmo - silly name for the general public when talking about hax-app and what it provides in the end
  */
-class HaxAppBrowser extends winEventsElement(LitElement) {
+class HaxAppBrowser extends LitElement {
   static get styles() {
     return [
       css`
@@ -34,15 +35,23 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   }
   constructor() {
     super();
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-      "hax-search-source-updated": "_searchSelected",
-    };
+    this.addEventListener("hax-tray-button-click", (e) => {
+      if (e.detail.eventName === "search-selected") {
+        this.searching = true;
+        HAXStore.activeApp = toJS(this.appList[e.detail.index]);
+      }
+    });
     this.searching = false;
-    this.activeApp = null;
     this.appList = [];
+    this.activeApp = null;
     this.hasActive = false;
     import("@lrnwebcomponents/hax-body/lib/hax-app-search.js");
+    autorun(() => {
+      this.appList = toJS(HAXStore.appList);
+    });
+    autorun(() => {
+      this.activeApp = toJS(HAXStore.activeApp);
+    });
   }
   render() {
     return html`
@@ -106,20 +115,13 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "activeApp") {
+      if (propName == "activeApp" && this[propName]) {
         this._activeAppChanged(this[propName], oldValue);
       }
+      if (propName == "appList" && this[propName] && this.shadowRoot) {
+        this.resetBrowser();
+      }
     });
-  }
-  /**
-   * App has been selected.
-   */
-  _searchSelected(e) {
-    // item bubbled up
-    if (typeof e.detail !== typeof undefined) {
-      this.searching = true;
-      window.HaxStore.write("activeApp", this.appList[e.detail], this);
-    }
   }
 
   /**
@@ -130,25 +132,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
       this.hasActive = true;
     } else {
       this.hasActive = false;
-    }
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      this.shadowRoot &&
-      e.detail &&
-      e.detail.value &&
-      e.detail.property === "appList"
-    ) {
-      this.resetBrowser();
-    } else if (
-      e.detail &&
-      e.detail.value &&
-      e.detail.property === "activeApp"
-    ) {
-      this.activeApp = e.detail.value;
     }
   }
   firstUpdated(changedProperties) {
@@ -164,7 +147,7 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
    */
   resetBrowser() {
     this.searching = false;
-    this.appList = [...window.HaxStore.instance.appList];
+    //this.appList = [...HAXStore.appList];
   }
 }
 window.customElements.define(HaxAppBrowser.tag, HaxAppBrowser);

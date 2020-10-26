@@ -1,14 +1,15 @@
 import {
   observable,
-  decorate,
+  makeObservable,
   computed,
   autorun,
-  action,
   toJS,
-} from "mobx/lib/mobx.module.js";
+  configure,
+} from "mobx";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+configure({ enforceActions: false }); // strict mode off
 class Store {
   constructor() {
     this.location = null;
@@ -27,6 +28,29 @@ class Store {
       instance: null,
     };
     this.dashboardOpened = false;
+    makeObservable(this, {
+      location: observable.ref, // router location in url
+      editMode: observable, // global editing state
+      jwt: observable, // json web token
+      dashboardOpened: observable, // if haxcms backend settings are open
+      userData: observable, // user data object for logged in users
+      manifest: observable, // JOS / manifest
+      activeItemContent: observable, // active site content, cleaned up
+      themeElement: observable, // theme element
+      routerManifest: computed, // router mixed in manifest w/ routes / paths
+      siteTitle: computed,
+      isLoggedIn: computed, // simple boolean for state so we can style based on logged in
+      themeData: computed, // get the active theme from manifest + activeId
+      homeLink: computed,
+      activeId: observable, // this affects all state changes associated to activeItem
+      activeItem: computed, // active item object
+      activeItemFields: computed, // active item field values
+      activeManifestIndex: computed, // active array index, used for pagination
+      activeManifestIndexCounter: computed, // active array index counter, used for pagination
+      activeTitle: computed, // active page title
+      parentTitle: computed, // active page parent title
+      ancestorTitle: computed, // active page ancestor title
+    });
   }
   /**
    * Load a manifest / site.json / JSON outline schema
@@ -542,30 +566,6 @@ class Store {
     }
   }
 }
-decorate(Store, {
-  location: observable.ref, // router location in url
-  editMode: observable, // global editing state
-  jwt: observable, // json web token
-  dashboardOpened: observable, // if haxcms backend settings are open
-  userData: observable, // user data object for logged in users
-  manifest: observable, // JOS / manifest
-  activeItemContent: observable, // active site content, cleaned up
-  themeElement: observable, // theme element
-  routerManifest: computed, // router mixed in manifest w/ routes / paths
-  siteTitle: computed,
-  isLoggedIn: computed, // simple boolean for state so we can style based on logged in
-  themeData: computed, // get the active theme from manifest + activeId
-  homeLink: computed,
-  activeId: observable, // this affects all state changes associated to activeItem
-  activeItem: computed, // active item object
-  activeItemFields: computed, // active item field values
-  activeManifestIndex: computed, // active array index, used for pagination
-  activeManifestIndexCounter: computed, // active array index counter, used for pagination
-  activeTitle: computed, // active page title
-  parentTitle: computed, // active page parent title
-  ancestorTitle: computed, // active page ancestor title
-  changeActiveItem: action.bound,
-});
 /**
  * Central store
  */
@@ -644,7 +644,7 @@ class HAXCMSSiteStore extends HTMLElement {
     autorun(() => {
       const editMode = toJS(store.editMode);
       // trap for early setup
-      if (window.HaxStore && window.HaxStore.write) {
+      if (HAXStore && HAXStore.write) {
         window.dispatchEvent(
           new CustomEvent("haxcms-edit-mode-changed", {
             bubbles: true,
@@ -653,14 +653,11 @@ class HAXCMSSiteStore extends HTMLElement {
             detail: editMode,
           })
         );
-        window.HaxStore.write("editMode", editMode, window.HaxStore.instance);
+        HAXStore.editMode = editMode;
         // @todo hack to keep voice controls active if enabled
-        if (
-          window.HaxStore.instance &&
-          window.HaxStore.instance.globalPreferences.haxVoiceCommands
-        ) {
+        if (HAXStore.globalPreferences.haxVoiceCommands) {
           setTimeout(() => {
-            window.HaxStore.instance.__hal.auto = true;
+            HAXStore.__hal.auto = true;
           }, 10);
         }
       }

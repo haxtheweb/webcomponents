@@ -14,12 +14,5 @@
     "name": "dark",
     "type": "Boolean",
     "reflect": true
-  },
-  /**
-   * make the default theme dark?
-   */
-  "colors": {
-    "name": "colors",
-    "type": "Object"
   }
 }

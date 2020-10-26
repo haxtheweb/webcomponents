@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "hax-body",
-      "description": "`hax-body`\nManager of the body area that can be modified\n\n### Styling\n`<hax-bodys>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n--haxcms-base-styles-body-font-size |   | 16px\n--haxcms-base-styles-body-font-family, 'Noto Serif' |   | serif\n--haxcms-base-styles-body-line-height |   | 1.8\n--haxcms-base-styles-body-letter-spacing |   | .5px\n--hax-ui-headings |   | #d4ff77;\n--hax-color-text | default text color | #000\n--hax-contextual-action-text-color |  | --simple-colors-default-theme-grey-1\n--hax-contextual-action-color |  | --simple-colors-default-theme-cyan-7\n--hax-contextual-action-hover-color |  | \n--hax-body-target-background-color: --simple-colors-default-theme-cyan-2\n--hax-body-possible-target-background-color: --simple-colors-default-theme-grey-2\n\n####Outlines\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-body-editable-outline |   | 1px solid --simple-colors-default-theme-deep-orange\n--hax-body-active-outline-hover: 1px solid --hax-contextual-action-color\n--hax-body-active-outline: 3px solid  --hax-contextual-action-color\n\n####Headings\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-h1-font-size |   | 2.5em\n--hax-base-styles-h1-line-height |   | 2.5em\n--hax-base-styles-h2-font-size |   | 2em\n--hax-base-styles-h3-font-size |   | 1.75em\n--hax-base-styles-h4-font-size |   | 1.5em\n--hax-base-styles-h5-font-size |   | 1.25em\n--hax-base-styles-h6-font-size |   | 1.25em\n--hax-base-styles-p-min-height |   | 43px\n--hax-base-styles-p-font-size |   | 24px\n--hax-base-styles-p-line-height |   | 1.8\n--hax-base-styles-p-letter-spacing |   | 0.5px\n\n####Links\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-a-color |  | --simple-colors-default-theme-grey-12\n--hax-base-styles-a-font-size |   | 24px\n--hax-base-styles-a-font-weight |   | normal\n--hax-base-styles-a-color-visited |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-color-active |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-font-weight-active |   | normal\n\n####Lists\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-list-padding-bottom |   | 1.5em\n--hax-base-styles-list-line-height |   | 40px\n--hax-base-styles-list-font-size |   | 24px\n--hax-base-styles-list-last-child-padding-bottom |   | 1em\n--hax-base-styles-list-padding-left |   | 20px\n--hax-base-styles-list-margin-left |   | 20px\n\nEvents:\n\n  * `hax-register-body` {`CustomEvent<this>`} - \n\n  * `active-node-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `active-container-node-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `hax-body-tag-added` {`CustomEvent<{ node: Node; }>`} - \n\n  * `hax-body-tag-removed` {`CustomEvent<{ node: Node; }>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-drop-focus-event` {`CustomEvent<any>`} - \n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `openDrawer` - \n\n  * `edit-mode` {`boolean`} - State of if we are editing or not.\n\n  * `globalPreferences` - Access to the global properties object.\n\n  * `hax-ray-mode` {`boolean`} - Bust out the HAX Ray mode\n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `haxSelectedText` {`string`} - Text hax-store has detected is selected currently.\n\n  * `activeContainerNode` - A reference to the active node in the slot.\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `openDrawer` - \n\n  * `__mouseMoving` {`boolean`} - \n\n  * `___moveLock` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of if we are editing or not.\n\n  * `globalPreferences` - Access to the global properties object.\n\n  * `haxRayMode` {`boolean`} - Bust out the HAX Ray mode\n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `haxSelectedText` {`string`} - Text hax-store has detected is selected currently.\n\n  * `activeContainerNode` - A reference to the active node in the slot.\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`hax-body`\nManager of the body area that can be modified\n\n### Styling\n`<hax-bodys>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n--haxcms-base-styles-body-font-size |   | 16px\n--haxcms-base-styles-body-font-family, 'Noto Serif' |   | serif\n--haxcms-base-styles-body-line-height |   | 1.8\n--haxcms-base-styles-body-letter-spacing |   | .5px\n--hax-ui-headings |   | #d4ff77;\n--hax-color-text | default text color | #000\n--hax-contextual-action-text-color |  | --simple-colors-default-theme-grey-1\n--hax-contextual-action-color |  | --simple-colors-default-theme-cyan-7\n--hax-contextual-action-hover-color |  | \n--hax-body-target-background-color: --simple-colors-default-theme-cyan-2\n--hax-body-possible-target-background-color: --simple-colors-default-theme-grey-2\n\n####Outlines\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-body-editable-outline |   | 1px solid --simple-colors-default-theme-deep-orange\n--hax-body-active-outline-hover: 1px solid --hax-contextual-action-color\n--hax-body-active-outline: 3px solid  --hax-contextual-action-color\n\n####Headings\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-h1-font-size |   | 2.5em\n--hax-base-styles-h1-line-height |   | 2.5em\n--hax-base-styles-h2-font-size |   | 2em\n--hax-base-styles-h3-font-size |   | 1.75em\n--hax-base-styles-h4-font-size |   | 1.5em\n--hax-base-styles-h5-font-size |   | 1.25em\n--hax-base-styles-h6-font-size |   | 1.25em\n--hax-base-styles-p-min-height |   | 43px\n--hax-base-styles-p-font-size |   | 24px\n--hax-base-styles-p-line-height |   | 1.8\n--hax-base-styles-p-letter-spacing |   | 0.5px\n\n####Links\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-a-color |  | --simple-colors-default-theme-grey-12\n--hax-base-styles-a-font-size |   | 24px\n--hax-base-styles-a-font-weight |   | normal\n--hax-base-styles-a-color-visited |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-color-active |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-font-weight-active |   | normal\n\n####Lists\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-list-padding-bottom |   | 1.5em\n--hax-base-styles-list-line-height |   | 40px\n--hax-base-styles-list-font-size |   | 24px\n--hax-base-styles-list-last-child-padding-bottom |   | 1em\n--hax-base-styles-list-padding-left |   | 20px\n--hax-base-styles-list-margin-left |   | 20px\n\nEvents:\n\n  * `hax-register-body` {`CustomEvent<this>`} - \n\n  * `hax-body-tag-added` {`CustomEvent<{ node: Node; }>`} - \n\n  * `hax-body-tag-removed` {`CustomEvent<{ node: Node; }>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-drop-focus-event` {`CustomEvent<any>`} - \n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `openDrawer` - \n\n  * `edit-mode` {`boolean`} - State of if we are editing or not.\n\n  * `hax-mover` {`boolean`} - \n\n  * `globalPreferences` - Access to the global properties object.\n\n  * `hax-ray-mode` {`boolean`} - Bust out the HAX Ray mode\n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `openDrawer` - \n\n  * `__ignoreActive` {`boolean`} - \n\n  * `__dragMoving` {`boolean`} - \n\n  * `___moveLock` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of if we are editing or not.\n\n  * `haxMover` {`boolean`} - \n\n  * `globalPreferences` - Access to the global properties object.\n\n  * `haxRayMode` {`boolean`} - Bust out the HAX Ray mode\n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "openDrawer",
@@ -12,6 +12,11 @@
         {
           "name": "edit-mode",
           "description": "`edit-mode` {`boolean`} - State of if we are editing or not.\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hax-mover",
+          "description": "`hax-mover` {`boolean`} - \n\nProperty: haxMover\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -26,14 +31,6 @@
         {
           "name": "activeNode",
           "description": "`activeNode` - A reference to the active node in the slot.\n\nProperty: activeNode\n\nDefault: null"
-        },
-        {
-          "name": "haxSelectedText",
-          "description": "`haxSelectedText` {`string`} - Text hax-store has detected is selected currently.\n\nProperty: haxSelectedText\n\nDefault: "
-        },
-        {
-          "name": "activeContainerNode",
-          "description": "`activeContainerNode` - A reference to the active node in the slot.\n\nProperty: activeContainerNode\n\nDefault: null"
         },
         {
           "name": "can-undo",
@@ -67,20 +64,8 @@
           "valueSet": "v"
         },
         {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        },
-        {
           "name": "onhax-register-body",
           "description": "`hax-register-body` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "onactive-node-changed",
-          "description": "`active-node-changed` {`CustomEvent<{ value: any; }>`} - "
-        },
-        {
-          "name": "onactive-container-node-changed",
-          "description": "`active-container-node-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
           "name": "onhax-body-tag-added",
@@ -114,7 +99,7 @@
     },
     {
       "name": "hax-app-browser",
-      "description": "`hax-app-browser`\n\nAttributes:\n\n  * `search` {`string`} - Search term\n\n  * `searching` {`boolean`} - Searching mode\n\n  * `activeApp` - Global activeApp object.\n\n  * `appList` {`any[]`} - \n\n  * `has-active` {`boolean`} - If we have an active, scale everything\n\nProperties:\n\n  * `search` {`string`} - Search term\n\n  * `__winEvents` - \n\n  * `searching` {`boolean`} - Searching mode\n\n  * `activeApp` - Global activeApp object.\n\n  * `appList` {`any[]`} - \n\n  * `hasActive` {`boolean`} - If we have an active, scale everything",
+      "description": "`hax-app-browser`\n\nAttributes:\n\n  * `search` {`string`} - Search term\n\n  * `searching` {`boolean`} - Searching mode\n\n  * `appList` {`any[]`} - \n\n  * `activeApp` - Global activeApp object.\n\n  * `has-active` {`boolean`} - If we have an active, scale everything\n\nProperties:\n\n  * `search` {`string`} - Search term\n\n  * `searching` {`boolean`} - Searching mode\n\n  * `appList` {`any[]`} - \n\n  * `activeApp` - Global activeApp object.\n\n  * `hasActive` {`boolean`} - If we have an active, scale everything",
       "attributes": [
         {
           "name": "search",
@@ -126,12 +111,12 @@
           "valueSet": "v"
         },
         {
-          "name": "activeApp",
-          "description": "`activeApp` - Global activeApp object.\n\nProperty: activeApp\n\nDefault: null"
-        },
-        {
           "name": "appList",
           "description": "`appList` {`any[]`} - \n\nProperty: appList\n\nDefault: "
+        },
+        {
+          "name": "activeApp",
+          "description": "`activeApp` - Global activeApp object.\n\nProperty: activeApp\n\nDefault: null"
         },
         {
           "name": "has-active",
@@ -259,7 +244,7 @@
     },
     {
       "name": "hax-app-search",
-      "description": "`hax-app-search`\n`An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that we can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`\n\nAttributes:\n\n  * `activeApp` - Active app globally bound based on previous selection.\n\n  * `searchSchema` - Search schema for presenting a form of input.\n\n  * `requestEndPoint` {`string`} - \n\n  * `requestParams` - \n\n  * `auto` {`boolean`} - Immediatley perform a request.\n\n  * `headers` - Custom headers for data binding from the App feed.\n\n  * `method` {`string`} - Custom method for requesting data (almost always will be GET)\n\n  * `loading` {`boolean`} - loading\n\n  * `requestData` - Media request data updated\n\n  * `media` {`any[]`} - Media object, normalized.\n\n  * `tos` {`any[]`} - Terms of service object\n\n  * `resultMap` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `activeApp` - Active app globally bound based on previous selection.\n\n  * `searchSchema` - Search schema for presenting a form of input.\n\n  * `requestEndPoint` {`string`} - \n\n  * `requestParams` - \n\n  * `__winEvents` - \n\n  * `auto` {`boolean`} - Immediatley perform a request.\n\n  * `headers` - Custom headers for data binding from the App feed.\n\n  * `method` {`string`} - Custom method for requesting data (almost always will be GET)\n\n  * `loading` {`boolean`} - loading\n\n  * `requestData` - Media request data updated\n\n  * `media` {`any[]`} - Media object, normalized.\n\n  * `tos` {`any[]`} - Terms of service object\n\n  * `resultMap` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`hax-app-search`\n`An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that we can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`\n\nAttributes:\n\n  * `activeApp` - Active app globally bound based on previous selection.\n\n  * `searchSchema` - Search schema for presenting a form of input.\n\n  * `requestEndPoint` {`string`} - \n\n  * `requestParams` - \n\n  * `auto` {`boolean`} - Immediatley perform a request.\n\n  * `headers` - Custom headers for data binding from the App feed.\n\n  * `method` {`string`} - Custom method for requesting data (almost always will be GET)\n\n  * `loading` {`boolean`} - loading\n\n  * `requestData` - Media request data updated\n\n  * `media` {`any[]`} - Media object, normalized.\n\n  * `tos` {`any[]`} - Terms of service object\n\n  * `resultMap` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeApp` - Active app globally bound based on previous selection.\n\n  * `searchSchema` - Search schema for presenting a form of input.\n\n  * `requestEndPoint` {`string`} - \n\n  * `requestParams` - \n\n  * `auto` {`boolean`} - Immediatley perform a request.\n\n  * `headers` - Custom headers for data binding from the App feed.\n\n  * `method` {`string`} - Custom method for requesting data (almost always will be GET)\n\n  * `loading` {`boolean`} - loading\n\n  * `requestData` - Media request data updated\n\n  * `media` {`any[]`} - Media object, normalized.\n\n  * `tos` {`any[]`} - Terms of service object\n\n  * `resultMap` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "activeApp",
@@ -319,10 +304,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     },
@@ -375,11 +356,16 @@
     },
     {
       "name": "hax-ce-context",
-      "description": "`hax-ce-context`\n`A context menu that provides common custom-element based authoring options.\n\nAttributes:\n\n  * `disableTransform` {`boolean`} - \n\n  * `activeTagIcon` {`string`} - \n\n  * `activeTagName` {`string`} - \n\nProperties:\n\n  * `disableTransform` {`boolean`} - \n\n  * `activeTagIcon` {`string`} - \n\n  * `activeTagName` {`string`} - \n\n  * `__winEvents` - \n\n  * `haxProperties` - ",
+      "description": "`hax-ce-context`\n`A context menu that provides common custom-element based authoring options.\n\nAttributes:\n\n  * `disableTransform` {`boolean`} - \n\n  * `on-screen` {`boolean`} - \n\n  * `activeTagIcon` {`string`} - \n\n  * `activeTagName` {`string`} - \n\nProperties:\n\n  * `disableTransform` {`boolean`} - \n\n  * `onScreen` {`boolean`} - \n\n  * `activeTagIcon` {`string`} - \n\n  * `activeTagName` {`string`} - ",
       "attributes": [
         {
           "name": "disableTransform",
           "description": "`disableTransform` {`boolean`} - \n\nProperty: disableTransform",
+          "valueSet": "v"
+        },
+        {
+          "name": "on-screen",
+          "description": "`on-screen` {`boolean`} - \n\nProperty: onScreen",
           "valueSet": "v"
         },
         {
@@ -429,7 +415,7 @@
         },
         {
           "name": "label",
-          "description": "`label` {`string`} - Label for the button.\n\nProperty: label\n\nDefault: editor:text-fields"
+          "description": "`label` {`string`} - Label for the button.\n\nProperty: label\n\nDefault: "
         },
         {
           "name": "onselected-value-changed",
@@ -514,8 +500,13 @@
     },
     {
       "name": "hax-context-item",
-      "description": "`hax-context-item`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ target: this; eventName: string; value: string; }>`} - \n\nAttributes:\n\n  * `height` {`string`} - \n\n  * `description` {`string`} - Optional description for this item.\n\n  * `light` {`boolean`} - Light theme for toolbar item.\n\n  * `action` {`boolean`} - \n\n  * `large` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `more` {`boolean`} - more implies there's an action after pressing the button\nso it'll put a visual indicator as such\n\n  * `mini` {`boolean`} - Mini theme for making things small and round.\n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `direction` {`string`} - Direction for the tooltip\n\n  * `icon` {`string`} - Icon for the button.\n\n  * `icon-class` {`string`} - Icon for the button.\n\n  * `label` {`string`} - Label for the button.\n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `input-method` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `property-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `slot-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `default` {`boolean`} - Is this button concidered a primary interaction\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily\n\nProperties:\n\n  * `height` {`string`} - \n\n  * `description` {`string`} - Optional description for this item.\n\n  * `light` {`boolean`} - Light theme for toolbar item.\n\n  * `action` {`boolean`} - \n\n  * `large` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `more` {`boolean`} - more implies there's an action after pressing the button\nso it'll put a visual indicator as such\n\n  * `mini` {`boolean`} - Mini theme for making things small and round.\n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `direction` {`string`} - Direction for the tooltip\n\n  * `icon` {`string`} - Icon for the button.\n\n  * `iconClass` {`string`} - Icon for the button.\n\n  * `label` {`string`} - Label for the button.\n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `inputMethod` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `propertyToBind` {`string`} - Optional slot to bind this value to.\n\n  * `slotToBind` {`string`} - Optional slot to bind this value to.\n\n  * `default` {`boolean`} - Is this button concidered a primary interaction\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily",
+      "description": "`hax-context-item`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ target: this; eventName: string; value: string; }>`} - \n\nAttributes:\n\n  * `circle` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `description` {`string`} - Optional description for this item.\n\n  * `danger` {`boolean`} - color shift for dangerous operation\n\n  * `light` {`boolean`} - Light theme for toolbar item.\n\n  * `action` {`boolean`} - \n\n  * `large` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `more` {`boolean`} - more implies there's an action after pressing the button\nso it'll put a visual indicator as such\n\n  * `mini` {`boolean`} - Mini theme for making things small and round.\n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `direction` {`string`} - Direction for the tooltip\n\n  * `icon` {`string`} - Icon for the button.\n\n  * `icon-class` {`string`} - Icon for the button.\n\n  * `label` {`string`} - Label for the button.\n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `input-method` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `property-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `slot-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `default` {`boolean`} - Is this button concidered a primary interaction\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily\n\nProperties:\n\n  * `circle` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `description` {`string`} - Optional description for this item.\n\n  * `danger` {`boolean`} - color shift for dangerous operation\n\n  * `light` {`boolean`} - Light theme for toolbar item.\n\n  * `action` {`boolean`} - \n\n  * `large` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `more` {`boolean`} - more implies there's an action after pressing the button\nso it'll put a visual indicator as such\n\n  * `mini` {`boolean`} - Mini theme for making things small and round.\n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `direction` {`string`} - Direction for the tooltip\n\n  * `icon` {`string`} - Icon for the button.\n\n  * `iconClass` {`string`} - Icon for the button.\n\n  * `label` {`string`} - Label for the button.\n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `inputMethod` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `propertyToBind` {`string`} - Optional slot to bind this value to.\n\n  * `slotToBind` {`string`} - Optional slot to bind this value to.\n\n  * `default` {`boolean`} - Is this button concidered a primary interaction\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily",
       "attributes": [
+        {
+          "name": "circle",
+          "description": "`circle` {`boolean`} - \n\nProperty: circle",
+          "valueSet": "v"
+        },
         {
           "name": "height",
           "description": "`height` {`string`} - \n\nProperty: height"
@@ -523,6 +514,11 @@
         {
           "name": "description",
           "description": "`description` {`string`} - Optional description for this item.\n\nProperty: description"
+        },
+        {
+          "name": "danger",
+          "description": "`danger` {`boolean`} - color shift for dangerous operation\n\nProperty: danger\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "light",
@@ -608,7 +604,7 @@
     },
     {
       "name": "hax-export-dialog",
-      "description": "`hax-export-dialog`\n\nEvents:\n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - Title when open.\n\n  * `opened` {`boolean`} - \n\n  * `globalPreferences` - Access to the global properties object.\n\nProperties:\n\n  * `__winEvents` - \n\n  * `title` {`string`} - Title when open.\n\n  * `fileTypes` - \n\n  * `opened` {`boolean`} - \n\n  * `globalPreferences` - Access to the global properties object.",
+      "description": "`hax-export-dialog`\n\nEvents:\n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - Title when open.\n\n  * `opened` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - Title when open.\n\n  * `fileTypes` - \n\n  * `opened` {`boolean`} - ",
       "attributes": [
         {
           "name": "title",
@@ -620,10 +616,6 @@
           "valueSet": "v"
         },
         {
-          "name": "globalPreferences",
-          "description": "`globalPreferences` - Access to the global properties object.\n\nProperty: globalPreferences\n\nDefault: [object Object]"
-        },
-        {
           "name": "onhax-register-core-piece",
           "description": "`hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - "
         }
@@ -631,7 +623,7 @@
     },
     {
       "name": "hax-gizmo-browser",
-      "description": "`hax-gizmo-browser`\n`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n\nAttributes:\n\n  * `__gizmoList` {`any[]`} - \n\n  * `filtered` {`any[]`} - \n\nProperties:\n\n  * `__winEvents` - \n\n  * `__gizmoList` {`any[]`} - \n\n  * `filtered` {`any[]`} - ",
+      "description": "`hax-gizmo-browser`\n`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n\nAttributes:\n\n  * `__gizmoList` {`any[]`} - \n\n  * `filtered` {`any[]`} - \n\nProperties:\n\n  * `__gizmoList` {`any[]`} - \n\n  * `filtered` {`any[]`} - ",
       "attributes": [
         {
           "name": "__gizmoList",
@@ -645,12 +637,32 @@
     },
     {
       "name": "hax-map",
-      "description": "`hax-map`\n\nEvents:\n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`hax-map`\n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "opened",
           "description": "`opened` {`boolean`} - \n\nProperty: opened",
           "valueSet": "v"
+        },
+        {
+          "name": "cCount",
+          "description": "`cCount` {`string`} - \n\nProperty: cCount"
+        },
+        {
+          "name": "wCount",
+          "description": "`wCount` {`string`} - \n\nProperty: wCount"
+        },
+        {
+          "name": "hCount",
+          "description": "`hCount` {`string`} - \n\nProperty: hCount"
+        },
+        {
+          "name": "pCount",
+          "description": "`pCount` {`string`} - \n\nProperty: pCount"
+        },
+        {
+          "name": "eCount",
+          "description": "`eCount` {`string`} - \n\nProperty: eCount"
         },
         {
           "name": "elementList",
@@ -668,14 +680,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        },
-        {
-          "name": "onhax-register-core-piece",
-          "description": "`hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - "
         }
       ]
     },
@@ -729,65 +733,16 @@
     },
     {
       "name": "hax-plate-context",
-      "description": "`hax-plate-context`\n`A context menu that provides common grid plate based authoring options.`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `__winEvents` - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "description": "`hax-plate-context`\n`A context menu that provides common grid plate based authoring options.`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - \n\n  * `tourName` {`string`} - ",
       "attributes": []
     },
     {
-      "name": "hax-export-dialog",
-      "description": "`hax-export-dialog`\n\nEvents:\n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\nAttributes:\n\n  * `preferences` - Preferences managed for everything global about HAX.\n\n  * `opened` {`boolean`} - \n\n  * `ghLink` {`string`} - github link\n\n  * `title` {`string`} - Title when open.\n\n  * `schema` - Schema that has all of inputs / manages state\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `preferences` - Preferences managed for everything global about HAX.\n\n  * `opened` {`boolean`} - \n\n  * `__winEvents` - \n\n  * `ghLink` {`string`} - github link\n\n  * `title` {`string`} - Title when open.\n\n  * `schema` - Schema that has all of inputs / manages state\n\n  * `schemaValues` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
-      "attributes": [
-        {
-          "name": "preferences",
-          "description": "`preferences` - Preferences managed for everything global about HAX.\n\nProperty: preferences"
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened",
-          "valueSet": "v"
-        },
-        {
-          "name": "ghLink",
-          "description": "`ghLink` {`string`} - github link\n\nProperty: ghLink"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title when open.\n\nProperty: title\n\nDefault: Advanced settings"
-        },
-        {
-          "name": "schema",
-          "description": "`schema` - Schema that has all of inputs / manages state\n\nProperty: schema\n\nDefault: [object Object],[object Object]"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        },
-        {
-          "name": "onhax-register-core-piece",
-          "description": "`hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - "
-        }
-      ]
-    },
-    {
       "name": "hax-preferences-dialog",
-      "description": "`hax-export-dialog`\n\nEvents:\n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\nAttributes:\n\n  * `preferences` - Preferences managed for everything global about HAX.\n\n  * `opened` {`boolean`} - \n\n  * `ghLink` {`string`} - github link\n\n  * `title` {`string`} - Title when open.\n\n  * `schema` - Schema that has all of inputs / manages state\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `preferences` - Preferences managed for everything global about HAX.\n\n  * `opened` {`boolean`} - \n\n  * `__winEvents` - \n\n  * `ghLink` {`string`} - github link\n\n  * `title` {`string`} - Title when open.\n\n  * `schema` - Schema that has all of inputs / manages state\n\n  * `schemaValues` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`hax-preferences-dialog`\n\nAttributes:\n\n  * `globalPreferences` - Preferences managed for everything global about HAX.\n\n  * `ghLink` {`string`} - github link\n\n  * `title` {`string`} - Title.\n\n  * `schema` - Schema that has all of inputs / manages state\n\nProperties:\n\n  * `globalPreferences` - Preferences managed for everything global about HAX.\n\n  * `ghLink` {`string`} - github link\n\n  * `title` {`string`} - Title.\n\n  * `schema` - Schema that has all of inputs / manages state\n\n  * `schemaValues` - ",
       "attributes": [
         {
-          "name": "preferences",
-          "description": "`preferences` - Preferences managed for everything global about HAX.\n\nProperty: preferences"
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened",
-          "valueSet": "v"
+          "name": "globalPreferences",
+          "description": "`globalPreferences` - Preferences managed for everything global about HAX.\n\nProperty: globalPreferences"
         },
         {
           "name": "ghLink",
@@ -795,28 +750,11 @@
         },
         {
           "name": "title",
-          "description": "`title` {`string`} - Title when open.\n\nProperty: title\n\nDefault: Advanced settings"
+          "description": "`title` {`string`} - Title.\n\nProperty: title\n\nDefault: Advanced settings"
         },
         {
           "name": "schema",
           "description": "`schema` - Schema that has all of inputs / manages state\n\nProperty: schema\n\nDefault: [object Object],[object Object]"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        },
-        {
-          "name": "onhax-register-core-piece",
-          "description": "`hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - "
         }
       ]
     },
@@ -876,31 +814,15 @@
     },
     {
       "name": "hax-store",
-      "description": "Events:\n\n  * `hax-store-app-store-loaded` {`CustomEvent<boolean>`} - \n\n  * `hax-store-ready` {`CustomEvent<boolean>`} - \n\n  * `hax-store-property-updated` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\nAttributes:\n\n  * `openDrawer` - \n\n  * `activeGizmo` - \n\n  * `haxTray` - Hax tray\n\n  * `haxAppPicker` - Hax app picker element.\n\n  * `haxStaxPicker` - Hax stax picker element.\n\n  * `haxBloxPicker` - Hax stax picker element.\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `activeHaxBody` - The hax-body that is currently active.\n\n  * `haxToast` - HAX Toast message.\n\n  * `haxExport` - Hax export dialog element.\n\n  * `haxMap` - Hax export dialog element.\n\n  * `haxPreferences` - Hax preferences dialog element.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `__ready` {`boolean`} - \n\n  * `voice-responses-to` {`string`} - \n\n  * `skip-hax-confirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `activeContainerNode` - Active container Node, 2nd highest parent of activeNode.\n\n  * `activeNode` - Active Node.\n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `editMode` {`boolean`} - editMode\n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `gizmoList` {`any[]`} - Available gizmos.\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `appList` {`any[]`} - Available apps of things supplying media / content.\n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `bloxList` {`any[]`} - Available hax blox which are grid plate / layout elements\n\n  * `globalPreferences` - Global preferences that HAX can write to and\nother elements can use to go off of.\n\n  * `activeApp` - Globally active app, used for brokering communications\n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voice-debug` {`boolean`} - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `haxProperties` - haxProperties\n\nProperties:\n\n  * `openDrawer` - \n\n  * `activeGizmo` - \n\n  * `haxTray` - Hax tray\n\n  * `haxAppPicker` - Hax app picker element.\n\n  * `haxStaxPicker` - Hax stax picker element.\n\n  * `haxBloxPicker` - Hax stax picker element.\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `activeHaxBody` - The hax-body that is currently active.\n\n  * `haxToast` - HAX Toast message.\n\n  * `haxExport` - Hax export dialog element.\n\n  * `haxMap` - Hax export dialog element.\n\n  * `haxPreferences` - Hax preferences dialog element.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `__ready` {`boolean`} - \n\n  * `__winEvents` - \n\n  * `voiceRespondsTo` {`string`} - \n\n  * `voiceCommands` - \n\n  * `skipHAXConfirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `activeContainerNode` - Active container Node, 2nd highest parent of activeNode.\n\n  * `activeNode` - Active Node.\n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `editMode` {`boolean`} - editMode\n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `gizmoList` {`any[]`} - Available gizmos.\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `appList` {`any[]`} - Available apps of things supplying media / content.\n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `bloxList` {`any[]`} - Available hax blox which are grid plate / layout elements\n\n  * `globalPreferences` - Global preferences that HAX can write to and\nother elements can use to go off of.\n\n  * `activeApp` - Globally active app, used for brokering communications\n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voiceDebug` {`boolean`} - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `haxProperties` - haxProperties\n\n  * `HAXWiring` - ",
+      "description": "Events:\n\n  * `hax-insert-content` {`CustomEvent<{ tag: any; properties: any; content: string; gizmo: any; }>`} - \n\n  * `hax-store-write` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: any; duration: number; classStyle: string; closeText: any; eventCallback: any; }>`} - \n\n  * `hax-store-app-store-loaded` {`CustomEvent<boolean>`} - \n\n  * `hax-store-ready` {`CustomEvent<boolean>`} - \n\n  * `hax-store-property-updated` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\nAttributes:\n\n  * `openDrawer` - \n\n  * `haxTray` - Hax tray\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `activeHaxBody` - The hax-body that is currently active.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `__ready` {`boolean`} - \n\n  * `voice-responses-to` {`string`} - \n\n  * `skip-hax-confirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `bloxList` {`any[]`} - Available hax blox which are grid plate / layout elements\n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voice-debug` {`boolean`} - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `haxProperties` - haxProperties\n\nProperties:\n\n  * `openDrawer` - \n\n  * `haxTray` - Hax tray\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `activeHaxBody` - The hax-body that is currently active.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `__ready` {`boolean`} - \n\n  * `activeGizmo` - \n\n  * `haxSelectedText` {`string`} - \n\n  * `__winEvents` - \n\n  * `voiceRespondsTo` {`string`} - \n\n  * `voiceCommands` - \n\n  * `skipHAXConfirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `activeNode` - \n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `editMode` {`boolean`} - \n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `appList` {`never[]`} - \n\n  * `gizmoList` {`never[]`} - \n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `bloxList` {`any[]`} - Available hax blox which are grid plate / layout elements\n\n  * `globalPreferences` - \n\n  * `activeApp` - \n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voiceDebug` {`boolean`} - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `haxProperties` - haxProperties\n\n  * `HAXWiring` - ",
       "attributes": [
         {
           "name": "openDrawer",
           "description": "`openDrawer` - \n\nProperty: openDrawer"
         },
         {
-          "name": "activeGizmo",
-          "description": "`activeGizmo` - \n\nProperty: activeGizmo"
-        },
-        {
           "name": "haxTray",
           "description": "`haxTray` - Hax tray\n\nProperty: haxTray"
-        },
-        {
-          "name": "haxAppPicker",
-          "description": "`haxAppPicker` - Hax app picker element.\n\nProperty: haxAppPicker"
-        },
-        {
-          "name": "haxStaxPicker",
-          "description": "`haxStaxPicker` - Hax stax picker element.\n\nProperty: haxStaxPicker"
-        },
-        {
-          "name": "haxBloxPicker",
-          "description": "`haxBloxPicker` - Hax stax picker element.\n\nProperty: haxBloxPicker"
         },
         {
           "name": "haxAutoloader",
@@ -909,22 +831,6 @@
         {
           "name": "activeHaxBody",
           "description": "`activeHaxBody` - The hax-body that is currently active.\n\nProperty: activeHaxBody"
-        },
-        {
-          "name": "haxToast",
-          "description": "`haxToast` - HAX Toast message.\n\nProperty: haxToast"
-        },
-        {
-          "name": "haxExport",
-          "description": "`haxExport` - Hax export dialog element.\n\nProperty: haxExport"
-        },
-        {
-          "name": "haxMap",
-          "description": "`haxMap` - Hax export dialog element.\n\nProperty: haxMap"
-        },
-        {
-          "name": "haxPreferences",
-          "description": "`haxPreferences` - Hax preferences dialog element.\n\nProperty: haxPreferences"
         },
         {
           "name": "__appStoreData",
@@ -953,14 +859,6 @@
           "description": "`appStore` - Possible appStore endpoint for loading in things dynamically.\n\nProperty: appStore\n\nDefault: [object Object]"
         },
         {
-          "name": "activeContainerNode",
-          "description": "`activeContainerNode` - Active container Node, 2nd highest parent of activeNode.\n\nProperty: activeContainerNode\n\nDefault: null"
-        },
-        {
-          "name": "activeNode",
-          "description": "`activeNode` - Active Node.\n\nProperty: activeNode\n\nDefault: null"
-        },
-        {
           "name": "haxBodies",
           "description": "`haxBodies` {`any[]`} - A list of all haxBodies that exist\n\nProperty: haxBodies\n\nDefault: "
         },
@@ -973,26 +871,13 @@
           "description": "`sessionObject` - Session object bridged in from a session method of some kind\n\nProperty: sessionObject\n\nDefault: [object Object]"
         },
         {
-          "name": "editMode",
-          "description": "`editMode` {`boolean`} - editMode\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
           "name": "skipExitTrap",
           "description": "`skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\nProperty: skipExitTrap\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "gizmoList",
-          "description": "`gizmoList` {`any[]`} - Available gizmos.\n\nProperty: gizmoList\n\nDefault: "
-        },
-        {
           "name": "elementList",
           "description": "`elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\nProperty: elementList\n\nDefault: [object Object]"
-        },
-        {
-          "name": "appList",
-          "description": "`appList` {`any[]`} - Available apps of things supplying media / content.\n\nProperty: appList\n\nDefault: "
         },
         {
           "name": "staxList",
@@ -1001,14 +886,6 @@
         {
           "name": "bloxList",
           "description": "`bloxList` {`any[]`} - Available hax blox which are grid plate / layout elements\n\nProperty: bloxList\n\nDefault: "
-        },
-        {
-          "name": "globalPreferences",
-          "description": "`globalPreferences` - Global preferences that HAX can write to and\nother elements can use to go off of.\n\nProperty: globalPreferences\n\nDefault: [object Object]"
-        },
-        {
-          "name": "activeApp",
-          "description": "`activeApp` - Globally active app, used for brokering communications\n\nProperty: activeApp\n\nDefault: [object Object]"
         },
         {
           "name": "connectionRewrites",
@@ -1037,6 +914,18 @@
           "description": "`haxProperties` - haxProperties\n\nProperty: haxProperties"
         },
         {
+          "name": "onhax-insert-content",
+          "description": "`hax-insert-content` {`CustomEvent<{ tag: any; properties: any; content: string; gizmo: any; }>`} - "
+        },
+        {
+          "name": "onhax-store-write",
+          "description": "`hax-store-write` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - "
+        },
+        {
+          "name": "onsimple-toast-show",
+          "description": "`simple-toast-show` {`CustomEvent<{ text: any; duration: number; classStyle: string; closeText: any; eventCallback: any; }>`} - "
+        },
+        {
           "name": "onhax-store-app-store-loaded",
           "description": "`hax-store-app-store-loaded` {`CustomEvent<boolean>`} - "
         },
@@ -1051,22 +940,8 @@
       ]
     },
     {
-      "name": "undoer-element",
-      "description": "Events:\n\n  * `state` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `state` - \n\nProperties:\n\n  * `state` - \n\n  * `openDrawer` {`boolean`} - \n\n  * `_root` - \n\n  * `_selfAttributeChange` {`boolean`} - \n\n  * `_undoer` - ",
-      "attributes": [
-        {
-          "name": "state",
-          "description": "`state` - \n\nProperty: state"
-        },
-        {
-          "name": "onstate",
-          "description": "`state` {`CustomEvent<any>`} - "
-        }
-      ]
-    },
-    {
       "name": "hax-text-context",
-      "description": "`hax-text-context`\n\nEvents:\n\n  * `selected-value-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `has-selected-text` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `haxSelectedText` {`string`} - Text hax-store has detected is selected currently.\n\n  * `selected-value` {`number`} - Selected value to match format of the tag currently.\n\n  * `realSelectedValue` {`string`} - \n\n  * `selection` {`boolean`} - Selection tracking\n\n  * `format-icon` {`string`} - Selected item icon\n\n  * `is-safari` {`boolean`} - Is this safari\n\nProperties:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `hasSelectedText` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `haxSelectedText` {`string`} - Text hax-store has detected is selected currently.\n\n  * `selectedValue` {`number`} - Selected value to match format of the tag currently.\n\n  * `__winEvents` - \n\n  * `realSelectedValue` {`string`} - \n\n  * `selection` {`boolean`} - Selection tracking\n\n  * `formatIcon` {`string`} - Selected item icon\n\n  * `isSafari` {`boolean`} - Is this safari",
+      "description": "`hax-text-context`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: string; value: string; }>`} - \n\nAttributes:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `has-selected-text` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `formattingList` {`any[]`} - \n\n  * `realSelectedValue` {`string`} - \n\n  * `format-icon` {`string`} - Selected item icon\n\n  * `is-safari` {`boolean`} - Is this safari\n\nProperties:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `hasSelectedText` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `formattingList` {`any[]`} - \n\n  * `realSelectedValue` {`string`} - \n\n  * `formatIcon` {`string`} - Selected item icon\n\n  * `isSafari` {`boolean`} - Is this safari\n\n  * `tourName` {`string`} - ",
       "attributes": [
         {
           "name": "_showIndent",
@@ -1084,21 +959,12 @@
           "valueSet": "v"
         },
         {
-          "name": "haxSelectedText",
-          "description": "`haxSelectedText` {`string`} - Text hax-store has detected is selected currently.\n\nProperty: haxSelectedText"
-        },
-        {
-          "name": "selected-value",
-          "description": "`selected-value` {`number`} - Selected value to match format of the tag currently.\n\nProperty: selectedValue"
+          "name": "formattingList",
+          "description": "`formattingList` {`any[]`} - \n\nProperty: formattingList\n\nDefault: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
         },
         {
           "name": "realSelectedValue",
           "description": "`realSelectedValue` {`string`} - \n\nProperty: realSelectedValue\n\nDefault: p"
-        },
-        {
-          "name": "selection",
-          "description": "`selection` {`boolean`} - Selection tracking\n\nProperty: selection\n\nDefault: false",
-          "valueSet": "v"
         },
         {
           "name": "format-icon",
@@ -1110,18 +976,23 @@
           "valueSet": "v"
         },
         {
-          "name": "onselected-value-changed",
-          "description": "`selected-value-changed` {`CustomEvent<any>`} - "
+          "name": "onhax-context-item-selected",
+          "description": "`hax-context-item-selected` {`CustomEvent<{ eventName: string; value: string; }>`} - "
         }
       ]
     },
     {
       "name": "hax-toolbar-item",
-      "description": "Attributes:\n\n  * `height` {`string`} - \n\n  * `corner` {`string`} - corner\n\n  * `large` {`boolean`} - Present larger then normal but consistent\n\n  * `disabled` {`boolean`} - disabled state\n\n  * `dark` {`boolean`} - Inverted display mode\n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `mini` {`boolean`} - Present smaller the normal but consistent\n\n  * `icon` {`string`} - Icon to represent this button, required.\n\n  * `label` {`string`} - Text applied to the button\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `tooltip-direction` {`string`} - Direction that the tooltip should flow\n\n  * `default` {`boolean`} - \n\nProperties:\n\n  * `height` {`string`} - \n\n  * `corner` {`string`} - corner\n\n  * `large` {`boolean`} - Present larger then normal but consistent\n\n  * `disabled` {`boolean`} - disabled state\n\n  * `dark` {`boolean`} - Inverted display mode\n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `mini` {`boolean`} - Present smaller the normal but consistent\n\n  * `icon` {`string`} - Icon to represent this button, required.\n\n  * `label` {`string`} - Text applied to the button\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `tooltipDirection` {`string`} - Direction that the tooltip should flow\n\n  * `default` {`boolean`} - ",
+      "description": "Attributes:\n\n  * `height` {`string`} - \n\n  * `circle` {`boolean`} - \n\n  * `corner` {`string`} - corner\n\n  * `large` {`boolean`} - Present larger then normal but consistent\n\n  * `disabled` {`boolean`} - disabled state\n\n  * `dark` {`boolean`} - Inverted display mode\n\n  * `danger` {`boolean`} - \n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `mini` {`boolean`} - Present smaller the normal but consistent\n\n  * `icon` {`string`} - Icon to represent this button, required.\n\n  * `label` {`string`} - Text applied to the button\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `tooltip-direction` {`string`} - Direction that the tooltip should flow\n\n  * `default` {`boolean`} - \n\nProperties:\n\n  * `height` {`string`} - \n\n  * `circle` {`boolean`} - \n\n  * `corner` {`string`} - corner\n\n  * `large` {`boolean`} - Present larger then normal but consistent\n\n  * `disabled` {`boolean`} - disabled state\n\n  * `dark` {`boolean`} - Inverted display mode\n\n  * `danger` {`boolean`} - \n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `mini` {`boolean`} - Present smaller the normal but consistent\n\n  * `icon` {`string`} - Icon to represent this button, required.\n\n  * `label` {`string`} - Text applied to the button\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `tooltipDirection` {`string`} - Direction that the tooltip should flow\n\n  * `default` {`boolean`} - ",
       "attributes": [
         {
           "name": "height",
           "description": "`height` {`string`} - \n\nProperty: height"
+        },
+        {
+          "name": "circle",
+          "description": "`circle` {`boolean`} - \n\nProperty: circle\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "corner",
@@ -1140,6 +1011,11 @@
         {
           "name": "dark",
           "description": "`dark` {`boolean`} - Inverted display mode\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "danger",
+          "description": "`danger` {`boolean`} - \n\nProperty: danger\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -1238,7 +1114,7 @@
     },
     {
       "name": "hax-tray-button",
-      "description": "`hax-tray-button`\n`A button in the tray`\n\nEvents:\n\n  * `hax-tray-button-click` {`CustomEvent<{ eventName: any; index: any; value: any; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: this; callback: string; }>`} - \n\nAttributes:\n\n  * `voice-command` {`string`} - Voice command to append for things that support data-voicecommand.\n\n  * `index` {`number`} - Index position in the original list of imports\n\n  * `label` {`string`} - label\n\n  * `color` {`string`} - color name of the item\n\n  * `disabled` {`boolean`} - \n\n  * `mini` {`boolean`} - \n\n  * `wide` {`boolean`} - \n\n  * `event-data` {`string`} - \n\n  * `event-name` {`string`} - \n\n  * `icon` {`string`} - Icon for the button, optional.\n\n  * `color-meaning` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `voiceCommand` {`string`} - Voice command to append for things that support data-voicecommand.\n\n  * `index` {`number`} - Index position in the original list of imports\n\n  * `label` {`string`} - label\n\n  * `color` {`string`} - color name of the item\n\n  * `disabled` {`boolean`} - \n\n  * `mini` {`boolean`} - \n\n  * `wide` {`boolean`} - \n\n  * `eventData` {`string`} - \n\n  * `eventName` {`string`} - \n\n  * `icon` {`string`} - Icon for the button, optional.\n\n  * `colorMeaning` {`boolean`} - \n\n  * `_defaultHoverColor` {`string`} - \n\n  * `_defaultColor` {`string`} - \n\n  * `hoverAccentColor` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`hax-tray-button`\n`A button in the tray`\n\nEvents:\n\n  * `hax-tray-button-click` {`CustomEvent<{ eventName: any; index: any; value: any; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: this; callback: string; }>`} - \n\nAttributes:\n\n  * `voice-command` {`string`} - Voice command to append for things that support data-voicecommand.\n\n  * `index` {`number`} - Index position in the original list of imports\n\n  * `label` {`string`} - label\n\n  * `color` {`string`} - color name of the item\n\n  * `disabled` {`boolean`} - \n\n  * `mini` {`boolean`} - \n\n  * `wide` {`boolean`} - \n\n  * `event-data` {`string`} - \n\n  * `event-name` {`string`} - \n\n  * `icon` {`string`} - Icon for the button, optional.\n\n  * `color-meaning` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `voiceCommand` {`string`} - Voice command to append for things that support data-voicecommand.\n\n  * `index` {`number`} - Index position in the original list of imports\n\n  * `label` {`string`} - label\n\n  * `color` {`string`} - color name of the item\n\n  * `disabled` {`boolean`} - \n\n  * `mini` {`boolean`} - \n\n  * `wide` {`boolean`} - \n\n  * `eventData` {`string`} - \n\n  * `eventName` {`string`} - \n\n  * `icon` {`string`} - Icon for the button, optional.\n\n  * `colorMeaning` {`boolean`} - \n\n  * `_defaultHoverColor` {`string`} - \n\n  * `_defaultColor` {`string`} - \n\n  * `hoverAccentColor` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "voice-command",
@@ -1298,10 +1174,6 @@
           "valueSet": "v"
         },
         {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        },
-        {
           "name": "onhax-tray-button-click",
           "description": "`hax-tray-button-click` {`CustomEvent<{ eventName: any; index: any; value: any; }>`} - "
         },
@@ -1318,12 +1190,8 @@
     },
     {
       "name": "hax-tray",
-      "description": "`hax-tray`\n`The tray / dashboard area which allows for customization of all major settings`\n\nEvents:\n\n  * `hax-search-source-updated` {`CustomEvent<any>`} - \n\n  * `hax-insert-content-array` {`CustomEvent<any>`} - \n\n  * `hax-insert-content` {`CustomEvent<{ tag: string; properties: { layout: any; }; content: string; }>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: any; callback: string; }>`} - \n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: any; value: any; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `hax-save` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `__tipText` {`string`} - \n\n  * `menuAlignName` {`string`} - \n\n  * `offsetMargin` {`string`} - \n\n  * `traySizeIcon` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hide-preferences-button` {`boolean`} - Showing preferences area.\n\n  * `hide-panel-ops` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `element-align` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\nProperties:\n\n  * `__tipText` {`string`} - \n\n  * `menuAlignName` {`string`} - \n\n  * `offsetMargin` {`string`} - \n\n  * `traySizeIcon` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hidePreferencesButton` {`boolean`} - Showing preferences area.\n\n  * `hidePanelOps` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `__winEvents` - \n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeTab` {`string`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `elementAlign` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `__setup` {`boolean`} - ",
+      "description": "`hax-tray`\n`The tray / dashboard area which allows for customization of all major settings`\n\nEvents:\n\n  * `hax-insert-content-array` {`CustomEvent<any>`} - \n\n  * `hax-insert-content` {`CustomEvent<{ tag: string; properties: { layout: any; }; content: string; }>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: any; callback: string; }>`} - \n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: any; value: any; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `hax-save` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `menuAlignName` {`string`} - \n\n  * `offsetMargin` {`string`} - \n\n  * `traySizeIcon` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hide-preferences-button` {`boolean`} - Showing preferences area.\n\n  * `hide-panel-ops` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `element-align` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `__tipText` {`string`} - \n\nProperties:\n\n  * `menuAlignName` {`string`} - \n\n  * `offsetMargin` {`string`} - \n\n  * `traySizeIcon` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hidePreferencesButton` {`boolean`} - Showing preferences area.\n\n  * `hidePanelOps` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `__winEvents` - \n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeTab` {`string`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `elementAlign` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `__setup` {`boolean`} - \n\n  * `__tipText` {`string`} - \n\n  * `tourName` {`string`} - ",
       "attributes": [
-        {
-          "name": "__tipText",
-          "description": "`__tipText` {`string`} - \n\nProperty: __tipText"
-        },
         {
           "name": "menuAlignName",
           "description": "`menuAlignName` {`string`} - \n\nProperty: menuAlignName"
@@ -1408,8 +1276,8 @@
           "description": "`activeTagIcon` {`string`} - Tag name / what to display based on active element\n\nProperty: activeTagIcon\n\nDefault: icons:settings"
         },
         {
-          "name": "onhax-search-source-updated",
-          "description": "`hax-search-source-updated` {`CustomEvent<any>`} - "
+          "name": "__tipText",
+          "description": "`__tipText` {`string`} - \n\nProperty: __tipText\n\nDefault: Edit content"
         },
         {
           "name": "onhax-insert-content-array",
@@ -1447,7 +1315,7 @@
     },
     {
       "name": "hax-upload-field",
-      "description": "Events:\n\n  * `value-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `upload-before` {`CustomEvent<any>`} - \n\n  * `upload-response` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `description` {`string`} - \n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `label` {`string`} - \n\n  * `no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `options` {`any[]`} - \n\n  * `no-voice-record` {`boolean`} - No Voice Recording\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `__winEvents` - \n\n  * `description` {`string`} - \n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `label` {`string`} - \n\n  * `noCamera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `options` {`any[]`} - \n\n  * `noVoiceRecord` {`boolean`} - No Voice Recording\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "Events:\n\n  * `value-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `upload-before` {`CustomEvent<any>`} - \n\n  * `upload-response` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `description` {`string`} - \n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `label` {`string`} - \n\n  * `no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `options` {`any[]`} - \n\n  * `no-voice-record` {`boolean`} - No Voice Recording\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__winEvents` - \n\n  * `description` {`string`} - \n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `label` {`string`} - \n\n  * `noCamera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `options` {`any[]`} - \n\n  * `noVoiceRecord` {`boolean`} - No Voice Recording\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "description",
@@ -1489,10 +1357,6 @@
           "valueSet": "v"
         },
         {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        },
-        {
           "name": "onvalue-changed",
           "description": "`value-changed` {`CustomEvent<{ value: any; }>`} - "
         },
@@ -1508,7 +1372,7 @@
     },
     {
       "name": "hax-body",
-      "description": "`hax-body`\nManager of the body area that can be modified\n\n### Styling\n`<hax-bodys>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n--haxcms-base-styles-body-font-size |   | 16px\n--haxcms-base-styles-body-font-family, 'Noto Serif' |   | serif\n--haxcms-base-styles-body-line-height |   | 1.8\n--haxcms-base-styles-body-letter-spacing |   | .5px\n--hax-ui-headings |   | #d4ff77;\n--hax-color-text | default text color | #000\n--hax-contextual-action-text-color |  | --simple-colors-default-theme-grey-1\n--hax-contextual-action-color |  | --simple-colors-default-theme-cyan-7\n--hax-contextual-action-hover-color |  | \n--hax-body-target-background-color: --simple-colors-default-theme-cyan-2\n--hax-body-possible-target-background-color: --simple-colors-default-theme-grey-2\n\n####Outlines\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-body-editable-outline |   | 1px solid --simple-colors-default-theme-deep-orange\n--hax-body-active-outline-hover: 1px solid --hax-contextual-action-color\n--hax-body-active-outline: 3px solid  --hax-contextual-action-color\n\n####Headings\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-h1-font-size |   | 2.5em\n--hax-base-styles-h1-line-height |   | 2.5em\n--hax-base-styles-h2-font-size |   | 2em\n--hax-base-styles-h3-font-size |   | 1.75em\n--hax-base-styles-h4-font-size |   | 1.5em\n--hax-base-styles-h5-font-size |   | 1.25em\n--hax-base-styles-h6-font-size |   | 1.25em\n--hax-base-styles-p-min-height |   | 43px\n--hax-base-styles-p-font-size |   | 24px\n--hax-base-styles-p-line-height |   | 1.8\n--hax-base-styles-p-letter-spacing |   | 0.5px\n\n####Links\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-a-color |  | --simple-colors-default-theme-grey-12\n--hax-base-styles-a-font-size |   | 24px\n--hax-base-styles-a-font-weight |   | normal\n--hax-base-styles-a-color-visited |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-color-active |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-font-weight-active |   | normal\n\n####Lists\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-list-padding-bottom |   | 1.5em\n--hax-base-styles-list-line-height |   | 40px\n--hax-base-styles-list-font-size |   | 24px\n--hax-base-styles-list-last-child-padding-bottom |   | 1em\n--hax-base-styles-list-padding-left |   | 20px\n--hax-base-styles-list-margin-left |   | 20px\n\nEvents:\n\n  * `hax-register-body` {`CustomEvent<this>`} - \n\n  * `active-node-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `active-container-node-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `hax-body-tag-added` {`CustomEvent<{ node: Node; }>`} - \n\n  * `hax-body-tag-removed` {`CustomEvent<{ node: Node; }>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-drop-focus-event` {`CustomEvent<any>`} - \n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `openDrawer` - \n\n  * `edit-mode` {`boolean`} - State of if we are editing or not.\n\n  * `globalPreferences` - Access to the global properties object.\n\n  * `hax-ray-mode` {`boolean`} - Bust out the HAX Ray mode\n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `haxSelectedText` {`string`} - Text hax-store has detected is selected currently.\n\n  * `activeContainerNode` - A reference to the active node in the slot.\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `openDrawer` - \n\n  * `__mouseMoving` {`boolean`} - \n\n  * `___moveLock` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of if we are editing or not.\n\n  * `globalPreferences` - Access to the global properties object.\n\n  * `haxRayMode` {`boolean`} - Bust out the HAX Ray mode\n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `haxSelectedText` {`string`} - Text hax-store has detected is selected currently.\n\n  * `activeContainerNode` - A reference to the active node in the slot.\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`hax-body`\nManager of the body area that can be modified\n\n### Styling\n`<hax-bodys>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n--haxcms-base-styles-body-font-size |   | 16px\n--haxcms-base-styles-body-font-family, 'Noto Serif' |   | serif\n--haxcms-base-styles-body-line-height |   | 1.8\n--haxcms-base-styles-body-letter-spacing |   | .5px\n--hax-ui-headings |   | #d4ff77;\n--hax-color-text | default text color | #000\n--hax-contextual-action-text-color |  | --simple-colors-default-theme-grey-1\n--hax-contextual-action-color |  | --simple-colors-default-theme-cyan-7\n--hax-contextual-action-hover-color |  | \n--hax-body-target-background-color: --simple-colors-default-theme-cyan-2\n--hax-body-possible-target-background-color: --simple-colors-default-theme-grey-2\n\n####Outlines\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-body-editable-outline |   | 1px solid --simple-colors-default-theme-deep-orange\n--hax-body-active-outline-hover: 1px solid --hax-contextual-action-color\n--hax-body-active-outline: 3px solid  --hax-contextual-action-color\n\n####Headings\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-h1-font-size |   | 2.5em\n--hax-base-styles-h1-line-height |   | 2.5em\n--hax-base-styles-h2-font-size |   | 2em\n--hax-base-styles-h3-font-size |   | 1.75em\n--hax-base-styles-h4-font-size |   | 1.5em\n--hax-base-styles-h5-font-size |   | 1.25em\n--hax-base-styles-h6-font-size |   | 1.25em\n--hax-base-styles-p-min-height |   | 43px\n--hax-base-styles-p-font-size |   | 24px\n--hax-base-styles-p-line-height |   | 1.8\n--hax-base-styles-p-letter-spacing |   | 0.5px\n\n####Links\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-a-color |  | --simple-colors-default-theme-grey-12\n--hax-base-styles-a-font-size |   | 24px\n--hax-base-styles-a-font-weight |   | normal\n--hax-base-styles-a-color-visited |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-color-active |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-font-weight-active |   | normal\n\n####Lists\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-list-padding-bottom |   | 1.5em\n--hax-base-styles-list-line-height |   | 40px\n--hax-base-styles-list-font-size |   | 24px\n--hax-base-styles-list-last-child-padding-bottom |   | 1em\n--hax-base-styles-list-padding-left |   | 20px\n--hax-base-styles-list-margin-left |   | 20px\n\nEvents:\n\n  * `hax-register-body` {`CustomEvent<this>`} - \n\n  * `hax-body-tag-added` {`CustomEvent<{ node: Node; }>`} - \n\n  * `hax-body-tag-removed` {`CustomEvent<{ node: Node; }>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-drop-focus-event` {`CustomEvent<any>`} - \n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `openDrawer` - \n\n  * `edit-mode` {`boolean`} - State of if we are editing or not.\n\n  * `hax-mover` {`boolean`} - \n\n  * `globalPreferences` - Access to the global properties object.\n\n  * `hax-ray-mode` {`boolean`} - Bust out the HAX Ray mode\n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `openDrawer` - \n\n  * `__ignoreActive` {`boolean`} - \n\n  * `__dragMoving` {`boolean`} - \n\n  * `___moveLock` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of if we are editing or not.\n\n  * `haxMover` {`boolean`} - \n\n  * `globalPreferences` - Access to the global properties object.\n\n  * `haxRayMode` {`boolean`} - Bust out the HAX Ray mode\n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "openDrawer",
@@ -1517,6 +1381,11 @@
         {
           "name": "edit-mode",
           "description": "`edit-mode` {`boolean`} - State of if we are editing or not.\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hax-mover",
+          "description": "`hax-mover` {`boolean`} - \n\nProperty: haxMover\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -1531,14 +1400,6 @@
         {
           "name": "activeNode",
           "description": "`activeNode` - A reference to the active node in the slot.\n\nProperty: activeNode\n\nDefault: null"
-        },
-        {
-          "name": "haxSelectedText",
-          "description": "`haxSelectedText` {`string`} - Text hax-store has detected is selected currently.\n\nProperty: haxSelectedText\n\nDefault: "
-        },
-        {
-          "name": "activeContainerNode",
-          "description": "`activeContainerNode` - A reference to the active node in the slot.\n\nProperty: activeContainerNode\n\nDefault: null"
         },
         {
           "name": "can-undo",
@@ -1572,20 +1433,8 @@
           "valueSet": "v"
         },
         {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        },
-        {
           "name": "onhax-register-body",
           "description": "`hax-register-body` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "onactive-node-changed",
-          "description": "`active-node-changed` {`CustomEvent<{ value: any; }>`} - "
-        },
-        {
-          "name": "onactive-container-node-changed",
-          "description": "`active-container-node-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
           "name": "onhax-body-tag-added",

@@ -1,6 +1,6 @@
-import { html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsUpload } from "@lrnwebcomponents/simple-fields/lib/simple-fields-upload.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import { HAXStore } from "./hax-store.js";
 
 class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
   /**
@@ -16,7 +16,7 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
    * Respond to uploading a file
    */
   _fileAboutToUpload(e) {
-    if (!this.__allowUpload && window.HaxStore) {
+    if (!this.__allowUpload && HAXStore) {
       // cancel the event so we can jump in
       e.preventDefault();
       e.stopPropagation();
@@ -26,21 +26,21 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
         type: e.detail.file.type,
       };
       // we have no clue what this is.. let's try and guess..
-      var type = window.HaxStore.guessGizmoType(values);
+      var type = HAXStore.guessGizmoType(values);
       // find targets that support this type
-      let targets = window.HaxStore.getHaxAppStoreTargets(type);
+      let targets = HAXStore.getHaxAppStoreTargets(type);
       // make sure we have targets
       if (targets.length === 1) {
         this._haxAppPickerSelection({ detail: targets[0] });
       } else if (targets.length !== 0) {
-        window.HaxStore.instance.haxAppPicker.presentOptions(
+        HAXStore.haxAppPicker.presentOptions(
           targets,
           type,
           "Where would you like to upload this " + type + "?",
           "app"
         );
       } else {
-        window.HaxStore.toast(
+        HAXStore.toast(
           "Sorry, you don't have a storage location that can handle " +
             type +
             " uploads!",
@@ -113,20 +113,15 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
     }
     // implementation specific tweaks to talk to things like HAXcms and other CMSs
     // that have per load token based authentication
-    if (
-      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint != null
-    ) {
-      requestEndPoint +=
-        "?" + window.HaxStore.instance.connectionRewrites.appendUploadEndPoint;
+    if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
+      requestEndPoint += "?" + HAXStore.connectionRewrites.appendUploadEndPoint;
     }
-    if (window.HaxStore.instance.connectionRewrites.appendJwt != null) {
+    if (HAXStore.connectionRewrites.appendJwt != null) {
       requestEndPoint +=
         "&" +
-        window.HaxStore.instance.connectionRewrites.appendJwt +
+        HAXStore.connectionRewrites.appendJwt +
         "=" +
-        localStorage.getItem(
-          window.HaxStore.instance.connectionRewrites.appendJwt
-        );
+        localStorage.getItem(HAXStore.connectionRewrites.appendJwt);
     }
     this.shadowRoot.querySelector("#fileupload").headers = connection.headers;
     this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;

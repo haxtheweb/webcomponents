@@ -199,6 +199,11 @@
           "description": "Miniumum value for extra-large breakpoint",
           "type": "number",
           "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
@@ -426,6 +431,11 @@
           "description": "Miniumum value for extra-large breakpoint",
           "type": "number",
           "default": "1500"
+        },
+        {
+          "name": "disableResponsive",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [

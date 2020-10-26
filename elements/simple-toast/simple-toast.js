@@ -37,7 +37,6 @@ class SimpleToast extends LitElement {
           display: none;
         }
 
-        paper-button:not(:defined),
         paper-toast:not(:defined) {
           display: none;
         }
@@ -72,9 +71,9 @@ class SimpleToast extends LitElement {
       .class="${this.classStyle}"
     >
       <slot></slot>
-      <paper-button .hidden="${!this.closeButton}" @click="${this.hide}"
-        >${this.closeText}</paper-button
-      >
+      <button .hidden="${!this.closeButton}" @click="${this.hide}">
+        ${this.closeText}
+      </button>
     </paper-toast>`;
   }
 
@@ -151,7 +150,6 @@ class SimpleToast extends LitElement {
   firstUpdated() {
     setTimeout(() => {
       import("@polymer/paper-toast/paper-toast.js");
-      import("@polymer/paper-button/paper-button.js");
     }, 0);
   }
   connectedCallback() {

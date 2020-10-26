@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.7",
+  "version": "2.7.10",
   "description": "handles anchors and params in the url",
   "repository": {
     "type": "git",

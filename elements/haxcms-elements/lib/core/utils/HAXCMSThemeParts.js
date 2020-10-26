@@ -1,6 +1,6 @@
 import { css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 
 const HAXCMSThemeParts = function (SuperClass) {
   return class extends SuperClass {

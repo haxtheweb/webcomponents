@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.9",
+  "version": "2.7.10",
   "description": "Glossary element that connects to the glossary service.",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-vocab": "^2.7.9",
+    "@lrnwebcomponents/lrn-vocab": "^2.7.10",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

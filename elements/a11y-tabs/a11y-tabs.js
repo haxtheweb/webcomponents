@@ -541,10 +541,12 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.disableResponsive = false;
     this.disabled = false;
     this.hidden = false;
     this.__tabs = [];
     this.__tabFocus = 0;
+    this.addEventListener("a11y-tab-changed", (e) => this.updateTabs());
   }
   get buttons() {
     return this.__tabButtons;
@@ -618,23 +620,13 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       childList: true,
       subtree: false,
     });
-    this.addEventListener("a11y-tab-changed", (e) => this.updateTabs());
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
-    this.removeEventListener("a11y-tab-changed", (e) => this.updateTabs());
     super.disconnectedCallback();
-  }
-
-  firstUpdated() {
-    if (super.firstUpdated()) super.firstUpdated();
-    window.ResponsiveUtility.requestAvailability();
-    window.dispatchEvent(
-      new CustomEvent("responsive-element", { detail: { element: this } })
-    );
   }
 
   /**

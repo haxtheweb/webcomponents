@@ -55,14 +55,6 @@ function valueMapTransform(items, map) {
 }
 
 /**
- * Convert dash case to camel case
- */
-function dashToCamelCase(key) {
-  return key.toLowerCase().replace(/-(.)/g, function (match, group1) {
-    return group1.toUpperCase();
-  });
-}
-/**
  * Helper to convert camel case to dash; important when setting attributes.
  */
 function camelToDash(str) {
@@ -458,11 +450,9 @@ function nodeToHaxElement(node, eventName = "insert-element") {
         typeof node.attributes[attribute].value !== undefined &&
         node.attributes[attribute].value != null &&
         node.attributes[attribute].value != "" &&
-        !tmpProps.hasOwnProperty(
-          window.HaxStore.dashToCamel(node.attributes[attribute].name)
-        )
+        !tmpProps.hasOwnProperty(dashToCamel(node.attributes[attribute].name))
       ) {
-        props[window.HaxStore.dashToCamel(node.attributes[attribute].name)] =
+        props[dashToCamel(node.attributes[attribute].name)] =
           node.attributes[attribute].value;
       } else {
         // note: debug here if experiencing attributes that won't bind
@@ -482,7 +472,7 @@ function nodeToHaxElement(node, eventName = "insert-element") {
         node.attributes[attribute].value != null &&
         node.attributes[attribute].value != ""
       ) {
-        props[window.HaxStore.dashToCamel(node.attributes[attribute].name)] =
+        props[dashToCamel(node.attributes[attribute].name)] =
           node.attributes[attribute].value;
       }
     }
@@ -493,7 +483,7 @@ function nodeToHaxElement(node, eventName = "insert-element") {
   if (window.HaxStore.instance._isSandboxed && tag === "iframe") {
     tag = "webview";
   }
-  let slotContent = window.HaxStore.getHAXSlot(node);
+  let slotContent = window.HaxStore.instance.getHAXSlot(node);
   // support fallback on inner text if there were no nodes
   if (slotContent == "") {
     slotContent = node.innerText;
@@ -561,7 +551,6 @@ export const winEventsElement = function (SuperClass) {
 export {
   validURL,
   valueMapTransform,
-  dashToCamelCase,
   haxElementToNode,
   dashToCamel,
   camelToDash,

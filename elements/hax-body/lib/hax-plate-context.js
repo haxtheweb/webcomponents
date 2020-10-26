@@ -1,4 +1,6 @@
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
+import { HAXStore } from "./hax-store.js";
+import { autorun, toJS } from "mobx";
 /**
  * `hax-plate-context`
  * `A context menu that provides common grid plate based authoring options.`
@@ -6,12 +8,10 @@ import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  * - grid plate - the container / full HTML tag which can have operations applied to it.
  */
-class HaxPlateContext extends winEventsElement(HTMLElement) {
+class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
   constructor(delayRender = false) {
     super();
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-    };
+    this.tourName = "hax";
     // set tag for later use
     this.tag = HaxPlateContext.tag;
     this.template = document.createElement("template");
@@ -20,10 +20,15 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       this.render();
     }
     setTimeout(() => {
-      import("@polymer/paper-item/paper-item.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
     }, 0);
+    autorun(() => {
+      const activeNode = toJS(HAXStore.activeNode);
+      if (activeNode && this.getAttribute("on-screen")) {
+        this.__updatePlatePosition(activeNode);
+      }
+    });
   }
   static get tag() {
     return "hax-plate-context";
@@ -35,10 +40,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       display: block;
       margin-top: -2px;
       background-color:white;
-      --hax-contextual-action-color: var(
-        --simple-colors-default-theme-cyan-8,
-        #007999
-      );
     }
     hax-context-item {
       display: block;
@@ -60,7 +61,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     .area:hover {
       opacity: 1;
     }
-    paper-item {
+    button {
       background-color: var(--hax-contextual-action-color);
       -webkit-justify-content: flex-start;
       justify-content: flex-start;
@@ -71,7 +72,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       color: white;
     }
     #drag hax-context-item:hover,
-    paper-item:hover {
+    button:hover {
       cursor: pointer;
       color: black;
     }
@@ -82,8 +83,8 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     }
     :host(.hax-context-pin-top) .area {
       position: fixed;
-      top: 40px;
-      margin-left: -30px;
+      top: 28px;
+      margin-left: -2px;
       flex-direction: column;
     }
     </style>
@@ -93,37 +94,54 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         id="drag"
         action
         icon="hax:arrow-all"
-        label="Drag"
+        label="Drag handle"
         draggable="true"
         selected-value="0"
-        reset-on-select>
-      <paper-item hidden value=""></paper-item>
+        reset-on-select
+        data-simple-tour-stop
+        data-stop-title="label">
+        <hax-context-item
+          action
+          mini
+          dark
+          simple
+          icon="hax:keyboard-arrow-up"
+          label="Move up"
+          event-name="hax-plate-up"
+          direction="left"
+          ></hax-context-item>
+        <hax-context-item
+          action
+          mini
+          dark
+          simple
+          icon="hax:keyboard-arrow-down"
+          label="Move down"
+          event-name="hax-plate-down"
+          direction="left"
+          ></hax-context-item>
+        <div slot="tour" data-stop-content>
+          Click the drag handle once to show a menu to just move
+          up or down one item in the content OR click and drag
+          to place the item exactly where you want it to go.
+        </div>
+      </hax-context-item-menu>
       <hax-context-item
-        action
         mini
-        icon="hardware:keyboard-arrow-up"
-        label="Move up"
-        event-name="hax-plate-up"
-        direction="left"
-        ></hax-context-item>
-      <hax-context-item
         action
-        mini
-        icon="hardware:keyboard-arrow-down"
-        label="Move down"
-        event-name="hax-plate-down"
-        direction="left"
-        ></hax-context-item>
-    </hax-context-item-menu>
-      <hax-context-item
-      mini
-      action
-      id="right"
-      class="paddle"
-      icon="hax:table-column-remove"
-      label="Add column"
-      event-name="hax-plate-create-right"
-    ></hax-context-item>
+        id="right"
+        class="paddle"
+        icon="hax:table-column-remove"
+        label="Add column"
+        event-name="hax-plate-create-right"
+        data-simple-tour-stop
+        data-stop-title="label"
+      >
+      <div slot="tour" data-stop-content>
+      Add a column to split the current column into two pieces. This can be done up to
+      six pieces columns. For differnet layouts see Grid settings panel.
+      </div>
+    </hax-context-item>
     <hax-context-item
       mini
       action
@@ -132,60 +150,57 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       label="Remove column"
       event-name="hax-plate-remove-right"
       id="rightremove"
-    ></hax-context-item>
+      data-simple-tour-stop
+      data-stop-title="label"
+    >
+    <div slot="tour" data-stop-content>
+      Remove a column from the split column layout. If at two columns and removing it will
+      remove the layout split and make it 100% width.
+    </div>
+    </hax-context-item>
   <hax-context-item
     mini
     action
     label="Duplicate"
     icon="icons:content-copy"
     event-name="hax-plate-duplicate"
-    ></hax-context-item>
+    data-simple-tour-stop
+    data-stop-title="label"
+    >
+    <div slot="tour" data-stop-content>
+      Duplicate the active piece of content and place it below the current item.
+    </div>
+    </hax-context-item>
   <hax-context-item
     mini
+    danger
     action
     icon="delete"
     label="Remove"
     event-name="hax-plate-delete"
-  ></hax-context-item>
+    data-simple-tour-stop
+    data-stop-title="label"
+  >
+  <div slot="tour" data-stop-content>
+      Delete the current item. You can always use the undo arrow to bring this back.
+    </div>
+  </hax-context-item>
   </div>
   `;
   }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    setTimeout(() => {
-      if (
-        e.detail &&
-        typeof e.detail.value !== typeof undefined &&
-        e.detail.property &&
-        this.getAttribute("on-screen") != null &&
-        ["activeNode", "activeContainerNode"].includes(e.detail.property)
-      ) {
-        // when activeNode changes make sure we reposition
-        this.__updatePlatePosition();
+  __updatePlatePosition(active) {
+    let right = this.shadowRoot.querySelector("#right");
+    let rightremove = this.shadowRoot.querySelector("#rightremove");
+    // support for enabling or disabling
+    right.disabled = false;
+    rightremove.disabled = false;
+    if (active && active.tagName == "GRID-PLATE") {
+      if (active.layout == "1-1-1-1-1-1") {
+        right.disabled = true;
       }
-    }, 10);
-  }
-  __updatePlatePosition() {
-    setTimeout(() => {
-      let active = window.HaxStore.instance.activeNode;
-      let right = this.shadowRoot.querySelector("#right");
-      let rightremove = this.shadowRoot.querySelector("#rightremove");
-      if (window.HaxStore.instance.activeContainerNode) {
-        active = window.HaxStore.instance.activeContainerNode;
-      }
-      // support for enabling or disabling
-      right.disabled = false;
-      rightremove.disabled = false;
-      if (active && active.tagName == "GRID-PLATE") {
-        if (active.layout == "1-1-1-1-1-1") {
-          right.disabled = true;
-        }
-      } else {
-        rightremove.disabled = true;
-      }
-    }, 100);
+    } else {
+      rightremove.disabled = true;
+    }
   }
   render() {
     this.shadowRoot.innerHTML = null;
@@ -199,14 +214,12 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
 
   connectedCallback() {
     super.connectedCallback();
-    setTimeout(() => {
-      this.shadowRoot
-        .querySelector("#drag")
-        .addEventListener("dragstart", this._dragStart);
-      this.shadowRoot
-        .querySelector("#drag")
-        .addEventListener("dragend", this._dragEnd);
-    }, 0);
+    this.shadowRoot
+      .querySelector("#drag")
+      .addEventListener("dragstart", this._dragStart);
+    this.shadowRoot
+      .querySelector("#drag")
+      .addEventListener("dragend", this._dragEnd);
   }
   disconnectedCallback() {
     this.shadowRoot
@@ -221,49 +234,27 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
    * When we end dragging ensure we remove the mover class.
    */
   _dragEnd(e) {
-    window.HaxStore.instance._lockContextPosition = false;
-    let children = window.HaxStore.instance.activeHaxBody.children;
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (typeof children[i].classList !== typeof undefined) {
-        children[i].classList.remove(
-          "hax-mover",
-          "hax-hovered",
-          "hax-moving",
-          "grid-plate-active-item"
-        );
-      }
-    }
+    HAXStore._lockContextPosition = false;
   }
   /**
    * Drag start so we know what target to set
    */
   _dragStart(e) {
-    let target = window.HaxStore.instance.activeNode;
-    window.HaxStore.instance.__dragTarget = target;
-    window.HaxStore.instance._lockContextPosition = true;
-    target.classList.add("hax-moving");
+    let target = toJS(HAXStore.activeNode);
+    HAXStore.__dragTarget = target;
+    HAXStore._lockContextPosition = true;
+    // wipe the add context menu for motion
+    HAXStore.activeHaxBody.__activeHover = null;
+    HAXStore.activeHaxBody._hideContextMenu(
+      HAXStore.activeHaxBody.contextMenus.add
+    );
     if (e.dataTransfer) {
+      e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.dropEffect = "move";
       e.dataTransfer.setDragImage(target, -20, -20);
     }
     e.stopPropagation();
     e.stopImmediatePropagation();
-    setTimeout(() => {
-      // show where things can be dropped only during the drag
-      if (
-        !window.HaxStore.instance.activeHaxBody.openDrawer &&
-        window.HaxStore.instance.editMode
-      ) {
-        let children = window.HaxStore.instance.activeHaxBody.children;
-        // walk the children and apply the draggable state needed
-        for (var i in children) {
-          if (children[i].classList && target !== children[i]) {
-            children[i].classList.add("hax-mover");
-          }
-        }
-      }
-    }, 10);
   }
 }
 window.customElements.define(HaxPlateContext.tag, HaxPlateContext);

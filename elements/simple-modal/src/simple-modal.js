@@ -3,11 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-dialog/paper-dialog.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `simple-modal`
  * `A simple modal that ensures accessibility and stack order context appropriately`
@@ -49,8 +44,8 @@ class SimpleModal extends LitElement {
     this.closeIcon = "close";
     this.modal = false;
     setTimeout(() => {
+      import("@polymer/paper-dialog/paper-dialog.js");
       import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
-      import("@polymer/paper-button/paper-button.js");
       import("@polymer/iron-icons/iron-icons.js");
       import("@polymer/iron-icon/iron-icon.js");
     }, 0);
@@ -167,6 +162,7 @@ class SimpleModal extends LitElement {
     if (styles) {
       [
         "--simple-modal-width",
+        "--simple-modal-z-index",
         "--simple-modal-height",
         "--simple-modal-min-width",
         "--simple-modal-min-height",

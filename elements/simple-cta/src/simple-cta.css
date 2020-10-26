@@ -1,0 +1,45 @@
+/* 
+  LIST SHARED STYLES BELOW
+
+*/
+:host {
+  display: inline-block;
+  --simple-cta-color: var(--simple-colors-default-theme-accent-1,white);
+  --simple-cta-outline: var(--simple-colors-default-theme-accent-12,black);
+  --simple-cta-bg-color-is-user-selected: var(--simple-colors-default-theme-accent-10, darkgreen);
+  --simple-cta-bg-color: var(--simple-colors-default-theme-accent-7, green);
+  margin: 60px 0 0;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([contenteditable]) a {
+  pointer-events: none;
+}
+
+:host([is-user-selected]) a {
+  background-color: var(--simple-cta-bg-color-is-user-selected);
+  outline: 1px solid var(--simple-cta-outline);
+}
+
+a {
+  display: block;
+  color: var(--simple-cta-color);
+  background-color: var(--simple-cta-bg-color);
+  transition: background .3s linear,border .3s linear,border-radius .3s linear,box-shadow .3s linear;
+  text-decoration: none;
+  font-size: 1em;
+  text-transform: uppercase;
+  border-radius: 100px 100px 100px 100px;
+  box-shadow: 0 6px 26px 0 rgba(0,0,0,.16);
+  padding: 16px 40px;
+  font-family: Sans-serif;
+  font-weight: 500;
+}
+
+a span {
+  display: flex;
+  justify-content: center;
+}

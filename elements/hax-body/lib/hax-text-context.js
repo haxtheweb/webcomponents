@@ -1,5 +1,14 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
+import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
+import { HAXStore } from "./hax-store.js";
+import { autorun, toJS } from "mobx";
+
 /**
  * `hax-text-context`
  * @element hax-text-context
@@ -7,23 +16,19 @@ import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  */
-class HaxTextContext extends winEventsElement(LitElement) {
+class HaxTextContext extends SimpleTourFinder(LitElement) {
   static get styles() {
     return [
       css`
         :host {
           display: block;
           pointer-events: none;
-          --hax-contextual-action-color: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
-          );
         }
         hax-context-item-textop:not(:defined),
         hax-context-item-menu:not(:defined),
         hax-context-item:not(:defined),
         hax-toolbar:not(:defined),
-        paper-item:not(:defined),
+        button:not(:defined),
         iron-icon:not(:defined) {
           display: none;
         }
@@ -40,9 +45,8 @@ class HaxTextContext extends winEventsElement(LitElement) {
         #toolbar {
           overflow: hidden;
         }
-        paper-item {
-          color: white;
-          background-color: var(--hax-contextual-action-color);
+        button {
+          color: black;
           -webkit-justify-content: flex-start;
           justify-content: flex-start;
           font-size: 11px;
@@ -51,16 +55,13 @@ class HaxTextContext extends winEventsElement(LitElement) {
           padding: 0 4px;
           min-height: 24px;
         }
-        paper-item:hover {
+        button:hover {
           cursor: pointer;
           color: black;
         }
         iron-icon {
           width: 20px;
           height: 20px;
-          padding: 4px;
-        }
-        paper-item strong {
           padding: 4px;
         }
         hax-context-item-textop,
@@ -76,7 +77,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
         }
         :host(.hax-context-pin-top) hax-toolbar {
           position: fixed;
-          top: 40px;
+          top: 0px;
           flex-direction: column;
         }
       `,
@@ -84,87 +85,139 @@ class HaxTextContext extends winEventsElement(LitElement) {
   }
   constructor() {
     super();
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-    };
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
+    this.tourName = "hax";
     setTimeout(() => {
       this.addEventListener(
         "hax-context-item-selected",
         this._haxContextOperation.bind(this)
       );
+      window.addEventListener(
+        "hax-context-item-selected",
+        this._haxInMenuContextOperation.bind(this)
+      );
     }, 0);
+    this.formattingList = [
+      {
+        value: "p",
+        icon: "hax:paragraph",
+        text: "Paragraph",
+      },
+      {
+        value: "ul",
+        icon: "editor:format-list-bulleted",
+        text: "Bulleted list",
+      },
+      {
+        value: "ol",
+        icon: "editor:format-list-numbered",
+        text: "Numbered list",
+      },
+      {
+        value: "h2",
+        icon: "hax:h2",
+        text: "Title",
+      },
+      {
+        value: "h3",
+        icon: "hax:h3",
+        text: "Content heading",
+      },
+      {
+        value: "h4",
+        icon: "hax:h4",
+        text: "Subheading",
+      },
+      {
+        value: "h5",
+        icon: "hax:h5",
+        text: "Deep subheading",
+      },
+      {
+        value: "blockquote",
+        icon: "editor:format-quote",
+        text: "Blockquote",
+      },
+      {
+        value: "code",
+        icon: "icons:code",
+        text: "Code",
+      },
+    ];
     this.realSelectedValue = "p";
-    this.selection = false;
     this.formatIcon = "hax:format-textblock";
     this.isSafari = this._isSafari();
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      this[e.detail.property] = e.detail.value;
-    }
+    autorun(() => {
+      this.hasSelectedText = toJS(HAXStore.haxSelectedText).length > 0;
+    });
+    autorun(() => {
+      const editMode = toJS(HAXStore.editMode);
+      const activeNode = toJS(HAXStore.activeNode);
+      // update our icon if global changes what we are pointing to
+      if (
+        HAXStore.isTextElement(activeNode) &&
+        this.shadowRoot.querySelector(
+          '#textformat button[value="' + activeNode.tagName.toLowerCase() + '"]'
+        )
+      ) {
+        if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
+          this.shadowRoot.querySelector(
+            "simple-popover-selection"
+          ).opened = false;
+        }
+        this.updateTextIconSelection(activeNode.tagName.toLowerCase());
+      }
+    });
   }
   render() {
     return html`
-      <hax-toolbar
-        .selected="${this.selection}"
-        ?hide-more="${!this.hasSelectedText}"
-        id="toolbar"
-      >
-        <hax-context-item-menu
-          action
-          mini
+      <hax-toolbar ?hide-more="${!this.hasSelectedText}" id="toolbar">
+        <simple-popover-selection
           slot="primary"
-          .selected-value="${this.selectedValue}"
-          @selected-value-changed="${this.selectedValueChanged}"
-          id="formatsize"
-          icon="${this.formatIcon}"
-          label="Text format"
-          event-name="text-tag"
+          @simple-popover-selection-changed="${this.textFormatChanged}"
+          auto
+          orientation="tb"
+          id="textformat"
         >
-          <paper-item hidden value=""></paper-item>
-          <paper-item value="p"
-            ><iron-icon icon="hax:paragraph"></iron-icon>Paragraph</paper-item
+          <style slot="style">
+            simple-popover-manager button {
+              color: black;
+              font-size: 10px !important;
+              margin: 0;
+              padding: 2px;
+              min-height: unset;
+              width: 100%;
+              display: flex;
+              justify-content: start;
+              align-items: center;
+              border: 0;
+            }
+            simple-popover-manager button iron-icon {
+              width: 18px;
+              margin-right: 8px;
+            }
+          </style>
+          <hax-context-item
+            action
+            mini
+            slot="button"
+            id="formatsize"
+            icon="${this.formatIcon}"
+            label="Text format"
+            data-simple-tour-stop
+            data-stop-title="label"
           >
-          <paper-item value="ul"
-            ><iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted
-            list</paper-item
-          >
-          <paper-item value="ol"
-            ><iron-icon icon="editor:format-list-numbered"></iron-icon>Numbered
-            list</paper-item
-          >
-          <paper-item value="h2"
-            ><iron-icon icon="hax:h2"></iron-icon>Title
-          </paper-item>
-          <paper-item value="h3"
-            ><iron-icon icon="hax:h3"></iron-icon>Content heading
-          </paper-item>
-          <paper-item value="h4"
-            ><iron-icon icon="hax:h4"></iron-icon>Subheading
-          </paper-item>
-          <paper-item value="h5"
-            ><iron-icon icon="hax:h5"></iron-icon>Deep subheading
-          </paper-item>
-          <paper-item value="blockquote"
-            ><iron-icon icon="editor:format-quote"></iron-icon>Blockquote
-          </paper-item>
-          <paper-item value="code"
-            ><iron-icon icon="icons:code"></iron-icon>Code
-          </paper-item>
-        </hax-context-item-menu>
+            <div slot="tour" data-stop-content>
+              Change how the text is structured and visualized in the page.
+            </div>
+          </hax-context-item>
+          ${this.formattingList.map(
+            (val) =>
+              html` <button slot="options" value="${val.value}">
+                <iron-icon icon="${val.icon}"></iron-icon>
+                ${val.text}
+              </button>`
+          )}
+        </simple-popover-selection>
         <hax-context-item-textop
           mini
           action
@@ -306,9 +359,6 @@ class HaxTextContext extends winEventsElement(LitElement) {
       </hax-toolbar>
     `;
   }
-  selectedValueChanged(e) {
-    this.selectedValue = e.detail;
-  }
   static get tag() {
     return "hax-text-context";
   }
@@ -323,6 +373,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
       realSelectedValue: {
         type: String,
       },
+      formattingList: {
+        type: Array,
+      },
       /**
        * calculated boolean off of if there is currently text
        */
@@ -330,25 +383,6 @@ class HaxTextContext extends winEventsElement(LitElement) {
         type: Boolean,
         attribute: "has-selected-text",
         reflect: true,
-      },
-      /**
-       * Text hax-store has detected is selected currently.
-       */
-      haxSelectedText: {
-        type: String,
-      },
-      /**
-       * Selected value to match format of the tag currently.
-       */
-      selectedValue: {
-        type: Number,
-        attribute: "selected-value",
-      },
-      /**
-       * Selection tracking
-       */
-      selection: {
-        type: Boolean,
       },
       /**
        * Selected item icon
@@ -366,61 +400,71 @@ class HaxTextContext extends winEventsElement(LitElement) {
       },
     };
   }
-
+  textFormatChanged(e) {
+    // set internally
+    this.shadowRoot.querySelector("simple-popover-selection").opened = false;
+    this.updateTextIconSelection(e.detail.getAttribute("value"));
+    // notify up above that we want to change the tag
+    this.dispatchEvent(
+      new CustomEvent("hax-context-item-selected", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          eventName: "text-tag",
+          value: this.realSelectedValue,
+        },
+      })
+    );
+  }
+  updateTextIconSelection(tag) {
+    this.realSelectedValue = tag;
+    // clear active if there is one
+    if (
+      this.shadowRoot.querySelector("[data-simple-popover-selection-active]")
+    ) {
+      this.shadowRoot
+        .querySelector("[data-simple-popover-selection-active]")
+        .removeAttribute("data-simple-popover-selection-active");
+    }
+    let localItem = this.shadowRoot.querySelector(
+      '#textformat button[value="' + this.realSelectedValue + '"]'
+    );
+    localItem.setAttribute("data-simple-popover-selection-active", true);
+    this.formatIcon = localItem.querySelector("iron-icon").getAttribute("icon");
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       // computed based on these changing
-      if (
-        this.realSelectedValue &&
-        propName == "realSelectedValue" &&
-        this.shadowRoot
-      ) {
+      if (propName == "realSelectedValue") {
         this._showIndent = this._computeShowIndent(this.realSelectedValue);
-        if (this._showIndent || this.realSelectedValue == "p") {
+        if (this.realSelectedValue == "p") {
           this._showLists = true;
         } else {
           this._showLists = false;
         }
-        for (var i in this.shadowRoot.querySelector("#formatsize").children) {
-          if (
-            this.shadowRoot.querySelector("#formatsize").children[i] &&
-            this.shadowRoot.querySelector("#formatsize").children[i]
-              .getAttribute &&
-            this.shadowRoot
-              .querySelector("#formatsize")
-              .children[i].getAttribute("value") == this.realSelectedValue
-          ) {
-            this.selectedValue = i;
-          }
-        }
-      }
-      // calculate boolean status of having text
-      if (propName == "haxSelectedText") {
-        this.hasSelectedText = this[propName].length > 0;
-      }
-      if (propName == "selectedValue" && this.selectedValue != "") {
-        this.realSelectedValue = this.shadowRoot
-          .querySelector("#formatsize")
-          .children[this.selectedValue].getAttribute("value");
-        this.formatIcon = this.shadowRoot
-          .querySelector("#formatsize")
-          .children[this[propName]].querySelector("iron-icon").icon;
-        // fire an event that this is a core piece of the system
-        this.dispatchEvent(
-          new CustomEvent("selected-value-changed", {
-            detail: this[propName],
-          })
-        );
       }
     });
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    if (toJS(HAXStore.activeNode) && toJS(HAXStore.activeNode).tagName) {
+      this.updateTextIconSelection(
+        toJS(HAXStore.activeNode).tagName.toLowerCase()
+      );
+    }
   }
   /**
    * Show indentation on lists
    */
   _computeShowIndent(realSelectedValue) {
     if (
-      window.HaxStore.instance.computePolyfillSafe() &&
-      (realSelectedValue == "ol" || realSelectedValue == "ul")
+      HAXStore.computePolyfillSafe() &&
+      (realSelectedValue == "li" ||
+        realSelectedValue == "ol" ||
+        realSelectedValue == "ul")
     ) {
       return true;
     }
@@ -429,54 +473,72 @@ class HaxTextContext extends winEventsElement(LitElement) {
   /**
    * Respond to simple modifications.
    */
-  _haxContextOperation(e) {
+  _haxInMenuContextOperation(e) {
     let detail = e.detail;
-    let selection = window.HaxStore.getSelection();
     let prevent = false;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
-      case "close-menu":
-        setTimeout(() => {
-          this.shadowRoot
-            .querySelector("#formatsize")
-            .shadowRoot.querySelector("#menu")
-            .hideMenu();
-        }, 200);
+      case "text-underline":
+        document.execCommand("underline");
+        prevent = true;
         break;
+      case "text-subscript":
+        document.execCommand("subscript");
+        prevent = true;
+        break;
+      case "text-superscript":
+        document.execCommand("superscript");
+        prevent = true;
+        break;
+      case "text-strikethrough":
+        document.execCommand("strikeThrough");
+        prevent = true;
+        break;
+    }
+    if (prevent) {
+      if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
+        this.shadowRoot.querySelector(
+          "simple-popover-selection"
+        ).opened = false;
+      }
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
+  /**
+   * Respond to simple modifications.
+   */
+  _haxContextOperation(e) {
+    let detail = e.detail;
+    let selection = HAXStore.getSelection();
+    let prevent = false;
+    // support a simple insert event to bubble up or everything else
+    switch (detail.eventName) {
       case "insert-inline-gizmo":
-        if (
-          window.HaxStore._tmpSelection &&
-          window.HaxStore.instance.editMode
-        ) {
+        if (HAXStore._tmpSelection && HAXStore.editMode) {
           try {
             if (
-              window.HaxStore._tmpRange.startContainer.parentNode.parentNode
+              HAXStore._tmpRange.startContainer.parentNode.parentNode
                 .tagName === "HAX-BODY" ||
-              window.HaxStore._tmpRange.startContainer.parentNode.parentNode
-                .parentNode.tagName === "HAX-BODY"
+              HAXStore._tmpRange.startContainer.parentNode.parentNode.parentNode
+                .tagName === "HAX-BODY"
             ) {
-              window.HaxStore.instance.activePlaceHolder =
-                window.HaxStore._tmpRange;
-              window.HaxStore.write(
-                "activePlaceHolder",
-                window.HaxStore._tmpRange,
-                this
-              );
+              HAXStore.activePlaceHolder = HAXStore._tmpRange;
             }
           } catch (err) {}
         }
-        if (window.HaxStore.instance.activePlaceHolder != null) {
+        if (HAXStore.activePlaceHolder != null) {
           // store placeholder because if this all goes through we'll want
           // to kill the originating text
           let values = {
-            text: window.HaxStore.instance.activePlaceHolder.toString(),
+            text: HAXStore.activePlaceHolder.toString(),
           };
           let type = "inline";
-          let haxElements = window.HaxStore.guessGizmo(type, values);
+          let haxElements = HAXStore.guessGizmo(type, values);
           // see if we got anything
           if (haxElements.length > 0) {
             // hand off to hax-app-picker to deal with the rest of this
-            window.HaxStore.instance.haxAppPicker.presentOptions(
+            HAXStore.haxAppPicker.presentOptions(
               haxElements,
               type,
               "Transform selected text to..",
@@ -494,53 +556,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
         document.execCommand("italic");
         prevent = true;
         break;
-      case "text-underline":
-        document.execCommand("underline");
-        prevent = true;
-        // silly hack to account for trigging a selection from
-        // inside the menu that isn't from a paper-item
-        this.shadowRoot
-          .querySelector("#toolbar")
-          .shadowRoot.querySelector("#moremenu")
-          .shadowRoot.querySelector("#menu")
-          .hideMenu();
-        break;
-      case "text-subscript":
-        document.execCommand("subscript");
-        prevent = true;
-        // silly hack to account for trigging a selection from
-        // inside the menu that isn't from a paper-item
-        this.shadowRoot
-          .querySelector("#toolbar")
-          .shadowRoot.querySelector("#moremenu")
-          .shadowRoot.querySelector("#menu")
-          .hideMenu();
-        break;
-      case "text-superscript":
-        document.execCommand("superscript");
-        prevent = true;
-        // silly hack to account for trigging a selection from
-        // inside the menu that isn't from a paper-item
-        this.shadowRoot
-          .querySelector("#toolbar")
-          .shadowRoot.querySelector("#moremenu")
-          .shadowRoot.querySelector("#menu")
-          .hideMenu();
-        break;
       case "text-remove-format":
         document.execCommand("removeFormat");
         prevent = true;
-        break;
-      case "text-strikethrough":
-        document.execCommand("strikeThrough");
-        prevent = true;
-        // silly hack to account for trigging a selection from
-        // inside the menu that isn't from a paper-item
-        this.shadowRoot
-          .querySelector("#toolbar")
-          .shadowRoot.querySelector("#moremenu")
-          .shadowRoot.querySelector("#menu")
-          .hideMenu();
         break;
       case "text-link":
         var href = "";
@@ -561,7 +579,6 @@ class HaxTextContext extends winEventsElement(LitElement) {
               "contenteditable",
               true
             );
-            selection.focusNode.parentNode.setAttribute("data-editable", true);
             // just to be safe
             selection.focusNode.parentNode.removeEventListener("click", (e) => {
               e.preventDefault();
@@ -586,10 +603,12 @@ class HaxTextContext extends winEventsElement(LitElement) {
        * Naughty, naughty shadyDOM. Fortunately this is only IE11/Edge
        */
       case "text-indent":
+        HAXStore.activeHaxBody.__indentTrap = true;
         document.execCommand("indent");
         prevent = true;
         break;
       case "text-outdent":
+        HAXStore.activeHaxBody.__indentTrap = true;
         document.execCommand("outdent");
         prevent = true;
         break;

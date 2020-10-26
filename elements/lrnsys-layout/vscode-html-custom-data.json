@@ -36,7 +36,7 @@
     },
     {
       "name": "lrnsys-collapselist",
-      "description": "`lrnsys-collapselist`\n\nAttributes:\n\n  * `items` {`any[]`} - Array of items to present with label and content for the list of collapses.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `items` {`any[]`} - Array of items to present with label and content for the list of collapses.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`lrnsys-collapselist`\n\nAttributes:\n\n  * `items` {`any[]`} - Array of items to present with label and content for the list of collapses.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `items` {`any[]`} - Array of items to present with label and content for the list of collapses.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "items",
@@ -50,10 +50,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     },
@@ -96,7 +92,7 @@
     },
     {
       "name": "lrnsys-dialog",
-      "description": "`lrnsys-dialog`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { header: HTMLSpanElement; content: HTMLSpanElement; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the dialog\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `dynamic-images` {`boolean`} - Support for dynamic loading of iron-image elements that are in the content slot.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `heading-class` {`string`} - Default heading classes.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the dialog\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `dynamicImages` {`boolean`} - Support for dynamic loading of iron-image elements that are in the content slot.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `headingClass` {`string`} - Default heading classes.\n\n  * `__modal` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`lrnsys-dialog`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { header: HTMLSpanElement; content: HTMLSpanElement; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the dialog\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `dynamic-images` {`boolean`} - Support for dynamic loading of iron-image elements that are in the content slot.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `heading-class` {`string`} - Default heading classes.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the dialog\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `dynamicImages` {`boolean`} - Support for dynamic loading of iron-image elements that are in the content slot.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `headingClass` {`string`} - Default heading classes.\n\n  * `__modal` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "raised",
@@ -156,10 +152,6 @@
           "valueSet": "v"
         },
         {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        },
-        {
           "name": "onsimple-modal-show",
           "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { header: HTMLSpanElement; content: HTMLSpanElement; }; invokedBy: any; clone: boolean; }>`} - "
         },
@@ -171,7 +163,7 @@
     },
     {
       "name": "lrnsys-drawer",
-      "description": "`lrnsys-drawer`\n\nEvents:\n\n  * `simple-drawer-show` {`CustomEvent<{ title: any; elements: { content: HTMLSpanElement; header: HTMLSpanElement; }; invokedBy: any; align: string; size: string; clone: boolean; }>`} - \n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the drawer\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the drawer\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `__modal` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`lrnsys-drawer`\n\nEvents:\n\n  * `simple-drawer-show` {`CustomEvent<{ title: any; elements: { content: HTMLSpanElement; header: HTMLSpanElement; }; invokedBy: any; align: string; size: string; clone: boolean; }>`} - \n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the drawer\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the drawer\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `__modal` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "raised",
@@ -229,10 +221,6 @@
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         },
         {
           "name": "onsimple-drawer-show",

@@ -1,30 +1,276 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html } from "lit-element/lit-element.js";
+import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
 import {
   winEventsElement,
   getRange,
-  encapScript,
-  wipeSlot,
   stripMSWord,
   nodeToHaxElement,
   haxElementToNode,
   validURL,
+  camelToDash,
 } from "@lrnwebcomponents/utils/utils.js";
+import {
+  observable,
+  makeObservable,
+  computed,
+  configure,
+  autorun,
+  toJS,
+} from "mobx";
+
+configure({ enforceActions: false }); // strict mode off
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
  * @element hax-store
  */
 class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   /**
-   * LitElement constructable styles enhancement
+   * Selection normalizer
    */
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: none;
+  getSelection() {
+    // try and obtain the selection from the nearest shadow
+    // which would give us the selection object when running native ShadowDOM
+    // with fallback support for the entire window which would imply Shady
+    if (this.activeHaxBody && this.activeHaxBody.parentNode) {
+      // native API
+      if (this.activeHaxBody.parentNode.getSelection) {
+        return this.activeHaxBody.parentNode.getSelection();
+      }
+      // ponyfill from google
+      else if (getRange(this.activeHaxBody.parentNode)) {
+        return getRange(this.activeHaxBody.parentNode);
+      }
+    }
+    // missed on both, hope the normal one will work
+    return window.getSelection();
+  }
+  /**
+   * Get a normalized range based on current selection
+   */
+  getRange() {
+    let sel = this.getSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      return sel.getRangeAt(0);
+    } else if (sel) {
+      return sel;
+    } else false;
+  }
+  /**
+   * Try and guess the Gizmo based on what we were just handed
+   */
+  guessGizmo(guess, values, skipPropMatch = false, preferExclusive = false) {
+    var matches = [];
+    if (typeof guess !== typeof undefined) {
+      // verify type
+      if (this.validGizmoTypes.includes(guess)) {
+        // now we can look through them
+        // look for a match
+        for (var gizmoposition in this.gizmoList) {
+          let gizmo = this.gizmoList[gizmoposition];
+          let props = {};
+          // reset match per gizmo
+          let match = false;
+          // ensure this gizmo can handle things
+          if (gizmo && gizmo.handles) {
+            for (var i = 0; i < gizmo.handles.length; i++) {
+              // WHAT!??!?!?!?!
+              if (
+                guess === gizmo.handles[i].type ||
+                (guess === "*" && !match)
+              ) {
+                for (var property in gizmo.handles[i]) {
+                  // ignore type.. but again.. WHAT?!?!?!
+                  if (property !== "type") {
+                    // check the values that came across to see if there's a match
+                    // of any kind, we only need one but can then bind to multiple
+                    if (typeof values[property] !== typeof undefined) {
+                      // but ensure there's either no meta data OR
+                      // the meta data needs to NOT say anythinig about hiding
+                      if (
+                        guess === "inline" ||
+                        !gizmo.meta ||
+                        (gizmo.meta &&
+                          !gizmo.meta.inlineOnly &&
+                          !gizmo.meta.hidden)
+                      ) {
+                        match = true;
+                        props[gizmo.handles[i][property]] = values[property];
+                      }
+                    }
+                  }
+                }
+                // omg... we just found a match on a property from who knows where!
+                if (match || skipPropMatch) {
+                  if (preferExclusive && gizmo.handles[i].type_exclusive) {
+                    return [this.haxElementPrototype(gizmo, props, "")];
+                  } else {
+                    matches.push(this.haxElementPrototype(gizmo, props, ""));
+                  }
+                }
+              }
+            }
+          }
         }
-      `,
-    ];
+      }
+    }
+    return matches;
+  }
+  /**
+   * Simple workflow for logic from inserting based on
+   * a series of criteria.
+   */
+  insertLogicFromValues(values, context, failOnAnything = false) {
+    // we have no clue what this is.. let's try and guess..
+    let type = this.guessGizmoType(values);
+    let typeName = type;
+    // we want to simplify insert but if we get wildcard... do whatever
+    let preferExclusive = true;
+    if (type == "*") {
+      // allow for logic to bail completely if we are told to
+      if (failOnAnything) {
+        return false;
+      }
+      preferExclusive = false;
+      typeName = "link";
+    }
+    let haxElements = this.guessGizmo(type, values, false, preferExclusive);
+    // see if we got anything
+    if (haxElements.length > 0) {
+      if (haxElements.length === 1) {
+        if (typeof haxElements[0].tag !== typeof undefined) {
+          context.dispatchEvent(
+            new CustomEvent("hax-insert-content", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: haxElements[0],
+            })
+          );
+        }
+      } else {
+        // hand off to hax-app-picker to deal with the rest of this
+        this.haxAppPicker.presentOptions(
+          haxElements,
+          type,
+          "Pick how to present this " + typeName,
+          "gizmo"
+        );
+      }
+      return true;
+    } else {
+      this.toast(
+        "Sorry, HAX doesn't know how to handle that type of link yet."
+      );
+      return false;
+    }
+  }
+  /**
+   * write to the store and communicate to all pieces
+   */
+  write(prop, value, obj) {
+    if (obj) {
+      obj.dispatchEvent(
+        new CustomEvent("hax-store-write", {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: { property: prop, value: value, owner: obj },
+        })
+      );
+    }
+  }
+  /**
+   * Convert a data mime type to gizmo type for rendering
+   */
+  mimeTypeToGizmoType(mime) {
+    let parts = mime.split("/");
+    switch (parts[0]) {
+      case "audio":
+        return "audio";
+        break;
+      case "image":
+        if (parts[1] == "svg+xml") {
+          return "svg";
+        }
+        return "image";
+        break;
+      case "video":
+        return "video";
+        break;
+      case "text":
+        if (["csv", "html", "markdown"].includes(parts[1])) {
+          return parts[1];
+        }
+        return "document";
+        break;
+      case "application":
+        if (parts[1] == "pdf") {
+          return "pdf";
+        }
+        if (["zip", "gzip", "x-tar"].includes(parts[1])) {
+          return "archive";
+        }
+        return "document";
+        break;
+    }
+  }
+  /**
+   * Guess the type of Gizmo when given some information about what we have.
+   */
+  guessGizmoType(guess) {
+    if (typeof guess.source !== typeof undefined) {
+      const source = guess.source.toLowerCase();
+      if (
+        source.indexOf(".mp3") != -1 ||
+        source.indexOf(".midi") != -1 ||
+        source.indexOf(".mid") != -1
+      ) {
+        return "audio";
+      } else if (
+        source.indexOf(".png") != -1 ||
+        source.indexOf(".jpg") != -1 ||
+        source.indexOf(".jpeg") != -1 ||
+        source.indexOf(".gif") != -1
+      ) {
+        return "image";
+      } else if (source.indexOf(".pdf") != -1) {
+        return "pdf";
+      } else if (source.indexOf(".svg") != -1) {
+        return "svg";
+      } else if (source.indexOf(".csv") != -1) {
+        return "csv";
+      } else if (source.indexOf(".md") != -1) {
+        return "markdown";
+      } else if (
+        source.indexOf(".html") != -1 ||
+        source.indexOf(".htm") != -1
+      ) {
+        return "html";
+      } else if (
+        source.indexOf(".txt") != -1 ||
+        source.indexOf(".doc") != -1 ||
+        source.indexOf(".docx") != -1 ||
+        source.indexOf(".xls") != -1 ||
+        source.indexOf(".xlsx") != -1 ||
+        source.indexOf(".vtt") != -1 ||
+        source.indexOf(".ppt") != -1
+      ) {
+        return "document";
+      } else if (
+        source.indexOf(".zip") != -1 ||
+        source.indexOf(".tar.gz") != -1 ||
+        source.indexOf(".tar") != -1
+      ) {
+        return "archive";
+      }
+      // if it's external we can't assume what it actually is
+      else if (window.MediaBehaviors.Video.getVideoType(source) != "external") {
+        return "video";
+      }
+    }
+    // we don't know how to handle this so let's just
+    // try ANYTHING that matches
+    return "*";
   }
   /**
    * LitElement render
@@ -58,20 +304,40 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     return "hax-store";
   }
   /**
+   * Global toast bridge so we don't have to keep writing custom event
+   */
+  toast(
+    message,
+    duration = 2000,
+    classStyle = "capsule",
+    closeText = null,
+    eventCallback = null
+  ) {
+    // gets it all the way to the top immediately
+    window.dispatchEvent(
+      new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: message,
+          duration: duration,
+          classStyle: classStyle,
+          closeText: closeText,
+          eventCallback: eventCallback,
+        },
+      })
+    );
+  }
+  /**
    * LitElement / popular convention
    */
   static get properties() {
     return {
       ...super.properties,
-      openDrawer: {
-        type: Object,
-      },
       voiceDebug: {
         type: Boolean,
         attribute: "voice-debug",
-      },
-      activeGizmo: {
-        type: Object,
       },
       voiceRespondsTo: {
         type: String,
@@ -95,24 +361,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
        * Hax tray
        */
       haxTray: {
-        type: Object,
-      },
-      /**
-       * Hax app picker element.
-       */
-      haxAppPicker: {
-        type: Object,
-      },
-      /**
-       * Hax stax picker element.
-       */
-      haxStaxPicker: {
-        type: Object,
-      },
-      /**
-       * Hax stax picker element.
-       */
-      haxBloxPicker: {
         type: Object,
       },
       /**
@@ -148,52 +396,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object,
       },
       /**
-       * HAX Toast message.
-       */
-      haxToast: {
-        type: Object,
-      },
-      /**
-       * Hax export dialog element.
-       */
-      haxExport: {
-        type: Object,
-      },
-      /**
-       * Hax export dialog element.
-       */
-      haxMap: {
-        type: Object,
-      },
-      /**
-       * Hax preferences dialog element.
-       */
-      haxPreferences: {
-        type: Object,
-      },
-      /**
-       * Active Node.
-       */
-      activeNode: {
-        type: Object,
-      },
-      /**
-       * Active container Node, 2nd highest parent of activeNode.
-       */
-      activeContainerNode: {
-        type: Object,
-      },
-      /**
        * Session object bridged in from a session method of some kind
        */
       sessionObject: {
         type: Object,
-      },
-      /**
-       * editMode
-       */
-      editMode: {
-        type: Boolean,
       },
       /**
        * skip the exit trap to prevent losing data
@@ -201,24 +407,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       skipExitTrap: {
         type: Boolean,
       },
-      /**
-       * Available gizmos.
-       */
-      gizmoList: {
-        type: Array,
-      },
+
       /**
        * Available elements keyed by tagName and with
        * their haxProperties centrally registered.
        */
       elementList: {
         type: Object,
-      },
-      /**
-       * Available apps of things supplying media / content.
-       */
-      appList: {
-        type: Array,
       },
       /**
        * Available hax stax which are just re-usable templates
@@ -231,19 +426,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
        */
       bloxList: {
         type: Array,
-      },
-      /**
-       * Global preferences that HAX can write to and
-       * other elements can use to go off of.
-       */
-      globalPreferences: {
-        type: Object,
-      },
-      /**
-       * Globally active app, used for brokering communications
-       */
-      activeApp: {
-        type: Object,
       },
       /**
        * Valid tag list, tag only and including primatives for a baseline.
@@ -284,7 +466,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * Local storage data changed; callback to store this data in user storage
    */
   _storageDataChanged(newValue) {
-    if (newValue && window.HaxStore.ready && this.__storageDataProcessed) {
+    if (newValue && this.ready && this.__storageDataProcessed) {
       if (window.localStorage.getItem("haxConfirm")) {
         window.localStorage.setItem("haxUserData", JSON.stringify(newValue));
       } else if (window.sessionStorage.getItem("haxConfirm")) {
@@ -443,7 +625,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         for (var i = 0; i < apps.length; i++) {
           let app = document.createElement("hax-app");
           app.data = apps[i];
-          window.HaxStore.instance.appendChild(app);
+          this.appendChild(app);
         }
       }
       // load in stax dynamically
@@ -452,7 +634,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         for (var i = 0; i < staxs.length; i++) {
           let stax = document.createElement("hax-stax");
           stax.data = staxs[i];
-          window.HaxStore.instance.appendChild(stax);
+          this.appendChild(stax);
         }
       }
       // load in blox dynamically
@@ -461,7 +643,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         for (var i = 0; i < bloxs.length; i++) {
           let blox = document.createElement("hax-blox");
           blox.data = bloxs[i];
-          window.HaxStore.instance.appendChild(blox);
+          this.appendChild(blox);
         }
       }
       this.dispatchEvent(
@@ -473,7 +655,19 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         })
       );
       // now process the dynamic imports
-      this._handleDynamicImports(items, haxAutoloader);
+      if ("requestIdleCallback" in window) {
+        // Use requestIdleCallback to schedule work.
+        requestIdleCallback(
+          this._handleDynamicImports(items, haxAutoloader).bind(this),
+          {
+            timeout: 200,
+          }
+        );
+      } else {
+        setTimeout(() => {
+          this._handleDynamicImports(items, haxAutoloader);
+        }, 200);
+      }
     }
   }
   // simple path from a url modifier
@@ -490,28 +684,20 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   async _handleDynamicImports(items, haxAutoloader) {
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     for (var i in items) {
-      // seems redundant but this can help polyfill'ed browsers
-      if (!window.customElements.get(i)) {
+      // try to skip an import
+      if (window.customElements.get(i)) {
+        if (window.customElements.get(i).haxProperties) {
+          this.setHaxProperties(window.customElements.get(i).haxProperties, i);
+        } else {
+          // edge case of no definition
+          haxAutoloader.appendChild(document.createElement(i));
+        }
+      } else {
+        // we have to import and then respond to it being imported by checking again
         await import(`${basePath}../../../${items[i]}`)
           .then((response) => {
-            let hasClass = false;
-            for (var cVal in response) {
-              // get the custom element definition we used to add that file
-              let CEClass = response[cVal];
-              if (typeof CEClass.getHaxProperties === "function") {
-                this.setHaxProperties(CEClass.getHaxProperties(), i);
-                hasClass = true;
-              } else if (typeof CEClass.HAXWiring === "function") {
-                this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
-                hasClass = true;
-              } else if (CEClass.haxProperties) {
-                this.setHaxProperties(CEClass.haxProperties, i);
-                hasClass = true;
-              }
-            }
-            // fallback for things that don't export a class
+            // see if it imported now
             if (
-              !hasClass &&
               window.customElements.get(i) &&
               window.customElements.get(i).haxProperties
             ) {
@@ -519,44 +705,36 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
                 window.customElements.get(i).haxProperties,
                 i
               );
+            } else {
+              // edge case of no definition
+              haxAutoloader.appendChild(document.createElement(i));
             }
           })
           .catch((error) => {
             /* Error handling */
             console.warn(error);
+            // also try putting it in the autoloader and hope for the best
+            haxAutoloader.appendChild(document.createElement(i));
           });
-      } else {
-        // get the custom element definition we used to add that file
-        let CEClass = window.customElements.get(i);
-        if (typeof CEClass.getHaxProperties === "function") {
-          this.setHaxProperties(CEClass.getHaxProperties(), i);
-        } else if (typeof CEClass.HAXWiring === "function") {
-          this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
-        } else if (CEClass.haxProperties) {
-          this.setHaxProperties(CEClass.haxProperties, i);
-        } else {
-          // this is the less optimized / legacy polymer element method to inlcude
-          // this item. It's a good reason to skip on this though because you'll
-          // have a faster boot up time with newer ES6 methods then previous ones.
-          haxAutoloader.appendChild(document.createElement(i));
-        }
       }
     }
   }
   _editModeChanged(newValue) {
-    if (newValue && this.globalPreferences.haxVoiceCommands && this.__hal) {
-      this.__hal.auto = true;
-    } else {
-      this.__hal.auto = false;
+    if (this.__hal) {
+      if (newValue && this.globalPreferences.haxVoiceCommands) {
+        this.__hal.auto = true;
+      } else {
+        this.__hal.auto = false;
+      }
     }
   }
-  _globalPreferencesChanged(newValue, oldValue) {
+  _globalPreferencesChanged(newValue) {
     // regardless of what it is, reflect it globally but only after setup
     if (
       this.__storageDataProcessed &&
       newValue &&
       typeof newValue.haxVoiceCommands !== typeof undefined &&
-      window.HaxStore.ready
+      this.ready
     ) {
       let storageData = this.storageData;
       storageData.globalPreferences = newValue;
@@ -632,48 +810,20 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
     let loadAppStoreData = false;
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "openDrawer") {
-        this.openDrawersCallback(this[propName], oldValue);
-      }
       if (propName == "appStore") {
         this._appStoreChanged(this[propName], oldValue);
-      }
-      if (propName == "globalPreferences") {
-        this._globalPreferencesChanged(this[propName], oldValue);
-      }
-      if (propName == "editMode") {
-        this._editModeChanged(this[propName], oldValue);
-      }
-      if (propName == "activeNode") {
-        this.activeGizmo = this._calculateActiveGizmo(this[propName]);
-        window.HaxStore.write("activeGizmo", this.activeGizmo, this);
       }
       // composite obervation
       if (["__ready", "__appStoreData", "haxAutoloader"].includes(propName)) {
         loadAppStoreData = true;
       }
-      if (
-        [
-          "haxAutoloader",
-          "activeHaxBody",
-          "haxToast",
-          "haxExport",
-          "haxMap",
-          "haxPreferences",
-          "haxAppPicker",
-          "haxTray",
-        ].includes(propName)
-      ) {
+      if (["haxAutoloader", "activeHaxBody", "haxTray"].includes(propName)) {
         // allow this to verify if everything is here or not
         this._storePiecesAllHere(
           this.haxAutoloader,
           this.activeHaxBody,
-          this.haxToast,
-          this.haxExport,
-          this.haxMap,
-          this.haxPreferences,
-          this.haxAppPicker,
-          this.haxTray
+          this.haxTray,
+          this.haxExport
         );
       }
     });
@@ -686,7 +836,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
   _calculateActiveGizmo(activeNode) {
-    if (activeNode == null) {
+    if (activeNode == null || !activeNode.tagName) {
       return null;
     }
     for (var gizmoposition in this.gizmoList) {
@@ -718,7 +868,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     setTimeout(() => {
       this.__storageDataProcessed = true;
       if (this.storageData.globalPreferences) {
-        window.HaxStore.write(
+        this.write(
           "globalPreferences",
           this.storageData.globalPreferences,
           this
@@ -749,13 +899,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     This data is stored in your browser and is never sent anywhere.
     Click to accept.
     `;
-      window.HaxStore.toast(
-        msg,
-        "-1",
-        "fit-bottom",
-        "I Accept",
-        "hax-consent-tap"
-      );
+      this.toast(msg, "-1", "fit-bottom", "I Accept", "hax-consent-tap");
     } else {
       if (
         window.sessionStorage.getItem("haxConfirm") &&
@@ -780,26 +924,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     }
   }
-  _storePiecesAllHere(
-    haxAutoloader,
-    activeHaxBody,
-    haxToast,
-    haxExport,
-    haxMap,
-    haxPreferences,
-    haxAppPicker,
-    haxTray
-  ) {
+  _storePiecesAllHere(haxAutoloader, activeHaxBody, haxTray, haxExport) {
     if (
       !this.__ready &&
       activeHaxBody &&
       haxAutoloader &&
-      haxToast &&
-      haxExport &&
-      haxMap &&
-      haxPreferences &&
-      haxAppPicker &&
-      haxTray
+      haxTray &&
+      haxExport
     ) {
       // send that hax store is ready to go so now we can setup the rest
       this.dispatchEvent(
@@ -810,7 +941,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           detail: true,
         })
       );
-      window.HaxStore.ready = true;
+      this.ready = true;
+      // associate the export button in the tray to the dialog
+      HAXStore.haxExport.shadowRoot
+        .querySelector("#dialog")
+        .associateEvents(haxTray.shadowRoot.querySelector("#exportbtn"));
       this.__ready = true;
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
@@ -859,9 +994,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     ] = () => {
       if (this.activeNode.previousElementSibling) {
         this.activeNode = this.activeNode.previousElementSibling;
-        window.HaxStore.write("activeNode", this.activeNode, this);
-        this.activeContainerNode = this.activeNode;
-        window.HaxStore.write("activeContainerNode", this.activeNode, this);
+        this.write("activeNode", this.activeNode, this);
         this._positionCursorInNode(this.activeNode);
       } else {
         this.speak("You are at the top of the document");
@@ -872,16 +1005,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     ] = () => {
       if (this.activeNode.nextElementSibling) {
         this.activeNode = this.activeNode.nextElementSibling;
-        window.HaxStore.write("activeNode", this.activeNode, this);
-        this.activeContainerNode = this.activeNode;
-        window.HaxStore.write("activeContainerNode", this.activeNode, this);
+        this.write("activeNode", this.activeNode, this);
         this._positionCursorInNode(this.activeNode);
       } else {
         this.speak("You are at the bottom of the document");
       }
     };
     this.voiceCommands[`${this.voiceRespondsTo} type *mycontent`] = (e) => {
-      if (window.HaxStore.instance.isTextElement(this.activeNode)) {
+      if (this.isTextElement(this.activeNode)) {
         try {
           let range = this._positionCursorInNode(this.activeNode);
           let text = document.createTextNode(e);
@@ -911,9 +1042,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       // @todo this needs to now update the previous commands somehow to match
       // the new activation name
     };
-    this.voiceCommands[`${this.voiceRespondsTo} close`] = () => {
-      window.HaxStore.write("openDrawer", false, this);
-    };
   }
   /**
    * Speak wrapper on hal to present as text too
@@ -923,7 +1051,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       this.__hal.speak(text);
     }
     // always show for accessibility
-    window.HaxStore.toast(`${this.voiceRespondsTo}: ${text}`);
+    this.toast(`${this.voiceRespondsTo}: ${text}`);
   }
   /**
    * allow uniform method of adding voice commands
@@ -954,7 +1082,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   _positionCursorInNode(node, position = 0) {
     this.activeHaxBody.positionContextMenus();
     var range = document.createRange();
-    var sel = window.HaxStore.getSelection();
+    var sel = this.getSelection();
     range.setStart(node, position);
     range.collapse(true);
     sel.removeAllRanges();
@@ -966,10 +1094,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   _onBeforeUnload(e) {
     // ensure we don't leave DURING edit mode
-    if (
-      !window.HaxStore.instance.skipExitTrap &&
-      window.HaxStore.instance.editMode
-    ) {
+    if (!this.skipExitTrap && this.editMode) {
       return "Are you sure you want to leave? Your work will not be saved!";
     }
   }
@@ -978,11 +1103,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   _onPaste(e) {
     // only perform this on a text element that is active
-    if (
-      window.HaxStore.instance.isTextElement(
-        window.HaxStore.instance.activeNode
-      )
-    ) {
+    if (this.isTextElement(this.activeNode)) {
       let pasteContent = "";
       let originalContent = "";
       // intercept paste event
@@ -1011,7 +1132,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
       // edges that some things preserve empty white space needlessly
-      let haxElements = window.HaxStore.htmlToHaxElements(pasteContent);
+      let haxElements = this.htmlToHaxElements(pasteContent);
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
@@ -1027,12 +1148,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           title: pasteContent,
         };
         // if we DID get a match, block default values
-        if (
-          !window.HaxStore.insertLogicFromValues(
-            values,
-            window.HaxStore.instance
-          )
-        ) {
+        if (!this.insertLogicFromValues(values, this)) {
           // prevents the text being inserted previously so that the insertLogic does it
           // for us. false only is returned if we didn't do anthing in this function
           return false;
@@ -1070,12 +1186,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             title: haxElements[0].content,
           };
           // if we DID get a match, block default values
-          if (
-            !window.HaxStore.insertLogicFromValues(
-              values,
-              window.HaxStore.instance
-            )
-          ) {
+          if (!this.insertLogicFromValues(values, this)) {
             return false;
           }
         }
@@ -1085,6 +1196,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         return false;
       } else {
         for (var i in haxElements) {
+          // special support for pasting into a list of items
+          if (
+            haxElements[i].tag == "p" &&
+            ["li", "ol", "ul"].includes(this.activeNode.tagName.toLowerCase())
+          ) {
+            haxElements[i].tag = "li";
+          }
           // special traps for word / other styles bleeding through
           delete haxElements[i].properties.style;
           delete haxElements[i].properties.start;
@@ -1097,7 +1215,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               .trim(),
             properties: haxElements[i].properties,
           });
-          newContent += window.HaxStore.nodeToContent(node);
+          newContent += this.nodeToContent(node);
         }
       }
       // if we got here then we have HTML structures to pull together
@@ -1107,20 +1225,18 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       e.stopImmediatePropagation();
       try {
         // get the range that's active and selection
-        let range = window.HaxStore.getRange();
-        let sel = window.HaxStore.getSelection();
+        let range = this.getRange();
+        let sel = this.getSelection();
         // tee up a wrapper so we can walk and put every element in
         let newNodes = document.createElement("div");
         // defined so that we can
-        let siblingEl;
         newNodes.innerHTML = newContent;
-        if (range && sel && typeof range.deleteContents === "function") {
-          range.deleteContents();
+        if (range && sel) {
           for (var i in newNodes.children) {
-            // delete nodes that are empty paragraphs
+            // delete nodes that are empty text elements
             if (
               newNodes.children[i].tagName &&
-              newNodes.children[i].tagName === "P" &&
+              this.isTextElement(newNodes.children[i]) &&
               newNodes.children[i].innerHTML === ""
             ) {
               newNodes.children[i].remove();
@@ -1133,60 +1249,91 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               this._positionCursorInNode(txt, txt.length);
             }, 0);
           } else {
-            let activeEl;
-            while (newNodes.lastElementChild) {
-              // sanity check and then insert our new paste node right AFTER the thing we are pasting in the middle of
-              // this hopefully captures complex HTML pastes and inserts them in a logical way
+            var _enterSplit, activeEl, siblingEl;
+            // only insert a P if we are splitting something
+            if (
+              this.activeNode.innerText.trim() != "" &&
+              range.endOffset != this.activeNode.innerText.length
+            ) {
+              _enterSplit = true;
+              document.execCommand("insertParagraph");
+            }
+            // sanity check and then insert our new paste node right AFTER the thing we are pasting in the middle of
+            // this hopefully captures complex HTML pastes and inserts them in a logical way
+            if (
+              range.commonAncestorContainer &&
+              range.commonAncestorContainer.parentNode
+            ) {
               if (
-                range.commonAncestorContainer &&
-                range.commonAncestorContainer.parentNode
+                !siblingEl &&
+                this.activeNode != range.commonAncestorContainer
               ) {
-                if (
-                  !siblingEl &&
-                  this.activeNode != range.commonAncestorContainer
-                ) {
-                  siblingEl =
-                    range.commonAncestorContainer.parentNode.nextElementSibling;
-                  if (!siblingEl) {
-                    siblingEl = range.commonAncestorContainer;
-                  }
+                siblingEl = range.commonAncestorContainer.parentNode;
+                if (!siblingEl) {
+                  siblingEl = range.commonAncestorContainer;
                 }
-                activeEl = newNodes.lastElementChild;
-                // should always be there but just in case there was no range
-                // so we avoid an infinite loop
-                if (siblingEl) {
-                  // account for a potential textnode
-                  if (
-                    siblingEl.getAttribute &&
-                    siblingEl.getAttribute("slot")
-                  ) {
-                    activeEl.setAttribute(
-                      "slot",
-                      siblingEl.getAttribute("slot")
-                    );
-                  }
-                  siblingEl.parentNode.insertBefore(activeEl, siblingEl);
+              }
+            }
+            while (newNodes.firstElementChild) {
+              activeEl = newNodes.firstElementChild;
+              // should always be there but just in case there was no range
+              // so we avoid an infinite loop
+              if (siblingEl) {
+                // account for a potential textnode
+                if (siblingEl.getAttribute && siblingEl.getAttribute("slot")) {
+                  activeEl.setAttribute("slot", siblingEl.getAttribute("slot"));
                 }
-                // attempt insert after active
-                else if (this.activeNode) {
-                  if (this.activeNode.getAttribute("slot")) {
-                    activeEl.setAttribute(
-                      "slot",
-                      this.activeNode.getAttribute("slot")
-                    );
-                  }
+                // if we split an item at the very front with the enter key
+                // and we are pasting in complex content then we need to
+                // make sure that we move things AHEAD of what will be moved down
+                if (_enterSplit) {
+                  this.activeHaxBody.haxReplaceNode(
+                    siblingEl.previousElementSibling,
+                    activeEl
+                  );
+                  _enterSplit = false;
+                } else {
+                  siblingEl.parentNode.insertBefore(
+                    activeEl,
+                    siblingEl.nextElementSibling
+                  );
+                }
+              }
+              // attempt insert after active
+              else if (this.activeNode) {
+                if (this.activeNode.getAttribute("slot")) {
+                  activeEl.setAttribute(
+                    "slot",
+                    this.activeNode.getAttribute("slot")
+                  );
+                }
+                // if we have an empty element we are hitting paste on
+                // then leverage it for the 1st item as opposed to making a new line
+                if (this.activeNode.innerText.trim() == "") {
+                  this.activeHaxBody.haxReplaceNode(this.activeNode, activeEl);
+                } else {
                   this.activeNode.parentNode.insertBefore(
                     activeEl,
                     this.activeNode.nextElementSibling
                   );
                 }
-                // shouldn't be possible but just to be safe
-                else {
-                  this.activeHaxBody.appendChild(activeEl);
-                }
-                siblingEl = activeEl;
               }
+              // shouldn't be possible but just to be safe
+              else {
+                this.activeHaxBody.appendChild(activeEl);
+              }
+              siblingEl = activeEl;
             }
+            setTimeout(() => {
+              if (activeEl && activeEl.childNodes && activeEl.childNodes[0]) {
+                this._positionCursorInNode(
+                  activeEl.childNodes[0],
+                  activeEl.childNodes[0].length
+                );
+                activeEl = null;
+                siblingEl = null;
+              }
+            }, 0);
           }
         }
       } catch (e) {
@@ -1238,6 +1385,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "webview",
     ];
   }
+  /**
+   * Types that we deem as valid
+   */
   __validGizmoTypes() {
     return [
       "data",
@@ -1265,6 +1415,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   constructor() {
     super();
+    this.haxSelectedText = "";
     this.__winEvents = {
       "hax-register-properties": "_haxStoreRegisterProperties",
       "hax-consent-tap": "_haxConsentTap",
@@ -1281,6 +1432,30 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-add-voice-command": "_addVoiceCommand",
     };
+    // establish the tour
+    SimpleTourManager.registerNewTour({
+      key: "hax",
+      name: "Let's learn HAX",
+      style: `
+      simple-popover-manager::part(simple-popover) {
+        max-width: 250px;
+      }
+      simple-popover-manager button {
+        font-size: 12px;
+        margin: 0px 2px;
+      }
+      simple-popover-manager p {
+        --hax-base-styles-p-font-size: 14px;
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      simple-popover-manager h3 {
+        --hax-base-styles-h3-font-size: 18px;
+        margin: 8px 2px;
+      }`,
+    });
     this.voiceRespondsTo = "(worker)";
     this.voiceCommands = {};
     this.skipHAXConfirmation = false;
@@ -1289,16 +1464,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       url: "",
       params: {},
     };
-    this.activeContainerNode = null;
     this.activeNode = null;
     this.haxBodies = [];
     this.activePlaceHolder = null;
     this.sessionObject = {};
     this.editMode = false;
     this.skipExitTrap = false;
-    this.gizmoList = [];
     this.elementList = {};
     this.appList = [];
+    this.gizmoList = [];
     this.staxList = [];
     this.bloxList = [];
     this.globalPreferences = {};
@@ -1311,24 +1485,37 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     // test for sandboxed env
     let test = document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
-    // claim the instance spot. This way we can easily
-    // be referenced globally
-    if (window.HaxStore.instance == null) {
-      window.HaxStore.instance = this;
-    }
     // imports app, blox, stax definitions
     import("./hax-app.js");
+    // where all our icons live for simple-icon
+    import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
     import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
       esModule.setPassiveTouchGestures(true);
     });
     import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
-      this.haxToast = window.SimpleToast.requestAvailability();
+      window.SimpleToast.requestAvailability();
     });
 
     import("@lrnwebcomponents/media-behaviors/media-behaviors.js");
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
+    // mobx
+    makeObservable(this, {
+      gizmoList: observable,
+      activeNode: observable,
+      globalPreferences: observable,
+      activeGizmo: computed,
+      editMode: observable,
+      appList: observable,
+      activeApp: observable,
+      haxSelectedText: observable,
+    });
+    autorun(() => {
+      this._globalPreferencesChanged(toJS(this.globalPreferences));
+    });
+    autorun(() => {
+      this._editModeChanged(toJS(this.editMode));
+    });
   }
-
   /**
    * Build HAX property definitions for primitives that we support.
    */
@@ -1336,7 +1523,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     // sandboxes need a webview definition
     // we don't want people making them but we need to
     // know how to edit them if asked
-    if (window.HaxStore.instance._isSandboxed) {
+    if (this._isSandboxed) {
       let webview = {
         canScale: true,
         canPosition: true,
@@ -1866,45 +2053,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * A standard event for registering the different pieces of HAX that check in
    * at run time. This allows for additional flexibility down the road as well as
    * registering pieces we never thought of for custom environments.
+   * This also ensures that there are object references in the central store
+   * but that load at an unknown time during spin up.
    *
    * @param {CustomEvent} e an event that has the piece to register and the object
    */
   _haxStorePieceRegistrationManager(e) {
     if (e.detail && e.detail.piece && e.detail.object) {
       this[e.detail.piece] = e.detail.object;
-    }
-  }
-
-  /**
-   * Close all drawers
-   */
-  openDrawersCallback(active = false, oldValue) {
-    // walk all drawers, close everything
-    // except active. This also will allow them
-    // to close everything then.
-    let drawers = ["haxAppPicker", "haxPreferences", "haxMap", "haxExport"];
-    for (var i in drawers) {
-      if (active === this[drawers[i]]) {
-        active.open();
-        setTimeout(() => {
-          if (
-            active.querySelector(
-              "simple-fields-field,textarea,paper-button,hax-tray-button"
-            ) != null
-          ) {
-            active
-              .querySelector(
-                "simple-fields-field,textarea,paper-button,hax-tray-button"
-              )
-              .focus();
-          }
-          var evt = document.createEvent("UIEvents");
-          evt.initUIEvent("resize", true, false, window, 0);
-          window.dispatchEvent(evt);
-        }, 325);
-      } else {
-        this[drawers[i]].close();
-      }
     }
   }
 
@@ -1942,22 +2098,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         }
         delete properties.innerText;
       }
-      // ensure better UX for text based operations
-      this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
-      if (details.replace && details.replacement) {
-        let node = haxElementToNode({
-          tag: details.tag,
-          content: details.content,
-          properties: properties,
-        });
-        if (this.activePlaceHolder) {
-          this.activeHaxBody.haxReplaceNode(this.activePlaceHolder, node);
-          this.activePlaceHolder = null;
-        } else {
-          this.activeHaxBody.haxReplaceNode(this.activeNode, node);
-        }
-      } else if (
+      if (
         typeof details.__type !== typeof undefined &&
         details.__type === "inline"
       ) {
@@ -1973,17 +2115,43 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         }
         // set it to nothing
         this.activePlaceHolder = null;
-      } else if (this.activeContainerNode != null) {
+      } else if (
+        details.replace ||
+        details.replacement ||
+        details.nextToActive
+      ) {
+        let node = haxElementToNode({
+          tag: details.tag,
+          content: details.content,
+          properties: properties,
+        });
+        if (this.activePlaceHolder) {
+          this.activeHaxBody.haxReplaceNode(this.activePlaceHolder, node);
+          this.activePlaceHolder = null;
+        } else if (details.nextToActive && this.activeNode) {
+          // special support for an active slot
+          if (
+            this.activeHaxBody.__slot &&
+            this.activeNode.tagName === "GRID-PLATE"
+          ) {
+            this.activeNode.appendChild(node);
+          } else {
+            this.activeNode.parentNode.insertBefore(node, this.activeNode);
+          }
+        } else {
+          this.activeHaxBody.haxReplaceNode(this.activeNode, node);
+        }
+      } else if (
+        this.activeNode.parentNode &&
+        this.activeNode.parentNode.tagName != "HAX-BODY"
+      ) {
         let node = haxElementToNode({
           tag: details.tag,
           content: details.content,
           properties: properties,
         });
         // allow for inserting things into things but not grid plate
-        if (
-          this.activeContainerNode &&
-          this.activeContainerNode.tagName === "GRID-PLATE"
-        ) {
+        if (this.activeNode.parentNode.tagName === "GRID-PLATE") {
           // support slot if we have one on the activeNode (most likely)
           if (this.activeNode.getAttribute("slot") != null) {
             node.setAttribute("slot", this.activeNode.getAttribute("slot"));
@@ -1991,47 +2159,18 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.activeHaxBody.haxInsert(
             details.tag,
             details.content,
-            properties,
-            false
+            properties
           );
-          this.activeHaxBody.shadowRoot.querySelector(
-            "#textcontextmenu"
-          ).highlightOps = false;
         } else {
           this.activeHaxBody.haxInsert(
             details.tag,
             details.content,
-            properties,
-            false
+            properties
           );
         }
       } else {
-        this.activeHaxBody.haxInsert(
-          details.tag,
-          details.content,
-          properties,
-          false
-        );
+        this.activeHaxBody.haxInsert(details.tag, details.content, properties);
       }
-      // shift the last used thing to the front of the array
-      // that way the list is actually sorted based on usage
-      // delay though in the event other things depend on the array
-      // as it currently exists
-      setTimeout(() => {
-        let gizmoList = this.gizmoList;
-        for (var gizmoposition in gizmoList) {
-          let gizmo = gizmoList[gizmoposition];
-          // find the tag and then move this position to the front of the array
-          if (gizmo.tag === details.tag) {
-            let tmp = gizmoList[gizmoposition];
-            delete gizmoList[gizmoposition];
-            this.gizmoList.unshift(tmp);
-          }
-        }
-        // spread for accurate data usage locally, then write store globally
-        this.gizmoList = [...gizmoList];
-        window.HaxStore.write("gizmoList", gizmoList, this);
-      }, 10);
     }
   }
   /**
@@ -2058,8 +2197,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this.activeHaxBody.haxInsert(
           e.detail[i].tag,
           e.detail[i].content,
-          properties,
-          false
+          properties
         );
       }
     }
@@ -2074,8 +2212,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       // default active the whatever is last here
       this.activeHaxBody = e.detail;
       // needed so that higher order things can respond to us having a body
-      window.HaxStore.write("activeHaxBody", this.activeHaxBody, this);
-      window.HaxStore.write("editMode", this.editMode, this);
+      this.write("activeHaxBody", this.activeHaxBody, this);
+      this.write("editMode", this.editMode, this);
     }
   }
 
@@ -2109,12 +2247,16 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       e.detail.property &&
       e.detail.owner
     ) {
-      if (e.detail.value == null) {
-        this[e.detail.property] = null;
-      } else if (typeof e.detail.value === "object") {
-        this[e.detail.property] = {};
+      // only update US if we didn't originate this message
+      if (e.detail.owner !== this) {
+        if (e.detail.value == null) {
+          this[e.detail.property] = null;
+        } else if (typeof e.detail.value === "object") {
+          this[e.detail.property] = {};
+        }
+        this[e.detail.property] = e.detail.value;
       }
-      this[e.detail.property] = e.detail.value;
+      // tell everyone regardless
       this.dispatchEvent(
         new CustomEvent("hax-store-property-updated", {
           bubbles: true,
@@ -2137,7 +2279,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (e.detail) {
       e.detail.index = this.appList.length;
       this.appList = [...this.appList, e.detail];
-      window.HaxStore.write("appList", this.appList, this);
+      this.write("appList", this.appList, this);
       // preconnect apps at registration time
       if (
         e.detail.connection &&
@@ -2167,7 +2309,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (e.detail) {
       e.detail.index = this.staxList.length;
       this.staxList = [...this.staxList, e.detail];
-      window.HaxStore.write("staxList", this.staxList, this);
+      this.write("staxList", this.staxList, this);
       // we don't care about this after it's launched
       if (
         typeof e.target.parentElement !== typeof undefined &&
@@ -2185,7 +2327,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (e.detail) {
       e.detail.index = this.bloxList.length;
       this.bloxList = [...this.bloxList, e.detail];
-      window.HaxStore.write("bloxList", this.bloxList, this);
+      this.write("bloxList", this.bloxList, this);
       // we don't care about this after it's launched
       if (
         typeof e.target.parentElement !== typeof undefined &&
@@ -2195,21 +2337,433 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     }
   }
+  /**
+   * Helper to convert dash to camel; important when reading attributes.
+   */
+  dashToCamel(str) {
+    return str.replace(/-([a-z])/g, function (g) {
+      return g[1].toUpperCase();
+    });
+  }
+  /**
+   * Convert HTML into HAX Elements
+   */
+  htmlToHaxElements(html) {
+    let elements = [];
+    const validTags = this.validTagList;
+    let fragment = document.createElement("div");
+    fragment.innerHTML = html;
+    const children = fragment.childNodes;
+    // loop over the new nodes
+    for (var i = 0; i < children.length; i++) {
+      // verify this tag is a valid one
+      if (
+        typeof children[i].tagName !== typeof undefined &&
+        validTags.includes(children[i].tagName.toLowerCase())
+      ) {
+        elements.push(nodeToHaxElement(children[i], null));
+      }
+    }
+    return elements;
+  }
+  /**
+   * Convert a node to the correct content object for saving.
+   * This DOES NOT acccept a HAXElement which is similar
+   */
+  nodeToContent(node) {
+    // ensure we have access to all the member functions of the custom element
+    let prototype = Object.getPrototypeOf(node);
+    // support for deep API call
+    if (typeof prototype.preProcessHaxNodeToContent !== typeof undefined) {
+      node = prototype.preProcessHaxNodeToContent(node);
+    }
+    let tag = node.tagName.toLowerCase();
+    // support sandboxed environments which
+    // will hate iframe tags but love webview
+    if (this._isSandboxed && tag === "webview") {
+      tag = "iframe";
+    }
+    var content = "";
+    // start to rebuild the same tag we got in a generalized way
+    content += "<" + tag;
+    // account for things that say NOT to save slot values
+    var props = this.elementList[tag];
+    var propvals = {};
+    // grab all of the original's attributes, and pass them to the replacement
+    for (var j = 0, l = node.attributes.length; j < l; ++j) {
+      var nodeName = node.attributes.item(j).nodeName;
+      var value = node.attributes.item(j).value;
+      // encode objects and arrays because they are special
+      if (
+        nodeName != "style" &&
+        (typeof value === typeof Object || value.constructor === Array)
+      ) {
+        propvals[nodeName] = JSON.stringify(value).replace(
+          new RegExp('"', "g"),
+          "&quot;"
+        );
+      }
+      // only write things that aren't empty
+      else if (value != null && value != "null") {
+        if (value === true || value === "true") {
+          propvals[nodeName] = true;
+        } else if (value === false) {
+          // do nothing, no reason to record false unless written as text
+          // in which case below will capture it
+        } else {
+          // ensure that value doesn't have " in it unencoded
+          if (typeof value === "string" && value !== "") {
+            value = value.replace(new RegExp('"', "g"), "&quot;");
+            propvals[nodeName] = value;
+          }
+          // special handling for empty string cause it might mean boolean
+          // or it might be a string
+          else if (value === "") {
+            if (value == "" && node.attributes.item(j).value != "") {
+              value = node.attributes.item(j).value;
+            }
+            propvals[nodeName] = value;
+          } else {
+            propvals[nodeName] = value;
+          }
+        }
+      }
+    }
+    // now look through properties
+    let tmpProps;
+    // relatively cross library
+    if (customElements.get(tag)) {
+      tmpProps = customElements.get(tag).properties;
+    }
+    // weak fallback
+    if (typeof tmpProps === typeof undefined) {
+      tmpProps = node.__data;
+    }
+    if (typeof tmpProps !== typeof undefined) {
+      for (var j in tmpProps) {
+        var nodeName = camelToDash(j);
+        var value = null;
+        // prefer local value over properties object if possible
+        if (typeof node[j] !== typeof undefined) {
+          value = node[j];
+        }
+        // never allow read only things to recorded as they
+        // are run-time creation 99% of the time
+        // this is very polymer specific but it allows readOnly and computed props
+        // also __ is a popular convention for private values so let's skip them
+        if (
+          !tmpProps[j].readOnly &&
+          !tmpProps[j].computed &&
+          value !== tmpProps[j].value &&
+          !nodeName.startsWith("__")
+        ) {
+          // encode objects and arrays because they are special
+          if (
+            value != null &&
+            (typeof value === "object" || value.constructor === Array)
+          ) {
+            if (value.constructor === Array && value != []) {
+              propvals[nodeName] = JSON.stringify(value).replace(
+                new RegExp('"', "g"),
+                "&quot;"
+              );
+            } else if (typeof value === "object" && value != {}) {
+              propvals[nodeName] = JSON.stringify(value).replace(
+                new RegExp('"', "g"),
+                "&quot;"
+              );
+            }
+          }
+          // only write things that aren't empty
+          else if (value != null && value != "null") {
+            if (value === true || value === "true") {
+              propvals[nodeName] = true;
+            } else if (value === false) {
+              // do nothing, no reason to record false unless written as text
+              // in which case below will capture it
+            } else {
+              // ensure that value doesn't have " in it unencoded
+              if (typeof value === "string" && value !== "") {
+                value = value.replace(new RegExp('"', "g"), "&quot;");
+                propvals[nodeName] = value;
+              }
+              // special handling for empty string cause it might mean boolean
+              // or it might be a string
+              else if (value === "") {
+                if (value == "" && tmpProps[j].value != "") {
+                  value = tmpProps[j].value;
+                } else if (value === "" && tmpProps[j].value == "") {
+                  // do nothing, the default value is empty
+                  // so lets record less data
+                }
+              } else {
+                propvals[nodeName] = value;
+              }
+            }
+          }
+        }
+      }
+    }
+    // support for tag defining which properties NOT to save
+    // for simplification, everything is an attribute during this
+    // operation
+    if (
+      typeof props !== typeof undefined &&
+      typeof props.saveOptions.unsetAttributes !== typeof undefined
+    ) {
+      for (var i in props.saveOptions.unsetAttributes) {
+        delete propvals[props.saveOptions.unsetAttributes[i]];
+      }
+    }
+    // specialized clean up for some that can leak through from above
+    // and are edge case things because #hashtag gotta love HTML attributes
+    // and the webview tag. facepalm.
+    let delProps = ["inner-text", "inner-html", "tabindex", "guestinstance"];
+    for (var delProp in delProps) {
+      if (typeof propvals[delProps[delProp]] !== typeof undefined) {
+        delete propvals[delProps[delProp]];
+      }
+    }
+    // remove id attribute if it's empty, somehow misses above
+    if (typeof propvals.id !== typeof undefined && propvals.id === "") {
+      delete propvals.id;
+    }
+    // drop these known things we never want to save
+    delete propvals.draggable;
+    delete propvals.contenteditable;
+    delete propvals["data-hax-ray"];
+    if (propvals.class == "" || propvals.class == "hax-active") {
+      delete propvals.class;
+    }
+    // run through the rest and print to the dom
+    for (var i in propvals) {
+      if (propvals[i] === true) {
+        content += " " + i;
+      } else {
+        content += " " + i + '="' + propvals[i] + '"';
+      }
+    }
+    // set the opening tag, support self-closing void tags
+    let voidTags = [
+      "area",
+      "base",
+      "br",
+      "col",
+      "embed",
+      "hr",
+      "img",
+      "input",
+      "keygen",
+      "link",
+      "meta",
+      "param",
+      "source",
+      "track",
+      "wbr",
+    ];
+    if (voidTags.includes(tag)) {
+      content += "/>";
+    } else {
+      content += ">";
+    }
+    // try and work against anything NOT a P tag
+    if (typeof props === typeof undefined || !props.saveOptions.wipeSlot) {
+      // get content that is in the slots
+      let slotnodes = node.childNodes;
+      // ensure there's something inside of this
+      if (slotnodes.length > 0) {
+        // loop through everything found in the slotted area and put it back in
+        for (var j = 0, len2 = slotnodes.length; j < len2; j++) {
+          if (typeof slotnodes[j].tagName !== typeof undefined) {
+            // if we're a custom element, keep digging, otherwise a simple
+            // self append is fine unless template tag cause it's a special
+            // case for the web in general as it'll register as not a primative
+            // even though it is...
+            if (
+              !this.HTMLPrimativeTest(slotnodes[j].tagName) &&
+              slotnodes[j].tagName !== "TEMPLATE"
+            ) {
+              content += this.nodeToContent(slotnodes[j]);
+            } else {
+              slotnodes[j].removeAttribute("data-hax-ray");
+              slotnodes[j].contentEditable = false;
+              content += slotnodes[j].outerHTML;
+            }
+          }
+          // keep comments with a special case since they need wrapped
+          else if (slotnodes[j].nodeType === 8) {
+            content += "<!-- " + slotnodes[j].textContent + " -->";
+          }
+          // keep everything NOT an element at this point, this helps
+          // preserve whitespace because we're crazy about accuracy
+          else if (
+            slotnodes[j].nodeType !== 1 &&
+            typeof slotnodes[j].textContent !== typeof undefined &&
+            slotnodes[j].textContent !== "undefined"
+          ) {
+            content += slotnodes[j].textContent;
+          }
+        }
+      }
+    }
+    // optional support for intentional progressive enhancement
+    if (typeof node.haxProgressiveEnhancement === "function") {
+      content += node.haxProgressiveEnhancement();
+    }
+    // don't put return for span since it's an inline tag
+    if (tag === "span") {
+      content += "</" + tag + ">";
+    } else if (tag === "hr" || tag === "br" || tag === "img") {
+      // do nothing for self-closing tags they'll resolve themselves
+    }
+    // close the tag, placing a return in output for block elements
+    else {
+      content += "</" + tag + ">" + "\n";
+    }
+    // spacing niceness for output readability
+    content = content.replace(/&nbsp;/gm, " ");
+    // target and remove hax specific things from output if they slipped through
+    content = content.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
+    content = content.replace(/ class=""/gim, "");
+    content = content.replace(/ class="hax-active"/gim, "");
+    content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
+    // wipe pure style spans which can pop up on copy paste if we didn't catch it
+    // also ensure that we then remove purely visual chars laying around
+    // this also helps clean up when we did a normal contenteditable paste
+    // as opposed to our multi-element sanitizing option that we support
+    content = content.replace(/<span style="(.*?)">/gim, "<span>");
+    content = content.replace(/<span>\s*?<\/span>/g, " ");
+    content = content.replace(/<span><br\/><\/span>/gm, "");
+    // account for things taht on normal paste would pick up too many css vars
+    content = content.replace(/<strong style="(.*?)">/gim, "<strong>");
+    content = content.replace(/<b style="(.*?)">/gim, "<b>");
+    content = content.replace(/<strike style="(.*?)">/gim, "<strike>");
+    content = content.replace(/<em style="(.*?)">/gim, "<em>");
+    content = content.replace(/<i style="(.*?)">/gim, "<i>");
+    // empty with lots of space
+    content = content.replace(/<p>(\s*)<\/p>/gm, "<p></p>");
+    // empty p / more or less empty
+    content = content.replace(/<p>&nbsp;<\/p>/gm, "<p></p>");
+    // br somehow getting through here
+    content = content.replace(/<p><br\/><\/p>/gm, "<p></p>");
+    content = content.replace(/<p><br><\/p>/gm, "<p></p>");
+    // whitespace in reverse of the top case now that we've cleaned it up
+    content = content.replace(/<\/p>(\s*)<p>/gm, "</p><p>");
+    content = content
+      .split("\n\r")
+      .join("\n")
+      .split("\r")
+      .join("\n")
+      .split("\n\n")
+      .join("\n")
+      .split("\n\n")
+      .join("\n")
+      .split("\n\n")
+      .join("\n");
+    // support postProcess text rewriting for the node that's been
+    // converted to a string for storage
+    if (node.postProcesshaxNodeToContent === "function") {
+      content = node.postProcesshaxNodeToContent(content);
+    }
+    return content;
+  }
+  /**
+   * Basic HTML Primitives test
+   */
+  HTMLPrimativeTest(node) {
+    if (
+      typeof node.tagName !== typeof undefined &&
+      node.tagName.indexOf("-") == -1
+    ) {
+      return true;
+    }
+    return false;
+  }
+  /**
+   * Filter app store apps to those that accept this file source.
+   */
+  getHaxAppStoreTargets(type) {
+    let targets = this.appList.filter((app) => {
+      if (typeof app.connection.operations.add !== typeof undefined) {
+        let add = app.connection.operations.add;
+        if (
+          typeof add.acceptsGizmoTypes !== typeof undefined &&
+          add.acceptsGizmoTypes.includes(type)
+        ) {
+          return true;
+        }
+      }
+      return false;
+    });
+    return targets;
+  }
 
+  /**
+   * Generate Hax Element prototype.
+   */
+  haxElementPrototype(gizmo, properties, content = "") {
+    return {
+      tag: gizmo.tag,
+      properties: properties,
+      content: content,
+      gizmo: gizmo,
+    };
+  }
+  /**
+   * Slot content w/ support for custom elements in slot.
+   */
+  getHAXSlot(node) {
+    // we can skip all of this if we have a text element / HTML prim!
+    if (this.isTextElement(node)) {
+      return node.innerHTML;
+    }
+    let content = "";
+    var slotnodes = node.childNodes;
+    // ensure there's something inside of this
+    if (slotnodes.length > 0) {
+      // loop through everything found in the slotted area and put it back in
+      for (var j = 0, len2 = slotnodes.length; j < len2; j++) {
+        if (typeof slotnodes[j].tagName !== typeof undefined) {
+          // if we're a custom element, keep digging, otherwise a simple
+          // self append is fine.
+          if (slotnodes[j].tagName.indexOf("-") > 0) {
+            content += "  " + this.nodeToContent(slotnodes[j]) + "\n";
+          } else {
+            content += "  " + slotnodes[j].outerHTML + "\n";
+          }
+        }
+        // keep comments with a special case since they need wrapped
+        else if (slotnodes[j].nodeType === 8) {
+          content += "<!-- " + slotnodes[j].textContent + " -->";
+        }
+        // keep everything NOT an element at this point, this helps
+        // preserve whitespace because we're crazy about accuracy
+        else if (
+          slotnodes[j].nodeType !== 1 &&
+          typeof slotnodes[j].textContent !== typeof undefined &&
+          slotnodes[j].textContent !== "undefined"
+        ) {
+          content += slotnodes[j].textContent;
+        }
+      }
+    }
+    return content;
+  }
   /**
    * Notice that a property off an element was set in HAX some place; register it here
    */
   _haxStoreRegisterProperties(e) {
     if (e.detail && e.detail.properties && e.detail.tag) {
       // only register tag if we don't know about it already
-      if (typeof this.elementList[e.detail.tag] === typeof undefined) {
+      if (!this.elementList[e.detail.tag]) {
         // look for a gizmo; it's not required, technically.
         let gizmo = e.detail.properties.gizmo;
         if (gizmo) {
           gizmo.tag = e.detail.tag;
           let gizmos = this.gizmoList;
           gizmos.push(gizmo);
-          window.HaxStore.write("gizmoList", gizmos, this);
+          this.gizmoList = [...gizmos];
+          this.write("gizmoList", gizmos, this);
         }
         this.elementList[e.detail.tag] = e.detail.properties;
         // only push new values on if we got something new
@@ -2230,16 +2784,17 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     }
   }
+  get activeGizmo() {
+    let gizmo = toJS(this._calculateActiveGizmo(this.activeNode));
+    this.write("activeGizmo", gizmo, this);
+    return gizmo;
+  }
 }
 window.customElements.define(HaxStore.tag, HaxStore);
-/**
- * Trick to write the store to the DOM if it wasn't there already.
- * This is not used yet but could be if you wanted to dynamically
- * load the store based on something else calling for it. Like
- * store lazy loading but it isn't tested.
- */
+export { HaxStore };
+// window bridge for external projects that want to account for HAX
+// yet don't want to require it as part of an import chain
 window.HaxStore = window.HaxStore || {};
-window.HaxStore.instance = null;
 window.HaxStore.requestAvailability = function () {
   if (!window.HaxStore.instance) {
     window.HaxStore.instance = document.createElement("hax-store");
@@ -2247,804 +2802,61 @@ window.HaxStore.requestAvailability = function () {
   }
   return window.HaxStore.instance;
 };
-/**
- * Simple Array smashing function to ensure Object is array.
- */
-window.HaxStore.toArray = (obj) => {
-  return Object.keys(obj).map(function (key) {
-    return obj[key];
-  });
-};
-/**
- * Helper to convert camel case to dash; important when setting attributes.
- */
-window.HaxStore.camelToDash = (str) => {
-  return str
-    .replace(/\W+/g, "-")
-    .replace(/([a-z\d])([A-Z])/g, "$1-$2")
-    .toLowerCase();
-};
-/**
- * Helper to convert dash to camel; important when reading attributes.
- */
-window.HaxStore.dashToCamel = (str) => {
-  return str.replace(/-([a-z])/g, function (g) {
-    return g[1].toUpperCase();
-  });
-};
-/**
- * Convert HTML into HAX Elements
- */
-window.HaxStore.htmlToHaxElements = (html) => {
-  let elements = [];
-  const validTags = window.HaxStore.instance.validTagList;
-  let fragment = document.createElement("div");
-  fragment.innerHTML = html;
-  const children = fragment.childNodes;
-  // loop over the new nodes
-  for (var i = 0; i < children.length; i++) {
-    // verify this tag is a valid one
-    if (
-      typeof children[i].tagName !== typeof undefined &&
-      validTags.includes(children[i].tagName.toLowerCase())
-    ) {
-      elements.push(nodeToHaxElement(children[i], null));
-    }
-  }
-  return elements;
-};
-/**
- * Convert a node to the correct content object for saving.
- * This DOES NOT acccept a HAXElement which is similar
- */
-window.HaxStore.nodeToContent = (node) => {
-  // ensure we have access to all the member functions of the custom element
-  let prototype = Object.getPrototypeOf(node);
-  // support for deep API call
-  if (typeof prototype.preProcessHaxNodeToContent !== typeof undefined) {
-    node = prototype.preProcessHaxNodeToContent(node);
-  }
-  let tag = node.tagName.toLowerCase();
-  // support sandboxed environments which
-  // will hate iframe tags but love webview
-  if (window.HaxStore.instance._isSandboxed && tag === "webview") {
-    tag = "iframe";
-  }
-  var content = "";
-  // start to rebuild the same tag we got in a generalized way
-  content += "<" + tag;
-  // account for things that say NOT to save slot values
-  var props = window.HaxStore.instance.elementList[tag];
-  var propvals = {};
-  // grab all of the original's attributes, and pass them to the replacement
-  for (var j = 0, l = node.attributes.length; j < l; ++j) {
-    var nodeName = node.attributes.item(j).nodeName;
-    var value = node.attributes.item(j).value;
-    // encode objects and arrays because they are special
-    if (
-      nodeName != "style" &&
-      (typeof value === typeof Object || value.constructor === Array)
-    ) {
-      propvals[nodeName] = JSON.stringify(value).replace(
-        new RegExp('"', "g"),
-        "&quot;"
-      );
-    }
-    // only write things that aren't empty
-    else if (value != null && value != "null") {
-      if (value === true || value === "true") {
-        propvals[nodeName] = true;
-      } else if (value === false) {
-        // do nothing, no reason to record false unless written as text
-        // in which case below will capture it
-      } else {
-        // ensure that value doesn't have " in it unencoded
-        if (typeof value === "string" && value !== "") {
-          value = value.replace(new RegExp('"', "g"), "&quot;");
-          propvals[nodeName] = value;
-        }
-        // special handling for empty string cause it might mean boolean
-        // or it might be a string
-        else if (value === "") {
-          if (value == "" && node.attributes.item(j).value != "") {
-            value = node.attributes.item(j).value;
-          }
-          propvals[nodeName] = value;
-        } else {
-          propvals[nodeName] = value;
-        }
-      }
-    }
-  }
-  // now look through properties
-  let tmpProps;
-  // relatively cross library
-  if (customElements.get(tag)) {
-    tmpProps = customElements.get(tag).properties;
-  }
-  // weak fallback
-  if (typeof tmpProps === typeof undefined) {
-    tmpProps = node.__data;
-  }
-  if (typeof tmpProps !== typeof undefined) {
-    for (var j in tmpProps) {
-      var nodeName = window.HaxStore.camelToDash(j);
-      var value = null;
-      // prefer local value over properties object if possible
-      if (typeof node[j] !== typeof undefined) {
-        value = node[j];
-      }
-      // never allow read only things to recorded as they
-      // are run-time creation 99% of the time
-      // this is very polymer specific but it allows readOnly and computed props
-      // also __ is a popular convention for private values so let's skip them
-      if (
-        !tmpProps[j].readOnly &&
-        !tmpProps[j].computed &&
-        value !== tmpProps[j].value &&
-        !nodeName.startsWith("__")
-      ) {
-        // encode objects and arrays because they are special
-        if (
-          value != null &&
-          (typeof value === "object" || value.constructor === Array)
-        ) {
-          if (value.constructor === Array && value != []) {
-            propvals[nodeName] = JSON.stringify(value).replace(
-              new RegExp('"', "g"),
-              "&quot;"
-            );
-          } else if (typeof value === "object" && value != {}) {
-            propvals[nodeName] = JSON.stringify(value).replace(
-              new RegExp('"', "g"),
-              "&quot;"
-            );
-          }
-        }
-        // only write things that aren't empty
-        else if (value != null && value != "null") {
-          if (value === true || value === "true") {
-            propvals[nodeName] = true;
-          } else if (value === false) {
-            // do nothing, no reason to record false unless written as text
-            // in which case below will capture it
-          } else {
-            // ensure that value doesn't have " in it unencoded
-            if (typeof value === "string" && value !== "") {
-              value = value.replace(new RegExp('"', "g"), "&quot;");
-              propvals[nodeName] = value;
-            }
-            // special handling for empty string cause it might mean boolean
-            // or it might be a string
-            else if (value === "") {
-              if (value == "" && tmpProps[j].value != "") {
-                value = tmpProps[j].value;
-              } else if (value === "" && tmpProps[j].value == "") {
-                // do nothing, the default value is empty
-                // so lets record less data
-              }
-            } else {
-              propvals[nodeName] = value;
-            }
-          }
-        }
-      }
-    }
-  }
-  // support for tag defining which properties NOT to save
-  // for simplification, everything is an attribute during this
-  // operation
-  if (
-    typeof props !== typeof undefined &&
-    typeof props.saveOptions.unsetAttributes !== typeof undefined
-  ) {
-    for (var i in props.saveOptions.unsetAttributes) {
-      delete propvals[props.saveOptions.unsetAttributes[i]];
-    }
-  }
-  // specialized clean up for some that can leak through from above
-  // and are edge case things because #hashtag gotta love HTML attributes
-  // and the webview tag. facepalm.
-  let delProps = ["inner-text", "inner-html", "tabindex", "guestinstance"];
-  for (var delProp in delProps) {
-    if (typeof propvals[delProps[delProp]] !== typeof undefined) {
-      delete propvals[delProps[delProp]];
-    }
-  }
-  // remove id attribute if it's empty, somehow misses above
-  if (typeof propvals.id !== typeof undefined && propvals.id === "") {
-    delete propvals.id;
-  }
-  // run through the properties
-  for (var i in propvals) {
-    if (propvals[i] === true) {
-      content += " " + i;
+// export the singleton so everyone can directly reference it
+export const HAXStore = window.HaxStore.requestAvailability();
+
+// debugging / developer console shortcuts
+window.Hax = window.Hax || {};
+window.Hax.add = function (tag) {
+  if (HAXStore.elementList[tag]) {
+    // generate schema from the tag
+    let schema = HAXStore.haxSchemaFromTag(tag);
+    let target;
+    if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
+      target = haxElementToNode(schema.demoSchema[0]);
     } else {
-      content += " " + i + '="' + propvals[i] + '"';
+      target = document.createElement(tag);
     }
-  }
-  // set the opening tag, support self-closing void tags
-  let voidTags = [
-    "area",
-    "base",
-    "br",
-    "col",
-    "embed",
-    "hr",
-    "img",
-    "input",
-    "keygen",
-    "link",
-    "meta",
-    "param",
-    "source",
-    "track",
-    "wbr",
-  ];
-  if (voidTags.includes(tag)) {
-    content += "/>";
+    HAXStore.activeHaxBody.haxReplaceNode(HAXStore.activeNode, target);
+    HAXStore.activeHaxBody.__focusLogic(target);
   } else {
-    content += ">";
+    // do nothing, we tried to be a pro but failed :(
+    HAXStore.toast(`${tag} is not a valid tag`);
   }
-  // try and work against anything NOT a P tag
-  if (typeof props === typeof undefined || !props.saveOptions.wipeSlot) {
-    // get content that is in the slots
-    let slotnodes = node.childNodes;
-    // ensure there's something inside of this
-    if (slotnodes.length > 0) {
-      // loop through everything found in the slotted area and put it back in
-      for (var j = 0, len2 = slotnodes.length; j < len2; j++) {
-        if (typeof slotnodes[j].tagName !== typeof undefined) {
-          // if we're a custom element, keep digging, otherwise a simple
-          // self append is fine unless template tag cause it's a special
-          // case for the web in general as it'll register as not a primative
-          // even though it is...
-          if (
-            !window.HaxStore.HTMLPrimativeTest(slotnodes[j].tagName) &&
-            slotnodes[j].tagName !== "TEMPLATE"
-          ) {
-            content += window.HaxStore.nodeToContent(slotnodes[j]);
-          } else {
-            slotnodes[j].setAttribute("data-editable", false);
-            slotnodes[j].removeAttribute("data-hax-ray");
-            slotnodes[j].contentEditable = false;
-            content += slotnodes[j].outerHTML;
-          }
-        }
-        // keep comments with a special case since they need wrapped
-        else if (slotnodes[j].nodeType === 8) {
-          content += "<!-- " + slotnodes[j].textContent + " -->";
-        }
-        // keep everything NOT an element at this point, this helps
-        // preserve whitespace because we're crazy about accuracy
-        else if (
-          slotnodes[j].nodeType !== 1 &&
-          typeof slotnodes[j].textContent !== typeof undefined &&
-          slotnodes[j].textContent !== "undefined"
-        ) {
-          content += slotnodes[j].textContent;
-        }
-      }
-    }
-  }
-  // optional support for intentional progressive enhancement
-  if (typeof node.haxProgressiveEnhancement === "function") {
-    content += node.haxProgressiveEnhancement();
-  }
-  // don't put return for span since it's an inline tag
-  if (tag === "span") {
-    content += "</" + tag + ">";
-  } else if (tag === "hr" || tag === "br" || tag === "img") {
-    // do nothing for self-closing tags they'll resolve themselves
-  }
-  // close the tag, placing a return in output for block elements
-  else {
-    content += "</" + tag + ">" + "\n";
-  }
-  // spacing niceness for output readability
-  content = content.replace(/&nbsp;/gm, " ");
-  // target and remove hax specific things from output if they slipped through
-  content = content.replace(/ data-editable="(\s|.)*?"/gim, "");
-  content = content.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
-  content = content.replace(/ class=""/gim, "");
-  content = content.replace(/ class="hax-active"/gim, "");
-  content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
-  // wipe pure style spans which can pop up on copy paste if we didn't catch it
-  // also ensure that we then remove purely visual chars laying around
-  // this also helps clean up when we did a normal contenteditable paste
-  // as opposed to our multi-element sanitizing option that we support
-  content = content.replace(/<span style="(.*?)">/gim, "<span>");
-  content = content.replace(/<span>\s*?<\/span>/g, " ");
-  content = content.replace(/<span><br\/><\/span>/gm, "");
-  // account for things taht on normal paste would pick up too many css vars
-  content = content.replace(/<strong style="(.*?)">/gim, "<strong>");
-  content = content.replace(/<b style="(.*?)">/gim, "<b>");
-  content = content.replace(/<strike style="(.*?)">/gim, "<strike>");
-  content = content.replace(/<em style="(.*?)">/gim, "<em>");
-  content = content.replace(/<i style="(.*?)">/gim, "<i>");
-  // empty with lots of space
-  content = content.replace(/<p>(\s*)<\/p>/gm, "<p></p>");
-  // empty p / more or less empty
-  content = content.replace(/<p>&nbsp;<\/p>/gm, "<p></p>");
-  // br somehow getting through here
-  content = content.replace(/<p><br\/><\/p>/gm, "<p></p>");
-  content = content.replace(/<p><br><\/p>/gm, "<p></p>");
-  // whitespace in reverse of the top case now that we've cleaned it up
-  content = content.replace(/<\/p>(\s*)<p>/gm, "</p><p>");
-  content = content
-    .split("\n\r")
-    .join("\n")
-    .split("\r")
-    .join("\n")
-    .split("\n\n")
-    .join("\n")
-    .split("\n\n")
-    .join("\n")
-    .split("\n\n")
-    .join("\n");
-  // support postProcess text rewriting for the node that's been
-  // converted to a string for storage
-  if (node.postProcesshaxNodeToContent === "function") {
-    content = node.postProcesshaxNodeToContent(content);
-  }
-  return content;
 };
-/**
- * Basic HTML Primitives test
- */
-window.HaxStore.HTMLPrimativeTest = (node) => {
-  if (
-    typeof node.tagName !== typeof undefined &&
-    node.tagName.indexOf("-") == -1
-  ) {
-    return true;
+window.Hax.delete = function () {
+  if (HAXStore.activeNode != null) {
+    HAXStore.activeHaxBody.haxDeleteNode(HAXStore.activeNode);
   }
-  return false;
 };
-/**
- * Slot content w/ support for custom elements in slot.
- */
-window.HaxStore.getHAXSlot = (node) => {
-  // we can skip all of this if we have a text element / HTML prim!
-  if (window.HaxStore.instance.isTextElement(node)) {
-    return node.innerHTML;
-  }
-  let content = "";
-  var slotnodes = node.childNodes;
-  // ensure there's something inside of this
-  if (slotnodes.length > 0) {
-    // loop through everything found in the slotted area and put it back in
-    for (var j = 0, len2 = slotnodes.length; j < len2; j++) {
-      if (typeof slotnodes[j].tagName !== typeof undefined) {
-        // if we're a custom element, keep digging, otherwise a simple
-        // self append is fine.
-        if (slotnodes[j].tagName.indexOf("-") > 0) {
-          content += "  " + window.HaxStore.nodeToContent(slotnodes[j]) + "\n";
-        } else {
-          content += "  " + slotnodes[j].outerHTML + "\n";
-        }
-      }
-      // keep comments with a special case since they need wrapped
-      else if (slotnodes[j].nodeType === 8) {
-        content += "<!-- " + slotnodes[j].textContent + " -->";
-      }
-      // keep everything NOT an element at this point, this helps
-      // preserve whitespace because we're crazy about accuracy
-      else if (
-        slotnodes[j].nodeType !== 1 &&
-        typeof slotnodes[j].textContent !== typeof undefined &&
-        slotnodes[j].textContent !== "undefined"
-      ) {
-        content += slotnodes[j].textContent;
-      }
-    }
-  }
-  return content;
-};
-/**
- * Shortcut to standardize the write / read process.
- */
-window.HaxStore.write = (prop, value, obj) => {
-  if (obj) {
-    obj.dispatchEvent(
-      new CustomEvent("hax-store-write", {
-        composed: true,
-        bubbles: true,
-        cancelable: false,
-        detail: { property: prop, value: value, owner: obj },
-      })
-    );
-  }
+window.Hax.duplicate = function () {
+  HAXStore.activeHaxBody.haxDuplicateNode(HAXStore.activeNode);
 };
 
-/**
- * Convert a data mime type to gizmo type for rendering
- */
-window.HaxStore.mimeTypeToGizmoType = (mime) => {
-  let parts = mime.split("/");
-  switch (parts[0]) {
-    case "audio":
-      return "audio";
-      break;
-    case "image":
-      if (parts[1] == "svg+xml") {
-        return "svg";
-      }
-      return "image";
-      break;
-    case "video":
-      return "video";
-      break;
-    case "text":
-      if (["csv", "html", "markdown"].includes(parts[1])) {
-        return parts[1];
-      }
-      return "document";
-      break;
-    case "application":
-      if (parts[1] == "pdf") {
-        return "pdf";
-      }
-      if (["zip", "gzip", "x-tar"].includes(parts[1])) {
-        return "archive";
-      }
-      return "document";
-      break;
-  }
-};
-/**
- * Guess the type of Gizmo when given some information about what we have.
- */
-window.HaxStore.guessGizmoType = (guess) => {
-  if (typeof guess.source !== typeof undefined) {
-    const source = guess.source.toLowerCase();
-    if (
-      source.indexOf(".mp3") != -1 ||
-      source.indexOf(".midi") != -1 ||
-      source.indexOf(".mid") != -1
-    ) {
-      return "audio";
-    } else if (
-      source.indexOf(".png") != -1 ||
-      source.indexOf(".jpg") != -1 ||
-      source.indexOf(".jpeg") != -1 ||
-      source.indexOf(".gif") != -1
-    ) {
-      return "image";
-    } else if (source.indexOf(".pdf") != -1) {
-      return "pdf";
-    } else if (source.indexOf(".svg") != -1) {
-      return "svg";
-    } else if (source.indexOf(".csv") != -1) {
-      return "csv";
-    } else if (source.indexOf(".md") != -1) {
-      return "markdown";
-    } else if (source.indexOf(".html") != -1 || source.indexOf(".htm") != -1) {
-      return "html";
-    } else if (
-      source.indexOf(".txt") != -1 ||
-      source.indexOf(".doc") != -1 ||
-      source.indexOf(".docx") != -1 ||
-      source.indexOf(".xls") != -1 ||
-      source.indexOf(".xlsx") != -1 ||
-      source.indexOf(".vtt") != -1 ||
-      source.indexOf(".ppt") != -1
-    ) {
-      return "document";
-    } else if (
-      source.indexOf(".zip") != -1 ||
-      source.indexOf(".tar.gz") != -1 ||
-      source.indexOf(".tar") != -1
-    ) {
-      return "archive";
-    }
-    // if it's external we can't assume what it actually is
-    else if (window.MediaBehaviors.Video.getVideoType(source) != "external") {
-      return "video";
-    }
-  }
-  // we don't know how to handle this so let's just
-  // try ANYTHING that matches
-  return "*";
-};
-/**
- * Try and guess the Gizmo based on what we were just handed
- */
-window.HaxStore.guessGizmo = (
-  guess,
-  values,
-  skipPropMatch = false,
-  preferExclusive = false
-) => {
-  var matches = [];
-  if (typeof guess !== typeof undefined) {
-    var store = window.HaxStore.instance;
-    // verify type
-    if (store.validGizmoTypes.includes(guess)) {
-      // now we can look through them
-      // look for a match
-      for (var gizmoposition in store.gizmoList) {
-        let gizmo = store.gizmoList[gizmoposition];
-        let props = {};
-        // reset match per gizmo
-        let match = false;
-        // ensure this gizmo can handle things
-        if (gizmo.handles) {
-          for (var i = 0; i < gizmo.handles.length; i++) {
-            // WHAT!??!?!?!?!
-            if (guess === gizmo.handles[i].type || (guess === "*" && !match)) {
-              for (var property in gizmo.handles[i]) {
-                // ignore type.. but again.. WHAT?!?!?!
-                if (property !== "type") {
-                  // check the values that came across to see if there's a match
-                  // of any kind, we only need one but can then bind to multiple
-                  if (typeof values[property] !== typeof undefined) {
-                    // but ensure there's either no meta data OR
-                    // the meta data needs to NOT say anythinig about hiding
-                    if (
-                      guess === "inline" ||
-                      !gizmo.meta ||
-                      (gizmo.meta &&
-                        !gizmo.meta.inlineOnly &&
-                        !gizmo.meta.hidden)
-                    ) {
-                      match = true;
-                      props[gizmo.handles[i][property]] = values[property];
-                    }
-                  }
-                }
-              }
-              // omg... we just found a match on a property from who knows where!
-              if (match || skipPropMatch) {
-                if (preferExclusive && gizmo.handles[i].type_exclusive) {
-                  return [
-                    window.HaxStore.haxElementPrototype(gizmo, props, ""),
-                  ];
-                } else {
-                  matches.push(
-                    window.HaxStore.haxElementPrototype(gizmo, props, "")
-                  );
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  return matches;
-};
-
-/**
- * Filter app store apps to those that accept this file source.
- */
-window.HaxStore.getHaxAppStoreTargets = (type) => {
-  let targets = window.HaxStore.instance.appList.filter((app) => {
-    if (typeof app.connection.operations.add !== typeof undefined) {
-      let add = app.connection.operations.add;
-      if (
-        typeof add.acceptsGizmoTypes !== typeof undefined &&
-        add.acceptsGizmoTypes.includes(type)
-      ) {
-        return true;
-      }
-    }
-    return false;
-  });
-  return targets;
-};
-
-/**
- * Generate Hax Element prototype.
- */
-window.HaxStore.haxElementPrototype = (gizmo, properties, content = "") => {
-  return {
-    tag: gizmo.tag,
-    properties: properties,
-    content: content,
-    gizmo: gizmo,
-  };
-};
-
-/**
- * Wipe out the slot of an element.
- */
-window.HaxStore.wipeSlot = (element, slot = "") => {
-  wipeSlot(element, slot);
-};
-/**
- * HTML encapsulation of a string on script and style tags
- */
-window.HaxStore.encapScript = (html) => {
-  return encapScript(html);
-};
-/**
- * Global toast bridge so we don't have to keep writing custom event
- */
-window.HaxStore.toast = (
-  message,
-  duration = 2000,
-  classStyle = "capsule",
-  closeText = null,
-  eventCallback = null
-) => {
-  const evt = new CustomEvent("simple-toast-show", {
-    bubbles: true,
-    composed: true,
-    cancelable: true,
-    detail: {
-      text: message,
-      duration: duration,
-      classStyle: classStyle,
-      closeText: closeText,
-      eventCallback: eventCallback,
-    },
-  });
-  window.dispatchEvent(evt);
-};
-
-/**
- * Simple workflow for logic from inserting based on
- * a series of criteria.
- */
-window.HaxStore.insertLogicFromValues = (
-  values,
-  context,
-  failOnAnything = false
-) => {
-  // we have no clue what this is.. let's try and guess..
-  let type = window.HaxStore.guessGizmoType(values);
-  let typeName = type;
-  // we want to simplify insert but if we get wildcard... do whatever
-  let preferExclusive = true;
-  if (type == "*") {
-    // allow for logic to bail completely if we are told to
-    if (failOnAnything) {
-      return false;
-    }
-    preferExclusive = false;
-    typeName = "link";
-  }
-  let haxElements = window.HaxStore.guessGizmo(
-    type,
-    values,
-    false,
-    preferExclusive
-  );
-  // see if we got anything
-  if (haxElements.length > 0) {
-    if (haxElements.length === 1) {
-      if (typeof haxElements[0].tag !== typeof undefined) {
-        context.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: haxElements[0],
-          })
-        );
-      }
-    } else {
-      // hand off to hax-app-picker to deal with the rest of this
-      window.HaxStore.instance.haxAppPicker.presentOptions(
-        haxElements,
-        type,
-        "Pick how to present this " + typeName,
-        "gizmo"
-      );
-    }
-    return true;
+window.Hax.move = function (dir = true) {
+  if (dir) {
+    HAXStore.activeHaxBody.haxMoveGridPlate("up", HAXStore.activeNode);
   } else {
-    window.HaxStore.toast(
-      "Sorry, HAX doesn't know how to handle that type of link yet."
-    );
-    return false;
+    HAXStore.activeHaxBody.haxMoveGridPlate("down", HAXStore.activeNode);
   }
 };
 
-/**
- * Selection normalizer
- */
-window.HaxStore.getSelection = () => {
-  // try and obtain the selection from the nearest shadow
-  // which would give us the selection object when running native ShadowDOM
-  // with fallback support for the entire window which would imply Shady
-  if (
-    window.HaxStore.instance.activeHaxBody &&
-    window.HaxStore.instance.activeHaxBody.parentNode
-  ) {
-    // native API
-    if (window.HaxStore.instance.activeHaxBody.parentNode.getSelection) {
-      return window.HaxStore.instance.activeHaxBody.parentNode.getSelection();
-    }
-    // ponyfill from google
-    else if (getRange(window.HaxStore.instance.activeHaxBody.parentNode)) {
-      return getRange(window.HaxStore.instance.activeHaxBody.parentNode);
-    }
-  }
-  // missed on both, hope the normal one will work
-  return window.getSelection();
+window.Hax.grid = function (op = true) {
+  HAXStore.activeHaxBody.haxGridPlateOps(op);
 };
-/**
- * Get a normalized range based on current selection
- */
-window.HaxStore.getRange = () => {
-  let sel = window.HaxStore.getSelection();
-  if (sel.getRangeAt && sel.rangeCount) {
-    return sel.getRangeAt(0);
-  } else if (sel) {
-    return sel;
-  } else false;
+
+window.Hax.set = function (key, value) {
+  HAXStore.write(key, value, window);
 };
-import { Undoer } from "undoer/undoer.js";
-class UndoerElement extends HTMLElement {
-  static get observedAttributes() {
-    return ["state"];
-  }
 
-  constructor() {
-    super();
-    this.openDrawer = false;
-    this._root = this.attachShadow({ mode: "open" });
+window.Hax.get = function (key) {
+  return HAXStore[key];
+};
 
-    // hide from the first attributeChangedCallback call
-    this._selfAttributeChange = true;
-    window.setTimeout(() => {
-      this._selfAttributeChange = false;
-    });
+window.Hax.export = function () {
+  return HAXStore.activeHaxBody.haxToContent();
+};
 
-    const callback = (data) => {
-      const { value, attr } = data;
-      this._updateAttribute(attr ? value : null);
-
-      // hooray! tell the client
-      this.dispatchEvent(new CustomEvent("state", { detail: value }));
-    };
-
-    // set up initial zero undo state from attr
-    const zero = this.getAttribute("state");
-    const attr = this.hasAttribute("state");
-    this._undoer = new Undoer(callback, { value: zero, attr });
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (name === "state" && !this._selfAttributeChange) {
-      this._internalSet(newValue, true);
-    }
-  }
-
-  set state(value) {
-    if (!this.isConnected) {
-      throw new Error("can't push state while disconnected");
-    }
-
-    // render if simple "attribute safe" state
-    const attr = typeof value === "string" || typeof value === "number";
-    this._internalSet(value, attr);
-  }
-
-  get state() {
-    const { value } = this._undoer.data;
-    return value;
-  }
-
-  _updateAttribute(value) {
-    this._selfAttributeChange = true;
-    try {
-      if (value) {
-        this.setAttribute("state", value);
-      } else {
-        this.removeAttribute("state");
-      }
-    } finally {
-      this._selfAttributeChange = false;
-    }
-  }
-
-  _internalSet(value, attr) {
-    this._updateAttribute(attr ? value : null);
-    this._undoer.push({ value, attr }, this._root);
-  }
-}
-window.customElements.define("undoer-element", UndoerElement);
-export { HaxStore, UndoerElement };
+window.Hax.import = function (htmlContent = "<p></p>") {
+  return HAXStore.activeHaxBody.importContent(htmlContent);
+};

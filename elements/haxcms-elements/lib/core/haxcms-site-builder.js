@@ -6,8 +6,9 @@ import {
   wipeSlot,
   varExists,
 } from "@lrnwebcomponents/utils/utils.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 import { store } from "./haxcms-site-store.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -497,12 +498,10 @@ class HAXCMSSiteBuilder extends LitElement {
     if (
       store.cmsSiteEditor &&
       store.cmsSiteEditor.instance &&
-      window.HaxStore.instance.activeHaxBody &&
+      HAXStore.activeHaxBody &&
       store.activeItemContent
     ) {
-      window.HaxStore.instance.activeHaxBody.importContent(
-        store.activeItemContent
-      );
+      HAXStore.activeHaxBody.importContent(store.activeItemContent);
     }
   }
   /**

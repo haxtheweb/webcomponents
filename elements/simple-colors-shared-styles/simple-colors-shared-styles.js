@@ -977,7 +977,7 @@ class SimpleColorsSharedStyles extends LitElement {
           ? "greyColor"
           : "colorColor",
       aa = isLarge ? "aaLarge" : "aa",
-      index = parseInt(colorShade) + 1,
+      index = parseInt(colorShade),
       range = this.contrasts[hasGrey][aa][index];
     return Array(range.max - range.min + 1)
       .fill()
@@ -1058,7 +1058,6 @@ window.customElements.define(
   SimpleColorsSharedStyles
 );
 export { SimpleColorsSharedStyles };
-
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
@@ -1079,3 +1078,5 @@ window.SimpleColorsSharedStyles.requestAvailability = () => {
   }
   return window.SimpleColorsSharedStyles.instance;
 };
+
+export const SimpleColorsSharedStylesGlobal = window.SimpleColorsSharedStyles.requestAvailability();

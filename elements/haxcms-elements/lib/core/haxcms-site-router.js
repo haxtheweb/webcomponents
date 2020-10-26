@@ -1,5 +1,5 @@
 import { Router } from "@vaadin/router";
-import { autorun } from "mobx/lib/mobx.module.js";
+import { autorun } from "mobx";
 import { store } from "./haxcms-site-store.js";
 /**
  * `haxcms-site-router`

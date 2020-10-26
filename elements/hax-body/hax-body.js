@@ -7,16 +7,16 @@ import {
   generateResourceID,
   nodeToHaxElement,
   haxElementToNode,
+  camelToDash,
 } from "@lrnwebcomponents/utils/utils.js";
-import {
-  UndoManagerBehaviors,
-  Undo,
-} from "@lrnwebcomponents/undo-manager/undo-manager.js";
+import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
+import { HAXStore } from "./lib/hax-store.js";
+import { autorun, toJS } from "mobx";
 
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
 const maxStep = 25;
-const edgeSize = 100;
+const edgeSize = 200;
 
 /**
  * `hax-body`
@@ -92,6 +92,9 @@ Custom property | Description | Default
  * @element hax-body
  */
 class HaxBody extends UndoManagerBehaviors(SimpleColors) {
+  static get tag() {
+    return "hax-body";
+  }
   /**
    * LitElement constructable styles enhancement
    */
@@ -125,33 +128,41 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             #fff
           );
           --hax-contextual-action-hover-color: var(
-            --simple-colors-default-theme-cyan-7,
+            --simple-colors-default-theme-grey-8,
             #009dc7
           );
           --hax-contextual-action-color: var(
-            --simple-colors-default-theme-cyan-8,
+            --simple-colors-default-theme-grey-12,
             #007999
           );
-          --hax-body-editable-outline: 1px solid
-            var(--simple-colors-default-theme-deep-orange, #ff8a64);
+          --hax-body-editable-outline: 0px solid
+            var(--simple-colors-default-theme-grey-4, #eeeeee);
           --hax-body-active-outline-hover: 1px solid
+            var(--simple-colors-default-theme-grey-8, #eeeeee);
+          --hax-body-active-outline: 0px solid
             var(
               --hax-contextual-action-hover-color,
               var(--simple-colors-default-theme-cyan-7, #009dc7)
             );
-          --hax-body-active-outline: 3px solid
+          --hax-body-active-drag-outline: 1px solid
             var(
               --hax-contextual-action-hover-color,
               var(--simple-colors-default-theme-cyan-7, #009dc7)
             );
           --hax-body-target-background-color: var(
-            --simple-colors-default-theme-cyan-2,
-            #9beaff
+            --simple-colors-default-theme-grey-11,
+            #009dc7
           );
-          --hax-body-possible-target-background-color: var(
-            --simple-colors-default-theme-grey-2,
-            #dddddd;
-          );
+          --hax-body-possible-target-background-color: inherit;
+        }
+        #addincontext {
+          opacity: 0.5;
+          transition: 0.2s opacity ease-in-out;
+        }
+        #addincontext:hover,
+        #addincontext:active,
+        #addincontext:focus {
+          opacity: 1;
         }
         .hax-context-menu {
           padding: 0;
@@ -163,8 +174,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           float: left;
           display: block;
           pointer-events: none;
-          transition: 0.2s top ease-in-out, 0.2s left ease-in-out,
-            0.2s visibility ease-in-out, 0.2s opacity ease-in-out;
+          transition: 0.2s top ease-in-out, 0.2s left ease-in-out;
         }
         #textcontextmenu.hax-context-menu {
           z-index: 1000;
@@ -175,7 +185,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           pointer-events: all;
           opacity: 1;
         }
-        .hax-context-visible.hax-active-hover {
+        .hax-context-menu-active {
           margin-left: unset;
         }
         :host([edit-mode]) #bodycontainer ::slotted(p) {
@@ -218,73 +228,78 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         :host([edit-mode]) #bodycontainer ::slotted(ul > li:last-child) {
           padding-bottom: var(--hax-base-styles-list-last-child-padding-bottom);
         }
-        :host([edit-mode]) #bodycontainer ::slotted(img[data-editable]) {
+        :host([edit-mode]) #bodycontainer ::slotted(img[contenteditable]) {
           max-width: 100%;
         }
-        :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
+        :host([edit-mode]) #bodycontainer ::slotted(*[contenteditable]) {
           outline: none;
-          transition: 0.8s ease-in-out outline;
           caret-color: var(--hax-color-text);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.blinkfocus) {
-          outline: 8px solid var(--hax-contextual-action-hover-color);
+          outline: 4px solid var(--hax-contextual-action-hover-color);
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*:not(grid-plate)[data-editable]:hover) {
+          ::slotted(*:not(grid-plate)[contenteditable]:hover) {
           outline: var(--hax-body-active-outline-hover);
           caret-color: #000000;
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*.hax-active[data-editable]:hover) {
+          ::slotted(*.hax-active[contenteditable]:hover) {
           cursor: text !important;
           outline: var(--hax-body-active-outline-hover);
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*:not(grid-plate)[data-editable] .hax-active:hover) {
+          ::slotted(*:not(grid-plate)[contenteditable] .hax-active:hover) {
           cursor: text !important;
           outline: var(--hax-body-active-outline-hover);
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(code.hax-active[data-editable]) {
+          ::slotted(code.hax-active[contenteditable]) {
           display: block;
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*.hax-active[data-editable]) {
+          ::slotted(*.hax-active[contenteditable]) {
           outline: var(--hax-body-active-outline) !important;
         }
-        :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
+        :host([edit-mode]) #bodycontainer ::slotted(hr[contenteditable]) {
           height: 2px;
           background-color: #eeeeee;
           padding-top: 4px;
           padding-bottom: 4px;
         }
         /** Fix to support safari as it defaults to none */
-        :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
+        :host([edit-mode]) #bodycontainer ::slotted(*[contenteditable]) {
           -webkit-user-select: text;
           cursor: pointer;
         }
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*[data-editable]::-moz-selection),
+          ::slotted(*[contenteditable]::-moz-selection),
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*[data-editable] *::-moz-selection) {
-          background-color: var(--hax-body-highlight, --paper-yellow-300);
+          ::slotted(*[contenteditable] *::-moz-selection) {
+          background-color: var(
+            --hax-body-highlight,
+            var(--simple-colors-default-theme-yellow-2, yellow)
+          );
           color: black;
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*[data-editable]::selection),
+          ::slotted(*[contenteditable]::selection),
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*[data-editable] *::selection) {
-          background-color: var(--hax-body-highlight, --paper-yellow-300);
+          ::slotted(*[contenteditable] *::selection) {
+          background-color: var(
+            --hax-body-highlight,
+            var(--simple-colors-default-theme-yellow-2, yellow)
+          );
           color: black;
         }
         #bodycontainer {
@@ -293,7 +308,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
         :host([edit-mode][hax-ray-mode])
           #bodycontainer
-          ::slotted(*[data-editable]):before {
+          ::slotted(*[contenteditable]):before {
           content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " "
             attr(property) " " attr(content);
           font-size: 12px;
@@ -306,7 +321,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           bottom: unset;
           width: auto;
           padding: 6px;
-          margin: -2px;
           z-index: 1;
           margin: 0;
           float: right;
@@ -315,31 +329,39 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           display: none;
         }
         /* drag and drop */
-        :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
-          outline: var(--hax-body-active-outline);
-          background-color: #eeeeee;
-        }
-        :host([edit-mode]) #bodycontainer ::slotted(*.hax-mover):before {
-          outline: var(--hax-body-editable-outline);
+        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*):before {
           background-color: var(--hax-body-possible-target-background-color);
           content: " ";
           width: 100%;
           display: block;
           position: relative;
-          margin: -30px 0 0 0;
+          margin: -12px 0 0 0;
           z-index: 2;
-          height: 30px;
+          height: 12px;
+          transition: 0.2s all ease-in-out;
         }
+        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(img) {
+          outline: var(--hax-body-editable-outline);
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered),
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered):before {
           background-color: var(--hax-body-target-background-color) !important;
-          outline: var(--hax-body-active-outline);
         }
+        :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered) {
+          border-top: 8px
+            var(
+              --hax-contextual-action-hover-color,
+              var(--simple-colors-default-theme-cyan-7, #009dc7)
+            );
+          margin-top: -8px;
+        }
+
         @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
           /*
             Define here the CSS styles applied only to Safari browsers
             (any version and any device) via https://solvit.io/bcf61b6
           */
-          :host([edit-mode]) #bodycontainer ::slotted(*.hax-mover) {
+          :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*) {
             outline: var(--hax-body-editable-outline);
             background-color: var(--hax-body-possible-target-background-color);
           }
@@ -360,40 +382,208 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     super();
     // lock to ensure we don't flood events on hitting the up / down arrows
     // as we use a mutation observer to manage draggable bindings
-    this.__mouseMoving = false;
+    this.__ignoreActive = false;
+    this.__dragMoving = false;
     this.___moveLock = false;
     this.editMode = false;
+    this.haxMover = false;
     this.globalPreferences = {};
     // xray goggles for tags visualized in context, developer thing
     this.haxRayMode = false;
     this.activeNode = null;
-    this.haxSelectedText = "";
-    this.activeContainerNode = null;
     setTimeout(() => {
       import("./lib/hax-text-context.js");
       import("./lib/hax-ce-context.js");
       import("./lib/hax-plate-context.js");
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
-      this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
-      this.addEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
-      );
+      this.polyfillSafe = HAXStore.computePolyfillSafe();
       this.addEventListener(
         "place-holder-replace",
         this.replacePlaceholder.bind(this)
       );
       this.addEventListener("focusin", this._focusIn.bind(this));
+      this.addEventListener("mousemove", this._mouseMove.bind(this));
+      this.addEventListener("mouseleave", this._mouseLeave.bind(this));
+      this.addEventListener("touchstart", this._mouseMove.bind(this), {
+        passive: true,
+      });
       this.addEventListener("mousedown", this._mouseDown.bind(this));
       this.addEventListener("mouseup", this._mouseUp.bind(this));
       this.addEventListener("dragenter", this.dragEnterBody.bind(this));
+      this.addEventListener("dragend", this.dragEndBody.bind(this));
       this.addEventListener("drop", this.dropEvent.bind(this));
       this.addEventListener("click", this.clickEvent.bind(this));
     }, 0);
+    autorun(() => {
+      this.globalPreferences = toJS(HAXStore.globalPreferences);
+    });
+    autorun(() => {
+      this.editMode = toJS(HAXStore.editMode);
+    });
+    autorun(() => {
+      this.activeNode = toJS(HAXStore.activeNode);
+    });
+  }
+  /**
+   * When we end dragging ensure we remove the mover class.
+   */
+  dragEndBody(e) {
+    this.__manageFakeEndCap(false);
+    HAXStore._lockContextPosition = false;
+    this.querySelectorAll(".hax-hovered").forEach((el) => {
+      el.classList.remove("hax-hovered");
+    });
+  }
+  _mouseLeave(e) {
+    if (this.editMode && HAXStore.ready) {
+      clearTimeout(this.__mouseQuickTimer);
+      clearTimeout(this.__mouseTimer);
+      this.__activeHover = null;
+      this._hideContextMenu(this.contextMenus.add);
+    }
+  }
+  _mouseMove(e) {
+    if (this.editMode && HAXStore.ready) {
+      clearTimeout(this.__mouseQuickTimer);
+      this.__mouseQuickTimer = setTimeout(() => {
+        if (
+          this.__activeHover &&
+          this.__activeHover != e.path[0].closest("[data-hax-ray]:not(li)") &&
+          !e.path[0].closest("#addincontext")
+        ) {
+          let keep;
+          for (var i = 0; i < e.path.length; i++) {
+            if (
+              e.path[i].getAttribute &&
+              e.path[i].getAttribute("id") == "addincontext"
+            ) {
+              keep = true;
+            }
+          }
+          if (!keep) {
+            this.__activeHover = null;
+            this._hideContextMenu(this.contextMenus.add);
+          }
+        }
+      }, 300);
+      clearTimeout(this.__mouseTimer);
+      this.__mouseTimer = setTimeout(() => {
+        this.__addActiveVisible();
+        let target = e.path[0].closest("[data-hax-ray]:not(li)");
+        if (target) {
+          this.__activeHover = target;
+          let activeRect = this.__activeHover.getBoundingClientRect();
+          let addRect = this.contextMenus.add.getBoundingClientRect();
+          // calculate mouse position relative to the element on page
+          // and position the add above or below as a result
+          // this is bonkers :)
+          let distance =
+            (e.pageY - (activeRect.top + window.scrollY)) / activeRect.height;
+          let height = -addRect.height - 1;
+          // incentivize above
+          if (distance > 0.3) {
+            height = activeRect.height + 1;
+            this.__addAbove = false;
+          } else {
+            this.__addAbove = true;
+          }
+          // wow, we have an in context addition menu just like that
+          this._positionContextMenu(
+            this.contextMenus.add,
+            this.__activeHover,
+            activeRect.width / 2 - addRect.width / 2,
+            height
+          );
+        } else if (
+          e.path[0].closest(".column") &&
+          e.path[3] &&
+          e.path[3].closest("grid-plate")
+        ) {
+          let addRect = this.contextMenus.add.getBoundingClientRect();
+          let height = -addRect.height - 1;
+          let activeRect, posMenuEl;
+          // weird but we need the structure of grid plate here unfortunately
+          // if it has nodes in the column we are active on then we need
+          // to defer to the grid level because you could always force a node
+          if (!e.path[0].closest(".column:not(.has-nodes")) {
+            // way out of a column to the host of the template
+            this.__activeHover = e.path[0].closest(
+              ".column"
+            ).parentNode.parentNode.host;
+            posMenuEl = this.__activeHover;
+            activeRect = this.__activeHover.getBoundingClientRect();
+            let distance =
+              (e.pageY - (activeRect.top + window.scrollY)) / activeRect.height;
+            if (distance > 0.3) {
+              height = activeRect.height + 1;
+              this.__addAbove = false;
+            } else {
+              this.__addAbove = true;
+            }
+          } else {
+            // to avoid a later loop, we force this to "false"
+            this.__addAbove = false;
+            // this is a grid column so get it's ID to understand it's slot
+            // this leverages our internal __slot hack that gets picked up
+            // by our MO in order to automatically set __slot on a node anywhere
+            // it's inserted in the body area leveraging alternative logic to
+            // figure out which it should place where
+            this.__slot = e.path[0]
+              .closest(".column")
+              .getAttribute("id")
+              .replace("col", "col-");
+            // based on what we learned we don't have nodes in the path column
+            // but we KNOW there MUST be an element somewhere in this
+            if (
+              e.path[0].closest(".column").parentNode.parentNode.host.children
+                .length == 0
+            ) {
+              let p = document.createElement("p");
+              p.innerHTML = "<br />";
+              e.path[0]
+                .closest(".column")
+                .parentNode.parentNode.host.appendChild(p);
+            }
+            this.__activeHover = e.path[0].closest(
+              ".column"
+            ).parentNode.parentNode.host.children[0];
+            // we focus on the column unlike anything else
+            activeRect = e.path[0].closest(".column").getBoundingClientRect();
+            // right in the middle of the column
+            height = activeRect.height / 2 - addRect.height / 2;
+            posMenuEl = e.path[0].closest(".column");
+          }
+
+          // wow, we have an in context addition menu just like that
+          this._positionContextMenu(
+            this.contextMenus.add,
+            posMenuEl,
+            activeRect.width / 2 - addRect.width / 2,
+            height
+          );
+        } else if (e.path[0].closest("#bodycontainer")) {
+          this.__activeHover = null;
+          this._hideContextMenu(this.contextMenus.add);
+        }
+      }, 600);
+    }
   }
   _mouseDown(e) {
     this.__mouseDown = true;
-    if (this.__focusLogic(e.target)) {
+    let target = e.target;
+    // resolve to the closest ediable element if possible
+    // otherwise keep the target we had
+    // @todo need to test more situations for this..
+    if (target.closest("[draggable]")) {
+      target = target.closest("[draggable]");
+    } else if (target.closest("[slot]")) {
+      target = target.closest("[slot]");
+    } else if (target.closest("[data-hax-ray]")) {
+      target = target.closest("[data-hax-ray]");
+    } else if (target.closest("[contenteditable]")) {
+      target = target.closest("[contenteditable]");
+    }
+    if (this.__focusLogic(target)) {
       e.stopPropagation();
       e.stopImmediatePropagation();
     }
@@ -411,9 +601,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     clearTimeout(gravityScrollTimer);
     this.__manageFakeEndCap(false);
   }
-  static get tag() {
-    return "hax-body";
-  }
   clickEvent(e) {
     // failsafe to clear to the gravity scrolling
     clearTimeout(gravityScrollTimer);
@@ -427,12 +614,15 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       let fake = document.createElement("fake-hax-body-end");
       fake.style.width = "100%";
       fake.style.height = "20px";
+      fake.style.zIndex = "2";
       fake.style.display = "block";
-      fake.classList.add("hax-move");
       this.__fakeEndCap = fake;
+      this.haxMover = true;
       this.appendChild(this.__fakeEndCap);
+      this.__applyNodeEditableState(this.__fakeEndCap, true);
     } else if (!create && this.__fakeEndCap) {
       this.__fakeEndCap.remove();
+      this.haxMover = false;
       this.__fakeEndCap = null;
     }
   }
@@ -440,15 +630,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Activation allowed from outside this grid as far as drop areas
    */
   dragEnterBody(e) {
-    const children = this.childNodes;
     // insert a fake child at the end
     this.__manageFakeEndCap(true);
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (children[i].classList && children[i] !== this.activeItem) {
-        children[i].classList.add("hax-mover");
-      }
-    }
   }
   /**
    * LitElement render
@@ -470,6 +653,15 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         id="platecontextmenu"
         class="hax-context-menu ignore-activation"
       ></hax-plate-context>
+      <hax-context-item
+        id="addincontext"
+        class="hax-context-menu ignore-activation"
+        icon="icons:add-circle"
+        label="Add here"
+        mini
+        circle
+      >
+      </hax-context-item>
     `;
   }
   /**
@@ -478,14 +670,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
-      openDrawer: {
-        type: Object,
-      },
-      /**
-       * Text hax-store has detected is selected currently.
-       */
-      haxSelectedText: {
-        type: String,
+      haxMover: {
+        type: Boolean,
+        attribute: "hax-mover",
+        reflect: true,
       },
       /**
        * State of if we are editing or not.
@@ -515,12 +703,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       activeNode: {
         type: Object,
       },
-      /**
-       * A reference to the active node in the slot.
-       */
-      activeContainerNode: {
-        type: Object,
-      },
     };
   }
   /**
@@ -542,19 +724,31 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     } catch (e) {
       console.warn(e);
     }
-    this.shadowRoot
-      .querySelector("slot")
-      .addEventListener("mousemove", this.hoverEvent.bind(this));
+    this.contextMenus = {
+      text: this.shadowRoot.querySelector("#textcontextmenu"),
+      plate: this.shadowRoot.querySelector("#platecontextmenu"),
+      ce: this.shadowRoot.querySelector("#cecontextmenu"),
+      add: this.shadowRoot.querySelector("#addincontext"),
+    };
+    // wire up our in context add button
+    this.contextMenus.add.addEventListener(
+      "click",
+      this._addInContextClick.bind(this)
+    );
+    // track and store range on mouse up. this helps w/ Safari focus selection
+    // issues as well as any "tap" event from a phone knowing what text
+    // WAS selected prior to an operation that might lose focus / selection
+    // during the workflow like replacing an element in context / inline
     this.shadowRoot.querySelector("slot").addEventListener("mouseup", (e) => {
-      if (!this.openDrawer && this.editMode) {
+      if (this.editMode) {
         setTimeout(() => {
-          const tmp = window.HaxStore.getSelection();
-          window.HaxStore._tmpSelection = tmp;
-          window.HaxStore.write("haxSelectedText", tmp.toString(), this);
+          const tmp = HAXStore.getSelection();
+          HAXStore._tmpSelection = tmp;
+          HAXStore.haxSelectedText = tmp.toString();
           try {
-            const range = window.HaxStore.getRange();
+            const range = HAXStore.getRange();
             if (range.cloneRange) {
-              window.HaxStore._tmpRange = range.cloneRange();
+              HAXStore._tmpRange = range.cloneRange();
             }
           } catch (e) {
             console.warn(e);
@@ -563,7 +757,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
     });
     // in case we miss this on the initial setup. possible in auto opening environments.
-    this.editMode = window.HaxStore.instance.editMode;
+    this.editMode = HAXStore.editMode;
     // ensure this resets every append
     this.__tabTrap = false;
     this.__ready = true;
@@ -572,37 +766,43 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     }
   }
   /**
+   * Handle adding an item in context based on where the context add
+   * was set to follow
+   */
+  _addInContextClick(e) {
+    // break mouse trap so we auto focus the insert
+    this.__mouseDown = false;
+    let tag = "p";
+    // special case for lists nested in lists to make sure we don't get
+    // stuck placing a P into a ul
+    if (
+      ["ul", "ol"].includes(this.__activeHover.parentNode.tagName.toLowerCase())
+    ) {
+      this.__activeHover = this.__activeHover.parentNode;
+    }
+    // active will be set via this
+    this.haxInsert(tag, "", {}, this.__activeHover);
+    // drop active hover to reset state
+    this.__activeHover = null;
+    this._hideContextMenu(this.contextMenus.add);
+  }
+  /**
    * LitElement life cycle - properties changed callback
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
         this._editModeChanged(this[propName], oldValue);
+        if (this[propName]) {
+          this._activeNodeChanged(this.activeNode);
+          this.activeNode.focus();
+        }
       }
       if (propName == "globalPreferences") {
         this._globalPreferencesUpdated(this[propName], oldValue);
       }
       if (propName == "activeNode" && this.__ready) {
         this._activeNodeChanged(this[propName], oldValue);
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("active-node-changed", {
-            detail: {
-              value: this[propName],
-            },
-          })
-        );
-      }
-      if (propName == "activeContainerNode" && this.__ready) {
-        this._activeContainerNodeChanged(this[propName], oldValue);
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("active-container-node-changed", {
-            detail: {
-              value: this[propName],
-            },
-          })
-        );
       }
     });
     if (super.updated) {
@@ -618,12 +818,43 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // mutation observer that ensures state of hax applied correctly
     this._observer = new MutationObserver((mutations) => {
       var mutFind = false;
-      if (!this.__mouseMoving && !this.undoStackIgnore && !this.__fakeEndCap) {
+      if (
+        !this.__ignoreActive &&
+        !this.__dragMoving &&
+        !this.undoStackIgnore &&
+        !this.__fakeEndCap
+      ) {
         mutations.forEach((mutation) => {
-          // if we've got new nodes, we have to react to that
           if (mutation.addedNodes.length > 0) {
             mutation.addedNodes.forEach((node) => {
               if (this._validElementTest(node)) {
+                // notice the slot being set during an enter event
+                // and ensure we replicate it
+                if (this.__slot) {
+                  node.setAttribute("slot", this.__slot);
+                  this.__slot = null;
+                }
+                // force images to NOT be draggable as we will manage D&D
+                if (node.tagName == "IMG") {
+                  node.setAttribute("draggable", false);
+                }
+                // trap for user hitting the outdent / indent keys or tabbing
+                // browser will try and wrap text in a span when it's added to
+                // the top level of the document (for no reason)
+                if (this.__indentTrap) {
+                  // span should not be created, we want a paragraph for this
+                  if (node.tagName === "SPAN") {
+                    if (node.parentNode === this) {
+                      this.haxChangeTagName(node, "p", true);
+                    } else if (node.parentNode.tagName === "LI") {
+                      node.parentNode.innerHTML = node.textContent;
+                    }
+                  }
+                  // we don't want BR's injected at top of body area
+                  else if (node.tagName === "BR") {
+                    node.remove();
+                  }
+                }
                 // edge case, thing is moved around in the dom so let's do the opposite
                 // this is something that has PART of these applies
                 // let's make sure that we maintain state associated with contenteditable
@@ -655,15 +886,37 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 // set new nodes to be the active one
                 // only if we didn't just do a grid plate move
                 // if multiple mutations, only accept the 1st one in a group
+                // special trap for BR being added into the page
+                // this avoids empty elements however we don't want it to trigger
+                // active to change
                 if (!this.___moveLock && !mutFind) {
                   mutFind = true;
-                  this.activeNode = node;
-                  window.HaxStore.write("activeNode", node, this);
+                  HAXStore.activeNode = node;
+                  if (node.tagName === "BR") {
+                    const tmp = HAXStore.getSelection();
+                    HAXStore._tmpSelection = tmp;
+                    HAXStore.haxSelectedText = tmp.toString();
+                    const rng = HAXStore.getRange();
+                    if (
+                      rng.collapsed &&
+                      this.activeNode.tagName === "BR" &&
+                      this.activeNode.parentNode ===
+                        rng.commonAncestorContainer &&
+                      this.activeNode.innerText === ""
+                    ) {
+                      HAXStore.activeNode = this.activeNode.parentNode;
+                    }
+                  }
                 } else {
                   this.___moveLock = false;
                 }
               }
             });
+            if (this.__indentTrap) {
+              setTimeout(() => {
+                this.__indentTrap = false;
+              }, 0);
+            }
           }
           // if we dropped nodes via the UI (delete event basically)
           if (mutation.removedNodes.length > 0) {
@@ -703,21 +956,30 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             });
           }
         });
+      } else if (this.__ignoreActive) {
+        this.__ignoreActive = false;
       }
     });
     this._observer.observe(this, {
       childList: true,
+      subtree: true,
     });
-    setTimeout(() => {
-      window.addEventListener("keydown", this._onKeyDown.bind(this));
-      window.addEventListener("keypress", this._onKeyPress.bind(this));
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      window.addEventListener("scroll", this._keepContextVisible.bind(this));
-      window.addEventListener("resize", this._keepContextVisible.bind(this));
-    }, 0);
+    window.addEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
+    window.addEventListener("keydown", this._onKeyDown.bind(this));
+    window.addEventListener("keypress", this._onKeyPress.bind(this));
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    window.addEventListener("scroll", this._keepContextVisible.bind(this), {
+      passive: true,
+    });
+    window.addEventListener("resize", this._keepContextVisible.bind(this), {
+      passive: true,
+    });
   }
   /**
    * HTMLElement
@@ -731,6 +993,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     );
     window.removeEventListener("scroll", this._keepContextVisible.bind(this));
     window.removeEventListener("resize", this._keepContextVisible.bind(this));
+    window.removeEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
     this._observer.disconnect();
     super.disconnectedCallback();
   }
@@ -738,151 +1004,243 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Keep the context menu visible if needed
    */
   _keepContextVisible(e = null) {
-    if (!this.openDrawer && this.editMode) {
+    if (this.editMode) {
       clearTimeout(this.__contextVisibleLock);
       this.__contextVisibleLock = setTimeout(() => {
         // see if the text context menu is visible
         let el = false;
-        if (
-          this.shadowRoot
-            .querySelector("#textcontextmenu")
-            .classList.contains("hax-context-visible")
-        ) {
-          el = this.shadowRoot.querySelector("#textcontextmenu");
+        if (this.contextMenus.text.classList.contains("hax-context-visible")) {
+          el = this.contextMenus.text;
         } else if (
-          this.shadowRoot
-            .querySelector("#cecontextmenu")
-            .classList.contains("hax-context-visible")
+          this.contextMenus.ce.classList.contains("hax-context-visible")
         ) {
-          el = this.shadowRoot.querySelector("#cecontextmenu");
+          el = this.contextMenus.ce;
         }
         // if we see it, ensure we don't have the pin
         if (el) {
           if (this.elementMidViewport()) {
             el.classList.add("hax-context-pin-top");
-            this.shadowRoot
-              .querySelector("#platecontextmenu")
-              .classList.add("hax-context-pin-top");
+            this.contextMenus.plate.classList.add("hax-context-pin-top");
           } else {
             el.classList.remove("hax-context-pin-top");
-            this.shadowRoot
-              .querySelector("#platecontextmenu")
-              .classList.remove("hax-context-pin-top");
+            this.contextMenus.plate.classList.remove("hax-context-pin-top");
           }
           this.positionContextMenus();
         }
-      }, 50);
+      }, 100);
     }
   }
   _onKeyDown(e) {
+    // make sure we don't have an open drawer, and editing, and we are not focused on tray
     if (
-      !this.openDrawer &&
       this.editMode &&
-      this.getAttribute("contenteditable")
+      document.activeElement.tagName !== "HAX-TRAY" &&
+      document.activeElement.tagName !== "BODY" &&
+      document.activeElement.tagName !== "SIMPLE-MODAL"
     ) {
-      let sel = window.HaxStore.getSelection();
-      if (sel.anchorNode != null) {
+      // if we are NOT editing and delete key is hit, delete the element
+      if (!this.getAttribute("contenteditable")) {
         switch (e.key) {
-          case "Tab":
-            if (window.HaxStore.instance.isTextElement(this.activeNode)) {
-              if (e.detail.keyboardEvent) {
-                e.detail.keyboardEvent.preventDefault();
-                e.detail.keyboardEvent.stopPropagation();
-                e.detail.keyboardEvent.stopImmediatePropagation();
-              }
-              e.preventDefault();
-              e.stopPropagation();
-              e.stopImmediatePropagation();
-              if (e.shiftKey) {
-                this._tabBackKeyPressed();
-              } else {
-                this._tabKeyPressed();
-              }
-            }
-            break;
-          case "Enter":
-            this.setAttribute("contenteditable", true);
-          case "Backspace":
           case "Delete":
-          case "ArrowUp":
-          case "ArrowDown":
-          case "ArrowLeft":
-          case "ArrowRight":
-            setTimeout(() => {
-              const tmp = window.HaxStore.getSelection();
-              window.HaxStore._tmpSelection = tmp;
-              window.HaxStore.write("haxSelectedText", tmp.toString(), this);
-              const rng = window.HaxStore.getRange();
-              if (
-                rng.commonAncestorContainer &&
-                this.activeNode !== rng.commonAncestorContainer &&
-                typeof rng.commonAncestorContainer.focus === "function"
-              ) {
-                if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
-                  if (
-                    window.HaxStore.instance.isTextElement(
-                      rng.commonAncestorContainer
-                    )
-                  ) {
-                    this.setAttribute("contenteditable", true);
-                  } else {
-                    this.removeAttribute("contenteditable");
-                  }
-                  rng.commonAncestorContainer.focus();
-                  this.__focusLogic(rng.commonAncestorContainer);
+            this.haxDeleteNode(this.activeNode);
+            break;
+        }
+      } else {
+        this.__dropActiveVisible();
+        this.__manageFakeEndCap(false);
+        let sel = HAXStore.getSelection();
+        if (sel.anchorNode != null) {
+          switch (e.key) {
+            case "Z":
+            case "z":
+              // trab for undo / redo
+              if (e.ctrlKey) {
+                if (e.shiftKey) {
+                  this.redo();
+                } else {
+                  this.undo();
+                }
+                if (e.detail.keyboardEvent) {
+                  e.detail.keyboardEvent.preventDefault();
+                  e.detail.keyboardEvent.stopPropagation();
+                  e.detail.keyboardEvent.stopImmediatePropagation();
+                }
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+              }
+              break;
+            case "Tab":
+              if (HAXStore.isTextElement(this.activeNode)) {
+                if (e.detail.keyboardEvent) {
+                  e.detail.keyboardEvent.preventDefault();
+                  e.detail.keyboardEvent.stopPropagation();
+                  e.detail.keyboardEvent.stopImmediatePropagation();
+                }
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                if (e.shiftKey) {
+                  this._tabBackKeyPressed();
+                } else {
+                  this._tabKeyPressed();
                 }
               }
-              // need to check on the parent too if this was a text node
-              else if (
-                rng.commonAncestorContainer &&
-                rng.commonAncestorContainer.parentNode &&
-                this.activeNode !== rng.commonAncestorContainer.parentNode &&
-                typeof rng.commonAncestorContainer.parentNode.focus ===
-                  "function"
+              break;
+            case "Enter":
+              this.__slot = this.activeNode.getAttribute("slot");
+              this.setAttribute("contenteditable", true);
+              if (
+                this.activeNode.tagName === "P" &&
+                ["1", "#", "`", ">", "-", "!"].includes(
+                  this.activeNode.textContent[0]
+                )
               ) {
+                // ensure the "whitespace character" has been replaced w/ a normal space
+                const guess = this.activeNode.textContent.replaceAll(/ /g, " ");
+                // ensures that the user has done a matching action and a " " spacebar to ensure they
+                // are ready to commit the action
+                this.keyboardShortCutProcess(guess);
+              }
+              break;
+            case "Backspace":
+            case "Delete":
+              this.__deleteItKey = true;
+            case "ArrowUp":
+            case "ArrowDown":
+            case "ArrowLeft":
+            case "ArrowRight":
+              setTimeout(() => {
+                const tmp = HAXStore.getSelection();
+                HAXStore._tmpSelection = tmp;
+                HAXStore.haxSelectedText = tmp.toString();
+                const rng = HAXStore.getRange();
                 if (
-                  rng.commonAncestorContainer.parentNode.tagName !== "HAX-BODY"
+                  rng.commonAncestorContainer &&
+                  this.activeNode !== rng.commonAncestorContainer &&
+                  typeof rng.commonAncestorContainer.focus === "function"
+                ) {
+                  if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
+                    if (HAXStore.isTextElement(rng.commonAncestorContainer)) {
+                      this.setAttribute("contenteditable", true);
+                    } else {
+                      this.removeAttribute("contenteditable");
+                    }
+                    rng.commonAncestorContainer.focus();
+                    this.__focusLogic(rng.commonAncestorContainer, false);
+                  }
+                }
+                // need to check on the parent too if this was a text node
+                else if (
+                  rng.commonAncestorContainer &&
+                  rng.commonAncestorContainer.parentNode &&
+                  this.activeNode !== rng.commonAncestorContainer.parentNode &&
+                  typeof rng.commonAncestorContainer.parentNode.focus ===
+                    "function"
                 ) {
                   if (
-                    window.HaxStore.instance.isTextElement(
-                      rng.commonAncestorContainer.parentNode
-                    )
+                    rng.commonAncestorContainer.parentNode.tagName !==
+                    "HAX-BODY"
                   ) {
-                    this.setAttribute("contenteditable", true);
+                    if (
+                      HAXStore.isTextElement(
+                        rng.commonAncestorContainer.parentNode
+                      )
+                    ) {
+                      this.setAttribute("contenteditable", true);
+                    } else {
+                      this.removeAttribute("contenteditable");
+                    }
+
+                    rng.commonAncestorContainer.parentNode.focus();
+                    this.__focusLogic(
+                      rng.commonAncestorContainer.parentNode,
+                      false
+                    );
                   } else {
-                    this.removeAttribute("contenteditable");
+                    rng.commonAncestorContainer.focus();
+                    this.__focusLogic(rng.commonAncestorContainer, false);
                   }
-                  rng.commonAncestorContainer.parentNode.focus();
-                  this.__focusLogic(rng.commonAncestorContainer.parentNode);
-                } else {
-                  this.activeNode = rng.commonAncestorContainer;
-                  this.activeContainerNode = this.activeNode;
-                  window.HaxStore.write(
-                    "activeNode",
-                    rng.commonAncestorContainer,
-                    this
-                  );
-                  window.HaxStore.write(
-                    "activeContainerNode",
-                    rng.commonAncestorContainer,
-                    this
-                  );
-                  setTimeout(() => {
-                    this.positionContextMenus();
-                  }, 0);
                 }
-              } else {
-              }
-            }, 50);
-            break;
+              }, 0);
+              break;
+            default:
+              // we only care about contextual ops in a paragraph
+              // delay a micro-task to ensure activenode's innerText is set
+              setTimeout(() => {
+                if (
+                  this.activeNode.tagName === "P" &&
+                  ["1", "#", "`", ">", "-", "!"].includes(
+                    this.activeNode.textContent[0]
+                  )
+                ) {
+                  // ensure the "whitespace character" has been replaced w/ a normal space
+                  const guess = this.activeNode.textContent.replaceAll(
+                    / /g,
+                    " "
+                  );
+                  // ensures that the user has done a matching action and a " " spacebar to ensure they
+                  // are ready to commit the action
+                  if (guess[guess.length - 1] === " ") {
+                    this.keyboardShortCutProcess(guess);
+                  }
+                }
+              }, 0);
+              break;
+          }
         }
-        if (
-          this.shadowRoot
-            .querySelector("#platecontextmenu")
-            .classList.contains("hax-active-hover")
-        ) {
-          this.__dropActiveHover();
+      }
+    }
+  }
+  keyboardShortCutProcess(guess) {
+    // look for advanced detections for contextual operations
+    let map = {
+      "#": "h2",
+      "##": "h3",
+      "###": "h4",
+      "####": "h5",
+      "#####": "h6",
+      "-": "ul",
+      "1.": "ol",
+      "---": "hr",
+      "```": "code",
+      ">": "blockquote",
+    };
+    // see if our map matches
+    if (map[guess.replace(" ", "")]) {
+      let el = document.createElement(map[guess.replace(" ", "")]);
+      // silly thing for contenteditable to show it as full space height
+      el.innerHTML = "<br />";
+      if (["UL", "OL"].includes(el.tagName)) {
+        el.innerHTML = "<li></li>";
+      }
+      this.haxReplaceNode(this.activeNode, el);
+      this.__focusLogic(el);
+      // breaks should jump just PAST the break
+      // and add a p since it's a divider really
+      if (el.tagName === "HR") {
+        // then insert a P which will assume active status
+        this.haxInsert("p", "", {});
+      }
+    }
+    // look for wildcard / web component pro insert mode
+    else if (guess[0] === "!") {
+      let tag = guess.replace("!", "").replaceAll(/ /g, "");
+      // see if this exists
+      if (HAXStore.elementList[tag]) {
+        // generate schema from the tag
+        let schema = HAXStore.haxSchemaFromTag(tag);
+        let target;
+        if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
+          target = haxElementToNode(schema.demoSchema[0]);
+        } else {
+          target = document.createElement(tag);
         }
+        this.haxReplaceNode(this.activeNode, target);
+        this.__focusLogic(target);
+      } else {
+        // do nothing, we tried to be a pro but failed :(
+        HAXStore.toast(`${tag} is not a valid tag`);
       }
     }
   }
@@ -890,94 +1248,21 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     clearTimeout(this.__keyPress);
     this.__keyPress = setTimeout(() => {
       if (
-        !this.openDrawer &&
-        this.editMode &&
-        this.shadowRoot
-          .querySelector("#textcontextmenu")
-          .classList.contains("hax-active-hover") &&
-        this.activeNode &&
-        window.HaxStore.instance.isTextElement(this.activeNode)
-      ) {
-        this.__dropActiveHover();
-      } else if (
-        !this.openDrawer &&
         this.editMode &&
         this.activeNode &&
-        window.HaxStore.instance.isTextElement(this.activeNode)
+        HAXStore.isTextElement(this.activeNode)
       ) {
         // If the user has paused for awhile, show the menu
         clearTimeout(this.__positionContextTimer);
         this.__positionContextTimer = setTimeout(() => {
           // always on active if we were just typing
+          this.__addActiveVisible();
           this.positionContextMenus();
-        }, 1500);
+        }, 2500);
       }
     }, 50);
   }
-  /**
-   * on mouse over then fire the hax ray value if we have one
-   */
-  hoverEvent(e) {
-    if (!this.openDrawer && this.editMode) {
-      if (e.target && e.target.getAttribute("data-hax-ray") != null) {
-        this.__activeHover = e.target;
-      } else if (
-        e.target &&
-        e.target.parentNode &&
-        e.target.parentNode.getAttribute("data-hax-ray") != null
-      ) {
-        this.__activeHover = e.target.parentNode;
-      }
-      if (
-        !this.shadowRoot
-          .querySelector("#platecontextmenu")
-          .classList.contains("hax-active-hover")
-      ) {
-        let local = e.target;
-        // see if the target is relevent when showing the edit menu operations
-        if (
-          e.target === this.shadowRoot.querySelector("#cecontextmenu") ||
-          e.target === this.shadowRoot.querySelector("#textcontextmenu") ||
-          e.target === this.shadowRoot.querySelector("#platecontextmenu") ||
-          local === this.activeNode ||
-          local === this.activeContainerNode ||
-          e.target === this.activeNode ||
-          e.target === this.activeContainerNode ||
-          local.parentNode === this.activeContainerNode ||
-          local.parentNode.parentNode === this.activeContainerNode ||
-          local.parentNode.parentNode.parentNode === this.activeContainerNode
-        ) {
-          this.positionContextMenus();
-          this.__addActiveHover();
-          this.__typeLock = false;
-        } else {
-          this.__dropActiveHover();
-        }
-      }
-    }
-  }
-  __addActiveHover() {
-    this.shadowRoot
-      .querySelector("#cecontextmenu")
-      .classList.add("hax-active-hover");
-    this.shadowRoot
-      .querySelector("#textcontextmenu")
-      .classList.add("hax-active-hover");
-    this.shadowRoot
-      .querySelector("#platecontextmenu")
-      .classList.add("hax-active-hover");
-  }
-  __dropActiveHover() {
-    this.shadowRoot
-      .querySelector("#cecontextmenu")
-      .classList.remove("hax-active-hover");
-    this.shadowRoot
-      .querySelector("#textcontextmenu")
-      .classList.remove("hax-active-hover");
-    this.shadowRoot
-      .querySelector("#platecontextmenu")
-      .classList.remove("hax-active-hover");
-  }
+
   /**
    * Only true if we are scrolling and part way through an element
    */
@@ -995,9 +1280,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       let p = document.createElement("p");
       p.innerHTML = "<br/>";
       this.haxReplaceNode(this.activeNode, p);
-      // set active to this p tag
-      this.activeContainerNode.setAttribute("contenteditable", true);
       this.__focusLogic(p);
+      if (this.activeNode.parentNode) {
+        this.activeNode.parentNode.setAttribute("contenteditable", true);
+      }
     } else {
       this.replaceElementWorkflow();
     }
@@ -1031,15 +1317,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // see if we have a gizmo as it's not a requirement to registration
     // as well as having handlers since mapping is not required either
     if (
-      typeof window.HaxStore.instance.elementList[element.tag] !==
+      typeof HAXStore.elementList[element.tag] !== typeof undefined &&
+      HAXStore.elementList[element.tag].gizmo !== false &&
+      typeof HAXStore.elementList[element.tag].gizmo.handles !==
         typeof undefined &&
-      window.HaxStore.instance.elementList[element.tag].gizmo !== false &&
-      typeof window.HaxStore.instance.elementList[element.tag].gizmo.handles !==
-        typeof undefined &&
-      window.HaxStore.instance.elementList[element.tag].gizmo.handles.length > 0
+      HAXStore.elementList[element.tag].gizmo.handles.length > 0
     ) {
       // get the haxProperties for this item
-      let gizmo = window.HaxStore.instance.elementList[element.tag].gizmo;
+      let gizmo = HAXStore.elementList[element.tag].gizmo;
       // walk through each handler
       for (var i = 0; i < gizmo.handles.length; i++) {
         // walk the properties defined as they would be to the
@@ -1069,21 +1354,21 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
       }
     }
-    let haxElements = window.HaxStore.guessGizmo(type, props, skipPropMatch);
+    let haxElements = HAXStore.guessGizmo(type, props, skipPropMatch);
     // see if we got anything
     if (haxElements.length > 0) {
       // hand off to hax-app-picker to deal with the rest of this
       let tag = activeNode.tagName.toLowerCase();
       let humanName = tag.replace("-", " ");
       if (
-        typeof window.HaxStore.instance.elementList[tag] !== typeof undefined &&
-        window.HaxStore.instance.elementList[tag].gizmo !== false
+        typeof HAXStore.elementList[tag] !== typeof undefined &&
+        HAXStore.elementList[tag].gizmo !== false
       ) {
-        humanName = window.HaxStore.instance.elementList[tag].gizmo.title;
+        humanName = HAXStore.elementList[tag].gizmo.title;
       }
       if (!testOnly) {
-        window.HaxStore.instance.activePlaceHolder = this.activeNode;
-        window.HaxStore.instance.haxAppPicker.presentOptions(
+        HAXStore.activePlaceHolder = this.activeNode;
+        HAXStore.haxAppPicker.presentOptions(
           haxElements,
           "__convert",
           `Transform ${humanName} to..`,
@@ -1092,7 +1377,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
     } else {
       if (!testOnly) {
-        window.HaxStore.toast("Sorry, this can not be transformed!", 5000);
+        HAXStore.toast("Sorry, this can not be transformed!", 5000);
       }
     }
     return haxElements;
@@ -1134,8 +1419,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Insert new tag + content into the local DOM as a node.
    */
-  haxInsert(tag, content, properties = {}) {
-    this.__activeHover = null;
+  haxInsert(tag, content, properties = {}, active = this.activeNode) {
     // verify this tag is a valid one
     // create a new element fragment w/ content in it
     // if this is a custom-element it won't expand though
@@ -1148,7 +1432,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     const newNode = frag.cloneNode(true);
     // support for properties if they exist
     for (var property in properties) {
-      let attributeName = window.HaxStore.camelToDash(property);
+      let attributeName = camelToDash(property);
       if (properties.hasOwnProperty(property)) {
         // special supporting for boolean because html is weird :p
         if (properties[property] === true) {
@@ -1187,48 +1471,55 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // special support for a drag and drop into a place-holder tag
     // as this is a more aggressive operation then the others
     if (
-      window.HaxStore.instance.activePlaceHolder !== null &&
-      typeof window.HaxStore.instance.activePlaceHolder.style !==
-        typeof undefined
+      HAXStore.activePlaceHolder !== null &&
+      typeof HAXStore.activePlaceHolder.style !== typeof undefined
     ) {
       // replicate styles so that it doesn't jar the UI
-      newNode.style.width =
-        window.HaxStore.instance.activePlaceHolder.style.width;
-      newNode.style.float =
-        window.HaxStore.instance.activePlaceHolder.style.float;
-      newNode.style.margin =
-        window.HaxStore.instance.activePlaceHolder.style.margin;
-      newNode.style.display =
-        window.HaxStore.instance.activePlaceHolder.style.display;
-      this.haxReplaceNode(window.HaxStore.instance.activePlaceHolder, newNode);
-      window.HaxStore.instance.activePlaceHolder = null;
+      newNode.style.width = HAXStore.activePlaceHolder.style.width;
+      newNode.style.float = HAXStore.activePlaceHolder.style.float;
+      newNode.style.margin = HAXStore.activePlaceHolder.style.margin;
+      newNode.style.display = HAXStore.activePlaceHolder.style.display;
+      this.haxReplaceNode(HAXStore.activePlaceHolder, newNode);
+      HAXStore.activePlaceHolder = null;
     }
     // insert at active insert point if we have one
-    else if (this.activeContainerNode != null) {
+    else if (active.parentNode != null) {
       // allow for inserting things into things but not grid plate
-      if (
-        this.activeContainerNode.tagName === "GRID-PLATE" &&
-        this.activeContainerNode !== this.activeNode
-      ) {
-        if (this.activeNode.getAttribute("slot") != null) {
-          newNode.setAttribute("slot", this.activeNode.getAttribute("slot"));
+      if (active.parentNode.tagName === "GRID-PLATE") {
+        if (active.getAttribute("slot") != null) {
+          newNode.setAttribute("slot", active.getAttribute("slot"));
         }
-        if (this.activeNode.parentNode == this.activeContainerNode) {
-          this.activeContainerNode.insertBefore(newNode, this.activeNode);
+        // special in context add for grids
+        if (this.__addAbove) {
+          active.parentNode.insertBefore(newNode, active);
         } else {
-          this.activeContainerNode.appendChild(newNode);
+          active.parentNode.insertBefore(newNode, active.nextElementSibling);
         }
       } else {
-        if (
-          this.activeContainerNode &&
-          this.activeContainerNode.nextElementSibling
-        ) {
-          this.activeContainerNode.nextElementSibling.parentNode.insertBefore(
+        if (active.parentNode && active.parentNode.nextElementSibling) {
+          active.parentNode.nextElementSibling.parentNode.insertBefore(
             newNode,
-            this.activeContainerNode.nextElementSibling
+            active.parentNode.nextElementSibling
           );
-        } else if (this.activeNode.parentNode) {
-          this.activeNode.parentNode.insertBefore(newNode, this.activeNode);
+        } else if (active.parentNode && active.nextElementSibling) {
+          if (this.__addAbove) {
+            active.parentNode.insertBefore(newNode, active);
+          } else {
+            active.parentNode.insertBefore(newNode, active.nextElementSibling);
+          }
+          // test for the LAST item in a group, insert at top and it'll flow to the end
+        } else if (
+          active.parentNode &&
+          active.parentNode.children[active.parentNode.children.length - 1] ===
+            active
+        ) {
+          if (this.__addAbove) {
+            active.parentNode.insertBefore(newNode, active);
+          } else {
+            active.parentNode.appendChild(newNode);
+          }
+        } else if (active.parentNode) {
+          active.parentNode.insertBefore(newNode, active);
         } else {
           // something odd happened let's just make sure we insert this safely
           this.appendChild(newNode);
@@ -1238,15 +1529,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // send this into the root, which should filter it back down into the slot
       this.appendChild(newNode);
     }
-    this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
-    this.activeContainerNode = newNode.parentNode;
-    this.activeNode = newNode;
-    window.HaxStore.write("activeContainerNode", newNode.parentNode, this);
-    window.HaxStore.write("activeNode", newNode, this);
-    // wait so that the DOM can have the node to then attach to
+    this.contextMenus.text.hasSelectedText = false;
     setTimeout(() => {
+      this.__focusLogic(newNode);
+      // wait so that the DOM can have the node to then attach to
       this.scrollHere(newNode);
-      this.positionContextMenus();
     }, 0);
     return true;
   }
@@ -1258,10 +1545,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.hideContextMenus();
     var __active = this.activeNode;
     // null this to drop hax based classes
-    this.activeNode = null;
-    this.activeContainerNode = null;
-    window.HaxStore.write("activeNode", null, this);
-    window.HaxStore.write("activeContainerNode", null, this);
+    HAXStore.activeNode = null;
     let children =
       this.shadowRoot.querySelector("#body").localName === "slot"
         ? this.shadowRoot.querySelector("#body").assignedNodes({
@@ -1272,17 +1556,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     for (var i = 0, len = children.length; i < len; i++) {
       // some mild front-end sanitization
       if (this._validElementTest(children[i])) {
-        children[i].removeAttribute("data-editable");
         children[i].removeAttribute("data-hax-ray");
         // remove some of the protected classes though they shouldn't leak through
-        children[i].classList.remove(
-          "hax-mover",
-          "hax-moving",
-          "hax-hovered",
-          "grid-plate-active-item"
-        );
+        children[i].classList.remove("hax-hovered");
         children[i].contentEditable = false;
-        content += window.HaxStore.nodeToContent(children[i]);
+        content += HAXStore.nodeToContent(children[i]);
         if (children[i].tagName.toLowerCase() === "grid-plate") {
           this._applyContentEditable(this.editMode, children[i]);
         }
@@ -1303,12 +1581,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     }
     // remove the contenteditable attribute
     content = content.replace(/\scontenteditable=\"false\"/g, "");
-    // remove the data-editable attribute
-    content = content.replace(/\sdata-editable=\"true\"/g, "");
-    content = content.replace(/\sdata-editable=\"false\"/g, "");
-    content = content.replace(/\sdata-editable=\""/g, "");
-    // remove other attributes that can linger in slots
-    content = content.replace(/\sdata-editable/g, "");
     content = content.replace(/\scontenteditable/g, "");
     content = content.replace(/\sdraggable/g, "");
     // clean up stray hax-ray leftovers
@@ -1328,7 +1600,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       re = new RegExp(string, "g");
       content = content.replace(re, "");
       // now all tags we have defined as valid
-      let tags = window.HaxStore.instance.validTagList;
+      let tags = HAXStore.validTagList;
       for (var i in tags) {
         string = "style-scope " + tags[i];
         re = new RegExp(string, "g");
@@ -1346,9 +1618,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     content = content.replace(/\sclass=\"\s\"/g, "");
     // re-apply contenteditable if needed
     this._applyContentEditable(this.editMode);
-    // set active again
-    window.HaxStore.write("activeNode", __active, this);
-    window.HaxStore.write("activeContainerNode", __active, this);
+    HAXStore.activeNode = __active;
     // oh one last thing. escape all script/style tags
     content = encapScript(content);
     return content;
@@ -1357,13 +1627,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Duplicate node into the local DOM below the current item if we can.
    */
   haxDuplicateNode(node) {
-    // move the context menu before duplicating!!!!
-    this.hideContextMenus(false);
-    let parent = node.parentNode;
     // convert the node to a hax element
     let haxElement = nodeToHaxElement(node, null);
-    var props =
-      window.HaxStore.instance.elementList[node.tagName.toLowerCase()];
+    var props = HAXStore.elementList[node.tagName.toLowerCase()];
     // support for tag defining which properties NOT to save
     // for simplification, everything is an attribute during this
     // operation
@@ -1393,24 +1659,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     });
     if (
       nodeClone.tagName.toLowerCase() === "webview" &&
-      window.HaxStore.instance._isSandboxed &&
+      HAXStore._isSandboxed &&
       typeof nodeClone.guestinstance !== typeof undefined
     ) {
       delete nodeClone.guestinstance;
     }
     // shouldn't be possible but might as well check
     if (node !== null) {
-      parent.insertBefore(nodeClone, node.nextSibling);
+      node.parentNode.insertBefore(nodeClone, node.nextSibling);
     } else {
-      parent.appendChild(nodeClone);
+      node.parentNode.appendChild(nodeClone);
     }
-    setTimeout(() => {
-      // test for a grid plate clone
-      if (parent === this) {
-        window.HaxStore.write("activeContainerNode", nodeClone, this);
-      }
-      window.HaxStore.write("activeNode", nodeClone, this);
-    }, 100);
+    HAXStore.activeNode = nodeClone;
     return true;
   }
   /**
@@ -1423,143 +1683,133 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     clearTimeout(this.__contextVisibleLock);
     clearTimeout(this.__positionContextTimer);
     // primary context menus
-    this._hideContextMenu(this.shadowRoot.querySelector("#textcontextmenu"));
-    this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
+    this._hideContextMenu(this.contextMenus.text);
+    this._hideContextMenu(this.contextMenus.ce);
+    this._hideContextMenu(this.contextMenus.add);
+    this.__activeHover = null;
     // secondary menus and clean up areas
     if (hidePlate) {
-      this._hideContextMenu(this.shadowRoot.querySelector("#platecontextmenu"));
+      this._hideContextMenu(this.contextMenus.plate);
     }
-    // force context menu state to closed
-    this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
   }
   /**
    * Reposition context menus to match an element.
    */
-  positionContextMenus(node = this.activeNode, container = this.activeNode) {
+  positionContextMenus(node = this.activeNode) {
     // sanity chekc and ensure we are not told to lock position of all menus
     clearTimeout(this.__positionContextTimer);
     this.__positionContextTimer = setTimeout(() => {
       if (
         node &&
-        !window.HaxStore.instance._lockContextPosition &&
+        node.tagName &&
+        !HAXStore._lockContextPosition &&
         this.__ready
       ) {
         // menu width starts out w/ the plate context which is a set size
         let menuWidth = 140;
         let tag = node.tagName.toLowerCase();
-        if (window.HaxStore.instance._isSandboxed && tag === "webview") {
+        if (HAXStore._isSandboxed && tag === "webview") {
           tag = "iframe";
         }
-        let props = window.HaxStore.instance.elementList[tag];
+        let props = HAXStore.elementList[tag];
         // try and work against anything NOT a P tag
         if (
           typeof props !== typeof undefined &&
-          !window.HaxStore.instance.isTextElement(node)
+          !HAXStore.isTextElement(node)
         ) {
-          this._hideContextMenu(
-            this.shadowRoot.querySelector("#textcontextmenu")
-          );
+          this._hideContextMenu(this.contextMenus.text);
           props.element = node;
-          this._positionContextMenu(
-            this.shadowRoot.querySelector("#cecontextmenu"),
-            container,
-            -1,
-            -30
-          );
+          this._positionContextMenu(this.contextMenus.ce, node, 0, -28);
           menuWidth += 28;
         } else {
-          this._hideContextMenu(
-            this.shadowRoot.querySelector("#cecontextmenu")
-          );
-          this._positionContextMenu(
-            this.shadowRoot.querySelector("#textcontextmenu"),
-            container,
-            -1,
-            -30
-          );
+          this._hideContextMenu(this.contextMenus.ce);
+          this._positionContextMenu(this.contextMenus.text, node, 0, -28);
           // text menu can expand based on selection
-          let textRect = this.shadowRoot
-            .querySelector("#textcontextmenu")
-            .getBoundingClientRect();
+          let textRect = this.contextMenus.text.getBoundingClientRect();
           menuWidth += textRect.width;
         }
-        if (container) {
-          let activeRect = container.getBoundingClientRect();
-          // need to account for the item being small than the menu
-          if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
-            this._positionContextMenu(
-              this.shadowRoot.querySelector("#platecontextmenu"),
-              container,
-              -1,
-              -58
-            );
-          } else {
-            this._positionContextMenu(
-              this.shadowRoot.querySelector("#platecontextmenu"),
-              container,
-              activeRect.width -
-                this.shadowRoot
-                  .querySelector("#platecontextmenu")
-                  .getBoundingClientRect().width +
-                2,
-              -28
-            );
-          }
+        let activeRect = node.getBoundingClientRect();
+        // hide menu if we have active on a list item
+        // special case because it should not be moved anywhere or have these
+        // operations shown as it only makes sense as part of something larger
+        // ul / ol which I believe is the ONLY tag that works this way
+        if (
+          this.activeNode.tagName === "LI" ||
+          this._HTMLInlineTextDecorationTest(this.activeNode)
+        ) {
+          this._hideContextMenu(this.contextMenus.plate);
+        }
+        // need to account for the item being small than the menu
+        else if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
+          this._positionContextMenu(this.contextMenus.plate, node, 0, -56);
+        } else {
+          this._positionContextMenu(
+            this.contextMenus.plate,
+            node,
+            activeRect.width -
+              this.contextMenus.plate.getBoundingClientRect().width +
+              1,
+            -26
+          );
         }
         // special case for node not matching container yet it being editable
-        if (
-          container &&
-          !window.HaxStore.instance.isTextElement(node) &&
-          node !== container
-        ) {
-          container.removeAttribute("contenteditable");
-        } else if (container) {
-          container.setAttribute("contenteditable", true);
+        if (node && node.tagName !== "HR" && !HAXStore.isTextElement(node)) {
+          node.removeAttribute("contenteditable");
+        } else if (node) {
+          node.setAttribute("contenteditable", true);
         }
       }
-    }, 10);
+    }, 50);
+  }
+  /**
+   * No idea how to describe these name wise but basically we want to only
+   * show the menus when we need them. This toggle allows us the ability
+   * to hide the context menus while the user is engaged in typing or
+   * other actions where the in-context menus are distracting
+   */
+  __addActiveVisible() {
+    for (var i in this.contextMenus) {
+      if (i != "add" || this.__activeHover) {
+        this.contextMenus[i].classList.add("hax-context-menu-active");
+      }
+    }
+  }
+  __dropActiveVisible() {
+    for (var i in this.contextMenus) {
+      this.contextMenus[i].classList.remove("hax-context-menu-active");
+    }
+    // force hiding add menu
+    this.__activeHover = null;
+    this._hideContextMenu(this.contextMenus.add);
   }
   /**
    * Move grid plate around
    */
-  haxMoveGridPlate(direction, node, container) {
+  haxMoveGridPlate(direction, node) {
     // menu is actually in the element for render purposes
     // support moving things multiple directions
     this.___moveLock = true;
     switch (direction) {
-      case "first":
-        // ensure we can go up, first being a mode of up
-        if (container.previousElementSibling !== null) {
-          this.insertBefore(container, this.firstChild);
-        }
-        break;
       case "up":
         // ensure we can go up
-        if (container.previousElementSibling !== null) {
-          this.insertBefore(container, container.previousElementSibling);
+        if (node.previousElementSibling !== null) {
+          node.parentNode.insertBefore(node, node.previousElementSibling);
         }
         break;
       case "down":
-        if (container.nextElementSibling !== null) {
-          this.insertBefore(container.nextElementSibling, container);
-        }
-        break;
-      case "last":
-        if (container.nextElementSibling !== null) {
-          this.appendChild(container);
+        if (node.nextElementSibling !== null) {
+          node.parentNode.insertBefore(node.nextElementSibling, node);
         }
         break;
     }
-    setTimeout(() => {
-      this.scrollHere(node);
-      this.positionContextMenus(node, node);
-    }, 0);
+    this.scrollHere(node);
+    this.positionContextMenus(node);
     return true;
   }
   /**
    * Inject / modify a grid plate where something currently lives
    */
-  async haxGridPlateOps(node, side, add = true) {
+  async haxGridPlateOps(add = true, side = "right", node = this.activeNode) {
     // allow splitting the grid plate that is already there
     let changed = false;
     if (node.tagName === "GRID-PLATE") {
@@ -1596,17 +1846,16 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
               if (el.tagName) {
                 // remove slot name
                 cloneEl = el.cloneNode(true);
-                cloneEl.removeAttribute("slot");
-                cloneEl.classList.remove("hax-mover");
-                cloneEl.classList.remove("hax-moving");
+                if (node.getAttribute("slot")) {
+                  cloneEl.setAttribute("slot", node.getAttribute("slot"));
+                } else {
+                  cloneEl.removeAttribute("slot");
+                }
                 node.parentNode.insertBefore(cloneEl, node);
               }
             });
             // whatever was moved out last use as active now
-            this.activeNode = cloneEl;
-            this.activeContainerNode = cloneEl;
-            window.HaxStore.write("activeNode", cloneEl, this);
-            window.HaxStore.write("activeContainerNode", cloneEl, this);
+            HAXStore.activeNode = cloneEl;
             setTimeout(() => {
               node.remove();
             }, 0);
@@ -1632,11 +1881,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
       // if left, nudge everything over 1, right simple
       if (changed) {
-        let platecontextmenu = this.shadowRoot.querySelector(
-          "#platecontextmenu"
-        );
-        let right = platecontextmenu.shadowRoot.querySelector("#right");
-        let rightremove = platecontextmenu.shadowRoot.querySelector(
+        let right = this.contextMenus.plate.shadowRoot.querySelector("#right");
+        let rightremove = this.contextMenus.plate.shadowRoot.querySelector(
           "#rightremove"
         );
         right.disabled = false;
@@ -1660,18 +1906,23 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       let grid = document.createElement("grid-plate");
       grid.layout = "1-1";
       grid.disableResponsive = true;
-      node.parentNode.insertBefore(grid, node);
+      if (node.getAttribute("slot")) {
+        grid.setAttribute("slot", node.getAttribute("slot"));
+      }
       let col = "2";
       if (side == "right") {
         col = "1";
       }
+      let tmp = node.cloneNode(true);
+      tmp.setAttribute("slot", "col-" + col);
+      grid.appendChild(tmp);
+      node.parentNode.insertBefore(grid, node);
       setTimeout(() => {
-        grid.appendChild(node);
-        this.activeContainerNode = grid;
-        window.HaxStore.write("activeContainerNode", grid, this);
-        node.setAttribute("slot", "col-" + col);
+        node.remove();
       }, 0);
     }
+    // edge case where we need to force form to update
+    HAXStore.haxTray.refreshActiveNodeForm();
   }
   /**
    * Convert an element from one tag to another.
@@ -1681,6 +1932,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     try {
       if (node == null) {
         node = this.__oldActiveNode;
+      }
+      if (!node.replaceWith && HAXStore._tmpRange) {
+        node = HAXStore._tmpRange;
+        HAXStore._tmpRange = null;
       }
       node.replaceWith(replacement);
       // test for slots to match
@@ -1695,21 +1950,30 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Convert an element from one tag to another.
    */
-  haxChangeTagName(node, tagName) {
+  haxChangeTagName(node, tagName, maintainContent = true) {
     // Create a replacement tag of the desired type
     var replacement = document.createElement(tagName);
     // Grab all of the original's attributes, and pass them to the replacement
     for (var i = 0, l = node.attributes.length; i < l; ++i) {
-      var nodeName = node.attributes.item(i).nodeName;
-      var value = node.attributes.item(i).value;
-      replacement.setAttribute(nodeName, value);
+      let nodeName = node.attributes.item(i).nodeName;
+      let value = node.attributes.item(i).value;
+      try {
+        replacement.setAttribute(nodeName, value);
+      } catch (e) {
+        console.warn(node.attributes);
+        console.warn(e);
+      }
     }
     // Persist contents
     // account for empty list and ordered list items
-    replacement.innerHTML = node.innerHTML.trim();
+    if (maintainContent) {
+      replacement.innerHTML = node.innerHTML.trim();
+    } else {
+      replacement.innerHTML = "<br />";
+    }
     if (tagName == "ul" || tagName == "ol") {
-      if (replacement.innerHTML == "") {
-        replacement.innerHTML = "<li></li>";
+      if (replacement.innerHTML == "<br />") {
+        replacement.innerHTML = "<li><br /></li>";
       } else if (
         !(
           node.tagName.toLowerCase() == "ul" ||
@@ -1739,16 +2003,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // Switch!
     try {
       node.replaceWith(replacement);
-      // focus on the thing switched to
-      setTimeout(() => {
-        let children = replacement.children;
-        // see if there's a child element and focus that instead if there is
-        if (children[0] && children.tagName) {
-          children[0].focus();
-        } else {
-          replacement.focus();
-        }
-      }, 50);
+      if (maintainContent) {
+        // focus on the thing switched to
+        setTimeout(() => {
+          let children = replacement.children;
+          // see if there's a child element and focus that instead if there is
+          if (children[0] && children.tagName) {
+            children[0].focus();
+          } else {
+            replacement.focus();
+          }
+        }, 10);
+      }
     } catch (e) {
       console.warn(e);
       console.warn(replacement);
@@ -1759,13 +2025,26 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Delete the node passed in
    */
-  haxDeleteNode(node, parent = this) {
-    // move the context menu before deleting!!!!
-    this.hideContextMenus();
-    this.activeNode = null;
-    this.activeContainerNode = null;
-    window.HaxStore.write("activeNode", null, this);
-    window.HaxStore.write("activeContainerNode", null, this);
+  haxDeleteNode(node) {
+    if (node.previousElementSibling) {
+      HAXStore.activeNode = node.previousElementSibling;
+    } else if (node.nextElementSibling) {
+      HAXStore.activeNode = node.nextElementSibling;
+    } else {
+      // implies nothing; let's not allow NOTHING as it breaks user context
+      this.haxInsert("p", "", {});
+      try {
+        var range = document.createRange();
+        var sel = HAXStore.getSelection();
+        range.setStart(this.activeNode, 0);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        this.activeNode.focus();
+      } catch (e) {
+        console.warn(e);
+      }
+    }
     try {
       return node.remove();
     } catch (e) {
@@ -1783,7 +2062,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (clear) {
       wipeSlot(this, "*");
     }
-    // pause quickly to ensure wipe goes through successfully
     setTimeout(() => {
       html = encapScript(html);
       let fragment = document.createElement("div");
@@ -1792,7 +2070,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         if (typeof fragment.firstChild.tagName !== typeof undefined) {
           // ensure import doesn't import non-sandbox safe things!
           if (
-            window.HaxStore.instance._isSandboxed &&
+            HAXStore._isSandboxed &&
             fragment.firstChild.tagName.toLowerCase() === "iframe"
           ) {
             // Create a replacement tag of the desired type
@@ -1820,7 +2098,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           fragment.removeChild(fragment.firstChild);
         }
       }
-    }, 50);
+    }, 0);
   }
   /**
    * Respond to hax operations.
@@ -1832,57 +2110,23 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // text based operations for primatives
       case "text-tag":
         // trigger the default selected value in context menu to match
-        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
-          detail.value;
-        this.activeNode = this.haxChangeTagName(this.activeNode, detail.value);
-        window.HaxStore.write("activeNode", this.activeNode, this);
+        HAXStore.activeNode = this.haxChangeTagName(
+          this.activeNode,
+          detail.value
+        );
         this.positionContextMenus();
         break;
       case "text-tag-ul":
         // trigger the default selected value in context menu to match
-        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
-          "ul";
-        this.activeNode = this.haxChangeTagName(this.activeNode, "ul");
-        window.HaxStore.write("activeNode", this.activeNode, this);
+        this.contextMenus.text.realSelectedValue = "ul";
+        HAXStore.activeNode = this.haxChangeTagName(this.activeNode, "ul");
         this.positionContextMenus();
         break;
       case "text-tag-ol":
         // trigger the default selected value in context menu to match
-        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
-          "ol";
-        this.activeNode = this.haxChangeTagName(this.activeNode, "ol");
-        window.HaxStore.write("activeNode", this.activeNode, this);
+        this.contextMenus.text.realSelectedValue = "ol";
+        HAXStore.activeNode = this.haxChangeTagName(this.activeNode, "ol");
         this.positionContextMenus();
-        break;
-      case "hax-plate-add-element":
-        // support for the Other call, otherwise its a specific element + props
-        if (detail.value == "other") {
-          window.HaxStore.instance.haxInsertAnything({});
-          return true;
-        }
-        // insert from here
-        let addData = JSON.parse(detail.value);
-        this.haxInsert(addData.tag, addData.content, addData.properties, false);
-        // focus on 1st row w/ cursor if this a text element
-        if (window.HaxStore.instance.isTextElement(addData)) {
-          try {
-            var range = document.createRange();
-            var sel = window.HaxStore.getSelection();
-            range.setStart(this.activeNode, 0);
-            range.collapse(true);
-            sel.removeAllRanges();
-            sel.addRange(range);
-            this.activeNode.focus();
-            this.activeContainerNode = this.activeNode;
-            window.HaxStore.write(
-              "activeContainerNode",
-              this.activeContainerNode,
-              this
-            );
-          } catch (e) {
-            console.warn(e);
-          }
-        }
         break;
       case "text-align-left":
         this.activeNode.style.textAlign = null;
@@ -1895,18 +2139,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // grid plate based operations
       // allow for transforming this haxElement into another one
       case "hax-plate-create-right":
-        if (this.activeContainerNode.tagName === "HAX-BODY") {
-          this.haxGridPlateOps(this.activeNode, "right");
-        } else {
-          this.haxGridPlateOps(this.activeContainerNode, "right");
-        }
+        this.haxGridPlateOps();
         break;
       case "hax-plate-remove-right":
-        if (this.activeContainerNode.tagName === "HAX-BODY") {
-          this.haxGridPlateOps(this.activeNode, "right", false);
-        } else {
-          this.haxGridPlateOps(this.activeContainerNode, "right", false);
-        }
+        this.haxGridPlateOps(false);
         break;
       // duplicate the active item or container
       case "hax-plate-duplicate":
@@ -1914,43 +2150,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         break;
       case "hax-plate-delete":
         if (this.activeNode != null) {
-          if (this.activeNode !== this.activeContainerNode) {
-            this.haxDeleteNode(this.activeNode, this.activeContainerNode);
-          } else {
-            this.haxDeleteNode(this.activeNode);
-          }
-          window.HaxStore.toast("Element deleted", 2000);
+          this.haxDeleteNode(this.activeNode);
         }
         break;
-      case "hax-plate-first":
-        this.haxMoveGridPlate(
-          "first",
-          this.activeNode,
-          this.activeContainerNode
-        );
-        break;
       case "hax-plate-up":
-        this.haxMoveGridPlate("up", this.activeNode, this.activeContainerNode);
+        this.haxMoveGridPlate("up", this.activeNode);
         break;
       case "hax-plate-down":
-        this.haxMoveGridPlate(
-          "down",
-          this.activeNode,
-          this.activeContainerNode
-        );
-        break;
-      case "hax-plate-last":
-        this.haxMoveGridPlate(
-          "last",
-          this.activeNode,
-          this.activeContainerNode
-        );
-        break;
-      case "close-menu":
-        this.activeNode = null;
-        this.activeContainerNode = null;
-        window.HaxStore.write("activeNode", null, this);
-        window.HaxStore.write("activeContainerNode", null, this);
+        this.haxMoveGridPlate("down", this.activeNode);
         break;
     }
   }
@@ -1969,18 +2176,20 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Focus a target and update the data model to reflect this.
    * This helps ensure that keyboard and non click based focusing
    * registers the same as click events
+   * @param target object - dom node to focus on
+   * @param autoFocus boolean - whether to auto focus / place cursor
    */
-  __focusLogic(target) {
+  __focusLogic(target, autoFocus = true) {
     let stopProp = false;
     // only worry about these when we are in edit mode
     // and there is no drawer open
-    if (!this.openDrawer && this.editMode && !this.__tabTrap) {
+    if (this.editMode && !this.__tabTrap) {
       let containerNode = target;
       // edge case, thing selected is inside a paragraph tag
       // HTML is stupid and allows this
       if (
         containerNode.tagName === "SPAN" &&
-        window.HaxStore.instance.isTextElement(containerNode.parentNode) &&
+        HAXStore.isTextElement(containerNode.parentNode) &&
         containerNode.parentNode.getAttribute("slot") == ""
       ) {
         containerNode = target.parentNode;
@@ -2004,13 +2213,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           stopProp = true;
         } else {
           while (
+            containerNode.parentNode &&
             containerNode.parentNode.tagName &&
             containerNode.parentNode.tagName != "HAX-BODY"
           ) {
             // make sure active is set after closest legit element
             if (
               activeNode === null &&
-              containerNode.tagName !== "LI" &&
               containerNode.tagName !== "B" &&
               containerNode.tagName !== "I" &&
               containerNode.tagName !== "STRONG" &&
@@ -2026,39 +2235,33 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }
           // we only allow disconnected node from container when
           // the container is a grid plate
-          else if (
-            !window.HaxStore.instance.isGridPlateElement(containerNode)
-          ) {
+          else if (!HAXStore.isGridPlateElement(containerNode)) {
             activeNode = containerNode;
           }
         }
         // ensure this is a tag we care about / have support for and
         // that it is a new value
         if (
-          this.activeContainerNode !== containerNode &&
+          this.activeNode &&
+          this.activeNode.parentNode !== containerNode &&
           !containerNode.classList.contains("ignore-activation")
         ) {
-          this.activeContainerNode = containerNode;
-          window.HaxStore.write("activeContainerNode", containerNode, this);
           stopProp = true;
         } else if (containerNode.classList.contains("ignore-activation")) {
           stopProp = true;
         }
-        // test for active node changing
-        if (
-          this.activeNode !== activeNode &&
-          !activeNode.classList.contains("ignore-activation")
-        ) {
-          this.activeNode = activeNode;
-          window.HaxStore.write("activeNode", activeNode, this);
+        // test for ignore edge case
+        if (!activeNode.classList.contains("ignore-activation")) {
+          HAXStore.activeNode = activeNode;
           setTimeout(() => {
             if (
+              autoFocus &&
               !this.__mouseDown &&
-              window.HaxStore.instance.isTextElement(activeNode)
+              HAXStore.isTextElement(activeNode)
             ) {
               try {
                 var range = document.createRange();
-                var sel = window.HaxStore.getSelection();
+                var sel = HAXStore.getSelection();
                 range.setStart(this.activeNode, 0);
                 range.collapse(true);
                 sel.removeAllRanges();
@@ -2068,7 +2271,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 console.warn(e);
               }
             }
-            this.positionContextMenus(activeNode, activeNode);
+            this.positionContextMenus(activeNode);
           }, 0);
           stopProp = true;
         }
@@ -2083,15 +2286,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * as that is better behavior but not in all browsers
    */
   scrollHere(node) {
-    // scroll to it
-    if (typeof node.scrollIntoViewIfNeeded === "function") {
-      node.scrollIntoViewIfNeeded(true);
-    } else {
-      node.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-      });
-    }
+    // scroll to it w/ timing delay as this uses resources
+    // and we want to ensure it's in the next micro-task
+    setTimeout(() => {
+      if (typeof node.scrollIntoViewIfNeeded === "function") {
+        node.scrollIntoViewIfNeeded(true);
+      } else {
+        node.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+        });
+      }
+    }, 0);
   }
   undo() {
     super.undo();
@@ -2131,27 +2337,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         if (this.children && this.children[0] && this.children[0].focus) {
           this.__focusLogic(this.children[0]);
         } else {
-          this.haxInsert("p", "", {}, false);
-          setTimeout(() => {
-            try {
-              var range = document.createRange();
-              var sel = window.HaxStore.getSelection();
-              range.setStart(this.activeNode, 0);
-              range.collapse(true);
-              sel.removeAllRanges();
-              sel.addRange(range);
-              this.activeNode.focus();
-              this.activeContainerNode = this.activeNode;
-              window.HaxStore.write(
-                "activeContainerNode",
-                this.activeContainerNode,
-                this
-              );
-            } catch (e) {
-              console.warn(e);
-            }
-            this.positionContextMenus();
-          }, 0);
+          this.haxInsert("p", "", {});
+          try {
+            var range = document.createRange();
+            var sel = HAXStore.getSelection();
+            range.setStart(this.activeNode, 0);
+            range.collapse(true);
+            sel.removeAllRanges();
+            sel.addRange(range);
+            this.activeNode.focus();
+          } catch (e) {
+            console.warn(e);
+          }
         }
       }
       // force a reset when we start editing
@@ -2171,6 +2368,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (newValue == false) {
       this.removeAttribute("contenteditable");
       this.hideContextMenus();
+      // clean up for nested items we might miss
+      this.querySelectorAll("[contenteditable],.hax-active").forEach((el) => {
+        el.removeAttribute("contenteditable");
+        el.classList.remove("hax-active");
+      });
     }
   }
   /**
@@ -2193,19 +2395,38 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * We have special support for the hax-logo because it's hax.
    */
   _validElementTest(node) {
-    if (typeof node.tagName !== typeof undefined) {
+    // ignore hax internal tags
+    // search results can be drag'ed from their panel for exact placement
+    // special place holder in drag and drop
+    if (
+      node.tagName &&
+      ![
+        "TEMPLATE",
+        "HAX-BODY",
+        "HAX-APP-SEARCH-RESULT",
+        "FAKE-HAX-BODY-END",
+      ].includes(node.tagName)
+    ) {
+      // special case of SPAN as it can often get embedded places without actually
+      // being the thing that should grad actual block level focus
+      // this would be like a B or I tag grabbing focus as well
       if (
-        // ignore hax internal tags
-        node.tagName.substring(0, 4) !== "HAX-" ||
-        // hax logo is special cause
-        node.tagName === "HAX-LOGO" ||
-        // special place holder in drag and drop
-        node.tagName !== "FAKE-HAX-BODY-END"
+        this._HTMLInlineTextDecorationTest(node) &&
+        node.parentNode != "HAX-BODY"
       ) {
-        return true;
+        return false;
       }
+      return true;
     }
     return false;
+  }
+  /**
+   * test for inline tags
+   */
+  _HTMLInlineTextDecorationTest(node) {
+    return ["span", "b", "strong", "i", "em"].includes(
+      node.tagName.toLowerCase()
+    );
   }
   /**
    * Test if this is an HTML primative
@@ -2257,21 +2478,19 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     let listenerMethod;
     // create the hax-ray x ray googles thing
     let haxRay = node.tagName.replace("-", " ").toLowerCase();
-    let i = window.HaxStore.instance.gizmoList.findIndex((j) => {
+    let i = HAXStore.gizmoList.findIndex((j) => {
       if (j) {
         return j.tag === node.tagName.toLowerCase();
       }
     });
     if (i !== -1) {
-      haxRay = window.HaxStore.instance.gizmoList[i].title;
+      haxRay = HAXStore.gizmoList[i].title;
     }
     // oooooo snap, drag and drop..
     if (status) {
-      node.setAttribute("data-editable", status);
       node.setAttribute("data-hax-ray", haxRay);
       listenerMethod = "addEventListener";
     } else {
-      node.removeAttribute("data-editable");
       node.removeAttribute("data-hax-ray");
       listenerMethod = "removeEventListener";
     }
@@ -2279,7 +2498,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     node[listenerMethod]("dragenter", this.dragEnter.bind(this));
     node[listenerMethod]("dragleave", this.dragLeave.bind(this));
     node[listenerMethod]("dragover", (e) => {
-      this.__mouseMoving = true;
+      this.__dragMoving = true;
       e.preventDefault();
     });
     // additional things for text based elements
@@ -2294,10 +2513,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         for (var j = 0, len2 = links.length; j < len2; j++) {
           if (status) {
             links[j].setAttribute("contenteditable", status);
-            links[j].setAttribute("data-editable", status);
           } else {
             links[j].removeAttribute("contenteditable");
-            links[j].removeAttribute("data-editable");
           }
           links[j][listenerMethod]("click", (e) => {
             e.preventDefault();
@@ -2313,45 +2530,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * do not bleed over into state changes
    */
   undoManagerStackLogic(mutations) {
-    if (!this.__mouseMoving) {
-      let children = this.querySelectorAll(
-        ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
-      );
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove(
-            "hax-mover",
-            "hax-hovered",
-            "hax-moving",
-            "grid-plate-active-item"
-          );
-          // special support for grid plates as they manage internal drag/drop
-          if (children[i].tagName === "GRID-PLATE") {
-            //children[i].dropEvent(e);
-            for (var j in children[i].children) {
-              if (
-                typeof children[i].children[j].classList !== typeof undefined
-              ) {
-                children[i].children[j].classList.remove(
-                  "hax-mover",
-                  "hax-hovered",
-                  "hax-moving",
-                  "grid-plate-active-item"
-                );
-              }
-            }
-            for (var j = 1; j <= children[i].columns; j++) {
-              if (
-                children[i].shadowRoot.querySelector("#col" + j) !== undefined
-              ) {
-                children[i].shadowRoot
-                  .querySelector("#col" + j)
-                  .classList.remove("hax-mover");
-              }
-            }
-          }
-        }
-      }
+    if (!this.__dragMoving) {
+      this.querySelectorAll(".hax-hovered").forEach((el) => {
+        el.classList.remove("hax-hovered");
+      });
       super.undoManagerStackLogic(mutations);
     }
   }
@@ -2359,74 +2541,48 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Drop an item onto another
    */
   dropEvent(e) {
-    if (!this.openDrawer && this.editMode) {
-      this.__mouseMoving = false;
+    if (this.editMode) {
+      this.__dragMoving = false;
       // make sure that IF we had mutations they don't fire till AFTER
       // this prevents issues where the mutation record was combined
       // and then blocked because of being moved
       this.undoManagerStackLogic({});
       // esnure we clear the gravity scrolling drag effect
       clearTimeout(gravityScrollTimer);
-      window.HaxStore.instance._lockContextPosition = false;
+      HAXStore._lockContextPosition = false;
       // trick the tray into forcing active to be Configure
-      window.HaxStore.instance.haxTray.activeTab = "item-1";
+      HAXStore.haxTray.activeTab = "item-1";
       var target = null;
-      if (e.path && e.path[0]) {
-        target = e.path[0];
+      if (
+        e.target.closest("grid-plate") &&
+        e.target.parentNode != e.target.closest("grid-plate")
+      ) {
+        target = e.target.closest("grid-plate");
+      } else if (e.target.closest("[contenteditable],img")) {
+        target = e.target.closest("[contenteditable],img");
       } else if (e.originalTarget) {
         target = e.originalTarget;
       } else {
         target = e.target;
       }
+      // account for slot drop on a place holder
+      if (e.path[0].classList.contains("column")) {
+        this.__slot = e.path[0].getAttribute("id").replace("col", "col-");
+      } else if (target.getAttribute("slot")) {
+        this.__slot = target.getAttribute("slot");
+      }
       // establish an activeNode /container based on drop poisition
-      this.activeNode = target;
-      window.HaxStore.write("activeNode", target, this);
-      if (target.parentNode && target.parentNode.tagName === "GRID-PLATE") {
-        this.activeContainerNode = target.parentNode;
-        window.HaxStore.write("activeContainerNode", target.parentNode, this);
-      } else {
-        this.activeContainerNode = target.parentNode;
-        window.HaxStore.write("activeContainerNode", target, this);
-      }
+      HAXStore.activeNode = target;
       // walk the children and remove the draggable state needed
-      let children = this.querySelectorAll(
-        ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
-      );
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove(
-            "hax-mover",
-            "hax-hovered",
-            "hax-moving",
-            "grid-plate-active-item"
-          );
-          // special support for grid plates as they manage internal drag/drop
-          if (children[i].tagName === "GRID-PLATE") {
-            children[i].dropEvent(e);
-            for (var j in children[i].children) {
-              if (
-                typeof children[i].children[j].classList !== typeof undefined
-              ) {
-                children[i].children[j].classList.remove(
-                  "hax-mover",
-                  "hax-hovered",
-                  "hax-moving",
-                  "grid-plate-active-item"
-                );
-              }
-            }
-            for (var j = 1; j <= children[i].columns; j++) {
-              if (
-                children[i].shadowRoot.querySelector("#col" + j) !== undefined
-              ) {
-                children[i].shadowRoot
-                  .querySelector("#col" + j)
-                  .classList.remove("hax-mover");
-              }
-            }
-          }
-        }
-      }
+      this.querySelectorAll(".hax-hovered").forEach((el) => {
+        el.classList.remove("hax-hovered");
+      });
+      // remove grid-plate drops
+      this.querySelectorAll(".active").forEach((el) => {
+        el.classList.remove("active");
+      });
+      // var for the local drop target
+      var local;
       // this helps ensure that what gets drag and dropped is a file
       // this prevents issues with selecting and dragging text (which triggers drag/drop)
       // as well as compatibility with things that are legit in a draggable state
@@ -2443,7 +2599,42 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           e.stopImmediatePropagation();
           // inject a placeholder P tag which we will then immediately replace
           let tmp = document.createElement("p");
-          this.activeNode.parentNode.insertBefore(tmp, this.activeNode);
+          if (
+            e.target.closest("grid-plate") &&
+            e.target.parentNode != e.target.closest("grid-plate")
+          ) {
+            local = e.target.closest("grid-plate");
+          } else if (e.target.closest("[contenteditable],img")) {
+            local = e.target.closest("[contenteditable],img");
+          }
+          if (
+            !["GRID-PLATE", "HAX-BODY"].includes(local.tagName) ||
+            e.path[0].tagName === "GRID-PLATE"
+          ) {
+            if (local.getAttribute("slot")) {
+              tmp.setAttribute("slot", local.getAttribute("slot"));
+            } else if (e.path[0].classList.contains("column")) {
+              tmp.setAttribute(
+                "slot",
+                e.path[0].getAttribute("id").replace("col", "col-")
+              );
+            } else {
+              tmp.removeAttribute("slot");
+            }
+            local.parentNode.insertBefore(tmp, local);
+          } else {
+            if (e.path[0].classList.contains("column")) {
+              tmp.setAttribute(
+                "slot",
+                e.path[0].getAttribute("id").replace("col", "col-")
+              );
+            }
+            // account for drop target of main body yet still having a slot attr
+            else if (local.tagName === "HAX-BODY" && tmp.getAttribute("slot")) {
+              tmp.removeAttribute("slot");
+            }
+            local.appendChild(tmp);
+          }
           // this placeholder will be immediately replaced
           e.placeHolderElement = tmp;
           // fire this specialized event up so things like HAX can intercept
@@ -2457,24 +2648,57 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           );
         } else {
           // set taget based on drag target
-          target = window.HaxStore.instance.__dragTarget;
-          var local = e.target;
+          target = HAXStore.__dragTarget;
+          local = e.target;
+          if (
+            e.target.closest("grid-plate") &&
+            e.target.parentNode != e.target.closest("grid-plate")
+          ) {
+            local = e.target.closest("grid-plate");
+          } else if (e.target.closest("[contenteditable],img")) {
+            local = e.target.closest("[contenteditable],img");
+          }
           // if we have a slot on what we dropped into then we need to mirror that item
           // and place ourselves below it in the DOM
           if (
-            (target &&
-              target != null &&
-              typeof target.removeAttribute === "function" &&
-              typeof local !== typeof undefined &&
-              target !== local &&
-              target !== local.parentNode &&
-              target.parentNode === this) ||
-            local.parentNode === this
+            local &&
+            target &&
+            this._validElementTest(target) &&
+            target !== local
           ) {
             // incase this came from a grid plate, drop the slot so it works
             try {
-              target.removeAttribute("slot");
-              local.parentNode.insertBefore(target, local);
+              if (
+                !["GRID-PLATE", "HAX-BODY"].includes(local.tagName) ||
+                e.path[0].tagName === "GRID-PLATE"
+              ) {
+                if (local.getAttribute("slot")) {
+                  target.setAttribute("slot", local.getAttribute("slot"));
+                } else if (e.path[0].classList.contains("column")) {
+                  target.setAttribute(
+                    "slot",
+                    e.path[0].getAttribute("id").replace("col", "col-")
+                  );
+                } else {
+                  target.removeAttribute("slot");
+                }
+                local.parentNode.insertBefore(target, local);
+              } else {
+                if (e.path[0].classList.contains("column")) {
+                  target.setAttribute(
+                    "slot",
+                    e.path[0].getAttribute("id").replace("col", "col-")
+                  );
+                }
+                // account for drop target of main body yet still having a slot attr
+                else if (
+                  local.tagName === "HAX-BODY" &&
+                  target.getAttribute("slot")
+                ) {
+                  target.removeAttribute("slot");
+                }
+                local.appendChild(target);
+              }
             } catch (e) {
               console.warn(e);
             }
@@ -2483,23 +2707,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             e.stopPropagation();
           }
           // position arrows / set focus in case the DOM got updated above
-          if (target && typeof target.focus === "function") {
-            this.activeNode = target;
-            if (
-              this.activeNode &&
-              this.activeNode.parentNode &&
-              this.activeNode.parentNode.tagName === "GRID-PLATE"
-            ) {
-              this.activeContainerNode = this.activeNode.parentNode;
-            } else {
-              this.activeContainerNode = this.activeNode;
-            }
-            window.HaxStore.write("activeNode", this.activeNode, this);
-            window.HaxStore.write(
-              "activeContainerNode",
-              this.activeContainerNode,
-              this
-            );
+          if (
+            target &&
+            this._validElementTest(target) &&
+            typeof target.focus === "function"
+          ) {
+            HAXStore.activeNode = target;
             // fire event saying that we dropped an item and gained
             // focus which should prioritize certain actions over a
             // normal focus shift
@@ -2511,10 +2724,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 detail: this.activeNode,
               })
             );
-            setTimeout(() => {
-              this.scrollHere(this.activeNode);
-              this.positionContextMenus();
-            }, 0);
+            this.scrollHere(this.activeNode);
+            this.positionContextMenus();
           }
         }
       } catch (e) {
@@ -2522,15 +2733,15 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
     }
     // reset this after the drop happens
-    window.HaxStore.instance.__dragTarget = null;
+    HAXStore.__dragTarget = null;
     this.__manageFakeEndCap(false);
   }
   /**
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
-    if (!this.openDrawer && this.editMode && e.target) {
-      this.__mouseMoving = true;
+    if (this.editMode && e.target) {
+      this.__dragMoving = true;
       e.preventDefault();
       if (e.target && e.target.classList) {
         e.target.classList.add("hax-hovered");
@@ -2700,52 +2911,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Leaving an element while dragging.
    */
   dragLeave(e) {
-    if (!this.openDrawer && this.editMode && e.target && e.target.classList) {
-      this.__mouseMoving = true;
+    if (this.editMode && e.target && e.target.classList) {
+      this.__dragMoving = true;
       e.target.classList.remove("hax-hovered");
-    }
-  }
-  /**
-   * Container has changed
-   */
-  _activeContainerNodeChanged(newValue, oldValue) {
-    if (
-      this.editMode &&
-      typeof newValue !== typeof undefined &&
-      newValue != null &&
-      newValue.tagName != null
-    ) {
-      if (
-        window.HaxStore.instance.isTextElement(newValue) ||
-        window.HaxStore.instance.isGridPlateElement(newValue)
-      ) {
-        newValue.setAttribute("contenteditable", true);
-        this.setAttribute("contenteditable", true);
-      } else {
-        newValue.removeAttribute("contenteditable");
-        this.removeAttribute("contenteditable");
-      }
-      // @notice this is a bit of a state hack between grid plate and hax
-      // this forces the active item to be dropped so that we can
-      // correctly regain focus with the keyboard
-      if (oldValue && oldValue.tagName == "GRID-PLATE") {
-        oldValue.activeItem = null;
-      }
-      let tag = newValue.tagName.toLowerCase();
-      // special case for the grid plate since it brings in nodes
-      // nested in it and needs to be put into an editMode
-      if (tag === "grid-plate") {
-        newValue.editMode = this.editMode;
-        this._applyContentEditable(this.editMode, newValue);
-      }
     }
   }
   /**
    * React to a new node being set to active.
    */
-  _activeNodeChanged(newValue, oldValue) {
+  async _activeNodeChanged(newValue, oldValue) {
     // remove anything currently with the active class
-    this.querySelectorAll(".hax-active").forEach((el) => {
+    await this.querySelectorAll(".hax-active").forEach((el) => {
       el.classList.remove("hax-active");
     });
     if (
@@ -2759,12 +2935,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // this is nessecary because the context menu gets appended into
       // the document
       // only hide if we change containers
-      setTimeout(() => {
-        newValue.classList.add("hax-active");
-      }, 0);
+      newValue.classList.add("hax-active");
       if (
-        window.HaxStore.instance.isTextElement(newValue) ||
-        window.HaxStore.instance.isGridPlateElement(newValue)
+        HAXStore.isTextElement(newValue) ||
+        newValue.tagName === "HR" ||
+        HAXStore.isGridPlateElement(newValue)
       ) {
         newValue.setAttribute("contenteditable", true);
         this.setAttribute("contenteditable", true);
@@ -2773,8 +2948,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         this.removeAttribute("contenteditable");
       }
       // why you no position yo?
-      this.positionContextMenus();
-      this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue = tag;
+      this._keepContextVisible();
+      this.contextMenus.text.realSelectedValue = tag;
     }
     // just hide menus if we don't have an active item
     else if (newValue === null) {
@@ -2815,36 +2990,31 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
     }
     menu.setAttribute("on-screen", "on-screen");
-    menu.classList.add("hax-context-visible");
-    // text we want to operate this way
-    if (this.__activeHover) {
-      menu.classList.add("hax-active-hover");
-      menu.style.marginLeft = "";
-      this.__typeLock = false;
-    }
+    menu.classList.add("hax-context-visible", "hax-context-menu-active");
   }
   /**
    * Simple hide / reset of whatever menu it's handed.
    */
   _hideContextMenu(menu) {
     menu.removeAttribute("on-screen");
+    menu.visible = false;
     menu.classList.remove(
       "hax-context-visible",
-      "hax-active-hover",
-      "hax-context-pin-top"
+      "hax-context-pin-top",
+      "hax-context-menu-active"
     );
   }
   /**
    * Find the next thing to tab forward to.
    */
   _tabKeyPressed() {
-    let focus = false;
-    let node = this.activeContainerNode;
-    const activeNodeTagName = this.activeContainerNode.tagName;
     // try selection / tab block since range can cause issues
-    if (window.HaxStore.getRange().cloneRange) {
+    if (this.activeNode && HAXStore.getRange().cloneRange) {
       try {
-        let range = window.HaxStore.getRange().cloneRange();
+        let focus = false;
+        let node = this.activeNode.parentNode;
+        const activeNodeTagName = this.activeNode.parentNode.tagName;
+        let range = HAXStore.getRange().cloneRange();
         var tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
           tagTest = range.commonAncestorContainer.parentNode.tagName;
@@ -2854,8 +3024,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           ["UL", "OL", "LI"].includes(tagTest)
         ) {
           if (this.polyfillSafe) {
-            document.execCommand("indent");
             this.__tabTrap = true;
+            this.__indentTrap = true;
+            document.execCommand("indent");
           }
         } else {
           while (!focus) {
@@ -2879,12 +3050,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Move back through things when tab back pressed
    */
   _tabBackKeyPressed() {
-    let node = this.activeContainerNode;
-    const activeNodeTagName = this.activeContainerNode.tagName;
     // try selection / tab block since range can cause issues
-    if (window.HaxStore.getRange().cloneRange) {
+    if (this.activeNode && HAXStore.getRange().cloneRange) {
       try {
-        let range = window.HaxStore.getRange().cloneRange();
+        let node = this.activeNode.parentNode;
+        const activeNodeTagName = this.activeNode.parentNode.tagName;
+        let range = HAXStore.getRange().cloneRange();
         var tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
           tagTest = range.commonAncestorContainer.parentNode.tagName;
@@ -2894,8 +3065,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           ["UL", "OL", "LI"].includes(tagTest)
         ) {
           if (this.polyfillSafe) {
-            document.execCommand("outdent");
             this.__tabTrap = true;
+            this.__indentTrap = true;
+            document.execCommand("outdent");
           }
         } else {
           if (node != null) {

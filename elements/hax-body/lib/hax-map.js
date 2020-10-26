@@ -1,5 +1,9 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+
 /**
  * `hax-map`
  * @element hax-map
@@ -15,27 +19,6 @@ class HaxMap extends SimpleColors {
       css`
         :host {
           display: block;
-        }
-        iron-icon:not(:defined),
-        paper-button:not(:defined),
-        paper-dialog:not(:defined) {
-          display: none;
-        }
-        #dialog {
-          z-index: 100000;
-          margin-top: 56px;
-        }
-        #closedialog {
-          top: 6px;
-          right: 0;
-          position: absolute;
-          padding: 8px;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-          width: 40px;
-          height: 40px;
-          min-width: unset;
         }
         .title {
           position: relative;
@@ -57,32 +40,47 @@ class HaxMap extends SimpleColors {
           overflow-y: scroll;
           max-height: 50vh;
         }
-        #reportghissue {
-          color: #81a3a9;
-          font-size: 18px;
-          padding: 16px;
-          font-style: italic;
+        table {
+          font-size: 13px;
+        }
+        table caption {
+          font-weight: bold;
+        }
+        table tr th {
+          padding: 2px;
+        }
+        table td {
+          font-size: 21px;
+          font-weight: bold;
+          text-align: center;
         }
         ul {
           list-style: none;
           padding: 0;
           margin: 0;
         }
-        ul iron-icon {
-          padding: 0 4px;
+        ul li {
+          margin: 4px;
+          padding: 0;
+        }
+        ul iron-icon,
+        ul simple-icon {
+          padding: 0 8px;
         }
         a {
-          font-size: 30px;
-          line-height: 30px;
+          font-size: 24px;
+          line-height: 24px;
           text-decoration: none;
           color: black;
           padding: 4px;
+          display: block;
         }
         a:focus,
         a:hover,
         a:active {
           cursor: pointer;
           font-weight: bold;
+          outline: 2px solid black;
         }
       `,
     ];
@@ -91,62 +89,117 @@ class HaxMap extends SimpleColors {
     super();
     this.elementList = [];
     this.title = "Content map";
-    setTimeout(() => {
-      import("@polymer/iron-icon/iron-icon.js");
-      import("@polymer/paper-button/paper-button.js");
-      import("@polymer/paper-dialog/paper-dialog.js");
-    }, 0);
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      // notify when any of these change
-      if (propName === "opened") {
-        let list = window.HaxStore.htmlToHaxElements(
-          window.HaxStore.instance.activeHaxBody.haxToContent()
-        );
-        let elements = [];
-        for (var i = 0; i < list.length; i++) {
-          let def = window.HaxStore.instance.haxSchemaFromTag(list[i].tag);
+  updateHAXMap() {
+    let list = HAXStore.htmlToHaxElements(
+      HAXStore.activeHaxBody.haxToContent()
+    );
+    this.calcStats(list);
+    let elements = [];
+    for (var i = 0; i < list.length; i++) {
+      let def = HAXStore.haxSchemaFromTag(list[i].tag);
+      if (def.gizmo) {
+        elements.push({
+          icon: def.gizmo.icon,
+          name: def.gizmo.title,
+        });
+      } else {
+        if (list[i].tag && list[i].tag.includes("-")) {
           elements.push({
-            icon: def.gizmo.icon,
-            name: def.gizmo.title,
+            icon: "hax:templates",
+            name: "Widget",
+          });
+        } else {
+          elements.push({
+            icon: "hax:paragraph",
+            name: "HTML block",
           });
         }
-        this.elementList = [...elements];
       }
-    });
+    }
+    this.elementList = [...elements];
+  }
+  /**
+   * Calculate statistics from the array of hax elements
+   */
+  calcStats(elements) {
+    if (elements && HAXStore.activeHaxBody.innerText) {
+      let counts = {
+        c: HAXStore.activeHaxBody.innerText.length,
+        w: parseInt(HAXStore.activeHaxBody.innerText.split(/\s+/g).length - 1),
+        h: 0,
+        p: 0,
+        e: 0,
+      };
+      elements.forEach((el) => {
+        switch (el.tag) {
+          case "blockquote":
+          case "div":
+          case "span":
+          case "p":
+            counts.p++;
+            break;
+          case "h1":
+          case "h2":
+          case "h3":
+          case "h4":
+          case "h5":
+          case "h6":
+          case "relative-heading": // special support for our own heading tag
+            counts.h++;
+            break;
+          default:
+            counts.e++;
+            break;
+        }
+      });
+      for (var i in counts) {
+        this[`${i}Count`] = counts[i];
+      }
+    }
   }
   render() {
     return html`
-      <paper-dialog
-        id="dialog"
-        ?opened="${this.opened}"
-        @opened-changed="${this.openedChanged}"
-      >
-        <h3 class="title">
-          <iron-icon icon="maps:map"></iron-icon> ${this.title}
-        </h3>
-        <paper-button id="closedialog" @click="${this.closeEvent}">
-          <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
-        </paper-button>
-        <div class="container">
-          <ul>
-            ${this.elementList.map((element, index) => {
-              return html`
-                <li>
-                  <a @click="${this.scrollInMap}" data-index="${index}"
-                    ><iron-icon
-                      data-index="${index}"
-                      icon="${element.icon}"
-                    ></iron-icon
-                    >${element.name}</a
-                  >
-                </li>
-              `;
-            })}
-          </ul>
-        </div>
-      </paper-dialog>
+      <h3 class="title">
+        <simple-icon icon="hax:map"></simple-icon> ${this.title}
+      </h3>
+      <div class="container">
+        <table>
+          <caption>
+            Content statistics
+          </caption>
+          <tr>
+            <th>Words</th>
+            <th>Headings</th>
+            <th>Paragraphs</th>
+            <th>Widgets</th>
+            <th>Characters</th>
+          </tr>
+          <tr>
+            <td>${this.wCount}</td>
+            <td>${this.hCount}</td>
+            <td>${this.pCount}</td>
+            <td>${this.eCount}</td>
+            <td>${this.cCount}</td>
+          </tr>
+        </table>
+        <h4>List view</h4>
+        <ul>
+          ${this.elementList.map((element, index) => {
+            return html`
+              <li>
+                <a @click="${this.scrollInMap}" data-index="${index}"
+                  ><iron-icon
+                    data-index="${index}"
+                    icon="${element.icon}"
+                  ></iron-icon
+                  >${element.name}</a
+                >
+              </li>
+            `;
+          })}
+        </ul>
+      </div>
     `;
   }
   scrollInMap(e) {
@@ -160,28 +213,22 @@ class HaxMap extends SimpleColors {
     }
     if (target.getAttribute("data-index")) {
       let activeChild =
-        window.HaxStore.instance.activeHaxBody.children[
+        HAXStore.activeHaxBody.children[
           parseInt(target.getAttribute("data-index"))
         ];
-      activeChild.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "center",
-      });
       activeChild.classList.add("blinkfocus");
+      if (typeof activeChild.scrollIntoViewIfNeeded === "function") {
+        activeChild.scrollIntoViewIfNeeded(true);
+      } else {
+        activeChild.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+        });
+      }
       setTimeout(() => {
         activeChild.classList.remove("blinkfocus");
-      }, 800);
+      }, 500);
     }
-  }
-  openedChanged(e) {
-    // force close event to align data model if clicking away
-    if (!e.detail.value && window.HaxStore.instance.openDrawer === this) {
-      window.HaxStore.write("openDrawer", false, this);
-    }
-  }
-  closeEvent(e) {
-    this.opened = false;
   }
   static get tag() {
     return "hax-map";
@@ -200,35 +247,22 @@ class HaxMap extends SimpleColors {
       elementList: {
         type: Array,
       },
+      cCount: {
+        type: String,
+      },
+      wCount: {
+        type: String,
+      },
+      hCount: {
+        type: String,
+      },
+      pCount: {
+        type: String,
+      },
+      eCount: {
+        type: String,
+      },
     };
-  }
-
-  firstUpdated(changedProperties) {
-    // fire an event that this is a core piece of the system
-    this.dispatchEvent(
-      new CustomEvent("hax-register-core-piece", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          piece: "haxMap",
-          object: this,
-        },
-      })
-    );
-  }
-
-  /**
-   * open the dialog
-   */
-  open() {
-    this.opened = true;
-  }
-  /**
-   * close the dialog
-   */
-  close() {
-    this.opened = false;
   }
 }
 window.customElements.define(HaxMap.tag, HaxMap);

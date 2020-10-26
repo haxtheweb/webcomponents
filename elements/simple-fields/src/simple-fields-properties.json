@@ -25,5 +25,9 @@
   "__activeTabs": {
     "type": "Object",
     "attribute": "active-path"
+  },
+  "disableResponsive": {
+    "type": "Boolean",
+    "attribute": "disable-responsive"
   }
 }

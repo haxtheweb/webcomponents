@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import { HAXStore } from "./hax-store.js";
 class HaxTrayUpload extends winEventsElement(LitElement) {
   static get styles() {
     return [
@@ -49,7 +50,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       source: this.shadowRoot.querySelector("#url").value,
       title: this.shadowRoot.querySelector("#url").value,
     };
-    window.HaxStore.insertLogicFromValues(values, this);
+    HAXStore.insertLogicFromValues(values, this);
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -66,7 +67,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
   _placeHolderFileDrop(e) {
     // reference the active place holder element since place holders are
     // the only things possible for seeing these
-    window.HaxStore.instance.activePlaceHolder = e.detail.placeHolderElement;
+    HAXStore.activePlaceHolder = e.detail.placeHolderElement;
     // ! I can't believe this actually works. This takes the event
     // ! that was a drop event else where on the page and then repoints
     // ! it to simulate the drop event using the same event structure that
@@ -138,21 +139,21 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
         type: e.detail.file.type,
       };
       // we have no clue what this is.. let's try and guess..
-      var type = window.HaxStore.guessGizmoType(values);
+      var type = HAXStore.guessGizmoType(values);
       // find targets that support this type
-      let targets = window.HaxStore.getHaxAppStoreTargets(type);
+      let targets = HAXStore.getHaxAppStoreTargets(type);
       // make sure we have targets
       if (targets.length === 1) {
         this._haxAppPickerSelection({ detail: targets[0] });
       } else if (targets.length !== 0) {
-        window.HaxStore.instance.haxAppPicker.presentOptions(
+        HAXStore.haxAppPicker.presentOptions(
           targets,
           type,
           "Where would you like to upload this " + type + "?",
           "app"
         );
       } else {
-        window.HaxStore.toast(
+        HAXStore.toast(
           "Sorry, you don't have a storage location that can handle " +
             type +
             " uploads!",
@@ -184,20 +185,15 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     }
     // implementation specific tweaks to talk to things like HAXcms and other CMSs
     // that have per load token based authentication
-    if (
-      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint != null
-    ) {
-      requestEndPoint +=
-        "?" + window.HaxStore.instance.connectionRewrites.appendUploadEndPoint;
+    if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
+      requestEndPoint += "?" + HAXStore.connectionRewrites.appendUploadEndPoint;
     }
-    if (window.HaxStore.instance.connectionRewrites.appendJwt != null) {
+    if (HAXStore.connectionRewrites.appendJwt != null) {
       requestEndPoint +=
         "&" +
-        window.HaxStore.instance.connectionRewrites.appendJwt +
+        HAXStore.connectionRewrites.appendJwt +
         "=" +
-        localStorage.getItem(
-          window.HaxStore.instance.connectionRewrites.appendJwt
-        );
+        localStorage.getItem(HAXStore.connectionRewrites.appendJwt);
     }
     this.shadowRoot.querySelector("#fileupload").headers = connection.headers;
     this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;

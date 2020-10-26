@@ -315,6 +315,12 @@ class SimpleFieldsLite extends LitElement {
   }
   constructor() {
     super();
+    if (window.WCGlobalBasePath) {
+      this.basePath = window.WCGlobalBasePath;
+    } else {
+      this.basePath =
+        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
+    }
     this.disableAutofocus = false;
     this.language = "en";
     this.resources = {};
@@ -323,11 +329,6 @@ class SimpleFieldsLite extends LitElement {
     this.__formElementsArray = [];
     this.schema = {};
     this.value = {};
-    setTimeout(() => {
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/paper-icon-button/paper-icon-button.js");
-    }, 0);
   }
   disconnectedCallback() {
     this._clearForm();
@@ -548,6 +549,10 @@ class SimpleFieldsLite extends LitElement {
    * @param {string} [prefix=""] prefix for nest fields
    * @param {*} config schemaConversion configuration for property
    */
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   _addToForm(schema = this.schema, target = this, prefix = "", config) {
     let schemaProps = schema.properties,
       required = schema.required,
@@ -566,6 +571,12 @@ class SimpleFieldsLite extends LitElement {
               ? element
               : document.createElement("simple-fields-container"),
           value = this._getValue(`${prefix}${key}`);
+        // support for dynamic import of location of this field
+        if (!window.customElements.get(data.element) && data.import) {
+          import(`${this.basePath}${data.import}`);
+        } else if (!window.customElements.get(data.element)) {
+          console.log(data.element);
+        }
         let label =
             schemaProp.label ||
             schemaProp.title ||
@@ -812,7 +823,7 @@ class SimpleFieldsLite extends LitElement {
    * clears form
    */
   _clearForm() {
-    this.querySelectorAll("*").forEach((child) => child.remove());
+    this.innerHTML = "";
     this.__formElementsArray = [];
   }
 
@@ -964,8 +975,16 @@ class SimpleFieldsLite extends LitElement {
    */
   _schemaChanged(newValue, oldValue) {
     if (newValue && newValue !== oldValue) {
-      this.rebuildForm();
-
+      if ("requestIdleCallback" in window) {
+        // Use requestIdleCallback to schedule work.
+        requestIdleCallback(this.rebuildForm.bind(this), {
+          timeout: 10,
+        });
+      } else {
+        setTimeout(() => {
+          this.rebuildForm();
+        }, 10);
+      }
       this.dispatchEvent(
         new CustomEvent("schema-changed", {
           bubbles: true,

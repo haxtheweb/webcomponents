@@ -20,18 +20,6 @@ class ResponsiveUtility extends LitElement {
   static get tag() {
     return "responsive-utility";
   }
-
-  static get properties() {
-    return {
-      ...super.properties,
-      /**
-       * Array of details provided by responsive elements
-       */
-      details: {
-        type: Array,
-      },
-    };
-  }
   connectedCallback() {
     super.connectedCallback();
     /* handle element registration */

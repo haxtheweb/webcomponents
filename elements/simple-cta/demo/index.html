@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleCta: simple-cta Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../simple-cta.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      simple-cta.super-important {
+        font-size: 50px;
+        margin: 50px;
+        display: block;
+        width: 50%;
+        --simple-cta-bg-color-is-user-selected: var(--simple-colors-default-theme-accent-11,orange);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-cta demo</h3>
+      <demo-snippet>
+        <template>
+          <simple-cta link="https://haxtheweb.org/" accent-color="purple" dark>Get started</simple-cta>
+          <simple-cta link="https://haxtheweb.org/" class="super-important">Start now!</simple-cta>
+          <div><simple-cta link="https://google.com/" accent-color="purple" title="Get started"></simple-cta></div>
+          <div><simple-cta link="demo/index.html" title="Something SUPER IMPORTANT" style="display:block;"></simple-cta></div>
+          <div>
+            <simple-cta style="display:block;">
+              <a href="demo/index.html">Something SUPER IMPORTANT</a>
+            </simple-cta>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

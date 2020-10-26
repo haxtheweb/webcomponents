@@ -1,9 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-item/paper-item.js";
-import "@polymer/paper-listbox/paper-listbox.js";
-import "@polymer/paper-menu-button/paper-menu-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
+import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
+
 class HaxToolbarMenu extends LitElement {
   static get styles() {
     return [
@@ -12,66 +11,50 @@ class HaxToolbarMenu extends LitElement {
           display: block;
           box-sizing: border-box;
         }
-        iron-icon {
+        simple-icon {
           width: 10px;
         }
-        paper-menu-button {
-          margin: 0;
-          padding: 0;
-          text-transform: none;
-          display: flex;
-          min-width: unset;
-        }
-        paper-menu-button .label {
-          font-size: 12px;
-          margin-top: 4px;
-        }
-
-        paper-menu-button .button-inner {
-          padding-top: 8px;
-          text-align: center;
-        }
-
         .flip-icon {
           transform: rotateY(180deg);
-        }
-
-        simple-tooltip {
-          pointer-events: none;
-        }
-        paper-listbox {
-          padding: 0;
         }
       `,
     ];
   }
   render() {
     return html`
-      <paper-menu-button>
+      <simple-popover-selection
+        @simple-popover-selection-changed="${this.selectedChanged}"
+        auto
+        orientation="tb"
+      >
+        <style slot="style">
+          simple-popover-manager hax-context-item {
+            overflow: hidden;
+            display: flex;
+          }
+          simple-popover-manager {
+            --simple-popover-padding: 0;
+          }
+        </style>
         <hax-toolbar-item
-          id="button"
           ?mini="${this.mini}"
           ?action="${this.action}"
-          slot="dropdown-trigger"
+          slot="button"
           icon="${this.icon}"
           .hidden="${!this.icon}"
           .class="${this.iconClass}"
           tooltip="${this.tooltip}"
         >
-          <iron-icon icon="icons:expand-more"></iron-icon>
+          <simple-icon dark icon="hax:expand-more"></simple-icon>
         </hax-toolbar-item>
-        <paper-listbox
-          id="listbox"
-          slot="dropdown-content"
-          .selected="${this.selected}"
-          @selected-changed="${this.selectedChanged}"
-        >
+        <div slot="options">
           <slot></slot>
-        </paper-listbox>
-      </paper-menu-button>
+        </div>
+      </simple-popover-selection>
     `;
   }
   selectedChanged(e) {
+    this.shadowRoot.querySelector("simple-popover-selection").opened = false;
     this.selected = e.detail.value;
   }
   static get tag() {
@@ -125,7 +108,6 @@ class HaxToolbarMenu extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "selected") {
-        this.shadowRoot.querySelector("#button").focus();
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("selected-changed", {
@@ -139,14 +121,6 @@ class HaxToolbarMenu extends LitElement {
    * Ensure menu is visible / default'ed.
    */
   _menubuttonTap(e) {
-    this.shadowRoot.querySelector("#listbox").style.display = "inherit";
-    this.selected = "";
-  }
-  /**
-   * Ensure menu is hidden.
-   */
-  hideMenu() {
-    this.shadowRoot.querySelector("#listbox").style.display = "none";
     this.selected = "";
   }
 }

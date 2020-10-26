@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 /**
  * `cms-hax`
  * @element cms-hax
@@ -226,23 +227,20 @@ class CmsHax extends LitElement {
     hidePreferencesButton,
     elementAlign
   ) {
-    if (window.HaxStore.ready) {
+    if (HAXStore.ready) {
       // double check because this can cause issues
       if (allowedTags) {
-        const defaultTags = window.HaxStore.instance.validTagList;
-        window.HaxStore.instance.validTagList = [
-          ...defaultTags,
-          ...allowedTags,
-        ];
+        const defaultTags = HAXStore.validTagList;
+        HAXStore.validTagList = [...defaultTags, ...allowedTags];
       }
       setTimeout(() => {
-        window.HaxStore.instance.haxTray.hidePanelOps = hidePanelOps;
-        window.HaxStore.instance.haxTray.offsetMargin = offsetMargin;
-        window.HaxStore.instance.haxTray.hidePreferencesButton = hidePreferencesButton;
-        window.HaxStore.instance.haxTray.elementAlign = elementAlign;
+        HAXStore.haxTray.hidePanelOps = hidePanelOps;
+        HAXStore.haxTray.offsetMargin = offsetMargin;
+        HAXStore.haxTray.hidePreferencesButton = hidePreferencesButton;
+        HAXStore.haxTray.elementAlign = elementAlign;
       }, 0);
       if (openDefault) {
-        window.HaxStore.write("editMode", openDefault, this);
+        HAXStore.editMode = openDefault;
       }
     }
   }
@@ -356,13 +354,7 @@ class CmsHax extends LitElement {
   }
   __applyMO() {
     // notice ANY change to body and bubble up, only when we are attached though
-    if (
-      !this._observer &&
-      this.syncBody &&
-      window.HaxStore &&
-      window.HaxStore.instance &&
-      window.HaxStore.instance.activeHaxBody
-    ) {
+    if (!this._observer && this.syncBody && HAXStore.activeHaxBody) {
       this._observer = new MutationObserver((mutations) => {
         if (!this.__lock) {
           this.__lock = true;
@@ -371,7 +363,7 @@ class CmsHax extends LitElement {
               bubbles: true,
               cancelable: true,
               composed: true,
-              detail: window.HaxStore.instance.activeHaxBody.haxToContent(),
+              detail: HAXStore.activeHaxBody.haxToContent(),
             })
           );
           setTimeout(() => {
@@ -379,7 +371,7 @@ class CmsHax extends LitElement {
           }, 100);
         }
       });
-      this._observer.observe(window.HaxStore.instance.activeHaxBody, {
+      this._observer.observe(HAXStore.activeHaxBody, {
         childList: true,
         subtree: true,
       });
@@ -409,7 +401,7 @@ class CmsHax extends LitElement {
     if (this.endPoint) {
       this.shadowRoot.querySelector(
         "#pageupdateajax"
-      ).body = window.HaxStore.instance.activeHaxBody.haxToContent();
+      ).body = HAXStore.activeHaxBody.haxToContent();
       // send the request
       this.shadowRoot.querySelector("#pageupdateajax").generateRequest();
     }

@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/cms-hax/cms-hax.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 /**
  * `wysiwyg-hax`
  * `Integration of wysiwyg edit form for a page with HAX.`
@@ -254,7 +255,7 @@ class WysiwygHax extends LitElement {
   }
   __saveClicked(e) {
     // will attempt to set this right before save goes out the door
-    this.bodyValue = window.HaxStore.instance.activeHaxBody.haxToContent();
+    this.bodyValue = HAXStore.activeHaxBody.haxToContent();
   }
   /**
    * Store updated, sync.
@@ -276,7 +277,7 @@ class WysiwygHax extends LitElement {
    * Set the bubbled up event to the body value that just got changed
    */
   _bodyContentUpdated(e) {
-    this.bodyValue = window.HaxStore.instance.activeHaxBody.haxToContent();
+    this.bodyValue = HAXStore.activeHaxBody.haxToContent();
     setTimeout(() => {
       if (this.saveButtonSelector) {
         this.saveButtonSelector.click();

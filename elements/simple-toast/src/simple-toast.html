@@ -1,4 +1,4 @@
 <paper-toast id="toast" text="${this.text}" duration="${this.duration}" ?opened="${this.opened}" @opened-changed="${this.openedChanged}" .class="${this.classStyle}">
   <slot></slot>
-  <paper-button .hidden="${!this.closeButton}" @click="${this.hide}">${this.closeText}</paper-button>
+  <button .hidden="${!this.closeButton}" @click="${this.hide}">${this.closeText}</button>
 </paper-toast>

@@ -13,7 +13,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-render-query.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 /**
  * `haxcms-dev-theme`
  * `This is a theme used to make new themes (wwaaaaaaa?)
@@ -340,7 +340,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
   connectedCallback() {
     super.connectedCallback();
     // account for switching to this theme
-    if (window.HaxStore && window.HaxStore.ready) {
+    if (HAXStore.ready) {
       this._setDefinitions();
     }
     window.addEventListener(

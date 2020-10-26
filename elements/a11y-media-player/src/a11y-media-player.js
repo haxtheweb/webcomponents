@@ -159,18 +159,22 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         this.__preloadedDuration = html5.duration;
       });
     });
-    import("@lrnwebcomponents/simple-search/simple-search.js");
-    import("@polymer/paper-slider/paper-slider.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/paper-toast/paper-toast.js");
-    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
-    import("@polymer/paper-toggle-button/paper-toggle-button.js");
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
-    import(
-      "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js"
-    );
+    setTimeout(() => {
+      import("@lrnwebcomponents/simple-search/simple-search.js");
+      import("@polymer/paper-slider/paper-slider.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icons/av-icons.js");
+      import("@polymer/paper-toast/paper-toast.js");
+      import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
+      import("@polymer/paper-toggle-button/paper-toggle-button.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import(
+        "@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js"
+      );
+      import(
+        "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js"
+      );
+    }, 0);
   }
 
   /** -------------------------- CALACULATED PROPERTIES ----------------- */

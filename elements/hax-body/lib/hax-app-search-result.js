@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { HAXStore } from "./hax-store.js";
 /**
  * `hax-source`
  * @element hax-source
@@ -7,52 +8,57 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 class HaxAppSearchResult extends LitElement {
   constructor() {
     super();
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-styles/paper-styles.js");
   }
   static get styles() {
     return [
       css`
         :host {
-          display: inline-flex;
-          width: 49%;
-          height: 220px;
-          background-color: var(--hax-color-bg-accent);
+          display: inline-block;
+          width: 47%;
+          margin: 1%;
+          background-color: var(
+            --hax-color-bg-accent,
+            var(--simple-colors-default-theme-cyan-7, #009dc7)
+          );
           color: var(--hax-color-text);
         }
-        paper-button.button {
+        button {
           margin: 0;
-          padding: 7px;
+          padding: 0;
           display: block;
           border-radius: 0;
           border: none;
           width: 100%;
-          outline: 2px solid black;
-          background-image: none;
+          outline: 1px solid black;
           text-align: unset;
+          opacity: 0.8;
+          transition: 0.2s opacity ease-in-out, 0.2s outline-color ease-in-out;
         }
-        paper-button:hover,
-        paper-button:focus,
-        paper-button:active {
+        button:hover,
+        button:focus,
+        button:active {
           background-color: #eeeeee;
-          outline: 2px solid var(--hax-color-bg-accent);
+          outline-color: var(--simple-colors-default-theme-purple-8, #8a009b);
+          outline-width: 4px;
+          outline-style: solid;
+          opacity: 1;
         }
         .detail-wrapper {
-          padding: 0 8px;
+          padding: 0px;
           overflow: hidden;
           font-family: "Noto Serif", serif;
         }
         .title {
-          font-size: 14px;
+          font-size: 12px;
           overflow: hidden;
           font-weight: bold;
           text-transform: none;
-          padding-bottom: 4px;
+          padding: 0;
+          height: 30px;
           text-align: center;
         }
         .image {
-          height: 152px;
+          height: 150px;
           width: 100%;
           background-color: var(--simple-colors-default-theme-cyan-7, #009dc7);
         }
@@ -70,26 +76,18 @@ class HaxAppSearchResult extends LitElement {
 
   render() {
     return html`
-      <paper-button
+      <button
         draggable="true"
         @click="${this._itemSelected}"
         @dragstart="${this._dragStart}"
         @dragend="${this._dragEnd}"
-        class="button"
         title="${this.details}"
       >
-        <iron-image
-          alt=""
-          class="image"
-          src="${this.image}"
-          preload=""
-          fade=""
-          sizing="cover"
-        ></iron-image>
+        <img loading="lazy" class="image" src="${this.image}" />
         <div class="detail-wrapper">
           <div class="title">${this.title.substr(0, 40)}</div>
         </div>
-      </paper-button>
+      </button>
     `;
   }
   static get tag() {
@@ -120,7 +118,7 @@ class HaxAppSearchResult extends LitElement {
   _dragStart(e) {
     // create the tag
     let target = this.cloneNode(true);
-    window.HaxStore.instance.__dragTarget = target;
+    HAXStore.__dragTarget = target;
     if (e.dataTransfer) {
       this.crt = target;
       this.crt.style.position = "absolute";
@@ -128,25 +126,13 @@ class HaxAppSearchResult extends LitElement {
       this.crt.style.right = "-1000px";
       this.crt.style.transform = "scale(0.25)";
       this.crt.style.opacity = ".8";
+      e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.dropEffect = "move";
       document.body.appendChild(this.crt);
       e.dataTransfer.setDragImage(this.crt, 0, 0);
     }
     e.stopPropagation();
     e.stopImmediatePropagation();
-    // show where things can be dropped only during the drag
-    if (
-      !window.HaxStore.instance.activeHaxBody.openDrawer &&
-      window.HaxStore.instance.editMode
-    ) {
-      let children = window.HaxStore.instance.activeHaxBody.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (children[i].classList && target !== children[i]) {
-          children[i].classList.add("hax-mover");
-        }
-      }
-    }
   }
   /**
    * When we end dragging ensure we remove the mover class.
@@ -154,23 +140,7 @@ class HaxAppSearchResult extends LitElement {
   _dragEnd(e) {
     this.crt.remove();
     setTimeout(() => {
-      let children = window.HaxStore.instance.activeHaxBody.querySelectorAll(
-        ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
-      );
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove(
-            "hax-mover",
-            "hax-hovered",
-            "hax-moving",
-            "grid-plate-active-item"
-          );
-        }
-      }
-      setTimeout(() => {
-        this._itemSelected(e);
-      }, 100);
+      this._itemSelected(e);
     }, 0);
   }
 
@@ -188,13 +158,14 @@ class HaxAppSearchResult extends LitElement {
         gizmoType == "undefined") &&
       map.source
     ) {
-      gizmoType = window.HaxStore.guessGizmoType(map);
+      gizmoType = HAXStore.guessGizmoType(map);
     }
-    let haxElements = window.HaxStore.guessGizmo(gizmoType, map, false, true);
+    let haxElements = HAXStore.guessGizmo(gizmoType, map, false, true);
     // see if we got anything
     if (haxElements.length > 0) {
       if (haxElements.length === 1) {
         if (typeof haxElements[0].tag !== typeof undefined) {
+          haxElements[0].nextToActive = true;
           this.dispatchEvent(
             new CustomEvent("hax-insert-content", {
               bubbles: true,
@@ -206,7 +177,7 @@ class HaxAppSearchResult extends LitElement {
         }
       } else {
         // hand off to hax-app-picker to deal with the rest of this
-        window.HaxStore.instance.haxAppPicker.presentOptions(
+        HAXStore.haxAppPicker.presentOptions(
           haxElements,
           gizmoType,
           "How would you like to display this " + gizmoType + "?",
@@ -214,7 +185,7 @@ class HaxAppSearchResult extends LitElement {
         );
       }
     } else {
-      window.HaxStore.toast("Sorry, HAX can't handle that link yet.");
+      HAXStore.toast("Sorry, HAX can't handle that link yet.");
     }
   }
 }

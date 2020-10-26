@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 /**
  * `hax-context-item-textop`
@@ -45,11 +44,6 @@ class HaxContextItemTextop extends LitElement {
   }
   render() {
     return html`
-      <iron-a11y-keys
-        id="a11y"
-        keys="enter"
-        @keys-pressed="${this._fireEvent}"
-      ></iron-a11y-keys>
       <hax-toolbar-item
         id="button"
         ?disabled="${this.disabled}"
@@ -180,9 +174,13 @@ class HaxContextItemTextop extends LitElement {
    */
   firstUpdated(changedProperties) {
     // bind keyboard to button press
-    this.shadowRoot.querySelector(
-      "#a11y"
-    ).target = this.shadowRoot.querySelector("#button");
+    this.shadowRoot
+      .querySelector("#button")
+      .addEventListener("keydown", (e) => {
+        if (e.key == "Enter") {
+          this._fireEvent();
+        }
+      });
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.

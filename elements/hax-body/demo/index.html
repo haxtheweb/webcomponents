@@ -6,19 +6,18 @@
     <title>HAX: h-a-x Demo</title>
   </head>
   <body>
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "development"
+        }
+      };
+    </script>
     <div style="padding:100px 300px 100px 100px;">
-    <h-a-x app-store='{"url": "appstore.json"}' offset-margin="0px 0px 0px 48px" element-align="right">
-      <p>stuff</p>
-      <p><img src="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg" alt="dmd 100 course background art"/></p>
-      <p><img src="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg" alt="dmd 100 course background art"/></p>
-      <code-sample id="demo-2">
-        <template>
-          const something = param => {
-            // comment
-            let a = `${param}-something`;
-          }
-        </template>
-      </code-sample>
+    <h-a-x app-store='{"url": "appstore.json"}' element-align="right">
+      <p>stuff and things</p>
+      <p>stuff and things2</p>
+      <img src="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg" alt="dmd 100 course background art"/>
       <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover>
         <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
         <p>testxt</p>
@@ -65,7 +64,6 @@
         <p>testxt</p>
         <h3 id="specific">With id</h3>
         <a11y-gif-player 
-          style="width: 200px;"
           alt="It's Always Sunny in Philadelphia GIF Meme" 
           src="https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif"
           src-without-animation="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg"

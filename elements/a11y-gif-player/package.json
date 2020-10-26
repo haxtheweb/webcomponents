@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.7",
+  "version": "2.7.10",
   "description": "Play gifs in an accessible way by having the user click to play their animation",
   "repository": {
     "type": "git",
@@ -36,14 +36,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/schema-behaviors": "^2.7.7",
-    "@lrnwebcomponents/simple-tooltip": "^2.7.7",
+    "@lrnwebcomponents/schema-behaviors": "^2.7.10",
+    "@lrnwebcomponents/simple-tooltip": "^2.7.10",
     "@polymer/iron-image": "^3.0.0",
     "lit-element": "2.4.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.7.7",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.7",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.4",

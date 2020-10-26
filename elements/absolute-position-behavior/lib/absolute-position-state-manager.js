@@ -26,8 +26,6 @@ window.AbsolutePositionStateManager.requestAvailability = () => {
  * @element absolute-position-state-manager
  */
 class AbsolutePositionStateManager extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
   /**
    * Store tag name to make it easier to obtain directly.
    */
@@ -207,6 +205,9 @@ class AbsolutePositionStateManager extends LitElement {
    * @return {void}
    */
   positionElement(el) {
+    if (!el.position) {
+      el.position = "bottom";
+    }
     let target = this.findTarget(el),
       parent = el.offsetParent;
     if (!target || !parent) return;

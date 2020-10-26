@@ -22,6 +22,7 @@ class SimpleModalTemplate extends LitElement {
           --simple-modal-width: auto;
           --simple-modal-height: auto;
           --simple-modal-min-width: unset;
+          --simple-modal-z-index: 1000;
           --simple-modal-min-height: unset;
           --simple-modal-max-width: unset;
           --simple-modal-max-height: unset;
@@ -106,6 +107,7 @@ class SimpleModalTemplate extends LitElement {
       "--simple-modal-width",
       "--simple-modal-height",
       "--simple-modal-min-width",
+      "--simple-modal-z-index",
       "--simple-modal-min-height",
       "--simple-modal-max-width",
       "--simple-modal-max-height",
@@ -127,6 +129,10 @@ class SimpleModalTemplate extends LitElement {
       "--simple-modal-titlebar-icon-height",
     ].forEach((prop) => {
       styles[prop] = tplStyles.getPropertyValue(prop);
+      // support mosterously large values
+      if (prop == "--simple-modal-z-index") {
+        styles[prop] = Number(styles[prop]);
+      }
     });
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: bubbles,

@@ -4,9 +4,10 @@
  */
 import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { autorun, toJS } from "mobx";
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
+import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 
 /**
  * `haxcms-backend-beaker`
@@ -131,22 +132,18 @@ class HAXCMSBackendBeaker extends LitElement {
       reader.onload = (event) => {
         let fileLocation =
           "files/" +
-          window.HaxStore.instance.haxTray.shadowRoot.querySelector(
-            "#fileupload"
-          ).files[0].name;
+          HAXStore.haxTray.shadowRoot.querySelector("#fileupload").files[0]
+            .name;
         this.shadowRoot
           .querySelector("#beaker")
           .write(fileLocation, event.target.result);
-        window.HaxStore.instance.haxTray.shadowRoot.querySelector(
-          "#url"
-        ).value = fileLocation;
-        window.HaxStore.instance.haxTray.shadowRoot
+        HAXStore.haxTray.shadowRoot.querySelector("#url").value = fileLocation;
+        HAXStore.haxTray.shadowRoot
           .querySelector("hax-tray-upload")
           .newAssetConfigure();
       };
       reader.readAsArrayBuffer(
-        window.HaxStore.instance.haxTray.shadowRoot.querySelector("#fileupload")
-          .files[0]
+        HAXStore.haxTray.shadowRoot.querySelector("#fileupload").files[0]
       );
     }
   }
@@ -158,10 +155,7 @@ class HAXCMSBackendBeaker extends LitElement {
     // make sure this location exists
     await this.shadowRoot
       .querySelector("#beaker")
-      .write(
-        this.activeItem.location,
-        window.HaxStore.instance.activeHaxBody.haxToContent()
-      );
+      .write(this.activeItem.location, HAXStore.activeHaxBody.haxToContent());
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
       .show("Page updated!");

@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `twitter-embed`
  * `A simple way to embed tweets from twitter without their whole API, with LitElement
@@ -136,6 +136,15 @@ class TwitterEmbed extends LitElement {
         this.tweetId = this[propName].split("/").pop();
       }
     });
+  }
+  static get styles() {
+    return [
+      css`
+        :host([contenteditable]) iframe {
+          pointer-events: none;
+        }
+      `,
+    ];
   }
   /**
    * Popular convention / LitElement

@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import { HAXStore } from "./hax-store.js";
 /**
  * `hax-context-item`
  * @element hax-context-item
@@ -11,6 +13,8 @@ import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 class HaxContextItem extends LitElement {
   constructor() {
     super();
+    this.simple = false; // flag to use simple-icon for performance
+    this.danger = false;
     this.light = false;
     this.action = false;
     this.large = false;
@@ -46,13 +50,16 @@ class HaxContextItem extends LitElement {
   render() {
     return html`
       <hax-toolbar-item
+        ?simple="${this.simple}"
         ?disabled="${this.disabled}"
         ?light="${this.light}"
+        ?circle="${this.circle}"
+        ?danger="${this.danger}"
         ?action="${this.action}"
         ?mini="${this.mini}"
         ?large="${this.large}"
         id="button"
-        height="${this.height}"
+        .height="${this.height}"
         icon="${this.icon}"
         ?hidden="${!this.icon}"
         icon-class="${this.iconClass}"
@@ -63,8 +70,8 @@ class HaxContextItem extends LitElement {
         ?default="${this.default}"
         ?menu="${this.menu}"
       >
-        ${this.more
-          ? html` <iron-icon icon="icons:expand-more"></iron-icon> `
+        ${this.more && !this.disabled
+          ? html` <simple-icon icon="hax:expand-more"></simple-icon> `
           : ``}
         <slot></slot>
       </hax-toolbar-item>
@@ -80,6 +87,22 @@ class HaxContextItem extends LitElement {
        * Light theme for toolbar item.
        */
       light: {
+        type: Boolean,
+      },
+      /**
+       * use simple-icon for performance / transition off iron
+       */
+      simple: {
+        type: Boolean,
+        reflect: true,
+      },
+      circle: {
+        type: Boolean,
+      },
+      /**
+       * color shift for dangerous operation
+       */
+      danger: {
         type: Boolean,
       },
       /**
@@ -211,7 +234,7 @@ class HaxContextItem extends LitElement {
    */
   _storeSelection(e) {
     if (!this.disabled) {
-      window.HaxStore._tmpSelection = window.HaxStore.getSelection();
+      HAXStore._tmpSelection = HAXStore.getSelection();
     }
   }
   /**

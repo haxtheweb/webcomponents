@@ -1,0 +1,66 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Call to action",
+    "description": "A simple button with a link to take action.",
+    "icon": "image:crop-16-9",
+    "color": "orange",
+    "groups": ["Marketing", "Content"],
+    "handles": [
+      {
+        "type": "link",
+        "source": "link",
+        "title": "title"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "Enter title for stop-note.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "Enter a link to any resource",
+        "inputMethod": "haxupload",
+        "required": true
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker",
+        "icon": "editor:format-color-fill"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean",
+        "icon": "icons:invert-colors"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "simple-cta",
+      "properties": {
+        "title": "Click to learn more",
+        "link": "https://haxtheweb.org/"
+      },
+      "content": ""
+    }
+  ]
+}

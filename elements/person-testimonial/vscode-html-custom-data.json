@@ -3,12 +3,8 @@
   "tags": [
     {
       "name": "person-testimonial",
-      "description": "`person-testimonial`\n\nAttributes:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`person-testimonial`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
-        {
-          "name": "elevation",
-          "description": "`elevation` {`number`} - Visual height of the card.\n\nProperty: elevation\n\nDefault: 1"
-        },
         {
           "name": "described-by",
           "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
@@ -26,28 +22,24 @@
           "description": "`position` {`string`} - The title / position of the person in question.\n\nProperty: position"
         },
         {
+          "name": "elevation",
+          "description": "`elevation` {`number`} - Visual height of the card.\n\nProperty: elevation\n\nDefault: 1"
+        },
+        {
           "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     },
     {
       "name": "person-testimonial",
-      "description": "`person-testimonial`\n\nAttributes:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`person-testimonial`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
-        {
-          "name": "elevation",
-          "description": "`elevation` {`number`} - Visual height of the card.\n\nProperty: elevation\n\nDefault: 1"
-        },
         {
           "name": "described-by",
           "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
@@ -65,17 +57,17 @@
           "description": "`position` {`string`} - The title / position of the person in question.\n\nProperty: position"
         },
         {
+          "name": "elevation",
+          "description": "`elevation` {`number`} - Visual height of the card.\n\nProperty: elevation\n\nDefault: 1"
+        },
+        {
           "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     }
