@@ -113,7 +113,7 @@ class ElmslnStudioLink extends navigator(LitElement) {
   }
   linkClick(event) {
     event.preventDefault();
-    this.navigate(this.href);
+    this.navigate(`${window.ElmslnStudioPath || ""}${this.href}`);
   }
 }
 customElements.define("elmsln-studio-link", ElmslnStudioLink);

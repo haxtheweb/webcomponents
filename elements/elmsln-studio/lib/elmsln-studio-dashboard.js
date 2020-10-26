@@ -42,8 +42,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
           font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
         }
-        h2,
-        #secondary [slot="heading"] {
+        h2 {
           font-weight: bold;
           color: #989898;
         }
@@ -65,7 +64,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
         }
         .card.primary [slot="heading"],
-        .card.primary [slot="subheading"] {
+        .card [slot="subheading"] {
           text-align: center;
           display: block;
           margin: 0 auto;
@@ -82,10 +81,8 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           --paper-avatar-width: var(--nav-card-linklist-left-size, 36px);
           --nav-card-linklist-left-size: 36px;
         }
-        .card.secondary {
-          margin-top: 0;
-          --accent-card-heading-padding-top: 0;
-          --nav-card-linklist-margin-top: 0;
+        .card.secondary nav-card {
+          border: none !important;
         }
         #profile {
           --lrndesign-avatar-width: 100px;
@@ -101,7 +98,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           width: 100%;
           border-collapse: collapse;
           font-family: var(
-            --elmsln-studio-ssecondary-FontFamily,
+            --elmsln-studio-secondary-FontFamily,
             "Helvetica Neue",
             sans-serif
           );
@@ -117,6 +114,10 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
         }
         accent-card td {
           text-align: right;
+        }
+        accent-card th iron-icon {
+          width: 20px;
+          height: 20px;
         }
         accent-card.card th elmsln-studio-link {
           --elmsln-studio-link-TextDecoration: underline !important;
@@ -188,95 +189,85 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
               <tbody>
                 <tr>
                   <th scope="row">
-                    <elmsln-studio-link href="/assignments">Assignments Completed</elmsln-studio-link>
+                    <iron-icon icon="assignment-turned-in"></iron-icon>
+                    Assignments Completed
                   </th>
                   <td>
-                    ${
-                      !this.profile ||
-                      !this.profile.completed ||
-                      !this.profile.due
-                        ? "unknown"
-                        : `${this.profile.completed.length} / ${
-                            this.profile.completed.length +
-                            this.profile.due.length
-                          }`
-                    }
+                    ${!this.profile ||
+                    !this.profile.completed ||
+                    !this.profile.due
+                      ? "unknown"
+                      : `${this.profile.completed.length} / ${
+                          this.profile.completed.length +
+                          this.profile.due.length
+                        }`}
                   </td>
                 </tr>
+                ${!this.profile || (this.profile.features || []).length < 1
+                  ? ``
+                  : html`
+                      <tr>
+                        <th scope="row">
+                          <iron-icon icon="star"></iron-icon>
+                          Submissions Featured
+                        </th>
+                        <td>
+                          ${!this.profile || !this.profile.features
+                            ? "unknown"
+                            : this.profile.features.length}
+                        </td>
+                      </tr>
+                    `}
                 <tr>
                   <th scope="row">
-                      Featured Submissions
+                    <iron-icon icon="communication:forum"></iron-icon>
+                    Peer Reviews Written
                   </th>
                   <td>
-                    ${
-                      !this.profile || !this.profile.features
-                        ? "unknown"
-                        : this.profile.features.length
-                    }
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Feedback Given</th>
-                  <td>
-                    ${
-                      !this.profile || !this.profile.given
-                        ? "unknown"
-                        : this.profile.given.length
-                    }
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Conversations</th>
-                  <td>
-                    ${
-                      !this.profile ||
-                      !this.profile.given ||
-                      !this.profile.discussions
-                        ? "unknown"
-                        : this.profile.given.length +
-                          this.profile.discussions.length
-                    }
+                    ${!this.profile || !this.profile.given
+                      ? "0"
+                      : html` ${this.profile.given.length} `}
                   </td>
                 </tr>
               </tbody>
             </table>
           </accent-card>
           <nav-card accent-color="green" class="card primary due">
-            <span slot="heading">Work Due</span>
+            <span slot="heading">Upcoming Assignments</span>
+            <elmsln-studio-link slot="subheading" href="/assignments"
+              >All assignments</elmsln-studio-link
+            >
             <div slot="linklist">
-              ${
-                !this.profile
-                  ? "unknown"
-                  : (this.profile.due || []).slice(0, 5).map(
-                      (a) => html`
-                        <nav-card-item
-                          accent-color="${this.isLate(a.date) ? "red" : "grey"}"
-                          allow-grey
-                          avatar="${this.isLate(a.date)
-                            ? "icons:assignment-late"
-                            : "assignment"}"
-                          icon="chevron-right"
-                          invert
+              ${!this.profile
+                ? "unknown"
+                : (this.profile.due || []).slice(0, 5).map(
+                    (a) => html`
+                      <nav-card-item
+                        accent-color="${this.isLate(a.date) ? "red" : "grey"}"
+                        allow-grey
+                        avatar="${this.isLate(a.date)
+                          ? "icons:assignment-late"
+                          : "assignment"}"
+                        invert
+                      >
+                        <elmsln-studio-link
+                          id="due-${a.id}"
+                          aria-describedby="due-${a.id}-desc"
+                          slot="label"
+                          href="/assignments?assignments=${a.id}"
                         >
-                          <elmsln-studio-link
-                            id="due-${a.id}"
-                            aria-describedby="due-${a.id}-desc"
-                            slot="label"
-                            href="/assignments?assignments=${a.id}"
-                          >
-                            ${a.assignment}
-                          </elmsln-studio-link>
-                          <relative-time
-                            id="due-${a.id}-desc"
-                            slot="description"
-                            datetime="${a.date}"
-                          >
-                            ${this.dateFormat(a.date, "long")}
-                          </relative-time>
-                        </nav-card-item>
-                      `
-                    )
-              }
+                          ${a.assignment}
+                        </elmsln-studio-link>
+                        <relative-time
+                          id="due-${a.id}-desc"
+                          slot="description"
+                          datetime="${a.date}"
+                        >
+                          ${this.dateFormat(a.date, "long")}
+                        </relative-time>
+                      </nav-card-item>
+                    `
+                  )}
             </div>
           </nav-card>
         </div>
@@ -287,36 +278,38 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             class="card primary"
             link-icon="chevron-right"
           >
-            <span slot="heading">Submissions</span>
-            <elmsln-studio-link slot="subheading" href="/submissions${
-              !this.profile ? "" : `?student=${this.profile.id}`
-            }">All submissions</elmsln-studio-link>
+            <span slot="heading">My Submissions</span>
+            <elmsln-studio-link
+              slot="subheading"
+              href="/submissions${!this.profile
+                ? ""
+                : `?student=${this.profile.id}`}"
+              >All my submissions</elmsln-studio-link
+            >
             <div slot="linklist">
-              ${
-                !this.profile
-                  ? "unknown"
-                  : (this.profile.submissions || []).slice(0, 5).map(
-                      (s) => html`
-                        <nav-card-item icon="chevron-right">
-                          <elmsln-studio-link
-                            id="sub-${s.id}"
-                            aria-describedby="sub-${s.id}-desc"
-                            slot="label"
-                            href="/portfolios/${s.portfolioId}?submission=${s.id}"
-                          >
-                            ${s.assignment}
-                          </elmsln-studio-link>
-                          <relative-time
-                            id="sub-${s.id}-desc"
-                            slot="description"
-                            datetime="${s.date}"
-                          >
-                            ${this.dateFormat(s.date)}
-                          </relative-time>
-                        </nav-card-item>
-                      `
-                    )
-              }
+              ${!this.profile
+                ? "unknown"
+                : (this.profile.submissions || []).slice(0, 5).map(
+                    (s) => html`
+                      <nav-card-item>
+                        <elmsln-studio-link
+                          id="sub-${s.id}"
+                          aria-describedby="sub-${s.id}-desc"
+                          slot="label"
+                          href="/portfolios/${s.portfolioId}?submission=${s.id}"
+                        >
+                          ${s.assignment}
+                        </elmsln-studio-link>
+                        <relative-time
+                          id="sub-${s.id}-desc"
+                          slot="description"
+                          datetime="${s.date}"
+                        >
+                          ${this.dateFormat(s.date)}
+                        </relative-time>
+                      </nav-card-item>
+                    `
+                  )}
             </div>
           </nav-card>
           <nav-card
@@ -324,95 +317,114 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             class="card feed primary"
             link-icon="chevron-right"
           >
-            <span slot="heading">Feedback</span>
-            <elmsln-studio-link slot="subheading">All feedback</elmsln-studio-link>
+            <span slot="heading">Feedback for Me</span>
             <div slot="linklist">
-              ${
-                !this.profile
-                  ? "unknown"
-                  : (this.profile.feedback || []).slice(0, 5).map(
-                      (f) => html`
-                        <nav-card-item
-                          accent-color="${this.accentColor(
-                            [f.firstName, f.lastName].join(" ")
-                          )}"
-                          .avatar="${f.avatar}"
-                          icon="chevron-right"
-                          .initials="${[f.firstName, f.lastName].join(" ")}"
+              ${!this.profile
+                ? "unknown"
+                : (this.profile.feedback || []).slice(0, 5).map(
+                    (f) => html`
+                      <nav-card-item
+                        accent-color="${this.accentColor(
+                          [f.firstName, f.lastName].join(" ")
+                        )}"
+                        .avatar="${f.avatar}"
+                        .initials="${[f.firstName, f.lastName].join(" ")}"
+                      >
+                        <elmsln-studio-link
+                          id="feed-${f.id}"
+                          aria-describedby="feed-${f.id}-desc"
+                          slot="label"
+                          href="/portfolios/${f.portfolioId}?submission${f.submissionId}&comment=${f.id}"
                         >
-                          <elmsln-studio-link
-                            id="feed-${f.id}"
-                            aria-describedby="feed-${f.id}-desc"
-                            slot="label"
-                            href="/portfolios/${f.portfolioId}?submission${f.submissionId}&comment=${f.id}"
-                          >
-                            ${[f.firstName, f.lastName].join(" ")}'s feedback on
-                            ${f.assignment}
-                          </elmsln-studio-link>
-                          <relative-time
-                            id="feed-${f.id}-desc"
-                            slot="description"
-                            datetime="${f.date}"
-                          >
-                            ${this.dateFormat(f.date)}
-                          </relative-time>
-                        </nav-card-item>
-                      `
-                    )
-              }
+                          ${[f.firstName, f.lastName].join(" ")}'s feedback on
+                          ${f.assignment}
+                        </elmsln-studio-link>
+                        <relative-time
+                          id="feed-${f.id}-desc"
+                          slot="description"
+                          datetime="${f.date}"
+                        >
+                          ${this.dateFormat(f.date)}
+                        </relative-time>
+                      </nav-card-item>
+                    `
+                  )}
             </div>
           </nav-card>
         </div>
       </div>
       <div id="secondary">
-        <nav-card
-          flat
-          no-border
-          class="card feed secondary"
-          link-icon="chevron-right"
-        >
-          <span slot="heading">Recent Activity</span>
-          <div slot="linklist">
-            ${(this.activity || []).slice(0, this.activityLoad).map(
-              (a) => html`
-                <nav-card-item
-                  accent-color="${this.accentColor(
-                    [a.firstName, a.lastName].join(" ")
-                  )}"
-                  .avatar="${a.avatar}"
-                  icon="chevron-right"
-                  .initials="${[a.firstName, a.lastName].join(" ")}"
-                >
-                  <elmsln-studio-link
-                    id="act-${a.id}"
-                    aria-describedby="act-${a.id}-desc"
-                    slot="label"
-                    href="${this.getActivityLink(a)}"
+        <h2 slot="heading">Class Activity</h2>
+        <accent-card accent-color="pink" class="card feed secondary">
+          <nav-card flat no-border slot="content">
+            <span slot="heading">Recent Submissions</span>
+            <elmsln-studio-link slot="subheading" href="/submissions"
+              >All submissions</elmsln-studio-link
+            >
+            <div slot="linklist">
+              ${(this.submissions || []).map(
+                (s) => html`
+                  <nav-card-item
+                    accent-color="${this.accentColor(
+                      [s.firstName, s.lastName].join(" ")
+                    )}"
+                    .avatar="${s.avatar}"
+                    .initials="${[s.firstName, s.lastName].join(" ")}"
                   >
-                    ${this.getActivityTitle(a)}
-                  </elmsln-studio-link>
-                  <relative-time
-                    id="act-${a.id}-desc"
-                    slot="description"
-                    datetime="${a.date}"
+                    <elmsln-studio-link
+                      id="act-${s.id}"
+                      aria-describedby="act-${s.id}-desc"
+                      slot="label"
+                      href="${this.getActivityLink(s)}"
+                    >
+                      ${this.getActivityTitle(s)}
+                    </elmsln-studio-link>
+                    <relative-time
+                      id="act-${s.id}-desc"
+                      slot="description"
+                      datetime="${s.date}"
+                    >
+                      ${this.dateFormat(s.date)}
+                    </relative-time>
+                  </nav-card-item>
+                `
+              )}
+            </div>
+          </nav-card>
+          <nav-card flat no-border slot="content">
+            <span slot="heading">Recent Comments</span>
+            <div slot="linklist">
+              ${(this.discussion || []).map(
+                (d) => html`
+                  <nav-card-item
+                    accent-color="${this.accentColor(
+                      [d.firstName, d.lastName].join(" ")
+                    )}"
+                    .avatar="${d.avatar}"
+                    .initials="${[d.firstName, d.lastName].join(" ")}"
                   >
-                    ${this.dateFormat(a.date)}
-                  </relative-time>
-                </nav-card-item>
-              `
-            )}
-          </div>
-          <button
-            class="load-more"
-            slot="footer"
-            ?disabled="${this.activityLoad >= this.activity.length}"
-            ?hidden="${this.activityLoad >= this.activity.length}"
-            @click="${(e) => (this.activityLoad += 10)}"
-          >
-            Load More
-          </button>
-        </nav-card>
-      </div-->
+                    <elmsln-studio-link
+                      id="act-${d.id}"
+                      aria-describedby="act-${d.id}-desc"
+                      slot="label"
+                      href="${this.getActivityLink(d)}"
+                    >
+                      ${this.getActivityTitle(d)}
+                    </elmsln-studio-link>
+                    <relative-time
+                      id="act-${d.id}-desc"
+                      slot="description"
+                      datetime="${d.date}"
+                    >
+                      ${this.dateFormat(d.date)}
+                    </relative-time>
+                  </nav-card-item>
+                `
+              )}
+            </div>
+          </nav-card>
+        </accent-card>
+      </div>
     `;
   }
 
@@ -420,15 +432,14 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
   static get properties() {
     return {
       ...super.properties,
-      activity: {
+      discussion: {
         type: Array,
-      },
-      activityLoad: {
-        type: Number,
-        attribute: "activity-load",
       },
       profile: {
         type: Object,
+      },
+      submissions: {
+        type: Array,
       },
     };
   }
@@ -436,25 +447,15 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.activity = [];
+    this.discussion = [];
     this.profile = {};
-    this.activityLoad = 15;
+    this.submissions = [];
     this.tag = ElmslnStudioDashboard.tag;
-  }
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "activity") this.activityLoad = 15;
-    });
   }
   get profileName() {
     return this.profile && this.profile.firstName && this.profile.lastName
       ? `${this.profile.firstName} ${this.profile.lastName}`
       : ``;
-  }
-
-  loadMoreComments(e) {
-    this.activityLoad += 10;
   }
   // static get observedAttributes() {
   //   return [];

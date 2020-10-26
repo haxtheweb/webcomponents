@@ -8,6 +8,7 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/nav-card/nav-card.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@github/time-elements";
 import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 
@@ -218,12 +219,18 @@ const ElmslnStudioUtilities = function (SuperClass) {
                 .toolbars="${this.defaultModalToolbars}"
                 .figures="${this.getFigures(s.sources)}"
               >
-                <button .style="${this.getThumbailStyle(source.src)}">
+                <button
+                  id="view-thumb-${s.id}"
+                  .style="${this.getThumbailStyle(source.src)}"
+                >
                   <span class="sr-only">${source.alt}</span>
                   <div class="zoombg"></div>
                   <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
                   <div class="imgbg"></div>
                 </button>
+                <simple-tooltip for="view-thumb-${s.id}"
+                  >View Thumbnail</simple-tooltip
+                >
               </img-view-modal>
             `
           )}
@@ -311,15 +318,18 @@ const ElmslnStudioUtilities = function (SuperClass) {
 
     getActivityTitle(activity) {
       return html`
-        ${[activity.firstName, activity.lastName].join(" ")}
         ${activity.activity === "submission"
-          ? ` submitted ${activity.assignment}`
+          ? `${[activity.firstName, activity.lastName].join(" ")} submitted ${
+              activity.assignment
+            }`
           : activity.activity === "discussion"
-          ? ` left feedback for ${[
+          ? `${[activity.firstName, activity.lastName].join(
+              " "
+            )}'s feedback on ${[
               activity.creatorFirstName,
               activity.creatorLastName,
-            ].join(" ")}`
-          : ` replied to ${[
+            ].join(" ")}'s ${activity.assignment}`
+          : `${[activity.firstName, activity.lastName].join(" ")} replied to ${[
               activity.reviewerFirstName,
               activity.reviewerLastName,
             ].join(" ")}`}
@@ -409,6 +419,14 @@ const ElmslnStudioUtilities = function (SuperClass) {
      */
     replyTitle(reply) {
       return `${reply.firstName} replied to ${reply.feedbackFirstName}'s feedback`;
+    }
+    getFeedbackIcon(comments) {
+      if (comments === 0) {
+        return "communication:comment";
+      } else if (comments < 10) {
+        return `hax:messages-${comments}`;
+      }
+      return "hax:messages-9-plus";
     }
 
     _getValign(gravity) {

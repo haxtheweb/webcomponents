@@ -66,8 +66,9 @@ class ElmslnStudio extends router(
         <elmsln-studio-dashboard
           ?demo-mode="${this.demoMode}"
           route="dashboard"
+          .discussion="${this.recentDiscussions}"
           .profile="${this.profile}"
-          .activity="${this.activity}"
+          .submissions="${this.recentSubmissions}"
           route="dashboard"
         >
         </elmsln-studio-dashboard>
@@ -117,13 +118,6 @@ class ElmslnStudio extends router(
   static get properties() {
     return {
       ...super.properties,
-
-      activity: { type: Array },
-      activitySource: {
-        type: String,
-        reflect: true,
-        attribute: "activity-source",
-      },
       assignments: { type: Object },
       assignmentsSource: {
         type: String,
@@ -218,7 +212,7 @@ class ElmslnStudio extends router(
 
   constructor() {
     super();
-    this.activity = [];
+    window.ElmslnStudioPath = "";
     this.assignments = {};
     this.discussion = {};
     this.lessons = {};
@@ -249,8 +243,6 @@ class ElmslnStudio extends router(
       if (propName === "usersSource") this.fetchData(this.usersSource, "users");
       if (propName === "profileSource")
         this.fetchData(this.profileSource, "profile");
-      if (propName === "activitySource")
-        this.fetchData(this.activitySource, "activity");
       if (propName === "lessonsSource")
         this.fetchData(this.lessonsSource, "lessons");
       if (propName === "projectsSource")
@@ -263,6 +255,7 @@ class ElmslnStudio extends router(
         this.fetchData(this.submissionsSource, "submissions");
       if (propName === "discussionSource")
         this.fetchData(this.discussionSource, "discussion");
+      if (propName === "sourcePath") window.ElmslnStudioPath = this.sourcePath;
     });
   }
   get assignment() {
@@ -270,6 +263,27 @@ class ElmslnStudio extends router(
     return this.params.assignment
       ? this.assignments[this.params.assignment]
       : {};
+  }
+  get recentDiscussions() {
+    let discussions = [];
+    discussions = Object.keys(this.discussion || {}).map(
+      (key) => this.discussion[key]
+    );
+    discussions.forEach((d) =>
+      (d.replies || []).forEach((r) => discussions.push(r))
+    );
+    return this.sortDates(discussions).slice(0, 10);
+  }
+  get recentSubmissions() {
+    console.log(
+      "recentSubmissions",
+      this.sortDates(
+        Object.keys(this.submissions || {}).map((key) => this.submissions[key])
+      )
+    );
+    return this.sortDates(
+      Object.keys(this.submissions || {}).map((key) => this.submissions[key])
+    ).slice(0, 5);
   }
 
   get submission() {

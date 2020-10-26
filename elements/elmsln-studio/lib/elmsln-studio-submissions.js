@@ -156,27 +156,28 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           font-weight: var(--elmsln-studio-FontWeightNormal, 400);
           font-size: 12px;
           text-transform: uppercase;
-          display: flex;
-          align-items: stretch;
-          justify-content: space-between;
+          text-align: right;
           color: #95989a;
         }
         accent-card.card.submission-card {
           --accent-card-heading-min-height: 30px;
         }
-        accent-card.card.submission-card elmsln-studio-link {
+        accent-card.card.submission-card [slot="footer"] elmsln-studio-link {
           margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
-          text-align: left;
+          text-align: right;
           --elmsln-studio-link-Color: #7e7e7e;
         }
-        accent-card.card.submission-card elmsln-studio-link:focus,
-        accent-card.card.submission-card elmsln-studio-link:focus-within,
-        accent-card.card.submission-card elmsln-studio-link:hover {
+        accent-card.card.submission-card
+          [slot="footer"]
+          elmsln-studio-link:focus,
+        accent-card.card.submission-card
+          [slot="footer"]
+          elmsln-studio-link:focus-within,
+        accent-card.card.submission-card
+          [slot="footer"]
+          elmsln-studio-link:hover {
           --elmsln-studio-link-Color: #95989a;
           --elmsln-studio-link-TextDecoration: none !important;
-        }
-        accent-card.card.submission-card elmsln-studio-link:last-child {
-          text-align: right;
         }
         #secondary {
           margin-top: 0;
@@ -192,7 +193,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         }
         nav-card {
           margin: calc(1.5 * var(--elmsln-studio-margin, 20px)) 0 0;
+          --accent-card-footer-padding-left: 0;
+          --accent-card-footer-padding-right: 0;
         }
+        elmsln-studio-link[slot="link"]:focus,
+        elmsln-studio-link[slot="link"]:hover {
+          outline: 1px solid var(--accent-card-border-color);
+        }
+
         @media screen and (min-width: 500px) {
           .list accent-card {
             --accent-card-image-width: 50%;
@@ -311,30 +319,20 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 .image-valign="${this._getValign(s.imageGravity || undefined)}"
                 .gravity="${s.imageGravity || undefined}"
               >
-                <img-view-modal
-                  .figures="${this.getFigures(
-                    this.filteredSubmissions,
-                    "image",
-                    "imageAlt",
-                    "full",
-                    "imageLongdesc"
-                  )}"
-                  page="${i}"
-                  slot="image-corner"
-                  title="${this.modalTitle}"
-                  .toolbars="${this.defaultModalToolbars}"
+                <elmsln-studio-link
+                  slot="link"
+                  aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
+                  href="${this.getActivityLink(s)}"
                 >
-                  <button
-                    aria-describedby="accent-${i}"
-                    ?disabled="${!s.image}"
-                  >
-                    <iron-icon aria-hidden="true" icon="zoom-in"></iron-icon>
-                    <span class="sr-only">View Image</span>
-                  </button>
-                </img-view-modal>
-                <div slot="heading" id="student-${s.id}" class="card-student">
+                </elmsln-studio-link>
+                <elmsln-studio-link
+                  id="student-${s.id}"
+                  class="card-student"
+                  slot="heading"
+                  href="/submissions${!s.userId ? "" : `?student=${s.userId}`}"
+                >
                   ${[s.firstName, s.lastName].join(" ")}
-                </div>
+                </elmsln-studio-link>
                 <local-time
                   slot="corner"
                   id="date-${s.id}"
@@ -345,7 +343,11 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 >
                   ${this.dateFormat(s.date, "short")}
                 </local-time>
-                <div slot="subheading" id="assignment-${s.id}">
+                <div
+                  id="assignment-${s.id}"
+                  class="card-student"
+                  slot="subheading"
+                >
                   ${s.assignment}
                 </div>
                 <div slot="content" id="project-${s.id}">${s.project}</div>
@@ -353,22 +355,11 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                   ${s.feature}
                 </div>
                 <div slot="footer">
-                  <elmsln-studio-link
-                    aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    href="${this.getActivityLink(s)}"
-                  >
-                    <iron-icon icon="communication:comment"></iron-icon>
-                    Discussion${!s.feedback || s.feedback.length < 1
-                      ? ``
-                      : `: ${s.feedback.length}`}
-                  </elmsln-studio-link>
-                  <elmsln-studio-link
-                    aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    href="${this.getActivityLink(s, true)}"
-                  >
-                    <iron-icon icon="visibility"></iron-icon>
-                    View
-                  </elmsln-studio-link>
+                  Feedback
+                  <span class="sr-only">(${s.feedback.length})</span>
+                  <iron-icon
+                    icon="${this.getFeedbackIcon(s.feedback.length)}"
+                  ></iron-icon>
                 </div>
               </accent-card>
             `
@@ -376,18 +367,21 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         </div>
       </div>
       <div id="secondary">
-        <nav-card flat no-border class="card" link-icon="chevron-right">
-          <span slot="heading">Recent Comments</span>
+        <nav-card flat no-border class="card">
+          <span slot="heading">
+            ${this.isFiltered ? "Related Comments" : "Recent Comments"}
+          </span>
           <div slot="body" ?hidden="${this.filteredComments.length > 0}">
-            No comments for applied filters.
+            ${this.isFiltered
+              ? "No comments for applied filters."
+              : "No comments."}
           </div>
           <div slot="linklist">
-            ${this.filteredComments.map(
+            ${(this.filteredComments || []).slice(0, this.commentLoad).map(
               (f) => html`
                 <nav-card-item
                   accent-color="${this.accentColor(this.fullName(f))}"
                   .avatar="${f.avatar}"
-                  icon="chevron-right"
                   initials="${this.fullName(f)}"
                 >
                   <elmsln-studio-link
@@ -410,6 +404,15 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
               `
             )}
           </div>
+          <button
+            class="load-more"
+            slot="footer"
+            ?disabled="${this.commentLoad >= this.filteredComments.length}"
+            ?hidden="${this.commentLoad >= this.filteredComments.length}"
+            @click="${(e) => (this.commentLoad += 10)}"
+          >
+            Load More ${this.commentLoad} / ${this.filteredComments.length}
+          </button>
         </nav-card>
       </div>
     `;
@@ -425,6 +428,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
       },
       comments: {
         type: Array,
+      },
+      commentLoad: {
+        type: Number,
+        attribute: "comment-load",
       },
       list: {
         type: Boolean,
@@ -450,14 +457,36 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
     this.list = false;
     this.submissions = [];
     this.comments = [];
+    this.commentLoad = 15;
     this.tag = ElmslnStudioSubmissions.tag;
+  }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (
+        [
+          "comments",
+          "assignmentFilter",
+          "studentFilter",
+          "projectFilter",
+        ].includes(propName)
+      )
+        this.commentLoad = 15;
+    });
   }
   get filteredComments() {
     return (this.comments || []).filter(
       (i) =>
-        this._isFilteredStudent(i.userId) &&
+        this._isFilteredStudent(i.creatorId) &&
         this._isFilteredAssignment(i.assignmentId) &&
         this._isFilteredProject(i.projectId)
+    );
+  }
+  get isFiltered() {
+    return (
+      this.assignmentFilter !== "" ||
+      this.studentFilter !== "" ||
+      this.projectFilter !== ""
     );
   }
   get studentOptions() {
@@ -501,6 +530,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         .filter((i) => !!i && i !== "All" && i !== "")
         .join(" by ");
     return title && title != "" ? title : "All Submissions";
+  }
+
+  loadMoreComments(e) {
+    this.commentLoad += 10;
   }
   _isFilteredAssignment(assignment = "") {
     return this.assignmentFilter === "" || assignment === this.assignmentFilter;

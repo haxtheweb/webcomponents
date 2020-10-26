@@ -7,6 +7,7 @@ import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
@@ -303,6 +304,12 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                     ${!this.sortLatest ? "Oldest First" : "Newest First"}</span
                   >
                 </button>
+                <simple-tooltip for="sort"
+                  >Sort Submissions
+                  ${!this.sortLatest
+                    ? "Oldest First"
+                    : "Newest First"}</simple-tooltip
+                >
               </div>
               ${!this.portfolio
                 ? ``
@@ -333,17 +340,35 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                             </span>
                           </h2>
                           <elmsln-studio-button
+                            id="sub-${s.id}-toggle-button"
                             class="view-discussion-button"
                             aria-describedby="sub-${s.id}"
-                            icon="${this._getFeedbackIcon(s.feedback.length)}"
-                            path="${this.getActivityLink(s, this.comment)}"
+                            icon="${this.submissionFilter === s.id &&
+                            this.comment
+                              ? "close"
+                              : this.getFeedbackIcon(s.feedback.length)}"
+                            path="${this.getActivityLink(
+                              s,
+                              this.submissionFilter === s.id && this.comment
+                            )}"
                           >
                             <span class="sr-only"
-                              >Give / View Feedback (${s.feedback.length})</span
+                              >${this.submissionFilter === s.id && this.comment
+                                ? "Close Feedback"
+                                : `View Feedback (${s.feedback.length})`}</span
                             >
                           </elmsln-studio-button>
+                          <simple-tooltip for="sub-${s.id}-toggle-button"
+                            >${this.submissionFilter === s.id && this.comment
+                              ? "Close Feedback"
+                              : `View Feedback (${s.feedback.length})`}</simple-tooltip
+                          >
                         </div>
-                        <div class="submission-body">
+                        <div
+                          class="submission-body"
+                          ?hidden="${this.comment &&
+                          this.submissionFilter !== s.id}"
+                        >
                           ${s.links && s.links.length > 0
                             ? html`
                                 <ul class="submission-links">
@@ -486,14 +511,6 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             (s) => s.id === this.submissionFilter
           );
     return !filter ? false : filter[0];
-  }
-  _getFeedbackIcon(comments) {
-    if (comments === 0) {
-      return "communication:comment";
-    } else if (comments < 10) {
-      return `hax:messages-${comments}`;
-    }
-    return "hax:messages-9-plus";
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
