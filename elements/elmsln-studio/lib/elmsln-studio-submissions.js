@@ -8,7 +8,7 @@ import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icons/communication-icons.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
-import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
+import "./elmsln-studio-submission-card.js";
 
 /**
  * `elmsln-studio-submissions`
@@ -80,47 +80,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           background-color: #e8e8e8;
           text-align: center;
         }
-        accent-card {
-          line-height: 160%;
-          --accent-card-padding: 0;
-          --accent-card-heading-padding-top: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-heading-padding-left: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-heading-padding-right: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-subheading-padding-left: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-subheading-padding-right: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-content-padding-left: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-content-padding-right: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-content-padding-bottom: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-footer-padding-top: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-footer-padding-bottom: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-footer-padding-left: 0;
-          --accent-card-footer-padding-right: 0;
-          --accent-card-image-padding-bottom: 5px;
-          --accent-card-image-padding-right: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-image-width: 33.33333%;
-          --accent-card-image-height: 200px;
+        elmsln-studio-submission-card {
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px))
             calc(0.5 * var(--elmsln-studio-margin, 20px));
           flex: 0 0 calc(100% - var(--elmsln-studio-margin, 20px));
@@ -132,52 +92,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
               var(--elmsln-studio-margin, 20px)
           );
           overflow: auto;
-        }
-        accent-card [slot="heading"] {
-          font-weight: var(--elmsln-studio-FontWeightLight, 300);
-          font-size: 22px;
-        }
-        accent-card [slot="corner"] {
-          font-weight: var(--elmsln-studio-FontWeightNormal, 400);
-          font-size: 12px;
-        }
-        accent-card [slot="subheading"] {
-          font-weight: var(--elmsln-studio-FontWeightBold, 500);
-          font-size: 18px;
-          font-style: normal;
-          color: #5d5e5f;
-        }
-        accent-card [slot="content"] {
-          font-weight: var(--elmsln-studio-FontWeightNormal, 400);
-          font-size: 14px;
-          color: #7e7e7e;
-        }
-        accent-card [slot="footer"] {
-          font-weight: var(--elmsln-studio-FontWeightNormal, 400);
-          font-size: 12px;
-          text-transform: uppercase;
-          text-align: right;
-          color: #95989a;
-        }
-        accent-card.card.submission-card {
-          --accent-card-heading-min-height: 30px;
-        }
-        accent-card.card.submission-card [slot="footer"] elmsln-studio-link {
-          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
-          text-align: right;
-          --elmsln-studio-link-Color: #7e7e7e;
-        }
-        accent-card.card.submission-card
-          [slot="footer"]
-          elmsln-studio-link:focus,
-        accent-card.card.submission-card
-          [slot="footer"]
-          elmsln-studio-link:focus-within,
-        accent-card.card.submission-card
-          [slot="footer"]
-          elmsln-studio-link:hover {
-          --elmsln-studio-link-Color: #95989a;
-          --elmsln-studio-link-TextDecoration: none !important;
         }
         #secondary {
           margin-top: 0;
@@ -196,16 +110,32 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           --accent-card-footer-padding-left: 0;
           --accent-card-footer-padding-right: 0;
         }
-        elmsln-studio-link[slot="link"]:focus,
-        elmsln-studio-link[slot="link"]:hover {
-          outline: 1px solid var(--accent-card-border-color);
+        elmsln-studio-submission-card {
+          position: relative;
+          cursor: pointer;
+        }
+        elmsln-studio-submission-card
+          > elmsln-studio-link:not([slot="assigmment"]) {
+          z-index: 2;
+          position: relative;
+        }
+        elmsln-studio-link[slot="assigmment"]:focus-within {
+          text-decoration: underline;
+        }
+        elmsln-studio-link[slot="assigmment"]::after {
+          content: " ";
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: 0;
         }
 
         @media screen and (min-width: 500px) {
-          .list accent-card {
+          elmsln-studio-submission-card {
             --accent-card-image-width: 50%;
           }
-          .grid accent-card:not([horizontal]) {
+          elmsln-studio-submission-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
         }
@@ -215,7 +145,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             align-items: flex-start;
             justify-content: space-between;
           }
-          .grid accent-card:not([horizontal]) {
+          elmsln-studio-submission-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
           .filters > *,
@@ -230,22 +160,22 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           }
         }
         @media screen and (min-width: 1200px) {
-          .grid accent-card[horizontal] {
+          elmsln-studio-submission-card[horizontal] {
             flex: 0 0 calc(66.66666667% - var(--elmsln-studio-margin, 20px));
           }
-          .grid accent-card:not([horizontal]) {
+          elmsln-studio-submission-card:not([horizontal]) {
             flex: 0 0 calc(33.3333333333% - var(--elmsln-studio-margin, 20px));
           }
         }
         @media screen and (min-width: 1600px) {
-          .grid accent-card[horizontal] {
+          elmsln-studio-submission-card[horizontal] {
             --accent-card-image-width: 33.33333%;
             flex: 0 0 calc(75% - var(--elmsln-studio-margin, 20px));
           }
-          .grid accent-card:not([horizontal]) {
+          elmsln-studio-submission-card:not([horizontal]) {
             flex: 0 0 calc(25% - var(--elmsln-studio-margin, 20px));
           }
-          .list accent-card {
+          elmsln-studio-submission-card {
             --accent-card-image-width: 50%;
           }
         }
@@ -308,9 +238,9 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           </div>
           ${this.filteredSubmissions.map(
             (s, i) => html`
-              <accent-card
+              <elmsln-studio-submission-card
                 id="accent-${i}"
-                no-border
+                href="${this.getActivityLink(s, true)}"
                 class="card submission-card"
                 image-src="${s.image || ""}"
                 .image-alt="${s.imageAlt || undefined}"
@@ -318,23 +248,24 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 .image-align="${this._getAlign(s.imageGravity || undefined)}"
                 .image-valign="${this._getValign(s.imageGravity || undefined)}"
                 .gravity="${s.imageGravity || undefined}"
+                no-border
               >
                 <elmsln-studio-link
-                  slot="link"
-                  aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                  href="${this.getActivityLink(s)}"
+                  id="assignment-${s.id}"
+                  slot="assigmment"
+                  href="${this.getActivityLink(s, true)}"
                 >
+                  ${s.assignment}
                 </elmsln-studio-link>
                 <elmsln-studio-link
                   id="student-${s.id}"
-                  class="card-student"
-                  slot="heading"
+                  slot="student"
                   href="/submissions${!s.userId ? "" : `?student=${s.userId}`}"
                 >
                   ${[s.firstName, s.lastName].join(" ")}
                 </elmsln-studio-link>
                 <local-time
-                  slot="corner"
+                  slot="datetime"
                   id="date-${s.id}"
                   datetime="${s.date}"
                   month="long"
@@ -343,25 +274,21 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 >
                   ${this.dateFormat(s.date, "short")}
                 </local-time>
-                <div
-                  id="assignment-${s.id}"
-                  class="card-student"
-                  slot="subheading"
-                >
-                  ${s.assignment}
-                </div>
-                <div slot="content" id="project-${s.id}">${s.project}</div>
-                <div slot="content" class="feature" ?hidden="${!s.feature}">
+                <div slot="project" id="project-${s.id}">${s.project}</div>
+                <div slot="feature" class="feature" ?hidden="${!s.feature}">
                   ${s.feature}
                 </div>
-                <div slot="footer">
+                <elmsln-studio-link
+                  slot="feedback"
+                  href="${this.getActivityLink(s)}"
+                >
                   Feedback
                   <span class="sr-only">(${s.feedback.length})</span>
                   <iron-icon
                     icon="${this.getFeedbackIcon(s.feedback.length)}"
                   ></iron-icon>
-                </div>
-              </accent-card>
+                </elmsln-studio-link>
+              </elmsln-studio-submission-card>
             `
           )}
         </div>
