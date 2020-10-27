@@ -139,10 +139,17 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           width: 100%;
           box-sizing: border-box;
         }
+        article,
+        .body {
+          display: flex;
+          flex: 1 1 auto;
+          flex-direction: column;
+        }
         :host([horizontal]) article {
           display: flex;
           justify-content: space-between;
           align-items: stretch;
+          flex-direction: row;
         }
         :host([flat]) {
           box-shadow: none;
@@ -309,22 +316,12 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           );
           padding-bottom: var(--accent-card-footer-padding-bottom, unset);
         }
-        ::slotted([slot="link"]) {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          display: block;
-          cursor: pointer;
-        }
       `,
     ];
   }
   render() {
     return html`
       <article id="card">
-        <slot name="link"></slot>
         <div
           class="image-outer"
           ?hidden="${!this.elementVisible || !this.imageSrc}"
