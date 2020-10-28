@@ -179,9 +179,11 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.shadowRoot.querySelector(
-      "#textarea"
-    ).editorValue = HAXStore.activeHaxBody.haxToContent();
+    if (HAXStore.activeHaxBody) {
+      this.shadowRoot.querySelector(
+        "#textarea"
+      ).editorValue = HAXStore.activeHaxBody.haxToContent();
+    }
   }
 
   /**
