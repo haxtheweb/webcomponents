@@ -4,7 +4,7 @@
     "order": 1,
     "lessonId": "lesson-1",
     "project": "Hypertext Narrative Project",
-    "body": "Maecenas tincidunt risus fringilla sed commodo eros vel. Lorem ut aenean nec? Convallis semper nunc nec sed ac!",
+    "body": "Parturient pharetra at ex auctor sollicitudin elit consequat lorem eget? Consectetur magna mauris parturient?",
     "assignments": [
       {
         "id": "assignment-2",
@@ -12,9 +12,8 @@
         "lessonId": "lesson-1",
         "projectId": "project-1",
         "assignment": "Discover: Word-Pairs",
-        "showDate": "2020-09-12T18:30:22.000Z",
-        "hideDate": "2020-10-10T18:30:22.000Z",
-        "date": "2020-09-26T18:30:22.000Z",
+        "showDate": "2020-10-03T23:18:42.000Z",
+        "date": "2020-10-17T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -23,33 +22,39 @@
             "Novice (1)"
           ],
           "values": {
-            "scelerisque ornare": [
-              "Mattis vitae id?",
-              "Augue ex sapien suscipit.",
-              "Massa quisque in et.",
-              "Curabitur vestibulum fermentum condimentum orci?"
+            "ante eu": [
+              "Pretium at tincidunt.",
+              "Vehicula dolor consectetur in libero.",
+              "Sapien et adipiscing metus nunc!",
+              "Suspendisse felis donec?"
             ],
-            "ipsum sagittis": [
-              "Condimentum quam ullamcorper.",
-              "Ullamcorper felis turpis accumsan.",
-              "Lorem donec magna hendrerit praesent?",
-              "Parturient ultrices et id?"
+            "ac magna": [
+              "Curabitur consequat aliquet.",
+              "Vestibulum ac tristique sed.",
+              "Sodales lobortis eget tempus suspendisse.",
+              "Et rutrum phasellus id fermentum."
             ],
-            "suspendisse nec": [
-              "Nibh luctus rutrum in.",
-              "Libero arcu aliquet placerat eleifend?",
-              "Vivamus metus volutpat.",
-              "Eget eu fermentum sed ipsum."
+            "purus mi": [
+              "In tincidunt quis nunc sed.",
+              "Nulla id neque sodales.",
+              "Consequat ultricies nunc.",
+              "Suspendisse vehicula elit sed parturient."
             ],
-            "donec sed": [
-              "Nisl nec mauris leo?",
-              "Turpis maecenas nulla eleifend quam.",
-              "Consectetur metus urna orci in.",
-              "Nisi fusce turpis eleifend."
+            "sit venenatis": [
+              "Purus in aliquam id ac.",
+              "Tempor donec semper.",
+              "Sapien praesent vulputate ultrices maecenas.",
+              "Scelerisque eu dolor massa tellus."
+            ],
+            "ex venenatis": [
+              "Vestibulum per iaculis pellentesque velit?",
+              "Non suspendisse donec lobortis.",
+              "Mauris nec dolor non in.",
+              "Consectetur lacinia auctor pellentesque felis!"
             ]
           }
         },
-        "body": "Sem scelerisque proin in ac. Tortor nunc justo consequat erat sed ultrices interdum ligula venenatis consectetur iaculis interdum! Etiam ac ut vel per accumsan tempor nulla eu! Vehicula vehicula nec fermentum elit ipsum semper sem est dapibus pharetra ut ligula rhoncus."
+        "body": "Mi bibendum ut. Vitae ipsum cursus mattis condimentum? Ipsum metus magna eget in! Venenatis mauris sem fames."
       },
       {
         "id": "assignment-3",
@@ -57,8 +62,9 @@
         "lessonId": "lesson-1",
         "projectId": "project-1",
         "assignment": "Define: Synopsis",
-        "showDate": "2020-09-13T18:30:22.000Z",
-        "date": "2020-09-27T18:30:22.000Z",
+        "showDate": "2020-10-04T23:18:42.000Z",
+        "hideDate": "2020-11-01T23:18:42.000Z",
+        "date": "2020-10-18T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -67,39 +73,33 @@
             "Novice (1)"
           ],
           "values": {
-            "maximus scelerisque": [
-              "Nunc ut lacus.",
-              "Vitae lectus pharetra!",
-              "Suscipit quis dolor.",
-              "Elit laoreet ut donec lectus."
+            "mi lorem": [
+              "Vitae id in laoreet vestibulum.",
+              "Posuere accumsan magna.",
+              "Vulputate condimentum sem.",
+              "Scelerisque posuere nullam dui."
             ],
-            "malesuada fermentum": [
-              "Cubilia scelerisque sem arcu.",
-              "Dolor et placerat?",
-              "Fermentum lacus venenatis luctus.",
-              "Id vivamus est nascetur vivamus."
+            "id neque": [
+              "Vitae tempus justo condimentum.",
+              "Sapien vel laoreet ut.",
+              "Ullamcorper suspendisse sed arcu.",
+              "Scelerisque pretium malesuada diam ligula."
             ],
-            "sapien ipsum": [
-              "Accumsan suscipit velit ornare scelerisque.",
-              "Et eget eros?",
-              "Ligula ut et per?",
-              "Quisque libero ut rutrum."
+            "ante orci": [
+              "Nulla nec dictum lorem.",
+              "Tincidunt neque cursus.",
+              "Mauris non leo nulla.",
+              "Et ante ante amet."
             ],
-            "tincidunt eget": [
-              "Vel nam lorem.",
-              "Eleifend maecenas lacinia tortor pellentesque.",
-              "Faucibus tempor eget.",
-              "Mus at iaculis."
-            ],
-            "est lectus": [
-              "Non cursus in.",
-              "Commodo ligula ipsum ac fringilla!",
-              "Accumsan auctor pharetra ac?",
-              "Augue elit vel nulla neque."
+            "sapien dictum": [
+              "Morbi et risus a.",
+              "Semper est interdum.",
+              "Sem tortor id odio libero!",
+              "Duis vel purus."
             ]
           }
         },
-        "body": "Mi class tellus. Porta sed maecenas aliquam in ultrices ex aliquam dolor nibh nisl elit lacinia. Hendrerit ut nisi. Turpis ut blandit arcu interdum interdum."
+        "body": "Orci faucibus id nisi. Dis pellentesque molestie proin tempus lorem arcu?"
       },
       {
         "id": "assignment-4",
@@ -107,9 +107,7 @@
         "lessonId": "lesson-1",
         "projectId": "project-1",
         "assignment": "Develop: Story and Plot Elements",
-        "showDate": "2020-09-14T18:30:22.000Z",
-        "hideDate": "2020-10-12T18:30:22.000Z",
-        "date": "2020-09-28T18:30:22.000Z",
+        "date": "2020-10-19T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -118,33 +116,39 @@
             "Novice (1)"
           ],
           "values": {
-            "faucibus vestibulum": [
-              "Tellus auctor risus.",
-              "Tellus maecenas tellus velit.",
-              "Et aliquet hendrerit augue.",
-              "Tincidunt semper maecenas."
+            "tortor elit": [
+              "Libero mauris metus pulvinar.",
+              "Tortor hendrerit sollicitudin consectetur.",
+              "Montes feugiat consequat pharetra.",
+              "Libero varius sapien pretium vel."
             ],
-            "nec tincidunt": [
-              "Nulla venenatis pulvinar.",
-              "Duis volutpat mi condimentum.",
-              "Odio maecenas semper nibh cubilia.",
-              "Eleifend duis sollicitudin."
+            "elit at": [
+              "Mattis nunc praesent quis?",
+              "Pellentesque commodo vivamus luctus orci.",
+              "Faucibus malesuada porta.",
+              "Lacinia dui consectetur!"
             ],
-            "dui et": [
-              "Venenatis ac sed velit amet?",
-              "Vestibulum ultrices nec at.",
-              "Porttitor eget bibendum lacinia donec.",
-              "At aliquet donec et accumsan."
+            "potenti a": [
+              "Dapibus volutpat tortor.",
+              "Ut justo aptent pellentesque.",
+              "Justo sed ligula.",
+              "Facilisis at maximus ultricies."
             ],
-            "amet consequat": [
-              "Sit mi vestibulum.",
-              "Auctor eget inceptos?",
-              "Nisl finibus lacinia libero!",
-              "Vel eu eleifend at."
+            "aliquet metus": [
+              "Ornare integer ante ultrices.",
+              "Feugiat varius iaculis.",
+              "Tortor amet placerat porttitor.",
+              "Semper risus sem?"
+            ],
+            "lorem venenatis": [
+              "Amet eget in?",
+              "Tincidunt ligula mi tempus fusce.",
+              "Vestibulum amet lectus!",
+              "Pretium enim ut dolor consectetur."
             ]
           }
         },
-        "body": "Nec tortor in dictum semper. Id massa etiam amet tortor condimentum tristique justo. At non vehicula duis pellentesque turpis nulla viverra nunc tempus euismod vitae pharetra mauris. Iaculis convallis tristique eu sed feugiat ut. Non interdum venenatis fames curabitur quam ante nisi amet varius ultrices?"
+        "body": "Porta nisi ut sit congue lorem a amet scelerisque dignissim quis tristique amet. Ac tristique suscipit eu malesuada nullam ligula diam. Ipsum ultrices faucibus efficitur lorem non faucibus ultricies ac curabitur euismod? Tincidunt semper elit aliquam nullam volutpat ac sem senectus vel dapibus ut phasellus cursus."
       },
       {
         "id": "assignment-5",
@@ -152,7 +156,9 @@
         "lessonId": "lesson-1",
         "projectId": "project-1",
         "assignment": "Develop: Characters",
-        "date": "2020-09-29T18:30:22.000Z",
+        "showDate": "2020-10-06T23:18:42.000Z",
+        "hideDate": "2020-11-03T23:18:42.000Z",
+        "date": "2020-10-20T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -161,45 +167,45 @@
             "Novice (1)"
           ],
           "values": {
-            "egestas aliquam": [
-              "Venenatis consectetur aenean eu eu.",
-              "Elementum vestibulum justo accumsan.",
-              "Fringilla sed leo.",
-              "Venenatis mauris faucibus."
+            "suscipit dolor": [
+              "Metus duis quis?",
+              "Turpis phasellus tempus felis sem.",
+              "Justo finibus leo placerat!",
+              "In maximus donec?"
             ],
-            "vitae ut": [
-              "In ut nulla dapibus nisi?",
-              "Varius laoreet in varius vel.",
-              "Ut erat ac dui.",
-              "Non sagittis risus sapien."
+            "nulla euismod": [
+              "Tellus sagittis nullam.",
+              "Sollicitudin proin eu suspendisse at.",
+              "Sed duis id!",
+              "Augue sit vulputate consectetur!"
             ],
-            "purus malesuada": [
-              "Ornare sed natoque ultricies.",
-              "Ut sit metus odio!",
-              "Maecenas ac placerat tortor ultrices.",
-              "In maecenas dolor eros?"
+            "nec id": [
+              "Massa felis quisque?",
+              "Nulla dignissim ac.",
+              "Pellentesque tempus elit.",
+              "Massa vitae quam."
             ],
-            "suspendisse pulvinar": [
-              "Quis nec amet fusce facilisis?",
-              "Fames quis tempor nibh.",
-              "Elementum bibendum pharetra dis non.",
-              "Leo laoreet tincidunt nulla quisque."
+            "maecenas pellentesque": [
+              "Nec lobortis suspendisse sed mollis.",
+              "Nullam scelerisque libero.",
+              "Non nisi consectetur quisque.",
+              "Donec nisl dui."
             ],
-            "nisi amet": [
-              "Cras ipsum fringilla facilisis consequat.",
-              "Molestie ut in vehicula.",
-              "Eleifend venenatis id et lorem.",
-              "Suspendisse metus vitae eleifend auctor."
+            "nunc lobortis": [
+              "Nullam condimentum non praesent?",
+              "Efficitur ante volutpat nisl.",
+              "Lacinia ac ultricies et!",
+              "Fermentum maecenas orci!"
             ],
-            "pellentesque a": [
-              "Sodales inceptos justo elit eget.",
-              "Leo tellus sodales proin?",
-              "Orci vestibulum accumsan class.",
-              "Cursus id sem a."
+            "ligula orci": [
+              "Mauris consequat justo mollis viverra.",
+              "Lacus vitae porta nisi?",
+              "Tempor fames ut mattis a.",
+              "Vivamus porttitor quam."
             ]
           }
         },
-        "body": "Facilisis vulputate ipsum eget urna dui in lorem. Lobortis ligula lacinia dui et potenti vehicula? Ut consequat magnis blandit tellus quis in lacinia."
+        "body": "Orci condimentum sit non ipsum nisl nibh tristique? Phasellus sed maecenas? Bibendum sollicitudin et donec? Eget lacinia eget dolor tempor est a metus donec in ut. Orci bibendum mattis eros auctor nec suspendisse tempus justo montes semper nisi!"
       },
       {
         "id": "assignment-6",
@@ -207,9 +213,7 @@
         "lessonId": "lesson-1",
         "projectId": "project-1",
         "assignment": "Deliver: Hypertext Narrative Draft",
-        "showDate": "2020-09-16T18:30:22.000Z",
-        "hideDate": "2020-10-14T18:30:22.000Z",
-        "date": "2020-09-30T18:30:22.000Z",
+        "date": "2020-10-21T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -218,27 +222,39 @@
             "Novice (1)"
           ],
           "values": {
-            "ultricies sit": [
-              "Mi tortor quam placerat tortor.",
-              "Nisl at justo!",
-              "Placerat donec dui bibendum.",
-              "Donec vestibulum quis velit nisl?"
+            "ligula suspendisse": [
+              "Euismod sed arcu felis.",
+              "Tortor ex diam est?",
+              "Eu massa sit a donec.",
+              "Massa consequat libero quis porta."
             ],
-            "elit vitae": [
-              "Feugiat ut eget.",
-              "Massa laoreet mi lacinia.",
-              "Ligula laoreet est sed.",
-              "Phasellus at diam  sed!"
+            "elit pretium": [
+              "Efficitur eros cras elit lacus.",
+              "Duis augue rutrum dolor.",
+              "Erat sit libero nisl.",
+              "A nam at consectetur tellus."
             ],
-            "suscipit tellus": [
-              "Tortor feugiat nisi vitae eget?",
-              "Egestas diam amet metus eros.",
-              "Finibus est vestibulum sit elit.",
-              "Ligula libero feugiat vivamus dignissim?"
+            "ultrices dignissim": [
+              "Lorem iaculis sed sagittis.",
+              "Sem nec lectus orci.",
+              "At vel risus tempus.",
+              "Ultrices sed ultrices sed ligula!"
+            ],
+            "lectus varius": [
+              "Convallis faucibus in tristique?",
+              "Pulvinar luctus non risus nulla.",
+              "Quam libero a magna?",
+              "Molestie nibh nisi."
+            ],
+            "tortor quam": [
+              "Justo ac tellus mollis arcu?",
+              "Molestie dui lectus?",
+              "In arcu placerat semper diam.",
+              "Tortor parturient ornare accumsan."
             ]
           }
         },
-        "body": "Consectetur augue porttitor sit bibendum interdum sed ipsum ultrices facilisis eu donec ullamcorper nulla. Faucibus sem netus suscipit sem et. Laoreet non ultricies et proin velit quam nulla at etiam eget orci nullam maximus. Eget sem metus a lacus neque vel ligula dui ante."
+        "body": "Sit vitae curae a condimentum accumsan laoreet. Tincidunt magnis condimentum fringilla proin a amet nec semper ex dui tristique. Bibendum ex placerat faucibus tortor sit consectetur ac massa eu vitae et ex sodales."
       },
       {
         "id": "assignment-7",
@@ -246,7 +262,7 @@
         "lessonId": "lesson-1",
         "projectId": "project-1",
         "assignment": "Deliver: Feedback",
-        "date": "2020-10-01T18:30:22.000Z",
+        "date": "2020-10-22T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -255,33 +271,27 @@
             "Novice (1)"
           ],
           "values": {
-            "leo mauris": [
-              "Curabitur etiam id elit.",
-              "Rutrum ac ex.",
-              "In lobortis efficitur.",
-              "Volutpat pellentesque id?"
+            "in posuere": [
+              "Lacus ornare a laoreet?",
+              "Tellus nibh ut ut.",
+              "Eleifend rutrum sollicitudin in ut.",
+              "Pharetra magna gravida turpis duis."
             ],
-            "nec fermentum": [
-              "Convallis ultricies nulla ipsum.",
-              "Nam quis pellentesque mi.",
-              "Consectetur urna amet consectetur?",
-              "Ultricies tincidunt faucibus ex."
+            "cras quisque": [
+              "Proin dui in rhoncus maecenas!",
+              "Ullamcorper neque ante orci.",
+              "Risus lorem neque sodales.",
+              "Euismod quis consequat."
             ],
-            "et vestibulum": [
-              "Amet leo scelerisque elementum.",
-              "At ultrices massa?",
-              "Vehicula etiam nulla ultrices in?",
-              "Elit suspendisse accumsan nec?"
-            ],
-            "sem sed": [
-              "Accumsan nisi et tristique!",
-              "Malesuada suspendisse risus nec aliquet.",
-              "Curabitur integer orci massa montes.",
-              "Leo lectus feugiat gravida?"
+            "ipsum mattis": [
+              "Accumsan ac molestie!",
+              "Eros egestas augue.",
+              "Sit quam purus eu.",
+              "Sed pharetra pharetra ac?"
             ]
           }
         },
-        "body": "Tincidunt est ut aenean pretium sed accumsan egestas lorem pharetra imperdiet. Justo metus dapibus nisi sit fusce? Vulputate eget odio nunc pellentesque feugiat nisl condimentum elit donec enim libero rhoncus. Massa ut sem ac auctor neque morbi nisi bibendum mi luctus nisi."
+        "body": "In consectetur scelerisque pellentesque porttitor risus ut. Tempor etiam cras mi ac scelerisque bibendum integer pretium lacus odio non."
       },
       {
         "id": "assignment-8",
@@ -289,7 +299,7 @@
         "lessonId": "lesson-1",
         "projectId": "project-1",
         "assignment": "Deliver: Iterate",
-        "date": "2020-10-02T18:30:22.000Z",
+        "date": "2020-10-23T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -298,45 +308,33 @@
             "Novice (1)"
           ],
           "values": {
-            "ligula placerat": [
-              "Vitae felis pellentesque iaculis?",
-              "Porttitor integer aliquam?",
-              "Amet proin luctus rutrum.",
-              "Dui semper erat."
+            "eget lobortis": [
+              "Pellentesque per lectus et?",
+              "Nec gravida ultrices lorem vitae?",
+              "Facilisis lorem porta accumsan!",
+              "Magna maecenas efficitur sem!"
             ],
-            "ligula euismod": [
-              "Dignissim quisque lacinia libero sed.",
-              "Aliquet tincidunt eleifend quam interdum.",
-              "Non pellentesque vestibulum venenatis.",
-              "In mus sollicitudin."
+            "sed laoreet": [
+              "Ligula a id eleifend venenatis.",
+              "Sed leo nam senectus eu.",
+              "Maecenas id senectus sit ut!",
+              "Quis ante tortor."
             ],
-            "dolor etiam": [
-              "Neque malesuada dui nascetur est.",
-              "Aliquet at sed in in.",
-              "Euismod consequat ullamcorper sed risus.",
-              "Luctus ultricies ultrices non."
+            "pretium accumsan": [
+              "Sit at sem.",
+              "Aliquet dapibus praesent ut.",
+              "Ridiculus maximus phasellus velit.",
+              "Amet lacinia tortor venenatis id."
             ],
-            "interdum porttitor": [
-              "Vestibulum lacus est aliquam feugiat?",
-              "Eu congue felis posuere porta.",
-              "Nulla ullamcorper euismod est.",
-              "In elementum eu."
-            ],
-            "aliquam non": [
-              "Odio magna venenatis scelerisque laoreet.",
-              "Lobortis metus neque tempus.",
-              "Sem vel tellus sapien.",
-              "Nec at orci elementum."
-            ],
-            "penatibus turpis": [
-              "Aliquet eu ante leo.",
-              "Cursus sit sem.",
-              "Tempus consectetur consequat?",
-              "A et at."
+            "imperdiet tempus": [
+              "Vehicula lectus dolor sed.",
+              "Dui nec ut!",
+              "Ut et ut.",
+              "Semper varius suscipit semper."
             ]
           }
         },
-        "body": "Elit blandit tempus faucibus eu sollicitudin quis metus in. Placerat congue scelerisque tellus ac. Ac turpis bibendum imperdiet leo mi."
+        "body": "Quisque facilisis congue hendrerit cras posuere ex libero leo consectetur lacinia phasellus. Semper vehicula ut netus commodo vulputate turpis in  id lobortis? Dapibus faucibus massa condimentum est euismod eleifend sed quis amet nibh etiam scelerisque."
       },
       {
         "id": "assignment-9",
@@ -344,9 +342,7 @@
         "lessonId": "lesson-1",
         "projectId": "project-1",
         "assignment": "Deliver: Iterate critique",
-        "showDate": "2020-09-19T18:30:22.000Z",
-        "hideDate": "2020-10-17T18:30:22.000Z",
-        "date": "2020-10-03T18:30:22.000Z",
+        "date": "2020-10-24T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -355,33 +351,33 @@
             "Novice (1)"
           ],
           "values": {
-            "justo ante": [
-              "Sed dictum aenean.",
-              "Interdum tempor enim morbi.",
-              "Tristique elementum luctus torquent tincidunt.",
-              "Et quisque bibendum aliquam."
+            "massa interdum": [
+              "Sem lorem suspendisse.",
+              "Sollicitudin laoreet consectetur ultrices duis.",
+              "Ante non magnis.",
+              "Elit quisque dolor sollicitudin neque?"
             ],
-            "volutpat neque": [
-              "Duis nunc condimentum?",
-              "Nulla massa maecenas odio orci.",
-              "Habitant gravida vel.",
-              "In parturient laoreet mi vel."
+            "ipsum venenatis": [
+              "Mus sit quam.",
+              "Proin scelerisque finibus nibh.",
+              "Libero nisi ex.",
+              "Ultricies sollicitudin fames ex sit."
             ],
-            "sed tortor": [
-              "Lorem ut amet semper.",
-              "Dictum ut non?",
-              "Blandit at lobortis parturient?",
-              "Consequat vitae orci lobortis."
+            "ac nisi": [
+              "Aliquam semper vel placerat arcu.",
+              "Consectetur dui duis.",
+              "Donec tempus fermentum faucibus pretium.",
+              "Risus nisi finibus dolor ut."
             ],
-            "tempor turpis": [
-              "Dapibus maximus nisl eleifend.",
-              "Nisi lorem efficitur.",
-              "Iaculis sem ullamcorper.",
-              "Ac tellus dignissim libero ligula?"
+            "justo dui": [
+              "At vehicula gravida neque.",
+              "Condimentum lectus sapien.",
+              "Tristique nisi nisi elit.",
+              "Semper justo et lobortis."
             ]
           }
         },
-        "body": "Sed tellus porta? Arcu venenatis dapibus fermentum massa ac ex vestibulum et in odio nulla. Conubia molestie integer tempus ac?"
+        "body": "Elit lectus sollicitudin elit placerat amet maximus fringilla massa. Curabitur libero proin tristique. Diam venenatis eleifend eros nisi nibh eros. Arcu at neque lectus vivamus et eu pulvinar consectetur maecenas maecenas ligula ligula? Scelerisque viverra sollicitudin eu vitae?"
       },
       {
         "id": "assignment-10",
@@ -389,8 +385,8 @@
         "lessonId": "lesson-1",
         "projectId": "project-1",
         "assignment": "Deliver: Iterate critique",
-        "hideDate": "2020-10-18T18:30:22.000Z",
-        "date": "2020-10-04T18:30:22.000Z",
+        "showDate": "2020-10-11T23:18:42.000Z",
+        "date": "2020-10-25T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -399,27 +395,45 @@
             "Novice (1)"
           ],
           "values": {
-            "id risus": [
-              "Ipsum varius amet.",
-              "Lacus pharetra tortor est lacus.",
-              "Libero et dolor adipiscing sem.",
-              "Feugiat donec semper mattis."
+            "egestas accumsan": [
+              "Ut quam mauris laoreet eleifend.",
+              "Vivamus tincidunt ultricies orci.",
+              "Rutrum nullam maecenas tortor nullam.",
+              "Sed condimentum libero."
             ],
-            "eu mattis": [
-              "Sem fusce in vitae!",
-              "Porta aliquam libero finibus nibh!",
-              "Sit turpis tortor lacinia.",
-              "Pharetra ut sem."
+            "vitae in": [
+              "Metus eleifend nam.",
+              "Sit commodo fringilla.",
+              "Nisl amet id ex.",
+              "Etiam integer ligula."
             ],
-            "sed ut": [
-              "Ligula efficitur non vestibulum?",
-              "Etiam condimentum tellus.",
-              "Sem fermentum ex risus augue.",
-              "In at nulla nisl?"
+            "interdum sed": [
+              "Ex et lobortis dui pharetra.",
+              "Semper tempor placerat vel sem.",
+              "Libero elit tristique velit venenatis!",
+              "Sed aliquet enim sed."
+            ],
+            "ultrices tortor": [
+              "Maximus quis lobortis euismod?",
+              "Egestas enim nunc vel.",
+              "Lorem semper consectetur sapien.",
+              "Rutrum et felis laoreet blandit."
+            ],
+            "aliquam viverra": [
+              "Non eleifend nisi.",
+              "Cursus viverra tristique vitae?",
+              "Vitae non quisque mollis.",
+              "Sed dapibus magna eleifend."
+            ],
+            "nibh vitae": [
+              "Praesent scelerisque metus erat sodales.",
+              "Turpis metus maximus purus ipsum.",
+              "Mauris euismod ultrices semper vulputate.",
+              "Litora consectetur nibh."
             ]
           }
         },
-        "body": "Sed eu mauris eget montes ut? Consectetur luctus elementum mi nisl. Venenatis luctus leo ipsum posuere sed. Eu blandit iaculis pretium rutrum auctor semper. Velit scelerisque donec."
+        "body": "A pharetra enim auctor nibh tellus lorem nulla velit et urna at. Sollicitudin sed viverra nisl eros elit scelerisque nibh vel? Blandit lacinia vestibulum cursus lorem urna nec potenti urna massa non nec quisque? Ultricies eros est at tristique diam est fringilla amet morbi quam."
       },
       {
         "id": "assignment-11",
@@ -427,8 +441,8 @@
         "lessonId": "lesson-1",
         "projectId": "project-1",
         "assignment": "Deliver: Hypertext Narrative",
-        "showDate": "2020-09-21T18:30:22.000Z",
-        "date": "2020-10-05T18:30:22.000Z",
+        "showDate": "2020-10-12T23:18:42.000Z",
+        "date": "2020-10-26T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -437,39 +451,33 @@
             "Novice (1)"
           ],
           "values": {
-            "nisi dictum": [
-              "Mauris lectus elit nec.",
-              "Lorem nec risus ex ultrices.",
-              "Nisl sodales curabitur ipsum?",
-              "A augue ut."
+            "purus praesent": [
+              "Turpis vitae cursus.",
+              "Ac neque aenean hendrerit scelerisque.",
+              "At nisi ante non.",
+              "Et turpis suspendisse nam ac."
             ],
-            "auctor tempus": [
-              "Lorem bibendum eleifend placerat suscipit!",
-              "Leo sed donec ultrices.",
-              "In ligula ultricies?",
-              "Consequat risus scelerisque volutpat?"
+            "lorem maecenas": [
+              "Odio neque aenean pellentesque faucibus.",
+              "Quis maecenas consequat?",
+              "Tortor turpis nisi at commodo.",
+              "Rutrum pharetra augue consequat dictum."
             ],
-            "nibh at": [
-              "Sed sem ipsum in?",
-              "In sapien sit?",
-              "Aliquam vestibulum tincidunt ipsum leo?",
-              "Tortor ultrices ornare erat."
+            "nec massa": [
+              "In ipsum pharetra neque lacus.",
+              "Interdum pretium dui.",
+              "Sagittis metus luctus.",
+              "Posuere convallis purus."
             ],
-            "enim nam": [
-              "Justo ligula consectetur.",
-              "Aliquam orci sed blandit.",
-              "Eu pharetra ultricies.",
-              "Odio rutrum magna varius metus."
-            ],
-            "in nisl": [
-              "Nisi a tristique?",
-              "Interdum nullam vitae.",
-              "Justo purus et ac.",
-              "Et id nisl mi accumsan?"
+            "senectus donec": [
+              "Sed turpis ipsum consequat ullamcorper!",
+              "Penatibus iaculis praesent in nostra!",
+              "Augue eget cubilia.",
+              "Ultrices lacinia tortor pellentesque?"
             ]
           }
         },
-        "body": "Porta fames est nunc pellentesque integer eu pharetra venenatis amet vehicula. Rutrum dolor non eget congue morbi semper!"
+        "body": "Integer dolor sed ante maecenas! Nec velit orci amet non sagittis fusce et quam bibendum. Nisi sollicitudin aliquam vitae sagittis tincidunt dis vitae elit sodales. Semper sed laoreet ipsum elementum dui scelerisque quis. Ipsum lacus sed posuere rhoncus ridiculus dapibus felis egestas sociosqu."
       }
     ]
   },
@@ -478,7 +486,7 @@
     "order": 1,
     "lessonId": "lesson-2",
     "project": "Ritual Project",
-    "body": "Massa vel enim etiam nisi tincidunt lacinia lorem semper ut laoreet consectetur ad. Ornare at leo neque! Ac interdum tincidunt proin ultricies nunc porta eu laoreet nunc convallis sapien nec. Ac donec varius a laoreet lorem cursus orci est.",
+    "body": "Consequat mi vestibulum porttitor tempor in sodales diam ut ex laoreet facilisis non eleifend. Blandit pulvinar id enim sed donec quam efficitur leo commodo diam tempor. Ac neque erat scelerisque elit velit pretium nunc non efficitur. Netus magna curabitur semper et tortor et a a.",
     "assignments": [
       {
         "id": "assignment-14",
@@ -486,8 +494,8 @@
         "lessonId": "lesson-2",
         "projectId": "project-2",
         "assignment": "Discover: Interview",
-        "showDate": "2020-09-19T18:30:22.000Z",
-        "date": "2020-10-03T18:30:22.000Z",
+        "hideDate": "2020-11-07T23:18:42.000Z",
+        "date": "2020-10-24T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -496,33 +504,33 @@
             "Novice (1)"
           ],
           "values": {
-            "varius vehicula": [
-              "Nam accumsan urna?",
-              "Mollis vestibulum velit nisi.",
-              "Nullam ut ultrices ac?",
-              "Aliquam mi varius eleifend."
+            "vulputate non": [
+              "Accumsan in diam posuere.",
+              "Duis ex mi ultrices feugiat.",
+              "Sed ultrices dapibus laoreet elit.",
+              "Vel potenti bibendum fermentum."
             ],
-            "a blandit": [
-              "Porttitor in sed ut.",
-              "Fermentum eleifend vivamus id?",
-              "Commodo ut tincidunt.",
-              "Euismod a ligula."
+            "facilisis varius": [
+              "Eleifend amet et risus.",
+              "Maximus ut auctor.",
+              "Aliquam porttitor tincidunt at odio?",
+              "Sodales sodales at vel."
             ],
-            "bibendum metus": [
-              "Tortor tempus enim finibus nascetur.",
-              "Dictum nullam semper ut magna.",
-              "Turpis ornare nec.",
-              "Sed tellus vestibulum non."
+            "efficitur arcu": [
+              "Dictum sit mollis.",
+              "Efficitur cras ut neque nisi.",
+              "Vitae ligula etiam eros.",
+              "Varius sed bibendum tellus eu."
             ],
-            "auctor neque": [
-              "Amet aenean donec commodo at.",
-              "In et viverra non sed?",
-              "Nibh ligula bibendum vivamus at.",
-              "Sapien dictum eget efficitur."
+            "at ac": [
+              "Velit elit est ac lorem.",
+              "In dictum cursus sagittis leo?",
+              "Ornare interdum ligula dolor id.",
+              "Blandit ac porttitor posuere neque."
             ]
           }
         },
-        "body": "Mauris maecenas pulvinar? Sit ipsum porta sed id malesuada nisi facilisis?"
+        "body": "Quam maecenas nisl ultrices varius non laoreet sollicitudin nisl. Odio tempus euismod primis consectetur. Amet sed accumsan porta risus. Neque ac aliquam tellus eu at turpis laoreet est in. Purus interdum sed euismod."
       },
       {
         "id": "assignment-15",
@@ -530,8 +538,7 @@
         "lessonId": "lesson-2",
         "projectId": "project-2",
         "assignment": "Discover: Journey Map",
-        "hideDate": "2020-10-18T18:30:22.000Z",
-        "date": "2020-10-04T18:30:22.000Z",
+        "date": "2020-10-25T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -540,39 +547,33 @@
             "Novice (1)"
           ],
           "values": {
-            "purus tristique": [
-              "Integer eu sed eleifend.",
-              "Tristique justo eget condimentum fermentum!",
-              "Ultrices tortor maecenas.",
-              "Non ut nisl nisl elementum!"
+            "ultrices consectetur": [
+              "Laoreet mauris placerat convallis!",
+              "Eu eget varius.",
+              "Quis ut in!",
+              "Vestibulum egestas tincidunt non porta?"
             ],
-            "consectetur in": [
-              "Lacinia nam ante.",
-              "Ac sodales integer nisi?",
-              "Fermentum est et.",
-              "Auctor ex condimentum."
+            "velit ligula": [
+              "Orci id mollis!",
+              "Enim turpis nunc suspendisse?",
+              "Vitae tristique vitae nulla duis.",
+              "Ex nibh ac vulputate eget."
             ],
-            "magna aenean": [
-              "Pharetra et vehicula.",
-              "Justo placerat interdum congue orci.",
-              "Metus eu ut tortor.",
-              "Sed class libero."
+            "congue tempor": [
+              "Malesuada lacus faucibus?",
+              "Nisi vestibulum ante?",
+              "Lorem risus iaculis?",
+              "Consectetur laoreet sagittis leo dictum."
             ],
-            "suspendisse ex": [
-              "Lacus hendrerit mattis.",
-              "In ac orci metus.",
-              "Finibus pulvinar lectus malesuada metus.",
-              "Nisi in tempus hendrerit vel."
-            ],
-            "eu torquent": [
-              "Tincidunt rutrum feugiat?",
-              "Nisl primis molestie.",
-              "Ultricies quisque est dolor tristique.",
-              "Mattis lobortis velit."
+            "a sed": [
+              "Nec donec lorem.",
+              "Pharetra sed aenean lorem etiam.",
+              "Vestibulum est ultricies.",
+              "Eu consectetur ut sed."
             ]
           }
         },
-        "body": "Eu suspendisse metus primis tempor sit metus finibus vitae purus enim amet nunc sed? Accumsan et augue et nisi tortor sed ante sapien congue nisi luctus torquent at. Aliquet parturient interdum ante ultrices odio semper ante laoreet lacinia. Gravida dignissim netus mi quis justo lacus arcu tincidunt ut sit."
+        "body": "Lacinia a sed dignissim eu aenean eu venenatis. Ac tristique posuere nisl vel sapien quis accumsan porttitor in pellentesque tristique eget vitae? Sed enim lacinia iaculis elementum risus ullamcorper non aenean lacinia quis donec pretium nec? Elementum in sem ultrices ac phasellus? Tortor finibus vehicula sem ante augue tortor."
       },
       {
         "id": "assignment-16",
@@ -580,9 +581,7 @@
         "lessonId": "lesson-2",
         "projectId": "project-2",
         "assignment": "Define: Themes & Insights",
-        "showDate": "2020-09-21T18:30:22.000Z",
-        "hideDate": "2020-10-19T18:30:22.000Z",
-        "date": "2020-10-05T18:30:22.000Z",
+        "date": "2020-10-26T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -591,27 +590,33 @@
             "Novice (1)"
           ],
           "values": {
-            "sapien blandit": [
-              "Ligula purus sed.",
-              "Ipsum eget lobortis!",
-              "Massa elit sed massa.",
-              "Eu vulputate magna placerat."
+            "nunc arcu": [
+              "Ut est eget elit tempus.",
+              "Sed consequat massa.",
+              "Lorem tortor nulla?",
+              "Mattis auctor quisque."
             ],
-            "purus purus": [
-              "Facilisis fermentum in.",
-              "Lacinia metus vehicula sollicitudin?",
-              "Gravida ac dui at!",
-              "At pharetra magnis."
+            "sem ligula": [
+              "Fames consectetur odio.",
+              "Dolor euismod et quisque non.",
+              "Ultricies amet dolor orci libero?",
+              "In viverra vitae risus."
             ],
-            "quis dui": [
-              "Eget elit tortor.",
-              "In quis porta luctus.",
-              "Tristique turpis vestibulum.",
-              "At nec sit ultrices?"
+            "ornare integer": [
+              "Elit in viverra gravida morbi.",
+              "Eget nec malesuada vel.",
+              "Ipsum in feugiat mattis!",
+              "Vestibulum ullamcorper velit."
+            ],
+            "nec aliquam": [
+              "Cursus massa sagittis.",
+              "In in cursus.",
+              "Dui sollicitudin aliquam lobortis.",
+              "Morbi ac in?"
             ]
           }
         },
-        "body": "Sed efficitur porta consequat donec amet euismod nullam primis lobortis pharetra bibendum nec. Sollicitudin cursus nisi vitae orci nulla maecenas dolor posuere amet consectetur. Ultrices non ornare diam quis nunc metus vel morbi sed. Maecenas non et tristique justo etiam maximus fermentum nisi suspendisse tristique massa venenatis."
+        "body": "Euismod sagittis urna porttitor rutrum vitae ultrices imperdiet tempus arcu. Elit felis eget nec a egestas mauris nunc justo fames proin suspendisse fusce taciti. Pretium elementum aenean duis donec leo. Ac placerat lorem viverra semper bibendum laoreet ligula praesent ante mauris dolor?"
       },
       {
         "id": "assignment-17",
@@ -619,9 +624,8 @@
         "lessonId": "lesson-2",
         "projectId": "project-2",
         "assignment": "Define: HMW",
-        "showDate": "2020-09-22T18:30:22.000Z",
-        "hideDate": "2020-10-20T18:30:22.000Z",
-        "date": "2020-10-06T18:30:22.000Z",
+        "hideDate": "2020-11-10T23:18:42.000Z",
+        "date": "2020-10-27T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -630,45 +634,33 @@
             "Novice (1)"
           ],
           "values": {
-            "magna sagittis": [
-              "Leo egestas tempor ipsum.",
-              "Maecenas ultrices amet viverra leo.",
-              "Dictum ac amet.",
-              "Auctor ultrices duis."
+            "montes elit": [
+              "Enim augue varius.",
+              "Faucibus interdum scelerisque scelerisque dui.",
+              "In ut in.",
+              "Eu commodo ultricies nulla."
             ],
-            "efficitur vitae": [
-              "Vitae etiam eu.",
-              "Orci a sem venenatis vel.",
-              "Velit in donec augue.",
-              "Imperdiet consequat sed odio."
+            "semper tellus": [
+              "Ut consectetur in tellus vivamus.",
+              "Rutrum blandit pellentesque neque?",
+              "Porttitor ultricies mollis?",
+              "Sed a proin!"
             ],
-            "nunc accumsan": [
-              "Ultrices interdum nec ultricies enim.",
-              "Metus nascetur tortor ornare facilisis.",
-              "Posuere nunc nulla in.",
-              "Tellus quis consequat vel?"
+            "condimentum pellentesque": [
+              "Maximus justo congue fusce?",
+              "Scelerisque maecenas semper.",
+              "Justo placerat mi eget massa.",
+              "At sem porta dictum morbi."
             ],
-            "mauris sit": [
-              "Vitae orci porta?",
-              "Tempus non dui.",
-              "Aenean lobortis vestibulum?",
-              "Interdum porttitor orci quam."
-            ],
-            "ac mattis": [
-              "Ac tincidunt sem enim!",
-              "In fermentum porttitor ex.",
-              "Semper blandit faucibus ut ut!",
-              "Maximus bibendum purus!"
-            ],
-            "placerat risus": [
-              "Sed in maecenas.",
-              "A varius cursus lectus.",
-              "Vulputate sem lobortis quis?",
-              "Vehicula nulla vestibulum volutpat."
+            "quisque mauris": [
+              "Egestas semper malesuada.",
+              "Orci montes laoreet nunc diam.",
+              "In ac maecenas ac.",
+              "Auctor duis velit."
             ]
           }
         },
-        "body": "Porttitor congue metus nulla eget rutrum mattis. Vel tincidunt etiam nunc et nec ligula vestibulum consectetur tincidunt nunc! Condimentum id scelerisque ex."
+        "body": "Bibendum maximus tempus dui malesuada sapien eu aliquam ultrices tempor scelerisque mauris fringilla tristique. Ac at tortor non nisi pharetra etiam? Est tortor lorem vestibulum. Vestibulum condimentum vehicula tempus lacinia leo metus! Nulla ut eget lacus lacinia pretium mauris vel pellentesque pellentesque non litora ultricies scelerisque?"
       },
       {
         "id": "assignment-18",
@@ -676,9 +668,9 @@
         "lessonId": "lesson-2",
         "projectId": "project-2",
         "assignment": "Develop: Brainstorm",
-        "showDate": "2020-09-23T18:30:22.000Z",
-        "hideDate": "2020-10-21T18:30:22.000Z",
-        "date": "2020-10-07T18:30:22.000Z",
+        "showDate": "2020-10-14T23:18:42.000Z",
+        "hideDate": "2020-11-11T23:18:42.000Z",
+        "date": "2020-10-28T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -687,33 +679,27 @@
             "Novice (1)"
           ],
           "values": {
-            "maecenas tincidunt": [
-              "Placerat vestibulum vestibulum a laoreet.",
-              "Metus fringilla quisque at.",
-              "Tincidunt consequat mollis porta.",
-              "Ligula ullamcorper semper ac."
+            "cras justo": [
+              "Donec a sem lacus nulla.",
+              "Odio enim amet.",
+              "Erat mauris nullam vivamus.",
+              "Aenean tempor facilisi nunc?"
             ],
-            "nullam maximus": [
-              "Lobortis faucibus habitant lacus ac.",
-              "Ac amet phasellus.",
-              "Sollicitudin eu nunc mattis.",
-              "Neque nulla vestibulum volutpat gravida."
+            "cursus vulputate": [
+              "Metus aliquam placerat metus.",
+              "Condimentum imperdiet vitae consectetur.",
+              "Maecenas sapien porta.",
+              "Ultrices vehicula ornare feugiat fusce."
             ],
-            "ac turpis": [
-              "Nisl duis vitae!",
-              "Sagittis mi lectus nec.",
-              "At sed gravida nulla eu.",
-              "Suspendisse nisl nisi?"
-            ],
-            "metus pretium": [
-              "Suscipit nisl tincidunt!",
-              "Ante integer et curabitur neque?",
-              "Nullam semper iaculis laoreet amet.",
-              "Diam imperdiet magna congue."
+            "varius libero": [
+              "Auctor velit semper varius vel.",
+              "Neque magna elementum.",
+              "Semper bibendum faucibus?",
+              "Elementum mi mattis."
             ]
           }
         },
-        "body": "Quis praesent quis vulputate sollicitudin tincidunt diam fusce? Imperdiet eget laoreet eu eros at accumsan! Nam pellentesque diam?"
+        "body": "In senectus gravida faucibus torquent. Mauris diam et ligula non sit eget. Varius est finibus morbi suspendisse eu vestibulum ut quisque nisi aliquet."
       },
       {
         "id": "assignment-19",
@@ -721,8 +707,7 @@
         "lessonId": "lesson-2",
         "projectId": "project-2",
         "assignment": "Develop: Storyboard",
-        "hideDate": "2020-10-22T18:30:22.000Z",
-        "date": "2020-10-08T18:30:22.000Z",
+        "date": "2020-10-29T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -731,27 +716,45 @@
             "Novice (1)"
           ],
           "values": {
-            "quisque porta": [
-              "Tellus maximus faucibus nec.",
-              "Finibus tellus fringilla.",
-              "Elementum tincidunt eu?",
-              "Donec vel nec porttitor tristique."
+            "orci nam": [
+              "Lectus ac purus?",
+              "Semper vel accumsan leo porta?",
+              "Adipiscing sodales quam eros.",
+              "Ornare odio  vel scelerisque."
             ],
-            "interdum vehicula": [
-              "Odio ante aliquam nisl neque?",
-              "Sed ex ac ligula.",
-              "Sollicitudin dolor pellentesque est.",
-              "Libero sollicitudin lorem ac nullam?"
+            "integer metus": [
+              "Eu nisi quisque suscipit sollicitudin.",
+              "Justo vestibulum euismod.",
+              "Ligula auctor sollicitudin auctor dignissim!",
+              "Tortor ipsum cursus nec."
             ],
-            "senectus venenatis": [
-              "Lobortis quis lobortis.",
-              "Consectetur sed mattis.",
-              "Faucibus lacinia venenatis fusce dapibus.",
-              "Ultrices mi nisi dignissim velit!"
+            "tincidunt varius": [
+              "Euismod volutpat phasellus orci quis?",
+              "At elit justo ipsum sapien.",
+              "Maecenas porta integer magnis?",
+              "Metus proin congue id?"
+            ],
+            "porta est": [
+              "Suspendisse libero feugiat.",
+              "Eget mollis sed.",
+              "Nibh luctus condimentum mattis sed.",
+              "Ultricies ac ipsum fusce et."
+            ],
+            "augue justo": [
+              "Etiam sit nulla ac vestibulum!",
+              "Lobortis leo laoreet nec.",
+              "Consequat ut ac bibendum.",
+              "Fermentum vestibulum sed!"
+            ],
+            "quis dapibus": [
+              "Vehicula nascetur tincidunt tempus?",
+              "Metus euismod eget.",
+              "Interdum metus porttitor augue laoreet.",
+              "Nisl sit eu diam?"
             ]
           }
         },
-        "body": "Phasellus sem nisl tristique ullamcorper facilisis massa cursus phasellus nullam congue vivamus eu ac. Congue vulputate malesuada. Venenatis scelerisque et accumsan."
+        "body": "Consequat augue nibh quis vitae lectus sem sed blandit mollis. Porttitor lectus mi efficitur condimentum elit leo volutpat. Et imperdiet et maximus."
       },
       {
         "id": "assignment-20",
@@ -759,8 +762,7 @@
         "lessonId": "lesson-2",
         "projectId": "project-2",
         "assignment": "Develop: Prototype",
-        "showDate": "2020-09-25T18:30:22.000Z",
-        "date": "2020-10-09T18:30:22.000Z",
+        "date": "2020-10-30T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -769,27 +771,39 @@
             "Novice (1)"
           ],
           "values": {
-            "consectetur luctus": [
-              "Quisque lacinia tortor tempus fames?",
-              "Volutpat tellus mollis sit fames?",
-              "Nec non vulputate id.",
-              "Libero elit vitae ac pulvinar?"
+            "magna ac": [
+              "Laoreet porta mauris.",
+              "Non mattis feugiat consectetur tortor.",
+              "Rhoncus varius vulputate faucibus cursus.",
+              "Ante faucibus iaculis arcu?"
             ],
-            "dolor vestibulum": [
-              "Porttitor sed velit.",
-              "Consectetur maecenas vel.",
-              "Ultrices lectus vel eu quam.",
-              "Viverra maecenas facilisis nisi justo."
+            "nam nulla": [
+              "Suscipit vestibulum pretium.",
+              "Dictum neque bibendum nunc ac.",
+              "In lobortis ipsum justo.",
+              "Viverra duis egestas suscipit?"
             ],
-            "condimentum dictum": [
-              "Non congue lectus urna!",
-              "Maecenas non ut maecenas amet.",
-              "Fermentum aliquam ut lacinia.",
-              "Purus vel vehicula."
+            "diam ac": [
+              "Quam phasellus et sed ac.",
+              "Libero suspendisse sagittis.",
+              "Proin fusce scelerisque.",
+              "Justo finibus eros."
+            ],
+            "nec nullam": [
+              "Semper quis quis sollicitudin.",
+              "Odio accumsan sem velit.",
+              "In eget aliquam nec sem.",
+              "Donec semper consequat elementum."
+            ],
+            "convallis eleifend": [
+              "Urna sagittis orci sed.",
+              "Ac purus massa turpis tellus.",
+              "Eget phasellus aliquam.",
+              "Ut ac nulla sagittis diam."
             ]
           }
         },
-        "body": "Amet placerat quis sed dui vehicula ac et eget tellus quisque mauris consectetur lectus. Mattis id cursus nec pellentesque in ut a a? Sed fermentum lectus suscipit ac sollicitudin. Libero porta faucibus erat sit interdum tincidunt diam maecenas bibendum quisque quisque? Ligula condimentum nunc aliquet."
+        "body": "Vel donec ultricies et justo. Elementum ut nisl id bibendum eget vivamus parturient nunc est? Accumsan consectetur lectus et. Tempor proin venenatis!"
       },
       {
         "id": "assignment-21",
@@ -797,9 +811,8 @@
         "lessonId": "lesson-2",
         "projectId": "project-2",
         "assignment": "Develop: Test and Iterate",
-        "showDate": "2020-09-26T18:30:22.000Z",
-        "hideDate": "2020-10-24T18:30:22.000Z",
-        "date": "2020-10-10T18:30:22.000Z",
+        "showDate": "2020-10-17T23:18:42.000Z",
+        "date": "2020-10-31T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -808,33 +821,39 @@
             "Novice (1)"
           ],
           "values": {
-            "congue at": [
-              "Vestibulum neque risus ipsum.",
-              "Quam a dapibus?",
-              "Nulla sem lorem metus est.",
-              "Sagittis nulla diam consequat nisl!"
+            "eu ligula": [
+              "Felis facilisis nunc orci.",
+              "Consectetur cras aliquam fusce.",
+              "At non aliquam ac a.",
+              "Arcu suspendisse maximus neque."
             ],
-            "auctor fermentum": [
-              "Est est ipsum in scelerisque.",
-              "Tortor vulputate sagittis elit!",
-              "Praesent massa dolor?",
-              "Justo iaculis a lorem efficitur."
+            "interdum pharetra": [
+              "Placerat nisi ultricies at.",
+              "Justo nec mattis pellentesque.",
+              "Ipsum sed eleifend a.",
+              "Vivamus varius cursus dolor amet?"
             ],
-            "nibh auctor": [
-              "Dolor ante etiam.",
-              "Mi rutrum vehicula aenean condimentum.",
-              "Convallis sit velit justo nullam?",
-              "Iaculis elit ut in sodales?"
+            "quis nullam": [
+              "Ultricies condimentum vel.",
+              "Eu in aliquam.",
+              "Fringilla in malesuada.",
+              "Mattis sit semper."
             ],
-            "aliquet ut": [
-              "Vel eget hendrerit nisi eget.",
-              "Risus justo pellentesque vitae.",
-              "Est nisl bibendum nec eu.",
-              "Vitae ornare sit sem."
+            "curabitur luctus": [
+              "Varius nibh ut eleifend.",
+              "Tempor dictum ipsum pulvinar?",
+              "Eleifend nec eu.",
+              "Etiam viverra ultricies non sed."
+            ],
+            "nam sit": [
+              "Donec id vivamus quam bibendum.",
+              "Per fermentum enim sem etiam.",
+              "Felis mus ligula pulvinar.",
+              "Et vitae feugiat felis interdum."
             ]
           }
         },
-        "body": "Ullamcorper fusce phasellus lacinia. Ex laoreet eros cursus? Sed felis velit in ac vulputate interdum a? Tortor id accumsan ipsum."
+        "body": "Vel risus at auctor tempus sollicitudin suscipit cras ipsum. Odio hendrerit mauris in justo dictum turpis dis mollis vestibulum vivamus velit. Ipsum commodo ligula non congue integer accumsan! Accumsan ac vehicula tincidunt. Porttitor ultrices ridiculus finibus enim tristique placerat sed at quam ut lacinia?"
       },
       {
         "id": "assignment-22",
@@ -842,8 +861,8 @@
         "lessonId": "lesson-2",
         "projectId": "project-2",
         "assignment": "Deliver: Final Prototype",
-        "showDate": "2020-09-27T18:30:22.000Z",
-        "date": "2020-10-11T18:30:22.000Z",
+        "hideDate": "2020-11-15T23:18:42.000Z",
+        "date": "2020-11-01T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -852,27 +871,33 @@
             "Novice (1)"
           ],
           "values": {
-            "interdum vitae": [
-              "Pulvinar massa quisque.",
-              "Vehicula libero magna?",
-              "Erat integer eu tortor.",
-              "Ante maximus ultrices ipsum tellus."
+            "arcu tortor": [
+              "Porttitor condimentum libero ut?",
+              "Aenean mattis et in accumsan.",
+              "Suscipit turpis at praesent et.",
+              "Torquent quisque magna sed."
             ],
-            "lacinia sodales": [
-              "Vitae pellentesque sodales quis.",
-              "Sociosqu urna quis iaculis ex.",
-              "Pretium laoreet consequat eget.",
-              "Ipsum nec ac phasellus a?"
+            "viverra leo": [
+              "Hendrerit ac erat dictum turpis.",
+              "Et sed leo phasellus odio.",
+              "Adipiscing quisque elit?",
+              "Eget mi non vitae."
             ],
-            "ut ac": [
-              "Suscipit in sed viverra vehicula.",
-              "Placerat rutrum ante vel nulla?",
-              "Tellus nunc tellus.",
-              "Ut nisl faucibus sociosqu!"
+            "quis consectetur": [
+              "Fermentum integer auctor lacinia laoreet.",
+              "Cursus sed turpis suspendisse fusce?",
+              "Tempus mi consectetur.",
+              "Donec purus consectetur sed."
+            ],
+            "sit quisque": [
+              "Non sit vel.",
+              "Mi lobortis mauris neque?",
+              "Etiam enim suspendisse magna.",
+              "Purus lacus laoreet penatibus."
             ]
           }
         },
-        "body": "Habitant at nec. Mi in augue nisl iaculis massa turpis metus. Magna ultricies luctus fringilla nec nulla finibus dolor. Ligula eget fusce vel quisque rutrum at. Ipsum torquent egestas ultrices laoreet sem eu sagittis lacinia tincidunt."
+        "body": "Magnis placerat semper duis nulla? Cras dui lacinia lorem enim. Risus placerat turpis lacinia etiam consectetur venenatis sem in ac lacinia. Non metus nulla ultrices ut tellus ultricies proin velit consectetur. Eros ex nullam mattis metus auctor felis quisque neque scelerisque mattis."
       }
     ]
   },
@@ -881,7 +906,7 @@
     "order": 1,
     "lessonId": "lesson-3",
     "project": "Open Kit Project",
-    "body": "Pellentesque dolor quam nec fermentum. Nec pretium quis ac? Libero et viverra laoreet praesent nec arcu viverra. Eu at non erat.",
+    "body": "Diam dui enim lacinia justo sem ipsum velit nulla aliquet condimentum? Turpis fusce tempus blandit rutrum amet lobortis primis purus cursus id quam. Sem condimentum nisi phasellus ut ipsum porttitor condimentum. Fermentum elit mi sed?",
     "assignments": [
       {
         "id": "assignment-25",
@@ -889,9 +914,8 @@
         "lessonId": "lesson-3",
         "projectId": "project-3",
         "assignment": "Discover: Toy Research",
-        "showDate": "2020-09-26T18:30:22.000Z",
-        "hideDate": "2020-10-24T18:30:22.000Z",
-        "date": "2020-10-10T18:30:22.000Z",
+        "hideDate": "2020-11-14T23:18:42.000Z",
+        "date": "2020-10-31T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -900,39 +924,27 @@
             "Novice (1)"
           ],
           "values": {
-            "dapibus velit": [
-              "Sit interdum sem.",
-              "A urna in donec lorem.",
-              "Suscipit a in pretium fermentum.",
-              "Hendrerit suspendisse mattis urna accumsan."
+            "nec libero": [
+              "Nullam ultrices ligula pretium.",
+              "Accumsan sit interdum mi justo.",
+              "Neque amet nunc congue neque.",
+              "Vel rhoncus hendrerit a ornare."
             ],
-            "quam efficitur": [
-              "Accumsan feugiat porta.",
-              "Finibus aliquam bibendum?",
-              "Tristique in nunc lacinia lobortis.",
-              "Ipsum per lacus?"
+            "urna mattis": [
+              "Vitae ut etiam in velit?",
+              "Sit efficitur sed fermentum magna.",
+              "Laoreet ligula viverra ante.",
+              "Est sed vivamus est id."
             ],
-            "tellus dapibus": [
-              "Nisi est ut aliquam.",
-              "Congue ipsum facilisis semper.",
-              "Augue convallis libero lacinia.",
-              "Ligula amet nec."
-            ],
-            "augue ante": [
-              "Interdum velit nunc.",
-              "Nisi tellus cras parturient gravida.",
-              "Etiam semper at?",
-              "Proin congue sapien."
-            ],
-            "malesuada nec": [
-              "Eros et diam blandit.",
-              "Elit augue libero integer!",
-              "Libero sem malesuada.",
-              "Feugiat ut consectetur."
+            "ad purus": [
+              "Mattis elit in nisl scelerisque?",
+              "Placerat vestibulum placerat quisque semper.",
+              "Ornare metus elit vivamus.",
+              "Facilisi eleifend in ut orci?"
             ]
           }
         },
-        "body": "Placerat dapibus ornare in tortor et finibus justo. Sapien neque lorem nulla! Fermentum lacinia ac pellentesque diam diam ut est hendrerit. Diam ut ante pretium ut ornare?"
+        "body": "Mauris sed eleifend sem elit sed leo mi in in leo. Nisi volutpat ac."
       },
       {
         "id": "assignment-26",
@@ -940,8 +952,8 @@
         "lessonId": "lesson-3",
         "projectId": "project-3",
         "assignment": "Discover: Modular Research",
-        "hideDate": "2020-10-25T18:30:22.000Z",
-        "date": "2020-10-11T18:30:22.000Z",
+        "hideDate": "2020-11-15T23:18:42.000Z",
+        "date": "2020-11-01T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -950,27 +962,39 @@
             "Novice (1)"
           ],
           "values": {
-            "feugiat sed": [
-              "Vulputate odio consequat sem eu.",
-              "Est eget tempor.",
-              "Faucibus diam vulputate turpis duis.",
-              "Interdum sit a facilisis."
+            "condimentum amet": [
+              "Velit risus facilisis!",
+              "Quis vitae faucibus.",
+              "Rutrum eu et vestibulum mollis.",
+              "Ante ad pellentesque?"
             ],
-            "quis in": [
-              "Congue rutrum est?",
-              "At aenean vel fermentum.",
-              "Tristique tempus aenean aliquam massa?",
-              "Aliquet auctor ex?"
+            "et tincidunt": [
+              "Magna nec consectetur mi?",
+              "Consequat venenatis eu phasellus ligula?",
+              "Egestas interdum non pretium.",
+              "Risus viverra nibh."
             ],
-            "ut tellus": [
-              "Consequat ad ut.",
-              "Ante semper non.",
-              "Nisi nunc lectus sapien volutpat?",
-              "Nunc malesuada congue iaculis placerat."
+            "sollicitudin sed": [
+              "Duis faucibus erat elit nam.",
+              "Quam id ac turpis vel.",
+              "Mi pellentesque dolor fames.",
+              "Ultricies luctus risus."
+            ],
+            "blandit cursus": [
+              "Ac varius orci nibh.",
+              "Aenean primis lacinia mattis.",
+              "Laoreet vel rhoncus etiam.",
+              "Pellentesque eget quis amet."
+            ],
+            "imperdiet aliquam": [
+              "Ac elit consectetur?",
+              "Fusce elit posuere ut suscipit.",
+              "Sit tincidunt rutrum ligula.",
+              "Consectetur luctus fringilla."
             ]
           }
         },
-        "body": "Id augue amet metus ullamcorper. Ex nulla libero efficitur donec in fames leo potenti feugiat condimentum gravida lacinia. Non venenatis interdum lacinia velit metus fermentum venenatis erat nec lorem ornare?"
+        "body": "Dui dui massa nullam sed finibus suscipit consequat dui dictum enim vehicula sed nisi. Lobortis fringilla suscipit sed maecenas tortor venenatis volutpat amet lorem ultrices rutrum sed pellentesque? Dui turpis nulla velit fermentum fusce iaculis scelerisque ac metus orci sit maecenas tempus! Sed finibus turpis praesent consectetur massa? Dictum consectetur eget orci semper."
       },
       {
         "id": "assignment-27",
@@ -978,9 +1002,9 @@
         "lessonId": "lesson-3",
         "projectId": "project-3",
         "assignment": "Discover: Resources",
-        "showDate": "2020-09-28T18:30:22.000Z",
-        "hideDate": "2020-10-26T18:30:22.000Z",
-        "date": "2020-10-12T18:30:22.000Z",
+        "showDate": "2020-10-19T23:18:42.000Z",
+        "hideDate": "2020-11-16T23:18:42.000Z",
+        "date": "2020-11-02T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -989,45 +1013,27 @@
             "Novice (1)"
           ],
           "values": {
-            "tincidunt id": [
-              "Faucibus mollis venenatis quis.",
-              "Vitae donec magna ullamcorper at.",
-              "Phasellus nulla pellentesque.",
-              "Risus et purus sem accumsan."
+            "urna lorem": [
+              "Elementum fermentum neque ut elit.",
+              "Amet luctus elit lorem at?",
+              "Amet viverra sed tempor.",
+              "Sem lacinia vestibulum ante libero."
             ],
-            "quis varius": [
-              "Vel eget eu.",
-              "Imperdiet luctus libero sagittis?",
-              "Venenatis in scelerisque.",
-              "Ligula nec nibh dis nisi."
+            "ex nisi": [
+              "Quam nec phasellus.",
+              "Odio etiam odio magna consequat.",
+              "Sit efficitur ex faucibus at.",
+              "Velit eget porttitor."
             ],
-            "ac lobortis": [
-              "Ut morbi bibendum eget montes?",
-              "Tristique vitae ultricies?",
-              "Viverra non cubilia faucibus.",
-              "Lorem eu lobortis volutpat."
-            ],
-            "euismod quisque": [
-              "In turpis vitae a turpis.",
-              "Curabitur maecenas eu lorem.",
-              "Vitae nostra tellus.",
-              "Feugiat volutpat id justo scelerisque?"
-            ],
-            "urna consequat": [
-              "Lorem eu interdum vehicula.",
-              "Arcu varius quam.",
-              "Ridiculus maecenas interdum?",
-              "Gravida rhoncus nibh malesuada tellus?"
-            ],
-            "ante sed": [
-              "A sodales erat massa.",
-              "Scelerisque id montes turpis placerat.",
-              "Eu bibendum integer quis dui.",
-              "Est vehicula faucibus consequat."
+            "quis pellentesque": [
+              "Feugiat euismod dapibus suscipit dui.",
+              "Neque consectetur orci.",
+              "Tellus ultricies nec in.",
+              "Dignissim tortor consectetur viverra elit."
             ]
           }
         },
-        "body": "Pulvinar scelerisque gravida interdum. Lacinia placerat vulputate. Sit et leo sem libero libero. Integer ultricies urna condimentum varius tincidunt condimentum nec vulputate porta varius vel. Risus ultricies phasellus gravida lobortis vehicula scelerisque dolor vitae aliquam laoreet."
+        "body": "Risus consectetur rhoncus facilisis amet nullam. At ac dictum. At accumsan urna in varius?"
       },
       {
         "id": "assignment-28",
@@ -1035,7 +1041,9 @@
         "lessonId": "lesson-3",
         "projectId": "project-3",
         "assignment": "Define: Product Pitch",
-        "date": "2020-10-13T18:30:22.000Z",
+        "showDate": "2020-10-20T23:18:42.000Z",
+        "hideDate": "2020-11-17T23:18:42.000Z",
+        "date": "2020-11-03T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -1044,39 +1052,33 @@
             "Novice (1)"
           ],
           "values": {
-            "neque consequat": [
-              "Tincidunt mollis orci.",
-              "Mattis sed lectus ante mi.",
-              "Maecenas ex metus vel faucibus.",
-              "Dictum sapien porttitor tempor nam?"
+            "porttitor pulvinar": [
+              "Sagittis pharetra ipsum ligula sed.",
+              "Vulputate a vitae.",
+              "Integer amet maximus mattis imperdiet?",
+              "Integer fringilla sed vehicula vel?"
             ],
-            "efficitur bibendum": [
-              "Tortor quis ut pretium tempor?",
-              "Ut natoque nisi?",
-              "Lacinia faucibus sem.",
-              "Vitae quam at himenaeos!"
+            "imperdiet massa": [
+              "Proin ipsum iaculis?",
+              "Venenatis in placerat quis sit.",
+              "Proin justo sed fringilla eu!",
+              "Molestie ac praesent varius?"
             ],
-            "elementum porttitor": [
-              "Massa sed laoreet.",
-              "Proin neque ipsum accumsan!",
-              "Pellentesque in vestibulum.",
-              "Lacus facilisis sed."
+            "imperdiet sagittis": [
+              "Neque tempor pharetra risus turpis!",
+              "Tincidunt enim vivamus.",
+              "Consectetur libero risus.",
+              "Suscipit arcu quis semper ultrices."
             ],
-            "fermentum amet": [
-              "Ante quam diam justo nec?",
-              "Sapien eros at.",
-              "Magna iaculis penatibus tristique.",
-              "Sollicitudin nibh varius arcu."
-            ],
-            "massa feugiat": [
-              "Euismod elit velit accumsan et?",
-              "In pellentesque mauris lacus?",
-              "At consequat tempus?",
-              "Vel eu penatibus."
+            "elit phasellus": [
+              "Ex ornare est.",
+              "Nibh arcu ut aenean tortor.",
+              "Aliquam eget consectetur cursus turpis?",
+              "Amet vestibulum erat."
             ]
           }
         },
-        "body": "Cursus nec efficitur metus odio. Enim vel duis ultrices consequat ultricies varius in diam. Libero eros nisi at augue metus in ipsum lacus urna mauris sit."
+        "body": "Sed vitae ultrices vel suspendisse lorem? Primis maecenas lacus. Consequat dictum sem nullam sed accumsan at sodales at elementum fringilla ullamcorper malesuada."
       },
       {
         "id": "assignment-29",
@@ -1084,9 +1086,7 @@
         "lessonId": "lesson-3",
         "projectId": "project-3",
         "assignment": "Develop: Prototyping",
-        "showDate": "2020-09-30T18:30:22.000Z",
-        "hideDate": "2020-10-28T18:30:22.000Z",
-        "date": "2020-10-14T18:30:22.000Z",
+        "date": "2020-11-04T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -1095,45 +1095,27 @@
             "Novice (1)"
           ],
           "values": {
-            "ultricies et": [
-              "Semper interdum libero ipsum.",
-              "Sed mattis ante dapibus?",
-              "Finibus elit nulla ligula mauris.",
-              "Ut primis nisl turpis lorem."
+            "imperdiet et": [
+              "Libero vehicula non.",
+              "Sit elementum nec.",
+              "Fermentum in quisque eu nec.",
+              "Erat rhoncus pharetra erat commodo."
             ],
-            "mauris id": [
-              "Sollicitudin eget habitant ac vehicula.",
-              "Felis a ultrices!",
-              "Nisl magnis molestie ligula quam.",
-              "Viverra diam vitae."
+            "proin potenti": [
+              "Sagittis phasellus dapibus.",
+              "Luctus phasellus orci nunc consectetur?",
+              "Iaculis in eros?",
+              "Viverra semper id nisi."
             ],
-            "dictum nisi": [
-              "Tortor ut eu auctor vel.",
-              "Laoreet varius enim.",
-              "Ac ultricies laoreet vivamus.",
-              "In adipiscing nisi?"
-            ],
-            "quisque euismod": [
-              "Lacinia pretium ac etiam scelerisque.",
-              "Sit ligula in.",
-              "Ante volutpat ac arcu dolor.",
-              "Eu accumsan lacus pretium?"
-            ],
-            "eros nisl": [
-              "Finibus tincidunt lacus imperdiet et.",
-              "Phasellus dui etiam facilisis in.",
-              "Commodo aliquam sit.",
-              "Libero a convallis?"
-            ],
-            "in at": [
-              "Duis in eros ullamcorper in.",
-              "Felis accumsan volutpat.",
-              "Quam nullam nulla!",
-              "Pellentesque euismod integer dolor?"
+            "efficitur odio": [
+              "Placerat consectetur quis ultricies suspendisse.",
+              "Efficitur scelerisque tellus finibus tellus.",
+              "Imperdiet turpis eleifend porttitor.",
+              "Dictum tellus cras."
             ]
           }
         },
-        "body": "Lobortis elit semper ultricies posuere. Efficitur mi lacinia vel amet phasellus rhoncus ut felis suspendisse donec sagittis? Nullam a nam tortor nulla integer? Ultrices vel consectetur est a suspendisse nisl dui."
+        "body": "Mollis id sit dis tempor est nisi nulla pellentesque ultricies pulvinar condimentum quam tellus. Tellus scelerisque arcu at amet iaculis quis ut luctus quam? Sit velit semper lobortis justo fusce accumsan sem diam euismod quisque sed. Lacus varius quisque vestibulum metus lobortis quis scelerisque. Elit pharetra aliquet."
       },
       {
         "id": "assignment-30",
@@ -1141,8 +1123,9 @@
         "lessonId": "lesson-3",
         "projectId": "project-3",
         "assignment": "Develop: Instructions",
-        "hideDate": "2020-10-29T18:30:22.000Z",
-        "date": "2020-10-15T18:30:22.000Z",
+        "showDate": "2020-10-22T23:18:42.000Z",
+        "hideDate": "2020-11-19T23:18:42.000Z",
+        "date": "2020-11-05T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -1151,39 +1134,33 @@
             "Novice (1)"
           ],
           "values": {
-            "ut arcu": [
-              "Vitae faucibus sem nulla ullamcorper.",
-              "Amet elementum ultricies.",
-              "Mattis sed ac et.",
-              "Ante blandit sit."
+            "rutrum in": [
+              "Ac faucibus et id.",
+              "Quam nulla nisi vitae eget.",
+              "In in eu sollicitudin eget.",
+              "Non ipsum neque."
             ],
-            "ante malesuada": [
-              "Ac porttitor sodales.",
-              "Ultrices vehicula mi interdum.",
-              "Ligula fermentum orci?",
-              "Scelerisque arcu luctus."
+            "libero quisque": [
+              "A tincidunt pellentesque dignissim facilisis.",
+              "Tincidunt urna maximus maecenas laoreet.",
+              "Luctus ultricies libero justo?",
+              "Condimentum maecenas laoreet est quisque!"
             ],
-            " congue": [
-              "Suspendisse neque ut mi.",
-              "Mauris augue odio.",
-              "Nec viverra egestas lobortis convallis.",
-              "Eu sed sagittis?"
+            "vel nibh": [
+              "Auctor praesent in.",
+              "Vehicula eu semper faucibus.",
+              "Aenean lobortis felis facilisi.",
+              "Quis vel libero maecenas elementum."
             ],
-            "quam neque": [
-              "Per cursus neque auctor ut.",
-              "Convallis luctus nec bibendum blandit!",
-              "Sodales id arcu?",
-              "Venenatis sem nibh consequat euismod."
-            ],
-            "ac eu": [
-              "In diam eleifend ut.",
-              "Facilisis fermentum nisl consectetur cras!",
-              "Efficitur lacus phasellus tempus?",
-              "Efficitur eu vulputate non maecenas?"
+            "sed felis": [
+              "Cursus et aliquam amet aliquet?",
+              "Augue montes cras.",
+              "Luctus id est quisque.",
+              "Semper porttitor interdum ligula nisi."
             ]
           }
         },
-        "body": "Ex vestibulum risus diam erat lacinia consectetur donec. Orci auctor vulputate nisl."
+        "body": "Hendrerit pellentesque ligula ut. At in ut ut vel ad id sed? Massa ultrices cursus molestie aliquam a tincidunt congue varius in ut sed quisque? Ultricies phasellus scelerisque eu diam eu semper sit rhoncus luctus pellentesque posuere. Nisi eleifend maecenas tortor ut lobortis tempus rutrum lacus."
       },
       {
         "id": "assignment-31",
@@ -1191,8 +1168,8 @@
         "lessonId": "lesson-3",
         "projectId": "project-3",
         "assignment": "Develop: Test",
-        "hideDate": "2020-10-30T18:30:22.000Z",
-        "date": "2020-10-16T18:30:22.000Z",
+        "hideDate": "2020-11-20T23:18:42.000Z",
+        "date": "2020-11-06T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -1201,39 +1178,45 @@
             "Novice (1)"
           ],
           "values": {
-            "gravida suscipit": [
-              "In felis duis.",
-              "Maecenas fermentum arcu.",
-              "Non enim nec.",
-              "Et amet tempor."
+            "nec eget": [
+              "Tristique sem quisque.",
+              "Neque integer aliquet tortor.",
+              "Ut vel semper.",
+              "Sollicitudin vivamus tellus."
             ],
-            "ultrices semper": [
-              "Risus ultrices iaculis maecenas urna?",
-              "Ligula et eu.",
-              "In ut at.",
-              "Urna vestibulum dolor."
+            "at ornare": [
+              "Hendrerit suspendisse nibh id.",
+              "Risus mauris vestibulum.",
+              "At leo at.",
+              "Maecenas semper eget."
             ],
-            "porta ac": [
-              "Vitae turpis non nulla imperdiet!",
-              "Id odio donec nec.",
-              "Amet sem faucibus montes.",
-              "Volutpat purus quis?"
+            "eu maximus": [
+              "Sit aenean eget et tincidunt.",
+              "Sodales iaculis nullam posuere eu?",
+              "Quis sapien ac mollis facilisis.",
+              "Nisl vel eget ut."
             ],
-            "auctor ut": [
-              "Aenean turpis pretium mattis.",
-              "Odio id vivamus?",
-              "Mauris gravida consequat risus condimentum.",
-              "Aliquam ipsum auctor a ut."
+            "pharetra nunc": [
+              "Orci fusce ultricies vivamus.",
+              "Et dolor sit faucibus ut.",
+              "Dolor sodales sapien.",
+              "Vulputate mi metus?"
             ],
-            "non feugiat": [
-              "At est ullamcorper.",
-              "Elit vulputate aliquam pellentesque enim.",
-              "Consequat est ut orci turpis.",
-              "Amet condimentum lorem non faucibus?"
+            "eget donec": [
+              "Vel vitae vestibulum pellentesque.",
+              "Sagittis metus suspendisse lectus.",
+              "Scelerisque ex eget.",
+              "Nullam vivamus vestibulum ligula eros."
+            ],
+            "malesuada nisi": [
+              "Consequat laoreet morbi blandit?",
+              "Dolor mattis diam augue sapien.",
+              "At sed quam.",
+              "Nec volutpat et dui."
             ]
           }
         },
-        "body": "Risus feugiat sed in. Odio sed nec. Et fringilla placerat suspendisse sagittis rutrum sed lacinia mattis. Blandit nunc amet et accumsan? Vitae mattis dapibus leo."
+        "body": "Quis fringilla nisi eget in a suscipit amet nisi. Pellentesque praesent integer justo malesuada."
       },
       {
         "id": "assignment-32",
@@ -1241,7 +1224,8 @@
         "lessonId": "lesson-3",
         "projectId": "project-3",
         "assignment": "Develop: Iterate",
-        "date": "2020-10-17T18:30:22.000Z",
+        "showDate": "2020-10-24T23:18:42.000Z",
+        "date": "2020-11-07T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -1250,45 +1234,27 @@
             "Novice (1)"
           ],
           "values": {
-            "sit amet": [
-              "Ut fermentum quisque?",
-              "Odio vulputate massa dignissim.",
-              "Tortor dui nullam interdum.",
-              "Gravida nunc ornare."
+            "ipsum porttitor": [
+              "Proin arcu ac.",
+              "Ligula libero facilisis sed?",
+              "Nulla nostra suscipit tempor malesuada?",
+              "Enim nec viverra."
             ],
-            "faucibus massa": [
-              "Mi faucibus nam nunc donec.",
-              "Mauris velit eget nibh.",
-              "Ligula morbi urna iaculis varius.",
-              "Tincidunt mus odio augue eget?"
+            "at sagittis": [
+              "Porta quisque nec aliquam placerat.",
+              "Sagittis mattis sapien?",
+              "Volutpat convallis porta dis.",
+              "Proin ligula nibh."
             ],
-            "nulla facilisis": [
-              "Lectus semper ultrices nec rhoncus.",
-              "Magna egestas vivamus amet vehicula?",
-              "Phasellus erat tempor tristique.",
-              "Erat libero risus ultricies et."
-            ],
-            "donec amet": [
-              "Suspendisse morbi interdum.",
-              "Consectetur maecenas nisl libero?",
-              "Sem leo ornare quis.",
-              "Sed facilisis aliquet amet porttitor."
-            ],
-            "dolor ultricies": [
-              "Sed mattis donec.",
-              "A ornare gravida et mattis?",
-              "Ullamcorper venenatis lectus.",
-              "A ante mi?"
-            ],
-            "integer eu": [
-              "Lectus donec massa.",
-              "Vel ut quam etiam.",
-              "Scelerisque congue placerat ex ut.",
-              "Neque neque lorem at."
+            "vel velit": [
+              "Diam maecenas erat.",
+              "Id maecenas tortor.",
+              "Ipsum morbi dis.",
+              "Sit fermentum interdum iaculis?"
             ]
           }
         },
-        "body": "Pellentesque placerat non ac nec metus libero urna varius varius in nunc. Sit vel suspendisse suspendisse posuere erat duis facilisi ut euismod sed porta interdum pellentesque."
+        "body": "Nec porta elit risus ac fermentum venenatis neque dolor. Proin libero quis dolor mi ut dictum. Ipsum ut dictum iaculis vehicula libero? Quis condimentum vehicula neque pretium libero donec dictum ipsum interdum luctus. Scelerisque scelerisque maecenas vel nisi montes integer sagittis risus metus pellentesque dolor at?"
       },
       {
         "id": "assignment-33",
@@ -1296,8 +1262,9 @@
         "lessonId": "lesson-3",
         "projectId": "project-3",
         "assignment": "Deliver: Open Toy",
-        "hideDate": "2020-11-01T18:30:22.000Z",
-        "date": "2020-10-18T18:30:22.000Z",
+        "showDate": "2020-10-25T23:18:42.000Z",
+        "hideDate": "2020-11-22T23:18:42.000Z",
+        "date": "2020-11-08T23:18:42.000Z",
         "rubric": {
           "key": [
             "Distinguished (4)",
@@ -1306,45 +1273,39 @@
             "Novice (1)"
           ],
           "values": {
-            "vitae fermentum": [
-              "Fermentum nisi vestibulum nisi blandit.",
-              "Neque lorem pulvinar a?",
-              "Purus arcu laoreet.",
-              "Fringilla eu suscipit aliquam in."
+            "amet faucibus": [
+              "Diam netus vehicula.",
+              "Amet ornare pellentesque sed scelerisque.",
+              "Euismod dapibus consectetur.",
+              "Tellus tempor lacinia."
             ],
-            "consequat sit": [
-              "At purus et.",
-              "In eget est ante ac.",
-              "Vel nunc vitae lobortis.",
-              "Sit dictum malesuada?"
+            "eu at": [
+              "Eget ornare scelerisque dignissim ipsum?",
+              "Rhoncus placerat tortor aliquet?",
+              "Non finibus semper.",
+              "Lorem vel dictum consequat."
             ],
-            "accumsan augue": [
-              "Convallis facilisis accumsan iaculis ut.",
-              "Faucibus pulvinar facilisi leo tortor.",
-              "Dolor dapibus ac dui.",
-              "Non ut metus praesent."
+            "porttitor et": [
+              "Fermentum sem varius sodales.",
+              "Scelerisque sem rutrum?",
+              "Ligula non varius.",
+              "Dui odio ante magna."
             ],
-            "magna facilisi": [
-              "Ipsum metus in ultrices!",
-              "Molestie consectetur vitae dignissim scelerisque!",
-              "Donec commodo praesent eget.",
-              "Ut porttitor maecenas."
+            "orci turpis": [
+              "Ut pellentesque faucibus integer ipsum?",
+              "Maecenas nunc massa orci neque.",
+              "Amet eros sed.",
+              "Fringilla laoreet sed."
             ],
-            "accumsan quisque": [
-              "Blandit quam consequat consectetur?",
-              "Nulla et diam nec elit!",
-              "Nam lacinia quis vehicula.",
-              "Montes semper lobortis praesent!"
-            ],
-            "maecenas vestibulum": [
-              "At pretium fermentum scelerisque mollis.",
-              "Vivamus diam imperdiet?",
-              "At metus viverra ac.",
-              "Eu euismod ut integer."
+            "ante nisi": [
+              "Nascetur pretium a.",
+              "Consectetur nisl sodales arcu facilisis.",
+              "Neque integer pellentesque lacinia et.",
+              "Faucibus integer pellentesque maecenas."
             ]
           }
         },
-        "body": "Elementum ultrices laoreet in condimentum non nec ultrices ac sit phasellus? Sem orci feugiat elementum ipsum id nisi vivamus ante nisi arcu imperdiet nulla. Vitae mus laoreet phasellus? Metus in molestie tellus placerat eros sed tristique non adipiscing dui convallis feugiat id. Felis nisi ut ut augue maecenas a a lorem leo nisl rutrum tristique quis!"
+        "body": "Lacinia vehicula viverra ultricies nec eros semper neque ante praesent interdum elit velit. Quisque bibendum justo nulla lectus duis dui vitae. Vitae aliquet sed sed nisl integer lacinia. Suscipit massa quis quisque. Velit ex condimentum curae leo sed eget vel consectetur pretium senectus phasellus."
       }
     ]
   }

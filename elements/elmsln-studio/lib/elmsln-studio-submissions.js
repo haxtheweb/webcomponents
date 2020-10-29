@@ -135,7 +135,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           elmsln-studio-submission-card {
             --accent-card-image-width: 50%;
           }
-          elmsln-studio-submission-card:not([horizontal]) {
+          .grid elmsln-studio-submission-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
         }
@@ -145,7 +145,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             align-items: flex-start;
             justify-content: space-between;
           }
-          elmsln-studio-submission-card:not([horizontal]) {
+          .grid elmsln-studio-submission-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
           .filters > *,
@@ -160,10 +160,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           }
         }
         @media screen and (min-width: 1200px) {
-          elmsln-studio-submission-card[horizontal] {
+          .grid elmsln-studio-submission-card[horizontal] {
             flex: 0 0 calc(66.66666667% - var(--elmsln-studio-margin, 20px));
           }
-          elmsln-studio-submission-card:not([horizontal]) {
+          .grid elmsln-studio-submission-card:not([horizontal]) {
             flex: 0 0 calc(33.3333333333% - var(--elmsln-studio-margin, 20px));
           }
         }
@@ -242,7 +242,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 id="accent-${i}"
                 href="${this.getActivityLink(s, true)}"
                 class="card submission-card"
-                image-src="${s.image || ""}"
+                image-src="${this.getCoverImage(s)}"
                 .image-alt="${s.imageAlt || undefined}"
                 ?horizontal="${s.feature || this.list ? true : false}"
                 .image-align="${this._getAlign(s.imageGravity || undefined)}"
@@ -408,6 +408,36 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         this._isFilteredAssignment(i.assignmentId) &&
         this._isFilteredProject(i.projectId)
     );
+  }
+  getCoverImage(submission) {
+    let fileicons = "/components/@lrnwebcomponents/elmsln-studio/lib/fileicons",
+      icons = [
+        "ai",
+        "css",
+        "csv",
+        "doc",
+        "eps",
+        "html",
+        "js",
+        "pdf",
+        "ppt",
+        "rtf",
+        "url",
+        "xls",
+      ],
+      images = ["png", "jpg", "jpeg", "gif", "svg"],
+      assets = [...(submission.sources || []), ...(submission.links || [])],
+      img = assets.filter((asset) => images.includes(asset.type || "file")),
+      files = assets.filter((asset) => icons.includes(asset.type || "file")),
+      cover = `${fileicons}/file.svg`;
+
+    if (img && img[0]) {
+      cover = img[0].src;
+    } else if (files && files[0]) {
+      cover = `${fileicons}/${files[0].type}.svg`;
+    }
+    console.log(submission, assets, img, files, cover);
+    return cover;
   }
   get isFiltered() {
     return (

@@ -355,7 +355,18 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           "people",
           "tech",
         ]),
-        type = lorem.randomOption(["links", "body", "sources"]),
+        types = lorem.randomOption([
+          ["body"],
+          ["links"],
+          ["sources"],
+          ["sources"],
+          ["body", "links"],
+          ["body", "sources"],
+          ["body", "sources"],
+          ["body", "sources"],
+          ["links", "sources"],
+          ["links", "body", "sources"],
+        ]),
         creators =
           i > most(Object.keys(this.assignments || {}))
             ? []
@@ -367,7 +378,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
               )
             : this.students;
       creators.forEach((creator) =>
-        this._submission(a, creator.id, topic, type, a.date, lorem)
+        this._submission(a, creator.id, topic, types, a.date, lorem)
       );
     });
     Object.keys(this.submissions).forEach((key) => {
@@ -462,6 +473,9 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
             img.src = this.__demoImages[
               this.__imgCtr % this.__demoImages.length
             ];
+          img.type =
+            img.src.substring(img.src.lastIndexOf(".") + 1, img.src.length) ||
+            "png";
           assets.push(img);
         }
       }
@@ -590,7 +604,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       return id;
     }
   }
-  _submission(assignmentId, creatorId, topic, type, date, lorem) {
+  _submission(assignmentId, creatorId, topic, types, date, lorem) {
     if (lorem) {
       this.__imgCtr++;
       console.log(
@@ -670,7 +684,9 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         avatar: creator && creator.image ? creator.image : "",
         submissions: [],
       };
-      submission[type] = this._assets(type, topic, lorem);
+      types.forEach(
+        (type) => (submission[type] = this._assets(type, topic, lorem))
+      );
       this.activity.push({
         id: id,
         activity: "submission",
