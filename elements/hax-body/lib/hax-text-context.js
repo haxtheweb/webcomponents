@@ -24,16 +24,11 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           display: block;
           pointer-events: none;
         }
-        hax-context-item-textop:not(:defined),
-        hax-context-item-menu:not(:defined),
-        hax-context-item:not(:defined),
-        hax-toolbar:not(:defined),
-        button:not(:defined),
-        iron-icon:not(:defined) {
-          display: none;
-        }
         :host [hidden] {
           display: none;
+        }
+        simple-popover-selection {
+          display: flex;
         }
         .selected-buttons {
           transition: 0.1s all ease-in-out;
