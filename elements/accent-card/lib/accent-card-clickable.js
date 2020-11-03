@@ -34,8 +34,14 @@ class AccentCardClickable extends LitElement {
         accent-card {
           position: relative;
         }
-        accent-card:focus-within {
-          outline: 1px solid var(--accent-card-border-color);
+        accent-card:focus-within,
+        accent-card:hover {
+          outline: 1px solid
+            var(
+              --accent-card-border-color,
+              --simple-colors-default-theme-accent-6,
+              #ddd
+            );
         }
         ::slotted(*:not([data-clickable]:first-of-type)) {
           z-index: 2;
