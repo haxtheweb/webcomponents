@@ -94,33 +94,6 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) auto
             var(--elmsln-studio-margin, 20px);
         }
-        table {
-          border-collapse: collapse;
-          margin: 0 0 calc(1 * var(--elmsln-studio-margin, 20px));
-        }
-        th,
-        td {
-          padding: 5px;
-          border: 1px solid #eaeaea;
-        }
-        th {
-          font-weight: normal;
-        }
-        caption {
-          font-size: calc(1.25 * var(--elmsln-studio-FontSize, 16px));
-          font-weight: normal;
-          color: #555555;
-        }
-        thead th {
-          border-bottom: 1px solid #95989a;
-        }
-        thead th:first-child,
-        tbody th {
-          border-right: 1px solid #95989a;
-        }
-        tbody tr:nth-child(2n + 1) > * {
-          background-color: #f8f8f8;
-        }
         ul {
           list-style-type: none;
           padding-left: 0;
@@ -317,37 +290,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
               <p class="assignment-body">${this.assignment.body}</p>
               ${!this.assignment.rubric
                 ? ""
-                : html`
-                    <table>
-                      <caption>
-                        Rubric
-                      </caption>
-                      ${!this.assignment.rubric.key ||
-                      !this.assignment.rubric.key
-                        ? ``
-                        : html`
-                            <thead>
-                              <th scope="col">Criteria</th>
-                              ${this.assignment.rubric.key.map(
-                                (col) => html` <th scope="col">${col}</th> `
-                              )}
-                            </thead>
-                          `}
-                      <tbody>
-                        ${Object.keys(this.assignment.rubric.values || {}).map(
-                          (key) =>
-                            html`
-                              <tr>
-                                <th scope="row">${key}</th>
-                                ${(
-                                  this.assignment.rubric.values[key] || []
-                                ).map((col) => html`<td>${col}</td>`)}
-                              </tr>
-                            `
-                        )}
-                      </tbody>
-                    </table>
-                  `}
+                : this.rubricTable(this.assignment.rubric)}
               <section
                 id="uploads"
                 ?hidden="${(this.__sources || []).length < 1 && !this.editable}"
@@ -587,11 +530,10 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
     ];
     this.tag = ElmslnStudioAssignment.tag;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.fetchData("profile");
+    this.fetchData("assignments");
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);

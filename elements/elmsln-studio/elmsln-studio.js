@@ -70,31 +70,37 @@ class ElmslnStudio extends router(
           .profile="${this.profile}"
           .submissions="${this.recentSubmissions}"
           route="dashboard"
+          @fetch-data="${this._handleFetch}"
         >
         </elmsln-studio-dashboard>
         <elmsln-studio-submissions
           ?demo-mode="${this.demoMode}"
           route="submissions"
-          .submissions="${Object.keys(this.submissions || {})
-            .filter((key) => !!this.submissions[key].date)
-            .map((key) => this.submissions[key])}"
-          .comments="${Object.keys(this.discussion || {}).map(
-            (key) => this.discussion[key]
-          )}"
+          .submissions="${this.completedSubmissions}"
+          .comments="${!this.discussion
+            ? undefined
+            : Object.keys(this.discussion || {}).map(
+                (key) => this.discussion[key]
+              )}"
           ?grid="${this.query.grid || false}"
           student-filter="${this.query.student || ""}"
           assignment-filter="${this.query.assignment || ""}"
           project-filter="${this.query.project || ""}"
+          @fetch-data="${this._handleFetch}"
         >
         </elmsln-studio-submissions>
         <elmsln-studio-portfolio
           ?demo-mode="${this.demoMode}"
           route="portfolios"
           .portfolio="${this.portfolio}"
-          .submission="${this.submissionFeedback}"
+          .feedback="${this.submissionFeedback}"
+          student-id="${this.query.student || ""}"
+          assignment-id="${this.query.assignment || ""}"
+          project-id="${this.query.project || ""}"
           ?sort-latest="${this.query.sort === "latest"}"
           submission-filter="${this.query.submission || ""}"
           comment="${this.query.comment || ""}"
+          @fetch-data="${this._handleFetch}"
         >
         </elmsln-studio-portfolio>
         <elmsln-studio-assignments
@@ -102,6 +108,7 @@ class ElmslnStudio extends router(
           route="assignments"
           .lessons="${this.lessons || {}}"
           .profile="${this.profile || {}}"
+          @fetch-data="${this._handleFetch}"
         >
         </elmsln-studio-assignments>
         <elmsln-studio-assignment
@@ -109,6 +116,7 @@ class ElmslnStudio extends router(
           route="assignment"
           .assignment="${this.assignment}"
           .submission="${this.submission}"
+          @fetch-data="${this._handleFetch}"
         >
         </elmsln-studio-assignment>
       </elmsln-studio-main>
@@ -214,19 +222,17 @@ class ElmslnStudio extends router(
     super();
     window.ElmslnStudioPath = "";
     this.assignments = {};
-    this.discussion = {};
     this.lessons = {};
-    this.portfolios = {};
     this.projects = {};
     this.profile = {};
     this.profiles = {};
-    this.submissions = {};
     this.users = {};
 
     this.route = "";
     this.params = {};
     this.query = {};
     this.data = {};
+    this.refreshDates = {};
   }
 
   router(route, params, query, data) {
@@ -235,29 +241,18 @@ class ElmslnStudio extends router(
     this.query = query;
     this.data = data;
   }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.fetchData("users");
+  }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "params") console.log("params", this.params);
       if (propName === "query") console.log("query", this.query);
-      if (propName === "usersSource") this.fetchData(this.usersSource, "users");
-      if (propName === "profileSource")
-        this.fetchData(this.profileSource, "profile");
-      if (propName === "lessonsSource")
-        this.fetchData(this.lessonsSource, "lessons");
-      if (propName === "projectsSource")
-        this.fetchData(this.projectsSource, "projects");
-      if (propName === "assignmentsSource")
-        this.fetchData(this.assignmentsSource, "assignments");
-      if (propName === "portfoliosSource")
-        this.fetchData(this.portfoliosSource, "portfolios");
-      if (propName === "submissionsSource")
-        this.fetchData(this.submissionsSource, "submissions");
-      if (propName === "discussionSource")
-        this.fetchData(this.discussionSource, "discussion");
-      if (propName === "sourcePath") window.ElmslnStudioPath = this.sourcePath;
     });
   }
+
   get assignment() {
     console.log("assignment", this.params.assignment, this.assignments);
     return this.params.assignment
@@ -265,25 +260,34 @@ class ElmslnStudio extends router(
       : {};
   }
   get recentDiscussions() {
-    let discussions = [];
-    discussions = Object.keys(this.discussion || {}).map(
-      (key) => this.discussion[key]
-    );
-    discussions.forEach((d) =>
-      (d.replies || []).forEach((r) => discussions.push(r))
-    );
-    return this.sortDates(discussions).slice(0, 10);
+    if (this.discussion) {
+      let discussions = [];
+      discussions = Object.keys(this.discussion || {}).map(
+        (key) => this.discussion[key]
+      );
+      discussions.forEach((d) =>
+        (d.replies || []).forEach((r) => discussions.push(r))
+      );
+      return this.sortDates(discussions).slice(0, 10);
+    }
+    return undefined;
   }
   get recentSubmissions() {
-    console.log(
-      "recentSubmissions",
-      this.sortDates(
-        Object.keys(this.submissions || {}).map((key) => this.submissions[key])
-      )
-    );
-    return this.sortDates(
-      Object.keys(this.submissions || {}).map((key) => this.submissions[key])
-    ).slice(0, 5);
+    return !this.completedSubmissions
+      ? undefined
+      : this.sortDates(
+          Object.keys(this.completedSubmissions || {}).map(
+            (key) => this.completedSubmissions[key]
+          )
+        ).slice(0, 5);
+  }
+
+  get completedSubmissions() {
+    return !this.submissions
+      ? undefined
+      : Object.keys(this.submissions || {})
+          .filter((key) => !!this.submissions[key].date)
+          .map((key) => this.submissions[key]);
   }
 
   get submission() {
@@ -296,11 +300,14 @@ class ElmslnStudio extends router(
     return submissions && submissions[0] ? submissions[0] : undefined;
   }
   get portfolio() {
-    return this.params.portfolio ? this.portfolios[this.params.portfolio] : {};
+    console.log("portfolios", this.portfolios, this.params.portfolio);
+    return this.params.portfolio && this.portfolios
+      ? this.portfolios[this.params.portfolio]
+      : undefined;
   }
   get submissionFeedback() {
-    return !this.query.submission
-      ? []
+    return !this.query.submission || !this.discussion
+      ? undefined
       : Object.keys(this.discussion || {})
           .filter(
             (key) => this.discussion[key].submissionId == this.query.submission
@@ -314,14 +321,39 @@ class ElmslnStudio extends router(
       : {};
   }
   fetchData(source, propName, params) {
+    console.log("fetchData", source, propName, params);
     fetch(this._getPath(source, params))
-      .then((response) => response.json())
+      .then((response) => {
+        if (response && response.json) return response.json();
+        return false;
+      })
       .then((data) => {
-        this[propName] = data;
-        console.log(`${propName} Loaded`, data, this[propName]);
+        if (data) {
+          this[propName] = data;
+          this.refreshDates[propName] = new Date();
+          console.log(
+            `${propName} Loaded`,
+            source,
+            data,
+            this[propName],
+            this.refreshDates
+          );
+        }
       });
   }
+
+  _handleFetch(e = { detail: {} }) {
+    console.log("_handleFetch", e);
+    let type = e.detail.type,
+      refresh = e.detail.refresh,
+      source = `${type}Source`;
+    console.log("_handleFetch", type, refresh, source);
+    if (refresh || !this.refreshDates[type]) {
+      this.fetchData(this[source], type);
+    }
+  }
   _getPath(path, params) {
+    console.log("_getPath", path, params);
     let query = Object.keys(params || {})
       .map((p) => `${encodeURI(p)}=${encodeURI(params[p])}`)
       .join("&");

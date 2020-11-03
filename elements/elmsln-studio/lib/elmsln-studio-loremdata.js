@@ -460,7 +460,29 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         assets = [];
       for (let i = 0; i < x; i++) {
         if (type === "links") {
-          assets.push(lorem.randomLink());
+          assets.push(
+            lorem.randomLink(
+              lorem.randomOption([
+                "ai",
+                "url",
+                "doc",
+                "ppt",
+                "ai",
+                "url",
+                "ai",
+                "url",
+                "doc",
+                "ppt",
+                "ai",
+                "url",
+                "xls",
+                "eps",
+                "csv",
+                "zip",
+                "zip",
+              ])
+            )
+          );
         } else {
           this.__imgCtr++;
           let img = lorem.randomImageData(
@@ -505,18 +527,67 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       };
     }
   }
-  _assignment(assignment, lessonId, projectId, order, date, lorem) {
-    if (!lorem) {
-      return undefined;
-    } else {
-      let criteria = lorem.randomNumber(3, 7),
-        rubric = {
-          key: [
-            "Distinguished (4)",
-            "Proficient (3)",
-            "Apprentice (2)",
-            "Novice (1)",
+  _rubric(lorem) {
+    if (lorem) {
+      let keys = [
+          [
+            {
+              description: "Distinguished",
+              points: 4,
+            },
+            {
+              description: "Proficient",
+              points: 3,
+            },
+            {
+              description: "Apprentice",
+              points: 2,
+            },
+            {
+              description: "Novice",
+              points: 1,
+            },
           ],
+          [
+            {
+              description: "Exceeded",
+              points: 2,
+            },
+            {
+              description: "Met",
+              points: 1,
+            },
+            {
+              description: "Unmet",
+              points: 0,
+            },
+          ],
+          [
+            {
+              description: "Excellent",
+              points: 4,
+            },
+            {
+              description: "Above Average",
+              points: 3,
+            },
+            {
+              description: "Average",
+              points: 2,
+            },
+            {
+              description: "Below Average",
+              points: 1,
+            },
+            {
+              description: "Poor",
+              points: 0,
+            },
+          ],
+        ],
+        criteria = lorem.randomNumber(3, 7),
+        rubric = {
+          key: lorem.randomOption(keys),
           values: {},
         };
       for (let i = 0; i < criteria; i++) {
@@ -524,6 +595,21 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           `${lorem.randomWord()} ${lorem.randomWord()}`
         ] = rubric.key.map((k) => lorem.randomSentence(3, 6));
       }
+      return rubric;
+    }
+    return undefined;
+  }
+  _assignment(assignment, lessonId, projectId, order, date, lorem) {
+    if (!lorem) {
+      return undefined;
+    } else {
+      let rubric = Math.random() > 0.3 ? this._rubric(lorem) : undefined,
+        feedbackRubric = Math.random() > 0.5 ? this._rubric(lorem) : undefined,
+        feedbackInstructions = lorem.randomOption([
+          lorem.randomParagraph(2, 4),
+          undefined,
+          undefined,
+        ]);
       this.assignments[assignment.id] = {
         id: assignment.id,
         order: order,
@@ -534,6 +620,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         hideDate: Math.random() > 0.5 ? lorem.addWeeks(date, 2) : undefined,
         date: date,
         rubric: rubric,
+        feedbackRubric: feedbackRubric,
+        feedbackInstructions: feedbackInstructions,
         body: lorem.randomParagraph(2, 6),
       };
       return this.assignments[assignment.id];
@@ -670,6 +758,9 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           full: image.src,
           imageAlt: image.alt,
           imageLongdesc: image.longdesc,
+          feedbackInstructions:
+            a && a.feedbackInstructions ? a.feedbackInstructions : "",
+          feedbackRubric: a && a.feedbackRubric ? a.feedbackRubric : "",
         };
       if (Math.random() < 0.2) submission.feature = lorem.randomParagraph(2, 6);
       this.portfolios[submission.portfolioId] = this.portfolios[

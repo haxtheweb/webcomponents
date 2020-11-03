@@ -174,101 +174,108 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
       <h1 class="sr-only">Overview</h1>
       <div id="primary">
         <div id="profile">
-          <h2>${this.profileName}</h2>
+          <h2>${this.profileName || "Loading Your Profile..."}</h2>
           <accent-card accent-color="purple" class="card primary">
             <span slot="heading" class="sr-only">My Progress</span>
-            <lrndesign-avatar
-              accent-color="${this.accentColor(this.profileName)}"
-              slot="content"
-              src="${!this.profile ? "unknown" : this.profile.image}"
-              label="${this.profileName}"
-              two-chars
-              size="200px"
-            ></lrndesign-avatar>
-            <table slot="content">
-              <tbody>
-                <tr>
-                  <th scope="row">
-                    <iron-icon icon="assignment-turned-in"></iron-icon>
-                    Assignments Completed
-                  </th>
-                  <td>
-                    ${!this.profile ||
-                    !this.profile.completed ||
-                    !this.profile.due
-                      ? "unknown"
-                      : `${this.profile.completed.length} / ${
-                          this.profile.completed.length +
-                          this.profile.due.length
-                        }`}
-                  </td>
-                </tr>
-                ${!this.profile || (this.profile.features || []).length < 1
-                  ? ``
-                  : html`
+            ${!this.profile || Object.keys(this.profile).length < 1
+              ? this.loading("purple", "footer")
+              : html`
+                  <lrndesign-avatar
+                    accent-color="${this.accentColor(this.profileName)}"
+                    slot="content"
+                    src="${!this.profile ? "unknown" : this.profile.image}"
+                    label="${this.profileName}"
+                    two-chars
+                    size="200px"
+                  ></lrndesign-avatar>
+                  <table slot="content">
+                    <tbody>
                       <tr>
                         <th scope="row">
-                          <iron-icon icon="star"></iron-icon>
-                          Submissions Featured
+                          <iron-icon icon="assignment-turned-in"></iron-icon>
+                          Assignments Completed
                         </th>
                         <td>
-                          ${!this.profile || !this.profile.features
+                          ${!this.profile ||
+                          !this.profile.completed ||
+                          !this.profile.due
                             ? "unknown"
-                            : this.profile.features.length}
+                            : `${this.profile.completed.length} / ${
+                                this.profile.completed.length +
+                                this.profile.due.length
+                              }`}
                         </td>
                       </tr>
-                    `}
-                <tr>
-                  <th scope="row">
-                    <iron-icon icon="communication:forum"></iron-icon>
-                    Peer Reviews Written
-                  </th>
-                  <td>
-                    ${!this.profile || !this.profile.given
-                      ? "0"
-                      : html` ${this.profile.given.length} `}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                      ${!this.profile ||
+                      (this.profile.features || []).length < 1
+                        ? ``
+                        : html`
+                            <tr>
+                              <th scope="row">
+                                <iron-icon icon="star"></iron-icon>
+                                Submissions Featured
+                              </th>
+                              <td>
+                                ${!this.profile || !this.profile.features
+                                  ? "unknown"
+                                  : this.profile.features.length}
+                              </td>
+                            </tr>
+                          `}
+                      <tr>
+                        <th scope="row">
+                          <iron-icon icon="communication:forum"></iron-icon>
+                          Peer Reviews Written
+                        </th>
+                        <td>
+                          ${!this.profile || !this.profile.given
+                            ? "0"
+                            : html` ${this.profile.given.length} `}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                `}
           </accent-card>
           <nav-card accent-color="green" class="card primary due">
             <span slot="heading">Upcoming Assignments</span>
             <elmsln-studio-link slot="subheading" href="/assignments"
               >All assignments</elmsln-studio-link
             >
-            <div slot="linklist">
-              ${!this.profile
-                ? "unknown"
-                : (this.profile.due || []).slice(0, 5).map(
-                    (a) => html`
-                      <nav-card-item
-                        accent-color="${this.isLate(a.date) ? "red" : "grey"}"
-                        allow-grey
-                        avatar="${this.isLate(a.date)
-                          ? "icons:assignment-late"
-                          : "assignment"}"
-                        invert
-                      >
-                        <elmsln-studio-link
-                          id="due-${a.id}"
-                          aria-describedby="due-${a.id}-desc"
-                          slot="label"
-                          href="/assignments?assignments=${a.id}"
+            ${!this.profile || Object.keys(this.profile).length < 1
+              ? this.loading("green", "footer")
+              : html`
+                  <div slot="linklist">
+                    ${(this.profile.due || []).slice(0, 5).map(
+                      (a) => html`
+                        <nav-card-item
+                          accent-color="${this.isLate(a.date) ? "red" : "grey"}"
+                          allow-grey
+                          avatar="${this.isLate(a.date)
+                            ? "icons:assignment-late"
+                            : "assignment"}"
+                          invert
                         >
-                          ${a.assignment}
-                        </elmsln-studio-link>
-                        <relative-time
-                          id="due-${a.id}-desc"
-                          slot="description"
-                          datetime="${a.date}"
-                        >
-                          ${this.dateFormat(a.date, "long")}
-                        </relative-time>
-                      </nav-card-item>
-                    `
-                  )}
-            </div>
+                          <elmsln-studio-link
+                            id="due-${a.id}"
+                            aria-describedby="due-${a.id}-desc"
+                            slot="label"
+                            href="/assignments?assignments=${a.id}"
+                          >
+                            ${a.assignment}
+                          </elmsln-studio-link>
+                          <relative-time
+                            id="due-${a.id}-desc"
+                            slot="description"
+                            datetime="${a.date}"
+                          >
+                            ${this.dateFormat(a.date, "long")}
+                          </relative-time>
+                        </nav-card-item>
+                      `
+                    )}
+                  </div>
+                `}
           </nav-card>
         </div>
         <div id="work">
@@ -286,10 +293,10 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                 : `?student=${this.profile.id}`}"
               >All my submissions</elmsln-studio-link
             >
-            <div slot="linklist">
-              ${!this.profile
-                ? "unknown"
-                : (this.profile.submissions || []).slice(0, 5).map(
+            ${!this.profile || Object.keys(this.profile).length < 1
+              ? this.loading("orange", "footer")
+              : html` <div slot="linklist">
+                  ${(this.profile.submissions || []).slice(0, 5).map(
                     (s) => html`
                       <nav-card-item>
                         <elmsln-studio-link
@@ -310,7 +317,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                       </nav-card-item>
                     `
                   )}
-            </div>
+                </div>`}
           </nav-card>
           <nav-card
             accent-color="cyan"
@@ -318,10 +325,10 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             link-icon="chevron-right"
           >
             <span slot="heading">Feedback for Me</span>
-            <div slot="linklist">
-              ${!this.profile
-                ? "unknown"
-                : (this.profile.feedback || []).slice(0, 5).map(
+            ${!this.profile || Object.keys(this.profile).length < 1
+              ? this.loading("cyan", "footer")
+              : html` <div slot="linklist">
+                  ${(this.profile.feedback || []).slice(0, 5).map(
                     (f) => html`
                       <nav-card-item
                         accent-color="${this.accentColor(
@@ -349,7 +356,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                       </nav-card-item>
                     `
                   )}
-            </div>
+                </div>`}
           </nav-card>
         </div>
       </div>
@@ -361,67 +368,73 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             <elmsln-studio-link slot="subheading" href="/submissions"
               >All submissions</elmsln-studio-link
             >
-            <div slot="linklist">
-              ${(this.submissions || []).map(
-                (s) => html`
-                  <nav-card-item
-                    accent-color="${this.accentColor(
-                      [s.firstName, s.lastName].join(" ")
-                    )}"
-                    .avatar="${s.avatar}"
-                    .initials="${[s.firstName, s.lastName].join(" ")}"
-                  >
-                    <elmsln-studio-link
-                      id="act-${s.id}"
-                      aria-describedby="act-${s.id}-desc"
-                      slot="label"
-                      href="${this.getActivityLink(s)}"
-                    >
-                      ${this.getActivityTitle(s)}
-                    </elmsln-studio-link>
-                    <relative-time
-                      id="act-${s.id}-desc"
-                      slot="description"
-                      datetime="${s.date}"
-                    >
-                      ${this.dateFormat(s.date)}
-                    </relative-time>
-                  </nav-card-item>
-                `
-              )}
-            </div>
+            ${!this.submissions
+              ? this.loading("pink", "body")
+              : html` <div slot="linklist">
+                  ${(this.submissions || []).map(
+                    (s) => html`
+                      <nav-card-item
+                        accent-color="${this.accentColor(
+                          [s.firstName, s.lastName].join(" ")
+                        )}"
+                        .avatar="${s.avatar}"
+                        .initials="${[s.firstName, s.lastName].join(" ")}"
+                      >
+                        <elmsln-studio-link
+                          id="act-${s.id}"
+                          aria-describedby="act-${s.id}-desc"
+                          slot="label"
+                          href="${this.getActivityLink(s)}"
+                        >
+                          ${this.getActivityTitle(s)}
+                        </elmsln-studio-link>
+                        <relative-time
+                          id="act-${s.id}-desc"
+                          slot="description"
+                          datetime="${s.date}"
+                        >
+                          ${this.dateFormat(s.date)}
+                        </relative-time>
+                      </nav-card-item>
+                    `
+                  )}
+                </div>`}
           </nav-card>
           <nav-card flat no-border slot="content">
             <span slot="heading">Recent Comments</span>
-            <div slot="linklist">
-              ${(this.discussion || []).map(
-                (d) => html`
-                  <nav-card-item
-                    accent-color="${this.accentColor(
-                      [d.firstName, d.lastName].join(" ")
-                    )}"
-                    .avatar="${d.avatar}"
-                    .initials="${[d.firstName, d.lastName].join(" ")}"
-                  >
-                    <elmsln-studio-link
-                      id="act-${d.id}"
-                      aria-describedby="act-${d.id}-desc"
-                      slot="label"
-                      href="${this.getActivityLink(d)}"
-                    >
-                      ${this.getActivityTitle(d)}
-                    </elmsln-studio-link>
-                    <relative-time
-                      id="act-${d.id}-desc"
-                      slot="description"
-                      datetime="${d.date}"
-                    >
-                      ${this.dateFormat(d.date)}
-                    </relative-time>
-                  </nav-card-item>
-                `
-              )}
-            </div>
+            ${!this.discussion
+              ? this.loading("pink", "body")
+              : html`
+                  <div slot="linklist">
+                    ${(this.discussion || []).map(
+                      (d) => html`
+                        <nav-card-item
+                          accent-color="${this.accentColor(
+                            [d.firstName, d.lastName].join(" ")
+                          )}"
+                          .avatar="${d.avatar}"
+                          .initials="${[d.firstName, d.lastName].join(" ")}"
+                        >
+                          <elmsln-studio-link
+                            id="act-${d.id}"
+                            aria-describedby="act-${d.id}-desc"
+                            slot="label"
+                            href="${this.getActivityLink(d)}"
+                          >
+                            ${this.getActivityTitle(d)}
+                          </elmsln-studio-link>
+                          <relative-time
+                            id="act-${d.id}-desc"
+                            slot="description"
+                            datetime="${d.date}"
+                          >
+                            ${this.dateFormat(d.date)}
+                          </relative-time>
+                        </nav-card-item>
+                      `
+                    )}
+                  </div>
+                `}
           </nav-card>
         </accent-card>
       </div>
@@ -447,10 +460,13 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.discussion = [];
     this.profile = {};
-    this.submissions = [];
     this.tag = ElmslnStudioDashboard.tag;
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.fetchData("profile");
+    this.fetchData("submissions");
   }
   get profileName() {
     return this.profile && this.profile.firstName && this.profile.lastName

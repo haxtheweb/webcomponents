@@ -3,14 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/nav-card/nav-card.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@github/time-elements";
+import "@lrnwebcomponents/nav-card/nav-card.js";
 import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
+//import "@lrnwebcomponents/accent-card/lib/accent-card-clickable.js";
+import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 
 const ElmslnStudioUtilities = function (SuperClass) {
   return class extends SuperClass {
@@ -28,6 +25,11 @@ const ElmslnStudioUtilities = function (SuperClass) {
     constructor() {
       super();
       this.demoMode = false;
+      import("@polymer/iron-ajax/iron-ajax.js");
+      import("@polymer/iron-icon/iron-icon.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }
     /**
      * default toolbar config object,
@@ -429,6 +431,45 @@ const ElmslnStudioUtilities = function (SuperClass) {
       return "hax:messages-9-plus";
     }
 
+    rubricTable(rubric) {
+      return !rubric
+        ? ""
+        : html`
+            <table class="rubric-table">
+              <caption>
+                Rubric
+              </caption>
+              ${!rubric.key || !rubric.key
+                ? ``
+                : html`
+                    <thead>
+                      <th scope="col">Criteria</th>
+                      ${rubric.key.map(
+                        (col) => html`<th scope="col">
+                          ${col.description && (col.points || col.points > -1)
+                            ? `${col.description} (${col.points})`
+                            : col.description || col.points}
+                        </th>`
+                      )}
+                    </thead>
+                  `}
+              <tbody>
+                ${Object.keys(rubric.values || {}).map(
+                  (key) =>
+                    html`
+                      <tr>
+                        <th scope="row">${key}</th>
+                        ${(rubric.values[key] || []).map(
+                          (col) => html`<td>${col}</td>`
+                        )}
+                      </tr>
+                    `
+                )}
+              </tbody>
+            </table>
+          `;
+    }
+
     _getValign(gravity) {
       return gravity && gravity.indexOf("top") > -1
         ? "top"
@@ -443,6 +484,74 @@ const ElmslnStudioUtilities = function (SuperClass) {
         : gravity && gravity.indexOf("right") > -1
         ? "right"
         : "center";
+    }
+    loading(color, slot = "footer", size = "small") {
+      return !slot
+        ? html`<hexagon-loader
+            loading
+            item-count="3"
+            size="${size}"
+            color="${color}"
+          >
+          </hexagon-loader>`
+        : html`<hexagon-loader
+            loading
+            item-count="3"
+            size="${size}"
+            color="${color}"
+            slot="${slot}"
+          >
+          </hexagon-loader>`;
+    }
+    /**
+     * handles buttons that work like links
+     *
+     * @param {*} e event
+     * @param {string} path
+     */
+    submitData(type, data) {
+      /**
+       * Fires when button is clicked
+       *
+       * @event submit-data
+       */
+      console.log("submitData", type, data);
+      this.dispatchEvent(
+        new CustomEvent("submit-data", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            type: type,
+            data: data,
+          },
+        })
+      );
+    }
+    /**
+     * handles buttons that work like links
+     *
+     * @param {*} e event
+     * @param {string} path
+     */
+    fetchData(type, refresh = false) {
+      /**
+       * Fires when button is clicked
+       *
+       * @event fetch-data
+       */
+      console.log("fetchData", type, refresh);
+      this.dispatchEvent(
+        new CustomEvent("fetch-data", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            type: type,
+            refresh: refresh,
+          },
+        })
+      );
     }
     /**
      * handles buttons that work like links

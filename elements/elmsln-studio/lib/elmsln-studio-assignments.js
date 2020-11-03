@@ -194,6 +194,13 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
     this.lessons = {};
     this.tag = ElmslnStudioAssignments.tag;
   }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.fetchData("profile");
+    this.fetchData("projects");
+    this.fetchData("lessons");
+    this.fetchData("assignments");
+  }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});

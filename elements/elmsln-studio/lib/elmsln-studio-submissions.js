@@ -229,117 +229,141 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         </div>
       </div>
       <div id="primary">
-        <div id="cards" class="${this.list ? "list" : "grid"}">
-          <div
-            class="no-submissions"
-            ?hidden="${this.filteredSubmissions.length > 0}"
-          >
-            No submissions for applied filters.
-          </div>
-          ${this.filteredSubmissions.map(
-            (s, i) => html`
-              <elmsln-studio-submission-card
-                id="accent-${i}"
-                href="${this.getActivityLink(s, true)}"
-                class="card submission-card"
-                image-src="${this.getCoverImage(s)}"
-                .image-alt="${s.imageAlt || undefined}"
-                ?horizontal="${s.feature || this.list ? true : false}"
-                .image-align="${this._getAlign(s.imageGravity || undefined)}"
-                .image-valign="${this._getValign(s.imageGravity || undefined)}"
-                .gravity="${s.imageGravity || undefined}"
-                no-border
-              >
-                <elmsln-studio-link
-                  id="assignment-${s.id}"
-                  slot="assigmment"
-                  href="${this.getActivityLink(s, true)}"
+        ${!this.submissions
+          ? this.loading("grey")
+          : html`
+              <div id="cards" class="${this.list ? "list" : "grid"}">
+                <div
+                  class="no-submissions"
+                  ?hidden="${this.filteredSubmissions.length > 0}"
                 >
-                  ${s.assignment}
-                </elmsln-studio-link>
-                <elmsln-studio-link
-                  id="student-${s.id}"
-                  slot="student"
-                  href="/submissions${!s.userId ? "" : `?student=${s.userId}`}"
-                >
-                  ${[s.firstName, s.lastName].join(" ")}
-                </elmsln-studio-link>
-                <local-time
-                  slot="datetime"
-                  id="date-${s.id}"
-                  datetime="${s.date}"
-                  month="long"
-                  day="numeric"
-                  year="${this.list ? "numeric" : undefined}"
-                >
-                  ${this.dateFormat(s.date, "short")}
-                </local-time>
-                <div slot="project" id="project-${s.id}">${s.project}</div>
-                <div slot="feature" class="feature" ?hidden="${!s.feature}">
-                  ${s.feature}
+                  No submissions for applied filters.
                 </div>
-                <elmsln-studio-link
-                  slot="feedback"
-                  href="${this.getActivityLink(s)}"
-                >
-                  Feedback
-                  <span class="sr-only">(${s.feedback.length})</span>
-                  <iron-icon
-                    icon="${this.getFeedbackIcon(s.feedback.length)}"
-                  ></iron-icon>
-                </elmsln-studio-link>
-              </elmsln-studio-submission-card>
-            `
-          )}
-        </div>
+                ${this.filteredSubmissions.map(
+                  (s, i) => html`
+                    <elmsln-studio-submission-card
+                      id="accent-${i}"
+                      href="${this.getActivityLink(s, true)}"
+                      class="card submission-card"
+                      image-src="${this.getCoverImage(s)}"
+                      .image-alt="${s.imageAlt || undefined}"
+                      ?horizontal="${s.feature || this.list ? true : false}"
+                      .image-align="${this._getAlign(
+                        s.imageGravity || undefined
+                      )}"
+                      .image-valign="${this._getValign(
+                        s.imageGravity || undefined
+                      )}"
+                      .gravity="${s.imageGravity || undefined}"
+                      no-border
+                    >
+                      <elmsln-studio-link
+                        id="assignment-${s.id}"
+                        slot="assigmment"
+                        href="${this.getActivityLink(s, true)}"
+                      >
+                        ${s.assignment}
+                      </elmsln-studio-link>
+                      <elmsln-studio-link
+                        id="student-${s.id}"
+                        slot="student"
+                        href="/submissions${!s.userId
+                          ? ""
+                          : `?student=${s.userId}`}"
+                      >
+                        ${[s.firstName, s.lastName].join(" ")}
+                      </elmsln-studio-link>
+                      <local-time
+                        slot="datetime"
+                        id="date-${s.id}"
+                        datetime="${s.date}"
+                        month="long"
+                        day="numeric"
+                        year="${this.list ? "numeric" : undefined}"
+                      >
+                        ${this.dateFormat(s.date, "short")}
+                      </local-time>
+                      <div slot="project" id="project-${s.id}">
+                        ${s.project}
+                      </div>
+                      <div
+                        slot="feature"
+                        class="feature"
+                        ?hidden="${!s.feature}"
+                      >
+                        ${s.feature}
+                      </div>
+                      <elmsln-studio-link
+                        slot="feedback"
+                        href="${this.getActivityLink(s)}"
+                      >
+                        Feedback
+                        <span class="sr-only">(${s.feedback.length})</span>
+                        <iron-icon
+                          icon="${this.getFeedbackIcon(s.feedback.length)}"
+                        ></iron-icon>
+                      </elmsln-studio-link>
+                    </elmsln-studio-submission-card>
+                  `
+                )}
+              </div>
+            `}
       </div>
       <div id="secondary">
         <nav-card flat no-border class="card">
           <span slot="heading">
             ${this.isFiltered ? "Related Comments" : "Recent Comments"}
           </span>
-          <div slot="body" ?hidden="${this.filteredComments.length > 0}">
-            ${this.isFiltered
-              ? "No comments for applied filters."
-              : "No comments."}
-          </div>
-          <div slot="linklist">
-            ${(this.filteredComments || []).slice(0, this.commentLoad).map(
-              (f) => html`
-                <nav-card-item
-                  accent-color="${this.accentColor(this.fullName(f))}"
-                  .avatar="${f.avatar}"
-                  initials="${this.fullName(f)}"
-                >
-                  <elmsln-studio-link
-                    id="comment-${f.id}"
-                    aria-describedby="comment-${f.id}-desc"
-                    slot="label"
-                    href="${this.getActivityLink(f)}"
-                  >
-                    ${this.getActivityTitle(f)}
-                  </elmsln-studio-link>
+          ${!this.comments
+            ? this.loading("grey", "body")
+            : html`
+                <div slot="body" ?hidden="${this.filteredComments.length > 0}">
+                  ${this.isFiltered
+                    ? "No comments for applied filters."
+                    : "No comments."}
+                </div>
+                <div slot="linklist">
+                  ${(this.filteredComments || [])
+                    .slice(0, this.commentLoad)
+                    .map(
+                      (f) => html`
+                        <nav-card-item
+                          accent-color="${this.accentColor(this.fullName(f))}"
+                          .avatar="${f.avatar}"
+                          initials="${this.fullName(f)}"
+                        >
+                          <elmsln-studio-link
+                            id="comment-${f.id}"
+                            aria-describedby="comment-${f.id}-desc"
+                            slot="label"
+                            href="${this.getActivityLink(f)}"
+                          >
+                            ${this.getActivityTitle(f)}
+                          </elmsln-studio-link>
 
-                  <relative-time
-                    id="comment-${f.id}"
-                    slot="description"
-                    datetime="${f.date}"
-                  >
-                    ${this.dateFormat(f.date, "long")}
-                  </relative-time>
-                </nav-card-item>
-              `
-            )}
-          </div>
-          <button
-            class="load-more"
-            slot="footer"
-            ?disabled="${this.commentLoad >= this.filteredComments.length}"
-            ?hidden="${this.commentLoad >= this.filteredComments.length}"
-            @click="${(e) => (this.commentLoad += 10)}"
-          >
-            Load More ${this.commentLoad} / ${this.filteredComments.length}
-          </button>
+                          <relative-time
+                            id="comment-${f.id}"
+                            slot="description"
+                            datetime="${f.date}"
+                          >
+                            ${this.dateFormat(f.date, "long")}
+                          </relative-time>
+                        </nav-card-item>
+                      `
+                    )}
+                </div>
+                <button
+                  class="load-more"
+                  slot="footer"
+                  ?disabled="${this.commentLoad >=
+                  this.filteredComments.length}"
+                  ?hidden="${this.commentLoad >= this.filteredComments.length}"
+                  @click="${(e) => (this.commentLoad += 10)}"
+                >
+                  Load More ${this.commentLoad} /
+                  ${this.filteredComments.length}
+                </button>
+              `}
         </nav-card>
       </div>
     `;
@@ -382,10 +406,13 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   constructor() {
     super();
     this.list = false;
-    this.submissions = [];
-    this.comments = [];
     this.commentLoad = 15;
     this.tag = ElmslnStudioSubmissions.tag;
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.fetchData("submissions");
+    this.fetchData("discussion");
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);

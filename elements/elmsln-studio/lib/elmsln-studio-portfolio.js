@@ -232,214 +232,242 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   }
   // render function
   render() {
-    return !this.portfolio
-      ? ""
-      : html`
-          <div id="breadcrumb">
-            <elmsln-studio-link href="/submissions"
-              >Submissions</elmsln-studio-link
-            >
-            <span> > </span>
-            ${!this.portfolio.projectId || !this.portfolio.project
-              ? ``
-              : html`
-                  <elmsln-studio-link
-                    href="${`/submissions?project=${this.portfolio.projectId}`}"
-                    >${this.portfolio.project}</elmsln-studio-link
-                  >
-                  <span> > </span>
-                `}
-            ${!this.assignment || !this.assignment.assignment
-              ? ``
-              : html`
-                  <elmsln-studio-link
-                    href="${`/submissions?${
-                      !this.portfolio.projectId || !this.portfolio.project
-                        ? ``
-                        : `project=${this.portfolio.projectId}&`
-                    }assignment=${this.assignment.assignmentId}`}"
-                    >${this.assignment.assignment}</elmsln-studio-link
-                  >
-                  <span> > </span>
-                `}
-            <span>${this.fullName(this.portfolio)}</span>
-          </div>
-          <div
-            id="primary"
-            ?hidden="${!this.portfolio}"
-            class="${this.comment && this.comment !== ""
-              ? "view-discussion"
-              : ""}"
-          >
-            <article id="portfolio-project">
-              <h1>
-                <lrndesign-avatar
-                  accent-color="${this.accentColor(
-                    this.fullName(this.portfolio)
-                  )}"
-                  aria-hidden="true"
-                  label="${this.fullName(this.portfolio)}"
-                  .src="${this.portfolio && this.portfolio.avatar
-                    ? this.portfolio.avatar
-                    : undefined}"
-                  two-chars
-                >
-                </lrndesign-avatar>
-                <span class="student-name"
-                  >${this.fullName(this.portfolio)}</span
-                >
-                <span class="project-name">${this.portfolio.project}</span>
-              </h1>
-              <div id="project-buttons">
-                <button
-                  id="sort"
-                  aria-pressed="${this.sortLatest ? "false" : "true"}"
-                  class="${!this.sortLatest ? "" : "sort-latest"}"
-                  @click="${(e) => (this.sortLatest = !this.sortLatest)}"
-                  controls="portfolio-project"
-                >
-                  <iron-icon icon="sort"></iron-icon>
-                  <span class="sr-only"
-                    >Sort Submissions
-                    ${!this.sortLatest ? "Oldest First" : "Newest First"}</span
-                  >
-                </button>
-                <simple-tooltip for="sort"
-                  >Sort Submissions
-                  ${!this.sortLatest
-                    ? "Oldest First"
-                    : "Newest First"}</simple-tooltip
-                >
-              </div>
-              ${!this.portfolio
+    return html`
+      <div id="breadcrumb">
+        <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
+        <span> > </span>
+        ${!this.portfolio
+          ? ``
+          : html`
+              ${!this.portfolio.projectId || !this.portfolio.project
                 ? ``
-                : this.sortedSubmissions.map(
-                    (s) => html`
-                      <section
-                        class="${this.submissionFilter === s.id
-                          ? "section-discussion"
-                          : ""}"
-                      >
-                        <div class="submission-header">
-                          <h2 id="sub-${s.id}">
-                            <span class="assignment-name">${s.assignment}</span>
-                            <span class="submission-date"
-                              >Submitted:
-                              <local-time
-                                month="long"
-                                day="numeric"
-                                year="numeric"
-                                hour="2-digit"
-                                minute="2-digit"
-                                second="2-digit"
-                                time-zone-name="short"
-                                datetime="${s.date}"
-                              >
-                                ${this.dateFormat(s.date)}
-                              </local-time>
-                            </span>
-                          </h2>
-                          <elmsln-studio-button
-                            id="sub-${s.id}-toggle-button"
-                            class="view-discussion-button"
-                            aria-describedby="sub-${s.id}"
-                            icon="${this.submissionFilter === s.id &&
-                            this.comment
-                              ? "close"
-                              : this.getFeedbackIcon(s.feedback.length)}"
-                            path="${this.getActivityLink(
-                              s,
-                              this.submissionFilter === s.id && this.comment
-                            )}"
-                          >
-                            <span class="sr-only"
-                              >${this.submissionFilter === s.id && this.comment
-                                ? "Close Feedback"
-                                : `View Feedback (${s.feedback.length})`}</span
+                : html`
+                    <elmsln-studio-link
+                      href="${`/submissions?project=${this.portfolio.projectId}`}"
+                      >${this.portfolio.project ||
+                      "Project"}</elmsln-studio-link
+                    >
+                    <span> > </span>
+                  `}
+            `}
+        ${!this.portfolio || !this.assignment
+          ? html`<em>Assignment</em>`
+          : html`
+              <elmsln-studio-link
+                href="${`/submissions?${
+                  !this.portfolio.projectId || !this.portfolio.project
+                    ? ``
+                    : `project=${this.portfolio.projectId}&`
+                }assignment=${this.assignment.assignmentId}`}"
+                >${this.assignment.assignment ||
+                "Assignment"}</elmsln-studio-link
+              >
+            `}
+        <span> > </span>
+        <span
+          >${!this.portfolio
+            ? html`<em>Student</em>`
+            : this.fullName(this.portfolio)}</span
+        >
+      </div>
+      <div
+        id="primary"
+        class="${this.comment && this.comment !== "" ? "view-discussion" : ""}"
+      >
+        <article id="portfolio-project">
+          <h1>
+            <lrndesign-avatar
+              accent-color="${!this.portfolio
+                ? "grey"
+                : this.accentColor(this.fullName(this.portfolio))}"
+              aria-hidden="true"
+              label="${!this.portfolio
+                ? "undefined"
+                : this.fullName(this.portfolio)}"
+              .src="${this.portfolio && this.portfolio.avatar
+                ? this.portfolio.avatar
+                : undefined}"
+              two-chars
+            >
+            </lrndesign-avatar>
+            <span class="student-name"
+              >${!this.portfolio
+                ? "Loading..."
+                : this.fullName(this.portfolio)}</span
+            >
+            ${!this.portfolio || !this.portfolio.project
+              ? ``
+              : html`
+                  <span class="project-name">${this.portfolio.project}</span>
+                `}
+          </h1>
+          ${!this.portfolio
+            ? this.loading("grey")
+            : html`
+                <div id="project-buttons">
+                  <button
+                    id="sort"
+                    aria-pressed="${this.sortLatest ? "false" : "true"}"
+                    class="${!this.sortLatest ? "" : "sort-latest"}"
+                    @click="${(e) => (this.sortLatest = !this.sortLatest)}"
+                    controls="portfolio-project"
+                  >
+                    <iron-icon icon="sort"></iron-icon>
+                    <span class="sr-only"
+                      >Sort Submissions
+                      ${!this.sortLatest
+                        ? "Oldest First"
+                        : "Newest First"}</span
+                    >
+                  </button>
+                  <simple-tooltip for="sort"
+                    >Sort Submissions
+                    ${!this.sortLatest
+                      ? "Oldest First"
+                      : "Newest First"}</simple-tooltip
+                  >
+                </div>
+                ${this.sortedSubmissions.map(
+                  (s) => html`
+                    <section
+                      class="${this.submissionFilter === s.id
+                        ? "section-discussion"
+                        : ""}"
+                    >
+                      <div class="submission-header">
+                        <h2 id="sub-${s.id}">
+                          <span class="assignment-name">${s.assignment}</span>
+                          <span class="submission-date"
+                            >Submitted:
+                            <local-time
+                              month="long"
+                              day="numeric"
+                              year="numeric"
+                              hour="2-digit"
+                              minute="2-digit"
+                              second="2-digit"
+                              time-zone-name="short"
+                              datetime="${s.date}"
                             >
-                          </elmsln-studio-button>
-                          <simple-tooltip for="sub-${s.id}-toggle-button"
+                              ${this.dateFormat(s.date)}
+                            </local-time>
+                          </span>
+                        </h2>
+                        <elmsln-studio-button
+                          id="sub-${s.id}-toggle-button"
+                          class="view-discussion-button"
+                          aria-describedby="sub-${s.id}"
+                          icon="${this.submissionFilter === s.id && this.comment
+                            ? "close"
+                            : this.getFeedbackIcon(s.feedback.length)}"
+                          path="${this.getActivityLink(
+                            s,
+                            this.submissionFilter === s.id && this.comment
+                          )}"
+                        >
+                          <span class="sr-only"
                             >${this.submissionFilter === s.id && this.comment
                               ? "Close Feedback"
-                              : `View Feedback (${s.feedback.length})`}</simple-tooltip
+                              : `View Feedback (${s.feedback.length})`}</span
                           >
-                        </div>
-                        <div
-                          class="submission-body"
-                          ?hidden="${this.comment &&
-                          this.submissionFilter !== s.id}"
+                        </elmsln-studio-button>
+                        <simple-tooltip for="sub-${s.id}-toggle-button"
+                          >${this.submissionFilter === s.id && this.comment
+                            ? "Close Feedback"
+                            : `View Feedback (${s.feedback.length})`}</simple-tooltip
                         >
-                          ${s.links && s.links.length > 0
-                            ? html`
-                                <ul class="submission-links">
-                                  ${s.links.map(
-                                    (link) => html`
-                                      <li>
-                                        <elmsln-studio-link
-                                          href="${link.url}"
-                                          target="_blank"
-                                        >
-                                          <iron-icon
-                                            aria-hidden="true"
-                                            icon="${link.type === "pdf"
-                                              ? "hax:file-pdf"
-                                              : "link"}"
-                                          ></iron-icon>
-                                          ${link.text || link.url}
-                                        </elmsln-studio-link>
-                                      </li>
-                                    `
-                                  )}
-                                </ul>
-                              `
-                            : !s.sources || s.sources.length === 0
-                            ? html` ${s.body} `
-                            : this.getThumnailGrid(s)}
+                      </div>
+                      <div
+                        class="submission-body"
+                        ?hidden="${this.comment &&
+                        this.submissionFilter !== s.id}"
+                      >
+                        ${s.links && s.links.length > 0
+                          ? html`
+                              <ul class="submission-links">
+                                ${s.links.map(
+                                  (link) => html`
+                                    <li>
+                                      <elmsln-studio-link
+                                        href="${link.url}"
+                                        target="_blank"
+                                      >
+                                        <iron-icon
+                                          aria-hidden="true"
+                                          icon="${link.type === "pdf"
+                                            ? "hax:file-pdf"
+                                            : "link"}"
+                                        ></iron-icon>
+                                        ${link.text || link.url}
+                                      </elmsln-studio-link>
+                                    </li>
+                                  `
+                                )}
+                              </ul>
+                            `
+                          : !s.sources || s.sources.length === 0
+                          ? html` ${s.body} `
+                          : this.getThumnailGrid(s)}
+                      </div>
+                    </section>
+                  `
+                )}
+              `}
+        </article>
+      </div>
+      <div
+        id="secondary"
+        ?hidden=${!this.portfolio || !this.comment || this.comment === ""}
+      >
+        <aside>
+          ${!this.assignment
+            ? this.loading("grey")
+            : html`
+                ${!this.assignment.feedbackInstructions &&
+                !this.assignment.feedbackRubric
+                  ? ``
+                  : html`
+                      <div class="instructions callout">
+                        <h2 class="callout-label">
+                          <iron-icon icon="info" aria-hidden="true"></iron-icon>
+                          Giving Feedback
+                        </h2>
+                        <div>
+                          ${this.assignment.feedbackInstructions
+                            ? this.assignment.feedbackInstructions
+                            : ""}
+                          ${this.assignment.feedbackRubric
+                            ? this.rubricTable(this.assignment.feedbackRubric)
+                            : ""}
                         </div>
-                      </section>
-                    `
-                  )}
-            </article>
-          </div>
-          <div
-            id="secondary"
-            ?hidden=${!this.portfolio || !this.comment || this.comment === ""}
-          >
-            <aside>
-              <div class="instructions callout">
-                <h2 class="callout-label">
-                  <iron-icon icon="info" aria-hidden="true"></iron-icon>
-                  Giving Feedback
-                </h2>
-                <div>
-                  <ul>
-                    <li>Things to look for: blah, blah, blah</li>
-                    <li>How to say it: blah, blah, blah</li>
-                    <li>Other info.</li>
-                  </ul>
+                      </div>
+                    `}
+                <h2 class="discussion-label">Feedback</h2>
+                <div class="discussion callout">
+                  <p class="callout-label">
+                    <iron-icon
+                      icon="communication:comment"
+                      aria-hidden="true"
+                    ></iron-icon>
+                    Post New Feedback
+                  </p>
+                  ${!this.feedback
+                    ? this.loading("grey")
+                    : html`
+                        <threaded-discussion
+                          comment-icon="send"
+                          ?demo="${this.demoMode}"
+                          .data="${this.feedback || []}"
+                          latest
+                          relative-dates
+                        >
+                        </threaded-discussion>
+                      `}
                 </div>
-              </div>
-              <h2 class="discussion-label">Feedback</h2>
-              <div class="discussion callout">
-                <p class="callout-label">
-                  <iron-icon
-                    icon="communication:comment"
-                    aria-hidden="true"
-                  ></iron-icon>
-                  Post New Feedback
-                </p>
-                <threaded-discussion
-                  comment-icon="send"
-                  ?demo="${this.demoMode}"
-                  .data="${this.submission || []}"
-                  latest
-                  relative-dates
-                >
-                </threaded-discussion>
-              </div>
-            </aside>
-          </div>
-        `;
+              `}
+        </aside>
+      </div>
+    `;
   }
 
   // properties available to the custom element for data binding
@@ -449,7 +477,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
       portfolio: {
         type: Object,
       },
-      submission: {
+      feedback: {
         type: Object,
       },
       comment: {
@@ -479,27 +507,19 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.portfolio = {};
-    this.submission = {};
+    this.feedback = {};
     this.submissionFilter = "";
     this.comment = "";
     this.tag = ElmslnStudioPortfolio.tag;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.fetchData("submissions");
+    this.fetchData("portfolios");
+    this.fetchData("discussion");
   }
-
   get sortedSubmissions() {
-    console.log(
-      "sortedSubmissions",
-      !this.portfolio.submissions
-        ? []
-        : this.sortDates(this.portfolio.submissions, this.sortLatest)
-    );
-    return !this.portfolio.submissions
+    return !this.portfolio || !this.portfolio.submissions
       ? []
       : this.sortDates(this.portfolio.submissions, this.sortLatest);
   }
@@ -510,11 +530,13 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         : this.portfolio.submissions.filter(
             (s) => s.id === this.submissionFilter
           );
+    console.log("get assignment", !filter ? false : filter[0]);
     return !filter ? false : filter[0];
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
+    console.log("changed portfolio", this.portfolio);
   }
 }
 customElements.define("elmsln-studio-portfolio", ElmslnStudioPortfolio);
