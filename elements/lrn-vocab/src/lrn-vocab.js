@@ -96,7 +96,8 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
         },
         styles: {
           "--simple-modal-width": "50vw",
-          "--simple-modal-height": "50vh",
+          "--simple-modal-max-width": "50vw",
+          "--simple-modal-min-height": "50vh",
         },
         invokedBy: this,
       },

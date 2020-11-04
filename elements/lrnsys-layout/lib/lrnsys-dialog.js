@@ -255,6 +255,11 @@ class LrnsysDialog extends SimpleColors {
           header: h,
           content: c,
         },
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-max-width": "75vw",
+          "--simple-modal-min-height": "50vh",
+        },
         invokedBy: this.shadowRoot.querySelector("#dialogtrigger"),
         clone: true,
       },

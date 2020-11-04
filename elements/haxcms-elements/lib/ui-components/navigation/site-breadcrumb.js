@@ -34,7 +34,7 @@ class SiteBreadcrumb extends LitElement {
           padding: 0 8px 0 0;
           text-decoration: var(--site-breadcrumb-text-decoration, underline);
         }
-        paper-button {
+        button {
           margin: 0;
           padding: 0;
           height: 24px;
@@ -42,9 +42,9 @@ class SiteBreadcrumb extends LitElement {
           display: inline-flex;
           text-transform: unset;
         }
-        paper-button:hover,
-        paper-button:focus,
-        paper-button:active {
+        button:hover,
+        button:focus,
+        button:active {
           background-color: var(--site-breadcrumb-hover-bg, transparent);
           color: var(--site-breadcrumb-hover-color, #222222);
         }
@@ -74,7 +74,6 @@ class SiteBreadcrumb extends LitElement {
     super();
     this.__disposer = [];
     import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-button/paper-button.js");
     // keep editMode in sync globally
     autorun((reaction) => {
       this.manifest = toJS(store.routerManifest);
@@ -135,7 +134,7 @@ class SiteBreadcrumb extends LitElement {
         let icon = document.createElement("iron-icon");
         icon.icon = "icons:chevron-right";
         if (items[i].slug != null) {
-          let button = document.createElement("paper-button");
+          let button = document.createElement("button");
           button.innerText = items[i].title;
           button.noink = true;
           // disable buttons if we ware editing

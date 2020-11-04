@@ -223,10 +223,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
   _itemTapped(e) {
     var local = e.target;
     var activeId = local.getAttribute("data-id");
-    if (
-      local.tagName === "PAPER-BUTTON" &&
-      typeof activeId !== typeof undefined
-    ) {
+    if (local.tagName === "BUTTON" && typeof activeId !== typeof undefined) {
       // console log these so you can debug easily as you build out
       console.warn(this.manifest);
     }

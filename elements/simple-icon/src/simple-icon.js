@@ -4,7 +4,7 @@
  */
 import { svg, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./lib/simple-iconset.js";
+import { SimpleIconsetStore } from "./lib/simple-iconset.js";
 /**
  * `simple-icon`
  * `Render an SVG based icon`
@@ -102,10 +102,7 @@ class SimpleIcon extends SimpleColors {
    * Set the src by the icon property
    */
   setSrcByIcon(context) {
-    this.src = window.SimpleIconset.requestAvailability().getIcon(
-      this.icon,
-      context
-    );
+    this.src = SimpleIconsetStore.getIcon(this.icon, context);
     return this.src;
   }
   updated(changedProperties) {
@@ -125,7 +122,7 @@ class SimpleIcon extends SimpleColors {
         if (this[propName]) {
           this.shadowRoot
             .querySelector("image")
-            .setAttribute("xlink:href", this[propName]);
+            .setAttribute("xlink:href", `${this[propName]}`);
         }
       }
     });

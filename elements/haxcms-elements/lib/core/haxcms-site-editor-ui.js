@@ -675,7 +675,7 @@ class HAXCMSSiteEditorUI extends LitElement {
           ? store.activeItem.id
           : store.manifest.id,
     };
-    let b1 = document.createElement("paper-button");
+    let b1 = document.createElement("button");
     let icon = document.createElement("iron-icon");
     icon.icon = "icons:add";
     b1.appendChild(icon);
@@ -683,7 +683,7 @@ class HAXCMSSiteEditorUI extends LitElement {
     b1.style.color = "white";
     b1.style.backgroundColor = "#2196f3";
     b1.addEventListener("click", this._createNewItem.bind(this));
-    let b2 = document.createElement("paper-button");
+    let b2 = document.createElement("button");
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
     let b = document.createElement("span");
@@ -696,8 +696,10 @@ class HAXCMSSiteEditorUI extends LitElement {
       detail: {
         title: "Add a new page",
         styles: {
-          "--simple-modal-width": "70vw",
-          "--simple-modal-max-width": "70vw",
+          "--simple-modal-width": "50vw",
+          "--simple-modal-max-width": "50vw",
+          "--simple-modal-height": "40vh",
+          "--simple-modal-max-height": "40vh",
         },
         elements: { content: this.__newForm, buttons: b },
         invokedBy: this.shadowRoot.querySelector("#addbutton"),
@@ -757,7 +759,7 @@ class HAXCMSSiteEditorUI extends LitElement {
   _deleteButtonTap(e) {
     let c = document.createElement("span");
     c.innerHTML = `"${store.activeItem.title}" will be removed from the outline but its content stays on the file system.`;
-    let b1 = document.createElement("paper-button");
+    let b1 = document.createElement("button");
     let icon = document.createElement("iron-icon");
     icon.icon = "icons:delete";
     b1.appendChild(icon);
@@ -765,7 +767,7 @@ class HAXCMSSiteEditorUI extends LitElement {
     b1.style.color = "white";
     b1.style.backgroundColor = "#ee0000";
     b1.addEventListener("click", this._deleteActive.bind(this));
-    let b2 = document.createElement("paper-button");
+    let b2 = document.createElement("button");
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
     let b = document.createElement("span");
@@ -778,8 +780,8 @@ class HAXCMSSiteEditorUI extends LitElement {
       detail: {
         title: "Are you sure you want to delete this page?",
         styles: {
-          "--simple-modal-width": "70vw",
-          "--simple-modal-max-width": "70vw",
+          "--simple-modal-min-width": "30vw",
+          "--simple-modal-min-height": "30vh",
         },
         elements: { content: c, buttons: b },
         invokedBy: this.shadowRoot.querySelector("#deletebutton"),
@@ -815,8 +817,8 @@ class HAXCMSSiteEditorUI extends LitElement {
         title: "Edit site outline",
         styles: {
           "--simple-modal-width": "70vw",
-          "--simple-modal-height": "70vh",
           "--simple-modal-max-width": "70vw",
+          "--simple-modal-height": "70vh",
           "--simple-modal-max-height": "70vh",
         },
         elements: {

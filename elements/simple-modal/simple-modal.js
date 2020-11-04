@@ -305,11 +305,18 @@ class SimpleModal extends LitElement {
   showEvent(e) {
     // if we're already opened and we get told to open again....
     // swap out the contents
+    // ensure things don't conflict w/ the modal if its around
+    window.dispatchEvent(
+      new CustomEvent("simple-toast-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: false,
+      })
+    );
     if (this.opened) {
       // wipe the slot of our modal
-      while (this.firstChild !== null) {
-        this.removeChild(this.firstChild);
-      }
+      this.innerHTML = "";
       setTimeout(() => {
         this.show(
           e.detail.title,
@@ -321,7 +328,7 @@ class SimpleModal extends LitElement {
           e.detail.clone,
           e.detail.modal
         );
-      }, 100);
+      }, 0);
     } else {
       this.show(
         e.detail.title,

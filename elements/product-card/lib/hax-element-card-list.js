@@ -243,6 +243,7 @@ class HAXElementCardList extends LitElement {
             styles: {
               "--simple-modal-width": "75vw",
               "--simple-modal-max-width": "75vw",
+              "--simple-modal-min-height": "50vh",
             },
             elements: {
               content: e.target.nextElementSibling,

@@ -3,7 +3,6 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/editable-outline/editable-outline.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
@@ -35,12 +34,12 @@ class HAXCMSOutlineEditorDialog extends LitElement {
           left: 0;
           right: 0;
         }
-        .buttons paper-button {
+        .buttons button {
           color: #ffffff;
           background-color: var(--simple-modal-button-background, #000000);
         }
         editable-outline:not(:defined),
-        paper-button:not(:defined) {
+        button:not(:defined) {
           display: none;
         }
         #toggle {
@@ -73,12 +72,12 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         .items="${this.manifestItems}"
       ></editable-outline>
       <div class="buttons">
-        <paper-button id="savebtn" dialog-confirm @click="${this._saveTap}"
-          ><iron-icon icon="icons:save"></iron-icon>Save</paper-button
-        >
-        <paper-button dialog-dismiss
-          ><iron-icon icon="icons:cancel"></iron-icon>Cancel</paper-button
-        >
+        <button id="savebtn" dialog-confirm @click="${this._saveTap}">
+          <iron-icon icon="icons:save"></iron-icon>Save
+        </button>
+        <button dialog-dismiss>
+          <iron-icon icon="icons:cancel"></iron-icon>Cancel
+        </button>
       </div>
     `;
   }

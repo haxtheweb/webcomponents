@@ -1,5 +1,10 @@
-import { pathResolver } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-window.SimpleIconset.requestAvailability().registerIconset(
-  "hax",
-  `${pathResolver(import.meta.url)}svgs/`
-);
+import {
+  pathResolver,
+  SimpleIconsetStore,
+} from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+["hax", "lrn", "courseicons"].forEach((i) => {
+  SimpleIconsetStore.registerIconset(
+    i,
+    `${pathResolver(import.meta.url)}svgs/${i}/`
+  );
+});

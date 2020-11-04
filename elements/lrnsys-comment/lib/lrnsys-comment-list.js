@@ -305,13 +305,13 @@ class LrnsysCommentList extends PolymerElement {
     let b = document.createElement("div");
     b.classList.add("buttons");
     // close button
-    let pb = document.createElement("paper-button");
+    let pb = document.createElement("button");
     pb.setAttribute("dialog-dismiss", "dialog-dismiss");
     t = document.createTextNode("Decline");
     pb.appendChild(t);
     b.appendChild(pb);
     // confirm button
-    let pb2 = document.createElement("paper-button");
+    let pb2 = document.createElement("button");
     pb2.setAttribute("dialog-confirm", "dialog-confirm");
     pb2.setAttribute("autofocus", "autofocus");
     pb2.addEventListener("click", this._handleDeleteConfirm.bind(this));
@@ -327,6 +327,11 @@ class LrnsysCommentList extends PolymerElement {
         elements: {
           content: c,
           buttons: b,
+        },
+        styles: {
+          "--simple-modal-width": "15vw",
+          "--simple-modal-max-width": "15vw",
+          "--simple-modal-min-height": "10vh",
         },
         invokedBy: e.detail.target,
         clone: false,
