@@ -3,11 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
+import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 import "@github/time-elements";
 import "@lrnwebcomponents/nav-card/nav-card.js";
-import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 //import "@lrnwebcomponents/accent-card/lib/accent-card-clickable.js";
 import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
+import "./elmsln-studio-link.js";
+import "./elmsln-studio-button.js";
 
 const ElmslnStudioUtilities = function (SuperClass) {
   return class extends SuperClass {
@@ -485,7 +487,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
         ? "right"
         : "center";
     }
-    loading(color, slot = "footer", size = "small") {
+    loading(color, slot, size = "small") {
       return !slot
         ? html`<hexagon-loader
             loading

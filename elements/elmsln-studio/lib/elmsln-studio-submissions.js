@@ -6,8 +6,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icons/communication-icons.js";
-import "./elmsln-studio-link.js";
-import "./elmsln-studio-button.js";
 import "./elmsln-studio-submission-card.js";
 
 /**

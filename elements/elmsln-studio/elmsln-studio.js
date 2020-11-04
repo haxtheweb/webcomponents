@@ -106,8 +106,8 @@ class ElmslnStudio extends router(
         <elmsln-studio-assignments
           ?demo-mode="${this.demoMode}"
           route="assignments"
-          .lessons="${this.lessons || {}}"
-          .profile="${this.profile || {}}"
+          .lessons="${this.lessons}"
+          .profile="${this.profile}"
           @fetch-data="${this._handleFetch}"
         >
         </elmsln-studio-assignments>
@@ -161,12 +161,6 @@ class ElmslnStudio extends router(
         type: String,
         reflect: true,
         attribute: "profiles-source",
-      },
-      projects: { type: Array },
-      projectsSource: {
-        type: String,
-        reflect: true,
-        attribute: "projects-source",
       },
       sourcePath: {
         type: String,
@@ -222,9 +216,6 @@ class ElmslnStudio extends router(
     super();
     window.ElmslnStudioPath = "";
     this.assignments = {};
-    this.lessons = {};
-    this.projects = {};
-    this.profile = {};
     this.profiles = {};
     this.users = {};
 
@@ -292,7 +283,7 @@ class ElmslnStudio extends router(
 
   get submission() {
     let submissions =
-      this.profile.submissions && this.params.assignment
+      this.profile && this.profile.submissions && this.params.assignment
         ? this.profile.submissions.filter(
             (s) => s.assignmentId === this.params.assignment
           )

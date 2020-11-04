@@ -5,9 +5,6 @@
 import { LitElement, html, css } from "lit-element";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
-import "./elmsln-studio-link.js";
-import "./elmsln-studio-button.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 /**
  * `elmsln-studio-assignments`
@@ -68,6 +65,30 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
             var(--elmsln-studio-margin, 20px);
           margin-bottom: 15px;
         }
+        .assignment-link:before {
+          position: absolute;
+          overflow: hidden;
+          display: inline-block;
+          -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+          animation: ellipsis steps(4, end) 900ms infinite;
+          content: "...";
+          font-size: 150%;
+          left: 0;
+          top: 0;
+          width: 0px;
+        }
+
+        @keyframes ellipsis {
+          to {
+            width: 1.25em;
+          }
+        }
+
+        @-webkit-keyframes ellipsis {
+          to {
+            width: 1.25em;
+          }
+        }
         @media screen and (min-width: 400px) {
           #lessons {
             display: flex;
@@ -95,31 +116,36 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
     return html`
       <h1 class="sr-only">Assignments</h1>
       <div id="lessons">
-        ${Object.keys(this.lessons || {}).map(
-          (l) => html`
-            <div class="lesson">
-              <h2>${this.lessons[l].lesson}</h2>
-              ${(this.lessons[l].assignments || []).map((p) =>
-                !p.assignments
-                  ? html`
-                      <div class="assignment">${this.renderAssignment(p)}</div>
-                    `
-                  : html`
-                      <nav-card flat no-border class="card secondary">
-                        <span slot="heading" ?hidden="${!p.project}">
-                          ${p.project}
-                        </span>
-                        <div slot="linklist">
-                          ${this.sortDates(p.assignments || [], true).map((a) =>
-                            this.renderAssignment(a)
-                          )}
-                        </div>
-                      </nav-card>
-                    `
-              )}
-            </div>
-          `
-        )}
+        ${!this.lessons
+          ? this.loading("green", undefined, "large")
+          : Object.keys(this.lessons || {}).map(
+              (l) => html`
+                <div class="lesson">
+                  <h2>${this.lessons[l].lesson}</h2>
+                  ${(this.lessons[l].assignments || []).map((p) =>
+                    !p.assignments
+                      ? html`
+                          <div class="assignment">
+                            ${this.renderAssignment(p)}
+                          </div>
+                        `
+                      : html`
+                          <nav-card flat no-border class="card secondary">
+                            <span slot="heading" ?hidden="${!p.project}">
+                              ${p.project}
+                            </span>
+                            <div slot="linklist">
+                              ${this.sortDates(
+                                p.assignments || [],
+                                true
+                              ).map((a) => this.renderAssignment(a))}
+                            </div>
+                          </nav-card>
+                        `
+                  )}
+                </div>
+              `
+            )}
       </div>
     `;
   }
@@ -130,19 +156,24 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
       : html`
           <nav-card-item
             id="act-${assignment.id}-item"
-            accent-color="${this.getStatusColor(
-              this.getSubmission(assignment.id),
-              assignment
-            )}"
+            accent-color="${!this.profile
+              ? "grey"
+              : this.getStatusColor(
+                  this.getSubmission(assignment.id),
+                  assignment
+                )}"
             allow-grey
-            avatar="${this.getStatusIcon(
-              this.getSubmission(assignment.id),
-              assignment
-            )}"
+            avatar="${!this.profile
+              ? undefined
+              : this.getStatusIcon(
+                  this.getSubmission(assignment.id),
+                  assignment
+                )}"
             invert
           >
             <elmsln-studio-link
               id="act-${assignment.id}"
+              class="assignment-link"
               aria-describedby="act-${assignment.id}-desc act-${assignment.id}-item"
               slot="label"
               href="/assignments/${assignment.id}"
@@ -190,21 +221,12 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.profile = {};
-    this.lessons = {};
     this.tag = ElmslnStudioAssignments.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.fetchData("profile");
-    this.fetchData("projects");
     this.fetchData("lessons");
-    this.fetchData("assignments");
-  }
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
-    console.log("updated", this.lessons, this.profile);
   }
   getSubmission(id) {
     let submissions =

@@ -7,10 +7,7 @@ import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
-import "./elmsln-studio-link.js";
-import "./elmsln-studio-button.js";
 
 /**
  * `elmsln-studio-portfolio`
