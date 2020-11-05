@@ -6,15 +6,9 @@ import { LitElement, html, css } from "lit-element";
 import { router } from "lit-element-router";
 import { ElmslnStudioUtilities } from "./lib/elmsln-studio-utilities.js";
 import { ElmslnStudioStyles } from "./lib/elmsln-studio-styles.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 import "./lib/elmsln-studio-main.js";
 import "./lib/elmsln-studio-link.js";
 import "./lib/elmsln-studio-button.js";
-import "./lib/elmsln-studio-dashboard.js";
-import "./lib/elmsln-studio-submissions.js";
-import "./lib/elmsln-studio-assignments.js";
-import "./lib/elmsln-studio-assignment.js";
-import "./lib/elmsln-studio-portfolio.js";
 /**
  * `elmsln-studio`
  * Studio App for ELMS:LN
@@ -113,6 +107,7 @@ class ElmslnStudio extends router(
         </elmsln-studio-assignments>
         <elmsln-studio-assignment
           ?demo-mode="${this.demoMode}"
+          ?loaded=${!this.submissions || !this.lessons}
           route="assignment"
           .assignment="${this.assignment}"
           .submission="${this.submission}"
@@ -215,7 +210,6 @@ class ElmslnStudio extends router(
   constructor() {
     super();
     window.ElmslnStudioPath = "";
-    this.assignments = {};
     this.profiles = {};
     this.users = {};
 
@@ -234,6 +228,11 @@ class ElmslnStudio extends router(
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
+    import("./lib/elmsln-studio-dashboard.js");
+    import("./lib/elmsln-studio-submissions.js");
+    import("./lib/elmsln-studio-assignments.js");
+    import("./lib/elmsln-studio-assignment.js");
+    import("./lib/elmsln-studio-portfolio.js");
     this.fetchData("users");
   }
   updated(changedProperties) {
@@ -245,10 +244,9 @@ class ElmslnStudio extends router(
   }
 
   get assignment() {
-    console.log("assignment", this.params.assignment, this.assignments);
-    return this.params.assignment
+    return this.assignments && this.params.assignment
       ? this.assignments[this.params.assignment]
-      : {};
+      : undefined;
   }
   get recentDiscussions() {
     if (this.discussion) {

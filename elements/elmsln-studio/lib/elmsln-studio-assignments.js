@@ -65,7 +65,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
             var(--elmsln-studio-margin, 20px);
           margin-bottom: 15px;
         }
-        .assignment-link:before {
+        nav-card-item:not([avatar]) .assignment-link:before {
           position: absolute;
           overflow: hidden;
           display: inline-block;
