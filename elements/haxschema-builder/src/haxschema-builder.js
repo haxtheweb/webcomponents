@@ -7,7 +7,7 @@ import "@lrnwebcomponents/json-editor/json-editor.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/hax-body/lib/hax-schema-form.js";
+import "./lib/hax-schema-form.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
  * `haxschema-builder`
