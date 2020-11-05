@@ -4,7 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -27,7 +29,7 @@ class SiteModal extends LitElement {
         :host {
           display: block;
         }
-        paper-icon-button {
+        simple-icon-button {
           color: var(--site-modal-icon-color);
         }
       `,
@@ -57,13 +59,13 @@ class SiteModal extends LitElement {
           }
         </style>
       </custom-style>
-      <paper-icon-button
+      <simple-icon-button
         ?disabled="${this.editMode}"
         id="btn"
         @click="${this.fireEvent}"
         .icon="${this.icon}"
         .title="${this.buttonLabel}"
-      ></paper-icon-button>
+      ></simple-icon-button>
       <simple-tooltip for="btn" .position="${this.position}" offset="14">
         ${this.buttonLabel}
       </simple-tooltip>

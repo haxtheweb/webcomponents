@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
-import "@material/mwc-button/mwc-button.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 import "../product-card.js";
@@ -47,7 +46,7 @@ class HAXElementCardList extends LitElement {
           float: right;
           line-height: 1.5em;
         }
-        mwc-button {
+        button {
           text-transform: unset;
           margin-bottom: 5px;
         }
@@ -189,12 +188,13 @@ class HAXElementCardList extends LitElement {
                       ? html`
                           ${el.schema.demoSchema.map(
                             (demoItem) => html`
-                              <mwc-button
+                              <button
                                 data-tag="${demoItem.tag}"
                                 outlined
                                 @click="${this._viewDemo}"
-                                >Pop up demo</mwc-button
                               >
+                                Pop up demo
+                              </button>
                               <div class="demo">
                                 ${this._haxElementToNode(demoItem)}
                               </div>

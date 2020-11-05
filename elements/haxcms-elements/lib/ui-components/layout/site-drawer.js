@@ -26,7 +26,7 @@ class SiteDrawer extends LitElement {
           overflow-y: auto;
           padding: 16px;
         }
-        paper-icon-button {
+        simple-icon-button {
           color: var(--site-drawer-button-color, #ffffff);
         }
       `,
@@ -40,7 +40,9 @@ class SiteDrawer extends LitElement {
     this.align = "right";
     this.icon = "menu";
     import("@polymer/app-layout/app-drawer/app-drawer.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@lrnwebcomponents/simple-icon/simple-icon.js");
+    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+    import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
   }
   /**
    * LitElement life cycle - render
@@ -59,15 +61,15 @@ class SiteDrawer extends LitElement {
           .drawer-contents {
             @apply --site-drawer-drawer-content;
           }
-          paper-icon-button {
+          simple-icon-button {
             @apply --site-drawer-button;
           }
         </style>
       </custom-style>
-      <paper-icon-button
+      <simple-icon-button
         icon="${this.icon}"
         @click="${this.toggle}"
-      ></paper-icon-button>
+      ></simple-icon-button>
       <app-drawer align="${this.align}">
         <div class="drawer-contents"><slot></slot></div>
       </app-drawer>

@@ -1,6 +1,7 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 
 class CourseCard extends SimpleColors {
   static get properties() {
@@ -91,9 +92,10 @@ class CourseCard extends SimpleColors {
           font-size: 12px;
         }
         #course_icon {
+          overflow: hidden;
           border-radius: 50%;
           position: relative;
-          bottom: 50px;
+          bottom: 20px;
           border: solid;
           background-color: var(
             --simple-colors-default-theme-accent-7,
@@ -101,12 +103,12 @@ class CourseCard extends SimpleColors {
           );
           border-color: var(--simple-colors-default-theme-grey-1, #ffffff);
           border-width: 5px;
-          margin: 0 0 -40px 0;
+          margin: 0 0 -20px 0;
         }
 
-        iron-icon {
-          width: 70px;
-          height: 70px;
+        simple-icon {
+          --simple-icon-width: 48px;
+          --simple-icon-height: 48px;
           fill: var(--simple-colors-default-theme-grey-1, #ffffff);
         }
 
@@ -173,7 +175,10 @@ class CourseCard extends SimpleColors {
             style="background-image:url(${this.image})"
           ></div>
           <div id="course_icon">
-            <iron-icon icon="${this.icon}"></iron-icon>
+            <simple-icon
+              icon="${this.icon}"
+              accent-color="${this.accentColor}"
+            ></simple-icon>
           </div>
           <div id="course_number">${this.number}</div>
           <div id="course_name">${this.name}</div>

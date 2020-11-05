@@ -59,14 +59,14 @@ class SiteOutlineBlock extends PolymerElement {
           color: var(--site-top-menu-link-color, #444444);
           @apply --site-top-menu-link;
         }
-        paper-button {
+        button {
           text-transform: unset;
           min-width: unset;
           @apply --site-top-menu-button;
         }
-        paper-button:hover,
-        paper-button:focus,
-        paper-button:active {
+        button:hover,
+        button:focus,
+        button:active {
           @apply --site-top-menu-button-hover;
         }
         .active {
@@ -123,10 +123,10 @@ class SiteOutlineBlock extends PolymerElement {
                 tabindex="-1"
                 title$="Go to [[item.title]]"
                 href$="[[item.slug]]"
-                ><paper-button noink="[[noink]]"
-                  ><span class="link-index">[[humanIndex(index)]]</span
-                  ><span class="link-title">[[item.title]]</span></paper-button
-                ></a
+                ><button noink="[[noink]]">
+                  <span class="link-index">[[humanIndex(index)]]</span
+                  ><span class="link-title">[[item.title]]</span>
+                </button></a
               >
             </div>
           </template>

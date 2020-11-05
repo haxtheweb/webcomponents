@@ -6,6 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { getRange } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `editable-outline`
  * `a simple outline thats contenteditable in nature`
@@ -19,9 +21,6 @@ class EditableOutline extends LitElement {
     this.items = [];
     this.editMode = false;
     this.jos = window.JSONOutlineSchema.requestAvailability();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
     setTimeout(() => {
       this.addEventListener("dblclick", this._collapseClickHandler.bind(this));
     }, 0);
@@ -402,8 +401,8 @@ class EditableOutline extends LitElement {
       this.shadowRoot.querySelectorAll("li").forEach((el) => {
         el.setAttribute("contenteditable", "true");
       });
+      return outline;
     }, 0);
-    return outline;
   }
   /**
    * Take what's currently in the area and get JSON Outline Schema; optionally save

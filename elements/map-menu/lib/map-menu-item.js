@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 class MapMenuItem extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -20,15 +19,20 @@ class MapMenuItem extends LitElement {
           background: var(--map-menu-active-color);
           color: var(--map-menu-item-active-item-color, #000000);
         }
-        paper-button {
+        button {
           width: 100%;
+          background-color: transparent;
           justify-content: left;
+          text-align: left;
           margin: 0;
+          padding: 4px;
+          border: none;
+          border-radius: 0;
         }
-        iron-icon {
+        simple-icon {
           display: inline-block;
-          --iron-icon-height: var(--map-menu-item-height);
-          --iron-icon-width: var(--map-menu-item-height);
+          --simple-icon-height: var(--map-menu-item-height);
+          --simple-icon-width: var(--map-menu-item-height);
         }
         .title {
           text-transform: none;
@@ -69,9 +73,6 @@ class MapMenuItem extends LitElement {
           visibility: visible;
           opacity: 1;
         }
-        #wrapper {
-          font-size: var(--map-menu-font-size);
-        }
       `,
     ];
   }
@@ -81,17 +82,17 @@ class MapMenuItem extends LitElement {
   render() {
     return html`
       <a tabindex="-1" href="${this.url}">
-        <paper-button id="wrapper" role="link" noink>
+        <button id="wrapper" role="link" noink>
           ${this.__icon
-            ? html` <iron-icon icon="${this.__icon}"></iron-icon> `
+            ? html` <simple-icon icon="${this.__icon}"></simple-icon> `
             : ``}
           <span class="title">${this.title}</span>
           ${this.trackIcon
             ? html`
-                <iron-icon id="track" icon="${this.trackIcon}"></iron-icon>
+                <simple-icon id="track" icon="${this.trackIcon}"></simple-icon>
               `
             : ``}
-        </paper-button>
+        </button>
       </a>
     `;
   }
@@ -100,9 +101,9 @@ class MapMenuItem extends LitElement {
   }
   constructor() {
     super();
-    this.icon = "";
-    this.__icon = "";
-    this.trackIcon = "";
+    this.icon = null;
+    this.__icon = null;
+    this.trackIcon = null;
     this.title = "";
     this.url = "";
     this.active = false;
@@ -160,7 +161,6 @@ class MapMenuItem extends LitElement {
           this.__icon = "visibility-off";
         } else {
           this.__icon = null;
-          this.__icon = "";
         }
       }
     });

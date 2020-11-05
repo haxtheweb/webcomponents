@@ -54,10 +54,10 @@ class SiteBreadcrumb extends LitElement {
           height: 24px;
           display: inline-flex;
         }
-        iron-icon {
+        simple-icon {
           display: inline-flex;
-          height: 24px;
-          width: 24px;
+          --simple-icon-height: 24px;
+          --simple-icon-width: 24px;
           padding: 0 8px 0 0;
           color: var(--site-breadcrumb-color, #383f45);
         }
@@ -73,7 +73,8 @@ class SiteBreadcrumb extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
-    import("@polymer/iron-icon/iron-icon.js");
+    import("@lrnwebcomponents/simple-icon/simple-icon.js");
+    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
     // keep editMode in sync globally
     autorun((reaction) => {
       this.manifest = toJS(store.routerManifest);
@@ -131,7 +132,7 @@ class SiteBreadcrumb extends LitElement {
         }
       }
       for (var i in items) {
-        let icon = document.createElement("iron-icon");
+        let icon = document.createElement("simple-icon");
         icon.icon = "icons:chevron-right";
         if (items[i].slug != null) {
           let button = document.createElement("button");

@@ -27,7 +27,6 @@ class SiteChildrenBlock extends PolymerElement {
   constructor() {
     super();
     this.__disposer = [];
-    import("@polymer/paper-button/paper-button.js");
   }
   // render function
   static get template() {
@@ -55,7 +54,7 @@ class SiteChildrenBlock extends PolymerElement {
           color: var(--site-children-block-link-color, #444444);
           @apply --site-children-block-link;
         }
-        paper-button {
+        button {
           text-transform: unset;
           min-width: unset;
           width: 100%;
@@ -64,9 +63,9 @@ class SiteChildrenBlock extends PolymerElement {
           justify-content: flex-start;
           @apply --site-children-block-button;
         }
-        paper-button:hover,
-        paper-button:focus,
-        paper-button:active {
+        button:hover,
+        button:focus,
+        button:active {
           @apply --site-children-block-button-active;
         }
         .active {
@@ -136,10 +135,10 @@ class SiteChildrenBlock extends PolymerElement {
                 tabindex="-1"
                 href$="[[item.slug]]"
               >
-                <paper-button noink="[[noink]]">
+                <button noink="[[noink]]">
                   <div class$="indent indent-[[item.indent]]"></div>
                   [[item.title]]
-                </paper-button>
+                </button>
               </a>
             </div>
           </template>

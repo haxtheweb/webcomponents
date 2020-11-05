@@ -9,7 +9,9 @@ import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
-
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -104,7 +106,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           z-index: 1000;
         }
 
-        paper-icon-button:not(:defined),
+        simple-icon-button:not(:defined),
         site-breadcrumb:not(:defined),
         site-rss-button:not(:defined),
         site-print-button:not(:defined),
@@ -145,10 +147,10 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           color: var(--site-print-button-color, white);
         }
 
-        paper-icon-button,
+        simple-icon-button,
         site-rss-button,
         site-print-button {
-          --iron-icon-fill-color: white;
+          --simple-icon-fill-color: white;
           --haxcms-tooltip-color: #f5f5f5;
           --haxcms-tooltip-background-color: #252737;
         }
@@ -373,24 +375,24 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         </style>
       </custom-style>
       <app-drawer-layout responsive-width="900px">
-        <paper-icon-button
+        <simple-icon-button
           id="menubutton"
           icon="menu"
           @click="${this.toggleDrawer}"
           title="Toggle site menu"
-        ></paper-icon-button>
+        ></simple-icon-button>
         <app-drawer
           swipe-open
           slot="drawer"
           .opened="${this.opened}"
           @opened="${this.__openedChanged}"
         >
-          <paper-icon-button
+          <simple-icon-button
             id="menubutton2"
             icon="menu"
             @click="${this.toggleDrawer}"
             title="Toggle site menu"
-          ></paper-icon-button>
+          ></simple-icon-button>
           <div class="header-wrapper">
             <div class="header">
               <site-title ?disabled="${this.editMode}"></site-title>
@@ -444,7 +446,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
     setTimeout(() => {
-      import("@polymer/paper-icon-button/paper-icon-button.js");
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
       );

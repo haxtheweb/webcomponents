@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
+import "@lrnwebcomponents/hax-logo/hax-logo.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
@@ -33,7 +33,6 @@ class HAXCMSSiteListing extends PolymerElement {
   constructor() {
     super();
     this.SimpleColors = new SimpleColorsPolymer();
-    setPassiveTouchGestures(true);
     this.HaxSchematizer = HaxSchematizer;
     this.HaxElementizer = HaxElementizer;
     import(
@@ -51,8 +50,8 @@ class HAXCMSSiteListing extends PolymerElement {
   static get template() {
     return html`
       <style include="simple-colors-shared-styles-polymer">
-        paper-icon-button {
-          --paper-icon-button-ink-color: var(--haxcms-system-action-color);
+        simple-icon-button {
+          --simple-icon-button-ink-color: var(--haxcms-system-action-color);
         }
         .toolbar div.main-title {
           margin-left: 50px;
@@ -146,7 +145,8 @@ class HAXCMSSiteListing extends PolymerElement {
           );
           --login-form-color: var(--haxcms-system-bg);
           --login-btn-width: 80%;
-          --login-btn-display: flex;
+          --login-btn-display: block;
+          text-align: center;
         }
         .forgot {
           margin: 32px 0 -16px 0;
@@ -172,7 +172,7 @@ class HAXCMSSiteListing extends PolymerElement {
         paper-dialog {
           width: 60vw;
         }
-        paper-dialog-scrollable {
+        div.scrollable {
           overflow: scroll;
           height: 40vh;
         }
@@ -192,8 +192,7 @@ class HAXCMSSiteListing extends PolymerElement {
           font-weight: 500;
         }
         .action-button {
-          width: 50%;
-          height: 64px;
+          height: 48px;
           background-color: var(--haxcms-site-listing-color-dark);
           color: var(--haxcms-site-listing-color-light);
           margin-right: 48px;
@@ -203,8 +202,8 @@ class HAXCMSSiteListing extends PolymerElement {
         .action-button:focus {
           background-color: var(--haxcms-site-listing-color-hover);
         }
-        .action-button iron-icon {
-          margin-right: 8px;
+        button simple-icon {
+          margin-right: 4px;
         }
         simple-fields-field {
           --simple-fields-accent-color: var(--haxcms-site-listing-color-hover);
@@ -253,22 +252,25 @@ class HAXCMSSiteListing extends PolymerElement {
         .site-title:focus {
           text-decoration: none;
         }
-        .operations paper-button {
+        .operations button {
           font-weight: 500;
-          font-size: 18px;
           color: black;
           background-color: var(--haxcms-site-listing-color-light);
-          margin: 0;
-          padding: 8px;
-          width: auto;
+          margin: 0 8px;
+          padding: 4px;
           display: inline-flex;
-          height: 48px;
+          font-size: 12px;
+          line-height: 24px;
+          cursor: pointer;
         }
-        .operations paper-button:hover,
-        .operations paper-button:active,
-        .operations paper-button:focus {
+        .operations button:hover,
+        .operations button:active,
+        .operations button:focus {
           background-color: var(--haxcms-site-listing-color-light);
           color: var(--haxcms-site-listing-color-hover);
+        }
+        .operations button span {
+          height: 24px;
         }
         .operations.right {
           right: 0;
@@ -301,7 +303,7 @@ class HAXCMSSiteListing extends PolymerElement {
           opacity: 0;
           display: none;
         }
-        .selected-operations paper-button {
+        .selected-operations button {
           background-color: var(--haxcms-site-listing-color-light);
           font-weight: 500;
           font-size: 16px;
@@ -311,9 +313,9 @@ class HAXCMSSiteListing extends PolymerElement {
           margin: 8px;
           height: 48px;
         }
-        .selected-operations paper-button:active,
-        .selected-operations paper-button:hover,
-        .selected-operations paper-button:focus {
+        .selected-operations button:active,
+        .selected-operations button:hover,
+        .selected-operations button:focus {
           background-color: var(--haxcms-site-listing-color-hover);
           color: var(--haxcms-site-listing-color-light) !important;
         }
@@ -324,8 +326,8 @@ class HAXCMSSiteListing extends PolymerElement {
           color: var(--haxcms-site-listing-color-light) !important;
         }
         #userphoto {
-          width: 40px;
-          height: 40px;
+          width: 24px;
+          height: 24px;
           margin-right: 4px;
           border-radius: 50%;
         }
@@ -502,63 +504,66 @@ class HAXCMSSiteListing extends PolymerElement {
       <div class="toolbar">
         <slot name="app-header-pre"></slot>
         <div class="operations">
-          <paper-button
+          <button
             on-click="_addTap"
             id="add"
             raised
             hidden$="[[!loggedIn]]"
             title="Create new site"
           >
-            <iron-icon icon="icons:add"></iron-icon>
+            <simple-icon icon="icons:add" dark></simple-icon>
             <span class="small-hide">New site</span>
-          </paper-button>
-          <paper-button
+          </button>
+          <button
             on-click="_importTap"
             id="import"
             raised
             hidden$="[[!loggedIn]]"
             title="Import site"
           >
-            <iron-icon icon="icons:cloud-download"></iron-icon>
+            <simple-icon icon="icons:cloud-download"></simple-icon>
             <span class="small-hide">Import</span>
-          </paper-button>
+          </button>
         </div>
         <div class="main-title" hidden$="[[!loggedIn]]">[[title]]</div>
         <div class="operations right">
-          <paper-button
+          <button
             on-click="_helpTap"
             id="help"
             raised
             title="Help"
             hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
           >
-            <iron-icon icon="icons:help"></iron-icon>
+            <simple-icon icon="icons:help"></simple-icon>
             <span class="small-hide">Help</span>
-          </paper-button>
-          <paper-button
+          </button>
+          <button
             on-click="_settingsTap"
             id="settings"
             raised
             title="Settings"
             hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
           >
-            <iron-icon icon="icons:settings"></iron-icon>
+            <simple-icon icon="icons:settings"></simple-icon>
             <span class="small-hide">Settings</span>
-          </paper-button>
-          <paper-button
+          </button>
+          <button
             hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
             id="login"
             on-click="_logoutUserRoutine"
             title="Logout"
           >
             <template is="dom-if" if="[[!logoutPhoto]]">
-              <iron-icon icon="[[__loginIcon]]" class="small-hide"></iron-icon>
+              <simple-icon
+                icon="[[__loginIcon]]"
+                class="small-hide"
+              ></simple-icon>
             </template>
             <template is="dom-if" if="[[logoutPhoto]]">
               <img id="userphoto" src="[[logoutPhoto]]" class="small-hide" />
             </template>
-            [[__loginText]]</paper-button
-          >
+            [[__loginText]]
+          </button>
         </div>
       </div>
       <a11y-collapse-group heading-button expanded hidden$="[[!loggedIn]]">
@@ -570,61 +575,61 @@ class HAXCMSSiteListing extends PolymerElement {
           <div slot="heading">Table view / bulk operations</div>
           <div slot="content">
             <div class="selected-operations" id="ops">
-              <paper-button
+              <button
                 title="Publish"
                 on-click="_bulkSitesConfirm"
                 id="publish"
                 raised
               >
-                <iron-icon icon="editor:publish"></iron-icon>
+                <simple-icon icon="editor:publish"></simple-icon>
                 <span class="small-hide">Publish site</span>
-              </paper-button>
-              <paper-button
+              </button>
+              <button
                 title="Sync git"
                 on-click="_bulkSitesConfirm"
                 id="sync"
                 raised
               >
-                <iron-icon icon="notification:sync"></iron-icon>
+                <simple-icon icon="notification:sync"></simple-icon>
                 <span class="small-hide">Sync git</span>
-              </paper-button>
-              <paper-button
+              </button>
+              <button
                 title="Copy site"
                 on-click="_bulkSitesConfirm"
                 id="clone"
                 raised
               >
-                <iron-icon icon="icons:content-copy"></iron-icon>
+                <simple-icon icon="icons:content-copy"></simple-icon>
                 <span class="small-hide">Copy site</span>
-              </paper-button>
-              <paper-button
+              </button>
+              <button
                 title="Download zip"
                 on-click="_bulkSitesConfirm"
                 id="download"
                 raised
               >
-                <iron-icon icon="icons:file-download"></iron-icon>
+                <simple-icon icon="icons:file-download"></simple-icon>
                 <span class="small-hide">Download zip</span>
-              </paper-button>
-              <paper-button
+              </button>
+              <button
                 title="Archive"
                 on-click="_bulkSitesConfirm"
                 id="archive"
                 raised
               >
-                <iron-icon icon="icons:archive"></iron-icon>
+                <simple-icon icon="icons:archive"></simple-icon>
                 <span class="small-hide">Archive site</span>
-              </paper-button>
-              <paper-button
+              </button>
+              <button
                 on-click="_bulkSitesConfirm"
                 id="delete"
                 raised
                 class="danger"
                 title="Delete forever"
               >
-                <iron-icon icon="icons:delete-forever"></iron-icon>
+                <simple-icon icon="icons:delete-forever"></simple-icon>
                 <span class="small-hide">Delete forever</span>
-              </paper-button>
+              </button>
             </div>
             <vaadin-grid
               id="grid"
@@ -683,9 +688,9 @@ class HAXCMSSiteListing extends PolymerElement {
               </vaadin-grid-sort-column>
               <vaadin-grid-column header="Icon">
                 <template
-                  ><iron-icon
+                  ><simple-icon
                     icon="[[item.metadata.theme.variables.icon]]"
-                  ></iron-icon
+                  ></simple-icon
                 ></template>
               </vaadin-grid-column>
               <vaadin-grid-sort-column
@@ -734,16 +739,16 @@ class HAXCMSSiteListing extends PolymerElement {
         <simple-login>
           <hax-logo size="mini" hide-hax><span>HAXcms login</span></hax-logo>
           <div class="camera-buttons">
-            <paper-icon-button
+            <simple-icon-button
               id="snap"
               icon="image:camera-alt"
               title="Snap photo"
-            ></paper-icon-button>
-            <paper-icon-button
+            ></simple-icon-button>
+            <simple-icon-button
               id="newsnap"
               icon="icons:cancel"
               title="Clear photo"
-            ></paper-icon-button>
+            ></simple-icon-button>
           </div>
           <simple-login-avatar>
             <div id="selfie"></div>
@@ -766,16 +771,16 @@ class HAXCMSSiteListing extends PolymerElement {
         <div slot="header">Help directions</div>
         <p slot="content">
           <md-block
+            style="overflow:auto;max-height: 50vh;font-size:12px;"
             source="https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md"
           ></md-block>
         </p>
-        <div slot="buttons"><mwc-button dialog-dismiss>Close</mwc-button></div>
       </simple-modal-template>
       <paper-dialog id="confirm">
         <h2 class="dialog-header">
           [[activeOpertion]] these [[selectedItems.length]] sites
         </h2>
-        <paper-dialog-scrollable>
+        <div class="scrollable">
           <ul>
             <dom-repeat items="[[selectedItems]]" as="site">
               <template>
@@ -783,26 +788,26 @@ class HAXCMSSiteListing extends PolymerElement {
               </template>
             </dom-repeat>
           </ul>
-        </paper-dialog-scrollable>
+        </div>
         <div class="buttons">
-          <paper-button
+          <button
             on-click="_confirmBulkOperation"
             dialog-confirm
             id="bulksites"
             class="action-button"
             raised
-            ><iron-icon icon="icons:thumb-up"></iron-icon> Yes,
-            [[activeOpertion]]</paper-button
           >
-          <paper-button class="action-button" dialog-dismiss
-            ><iron-icon icon="icons:thumb-down"></iron-icon>
-            Cancel</paper-button
-          >
+            <simple-icon icon="icons:thumb-up"></simple-icon> Yes,
+            [[activeOpertion]]
+          </button>
+          <button class="action-button" dialog-dismiss>
+            <simple-icon icon="icons:cancel"></simple-icon> Cancel
+          </button>
         </div>
       </paper-dialog>
       <paper-dialog id="createsite">
         <h2 class="dialog-header">Create new site</h2>
-        <paper-dialog-scrollable>
+        <div class="scrollable">
           <form>
             <simple-fields
               id="createsitefields"
@@ -812,21 +817,21 @@ class HAXCMSSiteListing extends PolymerElement {
             >
             </simple-fields>
           </form>
-        </paper-dialog-scrollable>
+        </div>
         <div class="buttons">
-          <paper-button
+          <button
             on-click="_createSite"
             class="action-button"
             dialog-confirm
             id="create"
             raised
-            ><iron-icon icon="icons:home"></iron-icon> Create your new
-            site!</paper-button
           >
-          <paper-button class="action-button" dialog-dismiss
-            ><iron-icon icon="icons:thumb-down"></iron-icon>
-            Cancel</paper-button
-          >
+            <simple-icon icon="icons:home" dark></simple-icon> Create your new
+            site!
+          </button>
+          <button class="action-button" dialog-dismiss>
+            <simple-icon dark icon="icons:cancel"></simple-icon> Cancel
+          </button>
         </div>
       </paper-dialog>
       <paper-dialog id="importsite">
@@ -837,43 +842,43 @@ class HAXCMSSiteListing extends PolymerElement {
           type="text"
         ></simple-fields-field>
         <div class="buttons">
-          <paper-button
+          <button
             on-click="_gitImportSite"
             class="action-button"
             dialog-confirm
             id="importsite"
             raised
-            ><iron-icon icon="icons:home"></iron-icon> Import</paper-button
           >
-          <paper-button class="action-button" dialog-dismiss
-            ><iron-icon icon="icons:thumb-down"></iron-icon>
-            Cancel</paper-button
-          >
+            <simple-icon icon="icons:home" dark></simple-icon> Import
+          </button>
+          <button class="action-button" dialog-dismiss>
+            <simple-icon dark icon="icons:cancel"></simple-icon> Cancel
+          </button>
         </div>
       </paper-dialog>
       <paper-dialog id="settingsdialog">
         <h2 class="dialog-header">Edit HAXCMS configuration</h2>
-        <paper-dialog-scrollable>
+        <div class="scrollable">
           <simple-fields
             id="settingsform"
             schematizer="[[HaxSchematizer]]"
             elementizer="[[HaxElementizer]]"
           >
           </simple-fields>
-        </paper-dialog-scrollable>
+        </div>
         <div class="buttons">
-          <paper-button
+          <button
             on-click="_saveConfig"
             dialog-confirm
             id="saveconfig"
             class="action-button"
             raised
-            ><iron-icon icon="icons:save"></iron-icon> Save</paper-button
           >
-          <paper-button class="action-button" dialog-dismiss
-            ><iron-icon icon="icons:thumb-down"></iron-icon>
-            Cancel</paper-button
-          >
+            <simple-icon icon="icons:save" dark></simple-icon> Save
+          </button>
+          <button class="action-button" dialog-dismiss>
+            <simple-icon icon="icons:cancel" dark></simple-icon> Cancel
+          </button>
         </div>
       </paper-dialog>
     `;

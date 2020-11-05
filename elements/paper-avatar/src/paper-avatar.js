@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import * as md5 from "./lib/md5.min.js";
 /**
 `paper-avatar`
@@ -94,7 +94,7 @@ class PaperAvatar extends LitElement {
         #label span[two-chars] {
           font-size: calc(var(--paper-avatar-width) * 0.5);
         }
-        #label iron-icon {
+        #label simple-icon {
           margin: 0 auto;
           width: calc(var(--paper-avatar-width) * 0.9);
           height: calc(var(--paper-avatar-width) * 0.9);
@@ -132,7 +132,7 @@ class PaperAvatar extends LitElement {
         ?hidden="${this.jdenticonExists && this.jdenticon}"
       >
         ${this.icon
-          ? html` <iron-icon icon="${this.icon}"></iron-icon> `
+          ? html` <simple-icon icon="${this.icon}"></simple-icon> `
           : html`
               <span ?two-chars="${this.twoChars}"
                 >${this._label(this.label)}
@@ -180,7 +180,7 @@ class PaperAvatar extends LitElement {
   static get properties() {
     return {
       /**
-       * Optional iron-icon
+       * Optional simple-icon
        */
       icon: {
         type: String,

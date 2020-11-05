@@ -688,7 +688,7 @@ class HAXCMSSiteEditor extends LitElement {
     form.loadEndpoint = this.getNodeFieldsPath;
     this.__fieldsForm = form;
     let b1 = document.createElement("button");
-    let icon = document.createElement("iron-icon");
+    let icon = document.createElement("simple-icon");
     icon.icon = "icons:save";
     b1.appendChild(icon);
     b1.appendChild(document.createTextNode("Save fields"));
@@ -697,6 +697,9 @@ class HAXCMSSiteEditor extends LitElement {
     b1.setAttribute("dialog-confirm", "dialog-confirm");
     b1.addEventListener("click", this._saveNodeFieldsTap.bind(this));
     let b2 = document.createElement("button");
+    let icon2 = document.createElement("simple-icon");
+    icon2.icon = "icons:cancel";
+    b2.appendChild(icon2);
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
     let b = document.createElement("div");

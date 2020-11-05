@@ -2,8 +2,9 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { varGet } from "@lrnwebcomponents/utils/utils.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
 import "web-social-share/dist/esm/web-social-share.entry.js";
 import {
@@ -34,7 +35,7 @@ class SiteShareWidget extends LitElement {
         :host {
           display: block;
         }
-        paper-icon-button {
+        simple-icon-button {
           color: #ffffff;
           background-color: var(--site-share-widget-bg);
           padding: 8px;
@@ -44,11 +45,11 @@ class SiteShareWidget extends LitElement {
         web-social-share {
           --web-social-share-zindex: 10000;
         }
-        iron-icon {
+        simple-icon {
           display: block;
           color: var(--haxcms-color, #000000);
         }
-        iron-icon:hover {
+        simple-icon:hover {
           display: block;
           color: #ffffff;
           background-color: var(--haxcms-color, #000000);
@@ -58,18 +59,21 @@ class SiteShareWidget extends LitElement {
   }
   render() {
     return html`
-      <paper-icon-button
+      <simple-icon-button
         @click="${this.click}"
         title="${this.alt}"
         icon="${this.icon}"
-      ></paper-icon-button>
+      ></simple-icon-button>
       <web-social-share .share="false">
-        <iron-icon slot="facebook" icon="social-media:facebook"></iron-icon>
-        <iron-icon slot="twitter" icon="social-media:twitter"></iron-icon>
-        <iron-icon slot="pinterest" icon="social-media:pinterest"></iron-icon>
-        <iron-icon slot="linkedin" icon="social-media:linkedin"></iron-icon>
-        <iron-icon slot="email" icon="icons:mail"></iron-icon>
-        <iron-icon slot="copy" icon="icons:content-copy"></iron-icon>
+        <simple-icon slot="facebook" icon="social-media:facebook"></simple-icon>
+        <simple-icon slot="twitter" icon="social-media:twitter"></simple-icon>
+        <simple-icon
+          slot="pinterest"
+          icon="social-media:pinterest"
+        ></simple-icon>
+        <simple-icon slot="linkedin" icon="social-media:linkedin"></simple-icon>
+        <simple-icon slot="email" icon="icons:mail"></simple-icon>
+        <simple-icon slot="copy" icon="icons:content-copy"></simple-icon>
       </web-social-share>
     `;
   }

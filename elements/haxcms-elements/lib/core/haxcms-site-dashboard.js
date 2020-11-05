@@ -6,13 +6,12 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { varGet, varExists } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/notification-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "@lrnwebcomponents/portal-launcher/portal-launcher.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import {
   HaxSchematizer,
   HaxElementizer,
@@ -71,18 +70,19 @@ class HAXCMSSiteDashboard extends LitElement {
           vertical-align: top;
           margin-top: 4px;
         }
-        #homebutton paper-icon-button {
+        #homebutton simple-icon-button {
           color: #ffffff;
-          --paper-icon-button-ink-color: var(--haxcms-color, #ffffff);
           background-color: #000000;
-          height: 48px;
-          width: 48px;
-          padding: 8px;
+          height: 40px;
+          width: 40px;
+          --simple-icon-width: 36px;
+          --simple-icon-height: 36px;
+          padding: 2px;
           border-radius: 50%;
         }
-        #homebutton paper-icon-button:hover,
-        #homebutton paper-icon-button:active,
-        #homebutton paper-icon-button:focus {
+        #homebutton simple-icon-button:hover,
+        #homebutton simple-icon-button:active,
+        #homebutton simple-icon-button:focus {
           background-color: var(--haxcms-color, #ffffff);
         }
         .buttons {
@@ -95,7 +95,7 @@ class HAXCMSSiteDashboard extends LitElement {
           right: 0;
           display: flex;
         }
-        .buttons paper-button {
+        .buttons button {
           color: #ffffff;
           background-color: #000000;
           font-weight: bold;
@@ -119,9 +119,9 @@ class HAXCMSSiteDashboard extends LitElement {
         #cancel:hover {
           background-color: var(--haxcms-color);
         }
-        .buttons paper-button:active,
-        .buttons paper-button:focus,
-        .buttons paper-button:hover {
+        .buttons button:active,
+        .buttons button:focus,
+        .buttons button:hover {
           color: #ffffff;
         }
         .title {
@@ -143,13 +143,13 @@ class HAXCMSSiteDashboard extends LitElement {
           .toptext {
             font-size: 11px;
           }
-          #homebutton paper-icon-button {
+          #homebutton simple-icon-button {
             height: 36px;
             width: 36px;
             padding: 4px;
           }
         }
-        paper-button {
+        button {
           background-color: white;
           color: black;
         }
@@ -189,10 +189,11 @@ class HAXCMSSiteDashboard extends LitElement {
       <div class="title-wrapper">
         <portal-launcher>
           <a href="${this.backLink}" tabindex="-1" id="homebutton"
-            ><paper-icon-button
+            ><simple-icon-button
               icon="icons:home"
               title="${this.backText}"
-            ></paper-icon-button
+              dark
+            ></simple-icon-button
           ></a>
         </portal-launcher>
         <simple-tooltip for="homebutton" offset="14" position="bottom">
@@ -230,18 +231,20 @@ class HAXCMSSiteDashboard extends LitElement {
         ></simple-fields-form>
       </div>
       <div class="buttons">
-        <paper-button
+        <button
           title="Save site settings"
           id="save"
           @click="${this._saveSiteFieldsTap}"
-          ><iron-icon icon="icons:save"></iron-icon> Save settings</paper-button
         >
-        <paper-button
+          <simple-icon dark icon="icons:save"></simple-icon> Save settings
+        </button>
+        <button
           title="Cancel and close dashboard"
           id="cancel"
           @click="${this._cancel}"
-          ><iron-icon icon="icons:cancel"></iron-icon> Cancel</paper-button
         >
+          <simple-icon dark icon="icons:cancel"></simple-icon> Cancel
+        </button>
       </div>
     `;
   }
@@ -310,6 +313,9 @@ class HAXCMSSiteDashboard extends LitElement {
     });
   }
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     setTimeout(() => {
       if (window.appSettings && window.appSettings.backText) {
         this.backText = window.appSettings.backText;

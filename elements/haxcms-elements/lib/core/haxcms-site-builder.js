@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import {
   encapScript,
   findTagsInHTML,
@@ -379,7 +378,6 @@ class HAXCMSSiteBuilder extends LitElement {
     super();
     // attempt to set polymer passive gestures globally
     // this decreases logging and improves performance on scrolling
-    setPassiveTouchGestures(true);
     this.__disposer = [];
     this.queryParams = {};
     this.loading = false;

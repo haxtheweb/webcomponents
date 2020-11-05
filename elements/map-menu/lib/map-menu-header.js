@@ -1,8 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-collapse/iron-collapse.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-behaviors/iron-button-state.js";
-import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 class MapMenuHeader extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -71,22 +69,27 @@ class MapMenuHeader extends LitElement {
           font-size: var(--map-menu-font-size);
         }
 
-        #right iron-icon {
+        #right simple-icon {
           display: inline-block;
           color: gray;
         }
 
-        iron-icon {
+        simple-icon {
           display: inline-block;
-          --iron-icon-height: var(--map-menu-item-height);
-          --iron-icon-width: var(--map-menu-item-height);
+          --simple-icon-height: var(--map-menu-item-height);
+          --simple-icon-width: var(--map-menu-item-height);
         }
 
-        paper-button {
+        button {
+          background-color: transparent;
           text-transform: none;
           width: 100%;
           justify-content: left;
           margin: 0px;
+          border: 0;
+          padding: 4px;
+          text-align: left;
+          border-radius: 0;
         }
       `,
     ];
@@ -106,24 +109,26 @@ class MapMenuHeader extends LitElement {
               </div>
             `
           : ``}
-        ${this.icon ? html` <iron-icon icon="${this.icon}"></iron-icon> ` : ``}
+        ${this.icon
+          ? html` <simple-icon icon="${this.icon}"></simple-icon> `
+          : ``}
 
         <div id="center">
           <a tabindex="-1" href="${this.url}">
-            <paper-button class="title" noink>
+            <button class="title" noink>
               <div id="label">${this.label}</div>
               <div class="title">${this.title}</div>
-            </paper-button>
+            </button>
           </a>
         </div>
         <div id="right">
-          <iron-icon
+          <simple-icon
             id="toggle"
             icon="${this.__collapseIcon}"
             role="button"
             aria-label="${this.__collapseAria}"
             tabindex="0"
-          ></iron-icon>
+          ></simple-icon>
         </div>
       </div>
     `;
@@ -138,6 +143,7 @@ class MapMenuHeader extends LitElement {
   constructor() {
     super();
     this.avatarLabel = "";
+    this.icon = null;
     this.url = "";
     this.opened = false;
     this.active = false;

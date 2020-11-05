@@ -60,7 +60,8 @@ class SimpleLogin extends SimpleColors {
         }
 
         #loginbtn,
-        #buttons ::slotted(mwc-button) {
+        #buttons ::slotted(button) {
+          cursor: pointer;
           width: var(--login-btn-width, auto);
           margin: var(--login-btn-margin, 24px auto 0);
           display: var(--login-btn-display, inline-flex);

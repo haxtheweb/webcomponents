@@ -3,8 +3,8 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/editable-outline/editable-outline.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`
@@ -24,6 +24,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
           display: block;
           height: 60vh;
           min-width: 50vw;
+          overflow: auto;
         }
         .buttons {
           position: absolute;
@@ -35,11 +36,13 @@ class HAXCMSOutlineEditorDialog extends LitElement {
           right: 0;
         }
         .buttons button {
-          color: #ffffff;
-          background-color: var(--simple-modal-button-background, #000000);
+          color: black;
+          background-color: white;
         }
-        editable-outline:not(:defined),
-        button:not(:defined) {
+        simple-icon {
+          margin-right: 4px;
+        }
+        editable-outline:not(:defined) {
           display: none;
         }
         #toggle {
@@ -73,10 +76,10 @@ class HAXCMSOutlineEditorDialog extends LitElement {
       ></editable-outline>
       <div class="buttons">
         <button id="savebtn" dialog-confirm @click="${this._saveTap}">
-          <iron-icon icon="icons:save"></iron-icon>Save
+          <simple-icon icon="icons:save" dark></simple-icon>Save
         </button>
         <button dialog-dismiss>
-          <iron-icon icon="icons:cancel"></iron-icon>Cancel
+          <simple-icon icon="icons:cancel"></simple-icon>Cancel
         </button>
       </div>
     `;

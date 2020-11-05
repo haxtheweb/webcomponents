@@ -9,7 +9,9 @@ import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
-
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -28,7 +30,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
     setTimeout(() => {
-      import("@polymer/paper-icon-button/paper-icon-button.js");
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
       );

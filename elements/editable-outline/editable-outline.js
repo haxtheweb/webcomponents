@@ -6,6 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { getRange } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `editable-outline`
  * `a simple outline thats contenteditable in nature`
@@ -146,14 +148,14 @@ class EditableOutline extends LitElement {
       ></iron-a11y-keys>
       <div class="button-wrapper">
         <button @click="${this.buttonEvents}" id="add" title="Add a new node">
-          <iron-icon icon="icons:add"></iron-icon><span>Add</span>
+          <simple-icon icon="icons:add"></simple-icon><span>Add</span>
         </button>
         <button
           @click="${this.buttonEvents}"
           id="collapse"
           title="Toggle active node collapsed status"
         >
-          <iron-icon icon="icons:swap-vert"></iron-icon
+          <simple-icon icon="icons:swap-vert"></simple-icon
           ><span>Toggle active</span>
         </button>
         <button
@@ -161,7 +163,7 @@ class EditableOutline extends LitElement {
           id="collapseall"
           title="Collapse all nodes"
         >
-          <iron-icon icon="icons:swap-vert"></iron-icon
+          <simple-icon icon="icons:swap-vert"></simple-icon
           ><span>Collapse all</span>
         </button>
         <button
@@ -169,14 +171,15 @@ class EditableOutline extends LitElement {
           id="expandall"
           title="Expand all nodes"
         >
-          <iron-icon icon="icons:swap-vert"></iron-icon><span>Expand all</span>
+          <simple-icon icon="icons:swap-vert"></simple-icon
+          ><span>Expand all</span>
         </button>
         <button
           @click="${this.buttonEvents}"
           id="down"
           title="Move active node down"
         >
-          <iron-icon icon="icons:arrow-downward"></iron-icon
+          <simple-icon icon="icons:arrow-downward"></simple-icon
           ><span>Move down</span>
         </button>
         <button
@@ -184,14 +187,15 @@ class EditableOutline extends LitElement {
           id="up"
           title="Move active node up"
         >
-          <iron-icon icon="icons:arrow-upward"></iron-icon><span>Move up</span>
+          <simple-icon icon="icons:arrow-upward"></simple-icon
+          ><span>Move up</span>
         </button>
         <button
           @click="${this.buttonEvents}"
           id="outdent"
           title="Outdent active node"
         >
-          <iron-icon icon="editor:format-indent-decrease"></iron-icon
+          <simple-icon icon="editor:format-indent-decrease"></simple-icon
           ><span>Outdent</span>
         </button>
         <button
@@ -199,7 +203,7 @@ class EditableOutline extends LitElement {
           id="indent"
           title="Indent active node"
         >
-          <iron-icon icon="editor:format-indent-increase"></iron-icon
+          <simple-icon icon="editor:format-indent-increase"></simple-icon
           ><span>Indent</span>
         </button>
         <button
@@ -207,7 +211,7 @@ class EditableOutline extends LitElement {
           id="duplicate"
           title="Duplicate active node tree"
         >
-          <iron-icon icon="icons:content-copy"></iron-icon
+          <simple-icon icon="icons:content-copy"></simple-icon
           ><span>Duplicate</span>
         </button>
       </div>
@@ -245,9 +249,6 @@ class EditableOutline extends LitElement {
     this.items = [];
     this.editMode = false;
     this.jos = window.JSONOutlineSchema.requestAvailability();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
     setTimeout(() => {
       this.addEventListener("dblclick", this._collapseClickHandler.bind(this));
     }, 0);
@@ -628,8 +629,8 @@ class EditableOutline extends LitElement {
       this.shadowRoot.querySelectorAll("li").forEach((el) => {
         el.setAttribute("contenteditable", "true");
       });
+      return outline;
     }, 0);
-    return outline;
   }
   /**
    * Take what's currently in the area and get JSON Outline Schema; optionally save

@@ -40,11 +40,12 @@ class SimpleIconButton extends SimpleColors {
           width: var(--simple-icon-width, 24px);
         }
         button {
+          cursor: pointer;
           border: 0;
           border-radius: 50%;
           height: var(--simple-icon-height, 24px);
           width: var(--simple-icon-width, 24px);
-          background-color: none;
+          background-color: transparent;
           padding: 0px;
           margin: 0px;
         }

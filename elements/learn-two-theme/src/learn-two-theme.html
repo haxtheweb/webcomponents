@@ -69,9 +69,9 @@
   </style>
 </custom-style>
 <app-drawer-layout responsive-width="900px">
-  <paper-icon-button id="menubutton" icon="menu" @click="${this.toggleDrawer}" title="Toggle site menu"></paper-icon-button>
+  <simple-icon-button id="menubutton" icon="menu" @click="${this.toggleDrawer}" title="Toggle site menu"></simple-icon-button>
   <app-drawer swipe-open slot="drawer" .opened="${this.opened}" @opened="${this.__openedChanged}">
-    <paper-icon-button id="menubutton2" icon="menu" @click="${this.toggleDrawer}" title="Toggle site menu"></paper-icon-button>
+    <simple-icon-button id="menubutton2" icon="menu" @click="${this.toggleDrawer}" title="Toggle site menu"></simple-icon-button>
     <div class="header-wrapper">
       <div class="header">
         <site-title ?disabled="${this.editMode}"></site-title>

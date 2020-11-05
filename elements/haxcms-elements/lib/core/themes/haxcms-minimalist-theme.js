@@ -194,18 +194,16 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
         }
         site-menu-button {
           --site-menu-button-button-hover-background-color: #dee2e6;
-          --site-menu-button-button: {
-            color: black;
-            display: inline-flex;
-            border: 1px solid #dee2e6;
-            padding: 0;
-            font-size: 1.25rem;
-            margin: 0;
-            height: 50px;
-            width: 50px;
-            min-width: unset;
-            line-height: 1.5;
-          }
+          color: black;
+          display: inline-flex;
+          border: 1px solid #dee2e6;
+          padding: 0;
+          font-size: 1.25rem;
+          margin: 0;
+          height: 50px;
+          width: 50px;
+          min-width: unset;
+          line-height: 1.5;
         }
         site-top-menu[sticky] {
           --site-top-menu-wrapper: {
