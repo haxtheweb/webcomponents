@@ -4,8 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { navigator } from "lit-element-router";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `elmsln-studio-button`
@@ -57,11 +58,11 @@ class ElmslnStudioButton extends navigator(LitElement) {
   render() {
     return html`
       <button @click="${this.buttonClick}">
-        <iron-icon
+        <simple-icon
           aria-hidden="true"
           ?hidden="${!this.icon}"
           icon="${this.icon}"
-        ></iron-icon>
+        ></simple-icon>
         <slot></slot>
       </button>
     `;

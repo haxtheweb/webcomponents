@@ -3,10 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `item-overlay-ops`
  * @element item-overlay-ops
@@ -55,22 +54,22 @@ class ItemOverlayOps extends PolymerElement {
           border-bottom: 1px solid rgba(100, 100, 100, 0.4);
           text-align: center;
         }
-        .ops paper-icon-button {
+        .ops simple-icon-button {
           display: inline-flex;
-          width: 26px;
-          height: 26px;
+          --simple-icon-width: 26px;
+          --simple-icon-height: 26px;
           padding: 1px;
           margin: 6px;
           color: #999999;
         }
-        .ops paper-icon-button#cancel {
-          width: 16px;
-          height: 16px;
+        .ops simple-icon-button#cancel {
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
           padding: 0px;
           margin: 4px;
           position: absolute;
         }
-        .ops paper-icon-button.active {
+        .ops simple-icon-button.active {
           color: #000000;
           background-color: rgba(255, 255, 255, 0.6);
           border-radius: 50%;
@@ -89,9 +88,9 @@ class ItemOverlayOps extends PolymerElement {
           margin: 0 auto;
           align-content: center;
         }
-        #workingarea paper-icon-button {
-          width: 50%;
-          height: 100%;
+        #workingarea simple-icon-button {
+          --simple-icon-width: 50%;
+          --simple-icon-height: 100%;
           display: inline-flex;
           min-width: unset;
           padding: 16px;
@@ -138,63 +137,63 @@ class ItemOverlayOps extends PolymerElement {
       </style>
       <div id="container">
         <div class="ops">
-          <paper-icon-button
+          <simple-icon-button
             on-click="_opTap"
             icon="icons:add"
             id="add"
             hidden$="[[!add]]"
             title="Add to this"
-          ></paper-icon-button>
-          <paper-icon-button
+          ></simple-icon-button>
+          <simple-icon-button
             on-click="_opTap"
             icon="icons:create"
             id="edit"
             hidden$="[[!edit]]"
             title="Edit this"
-          ></paper-icon-button>
-          <paper-icon-button
+          ></simple-icon-button>
+          <simple-icon-button
             on-click="_opTap"
             icon="icons:swap-horiz"
             id="move"
             hidden$="[[!move]]"
             title="Move this"
-          ></paper-icon-button>
-          <paper-icon-button
+          ></simple-icon-button>
+          <simple-icon-button
             on-click="_opTap"
             icon="icons:delete"
             id="remove"
             hidden$="[[!remove]]"
             title="Delete this"
-          ></paper-icon-button>
-          <paper-icon-button
+          ></simple-icon-button>
+          <simple-icon-button
             on-click="_opTap"
             icon="icons:content-copy"
             id="duplicate"
             hidden$="[[!duplicate]]"
             title="Duplicate this"
-          ></paper-icon-button>
-          <paper-icon-button
+          ></simple-icon-button>
+          <simple-icon-button
             on-click="_opTap"
             icon="icons:cancel"
             id="cancel"
             hidden$="[[!__anyOp]]"
             title="Cancel"
-          ></paper-icon-button>
+          ></simple-icon-button>
         </div>
         <div class="active-op">[[activeTitle]]</div>
         <div id="workingarea" class$="[[activeOp]]">
-          <paper-icon-button
+          <simple-icon-button
             on-click="_optionSelected"
             id="option1"
             title="[[__option1Text]]"
             icon="[[__option1Icon]]"
-          ></paper-icon-button>
-          <paper-icon-button
+          ></simple-icon-button>
+          <simple-icon-button
             on-click="_optionSelected"
             id="option2"
             title="[[__option2Text]]"
             icon="[[__option2Icon]]"
-          ></paper-icon-button>
+          ></simple-icon-button>
         </div>
       </div>
       <slot></slot>
@@ -302,10 +301,8 @@ class ItemOverlayOps extends PolymerElement {
     }, 5);
     this.setAttribute("tabindex", "0");
     window.addEventListener("resize", this._windowResize.bind(this));
-    afterNextRender(this, function () {
-      this.addEventListener("focusin", this._inFocus.bind(this));
-      this.addEventListener("focusout", this._outFocus.bind(this));
-    });
+    this.addEventListener("focusin", this._inFocus.bind(this));
+    this.addEventListener("focusout", this._outFocus.bind(this));
   }
 
   /**

@@ -9,10 +9,6 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * @demo demo/index.html
  */
 class TeamMember extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    import("@polymer/iron-image/iron-image.js");
-  }
   static get template() {
     return html`
       <style>
@@ -25,7 +21,7 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
           text-align: center;
           padding: 8px;
         }
-        iron-image {
+        img.image {
           background-color: var(--team-member-color);
           height: 165px;
           width: 165px;
@@ -59,7 +55,7 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
         }
       </style>
       <div class="team-member">
-        <iron-image src="[[image]]" sizing="cover" alt=""></iron-image>
+        <img class="image" src="[[image]]" loading="lazy" alt="" />
         <div class="name">[[fullName]]</div>
         <div hidden$="[[!firstLine]]" class="line1">[[firstLine]]</div>
         <div hidden$="[[!secondLine]]" class="line2">[[secondLine]]</div>

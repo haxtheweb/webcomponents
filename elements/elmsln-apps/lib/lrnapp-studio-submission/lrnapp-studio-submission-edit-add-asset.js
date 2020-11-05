@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-ripple/paper-ripple.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
   static get template() {
     return html`
@@ -27,20 +27,19 @@ class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
           justify-content: center;
           position: relative;
         }
-        iron-icon {
+        simple-icon {
           color: gray;
-          --iron-icon-height: 50px;
-          --iron-icon-width: 50px;
+          --simple-icon-height: 50px;
+          --simple-icon-width: 50px;
         }
-        :host([display="pill"]) iron-icon {
-          --iron-icon-height: 50px;
-          --iron-icon-width: 50px;
+        :host([display="pill"]) simple-icon {
+          --simple-icon-height: 50px;
+          --simple-icon-width: 50px;
         }
       </style>
-      <paper-button>
-        <iron-icon icon="[[icon]]"></iron-icon>
-        <paper-ripple></paper-ripple>
-      </paper-button>
+      <button>
+        <simple-icon icon="[[icon]]"></simple-icon>
+      </button>
     `;
   }
   static get tag() {

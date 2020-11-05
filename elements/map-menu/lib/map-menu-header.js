@@ -87,6 +87,7 @@ class MapMenuHeader extends LitElement {
           justify-content: left;
           margin: 0px;
           border: 0;
+          height: 40px;
           padding: 4px;
           text-align: left;
           border-radius: 0;

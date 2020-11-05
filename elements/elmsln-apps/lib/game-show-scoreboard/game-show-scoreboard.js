@@ -7,9 +7,11 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-item/paper-item.js";
 import "../elmsln-base-deps.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
@@ -94,11 +96,11 @@ class GameShowScoreboard extends PolymerElement {
           align-items: center;
         }
 
-        vaadin-grid#material vaadin-grid-sorter iron-icon {
+        vaadin-grid#material vaadin-grid-sorter simple-icon {
           transform: scale(0.8);
         }
 
-        vaadin-grid#material vaadin-grid-sorter:not([direction]) iron-icon {
+        vaadin-grid#material vaadin-grid-sorter:not([direction]) simple-icon {
           color: rgba(0, 0, 0, var(--dark-disabled-opacity));
         }
 
@@ -106,7 +108,7 @@ class GameShowScoreboard extends PolymerElement {
           color: rgba(0, 0, 0, var(--dark-primary-opacity));
         }
 
-        vaadin-grid#material vaadin-grid-sorter[direction="desc"] iron-icon {
+        vaadin-grid#material vaadin-grid-sorter[direction="desc"] simple-icon {
           transform: scale(0.8) rotate(180deg);
         }
         vaadin-grid-sorter {

@@ -15,7 +15,7 @@ class LrnsysCollapselistItem extends LitElement {
           display: block;
           color: var(--lrnsys-collapselist-text-color, #000);
         }
-        paper-button {
+        button {
           height: 48px;
           padding: 0;
           margin: 0;
@@ -28,7 +28,7 @@ class LrnsysCollapselistItem extends LitElement {
           border-radius: 0;
           background-color: var(--lrnsys-collapselist-item-color, #fff);
         }
-        paper-button span {
+        button span {
           pointer-events: none;
         }
         .collapse-label {
@@ -56,7 +56,6 @@ class LrnsysCollapselistItem extends LitElement {
   constructor() {
     super();
     this.value = false;
-    import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-collapse/iron-collapse.js");
   }
   /**
@@ -64,13 +63,13 @@ class LrnsysCollapselistItem extends LitElement {
    */
   render() {
     return html`
-      <paper-button
+      <button
         @click="${this.collapseToggle}"
         id="collapse-trigger"
         aria-controls="collapse"
       >
         <span class="collapse-label"> <slot name="label"></slot> </span>
-      </paper-button>
+      </button>
       <iron-collapse
         id="collapse"
         .opened="${this.opened}"

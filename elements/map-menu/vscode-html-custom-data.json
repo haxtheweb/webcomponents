@@ -22,7 +22,7 @@
     },
     {
       "name": "map-menu-header",
-      "description": "Events:\n\n  * `active-item` {`CustomEvent<this>`} - \n\n  * `toggle-header` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `label` {`string`} - \n\n  * `id` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `avatar-label` {`string`} - \n\n  * `url` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `label` {`string`} - \n\n  * `id` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `url` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - ",
+      "description": "Events:\n\n  * `active-item` {`CustomEvent<this>`} - \n\n  * `toggle-header` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `label` {`string`} - \n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `avatar-label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `label` {`string`} - \n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - ",
       "attributes": [
         {
           "name": "title",
@@ -35,10 +35,6 @@
         {
           "name": "id",
           "description": "`id` {`string`} - \n\nProperty: id"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon"
         },
         {
           "name": "selected",
@@ -55,6 +51,10 @@
         {
           "name": "avatar-label",
           "description": "`avatar-label` {`string`} - \n\nProperty: avatarLabel\n\nDefault: "
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
         },
         {
           "name": "url",
@@ -94,15 +94,15 @@
         },
         {
           "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
         },
         {
           "name": "__icon",
-          "description": "`__icon` {`string`} - \n\nProperty: __icon\n\nDefault: "
+          "description": "`__icon` {`string`} - \n\nProperty: __icon\n\nDefault: null"
         },
         {
           "name": "track-icon",
-          "description": "`track-icon` {`string`} - \n\nProperty: trackIcon\n\nDefault: "
+          "description": "`track-icon` {`string`} - \n\nProperty: trackIcon\n\nDefault: null"
         },
         {
           "name": "title",

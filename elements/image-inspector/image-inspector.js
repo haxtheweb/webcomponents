@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/exif-data/exif-data.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/image-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 /**
  * `image-inspector`
@@ -20,22 +20,24 @@ class ImageInspector extends LitElement {
         :host {
           display: block;
           overflow: hidden;
-          --image-inspector-background: #dddddd;
+          background-color: var(--image-inspector-background-color, #fdfdfd);
         }
 
-        app-toolbar {
-          width: 100%;
-          background: var(--image-inspector-background);
-          margin: 0 auto;
-          padding: 0;
-          z-index: 1;
-          display: flex;
-          text-align: center;
-          justify-content: space-evenly;
-        }
-
-        lrnsys-button {
+        simple-icon-button {
           display: inline-flex;
+          --simple-icon-width: 36px;
+          --simple-icon-height: 36px;
+          margin: 0 8px;
+          background-color: var(--image-inspector-background-color, #fdfdfd);
+          transition: 0.2s all ease-in-out;
+        }
+        simple-icon-button:hover,
+        simple-icon-button:focus,
+        simple-icon-button:active {
+          background-color: var(
+            --image-inspector-background-color-active,
+            #eeeeee
+          );
         }
 
         .top-rotated {
@@ -61,6 +63,11 @@ class ImageInspector extends LitElement {
           height: 500px;
           pointer-events: none;
         }
+        .wrap {
+          border-bottom: 1px solid black;
+          justify-content: center;
+          display: flex;
+        }
       `,
     ];
   }
@@ -68,55 +75,47 @@ class ImageInspector extends LitElement {
     super();
     this.noLeft = false;
     this.degrees = 0;
-    this.hoverClass = "blue white-text";
     this.src = "";
   }
   render() {
     return html`
-      <div style="border-bottom: 1px solid black;">
-        <lrnsys-button
-          alt="Zoom in"
+      <div class="wrap">
+        <simple-icon-button
+          title="Zoom in"
           icon="zoom-in"
           @click="${this.zoomIn}"
-          hover-class="${this.hoverClass}"
-        ></lrnsys-button>
-        <lrnsys-button
-          alt="Zoom out"
+        ></simple-icon-button>
+        <simple-icon-button
+          title="Zoom out"
           icon="zoom-out"
           @click="${this.zoomOut}"
-          hover-class="${this.hoverClass}"
-        ></lrnsys-button>
-        <lrnsys-button
-          alt="Rotate right"
+        ></simple-icon-button>
+        <simple-icon-button
+          title="Rotate right"
           icon="image:rotate-right"
           @click="${this.rotateRight}"
-          hover-class="${this.hoverClass}"
-        ></lrnsys-button>
-        <lrnsys-button
-          alt="Rotate left"
+        ></simple-icon-button>
+        <simple-icon-button
+          title="Rotate left"
           icon="image:rotate-left"
           @click="${this.rotateLeft}"
-          hover-class="${this.hoverClass}"
-        ></lrnsys-button>
-        <lrnsys-button
-          alt="Mirror image"
+        ></simple-icon-button>
+        <simple-icon-button
+          title="Mirror image"
           icon="image:flip"
           @click="${this.mirrorImage}"
-          hover-class="${this.hoverClass}"
-        ></lrnsys-button>
-        <lrnsys-button
-          alt="Open in new window"
+        ></simple-icon-button>
+        <simple-icon-button
+          title="Open in new window"
           icon="launch"
           href="${this.src}"
           target="_blank"
-          hover-class="${this.hoverClass}"
-        ></lrnsys-button>
-        <lrnsys-button
-          alt="EXIF Data"
+        ></simple-icon-button>
+        <simple-icon-button
+          title="EXIF Data"
           icon="image:camera-roll"
           @click="${this.exifDataEvent}"
-          hover-class="${this.hoverClass}"
-        ></lrnsys-button>
+        ></simple-icon-button>
         <slot name="toolbar"></slot>
       </div>
       <exif-data

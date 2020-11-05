@@ -9,25 +9,25 @@
 <app-header reveals>
   <app-toolbar>
     View: [[viewModeLabel]]
-    <paper-icon-button on-click="_toggleViewMode" id="viewmode" icon="[[viewModeIcon]]"></paper-icon-button>
+    <simple-icon-button on-click="_toggleViewMode" id="viewmode" icon="[[viewModeIcon]]"></simple-icon-button>
     <simple-tooltip for="viewmode">[[viewModeLabel]]</simple-tooltip>
     Detail: [[detailsModeLabel]]
-    <paper-icon-button on-click="_toggleDetailsMode" id="detailsmode" icon="[[detailsModeIcon]]"></paper-icon-button>
+    <simple-icon-button on-click="_toggleDetailsMode" id="detailsmode" icon="[[detailsModeIcon]]"></simple-icon-button>
     <simple-tooltip for="detailsmode">[[detailsModeLabel]]</simple-tooltip>
     <div main-title class="flex layout breadcrumb_layout">
-      <iron-icon class="breadcrumb-arrow" icon="icons:chevron-right"></iron-icon>
+      <simple-icon class="breadcrumb-arrow" icon="icons:chevron-right"></simple-icon>
       <a class="breadcrumb" id="main">[[manifest.title]]</a>
     
-      <iron-icon class="breadcrumb-arrow" icon="icons:chevron-right"></iron-icon>
+      <simple-icon class="breadcrumb-arrow" icon="icons:chevron-right"></simple-icon>
       <a class="breadcrumb" id="second">Lesson 2</a>
     
-      <iron-icon class="breadcrumb-arrow" icon="icons:chevron-right"></iron-icon>
+      <simple-icon class="breadcrumb-arrow" icon="icons:chevron-right"></simple-icon>
       <a class="breadcrumb" id="third">Math Basics</a>
     </div>
     <div>
-      <paper-icon-button on-click="_toggleMiniMap" id="minimap" icon="device:gps-fixed" title="Toggle outline mini map"></paper-icon-button>
+      <simple-icon-button on-click="_toggleMiniMap" id="minimap" icon="device:gps-fixed" title="Toggle outline mini map"></simple-icon-button>
       <simple-tooltip for="helpbutton">Toggle mini-map</simple-tooltip>
-      <paper-icon-button id="helpbutton" icon="icons:help" title="help"></paper-icon-button>
+      <simple-icon-button id="helpbutton" icon="icons:help" title="help"></simple-icon-button>
       <simple-tooltip for="helpbutton">Help</simple-tooltip>
     </div>
     <paper-progress value="10" indeterminate bottom-item hidden$="[[!__loading]]"></paper-progress>
@@ -39,7 +39,7 @@
     <template>
       <div class="card-wrapper">
       <item-overlay-ops fixed-height="140" data-item-id$="[[item.id]]" add="" edit="" remove="" duplicate="" move="" edit-mode="">
-        <paper-card class$="card-[[detailsMode]]-detail" heading="[[item.title]]" image="[[item.metadata.image]]" elevation="2" animated-shadow="false">
+        <div class$="card-[[detailsMode]]-detail card" heading="[[item.title]]" image="[[item.metadata.image]]" elevation="2" animated-shadow="false">
           <div class="card-content mid-detail">[[item.description]]</div>
           <div class="card-actions high-detail">
             <editable-list edit-mode="[[editMode]]" items="[[manifest.items]]">
@@ -47,11 +47,11 @@
             </editable-list>
             <ul>
               <li>Page 1</li>
-              <iron-swipeable-container><li>Page 2</li></iron-swipeable-container>
-              <iron-swipeable-container><li>Page 3</li></iron-swipeable-container>
+              <li>Page 2</li>
+              <li>Page 3</li>
             </ul>
           </div>
-        </paper-card>
+        </div>
       </item-overlay-ops>
       </div>
     </template>
@@ -68,7 +68,7 @@
           <span class="tf-nc">
             <div class="tf-label" id$="item-tip-[[item.id]]">[[item.title]]</div>
             <simple-tooltip for$="item-tip-[[item.id]]">[[item.title]]</simple-tooltip>
-            <iron-image src="[[item.metadata.image]]" preload sizing="cover" class="high-detail"></iron-image>
+            <img loading="lazy" src="[[item.metadata.image]]" class="high-detail"/>
           </span>
         </li>
         </template>
@@ -79,11 +79,11 @@
     <sortable-list id="sort" sortable=".card-wrapper" on-sort-finish="_onSortFinish" dragging="{{dragging}}">
       <template is="dom-repeat" items="[[manifest.items]]" as="item" mutable-data>
         <div class="card-wrapper">
-          <paper-card class$="card-[[detailsMode]]-detail" data-item-id$="[[item.id]]" heading="[[item.title]]" image="[[item.metadata.image]]" elevation="2"
+          <div class$="card-[[detailsMode]]-detail card" data-item-id$="[[item.id]]" heading="[[item.title]]" image="[[item.metadata.image]]" elevation="2"
             animated-shadow="false">
             <div class="card-content mid-detail">[[item.description]]</div>
             <div class="card-actions high-detail"></div>
-          </paper-card>
+        </div>
         </div>
       </template>
     </sortable-list>

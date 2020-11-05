@@ -149,11 +149,11 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         .submission-links a:hover {
           text-decoration: underline;
         }
-        .submission-links iron-icon {
+        .submission-links simple-icon {
           margin-right: 0.5em;
         }
-        .submission-links a:focus iron-icon,
-        .submission-links a:hover iron-icon {
+        .submission-links a:focus simple-icon,
+        .submission-links a:hover simple-icon {
           text-decoration: none;
         }
         .callout {
@@ -181,7 +181,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           color: #4b4b4b;
           border-bottom: 1px solid #eaeaea;
         }
-        .callout .callout-label iron-icon {
+        .callout .callout-label simple-icon {
           margin-right: 1em;
         }
         threaded-discussion {

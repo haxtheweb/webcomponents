@@ -167,11 +167,11 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
         <div class="modal-overlay" style="display: none;">
           <div class="modal-content">
             <div class="modal-wrapper">
-              <paper-icon-button
+              <simple-icon-button
                 id="closearea"
                 icon="icons:fullscreen-exit"
                 class="close-modal modal--close"
-              ></paper-icon-button>
+              ></simple-icon-button>
               <simple-tooltip for="closearea" position="bottom" offset="14">
                 close modal
               </simple-tooltip>
@@ -226,7 +226,10 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
         </div>
 
         <div class="credit">[[credit]]</div>
-        <iron-icon icon="icons:fullscreen" class="close-fullscreen"></iron-icon>
+        <simple-icon
+          icon="icons:fullscreen"
+          class="close-fullscreen"
+        ></simple-icon>
       </div>
     `;
   }

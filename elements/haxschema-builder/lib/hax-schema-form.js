@@ -3,6 +3,9 @@ import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `hax-schema-form`
  * @element hax-schema-form
@@ -14,11 +17,8 @@ import {
 class HaxSchemaForm extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/paper-toggle-button/paper-toggle-button.js");
-    import("@polymer/paper-card/paper-card.js");
     import("@polymer/paper-tabs/paper-tabs.js");
     import("@polymer/paper-tabs/paper-tab.js");
-    import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/simple-fields/simple-fields.js");
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");
@@ -36,7 +36,7 @@ class HaxSchemaForm extends PolymerElement {
           background-color: #ffffff;
           overflow: hidden;
         }
-        paper-card.form-wrapper {
+        div.card.form-wrapper {
           margin: 0;
           padding: 0 16px 80px 16px;
           width: 100%;
@@ -44,6 +44,7 @@ class HaxSchemaForm extends PolymerElement {
           background-color: transparent;
           overflow: auto;
           height: 100%;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
 
         simple-fields {
@@ -81,7 +82,7 @@ class HaxSchemaForm extends PolymerElement {
             font-size: 16px;
           }
         }
-        #modetabs paper-tab paper-button {
+        #modetabs paper-tab button {
           min-width: unset;
           width: 100%;
           background-color: var(--hax-color-menu-heading-bg, #eeeeee);
@@ -98,13 +99,13 @@ class HaxSchemaForm extends PolymerElement {
         attr-for-selected="data-mode"
       >
         <paper-tab id="configurebutton" data-mode="configure"
-          ><paper-button raised="" noink="">Configure</paper-button></paper-tab
+          ><button>Configure</button></paper-tab
         >
         <paper-tab id="advancedbutton" data-mode="advanced"
-          ><paper-button raised="" noink="">Advanced</paper-button></paper-tab
+          ><button>Advanced</button></paper-tab
         >
       </paper-tabs>
-      <paper-card class="form-wrapper">
+      <div class="card form-wrapper">
         <simple-fields
           id="form"
           schema="[[schema]]"
@@ -112,7 +113,7 @@ class HaxSchemaForm extends PolymerElement {
           .elementizer="${HaxElementizer}"
           value="{{value}}"
         ></simple-fields>
-      </paper-card>
+      </div>
     `;
   }
   static get tag() {

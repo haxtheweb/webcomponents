@@ -278,14 +278,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             aria-pressed="${this.list ? "true" : "false"}"
             @click="${(e) => (this.list = true)}"
           >
-            <iron-icon icon="icons:view-list"></iron-icon>
+            <simple-icon icon="icons:view-list"></simple-icon>
             <span class="sr-only">display as list</span>
           </button>
           <button
             aria-pressed="${this.list ? "false" : "true"}"
             @click="${(e) => (this.list = false)}"
           >
-            <iron-icon icon="icons:view-module"></iron-icon>
+            <simple-icon icon="icons:view-module"></simple-icon>
             <span class="sr-only">display as grid</span>
           </button>
         </div>
@@ -328,7 +328,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                     aria-describedby="accent-${i}"
                     ?disabled="${!s.image}"
                   >
-                    <iron-icon aria-hidden="true" icon="zoom-in"></iron-icon>
+                    <simple-icon
+                      aria-hidden="true"
+                      icon="zoom-in"
+                    ></simple-icon>
                     <span class="sr-only">View Image</span>
                   </button>
                 </img-view-modal>
@@ -352,7 +355,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
                     href="${this.getActivityLink(s)}"
                   >
-                    <iron-icon icon="communication:comment"></iron-icon>
+                    <simple-icon icon="communication:comment"></simple-icon>
                     Discussion${!s.feedback || s.feedback.length < 1
                       ? ``
                       : `: ${s.feedback.length}`}
@@ -361,7 +364,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
                     href="${this.getActivityLink(s, true)}"
                   >
-                    <iron-icon icon="visibility"></iron-icon>
+                    <simple-icon icon="visibility"></simple-icon>
                     View
                   </elmsln-studio-link>
                 </div>

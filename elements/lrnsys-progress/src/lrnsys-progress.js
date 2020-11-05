@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "./lib/lrnsys-progress-circle.js";
 /**
@@ -155,16 +154,11 @@ class LrnsysProgress extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener(
-        "node-is-active",
-        this._bubbleUpChangeActive.bind(this)
-      );
-      this.addEventListener(
-        "node-status-change",
-        this._statusChanged.bind(this)
-      );
-    });
+    this.addEventListener(
+      "node-is-active",
+      this._bubbleUpChangeActive.bind(this)
+    );
+    this.addEventListener("node-status-change", this._statusChanged.bind(this));
   }
   disconnectedCallback() {
     this.removeEventListener(

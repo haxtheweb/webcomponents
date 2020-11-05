@@ -4,7 +4,7 @@
  * @element mdi-audio-iconset-svg is a iconset for the Material Design Icons collection with the "audio" tag
  *
  * Example:
- *   <iron-icon icon="mdi-audio:play"></iron-icon>
+ *   <simple-icon icon="mdi-audio:play"></simple-icon>
  *
  * @demo demo/index.html
  */

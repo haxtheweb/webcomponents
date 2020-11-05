@@ -1,7 +1,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-input/iron-input.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "pdfjs-dist/build/pdf.js";
 import "pdfjs-dist/build/pdf.worker.js";
@@ -37,7 +39,6 @@ Another awesome feature is dynamically load PDF file. So you can change the `src
 class PdfElement extends SchemaBehaviors(PolymerElement) {
   constructor() {
     super();
-    import("@polymer/paper-card/paper-card.js");
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("@polymer/paper-spinner/paper-spinner.js");
   }
@@ -135,17 +136,17 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
 
       <paper-material elevation="{{elevation}}">
         <div class="card-content" style="width: {{width}}px">
-          <paper-card class="paperCard" style="width: {{width}}px">
+          <div class="card paperCard" style="width: {{width}}px">
             <div class="pdf-viewer">
               <app-toolbar class="pdf-toolbar">
-                <paper-icon-button
+                <simple-icon-button
                   icon="menu"
                   on-click="sideBar"
-                ></paper-icon-button>
-                <paper-icon-button
+                ></simple-icon-button>
+                <simple-icon-button
                   icon="arrow-back"
                   on-click="showPrev"
-                ></paper-icon-button>
+                ></simple-icon-button>
                 <input
                   class="pageselector"
                   id="input"
@@ -156,31 +157,31 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
                   on-change="pageNumSearch"
                 />
                 <span id="slash">/</span><span id="totalPages"></span>
-                <paper-icon-button
+                <simple-icon-button
                   icon="arrow-forward"
                   on-click="showNext"
-                ></paper-icon-button>
+                ></simple-icon-button>
                 <span class="title" hidden="{{!showFileName}}">Testing</span>
                 <span class="title" hidden="{{showFileName}}"></span>
                 <span class="pageRendering"></span>
-                <paper-icon-button
+                <simple-icon-button
                   icon="zoom-in"
                   on-click="zoomIn"
-                ></paper-icon-button>
-                <paper-icon-button
+                ></simple-icon-button>
+                <simple-icon-button
                   icon="zoom-out"
                   on-click="zoomOut"
-                ></paper-icon-button>
-                <paper-icon-button
+                ></simple-icon-button>
+                <simple-icon-button
                   id="zoomIcon"
                   icon="fullscreen"
                   on-click="zoomFit"
-                ></paper-icon-button>
-                <paper-icon-button
+                ></simple-icon-button>
+                <simple-icon-button
                   icon="file-download"
                   hidden$="{{!downloadable}}"
                   on-click="download"
-                ></paper-icon-button>
+                ></simple-icon-button>
               </app-toolbar>
               <div id="container" class="sidebar" style="width:25%"></div>
               <div id="main">
@@ -198,7 +199,7 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
                 ></paper-spinner>
               </div>
             </div>
-          </paper-card>
+          </div>
         </div>
       </paper-material>
     `;

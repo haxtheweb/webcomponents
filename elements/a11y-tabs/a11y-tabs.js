@@ -268,6 +268,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         simple-icon:not([hidden]) {
           display: inline-block;
         }
+
         simple-icon[hidden] {
           display: none;
         }

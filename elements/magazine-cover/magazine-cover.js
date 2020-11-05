@@ -152,21 +152,18 @@ class MagazineCover extends LitElement {
     this.link = "";
     this.eventName = "";
     this.eventData = {};
-    import("@polymer/iron-image/iron-image.js");
   }
   /**
    * LitElement render
    */
   render() {
     return html`
-      <iron-image
+      <img
         src="${this.image}"
-        preload=""
-        fade=""
-        sizing="cover"
+        loading="lazy"
         id="image"
         aria-describedby="${this.describedBy || ""}"
-      ></iron-image>
+      />
       <div class="overlay">
         <h2 id="header" ?hidden="${!this.header}">${this.header}</h2>
         <div id="subheader" ?hidden="${!this.subheader}">${this.subheader}</div>

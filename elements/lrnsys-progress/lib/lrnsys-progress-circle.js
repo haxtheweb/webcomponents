@@ -4,12 +4,12 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/circle-progress/circle-progress.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/paper-spinner/paper-spinner.js";
 import "@polymer/neon-animation/neon-animation.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `lrnsys-progress-circle`
  * @element lrnsys-progress-circle
@@ -22,10 +22,6 @@ class LrnsysProgressCircle extends PolymerElement {
       <custom-style>
         <style is="custom-style" include="paper-material-styles">
           :host {
-            --paper-button-ink-color: var(
-              --lrnsys-progress-color,
-              var(--paper-green-500)
-            );
             display: block;
             transition: box-shadow
                 var(--lrnsys-progress-circle-transition, 0.5s) linear,
@@ -34,10 +30,6 @@ class LrnsysProgressCircle extends PolymerElement {
                 ease-in-out;
           }
           :host([status="complete"]) .circle-wrapper {
-            --paper-button-ink-color: var(
-              --lrnsys-progress-complete-color,
-              var(--paper-green-500)
-            );
             box-shadow: 0px 0px 0px 0.16px
               var(--lrnsys-progress-complete-color, var(--paper-green-900));
           }
@@ -60,7 +52,7 @@ class LrnsysProgressCircle extends PolymerElement {
             min-width: 40px;
             border-radius: 100%;
           }
-          paper-button {
+          button {
             width: var(--lrnsys-progress-circle-size, 40px);
             height: var(--lrnsys-progress-circle-size, 40px);
           }
@@ -105,13 +97,13 @@ class LrnsysProgressCircle extends PolymerElement {
             width: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
             height: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
           }
-          iron-icon {
+          simple-icon {
             visibility: visible;
             opacity: 1;
             transition: width 0.1s linear, height 0.1s linear,
               visibility 0.4s ease, opacity 0.4s ease;
-            width: var(--lrnsys-progress-icon-size, 24px);
-            height: var(--lrnsys-progress-icon-size, 24px);
+            --simple-icon-width: var(--lrnsys-progress-icon-size, 24px);
+            --simple-icon-height: var(--lrnsys-progress-icon-size, 24px);
           }
           .disabled {
             background-color: var(
@@ -124,9 +116,13 @@ class LrnsysProgressCircle extends PolymerElement {
             background-color: white;
             color: black;
           }
-          .finished iron-icon:not(.activeIcon) {
-            width: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
-            height: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
+          .finished simple-icon:not(.activeIcon) {
+            --simple-icon-width: calc(
+              var(--lrnsys-progress-icon-size, 24px) - 8px
+            );
+            --simple-icon-height: calc(
+              var(--lrnsys-progress-icon-size, 24px) - 8px
+            );
           }
           .available {
             background-color: var(
@@ -200,7 +196,7 @@ class LrnsysProgressCircle extends PolymerElement {
       >
         [[label]]
       </simple-tooltip>
-      <paper-button
+      <button
         id="button"
         class="button"
         disabled$="[[disabled]]"
@@ -220,11 +216,11 @@ class LrnsysProgressCircle extends PolymerElement {
             stroke-width="[[strokeWidth]]"
             angle="180"
           >
-            <iron-icon
+            <simple-icon
               id="icon"
               icon="[[activeIcon]]"
               hidden$="[[!activeIcon]]"
-            ></iron-icon>
+            ></simple-icon>
             <slot name="image"></slot>
           </circle-progress>
         </span>
@@ -234,7 +230,7 @@ class LrnsysProgressCircle extends PolymerElement {
             <slot name="description"></slot> <slot></slot>
           </div>
         </span>
-      </paper-button>
+      </button>
     `;
   }
   static get tag() {

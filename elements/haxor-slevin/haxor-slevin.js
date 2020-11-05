@@ -30,7 +30,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         }
         site-modal:not(:defined),
         site-rss-button:not(:defined),
-        iron-image:not(:defined),
         iron-pages:not(:defined),
         site-share-widget:not(:defined),
         site-active-title:not(:defined),
@@ -118,7 +117,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           max-width: 600px;
           width: 100%;
         }
-        .header-image iron-image {
+        .header-image img.image {
           max-width: 800px;
         }
         .backbutton {
@@ -240,7 +239,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             max-width: 200px;
             width: 100%;
           }
-          .header-image iron-image {
+          .header-image img.image {
             max-width: 200px;
           }
           .simple-blog-card-wrapper simple-blog-card {
@@ -301,6 +300,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             icon="icons:search"
             title="Search site"
             button-label="Search"
+            dark
           >
             <site-search></site-search>
           </site-modal>
@@ -311,17 +311,20 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             @click="${this._goBack}"
             title="Back to blog post list"
           >
-            <simple-icon icon="${this.icon}"></simple-icon>
+            <simple-icon
+              accent-color="${this.accentColor}"
+              icon="${this.icon}"
+            ></simple-icon>
             <span class="hide-small">${this.title}</span>
           </button>
         </div>
         <div class="header-image">
-          <iron-image
+          <img
+            loading="lazy"
+            class="image"
             src="${this.image}"
-            preload
-            sizing="cover"
             style="height:46px;width:100%;margin: 4px 0 2px 0;"
-          ></iron-image>
+          />
         </div>
       </div>
       <div class="wrapper">
@@ -659,7 +662,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       super.firstUpdated();
     }
     setTimeout(() => {
-      import("@polymer/iron-image/iron-image.js");
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
       );

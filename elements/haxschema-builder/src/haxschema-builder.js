@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/json-editor/json-editor.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
-import "@polymer/paper-button/paper-button.js";
 import "./lib/hax-schema-form.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**

@@ -3,7 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@polymer/paper-input/paper-input.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/simple-search-content.js";
@@ -120,7 +121,7 @@ class SimpleSearch extends LitElement {
         ?no-label-float="${this.noLabelFloat}"
         @change="${this._handleChange}"
       >
-        <iron-icon icon="${this.searchInputIcon}" slot="prefix"></iron-icon>
+        <simple-icon icon="${this.searchInputIcon}" slot="prefix"></simple-icon>
       </paper-input>
       <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
         ${this._getResultsSpan(this.resultPointer, this.resultCount)}
@@ -135,7 +136,7 @@ class SimpleSearch extends LitElement {
           ?disabled="${this.__hidePrev}"
           @click="${this._navigateResults}"
         >
-          <iron-icon icon="${this.prevButtonIcon}"></iron-icon>
+          <simple-icon icon="${this.prevButtonIcon}"></simple-icon>
         </button>
         <simple-tooltip for="prev">${this.prevButtonLabel}</simple-tooltip>
         <button
@@ -147,7 +148,7 @@ class SimpleSearch extends LitElement {
           ?disabled="${this.__hideNext}"
           @click="${this._navigateResults}"
         >
-          <iron-icon icon="${this.nextButtonIcon}"></iron-icon>
+          <simple-icon icon="${this.nextButtonIcon}"></simple-icon>
         </button>
         <simple-tooltip for="next">${this.nextButtonLabel}</simple-tooltip>
       </div>`;

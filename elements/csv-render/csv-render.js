@@ -4,6 +4,8 @@
  */
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `csv-render`
  * `Remote render a CSV file in place as an accessible table.`
@@ -103,7 +105,7 @@ class CsvRender extends SimpleColors {
           align-items: center;
           justify-content: center;
         }
-        iron-icon {
+        simple-icon {
           display: inline-flex;
           margin: 0;
           padding: 0;
@@ -127,8 +129,6 @@ class CsvRender extends SimpleColors {
     this.tableData = "";
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@polymer/iron-ajax/iron-ajax.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   /**
@@ -162,7 +162,7 @@ class CsvRender extends SimpleColors {
         size="small"
       ></hexagon-loader>
       <a href="${this.dataSource}" id="download" tabindex="-1">
-        <button><iron-icon icon="file-download"></iron-icon></button>
+        <button><simple-icon icon="file-download"></simple-icon></button>
       </a>
       <simple-tooltip for="download" animation-delay="200" offset="14"
         >Download table data</simple-tooltip

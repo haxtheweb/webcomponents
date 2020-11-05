@@ -59,11 +59,11 @@
   background-color: var(--social-share-disabled-button-bg, #666);
 }
 
-:host iron-icon {
+:host simple-icon {
   margin-right: 5px;
 }
 
-:host a.text-only iron-icon {
+:host a.text-only simple-icon {
   display: none;
 }
 
@@ -76,6 +76,6 @@
   overflow: hidden;
 }
 
-:host a.icon-only iron-icon {
+:host a.icon-only simple-icon {
   margin-right: 0;
 } 

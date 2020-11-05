@@ -1,6 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `self-check`
  * 
@@ -36,10 +39,6 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
     this.question = "";
     this.title = "Self-Check";
     import("@lrnwebcomponents/user-action/user-action.js");
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   static get styles() {
@@ -55,7 +54,8 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
           display: none !important;
         }
 
-        paper-card {
+        div.card {
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
           width: 100%;
           color: var(
             --self-check-question-text,
@@ -68,9 +68,9 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
           overflow: hidden;
         }
 
-        paper-icon-button#checkbtn {
-          width: 50px;
-          height: 50px;
+        simple-icon-button#checkbtn {
+          --simple-icon-width: 50px;
+          --simple-icon-height: 50px;
           position: relative;
           left: 16px;
           bottom: -10px;
@@ -81,9 +81,9 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
           justify-content: flex-end;
         }
 
-        paper-icon-button#closeBtn {
-          width: 50px;
-          height: 50px;
+        simple-icon-button#closeBtn {
+          --simple-icon-width: 50px;
+          --simple-icon-height: 50px;
           position: relative;
           left: 16px;
           bottom: -16px;
@@ -94,9 +94,9 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
           justify-content: flex-end;
         }
 
-        iron-icon#questionmark {
-          width: 35px;
-          height: 35px;
+        simple-icon#questionmark {
+          --simple-icon-width: 35px;
+          --simple-icon-height: 35px;
           padding: 5px;
           color: var(
             --self-check-heading-text,
@@ -223,33 +223,44 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
         .more_info a:hover {
           text-decoration: none;
         }
+        .image-wrap {
+          max-height: 400px;
+          overflow: hidden;
+        }
+        .image-wrap img {
+          width: 100%;
+        }
       `,
     ];
   }
   render() {
     return html`
-      <paper-card
-        image="${this.image}"
-        alt="${this.alt}"
-        aria-describedby="${this.describedBy || ""}"
-      >
+      <div class="card">
+        <div class="image-wrap">
+          <img
+            src="${this.image}"
+            alt="${this.alt}"
+            aria-describedby="${this.describedBy || ""}"
+            loading="lazy"
+          />
+        </div>
         <div class="triangle"></div>
         <div id="header_wrap">
-          <iron-icon id="questionmark" icon="icons:help"></iron-icon>
+          <simple-icon id="questionmark" icon="icons:help"></simple-icon>
           <div class="heading">${this.title}</div>
         </div>
         <div id="question_wrap">
           <div class="question" aria-hidden="${this.correct}">
             <slot name="question"></slot>
             <div class="check_button">
-              <paper-icon-button
+              <simple-icon-button
                 controls="answer_wrap"
                 aria-label="Reveal Answer"
                 id="checkBtn"
                 icon="icons:check-circle"
                 noink
                 @click="${this.openAnswer}"
-              ></paper-icon-button>
+              ></simple-icon-button>
               <simple-tooltip aria-hidden="true" for="checkBtn" position="left">
                 Reveal Answer
               </simple-tooltip>
@@ -276,14 +287,14 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
                   `
                 : ``}
               <div class="close_button">
-                <paper-icon-button
+                <simple-icon-button
                   aria-label="Close"
                   id="closeBtn"
+                  dark
                   icon="icons:close"
                   @click="${this.openAnswer}"
-                  noink
                 >
-                </paper-icon-button>
+                </simple-icon-button>
                 <simple-tooltip
                   aria-hidden="true"
                   for="closeBtn"
@@ -295,7 +306,7 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
             </div>
           </div>
         </div>
-      </paper-card>
+      </div>
     `;
   }
 

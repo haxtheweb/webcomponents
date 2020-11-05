@@ -162,8 +162,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     setTimeout(() => {
       import("@lrnwebcomponents/simple-search/simple-search.js");
       import("@polymer/paper-slider/paper-slider.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/av-icons.js");
       import("@polymer/paper-toast/paper-toast.js");
       import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
       import("@polymer/paper-toggle-button/paper-toggle-button.js");

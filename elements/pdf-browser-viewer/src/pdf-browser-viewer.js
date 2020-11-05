@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
 @license
 Copyright (c) 2016 The Ingresso Rápido Web Components Authors. All rights reserved.
@@ -49,11 +50,6 @@ Card example:
 * @demo demo/index.html
 */
 class PdfBrowserViewer extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/paper-button/paper-button.js");
-  }
   static get template() {
     return html`
       <style>
@@ -63,10 +59,13 @@ class PdfBrowserViewer extends PolymerElement {
         :host([file]) {
           display: inherit;
         }
+        div.card {
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+        }
       </style>
 
       <template is="dom-if" if="[[card]]">
-        <paper-card heading="[[heading]]" elevation="[[elevation]]">
+        <div heading="[[heading]]" elevation="[[elevation]]">
           <div class="card-content">
             <object
               data="[[file]]"
@@ -81,9 +80,9 @@ class PdfBrowserViewer extends PolymerElement {
             </object>
           </div>
           <div class="card-actions">
-            <paper-button on-click="_download">[[downloadLabel]]</paper-button>
+            <button on-click="_download">[[downloadLabel]]</button>
           </div>
-        </paper-card>
+        </div>
       </template>
 
       <template is="dom-if" if="[[!card]]">

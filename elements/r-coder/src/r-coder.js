@@ -33,7 +33,6 @@ class RCoder extends LitElement {
     super();
     this.endpoint = "/service/r-service";
     setTimeout(() => {
-      import("@polymer/paper-button/paper-button.js");
       import("@lrnwebcomponents/code-editor/code-editor.js");
     }, 0);
   }

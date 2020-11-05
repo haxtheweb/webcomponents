@@ -63,8 +63,9 @@ class LrnsysButtonInner extends LitElement {
         import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
       }
       if (propName == "icon" && this[propName] != "") {
-        import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
-        import("@polymer/iron-icons/iron-icons.js");
+        import("@lrnwebcomponents/simple-icon/simple-icon.js");
+        import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+        import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
       }
     });
   }

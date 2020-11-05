@@ -3,7 +3,7 @@
  * `mdi-arrange-iconset-svg`
  * @element mdi-arrange-iconset-svg is a iconset for the Material Design Icons collection with the "arrange" tag
  * Example:
- *   <iron-icon icon="mdi-arrange:flip-to-front"></iron-icon>
+ *   <simple-icon icon="mdi-arrange:flip-to-front"></simple-icon>
  *
  * @demo demo/index.html
  */

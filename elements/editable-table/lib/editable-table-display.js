@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -532,13 +531,13 @@ class EditableTableDisplay extends displayBehaviors(
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
+    setTimeout(() => {
       this.addEventListener(
         "change-sort-mode",
         this._changeSortMode.bind(this)
       );
       this.addEventListener("toggle-filter", this.toggleFilter.bind(this));
-    });
+    }, 0);
   }
   disconnectedCallback() {
     this.removeEventListener(

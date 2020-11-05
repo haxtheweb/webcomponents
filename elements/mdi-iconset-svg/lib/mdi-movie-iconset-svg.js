@@ -4,7 +4,7 @@
  * @element mdi-movie-iconset-svg is a iconset for the Material Design Icons collection with the "movie" tag
  *
  * Example:
- *   <iron-icon icon="mdi-movie:filmstrip"></iron-icon>
+ *   <simple-icon icon="mdi-movie:filmstrip"></simple-icon>
  *
  * @demo demo/index.html
  */

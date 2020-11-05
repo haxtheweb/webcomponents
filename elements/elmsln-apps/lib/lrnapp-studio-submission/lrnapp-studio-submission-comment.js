@@ -1,8 +1,10 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/paper-card/paper-card.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/word-count/word-count.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 class LrnappStudioSubmissionComment extends PolymerElement {
@@ -12,7 +14,7 @@ class LrnappStudioSubmissionComment extends PolymerElement {
         :host {
           display: flex;
         }
-        paper-card {
+        div.card {
           margin: 20px;
           padding: 16px;
         }
@@ -74,7 +76,7 @@ class LrnappStudioSubmissionComment extends PolymerElement {
           class="float-left"
         ></lrndesign-avatar>
       </div>
-      <paper-card class$="paper-card-length-[[comment.attributes.threadDepth]]">
+      <div class$="card paper-card-length-[[comment.attributes.threadDepth]]">
         <div id="body" class="comment-body nowrap">
           <h4>
             [[comment.relationships.author.data.name]]
@@ -83,28 +85,28 @@ class LrnappStudioSubmissionComment extends PolymerElement {
           <word-count>[[comment.attributes.body]]</word-count>
         </div>
         <div class$="card-actions">
-          <paper-icon-button
+          <simple-icon-button
             class="right-actions"
             id="reply"
             icon="icons:reply"
-          ></paper-icon-button>
+          ></simple-icon-button>
           <simple-tooltip for="reply" animation-delay="0">Reply</simple-tooltip>
-          <paper-icon-button
+          <simple-icon-button
             class="right-actions"
             id="edit"
             icon="icons:create"
-          ></paper-icon-button>
+          ></simple-icon-button>
           <simple-tooltip for="edit" animation-delay="0">Edit</simple-tooltip>
-          <paper-icon-button
+          <simple-icon-button
             class="right-actions"
             id="delete"
             icon="icons:delete-forever"
-          ></paper-icon-button>
+          ></simple-icon-button>
           <simple-tooltip for="delete" animation-delay="0"
             >Delete</simple-tooltip
           >
         </div>
-      </paper-card>
+      </div>
     `;
   }
   static get tag() {

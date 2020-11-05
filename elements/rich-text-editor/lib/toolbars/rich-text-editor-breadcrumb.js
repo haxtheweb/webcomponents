@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "../buttons/rich-text-editor-button-styles.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "../buttons/rich-text-editor-button-styles.js";
 /**
@@ -46,7 +45,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
         on-keys-pressed="_buttonTap"
       >
       </iron-a11y-keys>
-      <paper-button
+      <button
         id="button"
         class="rtebutton rtebreadcrumb"
         controls="${this.controls}"
@@ -55,7 +54,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
         part="button"
       >
         ${this.tag}
-      </paper-button>
+      </button>
     `;
   }
 

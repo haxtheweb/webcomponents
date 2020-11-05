@@ -3,7 +3,7 @@
  * `mdi-medical-iconset-svg`
  * @element mdi-medical-iconset-svg is a iconset for the Material Design Icons collection with the "medical" tag
  * Example:
- *   <iron-icon icon="mdi-medical:ambulance"></iron-icon>
+ *   <simple-icon icon="mdi-medical:ambulance"></simple-icon>
  *
  * @demo demo/index.html
  */

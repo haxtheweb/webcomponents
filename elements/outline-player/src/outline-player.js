@@ -297,11 +297,11 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         </app-drawer>
         <div id="content">
           <site-git-corner></site-git-corner>
-          <paper-icon-button
+          <simple-icon-button
             icon="menu"
             id="menutoggle"
             @click="${this._toggleMenu}"
-          ></paper-icon-button>
+          ></simple-icon-button>
           <site-active-title></site-active-title>
           <div><slot name="title"></slot></div>
           <div id="contentcontainer">

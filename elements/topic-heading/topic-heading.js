@@ -27,12 +27,12 @@ class TopicHeading extends LitElement {
           display: inline-flex;
         }
 
-        iron-icon {
+        simple-icon {
           color: var(--topic-heading-icon-color);
           display: inline-flex;
           font-size: 16px;
-          height: 32px;
-          width: 32px;
+          --simple-icon-height: 32px;
+          --simple-icon-width: 32px;
           padding: 16px;
           line-height: 16px;
           vertical-align: bottom;
@@ -44,7 +44,7 @@ class TopicHeading extends LitElement {
   // render function
   render() {
     return html` ${this.icon
-      ? html` <iron-icon icon="${this.icon}"></iron-icon> `
+      ? html` <simple-icon icon="${this.icon}"></simple-icon> `
       : ``}
     ${this.title
       ? html`
@@ -120,8 +120,9 @@ class TopicHeading extends LitElement {
   }
   firstUpdated() {
     if (this.icon) {
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icon/iron-icon.js");
+      import("@lrnwebcomponents/simple-icon/simple-icon.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
     }
   }
   /**

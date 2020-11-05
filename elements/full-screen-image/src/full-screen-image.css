@@ -42,9 +42,9 @@ img {
   top: -57.1875px;
 }
 
-paper-icon-button {
-  width: 75px;
-  height: 45px;
+simple-icon-button {
+  --simple-icon-height: 45px;
+  --simple-icon-width: 75px;
   line-height: 45px;
   bottom: 1px;
   right: 0px;

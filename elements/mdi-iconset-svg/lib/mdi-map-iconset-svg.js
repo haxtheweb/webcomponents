@@ -4,7 +4,7 @@
  * @element mdi-map-iconset-svg is a iconset for the Material Design Icons collection with the "map" tag
  *
  * Example:
- *   <iron-icon icon="mdi-map:map-marker"></iron-icon>
+ *   <simple-icon icon="mdi-map:map-marker"></simple-icon>
  *
  * @demo demo/index.html
  */

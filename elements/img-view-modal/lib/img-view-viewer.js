@@ -1,6 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `img-view-viewer`
  * Combines img-pan-zoom and simple-modal for an easy image zoom solution
@@ -183,9 +185,6 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     this.minZoomImageRatio = 1;
     this.maxZoomPixelRatio = 3;
     this.__screenfullLoaded = false;
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/image-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
 
@@ -790,7 +789,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       ? ""
       : html`
           <p>
-            <iron-icon aria-hidden="true" icon="${config.icon}"></iron-icon>
+            <simple-icon aria-hidden="true" icon="${config.icon}"></simple-icon>
             <span class="${config.icon && !config.showText ? "sr-only" : ""}"
               >${config.text}</span
             >

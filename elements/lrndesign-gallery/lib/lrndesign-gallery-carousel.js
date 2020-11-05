@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit-element";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/iron-image/iron-image.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "./lrndesign-gallery-zoom.js";
@@ -119,7 +118,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           width: 100%;
           padding-top: var(--lrndesign-gallery-image-height, 75%);
         }
-        #carouselimage iron-image,
+        #carouselimage img.image,
         .prevnextnav {
           position: absolute;
           width: 100%;
@@ -278,17 +277,13 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
         >
           <p id="xystart" class="sr-only">Slide ${this.selected.xofy}.</p>
           <div id="carouselimage">
-            <iron-image
+            <img
+              class="image"
               .alt="${this.selected.alt}"
-              fade
               aria-describedby="carouseltitle details"
-              .placeholder="${this.selected.thumbnail}"
-              sizing="${this.selected.sizing ||
-              this.sizing === "contain" ||
-              "cover"}"
               .src="${this.selected.src}"
-            >
-            </iron-image>
+              loading="lazy"
+            />
             <lrndesign-gallery-zoom
               .details="${this.selected.details}"
               .heading="${this.selected.heading}"

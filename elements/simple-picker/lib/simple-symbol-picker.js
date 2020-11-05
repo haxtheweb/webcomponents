@@ -55,7 +55,6 @@ class SimpleSymbolPicker extends SimplePicker {
     this.label = "Symbol";
     this.symbolTypes = ["symbols", "math", "characters", "greek", "misc"];
     this.titleAsHtml = true;
-    import("@polymer/iron-icons/editor-icons.js");
   }
   /**
    * LitElement life cycle - ready callback

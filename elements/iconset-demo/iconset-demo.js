@@ -50,41 +50,41 @@ class IconsetDemo extends PolymerElement {
           font-size: 10px;
         }
 
-        :host iron-icon {
+        :host simple-icon {
           font-size: 14px;
           color: rgb(97, 97, 97);
           display: inline-block;
         }
 
-        :host .iconset:nth-of-type(9n + 2) iron-icon {
+        :host .iconset:nth-of-type(9n + 2) simple-icon {
           color: #be3300;
         }
 
-        :host .iconset:nth-of-type(9n + 3) iron-icon {
+        :host .iconset:nth-of-type(9n + 3) simple-icon {
           color: #0000b5;
         }
 
-        :host .iconset:nth-of-type(9n + 4) iron-icon {
+        :host .iconset:nth-of-type(9n + 4) simple-icon {
           color: #750075;
         }
 
-        :host .iconset:nth-of-type(9n + 5) iron-icon {
+        :host .iconset:nth-of-type(9n + 5) simple-icon {
           color: #aa5d00;
         }
 
-        :host .iconset:nth-of-type(9n + 6) iron-icon {
+        :host .iconset:nth-of-type(9n + 6) simple-icon {
           color: #db0a5b;
         }
 
-        :host .iconset:nth-of-type(9n + 7) iron-icon {
+        :host .iconset:nth-of-type(9n + 7) simple-icon {
           color: #005500;
         }
 
-        :host .iconset:nth-of-type(9n + 8) iron-icon {
+        :host .iconset:nth-of-type(9n + 8) simple-icon {
           color: #cf000f;
         }
 
-        :host .iconset:nth-of-type(9n) iron-icon {
+        :host .iconset:nth-of-type(9n) simple-icon {
           color: #005f8b;
         }
       </style>

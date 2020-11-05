@@ -16,6 +16,28 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
+import "@vaadin/vaadin-grid/vaadin-grid.js";
+import "@vaadin/vaadin-grid/vaadin-grid-column.js";
+import "@vaadin/vaadin-grid/vaadin-grid-sort-column.js";
+import "@vaadin/vaadin-grid/vaadin-grid-filter-column.js";
+import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
+import "@lrnwebcomponents/simple-login/simple-login.js";
+import "@lrnwebcomponents/simple-login/lib/simple-login-avatar.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
+import "@polymer/paper-dialog/paper-dialog.js";
+import "@lrnwebcomponents/md-block/md-block.js";
+import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/portal-launcher/portal-launcher.js";
+import "@lrnwebcomponents/json-outline-schema/lib/jos-render.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "../haxcms-site-store.js";
 import {
   HaxSchematizer,
@@ -35,9 +57,6 @@ class HAXCMSSiteListing extends PolymerElement {
     this.SimpleColors = new SimpleColorsPolymer();
     this.HaxSchematizer = HaxSchematizer;
     this.HaxElementizer = HaxElementizer;
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/core/site-list/haxcms-site-listing-deps.js"
-    );
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -723,13 +742,12 @@ class HAXCMSSiteListing extends PolymerElement {
               </vaadin-grid-column>
               <vaadin-grid-column header="Logo" width="64px">
                 <template
-                  ><iron-image
-                    sizing="contain"
-                    preload
+                  ><img
+                    loading="lazy"
                     src$="[[item.slug]][[item.metadata.site.logo]]"
                     style="width:64px; height:64px;"
-                  ></iron-image
-                ></template>
+                  />
+                </template>
               </vaadin-grid-column>
             </vaadin-grid>
           </div>

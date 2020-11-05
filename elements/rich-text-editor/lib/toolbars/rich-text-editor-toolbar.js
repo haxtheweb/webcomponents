@@ -7,6 +7,10 @@ import { RichTextEditorStyles } from "@lrnwebcomponents/rich-text-editor/lib/ric
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
 import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 const RichTextEditorToolbarBehaviors = function (SuperClass) {
   return class extends RichTextEditorStyles(SuperClass) {
@@ -296,10 +300,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("../buttons/rich-text-editor-image.js");
       import("../buttons/rich-text-editor-link.js");
       import("../buttons/rich-text-editor-button-styles.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/iron-icons/image-icons.js");
-      import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       this.__selection = window.RichTextEditorSelection.requestAvailability();
 
       //this.alwaysVisible = false;

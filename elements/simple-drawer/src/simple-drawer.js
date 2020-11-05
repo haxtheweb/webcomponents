@@ -11,8 +11,8 @@ import "@polymer/polymer/lib/elements/custom-style.js";
 
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/neon-animation/neon-animation.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 // register globally so we can make sure there is only one
 window.SimpleDrawer = window.SimpleDrawer || {};
 // request if this exists. This helps invoke the element existing in the dom

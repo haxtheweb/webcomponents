@@ -13,6 +13,8 @@ import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-link.js";
 import "@lrnwebcomponents/word-count/word-count.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
 `lrnsys-comment`
 A well styled comment for a user with markdown support.
@@ -22,7 +24,6 @@ A well styled comment for a user with markdown support.
 class LrnsysComment extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/iron-icons/editor-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/marked-element/marked-element.js");
     import("@polymer/paper-badge/paper-badge.js");

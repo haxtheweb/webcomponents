@@ -4,7 +4,7 @@
  * @element mdi-box-iconset-svg is a iconset for the Material Design Icons collection with the "box" tag
  *
  * Example:
- *   <iron-icon icon="mdi-box:zip-box"></iron-icon>
+ *   <simple-icon icon="mdi-box:zip-box"></simple-icon>
  *
  * @demo demo/index.html
  */

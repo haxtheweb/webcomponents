@@ -4,7 +4,7 @@
  * @element mdi-microphone-iconset-svg is a iconset for the Material Design Icons collection with the "microphone" tag
  *
  * Example:
- *   <iron-icon icon="mdi-microphone:microphone-outline"></iron-icon>
+ *   <simple-icon icon="mdi-microphone:microphone-outline"></simple-icon>
  *
  * @demo demo/index.html
  */

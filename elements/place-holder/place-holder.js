@@ -1,5 +1,7 @@
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `place-holder`
  * @element place-holder
@@ -32,10 +34,10 @@ class PlaceHolder extends SimpleColors {
           color: var(--simple-colors-default-theme-grey-11, #222222);
           background-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
         }
-        iron-icon {
+        simple-icon {
           margin: 0 auto;
-          width: 50%;
-          height: 50%;
+          --simple-icon-width: 50%;
+          --simple-icon-height: 50%;
           display: block;
         }
         .text {
@@ -56,7 +58,7 @@ class PlaceHolder extends SimpleColors {
   render() {
     return html`
       <div class="wrapper">
-        <iron-icon icon="${this.iconFromType}"></iron-icon>
+        <simple-icon icon="${this.iconFromType}"></simple-icon>
         <div class="text">${this.calcText}</div>
         <div class="directions">${this.directions}</div>
       </div>
@@ -155,33 +157,26 @@ class PlaceHolder extends SimpleColors {
     if (!dragOver) {
       switch (type) {
         case "document":
-          import("@polymer/iron-icons/editor-icons.js");
           return "editor:insert-drive-file";
           break;
         case "audio":
-          import("@polymer/iron-icons/av-icons.js");
           return "av:music-video";
           break;
         case "video":
-          import("@polymer/iron-icons/notification-icons.js");
           return "notification:ondemand-video";
           break;
         case "image":
-          import("@polymer/iron-icons/image-icons.js");
           return "image:crop-original";
           break;
         case "math":
-          import("@polymer/iron-icons/editor-icons.js");
           return "editor:functions";
           break;
         case "text":
         default:
-          import("@polymer/iron-icons/editor-icons.js");
           return "editor:format-align-left";
           break;
       }
     } else {
-      import("@polymer/iron-icons/iron-icons.js");
       // we are dragging, ignore icon
       return "icons:file-upload";
     }

@@ -4,7 +4,7 @@
  * @element mdi-hardware-iconset-svg is a iconset for the Material Design Icons collection with the "hardware" tag
  *
  * Example:
- *   <iron-icon icon="mdi-hardware:harddisk"></iron-icon>
+ *   <simple-icon icon="mdi-hardware:harddisk"></simple-icon>
  *
  * @demo demo/index.html
  */

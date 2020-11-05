@@ -3,6 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `simple-picker`
  * a simple picker for options, icons, etc.
@@ -69,8 +71,6 @@ class SimplePicker extends LitElement {
   // life cycle
   constructor() {
     super();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("./lib/simple-picker-option.js");
     this.tag = SimplePicker.tag;
     this.allowNull = false;

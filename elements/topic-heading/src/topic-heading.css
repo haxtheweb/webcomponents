@@ -11,12 +11,12 @@ relative-heading {
   display: inline-flex;
 }
 
-iron-icon {
+simple-icon {
   color: var(--topic-heading-icon-color);
   display: inline-flex;
   font-size: 16px;
-  height: 32px;
-  width: 32px;
+  --simple-icon-height: 32px;
+  --simple-icon-width: 32px;
   padding: 16px;
   line-height: 16px;
   vertical-align: bottom;

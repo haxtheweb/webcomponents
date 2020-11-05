@@ -3,10 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "./editable-table-iconset.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `editable-table-editor-filter`
@@ -20,7 +21,7 @@ class EditableTableFilter extends LitElement {
   static get styles() {
     return [
       css`
-        paper-button {
+        button {
           padding: var(--editable-table-cell-padding, 0);
           margin: 0;
           width: auto;
@@ -32,10 +33,10 @@ class EditableTableFilter extends LitElement {
           text-transform: unset;
           font-family: var(--editable-table-font-family);
         }
-        paper-button > div {
+        button > div {
           flex-grow: 1;
         }
-        iron-icon {
+        simple-icon {
           min-width: 24px;
         }
         .sr-only {
@@ -63,17 +64,16 @@ class EditableTableFilter extends LitElement {
   }
   render() {
     return html`
-      <paper-button
-        id="button"
-        class="container"
-        @click="${this._onFilterClicked}"
-      >
+      <button id="button" class="container" @click="${this._onFilterClicked}">
         <span>${this.text}</span>
         <span class="sr-only" .hidden="${!this.filtered}"> (filtered)</span>
         <span class="sr-only"> Toggle filter.</span>
-        <iron-icon id="filter" icon="editable-table:filter"></iron-icon>
-        <iron-icon id="filter-off" icon="editable-table:filter-off"></iron-icon>
-      </paper-button>
+        <simple-icon id="filter" icon="editable-table:filter"></simple-icon>
+        <simple-icon
+          id="filter-off"
+          icon="editable-table:filter-off"
+        ></simple-icon>
+      </button>
       <simple-tooltip for="button"
         >Toggle Column ${this.columnIndex} filter for
         "${this.text}"</simple-tooltip

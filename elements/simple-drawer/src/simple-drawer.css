@@ -38,10 +38,10 @@
   min-width: unset;
 }
 
-#close iron-icon {
+#close simple-icon {
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  --simple-icon-width: 16px;
+  --simple-icon-height: 16px;
   margin-right: 2px;
 }
 

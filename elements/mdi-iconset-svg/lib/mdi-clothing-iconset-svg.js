@@ -4,7 +4,7 @@
  * @element mdi-clothing-iconset-svg is a iconset for the Material Design Icons collection with the "clothing" tag
  *
  * Example:
- *   <iron-icon icon="mdi-clothing:tie"></iron-icon>
+ *   <simple-icon icon="mdi-clothing:tie"></simple-icon>
  *
  * @demo demo/index.html
  */

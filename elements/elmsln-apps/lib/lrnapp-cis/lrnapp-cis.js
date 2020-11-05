@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-item/paper-item.js";
@@ -15,7 +14,6 @@ import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-course-banner/lrndesign-course-banner.js";
@@ -68,11 +66,11 @@ class LrnappCis extends PolymerElement {
         iron-selector lrnsys-button {
           display: inline-flex;
         }
-        paper-button.coursecard-wrapper {
+        button.coursecard-wrapper {
           margin: 0;
           padding: 0;
         }
-        paper-button.coursecard-wrapper:focus {
+        button.coursecard-wrapper:focus {
           outline: blue solid 1px;
         }
         lrnapp-cis-course-card {
@@ -115,7 +113,7 @@ class LrnappCis extends PolymerElement {
         .buttons {
           text-align: center;
         }
-        .buttons paper-button {
+        .buttons button {
           width: 10em;
           height: 4em;
         }
@@ -239,7 +237,7 @@ class LrnappCis extends PolymerElement {
           <div class="iron-list-container" name="courses">
             <iron-list id="ironlist" items="[[courses]]" as="course" grid="">
               <template>
-                <paper-button
+                <button
                   data-course-id$="[[course.id]]"
                   class="coursecard-wrapper"
                   on-click="_loadCourseUrl"
@@ -253,7 +251,7 @@ class LrnappCis extends PolymerElement {
                     color="[[course.attributes.color]]"
                   >
                   </lrnapp-cis-course-card>
-                </paper-button>
+                </button>
               </template>
             </iron-list>
           </div>
@@ -480,17 +478,16 @@ class LrnappCis extends PolymerElement {
           <div style="margin-top:1em;">This will take a few moments.</div>
         </div>
         <div class="buttons">
-          <paper-button
+          <button
             raised=""
             dialog-confirm=""
             autofocus=""
             on-click="_confirmBuild"
             class="green"
-            >Let's do it!</paper-button
           >
-          <paper-button dialog-dismiss="" class="red-text"
-            >Oops, go back.</paper-button
-          >
+            Let's do it!
+          </button>
+          <button dialog-dismiss="" class="red-text">Oops, go back.</button>
         </div>
       </lrnsys-dialog>
       <paper-toast id="toast"></paper-toast>
@@ -836,9 +833,7 @@ class LrnappCis extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener("route-change", this._routeChange.bind(this));
-    });
+    this.addEventListener("route-change", this._routeChange.bind(this));
   }
   /**
    * lifecycle
@@ -850,7 +845,7 @@ class LrnappCis extends PolymerElement {
     super.disconnectedCallback();
   }
   /**
-   * Handle tap on paper-button above to redirect to the correct course url.
+   * Handle tap on button above to redirect to the correct course url.
    */
 
   _loadCourseUrl(e) {

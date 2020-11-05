@@ -1,6 +1,5 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-image/iron-image.js";
 /**
  * `person-testimonial`
  * @element person-testimonial
@@ -30,7 +29,7 @@ class PersonTestimonial extends SimpleColors {
           box-shadow: 0 2px 2px rgba(59, 43, 91, 0.7);
         }
 
-        iron-image {
+        img.image {
           display: block;
           width: 150px;
           height: 100%;
@@ -92,7 +91,7 @@ class PersonTestimonial extends SimpleColors {
             display: flex;
             flex-wrap: wrap;
           }
-          iron-image {
+          img.image {
             display: block;
             border-radius: 50%;
             width: 200px;
@@ -114,7 +113,7 @@ class PersonTestimonial extends SimpleColors {
           }
         }
         @media screen and (max-width: 600px) {
-          iron-image {
+          img.image {
             width: 150px;
             height: 150px;
           }
@@ -126,13 +125,11 @@ class PersonTestimonial extends SimpleColors {
     return html`
       <div class="card">
         <div class="image">
-          <iron-image
+          <img
             src="${this.image}"
-            sizing="cover"
-            preload
-            fade
+            loading="lazy"
             aria-describedby="${this.describedBy}"
-          ></iron-image>
+          />
         </div>
         <div class="arrow_right"></div>
         <div class="wrap">

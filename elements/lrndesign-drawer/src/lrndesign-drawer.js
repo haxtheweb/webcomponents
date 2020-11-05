@@ -1,4 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `lrndesign-drawer`
  * @element lrndesign-drawer
@@ -9,7 +12,6 @@ class LrndesignDrawer extends PolymerElement {
     super();
     import("@polymer/app-layout/app-header/app-header.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   static get template() {
@@ -36,11 +38,11 @@ class LrndesignDrawer extends PolymerElement {
           <slot></slot>
         </app-drawer>
       </app-header>
-      <paper-icon-button
+      <simple-icon-button
         icon="[[icon]]"
         alt="[[alt]]"
         id="flyoutdrawer"
-      ></paper-icon-button>
+      ></simple-icon-button>
       <simple-tooltip for="flyoutdrawer">[[alt]]</simple-tooltip>
     `;
   }
@@ -86,7 +88,7 @@ class LrndesignDrawer extends PolymerElement {
   ready() {
     super.ready();
     this.shadowRoot
-      .querySelector("paper-icon-button")
+      .querySelector("simple-icon-button")
       .addEventListener("click", (e) => {
         this.opened = !this.opened;
       });

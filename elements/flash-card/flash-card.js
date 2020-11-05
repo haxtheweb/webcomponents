@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `flash-card`
@@ -17,25 +16,26 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
         :host {
           display: block;
         }
-        paper-card {
+        div.card {
           -webkit-perspective: 800;
           width: 400px;
           height: 300px;
           position: relative;
           padding: 0;
           margin: 0;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
-        paper-card.flipped {
+        div.card.flipped {
           -webkit-transform: rotatex(-180deg);
         }
-        paper-card.flipped .back {
+        div.card.flipped .back {
           z-index: 3;
         }
-        paper-card {
+        div.card {
           -webkit-transform-style: preserve-3d;
           -webkit-transition: 0.5s;
         }
-        paper-card .face {
+        div.card .face {
           width: 100%;
           height: 100%;
           padding: 0;
@@ -49,18 +49,18 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
           text-align: center;
           line-height: 200px;
         }
-        paper-card .front {
+        div.card .front {
           position: absolute;
           z-index: 1;
         }
-        paper-card .back {
+        div.card .back {
           -webkit-transform: rotatex(-180deg);
         }
       </style>
-      <paper-card id="card" animated-shadow="true">
+      <div class="card" id="card" animated-shadow="true">
         <div class="face front white black-text">Front</div>
         <div class="face back black white-text">Back</div>
-      </paper-card>
+      </div>
     `;
   }
 
@@ -82,7 +82,6 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
   }
   constructor() {
     super();
-    import("@polymer/paper-card/paper-card.js");
     setTimeout(() => {
       this.addEventListener("mouseenter", this._flipup.bind(this));
       this.addEventListener("mouseleave", this._flipback.bind(this));

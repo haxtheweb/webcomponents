@@ -4,7 +4,7 @@
  * @element mdi-arrow-iconset-svg is a iconset for the Material Design Icons collection with the "arrow" tag
  *
  * Example:
- *   <iron-icon icon="mdi-arrow:arrow-left"></iron-icon>
+ *   <simple-icon icon="mdi-arrow:arrow-left"></simple-icon>
  *
  * @demo demo/index.html
  */

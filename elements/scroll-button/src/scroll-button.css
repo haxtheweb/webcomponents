@@ -8,14 +8,14 @@
   display: none;
 }
 
-paper-icon-button {
+simple-icon-button {
   background-color: var(--scroll-button-background-color, rgba(0,0,0,.6) );
   color: var(--scroll-button-color, white);
 }
 
-paper-icon-button:hover,
-paper-icon-button:active,
-paper-icon-button:focus {
+simple-icon-button:hover,
+simple-icon-button:active,
+simple-icon-button:focus {
   color: var(--scroll-button-background-color, rgba(0,0,0,1) );
   background-color: var(--scroll-button-color, white);
 }

@@ -3,11 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/image-icons.js";
-import "@polymer/iron-icons/device-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "./editable-table-iconset.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `editable-table-editor-toggle`
@@ -33,7 +32,7 @@ class EditableTableEditorToggle extends PolymerElement {
         :host([hidden]) {
           display: none;
         }
-        :host paper-button {
+        :host button {
           padding: 2px;
           margin: 0;
           width: 100%;
@@ -47,28 +46,28 @@ class EditableTableEditorToggle extends PolymerElement {
           background-color: var(--editable-table-button-bg-color);
           color: var(--editable-table-button-color);
         }
-        :host([toggled]) paper-button {
+        :host([toggled]) button {
           background-color: var(--editable-table-button-toggled-bg-color);
           color: var(--editable-table-button-toggled-color);
         }
-        :host(:not([disabled])) paper-button:focus,
-        :host(:not([disabled])) paper-button:hover {
+        :host(:not([disabled])) button:focus,
+        :host(:not([disabled])) button:hover {
           background-color: var(--editable-table-button-hover-bg-color);
           color: var(--editable-table-button-hover-color);
           cursor: pointer;
         }
-        :host([toggled]:not([disabled])) paper-button:focus,
-        :host([toggled]:not([disabled])) paper-button:hover {
+        :host([toggled]:not([disabled])) button:focus,
+        :host([toggled]:not([disabled])) button:hover {
           background-color: var(--editable-table-button-toggled-hover-bg-color);
           color: var(--editable-table-button-toggled-hover-color);
           cursor: pointer;
         }
-        :host([disabled]) paper-button {
+        :host([disabled]) button {
           background-color: var(--editable-table-button-disabled-bg-color);
           color: var(--editable-table-button-disabled-color);
           cursor: not-allowed;
         }
-        :host paper-button > div {
+        :host button > div {
           flex-grow: 1;
         }
         :host .sr-only {
@@ -83,7 +82,7 @@ class EditableTableEditorToggle extends PolymerElement {
           opacity: 0.25;
         }
       </style>
-      <paper-button
+      <button
         id="button"
         active$="[[toggled]]"
         disabled$="[[disabled]]"
@@ -92,8 +91,8 @@ class EditableTableEditorToggle extends PolymerElement {
         on-click="_onClick"
       >
         <span class="sr-only">[[label]]</span>
-        <iron-icon icon$="[[icon]]" aria-hidden="true"></iron-icon>
-      </paper-button>
+        <simple-icon icon$="[[icon]]" aria-hidden="true"></simple-icon>
+      </button>
       <simple-tooltip id="tooltip" for="button" aria-hidden
         >[[label]]</simple-tooltip
       >

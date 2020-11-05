@@ -149,11 +149,11 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         .submission-links a:hover {
           text-decoration: underline;
         }
-        .submission-links iron-icon {
+        .submission-links simple-icon {
           margin-right: 0.5em;
         }
-        .submission-links a:focus iron-icon,
-        .submission-links a:hover iron-icon {
+        .submission-links a:focus simple-icon,
+        .submission-links a:hover simple-icon {
           text-decoration: none;
         }
         .callout {
@@ -181,7 +181,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           color: #4b4b4b;
           border-bottom: 1px solid #eaeaea;
         }
-        .callout .callout-label iron-icon {
+        .callout .callout-label simple-icon {
           margin-right: 1em;
         }
         threaded-discussion {
@@ -297,7 +297,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                   @click="${(e) => (this.sortLatest = !this.sortLatest)}"
                   controls="portfolio-project"
                 >
-                  <iron-icon icon="sort"></iron-icon>
+                  <simple-icon icon="sort"></simple-icon>
                   <span class="sr-only"
                     >Sort Submissions
                     ${!this.sortLatest ? "Oldest First" : "Newest First"}</span
@@ -342,12 +342,12 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                                           href="${link.url}"
                                           target="_blank"
                                         >
-                                          <iron-icon
+                                          <simple-icon
                                             aria-hidden="true"
                                             icon="${link.type === "pdf"
                                               ? "hax:file-pdf"
                                               : "link"}"
-                                          ></iron-icon>
+                                          ></simple-icon>
                                           ${link.text || link.url}
                                         </elmsln-studio-link>
                                       </li>
@@ -371,7 +371,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             <aside>
               <div class="instructions callout">
                 <h2 class="callout-label">
-                  <iron-icon icon="info" aria-hidden="true"></iron-icon>
+                  <simple-icon icon="info" aria-hidden="true"></simple-icon>
                   Giving Feedback
                 </h2>
                 <div>
@@ -385,10 +385,10 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
               <h2 class="discussion-label">Feedback</h2>
               <div class="discussion callout">
                 <p class="callout-label">
-                  <iron-icon
+                  <simple-icon
                     icon="communication:comment"
                     aria-hidden="true"
-                  ></iron-icon>
+                  ></simple-icon>
                   Post New Feedback
                 </p>
                 <threaded-discussion

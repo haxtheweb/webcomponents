@@ -4,7 +4,7 @@
  * @element mdi-alert-iconset-svg is a iconset for the Material Design Icons collection with the "alert" tag
  *
  * Example:
- *   <iron-icon icon="mdi-alert:alert"></iron-icon>
+ *   <simple-icon icon="mdi-alert:alert"></simple-icon>
  *
  * @demo demo/index.html
  */

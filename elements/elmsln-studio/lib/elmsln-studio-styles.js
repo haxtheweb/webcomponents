@@ -140,15 +140,15 @@ const ElmslnStudioStyles = function (SuperClass) {
             padding: 0;
             margin: 0;
           }
-          img-view-modal iron-icon {
+          img-view-modal simple-icon {
             border-radius: 2px;
-            width: 24px;
-            height: 24px;
+            --simple-icon-width: 24px;
+            --simple-icon-height: 24px;
             color: white;
             background-color: rgba(0, 0, 0, 0.5);
           }
-          img-view-modal button:hover iron-icon,
-          img-view-modal button:focus iron-icon {
+          img-view-modal button:hover simple-icon,
+          img-view-modal button:focus simple-icon {
             color: white;
             background-color: rgba(0, 0, 0, 0.25);
           }
@@ -175,7 +175,7 @@ const ElmslnStudioStyles = function (SuperClass) {
             background-size: cover;
             margin: 0;
           }
-          img-view-modal.thumbnail button iron-icon {
+          img-view-modal.thumbnail button simple-icon {
             position: absolute;
             bottom: 5px;
             right: 5px;

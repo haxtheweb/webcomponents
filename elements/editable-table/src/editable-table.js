@@ -6,6 +6,9 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { displayBehaviors } from "./lib/editable-table-behaviors.js";
 import "./lib/editable-table-editor-rowcol.js";
 import "./lib/editable-table-editor-toggle.js";
@@ -299,15 +302,15 @@ class EditableTable extends displayBehaviors(PolymerElement) {
                         on-change="_onCellValueChange"
                         value="{{cell}}"
                       >
-                        <iron-icon
+                        <simple-icon
                           class="sortable-icon"
                           icon="editable-table:sortable"
                           aria-hidden="true"
-                        ></iron-icon>
-                        <iron-icon
+                        ></simple-icon>
+                        <simple-icon
                           class="filter-icon"
                           icon="editable-table:filter-off"
-                        ></iron-icon>
+                        ></simple-icon>
                       </editable-table-editor-cell>
                     </td>
                   </template>

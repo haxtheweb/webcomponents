@@ -15,7 +15,7 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
         :host {
           display: block;
         }
-        paper-button {
+        button {
           padding: 0;
           margin: 0;
           min-width: 1rem;

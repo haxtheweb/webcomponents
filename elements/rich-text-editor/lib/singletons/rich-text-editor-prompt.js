@@ -103,27 +103,29 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
             .value="${this.value}"
           ></simple-fields>
           <div class="actions">
-            <paper-button
+            <button
               id="cancel"
               class="rtebutton"
               controls="${this.for}"
               @click="${this._cancel}"
               tabindex="0"
             >
-              <iron-icon id="icon" aria-hidden="true" icon="clear"> </iron-icon>
+              <simple-icon id="icon" aria-hidden="true" icon="clear">
+              </simple-icon>
               <span id="label" class="offscreen">Cancel</span>
-            </paper-button>
+            </button>
             <simple-tooltip id="tooltip" for="cancel">Cancel</simple-tooltip>
-            <paper-button
+            <button
               id="confirm"
               class="rtebutton"
               controls="${this.for}"
               @click="${this._confirm}"
               tabindex="0"
             >
-              <iron-icon id="icon" aria-hidden="true" icon="check"> </iron-icon>
+              <simple-icon id="icon" aria-hidden="true" icon="check">
+              </simple-icon>
               <span id="label" class="offscreen">OK</span>
-            </paper-button>
+            </button>
             <simple-tooltip id="tooltip" for="confirm">OK</simple-tooltip>
           </div>
         </form>

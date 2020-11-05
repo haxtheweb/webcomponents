@@ -74,7 +74,7 @@ class ProductCard extends SimpleColors {
       >
         <div slot="heading">
           ${this.icon
-            ? html` <iron-icon icon="${this.icon}"></iron-icon> `
+            ? html` <simple-icon icon="${this.icon}"></simple-icon> `
             : ``}
           ${this.heading}
           <slot name="card-header"></slot>

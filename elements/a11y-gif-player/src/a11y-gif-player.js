@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { A11yDetails } from "@lrnwebcomponents/a11y-details/a11y-details.js";
-
+import "@lrnwebcomponents/a11y-details/a11y-details.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `a11y-gif-player`
  * plays gifs in an accessible way by having the user click to play their animation
@@ -44,10 +44,6 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     this.tooltipPlaying = null;
     this.srcWithoutAnimation = null;
     this.__playing = false;
-    setTimeout(() => {
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      import("@polymer/iron-image/iron-image.js");
-    }, 0);
   }
   /**
    * LitElement render styles
@@ -140,7 +136,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
   render() {
     return html`
       <div id="container">
-        <iron-image
+        <img
           id="gif"
           src="${this.src}"
           alt="${this.alt}"
@@ -149,8 +145,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
           ).trim()}"
           ?hidden="${!this.src}"
           slot="summary"
-        >
-        </iron-image>
+        />
         <button
           id="button"
           aria-controls="gif"

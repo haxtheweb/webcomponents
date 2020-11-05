@@ -4,7 +4,7 @@
  * @element mdi-cloud-iconset-svg is a iconset for the Material Design Icons collection with the "cloud" tag
  *
  * Example:
- *   <iron-icon icon="mdi-cloud:cloud"></iron-icon>
+ *   <simple-icon icon="mdi-cloud:cloud"></simple-icon>
  *
  * @demo demo/index.html
  */

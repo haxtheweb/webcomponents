@@ -1,11 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/av-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-collapse/iron-collapse.js";
 /**
 `lrndesign-stepper-button`
@@ -74,8 +71,8 @@ class LrndesignStepperButton extends PolymerElement {
           background-color: transparent;
           color: var(--lrndesign-icon-button-color);
           border-radius: 50%;
-          --iron-icon-height: 35px;
-          --iron-icon-width: 35px;
+          --simple-icon-height: 35px;
+          --simple-icon-width: 35px;
         }
 
         .url-style {
@@ -102,12 +99,13 @@ class LrndesignStepperButton extends PolymerElement {
           width: 30%;
         }
 
-        paper-button {
+        button {
           width: 100%;
+          background-color: transparent;
           position: relative;
         }
 
-        paper-button:after {
+        button:after {
           content: "";
           display: block;
           position: absolute;
@@ -119,58 +117,56 @@ class LrndesignStepperButton extends PolymerElement {
           border-bottom: 1px solid transparent;
         }
 
-        paper-button:active,
-        paper-button:focus {
+        button:active,
+        button:focus {
           background-color: var(--lrndesign-stepper-btn-active);
         }
-        paper-button:focus iron-icon {
+        button:focus simple-icon {
           color: black;
         }
 
-        paper-button:active:after,
-        paper-button:focus:after {
+        button:active:after,
+        button:focus:after {
           border-color: var(--lrndesign-border-color);
         }
 
-        paper-button {
-          --paper-button: {
-            border-radius: 0;
-            padding: 0;
-          }
+        button {
+          border-radius: 0;
+          padding: 0;
         }
       </style>
 
       <template is="dom-if" if="{{hasCollapse(collapsible, 1)}}">
-        <paper-button noink="" on-click="collapseToggle">
+        <button on-click="collapseToggle">
           <div class="box-container">
             <div class="top-line"></div>
             <div class="stepper-btn">
-              <iron-icon icon="[[icon]]" class="btn-icon"></iron-icon>
+              <simple-icon icon="[[icon]]" class="btn-icon"></simple-icon>
             </div>
             <div class="bottom-line"></div>
           </div>
           <div class="title-container">
             <div class="node-title">[[title]]</div>
           </div>
-        </paper-button>
+        </button>
         <iron-collapse>
           <div><slot></slot></div>
         </iron-collapse>
       </template>
       <template is="dom-if" if="{{hasCollapse(collapsible, 0)}}">
         <a tabindex="-1" href="[[url]]" class="url-style">
-          <paper-button class="btn" noink="">
+          <button class="btn">
             <div class="box-container">
               <div class="top-line"></div>
               <div class="stepper-btn">
-                <iron-icon icon="[[icon]]" class="btn-icon"></iron-icon>
+                <simple-icon icon="[[icon]]" class="btn-icon"></simple-icon>
               </div>
               <div class="bottom-line"></div>
             </div>
             <div class="title-container">
               <div class="node-title">[[title]]</div>
             </div>
-          </paper-button>
+          </button>
         </a>
         <slot></slot>
       </template>

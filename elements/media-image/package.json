@@ -43,8 +43,8 @@
   "dependencies": {
     "@lrnwebcomponents/figure-label": "^2.7.10",
     "@lrnwebcomponents/schema-behaviors": "^2.7.10",
-    "@polymer/iron-icons": "^3.0.1",
-    "@polymer/iron-image": "^3.0.0",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
+    "@lrnwebcomponents/image-inspector": "^2.7.10",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

@@ -1,7 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 class LrnAssignmentButton extends LitElement {
   /**
    * LitElement constructable styles enhancement

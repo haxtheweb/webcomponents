@@ -1,4 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 /**
 `lrndesign-contactcard`
 lrndesign-contactcard
@@ -8,14 +11,7 @@ lrndesign-contactcard
 class LrndesignContactcard extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/maps-icons.js");
-    import("@polymer/iron-icons/hardware-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@lrnwebcomponents/social-media-icons/social-media-icons.js");
   }
   static get template() {
     return html`
@@ -114,10 +110,7 @@ class LrndesignContactcard extends PolymerElement {
           padding-top: 5px;
         }
 
-        social-media-icons {
-          --social-media-icons-hover-color: var(
-            --contactcard-icons-hover-color
-          );
+        simple-icon {
           margin-left: 8px;
         }
 
@@ -128,14 +121,14 @@ class LrndesignContactcard extends PolymerElement {
           padding-top: 5px;
         }
 
-        paper-button {
+        button {
           padding: 0;
           margin: 0 8px;
           display: block;
           min-width: 16px;
         }
       </style>
-      <paper-card>
+      <div class="card">
         <div id="img_wrap">
           <img loading="lazy" class="profile-image" src="[[image]]" />
         </div>
@@ -150,9 +143,9 @@ class LrndesignContactcard extends PolymerElement {
           <div class="icons">
             <template is="dom-if" if="[[email]]">
               <a tabindex="-1" href$="mailto:[[email]]">
-                <paper-button id="mail" title$="Email address [[email]]">
-                  <iron-icon icon="mail" class="mail_icon"></iron-icon>
-                </paper-button>
+                <button id="mail" title$="Email address [[email]]">
+                  <simple-icon icon="mail" class="mail_icon"></simple-icon>
+                </button>
               </a>
               <simple-tooltip for="mail" position="bottom"
                 >Email</simple-tooltip
@@ -160,12 +153,12 @@ class LrndesignContactcard extends PolymerElement {
             </template>
             <template is="dom-if" if="[[phone]]">
               <a tabindex="-1" href$="tel:[[phone]]">
-                <paper-button id="phone" title$="Phone number [[phone]]">
-                  <iron-icon
+                <button id="phone" title$="Phone number [[phone]]">
+                  <simple-icon
                     icon="maps:local-phone"
                     class="phone_icon"
-                  ></iron-icon>
-                </paper-button>
+                  ></simple-icon>
+                </button>
               </a>
               <simple-tooltip for="phone" position="bottom"
                 >Call</simple-tooltip
@@ -173,12 +166,12 @@ class LrndesignContactcard extends PolymerElement {
             </template>
             <template is="dom-if" if="[[website]]">
               <a tabindex="-1" href$="[[website]]">
-                <paper-button id="website" title$="Website address [[website]]">
-                  <iron-icon
+                <button id="website" title$="Website address [[website]]">
+                  <simple-icon
                     icon="hardware:desktop-windows"
                     class="computer_icon"
-                  ></iron-icon>
-                </paper-button>
+                  ></simple-icon>
+                </button>
               </a>
               <simple-tooltip for="website" position="bottom"
                 >Visit</simple-tooltip
@@ -186,14 +179,14 @@ class LrndesignContactcard extends PolymerElement {
             </template>
             <template is="dom-if" if="[[twitter]]">
               <a tabindex="-1" href$="[[twitter]]">
-                <paper-button id="twitter" title$="Twitter name [[twitter]]">
-                  <social-media-icons
+                <button id="twitter" title$="Twitter name [[twitter]]">
+                  <simple-icon
                     icon="twitter"
                     color="#aeaeae"
                     size="35"
                     class="twitter_icon"
-                  ></social-media-icons>
-                </paper-button>
+                  ></simple-icon>
+                </button>
               </a>
               <simple-tooltip for="twitter" position="bottom"
                 >Connect</simple-tooltip
@@ -201,7 +194,7 @@ class LrndesignContactcard extends PolymerElement {
             </template>
           </div>
         </div>
-      </paper-card>
+      </div>
     `;
   }
 

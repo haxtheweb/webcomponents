@@ -73,6 +73,18 @@ class MapMenuItem extends LitElement {
           visibility: visible;
           opacity: 1;
         }
+        button {
+          background-color: transparent;
+          text-transform: none;
+          width: 100%;
+          justify-content: left;
+          margin: 0px;
+          border: 0;
+          height: 40px;
+          padding: 4px;
+          text-align: left;
+          border-radius: 0;
+        }
       `,
     ];
   }

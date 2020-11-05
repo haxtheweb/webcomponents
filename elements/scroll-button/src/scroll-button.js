@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -20,9 +23,7 @@ class ScrollButton extends LitElement {
     this.icon = "icons:expand-less";
     this.label = "Scroll to top";
     this.position = "top";
-    import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@polymer/iron-icons/iron-icons.js");
   }
   /**
    * Store the tag name to make it easier to obtain directly.

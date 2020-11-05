@@ -3,9 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/random-image/random-image.js";
-import "@polymer/paper-button/paper-button.js";
 /**
  * `lrnsys-randomimage`
  * @element lrnsys-randomimage
@@ -22,7 +20,7 @@ class LrnsysRandomimage extends PolymerElement {
       <div id="list">
         <random-image images-list$="{{images}}"></random-image>
       </div>
-      <paper-button raised on-click="reload">Reload</paper-button>
+      <button raised on-click="reload">Reload</button>
     `;
   }
   static get tag() {

@@ -4,8 +4,10 @@
  */
 import { LitElement, html, css } from "lit-element";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/nav-card/nav-card.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
@@ -166,7 +168,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
                 <button .style="${this.getThumbailStyle(source.src)}">
                   <span class="sr-only">${source.alt}</span>
                   <div class="zoombg"></div>
-                  <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
+                  <simple-icon icon="zoom-in" class="zoomicon"></simple-icon>
                   <div class="imgbg"></div>
                 </button>
               </img-view-modal>

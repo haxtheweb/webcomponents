@@ -3,6 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
 `paper-input-flagged`
 A LRN element
@@ -22,7 +24,7 @@ class PaperInputFlagged extends LitElement {
         :host {
           display: block;
         }
-        iron-icon {
+        simple-icon {
           transition: 0.6s all ease-in;
           width: 24px;
           height: 24px;
@@ -106,8 +108,6 @@ class PaperInputFlagged extends LitElement {
     ];
     import("@polymer/paper-input/paper-input.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -147,7 +147,7 @@ class PaperInputFlagged extends LitElement {
         minlength="${this.minlength}"
         maxlength="${this.maxlength}"
       >
-        <iron-icon id="icon" icon="${this.icon}" slot="prefix"></iron-icon>
+        <simple-icon id="icon" icon="${this.icon}" slot="prefix"></simple-icon>
       </paper-input>
       <div class="element-invisible">${this.__activeMessage}</div>
       <simple-tooltip

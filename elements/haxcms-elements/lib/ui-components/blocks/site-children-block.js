@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 
@@ -261,16 +260,14 @@ class SiteChildrenBlock extends PolymerElement {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });
-    afterNextRender(this, function () {
-      // minor timing thing to ensure store has picked active
-      // needed if routes set on first paint or lifecycles miss
-      setTimeout(() => {
-        autorun((reaction) => {
-          this.activeId = toJS(store.activeId);
-          this.__disposer.push(reaction);
-        });
-      }, 250);
-    });
+    // minor timing thing to ensure store has picked active
+    // needed if routes set on first paint or lifecycles miss
+    setTimeout(() => {
+      autorun((reaction) => {
+        this.activeId = toJS(store.activeId);
+        this.__disposer.push(reaction);
+      });
+    }, 250);
   }
   disconnectedCallback() {
     // clean up state

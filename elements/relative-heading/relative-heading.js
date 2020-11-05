@@ -5,6 +5,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RelativeHeadingLite } from "./lib/relative-heading-lite.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 
 /**
  * `relative-heading`
@@ -43,15 +46,15 @@ class RelativeHeading extends RelativeHeadingLite {
           flex: 1 1 auto;
         }
 
-        :host > paper-icon-button:not(:defined) {
+        :host > simple-icon-button:not(:defined) {
           opacity: 0;
         }
 
-        :host > paper-icon-button {
+        :host > simple-icon-button {
           flex: 0 0 auto;
         }
 
-        paper-icon-button {
+        simple-icon-button {
           color: var(--relative-heading-button-color, #666);
           background: var(--relative-heading-button-bg);
           border: var(--relative-heading-button-border);
@@ -62,16 +65,16 @@ class RelativeHeading extends RelativeHeadingLite {
           transition: var(--relative-heading-button-transition, all 0.5s);
         }
 
-        :host([link-align-right]) paper-icon-button,
-        :host(:not([link-align-right]):focus) paper-icon-button,
-        :host(:not([link-align-right]):focus-within) paper-icon-button,
-        :host(:not([link-align-right]):hover) paper-icon-button {
+        :host([link-align-right]) simple-icon-button,
+        :host(:not([link-align-right]):focus) simple-icon-button,
+        :host(:not([link-align-right]):focus-within) simple-icon-button,
+        :host(:not([link-align-right]):hover) simple-icon-button {
           opacity: var(--relative-heading-button-active-opacity, 1);
         }
 
-        paper-icon-button:focus-within,
-        paper-icon-button:focus,
-        paper-icon-button:hover {
+        simple-icon-button:focus-within,
+        simple-icon-button:focus,
+        simple-icon-button:hover {
           color: var(--relative-heading-button-focus-color, #000);
           background: var(--relative-heading-button-focus-bg);
           border: var(--relative-heading-button-focus-border);
@@ -246,8 +249,6 @@ class RelativeHeading extends RelativeHeadingLite {
     this.disableLink = false;
     this.linkIcon = "link";
     this.linkLabel = "Get link";
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
   }
 
   connectedCallback() {
@@ -270,7 +271,7 @@ class RelativeHeading extends RelativeHeadingLite {
     return this.disableLink
       ? html``
       : html`
-          <paper-icon-button
+          <simple-icon-button
             controls="relative-heading-toast"
             .aria-describedby="${this.id}"
             .icon="${this.linkIcon}"
@@ -279,7 +280,7 @@ class RelativeHeading extends RelativeHeadingLite {
             ?disabled="${this.disableLink}"
             @click="${this._handleCopyClick}"
           >
-          </paper-icon-button>
+          </simple-icon-button>
         `;
   }
   _handleCopyClick() {

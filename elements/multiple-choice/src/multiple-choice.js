@@ -1,6 +1,8 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `multiple-choice`
  * `Ask the user a question from a set of possible answers.`
@@ -68,12 +70,12 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           background-color: var(--simple-colors-default-theme-blue-9);
         }
         :host([accent-color="grey"]) #check,
-        :host paper-button {
+        :host button {
           background-color: var(--simple-colors-default-theme-grey-1);
           color: var(--simple-colors-default-theme-grey-12);
         }
         :host([accent-color="grey"]) #check:hover,
-        :host paper-button:hover {
+        :host button:hover {
           cursor: pointer;
           background-color: var(--simple-colors-default-theme-grey-2);
           color: var(--simple-colors-default-theme-grey-12);
@@ -102,7 +104,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         paper-checkbox {
           padding: 8px;
         }
-        iron-icon {
+        simple-icon {
           display: inline-flex;
         }
       `,
@@ -114,9 +116,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   constructor() {
     super();
     import("@polymer/paper-toast/paper-toast.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-button/paper-button.js");
     this.randomize = false;
     this.hideButtons = false;
     this.title = "";
@@ -218,20 +217,20 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         ${!this.hideButtons
           ? html`
               <div id="buttons">
-                <paper-button
+                <button
                   id="check"
                   ?disabled="${this.disabled}"
-                  raised
                   @click="${this._verifyAnswers}"
-                  >${this.checkLabel}</paper-button
                 >
-                <paper-button
+                  ${this.checkLabel}
+                </button>
+                <button
                   id="reset"
                   ?disabled="${this.disabled}"
-                  raised
                   @click="${this.resetAnswers}"
-                  >${this.resetLabel}</paper-button
                 >
+                  ${this.resetLabel}
+                </button>
               </div>
             `
           : ``}
@@ -243,10 +242,10 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           class="fit-bottom ${this.__toastColor}"
         >
           ${this.__toastText}
-          <iron-icon
+          <simple-icon
             icon="${this.__toastIcon}"
             style="margin-left:16px;"
-          ></iron-icon>
+          ></simple-icon>
         </paper-toast>
       </confetti-container>
     `;

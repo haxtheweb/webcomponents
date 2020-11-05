@@ -28,7 +28,7 @@
     "type": String
   },
   /**
-   * iron-icon to use (with iconset if needed)
+   * simple-icon to use (with iconset if needed)
    */
   "icon": {
     "type": String

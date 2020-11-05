@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `simple-picker-option`
  * a simple picker for options, icons, etc.
@@ -58,9 +58,9 @@ class SimplePickerOption extends LitElement {
         overflow: hidden;
       }
 
-      iron-icon {
-        --iron-icon-width: var(--simple-picker-option-size, 24px);
-        --iron-icon-height: var(--simple-picker-option-size, 24px);
+      simple-icon {
+        --simple-icon-width: var(--simple-picker-option-size, 24px);
+        --simple-icon-height: var(--simple-picker-option-size, 24px);
         width: var(--simple-picker-option-size, 24px);
         min-height: var(--simple-picker-option-size, 24px);
         min-width: var(--simple-picker-option-size, 24px);
@@ -72,11 +72,11 @@ class SimplePickerOption extends LitElement {
   // render function
   render() {
     return html`
-      <iron-icon
+      <simple-icon
         ?hidden="${!this.icon}"
         .icon="${this.icon}"
         aria-hidden="true"
-      ></iron-icon>
+      ></simple-icon>
       <div id="label">
         <slot ?hidden="${!this.titleAsHtml}"></slot>
         ${this.titleAsHtml ? `` : this.label}

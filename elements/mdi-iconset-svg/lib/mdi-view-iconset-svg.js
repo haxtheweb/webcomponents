@@ -4,7 +4,7 @@
  * @element mdi-view-iconset-svg is a iconset for the Material Design Icons collection with the "view" tag
  *
  * Example:
- *   <iron-icon icon="mdi-view:view-dashboard"></iron-icon>
+ *   <simple-icon icon="mdi-view:view-dashboard"></simple-icon>
  *
  * @demo demo/index.html
  */

@@ -3,7 +3,7 @@
  * `mdi-agriculture-iconset-svg`
  * @element mdi-agriculture-iconset-svg is a iconset for the Material Design Icons collection with the "agriculture" tag
  * Example:
- *   <iron-icon icon="mdi-agriculture:cow"></iron-icon>
+ *   <simple-icon icon="mdi-agriculture:cow"></simple-icon>
  *
  * @demo demo/index.html
  */

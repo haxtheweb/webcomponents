@@ -29,7 +29,7 @@ class TabList extends LitElement {
           width: 100%;
           text-align: center;
         }
-        paper-button {
+        button {
           text-transform: unset;
           width: 100%;
           display: block;
@@ -50,7 +50,6 @@ class TabList extends LitElement {
     super();
     this.tabs = [];
     import("@polymer/paper-tabs/paper-tab.js");
-    import("@polymer/paper-button/paper-button.js");
   }
   render() {
     return html`
@@ -64,7 +63,7 @@ class TabList extends LitElement {
                 tabindex="-1"
                 rel="noopener noreferrer"
               >
-                <paper-button raised>${tab.label}</paper-button>
+                <button raised>${tab.label}</button>
               </a>
             </paper-tab>
           `

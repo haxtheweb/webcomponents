@@ -13,7 +13,6 @@ A LRN element
 class LrndesignPanelcard extends SimpleColorsPolymer {
   constructor() {
     super();
-    import("@polymer/paper-card/paper-card.js");
   }
   static get template() {
     return html`
@@ -49,6 +48,7 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
           border-radius: 2px;
           color: var(--lrndesign-panelcard-text-color);
           background-color: var(--lrndesign-panelcard-color);
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
 
         h3 {
@@ -57,12 +57,10 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
         }
       </style>
       <aside>
-        <paper-card elevation="[[elevation]]">
-          <div class="card-panel">
-            <h3>[[title]]</h3>
-            <span><slot></slot></span>
-          </div>
-        </paper-card>
+        <div class="card-panel">
+          <h3>[[title]]</h3>
+          <span><slot></slot></span>
+        </div>
       </aside>
     `;
   }

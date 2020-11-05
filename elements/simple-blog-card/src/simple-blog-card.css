@@ -16,7 +16,7 @@ simple-popover {
   display: flex;
 }
 
-paper-card {
+div.card {
   height: auto !important;
 }
 
@@ -63,14 +63,6 @@ a {
   text-overflow: ellipsis;
 }
 
-paper-card:not(:defined) {
-  display: none;
-}
-
-paper-card {
-  --iron-image-height: 250px;
-}
-
 .card-content {
   height: 120px;
   padding: 0;
@@ -78,19 +70,19 @@ paper-card {
 }
 
 .card-micro {
-  --iron-image-height: 50px;
+  height: 50px;
 }
 
 .card-small {
-  --iron-image-height: 100px;
+  height: 100px;
 }
 
 .card-medium {
-  --iron-image-height: 150px;
+  height: 150px;
 }
 
 .card-large {
-  --iron-image-height: 200px;
+  height: 200px;
 }
 
 .card-micro .card-content {
@@ -109,7 +101,7 @@ paper-card {
   height: 150px;
 }
 
-paper-card h3 {
+div.card h3 {
   font-size: var(--simple-blog-card-heading-font-size, 22px);
   color: var(--simple-blog-card-header, black);
   text-decoration: none;

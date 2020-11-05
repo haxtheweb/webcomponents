@@ -27,17 +27,16 @@ class RandomImage extends LitElement {
     super();
     this.mode = "";
     this.imagesList = [];
-    import("@polymer/iron-image/iron-image.js");
   }
   render() {
     return html`
-      <iron-image
+      <img
         style="width:200px; height:200px;"
         class="${this.mode}"
-        sizing="contain"
+        loading="lazy"
         src="${this._imgSrc}"
         title="${this._imgTitle}"
-      ></iron-image>
+      />
     `;
   }
 

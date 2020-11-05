@@ -3,6 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `simple-picker`
  * a simple picker for options, icons, etc.
@@ -229,11 +231,11 @@ class SimplePicker extends LitElement {
             --simple-picker-icon-size,
             var(--simple-picker-option-size, 24px)
           );
-          --iron-icon-width: var(
+          --simple-icon-width: var(
             --simple-picker-icon-size,
             var(--simple-picker-option-size, 24px)
           );
-          --iron-icon-height: var(
+          --simple-icon-height: var(
             --simple-picker-icon-size,
             var(--simple-picker-option-size, 24px)
           );
@@ -426,7 +428,10 @@ class SimplePicker extends LitElement {
           >
           </simple-picker-option>
           <span id="icon"
-            ><iron-icon aria-hidden="true" icon="arrow-drop-down"></iron-icon
+            ><simple-icon
+              aria-hidden="true"
+              icon="arrow-drop-down"
+            ></simple-icon
           ></span>
         </div>
         <div id="collapse">
@@ -636,8 +641,6 @@ class SimplePicker extends LitElement {
   // life cycle
   constructor() {
     super();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("./lib/simple-picker-option.js");
     this.tag = SimplePicker.tag;
     this.allowNull = false;

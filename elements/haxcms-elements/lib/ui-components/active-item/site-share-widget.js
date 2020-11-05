@@ -5,7 +5,7 @@ import { varGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "web-social-share/dist/esm/web-social-share.entry.js";
 import {
   a as patchEsm,
@@ -47,12 +47,9 @@ class SiteShareWidget extends LitElement {
         }
         simple-icon {
           display: block;
-          color: var(--haxcms-color, #000000);
         }
         simple-icon:hover {
-          display: block;
-          color: #ffffff;
-          background-color: var(--haxcms-color, #000000);
+          box-shadow: 0 0 20px var(--haxcms-color, #000000);
         }
       `,
     ];
@@ -63,15 +60,13 @@ class SiteShareWidget extends LitElement {
         @click="${this.click}"
         title="${this.alt}"
         icon="${this.icon}"
+        dark
       ></simple-icon-button>
-      <web-social-share .share="false">
-        <simple-icon slot="facebook" icon="social-media:facebook"></simple-icon>
-        <simple-icon slot="twitter" icon="social-media:twitter"></simple-icon>
-        <simple-icon
-          slot="pinterest"
-          icon="social-media:pinterest"
-        ></simple-icon>
-        <simple-icon slot="linkedin" icon="social-media:linkedin"></simple-icon>
+      <web-social-share share="false">
+        <simple-icon slot="facebook" icon="mdi-social:facebook"></simple-icon>
+        <simple-icon slot="twitter" icon="mdi-social:twitter"></simple-icon>
+        <simple-icon slot="pinterest" icon="mdi-social:pinterest"></simple-icon>
+        <simple-icon slot="linkedin" icon="mdi-social:linkedin"></simple-icon>
         <simple-icon slot="email" icon="icons:mail"></simple-icon>
         <simple-icon slot="copy" icon="icons:content-copy"></simple-icon>
       </web-social-share>

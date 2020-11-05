@@ -4,7 +4,7 @@
  * @element mdi-off-iconset-svg is a iconset for the Material Design Icons collection with the "off" tag
  *
  * Example:
- *   <iron-icon icon="mdi-off:airplane-off"></iron-icon>
+ *   <simple-icon icon="mdi-off:airplane-off"></simple-icon>
  *
  * @demo demo/index.html
  */

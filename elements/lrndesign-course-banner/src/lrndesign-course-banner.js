@@ -7,7 +7,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 class LrndesignCourseBanner extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/iron-image/iron-image.js");
     import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
   }
   static get template() {
@@ -59,14 +58,12 @@ class LrndesignCourseBanner extends PolymerElement {
           }
         }
       </style>
-      <iron-image
+      <img
         class="course-image"
         style="width:100%; height:200px; background-color: lightgray;"
-        sizing="cover"
-        preload=""
-        fade=""
+        loading="lazy"
         src$="[[image]]"
-      ></iron-image>
+      />
       <div class="course-heading">
         <lrndesign-avatar
           class="course-avatar"

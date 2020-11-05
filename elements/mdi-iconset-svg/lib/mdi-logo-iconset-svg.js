@@ -4,7 +4,7 @@
  * @element mdi-logo-iconset-svg is a iconset for the Material Design Icons collection with the "logo" tag
  *
  * Example:
- *   <iron-icon icon="mdi-logo:polymer"></iron-icon>
+ *   <simple-icon icon="mdi-logo:polymer"></simple-icon>
  *
  * @demo demo/index.html
  */

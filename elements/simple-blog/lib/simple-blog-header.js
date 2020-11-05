@@ -121,7 +121,7 @@ class SimpleBlogHeader extends SimpleColors {
         ></div>
       </div>
       <header class="blog-header">
-        <iron-icon class="blog-logo" icon="${this.icon}"></iron-icon>
+        <simple-icon class="blog-logo" icon="${this.icon}"></simple-icon>
         <h1 class="site-title">${this.title}</h1>
         <h2 class="blog-description">${this.description}</h2>
         <div class="custom-links">

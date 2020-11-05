@@ -4,7 +4,7 @@
  * @element mdi-av-iconset-svg is a iconset for the Material Design Icons collection with the "av" tag
  *
  * Example:
- *   <iron-icon icon="mdi-av:camera"></iron-icon>
+ *   <simple-icon icon="mdi-av:camera"></simple-icon>
  *
  * @demo demo/index.html
  */

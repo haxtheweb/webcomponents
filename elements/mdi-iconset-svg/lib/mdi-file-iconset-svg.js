@@ -4,7 +4,7 @@
  * @element mdi-file-iconset-svg is a iconset for the Material Design Icons collection with the "file" tag
  *
  * Example:
- *   <iron-icon icon="mdi-file:file-document"></iron-icon>
+ *   <simple-icon icon="mdi-file:file-document"></simple-icon>
  *
  * @demo demo/index.html
  */

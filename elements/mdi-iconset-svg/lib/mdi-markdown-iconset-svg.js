@@ -4,7 +4,7 @@
  * @element mdi-markdown-iconset-svg is a iconset for the Material Design Icons collection with the "markdown" tag
  *
  * Example:
- *   <iron-icon icon="mdi-markdown:markdown"></iron-icon>
+ *   <simple-icon icon="mdi-markdown:markdown"></simple-icon>
  *
  * @demo demo/index.html
  */

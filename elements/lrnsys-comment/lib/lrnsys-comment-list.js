@@ -6,7 +6,6 @@ import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";

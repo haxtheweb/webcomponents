@@ -7,7 +7,7 @@
  *
  * Example:
  *   <script>import "@lrnwebcomponents/hax-iconset/hax-iconset.js";</script>
- *   <iron-icon icon="hax:vocab"></iron-icon>
+ *   <simple-icon icon="hax:vocab"></simple-icon>
  *
  * @pseudoElement hax-iconset
  * @demo demo/index.html

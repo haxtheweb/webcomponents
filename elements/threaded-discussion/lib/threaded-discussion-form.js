@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `threaded-discussion-form`
  * a threaded discussions component for elms-ln
@@ -164,7 +166,7 @@ class ThreadedDiscussionForm extends LitElement {
           border: 1px solid
             var(--threaded-discussion-comment-button-focus-BorderColor, #222);
         }
-        button iron-icon {
+        button simple-icon {
           margin-left: 5px;
         }
       `,
@@ -186,10 +188,10 @@ class ThreadedDiscussionForm extends LitElement {
         ></textarea>
         <button type="submit">
           ${this.buttonLabel}
-          <iron-icon  
+          <simple-icon  
             aria-hidden="true" 
             ?hidden="${!this.icon}"
-            icon="${this.icon}"></iron-icon>
+            icon="${this.icon}"></simple-icon>
         </button>
       </div>
     `;
@@ -278,8 +280,6 @@ class ThreadedDiscussionForm extends LitElement {
     super();
     this.disabled = false;
     this.hidden = false;
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
   }
 
   _handleSubmit(e) {

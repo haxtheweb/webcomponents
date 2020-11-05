@@ -17,7 +17,7 @@ a {
   color: #000000;
 }
 
-paper-button {
+button {
   transition: .3s;
   margin: 0;
   max-width: 50%;
@@ -28,18 +28,18 @@ paper-button {
   border-radius: unset;
 }
 
-paper-button iron-icon {
-  height: var(--lrnsys-button-height);
+button simple-icon {
+  --simple-icon-height: var(--lrnsys-button-height);
   margin: 0 12px;
 }
 
-paper-button div.inner {
+button div.inner {
   height: var(--lrnsys-button-height);
   line-height: var(--lrnsys-button-height);
   padding: 0 12px;
 }
 
-paper-button span.label {
+button span.label {
   height: var(--lrnsys-button-height);
   line-height: var(--lrnsys-button-height);
 }

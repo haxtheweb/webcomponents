@@ -4,7 +4,7 @@
  * @element mdi-battery-iconset-svg is a iconset for the Material Design Icons collection with the "battery" tag
  *
  * Example:
- *   <iron-icon icon="mdi-battery:battery-plus"></iron-icon>
+ *   <simple-icon icon="mdi-battery:battery-plus"></simple-icon>
  *
  * @demo demo/index.html
  */

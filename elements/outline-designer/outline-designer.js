@@ -4,18 +4,14 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-pages/iron-pages.js";
-import "@polymer/iron-image/iron-image.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
-import "@polymer/iron-swipeable-container/iron-swipeable-container.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-header/app-header.js";
@@ -126,12 +122,13 @@ class OutlineDesigner extends PolymerElement {
           vertical-align: top;
         }
 
-        paper-card {
+        div.card {
           width: 250px;
           height: 300px;
           display: block;
           visibility: visible;
           opacity: 1;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
 
         #addbutton {
@@ -146,7 +143,7 @@ class OutlineDesigner extends PolymerElement {
           display: flex;
         }
 
-        paper-card.expanded {
+        div.card.expanded {
           min-height: 300px;
         }
 
@@ -182,17 +179,17 @@ class OutlineDesigner extends PolymerElement {
           opacity: 1;
         }
 
-        paper-card.card-low-detail {
+        div.card.card-low-detail {
           width: 150px;
           height: 150px;
         }
 
-        paper-card.card-mid-detail {
+        div.card.card-mid-detail {
           width: 250px;
           height: 250px;
         }
 
-        paper-card.card-high-detail {
+        div.card.card-high-detail {
           width: 250px;
           height: 300px;
         }
@@ -419,7 +416,7 @@ class OutlineDesigner extends PolymerElement {
           cursor: pointer;
         }
 
-        .node-high-detail li iron-image {
+        .node-high-detail li img {
           height: 50px;
           position: static;
         }
@@ -481,53 +478,53 @@ class OutlineDesigner extends PolymerElement {
       <app-header reveals>
         <app-toolbar>
           View: [[viewModeLabel]]
-          <paper-icon-button
+          <simple-icon-button
             on-click="_toggleViewMode"
             id="viewmode"
             icon="[[viewModeIcon]]"
-          ></paper-icon-button>
+          ></simple-icon-button>
           <simple-tooltip for="viewmode">[[viewModeLabel]]</simple-tooltip>
           Detail: [[detailsModeLabel]]
-          <paper-icon-button
+          <simple-icon-button
             on-click="_toggleDetailsMode"
             id="detailsmode"
             icon="[[detailsModeIcon]]"
-          ></paper-icon-button>
+          ></simple-icon-button>
           <simple-tooltip for="detailsmode"
             >[[detailsModeLabel]]</simple-tooltip
           >
           <div main-title class="flex layout breadcrumb_layout">
-            <iron-icon
+            <simple-icon
               class="breadcrumb-arrow"
               icon="icons:chevron-right"
-            ></iron-icon>
+            ></simple-icon>
             <a class="breadcrumb" id="main">[[manifest.title]]</a>
 
-            <iron-icon
+            <simple-icon
               class="breadcrumb-arrow"
               icon="icons:chevron-right"
-            ></iron-icon>
+            ></simple-icon>
             <a class="breadcrumb" id="second">Lesson 2</a>
 
-            <iron-icon
+            <simple-icon
               class="breadcrumb-arrow"
               icon="icons:chevron-right"
-            ></iron-icon>
+            ></simple-icon>
             <a class="breadcrumb" id="third">Math Basics</a>
           </div>
           <div>
-            <paper-icon-button
+            <simple-icon-button
               on-click="_toggleMiniMap"
               id="minimap"
               icon="device:gps-fixed"
               title="Toggle outline mini map"
-            ></paper-icon-button>
+            ></simple-icon-button>
             <simple-tooltip for="helpbutton">Toggle mini-map</simple-tooltip>
-            <paper-icon-button
+            <simple-icon-button
               id="helpbutton"
               icon="icons:help"
               title="help"
-            ></paper-icon-button>
+            ></simple-icon-button>
             <simple-tooltip for="helpbutton">Help</simple-tooltip>
           </div>
           <paper-progress
@@ -553,8 +550,8 @@ class OutlineDesigner extends PolymerElement {
                   move=""
                   edit-mode=""
                 >
-                  <paper-card
-                    class$="card-[[detailsMode]]-detail"
+                  <div
+                    class$="card-[[detailsMode]]-detail card"
                     heading="[[item.title]]"
                     image="[[item.metadata.image]]"
                     elevation="2"
@@ -572,15 +569,11 @@ class OutlineDesigner extends PolymerElement {
                       </editable-list>
                       <ul>
                         <li>Page 1</li>
-                        <iron-swipeable-container
-                          ><li>Page 2</li></iron-swipeable-container
-                        >
-                        <iron-swipeable-container
-                          ><li>Page 3</li></iron-swipeable-container
-                        >
+                        <li>Page 2</li>
+                        <li>Page 3</li>
                       </ul>
                     </div>
-                  </paper-card>
+                  </div>
                 </item-overlay-ops>
               </div>
             </template>
@@ -610,12 +603,11 @@ class OutlineDesigner extends PolymerElement {
                     <simple-tooltip for$="item-tip-[[item.id]]"
                       >[[item.title]]</simple-tooltip
                     >
-                    <iron-image
+                    <img
+                      loading="lazy"
                       src="[[item.metadata.image]]"
-                      preload
-                      sizing="cover"
                       class="high-detail"
-                    ></iron-image>
+                    />
                   </span>
                 </li>
               </template>
@@ -636,8 +628,8 @@ class OutlineDesigner extends PolymerElement {
               mutable-data
             >
               <div class="card-wrapper">
-                <paper-card
-                  class$="card-[[detailsMode]]-detail"
+                <div
+                  class$="card-[[detailsMode]]-detail card"
                   data-item-id$="[[item.id]]"
                   heading="[[item.title]]"
                   image="[[item.metadata.image]]"
@@ -648,7 +640,7 @@ class OutlineDesigner extends PolymerElement {
                     [[item.description]]
                   </div>
                   <div class="card-actions high-detail"></div>
-                </paper-card>
+                </div>
               </div>
             </template>
           </sortable-list>

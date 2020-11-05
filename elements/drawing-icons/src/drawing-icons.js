@@ -7,7 +7,7 @@
  *
  * Example:
  *   <script>import "@lrnwebcomponents/drawing-icons/drawing-icons.js";</script>
- *   <iron-icon icon="drawing:draw-rect"></iron-icon>
+ *   <simple-icon icon="drawing:draw-rect"></simple-icon>
  *
  * @group LRN Elements
  * @pseudoElement drawing-icons

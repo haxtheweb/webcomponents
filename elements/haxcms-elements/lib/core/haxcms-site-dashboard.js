@@ -146,6 +146,8 @@ class HAXCMSSiteDashboard extends LitElement {
           #homebutton simple-icon-button {
             height: 36px;
             width: 36px;
+            --simple-icon-height: 36px;
+            --simple-icon-width: 36px;
             padding: 4px;
           }
         }

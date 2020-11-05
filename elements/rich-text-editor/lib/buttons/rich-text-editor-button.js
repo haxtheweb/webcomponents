@@ -4,9 +4,12 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "../singletons/rich-text-editor-selection.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 const RichTextEditorButtonBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonStyles(SuperClass) {
@@ -39,7 +42,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           @keys-pressed="${this._buttonTap}"
         >
         </iron-a11y-keys>
-        <paper-button
+        <button
           id="button"
           class="rtebutton"
           ?disabled="${this.disabled}"
@@ -48,12 +51,12 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           tabindex="0"
           ?toggled="${this.isToggled}"
         >
-          <iron-icon id="icon" aria-hidden="true" icon="${this.currentIcon}">
-          </iron-icon>
+          <simple-icon id="icon" aria-hidden="true" icon="${this.currentIcon}">
+          </simple-icon>
           <span id="label" class="${this.labelStyle}"
             >${this.currentLabel}</span
           >
-        </paper-button>
+        </button>
         <simple-tooltip id="tooltip" for="button"
           >${this.currentLabel}</simple-tooltip
         >
@@ -194,10 +197,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       this.disabled = false;
       this.showTextLabel = false;
       this.toggles = false;
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/iron-icons/image-icons.js");
-      import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       /*this.addEventListener("mousedown", function(e) {
         //console.log("mousedown", e);

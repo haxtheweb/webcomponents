@@ -2,7 +2,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
 class LrnappBlockNeedFeedback extends PolymerElement {
@@ -12,7 +11,7 @@ class LrnappBlockNeedFeedback extends PolymerElement {
         :host {
           display: block;
         }
-        paper-button {
+        button {
           width: 100%;
         }
       </style>
@@ -29,7 +28,7 @@ class LrnappBlockNeedFeedback extends PolymerElement {
       </div>
       <iron-list items="[[_toArray(response.data)]]" as="item">
         <template>
-          <paper-button on-click="_loadSubmissionUrl">
+          <button on-click="_loadSubmissionUrl">
             <lrndesign-gallerycard
               data-submission-id$="[[item.id]]"
               title="[[item.attributes.title]]"
@@ -40,7 +39,7 @@ class LrnappBlockNeedFeedback extends PolymerElement {
               class="ferpa-protect"
             >
             </lrndesign-gallerycard>
-          </paper-button>
+          </button>
         </template>
       </iron-list>
     `;
@@ -62,7 +61,7 @@ class LrnappBlockNeedFeedback extends PolymerElement {
   }
 
   /**
-   * Handle tap on paper-button above to redirect to the correct submission url.
+   * Handle tap on button above to redirect to the correct submission url.
    */
   _loadSubmissionUrl(e) {
     let root = this;

@@ -4,7 +4,7 @@
  * @element mdi-image-iconset-svg is a iconset for the Material Design Icons collection with the "image" tag
  *
  * Example:
- *   <iron-icon icon="mdi-image:image"></iron-icon>
+ *   <simple-icon icon="mdi-image:image"></simple-icon>
  *
  * @demo demo/index.html
  */

@@ -39,7 +39,7 @@ class A11yMediaButton extends LitElement {
         type: String,
       },
       /*
-       * iron-icon type
+       * simple-icon type
        */
       icon: {
         attribute: "icon",

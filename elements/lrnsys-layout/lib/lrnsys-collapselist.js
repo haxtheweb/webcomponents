@@ -1,5 +1,7 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `lrnsys-collapselist`
  * @element lrnsys-collapselist
@@ -43,11 +45,11 @@ class LrnsysCollapselist extends SimpleColors {
           text-transform: unset;
           border-radius: 0;
         }
-        ul li lrnsys-collapselist-item iron-icon,
+        ul li lrnsys-collapselist-item simple-icon,
         ul li lrnsys-collapselist-item span {
           pointer-events: none;
         }
-        iron-icon {
+        simple-icon {
           display: inline-block;
         }
         .collapse-label {
@@ -65,7 +67,6 @@ class LrnsysCollapselist extends SimpleColors {
   constructor() {
     super();
     this.items = [];
-    import("@polymer/iron-icon/iron-icon.js");
     import("./lrnsys-collapselist-item.js");
   }
   /**
@@ -79,7 +80,7 @@ class LrnsysCollapselist extends SimpleColors {
             <li>
               <lrnsys-collapselist-item>
                 <span slot="label">
-                  <iron-icon icon="${row.icon}"></iron-icon>
+                  <simple-icon icon="${row.icon}"></simple-icon>
                   <span class="collapse-label">${row.label}</span>
                 </span>
                 <span slot="content"> ${row.content} </span>

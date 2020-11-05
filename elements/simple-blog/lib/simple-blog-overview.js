@@ -23,7 +23,8 @@ class SimpleBlogOverview extends SimpleColors {
           outline: none;
           text-transform: none;
         }
-        paper-card {
+        div.card {
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
           padding: 32px 16px;
           margin: 0;
           min-width: unset;
@@ -58,6 +59,7 @@ class SimpleBlogOverview extends SimpleColors {
         :host([elevation="2"]) .post-excerpt,
         :host([elevation="2"]) simple-datetime {
           color: var(--simple-colors-default-theme-grey-12);
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
         }
         .post-meta {
           font-size: 14px;
@@ -86,7 +88,6 @@ class SimpleBlogOverview extends SimpleColors {
   constructor() {
     super();
     this.elevation = 0;
-    import("@polymer/paper-card/paper-card.js");
     import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
     setTimeout(() => {
       this.addEventListener("mousedown", this.tapEventOn.bind(this));
@@ -102,7 +103,7 @@ class SimpleBlogOverview extends SimpleColors {
   render() {
     return html`
       <a href="${this.link}" itemprop="url" title="${this.title}">
-        <paper-card elevation="${this.elevation}">
+        <div class="card">
           <article
             class="post"
             itemtype="http://schema.org/BlogPosting"
@@ -124,7 +125,7 @@ class SimpleBlogOverview extends SimpleColors {
               </div>
             </div>
           </article>
-        </paper-card>
+        </div>
       </a>
     `;
   }

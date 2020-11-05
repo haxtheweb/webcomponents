@@ -337,7 +337,7 @@
     },
     {
       "name": "a11y-media-button",
-      "description": "`a11y-media-button`\na button used in a11y-media-controls and a11y-media-transcript-controls.\n\nEvents:\n\n  * `button-click` {`CustomEvent<this>`} - Fires when button is clicked\n\nAttributes:\n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - iron-icon type\n\n  * `label` {`string`} - button label\n\n  * `accent-color` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltip-position` {`string`} - Is it disabled?\n\nProperties:\n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - iron-icon type\n\n  * `label` {`string`} - button label\n\n  * `accentColor` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltipPosition` {`string`} - Is it disabled?",
+      "description": "`a11y-media-button`\na button used in a11y-media-controls and a11y-media-transcript-controls.\n\nEvents:\n\n  * `button-click` {`CustomEvent<this>`} - Fires when button is clicked\n\nAttributes:\n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - simple-icon type\n\n  * `label` {`string`} - button label\n\n  * `accent-color` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltip-position` {`string`} - Is it disabled?\n\nProperties:\n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - simple-icon type\n\n  * `label` {`string`} - button label\n\n  * `accentColor` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltipPosition` {`string`} - Is it disabled?",
       "attributes": [
         {
           "name": "action",
@@ -345,7 +345,7 @@
         },
         {
           "name": "icon",
-          "description": "`icon` {`string`} - iron-icon type\n\nProperty: icon"
+          "description": "`icon` {`string`} - simple-icon type\n\nProperty: icon"
         },
         {
           "name": "label",
@@ -386,7 +386,7 @@
     },
     {
       "name": "a11y-media-play-button",
-      "description": "`a11y-media-play-button`\na giant play button that overlays the media in a11y-media-player.\n```\nCustom styles:\n--a11y-play-button-bg-color: overlay background color, default is #000000\n--a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```\n\nEvents:\n\n  * `button-click` {`CustomEvent<this>`} - Fires when button is clicked\n\nAttributes:\n\n  * `youtube-id` {`string`} - \n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - iron-icon type\n\n  * `label` {`string`} - button label\n\n  * `accent-color` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltip-position` {`string`} - Is it disabled?\n\nProperties:\n\n  * `youtubeId` {`string`} - \n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - iron-icon type\n\n  * `label` {`string`} - button label\n\n  * `accentColor` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltipPosition` {`string`} - Is it disabled?",
+      "description": "`a11y-media-play-button`\na giant play button that overlays the media in a11y-media-player.\n```\nCustom styles:\n--a11y-play-button-bg-color: overlay background color, default is #000000\n--a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```\n\nEvents:\n\n  * `button-click` {`CustomEvent<this>`} - Fires when button is clicked\n\nAttributes:\n\n  * `youtube-id` {`string`} - \n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - simple-icon type\n\n  * `label` {`string`} - button label\n\n  * `accent-color` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltip-position` {`string`} - Is it disabled?\n\nProperties:\n\n  * `youtubeId` {`string`} - \n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - simple-icon type\n\n  * `label` {`string`} - button label\n\n  * `accentColor` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltipPosition` {`string`} - Is it disabled?",
       "attributes": [
         {
           "name": "youtube-id",
@@ -398,7 +398,7 @@
         },
         {
           "name": "icon",
-          "description": "`icon` {`string`} - iron-icon type\n\nProperty: icon"
+          "description": "`icon` {`string`} - simple-icon type\n\nProperty: icon"
         },
         {
           "name": "label",

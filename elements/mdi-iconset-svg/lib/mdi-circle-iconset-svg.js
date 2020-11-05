@@ -4,7 +4,7 @@
  * @element mdi-circle-iconset-svg is a iconset for the Material Design Icons collection with the "circle" tag
  *
  * Example:
- *   <iron-icon icon="mdi-circle:information-outline"></iron-icon>
+ *   <simple-icon icon="mdi-circle:information-outline"></simple-icon>
  *
  * @demo demo/index.html
  */

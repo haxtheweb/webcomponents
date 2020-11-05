@@ -1,14 +1,13 @@
 import { html } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/paper-progress/paper-progress.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
-import "./lib/paper-audio-icons.js";
 /**
 A custom audio player with material paper style and clean design.
 
@@ -104,8 +103,8 @@ class PaperAudioPlayer extends mixinBehaviors(
           background-color: var(--paper-audio-player-background);
         }
 
-        paper-icon-button,
-        iron-icon {
+        simple-icon-button,
+        simple-icon {
           color: var(--paper-audio-player-text-color);
         }
 
@@ -121,8 +120,8 @@ class PaperAudioPlayer extends mixinBehaviors(
           color: var(--paper-audio-player-color);
         }
 
-        paper-icon-button,
-        iron-icon {
+        simple-icon-button,
+        simple-icon {
           margin: auto;
         }
 
@@ -233,7 +232,7 @@ class PaperAudioPlayer extends mixinBehaviors(
       <div id="wrapper" class="layout-horizontal">
         <div id="left" class="self-start" on-click="playPause">
           <!-- Icon -->
-          <paper-icon-button
+          <simple-icon-button
             id="play"
             icon="paper-audio-icons:play-arrow"
             class="fit"
@@ -241,8 +240,8 @@ class PaperAudioPlayer extends mixinBehaviors(
             role="button"
             aria-label="Play Audio"
             tabindex="-1"
-          ></paper-icon-button>
-          <paper-icon-button
+          ></simple-icon-button>
+          <simple-icon-button
             id="pause"
             icon="paper-audio-icons:pause"
             class="fit"
@@ -250,13 +249,13 @@ class PaperAudioPlayer extends mixinBehaviors(
             role="button"
             aria-label="Pause Audio"
             tabindex="-1"
-          ></paper-icon-button>
-          <iron-icon
+          ></simple-icon-button>
+          <simple-icon
             id="error"
             icon="paper-audio-icons:error-outline"
             class="fit"
             hidden$="[[ !error ]]"
-          ></iron-icon>
+          ></simple-icon>
         </div>
         <div id="center" class="flex" on-down="_onDown">
           <!-- Title -->
@@ -282,14 +281,14 @@ class PaperAudioPlayer extends mixinBehaviors(
             >
           </div>
           <!-- Icon -->
-          <paper-icon-button
+          <simple-icon-button
             id="replay"
             class="fit"
             icon="paper-audio-icons:replay"
             tabindex="-1"
             role="button"
             aria-label="Replay Audio"
-          ></paper-icon-button>
+          ></simple-icon-button>
         </div>
       </div>
     `;
@@ -457,23 +456,22 @@ class PaperAudioPlayer extends mixinBehaviors(
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.shadowRoot
-        .querySelector("#audio")
-        .addEventListener("loadedmetadata", this._onCanPlay.bind(this));
-      this.shadowRoot
-        .querySelector("#audio")
-        .addEventListener("playing", this._onPlaying.bind(this));
-      this.shadowRoot
-        .querySelector("#audio")
-        .addEventListener("pause", this._onPause.bind(this));
-      this.shadowRoot
-        .querySelector("#audio")
-        .addEventListener("ended", this._onEnd.bind(this));
-      this.shadowRoot
-        .querySelector("#audio")
-        .addEventListener("error", this._onError.bind(this));
-    });
+    this.shadowRoot
+      .querySelector("#audio")
+      .addEventListener("loadedmetadata", this._onCanPlay.bind(this));
+    this.shadowRoot
+      .querySelector("#audio")
+      .addEventListener("playing", this._onPlaying.bind(this));
+    this.shadowRoot
+      .querySelector("#audio")
+      .addEventListener("pause", this._onPause.bind(this));
+    this.shadowRoot
+      .querySelector("#audio")
+      .addEventListener("ended", this._onEnd.bind(this));
+    this.shadowRoot
+      .querySelector("#audio")
+      .addEventListener("error", this._onError.bind(this));
+
     this.setAttribute("tabindex", "0");
     this.setAttribute("role", "application");
     this.setAttribute("aria-label", "Audio Player");

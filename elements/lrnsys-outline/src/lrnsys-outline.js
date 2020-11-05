@@ -3,9 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `lrnsys-outline`
  * @element lrnsys-outline
@@ -19,7 +21,6 @@ class LrnsysOutline extends PolymerElement {
   constructor() {
     super();
     import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@lrnwebcomponents/lrnsys-outline/lib/lrnsys-outline-item.js");
   }
   static get template() {
@@ -84,15 +85,13 @@ class LrnsysOutline extends PolymerElement {
     super.connectedCallback();
     window.SimpleModal.requestAvailability();
     // fix stack order
-    afterNextRender(this, function () {
-      this.addEventListener("delete-item", this._handleRemoveItem.bind(this));
-      this.addEventListener("indent-item", this._handleIndentItem.bind(this));
-      this.addEventListener("add-item", this._handleAddItem.bind(this));
-      this.addEventListener("move-item", this._handleMoveItem.bind(this));
-      this.addEventListener("change-item", this._handleChangeItem.bind(this));
-      this.addEventListener("focus-item", this._handleFocusItem.bind(this));
-      this.addEventListener("blur-item", this._handleBlurItem.bind(this));
-    });
+    this.addEventListener("delete-item", this._handleRemoveItem.bind(this));
+    this.addEventListener("indent-item", this._handleIndentItem.bind(this));
+    this.addEventListener("add-item", this._handleAddItem.bind(this));
+    this.addEventListener("move-item", this._handleMoveItem.bind(this));
+    this.addEventListener("change-item", this._handleChangeItem.bind(this));
+    this.addEventListener("focus-item", this._handleFocusItem.bind(this));
+    this.addEventListener("blur-item", this._handleBlurItem.bind(this));
   }
   disconnectedCallback() {
     this.removeEventListener("delete-item", this._handleRemoveItem.bind(this));

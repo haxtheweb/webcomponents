@@ -118,7 +118,7 @@ class EditableOutline extends LitElement {
           outline: 1px solid #cccccc;
         }
 
-        iron-icon {
+        simple-icon {
           pointer-events: none;
         }
 

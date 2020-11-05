@@ -4,7 +4,7 @@
  * @element mdi-auth-iconset-svg is a iconset for the Material Design Icons collection with the "authentication" tag
  *
  * Example:
- *   <iron-icon icon="mdi-auth:login"></iron-icon>
+ *   <simple-icon icon="mdi-auth:login"></simple-icon>
  *
  * @demo demo/index.html
  */

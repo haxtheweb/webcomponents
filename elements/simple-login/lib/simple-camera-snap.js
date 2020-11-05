@@ -1,12 +1,13 @@
 import "./simple-login-avatar.js";
 import "./simple-login-camera.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 class SimpleCameraSnap extends HTMLElement {
   constructor(delayRender = false) {
     super();
-    import("@polymer/iron-icons/image-icons.js");
     this.tag = SimpleCameraSnap.tag;
     this.template = document.createElement("template");
     this.attachShadow({ mode: "open" });

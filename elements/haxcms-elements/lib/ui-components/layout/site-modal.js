@@ -8,10 +8,6 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `site-modal`
  * `A basic site dialog`
  *
@@ -44,6 +40,8 @@ class SiteModal extends LitElement {
   constructor() {
     super();
     this.title = "Dialog";
+    this.dark = false;
+    this.accentColor = null;
     this.icon = "icons:menu";
     this.buttonLabel = "Open dialog";
     this.position = "bottom";
@@ -52,16 +50,11 @@ class SiteModal extends LitElement {
   // render function
   render() {
     return html`
-      <custom-style>
-        <style>
-          simple-modal-template {
-            @apply --site-modal-modal;
-          }
-        </style>
-      </custom-style>
       <simple-icon-button
         ?disabled="${this.editMode}"
         id="btn"
+        ?dark="${this.dark}"
+        accent-color="${this.accentColor}"
         @click="${this.fireEvent}"
         .icon="${this.icon}"
         .title="${this.buttonLabel}"
@@ -89,6 +82,13 @@ class SiteModal extends LitElement {
       disabled: {
         type: Boolean,
         reflect: true,
+      },
+      dark: {
+        type: Boolean,
+      },
+      accentColor: {
+        type: String,
+        attribute: "accent-color",
       },
       title: {
         type: String,

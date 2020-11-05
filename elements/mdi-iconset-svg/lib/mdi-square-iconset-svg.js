@@ -4,7 +4,7 @@
  * @element mdi-square-iconset-svg is a iconset for the Material Design Icons collection with the "square" tag
  *
  * Example:
- *   <iron-icon icon="mdi-square:rss-box"></iron-icon>
+ *   <simple-icon icon="mdi-square:rss-box"></simple-icon>
  *
  * @demo demo/index.html
  */

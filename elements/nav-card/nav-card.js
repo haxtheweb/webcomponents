@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "./lib/nav-card-item.js";
 /**
  * `nav-card`

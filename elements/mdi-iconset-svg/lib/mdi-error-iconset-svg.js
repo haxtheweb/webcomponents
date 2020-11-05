@@ -4,7 +4,7 @@
  * @element mdi-error-iconset-svg is a iconset for the Material Design Icons collection with the "error" tag
  *
  * Example:
- *   <iron-icon icon="mdi-error:alert"></iron-icon>
+ *   <simple-icon icon="mdi-error:alert"></simple-icon>
  *
  * @demo demo/index.html
  */

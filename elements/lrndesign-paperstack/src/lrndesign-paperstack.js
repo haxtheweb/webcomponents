@@ -5,6 +5,9 @@
 import { html } from "@polymer/polymer/polymer-element.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 /**
  * `lrndesign-paperstack`
  * @element lrndesign-paperstack
@@ -13,11 +16,6 @@ import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.j
  * @demo demo/index.html
  */
 class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
-  constructor() {
-    super();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
-  }
   static get template() {
     return html`
       <style include="simple-colors-shared-styles-polymer">
@@ -100,9 +98,9 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
           color: var(--lrndesign-paperstack-text);
         }
 
-        iron-icon {
-          width: 40px;
-          height: 40px;
+        simple-icon {
+          --simple-icon-width: 40px;
+          --simple-icon-height: 40px;
           margin: 4px;
           color: var(--lrndesign-paperstack-bg);
         }
@@ -131,7 +129,7 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
         <div class="front paper">
           <div class="heading">
             <div class="icon-container circle">
-              <iron-icon icon="[[icon]]"></iron-icon>
+              <simple-icon icon="[[icon]]"></simple-icon>
             </div>
             <span class="title">[[title]]</span>
           </div>

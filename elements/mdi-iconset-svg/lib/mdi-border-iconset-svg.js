@@ -4,7 +4,7 @@
  * @element mdi-border-iconset-svg is a iconset for the Material Design Icons collection with the "border" tag
  *
  * Example:
- *   <iron-icon icon="mdi-border:border-inside"></iron-icon>
+ *   <simple-icon icon="mdi-border:border-inside"></simple-icon>
  *
  * @demo demo/index.html
  */

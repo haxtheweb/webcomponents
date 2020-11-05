@@ -4,7 +4,7 @@
  * @element mdi-currency-iconset-svg is a iconset for the Material Design Icons collection with the "currency" tag
  *
  * Example:
- *   <iron-icon icon="mdi-currency:currency-usd"></iron-icon>
+ *   <simple-icon icon="mdi-currency:currency-usd"></simple-icon>
  *
  * @demo demo/index.html
  */

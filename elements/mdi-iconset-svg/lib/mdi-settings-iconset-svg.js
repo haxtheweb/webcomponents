@@ -4,7 +4,7 @@
  * @element mdi-settings-iconset-svg is a iconset for the Material Design Icons collection with the "settings" tag
  *
  * Example:
- *   <iron-icon icon="mdi-settings:settings"></iron-icon>
+ *   <simple-icon icon="mdi-settings:settings"></simple-icon>
  *
  * @demo demo/index.html
  */

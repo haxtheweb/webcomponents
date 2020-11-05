@@ -4,7 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `lrn-button`
  * `Simple button wrapper with a few options`
@@ -33,10 +35,6 @@ class LrnButton extends LitElement {
       this.addEventListener("mouseout", this.tapEventOff);
       this.addEventListener("focusin", this.tapEventOn);
       this.addEventListener("focusout", this.tapEventOff);
-      import("@polymer/paper-button/paper-button.js");
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icon/iron-icon.js");
     }, 0);
   }
   firstUpdated() {
@@ -87,7 +85,7 @@ class LrnButton extends LitElement {
   }
 
   /**
-   * Handle toggle for mouse class and manage classList array for paper-button.
+   * Handle toggle for mouse class and manage classList array for button.
    */
   focusToggle(e) {
     this.dispatchEvent(

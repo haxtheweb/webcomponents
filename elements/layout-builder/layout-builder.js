@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
 /**
  * `layout-builder`
  * @element layout-builder
@@ -24,12 +23,12 @@ class LayoutBuilder extends PolymerElement {
           display: block;
         }
 
-        :host paper-button {
+        :host button {
           display: block;
           margin: 0;
         }
 
-        :host paper-button,
+        :host button,
         :host #content-wrapper {
           border: 1px solid #ddd;
         }
@@ -44,14 +43,12 @@ class LayoutBuilder extends PolymerElement {
       </style>
       <div id="content-wrapper">
         <div id="prepend-child">
-          <paper-button on-tap="_handleAddChild"
-            >Insert into [[type]]</paper-button
-          >
+          <button on-tap="_handleAddChild">Insert into [[type]]</button>
         </div>
         <div id="content"><slot></slot></div>
       </div>
       <div id="insert-sibling-after">
-        <paper-button on-tap="_handleAddSibling">Add new [[type]]</paper-button>
+        <button on-tap="_handleAddSibling">Add new [[type]]</button>
       </div>`;
   }
 

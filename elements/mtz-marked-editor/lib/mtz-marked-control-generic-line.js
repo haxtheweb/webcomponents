@@ -1,6 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { mtzMarkedControlLineBehaviorImpl } from "./mtz-marked-control-line-behavior.js";
 import { mtzMarkedControlBehavior } from "./mtz-marked-control-behavior.js";
 
@@ -15,12 +17,12 @@ class MtzMarkedControlGenericLine extends mtzMarkedControlBehavior(
         }
       </style>
 
-      <paper-icon-button
+      <simple-icon-button
         icon="[[icon]]"
         noink="[[noink]]"
         on-click="_handleCommand"
         alt="[[title]]"
-      ></paper-icon-button>
+      ></simple-icon-button>
 
       <iron-a11y-keys
         keys="[[keys]]"

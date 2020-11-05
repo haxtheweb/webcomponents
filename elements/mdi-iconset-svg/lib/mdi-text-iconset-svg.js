@@ -4,7 +4,7 @@
  * @element mdi-text-iconset-svg is a iconset for the Material Design Icons collection with the "text" tag
  *
  * Example:
- *   <iron-icon icon="mdi-text:clipboard-text"></iron-icon>
+ *   <simple-icon icon="mdi-text:clipboard-text"></simple-icon>
  *
  * @demo demo/index.html
  */

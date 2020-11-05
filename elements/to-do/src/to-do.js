@@ -9,8 +9,6 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
   constructor() {
     super();
     import("@polymer/paper-checkbox/paper-checkbox.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-card/paper-card.js");
     import("@polymer/paper-input/paper-input.js");
   }
   static get template() {
@@ -22,7 +20,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
         :host([hide-form]) ul {
           border: 1px solid black;
         }
-        paper-card {
+        div.card {
           width: 100%;
           padding: 8px;
         }
@@ -57,13 +55,14 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
           font-size: 20px;
         }
       </style>
-      <paper-card heading="[[name]]" elevation="2">
+      <div class="card">
+        <h3>[[name]]</h3>
         <div class="card-content">
           <div hidden$="[[hideForm]]">
             <paper-input label="Task to accomplish" id="itemtext"></paper-input>
-            <paper-button raised="" id="itembutton" on-click="_addItemToList"
-              >Add item</paper-button
-            >
+            <button raised="" id="itembutton" on-click="_addItemToList">
+              Add item
+            </button>
           </div>
           <ul class="task-list-wrapper">
             <template is="dom-repeat" items="[[items]]" as="item">
@@ -77,7 +76,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
             </template>
           </ul>
         </div>
-      </paper-card>
+      </div>
     `;
   }
   static get tag() {

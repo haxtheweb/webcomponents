@@ -3,12 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-menu-button/paper-menu-button.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { cellBehaviors } from "./editable-table-behaviors.js";
 
 /**
@@ -50,7 +51,7 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           padding: 0;
           background-color: var(--editable-table-bg-color);
         }
-        :host paper-button,
+        :host button,
         :host paper-item {
           margin: 0;
           text-transform: none;
@@ -62,23 +63,23 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
         :host paper-item {
           font-size: var(--editable-table-secondary-font-size);
         }
-        :host paper-button {
+        :host button {
           display: block;
           padding-top: var(--editable-table-row-vertical-padding);
           padding-bottom: var(--editable-table-row-vertical-padding);
         }
-        :host([condensed]) paper-button {
+        :host([condensed]) button {
           padding-top: var(--editable-table-row-vertical-padding-condensed);
           padding-bottom: var(--editable-table-row-vertical-padding-condensed);
         }
       </style>
       <paper-menu-button id="menu">
-        <paper-button slot="dropdown-trigger">
+        <button slot="dropdown-trigger">
           <span class="sr-only">[[_getType(row)]]</span>
           <span id="label">[[label]]</span>
           <span class="sr-only">Menu</span>
-          <iron-icon icon="arrow-drop-down"></iron-icon>
-        </paper-button>
+          <simple-icon icon="arrow-drop-down"></simple-icon>
+        </button>
         <paper-listbox
           slot="dropdown-content"
           label="[_getType(row)]] [[label]] Menu"

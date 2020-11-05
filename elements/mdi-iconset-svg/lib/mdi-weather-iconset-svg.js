@@ -4,7 +4,7 @@
  * @element mdi-weather-iconset-svg is a iconset for the Material Design Icons collection with the "weather" tag
  *
  * Example:
- *   <iron-icon icon="mdi-weather:weather-partlycloudy"></iron-icon>
+ *   <simple-icon icon="mdi-weather:weather-partlycloudy"></simple-icon>
  *
  * @demo demo/index.html
  */

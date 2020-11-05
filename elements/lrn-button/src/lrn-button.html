@@ -1,8 +1,8 @@
 <a tabindex="-1" id="lrnsys-button-link" href="${this.showHref}" data-prefetch-hover="${this.prefetch}" target="${this.target}">
-<paper-button id="button" raised="${this.raised}" class="${this.class} ${this.color} ${this.textColor}" ?disabled="${this.disabled}">
+<button id="button" raised="${this.raised}" class="${this.class} ${this.color} ${this.textColor}" ?disabled="${this.disabled}">
     <div class="inner ${this.innerClass}">
       ${this.icon ? html`
-      <iron-icon icon="${this.icon}" id="icon" class="${this.iconClass}"></iron-icon>
+      <simple-icon icon="${this.icon}" id="icon" class="${this.iconClass}"></simple-icon>
       `:``}
       ${this.label ? html`
         <span class="label">
@@ -10,6 +10,6 @@
         </span>`: ``}
       <slot></slot>
     </div>
-  </paper-button>
+  </button>
 </a>
 <simple-tooltip for="lrnsys-button-link" animation-delay="0">${this.alt}</simple-tooltip>

@@ -97,7 +97,7 @@ li:hover {
   outline: 1px solid #CCCCCC;
 }
 
-iron-icon {
+simple-icon {
   pointer-events: none;
 }
 
