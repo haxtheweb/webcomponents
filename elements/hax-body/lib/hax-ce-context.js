@@ -31,6 +31,11 @@ class HaxCeContext extends LitElement {
       `,
     ];
   }
+  constructor() {
+    super();
+    this.activeTagName = "";
+    this.activeTagIcon = "hax:paragraph";
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "onScreen" && this.onScreen) {
@@ -93,7 +98,7 @@ class HaxCeContext extends LitElement {
         if (this.activeNode.tagName == "GRID-PLATE") {
           this.disableTransform = true;
           this.activeTagName = "Grid";
-          this.activeTagIcon = "hax:3/3/3/3";
+          this.activeTagIcon = "hax:3-3-3-3";
         } else {
           // detect if this can be transformed into anything else
           this.disableTransform = !HAXStore.activeHaxBody.canTansformNode(
@@ -107,7 +112,7 @@ class HaxCeContext extends LitElement {
       }
     } else {
       this.activeTagName = "";
-      this.activeTagIcon = "";
+      this.activeTagIcon = "hax:paragraph";
     }
   }
 }

@@ -6,7 +6,6 @@ import { css, html } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@material/mwc-button/mwc-button.js";
 /**
  * `simple-login`
  * @element simple-login
@@ -130,13 +129,13 @@ class SimpleLogin extends SimpleColors {
           label="${this.passwordInputLabel}"
           error-message="${this.passwordInputErrMsg}"
         ></simple-fields-field>
-        <mwc-button
+        <button
           @click="${this._login}"
           ?disabled="${this.loading}"
           id="loginbtn"
-          raised
-          >${this.loginBtnText}
-        </mwc-button>
+        >
+          ${this.loginBtnText}
+        </button>
         <span id="buttons"><slot name="buttons"></slot></span>
       </div>
     </div>`;

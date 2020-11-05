@@ -20,7 +20,6 @@ class LrnsysOutline extends PolymerElement {
     super();
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/lrnsys-outline/lib/lrnsys-outline-item.js");
   }
   static get template() {
@@ -188,7 +187,7 @@ class LrnsysOutline extends PolymerElement {
    */
   removeItem(item) {
     let i = this.items.findIndex((j) => j.id === item.id);
-    let b = document.createElement("paper-button");
+    let b = document.createElement("button");
     b.raised = true;
     b.addEventListener("click", this._deleteItemConfirm.bind(this));
     b.appendChild(document.createTextNode("Yes, delete"));
@@ -199,6 +198,11 @@ class LrnsysOutline extends PolymerElement {
         title: `Do you really want to delete ${this.items[i].title}?`,
         elements: {
           buttons: b,
+        },
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-max-width": "75vw",
+          "--simple-modal-min-height": "50vh",
         },
         invokedBy: item.shadowRoot.querySelector("#delete"),
         clone: false,

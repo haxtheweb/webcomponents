@@ -6,10 +6,6 @@
   display: none;
 }
 
-paper-dialog-scrollable:not(:defined) {
-  display: none;
-}
-
 :host paper-dialog ::slotted(*) {
   font-size: 14px;
   width: 100%;
@@ -73,9 +69,9 @@ h2 {
   outline-offset: var(--simple-modal-titlebar-button-outline-offset, 2px);
 }
 
-#close iron-icon {
-  width: var(--simple-modal-titlebar-icon-width, 16px);
-  height: var(--simple-modal-titlebar-icon-height, 16px);
+#close simple-icon {
+  --simple-icon-height: var(--simple-modal-titlebar-icon-height, 16px);
+  --simple-icon-width: var(--simple-modal-titlebar-icon-width, 16px);
   color: var(--simple-modal-titlebar-color,#444);
 }
 

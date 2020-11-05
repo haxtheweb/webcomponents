@@ -1,7 +1,7 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 
 /**
@@ -63,7 +63,6 @@ class HaxMap extends SimpleColors {
           margin: 4px;
           padding: 0;
         }
-        ul iron-icon,
         ul simple-icon {
           padding: 0 8px;
         }
@@ -189,10 +188,10 @@ class HaxMap extends SimpleColors {
             return html`
               <li>
                 <a @click="${this.scrollInMap}" data-index="${index}"
-                  ><iron-icon
+                  ><simple-icon
                     data-index="${index}"
                     icon="${element.icon}"
-                  ></iron-icon
+                  ></simple-icon
                   >${element.name}</a
                 >
               </li>

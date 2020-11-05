@@ -997,6 +997,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         <div id="controls" controls="innerplayer">
           <div id="controls-left">
             <a11y-media-button
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
               icon="${this._getLocal(
                 this.localization,
                 this.__playing ? "pause" : "play",
@@ -1010,6 +1012,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               @click="${(e) => this.togglePlay()}"
             ></a11y-media-button>
             <a11y-media-button
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
               class="hide-flex"
               icon="${this._getLocal(this.localization, "rewind", "icon")}"
               label="${this._getLocal(this.localization, "rewind", "label")}"
@@ -1018,6 +1022,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               @click="${(e) => this.rewind()}"
             ></a11y-media-button>
             <a11y-media-button
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
               class="hide-flex"
               icon="${this._getLocal(this.localization, "forward", "icon")}"
               label="${this._getLocal(this.localization, "forward", "label")}"
@@ -1027,6 +1033,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               @click="${(e) => this.forward()}"
             ></a11y-media-button>
             <a11y-media-button
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
               class="hide-flex"
               icon="${this._getLocal(this.localization, "restart", "icon")}"
               label="${this._getLocal(this.localization, "restart", "label")}"
@@ -1042,6 +1050,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               @blur="${(e) => (this.__volumeSlider = false)}"
             >
               <a11y-media-button
+                accent-color="${this.accentColor}"
+                ?dark="${this.dark}"
                 id="mute"
                 icon="${this._getLocal(
                   this.localization,
@@ -1077,6 +1087,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
           </div>
           <div id="controls-right">
             <a11y-media-button
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
               class="hide-full-xs"
               icon="${this._getLocal(this.localization, "captions", "icon")}"
               label="${this._getLocal(this.localization, "captions", "label")}"
@@ -1087,6 +1099,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
             >
             </a11y-media-button>
             <a11y-media-button
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
               class="hide-full-xs"
               controls="transcript"
               icon="${this._getLocal(this.localization, "transcript", "icon")}"
@@ -1105,6 +1119,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
             >
             </a11y-media-button>
             <a11y-media-button
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
               class="hide-full-sm"
               icon="${this._getLocal(this.localization, "copyLink", "icon")}"
               label="${this._getLocal(this.localization, "copyLink", "label")}"
@@ -1113,6 +1129,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               @click="${this._handleCopyLink}"
             ></a11y-media-button>
             <a11y-media-button
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
               class="hide-full-xs"
               icon="${this._getLocal(this.localization, "fullscreen", "icon")}"
               label="${this._getLocal(
@@ -1126,6 +1144,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
             >
             </a11y-media-button>
             <a11y-media-button
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
               id="settings-button"
               class="hide-sticky"
               controls="settings"
@@ -1183,6 +1203,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 ${this._getLocal(this.localization, "print", "label")}
               </div>
               <a11y-media-button
+                accent-color="${this.accentColor}"
+                ?dark="${this.dark}"
                 aria-labelledby="print-label"
                 class="setting-control"
                 icon="${this._getLocal(this.localization, "print", "icon")}"
@@ -1197,6 +1219,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 ${this._getLocal(this.localization, "download", "label")}
               </div>
               <a11y-media-button
+                accent-color="${this.accentColor}"
+                ?dark="${this.dark}"
                 aria-labelledby="download-label"
                 class="setting-control"
                 icon="${this._getLocal(this.localization, "download", "icon")}"
@@ -1303,6 +1327,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
             </div>
             <div id="scrolling">
               <a11y-media-button
+                accent-color="${this.accentColor}"
+                ?dark="${this.dark}"
                 id="scroll"
                 controls="transcript"
                 icon="${this._getLocal(
@@ -1326,6 +1352,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               ?disabled="${this.disablePrintButton}"
             >
               <a11y-media-button
+                accent-color="${this.accentColor}"
+                ?dark="${this.dark}"
                 id="download"
                 controls="transcript"
                 icon="${this._getLocal(this.localization, "download", "icon")}"
@@ -1338,6 +1366,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               >
               </a11y-media-button>
               <a11y-media-button
+                accent-color="${this.accentColor}"
+                ?dark="${this.dark}"
                 id="print"
                 controls="transcript"
                 icon="${this._getLocal(this.localization, "print", "icon")}"
@@ -1398,6 +1428,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         ?hidden="${!this.linkable}"
       >
         <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           action="linkable"
           icon="${this._getLocal(this.localization, "closeLink", "icon")}"
           label="${this._getLocal(this.localization, "closeLink", "label")}"

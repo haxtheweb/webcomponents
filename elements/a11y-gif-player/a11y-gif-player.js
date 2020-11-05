@@ -44,8 +44,10 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     this.tooltipPlaying = null;
     this.srcWithoutAnimation = null;
     this.__playing = false;
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@polymer/iron-image/iron-image.js");
+    setTimeout(() => {
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@polymer/iron-image/iron-image.js");
+    }, 0);
   }
   /**
    * LitElement render styles

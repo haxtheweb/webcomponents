@@ -21,7 +21,7 @@
     },
     {
       "name": "simple-modal",
-      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `close-label` {`string`} - Close label\n\n  * `close-icon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag",
+      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `close-label` {`string`} - Close label\n\n  * `close-icon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag",
       "attributes": [
         {
           "name": "invokedBy",
@@ -54,6 +54,10 @@
           "description": "`resize` {`Event`} - "
         },
         {
+          "name": "onsimple-toast-hide",
+          "description": "`simple-toast-hide` {`CustomEvent<boolean>`} - "
+        },
+        {
           "name": "onsimple-modal-closed",
           "description": "`simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - "
         },
@@ -65,11 +69,15 @@
     },
     {
       "name": "simple-modal",
-      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `closeLabel` {`string`} - \n\n  * `closeIcon` {`string`} - \n\n  * `modal` {`boolean`} - ",
+      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `closeLabel` {`string`} - \n\n  * `closeIcon` {`string`} - \n\n  * `modal` {`boolean`} - ",
       "attributes": [
         {
           "name": "onresize",
           "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onsimple-toast-hide",
+          "description": "`simple-toast-hide` {`CustomEvent<boolean>`} - "
         },
         {
           "name": "onsimple-modal-closed",

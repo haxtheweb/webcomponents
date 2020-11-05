@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+
 /**
  * `magazine-cover`
  * `A Magazine cover element`
@@ -150,9 +153,6 @@ class MagazineCover extends LitElement {
     this.eventName = "";
     this.eventData = {};
     import("@polymer/iron-image/iron-image.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-button/paper-button.js");
   }
   /**
    * LitElement render
@@ -180,15 +180,17 @@ class MagazineCover extends LitElement {
           id="actionlink"
           @click="${this._linkTapped}"
         >
-          <paper-button raised="" id="action">
+          <button raised="" id="action">
             <span id="label"
-              >${this.action}<iron-icon
+              >${this.action}<simple-icon
+                accent-color="grey"
+                dark
                 id="icon"
                 icon="${this.icon}"
                 ?hidden="${!this.icon}"
-              ></iron-icon
+              ></simple-icon
             ></span>
-          </paper-button>
+          </button>
         </a>
       </div>
     `;

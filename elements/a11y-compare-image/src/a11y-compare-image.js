@@ -82,8 +82,9 @@ class a11yCompareImage extends LitElement {
     this.opacity = false;
     this.position = 0;
     this.__markers = [];
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/paper-slider/paper-slider.js");
+    setTimeout(() => {
+      import("@polymer/paper-slider/paper-slider.js");
+    }, 0);
   }
   render() {
     return html`
@@ -179,7 +180,9 @@ class a11yCompareImage extends LitElement {
     // Percentage into the current section
     this.position = (relativePosition * 100) / section || 0;
     // Set background images
-    this.__upper = layers[active + 1].src || layers[active].src;
+    this.__upper = layers[active + 1]
+      ? layers[active + 1].src
+      : layers[active].src;
     this.__lower = layers[active].src;
     // Adding Fake markers behind the slider.
     if (total - 1 != this.__markers.length) {

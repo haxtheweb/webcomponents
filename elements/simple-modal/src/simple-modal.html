@@ -14,13 +14,13 @@
     <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
     <div></div>
     <button id="close" dialog-dismiss ?hidden="${!this.opened}" label="${this.closeLabel}">
-      <iron-icon aria-hidden="true" icon="${this.closeIcon}"></iron-icon>
+      <simple-icon aria-hidden="true" icon="${this.closeIcon}"></simple-icon>
     </button>
   </div>
   <div id="headerbar"><slot name="header"></slot></div>
-  <paper-dialog-scrollable id="simple-modal-content">
+  <div id="simple-modal-content">
     <slot name="content"></slot>
-  </paper-dialog-scrollable>
+  </div>
   <div class="buttons">
     <slot name="buttons"></slot>
   </div>

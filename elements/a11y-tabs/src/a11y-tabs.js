@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/a11y-tab.js";
 /**
@@ -263,7 +263,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabButton(tab) {
     return html`
-      <paper-button
+      <button
         id="${tab.id}-button"
         controls="${tab.id}"
         class="${tab.id === this.activeTab && !this.disabled ? "active" : ""}"
@@ -275,7 +275,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
-      </paper-button>
+      </button>
       ${this._tabTooltip(tab)}
     `;
   }
@@ -301,15 +301,24 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @memberof A11yTabs
    */
   _tabIcon(tab, icon) {
-    return html`
-      <iron-icon
-        class="icon"
-        ?hidden="${!tab[icon]}"
-        .icon="${tab[icon]}"
-        .title="${tab[flag]}"
-      >
-      </iron-icon>
-    `;
+    return tab.flag
+      ? html`
+          <simple-icon
+            class="icon"
+            ?hidden="${!tab[icon]}"
+            .icon="${tab[icon]}"
+            .title="${tab.flag}"
+          >
+          </simple-icon>
+        `
+      : html`
+          <simple-icon
+            class="icon"
+            ?hidden="${!tab[icon]}"
+            .icon="${tab[icon]}"
+          >
+          </simple-icon>
+        `;
   }
 
   /**

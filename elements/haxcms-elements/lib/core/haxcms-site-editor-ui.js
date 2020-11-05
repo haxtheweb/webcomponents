@@ -1,6 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "./haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -40,12 +43,14 @@ class HAXCMSSiteEditorUI extends LitElement {
             bottom: unset;
           }
           :host([edit-mode]) paper-fab,
-          :host([edit-mode]) paper-icon-button,
+          :host([edit-mode]) simple-icon-button,
           :host([edit-mode]) paper-avatar {
             width: 24px;
             height: 24px;
             padding: 1px;
             margin: 0;
+            --simple-icon-width: 20px;
+            --simple-icon-height: 20px;
             --iron-icon-width: 20px;
             --iron-icon-height: 20px;
           }
@@ -65,7 +70,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         }
         paper-fab:not(:defined),
         simple-tooltip:not(:defined),
-        paper-icon-button:not(:defined) {
+        simple-icon-button:not(:defined) {
           display: none !important;
         }
         paper-avatar {
@@ -93,7 +98,7 @@ class HAXCMSSiteEditorUI extends LitElement {
           opacity: 0;
           visibility: hidden;
         }
-        paper-icon-button {
+        simple-icon-button {
           display: block;
           padding: 8px;
           width: 48px;
@@ -116,9 +121,9 @@ class HAXCMSSiteEditorUI extends LitElement {
         paper-fab:hover,
         paper-fab:focus,
         paper-fab:active,
-        paper-icon-button:hover,
-        paper-icon-button:focus,
-        paper-icon-button:active {
+        simple-icon-button:hover,
+        simple-icon-button:focus,
+        simple-icon-button:active {
           background-color: var(--haxcms-color, blue);
           color: #ffffff;
         }
@@ -189,11 +194,8 @@ class HAXCMSSiteEditorUI extends LitElement {
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js"
       );
-      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      import("@polymer/paper-icon-button/paper-icon-button.js");
       import("@lrnwebcomponents/simple-modal/simple-modal.js");
-      import("@polymer/iron-icons/editor-icons.js");
       import("@polymer/paper-fab/paper-fab.js");
       import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
       import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
@@ -235,14 +237,14 @@ class HAXCMSSiteEditorUI extends LitElement {
         title="Edit details"
         voice-command="edit (page) details"
       ></paper-fab>
-      <paper-icon-button
+      <simple-icon-button
         hidden
         id="addbutton"
         icon="hax:add-page"
         @click="${this._addButtonTap}"
         title="Add page"
         voice-command="add page"
-      ></paper-icon-button>
+      ></simple-icon-button>
       <paper-fab
         hidden
         id="deletebutton"
@@ -251,22 +253,22 @@ class HAXCMSSiteEditorUI extends LitElement {
         title="Delete page"
         voice-command="delete page"
       ></paper-fab>
-      <paper-icon-button
+      <simple-icon-button
         hidden
         id="outlinebutton"
         icon="hax:site-map"
         @click="${this._outlineButtonTap}"
         title="Edit site outline"
         voice-command="edit site outline"
-      ></paper-icon-button>
-      <paper-icon-button
+      ></simple-icon-button>
+      <simple-icon-button
         hidden
         id="manifestbutton"
         icon="${this.icon}"
         @click="${this._manifestButtonTap}"
         title="${this.__settingsText}"
         voice-command="edit site settings"
-      ></paper-icon-button>
+      ></simple-icon-button>
       <simple-tooltip for="username" position="right" offset="14"
         >${this.backText}</simple-tooltip
       >
@@ -676,7 +678,7 @@ class HAXCMSSiteEditorUI extends LitElement {
           : store.manifest.id,
     };
     let b1 = document.createElement("button");
-    let icon = document.createElement("iron-icon");
+    let icon = document.createElement("simple-icon");
     icon.icon = "icons:add";
     b1.appendChild(icon);
     b1.appendChild(document.createTextNode("Create page"));
@@ -760,7 +762,7 @@ class HAXCMSSiteEditorUI extends LitElement {
     let c = document.createElement("span");
     c.innerHTML = `"${store.activeItem.title}" will be removed from the outline but its content stays on the file system.`;
     let b1 = document.createElement("button");
-    let icon = document.createElement("iron-icon");
+    let icon = document.createElement("simple-icon");
     icon.icon = "icons:delete";
     b1.appendChild(icon);
     b1.appendChild(document.createTextNode("Confirm"));

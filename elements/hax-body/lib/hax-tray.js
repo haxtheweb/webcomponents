@@ -65,20 +65,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       import("./hax-tray-button.js");
       // @todo replace all icons w/ simple-iconset
       import("@lrnwebcomponents/simple-icon/simple-icon.js");
-      import("@polymer/iron-icon/iron-icon.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/iron-icons/device-icons.js");
-      import("@polymer/iron-icons/hardware-icons.js");
-      import("@polymer/iron-icons/communication-icons.js");
-      import("@polymer/iron-icons/social-icons.js");
-      import("@polymer/iron-icons/image-icons.js");
-      import("@polymer/iron-icons/av-icons.js");
-      import("@polymer/iron-icons/maps-icons.js");
-      import("@polymer/iron-icons/places-icons.js");
-      import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
-      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
-      import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+      import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
       import("./hax-tray-upload.js");
       import("@lrnwebcomponents/simple-fields/simple-fields.js");
       this.addEventListener(
@@ -378,8 +366,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           max-height: 70vh;
           overflow: auto;
         }
-        simple-icon,
-        iron-icon {
+        simple-icon {
           margin-right: 8px;
         }
         .quick-buttons {
@@ -702,7 +689,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           </a11y-collapse>
           <a11y-collapse id="settingscollapse" accordion data-simple-tour-stop>
             <div slot="heading" data-stop-title>
-              <iron-icon icon="${this.activeTagIcon}"></iron-icon> ${this
+              <simple-icon icon="${this.activeTagIcon}"></simple-icon> ${this
                 .activeTagName}
             </div>
             <div slot="tour" data-stop-content>
@@ -1137,7 +1124,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       // collaped menu state change
       if (propName == "collapsed") {
         if (this[propName]) {
-          this.traySizeIcon = "hax:hax:arrow-expand-left";
+          this.traySizeIcon = "hax:arrow-expand-left";
           this.traySizeText = "Expand";
           // accessibility to disable entering panels that are not visible
           this.shadowRoot
@@ -1148,7 +1135,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             .setAttribute("tabindex", "-1");
           this._editModeChanged(this.editMode);
         } else {
-          this.traySizeIcon = "hax:hax:arrow-expand-right";
+          this.traySizeIcon = "hax:arrow-expand-right";
           this.traySizeText = "Collapse";
           // a11y clean up to match state
           this.shadowRoot

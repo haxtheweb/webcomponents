@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+
 /**
  * `simple-modal`
  * `A simple modal that ensures accessibility and stack order context appropriately`
@@ -45,9 +48,6 @@ class SimpleModal extends LitElement {
     this.modal = false;
     setTimeout(() => {
       import("@polymer/paper-dialog/paper-dialog.js");
-      import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icon/iron-icon.js");
     }, 0);
   }
   /**

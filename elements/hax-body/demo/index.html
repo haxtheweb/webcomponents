@@ -88,6 +88,9 @@
     </div>
     <script type="module">
       import '@lrnwebcomponents/h-a-x/h-a-x.js';
+      import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
+        esModule.setPassiveTouchGestures(true);
+      });
     </script>
     <script defer async src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script defer async src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>

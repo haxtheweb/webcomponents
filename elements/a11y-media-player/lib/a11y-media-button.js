@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/av-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `a11y-media-button`
  * a button used in a11y-media-controls and a11y-media-transcript-controls.
@@ -15,7 +15,13 @@ class A11yMediaButton extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
+      accentColor: {
+        attribute: "accent-color",
+        type: String,
+      },
+      dark: {
+        type: Boolean,
+      },
       /**
        * is button action to send as an event
        */
@@ -82,6 +88,8 @@ class A11yMediaButton extends LitElement {
   //inherit styles from a11y-media-player or a11y-media-transcript
   constructor() {
     super();
+    this.accentColor = "red";
+    this.dark = false;
     this.controls = "video";
     this.disabled = false;
     this.toggle = false;
@@ -137,7 +145,7 @@ class A11yMediaButton extends LitElement {
         simple-tooltip:not(:defined) {
           display: none;
         }
-        iron-icon {
+        simple-icon {
           display: inline-block;
         }
       `,
@@ -180,7 +188,11 @@ class A11yMediaButton extends LitElement {
         ?disabled="${this.disabled}"
         ?toggle="${this.toggle}"
       >
-        <iron-icon icon="${this.icon}"></iron-icon>
+        <simple-icon
+          icon="${this.icon}"
+          ?dark="${this.dark}"
+          accent-color="${this.accentColor}"
+        ></simple-icon>
       </button>
       ${this.label
         ? html`

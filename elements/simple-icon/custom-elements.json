@@ -2,6 +2,102 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "simple-icon",
+      "path": "./lib/simple-icon-button.js",
+      "description": "`simple-icon`\n`Render an SVG based icon`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "simple-icon-button",
+      "path": "./lib/simple-icon-button.js",
+      "description": "`simple-icon`\n`Render an SVG based icon`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
       "name": "simple-iconset",
       "path": "./lib/simple-iconset.js",
       "description": "Singleton to manage iconsets",

@@ -41,7 +41,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^2.7.10",
     "@lrnwebcomponents/schema-behaviors": "^2.7.10",
     "lit-element": "2.4.0"
   },

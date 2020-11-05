@@ -1,6 +1,6 @@
 import "./simple-login-avatar.js";
 import "./simple-login-camera.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 class SimpleCameraSnap extends HTMLElement {
@@ -81,7 +81,7 @@ class SimpleCameraSnap extends HTMLElement {
       <simple-login-camera id="camera" autoplay></simple-login-camera>
     </simple-login-avatar>
     <div class="buttons">
-      <paper-icon-button id="snap" icon="image:camera-alt"></paper-icon-button>
+      <simple-icon-button id="snap" icon="image:camera-alt"></simple-icon-button>
       <simple-tooltip for="snap">Take Photo</simple-tooltip>
     </div>
     `;

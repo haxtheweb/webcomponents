@@ -48,7 +48,11 @@ class SimpleIconset extends HTMLElement {
    * that the library for the icon registers AFTER the request to visualize is made
    */
   getIcon(val, context) {
-    let ary = val.split(":");
+    let ary = val.replaceAll("/", "-").split(":");
+    // legacy API used to fill in icons: for lazy devs so let's mirror
+    if (ary.length === 1) {
+      ary = ["icons", val];
+    }
     if (ary.length == 2 && this.iconsets[ary[0]]) {
       if (
         typeof this.iconsets[ary[0]] !== "string" &&

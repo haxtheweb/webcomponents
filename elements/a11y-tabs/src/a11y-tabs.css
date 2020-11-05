@@ -107,7 +107,7 @@
   margin-top: -1px;
 }
 
-:host #tabs paper-button {
+:host #tabs button {
   margin: 0;
   text-transform: unset;
   color: var(--a11y-tabs-faded-color);
@@ -117,7 +117,7 @@
   border-radius: var(--a11y-tabs-horizontal-border-radius) var(--a11y-tabs-horizontal-border-radius) 0 0; 
 }
 
-:host([vertical]) #tabs paper-button {
+:host([vertical]) #tabs button {
   border-top: none;
   border-left: none;
   border-radius: 0; 
@@ -127,30 +127,30 @@
   padding: var(--a11y-tabs-vertical-button-padding);
 }
 
-:host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
+:host(:not([vertical])) #tabs li:not(:first-of-type) button {
   border-left: none;
 }
 
-:host #tabs paper-button:active,
-:host #tabs paper-button:focus,
-:host #tabs paper-button:hover {
+:host #tabs button:active,
+:host #tabs button:focus,
+:host #tabs button:hover {
   color: var(--a11y-tabs-focus-color);
 }
 
-:host #tabs paper-button.active[disabled] {
+:host #tabs button.active[disabled] {
   color: var(--a11y-tabs-focus-color);
   background-color: var(--a11y-tabs-background);
 }
 
-:host(:not([vertical])) #tabs paper-button.active {
+:host(:not([vertical])) #tabs button.active {
   border-bottom: var(--a11y-tabs-background);
 }
 
-:host([vertical]) #tabs paper-button.active {
+:host([vertical]) #tabs button.active {
   border-right: var(--a11y-tabs-background);
 }
 
-:host #tabs paper-button:not(.active)[disabled] {
+:host #tabs button:not(.active)[disabled] {
   color: var(--a11y-tabs-disabled-color);
   background-color: var(--a11y-tabs-disabled-background);
   cursor: not-allowed;
@@ -161,7 +161,7 @@
   margin-right: 8px;
 }
 
-:host([icons-only]) #tabs paper-button {
+:host([icons-only]) #tabs button {
   justify-content: center;
 }
 
@@ -173,6 +173,10 @@
   display: none;
 }
 
-iron-icon:not([hidden]) {
+simple-icon:not([hidden]) {
   display: inline-block;
+}
+
+simple-icon[hidden] {
+  display: none;
 }

@@ -114,7 +114,6 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
     window.SimpleModal.requestAvailability();
   }
   static get haxProperties() {
-    import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
     return {
       canScale: false,
       canPosition: false,

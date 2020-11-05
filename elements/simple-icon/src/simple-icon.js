@@ -35,6 +35,14 @@ class SimpleIcon extends SimpleColors {
           height: var(--simple-icon-height, 24px);
           width: var(--simple-icon-width, 24px);
         }
+        svg {
+          height: var(--simple-icon-height, 24px);
+          width: var(--simple-icon-width, 24px);
+        }
+        image {
+          height: var(--simple-icon-height, 24px);
+          width: var(--simple-icon-width, 24px);
+        }
         feFlood {
           flood-color: var(--simple-colors-default-theme-accent-8, #000000);
         }

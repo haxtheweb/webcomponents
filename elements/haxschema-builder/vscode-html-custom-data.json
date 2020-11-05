@@ -24,6 +24,50 @@
       ]
     },
     {
+      "name": "hax-schema-form",
+      "description": "`hax-schema-form`\n\nAttributes:\n\n  * `initial-value` - Returned value from the form input.\n\n  * `value` - \n\n  * `mode-tab` {`string`} - State of mode tabs.\n\n  * `advanced-form` {`boolean`} - If this is the advancedForm or not. Default to not but slider allows\nswitching mode for the form to be presented.\n\n  * `can-edit-source` {`boolean`} - If we should show source view or not.\n\n  * `form-key` {`string`} - Form key from hax to target.\n\n  * `schema` - JSON Schema.\n\n  * `configure-schema` - JSON Schema.\n\n  * `advanced-schema` - JSON Schema.\n\nProperties:\n\n  * `initialValue` - Returned value from the form input.\n\n  * `value` - \n\n  * `modeTab` {`string`} - State of mode tabs.\n\n  * `advancedForm` {`boolean`} - If this is the advancedForm or not. Default to not but slider allows\nswitching mode for the form to be presented.\n\n  * `canEditSource` {`boolean`} - If we should show source view or not.\n\n  * `formKey` {`string`} - Form key from hax to target.\n\n  * `schema` - JSON Schema.\n\n  * `configureSchema` - JSON Schema.\n\n  * `advancedSchema` - JSON Schema.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "initial-value",
+          "description": "`initial-value` - Returned value from the form input.\n\nProperty: initialValue\n\nDefault: [object Object]"
+        },
+        {
+          "name": "value",
+          "description": "`value` - \n\nProperty: value\n\nDefault: [object Object]"
+        },
+        {
+          "name": "mode-tab",
+          "description": "`mode-tab` {`string`} - State of mode tabs.\n\nProperty: modeTab"
+        },
+        {
+          "name": "advanced-form",
+          "description": "`advanced-form` {`boolean`} - If this is the advancedForm or not. Default to not but slider allows\nswitching mode for the form to be presented.\n\nProperty: advancedForm\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "can-edit-source",
+          "description": "`can-edit-source` {`boolean`} - If we should show source view or not.\n\nProperty: canEditSource",
+          "valueSet": "v"
+        },
+        {
+          "name": "form-key",
+          "description": "`form-key` {`string`} - Form key from hax to target.\n\nProperty: formKey"
+        },
+        {
+          "name": "schema",
+          "description": "`schema` - JSON Schema.\n\nProperty: schema"
+        },
+        {
+          "name": "configure-schema",
+          "description": "`configure-schema` - JSON Schema.\n\nProperty: configureSchema\n\nDefault: [object Object]"
+        },
+        {
+          "name": "advanced-schema",
+          "description": "`advanced-schema` - JSON Schema.\n\nProperty: advancedSchema\n\nDefault: [object Object]"
+        }
+      ]
+    },
+    {
       "name": "haxschema-builder",
       "description": "`haxschema-builder`\n`dynamically build and visualize HAXschema`\n\nEvents:\n\n  * `hax-schema-changed` {`CustomEvent<any>`} - \n\nProperties:\n\n  * `HAXWiring` - \n\n  * `haxSchema` {`string`} - ",
       "attributes": [

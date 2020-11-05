@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "person-testimonial",
-      "description": "`person-testimonial`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`person-testimonial`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "described-by",
@@ -20,10 +20,6 @@
         {
           "name": "position",
           "description": "`position` {`string`} - The title / position of the person in question.\n\nProperty: position"
-        },
-        {
-          "name": "elevation",
-          "description": "`elevation` {`number`} - Visual height of the card.\n\nProperty: elevation\n\nDefault: 1"
         },
         {
           "name": "accent-color",
@@ -38,7 +34,7 @@
     },
     {
       "name": "person-testimonial",
-      "description": "`person-testimonial`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`person-testimonial`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "described-by",
@@ -55,10 +51,6 @@
         {
           "name": "position",
           "description": "`position` {`string`} - The title / position of the person in question.\n\nProperty: position"
-        },
-        {
-          "name": "elevation",
-          "description": "`elevation` {`number`} - Visual height of the card.\n\nProperty: elevation\n\nDefault: 1"
         },
         {
           "name": "accent-color",

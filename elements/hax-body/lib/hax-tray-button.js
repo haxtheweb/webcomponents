@@ -37,6 +37,9 @@ class HAXTrayButton extends SimpleColors {
         type: String,
         attribute: "voice-command",
       },
+      iconDark: {
+        type: Boolean,
+      },
       mini: {
         type: Boolean,
         reflect: true,
@@ -114,9 +117,9 @@ class HAXTrayButton extends SimpleColors {
           pointer-events: none;
           opacity: 0.2;
         }
-        iron-icon {
-          width: 20px;
-          height: 20px;
+        simple-icon {
+          --simple-icon-height: 20px;
+          --simple-icon-width: 20px;
           transform: var(--hax-tray-button-rotate);
         }
         .item-label {
@@ -186,7 +189,7 @@ class HAXTrayButton extends SimpleColors {
           );
           transition: all 0.5ms ease-in-out;
         }
-        button iron-icon {
+        button simple-icon {
           display: inline-block;
         }
         :host([mini]) {
@@ -197,9 +200,9 @@ class HAXTrayButton extends SimpleColors {
           height: 30px;
           width: 30px;
         }
-        :host([mini]) button iron-icon {
-          height: 18px;
-          width: 18px;
+        :host([mini]) button simple-icon {
+          --simple-icon-height: 18px;
+          --simple-icon-width: 18px;
         }
         .item-title {
           margin-top: 8px;
@@ -246,7 +249,13 @@ class HAXTrayButton extends SimpleColors {
         ${this.icon
           ? html`
               <div class="button-inner">
-                <iron-icon icon="${this.icon}"></iron-icon>
+                <simple-icon
+                  icon="${this.icon}"
+                  accent-color="${this.colorMeaning
+                    ? this.accentColor
+                    : "grey"}"
+                  ?dark="${this.colorMeaning ? true : this.iconDark}"
+                ></simple-icon>
               </div>
             `
           : html``}
@@ -262,6 +271,7 @@ class HAXTrayButton extends SimpleColors {
       this.hoverAccentColor === this._defaultColor
         ? this._defaultHoverColor
         : this.hoverAccentColor;
+    this.iconDark = true;
   }
   _focusOut(e) {
     if (!this.colorMeaning) {
@@ -269,6 +279,7 @@ class HAXTrayButton extends SimpleColors {
     } else {
       this.accentColor = this.color;
     }
+    this.iconDark = false;
   }
   _voiceEvent(e) {
     this._fireEvent(e);

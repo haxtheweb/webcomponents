@@ -1,6 +1,5 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-image/iron-image.js";
 /**
  * `person-testimonial`
@@ -9,10 +8,6 @@ import "@polymer/iron-image/iron-image.js";
  * @demo demo/index.html
  */
 class PersonTestimonial extends SimpleColors {
-  constructor() {
-    super();
-    this.elevation = 1;
-  }
   static get styles() {
     return [
       ...super.styles,
@@ -27,11 +22,12 @@ class PersonTestimonial extends SimpleColors {
           --person-testimonial-text: var(--simple-colors-default-theme-grey-12);
         }
 
-        paper-card {
+        div.card {
           display: inline-flex;
           background-color: var(--person-testimonial-bg);
           color: var(--person-testimonial-text);
           font-family: var(--person-testimonial-font-family);
+          box-shadow: 0 2px 2px rgba(59, 43, 91, 0.7);
         }
 
         iron-image {
@@ -92,7 +88,7 @@ class PersonTestimonial extends SimpleColors {
           display: inline-flex;
         }
         @media screen and (max-width: 850px) {
-          paper-card {
+          div.card {
             display: flex;
             flex-wrap: wrap;
           }
@@ -128,7 +124,7 @@ class PersonTestimonial extends SimpleColors {
   }
   render() {
     return html`
-      <paper-card elevation="${this.elevation}">
+      <div class="card">
         <div class="image">
           <iron-image
             src="${this.image}"
@@ -152,7 +148,7 @@ class PersonTestimonial extends SimpleColors {
           <div class="name">${this.name}</div>
           <div class="position">${this.position}</div>
         </div>
-      </paper-card>
+      </div>
     `;
   }
   static get tag() {
@@ -161,14 +157,6 @@ class PersonTestimonial extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
-
-      /**
-       * Visual height of the card.
-       */
-      elevation: {
-        type: Number,
-        reflect: true,
-      },
       /**
        * Aria-describedby data passed down to appropriate tag
        */

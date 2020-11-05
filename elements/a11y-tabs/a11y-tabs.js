@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/a11y-tab.js";
 /**
@@ -198,7 +198,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           margin-top: -1px;
         }
 
-        :host #tabs paper-button {
+        :host #tabs button {
           margin: 0;
           text-transform: unset;
           color: var(--a11y-tabs-faded-color);
@@ -209,7 +209,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             var(--a11y-tabs-horizontal-border-radius) 0 0;
         }
 
-        :host([vertical]) #tabs paper-button {
+        :host([vertical]) #tabs button {
           border-top: none;
           border-left: none;
           border-radius: 0;
@@ -219,30 +219,30 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           padding: var(--a11y-tabs-vertical-button-padding);
         }
 
-        :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
+        :host(:not([vertical])) #tabs li:not(:first-of-type) button {
           border-left: none;
         }
 
-        :host #tabs paper-button:active,
-        :host #tabs paper-button:focus,
-        :host #tabs paper-button:hover {
+        :host #tabs button:active,
+        :host #tabs button:focus,
+        :host #tabs button:hover {
           color: var(--a11y-tabs-focus-color);
         }
 
-        :host #tabs paper-button.active[disabled] {
+        :host #tabs button.active[disabled] {
           color: var(--a11y-tabs-focus-color);
           background-color: var(--a11y-tabs-background);
         }
 
-        :host(:not([vertical])) #tabs paper-button.active {
+        :host(:not([vertical])) #tabs button.active {
           border-bottom: var(--a11y-tabs-background);
         }
 
-        :host([vertical]) #tabs paper-button.active {
+        :host([vertical]) #tabs button.active {
           border-right: var(--a11y-tabs-background);
         }
 
-        :host #tabs paper-button:not(.active)[disabled] {
+        :host #tabs button:not(.active)[disabled] {
           color: var(--a11y-tabs-disabled-color);
           background-color: var(--a11y-tabs-disabled-background);
           cursor: not-allowed;
@@ -253,7 +253,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           margin-right: 8px;
         }
 
-        :host([icons-only]) #tabs paper-button {
+        :host([icons-only]) #tabs button {
           justify-content: center;
         }
 
@@ -265,8 +265,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           display: none;
         }
 
-        iron-icon:not([hidden]) {
+        simple-icon:not([hidden]) {
           display: inline-block;
+        }
+        simple-icon[hidden] {
+          display: none;
         }
       `,
     ];
@@ -639,7 +642,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabButton(tab) {
     return html`
-      <paper-button
+      <button
         id="${tab.id}-button"
         controls="${tab.id}"
         class="${tab.id === this.activeTab && !this.disabled ? "active" : ""}"
@@ -651,7 +654,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
-      </paper-button>
+      </button>
       ${this._tabTooltip(tab)}
     `;
   }
@@ -677,15 +680,24 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @memberof A11yTabs
    */
   _tabIcon(tab, icon) {
-    return html`
-      <iron-icon
-        class="icon"
-        ?hidden="${!tab[icon]}"
-        .icon="${tab[icon]}"
-        .title="${tab[flag]}"
-      >
-      </iron-icon>
-    `;
+    return tab.flag
+      ? html`
+          <simple-icon
+            class="icon"
+            ?hidden="${!tab[icon]}"
+            .icon="${tab[icon]}"
+            .title="${tab.flag}"
+          >
+          </simple-icon>
+        `
+      : html`
+          <simple-icon
+            class="icon"
+            ?hidden="${!tab[icon]}"
+            .icon="${tab[icon]}"
+          >
+          </simple-icon>
+        `;
   }
 
   /**

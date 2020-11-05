@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+
 /**
  * `simple-modal`
  * `A simple modal that ensures accessibility and stack order context appropriately`
@@ -34,10 +37,6 @@ class SimpleModal extends LitElement {
         }
 
         :host([hidden]) {
-          display: none;
-        }
-
-        paper-dialog-scrollable:not(:defined) {
           display: none;
         }
 
@@ -107,9 +106,9 @@ class SimpleModal extends LitElement {
           );
         }
 
-        #close iron-icon {
-          width: var(--simple-modal-titlebar-icon-width, 16px);
-          height: var(--simple-modal-titlebar-icon-height, 16px);
+        #close simple-icon {
+          --simple-icon-height: var(--simple-modal-titlebar-icon-height, 16px);
+          --simple-icon-width: var(--simple-modal-titlebar-icon-width, 16px);
           color: var(--simple-modal-titlebar-color, #444);
         }
 
@@ -169,13 +168,16 @@ class SimpleModal extends LitElement {
           ?hidden="${!this.opened}"
           label="${this.closeLabel}"
         >
-          <iron-icon aria-hidden="true" icon="${this.closeIcon}"></iron-icon>
+          <simple-icon
+            aria-hidden="true"
+            icon="${this.closeIcon}"
+          ></simple-icon>
         </button>
       </div>
       <div id="headerbar"><slot name="header"></slot></div>
-      <paper-dialog-scrollable id="simple-modal-content">
+      <div id="simple-modal-content">
         <slot name="content"></slot>
-      </paper-dialog-scrollable>
+      </div>
       <div class="buttons">
         <slot name="buttons"></slot>
       </div>
@@ -247,9 +249,6 @@ class SimpleModal extends LitElement {
     this.modal = false;
     setTimeout(() => {
       import("@polymer/paper-dialog/paper-dialog.js");
-      import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icon/iron-icon.js");
     }, 0);
   }
   /**

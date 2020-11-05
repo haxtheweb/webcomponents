@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "editable-list",
-      "description": "`editable-list`\n`a listing of items that can be edited in place with operations`\n\nEvents:\n\n  * `edit-mode-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `activeElement` - Active element being worked on in the list\n\n  * `edit-mode` {`boolean`} - ability to edit the items in the list\n\n  * `items` {`any[]`} - items array\n\nProperties:\n\n  * `activeElement` - Active element being worked on in the list\n\n  * `editMode` {`boolean`} - ability to edit the items in the list\n\n  * `items` {`any[]`} - items array",
+      "description": "`editable-list`\n`a listing of items that can be edited in place with operations`\n\nEvents:\n\n  * `edit-mode-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-height\": string; \"--simple-modal-max-height\": string; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `activeElement` - Active element being worked on in the list\n\n  * `edit-mode` {`boolean`} - ability to edit the items in the list\n\n  * `items` {`any[]`} - items array\n\nProperties:\n\n  * `activeElement` - Active element being worked on in the list\n\n  * `editMode` {`boolean`} - ability to edit the items in the list\n\n  * `items` {`any[]`} - items array",
       "attributes": [
         {
           "name": "activeElement",
@@ -24,7 +24,7 @@
         },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; }>`} - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-height\": string; \"--simple-modal-max-height\": string; }; invokedBy: any; clone: boolean; }>`} - "
         },
         {
           "name": "onsimple-modal-hide",
@@ -81,7 +81,7 @@
     },
     {
       "name": "editable-list",
-      "description": "`editable-list`\n`a listing of items that can be edited in place with operations`\n\nEvents:\n\n  * `edit-mode-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `items` {`never[]`} - ",
+      "description": "`editable-list`\n`a listing of items that can be edited in place with operations`\n\nEvents:\n\n  * `edit-mode-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-height\": string; \"--simple-modal-max-height\": string; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `items` {`never[]`} - ",
       "attributes": [
         {
           "name": "onedit-mode-changed",
@@ -89,7 +89,7 @@
         },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; }>`} - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-height\": string; \"--simple-modal-max-height\": string; }; invokedBy: any; clone: boolean; }>`} - "
         },
         {
           "name": "onsimple-modal-hide",
