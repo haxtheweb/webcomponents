@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -416,20 +415,18 @@ class LrnappStudioSubmissionPage extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener(
-        "submissionDeleteClicked",
-        this._submissionDeleteClicked.bind(this)
-      );
-      this.addEventListener(
-        "submissionPublishClicked",
-        this._submissionPublishClicked.bind(this)
-      );
-      this.addEventListener(
-        "submissionSaveDraftClicked",
-        this._submissionSaveDraftClicked.bind(this)
-      );
-    });
+    this.addEventListener(
+      "submissionDeleteClicked",
+      this._submissionDeleteClicked.bind(this)
+    );
+    this.addEventListener(
+      "submissionPublishClicked",
+      this._submissionPublishClicked.bind(this)
+    );
+    this.addEventListener(
+      "submissionSaveDraftClicked",
+      this._submissionSaveDraftClicked.bind(this)
+    );
   }
   disconnectedCallback() {
     this.removeEventListener(

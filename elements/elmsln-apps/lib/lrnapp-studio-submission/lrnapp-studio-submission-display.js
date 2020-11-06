@@ -107,9 +107,12 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
         .top {
           top: 8em;
         }
+        div.card {
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+        }
       </style>
       <div class="submission-page">
-        <paper-card class="submission-page-card ferpa-protect">
+        <div class="submission-page-card ferpa-protect card">
           <div class="card-content">
             <lrndesign-avatar
               class="center"
@@ -231,7 +234,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
               </lrndesign-contentblock>
             </template>
           </div>
-        </paper-card>
+        </div>
       </div>
     `;
   }

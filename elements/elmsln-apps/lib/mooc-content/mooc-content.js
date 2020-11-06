@@ -18,7 +18,6 @@ import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "../elmsln-base-deps.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 /**
  * `lrnapp-book`
  * A LRN element
@@ -357,11 +356,9 @@ class MoocContent extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      if (window.Drupal) {
-        window.Drupal.attachBehaviors(document, window.Drupal.settings);
-      }
-    });
+    if (window.Drupal) {
+      window.Drupal.attachBehaviors(document, window.Drupal.settings);
+    }
   }
   /**
    * If the current route is outside the scope of our app then allow

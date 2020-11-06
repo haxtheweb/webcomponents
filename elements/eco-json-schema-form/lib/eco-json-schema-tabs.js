@@ -2,7 +2,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
 `eco-json-schema-tabs` takes in a JSON schema of type array and builds a form,
@@ -106,29 +105,27 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
    */
   _schemaChanged() {
     //make sure the content is there first
-    afterNextRender(this, () => {
-      this.shadowRoot.querySelectorAll(".item-fields").forEach((item) => {
-        let index = item.getAttribute("data-index"),
-          propertyName = this.propertyName,
-          tab = this.schema.properties[index],
-          prop = tab.name,
-          prefix = `${propertyName}.${prop}`;
-        this.dispatchEvent(
-          new CustomEvent("build-fieldset", {
-            bubbles: false,
-            cancelable: true,
-            composed: true,
-            detail: {
-              container: item,
-              path: prefix,
-              prefix: prefix,
-              properties: tab.schema.properties,
-              type: EcoJsonSchemaTabs.tag,
-              value: tab.value || {},
-            },
-          })
-        );
-      });
+    this.shadowRoot.querySelectorAll(".item-fields").forEach((item) => {
+      let index = item.getAttribute("data-index"),
+        propertyName = this.propertyName,
+        tab = this.schema.properties[index],
+        prop = tab.name,
+        prefix = `${propertyName}.${prop}`;
+      this.dispatchEvent(
+        new CustomEvent("build-fieldset", {
+          bubbles: false,
+          cancelable: true,
+          composed: true,
+          detail: {
+            container: item,
+            path: prefix,
+            prefix: prefix,
+            properties: tab.schema.properties,
+            type: EcoJsonSchemaTabs.tag,
+            value: tab.value || {},
+          },
+        })
+      );
     });
   }
 }

@@ -1,4 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 /**
  * `lrnsys-button-inner`
  * @element lrnsys-button-inner
@@ -41,7 +45,7 @@ class LrnsysButtonInner extends LitElement {
           ? html` <paper-avatar src="${this.avatar}"></paper-avatar> `
           : ""}
         ${this.icon != ""
-          ? html` <lrn-icon icon="${this.icon}"></lrn-icon> `
+          ? html` <simple-icon icon="${this.icon}"></simple-icon> `
           : ""}
         ${this.text != ""
           ? html`
@@ -54,21 +58,7 @@ class LrnsysButtonInner extends LitElement {
       <div><slot name="button"></slot><slot></slot></div>
     `;
   }
-  /**
-   * LitElement properties changed
-   */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "avatar" && this[propName] != "") {
-        import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
-      }
-      if (propName == "icon" && this[propName] != "") {
-        import("@lrnwebcomponents/simple-icon/simple-icon.js");
-        import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-        import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
-      }
-    });
-  }
+
   static get tag() {
     return "lrnsys-button-inner";
   }

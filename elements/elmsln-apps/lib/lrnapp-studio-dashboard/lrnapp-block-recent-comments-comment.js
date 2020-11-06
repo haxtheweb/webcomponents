@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
@@ -64,7 +63,7 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           display: flex;
         }
 
-        lrn-icon {
+        simple-icon {
           color: black;
           width: 100%;
         }
@@ -154,12 +153,10 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.$.wrapper.addEventListener("click", function (e) {
-        this.$.comment.classList.toggle("inactive", this.inactive);
-      });
-      this.addEventListener("iron-resize", this.onHeightChange.bind(this));
+    this.$.wrapper.addEventListener("click", function (e) {
+      this.$.comment.classList.toggle("inactive", this.inactive);
     });
+    this.addEventListener("iron-resize", this.onHeightChange.bind(this));
   }
   /**
    * detached life cycle

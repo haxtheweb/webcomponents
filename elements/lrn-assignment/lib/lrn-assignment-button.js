@@ -17,13 +17,13 @@ class LrnAssignmentButton extends LitElement {
           color: inherit;
           text-decoration: inherit;
         }
-        paper-button {
+        button {
           background: #b0e6f9;
         }
-        paper-button[complete] {
+        button[complete] {
           background: #e7ffe7;
         }
-        iron-icon {
+        simple-icon {
           margin-left: 8px;
           opacity: 0.8;
         }
@@ -38,16 +38,16 @@ class LrnAssignmentButton extends LitElement {
       <a href="${this.url}">
         ${this.open
           ? html`
-              <paper-button raised open
-                >${this.title} <iron-icon icon="lrn-icons:input"></iron-icon
-              ></paper-button>
+              <button raised open>
+                ${this.title} <simple-icon icon="lrn-icons:input"></simple-icon>
+              </button>
             `
           : ``}
         ${this.complete
           ? html`
-              <paper-button raised complete
-                >${this.title} <iron-icon icon="lrn-icons:done"></iron-icon
-              ></paper-button>
+              <button raised complete>
+                ${this.title} <simple-icon icon="lrn-icons:done"></simple-icon>
+              </button>
             `
           : ``}
       </a>

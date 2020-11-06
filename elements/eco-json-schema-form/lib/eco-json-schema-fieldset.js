@@ -1,7 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 /**
 `eco-json-schema-fieldset` takes in a JSON schema of type fieldset and builds a form,
@@ -84,27 +83,23 @@ class EcoJsonSchemaFieldset extends mixinBehaviors(
    */
   _schemaChanged() {
     //make sure the content is there first
-    afterNextRender(this, () => {
-      this.shadowRoot
-        .querySelectorAll(".item-fields")
-        .forEach((item, index) => {
-          let prefix = `${this.propertyName}`;
-          this.dispatchEvent(
-            new CustomEvent("build-fieldset", {
-              bubbles: false,
-              cancelable: true,
-              composed: true,
-              detail: {
-                container: item,
-                path: prefix,
-                prefix: prefix,
-                properties: this.schema.properties,
-                type: EcoJsonSchemaFieldset.tag,
-                value: this.schema.properties[index].value || {},
-              },
-            })
-          );
-        });
+    this.shadowRoot.querySelectorAll(".item-fields").forEach((item, index) => {
+      let prefix = `${this.propertyName}`;
+      this.dispatchEvent(
+        new CustomEvent("build-fieldset", {
+          bubbles: false,
+          cancelable: true,
+          composed: true,
+          detail: {
+            container: item,
+            path: prefix,
+            prefix: prefix,
+            properties: this.schema.properties,
+            type: EcoJsonSchemaFieldset.tag,
+            value: this.schema.properties[index].value || {},
+          },
+        })
+      );
     });
   }
 }

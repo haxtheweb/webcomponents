@@ -3,10 +3,9 @@ import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-input/paper-input.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
 `eco-json-schema-file` takes in a JSON schema of type number and string and
@@ -76,7 +75,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
           @apply --file-upload-drop-area;
         }
 
-        paper-button#button {
+        button#button {
           margin-bottom: 20px;
           @apply --file-upload-button;
         }
@@ -128,15 +127,15 @@ class EcoJsonSchemaFile extends mixinBehaviors(
 
       <div class="layout horizontal nowrap">
         <div>
-          <paper-button
+          <button
             id="button"
             on-click="_fileClick"
             alt="{{paperButtonAlt}}"
             raised=""
           >
-            <iron-icon icon="editor:attach-file"></iron-icon
-            >{{paperButtonTitle}}</paper-button
-          >
+            <simple-icon icon="editor:attach-file"></simple-icon
+            >{{paperButtonTitle}}
+          </button>
           <div id="UploadBorder">
             <div id="dropArea" hidden$="{{!_shownDropText}}">{{dropText}}</div>
             <template is="dom-repeat" items="{{files}}">
@@ -144,23 +143,23 @@ class EcoJsonSchemaFile extends mixinBehaviors(
                 <div class="name">
                   <span>{{item.name}}</span>
                   <div class="commands">
-                    <iron-icon
+                    <simple-icon
                       icon="autorenew"
                       title="{{retryText}}"
                       on-click="_retryUpload"
                       hidden$="{{!item.error}}"
-                    ></iron-icon>
-                    <iron-icon
+                    ></simple-icon>
+                    <simple-icon
                       icon="cancel"
                       title="{{removeText}}"
                       on-click="_cancelUpload"
                       hidden$="{{item.complete}}"
-                    ></iron-icon>
-                    <iron-icon
+                    ></simple-icon>
+                    <simple-icon
                       icon="check-circle"
                       title="{{successText}}"
                       hidden$="{{!item.complete}}"
-                    ></iron-icon>
+                    ></simple-icon>
                   </div>
                 </div>
                 <div class="error" hidden$="{{!item.error}}">{{errorText}}</div>

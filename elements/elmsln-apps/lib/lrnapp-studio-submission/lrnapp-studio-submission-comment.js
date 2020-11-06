@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -37,16 +36,16 @@ class LrnappStudioSubmissionComment extends PolymerElement {
         .right-actions {
           float: right;
         }
-        .paper-card-length-1 {
+        .card-length-1 {
           width: 85%;
           margin-bottom: 8px;
         }
-        .paper-card-length-2 {
+        .card-length-2 {
           width: 81%;
           margin-top: 0;
           margin-bottom: 8px;
         }
-        .paper-card-length-3 {
+        .card-length-3 {
           width: 77%;
           margin-top: 0;
           margin-bottom: 8px;
@@ -76,7 +75,7 @@ class LrnappStudioSubmissionComment extends PolymerElement {
           class="float-left"
         ></lrndesign-avatar>
       </div>
-      <div class$="card paper-card-length-[[comment.attributes.threadDepth]]">
+      <div class$="card card-length-[[comment.attributes.threadDepth]]">
         <div id="body" class="comment-body nowrap">
           <h4>
             [[comment.relationships.author.data.name]]
@@ -124,10 +123,8 @@ class LrnappStudioSubmissionComment extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.$.body.addEventListener("click", (e) => {
-        this.$.body.classList.toggle("nowrap");
-      });
+    this.$.body.addEventListener("click", (e) => {
+      this.$.body.classList.toggle("nowrap");
     });
   }
   /**

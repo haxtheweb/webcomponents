@@ -17,7 +17,10 @@ import "@polymer/app-route/app-route.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-course-banner/lrndesign-course-banner.js";
-import "@lrnwebcomponents/lrn-icon/lrn-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
@@ -320,11 +323,11 @@ class LrnappCis extends PolymerElement {
                         icon-class="grey lighten-5"
                         data-machine-name$="[[service.machine_name]]"
                       >
-                        <lrn-icon
+                        <simple-icon
                           data-machine-name$="[[service.machine_name]]"
                           icon="[[service.icon]]"
                           class="elmsln-hover-icon"
-                        ></lrn-icon>
+                        ></simple-icon>
                         <span data-machine-name$="[[service.machine_name]]"
                           >Make the [[service.title]] service</span
                         >
@@ -336,10 +339,10 @@ class LrnappCis extends PolymerElement {
                         href="[[service.url]]"
                         hover-class="[[service.color]] lighten-4"
                       >
-                        <lrn-icon
+                        <simple-icon
                           icon="[[service.icon]]"
                           class="elmsln-hover-icon"
-                        ></lrn-icon>
+                        ></simple-icon>
                         <span>[[service.title]]</span>
                       </lrnsys-button>
                     </template>
@@ -426,10 +429,10 @@ class LrnappCis extends PolymerElement {
               >Add</responsive-grid-col
             >
             <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2"
-              ><lrn-icon
+              ><simple-icon
                 icon="[[_activeService.icon]]"
                 class$="[[_activeService.color]]-text elmsln-hover-icon service-confirm-icon"
-              ></lrn-icon
+              ></simple-icon
             ></responsive-grid-col>
             <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3"
               ><strong>[[_activeService.title]]</strong></responsive-grid-col

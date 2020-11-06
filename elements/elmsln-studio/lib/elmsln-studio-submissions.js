@@ -5,7 +5,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
-import "@polymer/iron-icons/communication-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
 import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
