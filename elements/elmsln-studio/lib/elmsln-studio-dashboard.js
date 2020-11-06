@@ -317,7 +317,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           id="sub-${s.id}"
                           aria-describedby="sub-${s.id}-desc"
                           slot="label"
-                          href="/portfolios/${s.portfolioId}?submission=${s.id}"
+                          href="/project/${s.portfolioId}?submission=${s.id}"
                         >
                           ${s.assignment}
                         </elmsln-studio-link>
@@ -360,7 +360,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           id="feed-${f.id}"
                           aria-describedby="feed-${f.id}-desc"
                           slot="label"
-                          href="/portfolios/${f.portfolioId}?submission${f.submissionId}&comment=${f.id}"
+                          href="/project/${f.portfolioId}?submission${f.submissionId}&comment=${f.id}"
                         >
                           ${[f.firstName, f.lastName].join(" ")}'s feedback on
                           ${f.assignment}

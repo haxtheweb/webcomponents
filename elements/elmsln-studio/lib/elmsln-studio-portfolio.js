@@ -192,6 +192,10 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             --simple-colors-fixed-theme-light-blue-9
           );
         }
+        #prev-next-nav {
+          z-index: 10000;
+          display: flex;
+        }
         @media screen and (min-width: 600px) {
           :host {
             display: flex;
@@ -464,6 +468,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
               `}
         </aside>
       </div>
+      ${this.nav}
     `;
   }
 
@@ -480,6 +485,9 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
       comment: {
         type: String,
         attribute: "comment",
+      },
+      submissions: {
+        type: Array,
       },
       submissionFilter: {
         type: String,
@@ -514,6 +522,29 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     this.fetchData("submissions");
     this.fetchData("portfolios");
     this.fetchData("discussion");
+  }
+  get nav() {
+    let prevHref,
+      nextHref,
+      filters = [],
+      portfolio = this.portfolio || {},
+      prevLabel = !portfolio.prev ? "" : this.fullName(portfolio.prev),
+      nextLabel = !portfolio.next ? "" : this.fullName(portfolio.next);
+    if (!!this.submissionFilter)
+      filters.push(`submission=${this.submissionFilter}`);
+    if (!!this.comment) filters.push(`comment=true`);
+    if (!!this.sort) filters.push(`sort=${sort}`);
+    prevHref = (portfolio.prev || {}).id
+      ? `./${portfolio.prev.id}${
+          filters.length < 1 ? "" : `?${filters.join("&")}`
+        }`
+      : undefined;
+    nextHref = (portfolio.next || {}).id
+      ? `./${portfolio.next.id}${
+          filters.length < 1 ? "" : `?${filters.join("&")}`
+        }`
+      : undefined;
+    return this.prevNextNav(prevLabel, prevHref, nextLabel, nextHref);
   }
   get sortedSubmissions() {
     return !this.portfolio || !this.portfolio.submissions

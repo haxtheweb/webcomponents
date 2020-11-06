@@ -7,6 +7,7 @@ import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icons/communication-icons.js";
 import "./elmsln-studio-submission-card.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 
 /**
  * `elmsln-studio-submissions`

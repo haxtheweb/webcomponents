@@ -242,8 +242,11 @@ const ElmslnStudioStyles = function (SuperClass) {
             bottom: 0;
             margin: 0;
             background-color: #ffffff;
+            -webkit-box-shadow: 0px -1px 5px 0px #b0b0b0;
+            box-shadow: 0px -1px 5px 0px #b0b0b0;
           }
           #prev-next-nav {
+            flex: 1 0 100%;
             display: flex;
             align-items: stretch;
             justify-content: space-between;

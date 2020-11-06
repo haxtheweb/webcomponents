@@ -86,13 +86,13 @@ class ElmslnStudio extends router(
         </elmsln-studio-submissions>
         <elmsln-studio-portfolio
           ?demo-mode="${this.demoMode}"
-          route="portfolios"
+          route="project"
           .portfolio="${this.portfolio}"
           .feedback="${this.submissionFeedback}"
-          student-id="${this.query.student || ""}"
-          assignment-id="${this.query.assignment || ""}"
-          project-id="${this.query.project || ""}"
           ?sort-latest="${this.query.sort === "latest"}"
+          student-id="${this.query.student || ""}"
+          project-id="${this.query.project || ""}"
+          assignment-id="${this.query.assignment || ""}"
           submission-filter="${this.query.submission || ""}"
           comment="${this.query.comment || ""}"
           @fetch-data="${this._handleFetch}"
@@ -112,7 +112,6 @@ class ElmslnStudio extends router(
           .assignments="${this.assignments}"
           .assignment="${this.assignment}"
           .submission="${this.submission}"
-          .next="${this.nextAssignment}"
           @fetch-data="${this._handleFetch}"
         >
         </elmsln-studio-assignment>
@@ -174,7 +173,7 @@ class ElmslnStudio extends router(
       usersSource: {
         type: String,
         reflect: true,
-        attribute: "users",
+        attribute: "users-source",
       },
       route: { type: String },
       params: { type: Object },
@@ -198,8 +197,8 @@ class ElmslnStudio extends router(
         pattern: "submissions",
       },
       {
-        name: "portfolios",
-        pattern: "portfolios/:portfolio",
+        name: "project",
+        pattern: "project/:portfolio",
       },
       {
         name: "dashboard",
@@ -213,7 +212,6 @@ class ElmslnStudio extends router(
     super();
     window.ElmslnStudioPath = "";
     this.profiles = {};
-    this.users = {};
 
     this.route = "";
     this.params = {};
@@ -235,7 +233,7 @@ class ElmslnStudio extends router(
     import("./lib/elmsln-studio-assignments.js");
     import("./lib/elmsln-studio-assignment.js");
     import("./lib/elmsln-studio-portfolio.js");
-    this.fetchData("users");
+    this.fetchData(this.usersSource, "users");
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
@@ -287,6 +285,26 @@ class ElmslnStudio extends router(
     }
     return undefined;
   }
+  get filteredPortfolios() {
+    if (!this.params.portfolio || !this.portfolios) {
+      return undefined;
+    } else {
+      let prev,
+        prefix = !this.params.portfolio
+          ? undefined
+          : this.params.portfolio.replace(/-\w+$/, ""),
+        portfolios = { ...(this.portfolios || {}) };
+      if (!!prefix)
+        Object.keys(portfolios || {})
+          .filter((i) => i.replace(/-\w+$/, "") === prefix)
+          .forEach((i) => {
+            portfolios[i].prev = prev;
+            if (prev) prev.next = portfolios[i];
+            prev = portfolios[i];
+          });
+      return portfolios;
+    }
+  }
   get recentSubmissions() {
     return !this.completedSubmissions
       ? undefined
@@ -315,9 +333,8 @@ class ElmslnStudio extends router(
     return submissions && submissions[0] ? submissions[0] : undefined;
   }
   get portfolio() {
-    console.log("portfolios", this.portfolios, this.params.portfolio);
-    return this.params.portfolio && this.portfolios
-      ? this.portfolios[this.params.portfolio]
+    return this.params.portfolio && this.filteredPortfolios
+      ? this.filteredPortfolios[this.params.portfolio]
       : undefined;
   }
   get submissionFeedback() {
@@ -358,11 +375,9 @@ class ElmslnStudio extends router(
   }
 
   _handleFetch(e = { detail: {} }) {
-    console.log("_handleFetch", e);
     let type = e.detail.type,
       refresh = e.detail.refresh,
       source = `${type}Source`;
-    console.log("_handleFetch", type, refresh, source);
     if (refresh || !this.refreshDates[type]) {
       this.fetchData(this[source], type);
     }

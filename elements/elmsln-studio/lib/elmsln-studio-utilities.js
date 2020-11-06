@@ -302,7 +302,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
 
     getActivityLink(activity, nocomment = false) {
       return activity.activity === "submission"
-        ? `/portfolios/${activity.portfolioId || activity.id}${
+        ? `/project/${activity.portfolioId || activity.id}${
             activity.portfolioId ? `?submission=${activity.id}` : ""
           }${
             nocomment
@@ -312,10 +312,10 @@ const ElmslnStudioUtilities = function (SuperClass) {
               : `?comment=true`
           }`
         : activity.activity === "discussion"
-        ? `/portfolios/${activity.portfolioId || activity.submissionId}${
+        ? `/project/${activity.portfolioId || activity.submissionId}${
             activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
           }comment=${activity.id}`
-        : `/portfolios/${activity.portfolioId || activity.submissionId}${
+        : `/project/${activity.portfolioId || activity.submissionId}${
             activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
           }comment=${activity.feedbackId}`;
     }
@@ -376,7 +376,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
      * @returns {string} link
      */
     submissionLink(submission) {
-      return `/portfolios/${submission.userId}-${submission.projectId}?submission=${submission.id}`;
+      return `/project/${submission.userId}-${submission.projectId}?submission=${submission.id}`;
     }
 
     /**
@@ -394,7 +394,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
      * @returns {string} link
      */
     feedbackLink(feedback) {
-      return `/portfolios/${feedback.creator}-${feedback.projectId}?submission=${feedback.submissionId}&comment=${feedback.id}`;
+      return `/project/${feedback.creator}-${feedback.projectId}?submission=${feedback.submissionId}&comment=${feedback.id}`;
     }
 
     /**
@@ -413,7 +413,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
      * @returns {string} link
      */
     replyLink(reply) {
-      return `/portfolios/${reply.creator}-${reply.projectId}?submission=${reply.submissionId}&comment=${reply.id}`;
+      return `/project/${reply.creator}-${reply.projectId}?submission=${reply.submissionId}&comment=${reply.id}`;
     }
 
     /**
