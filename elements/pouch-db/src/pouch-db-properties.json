@@ -1,9 +1,1 @@
-{
-  "title": {
-    "name": "title",
-    "type": String,
-    "value": "pouch-db-default-value",
-    "reflectToAttribute": false,
-    "observer": false
-  }
-}
+{}

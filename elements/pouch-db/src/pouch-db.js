@@ -2,7 +2,6 @@
  * Copyright 2019
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "./lib/pouchdb.min.js";
 // register globally so we can make sure there is only one
 window.PouchDb = window.PouchDb || {};
@@ -18,6 +17,8 @@ window.PouchDb.requestAvailability = () => {
   return window.PouchDb.instance;
 };
 
+export const PouchDBElement = window.PouchDb.requestAvailability();
+
 /**
  * `pouch-db`
  * `read and write localized data elements`
@@ -25,9 +26,13 @@ window.PouchDb.requestAvailability = () => {
  * @demo demo/index.html
  * @element pouch-db
  */
-class PouchDb extends PolymerElement {
+class PouchDb extends HTMLElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
+  constructor() {
+    super();
+    this.title = "pouch-db-default-value";
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -39,7 +44,6 @@ class PouchDb extends PolymerElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    super.connectedCallback();
     window.addEventListener(
       "user-engagement",
       this.userEngagmentFunction.bind(this)
@@ -252,7 +256,6 @@ class PouchDb extends PolymerElement {
       this.userEngagmentFunction.bind(this)
     );
     window.removeEventListener("get-data", this.getDataFunction.bind(this));
-    super.disconnectedCallback();
   }
 }
 window.customElements.define(PouchDb.tag, PouchDb);

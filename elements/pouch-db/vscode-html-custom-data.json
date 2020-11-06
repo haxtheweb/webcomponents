@@ -3,12 +3,8 @@
   "tags": [
     {
       "name": "pouch-db",
-      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `show-data` {`CustomEvent<string[]>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `show-data` {`CustomEvent<string[]>`} - \n\nProperties:\n\n  * `title` {`string`} - ",
       "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: pouch-db-default-value"
-        },
         {
           "name": "onshow-data",
           "description": "`show-data` {`CustomEvent<string[]>`} - "
@@ -22,7 +18,7 @@
     },
     {
       "name": "pouch-db",
-      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `show-data` {`CustomEvent<string[]>`} - \n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `show-data` {`CustomEvent<string[]>`} - \n\nProperties:\n\n  * `title` {`string`} - ",
       "attributes": [
         {
           "name": "onshow-data",
