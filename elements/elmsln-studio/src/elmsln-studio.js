@@ -108,8 +108,10 @@ class ElmslnStudio extends router(
         <elmsln-studio-assignment
           ?demo-mode="${this.demoMode}"
           route="assignment"
+          .assignments="${this.assignments}"
           .assignment="${this.assignment}"
           .submission="${this.submission}"
+          .next="${this.nextAssignment}"
           @fetch-data="${this._handleFetch}"
         >
         </elmsln-studio-assignment>
@@ -246,6 +248,30 @@ class ElmslnStudio extends router(
     return this.assignments && this.params.assignment
       ? this.assignments[this.params.assignment]
       : undefined;
+  }
+  get lesson() {
+    let lessonId = (this.assignment || {}).lessonId;
+    return this.getLesson(lessonId);
+  }
+  get project() {
+    let projectId = (this.assignment || {}).projectId,
+      lessonId = (this.assignment || {}).lessonId;
+    return this.getProject(lessonId, projectId);
+  }
+  getLesson(lessonId) {
+    return !lessonId
+      ? undefined
+      : this.lessons[lessonId] || { assignments: [] };
+  }
+  getProject(lessonId, projectId) {
+    let lesson = this.getLesson(lessonId),
+      projects =
+        !lesson || !projectId
+          ? []
+          : (lesson.assignments || []).filter(
+              (assignment) => assignment.id === projectId
+            );
+    return projects ? projects[0] : undefined;
   }
   get recentDiscussions() {
     if (this.discussion) {

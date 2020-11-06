@@ -243,6 +243,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           ${this.sources} ${this.links} ${this.bodytext} ${this.actions}
         </article>
       </div>
+      ${this.nav}
     `;
   }
 
@@ -250,6 +251,9 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   static get properties() {
     return {
       ...super.properties,
+      assignments: {
+        type: Object,
+      },
       assignment: {
         type: Object,
       },
@@ -360,22 +364,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
             : [];
       }
     });
-    console.log(
-      "editable",
-      this.assignment,
-      this.submission,
-      !this.assignment ||
-        this.getStatus(
-          this.submission,
-          this.assignment,
-          "overdue",
-          "late",
-          "submitted",
-          "else"
-        ),
-      !this.assignment || this.getStatusColor(this.submission, this.assignment),
-      !this.assignment || this.getStatusIcon(this.submission, this.assignment)
-    );
+    console.log("editable", this.assignment.id);
   }
   get actions() {
     return !this.editable
@@ -564,8 +553,27 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           </section>
         `;
   }
+  get nav() {
+    let prevLabel = (this.prevAssign || {}).assignment || "",
+      nextLabel = (this.nextAssign || {}).assignment || "",
+      prevHref = (this.prevAssign || {}).id
+        ? `./${this.prevAssign.id}`
+        : undefined,
+      nextHref = (this.nextAssign || {}).id
+        ? `./${this.nextAssign.id}`
+        : undefined;
+    return this.prevNextNav(prevLabel, prevHref, nextLabel, nextHref);
+  }
   get newLinkType() {
     return this._getLinkType(this.__newLinkUrl);
+  }
+  get nextAssign() {
+    let temp = this.assignment ? this.assignment.next : undefined;
+    return temp ? (this.assignments || {})[temp] : undefined;
+  }
+  get prevAssign() {
+    let temp = this.assignment ? this.assignment.prev : undefined;
+    return temp ? (this.assignments || {})[temp] : undefined;
   }
   get sources() {
     let sourcesEmpty = (this.__sources || []).length < 1 && !this.editable;

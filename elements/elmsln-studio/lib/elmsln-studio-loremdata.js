@@ -78,12 +78,16 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       __demoImages: {
         type: Array,
       },
+      __prevAssignment: {
+        type: String,
+      },
     };
   }
 
   constructor() {
     super();
     this.__demoImages = [];
+    this.__prevAssignment = undefined;
     this.__imgCtr = 0;
     this.users = {
       ixp23: {
@@ -406,7 +410,6 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     ];
   }
   _profile(student, lorem) {
-    console.log("profiles", student);
     let profile = student;
     profile.submissions = lorem.sortDates(
       Object.keys(this.submissions)
@@ -444,13 +447,6 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   }
 
   _assets(type, topic, lorem) {
-    console.log(
-      "_assets",
-      this.sourcePath && this.__demoImages,
-      this.sourcePath && this.__demoImages.length > 0
-        ? this.__demoImages[this.__imgCtr % this.__demoImages.length]
-        : false
-    );
     if (!lorem) {
       return [];
     } else if (type === "body") {
@@ -612,6 +608,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         ]);
       this.assignments[assignment.id] = {
         id: assignment.id,
+        prev: this.__prevAssignment,
         order: order,
         lessonId: lessonId,
         projectId: projectId,
@@ -624,6 +621,10 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         feedbackInstructions: feedbackInstructions,
         body: lorem.randomParagraph(2, 6),
       };
+      if (!!this.__prevAssignment) {
+        this.assignments[this.__prevAssignment].next = assignment.id;
+      }
+      this.__prevAssignment = assignment.id;
       return this.assignments[assignment.id];
     }
   }
@@ -695,16 +696,6 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   _submission(assignmentId, creatorId, topic, types, date, lorem) {
     if (lorem) {
       this.__imgCtr++;
-      console.log(
-        "_submission",
-        this.__imgCtr,
-        this.sourcePath,
-        this.__demoImages,
-        this.__demoImages.length > 0,
-        this.sourcePath && this.__demoImages.length > 0
-          ? this.__demoImages[this.__imgCtr % this.__demoImages.length]
-          : false
-      );
       let id = `${assignmentId}-${creatorId}`,
         image = lorem.randomImageData(
           lorem.randomAspect(400, 1200, 400, 1200),

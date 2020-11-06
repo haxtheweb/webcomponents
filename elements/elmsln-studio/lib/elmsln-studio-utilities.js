@@ -487,6 +487,32 @@ const ElmslnStudioUtilities = function (SuperClass) {
         ? "right"
         : "center";
     }
+    prevNextNav(prevLabel, prevHref, nextLabel, nextHref) {
+      return html`
+        <div id="prev-next-nav">
+          <elmsln-studio-link
+            href="${prevHref}"
+            ?disabled="${!prevHref}"
+            icon="chevron-left"
+          >
+            <span class="prev-next-label">
+              <span>Previous</span>
+              <span>${prevLabel}</span>
+            </span>
+          </elmsln-studio-link>
+          <elmsln-studio-link
+            href="${nextHref}"
+            ?disabled="${!nextHref}"
+            icon="chevron-right"
+          >
+            <span slot="before" class="prev-next-label">
+              <span>Next</span>
+              <span>${nextLabel}</span>
+            </span>
+          </elmsln-studio-link>
+        </div>
+      `;
+    }
     loading(color, slot, size = "small") {
       return !slot
         ? html`<hexagon-loader

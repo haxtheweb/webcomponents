@@ -461,7 +461,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
     } else if (files && files[0]) {
       cover = `${fileicons}/${files[0].type}.svg`;
     }
-    console.log(submission, assets, img, files, cover);
     return cover;
   }
   get isFiltered() {

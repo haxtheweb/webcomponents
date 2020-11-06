@@ -219,6 +219,38 @@ const ElmslnStudioStyles = function (SuperClass) {
           .rubric-table tbody tr:nth-child(2n + 1) > * {
             background-color: #f8f8f8;
           }
+          #prev-next-nav {
+            align-items: center;
+            position: sticky;
+            bottom: 0;
+            margin: 0;
+            background-color: #ffffff;
+          }
+          #prev-next-nav {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+          }
+          #prev-next-nav elmsln-studio-link {
+            border: 1px solid #ddd;
+            flex: 1 1 50%;
+            padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
+          .prev-next-label span {
+            display: block;
+            font-weight: normal;
+            text-align: center;
+          }
+          .prev-next-label span:first-child {
+            flex: 1 0 auto;
+            font-size: calc(1.25 * var(--elmsln-studio-FontSize, 16px));
+            color: #4b4b4b;
+          }
+          .prev-next-label span:last-child {
+            flex: 1 1 auto;
+            font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
+            color: #222;
+          }
           @media screen and (min-width: 600px) {
             #studio-nav elmsln-studio-link {
               padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
