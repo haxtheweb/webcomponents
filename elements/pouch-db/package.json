@@ -49,7 +49,7 @@
     "@lrnwebcomponents/multiple-choice": "^2.7.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@polymer/paper-button": "^3.0.1",
+    
     "@webcomponents/webcomponentsjs": "2.4.4",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",

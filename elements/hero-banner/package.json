@@ -43,8 +43,6 @@
   "dependencies": {
     "@lrnwebcomponents/a11y-behaviors": "^2.7.10",
     "@lrnwebcomponents/simple-colors": "^2.7.10",
-    "@polymer/iron-image": "^3.0.0",
-    "@polymer/paper-button": "^3.0.1",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

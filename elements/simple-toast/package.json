@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/paper-button": "^3.0.1",
+    
     "@polymer/paper-toast": "^3.0.1",
     "lit-element": "2.4.0"
   },

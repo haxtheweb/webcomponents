@@ -41,10 +41,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/iron-icon": "^3.0.1",
-    "@polymer/iron-icons": "^3.0.1",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
+    "@lrnwebcomponents/hax-iconset": "^2.7.10",
     "@polymer/iron-selector": "^3.0.0",
-    "@polymer/paper-button": "^3.0.1",
+    
     "@polymer/paper-progress": "^3.0.0",
     "@polymer/paper-styles": "^3.0.0",
     "@polymer/polymer": "^3.3.1"

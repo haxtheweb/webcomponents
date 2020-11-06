@@ -5,12 +5,10 @@
   "main": "lrnapp-book.html",
   "dependencies": {
     "@polymer/polymer": "^3.2.0",
-    "@polymer/paper-button": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.0",
-    "@polymer/iron-icons": "^3.0.1",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/paper-styles": "^3.0.0",
-    "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/app-route": "^3.0.0",
     "@polymer/paper-slider": "^3.0.1"
   },

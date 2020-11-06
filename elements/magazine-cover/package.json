@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/iron-image": "^3.0.0",
+    
     "@lrnwebcomponents/simple-icon": "^2.7.10",
     "lit-element": "2.4.0"
   },

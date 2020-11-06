@@ -44,9 +44,7 @@
     "@lrnwebcomponents/lrndesign-avatar": "^2.7.10",
     "@polymer/iron-behaviors": "^3.0.1",
     "@polymer/iron-collapse": "^3.0.0",
-    "@polymer/iron-icon": "^3.0.1",
-    "@polymer/iron-icons": "^3.0.1",
-    "@polymer/paper-button": "^3.0.1",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

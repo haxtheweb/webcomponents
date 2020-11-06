@@ -41,6 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@polymer/paper-button": "^3.0.0",
     "@lrnwebcomponents/a11y-gif-player": "^2.7.10",
     "@lrnwebcomponents/aframe-player": "^2.7.10",
     "@lrnwebcomponents/citation-element": "^2.7.10",

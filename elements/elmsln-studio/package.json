@@ -45,8 +45,7 @@
     "@lrnwebcomponents/simple-fields": "^2.7.10",
     "@lrnwebcomponents/simple-modal": "^2.7.10",
     "@polymer/iron-ajax": "^3.0.0",
-    "@polymer/iron-icon": "^3.0.1",
-    "@polymer/iron-icons": "^3.0.1",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
     "lit-element": "2.4.0",
     "lit-element-router": "^2.0.3"
   },
