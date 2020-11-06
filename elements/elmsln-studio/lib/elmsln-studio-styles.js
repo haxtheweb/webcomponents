@@ -52,6 +52,16 @@ const ElmslnStudioStyles = function (SuperClass) {
           #studio-nav elmsln-studio-link:hover {
             --elmsln-studio-link-TextDecoration: underline !important;
           }
+          #message-404 {
+            display: flex;
+          }
+          #message-404 elmsln-studio-link {
+            color: blue;
+          }
+          #message-404 elmsln-studio-link:hover,
+          #message-404 elmsln-studio-link:focus-within {
+            text-decoration: underline;
+          }
           .filters {
             padding-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
             margin-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
@@ -235,6 +245,10 @@ const ElmslnStudioStyles = function (SuperClass) {
             border: 1px solid #ddd;
             flex: 1 1 50%;
             padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
+          #prev-next-nav elmsln-studio-link:focus-within,
+          #prev-next-nav elmsln-studio-link:hover {
+            border: 1px solid #000;
           }
           .prev-next-label span {
             display: block;

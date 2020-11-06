@@ -200,51 +200,55 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   }
   // render function
   render() {
-    return html`
-      ${this.breadcrumb} ${this.alert}
-      <div id="primary" class="view-assignment">
-        <article id="assignment">
-          <h1>
-            <span class="lesson-name">
-              ${!this.assignment
-                ? html`<em>Lesson</em>`
-                : this.assignment.lesson}
-            </span>
-            <span class="assignment-name">
-              ${!this.assignment
-                ? html`<em>Assignment</em>`
-                : this.assignment.assignment}
-            </span>
-          </h1>
-          ${!(this.assignment || {}).date
-            ? ""
-            : html`
-                <p class="assignment-date">
-                  Due
-                  <local-time
-                    month="long"
-                    day="numeric"
-                    year="numeric"
-                    hour="2-digit"
-                    minute="2-digit"
-                    second="2-digit"
-                    time-zone-name="short"
-                    datetime="${this.assignment.date}"
-                    >${this.dateFormat(this.assignment.date)}
-                  </local-time>
-                </p>
-              `}
-          <p class="assignment-body">
-            ${!this.assignment ? this.loading("grey") : this.assignment.body}
-          </p>
-          ${!(this.assignment || {}).rubric
-            ? ""
-            : this.rubricTable(this.assignment.rubric)}
-          ${this.sources} ${this.links} ${this.bodytext} ${this.actions}
-        </article>
-      </div>
-      ${this.nav}
-    `;
+    return this.assignments && !this.assignment
+      ? this.message404("Assignment", "Assignments", "/assignments")
+      : html`
+          ${this.breadcrumb} ${this.alert}
+          <div id="primary" class="view-assignment">
+            <article id="assignment">
+              <h1>
+                <span class="lesson-name">
+                  ${!this.assignment
+                    ? html`<em>Lesson</em>`
+                    : this.assignment.lesson}
+                </span>
+                <span class="assignment-name">
+                  ${!this.assignment
+                    ? html`<em>Assignment</em>`
+                    : this.assignment.assignment}
+                </span>
+              </h1>
+              ${!(this.assignment || {}).date
+                ? ""
+                : html`
+                    <p class="assignment-date">
+                      Due
+                      <local-time
+                        month="long"
+                        day="numeric"
+                        year="numeric"
+                        hour="2-digit"
+                        minute="2-digit"
+                        second="2-digit"
+                        time-zone-name="short"
+                        datetime="${this.assignment.date}"
+                        >${this.dateFormat(this.assignment.date)}
+                      </local-time>
+                    </p>
+                  `}
+              <p class="assignment-body">
+                ${!this.assignment
+                  ? this.loading("grey")
+                  : this.assignment.body}
+              </p>
+              ${!(this.assignment || {}).rubric
+                ? ""
+                : this.rubricTable(this.assignment.rubric)}
+              ${this.sources} ${this.links} ${this.bodytext} ${this.actions}
+            </article>
+          </div>
+          ${this.nav}
+        `;
   }
 
   // properties available to the custom element for data binding

@@ -487,6 +487,17 @@ const ElmslnStudioUtilities = function (SuperClass) {
         ? "right"
         : "center";
     }
+    message404(type, backLabel, backHref) {
+      return html` <div id="primary">
+        <p id="message-404">
+          ${type} does not exist. Return to&nbsp;<elmsln-studio-link
+            href="${backHref}"
+          >
+            ${backLabel} </elmsln-studio-link
+          >.
+        </p>
+      </div>`;
+    }
     prevNextNav(prevLabel, prevHref, nextLabel, nextHref) {
       return html`
         <div id="prev-next-nav">

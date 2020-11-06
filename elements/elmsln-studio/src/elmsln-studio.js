@@ -45,7 +45,8 @@ class ElmslnStudio extends router(
           >Submissions</elmsln-studio-link
         >
         <elmsln-studio-link
-          ?active="${this.route === "assignments"}"
+          ?active="${this.route === "assignments" ||
+          this.route === "assignment"}"
           href="/assignments"
           >Assignments</elmsln-studio-link
         >
