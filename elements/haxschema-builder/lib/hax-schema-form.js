@@ -23,7 +23,6 @@ class HaxSchemaForm extends PolymerElement {
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
-    import("app-datepicker/app-datepicker.js");
     import("@lrnwebcomponents/simple-picker/simple-picker.js");
     import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
     import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
