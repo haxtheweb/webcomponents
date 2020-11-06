@@ -72,7 +72,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
           -webkit-animation: ellipsis steps(4, end) 900ms infinite;
           animation: ellipsis steps(4, end) 900ms infinite;
           content: "...";
-          font-size: 150%;
+          font-size: 300%;
           left: 0;
           top: 0;
           width: 0px;

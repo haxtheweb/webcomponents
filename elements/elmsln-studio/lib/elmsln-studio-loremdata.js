@@ -732,6 +732,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         submission = {
           id: id,
           assignment: a && a.assignment ? a.assignment : "",
+          assignmentDate: (a || {}).date,
           project: p && p.project ? p.project : "",
           lesson: l && l.lesson ? l.lesson : "",
           portfolio: projectId ? `${projectId}-${creatorId}` : id,

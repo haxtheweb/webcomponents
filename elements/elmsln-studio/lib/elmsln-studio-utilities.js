@@ -106,14 +106,14 @@ const ElmslnStudioUtilities = function (SuperClass) {
         return item;
       });
     }
-    isEarly(date, date2) {
-      return new Date(date) > (date2 || new Date());
+    isEarly(due, submitted) {
+      return new Date(due) > (new Date(submitted) || new Date());
     }
-    onTime(date, date2) {
-      return new Date(date) === (date2 || new Date());
+    onTime(due, submitted) {
+      return new Date(due) === (new Date(submitted) || new Date());
     }
-    isLate(date, date2) {
-      return new Date(date) < (date2 || new Date());
+    isLate(due, submitted) {
+      return new Date(due) < (submitted ? new Date(submitted) : new Date());
     }
 
     getStatus(submission, assignment, ifOverdue, ifLate, ifSubmitted, ifElse) {

@@ -253,7 +253,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           accent-color="${this.isLate(a.date) ? "red" : "grey"}"
                           allow-grey
                           avatar="${this.isLate(a.date)
-                            ? "icons:assignment-late"
+                            ? "report-problem"
                             : "assignment"}"
                           invert
                         >
@@ -302,7 +302,17 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
               : html` <div slot="linklist">
                   ${(this.profile.submissions || []).slice(0, 5).map(
                     (s) => html`
-                      <nav-card-item>
+                      <nav-card-item
+                        id="due-${s.id}-item"
+                        accent-color="${this.isLate(s.assignmentDate, s.date)
+                          ? "amber"
+                          : "green"}"
+                        allow-grey
+                        avatar="${this.isLate(s.assignmentDate, s.date)
+                          ? "assignment-late"
+                          : "assignment-turned-in"}"
+                        invert
+                      >
                         <elmsln-studio-link
                           id="sub-${s.id}"
                           aria-describedby="sub-${s.id}-desc"
@@ -319,6 +329,11 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           ${this.dateFormat(s.date)}
                         </relative-time>
                       </nav-card-item>
+                      <simple-tooltip for="due-${s.id}-item" position="left">
+                        ${this.isLate(s.assignmentDate, s.date)
+                          ? "Submitted Late"
+                          : "Submitted"}
+                      </simple-tooltip>
                     `
                   )}
                 </div>`}
