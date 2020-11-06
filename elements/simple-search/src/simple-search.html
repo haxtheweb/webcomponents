@@ -1,12 +1,12 @@
-<paper-input
+<simple-fields-field
     id="input"
     label="${this.searchInputLabel}"
     ?always-float-label="${this.alwaysFloatLabel}"
     ?no-label-float="${this.noLabelFloat}"
-    @change="${this._handleChange}"
+    @value-changed="${this._handleChange}"
   >
     <simple-icon icon="${this.searchInputIcon}" slot="prefix"></simple-icon>
-  </paper-input>
+  </simple-fields-field>
   <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
     ${this._getResultsSpan(this.resultPointer, this.resultCount)}
   </div>
