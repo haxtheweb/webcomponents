@@ -1,0 +1,53 @@
+{
+  "name": "@lrnwebcomponents/simple-progress",
+  "wcfactory": {
+    "className": "SimpleProgress",
+    "customElementClass": "HTMLElement",
+    "elementName": "simple-progress",
+    "generator-wcfactory-version": "0.8.7",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/simple-progress.css",
+      "scss": "src/simple-progress.scss",
+      "html": "src/simple-progress.html",
+      "js": "src/simple-progress.js",
+      "properties": "src/simple-progress-properties.json",
+      "hax": "src/simple-progress-hax.json"
+    },
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "2.7.10",
+  "description": "a simple progress slider bar",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "simple-progress.js",
+  "module": "simple-progress.js",
+  "umd": "simple-progress.umd.js",
+  "scripts": {
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-progress/test/",
+    "start":"yarn run dev","build":"gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"gulp dev --gulpfile=gulpfile.cjs","serve":"es-dev-server -c ../../es-dev-server.config.js","lighthouse":"gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+    "web-animations-js":"2.3.2","@lrnwebcomponents/deduping-fix":"2.7.7","@polymer/iron-demo-helpers":"3.1.0","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.4.4","gulp-babel":"8.0.0","lodash":"4.17.20","polymer-cli":"1.9.11","es-dev-server":"1.57.7","concurrently":"5.3.0","polymer-build":"3.1.4","wct-browser-legacy":"1.0.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-progress",
+      "path": "./simple-progress.js",
+      "description": "`simple-progress`\n`a simple progress slider bar`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "simple-progress",
+      "path": "./src/simple-progress.js",
+      "description": "`simple-progress`\n`a simple progress slider bar`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

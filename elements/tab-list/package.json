@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/paper-tabs": "^3.0.0",
+    "@lrnwebcomponents/a11y-tabs": "^2.7.10",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

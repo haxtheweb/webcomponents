@@ -6,6 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import { SimpleToastStore } from "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "@lrnwebcomponents/simple-range-input/simple-range-input.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
@@ -65,17 +67,17 @@ Custom property | Description | Default
 #### Sliders
 Custom property | Description | Default
 ----------------|-------------|----------
-`--paper-slider-active-color` | slider color when active | `--a11y-media-accent-color`
-`--paper-slider-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`
-`--paper-slider-pin-color` | slider pin color | `--a11y-media-bg-color`
-`--paper-slider-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`
-`--paper-slider-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`
-`--paper-slider-knob-color` | slider knob color | `--a11y-media-accent-color`
-`--paper-slider-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`
-`--paper-slider-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`
-`--paper-slider-knob-border-color` | slider knob border color | `--a11y-media-accent-color`
-`--paper-slider-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`
-`--paper-slider-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`
+`--simple-range-input-active-color` | slider color when active | `--a11y-media-accent-color`
+`--simple-range-input-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`
+`--simple-range-input-pin-color` | slider pin color | `--a11y-media-bg-color`
+`--simple-range-input-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`
+`--simple-range-input-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`
+`--simple-range-input-knob-color` | slider knob color | `--a11y-media-accent-color`
+`--simple-range-input-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`
+`--simple-range-input-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`
+`--simple-range-input-knob-border-color` | slider knob border color | `--a11y-media-accent-color`
+`--simple-range-input-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`
+`--simple-range-input-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`
 
 #### Settings Menu
 Custom property | Description | Default
@@ -88,8 +90,8 @@ Custom property | Description | Default
 #### Link Sharing Toast
 Custom property | Description | Default
 ----------------|-------------|----------
-`--paper-toast-color` | toast text color | `--a11y-media-color`
-`--paper-toast-background-color` | toast background color | `--a11y-media-bg-color`
+`--simple-toast-color` | toast text color | `--a11y-media-color`
+`--simple-toast-background-color` | toast background color | `--a11y-media-bg-color`
  *
  * @element a11y-media-player
  * @extends SimpleColors
@@ -190,20 +192,30 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
             --a11y-media-faded-accent-color
           );
 
-          --paper-slider-active-color: var(--a11y-media-accent-color);
-          --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
-          --paper-slider-pin-color: var(--a11y-media-bg-color);
-          --paper-slider-pin-start-color: var(--a11y-media-bg-color);
-          --paper-slider-pin-end-color: var(--a11y-media-bg-color);
-          --paper-slider-knob-color: var(--a11y-media-accent-color);
-          --paper-slider-knob-start-color: var(--a11y-media-accent-color);
-          --paper-slider-knob-end-color: var(--a11y-media-bg-accent-color);
-          --paper-slider-knob-border-color: var(--a11y-media-accent-color);
-          --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
-          --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
+          --simple-range-input-active-color: var(--a11y-media-accent-color);
+          --simple-range-input-secondary-color: var(
+            --a11y-media-faded-accent-color
+          );
+          --simple-range-input-pin-color: var(--a11y-media-bg-color);
+          --simple-range-input-pin-start-color: var(--a11y-media-bg-color);
+          --simple-range-input-pin-end-color: var(--a11y-media-bg-color);
+          --simple-range-input-knob-color: var(--a11y-media-accent-color);
+          --simple-range-input-knob-start-color: var(--a11y-media-accent-color);
+          --simple-range-input-knob-end-color: var(
+            --a11y-media-bg-accent-color
+          );
+          --simple-range-input-knob-border-color: var(
+            --a11y-media-accent-color
+          );
+          --simple-range-input-knob-start-border-color: var(
+            --a11y-media-bg-color
+          );
+          --simple-range-input-knob-end-border-color: var(
+            --a11y-media-bg-color
+          );
 
-          --paper-toast-color: var(--a11y-media-color);
-          --paper-toast-background-color: var(--a11y-media-bg-color);
+          --simple-toast-color: var(--a11y-media-color);
+          --simple-toast-background-color: var(--a11y-media-bg-color);
 
           --a11y-media-transcript-color: var(
             --simple-colors-default-theme-grey-7,
@@ -720,8 +732,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         }
 
         absolute-position-behavior:not(:defined),
-        simple-tooltip:not(:defined),
-        paper-toast:not(:defined) {
+        simple-tooltip:not(:defined) {
           display: none;
         }
 
@@ -981,19 +992,21 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         <div id="progresslabel" class="sr-only">
           ${this._getLocal(this.localization, "seekSlider", "label")}
         </div>
-        <paper-slider
+        <simple-range-input
           id="slider"
           class="screen-only"
           aria-labelledby="progresslabel"
-          min="${0}"
-          max="${this.duration}"
-          secondary-progress="${this.buffered}"
-          @change="${this._handleSliderChanged}"
-          @dragging-changed="${this._handleSliderDragging}"
+          min="0"
+          .max="${this.duration}"
+          step="1"
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
+          @value-changed="${this._handleSliderChanged}"
+          @immediate-value-changed="${this._handleSliderDragging}"
           .value="${this.__currentTime}"
           ?disabled="${this.disableSeek || this.duration === 0}"
         >
-        </paper-slider>
+        </simple-range-input>
         <div id="controls" controls="innerplayer">
           <div id="controls-left">
             <a11y-media-button
@@ -1065,18 +1078,20 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 )}"
                 @click="${(e) => this.toggleMute()}"
               ></a11y-media-button>
-              <paper-slider
+              <simple-range-input
                 id="volume"
+                accent-color="${this.accentColor}"
+                ?dark="${this.dark}"
                 aria-labelledby="volume-slider-label"
                 label="${this._getLocal(this.localization, "volume", "label")}"
                 min="0"
                 max="100"
                 pin
                 step="10"
-                .value="${this.muted ? 0 : this.volume}"
-                @change="${this._handleVolumeChanged}"
+                value="${this.muted ? 0 : this.volume}"
+                @value-changed="${this._handleVolumeChanged}"
                 ?hidden="${this.responsiveSize === "xs"}"
-              ></paper-slider>
+              ></simple-range-input>
             </div>
             <span
               aria-live="polite"
@@ -1247,18 +1262,20 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               <div id="speed-label" class="setting-text">
                 ${this._getLocal(this.localization, "speed", "label")}
               </div>
-              <paper-slider
+              <simple-range-input
                 id="speed"
+                accent-color="${this.accentColor}"
+                ?dark="${this.dark}"
                 aria-labelledby="speed-label"
                 class="setting-slider setting-control"
                 min="0.5"
                 max="2.5"
                 pin
                 step="0.25"
-                .value="${this.playbackRate}"
-                @change="${this._handleSpeedChanged}"
+                value="${this.playbackRate}"
+                @value-changed="${this._handleSpeedChanged}"
               >
-              </paper-slider>
+              </simple-range-input>
             </div>
           </absolute-position-behavior>
         </div>
@@ -1420,23 +1437,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
           </div>
         </div>
       </div>
-      <paper-toast
-        id="link"
-        duration="5000"
-        text="Copied to clipboard: ${this.shareLink}"
-        ?disabled="${!this.linkable}"
-        ?hidden="${!this.linkable}"
-      >
-        <a11y-media-button
-          accent-color="${this.accentColor}"
-          ?dark="${this.dark}"
-          action="linkable"
-          icon="${this._getLocal(this.localization, "closeLink", "icon")}"
-          label="${this._getLocal(this.localization, "closeLink", "label")}"
-          tooltip-position="top"
-          @click="${this._handleCloseLink}"
-        ></a11y-media-button>
-      </paper-toast>
       <div id="bottom" class="sr-only"></div>`;
   }
 
@@ -1866,8 +1866,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     });
     setTimeout(() => {
       import("@lrnwebcomponents/simple-search/simple-search.js");
-      import("@polymer/paper-slider/paper-slider.js");
-      import("@polymer/paper-toast/paper-toast.js");
       import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
       import("@polymer/paper-toggle-button/paper-toggle-button.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
@@ -3291,8 +3289,14 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     document.body.appendChild(el);
     el.select();
     document.execCommand("copy");
+
     document.body.removeChild(el);
-    this.shadowRoot.querySelector("#link").open();
+    SimpleToastStore.showSimpleToast({
+      detail: {
+        duration: 3000,
+        text: `Copied to clipboard: ${this.shareLink}`,
+      },
+    });
   }
 
   /**
@@ -3373,7 +3377,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     let slider = this.shadowRoot
       ? this.shadowRoot.querySelector("#slider")
       : false;
-    this.seek(slider.immediateValue);
+    if (!this.playing || slider.immediateValue == this.__currentTime) {
+      this.seek(slider.immediateValue);
+    }
   }
 
   /**

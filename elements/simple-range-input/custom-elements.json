@@ -1,0 +1,29 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-range-input",
+      "path": "./simple-range-input.js",
+      "description": "`simple-range-input`\n`simple styling on a range input`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "simple-range-input",
+      "path": "./src/simple-range-input.js",
+      "description": "`simple-range-input`\n`simple styling on a range input`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

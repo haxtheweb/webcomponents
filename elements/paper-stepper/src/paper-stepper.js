@@ -101,8 +101,8 @@ class PaperStepper extends PolymerElement {
    * Returns the current progress value
    *
    * Depends on items to ensure that `max` is already set. Otherwise
-   * `paper-progress` doesn't show the bar on startup.
-   * TODO: Remove parameter `items` once paper-progress can handle
+   * `simple-progress` doesn't show the bar on startup.
+   * TODO: Remove parameter `items` once simple-progress can handle
    * setting the property `value` before property `max`.
    */
   _computeProgressValue(selected, items) {

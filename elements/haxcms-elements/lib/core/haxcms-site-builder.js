@@ -8,6 +8,8 @@ import {
 import { autorun, toJS } from "mobx";
 import { store } from "./haxcms-site-store.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "@lrnwebcomponents/simple-progress/simple-progress.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -40,7 +42,7 @@ class HAXCMSSiteBuilder extends LitElement {
           opacity: 1;
           visibility: visible;
         }
-        paper-progress {
+        simple-progress {
           display: block;
           width: 100%;
           position: fixed;
@@ -49,11 +51,10 @@ class HAXCMSSiteBuilder extends LitElement {
           right: 0;
           background-color: transparent;
           z-index: 1000;
-          --paper-progress-active-color: var(
+          --simple-progress-active-color: var(
             --haxcms-color,
             rgba(255, 255, 255, 0.5)
           );
-          --paper-progress-container-color: transparent;
         }
       `,
     ];
@@ -68,7 +69,7 @@ class HAXCMSSiteBuilder extends LitElement {
   render() {
     return html`
       <haxcms-site-router base-uri="${this.baseURI}"></haxcms-site-router>
-      <paper-progress .hidden="${!this.loading}" indeterminate></paper-progress>
+      <simple-progress .disabled="${!this.loading}"></simple-progress>
       <div id="slot"><slot></slot></div>
       <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
       <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
@@ -440,9 +441,6 @@ class HAXCMSSiteBuilder extends LitElement {
     var evt = document.createEvent("UIEvents");
     evt.initUIEvent("resize", true, false, window, 0);
     window.dispatchEvent(evt);
-    import("@polymer/paper-progress/paper-progress.js");
-    import("@lrnwebcomponents/simple-toast/simple-toast.js");
-    import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
     setTimeout(() => {
       window.addEventListener("hax-store-ready", this.storeReady.bind(this));
       window.addEventListener(

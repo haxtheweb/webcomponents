@@ -12,7 +12,7 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@polymer/paper-progress/paper-progress.js";
+import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";

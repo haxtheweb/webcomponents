@@ -42,17 +42,6 @@ class HAXCMSSiteEditorUI extends LitElement {
           :host([edit-mode]) {
             bottom: unset;
           }
-          :host([edit-mode]) simple-icon-button,
-          :host([edit-mode]) paper-avatar {
-            width: 24px;
-            height: 24px;
-            padding: 1px;
-            margin: 0;
-            --simple-icon-width: 20px;
-            --simple-icon-height: 20px;
-            --iron-icon-width: 20px;
-            --iron-icon-height: 20px;
-          }
         }
         /**
          * Dashboard open trumps all contextual settings

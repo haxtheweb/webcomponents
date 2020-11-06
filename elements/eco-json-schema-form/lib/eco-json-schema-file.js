@@ -6,6 +6,7 @@ import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/paper-input/paper-input.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
 `eco-json-schema-file` takes in a JSON schema of type number and string and
@@ -116,12 +117,12 @@ class EcoJsonSchemaFile extends mixinBehaviors(
           margin-top: 2px;
         }
 
-        paper-progress {
-          --paper-progress-active-color: #03a9f4;
+        simple-progress {
+          --simple-progress-color: #03a9f4;
         }
 
-        paper-progress[error] {
-          --paper-progress-active-color: #f40303;
+        simple-progress[error] {
+          --simple-progress-color: #f40303;
         }
       </style>
 

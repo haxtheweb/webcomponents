@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-tabs/paper-tabs.js";
+import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
+import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 /**
  * `tab-list`
  * @element tab-list
@@ -18,11 +19,11 @@ class TabList extends LitElement {
           padding: 16px;
           border-bottom: 1px solid black;
         }
-        paper-tabs {
+        a11y-tabs {
           align-items: center;
           justify-items: center;
         }
-        paper-tab a {
+        a11y-tab a {
           text-decoration: none;
           flex: unset;
           height: unset;
@@ -39,7 +40,7 @@ class TabList extends LitElement {
           overflow: hidden;
         }
         @media screen and (max-width: 600px) {
-          paper-tab {
+          a11y-tab {
             display: block;
           }
         }
@@ -49,14 +50,13 @@ class TabList extends LitElement {
   constructor() {
     super();
     this.tabs = [];
-    import("@polymer/paper-tabs/paper-tab.js");
   }
   render() {
     return html`
-      <paper-tabs>
+      <a11y-tabs>
         ${this.tabs.map(
           (tab) => html`
-            <paper-tab>
+            <a11y-tab label="${tab.label}">
               <a
                 target="_blank"
                 href="${tab.link}"
@@ -65,10 +65,10 @@ class TabList extends LitElement {
               >
                 <button raised>${tab.label}</button>
               </a>
-            </paper-tab>
+            </a11y-tab>
           `
         )}
-      </paper-tabs>
+      </a11y-tabs>
     `;
   }
   static get tag() {

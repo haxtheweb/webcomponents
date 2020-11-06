@@ -42,21 +42,21 @@
   --a11y-media-button-toggle-color: var(--a11y-media-faded-accent-color);
 
   /* slider */
-  --paper-slider-active-color: var(--a11y-media-accent-color);
-  --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
-  --paper-slider-pin-color: var(--a11y-media-bg-color);
-  --paper-slider-pin-start-color: var(--a11y-media-bg-color);
-  --paper-slider-pin-end-color: var(--a11y-media-bg-color);
-  --paper-slider-knob-color: var(--a11y-media-accent-color);
-  --paper-slider-knob-start-color: var(--a11y-media-accent-color);
-  --paper-slider-knob-end-color: var(--a11y-media-bg-accent-color);
-  --paper-slider-knob-border-color: var(--a11y-media-accent-color);
-  --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
-  --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
+  --simple-range-input-active-color: var(--a11y-media-accent-color);
+  --simple-range-input-secondary-color: var(--a11y-media-faded-accent-color);
+  --simple-range-input-pin-color: var(--a11y-media-bg-color);
+  --simple-range-input-pin-start-color: var(--a11y-media-bg-color);
+  --simple-range-input-pin-end-color: var(--a11y-media-bg-color);
+  --simple-range-input-knob-color: var(--a11y-media-accent-color);
+  --simple-range-input-knob-start-color: var(--a11y-media-accent-color);
+  --simple-range-input-knob-end-color: var(--a11y-media-bg-accent-color);
+  --simple-range-input-knob-border-color: var(--a11y-media-accent-color);
+  --simple-range-input-knob-start-border-color: var(--a11y-media-bg-color);
+  --simple-range-input-knob-end-border-color: var(--a11y-media-bg-color);
 
   /* link sharing toast */
-  --paper-toast-color: var(--a11y-media-color);
-  --paper-toast-background-color: var(--a11y-media-bg-color);
+  --simple-toast-color: var(--a11y-media-color);
+  --simple-toast-background-color: var(--a11y-media-bg-color);
   
   /* transcript */
   --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-7, #666666);
@@ -499,8 +499,7 @@ absolute-position-behavior simple-field-field {
 }
 
 absolute-position-behavior:not(:defined), 
-simple-tooltip:not(:defined), 
-paper-toast:not(:defined) {
+simple-tooltip:not(:defined) {
   display: none;
 }
 

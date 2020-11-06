@@ -2,8 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
-
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./lib/simple-toast-el.js";
 // register globally so we can make sure there is only one
 window.SimpleToast = window.SimpleToast || {};
 // request if this exists. This helps invoke the element existing in the dom
@@ -17,6 +18,7 @@ window.SimpleToast.requestAvailability = () => {
   }
   return window.SimpleToast.instance;
 };
+export const SimpleToastStore = window.SimpleToast.requestAvailability();
 
 /**
  * `simple-toast`
@@ -24,7 +26,7 @@ window.SimpleToast.requestAvailability = () => {
  * @demo demo/index.html
  * @element simple-toast
  */
-class SimpleToast extends LitElement {
+class SimpleToast extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -40,11 +42,6 @@ class SimpleToast extends LitElement {
   constructor() {
     super();
     this.setDefaultToast();
-  }
-  firstUpdated() {
-    setTimeout(() => {
-      import("@polymer/paper-toast/paper-toast.js");
-    }, 0);
   }
   connectedCallback() {
     super.connectedCallback();
@@ -85,7 +82,9 @@ class SimpleToast extends LitElement {
     this.text = "Saved";
     this.classStyle = "";
     this.closeText = "Close";
-    this.duration = 4000;
+    this.duration = 3000;
+    this.accentColor = "grey";
+    this.dark = false;
     this.eventCallback = null;
     this.closeButton = true;
     while (this.firstChild !== null) {
@@ -120,9 +119,13 @@ class SimpleToast extends LitElement {
     if (e.detail.slot) {
       this.appendChild(e.detail.slot);
     }
-    setTimeout(() => {
-      this.show();
-    }, 5);
+    if (e.detail.accentColor) {
+      this.accentColor = e.detail.accentColor;
+    }
+    if (e.detail.dark) {
+      this.dark = e.detail.dark;
+    }
+    this.show();
   }
 
   show(e) {

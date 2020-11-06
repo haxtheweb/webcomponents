@@ -44,18 +44,20 @@
     </div>
   </div>
   <div id="progresslabel" class="sr-only">${this._getLocal(this.localization,'seekSlider', 'label')}</div>
-  <paper-slider id="slider"
+  <simple-range-input id="slider"
     class="screen-only"
     aria-labelledby="progresslabel"
-    min="${0}"
-    max="${this.duration}"
-    secondary-progress="${this.buffered}"
-    @change="${this._handleSliderChanged}"
-    @dragging-changed="${this._handleSliderDragging}"
+    min="0"
+    .max="${this.duration}"
+    step="1"
+    accent-color="${this.accentColor}"
+    ?dark="${this.dark}"
+    @value-changed="${this._handleSliderChanged}"
+    @immediate-value-changed="${this._handleSliderDragging}"
     .value="${this.__currentTime}"
     ?disabled="${this.disableSeek || this.duration === 0}"
   >
-  </paper-slider>
+  </simple-range-input>
   <div id="controls" controls="innerplayer">
     <div id="controls-left">
       <a11y-media-button
@@ -106,18 +108,20 @@
           label="${this._getLocal(this.localization,this.muted ? 'unmute' : 'mute', 'label')}"
           @click="${e => this.toggleMute()}"
         ></a11y-media-button>
-        <paper-slider
+        <simple-range-input
           id="volume"
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           aria-labelledby="volume-slider-label"
           label="${this._getLocal(this.localization,'volume','label')}"
           min="0"
           max="100"
           pin
           step="10"
-          .value="${this.muted ? 0 : this.volume}"
-          @change="${this._handleVolumeChanged}" 
+          value="${this.muted ? 0 : this.volume}"
+          @value-changed="${this._handleVolumeChanged}" 
           ?hidden="${this.responsiveSize === 'xs'}"
-        ></paper-slider>
+        ></simple-range-input>
       </div>
       <span aria-live="polite" class="play-status control-bar hide-full-xs">
         <span id="statbar">${this.status}</span>
@@ -270,17 +274,19 @@
         <div id="speed-label" class="setting-text">
           ${this._getLocal(this.localization,'speed','label')}
         </div>
-        <paper-slider
+        <simple-range-input
           id="speed"
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           aria-labelledby="speed-label"
           class="setting-slider setting-control"
           min="0.5"
           max="2.5"
           pin
           step="0.25"
-          .value="${this.playbackRate}"
-          @change="${this._handleSpeedChanged}">
-        </paper-slider>
+          value="${this.playbackRate}"
+          @value-changed="${this._handleSpeedChanged}">
+        </simple-range-input>
       </div>
     </absolute-position-behavior>
   </div>
@@ -383,19 +389,4 @@ ${this.poster
     </div>
   </div>
 </div>
-<paper-toast id="link" 
-  duration="5000" 
-  text="Copied to clipboard: ${this.shareLink}"
-  ?disabled="${!this.linkable}" 
-  ?hidden="${!this.linkable}">
-  <a11y-media-button
-          accent-color="${this.accentColor}"
-          ?dark="${this.dark}"
-    action="linkable"
-    icon="${this._getLocal(this.localization,'closeLink','icon')}"
-    label="${this._getLocal(this.localization,'closeLink','label')}"
-    tooltip-position="top"
-    @click="${this._handleCloseLink}"
-  ></a11y-media-button>
-</paper-toast>
 <div id="bottom" class="sr-only"></div>

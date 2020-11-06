@@ -30,7 +30,7 @@
       <simple-icon-button id="helpbutton" icon="icons:help" title="help"></simple-icon-button>
       <simple-tooltip for="helpbutton">Help</simple-tooltip>
     </div>
-    <paper-progress value="10" indeterminate bottom-item hidden$="[[!__loading]]"></paper-progress>
+    <simple-progress indeterminate disabled$="[[!__loading]]"></simple-progress>
   </app-toolbar>
 </app-header>
 <iron-pages selected="[[selectedView]]">

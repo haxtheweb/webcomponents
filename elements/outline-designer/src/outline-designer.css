@@ -47,11 +47,11 @@ app-toolbar {
   opacity: 0.8;
 }
 
-paper-progress {
+simple-progress {
   display: block;
   width: 100%;
-  --paper-progress-active-color: rgba(255, 255, 255, 0.5);
-  --paper-progress-container-color: transparent;
+  --simple-progress-active-color: rgba(255, 255, 255, 0.5);
+  --simple-progress-container-color: transparent;
 }
 
 .card-wrapper {

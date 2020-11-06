@@ -1,7 +1,7 @@
 import { html } from "@polymer/polymer/polymer-element.js";
 import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
-import "@polymer/paper-progress/paper-progress.js";
+import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";

@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-tabs/paper-tabs.js";
+import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
+import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 import "@polymer/marked-element/marked-element.js";
-import "@polymer/iron-pages/iron-pages.js";
 import "./lib/lrn-markdown-editor-editor.js";
 /**
  * `lrn-markdown-editor`
@@ -31,11 +31,13 @@ class LrnMarkdownEditor extends LitElement {
 
         #split-pane {
           display: flex;
+          width: 100%;
         }
 
         .split-pane > * {
           flex: 1 1 auto;
           min-height: 160px;
+          width: calc(50% - 16px);
         }
 
         .preview-pane {
@@ -47,7 +49,7 @@ class LrnMarkdownEditor extends LitElement {
           width: calc(100% - 32px);
         }
 
-        paper-tabs {
+        a11y-tabs {
           background: #f5f5f5;
           border-style: solid;
           border-color: #dcdcdc;
@@ -86,65 +88,49 @@ class LrnMarkdownEditor extends LitElement {
   render() {
     return html`
       <div class="mtz-toolbar">
-        <paper-tabs
-          selected="${this.selected}"
-          @selected-changed="${this.__selectedChanged}"
-        >
-          <paper-tab>Write</paper-tab>
-          <paper-tab>Preview</paper-tab>
-          <paper-tab>Split View</paper-tab>
-        </paper-tabs>
-      </div>
-
-      <iron-pages
-        selected="${this.selected}"
-        @selected-changed="${this.__selectedChanged}"
-      >
-        <section>
-          <div class="pane">
-            <lrn-markdown-editor-editor
-              content="${this.content}"
-              @content-changed="${this.__contentChanged}"
-            ></lrn-markdown-editor-editor>
-          </div>
-        </section>
-
-        <section>
-          <div class="pane">
-            <marked-element
-              markdown="${this.content}"
-              @markdown-changed="${this.__contentChanged}"
-            ></marked-element>
-          </div>
-        </section>
-
-        <section class="split-pane">
-          <div class="pane">
-            <div class="container-flex">
+        <a11y-tabs>
+          <a11y-tab id="tab-0" label="Write">
+            <div class="pane">
               <lrn-markdown-editor-editor
                 content="${this.content}"
                 @content-changed="${this.__contentChanged}"
               ></lrn-markdown-editor-editor>
+            </div>
+          </a11y-tab>
+          <a11y-tab id="tab-1" label="Preview">
+            <div class="pane">
               <marked-element
-                class="preview-pane"
                 markdown="${this.content}"
                 @markdown-changed="${this.__contentChanged}"
               ></marked-element>
             </div>
-          </div>
-        </section>
-      </iron-pages>
+          </a11y-tab>
+          <a11y-tab id="tab-2" label="Split View">
+            <div class="split-pane">
+              <div class="pane">
+                <div class="container-flex">
+                  <lrn-markdown-editor-editor
+                    content="${this.content}"
+                    @content-changed="${this.__contentChanged}"
+                  ></lrn-markdown-editor-editor>
+                  <marked-element
+                    class="preview-pane"
+                    markdown="${this.content}"
+                    @markdown-changed="${this.__contentChanged}"
+                  ></marked-element>
+                </div>
+              </div>
+            </div>
+          </a11y-tab>
+        </a11y-tabs>
+      </div>
     `;
-  }
-  __selectedChanged(e) {
-    this.selected = e.detail.value;
   }
   __contentChanged(e) {
     this.content = e.detail.value;
   }
   constructor() {
     super();
-    this.selected = "0";
     this.layout = "0";
     this.content = "";
     this.cookies = true;
@@ -158,10 +144,6 @@ class LrnMarkdownEditor extends LitElement {
     return {
       content: {
         type: String,
-      },
-      selected: {
-        type: String,
-        reflect: true,
       },
       layout: {
         type: String,
@@ -180,9 +162,6 @@ class LrnMarkdownEditor extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "selected") {
-        this._selectedChanged(this[propName]);
-      }
       if (propName === "content") {
         // notify
         this.dispatchEvent(
@@ -194,9 +173,6 @@ class LrnMarkdownEditor extends LitElement {
         );
       }
     });
-  }
-  static get observers() {
-    return ["_selectedChanged(selected)"];
   }
 
   _selectedChanged(selected) {

@@ -3,6 +3,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { SimpleToastStore } from "@lrnwebcomponents/simple-toast/simple-toast.js";
 /**
  * `multiple-choice`
  * `Ask the user a question from a set of possible answers.`
@@ -115,7 +116,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   }
   constructor() {
     super();
-    import("@polymer/paper-toast/paper-toast.js");
     this.randomize = false;
     this.hideButtons = false;
     this.title = "";
@@ -234,19 +234,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
               </div>
             `
           : ``}
-        <paper-toast
-          id="toast"
-          scroll-action="cancel"
-          duration="4000"
-          position-target="${this.positionTarget}"
-          class="fit-bottom ${this.__toastColor}"
-        >
-          ${this.__toastText}
-          <simple-icon
-            icon="${this.__toastIcon}"
-            style="margin-left:16px;"
-          ></simple-icon>
-        </paper-toast>
       </confetti-container>
     `;
   }
@@ -263,9 +250,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
        */
       title: {
         type: String,
-      },
-      positionTarget: {
-        type: Object,
       },
       /**
        * Support disabling interaction with the entire board
@@ -391,7 +375,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    * Reset user answers and shuffle the board again.
    */
   resetAnswers(e) {
-    this.shadowRoot.querySelector("#toast").hide();
+    SimpleToastStore.hide();
     this.displayedAnswers = [];
     const answers = this.answers;
     this.answers.forEach((el) => {
@@ -432,7 +416,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    * that they want to see how they did.
    */
   _verifyAnswers(e) {
-    this.shadowRoot.querySelector("#toast").hide();
+    SimpleToastStore.hide();
     let gotRight = this.checkAnswers();
     // see if they got this correct based on their answers
     if (gotRight) {
@@ -450,7 +434,19 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       this.__toastIcon = this.incorrectIcon;
       this.__toastText = this.incorrectText;
     }
-    this.shadowRoot.querySelector("#toast").show();
+    let si = document.createElement("simple-icon");
+    si.icon = this.__toastIcon;
+    si.style.marginLeft = "16px";
+    si.accentColor = this.__toastColor;
+    si.dark = true;
+    SimpleToastStore.showSimpleToast({
+      detail: {
+        duration: 3000,
+        text: this.__toastText,
+        slot: si,
+        accentColor: this.__toastColor,
+      },
+    });
     // start of data passing, this is a prototype atm
     let eventData = {
       activityDisplay: "answered",
@@ -693,11 +689,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    if (this.shadowRoot.querySelector("#positionTarget")) {
-      this.positionTarget = this.shadowRoot.querySelector("#positionTarget");
-    }
     this.setAttribute("typeof", "oer:Assessment");
-    this.shadowRoot.querySelector("#toast").fitInto = this;
   }
 }
 window.customElements.define(MultipleChoice.tag, MultipleChoice);
