@@ -149,7 +149,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           }
           .card.due {
             --lrndesign-avatar-border-radius: 0%;
-            --nav-card-item-avatar-width: 20px;
+            --nav-card-item-avatar-width: 40px;
           }
         }
         @media screen and (min-width: 900px) {
@@ -249,6 +249,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                     ${(this.profile.due || []).slice(0, 5).map(
                       (a) => html`
                         <nav-card-item
+                          id="due-${a.id}-item"
                           accent-color="${this.isLate(a.date) ? "red" : "grey"}"
                           allow-grey
                           avatar="${this.isLate(a.date)
@@ -272,6 +273,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                             ${this.dateFormat(a.date, "long")}
                           </relative-time>
                         </nav-card-item>
+                        <simple-tooltip for="due-${a.id}-item" position="left">
+                          ${this.isLate(a.date) ? "Overdue" : "Not Submitted"}
+                        </simple-tooltip>
                       `
                     )}
                   </div>

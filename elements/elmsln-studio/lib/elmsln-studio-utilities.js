@@ -136,7 +136,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
       return this.getStatus(
         submission,
         assignment,
-        "hax:no-assignment",
+        "report-problem",
         "assignment-late",
         "assignment-turned-in",
         "assignment"
@@ -147,7 +147,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
         submission,
         assignment,
         "red",
-        "light-green",
+        "amber",
         "green",
         "grey"
       );
@@ -488,13 +488,13 @@ const ElmslnStudioUtilities = function (SuperClass) {
         : "center";
     }
     message404(type, backLabel, backHref) {
-      return html` <div id="primary">
+      return html` <div id="primary" class="primary-404">
         <p id="message-404">
-          ${type} does not exist. Return to&nbsp;<elmsln-studio-link
-            href="${backHref}"
+          ${type} with this URL does not exist. Return to
+          <elmsln-studio-link href="${backHref}">
+            ${backLabel}</elmsln-studio-link
           >
-            ${backLabel} </elmsln-studio-link
-          >.
+          to search for assignment.
         </p>
       </div>`;
     }

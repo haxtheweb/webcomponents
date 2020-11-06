@@ -49,13 +49,52 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           justify-content: center;
           align-items: center;
           margin: 0;
-          font-size: calc(0.8 * var(--elmsln-studio-FontSize, 16px));
+          font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
           --lrndesign-avatar-width: calc(
             1.5 * var(--elmsln-studio-FontSize, 16px)
           );
+          background-color: var(
+            --elmsln-studio-assignment-backgroundColor,
+            #ffffff
+          );
+          border: 1px solid var(--elmsln-studio-assignment-borderColor, #eaeaea);
+          border-bottom: none;
+        }
+        #alert iron-icon {
+          width: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
+          height: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
+          color: var(--elmsln-studio-assignment-color, #444444);
         }
         #alert > * {
           margin: 0 0.25em;
+        }
+        .submitted {
+          --elmsln-studio-assignment-color: var(
+            --simple-colors-default-theme-green-8,
+            #00762e
+          );
+        }
+        .submitted-late {
+          --elmsln-studio-assignment-backgroundColor: #fff8e4;
+          --elmsln-studio-assignment-borderColor: var(
+            --simple-colors-default-theme-amber-8,
+            #876800
+          );
+          --elmsln-studio-assignment-color: var(
+            --simple-colors-default-theme-amber-8,
+            #876800
+          );
+        }
+        .overdue {
+          --elmsln-studio-assignment-backgroundColor: #ffeeee;
+          --elmsln-studio-assignment-borderColor: var(
+            --simple-colors-default-theme-red-8,
+            #ac0000
+          );
+          --elmsln-studio-assignment-color: var(
+            --simple-colors-default-theme-red-8,
+            #ac0000
+          );
         }
         .assignment-name,
         .assignment-name,
@@ -188,11 +227,19 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           text-decoration: underline;
         }
         @media screen and (min-width: 600px) {
-          #primary:not(.view-discussion) {
+          #primary,
+          #alert {
             max-width: calc(1000px - 2 * var(--elmsln-studio-margin, 20px));
             margin: 0 auto;
-            border: 1px solid #eaeaea;
+            border: 1px solid
+              var(--elmsln-studio-assignment-borderColor, #eaeaea);
             padding: var(--elmsln-studio-margin, 20px);
+          }
+          #alert {
+            padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
+              var(--elmsln-studio-margin, 20px);
+            border-bottom: 1px solid
+              var(--elmsln-studio-assignment-borderColor, #eaeaea);
           }
         }
       `,
@@ -204,7 +251,12 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
       ? this.message404("Assignment", "Assignments", "/assignments")
       : html`
           ${this.breadcrumb} ${this.alert}
-          <div id="primary" class="view-assignment">
+          <div
+            id="primary"
+            class="view-assignment ${this.assignmentStatus
+              .toLowerCase()
+              .replace(/\s/, "-")}"
+          >
             <article id="assignment">
               <h1>
                 <span class="lesson-name">
@@ -368,7 +420,6 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
             : [];
       }
     });
-    console.log("editable", this.assignment.id);
   }
   get actions() {
     return !this.editable
@@ -390,42 +441,43 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   }
   get alert() {
     let getAlert = (message, date, icon = true) => {
-        return html` <p id="alert">
-          ${!icon
-            ? ""
-            : html`
-                <lrndesign-avatar
-                  allow-grey
-                  invert
-                  accent-color="${this.getStatusColor(
-                    this.submission,
-                    this.assignment || {}
-                  )}"
-                  icon="${this.getStatusIcon(
-                    this.submission,
-                    this.assignment || {}
-                  )}"
-                >
-                </lrndesign-avatar>
-              `}
-          ${message}
-          ${date
-            ? html`
-                <local-time
-                  month="long"
-                  day="numeric"
-                  year="numeric"
-                  hour="2-digit"
-                  minute="2-digit"
-                  second="2-digit"
-                  time-zone-name="short"
-                  datetime="${date}"
-                >
-                  ${this.dateFormat(date)}
-                </local-time>
-              `
-            : ""}
-        </p>`;
+        return html` <p
+            id="alert"
+            class="${this.assignmentStatus.toLowerCase().replace(/\s/, "-")}"
+          >
+            ${!icon
+              ? ""
+              : html`
+                  <iron-icon
+                    id="alert-avatar"
+                    icon="${this.getStatusIcon(
+                      this.submission,
+                      this.assignment || {}
+                    )}"
+                  >
+                  </iron-icon>
+                `}
+            ${message}
+            ${date
+              ? html`
+                  <local-time
+                    month="long"
+                    day="numeric"
+                    year="numeric"
+                    hour="2-digit"
+                    minute="2-digit"
+                    second="2-digit"
+                    time-zone-name="short"
+                    datetime="${date}"
+                  >
+                    ${this.dateFormat(date)}
+                  </local-time>
+                `
+              : ""}
+          </p>
+          <simple-tooltip for="alert-avatar">
+            ${this.assignmentStatus}
+          </simple-tooltip>`;
       },
       alertMessage = this.getStatus(
         this.submission,
@@ -447,6 +499,9 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           : ""
       );
     return alertMessage;
+  }
+  get assignmentStatus() {
+    return this.getStatusMessage(this.submission, this.assignment || {});
   }
   get bodytext() {
     let body = !(this.submission || {}).body ? "" : this.submission.body.trim(),

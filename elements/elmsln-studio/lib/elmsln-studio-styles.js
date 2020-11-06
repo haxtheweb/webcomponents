@@ -52,11 +52,18 @@ const ElmslnStudioStyles = function (SuperClass) {
           #studio-nav elmsln-studio-link:hover {
             --elmsln-studio-link-TextDecoration: underline !important;
           }
-          #message-404 {
+          .primary-404 {
+            min-height: 20vh;
             display: flex;
+          }
+          #message-404 {
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 20px;
           }
           #message-404 elmsln-studio-link {
             color: blue;
+            display: inline;
           }
           #message-404 elmsln-studio-link:hover,
           #message-404 elmsln-studio-link:focus-within {

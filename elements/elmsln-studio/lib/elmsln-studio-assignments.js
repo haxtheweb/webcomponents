@@ -54,7 +54,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
           background-color: #eee;
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
           --lrndesign-avatar-border-radius: 0%;
-          --nav-card-item-avatar-width: 20px;
+          --nav-card-item-avatar-width: 40px;
           border: 1px solid var(--accent-card-border-color, #ddd);
           border-bottom: none;
         }
