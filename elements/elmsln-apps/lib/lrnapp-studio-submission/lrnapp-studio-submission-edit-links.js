@@ -6,7 +6,6 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-input/paper-input.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 class LrnappStudioSubmissionEditLinks extends PolymerElement {
@@ -65,14 +64,14 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
 
       <paper-dialog id="dialog">
         <h2>Add Link</h2>
-        <paper-dialog-scrollable>
+        <div style="height:50vh;width:100%;overflow:scroll;">
           <paper-input
             id="link-input"
             class="input"
             label="URL"
             value="{{newlink}}"
           ></paper-input>
-        </paper-dialog-scrollable>
+        </div>
         <div class="buttons">
           <button dialog-dismiss="">Cancel</button>
           <button dialog-confirm="" on-click="_createLink">Add Link</button>

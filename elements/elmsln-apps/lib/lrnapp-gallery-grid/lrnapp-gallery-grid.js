@@ -76,7 +76,10 @@ class LrnappGalleryGrid extends PolymerElement {
         </iron-list>
       </iron-scroll-threshold>
       <paper-dialog id="dialog">
-        <paper-dialog-scrollable id="dialogResponse">
+        <div
+          style="height:50vh;width:100%;overflow:scroll;"
+          id="dialogResponse"
+        >
           <img loading="lazy" src$="[[activeImage]]" />
           <div id="details">
             <div class="title">
@@ -94,7 +97,7 @@ class LrnappGalleryGrid extends PolymerElement {
               </a>
             </div>
           </div>
-        </paper-dialog-scrollable>
+        </div>
       </paper-dialog>
     `;
   }

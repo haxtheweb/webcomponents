@@ -251,10 +251,10 @@ class LrnappStudioInstructor extends PolymerElement {
           <button dialog-dismiss><simple-icon icon="close"></simple-icon> Close</button>
         </app-toolbar>
       </app-header>
-      <paper-dialog-scrollable>
+      <div style="height:50vh;width:100%;overflow:scroll;">
           <div class="stats-text">[[stats.overview]]</div>
         <lrndesign-bar chart-title="[[activeChart.title]]" chart-desc="[[activeChart.description]]" data="[[activeChart.data]]"></lrndesign-bar>
-      </paper-dialog-scrollable>
+      </div>
       </div>
     </paper-dialog>
     <vaadin-grid hidden$="[[!students]]" id="material" aria-label="Student project list" items="[[_toArray(students)]]">
@@ -324,7 +324,7 @@ class LrnappStudioInstructor extends PolymerElement {
           <button dialog-dismiss><simple-icon icon="close"></simple-icon> Close</button>
         </app-toolbar>
       </app-header>
-      <paper-dialog-scrollable>
+      <div style="height:50vh;width:100%;overflow:scroll;">
         <div hidden$="[[!activeData.submission]]">
           <lrnapp-studio-submission-page base-path="[[basePath]]" route="{{tail}}" id="[[data.submission]]" end-point="[[basePath]]lrnapp-studio-submission" csrf-token="[[csrfToken]]" hide-menu-bar></lrnapp-studio-submission-page>
         </div>
@@ -334,7 +334,7 @@ class LrnappStudioInstructor extends PolymerElement {
             <p>This student has not submitted anything for this assignment at this time.</p>
           </div>
         </div>
-      </paper-dialog-scrollable>
+      </div>
     </paper-dialog>`;
   }
   static get tag() {

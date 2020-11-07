@@ -2,7 +2,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
@@ -56,7 +55,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
       </div>
       <paper-dialog id="dialog">
         <h2>Add Image(s)</h2>
-        <paper-dialog-scrollable>
+        <div style="height:50vh;width:100%;overflow:scroll;">
           <div class="images__upload">
             <template is="dom-if" if="[[uploadUrl]]">
               <vaadin-upload
@@ -73,7 +72,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
               </vaadin-upload>
             </template>
           </div>
-        </paper-dialog-scrollable>
+        </div>
         <div class="buttons">
           <button dialog-dismiss="">Cancel</button>
         </div>

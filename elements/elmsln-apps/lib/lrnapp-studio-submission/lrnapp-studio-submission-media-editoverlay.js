@@ -5,7 +5,6 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
   static get template() {
     return html`
@@ -72,9 +71,9 @@ class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
         <paper-dialog id="dialog">
           <h2>Embed Code</h2>
           <p>Paste this into the text area and your image will appear.</p>
-          <paper-dialog-scrollable>
+          <div style="height:50vh;width:100%;overflow:scroll;">
             <pre>{{embedcode}}</pre>
-          </paper-dialog-scrollable>
+          </div>
         </paper-dialog>
       </template>
     `;

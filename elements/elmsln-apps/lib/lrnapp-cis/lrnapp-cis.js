@@ -274,7 +274,7 @@ class LrnappCis extends PolymerElement {
       </app-route>
       <paper-dialog id="dialog" with-backdrop>
         <h2>Course details</h2>
-        <paper-dialog-scrollable>
+        <div style="height:50vh;width:100%;overflow:scroll;">
           <div class="dialog-header">
             <lrndesign-course-banner
               image="[[activeCourse.attributes.image]]"
@@ -409,7 +409,7 @@ class LrnappCis extends PolymerElement {
             </responsive-grid-row>
             <p>[[activeCourse.attributes.body]]</p>
           </div>
-        </paper-dialog-scrollable>
+        </div>
       </paper-dialog>
       <lrnsys-dialog id="confirm">
         <div class="dialog-header" slot="header">

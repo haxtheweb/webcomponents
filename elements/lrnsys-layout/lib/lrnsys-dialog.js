@@ -54,8 +54,6 @@ class LrnsysDialog extends SimpleColors {
     this.headingClass = "white-text black";
     setTimeout(() => {
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      import("@polymer/neon-animation/neon-animation.js");
-      import("@polymer/neon-animation/neon-animations.js");
       import("./lrnsys-button-inner.js");
     }, 0);
     this.__modal = window.SimpleModal.requestAvailability();
