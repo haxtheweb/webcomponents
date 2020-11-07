@@ -7,10 +7,6 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
  * @demo demo/index.html
  */
 class ToDo extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    import("@polymer/paper-checkbox/paper-checkbox.js");
-  }
   static get template() {
     return html`
       <style>
@@ -70,11 +66,12 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
           <ul class="task-list-wrapper">
             <template is="dom-repeat" items="[[items]]" as="item">
               <li data-item-id$="[[item.id]]">
-                <paper-checkbox
-                  checked="{{item.value}}"
+                <simple-fields-field
+                  type="checkbox"
+                  value="{{item.value}}"
                   disabled="[[item.disabled]]"
-                  >[[item.label]]</paper-checkbox
-                >
+                  label="[[item.label]]"
+                ></simple-fields-field>
               </li>
             </template>
           </ul>

@@ -43,9 +43,8 @@
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^2.7.10",
     "@lrnwebcomponents/simple-icon": "^2.7.10",
+    "@lrnwebcomponents/simple-fields": "^2.7.10",
     "@lrnwebcomponents/hax-iconset": "^2.7.10",
-    "@polymer/paper-checkbox": "^3.0.0",
-    "@polymer/paper-input": "^3.0.2",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

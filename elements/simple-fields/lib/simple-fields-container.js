@@ -63,6 +63,7 @@ class SimpleFieldsContainer extends LitElement {
         .inline label {
           margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
           flex: 0 1 auto;
+          width: calc(100% - 22px);
         }
         .inline label,
         .field-main > div,

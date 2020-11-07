@@ -1,16 +1,12 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 /**
  * `to-do`
  * @element to-do
  * @demo demo/index.html
  */
 class ToDo extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    import("@polymer/paper-checkbox/paper-checkbox.js");
-    import("@polymer/paper-input/paper-input.js");
-  }
   static get template() {
     return html`
       <style>
@@ -59,7 +55,10 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
         <h3>[[name]]</h3>
         <div class="card-content">
           <div hidden$="[[hideForm]]">
-            <paper-input label="Task to accomplish" id="itemtext"></paper-input>
+            <simple-fields-field
+              label="Task to accomplish"
+              id="itemtext"
+            ></simple-fields-field>
             <button raised="" id="itembutton" on-click="_addItemToList">
               Add item
             </button>
@@ -67,11 +66,12 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
           <ul class="task-list-wrapper">
             <template is="dom-repeat" items="[[items]]" as="item">
               <li data-item-id$="[[item.id]]">
-                <paper-checkbox
-                  checked="{{item.value}}"
+                <simple-fields-field
+                  type="checkbox"
+                  value="{{item.value}}"
                   disabled="[[item.disabled]]"
-                  >[[item.label]]</paper-checkbox
-                >
+                  label="[[item.label]]"
+                ></simple-fields-field>
               </li>
             </template>
           </ul>

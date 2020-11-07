@@ -3,6 +3,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import { SimpleToastStore } from "@lrnwebcomponents/simple-toast/simple-toast.js";
 /**
  * `multiple-choice`
@@ -22,35 +23,35 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           display: block;
           padding: 16px 16px 54px 16px;
           color: var(--simple-colors-default-theme-grey-12);
-          --paper-checkbox-unchecked-color: var(
+          --simple-fields-field-color: var(
             --simple-colors-default-theme-grey-12
           );
-          --paper-checkbox-unchecked-ink-color: var(
+          --simple-fields-field-ink-color: var(
             --simple-colors-default-theme-grey-12
           );
-          --paper-checkbox-checked-color: var(
+          --simple-fields-field-checked-color: var(
             --simple-colors-default-theme-accent-8
           );
-          --paper-checkbox-checked-ink-color: var(
+          --simple-fields-field-checked-ink-color: var(
             --simple-colors-default-theme-accent-8
           );
-          --paper-checkbox-checkmark-color: var(
+          --simple-fields-field-checkmark-color: var(
             --simple-colors-default-theme-grey-1
           );
-          --paper-checkbox-label-color: var(
+          --simple-fields-field-label-color: var(
             --simple-colors-default-theme-grey-12
           );
-          --paper-checkbox-error-color: var(
+          --simple-fields-field-error-color: var(
             --simple-colors-default-theme-red-8
           );
         }
         :host([accent-color="grey"]),
         :host([accent-color="red"]),
         :host([accent-color="green"]) {
-          --paper-checkbox-checked-color: var(
+          --simple-fields-field-checked-color: var(
             --simple-colors-default-theme-blue-8
           );
-          --paper-checkbox-checked-ink-color: var(
+          --simple-fields-field-checked-ink-color: var(
             --simple-colors-default-theme-blue-8
           );
         }
@@ -98,11 +99,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         ul li {
           padding: 8px;
         }
-        paper-radio-button {
-          padding: 8px;
-          display: block;
-        }
-        paper-checkbox {
+        simple-fields-field {
           padding: 8px;
         }
         simple-icon {
@@ -157,19 +154,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           ...this._computeDisplayedAnswers(this.answers, this.randomize),
         ];
       }
-      // single option implies it's a radio group or if multiple, do check boxes
-      if (propName == "singleOption") {
-        this.singleOptionChanged(this[propName]);
-      }
     });
-  }
-  singleOptionChanged(singleOption) {
-    if (singleOption) {
-      import("@polymer/paper-radio-group/paper-radio-group.js");
-      import("@polymer/paper-radio-button/paper-radio-button.js");
-    } else {
-      import("@polymer/paper-checkbox/paper-checkbox.js");
-    }
   }
   render() {
     return html`
@@ -181,34 +166,34 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         <div>${this.question}</div>
         ${this.singleOption
           ? html`
-              <paper-radio-group>
-                ${this.displayedAnswers.map(
-                  (answer, index) => html`
-                    <paper-radio-button
-                      ?disabled="${this.disabled}"
-                      property="oer:answer"
-                      name="${index}"
-                      ?checked="${answer.userGuess}"
-                      @checked-changed="${this.checkedEvent}"
-                      >${answer.label}</paper-radio-button
-                    >
-                  `
-                )}
-              </paper-radio-group>
+              ${this.displayedAnswers.map(
+                (answer, index) => html`
+                  <simple-fields-field
+                    ?disabled="${this.disabled}"
+                    property="oer:answer"
+                    type="radio"
+                    name="${index}"
+                    .value="${answer.userGuess}"
+                    @value-changed="${this.checkedEvent}"
+                    label="${answer.label}"
+                  ></simple-fields-field>
+                `
+              )}
             `
           : html`
               <ul>
                 ${this.displayedAnswers.map(
                   (answer, index) => html`
                     <li>
-                      <paper-checkbox
+                      <simple-fields-field
                         ?disabled="${this.disabled}"
                         property="oer:answer"
                         name="${index}"
-                        ?checked="${answer.userGuess}"
-                        @checked-changed="${this.checkedEvent}"
-                        >${answer.label}</paper-checkbox
-                      >
+                        type="checkbox"
+                        label="${answer.label}"
+                        .value="${answer.userGuess}"
+                        @value-changed="${this.checkedEvent}"
+                      ></simple-fields-field>
                     </li>
                   `
                 )}

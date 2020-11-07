@@ -83,7 +83,7 @@ class LrnappCanvasListing extends PolymerElement {
           text-align: right;
         }
 
-        vaadin-grid#material paper-checkbox {
+        vaadin-grid#material simple-fields-field {
           --primary-color: var(--paper-indigo-500);
           margin: 0 24px;
         }
