@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/map-menu/lib/map-menu-header.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 class MapMenuSubmenu extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -19,6 +21,10 @@ class MapMenuSubmenu extends LitElement {
         #container ::slotted(map-menu-item) {
           margin-top: 0.4em;
         }
+        a11y-collapse {
+          --a11y-collapse-border: 0;
+          --a11y-collapse-horizontal-padding: 0;
+        }
       `,
     ];
   }
@@ -32,8 +38,6 @@ class MapMenuSubmenu extends LitElement {
     this.published = true;
     this.icon = "";
     this.__icon = "";
-    import("@lrnwebcomponents/map-menu/lib/map-menu-header.js");
-    import("@polymer/iron-collapse/iron-collapse.js");
     setTimeout(() => {
       this.addEventListener("active-item", this.__activeChanged.bind(this));
       this.addEventListener("toggle-header", this.__toggleHeader.bind(this));
@@ -52,17 +56,20 @@ class MapMenuSubmenu extends LitElement {
    */
   render() {
     return html`
-      <map-menu-header
-        .avatar-label="${this.avatarLabel}"
-        id="${this.id}"
-        title="${this.title}"
-        label="${this.label}"
-        ?opened="${this.opened}"
-        url="${this.url}"
-        selected="${this.selected}"
-        icon="${this.__icon}"
-      ></map-menu-header>
-      <iron-collapse id="container"> <slot></slot> </iron-collapse>
+      <a11y-collapse id="container">
+        <map-menu-header
+          .avatar-label="${this.avatarLabel}"
+          id="${this.id}"
+          title="${this.title}"
+          label="${this.label}"
+          ?opened="${this.opened}"
+          url="${this.url}"
+          selected="${this.selected}"
+          icon="${this.__icon}"
+          slot="heading"
+        ></map-menu-header>
+        <slot></slot>
+      </a11y-collapse>
     `;
   }
 

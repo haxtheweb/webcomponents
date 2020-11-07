@@ -13,8 +13,6 @@
       import '@polymer/iron-image/iron-image.js';
       import '../lrnsys-layout.js';
       import '../lib/lrnsys-drawer.js';
-      import '../lib/lrnsys-collapselist.js';
-      import '../lib/lrnsys-collapselist-item.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -47,61 +45,6 @@
       </template>
     </demo-snippet>
   </div>
-  <div class="vertical-section-container centered">
-    <h3>Basic lrnsys-collapselist demo</h3>
-    <demo-snippet>
-      <template>
-        <lrnsys-collapselist-item>
-          <span slot="label">
-            <iron-icon icon="save"></iron-icon>
-            <span class="collapse-label">Save</span>
-          </span>
-          <span slot="content"> Saving is really popular</span>
-        </lrnsys-collapselist-item>
-        <lrnsys-collapselist-item>
-          <span slot="label">
-            <iron-icon icon="delete"></iron-icon>
-            <span class="collapse-label">Delete</span>
-          </span>
-          <span slot="content"> Delete is cool too</span>
-        </lrnsys-collapselist-item>
-      </template>
-    </demo-snippet>
-  </div>
-  <div class="vertical-section-container centered">
-    <h3>Basic lrnsys-collapselist demo</h3>
-    <demo-snippet>
-      <template>
-        <lrnsys-collapselist items="[{
-  &quot;icon&quot;: &quot;accessibility&quot;,
-  &quot;label&quot;: &quot;Accessibility&quot;,
-  &quot;content&quot;: &quot;This is my content here&quot;
-}, {
-  &quot;icon&quot;: &quot;accessibility&quot;,
-  &quot;label&quot;: &quot;Another thing&quot;,
-  &quot;content&quot;: &quot;This is my content as well!&quot;
-}]">
-        </lrnsys-collapselist>
-      </template>
-    </demo-snippet>
-  </div><div class="vertical-section-container centered">
-    <h3>lrnsys-drawer with a lrnsys-collapselist in it</h3>
-    <demo-snippet>
-      <template>
-        <lrnsys-drawer text="btopro" avatar="headshot.jpg" alt="Bryan O" header="User profile" align="right">
-          <lrnsys-collapselist items="[{
-  &quot;icon&quot;: &quot;user&quot;,
-  &quot;label&quot;: &quot;Member details&quot;,
-  &quot;content&quot;: &quot;Member for 54 weeks.&quot;
-}, {
-  &quot;icon&quot;: &quot;accessibility&quot;,
-  &quot;label&quot;: &quot;Preferences&quot;,
-  &quot;content&quot;: &quot;Contrast ratio&quot;
-}]">
-          </lrnsys-collapselist>
-        </lrnsys-drawer>
-      </template>
-    </demo-snippet>
   </div><div class="vertical-section-container centered">
     <h3>Using Dialog with dynamic image loading</h3>
     <demo-snippet>
@@ -129,16 +72,6 @@
           </span>
           </span>
           <h2 slot="header">This is the heading</h2>
-          <lrnsys-collapselist hover-class="blue white-text" items="[{
-  &quot;icon&quot;: &quot;user&quot;,
-  &quot;label&quot;: &quot;Member details&quot;,
-  &quot;content&quot;: &quot;Member for 54 weeks.&quot;
-}, {
-  &quot;icon&quot;: &quot;accessibility&quot;,
-  &quot;label&quot;: &quot;Preferences&quot;,
-  &quot;content&quot;: &quot;Contrast ratio&quot;
-}]">
-          </lrnsys-collapselist>
         </lrnsys-drawer>
       </template>
     </demo-snippet>
@@ -166,50 +99,6 @@
             <lrnsys-dialog-toolbar-button title="Download" icon="save" id="download"></lrnsys-dialog-toolbar-button>
           </span>
           <h2 slot="header">This is the heading</h2>
-          <lrnsys-collapselist items="[
-              {
-                &quot;icon&quot;: &quot;user&quot;,
-                &quot;label&quot;: &quot;Member details&quot;,
-                &quot;content&quot;: &quot;Member for 54 weeks.&quot;
-              }, {
-                &quot;icon&quot;: &quot;accessibility&quot;,
-                &quot;label&quot;: &quot;Preferences&quot;,
-                &quot;content&quot;: &quot;Contrast ratio&quot;
-              }, {
-                &quot;icon&quot;: &quot;accessibility&quot;,
-                &quot;label&quot;: &quot;Preferences&quot;,
-                &quot;content&quot;: &quot;Contrast ratio&quot;
-              }, {
-                &quot;icon&quot;: &quot;accessibility&quot;,
-                &quot;label&quot;: &quot;Preferences&quot;,
-                &quot;content&quot;: &quot;Contrast ratio&quot;
-              }, {
-                &quot;icon&quot;: &quot;accessibility&quot;,
-                &quot;label&quot;: &quot;Preferences&quot;,
-                &quot;content&quot;: &quot;Contrast ratio&quot;
-              }, {
-                &quot;icon&quot;: &quot;accessibility&quot;,
-                &quot;label&quot;: &quot;Preferences&quot;,
-                &quot;content&quot;: &quot;Contrast ratio&quot;
-              }, {
-                &quot;icon&quot;: &quot;accessibility&quot;,
-                &quot;label&quot;: &quot;Preferences&quot;,
-                &quot;content&quot;: &quot;Contrast ratio&quot;
-              }, {
-                &quot;icon&quot;: &quot;accessibility&quot;,
-                &quot;label&quot;: &quot;Preferences&quot;,
-                &quot;content&quot;: &quot;Contrast ratio&quot;
-              }, {
-                &quot;icon&quot;: &quot;accessibility&quot;,
-                &quot;label&quot;: &quot;Preferences&quot;,
-                &quot;content&quot;: &quot;Contrast ratio&quot;
-              }, {
-                &quot;icon&quot;: &quot;accessibility&quot;,
-                &quot;label&quot;: &quot;Preferences&quot;,
-                &quot;content&quot;: &quot;Contrast ratio&quot;
-              }]">
-          </lrnsys-collapselist>
-          
         </lrnsys-dialog>
 
       </template>
@@ -227,13 +116,6 @@
           </span>
           <h2 slot="header">This is the heading</h2>
           <h3>This is some additional content to see whats up</h3>
-          <lrnsys-collapselist items="[
-              {
-                &quot;icon&quot;: &quot;accessibility&quot;,
-                &quot;label&quot;: &quot;Preferences&quot;,
-                &quot;content&quot;: &quot;Contrast ratio&quot;
-              }]">
-          </lrnsys-collapselist>
           
         </lrnsys-dialog>
 

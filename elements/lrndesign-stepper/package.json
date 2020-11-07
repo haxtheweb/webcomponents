@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/iron-collapse": "^3.0.0",
+    "@lrnwebcomponents/a11y-collapse": "^2.7.10",
     "@lrnwebcomponents/simple-icon": "^2.7.10",
     "@lrnwebcomponents/hax-iconset": "^2.7.10",
     "@polymer/polymer": "^3.3.1"

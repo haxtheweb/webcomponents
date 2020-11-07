@@ -49,7 +49,7 @@
     "@lrnwebcomponents/simple-modal": "^2.7.10",
     "@lrnwebcomponents/simple-tooltip": "^2.7.10",
     "@polymer/app-layout": "^3.0.2",
-    "@polymer/iron-collapse": "^3.0.0",
+    "@lrnwebcomponents/a11y-collapse": "^2.7.10",
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-drawer-panel": "^3.0.0",
     "@polymer/paper-input": "^3.0.2",

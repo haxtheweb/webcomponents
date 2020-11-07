@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "@polymer/iron-collapse/iron-collapse.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { IronButtonState } from "@polymer/iron-behaviors/iron-button-state.js";
@@ -27,12 +26,7 @@ class LrndesignMapmenuHeader extends mixinBehaviors(
         }
         lrndesign-avatar {
           display: inline-block;
-          background: #fff;
-          border-radius: 50%;
-          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-          padding: 2px;
           position: relative;
-          margin-top: -2px;
         }
         lrndesign-avatar ::slotted(*) {
           transform: translateY(2px);

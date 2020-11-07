@@ -3,7 +3,7 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/iron-collapse/iron-collapse.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 /**
 `lrndesign-stepper-button`
 visualization of steps
@@ -137,8 +137,8 @@ class LrndesignStepperButton extends PolymerElement {
       </style>
 
       <template is="dom-if" if="{{hasCollapse(collapsible, 1)}}">
-        <button on-click="collapseToggle">
-          <div class="box-container">
+        <a11y-collapse>
+          <div class="box-container" slot="heading">
             <div class="top-line"></div>
             <div class="stepper-btn">
               <simple-icon icon="[[icon]]" class="btn-icon"></simple-icon>
@@ -148,10 +148,8 @@ class LrndesignStepperButton extends PolymerElement {
           <div class="title-container">
             <div class="node-title">[[title]]</div>
           </div>
-        </button>
-        <iron-collapse>
           <div><slot></slot></div>
-        </iron-collapse>
+        </a11y-collapse>
       </template>
       <template is="dom-if" if="{{hasCollapse(collapsible, 0)}}">
         <a tabindex="-1" href="[[url]]" class="url-style">
@@ -227,23 +225,6 @@ class LrndesignStepperButton extends PolymerElement {
         value: false,
       },
     };
-  }
-
-  ready() {
-    super.ready();
-    setTimeout(() => {
-      var target = this.shadowRoot.querySelector("iron-collapse");
-      if (this.opened) {
-        target.show();
-      }
-    }, 0);
-  }
-
-  /**
-   * Toggling collapse on an iron element.
-   */
-  collapseToggle(e) {
-    e.target.nextElementSibling.toggle();
   }
 
   /**

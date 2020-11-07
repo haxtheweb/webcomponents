@@ -122,15 +122,6 @@ class MapMenuHeader extends LitElement {
             </button>
           </a>
         </div>
-        <div id="right">
-          <simple-icon
-            id="toggle"
-            icon="${this.__collapseIcon}"
-            role="button"
-            aria-label="${this.__collapseAria}"
-            tabindex="0"
-          ></simple-icon>
-        </div>
       </div>
     `;
   }
