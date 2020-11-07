@@ -1,5 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 /**
  * `to-do`
  * @element to-do
@@ -9,7 +10,6 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
   constructor() {
     super();
     import("@polymer/paper-checkbox/paper-checkbox.js");
-    import("@polymer/paper-input/paper-input.js");
   }
   static get template() {
     return html`
@@ -59,7 +59,10 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
         <h3>[[name]]</h3>
         <div class="card-content">
           <div hidden$="[[hideForm]]">
-            <paper-input label="Task to accomplish" id="itemtext"></paper-input>
+            <simple-fields-field
+              label="Task to accomplish"
+              id="itemtext"
+            ></simple-fields-field>
             <button raised="" id="itembutton" on-click="_addItemToList">
               Add item
             </button>

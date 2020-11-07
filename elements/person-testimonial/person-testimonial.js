@@ -29,10 +29,13 @@ class PersonTestimonial extends SimpleColors {
           box-shadow: 0 2px 2px rgba(59, 43, 91, 0.7);
         }
 
-        img.image {
+        .image img {
           display: block;
           width: 150px;
           height: 100%;
+        }
+        .image img {
+          max-width: 200px;
         }
         .image {
           padding-right: 5px;
@@ -91,7 +94,7 @@ class PersonTestimonial extends SimpleColors {
             display: flex;
             flex-wrap: wrap;
           }
-          img.image {
+          .image img {
             display: block;
             border-radius: 50%;
             width: 200px;
@@ -113,7 +116,7 @@ class PersonTestimonial extends SimpleColors {
           }
         }
         @media screen and (max-width: 600px) {
-          img.image {
+          .image img {
             width: 150px;
             height: 150px;
           }

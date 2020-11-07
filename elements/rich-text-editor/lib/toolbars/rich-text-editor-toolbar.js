@@ -282,7 +282,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         },
         /**
          * Optional space-sperated list of keyboard shortcuts for editor
-         * to fire this button, see iron-a11y-keys for more info.
          */
         __shortcutKeys: {
           name: "__shortcutKeys",

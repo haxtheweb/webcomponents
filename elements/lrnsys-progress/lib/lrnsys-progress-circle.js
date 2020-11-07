@@ -7,7 +7,6 @@ import "@lrnwebcomponents/circle-progress/circle-progress.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/paper-spinner/paper-spinner.js";
-import "@polymer/neon-animation/neon-animation.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**

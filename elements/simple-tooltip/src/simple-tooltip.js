@@ -90,7 +90,6 @@ class SimpleTooltip extends LitElement {
   }
 
   /**
-   * Replaces Neon-Animation playAnimation - just calls show and hide.
    * @deprecated Use show and hide instead.
    * @param {string} type Either `entry` or `exit`
    */

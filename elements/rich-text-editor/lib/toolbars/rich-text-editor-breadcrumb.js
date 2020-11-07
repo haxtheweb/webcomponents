@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "../buttons/rich-text-editor-button-styles.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "../buttons/rich-text-editor-button-styles.js";
 /**
  * `rich-text-editor-breadcrumb`
@@ -38,13 +37,6 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
   }
   render() {
     return html`
-      <iron-a11y-keys
-        id="a11y"
-        .target="${this.__a11y}"
-        keys="enter"
-        on-keys-pressed="_buttonTap"
-      >
-      </iron-a11y-keys>
       <button
         id="button"
         class="rtebutton rtebreadcrumb"
@@ -91,14 +83,18 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
       e.preventDefault();
     });
   }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   * @returns {void}
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.__a11y = this.shadowRoot.querySelector("#button");
+    this.__a11y.addEventListener("keypress", (e) => {
+      switch (e.key) {
+        case "Enter":
+          this._buttonTap(e);
+          break;
+      }
+    });
   }
   /**
    * Handles button tap;

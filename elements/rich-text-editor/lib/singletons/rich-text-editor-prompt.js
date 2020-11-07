@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "@lrnwebcomponents/rich-text-editor/lib/rich-text-editor-styles.js";
 import { RichTextEditorButtonStyles } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button-styles.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 /**
@@ -22,11 +21,8 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
       ...super.styles,
       css`
         :host {
-          --paper-input-container-focus-color: var(
-            --rich-text-editor-focus-color,
-            #000
-          );
-          --paper-input-container-invalid-color: var(
+          --simple-fields-color: var(--rich-text-editor-focus-color, #000);
+          --simple-fields-invalid-color: var(
             --rich-text-editor-error-color,
             #800
           );
@@ -53,7 +49,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
           padding: 10px 10px 0;
           overflow: visible;
         }
-        #prompt paper-input {
+        #prompt simple-fields-field {
           padding: 0;
         }
         #confirm,

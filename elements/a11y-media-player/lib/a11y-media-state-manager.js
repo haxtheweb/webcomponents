@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement } from "lit-element/lit-element.js";
-import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 
 // register globally so we can make sure there is only one
 window.A11yMediaStateManager = window.A11yMediaStateManager || {};

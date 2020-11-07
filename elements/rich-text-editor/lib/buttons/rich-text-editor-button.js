@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "../singletons/rich-text-editor-selection.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -13,6 +12,19 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 const RichTextEditorButtonBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonStyles(SuperClass) {
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) {
+        super.firstUpdated(changedProperties);
+      }
+      this.__a11y = this.shadowRoot.querySelector("#button");
+      this.__a11y.addEventListener("keypress", (e) => {
+        switch (e.key) {
+          case "Enter":
+            this._buttonTap(e);
+            break;
+        }
+      });
+    }
     /**
      * Store the tag name to make it easier to obtain directly.
      */
@@ -35,13 +47,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     }
     render() {
       return html`
-        <iron-a11y-keys
-          id="a11y"
-          .target="${this.__a11y}"
-          keys="enter"
-          @keys-pressed="${this._buttonTap}"
-        >
-        </iron-a11y-keys>
         <button
           id="button"
           class="rtebutton"
@@ -117,7 +122,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
 
         /**
          * Optional space-sperated list of keyboard shortcuts for the editor
-         * to fire this button, see iron-a11y-keys for more info.
          */
         shortcutKeys: {
           attribute: "shortcut-keys",
@@ -314,14 +318,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         if (propName === "toggledCommandVal") this._toggledCommandValChanged();
       });
     }
-    /**
-     * life cycle, element is afixed to the DOM
-     */
-    connectedCallback() {
-      super.connectedCallback();
-      this.__a11y = this.shadowRoot.querySelector("#button");
-    }
-
     /**
      * life cycle, element is detatched
      */

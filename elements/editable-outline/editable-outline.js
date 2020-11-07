@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { getRange } from "@lrnwebcomponents/utils/utils.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -131,22 +130,7 @@ class EditableOutline extends LitElement {
 
   // render function
   render() {
-    return html` <iron-a11y-keys
-        keys="enter"
-        @keys-pressed="${this._enterPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <iron-a11y-keys
-        keys="up"
-        @keys-pressed="${this._upPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <iron-a11y-keys
-        keys="down"
-        @keys-pressed="${this._downPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <div class="button-wrapper">
+    return html` <div class="button-wrapper">
         <button @click="${this.buttonEvents}" id="add" title="Add a new node">
           <simple-icon icon="icons:add"></simple-icon><span>Add</span>
         </button>
@@ -300,6 +284,15 @@ class EditableOutline extends LitElement {
   _onKeyDown(e) {
     if (this.editMode) {
       switch (e.key) {
+        case "Enter":
+          this._enterPressed(e);
+          break;
+        case "ArrowUp":
+          this._upPressed(e);
+          break;
+        case "ArrowDown":
+          this._downPressed(e);
+          break;
         case "Tab":
           if (e.shiftKey) {
             this._tabBackKeyPressed(e);
@@ -333,9 +326,6 @@ class EditableOutline extends LitElement {
   }
   firstUpdated() {
     this.__outlineNode = this.shadowRoot.querySelector("#outline");
-    this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach((el) => {
-      el.target = this.__outlineNode;
-    });
     this.__outlineNode.addEventListener("keydown", this._onKeyDown.bind(this));
     this._observer = new MutationObserver(this._observeRecord.bind(this));
     this._observer.observe(this.__outlineNode, {

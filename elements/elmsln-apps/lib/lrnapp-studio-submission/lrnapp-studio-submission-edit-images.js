@@ -35,9 +35,6 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
           margin-right: 16px;
           min-width: 200px;
         }
-        neon-animated-pages .iron-selected {
-          position: static;
-        }
         paper-dialog {
           width: 50%;
           width: 50vmax;
