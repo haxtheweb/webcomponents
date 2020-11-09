@@ -119,8 +119,6 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             --a11y-tabs-button-padding,
             8px
           );
-          --a11y-tabs-horizontal-border-radius: unset;
-          --a11y-tabs-vertical-border-radius: unset;
           --a11y-tabs-horizontal-button-padding: var(
             --a11y-tabs-button-padding,
             8px
@@ -130,7 +128,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
         :host([vertical]) {
           border: 1px solid var(--a11y-tabs-border-color);
-          border-radius: var(--a11y-tabs-vertical-border-radius);
+          border-radius: var(--a11y-tabs-vertical-border-radius, 2px);
           display: flex;
           justify-content: space-between;
           align-items: stretch;
@@ -210,7 +208,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         }
 
         :host(:not([vertical])) #content {
-          border-radius: var(--a11y-tabs-horizontal-border-radius);
+          border-radius: var(--a11y-tabs-horizontal-border-radius, 2px);
           margin-top: -1px;
         }
 
@@ -223,12 +221,12 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           background-color: var(--a11y-tabs-faded-background);
           padding: var(--a11y-tabs-horizontal-button-padding);
           font-weight: var(--a11y-tabs-font-weight, normal);
-          border-radius: var(--a11y-tabs-horizontal-border-radius)
-            var(--a11y-tabs-horizontal-border-radius) 0 0;
+          border-radius: var(--a11y-tabs-horizontal-border-radius, 2px)
+            var(--a11y-tabs-horizontal-border-radius, 2px) 0 0;
         }
 
         :host(:not([vertical])) #tabs button {
-          border-top: 1px solid var(--a11y-tabs-border-color);
+          border-top-color: var(--a11y-tabs-border-accent);
         }
 
         :host(:not([vertical])) #tabs li:not(:first-of-type) button {
@@ -241,7 +239,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          border-left: 1px solid var(--a11y-tabs-border-color);
+          border-left-color: var(--a11y-tabs-border-accent);
           padding: var(--a11y-tabs-vertical-button-padding);
         }
 
@@ -254,18 +252,12 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
         :host(:not([vertical])) #tabs button:focus,
         :host(:not([vertical])) #tabs button:hover {
-          border-top: var(
-            --a11y-tabs-focus-border-accent,
-            1px solid var(--a11y-tabs-border-color)
-          );
+          border-top-color: var(--a11y-tabs-focus-border-accent);
         }
 
         :host([vertical]) #tabs button:focus,
         :host([vertical]) #tabs button:hover {
-          border-left: var(
-            --a11y-tabs-focus-border-accent,
-            1px solid var(--a11y-tabs-border-color)
-          );
+          border-left-color: var(--a11y-tabs-focus-border-accent);
         }
 
         #tabs button[aria-selected="true"] {
@@ -277,38 +269,26 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
         :host(:not([vertical])) #tabs button[aria-selected="true"] {
           border-bottom-color: var(--a11y-tabs-background);
-          border-top: var(
-            --a11y-tabs-selected-border-accent,
-            1px solid var(--a11y-tabs-border-color)
-          );
+          border-top-color: var(--a11y-tabs-selected-border-accent);
         }
 
         :host([vertical]) #tabs button[aria-selected="true"] {
           border-right-color: var(--a11y-tabs-background);
-          border-left: var(
-            --a11y-tabs-selected-border-accent,
-            1px solid var(--a11y-tabs-border-color)
-          );
+          border-left-color: var(--a11y-tabs-selected-border-accent);
         }
 
-        #tabs paper-button[disabled] {
+        #tabs button[disabled] {
           color: var(--a11y-tabs-disabled-color);
           background-color: var(--a11y-tabs-disabled-background);
           cursor: not-allowed;
         }
 
-        :host(:not([vertical])) #tabs paper-button[disabled] {
-          border-left: var(
-            --a11y-tabs-disabled-border-accent,
-            1px solid var(--a11y-tabs-border-color)
-          );
+        :host(:not([vertical])) #tabs button[disabled] {
+          border-left-color: var(--a11y-tabs-disabled-border-accent);
         }
 
-        :host([vertical]) #tabs paper-button[disabled] {
-          border-top: var(
-            --a11y-tabs-disabled-border-accent,
-            1px solid var(--a11y-tabs-border-color)
-          );
+        :host([vertical]) #tabs button[disabled] {
+          border-top-color: var(--a11y-tabs-disabled-border-accent);
         }
 
         #tabs span.label,

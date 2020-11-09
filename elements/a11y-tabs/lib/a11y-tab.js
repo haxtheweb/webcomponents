@@ -268,7 +268,7 @@ class A11yTab extends LitElement {
       if (propName === "flagIcon") this._fireTabChanged();
       if (propName === "icon") this._fireTabChanged();
       if (propName === "id") {
-        this.ariaLabelledby = `${tab.id}-button`;
+        this.ariaLabelledby = `${this.id}-button`;
         this._fireTabChanged();
       }
       if (propName === "label") this._fireTabChanged();

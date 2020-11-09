@@ -21,15 +21,13 @@
   --a11y-tabs-content-padding: 16px;
   --a11y-tabs-button-padding: 8px;
   --a11y-tabs-vertical-button-padding: var(--a11y-tabs-button-padding, 8px);
-  --a11y-tabs-horizontal-border-radius: unset;
-  --a11y-tabs-vertical-border-radius: unset;
   --a11y-tabs-horizontal-button-padding: var(--a11y-tabs-button-padding, 8px);
   --a11y-tabs-width: auto;
 }
 
 :host([vertical]) {
   border: 1px solid var(--a11y-tabs-border-color);
-  border-radius: var(--a11y-tabs-vertical-border-radius);
+  border-radius: var(--a11y-tabs-vertical-border-radius,2px);
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -103,7 +101,7 @@
 }
 
 :host(:not([vertical])) #content {
-  border-radius: var(--a11y-tabs-horizontal-border-radius);
+  border-radius: var(--a11y-tabs-horizontal-border-radius,2px);
   margin-top: -1px;
 }
 
@@ -116,7 +114,7 @@
   background-color: var(--a11y-tabs-faded-background);
   padding: var(--a11y-tabs-horizontal-button-padding);
   font-weight: var(--a11y-tabs-font-weight, normal);
-  border-radius: var(--a11y-tabs-horizontal-border-radius) var(--a11y-tabs-horizontal-border-radius) 0 0; 
+  border-radius: var(--a11y-tabs-horizontal-border-radius,2px) var(--a11y-tabs-horizontal-border-radius,2px) 0 0; 
 }
 
 :host(:not([vertical])) #tabs button {
@@ -177,11 +175,11 @@
   cursor: not-allowed;
 }
 
-:host(:not([vertical])) #tabs paper-button[disabled] {
+:host(:not([vertical])) #tabs button[disabled] {
   border-left-color: var(--a11y-tabs-disabled-border-accent);
 }
 
-:host([vertical]) #tabs paper-button[disabled] {
+:host([vertical]) #tabs button[disabled] {
   border-top-color: var(--a11y-tabs-disabled-border-accent);
 }
 
