@@ -331,7 +331,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                 ${this.sortedSubmissions.map(
                   (s) => html`
                     <section
-                      class="${this.assignmentFilter === s.id
+                      class="${this.submissionFilter === s.id
                         ? "section-discussion"
                         : ""}"
                     >
@@ -358,22 +358,22 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                           id="sub-${s.id}-toggle-button"
                           class="view-discussion-button"
                           aria-describedby="sub-${s.id}"
-                          icon="${this.assignmentFilter === s.id && this.comment
+                          icon="${this.submissionFilter === s.id && this.comment
                             ? "close"
                             : this.getFeedbackIcon(s.feedback.length)}"
                           path="${this.getActivityLink(
                             s,
-                            this.assignmentFilter === s.id && this.comment
+                            this.submissionFilter === s.id && this.comment
                           )}"
                         >
                           <span class="sr-only"
-                            >${this.assignmentFilter === s.id && this.comment
+                            >${this.submissionFilter === s.id && this.comment
                               ? "Close Feedback"
                               : `View Feedback (${s.feedback.length})`}</span
                           >
                         </elmsln-studio-button>
                         <simple-tooltip for="sub-${s.id}-toggle-button"
-                          >${this.assignmentFilter === s.id && this.comment
+                          >${this.submissionFilter === s.id && this.comment
                             ? "Close Feedback"
                             : `View Feedback (${s.feedback.length})`}</simple-tooltip
                         >
@@ -381,7 +381,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                       <div
                         class="submission-body"
                         ?hidden="${this.comment &&
-                        this.assignmentFilter !== s.id}"
+                        this.submissionFilter !== s.id}"
                       >
                         ${s.links && s.links.length > 0
                           ? html`
@@ -528,10 +528,17 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
       nextHref,
       portfolio = this.portfolio || {},
       getLink = (s) => {
-        return this.getActivityLink(
-          { ...s, activity: "submission" },
-          !this.comment
-        );
+        let assignmentId = this.submissionFilter
+            ? this.submissionFilter.replace(/-\w+$/, "")
+            : portfolio.assignmentId,
+          submissionId = `${assignmentId}-${s.userId}`,
+          submissions =
+            !assignmentId || !s.submissions
+              ? []
+              : s.submissions.filter((sub) => sub.id === submissionId),
+          submission = submissions.length > 0 ? submissions[0] : {};
+        submission.activity = "submission";
+        return this.getActivityLink(submission, !this.comment, this.sortLatest);
       },
       prevLabel = !portfolio.prev ? "" : this.fullName(portfolio.prev),
       nextLabel = !portfolio.next ? "" : this.fullName(portfolio.next);

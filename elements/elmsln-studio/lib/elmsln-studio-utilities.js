@@ -300,7 +300,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
         : colors[Math.floor(Math.random() * colors.length)];
     }
 
-    getActivityLink(activity, nocomment = false, sort) {
+    getActivityLink(activity, nocomment = false, sort = false) {
       return activity.activity === "submission"
         ? `/project/${activity.portfolioId || activity.id}${
             activity.portfolioId ? `?submission=${activity.id}` : ""
@@ -308,14 +308,14 @@ const ElmslnStudioUtilities = function (SuperClass) {
             nocomment
               ? ""
               : activity.portfolioId
-              ? `&comment=true&sort-latest="${this.sortLatest}"`
-              : `?comment=true&sort-latest="${this.sortLatest}"`
+              ? `&comment=true&sort-latest=${sort}`
+              : `?comment=true&sort-latest=${sort}`
           }`
         : activity.activity === "discussion"
-        ? `/project/${activity.portfolioId || activity.submissionId}${
+        ? `/project/${activity.projectId || activity.submissionId}${
             activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
           }comment=${activity.id}`
-        : `/project/${activity.portfolioId || activity.submissionId}${
+        : `/project/${activity.projectId || activity.submissionId}${
             activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
           }comment=${activity.feedbackId}`;
     }
