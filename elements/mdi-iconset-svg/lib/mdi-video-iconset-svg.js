@@ -4,7 +4,7 @@
  * @element mdi-video-iconset-svg is a iconset for the Material Design Icons collection with the "video" tag
  *
  * Example:
- *   <iron-icon icon="mdi-video:"></iron-icon>
+ *   <simple-icon icon="mdi-video:"></simple-icon>
  *
  * @demo demo/index.html
  */

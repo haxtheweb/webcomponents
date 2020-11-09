@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
 `lrndesign-sidenote`
 A basic side note
@@ -136,7 +136,7 @@ class LrndesignSidenote extends SimpleColors {
     return html`
       <div id="container">
         <div id="header">
-          <iron-icon id="icon" icon=${this.icon}></iron-icon>
+          <simple-icon id="icon" icon=${this.icon}></simple-icon>
           <div id="label">${this.label}</div>
         </div>
         <slot></slot>

@@ -5,7 +5,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@polymer/marked-element/marked-element.js";
 
 /**

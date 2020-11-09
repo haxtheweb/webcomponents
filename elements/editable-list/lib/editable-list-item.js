@@ -4,8 +4,9 @@
  */
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@polymer/paper-input/paper-input.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
@@ -48,7 +49,7 @@ class EditableListItem extends SimpleColors {
           visibility: visible;
           opacity: 1;
         }
-        paper-icon-button {
+        simple-icon-button {
           visibility: hidden;
           opacity: 0;
           transition: 0.3s all linear;
@@ -74,10 +75,10 @@ class EditableListItem extends SimpleColors {
           z-index: 2;
           background-color: white;
         }
-        .ops paper-icon-button {
+        .ops simple-icon-button {
           border-radius: 50%;
-          height: 32px;
-          width: 32px;
+          --simple-icon-height: 32px;
+          --simple-icon-width: 32px;
           padding: 4px;
           margin: 0px;
         }
@@ -118,26 +119,26 @@ class EditableListItem extends SimpleColors {
       ></paper-input>
       <div class="input" ?hidden="${!this.editing}">${this.value}</div>
       <div class="ops" ?hidden="${!this.editMode}">
-        <paper-icon-button
+        <simple-icon-button
           @click="${this._editToggle}"
           id="edit"
           icon="icons:create"
-        ></paper-icon-button>
-        <paper-icon-button
+        ></simple-icon-button>
+        <simple-icon-button
           @click="${this._editToggle}"
           id="add"
           icon="icons:add"
-        ></paper-icon-button>
-        <paper-icon-button
+        ></simple-icon-button>
+        <simple-icon-button
           @click="${this._editToggle}"
           id="duplicate"
           icon="icons:content-copy"
-        ></paper-icon-button>
-        <paper-icon-button
+        ></simple-icon-button>
+        <simple-icon-button
           @click="${this._deleteModal}"
           id="delete"
           icon="icons:delete"
-        ></paper-icon-button>
+        ></simple-icon-button>
       </div>
     `;
   }

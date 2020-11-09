@@ -47,11 +47,11 @@ app-toolbar {
   opacity: 0.8;
 }
 
-paper-progress {
+simple-progress {
   display: block;
   width: 100%;
-  --paper-progress-active-color: rgba(255, 255, 255, 0.5);
-  --paper-progress-container-color: transparent;
+  --simple-progress-active-color: rgba(255, 255, 255, 0.5);
+  --simple-progress-container-color: transparent;
 }
 
 .card-wrapper {
@@ -66,12 +66,13 @@ paper-progress {
   vertical-align: top;
 }
 
-paper-card {
+div.card {
   width: 250px;
   height: 300px;
   display: block;
   visibility: visible;
   opacity: 1;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 #addbutton {
@@ -86,7 +87,7 @@ paper-card {
   display: flex;
 }
 
-paper-card.expanded {
+div.card.expanded {
   min-height: 300px;
 }
 
@@ -122,17 +123,17 @@ iron-list {
   opacity: 1;
 }
 
-paper-card.card-low-detail {
+div.card.card-low-detail {
   width: 150px;
   height: 150px;
 }
 
-paper-card.card-mid-detail {
+div.card.card-mid-detail {
   width: 250px;
   height: 250px;
 }
 
-paper-card.card-high-detail {
+div.card.card-high-detail {
   width: 250px;
   height: 300px;
 }
@@ -236,7 +237,7 @@ paper-card.card-high-detail {
 }
 
 /* High detail */
-.node-high-detail li iron-image {
+.node-high-detail li img {
   height: 50px;
   position: static;
 }

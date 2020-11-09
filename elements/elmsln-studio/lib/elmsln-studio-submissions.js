@@ -215,14 +215,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             aria-pressed="${this.list ? "true" : "false"}"
             @click="${(e) => (this.list = true)}"
           >
-            <iron-icon icon="icons:view-list"></iron-icon>
+            <simple-icon icon="icons:view-list"></simple-icon>
             <span class="sr-only">display as list</span>
           </button>
           <button
             aria-pressed="${this.list ? "false" : "true"}"
             @click="${(e) => (this.list = false)}"
           >
-            <iron-icon icon="icons:view-module"></iron-icon>
+            <simple-icon icon="icons:view-module"></simple-icon>
             <span class="sr-only">display as grid</span>
           </button>
         </div>

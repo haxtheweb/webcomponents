@@ -22,6 +22,8 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           display: block;
           width: auto;
           margin: auto;
+          max-width: 600px;
+          max-height: 600px;
           --box-background-color: #f7f6ef;
         }
 
@@ -97,9 +99,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
     this.card = false;
     this.box = false;
     this.offset = "none";
-    setTimeout(() => {
-      import("@polymer/iron-icons/iron-icons.js");
-    }, 0);
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -470,11 +469,14 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
         :host(:hover) {
           cursor: pointer;
         }
-        iron-image {
-          width: 100%;
-          --iron-image-width: 100%;
+        .image-wrap {
+          max-height: 600px;
+          overflow: hidden;
         }
-        :host([round]) iron-image {
+        .image-wrap img {
+          width: 100%;
+        }
+        :host([round]) .image-wrap {
           border-radius: 50%;
         }
       `,
@@ -487,7 +489,6 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
     this.modalContent.noLeft = true;
     this.modalTitle = "";
     setTimeout(() => {
-      import("@polymer/iron-image/iron-image.js");
       this.addEventListener(
         "simple-modal-show",
         this.__modalShowEvent.bind(this)
@@ -503,12 +504,14 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
   }
   render() {
     return html`
-      <iron-image
-        src="${this.source}"
-        alt="${this.alt}"
-        aria-describedby="${this.describedBy || ""}"
-      >
-      </iron-image>
+      <div class="image-wrap">
+        <img
+          src="${this.source}"
+          alt="${this.alt}"
+          aria-describedby="${this.describedBy || ""}"
+          loading="lazy"
+        />
+      </div>
     `;
   }
   updated(changedProperties) {

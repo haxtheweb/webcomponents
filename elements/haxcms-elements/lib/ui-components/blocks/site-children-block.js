@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 
@@ -27,7 +26,6 @@ class SiteChildrenBlock extends PolymerElement {
   constructor() {
     super();
     this.__disposer = [];
-    import("@polymer/paper-button/paper-button.js");
   }
   // render function
   static get template() {
@@ -55,7 +53,7 @@ class SiteChildrenBlock extends PolymerElement {
           color: var(--site-children-block-link-color, #444444);
           @apply --site-children-block-link;
         }
-        paper-button {
+        button {
           text-transform: unset;
           min-width: unset;
           width: 100%;
@@ -64,9 +62,9 @@ class SiteChildrenBlock extends PolymerElement {
           justify-content: flex-start;
           @apply --site-children-block-button;
         }
-        paper-button:hover,
-        paper-button:focus,
-        paper-button:active {
+        button:hover,
+        button:focus,
+        button:active {
           @apply --site-children-block-button-active;
         }
         .active {
@@ -136,10 +134,10 @@ class SiteChildrenBlock extends PolymerElement {
                 tabindex="-1"
                 href$="[[item.slug]]"
               >
-                <paper-button noink="[[noink]]">
+                <button noink="[[noink]]">
                   <div class$="indent indent-[[item.indent]]"></div>
                   [[item.title]]
-                </paper-button>
+                </button>
               </a>
             </div>
           </template>
@@ -262,16 +260,14 @@ class SiteChildrenBlock extends PolymerElement {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });
-    afterNextRender(this, function () {
-      // minor timing thing to ensure store has picked active
-      // needed if routes set on first paint or lifecycles miss
-      setTimeout(() => {
-        autorun((reaction) => {
-          this.activeId = toJS(store.activeId);
-          this.__disposer.push(reaction);
-        });
-      }, 250);
-    });
+    // minor timing thing to ensure store has picked active
+    // needed if routes set on first paint or lifecycles miss
+    setTimeout(() => {
+      autorun((reaction) => {
+        this.activeId = toJS(store.activeId);
+        this.__disposer.push(reaction);
+      });
+    }, 250);
   }
   disconnectedCallback() {
     // clean up state

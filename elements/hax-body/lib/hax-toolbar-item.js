@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 class HaxToolbarItem extends LitElement {
   static get styles() {
     return [
@@ -108,10 +108,9 @@ class HaxToolbarItem extends LitElement {
           background: var(--hax-color-bg-accent);
           color: var(--hax-color-text);
         }
-        simple-icon,
-        iron-icon {
-          width: 20px;
-          height: 20px;
+        simple-icon {
+          --simple-icon-height: 20px;
+          --simple-icon-width: 20px;
           padding: 0;
           margin: 0;
         }
@@ -174,16 +173,11 @@ class HaxToolbarItem extends LitElement {
         tabindex="0"
         .title="${this.tooltip}"
       >
-        ${this.simple
-          ? html` <simple-icon
-              ?dark="${!this.dark}"
-              icon="${this.icon}"
-              ?hidden="${this.icon == "" ? true : false}"
-            ></simple-icon>`
-          : html` <iron-icon
-              icon="${this.icon}"
-              ?hidden="${this.icon == "" ? true : false}"
-            ></iron-icon>`}
+        <simple-icon
+          ?dark="${!this.dark}"
+          icon="${this.icon}"
+          ?hidden="${this.icon == "" ? true : false}"
+        ></simple-icon>
 
         <span id="label" ?hidden="${this.label == "" ? true : false}"
           >${this.label}</span
@@ -236,9 +230,6 @@ class HaxToolbarItem extends LitElement {
       corner: {
         type: String,
         reflect: true,
-      },
-      simple: {
-        type: Boolean,
       },
       circle: {
         type: Boolean,

@@ -4,7 +4,7 @@
  * @element mdi-debug-iconset-svg is a iconset for the Material Design Icons collection with the "debug" tag
  *
  * Example:
- *   <iron-icon icon="mdi-debug:debug-step-over"></iron-icon>
+ *   <simple-icon icon="mdi-debug:debug-step-over"></simple-icon>
  *
  * @demo demo/index.html
  */

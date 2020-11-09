@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@github/time-elements";
+import "./lib/threaded-discussion-form.js";
 /**
  * `threaded-discussion`
  * a threaded discussions component
@@ -443,10 +444,9 @@ class ThreadedDiscussion extends LitElement {
     this.submit = window.location.href;
     this.__data = [];
     this.__loading = false;
-    import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("./lib/threaded-discussion-form.js");
+    setTimeout(() => {
+      import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
+    }, 0);
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);

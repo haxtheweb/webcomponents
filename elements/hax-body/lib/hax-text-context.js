@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js";
@@ -24,16 +25,11 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           display: block;
           pointer-events: none;
         }
-        hax-context-item-textop:not(:defined),
-        hax-context-item-menu:not(:defined),
-        hax-context-item:not(:defined),
-        hax-toolbar:not(:defined),
-        button:not(:defined),
-        iron-icon:not(:defined) {
-          display: none;
-        }
         :host [hidden] {
           display: none;
+        }
+        simple-popover-selection {
+          display: flex;
         }
         .selected-buttons {
           transition: 0.1s all ease-in-out;
@@ -59,9 +55,9 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           cursor: pointer;
           color: black;
         }
-        iron-icon {
-          width: 20px;
-          height: 20px;
+        simple-icon {
+          --simple-icon-height: 20px;
+          --simple-icon-width: 20px;
           padding: 4px;
         }
         hax-context-item-textop,
@@ -191,8 +187,9 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
               align-items: center;
               border: 0;
             }
-            simple-popover-manager button iron-icon {
-              width: 18px;
+            simple-popover-manager button simple-icon {
+              --simple-icon-height: 18px;
+              --simple-icon-width: 18px;
               margin-right: 8px;
             }
           </style>
@@ -213,7 +210,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           ${this.formattingList.map(
             (val) =>
               html` <button slot="options" value="${val.value}">
-                <iron-icon icon="${val.icon}"></iron-icon>
+                <simple-icon icon="${val.icon}"></simple-icon>
                 ${val.text}
               </button>`
           )}
@@ -431,7 +428,9 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       '#textformat button[value="' + this.realSelectedValue + '"]'
     );
     localItem.setAttribute("data-simple-popover-selection-active", true);
-    this.formatIcon = localItem.querySelector("iron-icon").getAttribute("icon");
+    this.formatIcon = localItem
+      .querySelector("simple-icon")
+      .getAttribute("icon");
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

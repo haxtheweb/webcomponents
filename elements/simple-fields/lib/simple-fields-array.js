@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "./simple-fields-array-item.js";
 /**
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
@@ -89,11 +89,11 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           @click="${(e) => this.toggle()}"
         >
           ${this.expanded ? "Collapse All" : "Expand All"}
-          <iron-icon
+          <simple-icon
             class="${this.expanded ? "expanded" : "collapsed"}"
             aria-hidden="true"
             icon="expand-more"
-          ></iron-icon>
+          ></simple-icon>
         </button>
       </div>
       <div id="item-fields" aria-live="polite">
@@ -104,7 +104,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           @click="${(e) => this._handleAdd()}"
         >
           Add Item
-          <iron-icon aria-hidden="true" icon="add"></iron-icon>
+          <simple-icon aria-hidden="true" icon="add"></simple-icon>
         </button>
       </div>
     `;

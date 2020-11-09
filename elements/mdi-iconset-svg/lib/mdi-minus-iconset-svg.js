@@ -4,7 +4,7 @@
  * @element mdi-minus-iconset-svg is a iconset for the Material Design Icons collection with the "minus" tag
  *
  * Example:
- *   <iron-icon icon="mdi-minus:minus-circle-outline"></iron-icon>
+ *   <simple-icon icon="mdi-minus:minus-circle-outline"></simple-icon>
  *
  * @demo demo/index.html
  */

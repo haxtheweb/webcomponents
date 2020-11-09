@@ -7,6 +7,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `rss-items`
  * `visualize RSS items`
@@ -140,12 +143,12 @@ class RssItems extends LitElement {
                     href="${item.link}"
                     title="${item.title}"
                   >
-                    <iron-image
+                    <img
                       class="thumbnail"
                       src="${item.imageSrc}"
                       alt="${item.title}"
-                      sizing="cover"
-                    ></iron-image>
+                      loading="lazy"
+                    />
                   </a>
                 `
               : ``}
@@ -165,11 +168,11 @@ class RssItems extends LitElement {
                     class="read-more"
                     title="${item.title}"
                     >${this.readMoreAnchorText}
-                    <paper-icon-button
+                    <simple-icon-button
                       icon="icons:arrow-forward"
                       class="read-more-icon"
                       alt="${this.readMoreImageAlt}"
-                    ></paper-icon-button>
+                    ></simple-icon-button>
                   </a>
                 `
               : ``}
@@ -425,9 +428,6 @@ class RssItems extends LitElement {
     this.readMoreAnchorText = "Read more";
     this.readMoreImageAlt = "";
     this.showReadMore = false;
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
     const name = "x2js";
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/x2js.js`;

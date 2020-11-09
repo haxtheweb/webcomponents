@@ -12,6 +12,7 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js';
       import '../simple-icon.js';
+      import '../lib/simple-icons.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -20,8 +21,13 @@
       <h3>Basic simple-icon demo</h3>
       <demo-snippet>
         <template>
+          <simple-icon icon="device:battery-20" accent-color="pink"></simple-icon>
+          <simple-icon icon="icons:search" accent-color="grey"></simple-icon>
+          <simple-icon icon="icons:alarm-add" accent-color="blue"></simple-icon>
+          <simple-icon icon="icons:zoom-out" accent-color="orange"></simple-icon>
+          <simple-icon icon="icons:zoom-in" accent-color="black"></simple-icon>
           <simple-icon icon="hax:code-json" accent-color="blue"></simple-icon>
-          <simple-icon icon="hax:remix" accent-color="grey"></simple-icon>
+          <simple-icon icon="hax:remix" accent-color="red"></simple-icon>
           <simple-icon icon="hax:arrow-expand-left" accent-color="grey"></simple-icon>
         </template>
       </demo-snippet>

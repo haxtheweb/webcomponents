@@ -4,7 +4,7 @@
  * @element mdi-social-iconset-svg is a iconset for the Material Design Icons collection with the "social" tag
  *
  * Example:
- *   <iron-icon icon="mdi-social:twitch"></iron-icon>
+ *   <simple-icon icon="mdi-social:twitch"></simple-icon>
  *
  * @demo demo/index.html
  */

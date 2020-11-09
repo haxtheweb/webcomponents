@@ -1,11 +1,12 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/iron-list/iron-list.js";
-import "@polymer/paper-card/paper-card.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-item/paper-item-shared-styles.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
@@ -28,7 +29,7 @@ class LrnappBlockRecentProject extends PolymerElement {
           justify-content: center;
           background-color: white;
         }
-        paper-button {
+        button {
           padding: 0;
           margin: 0;
           min-width: 1rem;
@@ -36,6 +37,7 @@ class LrnappBlockRecentProject extends PolymerElement {
         }
         .project-card {
           width: 100%;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
           min-width: 15em;
           max-width: 20em;
           margin: 0 1em;
@@ -99,12 +101,11 @@ class LrnappBlockRecentProject extends PolymerElement {
       </div>
       <template is="dom-if" if="[[hasProject]]">
         <a tabindex="-1" href$="[[basePath]]lrnapp-studio-kanban">
-          <paper-button class="whole-project ferpa-protect">
-            <paper-card
+          <button class="whole-project ferpa-protect">
+            <div
               id$="project-[[project.id]]"
               class="project-card grey lighten-3"
               heading="{{project.attributes.title}}"
-              elevation="2"
             >
               <div class="card-content">
                 <iron-list
@@ -126,9 +127,9 @@ class LrnappBlockRecentProject extends PolymerElement {
                           <div
                             class$="status-indicator [[assignment.metadata.relatedSubmissions.complete.color]]"
                           >
-                            <iron-icon
+                            <simple-icon
                               icon="[[assignment.metadata.relatedSubmissions.complete.icon]]"
-                            ></iron-icon>
+                            ></simple-icon>
                           </div>
                           <div class="assignment-title">
                             [[assignment.title]]
@@ -139,8 +140,8 @@ class LrnappBlockRecentProject extends PolymerElement {
                   </template>
                 </iron-list>
               </div>
-            </paper-card>
-          </paper-button>
+            </div>
+          </button>
         </a>
       </template>
       <template is="dom-if" if="[[!hasProject]]">
@@ -153,7 +154,7 @@ class LrnappBlockRecentProject extends PolymerElement {
         >
           <span class="button-contents">
             <div class="status-indicator">
-              <iron-icon icon="assignment"></iron-icon>
+              <simple-icon icon="assignment"></simple-icon>
             </div>
             <div class="assignment-title">Tap to start your first project!</div>
           </span>

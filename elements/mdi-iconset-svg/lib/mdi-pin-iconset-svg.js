@@ -4,7 +4,7 @@
  * @element mdi-pin-iconset-svg is a iconset for the Material Design Icons collection with the "pin" tag
  *
  * Example:
- *   <iron-icon icon="mdi-pin:pin"></iron-icon>
+ *   <simple-icon icon="mdi-pin:pin"></simple-icon>
  *
  * @demo demo/index.html
  */

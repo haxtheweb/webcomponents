@@ -127,7 +127,10 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
                         @load="${(e) => this._handleImgLoad(e)}"
                       />
                       <div class="zoombg"></div>
-                      <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
+                      <simple-icon
+                        icon="zoom-in"
+                        class="zoomicon"
+                      ></simple-icon>
                     </lrndesign-gallery-zoom>
                   `
                 )}

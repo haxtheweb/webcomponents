@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+
 /**
  * `magazine-cover`
  * `A Magazine cover element`
@@ -149,24 +152,18 @@ class MagazineCover extends LitElement {
     this.link = "";
     this.eventName = "";
     this.eventData = {};
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-button/paper-button.js");
   }
   /**
    * LitElement render
    */
   render() {
     return html`
-      <iron-image
+      <img
         src="${this.image}"
-        preload=""
-        fade=""
-        sizing="cover"
+        loading="lazy"
         id="image"
         aria-describedby="${this.describedBy || ""}"
-      ></iron-image>
+      />
       <div class="overlay">
         <h2 id="header" ?hidden="${!this.header}">${this.header}</h2>
         <div id="subheader" ?hidden="${!this.subheader}">${this.subheader}</div>
@@ -180,15 +177,17 @@ class MagazineCover extends LitElement {
           id="actionlink"
           @click="${this._linkTapped}"
         >
-          <paper-button raised="" id="action">
+          <button raised="" id="action">
             <span id="label"
-              >${this.action}<iron-icon
+              >${this.action}<simple-icon
+                accent-color="grey"
+                dark
                 id="icon"
                 icon="${this.icon}"
                 ?hidden="${!this.icon}"
-              ></iron-icon
+              ></simple-icon
             ></span>
-          </paper-button>
+          </button>
         </a>
       </div>
     `;

@@ -394,7 +394,7 @@ const ChartistRenderSuper = function (SuperClass) {
     _renderTable() {
       let html = "",
         table = this.querySelector("table"),
-        data = this.data ? [...this.data] : false;
+        data = this.data ? [this.data.labels, this.data.series] : false;
       if (data) {
         let rowHeads = data[1] && data[1][0] && isNaN(data[1][0]),
           colHeads =

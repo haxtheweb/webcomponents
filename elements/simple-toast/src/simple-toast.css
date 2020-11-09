@@ -6,22 +6,22 @@
   display: none;
 }
 
-paper-toast:not(:defined) {
-  display: none;
+simple-toast-el {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  width: var(--simple-toast-width, auto);
+  color: var(--simple-toast-color, var(--simple-colors-default-theme-accent-1, white));
+  background-color: var(--simple-toast-bg, var(--simple-colors-default-theme-accent-12, black));
+  top: var(--simple-toast-top);
+  margin: var(--simple-toast-margin, 8px);
+  padding: var(--simple-toast-padding, 16px);
+  left: var(--simple-toast-left, 36px);
+  bottom: var(--simple-toast-bottom, 36px);
+  right: var(--simple-toast-right);
+  border: var(--simple-toast-border);
+  z-index: var(--simple-toast-z-index, 1000);
+  font-size: var(--simple-toast-font-size);
 }
 
-paper-toast {
-  width: var(--simple-toast-width, inherit);
-  height: var(--simple-toast-height, inherit);
-  color: var(--simple-toast-color, white);
-  background-color: var(--simple-toast-bg, black);
-  top: var(--simple-toast-top, inherit);
-  margin: var(--simple-toast-margin, 16px);
-  padding: var(--simple-toast-padding, 16px);
-  left: var(--simple-toast-left, inherit);
-  bottom: var(--simple-toast-bottom, inherit);
-  right: var(--simple-toast-right, inherit);
-  border: var(--simple-toast-border, inherit);
-  z-index: var(--simple-toast-z-index, inherit);
-  font-size: var(--simple-toast-font-size, inherit);
+button {
+  margin-left: 8px;
 }

@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-item/paper-item.js";
@@ -15,11 +14,13 @@ import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-course-banner/lrndesign-course-banner.js";
-import "@lrnwebcomponents/lrn-icon/lrn-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
@@ -68,11 +69,11 @@ class LrnappCis extends PolymerElement {
         iron-selector lrnsys-button {
           display: inline-flex;
         }
-        paper-button.coursecard-wrapper {
+        button.coursecard-wrapper {
           margin: 0;
           padding: 0;
         }
-        paper-button.coursecard-wrapper:focus {
+        button.coursecard-wrapper:focus {
           outline: blue solid 1px;
         }
         lrnapp-cis-course-card {
@@ -115,7 +116,7 @@ class LrnappCis extends PolymerElement {
         .buttons {
           text-align: center;
         }
-        .buttons paper-button {
+        .buttons button {
           width: 10em;
           height: 4em;
         }
@@ -239,7 +240,7 @@ class LrnappCis extends PolymerElement {
           <div class="iron-list-container" name="courses">
             <iron-list id="ironlist" items="[[courses]]" as="course" grid="">
               <template>
-                <paper-button
+                <button
                   data-course-id$="[[course.id]]"
                   class="coursecard-wrapper"
                   on-click="_loadCourseUrl"
@@ -253,7 +254,7 @@ class LrnappCis extends PolymerElement {
                     color="[[course.attributes.color]]"
                   >
                   </lrnapp-cis-course-card>
-                </paper-button>
+                </button>
               </template>
             </iron-list>
           </div>
@@ -273,7 +274,7 @@ class LrnappCis extends PolymerElement {
       </app-route>
       <paper-dialog id="dialog" with-backdrop>
         <h2>Course details</h2>
-        <paper-dialog-scrollable>
+        <div style="height:50vh;width:100%;overflow:scroll;">
           <div class="dialog-header">
             <lrndesign-course-banner
               image="[[activeCourse.attributes.image]]"
@@ -322,11 +323,11 @@ class LrnappCis extends PolymerElement {
                         icon-class="grey lighten-5"
                         data-machine-name$="[[service.machine_name]]"
                       >
-                        <lrn-icon
+                        <simple-icon
                           data-machine-name$="[[service.machine_name]]"
                           icon="[[service.icon]]"
                           class="elmsln-hover-icon"
-                        ></lrn-icon>
+                        ></simple-icon>
                         <span data-machine-name$="[[service.machine_name]]"
                           >Make the [[service.title]] service</span
                         >
@@ -338,10 +339,10 @@ class LrnappCis extends PolymerElement {
                         href="[[service.url]]"
                         hover-class="[[service.color]] lighten-4"
                       >
-                        <lrn-icon
+                        <simple-icon
                           icon="[[service.icon]]"
                           class="elmsln-hover-icon"
-                        ></lrn-icon>
+                        ></simple-icon>
                         <span>[[service.title]]</span>
                       </lrnsys-button>
                     </template>
@@ -408,7 +409,7 @@ class LrnappCis extends PolymerElement {
             </responsive-grid-row>
             <p>[[activeCourse.attributes.body]]</p>
           </div>
-        </paper-dialog-scrollable>
+        </div>
       </paper-dialog>
       <lrnsys-dialog id="confirm">
         <div class="dialog-header" slot="header">
@@ -428,10 +429,10 @@ class LrnappCis extends PolymerElement {
               >Add</responsive-grid-col
             >
             <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2"
-              ><lrn-icon
+              ><simple-icon
                 icon="[[_activeService.icon]]"
                 class$="[[_activeService.color]]-text elmsln-hover-icon service-confirm-icon"
-              ></lrn-icon
+              ></simple-icon
             ></responsive-grid-col>
             <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3"
               ><strong>[[_activeService.title]]</strong></responsive-grid-col
@@ -480,17 +481,16 @@ class LrnappCis extends PolymerElement {
           <div style="margin-top:1em;">This will take a few moments.</div>
         </div>
         <div class="buttons">
-          <paper-button
+          <button
             raised=""
             dialog-confirm=""
             autofocus=""
             on-click="_confirmBuild"
             class="green"
-            >Let's do it!</paper-button
           >
-          <paper-button dialog-dismiss="" class="red-text"
-            >Oops, go back.</paper-button
-          >
+            Let's do it!
+          </button>
+          <button dialog-dismiss="" class="red-text">Oops, go back.</button>
         </div>
       </lrnsys-dialog>
       <paper-toast id="toast"></paper-toast>
@@ -836,9 +836,7 @@ class LrnappCis extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener("route-change", this._routeChange.bind(this));
-    });
+    this.addEventListener("route-change", this._routeChange.bind(this));
   }
   /**
    * lifecycle
@@ -850,7 +848,7 @@ class LrnappCis extends PolymerElement {
     super.disconnectedCallback();
   }
   /**
-   * Handle tap on paper-button above to redirect to the correct course url.
+   * Handle tap on button above to redirect to the correct course url.
    */
 
   _loadCourseUrl(e) {

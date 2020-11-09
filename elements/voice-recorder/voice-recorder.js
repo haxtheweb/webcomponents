@@ -4,7 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { record } from "./lib/vmsg-fork.js";
-
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `voice-recorder`
  * `LAME bridge`
@@ -25,7 +26,7 @@ class VoiceRecorder extends LitElement {
   render() {
     return html`
       <button @click="${this.recordState}">
-        <iron-icon icon="${this.iconState}"></iron-icon>${this.textState}
+        <simple-icon icon="${this.iconState}"></simple-icon>${this.textState}
       </button>
       <slot></slot>
     `;
@@ -57,8 +58,6 @@ class VoiceRecorder extends LitElement {
     super();
     this.recording = false;
     setTimeout(() => {
-      import("@polymer/iron-icon/iron-icon.js");
-      import("@polymer/iron-icons/av-icons.js");
       this.addEventListener("vmsg-ready", this.vmsgReady.bind(this));
     }, 0);
   }

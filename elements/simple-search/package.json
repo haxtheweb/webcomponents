@@ -40,8 +40,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/simple-tooltip": "^2.7.10",
-    "@polymer/iron-icons": "^3.0.1",
-    "@polymer/paper-input": "^3.0.2",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
+    "@lrnwebcomponents/simple-fields": "^2.7.10",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

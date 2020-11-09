@@ -1,5 +1,5 @@
 <div id="loginform">
-  <paper-progress ?disabled="${!this.loading}" indeterminate></paper-progress>
+  <simple-progress ?disabled="${!this.loading}"></simple-progress>
   <div id="loginformcontent">
     <h1>${this.title}</h1>
     <h2>${this.subtitle}</h2>
@@ -25,9 +25,9 @@
       label="${this.passwordInputLabel}"
       error-message="${this.passwordInputErrMsg}"
     ></simple-fields-field>
-    <mwc-button @click="${this._login}" ?disabled="${this.loading}"
-    id="loginbtn" raised>${this.loginBtnText}
-    </mwc-button>
+    <button @click="${this._login}" ?disabled="${this.loading}"
+    id="loginbtn">${this.loginBtnText}
+    </button>
     <span id="buttons"><slot name="buttons"></slot></span>
   </div>
 </div>

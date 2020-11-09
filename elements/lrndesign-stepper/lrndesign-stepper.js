@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@lrnwebcomponents/lrndesign-stepper/lib/lrndesign-stepper-button.js";
 /**
 `lrndesign-stepper`
 visualization of steps
@@ -10,12 +11,6 @@ visualization of steps
 * @demo demo/index.html
 */
 class LrndesignStepper extends PolymerElement {
-  constructor() {
-    super();
-    import(
-      "@lrnwebcomponents/lrndesign-stepper/lib/lrndesign-stepper-button.js"
-    );
-  }
   static get template() {
     return html`
       <style>

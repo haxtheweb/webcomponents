@@ -1,8 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/paper-card/paper-card.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-image/iron-image.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /*
  `lrnapp-cis-course-card`
@@ -21,10 +19,11 @@ class LrnappCisCourseCard extends PolymerElement {
         :host([size="small"]) {
           transform: scale(0.8);
         }
-        paper-card {
+        .card {
           border-radius: 4px;
           margin: 0;
           width: 100%;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
         .card-actions {
           background-color: #f5f5f5;
@@ -70,8 +69,8 @@ class LrnappCisCourseCard extends PolymerElement {
           background: #efefef;
         }
         .course-icon {
-          --iron-icon-height: 100%;
-          --iron-icon-width: 100%;
+          --simple-icon-height: 100%;
+          --simple-icon-width: 100%;
           overflow: hidden;
           color: grey;
         }
@@ -103,22 +102,20 @@ class LrnappCisCourseCard extends PolymerElement {
           display: inline;
         }
       </style>
-      <paper-card elevation="[[elevation]]">
+      <div class="card">
         <div class="card-content card-control-height card-control-center">
           <div class="course-preview">
-            <iron-icon
+            <simple-icon
               class="course-icon"
               icon="[[icon]]"
               hidden$="[[!icon]]"
-            ></iron-icon>
-            <iron-image
+            ></simple-icon>
+            <img
               style="width:100%; height:100%; background-color: lightgray;"
-              sizing="cover"
-              preload=""
-              fade=""
+              loading="lazy"
               src="[[image]]"
               hidden$="[[!image]]"
-            ></iron-image>
+            />
           </div>
           <div class="course-info">
             <div class="divider"></div>
@@ -129,7 +126,7 @@ class LrnappCisCourseCard extends PolymerElement {
         <div class="card-actions" hidden="">
           <div class="card-action-details"></div>
         </div>
-      </paper-card>
+      </div>
     `;
   }
   static get tag() {
@@ -137,10 +134,8 @@ class LrnappCisCourseCard extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener("mouseenter", this._mouseEnter.bind(this));
-      this.addEventListener("mouseleave", this._mouseLeave.bind(this));
-    });
+    this.addEventListener("mouseenter", this._mouseEnter.bind(this));
+    this.addEventListener("mouseleave", this._mouseLeave.bind(this));
   }
   disconnectedCallback() {
     this.removeEventListener("mouseenter", this._mouseEnter.bind(this));

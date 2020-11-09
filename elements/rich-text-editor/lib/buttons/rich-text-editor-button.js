@@ -6,9 +6,26 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "../singletons/rich-text-editor-selection.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 const RichTextEditorButtonBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonStyles(SuperClass) {
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) {
+        super.firstUpdated(changedProperties);
+      }
+      this.__a11y = this.shadowRoot.querySelector("#button");
+      this.__a11y.addEventListener("keypress", (e) => {
+        switch (e.key) {
+          case "Enter":
+            this._buttonTap(e);
+            break;
+        }
+      });
+    }
     /**
      * Store the tag name to make it easier to obtain directly.
      */
@@ -31,7 +48,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     }
     render() {
       return html`
-        <paper-button
+        <button
           id="button"
           class="rtebutton"
           ?disabled="${this.disabled}"
@@ -40,12 +57,12 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           tabindex="0"
           ?toggled="${this.isToggled}"
         >
-          <iron-icon id="icon" aria-hidden="true" icon="${this.currentIcon}">
-          </iron-icon>
+          <simple-icon id="icon" aria-hidden="true" icon="${this.currentIcon}">
+          </simple-icon>
           <span id="label" class="${this.labelStyle}"
             >${this.currentLabel}</span
           >
-        </paper-button>
+        </button>
         <simple-tooltip id="tooltip" for="button"
           >${this.currentLabel}</simple-tooltip
         >
@@ -106,7 +123,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
 
         /**
          * Optional space-sperated list of keyboard shortcuts for the editor
-         * to fire this button, see iron-a11y-keys for more info.
          */
         shortcutKeys: {
           attribute: "shortcut-keys",
@@ -197,10 +213,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       this.disabled = false;
       this.showTextLabel = false;
       this.toggles = false;
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/iron-icons/image-icons.js");
-      import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }
     get blockSelectors() {
@@ -308,14 +320,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         if (propName === "range") this._rangeChanged(this.range, oldValue);
       });
     }
-    /**
-     * life cycle, element is afixed to the DOM
-     */
-    connectedCallback() {
-      super.connectedCallback();
-      this.__a11y = this.shadowRoot.querySelector("#button");
-    }
-
     /**
      * life cycle, element is detatched
      */

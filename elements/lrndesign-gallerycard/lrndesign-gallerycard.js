@@ -15,7 +15,6 @@ class LrndesignGallerycard extends LitElement {
     this.comments = 0;
     setTimeout(() => {
       import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
-      import("@polymer/paper-card/paper-card.js");
       this.addEventListener("mouseenter", this._mouseEnter.bind(this));
       this.addEventListener("mouseleave", this._mouseLeave.bind(this));
     }, 0);
@@ -39,12 +38,9 @@ class LrndesignGallerycard extends LitElement {
           })
         );
       }
-      if (propName == "image" && this[propName] != "") {
-        import("@polymer/iron-image/iron-image.js");
-      }
       if (propName == "icon" && this[propName] != "") {
-        import("@polymer/iron-icon/iron-icon.js");
-        import("@polymer/iron-icons/iron-icons.js");
+        import("@lrnwebcomponents/simple-icon/simple-icon.js");
+        import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
       }
     });
   }
@@ -61,10 +57,11 @@ class LrndesignGallerycard extends LitElement {
           transform: scale(0.8);
         }
 
-        paper-card {
+        div.card {
           border-radius: 4px;
           margin: 0;
           width: 100%;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
 
         .card-actions {
@@ -88,8 +85,15 @@ class LrndesignGallerycard extends LitElement {
           height: 240px;
         }
 
-        [elevation="0"] {
+        :host([elevation="0"]) {
           border: solid 1px #eeeeee;
+        }
+
+        :host([elevation="1"]) {
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+        }
+        :host([elevation="2"]) {
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
         }
 
         .text-right {
@@ -123,8 +127,8 @@ class LrndesignGallerycard extends LitElement {
         }
 
         .project-icon {
-          --iron-icon-height: 100%;
-          --iron-icon-width: 100%;
+          --simple-icon-height: 100%;
+          --simple-icon-width: 100%;
           overflow: hidden;
           color: grey;
         }
@@ -165,26 +169,24 @@ class LrndesignGallerycard extends LitElement {
   }
   render() {
     return html`
-      <paper-card elevation="${this.elevation}">
+      <div class="card">
         <div class="card-content card-control-height card-control-center">
           <div class="submission-preview">
             ${this.icon
               ? html`
-                  <iron-icon
+                  <simple-icon
                     class="project-icon"
                     icon="${this.icon}"
-                  ></iron-icon>
+                  ></simple-icon>
                 `
               : ``}
             ${this.image
               ? html`
-                  <iron-image
+                  <img
                     style="width:100%; height:100%; background-color: lightgray;"
-                    sizing="cover"
-                    preload=""
-                    fade=""
+                    loading="lazy"
                     src="${this.image}"
-                  ></iron-image>
+                  />
                 `
               : ``}
           </div>
@@ -204,7 +206,7 @@ class LrndesignGallerycard extends LitElement {
             <span class="comments text-right">Comments: ${this.comments}</span>
           </div>
         </div>
-      </paper-card>
+      </div>
     `;
   }
 

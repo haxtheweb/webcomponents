@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/a11y-tab.js";
 /**
@@ -214,7 +214,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           margin-top: -1px;
         }
 
-        #tabs paper-button {
+        #tabs button {
           margin: 0;
           text-transform: unset;
           text-decoration: var(--a11y-tabs-text-decoration, none);
@@ -227,15 +227,15 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             var(--a11y-tabs-horizontal-border-radius) 0 0;
         }
 
-        :host(:not([vertical])) #tabs paper-button {
+        :host(:not([vertical])) #tabs button {
           border-top: 1px solid var(--a11y-tabs-border-color);
         }
 
-        :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
+        :host(:not([vertical])) #tabs li:not(:first-of-type) button {
           border-left: none;
         }
 
-        :host([vertical]) #tabs paper-button {
+        :host([vertical]) #tabs button {
           border-top: none;
           border-radius: 0;
           display: flex;
@@ -245,37 +245,37 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           padding: var(--a11y-tabs-vertical-button-padding);
         }
 
-        #tabs paper-button:focus,
-        #tabs paper-button:hover {
+        #tabs button:focus,
+        #tabs button:hover {
           color: var(--a11y-tabs-focus-color);
           font-weight: var(--a11y-tabs-focus-font-weight, normal);
           text-decoration: var(--a11y-tabs-focus-text-decoration, underline);
         }
 
-        :host(:not([vertical])) #tabs paper-button:focus,
-        :host(:not([vertical])) #tabs paper-button:hover {
+        :host(:not([vertical])) #tabs button:focus,
+        :host(:not([vertical])) #tabs button:hover {
           border-top: var(
             --a11y-tabs-focus-border-accent,
             1px solid var(--a11y-tabs-border-color)
           );
         }
 
-        :host([vertical]) #tabs paper-button:focus,
-        :host([vertical]) #tabs paper-button:hover {
+        :host([vertical]) #tabs button:focus,
+        :host([vertical]) #tabs button:hover {
           border-left: var(
             --a11y-tabs-focus-border-accent,
             1px solid var(--a11y-tabs-border-color)
           );
         }
 
-        #tabs paper-button[aria-selected="true"] {
+        #tabs button[aria-selected="true"] {
           font-weight: var(--a11y-tabs-selected-font-weight, normal);
           color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));
           background-color: var(--a11y-tabs-background);
           text-decoration: var(--a11y-tabs-selected-text-decoration, none);
         }
 
-        :host(:not([vertical])) #tabs paper-button[aria-selected="true"] {
+        :host(:not([vertical])) #tabs button[aria-selected="true"] {
           border-bottom-color: var(--a11y-tabs-background);
           border-top: var(
             --a11y-tabs-selected-border-accent,
@@ -283,7 +283,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           );
         }
 
-        :host([vertical]) #tabs paper-button[aria-selected="true"] {
+        :host([vertical]) #tabs button[aria-selected="true"] {
           border-right-color: var(--a11y-tabs-background);
           border-left: var(
             --a11y-tabs-selected-border-accent,
@@ -316,7 +316,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           margin-right: 8px;
         }
 
-        :host([icons-only]) #tabs paper-button {
+        :host([icons-only]) #tabs button {
           justify-content: center;
         }
 
@@ -328,8 +328,12 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           display: none;
         }
 
-        iron-icon:not([hidden]) {
+        simple-icon:not([hidden]) {
           display: inline-block;
+        }
+
+        simple-icon[hidden] {
+          display: none;
         }
       `,
     ];
@@ -755,7 +759,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabButton(tab, i) {
     return html`
-      <paper-button
+      <button
         id="${tab.id}-button"
         aria-selected="${tab.id === this.activeTab ? "true" : "false"}"
         aria-controls="${tab.id}"
@@ -769,7 +773,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
-      </paper-button>
+      </button>
       ${this._tabTooltip(tab)}
     `;
   }
@@ -795,15 +799,24 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @memberof A11yTabs
    */
   _tabIcon(tab, icon) {
-    return html`
-      <iron-icon
-        class="icon"
-        ?hidden="${!tab[icon]}"
-        .icon="${tab[icon]}"
-        .title="${tab[flag]}"
-      >
-      </iron-icon>
-    `;
+    return tab.flag
+      ? html`
+          <simple-icon
+            class="icon"
+            ?hidden="${!tab[icon]}"
+            .icon="${tab[icon]}"
+            .title="${tab.flag}"
+          >
+          </simple-icon>
+        `
+      : html`
+          <simple-icon
+            class="icon"
+            ?hidden="${!tab[icon]}"
+            .icon="${tab[icon]}"
+          >
+          </simple-icon>
+        `;
   }
 
   /**

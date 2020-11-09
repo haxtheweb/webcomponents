@@ -2,8 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
-
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./lib/simple-toast-el.js";
 // register globally so we can make sure there is only one
 window.SimpleToast = window.SimpleToast || {};
 // request if this exists. This helps invoke the element existing in the dom
@@ -17,6 +18,7 @@ window.SimpleToast.requestAvailability = () => {
   }
   return window.SimpleToast.instance;
 };
+export const SimpleToastStore = window.SimpleToast.requestAvailability();
 
 /**
  * `simple-toast`
@@ -24,10 +26,11 @@ window.SimpleToast.requestAvailability = () => {
  * @demo demo/index.html
  * @element simple-toast
  */
-class SimpleToast extends LitElement {
+class SimpleToast extends SimpleColors {
   //styles function
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -37,24 +40,30 @@ class SimpleToast extends LitElement {
           display: none;
         }
 
-        paper-toast:not(:defined) {
-          display: none;
+        simple-toast-el {
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+          width: var(--simple-toast-width, auto);
+          color: var(
+            --simple-toast-color,
+            var(--simple-colors-default-theme-accent-1, white)
+          );
+          background-color: var(
+            --simple-toast-bg,
+            var(--simple-colors-default-theme-accent-12, black)
+          );
+          top: var(--simple-toast-top);
+          margin: var(--simple-toast-margin, 8px);
+          padding: var(--simple-toast-padding, 16px);
+          left: var(--simple-toast-left, 36px);
+          bottom: var(--simple-toast-bottom, 36px);
+          right: var(--simple-toast-right);
+          border: var(--simple-toast-border);
+          z-index: var(--simple-toast-z-index, 1000);
+          font-size: var(--simple-toast-font-size);
         }
 
-        paper-toast {
-          width: var(--simple-toast-width, inherit);
-          height: var(--simple-toast-height, inherit);
-          color: var(--simple-toast-color, white);
-          background-color: var(--simple-toast-bg, black);
-          top: var(--simple-toast-top, inherit);
-          margin: var(--simple-toast-margin, 16px);
-          padding: var(--simple-toast-padding, 16px);
-          left: var(--simple-toast-left, inherit);
-          bottom: var(--simple-toast-bottom, inherit);
-          right: var(--simple-toast-right, inherit);
-          border: var(--simple-toast-border, inherit);
-          z-index: var(--simple-toast-z-index, inherit);
-          font-size: var(--simple-toast-font-size, inherit);
+        button {
+          margin-left: 8px;
         }
       `,
     ];
@@ -62,8 +71,10 @@ class SimpleToast extends LitElement {
 
   // render function
   render() {
-    return html` <paper-toast
+    return html` <simple-toast-el
       id="toast"
+      accent-color="${this.accentColor}"
+      ?dark="${this.dark}"
       text="${this.text}"
       duration="${this.duration}"
       ?opened="${this.opened}"
@@ -74,7 +85,7 @@ class SimpleToast extends LitElement {
       <button .hidden="${!this.closeButton}" @click="${this.hide}">
         ${this.closeText}
       </button>
-    </paper-toast>`;
+    </simple-toast-el>`;
   }
 
   // properties available to the custom element for data binding
@@ -147,11 +158,6 @@ class SimpleToast extends LitElement {
     super();
     this.setDefaultToast();
   }
-  firstUpdated() {
-    setTimeout(() => {
-      import("@polymer/paper-toast/paper-toast.js");
-    }, 0);
-  }
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener(
@@ -191,7 +197,9 @@ class SimpleToast extends LitElement {
     this.text = "Saved";
     this.classStyle = "";
     this.closeText = "Close";
-    this.duration = 4000;
+    this.duration = 3000;
+    this.accentColor = "grey";
+    this.dark = false;
     this.eventCallback = null;
     this.closeButton = true;
     while (this.firstChild !== null) {
@@ -226,9 +234,13 @@ class SimpleToast extends LitElement {
     if (e.detail.slot) {
       this.appendChild(e.detail.slot);
     }
-    setTimeout(() => {
-      this.show();
-    }, 5);
+    if (e.detail.accentColor) {
+      this.accentColor = e.detail.accentColor;
+    }
+    if (e.detail.dark) {
+      this.dark = e.detail.dark;
+    }
+    this.show();
   }
 
   show(e) {

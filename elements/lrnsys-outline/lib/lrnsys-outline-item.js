@@ -2,9 +2,10 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-input/paper-input.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@lrnwebcomponents/drawing-icons/drawing-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 /**
 `lrnsys-outline-item`
 A LRN element
@@ -90,27 +91,27 @@ class LrnsysOutlineItem extends PolymerElement {
         :host(:hover) #gap {
           border-left: solid 4px var(--lrnsys-outline-gap-color, #aaaaaa);
         }
-        paper-icon-button {
+        simple-icon-button {
           font-size: 16px;
-          height: 36px;
+          --simple-icon-height: 36px;
           padding: 10px;
           margin: 4px;
           display: none;
           border-radius: 0.16px;
         }
-        :host([focus-state]) paper-icon-button,
-        :host(:focus) paper-icon-button,
-        :host(:hover) paper-icon-button {
-          width: 36px;
+        :host([focus-state]) simple-icon-button,
+        :host(:focus) simple-icon-button,
+        :host(:hover) simple-icon-button {
+          --simple-icon-width: 36px;
           display: inline-flex;
         }
-        paper-icon-button#add {
-          width: 36px;
+        simple-icon-button#add {
+          --simple-icon-width: 36px;
           margin-right: 2px;
           color: white;
           background-color: var(--lrnsys-outline-add-button-color, #018dff);
         }
-        paper-icon-button#delete {
+        simple-icon-button#delete {
           color: white;
           background-color: var(--lrnsys-outline-delete-button-color, #cc0000);
         }
@@ -124,42 +125,42 @@ class LrnsysOutlineItem extends PolymerElement {
           no-label-float=""
         >
         </paper-input>
-        <paper-icon-button
+        <simple-icon-button
           id="down"
           title="Move downwards"
           icon="icons:arrow-downward"
           on-click="moveDown"
-        ></paper-icon-button>
-        <paper-icon-button
+        ></simple-icon-button>
+        <simple-icon-button
           id="left"
           title="Outdent"
           icon="icons:arrow-back"
           on-click="moveOut"
-        ></paper-icon-button>
-        <paper-icon-button
+        ></simple-icon-button>
+        <simple-icon-button
           id="right"
           title="Indent"
           icon="icons:arrow-forward"
           on-click="moveIn"
-        ></paper-icon-button>
-        <paper-icon-button
+        ></simple-icon-button>
+        <simple-icon-button
           id="up"
           title="Move upwards"
           icon="icons:arrow-upward"
           on-click="moveUp"
-        ></paper-icon-button>
-        <paper-icon-button
+        ></simple-icon-button>
+        <simple-icon-button
           id="add"
           title="Add Item"
           icon="icons:add"
           on-click="add"
-        ></paper-icon-button>
-        <paper-icon-button
+        ></simple-icon-button>
+        <simple-icon-button
           id="delete"
           title="Delete"
           icon="icons:delete"
           on-click="delete"
-        ></paper-icon-button>
+        ></simple-icon-button>
       </div>
       <iron-a11y-keys
         target="[[__inputTarget]]"

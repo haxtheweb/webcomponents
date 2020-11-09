@@ -19,10 +19,6 @@ class SiteRecentContentBlock extends PolymerElement {
   static get tag() {
     return "site-recent-content-block";
   }
-  constructor() {
-    super();
-    import("@polymer/iron-image/iron-image.js");
-  }
   // render function
   static get template() {
     return html`
@@ -74,7 +70,7 @@ class SiteRecentContentBlock extends PolymerElement {
           margin-right: 10px;
           @apply --site-recent-content-block-image-wrapper;
         }
-        .image-wrapper iron-image {
+        .image-wrapper img.image {
           height: 50px;
           width: 50px;
           @apply --site-recent-content-block-image;
@@ -96,10 +92,11 @@ class SiteRecentContentBlock extends PolymerElement {
           <template>
             <div class="item-wrap" data-id$="[[item.id]]">
               <div class="image-wrapper">
-                <iron-image
-                  sizing="cover"
+                <img
+                  class="image"
+                  loading="lazy"
                   src="[[item.metadata.fields.image]]"
-                ></iron-image>
+                />
               </div>
               <div class="item-heading">
                 <a href$="[[item.slug]]">[[item.title]]</a>

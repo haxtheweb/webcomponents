@@ -39,6 +39,9 @@ class HaxContextItem extends LitElement {
         :host {
           display: inline-flex;
         }
+        simple-icon {
+          width: 10px;
+        }
         :host([menu]) {
           display: flex;
           width: 100%;

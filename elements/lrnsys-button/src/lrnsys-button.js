@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/elmsln-apps/lib/elmsln-base-deps.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
@@ -31,7 +30,7 @@ class LrnsysButton extends LitElement {
           color: var(--lrnsys-button-link-color, #000000);
           display: flex;
         }
-        paper-button {
+        button {
           padding: 0;
           margin: 0;
           min-width: 0.16px;
@@ -43,27 +42,28 @@ class LrnsysButton extends LitElement {
           text-transform: unset;
           border-radius: unset;
           display: flex;
+          background-color: transparent;
         }
         .no-padding {
           padding: 0;
         }
-        paper-button iron-icon {
-          height: var(--lrnsys-button-height);
+        button simple-icon {
+          --simple-icon-height: var(--lrnsys-button-height);
           margin: 0 4px;
         }
-        paper-button iron-icon:first-child {
+        button simple-icon:first-child {
           margin: 0 4px 0 0;
         }
-        paper-button iron-icon:last-child {
+        button simple-icon:last-child {
           margin: 0 0 0 4px;
         }
-        paper-button div.inner {
+        button div.inner {
           height: var(--lrnsys-button-height);
           line-height: var(--lrnsys-button-height);
           display: flex;
           padding: 0 16px;
         }
-        paper-button span.label {
+        button span.label {
           height: var(--lrnsys-button-height);
           line-height: var(--lrnsys-button-height);
         }
@@ -117,26 +117,25 @@ class LrnsysButton extends LitElement {
   render() {
     return html`
       <a tabindex="-1" id="lrnsys-button-link" ?disabled="${this.disabled}">
-        <paper-button
+        <button
           id="button"
           title="${this.alt}"
-          ?raised="${this.raised}"
           class="${this.buttonClass} ${this.color} ${this.textColor}"
           ?disabled="${this.disabled}"
           @focus-changed="${this.focusToggle}"
         >
           <div class="inner ${this.innerClass}">
             <slot name="prefix"></slot>
-            <iron-icon
+            <simple-icon
               icon="${this.icon}"
               id="icon"
               class="${this.iconClass}"
               ?hidden="${!this.icon}"
-            ></iron-icon>
+            ></simple-icon>
             <span class="label" ?hidden="${!this.label}"> ${this.label} </span>
             <slot></slot>
           </div>
-        </paper-button>
+        </button>
       </a>
       <simple-tooltip
         for="lrnsys-button-link"
@@ -180,7 +179,7 @@ class LrnsysButton extends LitElement {
         type: String,
       },
       /**
-       * iron-icon to use (with iconset if needed)
+       * simple-icon to use (with iconset if needed)
        */
       icon: {
         type: String,
@@ -286,7 +285,7 @@ class LrnsysButton extends LitElement {
     }
   }
   /**
-   * Handle toggle for mouse class and manage classList array for paper-button.
+   * Handle toggle for mouse class and manage classList array for button.
    */
   focusToggle(e) {
     // weird but reality... focus event is the button inside of here

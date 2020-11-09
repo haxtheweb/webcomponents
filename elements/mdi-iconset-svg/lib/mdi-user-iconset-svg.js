@@ -4,7 +4,7 @@
  * @element mdi-user-iconset-svg is a iconset for the Material Design Icons collection with the "user" tag
  *
  * Example:
- *   <iron-icon icon="mdi-user:account-circle"></iron-icon>
+ *   <simple-icon icon="mdi-user:account-circle"></simple-icon>
  *
  * @demo demo/index.html
  */

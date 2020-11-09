@@ -1,8 +1,8 @@
 
 <vaadin-split-layout>
   <div>
-    <paper-button raised noink @click="${this.addConfigure}">Add to configure</paper-button>
-    <paper-button raised noink @click="${this.addAdvanced}">Add to advanced</paper-button>
+    <button @click="${this.addConfigure}">Add to configure</button>
+    <button @click="${this.addAdvanced}">Add to advanced</button>
     <code-editor id="code"  @value-changed="${this._editorDataChanged}" .value="{}" language="json"></code-editor>
     <json-editor id="json" label="JSON" @value-changed="${this.__haxSchemaChanged}" value="${this.haxSchema}"></json-editor>
   </div>

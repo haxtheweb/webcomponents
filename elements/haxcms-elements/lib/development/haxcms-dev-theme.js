@@ -4,7 +4,6 @@
  */
 import { html } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/iron-list/iron-list.js";
 /**
@@ -25,8 +24,8 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
   }
   constructor() {
     super();
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/iron-icons/iron-icons.js");
+    import("@lrnwebcomponents/simple-icon/simple-icon.js");
+    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
@@ -71,7 +70,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
           /* theme color which is dictated by the manifest */
           background-color: var(--haxcms-color, black);
         }
-        paper-card {
+        div.card {
           width: 200px;
           color: black;
           background-color: blue;
@@ -109,7 +108,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
           --site-top-menu-link-active-color: yellow;
           --site-top-menu-indicator-arrow: 8px;
         }
-        .spacing paper-button {
+        .spacing button {
           min-width: unset;
           text-transform: unset;
           background-color: var(--haxcms-color, #000000);
@@ -136,7 +135,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
             href="https://github.com/elmsln/HAXcms"
             data-title="Get it. Got it? Good."
           >
-            <paper-button noink>Get HAXcms</paper-button>
+            <button noink>Get HAXcms</button>
           </a>
           <site-print-button></site-print-button>
           <site-print-button type="parent"></site-print-button>
@@ -154,9 +153,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
       <div class="buttons">
         <site-menu-button type="prev"></site-menu-button>
         <site-menu-button type="next"></site-menu-button>
-        <paper-button id="unset" on-click="resetActive"
-          >Unset activeItem</paper-button
-        >
+        <button id="unset" on-click="resetActive">Unset activeItem</button>
         <site-rss-button type="atom"></site-rss-button>
         <site-rss-button type="rss"></site-rss-button>
       </div>
@@ -165,9 +162,9 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
         <div>description: [[manifest.description]]</div>
         <div>
           icon:
-          <iron-icon
+          <simple-icon
             icon="[[manifest.metadata.theme.variables.icon]]"
-          ></iron-icon>
+          ></simple-icon>
         </div>
         <div>
           image:
@@ -189,13 +186,10 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
       <site-render-query class="cardlist" grid on-click="_itemTapped">
         <template>
           <div style="padding:8px;">
-            <paper-card
-              heading="[[item.title]]"
-              image="[[item.metadata.fields.image]]"
-              elevation="1"
-              animated-shadow="false"
-            >
+            <div class="card">
               <div class="card-content">
+                <div>title: [[item.title]]</div>
+                <div>image: [[item.metadata.fields.image]]</div>
                 <div>description: [[item.description]]</div>
                 <div>slug: [[item.slug]]</div>
                 <div>location: [[item.location]]</div>
@@ -203,12 +197,10 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
               </div>
               <div class="card-actions">
                 <a tabindex="-1" href$="[[item.slug]]"
-                  ><paper-button data-id$="[[item.id]]"
-                    >Set as active</paper-button
-                  ></a
+                  ><button data-id$="[[item.id]]">Set as active</button></a
                 >
               </div>
-            </paper-card>
+            </div>
           </div>
         </template>
       </site-render-query>
@@ -223,10 +215,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
   _itemTapped(e) {
     var local = e.target;
     var activeId = local.getAttribute("data-id");
-    if (
-      local.tagName === "PAPER-BUTTON" &&
-      typeof activeId !== typeof undefined
-    ) {
+    if (local.tagName === "BUTTON" && typeof activeId !== typeof undefined) {
       // console log these so you can debug easily as you build out
       console.warn(this.manifest);
     }

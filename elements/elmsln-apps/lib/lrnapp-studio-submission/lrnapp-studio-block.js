@@ -1,5 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "../elmsln-base-deps.js";
 class LrnappStudioBlock extends PolymerElement {
   static get template() {
@@ -32,7 +35,7 @@ class LrnappStudioBlock extends PolymerElement {
       </style>
       <div class="studio-block__header">
         <div class="studio-block__icon-wrapper">
-          <iron-icon icon="[[icon]]" hidden$="[[!icon]]"></iron-icon>
+          <simple-icon icon="[[icon]]" hidden$="[[!icon]]"></simple-icon>
         </div>
         <h3 hidden$="[[!title]]">[[title]]</h3>
       </div>

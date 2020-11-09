@@ -4,6 +4,9 @@
  */
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 /**
  * `elmsln-loading`
  * A spinner to tell the user that something is loading.
@@ -41,44 +44,44 @@ class ElmslnLoading extends SimpleColors {
             transform: rotate(60deg);
           }
         }
-        :host iron-icon {
+        :host simple-icon {
           color: var(--simple-colors-default-theme-accent-6);
           display: block;
           -webkit-animation: spin 1.25s ease-out infinite;
           -moz-animation: spin 1.25s ease-out infinite;
           animation: spin 1.25s ease-out infinite;
         }
-        :host([size="tiny"]) iron-icon {
-          width: 16px;
-          height: 16px;
+        :host([size="tiny"]) simple-icon {
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
           -webkit-animation: spin 0.75s ease-out infinite;
           -moz-animation: spin 0.75s ease-out infinite;
           animation: spin 0.75s ease-out infinite;
         }
-        :host([size="small"]) iron-icon {
-          width: 32px;
-          height: 32px;
+        :host([size="small"]) simple-icon {
+          --simple-icon-width: 32px;
+          --simple-icon-height: 32px;
           -webkit-animation: spin 1s ease-out infinite;
           -moz-animation: spin 1s ease-out infinite;
           animation: spin 1s ease-out infinite;
         }
-        :host([size="medium"]) iron-icon {
-          width: 64px;
-          height: 64px;
+        :host([size="medium"]) simple-icon {
+          --simple-icon-width: 64px;
+          --simple-icon-height: 64px;
           -webkit-animation: spin 1.25s ease-out infinite;
           -moz-animation: spin 1.25s ease-out infinite;
           animation: spin 1.25s ease-out infinite;
         }
-        :host([size="large"]) iron-icon {
-          width: 80px;
-          height: 80px;
+        :host([size="large"]) simple-icon {
+          --simple-icon-width: 80px;
+          --simple-icon-height: 80px;
           -webkit-animation: spin 1.25s ease-out infinite;
           -moz-animation: spin 1.25s ease-out infinite;
           animation: spin 1.25s ease-out infinite;
         }
-        :host([size="epic"]) iron-icon {
-          width: 400px;
-          height: 400px;
+        :host([size="epic"]) simple-icon {
+          --simple-icon-width: 400px;
+          --simple-icon-height: 400px;
           -webkit-animation: spin 2s ease-out infinite;
           -moz-animation: spin 2s ease-out infinite;
           animation: spin 2s ease-out infinite;
@@ -95,8 +98,6 @@ class ElmslnLoading extends SimpleColors {
   constructor() {
     super();
     this.size = "medium";
-    import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
   }
   /**
    * LitElement properties changed
@@ -133,7 +134,7 @@ class ElmslnLoading extends SimpleColors {
    * LitElement render
    */
   render() {
-    return html` <iron-icon icon="lrn:network"></iron-icon> `;
+    return html` <simple-icon icon="lrn:network"></simple-icon> `;
   }
 
   _getAccentColor(color) {

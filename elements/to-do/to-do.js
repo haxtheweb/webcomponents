@@ -1,18 +1,12 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 /**
  * `to-do`
  * @element to-do
  * @demo demo/index.html
  */
 class ToDo extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    import("@polymer/paper-checkbox/paper-checkbox.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/paper-input/paper-input.js");
-  }
   static get template() {
     return html`
       <style>
@@ -22,7 +16,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
         :host([hide-form]) ul {
           border: 1px solid black;
         }
-        paper-card {
+        div.card {
           width: 100%;
           padding: 8px;
         }
@@ -57,27 +51,32 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
           font-size: 20px;
         }
       </style>
-      <paper-card heading="[[name]]" elevation="2">
+      <div class="card">
+        <h3>[[name]]</h3>
         <div class="card-content">
           <div hidden$="[[hideForm]]">
-            <paper-input label="Task to accomplish" id="itemtext"></paper-input>
-            <paper-button raised="" id="itembutton" on-click="_addItemToList"
-              >Add item</paper-button
-            >
+            <simple-fields-field
+              label="Task to accomplish"
+              id="itemtext"
+            ></simple-fields-field>
+            <button raised="" id="itembutton" on-click="_addItemToList">
+              Add item
+            </button>
           </div>
           <ul class="task-list-wrapper">
             <template is="dom-repeat" items="[[items]]" as="item">
               <li data-item-id$="[[item.id]]">
-                <paper-checkbox
-                  checked="{{item.value}}"
+                <simple-fields-field
+                  type="checkbox"
+                  value="{{item.value}}"
                   disabled="[[item.disabled]]"
-                  >[[item.label]]</paper-checkbox
-                >
+                  label="[[item.label]]"
+                ></simple-fields-field>
               </li>
             </template>
           </ul>
         </div>
-      </paper-card>
+      </div>
     `;
   }
   static get tag() {

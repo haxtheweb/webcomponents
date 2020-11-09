@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
@@ -15,7 +14,7 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
         :host {
           display: block;
         }
-        paper-button {
+        button {
           padding: 0;
           margin: 0;
           min-width: 1rem;
@@ -92,16 +91,14 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener(
-        "submissionDeleted",
-        this._handleSubmissionDeletion.bind(this)
-      );
-      this.addEventListener(
-        "displaymessage",
-        this._handleDisplayMessage.bind(this)
-      );
-    });
+    this.addEventListener(
+      "submissionDeleted",
+      this._handleSubmissionDeletion.bind(this)
+    );
+    this.addEventListener(
+      "displaymessage",
+      this._handleDisplayMessage.bind(this)
+    );
   }
   disconnectedCallback() {
     this.removeEventListener(

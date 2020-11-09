@@ -4,7 +4,7 @@
  * @element mdi-drawing-iconset-svg is a iconset for the Material Design Icons collection with the "drawing" tag
  *
  * Example:
- *   <iron-icon icon="mdi-drawing:pencil"></iron-icon>
+ *   <simple-icon icon="mdi-drawing:pencil"></simple-icon>
  *
  * @demo demo/index.html
  */

@@ -4,7 +4,7 @@
  * @element mdi-tooltip-iconset-svg is a iconset for the Material Design Icons collection with the "tooltip" tag
  *
  * Example:
- *   <iron-icon icon="mdi-tooltip:tooltip-outline"></iron-icon>
+ *   <simple-icon icon="mdi-tooltip:tooltip-outline"></simple-icon>
  *
  * @demo demo/index.html
  */

@@ -42,7 +42,8 @@ class SiteTitle extends LitElement {
     this.__disposer = [];
     this.label = "Home";
     this.notitle = false;
-    import("@polymer/iron-icon/iron-icon.js");
+    import("@lrnwebcomponents/simple-icon/simple-icon.js");
+    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
     autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
@@ -71,9 +72,6 @@ class SiteTitle extends LitElement {
             text-rendering: optimizelegibility;
             @apply --site-title-heading;
           }
-          iron-icon {
-            @apply --site-title-icon;
-          }
         </style>
       </custom-style>
       <a
@@ -81,10 +79,10 @@ class SiteTitle extends LitElement {
         title="${this.label}"
         ?disabled="${this.disabled}"
       >
-        <iron-icon
+        <simple-icon
           ?hidden="${this.icon ? false : true}"
           icon="${this.icon}"
-        ></iron-icon>
+        ></simple-icon>
         ${this.notitle ? html`` : html` <h1>${this.siteTitle}</h1> `}
       </a>
     `;

@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `lrnapp-fab-menu`
  * `floating action button with menu`
@@ -15,7 +18,6 @@ class LrnappFabMenu extends LitElement {
     this.icon = "add";
     this.disabled = false;
     setTimeout(() => {
-      import("@polymer/paper-fab/paper-fab.js");
       import(
         "@lrnwebcomponents/lrnapp-fab-menu/lib/lrnapp-fab-speed-dial-action.js"
       );
@@ -62,13 +64,13 @@ class LrnappFabMenu extends LitElement {
   }
   render() {
     return html`
-      <paper-fab
+      <simple-icon-button
         icon="${this.icon}"
         class="open"
         @click="${this.open}"
         ?hidden="${this.opened}"
         ?disabled="${this.disabled}"
-      ></paper-fab>
+      ></simple-icon-button>
 
       <paper-fab-speed-dial-overlay
         class="overlay"
@@ -77,11 +79,11 @@ class LrnappFabMenu extends LitElement {
         with-backdrop
       >
         <slot></slot>
-        <paper-fab
+        <simple-icon-button
           icon="close"
           class="close"
           @click="${this.close}"
-        ></paper-fab>
+        ></simple-icon-button>
       </paper-fab-speed-dial-overlay>
     `;
   }

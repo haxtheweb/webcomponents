@@ -1,9 +1,10 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-ripple/paper-ripple.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
   static get template() {
     return html`
@@ -53,27 +54,26 @@ class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
         <slot></slot>
         <div class="actions">
           <template is="dom-if" if="[[embedcode]]">
-            <paper-icon-button
+            <simple-icon-button
               icon="code"
               class="embed"
               on-click="_embedClicked"
-            ></paper-icon-button>
+            ></simple-icon-button>
           </template>
-          <paper-icon-button
+          <simple-icon-button
             icon="delete"
             class="delete"
             on-click="_deleteClicked"
-          ></paper-icon-button>
-          <paper-ripple></paper-ripple>
+          ></simple-icon-button>
         </div>
       </div>
       <template is="dom-if" if="[[embedcode]]">
         <paper-dialog id="dialog">
           <h2>Embed Code</h2>
           <p>Paste this into the text area and your image will appear.</p>
-          <paper-dialog-scrollable>
+          <div style="height:50vh;width:100%;overflow:scroll;">
             <pre>{{embedcode}}</pre>
-          </paper-dialog-scrollable>
+          </div>
         </paper-dialog>
       </template>
     `;

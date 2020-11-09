@@ -38,7 +38,7 @@
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^2.7.10",
     "@lrnwebcomponents/simple-tooltip": "^2.7.10",
-    "@polymer/iron-image": "^3.0.0",
+    
     "lit-element": "2.4.0"
   },
   "devDependencies": {

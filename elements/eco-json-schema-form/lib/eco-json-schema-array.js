@@ -3,6 +3,9 @@ import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
 `eco-json-schema-array` takes in a JSON schema of type array and builds a form,
 exposing a `value` property that represents an array described by the schema.
@@ -23,9 +26,6 @@ class EcoJsonSchemaArray extends mixinBehaviors(
   constructor() {
     super();
     setTimeout(() => {
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/paper-icon-button/paper-icon-button.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       import("@lrnwebcomponents/a11y-collapse/a11y-collapse.js");
       import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
@@ -163,7 +163,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
                     class="item-fields"
                     data-index$="[[index]]"
                   ></div>
-                  <paper-icon-button
+                  <simple-icon-button
                     id="remove-[[index]]"
                     icon="icons:delete"
                     aria-label="Remove this item"
@@ -173,7 +173,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
                     on-tap="_onRemoveItem"
                     role="button"
                   >
-                  </paper-icon-button>
+                  </simple-icon-button>
                   <simple-tooltip for="remove-[[index]]"
                     >Remove this item</simple-tooltip
                   >
@@ -182,14 +182,14 @@ class EcoJsonSchemaArray extends mixinBehaviors(
             </a11y-collapse>
           </template>
         </a11y-collapse-group>
-        <paper-button
+        <button
           class="add-array-item array-item-button"
           on-click="_onAddItem"
           role="button"
         >
           Add an item
-          <iron-icon icon="add-circle"></iron-icon>
-        </paper-button>
+          <simple-icon icon="add-circle"></simple-icon>
+        </button>
       </fieldset>
     `;
   }

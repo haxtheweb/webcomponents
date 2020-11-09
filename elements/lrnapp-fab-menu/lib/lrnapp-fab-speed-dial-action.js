@@ -1,5 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 /*
 An action within a material design [Floating Action Button with Speed Dial](https://www.google.com/design/spec/components/buttons-floating-action-button.html#buttons-floating-action-button-transitions)
@@ -42,14 +45,6 @@ class LrnappFabSpeedDialAction extends LitElement {
           border-radius: 4px;
           margin-right: 24px;
         }
-        .fab {
-          --lrnapp-fab-background: var(
-            --lrnapp-fab-speed-dial-action-background
-          );
-          --lrnapp-fab-keyboard-focus-background: var(
-            --lrnapp-fab-speed-dial-action-keyboard-focus-background
-          );
-        }
         .flex {
           display: inline-flex;
         }
@@ -69,7 +64,6 @@ class LrnappFabSpeedDialAction extends LitElement {
   constructor() {
     super();
     this.color = "blue";
-    import("@polymer/paper-fab/paper-fab.js");
   }
   /**
    * LitElement render
@@ -79,7 +73,12 @@ class LrnappFabSpeedDialAction extends LitElement {
       <div class="flex">
         <span class="label"><slot></slot></span>
       </div>
-      <paper-fab class="fab ${this.color}" icon="${this.icon}" mini></paper-fab>
+      <simple-icon-button
+        class="fab ${this.color}"
+        accent-color="${this.color}"
+        icon="${this.icon}"
+        mini
+      ></simple-icon-button>
     `;
   }
   static get properties() {

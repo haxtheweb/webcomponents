@@ -4,7 +4,7 @@
  * @element mdi-form-iconset-svg is a iconset for the Material Design Icons collection with the "form" tag
  *
  * Example:
- *   <iron-icon icon="mdi-form:checked-marked-circle-outline"></iron-icon>
+ *   <simple-icon icon="mdi-form:checked-marked-circle-outline"></simple-icon>
  *
  * @demo demo/index.html
  */

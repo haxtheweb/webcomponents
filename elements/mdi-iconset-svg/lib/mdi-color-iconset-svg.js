@@ -4,7 +4,7 @@
  * @element mdi-color-iconset-svg is a iconset for the Material Design Icons collection with the "color" tag
  *
  * Example:
- *   <iron-icon icon="mdi-color:format-color-fill"></iron-icon>
+ *   <simple-icon icon="mdi-color:format-color-fill"></simple-icon>
  *
  * @demo demo/index.html
  */

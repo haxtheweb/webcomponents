@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-card/paper-card.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-block-recent-project.js";
 import "./lrnapp-block-recent-submissions.js";
@@ -32,11 +31,14 @@ class LrnappStudioDashboard extends PolymerElement {
         .dashboard-item {
           width: 30%;
         }
+        div.card {
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+        }
       </style>
       <h1 class="title">Welcome back [[username]]!</h1>
       <p class="para">Here's what's been going on in the studio</p>
       <div class="dashboard-row">
-        <paper-card heading="Your active project" class="dashboard-item">
+        <div heading="Your active project" class="dashboard-item card">
           <div class="card-content">
             <lrnapp-block-recent-project
               csrf-token="[[csrfToken]]"
@@ -46,11 +48,8 @@ class LrnappStudioDashboard extends PolymerElement {
             >
             </lrnapp-block-recent-project>
           </div>
-        </paper-card>
-        <paper-card
-          heading="Classmates needing feedback"
-          class="dashboard-item"
-        >
+        </div>
+        <div heading="Classmates needing feedback" class="dashboard-item card">
           <div class="card-content">
             <lrnapp-block-need-feedback
               csrf-token="[[csrfToken]]"
@@ -60,8 +59,8 @@ class LrnappStudioDashboard extends PolymerElement {
             >
             </lrnapp-block-need-feedback>
           </div>
-        </paper-card>
-        <paper-card heading="Recent Studio submissions" class="dashboard-item">
+        </div>
+        <div heading="Recent Studio submissions" class="dashboard-item card">
           <div class="card-content">
             <lrnapp-block-recent-submissions
               csrf-token="[[csrfToken]]"
@@ -71,8 +70,8 @@ class LrnappStudioDashboard extends PolymerElement {
             >
             </lrnapp-block-recent-submissions>
           </div>
-        </paper-card>
-        <paper-card heading="Recent Studio comments" class="dashboard-item">
+        </div>
+        <div heading="Recent Studio comments" class="dashboard-item card">
           <div class="card-content">
             <lrnapp-block-recent-comments
               csrf-token="[[csrfToken]]"
@@ -82,7 +81,7 @@ class LrnappStudioDashboard extends PolymerElement {
             >
             </lrnapp-block-recent-comments>
           </div>
-        </paper-card>
+        </div>
       </div>
     `;
   }

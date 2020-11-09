@@ -3,8 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, LitElement } from "lit-element/lit-element.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `social-share-link`
@@ -78,11 +79,11 @@ class SocialShareLink extends LitElement {
           background-color: var(--social-share-disabled-button-bg, #666);
         }
 
-        :host iron-icon {
+        :host simple-icon {
           margin-right: 5px;
         }
 
-        :host a.text-only iron-icon {
+        :host a.text-only simple-icon {
           display: none;
         }
 
@@ -95,7 +96,7 @@ class SocialShareLink extends LitElement {
           overflow: hidden;
         }
 
-        :host a.icon-only iron-icon {
+        :host a.icon-only simple-icon {
           margin-right: 0;
         }
       `,
@@ -111,11 +112,12 @@ class SocialShareLink extends LitElement {
       rel="noopener noreferrer"
       target="_blank"
     >
-      <iron-icon
+      <simple-icon
+        dark
         aria-hidden="true"
         icon="${this.__icon}"
         ?hidden="${!this.__showIcon}"
-      ></iron-icon>
+      ></simple-icon>
       <span class="linktext">${this.__linkText}</span>
     </a>`;
   }
@@ -296,7 +298,7 @@ class SocialShareLink extends LitElement {
    * @returns {string} the icon name
    */
   _getIcon(type) {
-    return "social-media:" + type.toLowerCase();
+    return "mdi-social:" + type.toLowerCase();
   }
 }
 window.customElements.define(SocialShareLink.tag, SocialShareLink);

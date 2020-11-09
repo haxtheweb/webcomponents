@@ -43,7 +43,6 @@
   "dependencies": {
     "@lrnwebcomponents/random-image": "^2.7.10",
     "@lrnwebcomponents/simple-tooltip": "^2.7.10",
-    "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/polymer": "^3.3.1"
   },

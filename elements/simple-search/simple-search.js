@@ -3,8 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/paper-input/paper-input.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/simple-search-content.js";
 import "./lib/simple-search-match.js";
@@ -55,18 +56,8 @@ class SimpleSearch extends LitElement {
           margin-right: 4px;
           padding: var(--simple-search-padding, unset);
           margin: var(--simple-search-margin, unset);
-          --paper-input-container-input-color: var(
-            --simple-search-input-text-color,
-            #000
-          );
-          --paper-input-container-shared-input-style_-_color: var(
-            --simple-search-input-text-color,
-            #000
-          );
-          --paper-input-container-focus-color: var(
-            --simple-search-input-line-color,
-            #000
-          );
+          --simple-fields-color: var(--simple-search-input-text-color, #000);
+          --simple-fields-color: var(--simple-search-input-line-color, #000);
           --paper-input-container-color: var(
             --simple-search-input-placeholder-color,
             #222
@@ -113,15 +104,15 @@ class SimpleSearch extends LitElement {
 
   // render function
   render() {
-    return html` <paper-input
+    return html` <simple-fields-field
         id="input"
         label="${this.searchInputLabel}"
         ?always-float-label="${this.alwaysFloatLabel}"
         ?no-label-float="${this.noLabelFloat}"
-        @change="${this._handleChange}"
+        @value-changed="${this._handleChange}"
       >
-        <iron-icon icon="${this.searchInputIcon}" slot="prefix"></iron-icon>
-      </paper-input>
+        <simple-icon icon="${this.searchInputIcon}" slot="prefix"></simple-icon>
+      </simple-fields-field>
       <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
         ${this._getResultsSpan(this.resultPointer, this.resultCount)}
       </div>
@@ -135,7 +126,7 @@ class SimpleSearch extends LitElement {
           ?disabled="${this.__hidePrev}"
           @click="${this._navigateResults}"
         >
-          <iron-icon icon="${this.prevButtonIcon}"></iron-icon>
+          <simple-icon icon="${this.prevButtonIcon}"></simple-icon>
         </button>
         <simple-tooltip for="prev">${this.prevButtonLabel}</simple-tooltip>
         <button
@@ -147,7 +138,7 @@ class SimpleSearch extends LitElement {
           ?disabled="${this.__hideNext}"
           @click="${this._navigateResults}"
         >
-          <iron-icon icon="${this.nextButtonIcon}"></iron-icon>
+          <simple-icon icon="${this.nextButtonIcon}"></simple-icon>
         </button>
         <simple-tooltip for="next">${this.nextButtonLabel}</simple-tooltip>
       </div>`;

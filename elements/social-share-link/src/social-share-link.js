@@ -3,8 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, LitElement } from "lit-element/lit-element.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `social-share-link`
@@ -114,7 +115,7 @@ class SocialShareLink extends LitElement {
    * @returns {string} the icon name
    */
   _getIcon(type) {
-    return "social-media:" + type.toLowerCase();
+    return "mdi-social:" + type.toLowerCase();
   }
 }
 window.customElements.define(SocialShareLink.tag, SocialShareLink);

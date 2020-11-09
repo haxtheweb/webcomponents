@@ -10,15 +10,11 @@
   margin-right: 4px;
   padding: var(--simple-search-padding, unset);
   margin: var(--simple-search-margin, unset);
-  --paper-input-container-input-color: var(
+  --simple-fields-color: var(
   --simple-search-input-text-color,
   #000
 );
-  --paper-input-container-shared-input-style_-_color: var(
-  --simple-search-input-text-color,
-  #000
-);
-  --paper-input-container-focus-color: var(
+  --simple-fields-color: var(
   --simple-search-input-line-color,
   #000
 );

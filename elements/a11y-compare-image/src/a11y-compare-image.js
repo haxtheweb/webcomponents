@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-range-input/simple-range-input.js";
 /**
  * `a11y-compare-image`
  * Layers images over each other with a slider interface to compare them
@@ -82,8 +83,6 @@ class a11yCompareImage extends LitElement {
     this.opacity = false;
     this.position = 0;
     this.__markers = [];
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/paper-slider/paper-slider.js");
   }
   render() {
     return html`
@@ -110,12 +109,19 @@ class a11yCompareImage extends LitElement {
             (marker) =>
               html` <div class="marker" style="left: ${marker}%;"></div> `
           )}
-          <paper-slider id="slider" value="0"></paper-slider>
+          <simple-range-input
+            accent-color="blue"
+            id="slider"
+            @immediate-value-changed="${this._valueChanged}"
+            .value="${this.position}"
+          ></simple-range-input>
         </div>
       </figure>
     `;
   }
-
+  _valueChanged(e) {
+    this.position = e.detail.value;
+  }
   static get tag() {
     return "a11y-compare-image";
   }
@@ -149,12 +155,12 @@ class a11yCompareImage extends LitElement {
       },
     };
   }
-  firstUpdated() {
-    let slider = this.shadowRoot.querySelector("#slider");
-    slider.value = this.position || 0;
-    this._slide();
-    slider.addEventListener("immediate-value-changed", (e) => {
-      this._slide();
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "position") {
+        this._slide();
+      }
     });
   }
   /**
@@ -167,19 +173,23 @@ class a11yCompareImage extends LitElement {
     let total = layers.length - 1;
     //This is percent of the slider for each section
     let section = 100 / total;
-    let slider = this.shadowRoot.querySelector("#slider");
     // Index of the upper image
-    let active = Math.floor(slider.immediateValue / section) || 0;
+    let active = Math.floor(this.position / section) || 0;
     // This is the layer number that is current on top.
     this.activeLayer = active + 1;
     // This is the slider percent when upper image is at 0.
     let lastSection = section * active;
     // How far we are into the current section.
-    let relativePosition = slider.immediateValue - lastSection;
+    let relativePosition = this.position - lastSection;
     // Percentage into the current section
-    this.position = (relativePosition * 100) / section || 0;
+    if (this.position === 100 && relativePosition === 0) {
+    } else {
+      this.position = (relativePosition * 100) / section || 0;
+    }
     // Set background images
-    this.__upper = layers[active + 1].src || layers[active].src;
+    this.__upper = layers[active + 1]
+      ? layers[active + 1].src
+      : layers[active].src;
     this.__lower = layers[active].src;
     // Adding Fake markers behind the slider.
     if (total - 1 != this.__markers.length) {
@@ -203,7 +213,7 @@ class a11yCompareImage extends LitElement {
     this.__markers = [];
     if (total != 0) {
       let step = 100 / total;
-      for (let i = step; i < 100; i += step) {
+      for (let i = step; i <= 100; i += step) {
         this.__markers.push(i);
       }
     }

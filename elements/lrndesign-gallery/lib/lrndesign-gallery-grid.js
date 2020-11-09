@@ -122,7 +122,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
                 <span class="sr-only">${item.zoomAlt}</span>
                 <div class="imgbg" .style="${this._getStyle(item)}"></div>
                 <div class="zoombg"></div>
-                <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
+                <simple-icon icon="zoom-in" class="zoomicon"></simple-icon>
               </lrndesign-gallery-zoom>
             `
           )}

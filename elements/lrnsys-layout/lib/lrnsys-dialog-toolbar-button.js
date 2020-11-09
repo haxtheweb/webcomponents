@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 class LrnsysDialogToolbarButton extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -9,10 +11,10 @@ class LrnsysDialogToolbarButton extends LitElement {
         :host {
           display: inline-block;
         }
-        iron-icon {
+        simple-icon {
           display: inline-block;
-          height: 16px;
-          width: 16px;
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
         }
       `,
     ];
@@ -22,14 +24,14 @@ class LrnsysDialogToolbarButton extends LitElement {
    */
   render() {
     return html`
-      <paper-button
+      <button
         raised
         @click="${this._onTap}"
         id="${this.id}"
         aria-label="${this.title}"
       >
-        <iron-icon icon="${this.icon}"></iron-icon> ${this.title}
-      </paper-button>
+        <simple-icon icon="${this.icon}"></simple-icon> ${this.title}
+      </button>
       <simple-tooltip for="${this.id}" animation-delay="0"
         >${this.title}</simple-tooltip
       >
@@ -43,9 +45,6 @@ class LrnsysDialogToolbarButton extends LitElement {
    */
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   /**

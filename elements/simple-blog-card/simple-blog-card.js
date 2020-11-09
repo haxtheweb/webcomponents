@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-card/paper-card.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 import "time-elements/dist/time-elements.js";
@@ -37,7 +36,7 @@ class SimpleBlogCard extends LitElement {
           display: flex;
         }
 
-        paper-card {
+        div.card {
           height: auto !important;
         }
 
@@ -84,14 +83,6 @@ class SimpleBlogCard extends LitElement {
           text-overflow: ellipsis;
         }
 
-        paper-card:not(:defined) {
-          display: none;
-        }
-
-        paper-card {
-          --iron-image-height: 250px;
-        }
-
         .card-content {
           height: 120px;
           padding: 0;
@@ -99,19 +90,19 @@ class SimpleBlogCard extends LitElement {
         }
 
         .card-micro {
-          --iron-image-height: 50px;
+          height: 50px;
         }
 
         .card-small {
-          --iron-image-height: 100px;
+          height: 100px;
         }
 
         .card-medium {
-          --iron-image-height: 150px;
+          height: 150px;
         }
 
         .card-large {
-          --iron-image-height: 200px;
+          height: 200px;
         }
 
         .card-micro .card-content {
@@ -130,7 +121,7 @@ class SimpleBlogCard extends LitElement {
           height: 150px;
         }
 
-        paper-card h3 {
+        div.card h3 {
           font-size: var(--simple-blog-card-heading-font-size, 22px);
           color: var(--simple-blog-card-header, black);
           text-decoration: none;
@@ -199,14 +190,8 @@ class SimpleBlogCard extends LitElement {
   render() {
     return html`
 
-<paper-card
-  .alt="${this.alt}"
-  image="${this.image}"
-  .elevation="${this.shadow}"
-  animated-shadow
-  preload-image
-  .placeholder-image="${this.placeholder}"
-  class="card-${this.size}">
+<div class="card-${this.size} card">
+  <img .alt="${this.alt}" .src="${this.image}" loading="lazy"/>
   <div class="card-content">
     <a href="${this.link}">
       <h3>${this.title}</h3>
@@ -232,7 +217,7 @@ class SimpleBlogCard extends LitElement {
       </div>
     </div>
   </div>
-</paper-card>`;
+</div>`;
   }
 
   // properties available to the custom element for data binding

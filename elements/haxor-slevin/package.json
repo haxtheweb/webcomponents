@@ -46,11 +46,10 @@
     "@lrnwebcomponents/simple-colors": "^2.7.10",
     "@lrnwebcomponents/social-share-link": "^2.7.10",
     "@polymer/app-layout": "^3.0.2",
-    "@polymer/iron-icon": "^3.0.1",
-    "@polymer/iron-image": "^3.0.1",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
+    "@lrnwebcomponents/hax-iconset": "^2.7.10",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/iron-pages": "^3.0.1",
-    "@polymer/paper-button": "^3.0.1",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

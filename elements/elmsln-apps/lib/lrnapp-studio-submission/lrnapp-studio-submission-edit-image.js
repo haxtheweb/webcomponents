@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-image/iron-image.js";
 import "./lrnapp-studio-submission-media-editoverlay.js";
 class LrnappStudioSubmissionEditImage extends PolymerElement {
   static get template() {
@@ -13,8 +12,8 @@ class LrnappStudioSubmissionEditImage extends PolymerElement {
             position: relative;
           }
 
-          iron-image {
-            --iron-image-height: 200px;
+          img.image {
+            height: 200px;
             display: block;
           }
         </style>
@@ -23,14 +22,12 @@ class LrnappStudioSubmissionEditImage extends PolymerElement {
         data-index$="[[index]]"
         embedcode="{{embedcode}}"
       >
-        <iron-image
+        <img
           src="[[thumbnail]]"
           style="width:200px; height:200px; background-color: lightgray;"
-          sizing="contain"
           class="contain"
-          preload=""
-          fade=""
-        ></iron-image>
+          loading="lazy"
+        />
       </lrnapp-studio-submission-media-editoverlay>
     `;
   }

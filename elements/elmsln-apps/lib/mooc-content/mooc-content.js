@@ -4,7 +4,10 @@ import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/paper-styles/color.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/app-route/app-location.js";
@@ -15,7 +18,6 @@ import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "../elmsln-base-deps.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 /**
  * `lrnapp-book`
  * A LRN element
@@ -82,7 +84,7 @@ class MoocContent extends PolymerElement {
                 <div class="book-navigation-header book-sibling-nav-container">
                   <lrnsys-dialog id="outlinepopover" data-voicecommand="open outline" label="Outline" header="Outline">
                     <span slot="button">
-                      <iron-icon icon="explore"></iron-icon>
+                      <simple-icon icon="explore"></simple-icon>
                       Outline
                     </span>
                     <div class="elmsln-modal-content" id="block-mooc-helper-mooc-helper-toc-nav-modal">
@@ -354,11 +356,9 @@ class MoocContent extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      if (window.Drupal) {
-        window.Drupal.attachBehaviors(document, window.Drupal.settings);
-      }
-    });
+    if (window.Drupal) {
+      window.Drupal.attachBehaviors(document, window.Drupal.settings);
+    }
   }
   /**
    * If the current route is outside the scope of our app then allow

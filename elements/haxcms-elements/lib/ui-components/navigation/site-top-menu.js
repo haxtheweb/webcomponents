@@ -25,8 +25,9 @@ class SiteTopMenu extends PolymerElement {
   constructor() {
     super();
     this.__disposer = [];
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/paper-button/paper-button.js");
+    import("@lrnwebcomponents/simple-icon/simple-icon.js");
+    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+    import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
   }
   // render function
   static get template() {
@@ -69,7 +70,7 @@ class SiteTopMenu extends PolymerElement {
           color: var(--site-top-menu-link-color, #444444);
           @apply --site-top-menu-link;
         }
-        paper-button {
+        button {
           text-transform: unset;
           min-width: unset;
           @apply --site-top-menu-button;
@@ -112,7 +113,7 @@ class SiteTopMenu extends PolymerElement {
           display: inline-flex;
         }
         .mobiletitle,
-        paper-icon-button {
+        simple-icon-button {
           display: none;
         }
         @media screen and (max-width: 640px) {
@@ -120,7 +121,7 @@ class SiteTopMenu extends PolymerElement {
             display: none;
           }
           .wrapper .mobiletitle,
-          .wrapper paper-icon-button {
+          .wrapper simple-icon-button {
             display: inline-block;
           }
           .wrapper {
@@ -148,11 +149,11 @@ class SiteTopMenu extends PolymerElement {
         conditions="[[conditions]]"
       ></site-query>
       <div id="wrapper" class="wrapper">
-        <paper-icon-button
+        <simple-icon-button
           icon="menu"
           id="menu"
           title="Open navigation"
-        ></paper-icon-button>
+        ></simple-icon-button>
         <span class="mobiletitle">[[mobileTitle]]</span>
         <slot name="prefix"></slot>
         <dom-repeat items="[[__items]]" mutable-data>
@@ -165,10 +166,10 @@ class SiteTopMenu extends PolymerElement {
                 title$="Go to [[item.title]]"
                 href$="[[item.slug]]"
               >
-                <paper-button id$="item-[[item.id]]" noink="[[noink]]">
+                <button id$="item-[[item.id]]" noink="[[noink]]">
                   <span class="link-index">[[humanIndex(index)]]</span>
                   <span class="link-title">[[item.title]]</span>
-                </paper-button>
+                </button>
               </a>
             </div>
           </template>

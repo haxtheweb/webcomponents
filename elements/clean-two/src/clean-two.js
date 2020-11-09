@@ -8,8 +8,9 @@ import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/uti
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `clean-two`
  * `A 2nd clean theme`
@@ -450,10 +451,10 @@ class CleanTwo extends HAXCMSThemeParts(
           margin: 0px;
           padding: 0px;
         }
-        paper-icon-button,
+        simple-icon-button,
         site-rss-button,
         site-print-button {
-          --iron-icon-fill-color: black;
+          color: black;
           --haxcms-tooltip-color: #F5F5F5;
           --haxcms-tooltip-background-color: #252737;
         }

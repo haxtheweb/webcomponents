@@ -1,4 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `pie-menu`
  * @element pie-menu
@@ -10,10 +12,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  * - svg - an HTML tag that no one understands, not even the person who made this, yet loves and respects its differences and knows how important it is.
  */
 class PieMenu extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/iron-icons/iron-icons.js");
-  }
   static get template() {
     return html`
       <style>
@@ -137,23 +135,23 @@ class PieMenu extends PolymerElement {
           ></circle>
         </svg>
         <div id="center-icon" data-button="center" class="icon-container">
-          <iron-icon icon$="[[centerIcon]]"></iron-icon>
+          <simple-icon icon$="[[centerIcon]]"></simple-icon>
           <div class="icon-label" aria-hidden="true">[[centerLabel]]</div>
         </div>
         <div id="top-icon" data-button="top" class="icon-container">
-          <iron-icon icon$="[[topIcon]]"></iron-icon>
+          <simple-icon icon$="[[topIcon]]"></simple-icon>
           <div class="icon-label" aria-hidden="true">[[topLabel]]</div>
         </div>
         <div id="right-icon" data-button="right" class="icon-container">
-          <iron-icon icon$="[[rightIcon]]"></iron-icon>
+          <simple-icon icon$="[[rightIcon]]"></simple-icon>
           <div class="icon-label" aria-hidden="true">[[rightLabel]]</div>
         </div>
         <div id="bottom-icon" data-button="bottom" class="icon-container">
-          <iron-icon icon$="[[bottomIcon]]"></iron-icon>
+          <simple-icon icon$="[[bottomIcon]]"></simple-icon>
           <div class="icon-label" aria-hidden="true">[[bottomLabel]]</div>
         </div>
         <div id="left-icon" data-button="left" class="icon-container">
-          <iron-icon icon$="[[leftIcon]]"></iron-icon>
+          <simple-icon icon$="[[leftIcon]]"></simple-icon>
           <div class="icon-label" aria-hidden="true">[[leftLabel]]</div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193.95 193.94">

@@ -15,7 +15,9 @@
       "properties": "src/simple-toast-properties.json",
       "hax": "src/simple-toast-hax.json"
     },
-    "sharedStyles": []
+    "sharedStyles": [
+      "...super.styles"
+    ]
   },
   "version": "2.7.10",
   "description": "A singular toast / message for conistency",
@@ -41,8 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/paper-button": "^3.0.1",
-    "@polymer/paper-toast": "^3.0.1",
+    "@lrnwebcomponents/simple-colors": "^2.7.10",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

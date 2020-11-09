@@ -1,22 +1,19 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-route/app-location.js";
 import "../elmsln-base-deps.js";
 import "@polymer/app-route/app-route.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/communication-icons.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-header/app-header.js";
-import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-toast/paper-toast.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@lrnwebcomponents/lrnsys-render-html/lrnsys-render-html.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
@@ -35,6 +32,9 @@ class LrnappStudioKanban extends PolymerElement {
         }
         :host {
           display: block;
+        }
+        div.card {
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
         #loading {
           width: 100%;
@@ -98,7 +98,7 @@ class LrnappStudioKanban extends PolymerElement {
           height: 1rem;
         }
         /* this targets the default scrollbar (compulsory) */
-        paper-button {
+        button {
           padding: 0;
           margin: 0;
           min-width: 1rem;
@@ -110,10 +110,13 @@ class LrnappStudioKanban extends PolymerElement {
           margin: 0;
           height: 100%;
           min-height: 10em;
-          --paper-card-header: {
-            max-width: 60%;
-            word-break: break-all;
-          }
+        }
+        .project-card h3.header {
+          max-width: 60%;
+          word-break: break-all;
+        }
+        div.card {
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
         .project-container {
           padding: 1em;
@@ -244,12 +247,11 @@ class LrnappStudioKanban extends PolymerElement {
         >
           <template class="projects-container-items">
             <div class="project-container">
-              <paper-card
+              <div
                 id$="project-[[project.id]]"
-                class="project-card grey lighten-3"
-                heading="[[project.attributes.title]]"
-                elevation="2"
+                class="project-card grey lighten-3 card"
               >
+                <h3 class="header">[[project.attributes.title]]"</h3>
                 <div class="project-operations">
                   <lrnsys-button
                     icon-class="no-margin"
@@ -341,7 +343,7 @@ class LrnappStudioKanban extends PolymerElement {
                     </template>
                   </iron-list>
                 </div>
-              </paper-card>
+              </div>
             </div>
           </template>
         </iron-list>
@@ -351,14 +353,15 @@ class LrnappStudioKanban extends PolymerElement {
         <h3>[[_deleteTitle]]</h3>
         <p>[[_deleteText]]</p>
         <div class="buttons">
-          <paper-button dialog-dismiss="">Decline</paper-button>
-          <paper-button
+          <button dialog-dismiss="">Decline</button>
+          <button
             id="deleteaccept"
             on-click="_handleDelete"
             dialog-confirm=""
             autofocus=""
-            >Accept</paper-button
           >
+            Accept
+          </button>
         </div>
       </paper-dialog>
       <paper-dialog id="activeitemcontainer" with-backdrop>
@@ -368,10 +371,10 @@ class LrnappStudioKanban extends PolymerElement {
               class$="[[activeAssignmentNode.meta.relatedSubmissions.complete.color]]"
             >
               <div>
-                <iron-icon
+                <simple-icon
                   icon="[[activeAssignmentNode.meta.relatedSubmissions.complete.icon]]"
                   disabled$="[[!activeAssignmentNode.meta.relatedSubmissions.canCreate]]"
-                ></iron-icon>
+                ></simple-icon>
                 [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.title]]
               </div>
               <div
@@ -379,14 +382,14 @@ class LrnappStudioKanban extends PolymerElement {
                 class="comment-box"
                 hidden$="[[!activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
               >
-                <paper-button
+                <button
                   id$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
                   style="margin:0;padding:.25em;text-transform:none;"
                 >
-                  <iron-icon icon="communication:forum"></iron-icon>
+                  <simple-icon icon="communication:forum"></simple-icon>
                   [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.count]]
                   Comments
-                </paper-button>
+                </button>
                 <paper-badge
                   hidden$="[[displayNewBadge(activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.new)]]"
                   for$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
@@ -494,19 +497,17 @@ class LrnappStudioKanban extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener(
-        "project-created",
-        this._handleProjectCreated.bind(this)
-      );
-      this.addEventListener(
-        "assignment-created",
-        this._handleAssignmentCreated.bind(this)
-      );
-      setTimeout(() => {
-        window.dispatchEvent(new Event("resize"));
-      }, 2000);
-    });
+    this.addEventListener(
+      "project-created",
+      this._handleProjectCreated.bind(this)
+    );
+    this.addEventListener(
+      "assignment-created",
+      this._handleAssignmentCreated.bind(this)
+    );
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 1000);
   }
   disconnectedCallback() {
     this.removeEventListener(
@@ -678,7 +679,7 @@ class LrnappStudioKanban extends PolymerElement {
   }
 
   /**
-   * Handle toggle for mouse class and manage classList array for paper-button.
+   * Handle toggle for mouse class and manage classList array for button.
    */
   assignmentClick(e) {
     var normalizedEvent = dom(e);

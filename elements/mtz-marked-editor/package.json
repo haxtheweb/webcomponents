@@ -42,9 +42,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/iron-a11y-keys": "^3.0.1",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
     "@polymer/iron-form-element-behavior": "^3.0.1",
     "@polymer/iron-validatable-behavior": "^3.0.1",
-    "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

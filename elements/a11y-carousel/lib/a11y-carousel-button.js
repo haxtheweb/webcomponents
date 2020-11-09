@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RadioBehaviors } from "@lrnwebcomponents/radio-behaviors/radio-behaviors.js";
 /**
  * `a11y-carousel-button`
  * button that controls a carousel

@@ -2,12 +2,12 @@
   display: block;
 }
 
-:host paper-button {
+:host button {
   display: block;
   margin: 0;
 }
 
-:host paper-button,
+:host button,
 :host #content-wrapper {
   border: 1px solid #ddd;
 }

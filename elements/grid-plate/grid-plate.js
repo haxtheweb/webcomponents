@@ -418,7 +418,7 @@ class GridPlate extends LitElement {
       gizmo: {
         title: "Grid layout",
         description: "Simple card in a cool retro design",
-        icon: "hax:3/3/3/3",
+        icon: "hax:3-3-3-3",
         color: "grey",
         groups: ["Layout"],
         handles: [],

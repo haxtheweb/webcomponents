@@ -43,9 +43,8 @@
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.7.10",
     "@lrnwebcomponents/schema-behaviors": "^2.7.10",
-    "@polymer/iron-icons": "^3.0.1",
-    "@polymer/paper-fab": "^3.0.1",
-    "@polymer/paper-icon-button": "^3.0.1",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
+    "@lrnwebcomponents/hax-iconset": "^2.7.10",
     "@polymer/paper-material": "^3.0.1",
     "@polymer/polymer": "^3.3.1",
     "load-script": "^1.0.0"

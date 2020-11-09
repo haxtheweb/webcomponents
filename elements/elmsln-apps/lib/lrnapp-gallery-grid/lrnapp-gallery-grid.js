@@ -1,9 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
-import "@polymer/iron-image/iron-image.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "../elmsln-base-deps.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
@@ -11,9 +8,7 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 class LrnappGalleryGrid extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener("click", this._triggerDialog.bind(this));
-    });
+    this.addEventListener("click", this._triggerDialog.bind(this));
   }
   disconnectedCallback() {
     this.removeEventListener("click", this._triggerDialog.bind(this));
@@ -25,7 +20,7 @@ class LrnappGalleryGrid extends PolymerElement {
         :host {
           display: block;
         }
-        paper-button {
+        button {
           padding: 0;
           margin: 0;
           min-width: 1rem;
@@ -65,9 +60,8 @@ class LrnappGalleryGrid extends PolymerElement {
             items="[[_toArray(item.images)]]"
             as="image"
           >
-            <paper-button>
-              <iron-image
-                preload
+            <button>
+              <img
                 open-url="{{item.url}}"
                 title="{{item.title}}"
                 alt="{{item.title}}"
@@ -76,14 +70,17 @@ class LrnappGalleryGrid extends PolymerElement {
                 comments="{{item.comments}}"
                 height="{{image.height}}"
                 width="{{image.width}}"
-              ></iron-image>
-            </paper-button>
+              />
+            </button>
           </template>
         </iron-list>
       </iron-scroll-threshold>
       <paper-dialog id="dialog">
-        <paper-dialog-scrollable id="dialogResponse">
-          <iron-image src$="[[activeImage]]"></iron-image>
+        <div
+          style="height:50vh;width:100%;overflow:scroll;"
+          id="dialogResponse"
+        >
+          <img loading="lazy" src$="[[activeImage]]" />
           <div id="details">
             <div class="title">
               <span>Title:</span> <span>{{{activeTitle}}}</span>
@@ -96,11 +93,11 @@ class LrnappGalleryGrid extends PolymerElement {
             </div>
             <div class="comment-on-work">
               <a href$="[[activeUrl]]">
-                <paper-button raised>Comment on this work</paper-button>
+                <button raised>Comment on this work</button>
               </a>
             </div>
           </div>
-        </paper-dialog-scrollable>
+        </div>
       </paper-dialog>
     `;
   }

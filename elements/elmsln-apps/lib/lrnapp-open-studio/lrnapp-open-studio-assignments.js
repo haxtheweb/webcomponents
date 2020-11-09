@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
@@ -89,13 +88,14 @@ class LrnappOpenStudioAssignments extends PolymerElement {
             class="ferpa-protect"
           ></lrnapp-studio-submission-display>
           <a tabindex="-1"
-            ><paper-button
+            ><button
               class="submission-title ferpa-protect"
               on-click="_loadSubmissionUrl"
               data-submission-id$="[[submission.id]]"
-              >Tap to comment on [[submission.attributes.title]] by
-              [[submission.relationships.author.data.display_name]]</paper-button
-            ></a
+            >
+              Tap to comment on [[submission.attributes.title]] by
+              [[submission.relationships.author.data.display_name]]
+            </button></a
           >
         </template>
       </template>
@@ -175,7 +175,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
     };
   }
   /**
-   * Handle tap on paper-button above to redirect to the correct submission url.
+   * Handle tap on button above to redirect to the correct submission url.
    */
   _loadSubmissionUrl(e) {
     let root = this;

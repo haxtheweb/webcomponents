@@ -11,7 +11,6 @@ import "../elmsln-base-deps.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-image/iron-image.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
@@ -84,7 +83,7 @@ class LrnappCanvasListing extends PolymerElement {
           text-align: right;
         }
 
-        vaadin-grid#material paper-checkbox {
+        vaadin-grid#material simple-fields-field {
           --primary-color: var(--paper-indigo-500);
           margin: 0 24px;
         }
@@ -102,11 +101,11 @@ class LrnappCanvasListing extends PolymerElement {
           align-items: center;
         }
 
-        vaadin-grid#material vaadin-grid-sorter iron-icon {
+        vaadin-grid#material vaadin-grid-sorter simple-icon {
           transform: scale(0.8);
         }
 
-        vaadin-grid#material vaadin-grid-sorter:not([direction]) iron-icon {
+        vaadin-grid#material vaadin-grid-sorter:not([direction]) simple-icon {
           color: rgba(0, 0, 0, var(--dark-disabled-opacity));
         }
 
@@ -114,7 +113,7 @@ class LrnappCanvasListing extends PolymerElement {
           color: rgba(0, 0, 0, var(--dark-primary-opacity));
         }
 
-        vaadin-grid#material vaadin-grid-sorter[direction="desc"] iron-icon {
+        vaadin-grid#material vaadin-grid-sorter[direction="desc"] simple-icon {
           transform: scale(0.8) rotate(180deg);
         }
         vaadin-grid-sorter {
@@ -289,12 +288,9 @@ class LrnappCanvasListing extends PolymerElement {
         <vaadin-grid-column width="100px" flex-grow="0">
           <template class="header"></template>
           <template>
-            <paper-button
-              raised
-              on-click="_triggerDialog"
-              id$="{{item.sis_course_id}}"
-              >Details</paper-button
-            >
+            <button on-click="_triggerDialog" id$="{{item.sis_course_id}}">
+              Details
+            </button>
           </template>
           <template class="footer"></template>
         </vaadin-grid-column>
@@ -324,13 +320,11 @@ class LrnappCanvasListing extends PolymerElement {
         <div slot="header">
           <template is="dom-if" if="{{roster}}">
             <template is="dom-if" if="{{activeCourse.image}}">
-              <iron-image
+              <img
                 style="width:100%; height:200px; background-color: lightgray;"
-                sizing="cover"
-                preload
-                fade
+                loading="lazy"
                 src$="{{activeCourse.image}}"
-              ></iron-image>
+              />
             </template>
             <span class="heading">
               <span>Student count: {{activeCourse.student_count}}</span>

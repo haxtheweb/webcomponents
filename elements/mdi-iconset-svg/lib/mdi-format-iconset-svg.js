@@ -4,7 +4,7 @@
  * @element mdi-format-iconset-svg is a iconset for the Material Design Icons collection with the "format" tag
  *
  * Example:
- *   <iron-icon icon="mdi-format:format-align-left"></iron-icon>
+ *   <simple-icon icon="mdi-format:format-align-left"></simple-icon>
  *
  * @demo demo/index.html
  */

@@ -1538,7 +1538,6 @@
     "hax-logo": "@lrnwebcomponents/hax-logo/hax-logo.js",
     "md-block": "@lrnwebcomponents/md-block/md-block.js",
     "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
-    "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
     "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
     "video-player": "@lrnwebcomponents/video-player/video-player.js",
     "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",

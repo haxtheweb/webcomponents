@@ -13,7 +13,8 @@ let BasicTemplate = (superclass) =>
   class extends superclass {
     constructor() {
       super();
-      import("@polymer/iron-icons/maps-icons.js");
+      import("@lrnwebcomponents/simple-icon/simple-icon.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
       import("@lrnwebcomponents/scroll-button/scroll-button.js");
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"

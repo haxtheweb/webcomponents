@@ -18,7 +18,7 @@
     <script>
       setTimeout(() => {
       window.SimpleToast.requestAvailability();
-      let content = document.createElement("p");
+      let content = document.createElement("span");
       content.innerHTML = '<em>This came from the slot</em>';
       const evt = new CustomEvent("simple-toast-show", {
           bubbles: true,
@@ -26,7 +26,9 @@
           detail: {
             text: "Welcome, this is a toast",
             duration: 4000,
-            slot: content.cloneNode(true)
+            slot: content.cloneNode(true),
+            //accentColor: "yellow",
+            //dark: true,
           }
         });
         this.dispatchEvent(evt);

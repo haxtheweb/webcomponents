@@ -1,12 +1,11 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
-import "@polymer/iron-icons/image-icons.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "./eco-json-schema-object.js";
@@ -336,42 +335,42 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
           --app-toolbar-background: var(--dark-theme-text-color);
         }
 
-        app-toolbar.bottom paper-icon-button {
+        app-toolbar.bottom simple-icon-button {
           --app-toolbar-color: var(--dark-theme-text-color);
           --app-toolbar-background: var(--app-primary-color);
         }
       </style>
       <div class="vertical flex layout fullbleed">
         <!--
-        paper-icon-button id="camButton" icon="editor:insert-photo" raised>add photo</paper-icon-button
+        simple-icon-button id="camButton" icon="editor:insert-photo" raised>add photo</simple-icon-button
       -->
         <app-toolbar>
-          <paper-icon-button
+          <simple-icon-button
             id="prevButton"
             icon="arrow-back"
             hidden$="{{!hasPrev}}"
             on-click="prev"
             raised=""
-            >{{localize('prev')}}</paper-icon-button
+            >{{localize('prev')}}</simple-icon-button
           ><span
             class="title layout horizontal flex"
             style="white-space: normal"
             >[[title]]</span
           >
-          <paper-icon-button
+          <simple-icon-button
             id="nextButton"
             icon="arrow-forward"
             hidden$="{{!hasNext}}"
             on-click="next"
             raised=""
-            >{{localize('next')}}</paper-icon-button
+            >{{localize('next')}}</simple-icon-button
           >
-          <paper-icon-button
+          <simple-icon-button
             id="submitButton"
             icon="cloud-upload"
             on-click="submit"
             raised=""
-            >{{localize('submit')}}</paper-icon-button
+            >{{localize('submit')}}</simple-icon-button
           >
         </app-toolbar>
         <iron-pages
@@ -383,8 +382,8 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
         ></iron-pages>
         <app-toolbar class="bottom">
           <div hidden$="{{!hasPrev}}" on-click="prev">
-            <paper-icon-button id="prevButton" icon="arrow-back" raised=""
-              >{{localize('prev')}}</paper-icon-button
+            <simple-icon-button id="prevButton" icon="arrow-back" raised=""
+              >{{localize('prev')}}</simple-icon-button
             >
             <span class="title layout" style="white-space: normal"
               >{{localize('prev')}}</span
@@ -398,8 +397,8 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
             <span class="title layout" style="white-space: normal"
               >{{localize('next')}}</span
             >
-            <paper-icon-button id="nextButton" icon="arrow-forward" raised=""
-              >{{localize('next')}}</paper-icon-button
+            <simple-icon-button id="nextButton" icon="arrow-forward" raised=""
+              >{{localize('next')}}</simple-icon-button
             >
           </div>
         </app-toolbar>

@@ -108,8 +108,8 @@ label:not([hidden]) {
 #icon {
   width: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
   height: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
-  --iron-icon-width: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
-  --iron-icon-height: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
+  --simple-icon-width: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
+  --simple-icon-height: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
   transform: var(--simple-picker-icon-transform, rotate(0deg));
   transition: transform 0.25s;
 }

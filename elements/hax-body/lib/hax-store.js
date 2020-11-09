@@ -17,7 +17,6 @@ import {
   autorun,
   toJS,
 } from "mobx";
-
 configure({ enforceActions: false }); // strict mode off
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
@@ -655,19 +654,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         })
       );
       // now process the dynamic imports
-      if ("requestIdleCallback" in window) {
-        // Use requestIdleCallback to schedule work.
-        requestIdleCallback(
-          this._handleDynamicImports(items, haxAutoloader).bind(this),
-          {
-            timeout: 200,
-          }
-        );
-      } else {
-        setTimeout(() => {
-          this._handleDynamicImports(items, haxAutoloader);
-        }, 200);
-      }
+      this._handleDynamicImports(items, haxAutoloader);
     }
   }
   // simple path from a url modifier
@@ -1487,11 +1474,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this._isSandboxed = typeof test.reload === "function";
     // imports app, blox, stax definitions
     import("./hax-app.js");
-    // where all our icons live for simple-icon
-    import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
-    import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
-      esModule.setPassiveTouchGestures(true);
-    });
     import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
       window.SimpleToast.requestAvailability();
     });

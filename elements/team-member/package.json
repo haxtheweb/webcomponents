@@ -41,11 +41,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/mdi-iconset-svg": "^2.7.10",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
+    "@lrnwebcomponents/hax-iconset": "^2.7.10",
     "@lrnwebcomponents/schema-behaviors": "^2.7.10",
-    "@polymer/iron-icons": "^3.0.1",
-    "@polymer/iron-image": "^3.0.0",
-    "@polymer/paper-icon-button": "^3.0.1",
+    
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

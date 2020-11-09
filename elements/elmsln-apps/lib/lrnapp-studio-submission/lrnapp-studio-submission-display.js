@@ -1,7 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-card/paper-card.js";
 import "@polymer/marked-element/marked-element.js";
-import "@polymer/iron-image/iron-image.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/image-inspector/image-inspector.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
@@ -42,7 +40,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
           display: block;
           margin: 0 5em 0 5em;
         }
-        iron-image {
+        img.image {
           margin: 0 0.5em;
         }
         lrnsys-dialog {
@@ -109,9 +107,12 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
         .top {
           top: 8em;
         }
+        div.card {
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+        }
       </style>
       <div class="submission-page">
-        <paper-card class="submission-page-card ferpa-protect">
+        <div class="submission-page-card ferpa-protect card">
           <div class="card-content">
             <lrndesign-avatar
               class="center"
@@ -140,17 +141,15 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                   items="[[_toArray(submission.attributes.images)]]"
                   as="image"
                 >
-                  <lrnsys-dialog alt="View Image" dynamic-images="">
+                  <lrnsys-dialog alt="View Image">
                     <div class="image-dialog-header"></div>
                     <span slot="button">
-                      <iron-image
+                      <img
                         style="width:200px; height:200px; background-color: lightgray;"
-                        sizing="contain"
-                        class="contain"
+                        class="contain image"
                         src$="[[_getImageThumbnail(image)]]"
-                        preload=""
-                        fade=""
-                      ></iron-image>
+                        loading="lazy"
+                      />
                     </span>
                     <div style="text-align: center;">
                       <div hidden$="[[_isGif(image)]]">
@@ -172,14 +171,12 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                           href="[[submission.attributes.download_files]]"
                           target="_blank"
                         ></lrnsys-button>
-                        <iron-image
+                        <img
                           style="width:500px; height:500px; background-color: lightgray;"
-                          sizing="contain"
-                          class="contain"
+                          class="contain image"
                           src$="[[_getImageUrl(image)]]"
-                          preload=""
-                          fade=""
-                        ></iron-image>
+                          loading="lazy"
+                        />
                       </div>
                     </div>
                   </lrnsys-dialog>
@@ -237,7 +234,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
               </lrndesign-contentblock>
             </template>
           </div>
-        </paper-card>
+        </div>
       </div>
     `;
   }

@@ -11,8 +11,8 @@ import "@polymer/polymer/lib/elements/custom-style.js";
 
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/neon-animation/neon-animation.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 // register globally so we can make sure there is only one
 window.SimpleDrawer = window.SimpleDrawer || {};
 // request if this exists. This helps invoke the element existing in the dom
@@ -77,10 +77,10 @@ class SimpleDrawer extends SimpleColors {
           min-width: unset;
         }
 
-        #close iron-icon {
+        #close simple-icon {
           display: inline-block;
-          width: 16px;
-          height: 16px;
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
           margin-right: 2px;
         }
 
@@ -155,7 +155,8 @@ class SimpleDrawer extends SimpleColors {
             <slot name="content"></slot>
           </div>
           <button id="close" @click="${this.close}">
-            <iron-icon icon="${this.closeIcon}"></iron-icon> ${this.closeLabel}
+            <simple-icon icon="${this.closeIcon}"></simple-icon> ${this
+              .closeLabel}
           </button>
         </div>
       </app-drawer>`;

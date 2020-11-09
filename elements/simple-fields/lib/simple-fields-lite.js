@@ -778,8 +778,8 @@ class SimpleFieldsLite extends LitElement {
     let propNames = Object.keys(schema.items.properties || {}),
       previewBy =
         schema.previewBy || (propNames.length > 0 ? [propNames[0]] : undefined);
-
-    value = value || [];
+    // verify there are values of some form
+    value = Object.keys(value).length || [];
     value.forEach((item, i) => {
       this._insertArrayItem(schema, previewBy, element, parent, item, i);
     });

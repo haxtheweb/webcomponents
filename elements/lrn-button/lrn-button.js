@@ -4,7 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `lrn-button`
  * `Simple button wrapper with a few options`
@@ -31,7 +33,7 @@ class LrnButton extends LitElement {
           color: #000000;
         }
 
-        paper-button {
+        button {
           transition: 0.3s;
           margin: 0;
           max-width: 50%;
@@ -42,18 +44,18 @@ class LrnButton extends LitElement {
           border-radius: unset;
         }
 
-        paper-button iron-icon {
-          height: var(--lrnsys-button-height);
+        button simple-icon {
+          --simple-icon-height: var(--lrnsys-button-height);
           margin: 0 12px;
         }
 
-        paper-button div.inner {
+        button div.inner {
           height: var(--lrnsys-button-height);
           line-height: var(--lrnsys-button-height);
           padding: 0 12px;
         }
 
-        paper-button span.label {
+        button span.label {
           height: var(--lrnsys-button-height);
           line-height: var(--lrnsys-button-height);
         }
@@ -87,7 +89,7 @@ class LrnButton extends LitElement {
         data-prefetch-hover="${this.prefetch}"
         target="${this.target}"
       >
-        <paper-button
+        <button
           id="button"
           raised="${this.raised}"
           class="${this.class} ${this.color} ${this.textColor}"
@@ -96,11 +98,11 @@ class LrnButton extends LitElement {
           <div class="inner ${this.innerClass}">
             ${this.icon
               ? html`
-                  <iron-icon
+                  <simple-icon
                     icon="${this.icon}"
                     id="icon"
                     class="${this.iconClass}"
-                  ></iron-icon>
+                  ></simple-icon>
                 `
               : ``}
             ${this.label
@@ -108,7 +110,7 @@ class LrnButton extends LitElement {
               : ``}
             <slot></slot>
           </div>
-        </paper-button>
+        </button>
       </a>
       <simple-tooltip for="lrnsys-button-link" animation-delay="0"
         >${this.alt}</simple-tooltip
@@ -149,7 +151,7 @@ class LrnButton extends LitElement {
         type: String,
       },
       /**
-       * iron-icon to use (with iconset if needed)
+       * simple-icon to use (with iconset if needed)
        */
       icon: {
         type: String,
@@ -235,10 +237,6 @@ class LrnButton extends LitElement {
       this.addEventListener("mouseout", this.tapEventOff);
       this.addEventListener("focusin", this.tapEventOn);
       this.addEventListener("focusout", this.tapEventOff);
-      import("@polymer/paper-button/paper-button.js");
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icon/iron-icon.js");
     }, 0);
   }
   firstUpdated() {
@@ -289,7 +287,7 @@ class LrnButton extends LitElement {
   }
 
   /**
-   * Handle toggle for mouse class and manage classList array for paper-button.
+   * Handle toggle for mouse class and manage classList array for button.
    */
   focusToggle(e) {
     this.dispatchEvent(

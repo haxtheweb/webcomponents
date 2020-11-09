@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `full-screen-image`
  * @element full-screen-image
@@ -64,9 +67,9 @@ class FullScreenImage extends LitElement {
           top: -57.1875px;
         }
 
-        paper-icon-button {
-          width: 75px;
-          height: 45px;
+        simple-icon-button {
+          --simple-icon-height: 45px;
+          --simple-icon-width: 75px;
           line-height: 45px;
           bottom: 1px;
           right: 0px;
@@ -114,10 +117,10 @@ class FullScreenImage extends LitElement {
         <h2>${this.title}</h2>
         <p>${this.subtitle}</p>
       </div>
-      <paper-icon-button
+      <simple-icon-button
         id="down"
         icon="hardware:keyboard-arrow-down"
-      ></paper-icon-button>
+      ></simple-icon-button>
       <div class="image-wrapper">
         <img loading="lazy" id="img" src="${this.source}" />
       </div>
@@ -216,8 +219,6 @@ class FullScreenImage extends LitElement {
     this.title = "";
     this.subtitle = "";
     this.source = null;
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/iron-icons/hardware-icons.js");
   }
   /**
    * LitElement ready

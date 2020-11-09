@@ -4,7 +4,7 @@
  * @element mdi-time-iconset-svg is a iconset for the Material Design Icons collection with the "time" tag
  *
  * Example:
- *   <iron-icon icon="mdi-time:clock"></iron-icon>
+ *   <simple-icon icon="mdi-time:clock"></simple-icon>
  *
  * @demo demo/index.html
  */

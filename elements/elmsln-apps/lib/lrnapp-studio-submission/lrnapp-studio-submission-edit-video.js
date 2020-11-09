@@ -4,9 +4,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/secure-request/secure-request.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
@@ -67,14 +65,12 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
 
       <paper-dialog id="dialog">
         <h2>Add Video</h2>
-        <paper-dialog-scrollable>
+        <div style="height:50vh;width:100%;overflow:scroll;">
           <paper-input label="Video URL" value="{{newvideo}}"></paper-input>
-        </paper-dialog-scrollable>
+        </div>
         <div class="buttons">
-          <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" on-click="_addImage"
-            >Add Video</paper-button
-          >
+          <button dialog-dismiss="">Cancel</button>
+          <button dialog-confirm="" on-click="_addImage">Add Video</button>
         </div>
       </paper-dialog>
 

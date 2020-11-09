@@ -7,7 +7,7 @@
  *
  * Example:
  *   <script>import "@lrnwebcomponents/social-media-icons/social-media-iconset.js";</script>
- *   <iron-icon icon="social-media:twitter"></iron-icon>
+ *   <simple-icon icon="social-media:twitter"></simple-icon>
  *
  * @group LRN Elements
  * @pseudoElement social-media-icons

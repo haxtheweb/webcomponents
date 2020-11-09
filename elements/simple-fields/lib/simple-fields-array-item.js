@@ -1,8 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `simple-fields-array-item`
@@ -114,7 +112,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           transform: rotate(-90deg);
           transition: transform 0.5s ease-in-out;
         }
-        paper-icon-button,
+        simple-icon-button,
         simple-tooltip {
           font-family: var(--simple-fields-detail-font-family, sans-serif);
           font-size: var(--simple-fields-detail-font-size, 12px);
@@ -132,30 +130,29 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   render() {
     return html`
       <div id="heading">
-        <paper-icon-button
+        <simple-icon-button
           id="drag-handle"
           controls="${this.id}"
-          icon="open-with"
+          icon="icons:open-with"
           label="Reorder this item"
           ?hidden="${!this.sortable}"
           ?disabled="${this.disabled}"
         >
-        </paper-icon-button>
+        </simple-icon-button>
         <div id="preview"><slot name="preview"></slot></div>
-        <paper-icon-button
+        <simple-icon-button
           id="expand"
           controls="${this.id}"
-          icon="expand-more"
+          icon="icons:expand-more"
           label="Toggle expand"
           @click="${this.toggle}"
         >
-        </paper-icon-button>
+        </simple-icon-button>
       </div>
       <div id="content">
         <div id="content-inner">
           <div><slot></slot></div>
-          </paper-icon-button>
-          <paper-icon-button
+          <simple-icon-button
             id="remove"
             controls="${this.id}"
             icon="delete"
@@ -163,7 +160,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
             ?disabled="${this.disabled}"
             @click="${(e) => this._handleRemove()}"
           >
-          </paper-icon-button>
+          </simple-icon-button>
           <simple-tooltip for="remove">Remove this item</simple-tooltip>
         </div>
       </div>

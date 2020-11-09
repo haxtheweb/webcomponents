@@ -2,6 +2,8 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-drawer/simple-drawer.js";
 import "./lrnsys-button-inner.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `lrnsys-drawer`
  * @element lrnsys-drawer
@@ -21,7 +23,7 @@ class LrnsysDrawer extends SimpleColors {
           --lrnsys-drawer-color: var(--simple-colors-foreground1);
           --lrnsys-drawer-background-color: var(--simple-colors-background1);
         }
-        paper-button {
+        button {
           display: inline-block;
           min-width: unset;
           margin: var(--lrnsys-drawer-button-margin);
@@ -44,8 +46,6 @@ class LrnsysDrawer extends SimpleColors {
     this.text = "";
     setTimeout(() => {
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      import("@polymer/paper-button/paper-button.js");
-      import("@polymer/iron-icons/iron-icons.js");
     }, 0);
     this.__modal = window.SimpleDrawer.requestAvailability();
   }
@@ -54,7 +54,7 @@ class LrnsysDrawer extends SimpleColors {
    */
   render() {
     return html`
-      <paper-button
+      <button
         class="${this.class}"
         id="flyouttrigger"
         @click="${this.toggleDrawer}"
@@ -69,7 +69,7 @@ class LrnsysDrawer extends SimpleColors {
         >
           <slot name="button"></slot>
         </lrnsys-button-inner>
-      </paper-button>
+      </button>
       <simple-tooltip for="flyouttrigger" animation-delay="0"
         >${this.alt}</simple-tooltip
       >
@@ -178,7 +178,7 @@ class LrnsysDrawer extends SimpleColors {
 
   /**
    * Handle a mouse on event and add the hoverclasses
-   * to the classList array for paper-button.
+   * to the classList array for button.
    */
   tapEventOn(e) {
     if (typeof this.hoverClass !== typeof undefined) {
@@ -193,7 +193,7 @@ class LrnsysDrawer extends SimpleColors {
 
   /**
    * Handle a mouse out event and remove the hoverclasses
-   * from the classList array for paper-button.
+   * from the classList array for button.
    */
   tapEventOff(e) {
     if (typeof this.hoverClass !== typeof undefined) {
@@ -251,7 +251,7 @@ class LrnsysDrawer extends SimpleColors {
   }
 
   /**
-   * Handle toggle for mouse class and manage classList array for paper-button.
+   * Handle toggle for mouse class and manage classList array for button.
    */
   focusToggle(e) {
     this.dispatchEvent(

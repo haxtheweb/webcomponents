@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "@polymer/iron-collapse/iron-collapse.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { IronButtonState } from "@polymer/iron-behaviors/iron-button-state.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 class LrndesignMapmenuHeader extends mixinBehaviors(
@@ -26,12 +26,7 @@ class LrndesignMapmenuHeader extends mixinBehaviors(
         }
         lrndesign-avatar {
           display: inline-block;
-          background: #fff;
-          border-radius: 50%;
-          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-          padding: 2px;
           position: relative;
-          margin-top: -2px;
         }
         lrndesign-avatar ::slotted(*) {
           transform: translateY(2px);
@@ -39,7 +34,7 @@ class LrndesignMapmenuHeader extends mixinBehaviors(
         #title {
           font-size: 19.2px;
         }
-        #right iron-icon {
+        #right simple-icon {
           color: gray;
           display: inline-flex;
         }
@@ -56,10 +51,10 @@ class LrndesignMapmenuHeader extends mixinBehaviors(
         </div>
         <div id="right">
           <template is="dom-if" if="[[!opened]]">
-            <iron-icon icon="arrow-drop-down"></iron-icon>
+            <simple-icon icon="arrow-drop-down"></simple-icon>
           </template>
           <template is="dom-if" if="[[opened]]">
-            <iron-icon icon="arrow-drop-up"></iron-icon>
+            <simple-icon icon="arrow-drop-up"></simple-icon>
           </template>
         </div>
       </div>

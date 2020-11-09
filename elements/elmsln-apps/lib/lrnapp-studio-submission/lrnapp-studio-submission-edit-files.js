@@ -3,8 +3,10 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 import "@lrnwebcomponents/secure-request/secure-request.js";
@@ -62,14 +64,14 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
               on-upload-success="_handleImageUploadSuccess"
             >
               <div class="files__drop-label">
-                <iron-icon icon="description"></iron-icon>
+                <simple-icon icon="description"></simple-icon>
                 Upload files here:
               </div>
             </vaadin-upload>
           </template>
         </div>
         <div>
-          <paper-button dialog-dismiss>Cancel</paper-button>
+          <button dialog-dismiss>Cancel</button>
         </div>
       </paper-dialog>
     `;

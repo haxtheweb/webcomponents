@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -289,12 +288,10 @@ class CMSToken extends PolymerElement {
         }
       }
     }
-    afterNextRender(this, function () {
-      document.addEventListener(
-        "visibilitychange",
-        this._windowVisibilityChanged.bind(this)
-      );
-    });
+    document.addEventListener(
+      "visibilitychange",
+      this._windowVisibilityChanged.bind(this)
+    );
   }
   /**
    * Detatched life cycle.

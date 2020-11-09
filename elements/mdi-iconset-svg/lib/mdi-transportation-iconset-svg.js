@@ -4,7 +4,7 @@
  * @element mdi-transportation-iconset-svg is a iconset for the Material Design Icons collection with the "transportation" tag
  *
  * Example:
- *   <iron-icon icon="mdi-transportation:bike"></iron-icon>
+ *   <simple-icon icon="mdi-transportation:bike"></simple-icon>
  *
  * @demo demo/index.html
  */

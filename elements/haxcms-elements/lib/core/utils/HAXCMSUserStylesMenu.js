@@ -148,7 +148,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
             font-size: var(--haxcms-base-styles-body-font-size, 1em);
             color: var(--haxcms-user-styles-color-theme-color-color);
           }
-          paper-icon-button:not(:defined),
+          simple-icon-button:not(:defined),
           simple-popover:not(:defined) {
             display: none;
           }
@@ -288,18 +288,19 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       ];
     }
     HAXCMSUserStylesMenu() {
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@lrnwebcomponents/simple-icon/simple-icon.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
       import("@lrnwebcomponents/simple-popover/simple-popover.js");
       return html`
-        <paper-icon-button
+        <simple-icon-button
           .part="${this.editMode ? `edit-mode-active` : ``}"
           class="btn"
           aria-label="Text settings"
           icon="editor:format-size"
           @click="${this.toggleUserStylesMenu}"
           id="haxcmsuserstylesmenupopover"
-        ></paper-icon-button>
+        ></simple-icon-button>
         <simple-tooltip for="haxcmsuserstylesmenupopover">
           Text settings
         </simple-tooltip>
@@ -404,7 +405,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
         target = e.path;
       } else if (
         e.originalTarget &&
-        e.originalTarget.tagName == "PAPER-ICON-BUTTON"
+        e.originalTarget.tagName == "SIMPLE-ICON-BUTTON"
       ) {
         target = [e.originalTarget];
       } else if (e.originalTarget && e.originalTarget.parentNode.host) {

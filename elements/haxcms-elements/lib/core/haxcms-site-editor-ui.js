@@ -1,6 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "./haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -39,16 +42,6 @@ class HAXCMSSiteEditorUI extends LitElement {
           :host([edit-mode]) {
             bottom: unset;
           }
-          :host([edit-mode]) paper-fab,
-          :host([edit-mode]) paper-icon-button,
-          :host([edit-mode]) paper-avatar {
-            width: 24px;
-            height: 24px;
-            padding: 1px;
-            margin: 0;
-            --iron-icon-width: 20px;
-            --iron-icon-height: 20px;
-          }
         }
         /**
          * Dashboard open trumps all contextual settings
@@ -63,9 +56,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         :host *[hidden] {
           display: none;
         }
-        paper-fab:not(:defined),
-        simple-tooltip:not(:defined),
-        paper-icon-button:not(:defined) {
+        simple-tooltip:not(:defined) {
           display: none !important;
         }
         paper-avatar {
@@ -74,36 +65,27 @@ class HAXCMSSiteEditorUI extends LitElement {
           line-height: 20px;
           padding: 12px;
         }
-        paper-fab {
-          display: block;
-          width: 48px;
-          height: 48px;
-          line-height: 20px;
-          background-color: black;
-          color: #ffffff;
-          transition: 0.3s all ease-in-out;
-          padding: 12px;
-          margin: 0;
-          position: relative;
-          box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
-            0 3px 14px 2px rgba(0, 0, 0, 0.12),
-            0 5px 5px -3px rgba(0, 0, 0, 0.4);
-        }
         :host([painting]) {
           opacity: 0;
           visibility: hidden;
         }
-        paper-icon-button {
+        simple-icon-button {
           display: block;
-          padding: 8px;
-          width: 48px;
-          min-width: 48px;
-          height: 48px;
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
           border-radius: 50%;
-          margin: 0px;
+          border: none;
           background-color: black;
-          color: #ffffff;
-          transition: 0.3s all ease-in-out;
+          color: white;
+          text-align: center;
+          line-height: 40px;
+          min-width: unset;
+          padding: 0;
+          margin: 4px 2px;
+          width: 40px;
+          height: 40px;
+          transition: 0.2s all ease-in-out;
+          position: relative;
           box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
             0 3px 14px 2px rgba(0, 0, 0, 0.12),
             0 5px 5px -3px rgba(0, 0, 0, 0.4);
@@ -113,12 +95,9 @@ class HAXCMSSiteEditorUI extends LitElement {
         paper-avatar:active {
           cursor: pointer;
         }
-        paper-fab:hover,
-        paper-fab:focus,
-        paper-fab:active,
-        paper-icon-button:hover,
-        paper-icon-button:focus,
-        paper-icon-button:active {
+        simple-icon-button:hover,
+        simple-icon-button:focus,
+        simple-icon-button:active {
           background-color: var(--haxcms-color, blue);
           color: #ffffff;
         }
@@ -181,6 +160,8 @@ class HAXCMSSiteEditorUI extends LitElement {
     this.painting = true;
     this.pageAllowed = false;
     this.editMode = false;
+    this.__editIcon = "hax:page-edit";
+    this.icon = "hax:site-settings";
     this.manifestEditMode = false;
     setTimeout(() => {
       import(
@@ -189,12 +170,8 @@ class HAXCMSSiteEditorUI extends LitElement {
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js"
       );
-      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      import("@polymer/paper-icon-button/paper-icon-button.js");
       import("@lrnwebcomponents/simple-modal/simple-modal.js");
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/paper-fab/paper-fab.js");
       import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
       import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
     }, 0);
@@ -211,62 +188,68 @@ class HAXCMSSiteEditorUI extends LitElement {
         src="${this.userPicture}"
       ></paper-avatar>
       <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
-      <paper-fab
+      <simple-icon-button
         hidden
+        dark
         id="editbutton"
         icon="${this.__editIcon}"
         @click="${this._editButtonTap}"
         title="${this.__editText}"
         voice-command="edit (this) page"
-      ></paper-fab>
-      <paper-fab
+      ></simple-icon-button>
+      <simple-icon-button
         id="cancelbutton"
         icon="icons:cancel"
         @click="${this._cancelButtonTap}"
         .hidden="${!this.editMode}"
         title="Cancel editing"
         voice-command="cancel (editing)"
-      ></paper-fab>
-      <paper-fab
+      ></simple-icon-button>
+      <simple-icon-button
         hidden
+        dark
         id="editdetails"
         icon="hax:page-details"
         @click="${this._editDetailsButtonTap}"
         title="Edit details"
         voice-command="edit (page) details"
-      ></paper-fab>
-      <paper-icon-button
+      ></simple-icon-button>
+      <simple-icon-button
         hidden
+        dark
         id="addbutton"
         icon="hax:add-page"
         @click="${this._addButtonTap}"
         title="Add page"
         voice-command="add page"
-      ></paper-icon-button>
-      <paper-fab
+      ></simple-icon-button>
+      <simple-icon-button
         hidden
+        dark
         id="deletebutton"
         icon="icons:delete"
         @click="${this._deleteButtonTap}"
         title="Delete page"
         voice-command="delete page"
-      ></paper-fab>
-      <paper-icon-button
+      ></simple-icon-button>
+      <simple-icon-button
         hidden
+        dark
         id="outlinebutton"
         icon="hax:site-map"
         @click="${this._outlineButtonTap}"
         title="Edit site outline"
         voice-command="edit site outline"
-      ></paper-icon-button>
-      <paper-icon-button
+      ></simple-icon-button>
+      <simple-icon-button
         hidden
+        dark
         id="manifestbutton"
         icon="${this.icon}"
         @click="${this._manifestButtonTap}"
         title="${this.__settingsText}"
         voice-command="edit site settings"
-      ></paper-icon-button>
+      ></simple-icon-button>
       <simple-tooltip for="username" position="right" offset="14"
         >${this.backText}</simple-tooltip
       >
@@ -675,15 +658,19 @@ class HAXCMSSiteEditorUI extends LitElement {
           ? store.activeItem.id
           : store.manifest.id,
     };
-    let b1 = document.createElement("paper-button");
-    let icon = document.createElement("iron-icon");
+    let b1 = document.createElement("button");
+    let icon = document.createElement("simple-icon");
     icon.icon = "icons:add";
+    icon.dark = true;
     b1.appendChild(icon);
     b1.appendChild(document.createTextNode("Create page"));
     b1.style.color = "white";
     b1.style.backgroundColor = "#2196f3";
     b1.addEventListener("click", this._createNewItem.bind(this));
-    let b2 = document.createElement("paper-button");
+    let b2 = document.createElement("button");
+    let icon2 = document.createElement("simple-icon");
+    icon2.icon = "icons:cancel";
+    b2.appendChild(icon2);
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
     let b = document.createElement("span");
@@ -696,8 +683,10 @@ class HAXCMSSiteEditorUI extends LitElement {
       detail: {
         title: "Add a new page",
         styles: {
-          "--simple-modal-width": "70vw",
-          "--simple-modal-max-width": "70vw",
+          "--simple-modal-width": "50vw",
+          "--simple-modal-max-width": "50vw",
+          "--simple-modal-height": "40vh",
+          "--simple-modal-max-height": "40vh",
         },
         elements: { content: this.__newForm, buttons: b },
         invokedBy: this.shadowRoot.querySelector("#addbutton"),
@@ -757,15 +746,18 @@ class HAXCMSSiteEditorUI extends LitElement {
   _deleteButtonTap(e) {
     let c = document.createElement("span");
     c.innerHTML = `"${store.activeItem.title}" will be removed from the outline but its content stays on the file system.`;
-    let b1 = document.createElement("paper-button");
-    let icon = document.createElement("iron-icon");
+    let b1 = document.createElement("button");
+    let icon = document.createElement("simple-icon");
     icon.icon = "icons:delete";
     b1.appendChild(icon);
     b1.appendChild(document.createTextNode("Confirm"));
     b1.style.color = "white";
     b1.style.backgroundColor = "#ee0000";
     b1.addEventListener("click", this._deleteActive.bind(this));
-    let b2 = document.createElement("paper-button");
+    let b2 = document.createElement("button");
+    let icon2 = document.createElement("simple-icon");
+    icon2.icon = "icons:cancel";
+    b2.appendChild(icon2);
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
     let b = document.createElement("span");
@@ -778,8 +770,8 @@ class HAXCMSSiteEditorUI extends LitElement {
       detail: {
         title: "Are you sure you want to delete this page?",
         styles: {
-          "--simple-modal-width": "70vw",
-          "--simple-modal-max-width": "70vw",
+          "--simple-modal-min-width": "30vw",
+          "--simple-modal-min-height": "30vh",
         },
         elements: { content: c, buttons: b },
         invokedBy: this.shadowRoot.querySelector("#deletebutton"),
@@ -815,8 +807,8 @@ class HAXCMSSiteEditorUI extends LitElement {
         title: "Edit site outline",
         styles: {
           "--simple-modal-width": "70vw",
-          "--simple-modal-height": "70vh",
           "--simple-modal-max-width": "70vw",
+          "--simple-modal-height": "70vh",
           "--simple-modal-max-height": "70vh",
         },
         elements: {

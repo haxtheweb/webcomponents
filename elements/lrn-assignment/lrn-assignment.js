@@ -1,6 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-card/paper-card.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 
@@ -17,25 +15,21 @@ class LrnAssignment extends PolymerElement {
           display: flex;
           width: 100%;
         }
-        paper-card {
+        div.card {
           width: 100%;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
       </style>
-      <paper-card
-        heading="[[title]]"
-        image="[[image]]"
-        elevation="1"
-        animated-shadow="false"
-      >
+      <div class="card">
+        <img src="[[image]]" loading="lazy" />
+        <h3>[[title]]</h3>
         <div class="card-content">[[details]] <slot></slot></div>
         <div class="card-actions">
           <template is="dom-repeat" items="[[actions]]">
-            <a href$="[[item.url]]"
-              ><paper-button raised>[[item.label]]</paper-button></a
-            >
+            <a href$="[[item.url]]"><button raised>[[item.label]]</button></a>
           </template>
         </div>
-      </paper-card>
+      </div>
     `;
   }
 

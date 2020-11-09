@@ -5,13 +5,14 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 import "@lrnwebcomponents/multiple-choice/multiple-choice.js";
 import "./lib/game-show-quiz-modal.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `game-show-quiz`
  * `Simple game show with questions and answers`
@@ -27,16 +28,12 @@ class GameShowQuiz extends MutableData(PolymerElement) {
   constructor() {
     super();
     window.SimpleToast.requestAvailability();
-    import("@polymer/iron-image/iron-image.js");
     import("@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js");
     import("@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@polymer/app-layout/app-header/app-header.js");
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("@polymer/iron-flex-layout/iron-flex-layout.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
     import("@lrnwebcomponents/chartist-render/chartist-render.js");
   }
   static get template() {
@@ -65,7 +62,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           font-size: 24px;
           display: flex;
         }
-        iron-icon {
+        simple-icon {
           display: inline-block;
         }
         table {
@@ -83,8 +80,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           padding: 0;
         }
 
-        paper-button {
-          --paper-button-ink-color: var(--game-show-bg-color);
+        button {
           text-transform: none;
           display: block;
         }
@@ -95,7 +91,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           vertical-align: middle;
           display: inline-flex;
         }
-        paper-button + [main-title] {
+        button + [main-title] {
           margin-left: 24px;
           display: inline-flex;
         }
@@ -145,7 +141,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           color: var(--simple-colors-default-theme-red-6);
           background-color: var(--simple-colors-default-theme-red-11);
         }
-        .row-0 paper-button[disabled] {
+        .row-0 button[disabled] {
           font-weight: bold;
           font-size: 16px;
         }
@@ -164,14 +160,14 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           app-toolbar {
             font-size: 14px;
           }
-          paper-button {
+          button {
             padding: 0;
             margin: 0;
             width: 16px;
             height: 16px;
             min-width: unset;
           }
-          game-show-quiz-modal paper-button {
+          game-show-quiz-modal button {
             height: 48px;
             width: 100%;
           }
@@ -184,7 +180,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
             opacity: 1;
             display: inline-block;
           }
-          .row-0 paper-button[disabled] {
+          .row-0 button[disabled] {
             font-weight: bold;
             font-size: 10px;
           }
@@ -192,15 +188,15 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       </style>
       <app-header>
         <app-toolbar>
-          <paper-button id="scorebutton" on-click="scoreBoardToggle">
-            <iron-icon icon="editor:pie-chart"></iron-icon
+          <button id="scorebutton" on-click="scoreBoardToggle">
+            <simple-icon icon="editor:pie-chart"></simple-icon
             ><label for="scorebutton">Score board</label>
-          </paper-button>
+          </button>
           <div main-title>[[title]]</div>
-          <paper-button id="helpbutton" on-click="directionsToggle">
-            <iron-icon icon="help"></iron-icon
+          <button id="helpbutton" on-click="directionsToggle">
+            <simple-icon icon="help"></simple-icon
             ><label for="helpbutton">Directions</label>
-          </paper-button>
+          </button>
         </app-toolbar>
       </app-header>
       <div id="contentcontainer">
@@ -217,7 +213,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
               mutable-data
             >
               <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2">
-                <paper-button
+                <button
                   class="grid-button"
                   raised="[[!col.notRaised]]"
                   data-question-uuid$="[[col.uuid]]"
@@ -226,8 +222,9 @@ class GameShowQuiz extends MutableData(PolymerElement) {
                   data-is-bonus$="[[col.isBonus]]"
                   data-type$="[[col.type]]"
                   disabled$="[[col.disabled]]"
-                  >[[col.title]]<br />[[col.displayPoints]]</paper-button
                 >
+                  [[col.title]]<br />[[col.displayPoints]]
+                </button>
               </responsive-grid-col>
             </template>
           </responsive-grid-row>
@@ -334,25 +331,27 @@ class GameShowQuiz extends MutableData(PolymerElement) {
             </div>
           </div>
         </div>
-        <paper-button
+        <button
           aria-label="Close score board and return to game"
           slot="buttons"
           id="dismiss"
           dialog-confirm
           raised
-          >Return to game board</paper-button
         >
+          Return to game board
+        </button>
       </game-show-quiz-modal>
       <game-show-quiz-modal id="directions" title="[[directionsTitle]]">
         <div slot="content"><slot></slot></div>
-        <paper-button
+        <button
           aria-label="Close directions dialog and return to game"
           slot="buttons"
           id="dismiss"
           dialog-confirm
           raised
-          >Good luck!</paper-button
         >
+          Good luck!
+        </button>
       </game-show-quiz-modal>
       <game-show-quiz-modal
         id="dialog"
@@ -360,12 +359,11 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       >
         <vaadin-split-layout slot="content" style="height:80vh;">
           <div id="col1" style="width:70%;min-width: 30%;">
-            <iron-image
+            <img
               style="min-width:100px; width:100%; min-height:50vh; height:75vh;"
-              sizing="contain"
-              preload=""
+              loading="lazy"
               src$="[[activeQuestion.image]]"
-            ></iron-image>
+            />
           </div>
           <div id="col2" style="width:30%;min-width: 30%;">
             <multiple-choice
@@ -382,19 +380,20 @@ class GameShowQuiz extends MutableData(PolymerElement) {
             </div>
           </div>
         </vaadin-split-layout>
-        <paper-button
+        <button
           slot="buttons"
           hidden$="[[activeQuestion.submitted]]"
           id="submit"
           raised=""
           disabled$="[[__submitDisabled]]"
-          >Submit answer
-          <iron-icon
+        >
+          Submit answer
+          <simple-icon
             hidden$="[[__submitDisabled]]"
             icon="icons:touch-app"
-          ></iron-icon
-        ></paper-button>
-        <paper-button
+          ></simple-icon>
+        </button>
+        <button
           slot="buttons"
           id="continue"
           hidden$="[[!activeQuestion.submitted]]"
@@ -402,8 +401,9 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           raised
           aria-disabled$="[[activeQuestion.submitted]]"
           aria-label="Return to game board"
-          >Continue <iron-icon icon="icons:arrow-forward"></iron-icon
-        ></paper-button>
+        >
+          Continue <simple-icon icon="icons:arrow-forward"></simple-icon>
+        </button>
       </game-show-quiz-modal>
       <iron-ajax
         auto
@@ -676,7 +676,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       if (unlockCheck === unlockThreashold) {
         this.shadowRoot
           .querySelectorAll(
-            'responsive-grid-col paper-button[data-type="bonus"][data-display-points="' +
+            'responsive-grid-col button[data-type="bonus"][data-display-points="' +
               this.__activeQuestionDetails.points +
               '"]'
           )
@@ -700,7 +700,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       // get last row
       this.shadowRoot
         .querySelectorAll(
-          'responsive-grid-col paper-button[data-is-bonus][data-type="' +
+          'responsive-grid-col button[data-is-bonus][data-type="' +
             this.__activeType +
             '"]'
         )
@@ -814,7 +814,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     if (this.remainingAttempts === 2) {
       this.shadowRoot
         .querySelectorAll(
-          "responsive-grid-col paper-button[data-value='3']:not([disabled]):not([data-is-bonus])"
+          "responsive-grid-col button[data-value='3']:not([disabled]):not([data-is-bonus])"
         )
         .forEach((item) => {
           item.setAttribute("disabled", "disabled");
@@ -823,14 +823,14 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     if (this.remainingAttempts === 1) {
       this.shadowRoot
         .querySelectorAll(
-          "responsive-grid-col paper-button[data-value='2']:not([disabled]):not([data-is-bonus])"
+          "responsive-grid-col button[data-value='2']:not([disabled]):not([data-is-bonus])"
         )
         .forEach((item) => {
           item.setAttribute("disabled", "disabled");
         });
       this.shadowRoot
         .querySelectorAll(
-          'responsive-grid-col paper-button[data-value="3"]:not([disabled]):not([data-is-bonus])'
+          'responsive-grid-col button[data-value="3"]:not([disabled]):not([data-is-bonus])'
         )
         .forEach((item) => {
           item.setAttribute("disabled", "disabled");
@@ -840,7 +840,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     if (this.remainingAttempts <= 0) {
       this.shadowRoot
         .querySelectorAll(
-          "responsive-grid-col paper-button:not([disabled]):not([data-is-bonus])"
+          "responsive-grid-col button:not([disabled]):not([data-is-bonus])"
         )
         .forEach((item) => {
           item.setAttribute("disabled", "disabled");
@@ -849,7 +849,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       // trap for bonus questions still being available
       if (
         this.shadowRoot.querySelectorAll(
-          "responsive-grid-col paper-button[data-is-bonus]:not([disabled])"
+          "responsive-grid-col button[data-is-bonus]:not([disabled])"
         ).length === 0
       ) {
         // open score report in a modal now

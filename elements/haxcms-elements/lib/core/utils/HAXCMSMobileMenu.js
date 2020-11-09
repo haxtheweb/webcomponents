@@ -49,18 +49,19 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       ];
     }
     HAXCMSMobileMenuButton() {
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@lrnwebcomponents/simple-icon/simple-icon.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       return html`
-        <paper-icon-button
+        <simple-icon-button
           class="btn"
           icon="icons:menu"
           aria-label="Toggle menu"
           id="haxcmsmobilemenubutton"
           .part="${this.editMode ? `edit-mode-active` : ``}"
           @click="${this.__HAXCMSMobileMenuToggle}"
-        ></paper-icon-button>
+        ></simple-icon-button>
         <simple-tooltip for="haxcmsmobilemenubutton">
           Toggle menu
         </simple-tooltip>

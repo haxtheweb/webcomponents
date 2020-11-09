@@ -6,6 +6,9 @@ import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors
 import "@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 
 /**
  * `simple-blog`
@@ -106,11 +109,11 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           <simple-blog-listing></simple-blog-listing>
         </section>
         <section>
-          <paper-icon-button
+          <simple-icon-button
             id="backbutton"
             icon="icons:arrow-back"
             @click="${this._goBack}"
-          ></paper-icon-button>
+          ></simple-icon-button>
           <simple-tooltip
             for="backbutton"
             position="right"
@@ -145,7 +148,6 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     this.selectedPage = 0;
     setTimeout(() => {
       import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
-      import("@polymer/paper-icon-button/paper-icon-button.js");
       import("@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");
       import("@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js");
     }, 0);

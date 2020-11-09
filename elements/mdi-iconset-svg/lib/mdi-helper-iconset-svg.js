@@ -4,7 +4,7 @@
  * @element mdi-helper-iconset-svg is a iconset for the Material Design Icons collection with the "helper" tag
  *
  * Example:
- *   <iron-icon icon="mdi-helper:color-helper"></iron-icon>
+ *   <simple-icon icon="mdi-helper:color-helper"></simple-icon>
  *
  * @demo demo/index.html
  */

@@ -4,7 +4,7 @@
  * @element mdi-transform-iconset-svg is a iconset for the Material Design Icons collection with the "transform" tag
  *
  * Example:
- *   <iron-icon icon="mdi-transform:rotate-left-variant"></iron-icon>
+ *   <simple-icon icon="mdi-transform:rotate-left-variant"></simple-icon>
  *
  * @demo demo/index.html
  */

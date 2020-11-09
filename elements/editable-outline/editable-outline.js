@@ -4,8 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { getRange } from "@lrnwebcomponents/utils/utils.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `editable-outline`
  * `a simple outline thats contenteditable in nature`
@@ -116,7 +117,7 @@ class EditableOutline extends LitElement {
           outline: 1px solid #cccccc;
         }
 
-        iron-icon {
+        simple-icon {
           pointer-events: none;
         }
 
@@ -129,31 +130,16 @@ class EditableOutline extends LitElement {
 
   // render function
   render() {
-    return html` <iron-a11y-keys
-        keys="enter"
-        @keys-pressed="${this._enterPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <iron-a11y-keys
-        keys="up"
-        @keys-pressed="${this._upPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <iron-a11y-keys
-        keys="down"
-        @keys-pressed="${this._downPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <div class="button-wrapper">
+    return html` <div class="button-wrapper">
         <button @click="${this.buttonEvents}" id="add" title="Add a new node">
-          <iron-icon icon="icons:add"></iron-icon><span>Add</span>
+          <simple-icon icon="icons:add"></simple-icon><span>Add</span>
         </button>
         <button
           @click="${this.buttonEvents}"
           id="collapse"
           title="Toggle active node collapsed status"
         >
-          <iron-icon icon="icons:swap-vert"></iron-icon
+          <simple-icon icon="icons:swap-vert"></simple-icon
           ><span>Toggle active</span>
         </button>
         <button
@@ -161,7 +147,7 @@ class EditableOutline extends LitElement {
           id="collapseall"
           title="Collapse all nodes"
         >
-          <iron-icon icon="icons:swap-vert"></iron-icon
+          <simple-icon icon="icons:swap-vert"></simple-icon
           ><span>Collapse all</span>
         </button>
         <button
@@ -169,14 +155,15 @@ class EditableOutline extends LitElement {
           id="expandall"
           title="Expand all nodes"
         >
-          <iron-icon icon="icons:swap-vert"></iron-icon><span>Expand all</span>
+          <simple-icon icon="icons:swap-vert"></simple-icon
+          ><span>Expand all</span>
         </button>
         <button
           @click="${this.buttonEvents}"
           id="down"
           title="Move active node down"
         >
-          <iron-icon icon="icons:arrow-downward"></iron-icon
+          <simple-icon icon="icons:arrow-downward"></simple-icon
           ><span>Move down</span>
         </button>
         <button
@@ -184,14 +171,15 @@ class EditableOutline extends LitElement {
           id="up"
           title="Move active node up"
         >
-          <iron-icon icon="icons:arrow-upward"></iron-icon><span>Move up</span>
+          <simple-icon icon="icons:arrow-upward"></simple-icon
+          ><span>Move up</span>
         </button>
         <button
           @click="${this.buttonEvents}"
           id="outdent"
           title="Outdent active node"
         >
-          <iron-icon icon="editor:format-indent-decrease"></iron-icon
+          <simple-icon icon="editor:format-indent-decrease"></simple-icon
           ><span>Outdent</span>
         </button>
         <button
@@ -199,7 +187,7 @@ class EditableOutline extends LitElement {
           id="indent"
           title="Indent active node"
         >
-          <iron-icon icon="editor:format-indent-increase"></iron-icon
+          <simple-icon icon="editor:format-indent-increase"></simple-icon
           ><span>Indent</span>
         </button>
         <button
@@ -207,7 +195,7 @@ class EditableOutline extends LitElement {
           id="duplicate"
           title="Duplicate active node tree"
         >
-          <iron-icon icon="icons:content-copy"></iron-icon
+          <simple-icon icon="icons:content-copy"></simple-icon
           ><span>Duplicate</span>
         </button>
       </div>
@@ -245,9 +233,6 @@ class EditableOutline extends LitElement {
     this.items = [];
     this.editMode = false;
     this.jos = window.JSONOutlineSchema.requestAvailability();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
     setTimeout(() => {
       this.addEventListener("dblclick", this._collapseClickHandler.bind(this));
     }, 0);
@@ -299,6 +284,15 @@ class EditableOutline extends LitElement {
   _onKeyDown(e) {
     if (this.editMode) {
       switch (e.key) {
+        case "Enter":
+          this._enterPressed(e);
+          break;
+        case "ArrowUp":
+          this._upPressed(e);
+          break;
+        case "ArrowDown":
+          this._downPressed(e);
+          break;
         case "Tab":
           if (e.shiftKey) {
             this._tabBackKeyPressed(e);
@@ -332,9 +326,6 @@ class EditableOutline extends LitElement {
   }
   firstUpdated() {
     this.__outlineNode = this.shadowRoot.querySelector("#outline");
-    this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach((el) => {
-      el.target = this.__outlineNode;
-    });
     this.__outlineNode.addEventListener("keydown", this._onKeyDown.bind(this));
     this._observer = new MutationObserver(this._observeRecord.bind(this));
     this._observer.observe(this.__outlineNode, {
@@ -628,8 +619,8 @@ class EditableOutline extends LitElement {
       this.shadowRoot.querySelectorAll("li").forEach((el) => {
         el.setAttribute("contenteditable", "true");
       });
+      return outline;
     }, 0);
-    return outline;
   }
   /**
    * Take what's currently in the area and get JSON Outline Schema; optionally save

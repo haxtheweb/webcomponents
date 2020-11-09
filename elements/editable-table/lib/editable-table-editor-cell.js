@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import { cellBehaviors } from "./editable-table-behaviors.js";
 
 /**
@@ -113,9 +112,6 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
     };
   }
 
-  /**
-   * Sets iron-a11y-keys target to this
-   */
   ready() {
     super.ready();
     this.cell = this.shadowRoot.querySelector("#cell");

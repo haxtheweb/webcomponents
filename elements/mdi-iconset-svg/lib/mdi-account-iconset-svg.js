@@ -3,7 +3,7 @@
  * `mdi-account-iconset-svg`
  * @element mdi-account-iconset-svg is a iconset for the Material Design Icons collection with the "account" tag
  * Example:
- *   <iron-icon icon="mdi-account:account-circle"></iron-icon>
+ *   <simple-icon icon="mdi-account:account-circle"></simple-icon>
  *
  * @demo demo/index.html
  */

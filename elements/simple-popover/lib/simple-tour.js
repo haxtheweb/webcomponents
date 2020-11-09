@@ -105,7 +105,7 @@ class SimpleTour extends LitElement {
   stopTour(e) {
     window.SimplePopoverManager.requestAvailability().setPopover(
       this,
-      this.stacks[this.active][this.stop].target,
+      this,
       false,
       this.orientation
     );
@@ -162,7 +162,7 @@ class SimpleTour extends LitElement {
    * on a Friday to avoid incidents.
    */
   managerReset() {
-    this.stop = -1;
+    this.stopTour();
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

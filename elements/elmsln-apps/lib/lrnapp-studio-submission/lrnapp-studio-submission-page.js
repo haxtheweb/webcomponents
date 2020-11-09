@@ -1,13 +1,14 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/marked-element/marked-element.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
@@ -49,7 +50,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           display: inline-flex;
         }
 
-        iron-image {
+        img.image {
           margin: 0 0.5em;
         }
 
@@ -168,7 +169,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           padding: 2em;
         }
 
-        iron-icon {
+        simple-icon {
           margin: 0.2em;
         }
       </style>
@@ -237,7 +238,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
             header="[[submission.relationships.assignment.attributes.title]]"
           >
             <span slot="button"
-              ><iron-icon icon="icons:assignment"></iron-icon>Assignment
+              ><simple-icon icon="icons:assignment"></simple-icon>Assignment
               Details</span
             >
             <div class="assignment-body">
@@ -249,13 +250,13 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           </lrnsys-dialog>
         </div>
         <div>
-          <paper-button
+          <button
             id="comment-count"
             style="margin:0;padding:.25em;text-transform:none;"
           >
-            <iron-icon icon="communication:forum"></iron-icon>
+            <simple-icon icon="communication:forum"></simple-icon>
             [[submission.meta.comment_count]] Comments
-          </paper-button>
+          </button>
           <paper-badge
             hidden$="[[displayNewBadge(submission.meta.comment_new)]]"
             for="comment-count"
@@ -303,7 +304,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
             edit="[[editPage]]"
           ></lrnapp-studio-submission-object>
         </div>
-        <iron-icon class="splitter-handle" icon="more-vert"></iron-icon>
+        <simple-icon class="splitter-handle" icon="more-vert"></simple-icon>
       </vaadin-split-layout>
 
       <elmsln-loading></elmsln-loading>
@@ -312,10 +313,10 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         <h2>Delete submission?</h2>
         <p>Are you sure you want to delete this submission?</p>
         <div class="buttons">
-          <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" on-click="_submissionDeleteConfirmed"
-            >Delete</paper-button
-          >
+          <button dialog-dismiss="">Cancel</button>
+          <button dialog-confirm="" on-click="_submissionDeleteConfirmed">
+            Delete
+          </button>
         </div>
       </paper-dialog>
       <paper-dialog id="publishdialog">
@@ -325,10 +326,10 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           feedback. Are you ready to publish?
         </p>
         <div class="buttons">
-          <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" on-click="_submissionPublishConfirmed"
-            >Yes Publish</paper-button
-          >
+          <button dialog-dismiss="">Cancel</button>
+          <button dialog-confirm="" on-click="_submissionPublishConfirmed">
+            Yes Publish
+          </button>
         </div>
       </paper-dialog>
 
@@ -414,20 +415,18 @@ class LrnappStudioSubmissionPage extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener(
-        "submissionDeleteClicked",
-        this._submissionDeleteClicked.bind(this)
-      );
-      this.addEventListener(
-        "submissionPublishClicked",
-        this._submissionPublishClicked.bind(this)
-      );
-      this.addEventListener(
-        "submissionSaveDraftClicked",
-        this._submissionSaveDraftClicked.bind(this)
-      );
-    });
+    this.addEventListener(
+      "submissionDeleteClicked",
+      this._submissionDeleteClicked.bind(this)
+    );
+    this.addEventListener(
+      "submissionPublishClicked",
+      this._submissionPublishClicked.bind(this)
+    );
+    this.addEventListener(
+      "submissionSaveDraftClicked",
+      this._submissionSaveDraftClicked.bind(this)
+    );
   }
   disconnectedCallback() {
     this.removeEventListener(

@@ -229,7 +229,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
                 >
                   <span class="sr-only">${source.alt}</span>
                   <div class="zoombg"></div>
-                  <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
+                  <simple-icon icon="zoom-in" class="zoomicon"></simple-icon>
                   <div class="imgbg"></div>
                 </button>
                 <simple-tooltip for="view-thumb-${s.id}"

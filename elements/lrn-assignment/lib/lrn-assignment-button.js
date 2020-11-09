@@ -1,7 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 class LrnAssignmentButton extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -16,13 +17,13 @@ class LrnAssignmentButton extends LitElement {
           color: inherit;
           text-decoration: inherit;
         }
-        paper-button {
+        button {
           background: #b0e6f9;
         }
-        paper-button[complete] {
+        button[complete] {
           background: #e7ffe7;
         }
-        iron-icon {
+        simple-icon {
           margin-left: 8px;
           opacity: 0.8;
         }
@@ -37,16 +38,16 @@ class LrnAssignmentButton extends LitElement {
       <a href="${this.url}">
         ${this.open
           ? html`
-              <paper-button raised open
-                >${this.title} <iron-icon icon="lrn-icons:input"></iron-icon
-              ></paper-button>
+              <button raised open>
+                ${this.title} <simple-icon icon="lrn-icons:input"></simple-icon>
+              </button>
             `
           : ``}
         ${this.complete
           ? html`
-              <paper-button raised complete
-                >${this.title} <iron-icon icon="lrn-icons:done"></iron-icon
-              ></paper-button>
+              <button raised complete>
+                ${this.title} <simple-icon icon="lrn-icons:done"></simple-icon>
+              </button>
             `
           : ``}
       </a>

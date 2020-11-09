@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `hero-banner`
@@ -12,11 +11,6 @@ import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors
  * @element hero-banner
  */
 class HeroBanner extends SimpleColorsSuper(LitElement) {
-  constructor() {
-    super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-image/iron-image.js");
-  }
   static get styles() {
     return [
       ...super.styles,
@@ -82,7 +76,7 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
           text-decoration: none;
           font-family: var(--hero-banner-font-family);
         }
-        .linkbutton paper-button {
+        .linkbutton button {
           text-transform: none;
           font-weight: var(--hero-banner-button-weight);
           color: var(--hero-banner-text);
@@ -90,8 +84,8 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
           font-size: 16px;
           margin: 0;
         }
-        .linkbutton:focus paper-button,
-        .linkbutton:hover paper-button {
+        .linkbutton:focus button,
+        .linkbutton:hover button {
           background-color: var(--hero-banner-button-hover-color);
         }
         @media screen and (max-width: 720px) {
@@ -123,14 +117,12 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
   }
   render() {
     return html`
-      <iron-image
+      <img
         class="image"
         src="${this.image}"
-        fade
-        preload
-        sizing="cover"
+        loading="lazy"
         aria-describedby="${this.ariaDescribedby || ""}"
-      ></iron-image>
+      />
       <div class="itemwrapper">
         <div class="title">${this.title}</div>
         <div class="details">${this.details}</div>
@@ -138,9 +130,7 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
           class="linkbutton"
           href="${this.buttonLink || ""}"
           ?hidden="${!this.buttonLink}"
-          ><paper-button raised=""
-            >${this.buttonText || "Find out more"}</paper-button
-          ></a
+          ><button raised="">${this.buttonText || "Find out more"}</button></a
         >
       </div>
     `;

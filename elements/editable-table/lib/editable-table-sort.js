@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "./editable-table-iconset.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `editable-table-editor-sort`
@@ -20,7 +20,7 @@ class EditableTableSort extends PolymerElement {
   static get template() {
     return html`
       <style is="custom-style">
-        :host paper-button {
+        :host button {
           padding: var(--editable-table-cell-padding, 0);
           margin: 0;
           width: auto;
@@ -32,7 +32,7 @@ class EditableTableSort extends PolymerElement {
           text-transform: unset;
           font-family: var(--editable-table-font-family);
         }
-        :host paper-button > div {
+        :host button > div {
           flex-grow: 1;
         }
         :host .sr-only {
@@ -56,14 +56,14 @@ class EditableTableSort extends PolymerElement {
           display: flex;
         }
       </style>
-      <paper-button id="button" class="container" on-click="_onSortClicked">
+      <button id="button" class="container" on-click="_onSortClicked">
         [[text]] <span class="sr-only asc">(ascending)</span>
         <span class="sr-only desc">(descending)</span>
         <span class="sr-only"> Toggle sort mode.</span>
-        <iron-icon id="asc" icon="arrow-drop-up"></iron-icon>
-        <iron-icon id="desc" icon="arrow-drop-down"></iron-icon>
-        <iron-icon id="none" icon="editable-table:sortable"></iron-icon>
-      </paper-button>
+        <simple-icon id="asc" icon="arrow-drop-up"></simple-icon>
+        <simple-icon id="desc" icon="arrow-drop-down"></simple-icon>
+        <simple-icon id="none" icon="editable-table:sortable"></simple-icon>
+      </button>
     `;
   }
 

@@ -7,7 +7,7 @@ ${this.items.map(item => html`
   <article>
     ${item.imageSrc ? html`
     <a class="thumbnail-container" href="${item.link}" title="${item.title}">
-      <iron-image class="thumbnail" src="${item.imageSrc}" alt="${item.title}" sizing="cover"></iron-image>
+      <img class="thumbnail" src="${item.imageSrc}" alt="${item.title}" loading="lazy"/>
     </a>
     ` : ``}
     <a href="${item.link}" title="${item.title}">
@@ -16,7 +16,7 @@ ${this.items.map(item => html`
     <div class="excerpt">${this._truncateText(item.excerpt, this.maxExcerptLength)}</div>
     ${this.showReadMore ? html`
       <a tabindex="-1" href="${item.link}" class="read-more" title="${item.title}">${this.readMoreAnchorText}
-        <paper-icon-button icon="icons:arrow-forward" class="read-more-icon" alt="${this.readMoreImageAlt}"></paper-icon-button>
+        <simple-icon-button icon="icons:arrow-forward" class="read-more-icon" alt="${this.readMoreImageAlt}"></simple-icon-button>
       </a>
     ` : ``}
   </article>

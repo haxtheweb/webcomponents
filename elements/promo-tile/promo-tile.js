@@ -1,18 +1,14 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `promo-tile`
  * @element promo-tile
  * @demo demo/index.html
  */
 class PromoTile extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-  }
   static get template() {
     return html`
       <style>
@@ -127,32 +123,26 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
           @apply --promo-tile-back-content;
         }
 
-        paper-button#learn {
-          display: var(--promo-tile-paper-button-learn-display, flex);
-          margin: var(
-            --promo-tile-paper-button-learn-margin,
-            140px auto 0 auto
-          );
-          font-size: var(--promo-tile-paper-button-learn-font-size, 18px);
-          color: var(--promo-tile-paper-button-learn-font-color, #ffffff);
-          border: var(--promo-tile-paper-button-learn-border, solid);
-          border-width: var(--promo-tile-paper-button-learn-border-width, 1px);
-          border-color: var(
-            --promo-tile-paper-button-learn-border-color,
-            #ffffff
-          );
-          border-radius: var(--promo-tile-paper-button-learn-border-radius, 0);
-          width: var(--promo-tile-paper-button-learn-width, 50%);
-          @apply --promo-tile-paper-button-learn;
+        button#learn {
+          display: var(--promo-tile-button-learn-display, flex);
+          margin: var(--promo-tile-button-learn-margin, 140px auto 0 auto);
+          font-size: var(--promo-tile-button-learn-font-size, 18px);
+          color: var(--promo-tile-button-learn-font-color, #ffffff);
+          border: var(--promo-tile-button-learn-border, solid);
+          border-width: var(--promo-tile-button-learn-border-width, 1px);
+          border-color: var(--promo-tile-button-learn-border-color, #ffffff);
+          border-radius: var(--promo-tile-button-learn-border-radius, 0);
+          width: var(--promo-tile-button-learn-width, 50%);
+          @apply --promo-tile-button-learn;
         }
 
-        paper-button#learn:hover,
-        paper-button#learn:focus {
+        button#learn:hover,
+        button#learn:focus {
           background-color: var(
-            --promo-tile-paper-button-learn-background-color-active,
+            --promo-tile-button-learn-background-color-active,
             #363533
           );
-          @apply --promo-tile-paper-button-learn-active;
+          @apply --promo-tile-button-learn-active;
         }
       </style>
       <div id="container">
@@ -180,10 +170,10 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
                   id="link"
                   target$="[[_urlTarget(url)]]"
                 >
-                  <paper-button id="learn" no-ink
-                    >[[label]]
-                    <iron-icon icon="chevron-right"></iron-icon>
-                  </paper-button>
+                  <button id="learn" no-ink>
+                    [[label]]
+                    <simple-icon icon="chevron-right"></simple-icon>
+                  </button>
                 </a>
               </div>
             </div>
@@ -256,12 +246,10 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener("mouseover", this.__hoverIn.bind(this));
-      this.addEventListener("mouseout", this.__hoverOut.bind(this));
-      this.addEventListener("focusin", this.__hoverIn.bind(this));
-      this.addEventListener("focusout", this.__hoverOut.bind(this));
-    });
+    this.addEventListener("mouseover", this.__hoverIn.bind(this));
+    this.addEventListener("mouseout", this.__hoverOut.bind(this));
+    this.addEventListener("focusin", this.__hoverIn.bind(this));
+    this.addEventListener("focusout", this.__hoverOut.bind(this));
   }
   disconnectedCallback() {
     this.removeEventListener("mouseover", this.__hoverIn.bind(this));

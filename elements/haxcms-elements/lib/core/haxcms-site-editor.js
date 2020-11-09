@@ -8,10 +8,8 @@ import { autorun, toJS } from "mobx";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
-import "@lrnwebcomponents/mdi-iconset-svg/lib/mdi-action-iconset-svg.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./haxcms-site-dashboard.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
@@ -689,8 +687,8 @@ class HAXCMSSiteEditor extends LitElement {
     };
     form.loadEndpoint = this.getNodeFieldsPath;
     this.__fieldsForm = form;
-    let b1 = document.createElement("paper-button");
-    let icon = document.createElement("iron-icon");
+    let b1 = document.createElement("button");
+    let icon = document.createElement("simple-icon");
     icon.icon = "icons:save";
     b1.appendChild(icon);
     b1.appendChild(document.createTextNode("Save fields"));
@@ -698,7 +696,10 @@ class HAXCMSSiteEditor extends LitElement {
     b1.style.backgroundColor = "#2196f3";
     b1.setAttribute("dialog-confirm", "dialog-confirm");
     b1.addEventListener("click", this._saveNodeFieldsTap.bind(this));
-    let b2 = document.createElement("paper-button");
+    let b2 = document.createElement("button");
+    let icon2 = document.createElement("simple-icon");
+    icon2.icon = "icons:cancel";
+    b2.appendChild(icon2);
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
     let b = document.createElement("div");
@@ -716,8 +717,8 @@ class HAXCMSSiteEditor extends LitElement {
       detail: {
         title: "Edit " + store.activeTitle + " fields",
         styles: {
-          "--simple-modal-width": "70vw",
-          "--simple-modal-max-width": "70vw",
+          "--simple-modal-min-width": "75vw",
+          "--simple-modal-min-height": "75vh",
         },
         elements: {
           content: form,
@@ -1166,9 +1167,9 @@ class HAXCMSSiteEditor extends LitElement {
     let content = document.createElement("span");
     content.innerHTML = `
     <a href="${data.url}" target="_blank">
-      <paper-button raised style="color:yellow;text-transform: none;font-weight: bold;">
+      <button raised style="color:yellow;text-transform: none;font-weight: bold;">
       ${data.label}
-      </paper-button>
+      </button>
     </a>`;
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,

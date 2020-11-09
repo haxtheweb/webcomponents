@@ -4,7 +4,7 @@
  * @element mdi-outline-iconset-svg is a iconset for the Material Design Icons collection with the "outline" tag
  *
  * Example:
- *   <iron-icon icon="mdi-outline:"></iron-icon>
+ *   <simple-icon icon="mdi-outline:"></simple-icon>
  *
  * @demo demo/index.html
  */

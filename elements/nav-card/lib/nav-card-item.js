@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 /**
  * `nav-card-item`
@@ -63,7 +63,7 @@ class NavCardItem extends LitElement {
         attribute: "allow-grey",
       },
       /**
-       * optional iron-icon or image URI as avatar on left of link
+       * optional simple-icon or image URI as avatar on left of link
        */
       avatar: {
         type: String,
@@ -77,7 +77,7 @@ class NavCardItem extends LitElement {
         attribute: "dark",
       },
       /**
-       * iron-icon on right of link
+       * simple-icon on right of link
        */
       icon: {
         type: String,
@@ -289,13 +289,13 @@ class NavCardItem extends LitElement {
             50%
           );
         }
-        iron-icon {
+        simple-icon {
           margin-left: 10px;
-          width: var(
+          --simple-icon-width: var(
             --nav-card-item-icon-width,
             var(--nav-card-item-icon-size, 24px)
           );
-          height: var(
+          --simple-icon-height: var(
             --nav-card-item-icon-height,
             var(--nav-card-item-icon-size, 24px)
           );
@@ -333,7 +333,9 @@ class NavCardItem extends LitElement {
         <slot name="label"></slot>
         <slot name="description"></slot>
       </div>
-      ${!this.icon ? `` : html` <iron-icon icon="${this.icon}"></iron-icon> `}
+      ${!this.icon
+        ? ``
+        : html` <simple-icon icon="${this.icon}"></simple-icon> `}
     `;
   }
 

@@ -1,11 +1,12 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-button/paper-button.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 class LrnappStudioSubmissionEditLinks extends PolymerElement {
   static get template() {
@@ -46,12 +47,12 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
             <div class="linksfield__url">{{link.url}}</div>
           </div>
           <div class="linksfield__actions">
-            <paper-icon-button
+            <simple-icon-button
               icon="delete"
               class="linksfield__delete"
               data-index$="{{index}}"
               on-click="_deleteLink"
-            ></paper-icon-button>
+            ></simple-icon-button>
           </div>
         </div>
       </template>
@@ -63,19 +64,17 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
 
       <paper-dialog id="dialog">
         <h2>Add Link</h2>
-        <paper-dialog-scrollable>
+        <div style="height:50vh;width:100%;overflow:scroll;">
           <paper-input
             id="link-input"
             class="input"
             label="URL"
             value="{{newlink}}"
           ></paper-input>
-        </paper-dialog-scrollable>
+        </div>
         <div class="buttons">
-          <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" on-click="_createLink"
-            >Add Link</paper-button
-          >
+          <button dialog-dismiss="">Cancel</button>
+          <button dialog-confirm="" on-click="_createLink">Add Link</button>
         </div>
       </paper-dialog>
     `;

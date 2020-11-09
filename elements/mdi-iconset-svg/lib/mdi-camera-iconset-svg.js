@@ -4,7 +4,7 @@
  * @element mdi-camera-iconset-svg is a iconset for the Material Design Icons collection with the "camera" tag
  *
  * Example:
- *   <iron-icon icon="mdi-camera:contrast-circle"></iron-icon>
+ *   <simple-icon icon="mdi-camera:contrast-circle"></simple-icon>
  *
  * @demo demo/index.html
  */

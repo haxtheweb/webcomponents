@@ -48,7 +48,8 @@
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-media-query": "^3.0.0",
-    "@polymer/paper-icon-button": "^3.0.2",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
+    "@lrnwebcomponents/hax-iconset": "^2.7.10",
     "@polymer/paper-progress": "^3.0.0",
     "@polymer/polymer": "^3.3.1"
   },

@@ -241,7 +241,6 @@ class LrnMath extends HTMLElement {
         title: "Math",
         description: "Present math in a nice looking way.",
         icon: "hax:pi",
-        iconLib: "@lrnwebcomponents/hax-iconset/hax-iconset.js",
         color: "grey",
         groups: ["Content"],
         handles: [

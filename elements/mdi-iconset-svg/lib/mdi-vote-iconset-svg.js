@@ -4,7 +4,7 @@
  * @element mdi-vote-iconset-svg is a iconset for the Material Design Icons collection with the "vote" tag
  *
  * Example:
- *   <iron-icon icon="mdi-vote:thumb-up"></iron-icon>
+ *   <simple-icon icon="mdi-vote:thumb-up"></simple-icon>
  *
  * @demo demo/index.html
  */

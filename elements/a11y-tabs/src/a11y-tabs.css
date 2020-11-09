@@ -107,7 +107,7 @@
   margin-top: -1px;
 }
 
-#tabs paper-button {
+#tabs button {
   margin: 0;
   text-transform: unset;
   text-decoration: var(--a11y-tabs-text-decoration, none);
@@ -119,15 +119,15 @@
   border-radius: var(--a11y-tabs-horizontal-border-radius) var(--a11y-tabs-horizontal-border-radius) 0 0; 
 }
 
-:host(:not([vertical])) #tabs paper-button {
+:host(:not([vertical])) #tabs button {
   border-top-color: var(--a11y-tabs-border-accent);
 }
 
-:host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
+:host(:not([vertical])) #tabs li:not(:first-of-type) button {
   border-left: none;
 }
 
-:host([vertical]) #tabs paper-button {
+:host([vertical]) #tabs button {
   border-top: none;
   border-radius: 0; 
   display: flex;
@@ -137,41 +137,41 @@
   padding: var(--a11y-tabs-vertical-button-padding);
 }
 
-#tabs paper-button:focus,
-#tabs paper-button:hover {
+#tabs button:focus,
+#tabs button:hover {
   color: var(--a11y-tabs-focus-color);
   font-weight: var(--a11y-tabs-focus-font-weight, normal);
   text-decoration: var(--a11y-tabs-focus-text-decoration, underline);
 }
 
-:host(:not([vertical])) #tabs paper-button:focus,
-:host(:not([vertical])) #tabs paper-button:hover {
+:host(:not([vertical])) #tabs button:focus,
+:host(:not([vertical])) #tabs button:hover {
   border-top-color: var(--a11y-tabs-focus-border-accent);
 }
 
-:host([vertical]) #tabs paper-button:focus,
-:host([vertical]) #tabs paper-button:hover {
+:host([vertical]) #tabs button:focus,
+:host([vertical]) #tabs button:hover {
   border-left-color: var(--a11y-tabs-focus-border-accent);
 }
 
-#tabs paper-button[aria-selected="true"] {
+#tabs button[aria-selected="true"] {
   font-weight: var(--a11y-tabs-selected-font-weight, normal);
   color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));
   background-color: var(--a11y-tabs-background);
   text-decoration: var(--a11y-tabs-selected-text-decoration, none);
 }
 
-:host(:not([vertical])) #tabs paper-button[aria-selected="true"] {
+:host(:not([vertical])) #tabs button[aria-selected="true"] {
   border-bottom-color: var(--a11y-tabs-background);
   border-top-color: var(--a11y-tabs-selected-border-accent);
 }
 
-:host([vertical]) #tabs paper-button[aria-selected="true"] {
+:host([vertical]) #tabs button[aria-selected="true"] {
   border-right-color: var(--a11y-tabs-background);
   border-left-color: var(--a11y-tabs-selected-border-accent);
 }
 
-#tabs paper-button[disabled] {
+#tabs button[disabled] {
   color: var(--a11y-tabs-disabled-color);
   background-color: var(--a11y-tabs-disabled-background);
   cursor: not-allowed;
@@ -190,7 +190,7 @@
   margin-right: 8px;
 }
 
-:host([icons-only]) #tabs paper-button {
+:host([icons-only]) #tabs button {
   justify-content: center;
 }
 
@@ -202,6 +202,10 @@
   display: none;
 }
 
-iron-icon:not([hidden]) {
+simple-icon:not([hidden]) {
   display: inline-block;
+}
+
+simple-icon[hidden] {
+  display: none;
 }

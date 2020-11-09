@@ -44,26 +44,32 @@
     </div>
   </div>
   <div id="progresslabel" class="sr-only">${this._getLocal(this.localization,'seekSlider', 'label')}</div>
-  <paper-slider id="slider"
+  <simple-range-input id="slider"
     class="screen-only"
     aria-labelledby="progresslabel"
-    min="${0}"
-    max="${this.duration}"
-    secondary-progress="${this.buffered}"
-    @change="${this._handleSliderChanged}"
-    @dragging-changed="${this._handleSliderDragging}"
+    min="0"
+    .max="${this.duration}"
+    step="1"
+    accent-color="${this.accentColor}"
+    ?dark="${this.dark}"
+    @value-changed="${this._handleSliderChanged}"
+    @immediate-value-changed="${this._handleSliderDragging}"
     .value="${this.__currentTime}"
     ?disabled="${this.disableSeek || this.duration === 0}"
   >
-  </paper-slider>
+  </simple-range-input>
   <div id="controls" controls="innerplayer">
     <div id="controls-left">
       <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
         icon="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'icon')}"
         label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
         @click="${e => this.togglePlay()}"
       ></a11y-media-button>
       <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
         class="hide-flex"
         icon="${this._getLocal(this.localization,'rewind','icon')}"
         label="${this._getLocal(this.localization,'rewind','label')}"
@@ -72,6 +78,8 @@
         @click="${e => this.rewind()}"
       ></a11y-media-button>
       <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
         class="hide-flex"
         icon="${this._getLocal(this.localization,'forward','icon')}"
         label="${this._getLocal(this.localization,'forward','label')}"
@@ -80,6 +88,8 @@
         @click="${e => this.forward()}"
       ></a11y-media-button>
       <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
         class="hide-flex"
         icon="${this._getLocal(this.localization,'restart','icon')}"
         label="${this._getLocal(this.localization,'restart','label')}"
@@ -91,23 +101,27 @@
           @focus="${e => this.__volumeSlider = true}"
           @blur="${e => this.__volumeSlider = false}">
         <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           id="mute"
           icon="${this._getLocal(this.localization,this.muted ? 'unmute' : 'mute', 'icon')}"
           label="${this._getLocal(this.localization,this.muted ? 'unmute' : 'mute', 'label')}"
           @click="${e => this.toggleMute()}"
         ></a11y-media-button>
-        <paper-slider
+        <simple-range-input
           id="volume"
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           aria-labelledby="volume-slider-label"
           label="${this._getLocal(this.localization,'volume','label')}"
           min="0"
           max="100"
           pin
           step="10"
-          .value="${this.muted ? 0 : this.volume}"
-          @change="${this._handleVolumeChanged}" 
+          value="${this.muted ? 0 : this.volume}"
+          @value-changed="${this._handleVolumeChanged}" 
           ?hidden="${this.responsiveSize === 'xs'}"
-        ></paper-slider>
+        ></simple-range-input>
       </div>
       <span aria-live="polite" class="play-status control-bar hide-full-xs">
         <span id="statbar">${this.status}</span>
@@ -115,6 +129,8 @@
     </div>
     <div id="controls-right">
       <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
         class="hide-full-xs"
         icon="${this._getLocal(this.localization,'captions','icon')}"
         label="${this._getLocal(this.localization,'captions','label')}"
@@ -125,6 +141,8 @@
       >
       </a11y-media-button>
       <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
         class="hide-full-xs"
         controls="transcript"
         icon="${this._getLocal(this.localization,'transcript','icon')}"
@@ -136,6 +154,8 @@
       >
       </a11y-media-button>
       <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
         class="hide-full-sm"
         icon="${this._getLocal(this.localization,'copyLink','icon')}"
         label="${this._getLocal(this.localization,'copyLink','label')}"
@@ -144,6 +164,8 @@
         @click="${this._handleCopyLink}"
       ></a11y-media-button>
       <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
         class="hide-full-xs"
         icon="${this._getLocal(this.localization,'fullscreen','icon')}"
         label="${this._getLocal(this.localization,'fullscreen','label')}"
@@ -153,6 +175,8 @@
       >
       </a11y-media-button>
       <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
         id="settings-button"
         class="hide-sticky"
         controls="settings"
@@ -207,6 +231,8 @@
           ${this._getLocal(this.localization,'print','label')}
         </div>
         <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           aria-labelledby="print-label"
           class="setting-control"
           icon="${this._getLocal(this.localization,'print','icon')}"
@@ -221,6 +247,8 @@
           ${this._getLocal(this.localization,'download','label')}
         </div>
         <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           aria-labelledby="download-label"
           class="setting-control"
           icon="${this._getLocal(this.localization,'download','icon')}"
@@ -246,17 +274,19 @@
         <div id="speed-label" class="setting-text">
           ${this._getLocal(this.localization,'speed','label')}
         </div>
-        <paper-slider
+        <simple-range-input
           id="speed"
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           aria-labelledby="speed-label"
           class="setting-slider setting-control"
           min="0.5"
           max="2.5"
           pin
           step="0.25"
-          .value="${this.playbackRate}"
-          @change="${this._handleSpeedChanged}">
-        </paper-slider>
+          value="${this.playbackRate}"
+          @value-changed="${this._handleSpeedChanged}">
+        </simple-range-input>
       </div>
     </absolute-position-behavior>
   </div>
@@ -294,6 +324,8 @@ ${this.poster
       </div>
       <div id="scrolling">
         <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           id="scroll"
           controls="transcript"
           icon="${this._getLocal(this.localization,'autoScroll','icon')}"
@@ -306,6 +338,8 @@ ${this.poster
         ?hidden="${this.disablePrintButton}"
         ?disabled="${this.disablePrintButton}">
         <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           id="download"
           controls="transcript"
           icon="${this._getLocal(this.localization,'download','icon')}"
@@ -313,6 +347,8 @@ ${this.poster
           @click="${this.download}">
         </a11y-media-button>
         <a11y-media-button
+          accent-color="${this.accentColor}"
+          ?dark="${this.dark}"
           id="print"
           controls="transcript"
           icon="${this._getLocal(this.localization,'print','icon')}"
@@ -353,17 +389,4 @@ ${this.poster
     </div>
   </div>
 </div>
-<paper-toast id="link" 
-  duration="5000" 
-  text="Copied to clipboard: ${this.shareLink}"
-  ?disabled="${!this.linkable}" 
-  ?hidden="${!this.linkable}">
-  <a11y-media-button
-    action="linkable"
-    icon="${this._getLocal(this.localization,'closeLink','icon')}"
-    label="${this._getLocal(this.localization,'closeLink','label')}"
-    tooltip-position="top"
-    @click="${this._handleCloseLink}"
-  ></a11y-media-button>
-</paper-toast>
 <div id="bottom" class="sr-only"></div>

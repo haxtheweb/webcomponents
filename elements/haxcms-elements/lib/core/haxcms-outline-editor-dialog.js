@@ -3,9 +3,8 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/editable-outline/editable-outline.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`
@@ -25,6 +24,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
           display: block;
           height: 60vh;
           min-width: 50vw;
+          overflow: auto;
         }
         .buttons {
           position: absolute;
@@ -35,12 +35,14 @@ class HAXCMSOutlineEditorDialog extends LitElement {
           left: 0;
           right: 0;
         }
-        .buttons paper-button {
-          color: #ffffff;
-          background-color: var(--simple-modal-button-background, #000000);
+        .buttons button {
+          color: black;
+          background-color: white;
         }
-        editable-outline:not(:defined),
-        paper-button:not(:defined) {
+        simple-icon {
+          margin-right: 4px;
+        }
+        editable-outline:not(:defined) {
           display: none;
         }
         #toggle {
@@ -73,12 +75,12 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         .items="${this.manifestItems}"
       ></editable-outline>
       <div class="buttons">
-        <paper-button id="savebtn" dialog-confirm @click="${this._saveTap}"
-          ><iron-icon icon="icons:save"></iron-icon>Save</paper-button
-        >
-        <paper-button dialog-dismiss
-          ><iron-icon icon="icons:cancel"></iron-icon>Cancel</paper-button
-        >
+        <button id="savebtn" dialog-confirm @click="${this._saveTap}">
+          <simple-icon icon="icons:save" dark></simple-icon>Save
+        </button>
+        <button dialog-dismiss>
+          <simple-icon icon="icons:cancel"></simple-icon>Cancel
+        </button>
       </div>
     `;
   }

@@ -48,9 +48,17 @@ class SimpleIconset extends HTMLElement {
    * that the library for the icon registers AFTER the request to visualize is made
    */
   getIcon(val, context) {
-    let ary = val.split(":");
+    let ary = val.replaceAll("/", "-").split(":");
+    // legacy API used to fill in icons: for lazy devs so let's mirror
+    if (ary.length === 1) {
+      ary = ["icons", val];
+    }
     if (ary.length == 2 && this.iconsets[ary[0]]) {
-      if (this.iconsets[ary[0]][ary[1]]) {
+      if (
+        typeof this.iconsets[ary[0]] !== "string" &&
+        this.iconsets[ary[0]][ary[1]] &&
+        typeof this.iconsets[ary[0]][ary[1]] !== "function"
+      ) {
         return this.iconsets[ary[0]][ary[1]];
       } else {
         return `${this.iconsets[ary[0]]}${ary[1]}.svg`;
@@ -79,7 +87,6 @@ function pathFromUrl(url) {
 }
 
 customElements.define(SimpleIconset.tag, SimpleIconset);
-export { SimpleIconset, pathResolver, pathFromUrl };
 
 window.SimpleIconset = window.SimpleIconset || {};
 /**
@@ -93,4 +100,5 @@ window.SimpleIconset.requestAvailability = () => {
   return window.SimpleIconset.instance;
 };
 // self request so that when this file is referenced it exists in the dom
-window.SimpleIconset.requestAvailability();
+const SimpleIconsetStore = window.SimpleIconset.requestAvailability();
+export { SimpleIconset, SimpleIconsetStore, pathResolver, pathFromUrl };

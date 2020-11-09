@@ -1,10 +1,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
-import "@polymer/paper-card/paper-card.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/lrn-icon/lrn-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 class LrnappBlockRecentCommentsComment extends mixinBehaviors(
@@ -18,13 +17,14 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           display: block;
         }
 
-        paper-card {
+        div.card {
           padding: 2em 2em 0 2em;
           clear: right;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
 
-        paper-button {
-          background-color: var(--paper-grey-100);
+        button {
+          background-color: #eeeeee;
           margin: 1em;
         }
 
@@ -38,7 +38,7 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           width: 100%;
         }
 
-        .card-actions paper-button {
+        .card-actions button {
           display: flex;
         }
 
@@ -57,13 +57,13 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           overflow: hidden;
         }
 
-        paper-button {
+        button {
           background: white;
           width: 100%;
           display: flex;
         }
 
-        lrn-icon {
+        simple-icon {
           color: black;
           width: 100%;
         }
@@ -72,7 +72,7 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           display: none;
         }
       </style>
-      <paper-card elevation="3" class="flex-wrap">
+      <div class="card flex-wrap">
         <div class="card-content">
           <lrndesign-avatar
             label="[[commentUser.name]]"
@@ -81,19 +81,19 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           <h3>[[commentUser.display_name]]</h3>
           <div id="wrapper" class="button-wrapper">
             <div id="comment" class="inactive"><slot></slot></div>
-            <paper-button id="btn" class="hidden">
-              <lrn-icon icon="chevron-down" id="icon"></lrn-icon>
-            </paper-button>
+            <button id="btn" class="hidden">
+              <simple-icon icon="chevron-down" id="icon"></simple-icon>
+            </button>
           </div>
         </div>
         <div class="card-actions">
           <template is="dom-if" if="[[actionView]]">
             <a href$="[[actionView]]" tabindex="-1">
-              <paper-button raised="" id="view">View thread</paper-button>
+              <button raised="" id="view">View thread</button>
             </a>
           </template>
         </div>
-      </paper-card>
+      </div>
     `;
   }
 
@@ -153,12 +153,10 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.$.wrapper.addEventListener("click", function (e) {
-        this.$.comment.classList.toggle("inactive", this.inactive);
-      });
-      this.addEventListener("iron-resize", this.onHeightChange.bind(this));
+    this.$.wrapper.addEventListener("click", function (e) {
+      this.$.comment.classList.toggle("inactive", this.inactive);
     });
+    this.addEventListener("iron-resize", this.onHeightChange.bind(this));
   }
   /**
    * detached life cycle

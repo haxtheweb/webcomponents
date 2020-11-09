@@ -4,7 +4,7 @@
  * @element mdi-vector-iconset-svg is a iconset for the Material Design Icons collection with the "vector" tag
  *
  * Example:
- *   <iron-icon icon="mdi-vector:vector-square"></iron-icon>
+ *   <simple-icon icon="mdi-vector:vector-square"></simple-icon>
  *
  * @demo demo/index.html
  */

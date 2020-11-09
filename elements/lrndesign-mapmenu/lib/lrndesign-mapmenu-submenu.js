@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import "@polymer/iron-collapse/iron-collapse.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "./lrndesign-mapmenu-item.js";
 import "./lrndesign-mapmenu-header.js";
 class LrndesignMapmenuSubmenu extends LitElement {
@@ -23,19 +23,23 @@ class LrndesignMapmenuSubmenu extends LitElement {
         #container ::slotted(lrndesign-mapmenu-item) {
           margin-top: 6.4px;
         }
+        a11y-collapse {
+          border: 0;
+        }
       `,
     ];
   }
   render() {
     return html`
-      <lrndesign-mapmenu-header
-        @click="${this._headerClickHandler}"
-        avatar-label="${this.avatarLabel}"
-        title="${this.title}"
-        label="${this.label}"
-        ?opened="${this.opened}"
-      ></lrndesign-mapmenu-header>
-      <iron-collapse id="container"> <slot></slot> </iron-collapse>
+      <a11y-collapse id="container">
+        <lrndesign-mapmenu-header
+          avatar-label="${this.avatarLabel}"
+          title="${this.title}"
+          label="${this.label}"
+          slot="heading"
+        ></lrndesign-mapmenu-header>
+        <slot></slot>
+      </a11y-collapse>
     `;
   }
 
@@ -83,6 +87,9 @@ class LrndesignMapmenuSubmenu extends LitElement {
 
   constructor() {
     super();
+    this.label = "";
+    this.title = "";
+    this.avatarLabel = "";
     this.opened = false;
     this.collapsable = true;
     this.expandChildren = false;

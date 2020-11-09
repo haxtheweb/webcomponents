@@ -4,7 +4,7 @@
  * @element mdi-cart-iconset-svg is a iconset for the Material Design Icons collection with the "cart" tag
  *
  * Example:
- *   <iron-icon icon="mdi-cart:basket"></iron-icon>
+ *   <simple-icon icon="mdi-cart:basket"></simple-icon>
  *
  * @demo demo/index.html
  */

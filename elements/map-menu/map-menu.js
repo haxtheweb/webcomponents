@@ -26,7 +26,7 @@ class MapMenu extends LitElement {
           overflow-y: scroll;
           position: relative;
           height: 100%;
-          transition: 0.1s linear all;
+          transition: all 0.1s ease-in-out;
           opacity: 1;
           background-color: transparent;
         }
@@ -39,6 +39,7 @@ class MapMenu extends LitElement {
           background: var(--map-menu-active-color);
           transition: all 0.1s ease-in-out;
           position: absolute;
+          pointer-events: none;
         }
 
         map-menu-container {
@@ -206,7 +207,8 @@ class MapMenu extends LitElement {
       if (this.autoScroll) {
         // kick off smooth scroll
         this.__scrollHandler(newValue, {
-          duration: 100,
+          duration: 50,
+          delay: 0,
           scrollElement: this,
         });
       }

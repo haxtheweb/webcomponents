@@ -27,10 +27,10 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
         .actions .spacer {
           flex: 1 1 auto;
         }
-        iron-icon {
+        simple-icon {
           margin-right: 6px;
-          --iron-icon-height: 32px;
-          --iron-icon-width: 32px;
+          --simple-icon-height: 32px;
+          --simple-icon-width: 32px;
         }
         .imagesfiled__image_delete {
           position: absolute;

@@ -101,7 +101,7 @@ class LrnIcon extends PolymerElement {
           @apply --lrn-icon;
         }
       </style>
-      <iron-icon icon$="lrn:[[icon]]"></iron-icon>
+      <simple-icon icon$="lrn:[[icon]]"></simple-icon>
     `;
   }
 

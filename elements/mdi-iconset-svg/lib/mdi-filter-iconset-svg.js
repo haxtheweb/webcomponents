@@ -4,7 +4,7 @@
  * @element mdi-filter-iconset-svg is a iconset for the Material Design Icons collection with the "filter" tag
  *
  * Example:
- *   <iron-icon icon="mdi-filter:filter"></iron-icon>
+ *   <simple-icon icon="mdi-filter:filter"></simple-icon>
  *
  * @demo demo/index.html
  */

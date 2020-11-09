@@ -1,10 +1,13 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
-import { pathResolver } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import {
+  pathResolver,
+  SimpleIconsetStore,
+} from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 // register the iconset
-window.SimpleIconset.requestAvailability().registerIconset(
+SimpleIconsetStore.registerIconset(
   "stopnoteicons",
   `${pathResolver(import.meta.url)}lib/svgs/`
 );
@@ -31,8 +34,8 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
         }
 
         simple-icon {
-          height: 100px;
-          width: 100px;
+          --simple-icon-height: 100px;
+          --simple-icon-width: 100px;
         }
 
         :host([icon="stopnoteicons:stop-icon"]) {
@@ -232,13 +235,13 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
             property: "icon",
             title: "Action Icon",
             description: "Icon used for stop-note",
-            inputMethod: "iconpicker",
-            options: [
-              "stopnoteicons:stop-icon",
-              "stopnoteicons:warning-icon",
-              "stopnoteicons:confirm-icon",
-              "stopnoteicons:book-icon",
-            ],
+            inputMethod: "select",
+            options: {
+              "stopnoteicons:stop-icon": "Stop",
+              "stopnoteicons:warning-icon": "Warning",
+              "stopnoteicons:confirm-icon": "Confirmation",
+              "stopnoteicons:book-icon": "Notice",
+            },
           },
         ],
         advanced: [],

@@ -76,10 +76,10 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
       cursor: pointer;
       color: black;
     }
-    iron-icon {
+    simple-icon {
       padding: 0 2px;
-      width: 16px;
-      height: 16px;
+      --simple-icon-height: 16px;
+      --simple-icon-width: 16px;
     }
     :host(.hax-context-pin-top) .area {
       position: fixed;

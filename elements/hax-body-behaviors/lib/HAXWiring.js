@@ -38,7 +38,7 @@
  *    'title': 'CSV Table',
  *    'descrption': 'This can generate a table from a CSV file no matter where it is located.',
  *     'icon': 'editor:border-all',
- *     'iconLib': '@lrnwebcomponents/hax-iconset/hax-iconset.js', // optional ability to import custom icon libraries
+ *     'iconLib': '@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js', // optional ability to import custom icon libraries
  *     'color': 'green',
  *     'groups': ['Presentation', 'Table', 'Data'],
  *     'handles': [

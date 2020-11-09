@@ -1,6 +1,8 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
 `lrnsys-dialog`
 
@@ -45,7 +47,6 @@ class LrnsysDialog extends SimpleColors {
   constructor() {
     super();
     this.disabled = false;
-    this.dynamicImages = false;
     this.focusState = false;
     this.avatar = "";
     this.icon = "";
@@ -53,17 +54,13 @@ class LrnsysDialog extends SimpleColors {
     this.headingClass = "white-text black";
     setTimeout(() => {
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      import("@polymer/paper-button/paper-button.js");
-      import("@polymer/neon-animation/neon-animation.js");
-      import("@polymer/neon-animation/neon-animations.js");
-      import("@polymer/iron-icons/iron-icons.js");
       import("./lrnsys-button-inner.js");
     }, 0);
     this.__modal = window.SimpleModal.requestAvailability();
   }
   render() {
     return html`
-      <paper-button
+      <button
         class="${this.class}"
         id="dialogtrigger"
         @click="${this.openDialog}"
@@ -83,7 +80,7 @@ class LrnsysDialog extends SimpleColors {
         >
           <slot name="button"></slot>
         </lrnsys-button-inner>
-      </paper-button>
+      </button>
       <simple-tooltip
         for="dialogtrigger"
         animation-delay="0"
@@ -160,13 +157,6 @@ class LrnsysDialog extends SimpleColors {
         attribute: "heading-class",
       },
       /**
-       * Support for dynamic loading of iron-image elements that are in the content slot.
-       */
-      dynamicImages: {
-        type: Boolean,
-        attribute: "dynamic-images",
-      },
-      /**
        * Tracks if focus state is applied
        */
       focusState: {
@@ -178,7 +168,7 @@ class LrnsysDialog extends SimpleColors {
 
   /**
    * Handle a focus/tap event and add the hoverclasses
-   * to the classList array for paper-button.
+   * to the classList array for button.
    */
   tapEventOn(e) {
     if (typeof this.hoverClass !== typeof undefined) {
@@ -193,7 +183,7 @@ class LrnsysDialog extends SimpleColors {
 
   /**
    * Handle a mouse out event and remove the hoverclasses
-   * from the classList array for paper-button.
+   * from the classList array for button.
    */
   tapEventOff(e) {
     if (typeof this.hoverClass !== typeof undefined) {
@@ -236,10 +226,6 @@ class LrnsysDialog extends SimpleColors {
           default:
             node = nodes[i].cloneNode(true);
             node.removeAttribute("slot");
-            if (this.dynamicImages && node.tagName === "IRON-IMAGE") {
-              node.preventLoad = false;
-              node.removeAttribute("prevent-load");
-            }
             c.appendChild(node);
             break;
         }
@@ -255,6 +241,11 @@ class LrnsysDialog extends SimpleColors {
           header: h,
           content: c,
         },
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-max-width": "75vw",
+          "--simple-modal-min-height": "50vh",
+        },
         invokedBy: this.shadowRoot.querySelector("#dialogtrigger"),
         clone: true,
       },
@@ -263,7 +254,7 @@ class LrnsysDialog extends SimpleColors {
   }
 
   /**
-   * Handle toggle for mouse class and manage classList array for paper-button.
+   * Handle toggle for mouse class and manage classList array for button.
    */
   focusToggle(e) {
     this.dispatchEvent(

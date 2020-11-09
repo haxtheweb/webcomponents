@@ -81,7 +81,7 @@ class LrnappOpenStudioTable extends PolymerElement {
             text-align: right;
           }
 
-          vaadin-grid#material paper-checkbox {
+          vaadin-grid#material simple-fields-field {
             --primary-color: var(--paper-indigo-500);
             margin: 0 24px;
           }
@@ -99,11 +99,11 @@ class LrnappOpenStudioTable extends PolymerElement {
             align-items: center;
           }
 
-          vaadin-grid#material vaadin-grid-sorter iron-icon {
+          vaadin-grid#material vaadin-grid-sorter simple-icon {
             transform: scale(0.8);
           }
 
-          vaadin-grid#material vaadin-grid-sorter:not([direction]) iron-icon {
+          vaadin-grid#material vaadin-grid-sorter:not([direction]) simple-icon {
             color: rgba(0, 0, 0, var(--dark-disabled-opacity));
           }
 
@@ -111,7 +111,9 @@ class LrnappOpenStudioTable extends PolymerElement {
             color: rgba(0, 0, 0, var(--dark-primary-opacity));
           }
 
-          vaadin-grid#material vaadin-grid-sorter[direction="desc"] iron-icon {
+          vaadin-grid#material
+            vaadin-grid-sorter[direction="desc"]
+            simple-icon {
             transform: scale(0.8) rotate(180deg);
           }
           vaadin-grid-sorter {
@@ -132,12 +134,13 @@ class LrnappOpenStudioTable extends PolymerElement {
             >
           </template>
           <template>
-            <paper-button
+            <button
               on-click="_loadProjectRoute"
               data-project-id$="{{item.relationships.project.data.id}}"
               data-author-id$="{{item.relationships.author.data.id}}"
-              >[[item.relationships.project.data.title]]</paper-button
             >
+              [[item.relationships.project.data.title]]
+            </button>
           </template>
         </vaadin-grid-column>
         <vaadin-grid-column resizable="">
@@ -155,11 +158,12 @@ class LrnappOpenStudioTable extends PolymerElement {
             >
           </template>
           <template>
-            <paper-button
+            <button
               on-click="_loadSubmissionUrl"
               data-submission-id$="{{item.id}}"
-              >[[item.attributes.title]]</paper-button
             >
+              [[item.attributes.title]]
+            </button>
           </template>
           <template class="footer">
             <vaadin-grid-filter
@@ -404,7 +408,7 @@ class LrnappOpenStudioTable extends PolymerElement {
     );
   }
   /**
-   * Handle tap on paper-button above to redirect to the correct submission url.
+   * Handle tap on button above to redirect to the correct submission url.
    */
   _loadSubmissionUrl(e) {
     let root = this;

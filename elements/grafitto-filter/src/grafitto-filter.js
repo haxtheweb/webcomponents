@@ -1,10 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import {
-  addDebouncer,
-  dom,
-  flush,
-} from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { Templatizer } from "@polymer/polymer/lib/legacy/templatizer-behavior.js";
 import { OptionalMutableDataBehavior } from "@polymer/polymer/lib/legacy/mutable-data-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";

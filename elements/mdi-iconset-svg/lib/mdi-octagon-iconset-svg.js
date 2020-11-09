@@ -4,7 +4,7 @@
  * @element mdi-octagon-iconset-svg is a iconset for the Material Design Icons collection with the "octagon" tag
  *
  * Example:
- *   <iron-icon icon="mdi-octagon:pause-octagon"></iron-icon>
+ *   <simple-icon icon="mdi-octagon:pause-octagon"></simple-icon>
  *
  * @demo demo/index.html
  */

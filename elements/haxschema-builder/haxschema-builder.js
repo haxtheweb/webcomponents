@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/json-editor/json-editor.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
-import "@polymer/paper-button/paper-button.js";
 import "./lib/hax-schema-form.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
@@ -39,12 +38,8 @@ class HaxschemaBuilder extends LitElement {
   render() {
     return html` <vaadin-split-layout>
       <div>
-        <paper-button raised noink @click="${this.addConfigure}"
-          >Add to configure</paper-button
-        >
-        <paper-button raised noink @click="${this.addAdvanced}"
-          >Add to advanced</paper-button
-        >
+        <button @click="${this.addConfigure}">Add to configure</button>
+        <button @click="${this.addAdvanced}">Add to advanced</button>
         <code-editor
           id="code"
           @value-changed="${this._editorDataChanged}"

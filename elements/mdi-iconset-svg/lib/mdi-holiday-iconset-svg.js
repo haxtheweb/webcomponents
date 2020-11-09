@@ -4,7 +4,7 @@
  * @element mdi-holiday-iconset-svg is a iconset for the Material Design Icons collection with the "holiday" tag
  *
  * Example:
- *   <iron-icon icon="mdi-holiday:candycane"></iron-icon>
+ *   <simple-icon icon="mdi-holiday:candycane"></simple-icon>
  *
  * @demo demo/index.html
  */

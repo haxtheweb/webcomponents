@@ -62,11 +62,11 @@ class EditableList extends LitElement {
     this.activeElement = e.detail.element;
     let c = document.createElement("div");
     c.innerHTML = `<div>Are you sure you want to delete <strong>${e.detail.element.value}</strong>?</div>`;
-    let button1 = document.createElement("paper-button");
+    let button1 = document.createElement("button");
     button1.raised = true;
     button1.addEventListener("click", this._deleteItemConfirm.bind(this));
     button1.appendChild(document.createTextNode("Delete"));
-    let button2 = document.createElement("paper-button");
+    let button2 = document.createElement("button");
     button2.raised = true;
     button2.setAttribute("dialog-dismiss", "dialog-dismiss");
     button2.appendChild(document.createTextNode("cancel"));
@@ -82,6 +82,12 @@ class EditableList extends LitElement {
         elements: {
           content: c,
           buttons: b,
+        },
+        styles: {
+          "--simple-modal-width": "20vw",
+          "--simple-modal-max-width": "20vw",
+          "--simple-modal-height": "20vh",
+          "--simple-modal-max-height": "20vh",
         },
         invokedBy: e.detail.element.shadowRoot.querySelector("#delete"),
         clone: false,

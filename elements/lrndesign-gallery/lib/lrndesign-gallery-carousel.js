@@ -5,8 +5,8 @@
 import { LitElement, html, css } from "lit-element";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/iron-image/iron-image.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "./lrndesign-gallery-zoom.js";
 import "./lrndesign-gallery-details.js";
 
@@ -118,7 +118,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           width: 100%;
           padding-top: var(--lrndesign-gallery-image-height, 75%);
         }
-        #carouselimage iron-image,
+        #carouselimage img.image,
         .prevnextnav {
           position: absolute;
           width: 100%;
@@ -160,11 +160,11 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           cursor: not-allowed;
           opacity: 0.1;
         }
-        .prevnextnav:focus iron-icon,
-        .prevnextnav:hover iron-icon {
+        .prevnextnav:focus simple-icon,
+        .prevnextnav:hover simple-icon {
           outline: 1px solid var(--lrndesign-gallery-color);
         }
-        #prevnextnav iron-icon {
+        #prevnextnav simple-icon {
           margin: 10%;
         }
         lrndesign-gallery-zoom {
@@ -277,17 +277,13 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
         >
           <p id="xystart" class="sr-only">Slide ${this.selected.xofy}.</p>
           <div id="carouselimage">
-            <iron-image
+            <img
+              class="image"
               .alt="${this.selected.alt}"
-              fade
               aria-describedby="carouseltitle details"
-              .placeholder="${this.selected.thumbnail}"
-              sizing="${this.selected.sizing ||
-              this.sizing === "contain" ||
-              "cover"}"
               .src="${this.selected.src}"
-            >
-            </iron-image>
+              loading="lazy"
+            />
             <lrndesign-gallery-zoom
               .details="${this.selected.details}"
               .heading="${this.selected.heading}"
@@ -297,7 +293,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               .zoom-alt="${this.selected.alt}"
             >
               <div class="zoombg"></div>
-              <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
+              <simple-icon icon="zoom-in" class="zoomicon"></simple-icon>
             </lrndesign-gallery-zoom>
             <button
               id="carouselprev"
@@ -311,7 +307,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               tabindex="-1"
             >
               <span class="sr-only">Previous</span>
-              <iron-icon icon="chevron-left"></iron-icon>
+              <simple-icon icon="chevron-left"></simple-icon>
             </button>
             <simple-tooltip for="carouselprev" position="top"
               >previous</simple-tooltip
@@ -328,7 +324,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               tabindex="-1"
             >
               <span class="sr-only">Next</span>
-              <iron-icon icon="chevron-right"></iron-icon>
+              <simple-icon icon="chevron-right"></simple-icon>
             </button>
             <simple-tooltip for="carouselnext" position="top"
               >next</simple-tooltip

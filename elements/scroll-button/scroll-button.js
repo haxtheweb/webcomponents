@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -28,7 +31,7 @@ class ScrollButton extends LitElement {
           display: none;
         }
 
-        paper-icon-button {
+        simple-icon-button {
           background-color: var(
             --scroll-button-background-color,
             rgba(0, 0, 0, 0.6)
@@ -36,9 +39,9 @@ class ScrollButton extends LitElement {
           color: var(--scroll-button-color, white);
         }
 
-        paper-icon-button:hover,
-        paper-icon-button:active,
-        paper-icon-button:focus {
+        simple-icon-button:hover,
+        simple-icon-button:active,
+        simple-icon-button:focus {
           color: var(--scroll-button-background-color, rgba(0, 0, 0, 1));
           background-color: var(--scroll-button-color, white);
         }
@@ -64,12 +67,12 @@ class ScrollButton extends LitElement {
   render() {
     return html` <custom-style>
         <style>
-          paper-icon-button {
+          simple-icon-button {
             @apply --scroll-button-button;
           }
-          paper-icon-button:hover,
-          paper-icon-button:active,
-          paper-icon-button:focus {
+          simple-icon-button:hover,
+          simple-icon-button:active,
+          simple-icon-button:focus {
             @apply --scroll-button-button-active;
           }
           simple-tooltip {
@@ -77,12 +80,12 @@ class ScrollButton extends LitElement {
           }
         </style>
       </custom-style>
-      <paper-icon-button
+      <simple-icon-button
         @click="${this.scrollEvent}"
         id="btn"
         icon="${this.icon}"
         aria-label="${this.label}"
-      ></paper-icon-button>
+      ></simple-icon-button>
       <simple-tooltip for="btn" position="${this.position}" offset="14">
         ${this.label}
       </simple-tooltip>`;
@@ -163,9 +166,7 @@ class ScrollButton extends LitElement {
     this.icon = "icons:expand-less";
     this.label = "Scroll to top";
     this.position = "top";
-    import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@polymer/iron-icons/iron-icons.js");
   }
   /**
    * Store the tag name to make it easier to obtain directly.

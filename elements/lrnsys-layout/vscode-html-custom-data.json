@@ -92,7 +92,7 @@
     },
     {
       "name": "lrnsys-dialog",
-      "description": "`lrnsys-dialog`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { header: HTMLSpanElement; content: HTMLSpanElement; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the dialog\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `dynamic-images` {`boolean`} - Support for dynamic loading of iron-image elements that are in the content slot.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `heading-class` {`string`} - Default heading classes.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the dialog\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `dynamicImages` {`boolean`} - Support for dynamic loading of iron-image elements that are in the content slot.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `headingClass` {`string`} - Default heading classes.\n\n  * `__modal` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`lrnsys-dialog`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { header: HTMLSpanElement; content: HTMLSpanElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the dialog\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `heading-class` {`string`} - Default heading classes.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the dialog\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `headingClass` {`string`} - Default heading classes.\n\n  * `__modal` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "raised",
@@ -114,11 +114,6 @@
         {
           "name": "disabled",
           "description": "`disabled` {`boolean`} - Disabled state.\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "dynamic-images",
-          "description": "`dynamic-images` {`boolean`} - Support for dynamic loading of iron-image elements that are in the content slot.\n\nProperty: dynamicImages\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -153,7 +148,7 @@
         },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { header: HTMLSpanElement; content: HTMLSpanElement; }; invokedBy: any; clone: boolean; }>`} - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { header: HTMLSpanElement; content: HTMLSpanElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: any; clone: boolean; }>`} - "
         },
         {
           "name": "onfocus-changed",

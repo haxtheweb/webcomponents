@@ -6,6 +6,8 @@ import { html, css } from "lit-element/lit-element.js";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { autorun, toJS } from "mobx";
 /**
  * `haxcms-slide-theme`
@@ -35,8 +37,6 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
       );
-      import("@polymer/paper-icon-button/paper-icon-button.js");
-      import("@polymer/iron-icons/iron-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }, 0);
   }
@@ -58,6 +58,22 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
          */
         :host([edit-mode]) #slot {
           display: none;
+        }
+        site-menu-button {
+          --site-menu-button-button-hover-color: var(--haxcms-color, yellow);
+          height: 60px;
+          width: 60px;
+          padding: 0;
+          margin: 0;
+          line-height: 60px;
+          --simple-icon-width: 60px;
+          --simple-icon-height: 60px;
+        }
+        site-active-title {
+          color: black;
+          font-size: 28px;
+          margin: 0;
+          padding: 0;
         }
         .active-slide {
           width: calc(100vw - 64px);
@@ -178,16 +194,6 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     return html`
       <custom-style>
         <style>
-          site-menu-button {
-            --site-menu-button-button-hover-color: var(--haxcms-color, yellow);
-            --site-menu-button-button: {
-              height: 60px;
-              width: 60px;
-              padding: 0;
-              margin: 0;
-              line-height: 60px;
-            }
-          }
           site-title {
             --site-title-link: {
               text-decoration: none;
@@ -198,12 +204,6 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
               margin: 0;
               padding: 0;
             }
-          }
-          site-active-title {
-            color: black;
-            font-size: 28px;
-            margin: 0;
-            padding: 0;
           }
         </style>
       </custom-style>

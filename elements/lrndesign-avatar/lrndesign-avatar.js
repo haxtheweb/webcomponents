@@ -189,7 +189,7 @@ class LrndesignAvatar extends SimpleColors {
         attribute: "allow-grey",
       },
       /**
-       * optional iron-icon
+       * optional simple-icon
        */
       icon: {
         type: String,

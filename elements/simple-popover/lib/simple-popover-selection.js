@@ -6,7 +6,6 @@ import "./simple-popover-manager.js";
 class SimplePopoverSelection extends LitElement {
   constructor() {
     super();
-    this.opened = false;
   }
 
   openedToggle(e) {
@@ -92,7 +91,7 @@ class SimplePopoverSelection extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "opened") {
+      if (propName == "opened" && this.shadowRoot) {
         this.openedChanged(this[propName]);
       }
     });
@@ -125,9 +124,7 @@ class SimplePopoverSelection extends LitElement {
     };
   }
   firstUpdated() {
-    this.shadowRoot
-      .querySelector("slot")
-      .addEventListener("click", this.openedToggle.bind(this));
+    this.addEventListener("click", this.openedToggle.bind(this));
   }
   render() {
     return html`<slot name="button"></slot>`;

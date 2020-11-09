@@ -62,7 +62,7 @@
     },
     {
       "name": "lrnsys-outline",
-      "description": "`lrnsys-outline`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: PaperButtonElement; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `active-item` - \n\nProperties:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `activeItem` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrnsys-outline`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: HTMLButtonElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `active-item` - \n\nProperties:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `activeItem` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "data",
@@ -78,7 +78,7 @@
         },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: PaperButtonElement; }; invokedBy: any; clone: boolean; }>`} - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: HTMLButtonElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: any; clone: boolean; }>`} - "
         },
         {
           "name": "onsimple-modal-hide",
@@ -88,7 +88,7 @@
     },
     {
       "name": "lrnsys-outline",
-      "description": "`lrnsys-outline`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: PaperButtonElement; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `active-item` - \n\nProperties:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `activeItem` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrnsys-outline`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: HTMLButtonElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `active-item` - \n\nProperties:\n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `activeItem` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "data",
@@ -104,7 +104,7 @@
         },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: PaperButtonElement; }; invokedBy: any; clone: boolean; }>`} - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { buttons: HTMLButtonElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: any; clone: boolean; }>`} - "
         },
         {
           "name": "onsimple-modal-hide",

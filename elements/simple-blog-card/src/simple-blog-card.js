@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-card/paper-card.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 import "time-elements/dist/time-elements.js";

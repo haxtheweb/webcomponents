@@ -38,13 +38,14 @@ class RCoder extends LitElement {
   // render function
   render() {
     return html` <code-editor id="editor" language="r"></code-editor>
-      <paper-button
+      <button
         id="button"
         ?disabled="${!this.__connected}"
         @click="${this.process}"
         raised
-        >Process</paper-button
       >
+        Process
+      </button>
       <div id="output"></div>`;
   }
 
@@ -119,7 +120,6 @@ class RCoder extends LitElement {
     super();
     this.endpoint = "/service/r-service";
     setTimeout(() => {
-      import("@polymer/paper-button/paper-button.js");
       import("@lrnwebcomponents/code-editor/code-editor.js");
     }, 0);
   }

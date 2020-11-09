@@ -4,7 +4,7 @@
  * @element mdi-store-iconset-svg is a iconset for the Material Design Icons collection with the "store" tag
  *
  * Example:
- *   <iron-icon icon="mdi-store:receipt"></iron-icon>
+ *   <simple-icon icon="mdi-store:receipt"></simple-icon>
  *
  * @demo demo/index.html
  */

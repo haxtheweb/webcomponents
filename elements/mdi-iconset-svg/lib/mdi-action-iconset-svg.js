@@ -3,7 +3,7 @@
  * `mdi-action-iconset-svg`
  * @element mdi-action-iconset-svg is a iconset for the Material Design Icons collection with the "action" tag
  * Example:
- *   <iron-icon icon="mdi-action:airplane"></iron-icon>
+ *   <simple-icon icon="mdi-action:airplane"></simple-icon>
  *
  * @demo demo/index.html
  */

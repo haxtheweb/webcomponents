@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
@@ -109,7 +109,7 @@ class SiteSearch extends LitElement {
         type="text"
         @value-changed="${this._searchValueChanged}"
       >
-        <iron-icon icon="search" slot="prefix"></iron-icon>
+        <simple-icon icon="search" slot="prefix"></simple-icon>
       </simple-fields-field>
       ${this.search.length > 0
         ? html`

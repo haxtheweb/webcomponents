@@ -1,5 +1,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 /**
  * `simple-concept-network-node`
  * @element simple-concept-network-node
@@ -12,10 +16,9 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 class SimpleConceptNetworkNode extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
+    setTimeout(() => {
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    }, 0);
   }
   static get template() {
     return html`
@@ -37,7 +40,7 @@ class SimpleConceptNetworkNode extends PolymerElement {
             --simple-colors-default-theme-accent-8
           );
         }
-        paper-button {
+        button {
           -webkit-transition: 0.6s transform ease-in-out;
           transition: 0.6s transform ease-in-out;
           -webkit-clip-path: polygon(
@@ -58,24 +61,24 @@ class SimpleConceptNetworkNode extends PolymerElement {
           );
           color: var(--simple-concept-network-color);
         }
-        :host([visualization="network"]) paper-button:hover,
-        :host([visualization="network"]) paper-button:focus {
+        :host([visualization="network"]) button:hover,
+        :host([visualization="network"]) button:focus {
           opacity: 0.8;
         }
-        :host([visualization="3d"]) paper-button {
+        :host([visualization="3d"]) button {
           -webkit-transform: perspective(600px) rotateX(60deg);
           -moz-transform: perspective(600px) rotateX(60deg);
           -ms-transform: perspective(600px) rotateX(60deg);
           -o-transform: perspective(600px) rotateX(60deg);
           transform: perspective(600px) rotateX(60deg);
         }
-        :host([visualization="3d"]) paper-button:hover,
-        :host([visualization="3d"]) paper-button:focus {
+        :host([visualization="3d"]) button:hover,
+        :host([visualization="3d"]) button:focus {
           transform: perspective(0px) rotateX(0deg);
         }
-        iron-icon {
-          width: 50px;
-          height: 50px;
+        simple-icon {
+          --simple-icon-width: 50px;
+          --simple-icon-height: 50px;
           margin: 1px 19px;
           z-index: 3;
           color: var(--simple-concept-network-color);
@@ -150,13 +153,13 @@ class SimpleConceptNetworkNode extends PolymerElement {
         }
       </style>
       <a tabindex="-1" href="[[src]]" disabled$="[[disabled]]">
-        <paper-button disabled$="[[disabled]]" id="button">
+        <button disabled$="[[disabled]]" id="button">
           <div class="hexagon" style$="background-image: url([[image]]);">
             <div class="hexTop"></div>
             <div class="hexBottom"></div>
-            <iron-icon icon="[[icon]]">&gt;</iron-icon>
+            <simple-icon icon="[[icon]]">&gt;</simple-icon>
           </div>
-        </paper-button>
+        </button>
       </a>
       <simple-tooltip for="button" position="bottom" offset="45">
         [[label]]

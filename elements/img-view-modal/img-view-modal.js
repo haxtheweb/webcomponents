@@ -164,6 +164,11 @@ class ImgViewModal extends LitElement {
         elements: {
           content: img,
         },
+        styles: {
+          "--simple-modal-width": "50vw",
+          "--simple-modal-max-width": "75vw",
+          "--simple-modal-min-height": "50vh",
+        },
         styles: modalStyles,
         invokedBy: this,
         clone: false,

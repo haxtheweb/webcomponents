@@ -5,6 +5,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `wave-player`
  * `A player for visualizing a sound file`
@@ -21,7 +24,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
           display: block;
         }
 
-        paper-icon-button {
+        simple-icon-button {
           position: absolute;
         }
 
@@ -45,7 +48,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
           z-index: 20;
         }
 
-        paper-fab {
+        simple-icon-button.fab {
           transition: all 0.5s ease;
           top: -25px;
           z-index: 25;
@@ -167,34 +170,34 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
   }
   render() {
     return html`
-      <paper-fab
+      <simple-icon-button
         id="playbutton"
-        class="circleAnimation"
+        class="circleAnimation fab"
         disabled=""
         icon="av:play-arrow"
         @click="${this.togglePlay}"
-      ></paper-fab>
+      ></simple-icon-button>
       <paper-material id="controls" class="controls hidden" elevation="2">
-        <paper-icon-button
+        <simple-icon-button
           class="centred middle"
           style="color: white;"
           icon="av:pause"
           @click="${this.togglePlay}"
-        ></paper-icon-button>
-        <paper-icon-button
+        ></simple-icon-button>
+        <simple-icon-button
           id="replay"
           class="centred"
           style="color: white;"
           icon="av:replay-30"
           @click="${this.throwBack}"
-        ></paper-icon-button>
-        <paper-icon-button
+        ></simple-icon-button>
+        <simple-icon-button
           id="mute"
           class="centred"
           style="color: white;"
           icon="av:volume-up"
           @click="${this.toggleMute}"
-        ></paper-icon-button>
+        ></simple-icon-button>
       </paper-material>
       <div id="container" class="waveContainer" elevation="0"></div>
       <div id="albuminfo" class="albuminfo">
@@ -287,10 +290,6 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
     this.progresscolor = "#CFD8DC";
     setTimeout(() => {
       import("@polymer/paper-material/paper-material.js");
-      import("@polymer/paper-fab/paper-fab.js");
-      import("@polymer/paper-icon-button/paper-icon-button.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/av-icons.js");
     }, 0);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/wavesurferjs/dist/wavesurfer.js`;

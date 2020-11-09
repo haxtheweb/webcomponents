@@ -6,6 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import { SimpleToastStore } from "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "@lrnwebcomponents/simple-range-input/simple-range-input.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
@@ -65,17 +67,17 @@ Custom property | Description | Default
 #### Sliders
 Custom property | Description | Default
 ----------------|-------------|----------
-`--paper-slider-active-color` | slider color when active | `--a11y-media-accent-color`
-`--paper-slider-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`
-`--paper-slider-pin-color` | slider pin color | `--a11y-media-bg-color`
-`--paper-slider-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`
-`--paper-slider-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`
-`--paper-slider-knob-color` | slider knob color | `--a11y-media-accent-color`
-`--paper-slider-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`
-`--paper-slider-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`
-`--paper-slider-knob-border-color` | slider knob border color | `--a11y-media-accent-color`
-`--paper-slider-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`
-`--paper-slider-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`
+`--simple-range-input-active-color` | slider color when active | `--a11y-media-accent-color`
+`--simple-range-input-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`
+`--simple-range-input-pin-color` | slider pin color | `--a11y-media-bg-color`
+`--simple-range-input-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`
+`--simple-range-input-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`
+`--simple-range-input-knob-color` | slider knob color | `--a11y-media-accent-color`
+`--simple-range-input-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`
+`--simple-range-input-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`
+`--simple-range-input-knob-border-color` | slider knob border color | `--a11y-media-accent-color`
+`--simple-range-input-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`
+`--simple-range-input-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`
 
 #### Settings Menu
 Custom property | Description | Default
@@ -88,8 +90,8 @@ Custom property | Description | Default
 #### Link Sharing Toast
 Custom property | Description | Default
 ----------------|-------------|----------
-`--paper-toast-color` | toast text color | `--a11y-media-color`
-`--paper-toast-background-color` | toast background color | `--a11y-media-bg-color`
+`--simple-toast-color` | toast text color | `--a11y-media-color`
+`--simple-toast-background-color` | toast background color | `--a11y-media-bg-color`
  *
  * @element a11y-media-player
  * @extends SimpleColors
@@ -161,10 +163,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     });
     setTimeout(() => {
       import("@lrnwebcomponents/simple-search/simple-search.js");
-      import("@polymer/paper-slider/paper-slider.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/av-icons.js");
-      import("@polymer/paper-toast/paper-toast.js");
       import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
       import("@polymer/paper-toggle-button/paper-toggle-button.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
@@ -1589,8 +1587,14 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     document.body.appendChild(el);
     el.select();
     document.execCommand("copy");
+
     document.body.removeChild(el);
-    this.shadowRoot.querySelector("#link").open();
+    SimpleToastStore.showSimpleToast({
+      detail: {
+        duration: 3000,
+        text: `Copied to clipboard: ${this.shareLink}`,
+      },
+    });
   }
 
   /**
@@ -1671,7 +1675,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     let slider = this.shadowRoot
       ? this.shadowRoot.querySelector("#slider")
       : false;
-    this.seek(slider.immediateValue);
+    if (!this.playing || slider.immediateValue == this.__currentTime) {
+      this.seek(slider.immediateValue);
+    }
   }
 
   /**

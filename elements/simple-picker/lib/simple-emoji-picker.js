@@ -65,7 +65,6 @@ class SimpleEmojiPicker extends SimplePicker {
     this.icon = "editor:insert-emoticon";
     this.label = "Emoji";
     this.titleAsHtml = true;
-    import("@polymer/iron-icons/editor-icons.js");
   }
   /**
    * LitElement life cycle - ready callback

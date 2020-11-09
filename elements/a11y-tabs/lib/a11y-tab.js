@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-icons/iron-icons.js";
 /**
  * `a11y-tab`
  * a single tab within `a11y-tabs`
@@ -221,6 +220,7 @@ class A11yTab extends LitElement {
     this.role = "tabpanel";
     this.total = 1;
     this.tabindex = 0;
+    this.flag = "";
     this.addEventListener("a11y-tab-flag", (e) => this.handleFlag(e));
   }
 

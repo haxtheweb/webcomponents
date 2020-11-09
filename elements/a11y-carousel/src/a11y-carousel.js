@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RadioBehaviors } from "@lrnwebcomponents/radio-behaviors/radio-behaviors.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "./lib/a11y-carousel-button.js";
 /**
  * `a11y-carousel`
@@ -60,18 +60,18 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
             border: 0px solid transparent;
             width: 50%;
           }
-          a11y-carousel-button.prevnext iron-icon {
+          a11y-carousel-button.prevnext simple-icon {
             opacity: 0;
-            width: 30%;
-            height: 30%;
+            --simple-icon-width: 30%;
+            --simple-icon-height: 30%;
             transition: 0.5s all ease-in-out;
           }
           a11y-carousel-button.prevnext:focus,
           a11y-carousel-button.prevnext:hover {
             outline: none;
           }
-          a11y-carousel-button.prevnext:focus iron-icon,
-          a11y-carousel-button.prevnext:hover iron-icon {
+          a11y-carousel-button.prevnext:focus simple-icon,
+          a11y-carousel-button.prevnext:hover simple-icon {
             opacity: 1;
             color: var(--a11y-carousel-button-background-color, black);
           }
@@ -119,7 +119,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
                 title="${this.prevLabel}"
               >
                 <span class="sr-only">${this.nextLabel}</span>
-                <iron-icon icon="icons:chevron-left"></iron-icon>
+                <simple-icon icon="icons:chevron-left"></simple-icon>
               </a11y-carousel-button>
               <a11y-carousel-button
                 class="prevnext"
@@ -128,7 +128,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
                 title="${this.nextLabel}"
               >
                 <span class="sr-only">${this.nextLabel}</span>
-                <iron-icon icon="icons:chevron-right"></iron-icon>
+                <simple-icon icon="icons:chevron-right"></simple-icon>
               </a11y-carousel-button>
             `}
       </div>

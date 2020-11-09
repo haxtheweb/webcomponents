@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -380,9 +379,7 @@ class LrnappOpenStudio extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function () {
-      this.addEventListener("route-change", this._routeChange.bind(this));
-    });
+    this.addEventListener("route-change", this._routeChange.bind(this));
   }
   disconnectedCallback() {
     this.removeEventListener("route-change", this._routeChange.bind(this));

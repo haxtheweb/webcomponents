@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.7.10",
-    "@polymer/polymer": "^3.3.1",
+    "@lrnwebcomponents/simple-icon": "^2.7.10",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

@@ -6,10 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `site-menu-button`
  * `Menu button based on the hierarchy`
@@ -39,14 +37,18 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
           color: var(--site-menu-button-link-color);
           text-decoration: var(--site-menu-button-link-decoration, underline);
         }
-        paper-button {
+        button {
           display: flex;
           transition: 0.2s color linear;
           min-width: unset;
+          background-color: transparent;
+          width: 100%;
+          border: 0;
+          border-radius: 0;
         }
-        paper-button:hover,
-        paper-button:focus,
-        paper-button:active {
+        button:hover,
+        button:focus,
+        button:active {
           color: var(--site-menu-button-button-hover-color, inherit);
           outline: 2px solid var(--site-menu-button-button-hover-color, inherit);
           outline-offset: 2px;
@@ -55,20 +57,21 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
             inherit
           );
         }
-        paper-button:hover iron-icon,
-        paper-button:focus iron-icon,
-        paper-button:active iron-icon {
-          --iron-icon-fill-color: var(
+        button:hover simple-icon,
+        button:focus simple-icon,
+        button:active simple-icon {
+          --simple-icon-fill-color: var(
             --site-menu-button-button-hover-color,
             black
           );
         }
-        iron-icon {
+        simple-icon {
           display: block;
+          margin-top: 25px;
           font-size: 16px;
-          --iron-icon-width: var(--site-menu-button-icon-width, 32px);
-          --iron-icon-height: var(--site-menu-button-icon-height, 32px);
-          --iron-icon-fill-color: var(
+          --simple-icon-width: var(--site-menu-button-icon-width, 32px);
+          --simple-icon-height: var(--site-menu-button-icon-height, 32px);
+          --simple-icon-fill-color: var(
             --site-menu-button-icon-fill-color,
             black
           );
@@ -108,28 +111,18 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@polymer/paper-button/paper-button.js");
   }
   // render function
   render() {
     return html`
-      <custom-style>
-        <style>
-          paper-button {
-            @apply --site-menu-button-button;
-          }
-        </style>
-      </custom-style>
       <a
         tabindex="-1"
         ?disabled="${this.disabled}"
         aria-label="${this.label}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
-        <paper-button
+        <button
           id="menulink"
           noink
           ?disabled="${this.disabled}"
@@ -138,9 +131,9 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
           .part="${this.editMode ? `edit-mode-active` : ``}"
         >
           <slot name="prefix"></slot>
-          <iron-icon icon="${this.icon}"></iron-icon>
+          <simple-icon icon="${this.icon}"></simple-icon>
           <slot name="suffix"></slot>
-        </paper-button>
+        </button>
       </a>
       ${!this.hideLabel
         ? html`

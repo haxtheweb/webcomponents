@@ -4,19 +4,15 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-pages/iron-pages.js";
-import "@polymer/iron-image/iron-image.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
-import "@polymer/iron-swipeable-container/iron-swipeable-container.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/paper-progress/paper-progress.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";

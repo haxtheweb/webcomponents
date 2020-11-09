@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
 /**
  * `layout-builder`
  * @element layout-builder

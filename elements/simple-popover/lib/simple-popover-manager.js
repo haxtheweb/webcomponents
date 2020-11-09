@@ -58,9 +58,10 @@ class SimplePopoverManager extends LitElement {
       // or state of open. This avoids minor timing issues when element
       // being pointed to requests changes to direction / state
       if (["opened", "position", "orientation"].includes(propName)) {
-        setTimeout(() => {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
           this.popover.updatePosition();
-        }, 10);
+        }, 0);
       }
     });
   }
@@ -75,6 +76,9 @@ class SimplePopoverManager extends LitElement {
     // need to ignore the follow up change record, much like a debounce
     if (this.__ignore) {
       this.__ignore = false;
+      setTimeout(() => {
+        this.popover.updatePosition();
+      }, 100);
     } else {
       if (el !== this.popover.target) {
         // helps manage state if multiple things leveraging this
@@ -88,35 +92,35 @@ class SimplePopoverManager extends LitElement {
           this.__ignore = true;
         }
         this.context = context;
+        this.popover.target = null;
         this.popover.target = el;
       }
+      let position;
+      let menu = el.getBoundingClientRect();
+      // top - bottom or left - right pointer orientation
+      // Highly polarized detection of 50% in any direction
+      // forces the pointer in the opposite direction
+      if (orientation == "tb") {
+        if (menu.y > window.innerHeight / 2) {
+          position = "top";
+        } else {
+          position = "bottom";
+        }
+      } else {
+        if (menu.x > window.innerWidth / 2) {
+          position = "left";
+        } else {
+          position = "right";
+        }
+      }
+      // see if we need to reposition
+      this.orientation = orientation;
+      this.position = position;
       // only open / close if told to change
       if (opened != null) {
         this.opened = opened;
       }
-      // see if we need to reposition
-      this.orientation = orientation;
-      let menu = this.popover.target.getBoundingClientRect();
-      // top - bottom or left - right pointer orientation
-      // Highly polarized detection of 50% in any direction
-      // forces the pointer in the opposite direction
-      if (this.orientation == "tb") {
-        if (menu.y > window.innerHeight / 2) {
-          this.position = "top";
-        } else {
-          this.position = "bottom";
-        }
-      } else {
-        if (menu.x > window.innerWidth / 2) {
-          this.position = "left";
-        } else {
-          this.position = "right";
-        }
-      }
     }
-    setTimeout(() => {
-      this.popover.updatePosition();
-    }, 0);
   }
   firstUpdated() {
     this.popover = this.shadowRoot.querySelector("simple-popover");

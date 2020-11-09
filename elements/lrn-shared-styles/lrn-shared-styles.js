@@ -22,10 +22,10 @@ const styleElement = document.createElement("dom-module");
 const css = html`
   <style include="iron-flex iron-flex-alignment">
     /**
-     * Normalizes iron-icon and lrn-icon.
+     * Normalizes simple-icon and lrn-icon.
      */
     lrn-icon,
-    iron-icon {
+    simple-icon {
       --layout-inline: {
         display: inline-flex;
       }

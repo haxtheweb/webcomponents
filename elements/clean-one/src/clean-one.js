@@ -9,7 +9,6 @@ import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 
 /**
@@ -115,13 +114,13 @@ class CleanOne extends HAXCMSThemeParts(
           --scroll-button-tooltip-background-color:var(--haxcms-user-styles-color-theme-color-1);
           --scroll-button-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
         }
-        paper-icon-button,
+        simple-icon-button,
         site-rss-button,
         site-print-button,
         site-git-corner {
           --site-git-corner-background: var(--haxcms-user-styles-color-theme-color-1);
           --site-git-corner-color: var(--haxcms-user-styles-color-theme-color-2);
-          --iron-icon-fill-color: var(--haxcms-user-styles-color-theme-color-1);
+          --simple-icon-fill-color: var(--haxcms-user-styles-color-theme-color-1);
           --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
           --haxcms-tooltip-background-color: var(--haxcms-user-styles-color-theme-color-1);
         }

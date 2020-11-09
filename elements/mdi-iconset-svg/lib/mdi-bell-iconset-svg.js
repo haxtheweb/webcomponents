@@ -4,7 +4,7 @@
  * @element mdi-bell-iconset-svg is a iconset for the Material Design Icons collection with the "bell" tag
  *
  * Example:
- *   <iron-icon icon="mdi-bell:bell-ring"></iron-icon>
+ *   <simple-icon icon="mdi-bell:bell-ring"></simple-icon>
  *
  * @demo demo/index.html
  */

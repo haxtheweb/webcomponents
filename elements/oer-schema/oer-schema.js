@@ -80,7 +80,6 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
     };
   }
   static get haxProperties() {
-    import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
     let oerSchema = new OERSchema();
     return {
       canScale: false,

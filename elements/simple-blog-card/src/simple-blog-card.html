@@ -1,11 +1,5 @@
-<paper-card
-  .alt="${this.alt}"
-  image="${this.image}"
-  .elevation="${this.shadow}"
-  animated-shadow
-  preload-image
-  .placeholder-image="${this.placeholder}"
-  class="card-${this.size}">
+<div class="card-${this.size} card">
+  <img .alt="${this.alt}" .src="${this.image}" loading="lazy"/>
   <div class="card-content">
     <a href="${this.link}">
       <h3>${this.title}</h3>
@@ -31,4 +25,4 @@
       </div>
     </div>
   </div>
-</paper-card>
+</div>

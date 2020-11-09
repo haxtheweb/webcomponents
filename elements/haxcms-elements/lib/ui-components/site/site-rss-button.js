@@ -4,6 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `site-rss-button`
  * `A button that references RSS feeds in a standards based way`
@@ -26,7 +29,7 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
           text-decoration: var(--site-rss-text-decoration);
           outline: none;
         }
-        paper-icon-button {
+        simple-icon-button {
           color: var(--site-rss-button-color, black);
         }
         simple-tooltip {
@@ -53,9 +56,6 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
     this.type = "rss";
     this.raised = false;
     this.position = "bottom";
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/communication-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   // render function
@@ -71,13 +71,13 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
         aria-label="${this.label}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
-        <paper-icon-button
+        <simple-icon-button
           icon="${this.icon}"
           @click="${this.print}"
           aria-labelledby="btn${this.type}"
           ?disabled="${this.disabled}"
           .part="${this.editMode ? `edit-mode-active` : ``}"
-        ></paper-icon-button>
+        ></simple-icon-button>
       </a>
       <simple-tooltip
         .for="btn${this.type}"

@@ -4,7 +4,7 @@
  * @element mdi-os-iconset-svg is a iconset for the Material Design Icons collection with the "os" tag
  *
  * Example:
- *   <iron-icon icon="mdi-os:ubuntu"></iron-icon>
+ *   <simple-icon icon="mdi-os:ubuntu"></simple-icon>
  *
  * @demo demo/index.html
  */

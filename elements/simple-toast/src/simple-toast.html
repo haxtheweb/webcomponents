@@ -1,4 +1,12 @@
-<paper-toast id="toast" text="${this.text}" duration="${this.duration}" ?opened="${this.opened}" @opened-changed="${this.openedChanged}" .class="${this.classStyle}">
+<simple-toast-el
+id="toast"
+accent-color="${this.accentColor}"
+?dark="${this.dark}"
+text="${this.text}"
+duration="${this.duration}"
+?opened="${this.opened}"
+@opened-changed="${this.openedChanged}"
+.class="${this.classStyle}">
   <slot></slot>
   <button .hidden="${!this.closeButton}" @click="${this.hide}">${this.closeText}</button>
-</paper-toast>
+</simple-toast-el>

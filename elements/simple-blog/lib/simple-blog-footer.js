@@ -100,7 +100,7 @@ class SimpleBlogFooter extends SimpleColors {
           font-weight: 400;
           text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
         }
-        paper-button,
+        button,
         site-menu-button:not([disabled]) {
           display: block;
           text-align: center;
@@ -119,9 +119,9 @@ class SimpleBlogFooter extends SimpleColors {
           margin: 16px 0;
           padding: 0;
         }
-        paper-button:focus,
-        paper-button:active,
-        paper-button:hover,
+        button:focus,
+        button:active,
+        button:hover,
         site-menu-button:focus,
         site-menu-button:active,
         site-menu-button:hover {
@@ -153,7 +153,7 @@ class SimpleBlogFooter extends SimpleColors {
     return html`
       <custom-style>
         <style>
-          paper-button,
+          button,
           site-menu-button:not([disabled]) {
             --site-menu-button-button: {
               height: 44px;
@@ -193,9 +193,7 @@ class SimpleBlogFooter extends SimpleColors {
           ></simple-datetime>
           <span slot="prefix">${this.nextTitle}</span>
         </site-menu-button>
-        <paper-button raised @click="${this._backButtonTap}"
-          >Back to list</paper-button
-        >
+        <button raised @click="${this._backButtonTap}">Back to list</button>
         <h2 class="blog-title">
           ${varExists(this.manifest, "title") ? this.manifest.title : ""}
         </h2>
@@ -282,7 +280,6 @@ class SimpleBlogFooter extends SimpleColors {
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
     );
-    import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
   }
   connectedCallback() {

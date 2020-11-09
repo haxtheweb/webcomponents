@@ -80,12 +80,8 @@
     },
     {
       "name": "a11y-tab",
-      "description": "`a11y-tab`\na single tab within `a11y-tabs`\n\n### Styling\n\n`<a11y-tab>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n`--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`\n\nEvents:\n\n  * `a11y-tab-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\n  * `flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `order` {`number`} - order of the tab\n\n  * `total` {`number`} - total number of tabs\n\nProperties:\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\n  * `flagIcon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `observer` - returns mutation observer\n\n  * `xOfY` {`string`} - gets x of y string\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `order` {`number`} - order of the tab\n\n  * `total` {`number`} - total number of tabs",
+      "description": "`a11y-tab`\na single tab within `a11y-tabs`\n\n### Styling\n\n`<a11y-tab>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n`--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`\n\nEvents:\n\n  * `a11y-tab-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `order` {`number`} - order of the tab\n\n  * `total` {`number`} - total number of tabs\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\nProperties:\n\n  * `flagIcon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `observer` - returns mutation observer\n\n  * `xOfY` {`string`} - gets x of y string\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `order` {`number`} - order of the tab\n\n  * `total` {`number`} - total number of tabs\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`",
       "attributes": [
-        {
-          "name": "flag",
-          "description": "`flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\nProperty: flag"
-        },
         {
           "name": "flag-icon",
           "description": "`flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\nProperty: flagIcon"
@@ -119,6 +115,10 @@
         {
           "name": "total",
           "description": "`total` {`number`} - total number of tabs\n\nProperty: total\n\nDefault: 1"
+        },
+        {
+          "name": "flag",
+          "description": "`flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\nProperty: flag\n\nDefault: "
         },
         {
           "name": "ona11y-tab-changed",

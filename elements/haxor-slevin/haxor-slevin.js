@@ -8,7 +8,8 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `haxor-slevin`
  * `Tech blogger theme`
@@ -29,7 +30,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         }
         site-modal:not(:defined),
         site-rss-button:not(:defined),
-        iron-image:not(:defined),
         iron-pages:not(:defined),
         site-share-widget:not(:defined),
         site-active-title:not(:defined),
@@ -117,7 +117,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           max-width: 600px;
           width: 100%;
         }
-        .header-image iron-image {
+        .header-image img.image {
           max-width: 800px;
         }
         .backbutton {
@@ -132,9 +132,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           min-width: 100px;
           text-transform: unset;
           margin: 0px 16px;
-        }
-        paper-icon-button {
-          --paper-icon-button-ink-color: white;
         }
 
         .social-float {
@@ -188,13 +185,15 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           pointer-events: none;
           opacity: 0 !important;
         }
-        iron-icon {
+        simple-icon {
           height: 40px;
           width: 40px;
+          --simple-icon-height: 40px;
+          --simple-icon-width: 40px;
           display: flex;
           padding-right: 20px;
         }
-        .annoy-user iron-icon {
+        .annoy-user simple-icon {
           color: black;
         }
         .annoy-user span {
@@ -231,8 +230,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           padding: 0;
           --site-rss-color: #000000;
           --site-rss-bg-color: var(--haxcms-color, rgba(255, 0, 116, 1));
-          --site-rss-paper-icon-button-padding: 0 4px;
-          --site-rss-paper-icon-button-margin: 0;
+          --site-rss-simple-icon-button-padding: 0 4px;
+          --site-rss-simple-icon-button-margin: 0;
         }
 
         @media screen and (max-width: 800px) {
@@ -240,7 +239,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             max-width: 200px;
             width: 100%;
           }
-          .header-image iron-image {
+          .header-image img.image {
             max-width: 200px;
           }
           .simple-blog-card-wrapper simple-blog-card {
@@ -301,6 +300,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             icon="icons:search"
             title="Search site"
             button-label="Search"
+            dark
           >
             <site-search></site-search>
           </site-modal>
@@ -311,17 +311,20 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             @click="${this._goBack}"
             title="Back to blog post list"
           >
-            <iron-icon icon="${this.icon}"></iron-icon>
+            <simple-icon
+              accent-color="${this.accentColor}"
+              icon="${this.icon}"
+            ></simple-icon>
             <span class="hide-small">${this.title}</span>
           </button>
         </div>
         <div class="header-image">
-          <iron-image
+          <img
+            loading="lazy"
+            class="image"
             src="${this.image}"
-            preload
-            sizing="cover"
             style="height:46px;width:100%;margin: 4px 0 2px 0;"
-          ></iron-image>
+          />
         </div>
       </div>
       <div class="wrapper">
@@ -508,7 +511,10 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             </div>
             <div class="annoy-user ${this.stateClass}">
               <div class="annoy-inner">
-                <iron-icon icon="${this.icon}" class="hide-small"></iron-icon>
+                <simple-icon
+                  icon="${this.icon}"
+                  class="hide-small"
+                ></simple-icon>
                 <span class="hide-small">
                   Never miss a story from <strong>${this.title}</strong> use RSS
                   today!
@@ -656,7 +662,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       super.firstUpdated();
     }
     setTimeout(() => {
-      import("@polymer/iron-image/iron-image.js");
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
       );
@@ -673,16 +678,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
       );
-      import("@polymer/iron-icon/iron-icon.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/iron-icons/device-icons.js");
-      import("@polymer/iron-icons/hardware-icons.js");
-      import("@polymer/iron-icons/communication-icons.js");
-      import("@polymer/iron-icons/social-icons.js");
-      import("@polymer/iron-icons/av-icons.js");
-      import("@polymer/iron-icons/maps-icons.js");
-      import("@polymer/iron-icons/places-icons.js");
     }, 0);
   }
   updated(changedProperties) {

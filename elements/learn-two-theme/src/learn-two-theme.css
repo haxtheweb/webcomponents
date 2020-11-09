@@ -62,7 +62,7 @@ site-git-corner {
   z-index: 1000;
 }
 
-paper-icon-button:not(:defined),
+simple-icon-button:not(:defined),
 site-breadcrumb:not(:defined),
 site-rss-button:not(:defined),
 site-print-button:not(:defined),
@@ -103,10 +103,10 @@ site-print-button {
   color: var(--site-print-button-color, white);
 }
 
-paper-icon-button,
+simple-icon-button,
 site-rss-button,
 site-print-button {
-  --iron-icon-fill-color: white;
+  --simple-icon-fill-color: white;
   --haxcms-tooltip-color: #F5F5F5;
   --haxcms-tooltip-background-color: #252737;
 }

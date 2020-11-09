@@ -4,7 +4,7 @@
  * @element mdi-phone-iconset-svg is a iconset for the Material Design Icons collection with the "phone" tag
  *
  * Example:
- *   <iron-icon icon="mdi-phone:phone-in-talk"></iron-icon>
+ *   <simple-icon icon="mdi-phone:phone-in-talk"></simple-icon>
  *
  * @demo demo/index.html
  */

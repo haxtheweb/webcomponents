@@ -1,5 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 /**
  * `team-member`
  * @element team-member
@@ -7,13 +9,6 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
  * @demo demo/index.html
  */
 class TeamMember extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    import("@polymer/iron-iconset-svg/iron-iconset-svg.js");
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@lrnwebcomponents/mdi-iconset-svg/lib/mdi-social-iconset-svg.js");
-  }
   static get template() {
     return html`
       <style>
@@ -26,7 +21,7 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
           text-align: center;
           padding: 8px;
         }
-        iron-image {
+        img.image {
           background-color: var(--team-member-color);
           height: 165px;
           width: 165px;
@@ -55,54 +50,48 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
           padding-left: 5px;
           padding-right: 5px;
         }
-        paper-icon-button {
+        simple-icon {
           color: var(--team-member-color);
         }
       </style>
       <div class="team-member">
-        <iron-image src="[[image]]" sizing="cover" alt=""></iron-image>
+        <img class="image" src="[[image]]" loading="lazy" alt="" />
         <div class="name">[[fullName]]</div>
         <div hidden$="[[!firstLine]]" class="line1">[[firstLine]]</div>
         <div hidden$="[[!secondLine]]" class="line2">[[secondLine]]</div>
         <div class="social">
           <a tabindex="-1" href$="[[dribble]]" hidden$="[[!dribble]]"
-            ><paper-icon-button icon="mdi-social:dribble"></paper-icon-button
+            ><simple-icon icon="mdi-social:dribble"></simple-icon
           ></a>
           <a tabindex="-1" href$="[[facebook]]" hidden$="[[!facebook]]"
-            ><paper-icon-button
-              icon="mdi-social:facebook-box"
-            ></paper-icon-button
+            ><simple-icon icon="mdi-social:facebook-box"></simple-icon
           ></a>
           <a tabindex="-1" href$="[[github]]" hidden$="[[!github]]"
-            ><paper-icon-button
-              icon="mdi-social:github-circle"
-            ></paper-icon-button
+            ><simple-icon icon="mdi-social:github-circle"></simple-icon
           ></a>
           <a tabindex="-1" href$="[[google]]" hidden$="[[!google]]"
-            ><paper-icon-button
-              icon="mdi-social:google-plus"
-            ></paper-icon-button
+            ><simple-icon icon="mdi-social:google-plus"></simple-icon
           ></a>
           <a tabindex="-1" href$="[[instagram]]" hidden$="[[!instagram]]"
-            ><paper-icon-button icon="mdi-social:instagram"></paper-icon-button
+            ><simple-icon icon="mdi-social:instagram"></simple-icon
           ></a>
           <a tabindex="-1" href$="[[linkedin]]" hidden$="[[!linkedin]]"
-            ><paper-icon-button icon="mdi-social:linkedin"></paper-icon-button
+            ><simple-icon icon="mdi-social:linkedin"></simple-icon
           ></a>
           <a tabindex="-1" href$="[[pinterest]]" hidden$="[[!pinterest]]"
-            ><paper-icon-button icon="mdi-social:pinterest"></paper-icon-button
+            ><simple-icon icon="mdi-social:pinterest"></simple-icon
           ></a>
           <a tabindex="-1" href$="[[tumblr]]" hidden$="[[!tumblr]]"
-            ><paper-icon-button icon="mdi-social:tumblr"></paper-icon-button
+            ><simple-icon icon="mdi-social:tumblr"></simple-icon
           ></a>
           <a tabindex="-1" href$="[[twitch]]" hidden$="[[!twitch]]"
-            ><paper-icon-button icon="mdi-social:twitch"></paper-icon-button
+            ><simple-icon icon="mdi-social:twitch"></simple-icon
           ></a>
           <a tabindex="-1" href$="[[twitter]]" hidden$="[[!twitter]]"
-            ><paper-icon-button icon="mdi-social:twitter"></paper-icon-button
+            ><simple-icon icon="mdi-social:twitter"></simple-icon
           ></a>
           <a tabindex="-1" href$="[[whatsapp]]" hidden$="[[!whatsapp]]"
-            ><paper-icon-button icon="mdi-social:whatsapp"></paper-icon-button
+            ><simple-icon icon="mdi-social:whatsapp"></simple-icon
           ></a>
         </div>
       </div>
