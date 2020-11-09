@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
-import "@polymer/paper-button/paper-button.js";
 import "../singletons/rich-text-editor-selection.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
