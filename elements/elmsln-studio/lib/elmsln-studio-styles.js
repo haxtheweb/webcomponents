@@ -48,8 +48,8 @@ const ElmslnStudioStyles = function (SuperClass) {
             --elmsln-studio-link-TextDecoration: underline !important;
             --elmsln-studio-link-TextDecorationThickness: 3px;
           }
-          #studio-nav elmsln-studio-link:focus-within,
-          #studio-nav elmsln-studio-link:hover {
+          #studio-nav elmsln-studio-link:not([disabled]):focus-within,
+          #studio-nav elmsln-studio-link:not([disabled]):hover {
             --elmsln-studio-link-TextDecoration: underline !important;
           }
           .primary-404 {
@@ -65,8 +65,8 @@ const ElmslnStudioStyles = function (SuperClass) {
             color: blue;
             display: inline;
           }
-          #message-404 elmsln-studio-link:hover,
-          #message-404 elmsln-studio-link:focus-within {
+          #message-404 elmsln-studio-link:not([disabled]):hover,
+          #message-404 elmsln-studio-link:not([disabled]):focus-within {
             text-decoration: underline;
           }
           .filters {
@@ -115,18 +115,19 @@ const ElmslnStudioStyles = function (SuperClass) {
             --elmsln-studio-link-Color: var(--accent-card-color);
             --elmsln-studio-link-TextDecoration: none !important;
           }
-          .card elmsln-studio-link:focus,
-          .card elmsln-studio-link:focus-within,
-          .card elmsln-studio-link:hover {
+          .card elmsln-studio-link:not([disabled]):focus,
+          .card elmsln-studio-link:not([disabled]):focus-within,
+          .card elmsln-studio-link:not([disabled]):hover {
             --elmsln-studio-link-TextDecoration: underline !important;
           }
           .card elmsln-studio-link[slot="subheading"] {
             --elmsln-studio-link-FontWeight: bold;
             --elmsln-studio-link-TextDecoration: underline !important;
           }
-          .card elmsln-studio-link[slot="subheading"]:focus,
-          .card elmsln-studio-link[slot="subheading"]:focus-within,
-          .card elmsln-studio-link[slot="subheading"]:hover {
+          .card elmsln-studio-link[slot="subheading"]:not([disabled]):focus,
+          .card
+            elmsln-studio-link[slot="subheading"]:not([disabled]):focus-within,
+          .card elmsln-studio-link[slot="subheading"]:not([disabled]):hover {
             --elmsln-studio-link-TextDecoration: none !important;
           }
           button {
@@ -256,8 +257,8 @@ const ElmslnStudioStyles = function (SuperClass) {
             flex: 1 1 50%;
             padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
           }
-          #prev-next-nav elmsln-studio-link:focus-within,
-          #prev-next-nav elmsln-studio-link:hover {
+          #prev-next-nav elmsln-studio-link:not([disabled]):focus-within,
+          #prev-next-nav elmsln-studio-link:not([disabled]):hover {
             border: 1px solid #000;
           }
           .prev-next-label span {

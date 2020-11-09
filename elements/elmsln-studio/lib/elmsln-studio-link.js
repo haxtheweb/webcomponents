@@ -26,6 +26,7 @@ class ElmslnStudioLink extends navigator(LitElement) {
 
   static get properties() {
     return {
+      disabled: { type: Boolean, reflect: true },
       href: { type: String },
       icon: { type: String, reflect: true },
     };
@@ -37,6 +38,10 @@ class ElmslnStudioLink extends navigator(LitElement) {
       }
       :host([hidden]) {
         display: none;
+      }
+      :host([disabled]) {
+        opacity: 0.5;
+        cursor: not-allowed;
       }
       :host([icon]) a {
         display: flex;
@@ -134,7 +139,8 @@ class ElmslnStudioLink extends navigator(LitElement) {
   linkClick(event) {
     event.preventDefault();
     event.stopPropagation();
-    this.navigate(`${window.ElmslnStudioPath || ""}${this.href}`);
+    if (!this.disabled)
+      this.navigate(`${window.ElmslnStudioPath || ""}${this.href}`);
   }
 }
 customElements.define("elmsln-studio-link", ElmslnStudioLink);

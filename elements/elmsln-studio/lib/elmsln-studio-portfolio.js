@@ -331,7 +331,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                 ${this.sortedSubmissions.map(
                   (s) => html`
                     <section
-                      class="${this.submissionFilter === s.id
+                      class="${this.assignmentFilter === s.id
                         ? "section-discussion"
                         : ""}"
                     >
@@ -358,22 +358,22 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                           id="sub-${s.id}-toggle-button"
                           class="view-discussion-button"
                           aria-describedby="sub-${s.id}"
-                          icon="${this.submissionFilter === s.id && this.comment
+                          icon="${this.assignmentFilter === s.id && this.comment
                             ? "close"
                             : this.getFeedbackIcon(s.feedback.length)}"
                           path="${this.getActivityLink(
                             s,
-                            this.submissionFilter === s.id && this.comment
+                            this.assignmentFilter === s.id && this.comment
                           )}"
                         >
                           <span class="sr-only"
-                            >${this.submissionFilter === s.id && this.comment
+                            >${this.assignmentFilter === s.id && this.comment
                               ? "Close Feedback"
                               : `View Feedback (${s.feedback.length})`}</span
                           >
                         </elmsln-studio-button>
                         <simple-tooltip for="sub-${s.id}-toggle-button"
-                          >${this.submissionFilter === s.id && this.comment
+                          >${this.assignmentFilter === s.id && this.comment
                             ? "Close Feedback"
                             : `View Feedback (${s.feedback.length})`}</simple-tooltip
                         >
@@ -381,7 +381,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                       <div
                         class="submission-body"
                         ?hidden="${this.comment &&
-                        this.submissionFilter !== s.id}"
+                        this.assignmentFilter !== s.id}"
                       >
                         ${s.links && s.links.length > 0
                           ? html`
@@ -513,7 +513,6 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   constructor() {
     super();
     this.feedback = {};
-    this.submissionFilter = "";
     this.comment = "";
     this.tag = ElmslnStudioPortfolio.tag;
   }
@@ -522,28 +521,22 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     this.fetchData("submissions");
     this.fetchData("portfolios");
     this.fetchData("discussion");
+    console.log("updated", this.submissions, this.portfolios, this.discussion);
   }
   get nav() {
     let prevHref,
       nextHref,
-      filters = [],
       portfolio = this.portfolio || {},
+      getLink = (s) => {
+        return this.getActivityLink(
+          { ...s, activity: "submission" },
+          !this.comment
+        );
+      },
       prevLabel = !portfolio.prev ? "" : this.fullName(portfolio.prev),
       nextLabel = !portfolio.next ? "" : this.fullName(portfolio.next);
-    if (!!this.submissionFilter)
-      filters.push(`submission=${this.submissionFilter}`);
-    if (!!this.comment) filters.push(`comment=true`);
-    if (!!this.sort) filters.push(`sort=${sort}`);
-    prevHref = (portfolio.prev || {}).id
-      ? `./${portfolio.prev.id}${
-          filters.length < 1 ? "" : `?${filters.join("&")}`
-        }`
-      : undefined;
-    nextHref = (portfolio.next || {}).id
-      ? `./${portfolio.next.id}${
-          filters.length < 1 ? "" : `?${filters.join("&")}`
-        }`
-      : undefined;
+    (prevHref = portfolio.prev ? getLink(portfolio.prev) : undefined),
+      (nextHref = portfolio.next ? getLink(portfolio.next) : undefined);
     return this.prevNextNav(prevLabel, prevHref, nextLabel, nextHref);
   }
   get sortedSubmissions() {
@@ -553,18 +546,16 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   }
   get assignment() {
     let filter =
-      !this.submissionFilter || !this.portfolio || !this.portfolio.submissions
+      !this.portfolio || !this.portfolio.submissions
         ? []
         : this.portfolio.submissions.filter(
-            (s) => s.id === this.submissionFilter
+            (s) => !this.submissionFilter || s.id === this.submissionFilter
           );
-    console.log("get assignment", !filter ? false : filter[0]);
     return !filter ? false : filter[0];
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
-    console.log("changed portfolio", this.portfolio);
   }
 }
 customElements.define("elmsln-studio-portfolio", ElmslnStudioPortfolio);

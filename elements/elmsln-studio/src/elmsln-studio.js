@@ -90,9 +90,6 @@ class ElmslnStudio extends router(
           .portfolio="${this.portfolio}"
           .feedback="${this.submissionFeedback}"
           ?sort-latest="${this.query.sort === "latest"}"
-          student-id="${this.query.student || ""}"
-          project-id="${this.query.project || ""}"
-          assignment-id="${this.query.assignment || ""}"
           submission-filter="${this.query.submission || ""}"
           comment="${this.query.comment || ""}"
           @fetch-data="${this._handleFetch}"
@@ -286,22 +283,37 @@ class ElmslnStudio extends router(
     return undefined;
   }
   get filteredPortfolios() {
-    if (!this.params.portfolio || !this.portfolios) {
+    let prev,
+      portfolios = {},
+      getPrefix = (id) => (!id ? undefined : id.replace(/-\w+$/, "")),
+      portfolioId = !this.params.portfolio
+        ? undefined
+        : getPrefix(this.params.portfolio),
+      assignmentId = !this.query.submission
+        ? undefined
+        : getPrefix(this.query.submission);
+    if (!portfolioId || !this.portfolios) {
       return undefined;
     } else {
-      let prev,
-        prefix = !this.params.portfolio
-          ? undefined
-          : this.params.portfolio.replace(/-\w+$/, ""),
-        portfolios = { ...(this.portfolios || {}) };
-      if (!!prefix)
-        Object.keys(portfolios || {})
-          .filter((i) => i.replace(/-\w+$/, "") === prefix)
-          .forEach((i) => {
-            portfolios[i].prev = prev;
-            if (prev) prev.next = portfolios[i];
-            prev = portfolios[i];
-          });
+      Object.keys(this.portfolios || {}).forEach((i) => {
+        let portfolio = this.portfolios[i],
+          project = getPrefix(i) === portfolioId,
+          assignment =
+            !project || !assignmentId || !portfolio.userId
+              ? undefined
+              : `${assignmentId}-${portfolio.userId}`,
+          submission =
+            project ||
+            (this.portfolios[i].submissions &&
+              assignment &&
+              this.portfolios[i].submissions.includes(assignment));
+        if (submission) {
+          portfolios[i] = portfolio;
+          portfolios[i].prev = prev;
+          if (prev) prev.next = portfolios[i];
+          prev = portfolios[i];
+        }
+      });
       return portfolios;
     }
   }
@@ -353,7 +365,6 @@ class ElmslnStudio extends router(
       : {};
   }
   fetchData(source, propName, params) {
-    console.log("fetchData", source, propName, params);
     fetch(this._getPath(source, params))
       .then((response) => {
         if (response && response.json) return response.json();
@@ -383,7 +394,6 @@ class ElmslnStudio extends router(
     }
   }
   _getPath(path, params) {
-    console.log("_getPath", path, params);
     let query = Object.keys(params || {})
       .map((p) => `${encodeURI(p)}=${encodeURI(params[p])}`)
       .join("&");
