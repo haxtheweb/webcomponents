@@ -96,16 +96,9 @@ class SimpleIconPicker extends SimplePicker {
       ) {
         clearTimeout(this.__rebuild);
         this.__rebuild = setTimeout(() => {
-          if ("requestIdleCallback" in window) {
-            // Use requestIdleCallback to schedule work.
-            requestIdleCallback(this._getOptions.bind(this), {
-              timeout: 1000,
-            });
-          } else {
-            setTimeout(() => {
-              this._getOptions();
-            }, 1000);
-          }
+          setTimeout(() => {
+            this._getOptions();
+          }, 100);
         }, 0);
       }
       if (propName == "value") {

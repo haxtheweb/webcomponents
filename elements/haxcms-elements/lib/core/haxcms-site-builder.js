@@ -56,6 +56,9 @@ class HAXCMSSiteBuilder extends LitElement {
             rgba(255, 255, 255, 0.5)
           );
         }
+        simple-progress[disabled] {
+          display: none;
+        }
       `,
     ];
   }
