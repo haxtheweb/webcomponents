@@ -20,40 +20,6 @@
       ]
     },
     {
-      "name": "lrnsys-collapselist-item",
-      "description": "`lrnsys-collapselist-item`\n\nEvents:\n\n  * `opened-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - Whether or not this is default open on render.\n\nProperties:\n\n  * `opened` {`boolean`} - Whether or not this is default open on render.\n\n  * `value` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - Whether or not this is default open on render.\n\nProperty: opened",
-          "valueSet": "v"
-        },
-        {
-          "name": "onopened-changed",
-          "description": "`opened-changed` {`CustomEvent<{ value: any; }>`} - "
-        }
-      ]
-    },
-    {
-      "name": "lrnsys-collapselist",
-      "description": "`lrnsys-collapselist`\n\nAttributes:\n\n  * `items` {`any[]`} - Array of items to present with label and content for the list of collapses.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `items` {`any[]`} - Array of items to present with label and content for the list of collapses.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - Array of items to present with label and content for the list of collapses.\n\nProperty: items\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
       "name": "lrnsys-dialog-toolbar-button",
       "description": "Events:\n\n  * `button-initialized` {`CustomEvent<{ id: string; }>`} - \n\n  * `dialog-toolbar-button-tapped` {`CustomEvent<{ id: any; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - The title of the button.\n\n  * `icon` {`string`} - The button icon.\n\n  * `id` {`string`} - The button ID.\n\nProperties:\n\n  * `title` {`string`} - The title of the button.\n\n  * `icon` {`string`} - The button icon.\n\n  * `id` {`string`} - The button ID.",
       "attributes": [

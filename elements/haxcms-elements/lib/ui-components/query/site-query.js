@@ -10,8 +10,6 @@ import { autorun, toJS } from "mobx";
  * `site-query`
  * `Query the JSON Outline Schema manifest and return a resulting array`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 // helper to use strings for index in Objects

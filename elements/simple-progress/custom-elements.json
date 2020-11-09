@@ -5,10 +5,21 @@
       "name": "simple-progress",
       "path": "./simple-progress.js",
       "description": "`simple-progress`\n`a simple progress slider bar`",
+      "attributes": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
       "properties": [
         {
           "name": "html",
           "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
         },
         {
           "name": "template"
@@ -19,7 +30,22 @@
       "name": "simple-progress",
       "path": "./src/simple-progress.js",
       "description": "`simple-progress`\n`a simple progress slider bar`",
+      "attributes": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
       "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
         {
           "name": "template"
         }

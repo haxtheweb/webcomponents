@@ -11,8 +11,6 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
  * `site-modal`
  * `A basic site dialog`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 class SiteModal extends LitElement {

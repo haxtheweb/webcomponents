@@ -21,12 +21,8 @@
     },
     {
       "name": "lrn-markdown-editor",
-      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
+      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
       "attributes": [
-        {
-          "name": "selected",
-          "description": "`selected` {`string`} - \n\nProperty: selected\n\nDefault: 0"
-        },
         {
           "name": "layout",
           "description": "`layout` {`string`} - \n\nProperty: layout\n\nDefault: 0"
@@ -53,12 +49,8 @@
     },
     {
       "name": "lrn-markdown-editor",
-      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
+      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
       "attributes": [
-        {
-          "name": "selected",
-          "description": "`selected` {`string`} - \n\nProperty: selected\n\nDefault: 0"
-        },
         {
           "name": "layout",
           "description": "`layout` {`string`} - \n\nProperty: layout\n\nDefault: 0"

@@ -1391,15 +1391,15 @@
     },
     {
       "name": "site-dot-indicator",
-      "description": "`site-dot-indicator`\n`list of items based on manifest`\n\nAttributes:\n\n  * `active-id` {`string`} - \n\n  * `router-manifest` - \n\n  * `sticky` {`string`} - \n\n  * `scroll-on-active` {`boolean`} - \n\nProperties:\n\n  * `activeId` {`string`} - \n\n  * `routerManifest` - \n\n  * `sticky` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `scrollOnActive` {`boolean`} - ",
+      "description": "`site-dot-indicator`\n`list of items based on manifest`\n\nAttributes:\n\n  * `active-id` {`string`} - \n\n  * `routerManifest` - \n\n  * `sticky` {`string`} - \n\n  * `scroll-on-active` {`boolean`} - \n\nProperties:\n\n  * `activeId` {`string`} - \n\n  * `routerManifest` - \n\n  * `sticky` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `scrollOnActive` {`boolean`} - ",
       "attributes": [
         {
           "name": "active-id",
           "description": "`active-id` {`string`} - \n\nProperty: activeId"
         },
         {
-          "name": "router-manifest",
-          "description": "`router-manifest` - \n\nProperty: routerManifest"
+          "name": "routerManifest",
+          "description": "`routerManifest` - \n\nProperty: routerManifest"
         },
         {
           "name": "sticky",
@@ -1414,19 +1414,19 @@
     },
     {
       "name": "site-menu-button",
-      "description": "`site-menu-button`\n`Menu button based on the hierarchy`\n\nAttributes:\n\n  * `type` {`string`} - \n\n  * `active-router-manifest-index` {`string`} - acitvely selected item\n\n  * `router-manifest` - \n\n  * `link` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `position` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `hide-label` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `type` {`string`} - \n\n  * `activeRouterManifestIndex` {`string`} - acitvely selected item\n\n  * `routerManifest` - \n\n  * `link` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `position` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `hideLabel` {`boolean`} - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - ",
+      "description": "`site-menu-button`\n`Menu button based on the hierarchy`\n\nAttributes:\n\n  * `type` {`string`} - \n\n  * `activeRouterManifestIndex` {`string`} - acitvely selected item\n\n  * `routerManifest` - \n\n  * `link` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `position` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `hide-label` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `type` {`string`} - \n\n  * `activeRouterManifestIndex` {`string`} - acitvely selected item\n\n  * `routerManifest` - \n\n  * `link` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `position` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `hideLabel` {`boolean`} - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - ",
       "attributes": [
         {
           "name": "type",
           "description": "`type` {`string`} - \n\nProperty: type"
         },
         {
-          "name": "active-router-manifest-index",
-          "description": "`active-router-manifest-index` {`string`} - acitvely selected item\n\nProperty: activeRouterManifestIndex"
+          "name": "activeRouterManifestIndex",
+          "description": "`activeRouterManifestIndex` {`string`} - acitvely selected item\n\nProperty: activeRouterManifestIndex"
         },
         {
-          "name": "router-manifest",
-          "description": "`router-manifest` - \n\nProperty: routerManifest"
+          "name": "routerManifest",
+          "description": "`routerManifest` - \n\nProperty: routerManifest"
         },
         {
           "name": "link",
@@ -1607,7 +1607,7 @@
     },
     {
       "name": "site-query-menu-slice",
-      "description": "`site-query-menu-slice`\n`A slice / 1 level within the hierarchy, via relative parent or deep parent`\n\nEvents:\n\n  * `result-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_router-manifest` - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `no-dynamic-level` {`boolean`} - Allow disabling the dynamic leveling\n\nProperties:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_routerManifest` - \n\n  * `__disposer` {`never[]`} - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamicMethodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixedId` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `noDynamicLevel` {`boolean`} - Allow disabling the dynamic leveling",
+      "description": "`site-query-menu-slice`\n`A slice / 1 level within the hierarchy, via relative parent or deep parent`\n\nEvents:\n\n  * `result-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_routerManifest` - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `no-dynamic-level` {`boolean`} - Allow disabling the dynamic leveling\n\nProperties:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_routerManifest` - \n\n  * `__disposer` {`never[]`} - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamicMethodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixedId` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `noDynamicLevel` {`boolean`} - Allow disabling the dynamic leveling",
       "attributes": [
         {
           "name": "parent",
@@ -1618,8 +1618,8 @@
           "description": "`result` {`any[]`} - Results which can be binded to something else\n\nProperty: result"
         },
         {
-          "name": "_router-manifest",
-          "description": "`_router-manifest` - \n\nProperty: _routerManifest"
+          "name": "_routerManifest",
+          "description": "`_routerManifest` - \n\nProperty: _routerManifest"
         },
         {
           "name": "start",

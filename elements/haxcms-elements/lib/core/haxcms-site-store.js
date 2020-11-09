@@ -597,9 +597,6 @@ class HAXCMSSiteStore extends HTMLElement {
     this.store = store;
     // source for reading in the store if different than default site.json
     this.source = "";
-    import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
-      esModule.setPassiveTouchGestures(true);
-    });
     /**
      * When location changes update activeItem
      */

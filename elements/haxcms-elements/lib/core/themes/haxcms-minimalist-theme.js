@@ -170,28 +170,6 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
           margin: 48px auto;
         }
 
-        site-title {
-          --site-title-link: {
-            color: black;
-            display: inline-flex;
-          }
-          --site-title-link-hover: {
-            background-color: #dee2e6;
-          }
-        }
-        site-top-menu:not([sticky]) site-title {
-          --site-title-link: {
-            color: black;
-            display: inline-flex;
-            border: 1px solid #dee2e6;
-            padding: 0.75rem 1.5rem;
-            font-size: 1.25rem;
-            line-height: 1.5;
-          }
-          --site-title-link-hover: {
-            background-color: #dee2e6;
-          }
-        }
         site-menu-button {
           --site-menu-button-button-hover-background-color: #dee2e6;
           color: black;

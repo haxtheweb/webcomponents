@@ -11,8 +11,6 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
  * `site-top-menu`
  * `Menu on top of the site typically a bar of options`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 class SiteTopMenu extends PolymerElement {

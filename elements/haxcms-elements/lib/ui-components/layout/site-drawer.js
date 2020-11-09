@@ -3,10 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `site-drawer`
  * `Basic off canvas drawer element`
@@ -29,6 +28,11 @@ class SiteDrawer extends LitElement {
         simple-icon-button {
           color: var(--site-drawer-button-color, #ffffff);
         }
+        app-drawer {
+          background-color: #eeeeee;
+          --app-drawer-scrim-background: #eeeeee;
+          --app-drawer-width: var(--site-drawer-width, 300px);
+        }
       `,
     ];
   }
@@ -39,33 +43,15 @@ class SiteDrawer extends LitElement {
     super();
     this.align = "right";
     this.icon = "menu";
-    import("@polymer/app-layout/app-drawer/app-drawer.js");
-    import("@lrnwebcomponents/simple-icon/simple-icon.js");
-    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-    import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
+    setTimeout(() => {
+      import("@polymer/app-layout/app-drawer/app-drawer.js");
+    }, 0);
   }
   /**
    * LitElement life cycle - render
    */
   render() {
     return html`
-      <custom-style>
-        <style>
-          app-drawer {
-            --app-drawer-width: var(--site-drawer-width, 300px);
-            --app-drawer-content-container: {
-              background-color: #eeeeee;
-            }
-            @apply --site-drawer-drawer;
-          }
-          .drawer-contents {
-            @apply --site-drawer-drawer-content;
-          }
-          simple-icon-button {
-            @apply --site-drawer-button;
-          }
-        </style>
-      </custom-style>
       <simple-icon-button
         icon="${this.icon}"
         @click="${this.toggle}"

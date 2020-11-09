@@ -380,8 +380,6 @@ class HAXCMSSiteBuilder extends LitElement {
    */
   constructor() {
     super();
-    // attempt to set polymer passive gestures globally
-    // this decreases logging and improves performance on scrolling
     this.__disposer = [];
     this.queryParams = {};
     this.loading = false;

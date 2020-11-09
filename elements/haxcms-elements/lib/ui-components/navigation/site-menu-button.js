@@ -12,8 +12,6 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
  * `site-menu-button`
  * `Menu button based on the hierarchy`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 class SiteMenuButton extends HAXCMSThemeParts(LitElement) {

@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "wikipedia-query",
-      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - ",
+      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - ",
       "attributes": [
         {
           "name": "title",
@@ -25,12 +25,17 @@
         {
           "name": "__now",
           "description": "`__now` {`string`} - \n\nProperty: __now"
+        },
+        {
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "wikipedia-query",
-      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - ",
+      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - ",
       "attributes": [
         {
           "name": "title",
@@ -52,6 +57,11 @@
         {
           "name": "__now",
           "description": "`__now` {`string`} - \n\nProperty: __now"
+        },
+        {
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }

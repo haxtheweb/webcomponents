@@ -8,8 +8,6 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
  * `active-when-visible`
  * `Title of the site`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 class ActiveWhenVisible extends LitElement {

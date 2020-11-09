@@ -192,21 +192,6 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   // render function
   render() {
     return html`
-      <custom-style>
-        <style>
-          site-title {
-            --site-title-link: {
-              text-decoration: none;
-            }
-            --site-title-heading: {
-              color: black;
-              font-size: 28px;
-              margin: 0;
-              padding: 0;
-            }
-          }
-        </style>
-      </custom-style>
       <div class="active-slide">
         <div id="contentcontainer">
           <div id="slot"><slot></slot></div>

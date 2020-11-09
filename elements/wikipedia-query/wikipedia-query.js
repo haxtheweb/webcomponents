@@ -1,12 +1,12 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-ajax/iron-ajax.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 /**
  * `wikipedia-query`
  * `Query and present information from wikipedia.`
  * @demo demo/index.html
  * @element wikipedia-query
  */
-class WikipediaQuery extends LitElement {
+class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -16,6 +16,7 @@ class WikipediaQuery extends LitElement {
         :host {
           display: block;
           --wikipedia-query-body-height: 160px;
+          --wikipedia-query-background-color: #f8f8f8;
         }
         :host [hidden] {
           display: none;
@@ -27,7 +28,7 @@ class WikipediaQuery extends LitElement {
           padding: 8px 16px;
         }
         citation-element {
-          background-color: #f8f8f8;
+          background-color: var(--wikipedia-query-background-color);
           padding: 16px 8px;
           font-size: 12px;
         }
@@ -40,9 +41,6 @@ class WikipediaQuery extends LitElement {
     let date = new Date(Date.now());
     this.__now =
       date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-    setTimeout(() => {
-      import("@lrnwebcomponents/citation-element/citation-element.js");
-    }, 0);
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -54,39 +52,48 @@ class WikipediaQuery extends LitElement {
   // LitElement render function
   render() {
     return html`
-      ${this.search
-        ? html`
-            <iron-ajax
-              auto
-              url="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=${this
-                .search}&amp;prop=extracts&amp;format=json"
-              handle-as="json"
-              @response="${this.handleResponse}"
-              debounce-duration="25"
-              @last-response-changed="${this.searchResponseChanged}"
-            ></iron-ajax>
-            <h3 .hidden="${this.hideTitle}">${this._title}</h3>
-            <div id="result"></div>
-            <citation-element
-              creator="{Wikipedia contributors}"
-              scope="sibling"
-              license="by-sa"
-              title="${this.search} --- {Wikipedia}{,} The Free Encyclopedia"
-              source="https://en.wikipedia.org/w/index.php?title=${this.search}"
-              date="${this.__now}"
-            ></citation-element>
-          `
-        : ``}
+      <h3 .hidden="${this.hideTitle}">${this._title}</h3>
+      <div id="result"></div>
+      <citation-element
+        creator="{Wikipedia contributors}"
+        scope="sibling"
+        license="by-sa"
+        title="${this.search} --- {Wikipedia}{,} The Free Encyclopedia"
+        source="https://en.wikipedia.org/w/index.php?title=${this.search}"
+        date="${this.__now}"
+      ></citation-element>
     `;
   }
-  searchResponseChanged(e) {
-    this.searchResponse = e.detail.value;
+  updateArticle(search) {
+    fetch(
+      `https://en.wikipedia.org/w/api.php?origin=*&action=query&titles=${search}&prop=extracts&format=json`
+    )
+      .then((response) => {
+        if (response.ok) return response.json();
+      })
+      .then((json) => {
+        this.handleResponse(json);
+      });
   }
   /**
    * LitElement properties updated
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      // element is visible, now we can search
+      if (propName == "elementVisible" && this[propName]) {
+        import("@lrnwebcomponents/citation-element/citation-element.js");
+      }
+      if (
+        ["elementVisible", "search"].includes(propName) &&
+        this.search &&
+        this.elementVisible
+      ) {
+        clearTimeout(this._debounce);
+        this._debounce = setTimeout(() => {
+          this.updateArticle(this.search);
+        }, 25);
+      }
       if (propName == "search") {
         if (this.title) {
           this._title = this.title;
@@ -102,7 +109,12 @@ class WikipediaQuery extends LitElement {
     });
   }
   static get properties() {
+    let props = {};
+    if (super.properties) {
+      props = super.properties;
+    }
     return {
+      ...props,
       title: {
         type: String,
       },
@@ -214,16 +226,13 @@ class WikipediaQuery extends LitElement {
    */
   handleResponse(response) {
     // the key of pages is a number so need to look for it
-    if (
-      typeof this.searchResponse !== typeof undefined &&
-      this.searchResponse.query
-    ) {
-      for (var key in this.searchResponse.query.pages) {
+    if (typeof response !== typeof undefined && response.query) {
+      for (var key in response.query.pages) {
         // skip anything that's prototype object
-        if (!this.searchResponse.query.pages.hasOwnProperty(key)) continue;
+        if (!response.query.pages.hasOwnProperty(key)) continue;
         // load object response, double check we have an extract
-        if (this.searchResponse.query.pages[key].extract) {
-          let html = this.searchResponse.query.pages[key].extract;
+        if (response.query.pages[key].extract) {
+          let html = response.query.pages[key].extract;
           html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
           html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
           html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");

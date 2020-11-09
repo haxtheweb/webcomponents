@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-progress/paper-progress.js";
+import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "./lib/lrnsys-progress-circle.js";
 /**
  * `lrnsys-progress`
@@ -67,11 +67,11 @@ class LrnsysProgress extends PolymerElement {
           overflow: hidden;
           height: 1px;
         }
-        paper-progress {
-          --paper-progress-height: 8px;
-          --paper-progress-transition-duration: 0.5s;
-          --paper-progress-transition-timing-function: ease;
-          --paper-progress-transition-delay: 0.4s;
+        simple-progress {
+          height: 8px;
+          --simple-progress-transition-duration: 0.5s;
+          --simple-progress-transition-timing-function: ease;
+          --simple-progress-transition-delay: 0.4s;
           width: 100%;
         }
         /* required to get the box shadow above the progress bar */
@@ -88,7 +88,7 @@ class LrnsysProgress extends PolymerElement {
         :host([vertical]) #circle-container {
           display: block;
         }
-        :host([vertical]) paper-progress {
+        :host([vertical]) simple-progress {
           display: none !important;
         }
         :host([vertical]) lrnsys-progress-circle {
@@ -115,10 +115,10 @@ class LrnsysProgress extends PolymerElement {
         on-response="handleNodeResponse"
       ></iron-ajax>
       <h3 class="progress-title">[[title]]</h3>
-      <paper-progress
+      <simple-progress
         id="progress"
         value="[[overallPercentage]]"
-      ></paper-progress>
+      ></simple-progress>
       <ul id="circle-container">
         <template is="dom-repeat" items="[[items]]" as="item">
           <li class="circle-node">
