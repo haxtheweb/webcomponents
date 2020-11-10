@@ -29,3 +29,9 @@ async function run() {
 }
 
 run();
+// local development and mobx
+window.process = window.process || {
+  env: {
+    NODE_ENV: "development",
+  },
+};
