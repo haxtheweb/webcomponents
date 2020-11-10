@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "csv-render",
-      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `loading` {`boolean`} - \n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `element-visible` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `loading` {`boolean`} - \n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.\n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "data-source",
@@ -18,8 +18,9 @@
           "description": "`summary` {`string`} - Summary to improve accessibility for screen readers.\n\nProperty: summary"
         },
         {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "table",
@@ -32,6 +33,11 @@
         {
           "name": "table-data",
           "description": "`table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: tableData\n\nDefault: "
+        },
+        {
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",
@@ -46,7 +52,7 @@
     },
     {
       "name": "csv-render",
-      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `loading` {`boolean`} - \n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `element-visible` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `loading` {`boolean`} - \n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.\n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "data-source",
@@ -61,8 +67,9 @@
           "description": "`summary` {`string`} - Summary to improve accessibility for screen readers.\n\nProperty: summary"
         },
         {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "table",
@@ -75,6 +82,11 @@
         {
           "name": "table-data",
           "description": "`table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: tableData\n\nDefault: "
+        },
+        {
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "accent-color",

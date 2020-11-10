@@ -114,20 +114,6 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
         site-title {
           margin: 0 32px;
           overflow: hidden;
-          --site-title-link: {
-            display: inline-block;
-            color: #fafafa;
-            text-decoration: none;
-          }
-          --site-title-heading: {
-            font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
-              sans-serif;
-            font-size: 26px;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            font-weight: 100;
-          }
         }
         .buttons {
           margin-top: 36px;

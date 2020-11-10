@@ -44,19 +44,19 @@
     },
     {
       "name": "lrndesign-mapmenu-submenu",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `avatar-label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expand-children` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `label` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expandChildren` {`boolean`} - ",
+      "description": "Attributes:\n\n  * `label` {`string`} - \n\n  * `title` {`string`} - \n\n  * `avatar-label` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expand-children` {`boolean`} - \n\nProperties:\n\n  * `label` {`string`} - \n\n  * `title` {`string`} - \n\n  * `avatarLabel` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expandChildren` {`boolean`} - ",
       "attributes": [
         {
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
+        },
+        {
           "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title"
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
         },
         {
           "name": "avatar-label",
-          "description": "`avatar-label` {`string`} - \n\nProperty: avatarLabel"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label"
+          "description": "`avatar-label` {`string`} - \n\nProperty: avatarLabel\n\nDefault: "
         },
         {
           "name": "opened",

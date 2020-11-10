@@ -809,15 +809,15 @@
     },
     {
       "name": "haxcms-slide-theme",
-      "description": "`haxcms-slide-theme`\n`A simple slide playing theme`\n\nEvents:\n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `manifest-length` {`number`} - \n\n  * `active-manifest-index-counter` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperties:\n\n  * `manifestLength` {`number`} - \n\n  * `activeManifestIndexCounter` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` {`never[]`} - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
+      "description": "`haxcms-slide-theme`\n`A simple slide playing theme`\n\nEvents:\n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `manifestLength` {`number`} - \n\n  * `activeManifestIndexCounter` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperties:\n\n  * `manifestLength` {`number`} - \n\n  * `activeManifestIndexCounter` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` {`never[]`} - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
         {
-          "name": "manifest-length",
-          "description": "`manifest-length` {`number`} - \n\nProperty: manifestLength"
+          "name": "manifestLength",
+          "description": "`manifestLength` {`number`} - \n\nProperty: manifestLength"
         },
         {
-          "name": "active-manifest-index-counter",
-          "description": "`active-manifest-index-counter` {`number`} - \n\nProperty: activeManifestIndexCounter"
+          "name": "activeManifestIndexCounter",
+          "description": "`activeManifestIndexCounter` {`number`} - \n\nProperty: activeManifestIndexCounter"
         },
         {
           "name": "accent-color",
@@ -1391,15 +1391,15 @@
     },
     {
       "name": "site-dot-indicator",
-      "description": "`site-dot-indicator`\n`list of items based on manifest`\n\nAttributes:\n\n  * `active-id` {`string`} - \n\n  * `router-manifest` - \n\n  * `sticky` {`string`} - \n\n  * `scroll-on-active` {`boolean`} - \n\nProperties:\n\n  * `activeId` {`string`} - \n\n  * `routerManifest` - \n\n  * `sticky` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `scrollOnActive` {`boolean`} - ",
+      "description": "`site-dot-indicator`\n`list of items based on manifest`\n\nAttributes:\n\n  * `active-id` {`string`} - \n\n  * `routerManifest` - \n\n  * `sticky` {`string`} - \n\n  * `scroll-on-active` {`boolean`} - \n\nProperties:\n\n  * `activeId` {`string`} - \n\n  * `routerManifest` - \n\n  * `sticky` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `scrollOnActive` {`boolean`} - ",
       "attributes": [
         {
           "name": "active-id",
           "description": "`active-id` {`string`} - \n\nProperty: activeId"
         },
         {
-          "name": "router-manifest",
-          "description": "`router-manifest` - \n\nProperty: routerManifest"
+          "name": "routerManifest",
+          "description": "`routerManifest` - \n\nProperty: routerManifest"
         },
         {
           "name": "sticky",
@@ -1414,19 +1414,19 @@
     },
     {
       "name": "site-menu-button",
-      "description": "`site-menu-button`\n`Menu button based on the hierarchy`\n\nAttributes:\n\n  * `type` {`string`} - \n\n  * `active-router-manifest-index` {`string`} - acitvely selected item\n\n  * `router-manifest` - \n\n  * `link` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `position` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `hide-label` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `type` {`string`} - \n\n  * `activeRouterManifestIndex` {`string`} - acitvely selected item\n\n  * `routerManifest` - \n\n  * `link` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `position` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `hideLabel` {`boolean`} - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - ",
+      "description": "`site-menu-button`\n`Menu button based on the hierarchy`\n\nAttributes:\n\n  * `type` {`string`} - \n\n  * `activeRouterManifestIndex` {`string`} - acitvely selected item\n\n  * `routerManifest` - \n\n  * `link` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `position` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `hide-label` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `type` {`string`} - \n\n  * `activeRouterManifestIndex` {`string`} - acitvely selected item\n\n  * `routerManifest` - \n\n  * `link` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `position` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `hideLabel` {`boolean`} - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - ",
       "attributes": [
         {
           "name": "type",
           "description": "`type` {`string`} - \n\nProperty: type"
         },
         {
-          "name": "active-router-manifest-index",
-          "description": "`active-router-manifest-index` {`string`} - acitvely selected item\n\nProperty: activeRouterManifestIndex"
+          "name": "activeRouterManifestIndex",
+          "description": "`activeRouterManifestIndex` {`string`} - acitvely selected item\n\nProperty: activeRouterManifestIndex"
         },
         {
-          "name": "router-manifest",
-          "description": "`router-manifest` - \n\nProperty: routerManifest"
+          "name": "routerManifest",
+          "description": "`routerManifest` - \n\nProperty: routerManifest"
         },
         {
           "name": "link",
@@ -1607,7 +1607,7 @@
     },
     {
       "name": "site-query-menu-slice",
-      "description": "`site-query-menu-slice`\n`A slice / 1 level within the hierarchy, via relative parent or deep parent`\n\nEvents:\n\n  * `result-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_router-manifest` - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `no-dynamic-level` {`boolean`} - Allow disabling the dynamic leveling\n\nProperties:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_routerManifest` - \n\n  * `__disposer` {`never[]`} - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamicMethodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixedId` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `noDynamicLevel` {`boolean`} - Allow disabling the dynamic leveling",
+      "description": "`site-query-menu-slice`\n`A slice / 1 level within the hierarchy, via relative parent or deep parent`\n\nEvents:\n\n  * `result-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_routerManifest` - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `no-dynamic-level` {`boolean`} - Allow disabling the dynamic leveling\n\nProperties:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_routerManifest` - \n\n  * `__disposer` {`never[]`} - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamicMethodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixedId` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `noDynamicLevel` {`boolean`} - Allow disabling the dynamic leveling",
       "attributes": [
         {
           "name": "parent",
@@ -1618,8 +1618,8 @@
           "description": "`result` {`any[]`} - Results which can be binded to something else\n\nProperty: result"
         },
         {
-          "name": "_router-manifest",
-          "description": "`_router-manifest` - \n\nProperty: _routerManifest"
+          "name": "_routerManifest",
+          "description": "`_routerManifest` - \n\nProperty: _routerManifest"
         },
         {
           "name": "start",

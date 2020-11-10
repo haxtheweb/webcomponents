@@ -277,15 +277,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   render() {
     return html`
       <slot></slot>
-      <iron-ajax
-        id="appstore"
-        url="${this.appStore.url}"
-        .params="${this.appStore.params}"
-        method="GET"
-        content-type="application/json"
-        handle-as="json"
-        @last-response-changed="${this.__appStoreDataChanged}"
-      ></iron-ajax>
       <hal-9000
         id="hal"
         .responds-to="${this.voiceRespondsTo}"
@@ -294,7 +285,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     `;
   }
   __appStoreDataChanged(e) {
-    this.__appStoreData = e.detail.value;
+    this.__appStoreData = e;
   }
   /**
    * convention
@@ -570,13 +561,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     ) {
       // support having the request or remote loading
       // depending on the integration type
-      if (
-        typeof newValue.apps === typeof undefined &&
-        this.shadowRoot &&
-        this.shadowRoot.querySelector("#appstore") &&
-        this.shadowRoot.querySelector("#appstore").generateRequest
-      ) {
-        this.shadowRoot.querySelector("#appstore").generateRequest();
+      if (typeof newValue.apps === typeof undefined && this.shadowRoot) {
+        this.loadAppStore();
       } else {
         // directly injected json object into the DOM
         this.__appStoreData = newValue;
@@ -834,17 +820,31 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
   /**
+   * generate appstore query
+   */
+  loadAppStore() {
+    const searchParams = new URLSearchParams(this.appStore.params);
+    let url = this.appStore.url;
+    if (searchParams) {
+      url += `?${searchParams}`;
+    }
+    fetch(url, {
+      method: this.method,
+    })
+      .then((response) => {
+        if (response.ok) return response.json();
+      })
+      .then((json) => {
+        this.__appStoreDataChanged(json);
+      });
+  }
+  /**
    * ready life cycle
    */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    import("@polymer/iron-ajax/iron-ajax.js").then((esModule) => {
-      if (this.shadowRoot.querySelector("#appstore")) {
-        this.shadowRoot.querySelector("#appstore").generateRequest();
-      }
-    });
     // import voice command stuff in the background
     // @todo only activate if the setting to use it is in place
     import("@lrnwebcomponents/hal-9000/hal-9000.js").then((esModule) => {
@@ -1402,6 +1402,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   constructor() {
     super();
+    this.method = "GET";
     this.haxSelectedText = "";
     this.__winEvents = {
       "hax-register-properties": "_haxStoreRegisterProperties",

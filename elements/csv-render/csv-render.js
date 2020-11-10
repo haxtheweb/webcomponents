@@ -6,6 +6,9 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+
 /**
  * `csv-render`
  * `Remote render a CSV file in place as an accessible table.`
@@ -16,12 +19,13 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
  * @demo ./demo/index.html
  * @element csv-render
  */
-class CsvRender extends SimpleColors {
+class CsvRender extends IntersectionObserverMixin(SimpleColors) {
   /**
    * LitElement style construction
    */
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -93,18 +97,6 @@ class CsvRender extends SimpleColors {
           position: absolute;
           left: calc(50% - 70px);
         }
-        #download button {
-          color: var(--simple-colors-default-theme-accent-6);
-          border-radius: 36px;
-          width: 36px;
-          height: 36px;
-          min-width: unset;
-          padding: 0;
-          margin: 0;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
         simple-icon {
           display: inline-flex;
           margin: 0;
@@ -124,20 +116,33 @@ class CsvRender extends SimpleColors {
    */
   constructor() {
     super();
+    this.loading = false;
     this.table = [];
     this.tableHeadings = [];
     this.tableData = "";
-    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
-    import("@polymer/iron-ajax/iron-ajax.js");
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "color") {
-        this._getAccentColor(this[propName], oldValue);
+      if (propName == "elementVisible" && this.elementVisible) {
+        import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+        import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      }
+      if (
+        ["dataSource", "elementVisible"].includes(propName) &&
+        this.dataSource &&
+        this.elementVisible
+      ) {
+        clearTimeout(this.__debouce);
+        this.loading = true;
+        this.__debouce = setTimeout(() => {
+          this.loadCSVData();
+        }, 500);
       }
     });
   }
@@ -146,25 +151,20 @@ class CsvRender extends SimpleColors {
    */
   render() {
     return html`
-      <iron-ajax
-        auto
-        url="${this.dataSource}"
-        handle-as="text"
-        debounce-duration="500"
-        @last-response-changed="${this.tableDataChanged}"
-        @response="${this.handleResponse}"
-      ></iron-ajax>
       <hexagon-loader
         id="loading"
         accent-color="${this.accentColor}"
-        loading
+        ?loading="${this.loading}"
         item-count="4"
         size="small"
       ></hexagon-loader>
       <a href="${this.dataSource}" id="download" tabindex="-1">
-        <button><simple-icon icon="file-download"></simple-icon></button>
+        <simple-icon-button
+          id="ficon"
+          icon="file-download"
+        ></simple-icon-button>
       </a>
-      <simple-tooltip for="download" animation-delay="200" offset="14"
+      <simple-tooltip for="ficon" offset="14" position="top"
         >Download table data</simple-tooltip
       >
       <table class="table" summary="${this.summary}">
@@ -198,11 +198,9 @@ class CsvRender extends SimpleColors {
   static get tag() {
     return "csv-render";
   }
-  tableDataChanged(e) {
-    this.tableData = e.detail.value;
-  }
   static get properties() {
     return {
+      ...super.properties,
       /**
        * Location of the CSV file.
        */
@@ -210,7 +208,9 @@ class CsvRender extends SimpleColors {
         type: String,
         attribute: "data-source",
       },
-
+      loading: {
+        type: Boolean,
+      },
       /**
        * Caption for the table to improve accessibility and readability.
        */
@@ -242,21 +242,15 @@ class CsvRender extends SimpleColors {
         type: String,
         attribute: "table-data",
       },
-      /**
-       * Color class work to apply
-       */
-      color: {
-        type: String,
-      },
     };
   }
   /**
    * Convert from csv text to an array in the table function
    */
-  handleResponse(e) {
+  handleResponse() {
     this.table = this.CSVtoArray(this.tableData);
     this.tableHeadings = this.table.shift();
-    this.shadowRoot.querySelector("#loading").loading = false;
+    this.loading = false;
   }
   /**
    * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
@@ -284,15 +278,20 @@ class CsvRender extends SimpleColors {
     }
     return ret;
   }
-
-  _getAccentColor(color) {
-    color = color.replace("-text", "");
-    if (
-      (!this.accentColor || this.accentColor === "grey") &&
-      this.colors[color]
-    ) {
-      this.accentColor = color;
-    }
+  /**
+   * generate appstore query
+   */
+  async loadCSVData() {
+    await fetch(this.dataSource, {
+      method: this.method,
+    })
+      .then((response) => {
+        if (response.ok) return response.text();
+      })
+      .then((text) => {
+        this.tableData = text;
+        this.handleResponse();
+      });
   }
 }
 window.customElements.define(CsvRender.tag, CsvRender);

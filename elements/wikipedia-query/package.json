@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/citation-element": "^2.7.10",
-    "@polymer/iron-ajax": "^3.0.0",
+    "@lrnwebcomponents/intersection-element": "^2.7.10",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

@@ -9,8 +9,6 @@ import { autorun, toJS } from "mobx";
  * `site-footer`
  * `A basic site footer`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 class SiteFooter extends LitElement {

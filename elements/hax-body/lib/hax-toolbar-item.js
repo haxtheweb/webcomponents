@@ -20,7 +20,7 @@ class HaxToolbarItem extends LitElement {
         }
         :host([disabled]) {
           pointer-events: none;
-          opacity: 0.5;
+          opacity: 0.8;
         }
         :host([danger]) {
           --hax-contextual-action-hover-color: var(
@@ -161,6 +161,12 @@ class HaxToolbarItem extends LitElement {
           --simple-tooltip-duration-out: 0;
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
+        }
+        simple-icon {
+          --simple-colors-default-theme-accent-8: white;
+        }
+        :host([disabled]) simple-icon {
+          --simple-colors-default-theme-accent-8: unset;
         }
       `,
     ];

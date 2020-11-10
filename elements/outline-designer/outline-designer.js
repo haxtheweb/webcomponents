@@ -12,7 +12,7 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@polymer/paper-progress/paper-progress.js";
+import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";
@@ -103,11 +103,11 @@ class OutlineDesigner extends PolymerElement {
           opacity: 0.8;
         }
 
-        paper-progress {
+        simple-progress {
           display: block;
           width: 100%;
-          --paper-progress-active-color: rgba(255, 255, 255, 0.5);
-          --paper-progress-container-color: transparent;
+          --simple-progress-active-color: rgba(255, 255, 255, 0.5);
+          --simple-progress-container-color: transparent;
         }
 
         .card-wrapper {
@@ -527,12 +527,10 @@ class OutlineDesigner extends PolymerElement {
             ></simple-icon-button>
             <simple-tooltip for="helpbutton">Help</simple-tooltip>
           </div>
-          <paper-progress
-            value="10"
+          <simple-progress
             indeterminate
-            bottom-item
-            hidden$="[[!__loading]]"
-          ></paper-progress>
+            disabled$="[[!__loading]]"
+          ></simple-progress>
         </app-toolbar>
       </app-header>
       <iron-pages selected="[[selectedView]]">

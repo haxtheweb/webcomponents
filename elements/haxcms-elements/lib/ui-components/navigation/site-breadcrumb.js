@@ -9,8 +9,6 @@ import { autorun, toJS } from "mobx";
  * `site-breadcrumb`
  * `A basic breadcrumb of links based on the active state in HAXcms on JSON Outline Schema`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 class SiteBreadcrumb extends LitElement {

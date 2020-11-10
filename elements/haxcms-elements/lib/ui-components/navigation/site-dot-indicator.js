@@ -9,8 +9,6 @@ import { autorun, toJS } from "mobx";
  * `site-dot-indicator`
  * `list of items based on manifest`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 class SiteDotIndicator extends LitElement {

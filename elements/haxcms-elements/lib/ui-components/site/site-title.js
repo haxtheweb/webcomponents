@@ -6,10 +6,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `site-title`
  * `Title of the site`
  *
@@ -27,6 +23,20 @@ class SiteTitle extends LitElement {
           display: block;
           text-rendering: optimizelegibility;
           position: relative;
+        }
+        a {
+          display: var(--site-title-link-display, block);
+          text-decoration: var(--site-title-link-text-decoration);
+        }
+        a h1 {
+          text-rendering: optimizelegibility;
+          font-family: var(--site-title-heading-font-family);
+          font-size: var(--site-title-heading-font-size);
+          margin: var(--site-title-heading-margin);
+          padding: var(--site-title-heading-padding);
+          text-align: var(--site-title-heading-text-align);
+          text-rendering: var(--site-title-heading-text-rendering);
+          font-weight: var(--site-title-heading-font-weight);
         }
       `,
     ];
@@ -58,22 +68,6 @@ class SiteTitle extends LitElement {
    */
   render() {
     return html`
-      <custom-style>
-        <style>
-          a {
-            @apply --site-title-link;
-          }
-          a:hover,
-          a:focus,
-          a:active {
-            @apply --site-title-link-hover;
-          }
-          a h1 {
-            text-rendering: optimizelegibility;
-            @apply --site-title-heading;
-          }
-        </style>
-      </custom-style>
       <a
         href="${this.homeLink}"
         title="${this.label}"

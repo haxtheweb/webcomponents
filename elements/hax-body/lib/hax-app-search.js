@@ -1,6 +1,5 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 
@@ -102,13 +101,6 @@ class HaxAppSearch extends SimpleColors {
    */
   render() {
     return html`
-      <iron-ajax
-        id="request"
-        handle-as="json"
-        @last-response-changed="${this.requestDataChanged}"
-        @loading-changed="${this._loadingChanged}"
-        debounce-duration="200"
-      ></iron-ajax>
       ${this.tos.length > 0
         ? html`
             <div class="tos-text">Terms of service:</div>
@@ -160,25 +152,43 @@ class HaxAppSearch extends SimpleColors {
       </div>
     `;
   }
-  requestDataChanged(e) {
-    this.requestData = e.detail.value;
+  /**
+   * generate appstore query
+   */
+  async loadAppData() {
+    this.loading = true;
+    let url = this.requestUrl(this.requestEndPoint, this.requestParams);
+    await fetch(url, {
+      headers: this.headers,
+      method: this.method,
+    })
+      .then((response) => {
+        if (response.ok) return response.json();
+      })
+      .then((json) => {
+        this._requestDataChanged(json);
+      });
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (["auto", "method", "headers"].includes(propName)) {
-        this.shadowRoot.querySelector("#request")[propName] = this[propName];
-      }
-      if (propName == "requestEndPoint" || propName == "requestParams") {
-        this.shadowRoot.querySelector("#request").url = this.requestUrl(
-          this.requestEndPoint,
-          this.requestParams
-        );
+      if (
+        [
+          "auto",
+          "method",
+          "headers",
+          "requestEndPoint",
+          "requestParams",
+        ].includes(propName)
+      ) {
+        clearTimeout(this.__debounce);
+        this.__debounce = setTimeout(() => {
+          if (this.requestEndPoint) {
+            this.loadAppData();
+          }
+        }, 100);
       }
       if (propName == "activeApp") {
-        this._resetAppSearch(this[propName], oldValue);
-      }
-      if (propName == "requestData") {
-        this._requestDataChanged(this[propName], oldValue);
+        this._resetAppSearch(this[propName]);
       }
     });
   }
@@ -209,7 +219,7 @@ class HaxAppSearch extends SimpleColors {
     return url;
   }
   /**
-   * from iron-ajax for queryString but without encoding param
+   * from queryString but without encoding param
    */
   queryStringData(params) {
     var queryParts = [];
@@ -321,7 +331,7 @@ class HaxAppSearch extends SimpleColors {
   /**
    * Active app has changed.
    */
-  _resetAppSearch(newValue, oldValue) {
+  _resetAppSearch(newValue) {
     if (newValue && newValue.details) {
       let app = newValue;
       var requestParams = {};
@@ -398,12 +408,8 @@ class HaxAppSearch extends SimpleColors {
   /**
    * Callback for when media has been updated via the end point
    */
-  _requestDataChanged(newValue, oldValue) {
-    if (
-      this.resultMap &&
-      typeof newValue != {} &&
-      typeof oldValue !== typeof undefined
-    ) {
+  _requestDataChanged(newValue) {
+    if (this.resultMap && typeof newValue != {}) {
       let media = [];
       let map = this.resultMap;
       let data = [];
@@ -527,10 +533,7 @@ class HaxAppSearch extends SimpleColors {
         this.media = [...media];
       }
     }
-  }
-
-  _loadingChanged(e) {
-    this.loading = e.detail.value;
+    this.loading = false;
   }
 
   /**

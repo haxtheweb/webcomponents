@@ -1,4 +1,4 @@
-${!this.isA11yMedia
+${this.elementVisible ? html`${!this.isA11yMedia
     ? html`
       <div class="responsive-video-container" .lang="${this.lang || undefined}">
         ${this.sandboxed ? html``: html`
@@ -11,6 +11,7 @@ ${!this.isA11yMedia
           </webview>`}
         ${!(!this.sandboxed && this.iframed) ? html``: html`
           <iframe
+            loading="lazy"
             resource="${this.schemaResourceID}-video"
             .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
             width="${this.width}"
@@ -55,4 +56,4 @@ ${!this.isA11yMedia
         >
         <slot></slot>
       </a11y-media-player>`
-}
+}` : ``}

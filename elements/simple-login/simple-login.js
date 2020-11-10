@@ -4,7 +4,7 @@
  */
 import { css, html } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/paper-progress/paper-progress.js";
+import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 /**
  * `simple-login`
@@ -82,7 +82,7 @@ class SimpleLogin extends SimpleColors {
           margin: 0;
         }
 
-        paper-progress {
+        simple-progress {
           width: 100%;
         }
 
@@ -101,10 +101,7 @@ class SimpleLogin extends SimpleColors {
   // render function
   render() {
     return html` <div id="loginform">
-      <paper-progress
-        ?disabled="${!this.loading}"
-        indeterminate
-      ></paper-progress>
+      <simple-progress ?disabled="${!this.loading}"></simple-progress>
       <div id="loginformcontent">
         <h1>${this.title}</h1>
         <h2>${this.subtitle}</h2>

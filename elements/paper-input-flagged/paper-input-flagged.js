@@ -5,6 +5,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 /**
 `paper-input-flagged`
 A LRN element
@@ -106,8 +108,6 @@ class PaperInputFlagged extends LitElement {
         status: "warning",
       },
     ];
-    import("@polymer/paper-input/paper-input.js");
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -138,7 +138,7 @@ class PaperInputFlagged extends LitElement {
   }
   render() {
     return html`
-      <paper-input
+      <simple-fields-field
         label="${this.label}"
         value="${this.value}"
         @value-changed="${this.valueEvent}"
@@ -148,7 +148,7 @@ class PaperInputFlagged extends LitElement {
         maxlength="${this.maxlength}"
       >
         <simple-icon id="icon" icon="${this.icon}" slot="prefix"></simple-icon>
-      </paper-input>
+      </simple-fields-field>
       <div class="element-invisible">${this.__activeMessage}</div>
       <simple-tooltip
         for="icon"

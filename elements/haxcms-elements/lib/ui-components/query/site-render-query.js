@@ -9,8 +9,6 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
  * `site-render-query`
  * `Render a query result as an iron-list`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 class SiteRenderQuery extends LitElement {

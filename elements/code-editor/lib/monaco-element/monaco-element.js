@@ -152,14 +152,9 @@ class MonacoElement extends LitElement {
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
     if (!this.__init) {
-      if ("requestIdleCallback" in window) {
-        // Use requestIdleCallback to schedule work.
-        requestIdleCallback(this.initIFrame.bind(this), { timeout: 1000 });
-      } else {
-        setTimeout(() => {
-          this.initIFrame();
-        }, 1000);
-      }
+      setTimeout(() => {
+        this.initIFrame();
+      }, 500);
     }
   }
   connectedCallback() {

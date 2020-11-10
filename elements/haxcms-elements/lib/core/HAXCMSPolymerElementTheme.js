@@ -4,6 +4,8 @@
  */
 import { PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
+import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
+setPassiveTouchGestures(true);
 /**
  * PolymerElement Version of HAXCMSTheme
  */

@@ -10,8 +10,6 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 class SiteSearch extends LitElement {

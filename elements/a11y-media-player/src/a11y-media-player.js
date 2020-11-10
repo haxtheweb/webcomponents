@@ -4,11 +4,11 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import { SimpleToastStore } from "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/simple-range-input/simple-range-input.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
+import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";
@@ -52,7 +52,7 @@ Custom property | Description | Default
 Custom property | Description | Default 
 ----------------|-------------|----------
 `--a11y-media-scrollbar-width` | default width of scrollbars | `5px`
-`--a11y-media-controls-font-family` | font-family of controls | `--paper-font-subhead_-_font-family`
+`--a11y-media-controls-font-family` | font-family of controls
 
 #### Buttons
 Custom property | Description | Default
@@ -163,14 +163,11 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     });
     setTimeout(() => {
       import("@lrnwebcomponents/simple-search/simple-search.js");
+      import("@lrnwebcomponents/simple-range-input/simple-range-input.js");
       import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
-      import("@polymer/paper-toggle-button/paper-toggle-button.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       import(
         "@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js"
-      );
-      import(
-        "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js"
       );
     }, 0);
   }
