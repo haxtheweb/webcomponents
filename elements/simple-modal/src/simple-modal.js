@@ -136,10 +136,14 @@ class SimpleModal extends LitElement {
     ];
   }
   render() {
-    return html` <web-dialog
+    return html`<web-dialog
       id="dialog"
       center
       role="dialog"
+      aria-describedby="simple-modal-content"
+      aria-label="${this._getAriaLabel(this.title)}"
+      aria-labelledby="${this._getAriaLabelledby(this.title)}"
+      aria-modal="true"
       ?open="${this.opened}"
       @open="${this.open}"
       @close="${this.close}"
