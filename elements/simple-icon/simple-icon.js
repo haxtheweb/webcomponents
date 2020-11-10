@@ -35,6 +35,9 @@ class SimpleIcon extends SimpleColors {
           height: var(--simple-icon-height, 24px);
           width: var(--simple-icon-width, 24px);
         }
+        :host([hidden]) {
+          display: none;
+        }
         svg {
           height: var(--simple-icon-height, 24px);
           width: var(--simple-icon-width, 24px);
