@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 /**
  * `video-player`
@@ -17,7 +18,9 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
  * @demo demo/index.html
  * @element video-player
  */
-class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
+class VideoPlayer extends IntersectionObserverMixin(
+  MediaBehaviorsVideo(SchemaBehaviors(SimpleColors))
+) {
   //styles function
   static get styles() {
     return [
@@ -39,74 +42,77 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
 
   // render function
   render() {
-    return html` ${!this.isA11yMedia
-      ? html` <div
-            class="responsive-video-container"
-            .lang="${this.lang || undefined}"
-          >
-            ${this.sandboxed
-              ? html``
-              : html` <webview
-                  resource="${this.schemaResourceID}-video"
-                  .src="${(this.sourceData &&
-                    this.sourceData[0] &&
-                    this.sourceData[0].src) ||
-                  undefined}"
-                  .width="${this.width || undefined}"
-                  .height="${this.height || undefined}"
-                  frameborder="0"
-                >
-                </webview>`}
-            ${!(!this.sandboxed && this.iframed)
-              ? html``
-              : html`
-                  <iframe
-                    resource="${this.schemaResourceID}-video"
-                    .src="${(this.sourceData &&
-                      this.sourceData[0] &&
-                      this.sourceData[0].src) ||
-                    undefined}"
-                    width="${this.width}"
-                    height="${this.height}"
-                    frameborder="0"
-                    webkitallowfullscreen=""
-                    mozallowfullscreen=""
-                    allowfullscreen=""
-                  ></iframe>
-                `}
-          </div>
-          <div id="videocaption" class="video-caption">
-            <p>
-              ${this.mediaTitle}
-              <span class="media-type print-only">(embedded media)</span>
-            </p>
-            <slot name="caption"></slot>
-          </div>`
-      : html` <a11y-media-player
-          accent-color="${this.accentColor}"
-          ?audio-only="${this.audioOnly}"
-          ?dark="${this.dark}"
-          ?dark-transcript="${this.darkTranscript}"
-          ?disable-interactive="${this.disableInteractive}"
-          ?hide-timestamps="${this.hideTimestamps}"
-          ?hide-transcript="${this.hideTranscript}"
-          id="${this.playerId}"
-          lang="${this.lang || "en"}"
-          ?linkable="${this.linkable}"
-          preload="${this.preload || "metadata"}"
-          media-title="${this.mediaTitle || ""}"
-          .sources="${this.sourceProperties}"
-          ?stand-alone="${this.standAlone}"
-          sticky-corner="${this.stickyCorner || "top-right"}"
-          .thumbnail-src="${this.thumbnailSrc}"
-          .tracks="${this.trackProperties}"
-          .crossorigin="${this.crossorigin || "anonymous"}"
-          .width="${this.width}"
-          .height="${this.height}"
-          .youtubeId="${this.youtubeId || undefined}"
-        >
-          <slot></slot>
-        </a11y-media-player>`}`;
+    return html` ${this.elementVisible
+      ? html`${!this.isA11yMedia
+          ? html` <div
+                class="responsive-video-container"
+                .lang="${this.lang || undefined}"
+              >
+                ${this.sandboxed
+                  ? html``
+                  : html` <webview
+                      resource="${this.schemaResourceID}-video"
+                      .src="${(this.sourceData &&
+                        this.sourceData[0] &&
+                        this.sourceData[0].src) ||
+                      undefined}"
+                      .width="${this.width || undefined}"
+                      .height="${this.height || undefined}"
+                      frameborder="0"
+                    >
+                    </webview>`}
+                ${!(!this.sandboxed && this.iframed)
+                  ? html``
+                  : html`
+                      <iframe
+                        loading="lazy"
+                        resource="${this.schemaResourceID}-video"
+                        .src="${(this.sourceData &&
+                          this.sourceData[0] &&
+                          this.sourceData[0].src) ||
+                        undefined}"
+                        width="${this.width}"
+                        height="${this.height}"
+                        frameborder="0"
+                        webkitallowfullscreen=""
+                        mozallowfullscreen=""
+                        allowfullscreen=""
+                      ></iframe>
+                    `}
+              </div>
+              <div id="videocaption" class="video-caption">
+                <p>
+                  ${this.mediaTitle}
+                  <span class="media-type print-only">(embedded media)</span>
+                </p>
+                <slot name="caption"></slot>
+              </div>`
+          : html` <a11y-media-player
+              accent-color="${this.accentColor}"
+              ?audio-only="${this.audioOnly}"
+              ?dark="${this.dark}"
+              ?dark-transcript="${this.darkTranscript}"
+              ?disable-interactive="${this.disableInteractive}"
+              ?hide-timestamps="${this.hideTimestamps}"
+              ?hide-transcript="${this.hideTranscript}"
+              id="${this.playerId}"
+              lang="${this.lang || "en"}"
+              ?linkable="${this.linkable}"
+              preload="${this.preload || "metadata"}"
+              media-title="${this.mediaTitle || ""}"
+              .sources="${this.sourceProperties}"
+              ?stand-alone="${this.standAlone}"
+              sticky-corner="${this.stickyCorner || "top-right"}"
+              .thumbnail-src="${this.thumbnailSrc}"
+              .tracks="${this.trackProperties}"
+              .crossorigin="${this.crossorigin || "anonymous"}"
+              .width="${this.width}"
+              .height="${this.height}"
+              .youtubeId="${this.youtubeId || undefined}"
+            >
+              <slot></slot>
+            </a11y-media-player>`}`
+      : ``}`;
   }
 
   // haxProperty definition

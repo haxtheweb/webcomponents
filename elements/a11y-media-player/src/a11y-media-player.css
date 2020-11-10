@@ -12,18 +12,6 @@
   --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9, #333333);
   --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8, #444444);
   --a11y-media-disabled-color: var(--simple-colors-default-theme-grey-5, #bbbbbb);
-  --paper-listbox-background-color: var(--a11y-media-settings-menu-bg-color);
-  --paper-listbox-color: var(--a11y-media-settings-menu-color);
-  --paper-listbox-padding: 0;
-  --paper-item-selected-color: var(--a11y-media-settings-menu-hover-color);
-  --paper-item-focused-color: var(--a11y-media-settings-menu-hover-color);
-  --paper-menu-button-background-color: var(--a11y-media-settings-menu-bg-color);
-  --paper-menu-button-color: var(--a11y-media-settings-menu-color);
-  --paper-menu-button-dropdown-background: var(--a11y-media-settings-menu-bg-color);
-  --paper-menu-button-dropdown-background-color: var(--a11y-media-settings-menu-bg-color);
-  --paper-menu-button-dropdown-color: var(--a11y-media-settings-menu-color);
-  --paper-menu-button-dropdown-margin-top: 0 !important;
-  --paper-menu-button-dropdown-margin-bottom: 0 !important;
   border: 1px solid var(--a11y-media-border-color, var(--simple-colors-default-theme-grey-3));
 
   /* settings */
@@ -307,7 +295,7 @@ absolute-position-behavior simple-field-field {
 
 .setting-text {
   margin-right: 1em;
-  font-family: var(--a11y-media-controls-font-family, var(--paper-font-subhead_-_font-family));
+  font-family: var(--a11y-media-controls-font-family);
 }
 
 .setting-control {
@@ -324,7 +312,7 @@ absolute-position-behavior simple-field-field {
   border: none;
   position: relative;
   font-size: 85%;
-  font-family: var(--a11y-media-controls-font-family, var(--paper-font-subhead_-_font-family));
+  font-family: var(--a11y-media-controls-font-family);
 }
 
 .play-status.control-bar {

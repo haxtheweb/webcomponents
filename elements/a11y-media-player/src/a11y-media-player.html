@@ -262,13 +262,14 @@
         <div id="loop-label" class="setting-text">
           ${this._getLocal(this.localization,'loop','label')}
         </div>
-        <paper-toggle-button
+        <simple-fields-field
+          type="checkbox"
           id="loop"
           class="setting-control"
           aria-labelledby="loop-label"
-          @change="${e => this.toggleLoop()}"
-          ?checked="${this.loop}">
-        </paper-toggle-button>
+          @value-change="${e => this.toggleLoop()}"
+          ?value="${this.loop}">
+        </simple-fields-field>
       </div>
       <div class="setting">                      
         <div id="speed-label" class="setting-text">

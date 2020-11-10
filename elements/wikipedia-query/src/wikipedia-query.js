@@ -51,18 +51,18 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   }
   // LitElement render function
   render() {
-    return html`
-      <h3 .hidden="${this.hideTitle}">${this._title}</h3>
-      <div id="result"></div>
-      <citation-element
-        creator="{Wikipedia contributors}"
-        scope="sibling"
-        license="by-sa"
-        title="${this.search} --- {Wikipedia}{,} The Free Encyclopedia"
-        source="https://en.wikipedia.org/w/index.php?title=${this.search}"
-        date="${this.__now}"
-      ></citation-element>
-    `;
+    return html` ${this.elementVisible
+      ? html` <h3 .hidden="${this.hideTitle}">${this._title}</h3>
+          <div id="result"></div>
+          <citation-element
+            creator="{Wikipedia contributors}"
+            scope="sibling"
+            license="by-sa"
+            title="${this.search} --- {Wikipedia}{,} The Free Encyclopedia"
+            source="https://en.wikipedia.org/w/index.php?title=${this.search}"
+            date="${this.__now}"
+          ></citation-element>`
+      : ``}`;
   }
   updateArticle(search) {
     fetch(

@@ -4,11 +4,11 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import { SimpleToastStore } from "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/simple-range-input/simple-range-input.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
+import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";
@@ -52,7 +52,7 @@ Custom property | Description | Default
 Custom property | Description | Default 
 ----------------|-------------|----------
 `--a11y-media-scrollbar-width` | default width of scrollbars | `5px`
-`--a11y-media-controls-font-family` | font-family of controls | `--paper-font-subhead_-_font-family`
+`--a11y-media-controls-font-family` | font-family of controls
 
 #### Buttons
 Custom property | Description | Default
@@ -143,32 +143,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
             --simple-colors-default-theme-grey-5,
             #bbbbbb
           );
-          --paper-listbox-background-color: var(
-            --a11y-media-settings-menu-bg-color
-          );
-          --paper-listbox-color: var(--a11y-media-settings-menu-color);
-          --paper-listbox-padding: 0;
-          --paper-item-selected-color: var(
-            --a11y-media-settings-menu-hover-color
-          );
-          --paper-item-focused-color: var(
-            --a11y-media-settings-menu-hover-color
-          );
-          --paper-menu-button-background-color: var(
-            --a11y-media-settings-menu-bg-color
-          );
-          --paper-menu-button-color: var(--a11y-media-settings-menu-color);
-          --paper-menu-button-dropdown-background: var(
-            --a11y-media-settings-menu-bg-color
-          );
-          --paper-menu-button-dropdown-background-color: var(
-            --a11y-media-settings-menu-bg-color
-          );
-          --paper-menu-button-dropdown-color: var(
-            --a11y-media-settings-menu-color
-          );
-          --paper-menu-button-dropdown-margin-top: 0 !important;
-          --paper-menu-button-dropdown-margin-bottom: 0 !important;
           border: 1px solid
             var(
               --a11y-media-border-color,
@@ -536,10 +510,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
 
         .setting-text {
           margin-right: 1em;
-          font-family: var(
-            --a11y-media-controls-font-family,
-            var(--paper-font-subhead_-_font-family)
-          );
+          font-family: var(--a11y-media-controls-font-family);
         }
 
         .setting-control {
@@ -556,10 +527,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
           border: none;
           position: relative;
           font-size: 85%;
-          font-family: var(
-            --a11y-media-controls-font-family,
-            var(--paper-font-subhead_-_font-family)
-          );
+          font-family: var(--a11y-media-controls-font-family);
         }
 
         .play-status.control-bar {
@@ -1249,14 +1217,15 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               <div id="loop-label" class="setting-text">
                 ${this._getLocal(this.localization, "loop", "label")}
               </div>
-              <paper-toggle-button
+              <simple-fields-field
+                type="checkbox"
                 id="loop"
                 class="setting-control"
                 aria-labelledby="loop-label"
-                @change="${(e) => this.toggleLoop()}"
-                ?checked="${this.loop}"
+                @value-change="${(e) => this.toggleLoop()}"
+                ?value="${this.loop}"
               >
-              </paper-toggle-button>
+              </simple-fields-field>
             </div>
             <div class="setting">
               <div id="speed-label" class="setting-text">
@@ -1866,14 +1835,11 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     });
     setTimeout(() => {
       import("@lrnwebcomponents/simple-search/simple-search.js");
+      import("@lrnwebcomponents/simple-range-input/simple-range-input.js");
       import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
-      import("@polymer/paper-toggle-button/paper-toggle-button.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       import(
         "@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js"
-      );
-      import(
-        "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js"
       );
     }, 0);
   }

@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 /**
  * `video-player`
@@ -17,7 +18,9 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
  * @demo demo/index.html
  * @element video-player
  */
-class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
+class VideoPlayer extends IntersectionObserverMixin(
+  MediaBehaviorsVideo(SchemaBehaviors(SimpleColors))
+) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   /**
    * Store tag name to make it easier to obtain directly.

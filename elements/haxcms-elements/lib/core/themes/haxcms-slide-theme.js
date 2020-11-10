@@ -13,8 +13,6 @@ import { autorun, toJS } from "mobx";
  * `haxcms-slide-theme`
  * `A simple slide playing theme`
  *
-
- * @polymer
  * @demo demo/index.html
  */
 class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
