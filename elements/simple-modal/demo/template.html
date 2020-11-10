@@ -9,9 +9,7 @@
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '@polymer/paper-button/paper-button.js';
-      
+      import '@polymer/iron-demo-helpers/demo-snippet.js';      
       import '../simple-modal.js';
       import "../lib/simple-modal-template.js";
     </script>
@@ -37,13 +35,13 @@
                   --simple-modal-max-height: 90vh;
               }
             </style>
-          <paper-button controls="smt1">Button 1</paper-button>
+          <button controls="smt1">Button 1</button>
           <simple-modal-template modal-id="smt1" title="simple-modal-template 1">
             <div slot="header">Simple Modal 1 Header</div>
             <p slot="content">Button 1 opens the first simple-modal-template template.</p>
-            <div slot="buttons"><paper-button dialog-dismiss>Close Modal 1</paper-button></div>
+            <div slot="buttons"><button dialog-dismiss>Close Modal 1</button></div>
           </simple-modal-template>
-          <paper-button controls="smt2">Button 2</paper-button>
+          <button controls="smt2">Button 2</button>
           <simple-modal-template modal-id="smt2" class="wide">
             <p slot="precontent">Button 2 opens the second simple-modal-template template.</p>
             <p slot="content">Button 2 opens the second simple-modal-template template.</p>

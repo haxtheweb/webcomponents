@@ -5,6 +5,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "web-dialog/index.js";
 
 /**
  * `simple-modal`
@@ -28,7 +30,188 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
  * @element simple-modal
  */
 class SimpleModal extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+
+        :host web-dialog ::slotted(*) {
+          font-size: 14px;
+          width: 100%;
+        }
+
+        #titlebar {
+          margin-top: 0;
+          padding: var(--simple-modal-titlebar-padding, 0px 16px);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: var(--simple-modal-titlebar-color, #444);
+          background-color: var(--simple-modal-titlebar-background, #ddd);
+          border-radius: 0;
+          height: var(--simple-modal-titlebar-height, 64px);
+          line-height: var(--simple-modal-titlebar-line-height, 64px);
+        }
+
+        #headerbar {
+          margin: 0;
+          padding: var(--simple-modal-header-padding, 0px 16px);
+          color: var(--simple-modal-header-color, #222);
+          background-color: var(--simple-modal-header-background, #ccc);
+        }
+
+        h2 {
+          margin-right: 8px;
+          padding: 0;
+          flex: auto;
+          font-size: 18px;
+          line-height: 18px;
+        }
+
+        #close {
+          top: 0;
+          border: var(--simple-modal-titlebar-button-border, none);
+          padding: var(--simple-modal-titlebar-button-padding, 10px 0);
+          min-width: unset;
+          text-transform: none;
+          color: var(--simple-modal-titlebar-color, #444);
+          background-color: transparent;
+        }
+
+        #close:focus {
+          opacity: 0.7;
+          outline: var(--simple-modal-titlebar-button-outline, 2px dotted grey);
+          outline-offset: var(
+            --simple-modal-titlebar-button-outline-offset,
+            2px
+          );
+        }
+
+        #close simple-icon {
+          --simple-icon-height: var(--simple-modal-titlebar-icon-height, 16px);
+          --simple-icon-width: var(--simple-modal-titlebar-icon-width, 16px);
+          color: var(--simple-modal-titlebar-color, #444);
+        }
+
+        #simple-modal-content {
+          flex-grow: 1;
+          padding: var(--simple-modal-content-padding, 8px 16px);
+          margin: 0;
+          color: var(--simple-modal-content-container-color, #222);
+          background-color: var(
+            --simple-modal-content-container-background,
+            #fff
+          );
+        }
+
+        .buttons {
+          padding: 0;
+          padding: var(--simple-modal-buttons-padding, 0);
+          margin: 0;
+          color: var(--simple-modal-buttons-color, unset);
+          background-color: var(--simple-modal-buttons-background, unset);
+        }
+
+        .buttons ::slotted(*) {
+          padding: 0;
+          margin: 0;
+          color: var(--simple-modal-button-color, --simple-modal-buttons-color);
+          background-color: var(
+            --simple-modal-button-background,
+            --simple-modal-buttons-background
+          );
+        }
+        web-dialog::part(dialog) {
+          border: 2px solid black;
+          padding: 0;
+        }
+      `,
+    ];
+  }
+  render() {
+    return html` <web-dialog
+      id="dialog"
+      center
+      role="dialog"
+      ?open="${this.opened}"
+      @open="${this.open}"
+      @close="${this.close}"
+      ?modal="${this.modal}"
+    >
+      <div id="titlebar">
+        <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
+        <div></div>
+        <simple-icon-button
+          id="close"
+          icon="${this.closeIcon}"
+          @click="${this.close}"
+          ?hidden="${!this.opened}"
+          label="${this.closeLabel}"
+        >
+        </simple-icon-button>
+      </div>
+      <div id="headerbar"><slot name="header"></slot></div>
+      <div id="simple-modal-content">
+        <slot name="content"></slot>
+      </div>
+      <div class="buttons">
+        <slot name="buttons"></slot>
+      </div>
+    </web-dialog>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * heading / label of the modal
+       */
+      title: {
+        type: String,
+      },
+      /**
+       * open state
+       */
+      opened: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * Close label
+       */
+      closeLabel: {
+        attribute: "close-label",
+        type: String,
+      },
+      /**
+       * Close icon
+       */
+      closeIcon: {
+        type: String,
+        attribute: "close-icon",
+      },
+      /**
+       * The element that invoked this. This way we can track our way back accessibly
+       */
+      invokedBy: {
+        type: Object,
+      },
+      /**
+       * support for modal flag
+       */
+      modal: {
+        type: Boolean,
+      },
+    };
+  }
 
   /**
    * convention
@@ -46,9 +229,6 @@ class SimpleModal extends LitElement {
     this.closeLabel = "Close";
     this.closeIcon = "close";
     this.modal = false;
-    setTimeout(() => {
-      import("@polymer/paper-dialog/paper-dialog.js");
-    }, 0);
   }
   /**
    * LitElement
@@ -59,17 +239,6 @@ class SimpleModal extends LitElement {
         this._openedChanged(this[propName]);
       }
     });
-  }
-  /**
-   * LitElement ready
-   */
-  firstUpdated() {
-    this.shadowRoot
-      .querySelector("#simple-modal-content")
-      .addEventListener(
-        "neon-animation-finish",
-        this._ironOverlayClosed.bind(this)
-      );
   }
   /**
    * HTMLElement
@@ -88,13 +257,6 @@ class SimpleModal extends LitElement {
     window.removeEventListener("simple-modal-hide", this.close.bind(this));
     window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
     super.disconnectedCallback();
-  }
-  /**
-   * Ensure everything is visible in what's been expanded.
-   */
-  _resizeContent(e) {
-    // fake a resize event to make contents happy
-    window.dispatchEvent(new Event("resize"));
   }
   /**
    * show event call to open the modal and display it's content
@@ -212,41 +374,30 @@ class SimpleModal extends LitElement {
       }
     }
     // minor delay to help the above happen prior to opening
-    setTimeout(() => {
-      this.opened = true;
-      this.shadowRoot.querySelector("#close").focus();
-      this._resizeContent();
-    }, 100);
-  }
-  /**
-   * check state and if we should clean up on close.
-   * This keeps the DOM tiddy and allows animation to happen gracefully.
-   */
-  animationEnded(e) {
-    // wipe the slot of our modal
-    this.title = "";
-    while (this.firstChild !== null) {
-      this.removeChild(this.firstChild);
-    }
-    if (this.invokedBy) {
-      setTimeout(() => {
-        this.invokedBy.focus();
-      }, 500);
-    }
+    this.opened = true;
   }
   /**
    * Close the modal and do some clean up
    */
   close() {
-    this.shadowRoot.querySelector("#dialog").close();
+    this.opened = false;
   }
-  openedChangedEvent(e) {
-    this.opened = e.detail.value;
+  open() {
+    this.opened = true;
   }
   // Observer opened for changes
   _openedChanged(newValue) {
     if (typeof newValue !== typeof undefined && !newValue) {
-      this.animationEnded();
+      // wipe the slot of our modal
+      this.title = "";
+      while (this.firstChild !== null) {
+        this.removeChild(this.firstChild);
+      }
+      if (this.invokedBy) {
+        setTimeout(() => {
+          this.invokedBy.focus();
+        }, 500);
+      }
       const evt = new CustomEvent("simple-modal-closed", {
         bubbles: true,
         cancelable: true,
@@ -257,6 +408,13 @@ class SimpleModal extends LitElement {
       });
       this.dispatchEvent(evt);
     } else if (newValue) {
+      // p dialog backport; a nice, simple solution for close buttons
+      let children = this.querySelectorAll("[dialog-dismiss]");
+      children.forEach((el) => {
+        el.addEventListener("click", (e) => {
+          this.close();
+        });
+      });
       const evt = new CustomEvent("simple-modal-opened", {
         bubbles: true,
         cancelable: true,
@@ -279,10 +437,6 @@ class SimpleModal extends LitElement {
    */
   _getAriaLabel(title) {
     return !title ? "Modal Dialog" : null;
-  }
-  _ironOverlayClosed(e) {
-    e.preventDefault();
-    e.stopPropagation();
   }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);

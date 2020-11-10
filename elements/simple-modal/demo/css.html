@@ -10,7 +10,6 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '@polymer/paper-button/paper-button.js';
       import '@lrnwebcomponents/simple-fields/lib/simple-fields-container.js';
       import '../simple-modal.js';
     </script>
@@ -32,8 +31,8 @@
       <h3>Basic simple-modal demo</h3>
       <demo-snippet>
         <template>
-          <paper-button id="button1">Open 1</paper-button>
-          <paper-button id="button2">Pull some div in</paper-button>
+          <button id="button1">Open 1</button>
+          <button id="button2">Pull some div in</button>
           <style>
             simple-modal#button1 {
                 --simple-modal-width: 300px;
@@ -51,7 +50,7 @@
           <script>
             // this is how you prep the modal
             const modal = window.SimpleModal.requestAvailability();
-            document.getElementById('button1').addEventListener('tap', () => {
+            document.getElementById('button1').addEventListener('click', () => {
               let p = document.createElement("div");
               p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';
               const evt = new CustomEvent("simple-modal-show", {
@@ -66,10 +65,9 @@
               });
               document.getElementById('button1').dispatchEvent(evt);
             });
-            document.getElementById('button2').addEventListener('tap', () => {
+            document.getElementById('button2').addEventListener('click', () => {
               let p = document.createElement("p");
               p.appendChild(document.getElementById('somediv').cloneNode(true));
-              p.appendChild(document.getElementById('sitetheme').cloneNode(true));
               const evt = new CustomEvent("simple-modal-show", {
                 bubbles: true,
                 cancelable: true,
