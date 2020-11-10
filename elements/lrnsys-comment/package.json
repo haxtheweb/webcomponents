@@ -59,7 +59,6 @@
     "@polymer/marked-element": "^3.0.0",
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-badge": "^3.0.0",    
-    "@polymer/paper-dialog": "^3.0.0",
     "@polymer/paper-dropdown-menu": "^3.0.1",
     "@polymer/paper-item": "^3.0.0",
     "@polymer/paper-listbox": "^3.0.0",

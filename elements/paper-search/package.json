@@ -48,10 +48,8 @@
     "@lrnwebcomponents/hax-iconset": "^2.7.10",
     "@polymer/iron-input": "^3.0.0",
     "@polymer/iron-list": "^3.0.2",
-    "@polymer/paper-badge": "^3.0.0",
-    
+    "@polymer/paper-badge": "^3.0.0",    
     "@polymer/paper-checkbox": "^3.0.0",
-    "@polymer/paper-dialog": "^3.0.0",
     "@polymer/paper-item": "^3.0.0",
     "@polymer/paper-ripple": "^3.0.0",
     "@polymer/paper-spinner": "^3.0.0",
