@@ -132,7 +132,12 @@ class PaperAvatar extends LitElement {
         ?hidden="${this.jdenticonExists && this.jdenticon}"
       >
         ${this.icon
-          ? html` <simple-icon icon="${this.icon}"></simple-icon> `
+          ? html`
+              <simple-icon
+                icon="${this.icon}"
+                accent-color="${this.accentColor}"
+              ></simple-icon>
+            `
           : html`
               <span ?two-chars="${this.twoChars}"
                 >${this._label(this.label)}
@@ -158,6 +163,7 @@ class PaperAvatar extends LitElement {
    */
   constructor() {
     super();
+    this.dark = false;
     this.label = null;
     this.src = null;
     this.jdenticonExists = false;
@@ -179,6 +185,19 @@ class PaperAvatar extends LitElement {
    */
   static get properties() {
     return {
+      /**
+       * Optional simple-icon
+       */
+      accentColor: {
+        type: String,
+        attribute: "accent-color",
+      },
+      /**
+       * dark mode
+       */
+      dark: {
+        type: Boolean,
+      },
       /**
        * Optional simple-icon
        */
@@ -239,10 +258,11 @@ class PaperAvatar extends LitElement {
           window.md5(label)
         );
       }
-      this.style.setProperty(
-        "--paper-avatar-calculated-bg",
-        this._parseColor(label)
-      );
+      if (!this.accentColor)
+        this.style.setProperty(
+          "--paper-avatar-calculated-bg",
+          this._parseColor(label)
+        );
     }
   }
   // simple path from a url modifier

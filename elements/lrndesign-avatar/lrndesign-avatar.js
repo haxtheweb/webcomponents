@@ -61,6 +61,9 @@ class LrndesignAvatar extends SimpleColors {
   // render function
   render() {
     return html` <paper-avatar
+      accent-color="${this.accentColor}"
+      ?allow-grey="${this.allowGrey}"
+      ?dark="${this.dark}"
       .label="${this.label || ""}"
       .icon="${this.icon || ""}"
       .src="${this.src || ""}"
