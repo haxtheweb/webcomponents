@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "@lrnwebcomponents/rich-text-editor/lib/rich-text-editor-styles.js";
-import { RichTextEditorButtonStyles } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button-styles.js";
+import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
+import { RichTextEditorButtonStyles } from "../buttons/rich-text-editor-button-styles.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 /**
