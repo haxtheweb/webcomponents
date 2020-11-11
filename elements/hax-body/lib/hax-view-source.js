@@ -45,7 +45,6 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
       <div class="buttons">
         <hax-tray-button
           label="Update source"
-          ?color-meaning="${true}"
           icon="icons:code"
           @click="${this.importContent.bind(this)}"
         >

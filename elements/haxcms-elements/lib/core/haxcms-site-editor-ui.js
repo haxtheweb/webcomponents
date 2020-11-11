@@ -199,6 +199,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       ></simple-icon-button>
       <simple-icon-button
         id="cancelbutton"
+        dark
         icon="icons:cancel"
         @click="${this._cancelButtonTap}"
         .hidden="${!this.editMode}"

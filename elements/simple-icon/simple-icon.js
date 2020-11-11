@@ -43,6 +43,12 @@ class SimpleIcon extends SimpleColors {
           height: var(--simple-icon-height, 24px);
           width: var(--simple-icon-width, 24px);
         }
+        :host([accent-color="white"]) {
+          --simple-colors-default-theme-accent-8: black;
+        }
+        :host([dark][accent-color="white"]) {
+          --simple-colors-default-theme-accent-8: white;
+        }
         feFlood {
           flood-color: var(--simple-colors-default-theme-accent-8, #000000);
         }
@@ -97,6 +103,7 @@ class SimpleIcon extends SimpleColors {
   constructor() {
     super();
     this.noColorize = false;
+    this.accentColor = "white";
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
