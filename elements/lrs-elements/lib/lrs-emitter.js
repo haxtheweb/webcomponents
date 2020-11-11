@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, css, html } from "lit-element/lit-element.js";
+import { LitElement } from "lit-element/lit-element.js";
 import { IntersectionObserver } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 /**
  * `lrs-emitter`
@@ -10,22 +10,6 @@ import { IntersectionObserver } from "@lrnwebcomponents/intersection-element/lib
  * @demo demo/index.html
  */
 class LrsEmitter extends IntersectionObserver(LitElement) {
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-        }
-        :host([hidden]) {
-          display: none;
-        }
-      `,
-    ];
-  }
-  render() {
-    return html`<slot></slot>`;
-  }
-
   // haxProperty definition
   static get haxProperties() {
     return {
@@ -44,8 +28,8 @@ class LrsEmitter extends IntersectionObserver(LitElement) {
           },
         ],
         meta: {
-          author: "heyMP",
-          owner: "PSU",
+          author: "elmsln",
+          owner: "Penn State",
         },
       },
       settings: {
