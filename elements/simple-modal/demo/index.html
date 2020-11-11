@@ -11,7 +11,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@lrnwebcomponents/simple-fields/lib/simple-fields-container.js';
-      import '../simple-modal.js';
+      import { SimpleModalStore } from '../simple-modal.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -34,8 +34,6 @@
           <button id="button2">Pull some div in</button>
           <button id="button3">Fire an event</button>
         <script>
-          // this is how you prep the modal
-          const modal = window.SimpleModal.requestAvailability();
           document.getElementById('button1').addEventListener('click', () => {
             let p = document.createElement("div");
             p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';

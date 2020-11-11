@@ -64,4 +64,6 @@ window.ESGlobalBridge.requestAvailability = () => {
   if (!window.ESGlobalBridge.instance) {
     window.ESGlobalBridge.instance = new ESGlobalBridge();
   }
+  return window.ESGlobalBridge;
 };
+export const ESGlobalBridgeStore = window.ESGlobalBridge.requestAvailability();

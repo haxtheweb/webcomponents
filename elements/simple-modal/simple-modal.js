@@ -147,16 +147,15 @@ class SimpleModal extends LitElement {
       ?open="${this.opened}"
       @open="${this.open}"
       @close="${this.close}"
-      ?modal="${this.modal}"
     >
       <div id="titlebar">
         <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
         <div></div>
         <simple-icon-button
           id="close"
+          dark
           icon="${this.closeIcon}"
           @click="${this.close}"
-          ?hidden="${!this.opened}"
           label="${this.closeLabel}"
         >
         </simple-icon-button>
@@ -413,7 +412,7 @@ class SimpleModal extends LitElement {
       this.dispatchEvent(evt);
     } else if (newValue) {
       // p dialog backport; a nice, simple solution for close buttons
-      let children = this.querySelectorAll("[dialog-dismiss]");
+      let children = this.querySelectorAll("[dialog-dismiss],[dialog-confirm]");
       children.forEach((el) => {
         el.addEventListener("click", (e) => {
           this.close();
@@ -458,3 +457,5 @@ window.SimpleModal.requestAvailability = () => {
   }
   return window.SimpleModal.instance;
 };
+
+export const SimpleModalStore = window.SimpleModal.requestAvailability();

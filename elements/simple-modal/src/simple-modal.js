@@ -147,16 +147,15 @@ class SimpleModal extends LitElement {
       ?open="${this.opened}"
       @open="${this.open}"
       @close="${this.close}"
-      ?modal="${this.modal}"
     >
       <div id="titlebar">
         <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
         <div></div>
         <simple-icon-button
           id="close"
+          dark
           icon="${this.closeIcon}"
           @click="${this.close}"
-          ?hidden="${!this.opened}"
           label="${this.closeLabel}"
         >
         </simple-icon-button>
@@ -458,3 +457,5 @@ window.SimpleModal.requestAvailability = () => {
   }
   return window.SimpleModal.instance;
 };
+
+export const SimpleModalStore = window.SimpleModal.requestAvailability();
