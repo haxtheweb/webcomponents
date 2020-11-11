@@ -224,7 +224,7 @@ class JwtLogin extends LitElement {
         if (response.ok) {
           return response.json();
         } else {
-          this.lastErrorChanged(reponse);
+          this.lastErrorChanged(response);
         }
       })
       .then((token) => {
