@@ -9,6 +9,7 @@ import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/full
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";

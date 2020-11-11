@@ -112,6 +112,7 @@ class A11yMediaButton extends LitElement {
           border: none;
           transition: color 0.25s;
           color: var(--a11y-media-button-color);
+          --simple-icon-color: var(--a11y-media-button-color);
           background-color: var(--a11y-media-button-bg-color);
         }
         :host([toggle]) #button {

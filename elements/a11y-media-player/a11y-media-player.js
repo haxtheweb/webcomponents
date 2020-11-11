@@ -9,6 +9,7 @@ import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/full
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";
@@ -166,27 +167,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
             --a11y-media-faded-accent-color
           );
 
-          --simple-range-input-active-color: var(--a11y-media-accent-color);
-          --simple-range-input-secondary-color: var(
-            --a11y-media-faded-accent-color
-          );
-          --simple-range-input-pin-color: var(--a11y-media-bg-color);
-          --simple-range-input-pin-start-color: var(--a11y-media-bg-color);
-          --simple-range-input-pin-end-color: var(--a11y-media-bg-color);
-          --simple-range-input-knob-color: var(--a11y-media-accent-color);
-          --simple-range-input-knob-start-color: var(--a11y-media-accent-color);
-          --simple-range-input-knob-end-color: var(
-            --a11y-media-bg-accent-color
-          );
-          --simple-range-input-knob-border-color: var(
-            --a11y-media-accent-color
-          );
-          --simple-range-input-knob-start-border-color: var(
-            --a11y-media-bg-color
-          );
-          --simple-range-input-knob-end-border-color: var(
-            --a11y-media-bg-color
-          );
+          --simple-range-input-bg: var(--a11y-media-accent-color);
+          --simple-range-input-color: var(--a11y-media-color);
+          --simple-range-input-track-height: 4px;
 
           --simple-toast-color: var(--a11y-media-color);
           --simple-toast-background-color: var(--a11y-media-bg-color);
