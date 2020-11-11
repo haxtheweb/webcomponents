@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
-import "../singletons/rich-text-editor-selection.js";
+import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
 import "./rich-text-editor-breadcrumb.js";
 
 /**

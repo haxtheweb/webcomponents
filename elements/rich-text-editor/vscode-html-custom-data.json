@@ -8,7 +8,7 @@
     },
     {
       "name": "rich-text-editor-button",
-      "description": "`rich-text-editor-button`\na button for rich text editor (custom buttons can extend this)\n\nEvents:\n\n  * `command-val-changed` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `toggled-command-val-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
+      "description": "`rich-text-editor-button`\na button for rich text editor (custom buttons can extend this)\n\nEvents:\n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - \n\nAttributes:\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
       "attributes": [
         {
           "name": "controls",
@@ -63,6 +63,14 @@
           "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
         },
         {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
           "name": "__selection",
           "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
         },
@@ -82,22 +90,38 @@
           "valueSet": "v"
         },
         {
-          "name": "oncommand-val-changed",
-          "description": "`command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "onrange-changed",
-          "description": "`range-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
         },
         {
-          "name": "ontoggled-command-val-changed",
-          "description": "`toggled-command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-emoji-picker",
-      "description": "`rich-text-editor-emoji-picker`\nan emoji picker for the rich-text-editor\n\nEvents:\n\n  * `command-val-changed` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `toggled-command-val-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `emojiTypes` {`any[]`} - Emoji types types to include\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `emojiTypes` {`any[]`} - Emoji types types to include\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - determines value of picker based on selected range\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
+      "description": "`rich-text-editor-emoji-picker`\nan emoji picker for the rich-text-editor\n\nEvents:\n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - \n\nAttributes:\n\n  * `emojiTypes` {`any[]`} - Emoji types types to include\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `emojiTypes` {`any[]`} - Emoji types types to include\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - determines value of picker based on selected range\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
       "attributes": [
         {
           "name": "emojiTypes",
@@ -170,6 +194,14 @@
           "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
         },
         {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
           "name": "__selection",
           "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
         },
@@ -189,22 +221,38 @@
           "valueSet": "v"
         },
         {
-          "name": "oncommand-val-changed",
-          "description": "`command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "onrange-changed",
-          "description": "`range-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
         },
         {
-          "name": "ontoggled-command-val-changed",
-          "description": "`toggled-command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-heading-picker",
-      "description": "`rich-text-editor-heading-picker`\na heading picker for the rich-text-editor\n\nEvents:\n\n  * `command-val-changed` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `toggled-command-val-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `blocks` {`any[]`} - block element options as array of objects,\neg. [ { label: \"Paragraph\", tag: \"p\" }, { label: \"Heading 1\", tag: \"h1\" }, ...]\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `blocks` {`any[]`} - block element options as array of objects,\neg. [ { label: \"Paragraph\", tag: \"p\" }, { label: \"Heading 1\", tag: \"h1\" }, ...]\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - determines value of picker based on selected range\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
+      "description": "`rich-text-editor-heading-picker`\na heading picker for the rich-text-editor\n\nEvents:\n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - \n\nAttributes:\n\n  * `blocks` {`any[]`} - block element options as array of objects,\neg. [ { label: \"Paragraph\", tag: \"p\" }, { label: \"Heading 1\", tag: \"h1\" }, ...]\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `blocks` {`any[]`} - block element options as array of objects,\neg. [ { label: \"Paragraph\", tag: \"p\" }, { label: \"Heading 1\", tag: \"h1\" }, ...]\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - determines value of picker based on selected range\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
       "attributes": [
         {
           "name": "blocks",
@@ -277,6 +325,14 @@
           "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
         },
         {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
           "name": "__selection",
           "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
         },
@@ -296,51 +352,67 @@
           "valueSet": "v"
         },
         {
-          "name": "oncommand-val-changed",
-          "description": "`command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "onrange-changed",
-          "description": "`range-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
         },
         {
-          "name": "ontoggled-command-val-changed",
-          "description": "`toggled-command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-image",
-      "description": "`rich-text-editor-image`\nan inline image button for rich text editor\n\nEvents:\n\n  * `command-val-changed` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `toggled-command-val-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `__promptFields` {`any[]`} - fields for the prompt popover.\n\n  * `__oldValue` - the contents node inside the selected range\n\n  * `__selectionContents` - the contents node inside the selected range\n\n  * `inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\n  * `fields` {`({} | {} | {})[]`} - fields for the prompt popover.\n\n  * `value` - The prefilled value of the prompt\n\n  * `__prompt` - the prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - the tag that will wrap the selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `__promptFields` {`any[]`} - fields for the prompt popover.\n\n  * `__oldValue` - the contents node inside the selected range\n\n  * `__selectionContents` - the contents node inside the selected range\n\n  * `editableSelection` {`boolean`} - \n\n  * `inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\n  * `fields` {`({} | {} | {})[]`} - fields for the prompt popover.\n\n  * `value` - The prefilled value of the prompt\n\n  * `__prompt` - the prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - the tag that will wrap the selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `blockSelectors` {`string`} - overrides default block selectors\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean | undefined`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
+      "description": "`rich-text-editor-image`\nan inline image button for rich text editor\n\nEvents:\n\n  * `rich-text-editor-prompt-open` {`CustomEvent<this>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `inlineWidget` {`boolean`} - is element a custom inline widget element?\n\n  * `fields` {`({} | {} | {})[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - tag that will wrap selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `promptCommand` - determines which command based on values passed from prompt\n(can be overriden for custom prompt  commands)\n\n  * `promptCommandVal` {`string`} - determaines commandVal based on values passed from prompt\n\n  * `setsInnerHTML` {`boolean`} - determaines if prompt also sets innerHTML of range\n(can be overriden for custom prompts)\n\n  * `editableSelection` {`boolean`} - \n\n  * `inlineWidget` {`boolean`} - is element a custom inline widget element?\n\n  * `fields` {`({} | {} | {})[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - tag that will wrap selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `blockSelectors` {`string`} - overrides default block selectors\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean | undefined`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
       "attributes": [
         {
-          "name": "__promptFields",
-          "description": "`__promptFields` {`any[]`} - fields for the prompt popover.\n\nProperty: __promptFields"
+          "name": "id",
+          "description": "`id` {`string`} - is element a custom inline widget element?\n\nProperty: id"
+        },
+        {
+          "name": "__wrap",
+          "description": "`__wrap` - contents node inside selected range\n\nProperty: __wrap"
         },
         {
           "name": "__oldValue",
-          "description": "`__oldValue` - the contents node inside the selected range\n\nProperty: __oldValue"
-        },
-        {
-          "name": "__selectionContents",
-          "description": "`__selectionContents` - the contents node inside the selected range\n\nProperty: __selectionContents"
+          "description": "`__oldValue` - contents node inside selected range\n\nProperty: __oldValue"
         },
         {
           "name": "inlineWidget",
-          "description": "`inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\nProperty: inlineWidget\n\nDefault: false",
+          "description": "`inlineWidget` {`boolean`} - is element a custom inline widget element?\n\nProperty: inlineWidget\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "fields",
-          "description": "`fields` {`({} | {} | {})[]`} - fields for the prompt popover.\n\nProperty: fields\n\nDefault: [object Object],[object Object],[object Object],[object Object]"
+          "description": "`fields` {`({} | {} | {})[]`} - fields for prompt popover.\n\nProperty: fields\n\nDefault: [object Object],[object Object],[object Object],[object Object]"
         },
         {
           "name": "value",
-          "description": "`value` - The prefilled value of the prompt\n\nProperty: value\n\nDefault: [object Object]"
+          "description": "`value` - prefilled value of prompt\n\nProperty: value\n\nDefault: [object Object]"
         },
         {
-          "name": "__prompt",
-          "description": "`__prompt` - the prompt that pops up when button is pressed\n\nProperty: __prompt"
+          "name": "prompt",
+          "description": "`prompt` - prompt that pops up when button is pressed\n\nProperty: prompt"
         },
         {
           "name": "controls",
@@ -372,7 +444,7 @@
         },
         {
           "name": "tag",
-          "description": "`tag` {`string`} - the tag that will wrap the selected range\n\nProperty: tag\n\nDefault: img"
+          "description": "`tag` {`string`} - tag that will wrap selected range\n\nProperty: tag\n\nDefault: img"
         },
         {
           "name": "target",
@@ -395,6 +467,14 @@
           "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
         },
         {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
           "name": "__selection",
           "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
         },
@@ -414,51 +494,71 @@
           "valueSet": "v"
         },
         {
-          "name": "oncommand-val-changed",
-          "description": "`command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onrich-text-editor-prompt-open",
+          "description": "`rich-text-editor-prompt-open` {`CustomEvent<this>`} - "
         },
         {
-          "name": "onrange-changed",
-          "description": "`range-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "ontoggled-command-val-changed",
-          "description": "`toggled-command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-link",
-      "description": "`rich-text-editor-link`\na button for rich text editor (custom buttons can extend this)\n\nEvents:\n\n  * `command-val-changed` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `toggled-command-val-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `__promptFields` {`any[]`} - fields for the prompt popover.\n\n  * `__oldValue` - the contents node inside the selected range\n\n  * `__selectionContents` - the contents node inside the selected range\n\n  * `inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\n  * `fields` {`({} | {})[]`} - fields for the prompt popover.\n\n  * `value` - The prefilled value of the prompt\n\n  * `__prompt` - the prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - the tag that will wrap the selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `__promptFields` {`any[]`} - fields for the prompt popover.\n\n  * `__oldValue` - the contents node inside the selected range\n\n  * `__selectionContents` - the contents node inside the selected range\n\n  * `editableSelection` {`boolean`} - \n\n  * `inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\n  * `fields` {`({} | {})[]`} - fields for the prompt popover.\n\n  * `value` - The prefilled value of the prompt\n\n  * `__prompt` - the prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - the tag that will wrap the selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `blockSelectors` {`string`} - overrides default block selectors\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean | undefined`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
+      "description": "`rich-text-editor-link`\na button for rich text editor (custom buttons can extend this)\n\nEvents:\n\n  * `rich-text-editor-prompt-open` {`CustomEvent<this>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `inlineWidget` {`boolean`} - is element a custom inline widget element?\n\n  * `fields` {`{}[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - tag that will wrap selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `promptCommand` - determines which command based on values passed from prompt\n(can be overriden for custom prompt  commands)\n\n  * `promptCommandVal` - determaines commandVal based on values passed from prompt\n\n  * `setsInnerHTML` {`boolean`} - determaines if prompt also sets innerHTML of range\n(can be overriden for custom prompts)\n\n  * `editableSelection` {`boolean`} - \n\n  * `inlineWidget` {`boolean`} - is element a custom inline widget element?\n\n  * `fields` {`{}[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - tag that will wrap selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `blockSelectors` {`string`} - overrides default block selectors\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean | undefined`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
       "attributes": [
         {
-          "name": "__promptFields",
-          "description": "`__promptFields` {`any[]`} - fields for the prompt popover.\n\nProperty: __promptFields"
+          "name": "id",
+          "description": "`id` {`string`} - is element a custom inline widget element?\n\nProperty: id"
+        },
+        {
+          "name": "__wrap",
+          "description": "`__wrap` - contents node inside selected range\n\nProperty: __wrap"
         },
         {
           "name": "__oldValue",
-          "description": "`__oldValue` - the contents node inside the selected range\n\nProperty: __oldValue"
-        },
-        {
-          "name": "__selectionContents",
-          "description": "`__selectionContents` - the contents node inside the selected range\n\nProperty: __selectionContents"
+          "description": "`__oldValue` - contents node inside selected range\n\nProperty: __oldValue"
         },
         {
           "name": "inlineWidget",
-          "description": "`inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\nProperty: inlineWidget\n\nDefault: false",
+          "description": "`inlineWidget` {`boolean`} - is element a custom inline widget element?\n\nProperty: inlineWidget\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "fields",
-          "description": "`fields` {`({} | {})[]`} - fields for the prompt popover.\n\nProperty: fields\n\nDefault: [object Object],[object Object]"
+          "description": "`fields` {`{}[]`} - fields for prompt popover.\n\nProperty: fields\n\nDefault: ,[object Object]"
         },
         {
           "name": "value",
-          "description": "`value` - The prefilled value of the prompt\n\nProperty: value\n\nDefault: [object Object]"
+          "description": "`value` - prefilled value of prompt\n\nProperty: value\n\nDefault: [object Object]"
         },
         {
-          "name": "__prompt",
-          "description": "`__prompt` - the prompt that pops up when button is pressed\n\nProperty: __prompt"
+          "name": "prompt",
+          "description": "`prompt` - prompt that pops up when button is pressed\n\nProperty: prompt"
         },
         {
           "name": "controls",
@@ -490,7 +590,7 @@
         },
         {
           "name": "tag",
-          "description": "`tag` {`string`} - the tag that will wrap the selected range\n\nProperty: tag\n\nDefault: span"
+          "description": "`tag` {`string`} - tag that will wrap selected range\n\nProperty: tag\n\nDefault: span"
         },
         {
           "name": "target",
@@ -513,6 +613,14 @@
           "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel\n\nDefault: Unlink"
         },
         {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
           "name": "__selection",
           "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
         },
@@ -532,22 +640,42 @@
           "valueSet": "v"
         },
         {
-          "name": "oncommand-val-changed",
-          "description": "`command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onrich-text-editor-prompt-open",
+          "description": "`rich-text-editor-prompt-open` {`CustomEvent<this>`} - "
         },
         {
-          "name": "onrange-changed",
-          "description": "`range-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "ontoggled-command-val-changed",
-          "description": "`toggled-command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-more-button",
-      "description": "`rich-text-editor-more-button`\na more button to toggle collapsed buttons in the rich text editor\n\nEvents:\n\n  * `command-val-changed` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `toggled-command-val-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `collapse-max` {`string`} - The maximum size where all of the buttons display\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `collapseMax` {`string`} - The maximum size where all of the buttons display\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `labelToggled` {`string`} - \n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
+      "description": "`rich-text-editor-more-button`\na more button to toggle collapsed buttons in the rich text editor\n\nEvents:\n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - \n\nAttributes:\n\n  * `collapse-max` {`string`} - The maximum size where all of the buttons display\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `collapseMax` {`string`} - The maximum size where all of the buttons display\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `labelToggled` {`string`} - \n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
       "attributes": [
         {
           "name": "collapse-max",
@@ -611,6 +739,14 @@
           "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
         },
         {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
           "name": "__selection",
           "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
         },
@@ -630,22 +766,38 @@
           "valueSet": "v"
         },
         {
-          "name": "oncommand-val-changed",
-          "description": "`command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "onrange-changed",
-          "description": "`range-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
         },
         {
-          "name": "ontoggled-command-val-changed",
-          "description": "`toggled-command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-picker",
-      "description": "`rich-text-editor-picker`\na picker for rich text editor (custom buttons can extend this)\n\nEvents:\n\n  * `command-val-changed` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `toggled-command-val-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - determines value of picker based on selected range\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
+      "description": "`rich-text-editor-picker`\na picker for rich text editor (custom buttons can extend this)\n\nEvents:\n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - \n\nAttributes:\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - determines value of picker based on selected range\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
       "attributes": [
         {
           "name": "allowNull",
@@ -714,6 +866,14 @@
           "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
         },
         {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
           "name": "__selection",
           "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
         },
@@ -733,51 +893,67 @@
           "valueSet": "v"
         },
         {
-          "name": "oncommand-val-changed",
-          "description": "`command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "onrange-changed",
-          "description": "`range-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
         },
         {
-          "name": "ontoggled-command-val-changed",
-          "description": "`toggled-command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-prompt-button",
-      "description": "`rich-text-editor-prompt-button`\na button that prompts for more information for rich text editor (custom buttons can extend this)\n\nEvents:\n\n  * `command-val-changed` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `toggled-command-val-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `__promptFields` {`any[]`} - fields for the prompt popover.\n\n  * `__oldValue` - the contents node inside the selected range\n\n  * `__selectionContents` - the contents node inside the selected range\n\n  * `inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\n  * `fields` {`any[]`} - fields for the prompt popover.\n\n  * `value` - The prefilled value of the prompt\n\n  * `__prompt` - the prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - the tag that will wrap the selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `__promptFields` {`any[]`} - fields for the prompt popover.\n\n  * `__oldValue` - the contents node inside the selected range\n\n  * `__selectionContents` - the contents node inside the selected range\n\n  * `editableSelection` {`boolean`} - \n\n  * `inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\n  * `fields` {`any[]`} - fields for the prompt popover.\n\n  * `value` - The prefilled value of the prompt\n\n  * `__prompt` - the prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - the tag that will wrap the selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
+      "description": "`rich-text-editor-prompt-button`\na button that prompts for more information for rich text editor (custom buttons can extend this)\n\nEvents:\n\n  * `rich-text-editor-prompt-open` {`CustomEvent<this>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `inlineWidget` {`boolean`} - is element a custom inline widget element?\n\n  * `fields` {`any[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - tag that will wrap selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `promptCommand` - determines which command based on values passed from prompt\n(can be overriden for custom prompt  commands)\n\n  * `promptCommandVal` - determaines commandVal based on values passed from prompt\n(can be overriden for custom prompt command values)\n\n  * `setsInnerHTML` {`boolean`} - determaines if prompt also sets innerHTML of range\n(can be overriden for custom prompts)\n\n  * `editableSelection` {`boolean`} - \n\n  * `inlineWidget` {`boolean`} - is element a custom inline widget element?\n\n  * `fields` {`any[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - tag that will wrap selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
       "attributes": [
         {
-          "name": "__promptFields",
-          "description": "`__promptFields` {`any[]`} - fields for the prompt popover.\n\nProperty: __promptFields"
+          "name": "id",
+          "description": "`id` {`string`} - is element a custom inline widget element?\n\nProperty: id"
+        },
+        {
+          "name": "__wrap",
+          "description": "`__wrap` - contents node inside selected range\n\nProperty: __wrap"
         },
         {
           "name": "__oldValue",
-          "description": "`__oldValue` - the contents node inside the selected range\n\nProperty: __oldValue"
-        },
-        {
-          "name": "__selectionContents",
-          "description": "`__selectionContents` - the contents node inside the selected range\n\nProperty: __selectionContents"
+          "description": "`__oldValue` - contents node inside selected range\n\nProperty: __oldValue"
         },
         {
           "name": "inlineWidget",
-          "description": "`inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\nProperty: inlineWidget\n\nDefault: false",
+          "description": "`inlineWidget` {`boolean`} - is element a custom inline widget element?\n\nProperty: inlineWidget\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "fields",
-          "description": "`fields` {`any[]`} - fields for the prompt popover.\n\nProperty: fields\n\nDefault: [object Object]"
+          "description": "`fields` {`any[]`} - fields for prompt popover.\n\nProperty: fields\n\nDefault: [object Object]"
         },
         {
           "name": "value",
-          "description": "`value` - The prefilled value of the prompt\n\nProperty: value\n\nDefault: [object Object]"
+          "description": "`value` - prefilled value of prompt\n\nProperty: value\n\nDefault: [object Object]"
         },
         {
-          "name": "__prompt",
-          "description": "`__prompt` - the prompt that pops up when button is pressed\n\nProperty: __prompt"
+          "name": "prompt",
+          "description": "`prompt` - prompt that pops up when button is pressed\n\nProperty: prompt"
         },
         {
           "name": "controls",
@@ -809,7 +985,7 @@
         },
         {
           "name": "tag",
-          "description": "`tag` {`string`} - the tag that will wrap the selected range\n\nProperty: tag\n\nDefault: span"
+          "description": "`tag` {`string`} - tag that will wrap selected range\n\nProperty: tag\n\nDefault: span"
         },
         {
           "name": "target",
@@ -832,6 +1008,14 @@
           "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
         },
         {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
           "name": "__selection",
           "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
         },
@@ -851,22 +1035,42 @@
           "valueSet": "v"
         },
         {
-          "name": "oncommand-val-changed",
-          "description": "`command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onrich-text-editor-prompt-open",
+          "description": "`rich-text-editor-prompt-open` {`CustomEvent<this>`} - "
         },
         {
-          "name": "onrange-changed",
-          "description": "`range-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "ontoggled-command-val-changed",
-          "description": "`toggled-command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-symbol-picker",
-      "description": "`rich-text-editor-symbol-picker`\na symbol picker for the rich-text-editor\n\nEvents:\n\n  * `command-val-changed` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `toggled-command-val-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `symbolTypes` {`any[]`} - Symbol types to include\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `symbolTypes` {`any[]`} - Symbol types to include\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - determines value of picker based on selected range\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
+      "description": "`rich-text-editor-symbol-picker`\na symbol picker for the rich-text-editor\n\nEvents:\n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - \n\nAttributes:\n\n  * `symbolTypes` {`any[]`} - Symbol types to include\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `symbolTypes` {`any[]`} - Symbol types to include\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `titleAsHtml` {`boolean`} - Renders html as title. (Good for titles with HTML in them.)\n\n  * `value` - value of elected options\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional icon for null value\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - The active selected range, inherited from the toolbar\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - determines value of picker based on selected range\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
       "attributes": [
         {
           "name": "symbolTypes",
@@ -939,6 +1143,14 @@
           "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
         },
         {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
           "name": "__selection",
           "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
         },
@@ -958,51 +1170,67 @@
           "valueSet": "v"
         },
         {
-          "name": "oncommand-val-changed",
-          "description": "`command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "onrange-changed",
-          "description": "`range-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
         },
         {
-          "name": "ontoggled-command-val-changed",
-          "description": "`toggled-command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-underline",
-      "description": "`rich-text-editor-underline`\na button for rich text editor (custom buttons can extend this)\n\nEvents:\n\n  * `command-val-changed` {`CustomEvent<this>`} - \n\n  * `range-changed` {`CustomEvent<this>`} - \n\n  * `toggled-command-val-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `__promptFields` {`any[]`} - fields for the prompt popover.\n\n  * `__oldValue` - the contents node inside the selected range\n\n  * `__selectionContents` - the contents node inside the selected range\n\n  * `inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\n  * `fields` {`{}[]`} - fields for the prompt popover.\n\n  * `value` - The prefilled value of the prompt\n\n  * `__prompt` - the prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - the tag that will wrap the selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `__promptFields` {`any[]`} - fields for the prompt popover.\n\n  * `__oldValue` - the contents node inside the selected range\n\n  * `__selectionContents` - the contents node inside the selected range\n\n  * `editableSelection` {`boolean`} - \n\n  * `inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\n  * `fields` {`{}[]`} - fields for the prompt popover.\n\n  * `value` - The prefilled value of the prompt\n\n  * `__prompt` - the prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - the tag that will wrap the selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
+      "description": "`rich-text-editor-underline`\na button for rich text editor (custom buttons can extend this)\n\nEvents:\n\n  * `rich-text-editor-prompt-open` {`CustomEvent<this>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `inlineWidget` {`boolean`} - is element a custom inline widget element?\n\n  * `fields` {`{}[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcut-keys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - tag that will wrap selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\nProperties:\n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `promptCommand` - determines which command based on values passed from prompt\n(can be overriden for custom prompt  commands)\n\n  * `promptCommandVal` {`void`} - determaines commandVal based on values passed from prompt\n\n  * `setsInnerHTML` {`boolean`} - determaines if prompt also sets innerHTML of range\n(can be overriden for custom prompts)\n\n  * `editableSelection` {`boolean`} - \n\n  * `inlineWidget` {`boolean`} - is element a custom inline widget element?\n\n  * `fields` {`{}[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `controls` {`string`} - The `id` of the `rich-text-editor` that the toolbar controls.\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `shortcutKeys` {`string`} - Optional space-sperated list of keyboard shortcuts for the editor\n\n  * `tag` {`string`} - tag that will wrap selected range\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `blockSelectors` {`string`} - \n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `validCommands` {`string[]`} - gets valid commands list\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `__selection` - highlight surrounding selected range\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?",
       "attributes": [
         {
-          "name": "__promptFields",
-          "description": "`__promptFields` {`any[]`} - fields for the prompt popover.\n\nProperty: __promptFields"
+          "name": "id",
+          "description": "`id` {`string`} - is element a custom inline widget element?\n\nProperty: id"
+        },
+        {
+          "name": "__wrap",
+          "description": "`__wrap` - contents node inside selected range\n\nProperty: __wrap"
         },
         {
           "name": "__oldValue",
-          "description": "`__oldValue` - the contents node inside the selected range\n\nProperty: __oldValue"
-        },
-        {
-          "name": "__selectionContents",
-          "description": "`__selectionContents` - the contents node inside the selected range\n\nProperty: __selectionContents"
+          "description": "`__oldValue` - contents node inside selected range\n\nProperty: __oldValue"
         },
         {
           "name": "inlineWidget",
-          "description": "`inlineWidget` {`boolean`} - is the element a custom inline widget element?\n\nProperty: inlineWidget\n\nDefault: false",
+          "description": "`inlineWidget` {`boolean`} - is element a custom inline widget element?\n\nProperty: inlineWidget\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "fields",
-          "description": "`fields` {`{}[]`} - fields for the prompt popover.\n\nProperty: fields\n\nDefault: [object Object]"
+          "description": "`fields` {`{}[]`} - fields for prompt popover.\n\nProperty: fields\n\nDefault: [object Object]"
         },
         {
           "name": "value",
-          "description": "`value` - The prefilled value of the prompt\n\nProperty: value\n\nDefault: [object Object]"
+          "description": "`value` - prefilled value of prompt\n\nProperty: value\n\nDefault: [object Object]"
         },
         {
-          "name": "__prompt",
-          "description": "`__prompt` - the prompt that pops up when button is pressed\n\nProperty: __prompt"
+          "name": "prompt",
+          "description": "`prompt` - prompt that pops up when button is pressed\n\nProperty: prompt"
         },
         {
           "name": "controls",
@@ -1034,7 +1262,7 @@
         },
         {
           "name": "tag",
-          "description": "`tag` {`string`} - the tag that will wrap the selected range\n\nProperty: tag\n\nDefault: u"
+          "description": "`tag` {`string`} - tag that will wrap selected range\n\nProperty: tag\n\nDefault: u"
         },
         {
           "name": "target",
@@ -1057,6 +1285,14 @@
           "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
         },
         {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
           "name": "__selection",
           "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
         },
@@ -1076,16 +1312,36 @@
           "valueSet": "v"
         },
         {
-          "name": "oncommand-val-changed",
-          "description": "`command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onrich-text-editor-prompt-open",
+          "description": "`rich-text-editor-prompt-open` {`CustomEvent<this>`} - "
         },
         {
-          "name": "onrange-changed",
-          "description": "`range-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "ontoggled-command-val-changed",
-          "description": "`toggled-command-val-changed` {`CustomEvent<this>`} - "
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; }>`} - "
         }
       ]
     },
@@ -1101,33 +1357,29 @@
     },
     {
       "name": "rich-text-editor-prompt",
-      "description": "`rich-text-editor-prompt`\n`A utility that manages the state of multiple rich-text-prompts on one page.`\n\nAttributes:\n\n  * `for` {`string`} - Is the  target id.\n\n  * `range` - The selected text.\n\n  * `fields` {`any[]`} - fields for the prompt popover.\n\n  * `value` - The prefilled value of the prompt\n\n  * `__button` - The prefilled value of the prompt\n\nProperties:\n\n  * `for` {`string`} - Is the  target id.\n\n  * `range` - The selected text.\n\n  * `fields` {`any[]`} - fields for the prompt popover.\n\n  * `value` - The prefilled value of the prompt\n\n  * `__button` - The prefilled value of the prompt",
+      "description": "`rich-text-editor-prompt`\n`A utility that manages state of multiple rich-text-prompts on one page.`\n\nAttributes:\n\n  * `fields` {`any[]`} - fields for prompt popover.\n\n  * `for` {`string`} - Is  target id.\n\n  * `range` - selected text.\n\n  * `value` - selected node withing range\n/\nselectedNode: {\ntype: Object\n},\n/**\nprefilled value of prompt\n\nProperties:\n\n  * `fields` {`any[]`} - fields for prompt popover.\n\n  * `for` {`string`} - Is  target id.\n\n  * `range` - selected text.\n\n  * `value` - selected node withing range\n/\nselectedNode: {\ntype: Object\n},\n/**\nprefilled value of prompt\n\n  * `__selection` - ",
       "attributes": [
         {
+          "name": "fields",
+          "description": "`fields` {`any[]`} - fields for prompt popover.\n\nProperty: fields"
+        },
+        {
           "name": "for",
-          "description": "`for` {`string`} - Is the  target id.\n\nProperty: for"
+          "description": "`for` {`string`} - Is  target id.\n\nProperty: for"
         },
         {
           "name": "range",
-          "description": "`range` - The selected text.\n\nProperty: range"
-        },
-        {
-          "name": "fields",
-          "description": "`fields` {`any[]`} - fields for the prompt popover.\n\nProperty: fields"
+          "description": "`range` - selected text.\n\nProperty: range"
         },
         {
           "name": "value",
-          "description": "`value` - The prefilled value of the prompt\n\nProperty: value"
-        },
-        {
-          "name": "__button",
-          "description": "`__button` - The prefilled value of the prompt\n\nProperty: __button"
+          "description": "`value` - selected node withing range\n/\nselectedNode: {\ntype: Object\n},\n/**\nprefilled value of prompt\n\nProperty: value"
         }
       ]
     },
     {
       "name": "rich-text-editor-selection",
-      "description": "`rich-text-editor-selection`\n`a button for rich text editor (custom buttons can extend this)`\n\nEvents:\n\n  * `highlight` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `editor` - \n\n  * `collapsed` {`boolean`} - \n\n  * `observer` - \n\n  * `range` - \n\n  * `toolbar` - \n\n  * `hidden` {`boolean`} - \n\nProperties:\n\n  * `editor` - \n\n  * `collapsed` {`boolean`} - \n\n  * `observer` - \n\n  * `range` - \n\n  * `toolbar` - \n\n  * `hidden` {`boolean`} - ",
+      "description": "`rich-text-editor-selection`\n`a button for rich text editor (custom buttons can extend this)`\n\nAttributes:\n\n  * `editor` - \n\n  * `collapsed` {`boolean`} - \n\n  * `observer` - \n\n  * `range` - \n\n  * `toolbar` - \n\n  * `hidden` {`boolean`} - \n\n  * `__toolbars` {`any[]`} - \n\n  * `id` {`string`} - \n\nProperties:\n\n  * `editor` - \n\n  * `collapsed` {`boolean`} - \n\n  * `observer` - \n\n  * `range` - \n\n  * `toolbar` - \n\n  * `hidden` {`boolean`} - \n\n  * `__toolbars` {`any[]`} - \n\n  * `__clipboard` - \n\n  * `id` {`string`} - ",
       "attributes": [
         {
           "name": "editor",
@@ -1156,8 +1408,12 @@
           "valueSet": "v"
         },
         {
-          "name": "onhighlight",
-          "description": "`highlight` {`CustomEvent<this>`} - "
+          "name": "__toolbars",
+          "description": "`__toolbars` {`any[]`} - \n\nProperty: __toolbars\n\nDefault: "
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - \n\nProperty: id"
         }
       ]
     },
@@ -1185,43 +1441,47 @@
     },
     {
       "name": "rich-text-editor-breadcrumbs",
-      "description": "`rich-text-editor-breadcrumbs`\n`A utility that manages the state of multiple rich-text-prompts on one page.`\n\nAttributes:\n\n  * `controls` {`string`} - The active rict-text-editor.\n\n  * `range` - The selected text.\n\n  * `hidden` {`boolean`} - Hide breadcrumbs\n\n  * `sticky` {`boolean`} - Should the breadcrumbs stick to the top so that it is always visible?\n\n  * `label` {`string`} - The breadcrumb labels.\n\nProperties:\n\n  * `controls` {`string`} - The active rict-text-editor.\n\n  * `range` - The selected text.\n\n  * `ancestorNodes` {`void`} - updates the breadcrumbs\n\n  * `hidden` {`boolean`} - Hide breadcrumbs\n\n  * `sticky` {`boolean`} - Should the breadcrumbs stick to the top so that it is always visible?\n\n  * `label` {`string`} - The breadcrumb labels.",
+      "description": "`rich-text-editor-breadcrumbs`\n`A utility that manages state of multiple rich-text-prompts on one page.`\n\nEvents:\n\n  * `selectnode` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `controls` {`string`} - active rict-text-editor.\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `hidden` {`boolean`} - Hide breadcrumbs\n\n  * `sticky` {`boolean`} - Should breadcrumbs stick to top so that it is always visible?\n\n  * `label` {`string`} - breadcrumb labels.\n\nProperties:\n\n  * `controls` {`string`} - active rict-text-editor.\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `hidden` {`boolean`} - Hide breadcrumbs\n\n  * `sticky` {`boolean`} - Should breadcrumbs stick to top so that it is always visible?\n\n  * `label` {`string`} - breadcrumb labels.",
       "attributes": [
         {
           "name": "controls",
-          "description": "`controls` {`string`} - The active rict-text-editor.\n\nProperty: controls"
+          "description": "`controls` {`string`} - active rict-text-editor.\n\nProperty: controls"
         },
         {
-          "name": "range",
-          "description": "`range` - The selected text.\n\nProperty: range"
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
         },
         {
           "name": "hidden",
-          "description": "`hidden` {`boolean`} - Hide breadcrumbs\n\nProperty: hidden\n\nDefault: false",
+          "description": "`hidden` {`boolean`} - Hide breadcrumbs\n\nProperty: hidden\n\nDefault: true",
           "valueSet": "v"
         },
         {
           "name": "sticky",
-          "description": "`sticky` {`boolean`} - Should the breadcrumbs stick to the top so that it is always visible?\n\nProperty: sticky\n\nDefault: false",
+          "description": "`sticky` {`boolean`} - Should breadcrumbs stick to top so that it is always visible?\n\nProperty: sticky\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "label",
-          "description": "`label` {`string`} - The breadcrumb labels.\n\nProperty: label\n\nDefault: Expand selection: "
+          "description": "`label` {`string`} - breadcrumb labels.\n\nProperty: label\n\nDefault: Expand selection: "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-toolbar-full",
-      "description": "`rich-text-editor-toolbar-full`\n`a full toolbar with breadcrumbs for the rich text editor`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: any; }>`} - \n\n  * `deselect-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - \n\n  * `select-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - \n\nAttributes:\n\n  * `breadcrumbs-label` {`string`} - The label for the breadcrums area.\n\n  * `controls` {`string`} - `id` of `rich-text-editor` that toolbar controls.\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__selection` - highlight surrounding selected range\n\n  * `canceled` - keep toolbar visible even when not editor not focused\n/\nalwaysVisible: {\ntype: Boolean,\nattribute: \"always-visible\",\nreflect: true\n},\n/**\neditable content, if edits are canceled\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `more-icon` {`string`} - icon for more button.\n\n  * `more-label` {`string`} - label for more button.\n\n  * `more-label-toggled` {`string`} - label for more button when toggled.\n\n  * `more-show-text-label` {`boolean`} - show text label for more button.\n\n  * `responsive-size` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__inlineWidgets` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `__shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\n\nProperties:\n\n  * `breadcrumbsLabel` {`string`} - The label for the breadcrums area.\n\n  * `__breadcrumbs` - \n\n  * `toolbarTemplate` {`TemplateResult`} - \n\n  * `controls` {`string`} - `id` of `rich-text-editor` that toolbar controls.\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `buttons` {`any[] | undefined`} - Gets editor buttons array, as determined by `config`.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `canceled` - keep toolbar visible even when not editor not focused\n/\nalwaysVisible: {\ntype: Boolean,\nattribute: \"always-visible\",\nreflect: true\n},\n/**\neditable content, if edits are canceled\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `moreIcon` {`string`} - icon for more button.\n\n  * `moreLabel` {`string`} - label for more button.\n\n  * `moreLabelToggled` {`string`} - label for more button when toggled.\n\n  * `moreShowTextLabel` {`boolean`} - show text label for more button.\n\n  * `responsiveSize` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__inlineWidgets` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `__shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\n\n  * `__clipboard` - ",
+      "description": "`rich-text-editor-toolbar-full`\n`a full toolbar with breadcrumbs for the rich text editor`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: any; }>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `register` {`CustomEvent<{ remove: boolean; toolbar: this; }>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodecontents` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `pastefromclipboard` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `breadcrumbs-label` {`string`} - The label for the breadcrums area.\n\n  * `buttons` {`any[]`} - raw array of buttons\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - selection singleton\n\n  * `always-visible` {`boolean`} - keep toolbar visible even when not editor not focused\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `more-icon` {`string`} - icon for more button.\n\n  * `more-label` {`string`} - label for more button.\n\n  * `more-label-toggled` {`string`} - label for more button when toggled.\n\n  * `more-show-text-label` {`boolean`} - show text label for more button.\n\n  * `responsive-size` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__clickableElement` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `breadcrumbsLabel` {`string`} - The label for the breadcrums area.\n\n  * `breadcrumbs` - \n\n  * `toolbarTemplate` {`TemplateResult`} - \n\n  * `buttons` {`any[]`} - raw array of buttons\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - selection singleton\n\n  * `controls` - id of editor currently being controlled\n\n  * `alwaysVisible` {`boolean`} - keep toolbar visible even when not editor not focused\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `moreIcon` {`string`} - icon for more button.\n\n  * `moreLabel` {`string`} - label for more button.\n\n  * `moreLabelToggled` {`string`} - label for more button when toggled.\n\n  * `moreShowTextLabel` {`boolean`} - show text label for more button.\n\n  * `responsiveSize` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__clickableElement` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
       "attributes": [
         {
           "name": "breadcrumbs-label",
           "description": "`breadcrumbs-label` {`string`} - The label for the breadcrums area.\n\nProperty: breadcrumbsLabel\n\nDefault: Expand selection: "
         },
         {
-          "name": "controls",
-          "description": "`controls` {`string`} - `id` of `rich-text-editor` that toolbar controls.\n\nProperty: controls"
+          "name": "buttons",
+          "description": "`buttons` {`any[]`} - raw array of buttons\n\nProperty: buttons"
         },
         {
           "name": "editor",
@@ -1240,16 +1500,26 @@
           "description": "`range` - current text selected range, which is actually a range.\n\nProperty: range"
         },
         {
-          "name": "__buttons",
-          "description": "`__buttons` {`any[]`} - raw array of buttons\n\nProperty: __buttons"
+          "name": "registered",
+          "description": "`registered` {`boolean`} - selection singleton\n\nProperty: registered",
+          "valueSet": "v"
+        },
+        {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
         },
         {
           "name": "__selection",
-          "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
+          "description": "`__selection` - selection singleton\n\nProperty: __selection"
         },
         {
-          "name": "canceled",
-          "description": "`canceled` - keep toolbar visible even when not editor not focused\n/\nalwaysVisible: {\ntype: Boolean,\nattribute: \"always-visible\",\nreflect: true\n},\n/**\neditable content, if edits are canceled\n\nProperty: canceled\n\nDefault: true"
+          "name": "always-visible",
+          "description": "`always-visible` {`boolean`} - keep toolbar visible even when not editor not focused\n\nProperty: alwaysVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "collapsed",
@@ -1287,34 +1557,50 @@
           "valueSet": "v"
         },
         {
-          "name": "__inlineWidgets",
-          "description": "`__inlineWidgets` {`any[]`} - Tracks inline widgets that require selection data\n\nProperty: __inlineWidgets\n\nDefault: "
+          "name": "__clickableElement",
+          "description": "`__clickableElement` {`any[]`} - Tracks inline widgets that require selection data\n\nProperty: __clickableElement\n\nDefault: "
         },
         {
-          "name": "__shortcutKeys",
-          "description": "`__shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\n\nProperty: __shortcutKeys\n\nDefault: "
+          "name": "shortcutKeys",
+          "description": "`shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: shortcutKeys\n\nDefault: "
         },
         {
           "name": "onresponsive-element",
           "description": "`responsive-element` {`CustomEvent<{ element: any; }>`} - "
         },
         {
-          "name": "ondeselect-rich-text-editor-editor",
-          "description": "`deselect-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "onselect-rich-text-editor-editor",
-          "description": "`select-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - "
+          "name": "onregister",
+          "description": "`register` {`CustomEvent<{ remove: boolean; toolbar: this; }>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodecontents",
+          "description": "`selectnodecontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onpastefromclipboard",
+          "description": "`pastefromclipboard` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-toolbar-mini",
-      "description": "`rich-text-editor-toolbar-mini`\n`a mini floating toolbar for the rich text editor`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: any; }>`} - \n\n  * `deselect-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - \n\n  * `select-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - \n\nAttributes:\n\n  * `controls` {`string`} - `id` of `rich-text-editor` that toolbar controls.\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__selection` - highlight surrounding selected range\n\n  * `canceled` - keep toolbar visible even when not editor not focused\n/\nalwaysVisible: {\ntype: Boolean,\nattribute: \"always-visible\",\nreflect: true\n},\n/**\neditable content, if edits are canceled\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` {`({} | {} | {})[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `more-icon` {`string`} - icon for more button.\n\n  * `more-label` {`string`} - label for more button.\n\n  * `more-label-toggled` {`string`} - label for more button when toggled.\n\n  * `more-show-text-label` {`boolean`} - show text label for more button.\n\n  * `responsive-size` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__inlineWidgets` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `__shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\n\nProperties:\n\n  * `toolbarTemplate` {`TemplateResult`} - \n\n  * `controls` {`string`} - `id` of `rich-text-editor` that toolbar controls.\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `buttons` {`any[] | undefined`} - Gets editor buttons array, as determined by `config`.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `canceled` - keep toolbar visible even when not editor not focused\n/\nalwaysVisible: {\ntype: Boolean,\nattribute: \"always-visible\",\nreflect: true\n},\n/**\neditable content, if edits are canceled\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` {`({} | {} | {})[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `moreIcon` {`string`} - icon for more button.\n\n  * `moreLabel` {`string`} - label for more button.\n\n  * `moreLabelToggled` {`string`} - label for more button when toggled.\n\n  * `moreShowTextLabel` {`boolean`} - show text label for more button.\n\n  * `responsiveSize` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__inlineWidgets` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `__shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\n\n  * `__clipboard` - ",
+      "description": "`rich-text-editor-toolbar-mini`\n`a mini floating toolbar for the rich text editor`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: any; }>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `register` {`CustomEvent<{ remove: boolean; toolbar: this; }>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodecontents` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `pastefromclipboard` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `buttons` {`any[]`} - raw array of buttons\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - selection singleton\n\n  * `always-visible` {`boolean`} - keep toolbar visible even when not editor not focused\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` {`({} | {} | {})[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `more-icon` {`string`} - icon for more button.\n\n  * `more-label` {`string`} - label for more button.\n\n  * `more-label-toggled` {`string`} - label for more button when toggled.\n\n  * `more-show-text-label` {`boolean`} - show text label for more button.\n\n  * `responsive-size` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__clickableElement` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `toolbarTemplate` {`TemplateResult`} - \n\n  * `buttons` {`any[]`} - raw array of buttons\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - selection singleton\n\n  * `controls` - id of editor currently being controlled\n\n  * `alwaysVisible` {`boolean`} - keep toolbar visible even when not editor not focused\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` {`({} | {} | {})[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `moreIcon` {`string`} - icon for more button.\n\n  * `moreLabel` {`string`} - label for more button.\n\n  * `moreLabelToggled` {`string`} - label for more button when toggled.\n\n  * `moreShowTextLabel` {`boolean`} - show text label for more button.\n\n  * `responsiveSize` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__clickableElement` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
       "attributes": [
         {
-          "name": "controls",
-          "description": "`controls` {`string`} - `id` of `rich-text-editor` that toolbar controls.\n\nProperty: controls"
+          "name": "buttons",
+          "description": "`buttons` {`any[]`} - raw array of buttons\n\nProperty: buttons"
         },
         {
           "name": "editor",
@@ -1333,16 +1619,26 @@
           "description": "`range` - current text selected range, which is actually a range.\n\nProperty: range"
         },
         {
-          "name": "__buttons",
-          "description": "`__buttons` {`any[]`} - raw array of buttons\n\nProperty: __buttons"
+          "name": "registered",
+          "description": "`registered` {`boolean`} - selection singleton\n\nProperty: registered",
+          "valueSet": "v"
+        },
+        {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
         },
         {
           "name": "__selection",
-          "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
+          "description": "`__selection` - selection singleton\n\nProperty: __selection"
         },
         {
-          "name": "canceled",
-          "description": "`canceled` - keep toolbar visible even when not editor not focused\n/\nalwaysVisible: {\ntype: Boolean,\nattribute: \"always-visible\",\nreflect: true\n},\n/**\neditable content, if edits are canceled\n\nProperty: canceled\n\nDefault: true"
+          "name": "always-visible",
+          "description": "`always-visible` {`boolean`} - keep toolbar visible even when not editor not focused\n\nProperty: alwaysVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "collapsed",
@@ -1380,34 +1676,50 @@
           "valueSet": "v"
         },
         {
-          "name": "__inlineWidgets",
-          "description": "`__inlineWidgets` {`any[]`} - Tracks inline widgets that require selection data\n\nProperty: __inlineWidgets\n\nDefault: "
+          "name": "__clickableElement",
+          "description": "`__clickableElement` {`any[]`} - Tracks inline widgets that require selection data\n\nProperty: __clickableElement\n\nDefault: "
         },
         {
-          "name": "__shortcutKeys",
-          "description": "`__shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\n\nProperty: __shortcutKeys\n\nDefault: "
+          "name": "shortcutKeys",
+          "description": "`shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: shortcutKeys\n\nDefault: "
         },
         {
           "name": "onresponsive-element",
           "description": "`responsive-element` {`CustomEvent<{ element: any; }>`} - "
         },
         {
-          "name": "ondeselect-rich-text-editor-editor",
-          "description": "`deselect-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "onselect-rich-text-editor-editor",
-          "description": "`select-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - "
+          "name": "onregister",
+          "description": "`register` {`CustomEvent<{ remove: boolean; toolbar: this; }>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodecontents",
+          "description": "`selectnodecontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onpastefromclipboard",
+          "description": "`pastefromclipboard` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor-toolbar",
-      "description": "`rich-text-editor-toolbar`\n`default toolbar for rich text editor`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: any; }>`} - \n\n  * `deselect-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - \n\n  * `select-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - \n\nAttributes:\n\n  * `controls` {`string`} - `id` of `rich-text-editor` that toolbar controls.\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__selection` - highlight surrounding selected range\n\n  * `canceled` - keep toolbar visible even when not editor not focused\n/\nalwaysVisible: {\ntype: Boolean,\nattribute: \"always-visible\",\nreflect: true\n},\n/**\neditable content, if edits are canceled\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `more-icon` {`string`} - icon for more button.\n\n  * `more-label` {`string`} - label for more button.\n\n  * `more-label-toggled` {`string`} - label for more button when toggled.\n\n  * `more-show-text-label` {`boolean`} - show text label for more button.\n\n  * `responsive-size` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__inlineWidgets` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `__shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\n\nProperties:\n\n  * `toolbarTemplate` {`TemplateResult`} - \n\n  * `controls` {`string`} - `id` of `rich-text-editor` that toolbar controls.\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `buttons` {`any[] | undefined`} - Gets editor buttons array, as determined by `config`.\n\n  * `__selection` - highlight surrounding selected range\n\n  * `canceled` - keep toolbar visible even when not editor not focused\n/\nalwaysVisible: {\ntype: Boolean,\nattribute: \"always-visible\",\nreflect: true\n},\n/**\neditable content, if edits are canceled\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `moreIcon` {`string`} - icon for more button.\n\n  * `moreLabel` {`string`} - label for more button.\n\n  * `moreLabelToggled` {`string`} - label for more button when toggled.\n\n  * `moreShowTextLabel` {`boolean`} - show text label for more button.\n\n  * `responsiveSize` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__inlineWidgets` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `__shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\n\n  * `__clipboard` - ",
+      "description": "`rich-text-editor-toolbar`\n`default toolbar for rich text editor`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: any; }>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `register` {`CustomEvent<{ remove: boolean; toolbar: this; }>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodecontents` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `pastefromclipboard` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `buttons` {`any[]`} - raw array of buttons\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - selection singleton\n\n  * `always-visible` {`boolean`} - keep toolbar visible even when not editor not focused\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `more-icon` {`string`} - icon for more button.\n\n  * `more-label` {`string`} - label for more button.\n\n  * `more-label-toggled` {`string`} - label for more button when toggled.\n\n  * `more-show-text-label` {`boolean`} - show text label for more button.\n\n  * `responsive-size` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__clickableElement` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `toolbarTemplate` {`TemplateResult`} - \n\n  * `buttons` {`any[]`} - raw array of buttons\n\n  * `editor` - `rich-text-editor` element that is currently in `contenteditable` mode\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - selection singleton\n\n  * `controls` - id of editor currently being controlled\n\n  * `alwaysVisible` {`boolean`} - keep toolbar visible even when not editor not focused\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `moreIcon` {`string`} - icon for more button.\n\n  * `moreLabel` {`string`} - label for more button.\n\n  * `moreLabelToggled` {`string`} - label for more button when toggled.\n\n  * `moreShowTextLabel` {`boolean`} - show text label for more button.\n\n  * `responsiveSize` {`string`} - size of editor.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `__clickableElement` {`any[]`} - Tracks inline widgets that require selection data\n\n  * `shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
       "attributes": [
         {
-          "name": "controls",
-          "description": "`controls` {`string`} - `id` of `rich-text-editor` that toolbar controls.\n\nProperty: controls"
+          "name": "buttons",
+          "description": "`buttons` {`any[]`} - raw array of buttons\n\nProperty: buttons"
         },
         {
           "name": "editor",
@@ -1426,16 +1738,26 @@
           "description": "`range` - current text selected range, which is actually a range.\n\nProperty: range"
         },
         {
-          "name": "__buttons",
-          "description": "`__buttons` {`any[]`} - raw array of buttons\n\nProperty: __buttons"
+          "name": "registered",
+          "description": "`registered` {`boolean`} - selection singleton\n\nProperty: registered",
+          "valueSet": "v"
+        },
+        {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
         },
         {
           "name": "__selection",
-          "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
+          "description": "`__selection` - selection singleton\n\nProperty: __selection"
         },
         {
-          "name": "canceled",
-          "description": "`canceled` - keep toolbar visible even when not editor not focused\n/\nalwaysVisible: {\ntype: Boolean,\nattribute: \"always-visible\",\nreflect: true\n},\n/**\neditable content, if edits are canceled\n\nProperty: canceled\n\nDefault: true"
+          "name": "always-visible",
+          "description": "`always-visible` {`boolean`} - keep toolbar visible even when not editor not focused\n\nProperty: alwaysVisible\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "collapsed",
@@ -1473,53 +1795,120 @@
           "valueSet": "v"
         },
         {
-          "name": "__inlineWidgets",
-          "description": "`__inlineWidgets` {`any[]`} - Tracks inline widgets that require selection data\n\nProperty: __inlineWidgets\n\nDefault: "
+          "name": "__clickableElement",
+          "description": "`__clickableElement` {`any[]`} - Tracks inline widgets that require selection data\n\nProperty: __clickableElement\n\nDefault: "
         },
         {
-          "name": "__shortcutKeys",
-          "description": "`__shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\n\nProperty: __shortcutKeys\n\nDefault: "
+          "name": "shortcutKeys",
+          "description": "`shortcutKeys` {`any[]`} - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: shortcutKeys\n\nDefault: "
         },
         {
           "name": "onresponsive-element",
           "description": "`responsive-element` {`CustomEvent<{ element: any; }>`} - "
         },
         {
-          "name": "ondeselect-rich-text-editor-editor",
-          "description": "`deselect-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - "
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
         },
         {
-          "name": "onselect-rich-text-editor-editor",
-          "description": "`select-rich-text-editor-editor` {`CustomEvent<{ toolbar: this; editor: any; }>`} - "
+          "name": "onregister",
+          "description": "`register` {`CustomEvent<{ remove: boolean; toolbar: this; }>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodecontents",
+          "description": "`selectnodecontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onpastefromclipboard",
+          "description": "`pastefromclipboard` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor",
-      "description": "`rich-text-editor`\n\nAttributes:\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - The id for the toolbar\n\n  * `type` {`string`} - The type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\nthe default toolbar if neither.\n\n  * `id` {`string`} - The editor's unique id\n\nProperties:\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - The id for the toolbar\n\n  * `type` {`string`} - The type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\nthe default toolbar if neither.\n\n  * `id` {`string`} - The editor's unique id",
+      "description": "`rich-text-editor`\n\nEvents:\n\n  * `register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - \n\n  * `getrange` {`CustomEvent<this>`} - \n\n  * `pastefromclipboard` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `contenteditable` {`boolean`} - Maps to contenteditable attribute\n\n  * `update-range` {`boolean`} - whether to update range\n\n  * `__canceled-edits` - contains cancelled edits\n\n  * `__connected-toolbar` - connected toolbar\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `__selection` - selection management\n\nProperties:\n\n  * `contenteditable` {`boolean`} - Maps to contenteditable attribute\n\n  * `updateRange` {`boolean`} - whether to update range\n\n  * `__canceledEdits` - contains cancelled edits\n\n  * `__connectedToolbar` - connected toolbar\n\n  * `observer` {`MutationObserver`} - mutation observer\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `__selection` - selection management",
       "attributes": [
+        {
+          "name": "contenteditable",
+          "description": "`contenteditable` {`boolean`} - Maps to contenteditable attribute\n\nProperty: contenteditable",
+          "valueSet": "v"
+        },
+        {
+          "name": "update-range",
+          "description": "`update-range` {`boolean`} - whether to update range\n\nProperty: updateRange",
+          "valueSet": "v"
+        },
+        {
+          "name": "__canceled-edits",
+          "description": "`__canceled-edits` - contains cancelled edits\n\nProperty: __canceledEdits"
+        },
+        {
+          "name": "__connected-toolbar",
+          "description": "`__connected-toolbar` - connected toolbar\n\nProperty: __connectedToolbar"
+        },
         {
           "name": "placeholder",
           "description": "`placeholder` {`string`} - Placeholder text for empty editable regions\n\nProperty: placeholder\n\nDefault: Click to edit"
         },
         {
           "name": "toolbar",
-          "description": "`toolbar` {`string`} - The id for the toolbar\n\nProperty: toolbar\n\nDefault: "
+          "description": "`toolbar` {`string`} - id for toolbar\n\nProperty: toolbar\n\nDefault: "
         },
         {
           "name": "type",
-          "description": "`type` {`string`} - The type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\nthe default toolbar if neither.\n\nProperty: type\n\nDefault: rich-text-editor-toolbar"
+          "description": "`type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\nProperty: type\n\nDefault: rich-text-editor-toolbar"
         },
         {
           "name": "id",
-          "description": "`id` {`string`} - The editor's unique id\n\nProperty: id\n\nDefault: "
+          "description": "`id` {`string`} - editor's unique id\n\nProperty: id\n\nDefault: "
+        },
+        {
+          "name": "range",
+          "description": "`range` - current range\n\nProperty: range\n\nDefault: undefined"
+        },
+        {
+          "name": "__selection",
+          "description": "`__selection` - selection management\n\nProperty: __selection"
+        },
+        {
+          "name": "onregister",
+          "description": "`register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - "
+        },
+        {
+          "name": "ongetrange",
+          "description": "`getrange` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onpastefromclipboard",
+          "description": "`pastefromclipboard` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "rich-text-editor",
-      "description": "`rich-text-editor`\n\nProperties:\n\n  * `placeholder` {`string`} - \n\n  * `toolbar` {`string`} - \n\n  * `type` {`string`} - \n\n  * `id` {`string`} - ",
-      "attributes": []
+      "description": "`rich-text-editor`\n\nEvents:\n\n  * `register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - \n\n  * `getrange` {`CustomEvent<this>`} - \n\n  * `pastefromclipboard` {`CustomEvent<this>`} - \n\nProperties:\n\n  * `observer` {`MutationObserver`} - mutation observer\n\n  * `placeholder` {`string`} - \n\n  * `toolbar` {`string`} - \n\n  * `type` {`string`} - \n\n  * `id` {`string`} - \n\n  * `range` - \n\n  * `__selection` - ",
+      "attributes": [
+        {
+          "name": "onregister",
+          "description": "`register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - "
+        },
+        {
+          "name": "ongetrange",
+          "description": "`getrange` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onpastefromclipboard",
+          "description": "`pastefromclipboard` {`CustomEvent<this>`} - "
+        }
+      ]
     }
   ],
   "globalAttributes": [],

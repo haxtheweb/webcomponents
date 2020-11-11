@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
-import "../singletons/rich-text-editor-selection.js";
-import "../singletons/rich-text-editor-prompt.js";
+import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
+import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 
 const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonBehaviors(SuperClass) {
