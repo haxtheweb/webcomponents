@@ -1,5 +1,4 @@
 import { LitElement, html } from "lit-element/lit-element.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `jwt-login`
  * `a simple element to check for and fetch JWTs`
@@ -35,25 +34,6 @@ class JwtLogin extends LitElement {
         })
       );
     }
-  }
-  /**
-   * LitElement
-   */
-  render() {
-    return html`
-      <iron-ajax
-        reject-with-request
-        ?auto="${this.auto}"
-        id="request"
-        method="${this.method}"
-        url="${this.url}"
-        handle-as="json"
-        content-type="application/json"
-        @response="${this.loginResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      >
-      </iron-ajax>
-    `;
   }
 
   static get tag() {
@@ -126,6 +106,12 @@ class JwtLogin extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (["auto", "method", "url"].includes(propName) && this.url) {
+        clearTimeout(this.__debounce);
+        this.__debounce = setTimeout(() => {
+          this.generateRequest(this.url, this.body);
+        }, 0);
+      }
       if (propName == "jwt") {
         this._jwtChanged(this[propName], oldValue);
         // notify
@@ -220,9 +206,34 @@ class JwtLogin extends LitElement {
     if (e.detail.element) {
       this.__element = e.detail.element;
     }
-    this.shadowRoot.querySelector("#request").url = this.refreshUrl;
-    this.shadowRoot.querySelector("#request").body = {};
-    this.shadowRoot.querySelector("#request").generateRequest();
+    this.generateRequest(this.refreshUrl);
+  }
+  // generate request for token data
+  generateRequest(url, body = {}) {
+    let data = {
+      method: this.method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    if (this.method != "GET") {
+      data.body = JSON.stringify(body);
+    }
+    fetch(url, data)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          this.lastErrorChanged(reponse);
+        }
+      })
+      .then((token) => {
+        try {
+          this.loginResponse(token);
+        } catch (e) {
+          console.warn(e);
+        }
+      });
   }
   /**
    * Request a user login if we need one or log out
@@ -240,9 +251,7 @@ class JwtLogin extends LitElement {
     // detail of a login request event is the body which should have
     // the authorization data in it
     this.body = e.detail;
-    this.shadowRoot.querySelector("#request").url = this.url;
-    this.shadowRoot.querySelector("#request").body = { ...this.body };
-    this.shadowRoot.querySelector("#request").generateRequest();
+    this.generateRequest(this.url, this.body);
   }
   logoutRequest(e) {
     this.__context = "logout";
@@ -251,42 +260,36 @@ class JwtLogin extends LitElement {
     this.body = {};
     // reset jwt which will do all the events / local storage work
     this.jwt = null;
-    this.shadowRoot.querySelector("#request").url = this.logoutUrl;
-    this.shadowRoot.querySelector("#request").body = {};
-    this.shadowRoot.querySelector("#request").generateRequest();
+    this.generateRequest(this.logoutUrl);
   }
   /**
    * Login bridge to get a JWT and hang onto it
    */
-  loginResponse(e) {
+  loginResponse(response) {
     // trap in case front end thinks this is a valid response..
-    if (e.detail.status == 200 && e.detail.response != "Access denied") {
-      switch (this.__context) {
-        case "login":
-          this.jwt = e.detail.response;
-          break;
-        case "refresh":
-          // jwt change events will propagate and do their thing
-          this.jwt = e.detail.response;
-          // if we had a requesting element, let's let it do its thing
-          if (this.__element) {
-            this.__element.obj[this.__element.callback](
-              this.jwt,
-              ...this.__element.params
-            );
-            this.__element = false;
-          }
-          break;
-        case "logout":
-          if (this.__redirect && this.redirectUrl) {
-            setTimeout(() => {
-              window.location.href = this.redirectUrl;
-            }, 100);
-          }
-          break;
-      }
-    } else {
-      this.lastErrorChanged(e);
+    switch (this.__context) {
+      case "login":
+        this.jwt = response;
+        break;
+      case "refresh":
+        // jwt change events will propagate and do their thing
+        this.jwt = response;
+        // if we had a requesting element, let's let it do its thing
+        if (this.__element) {
+          this.__element.obj[this.__element.callback](
+            this.jwt,
+            ...this.__element.params
+          );
+          this.__element = false;
+        }
+        break;
+      case "logout":
+        if (this.__redirect && this.redirectUrl) {
+          setTimeout(() => {
+            window.location.href = this.redirectUrl;
+          }, 100);
+        }
+        break;
     }
   }
 }

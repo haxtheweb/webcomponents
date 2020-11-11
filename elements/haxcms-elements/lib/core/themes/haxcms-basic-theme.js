@@ -27,7 +27,6 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
         }
         scroll-button:not(:defined),
         site-active-title:not(:defined),
-        site-render-item:not(:defined),
         site-children-block:not(:defined),
         site-outline-block:not(:defined),
         site-recent-content-block:not(:defined),

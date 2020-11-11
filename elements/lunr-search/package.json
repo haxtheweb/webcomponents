@@ -42,7 +42,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.7.10",
-    "@polymer/iron-ajax": "^3.0.1",
     "lit-element": "2.4.0",
     "lunr": "2.3.6"
   },

@@ -1,8 +1,3 @@
-<iron-ajax
-id="rssajax"
-url="${this.url}"
-handle-as="xml"
-@last-response-changed="${this.xmlEvent}"></iron-ajax>
 ${this.items.map(item => html`
   <article>
     ${item.imageSrc ? html`

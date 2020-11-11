@@ -20,9 +20,6 @@ let BasicTemplate = (superclass) =>
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
       );
       import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-render-item.js"
-      );
-      import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js"
       );
       import(
