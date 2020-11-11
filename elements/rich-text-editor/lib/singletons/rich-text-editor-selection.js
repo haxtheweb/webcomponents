@@ -725,7 +725,9 @@ window.RichTextEditorSelection.instance = null;
  */
 window.RichTextEditorSelection.requestAvailability = function () {
   if (window.RichTextEditorSelection.instance == null) {
-    window.RichTextEditorSelection.instance = new RichTextEditorSelection();
+    window.RichTextEditorSelection.instance = document.createElement(
+      RichTextEditorSelection.tag
+    );
     document.body.appendChild(window.RichTextEditorSelection.instance);
   }
   return window.RichTextEditorSelection.instance;

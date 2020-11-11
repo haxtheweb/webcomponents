@@ -62,8 +62,7 @@ class SimpleFieldsContainer extends LitElement {
         }
         .inline label {
           margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
-          flex: 0 1 auto;
-          width: calc(100% - 22px);
+          flex: 0 1 var(--simple-fields-label-width, auto);
         }
         .inline label,
         .field-main > div,
@@ -78,6 +77,7 @@ class SimpleFieldsContainer extends LitElement {
           width: auto;
           border: none;
           color: var(--simple-fields-color, black);
+          background-color: var(--simple-fields-background-color, transparent);
           transition: opacity ease-in-out;
           flex: 1 0 auto;
         }
@@ -530,6 +530,7 @@ class SimpleFieldsContainer extends LitElement {
         class="label-main"
         ?hidden="${this.type === "fieldset"}"
       >
+        <slot name="label-prefix"></slot>
         <slot name="label"></slot>
         ${this.label}${this.error || this.required ? "*" : ""}
       </label>

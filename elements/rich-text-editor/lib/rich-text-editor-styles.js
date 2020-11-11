@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 
-const RichTextEditorStyles = function (SuperClass) {
+const RichTextEditorStyles = (SuperClass) => {
   return class extends SuperClass {
     static get tag() {
       return "rich-text-editor-styles";
@@ -29,9 +29,6 @@ const RichTextEditorStyles = function (SuperClass) {
             --rich-text-editor-button-hover-bg: #f0f0f0;
             --rich-text-editor-picker-border: #fafafa;
             --rich-text-editor-selection-bg: #b3d9ff;
-          }
-          rich-text-editor *::selection .rich-text-editor-selection {
-            background-color: var(--rich-text-editor-selection-bg);
           }
         `,
       ];
@@ -63,7 +60,9 @@ window.RichTextEditorStyleManager.instance = null;
  */
 window.RichTextEditorStyleManager.requestAvailability = function () {
   if (window.RichTextEditorStyleManager.instance == null) {
-    window.RichTextEditorStyleManager.instance = new RichTextEditorStyleManager();
+    window.RichTextEditorStyleManager.instance = document.createElement(
+      RichTextEditorStyleManager.tag
+    );
     document.head.append(window.RichTextEditorStyleManager.instance);
   }
   return window.RichTextEditorStyleManager.instance;

@@ -49,6 +49,10 @@ class SimpleSearch extends LitElement {
           align-items: flex-end;
           justify-content: space-between;
           width: 100%;
+          background-color: var(
+            --simple-search-input-background-color,
+            transparent
+          );
         }
 
         #input {
@@ -56,13 +60,20 @@ class SimpleSearch extends LitElement {
           margin-right: 4px;
           padding: var(--simple-search-padding, unset);
           margin: var(--simple-search-margin, unset);
+          color: var(--simple-search-input-text-color, #000);
           --simple-fields-color: var(--simple-search-input-text-color, #000);
-          --simple-fields-color: var(--simple-search-input-line-color, #000);
-          --paper-input-container-color: var(
+          --simple-fields-container-color: var(
             --simple-search-input-placeholder-color,
             #222
           );
-          color: var(--simple-search-input-placeholder-color, #222);
+          --simple-fields-background-color: var(
+            --simple-fields-input-background-color,
+            transparent
+          );
+          --simple-icon-color: var(
+            --simple-search-input-placeholder-color,
+            #222
+          );
         }
 
         #xofy {
@@ -71,7 +82,11 @@ class SimpleSearch extends LitElement {
 
         button {
           margin: 8px 0 8px;
+          border-style: solid;
+          border-width: 1px;
+          border-color: var(--simple-search-button-border-color, #ccc);
           color: var(--simple-search-button-color, #111);
+          --simple-icon-color: var(--simple-search-button-color, #111);
           background-color: var(--simple-search-button-bg-color, #eee);
           border-color: var(--simple-search-button-border-color, #ccc);
         }
@@ -95,6 +110,15 @@ class SimpleSearch extends LitElement {
           display: none;
         }
 
+        #searchnav {
+          flex: 1 0 auto;
+        }
+
+        #searchnav button {
+          display: inline;
+          flex: 1 0 auto;
+        }
+
         *[shrink-hide] {
           display: none;
         }
@@ -107,16 +131,18 @@ class SimpleSearch extends LitElement {
     return html` <simple-fields-field
         id="input"
         label="${this.searchInputLabel}"
-        ?always-float-label="${this.alwaysFloatLabel}"
-        ?no-label-float="${this.noLabelFloat}"
+        ?inline="${this.inline || this.noLabelFloat}"
         @value-changed="${this._handleChange}"
       >
-        <simple-icon icon="${this.searchInputIcon}" slot="prefix"></simple-icon>
+        <simple-icon
+          icon="${this.searchInputIcon}"
+          slot="${this.inline ? "label-prefix" : "prefix"}"
+        ></simple-icon>
       </simple-fields-field>
       <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
         ${this._getResultsSpan(this.resultPointer, this.resultCount)}
       </div>
-      <div ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
+      <div id="searchnav" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
         <button
           id="prev"
           aria-label="${this.prevButtonLabel}"
@@ -150,7 +176,7 @@ class SimpleSearch extends LitElement {
       ...super.properties,
 
       /**
-       * always float the label
+       * @deprecated always float the label
        */
       alwaysFloatLabel: {
         attribute: "always-float-label",
@@ -171,6 +197,13 @@ class SimpleSearch extends LitElement {
         type: String,
       },
       /**
+       * displays with label inline
+       */
+      inline: {
+        attribute: "inline",
+        type: Boolean,
+      },
+      /**
        * label for next result icon
        */
       nextButtonIcon: {
@@ -185,7 +218,7 @@ class SimpleSearch extends LitElement {
         type: String,
       },
       /**
-       * never float the label
+       * @deprecated never float the label
        */
       noLabelFloat: {
         attribute: "no-label-float",

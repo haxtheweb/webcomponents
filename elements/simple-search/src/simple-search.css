@@ -3,6 +3,7 @@
   align-items: flex-end;
   justify-content: space-between;
   width: 100%;
+  background-color: var(--simple-search-input-background-color, transparent);
 }
 
 #input {
@@ -10,19 +11,11 @@
   margin-right: 4px;
   padding: var(--simple-search-padding, unset);
   margin: var(--simple-search-margin, unset);
-  --simple-fields-color: var(
-  --simple-search-input-text-color,
-  #000
-);
-  --simple-fields-color: var(
-  --simple-search-input-line-color,
-  #000
-);
-  --paper-input-container-color: var(
-  --simple-search-input-placeholder-color,
-  #222
-);
-  color: var(--simple-search-input-placeholder-color, #222);
+  color: var(--simple-search-input-text-color, #000);
+  --simple-fields-color: var(--simple-search-input-text-color, #000);
+  --simple-fields-container-color: var(--simple-search-input-placeholder-color, #222);
+  --simple-fields-background-color: var(--simple-fields-input-background-color, transparent);
+  --simple-icon-color: var(--simple-search-input-placeholder-color, #222);
 }
 
 #xofy {
@@ -31,7 +24,11 @@
 
 button {
   margin: 8px 0 8px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--simple-search-button-border-color, #ccc);
   color: var(--simple-search-button-color, #111);
+  --simple-icon-color: var(--simple-search-button-color, #111);
   background-color: var(--simple-search-button-bg-color, #eee);
   border-color: var(--simple-search-button-border-color, #ccc);
 }
@@ -53,6 +50,15 @@ button[disabled] {
 
 button:not([controls]) {
   display: none;
+}
+
+#searchnav {
+  flex: 1 0 auto;
+}
+
+#searchnav button {
+  display: inline;
+  flex: 1 0 auto;
 }
 
 *[shrink-hide] {

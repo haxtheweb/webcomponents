@@ -18,16 +18,15 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const HaxIconsetStory = () => {
+export const IconsetStory = () => {
   return utils.getDemo(
-    `<iconset-demo include-sets="hax"></iconset-demo>`,
+    `<iconset-demo></iconset-demo>`,
     `<p>The following is a full list of hax-iconset's icons.</p>`
   );
 };
 
 export const HaxIconsetDemo = () => {
   let iconset = document.createElement("iconset-demo");
-  iconset.includeSets = "hax";
   iconset.hidden = "hidden";
   document.body.appendChild(iconset);
 
@@ -51,6 +50,6 @@ export const HaxIconsetDemo = () => {
         "CSS"
       )};height:${text("height", "", "CSS")};">
     </iron-icon>`,
-    `<p>The following is a demo of how to use a hax-iconset icon.</p>`
+    `<p>The following is a demo of how to use an icon.</p>`
   );
 };

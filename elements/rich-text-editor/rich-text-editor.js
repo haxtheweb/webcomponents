@@ -70,6 +70,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   color: var(--rich-text-editor-button-disabled-color);
 }
 
+*::selection .rich-text-editor-selection {
+  background-color: var(--rich-text-editor-selection-bg);
+}
+
 ::slotted(*:first-child) {
   margin-top: 0;
 }
