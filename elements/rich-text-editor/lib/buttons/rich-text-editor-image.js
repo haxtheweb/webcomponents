@@ -85,35 +85,36 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * updates prompt fields with selected range data
+   * determaines commandVal based on values passed from prompt
    */
-  updatePrompt() {
-    super.updatePrompt();
-    this.__selectionContents = this.__selectionContents;
-    this.value = {
-      alt: this.__selectionContents.getAttribute("alt"),
-      src: this.__selectionContents.getAttribute("src"),
-      width: this.__selectionContents.getAttribute("width"),
-      height: this.__selectionContents.getAttribute("height"),
-    };
-  }
-
-  /**
-   * updates the insertion based on fields
-   */
-  updateSelection() {
-    let alt = this.__prompt.getPromptValue("alt"),
-      src = this.__prompt.getPromptValue("src"),
-      width = this.__prompt.getPromptValue("width"),
-      height = this.__prompt.getPromptValue("height");
-    this.__selection.range.selectNode(this.__selectionContents);
-    this.toggled = !src;
-    this.commandVal = !src
+  get promptCommandVal() {
+    let alt = this.getPropValue("alt"),
+      src = this.getPropValue("src"),
+      width = this.getPropValue("width"),
+      height = this.getPropValue("height");
+    return !src
       ? ""
       : `<img src="${src}"${!alt ? "" : ` alt="${alt}"`}${
           !width ? "" : ` width="${width}"`
         }${!height ? "" : ` width="${height}"`}>`;
-    this.execCommand();
+  }
+
+  /**
+   * updates prompt fields with selected range data
+   */
+  getValue() {
+    let img = this.rangeQuery();
+    return !img
+      ? undefined
+      : {
+          alt: img.getAttribute("alt"),
+          src: img.getAttribute("src"),
+          width: img.getAttribute("width"),
+          height: img.getAttribute("height"),
+        };
+  }
+  setToggled() {
+    this.toggled = !!this.value;
   }
 }
 window.customElements.define(RichTextEditorImage.tag, RichTextEditorImage);

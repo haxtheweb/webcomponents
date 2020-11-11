@@ -41,7 +41,11 @@ const RichTextEditorButtonStyles = function (SuperClass) {
             text-transform: unset;
             transition: all 0.5s;
             color: var(--rich-text-editor-button-color);
-            border-color: var(--rich-text-editor-border-color);
+            margin: 0;
+            border-width: 0px;
+            border-style: solid;
+            border-color: var(--rich-text-editor-border-color, transparent);
+            background-color: var(--rich-text-editor-button-bg, transparent);
           }
           .rtebutton[toggled] {
             color: var(--rich-text-editor-button-toggled-color);

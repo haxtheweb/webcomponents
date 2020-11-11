@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@github/time-elements";
 import "./lib/threaded-discussion-form.js";
 /**
  * `threaded-discussion`
@@ -237,7 +238,40 @@ class ThreadedDiscussion extends LitElement {
           </lrndesign-avatar>
           <div>
             <p class="comment-name">${comment.firstName} ${comment.lastName}</p>
-            <p class="comment-date">${this._getDate(comment.date)}</p>
+            <p class="comment-date">
+              ${this.relativeDates
+                ? html`
+                    <relative-time datetime="${comment.date}">
+                      ${this._getDate(comment.date)}
+                    </relative-time>
+                  `
+                : html`
+                    <local-time
+                      month="${this.dateFormat && this.dateFormat.month
+                        ? this.dateFormat.month
+                        : "long"}"
+                      day="${this.dateFormat && this.dateFormat.day
+                        ? this.dateFormat.day
+                        : "numeric"}"
+                      year="${this.dateFormat && this.dateFormat.year
+                        ? this.dateFormat.year
+                        : "numeric"}"
+                      hour="${this.dateFormat && this.dateFormat.hour
+                        ? this.dateFormat.hour
+                        : "2-digit"}"
+                      minute="${this.dateFormat && this.dateFormat.minute
+                        ? this.dateFormat.minute
+                        : "2-digit"}"
+                      second="${this.dateFormat && this.dateFormat.second
+                        ? this.dateFormat.second
+                        : "2-digit"}"
+                      time-zone-name="short"
+                      datetime="${comment.date}"
+                    >
+                      ${this._getDate(comment.date)}
+                    </local-time>
+                  `}
+            </p>
           </div>
         </div>
         <div class="comment-body">
@@ -332,6 +366,14 @@ class ThreadedDiscussion extends LitElement {
        */
       params: {
         type: Object,
+      },
+      /**
+       * display dates in terms of "ago" or "from now"
+       */
+      relativeDates: {
+        attribute: "relative-dates",
+        type: Boolean,
+        reflect: true,
       },
       /**
        * label for reply submit button

@@ -124,14 +124,6 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
     }
 
     /**
-     * Handles button tap
-     * @param {event} e the button tap event
-     */
-    _pickerFocus(e) {
-      e.preventDefault();
-    }
-
-    /**
      * determines value of picker based on selected range
      *
      * @param {object} text selected range
@@ -140,6 +132,14 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
      */
     get isToggled() {
       return false;
+    }
+
+    /**
+     * Handles button tap
+     * @param {event} e the button tap event
+     */
+    _pickerFocus(e) {
+      e.preventDefault();
     }
 
     /**
@@ -196,12 +196,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
 
       /* only update when there is an actual change */
       if (this.range && val !== this.commandVal) {
-        if (this.command === "formatBlock") {
-          this.setRange();
-        } else {
-          this.__selection.selectRange(this.range);
-        }
-        this.execCommand();
+        this.sendCommand();
       }
     }
   };

@@ -1,6 +1,6 @@
 {
   /**
-   * The editor's unique id
+   * editor's unique id
    */
   "id": {
     "name": "id",
@@ -8,7 +8,15 @@
     "reflect": true,
     "attribute": "id"
   },
-
+  /**
+   * Maps to contenteditable attribute
+   */
+  "contenteditable": {
+    "name": "contenteditable",
+    "type": "Boolean",
+    "reflect": true,
+    "attribute": "contenteditable"
+  },
   /**
    * Placeholder text for empty editable regions
    */
@@ -20,7 +28,7 @@
   },
 
   /**
-   * The id for the toolbar
+   * id for toolbar
    */
   "toolbar": {
     "name": "toolbar",
@@ -30,15 +38,50 @@
   },
 
   /**
-   * The type of editor toolbar, i.e.
+   * current range
+   */
+  "range": {
+    "name": "range",
+    "type": "Object",
+    "attribute": "range"
+  },
+
+  /**
+   * type of editor toolbar, i.e.
    * full - full for full toolbar with breadcrumb,
    * mini - mini for mini floating toolbar, or
-   * the default toolbar if neither.
+   * default toolbar if neither.
    */
   "type": {
     "name": "type",
     "type": "String",
     "reflect": true,
     "attribute": "type"
+  },
+  /**
+   * whether to update range
+   */
+  "updateRange": {
+    "type": "Boolean"
+  },
+
+  /**
+   * contains cancelled edits
+   */
+  "__canceledEdits": {
+    "type": "Object"
+  },
+
+  /**
+   * connected toolbar
+   */
+  "__connectedToolbar": {
+    "type": "Object"
+  },
+  /**
+   * selection management
+   */
+  "__selection": {
+    "type": "Object"
   }
 }

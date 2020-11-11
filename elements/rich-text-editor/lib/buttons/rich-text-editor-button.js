@@ -179,7 +179,18 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           attribute: "toggled-label",
           type: String,
         },
-
+        /**
+         * currently selected node
+         */
+        selectedNode: {
+          type: Object,
+        },
+        /**
+         * array of ancestors of currently selected node
+         */
+        selectionAncestors: {
+          type: Array,
+        },
         /**
          * Can this button toggle?
          */
@@ -202,12 +213,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       this.showTextLabel = false;
       this.toggles = false;
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      /*this.addEventListener("mousedown", function(e) {
-        //console.log("mousedown", e);
-      });
-      this.addEventListener("keypress", function(e) {
-        e.preventDefault();
-      });*/
     }
     get blockSelectors() {
       return "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
@@ -257,11 +262,8 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
             ? document.queryCommandState(this.command)
             : false,
         /* workaround because queryCommandState("underline") returns true on links */
-        block =
-          this.command === "underline"
-            ? this._getSelectedBlock("u") !== null
-            : command;
-      return !!this.range && this.toggles && !!block ? true : false;
+        block = this.command === "underline" ? !!this.rangeQuery("u") : command;
+      return this.toggles && !!block ? true : false;
     }
 
     /**
@@ -312,10 +314,9 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "controls") this._editorChanged();
-        if (propName === "range") this._rangeChanged();
-        if (propName === "commandVal") this._commandValChanged();
-        if (propName === "toggledCommandVal") this._toggledCommandValChanged();
+        if (propName === "controls")
+          this._editorChanged(this.controls, oldValue);
+        if (propName === "range") this._rangeChanged(this.range, oldValue);
       });
     }
     /**
@@ -327,7 +328,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
 
     /**
      * gets command param for document.execCommand
-     *
      * @readonly
      */
     get operationCommand() {
@@ -337,7 +337,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     }
     /**
      * gets value param for document.execCommand
-     *
      * @readonly
      */
     get operationCommandVal() {
@@ -346,120 +345,221 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         : this.commandVal;
     }
     /**
-     * executes button command on current range
-     *
+     * indicates how highlight should be toggled
+     * @event highlight
+     * @param {boolean} [on=true] whether to turn highlight on
      */
-    execCommand() {
-      if (this.range) {
-        document.execCommand(
-          this.operationCommand,
-          false,
-          this.operationCommandVal
-        );
-        this.dispatchEvent(
-          new CustomEvent(this.operationCommand + "-button", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this,
-          })
-        );
-      }
+    highlight(on = true) {
+      this.dispatchEvent(
+        new CustomEvent("highlight", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: on,
+        })
+      );
+    }
+    /**
+     * indicates node that should be highlighted
+     * @event highlightnode
+     * @param {object} node
+     */
+    highlightNode(node) {
+      this.dispatchEvent(
+        new CustomEvent("highlightnode", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: node,
+        })
+      );
+    }
+
+    /**
+     * indicates range to be set
+     * @event selectrange
+     * @param {object} range
+     */
+    selectRange(range) {
+      this.dispatchEvent(
+        new CustomEvent("selectrange", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: range,
+        })
+      );
+    }
+
+    /**
+     * indicates range should be a given node
+     * @event selectnode
+     * @param {object} node
+     */
+    selectNode(node) {
+      this.dispatchEvent(
+        new CustomEvent("selectnode", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: node,
+        })
+      );
+    }
+
+    /**
+     * indicates range should be the contents of a given node
+     * @event selectnodeccontents
+     * @param {object} node
+     */
+    selectNodeContents(node) {
+      this.dispatchEvent(
+        new CustomEvent("selectnodeccontents", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: node,
+        })
+      );
+    }
+    /**
+     * indicates range should be wrapped in given element
+     * @event wrapselection
+     * @param {object} element html element
+     */
+    wrapSelection(element) {
+      this.dispatchEvent(
+        new CustomEvent("wrapselection", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: element,
+        })
+      );
+    }
+    /**
+     * gets node where range starts
+     *
+     * @returns node
+     */
+    startNode() {
+      let startContainer = !this.range ? undefined : this.range.startContainer,
+        startOffset = !this.range ? undefined : this.range.startOffset;
+      return !startContainer
+        ? undefined
+        : startContainer.children
+        ? startContainer.children[startOffset - 1]
+        : startContainer.childNodes
+        ? startContainer.childNodes[startOffset - 1]
+        : undefined;
+    }
+    /**
+     * gets closest element to range
+     *
+     * @returns node
+     */
+    rangeElement() {
+      return this.rangeIsElement() ? this.startNode() : this.rangeParent();
+    }
+    /**
+     * determines if selection is a element node
+     *
+     * @returns node
+     */
+    rangeIsElement() {
+      let startContainer = !this.range ? undefined : this.range.startContainer,
+        startOffset = !this.range ? undefined : this.range.startOffset,
+        endContainer = !this.range ? undefined : this.range.endContainer,
+        endOffset = !this.range ? undefined : this.range.endOffset;
+      return startContainer === endContainer && endOffset - startOffset === 1;
+    }
+    /**
+     * gets parent element of range
+     *
+     * @returns node
+     */
+    rangeParent() {
+      let common = !this.range ? undefined : this.range.commonAncestorContainer;
+      return !common
+        ? undefined
+        : common.nodeType == 1
+        ? common
+        : common.parentElement;
+    }
+    /**
+     * gets closest node to range that matches selectors
+     *
+     * @param {string} [selectors=this.blockSelectors || this.tag]
+     * @returns node
+     */
+    rangeQuery(selectors = this.blockSelectors || this.tag) {
+      selectors = selectors.toLowerCase().replace(/\s*/g, "");
+      let start = this.rangeElement(),
+        startTag =
+          !start || !start.tagName ? undefined : start.tagName.toLowerCase(),
+        tags = selectors.split(",");
+      return !start
+        ? undefined
+        : startTag && tags.includes(startTag)
+        ? start
+        : start.closest(selectors);
+    }
+    /**
+     * sends a command to the selection manager
+     *
+     * @param {string} [command=this.operationCommand]
+     * @param {string} [commandVal=this.operationCommandVal]
+     */
+    sendCommand(
+      command = this.operationCommand,
+      commandVal = this.operationCommandVal
+    ) {
+      this.dispatchEvent(
+        new CustomEvent("command", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            command: command,
+            commandVal: commandVal,
+            range: this.range,
+          },
+        })
+      );
     }
     /**
      * expands range to selection's parent block
      */
     setRange() {
       /* if command is formatBlock expand selection to entire block */
-      let block = this._getSelectedBlock();
-      if (block) this.__selection.selectNode(block);
+      let block = this.rangeQuery();
+      if (block) this.selectNode(block);
     }
 
     /**
      * Handles button tap
      */
     _buttonTap(e) {
+      console.log("_buttonTap", this.range);
       e.preventDefault();
-      if (this.command === "formatBlock") this.setRange();
-      this.execCommand();
+      this.sendCommand();
     }
+
     /**
-     * fires when command value changes
-     * @event command-val-changed
+     * handles range change
+     *
+     * @param {string} newVal new editor id
+     * @param {string} oldVal old editor id
      */
-    _commandValChanged() {
-      this.dispatchEvent(
-        new CustomEvent("command-val-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
-    }
+    _editorChanged(newValue, oldValue) {}
     /**
      * gets appplicable selection
-     * @returns {*}
+     * @returns {object}
      */
     _getSelection() {
       return this.command === "formatBlock"
-        ? this._getSelectedBlock()
+        ? this.rangeQuery()
         : this._getSelectedHtml();
-    }
-    /**
-     * gets appplicable selection
-     * @returns {*}
-     */
-    _getSelectionType() {
-      return this.command === "formatBlock"
-        ? this._getSelectedTag()
-        : this._getSelectedHtml();
-    }
-    /**
-     * get selection's parent block
-     * @returns {object}
-     */
-    _getSelectedBlock(selector = this.blockSelectors) {
-      console.log(
-        "_getSelectedBlock",
-        this.range,
-        !this.range ||
-          !this.range.cloneContents() ||
-          this.range.cloneContents().childNodes,
-        !this.range || this.range.commonAncestorContainer.childNodes
-      );
-      let children =
-          this.range && this.range.cloneContents()
-            ? this.range.cloneContents().childNodes
-            : false,
-        tagNames = selector && selector !== "" ? selector.split(",") : false;
-      console.log("_getSelectedBlock 1", children, tagNames);
-      if (
-        tagNames &&
-        children &&
-        children.length === 1 &&
-        children[0].tagName &&
-        tagNames.includes(children[0].tagName.toLowerCase())
-      ) {
-        let start = this.range.startContainer;
-        console.log(
-          "_getSelectedBlock 1a",
-          start,
-          start.childNodes[this.range.startOffset]
-        );
-        return start.childNodes[this.range.startOffset];
-      } else if (this.range) {
-        let node = this.range.commonAncestorContainer,
-          closest =
-            node.nodeType === 1
-              ? node.closest(selector)
-              : node.parentNode.nodeType === 1
-              ? node.parentNode.closest(selector)
-              : undefined;
-        console.log("_getSelectedBlock 2", this.range, node, closest);
-        return closest;
-      }
-      return undefined;
     }
     /**
      * gets selected html
@@ -483,26 +583,18 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @returns
      */
     _getSelectedTag() {
-      let block = this._getSelectedBlock(),
+      let block = this.rangeQuery(),
         tag = !!block && !!block.tagName ? block.tagName.toLowerCase() : false;
       return tag;
     }
-
     /**
-     * Handles editor change
-     * @param {string} newVal the new editor's id
-     * @param {string} oldVal the old editor's id
-     * @returns {void}
+     * gets appplicable selection
+     * @returns {object}
      */
-    _editorChanged(newVal, oldVal) {
-      this.dispatchEvent(
-        new CustomEvent(this.command + "-button-editor-change", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
+    _getSelectionType() {
+      return this.command === "formatBlock"
+        ? this._getSelectedTag()
+        : this._getSelectedHtml();
     }
 
     /**
@@ -515,19 +607,12 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     }
 
     /**
-     * handles range changes by getting
-     * @event range-changed
+     * handles range change
+     *
+     * @param {object} newVal new range
+     * @param {object} oldVal old range
      */
-    _rangeChanged() {
-      this.dispatchEvent(
-        new CustomEvent("range-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
-    }
+    _rangeChanged(newVal, oldVal) {}
 
     /**
      * updates a button value based on whether or not button is toggled
@@ -540,20 +625,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      */
     _regOrToggled(toggledOff, toggledOn, toggled) {
       return !!toggledOn && toggled ? toggledOn : toggledOff;
-    }
-    /**
-     * fires when toggled command value changes
-     * @event toggled-command-val-changed
-     */
-    _toggledCommandValChanged() {
-      this.dispatchEvent(
-        new CustomEvent("toggled-command-val-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
     }
   };
 };

@@ -35,6 +35,9 @@ class SimpleIcon extends SimpleColors {
           height: var(--simple-icon-height, 24px);
           width: var(--simple-icon-width, 24px);
         }
+        :host([hidden]) {
+          display: none;
+        }
         svg {
           height: var(--simple-icon-height, 24px);
           width: var(--simple-icon-width, 24px);
@@ -50,7 +53,10 @@ class SimpleIcon extends SimpleColors {
           --simple-colors-default-theme-accent-8: white;
         }
         feFlood {
-          flood-color: var(--simple-colors-default-theme-accent-8, #000000);
+          flood-color: var(
+            --simple-icon-color,
+            var(--simple-colors-default-theme-accent-8, #000000)
+          );
         }
         svg {
           pointer-events: none;

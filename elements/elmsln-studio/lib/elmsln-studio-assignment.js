@@ -5,11 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
-import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
-import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
-import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
-import "./elmsln-studio-link.js";
-import "./elmsln-studio-button.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 
 /**
  * `elmsln-studio-assignment`
@@ -33,6 +29,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         }
         h1 {
           text-align: center;
+          margin-bottom: calc(0.25 * var(--elmsln-studio-margin, 20px));
         }
         #breadcrumb {
           margin: 0 0 var(--elmsln-studio-margin, 20px);
@@ -47,20 +44,65 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         #breadcrumb > * {
           display: inline;
         }
-        lrndesign-avatar,
-        .student-name,
-        .project-name,
+        #alert {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
+          --lrndesign-avatar-width: calc(
+            1.5 * var(--elmsln-studio-FontSize, 16px)
+          );
+          background-color: var(
+            --elmsln-studio-assignment-backgroundColor,
+            #ffffff
+          );
+          border: 1px solid var(--elmsln-studio-assignment-borderColor, #eaeaea);
+          border-bottom: none;
+        }
+        #alert iron-icon {
+          width: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
+          height: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
+          color: var(--elmsln-studio-assignment-color, #444444);
+        }
+        #alert > * {
+          margin: 0 0.25em;
+        }
+        .submitted {
+          --elmsln-studio-assignment-color: var(
+            --simple-colors-default-theme-green-8,
+            #00762e
+          );
+        }
+        .submitted-late {
+          --elmsln-studio-assignment-backgroundColor: #fff8e4;
+          --elmsln-studio-assignment-borderColor: var(
+            --simple-colors-default-theme-amber-8,
+            #876800
+          );
+          --elmsln-studio-assignment-color: var(
+            --simple-colors-default-theme-amber-8,
+            #876800
+          );
+        }
+        .overdue {
+          --elmsln-studio-assignment-backgroundColor: #ffeeee;
+          --elmsln-studio-assignment-borderColor: var(
+            --simple-colors-default-theme-red-8,
+            #ac0000
+          );
+          --elmsln-studio-assignment-color: var(
+            --simple-colors-default-theme-red-8,
+            #ac0000
+          );
+        }
         .assignment-name,
-        .submission-date {
+        .assignment-name,
+        .assignment-date {
           font-weight: normal;
           display: block;
         }
-        .student-name {
-          font-size: calc(2 * var(--elmsln-studio-FontSize, 16px));
-          font-weight: bold;
-          color: #4b4b4b;
-        }
-        .project-name {
+        .assignment-name {
           font-size: calc(1.75 * var(--elmsln-studio-FontSize, 16px));
           color: #95989a;
         }
@@ -70,40 +112,10 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           height: 40px;
           margin-top: -40px;
         }
-        #sort,
-        .submission-header elmsln-studio-button {
-          color: #95989a;
-          font-size: var(--elmsln-studio-FontSize, 16px);
-          text-transform: uppercase;
-          position: absolute;
-          right: 0;
-          top: 0;
-        }
-        #sort:focus,
-        #sort:hover,
-        .submission-header elmsln-studio-button:focus,
-        .submission-header elmsln-studio-button:hover {
-          color: #4b4b4b;
-        }
-        #sort.sort-latest {
-          transform: rotateX(180deg) rotateY(0deg);
-        }
         section {
           border-top: 2px solid #eaeaea;
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0
             var(--elmsln-studio-margin, 20px);
-        }
-        .view-discussion {
-          border: 1px solid #eaeaea;
-          padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
-        }
-        .view-discussion section {
-          opacity: 0.4;
-          display: none;
-        }
-        .view-discussion section.section-discussion {
-          display: block;
-          opacity: 1;
         }
         h2 {
           margin: calc(2 * var(--elmsln-studio-margin, 20px)) auto;
@@ -113,117 +125,121 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
           color: #555555;
         }
-        .submission-date {
+        .assignment-date {
+          margin: 0 0 calc(1 * var(--elmsln-studio-margin, 20px));
+          text-align: center;
           font-size: var(--elmsln-studio-FontSize, 16px);
           color: #95989a;
         }
-        .submission-body {
+        .assignment-body {
           color: #95989a;
           line-height: 160%;
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) auto
             var(--elmsln-studio-margin, 20px);
         }
-        .submission-body:first-child {
-          margin-top: 0;
+        ul {
+          list-style-type: none;
+          padding-left: 0;
         }
-        .submission-body:last-child {
-          margin-bottom: 0;
-        }
-        .submission-links {
-          list-style: none;
-          padding-inline-start: 0;
-        }
-        .submission-links > li {
+        #uploadlist {
           display: flex;
-          align-items: flex-start;
           justify-content: flex-start;
+          flex-wrap: wrap;
         }
-        .submission-links a:link,
-        .submission-links a:visited {
-          font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
-          font-weight: bold;
-          color: #000;
-          text-decoration: none;
+        #uploadlist li {
+          flex: 0 0 150px;
+          height: 150px;
+          background-position: center;
+          background-size: cover;
+          margin: calc(0.5 * var(--elmsln-studio-margin, 20px));
         }
-        .submission-links a:focus,
-        .submission-links a:hover {
-          text-decoration: underline;
+        #uploadlist li:last-child {
+          display: flex;
+          flex: 1 0 auto;
         }
-        .submission-links simple-icon {
-          margin-right: 0.5em;
-        }
-        .submission-links a:focus simple-icon,
-        .submission-links a:hover simple-icon {
-          text-decoration: none;
-        }
-        .callout {
-          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
+        #uploadlist button {
+          width: 150px;
+          height: 150px;
           border: 1px solid #eaeaea;
-          padding: 0;
+          transition: all 0.5s ease-in-out;
         }
-        .discussion-label {
-          text-align: left;
-          font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
-          margin: var(--elmsln-studio-margin, 20px) 0
-            calc(0.25 * var(--elmsln-studio-margin, 20px));
+        #uploadlist button.delete-upload {
+          background-color: rgba(255, 255, 255, 0.6);
+          opacity: 0;
         }
-        .callout > * {
-          padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
-            calc(0.5 * var(--elmsln-studio-margin, 20px));
+        #uploadlist button:focus,
+        #uploadlist button:hover {
+          opacity: 1;
+          border: 1px solid blue;
         }
-        .callout .callout-label {
-          font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
-          font-weight: normal;
+        vaadin-upload {
+          flex: 0 1 auto;
+        }
+        #linklist li {
           display: flex;
           align-items: center;
-          justify-content: flex-start;
-          margin: 0;
-          color: #4b4b4b;
-          border-bottom: 1px solid #eaeaea;
+          padding-left: -1em;
+          justify-content: space-between;
+          margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0;
         }
-        .callout .callout-label simple-icon {
-          margin-right: 1em;
+        #linklist .link,
+        #linkurl {
+          flex: 1 1 auto;
         }
-        threaded-discussion {
-          background-color: #eaeaea;
-          padding: 1px;
-          --threaded-discussion-comment-button-BackgroundColor: var(
-            --simple-colors-fixed-theme-light-blue-8
+        #linklist button {
+          flex: 0 1 auto;
+        }
+        #linklist input {
+          line-height: 2em;
+          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px)) 0 0;
+          font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
+        }
+        #editor {
+          border: 1px solid #eaeaea;
+        }
+        #actions {
+          display: flex;
+          align-items: stretch;
+          justify-content: space-between;
+        }
+        .submit {
+          flex: 0 0 auto;
+          text-align: right;
+          --elmsln-studio-button-icon-color: var(
+            --simple-colors-default-theme-green-7
           );
-          --threaded-discussion-comment-button-focus-BackgroundColor: var(
-            --simple-colors-fixed-theme-light-blue-9
+        }
+        .save {
+          flex: 0 0 auto;
+          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
+        }
+        .delete {
+          flex: 0 0 auto;
+          --elmsln-studio-button-icon-color: var(
+            --simple-colors-default-theme-red-7
           );
+        }
+        .spacer {
+          flex: 1 1 auto;
+        }
+        #actions elmsln-studio-button:hover,
+        #actions elmsln-studio-button:focus-within {
+          text-decoration: underline;
         }
         @media screen and (min-width: 600px) {
-          :host {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-          }
-          #primary {
-            flex: 1 0 100%;
-          }
-          #primary.view-discussion {
-            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
-          }
-          #primary:not(.view-discussion) {
+          #primary,
+          #alert {
             max-width: calc(1000px - 2 * var(--elmsln-studio-margin, 20px));
             margin: 0 auto;
-            border: 1px solid #eaeaea;
+            border: 1px solid
+              var(--elmsln-studio-assignment-borderColor, #eaeaea);
             padding: var(--elmsln-studio-margin, 20px);
           }
-          .view-discussion section {
-            display: block;
-          }
-          .view-discussion section.section-discussion {
-            border: 4px solid #95989a;
-            padding: calc(0.5 * var(--elmsln-studio-margin, 20px))
-              calc(0.5 * var(--elmsln-studio-margin, 20px))
+          #alert {
+            padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
               var(--elmsln-studio-margin, 20px);
-            opacity: 1;
-          }
-          #secondary {
-            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
+            border-bottom: 1px solid
+              var(--elmsln-studio-assignment-borderColor, #eaeaea);
           }
         }
       `,
@@ -231,106 +247,59 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   }
   // render function
   render() {
-    return !this.assignment
-      ? ""
+    return this.assignments && !this.assignment
+      ? this.message404("Assignment", "Assignments", "/assignments")
       : html`
-          <div id="breadcrumb">
-            <elmsln-studio-link href="/assignments"
-              >Assignments</elmsln-studio-link
-            >
-            <span> > </span>
-            ${!this.assignment.projectId || !this.assignment.project
-              ? ``
-              : html`
-                  <elmsln-studio-link
-                    href="${`/assignments?project=${this.assignment.projectId}`}"
-                    >${this.assignment.project}</elmsln-studio-link
-                  >
-                  <span> > </span>
-                `}
-            <span>${this.assignment.assignment}</span>
-          </div>
+          ${this.breadcrumb} ${this.alert}
           <div
             id="primary"
-            ?hidden="${!this.assignment}"
-            class="view-assignment"
+            class="view-assignment ${this.assignmentStatus
+              .toLowerCase()
+              .replace(/\s/, "-")}"
           >
             <article id="assignment">
               <h1>
-                <span class="lesson-name">${this.assignment.lesson}</span>
-                <span class="project-name">${this.assignment.assignment}</span>
+                <span class="lesson-name">
+                  ${!this.assignment
+                    ? html`<em>Lesson</em>`
+                    : this.assignment.lesson}
+                </span>
+                <span class="assignment-name">
+                  ${!this.assignment
+                    ? html`<em>Assignment</em>`
+                    : this.assignment.assignment}
+                </span>
               </h1>
-              <p>${this.assignment.body}</p>
-              ${!this.assignment.rubric
+              ${!(this.assignment || {}).date
                 ? ""
                 : html`
-                    <table>
-                      <caption>
-                        Rubric
-                      </caption>
-                      ${!this.assignment.rubric || !this.assignment.rubric[0]
-                        ? ``
-                        : html`
-                            <thead>
-                              ${this.assignment.rubric[0].map(
-                                (col) => html` <th scope="row">${col}</th> `
-                              )}
-                            </thead>
-                          `}
-                      <tbody>
-                        ${(this.assignment.rubric || []).map((row, i) =>
-                          i === 0
-                            ? ""
-                            : html`
-                                <tr>
-                                  ${this.assignment.rubric[0].map((col, ii) =>
-                                    ii === 0
-                                      ? html` <th scope="col">${col}</th> `
-                                      : html` <td>${col}</td> `
-                                  )}
-                                </tr>
-                              `
-                        )}
-                      </tbody>
-                    </table>
+                    <p class="assignment-date">
+                      Due
+                      <local-time
+                        month="long"
+                        day="numeric"
+                        year="numeric"
+                        hour="2-digit"
+                        minute="2-digit"
+                        second="2-digit"
+                        time-zone-name="short"
+                        datetime="${this.assignment.date}"
+                        >${this.dateFormat(this.assignment.date)}
+                      </local-time>
+                    </p>
                   `}
-              ${!this.assignment.uploads
+              <p class="assignment-body">
+                ${!this.assignment
+                  ? this.loading("grey")
+                  : this.assignment.body}
+              </p>
+              ${!(this.assignment || {}).rubric
                 ? ""
-                : html`
-                    <section>
-                      <h2 class="sr-only">Manage Uploads</h2>
-                    </section>
-                  `}
-              ${!this.assignment.links
-                ? ""
-                : html`
-                    <section>
-                      <h2 class="sr-only">Manage Links</h2>
-                      <input type="text" />
-                    </section>
-                  `}
-              ${!this.assignment.text
-                ? ""
-                : html`
-                    <section>
-                      <h2 class="sr-only">Edit Text</h2>
-                      <textarea></textarea>
-                    </section>
-                  `}
-              <section>
-                ${this.submission.draft}
-                <elmsln-studio-button class="delete" icon="" path=""
-                  >Delete</elmsln-studio-button
-                >
-                <elmsln-studio-button class="save" path=""
-                  >Save Draft</elmsln-studio-button
-                >
-                <elmsln-studio-button class="submit" icon="done" path=""
-                  >Submit Assignment</elmsln-studio-button
-                >
-              </section>
+                : this.rubricTable(this.assignment.rubric)}
+              ${this.sources} ${this.links} ${this.bodytext} ${this.actions}
             </article>
           </div>
+          ${this.nav}
         `;
   }
 
@@ -338,11 +307,29 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   static get properties() {
     return {
       ...super.properties,
+      assignments: {
+        type: Object,
+      },
       assignment: {
         type: Object,
       },
       submission: {
         type: Object,
+      },
+      __sources: {
+        type: Array,
+      },
+      __links: {
+        type: Array,
+      },
+      __newLinkUrl: {
+        type: String,
+      },
+      __newLinkText: {
+        type: String,
+      },
+      __editorConfig: {
+        type: Array,
       },
     };
   }
@@ -358,44 +345,402 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.portfolio = {};
-    this.submission = {};
-    this.submissionFilter = "";
-    this.comment = "";
+    this.__sources = [];
+    this.__links = [];
+    this.__editorConfig = [
+      {
+        label: "Basic Inline Operations",
+        type: "button-group",
+        buttons: [
+          {
+            command: "bold",
+            icon: "editor:format-bold",
+            label: "Bold",
+            toggles: true,
+            type: "rich-text-editor-button",
+          },
+          {
+            command: "italic",
+            icon: "editor:format-italic",
+            label: "Italics",
+            toggles: true,
+            type: "rich-text-editor-button",
+          },
+          {
+            command: "removeFormat",
+            icon: "editor:format-clear",
+            label: "Erase Format",
+            type: "rich-text-editor-button",
+          },
+        ],
+      },
+      {
+        collapsedUntil: "lg",
+        label: "Lists and Indents",
+        type: "button-group",
+        buttons: [
+          {
+            command: "insertOrderedList",
+            icon: "editor:format-list-numbered",
+            label: "Ordered List",
+            toggles: true,
+            type: "rich-text-editor-button",
+          },
+          {
+            command: "insertUnorderedList",
+            icon: "editor:format-list-bulleted",
+            label: "Unordered List",
+            toggles: true,
+            type: "rich-text-editor-button",
+          },
+        ],
+      },
+    ];
     this.tag = ElmslnStudioAssignment.tag;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  get sortedSubmissions() {
-    return !this.portfolio.submissions
-      ? []
-      : this.sortDates(this.portfolio.submissions, this.sortLatest);
-  }
-  get assignment() {
-    let filter =
-      !this.submissionFilter || !this.portfolio || !this.portfolio.submissions
-        ? []
-        : this.portfolio.submissions.filter(
-            (s) => s.id === this.submissionFilter
-          );
-    return !filter ? false : filter[0];
-  }
-  _getFeedbackIcon(comments) {
-    if (comments === 0) {
-      return "communication:comment";
-    } else if (comments < 10) {
-      return `hax:messages-${comments}`;
-    }
-    return "hax:messages-9-plus";
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    import("@vaadin/vaadin-upload/vaadin-upload.js");
+    import("@lrnwebcomponents/rich-text-editor/rich-text-editor.js");
+    import(
+      "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js"
+    );
+    this.fetchData("profile");
+    this.fetchData("assignments");
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "submission") {
+        this.__links =
+          this.submission && this.submission.links ? this.submission.links : [];
+        this.__sources =
+          this.submission && this.submission.sources
+            ? this.submission.sources
+            : [];
+      }
+    });
+  }
+  get actions() {
+    return !this.editable
+      ? html``
+      : html`
+          <section id="actions">
+            <elmsln-studio-button class="delete" icon="delete" path=""
+              >Delete</elmsln-studio-button
+            >
+            <span class="spacer"></span>
+            <elmsln-studio-button class="save" path=""
+              >Save Draft</elmsln-studio-button
+            >
+            <elmsln-studio-button class="submit" icon="done" path=""
+              ><span slot="before">Submit Assignment</span>
+            </elmsln-studio-button>
+          </section>
+        `;
+  }
+  get alert() {
+    let getAlert = (message, date, icon = true) => {
+        return html` <p
+            id="alert"
+            class="${this.assignmentStatus.toLowerCase().replace(/\s/, "-")}"
+          >
+            ${!icon
+              ? ""
+              : html`
+                  <iron-icon
+                    id="alert-avatar"
+                    icon="${this.getStatusIcon(
+                      this.submission,
+                      this.assignment || {}
+                    )}"
+                  >
+                  </iron-icon>
+                `}
+            ${message}
+            ${date
+              ? html`
+                  <local-time
+                    month="long"
+                    day="numeric"
+                    year="numeric"
+                    hour="2-digit"
+                    minute="2-digit"
+                    second="2-digit"
+                    time-zone-name="short"
+                    datetime="${date}"
+                  >
+                    ${this.dateFormat(date)}
+                  </local-time>
+                `
+              : ""}
+          </p>
+          <simple-tooltip for="alert-avatar">
+            ${this.assignmentStatus}
+          </simple-tooltip>`;
+      },
+      alertMessage = this.getStatus(
+        this.submission,
+        this.assignment || {},
+        this.tooLate
+          ? getAlert(
+              "Assignment closed for submission on ",
+              this.assignment.hideDate
+            )
+          : getAlert("Assignment is overdue!"),
+        getAlert("Assignment submitted late on ", (this.submission || {}).date),
+        getAlert("Assignment submitted on ", (this.submission || {}).date),
+        this.tooEarly
+          ? getAlert(
+              "Assignment will open for submission on",
+              this.assignment.showDate,
+              false
+            )
+          : ""
+      );
+    return alertMessage;
+  }
+  get assignmentStatus() {
+    return this.getStatusMessage(this.submission, this.assignment || {});
+  }
+  get bodytext() {
+    let body = !(this.submission || {}).body ? "" : this.submission.body.trim(),
+      bodyEmpty = body == "" && !this.editable;
+    return !this.assignment || bodyEmpty
+      ? ""
+      : html`
+          <section id="text">
+            <h2 class="sr-only">Text</h2>
+            ${!this.editable
+              ? body
+              : html`
+                  <rich-text-editor-toolbar-full
+                    id="toolbar"
+                    controls="editor"
+                    .config="${this.__editorConfig}"
+                    sticky
+                  >
+                  </rich-text-editor-toolbar-full>
+                  <rich-text-editor
+                    id="editor"
+                    toolbar="toolbar"
+                    type="rich-text-editor-toolbar-full"
+                  >
+                    ${body || html`<p>Add text</p>`}
+                  </rich-text-editor>
+                `}
+          </section>
+        `;
+  }
+  get breadcrumb() {
+    return html`
+      <div id="breadcrumb">
+        <elmsln-studio-link href="/assignments">Assignments</elmsln-studio-link>
+        <span> > </span>
+        <span>
+          ${!this.assignment
+            ? html`<em>Assignment</em>`
+            : this.assignment.assignment}
+        </span>
+      </div>
+    `;
+  }
+  get editable() {
+    return !(this.submission || {}).date && !this.tooEarly && !this.tooLate;
+  }
+  get links() {
+    let linksEmpty = (this.__links || []).length < 1 && !this.editable;
+    return !this.assignment || linksEmpty
+      ? ""
+      : html`
+          <section id="links">
+            <h2 class="sr-only">Links</h2>
+            <ul id="linklist">
+              ${(this.__links || []).map(
+                (link, i) => html`
+                  <li>
+                    <a id="link-${i}" href="link.url" class="link ${link.type}">
+                      ${link.text} (${link.url})
+                    </a>
+                    ${!this.editable
+                      ? ""
+                      : html`
+                          <button
+                            aria-controls="source-${i}"
+                            @click="${(e) => this._removeLink(i)}"
+                          >
+                            <span class="sr-only">delete link</span>
+                            <iron-icon icon="delete"></iron-icon>
+                          </button>
+                        `}
+                  </li>
+                `
+              )}
+              ${!this.editable
+                ? ``
+                : html`
+                    <li>
+                      <label for="linktext" class="sr-only">Text</label>
+                      <input
+                        id="linktext"
+                        @change="${(e) =>
+                          (this.__newLinkText = this._getFieldVal("linktext"))}"
+                        placeholder="link text"
+                        type="text"
+                      />
+                      <label for="linkurl" class="sr-only">URL</label>
+                      <input
+                        id="linkurl"
+                        @change="${(e) =>
+                          (this.__newLinkUrl = this._getFieldVal("linkurl"))}"
+                        placeholder="url"
+                        required
+                        type="url"
+                      />
+                      <button
+                        aria-controls="linklist"
+                        aria-describedby="linktext linkurl"
+                        @click="${this._addLink}"
+                        ?disabled="${!this.__newLinkUrl}"
+                      >
+                        <span class="sr-only">add link</span>
+                        <iron-icon icon="add"></iron-icon>
+                      </button>
+                    </li>
+                  `}
+            </ul>
+          </section>
+        `;
+  }
+  get nav() {
+    let prevLabel = (this.prevAssign || {}).assignment || "",
+      nextLabel = (this.nextAssign || {}).assignment || "",
+      prevHref = (this.prevAssign || {}).id
+        ? `./${this.prevAssign.id}`
+        : undefined,
+      nextHref = (this.nextAssign || {}).id
+        ? `./${this.nextAssign.id}`
+        : undefined;
+    return this.prevNextNav(prevLabel, prevHref, nextLabel, nextHref);
+  }
+  get newLinkType() {
+    return this._getLinkType(this.__newLinkUrl);
+  }
+  get nextAssign() {
+    let temp = this.assignment ? this.assignment.next : undefined;
+    return temp ? (this.assignments || {})[temp] : undefined;
+  }
+  get prevAssign() {
+    let temp = this.assignment ? this.assignment.prev : undefined;
+    return temp ? (this.assignments || {})[temp] : undefined;
+  }
+  get sources() {
+    let sourcesEmpty = (this.__sources || []).length < 1 && !this.editable;
+    return !this.assignment || sourcesEmpty
+      ? ""
+      : html`
+          <section id="uploads">
+            <h2 class="sr-only">Uploads</h2>
+            <ul id="uploadlist">
+              ${(this.__sources || []).map(
+                (source, i) => html`
+                  <li
+                    id="source-${i}"
+                    style="background-image: url(${source.src})"
+                  >
+                    ${!this.editable
+                      ? ``
+                      : html` <button
+                          aria-controls="source-${i}"
+                          class="delete-upload"
+                          @click="${(e) => this._removeUpload(i)}"
+                        >
+                          <span class="sr-only"
+                            >delete ${source.alt || source.src}</span
+                          >
+                          <iron-icon icon="delete"></iron-icon>
+                        </button>`}
+                  </li>
+                `
+              )}
+              ${!this.editable
+                ? html`<div></div>`
+                : html`
+                    <li>
+                      <vaadin-upload
+                        id="add-upload"
+                        @upload-before="${this._addUpload}"
+                      ></vaadin-upload>
+                      <span class="spacer"></span>
+                    </li>
+                  `}
+            </ul>
+          </section>
+        `;
+  }
+  get tooEarly() {
+    return (
+      this.assignment &&
+      this.assignment.showDate &&
+      this.isEarly(this.assignment.showDate)
+    );
+  }
+  get submittedLate() {
+    return (
+      (this.submission || {}).date &&
+      this.assignment &&
+      this.isLate(this.assignment.date, this.submission.date)
+    );
+  }
+  get tooLate() {
+    return (
+      this.assignment &&
+      this.assignment.hideDate &&
+      this.isLate(this.assignment.hideDate)
+    );
+  }
+  _addLink(i) {
+    if (this.__newLinkUrl) {
+      let links = this.__links.slice(0);
+      links.push({
+        text: this.__newLinkText,
+        url: this.__newLinkUrl,
+        type: this.newLinkType,
+      });
+      this.__links = links;
+      this._setFieldVal("linkurl");
+      this._setFieldVal("linktext");
+    }
+  }
+  _addUpload(e) {
+    console.log("_addUpload", e);
+    /*let source = {}, 
+      sources = this.__sources.slice(0);
+    sources.splice(i,0,source);
+    this.__sources = sources;*/
+  }
+  _getFieldVal(id) {
+    return this.shadowRoot && this.shadowRoot.querySelector(`#${id}`)
+      ? this.shadowRoot.querySelector(`#${id}`).value
+      : undefined;
+  }
+  _getLinkType(url = "") {
+    let ext = url.match(/\.\w+$/);
+    return ext && ext[0] ? ext[0].toLowerCase().replace(/\./, "") : undefined;
+  }
+  _removeLink(i) {
+    let links = this.__links.slice(0);
+    links.splice(i, 1);
+    this.__links = links;
+  }
+  _removeUpload(i) {
+    let sources = this.__sources.slice(0);
+    sources.splice(i, 1);
+    this.__sources = sources;
+  }
+  _setFieldVal(id, val) {
+    if (this.shadowRoot && this.shadowRoot.querySelector(`#${id}`))
+      this.shadowRoot.querySelector(`#${id}`).value = "";
   }
 }
 customElements.define("elmsln-studio-assignment", ElmslnStudioAssignment);

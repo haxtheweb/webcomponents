@@ -10,7 +10,7 @@ import "../singletons/rich-text-editor-prompt.js";
 const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonBehaviors(SuperClass) {
     /**
-     * Store the tag name to make it easier to obtain directly.
+     * Store tag name to make it easier to obtain directly.
      */
     static get tag() {
       return "rich-text-editor-prompt-button";
@@ -21,61 +21,64 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       return super.render();
     }
 
-    // properties available to the custom element for data binding
+    // properties available to custom element for data binding
     static get properties() {
       return {
         ...super.properties,
         /**
-         * fields for the prompt popover.
+         * fields for prompt popover.
          */
         fields: {
           type: Array,
         },
         /**
-         * is the element a custom inline widget element?
+         * is element a custom inline widget element?
          */
         inlineWidget: {
           name: "inlineWidget",
           type: Boolean,
         },
         /**
-         * the tag that will wrap the selected range
+         * is element a custom inline widget element?
+         */
+        id: {
+          name: "id",
+          type: String,
+          reflect: true,
+          attribute: "id",
+        },
+        /**
+         * tag that will wrap selected range
          */
         tag: {
           name: "tag",
           type: String,
         },
         /**
-         * The prefilled value of the prompt
+         * prefilled value of prompt
          */
         value: {
           type: Object,
         },
         /**
-         * fields for the prompt popover.
+         * prompt that pops up when button is pressed
          */
-        __promptFields: {
-          type: Array,
+        prompt: {
+          name: "prompt",
+          type: Object,
         },
         /**
-         * the contents node inside the selected range
+         * contents node inside selected range
+         */
+        __wrap: {
+          name: "__wrap",
+          type: Object,
+        },
+        /**
+         * contents node inside selected range
          */
         __oldValue: {
           name: "__oldValue",
-          type: Object,
-        },
-        /**
-         * the prompt that pops up when button is pressed
-         */
-        __prompt: {
-          name: "__prompt",
-          type: Object,
-        },
-        /**
-         * the contents node inside the selected range
-         */
-        __selectionContents: {
-          name: "__selectionContents",
           type: Object,
         },
       };
@@ -86,131 +89,183 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       this.inlineWidget = false;
       this.fields = [
         {
-          slot: "",
+          property: "innerHTML",
           title: "Text",
-          description: "The inner text",
           inputMethod: "textfield",
         },
       ];
       this.tag = "span";
-      this.value = {
-        "": null,
-        id: null,
-      };
-      this.__prompt = window.RichTextEditorPrompt.requestAvailability();
+      this.value = { innerHTML: undefined };
+      this.prompt = window.RichTextEditorPrompt.requestAvailability();
     }
 
     /**
-     * Handles button tap
-     * @param {event} e the button tap event
-     */
-    _buttonTap(e) {
-      e.preventDefault();
-      let block = this._getSelectedBlock();
-      this.__selection.selectRange(this.range);
-      if (block) {
-        this.range.selectNode(block);
-      } else {
-        this.__selection.wrap();
-      }
-      this.__selection.addHighlight();
-      this.range = this.__selection.range;
-      this.open();
-    }
-    /**
-     * cancels the changes
-     */
-    cancel() {
-      this.__selection.removeHighlight();
-    }
-
-    /**
-     * updates the insertion based on fields
-     */
-    confirm() {
-      this.updateSelection();
-      this.__selection.removeHighlight();
-    }
-
-    /**
-     * Handles editor change
-     * @param {string} newVal the new editor's id
-     * @param {string} oldVal the old editor's id
-     * @returns {void}
-     */
-    _editorChanged(newVal, oldVal) {
-      let newEditor = newVal ? document.getElementById(newVal) : null,
-        oldEditor = oldVal ? document.getElementById(oldVal) : null;
-      if (newEditor)
-        newEditor.addEventListener(
-          "click",
-          (e) => this._editInlineWidget(newEditor, e),
-          true
-        );
-      if (oldEditor)
-        oldEditor.removeEventListener(
-          "click",
-          (e) => this._editInlineWidget(oldEditor, e),
-          true
-        );
-      super._editorChanged(newVal, oldVal);
-    }
-    /**
+     * determines which command based on values passed from prompt
+     * (can be overriden for custom prompt  commands)
      *
-     * @param {object} editor the active editor
-     * @param {event} e the edit event
-     * @returns {boolean} whether to prevent the default behavior for an inline widget
+     * @readonly
      */
-    _editInlineWidget(editor, e) {
-      if (
-        editor.getAttribute("contenteditable") &&
-        this.inlineWidget &&
-        e.target.tagName &&
-        e.target.tagName.toLowerCase() === this.tag
-      ) {
-        e.stopPropagation();
-        e.preventDefault();
-        this.selectWidget(e.target);
-        this.open();
-        return false;
-      } else {
-        return true;
-      }
+    get promptCommand() {
+      return this.toggledCommand && !this.toggled
+        ? this.toggledCommand
+        : this.command;
     }
 
-    selectWidget(widget) {
-      this.__selection.selectNode(widget);
-      this.__selectionContents = widget;
+    /**
+     * determaines commandVal based on values passed from prompt
+     * (can be overriden for custom prompt command values)
+     */
+    get promptCommandVal() {
+      return this.commandVal;
+    }
+    /**
+     * determaines if prompt also sets innerHTML of range
+     * (can be overriden for custom prompts)
+     */
+    get setsInnerHTML() {
+      let innerHTML = (this.fields || []).filter(
+        (field) => field.property === "innerHTML"
+      );
+      return innerHTML && innerHTML.length > 0;
+    }
+
+    /**
+     * override to add function to cancelled prompt
+     */
+    cancel() {}
+
+    /**
+     * updates insertion based on fields
+     */
+    confirm(val) {
+      this.value = val;
+      this.update();
+      this.setToggled();
+      this.promptCommandVal;
+      this.updateSelection();
+    }
+    /**
+     * expands selection to include this.tag
+     *
+     */
+    expandSelection() {
+      let element = this.rangeQuery();
+      if (element) this.highlightNode(element);
+    }
+    /**
+     * if selection is a node, gets node innerHTML
+     *
+     * @returns {string}
+     */
+    getInnerHTML() {
+      let target =
+          this.range && this.range.cloneContents
+            ? this.range.cloneContents()
+            : undefined,
+        root = this.rangeElement() ? this.rangeElement() : undefined,
+        temp,
+        html;
+
+      if (this.rangeIsElement()) {
+        html = root ? root.innerHTML : undefined;
+      } else {
+        temp = document.createElement("span");
+        if (target) temp.appendChild(target);
+        html = temp.innerHTML;
+        temp.remove();
+      }
+      return html;
+    }
+
+    /**
+     * gets a field value (and trims it if it's a string)
+     *
+     * @param {string} prop field name
+     * @returns {*}
+     * @memberof RichTextEditorPrompt
+     */
+    getPropValue(prop) {
+      let val = !!this.value ? this.value : false,
+        rawVal =
+          !val || !val[prop]
+            ? false
+            : val[prop].trim
+            ? val[prop].trim()
+            : val[prop];
+      return rawVal && rawVal !== "" ? rawVal : false;
+    }
+
+    /**
+     * gets value for prompt based on current selection
+     * (can be overriden for custom prompt field values)
+     */
+    getValue() {
+      return { innerHTML: this.getInnerHTML() || "" };
     }
 
     /**
      * Handles selecting text and opening prompt
      */
     open() {
-      this.updatePrompt();
-      this.__prompt.setTarget(this);
+      this.expandSelection();
+      this.value = this.getValue();
+      this.prompt.fields = [...this.fields];
+      this.prompt.value = { ...this.value };
+      this.dispatchEvent(
+        new CustomEvent("rich-text-editor-prompt-open", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
     }
-
     /**
-     * updates prompt fields with selected range data
+     * sets inner HTML of selection
+     *
+     * @param {string} html
      */
-    updatePrompt() {
-      this.__selectionContents = this.__selection.firstChild;
-      this.__promptFields = JSON.parse(JSON.stringify(this.fields));
+    setInnerHTML(html) {
+      let target = this.rangeElement();
+      if (target && this.rangeIsElement()) {
+        target.innerHTML = html;
+      } else if (this.range) {
+        this.sendCommand("insertHtml", html);
+      }
     }
-
     /**
-     * updates the insertion based on fields
+     * updates toggled based on values passed from prompt
+     * (can be overriden for custom toggled state)
+     */
+    setToggled() {
+      this.toggled = !this.value;
+    }
+    /**
+     * updates selection based on values passed from prompt
      */
     updateSelection() {
-      this.__selectionContents = this._getSelectedBlock() || this.__selection;
-      this.setRange();
-      this.toggled = !this.__prompt.value;
-      this.commandVal = this.__prompt.value;
-      this.execCommand();
+      let range = this.range.cloneRange();
+      this.sendCommand(this.promptCommand, this.promptCommandVal);
+      this.selectRange(range);
+      if (this.setsInnerHTML) this.setInnerHTML(this.getPropValue("innerHTML"));
     }
-    setRange() {
-      this.__selection.selectRange(this.range);
+
+    /**
+     * Handles button tap
+     * @param {event} e button tap event
+     */
+    _buttonTap(e) {
+      e.preventDefault();
+      this.open();
+    }
+
+    /**
+     * Handles range change
+     * @param {event} e button tap event
+     */
+    _rangeChanged(newVal, oldVal) {
+      this.value = this.getValue();
+      this.setToggled();
     }
   };
 };

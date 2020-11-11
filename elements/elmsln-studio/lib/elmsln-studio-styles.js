@@ -48,9 +48,26 @@ const ElmslnStudioStyles = function (SuperClass) {
             --elmsln-studio-link-TextDecoration: underline !important;
             --elmsln-studio-link-TextDecorationThickness: 3px;
           }
-          #studio-nav elmsln-studio-link:focus-within,
-          #studio-nav elmsln-studio-link:hover {
+          #studio-nav elmsln-studio-link:not([disabled]):focus-within,
+          #studio-nav elmsln-studio-link:not([disabled]):hover {
             --elmsln-studio-link-TextDecoration: underline !important;
+          }
+          .primary-404 {
+            min-height: 20vh;
+            display: flex;
+          }
+          #message-404 {
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 20px;
+          }
+          #message-404 elmsln-studio-link {
+            color: blue;
+            display: inline;
+          }
+          #message-404 elmsln-studio-link:not([disabled]):hover,
+          #message-404 elmsln-studio-link:not([disabled]):focus-within {
+            text-decoration: underline;
           }
           .filters {
             padding-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
@@ -83,6 +100,9 @@ const ElmslnStudioStyles = function (SuperClass) {
               sans-serif
             );
           }
+          hexagon-loader {
+            margin-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
           accent-card img-view-modal[slot="image-corner"] {
             float: right;
           }
@@ -95,18 +115,19 @@ const ElmslnStudioStyles = function (SuperClass) {
             --elmsln-studio-link-Color: var(--accent-card-color);
             --elmsln-studio-link-TextDecoration: none !important;
           }
-          .card elmsln-studio-link:focus,
-          .card elmsln-studio-link:focus-within,
-          .card elmsln-studio-link:hover {
+          .card elmsln-studio-link:not([disabled]):focus,
+          .card elmsln-studio-link:not([disabled]):focus-within,
+          .card elmsln-studio-link:not([disabled]):hover {
             --elmsln-studio-link-TextDecoration: underline !important;
           }
           .card elmsln-studio-link[slot="subheading"] {
             --elmsln-studio-link-FontWeight: bold;
             --elmsln-studio-link-TextDecoration: underline !important;
           }
-          .card elmsln-studio-link[slot="subheading"]:focus,
-          .card elmsln-studio-link[slot="subheading"]:focus-within,
-          .card elmsln-studio-link[slot="subheading"]:hover {
+          .card elmsln-studio-link[slot="subheading"]:not([disabled]):focus,
+          .card
+            elmsln-studio-link[slot="subheading"]:not([disabled]):focus-within,
+          .card elmsln-studio-link[slot="subheading"]:not([disabled]):hover {
             --elmsln-studio-link-TextDecoration: none !important;
           }
           button {
@@ -118,7 +139,7 @@ const ElmslnStudioStyles = function (SuperClass) {
           }
           button:focus,
           button:hover {
-            color: var(--simple-colors-default-theme-grey11, #222);
+            color: var(--simple-colors-default-theme-grey-11, #222);
           }
           button.load-more {
             text-align: center;
@@ -128,12 +149,12 @@ const ElmslnStudioStyles = function (SuperClass) {
             border-radius: 3px;
             border: none;
             width: 100%;
-            color: var(--simple-colors-default-theme-grey11, #222);
+            color: var(--simple-colors-default-theme-grey-11, #222);
             background-color: var(--simple-colors-default-theme-grey-2, #eee);
           }
           button.load-more:focus,
           button.load-more:hover {
-            color: var(--simple-colors-default-theme-grey12, #000);
+            color: var(--simple-colors-default-theme-grey-12, #000);
             background-color: var(--simple-colors-default-theme-grey-3, #ddd);
           }
           img-view-modal button {
@@ -188,6 +209,72 @@ const ElmslnStudioStyles = function (SuperClass) {
           .thumbnail-grid > * {
             flex: 0 0 50%;
             margin: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
+          .rubric-table {
+            border-collapse: collapse;
+            margin: 0 0 calc(1 * var(--elmsln-studio-margin, 20px));
+          }
+          .rubric-table th,
+          .rubric-table td {
+            padding: 5px;
+            border: 1px solid #eaeaea;
+          }
+          .rubric-table th {
+            font-weight: normal;
+          }
+          .rubric-table caption {
+            font-size: calc(1.25 * var(--elmsln-studio-FontSize, 16px));
+            font-weight: normal;
+            color: #555555;
+          }
+          .rubric-table thead th {
+            border-bottom: 1px solid #95989a;
+          }
+          .rubric-table thead th:first-child,
+          .rubric-table tbody th {
+            border-right: 1px solid #95989a;
+          }
+          .rubric-table tbody tr:nth-child(2n + 1) > * {
+            background-color: #f8f8f8;
+          }
+          #prev-next-nav {
+            align-items: center;
+            position: sticky;
+            bottom: 0;
+            margin: 0;
+            background-color: #ffffff;
+            -webkit-box-shadow: 0px -1px 5px 0px #b0b0b0;
+            box-shadow: 0px -1px 5px 0px #b0b0b0;
+          }
+          #prev-next-nav {
+            flex: 1 0 100%;
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+          }
+          #prev-next-nav elmsln-studio-link {
+            border: 1px solid #ddd;
+            flex: 1 1 50%;
+            padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
+          #prev-next-nav elmsln-studio-link:not([disabled]):focus-within,
+          #prev-next-nav elmsln-studio-link:not([disabled]):hover {
+            border: 1px solid #000;
+          }
+          .prev-next-label span {
+            display: block;
+            font-weight: normal;
+            text-align: center;
+          }
+          .prev-next-label span:first-child {
+            flex: 1 0 auto;
+            font-size: calc(1.25 * var(--elmsln-studio-FontSize, 16px));
+            color: #4b4b4b;
+          }
+          .prev-next-label span:last-child {
+            flex: 1 1 auto;
+            font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
+            color: #222;
           }
           @media screen and (min-width: 600px) {
             #studio-nav elmsln-studio-link {

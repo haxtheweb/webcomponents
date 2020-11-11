@@ -8,7 +8,6 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
@@ -190,7 +189,7 @@ export const A11yMediaPlayerAudio = () => {
     utils.getKnobs(fields, {
       ...defaults,
       emptyslot: `
-          <audio>
+          <audio controls>
               <source src="${new URL(
                 `demo/samples/bueller.mp3`,
                 import.meta.url

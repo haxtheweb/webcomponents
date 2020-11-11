@@ -7,7 +7,7 @@ import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Forms|Rick Text",
+  title: "Forms|Rich Text",
   component: "rich-text-editor",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

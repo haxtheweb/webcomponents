@@ -58,26 +58,20 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * updates prompt fields with selected range data
+   * determaines commandVal based on values passed from prompt
    */
-  updatePrompt() {
-    super.updatePrompt();
-    this.value = {
-      confirm:
-        this.isToggled ||
-        (this.__selectionContents.tagName &&
-          this.__selectionContents.tagName.toLowerCase() ===
-            this.tag.toLowerCase()),
-    };
+  get promptCommandVal() {
+    this.commandVal = undefined;
   }
 
   /**
-   * updates the insertion based on fields
+   * updates prompt fields with selected range data
    */
-  updateSelection() {
-    this.toggled = !this.__prompt.getPromptValue("confirm");
-    this.setRange();
-    this.execCommand();
+  getValue() {
+    return { confirm: !!this.toggled };
+  }
+  setToggled() {
+    this.toggled = !!this.getPropValue("confirm");
   }
 }
 window.customElements.define(

@@ -167,6 +167,10 @@ class ThreadedDiscussionForm extends LitElement {
             var(--threaded-discussion-comment-button-focus-BorderColor, #222);
         }
         button simple-icon {
+          --simple-icon-color: var(
+            --threaded-discussion-comment-button-Color,
+            #fff
+          );
           margin-left: 5px;
         }
       `,

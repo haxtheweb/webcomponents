@@ -1,6 +1,6 @@
 {
   /**
-   * always float the label
+   * @deprecated always float the label
    */
   "alwaysFloatLabel": {
     "attribute": "always-float-label",
@@ -21,6 +21,13 @@
     "type": "String"
   },
   /**
+   * displays with label inline
+   */
+  "inline": {
+    "attribute": "inline",
+    "type": "Boolean"
+  },
+  /**
    * label for next result icon
    */
   "nextButtonIcon": {
@@ -35,7 +42,7 @@
     "type": "String"
   },
   /**
-   * never float the label
+   * @deprecated never float the label
    */
   "noLabelFloat": {
     "attribute": "no-label-float",

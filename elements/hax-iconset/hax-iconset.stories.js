@@ -10,7 +10,7 @@ import {
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Icons|Hax",
+  title: "Media|Icons",
   component: "hax-iconset",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

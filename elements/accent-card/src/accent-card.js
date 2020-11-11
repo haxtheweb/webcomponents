@@ -135,13 +135,21 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           --accent-card-footer-border-color: var(--accent-card-border-color);
         }
         article {
+          position: relative;
           width: 100%;
           box-sizing: border-box;
+        }
+        article,
+        .body {
+          display: flex;
+          flex: 1 1 auto;
+          flex-direction: column;
         }
         :host([horizontal]) article {
           display: flex;
           justify-content: space-between;
           align-items: stretch;
+          flex-direction: row;
         }
         :host([flat]) {
           box-shadow: none;

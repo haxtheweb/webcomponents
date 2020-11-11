@@ -34,12 +34,24 @@ Custom property | Description | Default
 `--a11y-tabs-border-radius` | default border radius | 2px
 `--a11y-tabs-horizontal-border-radius` | border-radius when horizontal | `--a11y-tabs-border-radius`
 `--a11y-tabs-vertical-border-radius` | border-radius when veritcal | `--a11y-tabs-border-radius`
+`--a11y-tabs-text-decoration` | default text decoration for tab button | none
+`--a11y-tabs-focus-text-decoration` | default text on focus or hover | underline
 
-#### Tab Section
+#### Tab Panel
 Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-tabs-tab-font-family` | font-family | `--a11y-tabs-font-family`
 `--a11y-tabs-tab-font-size` | font-size | `--a11y-tabs-font-size`
+`--a11y-tabs-font-weight` | default font weight | normal
+`--a11y-tabs-selected-font-weight` | font weight of selected tabs | normal
+`--a11y-tabs-focus-font-weight` | font weight of focused/hovered tabs | normal
+`--a11y-tabs-text-decoration` | default text-decoration | none
+`--a11y-tabs-focus-text-decoration` | text-decoration when focused/hovered | underline
+`--a11y-tabs-selected-text-decoration` | text-decoration when selected | none
+`--a11y-tabs-color` | default text color | #000
+`--a11y-tabs-focus-color` | text color of focused/hovered tab | --a11y-tabs-color`
+`--a11y-tabs-faded-color` | text color of disabled items |  #333;
+`--a11y-tabs-selected-color` | text color of selected tab | `--a11y-tabs-focus-color`
 `--a11y-tabs-background` | background for active tab and tab content | white
 `--a11y-tabs-faded-background` | background inactive tabs | #eee
 `--a11y-tabs-horizontal-background` | background for tabs container when horizontal | unset
@@ -53,6 +65,10 @@ Custom property | Description | Default
 `--a11y-tabs-button-padding` | padding for tabs | 8px
 `--a11y-tabs-vertical-button-padding` | padding for tabs when vertical | `--a11y-tabs-button-padding`
 `--a11y-tabs-horizontal-button-padding` | padding for tabs when horizontal | `--a11y-tabs-button-padding`
+`--a11y-tabs-border-accent` | optional thicker border for top of horizontal tabs or left of vertical tabs (ex. 4px solid blue) | unset
+`--a11y-tabs-selected-border-accent` | optional thicker border for top of selected horizontal tab or left of vertical tab | unset
+`--a11y-tabs-selected-focus-accent` | optional thicker border for top of focused/hovered horizontal tab or left of vertical tab | unset
+`--a11y-tabs-selected-disabled-accent` | optional thicker border for top of disabled horizontal tabs or left of vertical tabs | unset
 
 #### Content Section
 Custom property | Description | Default
@@ -82,7 +98,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     this.disabled = false;
     this.hidden = false;
     this.__tabs = [];
+    this.__tabFocus = 0;
     this.addEventListener("a11y-tab-changed", (e) => this.updateTabs());
+  }
+  get buttons() {
+    return this.__tabButtons;
   }
   /**
    * determines if tabs should show icons only
@@ -209,6 +229,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   updateTabs(e) {
     this.__tabs = this.querySelectorAll(this.tabQuery);
+    this.__tabButtons = this.shadowRoot.querySelectorAll("[role=tab]");
     this.selectTab(this.activeTab);
   }
   /**
@@ -245,6 +266,30 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   _handleTab(tab) {
     if (!tab.disabled) this.activeTab = tab.id;
   }
+  _handleKey(i, e) {
+    this.__tabFocus = i;
+    let focus = (dir = 1) => {
+      this.__tabFocus = this.__tabFocus + dir;
+      // If we're at the end, go to the start
+      if (this.__tabFocus >= this.buttons.length) {
+        this.__tabFocus = 0;
+        // If we're at the start, move to the end
+      } else if (this.__tabFocus < 0) {
+        this.__tabFocus = this.buttons.length - 1;
+      }
+      if (this.buttons[this.__tabFocus].disabled && this.__tabFocus !== i)
+        focus(dir);
+    };
+    // Move right
+    if (e.keyCode === 39 || e.keyCode === 37) {
+      this.buttons[i].setAttribute("tabindex", -1);
+      focus(e.keyCode === 39 ? 1 : -1);
+      if (!this.buttons[this.__tabFocus].disabled) {
+        this.buttons[this.__tabFocus].setAttribute("tabindex", 0);
+        this.buttons[this.__tabFocus].focus();
+      }
+    }
+  }
   /**
    * ensures that there is always an id for this tabbed interface so that we can link back to the top of it
    * @param {string} newValue the new id
@@ -261,17 +306,19 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @returns object
    * @memberof A11yTabs
    */
-  _tabButton(tab) {
+  _tabButton(tab, i) {
     return html`
       <button
         id="${tab.id}-button"
-        controls="${tab.id}"
+        aria-selected="${tab.id === this.activeTab ? "true" : "false"}"
+        aria-controls="${tab.id}"
         class="${tab.id === this.activeTab && !this.disabled ? "active" : ""}"
-        @click="${(e) => this._handleTab(tab)}"
-        ?disabled="${tab.id === this.activeTab ||
-        tab.disabled ||
-        this.disabled}"
         .flag="${tab.flag}"
+        @click="${(e) => this._handleTab(tab)}"
+        @keydown="${(e) => this._handleKey(i, e)}"
+        ?disabled="${tab.disabled || this.disabled}"
+        tabindex="${tab.id === this.activeTab ? 0 : -1}"
+        role="tab"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}

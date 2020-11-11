@@ -3,10 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "./lib/singletons/rich-text-editor-selection.js";
 import { RichTextEditorStyles } from "@lrnwebcomponents/rich-text-editor/lib/rich-text-editor-styles.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
+import * as shadow from "shadow-selection-polyfill/shadow.js";
 /**
  * `rich-text-editor`
  * @element rich-text-editor
@@ -34,66 +36,232 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   }
   constructor() {
     super();
+    window.RichTextEditorStyleManager.requestAvailability();
     this.placeholder = "Click to edit";
     this.toolbar = "";
     this.type = "rich-text-editor-toolbar";
     this.id = "";
+    this.range = undefined;
+    this.__selection = window.RichTextEditorSelection.requestAvailability();
+    document.addEventListener(shadow.eventName, this._getRange.bind(this));
   }
+
+  _getRange() {
+    let shadowRoot = (el) => {
+      let parent = el.parentNode;
+      return parent ? shadowRoot(parent) : el;
+    };
+    this.range = shadow.getRange(shadowRoot(this));
+    this.updateRange();
+  }
+
   /**
-   * life cycle, element is afixed to the DOM
-   * @returns {void}
+   * mutation observer
+   *
+   * @readonly
+   * @memberof RichTextEditor
    */
+  get observer() {
+    let root = this;
+    return new MutationObserver((e) => root._getRange(e));
+  }
+
   connectedCallback() {
     super.connectedCallback();
-    if (!this.id) this.id = this._generateUUID();
-    this.getEditor();
-    window.RichTextEditorStyleManager.requestAvailability();
+    this.register();
   }
+
   /**
-   * connects the mini-toolbar to a mini editor
+   * life cycle, element is disconnected
    * @returns {void}
    */
-  getEditor() {
-    let id = this.toolbar ? "#" + this.toolbar : "",
-      both = document.querySelector(this.type + id),
-      idOnly = id ? document.querySelector(id) : null,
-      typeOnly = document.querySelector(this.type),
-      //try to match both id and type, if no match try id only, and then type only
-      toolbar = both || idOnly || typeOnly;
-    //if still no match, create a region of type
-    if (!this.toolbar) this.toolbar = this._generateUUID();
-    if (!toolbar || !toolbar.addEditableRegion) {
-      toolbar = document.createElement(this.type);
-      toolbar.id = this.toolbar;
-      this.parentNode.appendChild(toolbar);
-    }
-    toolbar.addEditableRegion(this);
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.register(true);
   }
 
+  firstUpdated() {
+    if (super.firstUpdated) super.firstUpdated();
+    if (this.isEmpty()) this.innerHTML = "";
+    this._editableChange();
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "contenteditable") this._editableChange();
+      if (propName === "range") this._rangeChange();
+    });
+  }
   /**
-   * Normalizes selected range data.
+   * gets current value minus placeholder
    *
-   * @returns {object} the selected range
+   * @returns {string}
+   * @memberof RichTextEditor
    */
-  _getRange() {
-    let sel = window.getSelection();
-    if (sel.getRangeAt && sel.rangeCount) {
-      return sel.getRangeAt(0);
-    } else if (sel) {
-      return sel;
-    } else false;
+  getValue() {
+    return this.isEmpty ||
+      this.trimmerHTML(this) === `<p>${editor.placeholder}</p>`
+      ? ""
+      : this.innerHTML;
+  }
+  /**
+   * determines if editor is empty
+   *
+   * @returns {string}
+   * @memberof RichTextEditor
+   */
+  isEmpty() {
+    return !this.innerHTML || this.trimmerHTML(this) == "";
   }
 
   /**
-   * Generate a UUID
-   * @returns {string} a unique id
+   * allows editor to fit within a stick toolbar
+   *
+   * @param {boolean} sticky
+   * @memberof RichTextEditor
    */
-  _generateUUID() {
-    let hex = Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-    return "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
+  makeSticky(sticky = true) {
+    if (!sticky) {
+      this.classList.add("heightmax");
+    } else {
+      this.classList.remove("heightmax");
+    }
   }
+  /**
+   * set observer on or off
+   *
+   * @param {boolean} [on=true]
+   * @memberof RichTextEditor
+   */
+  observeChanges(on = true) {
+    if (on) {
+      let editor = this;
+      this.observer.observe(editor, {
+        attributes: false,
+        childList: true,
+        subtree: true,
+        characterData: false,
+      });
+    } else {
+      if (this.observer) this.observer.disconnect;
+    }
+  }
+
+  /**
+   *
+   *
+   * @memberof RichTextEditor
+   */
+  paste(pasteContent, sanitized = true) {
+    this._handlePaste(pasteContent);
+  }
+  /**
+   * handles registration to selection singleton's toolbars list
+   * @param {boolean} remove whether to remove
+   * @event register
+   */
+  register(remove = false) {
+    window.dispatchEvent(
+      new CustomEvent("register", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          remove: remove,
+          editor: this,
+        },
+      })
+    );
+  }
+  /**
+   * revert content to before contenteditable=true
+   *
+   * @memberof RichTextEditor
+   */
+  revert() {
+    this.innerHTML = this.__canceledEdits;
+  }
+  /**
+   * gets closet document oor shadowRoot
+   *
+   * @returns node
+   * @memberof RichTextEditor
+   */
+  rootNode() {
+    return !this.__selection ? document : this.__selection.getRoot(this);
+  }
+  /**
+   * holds on to edits so cancel willwork
+   *
+   * @param {string} [html=this.innerHTML]
+   * @memberof RichTextEditor
+   */
+  setCancelHTML(html = this.innerHTML) {
+    this.__canceledEdits = html;
+  }
+  /**
+   * gets trimmed version of innerHTML
+   *
+   * @param {obj} node
+   * @returns string
+   * @memberof RichTextEditor
+   */
+  trimmerHTML(node) {
+    return node.innerHTML.replace(/[\s\t\r\n]/gim, "");
+  }
+  updateRange(e) {
+    this.dispatchEvent(
+      new CustomEvent("getrange", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
+  }
+  /**
+   * updates editor placeholder and watches for range changes
+   *
+   * @memberof RichTextEditor
+   */
+  _editableChange() {
+    let placeholder = `<p>${this.placeholder}</p>`;
+    if (this.contenteditable) {
+      this.setCancelHTML();
+      if (this.isEmpty()) this.innerHTML = placeholder;
+    } else {
+      if (this.trimmerHTML(this) === placeholder) {
+        this.setCancelHTML("");
+      }
+    }
+  }
+
+  /**
+   * Handles paste.
+   *
+   * @param {event} e paste event
+   * @returns {void}
+   */
+  _handlePaste(e) {
+    let pasteContent = "";
+    // intercept paste event
+    if (e && (e.clipboardData || e.originalEvent.clipboardData)) {
+      pasteContent = (e.originalEvent || e).clipboardData.getData("text/html");
+    } else if (window.clipboardData) {
+      pasteContent = window.clipboardData.getData("Text");
+    }
+    this.dispatchEvent(
+      new CustomEvent("pastefromclipboard", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
+    e.preventDefault();
+  }
+  _rangeChange(e) {}
 }
 
 window.customElements.define(RichTextEditor.tag, RichTextEditor);

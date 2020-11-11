@@ -9,6 +9,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../accent-card.js';
+      import '../lib/accent-card-clickable.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       accent-card {
@@ -41,6 +42,29 @@
               </p>
             </div>
           </accent-card>
+        </template>
+      </demo-snippet>
+      <h1>accent-card-clickable</h1>
+      <demo-snippet>
+        <style>
+          accent-card-clickable {
+            min-width: 400px;
+            max-width: 600px;
+            margin: 0 auto 10px;
+          }
+        </style>
+        <template>
+          <accent-card-clickable accent-color="red" accent-heading horizontal image-src="./images/image2.jpg">
+            <a slot="heading" href="#top" data-clickable>Accent Card</a>
+            <a slot="subheading" href="./colors.html">A card with optional accent stylings.</a>
+            <div slot="content">
+              <p>
+                This card is highly customizable. 
+                There are a number of options for using <tt>accent-card</tt>. 
+                See documentation for more info. 
+              </p>
+            </div>
+          </accent-card-clickable>
         </template>
       </demo-snippet>
     </div>

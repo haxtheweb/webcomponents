@@ -1,9 +1,10 @@
 const path = require("path");
+const fs = require("fs");
 const cpy = require("rollup-plugin-cpy");
 
 module.exports = {
   // Globs of all the stories in your project
-  stories: ["../elements/*/**.stories.{js,mdx}"],
+  stories: ["./**.stories.{js,mdx}", "../elements/*/**.stories.{js,mdx}"],
 
   // Addons to be loaded, note that you need to import
   // them from storybook-prebuilt
@@ -26,6 +27,7 @@ module.exports = {
 
   // Rollup build output directory (build-storybook only)
   outputDir: "../../../storybooks/styleguide",
+
   // Configuration for rollup (build-storybook only)
   rollup: (config) => {
     config.plugins.push(
@@ -51,6 +53,11 @@ module.exports = {
       }),
       cpy({
         files: ["elements/fullscreen-behaviors/lib/screenfull/dist/*"],
+        dest: "../../storybooks/styleguide/",
+        options: { parents: true },
+      }),
+      cpy({
+        files: ["elements/*/lib/svgs/**/*"],
         dest: "../../storybooks/styleguide/",
         options: { parents: true },
       })

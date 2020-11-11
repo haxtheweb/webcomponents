@@ -19,16 +19,12 @@ class SimpleRangeInput extends SimpleColors {
       ...super.styles,
       css`
         :host {
-          display: block;
-          --simple-range-input-bg: var(
-            --simple-colors-default-theme-accent-2,
-            black
-          );
-          --simple-range-input-color: var(
-            --simple-colors-default-theme-accent-8,
-            grey
-          );
-          --simple-range-input-track-height: 10px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: var(--simple-range-input-track-height, 10px);
+          height: var(--simple-range-input-pin-height, 20px);
         }
         :host([disabled]) {
           pointer-events: none;
@@ -44,82 +40,172 @@ class SimpleRangeInput extends SimpleColors {
         }
         input[type="range"]::-webkit-slider-runnable-track {
           width: 100%;
-          height: var(--simple-range-input-track-height);
+          height: var(--simple-range-input-track-height, 10px);
           cursor: pointer;
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-          background: var(--simple-range-input-bg);
-          border-radius: 2px;
-          border: 0px solid #000101;
+          box-shadow: var(
+            --simple-range-input-box-shadow,
+            0px 0px 0px #000000,
+            0px 0px 0px #0d0d0d
+          );
+          background: var(
+            --simple-range-input-bg,
+            var(--simple-colors-default-theme-accent-2, black)
+          );
+          border-radius: var(--simple-range-input-track-border-radius, 2px);
+          border: var(--simple-range-input-border, 0px solid #000000);
         }
         input[type="range"]::-webkit-slider-thumb {
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-          border: 0px solid #000000;
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: var(--simple-range-input-color);
+          box-shadow: var(
+            --simple-range-input-box-shadow,
+            0px 0px 0px #000000,
+            0px 0px 0px #0d0d0d
+          );
+          border: var(--simple-range-input-border, 0px solid #000000);
+          height: var(--simple-range-input-pin-height, 20px);
+          width: var(
+            --simple-range-input-pin-width,
+            var(--simple-range-input-pin-height, 20px)
+          );
+          border-radius: var(--simple-range-input-border-radius, 50%);
+          background: var(
+            --simple-range-input-color,
+            var(--simple-colors-default-theme-accent-8, grey)
+          );
           cursor: pointer;
+          margin: calc(
+              0.5 *
+                (
+                  var(--simple-range-input-track-height, 10px) -
+                    var(--simple-range-input-pin-height, 20px)
+                )
+            )
+            0;
           -webkit-appearance: none;
-          margin-top: -3.6px;
         }
         input[type="range"]:focus::-webkit-slider-runnable-track {
-          background: var(--simple-range-input-bg);
+          background: var(
+            --simple-range-input-bg,
+            var(--simple-colors-default-theme-accent-2, black)
+          );
         }
         input[type="range"]::-moz-range-track {
           width: 100%;
-          height: var(--simple-range-input-track-height);
+          height: var(--simple-range-input-track-height, 10px);
           cursor: pointer;
           animate: 0.2s;
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-          background: var(--simple-range-input-bg);
-          border-radius: 2px;
-          border: 0px solid #000101;
+          box-shadow: var(
+            --simple-range-input-box-shadow,
+            0px 0px 0px #000000,
+            0px 0px 0px #0d0d0d
+          );
+          background: var(
+            --simple-range-input-bg,
+            var(--simple-colors-default-theme-accent-2, black)
+          );
+          border-radius: var(--simple-range-input-track-border-radius, 2px);
+          border: var(--simple-range-input-border, 0px solid #000000);
         }
         input[type="range"]::-moz-range-thumb {
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-          border: 0px solid #000000;
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: var(--simple-range-input-color);
+          box-shadow: var(
+            --simple-range-input-box-shadow,
+            0px 0px 0px #000000,
+            0px 0px 0px #0d0d0d
+          );
+          border: var(--simple-range-input-border, 0px solid #000000);
+          height: var(--simple-range-input-pin-height, 20px);
+          width: var(
+            --simple-range-input-pin-width,
+            var(--simple-range-input-pin-height, 20px)
+          );
+          border-radius: var(--simple-range-input-border-radius, 50%);
+          background: var(
+            --simple-range-input-color,
+            var(--simple-colors-default-theme-accent-8, grey)
+          );
           cursor: pointer;
+          margin: calc(
+              0.5 *
+                (
+                  var(--simple-range-input-track-height, 10px) -
+                    var(--simple-range-input-pin-height, 20px)
+                )
+            )
+            0;
         }
         input[type="range"]::-ms-track {
           width: 100%;
-          height: var(--simple-range-input-track-height);
+          height: var(--simple-range-input-track-height, 10px);
           cursor: pointer;
           animate: 0.2s;
           background: transparent;
           border-color: transparent;
-          border-width: 20px 0;
+          border-width: var(--simple-range-input-pin-height, 20px) 0;
           color: transparent;
         }
         input[type="range"]::-ms-fill-lower {
-          background: var(--simple-range-input-bg);
-          border: 0px solid #000101;
-          border-radius: 2px;
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+          background: var(
+            --simple-range-input-bg,
+            var(--simple-colors-default-theme-accent-2, black)
+          );
+          border: var(--simple-range-input-border, 0px solid #000000);
+          border-radius: var(--simple-range-input-track-border-radius, 2px);
+          box-shadow: var(
+            --simple-range-input-box-shadow,
+            0px 0px 0px #000000,
+            0px 0px 0px #0d0d0d
+          );
         }
         input[type="range"]::-ms-fill-upper {
-          background: var(--simple-range-input-bg);
-          border: 0px solid #000101;
-          border-radius: 2px;
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+          background: var(
+            --simple-range-input-bg,
+            var(--simple-colors-default-theme-accent-2, black)
+          );
+          border: var(--simple-range-input-border, 0px solid #000000);
+          border-radius: var(--simple-range-input-track-border-radius, 2px);
+          box-shadow: var(
+            --simple-range-input-box-shadow,
+            0px 0px 0px #000000,
+            0px 0px 0px #0d0d0d
+          );
         }
         input[type="range"]::-ms-thumb {
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-          border: 0px solid #000000;
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: var(--simple-range-input-color);
+          box-shadow: var(
+            --simple-range-input-box-shadow,
+            0px 0px 0px #000000,
+            0px 0px 0px #0d0d0d
+          );
+          border: var(--simple-range-input-border, 0px solid #000000);
+          height: var(--simple-range-input-pin-height, 20px);
+          width: var(
+            --simple-range-input-pin-width,
+            var(--simple-range-input-pin-height, 20px)
+          );
+          border-radius: var(--simple-range-input-border-radius, 50%);
+          background: var(
+            --simple-range-input-color,
+            var(--simple-colors-default-theme-accent-8, grey)
+          );
           cursor: pointer;
+          margin: calc(
+              0.5 *
+                (
+                  var(--simple-range-input-track-height, 10px) -
+                    var(--simple-range-input-pin-height, 20px)
+                )
+            )
+            0;
         }
         input[type="range"]:focus::-ms-fill-lower {
-          background: var(--simple-range-input-bg);
+          background: var(
+            --simple-range-input-bg,
+            var(--simple-colors-default-theme-accent-2, black)
+          );
         }
         input[type="range"]:focus::-ms-fill-upper {
-          background: var(--simple-range-input-bg);
+          background: var(
+            --simple-range-input-bg,
+            var(--simple-colors-default-theme-accent-2, black)
+          );
         }
       `,
     ];

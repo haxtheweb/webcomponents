@@ -25,8 +25,6 @@ class NavCard extends AccentCard {
         :host {
           display: block;
           --accent-card-content-padding-bottom: 0px;
-          --nav-card-item-avatar-size: 36px;
-          --nav-card-item-icon-size: 24px;
         }
 
         ::slotted([slot="linklist"]) {

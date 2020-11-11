@@ -3,14 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/nav-card/nav-card.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
+import "@github/time-elements";
+import "@lrnwebcomponents/nav-card/nav-card.js";
+//import "@lrnwebcomponents/accent-card/lib/accent-card-clickable.js";
+import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
+import "./elmsln-studio-link.js";
+import "./elmsln-studio-button.js";
 
 const ElmslnStudioUtilities = function (SuperClass) {
   return class extends SuperClass {
@@ -28,6 +27,11 @@ const ElmslnStudioUtilities = function (SuperClass) {
     constructor() {
       super();
       this.demoMode = false;
+      import("@polymer/iron-ajax/iron-ajax.js");
+      import("@polymer/iron-icon/iron-icon.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }
     /**
      * default toolbar config object,
@@ -56,6 +60,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
         },
       };
     }
+
     /**
      * sorts array by most recent (or by oldest)
      * @param {array} arr array
@@ -101,8 +106,61 @@ const ElmslnStudioUtilities = function (SuperClass) {
         return item;
       });
     }
-    _late(date) {
-      return new Date(date) < new Date();
+    isEarly(due, submitted) {
+      return new Date(due) > (new Date(submitted) || new Date());
+    }
+    onTime(due, submitted) {
+      return new Date(due) === (new Date(submitted) || new Date());
+    }
+    isLate(due, submitted) {
+      return new Date(due) < (submitted ? new Date(submitted) : new Date());
+    }
+
+    getStatus(submission, assignment, ifOverdue, ifLate, ifSubmitted, ifElse) {
+      let late =
+          !!submission &&
+          !!submission.date &&
+          !!assignment.date &&
+          submission.date > assignment.date,
+        overdue =
+          !submission && !!assignment.date && this.isLate(assignment.date);
+      return overdue
+        ? ifOverdue
+        : late
+        ? ifLate
+        : submission
+        ? ifSubmitted
+        : ifElse;
+    }
+    getStatusIcon(submission, assignment) {
+      return this.getStatus(
+        submission,
+        assignment,
+        "report-problem",
+        "assignment-late",
+        "assignment-turned-in",
+        "assignment"
+      );
+    }
+    getStatusColor(submission, assignment) {
+      return this.getStatus(
+        submission,
+        assignment,
+        "red",
+        "amber",
+        "green",
+        "grey"
+      );
+    }
+    getStatusMessage(submission, assignment) {
+      return this.getStatus(
+        submission,
+        assignment,
+        "Overdue",
+        "Submitted Late",
+        "Submitted",
+        "Not Submitted"
+      );
     }
     /**
      * converts and sorts arrat
@@ -165,12 +223,18 @@ const ElmslnStudioUtilities = function (SuperClass) {
                 .toolbars="${this.defaultModalToolbars}"
                 .figures="${this.getFigures(s.sources)}"
               >
-                <button .style="${this.getThumbailStyle(source.src)}">
+                <button
+                  id="view-thumb-${s.id}"
+                  .style="${this.getThumbailStyle(source.src)}"
+                >
                   <span class="sr-only">${source.alt}</span>
                   <div class="zoombg"></div>
                   <simple-icon icon="zoom-in" class="zoomicon"></simple-icon>
                   <div class="imgbg"></div>
                 </button>
+                <simple-tooltip for="view-thumb-${s.id}"
+                  >View Thumbnail</simple-tooltip
+                >
               </img-view-modal>
             `
           )}
@@ -236,37 +300,40 @@ const ElmslnStudioUtilities = function (SuperClass) {
         : colors[Math.floor(Math.random() * colors.length)];
     }
 
-    getActivityLink(activity, nocomment = false) {
+    getActivityLink(activity, nocomment = false, sort = false) {
       return activity.activity === "submission"
-        ? `/portfolios/${activity.portfolioId || activity.id}${
+        ? `/project/${activity.portfolioId || activity.id}${
             activity.portfolioId ? `?submission=${activity.id}` : ""
           }${
             nocomment
               ? ""
               : activity.portfolioId
-              ? `&comment=true`
-              : `?comment=true`
+              ? `&comment=true&sort-latest=${sort}`
+              : `?comment=true&sort-latest=${sort}`
           }`
         : activity.activity === "discussion"
-        ? `/portfolios/${activity.portfolioId || activity.submissionId}${
+        ? `/project/${activity.projectId || activity.submissionId}${
             activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
           }comment=${activity.id}`
-        : `/portfolios/${activity.portfolioId || activity.submissionId}${
+        : `/project/${activity.projectId || activity.submissionId}${
             activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
           }comment=${activity.feedbackId}`;
     }
 
     getActivityTitle(activity) {
       return html`
-        ${[activity.firstName, activity.lastName].join(" ")}
         ${activity.activity === "submission"
-          ? ` submitted ${activity.assignment}`
+          ? `${[activity.firstName, activity.lastName].join(" ")} submitted ${
+              activity.assignment
+            }`
           : activity.activity === "discussion"
-          ? ` left feedback for ${[
+          ? `${[activity.firstName, activity.lastName].join(
+              " "
+            )}'s feedback on ${[
               activity.creatorFirstName,
               activity.creatorLastName,
-            ].join(" ")}`
-          : ` replied to ${[
+            ].join(" ")}'s ${activity.assignment}`
+          : `${[activity.firstName, activity.lastName].join(" ")} replied to ${[
               activity.reviewerFirstName,
               activity.reviewerLastName,
             ].join(" ")}`}
@@ -309,7 +376,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
      * @returns {string} link
      */
     submissionLink(submission) {
-      return `/portfolios/${submission.userId}-${submission.projectId}?submission=${submission.id}`;
+      return `/project/${submission.userId}-${submission.projectId}?submission=${submission.id}`;
     }
 
     /**
@@ -327,7 +394,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
      * @returns {string} link
      */
     feedbackLink(feedback) {
-      return `/portfolios/${feedback.creator}-${feedback.projectId}?submission=${feedback.submissionId}&comment=${feedback.id}`;
+      return `/project/${feedback.creator}-${feedback.projectId}?submission=${feedback.submissionId}&comment=${feedback.id}`;
     }
 
     /**
@@ -357,6 +424,53 @@ const ElmslnStudioUtilities = function (SuperClass) {
     replyTitle(reply) {
       return `${reply.firstName} replied to ${reply.feedbackFirstName}'s feedback`;
     }
+    getFeedbackIcon(comments) {
+      if (comments === 0) {
+        return "communication:comment";
+      } else if (comments < 10) {
+        return `hax:messages-${comments}`;
+      }
+      return "hax:messages-9-plus";
+    }
+
+    rubricTable(rubric) {
+      return !rubric
+        ? ""
+        : html`
+            <table class="rubric-table">
+              <caption>
+                Rubric
+              </caption>
+              ${!rubric.key || !rubric.key
+                ? ``
+                : html`
+                    <thead>
+                      <th scope="col">Criteria</th>
+                      ${rubric.key.map(
+                        (col) => html`<th scope="col">
+                          ${col.description && (col.points || col.points > -1)
+                            ? `${col.description} (${col.points})`
+                            : col.description || col.points}
+                        </th>`
+                      )}
+                    </thead>
+                  `}
+              <tbody>
+                ${Object.keys(rubric.values || {}).map(
+                  (key) =>
+                    html`
+                      <tr>
+                        <th scope="row">${key}</th>
+                        ${(rubric.values[key] || []).map(
+                          (col) => html`<td>${col}</td>`
+                        )}
+                      </tr>
+                    `
+                )}
+              </tbody>
+            </table>
+          `;
+    }
 
     _getValign(gravity) {
       return gravity && gravity.indexOf("top") > -1
@@ -372,6 +486,111 @@ const ElmslnStudioUtilities = function (SuperClass) {
         : gravity && gravity.indexOf("right") > -1
         ? "right"
         : "center";
+    }
+    message404(type, backLabel, backHref) {
+      return html` <div id="primary" class="primary-404">
+        <p id="message-404">
+          ${type} with this URL does not exist. Return to
+          <elmsln-studio-link href="${backHref}">
+            ${backLabel}</elmsln-studio-link
+          >
+          to search for assignment.
+        </p>
+      </div>`;
+    }
+    prevNextNav(prevLabel, prevHref, nextLabel, nextHref) {
+      return html`
+        <div id="prev-next-nav">
+          <elmsln-studio-link
+            href="${prevHref}"
+            ?disabled="${!prevHref}"
+            icon="chevron-left"
+          >
+            <span class="prev-next-label">
+              <span>Previous</span>
+              <span>${prevLabel}</span>
+            </span>
+          </elmsln-studio-link>
+          <elmsln-studio-link
+            href="${nextHref}"
+            ?disabled="${!nextHref}"
+            icon="chevron-right"
+          >
+            <span slot="before" class="prev-next-label">
+              <span>Next</span>
+              <span>${nextLabel}</span>
+            </span>
+          </elmsln-studio-link>
+        </div>
+      `;
+    }
+    loading(color, slot, size = "small") {
+      return !slot
+        ? html`<hexagon-loader
+            loading
+            item-count="3"
+            size="${size}"
+            color="${color}"
+          >
+          </hexagon-loader>`
+        : html`<hexagon-loader
+            loading
+            item-count="3"
+            size="${size}"
+            color="${color}"
+            slot="${slot}"
+          >
+          </hexagon-loader>`;
+    }
+    /**
+     * handles buttons that work like links
+     *
+     * @param {*} e event
+     * @param {string} path
+     */
+    submitData(type, data) {
+      /**
+       * Fires when button is clicked
+       *
+       * @event submit-data
+       */
+      console.log("submitData", type, data);
+      this.dispatchEvent(
+        new CustomEvent("submit-data", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            type: type,
+            data: data,
+          },
+        })
+      );
+    }
+    /**
+     * handles buttons that work like links
+     *
+     * @param {*} e event
+     * @param {string} path
+     */
+    fetchData(type, refresh = false) {
+      /**
+       * Fires when button is clicked
+       *
+       * @event fetch-data
+       */
+      console.log("fetchData", type, refresh);
+      this.dispatchEvent(
+        new CustomEvent("fetch-data", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            type: type,
+            refresh: refresh,
+          },
+        })
+      );
     }
     /**
      * handles buttons that work like links

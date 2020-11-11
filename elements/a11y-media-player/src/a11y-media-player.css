@@ -20,6 +20,10 @@
   --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
   --a11y-media-settings-menu-hover-bg-color: var(--a11y-media-hover-bg-color);
   --simple-fields-accent-color: var(--a11y-media-accent-color);
+  --simple-fields-background-color: var(--a11y-media-bg-color);
+  --simple-fields-color: var(--a11y-media-color);
+  --simple-fields-border-color: var(--a11y-media-border-color);
+  --simple-fields-border-color-light: var(--a11y-media-border-color-light,var(--a11y-media-border-color));
 
   /* buttons */
   --a11y-media-button-color: var(--a11y-media-color);
@@ -30,17 +34,9 @@
   --a11y-media-button-toggle-color: var(--a11y-media-faded-accent-color);
 
   /* slider */
-  --simple-range-input-active-color: var(--a11y-media-accent-color);
-  --simple-range-input-secondary-color: var(--a11y-media-faded-accent-color);
-  --simple-range-input-pin-color: var(--a11y-media-bg-color);
-  --simple-range-input-pin-start-color: var(--a11y-media-bg-color);
-  --simple-range-input-pin-end-color: var(--a11y-media-bg-color);
-  --simple-range-input-knob-color: var(--a11y-media-accent-color);
-  --simple-range-input-knob-start-color: var(--a11y-media-accent-color);
-  --simple-range-input-knob-end-color: var(--a11y-media-bg-accent-color);
-  --simple-range-input-knob-border-color: var(--a11y-media-accent-color);
-  --simple-range-input-knob-start-border-color: var(--a11y-media-bg-color);
-  --simple-range-input-knob-end-border-color: var(--a11y-media-bg-color);
+  --simple-range-input-bg: var(--a11y-media-accent-color);
+  --simple-range-input-color: var(--a11y-media-color);
+  --simple-range-input-track-height: 4px;
 
   /* link sharing toast */
   --simple-toast-color: var(--a11y-media-color);
@@ -395,33 +391,41 @@ absolute-position-behavior simple-field-field {
   width: 100%;
   color: var(--a11y-media-color);
   background-color: var(--a11y-media-transcript-bg-color);
+  --simple-fields-color: var(--a11y-media-color);
   --a11y-media-button-bg-color: var(--a11y-media-transcript-bg-color);
-  --a11y-media-button-hover-bg-color: var(
-  --a11y-media-transcript-bg-color
-);
+  --a11y-media-button-hover-bg-color: var(--a11y-media-transcript-bg-color);
+  --simple-search-input-background-color: var(--a11y-media-transcript-bg-color);
   --simple-search-input-text-color: var(--a11y-media-color);
   --simple-search-input-line-color: var(--a11y-media-accent-color);
   --simple-search-input-placeholder-color: var(
-  --a11y-media-transcript-color
+  --a11y-media-color
 );
   --simple-search-button-color: var(--a11y-media-accent-color);
   --simple-search-button-hover-color: var(
   --a11y-media-faded-accent-color
 );
-  --simple-search-button-bg-color: var(--a11y-media-bg-color);
-  --simple-search-button-border-color: var(--a11y-media-bg-color);
-  --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
+  --simple-search-button-bg-color: var(--a11y-media-transcript-bg-color);
+  --simple-search-button-border-color: var(--a11y-media-transcript-bg-color);
+  --simple-search-button-hover-border-color: var(--a11y-media-transcript-bg-color);
   --simple-search-button-disabled-color: var(
   --a11y-media-disabled-color
 );
-  --simple-search-button-disabled-bg-color: var(
-  --a11y-media-bg-color
-);
+  --simple-search-button-disabled-bg-color: var(--a11y-media-transcript-bg-color);
   --simple-search-button-disabled-border-color: var(
   --a11y-media-border-color
 );
-  --simple-fields-color: var(--a11y-media-color);
   --simple-search-padding: 0 15px;
+}
+
+:host([dark]) #searchbar {
+  background-color: var(--a11y-media-bg-color);
+  --a11y-media-button-bg-color: var(--a11y-media-bg-color);
+  --a11y-media-button-hover-bg-color: var(--a11y-media-bg-color);
+  --simple-search-input-background-color: var(--a11y-media-bg-color);
+  --simple-search-button-bg-color: var(--a11y-media-bg-color);
+  --simple-search-button-border-color: var(--a11y-media-bg-color);
+  --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
+  --simple-search-button-disabled-bg-color: var(--a11y-media-bg-color);
 }
 
 #searching {

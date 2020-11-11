@@ -8,8 +8,6 @@ import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
-import "./elmsln-studio-link.js";
-import "./elmsln-studio-button.js";
 
 /**
  * `elmsln-studio-portfolio`
@@ -194,6 +192,10 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             --simple-colors-fixed-theme-light-blue-9
           );
         }
+        #prev-next-nav {
+          z-index: 10000;
+          display: flex;
+        }
         @media screen and (min-width: 600px) {
           :host {
             display: flex;
@@ -231,44 +233,112 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   }
   // render function
   render() {
-    return !this.portfolio
-      ? ""
-      : html`
-          <div id="breadcrumb">
-            <elmsln-studio-link href="/submissions"
-              >Submissions</elmsln-studio-link
+    return html`
+      <div id="breadcrumb">
+        <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
+        <span> > </span>
+        ${
+          !this.portfolio
+            ? ``
+            : html`
+                ${!this.portfolio.projectId || !this.portfolio.project
+                  ? ``
+                  : html`
+                      <elmsln-studio-link
+                        href="${`/submissions?project=${this.portfolio.projectId}`}"
+                        >${this.portfolio.project ||
+                        "Project"}</elmsln-studio-link
+                      >
+                      <span> > </span>
+                    `}
+              `
+        }
+        ${
+          !this.portfolio || !this.assignment
+            ? html`<em>Assignment</em>`
+            : html`
+                <elmsln-studio-link
+                  href="${`/submissions?${
+                    !this.portfolio.projectId || !this.portfolio.project
+                      ? ``
+                      : `project=${this.portfolio.projectId}&`
+                  }assignment=${this.assignment.assignmentId}`}"
+                  >${this.assignment.assignment ||
+                  "Assignment"}</elmsln-studio-link
+                >
+              `
+        }
+        <span> > </span>
+        <span
+          >${
+            !this.portfolio
+              ? html`<em>Student</em>`
+              : this.fullName(this.portfolio)
+          }</span
+        >
+      </div>
+      <div
+        id="primary"
+        class="${this.comment && this.comment !== "" ? "view-discussion" : ""}"
+      >
+        <article id="portfolio-project">
+          <h1>
+            <lrndesign-avatar
+              accent-color="${
+                !this.portfolio
+                  ? "grey"
+                  : this.accentColor(this.fullName(this.portfolio))
+              }"
+              aria-hidden="true"
+              label="${
+                !this.portfolio ? "undefined" : this.fullName(this.portfolio)
+              }"
+              .src="${
+                this.portfolio && this.portfolio.avatar
+                  ? this.portfolio.avatar
+                  : undefined
+              }"
+              two-chars
             >
-            <span> > </span>
-            ${!this.portfolio.projectId || !this.portfolio.project
-              ? ``
+            </lrndesign-avatar>
+            <span class="student-name"
+              >${
+                !this.portfolio ? "Loading..." : this.fullName(this.portfolio)
+              }</span
+            >
+            ${
+              !this.portfolio || !this.portfolio.project
+                ? ``
+                : html`
+                    <span class="project-name">${this.portfolio.project}</span>
+                  `
+            }
+          </h1>
+          ${
+            !this.portfolio
+              ? this.loading("grey")
               : html`
-                  <elmsln-studio-link
-                    href="${`/submissions?project=${this.portfolio.projectId}`}"
-                    >${this.portfolio.project}</elmsln-studio-link
-                  >
-                  <span> > </span>
-                `}
-            ${!this.assignment || !this.assignment.assignment
-              ? ``
-              : html`
-                  <elmsln-studio-link
-                    href="${`/submissions?${
-                      !this.portfolio.projectId || !this.portfolio.project
-                        ? ``
-                        : `project=${this.portfolio.projectId}&`
-                    }assignment=${this.assignment.assignmentId}`}"
-                    >${this.assignment.assignment}</elmsln-studio-link
-                  >
-                  <span> > </span>
-                `}
+                  <div id="project-buttons">
+                    <button
+                      id="sort"
+                      aria-pressed="${this.sortLatest ? "false" : "true"}"
+                      class="${!this.sortLatest ? "" : "sort-latest"}"
+                      @click="${(e) => (this.sortLatest = !this.sortLatest)}"
+                      controls="portfolio-project"
+                    >
+                      <span> > </span>
+                    </button>
+                  </div>
+                `
+          }
             <span>${this.fullName(this.portfolio)}</span>
           </div>
           <div
             id="primary"
             ?hidden="${!this.portfolio}"
-            class="${this.comment && this.comment !== ""
-              ? "view-discussion"
-              : ""}"
+            class="${
+              this.comment && this.comment !== "" ? "view-discussion" : ""
+            }"
           >
             <article id="portfolio-project">
               <h1>
@@ -278,9 +348,11 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                   )}"
                   aria-hidden="true"
                   label="${this.fullName(this.portfolio)}"
-                  .src="${this.portfolio && this.portfolio.avatar
-                    ? this.portfolio.avatar
-                    : undefined}"
+                  .src="${
+                    this.portfolio && this.portfolio.avatar
+                      ? this.portfolio.avatar
+                      : undefined
+                  }"
                   two-chars
                 >
                 </lrndesign-avatar>
@@ -300,68 +372,90 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                   <simple-icon icon="sort"></simple-icon>
                   <span class="sr-only"
                     >Sort Submissions
-                    ${!this.sortLatest ? "Oldest First" : "Newest First"}</span
+                    ${
+                      !this.sortLatest ? "Oldest First" : "Newest First"
+                    }</simple-tooltip
                   >
-                </button>
-              </div>
-              ${!this.portfolio
-                ? ``
-                : this.sortedSubmissions.map(
-                    (s) => html`
-                      <section
-                        class="${this.submissionFilter === s.id
-                          ? "section-discussion"
-                          : ""}"
-                      >
-                        <div class="submission-header">
-                          <h2 id="sub-${s.id}">
-                            <span class="assignment-name">${s.assignment}</span>
-                            <span class="submission-date"
-                              >Submitted: ${this.dateFormat(s.date)}</span
+                </div>
+                ${this.sortedSubmissions.map(
+                  (s) => html`
+                    <section
+                      class="${this.submissionFilter === s.id
+                        ? "section-discussion"
+                        : ""}"
+                    >
+                      <div class="submission-header">
+                        <h2 id="sub-${s.id}">
+                          <span class="assignment-name">${s.assignment}</span>
+                          <span class="submission-date"
+                            >Submitted:
+                            <local-time
+                              month="long"
+                              day="numeric"
+                              year="numeric"
+                              hour="2-digit"
+                              minute="2-digit"
+                              second="2-digit"
+                              time-zone-name="short"
+                              datetime="${s.date}"
                             >
-                          </h2>
-                          <elmsln-studio-button
-                            class="view-discussion-button"
-                            aria-describedby="sub-${s.id}"
-                            icon="${this._getFeedbackIcon(s.feedback.length)}"
-                            path="${this.getActivityLink(s, this.comment)}"
+                              ${this.dateFormat(s.date)}
+                            </local-time>
+                          </span>
+                        </h2>
+                        <elmsln-studio-button
+                          id="sub-${s.id}-toggle-button"
+                          class="view-discussion-button"
+                          aria-describedby="sub-${s.id}"
+                          icon="${this.submissionFilter === s.id && this.comment
+                            ? "close"
+                            : this.getFeedbackIcon(s.feedback.length)}"
+                          path="${this.getActivityLink(
+                            s,
+                            this.submissionFilter === s.id && this.comment
+                          )}"
+                        >
+                          <span class="sr-only"
+                            >${this.submissionFilter === s.id && this.comment
+                              ? "Close Feedback"
+                              : `View Feedback (${s.feedback.length})`}</span
                           >
-                            <span class="sr-only"
-                              >Give / View Feedback (${s.feedback.length})</span
-                            >
-                          </elmsln-studio-button>
-                        </div>
-                        <div class="submission-body">
-                          ${s.links && s.links.length > 0
-                            ? html`
-                                <ul class="submission-links">
-                                  ${s.links.map(
-                                    (link) => html`
-                                      <li>
-                                        <elmsln-studio-link
-                                          href="${link.url}"
-                                          target="_blank"
-                                        >
-                                          <simple-icon
-                                            aria-hidden="true"
-                                            icon="${link.type === "pdf"
-                                              ? "hax:file-pdf"
-                                              : "link"}"
-                                          ></simple-icon>
-                                          ${link.text || link.url}
-                                        </elmsln-studio-link>
-                                      </li>
-                                    `
-                                  )}
-                                </ul>
-                              `
-                            : !s.sources || s.sources.length === 0
-                            ? html` ${s.body} `
-                            : this.getThumnailGrid(s)}
-                        </div>
-                      </section>
-                    `
-                  )}
+                          <span class="sr-only"
+                            >Give / View Feedback (${s.feedback.length})</span
+                          >
+                        </elmsln-studio-button>
+                      </div>
+                      <div class="submission-body">
+                        ${s.links && s.links.length > 0
+                          ? html`
+                              <ul class="submission-links">
+                                ${s.links.map(
+                                  (link) => html`
+                                    <li>
+                                      <elmsln-studio-link
+                                        href="${link.url}"
+                                        target="_blank"
+                                      >
+                                        <simple-icon
+                                          aria-hidden="true"
+                                          icon="${link.type === "pdf"
+                                            ? "hax:file-pdf"
+                                            : "link"}"
+                                        ></simple-icon>
+                                        ${link.text || link.url}
+                                      </elmsln-studio-link>
+                                    </li>
+                                  `
+                                )}
+                              </ul>
+                            `
+                          : !s.sources || s.sources.length === 0
+                          ? html` ${s.body} `
+                          : this.getThumnailGrid(s)}
+                      </div>
+                    </section>
+                  `
+                )}
             </article>
           </div>
           <div
@@ -411,12 +505,15 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
       portfolio: {
         type: Object,
       },
-      submission: {
+      feedback: {
         type: Object,
       },
       comment: {
         type: String,
         attribute: "comment",
+      },
+      submissions: {
+        type: Array,
       },
       submissionFilter: {
         type: String,
@@ -441,46 +538,53 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.portfolio = {};
-    this.submission = {};
-    this.submissionFilter = "";
+    this.feedback = {};
     this.comment = "";
     this.tag = ElmslnStudioPortfolio.tag;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.fetchData("submissions");
+    this.fetchData("portfolios");
+    this.fetchData("discussion");
+    console.log("updated", this.submissions, this.portfolios, this.discussion);
   }
-
+  get nav() {
+    let prevHref,
+      nextHref,
+      portfolio = this.portfolio || {},
+      getLink = (s) => {
+        let assignmentId = this.submissionFilter
+            ? this.submissionFilter.replace(/-\w+$/, "")
+            : portfolio.assignmentId,
+          submissionId = `${assignmentId}-${s.userId}`,
+          submissions =
+            !assignmentId || !s.submissions
+              ? []
+              : s.submissions.filter((sub) => sub.id === submissionId),
+          submission = submissions.length > 0 ? submissions[0] : {};
+        submission.activity = "submission";
+        return this.getActivityLink(submission, !this.comment, this.sortLatest);
+      },
+      prevLabel = !portfolio.prev ? "" : this.fullName(portfolio.prev),
+      nextLabel = !portfolio.next ? "" : this.fullName(portfolio.next);
+    (prevHref = portfolio.prev ? getLink(portfolio.prev) : undefined),
+      (nextHref = portfolio.next ? getLink(portfolio.next) : undefined);
+    return this.prevNextNav(prevLabel, prevHref, nextLabel, nextHref);
+  }
   get sortedSubmissions() {
-    console.log(
-      "sortedSubmissions",
-      !this.portfolio.submissions
-        ? []
-        : this.sortDates(this.portfolio.submissions, this.sortLatest)
-    );
-    return !this.portfolio.submissions
+    return !this.portfolio || !this.portfolio.submissions
       ? []
       : this.sortDates(this.portfolio.submissions, this.sortLatest);
   }
   get assignment() {
     let filter =
-      !this.submissionFilter || !this.portfolio || !this.portfolio.submissions
+      !this.portfolio || !this.portfolio.submissions
         ? []
         : this.portfolio.submissions.filter(
-            (s) => s.id === this.submissionFilter
+            (s) => !this.submissionFilter || s.id === this.submissionFilter
           );
     return !filter ? false : filter[0];
-  }
-  _getFeedbackIcon(comments) {
-    if (comments === 0) {
-      return "communication:comment";
-    } else if (comments < 10) {
-      return `hax:messages-${comments}`;
-    }
-    return "hax:messages-9-plus";
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);

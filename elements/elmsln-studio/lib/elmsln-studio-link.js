@@ -4,6 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { navigator } from "lit-element-router";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 
 /**
  * `elmsln-studio-link`
@@ -24,7 +26,9 @@ class ElmslnStudioLink extends navigator(LitElement) {
 
   static get properties() {
     return {
+      disabled: { type: Boolean, reflect: true },
       href: { type: String },
+      icon: { type: String, reflect: true },
     };
   }
   static get styles() {
@@ -34,6 +38,21 @@ class ElmslnStudioLink extends navigator(LitElement) {
       }
       :host([hidden]) {
         display: none;
+      }
+      :host([disabled]) {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      :host([icon]) a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      :host([icon]) ::slotted(*) {
+        flex: 1 0 auto;
+      }
+      :host([icon]) iron-icon {
+        flex: 0 0 auto;
       }
       a,
       a:link {
@@ -107,13 +126,21 @@ class ElmslnStudioLink extends navigator(LitElement) {
   render() {
     return html`
       <a href="${this.href}" @click="${this.linkClick}">
+        <slot name="before"></slot>
+        <iron-icon
+          aria-hidden="true"
+          ?hidden="${!this.icon}"
+          icon="${this.icon}"
+        ></iron-icon>
         <slot></slot>
       </a>
     `;
   }
   linkClick(event) {
     event.preventDefault();
-    this.navigate(this.href);
+    event.stopPropagation();
+    if (!this.disabled)
+      this.navigate(`${window.ElmslnStudioPath || ""}${this.href}`);
   }
 }
 customElements.define("elmsln-studio-link", ElmslnStudioLink);

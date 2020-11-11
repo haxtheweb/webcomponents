@@ -9,7 +9,8 @@ import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/full
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
-import "@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "./lib/a11y-media-play-button.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";
@@ -157,6 +158,13 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
             --a11y-media-hover-bg-color
           );
           --simple-fields-accent-color: var(--a11y-media-accent-color);
+          --simple-fields-background-color: var(--a11y-media-bg-color);
+          --simple-fields-color: var(--a11y-media-color);
+          --simple-fields-border-color: var(--a11y-media-border-color);
+          --simple-fields-border-color-light: var(
+            --a11y-media-border-color-light,
+            var(--a11y-media-border-color)
+          );
 
           --a11y-media-button-color: var(--a11y-media-color);
           --a11y-media-button-bg-color: var(--a11y-media-bg-color);
@@ -167,27 +175,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
             --a11y-media-faded-accent-color
           );
 
-          --simple-range-input-active-color: var(--a11y-media-accent-color);
-          --simple-range-input-secondary-color: var(
-            --a11y-media-faded-accent-color
-          );
-          --simple-range-input-pin-color: var(--a11y-media-bg-color);
-          --simple-range-input-pin-start-color: var(--a11y-media-bg-color);
-          --simple-range-input-pin-end-color: var(--a11y-media-bg-color);
-          --simple-range-input-knob-color: var(--a11y-media-accent-color);
-          --simple-range-input-knob-start-color: var(--a11y-media-accent-color);
-          --simple-range-input-knob-end-color: var(
-            --a11y-media-bg-accent-color
-          );
-          --simple-range-input-knob-border-color: var(
-            --a11y-media-accent-color
-          );
-          --simple-range-input-knob-start-border-color: var(
-            --a11y-media-bg-color
-          );
-          --simple-range-input-knob-end-border-color: var(
-            --a11y-media-bg-color
-          );
+          --simple-range-input-bg: var(--a11y-media-accent-color);
+          --simple-range-input-color: var(--a11y-media-color);
+          --simple-range-input-track-height: 4px;
 
           --simple-toast-color: var(--a11y-media-color);
           --simple-toast-background-color: var(--a11y-media-bg-color);
@@ -611,31 +601,51 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
           width: 100%;
           color: var(--a11y-media-color);
           background-color: var(--a11y-media-transcript-bg-color);
+          --simple-fields-color: var(--a11y-media-color);
           --a11y-media-button-bg-color: var(--a11y-media-transcript-bg-color);
           --a11y-media-button-hover-bg-color: var(
             --a11y-media-transcript-bg-color
           );
+          --simple-search-input-background-color: var(
+            --a11y-media-transcript-bg-color
+          );
           --simple-search-input-text-color: var(--a11y-media-color);
           --simple-search-input-line-color: var(--a11y-media-accent-color);
-          --simple-search-input-placeholder-color: var(
-            --a11y-media-transcript-color
-          );
+          --simple-search-input-placeholder-color: var(--a11y-media-color);
           --simple-search-button-color: var(--a11y-media-accent-color);
           --simple-search-button-hover-color: var(
             --a11y-media-faded-accent-color
           );
-          --simple-search-button-bg-color: var(--a11y-media-bg-color);
-          --simple-search-button-border-color: var(--a11y-media-bg-color);
-          --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
+          --simple-search-button-bg-color: var(
+            --a11y-media-transcript-bg-color
+          );
+          --simple-search-button-border-color: var(
+            --a11y-media-transcript-bg-color
+          );
+          --simple-search-button-hover-border-color: var(
+            --a11y-media-transcript-bg-color
+          );
           --simple-search-button-disabled-color: var(
             --a11y-media-disabled-color
           );
-          --simple-search-button-disabled-bg-color: var(--a11y-media-bg-color);
+          --simple-search-button-disabled-bg-color: var(
+            --a11y-media-transcript-bg-color
+          );
           --simple-search-button-disabled-border-color: var(
             --a11y-media-border-color
           );
-          --simple-fields-color: var(--a11y-media-color);
           --simple-search-padding: 0 15px;
+        }
+
+        :host([dark]) #searchbar {
+          background-color: var(--a11y-media-bg-color);
+          --a11y-media-button-bg-color: var(--a11y-media-bg-color);
+          --a11y-media-button-hover-bg-color: var(--a11y-media-bg-color);
+          --simple-search-input-background-color: var(--a11y-media-bg-color);
+          --simple-search-button-bg-color: var(--a11y-media-bg-color);
+          --simple-search-button-border-color: var(--a11y-media-bg-color);
+          --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
+          --simple-search-button-disabled-bg-color: var(--a11y-media-bg-color);
         }
 
         #searching {
@@ -1275,7 +1285,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               <simple-search
                 id="simplesearch"
                 controls="transcript"
-                no-label-float
                 next-button-icon="${this._getLocal(
                   this.localization,
                   "nextResult",
@@ -2904,6 +2913,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     if (media) {
       if (!crossorigin) media.setAttribute("crossorigin", this.crossorigin);
       media.removeAttribute("autoplay");
+      media.removeAttribute("controls");
       media.setAttribute("preload", "metadata");
     }
 

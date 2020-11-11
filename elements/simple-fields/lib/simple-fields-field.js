@@ -23,6 +23,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           margin: 0;
           padding: 0;
           border: none;
+          background-color: var(--simple-fields-background-color, transparent);
         }
         option {
           border-radius: 0;
@@ -55,16 +56,20 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         .box-input:focus {
           outline: none;
         }
+        input {
+          background-color: var(--simple-fields-background-color, transparent);
+        }
         textarea {
           margin: 0;
           transition: height 0.5s ease-in-out;
           box-sizing: border-box;
           vertical-align: bottom;
+          background-color: var(--simple-fields-background-color, transparent);
         }
         select.field {
           width: 100%;
           border: none;
-          background: transparent;
+          background-color: var(--simple-fields-background-color, transparent);
           border-radius: 0;
           transition: color ease-in-out;
         }
@@ -102,7 +107,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           height: 20px;
           width: 20px;
           border-radius: 50%;
-          background: var(--simple-fields-background-color, white);
+          background-color: var(--simple-fields-background-color, transparent);
           box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
           cursor: pointer;
           -webkit-appearance: none;
@@ -484,10 +489,10 @@ class SimpleFieldsField extends SimpleFieldsContainer {
                   >${option.text}</label
                 >
                 <input
-                  .id="${option.value}"
-                  .name="${this.id}"
+                  id="${option.value}"
+                  name="${this.id}"
                   ?autofocus="${this.autofocus}"
-                  aria-descrbedby="${this.describedBy}"
+                  aria-descrbedby="${this.describedBy || ""}"
                   .aria-invalid="${this.error ? "true" : "false"}"
                   ?checked="${this.type === "radio"
                     ? this.value === option.value
@@ -532,8 +537,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           : "box-input"}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
+        id="${this.id}"
         @input="${(e) => this._handleFieldChange()}"
-        .name="${this.id}"
+        name="${this.id}"
         .placeholder="${this.placeholder || ""}"
         ?readonly="${this.readonly}"
         ?required="${this.required}"
@@ -584,8 +590,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         class="field"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
+        id="${this.id}"
         ?multiple="${this.multiple}"
-        .name="${this.id}"
+        name="${this.id}"
         ?readonly="${this.readonly}"
         ?required="${this.required}"
       >
@@ -631,8 +638,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         @keydown="${(e) => e.stopPropagation()}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
+        id="${this.id}"
         @input="${(e) => this._handleFieldChange()}"
-        .name="${this.id}"
+        name="${this.id}"
         ?readonly="${this.readonly}"
         ?required="${this.required}"
         rows="1"

@@ -50,69 +50,9 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
   constructor() {
     super();
     this.breadcrumbsLabel = "Expand selection: ";
-    this.__breadcrumbs = document.createElement("rich-text-editor-breadcrumbs");
-    document.body.appendChild(this.__breadcrumbs);
-    this.__breadcrumbs.addEventListener(
-      "breadcrumb-tap",
-      this._handleBreadcrumb.bind(this)
-    );
-    this._stickyChanged();
-  }
-
-  /**
-   * Gets the updated selected range.
-   *
-   * @param {object} editableElement the editable element
-   * @returns {void}
-   */
-  editTarget(editableElement) {
-    super.editTarget(editableElement);
-    if (editableElement) {
-      this.__breadcrumbs.controls = editableElement.getAttribute("id");
-      editableElement.parentNode.insertBefore(
-        this.__breadcrumbs,
-        editableElement.nextSibling
-      );
-      if (!this.sticky) {
-        editableElement.classList.add("heightmax");
-      } else {
-        editableElement.classList.remove("heightmax");
-      }
-    }
-  }
-  /**
-   * Gets the updated selected range.
-   * @returns {void}
-   */
-  _rangeChange(e) {
-    super._rangeChange(e);
-    if (this.__breadcrumbs) this.__breadcrumbs.range = this.range;
-  }
-
-  /**
-   * handle a breadcrumb tap by updating the selected text
-   *
-   * @param {object} e the breadcrumb tap event
-   * @returns {void}
-   */
-  _handleBreadcrumb(e) {
-    console.log("_handleBreadcrumb", e.detail.target);
-    if (e.detail.target) {
-      this.range.selectNode(e.detail.target);
-      this._rangeChange(e);
-    }
-  }
-
-  /**
-   * Preserves the selected range when a button is pressed
-   *
-   * @param {object} the button
-   * @returns {void}
-   */
-  _preserveSelection() {
-    console.log("_preserveSelection", this.__breadcrumbs.range);
-    super._preserveSelection();
-    if (this.__breadcrumbs) this.__breadcrumbs.range = temp;
+    this.breadcrumbs = document.createElement("rich-text-editor-breadcrumbs");
+    this.breadcrumbs.onselectnode = (e) => this._selectNode(e.detail);
+    document.body.appendChild(this.breadcrumbs);
   }
 }
 

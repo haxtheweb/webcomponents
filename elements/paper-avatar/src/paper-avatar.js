@@ -26,12 +26,11 @@ class PaperAvatar extends LitElement {
     return [
       css`
         :host {
-          --paper-avatar-width: 40px;
           display: inline-block;
           box-sizing: border-box;
           position: relative;
-          width: var(--paper-avatar-width);
-          height: var(--paper-avatar-width);
+          width: var(--paper-avatar-width, 40px);
+          height: var(--paper-avatar-width, 40px);
           border-radius: 50%;
           cursor: default;
           -webkit-user-select: none;
@@ -49,8 +48,8 @@ class PaperAvatar extends LitElement {
           pointer-events: none;
         }
         img {
-          width: var(--paper-avatar-width);
-          height: var(--paper-avatar-width);
+          width: var(--paper-avatar-width, 40px);
+          height: var(--paper-avatar-width, 40px);
         }
         #label,
         #img,
@@ -75,6 +74,8 @@ class PaperAvatar extends LitElement {
           -webkit-align-items: center;
           -ms-flex-align: center;
           align-items: center;
+          --simple-icon-width: calc(var(--paper-avatar-width, 40px) * 0.9);
+          --simple-icon-height: calc(var(--paper-avatar-width, 40px) * 0.9);
         }
         #label[hidden] {
           display: none;
@@ -88,20 +89,18 @@ class PaperAvatar extends LitElement {
           font-family: "Roboto", "Noto", sans-serif;
           -webkit-font-smoothing: antialiased;
           text-align: center;
-          font-size: calc(var(--paper-avatar-width) * 0.7);
+          font-size: calc(var(--paper-avatar-width, 40px) * 0.7);
           opacity: 0.8;
         }
         #label span[two-chars] {
-          font-size: calc(var(--paper-avatar-width) * 0.5);
+          font-size: calc(var(--paper-avatar-width, 40px) * 0.5);
         }
         #label simple-icon {
           margin: 0 auto;
-          width: calc(var(--paper-avatar-width) * 0.9);
-          height: calc(var(--paper-avatar-width) * 0.9);
         }
         #jdenticon {
-          width: var(--paper-avatar-width);
-          height: var(--paper-avatar-width);
+          width: var(--paper-avatar-width, 40px);
+          height: var(--paper-avatar-width, 40px);
         }
         #jdenticon * {
           fill: var(--paper-avatar-text-color, #ffffff);
@@ -132,7 +131,12 @@ class PaperAvatar extends LitElement {
         ?hidden="${this.jdenticonExists && this.jdenticon}"
       >
         ${this.icon
-          ? html` <simple-icon icon="${this.icon}"></simple-icon> `
+          ? html`
+              <simple-icon
+                icon="${this.icon}"
+                accent-color="${this.accentColor}"
+              ></simple-icon>
+            `
           : html`
               <span ?two-chars="${this.twoChars}"
                 >${this._label(this.label)}
@@ -158,6 +162,7 @@ class PaperAvatar extends LitElement {
    */
   constructor() {
     super();
+    this.dark = false;
     this.label = null;
     this.src = null;
     this.jdenticonExists = false;
@@ -179,6 +184,19 @@ class PaperAvatar extends LitElement {
    */
   static get properties() {
     return {
+      /**
+       * Optional simple-icon
+       */
+      accentColor: {
+        type: String,
+        attribute: "accent-color",
+      },
+      /**
+       * dark mode
+       */
+      dark: {
+        type: Boolean,
+      },
       /**
        * Optional simple-icon
        */
@@ -239,10 +257,11 @@ class PaperAvatar extends LitElement {
           window.md5(label)
         );
       }
-      this.style.setProperty(
-        "--paper-avatar-calculated-bg",
-        this._parseColor(label)
-      );
+      if (!this.accentColor)
+        this.style.setProperty(
+          "--paper-avatar-calculated-bg",
+          this._parseColor(label)
+        );
     }
   }
   // simple path from a url modifier

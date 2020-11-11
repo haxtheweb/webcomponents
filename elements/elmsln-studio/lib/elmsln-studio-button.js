@@ -42,10 +42,16 @@ class ElmslnStudioButton extends navigator(LitElement) {
       button {
         border: none;
         background-color: transparent;
+        display: flex;
+        align-items: center;
+        height: 26px;
       }
       button:focus,
       button:hover {
         outline: none;
+      }
+      iron-icon {
+        color: var(--elmsln-studio-button-icon-color);
       }
     `;
   }
@@ -58,7 +64,8 @@ class ElmslnStudioButton extends navigator(LitElement) {
   render() {
     return html`
       <button @click="${this.buttonClick}">
-        <simple-icon
+        <slot name="before"></slot>
+        <iron-icon
           aria-hidden="true"
           ?hidden="${!this.icon}"
           icon="${this.icon}"
@@ -69,7 +76,7 @@ class ElmslnStudioButton extends navigator(LitElement) {
   }
 
   buttonClick(event) {
-    this.navigate(`${this.sourcePath}${this.path}`);
+    this.navigate(`${window.ElmslnStudioPath || ""}${this.path}`);
   }
 }
 customElements.define("elmsln-studio-button", ElmslnStudioButton);

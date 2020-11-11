@@ -8,7 +8,6 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
@@ -184,7 +183,7 @@ export const A11yMediaPlayerStory = () => {
     A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
-      emptyslot: `<video crossorigin="anonymous">
+      emptyslot: `<video crossorigin="anonymous" controls>
         <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
         <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
         <track label="English" kind="subtitles" srclang="en" src="${new URL(

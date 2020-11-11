@@ -5,8 +5,6 @@
 import { LitElement, html, css } from "lit-element";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
-import "./elmsln-studio-link.js";
-import "./elmsln-studio-button.js";
 
 /**
  * `elmsln-studio-assignments`
@@ -44,6 +42,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
         }
         nav-card [slot="heading"] {
           color: #4d4d4d;
+          font-size: 80%;
         }
         nav-card-item [slot="label"] {
           font-weight: normal;
@@ -55,7 +54,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
           background-color: #eee;
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
           --lrndesign-avatar-border-radius: 0%;
-          --nav-card-item-avatar-width: 20px;
+          --nav-card-item-avatar-width: 40px;
           border: 1px solid var(--accent-card-border-color, #ddd);
           border-bottom: none;
         }
@@ -65,6 +64,30 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px))
             var(--elmsln-studio-margin, 20px);
           margin-bottom: 15px;
+        }
+        nav-card-item:not([avatar]) .assignment-link:before {
+          position: absolute;
+          overflow: hidden;
+          display: inline-block;
+          -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+          animation: ellipsis steps(4, end) 900ms infinite;
+          content: "...";
+          font-size: 300%;
+          left: 0;
+          top: 0;
+          width: 0px;
+        }
+
+        @keyframes ellipsis {
+          to {
+            width: 1.25em;
+          }
+        }
+
+        @-webkit-keyframes ellipsis {
+          to {
+            width: 1.25em;
+          }
         }
         @media screen and (min-width: 400px) {
           #lessons {
@@ -93,31 +116,36 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
     return html`
       <h1 class="sr-only">Assignments</h1>
       <div id="lessons">
-        ${Object.keys(this.lessons || {}).map(
-          (l) => html`
-            <div class="lesson">
-              <h2>${this.lessons[l].lesson}</h2>
-              ${(this.lessons[l].assignments || []).map((p) =>
-                !p.assignments
-                  ? html`
-                      <div class="assignment">${this.renderAssignment(p)}</div>
-                    `
-                  : html`
-                      <nav-card flat no-border class="card secondary">
-                        <span slot="heading" ?hidden="${!p.project}">
-                          ${p.project}
-                        </span>
-                        <div slot="linklist">
-                          ${this.sortDates(p.assignments || [], true).map((a) =>
-                            this.renderAssignment(a)
-                          )}
-                        </div>
-                      </nav-card>
-                    `
-              )}
-            </div>
-          `
-        )}
+        ${!this.lessons
+          ? this.loading("green", undefined, "large")
+          : Object.keys(this.lessons || {}).map(
+              (l) => html`
+                <div class="lesson">
+                  <h2>${this.lessons[l].lesson}</h2>
+                  ${(this.lessons[l].assignments || []).map((p) =>
+                    !p.assignments
+                      ? html`
+                          <div class="assignment">
+                            ${this.renderAssignment(p)}
+                          </div>
+                        `
+                      : html`
+                          <nav-card flat no-border class="card secondary">
+                            <span slot="heading" ?hidden="${!p.project}">
+                              ${p.project}
+                            </span>
+                            <div slot="linklist">
+                              ${this.sortDates(
+                                p.assignments || [],
+                                true
+                              ).map((a) => this.renderAssignment(a))}
+                            </div>
+                          </nav-card>
+                        `
+                  )}
+                </div>
+              `
+            )}
       </div>
     `;
   }
@@ -127,40 +155,54 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
       ? ``
       : html`
           <nav-card-item
-            accent-color="${!this._incomplete(assignment.id)
-              ? "green"
-              : this._late(assignment.date)
-              ? "red"
-              : "grey"}"
+            id="act-${assignment.id}-item"
+            accent-color="${!this.profile
+              ? "grey"
+              : this.getStatusColor(
+                  this.getSubmission(assignment.id),
+                  assignment
+                )}"
             allow-grey
-            avatar="${!this._incomplete(assignment.id)
-              ? "assignment-turned-in"
-              : this._late(assignment.date)
-              ? "icons:assignment-late"
-              : "assignment"}"
+            avatar="${!this.profile
+              ? undefined
+              : this.getStatusIcon(
+                  this.getSubmission(assignment.id),
+                  assignment
+                )}"
             invert
           >
             <elmsln-studio-link
               id="act-${assignment.id}"
-              aria-describedby="act-${assignment.id}-desc"
+              class="assignment-link"
+              aria-describedby="act-${assignment.id}-desc act-${assignment.id}-item"
               slot="label"
-              href="${assignment.link}"
+              href="/assignments/${assignment.id}"
             >
               ${assignment.assignment}
             </elmsln-studio-link>
             <div id="act-${assignment.id}-desc" slot="description">
-              Due: ${this.dateFormat(assignment.date)}
+              Due:
+              <local-time
+                month="long"
+                day="numeric"
+                year="numeric"
+                hour="2-digit"
+                minute="2-digit"
+                second="2-digit"
+                time-zone-name="short"
+                datetime="${assignment.date}"
+              >
+                ${this.dateFormat(assignment.date)}
+              </local-time>
             </div>
           </nav-card-item>
+          <simple-tooltip for="act-${assignment.id}" position="left">
+            ${this.getStatusMessage(
+              this.getSubmission(assignment.id),
+              assignment
+            )}
+          </simple-tooltip>
         `;
-  }
-
-  _incomplete(id) {
-    return (
-      this.profile &&
-      this.profile.due &&
-      this.profile.due.filter((s) => s.id === id).length > 0
-    );
   }
 
   // properties available to the custom element for data binding
@@ -179,14 +221,21 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.profile = {};
-    this.lessons = {};
     this.tag = ElmslnStudioAssignments.tag;
   }
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
-    console.log("updated", this.lessons, this.profile);
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.fetchData("profile");
+    this.fetchData("lessons");
+  }
+  getSubmission(id) {
+    let submissions =
+      this.profile && this.profile.id && this.profile.submissions
+        ? this.profile.submissions.filter(
+            (s) => s.id === `${id}-${this.profile.id}`
+          )
+        : [];
+    return submissions.length > 0 ? submissions[0] : undefined;
   }
   // static get observedAttributes() {
   //   return [];
