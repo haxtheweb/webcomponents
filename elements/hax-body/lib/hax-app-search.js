@@ -188,7 +188,16 @@ class HaxAppSearch extends SimpleColors {
         }, 100);
       }
       if (propName == "activeApp") {
-        this._resetAppSearch(this[propName]);
+        // ensure we overwrite completely
+        this.requestParams = {};
+        // ensure correct wipe of the search area assuming it has a search
+        this.searchSchema = {};
+        setTimeout(() => {
+          this.searchSchema = {
+            properties: {},
+          };
+          this._resetAppSearch(this.activeApp);
+        }, 10);
       }
     });
   }
@@ -362,9 +371,7 @@ class HaxAppSearch extends SimpleColors {
       if (typeof app.connection.headers !== typeof undefined) {
         this.headers = app.connection.headers;
       }
-      // ensure we overwrite completely
-      this.requestParams = {};
-      this.requestParams = requestParams;
+      this.requestParams = { ...requestParams };
       // build the request end point
       var requestEndPoint =
         app.connection.protocol + "://" + app.connection.url;
@@ -379,14 +386,12 @@ class HaxAppSearch extends SimpleColors {
         requestEndPoint += app.connection.operations.browse.endPoint;
       }
       this.requestEndPoint = requestEndPoint;
-      // ensure correct wipe of the search area assuming it has a search
-      this.searchSchema = {};
       var searchSchema = {
         properties: {},
       };
       if (typeof app.connection.operations.browse.search !== typeof undefined) {
         searchSchema.properties = app.connection.operations.browse.search;
-        this.searchSchema = searchSchema;
+        this.searchSchema = { ...searchSchema };
       }
       this.resultMap = app.connection.operations.browse.resultMap;
       // map pagination if it has it (it better..)

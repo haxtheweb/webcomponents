@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "./lib/rich-text-editor-styles.js";
 import "./lib/singletons/rich-text-editor-selection.js";
+import { RichTextEditorStyles } from "@lrnwebcomponents/rich-text-editor/lib/rich-text-editor-styles.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
