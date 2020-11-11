@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement } from "lit-element/lit-element.js";
 /**
  * `jwt-login`
  * `a simple element to check for and fetch JWTs`
