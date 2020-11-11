@@ -36,7 +36,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "mobx": "6.0.1",
+    "mobx": "6.0.3",
     "@lrnwebcomponents/a11y-collapse": "^2.7.10",
     "@lrnwebcomponents/app-datepicker": "^2.0.9",
     "@lrnwebcomponents/code-editor": "^2.7.10",
@@ -103,10 +103,10 @@
     "@lrnwebcomponents/video-player": "^2.7.10",
     "@lrnwebcomponents/wave-player": "^2.7.10",
     "@lrnwebcomponents/wikipedia-query": "^2.7.10",
-    "@webcomponents/webcomponentsjs": "2.4.4",
+    "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"
   },
