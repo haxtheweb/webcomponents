@@ -1,0 +1,68 @@
+{
+  "name": "@lrnwebcomponents/lrs-service",
+  "description": "Learning Record Store Service",
+  "version": "0.0.0",
+  "author": "heyMP <mgp140@gmail.com>",
+  "bin": {
+    "lrs-service": "./bin/run"
+  },
+  "bugs": {
+    "url": "https://github.com/elmsln/lrnwebcomponents/issues"
+  },
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "graphql": "^14.1.1",
+    "graphql-type-json": "^0.2.1",
+    "prisma-client-lib": "^1.28.2",
+    "nexus": "^0.11.3",
+    "nexus-prisma": "^0.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "patch-package": "^6.0.5",
+    "postinstall-postinstall": "^2.0.0",
+    "@oclif/command": "^1.5.11",
+    "@oclif/config": "^1.12.9",
+    "@oclif/plugin-help": "^2.1.6"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "lib"
+  ],
+  "homepage": "https://github.com/elmsln/lrnwebcomponents#readme",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "Apache-2.0",
+  "main": "lrs-service.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "lrs-service",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "scripts": {
+    "start": "lrs-service start",
+    "dev": "nodemon lib/lrs-service.js",
+    "postinstall": "patch-package",
+    "postpack": "rm -f oclif.manifest.json",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "start": "node index.js",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}

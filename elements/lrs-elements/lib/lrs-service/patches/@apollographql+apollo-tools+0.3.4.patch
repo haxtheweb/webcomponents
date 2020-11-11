@@ -1,0 +1,18 @@
+diff --git a/node_modules/@apollographql/apollo-tools/lib/buildServiceDefinition.js b/node_modules/@apollographql/apollo-tools/lib/buildServiceDefinition.js
+index c8d2339..c461351 100644
+--- a/node_modules/@apollographql/apollo-tools/lib/buildServiceDefinition.js
++++ b/node_modules/@apollographql/apollo-tools/lib/buildServiceDefinition.js
+@@ -152,7 +152,12 @@ function addResolversToSchema(schema, resolvers) {
+                 field.resolve = fieldConfig;
+             }
+             else {
+-                field.resolve = fieldConfig.resolve;
++                if (fieldConfig.resolve) {
++                    field.resolve = fieldConfig.resolve;
++                }
++                if (fieldConfig.subscribe) {
++                    field.subscribe = fieldConfig.subscribe;
++                }
+             }
+         }
+     }

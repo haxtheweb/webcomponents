@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrs-elements",
+      "path": "./lrs-elements.js",
+      "description": "`lrs-elements`\n`elements for interfacing with learning record stores`"
+    },
+    {
+      "name": "lrs-elements",
+      "path": "./src/lrs-elements.js",
+      "description": "`lrs-elements`\n`elements for interfacing with learning record stores`"
+    }
+  ]
+}
