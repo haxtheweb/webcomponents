@@ -42,7 +42,7 @@
     "@lrnwebcomponents/code-editor": "^2.7.10",
     "@lrnwebcomponents/code-sample": "^2.7.10",
     "@lrnwebcomponents/dl-behavior": "^2.7.10",
-    "@lrnwebcomponents/grafitto-filter": "^2.7.10",
+    "@lrnwebcomponents/simple-filter": "^2.7.10",
     "@lrnwebcomponents/grid-plate": "^2.7.10",
     "@lrnwebcomponents/hal-9000": "^2.7.10",
     "@lrnwebcomponents/hax-body-behaviors": "^2.7.10",

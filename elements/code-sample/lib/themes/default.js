@@ -1,4 +1,4 @@
-import { html } from "@polymer/polymer/polymer-element.js";
+import { html } from "lit-element/lit-element.js";
 
 export const defaultTheme = html`
   <style>

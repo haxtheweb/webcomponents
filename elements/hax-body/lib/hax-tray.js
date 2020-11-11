@@ -6,18 +6,22 @@ import {
   nodeToHaxElement,
   haxElementToNode,
 } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import "./hax-map.js";
-import "./hax-preferences-dialog.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 import { HAXStore } from "./hax-store.js";
-import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import "@lrnwebcomponents/simple-popover/simple-popover.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import "./hax-map.js";
+import "./hax-preferences-dialog.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -63,20 +67,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     this.__tipText = "Edit content";
     setTimeout(() => {
       import("./hax-tray-button.js");
-      // @todo replace all icons w/ simple-iconset
-      import("@lrnwebcomponents/simple-icon/simple-icon.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-      import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
-      import("./hax-tray-upload.js");
-      import("@lrnwebcomponents/simple-fields/simple-fields.js");
       this.addEventListener(
         "hax-tray-button-click",
         this._processTrayEvent.bind(this)
       );
-      import("./hax-gizmo-browser.js");
-      import("./hax-app-browser.js");
-      import("./hax-blox-browser.js");
-      import("./hax-stax-browser.js");
     }, 0);
     autorun(() => {
       this.activeGizmo = toJS(HAXStore.activeGizmo);
@@ -1629,8 +1623,14 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   _editModeChanged(newValue) {
     if (typeof newValue !== typeof undefined && newValue) {
+      console.log("?");
       this.__tipText = "Save content";
       this.shadowRoot.querySelector("#button").icon = "save";
+      import("./hax-tray-upload.js");
+      import("./hax-gizmo-browser.js");
+      import("./hax-app-browser.js");
+      import("./hax-blox-browser.js");
+      import("./hax-stax-browser.js");
     } else {
       this.__tipText = "Edit content";
       this.shadowRoot.querySelector("#button").icon = "create";
