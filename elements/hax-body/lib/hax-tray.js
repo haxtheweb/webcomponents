@@ -20,6 +20,11 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import "./hax-tray-upload.js";
+import "./hax-gizmo-browser.js";
+import "./hax-app-browser.js";
+import "./hax-blox-browser.js";
+import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-preferences-dialog.js";
 /**
@@ -1623,14 +1628,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   _editModeChanged(newValue) {
     if (typeof newValue !== typeof undefined && newValue) {
-      console.log("?");
       this.__tipText = "Save content";
       this.shadowRoot.querySelector("#button").icon = "save";
-      import("./hax-tray-upload.js");
-      import("./hax-gizmo-browser.js");
-      import("./hax-app-browser.js");
-      import("./hax-blox-browser.js");
-      import("./hax-stax-browser.js");
     } else {
       this.__tipText = "Edit content";
       this.shadowRoot.querySelector("#button").icon = "create";
