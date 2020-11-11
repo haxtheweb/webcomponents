@@ -1,0 +1,29 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-filter",
+      "path": "./simple-filter.js",
+      "description": "`simple-filter`\n`a super class element to provide filtering capabilities`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "simple-filter",
+      "path": "./src/simple-filter.js",
+      "description": "`simple-filter`\n`a super class element to provide filtering capabilities`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,4 @@
-import { html, css } from "lit-element/lit-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { html, css, LitElement } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
@@ -9,13 +8,12 @@ import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
  * @element hax-map
  * `Export dialog with all export options and settings provided.`
  */
-class HaxMap extends SimpleColors {
+class HaxMap extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
-      ...super.styles,
       css`
         :host {
           display: block;
@@ -35,10 +33,6 @@ class HaxMap extends SimpleColors {
         }
         .container {
           text-align: left;
-          padding: 16px;
-          min-width: 300px;
-          overflow-y: scroll;
-          max-height: 50vh;
         }
         table {
           font-size: 13px;
@@ -53,6 +47,10 @@ class HaxMap extends SimpleColors {
           font-size: 21px;
           font-weight: bold;
           text-align: center;
+        }
+        h4 {
+          font-size: 14px;
+          margin: 2px 0;
         }
         ul {
           list-style: none;
@@ -160,7 +158,8 @@ class HaxMap extends SimpleColors {
   render() {
     return html`
       <h3 class="title">
-        <simple-icon icon="hax:map"></simple-icon> ${this.title}
+        <simple-icon icon="hax:map" accent-color="white" dark></simple-icon>
+        ${this.title}
       </h3>
       <div class="container">
         <table>

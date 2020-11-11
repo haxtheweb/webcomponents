@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `exif-data`
  * `obtain exif data from slotted elements`
@@ -59,13 +59,27 @@ class ExifData extends HTMLElement {
   constructor() {
     super();
     this.nodeData = [];
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("exif-js", `${basePath}lib/exif-js.js`);
-    window.addEventListener(
-      "es-bridge-exif-js-loaded",
-      this._onExifJsLoaded.bind(this)
-    );
+    if (window.WCGlobalBasePath) {
+      this.basePath = window.WCGlobalBasePath;
+    } else {
+      this.basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    }
+    // see if we already have it imported
+    if (ESGlobalBridgeStore.imports["exif-js"]) {
+      setTimeout(() => {
+        this.__ready = true;
+        this.updateExif();
+      }, 0);
+    } else {
+      ESGlobalBridgeStore.instance.load(
+        "exif-js",
+        `${this.basePath}lib/exif-js.js`
+      );
+      window.addEventListener(
+        "es-bridge-exif-js-loaded",
+        this._onExifJsLoaded.bind(this)
+      );
+    }
     this.template = document.createElement("template");
     this.attachShadow({ mode: "open" });
     this.render();
@@ -83,7 +97,7 @@ class ExifData extends HTMLElement {
   }
   showDetails(item) {
     if (!item) {
-      return;
+      return false;
     }
     let target = this.alignTarget;
     if (!target) {
@@ -127,7 +141,7 @@ class ExifData extends HTMLElement {
   /**
    * Load exifData
    */
-  getExifData(node) {
+  getExifData(node, show) {
     window.EXIF.getData(node, () => {
       let data = window.EXIF.getAllTags(node);
       // REALLY verbose field
@@ -137,20 +151,21 @@ class ExifData extends HTMLElement {
         node: node,
         data: data,
       });
+      // if we are told to show this and only 1 item exists, present details
+      // this has to happen after getExifData otherwise there's a timing
+      // issue because of the unknown length of execution time in getData above
+      if (show && this.children.length === 1) {
+        this.showDetails(this.nodeData[0]);
+      }
     });
   }
   updateExif(show = false) {
     this.nodeData = [];
     this.dataElement.innerHTML = "";
-    this.childNodes.forEach((node) => {
+    for (var node of this.childNodes) {
       if (this.__ready && node.tagName && node.tagName === "IMG") {
-        this.getExifData(node);
+        this.getExifData(node, show);
       }
-    });
-    if (show && this.children.length === 1) {
-      setTimeout(() => {
-        this.showDetails(this.nodeData[0]);
-      }, 250);
     }
   }
   clickData(e) {

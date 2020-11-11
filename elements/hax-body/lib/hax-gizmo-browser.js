@@ -1,15 +1,16 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
+import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
 import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 /**
  * `hax-gizmo-browser`
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
  * @microcopy - the mental model for this element
  * - gizmo - silly name for the general public when talking about custom elements and what it provides in the end.
  */
-class HaxGizmoBrowser extends LitElement {
+class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
   static get styles() {
     return [
       css`
@@ -32,9 +33,7 @@ class HaxGizmoBrowser extends LitElement {
   }
   constructor() {
     super();
-    this.__gizmoList = [];
-    this.filtered = [];
-    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
+    this.where = "title";
   }
   render() {
     return html`
@@ -48,24 +47,15 @@ class HaxGizmoBrowser extends LitElement {
           auto-validate=""
         ></simple-fields-field>
       </div>
-      <grafitto-filter
-        id="filter"
-        .items="${this.__gizmoList}"
-        like=""
-        where="title"
-        like=""
-        @filtered-changed="${this.filteredChanged}"
-        ><template></template
-      ></grafitto-filter>
       <div class="item-wrapper">
         ${this.filtered.map(
-          (gizmo) => html`
+          (gizmo, i) => html`
             <hax-tray-button
               voice-command="insert ${gizmo.title}"
               draggable="true"
               @dragstart="${this._dragStart}"
               @dragend="${this._dragEnd}"
-              index="${gizmo.index}"
+              index="${i}"
               label="${gizmo.title}"
               event-name="insert-tag"
               event-data="${gizmo.tag}"
@@ -80,16 +70,6 @@ class HaxGizmoBrowser extends LitElement {
   }
   static get tag() {
     return "hax-gizmo-browser";
-  }
-  static get properties() {
-    return {
-      filtered: {
-        type: Array,
-      },
-      __gizmoList: {
-        type: Array,
-      },
-    };
   }
   /**
    * Drag start so we know what target to set
@@ -131,11 +111,8 @@ class HaxGizmoBrowser extends LitElement {
   _dragEnd(e) {
     this.crt.remove();
   }
-  filteredChanged(e) {
-    this.filtered = [...e.detail.value];
-  }
   inputfilterChanged(e) {
-    this.shadowRoot.querySelector("#filter").like = e.target.value;
+    this.like = e.target.value;
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -161,19 +138,22 @@ class HaxGizmoBrowser extends LitElement {
    * Reset this browser.
    */
   resetBrowser(list) {
-    this.__gizmoList = list.filter((gizmo, i) => {
-      // remove inline and hidden references
-      if (gizmo && gizmo.meta && (gizmo.meta.inlineOnly || gizmo.meta.hidden)) {
-        return false;
-      }
-      return true;
-    });
-    this.filtered = [...this.__gizmoList];
-    this.shadowRoot.querySelector("#inputfilter").value = "";
-    this.shadowRoot.querySelector("#filter").value = "";
-    this.shadowRoot.querySelector("#filter").filter();
-    this.shadowRoot.querySelector("#filter").where = "title";
-    this.shadowRoot.querySelector("#filter").like = "";
+    this.items = [
+      ...list.filter((gizmo, i) => {
+        // remove inline and hidden references
+        if (
+          gizmo &&
+          gizmo.meta &&
+          (gizmo.meta.inlineOnly || gizmo.meta.hidden)
+        ) {
+          return false;
+        }
+        return true;
+      }),
+    ];
+    this.where = "title";
+    this.value = "";
+    this.like = "";
   }
 }
 window.customElements.define(HaxGizmoBrowser.tag, HaxGizmoBrowser);

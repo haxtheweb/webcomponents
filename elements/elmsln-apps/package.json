@@ -44,6 +44,8 @@
     "@lrnwebcomponents/elmsln-loading": "^2.7.10",
     "@lrnwebcomponents/materializecss-styles": "^2.7.10",
     "@polymer/app-route": "^3.0.2",
+    "@polymer/paper-toggle-button": "3.0.1",
+    "@polymer/paper-dialog": "3.0.1",
     "@polymer/iron-scroll-threshold": "^3.0.1",
     "@polymer/polymer": "^3.3.1",
     "@vaadin/vaadin-grid": "^5.2.5",

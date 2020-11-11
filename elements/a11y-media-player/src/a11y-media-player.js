@@ -10,6 +10,7 @@ import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "./lib/a11y-media-play-button.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";
@@ -167,9 +168,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
       import("@lrnwebcomponents/simple-range-input/simple-range-input.js");
       import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      import(
-        "@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js"
-      );
     }, 0);
   }
 

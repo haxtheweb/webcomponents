@@ -18,8 +18,8 @@ class HAXTrayButton extends SimpleColors {
     this.eventName = null;
     this.icon = null;
     this.colorMeaning = false;
-    this._defaultHoverColor = "cyan";
-    this._defaultColor = "cyan";
+    this._defaultHoverColor = "";
+    this._defaultColor = "";
     this.accentColor = this._defaultColor;
     this.hoverAccentColor = this._defaultColor;
     this.addEventListener("focusin", this._focusIn.bind(this));
@@ -253,7 +253,7 @@ class HAXTrayButton extends SimpleColors {
                   icon="${this.icon}"
                   accent-color="${this.colorMeaning
                     ? this.accentColor
-                    : "grey"}"
+                    : "white"}"
                   ?dark="${this.colorMeaning ? true : this.iconDark}"
                 ></simple-icon>
               </div>
@@ -271,7 +271,9 @@ class HAXTrayButton extends SimpleColors {
       this.hoverAccentColor === this._defaultColor
         ? this._defaultHoverColor
         : this.hoverAccentColor;
-    this.iconDark = true;
+    if (this.hoverAccentColor) {
+      this.iconDark = true;
+    }
   }
   _focusOut(e) {
     if (!this.colorMeaning) {
@@ -279,7 +281,9 @@ class HAXTrayButton extends SimpleColors {
     } else {
       this.accentColor = this.color;
     }
-    this.iconDark = false;
+    if (this.hoverAccentColor) {
+      this.iconDark = false;
+    }
   }
   _voiceEvent(e) {
     this._fireEvent(e);

@@ -47,7 +47,6 @@
     "@polymer/iron-ajax": "^3.0.0",
     "@lrnwebcomponents/simple-icon": "^2.7.10",
     "@lrnwebcomponents/hax-iconset": "^2.7.10",
-    "@polymer/paper-dialog": "^3.0.0",
     "@polymer/prism-element": "^3.0.0",
     "lit-element": "2.4.0"
   },

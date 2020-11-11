@@ -75,10 +75,10 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         .items="${this.manifestItems}"
       ></editable-outline>
       <div class="buttons">
-        <button id="savebtn" dialog-confirm @click="${this._saveTap}">
+        <button id="savebtn" @click="${this._saveTap}">
           <simple-icon icon="icons:save" dark></simple-icon>Save
         </button>
-        <button dialog-dismiss>
+        <button @click="${this._cancelTap}">
           <simple-icon icon="icons:cancel"></simple-icon>Cancel
         </button>
       </div>
@@ -188,6 +188,27 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         detail: this.shadowRoot
           .querySelector("#outline")
           .exportJsonOutlineSchemaItems(true),
+      })
+    );
+    setTimeout(() => {
+      // ensure things don't conflict w/ the modal if its around
+      this.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: false,
+        })
+      );
+    }, 0);
+  }
+  _cancelTap(e) {
+    this.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: false,
       })
     );
   }

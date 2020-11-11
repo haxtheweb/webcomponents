@@ -23,6 +23,10 @@ class SimpleIconButton extends SimpleColors {
   static get tag() {
     return "simple-icon-button";
   }
+  constructor() {
+    super();
+    this.accentColor = "white";
+  }
   static get styles() {
     return [
       ...super.styles,
@@ -49,6 +53,13 @@ class SimpleIconButton extends SimpleColors {
           padding: 0px;
           margin: 0px;
         }
+        :host([accent-color="white"]) simple-icon {
+          --simple-colors-default-theme-accent-8: black;
+        }
+        :host([dark][accent-color="white"]) simple-icon {
+          --simple-colors-default-theme-accent-8: white;
+        }
+
         simple-icon {
           height: var(--simple-icon-height, 24px);
           width: var(--simple-icon-width, 24px);

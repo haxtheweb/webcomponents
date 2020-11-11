@@ -5,6 +5,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "web-dialog/index.js";
 
 /**
  * `simple-modal`
@@ -40,23 +42,9 @@ class SimpleModal extends LitElement {
           display: none;
         }
 
-        :host paper-dialog ::slotted(*) {
+        :host web-dialog ::slotted(*) {
           font-size: 14px;
           width: 100%;
-        }
-
-        #dialog {
-          display: flex;
-          flex-direction: column;
-          margin: 15px auto;
-          z-index: var(--simple-modal-z-index, 1000) !important;
-          height: var(--simple-modal-height, auto);
-          width: var(--simple-modal-width, auto);
-          min-width: var(--simple-modal-min-width, unset);
-          max-width: var(--simple-modal-max-width, unset);
-          min-height: var(--simple-modal-min-height, unset);
-          max-height: var(--simple-modal-max-height, unset);
-          border-radius: 0;
         }
 
         #titlebar {
@@ -140,39 +128,37 @@ class SimpleModal extends LitElement {
             --simple-modal-buttons-background
           );
         }
+        web-dialog::part(dialog) {
+          border: 2px solid black;
+          padding: 0;
+        }
       `,
     ];
   }
-
-  // render function
   render() {
-    return html` <paper-dialog
+    return html`<web-dialog
       id="dialog"
-      always-on-top
+      center
+      role="dialog"
       aria-describedby="simple-modal-content"
       aria-label="${this._getAriaLabel(this.title)}"
       aria-labelledby="${this._getAriaLabelledby(this.title)}"
       aria-modal="true"
-      role="dialog"
-      ?opened="${this.opened}"
-      @opened-changed="${this.openedChangedEvent}"
-      ?modal="${this.modal}"
-      with-backdrop
+      ?open="${this.opened}"
+      @open="${this.open}"
+      @close="${this.close}"
     >
       <div id="titlebar">
         <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
         <div></div>
-        <button
+        <simple-icon-button
           id="close"
-          dialog-dismiss
-          ?hidden="${!this.opened}"
+          dark
+          icon="${this.closeIcon}"
+          @click="${this.close}"
           label="${this.closeLabel}"
         >
-          <simple-icon
-            aria-hidden="true"
-            icon="${this.closeIcon}"
-          ></simple-icon>
-        </button>
+        </simple-icon-button>
       </div>
       <div id="headerbar"><slot name="header"></slot></div>
       <div id="simple-modal-content">
@@ -181,14 +167,13 @@ class SimpleModal extends LitElement {
       <div class="buttons">
         <slot name="buttons"></slot>
       </div>
-    </paper-dialog>`;
+    </web-dialog>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * heading / label of the modal
        */
@@ -247,9 +232,6 @@ class SimpleModal extends LitElement {
     this.closeLabel = "Close";
     this.closeIcon = "close";
     this.modal = false;
-    setTimeout(() => {
-      import("@polymer/paper-dialog/paper-dialog.js");
-    }, 0);
   }
   /**
    * LitElement
@@ -260,17 +242,6 @@ class SimpleModal extends LitElement {
         this._openedChanged(this[propName]);
       }
     });
-  }
-  /**
-   * LitElement ready
-   */
-  firstUpdated() {
-    this.shadowRoot
-      .querySelector("#simple-modal-content")
-      .addEventListener(
-        "neon-animation-finish",
-        this._ironOverlayClosed.bind(this)
-      );
   }
   /**
    * HTMLElement
@@ -289,13 +260,6 @@ class SimpleModal extends LitElement {
     window.removeEventListener("simple-modal-hide", this.close.bind(this));
     window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
     super.disconnectedCallback();
-  }
-  /**
-   * Ensure everything is visible in what's been expanded.
-   */
-  _resizeContent(e) {
-    // fake a resize event to make contents happy
-    window.dispatchEvent(new Event("resize"));
   }
   /**
    * show event call to open the modal and display it's content
@@ -413,41 +377,30 @@ class SimpleModal extends LitElement {
       }
     }
     // minor delay to help the above happen prior to opening
-    setTimeout(() => {
-      this.opened = true;
-      this.shadowRoot.querySelector("#close").focus();
-      this._resizeContent();
-    }, 100);
-  }
-  /**
-   * check state and if we should clean up on close.
-   * This keeps the DOM tiddy and allows animation to happen gracefully.
-   */
-  animationEnded(e) {
-    // wipe the slot of our modal
-    this.title = "";
-    while (this.firstChild !== null) {
-      this.removeChild(this.firstChild);
-    }
-    if (this.invokedBy) {
-      setTimeout(() => {
-        this.invokedBy.focus();
-      }, 500);
-    }
+    this.opened = true;
   }
   /**
    * Close the modal and do some clean up
    */
   close() {
-    this.shadowRoot.querySelector("#dialog").close();
+    this.opened = false;
   }
-  openedChangedEvent(e) {
-    this.opened = e.detail.value;
+  open() {
+    this.opened = true;
   }
   // Observer opened for changes
   _openedChanged(newValue) {
     if (typeof newValue !== typeof undefined && !newValue) {
-      this.animationEnded();
+      // wipe the slot of our modal
+      this.title = "";
+      while (this.firstChild !== null) {
+        this.removeChild(this.firstChild);
+      }
+      if (this.invokedBy) {
+        setTimeout(() => {
+          this.invokedBy.focus();
+        }, 500);
+      }
       const evt = new CustomEvent("simple-modal-closed", {
         bubbles: true,
         cancelable: true,
@@ -458,6 +411,13 @@ class SimpleModal extends LitElement {
       });
       this.dispatchEvent(evt);
     } else if (newValue) {
+      // p dialog backport; a nice, simple solution for close buttons
+      let children = this.querySelectorAll("[dialog-dismiss],[dialog-confirm]");
+      children.forEach((el) => {
+        el.addEventListener("click", (e) => {
+          this.close();
+        });
+      });
       const evt = new CustomEvent("simple-modal-opened", {
         bubbles: true,
         cancelable: true,
@@ -481,10 +441,6 @@ class SimpleModal extends LitElement {
   _getAriaLabel(title) {
     return !title ? "Modal Dialog" : null;
   }
-  _ironOverlayClosed(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);
 export { SimpleModal };
@@ -501,3 +457,5 @@ window.SimpleModal.requestAvailability = () => {
   }
   return window.SimpleModal.instance;
 };
+
+export const SimpleModalStore = window.SimpleModal.requestAvailability();

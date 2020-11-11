@@ -123,8 +123,8 @@ class ImageInspector extends LitElement {
         @click=${this.hideData}
         no-events
         ?no-left="${this.noLeft}"
-        ><img src="${this.src}"
-      /></exif-data>
+        ><img src="${this.src}" />
+      </exif-data>
       <img-pan-zoom id="img" src="${this.src}"></img-pan-zoom>
       <slot></slot>
     `;
@@ -133,8 +133,8 @@ class ImageInspector extends LitElement {
     if (this.shadowRoot.querySelector("#exif").classList.contains("showData")) {
       this.shadowRoot.querySelector("#exif").classList.remove("showData");
     } else {
-      this.shadowRoot.querySelector("#exif").updateExif(true);
       this.shadowRoot.querySelector("#exif").classList.add("showData");
+      this.shadowRoot.querySelector("#exif").updateExif(true);
     }
   }
   hideData(e) {
@@ -173,10 +173,14 @@ class ImageInspector extends LitElement {
       },
     };
   }
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.__img = this.shadowRoot.querySelector("#img");
     this.shadowRoot.querySelector("#exif").alignTarget = this.__img;
     this.shadowRoot.querySelector("#exif").alignTargetTop = "0px";
+    this.shadowRoot.querySelector("#exif").updateExif();
   }
   /**
    * Rotate the image to the right.

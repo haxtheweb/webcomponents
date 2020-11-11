@@ -6,18 +6,27 @@ import {
   nodeToHaxElement,
   haxElementToNode,
 } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import "./hax-map.js";
-import "./hax-preferences-dialog.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 import { HAXStore } from "./hax-store.js";
-import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import "@lrnwebcomponents/simple-popover/simple-popover.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import "./hax-tray-upload.js";
+import "./hax-gizmo-browser.js";
+import "./hax-app-browser.js";
+import "./hax-blox-browser.js";
+import "./hax-stax-browser.js";
+import "./hax-map.js";
+import "./hax-preferences-dialog.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -63,20 +72,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     this.__tipText = "Edit content";
     setTimeout(() => {
       import("./hax-tray-button.js");
-      // @todo replace all icons w/ simple-iconset
-      import("@lrnwebcomponents/simple-icon/simple-icon.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-      import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
-      import("./hax-tray-upload.js");
-      import("@lrnwebcomponents/simple-fields/simple-fields.js");
       this.addEventListener(
         "hax-tray-button-click",
         this._processTrayEvent.bind(this)
       );
-      import("./hax-gizmo-browser.js");
-      import("./hax-app-browser.js");
-      import("./hax-blox-browser.js");
-      import("./hax-stax-browser.js");
     }, 0);
     autorun(() => {
       this.activeGizmo = toJS(HAXStore.activeGizmo);
@@ -243,6 +242,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
         :host([element-align="right"]) #toggle-element-align {
           --hax-tray-button-rotate: rotate(90deg) !important;
+        }
+        simple-popover {
+          --simple-popover-max-height: 50vh;
         }
         hax-tray-button,
         a11y-collapse,
@@ -846,6 +848,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         break;
       case "open-preferences":
         this.shadowRoot.querySelector(
+          "simple-popover[for='mapbtn']"
+        ).hidden = true;
+        this.shadowRoot.querySelector(
           "simple-popover[for='prefbtn']"
         ).hidden = !this.shadowRoot.querySelector(
           "simple-popover[for='prefbtn']"
@@ -861,6 +866,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         this.collapsed = !this.collapsed;
         break;
       case "open-map":
+        this.shadowRoot.querySelector(
+          "simple-popover[for='prefbtn']"
+        ).hidden = true;
         this.shadowRoot.querySelector(
           "simple-popover[for='mapbtn']"
         ).hidden = !this.shadowRoot.querySelector(
@@ -1110,8 +1118,12 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    * LitElement properties changed
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
+        this.refreshActiveNodeForm();
         this._editModeChanged(this[propName]);
       }
       if (propName == "offsetMargin") {
@@ -1628,7 +1640,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    * _editModeChanged
    */
   _editModeChanged(newValue) {
-    if (typeof newValue !== typeof undefined && newValue) {
+    if (newValue) {
       this.__tipText = "Save content";
       this.shadowRoot.querySelector("#button").icon = "save";
     } else {

@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
+import "@vaadin/vaadin-upload/vaadin-upload.js";
 class HaxTrayUpload extends winEventsElement(LitElement) {
   static get styles() {
     return [
@@ -51,14 +52,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       title: this.shadowRoot.querySelector("#url").value,
     };
     HAXStore.insertLogicFromValues(values, this);
-  }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    setTimeout(() => {
-      import("@vaadin/vaadin-upload/vaadin-upload.js");
-    }, 0);
   }
   /**
    * A file event was detected from a drag and drop in the interface, most likely
