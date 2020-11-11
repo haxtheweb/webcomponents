@@ -739,7 +739,9 @@ class SimpleFields extends SimpleFieldsLite {
   }
 
   updated(changedProperties) {
-    super.updated(changedProperties);
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (["fields", "fieldsConversion"].includes(propName))
         this.schema = this.convertedSchema;

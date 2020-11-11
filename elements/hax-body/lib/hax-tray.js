@@ -68,6 +68,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     this.elementAlign = "right";
     this.activeTagName = "Select an element to configure";
     this.activeTagIcon = "icons:settings";
+    this.traySizeIcon = "hax:arrow-expand-right";
     this.__setup = false;
     this.__tipText = "Edit content";
     setTimeout(() => {

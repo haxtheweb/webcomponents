@@ -336,6 +336,9 @@ class SimpleFieldsLite extends LitElement {
   }
 
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "error" && this.error !== oldValue) this._errorChanged();
       if (["schema", "schemaConversion"].includes(propName))
@@ -575,7 +578,7 @@ class SimpleFieldsLite extends LitElement {
         if (!window.customElements.get(data.element) && data.import) {
           import(`${this.basePath}${data.import}`);
         } else if (!window.customElements.get(data.element)) {
-          console.log(data.element);
+          console.warn(`missing field: ${data.element}`);
         }
         let label =
             schemaProp.label ||
@@ -779,7 +782,6 @@ class SimpleFieldsLite extends LitElement {
       previewBy =
         schema.previewBy || (propNames.length > 0 ? [propNames[0]] : undefined);
     // verify there are values of some form
-    console.log(value);
     value = Object.keys(value).length || [];
     value.forEach((item, i) => {
       this._insertArrayItem(schema, previewBy, element, parent, item, i);

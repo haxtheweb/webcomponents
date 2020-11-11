@@ -22,10 +22,12 @@ class HAXTrayButton extends SimpleColors {
     this._defaultColor = "";
     this.accentColor = this._defaultColor;
     this.hoverAccentColor = this._defaultColor;
-    this.addEventListener("focusin", this._focusIn.bind(this));
-    this.addEventListener("focusout", this._focusOut.bind(this));
-    this.addEventListener("mouseover", this._focusIn.bind(this));
-    this.addEventListener("mouseout", this._focusOut.bind(this));
+    setTimeout(() => {
+      this.addEventListener("focusin", this._focusIn.bind(this));
+      this.addEventListener("focusout", this._focusOut.bind(this));
+      this.addEventListener("mouseover", this._focusIn.bind(this));
+      this.addEventListener("mouseout", this._focusOut.bind(this));
+    }, 0);
   }
   static get properties() {
     return {
