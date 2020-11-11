@@ -20,7 +20,7 @@ class JwtLogin extends LitElement {
    * Handle the last error rolling in
    */
   lastErrorChanged(e) {
-    if (e.detail.value) {
+    if (e) {
       // check for JWT needing refreshed vs busted but must be 403
       console.error(e);
       this.dispatchEvent(
@@ -29,7 +29,7 @@ class JwtLogin extends LitElement {
           bubbles: true,
           cancelable: false,
           detail: {
-            value: e.detail.value,
+            value: e,
           },
         })
       );
