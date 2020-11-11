@@ -14,7 +14,7 @@
     "version": "0.0.1",
     "scripts": {
       "start": "yarn run dev",
-      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
       "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
       "watch": "../../node_modules/.bin/gulp dev",
       "serve": "polymer serve --npm --module-resolution=node --open",
@@ -48,7 +48,7 @@
     "version": "0.0.1",
     "scripts": {
       "start": "yarn run dev",
-      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
       "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
       "watch": "../../node_modules/.bin/gulp dev",
       "serve": "polymer serve --npm --module-resolution=node --open",
@@ -83,7 +83,7 @@
     "version": "0.0.1",
     "scripts": {
       "start": "yarn run dev",
-      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
       "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
       "watch": "../../node_modules/.bin/gulp dev",
       "serve": "polymer serve --npm --module-resolution=node --open",
@@ -117,7 +117,7 @@
     "version": "0.0.1",
     "scripts": {
       "start": "yarn run dev",
-      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
       "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
       "watch": "../../node_modules/.bin/gulp dev",
       "serve": "polymer serve --npm --module-resolution=node --open",
@@ -154,7 +154,7 @@
     "version": "0.0.1",
     "scripts": {
       "start": "yarn run dev",
-      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
       "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
       "watch": "../../node_modules/.bin/gulp dev",
       "serve": "polymer serve --npm --module-resolution=node --open",
@@ -193,7 +193,7 @@
     "version": "0.0.1",
     "scripts": {
       "start": "yarn run dev",
-      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
       "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
       "watch": "../../node_modules/.bin/gulp dev",
       "serve": "polymer serve --npm --module-resolution=node --open",
@@ -230,7 +230,7 @@
     "version": "0.0.1",
     "scripts": {
       "start": "yarn run dev",
-      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+      "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
       "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
       "watch": "../../node_modules/.bin/gulp dev",
       "serve": "polymer serve --npm --module-resolution=node --open",
