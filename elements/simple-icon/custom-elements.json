@@ -14,7 +14,7 @@
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"grey\""
+          "default": "\"white\""
         },
         {
           "name": "dark",
@@ -34,7 +34,7 @@
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"grey\""
+          "default": "\"white\""
         },
         {
           "name": "dark",
@@ -62,7 +62,7 @@
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"grey\""
+          "default": "\"white\""
         },
         {
           "name": "dark",
@@ -82,7 +82,7 @@
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"grey\""
+          "default": "\"white\""
         },
         {
           "name": "dark",
@@ -136,7 +136,7 @@
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"grey\""
+          "default": "\"white\""
         },
         {
           "name": "dark",
@@ -167,7 +167,7 @@
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"grey\""
+          "default": "\"white\""
         },
         {
           "name": "dark",
@@ -204,7 +204,7 @@
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"grey\""
+          "default": "\"white\""
         },
         {
           "name": "dark",
@@ -235,7 +235,7 @@
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"grey\""
+          "default": "\"white\""
         },
         {
           "name": "dark",

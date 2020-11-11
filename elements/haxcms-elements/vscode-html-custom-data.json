@@ -85,7 +85,7 @@
     },
     {
       "name": "haxcms-outline-editor-dialog",
-      "description": "`haxcms-outline-editor-dialog`\n`Dialog for presenting an editable outline`\n\nEvents:\n\n  * `opened-changed` {`CustomEvent<any>`} - \n\n  * `manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-save-outline` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifest-items-static` {`string`} - Stringify'ed representation of items\n\n  * `view-label` {`string`} - Display label, switch when hitting the toggle button\n\n  * `view-mode` {`boolean`} - Which edit mode to display\n\nProperties:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifestItemsStatic` {`string`} - Stringify'ed representation of items\n\n  * `viewLabel` {`string`} - Display label, switch when hitting the toggle button\n\n  * `__disposer` {`never[]`} - \n\n  * `viewMode` {`boolean`} - Which edit mode to display",
+      "description": "`haxcms-outline-editor-dialog`\n`Dialog for presenting an editable outline`\n\nEvents:\n\n  * `opened-changed` {`CustomEvent<any>`} - \n\n  * `manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-save-outline` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifest-items-static` {`string`} - Stringify'ed representation of items\n\n  * `view-label` {`string`} - Display label, switch when hitting the toggle button\n\n  * `view-mode` {`boolean`} - Which edit mode to display\n\nProperties:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifestItemsStatic` {`string`} - Stringify'ed representation of items\n\n  * `viewLabel` {`string`} - Display label, switch when hitting the toggle button\n\n  * `__disposer` {`never[]`} - \n\n  * `viewMode` {`boolean`} - Which edit mode to display",
       "attributes": [
         {
           "name": "opened",
@@ -120,6 +120,10 @@
         {
           "name": "onhaxcms-save-outline",
           "description": "`haxcms-save-outline` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onsimple-modal-hide",
+          "description": "`simple-modal-hide` {`CustomEvent<boolean>`} - "
         }
       ]
     },

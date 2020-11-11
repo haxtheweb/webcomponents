@@ -594,21 +594,42 @@
     },
     {
       "name": "hax-gizmo-browser",
-      "description": "`hax-gizmo-browser`\n`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n\nAttributes:\n\n  * `__gizmoList` {`any[]`} - \n\n  * `filtered` {`any[]`} - \n\nProperties:\n\n  * `__gizmoList` {`any[]`} - \n\n  * `filtered` {`any[]`} - ",
+      "description": "`hax-gizmo-browser`\n`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n\nEvents:\n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\nProperties:\n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items",
       "attributes": [
         {
-          "name": "__gizmoList",
-          "description": "`__gizmoList` {`any[]`} - \n\nProperty: __gizmoList\n\nDefault: "
+          "name": "items",
+          "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items\n\nDefault: "
+        },
+        {
+          "name": "like",
+          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like\n\nDefault: "
+        },
+        {
+          "name": "where",
+          "description": "`where` {`string`} - The filter-by field of your items array of objects\n\nProperty: where\n\nDefault: title"
+        },
+        {
+          "name": "case-sensitive",
+          "description": "`case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\nProperty: caseSensitive\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "filtered",
-          "description": "`filtered` {`any[]`} - \n\nProperty: filtered\n\nDefault: "
+          "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
+        },
+        {
+          "name": "onfilter",
+          "description": "`filter` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onfiltered-changed",
+          "description": "`filtered-changed` {`CustomEvent<{ value: any[]; }>`} - "
         }
       ]
     },
     {
       "name": "hax-map",
-      "description": "`hax-map`\n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`hax-map`\n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.",
       "attributes": [
         {
           "name": "opened",
@@ -642,15 +663,6 @@
         {
           "name": "title",
           "description": "`title` {`string`} - Title when open.\n\nProperty: title\n\nDefault: Content map"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
         }
       ]
     },
@@ -1100,7 +1112,7 @@
     },
     {
       "name": "hax-tray",
-      "description": "`hax-tray`\n`The tray / dashboard area which allows for customization of all major settings`\n\nEvents:\n\n  * `hax-insert-content-array` {`CustomEvent<any>`} - \n\n  * `hax-insert-content` {`CustomEvent<{ tag: string; properties: { layout: any; }; content: string; }>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: any; callback: string; }>`} - \n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: any; value: any; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `hax-save` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `menuAlignName` {`string`} - \n\n  * `offset-margin` {`string`} - \n\n  * `traySizeIcon` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hide-preferences-button` {`boolean`} - Showing preferences area.\n\n  * `hide-panel-ops` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `element-align` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `__tipText` {`string`} - \n\nProperties:\n\n  * `menuAlignName` {`string`} - \n\n  * `offsetMargin` {`string`} - \n\n  * `traySizeIcon` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hidePreferencesButton` {`boolean`} - Showing preferences area.\n\n  * `hidePanelOps` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `__winEvents` - \n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeTab` {`string`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `elementAlign` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `__setup` {`boolean`} - \n\n  * `__tipText` {`string`} - \n\n  * `tourName` {`string`} - ",
+      "description": "`hax-tray`\n`The tray / dashboard area which allows for customization of all major settings`\n\nEvents:\n\n  * `hax-insert-content-array` {`CustomEvent<any>`} - \n\n  * `hax-insert-content` {`CustomEvent<{ tag: string; properties: { layout: any; }; content: string; }>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: any; callback: string; }>`} - \n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: any; value: any; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `hax-save` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `menuAlignName` {`string`} - \n\n  * `offset-margin` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hide-preferences-button` {`boolean`} - Showing preferences area.\n\n  * `hide-panel-ops` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `element-align` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `traySizeIcon` {`string`} - \n\n  * `__tipText` {`string`} - \n\nProperties:\n\n  * `menuAlignName` {`string`} - \n\n  * `offsetMargin` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hidePreferencesButton` {`boolean`} - Showing preferences area.\n\n  * `hidePanelOps` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `__winEvents` - \n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeTab` {`string`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `elementAlign` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `traySizeIcon` {`string`} - \n\n  * `__setup` {`boolean`} - \n\n  * `__tipText` {`string`} - \n\n  * `tourName` {`string`} - ",
       "attributes": [
         {
           "name": "menuAlignName",
@@ -1109,10 +1121,6 @@
         {
           "name": "offset-margin",
           "description": "`offset-margin` {`string`} - \n\nProperty: offsetMargin"
-        },
-        {
-          "name": "traySizeIcon",
-          "description": "`traySizeIcon` {`string`} - \n\nProperty: traySizeIcon"
         },
         {
           "name": "traySizeText",
@@ -1184,6 +1192,10 @@
         {
           "name": "activeTagIcon",
           "description": "`activeTagIcon` {`string`} - Tag name / what to display based on active element\n\nProperty: activeTagIcon\n\nDefault: icons:settings"
+        },
+        {
+          "name": "traySizeIcon",
+          "description": "`traySizeIcon` {`string`} - \n\nProperty: traySizeIcon\n\nDefault: hax:arrow-expand-right"
         },
         {
           "name": "__tipText",
