@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `threaded-discussion-form`
  * a threaded discussions component for elms-ln
@@ -167,6 +166,10 @@ class ThreadedDiscussionForm extends LitElement {
             var(--threaded-discussion-comment-button-focus-BorderColor, #222);
         }
         button simple-icon {
+          --simple-icon-color: var(
+            --threaded-discussion-comment-button-Color,
+            #fff
+          );
           margin-left: 5px;
         }
       `,

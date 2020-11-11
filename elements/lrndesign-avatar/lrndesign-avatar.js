@@ -35,6 +35,7 @@ class LrndesignAvatar extends SimpleColors {
 
         paper-avatar {
           border-radius: var(--lrndesign-avatar-border-radius, 50%);
+          max-height: var(--lrndesign-avatar-width, 40px);
           --paper-avatar-width: var(--lrndesign-avatar-width, 40px);
           --paper-avatar-color: var(
             --simple-colors-default-theme-accent-8,
@@ -44,7 +45,6 @@ class LrndesignAvatar extends SimpleColors {
             --simple-colors-default-theme-grey-1,
             #fff
           );
-          max-height: var(--lrndesign-avatar-width, 40px);
         }
 
         :host([invert]) paper-avatar {

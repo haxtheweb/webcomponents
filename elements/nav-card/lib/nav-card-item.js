@@ -268,14 +268,6 @@ class NavCardItem extends LitElement {
         }
         lrndesign-avatar {
           margin-right: 10px;
-          width: var(
-            --nav-card-item-avatar-width,
-            var(--nav-card-item-avatar-size, 36px)
-          );
-          height: var(
-            --nav-card-item-avatar-height,
-            var(--nav-card-item-avatar-size, 36px)
-          );
           --lrndesign-avatar-width: var(
             --nav-card-item-avatar-width,
             var(--nav-card-item-avatar-size, 36px)
@@ -298,14 +290,6 @@ class NavCardItem extends LitElement {
           --simple-icon-height: var(
             --nav-card-item-icon-height,
             var(--nav-card-item-icon-size, 24px)
-          );
-          --lrndesign-icon-width: var(
-            --nav-card-item-icon-width,
-            var(--nav-card-item-icon-size, 24px)
-          );
-          --lrndesign-icon-height: var(
-            --nav-card-item-icon-height,
-            var(--nav-card-item-icon-size 24px)
           );
         }
       `,

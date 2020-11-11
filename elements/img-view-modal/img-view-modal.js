@@ -93,88 +93,90 @@ class ImgViewModal extends LitElement {
   }
 
   modalOpen() {
-    let evt,
-      modalStyles = {
-        "--simple-modal-width":
-          this._getCssVar("--simple-modal-width") || "90%",
-        "--simple-modal-height":
-          this._getCssVar("--simple-modal-height") || "90vh",
-        "--simple-modal-titlebar-height":
-          this._getCssVar("--simple-modal-titlebar-height") || "40px",
-        "--simple-modal-titlebar-line-height":
-          this._getCssVar("--simple-modal-titlebar-line-height") || "40px",
-        "--simple-modal-titlebar-height":
-          this._getCssVar("--simple-modal-titlebar-height") || "40px",
-        "--simple-modal-titlebar-padding":
-          this._getCssVar("--simple-modal-titlebar-padding") ||
-          "0px 5px 0px 15px",
-        "--simple-modal-titlebar-background":
-          this._getCssVar("--simple-modal-titlebar-background") || "white",
-        "--simple-modal-header-background":
-          this._getCssVar("--simple-modal-header-background") || "white",
-        "--simple-modal-header-color":
-          this._getCssVar("--simple-modal-header-color") || "black",
-        "--simple-modal-header-padding":
-          this._getCssVar("--simple-modal-header-padding") || "0px",
-        "--simple-modal-content-padding":
-          this._getCssVar("--simple-modal-content-padding") || "0px",
-        "--simple-modal-buttons-padding":
-          this._getCssVar("--simple-modal-buttons-padding") || "0px",
-      },
-      imgStyles = {
-        "--img-view-viewer-backgroundColor":
-          this._getCssVar("i--mg-view-viewer-backgroundColor") || "white",
-        "--img-view-viewer-height":
-          "calc(var(--simple-modal-height) - var(--simple-modal-titlebar-height))",
-        "--img-view-viewer-color":
-          this._getCssVar("--img-view-viewer-color") || "black",
-        "--img-view-viewer-borderColor":
-          this._getCssVar("--img-view-viewer-borderColor") || "#ddd",
-        "--img-view-viewer-toggled-backgroundColor":
-          this._getCssVar("--img-view-viewer-toggled-backgroundColor") ||
-          "#eee",
-      },
-      img = document.createElement("img-view-viewer"),
-      props = [
-        ...Object.keys(ImgViewViewer.properties || {}),
-        ...Object.keys(ImgPanZoom.properties || {}),
-      ];
-    props.forEach((prop) => {
-      if (this[prop]) img[prop] = this[prop];
-    });
-    Object.keys(imgStyles || {}).forEach((key) =>
-      img.style.setProperty(key, imgStyles[key])
-    );
+    if (!this.disabled) {
+      let evt,
+        modalStyles = {
+          "--simple-modal-width":
+            this._getCssVar("--simple-modal-width") || "90%",
+          "--simple-modal-height":
+            this._getCssVar("--simple-modal-height") || "90vh",
+          "--simple-modal-titlebar-height":
+            this._getCssVar("--simple-modal-titlebar-height") || "40px",
+          "--simple-modal-titlebar-line-height":
+            this._getCssVar("--simple-modal-titlebar-line-height") || "40px",
+          "--simple-modal-titlebar-height":
+            this._getCssVar("--simple-modal-titlebar-height") || "40px",
+          "--simple-modal-titlebar-padding":
+            this._getCssVar("--simple-modal-titlebar-padding") ||
+            "0px 5px 0px 15px",
+          "--simple-modal-titlebar-background":
+            this._getCssVar("--simple-modal-titlebar-background") || "white",
+          "--simple-modal-header-background":
+            this._getCssVar("--simple-modal-header-background") || "white",
+          "--simple-modal-header-color":
+            this._getCssVar("--simple-modal-header-color") || "black",
+          "--simple-modal-header-padding":
+            this._getCssVar("--simple-modal-header-padding") || "0px",
+          "--simple-modal-content-padding":
+            this._getCssVar("--simple-modal-content-padding") || "0px",
+          "--simple-modal-buttons-padding":
+            this._getCssVar("--simple-modal-buttons-padding") || "0px",
+        },
+        imgStyles = {
+          "--img-view-viewer-backgroundColor":
+            this._getCssVar("i--mg-view-viewer-backgroundColor") || "white",
+          "--img-view-viewer-height":
+            "calc(var(--simple-modal-height) - var(--simple-modal-titlebar-height))",
+          "--img-view-viewer-color":
+            this._getCssVar("--img-view-viewer-color") || "black",
+          "--img-view-viewer-borderColor":
+            this._getCssVar("--img-view-viewer-borderColor") || "#ddd",
+          "--img-view-viewer-toggled-backgroundColor":
+            this._getCssVar("--img-view-viewer-toggled-backgroundColor") ||
+            "#eee",
+        },
+        img = document.createElement("img-view-viewer"),
+        props = [
+          ...Object.keys(ImgViewViewer.properties || {}),
+          ...Object.keys(ImgPanZoom.properties || {}),
+        ];
+      props.forEach((prop) => {
+        if (this[prop]) img[prop] = this[prop];
+      });
+      Object.keys(imgStyles || {}).forEach((key) =>
+        img.style.setProperty(key, imgStyles[key])
+      );
 
-    this.dispatchEvent(
-      new CustomEvent("modal-button-click", {
+      this.dispatchEvent(
+        new CustomEvent("modal-button-click", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
+
+      evt = new CustomEvent("simple-modal-show", {
         bubbles: true,
-        cancelable: true,
         composed: true,
-        detail: this,
-      })
-    );
-
-    evt = new CustomEvent("simple-modal-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: {
-        title: this.title || false,
-        elements: {
-          content: img,
+        cancelable: false,
+        detail: {
+          title: this.title || false,
+          elements: {
+            content: img,
+          },
+          styles: {
+            "--simple-modal-width": "50vw",
+            "--simple-modal-max-width": "75vw",
+            "--simple-modal-min-height": "50vh",
+          },
+          styles: modalStyles,
+          invokedBy: this,
+          clone: false,
         },
-        styles: {
-          "--simple-modal-width": "50vw",
-          "--simple-modal-max-width": "75vw",
-          "--simple-modal-min-height": "50vh",
-        },
-        styles: modalStyles,
-        invokedBy: this,
-        clone: false,
-      },
-    });
-    this.dispatchEvent(evt);
+      });
+      this.dispatchEvent(evt);
+    }
   }
 }
 window.customElements.define(ImgViewModal.tag, ImgViewModal);

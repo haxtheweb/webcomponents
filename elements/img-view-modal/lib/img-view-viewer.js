@@ -96,7 +96,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         #top,
         #bottom {
           margin: 0;
-          flex: 1 0 50px;
+          flex: 1 0 46px;
           border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         #top > *,
@@ -110,6 +110,12 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         button {
           border: none;
           background-color: transparent;
+          color: var(--img-view-viewer-color);
+          --simple-icon-color: var(--img-view-viewer-color);
+        }
+        button[disabled] {
+          opacity: 0.5;
+          cursor: not-allowed;
         }
         button.flex-grow {
           flex: 1 0 auto;
@@ -234,6 +240,11 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     delete props.sources;
     return {
       ...props,
+      disabled: {
+        type: Boolean,
+        reflect: true,
+        attribute: "disabled",
+      },
       figures: {
         type: Array,
       },
@@ -628,12 +639,13 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         <p>
           <label for="pageX" class="sr-only">Page</label>
           <input
+            ?disabled="${this.disabled}"
             id="pageX"
             type="number"
             min="1"
             max="${this.pages.length}"
             value="${this.page + 1}"
-            @change="${this.goToPageXofY}"
+            @change="${(e) => this._xOfYClick(e, this.disabled)}"
           />
           of ${this.pages.length}
         </p>
@@ -744,7 +756,12 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           <button
             .id="${config.id || undefined}"
             class="${this._buttonClass(config)}"
-            @click="${(e) => this._toolbarButtonClick(config.id, e)}"
+            @click="${(e) =>
+              this._toolbarButtonClick(
+                config.id,
+                e,
+                this._buttonDisabled(config)
+              )}"
             controls="container"
             ?disabled="${this._buttonDisabled(config)}"
             ?hidden="${this._buttonHidden(config)}"
@@ -758,7 +775,12 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
             .id="${config.id || undefined}"
             aria-pressed="${this[config.toggleProp] ? "true" : "false"}"
             class="${this._buttonClass(config)}"
-            @click="${(e) => this._toolbarButtonClick(config.id, e)}"
+            @click="${(e) =>
+              this._toolbarButtonClick(
+                config.id,
+                e,
+                this._buttonDisabled(config)
+              )}"
             controls="container"
             ?disabled="${this._buttonDisabled(config)}"
             ?hidden="${this._buttonHidden(config)}"
@@ -770,7 +792,8 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
   _buttonDisabled(config) {
     return (
       (config.disabledProp && this[config.disabledProp]) ||
-      (config.enabledProp && !this[config.enabledProp])
+      (config.enabledProp && !this[config.enabledProp]) ||
+      this.disabled
     );
   }
   _buttonHidden(config) {
@@ -829,54 +852,59 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return;
   }
 
-  _toolbarButtonClick(buttonId, eventType) {
-    /**
-     * Fires when constructed, so that parent radio group can listen for it.
-     *
-     * @event toolbar-button-click
-     */
-    this.dispatchEvent(
-      new CustomEvent("toolbar-button-click", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          buttonId: buttonId,
-          eventType: eventType,
-          viewer: this,
-        },
-      })
-    );
-    if (buttonId === "homebutton") this.resetZoom();
-    if (buttonId === "panupbutton") this.pan(0, 0.2);
-    if (buttonId === "pandownbutton") this.pan(0, -0.2);
-    if (buttonId === "panleftbutton") this.pan(0.2, 0);
-    if (buttonId === "panrightbutton") this.pan(-0.2, 0);
-    if (buttonId === "zoominbutton") this.zoomIn(0.2);
-    if (buttonId === "zoomoutbutton") this.zoomOut(0.2);
-    if (buttonId === "rotateccwbutton") this.rotate(-90);
-    if (buttonId === "rotatecwbutton") this.rotate(90);
-    if (buttonId === "navigatorbutton")
-      this.navigatorToggled = !this.navigatorToggled;
-    if (buttonId === "fullscreenbutton") this.toggleFullscreen();
-    if (buttonId === "flipbutton") this.flipToggled = !this.flipToggled;
-    if (buttonId === "infobutton") {
-      this.kbdToggled = false;
-      this.infoToggled = !this.infoToggled;
-    }
-    if (buttonId === "kbdbutton") {
-      this.infoToggled = false;
-      this.kbdToggled = !this.kbdToggled;
-    }
-    if (buttonId === "nextbutton") {
-      this.page = Math.min(this.page + 1, this.pages.length - 1);
-    }
-    if (buttonId === "prevbutton") {
-      this.page = Math.max(0, this.page - 1);
+  _toolbarButtonClick(buttonId, e, disabled = false) {
+    if (!disabled) {
+      /**
+       * Fires when constructed, so that parent radio group can listen for it.
+       *
+       * @event toolbar-button-click
+       */
+      this.dispatchEvent(
+        new CustomEvent("toolbar-button-click", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            buttonId: buttonId,
+            eventType: e,
+            viewer: this,
+          },
+        })
+      );
+      if (buttonId === "homebutton") this.resetZoom();
+      if (buttonId === "panupbutton") this.pan(0, 0.2);
+      if (buttonId === "pandownbutton") this.pan(0, -0.2);
+      if (buttonId === "panleftbutton") this.pan(0.2, 0);
+      if (buttonId === "panrightbutton") this.pan(-0.2, 0);
+      if (buttonId === "zoominbutton") this.zoomIn(0.2);
+      if (buttonId === "zoomoutbutton") this.zoomOut(0.2);
+      if (buttonId === "rotateccwbutton") this.rotate(-90);
+      if (buttonId === "rotatecwbutton") this.rotate(90);
+      if (buttonId === "navigatorbutton")
+        this.navigatorToggled = !this.navigatorToggled;
+      if (buttonId === "fullscreenbutton") this.toggleFullscreen();
+      if (buttonId === "flipbutton") this.flipToggled = !this.flipToggled;
+      if (buttonId === "infobutton") {
+        this.kbdToggled = false;
+        this.infoToggled = !this.infoToggled;
+      }
+      if (buttonId === "kbdbutton") {
+        this.infoToggled = false;
+        this.kbdToggled = !this.kbdToggled;
+      }
+      if (buttonId === "nextbutton") {
+        this.page = Math.min(this.page + 1, this.pages.length - 1);
+      }
+      if (buttonId === "prevbutton") {
+        this.page = Math.max(0, this.page - 1);
+      }
     }
   }
+  _xOfYClick(e, disabled) {
+    this._toolbarButtonClick("navXofY", e, disabled);
+    if (!disabled) this.goToPageXofY(e);
+  }
   goToPageXofY(e) {
-    this._toolbarButtonClick("navXofY", e);
     this.page = e.path ? e.path[0].value - 1 : e.target.value;
   }
   loadedChangedEvent(e) {
