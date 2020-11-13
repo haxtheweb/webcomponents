@@ -51,6 +51,7 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
         ${this.filtered.map(
           (gizmo, i) => html`
             <hax-tray-button
+              dark-bg
               voice-command="insert ${gizmo.title}"
               draggable="true"
               @dragstart="${this._dragStart}"
@@ -60,7 +61,6 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
               event-name="insert-tag"
               event-data="${gizmo.tag}"
               icon="${gizmo.icon}"
-              color="${gizmo.color}"
               drag-color="${gizmo.color}"
             ></hax-tray-button>
           `

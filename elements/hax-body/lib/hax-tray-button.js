@@ -11,6 +11,7 @@ class HAXTrayButton extends SimpleColors {
   }
   constructor() {
     super();
+    this.darkBg = false;
     this.disabled = false;
     this.mini = false;
     this.wide = false;
@@ -20,7 +21,7 @@ class HAXTrayButton extends SimpleColors {
     this.colorMeaning = false;
     this._defaultHoverColor = "";
     this._defaultColor = "";
-    this.accentColor = this._defaultColor;
+    this.accentColor = "";
     this.hoverAccentColor = this._defaultColor;
     setTimeout(() => {
       this.addEventListener("focusin", this._focusIn.bind(this));
@@ -38,6 +39,11 @@ class HAXTrayButton extends SimpleColors {
       voiceCommand: {
         type: String,
         attribute: "voice-command",
+      },
+      darkBg: {
+        type: Boolean,
+        reflect: true,
+        attribute: "dark-bg",
       },
       iconDark: {
         type: Boolean,
@@ -72,6 +78,10 @@ class HAXTrayButton extends SimpleColors {
         type: String,
         attribute: "event-data",
       },
+      hoverAccentColor: {
+        type: String,
+        attribute: "hover-accent-color",
+      },
       /**
        * label
        */
@@ -82,12 +92,6 @@ class HAXTrayButton extends SimpleColors {
        * Icon for the button, optional.
        */
       icon: {
-        type: String,
-      },
-      /**
-       * color name of the item
-       */
-      color: {
         type: String,
       },
     };
@@ -269,11 +273,13 @@ class HAXTrayButton extends SimpleColors {
     `;
   }
   _focusIn(e) {
-    this.accentColor =
-      this.hoverAccentColor === this._defaultColor
-        ? this._defaultHoverColor
-        : this.hoverAccentColor;
     if (this.hoverAccentColor) {
+      this.accentColor =
+        this.hoverAccentColor === this._defaultColor
+          ? this._defaultHoverColor
+          : this.hoverAccentColor;
+    }
+    if (this.hoverAccentColor || this.darkBg) {
       this.iconDark = true;
     }
   }
@@ -281,9 +287,9 @@ class HAXTrayButton extends SimpleColors {
     if (!this.colorMeaning) {
       this.accentColor = this._defaultColor;
     } else {
-      this.accentColor = this.color;
+      this.accentColor = this._color;
     }
-    if (this.hoverAccentColor) {
+    if (this.hoverAccentColor || this.darkBg) {
       this.iconDark = false;
     }
   }
@@ -308,6 +314,12 @@ class HAXTrayButton extends SimpleColors {
       })
     );
   }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this._color = this.accentColor;
+  }
   /**
    * LitElement life cycle - properties changed
    */
@@ -330,16 +342,8 @@ class HAXTrayButton extends SimpleColors {
           })
         );
       }
-      if (propName == "color") {
-        if (
-          (!this.accentColor || this.color !== this._defaultColor) &&
-          this.colors[this.color]
-        ) {
-          this.hoverAccentColor = this.color;
-        }
-      }
       if (propName == "colorMeaning" && this.colorMeaning) {
-        this.accentColor = this.color;
+        this.accentColor = this._color;
       }
     });
   }

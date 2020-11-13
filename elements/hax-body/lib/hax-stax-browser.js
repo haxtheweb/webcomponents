@@ -31,6 +31,7 @@ class HaxStaxBrowser extends LitElement {
           (stax) => html`
             <hax-tray-button
               wide
+              dark-bg
               index="${stax.index}"
               label="${stax.details.title}"
               .stax="${stax.stax}"

@@ -43,12 +43,12 @@ class HaxPicker extends LitElement {
         ${this.selectionList.map(
           (element, index) => html`
             <hax-tray-button
+              dark-bg
               id="picker-item-${index}"
               @click="${this._selected}"
               data-selected="${index}"
               label="${element.title}"
               icon="${element.icon}"
-              color="${element.color}"
               ?color-meaning="${this.selectionList.length === 2}"
             >
             </hax-tray-button>

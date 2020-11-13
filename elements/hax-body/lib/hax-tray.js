@@ -70,7 +70,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     this.activeTagIcon = "icons:settings";
     this.traySizeIcon = "hax:arrow-expand-right";
     this.__setup = false;
-    this.__tipText = "Edit content";
+    this.__tipText = "Edit";
     setTimeout(() => {
       import("./hax-tray-button.js");
       this.addEventListener(
@@ -390,6 +390,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             #fff
           );
         }
+
         #button,
         .quick-buttons #haxsavebutton {
           --hax-quick-button-accent: var(
@@ -449,6 +450,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         #button {
           position: fixed;
           top: 0;
+          border: 1px solid black;
+          box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.2);
           visibility: visible;
           z-index: 1000;
           margin: 0;
@@ -521,6 +524,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               @click="${this._clickEditButton}"
               icon="create"
               id="button"
+              dark
+              accent-color="white"
               label="${this.__tipText}"
             ></hax-tray-button>
           `}
@@ -537,6 +542,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
                     id="haxsavebutton"
                     label="${this.__tipText}"
                     event-name="save"
+                    accent-color="white"
                     voice-command="save (content)(page)"
                     color-meaning
                   ></hax-tray-button>
@@ -544,6 +550,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
                     mini
                     icon="cancel"
                     id="haxcancelbutton"
+                    accent-color="white"
                     label="Cancel"
                     event-name="cancel"
                     voice-command="cancel"
@@ -1642,10 +1649,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   _editModeChanged(newValue) {
     if (newValue) {
-      this.__tipText = "Save content";
+      this.__tipText = "Save";
       this.shadowRoot.querySelector("#button").icon = "save";
     } else {
-      this.__tipText = "Edit content";
+      this.__tipText = "Edit";
       this.shadowRoot.querySelector("#button").icon = "create";
     }
   }

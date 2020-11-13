@@ -15,6 +15,7 @@ class JwtLogin extends LitElement {
     this.body = {};
     this.key = "jwt";
     this.jwt = null;
+    this.ready = false;
   }
   /**
    * Handle the last error rolling in
@@ -106,7 +107,12 @@ class JwtLogin extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (["auto", "method", "url"].includes(propName) && this.url) {
+      if (
+        ["auto", "method", "url"].includes(propName) &&
+        this.url &&
+        !this.jwt &&
+        this.ready
+      ) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
           this.generateRequest(this.url, this.body);
@@ -195,6 +201,10 @@ class JwtLogin extends LitElement {
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.ready = true;
     // set jwt from local storage bin
     this.jwt = localStorage.getItem(this.key);
   }
