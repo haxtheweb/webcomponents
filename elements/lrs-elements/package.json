@@ -30,13 +30,16 @@
   "umd": "lrs-elements.umd.js",
   "scripts": {
     "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrs-elements/test/",
-    "test":"wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/<%= elementName %>/test/","start":"yarn run dev","build":"gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"gulp dev --gulpfile=gulpfile.cjs","serve":"es-dev-server -c ../../es-dev-server.config.js","lighthouse":"gulp lighthouse --gulpfile=gulpfile.cjs"
+    "start":"yarn run dev","build":"gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"gulp dev --gulpfile=gulpfile.cjs","serve":"es-dev-server -c ../../es-dev-server.config.js","lighthouse":"gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
     "name": "btopro"
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/intersection-element": "^2.7.10",
+    "@lrnwebcomponents/haxcms-elements": "^2.7.10",
+    "mobx": "6.0.4",
     "lit-element":"2.4.0"
   },
   "devDependencies": {
