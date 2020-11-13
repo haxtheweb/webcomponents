@@ -683,8 +683,9 @@ class SimpleFieldsLite extends LitElement {
         target.appendChild(wrapper);
 
         //handles arrays
-        if (schemaProp.type === "array" && value) {
-          this._addArrayItems(value, data.child, schemaProp, element);
+        if (schemaProp.type === "array") {
+          // we need to send an values or empty array to start listening for new items
+          this._addArrayItems(value || [], data.child, schemaProp, element);
         }
         //handles objects
         else if (schemaProp.properties) {
