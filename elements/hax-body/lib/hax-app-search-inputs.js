@@ -38,6 +38,17 @@ class HaxAppSearchInputs extends LitElement {
       `,
     ];
   }
+  updated(changedProperties) {
+    if (super.updated()) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "label") {
+        // hack, rebuild values bute force
+        this.shadowRoot.querySelector("#form").value = {};
+      }
+    });
+  }
   constructor() {
     super();
     this.label = "app";
