@@ -1118,29 +1118,6 @@
       ]
     },
     {
-      "name": "site-render-item",
-      "description": "`site-render-item`\n`Title of the active page in the site`\n\nAttributes:\n\n  * `render` {`boolean`} - \n\n  * `item-id` {`string`} - \n\n  * `location` {`string`} - \n\n  * `item-content` {`string`} - item content\n\nProperties:\n\n  * `render` {`boolean`} - \n\n  * `itemId` {`string`} - \n\n  * `location` {`string`} - \n\n  * `itemContent` {`string`} - item content\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "render",
-          "description": "`render` {`boolean`} - \n\nProperty: render\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "item-id",
-          "description": "`item-id` {`string`} - \n\nProperty: itemId"
-        },
-        {
-          "name": "location",
-          "description": "`location` {`string`} - \n\nProperty: location"
-        },
-        {
-          "name": "item-content",
-          "description": "`item-content` {`string`} - item content\n\nProperty: itemContent"
-        }
-      ]
-    },
-    {
       "name": "site-share-widget",
       "description": "Attributes:\n\n  * `activeItem` - \n\n  * `show` {`boolean`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `activeItem` - \n\n  * `show` {`boolean`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `activeGitFileLink` {`string`} - \n\n  * `__disposer` {`never[]`} - ",
       "attributes": [

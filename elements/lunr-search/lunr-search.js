@@ -116,15 +116,18 @@ class LunrSearch extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (["dataSource", "__auto", "method"].includes(propName)) {
-        fetch(this.dataSource, {
-          method: this.method,
-        })
-          .then((response) => {
-            if (response.ok) return response.json();
+        clearTimeout(this.__debounce);
+        this.__debounce = setTimeout(() => {
+          fetch(this.dataSource, {
+            method: this.method,
           })
-          .then((json) => {
-            this._dataResponse(json);
-          });
+            .then((response) => {
+              if (response.ok) return response.json();
+            })
+            .then((json) => {
+              this._dataResponse(json);
+            });
+        }, 0);
       }
       let notifiedProps = ["data", "search", "results", "noStopWords"];
       if (notifiedProps.includes(propName)) {
