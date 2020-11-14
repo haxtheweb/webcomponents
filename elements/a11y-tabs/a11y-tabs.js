@@ -215,7 +215,6 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         #tabs button {
           margin: 0;
           text-transform: unset;
-          text-decoration: var(--a11y-tabs-text-decoration, none);
           color: var(--a11y-tabs-faded-color);
           border: 1px solid var(--a11y-tabs-border-color);
           background-color: var(--a11y-tabs-faded-background);
@@ -223,6 +222,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           font-weight: var(--a11y-tabs-font-weight, normal);
           border-radius: var(--a11y-tabs-horizontal-border-radius, 2px)
             var(--a11y-tabs-horizontal-border-radius, 2px) 0 0;
+        }
+        button .label {
+          text-decoration: var(--a11y-tabs-text-decoration, none);
         }
 
         :host(:not([vertical])) #tabs button {
@@ -247,6 +249,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         #tabs button:hover {
           color: var(--a11y-tabs-focus-color);
           font-weight: var(--a11y-tabs-focus-font-weight, normal);
+        }
+        button:focus .label,
+        button:hover .label {
           text-decoration: var(--a11y-tabs-focus-text-decoration, underline);
         }
 
@@ -264,6 +269,8 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           font-weight: var(--a11y-tabs-selected-font-weight, normal);
           color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));
           background-color: var(--a11y-tabs-background);
+        }
+        button[aria-selected="true"] .label {
           text-decoration: var(--a11y-tabs-selected-text-decoration, none);
         }
 
