@@ -37,6 +37,7 @@
   --simple-range-input-bg: var(--a11y-media-accent-color);
   --simple-range-input-color: var(--a11y-media-color);
   --simple-range-input-track-height: 4px;
+  --simple-range-input-pin-height: 10px;
 
   /* link sharing toast */
   --simple-toast-color: var(--a11y-media-color);
@@ -197,6 +198,7 @@
   flex: 0 0 32px;
   height: 32px;
   background-color: var(--a11y-media-bg-color);
+  --simple-range-input-pin-height: 15px;
 }
 
 a11y-media-youtube {
@@ -302,6 +304,14 @@ absolute-position-behavior simple-field-field {
   flex: 0 0 110px;
   margin-left: -15px;
   margin-right: -15px;
+}
+
+#loop {
+  flex: 0 0 40px;
+}
+
+#loop-label {
+  flex: 1 1 auto;
 }
 
 .play-status {

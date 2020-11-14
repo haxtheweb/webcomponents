@@ -50,8 +50,6 @@
     min="0"
     .max="${this.duration}"
     step="1"
-    accent-color="${this.accentColor}"
-    ?dark="${this.dark}"
     @value-changed="${this._handleSliderChanged}"
     @immediate-value-changed="${this._handleSliderDragging}"
     .value="${this.__currentTime}"
@@ -277,8 +275,6 @@
         </div>
         <simple-range-input
           id="speed"
-          accent-color="${this.accentColor}"
-          ?dark="${this.dark}"
           aria-labelledby="speed-label"
           class="setting-slider setting-control"
           min="0.5"

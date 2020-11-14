@@ -55,7 +55,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           margin: 0;
         }
         .option:focus-within label {
-          color: var(--simple-fields-accent, #003f7d);
+          color: var(--simple-fields-accent-color, #003f7d);
           transition: color ease-in-out;
         }
         :host([type]) fieldset .border-bottom {
@@ -97,9 +97,8 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         }
         :host([type="checkbox"]) span:focus-within,
         :host([type="radio"]) span:focus-within {
-          color: var(--simple-fields-accent, #003f7d);
-          --simple-icon-color: var(--simple-fields-accent, #003f7d);
-          outline: 1px dotted var(--simple-fields-accent, #003f7d);
+          color: var(--simple-fields-accent-color, #003f7d);
+          outline: 1px dotted var(--simple-fields-accent-color, #003f7d);
         }
         :host([type="checkbox"]) label.checkbox-label,
         :host([type="radio"]) label.radio-label {
@@ -118,12 +117,15 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         }
         :host([type="checkbox"]) simple-icon,
         :host([type="radio"]) simple-icon {
+          --simple-icon-color: currentColor;
           flex: 0 0 auto;
         }
         :host([type="checkbox"]) simple-icon:hover,
-        :host([type="radio"]) simple-icon:hover {
-          color: var(--simple-fields-accent, #003f7d);
-          --simple-icon-color: var(--simple-fields-accent, #003f7d);
+        :host([type="radio"]) simple-icon:hover,
+        :host([type="checkbox"]) span:focus-within simple-icon,
+        :host([type="radio"]) span:focus-within simple-icon {
+          --simple-icon-color: var(--simple-fields-accent-color, #003f7d);
+          color: var(--simple-fields-accen-colort, #003f7d);
         }
 
         input[type="range"] {
