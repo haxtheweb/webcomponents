@@ -223,6 +223,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           border-radius: var(--a11y-tabs-horizontal-border-radius, 2px)
             var(--a11y-tabs-horizontal-border-radius, 2px) 0 0;
         }
+
         button .label {
           text-decoration: var(--a11y-tabs-text-decoration, none);
         }
@@ -250,6 +251,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           color: var(--a11y-tabs-focus-color);
           font-weight: var(--a11y-tabs-focus-font-weight, normal);
         }
+
         button:focus .label,
         button:hover .label {
           text-decoration: var(--a11y-tabs-focus-text-decoration, underline);
@@ -270,6 +272,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));
           background-color: var(--a11y-tabs-background);
         }
+
         button[aria-selected="true"] .label {
           text-decoration: var(--a11y-tabs-selected-text-decoration, none);
         }
