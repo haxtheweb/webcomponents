@@ -62,8 +62,11 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
           }
           a11y-carousel-button.prevnext simple-icon {
             opacity: 0;
-            --simple-icon-width: 30%;
-            --simple-icon-height: 30%;
+            position: absolute;
+            width: 30%;
+            height: 30%;
+            --simple-icon-width: 100%;
+            --simple-icon-height: 100%;
             transition: 0.5s all ease-in-out;
           }
           a11y-carousel-button.prevnext:focus,
@@ -71,9 +74,14 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
             outline: none;
           }
           a11y-carousel-button.prevnext:focus simple-icon,
+          a11y-carousel-button.prevnext:focus-within simple-icon,
           a11y-carousel-button.prevnext:hover simple-icon {
             opacity: 1;
             color: var(--a11y-carousel-button-background-color, black);
+            --simple-icon-color: var(
+              --a11y-carousel-button-background-color,
+              black
+            );
           }
           a11y-carousel-button[button-type="prev"] {
             left: 0;
@@ -119,7 +127,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
                 title="${this.prevLabel}"
               >
                 <span class="sr-only">${this.nextLabel}</span>
-                <simple-icon icon="icons:chevron-left"></simple-icon>
+                <simple-icon icon="chevron-left"></simple-icon>
               </a11y-carousel-button>
               <a11y-carousel-button
                 class="prevnext"
@@ -128,7 +136,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
                 title="${this.nextLabel}"
               >
                 <span class="sr-only">${this.nextLabel}</span>
-                <simple-icon icon="icons:chevron-right"></simple-icon>
+                <simple-icon icon="chevron-right"></simple-icon>
               </a11y-carousel-button>
             `}
       </div>
