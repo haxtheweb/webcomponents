@@ -13,6 +13,7 @@ import { SimpleIconsetStore } from "./lib/simple-iconset.js";
  *  -
  *
  * @demo demo/index.html
+ * @demo demo/button.html Button
  * @element simple-icon
  */
 class SimpleIcon extends SimpleColors {
@@ -46,16 +47,34 @@ class SimpleIcon extends SimpleColors {
           height: var(--simple-icon-height, 24px);
           width: var(--simple-icon-width, 24px);
         }
-        :host([accent-color="white"]) {
-          --simple-colors-default-theme-accent-8: black;
-        }
-        :host([dark][accent-color="white"]) {
-          --simple-colors-default-theme-accent-8: white;
-        }
         feFlood {
           flood-color: var(
             --simple-icon-color,
             var(--simple-colors-default-theme-accent-8, #000000)
+          );
+        }
+        feFlood.contrast-1 {
+          flood-color: var(
+            --simple-icon-color,
+            var(--simple-colors-default-theme-accent-9, #000000)
+          );
+        }
+        feFlood.contrast-2 {
+          flood-color: var(
+            --simple-icon-color,
+            var(--simple-colors-default-theme-accent-10, #000000)
+          );
+        }
+        feFlood.contrast-3 {
+          flood-color: var(
+            --simple-icon-color,
+            var(--simple-colors-default-theme-accent-11, #000000)
+          );
+        }
+        feFlood.contrast-4 {
+          flood-color: var(
+            --simple-icon-color,
+            var(--simple-colors-default-theme-accent-12, #000000)
           );
         }
         svg {
@@ -75,7 +94,11 @@ class SimpleIcon extends SimpleColors {
           height="100%"
           width="100%"
         >
-          ${!this.noColorize ? svg`<feFlood result="COLOR" />` : ``}
+          ${
+            !this.noColorize
+              ? svg`<feFlood class="contrast-${this.contrast}" result="COLOR" />`
+              : ``
+          }
           <feComposite operator="in" in="COLOR" in2="SourceAlpha" />
         </filter>
         <image
@@ -102,14 +125,20 @@ class SimpleIcon extends SimpleColors {
       },
       icon: {
         type: String,
+        attribute: "icon",
+        reflect: true,
+      },
+      contrast: {
+        type: Number,
+        attribute: "contrast",
         reflect: true,
       },
     };
   }
   constructor() {
     super();
+    this.contrast = 0;
     this.noColorize = false;
-    this.accentColor = "white";
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {

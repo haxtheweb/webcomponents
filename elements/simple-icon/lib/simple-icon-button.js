@@ -13,7 +13,7 @@ import "../simple-icon.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @demo demo/index.html
+ * @demo demo/button.html
  * @element simple-icon
  */
 class SimpleIconButton extends SimpleColors {
@@ -40,24 +40,31 @@ class SimpleIconButton extends SimpleColors {
           justify-content: center;
           position: relative;
           vertical-align: middle;
-          height: var(--simple-icon-height, 24px);
-          width: var(--simple-icon-width, 24px);
+          border-radius: var(--simple-icon-button-padding, 0px);
+          border-radius: var(--simple-icon-button-border-radius, 50%);
+          height: calc(
+            var(--simple-icon-height, 24px) - 2 *
+              var(--simple-icon-button-padding, 0px)
+          );
+          width: calc(
+            var(--simple-icon-width, 24px) - 2 *
+              var(--simple-icon-button-padding, 0px)
+          );
         }
         button {
           cursor: pointer;
           border: 0;
-          border-radius: 50%;
+          border-radius: var(--simple-icon-button-border-radius, 50%);
           height: var(--simple-icon-height, 24px);
           width: var(--simple-icon-width, 24px);
           background-color: transparent;
           padding: 0px;
           margin: 0px;
         }
-        :host([accent-color="white"]) simple-icon {
-          --simple-colors-default-theme-accent-8: black;
-        }
-        :host([dark][accent-color="white"]) simple-icon {
-          --simple-colors-default-theme-accent-8: white;
+        button:focus,
+        button:hover {
+          opacity: var(--simple-icon-button-focus-opacity, 0.8);
+          --simple-icon-color: var(--simple-icon-button-focus-color);
         }
 
         simple-icon {
@@ -74,6 +81,7 @@ class SimpleIconButton extends SimpleColors {
         <simple-icon
           icon=${this.icon}
           accent-color="${this.accentColor}"
+          contrast="${this.contrast}"
           ?dark="${this.dark}"
         ></simple-icon>
       </button>
@@ -86,6 +94,10 @@ class SimpleIconButton extends SimpleColors {
       ...super.properties,
       icon: {
         type: String,
+        reflect: true,
+      },
+      contrast: {
+        type: Number,
         reflect: true,
       },
     };
