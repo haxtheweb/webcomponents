@@ -18,6 +18,7 @@ class RelativeHeadingLite extends LitElement {
       css`
         :host {
           display: block;
+          --simple-icon-color: currentColor;
         }
         :host([hidden]) {
           display: none;
