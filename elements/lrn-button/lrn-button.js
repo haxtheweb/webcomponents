@@ -3,20 +3,21 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `lrn-button`
  * `Simple button wrapper with a few options`
  * @demo demo/index.html
  * @element lrn-button
  */
-class LrnButton extends LitElement {
+class LrnButton extends SimpleColors {
   //styles function
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -41,10 +42,87 @@ class LrnButton extends LitElement {
           -webkit-justify-content: flex-start;
           justify-content: flex-start;
           align-items: center;
-          border-radius: unset;
+          border-radius: var(--lrn-button-border-radius, unset);
+          background-color: var(
+            --lrn-button-background-color,
+            var(--simple-colors-default-theme-accent-2, white)
+          );
+          border: var(--lrn-button-border-width, 0px) solid
+            var(
+              --lrn-button-border-color,
+              var(--simple-colors-default-theme-accent-2, #ddd)
+            );
+          color: var(
+            --lrn-button-color,
+            var(--simple-colors-default-theme-grey-12, black)
+          );
+        }
+        :host([accent-color="grey"]) button,
+        :host([text-color]) button,
+        :host([dark][accent-color="grey"]) button,
+        :host([dark][text-color]) button {
+          background-color: var(
+            --lrn-button-background-color,
+            var(--simple-colors-default-theme-grey-1, white)
+          );
+          border-color: var(
+            --lrn-button-border-color,
+            var(--simple-colors-default-theme-grey-3, #ddd)
+          );
+          color: var(
+            --lrn-button-color,
+            var(--simple-colors-default-theme-grey-12, black)
+          );
+        }
+        :host([text-color]) button,
+        :host([text-color][dark]) button {
+          color: var(
+            --lrn-button-color,
+            var(--simple-colors-default-theme-accent-8, black)
+          );
+        }
+        button:focus,
+        button:hover {
+          background-color: var(
+            --lrn-button-focus-background-color,
+            var(
+              --lrn-button-background-color,
+              var(--simple-colors-default-theme-accent-3, white)
+            )
+          );
+          border-color: var(
+            --lrn-button-focus-border-color,
+            var(
+              --lrn-button-border-color,
+              var(--simple-colors-default-theme-accent-3, #ddd)
+            )
+          );
+        }
+        :host([accent-color="grey"]) button:focus,
+        :host([text-color]) button:focus,
+        :host([dark][accent-color="grey"]) button:focus,
+        :host([dark][text-color]) button:focus,
+        :host([accent-color="grey"]) button:hover,
+        :host([text-color]) button:hover,
+        :host([dark][accent-color="grey"]) button:hover,
+        :host([dark][text-color]) button:hover {
+          background-color: var(
+            --lrn-button-focus-background-color,
+            var(
+              --lrn-button-background-color,
+              var(--simple-colors-default-theme-grey-2, white)
+            )
+          );
+          border-color: var(
+            --lrn-button-focus-border-color,
+            var(
+              --lrn-button-border-color,
+              var(--simple-colors-default-theme-grey-3, #ddd)
+            )
+          );
         }
 
-        button simple-icon {
+        button simple-icon-lite {
           --simple-icon-height: var(--lrnsys-button-height);
           margin: 0 12px;
         }
@@ -92,17 +170,16 @@ class LrnButton extends LitElement {
         <button
           id="button"
           raised="${this.raised}"
-          class="${this.class} ${this.color} ${this.textColor}"
+          class="${this.class}"
           ?disabled="${this.disabled}"
         >
           <div class="inner ${this.innerClass}">
             ${this.icon
               ? html`
-                  <simple-icon
+                  <simple-icon-lite
                     icon="${this.icon}"
                     id="icon"
-                    class="${this.iconClass}"
-                  ></simple-icon>
+                  ></simple-icon-lite>
                 `
               : ``}
             ${this.label
@@ -177,6 +254,18 @@ class LrnButton extends LitElement {
         type: String,
         attribute: "inner-class",
       },
+      dark: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * materializeCSS color class
+       */
+      accentColor: {
+        type: String,
+        attribute: "accent-color",
+        reflect: true,
+      },
       /**
        * materializeCSS color class
        */
@@ -187,8 +276,9 @@ class LrnButton extends LitElement {
        * materializeCSS color class for text
        */
       textColor: {
-        type: String,
+        type: Boolean,
         attribute: "text-color",
+        reflect: true,
       },
       /**
        * Allow for prefetch data on hover
@@ -231,6 +321,8 @@ class LrnButton extends LitElement {
     this.target = "";
     this.disabled = false;
     this.focusState = false;
+    this.dark = false;
+    this.color = "grey";
     setTimeout(() => {
       this.addEventListener("mousedown", this.tapEventOn);
       this.addEventListener("mouseover", this.tapEventOn);
@@ -238,6 +330,13 @@ class LrnButton extends LitElement {
       this.addEventListener("focusin", this.tapEventOn);
       this.addEventListener("focusout", this.tapEventOff);
     }, 0);
+  }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "color") this.accentColor = this.color;
+      console.log(propName, this.color, this.accentColor);
+    });
   }
   firstUpdated() {
     this.shadowRoot

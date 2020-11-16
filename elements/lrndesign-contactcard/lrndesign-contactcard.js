@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 /**
@@ -110,10 +110,6 @@ class LrndesignContactcard extends PolymerElement {
           padding-top: 5px;
         }
 
-        simple-icon {
-          margin-left: 8px;
-        }
-
         .icons {
           display: flex;
           justify-content: center;
@@ -126,6 +122,8 @@ class LrndesignContactcard extends PolymerElement {
           margin: 0 8px;
           display: block;
           min-width: 16px;
+          background-color: transparent;
+          border: 0px solid transparent;
         }
       </style>
       <div class="card">
@@ -144,7 +142,10 @@ class LrndesignContactcard extends PolymerElement {
             <template is="dom-if" if="[[email]]">
               <a tabindex="-1" href$="mailto:[[email]]">
                 <button id="mail" title$="Email address [[email]]">
-                  <simple-icon icon="mail" class="mail_icon"></simple-icon>
+                  <simple-icon-lite
+                    icon="mail"
+                    class="mail_icon"
+                  ></simple-icon-lite>
                 </button>
               </a>
               <simple-tooltip for="mail" position="bottom"
@@ -154,10 +155,10 @@ class LrndesignContactcard extends PolymerElement {
             <template is="dom-if" if="[[phone]]">
               <a tabindex="-1" href$="tel:[[phone]]">
                 <button id="phone" title$="Phone number [[phone]]">
-                  <simple-icon
+                  <simple-icon-lite
                     icon="maps:local-phone"
                     class="phone_icon"
-                  ></simple-icon>
+                  ></simple-icon-lite>
                 </button>
               </a>
               <simple-tooltip for="phone" position="bottom"
@@ -167,10 +168,10 @@ class LrndesignContactcard extends PolymerElement {
             <template is="dom-if" if="[[website]]">
               <a tabindex="-1" href$="[[website]]">
                 <button id="website" title$="Website address [[website]]">
-                  <simple-icon
+                  <simple-icon-lite
                     icon="hardware:desktop-windows"
                     class="computer_icon"
-                  ></simple-icon>
+                  ></simple-icon-lite>
                 </button>
               </a>
               <simple-tooltip for="website" position="bottom"
@@ -180,12 +181,12 @@ class LrndesignContactcard extends PolymerElement {
             <template is="dom-if" if="[[twitter]]">
               <a tabindex="-1" href$="[[twitter]]">
                 <button id="twitter" title$="Twitter name [[twitter]]">
-                  <simple-icon
+                  <simple-icon-lite
                     icon="twitter"
                     color="#aeaeae"
                     size="35"
                     class="twitter_icon"
-                  ></simple-icon>
+                  ></simple-icon-lite>
                 </button>
               </a>
               <simple-tooltip for="twitter" position="bottom"
