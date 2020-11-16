@@ -134,6 +134,7 @@ class LrnsysButton extends LitElement {
             <simple-icon
               icon="${this.icon}"
               id="icon"
+              ?dark="${this.dark}"
               accent-color="grey"
               contrast="4"
               class="${this.iconClass}"
@@ -244,6 +245,13 @@ class LrnsysButton extends LitElement {
        */
       disabled: {
         type: Boolean,
+      },
+      /**
+       * dark state.
+       */
+      dark: {
+        type: Boolean,
+        reflect: true,
       },
       /**
        * Tracks if focus state is applied
