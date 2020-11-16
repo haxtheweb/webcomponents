@@ -2,6 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-meta/iron-meta.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 
 /**
 This is a fork of https://github.com/PolymerElements/lrn-icon
@@ -101,7 +102,12 @@ class LrnIcon extends PolymerElement {
           @apply --lrn-icon;
         }
       </style>
-      <simple-icon icon$="lrn:[[icon]]"></simple-icon>
+      <simple-icon
+        hidden$="[[!icon]]"
+        icon$="lrn:[[icon]]"
+        accent-color="grey"
+        contrast="4"
+      ></simple-icon>
     `;
   }
 

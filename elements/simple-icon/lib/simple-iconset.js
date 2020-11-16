@@ -61,7 +61,7 @@ class SimpleIconset extends HTMLElement {
         typeof this.iconsets[ary[0]][ary[1]] !== "function"
       ) {
         return this.iconsets[ary[0]][ary[1]];
-      } else {
+      } else if (ary[1]) {
         return `${this.iconsets[ary[0]]}${ary[1]}.svg`;
       }
     }
