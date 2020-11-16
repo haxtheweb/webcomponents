@@ -475,6 +475,7 @@ class CleanTwo extends HAXCMSThemeParts(
       target = e.target;
     }
     if (target.value) {
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
       ).then(() => {
@@ -635,24 +636,31 @@ class CleanTwo extends HAXCMSThemeParts(
     });
 
     import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
     );

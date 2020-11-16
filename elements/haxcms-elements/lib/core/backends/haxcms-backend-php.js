@@ -129,6 +129,7 @@ class HAXCMSBackendPHP extends LitElement {
     // which will appear to be injecting into the page
     // but because of this approach it should be non-blocking
     try {
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"
       ).then(

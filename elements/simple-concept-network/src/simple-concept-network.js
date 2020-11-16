@@ -12,6 +12,7 @@ a central concept, much like the ELMS:LN snowflake icon.
 class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
   constructor() {
     super();
+    // prettier-ignore
     import(
       "@lrnwebcomponents/simple-concept-network/lib/simple-concept-network-node.js"
     );

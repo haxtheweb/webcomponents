@@ -81,6 +81,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       }
     }
     HAXCMSMobileMenu(e) {
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
       );

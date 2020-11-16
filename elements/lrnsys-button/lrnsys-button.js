@@ -24,6 +24,9 @@ class LrnsysButton extends LitElement {
         :host([disabled]) {
           pointer-events: none;
         }
+        simple-icon.white-text {
+          --simple-colors-default-theme-accent-12: white;
+        }
         a {
           text-decoration: none;
           display: block;
@@ -197,6 +200,7 @@ class LrnsysButton extends LitElement {
        */
       hoverClass: {
         type: String,
+        reflect: true,
         attribute: "hover-class",
       },
       /**

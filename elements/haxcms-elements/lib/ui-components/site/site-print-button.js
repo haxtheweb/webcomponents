@@ -147,6 +147,7 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
    */
   async print(e) {
     // now dynamic import the footer so we don't bloat all other page loads
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js"
     );

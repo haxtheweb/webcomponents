@@ -277,6 +277,7 @@ class SimpleBlogFooter extends SimpleColors {
     this.prevChanged = "";
     this.nextTitle = "";
     this.nextChanged = "";
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
     );

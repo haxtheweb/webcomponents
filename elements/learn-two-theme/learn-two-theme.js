@@ -444,21 +444,27 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
     setTimeout(() => {
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
       );
@@ -468,6 +474,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
    * Delay importing site-search until we click to open it directly
    */
   siteModalClick(e) {
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
     );

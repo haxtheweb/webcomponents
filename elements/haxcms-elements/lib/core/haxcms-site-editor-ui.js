@@ -164,9 +164,11 @@ class HAXCMSSiteEditorUI extends LitElement {
     this.icon = "hax:site-settings";
     this.manifestEditMode = false;
     setTimeout(() => {
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js"
       );
