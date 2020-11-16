@@ -18,6 +18,7 @@ const RichTextEditorButtonStyles = function (SuperClass) {
             --rich-text-editor-button-height: 24px;
             --rich-text-editor-button-margin: 3px;
             --rich-text-editor-button-padding: 0;
+            --simple-icon-color: var(--rich-text-editor-button-color);
           }
           :host([hidden]) {
             display: none;
