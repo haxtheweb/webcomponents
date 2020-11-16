@@ -8,6 +8,8 @@ import "@github/time-elements";
 import "@lrnwebcomponents/nav-card/nav-card.js";
 //import "@lrnwebcomponents/accent-card/lib/accent-card-clickable.js";
 import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
 
@@ -27,9 +29,6 @@ const ElmslnStudioUtilities = function (SuperClass) {
     constructor() {
       super();
       this.demoMode = false;
-      import("@polymer/iron-ajax/iron-ajax.js");
-      import("@polymer/iron-icon/iron-icon.js");
-      import("@polymer/iron-icons/iron-icons.js");
       import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }
@@ -211,25 +210,30 @@ const ElmslnStudioUtilities = function (SuperClass) {
       });
       return images.filter((s) => !!s.src);
     }
-    getThumnailGrid(s) {
+    getThumnailGrid(s, disabled = false) {
       return html`
         <div class="thumbnail-grid">
           ${(s.sources || []).map(
             (source, i) => html`
               <img-view-modal
                 class="thumbnail"
+                ?disabled="${disabled}"
                 page="${i}"
                 title="${s.assignment} by ${s.firstName} ${s.lastName}"
                 .toolbars="${this.defaultModalToolbars}"
                 .figures="${this.getFigures(s.sources)}"
               >
                 <button
+                  ?disabled="${disabled}"
                   id="view-thumb-${s.id}"
                   .style="${this.getThumbailStyle(source.src)}"
                 >
                   <span class="sr-only">${source.alt}</span>
                   <div class="zoombg"></div>
-                  <simple-icon icon="zoom-in" class="zoomicon"></simple-icon>
+                  <simple-icon-lite
+                    icon="zoom-in"
+                    class="zoomicon"
+                  ></simple-icon-lite>
                   <div class="imgbg"></div>
                 </button>
                 <simple-tooltip for="view-thumb-${s.id}"
@@ -289,7 +293,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
      * @returns {string} accent color
      */
     accentColor(str) {
-      let card = new AccentCard(),
+      let card = document.createElement("accent-card"),
         colors = !card || !card.colors ? [""] : Object.keys(card.colors),
         i =
           str && str.charCodeAt(0)
@@ -579,7 +583,6 @@ const ElmslnStudioUtilities = function (SuperClass) {
        *
        * @event fetch-data
        */
-      console.log("fetchData", type, refresh);
       this.dispatchEvent(
         new CustomEvent("fetch-data", {
           bubbles: true,

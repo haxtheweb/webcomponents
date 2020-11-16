@@ -6,6 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
+import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js";
 
 /**
  * `elmsln-studio-assignment`
@@ -50,9 +52,6 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           align-items: center;
           margin: 0;
           font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
-          --lrndesign-avatar-width: calc(
-            1.5 * var(--elmsln-studio-FontSize, 16px)
-          );
           background-color: var(
             --elmsln-studio-assignment-backgroundColor,
             #ffffff
@@ -60,10 +59,9 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           border: 1px solid var(--elmsln-studio-assignment-borderColor, #eaeaea);
           border-bottom: none;
         }
-        #alert iron-icon {
+        #alert simple-icon-lite {
           width: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
           height: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
-          color: var(--elmsln-studio-assignment-color, #444444);
         }
         #alert > * {
           margin: 0 0.25em;
@@ -401,10 +399,6 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     import("@vaadin/vaadin-upload/vaadin-upload.js");
-    import("@lrnwebcomponents/rich-text-editor/rich-text-editor.js");
-    import(
-      "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js"
-    );
     this.fetchData("profile");
     this.fetchData("assignments");
   }
@@ -448,14 +442,18 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
             ${!icon
               ? ""
               : html`
-                  <iron-icon
+                  <simple-icon-lite
                     id="alert-avatar"
+                    accent-color="${this.getStatusColor(
+                      this.submission,
+                      this.assignment || {}
+                    )}"
                     icon="${this.getStatusIcon(
                       this.submission,
                       this.assignment || {}
                     )}"
                   >
-                  </iron-icon>
+                  </simple-icon-lite>
                 `}
             ${message}
             ${date
@@ -570,7 +568,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                             @click="${(e) => this._removeLink(i)}"
                           >
                             <span class="sr-only">delete link</span>
-                            <iron-icon icon="delete"></iron-icon>
+                            <simple-icon-lite icon="delete"></simple-icon-lite>
                           </button>
                         `}
                   </li>
@@ -598,14 +596,18 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                         type="url"
                       />
                       <button
+                        id="linkbutton"
                         aria-controls="linklist"
                         aria-describedby="linktext linkurl"
                         @click="${this._addLink}"
                         ?disabled="${!this.__newLinkUrl}"
                       >
                         <span class="sr-only">add link</span>
-                        <iron-icon icon="add"></iron-icon>
+                        <simple-icon-lite icon="add"></simple-icon-lite>
                       </button>
+                      <simple-tooltip for="linkbutton"
+                        >Add this link.</simple-tooltip
+                      >
                     </li>
                   `}
             </ul>
@@ -658,7 +660,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                           <span class="sr-only"
                             >delete ${source.alt || source.src}</span
                           >
-                          <iron-icon icon="delete"></iron-icon>
+                          <simple-icon-lite icon="delete"></simple-icon-lite>
                         </button>`}
                   </li>
                 `
@@ -670,8 +672,19 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                       <vaadin-upload
                         id="add-upload"
                         @upload-before="${this._addUpload}"
-                      ></vaadin-upload>
+                      >
+                        <button slot="add-button">
+                          <simple-icon-lite icon="add"></simple-icon-lite>
+                          <span class="sr-only">Upload Files...</span>
+                        </button>
+                        <span slot="drop-label"
+                          ><span class="sr-only">Drop files here.</span></span
+                        >
+                      </vaadin-upload>
                       <span class="spacer"></span>
+                      <simple-tooltip for="add-upload"
+                        >Upload or drop files.</simple-tooltip
+                      >
                     </li>
                   `}
             </ul>

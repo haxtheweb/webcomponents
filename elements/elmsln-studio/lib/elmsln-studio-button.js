@@ -4,9 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { navigator } from "lit-element-router";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 
 /**
  * `elmsln-studio-button`
@@ -45,13 +43,11 @@ class ElmslnStudioButton extends navigator(LitElement) {
         display: flex;
         align-items: center;
         height: 26px;
+        color: var(--elmsln-studio-button-icon-color);
       }
       button:focus,
       button:hover {
         outline: none;
-      }
-      iron-icon {
-        color: var(--elmsln-studio-button-icon-color);
       }
     `;
   }
@@ -65,11 +61,14 @@ class ElmslnStudioButton extends navigator(LitElement) {
     return html`
       <button @click="${this.buttonClick}">
         <slot name="before"></slot>
-        <iron-icon
-          aria-hidden="true"
-          ?hidden="${!this.icon}"
-          icon="${this.icon}"
-        ></simple-icon>
+        ${!this.icon
+          ? ""
+          : html`
+              <simple-icon-lite
+                aria-hidden="true"
+                icon="${this.icon}"
+              ></simple-icon-lite>
+            `}
         <slot></slot>
       </button>
     `;
