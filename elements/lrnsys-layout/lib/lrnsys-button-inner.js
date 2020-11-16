@@ -45,7 +45,13 @@ class LrnsysButtonInner extends LitElement {
           ? html` <paper-avatar src="${this.avatar}"></paper-avatar> `
           : ""}
         ${this.icon != ""
-          ? html` <simple-icon icon="${this.icon}"></simple-icon> `
+          ? html`
+              <simple-icon
+                icon="${this.icon}"
+                accent-color="grey"
+                contrast="4"
+              ></simple-icon>
+            `
           : ""}
         ${this.text != ""
           ? html`

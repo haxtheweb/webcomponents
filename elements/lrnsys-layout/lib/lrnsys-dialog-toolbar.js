@@ -99,12 +99,6 @@ class LrnsysDialogToolbar extends LitElement {
     this._secondaryHasChildren = false;
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("./lrnsys-dialog-toolbar-button.js");
-    setTimeout(() => {
-      this.addEventListener(
-        "dialog-toolbar-button-tapped",
-        this._tapHandler.bind(this)
-      );
-    }, 0);
   }
   /**
    * LitElement ready

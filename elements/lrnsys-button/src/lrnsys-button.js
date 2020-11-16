@@ -87,6 +87,10 @@ class LrnsysButton extends LitElement {
     this.label = "";
     this.icon = "";
     this.alt = "";
+    this.iconClass = "";
+    this.buttonClass = "";
+    this.color = "";
+    this.textColor = "";
     this.focusState = false;
     this.disabled = false;
     setTimeout(() => {
@@ -130,6 +134,8 @@ class LrnsysButton extends LitElement {
             <simple-icon
               icon="${this.icon}"
               id="icon"
+              accent-color="grey"
+              contrast="4"
               class="${this.iconClass}"
               ?hidden="${!this.icon}"
             ></simple-icon>
