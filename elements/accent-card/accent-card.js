@@ -98,33 +98,11 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             --accent-card-background-color,
             var(--simple-colors-default-theme-grey-1, #fff)
           );
-          --accent-card-image-width: 30%;
-          --accent-card-image-height: 10%;
-          --accent-card-border-color: var(
-            --simple-colors-default-theme-accent-6,
-            #ddd
-          );
-          --accent-card-heading-color: var(
-            --simple-colors-default-theme-accent-7,
-            #000
-          );
-          --accent-card-footer-border-color: var(
-            --simple-colors-default-theme-grey-3,
-            #ddd
-          );
         }
         :host([dark]) {
           color: var(
             --accent-card-color,
             var(--simple-colors-default-theme-grey-12, #fff)
-          );
-          --accent-card-border-color: var(
-            --simple-colors-default-theme-accent-7,
-            #fff
-          );
-          --accent-card-footer-border-color: var(
-            --simple-colors-default-theme-grey-6,
-            #666
           );
         }
         :host([accent-background]) {
@@ -132,7 +110,6 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             --accent-card-background-color,
             var(--simple-colors-default-theme-accent-1, #fff)
           );
-          --accent-card-footer-border-color: var(--accent-card-border-color);
         }
         article {
           position: relative;
@@ -155,13 +132,43 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           box-shadow: none;
         }
         :host([flat]:not([accent-background])) {
-          border: 1px solid var(--accent-card-footer-border-color);
+          border-width: 1px;
+          border-style: solid;
+          border-color: var(--accent-card-footer-border-color);
+        }
+        :host([dark][flat]:not([accent-background])) {
+          border-color: var(
+            --accent-card-footer-border-color,
+            var(--simple-colors-default-theme-grey-6, #666)
+          );
         }
         :host(:not([horizontal]):not([no-border])) article {
-          border-top: 4px solid var(--accent-card-border-color);
+          border-top-width: 4px;
+          border-top-style: solid;
+          border-top-color: var(
+            --accent-card-border-color,
+            var(--simple-colors-default-theme-accent-6, #ddd)
+          );
         }
         :host([horizontal]:not([no-border])) article {
-          border-left: 4px solid var(--accent-card-border-color);
+          border-left-width: 4px;
+          border-left-style: solid;
+          border-left-color: var(
+            --accent-card-border-color,
+            var(--simple-colors-default-theme-accent-6, #ddd)
+          );
+        }
+        :host([dark]:not([horizontal]):not([no-border])) article {
+          border-top-color: var(
+            --accent-card-border-color,
+            var(--simple-colors-default-theme-accent-7, #fff)
+          );
+        }
+        :host([dark][horizontal]:not([no-border])) article {
+          border-left-color: var(
+            --accent-card-border-color,
+            var(--simple-colors-default-theme-accent-7, #fff)
+          );
         }
         .image-outer {
           box-sizing: border-box;
@@ -170,7 +177,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         }
         :host([horizontal]) .image-outer {
           height: auto;
-          width: var(--accent-card-image-width);
+          width: var(--accent-card-image-width, 30%);
           flex: 0 0 auto;
         }
         :host(:not([horizontal])) .image-outer {
@@ -205,7 +212,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         }
         :host(:not([horizontal])) .image {
           height: 0;
-          padding-top: var(--accent-card-image-height);
+          padding-top: var(--accent-card-image-height, 10%);
         }
         #imagecorner {
           position: absolute;
@@ -265,7 +272,10 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           flex: 0 0 auto;
         }
         :host([accent-heading][accent-color]) #heading h1 {
-          color: var(--accent-card-heading-color);
+          color: var(
+            --accent-card-heading-color,
+            var(--simple-colors-default-theme-accent-7, #000)
+          );
         }
         #subheading {
           flex: 0 0 auto;
@@ -304,7 +314,12 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         }
         #footer {
           flex: 0 0 auto;
-          border-top: 1px solid var(--accent-card-footer-border-color);
+          border-top-width: 1px;
+          border-top-style: solid;
+          border-top-color: var(
+            --accent-card-footer-border-color,
+            var(--simple-colors-default-theme-grey-3, #ddd)
+          );
           padding-top: var(--accent-card-footer-padding-top, unset);
           padding-left: var(
             --accent-card-footer-padding-left,
@@ -315,6 +330,12 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             var(--accent-card-padding, 20px)
           );
           padding-bottom: var(--accent-card-footer-padding-bottom, unset);
+        }
+        :host([dark]) #footer {
+          border-top-color: var(
+            --accent-card-footer-border-color,
+            var(--simple-colors-default-theme-grey-6, #666)
+          );
         }
       `,
     ];
