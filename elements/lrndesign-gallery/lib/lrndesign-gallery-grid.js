@@ -54,6 +54,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
           overflow: hidden;
           transition: outline 0.25s ease-in-out;
           outline: 1px solid var(--lrndesign-gallery-color);
+          --simple-icon-color: currentColor;
         }
         lrndesign-gallery-zoom:hover,
         lrndesign-gallery-zoom:focus,

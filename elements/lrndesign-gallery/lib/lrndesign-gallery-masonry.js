@@ -43,6 +43,7 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
           margin: 0 10px;
           flex: 0 1 var(--lrndesign-gallery-image-width, 200px);
           max-width: 35%;
+          --simple-icon-color: currentColor;
         }
         lrndesign-gallery-zoom,
         lrndesign-gallery-zoom:hover,
