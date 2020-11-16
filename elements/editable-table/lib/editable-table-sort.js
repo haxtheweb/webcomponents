@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
@@ -31,6 +31,9 @@ class EditableTableSort extends PolymerElement {
           align-content: stretch;
           text-transform: unset;
           font-family: var(--editable-table-font-family);
+          background-color: transparent;
+          border: none;
+          border-radius: 0;
         }
         :host button > div {
           flex-grow: 1;
@@ -60,9 +63,12 @@ class EditableTableSort extends PolymerElement {
         [[text]] <span class="sr-only asc">(ascending)</span>
         <span class="sr-only desc">(descending)</span>
         <span class="sr-only"> Toggle sort mode.</span>
-        <simple-icon id="asc" icon="arrow-drop-up"></simple-icon>
-        <simple-icon id="desc" icon="arrow-drop-down"></simple-icon>
-        <simple-icon id="none" icon="editable-table:sortable"></simple-icon>
+        <simple-icon-lite id="asc" icon="arrow-drop-up"></simple-icon-lite>
+        <simple-icon-lite id="desc" icon="arrow-drop-down"></simple-icon-lite>
+        <simple-icon-lite
+          id="none"
+          icon="editable-table:sortable"
+        ></simple-icon-lite>
       </button>
     `;
   }

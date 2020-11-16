@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
@@ -45,6 +45,8 @@ class EditableTableEditorToggle extends PolymerElement {
           font-family: var(--editable-table-secondary-font-family);
           background-color: var(--editable-table-button-bg-color);
           color: var(--editable-table-button-color);
+          border: none;
+          border-radius: 0;
         }
         :host([toggled]) button {
           background-color: var(--editable-table-button-toggled-bg-color);
@@ -91,7 +93,10 @@ class EditableTableEditorToggle extends PolymerElement {
         on-click="_onClick"
       >
         <span class="sr-only">[[label]]</span>
-        <simple-icon icon$="[[icon]]" aria-hidden="true"></simple-icon>
+        <simple-icon-lite
+          icon$="[[icon]]"
+          aria-hidden="true"
+        ></simple-icon-lite>
       </button>
       <simple-tooltip id="tooltip" for="button" aria-hidden
         >[[label]]</simple-tooltip

@@ -4,9 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
@@ -32,11 +32,14 @@ class EditableTableFilter extends LitElement {
           align-content: stretch;
           text-transform: unset;
           font-family: var(--editable-table-font-family);
+          background-color: transparent;
+          border: none;
+          border-radius: 0;
         }
         button > div {
           flex-grow: 1;
         }
-        simple-icon {
+        simple-icon-lite {
           min-width: 24px;
         }
         .sr-only {
@@ -68,11 +71,14 @@ class EditableTableFilter extends LitElement {
         <span>${this.text}</span>
         <span class="sr-only" .hidden="${!this.filtered}"> (filtered)</span>
         <span class="sr-only"> Toggle filter.</span>
-        <simple-icon id="filter" icon="editable-table:filter"></simple-icon>
-        <simple-icon
+        <simple-icon-lite
+          id="filter"
+          icon="editable-table:filter"
+        ></simple-icon-lite>
+        <simple-icon-lite
           id="filter-off"
           icon="editable-table:filter-off"
-        ></simple-icon>
+        ></simple-icon-lite>
       </button>
       <simple-tooltip for="button"
         >Toggle Column ${this.columnIndex} filter for

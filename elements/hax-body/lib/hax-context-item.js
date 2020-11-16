@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import { HAXStore } from "./hax-store.js";
 /**
  * `hax-context-item`
@@ -39,7 +39,7 @@ class HaxContextItem extends LitElement {
         :host {
           display: inline-flex;
         }
-        simple-icon {
+        simple-icon-lite {
           width: 10px;
         }
         :host([menu]) {
@@ -74,7 +74,7 @@ class HaxContextItem extends LitElement {
         ?menu="${this.menu}"
       >
         ${this.more && !this.disabled
-          ? html` <simple-icon icon="hax:expand-more"></simple-icon> `
+          ? html` <simple-icon-lite icon="hax:expand-more"></simple-icon-lite> `
           : ``}
         <slot></slot>
       </hax-toolbar-item>

@@ -45,7 +45,6 @@ class ElmslnLoading extends SimpleColors {
           }
         }
         :host simple-icon {
-          color: var(--simple-colors-default-theme-accent-6);
           display: block;
           -webkit-animation: spin 1.25s ease-out infinite;
           -moz-animation: spin 1.25s ease-out infinite;
@@ -116,10 +115,22 @@ class ElmslnLoading extends SimpleColors {
     return {
       ...super.properties,
       /**
+       * dark
+       */
+      dark: {
+        type: Boolean,
+      },
+      /**
        * color
        */
       color: {
         type: String,
+      },
+      /**
+       * contrast
+       */
+      contrast: {
+        type: Number,
       },
       /**
        * tiny, small, medium, large, epic sizing.
@@ -134,7 +145,14 @@ class ElmslnLoading extends SimpleColors {
    * LitElement render
    */
   render() {
-    return html` <simple-icon icon="lrn:network"></simple-icon> `;
+    return html`
+      <simple-icon
+        icon="lrn:network"
+        accent-color="${this.accentColor}"
+        contrast="${this.contrast}"
+        dark="${this.dark}"
+      ></simple-icon>
+    `;
   }
 
   _getAccentColor(color) {

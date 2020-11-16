@@ -6,9 +6,9 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { cellBehaviors } from "./editable-table-behaviors.js";
 
@@ -67,6 +67,9 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           display: block;
           padding-top: var(--editable-table-row-vertical-padding);
           padding-bottom: var(--editable-table-row-vertical-padding);
+          background-color: transparent;
+          border: none;
+          border-radius: 0;
         }
         :host([condensed]) button {
           padding-top: var(--editable-table-row-vertical-padding-condensed);
@@ -78,7 +81,7 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           <span class="sr-only">[[_getType(row)]]</span>
           <span id="label">[[label]]</span>
           <span class="sr-only">Menu</span>
-          <simple-icon icon="arrow-drop-down"></simple-icon>
+          <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
         </button>
         <paper-listbox
           slot="dropdown-content"

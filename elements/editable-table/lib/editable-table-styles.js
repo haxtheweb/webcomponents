@@ -168,6 +168,11 @@ const css = html`
     :host editable-table-sort {
       width: 100%;
     }
+    button {
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+    }
     ::slotted(table) {
       display: none;
     }

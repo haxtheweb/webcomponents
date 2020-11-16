@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { displayBehaviors } from "./lib/editable-table-behaviors.js";
@@ -302,15 +302,15 @@ class EditableTable extends displayBehaviors(PolymerElement) {
                         on-change="_onCellValueChange"
                         value="{{cell}}"
                       >
-                        <simple-icon
+                        <simple-icon-lite
                           class="sortable-icon"
                           icon="editable-table:sortable"
                           aria-hidden="true"
-                        ></simple-icon>
-                        <simple-icon
+                        ></simple-icon-lite>
+                        <simple-icon-lite
                           class="filter-icon"
                           icon="editable-table:filter-off"
-                        ></simple-icon>
+                        ></simple-icon-lite>
                       </editable-table-editor-cell>
                     </td>
                   </template>

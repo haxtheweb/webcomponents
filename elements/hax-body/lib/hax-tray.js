@@ -15,7 +15,7 @@ import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
@@ -369,7 +369,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           max-height: 70vh;
           overflow: auto;
         }
-        simple-icon {
+        simple-icon-lite {
           margin-right: 8px;
         }
         .quick-buttons {
@@ -683,7 +683,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           <slot name="tray-collapse-pre"></slot>
           <a11y-collapse id="addcollapse" accordion data-simple-tour-stop>
             <div slot="heading" data-stop-title>
-              <simple-icon icon="hax:add"></simple-icon> Add Content
+              <simple-icon-lite icon="hax:add"></simple-icon-lite> Add Content
             </div>
             <div slot="tour" data-stop-content>
               When you want to add any content to the page from text, to images,
@@ -699,8 +699,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           </a11y-collapse>
           <a11y-collapse id="settingscollapse" accordion data-simple-tour-stop>
             <div slot="heading" data-stop-title>
-              <simple-icon icon="${this.activeTagIcon}"></simple-icon> ${this
-                .activeTagName}
+              <simple-icon-lite icon="${this.activeTagIcon}"></simple-icon-lite>
+              ${this.activeTagName}
             </div>
             <div slot="tour" data-stop-content>
               Settings panel changes contextually based on the item you are
@@ -718,7 +718,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           </a11y-collapse>
           <a11y-collapse id="searchapps" accordion data-simple-tour-stop>
             <div slot="heading" data-stop-title>
-              <simple-icon icon="hax:search-clear"></simple-icon> Search
+              <simple-icon-lite icon="hax:search-clear"></simple-icon-lite>
+              Search
             </div>
             <div slot="tour" data-stop-content>
               Search for media and content anywhere that your copy of HAX has
@@ -736,8 +737,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             data-simple-tour-stop
           >
             <div slot="heading" data-stop-title>
-              <simple-icon icon="hax:templates"></simple-icon>Templates &
-              Layouts
+              <simple-icon-lite icon="hax:templates"></simple-icon-lite
+              >Templates & Layouts
             </div>
             <div slot="tour" data-stop-content>
               Predefined layouts and templated areas. use this to rapidly create
