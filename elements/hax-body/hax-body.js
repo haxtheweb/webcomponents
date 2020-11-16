@@ -2354,7 +2354,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // force a reset when we start editing
       // the delay gives HAX / HAX endpoints some room to manipulate the DOM first
       setTimeout(() => {
-        this.undoStack.undoStackLimit = 20;
+        this.undoStack.undoStackLimit = 50;
         this.undoStack.undoStackPosition = -1;
         this.undoStack.commands = [];
         // execute once just to get these values
