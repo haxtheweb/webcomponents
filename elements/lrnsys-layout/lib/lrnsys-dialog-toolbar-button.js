@@ -16,6 +16,10 @@ class LrnsysDialogToolbarButton extends LitElement {
           --simple-icon-height: 16px;
           --simple-icon-width: 16px;
         }
+        button {
+          border: none;
+          background: transparent;
+        }
       `,
     ];
   }

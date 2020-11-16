@@ -37,6 +37,8 @@ class LrnsysDialog extends SimpleColors {
           min-width: unset;
           margin: var(--lrnsys-dialog-button-margin);
           padding: var(--lrnsys-dialog-button-padding);
+          border: none;
+          background: transparent;
         }
       `,
     ];

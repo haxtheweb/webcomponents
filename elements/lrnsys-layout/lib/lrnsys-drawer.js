@@ -28,6 +28,8 @@ class LrnsysDrawer extends SimpleColors {
           min-width: unset;
           margin: var(--lrnsys-drawer-button-margin);
           padding: var(--lrnsys-drawer-button-padding);
+          border: none;
+          background: transparent;
         }
       `,
     ];
