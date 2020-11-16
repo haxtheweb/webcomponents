@@ -189,11 +189,7 @@ class A11yMediaButton extends LitElement {
         ?disabled="${this.disabled}"
         ?toggle="${this.toggle}"
       >
-        <simple-icon
-          icon="${this.icon}"
-          ?dark="${this.dark}"
-          accent-color="${this.accentColor}"
-        ></simple-icon>
+        <simple-icon icon="${this.icon}"></simple-icon>
       </button>
       ${this.label
         ? html`

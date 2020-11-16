@@ -291,6 +291,7 @@ class NavCardItem extends LitElement {
             --nav-card-item-icon-height,
             var(--nav-card-item-icon-size, 24px)
           );
+          --simple-icon-color: var(--nav-card-item-icon-color, currentColor);
         }
       `,
     ];

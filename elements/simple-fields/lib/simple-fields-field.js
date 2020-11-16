@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsContainer } from "./simple-fields-container.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  *`simple-fields-field`
  * HTML inputs (excluding submit, reset, button, and image)
@@ -28,6 +30,12 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         option {
           border-radius: 0;
         }
+        option[selected] {
+          background-color: var(
+            --simple-fields-faded-background-color,
+            rgba(0, 0, 0, 0.1)
+          );
+        }
         legend {
           padding-inline-start: unset;
           padding-inline-end: unset;
@@ -47,7 +55,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           margin: 0;
         }
         .option:focus-within label {
-          color: var(--simple-fields-accent, #003f7d);
+          color: var(--simple-fields-accent-color, #003f7d);
           transition: color ease-in-out;
         }
         :host([type]) fieldset .border-bottom {
@@ -55,6 +63,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         }
         .box-input:focus {
           outline: none;
+        }
+        .field-main.inline {
+          align-items: center;
         }
         input {
           background-color: var(--simple-fields-background-color, transparent);
@@ -77,6 +88,46 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         select:focus-within {
           outline: none;
         }
+        :host([type="checkbox"]) span,
+        :host([type="radio"]) span {
+          position: relative;
+          flex: 1 0 auto;
+          display: flex;
+          align-items: center;
+        }
+        :host([type="checkbox"]) span:focus-within,
+        :host([type="radio"]) span:focus-within {
+          color: var(--simple-fields-accent-color, #003f7d);
+          outline: 1px dotted var(--simple-fields-accent-color, #003f7d);
+        }
+        :host([type="checkbox"]) label.checkbox-label,
+        :host([type="radio"]) label.radio-label {
+          flex: 0 0 auto;
+        }
+        :host([type="checkbox"]) input,
+        :host([type="radio"]) input,
+        .field-main.inline input[type="checkbox"].field,
+        .field-main.inline input[type="radio"].field {
+          z-index: -1;
+          opacity: 0;
+          min-width: 0;
+          width: 0;
+          margin: 0;
+          flex: 0 1 0px;
+        }
+        :host([type="checkbox"]) simple-icon,
+        :host([type="radio"]) simple-icon {
+          --simple-icon-color: currentColor;
+          flex: 0 0 auto;
+        }
+        :host([type="checkbox"]) simple-icon:hover,
+        :host([type="radio"]) simple-icon:hover,
+        :host([type="checkbox"]) span:focus-within simple-icon,
+        :host([type="radio"]) span:focus-within simple-icon {
+          --simple-icon-color: var(--simple-fields-accent-color, #003f7d);
+          color: var(--simple-fields-accen-colort, #003f7d);
+        }
+
         input[type="range"] {
           width: 100%;
           height: calc(
@@ -234,7 +285,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     ];
   }
   render() {
-    return !this.hasFieldSet ? super.render() : this.fieldsetTemplate;
+    return !this.hasFieldset ? super.render() : this.fieldsetTemplate;
   }
 
   static get properties() {
@@ -397,13 +448,16 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ["text", "textarea"].includes(this.type)
       )
         this._updateCount();
-      if (propName === "type" && this.type !== oldValue) {
+      if (
+        (propName === "type" && this.type !== oldValue) ||
+        ["itemsList", "options"].includes(propName)
+      ) {
         this._updateField();
       }
     });
   }
 
-  get hasFieldSet() {
+  get hasFieldset() {
     return (
       (this.type === "radio" || this.type === "checkbox") && !this.noOptions
     );
@@ -421,7 +475,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       ? "select"
       : this.type === "textarea"
       ? "textarea"
-      : this.hasFieldSet
+      : this.hasFieldset
       ? "fieldset"
       : "input";
   }
@@ -487,31 +541,86 @@ class SimpleFieldsField extends SimpleFieldsContainer {
               <div class="option inline">
                 <label for="${this.id}.${option.value}" class="radio-label"
                   >${option.text}</label
-                >
-                <input
-                  id="${option.value}"
-                  name="${this.id}"
-                  ?autofocus="${this.autofocus}"
-                  aria-descrbedby="${this.describedBy || ""}"
-                  .aria-invalid="${this.error ? "true" : "false"}"
-                  ?checked="${this.type === "radio"
-                    ? this.value === option.value
-                    : (this.value || []).includes(option.value)}"
-                  class="field"
-                  @click="${(e) => this._handleFieldChange()}"
-                  ?disabled="${this.disabled}"
-                  ?hidden="${this.hidden}"
-                  ?readonly="${this.readonly}"
-                  ?required="${this.required}"
-                  type="${this.type}"
-                  .value="${option.value}"
-                />
+                >${this.getInput(option)}
               </div>
             `
           )}
         </div>
         ${this.fieldBottom}
       </fieldset>
+    `;
+  }
+  _handleIconClick(checked, option) {
+    this.value = !option
+      ? !checked
+      : this.type === "radio" && checked
+      ? undefined
+      : this.type === "radio"
+      ? (option || {}).value
+      : checked
+      ? (this.value || []).filter((i) => i !== option.value)
+      : [...(this.value || []), (option || {}).value];
+    if (this.multicheck && this.autovalidate) {
+      this.error = false;
+      this.validate();
+    }
+  }
+  getOptionIcon(checked) {
+    return checked && this.type === "checkbox"
+      ? "icons:check-box"
+      : this.type === "checkbox"
+      ? "icons:check-box-outline-blank"
+      : checked
+      ? "icons:radio-button-checked"
+      : "icons:radio-button-unchecked";
+  }
+  getInput(option) {
+    let checked = !option
+        ? !!this.value
+        : this.type === "radio"
+        ? this.value === (option || {}).value
+        : (this.value || []).includes((option || {}).value),
+      icon = this.getOptionIcon(checked);
+    return html`
+      <span class="input-option">
+        <input
+          ?autofocus="${this.autofocus}"
+          aria-descrbedby="${this.describedBy || ""}"
+          .aria-invalid="${this.error ? "true" : "false"}"
+          @change="${this._handleFieldChange}"
+          ?checked="${checked}"
+          class="field ${[
+            "checkbox",
+            "color",
+            "file",
+            "radio",
+            "range",
+          ].includes(this.type)
+            ? ""
+            : "box-input"}"
+          ?disabled="${this.disabled}"
+          @focus="${this._onFocusin}"
+          @blur="${this._onFocusout}"
+          ?hidden="${this.hidden}"
+          id="${!option ? this.id : option.value}"
+          @input="${this._handleFieldChange}"
+          name="${this.id}"
+          .placeholder="${this.placeholder || ""}"
+          ?readonly="${this.readonly}"
+          ?required="${this.required}"
+          type="${this.type}"
+          value="${!option ? this.value : (option || {}).value}"
+        />
+        ${this.type !== "checkbox" && this.type !== "radio"
+          ? ""
+          : html`
+              <simple-icon
+                icon="${icon}"
+                @click="${(e) => this._handleIconClick(checked, option)}"
+              >
+              </simple-icon>
+            `}
+      </span>
     `;
   }
 
@@ -523,29 +632,11 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get inputTemplate() {
-    return html`
-      <input
-        aria-descrbedby="${this.describedBy || ""}"
-        aria-invalid="${this.error ? "true" : "false"}"
-        ?autofocus="${this.autofocus}"
-        @change="${(e) => this._handleFieldChange()}"
-        ?checked="${!!this.value}"
-        class="field ${["checkbox", "color", "file", "radio", "range"].includes(
-          this.type
-        )
-          ? ""
-          : "box-input"}"
-        ?disabled="${this.disabled}"
-        ?hidden="${this.hidden}"
-        id="${this.id}"
-        @input="${(e) => this._handleFieldChange()}"
-        name="${this.id}"
-        .placeholder="${this.placeholder || ""}"
-        ?readonly="${this.readonly}"
-        ?required="${this.required}"
-        .type="${this.type}"
-      />
-    `;
+    return this.getInput();
+  }
+
+  get multicheck() {
+    return this.hasFieldset;
   }
   /**
    * gets whether or not the field has options
@@ -557,6 +648,22 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     return (
       this.itemsList.length < 1 && Object.keys(this.options || {}).length < 1
     );
+  }
+
+  /**
+   * determines if number of items selected
+   * is not between min and max
+   *
+   * @readonly
+   * @memberof SimpleFieldsContainer
+   */
+  get numberError() {
+    let items = this._getFieldValue() ? this._getFieldValue().length : false,
+      min = this.type === "select" || this.multicheck ? this.min : false,
+      max = this.type === "select" || this.multicheck ? this.max : false;
+    let more = min && items && min > items ? min - items : false,
+      less = max && items && max < items ? max - items : more;
+    return less;
   }
   /**
    * gets a sorted list of option
@@ -586,9 +693,11 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?autofocus="${this.autofocus}"
         aria-descrbedby="${this.describedBy}"
         aria-invalid="${this.error ? "true" : "false"}"
-        @change="${(e) => this._handleFieldChange()}"
+        @change="${this._handleFieldChange}"
         class="field"
         ?disabled="${this.disabled}"
+        @focus="${this._onFocusin}"
+        @blur="${this._onFocusout}"
         ?hidden="${this.hidden}"
         id="${this.id}"
         ?multiple="${this.multiple}"
@@ -634,12 +743,14 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
         class="field box-input"
-        @change="${(e) => this._handleFieldChange()}"
+        @change="${this._handleFieldChange}"
         @keydown="${(e) => e.stopPropagation()}"
         ?disabled="${this.disabled}"
+        @focus="${this._onFocusin}"
+        @blur="${this._onFocusout}"
         ?hidden="${this.hidden}"
         id="${this.id}"
-        @input="${(e) => this._handleFieldChange()}"
+        @input="${this._handleFieldChange}"
         name="${this.id}"
         ?readonly="${this.readonly}"
         ?required="${this.required}"
@@ -668,9 +779,12 @@ ${this.value || ""}</textarea
    *
    * @memberof SimpleFieldsContainer
    */
-  _handleFieldChange() {
+  _handleFieldChange(e) {
     super._handleFieldChange();
-    this.value = this._getFieldValue();
+    if (this.multicheck && this.autovalidate) {
+      this.error = false;
+      this.validate();
+    }
   }
 
   /**
@@ -752,6 +866,9 @@ ${this.value || ""}</textarea
     };
     return attributes[type];
   }
+  _getFieldsetValue() {
+    return this.value;
+  }
   /**
    * listens for focusout
    * overridden for fields in shadow DOM
@@ -762,12 +879,8 @@ ${this.value || ""}</textarea
   _observeAndListen(init = true) {
     if (init) {
       this.addEventListener("click", this.focus);
-      this.addEventListener("focusout", this._onFocusout);
-      this.addEventListener("focusin", this._onFocusin);
     } else {
       this.removeEventListener("click", this.focus);
-      this.removeEventListener("focusout", this._onFocusout);
-      this.removeEventListener("focusin", this._onFocusin);
     }
   }
 

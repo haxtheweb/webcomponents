@@ -95,6 +95,16 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 var(--lrndesign-gallery-image-aspect, 1.33333333333)
             );
         }
+        #carouselimage {
+          --simple-icon-color: currentColor;
+        }
+        #carouselimage img.image {
+          width: calc(
+            var(--carousel-image-height, 200px) *
+              var(--lrndesign-gallery-image-aspect, 1.33333333333)
+          );
+          object-fit: cover;
+        }
         #carouselimage,
         #carouseltext,
         #thumbnails,
@@ -118,7 +128,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           width: 100%;
           padding-top: var(--lrndesign-gallery-image-height, 75%);
         }
-        #carouselimage img.image,
         .prevnextnav {
           position: absolute;
           width: 100%;
@@ -164,8 +173,15 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
         .prevnextnav:hover simple-icon {
           outline: 1px solid var(--lrndesign-gallery-color);
         }
-        #prevnextnav simple-icon {
-          margin: 10%;
+        #carouselprev simple-icon {
+          position: absolute;
+          left: 5px;
+          --simple-icon-color: currentColor;
+        }
+        #carouselnext simple-icon {
+          position: absolute;
+          right: 5px;
+          --simple-icon-color: currentColor;
         }
         lrndesign-gallery-zoom {
           width: 24px;

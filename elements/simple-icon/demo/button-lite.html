@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleIcon: simple-icon Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js';
+      import '../lib/simple-icon-lite.js';
+      import '../lib/simple-icon-button-lite.js';
+      import '../lib/simple-icons.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-icon-button demo</h3>
+      <demo-snippet>
+        <template>
+          <simple-icon-button-lite icon="device:battery-20" style="--simple-icon-color: white; background-color:black;"></simple-icon-button-lite>
+          <simple-icon-button-lite icon="save" style="--simple-icon-color: blue;"></simple-icon-button-lite>
+          <simple-icon-button-lite icon="icons:alarm-add" style="--simple-icon-color: yellow; background-color:black;"></simple-icon-button-lite>
+          <span style="color: red;">
+            <simple-icon-button-lite icon="hax:remix"></simple-icon-button-lite>
+          </span>
+          <p style="color: white; background-color:black;">
+            Search: <simple-icon-button-lite icon="icons:search"></simple-icon-button-lite>
+          </p>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
