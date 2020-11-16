@@ -5,9 +5,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RelativeHeadingLite } from "./lib/relative-heading-lite.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 
 /**
  * `relative-heading`
@@ -60,7 +59,7 @@ class RelativeHeading extends RelativeHeadingLite {
     return this.disableLink
       ? html``
       : html`
-          <simple-icon-button
+          <simple-icon-button-lite
             controls="relative-heading-toast"
             .aria-describedby="${this.id}"
             .icon="${this.linkIcon}"
@@ -69,7 +68,7 @@ class RelativeHeading extends RelativeHeadingLite {
             ?disabled="${this.disableLink}"
             @click="${this._handleCopyClick}"
           >
-          </simple-icon-button>
+          </simple-icon-button-lite>
         `;
   }
   _handleCopyClick() {

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 /**
@@ -281,7 +281,7 @@ class NavCardItem extends LitElement {
             50%
           );
         }
-        simple-icon {
+        simple-icon-lite {
           margin-left: 10px;
           --simple-icon-width: var(
             --nav-card-item-icon-width,
@@ -291,7 +291,6 @@ class NavCardItem extends LitElement {
             --nav-card-item-icon-height,
             var(--nav-card-item-icon-size, 24px)
           );
-          --simple-icon-color: var(--nav-card-item-icon-color, currentColor);
         }
       `,
     ];
@@ -320,7 +319,7 @@ class NavCardItem extends LitElement {
       </div>
       ${!this.icon
         ? ``
-        : html` <simple-icon icon="${this.icon}"></simple-icon> `}
+        : html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite> `}
     `;
   }
 

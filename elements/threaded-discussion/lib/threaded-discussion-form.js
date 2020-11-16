@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `threaded-discussion-form`
@@ -117,6 +117,7 @@ class ThreadedDiscussionForm extends LitElement {
           justify-content: space-between;
           margin: 1px;
           min-height: 24px;
+          color: var(--threaded-discussion-comment-button-Color, #fff);
           font-weight: var(--threaded-discussion-button-FontWeight);
           font-size: var(
             --threaded-discussion-button-FontSize,
@@ -166,11 +167,7 @@ class ThreadedDiscussionForm extends LitElement {
           border: 1px solid
             var(--threaded-discussion-comment-button-focus-BorderColor, #222);
         }
-        button simple-icon {
-          --simple-icon-color: var(
-            --threaded-discussion-comment-button-Color,
-            #fff
-          );
+        button simple-icon-lite {
           margin-left: 5px;
         }
       `,
@@ -192,10 +189,10 @@ class ThreadedDiscussionForm extends LitElement {
         ></textarea>
         <button type="submit">
           ${this.buttonLabel}
-          <simple-icon  
+          <simple-icon-lite  
             aria-hidden="true" 
             ?hidden="${!this.icon}"
-            icon="${this.icon}"></simple-icon>
+            icon="${this.icon}"></simple-icon-lite>
         </button>
       </div>
     `;

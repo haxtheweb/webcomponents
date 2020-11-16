@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `simple-picker-option`
@@ -58,7 +58,7 @@ class SimplePickerOption extends LitElement {
         overflow: hidden;
       }
 
-      simple-icon {
+      simple-icon-lite {
         --simple-icon-width: var(--simple-picker-option-size, 24px);
         --simple-icon-height: var(--simple-picker-option-size, 24px);
         width: var(--simple-picker-option-size, 24px);
@@ -72,11 +72,11 @@ class SimplePickerOption extends LitElement {
   // render function
   render() {
     return html`
-      <simple-icon
+      <simple-icon-lite
         ?hidden="${!this.icon}"
         .icon="${this.icon}"
         aria-hidden="true"
-      ></simple-icon>
+      ></simple-icon-lite>
       <div id="label">
         <slot ?hidden="${!this.titleAsHtml}"></slot>
         ${this.titleAsHtml ? `` : this.label}

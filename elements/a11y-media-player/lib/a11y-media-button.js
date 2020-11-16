@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `a11y-media-button`
@@ -112,7 +112,6 @@ class A11yMediaButton extends LitElement {
           border: none;
           transition: color 0.25s;
           color: var(--a11y-media-button-color);
-          --simple-icon-color: var(--a11y-media-button-color);
           background-color: var(--a11y-media-button-bg-color);
         }
         :host([toggle]) #button {
@@ -146,7 +145,7 @@ class A11yMediaButton extends LitElement {
         simple-tooltip:not(:defined) {
           display: none;
         }
-        simple-icon {
+        simple-icon-lite {
           display: inline-block;
         }
       `,
@@ -189,7 +188,7 @@ class A11yMediaButton extends LitElement {
         ?disabled="${this.disabled}"
         ?toggle="${this.toggle}"
       >
-        <simple-icon icon="${this.icon}"></simple-icon>
+        <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
       </button>
       ${this.label
         ? html`

@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `img-view-viewer`
@@ -111,7 +111,6 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           border: none;
           background-color: transparent;
           color: var(--img-view-viewer-color);
-          --simple-icon-color: var(--img-view-viewer-color);
         }
         button[disabled] {
           opacity: 0.5;
@@ -812,7 +811,10 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       ? ""
       : html`
           <p>
-            <simple-icon aria-hidden="true" icon="${config.icon}"></simple-icon>
+            <simple-icon-lite
+              aria-hidden="true"
+              icon="${config.icon}"
+            ></simple-icon-lite>
             <span class="${config.icon && !config.showText ? "sr-only" : ""}"
               >${config.text}</span
             >

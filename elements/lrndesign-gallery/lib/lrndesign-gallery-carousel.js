@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "./lrndesign-gallery-zoom.js";
 import "./lrndesign-gallery-details.js";
@@ -95,9 +95,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 var(--lrndesign-gallery-image-aspect, 1.33333333333)
             );
         }
-        #carouselimage {
-          --simple-icon-color: currentColor;
-        }
         #carouselimage img.image {
           width: calc(
             var(--carousel-image-height, 200px) *
@@ -169,19 +166,17 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           cursor: not-allowed;
           opacity: 0.1;
         }
-        .prevnextnav:focus simple-icon,
-        .prevnextnav:hover simple-icon {
+        .prevnextnav:focus simple-icon-lite,
+        .prevnextnav:hover simple-icon-lite {
           outline: 1px solid var(--lrndesign-gallery-color);
         }
-        #carouselprev simple-icon {
+        #carouselprev simple-icon-lite {
           position: absolute;
           left: 5px;
-          --simple-icon-color: currentColor;
         }
-        #carouselnext simple-icon {
+        #carouselnext simple-icon-lite {
           position: absolute;
           right: 5px;
-          --simple-icon-color: currentColor;
         }
         lrndesign-gallery-zoom {
           width: 24px;
@@ -309,7 +304,10 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               .zoom-alt="${this.selected.alt}"
             >
               <div class="zoombg"></div>
-              <simple-icon icon="zoom-in" class="zoomicon"></simple-icon>
+              <simple-icon-lite
+                icon="zoom-in"
+                class="zoomicon"
+              ></simple-icon-lite>
             </lrndesign-gallery-zoom>
             <button
               id="carouselprev"
@@ -323,7 +321,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               tabindex="-1"
             >
               <span class="sr-only">Previous</span>
-              <simple-icon icon="chevron-left"></simple-icon>
+              <simple-icon-lite icon="chevron-left"></simple-icon-lite>
             </button>
             <simple-tooltip for="carouselprev" position="top"
               >previous</simple-tooltip
@@ -340,7 +338,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               tabindex="-1"
             >
               <span class="sr-only">Next</span>
-              <simple-icon icon="chevron-right"></simple-icon>
+              <simple-icon-lite icon="chevron-right"></simple-icon-lite>
             </button>
             <simple-tooltip for="carouselnext" position="top"
               >next</simple-tooltip

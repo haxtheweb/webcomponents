@@ -54,7 +54,6 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
           overflow: hidden;
           transition: outline 0.25s ease-in-out;
           outline: 1px solid var(--lrndesign-gallery-color);
-          --simple-icon-color: currentColor;
         }
         lrndesign-gallery-zoom:hover,
         lrndesign-gallery-zoom:focus,
@@ -123,7 +122,10 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
                 <span class="sr-only">${item.zoomAlt}</span>
                 <div class="imgbg" .style="${this._getStyle(item)}"></div>
                 <div class="zoombg"></div>
-                <simple-icon icon="zoom-in" class="zoomicon"></simple-icon>
+                <simple-icon-lite
+                  icon="zoom-in"
+                  class="zoomicon"
+                ></simple-icon-lite>
               </lrndesign-gallery-zoom>
             `
           )}

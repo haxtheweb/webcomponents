@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/simple-search-content.js";
@@ -86,7 +86,6 @@ class SimpleSearch extends LitElement {
           border-width: 1px;
           border-color: var(--simple-search-button-border-color, #ccc);
           color: var(--simple-search-button-color, #111);
-          --simple-icon-color: var(--simple-search-button-color, #111);
           background-color: var(--simple-search-button-bg-color, #eee);
           border-color: var(--simple-search-button-border-color, #ccc);
         }
@@ -134,10 +133,10 @@ class SimpleSearch extends LitElement {
         ?inline="${this.inline || this.noLabelFloat}"
         @value-changed="${this._handleChange}"
       >
-        <simple-icon
+        <simple-icon-lite
           icon="${this.searchInputIcon}"
           slot="${this.inline ? "label-prefix" : "prefix"}"
-        ></simple-icon>
+        ></simple-icon-lite>
       </simple-fields-field>
       <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
         ${this._getResultsSpan(this.resultPointer, this.resultCount)}
@@ -152,7 +151,7 @@ class SimpleSearch extends LitElement {
           ?disabled="${this.__hidePrev}"
           @click="${this._navigateResults}"
         >
-          <simple-icon icon="${this.prevButtonIcon}"></simple-icon>
+          <simple-icon-lite icon="${this.prevButtonIcon}"></simple-icon-lite>
         </button>
         <simple-tooltip for="prev">${this.prevButtonLabel}</simple-tooltip>
         <button
@@ -164,7 +163,7 @@ class SimpleSearch extends LitElement {
           ?disabled="${this.__hideNext}"
           @click="${this._navigateResults}"
         >
-          <simple-icon icon="${this.nextButtonIcon}"></simple-icon>
+          <simple-icon-lite icon="${this.nextButtonIcon}"></simple-icon-lite>
         </button>
         <simple-tooltip for="next">${this.nextButtonLabel}</simple-tooltip>
       </div>`;

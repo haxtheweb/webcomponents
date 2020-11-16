@@ -28,7 +28,6 @@ button {
   border-width: 1px;
   border-color: var(--simple-search-button-border-color, #ccc);
   color: var(--simple-search-button-color, #111);
-  --simple-icon-color: var(--simple-search-button-color, #111);
   background-color: var(--simple-search-button-bg-color, #eee);
   border-color: var(--simple-search-button-border-color, #ccc);
 }

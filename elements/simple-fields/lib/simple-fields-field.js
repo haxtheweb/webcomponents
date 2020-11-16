@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsContainer } from "./simple-fields-container.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  *`simple-fields-field`
@@ -115,17 +115,15 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           margin: 0;
           flex: 0 1 0px;
         }
-        :host([type="checkbox"]) simple-icon,
-        :host([type="radio"]) simple-icon {
-          --simple-icon-color: currentColor;
+        :host([type="checkbox"]) simple-icon-lite,
+        :host([type="radio"]) simple-icon-lite {
           flex: 0 0 auto;
         }
-        :host([type="checkbox"]) simple-icon:hover,
-        :host([type="radio"]) simple-icon:hover,
-        :host([type="checkbox"]) span:focus-within simple-icon,
-        :host([type="radio"]) span:focus-within simple-icon {
-          --simple-icon-color: var(--simple-fields-accent-color, #003f7d);
-          color: var(--simple-fields-accen-colort, #003f7d);
+        :host([type="checkbox"]) simple-icon-lite:hover,
+        :host([type="radio"]) simple-icon-lite:hover,
+        :host([type="checkbox"]) span:focus-within simple-icon-lite,
+        :host([type="radio"]) span:focus-within simple-icon-lite {
+          color: var(--simple-fields-accent-color, #003f7d);
         }
 
         input[type="range"] {
@@ -614,11 +612,11 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ${this.type !== "checkbox" && this.type !== "radio"
           ? ""
           : html`
-              <simple-icon
+              <simple-icon-lite
                 icon="${icon}"
                 @click="${(e) => this._handleIconClick(checked, option)}"
               >
-              </simple-icon>
+              </simple-icon-lite>
             `}
       </span>
     `;
