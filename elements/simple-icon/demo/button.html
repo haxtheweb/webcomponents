@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleIcon: simple-icon Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js';
+      import '../simple-icon.js';
+      import '../lib/simple-icons.js';
+      import '../lib/simple-icon-button.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-icon-button demo</h3>
+      <demo-snippet>
+        <template>
+          <simple-icon-button icon="device:battery-20" dark style="background-color:black;"></simple-icon-button>
+          <simple-icon-button icon="star" dark contrast="1" style="background-color:black;"></simple-icon-button>
+          <simple-icon-button icon="star" dark contrast="2" style="background-color:black;"></simple-icon-button>
+          <simple-icon-button icon="star" dark contrast="3" style="background-color:black;"></simple-icon-button>
+          <simple-icon-button icon="star" dark contrast="4" style="background-color:black;"></simple-icon-button>
+          <simple-icon-button icon="save" contrast="1" accent-color="pink"></simple-icon-button>
+          <simple-icon-button icon="save" contrast="2" accent-color="pink"></simple-icon-button>
+          <simple-icon-button icon="save" contrast="3" accent-color="pink"></simple-icon-button>
+          <simple-icon-button icon="save" contrast="4" accent-color="pink"></simple-icon-button>
+          <simple-icon-button icon="device:battery-20"></simple-icon-button>
+          <simple-icon-button icon="device:battery-20" accent-color="pink"></simple-icon-button>
+          <simple-icon-button icon="icons:search" accent-color="grey"></simple-icon-button>
+          <simple-icon-button icon="icons:alarm-add" accent-color="blue"></simple-icon-button>
+          <simple-icon-button icon="icons:zoom-out" accent-color="orange"></simple-icon-button>
+          <simple-icon-button icon="icons:zoom-in" accent-color="black"></simple-icon-button>
+          <simple-icon-button icon="hax:code-json" accent-color="blue"></simple-icon-button>
+          <simple-icon-button icon="hax:remix" accent-color="red"></simple-icon-button>
+          <simple-icon-button icon="hax:arrow-expand-left" accent-color="grey"></simple-icon-button>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

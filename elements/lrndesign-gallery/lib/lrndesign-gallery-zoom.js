@@ -57,6 +57,7 @@ class LrndesignGalleryZoom extends LitElement {
           margin: 0;
           border-width: 0;
           background-color: transparent;
+          --simple-icon-color: currentColor;
         }
         simple-modal-template[modal-id="zoomdialog"] {
           --img-view-modal-backgroundColor: var(
@@ -69,6 +70,7 @@ class LrndesignGalleryZoom extends LitElement {
           --img-view-modal-toggled-backgroundColor: var(
             --lrndesign-gallery-dialog-toggled-background-color
           );
+          --simple-icon-color: currentColor;
         }
       `,
     ];

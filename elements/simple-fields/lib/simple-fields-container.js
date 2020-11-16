@@ -328,6 +328,12 @@ class SimpleFieldsContainer extends LitElement {
       validTypes: {
         type: Array,
       },
+      /**
+       * Value of field
+       */
+      value: {
+        type: Object,
+      },
     };
   }
   constructor() {
@@ -363,10 +369,10 @@ class SimpleFieldsContainer extends LitElement {
       "week",
     ];
     this._observeAndListen();
-    this.addEventListener("click", (e) => this.focus());
+    this.addEventListener("click", this.focus);
   }
   disconnectedCallback() {
-    this.removeEventListener("click", (e) => this.focus());
+    this.removeEventListener("click", this.focus);
     super.disconnectedCallback();
   }
 
@@ -516,6 +522,10 @@ class SimpleFieldsContainer extends LitElement {
     `;
   }
 
+  get hasFieldset() {
+    return this.type === "fieldset";
+  }
+
   /**
    * template for slotted or shadow DOM label
    *
@@ -536,6 +546,10 @@ class SimpleFieldsContainer extends LitElement {
       </label>
     `;
   }
+  get multicheck() {
+    return this.hasFieldset && this.field.querySelector("input[type=checkbox]");
+  }
+
   /**
    * determines if number of items selected
    * is not between min and max
@@ -544,23 +558,19 @@ class SimpleFieldsContainer extends LitElement {
    * @memberof SimpleFieldsContainer
    */
   get numberError() {
-    let multicheck =
-        this.type === "fieldset" &&
-        this.field.querySelector("input[type=checkbox]"),
-      items = this._getFieldValue() ? this._getFieldValue().length : false,
+    let items = this._getFieldValue() ? this._getFieldValue().length : false,
       min =
         this.type === "select"
           ? this.min
-          : multicheck
+          : this.multicheck
           ? this.minchecked
           : false,
       max =
         this.type === "select"
           ? this.max
-          : multicheck
+          : this.multicheck
           ? this.maxchecked
           : false;
-
     let more = min && items && min > items ? min - items : false,
       less = max && items && max < items ? max - items : more;
     return less;
@@ -739,7 +749,7 @@ class SimpleFieldsContainer extends LitElement {
       this.error = true;
       this.errorMessage = this.patternMessage || `invalid format`;
     }
-    if (this.type === "fieldset" && legend) {
+    if (this.hasFieldset && legend) {
       legend.innerHTML = legend.innerHTML.replace(
         /\**\s*$/,
         this.error ? "*" : ""
@@ -780,27 +790,29 @@ class SimpleFieldsContainer extends LitElement {
     );
   }
 
+  _getFieldsetValue() {
+    let checked, value;
+    if (this.field.querySelector("input[type=radio]")) {
+      checked = this.field.querySelector("input:checked");
+      value = checked ? checked.value : undefined;
+    } else if (this.field.querySelector("input[type=checkbox]")) {
+      value = [];
+      checked = this.field.querySelectorAll("input:checked");
+      checked.forEach((input) => value.push(input.value));
+    }
+    return value;
+  }
+
   /**
    * gets the value of a field based on field type
    *
    * @memberof SimpleFieldsContainer
    */
   _getFieldValue() {
-    let checked, value;
+    let value;
     if (this.field) {
-      if (
-        this.type === "fieldset" &&
-        this.field.querySelector("input[type=radio]")
-      ) {
-        checked = this.field.querySelector("input:checked");
-        value = checked ? checked.value : undefined;
-      } else if (
-        this.type === "fieldset" &&
-        this.field.querySelector("input[type=checkbox]")
-      ) {
-        value = [];
-        checked = this.field.querySelectorAll("input:checked");
-        checked.forEach((input) => value.push(input.value));
+      if (this.hasFieldset) {
+        value = this._getFieldsetValue();
       } else if (this.type === "checkbox") {
         value = this.field.checked ? true : false;
       } else if (this.type === "radio") {
@@ -840,7 +852,8 @@ class SimpleFieldsContainer extends LitElement {
   _handleFieldChange() {
     if (this.type === "text" || this.type === "textarea") this._updateCount();
     if (this.autovalidate) this.validate();
-    //if (this.type === "textarea") this.autoGrow();
+    this.value = this._getFieldValue();
+    if (this.type === "textarea") this.autoGrow();
   }
   /**
    * observes slotted field and listens for focusout
@@ -890,7 +903,6 @@ class SimpleFieldsContainer extends LitElement {
    */
   _updateField() {
     let oldfield = this.field;
-
     this.field =
       this.querySelector && this.querySelector("[slot=field]")
         ? this.querySelector("[slot=field]")
@@ -905,8 +917,8 @@ class SimpleFieldsContainer extends LitElement {
       this.readonly = this.field.readonly;
       this.field.setAttribute("aria-describedby", "field-bottom");
       /** add event listeners */
-      this.field.addEventListener("change", (e) => this._handleFieldChange());
-      this.field.addEventListener("input", (e) => this._handleFieldChange());
+      this.addEventListener("change", this._handleFieldChange);
+      this.addEventListener("input", this._handleFieldChange);
 
       /** field type-specific adjustments */
       if (this.type === "select") this.multiple = this.field.multiple;
@@ -945,10 +957,8 @@ class SimpleFieldsContainer extends LitElement {
       if (oldfield) {
         if (oldfield.tagName.toLowerCase() === "textarea")
           oldfield.addEventListener("keydown", (e) => e.stopPropagation());
-        oldfield.removeEventListener("change", (e) =>
-          this._handleFieldChange()
-        );
-        oldfield.removeEventListener("input", (e) => this._handleFieldChange());
+        oldfield.removeEventListener("change", this._handleFieldChange);
+        oldfield.removeEventListener("input", this._handleFieldChange);
       }
     }
   }
@@ -968,15 +978,18 @@ class SimpleFieldsContainer extends LitElement {
       countmax = this.counter === "word" ? maxword : maxlength,
       regex = new RegExp(`.{0,${maxlength || 1}}`, "g"),
       wordregex = new RegExp(`(${word}\\W*){0,${maxword || 1}}`, "g"),
+      matchval = (regex) => {
+        return ((this.field || {}).value || "").match(regex);
+      },
       length = () => (!this.field.value ? 0 : this.field.value.length),
       wordlength = () => {
-        return !this.field.value || !this.field.value.match(wordcounter)
+        return !this.field || !this.field.value || !matchval(wordcounter)
           ? 0
-          : this.field.value.match(wordcounter).length;
+          : matchval(wordcounter).length;
       },
       correctLength = (length, max, regex) => {
         if (length && max && max < length && this.field.value.match(regex)) {
-          this.field.value = this.field.value.match(regex)[0].trim();
+          this.field.value = matchval(regex)[0].trim();
         }
       };
     correctLength(length(), maxlength, regex);

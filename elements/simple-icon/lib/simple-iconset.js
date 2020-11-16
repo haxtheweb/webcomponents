@@ -1,5 +1,6 @@
 /**
  * Singleton to manage iconsets
+ * @demo demo/index.html
  */
 class SimpleIconset extends HTMLElement {
   static get tag() {

@@ -686,8 +686,9 @@ class SimpleFieldsLite extends LitElement {
         target.appendChild(wrapper);
 
         //handles arrays
-        if (schemaProp.type === "array" && value) {
-          this._addArrayItems(value, data.child, schemaProp, element);
+        if (schemaProp.type === "array") {
+          // we need to send an values or empty array to start listening for new items
+          this._addArrayItems(value || [], data.child, schemaProp, element);
         }
         //handles objects
         else if (schemaProp.properties) {
@@ -782,8 +783,7 @@ class SimpleFieldsLite extends LitElement {
       previewBy =
         schema.previewBy || (propNames.length > 0 ? [propNames[0]] : undefined);
     // verify there are values of some form
-    value = Object.keys(value).length || [];
-    value.forEach((item, i) => {
+    (value || []).forEach((item, i) => {
       this._insertArrayItem(schema, previewBy, element, parent, item, i);
     });
 
