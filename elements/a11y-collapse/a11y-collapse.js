@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
@@ -537,7 +537,7 @@ class A11yCollapse extends LitElement {
         )}"
       >
         <div id="text"><slot name="heading"></slot></div>
-        <simple-icon
+        <simple-icon-lite
           id="expand"
           class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
           .icon="${this._getExpanded(
@@ -547,7 +547,7 @@ class A11yCollapse extends LitElement {
           )}"
           aria-hidden="true"
         >
-        </simple-icon>
+        </simple-icon-lite>
       </div>
       <simple-tooltip for="heading"
         >${this._getExpanded(
@@ -566,7 +566,7 @@ class A11yCollapse extends LitElement {
     return html`
       <div id="heading">
         <div id="text"><slot name="heading"></slot></div>
-        <simple-icon-button
+        <simple-icon-button-lite
           id="expand"
           class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
           @click="${this._onClick}"
@@ -584,7 +584,7 @@ class A11yCollapse extends LitElement {
           aria-controls="content"
           aria-expanded="${this.expanded ? "true" : "false"}"
         >
-        </simple-icon-button>
+        </simple-icon-button-lite>
         <simple-tooltip for="expand"
           >${this._getExpanded(
             this.tooltip,
