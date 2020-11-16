@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.10",
+  "version": "2.8.0",
   "description": "read and write localized data elements",
   "repository": {
     "type": "git",
@@ -40,15 +40,12 @@
     "name": "dfusco"
   },
   "license": "Apache-2.0",
-  "dependencies": {
-  },
   "devDependencies": {
-    "@lrnwebcomponents/chartist-render": "^2.7.10",
+    "@lrnwebcomponents/chartist-render": "^2.8.0",
     "@lrnwebcomponents/deduping-fix": "^2.7.7",
-    "@lrnwebcomponents/multiple-choice": "^2.7.10",
+    "@lrnwebcomponents/multiple-choice": "^2.8.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    
     "@webcomponents/webcomponentsjs": "2.4.4",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",

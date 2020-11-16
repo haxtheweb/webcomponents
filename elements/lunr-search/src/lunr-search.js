@@ -5,7 +5,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `lunr-search`
  * `LunrJS search element`
@@ -24,8 +23,13 @@ class LunrSearch extends LitElement {
     this.__auto = false;
     this.minScore = 0;
     this.log = false;
-    const basePath = this.pathFromUrl(import.meta.url);
-    const location = `${basePath}../../lunr/lunr.js`;
+    if (window.WCGlobalBasePath) {
+      this.basePath = window.WCGlobalBasePath;
+    } else {
+      this.basePath =
+        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
+    }
+    const location = `${this.basePath}lunr/lunr.js`;
     window.addEventListener(
       "es-bridge-lunr-loaded",
       this._lunrLoaded.bind(this)
@@ -41,6 +45,20 @@ class LunrSearch extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (["dataSource", "__auto", "method"].includes(propName)) {
+        clearTimeout(this.__debounce);
+        this.__debounce = setTimeout(() => {
+          fetch(this.dataSource, {
+            method: this.method,
+          })
+            .then((response) => {
+              if (response.ok) return response.json();
+            })
+            .then((json) => {
+              this._dataResponse(json);
+            });
+        }, 0);
+      }
       let notifiedProps = ["data", "search", "results", "noStopWords"];
       if (notifiedProps.includes(propName)) {
         // notify
@@ -102,11 +120,11 @@ class LunrSearch extends LitElement {
   static get tag() {
     return "lunr-search";
   }
-  _dataResponse(e) {
+  _dataResponse(response) {
     // must get a real response
-    if (e && e.detail && e.detail.response) {
+    if (response) {
       try {
-        this.data = [...e.detail.response];
+        this.data = [...response];
       } catch (e) {
         console.warn(e);
       }

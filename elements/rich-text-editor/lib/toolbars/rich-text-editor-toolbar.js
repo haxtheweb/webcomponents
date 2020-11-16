@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import "../singletons/rich-text-editor-selection.js";
+import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";

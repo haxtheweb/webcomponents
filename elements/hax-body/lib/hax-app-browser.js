@@ -59,6 +59,7 @@ class HaxAppBrowser extends LitElement {
         ${this.appList.map(
           (app) => html`
             <hax-tray-button
+              dark-bg
               index="${app.index}"
               label="${app.details.title}"
               icon="${app.details.icon}"

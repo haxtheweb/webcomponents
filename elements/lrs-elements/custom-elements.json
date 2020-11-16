@@ -1,0 +1,92 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrs-bridge-haxcms",
+      "path": "./lib/lrs-bridge-haxcms.js",
+      "description": "`lrs-bridge-haxcms`\n`Adds HAXcms event listeners for our LRS.`",
+      "attributes": [
+        {
+          "name": "endpoint",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "endpoint",
+          "attribute": "endpoint",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "lrs-bridge",
+      "path": "./lib/lrs-bridge.js",
+      "description": "`lrs-bridge`\n`LRS element that captures lrn-emitter events and forwards them to the learnig record store.`",
+      "attributes": [
+        {
+          "name": "endpoint",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "endpoint",
+          "attribute": "endpoint",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "lrs-emitter",
+      "path": "./lib/lrs-emitter.js",
+      "description": "`lrs-emitter`\n`Emit learning statements occuring in your app.`",
+      "attributes": [
+        {
+          "name": "verb",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "default": "\"click\""
+        },
+        {
+          "name": "object",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "verb",
+          "attribute": "verb",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "event",
+          "attribute": "event",
+          "type": "string",
+          "default": "\"click\""
+        },
+        {
+          "name": "object",
+          "attribute": "object",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "events": [
+        {
+          "name": "lrs-emitter"
+        }
+      ]
+    }
+  ]
+}

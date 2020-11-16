@@ -1,0 +1,71 @@
+{
+  "name": "@lrnwebcomponents/lrs-elements",
+  "wcfactory": {
+    "className": "LrsElements",
+    "customElementClass": "LitElement",
+    "elementName": "lrs-elements",
+    "generator-wcfactory-version": "0.8.7",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/lrs-elements.css",
+      "scss": "src/lrs-elements.scss",
+      "html": "src/lrs-elements.html",
+      "js": "src/lrs-elements.js",
+      "properties": "src/lrs-elements-properties.json",
+      "hax": "src/lrs-elements-hax.json"
+    },
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "2.8.0",
+  "description": "elements for interfacing with learning record stores",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "lrs-elements.js",
+  "module": "lrs-elements.js",
+  "umd": "lrs-elements.umd.js",
+  "scripts": {
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrs-elements/test/",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/haxcms-elements": "^2.8.0",
+    "@lrnwebcomponents/intersection-element": "^2.7.10",
+    "lit-element": "2.4.0",
+    "mobx": "6.0.4"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "2.7.7",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.4.4",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.19",
+    "polymer-build": "3.1.4",
+    "polymer-cli": "1.9.11",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

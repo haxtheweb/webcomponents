@@ -755,8 +755,12 @@
     },
     {
       "name": "simple-fields-tab",
-      "description": "`simple-fields-tab` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nEvents:\n\n  * `a11y-tab-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `order` {`number`} - order of the tab\n\n  * `total` {`number`} - total number of tabs\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\nProperties:\n\n  * `flagIcon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `observer` - returns mutation observer\n\n  * `xOfY` {`string`} - gets x of y string\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `order` {`number`} - order of the tab\n\n  * `total` {`number`} - total number of tabs\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`",
+      "description": "`simple-fields-tab` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nEvents:\n\n  * `a11y-tab-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `aria-labelledby` {`string`} - \n\n  * `flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `order` {`number`} - order of the tab\n\n  * `role` {`string`} - \n\n  * `total` {`number`} - total number of tabs\n\n  * `tabindex` {`number`} - total number of tabs\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\nProperties:\n\n  * `ariaLabelledby` {`string`} - \n\n  * `flagIcon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `observer` - returns mutation observer\n\n  * `xOfY` {`string`} - gets x of y string\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `order` {`number`} - order of the tab\n\n  * `role` {`string`} - \n\n  * `total` {`number`} - total number of tabs\n\n  * `tabindex` {`number`} - total number of tabs\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`",
       "attributes": [
+        {
+          "name": "aria-labelledby",
+          "description": "`aria-labelledby` {`string`} - \n\nProperty: ariaLabelledby"
+        },
         {
           "name": "flag-icon",
           "description": "`flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\nProperty: flagIcon"
@@ -788,8 +792,16 @@
           "description": "`order` {`number`} - order of the tab\n\nProperty: order\n\nDefault: 1"
         },
         {
+          "name": "role",
+          "description": "`role` {`string`} - \n\nProperty: role\n\nDefault: tabpanel"
+        },
+        {
           "name": "total",
           "description": "`total` {`number`} - total number of tabs\n\nProperty: total\n\nDefault: 1"
+        },
+        {
+          "name": "tabindex",
+          "description": "`tabindex` {`number`} - total number of tabs\n\nProperty: tabindex\n\nDefault: 0"
         },
         {
           "name": "flag",
@@ -803,11 +815,15 @@
     },
     {
       "name": "simple-fields-tabs",
-      "description": "`simple-fields-tabs` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nEvents:\n\n  * `active-tab-changed` {`CustomEvent<this>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `active-tab` {`string`} - the id of the active tab\n\n  * `icon-breakpoint` {`number`} - Optional minimum breakpoint for showing tab text with icons, or\nDefault is always text with icons.\n`-1` forces icon-only mode.\n\n  * `id` {`string`} - unique identifier/anchor for the tabbed interface\n\n  * `layout-breakpoint` {`number`} - Optional minimum breakpoint for horizontal layout of tabs.\nDefault is unset (always horizontal).\n`-1` forces vertical-only mode.\n\n  * `sticky` {`boolean`} - whether the tabs are sticky\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `__tabs` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperties:\n\n  * `activeTab` {`string`} - the id of the active tab\n\n  * `iconBreakpoint` {`number`} - Optional minimum breakpoint for showing tab text with icons, or\nDefault is always text with icons.\n`-1` forces icon-only mode.\n\n  * `id` {`string`} - unique identifier/anchor for the tabbed interface\n\n  * `layoutBreakpoint` {`number`} - Optional minimum breakpoint for horizontal layout of tabs.\nDefault is unset (always horizontal).\n`-1` forces vertical-only mode.\n\n  * `sticky` {`boolean`} - whether the tabs are sticky\n\n  * `iconsOnly` {`boolean`} - determines if tabs should show icons only\n\n  * `observer` - mutation observer for tabs\n\n  * `tabQuery` {`string`} - query selector for tabs\noverride this for custom elements that extend a11y-tabs\n\n  * `tabs` - array of tabs\n\n  * `vertical` {`boolean`} - determines whether tabs should be in vertical layout\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `__tabs` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
+      "description": "`simple-fields-tabs` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nEvents:\n\n  * `active-tab-changed` {`CustomEvent<this>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `aria-label` {`string`} - \n\n  * `active-tab` {`string`} - id of active tab\n\n  * `icon-breakpoint` {`number`} - Optional minimum breakpoint for showing tab text with icons, or\nDefault is always text with icons.\n`-1` forces icon-only mode.\n\n  * `id` {`string`} - unique identifier/anchor for tabbed interface\n\n  * `layout-breakpoint` {`number`} - Optional minimum breakpoint for horizontal layout of tabs.\nDefault is unset (always horizontal).\n`-1` forces vertical-only mode.\n\n  * `sticky` {`boolean`} - whether tabs are sticky\n\n  * `__tabButtons` {`any[]`} - an array of tab buttons\n\n  * `disabled` {`boolean`} - whether tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether tabbed interface is hidden\n\n  * `__tabs` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\n  * `__tabFocus` {`number`} - which tab button has ketboard focus\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size of tabs,\nwhere `xs` is smaller breakpoint\nand `xs` is larger breakpoint\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperties:\n\n  * `ariaLabel` {`string`} - \n\n  * `activeTab` {`string`} - id of active tab\n\n  * `iconBreakpoint` {`number`} - Optional minimum breakpoint for showing tab text with icons, or\nDefault is always text with icons.\n`-1` forces icon-only mode.\n\n  * `id` {`string`} - unique identifier/anchor for tabbed interface\n\n  * `layoutBreakpoint` {`number`} - Optional minimum breakpoint for horizontal layout of tabs.\nDefault is unset (always horizontal).\n`-1` forces vertical-only mode.\n\n  * `sticky` {`boolean`} - whether tabs are sticky\n\n  * `__tabButtons` {`any[]`} - an array of tab buttons\n\n  * `buttons` - \n\n  * `iconsOnly` {`boolean`} - determines if tabs should show icons only\n\n  * `observer` - mutation observer for tabs\n\n  * `tabQuery` {`string`} - query selector for tabs\noverride this for custom elements that extend a11y-tabs\n\n  * `tabs` - array of tabs\n\n  * `vertical` {`boolean`} - determines whether tabs should be in vertical layout\n\n  * `disabled` {`boolean`} - whether tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether tabbed interface is hidden\n\n  * `__tabs` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\n  * `__tabFocus` {`number`} - which tab button has ketboard focus\n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size of tabs,\nwhere `xs` is smaller breakpoint\nand `xs` is larger breakpoint\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
         {
+          "name": "aria-label",
+          "description": "`aria-label` {`string`} - \n\nProperty: ariaLabel"
+        },
+        {
           "name": "active-tab",
-          "description": "`active-tab` {`string`} - the id of the active tab\n\nProperty: activeTab"
+          "description": "`active-tab` {`string`} - id of active tab\n\nProperty: activeTab"
         },
         {
           "name": "icon-breakpoint",
@@ -815,7 +831,7 @@
         },
         {
           "name": "id",
-          "description": "`id` {`string`} - unique identifier/anchor for the tabbed interface\n\nProperty: id"
+          "description": "`id` {`string`} - unique identifier/anchor for tabbed interface\n\nProperty: id"
         },
         {
           "name": "layout-breakpoint",
@@ -823,17 +839,21 @@
         },
         {
           "name": "sticky",
-          "description": "`sticky` {`boolean`} - whether the tabs are sticky\n\nProperty: sticky",
+          "description": "`sticky` {`boolean`} - whether tabs are sticky\n\nProperty: sticky",
           "valueSet": "v"
         },
         {
+          "name": "__tabButtons",
+          "description": "`__tabButtons` {`any[]`} - an array of tab buttons\n\nProperty: __tabButtons"
+        },
+        {
           "name": "disabled",
-          "description": "`disabled` {`boolean`} - whether the tabbed interface is disabled\n\nProperty: disabled\n\nDefault: false",
+          "description": "`disabled` {`boolean`} - whether tabbed interface is disabled\n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "hidden",
-          "description": "`hidden` {`boolean`} - whether the tabbed interface is hidden\n\nProperty: hidden\n\nDefault: false",
+          "description": "`hidden` {`boolean`} - whether tabbed interface is hidden\n\nProperty: hidden\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -841,12 +861,16 @@
           "description": "`__tabs` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\nProperty: __tabs\n\nDefault: "
         },
         {
+          "name": "__tabFocus",
+          "description": "`__tabFocus` {`number`} - which tab button has ketboard focus\n\nProperty: __tabFocus\n\nDefault: 0"
+        },
+        {
           "name": "responsive-width",
           "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
         },
         {
           "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\nProperty: responsiveSize\n\nDefault: xs"
+          "description": "`responsive-size` {`string`} - size of tabs,\nwhere `xs` is smaller breakpoint\nand `xs` is larger breakpoint\n\nProperty: responsiveSize\n\nDefault: xs"
         },
         {
           "name": "sm",

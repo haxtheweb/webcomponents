@@ -85,7 +85,7 @@
     },
     {
       "name": "haxcms-outline-editor-dialog",
-      "description": "`haxcms-outline-editor-dialog`\n`Dialog for presenting an editable outline`\n\nEvents:\n\n  * `opened-changed` {`CustomEvent<any>`} - \n\n  * `manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-save-outline` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifest-items-static` {`string`} - Stringify'ed representation of items\n\n  * `view-label` {`string`} - Display label, switch when hitting the toggle button\n\n  * `view-mode` {`boolean`} - Which edit mode to display\n\nProperties:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifestItemsStatic` {`string`} - Stringify'ed representation of items\n\n  * `viewLabel` {`string`} - Display label, switch when hitting the toggle button\n\n  * `__disposer` {`never[]`} - \n\n  * `viewMode` {`boolean`} - Which edit mode to display",
+      "description": "`haxcms-outline-editor-dialog`\n`Dialog for presenting an editable outline`\n\nEvents:\n\n  * `opened-changed` {`CustomEvent<any>`} - \n\n  * `manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-save-outline` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifest-items-static` {`string`} - Stringify'ed representation of items\n\n  * `view-label` {`string`} - Display label, switch when hitting the toggle button\n\n  * `view-mode` {`boolean`} - Which edit mode to display\n\nProperties:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifestItemsStatic` {`string`} - Stringify'ed representation of items\n\n  * `viewLabel` {`string`} - Display label, switch when hitting the toggle button\n\n  * `__disposer` {`never[]`} - \n\n  * `viewMode` {`boolean`} - Which edit mode to display",
       "attributes": [
         {
           "name": "opened",
@@ -120,6 +120,10 @@
         {
           "name": "onhaxcms-save-outline",
           "description": "`haxcms-save-outline` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onsimple-modal-hide",
+          "description": "`simple-modal-hide` {`CustomEvent<boolean>`} - "
         }
       ]
     },
@@ -1110,29 +1114,6 @@
           "name": "edit-mode",
           "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
           "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "site-render-item",
-      "description": "`site-render-item`\n`Title of the active page in the site`\n\nAttributes:\n\n  * `render` {`boolean`} - \n\n  * `item-id` {`string`} - \n\n  * `location` {`string`} - \n\n  * `item-content` {`string`} - item content\n\nProperties:\n\n  * `render` {`boolean`} - \n\n  * `itemId` {`string`} - \n\n  * `location` {`string`} - \n\n  * `itemContent` {`string`} - item content\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "render",
-          "description": "`render` {`boolean`} - \n\nProperty: render\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "item-id",
-          "description": "`item-id` {`string`} - \n\nProperty: itemId"
-        },
-        {
-          "name": "location",
-          "description": "`location` {`string`} - \n\nProperty: location"
-        },
-        {
-          "name": "item-content",
-          "description": "`item-content` {`string`} - item content\n\nProperty: itemContent"
         }
       ]
     },

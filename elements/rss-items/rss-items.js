@@ -6,7 +6,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
@@ -127,58 +126,52 @@ class RssItems extends LitElement {
 
   // render function
   render() {
-    return html` <iron-ajax
-        id="rssajax"
-        url="${this.url}"
-        handle-as="xml"
-        @last-response-changed="${this.xmlEvent}"
-      ></iron-ajax>
-      ${this.items.map(
-        (item) => html`
-          <article>
-            ${item.imageSrc
-              ? html`
-                  <a
-                    class="thumbnail-container"
-                    href="${item.link}"
-                    title="${item.title}"
-                  >
-                    <img
-                      class="thumbnail"
-                      src="${item.imageSrc}"
-                      alt="${item.title}"
-                      loading="lazy"
-                    />
-                  </a>
-                `
-              : ``}
-            <a href="${item.link}" title="${item.title}">
-              <span class="title"
-                >${this._truncateText(item.title, this.maxTitleLength)}</span
-              >
-            </a>
-            <div class="excerpt">
-              ${this._truncateText(item.excerpt, this.maxExcerptLength)}
-            </div>
-            ${this.showReadMore
-              ? html`
-                  <a
-                    tabindex="-1"
-                    href="${item.link}"
-                    class="read-more"
-                    title="${item.title}"
-                    >${this.readMoreAnchorText}
-                    <simple-icon-button
-                      icon="icons:arrow-forward"
-                      class="read-more-icon"
-                      alt="${this.readMoreImageAlt}"
-                    ></simple-icon-button>
-                  </a>
-                `
-              : ``}
-          </article>
-        `
-      )}`;
+    return html` ${this.items.map(
+      (item) => html`
+        <article>
+          ${item.imageSrc
+            ? html`
+                <a
+                  class="thumbnail-container"
+                  href="${item.link}"
+                  title="${item.title}"
+                >
+                  <img
+                    class="thumbnail"
+                    src="${item.imageSrc}"
+                    alt="${item.title}"
+                    loading="lazy"
+                  />
+                </a>
+              `
+            : ``}
+          <a href="${item.link}" title="${item.title}">
+            <span class="title"
+              >${this._truncateText(item.title, this.maxTitleLength)}</span
+            >
+          </a>
+          <div class="excerpt">
+            ${this._truncateText(item.excerpt, this.maxExcerptLength)}
+          </div>
+          ${this.showReadMore
+            ? html`
+                <a
+                  tabindex="-1"
+                  href="${item.link}"
+                  class="read-more"
+                  title="${item.title}"
+                  >${this.readMoreAnchorText}
+                  <simple-icon-button
+                    icon="icons:arrow-forward"
+                    class="read-more-icon"
+                    alt="${this.readMoreImageAlt}"
+                  ></simple-icon-button>
+                </a>
+              `
+            : ``}
+        </article>
+      `
+    )}`;
   }
 
   // haxProperty definition
@@ -305,7 +298,17 @@ class RssItems extends LitElement {
    * Init ajax request to get rss.
    */
   initRequest() {
-    this.shadowRoot.querySelector("#rssajax").generateRequest();
+    fetch(this.url)
+      .then((response) => {
+        if (response.ok) return response.text();
+      })
+      .then((str) => new window.DOMParser().parseFromString(str, "text/xml"))
+      .then((xml) => {
+        this.xml = {};
+        setTimeout(() => {
+          this.xml = xml;
+        }, 0);
+      });
   }
   _maxChanged(newValue) {
     if (this.xml && newValue && this._x2js && this.__ready) {
@@ -333,12 +336,6 @@ class RssItems extends LitElement {
     if (newValue && this._x2js && this.__ready) {
       this.initRequest();
     }
-  }
-  xmlEvent(e) {
-    this.xml = {};
-    setTimeout(() => {
-      this.xml = e.detail.value;
-    }, 0);
   }
   /**
    * Parse items by getting excerpt and image source.
@@ -441,11 +438,7 @@ class RssItems extends LitElement {
   _x2jsLoaded(e) {
     this._x2js = true;
     if (this.__ready) {
-      if (this.auto) {
-        this.shadowRoot.querySelector("#rssajax").auto = this.auto;
-      } else {
-        this.initRequest();
-      }
+      this.initRequest();
     }
   }
   /**
@@ -454,11 +447,7 @@ class RssItems extends LitElement {
   firstUpdated() {
     this.__ready = true;
     if (this._x2js) {
-      if (this.auto) {
-        this.shadowRoot.querySelector("#rssajax").auto = this.auto;
-      } else {
-        this.initRequest();
-      }
+      this.initRequest();
     }
   }
   /**

@@ -31,6 +31,7 @@ class HaxBloxBrowser extends LitElement {
           (blox) => html`
             <hax-tray-button
               wide
+              dark-bg
               index="${blox.index}"
               .layout="${blox.details.layout}"
               label="${blox.details.title}"

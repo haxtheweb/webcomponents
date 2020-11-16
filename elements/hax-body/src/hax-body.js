@@ -1535,7 +1535,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // wait so that the DOM can have the node to then attach to
       this.scrollHere(newNode);
     }, 0);
-    return true;
+    return newNode;
   }
   /**
    * Return the current hax content area as text that could be
@@ -2608,7 +2608,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             local = e.target.closest("[contenteditable],img");
           }
           if (
-            !["GRID-PLATE", "HAX-BODY"].includes(local.tagName) ||
+            (local &&
+              local.tagName &&
+              !["GRID-PLATE", "HAX-BODY"].includes(local.tagName)) ||
             e.path[0].tagName === "GRID-PLATE"
           ) {
             if (local.getAttribute("slot")) {
@@ -2630,10 +2632,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
               );
             }
             // account for drop target of main body yet still having a slot attr
-            else if (local.tagName === "HAX-BODY" && tmp.getAttribute("slot")) {
+            else if (
+              local &&
+              local.tagName === "HAX-BODY" &&
+              tmp.getAttribute("slot")
+            ) {
               tmp.removeAttribute("slot");
             }
-            local.appendChild(tmp);
+            if (local) {
+              local.appendChild(tmp);
+            } else {
+              this.appendChild(tmp);
+            }
           }
           // this placeholder will be immediately replaced
           e.placeHolderElement = tmp;

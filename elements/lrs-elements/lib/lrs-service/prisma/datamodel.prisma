@@ -1,0 +1,41 @@
+type Statement {
+  id: ID! @unique
+  data: Json!
+}
+
+# type Statement {
+#   id: ID! @unique
+#   actor: Actor
+#   verb: Verb
+#   object: Object
+#   result: Result
+#   extensions: Json
+# }
+
+# type Actor {
+#   id: ID! @unique
+#   name: String @unique
+#   mbox: String
+# }
+
+# type Verb {
+#   id: ID! @unique
+#   _id: String @unique
+#   display: Json
+# }
+
+# type Object {
+#   id: ID! @unique
+#   _id: String @unique
+#   definition: Json
+# }
+
+# type Result {
+#   completion: Boolean
+#   success: Boolean
+#   score: ResultScore
+# }
+
+# type ResultScore {
+#   scaled: Int
+# }

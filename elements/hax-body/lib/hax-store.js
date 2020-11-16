@@ -1086,11 +1086,49 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
   /**
+   * detect base64 object
+   */
+  isBase64(str) {
+    try {
+      return btoa(atob(str)) == str;
+    } catch (err) {
+      return false;
+    }
+  }
+  retrieveImageFromClipboardAsBlob(pasteEvent, callback) {
+    if (pasteEvent.clipboardData == false) {
+      if (typeof callback == "function") {
+        return callback(undefined);
+      }
+    }
+    var items = pasteEvent.clipboardData.items;
+    if (items == undefined) {
+      if (typeof callback == "function") {
+        return callback(undefined);
+      }
+    }
+    for (var i = 0; i < items.length; i++) {
+      // Skip content if not image
+      if (items[i].type.indexOf("image") == -1) continue;
+      // Retrieve image on clipboard as blob
+      var blob = items[i].getAsFile();
+
+      if (typeof callback == "function") {
+        return callback(blob);
+      }
+    }
+  }
+  /**
    * Intercept paste event and clean it up before inserting the contents
    */
   _onPaste(e) {
-    // only perform this on a text element that is active
-    if (this.isTextElement(this.activeNode)) {
+    if (this.editMode) {
+      // only perform this on a text element that is active
+      // otherwise inject a P so we can paste into it
+      if (this.isTextElement(this.activeNode)) {
+      } else {
+        this.activeNode = this.activeHaxBody.haxInsert("p", "", {});
+      }
       let pasteContent = "";
       let originalContent = "";
       // intercept paste event
@@ -1106,6 +1144,89 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         pasteContent = window.clipboardData.getData("Text");
       }
       originalContent = pasteContent;
+      // look for base64 like copy and paste of an image from clipboard
+      if (this.isBase64(originalContent)) {
+        // stop normal paste
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        return this.retrieveImageFromClipboardAsBlob(e, (imageBlob) => {
+          // If there's an image, display it in the canvas
+          if (imageBlob) {
+            // Crossbrowser support for URL
+            var URLObj = window.URL || window.webkitURL;
+            let img = document.createElement("img");
+            // turn blob into a url to visualize locally, this is just temporary
+            img.src = URLObj.createObjectURL(imageBlob);
+            this.activeNode.parentNode.insertBefore(
+              img,
+              this.activeNode.nextElementSibling
+            );
+            for (var i in e.clipboardData.items) {
+              // generate a file name if one doesn't exist
+              if (
+                !e.clipboardData.items[i].name &&
+                e.clipboardData.items[i].type
+              ) {
+                e.clipboardData.items[i].name =
+                  "image-" +
+                  Math.floor(Date.now() / 1000) +
+                  e.clipboardData.items[i].type.replace("image/", ".");
+              }
+            }
+            // cannot believe this actually works
+            e.dataTransfer = e.clipboardData;
+            // refernece of what to replace; this way while uploading, we still see
+            // what we pasted and it's in place. It'll gracefully switch over to the
+            // real file reference once it finishes uploading
+            e.placeHolderElement = img;
+            // fire this specialized event up so things like HAX can intercept
+            this.dispatchEvent(
+              new CustomEvent("place-holder-file-drop", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: e,
+              })
+            );
+            return img;
+          }
+          return false;
+        });
+      }
+      // we have a "file" paste
+      else if (e.clipboardData.files.length > 0) {
+        // stop normal paste
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        // generate a place holder p tag to replace on upload
+        let p = this.activeHaxBody.haxInsert("p", "", {});
+        // cannot believe this actually works
+        e.dataTransfer = e.clipboardData;
+        for (var i in e.clipboardData.files) {
+          // generate a file name if one doesn't exist
+          if (!e.clipboardData.files[i].name && e.clipboardData.files[i].type) {
+            e.clipboardData.files[i].name =
+              "image-" +
+              Math.floor(Date.now() / 1000) +
+              e.clipboardData.files[i].type.replace("image/", ".");
+          }
+        }
+        // refernece of what to replace; this way while uploading, we still see
+        // what we pasted and it's in place. It'll gracefully switch over to the
+        // real file reference once it finishes uploading
+        e.placeHolderElement = p;
+        // fire this specialized event up so things like HAX can intercept
+        this.dispatchEvent(
+          new CustomEvent("place-holder-file-drop", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: e,
+          })
+        );
+      }
       // detect word garbage
       let inlinePaste = false;
       // the string to import as sanitized by hax
