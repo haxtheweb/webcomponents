@@ -43,6 +43,7 @@ class LrnsysButton extends LitElement {
           border-radius: unset;
           display: flex;
           background-color: transparent;
+          border: none;
         }
         .no-padding {
           padding: 0;
