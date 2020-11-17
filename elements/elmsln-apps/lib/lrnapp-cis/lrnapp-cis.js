@@ -64,7 +64,7 @@ class LrnappCis extends PolymerElement {
           width: 80vw;
         }
         iron-selector {
-          line-height: 1em;
+          line-height: 16px;
         }
         iron-selector lrnsys-button {
           display: inline-flex;
@@ -78,9 +78,9 @@ class LrnappCis extends PolymerElement {
         }
         lrnapp-cis-course-card {
           padding: 0;
-          margin: 1em;
-          height: 15em;
-          width: 14em;
+          margin: 16px;
+          height: 300px;
+          width: 300px;
         }
         .courses-grid {
           margin: 0 auto;
@@ -321,13 +321,9 @@ class LrnappCis extends PolymerElement {
                         on-click="_makeService"
                         color="grey lighten-4"
                         icon-class="grey lighten-5"
+                        icon="lrn:[[service.icon]]"
                         data-machine-name$="[[service.machine_name]]"
                       >
-                        <simple-icon
-                          data-machine-name$="[[service.machine_name]]"
-                          icon="[[service.icon]]"
-                          class="elmsln-hover-icon"
-                        ></simple-icon>
                         <span data-machine-name$="[[service.machine_name]]"
                           >Make the [[service.title]] service</span
                         >
@@ -338,11 +334,8 @@ class LrnappCis extends PolymerElement {
                         raised=""
                         href="[[service.url]]"
                         hover-class="[[service.color]] lighten-4"
+                        icon="lrn:[[service.icon]]"
                       >
-                        <simple-icon
-                          icon="[[service.icon]]"
-                          class="elmsln-hover-icon"
-                        ></simple-icon>
                         <span>[[service.title]]</span>
                       </lrnsys-button>
                     </template>
@@ -430,7 +423,7 @@ class LrnappCis extends PolymerElement {
             >
             <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2"
               ><simple-icon
-                icon="[[_activeService.icon]]"
+                icon="lrn:[[_activeService.icon]]"
                 class$="[[_activeService.color]]-text elmsln-hover-icon service-confirm-icon"
               ></simple-icon
             ></responsive-grid-col>

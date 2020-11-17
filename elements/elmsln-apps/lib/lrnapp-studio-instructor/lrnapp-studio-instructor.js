@@ -264,10 +264,8 @@ class LrnappStudioInstructor extends PolymerElement {
         </template>
         <template>
           <a href$="[[basePath]]lrnapp-open-studio/projects?author=[[item.id]]&project=[[activeProject]]" tabindex="-1" target="_blank" class="avatar-link ferpa-protect">
-            <button class="avatar-button">
-              <lrndesign-avatar label="[[item.name]]" src="[[item.avatar]]"></lrndesign-avatar>
-              <span class="avatar-label">[[item.sis.sortable_name]]</span>
-            </button>
+            <lrndesign-avatar label="[[item.name]]" src="[[item.avatar]]"></lrndesign-avatar>
+            <span class="avatar-label">[[item.sis.sortable_name]]</span>
           </a>
         </template>
         <template class="footer">

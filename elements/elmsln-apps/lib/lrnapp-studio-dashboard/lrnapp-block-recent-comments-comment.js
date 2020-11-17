@@ -82,7 +82,7 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           <div id="wrapper" class="button-wrapper">
             <div id="comment" class="inactive"><slot></slot></div>
             <button id="btn" class="hidden">
-              <simple-icon icon="chevron-down" id="icon"></simple-icon>
+              <simple-icon icon="lrn:chevron-down" id="icon"></simple-icon>
             </button>
           </div>
         </div>

@@ -250,13 +250,11 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           </lrnsys-dialog>
         </div>
         <div>
-          <button
+          <simple-icon
             id="comment-count"
-            style="margin:0;padding:.25em;text-transform:none;"
-          >
-            <simple-icon icon="communication:forum"></simple-icon>
-            [[submission.meta.comment_count]] Comments
-          </button>
+            icon="communication:forum"
+          ></simple-icon>
+          [[submission.meta.comment_count]] Comments
           <paper-badge
             hidden$="[[displayNewBadge(submission.meta.comment_new)]]"
             for="comment-count"
