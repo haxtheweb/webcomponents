@@ -26,13 +26,16 @@ class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
   }
   constructor() {
     super();
+    this.accentColor = "grey";
+    this.contrast = 4;
+    this.dark = false;
   }
   // render function
   render() {
     return html`
       <button>
         <simple-icon
-          icon=${this.icon}
+          icon="${this.icon}"
           accent-color="${this.accentColor}"
           contrast="${this.contrast}"
           ?dark="${this.dark}"
