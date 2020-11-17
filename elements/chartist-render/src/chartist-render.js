@@ -89,6 +89,9 @@ const ChartistRenderSuper = function (SuperClass) {
     }
 
     updated(changedProperties) {
+      if (super.updated) {
+        super.updated(changedProperties);
+      }
       changedProperties.forEach((oldValue, propName) => {
         if (
           propName === "chartData" &&
