@@ -44,7 +44,8 @@
       "attributes": [
         {
           "name": "contrast",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "icon",
@@ -67,7 +68,8 @@
         {
           "name": "contrast",
           "attribute": "contrast",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "icon",
@@ -101,7 +103,8 @@
       "attributes": [
         {
           "name": "contrast",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "icon",
@@ -124,7 +127,8 @@
         {
           "name": "contrast",
           "attribute": "contrast",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "icon",
