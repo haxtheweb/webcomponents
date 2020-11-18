@@ -428,15 +428,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   haxHooks() {
     return {
       activeChanged: "haxactiveElementChanged",
-      editModeChanged: "haxeditModeChanged",
     };
-  }
-  // shouldn't be possible but just in-case
-  haxeditModeChanged(el, value) {
-    // this implies we are still on the UI and it's been told to close
-    if (!value && el.parentNode === this) {
-      this.remove();
-    }
   }
   /**
    * allow HAX to toggle edit state when activated

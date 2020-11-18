@@ -1944,21 +1944,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         },
       },
       settings: {
-        configure: [
-          {
-            slot: "",
-            title: "Body",
-            description: "Tags that make up the table",
-            inputMethod: "code-editor",
-            slotWrapper: "",
-          },
-        ],
+        configure: [],
         advanced: [],
       },
       demoSchema: [
         {
           tag: "table",
-          content: "<tr><td>One row</td></tr>",
+          content:
+            "<tr><td>-</td><td>-</td><td>-</td></tr><tr><td>-</td><td>-</td><td>-</td></tr><tr><td>-</td><td>-</td><td>-</td></tr>",
           properties: {},
         },
       ],
