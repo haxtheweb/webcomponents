@@ -209,9 +209,14 @@ export const displayBehaviors = function (SuperClass) {
      * @returns {object} HTML object for managed table
      */
     getTableHTMLNode() {
-      let n = document.createElement("div");
+      let n = document.createElement("editable-table-display");
+      // replicate values that we had previously so they get reflected back into the DOM
+      let props = this.getTableProperties();
+      for (var i in props) {
+        n[i] = props[i];
+      }
       n.innerHTML = this.getTableHTML();
-      return n.children[0];
+      return n;
     }
     /**
      * Return table as plain HTML
@@ -253,8 +258,15 @@ export const displayBehaviors = function (SuperClass) {
           return getTR(tr);
         });
       }
+      let props = this.getTableProperties();
+      let attr = "";
+      ["bordered", "striped", "condensed"].forEach((i) => {
+        if (props[i]) {
+          attr += `${i} `;
+        }
+      });
       return [
-        "<table>",
+        `<table ${attr}>`,
         this.caption !== "" && this.caption !== null && this.caption !== "null"
           ? `\n\t<caption>\n\t\t${this.caption}\n\t</caption>`
           : "",

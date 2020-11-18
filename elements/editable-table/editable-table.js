@@ -606,6 +606,10 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       // re-run initial state if missed because of how element is stamped into DOM
       if (!this.data || this.data.length < 1 || this.data[0].length < 1) {
         let table = this.children.item(0);
+        // support wrapping editable-table-display tag or primative
+        if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
+          table = table.children.item(0);
+        }
         if (
           typeof table !== typeof undefined &&
           table !== null &&
@@ -637,6 +641,10 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       (!newValue || newValue.length < 1 || newValue[0].length < 1)
     ) {
       let table = this.children.item(0);
+      // support wrapping editable-table-display tag or primative
+      if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
+        table = table.children.item(0);
+      }
       if (
         typeof table !== typeof undefined &&
         table !== null &&

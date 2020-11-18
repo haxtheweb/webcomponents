@@ -1743,7 +1743,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           let textRect = this.contextMenus.text.getBoundingClientRect();
           menuWidth += textRect.width;
         }
-        if (props.editingElement == "core") {
+        if (!props || props.editingElement == "core") {
           let activeRect = node.getBoundingClientRect();
           // hide menu if we have active on a list item
           // special case because it should not be moved anywhere or have these
@@ -1770,15 +1770,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }
         } else {
           setTimeout(() => {
-            let activeRect = node.parentNode.getBoundingClientRect();
-            this._positionContextMenu(
-              this.contextMenus.plate,
-              node.parentNode,
-              activeRect.width -
-                this.contextMenus.plate.getBoundingClientRect().width +
-                1,
-              -26
-            );
+            if (node && node.parentNode) {
+              let activeRect = node.parentNode.getBoundingClientRect();
+              this._positionContextMenu(
+                this.contextMenus.plate,
+                node.parentNode,
+                activeRect.width -
+                  this.contextMenus.plate.getBoundingClientRect().width +
+                  1,
+                -26
+              );
+            }
           }, 250);
         }
         // special case for node not matching container yet it being editable
