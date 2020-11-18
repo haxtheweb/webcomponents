@@ -325,7 +325,6 @@ class CMSToken extends PolymerElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "token",

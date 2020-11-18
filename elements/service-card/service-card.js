@@ -41,7 +41,6 @@ class ServiceCard extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "source",

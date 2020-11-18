@@ -158,7 +158,7 @@ class HaxMap extends LitElement {
   render() {
     return html`
       <h3 class="title">
-        <simple-icon icon="hax:map" contrast="4" dark></simple-icon>
+        <simple-icon icon="hax:map" contrast="4"></simple-icon>
         ${this.title}
       </h3>
       <div class="container">
@@ -190,6 +190,7 @@ class HaxMap extends LitElement {
                   ><simple-icon
                     data-index="${index}"
                     icon="${element.icon}"
+                    contrast="4"
                   ></simple-icon
                   >${element.name}</a
                 >

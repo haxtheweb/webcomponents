@@ -59,7 +59,6 @@ class H5PElement extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             attribute: "source",

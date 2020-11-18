@@ -126,7 +126,6 @@ class HaxLogo extends HTMLElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             attribute: "size",

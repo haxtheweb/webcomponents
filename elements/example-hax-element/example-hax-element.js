@@ -52,7 +52,6 @@ class ExampleHaxElement extends HTMLElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "title",

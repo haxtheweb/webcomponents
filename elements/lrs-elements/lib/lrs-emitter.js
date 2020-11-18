@@ -33,7 +33,6 @@ class LrsEmitter extends IntersectionObserver(LitElement) {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "verb",

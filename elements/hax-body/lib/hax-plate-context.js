@@ -11,6 +11,7 @@ import { autorun, toJS } from "mobx";
 class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
   constructor(delayRender = false) {
     super();
+    this.haxUIElement = true;
     this.tourName = "hax";
     // set tag for later use
     this.tag = HaxPlateContext.tag;

@@ -495,22 +495,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "question",
-            title: "Question",
-            description: "Question for users to respond to.",
-            inputMethod: "textfield",
-            icon: "icons:help",
-          },
-        ],
         configure: [
           {
             property: "title",

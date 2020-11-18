@@ -206,7 +206,6 @@ class RetroCard extends SimpleColors {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "title",

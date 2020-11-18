@@ -133,29 +133,6 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "An optional accent color.",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            property: "dark",
-            title: "Dark Theme",
-            description: "Enable Dark Theme",
-            inputMethod: "boolean",
-            icon: "icons:invert-colors",
-          },
-          {
-            property: "layout",
-            title: "Layout",
-            description: "Display as grid?",
-            inputMethod: "select",
-            itemsList: ["carousel", "grid", "masonry"],
-          },
-        ],
         configure: [
           {
             slot: "title",

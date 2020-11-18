@@ -205,39 +205,57 @@ export const displayBehaviors = function (SuperClass) {
         .join("\n");
     }
     /**
+     * return HTML object of table data
+     * @returns {object} HTML object for managed table
+     */
+    getTableHTMLNode() {
+      let n = document.createElement("div");
+      n.innerHTML = this.getTableHTML();
+      return n.children[0];
+    }
+    /**
      * Return table as plain HTML
      * @returns {string} the HTML for the table
      */
     getTableHTML() {
+      let headers = [],
+        body = [],
+        footer = [];
       let getTR = (tr, open = "td", close = "td") => {
-          let th = this.rowHeader ? tr.slice(0, 1) : [],
-            td = this.rowHeader ? tr.slice(1) : tr;
-          return `\n\t\t<tr>${th
-            .map((cell) => {
-              return `\n\t\t\t<th scope="row">${this._replaceBlankCell(
-                cell
-              )}</th>`;
-            })
-            .join("")}${td
-            .map((cell) => {
-              return `\n\t\t\t<${open}>${this._replaceBlankCell(
-                cell
-              )}</${close}>`;
-            })
-            .join("")}\n\t\t</tr>`;
-        },
+        let th = this.rowHeader ? tr.slice(0, 1) : [],
+          td = this.rowHeader ? tr.slice(1) : tr;
+        return `\n\t\t<tr>${th
+          .map((cell) => {
+            return `\n\t\t\t<th scope="row">${this._replaceBlankCell(
+              cell
+            )}</th>`;
+          })
+          .join("")}${td
+          .map((cell) => {
+            return `\n\t\t\t<${open}>${this._replaceBlankCell(
+              cell
+            )}</${close}>`;
+          })
+          .join("")}\n\t\t</tr>`;
+      };
+      if (this.thead) {
         headers = this.thead.map((tr) => {
           return getTR(tr, `th scope="col"`, `th`);
-        }),
+        });
+      }
+      if (this.tbody) {
         body = this.tbody.map((tr) => {
           return getTR(tr);
-        }),
+        });
+      }
+      if (this.tfoot) {
         footer = this.tfoot.map((tr) => {
           return getTR(tr);
         });
+      }
       return [
         "<table>",
-        this.caption !== ""
+        this.caption !== "" && this.caption !== null && this.caption !== "null"
           ? `\n\t<caption>\n\t\t${this.caption}\n\t</caption>`
           : "",
         headers.length > 0 ? `\n\t<thead>${headers.join("")}\n\t</thead>` : "",

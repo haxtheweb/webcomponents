@@ -118,15 +118,6 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-        ],
         configure: [
           {
             property: "title",

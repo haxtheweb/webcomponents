@@ -150,16 +150,6 @@ class FullScreenImage extends LitElement {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "source",
-            description: "",
-            inputMethod: "textfield",
-            required: true,
-            icon: "icons:link",
-            validationType: "url",
-          },
-        ],
         configure: [
           {
             property: "title",

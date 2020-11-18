@@ -71,23 +71,6 @@ class FilteredImage extends SimpleColors {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "src",
-            description: "",
-            inputMethod: "textfield",
-            required: true,
-            icon: "icons:link",
-            validationType: "url",
-          },
-          {
-            property: "alt",
-            description: "",
-            inputMethod: "alt",
-            required: true,
-            icon: "icons:accessibility",
-          },
-        ],
         configure: [
           {
             property: "src",

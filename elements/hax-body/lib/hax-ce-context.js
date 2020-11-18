@@ -33,6 +33,7 @@ class HaxCeContext extends LitElement {
   }
   constructor() {
     super();
+    this.haxUIElement = true;
     this.activeTagName = "";
     this.activeTagIcon = "hax:paragraph";
   }

@@ -116,49 +116,6 @@ class QR extends LitElement {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "data",
-            title: "QR data",
-            description: "Source of the data for the QR code.",
-            inputMethod: "textfield",
-            icon: "hardware:developer-board",
-          },
-          {
-            property: "title",
-            title: "Alternate title",
-            description:
-              "An alternate title to go to the source of the QR code.",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "modulesize",
-            title: "Size",
-            description: "Size of the QR code",
-            inputMethod: "textfield",
-            icon: "image:photo-size-select-small",
-          },
-          {
-            property: "margin",
-            title: "Margin",
-            description: "Wrapper to the code.",
-            inputMethod: "textfield",
-            icon: "icons:settings-overscan",
-          },
-          {
-            property: "format",
-            title: "Output format",
-            description: "Format to put it out.",
-            inputMethod: "select",
-            options: {
-              png: "PNG",
-              html: "HTML",
-              svg: "SVG",
-            },
-            icon: "editor:bubble-chart",
-          },
-        ],
         configure: [
           {
             property: "data",

@@ -125,7 +125,7 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
   // haxProperty definition
   static get haxProperties() {
     let haxProps = super.haxProperties,
-      pieQuick = [
+      pieConfig = [
         {
           property: "donut",
           title: "Donut",
@@ -141,8 +141,6 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
           title: "Start Angle",
           inputMethod: "number",
         },
-      ],
-      pieConfig = [
         {
           property: "chartPadding",
           title: "Padding",
@@ -213,11 +211,7 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
       ];
     haxProps.gizmo.title = "Pie Chart";
     haxProps.gizmo.icon = "editor:pie-chart";
-    haxProps.settings.quick = haxProps.settings.quick.concat(pieQuick);
-    haxProps.settings.configure = haxProps.settings.configure.concat(
-      pieQuick,
-      pieConfig
-    );
+    haxProps.settings.configure = haxProps.settings.configure.concat(pieConfig);
     haxProps.settings.advanced = haxProps.settings.advanced.concat(pieAdvanced);
     return haxProps;
   }

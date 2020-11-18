@@ -15,7 +15,6 @@
  *    "canEditSource": true,
  *    "gizmo": {},
  *    "settings": {
- *      "quick": [],
  *      "configure": [],
  *      "advanced": [],
  *    },
@@ -59,20 +58,10 @@
  *
  * Other settings can be expressed through beyond these simple layout modifiers.
  * This example illustrates how you can show forms in three different areas of HAX.
- * Items in the 'quick' key group means that it would show up in hax's in-place editor
- * on the context menu. Things keyed with 'configure' show up in a
+ * Things keyed with 'configure' show up in a
  * form / preview display mode in a modal above the interface. Things in 'advanced' will
  * show up on a sub-set of the configure form for more advanced operations.
  * 'settings': {
- *   'quick': [
- *     {
- *       'property': 'responsive',
- *       'title': 'Responsive',
- *       'description': 'The video automatically fills the available area.',
- *       'inputMethod': 'boolean',
- *       'icon': 'video'
- *     }
- *   ],
  *   'configure': [
  *     {
  *       'property': 'citation',
@@ -146,6 +135,7 @@
  *  - If you define this function on your element
  * then it will run BEFORE the conversion to text. This can be used to do
  * specialized processing that may not be standard prior to conversion to content.
+ * @see @lrnwebcomponents/code-editor/code-editor.js
  *
  * `postProcesshaxNodeToContent`
  *  - If you define this function on your element
@@ -153,13 +143,15 @@
  * to act upon the content even further. This could be to clean up / regex against
  * the text certain patterns or to look for certain elements at the end of
  * the conversion routine.
+ * @see @lrnwebcomponents/video-player/video-player.js
  *
  * `preProcessHaxInsertContent`
  *  - If an element needs to ensure it cleans up data
  * during the conversion from preview to being inserted. This function passes in
  * the details object for creating an element from HAX schema. Examples could be
  * objects that contain focus which may cause issues when doing a pure clone as the
- * reference is being garbage collected on save (see grid-plate).
+ * reference is being garbage collected on save.
+ * @see @lrnwebcomponents/multiple-choice/multiple-choice.js
  */
 import { SimpleFields } from "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { HaxSchematizer, HaxElementizer } from "./HAXFields.js";
@@ -173,11 +165,12 @@ export class HAXWiring {
      * haxProperties
      */
     this.haxProperties = {
+      type: "element",
+      editingElement: "core",
       canScale: false,
       canPosition: false,
       canEditSource: false,
       settings: {
-        quick: [],
         configure: [],
         advanced: [],
       },
@@ -287,6 +280,12 @@ export class HAXWiring {
       // sets us up for future API versioning of property validation
       // and clean up.
       if (props.api == "1") {
+        if (typeof props.type === typeof undefined) {
+          props.type = "element";
+        }
+        if (typeof props.editingElement === typeof undefined) {
+          props.editingElement = "core";
+        }
         if (typeof props.canPosition === typeof undefined) {
           props.canPosition = true;
         }
@@ -317,20 +316,6 @@ export class HAXWiring {
         // approach really lies since this wires properties/slots to HAX's
         // ability to manipulate things via contextual menus
         if (typeof props.settings !== typeof undefined) {
-          // loop through any potential settings in each of the three
-          // groupings of possible settings and validate that each setting is accurate
-          if (typeof props.settings.quick === typeof undefined) {
-            props.settings.quick = [];
-          }
-          for (let i = 0; i < props.settings.quick.length; i++) {
-            props.settings.quick[i] = this.validateSetting(
-              props.settings.quick[i]
-            );
-            // account for a bad property and remove it
-            if (!props.settings.quick[i]) {
-              props.settings.quick.splice(i, 1);
-            }
-          }
           if (typeof props.settings.configure === typeof undefined) {
             props.settings.configure = [];
           }
@@ -679,20 +664,6 @@ export class HAXWiring {
           },
         },
         settings: {
-          quick: [
-            {
-              property: "title",
-              title: "Title",
-              inputMethod: "textfield",
-              icon: "android",
-            },
-            {
-              property: "primaryColor",
-              title: "Primary color",
-              inputMethod: "colorpicker",
-              icon: "color",
-            },
-          ],
           configure: [
             {
               slot: "",

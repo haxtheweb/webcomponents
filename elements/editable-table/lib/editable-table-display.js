@@ -442,7 +442,6 @@ class EditableTableDisplay extends displayBehaviors(
       this.sortColumn = e.detail.columnIndex;
     }
     e.detail.setSortMode(this.sortMode);
-    console.log("_changeSortMode", e.detail, this.sortMode);
     this.sortData(this.sortMode, e.detail.columnIndex);
   }
 
@@ -501,9 +500,6 @@ class EditableTableDisplay extends displayBehaviors(
         this.set("tbody." + i, []);
         this.set("tbody." + i, temp[i].slice(1));
       }
-      console.log("sortData", type, column, temp, this.data);
-    } else {
-      console.log("sortData", type, column, this.data);
     }
   }
 

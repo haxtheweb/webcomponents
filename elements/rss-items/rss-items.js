@@ -198,7 +198,6 @@ class RssItems extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "url",

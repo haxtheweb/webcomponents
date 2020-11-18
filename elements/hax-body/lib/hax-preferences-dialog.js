@@ -85,7 +85,7 @@ class HaxPreferencesDialog extends LitElement {
   render() {
     return html`
       <h3 class="title">
-        <simple-icon icon="hax:settings" contrast="4" dark></simple-icon>
+        <simple-icon icon="hax:settings" contrast="4"></simple-icon>
         ${this.title}
       </h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">

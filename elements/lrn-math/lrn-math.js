@@ -259,7 +259,6 @@ class LrnMath extends HTMLElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             slot: "",

@@ -209,7 +209,6 @@ class PersonTestimonial extends SimpleColors {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "image",

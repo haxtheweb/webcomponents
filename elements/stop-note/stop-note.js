@@ -193,22 +193,6 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "Enter title for stop-note.",
-            inputMethod: "textfield",
-            required: true,
-          },
-          {
-            property: "url",
-            title: "URL",
-            description: "Enter an external url.",
-            inputMethod: "textfield",
-            required: true,
-          },
-        ],
         configure: [
           {
             property: "title",

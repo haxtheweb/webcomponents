@@ -168,15 +168,6 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "name",
-            title: "Name",
-            description: "The name of this to do list",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-        ],
         configure: [
           {
             property: "name",

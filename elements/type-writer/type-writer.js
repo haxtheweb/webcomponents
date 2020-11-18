@@ -119,7 +119,6 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "delay",

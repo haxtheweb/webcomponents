@@ -211,7 +211,6 @@ class A11yDetails extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             slot: "summary",

@@ -170,23 +170,6 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "search",
-            title: "Search term",
-            description: "Word to search wikipedia for.",
-            inputMethod: "textfield",
-            icon: "editor:title",
-            required: true,
-          },
-          {
-            property: "hideTitle",
-            title: "Hide title",
-            description: "Whether or not to render the title of the article.",
-            inputMethod: "boolean",
-            icon: "editor:title",
-          },
-        ],
         configure: [
           {
             property: "search",

@@ -139,23 +139,6 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            slot: "heading",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "opacity",
-            title: "Slider Behavior",
-            description:
-              "Do you want the slider to wipe the top image across the bottom one (default), or to adjust the opacity of the top image?",
-            inputMethod: "boolean",
-            icon: "image:compare",
-          },
-        ],
         configure: [
           {
             slot: "heading",

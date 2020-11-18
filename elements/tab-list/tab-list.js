@@ -116,7 +116,6 @@ class TabList extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "tabs",

@@ -103,14 +103,6 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            slot: "",
-            title: "Text",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-        ],
         configure: [
           {
             slot: "",

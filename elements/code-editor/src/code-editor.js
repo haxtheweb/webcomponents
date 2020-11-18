@@ -256,7 +256,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         groups: ["Code"],
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "title",

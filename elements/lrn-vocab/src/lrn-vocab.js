@@ -136,15 +136,6 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "term",
-            title: "Term",
-            inputMethod: "textfield",
-            icon: "editor:title",
-            required: true,
-          },
-        ],
         configure: [
           {
             property: "term",

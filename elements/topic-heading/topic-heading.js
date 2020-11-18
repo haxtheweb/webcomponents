@@ -78,7 +78,6 @@ class TopicHeading extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "icon",

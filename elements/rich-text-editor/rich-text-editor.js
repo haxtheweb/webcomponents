@@ -112,7 +112,6 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "title",

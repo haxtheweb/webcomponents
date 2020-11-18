@@ -260,7 +260,7 @@ class HAXTrayButton extends SimpleColors {
                   accent-color="${this.colorMeaning
                     ? this.accentColor
                     : "grey"}"
-                  contrast="${this.colorMeaning ? 0 : 4}"
+                  contrast="4"
                   ?dark="${this.colorMeaning ? true : this.iconDark}"
                 ></simple-icon>
               </div>

@@ -252,7 +252,6 @@ class PlaceHolder extends SimpleColors {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "type",

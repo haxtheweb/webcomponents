@@ -47,7 +47,6 @@ class RandomItem extends HTMLElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "field",

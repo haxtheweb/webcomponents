@@ -243,7 +243,6 @@ class CMSBlock extends PolymerElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "blockModule",

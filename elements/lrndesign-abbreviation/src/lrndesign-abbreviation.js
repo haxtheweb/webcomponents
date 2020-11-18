@@ -112,22 +112,6 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "abbr",
-            title: "Abbreviation",
-            description: "Abbreviation word",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "phrase",
-            title: "Phrase",
-            description: "The phrase / original words",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-        ],
         configure: [
           {
             property: "abbr",

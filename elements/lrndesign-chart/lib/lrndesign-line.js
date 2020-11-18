@@ -131,7 +131,7 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
   static get haxProperties() {
     let haxProps = super.haxProperties,
       lineBar = super.lineBarHaxProperties,
-      lineQuick = [
+      lineConfig = [
         {
           property: "showArea",
           title: "Show Area",
@@ -196,13 +196,9 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
       ];
     haxProps.gizmo.title = "Link Chart";
     haxProps.gizmo.icon = "editor:show-chart";
-    haxProps.settings.quick = haxProps.settings.quick.concat(
-      lineBar.gridBackground,
-      lineQuick
-    );
     haxProps.settings.configure = haxProps.settings.configure.concat(
       lineBar.gridBackground,
-      lineQuick,
+      lineConfig,
       lineBar.padding
     );
     haxProps.settings.advanced = haxProps.settings.advanced.concat(

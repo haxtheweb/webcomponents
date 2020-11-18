@@ -20,7 +20,6 @@
     }
   },
   "settings": {
-    "quick": [],
     "configure": [
       {
         "attribute": "track",

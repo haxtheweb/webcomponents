@@ -238,7 +238,6 @@ class CMSViews extends PolymerElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "viewsName",

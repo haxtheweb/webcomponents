@@ -114,7 +114,6 @@ class RelativeHeading extends RelativeHeadingLite {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "parent",

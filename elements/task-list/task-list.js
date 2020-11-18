@@ -132,22 +132,6 @@ class TaskList extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "name",
-            title: "Name",
-            description: "Name of the list",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "relatedResource",
-            title: "Related resource",
-            description: "A reference to the related Schema resource",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-        ],
         configure: [
           {
             property: "name",

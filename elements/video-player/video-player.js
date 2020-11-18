@@ -147,22 +147,6 @@ class VideoPlayer extends IntersectionObserverMixin(
         },
       },
       settings: {
-        quick: [
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Select the accent color for the player.",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            attribute: "dark",
-            title: "Dark theme",
-            description: "Enable dark theme for the player.",
-            inputMethod: "boolean",
-            icon: "invert-colors",
-          },
-        ],
         configure: [
           {
             property: "source",

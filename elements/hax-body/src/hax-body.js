@@ -8,6 +8,8 @@ import {
   nodeToHaxElement,
   haxElementToNode,
   camelToDash,
+  wrap,
+  unwrap,
 } from "@lrnwebcomponents/utils/utils.js";
 import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import { HAXStore } from "./lib/hax-store.js";
@@ -583,7 +585,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     } else if (target.closest("[contenteditable]")) {
       target = target.closest("[contenteditable]");
     }
-    if (this.__focusLogic(target)) {
+    if (!target.haxUIElement && this.__focusLogic(target)) {
       e.stopPropagation();
       e.stopImmediatePropagation();
     }
@@ -834,10 +836,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   node.setAttribute("slot", this.__slot);
                   this.__slot = null;
                 }
-                // force images to NOT be draggable as we will manage D&D
-                if (node.tagName == "IMG") {
-                  node.setAttribute("draggable", false);
-                }
                 // trap for user hitting the outdent / indent keys or tabbing
                 // browser will try and wrap text in a span when it's added to
                 // the top level of the document (for no reason)
@@ -867,14 +865,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   this.__applyNodeEditableState(node, !this.editMode);
                 }
                 this.__applyNodeEditableState(node, this.editMode);
-                this.dispatchEvent(
-                  new CustomEvent("hax-body-tag-added", {
-                    bubbles: true,
-                    cancelable: true,
-                    composed: true,
-                    detail: { node: node },
-                  })
-                );
                 // special support for Header tags showing up w.o. identifiers
                 // this way it's easier to anchor to them in the future
                 if (
@@ -1719,7 +1709,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         ) {
           this._hideContextMenu(this.contextMenus.text);
           props.element = node;
-          this._positionContextMenu(this.contextMenus.ce, node, 0, -28);
+          // check for core editing element OR it providing it's own experience entirely
+          // otherwise we'll pick it up in the specific element via activeNode change hooks
+          if (props.editingElement == "core") {
+            this._positionContextMenu(this.contextMenus.ce, node, 0, -28);
+          }
           menuWidth += 28;
         } else {
           this._hideContextMenu(this.contextMenus.ce);
@@ -1937,11 +1931,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         node = HAXStore._tmpRange;
         HAXStore._tmpRange = null;
       }
-      node.replaceWith(replacement);
       // test for slots to match
       if (node && node.getAttribute && node.getAttribute("slot") != null) {
         replacement.setAttribute("slot", node.getAttribute("slot"));
       }
+      node.replaceWith(replacement);
     } catch (e) {
       console.warn(e);
     }
@@ -2247,11 +2241,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           !containerNode.classList.contains("ignore-activation")
         ) {
           stopProp = true;
-        } else if (containerNode.classList.contains("ignore-activation")) {
+        } else if (
+          containerNode.haxUIElement ||
+          containerNode.classList.contains("ignore-activation")
+        ) {
           stopProp = true;
         }
         // test for ignore edge case
-        if (!activeNode.classList.contains("ignore-activation")) {
+        if (
+          !activeNode.haxUIElement &&
+          !activeNode.classList.contains("ignore-activation")
+        ) {
           HAXStore.activeNode = activeNode;
           setTimeout(() => {
             if (
@@ -2485,6 +2485,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     });
     if (i !== -1) {
       haxRay = HAXStore.gizmoList[i].title;
+    }
+    // force images to NOT be draggable as we will manage D&D
+    if (node.tagName == "IMG") {
+      node.setAttribute("draggable", false);
     }
     // oooooo snap, drag and drop..
     if (status) {
@@ -2957,14 +2961,92 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         newValue.removeAttribute("contenteditable");
         this.removeAttribute("contenteditable");
       }
-      // why you no position yo?
       this._keepContextVisible();
+      // hack, show the icon of the item in the context menu without menu tapping store
       this.contextMenus.text.realSelectedValue = tag;
     }
     // just hide menus if we don't have an active item
     else if (newValue === null) {
       this.hideContextMenus();
       this.__oldActiveNode = oldValue;
+    }
+    // old
+    if (oldValue && oldValue.haxHooks && oldValue.haxHooks.activeChanged) {
+      oldValue.haxHooks.activeChanged(oldValue, true);
+    }
+    // test for having an active state that an element wants to react to
+    if (newValue && newValue.haxHooks && newValue.haxHooks.activeChanged) {
+      newValue.haxHooks.activeChanged(newValue, true);
+    }
+    // OLD VALUE TEST
+    // support for custom editing interfaces defined by the element
+    // this requires wrapping to modify which as the data is in it's slow it could
+    // do whatever it wants but the expectation is it is ONLY working with that element
+    if (oldValue) {
+      let oldSchema = HAXStore.haxSchemaFromTag(oldValue.tagName.toLowerCase());
+      if (oldSchema.editingElement != "core") {
+        this.__ignoreActive = true;
+        // run internal state hook if it exist and if we get a response
+        let replacement = HAXStore.runHook(
+          this.__activeEditingElement,
+          "activeChanged",
+          [oldValue, false]
+        );
+        if (replacement && replacement !== oldValue) {
+          // test for slots to match to ensure this is maintained
+          if (
+            oldValue &&
+            oldValue.getAttribute &&
+            oldValue.getAttribute("slot") != null
+          ) {
+            replacement.setAttribute("slot", oldValue.getAttribute("slot"));
+          }
+          // this implies there was a replacement had AND that this response HTML object
+          // is different than what was passed in. In this instance we will end up
+          // firing the unwrap to unpeal the element w/ the new content but
+          // we need to ensure that the event binding is correctly applied
+          this.__applyNodeEditableState(replacement, this.editMode);
+        }
+        // this effectively removes the editing element
+        unwrap(this.__activeEditingElement);
+      }
+    }
+    // NEW VALUE
+    // support for custom editing interfaces defined by the element
+    // this requires wrapping to modify which as the data is in it's slow it could
+    // do whatever it wants but the expectation is it is ONLY working with that element
+    if (newValue) {
+      let newSchema = HAXStore.haxSchemaFromTag(newValue.tagName);
+      if (
+        newSchema &&
+        newSchema.editingElement &&
+        newSchema.editingElement != "core"
+      ) {
+        // support having to import the definition; this is typical
+        if (newSchema.editingElement.import) {
+          let basePath = HAXStore.pathFromUrl(
+            decodeURIComponent(import.meta.url)
+          );
+          await import(`${basePath}../../${newSchema.editingElement.import}`);
+        }
+        this.__activeEditingElement = document.createElement(
+          newSchema.editingElement.tag
+        );
+        // test for slots to match to ensure this is maintained
+        if (newValue.getAttribute && newValue.getAttribute("slot") != null) {
+          this.__activeEditingElement.setAttribute(
+            "slot",
+            newValue.getAttribute("slot")
+          );
+        }
+        this.__ignoreActive = true;
+        wrap(newValue, this.__activeEditingElement);
+        // run internal state hook if it exists
+        HAXStore.runHook(this.__activeEditingElement, "activeChanged", [
+          newValue,
+          true,
+        ]);
+      }
     }
   }
   /**

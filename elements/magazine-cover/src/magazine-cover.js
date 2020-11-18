@@ -316,41 +316,6 @@ class MagazineCover extends LitElement {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "image",
-            title: "Image",
-            description: "The URL for the image.",
-            inputMethod: "textfield",
-            icon: "link",
-            required: true,
-            validationType: "url",
-          },
-          {
-            property: "link",
-            title: "Link",
-            description: "The URL for the action.",
-            inputMethod: "textfield",
-            icon: "send",
-            required: true,
-            validationType: "url",
-          },
-          {
-            property: "header",
-            title: "Header",
-            description: "Primary header",
-            inputMethod: "textfield",
-            icon: "editor:title",
-            required: true,
-          },
-          {
-            property: "subheader",
-            title: "Sub-header",
-            description: "Secondary header",
-            inputMethod: "textfield",
-            icon: "editor:text-fields",
-          },
-        ],
         configure: [
           {
             property: "image",

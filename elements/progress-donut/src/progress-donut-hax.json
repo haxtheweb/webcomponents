@@ -14,39 +14,6 @@
     }
   },
   "settings": {
-    "quick": [
-      {
-        "property": "animated",
-        "title": "Animated",
-        "description": "Whether progress animates on first load",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "complete",
-        "title": "Complete",
-        "description": "An array of completed values.",
-        "inputMethod": "array",
-        "properties": [
-          {
-            "title": "Number",
-            "description": "Completed number.",
-            "inputMethod": "number"
-          }
-        ]
-      },
-      {
-        "property": "total",
-        "title": "Total",
-        "description": "Total when all items are complete.",
-        "inputMethod": "number"
-      },
-      {
-        "property": "startAngle",
-        "title": "Start Angle",
-        "description": "Donut angle where progress starts",
-        "inputMethod": "number"
-      }
-    ],
     "configure": [
       {
         "property": "title",

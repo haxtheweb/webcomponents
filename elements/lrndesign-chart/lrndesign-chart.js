@@ -517,28 +517,6 @@ const LrndesignChart = function (SuperClass) {
           },
         },
         settings: {
-          quick: [
-            {
-              property: "accentColor",
-              title: "Accent Color",
-              description: "An optional accent color.",
-              inputMethod: "colorpicker",
-              icon: "editor:format-color-fill",
-            },
-            {
-              property: "dark",
-              title: "Dark Theme",
-              description: "Enable Dark Theme",
-              inputMethod: "boolean",
-              icon: "icons:invert-colors",
-            },
-            {
-              slot: "heading",
-              title: "Chart Title",
-              inputMethod: "textfield",
-              icon: "text-field",
-            },
-          ],
           configure: [
             {
               property: "accentColor",

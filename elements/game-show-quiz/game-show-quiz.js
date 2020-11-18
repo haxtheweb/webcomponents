@@ -1056,15 +1056,6 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the game",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-        ],
         configure: [
           {
             property: "title",

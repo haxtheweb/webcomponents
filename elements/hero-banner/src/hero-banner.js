@@ -211,58 +211,6 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "image",
-            title: "Image",
-            description: "URL of the image",
-            inputMethod: "textfield",
-            icon: "image:panorama",
-          },
-          {
-            property: "details",
-            title: "Details",
-            description: "Additional text detail / teaser data",
-            inputMethod: "textfield",
-            icon: "editor:text-fields",
-          },
-          {
-            property: "buttonText",
-            title: "Button",
-            description: "Label of the button",
-            inputMethod: "textfield",
-            icon: "icons:radio-button-unchecked",
-          },
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Select the accent color use",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            property: "dark",
-            title: "Dark",
-            description: "Use dark theme",
-            inputMethod: "boolean",
-            icon: "invert-colors",
-          },
-          {
-            property: "buttonLink",
-            title: "Button - Link",
-            description: "Label of the button",
-            inputMethod: "textfield",
-            validationType: "url",
-            icon: "icons:link",
-          },
-        ],
         configure: [
           {
             property: "title",

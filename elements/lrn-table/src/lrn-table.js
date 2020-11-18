@@ -102,31 +102,6 @@ class LrnTable extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "csvFile",
-            title: "Source",
-            description: "The URL for this csv file.",
-            inputMethod: "textfield",
-            icon: "link",
-            required: true,
-          },
-          {
-            property: "title",
-            title: "Title",
-            description: "Title for the table to be generated.",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "description",
-            title: "Description",
-            description:
-              "More detailed description for improved accessibility of the table data.",
-            inputMethod: "textfield",
-            icon: "editor:short-text",
-          },
-        ],
         configure: [
           {
             property: "csvFile",

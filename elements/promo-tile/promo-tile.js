@@ -282,29 +282,6 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the tile",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "image",
-            title: "Image",
-            description: "The image of the tile",
-            inputMethod: "textfield",
-            icon: "editor:insert-photo",
-          },
-          {
-            property: "url",
-            title: "Link",
-            description: "The link of the tile",
-            inputMethod: "textfield",
-            icon: "editor:insert-link",
-          },
-        ],
         configure: [
           {
             property: "title",

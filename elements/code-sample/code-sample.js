@@ -118,7 +118,6 @@ class CodeSample extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             slot: "",
