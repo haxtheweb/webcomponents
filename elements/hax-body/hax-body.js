@@ -1732,6 +1732,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           // otherwise we'll pick it up in the specific element via activeNode change hooks
           if (props.editingElement == "core") {
             this._positionContextMenu(this.contextMenus.ce, node, 0, -28);
+          } else {
+            this._hideContextMenu(this.contextMenus.ce);
           }
           menuWidth += 28;
         } else {
@@ -1741,29 +1743,43 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           let textRect = this.contextMenus.text.getBoundingClientRect();
           menuWidth += textRect.width;
         }
-        let activeRect = node.getBoundingClientRect();
-        // hide menu if we have active on a list item
-        // special case because it should not be moved anywhere or have these
-        // operations shown as it only makes sense as part of something larger
-        // ul / ol which I believe is the ONLY tag that works this way
-        if (
-          this.activeNode.tagName === "LI" ||
-          this._HTMLInlineTextDecorationTest(this.activeNode)
-        ) {
-          this._hideContextMenu(this.contextMenus.plate);
-        }
-        // need to account for the item being small than the menu
-        else if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
-          this._positionContextMenu(this.contextMenus.plate, node, 0, -56);
+        if (props.editingElement == "core") {
+          let activeRect = node.getBoundingClientRect();
+          // hide menu if we have active on a list item
+          // special case because it should not be moved anywhere or have these
+          // operations shown as it only makes sense as part of something larger
+          // ul / ol which I believe is the ONLY tag that works this way
+          if (
+            this.activeNode.tagName === "LI" ||
+            this._HTMLInlineTextDecorationTest(this.activeNode)
+          ) {
+            this._hideContextMenu(this.contextMenus.plate);
+          }
+          // need to account for the item being small than the menu
+          else if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
+            this._positionContextMenu(this.contextMenus.plate, node, 0, -56);
+          } else {
+            this._positionContextMenu(
+              this.contextMenus.plate,
+              node,
+              activeRect.width -
+                this.contextMenus.plate.getBoundingClientRect().width +
+                1,
+              -26
+            );
+          }
         } else {
-          this._positionContextMenu(
-            this.contextMenus.plate,
-            node,
-            activeRect.width -
-              this.contextMenus.plate.getBoundingClientRect().width +
-              1,
-            -26
-          );
+          setTimeout(() => {
+            let activeRect = node.parentNode.getBoundingClientRect();
+            this._positionContextMenu(
+              this.contextMenus.plate,
+              node.parentNode,
+              activeRect.width -
+                this.contextMenus.plate.getBoundingClientRect().width +
+                1,
+              -26
+            );
+          }, 250);
         }
         // special case for node not matching container yet it being editable
         if (node && node.tagName !== "HR" && !HAXStore.isTextElement(node)) {
