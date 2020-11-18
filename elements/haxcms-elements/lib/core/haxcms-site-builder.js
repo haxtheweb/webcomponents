@@ -418,6 +418,7 @@ class HAXCMSSiteBuilder extends LitElement {
       }
     }
     // dyanmcially import the editor builder which figures out if we should have one
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js"
     )
@@ -542,6 +543,7 @@ class HAXCMSSiteBuilder extends LitElement {
                 this.manifest.metadata.node.dynamicElementLoader[tagName] &&
                 !window.customElements.get(tagName)
               ) {
+                // prettier-ignore
                 import(
                   `${basePath}../../../../${this.manifest.metadata.node.dynamicElementLoader[tagName]}`
                 )
@@ -644,6 +646,7 @@ class HAXCMSSiteBuilder extends LitElement {
         } else {
           // import the reference to the item dynamically, if we can
           try {
+            // prettier-ignore
             import(
               this.pathFromUrl(decodeURIComponent(import.meta.url)) +
                 "../../../../" +

@@ -195,6 +195,7 @@ class SimpleBlogPost extends SimpleColors {
   constructor() {
     super();
     this.editMode = false;
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
     );

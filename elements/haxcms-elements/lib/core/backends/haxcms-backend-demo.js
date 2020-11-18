@@ -103,6 +103,7 @@ class HAXCMSBackendDemo extends LitElement {
         }
       }
       try {
+        // prettier-ignore
         import(
           "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"
         ).then(

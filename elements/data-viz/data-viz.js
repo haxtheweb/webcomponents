@@ -1,8 +1,9 @@
 /**
- * Copyright 2019
+ * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/chartist-render/chartist-render.js";
 
 // register globally so we can make sure there is only one
 window.DataViz = window.DataViz || {};
@@ -43,7 +44,7 @@ class DataViz extends LitElement {
   // render function
   render() {
     return html` <chartist-render
-      id="barChart"
+      id="barchart"
       type="bar"
       scale="ct-major-twelfth"
       chart-title="Quiz Distribution"
@@ -66,7 +67,6 @@ class DataViz extends LitElement {
   }
   constructor() {
     super();
-    import("@lrnwebcomponents/chartist-render/chartist-render.js");
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -82,14 +82,12 @@ class DataViz extends LitElement {
    */
   showDataFunction(e) {
     var queryData = e.detail;
-    var whatEvent = event.target.tagName;
 
     var bardata = {
       labels: queryData.labels,
       series: queryData.series,
     };
-
-    this.shadowRoot.querySelector("#barChart").data = bardata;
+    this.shadowRoot.querySelector("#barchart").data = bardata;
   }
 
   /**

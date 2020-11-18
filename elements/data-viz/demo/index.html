@@ -10,7 +10,6 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import "@polymer/paper-button/paper-button.js";
       import '../data-viz.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
@@ -20,14 +19,11 @@
       <h3>Basic data-viz demo</h3>
       <demo-snippet>
         <template>
-          <data-viz>
-            This is data-viz
-          </data-viz>
+          <data-viz></data-viz>
 
-          <paper-button id="button">Click to see results</paper-button>
+          <button id="button">Click to see results</button>
           <script>
-            let queryData = [""];
-            queryData = {
+            let queryData = {
               labels: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
               series: [
                 [5, 4, 3, 7],

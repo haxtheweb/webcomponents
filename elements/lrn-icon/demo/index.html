@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>LrnIcon: lrn-icon Demo</title>
-    
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import "@polymer/iron-icons/iron-icons.js";
       import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
+      import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
       import '@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js';
       import '../lrn-icon.js';
     </script>
@@ -40,7 +40,7 @@
       <demo-snippet>
         <h2>iron-icon using lrn-iconset</h2>
         <template>
-          <p><iron-icon icon="lrn:lab"></iron-icon></p>
+          <p><simple-icon icon="lrn:lab"></simple-icon></p>
         </template>
       </demo-snippet>
 

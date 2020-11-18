@@ -27,36 +27,47 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
     import("@lrnwebcomponents/simple-icon/simple-icon.js");
     import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-render-query.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
     );

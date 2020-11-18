@@ -109,18 +109,23 @@ class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
     // at the top of the document have been resolved. Dynamic imports ike these
     // can be used to ensure that they still load but that the user starts to see
     // content prior to all assets loading.
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
     );

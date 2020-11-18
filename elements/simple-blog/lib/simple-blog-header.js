@@ -104,9 +104,11 @@ class SimpleBlogHeader extends SimpleColors {
   }
   constructor() {
     super();
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
     );

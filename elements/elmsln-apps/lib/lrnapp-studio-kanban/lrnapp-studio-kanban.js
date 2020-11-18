@@ -497,6 +497,7 @@ class LrnappStudioKanban extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback();
+    window.dispatchEvent(new Event("resize"));
     this.addEventListener(
       "project-created",
       this._handleProjectCreated.bind(this)

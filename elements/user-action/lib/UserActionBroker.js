@@ -3,9 +3,6 @@
  * but yet mirrors much of that structure and data needs.
  */
 export class UserActionBroker {
-  /**
-   * @todo ensure a singleton design pattern
-   */
   constructor() {
     // set the built in events w/ support for others
     this.eventList = {

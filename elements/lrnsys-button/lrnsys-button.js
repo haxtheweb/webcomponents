@@ -24,6 +24,9 @@ class LrnsysButton extends LitElement {
         :host([disabled]) {
           pointer-events: none;
         }
+        simple-icon.white-text {
+          --simple-colors-default-theme-accent-12: white;
+        }
         a {
           text-decoration: none;
           display: block;
@@ -43,6 +46,7 @@ class LrnsysButton extends LitElement {
           border-radius: unset;
           display: flex;
           background-color: transparent;
+          border: none;
         }
         .no-padding {
           padding: 0;
@@ -86,6 +90,10 @@ class LrnsysButton extends LitElement {
     this.label = "";
     this.icon = "";
     this.alt = "";
+    this.iconClass = "";
+    this.buttonClass = "";
+    this.color = "";
+    this.textColor = "";
     this.focusState = false;
     this.disabled = false;
     setTimeout(() => {
@@ -129,6 +137,9 @@ class LrnsysButton extends LitElement {
             <simple-icon
               icon="${this.icon}"
               id="icon"
+              ?dark="${this.dark}"
+              accent-color="grey"
+              contrast="4"
               class="${this.iconClass}"
               ?hidden="${!this.icon}"
             ></simple-icon>
@@ -189,6 +200,7 @@ class LrnsysButton extends LitElement {
        */
       hoverClass: {
         type: String,
+        reflect: true,
         attribute: "hover-class",
       },
       /**
@@ -237,6 +249,13 @@ class LrnsysButton extends LitElement {
        */
       disabled: {
         type: Boolean,
+      },
+      /**
+       * dark state.
+       */
+      dark: {
+        type: Boolean,
+        reflect: true,
       },
       /**
        * Tracks if focus state is applied

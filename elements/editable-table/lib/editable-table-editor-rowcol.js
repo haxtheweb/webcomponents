@@ -5,6 +5,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
+import "@polymer/paper-menu-button/paper-menu-button.js";
+import "@polymer/paper-listbox/paper-listbox.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";

@@ -9,7 +9,7 @@ import "@lrnwebcomponents/simple-icon/simple-icon.js";
 // register the iconset
 SimpleIconsetStore.registerIconset(
   "stopnoteicons",
-  `${pathResolver(import.meta.url)}lib/svgs/`
+  `${pathResolver(import.meta.url)}lib/svgs/stopnoteicons/`
 );
 
 /**

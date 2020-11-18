@@ -12,6 +12,7 @@ class LrndesignImagemap extends LitElement {
   constructor() {
     super();
     import("@lrnwebcomponents/relative-heading/relative-heading.js");
+    // prettier-ignore
     import(
       "@lrnwebcomponents/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js"
     );

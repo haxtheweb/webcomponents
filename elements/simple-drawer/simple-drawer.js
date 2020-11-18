@@ -154,8 +154,12 @@ class SimpleDrawer extends SimpleColors {
             <slot name="content"></slot>
           </div>
           <button id="close" @click="${this.close}">
-            <simple-icon icon="${this.closeIcon}"></simple-icon> ${this
-              .closeLabel}
+            <simple-icon
+              icon="${this.closeIcon}"
+              dark
+              contrast="4"
+            ></simple-icon>
+            ${this.closeLabel}
           </button>
         </div>
       </app-drawer>`;

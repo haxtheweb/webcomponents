@@ -56,6 +56,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
 
   editorLoaded(e) {
     if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js"
       );

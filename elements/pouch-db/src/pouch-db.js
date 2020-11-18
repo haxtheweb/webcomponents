@@ -27,11 +27,8 @@ export const PouchDBElement = window.PouchDb.requestAvailability();
  * @element pouch-db
  */
 class PouchDb extends HTMLElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
   constructor() {
     super();
-    this.title = "pouch-db-default-value";
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -51,9 +48,20 @@ class PouchDb extends HTMLElement {
     window.addEventListener("get-data", this.getDataFunction.bind(this));
   }
 
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    window.removeEventListener(
+      "user-engagement",
+      this.userEngagmentFunction.bind(this)
+    );
+    window.removeEventListener("get-data", this.getDataFunction.bind(this));
+  }
+
   userEngagmentFunction(e) {
     var eventData = e.detail;
-    var whatEvent = event.target.tagName;
+    var whatEvent = e.target.tagName;
 
     switch (whatEvent) {
       case "MULTIPLE-CHOICE":
@@ -151,7 +159,7 @@ class PouchDb extends HTMLElement {
 
   getDataFunction(e) {
     var eventData = e.detail;
-    var whatEvent = event.target.tagName;
+    var whatEvent = e.target.tagName;
 
     switch (eventData.queryRequest) {
       case "all-quizzes":
@@ -246,17 +254,6 @@ class PouchDb extends HTMLElement {
     //end of db.allDocs
   }
   // end of getDataFunction
-
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    window.removeEventListener(
-      "user-engagement",
-      this.userEngagmentFunction.bind(this)
-    );
-    window.removeEventListener("get-data", this.getDataFunction.bind(this));
-  }
 }
 window.customElements.define(PouchDb.tag, PouchDb);
 export { PouchDb };

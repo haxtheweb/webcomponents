@@ -13,6 +13,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 class PaperFabSpeedDial extends PolymerElement {
   constructor() {
     super();
+    // prettier-ignore
     import(
       "@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js"
     );

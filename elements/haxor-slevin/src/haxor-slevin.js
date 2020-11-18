@@ -593,6 +593,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
    * Delay importing site-search until we click to open it directly
    */
   siteModalClick(e) {
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
     );
@@ -606,6 +607,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     setTimeout(() => {
       this.selectedPage = 0;
       import("@polymer/iron-pages/iron-pages.js");
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
       );
@@ -662,19 +664,24 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       super.firstUpdated();
     }
     setTimeout(() => {
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
       );
       import("@lrnwebcomponents/social-share-link/social-share-link.js");
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
       );

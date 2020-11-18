@@ -18,10 +18,12 @@ class LrnappFabMenu extends LitElement {
     this.icon = "add";
     this.disabled = false;
     setTimeout(() => {
+      // prettier-ignore
       import(
         "@lrnwebcomponents/lrnapp-fab-menu/lib/lrnapp-fab-speed-dial-action.js"
       );
       import("@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js");
+      // prettier-ignore
       import(
         "@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js"
       );

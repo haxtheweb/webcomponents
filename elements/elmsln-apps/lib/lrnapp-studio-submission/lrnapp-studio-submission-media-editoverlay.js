@@ -56,12 +56,14 @@ class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
           <template is="dom-if" if="[[embedcode]]">
             <simple-icon-button
               icon="code"
+              dark
               class="embed"
               on-click="_embedClicked"
             ></simple-icon-button>
           </template>
           <simple-icon-button
             icon="delete"
+            dark
             class="delete"
             on-click="_deleteClicked"
           ></simple-icon-button>

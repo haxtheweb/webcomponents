@@ -1338,6 +1338,9 @@ Container class	Ratio
     }
 
     updated(changedProperties) {
+      if (super.updated) {
+        super.updated(changedProperties);
+      }
       changedProperties.forEach((oldValue, propName) => {
         if (
           propName === "chartData" &&

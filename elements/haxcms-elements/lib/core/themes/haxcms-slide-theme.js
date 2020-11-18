@@ -20,18 +20,23 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     super();
     this.__disposer = [];
     setTimeout(() => {
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
       );

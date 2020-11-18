@@ -13,39 +13,51 @@ let MinimalistTemplate = (superclass) =>
     constructor() {
       super();
       import("@lrnwebcomponents/scroll-button/scroll-button.js");
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-fields.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
       );
+      // prettier-ignore
       import(
         "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
       );

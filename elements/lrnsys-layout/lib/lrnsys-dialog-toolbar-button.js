@@ -16,6 +16,10 @@ class LrnsysDialogToolbarButton extends LitElement {
           --simple-icon-height: 16px;
           --simple-icon-width: 16px;
         }
+        button {
+          border: none;
+          background: transparent;
+        }
       `,
     ];
   }
@@ -30,7 +34,13 @@ class LrnsysDialogToolbarButton extends LitElement {
         id="${this.id}"
         aria-label="${this.title}"
       >
-        <simple-icon icon="${this.icon}"></simple-icon> ${this.title}
+        <simple-icon
+          icon="${this.icon}"
+          accent-color="grey"
+          contrast="4"
+          dark
+        ></simple-icon>
+        ${this.title}
       </button>
       <simple-tooltip for="${this.id}" animation-delay="0"
         >${this.title}</simple-tooltip

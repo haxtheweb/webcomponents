@@ -202,21 +202,27 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     this.closed = false;
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
     );
+    // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
     );

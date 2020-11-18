@@ -3,9 +3,50 @@
   "tags": [
     {
       "name": "simple-icon",
+      "path": "./lib/simple-icon-button-lite.js",
+      "description": "`simple-icon`\n`Render an SVG based icon`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "simple-icon-button-lite",
+      "path": "./lib/simple-icon-button-lite.js",
+      "description": "`simple-icon`\n`Render an SVG based icon`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "simple-icon",
       "path": "./lib/simple-icon-button.js",
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
+        {
+          "name": "contrast",
+          "type": "number",
+          "default": "4"
+        },
         {
           "name": "icon",
           "type": "string"
@@ -14,7 +55,7 @@
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"white\""
+          "default": "\"grey\""
         },
         {
           "name": "dark",
@@ -25,6 +66,12 @@
       ],
       "properties": [
         {
+          "name": "contrast",
+          "attribute": "contrast",
+          "type": "number",
+          "default": "4"
+        },
+        {
           "name": "icon",
           "attribute": "icon",
           "type": "string"
@@ -34,7 +81,7 @@
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"white\""
+          "default": "\"grey\""
         },
         {
           "name": "dark",
@@ -55,6 +102,11 @@
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
+          "name": "contrast",
+          "type": "number",
+          "default": "4"
+        },
+        {
           "name": "icon",
           "type": "string"
         },
@@ -62,7 +114,7 @@
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"white\""
+          "default": "\"grey\""
         },
         {
           "name": "dark",
@@ -73,6 +125,12 @@
       ],
       "properties": [
         {
+          "name": "contrast",
+          "attribute": "contrast",
+          "type": "number",
+          "default": "4"
+        },
+        {
           "name": "icon",
           "attribute": "icon",
           "type": "string"
@@ -82,7 +140,7 @@
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"white\""
+          "default": "\"grey\""
         },
         {
           "name": "dark",
@@ -94,6 +152,48 @@
         {
           "name": "colors",
           "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "simple-icon-lite",
+      "path": "./lib/simple-icon-lite.js",
+      "description": "`simple-icon-lite`\n`Render an SVG based icon`",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "no-colorize",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "feFlood",
+          "type": "SVGTemplateResult | \"\""
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "noColorize",
+          "attribute": "no-colorize",
+          "type": "boolean",
+          "default": "false"
         }
       ]
     },
@@ -120,6 +220,11 @@
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
+          "name": "contrast",
+          "type": "number",
+          "default": "0"
+        },
+        {
           "name": "src",
           "type": "string"
         },
@@ -136,7 +241,7 @@
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"white\""
+          "default": "\"grey\""
         },
         {
           "name": "dark",
@@ -146,6 +251,16 @@
         }
       ],
       "properties": [
+        {
+          "name": "contrast",
+          "attribute": "contrast",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "feFlood",
+          "type": "SVGTemplateResult | \"\""
+        },
         {
           "name": "src",
           "attribute": "src",
@@ -167,7 +282,7 @@
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"white\""
+          "default": "\"grey\""
         },
         {
           "name": "dark",
@@ -188,23 +303,15 @@
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
-          "name": "src",
-          "type": "string"
-        },
-        {
-          "name": "icon",
-          "type": "string"
-        },
-        {
-          "name": "no-colorize",
-          "type": "boolean",
-          "default": "false"
+          "name": "contrast",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"white\""
+          "default": "\"grey\""
         },
         {
           "name": "dark",
@@ -215,27 +322,21 @@
       ],
       "properties": [
         {
-          "name": "src",
-          "attribute": "src",
-          "type": "string"
+          "name": "feFlood",
+          "type": "SVGTemplateResult | \"\""
         },
         {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string"
-        },
-        {
-          "name": "noColorize",
-          "attribute": "no-colorize",
-          "type": "boolean",
-          "default": "false"
+          "name": "contrast",
+          "attribute": "contrast",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "accentColor",
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
-          "default": "\"white\""
+          "default": "\"grey\""
         },
         {
           "name": "dark",
