@@ -31,6 +31,8 @@ class EditableTableSort extends PolymerElement {
           align-content: stretch;
           text-transform: unset;
           font-family: var(--editable-table-font-family);
+          border: none;
+          background: transparent;
         }
         :host button > div {
           flex-grow: 1;

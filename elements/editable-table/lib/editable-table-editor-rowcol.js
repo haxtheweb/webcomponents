@@ -5,6 +5,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
+import "@polymer/paper-menu-button/paper-menu-button.js";
+import "@polymer/paper-listbox/paper-listbox.js";
+
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -67,6 +70,8 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           display: block;
           padding-top: var(--editable-table-row-vertical-padding);
           padding-bottom: var(--editable-table-row-vertical-padding);
+          border: none;
+          background: transparent;
         }
         :host([condensed]) button {
           padding-top: var(--editable-table-row-vertical-padding-condensed);

@@ -573,12 +573,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   /**
    * Load and attach items from the app store.
    */
-  _loadAppStoreData(ready, appDataResponse, haxAutoloader) {
-    if (
-      ready &&
-      typeof appDataResponse !== typeof undefined &&
-      appDataResponse != null
-    ) {
+  _loadAppStoreData(appDataResponse) {
+    if (appDataResponse != null) {
       var items = {};
       // autoload elements
       if (typeof appDataResponse.autoloader !== typeof undefined) {
@@ -640,7 +636,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         })
       );
       // now process the dynamic imports
-      this._handleDynamicImports(items, haxAutoloader);
+      this._handleDynamicImports(items, this.haxAutoloader);
     }
   }
   // simple path from a url modifier
@@ -781,32 +777,31 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    let loadAppStoreData = false;
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "appStore") {
         this._appStoreChanged(this[propName], oldValue);
       }
       // composite obervation
-      if (["__ready", "__appStoreData", "haxAutoloader"].includes(propName)) {
-        loadAppStoreData = true;
+      if (
+        ["__ready", "__appStoreData", "haxAutoloader"].includes(propName) &&
+        this.__ready &&
+        this.__appStoreData
+      ) {
+        this._loadAppStoreData(this.__appStoreData);
       }
       if (["haxAutoloader", "activeHaxBody", "haxTray"].includes(propName)) {
         // allow this to verify if everything is here or not
-        this._storePiecesAllHere(
-          this.haxAutoloader,
-          this.activeHaxBody,
-          this.haxTray,
-          this.haxExport
-        );
+        clearTimeout(this.__storeReady);
+        this.__storeReady = setTimeout(() => {
+          this._storePiecesAllHere(
+            this.haxAutoloader,
+            this.activeHaxBody,
+            this.haxTray,
+            this.haxExport
+          );
+        }, 0);
       }
     });
-    if (loadAppStoreData) {
-      this._loadAppStoreData(
-        this.__ready,
-        this.__appStoreData,
-        this.haxAutoloader
-      );
-    }
   }
   _calculateActiveGizmo(activeNode) {
     if (activeNode == null || !activeNode.tagName) {

@@ -32,6 +32,8 @@ class EditableTableFilter extends LitElement {
           align-content: stretch;
           text-transform: unset;
           font-family: var(--editable-table-font-family);
+          border: none;
+          background: transparent;
         }
         button > div {
           flex-grow: 1;
