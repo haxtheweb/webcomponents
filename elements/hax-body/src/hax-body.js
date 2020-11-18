@@ -796,8 +796,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       if (propName == "editMode") {
         this._editModeChanged(this[propName], oldValue);
         if (this[propName]) {
-          this._activeNodeChanged(this.activeNode);
+          this._activeNodeChanged(this.activeNode, null);
           this.activeNode.focus();
+        } else {
+          this._activeNodeChanged(null, this.activeNode);
         }
       }
       if (propName == "globalPreferences") {
@@ -1558,6 +1560,23 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // keep comments with a special case since they need wrapped
       else if (children[i].nodeType === 8) {
         content += "<!-- " + children[i].textContent + " -->";
+      }
+      // special support for UI elements that are still active on page
+      // yet we need to remove from output as they do not really exist :)
+      else if (
+        children[i].haxUIElement &&
+        children[i].children &&
+        children[i].children[0]
+      ) {
+        let tmp = HAXStore.runHook(children[i], "activeChanged", [
+          this.activeNode,
+          false,
+        ]);
+        if (tmp && tmp !== children[i]) {
+          content += HAXStore.nodeToContent(tmp);
+        } else {
+          content += HAXStore.nodeToContent(children[i].children[0]);
+        }
       }
       // keep everything NOT an element at this point, this helps
       // preserve whitespace because we're crazy about accuracy
@@ -2399,6 +2418,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // search results can be drag'ed from their panel for exact placement
     // special place holder in drag and drop
     if (
+      !node.haxUIElement &&
       node.tagName &&
       ![
         "TEMPLATE",

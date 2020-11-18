@@ -427,17 +427,27 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    */
   haxHooks() {
     return {
-      activeChanged: "haxActiveElementChanged",
+      activeChanged: "haxactiveElementChanged",
+      editModeChanged: "haxeditModeChanged",
     };
+  }
+  // shouldn't be possible but just in-case
+  haxeditModeChanged(el, value) {
+    // this implies we are still on the UI and it's been told to close
+    if (!value && el.parentNode === this) {
+      this.remove();
+    }
   }
   /**
    * allow HAX to toggle edit state when activated
    */
-  haxActiveElementChanged(el, value) {
+  haxactiveElementChanged(el, value) {
     // overwrite the HAX dom w/ what our editor is supplying
     if (!value) {
       let replacement = this.getTableHTMLNode();
-      el.replaceWith(replacement);
+      if (el) {
+        el.replaceWith(replacement);
+      }
       el = replacement;
     }
     // aligns the state of the element w/ HAX if its available
@@ -582,7 +592,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         detail: this,
       })
     );
-    if (edit) {
+    if (edit && this.shadowRoot) {
       this.shadowRoot.querySelector("editable-table-display").toggleFilter();
       this.shadowRoot
         .querySelector("editable-table-display")
