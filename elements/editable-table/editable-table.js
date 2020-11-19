@@ -427,7 +427,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    */
   haxHooks() {
     return {
-      activeChanged: "haxactiveElementChanged",
+      activeElementChanged: "haxactiveElementChanged",
     };
   }
   /**

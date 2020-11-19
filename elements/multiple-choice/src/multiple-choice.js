@@ -621,28 +621,29 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     };
   }
   /**
-   * HAX preprocess Node to Content hook
+   * Implements haxHooks to tie into life-cycle if hax exists.
    */
-  preProcessHaxNodeToContent(node) {
-    // ensure we dont accidently have the answer displayed!
-    if (node.answers) {
-      var answers = [];
-      for (var i = 0; i < node.answers.length; i++) {
-        let val = node.answers[i];
-        // remove userGuess if its set in the DOM
-        if (val.userGuess) {
-          delete val.userGuess;
-        }
-        answers.push(val);
-      }
-      node.answers = [...answers];
-    }
+  haxHooks() {
+    return {
+      preProcessNodeToContent: "haxpreProcessNodeToContent",
+      preProcessInsertContent: "haxpreProcessInsertContent",
+    };
+  }
+  /**
+   * Ensure fields don't pass through to HAX if in that context
+   */
+  haxpreProcessNodeToContent(node) {
+    node.editorValue = null;
+    node.codePenData = null;
+    node.value = null;
+    node.removeAttribute("value");
+    node.removeAttribute("code-pen-data");
     return node;
   }
   /**
    * HAX preprocess insert content hook
    */
-  preProcessHaxInsertContent(detail) {
+  haxpreProcessInsertContent(detail) {
     // ensure we dont accidently have the answer displayed!
     if (detail.properties.answers) {
       detail.properties.answers = detail.properties.answers.map(function (val) {

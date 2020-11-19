@@ -883,9 +883,17 @@ class VideoPlayer extends IntersectionObserverMixin(
     return source;
   }
   /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      postProcessNodeToContent: "haxpostProcessNodeToContent",
+    };
+  }
+  /**
    * postProcesshaxNodeToContent - clean up so we don't have empty array data
    */
-  postProcesshaxNodeToContent(content) {
+  haxpostProcessNodeToContent(content) {
     content = content.replace(' sources="[]",', "");
     content = content.replace(' tracks="[]",', "");
     return content;

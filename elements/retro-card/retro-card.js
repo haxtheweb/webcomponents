@@ -368,15 +368,36 @@ class RetroCard extends SimpleColors {
     }
   }
   /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    if (val) {
+      this._haxstate = val;
+    }
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    this._haxstate = val;
+  }
+  /**
    * special support for HAX since the whole card is selectable
    */
   _clickCard(e) {
-    if (
-      window.HaxStore &&
-      window.HaxStore.instance &&
-      window.HaxStore.instance.ready &&
-      window.HaxStore.instance.editMode
-    ) {
+    if (this._haxstate) {
       // do not do default
       e.preventDefault();
       e.stopPropagation();

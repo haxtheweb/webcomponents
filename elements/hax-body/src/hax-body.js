@@ -1568,7 +1568,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         children[i].children &&
         children[i].children[0]
       ) {
-        let tmp = HAXStore.runHook(children[i], "activeChanged", [
+        let tmp = HAXStore.runHook(children[i], "activeElementChanged", [
           this.activeNode,
           false,
         ]);
@@ -1652,9 +1652,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
       }
     }
-    // support for deep API call to clean up special elements
-    if (typeof node.preProcessHaxInsertContent !== typeof undefined) {
-      haxElement = node.preProcessHaxInsertContent(haxElement);
+    // @see haxHooks: preProcessInsertContent
+    if (HAXStore.testHook(node, "preProcessInsertContent")) {
+      haxElement = HAXStore.runHook(node, "preProcessInsertContent", [
+        haxElement,
+      ]);
     }
     if (haxElement.content == haxElement.properties.innerHTML) {
       delete haxElement.properties.innerHTML;
@@ -2411,6 +2413,21 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         el.classList.remove("hax-active");
       });
     }
+    // support for elements caring about the state change
+    let children =
+      this.shadowRoot.querySelector("#body").localName === "slot"
+        ? this.shadowRoot
+            .querySelector("#body")
+            .assignedNodes({ flatten: true })
+        : [];
+    // fallback for content nodes if not polymer managed nodes above
+    if (children.length === 0) {
+      children = this.shadowRoot.querySelector("#body").children;
+    }
+    // see if anyone cares about editMode changing; some link based things do
+    children.forEach((el) => {
+      HAXStore.runHook(el, "editModeChanged", [newValue]);
+    });
   }
   /**
    * Test if this is a HAX element or not
@@ -3008,14 +3025,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.hideContextMenus();
       this.__oldActiveNode = oldValue;
     }
-    // old
-    if (oldValue && oldValue.haxHooks && oldValue.haxHooks.activeChanged) {
-      oldValue.haxHooks.activeChanged(oldValue, true);
-    }
-    // test for having an active state that an element wants to react to
-    if (newValue && newValue.haxHooks && newValue.haxHooks.activeChanged) {
-      newValue.haxHooks.activeChanged(newValue, true);
-    }
+    // atte,pt old value processing on element changed
+    // @see haxHooks activeElementChanged
+    HAXStore.runHook(oldValue, "activeElementChanged", [oldValue, false]);
+    // attempt new value processing on element changed
+    // @see haxHooks activeElementChanged
+    HAXStore.runHook(newValue, "activeElementChanged", [newValue, true]);
     // OLD VALUE TEST
     // support for custom editing interfaces defined by the element
     // this requires wrapping to modify which as the data is in it's slow it could
@@ -3027,7 +3042,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         // run internal state hook if it exist and if we get a response
         let replacement = HAXStore.runHook(
           this.__activeEditingElement,
-          "activeChanged",
+          "activeElementChanged",
           [oldValue, false]
         );
         if (replacement && replacement !== oldValue) {
@@ -3079,8 +3094,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
         this.__ignoreActive = true;
         wrap(newValue, this.__activeEditingElement);
-        // run internal state hook if it exists
-        HAXStore.runHook(this.__activeEditingElement, "activeChanged", [
+        // @see haxHooks activeElementChanged
+        HAXStore.runHook(this.__activeEditingElement, "activeElementChanged", [
           newValue,
           true,
         ]);

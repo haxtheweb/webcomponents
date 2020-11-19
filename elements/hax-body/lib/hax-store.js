@@ -27,7 +27,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * test a hook's existance in a target
    */
   testHook(el, op) {
-    return el && el.haxHooks() && el.haxHooks()[op];
+    return el && typeof el.haxHooks === "function" && el.haxHooks()[op];
   }
   /**
    * run a hook in a target if it exists
@@ -1118,7 +1118,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * Intercept paste event and clean it up before inserting the contents
    */
   _onPaste(e) {
-    if (this.editMode) {
+    if (
+      this.editMode &&
+      document.activeElement.tagName !== "HAX-TRAY" &&
+      document.activeElement.tagName !== "BODY" &&
+      document.activeElement.tagName !== "SIMPLE-MODAL"
+    ) {
       // only perform this on a text element that is active
       // otherwise inject a P so we can paste into it
       if (this.isTextElement(this.activeNode)) {
@@ -2151,12 +2156,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (e.detail) {
       let details = e.detail;
       if (window.customElements.get(details.tag)) {
-        let prototype = Object.getPrototypeOf(
-          document.createElement(details.tag)
-        );
-        // support for deep API call to clean up special elements
-        if (typeof prototype.preProcessHaxInsertContent !== typeof undefined) {
-          details = prototype.preProcessHaxInsertContent(details);
+        let prototypeNode = document.createElement(details.tag);
+        // @see haxHooks: preProcessInsertContent
+        if (this.testHook(prototypeNode, "preProcessInsertContent")) {
+          details = this.runHook(prototypeNode, "preProcessInsertContent", [
+            details,
+          ]);
         }
       }
       var properties = {};
@@ -2452,11 +2457,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * This DOES NOT acccept a HAXElement which is similar
    */
   nodeToContent(node) {
-    // ensure we have access to all the member functions of the custom element
-    let prototype = Object.getPrototypeOf(node);
-    // support for deep API call
-    if (typeof prototype.preProcessHaxNodeToContent !== typeof undefined) {
-      node = prototype.preProcessHaxNodeToContent(node);
+    // @see haxHooks: preProcessNodeToContent
+    if (this.testHook(node, "preProcessNodeToContent")) {
+      node = this.runHook(node, "preProcessNodeToContent", [node]);
     }
     let tag = node.tagName.toLowerCase();
     // support sandboxed environments which
@@ -2741,10 +2744,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       .join("\n")
       .split("\n\n")
       .join("\n");
-    // support postProcess text rewriting for the node that's been
-    // converted to a string for storage
-    if (node.postProcesshaxNodeToContent === "function") {
-      content = node.postProcesshaxNodeToContent(content);
+    // @see haxHooks: postProcessNodeToContent
+    if (this.testHook(node, "postProcessNodeToContent")) {
+      content = this.runHook(node, "postProcessNodeToContent", [content]);
     }
     return content;
   }
