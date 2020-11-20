@@ -16,6 +16,7 @@ export const a11yCompareImageStory = () => {
   return utils.makeElementFromClass(
     a11yCompareImage,
     {
+      accentColor: utils.randomColor(),
       opacity: utils.randomBool(),
       top: `<img aria-describedBy="cloudy" src="${new URL(
         `./demo/images/Matterhorn01.png`,
@@ -36,12 +37,15 @@ export const a11yCompareImageStory = () => {
       maxWidth: "400px",
     },
     [
+      { property: "accentColor", inputMethod: "colorpicker" },
+      { property: "dark", inputMethod: "boolean" },
       { title: "Heading", slot: "heading" },
       { title: "Description", slot: "description" },
       { title: "Top Image", slot: "top" },
       { title: "Bottom Image", slot: "bottom" },
       { css: "width" },
       { css: "maxWidth" },
-    ]
+    ],
+    ["activeLayer"]
   );
 };

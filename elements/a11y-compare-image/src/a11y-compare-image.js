@@ -180,7 +180,7 @@ class a11yCompareImage extends SimpleColors {
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "position" && this.propName !== oldValue) {
+      if (propName === "position" && this.position !== oldValue) {
         this._slide();
       }
     });
