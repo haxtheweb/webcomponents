@@ -3027,10 +3027,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     }
     // atte,pt old value processing on element changed
     // @see haxHooks activeElementChanged
-    HAXStore.runHook(oldValue, "activeElementChanged", [oldValue, false]);
+    if (HAXStore.runHook(oldValue, "activeElementChanged", [oldValue, false])) {
+      this.__ignoreActive = true;
+    }
     // attempt new value processing on element changed
     // @see haxHooks activeElementChanged
-    HAXStore.runHook(newValue, "activeElementChanged", [newValue, true]);
+    if (HAXStore.runHook(newValue, "activeElementChanged", [newValue, true])) {
+      this.__ignoreActive = true;
+    }
     // OLD VALUE TEST
     // support for custom editing interfaces defined by the element
     // this requires wrapping to modify which as the data is in it's slow it could
