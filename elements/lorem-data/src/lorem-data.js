@@ -40,9 +40,12 @@ export const LoremDataBehaviors = function (SuperClass) {
       return simple && simple.colors ? Object.keys(simple.colors) : false;
     }
     get icons() {
-      return [...SimpleIconIconsetsManifest, ...HaxIconsetManifest]
+      return [
+        ...(SimpleIconIconsetsManifest || []),
+        ...(HaxIconsetManifest || []),
+      ]
         .map((iconset) =>
-          iconset.icons.map((icon) =>
+          ((iconset || {}).icons || []).map((icon) =>
             iconset.name == "icons" ? icon : `${iconset.name}:${icon}`
           )
         )
@@ -386,19 +389,47 @@ export const LoremDataBehaviors = function (SuperClass) {
         multiple || this.randomNumber(1, 90)
       }.jpg`;
     }
-    randomParagraph(
-      min = 3,
-      max = 7,
-      wordMinPerSentencce,
-      wordMaxPerSentencce
-    ) {
+
+    randomParagraph(min = 3, max = 7, wordMinPerSent = 3, wordMaxPerSent = 10) {
       let paragraph = [];
       for (let i = this.randomNumber(min, max); i > 0; i--) {
-        paragraph.push(
-          this.randomSentence(wordMinPerSentencce, wordMaxPerSentencce)
-        );
+        paragraph.push(this.randomSentence(wordMinPerSent, wordMaxPerSent));
       }
       return `${paragraph.join(" ")}`;
+    }
+
+    randomPassage(
+      min = 2,
+      max = 5,
+      sentMinPerPara = 2,
+      sentMaxPerPara = 5,
+      wordMinPerSent = 3,
+      wordMaxPerSent = 10
+    ) {
+      let passage = [];
+      for (let i = this.randomNumber(min, max); i > 0; i--) {
+        passage.push(
+          `<p>${this.randomParagraph(
+            sentMinPerPara,
+            sentMaxPerPara,
+            wordMinPerSent,
+            wordMaxPerSent
+          )}</p>`
+        );
+      }
+      return passage.join("");
+    }
+
+    randomPhrase(min = 1, max = 5, titlecase = true, colon = false) {
+      let phrase = [],
+        wordCount = this.randomNumber(min, max),
+        colonIndex =
+          colon && wordCount > 1 ? this.randomNumber(1, wordCount - 1) : -1;
+      for (let i = 0; i <= wordCount; i++) {
+        let word = this.randomWord();
+        phrase.push(i == colonIndex ? `${word}:` : word);
+      }
+      return titlecase ? this.titleCase(phrase.join(" ")) : phrase.join(" ");
     }
 
     randomSentence(min = 3, max = 15) {
@@ -485,8 +516,8 @@ export const LoremDataBehaviors = function (SuperClass) {
             val = this.randomParagraph(
               schema.min,
               schema.max,
-              schema.wordMinPerSentencce,
-              schema.wordMaxPerSentencce
+              schema.wordMinPerSent,
+              schema.wordMaxPerSent
             );
             break;
           case "sentence":
@@ -950,12 +981,10 @@ class LoremData extends LoremDataBehaviors(LitElement) {
       ? options[Math.floor(Math.random() * Math.floor(options.length))]
       : undefined;
   }
-  randomParagraph(min = 3, max = 7, wordMinPerSentencce, wordMaxPerSentencce) {
+  randomParagraph(min = 3, max = 7, wordMinPerSent, wordMaxPerSent) {
     let paragraph = [];
     for (let i = this.randomNumber(min, max); i > 0; i--) {
-      paragraph.push(
-        this.randomSentence(wordMinPerSentencce, wordMaxPerSentencce)
-      );
+      paragraph.push(this.randomSentence(wordMinPerSent, wordMaxPerSent));
     }
     return `${paragraph.join(" ")}`;
   }
@@ -1044,8 +1073,8 @@ class LoremData extends LoremDataBehaviors(LitElement) {
           val = this.randomParagraph(
             schema.min,
             schema.max,
-            schema.wordMinPerSentencce,
-            schema.wordMaxPerSentencce
+            schema.wordMinPerSent,
+            schema.wordMaxPerSent
           );
           break;
         case "sentence":
