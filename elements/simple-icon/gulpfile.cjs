@@ -165,17 +165,25 @@ function dirTree(filename) {
 
 // discover iconset and build json structure
 gulp.task("iconset", (done) => {
-  const path = "./lib/svgs";
-  const jsonContent = JSON.stringify(dirTree(path).icons, null, 2); 
-  const iconVar =  `export const ${package.wcfactory.className}Data = ${jsonContent};`
-  fs.writeFile("./lib/iconsets.json", iconVar, 'utf8', function (err) {
-      if (err) {
-          console.log("An error occured while writing JSON Object to File.");
-          return console.log(err);
-      }
-      console.log("JSON file has been saved.");
-      return true;
-  });
+  const iconset = packageJson.wcfactory.iconset || {};
+  if(iconset.svgsPath && iconset.svgsPath !== ''){
+    const path = iconset.svgsPath;
+    const manifestFilename = iconset.manifestFilename || `${packageJson.wcfactory.elementName}-iconsets-manifest.js`
+    const manifestPath = iconset.manifestPath || `./lib`;
+    const exportName = iconset.exportName || `${packageJson.wcfactory.className}IconsetsManifest`;
+    const jsonContent = JSON.stringify(dirTree(path).icons, null, 2); 
+    const iconVar =  `export const ${exportName} = ${jsonContent};`
+    fs.writeFile(`${manifestPath}/${manifestFilename}.js`, iconVar, 'utf8', function (err) {
+        if (err) {
+            console.log("An error occured while writing iconset manifest Object to File.");
+            return console.log(err);
+        }
+        console.log("Iconset SVGs and manifest JS file has been saved.");
+        return true;
+    });
+  } else {
+    console.log("No Iconset Manifest");
+  }
   done();
 });
 gulp.task("default", gulp.series("merge", "analyze", "compile", "iconset"));

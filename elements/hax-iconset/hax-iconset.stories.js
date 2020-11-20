@@ -3,7 +3,7 @@ import { SimpleIconsetDemo } from "@lrnwebcomponents/simple-icon/lib/simple-icon
 import { SimpleIconLite } from "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
-import { HaxIconsetData } from "@lrnwebcomponents/hax-iconset/lib/iconset.js";
+import { HaxIconsetManifest } from "@lrnwebcomponents/hax-iconset/lib/hax-iconset-manifest.js";
 import {
   withKnobs,
   withWebComponentsKnobs,
@@ -27,6 +27,6 @@ const utils = new StorybookUtilities(),
   href = json && json.href ? json.href : "";
 export const HaxIconsetStory = () => {
   return html`<simple-iconset-demo
-    .imports=${[HaxIconsetData]}
+    .imports=${[HaxIconsetManifest]}
   ></simple-iconset-demo>`;
 };

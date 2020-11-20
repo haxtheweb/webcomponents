@@ -6,7 +6,7 @@ import { html, svg, css, LitElement } from "lit-element/lit-element.js";
 import "./simple-icon-lite.js";
 import "./simple-icons.js";
 import { pathResolver, SimpleIconsetStore } from "./simple-iconset.js";
-import { SimpleIconsData } from "./iconsets.js";
+import { SimpleIconIconsetsManifest } from "./simple-iconset-manifest.js";
 
 /**
  * `simple-iconset-demo`
@@ -171,7 +171,8 @@ class SimpleIconsetDemo extends LitElement {
     });
   }
   _getIconsets() {
-    let imports = this.imports.length < 1 ? [SimpleIconsData] : this.imports,
+    let imports =
+        this.imports.length < 1 ? [SimpleIconIconsetsManifest] : this.imports,
       iconsets = imports.flat(),
       excludeSets = (this.exclude || "").split(" "),
       includeSets = (this.include || "").split(" ");

@@ -1,7 +1,6 @@
-export const SimpleIconsData = [
+export const SimpleIconIconsetsManifest = [
   {
     name: "av",
-    path: "./lib/svgs/av",
     icons: [
       "add-to-queue",
       "airplay",
@@ -87,7 +86,6 @@ export const SimpleIconsData = [
   },
   {
     name: "communication",
-    path: "./lib/svgs/communication",
     icons: [
       "business",
       "call-end",
@@ -143,7 +141,6 @@ export const SimpleIconsData = [
   },
   {
     name: "device",
-    path: "./lib/svgs/device",
     icons: [
       "access-alarm",
       "access-alarms",
@@ -228,7 +225,6 @@ export const SimpleIconsData = [
   },
   {
     name: "editor",
-    path: "./lib/svgs/editor",
     icons: [
       "attach-file",
       "attach-money",
@@ -302,7 +298,6 @@ export const SimpleIconsData = [
   },
   {
     name: "hardware",
-    path: "./lib/svgs/hardware",
     icons: [
       "cast-connected",
       "cast",
@@ -356,7 +351,6 @@ export const SimpleIconsData = [
   },
   {
     name: "icons",
-    path: "./lib/svgs/icons",
     icons: [
       "3d-rotation",
       "accessibility",
@@ -671,7 +665,6 @@ export const SimpleIconsData = [
   },
   {
     name: "image",
-    path: "./lib/svgs/image",
     icons: [
       "add-a-photo",
       "add-to-photos",
@@ -832,7 +825,6 @@ export const SimpleIconsData = [
   },
   {
     name: "maps",
-    path: "./lib/svgs/maps",
     icons: [
       "add-location",
       "beenhere",
@@ -906,7 +898,6 @@ export const SimpleIconsData = [
   },
   {
     name: "notification",
-    path: "./lib/svgs/notification",
     icons: [
       "adb",
       "airline-seat-flat-angled",
@@ -966,7 +957,6 @@ export const SimpleIconsData = [
   },
   {
     name: "places",
-    path: "./lib/svgs/places",
     icons: [
       "ac-unit",
       "airport-shuttle",
@@ -991,7 +981,6 @@ export const SimpleIconsData = [
   },
   {
     name: "social",
-    path: "./lib/svgs/social",
     icons: [
       "cake",
       "domain",

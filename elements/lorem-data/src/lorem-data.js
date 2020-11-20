@@ -20,8 +20,8 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SimpleIconsetDemo } from "@lrnwebcomponents/simple-icon/lib/simple-iconset-demo.js";
 import { SimpleIcon } from "@lrnwebcomponents/simple-icon/simple-icon.js";
 import { SimpleIconLite } from "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import { SimpleIconsData } from "@lrnwebcomponents/simple-icon/lib/iconsets.js";
-import { HaxIconsetData } from "@lrnwebcomponents/hax-iconset/lib/iconset.js";
+import { SimpleIconIconsetsManifest } from "@lrnwebcomponents/simple-icon/lib/simple-iconset-manifest.js";
+import { HaxIconsetManifest } from "@lrnwebcomponents/hax-iconset/lib/hax-iconset-manifest.js";
 
 export const LoremDataBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -40,7 +40,7 @@ export const LoremDataBehaviors = function (SuperClass) {
       return simple && simple.colors ? Object.keys(simple.colors) : false;
     }
     get icons() {
-      return [...SimpleIconsData, ...HaxIconsetData]
+      return [...SimpleIconIconsetsManifest, ...HaxIconsetManifest]
         .map((iconset) =>
           iconset.icons.map((icon) =>
             iconset.name == "icons" ? icon : `${iconset.name}:${icon}`

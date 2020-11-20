@@ -1,7 +1,7 @@
 export const HaxIconsetManifest = [
+  null,
   {
     name: "courseicons",
-    path: "./lib/svgs/courseicons",
     icons: [
       "astro1",
       "astro2",
@@ -15,13 +15,12 @@ export const HaxIconsetManifest = [
   },
   {
     name: "drawing",
-    path: "./lib/svgs/drawing",
     icons: ["draw-ellip", "draw-poly", "draw-rect", "move", "select"],
   },
   {
     name: "editable-table",
-    path: "./lib/svgs/editable-table",
     icons: [
+      "column-headers",
       "filter-off",
       "filter",
       "footer",
@@ -33,7 +32,6 @@ export const HaxIconsetManifest = [
   },
   {
     name: "hax",
-    path: "./lib/svgs/hax",
     icons: [
       "12",
       "3-3-3-3",
@@ -93,6 +91,7 @@ export const HaxIconsetManifest = [
       "messages-9-plus",
       "messages-9",
       "multiple-choice",
+      "no-assignment",
       "oerschema",
       "page-details",
       "page-edit",
@@ -115,7 +114,6 @@ export const HaxIconsetManifest = [
   },
   {
     name: "lrn",
-    path: "./lib/svgs/lrn",
     icons: [
       "about",
       "accessibility",
@@ -212,7 +210,6 @@ export const HaxIconsetManifest = [
   },
   {
     name: "mdextra",
-    path: "./lib/svgs/mdextra",
     icons: [
       "hexagon-multiple",
       "hexagon-outline",
@@ -224,7 +221,6 @@ export const HaxIconsetManifest = [
   },
   {
     name: "mdi-social",
-    path: "./lib/svgs/mdi-social",
     icons: [
       "blogger",
       "disqus",
@@ -252,7 +248,6 @@ export const HaxIconsetManifest = [
   },
   {
     name: "paper-audio-icons",
-    path: "./lib/svgs/paper-audio-icons",
     icons: ["error-outline", "pause", "play-arrow", "replay"],
   },
 ];
