@@ -19,7 +19,7 @@ export const a11yCarouselStory = () => {
     {
       noPrevNext: true,
       noButtons: false,
-      selection: utils.getRandomOption(["figure-1", "figure-2", "figure-3"]),
+      selection: utils.randomOption(["figure-1", "figure-2", "figure-3"]),
       emptyslot: `
         <figure id="figure-1">
           <img src="//placekitten.com/400/200" alt="Random Kitten, 400 X 200"/>
@@ -54,8 +54,8 @@ export const a11yCarouselButtonStory = () => {
       ${utils.makeElementFromClass(
         a11yCarouselButton,
         {
-          buttonType: utils.getRandomOption(),
-          controls: utils.getRandomOption(["figure-1", "figure-2", "figure-3"]),
+          buttonType: utils.randomOption(),
+          controls: utils.randomOption(["figure-1", "figure-2", "figure-3"]),
           emptyslot: "Custom Button",
         },
         [{ title: "Content", slot: "" }],

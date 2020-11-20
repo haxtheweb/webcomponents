@@ -13,7 +13,7 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const AccentCardStory = () => {
-  let defaultData = utils.getRandomOption([
+  let defaultData = utils.randomOption([
     {
       accentColor: "red",
       dark: true,
@@ -46,8 +46,8 @@ export const AccentCardStory = () => {
     AccentCard,
     {
       ...defaultData,
-      heading: utils.getRandomText(),
-      content: utils.getRandomTextarea(),
+      heading: utils.randomSentence(1, 5),
+      content: utils.randomParagraph(2, 7),
       maxWidth: "600px",
     },
     [

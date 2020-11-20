@@ -56,8 +56,8 @@ export const HexagonLoaderStory = () => {
     ),
     knobs = utils.getKnobs(props, {
       loading: true,
-      itemCount: utils.getRandomNumber(1, 37),
-      size: utils.getRandomOption([
+      itemCount: utils.randomNumber(1, 37),
+      size: utils.randomOption([
         undefined,
         undefined,
         undefined,

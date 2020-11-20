@@ -15,9 +15,9 @@ export default {
 const utils = new StorybookUtilities();
 
 const NavItem = (index) => {
-  let nav = utils.getRandomOption(["button", "a"]),
-    tag = utils.getRandomOption(["span", "div", false]),
-    type = utils.getRandomOption(["label", "img", "icon"]),
+  let nav = utils.randomOption(["button", "a"]),
+    tag = utils.randomOption(["span", "div", false]),
+    type = utils.randomOption(["label", "img", "icon"]),
     id = `nav-card-item-${index}`,
     descBy = tag ? `nav-card-item-desc-${index}` : undefined,
     labelHTML = `Link Item ${index}`,
@@ -26,21 +26,24 @@ const NavItem = (index) => {
         ? `href="#"`
         : `onclick="alert('clicked ${labelHTML} (${id})')"`;
   return {
-    accentColor: utils.getRandomColor(),
-    dark: utils.getRandomOption("dark", ""),
+    accentColor: utils.randomColor(),
+    dark: utils.randomOption("dark", ""),
     icon: "chevron-right",
     avatar:
       type === "label"
         ? undefined
         : type === "img"
-        ? utils.getRandomImage()
-        : utils.getRandomIcon(),
+        ? utils.randomImage()
+        : utils.randomIcon(),
     initials:
       type === "label"
-        ? utils.getRandomOption("", label.innerHTML, utils.getRandomText())
+        ? utils.randomOption("", label.innerHTML, utils.randomSentence(1, 5))
         : undefined,
     description: tag
-      ? `<${tag} id="${descBy}" slot="description">${utils.getRandomText()}</${tag}>`
+      ? `<${tag} id="${descBy}" slot="description">${utils.randomSentence(
+          1,
+          5
+        )}</${tag}>`
       : undefined,
     label: `<${nav} id ="${id}" slot="label" ${
       tag ? `aria-describedby="${descBy}"` : ""
@@ -65,14 +68,17 @@ export const NavCardStory = () => {
   return utils.makeElementFromClass(
     NavCard,
     {
-      heading: utils.getRandomText(),
-      subheading: utils.getRandomBool() ? utils.getRandomText() : undefined,
-      content: utils.getRandomTextarea(),
-      footer: utils.getRandomBool()
-        ? `<p style="font-size:80%;padding-bottom: 10px;text-align:center;">${utils.getRandomText()}</p>`
+      heading: utils.randomSentence(1, 5),
+      subheading: utils.randomBool() ? utils.randomSentence(1, 5) : undefined,
+      content: utils.randomParagraph(2, 7),
+      footer: utils.randomBool()
+        ? `<p style="font-size:80%;padding-bottom: 10px;text-align:center;">${utils.randomSentence(
+            1,
+            5
+          )}</p>`
         : undefined,
-      color: utils.getRandomColor(),
-      imageSrc: utils.getRandomImage(),
+      color: utils.randomColor(),
+      imageSrc: utils.randomImage(),
       linklist: `<div>${[1, 2, 3, 4, 5]
         .map((i) => MakeNavItem(i))
         .join("")}</div>`,
@@ -147,13 +153,13 @@ export const NavCardStory = () => {
 
 export const NavCardItemStory = () => {
   let card = `<nav-card 
-  color="${utils.getRandomColor()}" 
-  image-src="${utils.getRandomImage()}">
-  <div slot="heading">${utils.getRandomText()}</div>
+  color="${utils.randomColor()}" 
+  image-src="${utils.randomImage()}">
+  <div slot="heading">${utils.randomSentence(1, 5)}</div>
   <div slot="subheading">${
-    utils.getRandomBool() ? utils.getRandomText() : ""
+    utils.randomBool() ? utils.randomSentence(1, 5) : ""
   }</div>
-  <div slot="content">${utils.getRandomTextarea()}</div>
+  <div slot="content">${utils.randomParagraph(2, 7)}</div>
   <div slot="linklist">
     <!-- nav-card-item code-->
     ${utils.makeElementFromClass(
@@ -216,8 +222,11 @@ export const NavCardItemStory = () => {
     ${MakeNavItem(1)}
   </div>
   <div slot="footer">${
-    utils.getRandomBool()
-      ? `<p style="font-size:80%;padding-bottom: 10px;text-align:center;">${utils.getRandomText()}</p>`
+    utils.randomBool()
+      ? `<p style="font-size:80%;padding-bottom: 10px;text-align:center;">${utils.randomSentence(
+          1,
+          5
+        )}</p>`
       : ""
   }</div>
 </nav-card>`;

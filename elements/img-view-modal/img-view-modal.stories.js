@@ -92,7 +92,7 @@ export const ImgViewModalStory = () => {
       infoToggled: false,
       kbdToggled: false,
       toolbars: toolbars,
-      title: utils.getRandomText(),
+      title: utils.randomSentence(1, 5),
       emptyslot: `<button>Open Viewer</button>`,
     },
     [

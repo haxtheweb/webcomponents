@@ -658,11 +658,11 @@ export const SimpleFieldsFieldStory = () => {
         type: "checkbox",
       },
     ],
-    type = utils.getRandomOption(types);
+    type = utils.randomOption(types);
   type.disabled = false;
   type.hidden = false;
-  type.required = type.required || utils.getRandomBool();
-  type.inline = utils.getRandomBool();
+  type.required = type.required || utils.randomBool();
+  type.inline = utils.randomBool();
   return utils.makeElementFromClass(SimpleFieldsField, type, css);
 };
 export const SimpleFieldsContainerStory = () => {
@@ -753,8 +753,8 @@ export const SimpleFieldsContainerStory = () => {
         field: `<input type="checkbox" required>`,
       },
     ],
-    type = utils.getRandomOption(types);
-  type.inline = utils.getRandomBool();
+    type = utils.randomOption(types);
+  type.inline = utils.randomBool();
   return utils.makeElementFromClass(SimpleFieldsContainer, type, [
     { slot: "field", title: "Field" },
     { slot: "fieldMeta", title: "Meta Information for Field" },

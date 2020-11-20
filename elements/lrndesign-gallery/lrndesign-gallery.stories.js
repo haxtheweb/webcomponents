@@ -57,7 +57,7 @@ let options = [
     [
       {
         title: "Bird",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         alt: "A bird with bright blue feathers.",
         src: new URL(`demo/images/bird.jpg`, import.meta.url),
         large: new URL(`demo/images/bird.jpg`, import.meta.url),
@@ -66,7 +66,7 @@ let options = [
       {
         title: "Cat",
         alt: "A tabby cat's face.",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/cat.jpeg`, import.meta.url),
         large: new URL(`demo/images/cat.jpeg`, import.meta.url),
         thumbnail: new URL(`demo/images/thumbnails/cat.jpeg`, import.meta.url),
@@ -74,7 +74,7 @@ let options = [
       {
         title: "Dog",
         alt: "A dog tilting its head.",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/dog.jpg`, import.meta.url),
         large: new URL(`demo/images/dog.jpg`, import.meta.url),
         thumbnail: new URL(`demo/images/thumbnails/dog.jpg`, import.meta.url),
@@ -82,7 +82,7 @@ let options = [
       {
         title: "Fish",
         alt: "A bright red-orange fish",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/fish.jpg`, import.meta.url),
         large: new URL(`demo/images/fish.jpg`, import.meta.url),
         thumbnail: new URL(`demo/images/thumbnails/fish.jpg`, import.meta.url),
@@ -91,14 +91,14 @@ let options = [
     [
       {
         title: "Atari",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/atari.jpg`, import.meta.url),
         large: new URL(`demo/images/atari.jpg`, import.meta.url),
         thumbnail: new URL(`demo/images/thumbnails/atari.jpg`, import.meta.url),
       },
       {
         title: "Nintendo",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/nintendo.png`, import.meta.url),
         large: new URL(`demo/images/nintendo.png`, import.meta.url),
         thumbnail: new URL(
@@ -108,21 +108,21 @@ let options = [
       },
       {
         title: "PS4",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/ps4.jpg`, import.meta.url),
         large: new URL(`demo/images/ps4.jpg`, import.meta.url),
         thumbnail: new URL(`demo/images/thumbnails/ps4.jpg`, import.meta.url),
       },
       {
         title: "Sega",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/sega.jpg`, import.meta.url),
         large: new URL(`demo/images/sega.jpg`, import.meta.url),
         thumbnail: new URL(`demo/images/thumbnails/sega.jpg`, import.meta.url),
       },
       {
         title: "XBox",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/xbox.png`, import.meta.url),
         large: new URL(`demo/images/xbox.png`, import.meta.url),
         thumbnail: new URL(`demo/images/thumbnails/xbox.png`, import.meta.url),
@@ -131,14 +131,14 @@ let options = [
     [
       {
         title: "Apple",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/apple.jpg`, import.meta.url),
         large: new URL(`demo/images/apple.jpg`, import.meta.url),
         thumbnail: new URL(`demo/images/thumbnails/apple.jpg`, import.meta.url),
       },
       {
         title: "Banana",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/banana.jpg`, import.meta.url),
         large: new URL(`demo/images/banana.jpg`, import.meta.url),
         thumbnail: new URL(
@@ -148,7 +148,7 @@ let options = [
       },
       {
         title: "Carrot",
-        details: utils.getRandomTextarea(),
+        details: utils.randomParagraph(2, 7),
         src: new URL(`demo/images/carrot.jpeg`, import.meta.url),
         large: new URL(`demo/images/carrot.jpeg`, import.meta.url),
         thumbnail: new URL(
@@ -163,10 +163,10 @@ export const LrndesignGalleryCarousel = () => {
   return utils.makeElementFromClass(
     LrndesignGallery,
     {
-      accentColor: utils.getRandomColor(),
+      accentColor: utils.randomColor(),
       maxWidth: "800px",
       emptyslot: utils
-        .getRandomOption(sources)
+        .randomOption(sources)
         .map(
           (source) =>
             `<figure>
@@ -190,11 +190,11 @@ export const LrndesignGalleryGrid = () => {
   return utils.makeElementFromClass(
     LrndesignGallery,
     {
-      accentColor: utils.getRandomColor(),
+      accentColor: utils.randomColor(),
       layout: "grid",
       maxWidth: "800px",
       emptyslot: utils
-        .getRandomOption(sources)
+        .randomOption(sources)
         .map(
           (source) =>
             `<figure>
@@ -218,11 +218,11 @@ export const LrndesignGalleryMasonry = () => {
   return utils.makeElementFromClass(
     LrndesignGallery,
     {
-      accentColor: utils.getRandomColor(),
+      accentColor: utils.randomColor(),
       layout: "masonry",
       maxWidth: "800px",
       emptyslot: utils
-        .getRandomOption(sources)
+        .randomOption(sources)
         .map(
           (source) =>
             `<figure>
@@ -243,11 +243,11 @@ export const LrndesignGalleryMasonry = () => {
   );
 };
 export const LrndesignGalleryWithJustOneFigure = () => {
-  let source = utils.getRandomOption(utils.getRandomOption(sources));
+  let source = utils.randomOption(utils.randomOption(sources));
   return utils.makeElementFromClass(
     LrndesignGallery,
     {
-      accentColor: utils.getRandomColor(),
+      accentColor: utils.randomColor(),
       maxWidth: "800px",
       emptyslot: `<figure>
         <img srcset="${source.thumbnail || source.src} 480w, ${source.src} 800w"
@@ -268,11 +268,11 @@ export const LrndesignGalleryHaxGizmo = () => {
   return utils.makeElementFromClass(
     LrndesignGallery,
     {
-      accentColor: utils.getRandomColor(),
-      title: utils.getRandomText(),
-      description: utils.getRandomTextarea(),
-      sources: utils.getRandomOption(sources),
-      imagesrc: utils.getRandomImage(),
+      accentColor: utils.randomColor(),
+      title: utils.randomSentence(1, 5),
+      description: utils.randomParagraph(2, 7),
+      sources: utils.randomOption(sources),
+      imagesrc: utils.randomImage(),
       maxWidth: "800px",
     },
     options

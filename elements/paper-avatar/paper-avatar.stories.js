@@ -68,9 +68,7 @@ export const PaperAvatarStory = () => {
     ],
     knobs = utils.getKnobs(props, {
       label: "Your Name Here",
-      colors: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((color) =>
-        utils.getRandomHex()
-      ),
+      colors: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((color) => utils.randomHex()),
     }),
     avatar = utils.makeElement("paper-avatar", knobs);
   return avatar;

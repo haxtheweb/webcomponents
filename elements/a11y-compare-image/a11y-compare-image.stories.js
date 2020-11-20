@@ -16,7 +16,7 @@ export const a11yCompareImageStory = () => {
   return utils.makeElementFromClass(
     a11yCompareImage,
     {
-      opacity: utils.getRandomBool(),
+      opacity: utils.randomBool(),
       top: `<img aria-describedBy="cloudy" src="${new URL(
         `./demo/images/Matterhorn01.png`,
         import.meta.url
