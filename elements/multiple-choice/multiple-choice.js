@@ -627,17 +627,59 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     return {
       preProcessNodeToContent: "haxpreProcessNodeToContent",
       preProcessInsertContent: "haxpreProcessInsertContent",
+      inlineContextMenu: "haxinlineContextMenu",
     };
   }
   /**
-   * Ensure fields don't pass through to HAX if in that context
+   * add buttons when it is in context
+   */
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "icons:add",
+        callback: "haxClickInlineAdd",
+        label: "Add answer",
+      },
+      {
+        icon: "icons:remove",
+        callback: "haxClickInlineRemove",
+        label: "Remove answer",
+      },
+    ];
+  }
+  haxClickInlineAdd(e) {
+    this.resetAnswers();
+    let d = this.answers;
+    d.push({ label: "New answer", correct: false });
+    this.answers = [...d];
+    return true;
+  }
+  haxClickInlineRemove(e) {
+    if (this.answers.length > 0) {
+      this.resetAnswers();
+      let d = this.answers;
+      d.pop();
+      this.answers = [...d];
+      return true;
+    }
+  }
+  /**
+   * HAX preprocess Node to Content hook
    */
   haxpreProcessNodeToContent(node) {
-    node.editorValue = null;
-    node.codePenData = null;
-    node.value = null;
-    node.removeAttribute("value");
-    node.removeAttribute("code-pen-data");
+    // ensure we dont accidently have the answer displayed!
+    if (node.answers) {
+      var answers = [];
+      for (var i = 0; i < node.answers.length; i++) {
+        let val = node.answers[i];
+        // remove userGuess if its set in the DOM
+        if (val.userGuess) {
+          delete val.userGuess;
+        }
+        answers.push(val);
+      }
+      node.answers = [...answers];
+    }
     return node;
   }
   /**

@@ -1955,7 +1955,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }, 0);
     }
     // edge case where we need to force form to update
-    HAXStore.haxTray.refreshActiveNodeForm();
+    HAXStore.refreshActiveNodeForm();
   }
   /**
    * Convert an element from one tag to another.

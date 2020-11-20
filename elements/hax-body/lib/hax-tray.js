@@ -1131,7 +1131,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
-        this.refreshActiveNodeForm();
+        HAXStore.refreshActiveNodeForm();
         this._editModeChanged(this[propName]);
       }
       if (propName == "offsetMargin") {
@@ -1201,7 +1201,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
           this.shadowRoot.querySelector("#settingscollapse").disabled = false;
-          this.refreshActiveNodeForm();
+          HAXStore.refreshActiveNodeForm();
         } else {
           this.activeTagName = "Select an element to configure";
           this.activeTagIcon = "icons:settings";
@@ -1209,13 +1209,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
       }
     });
-  }
-  /**
-   * refresh / rebuild the form based on active item
-   */
-  refreshActiveNodeForm() {
-    this.activeHaxElement = nodeToHaxElement(this.activeNode, null);
-    this._setupForm();
   }
   /**
    * When the preview node is updated, pull schema associated with it

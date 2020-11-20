@@ -2780,7 +2780,16 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     });
     return targets;
   }
-
+  /**
+   * refresh / rebuild the form based on active item
+   */
+  refreshActiveNodeForm() {
+    this.haxTray.activeHaxElement = nodeToHaxElement(
+      this.haxTray.activeNode,
+      null
+    );
+    this.haxTray._setupForm();
+  }
   /**
    * Generate Hax Element prototype.
    */

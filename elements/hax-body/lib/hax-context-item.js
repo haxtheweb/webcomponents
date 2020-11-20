@@ -41,11 +41,12 @@ class HaxContextItem extends LitElement {
           display: inline-flex;
         }
         simple-icon {
-          width: 10px;
+          --simple-icon-width: 10px;
+          --simple-icon-height: 10px;
+          margin-left: -2px;
         }
         :host([menu]) {
           display: flex;
-          width: 100%;
         }
       `,
     ];
@@ -75,7 +76,13 @@ class HaxContextItem extends LitElement {
         ?menu="${this.menu}"
       >
         ${this.more && !this.disabled
-          ? html` <simple-icon icon="hax:expand-more"></simple-icon> `
+          ? html`
+              <simple-icon
+                icon="hax:expand-more"
+                dark
+                contrast="4"
+              ></simple-icon>
+            `
           : ``}
         <slot></slot>
       </hax-toolbar-item>

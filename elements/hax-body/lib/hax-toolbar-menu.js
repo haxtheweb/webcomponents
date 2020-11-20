@@ -14,6 +14,7 @@ class HaxToolbarMenu extends LitElement {
         simple-icon {
           --simple-icon-height: 10px;
           --simple-icon-width: 10px;
+          margin-left: -2px;
         }
         .flip-icon {
           transform: rotateY(180deg);
@@ -46,7 +47,7 @@ class HaxToolbarMenu extends LitElement {
           .class="${this.iconClass}"
           tooltip="${this.tooltip}"
         >
-          <simple-icon dark icon="hax:expand-more"></simple-icon>
+          <simple-icon dark icon="hax:expand-more" contrast="4"></simple-icon>
         </hax-toolbar-item>
         <div slot="options">
           <slot></slot>
