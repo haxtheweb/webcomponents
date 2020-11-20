@@ -6,6 +6,7 @@ import { html, svg, css, LitElement } from "lit-element/lit-element.js";
 import "./simple-icon-lite.js";
 import "./simple-icons.js";
 import { pathResolver, SimpleIconsetStore } from "./simple-iconset.js";
+import { SimpleIconsData } from "./iconsets.js";
 
 /**
  * `simple-iconset-demo`
@@ -99,27 +100,31 @@ class SimpleIconsetDemo extends LitElement {
 
   // render function
   render() {
-    return this.iconsets.map(
-      (iconset) => html`<div class="iconset">
-        <p><strong>${iconset.name}</strong></p>
-        <ul>
-          ${iconset.icons.map(
-            (icon) => html`
-              <li>
-                <div id="icon">
-                  <simple-icon-lite
-                    icon="${iconset.name}:${icon}"
-                  ></simple-icon-lite>
-                  <div id="icon-text">
-                    ${iconset.name === "icons" ? "" : `${iconset.name}:`}${icon}
-                  </div>
-                </div>
-              </li>
-            `
-          )}
-        </ul>
-      </div> `
-    );
+    return this.iconsets.length < 1
+      ? "Looking for iconsets..."
+      : this.iconsets.map(
+          (iconset) => html`<div class="iconset">
+            <p><strong>${iconset.name}</strong></p>
+            <ul>
+              ${iconset.icons.map(
+                (icon) => html`
+                  <li>
+                    <div id="icon">
+                      <simple-icon-lite
+                        icon="${iconset.name}:${icon}"
+                      ></simple-icon-lite>
+                      <div id="icon-text">
+                        ${iconset.name === "icons"
+                          ? ""
+                          : `${iconset.name}:`}${icon}
+                      </div>
+                    </div>
+                  </li>
+                `
+              )}
+            </ul>
+          </div> `
+        );
   }
 
   // properties available to the custom element for data binding
@@ -148,74 +153,34 @@ class SimpleIconsetDemo extends LitElement {
       /**
        * a space-separated list of paths to iconsets.json
        */
-      sources: {
-        attribute: "sources",
-        type: String,
-      },
-      /**
-       * a space-separated list of paths to iconsets.json
-       */
-      __loadedData: {
-        type: Object,
-      },
-      /**
-       * a space-separated list of paths to iconsets.json
-       */
-      __setData: {
-        type: Object,
+      imports: {
+        type: Array,
       },
     };
   }
   constructor() {
     super();
-    this.__setData = {};
-    this.__loadedData = {};
-    this.iconsets = [];
     window.SimpleIconset.requestAvailability();
-    this.loadSources();
+    this.imports = [];
+    this._getIconsets();
   }
+
   updated(changedProperties) {
     changedProperties.forEach((oldVlaue, propName) => {
-      if (propName == "sources") this.loadSources();
-      //if(propName=='include') this.include.forEach(path=>this.up(path))
+      if (propName == "imports") this._getIconsets();
     });
   }
-  loadSources() {
-    let json = new URL("iconsets.json", import.meta.url);
-    (this.sources || (json || {}).href || "").split(" ").forEach((source) => {
-      if (source && !this.__setData[source]) this.loadSource(source);
-    });
-  }
-  loadSource(href) {
-    console.log("loadSource", href);
-    let excludeSets = (this.exclude || "").split(" "),
+  _getIconsets() {
+    let imports = this.imports.length < 1 ? [SimpleIconsData] : this.imports,
+      iconsets = imports.flat(),
+      excludeSets = (this.exclude || "").split(" "),
       includeSets = (this.include || "").split(" ");
-    if (this.__loadedData[href])
-      this.__setData[href] = [...this.__loadedData[href]];
-    fetch(href)
-      .then((response) => response.json())
-      .then((iconsets) => {
-        this.__loadedData[href] = iconsets.map((iconset) => iconset);
-        this.__setData[href] = [...this.__loadedData[href]];
-        console.log(
-          "__setData",
-          href,
-          this.__setData,
-          this.iconsets,
-          this.iconsets,
-          this.iconsets.map(
-            (iconset) => html`<p><strong>${iconset.name}</strong></p>`
-          )
-        );
-        this.iconsets = Object.keys(this.__setData)
-          .map((source) => this.__setData[source])
-          .flat()
-          .filter(
-            (iconset) =>
-              !excludeSets.includes(iconset) &&
-              (!this.include || includeSets.includes(iconset))
-          );
-      });
+
+    this.iconsets = iconsets.filter(
+      (iconset) =>
+        !excludeSets.includes(iconset) &&
+        (!this.include || includeSets.includes(iconset))
+    );
   }
 }
 window.customElements.define(SimpleIconsetDemo.tag, SimpleIconsetDemo);

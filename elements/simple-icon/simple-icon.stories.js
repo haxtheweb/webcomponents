@@ -24,67 +24,191 @@ export default {
   },
 };
 const utils = new StorybookUtilities(),
-  accent = () => {
-    return `accent-color="${select(
-      "accentColor",
-      utils.getColors(),
-      utils.getRandomColor(),
-      "Properties"
-    )}"`;
+  lite = [
+    {
+      property: "icon",
+      inputMethod: "iconpicker",
+    },
+    {
+      css: "--simple-icon-color",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-width",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-height",
+      inputMethod: "text",
+    },
+  ],
+  buttonlite = [
+    {
+      property: "autofocus",
+      inputMethod: "boolean",
+    },
+    {
+      property: "ariaLabelledby",
+      inputMethod: "text",
+    },
+    {
+      property: "controls",
+      inputMethod: "text",
+    },
+    {
+      property: "disabled",
+      inputMethod: "boolean",
+    },
+    {
+      property: "fieldName",
+      inputMethod: "text",
+    },
+    {
+      property: "form",
+      inputMethod: "text",
+    },
+    {
+      property: "label",
+      inputMethod: "text",
+    },
+    {
+      property: "type",
+      inputMethod: "select",
+      options: {
+        button: "button",
+        reset: "reset",
+        submit: "submit",
+      },
+    },
+    {
+      property: "value",
+      inputMethod: "text",
+    },
+    {
+      property: "toggled",
+      inputMethod: "boolean",
+    },
+    {
+      property: "toggles",
+      inputMethod: "boolean",
+    },
+    {
+      css: "--simple-icon-button-padding",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-focus-color",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-toggled-color",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-disabled-color",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-opacity",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-focus-opacity",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-toggled-opacity",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-disabled-opacity",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-border",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-focus-border",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-toggled-border",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-disabled-border",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-background-color",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-focus-background-color",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-toggled-background-color",
+      inputMethod: "text",
+    },
+    {
+      css: "--simple-icon-button-disabled-background-color",
+      inputMethod: "text",
+    },
+  ],
+  props = [
+    {
+      property: "accentColor",
+      inputMethod: "colorpicker",
+    },
+    {
+      property: "contrast",
+      inputMethod: "number",
+      min: 0,
+      max: 4,
+    },
+    {
+      property: "dark",
+      inputMethod: "boolean",
+    },
+    ...lite,
+  ],
+  buttonliteprops = [...lite, ...buttonlite],
+  buttonprops = [...props, ...buttonlite],
+  defaultslite = {
+    icon: utils.randomIcon(),
   },
-  contrast = () => {
-    return `contrast="${number(
-      "contrast",
-      this.getRandomNumber(0, 1, 2, 3, 4),
-      "Properties"
-    )}"`;
-  },
-  dark = () => {
-    return `dark="${bool("dark", utils.getRandomBool(), "Properties")}"`;
-  },
-  icon = () => {
-    return `icon="${select(
-      "icon",
-      window.getStorybookIcons,
-      utils.getRandomIcon(),
-      "Properties"
-    )}"`;
+  defaults = {
+    ...defaultslite,
+    accentColor: utils.randomColor(),
+    dark: false,
   };
 export const SimpleIconsetStory = () => {
   return utils.getDemo(
-    `<iconset-demo></iconset-demo>`,
-    `<p>The following is a full list of icons.</p>`
+    `<simple-iconset-demo></simple-iconset-demo>`,
+    `<p>The following is a full list of simple-iconset:</p>`
   );
 };
 
 export const SimpleIconLiteStory = () => {
-  return utils.getDemo(
-    `<simple-icon-lite ${icon}></simple-icon-lite>`,
-    `<p>The following is a demo of how to use a lite icon.</p>`
-  );
+  return utils.makeElement(SimpleIconLite, utils.getKnobs(lite, defaultslite));
 };
 
 export const SimpleIconButtonLiteStory = () => {
-  return utils.getDemo(
-    `<simple-icon-button-lite ${icon}></simple-icon-button-lite>`,
-    `<p>The following is a demo of how to use a lite icon button.</p>`
+  return utils.makeElement(
+    SimpleIconButtonLite,
+    utils.getKnobs(buttonliteprops, defaultslite)
   );
 };
 
 export const SimpleIconStory = () => {
-  return utils.getDemo(
-    `<simple-icon 
-      accent="${accent}"  contrast="${contrast}"  dark="${dark}"  icon="${icon}">
-    </simple-icon>`,
-    `<p>The following is a demo of how to use an icon.</p>`
-  );
+  return utils.makeElement(SimpleIcon, utils.getKnobs(props, defaults));
 };
 
 export const SimpleIconButtonStory = () => {
-  return utils.getDemo(
-    `<simple-icon-button 
-      accent="${accent}"  contrast="${contrast}"  dark="${dark}"  icon="${icon}">
-    </simple-icon-button>`,
-    `<p>The following is a demo of how to use an icon button.</p>`
+  return utils.makeElement(
+    SimpleIconButton,
+    utils.getKnobs(buttonprops, defaults)
   );
 };
