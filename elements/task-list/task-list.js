@@ -22,28 +22,83 @@ class TaskList extends SchemaBehaviors(LitElement) {
           font-size: var(--task-list-font-size, 18px);
           padding: var(--task-list-padding, 16px);
         }
+        :host([edit-mode]) {
+          outline: 2px dotted black;
+        }
       `,
     ];
   }
   render() {
     return html`
-      <h3><span property="oer:name">${this.name}</span></h3>
-      <ol>
-        ${this.tasks.map(
-          (task) => html`
-            <li>
-              ${task.link
-                ? html`
-                    <a href="${task.link}" property="oer:task">${task.name}</a>
-                  `
-                : html` <span property="oer:task">${task.name}</span> `}
-            </li>
-          `
-        )}
-      </ol>
+      <div id="wrapper">
+        <h3 property="oer:name" ?contenteditable="${this.editMode}">
+          ${this.name}
+        </h3>
+        <ol ?contenteditable="${this.editMode}">
+          ${this.tasks.map(
+            (task) => html`
+              <li>
+                ${task.link
+                  ? html`
+                      <a href="${task.link}" property="oer:task"
+                        >${task.name}</a
+                      >
+                    `
+                  : html` <span property="oer:task">${task.name}</span> `}
+              </li>
+            `
+          )}
+        </ol>
+      </div>
     `;
   }
-
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+      inlineContextMenu: "haxinlineContextMenu",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    if (this.__thereAreChanges) {
+      this.alignState();
+    }
+    this.editMode = val;
+  }
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "icons:add",
+        callback: "haxClickInlineAdd",
+        label: "Add task",
+      },
+      {
+        icon: "icons:remove",
+        callback: "haxClickInlineRemove",
+        label: "Remove task",
+      },
+    ];
+  }
+  haxClickInlineAdd(e) {
+    let d = this.tasks;
+    d.push({ name: "Do this" });
+    this.tasks = [...d];
+    return true;
+  }
+  haxClickInlineRemove(e) {
+    if (this.tasks.length > 0) {
+      let d = this.tasks;
+      d.pop();
+      this.tasks = [...d];
+      return true;
+    }
+  }
   static get tag() {
     return "task-list";
   }
@@ -55,6 +110,12 @@ class TaskList extends SchemaBehaviors(LitElement) {
        */
       name: {
         type: String,
+        reflect: true,
+      },
+      editMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "edit-mode",
       },
       /**
        * Related Resource ID
@@ -79,8 +140,28 @@ class TaskList extends SchemaBehaviors(LitElement) {
     this.tasks = [];
     this.name = "Steps to completion";
   }
+  alignState() {
+    this.name = this.shadowRoot.querySelector("h3").innerText;
+    this.__thereAreChanges = false;
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "editMode") {
+        if (!this[propName]) {
+          if (this._observer) {
+            this._observer.disconnect();
+          }
+        } else {
+          this._observer = new MutationObserver((mutations) => {
+            this.__thereAreChanges = true;
+          });
+          this._observer.observe(this.shadowRoot.querySelector("#wrapper"), {
+            childList: true,
+            subtree: true,
+            characterData: true,
+          });
+        }
+      }
       let notifiedProps = ["tasks"];
       if (notifiedProps.includes(propName)) {
         // notify
