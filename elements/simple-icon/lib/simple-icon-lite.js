@@ -43,7 +43,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
     // render function
     render() {
       return svg`
-        <svg xmlns="http://www.w3.org/2000/svg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <filter
             color-interpolation-filters="sRGB"
             x="0"
@@ -150,6 +150,8 @@ class SimpleIconLite extends SimpleIconBehaviors(LitElement) {
   }
   constructor() {
     super();
+    window.SimpleIconset.requestAvailability();
+    console.log("SimpleIconset", window.SimpleIconset.instance.iconsets);
   }
 }
 customElements.define(SimpleIconLite.tag, SimpleIconLite);

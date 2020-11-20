@@ -1,9 +1,10 @@
 import { html } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
-import { IconsetDemo } from "@lrnwebcomponents/iconset-demo/iconset-demo.js";
-import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-demo-helpers/demo-snippet.js";
+import { SimpleIconsetDemo } from "@lrnwebcomponents/simple-icon/lib/simple-iconset-demo.js";
+import { SimpleIcon } from "@lrnwebcomponents/simple-icon/simple-icon.js";
+import { SimpleIconLite } from "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 
 import {
   withKnobs,
@@ -32,7 +33,7 @@ let containerdules = import.meta.url.match(/node_modules/)
 window.WCGlobalBasePath = containerdules;
 
 window.getStorybookIconset = () => {
-  let iconset = document.createElement("iconset-demo");
+  let iconset = document.createElement("simple-iconset-demo");
   iconset.hidden = true;
   document.body.appendChild(iconset);
   return iconset;
@@ -44,9 +45,13 @@ window.StorybookIconset =
 
 window.getStorybookIcons = () => {
   let iconset = window.StorybookIconset,
-    list = iconset && iconset.__iconList ? iconset.__iconList : [[]],
-    icons = list
-      .map((group) => group.icons.map((icon) => icon.replace(/^icons\:/, "")))
+    iconsets = iconset && iconset.iconsets ? iconset.iconsets : [[]],
+    icons = iconsets
+      .map((iconset) =>
+        iconset.icons.map((icon) =>
+          iconset.name == "icons" ? icon : `${iconset.name}:${icon}`
+        )
+      )
       .flat();
   return icons;
 };
@@ -67,6 +72,24 @@ export class StorybookUtilities {
         min: 4,
       },
     });
+  }
+
+  getIconsets(demo, sources, excludes, includes) {
+    let demo = document.createElement(demo),
+      iconsets;
+    demo.sources = sources;
+    demo.excludes = excludes;
+    demo.includes = includes;
+    demo.hidden = true;
+    document.body.appendChild(demo);
+    iconsets = iconset && iconset.iconsets ? iconset.iconsets : [[]];
+    return iconsets
+      .map((iconset) =>
+        iconset.icons.map((icon) =>
+          iconset.name == "icons" ? icon : `${iconset.name}:${icon}`
+        )
+      )
+      .flat();
   }
 
   /**
@@ -358,7 +381,9 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   getRandomIcon(includeNull = false) {
-    let random = this.getRandomOption(window.StorybookIcons);
+    let random = this.getRandomOption(
+      window.StorybookIcons || ["star", "check", "history"]
+    );
     return includeNull ? this.getRandomOption([...random, ""]) : random;
   }
 
