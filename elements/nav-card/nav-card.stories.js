@@ -37,7 +37,7 @@ const NavItem = (index) => {
         : utils.randomIcon(),
     initials:
       type === "label"
-        ? utils.randomOption("", label.innerHTML, utils.randomSentence(1, 5))
+        ? utils.randomOption("", label.innerHTML, utils.randomPhrase(1, 5))
         : undefined,
     description: tag
       ? `<${tag} id="${descBy}" slot="description">${utils.randomSentence(
@@ -68,8 +68,8 @@ export const NavCardStory = () => {
   return utils.makeElementFromClass(
     NavCard,
     {
-      heading: utils.randomSentence(1, 5),
-      subheading: utils.randomBool() ? utils.randomSentence(1, 5) : undefined,
+      heading: utils.randomPhrase(1, 5),
+      subheading: utils.randomBool() ? utils.randomPhrase(1, 5) : undefined,
       content: utils.randomParagraph(2, 7),
       footer: utils.randomBool()
         ? `<p style="font-size:80%;padding-bottom: 10px;text-align:center;">${utils.randomSentence(
@@ -155,9 +155,9 @@ export const NavCardItemStory = () => {
   let card = `<nav-card 
   color="${utils.randomColor()}" 
   image-src="${utils.randomImage()}">
-  <div slot="heading">${utils.randomSentence(1, 5)}</div>
+  <div slot="heading">${utils.randomPhrase(1, 5)}</div>
   <div slot="subheading">${
-    utils.randomBool() ? utils.randomSentence(1, 5) : ""
+    utils.randomBool() ? utils.randomPhrase(1, 5) : ""
   }</div>
   <div slot="content">${utils.randomParagraph(2, 7)}</div>
   <div slot="linklist">

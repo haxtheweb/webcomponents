@@ -269,7 +269,7 @@ export const LrndesignGalleryHaxGizmo = () => {
     LrndesignGallery,
     {
       accentColor: utils.randomColor(),
-      title: utils.randomSentence(1, 5),
+      title: utils.randomPhrase(1, 5),
       description: utils.randomParagraph(2, 7),
       sources: utils.randomOption(sources),
       imagesrc: utils.randomImage(),

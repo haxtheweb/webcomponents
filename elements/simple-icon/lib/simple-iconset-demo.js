@@ -179,6 +179,7 @@ class SimpleIconsetDemo extends LitElement {
 
     this.iconsets = iconsets.filter(
       (iconset) =>
+        !!iconset &&
         !excludeSets.includes(iconset) &&
         (!this.include || includeSets.includes(iconset))
     );

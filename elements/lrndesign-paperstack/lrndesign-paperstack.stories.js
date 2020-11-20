@@ -31,7 +31,7 @@ export const LrndesignPaperstackStory = () => {
       icon: utils.randomIcon(),
       accentColor: utils.randomColor(),
       dark: utils.randomBool(),
-      title: utils.randomSentence(1, 5),
+      title: utils.randomPhrase(1, 5),
       emptyslot: utils.randomParagraph(3, 7),
     },
     [

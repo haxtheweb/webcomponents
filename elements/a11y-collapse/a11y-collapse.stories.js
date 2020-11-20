@@ -31,7 +31,7 @@ export const A11yCollapseGroupStory = () => {
         .map(
           (i) =>
             `<a11y-collapse id="Item ${i}">
-          <p slot="heading">${utils.randomSentence(1, 5)}</p>
+          <p slot="heading">${utils.randomPhrase(1, 5)}</p>
           <div slot="content">${utils.randomParagraph(2, 7)}</div>
           </a11y-collapse>`
         )
@@ -47,7 +47,7 @@ export const A11yCollapseStory = () => {
   return utils.makeElementFromClass(
     A11yCollapse,
     {
-      heading: `<p>${utils.randomSentence(1, 5)}</p>`,
+      heading: `<p>${utils.randomPhrase(1, 5)}</p>`,
       content: utils.randomParagraph(2, 7),
       icon: "add",
     },

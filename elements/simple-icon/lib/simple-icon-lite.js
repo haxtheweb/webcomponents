@@ -47,7 +47,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
             x="0"
             y="0"
             height="24px"
-            width="24px%"
+            width="24px"
           >
             ${this.feFlood}
             <feComposite operator="in" in="COLOR" in2="SourceAlpha" />

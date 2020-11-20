@@ -46,7 +46,7 @@ export const AccentCardStory = () => {
     AccentCard,
     {
       ...defaultData,
-      heading: utils.randomSentence(1, 5),
+      heading: utils.randomPhrase(1, 5, true, utils.randomBool()),
       content: utils.randomParagraph(2, 7),
       maxWidth: "600px",
     },
