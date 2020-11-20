@@ -7,7 +7,6 @@ const replace = require("gulp-replace");
 const stripCssComments = require("strip-css-comments");
 const decomment = require("decomment");
 const packageJson = require("./package.json");
-
 // merge all the src files together
 gulp.task("merge", () => {
   return gulp
@@ -141,6 +140,7 @@ gulp.task("watch", () => {
   return gulp.watch("./src/*", gulp.series("merge", "analyze"));
 });
 
+// simple developer flow
 gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
 // walk the tree and build the icon structure
@@ -151,7 +151,6 @@ function dirTree(filename) {
   if (stats.isDirectory()) {
     info = {
       name: path.basename(filename),
-      path: filename,
       icons: fs.readdirSync(filename).map(function(child) {
         return dirTree(filename + '/' + child);
       })
@@ -167,8 +166,9 @@ function dirTree(filename) {
 // discover iconset and build json structure
 gulp.task("iconset", (done) => {
   const path = "./lib/svgs";
-  const jsonContent = JSON.stringify(dirTree(path).icons, null, 2);  
-  fs.writeFile("./lib/iconsets.json", jsonContent, 'utf8', function (err) {
+  const jsonContent = JSON.stringify(dirTree(path).icons, null, 2); 
+  const iconVar =  `export const ${package.wcfactory.className}Data = ${jsonContent};`
+  fs.writeFile("./lib/iconsets.json", iconVar, 'utf8', function (err) {
       if (err) {
           console.log("An error occured while writing JSON Object to File.");
           return console.log(err);
