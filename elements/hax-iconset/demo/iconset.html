@@ -12,22 +12,22 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../hax-iconset.js';
       import '../lib/simple-hax-iconset.js';
-      import '@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js';
-      import '@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js';
-      import '@lrnwebcomponents/simple-icon/simple-icon.js';
-      import '@lrnwebcomponents/simple-icon/lib/simple-icon-button.js';
+      import '@lrnwebcomponents/simple-icon/lib/simple-iconset-demo.js';
+      import { HaxIconsetManifest } from "../lib/hax-iconset-manifest.js";
+      window.HaxIconsetManifest = HaxIconsetManifest;
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h2>hax-iconset Demo</h2>
+      <h1>hax-iconset</h1>
       <demo-snippet>
         <template>
-          <simple-icon accent-color="red" icon="hax:code-json"></simple-icon>
-          <simple-icon-button accent-color="indigo" dark icon="drawing:draw-poly"></simple-icon-button>
-          <simple-icon-button-lite icon="lrn:instructor"></simple-icon-button-lite>
-          <a href="#"><simple-icon-lite icon="hax:remix"></simple-icon-lite> Link</a>
+          <script>
+            let demo = document.getElementById('demo');
+            demo.imports = [ window.HaxIconsetManifest ];
+          </script>
+          <simple-iconset-demo id="demo"></simple-iconset-demo>
         </template>
       </demo-snippet>
     </div>
