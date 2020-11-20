@@ -1,21 +1,28 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-range-input/simple-range-input.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `a11y-compare-image`
  * Layers images over each other with a slider interface to compare them
  * @demo demo/index.html
  * @element a11y-compare-image
  */
-class a11yCompareImage extends LitElement {
+class a11yCompareImage extends SimpleColors {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: inline-flex;
           margin: 15px 0;
+          --simple-range-input-track-height: 4px;
+          --simple-range-input-pin-height: 20px;
+          --simple-range-offet: calc(
+            var(--simple-range-input-pin-height, 20px) / 2
+          );
         }
         :host([hidden]) {
           display: none !important;
@@ -57,20 +64,26 @@ class a11yCompareImage extends LitElement {
           width: 100%;
         }
         #slider {
-          top: 0;
+          top: calc(0px - var(--simple-range-offet, 10px));
           left: 0;
-          padding-top: 10px;
           position: absolute;
-          width: calc(100% + 32px);
-          margin: -15px 0 0 -16px;
+          width: 100%;
+          margin: 0;
         }
         .marker {
-          top: 6px;
+          top: calc(0px - var(--simple-range-input-pin-height, 20px) / 2);
           position: absolute;
           width: 1px;
-          outline: 2px solid #bbb;
-          background-color: #bbb;
-          padding-top: 10px;
+          outline: 1px solid
+            var(
+              --simple-range-input-bg,
+              var(--simple-colors-default-theme-accent-2, grey)
+            );
+          background-color: var(
+            --simple-range-input-color,
+            var(--simple-colors-default-theme-accent-8, grey)
+          );
+          padding-top: var(--simple-range-input-pin-height, 20px);
         }
         ::slotted([slot="bottom"]) {
           max-width: 100%;
@@ -81,8 +94,10 @@ class a11yCompareImage extends LitElement {
   constructor() {
     super();
     this.opacity = false;
-    this.position = 0;
+    this.position = 50;
+    this.accentColor = "blue";
     this.__markers = [];
+    this._slide();
   }
   render() {
     return html`
@@ -107,10 +122,17 @@ class a11yCompareImage extends LitElement {
         <div id="input">
           ${this.__markers.map(
             (marker) =>
-              html` <div class="marker" style="left: ${marker}%;"></div> `
+              html`
+                <div
+                  class="marker"
+                  style="left: ${marker}%;"
+                  ?hidden="${marker == 100}"
+                ></div>
+              `
           )}
           <simple-range-input
-            accent-color="blue"
+            accent-color="${this.accentColor}"
+            ?dark="${this.dark}"
             id="slider"
             @immediate-value-changed="${this._valueChanged}"
             .value="${this.position}"
@@ -158,7 +180,7 @@ class a11yCompareImage extends LitElement {
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "position") {
+      if (propName === "position" && this.propName !== oldValue) {
         this._slide();
       }
     });
@@ -181,11 +203,11 @@ class a11yCompareImage extends LitElement {
     let lastSection = section * active;
     // How far we are into the current section.
     let relativePosition = this.position - lastSection;
-    // Percentage into the current section
+    /* Percentage into the current section
     if (this.position === 100 && relativePosition === 0) {
     } else {
       this.position = (relativePosition * 100) / section || 0;
-    }
+    }*/
     // Set background images
     this.__upper = layers[active + 1]
       ? layers[active + 1].src
@@ -195,13 +217,13 @@ class a11yCompareImage extends LitElement {
     if (total - 1 != this.__markers.length) {
       this._updateMarkers(total);
     }
-    if (this.opacity === false) {
+    if (container && this.opacity === false) {
       container.style.setProperty(
         "--a11y-compare-image-width",
         this.position + "%"
       );
       container.style.setProperty("--a11y-compare-image-opacity", 1);
-    } else {
+    } else if (container) {
       container.style.setProperty("--a11y-compare-image-width", "100%");
       container.style.setProperty(
         "--a11y-compare-image-opacity",
