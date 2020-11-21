@@ -22,11 +22,12 @@ export default {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },
 };
-const utils = new StorybookUtilities(),
-  json = new URL("./lib/iconsets.json", import.meta.url),
-  href = json && json.href ? json.href : "";
+const utils = new StorybookUtilities();
 export const HaxIconsetStory = () => {
-  return html`<simple-iconset-demo
-    .imports=${[HaxIconsetManifest]}
-  ></simple-iconset-demo>`;
+  return utils.makeElementFromClass(
+    SimpleIconsetDemo,
+    { imports: [HaxIconsetManifest] },
+    [],
+    ["exclude", "include", "iconsets"]
+  );
 };

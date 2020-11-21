@@ -36,7 +36,7 @@ const props = [
 ];
 const knobs = (propData) =>
   utils.getKnobs(propData, { parent: utils.randomOption(parents) });
-export const RelativeHeadingLiteStory = () => {
+export const RelativeHeadingStory = () => {
   return utils.getDemo(
     `<relative-heading id="lorem">
   <h1>Lorem ipsum dolor</h1>
@@ -67,7 +67,7 @@ export const RelativeHeadingLiteStory = () => {
   );
 };
 
-export const RelativeHeadingStory = () => {
+export const RelativeHeadingLiteStory = () => {
   return utils.getDemo(
     `<relative-heading-lite id="lorem">
   <h1>Lorem ipsum dolor</h1>
