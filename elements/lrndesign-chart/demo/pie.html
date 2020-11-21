@@ -18,18 +18,42 @@
       <h3>Basic lrndesign-pie demo</h3>
       <demo-snippet>
         <style>
-            lrndesign-pie {
-              width: 300px;
-              height: 300px;
-              display: inline-block;
-              padding: 20px;
-            }
+          lrndesign-pie {
+            display: inline-block;
+            width: calc(50% - 30px);
+            max-width: 300px;
+            padding: 20px;
+          }
         </style>
         <template>
           <lrndesign-pie chart-title="A pie chart of favorite foods" data-source="pie.csv"></lrndesign-pie>
-          <lrndesign-pie dark chart-title="A pie chart of favorite foods" data-source="pie.csv"></lrndesign-pie>
+          <lrndesign-pie dark>
+            <h3 slot="heading">A pie chart of favorite pies</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Key Lime</th><th scope="col">Lemon Merangue</th><th scope="col">Apple</th><th scope="col">Pumpkin</th><th scope="col">Cherry</th><th scope="col">Pecan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>23</td><td>15</td><td>40</td><td>30</td><td>12</td><td>20</td></tr>
+              </tbody>
+            </table>
+          </lrndesign-pie>
           <lrndesign-pie accent-color="blue" chart-title="A pie chart of favorite foods" data-source="pie.csv" donut></lrndesign-pie>
-          <lrndesign-pie dark accent-color="blue" chart-title="A pie chart of favorite foods" data-source="pie.csv" donut show-table></lrndesign-pie>
+          <lrndesign-pie dark accent-color="blue" donut show-table>
+            <h3 slot="heading">A donut chart of favorite donuts</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Boston Cream</th><th scope="col">Glazed</th><th scope="col">Jelly Filled</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>20</td><td>15</td><td>40</td></tr>
+              </tbody>
+            </table>
+          </lrndesign-pie>
         </template>
       </demo-snippet>
     </div>
