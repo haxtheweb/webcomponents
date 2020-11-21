@@ -56,8 +56,8 @@ class SimpleModal extends LitElement {
           color: var(--simple-modal-titlebar-color, #444);
           background-color: var(--simple-modal-titlebar-background, #ddd);
           border-radius: 0;
-          height: var(--simple-modal-titlebar-height, 64px);
-          line-height: var(--simple-modal-titlebar-line-height, 64px);
+          height: var(--simple-modal-titlebar-height, unset);
+          line-height: var(--simple-modal-titlebar-line-height, unset);
         }
 
         #headerbar {
@@ -70,6 +70,7 @@ class SimpleModal extends LitElement {
         h2 {
           margin-right: 8px;
           padding: 0;
+          margin: 0;
           flex: auto;
           font-size: 18px;
           line-height: 18px;
@@ -128,8 +129,11 @@ class SimpleModal extends LitElement {
             --simple-modal-buttons-background
           );
         }
+        web-dialog {
+          --dialog-border-radius: var(--simple-modal-border-radius, 2px);
+        }
         web-dialog::part(dialog) {
-          border: 2px solid black;
+          border: 1px solid var(--simple-modal-border-color, #222);
           padding: 0;
         }
       `,
