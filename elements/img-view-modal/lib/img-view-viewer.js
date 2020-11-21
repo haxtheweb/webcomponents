@@ -218,14 +218,18 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           `
         : ""}
       <div id="container">
-        ${this.getToolbars(this.defaultToolbars, this.toolbars, "top")}
+        ${this.getToolbars("top")}
         <div>
-          <div id="viewer"></div>
+          <div
+            id="viewer"
+            style="height:calc(var(--img-view-viewer-height, 500px) - ${this
+              .toolbarsHeight}px)"
+          ></div>
         </div>
         <div id="placeholder">
           <div id="info" ?hidden="${!this.info}">${this.info}</div>
         </div>
-        ${this.getToolbars(this.defaultToolbars, this.toolbars, "bottom")}
+        ${this.getToolbars("bottom")}
       </div>
     `;
   }
@@ -266,13 +270,18 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       __screenfullLoaded: { type: Boolean },
     };
   }
-  getToolbars(defaultToolbars, customToolbars, topOrBottom = "bottom") {
-    let toolbars = customToolbars || defaultToolbars,
+  get toolbarsHeight() {
+    let height = 0,
+      toolbars = this.customToolbars || this.toolbars;
+    if (toolbars.top) height += 52;
+    if (toolbars.bottom) height += 52;
+    return height;
+  }
+  getToolbars(topOrBottom = "bottom") {
+    let toolbars = this.customToolbars || this.toolbars,
       toolbar =
-        toolbars && toolbars[topOrBottom]
-          ? toolbars[topOrBottom]
-          : { id: topOrBottom, contents: "" },
-      div = this._item(toolbar, topOrBottom === "top");
+        toolbars && toolbars[topOrBottom] ? toolbars[topOrBottom] : false,
+      div = toolbar ? this._item(toolbar, topOrBottom === "top") : "";
     return div;
   }
   /**
