@@ -107,8 +107,8 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
               @click="${this._cancel}"
               tabindex="0"
             >
-              <simple-icon id="icon" aria-hidden="true" icon="clear">
-              </simple-icon>
+              <simple-icon-lite id="icon" aria-hidden="true" icon="clear">
+              </simple-icon-lite>
               <span id="label" class="offscreen">Cancel</span>
             </button>
             <simple-tooltip id="tooltip" for="cancel">Cancel</simple-tooltip>
@@ -119,8 +119,8 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
               @click="${this._confirm}"
               tabindex="0"
             >
-              <simple-icon id="icon" aria-hidden="true" icon="check">
-              </simple-icon>
+              <simple-icon-lite id="icon" aria-hidden="true" icon="check">
+              </simple-icon-lite>
               <span id="label" class="offscreen">OK</span>
             </button>
             <simple-tooltip id="tooltip" for="confirm">OK</simple-tooltip>

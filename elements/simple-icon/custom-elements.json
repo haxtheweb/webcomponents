@@ -7,15 +7,116 @@
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
+          "name": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string"
+        },
+        {
+          "name": "controls",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "field-name",
+          "type": "string"
+        },
+        {
+          "name": "form",
+          "type": "string"
+        },
+        {
           "name": "icon",
           "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "\"button\""
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "toggles",
+          "type": "boolean"
+        },
+        {
+          "name": "toggled",
+          "type": "boolean"
         }
       ],
       "properties": [
         {
+          "name": "autofocus",
+          "attribute": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "ariaLabelledby",
+          "attribute": "aria-labelledby",
+          "type": "string"
+        },
+        {
+          "name": "controls",
+          "attribute": "controls",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "fieldName",
+          "attribute": "field-name",
+          "type": "string"
+        },
+        {
+          "name": "form",
+          "attribute": "form",
+          "type": "string"
+        },
+        {
           "name": "icon",
           "attribute": "icon",
           "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string",
+          "default": "\"button\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string"
+        },
+        {
+          "name": "toggles",
+          "attribute": "toggles",
+          "type": "boolean"
+        },
+        {
+          "name": "toggled",
+          "attribute": "toggled",
+          "type": "boolean"
         }
       ]
     },
@@ -25,15 +126,116 @@
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
+          "name": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string"
+        },
+        {
+          "name": "controls",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "field-name",
+          "type": "string"
+        },
+        {
+          "name": "form",
+          "type": "string"
+        },
+        {
           "name": "icon",
           "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "\"button\""
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "toggles",
+          "type": "boolean"
+        },
+        {
+          "name": "toggled",
+          "type": "boolean"
         }
       ],
       "properties": [
         {
+          "name": "autofocus",
+          "attribute": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "ariaLabelledby",
+          "attribute": "aria-labelledby",
+          "type": "string"
+        },
+        {
+          "name": "controls",
+          "attribute": "controls",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "fieldName",
+          "attribute": "field-name",
+          "type": "string"
+        },
+        {
+          "name": "form",
+          "attribute": "form",
+          "type": "string"
+        },
+        {
           "name": "icon",
           "attribute": "icon",
           "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string",
+          "default": "\"button\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string"
+        },
+        {
+          "name": "toggles",
+          "attribute": "toggles",
+          "type": "boolean"
+        },
+        {
+          "name": "toggled",
+          "attribute": "toggled",
+          "type": "boolean"
         }
       ]
     },
@@ -48,8 +250,52 @@
           "default": "4"
         },
         {
+          "name": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string"
+        },
+        {
+          "name": "controls",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "field-name",
+          "type": "string"
+        },
+        {
+          "name": "form",
+          "type": "string"
+        },
+        {
           "name": "icon",
           "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "toggles",
+          "type": "boolean"
+        },
+        {
+          "name": "toggled",
+          "type": "boolean"
         },
         {
           "name": "accent-color",
@@ -72,9 +318,64 @@
           "default": "4"
         },
         {
+          "name": "autofocus",
+          "attribute": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "ariaLabelledby",
+          "attribute": "aria-labelledby",
+          "type": "string"
+        },
+        {
+          "name": "controls",
+          "attribute": "controls",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "fieldName",
+          "attribute": "field-name",
+          "type": "string"
+        },
+        {
+          "name": "form",
+          "attribute": "form",
+          "type": "string"
+        },
+        {
           "name": "icon",
           "attribute": "icon",
           "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string"
+        },
+        {
+          "name": "toggles",
+          "attribute": "toggles",
+          "type": "boolean"
+        },
+        {
+          "name": "toggled",
+          "attribute": "toggled",
+          "type": "boolean"
         },
         {
           "name": "accentColor",
@@ -107,8 +408,52 @@
           "default": "4"
         },
         {
+          "name": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string"
+        },
+        {
+          "name": "controls",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "field-name",
+          "type": "string"
+        },
+        {
+          "name": "form",
+          "type": "string"
+        },
+        {
           "name": "icon",
           "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "toggles",
+          "type": "boolean"
+        },
+        {
+          "name": "toggled",
+          "type": "boolean"
         },
         {
           "name": "accent-color",
@@ -131,9 +476,64 @@
           "default": "4"
         },
         {
+          "name": "autofocus",
+          "attribute": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "ariaLabelledby",
+          "attribute": "aria-labelledby",
+          "type": "string"
+        },
+        {
+          "name": "controls",
+          "attribute": "controls",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "fieldName",
+          "attribute": "field-name",
+          "type": "string"
+        },
+        {
+          "name": "form",
+          "attribute": "form",
+          "type": "string"
+        },
+        {
           "name": "icon",
           "attribute": "icon",
           "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string"
+        },
+        {
+          "name": "toggles",
+          "attribute": "toggles",
+          "type": "boolean"
+        },
+        {
+          "name": "toggled",
+          "attribute": "toggled",
+          "type": "boolean"
         },
         {
           "name": "accentColor",
@@ -194,6 +594,61 @@
           "attribute": "no-colorize",
           "type": "boolean",
           "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "simple-iconset-demo",
+      "path": "./lib/simple-iconset-demo.js",
+      "description": "`simple-iconset-demo`",
+      "attributes": [
+        {
+          "name": "exclude",
+          "description": "a space-separated blacklist of iconsets by name",
+          "type": "string"
+        },
+        {
+          "name": "iconsets",
+          "description": "a space-separated list of paths to iconsets.json",
+          "type": "array"
+        },
+        {
+          "name": "include",
+          "description": "a space-separated whitelist of iconsets by name",
+          "type": "string"
+        },
+        {
+          "name": "imports",
+          "description": "a space-separated list of paths to iconsets.json",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "exclude",
+          "attribute": "exclude",
+          "description": "a space-separated blacklist of iconsets by name",
+          "type": "string"
+        },
+        {
+          "name": "iconsets",
+          "attribute": "iconsets",
+          "description": "a space-separated list of paths to iconsets.json",
+          "type": "array"
+        },
+        {
+          "name": "include",
+          "attribute": "include",
+          "description": "a space-separated whitelist of iconsets by name",
+          "type": "string"
+        },
+        {
+          "name": "imports",
+          "attribute": "imports",
+          "description": "a space-separated list of paths to iconsets.json",
+          "type": "array",
+          "default": "[]"
         }
       ]
     },

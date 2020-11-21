@@ -17,7 +17,7 @@ export const ProgressDonutStory = () => {
   return utils.makeElementFromClass(
     ProgressDonut,
     {
-      accentColor: utils.getRandomColor(),
+      accentColor: utils.randomColor(),
       animation: 500,
       animationDelay: 500,
       desc:

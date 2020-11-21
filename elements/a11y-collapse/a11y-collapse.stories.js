@@ -31,8 +31,8 @@ export const A11yCollapseGroupStory = () => {
         .map(
           (i) =>
             `<a11y-collapse id="Item ${i}">
-          <p slot="heading">${utils.getRandomText()}</p>
-          <div slot="content">${utils.getRandomTextarea()}</div>
+          <p slot="heading">${utils.randomPhrase(1, 5)}</p>
+          <div slot="content">${utils.randomParagraph(2, 7)}</div>
           </a11y-collapse>`
         )
         .join(""),
@@ -47,8 +47,8 @@ export const A11yCollapseStory = () => {
   return utils.makeElementFromClass(
     A11yCollapse,
     {
-      heading: `<p>${utils.getRandomText()}</p>`,
-      content: utils.getRandomTextarea(),
+      heading: `<p>${utils.randomPhrase(1, 5)}</p>`,
+      content: utils.randomParagraph(2, 7),
       icon: "add",
     },
     [

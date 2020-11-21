@@ -171,7 +171,7 @@ export const SimpleSymbolPickerStory = () => {
     SimpleSymbolPicker,
     utils.getKnobs([...props, ...css], {
       label: "Pick a symbol",
-      symbolTypes: utils.getRandomOption([
+      symbolTypes: utils.randomOption([
         "symbols",
         "math",
         "characters",
@@ -203,7 +203,7 @@ export const SimpleEmojiPickerStory = () => {
     SimpleEmojiPicker,
     utils.getKnobs([...props, ...css], {
       label: "Pick an emoji",
-      emojiTypes: utils.getRandomOption([
+      emojiTypes: utils.randomOption([
         "emotions",
         "people",
         "nature",

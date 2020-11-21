@@ -78,8 +78,20 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
         }
         .card.feed {
           font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
-          --paper-avatar-width: var(--nav-card-linklist-left-size, 36px);
+          --lrndesign-avatar-width: var(--nav-card-linklist-left-size, 36px);
+          --nav-card-item-avatar-width: var(
+            --nav-card-linklist-left-size,
+            36px
+          );
+          --nav-card-item-avatar-height: var(
+            --nav-card-linklist-left-size,
+            36px
+          );
+        }
+        .card.due,
+        .card.recent {
           --nav-card-linklist-left-size: 36px;
+          --nav-card-item-avatar-size: 40px;
         }
         .card.secondary nav-card {
           border: none !important;
@@ -115,7 +127,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
         accent-card td {
           text-align: right;
         }
-        accent-card th iron-icon {
+        accent-card th simple-icon-lite {
           width: 20px;
           height: 20px;
         }
@@ -146,10 +158,6 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           }
           .card.primary {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
-          }
-          .card.due {
-            --lrndesign-avatar-border-radius: 0%;
-            --nav-card-item-avatar-width: 40px;
           }
         }
         @media screen and (min-width: 900px) {
@@ -192,7 +200,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                     <tbody>
                       <tr>
                         <th scope="row">
-                          <iron-icon icon="assignment-turned-in"></iron-icon>
+                          <simple-icon-lite
+                            icon="assignment-turned-in"
+                          ></simple-icon-lite>
                           Assignments Completed
                         </th>
                         <td>
@@ -212,7 +222,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                         : html`
                             <tr>
                               <th scope="row">
-                                <iron-icon icon="star"></iron-icon>
+                                <simple-icon-lite
+                                  icon="star"
+                                ></simple-icon-lite>
                                 Submissions Featured
                               </th>
                               <td>
@@ -224,7 +236,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           `}
                       <tr>
                         <th scope="row">
-                          <iron-icon icon="communication:forum"></iron-icon>
+                          <simple-icon-lite
+                            icon="communication:forum"
+                          ></simple-icon-lite>
                           Peer Reviews Written
                         </th>
                         <td>
@@ -261,7 +275,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                             id="due-${a.id}"
                             aria-describedby="due-${a.id}-desc"
                             slot="label"
-                            href="/assignments?assignments=${a.id}"
+                            href="/assignments/${a.id}"
                           >
                             ${a.assignment}
                           </elmsln-studio-link>
@@ -286,7 +300,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           <h2>Recent Work</h2>
           <nav-card
             accent-color="amber"
-            class="card primary"
+            class="card primary recent"
             link-icon="chevron-right"
           >
             <span slot="heading">My Submissions</span>
@@ -360,7 +374,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           id="feed-${f.id}"
                           aria-describedby="feed-${f.id}-desc"
                           slot="label"
-                          href="/project/${f.portfolioId}?submission${f.submissionId}&comment=${f.id}"
+                          href="/project/${f.portfolioId}?submission=${f.submissionId}&comment=${f.id}"
                         >
                           ${[f.firstName, f.lastName].join(" ")}'s feedback on
                           ${f.assignment}

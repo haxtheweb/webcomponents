@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 
 const ChartistRenderSuper = function (SuperClass) {
   return class extends SuperClass {
@@ -1082,17 +1081,7 @@ const ChartistRenderSuper = function (SuperClass) {
           class="${this.showTable ? "table" : "table sr-only"}"
         >
           <slot></slot>
-        </div>
-        ${this.dataSource != ""
-          ? html`
-              <iron-ajax
-                auto
-                handle-as="text"
-                url="${this.dataSource}"
-                @response="${this._handleResponse}"
-              ></iron-ajax>
-            `
-          : ``}`;
+        </div>`;
     }
 
     // properties available to the custom element for data binding
@@ -1333,7 +1322,8 @@ Container class	Ratio
      * @returns {object}
      */
     get observer() {
-      let callback = () => this._updateData();
+      let callback = (mutationsList, observer) =>
+        this._updateData(mutationsList, observer);
       return new MutationObserver(callback);
     }
 
@@ -1366,6 +1356,10 @@ Container class	Ratio
               detail: this,
             })
           );
+          if (this.dataSource !== "")
+            fetch(this.dataSource)
+              .then((response) => response.text())
+              .then((data) => (this.data = this._CSVtoArray(data)));
         } else if (
           propName === "data" &&
           JSON.stringify(this.data) !== JSON.stringify(oldValue)
@@ -1617,15 +1611,6 @@ Container class	Ratio
     }
 
     /**
-     * Convert from csv text to an array in the table function
-     * @param {event} e event data
-     * @memberof ChartistRender
-     */
-    _handleResponse(e) {
-      this.data = this._CSVtoArray(e.detail.response);
-    }
-
-    /**
      * uses ESGlobalBridge to load scripts
      *
      * @param {string} classname class to import from script
@@ -1646,7 +1631,7 @@ Container class	Ratio
     _renderTable() {
       let html = "",
         table = this.querySelector("table"),
-        data = this.data ? [this.data.labels, this.data.series] : false;
+        data = this.data; // ? [this.data.labels, this.data.series] : false;
       if (data) {
         let rowHeads = data[1] && data[1][0] && isNaN(data[1][0]),
           colHeads =
@@ -1726,7 +1711,7 @@ Container class	Ratio
     /**
      * Updates data from table
      */
-    _updateData() {
+    _updateData(mutationsList, observer) {
       let table = this.querySelector("table"),
         data = [];
       if (table)

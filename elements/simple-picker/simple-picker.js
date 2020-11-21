@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `simple-picker`
@@ -428,10 +428,10 @@ class SimplePicker extends LitElement {
           >
           </simple-picker-option>
           <span id="icon"
-            ><simple-icon
+            ><simple-icon-lite
               aria-hidden="true"
               icon="arrow-drop-down"
-            ></simple-icon
+            ></simple-icon-lite
           ></span>
         </div>
         <div id="collapse">

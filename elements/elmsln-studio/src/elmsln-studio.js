@@ -60,56 +60,55 @@ class ElmslnStudio extends router(
       <elmsln-studio-main active-route="${this.route}">
         <elmsln-studio-dashboard
           ?demo-mode="${this.demoMode}"
-          route="dashboard"
           .discussion="${this.recentDiscussions}"
+          @fetch-data="${this._handleFetch}"
+          route="dashboard"
           .profile="${this.profile}"
           .submissions="${this.recentSubmissions}"
-          route="dashboard"
-          @fetch-data="${this._handleFetch}"
         >
         </elmsln-studio-dashboard>
         <elmsln-studio-submissions
-          ?demo-mode="${this.demoMode}"
-          route="submissions"
-          .submissions="${this.completedSubmissions}"
+          assignment-filter="${this.query.assignment || ""}"
           .comments="${!this.discussion
             ? undefined
             : Object.keys(this.discussion || {}).map(
                 (key) => this.discussion[key]
               )}"
-          ?grid="${this.query.grid || false}"
-          student-filter="${this.query.student || ""}"
-          assignment-filter="${this.query.assignment || ""}"
-          project-filter="${this.query.project || ""}"
+          ?demo-mode="${this.demoMode}"
           @fetch-data="${this._handleFetch}"
+          ?grid="${this.query.grid || false}"
+          route="submissions"
+          project-filter="${this.query.project || ""}"
+          student-filter="${this.query.student || ""}"
+          .submissions="${this.completedSubmissions}"
         >
         </elmsln-studio-submissions>
         <elmsln-studio-portfolio
+          comment="${this.query.comment || ""}"
           ?demo-mode="${this.demoMode}"
-          route="project"
-          .portfolio="${this.portfolio}"
           .feedback="${this.submissionFeedback}"
+          @fetch-data="${this._handleFetch}"
+          .portfolio="${this.portfolio}"
+          route="project"
           ?sort-latest="${this.query.sort === "latest"}"
           submission-filter="${this.query.submission || ""}"
-          comment="${this.query.comment || ""}"
-          @fetch-data="${this._handleFetch}"
         >
         </elmsln-studio-portfolio>
         <elmsln-studio-assignments
           ?demo-mode="${this.demoMode}"
-          route="assignments"
+          @fetch-data="${this._handleFetch}"
           .lessons="${this.lessons}"
           .profile="${this.profile}"
-          @fetch-data="${this._handleFetch}"
+          route="assignments"
         >
         </elmsln-studio-assignments>
         <elmsln-studio-assignment
-          ?demo-mode="${this.demoMode}"
-          route="assignment"
-          .assignments="${this.assignments}"
           .assignment="${this.assignment}"
-          .submission="${this.submission}"
+          .assignments="${this.assignments}"
+          ?demo-mode="${this.demoMode}"
           @fetch-data="${this._handleFetch}"
+          route="assignment"
+          .submission="${this.submission}"
         >
         </elmsln-studio-assignment>
       </elmsln-studio-main>
@@ -208,7 +207,6 @@ class ElmslnStudio extends router(
   constructor() {
     super();
     window.ElmslnStudioPath = "";
-    this.profiles = {};
 
     this.route = "";
     this.params = {};
@@ -218,6 +216,7 @@ class ElmslnStudio extends router(
   }
 
   router(route, params, query, data) {
+    console.log("ElmslnStudioPath router", route);
     this.route = route;
     this.params = params;
     this.query = query;
@@ -235,8 +234,8 @@ class ElmslnStudio extends router(
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "params") console.log("params", this.params);
-      if (propName === "query") console.log("query", this.query);
+      //if (propName === "params") console.log("params", this.params);
+      //if (propName === "query") console.log("query", this.query);
     });
   }
 

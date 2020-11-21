@@ -4,7 +4,7 @@
     ?inline="${this.inline || this.noLabelFloat}"
     @value-changed="${this._handleChange}"
   >
-    <simple-icon icon="${this.searchInputIcon}" slot="${this.inline ? 'label-prefix' : 'prefix'}"></simple-icon>
+    <simple-icon-lite icon="${this.searchInputIcon}" slot="${this.inline ? 'label-prefix' : 'prefix'}"></simple-icon-lite>
   </simple-fields-field>
   <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
     ${this._getResultsSpan(this.resultPointer, this.resultCount)}
@@ -19,7 +19,7 @@
       ?disabled="${this.__hidePrev}"
       @click="${this._navigateResults}"
     >
-      <simple-icon icon="${this.prevButtonIcon}"></simple-icon>
+      <simple-icon-lite icon="${this.prevButtonIcon}"></simple-icon-lite>
     </button>
     <simple-tooltip for="prev">${this.prevButtonLabel}</simple-tooltip>
     <button
@@ -31,7 +31,7 @@
       ?disabled="${this.__hideNext}"
       @click="${this._navigateResults}"
     >
-      <simple-icon icon="${this.nextButtonIcon}"></simple-icon>
+      <simple-icon-lite icon="${this.nextButtonIcon}"></simple-icon-lite>
     </button>
     <simple-tooltip for="next">${this.nextButtonLabel}</simple-tooltip>
   </div>

@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import * as md5 from "./lib/md5.min.js";
 /**
@@ -95,8 +95,9 @@ class PaperAvatar extends LitElement {
         #label span[two-chars] {
           font-size: calc(var(--paper-avatar-width, 40px) * 0.5);
         }
-        #label simple-icon {
+        #label simple-icon-lite {
           margin: 0 auto;
+          opacity: 0.8;
         }
         #jdenticon {
           width: var(--paper-avatar-width, 40px);
@@ -131,12 +132,7 @@ class PaperAvatar extends LitElement {
         ?hidden="${this.jdenticonExists && this.jdenticon}"
       >
         ${this.icon
-          ? html`
-              <simple-icon
-                icon="${this.icon}"
-                accent-color="${this.accentColor}"
-              ></simple-icon>
-            `
+          ? html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite> `
           : html`
               <span ?two-chars="${this.twoChars}"
                 >${this._label(this.label)}

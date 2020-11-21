@@ -3,93 +3,106 @@
    * Standard href pass down
    */
   "href": {
-    "type": String
+    "type": "String"
   },
   /**
    * What to display for the resource
    */
   "showHref": {
-    "type": String,
+    "type": "String",
     "attribute": "show-href"
   },
   /**
    * If the button should be visually lifted off the UI.
    */
   "raised": {
-    "type": Boolean
+    "type": "Boolean"
   },
   /**
    * Label to place in the text area
    */
   "label": {
-    "type": String
+    "type": "String"
   },
   "target": {
-    "type": String
+    "type": "String"
   },
   /**
    * simple-icon to use (with iconset if needed)
    */
   "icon": {
-    "type": String
+    "type": "String"
   },
   /**
    * Classes to add / subtract based on the item being hovered.
    */
   "hoverClass": {
-    "type": String,
+    "type": "String",
     "attribute": "hover-class"
   },
   /**
    * Icon class in the event you want it to look different from the text.
    */
   "iconClass": {
-    "type": String,
+    "type": "String",
     "attribute": "icon-class"
   },
   /**
    * Inner container classes.
    */
   "innerClass": {
-    "type": String,
+    "type": "String",
     "attribute": "inner-class"
+  },
+  "dark": {
+    "type": "Boolean",
+    "reflect": true
+  },
+  /**
+   * materializeCSS color class
+   */
+  "accentColor": {
+    "type": "String",
+    "attribute": "accent-color",
+    "reflect": true
   },
   /**
    * materializeCSS color class
    */
   "color": {
-    "type": String
+    "type": "String"
   },
   /**
    * materializeCSS color class for text
    */
   "textColor": {
-    "type": String,
-    "attribute": "text-color"
+    "type": "Boolean",
+    "attribute": "text-color",
+    "reflect": true
   },
   /**
    * Allow for prefetch data on hover
    */
   "prefetch": {
-    "type": String
+    "type": "String"
   },
   /**
    * Alt via tooltip.
    */
   "alt": {
-    "type": String
+    "type": "String"
   },
   /**
    * Disabled state.
    */
   "disabled": {
-    "type": Boolean
+    "type": "Boolean"
   },
   /**
    * Tracks if focus state is applied
    */
   "focusState": {
-    "type": Boolean,
+    "type": "Boolean",
     "attribute": "focus-state"
   }
 }

@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 
 const ChartistRenderSuper = function (SuperClass) {
   return class extends SuperClass {
@@ -84,7 +83,8 @@ const ChartistRenderSuper = function (SuperClass) {
      * @returns {object}
      */
     get observer() {
-      let callback = () => this._updateData();
+      let callback = (mutationsList, observer) =>
+        this._updateData(mutationsList, observer);
       return new MutationObserver(callback);
     }
 
@@ -117,6 +117,10 @@ const ChartistRenderSuper = function (SuperClass) {
               detail: this,
             })
           );
+          if (this.dataSource !== "")
+            fetch(this.dataSource)
+              .then((response) => response.text())
+              .then((data) => (this.data = this._CSVtoArray(data)));
         } else if (
           propName === "data" &&
           JSON.stringify(this.data) !== JSON.stringify(oldValue)
@@ -368,15 +372,6 @@ const ChartistRenderSuper = function (SuperClass) {
     }
 
     /**
-     * Convert from csv text to an array in the table function
-     * @param {event} e event data
-     * @memberof ChartistRender
-     */
-    _handleResponse(e) {
-      this.data = this._CSVtoArray(e.detail.response);
-    }
-
-    /**
      * uses ESGlobalBridge to load scripts
      *
      * @param {string} classname class to import from script
@@ -397,7 +392,7 @@ const ChartistRenderSuper = function (SuperClass) {
     _renderTable() {
       let html = "",
         table = this.querySelector("table"),
-        data = this.data ? [this.data.labels, this.data.series] : false;
+        data = this.data; // ? [this.data.labels, this.data.series] : false;
       if (data) {
         let rowHeads = data[1] && data[1][0] && isNaN(data[1][0]),
           colHeads =
@@ -477,7 +472,7 @@ const ChartistRenderSuper = function (SuperClass) {
     /**
      * Updates data from table
      */
-    _updateData() {
+    _updateData(mutationsList, observer) {
       let table = this.querySelector("table"),
         data = [];
       if (table)

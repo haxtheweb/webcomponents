@@ -1,5 +1,5 @@
 import { html, css, LitElement } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 
@@ -61,7 +61,7 @@ class HaxMap extends LitElement {
           margin: 4px;
           padding: 0;
         }
-        ul simple-icon {
+        ul simple-icon-lite {
           padding: 0 8px;
         }
         a {
@@ -158,7 +158,7 @@ class HaxMap extends LitElement {
   render() {
     return html`
       <h3 class="title">
-        <simple-icon icon="hax:map" contrast="4"></simple-icon>
+        <simple-icon-lite icon="hax:map"></simple-icon-lite>
         ${this.title}
       </h3>
       <div class="container">
@@ -187,11 +187,10 @@ class HaxMap extends LitElement {
             return html`
               <li>
                 <a @click="${this.scrollInMap}" data-index="${index}"
-                  ><simple-icon
+                  ><simple-icon-lite
                     data-index="${index}"
                     icon="${element.icon}"
-                    contrast="4"
-                  ></simple-icon
+                  ></simple-icon-lite
                   >${element.name}</a
                 >
               </li>

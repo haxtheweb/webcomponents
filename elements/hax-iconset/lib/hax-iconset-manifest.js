@@ -1,8 +1,8 @@
-[
+export const HaxIconsetManifest = [
+  null,
   {
-    "name": "courseicons",
-    "path": "./lib/svgs/courseicons",
-    "icons": [
+    name: "courseicons",
+    icons: [
       "astro1",
       "astro2",
       "bio1",
@@ -10,18 +10,16 @@
       "chem2",
       "phys1",
       "phys2",
-      "phys3"
-    ]
+      "phys3",
+    ],
   },
   {
-    "name": "drawing",
-    "path": "./lib/svgs/drawing",
-    "icons": ["draw-ellip", "draw-poly", "draw-rect", "move", "select"]
+    name: "drawing",
+    icons: ["draw-ellip", "draw-poly", "draw-rect", "move", "select"],
   },
   {
-    "name": "editable-table",
-    "path": "./lib/svgs/editable-table",
-    "icons": [
+    name: "editable-table",
+    icons: [
       "column-headers",
       "filter-off",
       "filter",
@@ -29,13 +27,12 @@
       "row-condensed",
       "row-headers",
       "row-striped",
-      "sortable"
-    ]
+      "sortable",
+    ],
   },
   {
-    "name": "hax",
-    "path": "./lib/svgs/hax",
-    "icons": [
+    name: "hax",
+    icons: [
       "12",
       "3-3-3-3",
       "4-4-4",
@@ -94,6 +91,7 @@
       "messages-9-plus",
       "messages-9",
       "multiple-choice",
+      "no-assignment",
       "oerschema",
       "page-details",
       "page-edit",
@@ -111,13 +109,12 @@
       "table-column-remove",
       "templates",
       "timeline",
-      "vocab"
-    ]
+      "vocab",
+    ],
   },
   {
-    "name": "lrn",
-    "path": "./lib/svgs/lrn",
-    "icons": [
+    name: "lrn",
+    icons: [
       "about",
       "accessibility",
       "add",
@@ -208,25 +205,23 @@
       "view-off",
       "view",
       "visible",
-      "write"
-    ]
+      "write",
+    ],
   },
   {
-    "name": "mdextra",
-    "path": "./lib/svgs/mdextra",
-    "icons": [
+    name: "mdextra",
+    icons: [
       "hexagon-multiple",
       "hexagon-outline",
       "hexagon",
       "subscript",
       "superscript",
-      "unlink"
-    ]
+      "unlink",
+    ],
   },
   {
-    "name": "mdi-social",
-    "path": "./lib/svgs/mdi-social",
-    "icons": [
+    name: "mdi-social",
+    icons: [
       "blogger",
       "disqus",
       "dribble",
@@ -248,12 +243,11 @@
       "twitch",
       "twitter-box",
       "twitter",
-      "whatsapp"
-    ]
+      "whatsapp",
+    ],
   },
   {
-    "name": "paper-audio-icons",
-    "path": "./lib/svgs/paper-audio-icons",
-    "icons": ["error-outline", "pause", "play-arrow", "replay"]
-  }
-]
+    name: "paper-audio-icons",
+    icons: ["error-outline", "pause", "play-arrow", "replay"],
+  },
+];

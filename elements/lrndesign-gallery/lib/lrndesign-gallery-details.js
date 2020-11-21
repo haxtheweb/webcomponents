@@ -28,6 +28,12 @@ class LrndesignGalleryDetails extends LitElement {
         :host([hidden]) {
           display: none;
         }
+        ::slotted(*:first-child) {
+          margin-top: 0;
+        }
+        ::slotted(*:last-child) {
+          margin-bottom: 0;
+        }
       `,
     ];
   }

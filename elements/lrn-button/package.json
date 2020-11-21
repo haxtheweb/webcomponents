@@ -15,7 +15,7 @@
       "properties": "src/lrn-button-properties.json",
       "hax": "src/lrn-button-hax.json"
     },
-    "sharedStyles": []
+    "sharedStyles": ["...super.styles"]
   },
   "version": "2.8.0",
   "description": "Button element for PolymerElement",

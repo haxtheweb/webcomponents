@@ -4,8 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { navigator } from "lit-element-router";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 
 /**
  * `elmsln-studio-link`
@@ -51,7 +50,7 @@ class ElmslnStudioLink extends navigator(LitElement) {
       :host([icon]) ::slotted(*) {
         flex: 1 0 auto;
       }
-      :host([icon]) iron-icon {
+      :host([icon]) simple-icon-lite {
         flex: 0 0 auto;
       }
       a,
@@ -127,11 +126,14 @@ class ElmslnStudioLink extends navigator(LitElement) {
     return html`
       <a href="${this.href}" @click="${this.linkClick}">
         <slot name="before"></slot>
-        <iron-icon
-          aria-hidden="true"
-          ?hidden="${!this.icon}"
-          icon="${this.icon}"
-        ></iron-icon>
+        ${!this.icon
+          ? ""
+          : html`
+              <simple-icon-lite
+                aria-hidden="true"
+                icon="${this.icon}"
+              ></simple-icon-lite>
+            `}
         <slot></slot>
       </a>
     `;
@@ -139,8 +141,8 @@ class ElmslnStudioLink extends navigator(LitElement) {
   linkClick(event) {
     event.preventDefault();
     event.stopPropagation();
-    if (!this.disabled)
-      this.navigate(`${window.ElmslnStudioPath || ""}${this.href}`);
+    console.log("ElmslnStudioPath", this.href);
+    if (!this.disabled) this.navigate(this.href);
   }
 }
 customElements.define("elmsln-studio-link", ElmslnStudioLink);

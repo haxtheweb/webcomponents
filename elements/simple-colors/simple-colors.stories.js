@@ -23,7 +23,7 @@ export const SimpleColorsStory = () => {
       },
       { property: "dark", title: "Invert Colors", inputMethod: "boolean" },
     ],
-    knobs = utils.getKnobs(props, { accentColor: utils.getRandomColor() });
+    knobs = utils.getKnobs(props, { accentColor: utils.randomColor() });
   return utils.getDemo(
     `<style>
       div {

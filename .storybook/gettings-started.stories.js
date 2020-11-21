@@ -7,7 +7,7 @@ export default {
 const utils = new StorybookUtilities(),
   demostyle =
     "margin:0 -8px 40px;padding:0;box-shadow:none;border-bottom:1px solid #e0e0e0;",
-  demohtml = html`
+  demohtml = `
     <demo-snippet style="${demostyle}">
       <p>
         Add the web component HTML to your page where you want it to appear. For
@@ -28,7 +28,7 @@ const utils = new StorybookUtilities(),
   scriptstep = `Include the script.`,
   htmlstep = `Add the HTML.`;
 export const UsingPennStateCdn = () => {
-  return html`
+  return `
     <h1>Using the Penn State CDN</h1>
     <h2>Step 1: ${scriptstep}</h2>
     <demo-snippet style="${demostyle}">
@@ -46,7 +46,7 @@ export const UsingPennStateCdn = () => {
   `;
 };
 export const UsingYourOwnCopy = () => {
-  return html`
+  return `
     <h1>Using Your Own Location</h1>
     <h2>Step 1: Make your own.</h2>
     <div

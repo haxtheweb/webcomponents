@@ -3,7 +3,7 @@ import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
@@ -85,7 +85,7 @@ class HaxPreferencesDialog extends LitElement {
   render() {
     return html`
       <h3 class="title">
-        <simple-icon icon="hax:settings" contrast="4"></simple-icon>
+        <simple-icon-lite icon="hax:settings"></simple-icon-lite>
         ${this.title}
       </h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">

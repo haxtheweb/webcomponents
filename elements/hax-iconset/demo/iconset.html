@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>HaxIconset: hax-iconset Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../hax-iconset.js';
+      import '../lib/simple-hax-iconset.js';
+      import '@lrnwebcomponents/simple-icon/lib/simple-iconset-demo.js';
+      import { HaxIconsetManifest } from "../lib/hax-iconset-manifest.js";
+      window.HaxIconsetManifest = HaxIconsetManifest;
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>hax-iconset</h1>
+      <demo-snippet>
+        <template>
+          <script>
+            let demo = document.getElementById('demo');
+            demo.imports = [ window.HaxIconsetManifest ];
+          </script>
+          <simple-iconset-demo id="demo"></simple-iconset-demo>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

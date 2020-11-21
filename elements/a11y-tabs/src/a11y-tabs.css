@@ -210,10 +210,10 @@ button[aria-selected="true"] .label {
   display: none;
 }
 
-simple-icon:not([hidden]) {
+simple-icon-lite:not([hidden]) {
   display: inline-block;
 }
 
-simple-icon[hidden] {
+simple-icon-lite[hidden] {
   display: none;
 }

@@ -1,9 +1,8 @@
-import { html } from "lit-element/lit-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { html, LitElement } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
-import { IconsetDemo } from "@lrnwebcomponents/iconset-demo/iconset-demo.js";
-import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-demo-helpers/demo-snippet.js";
+//import { LoremDataBehaviors } from "../lorem-data/lib/lorem-data-behaviors.js";
+import { LoremDataBehaviors } from "../lorem-data/lorem-data.js";
 
 import {
   withKnobs,
@@ -29,78 +28,164 @@ import {
 let containerdules = import.meta.url.match(/node_modules/)
   ? new URL("../../", import.meta.url)
   : new URL("../../node_modules/", import.meta.url);
+
 window.WCGlobalBasePath = containerdules;
-
-window.getStorybookIconset = () => {
-  let iconset = document.createElement("iconset-demo");
-  iconset.hidden = true;
-  document.body.appendChild(iconset);
-  return iconset;
-};
-window.StorybookIconset =
-  window.StorybookIconset && window.StorybookIconset.length > 0
-    ? window.StorybookIconset
-    : window.getStorybookIconset();
-
-window.getStorybookIcons = () => {
-  let iconset = window.StorybookIconset,
-    list = iconset && iconset.__iconList ? iconset.__iconList : [[]],
-    icons = list
-      .map((group) => group.icons.map((icon) => icon.replace(/^icons\:/, "")))
-      .flat();
-  return icons;
-};
-window.StorybookIcons = window.StorybookIcons || window.getStorybookIcons();
+class StorybookFunctions {
+  constructor() {}
+}
 /**
  * Object to help load things in globally scoped and fire events when ready
  */
-export class StorybookUtilities {
-  get lorem() {
-    let LoremIpsum = require("lorem-ipsum");
-    return new LoremIpsum.loremIpsum({
-      sentencesPerParagraph: {
-        max: 8,
-        min: 4,
-      },
-      wordsPerSentence: {
-        max: 16,
-        min: 4,
-      },
-    });
+export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
+  galleryData(importUrl = import.meta.url) {
+    return {
+      options: [
+        {
+          slot: "",
+          title: "Gallery Figures",
+          inputMethod: "code-editor",
+        },
+        { css: "maxWidth" },
+        { css: "--lrndesign-gallery-color", title: "text color" },
+        {
+          css: "--lrndesign-gallery-background-color",
+          title: "background color",
+        },
+        {
+          css: "--lrndesign-gallery-border-color",
+          title: "subtle border color",
+        },
+        { css: "--lrndesign-gallery-focus-color", title: "accent color" },
+        {
+          css: "--lrndesign-gallery-thumbnail-outline",
+          title: "thumbnail outline color",
+        },
+        {
+          css: "--lrndesign-gallery-dialog-color",
+          title: "zoom dialog text color",
+        },
+        {
+          css: "--lrndesign-gallery-dialog-background-color",
+          title: "zoom dialog background-color",
+        },
+        {
+          css: "--lrndesign-gallery-dialog-border-color",
+          title: "zoom dialog border-color",
+        },
+        {
+          css: "--lrndesign-gallery-dialog-toggled-background-color",
+          title: "zoom dialog background-color for toggled items",
+        },
+        {
+          css: "--lrndesign-gallery-carousel-next-bg",
+          title: "gradient on carousel next button",
+        },
+        {
+          css: "--lrndesign-gallery-carousel-prev-bg",
+          title: "gradient on carousel prev button",
+        },
+      ],
+      sources: [
+        [
+          {
+            title: "Bird",
+            details: this.randomParagraph(2, 7),
+            alt: "A bird with bright blue feathers.",
+            src: new URL(`demo/images/bird.jpg`, importUrl),
+            large: new URL(`demo/images/bird.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/bird.jpg`, importUrl),
+          },
+          {
+            title: "Cat",
+            alt: "A tabby cat's face.",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/cat.jpeg`, importUrl),
+            large: new URL(`demo/images/cat.jpeg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/cat.jpeg`, importUrl),
+          },
+          {
+            title: "Dog",
+            alt: "A dog tilting its head.",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/dog.jpg`, importUrl),
+            large: new URL(`demo/images/dog.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/dog.jpg`, importUrl),
+          },
+          {
+            title: "Fish",
+            alt: "A bright red-orange fish",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/fish.jpg`, importUrl),
+            large: new URL(`demo/images/fish.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/fish.jpg`, importUrl),
+          },
+        ],
+        [
+          {
+            title: "Atari",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/atari.jpg`, importUrl),
+            large: new URL(`demo/images/atari.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/atari.jpg`, importUrl),
+          },
+          {
+            title: "Nintendo",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/nintendo.png`, importUrl),
+            large: new URL(`demo/images/nintendo.png`, importUrl),
+            thumbnail: new URL(
+              `demo/images/thumbnails/nintendo.png`,
+              importUrl
+            ),
+          },
+          {
+            title: "PS4",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/ps4.jpg`, importUrl),
+            large: new URL(`demo/images/ps4.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/ps4.jpg`, importUrl),
+          },
+          {
+            title: "Sega",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/sega.jpg`, importUrl),
+            large: new URL(`demo/images/sega.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/sega.jpg`, importUrl),
+          },
+          {
+            title: "XBox",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/xbox.png`, importUrl),
+            large: new URL(`demo/images/xbox.png`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/xbox.png`, importUrl),
+          },
+        ],
+        [
+          {
+            title: "Apple",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/apple.jpg`, importUrl),
+            large: new URL(`demo/images/apple.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/apple.jpg`, importUrl),
+          },
+          {
+            title: "Banana",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/banana.jpg`, importUrl),
+            large: new URL(`demo/images/banana.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/banana.jpg`, importUrl),
+          },
+          {
+            title: "Carrot",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/carrot.jpeg`, importUrl),
+            large: new URL(`demo/images/carrot.jpeg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/carrot.jpeg`, importUrl),
+          },
+        ],
+      ],
+    };
   }
-
-  /**
-   * convert camelcase to kebab (for converting properties in attributes)
-   * @param {string} camel
-   * @returns {string} kebab
-   * @memberof StorybookUtilities
-   */
-  camelToKebab(camel) {
-    return camel
-      ? camel.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase()
-      : undefined;
-  }
-
-  /**
-   * convert camelcase to kebab (for converting properties in attributes)
-   * @param {string} camel
-   * @returns {string} kebab
-   * @memberof StorybookUtilities
-   */
-  kebabToCamel(kebab) {
-    return kebab ? kebab.replace(/-./g, (x) => x.toUpperCase()[1]) : undefined;
-  }
-
-  /**
-   * colors from Simple Colors
-   * @returns {array}
-   * @memberof StorybookUtilities
-   */
-  getColors() {
-    let simple = window.SimpleColorsSharedStyles.requestAvailability();
-    return simple && simple.colors ? Object.keys(simple.colors) : false;
-  }
-
   /**
    * gets a HAX property by property or slot name
    *
@@ -140,41 +225,41 @@ export class StorybookUtilities {
           obj[id] = this.getRandomArray(undefined, prop.properties);
           break;
         case "boolean":
-          obj[id] = this.getRandomBool();
+          obj[id] = this.randomBool();
           break;
         case "color":
-          obj[id] = this.getRandomHex();
+          obj[id] = this.randomHex();
           break;
         case "colorpicker":
-          obj[id] = this.getRandomColor();
+          obj[id] = this.randomColor();
           break;
         case "fieldset":
           obj[id] = this.getRandomObject(prop.properties);
           break;
         case "fileupload":
-          obj[id] = this.getRandomImage();
+          obj[id] = this.randomImage();
           break;
         case "haxupload":
-          obj[id] = this.getRandomImage();
+          obj[id] = this.randomImage();
           break;
         case "iconpicker":
-          obj[id] = this.getRandomIcon();
+          obj[id] = this.randomIcon();
           break;
         case "number":
-          obj[id] = this.getRandomNumber(prop.min, prop.max, prop.step);
+          obj[id] = this.randomNumber(prop.min, prop.max, prop.step);
           break;
         case "object":
           obj[id] = this.getRandomObject(prop.properties);
           break;
         case "select":
-          obj[id] = this.getRandomOption(
+          obj[id] = this.randomOption(
             prop.options
               ? Object.keys(prop.options)
               : prop.itemsList || Object.keys(prop.options)
           );
           break;
         case "slider":
-          obj[id] = this.getRandomNumber(prop.min, prop.max, prop.step);
+          obj[id] = this.randomNumber(prop.min, prop.max, prop.step);
           break;
         case "tabs":
           obj[id] = prop.properties.map(
@@ -185,7 +270,7 @@ export class StorybookUtilities {
           );
           break;
         case "textarea":
-          obj[id] = this.getRandomTextarea();
+          obj[id] = this.randomParagraph(2, 7);
           break;
         default:
           switch (prop.format) {
@@ -193,7 +278,7 @@ export class StorybookUtilities {
               obj[id] = this.getRandomObject(prop.properties);
               break;
             default:
-              obj[id] = this.getRandomText();
+              obj[id] = this.randomSentence(1, 5);
               break;
           }
       }
@@ -210,7 +295,7 @@ export class StorybookUtilities {
    */
   getRandomArray(properties, hax = []) {
     let arr = [],
-      ctr = this.getRandomNumber(2, 5);
+      ctr = this.randomNumber(2, 5);
     for (let i = 0; i < ctr; i++) {
       arr.push(this.getRandomObject(properties, hax));
     }
@@ -266,149 +351,6 @@ export class StorybookUtilities {
   }
 
   /**
-   * random color from Simple Colors
-   * @returns {string}
-   * @memberof StorybookUtilities
-   */
-  getRandomColor() {
-    return this.getRandomOption(this.getColors());
-  }
-
-  /**
-   * random color as hex code
-   * @returns {string}
-   * @memberof StorybookUtilities
-   */
-  getRandomHex() {
-    return `#${[0, 0, 0]
-      .map((i) => this.getRandomNumber(i, 255).toString(16))
-      .map((i) => (i.length < 2 ? `0${i}` : `${i}`))
-      .join("")}`;
-  }
-
-  /**
-   * random image url
-   * @returns {string}
-   * @memberof StorybookUtilities
-   */
-  getRandomImage() {
-    return this.getRandomOption([
-      "//picsum.photos/1200/900",
-      "//picsum.photos/900/900",
-      "//picsum.photos/1200/800",
-      "//picsum.photos/800/1600",
-      "//picsum.photos/400/1200",
-      "//placekitten.com//1200/900",
-      "//placekitten.com/900/900",
-      "//placekitten.com/1200/800",
-      "//placekitten.com/800/1600",
-      "//placekitten.com/400/1200",
-      "//loremflickr.com//1200/900",
-      "//loremflickr.com/900/900",
-      "//loremflickr.com/1200/800",
-      "//loremflickr.com/800/1600",
-      "//loremflickr.com/400/1200",
-      "//placeimg.com//1200/900",
-      "//placeimg.com/900/900",
-      "//placeimg.com/1200/800",
-      "//placeimg.com/800/1600",
-      "//placeimg.com/400/1200",
-    ]);
-  }
-
-  /**
-   * random option from and array of options
-   * @param {array} options
-   * @returns {*}
-   * @memberof StorybookUtilities
-   */
-  getRandomOption(options = []) {
-    return options.length > 0
-      ? options[Math.floor(Math.random() * Math.floor(options.length))]
-      : undefined;
-  }
-
-  /**
-   * drandomly true or false
-   * @returns {boolean}
-   * @memberof StorybookUtilities
-   */
-  getRandomBool() {
-    return Math.random() >= 0.5;
-  }
-
-  /**
-   * random number within a range
-   * @param {number} min lowest value
-   * @param {number} max highest value
-   * @param {number} step
-   * @returns {number}
-   * @memberof StorybookUtilities
-   */
-  getRandomNumber(min = 0, max = 100 + min, step = 1) {
-    return (
-      min + Math.floor(Math.random() * Math.floor((max - min) / step)) * step
-    );
-  }
-  /**
-   * gets a random icon for an iconpicker
-   *
-   * @param {boolean} [includeNull=false] include a 50/50 change of no icon?
-   * @returns string
-   * @memberof StorybookUtilities
-   */
-  getRandomIcon(includeNull = false) {
-    let random = this.getRandomOption(window.StorybookIcons);
-    return includeNull ? this.getRandomOption([...random, ""]) : random;
-  }
-
-  /**
-   * random short string of text
-   * @returns {string}
-   * @memberof StorybookUtilities
-   */
-  getRandomText() {
-    return this.getRandomOption([
-      "I regret nothing",
-      "I see your value now.",
-      "Never listen to Pierce.",
-      "Cool cool cool.",
-      "Movie reference",
-      "Pop Pop!",
-      "Six seasons and a movie!",
-      "Umm.. Bitter much?",
-      "Consider yourself Chang'd!",
-      "Put it in a letter, Jane Austen!",
-      "That was a game. This is paintball.",
-      "This is definitely the darkest timeline.",
-      "I need help reacting to something.",
-      "Frankly, my dear, I don't give a dean!",
-      'I give this year a "D", for delightful!',
-    ]);
-  }
-
-  /**
-   * random short string of text
-   * @returns {string}
-   * @memberof StorybookUtilities
-   */
-  getRandomTextarea() {
-    return this.getRandomOption([
-      "Sometimes I think I lost something really important to me, and then it turns out I already ate it.",
-      "Your last blow-off class taught me to live in the moment which I will always regret and never do again.",
-      "Do you understand what a conspiracy is? When you conspire with everyone you come across, you're not really conspiring with anyone. You're just doing random crap.",
-      "I painted a tunnel on the side of the library. When it dries, I'm going for it.",
-      "We'll definitely be back next year. If not, it'll be because an asteroid has destroyed all human civilization. And that's canon.",
-      "Sometimes the hardest prisons to break out of, are the ones without locks.",
-      "When you really know who you are and what you like about yourself, changing for other people isn't such a big deal.",
-      "Look at me. It's clear to you that I am awesome, but I can never admit that, because that would make me an ass.",
-      "Let's do what people do. Let's get a house we can't afford and a dog that makes us angry.",
-      "I discovered at a very early age that if I talked long enough, I could make anything right or wrong. So either I'm god, or thruth is relative. Either way: Booyah.",
-      "The funny thing about being smart, is that you can get through most of life without ever having to do any work.",
-    ]);
-  }
-
-  /**
    * gets knobs object from properties array
    * @param {array} properties
    * [
@@ -445,23 +387,30 @@ export class StorybookUtilities {
     console.debug("getKnobs", properties, defaults, exclusions);
     let knobs = { props: {}, slots: {}, css: {} };
     (properties || []).forEach((field) => {
-      field.name = field.property || field.attribute || field.slot || field.css;
-      if (!field.name && field.hasOwnProperty("slot")) field.name = "emptyslot";
-      if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
-        let knob = this.getKnob(field, defaults[field.name]);
-        console.debug(
-          "getKnob:",
-          knob,
-          "\nfield",
-          field,
-          "\nfield name",
-          field.name,
-          "\nfdefaults",
-          defaults,
-          "\ndefault value",
-          defaults[field.name]
-        );
-        knobs[knob.group][field.name] = knob;
+      if (!!field) {
+        field.name =
+          field.property || field.attribute || field.slot || field.css;
+        if (!field.name && field.hasOwnProperty("slot"))
+          field.name = "emptyslot";
+        if (
+          field.name.indexOf("__") === -1 &&
+          !exclusions.includes(field.name)
+        ) {
+          let knob = this.getKnob(field, defaults[field.name]);
+          console.debug(
+            "getKnob:",
+            knob,
+            "\nfield",
+            field,
+            "\nfield name",
+            field.name,
+            "\nfdefaults",
+            defaults,
+            "\ndefault value",
+            defaults[field.name]
+          );
+          knobs[knob.group][field.name] = knob;
+        }
       }
     });
     return knobs;
@@ -511,7 +460,7 @@ export class StorybookUtilities {
         group === "slots" || method === "code-editor"
           ? this.updateSlot(defaultValue, field.slot)
           : defaultValue,
-      colors = this.getColors(),
+      colors = this.colors,
       knob;
     if (!options && field.itemsList) {
       options = {};
@@ -532,7 +481,7 @@ export class StorybookUtilities {
         );
       }
     } else if (method === "iconpicker") {
-      let icons = window.StorybookIcons;
+      let icons = this.icons;
       icons.unshift("");
       knob = select(
         label,
@@ -622,18 +571,20 @@ export class StorybookUtilities {
    * @param {string} tag element's tag
    * @param {object} knobs
    * {
-   *  properties: {
+   *  properties: [
    *    {
-   *      "attribute": "attributeName"
+   *      "attribute": "attributeName",
+   *      "method": inputMethod,
    *      "knob": knobType(label,[options],defaultValue,"properties")
    *    }
-   *  },
-   *  slots: {
+   *  ],
+   *  slots: [
    *    {
-   *      "attribute": "attributeName"
+   *      "attribute": "attributeName",
+   *      "method": inputMethod,
    *      "knob": knobType(label,[options],defaultValue,"slots")
    *    }
-   *  }
+   *  ]
    * }
    * @returns {object} element
    * @memberof StorybookUtilities
@@ -646,10 +597,11 @@ export class StorybookUtilities {
       attrs = `${this._getDemoAttributes(knobs.props)}${this._getDemoAttributes(
         knobs.attr
       )}`,
-      styles =
+      demoCSS =
         Object.keys(knobs.css || {}).length === 0
           ? ``
-          : ` style="${this._getDemoCss(knobs.css)}"`,
+          : this._getDemoCss(knobs.css),
+      styles = demoCSS == "" ? "" : ` style="${demoCSS}"`,
       child;
 
     if (!tag) {
@@ -710,7 +662,7 @@ export class StorybookUtilities {
         demoschema && index && demoschema[index]
           ? demoschema[index]
           : demoschema.length > 0
-          ? this.getRandomOption(el.haxProperties.demoSchema)
+          ? this.randomOption(el.haxProperties.demoSchema)
           : {},
       props = demo.properties,
       styles =
