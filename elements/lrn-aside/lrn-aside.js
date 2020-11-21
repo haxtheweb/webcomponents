@@ -100,15 +100,6 @@ class LrnAside extends LitElement {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "Enter title for sticky note",
-            inputMethod: "textfield",
-            required: true,
-          },
-        ],
         configure: [
           {
             property: "title",

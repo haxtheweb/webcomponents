@@ -47,7 +47,6 @@ class HtmlBlock extends HTMLElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             slot: "",

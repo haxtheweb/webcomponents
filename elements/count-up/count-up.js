@@ -75,7 +75,6 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "start",

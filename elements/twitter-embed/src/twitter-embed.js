@@ -77,7 +77,6 @@ class TwitterEmbed extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             attribute: "tweet",

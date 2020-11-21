@@ -309,16 +309,6 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "src",
-            title: "File",
-            description: "The URL for the pdf",
-            inputMethod: "textfield",
-            icon: "link",
-            required: true,
-          },
-        ],
         configure: [
           {
             property: "src",

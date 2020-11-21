@@ -193,9 +193,6 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     var content = body;
     // if you want full HTML headers or not
     if (full) {
-      let elementList = HAXStore.elementList;
-      // @todo obviously not sustainable
-      let url = "https://lrnwebcomponents.github.io/hax-body/components";
       content = `
         <!DOCTYPE html>
         <html lang="en">
@@ -206,32 +203,18 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
               content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
             />
             <title>hax-body demo</title>
-            <script src="${url}/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+            <script>window.__appCDN="https://cdn.webcomponents.psu.edu/cdn/"; </script> <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script> 
             <style>
               body {
                 padding: 32px;
               }
             </style>
           </head>
+          <body>
+          ${body}
+          </body>
         </html>
       `;
-      var ignoreList = ["iframe", "a", "img", "hr", "p"];
-      for (var index in elementList) {
-        if (ignoreList.indexOf(index) === -1) {
-          content +=
-            '<script type="module" src="' +
-            url +
-            "/" +
-            index +
-            "/" +
-            index +
-            '.js" />' +
-            "\n";
-        }
-      }
-      content += "</head><body>";
-      content += body;
-      content += "</body></html>";
     }
     return content;
   }

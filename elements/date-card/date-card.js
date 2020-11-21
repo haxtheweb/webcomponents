@@ -47,7 +47,6 @@ class DateCard extends SimpleColors {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "month",

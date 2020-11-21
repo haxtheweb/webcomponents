@@ -70,7 +70,6 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         },
       },
       settings: {
-        quick: [],
         configure: [],
         advanced: [],
       },
@@ -80,6 +79,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     };
     this.HAXWiring.setHaxProperties(props, "site-active-title", this, true);
     props = {
+      type: "element",
+      editingElement: "core",
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -95,7 +96,6 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         },
       },
       settings: {
-        quick: [],
         configure: [],
         advanced: [],
       },
@@ -105,6 +105,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     };
     this.HAXWiring.setHaxProperties(props, "site-breadcrumb", this, true);
     props = {
+      type: "element",
+      editingElement: "core",
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -120,7 +122,6 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "preventAutoScroll",
@@ -145,6 +146,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     };
     this.HAXWiring.setHaxProperties(props, "site-menu", this, true);
     props = {
+      type: "element",
+      editingElement: "core",
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -160,7 +163,6 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "type",
@@ -217,6 +219,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     };
     this.HAXWiring.setHaxProperties(props, "site-menu-button", this, true);
     props = {
+      type: "element",
+      editingElement: "core",
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -232,7 +236,6 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "type",
@@ -253,6 +256,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     };
     this.HAXWiring.setHaxProperties(props, "site-rss-button", this, true);
     props = {
+      type: "element",
+      editingElement: "core",
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -268,7 +273,6 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         },
       },
       settings: {
-        quick: [],
         configure: [],
         advanced: [],
       },
@@ -278,6 +282,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     };
     this.HAXWiring.setHaxProperties(props, "site-title", this, true);
     props = {
+      type: "element",
+      editingElement: "core",
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -293,7 +299,6 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "conditions",

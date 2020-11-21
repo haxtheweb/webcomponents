@@ -9,17 +9,35 @@
  * For example, the default of:
  *
  *  {
- *    "api": "1",
+ *    // API version for future use
+ *    "api": "1"
+ *    // how HAX handles the element. values are element or grid; influences some capabilities
+ *    "type": "element",
+ *    // how is this modified; core is default UI experience of typical HAX elements
+ *    // which is simplistic operations / text based
+ *    "editingElement": "core",
+ *    // ADVANCED IMPLEMENTATION
+ *    // @see @lrnwebcomponents/editable-table/lib/editable-table-display.js
+ *    "editingElement": {
+ *      "tag": "editable-table",
+ *      "import" : "@lrnwebcomponents/editable-table/editable-table.js"
+ *    },
+ *    // can this be scaled in its width
  *    "canScale": true,
+ *    // can this be rough positioned left/right/center
  *    "canPosition": true,
+ *    // can you edit the source of this element directly? (allows code editor option)
  *    "canEditSource": true,
+ *    // how to visualize / if this is visualized for the user when adding to the page
  *    "gizmo": {},
+ *    // how HAX presents configuration options in it's side tray
  *    "settings": {
- *      "quick": [],
  *      "configure": [],
  *      "advanced": [],
  *    },
+ *    // additional clean up options for specific pieces of saving / shortcut options
  *    "saveOptions": {},
+ *    // support for multiple demos of the element; used for drag and drop place holder and in visuals of the elements
  *    "demoSchema": []
  *  }
  *
@@ -59,20 +77,10 @@
  *
  * Other settings can be expressed through beyond these simple layout modifiers.
  * This example illustrates how you can show forms in three different areas of HAX.
- * Items in the 'quick' key group means that it would show up in hax's in-place editor
- * on the context menu. Things keyed with 'configure' show up in a
+ * Things keyed with 'configure' show up in a
  * form / preview display mode in a modal above the interface. Things in 'advanced' will
  * show up on a sub-set of the configure form for more advanced operations.
  * 'settings': {
- *   'quick': [
- *     {
- *       'property': 'responsive',
- *       'title': 'Responsive',
- *       'description': 'The video automatically fills the available area.',
- *       'inputMethod': 'boolean',
- *       'icon': 'video'
- *     }
- *   ],
  *   'configure': [
  *     {
  *       'property': 'citation',
@@ -141,25 +149,52 @@
  *   }
  * }],
  *
- * Specialized functions
- * `preProcessHaxNodeToContent`
- *  - If you define this function on your element
- * then it will run BEFORE the conversion to text. This can be used to do
- * specialized processing that may not be standard prior to conversion to content.
+ * Specialized functions / life-cycle via haxHooks
+ * You can add deeper support into your elements without including HAX
+ * in your assets by implementing haxHooks. While haxProperties allows
+ * for interfacing w/ the hax-body area / being inserted and having
+ * an editing UI, haxHooks allows for tying those elements into the
+ * state management of HAX without requiring to pull HAX in.
  *
- * `postProcesshaxNodeToContent`
- *  - If you define this function on your element
- * then it will run AFTER the node has been converted to Content and allows you
- * to act upon the content even further. This could be to clean up / regex against
- * the text certain patterns or to look for certain elements at the end of
- * the conversion routine.
+ * These are the events you can "listen" for. The callback is a function name
+ * and can be whatever you want though for consistency we have named ours
+ * hax + the name of the hook
+ * {
+ *   // @see @lrnwebcomponents/editable-table/editable-table.js (example of a haxUIElement implementing these hooks)
+ *   // @see @lrnwebcomponents/retro-card/retro-card.js
+ *   activeElementChanged : "haxactiveElementChanged", // input (activeElement, value) where value is if the element is active
+ *   // @see @lrnwebcomponents/retro-card/retro-card.js
+ *   editModeChanged : "haxeditModeChanged", // input (value) where value is state of body being in editMode
+ *   // @see @lrnwebcomponents/code-editor/code-editor.js
+ *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js
+ *   preProcessNodeToContent : "haxpreProcessNodeToContent", // input (node) where node is the item about to be converted to content for export
+ *   // @see @lrnwebcomponents/video-player/video-player.js
+ *   postProcessNodeToContent : "haxpostProcessNodeToContent", // input (content) where content is an HTML blob about to be returned for export
+ *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js
+ *   preProcessInsertContent : "haxpreProcessInsertContent", // input (node) where node is item about to be inserted into the content
+ * }
  *
- * `preProcessHaxInsertContent`
- *  - If an element needs to ensure it cleans up data
- * during the conversion from preview to being inserted. This function passes in
- * the details object for creating an element from HAX schema. Examples could be
- * objects that contain focus which may cause issues when doing a pure clone as the
- * reference is being garbage collected on save (see grid-plate).
+ * The callback if defined is handed the element / item to act against
+ * // Support being an editing interface element for HAX
+ * haxHooks() {
+ *   return {
+ *     activeElementChanged: "haxactiveElementChanged",
+ *   };
+ * }
+ * // allow HAX to toggle edit state when activated
+ * haxactiveElementChanged(el, val) {
+ *   // overwrite the HAX dom w/ what our editor is supplying
+ *   if (!val) {
+ *     let replacement = this.getTableHTMLNode();
+ *     if (el) {
+ *       el.replaceWith(replacement);
+ *     }
+ *     el = replacement;
+ *   }
+ *   // aligns the state of the element w/ HAX if its available
+ *   this.toggleEditMode(val);
+ *   return el;
+ * }
  */
 import { SimpleFields } from "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { HaxSchematizer, HaxElementizer } from "./HAXFields.js";
@@ -173,11 +208,12 @@ export class HAXWiring {
      * haxProperties
      */
     this.haxProperties = {
+      type: "element",
+      editingElement: "core",
       canScale: false,
       canPosition: false,
       canEditSource: false,
       settings: {
-        quick: [],
         configure: [],
         advanced: [],
       },
@@ -287,6 +323,12 @@ export class HAXWiring {
       // sets us up for future API versioning of property validation
       // and clean up.
       if (props.api == "1") {
+        if (typeof props.type === typeof undefined) {
+          props.type = "element";
+        }
+        if (typeof props.editingElement === typeof undefined) {
+          props.editingElement = "core";
+        }
         if (typeof props.canPosition === typeof undefined) {
           props.canPosition = true;
         }
@@ -317,20 +359,6 @@ export class HAXWiring {
         // approach really lies since this wires properties/slots to HAX's
         // ability to manipulate things via contextual menus
         if (typeof props.settings !== typeof undefined) {
-          // loop through any potential settings in each of the three
-          // groupings of possible settings and validate that each setting is accurate
-          if (typeof props.settings.quick === typeof undefined) {
-            props.settings.quick = [];
-          }
-          for (let i = 0; i < props.settings.quick.length; i++) {
-            props.settings.quick[i] = this.validateSetting(
-              props.settings.quick[i]
-            );
-            // account for a bad property and remove it
-            if (!props.settings.quick[i]) {
-              props.settings.quick.splice(i, 1);
-            }
-          }
           if (typeof props.settings.configure === typeof undefined) {
             props.settings.configure = [];
           }
@@ -679,20 +707,6 @@ export class HAXWiring {
           },
         },
         settings: {
-          quick: [
-            {
-              property: "title",
-              title: "Title",
-              inputMethod: "textfield",
-              icon: "android",
-            },
-            {
-              property: "primaryColor",
-              title: "Primary color",
-              inputMethod: "colorpicker",
-              icon: "color",
-            },
-          ],
           configure: [
             {
               slot: "",

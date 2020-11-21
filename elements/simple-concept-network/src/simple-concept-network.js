@@ -149,7 +149,6 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "visualization",

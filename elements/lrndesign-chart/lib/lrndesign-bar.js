@@ -113,7 +113,7 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
   static get haxProperties() {
     let haxProps = super.haxProperties,
       lineBar = super.lineBarHaxProperties,
-      barQuick = [
+      barConfig = [
         {
           property: "horizontalBars",
           title: "Horizontal Bars",
@@ -187,13 +187,9 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
       ];
     haxProps.gizmo.title = "Bar Chart";
     haxProps.gizmo.icon = "editor:insert-chart";
-    haxProps.settings.quick = haxProps.settings.quick.concat(
-      lineBar.gridBackground,
-      barQuick
-    );
     haxProps.settings.configure = haxProps.settings.configure.concat(
       lineBar.gridBackground,
-      barQuick,
+      barConfig,
       lineBar.padding
     );
     haxProps.settings.advanced = haxProps.settings.advanced.concat(

@@ -75,7 +75,6 @@ class FigureLabel extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "title",

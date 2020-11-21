@@ -319,34 +319,6 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "src",
-            title: "Animated GIF",
-            description: "The URL to your animated GIF.",
-            inputMethod: "textfield",
-            icon: "link",
-            validationType: "url",
-            required: true,
-          },
-          {
-            property: "srcWithoutAnimation",
-            title: "Still Image",
-            description: "The URL to a still image version of your GIF.",
-            inputMethod: "textfield",
-            icon: "link",
-            validationType: "url",
-            required: true,
-          },
-          {
-            property: "alt",
-            title: "Alt Text",
-            description: "Alternative text for the image.",
-            inputMethod: "textfield",
-            icon: "accessibility",
-            required: true,
-          },
-        ],
         configure: [
           {
             property: "src",

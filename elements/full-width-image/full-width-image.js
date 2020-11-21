@@ -113,16 +113,6 @@ class FullWidthImage extends LitElement {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "source",
-            description: "",
-            inputMethod: "textfield",
-            required: true,
-            icon: "image:image",
-            validationType: "url",
-          },
-        ],
         configure: [
           {
             property: "source",

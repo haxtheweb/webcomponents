@@ -85,7 +85,6 @@ class NavCard extends AccentCard {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "accentColor",

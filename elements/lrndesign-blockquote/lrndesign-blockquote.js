@@ -724,34 +724,6 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "displayMode",
-            title: "Display style",
-            description: "Style to present the quote with",
-            inputMethod: "select",
-            icon: "image:style",
-            options: {
-              default: "Default",
-              leather: "Leather",
-              swoop: "Swoop",
-              soft: "Soft",
-              poster: "Poster",
-              fun: "Fun",
-              photo: "Photo",
-              hypercard: "Hypercard",
-            },
-          },
-          {
-            property: "image",
-            title: "Image",
-            description: "Picture of the author of this quote",
-            inputMethod: "textfield",
-            icon: "editor:short-text",
-            required: false,
-            validationType: "text",
-          },
-        ],
         configure: [
           {
             property: "displayMode",

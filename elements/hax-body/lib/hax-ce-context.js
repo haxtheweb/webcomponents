@@ -3,6 +3,7 @@ import { HAXStore } from "./hax-store.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { autorun, toJS } from "mobx";
+import { wipeSlot } from "@lrnwebcomponents/utils/utils";
 /**
  * `hax-ce-context`
  * `A context menu that provides common custom-element based authoring options.
@@ -28,18 +29,31 @@ class HaxCeContext extends LitElement {
           top: 0px;
           flex-direction: column;
         }
+        div[slot="primary"] {
+          display: inline-flex;
+        }
       `,
     ];
   }
   constructor() {
     super();
+    this.haxUIElement = true;
+    this.onScreen = false;
+    this.ceButtons = [];
     this.activeTagName = "";
     this.activeTagIcon = "hax:paragraph";
+    this.addEventListener(
+      "hax-context-item-selected",
+      this.handleCECustomEvent.bind(this)
+    );
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "onScreen" && this.onScreen) {
-        this._computeValues();
+        this._resetCEMenu();
       }
     });
   }
@@ -56,10 +70,24 @@ class HaxCeContext extends LitElement {
           ?disabled="${this.disableTransform}"
           event-name="hax-transform-node"
         ></hax-context-item>
-        <slot slot="primary"></slot>
+        ${this.ceButtons.map((el) => {
+          return html` <hax-context-item
+            mini
+            action
+            slot="prefix"
+            icon="${el.icon}"
+            label="${el.label}"
+            event-name="hax-ce-custom-button"
+            value="${el.callback}"
+          ></hax-context-item>`;
+        })}
+        <div slot="primary">
+          <slot></slot>
+        </div>
       </hax-toolbar>
     `;
   }
+
   static get tag() {
     return "hax-ce-context";
   }
@@ -79,20 +107,47 @@ class HaxCeContext extends LitElement {
       activeTagName: {
         type: String,
       },
+      ceButtons: {
+        type: Array,
+      },
     };
   }
-  firstUpdated() {
+  handleCECustomEvent(e) {
+    let detail = e.detail;
+    // support a simple insert event to bubble up or everything else
+    switch (detail.eventName) {
+      case "hax-ce-custom-button":
+        if (
+          this.activeNode &&
+          typeof this.activeNode[detail.value] === "function"
+        ) {
+          if (this.activeNode[detail.value](e)) {
+            HAXStore.refreshActiveNodeForm();
+          }
+        }
+        break;
+    }
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     autorun(() => {
       this.activeNode = toJS(HAXStore.activeNode);
       if (this.activeNode && this.activeNode.classList) {
-        this._computeValues();
+        this._resetCEMenu();
       }
     });
   }
   /**
    * HAX properties changed, update buttons available.
    */
-  _computeValues() {
+  _resetCEMenu() {
+    if (this.shadowRoot) {
+      wipeSlot(this, "*");
+    }
+    // reset buttons in-case this element has new ones
+    this.ceButtons = [];
     if (HAXStore.activeHaxBody && this.activeNode != null) {
       if (!HAXStore.isTextElement(this.activeNode)) {
         if (this.activeNode.tagName == "GRID-PLATE") {
@@ -114,6 +169,8 @@ class HaxCeContext extends LitElement {
       this.activeTagName = "";
       this.activeTagIcon = "hax:paragraph";
     }
+    // @see haxHook inlineContextMenu
+    HAXStore.runHook(this.activeNode, "inlineContextMenu", [this]);
   }
 }
 window.customElements.define(HaxCeContext.tag, HaxCeContext);

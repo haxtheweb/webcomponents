@@ -107,7 +107,6 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "title",

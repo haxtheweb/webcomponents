@@ -1,6 +1,27 @@
 /**
  * A collection of utility functions exported for convenience
  */
+
+// wrap an element with another; super basic but makes it consistent across our apps
+function wrap(el, wrapper) {
+  if (el && el.parentNode) {
+    el.parentNode.insertBefore(wrapper, el);
+    wrapper.appendChild(el);
+  }
+}
+
+// unwrap away from an element; super basic but makes it consistent across our apps
+function unwrap(el) {
+  if (el && el.parentNode) {
+    // move all children out of the element
+    while (el.firstChild) {
+      el.parentNode.insertBefore(el.firstChild, el);
+    }
+    // remove the empty element
+    el.remove();
+  }
+}
+
 // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 function validURL(str) {
   var pattern = new RegExp(
@@ -549,6 +570,8 @@ export const winEventsElement = function (SuperClass) {
 };
 
 export {
+  wrap,
+  unwrap,
   validURL,
   valueMapTransform,
   haxElementToNode,

@@ -191,7 +191,6 @@ class HaxAutoloader extends HAXElement(LitElement) {
                   let props = wiring.prototypeHaxProperties();
                   props.gizmo.title = name;
                   props.gizmo.handles = [];
-                  props.settings.quick = [];
                   props.settings.configure = [];
                   props.settings.advanced = [];
                   props = wiring.standardAdvancedProps(props);

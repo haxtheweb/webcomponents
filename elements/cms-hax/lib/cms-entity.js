@@ -251,7 +251,6 @@ class CMSEntity extends PolymerElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "entityType",

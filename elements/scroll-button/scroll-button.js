@@ -114,7 +114,6 @@ class ScrollButton extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "target",

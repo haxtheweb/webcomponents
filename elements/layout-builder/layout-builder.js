@@ -75,7 +75,6 @@ class LayoutBuilder extends PolymerElement {
         },
       },
       settings: {
-        quick: [],
         configure: [],
         advanced: [],
       },

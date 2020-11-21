@@ -280,7 +280,6 @@ class PageContentsMenu extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [],
         advanced: [],
       },

@@ -1,5 +1,7 @@
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 import { HAXStore } from "./hax-store.js";
+import "./hax-context-item-menu.js";
+import "./hax-context-item.js";
 import { autorun, toJS } from "mobx";
 /**
  * `hax-plate-context`
@@ -11,6 +13,7 @@ import { autorun, toJS } from "mobx";
 class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
   constructor(delayRender = false) {
     super();
+    this.haxUIElement = true;
     this.tourName = "hax";
     // set tag for later use
     this.tag = HaxPlateContext.tag;
@@ -19,10 +22,6 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
     if (!delayRender) {
       this.render();
     }
-    setTimeout(() => {
-      import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
-      import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-    }, 0);
     autorun(() => {
       const activeNode = toJS(HAXStore.activeNode);
       if (activeNode && this.getAttribute("on-screen")) {

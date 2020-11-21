@@ -165,7 +165,6 @@ class SimplePopover extends AbsolutePositionBehavior {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "title",

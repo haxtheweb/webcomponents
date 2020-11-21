@@ -379,40 +379,6 @@ class PaperAudioPlayer extends mixinBehaviors(
         },
       },
       settings: {
-        quick: [
-          {
-            property: "src",
-            title: "Source",
-            description: "The URL for this audio file.",
-            inputMethod: "textfield",
-            icon: "link",
-            required: true,
-            validationType: "url",
-          },
-          {
-            property: "title",
-            title: "Title",
-            description: "Title of this sound track.",
-            inputMethod: "textfield",
-            icon: "av:video-label",
-            required: false,
-            validationType: "text",
-          },
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Select the accent color use",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            property: "dark",
-            title: "Dark",
-            description: "Use dark theme",
-            inputMethod: "boolean",
-            icon: "invert-colors",
-          },
-        ],
         configure: [
           {
             property: "src",

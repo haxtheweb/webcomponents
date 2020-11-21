@@ -147,22 +147,6 @@ class VideoPlayer extends IntersectionObserverMixin(
         },
       },
       settings: {
-        quick: [
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Select the accent color for the player.",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            attribute: "dark",
-            title: "Dark theme",
-            description: "Enable dark theme for the player.",
-            inputMethod: "boolean",
-            icon: "invert-colors",
-          },
-        ],
         configure: [
           {
             property: "source",
@@ -899,9 +883,17 @@ class VideoPlayer extends IntersectionObserverMixin(
     return source;
   }
   /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      postProcessNodeToContent: "haxpostProcessNodeToContent",
+    };
+  }
+  /**
    * postProcesshaxNodeToContent - clean up so we don't have empty array data
    */
-  postProcesshaxNodeToContent(content) {
+  haxpostProcessNodeToContent(content) {
     content = content.replace(' sources="[]",', "");
     content = content.replace(' tracks="[]",', "");
     return content;

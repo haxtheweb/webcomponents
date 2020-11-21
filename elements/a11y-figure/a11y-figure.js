@@ -142,7 +142,6 @@ class A11yFigure extends A11yDetails {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "imgSrc",

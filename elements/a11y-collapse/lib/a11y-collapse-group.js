@@ -116,20 +116,6 @@ class A11yCollapseGroup extends LitElement {
         groups: ["Content", "Presentation", "Collapse"],
       },
       settings: {
-        quick: [
-          {
-            property: "radio",
-            title: "Expand only one",
-            description: "Only one item can be expanded.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            description: "Disable items.",
-            inputMethod: "boolean",
-          },
-        ],
         configure: [
           {
             property: "radio",

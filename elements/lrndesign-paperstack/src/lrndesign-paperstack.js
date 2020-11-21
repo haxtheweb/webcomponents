@@ -229,29 +229,6 @@ class LrndesignPaperstack extends SimpleColors {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "Title of the cards",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "Select the accent color use",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            property: "dark",
-            title: "Dark",
-            description: "Use dark theme",
-            inputMethod: "boolean",
-            icon: "invert-colors",
-          },
-        ],
         configure: [
           {
             property: "title",

@@ -120,36 +120,6 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The heading for this sticky note",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Select the accent color use",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            property: "dark",
-            title: "Dark",
-            description: "Use dark theme",
-            inputMethod: "boolean",
-            icon: "invert-colors",
-          },
-          {
-            property: "elevation",
-            title: "Elevation",
-            description: "Visually how high this is off the page",
-            inputMethod: "textfield",
-            icon: "icons:content-copy",
-          },
-        ],
         configure: [
           {
             property: "title",

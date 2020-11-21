@@ -1530,6 +1530,7 @@
   ],
   "autoloader": {
     "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
+    "editable-table-display": "@lrnwebcomponents/editable-table/lib/editable-table-display.js",
     "simple-cta": "@lrnwebcomponents/simple-cta/simple-cta.js",
     "a11y-collapse": "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
     "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",

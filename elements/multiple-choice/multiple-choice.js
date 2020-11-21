@@ -495,22 +495,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "question",
-            title: "Question",
-            description: "Question for users to respond to.",
-            inputMethod: "textfield",
-            icon: "icons:help",
-          },
-        ],
         configure: [
           {
             property: "title",
@@ -637,9 +621,52 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     };
   }
   /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      preProcessNodeToContent: "haxpreProcessNodeToContent",
+      preProcessInsertContent: "haxpreProcessInsertContent",
+      inlineContextMenu: "haxinlineContextMenu",
+    };
+  }
+  /**
+   * add buttons when it is in context
+   */
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "icons:add",
+        callback: "haxClickInlineAdd",
+        label: "Add answer",
+      },
+      {
+        icon: "icons:remove",
+        callback: "haxClickInlineRemove",
+        label: "Remove answer",
+      },
+    ];
+  }
+  haxClickInlineAdd(e) {
+    this.resetAnswers();
+    let d = this.answers;
+    d.push({ label: "New answer", correct: false });
+    this.answers = [...d];
+    return true;
+  }
+  haxClickInlineRemove(e) {
+    if (this.answers.length > 0) {
+      this.resetAnswers();
+      let d = this.answers;
+      d.pop();
+      this.answers = [...d];
+      return true;
+    }
+  }
+  /**
    * HAX preprocess Node to Content hook
    */
-  preProcessHaxNodeToContent(node) {
+  haxpreProcessNodeToContent(node) {
     // ensure we dont accidently have the answer displayed!
     if (node.answers) {
       var answers = [];
@@ -658,7 +685,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   /**
    * HAX preprocess insert content hook
    */
-  preProcessHaxInsertContent(detail) {
+  haxpreProcessInsertContent(detail) {
     // ensure we dont accidently have the answer displayed!
     if (detail.properties.answers) {
       detail.properties.answers = detail.properties.answers.map(function (val) {

@@ -160,7 +160,6 @@ class TwitterEmbedVanilla extends HTMLElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             attribute: "tweet",

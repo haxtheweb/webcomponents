@@ -72,7 +72,6 @@ class RCoder extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "endpoint",

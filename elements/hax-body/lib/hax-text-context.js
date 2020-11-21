@@ -81,6 +81,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
   }
   constructor() {
     super();
+    this.haxUIElement = true;
     this.tourName = "hax";
     setTimeout(() => {
       this.addEventListener(

@@ -242,6 +242,40 @@ class EditableTableDisplay extends displayBehaviors(
       <div id="htmlImport" hidden><slot></slot></div>
     `;
   }
+  static get haxProperties() {
+    return {
+      type: "element",
+      editingElement: {
+        tag: "editable-table",
+        import: "@lrnwebcomponents/editable-table/editable-table.js",
+      },
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Enhanced table",
+        description: "A table for displaying data",
+        icon: "image:grid-on",
+        color: "blue-grey",
+        groups: ["Content", "Table", "Data"],
+        meta: {
+          author: "ELMS:LN",
+        },
+      },
+      settings: {
+        configure: [],
+        advanced: [],
+      },
+      demoSchema: [
+        {
+          tag: "editable-table-display",
+          content:
+            "<table striped><tr><td>-</td><td>-</td><td>-</td></tr><tr><td>-</td><td>-</td><td>-</td></tr><tr><td>-</td><td>-</td><td>-</td></tr></table>",
+          properties: {},
+        },
+      ],
+    };
+  }
   static get tag() {
     return "editable-table-display";
   }
@@ -442,7 +476,6 @@ class EditableTableDisplay extends displayBehaviors(
       this.sortColumn = e.detail.columnIndex;
     }
     e.detail.setSortMode(this.sortMode);
-    console.log("_changeSortMode", e.detail, this.sortMode);
     this.sortData(this.sortMode, e.detail.columnIndex);
   }
 
@@ -501,9 +534,6 @@ class EditableTableDisplay extends displayBehaviors(
         this.set("tbody." + i, []);
         this.set("tbody." + i, temp[i].slice(1));
       }
-      console.log("sortData", type, column, temp, this.data);
-    } else {
-      console.log("sortData", type, column, this.data);
     }
   }
 

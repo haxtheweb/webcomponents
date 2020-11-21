@@ -63,15 +63,6 @@ class MdBlock extends LitElement {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "source",
-            title: "Source",
-            description: "Source file for markdown",
-            inputMethod: "textfield",
-            icon: "icons:link",
-          },
-        ],
         configure: [
           {
             property: "markdown",

@@ -46,7 +46,6 @@ class UserAction extends HTMLElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             attribute: "track",

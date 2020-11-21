@@ -399,30 +399,6 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "image",
-            title: "Image",
-            description: "The image of the element",
-            inputMethod: "textfield",
-            icon: "editor:insert-photo",
-          },
-          {
-            property: "link",
-            title: "More link",
-            description: "Link to additional information",
-            inputMethod: "textfield",
-            validationType: "url",
-            icon: "icons:link",
-          },
-        ],
         configure: [
           {
             property: "title",

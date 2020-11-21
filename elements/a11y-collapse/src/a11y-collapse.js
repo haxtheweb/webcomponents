@@ -277,26 +277,6 @@ class A11yCollapse extends LitElement {
         groups: ["Content", "Presentation", "Collapse"],
       },
       settings: {
-        quick: [
-          {
-            property: "expanded",
-            title: "Expanded",
-            description: "Expand by default",
-            inputMethod: "boolean",
-          },
-          {
-            property: "headingButton",
-            title: "Heading Button",
-            description:
-              "Make entire heading clickble instead of just the icon.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            inputMethod: "boolean",
-          },
-        ],
         configure: [
           {
             slot: "heading",

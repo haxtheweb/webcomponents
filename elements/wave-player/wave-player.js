@@ -494,17 +494,6 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "src",
-            title: "Source",
-            description: "The URL for this video.",
-            inputMethod: "textfield",
-            icon: "link",
-            required: true,
-            validationType: "url",
-          },
-        ],
         configure: [
           {
             property: "src",

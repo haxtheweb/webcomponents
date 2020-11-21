@@ -289,15 +289,6 @@ class CitationElement extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the work being cited.",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-        ],
         configure: [
           {
             property: "title",

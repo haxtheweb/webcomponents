@@ -88,22 +88,6 @@ class MicroCopyHeading extends LitElement {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "heading",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android",
-          },
-          {
-            property: "endCap",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android",
-          },
-        ],
         configure: [
           {
             property: "heading",

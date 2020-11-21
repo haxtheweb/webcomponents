@@ -123,7 +123,6 @@ class NavCardItem extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "accentColor",

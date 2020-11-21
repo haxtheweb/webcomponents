@@ -318,24 +318,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "source",
-            title: "Source",
-            description: "The URL for the image.",
-            inputMethod: "textfield",
-            icon: "link",
-            required: true,
-          },
-          {
-            property: "alt",
-            title: "Alternative text",
-            description: "Text to describe the image to non-sighted users.",
-            inputMethod: "textfield",
-            icon: "accessibility",
-            required: false,
-          },
-        ],
         configure: [
           {
             property: "source",

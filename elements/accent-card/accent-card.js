@@ -400,28 +400,6 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "An optional accent color.",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            property: "dark",
-            title: "Dark Theme",
-            description: "Enable Dark Theme",
-            inputMethod: "boolean",
-            icon: "icons:invert-colors",
-          },
-          {
-            property: "horizontal",
-            title: "Horizontal",
-            description: "Horizontal orientation?",
-            inputMethod: "boolean",
-          },
-        ],
         configure: [
           {
             slot: "heading",

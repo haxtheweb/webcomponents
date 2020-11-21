@@ -256,7 +256,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         groups: ["Code"],
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "title",
@@ -490,9 +489,17 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     }
   }
   /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      preProcessNodeToContent: "haxpreProcessNodeToContent",
+    };
+  }
+  /**
    * Ensure fields don't pass through to HAX if in that context
    */
-  preProcessHaxNodeToContent(node) {
+  haxpreProcessNodeToContent(node) {
     node.editorValue = null;
     node.codePenData = null;
     node.value = null;

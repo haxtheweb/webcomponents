@@ -72,20 +72,6 @@ class A11yTab extends LitElement {
         groups: ["Content", "Presentation", "Tabs"],
       },
       settings: {
-        quick: [
-          {
-            property: "disabled",
-            title: "Disabled",
-            inputMethod: "boolean",
-          },
-          {
-            property: "sticky",
-            title: "Sticky.",
-            desc:
-              "Horizontal tabs stick to the top of the window when scrolling.",
-            inputMethod: "boolean",
-          },
-        ],
         configure: [
           {
             property: "icon",

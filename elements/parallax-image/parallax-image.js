@@ -158,15 +158,6 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "imageBg",
-            title: "Image",
-            description: "image",
-            inputMethod: "haxupload",
-            icon: "image",
-          },
-        ],
         configure: [
           {
             property: "imageBg",

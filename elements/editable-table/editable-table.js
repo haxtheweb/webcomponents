@@ -422,6 +422,43 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   static get tag() {
     return "editable-table";
   }
+  /**
+   * Support being an editing interface element for HAX
+   */
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * allow HAX to toggle edit state when activated
+   */
+  haxactiveElementChanged(el, value) {
+    // overwrite the HAX dom w/ what our editor is supplying
+    if (!value) {
+      let replacement = this.getTableHTMLNode();
+      if (el) {
+        el.replaceWith(replacement);
+      }
+      el = replacement;
+    }
+    // aligns the state of the element w/ HAX if its available
+    this.toggleEditMode(value);
+    return el;
+  }
+  constructor() {
+    super();
+    this.haxUIElement = true;
+    this.editMode = false;
+    this.hideBordered = false;
+    this.hideCondensed = false;
+    this.hideDisplay = false;
+    this.hideFilter = false;
+    this.hideSortFilter = false;
+    this.hideSort = false;
+    this.hideResponsive = false;
+    this.hideStriped = false;
+  }
   static get properties() {
     return {
       /**
@@ -429,21 +466,18 @@ class EditableTable extends displayBehaviors(PolymerElement) {
        */
       editMode: {
         type: Boolean,
-        value: false,
       },
       /**
        * Hide the borders table styles menu option
        */
       hideBordered: {
         type: Boolean,
-        value: false,
       },
       /**
        * Hide the condensed table styles menu option
        */
       hideCondensed: {
         type: Boolean,
-        value: false,
       },
       /**
        * Hide the table display menu group
@@ -458,7 +492,6 @@ class EditableTable extends displayBehaviors(PolymerElement) {
        */
       hideFilter: {
         type: Boolean,
-        value: false,
       },
       /**
        * Hide the table sorting & filtering menu group
@@ -472,21 +505,18 @@ class EditableTable extends displayBehaviors(PolymerElement) {
        */
       hideSort: {
         type: Boolean,
-        value: false,
       },
       /**
        * Hide the responsive table styles menu option
        */
       hideResponsive: {
         type: Boolean,
-        value: false,
       },
       /**
        * Hide the striped table styles menu option
        */
       hideStriped: {
         type: Boolean,
-        value: false,
       },
     };
   }
@@ -554,7 +584,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         detail: this,
       })
     );
-    if (edit) {
+    if (edit && this.shadowRoot) {
       this.shadowRoot.querySelector("editable-table-display").toggleFilter();
       this.shadowRoot
         .querySelector("editable-table-display")
@@ -570,18 +600,57 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     this.caption = this.shadowRoot.querySelector("#caption").value;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    setTimeout(() => {
+      // re-run initial state if missed because of how element is stamped into DOM
+      if (!this.data || this.data.length < 1 || this.data[0].length < 1) {
+        let table = this.children.item(0);
+        // support wrapping editable-table-display tag or primative
+        if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
+          table = table.children.item(0);
+        }
+        if (
+          typeof table !== typeof undefined &&
+          table !== null &&
+          table.tagName === "TABLE" &&
+          table.children &&
+          table.children.length > 0
+        ) {
+          this.importHTML(table);
+        } else {
+          this.set("data", [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""],
+          ]);
+        }
+      }
+      this.__ready = true;
+    }, 0);
+  }
+
   /**
    * Fires when data changed
    * @event change
    * @param {event} the event
    */
   _dataChanged(newValue, oldValue) {
-    if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
+    if (
+      this.__ready &&
+      (!newValue || newValue.length < 1 || newValue[0].length < 1)
+    ) {
       let table = this.children.item(0);
+      // support wrapping editable-table-display tag or primative
+      if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
+        table = table.children.item(0);
+      }
       if (
         typeof table !== typeof undefined &&
         table !== null &&
-        table.tagName === "TABLE"
+        table.tagName === "TABLE" &&
+        table.children &&
+        table.children.length > 0
       ) {
         this.importHTML(table);
       } else {

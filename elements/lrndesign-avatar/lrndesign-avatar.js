@@ -96,32 +96,6 @@ class LrndesignAvatar extends SimpleColors {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "Pick an accent color.",
-            inputMethod: "colorpicker",
-          },
-          {
-            property: "dark",
-            title: "Dark",
-            description: "Use dark text (and light background) for avatar.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "icon",
-            title: "Icon",
-            description: "Optional: Pick an icon for avatar.",
-            inputMethod: "iconpicker",
-          },
-          {
-            property: "src",
-            title: "Image Source",
-            description: "Optional: Upload an image for avatar.",
-            inputMethod: "haxupload",
-          },
-        ],
         configure: [
           {
             property: "accentColor",

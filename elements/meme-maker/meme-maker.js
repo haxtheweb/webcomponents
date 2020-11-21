@@ -173,22 +173,6 @@ class MemeMaker extends LitElement {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "topText",
-            title: "Top text",
-            description: "Top text of the meme.",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "bottomText",
-            title: "Bottom text",
-            description: "The date this was accessed.",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-        ],
         configure: [
           {
             property: "imageUrl",

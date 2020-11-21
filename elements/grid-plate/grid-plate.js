@@ -412,6 +412,7 @@ class GridPlate extends LitElement {
    */
   static get haxProperties() {
     return {
+      type: "grid",
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -428,7 +429,6 @@ class GridPlate extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "layout",

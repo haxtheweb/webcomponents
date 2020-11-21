@@ -13,6 +13,7 @@ import { HAXStore } from "./hax-store.js";
 class HaxContextItem extends LitElement {
   constructor() {
     super();
+    this.haxUIElement = true;
     this.simple = false; // flag to use simple-icon for performance
     this.danger = false;
     this.light = false;
@@ -44,7 +45,6 @@ class HaxContextItem extends LitElement {
         }
         :host([menu]) {
           display: flex;
-          width: 100%;
         }
       `,
     ];

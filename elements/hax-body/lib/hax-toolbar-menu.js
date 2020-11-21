@@ -14,6 +14,7 @@ class HaxToolbarMenu extends LitElement {
         simple-icon-lite {
           --simple-icon-height: 10px;
           --simple-icon-width: 10px;
+          margin-left: -2px;
         }
         .flip-icon {
           transform: rotateY(180deg);

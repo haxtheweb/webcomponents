@@ -167,26 +167,6 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "height",
-            title: "height",
-            description: "height of the object",
-            inputMethod: "textfield",
-            type: "bar",
-            icon: "image:photo-size-select-small",
-            required: true,
-          },
-          {
-            property: "width",
-            title: "Width",
-            description: "Width of the object",
-            inputMethod: "textfield",
-            type: "bar",
-            icon: "image:straighten",
-            required: true,
-          },
-        ],
         configure: [
           {
             property: "source",

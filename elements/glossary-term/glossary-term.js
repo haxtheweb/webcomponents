@@ -63,7 +63,6 @@ class GlossaryTerm extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "name",

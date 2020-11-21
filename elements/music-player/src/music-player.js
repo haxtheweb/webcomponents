@@ -129,7 +129,6 @@ class MusicPlayer extends LitElement {
         },
       },
       settings: {
-        quick: [],
         configure: [
           {
             property: "source",
