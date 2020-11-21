@@ -209,7 +209,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           border-top: 4px solid var(--lrndesign-gallery-focus-color);
         }
         #carouseltext > * {
-          margin: 10px;
+          margin: 5px 5px 5px 10px;
         }
         #carouseltext,
         #details {

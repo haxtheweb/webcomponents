@@ -37,6 +37,155 @@ class StorybookFunctions {
  * Object to help load things in globally scoped and fire events when ready
  */
 export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
+  galleryData(importUrl = import.meta.url) {
+    return {
+      options: [
+        {
+          slot: "",
+          title: "Gallery Figures",
+          inputMethod: "code-editor",
+        },
+        { css: "maxWidth" },
+        { css: "--lrndesign-gallery-color", title: "text color" },
+        {
+          css: "--lrndesign-gallery-background-color",
+          title: "background color",
+        },
+        {
+          css: "--lrndesign-gallery-border-color",
+          title: "subtle border color",
+        },
+        { css: "--lrndesign-gallery-focus-color", title: "accent color" },
+        {
+          css: "--lrndesign-gallery-thumbnail-outline",
+          title: "thumbnail outline color",
+        },
+        {
+          css: "--lrndesign-gallery-dialog-color",
+          title: "zoom dialog text color",
+        },
+        {
+          css: "--lrndesign-gallery-dialog-background-color",
+          title: "zoom dialog background-color",
+        },
+        {
+          css: "--lrndesign-gallery-dialog-border-color",
+          title: "zoom dialog border-color",
+        },
+        {
+          css: "--lrndesign-gallery-dialog-toggled-background-color",
+          title: "zoom dialog background-color for toggled items",
+        },
+        {
+          css: "--lrndesign-gallery-carousel-next-bg",
+          title: "gradient on carousel next button",
+        },
+        {
+          css: "--lrndesign-gallery-carousel-prev-bg",
+          title: "gradient on carousel prev button",
+        },
+      ],
+      sources: [
+        [
+          {
+            title: "Bird",
+            details: this.randomParagraph(2, 7),
+            alt: "A bird with bright blue feathers.",
+            src: new URL(`demo/images/bird.jpg`, importUrl),
+            large: new URL(`demo/images/bird.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/bird.jpg`, importUrl),
+          },
+          {
+            title: "Cat",
+            alt: "A tabby cat's face.",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/cat.jpeg`, importUrl),
+            large: new URL(`demo/images/cat.jpeg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/cat.jpeg`, importUrl),
+          },
+          {
+            title: "Dog",
+            alt: "A dog tilting its head.",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/dog.jpg`, importUrl),
+            large: new URL(`demo/images/dog.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/dog.jpg`, importUrl),
+          },
+          {
+            title: "Fish",
+            alt: "A bright red-orange fish",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/fish.jpg`, importUrl),
+            large: new URL(`demo/images/fish.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/fish.jpg`, importUrl),
+          },
+        ],
+        [
+          {
+            title: "Atari",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/atari.jpg`, importUrl),
+            large: new URL(`demo/images/atari.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/atari.jpg`, importUrl),
+          },
+          {
+            title: "Nintendo",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/nintendo.png`, importUrl),
+            large: new URL(`demo/images/nintendo.png`, importUrl),
+            thumbnail: new URL(
+              `demo/images/thumbnails/nintendo.png`,
+              importUrl
+            ),
+          },
+          {
+            title: "PS4",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/ps4.jpg`, importUrl),
+            large: new URL(`demo/images/ps4.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/ps4.jpg`, importUrl),
+          },
+          {
+            title: "Sega",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/sega.jpg`, importUrl),
+            large: new URL(`demo/images/sega.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/sega.jpg`, importUrl),
+          },
+          {
+            title: "XBox",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/xbox.png`, importUrl),
+            large: new URL(`demo/images/xbox.png`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/xbox.png`, importUrl),
+          },
+        ],
+        [
+          {
+            title: "Apple",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/apple.jpg`, importUrl),
+            large: new URL(`demo/images/apple.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/apple.jpg`, importUrl),
+          },
+          {
+            title: "Banana",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/banana.jpg`, importUrl),
+            large: new URL(`demo/images/banana.jpg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/banana.jpg`, importUrl),
+          },
+          {
+            title: "Carrot",
+            details: this.randomParagraph(2, 7),
+            src: new URL(`demo/images/carrot.jpeg`, importUrl),
+            large: new URL(`demo/images/carrot.jpeg`, importUrl),
+            thumbnail: new URL(`demo/images/thumbnails/carrot.jpeg`, importUrl),
+          },
+        ],
+      ],
+    };
+  }
   /**
    * gets a HAX property by property or slot name
    *
