@@ -7,7 +7,7 @@ import { RichTextEditorToolbar } from "@lrnwebcomponents/rich-text-editor/lib/to
 import { LrnVocab } from "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 import { OerSchemaElement } from "@lrnwebcomponents/oer-schema/oer-schema.js";
 import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "./hax-text-editor-inline.js";

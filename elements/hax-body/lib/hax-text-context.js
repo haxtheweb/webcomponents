@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
@@ -55,7 +55,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           cursor: pointer;
           color: black;
         }
-        simple-icon {
+        simple-icon-lite {
           --simple-icon-height: 20px;
           --simple-icon-width: 20px;
           padding: 4px;
@@ -188,7 +188,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
               align-items: center;
               border: 0;
             }
-            simple-popover-manager button simple-icon {
+            simple-popover-manager button simple-icon-lite {
               --simple-icon-height: 18px;
               --simple-icon-width: 18px;
               margin-right: 8px;
@@ -211,7 +211,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           ${this.formattingList.map(
             (val) =>
               html` <button slot="options" value="${val.value}">
-                <simple-icon icon="${val.icon}"></simple-icon>
+                <simple-icon-lite icon="${val.icon}"></simple-icon-lite>
                 ${val.text}
               </button>`
           )}
@@ -430,7 +430,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
     );
     localItem.setAttribute("data-simple-popover-selection-active", true);
     this.formatIcon = localItem
-      .querySelector("simple-icon")
+      .querySelector("simple-icon-lite")
       .getAttribute("icon");
   }
   updated(changedProperties) {

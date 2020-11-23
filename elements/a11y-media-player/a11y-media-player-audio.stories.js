@@ -22,15 +22,15 @@ export default {
 };
 const utils = new StorybookUtilities(),
   defaults = {
-    accentColor: utils.getRandomColor(),
+    accentColor: utils.randomColor(),
     audioOnly: true,
-    dark: utils.getRandomBool(),
-    disableInteractive: utils.getRandomBool(),
-    disableSearch: utils.getRandomBool(),
-    hideTimestamps: utils.getRandomBool(),
-    linkable: utils.getRandomBool(),
-    standalone: utils.getRandomBool(),
-    stickyCorner: utils.getRandomOption([
+    dark: utils.randomBool(),
+    disableInteractive: utils.randomBool(),
+    disableSearch: utils.randomBool(),
+    hideTimestamps: utils.randomBool(),
+    linkable: utils.randomBool(),
+    standalone: utils.randomBool(),
+    stickyCorner: utils.randomOption([
       "none",
       "top-left",
       "top-right",

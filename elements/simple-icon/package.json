@@ -10,6 +10,12 @@
     "files": {
       "js": "src/simple-icon.js"
     },
+    "iconset": {
+      "exportName": "SimpleIconsetManifest",
+      "manifestFilename": "simple-iconset-manifest.js",
+      "manifestPath": "./lib",
+      "svgsPath": "./lib/svgs"
+    },
     "sharedHaxProps": [],
     "sharedProps": [],
     "sharedStyles": []

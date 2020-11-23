@@ -43,7 +43,6 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
           margin: 0 10px;
           flex: 0 1 var(--lrndesign-gallery-image-width, 200px);
           max-width: 35%;
-          --simple-icon-color: currentColor;
         }
         lrndesign-gallery-zoom,
         lrndesign-gallery-zoom:hover,
@@ -128,10 +127,10 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
                         @load="${(e) => this._handleImgLoad(e)}"
                       />
                       <div class="zoombg"></div>
-                      <simple-icon
+                      <simple-icon-lite
                         icon="zoom-in"
                         class="zoomicon"
-                      ></simple-icon>
+                      ></simple-icon-lite>
                     </lrndesign-gallery-zoom>
                   `
                 )}

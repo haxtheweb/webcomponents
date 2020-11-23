@@ -15,6 +15,12 @@
       "properties": "src/hax-iconset-properties.json",
       "hax": "src/hax-iconset-hax.json"
     },
+    "iconset": {
+      "exportName": "HaxIconsetManifest",
+      "manifestFilename": "hax-iconset-manifest",
+      "manifestPath": "./lib",
+      "svgsPath": "./lib/svgs"
+    },
     "sharedStyles": []
   },
   "version": "2.8.0",

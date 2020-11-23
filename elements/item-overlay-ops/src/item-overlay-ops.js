@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 /**
  * `item-overlay-ops`
  * @element item-overlay-ops
@@ -54,7 +54,7 @@ class ItemOverlayOps extends PolymerElement {
           border-bottom: 1px solid rgba(100, 100, 100, 0.4);
           text-align: center;
         }
-        .ops simple-icon-button {
+        .ops simple-icon-button-lite {
           display: inline-flex;
           --simple-icon-width: 26px;
           --simple-icon-height: 26px;
@@ -62,14 +62,14 @@ class ItemOverlayOps extends PolymerElement {
           margin: 6px;
           color: #999999;
         }
-        .ops simple-icon-button#cancel {
+        .ops simple-icon-button-lite#cancel {
           --simple-icon-width: 16px;
           --simple-icon-height: 16px;
           padding: 0px;
           margin: 4px;
           position: absolute;
         }
-        .ops simple-icon-button.active {
+        .ops simple-icon-button-lite.active {
           color: #000000;
           background-color: rgba(255, 255, 255, 0.6);
           border-radius: 50%;
@@ -88,7 +88,7 @@ class ItemOverlayOps extends PolymerElement {
           margin: 0 auto;
           align-content: center;
         }
-        #workingarea simple-icon-button {
+        #workingarea simple-icon-button-lite {
           --simple-icon-width: 50%;
           --simple-icon-height: 100%;
           display: inline-flex;
@@ -137,63 +137,63 @@ class ItemOverlayOps extends PolymerElement {
       </style>
       <div id="container">
         <div class="ops">
-          <simple-icon-button
+          <simple-icon-button-lite
             on-click="_opTap"
             icon="icons:add"
             id="add"
             hidden$="[[!add]]"
             title="Add to this"
-          ></simple-icon-button>
-          <simple-icon-button
+          ></simple-icon-button-lite>
+          <simple-icon-button-lite
             on-click="_opTap"
             icon="icons:create"
             id="edit"
             hidden$="[[!edit]]"
             title="Edit this"
-          ></simple-icon-button>
-          <simple-icon-button
+          ></simple-icon-button-lite>
+          <simple-icon-button-lite
             on-click="_opTap"
             icon="icons:swap-horiz"
             id="move"
             hidden$="[[!move]]"
             title="Move this"
-          ></simple-icon-button>
-          <simple-icon-button
+          ></simple-icon-button-lite>
+          <simple-icon-button-lite
             on-click="_opTap"
             icon="icons:delete"
             id="remove"
             hidden$="[[!remove]]"
             title="Delete this"
-          ></simple-icon-button>
-          <simple-icon-button
+          ></simple-icon-button-lite>
+          <simple-icon-button-lite
             on-click="_opTap"
             icon="icons:content-copy"
             id="duplicate"
             hidden$="[[!duplicate]]"
             title="Duplicate this"
-          ></simple-icon-button>
-          <simple-icon-button
+          ></simple-icon-button-lite>
+          <simple-icon-button-lite
             on-click="_opTap"
             icon="icons:cancel"
             id="cancel"
             hidden$="[[!__anyOp]]"
             title="Cancel"
-          ></simple-icon-button>
+          ></simple-icon-button-lite>
         </div>
         <div class="active-op">[[activeTitle]]</div>
         <div id="workingarea" class$="[[activeOp]]">
-          <simple-icon-button
+          <simple-icon-button-lite
             on-click="_optionSelected"
             id="option1"
             title="[[__option1Text]]"
             icon="[[__option1Icon]]"
-          ></simple-icon-button>
-          <simple-icon-button
+          ></simple-icon-button-lite>
+          <simple-icon-button-lite
             on-click="_optionSelected"
             id="option2"
             title="[[__option2Text]]"
             icon="[[__option2Icon]]"
-          ></simple-icon-button>
+          ></simple-icon-button-lite>
         </div>
       </div>
       <slot></slot>

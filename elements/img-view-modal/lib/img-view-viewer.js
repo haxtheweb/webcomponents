@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `img-view-viewer`
@@ -111,7 +111,6 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           border: none;
           background-color: transparent;
           color: var(--img-view-viewer-color);
-          --simple-icon-color: var(--img-view-viewer-color);
         }
         button[disabled] {
           opacity: 0.5;
@@ -219,14 +218,18 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           `
         : ""}
       <div id="container">
-        ${this.getToolbars(this.defaultToolbars, this.toolbars, "top")}
+        ${this.getToolbars("top")}
         <div>
-          <div id="viewer"></div>
+          <div
+            id="viewer"
+            style="height:calc(var(--img-view-viewer-height, 500px) - ${this
+              .toolbarsHeight}px)"
+          ></div>
         </div>
         <div id="placeholder">
           <div id="info" ?hidden="${!this.info}">${this.info}</div>
         </div>
-        ${this.getToolbars(this.defaultToolbars, this.toolbars, "bottom")}
+        ${this.getToolbars("bottom")}
       </div>
     `;
   }
@@ -267,13 +270,18 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       __screenfullLoaded: { type: Boolean },
     };
   }
-  getToolbars(defaultToolbars, customToolbars, topOrBottom = "bottom") {
-    let toolbars = customToolbars || defaultToolbars,
+  get toolbarsHeight() {
+    let height = 0,
+      toolbars = this.customToolbars || this.toolbars;
+    if (toolbars.top) height += 52;
+    if (toolbars.bottom) height += 52;
+    return height;
+  }
+  getToolbars(topOrBottom = "bottom") {
+    let toolbars = this.customToolbars || this.toolbars,
       toolbar =
-        toolbars && toolbars[topOrBottom]
-          ? toolbars[topOrBottom]
-          : { id: topOrBottom, contents: "" },
-      div = this._item(toolbar, topOrBottom === "top");
+        toolbars && toolbars[topOrBottom] ? toolbars[topOrBottom] : false,
+      div = toolbar ? this._item(toolbar, topOrBottom === "top") : "";
     return div;
   }
   /**
@@ -812,7 +820,10 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       ? ""
       : html`
           <p>
-            <simple-icon aria-hidden="true" icon="${config.icon}"></simple-icon>
+            <simple-icon-lite
+              aria-hidden="true"
+              icon="${config.icon}"
+            ></simple-icon-lite>
             <span class="${config.icon && !config.showText ? "sr-only" : ""}"
               >${config.text}</span
             >

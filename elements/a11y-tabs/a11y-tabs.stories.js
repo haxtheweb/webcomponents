@@ -36,12 +36,12 @@ export const A11yTabsStory = () => {
           (day) =>
             `<a11y-tab id="${day.toLowerCase()}" 
           label="${day}" 
-          icon="${utils.getRandomIcon()}">
-          <p>${utils.getRandomTextarea()}</p>
-          <p>${utils.getRandomTextarea()}</p>
-          <p>${utils.getRandomTextarea()}</p>
-          <p>${utils.getRandomTextarea()}</p>
-          <p>${utils.getRandomTextarea()}</p>
+          icon="${utils.randomIcon()}">
+          <p>${utils.randomParagraph(2, 7)}</p>
+          <p>${utils.randomParagraph(2, 7)}</p>
+          <p>${utils.randomParagraph(2, 7)}</p>
+          <p>${utils.randomParagraph(2, 7)}</p>
+          <p>${utils.randomParagraph(2, 7)}</p>
         </a11y-tab>`
         )
         .join(""),
@@ -99,7 +99,10 @@ export const A11yTabStory = () => {
     .map(
       (tab) =>
         `
-  <a11y-tab id="${tab.toLowerCase()}" label="${tab}" disabled icon="${utils.getRandomIcon()}">${utils.getRandomTextarea()}</a11y-tab>`
+  <a11y-tab id="${tab.toLowerCase()}" label="${tab}" disabled icon="${utils.randomIcon()}">${utils.randomParagraph(
+          2,
+          7
+        )}</a11y-tab>`
     )
     .join("");
 
@@ -110,8 +113,8 @@ export const A11yTabStory = () => {
     {
       id: "after",
       label: "After",
-      icon: utils.getRandomIcon(),
-      emptyslot: utils.getRandomTextarea(),
+      icon: utils.randomIcon(),
+      emptyslot: utils.randomParagraph(2, 7),
     },
     [],
     [],

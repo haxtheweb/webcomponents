@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
 
@@ -11,7 +11,7 @@ class HaxToolbarMenu extends LitElement {
           display: block;
           box-sizing: border-box;
         }
-        simple-icon {
+        simple-icon-lite {
           --simple-icon-height: 10px;
           --simple-icon-width: 10px;
           margin-left: -2px;
@@ -47,7 +47,7 @@ class HaxToolbarMenu extends LitElement {
           .class="${this.iconClass}"
           tooltip="${this.tooltip}"
         >
-          <simple-icon dark icon="hax:expand-more" contrast="4"></simple-icon>
+          <simple-icon-lite icon="hax:expand-more"></simple-icon-lite>
         </hax-toolbar-item>
         <div slot="options">
           <slot></slot>

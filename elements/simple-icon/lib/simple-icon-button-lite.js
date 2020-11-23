@@ -26,8 +26,57 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
             justify-content: center;
             position: relative;
             vertical-align: middle;
-            border-radius: var(--simple-icon-button-padding, 0px);
             border-radius: var(--simple-icon-button-border-radius, 50%);
+            background-color: var(
+              --simple-icon-button-background-color,
+              transparent
+            );
+            padding: 0;
+            margin: 0;
+          }
+          button {
+            cursor: pointer;
+            opacity: var(--simple-icon-button-opacity, 1);
+            border: var(--simple-icon-button-border, 0);
+            border-radius: var(--simple-icon-button-border-radius, 50%);
+            background-color: var(
+              --simple-icon-button-background-color,
+              transparent
+            );
+            padding: var(--simple-icon-button-padding, 0px);
+            margin: 0px;
+          }
+          button[aria-pressed] {
+            opacity: var(--simple-icon-button-toggled-opacity, 1);
+            --simple-icon-button-border: var(
+              --simple-icon-toggled-button-border
+            );
+            --simple-icon-color: var(--simple-icon-button-toggled-color);
+            --simple-icon-button-background-color: var(
+              --simple-icon-button-toggled-background-color
+            );
+          }
+          button:focus,
+          button:hover {
+            opacity: var(--simple-icon-button-focus-opacity, 0.8);
+            --simple-icon-button-border: var(--simple-icon-button-focus-border);
+            --simple-icon-color: var(--simple-icon-button-focus-color);
+            --simple-icon-button-background-color: var(
+              --simple-icon-button-focus-background-color
+            );
+          }
+          button[disabled] {
+            opacity: var(--simple-icon-button-disabled-opacity, 0.5);
+            --simple-icon-button-border: var(
+              --simple-icon-button-disabled-border
+            );
+            --simple-icon-color: var(--simple-icon-button-disabled-color);
+            --simple-icon-button-background-color: var(
+              --simple-icon-button-disabled-background-color
+            );
+          }
+
+          simple-icon {
             height: calc(
               var(--simple-icon-height, 24px) - 2 *
                 var(--simple-icon-button-padding, 0px)
@@ -37,33 +86,28 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
                 var(--simple-icon-button-padding, 0px)
             );
           }
-          button {
-            cursor: pointer;
-            border: 0;
-            border-radius: var(--simple-icon-button-border-radius, 50%);
-            height: var(--simple-icon-height, 24px);
-            width: var(--simple-icon-width, 24px);
-            background-color: transparent;
-            padding: 0px;
-            margin: 0px;
-          }
-          button:focus,
-          button:hover {
-            opacity: var(--simple-icon-button-focus-opacity, 0.8);
-            --simple-icon-color: var(--simple-icon-button-focus-color);
-          }
-
-          simple-icon {
-            height: var(--simple-icon-height, 24px);
-            width: var(--simple-icon-width, 24px);
-          }
         `,
       ];
     }
     // render function
     render() {
       return html`
-        <button>
+        <button
+          ?autofocus="${this.autofocus}"
+          aria-labelledby="${this.ariaLabelledby}"
+          .aria-pressed="${this.toggles || this.toggled
+            ? "true"
+            : this.toggles
+            ? "false"
+            : undefined}"
+          controls="${this.controls}"
+          ?disabled="${this.disabled}"
+          form="${this.form}"
+          label="${this.label}"
+          name="${this.fieldName}"
+          type="${this.type}"
+          value="${this.value}"
+        >
           <simple-icon-lite icon=${this.icon}> </simple-icon-lite>
         </button>
       `;
@@ -73,8 +117,55 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
     static get properties() {
       return {
         ...super.properties,
+        autofocus: {
+          attribute: "autofocus",
+          type: Boolean,
+        },
+        ariaLabelledby: {
+          attribute: "aria-labelledby",
+          type: String,
+        },
+        controls: {
+          attribute: "controls",
+          type: String,
+        },
+        disabled: {
+          attribute: "disabled",
+          type: Boolean,
+        },
+        fieldName: {
+          attribute: "field-name",
+          type: String,
+        },
+        form: {
+          attribute: "form",
+          type: String,
+        },
         icon: {
           type: String,
+          reflect: true,
+        },
+        label: {
+          attribute: "label",
+          type: String,
+        },
+        type: {
+          attribute: "type",
+          type: String,
+        },
+        value: {
+          attribute: "value",
+          type: String,
+          reflect: true,
+        },
+        toggles: {
+          attribute: "toggles",
+          type: Boolean,
+          reflect: true,
+        },
+        toggled: {
+          attribute: "toggled",
+          type: Boolean,
           reflect: true,
         },
       };
@@ -100,6 +191,7 @@ class SimpleIconButtonLite extends SimpleIconButtonBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.type = "button";
   }
 }
 customElements.define(SimpleIconButtonLite.tag, SimpleIconButtonLite);

@@ -126,7 +126,7 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
         },
         {
           property: "stackBars",
-          title: "Stck Bars",
+          title: "Stack Bars",
           description: `
             If set to true this property will cause the series bars
             to be stacked.`,

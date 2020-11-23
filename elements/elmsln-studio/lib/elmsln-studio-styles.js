@@ -137,8 +137,11 @@ const ElmslnStudioStyles = function (SuperClass) {
             display: block;
             color: #4b4b4b;
           }
-          button:focus,
-          button:hover {
+          button[disabled] {
+            cursor: not-allowed;
+          }
+          button:not([disabled]):focus,
+          button:not([disabled]):hover {
             color: var(--simple-colors-default-theme-grey-11, #222);
           }
           button.load-more {
@@ -152,8 +155,8 @@ const ElmslnStudioStyles = function (SuperClass) {
             color: var(--simple-colors-default-theme-grey-11, #222);
             background-color: var(--simple-colors-default-theme-grey-2, #eee);
           }
-          button.load-more:focus,
-          button.load-more:hover {
+          button.load-more:not([disabled]):focus,
+          button.load-more:not([disabled]):hover {
             color: var(--simple-colors-default-theme-grey-12, #000);
             background-color: var(--simple-colors-default-theme-grey-3, #ddd);
           }
@@ -161,31 +164,30 @@ const ElmslnStudioStyles = function (SuperClass) {
             padding: 0;
             margin: 0;
           }
-          img-view-modal simple-icon {
+          img-view-modal simple-icon-lite {
+            color: white;
             border-radius: 2px;
             --simple-icon-width: 24px;
             --simple-icon-height: 24px;
-            color: white;
             background-color: rgba(0, 0, 0, 0.5);
           }
-          img-view-modal button:hover simple-icon,
-          img-view-modal button:focus simple-icon {
-            color: white;
+          img-view-modal:not([disabled]) button:hover simple-icon-lite,
+          img-view-modal:not([disabled]) button:focus simple-icon-lite {
             background-color: rgba(0, 0, 0, 0.25);
           }
 
-          img-view-modal.thumbnail,
-          img-view-modal.thumbnail button,
-          img-view-modal.thumbnail button .imgbg {
+          img-view-modal.thumbnail {
             border-radius: 3px;
           }
           img-view-modal.thumbnail button {
+            border-radius: 3px;
             position: relative;
             width: 150px;
             padding: 0;
             margin: 0;
           }
           img-view-modal.thumbnail button .imgbg {
+            border-radius: 3px;
             width: 100%;
             padding-top: 100%;
             background-image: var(
@@ -196,7 +198,7 @@ const ElmslnStudioStyles = function (SuperClass) {
             background-size: cover;
             margin: 0;
           }
-          img-view-modal.thumbnail button simple-icon {
+          img-view-modal.thumbnail button simple-icon-lite {
             position: absolute;
             bottom: 5px;
             right: 5px;

@@ -1,8 +1,8 @@
 <a tabindex="-1" id="lrnsys-button-link" href="${this.showHref}" data-prefetch-hover="${this.prefetch}" target="${this.target}">
-<button id="button" raised="${this.raised}" class="${this.class} ${this.color} ${this.textColor}" ?disabled="${this.disabled}">
+<button id="button" raised="${this.raised}" class="${this.class}" ?disabled="${this.disabled}">
     <div class="inner ${this.innerClass}">
       ${this.icon ? html`
-      <simple-icon icon="${this.icon}" id="icon" class="${this.iconClass}"></simple-icon>
+      <simple-icon-lite icon="${this.icon}" id="icon"></simple-icon-lite>
       `:``}
       ${this.label ? html`
         <span class="label">

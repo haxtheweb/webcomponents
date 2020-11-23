@@ -28,11 +28,16 @@ class AccentCardClickable extends LitElement {
   static get styles() {
     return [
       css`
-        :host {
+        :host,
+        accent-card {
           display: flex;
+          align-items: stretch;
+          justify-content: stretch;
+          flex-direction: column;
         }
         accent-card {
           position: relative;
+          flex: 1 1 auto;
         }
         accent-card:focus-within,
         accent-card:hover {
@@ -78,7 +83,7 @@ class AccentCardClickable extends LitElement {
         <slot name="corner" slot="corner"></slot>
         <slot name="subheading" slot="subheading"></slot>
         <slot name="content" slot="content"></slot>
-        <slot name="footer" slpt="footer"></slot>
+        <slot name="footer" slot="footer"></slot>
       </accent-card>
     `;
   }

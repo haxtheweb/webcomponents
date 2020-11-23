@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "web-dialog/index.js";
 
 /**
@@ -56,8 +56,8 @@ class SimpleModal extends LitElement {
           color: var(--simple-modal-titlebar-color, #444);
           background-color: var(--simple-modal-titlebar-background, #ddd);
           border-radius: 0;
-          height: var(--simple-modal-titlebar-height, 64px);
-          line-height: var(--simple-modal-titlebar-line-height, 64px);
+          height: var(--simple-modal-titlebar-height, unset);
+          line-height: var(--simple-modal-titlebar-line-height, unset);
         }
 
         #headerbar {
@@ -70,6 +70,7 @@ class SimpleModal extends LitElement {
         h2 {
           margin-right: 8px;
           padding: 0;
+          margin: 0;
           flex: auto;
           font-size: 18px;
           line-height: 18px;
@@ -94,7 +95,7 @@ class SimpleModal extends LitElement {
           );
         }
 
-        #close simple-icon {
+        #close simple-icon-lite {
           --simple-icon-height: var(--simple-modal-titlebar-icon-height, 16px);
           --simple-icon-width: var(--simple-modal-titlebar-icon-width, 16px);
           color: var(--simple-modal-titlebar-color, #444);
@@ -128,8 +129,11 @@ class SimpleModal extends LitElement {
             --simple-modal-buttons-background
           );
         }
+        web-dialog {
+          --dialog-border-radius: var(--simple-modal-border-radius, 2px);
+        }
         web-dialog::part(dialog) {
-          border: 2px solid black;
+          border: 1px solid var(--simple-modal-border-color, #222);
           padding: 0;
         }
       `,
@@ -151,14 +155,14 @@ class SimpleModal extends LitElement {
       <div id="titlebar">
         <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
         <div></div>
-        <simple-icon-button
+        <simple-icon-button-lite
           id="close"
           dark
           icon="${this.closeIcon}"
           @click="${this.close}"
           label="${this.closeLabel}"
         >
-        </simple-icon-button>
+        </simple-icon-button-lite>
       </div>
       <div id="headerbar"><slot name="header"></slot></div>
       <div id="simple-modal-content">

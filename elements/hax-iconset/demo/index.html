@@ -11,24 +11,23 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../hax-iconset.js';
-      import '@lrnwebcomponents/iconset-demo/iconset-demo.js';
+      import '../lib/simple-hax-iconset.js';
+      import '@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js';
+      import '@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js';
+      import '@lrnwebcomponents/simple-icon/simple-icon.js';
+      import '@lrnwebcomponents/simple-icon/lib/simple-icon-button.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <div class="vertical-section-container centered">
-        <h1>hax-iconset</h1>
-        <h2>hax-iconset List</h2>
-        <iconset-demo include-sets="hax"></iconset-demo>
-      </div>
-        
       <h2>hax-iconset Demo</h2>
       <demo-snippet>
         <template>
-          <iron-icon icon="hax:code-json"></iron-icon>
-          <iron-icon icon="hax:remix"></iron-icon>
-          <iron-icon icon="hax:arrow-expand-left"></iron-icon>
+          <simple-icon accent-color="red" icon="hax:code-json"></simple-icon>
+          <simple-icon-button accent-color="indigo" dark icon="drawing:draw-poly"></simple-icon-button>
+          <simple-icon-button-lite icon="lrn:instructor"></simple-icon-button-lite>
+          <a href="#"><simple-icon-lite icon="hax:remix"></simple-icon-lite> Link</a>
         </template>
       </demo-snippet>
     </div>

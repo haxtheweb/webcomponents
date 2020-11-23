@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 class HaxToolbarItem extends LitElement {
   static get styles() {
@@ -108,7 +108,7 @@ class HaxToolbarItem extends LitElement {
           background: var(--hax-color-bg-accent);
           color: var(--hax-color-text);
         }
-        simple-icon {
+        simple-icon-lite {
           --simple-icon-height: 20px;
           --simple-icon-width: 20px;
           padding: 0;
@@ -162,10 +162,10 @@ class HaxToolbarItem extends LitElement {
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
         }
-        simple-icon {
+        simple-icon-lite {
           --simple-colors-default-theme-accent-8: white;
         }
-        :host([disabled]) simple-icon {
+        :host([disabled]) simple-icon-lite {
           --simple-colors-default-theme-accent-8: unset;
         }
       `,
@@ -179,11 +179,10 @@ class HaxToolbarItem extends LitElement {
         tabindex="0"
         .title="${this.tooltip}"
       >
-        <simple-icon
-          ?dark="${!this.dark}"
+        <simple-icon-lite
           icon="${this.icon}"
           ?hidden="${this.icon == "" ? true : false}"
-        ></simple-icon>
+        ></simple-icon-lite>
 
         <span id="label" ?hidden="${this.label == "" ? true : false}"
           >${this.label}</span

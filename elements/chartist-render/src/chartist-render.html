@@ -18,11 +18,3 @@
   class="${this.showTable ? 'table' : 'table sr-only'}">
   <slot></slot>
 </div>
-${this.dataSource != '' ? html`
-  <iron-ajax
-  auto
-  handle-as="text"
-  url="${this.dataSource}"
-  @response="${this._handleResponse}"
-></iron-ajax>
-` : ``}

@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RadioBehaviors } from "@lrnwebcomponents/radio-behaviors/radio-behaviors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "./lib/a11y-carousel-button.js";
 /**
@@ -60,7 +60,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
             border: 0px solid transparent;
             width: 50%;
           }
-          a11y-carousel-button.prevnext simple-icon {
+          a11y-carousel-button.prevnext simple-icon-lite {
             opacity: 0;
             --simple-icon-width: 30%;
             --simple-icon-height: 30%;
@@ -70,8 +70,8 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
           a11y-carousel-button.prevnext:hover {
             outline: none;
           }
-          a11y-carousel-button.prevnext:focus simple-icon,
-          a11y-carousel-button.prevnext:hover simple-icon {
+          a11y-carousel-button.prevnext:focus simple-icon-lite,
+          a11y-carousel-button.prevnext:hover simple-icon-lite {
             opacity: 1;
             color: var(--a11y-carousel-button-background-color, black);
           }
@@ -119,7 +119,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
                 title="${this.prevLabel}"
               >
                 <span class="sr-only">${this.nextLabel}</span>
-                <simple-icon icon="icons:chevron-left"></simple-icon>
+                <simple-icon-lite icon="icons:chevron-left"></simple-icon-lite>
               </a11y-carousel-button>
               <a11y-carousel-button
                 class="prevnext"
@@ -128,7 +128,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
                 title="${this.nextLabel}"
               >
                 <span class="sr-only">${this.nextLabel}</span>
-                <simple-icon icon="icons:chevron-right"></simple-icon>
+                <simple-icon-lite icon="icons:chevron-right"></simple-icon-lite>
               </a11y-carousel-button>
             `}
       </div>

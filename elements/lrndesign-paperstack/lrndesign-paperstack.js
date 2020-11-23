@@ -2,10 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import { html, css, LitElement } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 /**
@@ -15,123 +14,178 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  *
  * @demo demo/index.html
  */
-class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+class LrndesignPaperstack extends SimpleColors {
+  constructor() {
+    super();
+    this.icon = "lrn:assignment";
+  }
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
-          font-size: 14px;
-          --lrndesign-paperstack-bg: var(--simple-colors-default-theme-grey-1);
-          --lrndesign-paperstack-faded-bg: var(
-            --simple-colors-default-theme-grey-2
-          );
-          --lrndesign-paperstack-border: var(
-            --simple-colors-default-theme-grey-4
-          );
-          --lrndesign-paperstack-shadow: var(
-            --simple-colors-default-theme-grey-12
-          );
-          --lrndesign-paperstack-accent: var(
-            --simple-colors-default-theme-accent-8
-          );
-          --lrndesign-paperstack-text: var(
-            --simple-colors-default-theme-grey-12
-          );
-          --lrndesign-paperstack-heading-font: cursive;
-        }
-        :host([dark]) {
-          --lrndesign-paperstack-bg: var(
-            --simple-colors-default-theme-accent-4
-          );
-          --lrndesign-paperstack-faded-bg: var(
-            --simple-colors-default-theme-accent-3
-          );
-          --lrndesign-paperstack-border: var(
-            --simple-colors-default-theme-accent-1
-          );
-          --lrndesign-paperstack-shadow: var(
-            --simple-colors-default-theme-grey-1
-          );
-          --lrndesign-paperstack-accent: var(
-            --simple-colors-default-theme-grey-12
-          );
-          --lrndesign-paperstack-text: var(
-            --simple-colors-default-theme-grey-12
-          );
+          font-family: var(--lrndesign-paperstack-font-family, unset);
+          font-family: var(--lrndesign-paperstack-font-size, 14px);
         }
         .stack {
           width: 100%;
           position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
+          margin: 24px 0;
         }
         .paper {
-          min-height: 160px;
-          width: 80%;
+          width: calc(100% - 48px);
           padding: 12px 24px;
           position: absolute;
-          flex: 1 1 auto;
-          left: 0;
-          top: 0;
-          box-shadow: 0 0 1px var(--lrndesign-paperstack-shadow);
-          border: 1px solid var(--lrndesign-paperstack-border);
+          box-shadow: 0 0 1px
+            var(
+              --lrndesign-paperstack-shadow,
+              var(--simple-colors-default-theme-grey-12)
+            );
+          border: 1px solid
+            var(
+              --lrndesign-paperstack-border,
+              var(--simple-colors-default-theme-grey-4)
+            );
+        }
+        :host([dark]) .paper {
+          box-shadow: 0 0 1px
+            var(
+              --lrndesign-paperstack-shadow,
+              var(--simple-colors-default-theme-grey-1)
+            );
+          border: 1px solid
+            var(
+              --lrndesign-paperstack-border,
+              var(--simple-colors-default-theme-grey-1)
+            );
         }
         .paper:first-of-type {
           left: -0.32px;
           top: 0.32px;
+          bottom: -0.32px;
+          right: 0.32px;
           transform: rotate(-2.5deg);
-          background-color: var(--lrndesign-paperstack-faded-bg);
+          background-color: var(
+            --lrndesign-paperstack-faded-bg,
+            var(--simple-colors-default-theme-grey-2)
+          );
         }
         .paper:nth-of-type(2) {
           right: -0.32px;
           top: 1.6px;
+          left: 0.32px;
+          right: -1.6px;
           transform: rotate(1.4deg);
-          background-color: var(--lrndesign-paperstack-faded-bg);
+          background-color: var(
+            --lrndesign-paperstack-faded-bg,
+            var(--simple-colors-default-theme-grey-2)
+          );
+        }
+        :host([dark]) .paper:first-of-type,
+        :host([dark]) .paper:nth-of-type(2) {
+          background-color: var(
+            --lrndesign-paperstack-faded-bg,
+            var(--simple-colors-default-theme-grey-1)
+          );
         }
         .front {
-          flex: 0 0 100%;
           position: relative;
-          margin-bottom: 48px;
-          background-color: var(--lrndesign-paperstack-bg);
-          color: var(--lrndesign-paperstack-text);
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          background-color: var(
+            --lrndesign-paperstack-bg,
+            var(--simple-colors-default-theme-grey-1)
+          );
+          color: var(
+            --lrndesign-paperstack-text,
+            var(--simple-colors-default-theme-grey-12)
+          );
         }
-
-        simple-icon {
-          --simple-icon-width: 40px;
-          --simple-icon-height: 40px;
-          margin: 4px;
-          color: var(--lrndesign-paperstack-bg);
+        :host([dark]) .front {
+          background-color: var(
+            --lrndesign-paperstack-bg,
+            var(--simple-colors-default-theme-grey-3)
+          );
+        }
+        simple-icon-lite {
+          --simple-icon-width: calc(
+            var(--lrndesign-paperstack-icon-size, 32px) - 2 *
+              var(--lrndesign-paperstack-icon-padding, 4px)
+          );
+          --simple-icon-height: calc(
+            var(--lrndesign-paperstack-icon-size, 32px) - 2 *
+              var(--lrndesign-paperstack-icon-padding, 4px)
+          );
         }
         .heading {
           display: flex;
           align-items: center;
         }
         .icon-container {
-          width: 48px;
-          height: 48px;
+          width: calc(
+            var(--lrndesign-paperstack-icon-size, 32px) - 2 *
+              var(--lrndesign-paperstack-icon-padding, 4px)
+          );
+          height: calc(
+            var(--lrndesign-paperstack-icon-size, 32px) - 2 *
+              var(--lrndesign-paperstack-icon-padding, 4px)
+          );
           border-radius: 50%;
-          background-color: var(--lrndesign-paperstack-accent);
-          margin-right: 8px;
+          background-color: var(
+            --lrndesign-paperstack-accent,
+            var(--simple-colors-default-theme-accent-8)
+          );
           display: flex;
           align-items: center;
+          padding: var(--lrndesign-paperstack-icon-padding, 4px);
+          color: var(
+            --lrndesign-paperstack-bg,
+            var(--simple-colors-default-theme-grey-1)
+          );
+          margin-right: calc(2 * var(--lrndesign-paperstack-icon-padding, 2px));
+        }
+        :host([dark]) .icon-container {
+          color: var(
+            --lrndesign-paperstack-bg,
+            var(--simple-colors-default-theme-grey-1)
+          );
+          background-color: var(
+            --lrndesign-paperstack-accent,
+            var(--simple-colors-default-theme-accent-9)
+          );
         }
         .title {
           font-size: 16px;
-          color: var(--lrndesign-paperstack-accent);
-          font-family: var(--lrndesign-paperstack-heading-font);
+          color: var(
+            --lrndesign-paperstack-accent,
+            var(--simple-colors-default-theme-accent-8)
+          );
+          font-family: var(--lrndesign-paperstack-heading-font-family, cursive);
+          font-family: var(--lrndesign-paperstack-heading-font-size, 16px);
         }
-      </style>
+        :host([dark]) .title {
+          color: var(
+            --lrndesign-paperstack-accent,
+            var(--simple-colors-default-theme-grey-12)
+          );
+        }
+      `,
+    ];
+  }
+  render() {
+    return html`
       <div class="stack">
         <div class="paper"></div>
         <div class="paper"></div>
         <div class="front paper">
           <div class="heading">
             <div class="icon-container circle">
-              <simple-icon icon="[[icon]]"></simple-icon>
+              <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
             </div>
-            <span class="title">[[title]]</span>
+            <span class="title">${this.title}</span>
           </div>
           <p><slot></slot></p>
         </div>
@@ -149,14 +203,12 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
        */
       title: {
         type: String,
-        value: "",
       },
       /**
        * icon
        */
       icon: {
         type: String,
-        value: "lrn:assignment",
       },
     };
   }
@@ -182,7 +234,7 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
             property: "title",
             title: "Title",
             description: "Title of the cards",
-            inputMethod: "boolean",
+            inputMethod: "text",
           },
           {
             property: "accentColor",

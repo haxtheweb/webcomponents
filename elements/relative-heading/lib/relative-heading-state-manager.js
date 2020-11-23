@@ -116,12 +116,12 @@ class RelativeHeadingStateManager extends LitElement {
         text="${this.copyHeading.copyMessage || this.copyMessage}: ${this
           .copyUrl}"
       >
-        <simple-icon-button
+        <simple-icon-button-lite
           icon="${this.copyHeading.closeIcon || this.closeIcon}"
           label="${this.copyHeading.closeLabel || this.closeLabel}"
           title="${this.copyHeading.closeLabel || this.closeLabel}"
           @click="${this.closeCopyLink}"
-        ></simple-icon-button>
+        ></simple-icon-button-lite>
       </simple-toast>
     `;
   }
@@ -143,9 +143,8 @@ class RelativeHeadingStateManager extends LitElement {
   useCopyLink() {
     if (!this.usesCopyLink) {
       this.usesCopyLink = true;
-      import("@lrnwebcomponents/simple-icon/simple-icon.js");
       import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
       import("@lrnwebcomponents/simple-toast/simple-toast.js");
     }
   }

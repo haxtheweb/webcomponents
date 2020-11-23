@@ -25,7 +25,8 @@ const css = html`
      * Normalizes simple-icon and lrn-icon.
      */
     lrn-icon,
-    simple-icon {
+    simple-icon,
+    simple-icon-lite {
       --layout-inline: {
         display: inline-flex;
       }

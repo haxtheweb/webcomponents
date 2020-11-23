@@ -1,13 +1,14 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/a11y-compare-image/a11y-compare-image.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `image-compare-slider`
  * hax-wired a11y-compare-image
  * @demo demo/index.html
  * @element image-compare-slider
  */
-class ImageCompareSlider extends SchemaBehaviors(LitElement) {
+class ImageCompareSlider extends SchemaBehaviors(SimpleColors) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -26,15 +27,22 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
   constructor() {
     super();
     this.opacity = false;
+    this.position = 50;
+    this.accentColor = "blue";
   }
   render() {
     return html`
-      <a11y-compare-image ?opacity="${this.opacity}">
+      <a11y-compare-image
+        accent-color="${this.accentColor}"
+        ?dark="${this.dark}"
+        ?opacity="${this.opacity}"
+        position="${this.position}"
+      >
         <div slot="heading">
           ${this.title ? html` <h2>${this.title}</h2> ` : ``}
           <slot name="heading"></slot>
         </div>
-        <div id="description"><slot name="description"></slot></div>
+        <div slot="description"><slot name="description"></slot></div>
         <img
           slot="bottom"
           src="${this.bottomSrc}"
@@ -84,6 +92,12 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
        */
       opacity: {
         type: Boolean,
+      },
+      /**
+       * mode for the slider: wipe
+       */
+      position: {
+        type: Number,
       },
       /**
        * @deprecated Use `slot=heading`
@@ -141,6 +155,24 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
       settings: {
         configure: [
           {
+            property: "opacity",
+            title: "Slider Behavior",
+            description:
+              "Do you want the slider to wipe the top image across the bottom one (default), or to adjust the opacity of the top image?",
+            inputMethod: "boolean",
+            icon: "image:compare",
+          },
+          {
+            property: "accentColor",
+            title: "Slider Accent Color",
+            inputMethod: "colorpicker",
+          },
+          {
+            property: "dark",
+            title: "Slider Accent Color, Dark",
+            inputMethod: "boolean",
+          },
+          {
             slot: "heading",
             title: "Title",
             inputMethod: "textfield",
@@ -181,6 +213,14 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             inputMethod: "alt",
             required: true,
           },
+          {
+            property: "position",
+            title: "Slider's Initial Position",
+            description: "Number from 0 to 100",
+            inputMethod: "Number",
+            min: 0,
+            max: 100,
+          },
         ],
         advanced: [
           {
@@ -209,6 +249,9 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
         {
           tag: "image-compare-slider",
           properties: {
+            accentColor: "blue",
+            dark: false,
+            opacity: false,
             topSrc: "./demo/images/Matterhorn02.png",
             topAlt: "Matterhorn no snow.",
             topDescription: "cloudy",
@@ -222,6 +265,8 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
         {
           tag: "image-compare-slider",
           properties: {
+            accentColor: "indigo",
+            dark: true,
             opacity: true,
             topSrc: "./demo/images/Matterhorn02.png",
             topAlt: "Matterhorn no snow.",
@@ -231,8 +276,7 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             bottomDescriptionId: "snowy",
             style: "width:100%;max-width:400px",
           },
-          content: `
-            <h2 slot="heading">Image Compare Slider Opacity</h2>
+          content: `<h2 slot="heading">Image Compare Slider Opacity</h2>
             <div slot="description">
               The slider will fade away the top image
               <span id="cloudy">(Matterhorn on a cloudy day without snow)</span> 

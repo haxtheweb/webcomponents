@@ -26,10 +26,8 @@ export const SimpleIconBehaviors = function (SuperClass) {
           svg {
             height: var(--simple-icon-height, 24px);
             width: var(--simple-icon-width, 24px);
-          }
-          image {
-            height: var(--simple-icon-height, 24px);
-            width: var(--simple-icon-width, 24px);
+            max-height: var(--simple-icon-height, 24px);
+            max-width: var(--simple-icon-width, 24px);
           }
           feFlood {
             flood-color: var(--simple-icon-color, currentColor);
@@ -43,21 +41,21 @@ export const SimpleIconBehaviors = function (SuperClass) {
     // render function
     render() {
       return svg`
-        <svg xmlns="http://www.w3.org/2000/svg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
           <filter
             color-interpolation-filters="sRGB"
             x="0"
             y="0"
-            height="100%"
-            width="100%"
+            height="24px"
+            width="24px"
           >
             ${this.feFlood}
             <feComposite operator="in" in="COLOR" in2="SourceAlpha" />
           </filter>
           <image
             xlink:href=""
-            width="100%"
-            height="100%"
+            width="24px"
+            height="24px"
             focusable="false"
             preserveAspectRatio="xMidYMid meet"
           ></image>
@@ -150,6 +148,7 @@ class SimpleIconLite extends SimpleIconBehaviors(LitElement) {
   }
   constructor() {
     super();
+    window.SimpleIconset.requestAvailability();
   }
 }
 customElements.define(SimpleIconLite.tag, SimpleIconLite);

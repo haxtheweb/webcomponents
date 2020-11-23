@@ -4,9 +4,9 @@
  */
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 
 /**
@@ -97,7 +97,7 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
           position: absolute;
           left: calc(50% - 70px);
         }
-        simple-icon {
+        simple-icon-lite {
           display: inline-flex;
           margin: 0;
           padding: 0;
@@ -159,10 +159,10 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
         size="small"
       ></hexagon-loader>
       <a href="${this.dataSource}" id="download" tabindex="-1">
-        <simple-icon-button
+        <simple-icon-button-lite
           id="ficon"
           icon="file-download"
-        ></simple-icon-button>
+        ></simple-icon-button-lite>
       </a>
       <simple-tooltip for="ficon" offset="14" position="top"
         >Download table data</simple-tooltip

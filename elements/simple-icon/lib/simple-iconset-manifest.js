@@ -1,8 +1,7 @@
-[
+export const SimpleIconIconsetsManifest = [
   {
-    "name": "av",
-    "path": "./lib/svgs/av",
-    "icons": [
+    name: "av",
+    icons: [
       "add-to-queue",
       "airplay",
       "album",
@@ -82,13 +81,12 @@
       "volume-off",
       "volume-up",
       "web-asset",
-      "web"
-    ]
+      "web",
+    ],
   },
   {
-    "name": "communication",
-    "path": "./lib/svgs/communication",
-    "icons": [
+    name: "communication",
+    icons: [
       "business",
       "call-end",
       "call-made",
@@ -138,13 +136,12 @@
       "swap-calls",
       "textsms",
       "voicemail",
-      "vpn-key"
-    ]
+      "vpn-key",
+    ],
   },
   {
-    "name": "device",
-    "path": "./lib/svgs/device",
-    "icons": [
+    name: "device",
+    icons: [
       "access-alarm",
       "access-alarms",
       "access-time",
@@ -223,13 +220,12 @@
       "wallpaper",
       "widgets",
       "wifi-lock",
-      "wifi-tethering"
-    ]
+      "wifi-tethering",
+    ],
   },
   {
-    "name": "editor",
-    "path": "./lib/svgs/editor",
-    "icons": [
+    name: "editor",
+    icons: [
       "attach-file",
       "attach-money",
       "border-all",
@@ -297,13 +293,12 @@
       "vertical-align-bottom",
       "vertical-align-center",
       "vertical-align-top",
-      "wrap-text"
-    ]
+      "wrap-text",
+    ],
   },
   {
-    "name": "hardware",
-    "path": "./lib/svgs/hardware",
-    "icons": [
+    name: "hardware",
+    icons: [
       "cast-connected",
       "cast",
       "computer",
@@ -351,13 +346,12 @@
       "toys",
       "tv",
       "videogame-asset",
-      "watch"
-    ]
+      "watch",
+    ],
   },
   {
-    "name": "icons",
-    "path": "./lib/svgs/icons",
-    "icons": [
+    name: "icons",
+    icons: [
       "3d-rotation",
       "accessibility",
       "accessible",
@@ -666,13 +660,12 @@
       "work",
       "youtube-searched-for",
       "zoom-in",
-      "zoom-out"
-    ]
+      "zoom-out",
+    ],
   },
   {
-    "name": "image",
-    "path": "./lib/svgs/image",
-    "icons": [
+    name: "image",
+    icons: [
       "add-a-photo",
       "add-to-photos",
       "adjust",
@@ -827,13 +820,12 @@
       "wb-cloudy",
       "wb-incandescent",
       "wb-iridescent",
-      "wb-sunny"
-    ]
+      "wb-sunny",
+    ],
   },
   {
-    "name": "maps",
-    "path": "./lib/svgs/maps",
-    "icons": [
+    name: "maps",
+    icons: [
       "add-location",
       "beenhere",
       "directions-bike",
@@ -901,13 +893,12 @@
       "train",
       "tram",
       "transfer-within-a-station",
-      "zoom-out-map"
-    ]
+      "zoom-out-map",
+    ],
   },
   {
-    "name": "notification",
-    "path": "./lib/svgs/notification",
-    "icons": [
+    name: "notification",
+    icons: [
       "adb",
       "airline-seat-flat-angled",
       "airline-seat-flat",
@@ -961,13 +952,12 @@
       "voice-chat",
       "vpn-lock",
       "wc",
-      "wifi"
-    ]
+      "wifi",
+    ],
   },
   {
-    "name": "places",
-    "path": "./lib/svgs/places",
-    "icons": [
+    name: "places",
+    icons: [
       "ac-unit",
       "airport-shuttle",
       "all-inclusive",
@@ -986,13 +976,12 @@
       "rv-hookup",
       "smoke-free",
       "smoking-rooms",
-      "spa"
-    ]
+      "spa",
+    ],
   },
   {
-    "name": "social",
-    "path": "./lib/svgs/social",
-    "icons": [
+    name: "social",
+    icons: [
       "cake",
       "domain",
       "group-add",
@@ -1022,7 +1011,7 @@
       "sentiment-very-dissatisfied",
       "sentiment-very-satisfied",
       "share",
-      "whatshot"
-    ]
-  }
-]
+      "whatshot",
+    ],
+  },
+];

@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/a11y-tab.js";
@@ -318,11 +318,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           display: none;
         }
 
-        simple-icon:not([hidden]) {
+        simple-icon-lite:not([hidden]) {
           display: inline-block;
         }
 
-        simple-icon[hidden] {
+        simple-icon-lite[hidden] {
           display: none;
         }
       `,
@@ -772,21 +772,21 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   _tabIcon(tab, icon) {
     return tab.flag
       ? html`
-          <simple-icon
+          <simple-icon-lite
             class="icon"
             ?hidden="${!tab[icon]}"
             .icon="${tab[icon]}"
             .title="${tab.flag}"
           >
-          </simple-icon>
+          </simple-icon-lite>
         `
       : html`
-          <simple-icon
+          <simple-icon-lite
             class="icon"
             ?hidden="${!tab[icon]}"
             .icon="${tab[icon]}"
           >
-          </simple-icon>
+          </simple-icon-lite>
         `;
   }
 

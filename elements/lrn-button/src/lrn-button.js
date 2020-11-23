@@ -3,17 +3,17 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `lrn-button`
  * `Simple button wrapper with a few options`
  * @demo demo/index.html
  * @element lrn-button
  */
-class LrnButton extends LitElement {
+class LrnButton extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -29,6 +29,8 @@ class LrnButton extends LitElement {
     this.target = "";
     this.disabled = false;
     this.focusState = false;
+    this.dark = false;
+    this.color = "grey";
     setTimeout(() => {
       this.addEventListener("mousedown", this.tapEventOn);
       this.addEventListener("mouseover", this.tapEventOn);
@@ -36,6 +38,13 @@ class LrnButton extends LitElement {
       this.addEventListener("focusin", this.tapEventOn);
       this.addEventListener("focusout", this.tapEventOff);
     }, 0);
+  }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "color") this.accentColor = this.color;
+      console.log(propName, this.color, this.accentColor);
+    });
   }
   firstUpdated() {
     this.shadowRoot

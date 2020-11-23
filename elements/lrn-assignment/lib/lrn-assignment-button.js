@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 class LrnAssignmentButton extends LitElement {
   /**
@@ -23,7 +23,7 @@ class LrnAssignmentButton extends LitElement {
         button[complete] {
           background: #e7ffe7;
         }
-        simple-icon {
+        simple-icon-lite {
           margin-left: 8px;
           opacity: 0.8;
         }
@@ -39,14 +39,16 @@ class LrnAssignmentButton extends LitElement {
         ${this.open
           ? html`
               <button raised open>
-                ${this.title} <simple-icon icon="lrn-icons:input"></simple-icon>
+                ${this.title}
+                <simple-icon-lite icon="lrn-icons:input"></simple-icon-lite>
               </button>
             `
           : ``}
         ${this.complete
           ? html`
               <button raised complete>
-                ${this.title} <simple-icon icon="lrn-icons:done"></simple-icon>
+                ${this.title}
+                <simple-icon-lite icon="lrn-icons:done"></simple-icon-lite>
               </button>
             `
           : ``}

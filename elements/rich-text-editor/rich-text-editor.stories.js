@@ -51,7 +51,7 @@ export const RichTextEditorStory = () => {
     RichTextEditor,
     utils.getKnobs([...props, { slot: "", title: "Content" }], {
       emptyslot: emptyslot,
-      type: utils.getRandomOption(toolbars),
+      type: utils.randomOption(toolbars),
     })
   );
 };
@@ -410,7 +410,7 @@ const rawProps = (toolbarProps) => {
 export const RichTextEditorToolbarStory = () => {
   let props = rawProps(RichTextEditorToolbar.properties);
   let knobs = utils.getKnobs(props, {
-    config: utils.getRandomOption(configs),
+    config: utils.randomOption(configs),
     id: "my-toolbar",
   });
   return utils.getDemo(
@@ -423,7 +423,7 @@ export const RichTextEditorToolbarStory = () => {
 export const RichTextEditorToolbarFullStory = () => {
   let props = rawProps(RichTextEditorToolbarFull.properties);
   let knobs = utils.getKnobs(props, {
-    config: utils.getRandomOption(configs),
+    config: utils.randomOption(configs),
     id: "my-full-toolbar",
   });
   return utils.getDemo(
