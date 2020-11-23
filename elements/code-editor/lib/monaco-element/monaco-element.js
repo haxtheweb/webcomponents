@@ -35,6 +35,7 @@ class MonacoElement extends LitElement {
     this.iframe = null;
     this.value = "";
     this.fontSize = 16;
+    this.wordWrap = false;
     this.tabSize = 2;
     this.readOnly = false;
     this.eventTypes = {
@@ -69,6 +70,10 @@ class MonacoElement extends LitElement {
       fontSize: {
         type: Number,
         attribute: "font-size",
+      },
+      wordWrap: {
+        type: Boolean,
+        attribute: "word-wrap",
       },
       readOnly: {
         type: Boolean,
@@ -209,6 +214,7 @@ class MonacoElement extends LitElement {
           automaticLayout: true,
           ${this.hideLineNumbers ? `lineNumbers: 'false',` : ``}
           fontSize: ${this.fontSize},
+          wordWrap: ${this.wordWrap},
           readOnly: ${this.readOnly},
           minimap: {
             enabled: true

@@ -1,7 +1,7 @@
 {
   "canScale": true,
   "canPosition": true,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Simple popover",
     "description": "A popover alertdialog that is positioned next to a target element",

@@ -346,7 +346,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     return {
       canScale: false,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Tabs",
         description: "A set of tabs.",

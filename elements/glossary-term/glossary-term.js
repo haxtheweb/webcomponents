@@ -45,7 +45,7 @@ class GlossaryTerm extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Glossary term",
         description: "",

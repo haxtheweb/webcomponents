@@ -267,7 +267,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Citation",
         description: "A basic citation element with 3 presentation modes",

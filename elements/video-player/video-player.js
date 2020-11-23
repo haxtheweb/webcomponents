@@ -123,7 +123,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         step: 12.5,
       },
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Video player",
         description:

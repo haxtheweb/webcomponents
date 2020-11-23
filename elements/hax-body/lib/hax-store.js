@@ -1655,7 +1655,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         editingElement: "core",
         canScale: true,
         canPosition: true,
-        canEditSource: false,
+        canEditSource: true,
         settings: {
           configure: [
             {
@@ -2110,7 +2110,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       type: "element",
       editingElement: "core",
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Horizontal line",
         icon: "hax:hr",

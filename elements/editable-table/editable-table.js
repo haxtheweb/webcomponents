@@ -433,9 +433,9 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   /**
    * allow HAX to toggle edit state when activated
    */
-  haxactiveElementChanged(el, value) {
+  haxactiveElementChanged(el, val) {
     // overwrite the HAX dom w/ what our editor is supplying
-    if (!value) {
+    if (!val) {
       let replacement = this.getTableHTMLNode();
       if (el) {
         el.replaceWith(replacement);
@@ -443,7 +443,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       el = replacement;
     }
     // aligns the state of the element w/ HAX if its available
-    this.toggleEditMode(value);
+    this.toggleEditMode(val);
     return el;
   }
   constructor() {

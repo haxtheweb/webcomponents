@@ -88,7 +88,7 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Call to action",
         description: "A simple button with a link to take action.",

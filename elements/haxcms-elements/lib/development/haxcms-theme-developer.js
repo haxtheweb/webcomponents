@@ -57,7 +57,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     let props = {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "HAXcms active title",
         description: "",
@@ -83,7 +83,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       editingElement: "core",
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "HAXcms breadcrumb",
         description: "",
@@ -109,7 +109,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       editingElement: "core",
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "HAXcms menu",
         description: "",
@@ -150,7 +150,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       editingElement: "core",
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "HAXcms menu button",
         description: "",
@@ -223,7 +223,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       editingElement: "core",
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "HAXcms RSS button",
         description: "",
@@ -260,7 +260,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       editingElement: "core",
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "HAXcms title",
         description: "",
@@ -286,7 +286,7 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
       editingElement: "core",
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "HAXcms query",
         description: "The most powerful element in the known universe",

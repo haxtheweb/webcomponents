@@ -212,7 +212,7 @@ export class HAXWiring {
       editingElement: "core",
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       settings: {
         configure: [],
         advanced: [],
@@ -688,7 +688,7 @@ export class HAXWiring {
         api: "1",
         canScale: true,
         canPosition: true,
-        canEditSource: false,
+        canEditSource: true,
         gizmo: {
           title: "Tag name",
           description: "",

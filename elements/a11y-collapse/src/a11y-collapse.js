@@ -269,7 +269,7 @@ class A11yCollapse extends LitElement {
     return {
       canScale: false,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Single Expand Collapse",
         description: "A single instance of an expand collapse.",

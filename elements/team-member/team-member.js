@@ -105,7 +105,7 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Team Member",
         description: "The user will be able to see this for selection in a UI.",

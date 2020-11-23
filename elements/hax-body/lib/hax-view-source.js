@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
-import { stripMSWord } from "@lrnwebcomponents/utils/utils.js";
+import { stripMSWord, formatHTML } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 /**
  * `hax-export-dialog`
@@ -40,7 +40,14 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     return html`
       <div id="wrapper">
         <textarea id="hiddentextarea" hidden></textarea>
-        <code-editor id="textarea" title="" theme="vs"></code-editor>
+        <code-editor
+          id="textarea"
+          title=""
+          theme="vs"
+          language="html"
+          font-size="12"
+          word-wrap
+        ></code-editor>
       </div>
       <div class="buttons">
         <hax-tray-button
@@ -179,9 +186,9 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
       super.firstUpdated(changedProperties);
     }
     if (HAXStore.activeHaxBody) {
-      this.shadowRoot.querySelector(
-        "#textarea"
-      ).editorValue = HAXStore.activeHaxBody.haxToContent();
+      this.shadowRoot.querySelector("#textarea").editorValue = formatHTML(
+        HAXStore.activeHaxBody.haxToContent()
+      );
     }
   }
 

@@ -192,7 +192,7 @@ class A11yDetails extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Accessible Details Button",
         description:

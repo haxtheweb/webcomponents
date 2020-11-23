@@ -263,7 +263,7 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "License",
         description: "Provide a license for you rwork",

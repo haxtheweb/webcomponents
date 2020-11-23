@@ -146,7 +146,7 @@ class SimplePopover extends AbsolutePositionBehavior {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Simple popover",
         description:

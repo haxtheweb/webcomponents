@@ -14,7 +14,7 @@ class HaxExportDialog extends LitElement {
           --simple-modal-z-index: 100000001;
           --simple-modal-width: auto;
           --simple-modal-height: auto;
-          --simple-modal-min-width: 60vw;
+          --simple-modal-min-width: 80vw;
           --simple-modal-min-height: 70vh;
           --simple-modal-max-width: unset;
           --simple-modal-max-height: unset;

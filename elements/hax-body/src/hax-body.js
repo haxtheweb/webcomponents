@@ -414,7 +414,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.addEventListener("dragenter", this.dragEnterBody.bind(this));
       this.addEventListener("dragend", this.dragEndBody.bind(this));
       this.addEventListener("drop", this.dropEvent.bind(this));
-      this.addEventListener("click", this.clickEvent.bind(this));
     }, 0);
     autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
@@ -606,6 +605,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   clickEvent(e) {
     // failsafe to clear to the gravity scrolling
     clearTimeout(gravityScrollTimer);
+  }
+  blurEvent(e) {
+    if (this.editMode) {
+      // specialized element / item interaction that generated a blur
+      // event which could imply we clicked on an iframe and "left" the
+      // scope of the current browsing document. Example of
+      // what can cause this is monaco-editor
+      // @todo implement a possible hook here
+      if (this.__activeEditingElement) {
+      }
+    }
   }
   /**
    * Make a fake end cap element so we can drop in the last position
@@ -960,6 +970,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       "hax-context-item-selected",
       this._haxContextOperation.bind(this)
     );
+    window.addEventListener("click", this.clickEvent.bind(this));
+    window.addEventListener("blur", this.blurEvent.bind(this));
     window.addEventListener("keydown", this._onKeyDown.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
     document.body.addEventListener(
@@ -977,6 +989,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * HTMLElement
    */
   disconnectedCallback() {
+    window.removeEventListener("click", this.clickEvent.bind(this));
+    window.removeEventListener("blur", this.blurEvent.bind(this));
     window.removeEventListener("keydown", this._onKeyDown.bind(this));
     window.removeEventListener("keypress", this._onKeyPress.bind(this));
     document.body.removeEventListener(
@@ -2140,6 +2154,73 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     let detail = e.detail;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
+      case "hax-source-view-toggle":
+        if (!this.activeNode.__haxSourceView) {
+          this.activeNode.__haxSourceView = true;
+          this.__activeEditingElement = document.createElement("code-editor");
+          this.__activeEditingElement.language = "html";
+          this.__activeEditingElement.title = "";
+          this.__activeEditingElement.theme = "vs";
+          this.__activeEditingElement.fontSize = 12;
+          this.__activeEditingElement.wordWrap = true;
+          // could be 1st time this shows up so ensure we import
+          import("@lrnwebcomponents/code-editor/code-editor.js");
+          // test for slots to match to ensure this is maintained
+          if (
+            this.activeNode.getAttribute &&
+            this.activeNode.getAttribute("slot") != null
+          ) {
+            this.__activeEditingElement.setAttribute(
+              "slot",
+              this.activeNode.getAttribute("slot")
+            );
+          }
+          this.__ignoreActive = true;
+          wrap(this.activeNode, this.__activeEditingElement);
+        } else {
+          this.activeNode.__haxSourceView = false;
+          // run internal state hook if it exist and if we get a response
+          let replacement = HAXStore.runHook(
+            this.__activeEditingElement,
+            "activeElementChanged",
+            [this.activeNode, false]
+          );
+          let oldSchema = HAXStore.haxSchemaFromTag(
+            this.activeNode.tagName.toLowerCase()
+          );
+          // test for slots to match to ensure this is maintained
+          if (
+            this.activeNode &&
+            this.activeNode.getAttribute &&
+            this.activeNode.getAttribute("slot") != null
+          ) {
+            replacement.setAttribute(
+              "slot",
+              this.activeNode.getAttribute("slot")
+            );
+          }
+          // clean up from possible clone of settings we don't allow cloning
+          // haxProperties supports element saying what internals it needs
+          // garbage collected
+          if (
+            oldSchema.saveOptions &&
+            oldSchema.saveOptions.unsetAttributes &&
+            oldSchema.saveOptions.unsetAttributes.length
+          ) {
+            for (var i in oldSchema.saveOptions.unsetAttributes) {
+              replacement.removeAttribute(
+                oldSchema.saveOptions.unsetAttributes[i]
+              );
+            }
+          }
+          // this implies there was a replacement had AND that this response HTML object
+          // is different than what was passed in. In this instance we will end up
+          // firing the unwrap to unpeal the element w/ the new content but
+          // we need to ensure that the event binding is correctly applied
+          this.__applyNodeEditableState(replacement, this.editMode);
+          unwrap(this.__activeEditingElement);
+        }
+        break;
       // text based operations for primatives
       case "text-tag":
         // trigger the default selected value in context menu to match
@@ -3041,7 +3122,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // do whatever it wants but the expectation is it is ONLY working with that element
     if (oldValue) {
       let oldSchema = HAXStore.haxSchemaFromTag(oldValue.tagName.toLowerCase());
-      if (oldSchema.editingElement != "core") {
+      // account for other things injecting a UI that needs removed on loss of focus
+      if (
+        oldSchema.editingElement != "core" ||
+        (oldValue.parentNode &&
+          oldValue.parentNode.haxUIElement &&
+          oldValue.parentNode === this.__activeEditingElement)
+      ) {
         this.__ignoreActive = true;
         // run internal state hook if it exist and if we get a response
         let replacement = HAXStore.runHook(
@@ -3057,6 +3144,20 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             oldValue.getAttribute("slot") != null
           ) {
             replacement.setAttribute("slot", oldValue.getAttribute("slot"));
+          }
+          // clean up from possible clone of settings we don't allow cloning
+          // haxProperties supports element saying what internals it needs
+          // garbage collected
+          if (
+            oldSchema.saveOptions &&
+            oldSchema.saveOptions.unsetAttributes &&
+            oldSchema.saveOptions.unsetAttributes.length
+          ) {
+            for (var i in oldSchema.saveOptions.unsetAttributes) {
+              replacement.removeAttribute(
+                oldSchema.saveOptions.unsetAttributes[i]
+              );
+            }
           }
           // this implies there was a replacement had AND that this response HTML object
           // is different than what was passed in. In this instance we will end up

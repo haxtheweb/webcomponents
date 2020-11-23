@@ -378,7 +378,7 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Self-Check",
         description: "The user will be able to complete a self-check.",

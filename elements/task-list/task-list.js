@@ -73,6 +73,20 @@ class TaskList extends SchemaBehaviors(LitElement) {
     this.editMode = val;
     return ignoreAlign;
   }
+  alignState() {
+    // make a clone so we can completely clean up the state here
+    const clone = this.cloneNode();
+    // easy, name is flat
+    clone.name = this.shadowRoot.querySelector("#name").innerText;
+    const tasks = this.shadowRoot.querySelector("#tasks");
+    // update tasks
+    clone.tasks = this.getChildOutline(tasks);
+    // there are no longer changes
+    clone.__thereAreChanges = false;
+    clone.editMode = false;
+    this.replaceWith(clone);
+    this.remove();
+  }
   haxinlineContextMenu(ceMenu) {
     ceMenu.ceButtons = [
       {
@@ -233,7 +247,7 @@ class TaskList extends SchemaBehaviors(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Task list",
         description: "A list of tasks which is an ordered list",

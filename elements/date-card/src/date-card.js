@@ -33,7 +33,7 @@ class DateCard extends SimpleColors {
     return {
       canScale: false,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Date card",
         description: "Displays a calendar date with details",

@@ -27,7 +27,7 @@ class ServiceCard extends LitElement {
     return {
       canScale: false,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Service card",
         description: "Simple presentation of services or info",

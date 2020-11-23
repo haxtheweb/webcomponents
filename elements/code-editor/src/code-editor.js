@@ -5,6 +5,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js";
+import { formatHTML } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `code-editor`
  * `Wrapper on top of a code editor`
@@ -78,11 +80,13 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
    */
   constructor() {
     super();
+    this.haxUIElement = true;
     this.showCodePen = false;
     this.readOnly = false;
     this.theme = "vs-dark";
     this.language = "javascript";
     this.fontSize = 16;
+    this.wordWrap = false;
     this.tabSize = 2;
     this.autofocus = false;
     this.hideLineNumbers = false;
@@ -121,6 +125,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         theme="${this.theme}"
         @value-changed="${this._editorDataChanged}"
         font-size="${this.fontSize}"
+        ?word-wrap="${this.wordWrap}"
         ?read-only="${this.readOnly}"
         @code-editor-focus="${this._handleFocus}"
         @code-editor-blur="${this._handleBlur}"
@@ -213,6 +218,10 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         type: Number,
         attribute: "font-size",
       },
+      wordWrap: {
+        type: Boolean,
+        attribute: "word-wrap",
+      },
       /**
        * automatically set focus on the editor
        */
@@ -240,141 +249,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       tabSize: {
         type: Number,
         attribute: "tab-size",
-      },
-    };
-  }
-  static get haxProperties() {
-    return {
-      canScale: false,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Code Editor",
-        description: "A code editor.",
-        icon: "polymer",
-        color: "cyan",
-        groups: ["Code"],
-      },
-      settings: {
-        configure: [
-          {
-            property: "title",
-            title: "Title",
-            description: "Optional title for editor",
-            inputMethod: "textfield",
-          },
-          {
-            slot: "",
-            title: "Content",
-            description: "Code inside editor",
-            inputMethod: "code-editor",
-          },
-          {
-            property: "readOnly",
-            title: "Read-only",
-            description: "Prevent the code from being edited?",
-            inputMethod: "boolean",
-          },
-          {
-            property: "hideLineNumbers",
-            title: "Hide Line Numbers",
-            inputMethod: "boolean",
-          },
-          {
-            property: "showCodePen",
-            title: "CodePen",
-            description: "Include a link to CodePen?",
-            inputMethod: "boolean",
-          },
-          {
-            property: "tabSize",
-            title: "Tab Size",
-            inputMethod: "number",
-          },
-          {
-            property: "theme",
-            title: "Theme",
-            inputMethod: "select",
-            itemsList: ["hc-black", "vs-light", "vs-dark"],
-          },
-          {
-            property: "language",
-            title: "Code Language",
-            inputMethod: "select",
-            itemsList: [
-              "apex",
-              "azcli",
-              "bat",
-              "c",
-              "clojure",
-              "coffeescript",
-              "cpp",
-              "csharp",
-              "csp",
-              "css",
-              "dockerfile",
-              "fsharp",
-              "go",
-              "handlebars",
-              "html",
-              "ini",
-              "java",
-              "javascript",
-              "json",
-              "less",
-              "lua",
-              "markdown",
-              "msdax",
-              "mysql",
-              "objective-c",
-              "perl",
-              "pgsql",
-              "php",
-              "plaintext",
-              "postiats",
-              "powerquery",
-              "powershell",
-              "pug",
-              "python",
-              "r",
-              "razor",
-              "redis",
-              "redshift",
-              "ruby",
-              "rust",
-              "sb",
-              "scheme",
-              "scss",
-              "shell",
-              "sol",
-              "sql",
-              "st",
-              "swift",
-              "typescript",
-              "vb",
-              "xml",
-              "yaml",
-            ],
-          },
-        ],
-        advanced: [
-          {
-            property: "autofocus",
-            title: "Autofocus",
-            inputMethod: "boolean",
-          },
-          {
-            property: "fontSize",
-            title: "Font Size",
-            inputMethod: "number",
-          },
-          {
-            property: "editorValue",
-            title: "Editor Value",
-            description: "Initial contents of the editor",
-            inputMethod: "textfield",
-          },
-        ],
       },
     };
   }
@@ -422,6 +296,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     return {
       title: title,
       html: editorValue,
+      head: `<script>window.__appCDN="https://cdn.webcomponents.psu.edu/cdn/";</script><script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>`,
     };
   }
   /**
@@ -456,31 +331,29 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   /**
    * Calculate what's in slot currently and then inject it into the editor.
    */
-  updateEditorValue(node) {
-    if (node) {
-      var content = "";
-      var children = node;
-      if (node.tagName !== "TEMPLATE") {
-        console.warn(
-          "code-editor works best with a template tag provided in light dom"
-        );
-        children = this.childNodes;
-        if (children.length > 0) {
-          // loop through everything found in the slotted area and put it back in
-          for (var j = 0, len2 = children.length; j < len2; j++) {
-            if (typeof children[j].tagName !== typeof undefined) {
-              content += children[j].outerHTML;
-            } else {
-              content += children[j].textContent;
-            }
+  updateEditorValue() {
+    var content = "";
+    var children = this.children;
+    if (this.children[0] && this.children[0].tagName !== "TEMPLATE") {
+      children = this.childNodes;
+      if (children.length > 0) {
+        // loop through everything found in the slotted area and put it back in
+        for (var j = 0, len2 = children.length; j < len2; j++) {
+          if (children[j].tagName) {
+            content += children[j].outerHTML;
+          } else {
+            content += children[j].textContent;
           }
         }
-      } else {
-        content = children.innerHTML;
       }
-      if (content) {
-        this.shadowRoot.querySelector("#codeeditor").value = content.trim();
+    } else {
+      content = children.innerHTML;
+    }
+    if (content) {
+      if (this.language === "html") {
+        content = formatHTML(content);
       }
+      this.shadowRoot.querySelector("#codeeditor").value = content.trim();
     }
   }
   _editorValueChanged(newValue) {
@@ -494,7 +367,22 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   haxHooks() {
     return {
       preProcessNodeToContent: "haxpreProcessNodeToContent",
+      activeElementChanged: "haxactiveElementChanged",
     };
+  }
+  /**
+   * allow HAX to toggle edit state when activated
+   */
+  haxactiveElementChanged(el, val) {
+    // overwrite the HAX dom w/ what our editor is supplying
+    if (!val) {
+      let replacement = this.getValueAsNode(el);
+      if (el) {
+        el.replaceWith(replacement);
+      }
+      el = replacement;
+    }
+    return el;
   }
   /**
    * Ensure fields don't pass through to HAX if in that context
@@ -508,30 +396,38 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     return node;
   }
   /**
+   * return HTML object of table data
+   * @returns {object} HTML object for managed table
+   */
+  getValueAsNode(wrap = null) {
+    if (wrap == null) {
+      wrap = document.createElement("p");
+    }
+    if (this.value) {
+      wrap.innerHTML = formatHTML(this.value);
+    }
+    // implies we were actually modifying the thing in question
+    // which we wanted to leverage. Example, code-sample won't have code-sample as
+    // an immediate child. This implies the wrap is there for editing the ENTIRE item
+    // where as if the wrapper was code-sample and the tagName of the 1st child
+    // was template, then we'd know this should be the inner material
+    if (
+      wrap.firstElementChild &&
+      wrap.children.length === 1 &&
+      wrap.firstElementChild.tagName === wrap.tagName
+    ) {
+      return wrap.firstElementChild;
+    }
+    return wrap;
+  }
+  /**
    * attached life cycle
    */
   connectedCallback() {
     super.connectedCallback();
     // mutation observer that ensures state of hax applied correctly
     this._observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.addedNodes.length > 0) {
-          mutation.addedNodes.forEach((node) => {
-            if (node.tagName) {
-              this.updateEditorValue(node);
-            }
-          });
-        }
-        // if we dropped nodes via the UI (delete event basically)
-        if (mutation.removedNodes.length > 0) {
-          // handle removing items... not sure we need to do anything here
-          mutation.removedNodes.forEach((node) => {
-            if (node.tagName) {
-              this.updateEditorValue(node);
-            }
-          });
-        }
-      });
+      this.updateEditorValue();
     });
   }
   disconnectedCallback() {
@@ -545,11 +441,14 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     if (this.editorValue) {
       this.shadowRoot.querySelector("#codeeditor").value = this.editorValue;
     } else {
-      this.childNodes.forEach((node) => this.updateEditorValue(node));
+      this.updateEditorValue();
     }
     if (this._observer) {
       this._observer.observe(this, {
         childList: true,
+        subtree: true,
+        characterData: true,
+        attributes: true,
       });
     }
   }

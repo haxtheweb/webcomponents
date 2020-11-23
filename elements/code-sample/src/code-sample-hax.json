@@ -1,7 +1,8 @@
 {
+  "type": "element",
   "canScale": true,
   "canPosition": true,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Code sample",
     "description": "A sample of code highlighted in the page",
@@ -9,7 +10,7 @@
     "color": "blue",
     "groups": ["Code", "Development"],
     "meta": {
-      "author": "kuscamara"
+      "author": "elmsln"
     }
   },
   "settings": {

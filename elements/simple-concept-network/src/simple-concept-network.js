@@ -127,7 +127,7 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Concept Network",
         description:

@@ -151,7 +151,7 @@ class MemeMaker extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Meme",
         description: "Make a meme out of an image",

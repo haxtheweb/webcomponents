@@ -138,7 +138,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Vocab",
         description: "Vocabulary term",

@@ -139,7 +139,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Parallax image",
         description: "Image scroll by",

@@ -92,7 +92,7 @@ class FullWidthImage extends LitElement {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Full width-image",
         description: "full width image that flows beyond boundaries",

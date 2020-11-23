@@ -482,7 +482,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Multiple choice",
         description: "Multiple choice self check",

@@ -92,7 +92,7 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Flash card",
         description: "Flip the card over to learn the term",

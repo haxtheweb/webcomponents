@@ -60,7 +60,7 @@ class TopicHeading extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Topic heading",
         description: "Semantic and visual meaning behind a heading break",

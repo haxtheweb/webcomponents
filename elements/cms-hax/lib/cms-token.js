@@ -307,7 +307,7 @@ class CMSToken extends PolymerElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "CMS Token",
         description: "CMS token rendered on the backend",

@@ -189,7 +189,7 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Hero image",
         description:

@@ -132,7 +132,7 @@ class FullScreenImage extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Full screen-image",
         description: "full screen banner image with down arrow",

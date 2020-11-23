@@ -103,7 +103,7 @@ class TabList extends LitElement {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Tabs",
         description: "A list of links as tabs.",

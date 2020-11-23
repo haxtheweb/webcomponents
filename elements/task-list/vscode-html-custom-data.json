@@ -3,8 +3,13 @@
   "tags": [
     {
       "name": "task-list",
-      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!\n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!\n\nAttributes:\n\n  * `edit-mode` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
+          "valueSet": "v"
+        },
         {
           "name": "related-resource",
           "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
@@ -33,8 +38,13 @@
     },
     {
       "name": "task-list",
-      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!\n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!\n\nAttributes:\n\n  * `edit-mode` {`boolean`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
+          "valueSet": "v"
+        },
         {
           "name": "related-resource",
           "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"

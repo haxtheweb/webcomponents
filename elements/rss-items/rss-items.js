@@ -179,7 +179,7 @@ class RssItems extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Rss feed",
         description: "visualize RSS items",

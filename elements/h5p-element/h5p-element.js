@@ -46,7 +46,7 @@ class H5PElement extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "H5P element",
         description: "h5p wrapper for loading and presenting .h5p files",

@@ -359,7 +359,7 @@ class PaperAudioPlayer extends mixinBehaviors(
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Mini Audio player",
         description: "A very small audio player good for MP3s.",

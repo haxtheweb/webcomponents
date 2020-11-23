@@ -1,7 +1,7 @@
 {
   "canScale": true,
   "canPosition": true,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Filtered image",
     "description": "An image using an SVG filter. Can be used to make background images have more contrast with text.",

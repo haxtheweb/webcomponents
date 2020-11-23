@@ -15,7 +15,7 @@ class LrsEmitter extends IntersectionObserver(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Lrs emitter",
         description: "Emit learning statements occuring in your app.",

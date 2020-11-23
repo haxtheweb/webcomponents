@@ -54,7 +54,7 @@ class RCoder extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "R coder",
         description: "R coder interface for the r-service backend.",

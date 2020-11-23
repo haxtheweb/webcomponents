@@ -220,7 +220,7 @@ class CMSViews extends PolymerElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "CMS View",
         description: "CMS views rendered on the backend",

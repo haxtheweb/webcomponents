@@ -501,7 +501,7 @@ const LrndesignChart = function (SuperClass) {
       return {
         canScale: true,
         canPosition: true,
-        canEditSource: false,
+        canEditSource: true,
         gizmo: {
           description: "Creates an accessible chart based on a CSV.",
           color: "green darken-4",

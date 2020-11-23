@@ -262,7 +262,7 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Promo Tile",
         description: "A tile element for promoting content.",

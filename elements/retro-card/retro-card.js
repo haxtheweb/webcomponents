@@ -183,7 +183,7 @@ class RetroCard extends SimpleColors {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Retro card",
         description: "Simple card in a cool retro design",

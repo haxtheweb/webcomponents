@@ -261,7 +261,7 @@ class PageContentsMenu extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Page contents-menu",
         description:

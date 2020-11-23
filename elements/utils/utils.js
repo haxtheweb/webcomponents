@@ -21,6 +21,29 @@ function unwrap(el) {
     el.remove();
   }
 }
+// nicely formats / indents an HTML DOM tree for output
+function formatHTML(str) {
+  var div = document.createElement("div");
+  div.innerHTML = str.trim();
+
+  return formatHTMLInternals(div, 0).innerHTML;
+}
+// HTML internals of the DOM tree
+function formatHTMLInternals(node, level) {
+  let indentBefore = new Array(level++ + 1).join("  "),
+    indentAfter = new Array(level - 1).join("  "),
+    textNode;
+  for (var i = 0; i < node.children.length; i++) {
+    textNode = document.createTextNode("\n" + indentBefore);
+    node.insertBefore(textNode, node.children[i]);
+    formatHTMLInternals(node.children[i], level);
+    if (node.lastElementChild == node.children[i]) {
+      textNode = document.createTextNode("\n" + indentAfter);
+      node.appendChild(textNode);
+    }
+  }
+  return node;
+}
 
 // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 function validURL(str) {
@@ -572,6 +595,7 @@ export const winEventsElement = function (SuperClass) {
 export {
   wrap,
   unwrap,
+  formatHTML,
   validURL,
   valueMapTransform,
   haxElementToNode,

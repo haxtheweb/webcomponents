@@ -111,7 +111,7 @@ class MusicPlayer extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Music player",
         description: "Play music in context with a data visualization",

@@ -1043,7 +1043,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Game show",
         description: "Tweak the game show options",

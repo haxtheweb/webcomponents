@@ -26,7 +26,7 @@ class UserAction extends HTMLElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "User action",
         description:

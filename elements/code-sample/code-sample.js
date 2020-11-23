@@ -104,9 +104,10 @@ class CodeSample extends LitElement {
   // haxProperty definition
   static get haxProperties() {
     return {
+      type: "element",
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Code sample",
         description: "A sample of code highlighted in the page",
@@ -114,7 +115,7 @@ class CodeSample extends LitElement {
         color: "blue",
         groups: ["Code", "Development"],
         meta: {
-          author: "kuscamara",
+          author: "elmsln",
         },
       },
       settings: {

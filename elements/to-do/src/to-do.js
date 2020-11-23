@@ -155,7 +155,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "To do list",
         description: "A list of things to do so people can keep calm.",

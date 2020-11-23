@@ -292,7 +292,7 @@ class MagazineCover extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Cover image",
         description:

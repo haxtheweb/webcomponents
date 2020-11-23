@@ -87,7 +87,7 @@ class QR extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "QR Code",
         description: "A code to scan from a smartphone.",

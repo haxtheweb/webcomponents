@@ -164,7 +164,7 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Paper stack",
         description: "A stack of papers",

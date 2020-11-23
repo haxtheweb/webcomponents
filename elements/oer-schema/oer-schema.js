@@ -84,7 +84,7 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Schema",
         description: "Schematized element area",

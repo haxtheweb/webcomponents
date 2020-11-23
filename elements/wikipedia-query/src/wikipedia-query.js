@@ -146,7 +146,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Wikipedia article",
         description:

@@ -94,7 +94,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Rich text-editor",
         description: "a standalone rich text editor",

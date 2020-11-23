@@ -107,7 +107,7 @@ class HaxLogo extends HTMLElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Hax logo",
         description:

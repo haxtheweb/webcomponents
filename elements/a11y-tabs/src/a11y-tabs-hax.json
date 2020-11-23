@@ -1,7 +1,7 @@
 {
   "canScale": false,
   "canPosition": true,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Tabs",
     "description": "A set of tabs.",

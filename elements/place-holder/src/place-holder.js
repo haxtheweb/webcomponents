@@ -238,7 +238,7 @@ class PlaceHolder extends SimpleColors {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Placeholder",
         description:

@@ -415,7 +415,7 @@ class GridPlate extends LitElement {
       type: "grid",
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Grid layout",
         description: "Simple card in a cool retro design",
@@ -649,14 +649,14 @@ class GridPlate extends LitElement {
                 // so we need to disconnect the handlers from here and pick them
                 // up in the new plate
                 mutation.addedNodes.forEach((node) => {
-                  if (node.tagName) {
+                  if (node.tagName && node !== this) {
                     // verify this has a slot set otherwise we need to set one on the fly
                     // otherwise this won't show up. This could be incorrectly formed HTML
                     // DOM that was pushed in via an outside system or edge cases of things
                     // dropping in without a slot set in anyway
                     // validate slot name, otherwise force it to col-1
                     if (
-                      node.getAttribute("slot") == null ||
+                      node.parentElement.tagName !== "HAX-BODY" &&
                       !this.validateElementSlot(node)
                     ) {
                       node.setAttribute("slot", "col-1");
