@@ -4,5 +4,8 @@
   },
   "title": {
     "type": String
+  },
+  "editMode": {
+    "type": Boolean
   }
 }

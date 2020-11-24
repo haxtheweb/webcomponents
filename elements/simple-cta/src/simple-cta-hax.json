@@ -1,4 +1,5 @@
 {
+  "type": "element",
   "canScale": true,
   "canPosition": true,
   "canEditSource": true,
