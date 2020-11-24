@@ -28,6 +28,8 @@
  *    "canPosition": true,
  *    // can you edit the source of this element directly? (allows code editor option)
  *    "canEditSource": true,
+ *    // should the entire element be contenteditable? (allows editing slot via contenteditable operations)
+ *    "contentEditable": false,
  *    // how to visualize / if this is visualized for the user when adding to the page
  *    "gizmo": {},
  *    // how HAX presents configuration options in it's side tray
@@ -337,6 +339,9 @@ export class HAXWiring {
         }
         if (typeof props.canEditSource === typeof undefined) {
           props.canEditSource = false;
+        }
+        if (typeof props.contentEditable === typeof undefined) {
+          props.contentEditable = false;
         }
         if (typeof props.gizmo === typeof undefined) {
           props.gizmo = false;
@@ -689,6 +694,7 @@ export class HAXWiring {
         canScale: true,
         canPosition: true,
         canEditSource: true,
+        contentEditable: false,
         gizmo: {
           title: "Tag name",
           description: "",

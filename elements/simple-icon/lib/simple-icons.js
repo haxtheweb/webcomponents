@@ -11,6 +11,7 @@ import { pathResolver, SimpleIconsetStore } from "./simple-iconset.js";
   "notification",
   "places",
   "social",
+  "loading",
 ].forEach((i) => {
   SimpleIconsetStore.registerIconset(
     i,

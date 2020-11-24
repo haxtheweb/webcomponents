@@ -570,23 +570,28 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     }
   }
   _mouseDown(e) {
-    this.__mouseDown = true;
-    let target = e.target;
-    // resolve to the closest ediable element if possible
-    // otherwise keep the target we had
-    // @todo need to test more situations for this..
-    if (target.closest("[draggable]")) {
-      target = target.closest("[draggable]");
-    } else if (target.closest("[slot]")) {
-      target = target.closest("[slot]");
-    } else if (target.closest("[data-hax-ray]")) {
-      target = target.closest("[data-hax-ray]");
-    } else if (target.closest("[contenteditable]")) {
-      target = target.closest("[contenteditable]");
-    }
-    if (!target.haxUIElement && this.__focusLogic(target)) {
-      e.stopPropagation();
-      e.stopImmediatePropagation();
+    if (this.editMode) {
+      this.__mouseDown = true;
+      let target = e.target;
+      // resolve to the closest ediable element if possible
+      // otherwise keep the target we had
+      // @todo need to test more situations for this..
+      if (target.closest("[draggable]")) {
+        target = target.closest("[draggable]");
+      } else if (target.closest("[slot]")) {
+        target = target.closest("[slot]");
+      } else if (target.closest("[data-hax-ray]")) {
+        target = target.closest("[data-hax-ray]");
+      } else if (target.closest("[contenteditable]")) {
+        target = target.closest("[contenteditable]");
+      } else if (target.tagName !== "HAX-BODY") {
+        // this is a usecase we didn't think of...
+        console.warn(target);
+      }
+      if (!target.haxUIElement && this.__focusLogic(target)) {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+      }
     }
   }
   /**
@@ -1721,92 +1726,95 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Reposition context menus to match an element.
    */
   positionContextMenus(node = this.activeNode) {
-    // sanity chekc and ensure we are not told to lock position of all menus
-    clearTimeout(this.__positionContextTimer);
-    this.__positionContextTimer = setTimeout(() => {
+    //console.log(node);
+    // special case for node not matching container yet it being editable
+    if (node && node.tagName && this.__ready) {
+      let tag = node.tagName.toLowerCase();
       if (
-        node &&
-        node.tagName &&
-        !HAXStore._lockContextPosition &&
-        this.__ready
+        HAXStore.elementList &&
+        HAXStore.elementList[tag] &&
+        HAXStore.elementList[tag].contentEditable
       ) {
-        // menu width starts out w/ the plate context which is a set size
-        let menuWidth = 140;
-        let tag = node.tagName.toLowerCase();
-        if (HAXStore._isSandboxed && tag === "webview") {
-          tag = "iframe";
-        }
-        let props = HAXStore.elementList[tag];
-        // try and work against anything NOT a P tag
-        if (
-          typeof props !== typeof undefined &&
-          !HAXStore.isTextElement(node)
-        ) {
-          this._hideContextMenu(this.contextMenus.text);
-          props.element = node;
-          // check for core editing element OR it providing it's own experience entirely
-          // otherwise we'll pick it up in the specific element via activeNode change hooks
-          if (props.editingElement == "core") {
-            this._positionContextMenu(this.contextMenus.ce, node, 0, -28);
+        node.setAttribute("contenteditable", true);
+      } else {
+        node.removeAttribute("contenteditable");
+      }
+      // sanity chekc and ensure we are not told to lock position of all menus
+      clearTimeout(this.__positionContextTimer);
+      this.__positionContextTimer = setTimeout(() => {
+        if (!HAXStore._lockContextPosition) {
+          // menu width starts out w/ the plate context which is a set size
+          let menuWidth = 140;
+          let tag = node.tagName.toLowerCase();
+          if (HAXStore._isSandboxed && tag === "webview") {
+            tag = "iframe";
+          }
+          let props = HAXStore.elementList[tag];
+          // try and work against anything NOT a P tag
+          if (
+            typeof props !== typeof undefined &&
+            !HAXStore.isTextElement(node)
+          ) {
+            this._hideContextMenu(this.contextMenus.text);
+            props.element = node;
+            // check for core editing element OR it providing it's own experience entirely
+            // otherwise we'll pick it up in the specific element via activeNode change hooks
+            if (props.editingElement == "core") {
+              this._positionContextMenu(this.contextMenus.ce, node, 0, -28);
+            } else {
+              this._hideContextMenu(this.contextMenus.ce);
+            }
+            menuWidth += 28;
           } else {
             this._hideContextMenu(this.contextMenus.ce);
+            this._positionContextMenu(this.contextMenus.text, node, 0, -28);
+            // text menu can expand based on selection
+            let textRect = this.contextMenus.text.getBoundingClientRect();
+            menuWidth += textRect.width;
           }
-          menuWidth += 28;
-        } else {
-          this._hideContextMenu(this.contextMenus.ce);
-          this._positionContextMenu(this.contextMenus.text, node, 0, -28);
-          // text menu can expand based on selection
-          let textRect = this.contextMenus.text.getBoundingClientRect();
-          menuWidth += textRect.width;
-        }
-        if (!props || props.editingElement == "core") {
-          let activeRect = node.getBoundingClientRect();
-          // hide menu if we have active on a list item
-          // special case because it should not be moved anywhere or have these
-          // operations shown as it only makes sense as part of something larger
-          // ul / ol which I believe is the ONLY tag that works this way
-          if (
-            this.activeNode.tagName === "LI" ||
-            this._HTMLInlineTextDecorationTest(this.activeNode)
-          ) {
-            this._hideContextMenu(this.contextMenus.plate);
-          }
-          // need to account for the item being small than the menu
-          else if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
-            this._positionContextMenu(this.contextMenus.plate, node, 0, -56);
-          } else {
-            this._positionContextMenu(
-              this.contextMenus.plate,
-              node,
-              activeRect.width -
-                this.contextMenus.plate.getBoundingClientRect().width +
-                1,
-              -26
-            );
-          }
-        } else {
-          setTimeout(() => {
-            if (node && node.parentNode) {
-              let activeRect = node.parentNode.getBoundingClientRect();
+          if (!props || props.editingElement == "core") {
+            let activeRect = node.getBoundingClientRect();
+            // hide menu if we have active on a list item
+            // special case because it should not be moved anywhere or have these
+            // operations shown as it only makes sense as part of something larger
+            // ul / ol which I believe is the ONLY tag that works this way
+            if (
+              this.activeNode.tagName === "LI" ||
+              this._HTMLInlineTextDecorationTest(this.activeNode)
+            ) {
+              this._hideContextMenu(this.contextMenus.plate);
+            }
+            // need to account for the item being small than the menu
+            else if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
+              this._positionContextMenu(this.contextMenus.plate, node, 0, -56);
+            } else {
               this._positionContextMenu(
                 this.contextMenus.plate,
-                node.parentNode,
+                node,
                 activeRect.width -
                   this.contextMenus.plate.getBoundingClientRect().width +
                   1,
                 -26
               );
             }
-          }, 250);
+          } else {
+            setTimeout(() => {
+              if (node && node.parentNode) {
+                let activeRect = node.parentNode.getBoundingClientRect();
+                this._positionContextMenu(
+                  this.contextMenus.plate,
+                  node.parentNode,
+                  activeRect.width -
+                    this.contextMenus.plate.getBoundingClientRect().width +
+                    1,
+                  -26
+                );
+              }
+            }, 250);
+          }
         }
-        // special case for node not matching container yet it being editable
-        if (node && node.tagName !== "HR" && !HAXStore.isTextElement(node)) {
-          node.removeAttribute("contenteditable");
-        } else if (node) {
-          node.setAttribute("contenteditable", true);
-        }
-      }
-    }, 50);
+      }, 50);
+    }
   }
   /**
    * No idea how to describe these name wise but basically we want to only

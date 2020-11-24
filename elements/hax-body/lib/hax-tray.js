@@ -50,6 +50,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
     };
+    this._initial = true;
     this.activeValue = {
       settings: {
         layout: {
@@ -1132,8 +1133,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
-        HAXStore.refreshActiveNodeForm();
-        this._editModeChanged(this[propName]);
+        if (this.editMode) {
+          HAXStore.refreshActiveNodeForm();
+        }
+        this._editModeChanged(this.editMode);
       }
       if (propName == "offsetMargin") {
         setTimeout(() => {
@@ -1202,7 +1205,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
           this.shadowRoot.querySelector("#settingscollapse").disabled = false;
-          HAXStore.refreshActiveNodeForm();
+          if (this.editMode) {
+            HAXStore.refreshActiveNodeForm();
+          }
         } else {
           this.activeTagName = "Select an element to configure";
           this.activeTagIcon = "icons:settings";
@@ -1216,6 +1221,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   _setupForm() {
     let activeNode = this.activeNode;
+    this._initial = true;
     this.activeValue = {
       settings: {
         layout: {
@@ -1491,36 +1497,40 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             // this is a special internal held "property" for layout stuff
             else if (key === "layout" && prop === "__position") {
               setAhead = true;
-              clearTimeout(this.__contextValueDebounce);
-              this.__contextValueDebounce = setTimeout(() => {
-                this.dispatchEvent(
-                  new CustomEvent("hax-context-item-selected", {
-                    bubbles: true,
-                    composed: true,
-                    detail: {
-                      eventName: settings[key][prop],
-                      value: settings[key][prop],
-                    },
-                  })
-                );
-              }, 50);
+              if (!this._initial) {
+                clearTimeout(this.__contextValueDebounce);
+                this.__contextValueDebounce = setTimeout(() => {
+                  this.dispatchEvent(
+                    new CustomEvent("hax-context-item-selected", {
+                      bubbles: true,
+                      composed: true,
+                      detail: {
+                        eventName: settings[key][prop],
+                        value: settings[key][prop],
+                      },
+                    })
+                  );
+                }, 50);
+              }
             }
             // this is a special internal held "property" for layout stuff
             else if (key === "layout" && prop === "__scale") {
               setAhead = true;
-              clearTimeout(this.__contextSizeDebounce);
-              this.__contextSizeDebounce = setTimeout(() => {
-                this.dispatchEvent(
-                  new CustomEvent("hax-context-item-selected", {
-                    bubbles: true,
-                    composed: true,
-                    detail: {
-                      eventName: "hax-size-change",
-                      value: settings[key][prop],
-                    },
-                  })
-                );
-              }, 50);
+              if (!this._initial) {
+                clearTimeout(this.__contextSizeDebounce);
+                this.__contextSizeDebounce = setTimeout(() => {
+                  this.dispatchEvent(
+                    new CustomEvent("hax-context-item-selected", {
+                      bubbles: true,
+                      composed: true,
+                      detail: {
+                        eventName: "hax-size-change",
+                        value: settings[key][prop],
+                      },
+                    })
+                  );
+                }, 50);
+              }
             }
             // try and set the pop directly if it is a prop already set
             // check on prototype, then in properties object if it has one
@@ -1636,6 +1646,11 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
       }
     }
+    setTimeout(() => {
+      if (this._initial) {
+        this._initial = false;
+      }
+    }, 51);
   }
 
   /**

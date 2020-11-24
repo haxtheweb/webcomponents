@@ -1,8 +1,9 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css, svg } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { lazyImageLoader } from "@lrnwebcomponents/lazy-image-helpers/lazy-image-helpers.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `self-check`
@@ -30,7 +31,7 @@ Custom property | Description | Default
  * @element self-check
  * 
  */
-class SelfCheck extends SchemaBehaviors(SimpleColors) {
+class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
   constructor() {
     super();
     this.correct = false;
@@ -68,27 +69,19 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
           overflow: hidden;
         }
 
-        simple-icon-button#checkbtn {
-          --simple-icon-width: 50px;
-          --simple-icon-height: 50px;
+        simple-icon-button {
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
           position: relative;
-          left: 16px;
+          left: 10px;
           bottom: -10px;
+          padding: 2px;
         }
 
         .check_button {
           display: flex;
           justify-content: flex-end;
         }
-
-        simple-icon-button#closeBtn {
-          --simple-icon-width: 50px;
-          --simple-icon-height: 50px;
-          position: relative;
-          left: 16px;
-          bottom: -16px;
-        }
-
         .close_button {
           display: flex;
           justify-content: flex-end;
@@ -227,9 +220,6 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
           max-height: 400px;
           overflow: hidden;
         }
-        .image-wrap img {
-          width: 100%;
-        }
       `,
     ];
   }
@@ -237,6 +227,7 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
     return html`
       <div class="card">
         <div class="image-wrap">
+          ${this.renderSVGLoader()}
           <img
             src="${this.image}"
             alt="${this.alt}"
@@ -246,8 +237,13 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
         </div>
         <div class="triangle"></div>
         <div id="header_wrap">
-          <simple-icon id="questionmark" icon="icons:help"></simple-icon>
-          <div class="heading">${this.title}</div>
+          <simple-icon
+            id="questionmark"
+            icon="icons:help"
+            ?dark="${!this.dark}"
+            contrast="4"
+          ></simple-icon>
+          <div class="heading" id="title">${this.title}</div>
         </div>
         <div id="question_wrap">
           <div class="question" aria-hidden="${this.correct}">
@@ -257,8 +253,9 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
                 controls="answer_wrap"
                 aria-label="Reveal Answer"
                 id="checkBtn"
+                class="check-btn"
                 icon="icons:check-circle"
-                noink
+                ?dark="${this.dark}"
                 @click="${this.openAnswer}"
               ></simple-icon-button>
               <simple-tooltip aria-hidden="true" for="checkBtn" position="left">
@@ -316,7 +313,6 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * Title.
        */
@@ -366,7 +362,29 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
       },
     };
   }
-
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    // flag for HAX to not trigger active on changes
+    let container = this.shadowRoot.querySelector("#title");
+    if (val) {
+      container.setAttribute("contenteditable", true);
+    } else {
+      container.removeAttribute("contenteditable");
+      this.title = container.innerText;
+    }
+    return false;
+  }
   /**
    * Property for toggling "checkbtn".
    */
@@ -379,6 +397,7 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
       canScale: true,
       canPosition: true,
       canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Self-Check",
         description: "The user will be able to complete a self-check.",
@@ -440,22 +459,6 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
             description: "Add alt text to the image",
             inputMethod: "alt",
           },
-          {
-            slot: "question",
-            title: "Question to ask",
-            description:
-              "This is where you enter a question for the self-check.",
-            inputMethod: "code-editor",
-            required: true,
-          },
-          {
-            slot: "",
-            title: "Answer",
-            description:
-              "This is where you enter a question for the self-check.",
-            inputMethod: "code-editor",
-            required: true,
-          },
         ],
         advanced: [
           {
@@ -468,8 +471,22 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
         ],
       },
       saveOptions: {
-        unsetAttributes: ["colors"],
+        unsetAttributes: ["colors", "image-loaded"],
       },
+      demoSchema: [
+        {
+          tag: "self-check",
+          properties: {
+            "accent-color": "light-blue",
+            title: "Sharks Self Check",
+            image:
+              "https://kids.nationalgeographic.com/content/dam/kids/photos/animals/Fish/A-G/great-white-shark-teeth.ngsversion.1396530884408.adapt.1900.1.jpg",
+            alt: "Great White Shark",
+          },
+          content: `<span slot="question">How large can the average great white shark grow to be?</span>
+          The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.`,
+        },
+      ],
     };
   }
 }

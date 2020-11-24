@@ -756,7 +756,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           break;
       }
       if (changed) {
-        setTimeout(() => {
+        clearTimeout(this.__repositionMenu);
+        this.__repositionMenu = setTimeout(() => {
           this.activeHaxBody.positionContextMenus();
         }, 0);
       }
@@ -1830,6 +1831,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       canScale: false,
       canPosition: false,
       canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Basic link",
         description: "A basic a tag",
@@ -1899,6 +1901,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       canScale: false,
       canPosition: false,
       canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Paragraph",
         description: "A basic text area",
@@ -2080,6 +2083,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           canScale: false,
           canPosition: false,
           canEditSource: true,
+          contentEditable: true,
           gizmo: {
             title: prims[tag].title,
             icon: prims[tag].icon,
@@ -2110,7 +2114,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       type: "element",
       editingElement: "core",
       canPosition: false,
-      canEditSource: true,
+      canEditSource: false,
+      contentEditable: true,
       gizmo: {
         title: "Horizontal line",
         icon: "hax:hr",
@@ -2690,9 +2695,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         }
       }
     }
-    // optional support for intentional progressive enhancement
-    if (typeof node.haxProgressiveEnhancement === "function") {
-      content += node.haxProgressiveEnhancement();
+    // @see haxHooks: progressiveEnhancement
+    if (this.testHook(node, "progressiveEnhancement")) {
+      content += this.runHook(node, "progressiveEnhancement", [node]);
     }
     // don't put return for span since it's an inline tag
     if (tag === "span") {

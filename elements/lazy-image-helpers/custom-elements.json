@@ -1,0 +1,29 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lazy-image-helpers",
+      "path": "./lazy-image-helpers.js",
+      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "lazy-image-helpers",
+      "path": "./src/lazy-image-helpers.js",
+      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}
