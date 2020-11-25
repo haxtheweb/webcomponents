@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>a11y-menu-button Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import "../a11y-menu-button.js";
+      import "../lib/a11y-menu-button-group.js";
+    </script>
+  
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container.centered>* {
+        --demo-snippet-demo: {
+          padding: 0;
+        };
+      }
+    
+      .vertical-section-container.centered {
+        width: 100%;
+        max-width: unset !important;
+      }
+    
+      .smaller-examples {
+        max-width: 75%;
+        min-width: 400px;
+        margin: 0 auto;
+      }
+    
+      @media print {
+        demo-snippet {
+          height: unset;
+          overflow: visible;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>a11y-menu-button demo</h1>
+      <p>By default, the clicking the icon button triggers expand/collapse.</p>
+      <demo-snippet>
+        <template>
+          <a11y-menu-button>
+            <p slot="heading">What rhymes with orange?</p>
+            <div>Nothing rhymes with orange.</div>
+          </a11y-menu-button>
+        </template>
+      </demo-snippet>
+
+      <h2>a11y-menu-button demo, with accordion attribute</h2>
+      <p>With the <tt>accordion</tt> attribute, the clicking anywhere on the heading triggers expand/collapse.</p>
+      <demo-snippet>
+        <template>
+          <a11y-menu-button heading-button icon="arrow-drop-down" label="toggle info" tooltip="toggle more information">
+            <p slot="heading">What rhymes with orange?</p>
+            <div slot="content">Nothing rhmyes with orange.</div>
+          </a11y-menu-button>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

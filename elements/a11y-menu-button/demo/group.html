@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>a11y-menu-button-group Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import "../a11y-menu-button.js";
+      import "../lib/a11y-menu-button-group.js";
+    </script>
+  
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container.centered>* {
+        --demo-snippet-demo: {
+          padding: 0;
+        };
+      }
+    
+      .vertical-section-container.centered {
+        width: 100%;
+        max-width: unset !important;
+      }
+    
+      .smaller-examples {
+        max-width: 75%;
+        min-width: 400px;
+        margin: 0 auto;
+      }
+    
+      @media print {
+        demo-snippet {
+          height: unset;
+          overflow: visible;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>a11y-menu-button-group Demo</h1>
+      
+      <h2>Basic a11y-menu-button-group</h2>
+      <demo-snippet>
+        <template>
+          <a11y-menu-button-group 
+            accordion
+            expanded 
+            tooltip="show more info" 
+            tooltip-expanded="show less info">
+            <h2>Secondary Colors</h2>
+            <a11y-menu-button>
+              <p slot="heading">Purple</p>
+              <div slot="content">Blue and red make purple.</div>
+            </a11y-menu-button>
+            <a11y-menu-button >
+              <p slot="heading">Green</p>
+              <div slot="content">Blue and yellow make purple.</div>
+            </a11y-menu-button>
+            <a11y-menu-button disabled>
+              <p slot="heading">Orange</p>
+              <div slot="content">Yellow and red make purple.</div>
+            </a11y-menu-button>
+          </a11y-menu-button-group>
+        </template>
+      </demo-snippet>
+
+      <h2>Radio a11y-menu-button-groups</h2>
+      <demo-snippet>
+        <template>
+          <a11y-menu-button-group 
+            radio
+            icon="arrow-drop-down" >
+            <h2>Secondary Colors List</h2>
+            <a11y-menu-button >
+              <p slot="heading">Purple</p>
+              <div slot="content">Blue and red make purple.</div>
+            </a11y-menu-button>
+            <a11y-menu-button>
+              <p slot="heading">Green</p>
+              <div slot="content">Blue and yellow make purple.</div>
+            </a11y-menu-button>
+            <a11y-menu-button>
+              <p slot="heading">Orange</p>
+              <div slot="content">Yellow and red make purple.</div>
+            </a11y-menu-button>
+          </a11y-menu-button-group>
+        </template>
+      </demo-snippet>
+  </body>
+</html>

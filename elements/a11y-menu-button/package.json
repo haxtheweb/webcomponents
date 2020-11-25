@@ -1,0 +1,71 @@
+{
+  "name": "@lrnwebcomponents/a11y-collapse",
+  "wcfactory": {
+    "className": "A11yCollapse",
+    "customElementClass": "LitElement",
+    "elementName": "a11y-collapse",
+    "generator-wcfactory-version": "0.3.2",
+    "useHAX": true,
+    "useSass": false,
+    "files": {
+      "css": "src/a11y-collapse.css",
+      "scss": "src/a11y-collapse.scss",
+      "html": "src/a11y-collapse.html",
+      "js": "src/a11y-collapse.js",
+      "properties": "src/a11y-collapse-properties.json",
+      "hax": "src/a11y-collapse-hax.json"
+    },
+    "sharedStyles": []
+  },
+  "version": "2.8.0",
+  "description": "Start of a11y-collapse",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "type": "module",
+  "main": "a11y-collapse.js",
+  "module": "a11y-collapse.js",
+  "umd": "a11y-collapse.umd.js",
+  "scripts": {
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-collapse/test/",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/simple-icon": "^2.8.0",
+    "@lrnwebcomponents/simple-tooltip": "^2.8.0",
+    "lit-element": "2.4.0"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
+    "@lrnwebcomponents/storybook-utilities": "^2.8.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.4.4",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.19",
+    "polymer-build": "3.1.4",
+    "polymer-cli": "1.9.11",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ],
+  "gitHead": "e38751e6f76a812e00ae87ef826fafcdbfec4083"
+}
