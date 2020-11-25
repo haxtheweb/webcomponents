@@ -2,13 +2,11 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { html, css } from "lit-element/lit-element.js";
 /**
  * `editable-table-behaviors`
  * A set of common behaviors for editable-table web components.
  *
- * @polymer
- * @mixinFunction
- * @element editable-table-behaviors
  */
 
 /**
@@ -24,9 +22,8 @@ export const displayBehaviors = function (SuperClass) {
          * Add borders to table and table cells.
          */
         bordered: {
+          attribute: "bordered",
           type: Boolean,
-          value: false,
-          reflectToAttribute: true,
           notify: true,
         },
         /**
@@ -41,9 +38,8 @@ export const displayBehaviors = function (SuperClass) {
          * Display the first row as a column header.
          */
         columnHeader: {
+          attribute: "column-header",
           type: Boolean,
-          value: false,
-          reflectToAttribute: true,
           notify: true,
         },
         /**
@@ -51,15 +47,13 @@ export const displayBehaviors = function (SuperClass) {
          */
         csvData: {
           type: String,
-          value: "",
         },
         /**
          * Condense height of table cells.
          */
         condensed: {
+          attribute: "condensed",
           type: Boolean,
-          value: false,
-          reflectToAttribute: true,
           notify: true,
         },
         /**
@@ -67,9 +61,7 @@ export const displayBehaviors = function (SuperClass) {
          */
         data: {
           type: Array,
-          value: [],
           notify: true,
-          observer: "_dataChanged",
         },
         /**
          * Location of the CSV file.
@@ -81,27 +73,25 @@ export const displayBehaviors = function (SuperClass) {
          * Enable filtering by cell value.
          */
         filter: {
+          attribute: "filter",
           type: Boolean,
-          value: false,
-          reflectToAttribute: true,
+          reflect: true,
           notify: true,
         },
         /**
          * Display the last row as a column footer.
          */
         footer: {
+          attribute: "footer",
           type: Boolean,
-          value: false,
-          reflectToAttribute: true,
           notify: true,
         },
         /**
          * Display the first column as a row header.
          */
         rowHeader: {
+          attribute: "row-header",
           type: Boolean,
-          value: false,
-          reflectToAttribute: true,
           notify: true,
         },
         /**
@@ -110,51 +100,82 @@ export const displayBehaviors = function (SuperClass) {
          * instead of scrolling across the table.
          */
         responsive: {
+          attribute: "responsive",
           type: Boolean,
-          value: false,
-          reflectToAttribute: true,
+          reflect: true,
           notify: true,
         },
         /**
          * Enable sorting by column header.
          */
         sort: {
+          attribute: "sort",
           type: Boolean,
-          value: false,
-          reflectToAttribute: true,
+          reflect: true,
           notify: true,
         },
         /**
          * Add alternating row striping.
          */
         striped: {
+          attribute: "striped",
           type: Boolean,
-          value: false,
-          reflectToAttribute: true,
           notify: true,
         },
-        /**
-         * Columns in <thead>
-         */
-        thead: {
-          type: Array,
-          computed: "_getThead(data,columnHeader)",
-        },
-        /**
-         * Rows in <tbody>
-         */
-        tbody: {
-          type: Array,
-          computed: "_getTbody(data,columnHeader,footer)",
-        },
-        /**
-         * Rows in <tfoot>
-         */
-        tfoot: {
-          type: Array,
-          computed: "_getTfoot(data,footer)",
-        },
       };
+    }
+    /**
+     * Rows in <thead>
+     */
+    get thead() {
+      return this.columnHeader ? (this.data || []).slice(0, 1) : [];
+    }
+    /**
+     * Rows in <tbody>
+     */
+    get tbody() {
+      return (this.data || []).slice(
+        this.columnHeader ? 1 : 0,
+        this.footer ? (this.data || []).length - 1 : (this.data || []).length
+      );
+    }
+    /**
+     * Rows in <tfoot>
+     */
+    get tfoot() {
+      return this.footer
+        ? (this.data || []).slice((this.data || []).length - 1)
+        : [];
+    }
+
+    constructor() {
+      super();
+      this.bordered = false;
+      this.columnHeader = false;
+      this.condensed = false;
+      this.data = [];
+      this.filter = false;
+      this.footer = false;
+      this.rowHeader = false;
+      this.responsive = false;
+      this.sort = false;
+      this.striped = false;
+    }
+
+    updated(changedProperties) {
+      if (super.updated) super.updated(changedProperties);
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === this.dataCsv) this.fetchData();
+        if (propName === this.csvData) this._loadExternalData();
+        if (propName == "data") this._dataChanged(this.data, oldValue);
+      });
+    }
+
+    fetchData() {
+      if (this.dataCsv && this.dataCsv !== "")
+        fetch(this.dataCsv)
+          .then((response) => response.text())
+          .then((data) => (data = this.csvData));
     }
 
     /**
@@ -309,18 +330,16 @@ export const displayBehaviors = function (SuperClass) {
             : cell.innerHTML;
         });
       });
-      if (data.length > 0 && data[0].length > 0) this.set("data", data);
+      if (data.length > 0 && data[0].length > 0) this.data = data;
       this.columnHeader =
         this.columnHeader || table.querySelectorAll("thead").length > 0;
       this.rowHeader =
         this.rowHeader || table.querySelectorAll("tbody th").length > 0;
       this.footer = this.footer || table.querySelectorAll("tfoot").length > 0;
       this.caption =
-        this.caption !== null
-          ? this.caption
-          : table.querySelectorAll("caption").length > 0
+        table.querySelectorAll("caption").length > 0
           ? table.querySelector("caption").innerHTML.trim()
-          : null;
+          : undefined;
     }
     /**
      * Convert from csv text to an array in the table function
@@ -328,51 +347,6 @@ export const displayBehaviors = function (SuperClass) {
     _loadExternalData(e) {
       let data = this.CSVtoArray(this.csvData);
       if (data.length > 0 && data[0].length > 0) this.set("data", data);
-    }
-
-    /**
-     * Gets the rows in `<tbody>`
-     * @param {array} data the table data as an array
-     * @param {boolean} columnHeader does the table have a column header
-     * @param {boolean} footer does the table have a footer
-     * @returns {array} the `<tbody>` data
-     */
-    _getTbody(data, columnHeader, footer) {
-      if (
-        data !== undefined &&
-        data !== null &&
-        data.length > 0 &&
-        data[0].length > 0
-      ) {
-        let ch = columnHeader ? 1 : 0,
-          ft = footer ? data.length - 1 : data.length;
-        return data.slice(ch, ft);
-      }
-    }
-
-    /**
-     * Gets the rows in `<tbody>`
-     * @param {array} data the table data as an array
-     * @param {boolean} columnHeader does the table have a column header
-     * @param {boolean} footer does the table have a footer
-     * @returns {array} the `<tbody>` data
-     */
-    _getTfoot(data, footer) {
-      return data.length > 0 && data[0].length > 0 && footer
-        ? data.slice(data.length - 1)
-        : [];
-    }
-
-    /**
-     * Gets the columns in `<thead>`
-     * @param {array} data the table data as an array
-     * @param {boolean} columnHeader does the table have a column header
-     * @returns {array} the `<thead>`data
-     */
-    _getThead(data, columnHeader) {
-      return data.length > 0 && data[0].length > 0 && columnHeader
-        ? data.slice(0, 1)
-        : [];
     }
     /**
      * replaces a blank cell with "-" for accessibility
@@ -439,3 +413,206 @@ export const cellBehaviors = function (SuperClass) {
     }
   };
 };
+
+/**
+ * behaviors needed for table cells, row headers, and columns
+ */
+export const editableTableCellStyles = [
+  css`
+    .cell-button {
+      padding-top: var(--editable-table-cell-vertical-padding, 10px);
+      padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
+      padding-left: var(--editable-table-cell-horizontal-padding, 6px);
+      padding-right: var(--editable-table-cell-horizontal-padding, 6px);
+      margin: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-content: stretch;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+    }
+    .sr-only {
+      position: absolute;
+      left: -9999px;
+      font-size: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+  `,
+];
+
+/**
+ * behaviors needed for table cells, row headers, and columns
+ */
+export const editableTableStyles = [
+  css`
+    :host {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 15px 0;
+      font-size: var(--editable-table-font-size, unset);
+      font-family: var(--editable-table-font-family, inherit);
+      font-weight: var(--editable-table-medium-weight, 300);
+      color: var(--editable-table-color, #222);
+      background-color: var(--editable-table-bg-color, #fff);
+
+      --simple-picker-font-family: var(
+        --editable-table-secondary-font-family,
+        "Roboto",
+        "Noto",
+        sans-serif
+      );
+      --simple-picker-font-size: var(
+        --editable-table-secondary-font-size,
+        12px
+      );
+      --simple-picker-color: var(--editable-table-color, #222);
+      --simple-picker-background-color: var(--editable-table-bg-color, #fff);
+      --paper-font-caption: {
+        font-family: var(
+          --editable-table-secondary-font-family,
+          "Roboto",
+          "Noto",
+          sans-serif
+        );
+      }
+    }
+    :host([hidden]) {
+      display: none;
+    }
+    .sr-only {
+      position: absolute;
+      left: -9999px;
+      font-size: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    table {
+      width: calc(100% - 2 * var(--editable-table-border-width, 1px));
+      display: table;
+      border-collapse: collapse;
+      border-width: var(--editable-table-border-width, 1px);
+      border-style: var(--editable-table-border-style, solid);
+      border-color: var(--editable-table-border-color, #999);
+      font-weight: var(--editable-table-light-weight, 200);
+      color: var(--editable-table-color, #222);
+      background-color: var(--editable-table-bg-color, #fff);
+    }
+    .th,
+    .td {
+      font-weight: var(--editable-table-light-weight, 200);
+      color: var(--editable-table-color, #222);
+      background-color: var(--editable-table-bg-color, #fff);
+      padding-top: var(--editable-table-cell-vertical-padding, 10px);
+      padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
+      padding-left: var(--editable-table-cell-horizontal-padding, 6px);
+      padding-right: var(--editable-table-cell-horizontal-padding, 6px);
+    }
+    caption {
+      font-size: var(
+        --editable-table-caption-font-size,
+        var(--editable-table-font-size, unset)
+      );
+      font-weight: var(--editable-table-heavy-weight, 600);
+      color: var(
+        --editable-table-caption-color,
+        var(--editable-table-color, #222)
+      );
+      background-color: var(
+        --editable-table-caption-bg-color,
+        var(--editable-table-bg-color, #fff)
+      );
+      width: 100%;
+    }
+    tr {
+      display: table-row;
+    }
+    .th-or-td {
+      display: table-cell;
+    }
+    table[column-header] .thead .th {
+      background-color: var(--editable-table-heading-bg-color, #e8e8e8);
+      font-weight: var(--editable-table-heavy-weight, 600);
+      color: var(--editable-table-heading-color, #000);
+    }
+    table[row-header] .tbody .th {
+      font-weight: var(--editable-table-heavy-weight, 600);
+      color: var(--editable-table-heading-color, #000);
+      background-color: var(--editable-table-bg-color, #fff);
+      text-align: left;
+    }
+    table[bordered] .th,
+    table[bordered] .td {
+      border-width: var(--editable-table-border-width, 1px);
+      border-style: var(--editable-table-border-style, solid);
+      border-color: var(--editable-table-border-color, #999);
+    }
+    table[condensed] {
+      --editable-table-cell-vertical-padding: var(
+        --editable-table-cell-vertical-padding-condensed,
+        2px
+      );
+      --editable-table-cell-horizontal-padding: var(
+        --editable-table-cell-horizontal-padding-condensed,
+        4px
+      );
+    }
+    table[striped] .tbody tr:nth-child(2n) .th,
+    table[striped] .tbody tr:nth-child(2n) .td {
+      background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
+    }
+    table[footer] .tfoot .th,
+    table[footer] .tfoot .td {
+      border-top: 3px solid var(--editable-table-color, #222);
+    }
+    table[footer] .tfoot .th,
+    table[footer] .tfoot .td {
+      font-weight: var(--editable-table-heavy-weight, 600);
+      color: var(--editable-table-heading-color, #000);
+    }
+    caption,
+    table .th-or-td {
+      text-align: left;
+    }
+    table .th-or-td[numeric] {
+      text-align: var(--editable-table-numeric-text-align, unset);
+    }
+    table .td[negative] .cell {
+      color: var(--editable-table-negative-color, --editable-table-color);
+    }
+    editable-table-sort {
+      width: 100%;
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+    }
+    ::slotted(table) {
+      display: none;
+    }
+    @media screen {
+      :host {
+        overflow-x: auto;
+        width: 100%;
+        max-width: 100%;
+      }
+      :host([responsive]) {
+        overflow-x: visible;
+      }
+    }
+  `,
+];

@@ -1,8 +1,7 @@
 import { html, LitElement } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
 import "@polymer/iron-demo-helpers/demo-snippet.js";
-//import { LoremDataBehaviors } from "../lorem-data/lib/lorem-data-behaviors.js";
-import { LoremDataBehaviors } from "../lorem-data/lorem-data.js";
+import { LoremDataBehaviors } from "../lorem-data/lib/lorem-data-behaviors.js";
 
 import {
   withKnobs,

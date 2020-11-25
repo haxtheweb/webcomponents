@@ -26,8 +26,11 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
     return [
       ...super.baseStyles,
       css`
-        :host #floating {
+        #floating {
           display: flex;
+        }
+        #toolbar[collapsed] {
+          width: max-content;
         }
       `,
     ];

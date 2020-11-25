@@ -555,6 +555,12 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {void}
    */
   selectNode(node, range, editor = this.toolbar.editor) {
+    if (!range) {
+      let sel = window.getSelection();
+      range = document.createRange();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
     if (range) {
       range.selectNode(node);
       if (editor) this.updateRange(editor, range);

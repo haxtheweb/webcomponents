@@ -2,14 +2,13 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import {
+  displayBehaviors,
+  editableTableStyles,
+} from "./editable-table-behaviors.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
-import { displayBehaviors } from "./editable-table-behaviors.js";
-import "./editable-table-styles.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
 /**
  * `editable-table-display`
@@ -22,34 +21,23 @@ import "./editable-table-styles.js";
  * @appliesMixin ResponsiveUtilityBehaviors
  */
 class EditableTableDisplay extends displayBehaviors(
-  ResponsiveUtilityBehaviors(PolymerElement)
+  ResponsiveUtilityBehaviors(LitElement)
 ) {
-  static get template() {
-    return html`
-      <style include="editable-table-styles">
-        :host .th-or-td {
-          padding: var(--editable-table-cell-padding);
+  static get styles() {
+    return [
+      ...(super.styles || []),
+      ...editableTableStyles,
+      css`
+        table[sort] .thead .th,
+        table[filter] .tbody .td {
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 0;
+          padding-bottom: 0;
         }
-        :host([bordered]) .th {
-          border: 1px solid var(--editable-table-border-color);
-        }
-        :host([striped]) .tbody-tr:nth-child(2n) .th,
-        :host([striped]) .tbody-tr:nth-child(2n) .td {
-          @apply --editable-table-style-stripe;
-        }
-        :host([sort]) thead th,
-        :host([filter]) tbody td {
-          padding: 0;
-        }
-        :host([column-header]) .thead-tr .th {
-          @apply --editable-table-style-column-header;
-        }
-        :host([row-header]) .tbody-tr .th {
-          @apply --editable-table-style-row-header;
-        }
-        :host([footer]) .tfoot-tr .th,
-        :host([footer]) .tfoot-tr .td {
-          @apply --editable-table-style-footer;
+        caption {
+          padding-top: var(--editable-table-cell-vertical-padding, 10px);
+          padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
         }
         #column {
           width: calc(var(--simple-picker-option-size) + 6px);
@@ -58,7 +46,10 @@ class EditableTableDisplay extends displayBehaviors(
           margin-left: 10px;
           --simple-picker-border-width: 1px;
           --simple-picker-focus-border-width: 1px;
-          --simple-picker-border-color: var(--editable-table-border-color);
+          --simple-picker-border-color: var(
+            --editable-table-border-color,
+            #999
+          );
         }
         @media screen {
           :host([responsive][responsive-size="xs"]) caption {
@@ -83,161 +74,76 @@ class EditableTableDisplay extends displayBehaviors(
             display: none;
           }
         }
-      </style>
-      <iron-ajax
-        auto
-        url="[[dataCsv]]"
-        hidden$="[[!dataCsv]]"
-        handle-as="text"
-        debounce-duration="500"
-        last-response="{{csvData}}"
-        on-response="_loadExternalData"
-      ></iron-ajax>
-      <table id="table" class="table" hidden$="[[hidden]]">
+      `,
+    ];
+  }
+  render() {
+    return html`
+      <table
+        id="table"
+        ?bordered="${this.bordered}"
+        class="table"
+        ?column-header="${this.columnHeader}"
+        ?condensed="${this.condensed}"
+        ?filter="${this.filter}"
+        ?footer="${this.footer}"
+        ?hidden="${this.hidden}"
+        ?row-header="${this.rowHeader}"
+        ?sort="${this.sort}"
+        ?striped="${this.striped}"
+      >
         <caption>
           <div>
-            [[caption]]
+            ${this.caption}
             <simple-picker
               id="column"
               align-right
-              aria-labelledby$="[[tables.0.label]]"
+              aria-label="Select Column"
+              @change="${this._selectedChanged}"
               hide-sample
-              value$="{{selected}}"
-              on-change="_selectedChanged"
-              options="[[options]]"
+              .options="${this.options}"
+              .value="${this.selected}"
             >
             </simple-picker>
           </div>
         </caption>
-        <thead hidden="[[!columnHeader]]">
+        <thead ?hidden="${!this.columnHeader}" class="thead">
           <tr class="tr thead-tr">
-            <template
-              is="dom-repeat"
-              items="[[thead.0]]"
-              as="th"
-              index-as="index"
-              mutable-data
-              restamp
-            >
-              <th
-                class="th th-or-td"
-                cell-index$="[[index]]"
-                numeric$="[[_isNumericColumn(index)]]"
-                scope="col"
-                xs-hidden$="[[_isColHidden(index,1)]]"
-              >
-                <template is="dom-if" if="[[sort]]" restamp>
-                  <editable-table-sort
-                    sort-column$="[[sortColumn]]"
-                    column-index="[[index]]"
-                    text$="[[_replaceBlankCell(th)]]"
-                  ></editable-table-sort>
-                </template>
-                <template is="dom-if" if="[[!sort]]" restamp
-                  >[[_replaceBlankCell(th)]]
-                </template>
-              </th>
-            </template>
+            ${(this.thead[0] || []).map(
+              (th, index) => html`
+                <th
+                  class="th th-or-td"
+                  cell-index="${index}"
+                  ?numeric="${this._isNumericColumn(index)}"
+                  scope="col"
+                  ?xs-hidden="${this._isColHidden(index, 1)}"
+                >
+                  ${!this.sort
+                    ? this._replaceBlankCell(th)
+                    : html`
+                        <editable-table-sort
+                          column-index="${index}"
+                          sort-column="${this.sortColumn}"
+                          text="${this._replaceBlankCell(th)}"
+                        ></editable-table-sort>
+                      `}
+                </th>
+              `
+            )}
           </tr>
         </thead>
-        <tbody id="tbody" class="tbody">
-          <template
-            is="dom-repeat"
-            items="[[tbody]]"
-            as="tr"
-            filter="{{filterRows(filterColumn,filterText)}}"
-            mutable-data
-            restamp
-          >
-            <tr class="tr tbody-tr">
-              <template
-                is="dom-repeat"
-                items="[[tr]]"
-                as="cell"
-                index-as="index"
-                mutable-data
-                restamp
-              >
-                <template
-                  is="dom-if"
-                  if="[[_isRowHeader(rowHeader,index)]]"
-                  restamp
-                >
-                  <th
-                    class="th th-or-td"
-                    cell-index$="[[index]]"
-                    numeric$="[[_isNumericColumn(index)]]"
-                    xs-hidden$="[[_isColHidden(index,1)]]"
-                    scope="row"
-                  >
-                    [[_replaceBlankCell(cell)]]
-                  </th>
-                </template>
-                <template
-                  is="dom-if"
-                  if="[[!_isRowHeader(rowHeader,index)]]"
-                  restamp
-                >
-                  <td
-                    class="td cell th-or-td"
-                    cell-index$="[[index]]"
-                    numeric$="[[_isNumericColumn(index)]]"
-                    negative$="[[_isNegative(cell)]]"
-                    xs-hidden$="[[_isColHidden(index,1)]]"
-                  >
-                    <template is="dom-if" if="[[filter]]" restamp>
-                      <editable-table-filter
-                        column-index="[[index]]"
-                        text$="[[_replaceBlankCell(cell)]]"
-                        filtered$="[[_isFiltered(index,filterColumn,filtered)]]"
-                      ></editable-table-filter>
-                    </template>
-                    <template is="dom-if" if="[[!filter]]" restamp>
-                      <span class="cell">[[_replaceBlankCell(cell)]]</span>
-                    </template>
-                  </td>
-                </template>
-              </template>
-            </tr>
-          </template>
+        <tbody class="tbody">
+          ${this.tbody.map((tr) =>
+            this.isFiltered(tr) ? "" : this._tbodyTr(tr)
+          )}
         </tbody>
-        <template is="dom-if" if="[[footer]]">
-          <tfoot class="tfoot">
-            <tr class="tr tfoot-tr">
-              <template
-                is="dom-repeat"
-                items="[[tfoot.0]]"
-                as="cell"
-                index-as="index"
-                mutable-data
-                restamp
-              >
-                <template is="dom-if" if="[[_isRowHeader(rowHeader,index)]]">
-                  <th
-                    class="th th-or-td"
-                    cell-index$="[[index]]"
-                    numeric$="[[_isNumericColumn(index)]]"
-                    xs-hidden$="[[_isColHidden(index,1)]]"
-                    scope="row"
-                  >
-                    [[_replaceBlankCell(cell)]]
-                  </th>
-                </template>
-                <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]">
-                  <td
-                    class="td cell th-or-td"
-                    cell-index$="[[index]]"
-                    numeric$="[[_isNumericColumn(index)]]"
-                    negative$="[[_isNegative(cell)]]"
-                    xs-hidden$="[[_isColHidden(index,1)]]"
-                  >
-                    [[_replaceBlankCell(cell)]]
-                  </td>
-                </template>
-              </template>
-            </tr>
-          </tfoot>
-        </template>
+        ${!this.footer
+          ? ""
+          : html`
+              <tfoot class="tfoot">
+                ${this._tbodyTr(this.tfoot[0], true)}
+              </tfoot>
+            `}
       </table>
       <div id="htmlImport" hidden><slot></slot></div>
     `;
@@ -286,58 +192,71 @@ class EditableTableDisplay extends displayBehaviors(
        */
       filterColumn: {
         type: Number,
-        value: null,
       },
       /**
        * Whether table is filtered
        */
       filtered: {
         type: Boolean,
-        value: false,
       },
       /**
        * Text for Filtering
        */
       filterText: {
         type: String,
-        value: null,
-      },
-      /**
-       * options for the column selector
-       */
-      options: {
-        type: Array,
-        computed: "_getTheadOptions(thead)",
       },
       /**
        * Selected column to display when in responsive mode
        */
       selected: {
         type: Number,
-        value: 1,
       },
       /**
        * Sort mode: ascending, descending or none
        */
       sortMode: {
         type: String,
-        value: "none",
       },
       /**
        * Index of the current sort column
        */
       sortColumn: {
         type: Number,
-        value: -1,
-      },
-      /**
-       * Whether the table is hidden
-       */
-      hidden: {
-        type: Boolean,
-        computed: "_hasNoData(data)",
       },
     };
+  }
+  constructor() {
+    super();
+    this.selected = 1;
+    this.sortMode = "none";
+    this.sortColumn = -1;
+    import("./editable-table-sort.js");
+    import("./editable-table-filter.js");
+  }
+  isFiltered(tr) {
+    let filter = (this.filterText || "").toLowerCase().trim(),
+      cellText = this.filterColumn && tr ? tr[this.filterColumn] : "";
+    return cellText.toLowerCase().trim() !== filter;
+  }
+  /**
+   *
+   * Hides the table if it has no data
+   * @readonly
+   * @memberof EditableTableDisplay
+   */
+  get hidden() {
+    return !this.data || this.data.length < 1 || this.data[0].length < 1;
+  }
+  /**
+   *
+   * Gets the columns in `<thead>`
+   * @readonly
+   * @memberof EditableTableDisplay
+   */
+  get options() {
+    return (this.thead || []).map((th, i) => {
+      return [{ alt: th, value: i }];
+    });
   }
 
   /**
@@ -365,31 +284,6 @@ class EditableTableDisplay extends displayBehaviors(
         detail: newValue,
       })
     );
-  }
-
-  /**
-   * Hides the table if it has no data
-   * @param {array} data the table data as an array
-   * @returns {boolean} whether the table will be hidden
-   */
-  _hasNoData(data) {
-    return !data || data.length < 1 || data[0].length < 1;
-  }
-
-  /**
-   * Gets the columns in `<thead>`
-   * @param {array} data the table data as an array
-   * @param {boolean} columnHeader does the table have a column header
-   * @returns {array} the `<thead>`data
-   */
-  _getTheadOptions(thead) {
-    let temp = [];
-    if (thead !== undefined && thead !== null && thead.length > 0) {
-      for (let i = 1; i < thead[0].length; i++) {
-        temp.push([{ alt: thead[0][i], value: i }]);
-      }
-    }
-    return temp;
   }
   /**
    * Determines whether or not a cell is hidden in responsive mode
@@ -451,6 +345,53 @@ class EditableTableDisplay extends displayBehaviors(
   _tableChanged() {
     this._updateCols();
   }
+  _tbodyTr(row = [], noFilter = false) {
+    return html`
+      <tr class="tr tbody-tr">
+        ${row.map((cell, index) =>
+          this._isRowHeader(this.rowHeader, index)
+            ? this._tbodyTh(cell, index)
+            : this._tbodyTd(cell, index, noFilter)
+        )}
+      </tr>
+    `;
+  }
+  _tbodyTh(cell, index) {
+    return html` <th
+      class="th cell th-or-td"
+      cell-index="${index}"
+      ?numeric="${this._isNumericColumn(index)}"
+      scope="row"
+      ?xs-hidden="${this._isColHidden(index, 1)}"
+    >
+      ${this._replaceBlankCell(cell)}
+    </th>`;
+  }
+  _tbodyTd(cell, index, noFilter = false) {
+    return html` <td
+      class="td cell th-or-td"
+      cell-index="${index}"
+      ?numeric="${this._isNumericColumn(index)}"
+      ?negative="${this._isNegative(cell)}"
+      ?xs-hidden="${this._isColHidden(index, 1)}"
+    >
+      ${this.filter
+        ? html`
+            <editable-table-filter
+              column-index="${index}"
+              text="${this._replaceBlankCell(cell)}"
+              ?filtered="${this._isFiltered(
+                index,
+                this.filterColumn,
+                this.filtered
+              )}"
+            ></editable-table-filter>
+          `
+        : !noFilter
+        ? html`<span class="cell">${this._replaceBlankCell(cell)}</span>`
+        : this._replaceBlankCell(cell)}
+    </td>`;
+  }
 
   /**
    * Handles column  selector change
@@ -476,7 +417,6 @@ class EditableTableDisplay extends displayBehaviors(
       this.sortColumn = e.detail.columnIndex;
     }
     e.detail.setSortMode(this.sortMode);
-    this.sortData(this.sortMode, e.detail.columnIndex);
   }
 
   /**
@@ -496,24 +436,26 @@ class EditableTableDisplay extends displayBehaviors(
       }
     }
   }
-
   /**
-   * Handle filter based on collumn and text of cell that is clicked
-   * @param {number} filterColumn the number of the column to be filtered
-   * @param {string} filterText the text that will be filtered
-   * @returns
+   * Rows in <tbody>
    */
-  filterRows(filterColumn, filterText) {
-    if (filterText !== undefined && filterText !== null) {
-      return function (tr) {
-        return (
-          tr[filterColumn].toLowerCase().trim() ===
-          filterText.toLowerCase().trim()
-        );
-      };
-    } else {
-      return null;
-    }
+  get tbody() {
+    let data = (this.data || []).slice(
+        this.columnHeader ? 1 : 0,
+        this.footer ? (this.data || []).length - 1 : (this.data || []).length
+      ),
+      temp;
+    if (!this.sortMode || this.sortMode === "none") return data;
+    temp = data.sort((a, b) => {
+      let aa = a[this.sortColumn || 0],
+        bb = b[this.sortColumn || 0],
+        swap =
+          (this.sortMode === "asc" && aa > bb) ||
+          (this.sortMode === "desc" && aa < bb);
+      return swap ? 1 : -1;
+    });
+    console.log(this.sortMode, this.sortColumn, temp);
+    return temp;
   }
 
   /**
@@ -521,18 +463,11 @@ class EditableTableDisplay extends displayBehaviors(
    */
   sortData(type, column) {
     if (type !== "none" && type !== false) {
-      let temp = this.tbody.slice();
-      for (let i = 0; i < temp.length; i++) {
-        temp[i].unshift(temp[i][column]);
-      }
+      let temp = this.tbody.map((row) => [row[column], ...row]);
       if (type === "asc") {
         temp.sort();
       } else {
         temp.reverse();
-      }
-      for (let i = 0; i < temp.length; i++) {
-        this.set("tbody." + i, []);
-        this.set("tbody." + i, temp[i].slice(1));
       }
     }
   }
@@ -553,11 +488,6 @@ class EditableTableDisplay extends displayBehaviors(
       this.filterColumn = e.detail.columnIndex;
       this.filtered = true;
     }
-  }
-  constructor() {
-    super();
-    import("./editable-table-sort.js");
-    import("./editable-table-filter.js");
   }
   connectedCallback() {
     super.connectedCallback();

@@ -2,18 +2,19 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import {
+  displayBehaviors,
+  editableTableStyles,
+} from "./lib/editable-table-behaviors.js";
+import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
+import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/paper-input/paper-input.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import { displayBehaviors } from "./lib/editable-table-behaviors.js";
 import "./lib/editable-table-editor-rowcol.js";
 import "./lib/editable-table-editor-toggle.js";
-import "./lib/editable-table-editor-cell.js";
-import "./lib/editable-table-styles.js";
 import "./lib/editable-table-display.js";
 
 /**
@@ -40,8 +41,8 @@ Custom property | Description | Default
 `--editable-table-caption-color` | The caption text color. | var(--editable-table-color);
 `--editable-table-caption-bg-color` | The caption background color. | #fff;
 `--editable-table-heading-color` | The row/column heading text color. | #000;
-`--editable-table-heading-bg-color` | The row/column heading background color. | #ddd;
-`--editable-table-stripe-bg-color` | The background color for alternating row striping. | #eee;
+`--editable-table-heading-bg-color` | The row/column heading background color. | #e8e8e8;
+`--editable-table-stripe-bg-color` | The background color for alternating row striping. | #f0f0f0;
 `--editable-table-border-width` | The border width for table. | 1px;
 `--editable-table-border-style` | The border style for table. | solid;
 `--editable-table-border-color` | The border color for table. | #999;
@@ -56,11 +57,10 @@ Custom property | Description | Default
 `--editable-table-button-toggled-hover-bg-color` | The background color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-bg-color);
 `--editable-table-button-disabled-color` | The text color of the toggle buttons when disabled. | var(--editable-table-border-color);
 `--editable-table-button-disabled-bg-color` | The background color of the toggle buttons when disabled. | var(--editable-table-heading-bg-color);
-`--editable-table-row-horizontal-padding` | Horizontal appding for cells. | 4px;
-`--editable-table-row-vertical-padding` | Default vertical padding for cells (determines row hight and whitespace). | 5px;
+`--editable-table-row-horizontal-padding` | Default horizontal padding for cells. | 6px;
+`--editable-table-row-horizontal-padding-condensed` | Smaller horizontal padding for cells. | 4px;
+`--editable-table-row-vertical-padding` | Default vertical padding for cells (determines row hight and whitespace). | 10px;
 `--editable-table-row-vertical-padding-condensed` | Smaller vertical padding for cells (determines condensed row hight and whitespace). | 2px;
-`--editable-table-row-padding` | Overall default padding for cells. | var(--editable-table-row-vertical-padding) var(--editable-table-row-horizontal-padding);
-`--editable-table-row-padding-condensed` | Overall condensed padding for cells. | var(--editable-table-row-vertical-padding-condensed)var(--editable-table-row-horizontal-padding);
 `--editable-table-style-stripe` | Styles applied to striped rows. | { background-color: var(--editable-table-stripe-bg-color); }
 `--editable-table-style-column-header` | Styles applied to column headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); background-color: var(--editable-table-heading-bg-color); }
 `--editable-table-style-row-header` | Styles applied to row headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); }
@@ -78,17 +78,19 @@ Custom property | Description | Default
  * @appliesMixin displayBehaviors
  * @appliesMixin EditBehaviors
  */
-class EditableTable extends displayBehaviors(PolymerElement) {
-  static get template() {
-    return html`
-      <style include="editable-table-styles">
+class EditableTable extends displayBehaviors(LitElement) {
+  static get styles() {
+    return [
+      ...(super.styles || []),
+      ...editableTableStyles,
+      css`
         :host {
           --paper-listbox-background-color: var(
             --editable-table-rowcol-bg-color
           );
         }
-        :host .filter-icon,
-        :host .sortable-icon {
+        .filter-icon,
+        .sortable-icon {
           display: none;
           opacity: 0.4;
           width: 24px;
@@ -99,62 +101,99 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           display: inline-block;
           opacity: 0.25;
         }
-        :host table {
+        table {
           min-width: calc(100% - 2.3px);
           width: unset;
         }
-        :host caption {
+        caption {
           width: 100%;
           padding: 0;
           margin: 0;
-          color: var(--editable-table-caption-color);
+          color: var(
+            --editable-table-caption-color,
+            var(--editable-table-color, #222)
+          );
         }
-        :host caption,
-        :host .th-or-td {
+        caption,
+        .th-or-td {
           border: 1px solid #ddd;
         }
-        :host label,
-        :host .label {
-          font-size: var(--editable-table-secondary-font-size);
-          font-family: var(--editable-table-secondary-font-family);
+        label,
+        .label {
+          color: var(
+            --editable-table-secondary-text-color,
+            var(--editable-table-border-color, #999)
+          );
+          font-size: var(--editable-table-secondary-font-size, 12px);
+          font-family: var(
+            --editable-table-secondary-font-family,
+            "Roboto",
+            "Noto",
+            sans-serif
+          );
         }
-        :host .field-group {
+        .field-group {
           width: 100%;
           padding: 0;
           margin: 0;
           transition: all 2s;
-          color: var(--editable-table-caption-color);
+          color: var(
+            --editable-table-caption-color,
+            var(--editable-table-color, #222)
+          );
         }
-        :host .field-group:not([hidden]) {
+        .field-group:not([hidden]) {
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between;
           align-items: center;
         }
-        :host caption > *,
-        :host .field-group > * {
+        caption > *,
+        .field-group > * {
           margin: 0 2.5px;
         }
-        :host .field-group .field-group {
+        caption {
+          position: relative;
+        }
+        .field-group .field-group {
           width: unset;
         }
-        :host .th,
-        :host th {
-          padding: 0;
-          vertical-align: center;
-          color: var(--editable-table-rowcol-color);
-          background-color: var(--editable-table-rowcol-bg-color);
-          outline: var(--editable-table-border);
-        }
-        :host td {
+        td {
           margin: 0;
-          padding: var(--editable-table-cell-padding);
+          padding: 0;
+          position: relative;
         }
-        :host th:hover,
-        :host th:focus-within {
-          background-color: var(--editable-table-rowcol-hover-bg-color);
+        rich-text-editor-toolbar-mini {
+          width: max-content;
+          position: relative;
+          margin: 0;
         }
-        :host .th:first-child {
+        rich-text-editor {
+          margin-bottom: 1px;
+          min-height: 12px;
+          padding: var(
+            --editable-table-row-padding,
+            var(--editable-table-row-vertical-padding, 10px)
+              var(--editable-table-row-horizontal-padding, 6px)
+          );
+        }
+        td #icons {
+          position: absolute;
+          right: 0;
+          width: 48px;
+          z-index: -1;
+        }
+        td simple-icon-lite {
+          width: 24px;
+        }
+        th:hover,
+        th:focus-within {
+          background-color: var(
+            --editable-table-rowcol-hover-bg-color,
+            var(--editable-table-heading-bg-color, #e8e8e8)
+          );
+        }
+        .th:first-child {
           width: 96px;
         }
         :host([responsive]) thead .th:nth-of-type(3),
@@ -162,160 +201,116 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           border-right-width: calc(var(--editable-table-border-width) + 5px);
           border-right-style: double;
         }
-        :host([bordered]) thead .th:not(:first-child) {
-          border-bottom: var(--editable-table-border);
-        }
-        :host([striped][column-header])
-          tbody
-          .tr:nth-child(2n + 1):not(:first-of-type)
-          .td,
-        :host([striped]:not([column-header])) tbody .tr:nth-child(2n) .td {
-          @apply --editable-table-style-stripe;
-        }
-        :host([column-header]) tbody .tr:first-child .td {
-          @apply --editable-table-style-column-header;
-        }
-        :host([row-header]) tbody .tr .td:first-of-type {
-          @apply --editable-table-style-row-header;
-        }
-        :host([footer]) tbody .tr:last-of-type .td {
-          @apply --editable-table-style-footer;
-        }
-      </style>
-      <iron-ajax
-        auto
-        hidden$="[[!dataCsv]]"
-        url="[[dataCsv]]"
-        handle-as="text"
-        debounce-duration="500"
-        last-response="{{csvData}}"
-        on-response="_loadExternalData"
-      ></iron-ajax>
+      `,
+    ];
+  }
+  render() {
+    return html`
       <editable-table-display
-        aria-hidden$="[[editMode]]"
-        bordered$="[[bordered]]"
-        caption$="[[caption]]"
-        column-header$="[[columnHeader]]"
-        data="{{data}}"
-        condensed$="[[condensed]]"
-        filter$="[[filter]]"
-        footer$="[[footer]]"
-        hidden$="[[editMode]]"
-        responsive$="[[responsive]]"
-        row-header$="[[rowHeader]]"
-        sort$="[[sort]]"
-        striped$="[[striped]]"
+        aria-hidden="${this.editMode ? "true" : "false"}"
+        ?bordered="${this.bordered}"
+        caption="${this.caption}"
+        ?column-header="${this.columnHeader}"
+        ?condensed="${this.condensed}"
+        .data="${this.data}"
+        ?filter="${this.filter}"
+        ?footer="${this.footer}"
+        ?hidden="${this.editMode}"
+        ?responsive="${this.responsive}"
+        ?row-header="${this.rowHeader}"
+        ?sort="${this.sort}"
+        ?striped="${this.striped}"
       >
       </editable-table-display>
-      <div id="outer" hidden$="[[!editMode]]" aria-hidden$="[[!editMode]]">
+      <div
+        ?hidden="${!this.editMode}"
+        aria-hidden="${!this.editMode ? "true" : "false"}"
+        id="outer"
+      >
         <div id="inner">
           <p class="sr-only">Table Editor</p>
           <table
             id="table-editmode"
-            bordered$="[[bordered]]"
-            condensed$="[[condensed]]"
-            striped$="[[striped]]"
+            ?bordered="${this.bordered}"
+            ?condensed="${this.condensed}"
+            ?striped="${this.striped}"
           >
             <caption>
               <p class="sr-only">Edit Mode for</p>
-              <paper-input
+              <rich-text-editor
+                autofocus
+                @change=${this._captionChanged}
+                toolbar="mini"
                 id="caption"
                 label="Caption"
-                placeholder="A title for the table."
-                on-change="_captionChanged"
-                value$="{{caption}}"
+                placeholder="Name your table by adding a caption here."
+                type="rich-text-editor-toolbar-mini"
               >
-              </paper-input>
+                ${this.caption}
+              </rich-text-editor>
             </caption>
             <thead>
               <tr class="tr">
                 <th class="th th-or-td" scope="col">
                   <span class="sr-only">Row Operations</span>
                 </th>
-                <template
-                  id="headers"
-                  is="dom-repeat"
-                  items="[[data]]"
-                  as="row"
-                  index-as="tr"
-                  mutable-data
-                  restamp
-                >
-                  <template is="dom-if" if="[[_isFirstRow(tr)]]" restamp>
-                    <template
-                      id="headercols"
-                      is="dom-repeat"
-                      items="[[row]]"
-                      as="cell"
-                      index-as="th"
-                      mutable-data
-                      restamp
-                    >
-                      <th class="th th-or-td col-[[th]]" scope="col">
-                        <editable-table-editor-rowcol
-                          index$="[[th]]"
-                          condensed$="[[condensed]]"
-                          on-rowcol-action="_handleRowColumnMenu"
-                        >
-                        </editable-table-editor-rowcol>
-                      </th>
-                    </template>
-                  </template>
-                </template>
+                ${(this.data[0] || []).map(
+                  (cell, th) => html`
+                    <th class="th th-or-td col-${th}" scope="col">
+                      <editable-table-editor-rowcol
+                        ?condensed="${this.condensed}"
+                        index="${th}"
+                        @rowcol-action="${this._handleRowColumnMenu}"
+                      >
+                      </editable-table-editor-rowcol>
+                    </th>
+                  `
+                )}
               </tr>
             </thead>
             <tbody id="tbody">
-              <template
-                id="rows"
-                is="dom-repeat"
-                items="[[data]]"
-                as="row"
-                index-as="tr"
-                mutable-data
-                restamp
-              >
-                <tr class="tr tbody-tr">
-                  <th class="th th-or-td" scope="row">
-                    <editable-table-editor-rowcol
-                      index$="[[tr]]"
-                      condensed$="[[condensed]]"
-                      on-rowcol-action="_handleRowColumnMenu"
-                      row
-                    >
-                    </editable-table-editor-rowcol>
-                  </th>
-                  <template
-                    id="columns"
-                    index-as="td"
-                    is="dom-repeat"
-                    items="[[row]]"
-                    as="cell"
-                    mutable-data
-                    restamp
-                  >
-                    <td class="td th-or-td" on-click="_onCellClick">
-                      <editable-table-editor-cell
-                        id="cell-[[td]]-[[tr]]"
-                        class="cell"
-                        column="[[td]]"
-                        row="[[tr]]"
-                        on-change="_onCellValueChange"
-                        value="{{cell}}"
+              ${this.data.map(
+                (row, tr) => html`
+                  <tr class="tr tbody-tr">
+                    <th class="th th-or-td" scope="row">
+                      <editable-table-editor-rowcol
+                        ?condensed="${this.condensed}"
+                        index="${tr}"
+                        row
+                        @rowcol-action="${this._handleRowColumnMenu}"
                       >
-                        <simple-icon-lite
-                          class="sortable-icon"
-                          icon="editable-table:sortable"
-                          aria-hidden="true"
-                        ></simple-icon-lite>
-                        <simple-icon-lite
-                          class="filter-icon"
-                          icon="editable-table:filter-off"
-                        ></simple-icon-lite>
-                      </editable-table-editor-cell>
-                    </td>
-                  </template>
-                </tr>
-              </template>
+                      </editable-table-editor-rowcol>
+                    </th>
+                    ${(row || []).map(
+                      (cell, td) => html`
+                        <td class="td th-or-td" @click="${this._onCellClick}">
+                          <rich-text-editor
+                            autofocus
+                            @change="${this._onValueChanged}"
+                            toolbar="mini"
+                            id="cell-${td}-${tr}"
+                            label="${this.label}"
+                            type="rich-text-editor-toolbar-mini"
+                          >
+                            ${cell}
+                          </rich-text-editor>
+                          <div id="icons">
+                            <simple-icon-lite
+                              class="sortable-icon"
+                              icon="editable-table:sortable"
+                              aria-hidden="true"
+                            ></simple-icon-lite>
+                            <simple-icon-lite
+                              class="filter-icon"
+                              icon="editable-table:filter-off"
+                            ></simple-icon-lite>
+                          </div>
+                        </td>
+                      `
+                    )}
+                  </tr>
+                `
+              )}
             </tbody>
           </table>
         </div>
@@ -326,96 +321,106 @@ class EditableTable extends displayBehaviors(PolymerElement) {
               id="columnHeader"
               icon="editable-table:column-headers"
               label="First row has column headers."
-              on-change="_onTableSettingChange"
-              toggled$="[[columnHeader]]"
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.columnHeader}"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="rowHeader"
               icon="editable-table:row-headers"
-              on-change="_onTableSettingChange"
+              @change="${this._onTableSettingChange}"
               label="First column has row headers."
-              toggled$="[[rowHeader]]"
+              ?toggled="${this.rowHeader}"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="footer"
               icon="editable-table:footer"
               label="Last row is a footer."
-              on-change="_onTableSettingChange"
-              toggled$="[[footer]]"
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.footer}"
             >
             </editable-table-editor-toggle>
           </div>
-          <div class="field-group" hidden$="[[hideDisplay]]">
+          <div class="field-group" ?hidden="${this.hideDisplay}">
             <div class="label">Display</div>
             <editable-table-editor-toggle
               id="bordered"
-              disabled$="[[hideBordered]]"
-              hidden$="[[hideBordered]]"
+              ?disabled="${this.hideBordered}"
+              ?hidden="${this.hideBordered}"
               icon="image:grid-on"
               label="Borders."
-              on-change="_onTableSettingChange"
-              toggled$="[[bordered]]"
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.bordered}"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="striped"
-              disabled$="[[hideStriped]]"
-              hidden$="[[hideStriped]]"
+              ?disabled="${this.hideStriped}"
+              ?hidden="${this.hideStriped}"
               icon="editable-table:row-striped"
               label="Alternating rows."
-              on-change="_onTableSettingChange"
-              toggled$="[[striped]]"
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.striped}"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="condensed"
-              disabled$="[[hideCondensed]]"
-              hidden$="[[hideCondensed]]"
+              ?disabled="${this.hideCondensed}"
+              ?hidden="${this.hideCondensed}"
               icon="editable-table:row-condensed"
               label="Condensed rows."
-              on-change="_onTableSettingChange"
-              toggled$="[[condensed]]"
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.condensed}"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="responsive"
-              disabled$="[[hideResponsive]]"
-              hidden$="[[hideResponsive]]"
+              ?disabled="${this.hideResponsive}"
+              ?hidden="${this.hideResponsive}"
               icon="device:devices"
               label="Adjust width to screen size."
-              on-change="_onTableSettingChange"
-              toggled$="[[responsive]]"
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.responsive}"
             >
             </editable-table-editor-toggle>
           </div>
-          <div class="field-group" hidden$="[[hideSortFilter]]">
+          <div class="field-group" ?hidden="${this.hideSortFilter}">
             <div class="label">Data</div>
             <editable-table-editor-toggle
               id="sort"
-              disabled$="[[_isSortDisabled(hideSort,columnHeader)]]"
-              hidden$="[[_isSortDisabled(hideSort,columnHeader)]]"
+              ?disabled="${this._isSortDisabled(
+                this.hideSort,
+                this.columnHeader
+              )}"
+              ?hidden="${this._isSortDisabled(
+                this.hideSort,
+                this.columnHeader
+              )}"
               label="Column sorting (for tables with column headers)."
               icon="editable-table:sortable"
-              on-change="_onTableSettingChange"
-              toggled$="[[sort]]"
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.sort}"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="filter"
-              disabled$="[[hideFilter]]"
-              hidden$="[[hideFilter]]"
+              ?disabled="${this.hideFilter}"
+              ?hidden="${this.hideFilter}"
               icon="editable-table:filter"
               label="Column filtering."
-              on-change="_onTableSettingChange"
-              toggled$="[[filter]]"
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.filter}"
             >
             </editable-table-editor-toggle>
           </div>
         </div>
       </div>
       <div id="htmlImport" hidden><slot></slot></div>
+      <rich-text-editor-mini
+        id="mini"
+        config="${this.config}"
+      ></rich-text-editor-mini>
     `;
   }
 
@@ -433,9 +438,9 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   /**
    * allow HAX to toggle edit state when activated
    */
-  haxactiveElementChanged(el, value) {
+  haxactiveElementChanged(el, val) {
     // overwrite the HAX dom w/ what our editor is supplying
-    if (!value) {
+    if (!val) {
       let replacement = this.getTableHTMLNode();
       if (el) {
         el.replaceWith(replacement);
@@ -443,7 +448,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       el = replacement;
     }
     // aligns the state of the element w/ HAX if its available
-    this.toggleEditMode(value);
+    this.toggleEditMode(val);
     return el;
   }
   constructor() {
@@ -452,15 +457,19 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     this.editMode = false;
     this.hideBordered = false;
     this.hideCondensed = false;
-    this.hideDisplay = false;
     this.hideFilter = false;
-    this.hideSortFilter = false;
     this.hideSort = false;
     this.hideResponsive = false;
     this.hideStriped = false;
   }
   static get properties() {
     return {
+      /**
+       * Is the table in edit-mode? Default is false (display mode).
+       */
+      config: {
+        type: Object,
+      },
       /**
        * Is the table in edit-mode? Default is false (display mode).
        */
@@ -480,25 +489,10 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         type: Boolean,
       },
       /**
-       * Hide the table display menu group
-       */
-      hideDisplay: {
-        type: Boolean,
-        computed:
-          "_tableDisplayHidden(hideBordered,hideCondensed,hideStriped,hideResponsive)",
-      },
-      /**
        * Hide the filtering option.
        */
       hideFilter: {
         type: Boolean,
-      },
-      /**
-       * Hide the table sorting & filtering menu group
-       */
-      hideSortFilter: {
-        type: Boolean,
-        computed: "_tableSortHidden(hideSort,hideFilter)",
       },
       /**
        * Hide the sorting option.
@@ -521,6 +515,19 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     };
   }
 
+  get hideSortFilter() {
+    return this.hideSort && this.hideFilter;
+  }
+
+  get hideDisplay() {
+    return (
+      this.hideBordered &&
+      this.hideCondensed &&
+      this.hideStriped &&
+      this.hideResponsive
+    );
+  }
+
   /**
    * Delete a column at the given index
    * @param {number} index the index of the column
@@ -530,7 +537,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       this.splice("data." + i, index, 1);
     }
     let temp = this.data.slice();
-    this.set("data", temp);
+    this.data = temp;
   }
 
   /**
@@ -540,7 +547,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   deleteRow(index) {
     this.splice("data", index, 1);
     let temp = this.data.slice();
-    this.set("data", temp);
+    this.data = temp;
   }
 
   /**
@@ -552,7 +559,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     for (let i = 0; i < temp.length; i++) {
       temp[i].splice(index, 0, "");
     }
-    this.set("data", temp);
+    this.data = temp;
   }
 
   /**
@@ -566,7 +573,34 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       temp2.push("");
     }
     temp.splice(index + 1, 0, temp2);
-    this.set("data", temp);
+    this.data = temp;
+  }
+  /**
+   * loads table data from slotted HTML
+   *
+   * @memberof EditableTable
+   */
+  loadTable() {
+    let table = this.children.item(0);
+    // support wrapping editable-table-display tag or primative
+    if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
+      table = table.children.item(0);
+    }
+    if (
+      !!table &&
+      table.tagName === "TABLE" &&
+      table.children &&
+      table.children.length > 0
+    ) {
+      this.importHTML(table);
+    } else {
+      this.data = [
+        ["", "", ""],
+        ["", "", ""],
+        ["", "", ""],
+      ];
+    }
+    console.log("leadTable", this.data);
   }
 
   /**
@@ -593,41 +627,21 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     }
     this.editMode = edit;
   }
-  /**
-   * Handles when the caption paper-input changed
-   */
-  _captionChanged() {
-    this.caption = this.shadowRoot.querySelector("#caption").value;
-  }
 
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
-      // re-run initial state if missed because of how element is stamped into DOM
-      if (!this.data || this.data.length < 1 || this.data[0].length < 1) {
-        let table = this.children.item(0);
-        // support wrapping editable-table-display tag or primative
-        if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
-          table = table.children.item(0);
-        }
-        if (
-          typeof table !== typeof undefined &&
-          table !== null &&
-          table.tagName === "TABLE" &&
-          table.children &&
-          table.children.length > 0
-        ) {
-          this.importHTML(table);
-        } else {
-          this.set("data", [
-            ["", "", ""],
-            ["", "", ""],
-            ["", "", ""],
-          ]);
-        }
-      }
+      this.loadTable();
       this.__ready = true;
     }, 0);
+  }
+  /**
+   * Handles when the caption paper-input changed
+   */
+  _captionChanged() {
+    this.caption = (
+      this.shadowRoot.querySelector("#caption").value || []
+    ).trim();
   }
 
   /**
@@ -640,26 +654,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       this.__ready &&
       (!newValue || newValue.length < 1 || newValue[0].length < 1)
     ) {
-      let table = this.children.item(0);
-      // support wrapping editable-table-display tag or primative
-      if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
-        table = table.children.item(0);
-      }
-      if (
-        typeof table !== typeof undefined &&
-        table !== null &&
-        table.tagName === "TABLE" &&
-        table.children &&
-        table.children.length > 0
-      ) {
-        this.importHTML(table);
-      } else {
-        this.set("data", [
-          ["", "", ""],
-          ["", "", ""],
-          ["", "", ""],
-        ]);
-      }
+      this.loadTable();
     }
   }
 
@@ -732,8 +727,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   _onCellValueChange(e) {
     let temp = this.data.slice();
     temp[e.detail.row][e.detail.column] = e.detail.value;
-    this.set("data", []);
-    this.set("data", temp);
+    this.data = temp;
   }
 
   /**
@@ -749,39 +743,12 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    */
   _setMinimumData(data) {
     if (data.length < 1 || data[0].length < 1) {
-      this.set("data", [
+      this.data = [
         ["", "", ""],
         ["", "", ""],
         ["", "", ""],
-      ]);
+      ];
     }
-  }
-
-  /**
-   * Determines if all of the table style choices hidden?
-   * @param {boolean} hideBordered is the border toggle hidden
-   * @param {boolean} hideCondensed is the condensed toggle hidden
-   * @param {boolean} hideStriped is the striped toggle hidden
-   * @param {boolean} hideResponsive is the responsive toggle hidden
-   * @returns {boolean} whether all of the  display options are hidden
-   */
-  _tableDisplayHidden(
-    hideBordered,
-    hideCondensed,
-    hideStriped,
-    hideResponsive
-  ) {
-    return hideBordered && hideCondensed && hideStriped && hideResponsive;
-  }
-
-  /**
-   * Determines if all of the sorting and filtering choices hidden?
-   * @param {boolean} hideSort is the sort toggle hidden
-   * @param {boolean} hideFilter is the filter toggle hidden
-   * @returns {boolean} whether all of the sorting & filtering options are hidden
-   */
-  _tableSortHidden(hideSort, hideFilter) {
-    return hideSort && hideFilter;
   }
 }
 window.customElements.define(EditableTable.tag, EditableTable);

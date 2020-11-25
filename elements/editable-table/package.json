@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/editable-table",
   "wcfactory": {
     "className": "EditableTable",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "editable-table",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": false,
@@ -43,17 +43,15 @@
   "dependencies": {
     "@lrnwebcomponents/hax-iconset": "^2.8.0",
     "@lrnwebcomponents/responsive-utility": "^2.8.0",
+    "@lrnwebcomponents/rich-text-editor": "^2.8.0",
     "@lrnwebcomponents/simple-icon": "^2.8.0",
     "@lrnwebcomponents/simple-picker": "^2.8.0",
     "@lrnwebcomponents/simple-tooltip": "^2.8.0",
-    "@polymer/iron-a11y-keys": "^3.0.1",
-    "@polymer/iron-ajax": "^3.0.0",
-    "@polymer/iron-autogrow-textarea": "^3.0.0",
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-dropdown-menu": "^3.0.1",
-    "@polymer/paper-input": "^3.0.2",
+    "@polymer/paper-menu-button": "^3.0.1",
     "@polymer/paper-listbox": "^3.0.0",
-    "@polymer/polymer": "^3.3.1",
+    "@polymer/paper-iten": "^3.0.0",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

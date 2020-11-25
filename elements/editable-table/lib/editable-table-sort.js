@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { editableTableCellStyles } from "./editable-table-behaviors.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
@@ -16,41 +17,17 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * @polymer
  * @element editable-table-editor-sort
  */
-class EditableTableSort extends PolymerElement {
-  static get template() {
-    return html`
-      <style is="custom-style">
-        :host button {
-          padding: var(--editable-table-cell-padding, 0);
-          margin: 0;
-          width: auto;
-          min-width: unset;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          align-content: stretch;
-          text-transform: unset;
-          font-family: var(--editable-table-font-family);
-          background-color: transparent;
-          border: none;
-          border-radius: 0;
-        }
-        :host button > div {
-          flex-grow: 1;
-        }
-        :host .sr-only {
-          position: absolute;
-          left: -9999px;
-          font-size: 0;
-          height: 0;
-          width: 0;
-          overflow: hidden;
-        }
+class EditableTableSort extends LitElement {
+  static get styles() {
+    return [
+      ...(super.styles || []),
+      ...editableTableCellStyles,
+      css`
+        #asc,
+        #desc,
         :host(:not([sort-mode="asc"])) .asc,
         :host(:not([sort-mode="desc"])) .desc,
         :host(:not([sort-mode="none"])) .none,
-        :host #asc,
-        :host #desc,
         :host([sorting]:not([sort-mode="none"])) #none {
           display: none;
         }
@@ -58,9 +35,14 @@ class EditableTableSort extends PolymerElement {
         :host([sorting][sort-mode="desc"]) #desc {
           display: flex;
         }
-      </style>
-      <button id="button" class="container" on-click="_onSortClicked">
-        [[text]] <span class="sr-only asc">(ascending)</span>
+      `,
+    ];
+  }
+  render() {
+    return html`
+      <button id="button" class="cell-button" @click="${this._onSortClicked}">
+        ${this.text}
+        <span class="sr-only asc">(ascending)</span>
         <span class="sr-only desc">(descending)</span>
         <span class="sr-only"> Toggle sort mode.</span>
         <simple-icon-lite id="asc" icon="arrow-drop-up"></simple-icon-lite>
@@ -83,42 +65,48 @@ class EditableTableSort extends PolymerElement {
        * Sort ascending, descending or none
        */
       columnIndex: {
+        attribute: "column-index",
         type: Number,
-        value: null,
-        reflectToAttribute: true,
+        reflect: true,
       },
       /**
        * Sort mode: ascending, descending or none
        */
       sortMode: {
+        attribute: "sort-mode",
         type: String,
-        value: "none",
-        reflectToAttribute: true,
+        reflect: true,
       },
       /**
        * Index of the current sort column
        */
       sortColumn: {
+        attribute: "sort-column",
         type: Number,
-        value: -1,
-        reflectToAttribute: true,
-      },
-      /**
-       * Whether the column is being sorted
-       */
-      sorting: {
-        type: Boolean,
-        computed: "_isSorting(columnIndex,sortColumn)",
-        reflectToAttribute: true,
+        reflect: true,
       },
       /**
        * Column header text
        */
       text: {
         type: String,
-        value: "",
       },
     };
+  }
+  constructor() {
+    super();
+    this.sortMode = "none";
+    this.text = "";
+    this.sortColumn = -1;
+  }
+  /**
+   *
+   * Whether the column is being sorted
+   * @readonly
+   * @memberof EditableTableSort
+   */
+  get sorting() {
+    return this.columnIndex === this.sortColumn;
   }
 
   /**
@@ -143,16 +131,6 @@ class EditableTableSort extends PolymerElement {
   setSortMode(mode) {
     this.sortMode = mode;
     this.__checked = mode === "asc" ? true : mode === "desc" ? mode : false;
-  }
-
-  /**
-   * Determines if column number is the same as the current sort column
-   * @param {number} columnIndex the index of the column
-   * @param {number} sortColumn the index of the column being sorted
-   * @returns {boolean} whether this column is being sorted
-   */
-  _isSorting(columnIndex, sortColumn) {
-    return columnIndex === sortColumn;
   }
 }
 window.customElements.define(EditableTableSort.tag, EditableTableSort);

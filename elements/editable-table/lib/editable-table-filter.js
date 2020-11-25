@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { editableTableCellStyles } from "./editable-table-behaviors.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -20,36 +21,9 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 class EditableTableFilter extends LitElement {
   static get styles() {
     return [
+      ...(super.styles || []),
+      ...editableTableCellStyles,
       css`
-        button {
-          padding: var(--editable-table-cell-padding, 0);
-          margin: 0;
-          width: auto;
-          min-width: unset;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          align-content: stretch;
-          text-transform: unset;
-          font-family: var(--editable-table-font-family);
-          background-color: transparent;
-          border: none;
-          border-radius: 0;
-        }
-        button > div {
-          flex-grow: 1;
-        }
-        simple-icon-lite {
-          min-width: 24px;
-        }
-        .sr-only {
-          position: absolute;
-          left: -9999px;
-          font-size: 0;
-          height: 0;
-          width: 0;
-          overflow: hidden;
-        }
         #filter-off {
           opacity: 0.25;
         }
@@ -67,7 +41,7 @@ class EditableTableFilter extends LitElement {
   }
   render() {
     return html`
-      <button id="button" class="container" @click="${this._onFilterClicked}">
+      <button id="button" class="cell-button" @click="${this._onFilterClicked}">
         <span>${this.text}</span>
         <span class="sr-only" .hidden="${!this.filtered}"> (filtered)</span>
         <span class="sr-only"> Toggle filter.</span>

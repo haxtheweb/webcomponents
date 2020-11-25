@@ -2,17 +2,18 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import {
+  cellBehaviors,
+  editableTableCellStyles,
+} from "./editable-table-behaviors.js";
 import "@polymer/paper-listbox/paper-listbox.js";
-import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
-import "@polymer/paper-listbox/paper-listbox.js";
+import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import { cellBehaviors } from "./editable-table-behaviors.js";
 
 /**
  * `editable-table-editor-rowcol`
@@ -24,87 +25,72 @@ import { cellBehaviors } from "./editable-table-behaviors.js";
  * @element editable-table-editor-rowcol
  * @appliesMixin cellBehaviors
  */
-class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
-  static get template() {
-    return html`
-      <style>
+class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
+  static get styles() {
+    return [
+      ...(super.styles || []),
+      ...editableTableCellStyles,
+      css`
         :host {
           display: block;
           --paper-item-min-height: 24px;
         }
-        :host .sr-only {
-          position: absolute;
-          left: -9999px;
-          font-size: 0;
-          height: 0;
-          width: 0;
-          overflow: hidden;
-        }
-        :host #label {
+        #label {
           margin: 0;
           padding: 0;
         }
-        :host paper-menu-button {
-          margin: 0;
+        paper-listbox {
           padding: 0;
-          width: 100%;
+          background-color: var(--editable-table-bg-color, #fff);
         }
-        :host paper-listbox {
-          padding: 0;
-          background-color: var(--editable-table-bg-color);
-        }
-        :host button,
-        :host paper-item {
+        paper-item {
           margin: 0;
           text-transform: none;
           background-color: transparent;
           text-align: left;
-          font-family: var(--editable-table-secondary-font-family);
-          color: var(--editable-table-color);
+          font-family: var(
+            --editable-table-secondary-font-family,
+            "Roboto",
+            "Noto",
+            sans-serif
+          );
+          color: var(--editable-table-color, #222);
         }
-        :host paper-item {
-          font-size: var(--editable-table-secondary-font-size);
-        }
-        :host button {
-          display: block;
-          padding-top: var(--editable-table-row-vertical-padding);
-          padding-bottom: var(--editable-table-row-vertical-padding);
-          background-color: transparent;
-          border: none;
-          border-radius: 0;
+        paper-item {
+          font-size: var(--editable-table-secondary-font-size, 12px);
         }
         :host([condensed]) button {
-          padding-top: var(--editable-table-row-vertical-padding-condensed);
-          padding-bottom: var(--editable-table-row-vertical-padding-condensed);
+          padding-top: var(
+            --editable-table-row-vertical-padding-condensed,
+            2px
+          );
+          padding-bottom: var(
+            --editable-table-row-vertical-padding-condensed,
+            2px
+          );
         }
-      </style>
-      <paper-menu-button id="menu">
+      `,
+    ];
+  }
+  render() {
+    return html`
+      <paper-menu-button id="menu" class="cell-button">
         <button slot="dropdown-trigger">
-          <span class="sr-only">[[_getType(row)]]</span>
-          <span id="label">[[label]]</span>
+          <span class="sr-only">${this.type}</span>
+          <span id="label">${this.label || ""}</span>
           <span class="sr-only">Menu</span>
           <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
         </button>
         <paper-listbox
           slot="dropdown-content"
-          label="[_getType(row)]] [[label]] Menu"
+          label="${this.type} ${this.label} Menu"
         >
-          <paper-item role="button" on-click="_onInsertBefore">
-            Insert [[_getType(row)]] Before
-            <span class="sr-only">[[label]]]</span>
-          </paper-item>
-          <paper-item role="button" on-click="_onInsertAfter">
-            Insert [[_getType(row)]] After
-            <span class="sr-only">[[label]]]</span>
-          </paper-item>
-          <paper-item role="button" on-click="_onDelete">
-            Delete [[_getType(row)]]
-            <span class="sr-only">[[label]]]</span>
-          </paper-item>
+          ${this._getItem()} ${this._getItem(false, true)}
+          ${this._getItem(true)}
         </paper-listbox>
       </paper-menu-button>
       <simple-tooltip for="menu"
-        >[[_getType(row)]] [[label]] Menu</simple-tooltip
+        >${this.type} ${this.label} Menu</simple-tooltip
       >
     `;
   }
@@ -114,43 +100,57 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
   static get properties() {
     return {
       /**
-       * The cell that the menu controls
-       */
-      controls: {
-        type: String,
-        computed: "_getMenuControls(index,row)",
-        reflectToAttribute: true,
-      },
-      /**
        * Index of the row or column
        */
       index: {
         type: Number,
-        value: null,
-      },
-      /**
-       * Label of the row or column
-       */
-      label: {
-        type: String,
-        computed: "_getLabel(index,row)",
       },
       /**
        * Whether the menu button controls a row
        */
       row: {
         type: Boolean,
-        value: false,
       },
     };
   }
   /**
-   * Fires Delete Row/Column is clicked
-   * @param {boolean} row whether it's row
-   * @returns {string} "Row of "Column""
+   *
+   * Gets the first cell that the menu controls
+   * @readonly
+   * @memberof EditableTableEditorRowcol
    */
-  _getType(row) {
-    return row ? "Row" : "Column";
+  get controls() {
+    return this.row ? `cell-0-${this.index}` : `cell-${this.index}-0`;
+  }
+  /**
+   *
+   * Gets row or column label based on type
+   * @readonly
+   * @memberof EditableTableEditorRowcol
+   */
+  get label() {
+    console.log("get label", this.row, this.column);
+    return this.row
+      ? this._getLabel(this.index, true)
+      : this._getLabel(this.index, false);
+  }
+  /**
+   *
+   * get cell label
+   * @readonly
+   * @memberof EditableTableEditorRowcol
+   */
+  get labelInfo() {
+    return html`<span class="sr-only">${this.label}</span>`;
+  }
+  /**
+   *
+   * Gets row or column type
+   * @readonly
+   * @memberof EditableTableEditorRowcol
+   */
+  get type() {
+    return this.row ? "Row" : "Column";
   }
   /**
    * Fires when  selection is made from menu button
@@ -172,14 +172,19 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
       })
     );
   }
-  /**
-   * Gets the first cell that the menu controls
-   * @param {number} index the index of thee row or column
-   * @param {boolean} row is this menu for a row
-   * @returns {string} the id of the first cell that the menu controls
-   */
-  _getMenuControls(index, row) {
-    return row ? `cell-0-${index}` : `cell-${index}-0`;
+  _getItem(deleteItem = false, after = false) {
+    return html` <paper-item
+      role="button"
+      @click="${deleteItem
+        ? this._onDelete
+        : after
+        ? this._onInsertAfter
+        : this._onInsertBefore}"
+    >
+      ${deleteItem ? "Delete" : "Insert"}
+      ${this.type}${deleteItem ? "" : after ? "After" : "Before"}
+      ${this.labelInfo}
+    </paper-item>`;
   }
   /**
    * Handles when Delete Row/Column is clicked

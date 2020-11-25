@@ -93,6 +93,16 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
       if (propName === "range") this._rangeChange();
     });
   }
+  focus() {
+    this.dispatchEvent(
+      new CustomEvent("focus", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: this.querySelector("*"),
+      })
+    );
+  }
   /**
    * gets current value minus placeholder
    *
