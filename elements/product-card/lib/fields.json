@@ -92,19 +92,13 @@
           },
           {
             "property": "templates",
-            "title": "Templates / Layouts",
-            "description": "Manage groups of templates and layouts",
+            "title": "Templates",
+            "description": "Manage groups of templates",
             "properties": [
               {
                 "property": "haxcore-templates-templates",
                 "title": "Templates",
                 "description": "Stax version of HAXElementSchema",
-                "inputMethod": "markup"
-              },
-              {
-                "property": "haxcore-templates-layouts",
-                "title": "Layouts",
-                "description": "Blox version of HAXElementSchema",
                 "inputMethod": "markup"
               }
             ]

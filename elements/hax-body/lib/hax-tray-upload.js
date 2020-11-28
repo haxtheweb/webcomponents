@@ -39,7 +39,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
         @upload-response="${this._fileUploadResponse}"
         form-data-name="file-upload"
         id="fileupload"
-        hidden
       ></vaadin-upload>
     `;
   }

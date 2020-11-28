@@ -427,12 +427,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Array,
       },
       /**
-       * Available hax blox which are grid plate / layout elements
-       */
-      bloxList: {
-        type: Array,
-      },
-      /**
        * Valid tag list, tag only and including primatives for a baseline.
        */
       validTagList: {
@@ -617,15 +611,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           let stax = document.createElement("hax-stax");
           stax.data = staxs[i];
           this.appendChild(stax);
-        }
-      }
-      // load in blox dynamically
-      if (typeof appDataResponse.blox !== typeof undefined) {
-        var bloxs = appDataResponse.blox;
-        for (var i = 0; i < bloxs.length; i++) {
-          let blox = document.createElement("hax-blox");
-          blox.data = bloxs[i];
-          this.appendChild(blox);
         }
       }
       this.dispatchEvent(
@@ -1555,7 +1540,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       paste: "_onPaste",
       "hax-register-app": "_haxStoreRegisterApp",
       "hax-register-stax": "_haxStoreRegisterStax",
-      "hax-register-blox": "_haxStoreRegisterBlox",
       "hax-store-write": "_writeHaxStore",
       "hax-register-core-piece": "_haxStorePieceRegistrationManager",
       "hax-register-body": "_haxStoreRegisterBody",
@@ -1605,7 +1589,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.appList = [];
     this.gizmoList = [];
     this.staxList = [];
-    this.bloxList = [];
     this.globalPreferences = {};
     this.activeApp = {};
     this.connectionRewrites = {};
@@ -1617,7 +1600,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     // test for sandboxed env
     let test = document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
-    // imports app, blox, stax definitions
+    // imports app, stax definitions
     import("./hax-app.js");
     import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
       window.SimpleToast.requestAvailability();
@@ -2401,24 +2384,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       e.detail.index = this.staxList.length;
       this.staxList = [...this.staxList, e.detail];
       this.write("staxList", this.staxList, this);
-      // we don't care about this after it's launched
-      if (
-        typeof e.target.parentElement !== typeof undefined &&
-        e.target.parentElement.tagName === "HAX-STORE"
-      ) {
-        e.target.parentElement.removeChild(e.target);
-      }
-    }
-  }
-
-  /**
-   * Notice that a blox was set in HAX; register it
-   */
-  _haxStoreRegisterBlox(e) {
-    if (e.detail) {
-      e.detail.index = this.bloxList.length;
-      this.bloxList = [...this.bloxList, e.detail];
-      this.write("bloxList", this.bloxList, this);
       // we don't care about this after it's launched
       if (
         typeof e.target.parentElement !== typeof undefined &&

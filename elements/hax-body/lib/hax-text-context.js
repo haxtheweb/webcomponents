@@ -81,6 +81,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
   }
   constructor() {
     super();
+    this.sourceView = false;
     this.haxUIElement = true;
     this.tourName = "hax";
     setTimeout(() => {
@@ -147,8 +148,13 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       this.hasSelectedText = toJS(HAXStore.haxSelectedText).length > 0;
     });
     autorun(() => {
+      // this just forces this block to run when editMode is modified
       const editMode = toJS(HAXStore.editMode);
       const activeNode = toJS(HAXStore.activeNode);
+      if (toJS(HAXStore.activeNode) && toJS(HAXStore.activeNode).tagName) {
+        let schema = HAXStore.haxSchemaFromTag(HAXStore.activeNode.tagName);
+        this.sourceView = schema.canEditSource;
+      }
       // update our icon if global changes what we are pointing to
       if (
         HAXStore.isTextElement(activeNode) &&
@@ -216,6 +222,15 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
               </button>`
           )}
         </simple-popover-selection>
+        <hax-context-item
+          mini
+          action
+          slot="primary"
+          icon="icons:code"
+          label="Modify HTML source"
+          ?hidden="${!this.sourceView}"
+          event-name="hax-source-view-toggle"
+        ></hax-context-item>
         <hax-context-item-textop
           mini
           action
@@ -370,6 +385,9 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       },
       realSelectedValue: {
         type: String,
+      },
+      sourceView: {
+        type: Boolean,
       },
       formattingList: {
         type: Array,

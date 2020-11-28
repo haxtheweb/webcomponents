@@ -23,7 +23,6 @@ import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "./hax-tray-upload.js";
 import "./hax-gizmo-browser.js";
 import "./hax-app-browser.js";
-import "./hax-blox-browser.js";
 import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-preferences-dialog.js";
@@ -194,20 +193,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           --simple-fields-accent-color: var(
             --simple-colors-default-theme-cyan-8,
             #007999
-          );
-        }
-        #templateslayouts {
-          --hax-tray-panel-accent-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --hax-tray-panel-accent: var(
-            --simple-colors-default-theme-pink-8,
-            #b80042
-          );
-          --simple-fields-accent-color: var(
-            --simple-colors-default-theme-pink-8,
-            #b80042
           );
         }
         :host([edit-mode][collapsed]) a11y-collapse-group {
@@ -682,22 +667,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         </div>
         <a11y-collapse-group accordion radio>
           <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse id="addcollapse" accordion data-simple-tour-stop>
-            <div slot="heading" data-stop-title>
-              <simple-icon-lite icon="hax:add"></simple-icon-lite> Add Content
-            </div>
-            <div slot="tour" data-stop-content>
-              When you want to add any content to the page from text, to images,
-              to anything more advanced; you can always find items to add under
-              the Add content menu. Click to expand, then either drag and drop
-              items into the page or click and have them placed near whatever
-              you are actively working on.
-            </div>
-            <div slot="content">
-              <hax-tray-upload></hax-tray-upload>
-              <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
-            </div>
-          </a11y-collapse>
           <a11y-collapse id="settingscollapse" accordion data-simple-tour-stop>
             <div slot="heading" data-stop-title>
               <simple-icon-lite icon="${this.activeTagIcon}"></simple-icon-lite>
@@ -717,10 +686,32 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               ></simple-fields>
             </div>
           </a11y-collapse>
+          <a11y-collapse
+            id="addcollapse"
+            accordion
+            data-simple-tour-stop
+            @expand="${this._refreshAddData}"
+          >
+            <div slot="heading" data-stop-title>
+              <simple-icon-lite icon="hax:add"></simple-icon-lite> Add Content
+            </div>
+            <div slot="tour" data-stop-content>
+              When you want to add any content to the page from text, to images,
+              to anything more advanced; you can always find items to add under
+              the Add content menu. Click to expand, then either drag and drop
+              items into the page or click and have them placed near whatever
+              you are actively working on.
+            </div>
+            <div slot="content">
+              <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
+              <h5>Templates</h5>
+              <hax-stax-browser id="staxbrowser"></hax-stax-browser>
+            </div>
+          </a11y-collapse>
           <a11y-collapse id="searchapps" accordion data-simple-tour-stop>
             <div slot="heading" data-stop-title>
               <simple-icon-lite icon="hax:search-clear"></simple-icon-lite>
-              Search
+              Media browser
             </div>
             <div slot="tour" data-stop-content>
               Search for media and content anywhere that your copy of HAX has
@@ -728,27 +719,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               or drag the item into the contnet.
             </div>
             <div slot="content">
+              <hax-tray-upload></hax-tray-upload>
               <hax-app-browser id="appbrowser"></hax-app-browser>
-            </div>
-          </a11y-collapse>
-          <a11y-collapse
-            id="templateslayouts"
-            accordion
-            @expand="${this._refreshLists}"
-            data-simple-tour-stop
-          >
-            <div slot="heading" data-stop-title>
-              <simple-icon-lite icon="hax:templates"></simple-icon-lite
-              >Templates & Layouts
-            </div>
-            <div slot="tour" data-stop-content>
-              Predefined layouts and templated areas. use this to rapidly create
-              page content which you can then move around and break apart as
-              needed.
-            </div>
-            <div slot="content">
-              <hax-blox-browser id="bloxbrowser"></hax-blox-browser>
-              <hax-stax-browser id="staxbrowser"></hax-stax-browser>
             </div>
           </a11y-collapse>
           <slot name="tray-collapse-post"></slot>
@@ -766,10 +738,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       this.activeTab = "item-0";
     }
   }
-  _refreshLists(e) {
-    this.shadowRoot.querySelector("#bloxbrowser").bloxList = [
-      ...HAXStore.bloxList,
-    ];
+  _refreshAddData(e) {
+    this.shadowRoot
+      .querySelector("#gizmobrowser")
+      .resetBrowser(HAXStore.gizmoList);
     this.shadowRoot.querySelector("#staxbrowser").staxList = [
       ...HAXStore.staxList,
     ];
@@ -797,34 +769,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             cancelable: true,
             composed: true,
             detail: target.stax,
-          })
-        );
-        break;
-      case "insert-blox":
-        let content = "";
-        for (var i = 0; i < target.blox.length; i++) {
-          let node = haxElementToNode({
-            tag: target.blox[i].tag,
-            content: target.blox[i].content,
-            properties: target.blox[i].properties,
-          });
-          content += HAXStore.nodeToContent(node);
-        }
-        // generate a hax element
-        let blox = {
-          tag: "grid-plate",
-          properties: {
-            layout: target.layout,
-          },
-          content: content,
-        };
-        this.shadowRoot.querySelector("#settingscollapse").expand();
-        this.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: blox,
           })
         );
         break;
@@ -1103,20 +1047,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             command: ":name: (collapse)(open)(expand)(toggle) search (menu)",
             context: this.shadowRoot.querySelector(
               '#searchapps div[slot="heading"]'
-            ),
-            callback: "click",
-          },
-        })
-      );
-      this.dispatchEvent(
-        new CustomEvent("hax-add-voice-command", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            command: ":name: (collapse)(open)(expand)(toggle) templates (menu)",
-            context: this.shadowRoot.querySelector(
-              '#templateslayouts div[slot="heading"]'
             ),
             callback: "click",
           },
