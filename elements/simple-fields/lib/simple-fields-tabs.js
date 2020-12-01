@@ -12,6 +12,10 @@ import "./simple-fields-tab.js";
  * @extends simple-fields-fieldset
  */
 class SimpleFieldsTabs extends A11yTabs {
+  constructor() {
+    super();
+    this.fullWidth = true;
+  }
   static get tag() {
     return "simple-fields-tabs";
   }

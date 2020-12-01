@@ -1,9 +1,9 @@
 import { LitElement, html, css, svg } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { lazyImageLoader } from "@lrnwebcomponents/lazy-image-helpers/lazy-image-helpers.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { lazyImageLoader } from "@lrnwebcomponents/lazy-image-helpers/lazy-image-helpers.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 /**
  * `self-check`
@@ -39,8 +39,6 @@ class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
     this.image = "";
     this.question = "";
     this.title = "Self-Check";
-    import("@lrnwebcomponents/user-action/user-action.js");
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   static get styles() {
     return [
@@ -306,7 +304,20 @@ class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
       </div>
     `;
   }
-
+  /**
+   * LitElement life cycle - property changed
+   */
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "elementVisible" && this.elementVisible) {
+        import("@lrnwebcomponents/user-action/user-action.js");
+        import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      }
+    });
+  }
   static get tag() {
     return "self-check";
   }

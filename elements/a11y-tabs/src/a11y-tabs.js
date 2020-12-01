@@ -94,6 +94,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.fullWidth = false;
     this.disableResponsive = false;
     this.disabled = false;
     this.hidden = false;

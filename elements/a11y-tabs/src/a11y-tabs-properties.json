@@ -13,6 +13,14 @@
     "attribute": "active-tab"
   },
   /**
+   * if tabs should be full width or not
+   */
+  "fullWidth": {
+    "type": "Boolean",
+    "reflect": true,
+    "attribute": "full-width"
+  },
+  /**
    * whether tabbed interface is disabled
    */
   "disabled": {

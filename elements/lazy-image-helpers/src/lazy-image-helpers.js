@@ -5,14 +5,21 @@
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import { LitElement, html, css, svg } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 // lazy image loading part of an element
 export const lazyImageLoader = function (SuperClass) {
-  return class extends SuperClass {
+  return class extends IntersectionObserverMixin(SuperClass) {
     constructor() {
       super();
+      this.IOVisibleLimit = 0.1;
+      this.IOThresholds = [0.0, 0.1, 0.25, 0.5, 0.75, 1.0];
+      this.replacementDelay = 1000;
       this.imageLoaded = false;
       this.loadingImg = "loading:bars";
     }
+    /**
+     * LitElement life cycle - property changed
+     */
     updated(changedProperties) {
       if (super.updated) {
         super.updated(changedProperties);
@@ -28,6 +35,18 @@ export const lazyImageLoader = function (SuperClass) {
               .querySelector("image")
               .setAttribute("xlink:href", loadingImg);
           }
+        }
+        // only allows a max of replacementDelay before just doing it anyway
+        if (
+          propName == "elementVisible" &&
+          this.elementVisible &&
+          !this.imageLoaded
+        ) {
+          clearTimeout(this.__debouce);
+          this.__debouce = setTimeout(() => {
+            this.imageLoaded = true;
+            console.log("hi");
+          }, this.replacementDelay);
         }
       });
     }

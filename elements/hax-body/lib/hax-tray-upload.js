@@ -6,7 +6,13 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
   static get styles() {
     return [
       css`
-        *[hidden] {
+        :host {
+          display: block;
+        }
+        input[hidden] {
+          display: none;
+        }
+        vaadin-upload::part(file-list) {
           display: none;
         }
       `,
