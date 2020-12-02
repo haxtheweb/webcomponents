@@ -14,11 +14,18 @@ export const SimpleFilterMixin = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
-      this.items = [];
-      this.like = "";
-      this.where = "name";
       this.caseSensitive = false;
       this.filtered = [];
+      this.resetList();
+    }
+    /**
+     * Reset this browser.
+     */
+    resetList(list = []) {
+      this.items = [...list];
+      this.where = "title";
+      this.value = "";
+      this.like = "";
     }
     static get properties() {
       return {

@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-autocomplete",
+      "path": "./simple-autocomplete.js",
+      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`"
+    },
+    {
+      "name": "simple-autocomplete",
+      "path": "./src/simple-autocomplete.js",
+      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`"
+    }
+  ]
+}

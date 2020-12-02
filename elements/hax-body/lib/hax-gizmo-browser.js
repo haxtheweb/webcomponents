@@ -130,14 +130,14 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
       super.firstUpdated(changedProperties);
     }
     autorun(() => {
-      this.resetBrowser(toJS(HAXStore.gizmoList));
+      this.resetList(toJS(HAXStore.gizmoList));
     });
   }
-
   /**
    * Reset this browser.
    */
-  resetBrowser(list) {
+  resetList(list) {
+    super.resetList(list);
     this.items = [
       ...list.filter((gizmo, i) => {
         // remove inline and hidden references
@@ -151,9 +151,6 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
         return true;
       }),
     ];
-    this.where = "title";
-    this.value = "";
-    this.like = "";
   }
 }
 window.customElements.define(HaxGizmoBrowser.tag, HaxGizmoBrowser);

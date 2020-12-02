@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleAutocomplete: simple-autocomplete Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../simple-autocomplete.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+
+      Cool things <simple-autocomplete></simple-autocomplete> Some other stuff.
+    </div>
+  <script>
+    window.onload = (e) => {
+      document.querySelector("simple-autocomplete").items = [
+        {
+          pre: "#123",
+          label: "Option 1",
+          value: "Issue #123"
+        },
+        {
+          pre: "#98",
+          label: "Option 2",
+          value: "Another"
+        },
+        {
+          pre: "#111",
+          label: "Option 3",
+          value: 3
+        },
+      ];
+    };
+    window.addEventListener("value-changed",(e) => {
+      console.log(e.detail.value);
+    });
+  </script>
+  </body>
+</html>
