@@ -12,6 +12,7 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-autocomplete.js';
     </script>
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
@@ -23,11 +24,13 @@
     window.onload = (e) => {
       document.querySelector("simple-autocomplete").items = [
         {
+          icon: "cancel",
           pre: "#123",
           label: "Option 1",
           value: "Issue #123"
         },
         {
+          icon: "save",
           pre: "#98",
           label: "Option 2",
           value: "Another"

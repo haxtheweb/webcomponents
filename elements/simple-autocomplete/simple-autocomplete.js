@@ -18,7 +18,6 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
       css`
         :host {
           display: inline-flex;
-          min-width: 10px;
         }
         :host([hidden]) {
           display: none;
@@ -30,7 +29,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
           padding: 0 2px;
         }
         simple-popover {
-          max-width: 200px;
+          max-width: 300px;
           padding: 0;
           --simple-popover-padding: 0px;
         }
@@ -39,18 +38,40 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
           padding: 0;
         }
         li {
-          text-align: left;
-          padding: 4px 8px;
-          border: none;
+          padding: 0;
           list-style: none;
-          background-color: transparent;
-          border-top: 1px solid #eeeeee;
-          cursor: pointer;
+          margin: 0;
+          text-align: left;
         }
-        li:hover,
-        li:active,
-        li:focus {
+        button {
+          font-size: 16px;
+          line-height: 16px;
+          display: block;
+          padding: 4px;
+          border: none;
+          border-top: 1px solid #eeeeee;
+          width: 100%;
+          background-color: transparent;
+        }
+        ul li:first-child button {
+          border-top: none;
+        }
+        button:hover,
+        button:active,
+        button:focus {
           background-color: #eeeeee;
+          outline: 1px black solid;
+          outline-offset: -1px;
+        }
+        .no-results {
+          font-size: 16px;
+          padding: 4px;
+        }
+        simple-icon {
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
+          margin-right: 2px;
+          vertical-align: middle;
         }
       `,
     ];
@@ -77,27 +98,73 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
         for="input"
       >
         ${this.filtered.length > 0
-          ? html` <ul role="listbox">
+          ? html` <ul role="listbox" @keydown="${this.a11yKeyArrows}">
               ${this.filtered.map(
                 (item, i) => html` <li
                   role="option"
-                  @click="${this.itemSelect}"
                   value="${item.value}"
                   data-index="${i}"
                 >
-                  ${item.label}
+                  <button
+                    value="${item.value}"
+                    data-index="${i}"
+                    @click="${this.itemSelect}"
+                  >
+                    ${item.icon
+                      ? html`<simple-icon
+                          icon="${item.icon}"
+                          contrast="4"
+                        ></simple-icon>`
+                      : ``}${item.label}
+                  </button>
                 </li>`
               )}
             </ul>`
-          : "No results"}
+          : html`<div class="no-results">No results</div>`}
       </simple-popover>
     `;
+  }
+  // on up and down keys we should skip to the next or previous
+  // button that's been printed into the shadowRoot
+  a11yKeyArrows(e) {
+    switch (e.key) {
+      case "ArrowDown":
+        if (
+          this.shadowRoot.activeElement.tagName === "BUTTON" &&
+          this.shadowRoot.activeElement.parentNode.nextElementSibling
+        ) {
+          this.shadowRoot.activeElement.parentNode.nextElementSibling.children[0].focus();
+        }
+        break;
+      case "ArrowUp":
+        if (
+          this.shadowRoot.activeElement.tagName === "BUTTON" &&
+          this.shadowRoot.activeElement.parentNode.previousElementSibling
+        ) {
+          this.shadowRoot.activeElement.parentNode.previousElementSibling.children[0].focus();
+        }
+        break;
+    }
   }
 
   constructor() {
     super();
     this.value = "";
     this.opened = false;
+    // click trap to hide the context menu
+    this.addEventListener("mousedown", (e) => {
+      this._clicking = true;
+    });
+    this.addEventListener("mouseup", (e) => {
+      this._clicking = false;
+    });
+    this.addEventListener("focusout", (e) => {
+      if (!this._clicking) {
+        this.opened = false;
+      } else {
+        this._clicking = false;
+      }
+    });
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -105,14 +172,19 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
     }
     this.__input = this.shadowRoot.querySelector("#input");
     this.shadowRoot.querySelector("simple-popover").target = this.__input;
-    this.__input.addEventListener("focusout", (e) => {
-      console.log(e.path);
-    });
   }
   itemSelect(e) {
-    this.value = e.target.getAttribute("value");
+    this.value = e.target.parentNode.getAttribute("value");
     this.__input.innerText = this.value;
+    this._clicking = false;
     this.opened = false;
+    this.__input.focus();
+    var range = document.createRange();
+    var sel = window.getSelection();
+    range.setEnd(this.__input.childNodes[0], this.__input.innerText.length);
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
   }
 
   // properties available to the custom element for data binding
@@ -161,9 +233,13 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
           if (!this.items[i].title) {
             this.items[i].title = Object.keys(this.items[i])
               .map((key) => {
-                return this.items[i][key];
+                return key !== "icon" ? this.items[i][key] : false;
               })
               .join(" ");
+          }
+          if (this.items[i].icon) {
+            import("@lrnwebcomponents/simple-icon/simple-icon.js");
+            import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
           }
         }
         this._ignore = false;
