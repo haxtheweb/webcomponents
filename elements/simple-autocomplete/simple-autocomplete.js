@@ -244,18 +244,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
         }
         this._ignore = false;
       }
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
     });
-  }
-  obsKeysToString(o, k, sep) {
-    return k
-      .map((key) => o[key])
-      .filter((v) => v)
-      .join(sep);
   }
 }
 customElements.define(SimpleAutocomplete.tag, SimpleAutocomplete);
