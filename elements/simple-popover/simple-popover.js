@@ -75,7 +75,10 @@ class SimplePopover extends AbsolutePositionBehavior {
           padding: var(--simple-popover-padding, 10px);
           color: var(--simple-popover-color, #222);
           background-color: var(--simple-popover-background-color, white);
-          border: 1px solid var(--simple-popover-border-color, #bbb);
+          border: var(
+            --simple-popover-border,
+            1px solid var(--simple-popover-border-color, #bbb)
+          );
           border-radius: var(--simple-popover-border-radius, 3px);
           box-shadow: var(
             --simple-popover-box-shadow,

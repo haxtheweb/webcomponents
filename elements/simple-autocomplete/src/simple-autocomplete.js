@@ -12,7 +12,9 @@ import "@lrnwebcomponents/simple-popover/simple-popover.js";
  * @element simple-autocomplete
  */
 class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
-  //styles function
+  /**
+   * LitElement convention
+   */
   static get styles() {
     return [
       css`
@@ -29,29 +31,45 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
           padding: 0 2px;
         }
         simple-popover {
-          max-width: 300px;
+          max-width: var(--simple-autocomplete-popover-max-width, 50vw);
           padding: 0;
           --simple-popover-padding: 0px;
+          --simple-popover-border: none;
+          --simple-popover-border-color: #eeeeee;
+          --simple-popover-border-radius: 0;
         }
         ul {
           margin: 0;
           padding: 0;
+          border: var(--simple-autocomplete-ul-border, 1px solid #eeeeee);
         }
         li {
-          padding: 0;
           list-style: none;
+          padding: 0;
           margin: 0;
-          text-align: left;
+          display: block;
         }
         button {
-          font-size: 16px;
-          line-height: 16px;
+          font-size: var(--simple-autocomplete-font-size, 14px);
+          line-height: var(--simple-autocomplete-line-height, 1.5);
           display: block;
-          padding: 4px;
           border: none;
-          border-top: 1px solid #eeeeee;
+          border-bottom: var(
+            --simple-autocomplete-border-bottom,
+            1px solid #eeeeee
+          );
+          padding: 6px 12px;
+          font-weight: 500;
           width: 100%;
           background-color: transparent;
+          max-height: var(
+            --simple-autocomplete-max-height,
+            54px
+          ); /* font * line-height * 2 + padding */
+          text-overflow: ellipsis;
+          overflow: hidden;
+          text-align: left;
+          color: var(--simple-autocomplete-color, #333333);
         }
         ul li:first-child button {
           border-top: none;
@@ -59,143 +77,274 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
         button:hover,
         button:active,
         button:focus {
-          background-color: #eeeeee;
-          outline: 1px black solid;
-          outline-offset: -1px;
+          background-color: var(
+            --simple-autocomplete-button-hover-background-color,
+            #eeeeee
+          );
+          color: var(--simple-autocomplete-hover-color, #000000);
+          outline: none;
         }
         .no-results {
-          font-size: 16px;
-          padding: 4px;
+          font-size: var(--simple-autocomplete-font-size, 16px);
+          padding: 4px 8px;
         }
-        simple-icon {
-          --simple-icon-width: 16px;
-          --simple-icon-height: 16px;
+        simple-icon-lite {
+          color: var(--simple-autocomplete-color, #333333);
+          --simple-icon-width: var(--simple-autocomplete-icon-size, 16px);
+          --simple-icon-height: var(--simple-autocomplete-icon-size, 16px);
           margin-right: 2px;
           vertical-align: middle;
         }
       `,
     ];
   }
-  inputChanged(e) {
-    this.opened = true;
-    this.value = e.target.innerText;
-    this.like = e.target.innerText;
+  setValue(value) {
+    this.processInput(value);
+    this.$input.innerText = value;
   }
-  // Template return function
+  /**
+   * Logic for processing input and ensuring list is filtered
+   */
+  processInput(value) {
+    this.opened = true;
+    this.value = value;
+    this.like = this.value;
+  }
+  /**
+   * When input changes as in user types into the contenteditable area
+   * Then we need to open the autocomplete menu and start filtering
+   */
+  inputChanged(e) {
+    this.processInput(this.$input.innerText);
+  }
+  /**
+   * LitElement convention for rendering
+   */
   render() {
     return html`
       <span
+        part="input"
         id="input"
         name="input"
         @input="${this.inputChanged}"
         contenteditable
+        ?hidden="${this.hideInput}"
+        @keydown="${this.a11yInputKeys}"
       ></span>
       <simple-popover
+        part="popover"
         auto
         part="simple-popover"
-        ?hidden="${!this.opened}"
+        ?hidden="${!this.opened || this.filtered.length === 0}"
         position="bottom"
         for="input"
       >
         ${this.filtered.length > 0
-          ? html` <ul role="listbox" @keydown="${this.a11yKeyArrows}">
+          ? html` <ul
+              part="list"
+              role="listbox"
+              @keydown="${this.a11yListKeys}"
+            >
               ${this.filtered.map(
-                (item, i) => html` <li
-                  role="option"
-                  value="${item.value}"
-                  data-index="${i}"
-                >
-                  <button
-                    value="${item.value}"
-                    data-index="${i}"
-                    @click="${this.itemSelect}"
-                  >
-                    ${item.icon
-                      ? html`<simple-icon
-                          icon="${item.icon}"
-                          contrast="4"
-                        ></simple-icon>`
-                      : ``}${item.label}
-                  </button>
-                </li>`
+                (item, i) =>
+                  html`${i < this.itemLimit
+                    ? html`<li
+                        role="option"
+                        part="list-item"
+                        value="${item.value}"
+                        data-index="${i}"
+                      >
+                        <button
+                          part="button"
+                          value="${item.value}"
+                          data-index="${i}"
+                          @click="${this.itemSelect}"
+                        >
+                          ${item.icon
+                            ? html`<simple-icon-lite
+                                icon="${item.icon}"
+                              ></simple-icon-lite>`
+                            : ``}${item.label}
+                        </button>
+                      </li>`
+                    : ``}`
               )}
             </ul>`
-          : html`<div class="no-results">No results</div>`}
+          : html`<div class="no-results" part="no-result">No results</div>`}
       </simple-popover>
     `;
   }
-  // on up and down keys we should skip to the next or previous
-  // button that's been printed into the shadowRoot
-  a11yKeyArrows(e) {
+  /**
+   * Accessibility enhancements for key presses while in the list of items
+   */
+  a11yListKeys(e) {
     switch (e.key) {
       case "ArrowDown":
+        // we are on a button actively and there is a next element (li) which has a button
         if (
           this.shadowRoot.activeElement.tagName === "BUTTON" &&
-          this.shadowRoot.activeElement.parentNode.nextElementSibling
+          this.shadowRoot.activeElement.parentNode.nextElementSibling &&
+          this.shadowRoot.activeElement.parentNode.nextElementSibling.children
         ) {
           this.shadowRoot.activeElement.parentNode.nextElementSibling.children[0].focus();
         }
         break;
+      case "Escape":
+        // close the popover list of items and do focus clean up
+        this.resetFocusOnInput();
+        break;
       case "ArrowUp":
+        // we are actively on a button and there is a previous element (li) which has a button
         if (
           this.shadowRoot.activeElement.tagName === "BUTTON" &&
+          this.shadowRoot.activeElement.parentNode.previousElementSibling &&
           this.shadowRoot.activeElement.parentNode.previousElementSibling
+            .children
         ) {
           this.shadowRoot.activeElement.parentNode.previousElementSibling.children[0].focus();
         }
         break;
     }
   }
-
+  /**
+   * Accessibility enhancements when typing in order to move to the autocomplete list easily
+   */
+  a11yInputKeys(e) {
+    switch (e.key) {
+      case "ArrowDown":
+        // down means from the input field, focus on the 1st button
+        if (this.shadowRoot.querySelector("button")) {
+          this.shadowRoot.querySelector("button").focus();
+        }
+        break;
+      case "Escape":
+        // close the menu, though it'll reopen when typing more
+        this.opened = false;
+        break;
+      case "ArrowUp":
+        // up implies cycling back around so focus on the last button in the list
+        if (this.shadowRoot.querySelectorAll("button")) {
+          this.shadowRoot
+            .querySelectorAll("button")
+            [this.shadowRoot.querySelectorAll("button").length - 1].focus();
+        }
+        break;
+    }
+  }
+  /**
+   * HTMLElement life cycle
+   */
   constructor() {
     super();
+    // default limit of items to show even if there are more results
+    this.itemLimit = 6;
+    // flag to hide input; useful if something else is implementing this tag w/ own input
+    this.hideInput = false;
     this.value = "";
     this.opened = false;
-    // click trap to hide the context menu
+    // click trap to ensure we don't close the popover menu by accident of clicking on it
     this.addEventListener("mousedown", (e) => {
       this._clicking = true;
     });
+    // remove the trap
     this.addEventListener("mouseup", (e) => {
       this._clicking = false;
     });
+    // ONLY execute a focusout if we mousedown'ed outside of the scope of this element
+    // if mousedown happens inside the element then this doesn't fire
+    // if you click away on the screen or tab away from the element then this ensures
+    // the popover menu automatically closes and the value is established as the contenteditable
     this.addEventListener("focusout", (e) => {
       if (!this._clicking) {
+        this.value = this.$input.innerText;
         this.opened = false;
       } else {
         this._clicking = false;
       }
     });
   }
+  /**
+   * LitElement life cycle for shadowRoot being available
+   */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.__input = this.shadowRoot.querySelector("#input");
-    this.shadowRoot.querySelector("simple-popover").target = this.__input;
+    // store reference to input field as we use it a lot
+    this.$input = this.shadowRoot.querySelector("#input");
+    // set target for popover so it shows up on the input element
+    this.shadowRoot.querySelector("simple-popover").target = this.$input;
+    // when focusing the input area ensure we open the popover correctly
+    this.$input.addEventListener("focusin", (e) => {
+      // ensure when we optimize for a value to fill in the area that we don't accidently open the menu immediately
+      if (this.value && !this._ignoreFocusOpen) {
+        this.opened = true;
+        // this forces the filter to kick in based on what's already there
+        this.value = this.$input.innerText;
+        // "like" is the filtering value to searching against
+        this.like = this.$input.innerText;
+      }
+      this._ignoreFocusOpen = false;
+    });
   }
-  itemSelect(e) {
-    this.value = e.target.parentNode.getAttribute("value");
-    this.__input.innerText = this.value;
-    this._clicking = false;
+  /**
+   * Reset focus back on the input area while closing the popover
+   */
+  resetFocusOnInput() {
     this.opened = false;
-    this.__input.focus();
+    // trap to ensure we don't open the popover when we mean to close it
+    this._ignoreFocusOpen = true;
+    // focus the input
+    this.$input.focus();
+    // generate a fake range at the end of the input so that we can place
+    // the cursor where the user expects (end of the input area)
     var range = document.createRange();
     var sel = window.getSelection();
-    range.setEnd(this.__input.childNodes[0], this.__input.innerText.length);
+    range.setEnd(this.$input.childNodes[0], this.$input.innerText.length);
     range.collapse(true);
     sel.removeAllRanges();
     sel.addRange(range);
   }
+  /**
+   * handle item selection and reset focus
+   */
+  itemSelect(e) {
+    // get value from the button selected
+    this.value = e.target.parentNode.getAttribute("value");
+    // inject that value into the contenteditable
+    this.$input.innerText = this.value;
+    // ensure the _clicking lock is removed as we need to close popover
+    this._clicking = false;
+    // correctly focus the input area now w/ the new value set
+    this.resetFocusOnInput();
+    this.dispatchEvent(
+      new CustomEvent(`item-selected`, {
+        detail: {
+          value: this.value,
+        },
+      })
+    );
+  }
 
-  // properties available to the custom element for data binding
+  /**
+   * LitElement convention
+   */
   static get properties() {
     return {
       opened: {
         type: Boolean,
         reflect: true,
       },
+      hideInput: {
+        type: Boolean,
+        attribute: "hide-input",
+      },
       value: {
         type: String,
+      },
+      itemLimit: {
+        type: Number,
+        attribute: "item-limit",
       },
     };
   }
@@ -212,7 +361,8 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      // notify
+      // notify others that our value has changed if they want to use this
+      // as an input to feed their tag
       if (propName == "value") {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
@@ -222,9 +372,11 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
           })
         );
       }
+      // when we open, force popover to position correctly
       if (propName == "opened" && this.opened) {
         this.shadowRoot.querySelector("simple-popover").updatePosition();
       }
+      // if we have new items do advanced processing of the items
       if (propName == "items" && this.items.length > 0 && !this._ignore) {
         this._ignore = true;
         for (var i = 0; i < this.items.length; i++) {
@@ -233,12 +385,13 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
           if (!this.items[i].title) {
             this.items[i].title = Object.keys(this.items[i])
               .map((key) => {
-                return key !== "icon" ? this.items[i][key] : false;
+                return key !== "icon" ? this.items[i][key] : false; // skip icon since it is visual
               })
               .join(" ");
           }
+          // if we have an icon, inject icon loading imports
           if (this.items[i].icon) {
-            import("@lrnwebcomponents/simple-icon/simple-icon.js");
+            import("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
             import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
           }
         }
