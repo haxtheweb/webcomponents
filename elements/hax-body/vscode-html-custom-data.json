@@ -280,11 +280,6 @@
       "attributes": []
     },
     {
-      "name": "hax-blox",
-      "description": "`hax-blox`\nRegister a blox with HAX store.\n\nProperties:\n\n  * `eventName` {`string`} - ",
-      "attributes": []
-    },
-    {
       "name": "hax-stax",
       "description": "`hax-stax`\nRegister a stax with HAX store.\n\nProperties:\n\n  * `eventName` {`string`} - ",
       "attributes": []
@@ -308,16 +303,6 @@
         {
           "name": "onhax-register-properties",
           "description": "`hax-register-properties` {`CustomEvent<{ tag: any; properties: any; polymer: boolean; }>`} - "
-        }
-      ]
-    },
-    {
-      "name": "hax-blox-browser",
-      "description": "`hax-blox-browser`\n\nAttributes:\n\n  * `bloxList` {`any[]`} - The list of blox\n\nProperties:\n\n  * `bloxList` {`any[]`} - The list of blox",
-      "attributes": [
-        {
-          "name": "bloxList",
-          "description": "`bloxList` {`any[]`} - The list of blox\n\nProperty: bloxList\n\nDefault: "
         }
       ]
     },
@@ -603,11 +588,11 @@
       "attributes": [
         {
           "name": "items",
-          "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items\n\nDefault: "
+          "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items"
         },
         {
           "name": "like",
-          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like\n\nDefault: "
+          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like"
         },
         {
           "name": "where",
@@ -740,7 +725,7 @@
     },
     {
       "name": "hax-store",
-      "description": "Events:\n\n  * `hax-insert-content` {`CustomEvent<{ tag: any; properties: any; content: string; gizmo: any; }>`} - \n\n  * `hax-store-write` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: any; duration: number; classStyle: string; closeText: any; eventCallback: any; }>`} - \n\n  * `hax-store-app-store-loaded` {`CustomEvent<boolean>`} - \n\n  * `hax-store-ready` {`CustomEvent<boolean>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-store-property-updated` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\nAttributes:\n\n  * `haxTray` - Hax tray\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `activeHaxBody` - The hax-body that is currently active.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `__ready` {`boolean`} - \n\n  * `voice-responses-to` {`string`} - \n\n  * `skip-hax-confirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `bloxList` {`any[]`} - Available hax blox which are grid plate / layout elements\n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voice-debug` {`boolean`} - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGridTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `haxProperties` - haxProperties\n\nProperties:\n\n  * `haxTray` - Hax tray\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `activeHaxBody` - The hax-body that is currently active.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `__ready` {`boolean`} - \n\n  * `activeGizmo` - \n\n  * `method` {`string`} - \n\n  * `haxSelectedText` {`string`} - \n\n  * `__winEvents` - \n\n  * `voiceRespondsTo` {`string`} - \n\n  * `voiceCommands` - \n\n  * `skipHAXConfirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `activeNode` - \n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `editMode` {`boolean`} - \n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `appList` {`never[]`} - \n\n  * `gizmoList` {`never[]`} - \n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `bloxList` {`any[]`} - Available hax blox which are grid plate / layout elements\n\n  * `globalPreferences` - \n\n  * `activeApp` - \n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voiceDebug` {`boolean`} - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGridTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `haxProperties` - haxProperties\n\n  * `HAXWiring` - ",
+      "description": "Events:\n\n  * `hax-insert-content` {`CustomEvent<{ tag: any; properties: any; content: string; gizmo: any; }>`} - \n\n  * `hax-store-write` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: any; duration: number; classStyle: string; closeText: any; eventCallback: any; }>`} - \n\n  * `hax-store-app-store-loaded` {`CustomEvent<boolean>`} - \n\n  * `hax-store-ready` {`CustomEvent<boolean>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-store-property-updated` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\nAttributes:\n\n  * `haxTray` - Hax tray\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `activeHaxBody` - The hax-body that is currently active.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `__ready` {`boolean`} - \n\n  * `voice-responses-to` {`string`} - \n\n  * `skip-hax-confirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voice-debug` {`boolean`} - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGridTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `haxProperties` - haxProperties\n\nProperties:\n\n  * `haxTray` - Hax tray\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `activeHaxBody` - The hax-body that is currently active.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `__ready` {`boolean`} - \n\n  * `activeGizmo` - \n\n  * `method` {`string`} - \n\n  * `haxSelectedText` {`string`} - \n\n  * `__winEvents` - \n\n  * `voiceRespondsTo` {`string`} - \n\n  * `voiceCommands` - \n\n  * `skipHAXConfirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `activeNode` - \n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `editMode` {`boolean`} - \n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `appList` {`never[]`} - \n\n  * `gizmoList` {`never[]`} - \n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `globalPreferences` - \n\n  * `activeApp` - \n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voiceDebug` {`boolean`} - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGridTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `haxProperties` - haxProperties\n\n  * `HAXWiring` - ",
       "attributes": [
         {
           "name": "haxTray",
@@ -806,10 +791,6 @@
           "description": "`staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\nProperty: staxList\n\nDefault: "
         },
         {
-          "name": "bloxList",
-          "description": "`bloxList` {`any[]`} - Available hax blox which are grid plate / layout elements\n\nProperty: bloxList\n\nDefault: "
-        },
-        {
           "name": "connectionRewrites",
           "description": "`connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\nProperty: connectionRewrites\n\nDefault: [object Object]"
         },
@@ -871,7 +852,7 @@
     },
     {
       "name": "hax-text-context",
-      "description": "`hax-text-context`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: string; value: string; }>`} - \n\nAttributes:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `has-selected-text` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `formattingList` {`any[]`} - \n\n  * `realSelectedValue` {`string`} - \n\n  * `format-icon` {`string`} - Selected item icon\n\n  * `is-safari` {`boolean`} - Is this safari\n\nProperties:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `hasSelectedText` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `haxUIElement` {`boolean`} - \n\n  * `formattingList` {`any[]`} - \n\n  * `realSelectedValue` {`string`} - \n\n  * `formatIcon` {`string`} - Selected item icon\n\n  * `isSafari` {`boolean`} - Is this safari\n\n  * `tourName` {`string`} - ",
+      "description": "`hax-text-context`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: string; value: string; }>`} - \n\nAttributes:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `has-selected-text` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `sourceView` {`boolean`} - \n\n  * `formattingList` {`any[]`} - \n\n  * `realSelectedValue` {`string`} - \n\n  * `format-icon` {`string`} - Selected item icon\n\n  * `is-safari` {`boolean`} - Is this safari\n\nProperties:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `hasSelectedText` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `sourceView` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `formattingList` {`any[]`} - \n\n  * `realSelectedValue` {`string`} - \n\n  * `formatIcon` {`string`} - Selected item icon\n\n  * `isSafari` {`boolean`} - Is this safari\n\n  * `tourName` {`string`} - ",
       "attributes": [
         {
           "name": "_showIndent",
@@ -886,6 +867,11 @@
         {
           "name": "has-selected-text",
           "description": "`has-selected-text` {`boolean`} - calculated boolean off of if there is currently text\n\nProperty: hasSelectedText",
+          "valueSet": "v"
+        },
+        {
+          "name": "sourceView",
+          "description": "`sourceView` {`boolean`} - \n\nProperty: sourceView\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -1130,7 +1116,7 @@
     },
     {
       "name": "hax-tray",
-      "description": "`hax-tray`\n`The tray / dashboard area which allows for customization of all major settings`\n\nEvents:\n\n  * `hax-insert-content-array` {`CustomEvent<any>`} - \n\n  * `hax-insert-content` {`CustomEvent<{ tag: string; properties: { layout: any; }; content: string; }>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: any; callback: string; }>`} - \n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: any; value: any; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `hax-save` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `menuAlignName` {`string`} - \n\n  * `offset-margin` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hide-preferences-button` {`boolean`} - Showing preferences area.\n\n  * `hide-panel-ops` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `element-align` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `traySizeIcon` {`string`} - \n\n  * `__tipText` {`string`} - \n\nProperties:\n\n  * `menuAlignName` {`string`} - \n\n  * `offsetMargin` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hidePreferencesButton` {`boolean`} - Showing preferences area.\n\n  * `hidePanelOps` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `__winEvents` - \n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeTab` {`string`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `elementAlign` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `traySizeIcon` {`string`} - \n\n  * `__setup` {`boolean`} - \n\n  * `__tipText` {`string`} - \n\n  * `tourName` {`string`} - ",
+      "description": "`hax-tray`\n`The tray / dashboard area which allows for customization of all major settings`\n\nEvents:\n\n  * `hax-insert-content-array` {`CustomEvent<any>`} - \n\n  * `hax-insert-content` {`CustomEvent<any>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: any; callback: string; }>`} - \n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: any; value: any; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `hax-save` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `menuAlignName` {`string`} - \n\n  * `offset-margin` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hide-preferences-button` {`boolean`} - Showing preferences area.\n\n  * `hide-panel-ops` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `element-align` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `traySizeIcon` {`string`} - \n\n  * `__tipText` {`string`} - \n\nProperties:\n\n  * `menuAlignName` {`string`} - \n\n  * `offsetMargin` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hidePreferencesButton` {`boolean`} - Showing preferences area.\n\n  * `hidePanelOps` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `__winEvents` - \n\n  * `_initial` {`boolean`} - \n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeTab` {`string`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `elementAlign` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `traySizeIcon` {`string`} - \n\n  * `__setup` {`boolean`} - \n\n  * `__tipText` {`string`} - \n\n  * `tourName` {`string`} - ",
       "attributes": [
         {
           "name": "menuAlignName",
@@ -1225,7 +1211,7 @@
         },
         {
           "name": "onhax-insert-content",
-          "description": "`hax-insert-content` {`CustomEvent<{ tag: string; properties: { layout: any; }; content: string; }>`} - "
+          "description": "`hax-insert-content` {`CustomEvent<any>`} - "
         },
         {
           "name": "onhax-cancel",

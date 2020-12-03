@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "image-compare-slider",
-      "description": "`image-compare-slider`\nhax-wired a11y-compare-image\n\nAttributes:\n\n  * `bottom-alt` {`string`} - src for top image\n\n  * `bottom-description-id` {`string`} - aria-describedby for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `top-alt` {`string`} - src for top image\n\n  * `top-description-id` {`string`} - aria-describedby for top image\n\n  * `top-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `bottomAlt` {`string`} - src for top image\n\n  * `bottomDescriptionId` {`string`} - aria-describedby for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `topAlt` {`string`} - src for top image\n\n  * `topDescriptionId` {`string`} - aria-describedby for top image\n\n  * `topSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+      "description": "`image-compare-slider`\nhax-wired a11y-compare-image\n\nAttributes:\n\n  * `bottom-alt` {`string`} - src for top image\n\n  * `bottom-description-id` {`string`} - aria-describedby for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `top-alt` {`string`} - src for top image\n\n  * `top-description-id` {`string`} - aria-describedby for top image\n\n  * `top-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - mode for the slider: wipe\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `bottomAlt` {`string`} - src for top image\n\n  * `bottomDescriptionId` {`string`} - aria-describedby for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `topAlt` {`string`} - src for top image\n\n  * `topDescriptionId` {`string`} - aria-describedby for top image\n\n  * `topSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - mode for the slider: wipe\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "bottom-alt",
@@ -39,18 +39,31 @@
           "valueSet": "v"
         },
         {
+          "name": "position",
+          "description": "`position` {`number`} - mode for the slider: wipe\n\nProperty: position\n\nDefault: 50"
+        },
+        {
           "name": "schema-resource-id",
           "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
         },
         {
           "name": "schemaMap",
           "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "image-compare-slider",
-      "description": "`image-compare-slider`\nhax-wired a11y-compare-image\n\nAttributes:\n\n  * `bottom-alt` {`string`} - src for top image\n\n  * `bottom-description-id` {`string`} - aria-describedby for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `top-alt` {`string`} - src for top image\n\n  * `top-description-id` {`string`} - aria-describedby for top image\n\n  * `top-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `bottomAlt` {`string`} - src for top image\n\n  * `bottomDescriptionId` {`string`} - aria-describedby for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `topAlt` {`string`} - src for top image\n\n  * `topDescriptionId` {`string`} - aria-describedby for top image\n\n  * `topSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+      "description": "`image-compare-slider`\nhax-wired a11y-compare-image\n\nAttributes:\n\n  * `bottom-alt` {`string`} - src for top image\n\n  * `bottom-description-id` {`string`} - aria-describedby for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `top-alt` {`string`} - src for top image\n\n  * `top-description-id` {`string`} - aria-describedby for top image\n\n  * `top-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - mode for the slider: wipe\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `bottomAlt` {`string`} - src for top image\n\n  * `bottomDescriptionId` {`string`} - aria-describedby for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `topAlt` {`string`} - src for top image\n\n  * `topDescriptionId` {`string`} - aria-describedby for top image\n\n  * `topSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - mode for the slider: wipe\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "bottom-alt",
@@ -86,12 +99,25 @@
           "valueSet": "v"
         },
         {
+          "name": "position",
+          "description": "`position` {`number`} - mode for the slider: wipe\n\nProperty: position\n\nDefault: 50"
+        },
+        {
           "name": "schema-resource-id",
           "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
         },
         {
           "name": "schemaMap",
           "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }

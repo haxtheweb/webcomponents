@@ -3,13 +3,8 @@
   "tags": [
     {
       "name": "stop-note",
-      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`\n\nAttributes:\n\n  * `editMode` {`boolean`} - \n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`\n\nAttributes:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
-        {
-          "name": "editMode",
-          "description": "`editMode` {`boolean`} - \n\nProperty: editMode",
-          "valueSet": "v"
-        },
         {
           "name": "url",
           "description": "`url` {`string`} - url to additional resources\n\nProperty: url\n\nDefault: null"
@@ -34,13 +29,8 @@
     },
     {
       "name": "stop-note",
-      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`\n\nAttributes:\n\n  * `editMode` {`boolean`} - \n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`\n\nAttributes:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `url` {`string`} - url to additional resources\n\n  * `title` {`string`} - Title Message\n\n  * `icon` {`string`} - Icon selected\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
-        {
-          "name": "editMode",
-          "description": "`editMode` {`boolean`} - \n\nProperty: editMode",
-          "valueSet": "v"
-        },
         {
           "name": "url",
           "description": "`url` {`string`} - url to additional resources\n\nProperty: url\n\nDefault: null"

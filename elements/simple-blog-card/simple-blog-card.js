@@ -40,6 +40,7 @@ class SimpleBlogCard extends LitElement {
           height: auto !important;
           overflow: hidden;
         }
+
         img {
           max-height: 200px;
         }

@@ -2,14 +2,311 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "simple-autocomplete-text-trigger",
+      "path": "./lib/simple-autocomplete-text-trigger.js",
+      "attributes": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "triggers",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "target",
+          "attribute": "target",
+          "type": "object"
+        },
+        {
+          "name": "triggers",
+          "attribute": "triggers",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
       "name": "simple-autocomplete",
       "path": "./simple-autocomplete.js",
-      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`"
+      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`",
+      "attributes": [
+        {
+          "name": "item-limit",
+          "type": "number",
+          "default": "6"
+        },
+        {
+          "name": "hide-input",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "selection-position",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "description": "These are the items to be filtered",
+          "type": "array"
+        },
+        {
+          "name": "like",
+          "description": "Filter regular expression string",
+          "type": "string"
+        },
+        {
+          "name": "where",
+          "description": "The filter-by field of your items array of objects",
+          "type": "string"
+        },
+        {
+          "name": "case-sensitive",
+          "description": "Enable case sensitivity when filtering",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "filtered",
+          "description": "Filtered items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "itemLimit",
+          "attribute": "item-limit",
+          "type": "number",
+          "default": "6"
+        },
+        {
+          "name": "hideInput",
+          "attribute": "hide-input",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "selectionPosition",
+          "attribute": "selection-position",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "These are the items to be filtered",
+          "type": "array"
+        },
+        {
+          "name": "like",
+          "attribute": "like",
+          "description": "Filter regular expression string",
+          "type": "string"
+        },
+        {
+          "name": "where",
+          "attribute": "where",
+          "description": "The filter-by field of your items array of objects",
+          "type": "string"
+        },
+        {
+          "name": "caseSensitive",
+          "attribute": "case-sensitive",
+          "description": "Enable case sensitivity when filtering",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "filtered",
+          "attribute": "filtered",
+          "description": "Filtered items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "item-selected"
+        },
+        {
+          "name": "filter"
+        },
+        {
+          "name": "filtered-changed"
+        }
+      ]
     },
     {
       "name": "simple-autocomplete",
       "path": "./src/simple-autocomplete.js",
-      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`"
+      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`",
+      "attributes": [
+        {
+          "name": "item-limit",
+          "type": "number",
+          "default": "6"
+        },
+        {
+          "name": "hide-input",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "selection-position",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "description": "These are the items to be filtered",
+          "type": "array"
+        },
+        {
+          "name": "like",
+          "description": "Filter regular expression string",
+          "type": "string"
+        },
+        {
+          "name": "where",
+          "description": "The filter-by field of your items array of objects",
+          "type": "string"
+        },
+        {
+          "name": "case-sensitive",
+          "description": "Enable case sensitivity when filtering",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "filtered",
+          "description": "Filtered items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "itemLimit",
+          "attribute": "item-limit",
+          "type": "number",
+          "default": "6"
+        },
+        {
+          "name": "hideInput",
+          "attribute": "hide-input",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "selectionPosition",
+          "attribute": "selection-position",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "These are the items to be filtered",
+          "type": "array"
+        },
+        {
+          "name": "like",
+          "attribute": "like",
+          "description": "Filter regular expression string",
+          "type": "string"
+        },
+        {
+          "name": "where",
+          "attribute": "where",
+          "description": "The filter-by field of your items array of objects",
+          "type": "string"
+        },
+        {
+          "name": "caseSensitive",
+          "attribute": "case-sensitive",
+          "description": "Enable case sensitivity when filtering",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "filtered",
+          "attribute": "filtered",
+          "description": "Filtered items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "item-selected"
+        },
+        {
+          "name": "filter"
+        },
+        {
+          "name": "filtered-changed"
+        }
+      ]
     }
   ]
 }

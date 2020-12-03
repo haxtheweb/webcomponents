@@ -5,9 +5,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RelativeHeadingLite } from "./lib/relative-heading-lite.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 
 /**
  * `relative-heading`
@@ -46,15 +45,15 @@ class RelativeHeading extends RelativeHeadingLite {
           flex: 1 1 auto;
         }
 
-        :host > simple-icon-button:not(:defined) {
+        :host > simple-icon-button-lite:not(:defined) {
           opacity: 0;
         }
 
-        :host > simple-icon-button {
+        :host > simple-icon-button-lite {
           flex: 0 0 auto;
         }
 
-        simple-icon-button {
+        simple-icon-button-lite {
           color: var(--relative-heading-button-color, #666);
           background: var(--relative-heading-button-bg);
           border: var(--relative-heading-button-border);
@@ -65,16 +64,16 @@ class RelativeHeading extends RelativeHeadingLite {
           transition: var(--relative-heading-button-transition, all 0.5s);
         }
 
-        :host([link-align-right]) simple-icon-button,
-        :host(:not([link-align-right]):focus) simple-icon-button,
-        :host(:not([link-align-right]):focus-within) simple-icon-button,
-        :host(:not([link-align-right]):hover) simple-icon-button {
+        :host([link-align-right]) simple-icon-button-lite,
+        :host(:not([link-align-right]):focus) simple-icon-button-lite,
+        :host(:not([link-align-right]):focus-within) simple-icon-button-lite,
+        :host(:not([link-align-right]):hover) simple-icon-button-lite {
           opacity: var(--relative-heading-button-active-opacity, 1);
         }
 
-        simple-icon-button:focus-within,
-        simple-icon-button:focus,
-        simple-icon-button:hover {
+        simple-icon-button-lite:focus-within,
+        simple-icon-button-lite:focus,
+        simple-icon-button-lite:hover {
           color: var(--relative-heading-button-focus-color, #000);
           background: var(--relative-heading-button-focus-bg);
           border: var(--relative-heading-button-focus-border);
@@ -270,7 +269,7 @@ class RelativeHeading extends RelativeHeadingLite {
     return this.disableLink
       ? html``
       : html`
-          <simple-icon-button
+          <simple-icon-button-lite
             controls="relative-heading-toast"
             .aria-describedby="${this.id}"
             .icon="${this.linkIcon}"
@@ -279,7 +278,7 @@ class RelativeHeading extends RelativeHeadingLite {
             ?disabled="${this.disableLink}"
             @click="${this._handleCopyClick}"
           >
-          </simple-icon-button>
+          </simple-icon-button-lite>
         `;
   }
   _handleCopyClick() {

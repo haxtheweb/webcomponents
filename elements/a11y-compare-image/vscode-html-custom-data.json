@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "a11y-compare-image",
-      "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `active-layer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\nProperties:\n\n  * `activeLayer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - ",
+      "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `active-layer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeLayer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "active-layer",
@@ -24,17 +24,26 @@
         },
         {
           "name": "position",
-          "description": "`position` {`number`} - \n\nProperty: position\n\nDefault: 0"
+          "description": "`position` {`number`} - \n\nProperty: position\n\nDefault: 50"
         },
         {
           "name": "__markers",
           "description": "`__markers` {`any[]`} - \n\nProperty: __markers\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "a11y-compare-image",
-      "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `active-layer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\nProperties:\n\n  * `activeLayer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - ",
+      "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `active-layer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeLayer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "active-layer",
@@ -55,11 +64,20 @@
         },
         {
           "name": "position",
-          "description": "`position` {`number`} - \n\nProperty: position\n\nDefault: 0"
+          "description": "`position` {`number`} - \n\nProperty: position\n\nDefault: 50"
         },
         {
           "name": "__markers",
           "description": "`__markers` {`any[]`} - \n\nProperty: __markers\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     }

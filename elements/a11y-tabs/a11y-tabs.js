@@ -183,6 +183,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           display: flex;
           align-items: stretch;
         }
+
         :host([full-width]) #tabs li {
           width: 100%;
         }

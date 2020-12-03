@@ -3,21 +3,29 @@
   "tags": [
     {
       "name": "lorem-data",
-      "description": "Attributes:\n\n  * `schemas` - \n\nProperties:\n\n  * `data` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `schemas` - ",
+      "description": "Attributes:\n\n  * `schemas` - \n\n  * `__demo` - \n\nProperties:\n\n  * `data` - \n\n  * `schemas` - \n\n  * `__demo` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `icons` {`any[]`} - \n\n  * `text` {`string`} - \n\n  * `words` {`string[]`} - ",
       "attributes": [
         {
           "name": "schemas",
           "description": "`schemas` - \n\nProperty: schemas\n\nDefault: [object Object]"
+        },
+        {
+          "name": "__demo",
+          "description": "`__demo` - \n\nProperty: __demo"
         }
       ]
     },
     {
       "name": "lorem-data",
-      "description": "Attributes:\n\n  * `schemas` - \n\nProperties:\n\n  * `data` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `schemas` - ",
+      "description": "Attributes:\n\n  * `schemas` - \n\n  * `__demo` - \n\nProperties:\n\n  * `data` - \n\n  * `schemas` - \n\n  * `__demo` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `icons` {`any[]`} - \n\n  * `text` {`string`} - \n\n  * `words` {`string[]`} - ",
       "attributes": [
         {
           "name": "schemas",
           "description": "`schemas` - \n\nProperty: schemas\n\nDefault: [object Object]"
+        },
+        {
+          "name": "__demo",
+          "description": "`__demo` - \n\nProperty: __demo"
         }
       ]
     }
