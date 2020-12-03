@@ -37,12 +37,10 @@
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
-    "name": "btopro"
+    "name": "nikkimk"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-icon": "^2.8.0",
-    "@lrnwebcomponents/simple-tooltip": "^2.8.0",
     "lit-element": "2.4.0"
   },
   "devDependencies": {
