@@ -3,15 +3,45 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "./lib/a11y-menu-button-item.js";
 
 /**
- * `a11y-menu-button`
- * A toggle button for an property in the editable-table interface (editable-table.html).
+ * a11y-menu-button
+ * A toggle button for an property in editable-table interface (editable-table.html).
  *
+### Styling
+
+`<a11y-menu-button>` provides custom properties for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+--a11y-menu-button-vertical-padding | vertical padding for menu button | 2px
+--a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px
+--a11y-menu-button-text-align | text alignment for menu button | center
+--a11y-menu-button-bg-color | default background color | white
+--a11y-menu-button-color | default text color | black
+--a11y-menu-button-box-shadow | menu button box-shadow | unset
+--a11y-menu-button-border-radius | menu button border-radius | 0
+--a11y-menu-button-border | default border | 1px solid #ddd
+--a11y-menu-button-border-left | overrides default left-border | unset
+--a11y-menu-button-border-top | overrides default top-border | unset
+--a11y-menu-button-border-right | overrides default right-border | unset
+--a11y-menu-button-border-bottom | overrides default bottom-border | unset
+--a11y-menu-button-focus-bg-color | background color for menu button when focused | --a11y-menu-button-bg-color
+--a11y-menu-button-focus-color | text color for menu button when focused | --a11y-menu-button-color
+--a11y-menu-button-focus-border | border for menu button when focused | --a11y-menu-button-border
+--a11y-menu-button-focus-border-left | menu button left-border when focused | --a11y-menu-button-border-left
+--a11y-menu-button-focus-border-top | menu button top-border when focused | --a11y-menu-button-border-top
+--a11y-menu-button-focus-border-right | menu button right-border when focused | --a11y-menu-button-border-right
+--a11y-menu-button-focus-border-bottom | menu button bottom-border when focused | --a11y-menu-button-border-bottom
+--a11y-menu-button-focus-box-shadow | menu button box-shadow when focused | --a11y-menu-button-box-shadow
+--a11y-menu-button-list-left | left position of menu list | 0
+--a11y-menu-button-list-top | top position of menu list | unset
+--a11y-menu-button-list-bottom | bottom position of menu list | unset
+--a11y-menu-button-list-right | right position of menu list | unset
+--a11y-menu-button-list-bg-color | overrides default background color for list box | --a11y-menu-button-bg-color
+--a11y-menu-button-border | overrides default border for list box | --a11y-menu-button-list-border
+--a11y-menu-button-list-box-shadow | overrides default box shadow for list box | unset
  *
  * @demo ./demo/index.html
  * @element a11y-menu-button
@@ -25,13 +55,14 @@ class A11yMenuButton extends LitElement {
         }
         button {
           display: block;
-          padding: var(--a11y-menu-button-vertical-padding, 2px)
-            var(--a11y-menu-button-horizontal-padding, 5px);
-          text-align: center;
-          background-color: var(--a11y-menu-button-bg-color, white);
           text-decoration: inherit;
           font-family: inherit;
           font-size: inherit;
+          padding: var(--a11y-menu-button-vertical-padding, 2px)
+            var(--a11y-menu-button-horizontal-padding, 5px);
+          text-align: var(--a11y-menu-button-text-align, center);
+          background-color: var(--a11y-menu-button-bg-color, white);
+          color: var(--a11y-menu-button-color, black);
           background-color: var(--a11y-menu-button-bg-color, white);
           border-radius: var(--a11y-menu-button-border-radius, 0);
           border-left: var(--a11y-menu-button-border-left, unset);
@@ -44,7 +75,14 @@ class A11yMenuButton extends LitElement {
         }
         button:focus,
         button:hover {
-          background-color: var(--a11y-menu-button-focus-bg-color, white);
+          color: var(
+            --a11y-menu-button-focus-color,
+            var(--a11y-menu-button-color, black)
+          );
+          background-color: var(
+            --a11y-menu-button-focus-bg-color,
+            var(--a11y-menu-button-bg-color, white)
+          );
           border-left: var(
             --a11y-menu-button-focus-border-left,
             var(--a11y-menu-button-border-left, unset)
@@ -77,10 +115,10 @@ class A11yMenuButton extends LitElement {
           z-index: 2;
           list-style: none;
           position: absolute;
-          left: var(--a11y-menu-button-box-list-left, 0);
-          top: var(--a11y-menu-button-box-list-top, unset);
-          bottom: var(--a11y-menu-button-box-list-bottom, unset);
-          right: var(--a11y-menu-button-box-list-right, unset);
+          left: var(--a11y-menu-button-list-left, 0);
+          top: var(--a11y-menu-button-list-top, unset);
+          bottom: var(--a11y-menu-button-list-bottom, unset);
+          right: var(--a11y-menu-button-list-right, unset);
           background-color: var(
             --a11y-menu-button-bg-color,
             var(--a11y-menu-button-list-bg-color, white)
@@ -89,7 +127,7 @@ class A11yMenuButton extends LitElement {
             --a11y-menu-button-border,
             var(--a11y-menu-button-list-border, 1px solid #ddd)
           );
-          box-shadow: var(--a11y-menu-button-box-list-box-shadow, unset);
+          box-shadow: var(--a11y-menu-button-list-box-shadow, unset);
         }
         ul:not([expanded]) {
           display: none;
@@ -147,19 +185,22 @@ class A11yMenuButton extends LitElement {
         reflect: true,
       },
       /**
-       * Whether the button is toggled
+       * Whether button is toggled
        */
       focused: {
         attribute: "focused",
         type: Boolean,
       },
       /**
-       * Whether the button is toggled
+       * Whether button is toggled
        */
       hovered: {
         attribute: "hovered",
         type: Boolean,
       },
+      /**
+       * menu items in array form to move from prev to next
+       */
       __menuItems: {
         type: Array,
       },
@@ -168,7 +209,6 @@ class A11yMenuButton extends LitElement {
   constructor() {
     super();
     this.__menuItems = [];
-    console.log("constructor", this);
     this.addEventListener("keydown", this._handleKeydown);
     this.addEventListener("click", this._handleClick);
     this.addEventListener("focus", this._handleFocus);
@@ -181,6 +221,12 @@ class A11yMenuButton extends LitElement {
       this._handleRemoveItem
     );
   }
+  /**
+   * key code translations as object
+   *
+   * @readonly
+   * @memberof A11yMenuButton
+   */
   get keyCode() {
     return {
       TAB: 9,
@@ -197,23 +243,80 @@ class A11yMenuButton extends LitElement {
       DOWN: 40,
     };
   }
+  /**
+   * closes menu
+   *
+   * @param {boolean} force close even if other items have focus
+   * @memberof A11yMenuButton
+   */
+  close(force) {
+    if (force || (!this.focused && !this.hovered)) {
+      this.expanded = false;
+      /**
+       * Fires when menu is closed
+       * @event close
+       */
+      this.dispatchEvent(
+        new CustomEvent("close", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: event,
+        })
+      );
+    }
+  }
+  /**
+   * opens menu
+   *
+   * @memberof A11yMenuButton
+   */
+  open() {
+    this.expanded = true;
+    /**
+     * Fires when menu is opened
+     * @event close
+     */
+    this.dispatchEvent(
+      new CustomEvent("open", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: event,
+      })
+    );
+  }
+  /**
+   * gives focus to menu
+   *
+   * @memberof A11yMenuButton
+   */
   focus() {
-    console.log("focus", this);
     if (this.shadowRoot && this.shadowRoot.querySelector("#menubutton")) {
       this.shadowRoot.querySelector("#menubutton").focus();
     }
   }
+  /**
+   * focuses on a menu item
+   *
+   * @param {object} item menu item
+   * @memberof A11yMenuButton
+   */
   focusOn(item) {
-    console.log("focusOn", item, this.currentItem, this.expanded, this);
     item = item || this.firstItem();
     if (item) {
-      this.expanded = true;
+      this.open();
       this.focused = true;
       this.currentItem = item;
       item.focus();
-      console.log("focusOn", item, this.currentItem, this.expanded, this);
     }
   }
+  /**
+   * focuses on item based on character pressed
+   *
+   * @param {string} char character pressed
+   * @memberof A11yMenuButton
+   */
   focusByCharacter(char) {
     var start,
       index,
@@ -233,7 +336,7 @@ class A11yMenuButton extends LitElement {
       start = 0;
     }
 
-    // Check remaining slots in the menu
+    // Check remaining slots in menu
     index = firstChars(start, char);
 
     // If not found in remaining slots, check from beginning
@@ -246,20 +349,51 @@ class A11yMenuButton extends LitElement {
       this.__menuItems[index].focus();
     }
   }
+  /**
+   * gets first menu item
+   *
+   * @returns {object}
+   * @memberof A11yMenuButton
+   */
   firstItem() {
     return this.querySelector("a11y-menu-button-item");
   }
+  /**
+   * gets previous menu item
+   *
+   * @returns {object}
+   * @memberof A11yMenuButton
+   */
   previousItem() {
     return this.currentItem
       ? this.currentItem.previousElementSibling
       : undefined;
   }
+  /**
+   * gets next menu item
+   *
+   * @returns {object}
+   * @memberof A11yMenuButton
+   */
   nextItem() {
     return this.currentItem ? this.currentItem.nextElementSibling : undefined;
   }
+  /**
+   * gets last menu item
+   *
+   * @returns {object}
+   * @memberof A11yMenuButton
+   */
   lastItem() {
     return this.querySelector("a11y-menu-button-item:last-child");
   }
+  /**
+   * when a new menu item is added to slot,
+   * updates menu items list and adds event listeners for item
+   *
+   * @param {event} event
+   * @memberof A11yMenuButton
+   */
   _handleAddItem(event) {
     event.stopPropagation();
     this.__menuItems = this.querySelectorAll("a11y-menu-button-item");
@@ -280,6 +414,13 @@ class A11yMenuButton extends LitElement {
       );
     }
   }
+  /**
+   * when a new menu item is removed from slot,
+   * updates menu items list and removes event listeners for item
+   *
+   * @param {event} event
+   * @memberof A11yMenuButton
+   */
   _handleRemoveItem(event) {
     event.stopPropagation();
     this.__menuItems = this.querySelectorAll("a11y-menu-button-item");
@@ -303,13 +444,33 @@ class A11yMenuButton extends LitElement {
       );
     }
   }
+  /**
+   * when menu item is clicked,
+   * focus on menu button and close menu
+   *
+   * @param {event} event
+   * @memberof A11yMenuButton
+   */
   _handleItemClick(event) {
-    console.log("_handleItemClick", event);
     this.focus();
     this.close(true);
+    this.dispatchEvent(
+      new CustomEvent("item-click", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: event,
+      })
+    );
   }
+  /**
+   * handles menu item keydown
+   *
+   * @param {event} event
+   * @param {object} item
+   * @memberof A11yMenuButton
+   */
   _handleItemKeydown(event, item) {
-    console.log("_handleItemClick", event, item);
     var flag = false,
       char = event.key,
       isPrintableCharacter = (str) => str.length === 1 && str.match(/\S/);
@@ -382,14 +543,23 @@ class A11yMenuButton extends LitElement {
       event.preventDefault();
     }
   }
-
+  /**
+   * handles when menu item loses focus
+   *
+   * @param {event} event
+   * @memberof A11yMenuButton
+   */
   _handleItemBlur(event) {
-    console.log("_handleItemBlur", event, this);
     this.focused = false;
     setTimeout(this.close(), 300);
   }
+  /**
+   * handles menu button keydown
+   *
+   * @param {event} event
+   * @memberof A11yMenuButton
+   */
   _handleKeydown(event) {
-    console.log("_handleKeydown", event);
     var flag = false;
 
     switch (event.keyCode) {
@@ -416,56 +586,59 @@ class A11yMenuButton extends LitElement {
       event.preventDefault();
     }
   }
+  /**
+   * handles when menu is clicked
+   *
+   * @param {event} event
+   * @memberof A11yMenuButton
+   */
   _handleClick(event) {
-    console.log("_handleClick", event);
     if (this.expanded) {
-      this.expanded = false;
+      this.close(true);
     } else {
       this.focusOn(this.firstItem());
     }
   }
+  /**
+   * handles when menu has focus
+   *
+   * @param {event} event
+   * @memberof A11yMenuButton
+   */
   _handleFocus(event) {
-    //console.log('_handleFocus',event);
     this.focused = true;
   }
 
+  /**
+   * handles when menu loses focus
+   *
+   * @param {event} event
+   * @memberof A11yMenuButton
+   */
   _handleBlur(event) {
-    console.log("_handleBlur", event, this);
     this.focused = false;
   }
+  /**
+   * handles menu mouseover
+   *
+   * @param {event} event
+   * @memberof A11yMenuButton
+   */
   _handleMouseover(event) {
-    //console.log('_handleMouseover',event);
     this.hovered = true;
-    this.expanded = true;
-  }
-
-  _handleMouseout(event) {
-    //console.log('_handleMouseout',event);
-    this.hovered = false;
-    setTimeout(this.close(), 300);
-  }
-  close(force) {
-    if (force || (!this.focused && !this.hovered)) this.expanded = false;
-  }
-  open() {
-    this.expanded = true;
+    this.open();
   }
 
   /**
-   * Fires when button is clicked
-   * @event change
-   * /
-  _onClick() {
-    this.toggled = !this.toggled;
-    this.dispatchEvent(
-      new CustomEvent("change", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this,
-      })
-    );
-  }*/
+   * handles menu mouseout
+   *
+   * @param {event} event
+   * @memberof A11yMenuButton
+   */
+  _handleMouseout(event) {
+    this.hovered = false;
+    setTimeout(this.close(), 300);
+  }
 }
 window.customElements.define(A11yMenuButton.tag, A11yMenuButton);
 export { A11yMenuButton };
