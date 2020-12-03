@@ -3,11 +3,11 @@
   "tags": [
     {
       "name": "a11y-menu-button",
-      "description": "`a11y-menu-button`\nA toggle button for an property in the editable-table interface (editable-table.html).\n\nEvents:\n\n  * `change` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `active-item` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `toggled` {`boolean`} - Whether the button is toggled\n\n  * `focus` {`boolean`} - Whether the button is toggled\n\n  * `hover` {`boolean`} - Whether the button is toggled\n\nProperties:\n\n  * `activeItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `toggled` {`boolean`} - Whether the button is toggled\n\n  * `focus` {`boolean`} - Whether the button is toggled\n\n  * `hover` {`boolean`} - Whether the button is toggled\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - ",
+      "description": "a11y-menu-button\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-vertical-padding | vertical padding for menu button | 2px\n--a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px\n--a11y-menu-button-text-align | text alignment for menu button | center\n--a11y-menu-button-bg-color | default background color | white\n--a11y-menu-button-color | default text color | black\n--a11y-menu-button-box-shadow | menu button box-shadow | unset\n--a11y-menu-button-border-radius | menu button border-radius | 0\n--a11y-menu-button-border | default border | 1px solid #ddd\n--a11y-menu-button-border-left | overrides default left-border | unset\n--a11y-menu-button-border-top | overrides default top-border | unset\n--a11y-menu-button-border-right | overrides default right-border | unset\n--a11y-menu-button-border-bottom | overrides default bottom-border | unset\n--a11y-menu-button-focus-bg-color | background color for menu button when focused | --a11y-menu-button-bg-color\n--a11y-menu-button-focus-color | text color for menu button when focused | --a11y-menu-button-color\n--a11y-menu-button-focus-border | border for menu button when focused | --a11y-menu-button-border\n--a11y-menu-button-focus-border-left | menu button left-border when focused | --a11y-menu-button-border-left\n--a11y-menu-button-focus-border-top | menu button top-border when focused | --a11y-menu-button-border-top\n--a11y-menu-button-focus-border-right | menu button right-border when focused | --a11y-menu-button-border-right\n--a11y-menu-button-focus-border-bottom | menu button bottom-border when focused | --a11y-menu-button-border-bottom\n--a11y-menu-button-focus-box-shadow | menu button box-shadow when focused | --a11y-menu-button-box-shadow\n--a11y-menu-button-list-left | left position of menu list | 0\n--a11y-menu-button-list-top | top position of menu list | unset\n--a11y-menu-button-list-bottom | bottom position of menu list | unset\n--a11y-menu-button-list-right | right position of menu list | unset\n--a11y-menu-button-list-bg-color | overrides default background color for list box | --a11y-menu-button-bg-color\n--a11y-menu-button-border | overrides default border for list box | --a11y-menu-button-list-border\n--a11y-menu-button-list-box-shadow | overrides default box shadow for list box | unset\n\nEvents:\n\n  * `close` {`CustomEvent<Event>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<Event>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\nAttributes:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\nProperties:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next",
       "attributes": [
         {
-          "name": "active-item",
-          "description": "`active-item` - Whether toggle is disabled\n\nProperty: activeItem"
+          "name": "currentItem",
+          "description": "`currentItem` - Whether toggle is disabled\n\nProperty: currentItem"
         },
         {
           "name": "disabled",
@@ -15,49 +15,41 @@
           "valueSet": "v"
         },
         {
-          "name": "toggled",
-          "description": "`toggled` {`boolean`} - Whether the button is toggled\n\nProperty: toggled",
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - Whether toggle is disabled\n\nProperty: expanded",
           "valueSet": "v"
         },
         {
-          "name": "focus",
-          "description": "`focus` {`boolean`} - Whether the button is toggled\n\nProperty: focus",
+          "name": "focused",
+          "description": "`focused` {`boolean`} - Whether button is toggled\n\nProperty: focused",
           "valueSet": "v"
         },
         {
-          "name": "hover",
-          "description": "`hover` {`boolean`} - Whether the button is toggled\n\nProperty: hover",
+          "name": "hovered",
+          "description": "`hovered` {`boolean`} - Whether button is toggled\n\nProperty: hovered",
           "valueSet": "v"
         },
         {
-          "name": "onchange",
-          "description": "`change` {`CustomEvent<this>`} - "
+          "name": "__menuItems",
+          "description": "`__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\nProperty: __menuItems\n\nDefault: "
+        },
+        {
+          "name": "onclose",
+          "description": "`close` {`CustomEvent<Event>`} - Fires when menu is closed"
+        },
+        {
+          "name": "onopen",
+          "description": "`open` {`CustomEvent<Event>`} - Fires when menu is opened"
+        },
+        {
+          "name": "onitem-click",
+          "description": "`item-click` {`CustomEvent<Event>`} - "
         }
       ]
     },
     {
-      "name": "a11y-menu-item",
-      "description": "`a11y-menu-item`\nA toggle button for an property in the editable-table interface (editable-table.html).\n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled",
-          "valueSet": "v"
-        },
-        {
-          "name": "hidden",
-          "description": "`hidden` {`boolean`} - Whether toggle is disabled\n\nProperty: hidden",
-          "valueSet": "v"
-        },
-        {
-          "name": "controls",
-          "description": "`controls` {`string`} - Whether toggle is disabled\n\nProperty: controls"
-        }
-      ]
-    },
-    {
-      "name": "a11y-menu-link",
-      "description": "`a11y-menu-link`\nA toggle button for an property in the editable-table interface (editable-table.html).\n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled",
+      "name": "a11y-menu-button-item",
+      "description": "a11y-menu-button-item\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button-item>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-item-text-decoration | button or link text decoration | none\n--a11y-menu-button-item-color | button or link text color | --a11y-menu-button-color\n--a11y-menu-button-item-text-align | button or link text alignment | left\n--a11y-menu-button-item-vertical-padding | button or link vertical padding | --a11y-menu-button-vertical-padding\n--a11y-menu-button-item-horizontal-padding | button or link horizontal padding | --a11y-menu-button-horizontal-padding\n--a11y-menu-button-item-bg-color | button or link background color | --a11y-menu-button-bg-color\n--a11y-menu-button-item-border | default button or link border  | none\n--a11y-menu-button-item-border-left | overrides button or link left border  | none\n--a11y-menu-button-item-border-right | overrides button or link right border | none\n--a11y-menu-button-item-border-top | overrides button or link top border | none\n--a11y-menu-button-item-border-bottom | overrides button or link bottom border | none\n--a11y-menu-button-item-focus-text-decoration | button or link text decoration when focused | none\n--a11y-menu-button-item-focus-color | button or link text color when focused | black\n--a11y-menu-button-item-focus-bg-color | button or link background color when focused | #e0e0ff\n--a11y-menu-button-item-focus-border-left | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-right | overrides button or link left border when focused | unset)\n--a11y-menu-button-item-focus-border-top | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-bottom | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border | button or link border when focused | unset\n\nEvents:\n\n  * `add-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is added to dom\n\n  * `remove-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is removed from dom\n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled",
       "attributes": [
         {
           "name": "disabled",
@@ -72,16 +64,28 @@
         {
           "name": "href",
           "description": "`href` {`string`} - Whether toggle is disabled\n\nProperty: href"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - Whether toggle is disabled\n\nProperty: controls"
+        },
+        {
+          "name": "onadd-a11y-menu-button-item",
+          "description": "`add-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is added to dom"
+        },
+        {
+          "name": "onremove-a11y-menu-button-item",
+          "description": "`remove-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is removed from dom"
         }
       ]
     },
     {
       "name": "a11y-menu-button",
-      "description": "`a11y-menu-button`\nA toggle button for an property in the editable-table interface (editable-table.html).\n\nEvents:\n\n  * `change` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `active-item` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `toggled` {`boolean`} - Whether the button is toggled\n\n  * `focus` {`boolean`} - Whether the button is toggled\n\n  * `hover` {`boolean`} - Whether the button is toggled\n\nProperties:\n\n  * `activeItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `toggled` {`boolean`} - Whether the button is toggled\n\n  * `focus` {`boolean`} - Whether the button is toggled\n\n  * `hover` {`boolean`} - Whether the button is toggled\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - ",
+      "description": "a11y-menu-button\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-vertical-padding | vertical padding for menu button | 2px\n--a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px\n--a11y-menu-button-text-align | text alignment for menu button | center\n--a11y-menu-button-bg-color | default background color | white\n--a11y-menu-button-color | default text color | black\n--a11y-menu-button-box-shadow | menu button box-shadow | unset\n--a11y-menu-button-border-radius | menu button border-radius | 0\n--a11y-menu-button-border | default border | 1px solid #ddd\n--a11y-menu-button-border-left | overrides default left-border | unset\n--a11y-menu-button-border-top | overrides default top-border | unset\n--a11y-menu-button-border-right | overrides default right-border | unset\n--a11y-menu-button-border-bottom | overrides default bottom-border | unset\n--a11y-menu-button-focus-bg-color | background color for menu button when focused | --a11y-menu-button-bg-color\n--a11y-menu-button-focus-color | text color for menu button when focused | --a11y-menu-button-color\n--a11y-menu-button-focus-border | border for menu button when focused | --a11y-menu-button-border\n--a11y-menu-button-focus-border-left | menu button left-border when focused | --a11y-menu-button-border-left\n--a11y-menu-button-focus-border-top | menu button top-border when focused | --a11y-menu-button-border-top\n--a11y-menu-button-focus-border-right | menu button right-border when focused | --a11y-menu-button-border-right\n--a11y-menu-button-focus-border-bottom | menu button bottom-border when focused | --a11y-menu-button-border-bottom\n--a11y-menu-button-focus-box-shadow | menu button box-shadow when focused | --a11y-menu-button-box-shadow\n--a11y-menu-button-list-left | left position of menu list | 0\n--a11y-menu-button-list-top | top position of menu list | unset\n--a11y-menu-button-list-bottom | bottom position of menu list | unset\n--a11y-menu-button-list-right | right position of menu list | unset\n--a11y-menu-button-list-bg-color | overrides default background color for list box | --a11y-menu-button-bg-color\n--a11y-menu-button-border | overrides default border for list box | --a11y-menu-button-list-border\n--a11y-menu-button-list-box-shadow | overrides default box shadow for list box | unset\n\nEvents:\n\n  * `close` {`CustomEvent<Event>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<Event>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\nAttributes:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\nProperties:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next",
       "attributes": [
         {
-          "name": "active-item",
-          "description": "`active-item` - Whether toggle is disabled\n\nProperty: activeItem"
+          "name": "currentItem",
+          "description": "`currentItem` - Whether toggle is disabled\n\nProperty: currentItem"
         },
         {
           "name": "disabled",
@@ -89,23 +93,35 @@
           "valueSet": "v"
         },
         {
-          "name": "toggled",
-          "description": "`toggled` {`boolean`} - Whether the button is toggled\n\nProperty: toggled",
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - Whether toggle is disabled\n\nProperty: expanded",
           "valueSet": "v"
         },
         {
-          "name": "focus",
-          "description": "`focus` {`boolean`} - Whether the button is toggled\n\nProperty: focus",
+          "name": "focused",
+          "description": "`focused` {`boolean`} - Whether button is toggled\n\nProperty: focused",
           "valueSet": "v"
         },
         {
-          "name": "hover",
-          "description": "`hover` {`boolean`} - Whether the button is toggled\n\nProperty: hover",
+          "name": "hovered",
+          "description": "`hovered` {`boolean`} - Whether button is toggled\n\nProperty: hovered",
           "valueSet": "v"
         },
         {
-          "name": "onchange",
-          "description": "`change` {`CustomEvent<this>`} - "
+          "name": "__menuItems",
+          "description": "`__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\nProperty: __menuItems\n\nDefault: "
+        },
+        {
+          "name": "onclose",
+          "description": "`close` {`CustomEvent<Event>`} - Fires when menu is closed"
+        },
+        {
+          "name": "onopen",
+          "description": "`open` {`CustomEvent<Event>`} - Fires when menu is opened"
+        },
+        {
+          "name": "onitem-click",
+          "description": "`item-click` {`CustomEvent<Event>`} - "
         }
       ]
     }
