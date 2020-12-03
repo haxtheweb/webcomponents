@@ -1,9 +1,10 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2018 Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./lib/a11y-menu-button-item.js";
+import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 
 /**
  * a11y-menu-button
@@ -17,7 +18,8 @@ Custom property | Description | Default
 ----------------|-------------|----------
 --a11y-menu-button-vertical-padding | vertical padding for menu button | 2px
 --a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px
---a11y-menu-button-text-align | text alignment for menu button | center
+--a11y-menu-button-align-items | vertical alignment for menu button | center
+--a11y-menu-button-justify-content | justification for menu button | unset
 --a11y-menu-button-bg-color | default background color | white
 --a11y-menu-button-color | default text color | black
 --a11y-menu-button-box-shadow | menu button box-shadow | unset
@@ -51,13 +53,15 @@ class A11yMenuButton extends LitElement {
     return [
       css`
         :host {
-          position: relative;
+          padding: 0;
+          display: inline-block;
         }
         button {
           display: block;
           text-decoration: inherit;
           font-family: inherit;
           font-size: inherit;
+          margin: 0;
           padding: var(--a11y-menu-button-vertical-padding, 2px)
             var(--a11y-menu-button-horizontal-padding, 5px);
           text-align: var(--a11y-menu-button-text-align, center);
@@ -114,23 +118,15 @@ class A11yMenuButton extends LitElement {
           padding: 0;
           z-index: 2;
           list-style: none;
-          position: absolute;
-          left: var(--a11y-menu-button-list-left, 0);
-          top: var(--a11y-menu-button-list-top, unset);
-          bottom: var(--a11y-menu-button-list-bottom, unset);
-          right: var(--a11y-menu-button-list-right, unset);
           background-color: var(
             --a11y-menu-button-bg-color,
             var(--a11y-menu-button-list-bg-color, white)
           );
           border: var(
-            --a11y-menu-button-border,
-            var(--a11y-menu-button-list-border, 1px solid #ddd)
+            --a11y-menu-button-list-border,
+            var(--a11y-menu-button-border, 1px solid #ddd)
           );
           box-shadow: var(--a11y-menu-button-list-box-shadow, unset);
-        }
-        ul:not([expanded]) {
-          display: none;
         }
       `,
     ];
@@ -145,16 +141,24 @@ class A11yMenuButton extends LitElement {
       >
         <slot name="button"></slot>
       </button>
-      <ul
-        id="menu"
-        role="menu"
-        aria-labelledby="menubutton"
-        ?expanded="${this.expanded}"
-        @mousover="${(e) => (this.hover = true)}"
-        @mousout="${(e) => (this.hover = false)}"
+      <absolute-position-behavior
+        for="menubutton"
+        position="${this.position}"
+        position-align="${this.positionAlign}"
+        offset="${this.offset}"
+        auto
       >
-        <slot></slot>
-      </ul>
+        <ul
+          id="menu"
+          role="menu"
+          aria-labelledby="menubutton"
+          ?hidden="${!this.expanded}"
+          @mousover="${(e) => (this.hover = true)}"
+          @mousout="${(e) => (this.hover = false)}"
+        >
+          <slot></slot>
+        </ul>
+      </absolute-position-behavior>
     `;
   }
 
@@ -199,6 +203,29 @@ class A11yMenuButton extends LitElement {
         type: Boolean,
       },
       /**
+       * spacing between top of list and menu button
+       */
+      offset: {
+        type: Number,
+        attribute: "offset",
+      },
+      /**
+       * Positions list to top, right, bottom, left of its content.
+       */
+      position: {
+        type: String,
+        attribute: "position",
+        reflect: true,
+      },
+      /**
+       * Aligns list at start, or end fo target. Default is centered.
+       */
+      positionAlign: {
+        type: String,
+        attribute: "position-align",
+        reflect: true,
+      },
+      /**
        * menu items in array form to move from prev to next
        */
       __menuItems: {
@@ -209,6 +236,9 @@ class A11yMenuButton extends LitElement {
   constructor() {
     super();
     this.__menuItems = [];
+    this.position = "bottom";
+    this.positionAlign = "start";
+    this.offset = 0;
     this.addEventListener("keydown", this._handleKeydown);
     this.addEventListener("click", this._handleClick);
     this.addEventListener("focus", this._handleFocus);

@@ -51,6 +51,13 @@ class EditableTableDisplay extends displayBehaviors(
             #999
           );
         }
+        .th,
+        .td {
+          padding-top: var(--editable-table-cell-vertical-padding, 10px);
+          padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
+          padding-left: var(--editable-table-cell-horizontal-padding, 6px);
+          padding-right: var(--editable-table-cell-horizontal-padding, 6px);
+        }
         @media screen {
           :host([responsive][responsive-size="xs"]) caption {
             padding: 0;

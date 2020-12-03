@@ -47,11 +47,7 @@
     "@lrnwebcomponents/simple-icon": "^2.8.0",
     "@lrnwebcomponents/simple-picker": "^2.8.0",
     "@lrnwebcomponents/simple-tooltip": "^2.8.0",
-    "@polymer/neon-animation": "^3.0.0",
-    "@polymer/paper-dropdown-menu": "^3.0.1",
-    "@polymer/paper-menu-button": "^3.0.1",
-    "@polymer/paper-listbox": "^3.0.0",
-    "@polymer/paper-iten": "^3.0.0",
+    "@lrnwebcomponents/a11y-menu-button": "^2.8.0",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

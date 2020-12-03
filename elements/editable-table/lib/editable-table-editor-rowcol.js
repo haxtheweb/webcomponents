@@ -7,10 +7,7 @@ import {
   cellBehaviors,
   editableTableCellStyles,
 } from "./editable-table-behaviors.js";
-import "@polymer/paper-listbox/paper-listbox.js";
-import "@polymer/paper-menu-button/paper-menu-button.js";
-import "@polymer/paper-item/paper-item.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
@@ -34,20 +31,31 @@ class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
         :host {
           display: block;
           --paper-item-min-height: 24px;
-        }
-        #label {
           margin: 0;
           padding: 0;
+          --a11y-menu-button-border: none;
+          --a11y-menu-button-list-border: 1px solid
+            var(--editable-table-border-color, #999);
+          --a11y-menu-button-vertical-padding: var(
+            --editable-table-cell-vertical-padding,
+            10px
+          );
+          --a11y-menu-button-horizontal-padding: var(
+            --editable-table-cell-horizontal-padding,
+            6px
+          );
+          --a11y-menu-button-item-focus-bg-color: var(
+            --editable-table-heading-bg-color,
+            #e8e8e8
+          );
         }
-        paper-listbox {
-          padding: 0;
-          background-color: var(--editable-table-bg-color, #fff);
+        a11y-menu-button {
+          --a11y-menu-button-list-bg-color: var(
+            --editable-table-bg-color,
+            #fff
+          );
         }
-        paper-item {
-          margin: 0;
-          text-transform: none;
-          background-color: transparent;
-          text-align: left;
+        a11y-menu-button-item {
           font-family: var(
             --editable-table-secondary-font-family,
             "Roboto",
@@ -55,43 +63,22 @@ class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
             sans-serif
           );
           color: var(--editable-table-color, #222);
-        }
-        paper-item {
           font-size: var(--editable-table-secondary-font-size, 12px);
-        }
-        :host([condensed]) button {
-          padding-top: var(
-            --editable-table-row-vertical-padding-condensed,
-            2px
-          );
-          padding-bottom: var(
-            --editable-table-row-vertical-padding-condensed,
-            2px
-          );
         }
       `,
     ];
   }
   render() {
     return html`
-      <paper-menu-button id="menu" class="cell-button">
-        <button slot="dropdown-trigger">
+      <a11y-menu-button id="menu">
+        <span slot="button">
           <span class="sr-only">${this.type}</span>
-          <span id="label">${this.label || ""}</span>
+          <span id="label">${this.label || ""} </span>
           <span class="sr-only">Menu</span>
           <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
-        </button>
-        <paper-listbox
-          slot="dropdown-content"
-          label="${this.type} ${this.label} Menu"
-        >
-          ${this._getItem()} ${this._getItem(false, true)}
-          ${this._getItem(true)}
-        </paper-listbox>
-      </paper-menu-button>
-      <simple-tooltip for="menu"
-        >${this.type} ${this.label} Menu</simple-tooltip
-      >
+        </span>
+        ${this._getItem()} ${this._getItem(false, true)} ${this._getItem(true)}
+      </a11y-menu-button>
     `;
   }
   static get tag() {
@@ -173,8 +160,7 @@ class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
     );
   }
   _getItem(deleteItem = false, after = false) {
-    return html` <paper-item
-      role="button"
+    return html` <a11y-menu-button-item
       @click="${deleteItem
         ? this._onDelete
         : after
@@ -182,9 +168,9 @@ class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
         : this._onInsertBefore}"
     >
       ${deleteItem ? "Delete" : "Insert"}
-      ${this.type}${deleteItem ? "" : after ? "After" : "Before"}
+      ${this.type}${deleteItem ? " " : after ? " After " : " Before "}
       ${this.labelInfo}
-    </paper-item>`;
+    </a11y-menu-button-item>`;
   }
   /**
    * Handles when Delete Row/Column is clicked

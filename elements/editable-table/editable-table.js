@@ -158,10 +158,25 @@ class EditableTable extends displayBehaviors(LitElement) {
         .field-group .field-group {
           width: unset;
         }
+        th {
+          padding: 0;
+          position: relative;
+          border-width: var(--editable-table-border-width, 1px);
+          border-style: var(--editable-table-border-style, solid);
+          border-color: var(--editable-table-border-color, #999);
+        }
         td {
           margin: 0;
           padding: 0;
           position: relative;
+        }
+        rich-text-editor-toolbar,
+        a11y-menu-button {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
         }
         rich-text-editor-toolbar-mini {
           width: max-content;
@@ -251,12 +266,12 @@ class EditableTable extends displayBehaviors(LitElement) {
             </caption>
             <thead>
               <tr class="tr">
-                <th class="th th-or-td" scope="col">
+                <th scope="col">
                   <span class="sr-only">Row Operations</span>
                 </th>
                 ${(this.data[0] || []).map(
                   (cell, th) => html`
-                    <th class="th th-or-td col-${th}" scope="col">
+                    <th class="col-${th}" scope="col">
                       <editable-table-editor-rowcol
                         ?condensed="${this.condensed}"
                         index="${th}"
@@ -272,7 +287,7 @@ class EditableTable extends displayBehaviors(LitElement) {
               ${this.data.map(
                 (row, tr) => html`
                   <tr class="tr tbody-tr">
-                    <th class="th th-or-td" scope="row">
+                    <th scope="row">
                       <editable-table-editor-rowcol
                         ?condensed="${this.condensed}"
                         index="${tr}"
@@ -283,7 +298,13 @@ class EditableTable extends displayBehaviors(LitElement) {
                     </th>
                     ${(row || []).map(
                       (cell, td) => html`
-                        <td class="td th-or-td" @click="${this._onCellClick}">
+                        <td
+                          class="${(td === 0 && this.rowHeader) ||
+                          (tr == 0 && this.columnHeader)
+                            ? "th"
+                            : "td"} th-or-td"
+                          @click="${this._onCellClick}"
+                        >
                           <rich-text-editor
                             autofocus
                             @change="${this._onValueChanged}"
