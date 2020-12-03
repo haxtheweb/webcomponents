@@ -949,6 +949,9 @@ export function internalGetShadowSelection(root) {
 
   const measure = () => s.toString().length;
   const initialSelectionContent = s.toString();
+  if (s.type === "None") {
+    return null;
+  }
   if (!(s.type === "Caret" || s.type === "Range")) {
     throw new TypeError("unexpected type: " + s.type);
   }
@@ -968,9 +971,17 @@ export function internalGetShadowSelection(root) {
     s.extend(leftNode, 0);
     const at = measure();
     s.collapseToEnd();
-
-    range.setStart(leftNode, at);
-    range.setEnd(leftNode, at);
+    if (
+      leftNode.nodeType === 1 &&
+      leftNode.childNodes &&
+      leftNode.childNodes.length > 0
+    ) {
+      range.setStart(leftNode.childNodes[0], at);
+      range.setEnd(leftNode.childNodes[0], at);
+    } else {
+      range.setStart(leftNode, at);
+      range.setEnd(leftNode, at);
+    }
     return { range, mode: "caret" };
   } else if (isNaturalDirection === undefined) {
     if (s.type !== "Range") {
@@ -979,7 +990,7 @@ export function internalGetShadowSelection(root) {
     // This occurs when we can't move because we can't extend left or right to measure the
     // direction we're moving in. Good news though: we don't need to _change_ the selection
     // to measure it, so just return immediately.
-    range.setStart(leftNode, 0);
+    range.setStart(leftNode.childNodes[0], 0);
     range.setEnd(rightNode, rightNode.length);
     return { range, mode: "all" };
   }

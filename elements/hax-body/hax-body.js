@@ -3114,21 +3114,27 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.hideContextMenus();
       this.__oldActiveNode = oldValue;
     }
-    // atte,pt old value processing on element changed
+    // attempt old value processing on element changed
     // @see haxHooks activeElementChanged
-    if (HAXStore.runHook(oldValue, "activeElementChanged", [oldValue, false])) {
+    if (
+      this.editMode &&
+      HAXStore.runHook(oldValue, "activeElementChanged", [oldValue, false])
+    ) {
       this.__ignoreActive = true;
     }
     // attempt new value processing on element changed
     // @see haxHooks activeElementChanged
-    if (HAXStore.runHook(newValue, "activeElementChanged", [newValue, true])) {
+    if (
+      this.editMode &&
+      HAXStore.runHook(newValue, "activeElementChanged", [newValue, true])
+    ) {
       this.__ignoreActive = true;
     }
     // OLD VALUE TEST
     // support for custom editing interfaces defined by the element
     // this requires wrapping to modify which as the data is in it's slow it could
     // do whatever it wants but the expectation is it is ONLY working with that element
-    if (oldValue) {
+    if (this.editMode && oldValue) {
       let oldSchema = HAXStore.haxSchemaFromTag(oldValue.tagName.toLowerCase());
       // account for other things injecting a UI that needs removed on loss of focus
       if (
@@ -3181,7 +3187,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // support for custom editing interfaces defined by the element
     // this requires wrapping to modify which as the data is in it's slow it could
     // do whatever it wants but the expectation is it is ONLY working with that element
-    if (newValue) {
+    if (this.editMode && newValue) {
       let newSchema = HAXStore.haxSchemaFromTag(newValue.tagName);
       if (
         newSchema &&
@@ -3205,9 +3211,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             newValue.getAttribute("slot")
           );
         }
+        // support for a callback on insert to do any additional work it wants
+        // this is useful for setting default properties for example
+        if (newSchema.editingElement.callback) {
+          newSchema.editingElement.callback(this.__activeEditingElement);
+        }
         this.__ignoreActive = true;
         wrap(newValue, this.__activeEditingElement);
-        // @see haxHooks activeElementChanged
+        // @see haxHooks activeElementChanged, this is run on the editing element too
         HAXStore.runHook(this.__activeEditingElement, "activeElementChanged", [
           newValue,
           true,

@@ -741,7 +741,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   _refreshAddData(e) {
     this.shadowRoot
       .querySelector("#gizmobrowser")
-      .resetBrowser(HAXStore.gizmoList);
+      .resetList(HAXStore.gizmoList);
     this.shadowRoot.querySelector("#staxbrowser").staxList = [
       ...HAXStore.staxList,
     ];

@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { getRange } from "@lrnwebcomponents/utils/utils.js";
+import "../simple-autocomplete.js";
 
 export class SimpleAutocompleteTextTrigger extends LitElement {
   /**
@@ -11,13 +12,10 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
    */
   constructor() {
     super();
+    this.haxUIElement = true;
     this.target = null;
     this.triggers = {};
     this.value = "";
-    // progressive enhancement by wrapping field
-    if (this.children && this.children.length === 1) {
-      this.target = this.children[0];
-    }
   }
   /**
    * LitElement life cycle
@@ -62,14 +60,6 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      // notify others that our value has changed if they want to use this
-      // as an input to feed their tag
-      if (propName == "triggers" && Object.keys(this.triggers) > 0) {
-      }
-      // target of what to bind changes between
-      if (propName == "target" && this.target) {
-        this.connectTargetEvents(this.target);
-      }
       // if our value changes then mirror that into the target elsewhere
       if (propName == "value" && this.value != "" && this.target) {
         // clear what's there and insert matching value
@@ -106,16 +96,16 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
   /**
    * Manage events on the target which is external to this element
    */
-  connectTargetEvents(target, enable = true) {
+  connectTargetEvents(enable = true) {
     if (enable) {
-      target.addEventListener("keydown", this.targetKeyDownMonitor.bind(this));
-      target.addEventListener("keyup", this.targetKeyMonitor.bind(this));
+      window.addEventListener("keydown", this.targetKeyDownMonitor.bind(this));
+      window.addEventListener("keyup", this.targetKeyMonitor.bind(this));
     } else {
-      target.removeEventListener(
+      window.removeEventListener(
         "keydown",
         this.targetKeyDownMonitor.bind(this)
       );
-      target.removeEventListener("keyup", this.targetKeyMonitor.bind(this));
+      window.removeEventListener("keyup", this.targetKeyMonitor.bind(this));
     }
   }
   /**
@@ -237,11 +227,17 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
       super.firstUpdated(changedProperties);
     }
     this.$autocomplete = this.shadowRoot.querySelector("simple-autocomplete");
+    // progressive enhancement by wrapping field, test again if not already set
+    if (!this.target && this.children && this.children.length === 1) {
+      this.target = this.children[0];
+    }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.connectTargetEvents();
   }
   disconnectedCallback() {
-    if (this.target) {
-      this.connectTargetEvents(this.target, false);
-    }
+    this.connectTargetEvents(false);
     super.disconnectedCallback();
   }
 }

@@ -1880,7 +1880,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.setHaxProperties(ahref, "a");
     let p = {
       type: "element",
-      editingElement: "core",
+      editingElement: {
+        tag: "simple-autocomplete-text-trigger",
+        import:
+          "@lrnwebcomponents/simple-autocomplete/lib/simple-autocomplete-text-trigger.js",
+        callback: this.setupAutocomplete.bind(this),
+      },
       canScale: false,
       canPosition: false,
       canEditSource: true,
@@ -2137,6 +2142,26 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
 
+  /**
+   * set up the autocomplete contextual settings
+   */
+  setupAutocomplete(editor) {
+    editor.triggers = {
+      "!": (el) => {
+        let triggers = [];
+        this.gizmoList.forEach((item) => {
+          triggers.push({
+            groups:
+              item.groups && item.groups.length ? item.groups.join(" ") : "",
+            icon: item.icon,
+            label: item.title,
+            value: item.tag,
+          });
+        });
+        return triggers;
+      },
+    };
+  }
   /**
    * Insert content in the body.
    */

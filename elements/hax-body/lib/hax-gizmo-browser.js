@@ -138,19 +138,21 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
    */
   resetList(list) {
     super.resetList(list);
-    this.items = [
-      ...list.filter((gizmo, i) => {
-        // remove inline and hidden references
-        if (
-          gizmo &&
-          gizmo.meta &&
-          (gizmo.meta.inlineOnly || gizmo.meta.hidden)
-        ) {
-          return false;
-        }
-        return true;
-      }),
-    ];
+    if (list) {
+      this.items = [
+        ...list.filter((gizmo, i) => {
+          // remove inline and hidden references
+          if (
+            gizmo &&
+            gizmo.meta &&
+            (gizmo.meta.inlineOnly || gizmo.meta.hidden)
+          ) {
+            return false;
+          }
+          return true;
+        }),
+      ];
+    }
   }
 }
 window.customElements.define(HaxGizmoBrowser.tag, HaxGizmoBrowser);
