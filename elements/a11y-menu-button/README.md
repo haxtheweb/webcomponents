@@ -15,7 +15,7 @@ import '@lrnwebcomponents/a11y-menu-button.js';
 <script type="module">
   import '@lrnwebcomponents/a11y-menu-button.js';
 
-  import {A11yCollapse} from '@lrnwebcomponents/a11y-menu-button';
+  import {A11yMenuButton} from '@lrnwebcomponents/a11y-menu-button';
 </script>
 ```
 

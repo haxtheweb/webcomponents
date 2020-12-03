@@ -1,610 +1,471 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "./lib/a11y-menu-button-item.js";
+
 /**
  * `a11y-menu-button`
- * an accessible expand collapse
- * 
-### Styling
-
-`<a11y-menu-button>` provides the following custom properties
-for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--a11y-menu-button-margin` | margin around a11y-menu-button | 15px 0
-`--a11y-menu-button-border` | border around a11y-menu-button | 1px solid
-`--a11y-menu-button-horizontal-padding` | horizontal padding inside a11y-menu-button | 16px
-`--a11y-menu-button-horizontal-padding-left` | left padding inside a11y-menu-button | `--a11y-menu-button-horizontal-padding`
-`--a11y-menu-button-horizontal-padding-right` | right padding inside a11y-menu-button | `--a11y-menu-button-horizontal-padding`
-`--a11y-menu-button-vertical-padding` | vertical padding inside a11y-menu-button | 16px
-`--a11y-menu-button-horizontal-padding-top` | top padding inside a11y-menu-button | `--a11y-menu-button-vertical-padding`
-`--a11y-menu-button-horizontal-padding-bottom` | bottom padding inside a11y-menu-button | --a11y-menu-button-vertical-padding
-`--a11y-menu-button-border-between` | border between a11y-menu-button heading and content | --a11y-menu-button-border
-`--a11y-menu-button-heading-font-weight` | font-weight for a11y-menu-button heading | bold
-`--a11y-menu-button-heading-color` | text color for a11y-menu-button heading | unset
-`--a11y-menu-button-heading-background-color` | background-color for a11y-menu-button heading | unset
-`--a11y-menu-button-overflow-y` | override default overflow behavior | hidden
-`--a11y-menu-button-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works
+ * A toggle button for an property in the editable-table interface (editable-table.html).
  *
- * @element a11y-menu-button
- * @demo ./demo/index.html demo
- * @demo ./demo/group.html collapse groups
+ *
+ * @demo ./demo/index.html
  * @element a11y-menu-button
  */
-class A11yCollapse extends LitElement {
+class A11yMenuButton extends LitElement {
   static get styles() {
     return [
       css`
         :host {
+          position: relative;
+        }
+        button {
           display: block;
-          margin: var(--a11y-menu-button-margin, 15px 0);
-          border: var(--a11y-menu-button-border, 1px solid);
-          border-color: var(--a11y-menu-button-border-color, inherit);
-          transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+          padding: var(--a11y-menu-button-vertical-padding, 2px)
+            var(--a11y-menu-button-horizontal-padding, 5px);
+          text-align: center;
+          background-color: var(--a11y-menu-button-bg-color, white);
+          text-decoration: inherit;
+          font-family: inherit;
+          font-size: inherit;
+          background-color: var(--a11y-menu-button-bg-color, white);
+          border-radius: var(--a11y-menu-button-border-radius, 0);
+          border-left: var(--a11y-menu-button-border-left, unset);
+          border-top: var(--a11y-menu-button-border-top, unset);
+          border-right: var(--a11y-menu-button-border-right, unset);
+          border-bottom: var(--a11y-menu-button-border-bottom, unset);
+          border: var(--a11y-menu-button-border, 1px solid #ddd);
+          box-shadow: var(--a11y-menu-button-box-shadow, unset);
+          transition: all 0.25s ease-in-out;
         }
-        :host(:not(:first-of-type)) {
+        button:focus,
+        button:hover {
+          background-color: var(--a11y-menu-button-focus-bg-color, white);
+          border-left: var(
+            --a11y-menu-button-focus-border-left,
+            var(--a11y-menu-button-border-left, unset)
+          );
           border-top: var(
-            --a11y-menu-button-border-between,
-            var(--a11y-menu-button-border, 1px solid)
+            --a11y-menu-button-focus-border-top,
+            var(--a11y-menu-button-border-top, unset)
+          );
+          border-right: var(
+            --a11y-menu-button-focus-border-right,
+            var(--a11y-menu-button-border-right, unset)
+          );
+          border-bottom: var(
+            --a11y-menu-button-focus-border-bottom,
+            var(--a11y-menu-button-border-bottom, unset)
+          );
+          border: var(
+            --a11y-menu-button-focus-border,
+            var(--a11y-menu-button-border, 1px solid #ddd)
+          );
+          box-shadow: var(
+            --a11y-menu-button-box-shadow,
+            var(--a11y-menu-button-focus-box-shadow, unset)
           );
         }
-        :host([disabled]) {
-          opacity: 0.5;
-        }
-        *[aria-controls="content"][disabled] {
-          cursor: not-allowed;
-        }
-        #heading {
-          display: flex;
-          justify-content: stretch;
-          align-items: center;
-          padding: 0
-            var(
-              --a11y-menu-button-padding-right,
-              var(--a11y-menu-button-horizontal-padding, 16px)
-            )
-            0
-            var(
-              --a11y-menu-button-padding-left,
-              var(--a11y-menu-button-horizontal-padding, 16px)
-            );
-          font-weight: var(--a11y-menu-button-heading-font-weight, bold);
-          margin: var(--a11y-menu-button-margin, unset);
-          color: var(--a11y-menu-button-heading-color, unset);
+
+        ul {
+          margin: 0;
+          padding: 0;
+          z-index: 2;
+          list-style: none;
+          position: absolute;
+          left: var(--a11y-menu-button-box-list-left, 0);
+          top: var(--a11y-menu-button-box-list-top, unset);
+          bottom: var(--a11y-menu-button-box-list-bottom, unset);
+          right: var(--a11y-menu-button-box-list-right, unset);
           background-color: var(
-            --a11y-menu-button-heading-background-color,
-            unset
+            --a11y-menu-button-bg-color,
+            var(--a11y-menu-button-list-bg-color, white)
           );
-        }
-        :host([disabled]) #heading {
-          color: var(--a11y-menu-button-disabled-heading-color, unset);
-          background-color: var(
-            --a11y-menu-button-heading-disabled-background-color,
-            unset
+          border: var(
+            --a11y-menu-button-border,
+            var(--a11y-menu-button-list-border, 1px solid #ddd)
           );
+          box-shadow: var(--a11y-menu-button-box-list-box-shadow, unset);
         }
-        #text {
-          flex-grow: 1;
-          overflow: hidden;
-        }
-        #expand {
-          transform: rotate(0deg);
-          transition: transform 0.75s ease;
-          padding: (--a11y-menu-button-icon-padding, unset);
-        }
-        #expand.rotated {
-          transform: rotate(-90deg);
-          transition: transform 0.75s ease;
-        }
-        #content {
-          padding: 0
-            var(
-              --a11y-menu-button-padding-right,
-              var(--a11y-menu-button-horizontal-padding, 16px)
-            )
-            0
-            var(
-              --a11y-menu-button-padding-left,
-              var(--a11y-menu-button-horizontal-padding, 16px)
-            );
-          border-top: 0px solid;
-          border-color: var(--a11y-menu-button-border-color, inherit);
-          max-height: 0;
-          transition: all 0.75s ease;
-          overflow-y: hidden;
-        }
-        :host #content-inner {
-          max-height: 0;
-          overflow-y: var(--a11y-menu-button-overflow-y, hidden);
-        }
-        :host([expanded]) #content {
-          padding: var(
-              --a11y-menu-button-padding-top,
-              var(--a11y-menu-button-vertical-padding, 16px)
-            )
-            var(
-              --a11y-menu-button-padding-right,
-              var(--a11y-menu-button-horizontal-padding, 16px)
-            )
-            var(
-              --a11y-menu-button-padding-bottom,
-              var(--a11y-menu-button-vertical-padding, 16px)
-            )
-            var(
-              --a11y-menu-button-padding-left,
-              var(--a11y-menu-button-horizontal-padding, 16px)
-            );
-          border-top: var(--a11y-menu-button-border, 1px solid);
-          border-color: var(--a11y-menu-button-border-color, inherit);
-          max-height: 200000000000vh;
-        }
-        :host([expanded]) #content-inner {
-          max-height: var(--a11y-menu-button-max-height, 200000000000vh);
-          transition: max-height 0.75s ease;
+        ul:not([expanded]) {
+          display: none;
         }
       `,
     ];
   }
   render() {
     return html`
-      ${this.headingButton || this.accordion
-        ? this._makeHeadingButton()
-        : this._makeIconButton()}
-      <div
-        id="content"
-        aria-hidden="${this.expanded ? "false" : "true"}"
-        aria-labelledby="heading"
-        aria-live="polite"
+      <button
+        id="menubutton"
+        aria-haspopup="true"
+        aria-controls="menu"
+        aria-expanded="${this.expanded ? "true" : "false"}"
       >
-        <div id="content-inner">
-          <slot name="content"></slot>
-          <slot></slot>
-        </div>
-      </div>
+        <slot name="button"></slot>
+      </button>
+      <ul
+        id="menu"
+        role="menu"
+        aria-labelledby="menubutton"
+        ?expanded="${this.expanded}"
+        @mousover="${(e) => (this.hover = true)}"
+        @mousout="${(e) => (this.hover = false)}"
+      >
+        <slot></slot>
+      </ul>
     `;
   }
 
   static get tag() {
     return "a11y-menu-button";
   }
-
   static get properties() {
     return {
       /**
-       * Heading is the expand button.
+       * Whether toggle is disabled
        */
-      headingButton: {
-        type: Boolean,
-        reflect: true,
-        attribute: "heading-button",
+      currentItem: {
+        type: Object,
       },
       /**
-       * disbled
+       * Whether toggle is disabled
        */
       disabled: {
-        type: Boolean,
-        reflect: true,
         attribute: "disabled",
-      },
-      /**
-       * hidden
-       */
-      hidden: {
         type: Boolean,
-        reflect: true,
-        attribute: "hidden",
       },
       /**
-       * icon when expanded
+       * Whether toggle is disabled
        */
       expanded: {
+        attribute: "expanded",
         type: Boolean,
         reflect: true,
       },
       /**
-       * icon for the button
+       * Whether the button is toggled
        */
-      icon: {
-        type: String,
-      },
-      /**
-       * icon when expanded
-       */
-      iconExpanded: {
-        type: String,
-        attribute: "icon-expanded",
-      },
-      /**
-       * label for the button
-       */
-      label: {
-        type: String,
-      },
-      /**
-       * optional label for the button when expanded
-       */
-      labelExpanded: {
-        type: String,
-        attribute: "label-expanded",
-      },
-      /**
-       * tooltip for the button
-       */
-      tooltip: {
-        type: String,
-      },
-      /**
-       * optional tooltip for the button when expanded
-       */
-      tooltipExpanded: {
-        type: String,
-        attribute: "tooltip-expanded",
-      },
-      /**
-       * @deprecated Use {@link headingButton} instead
-       */
-      accordion: {
+      focused: {
+        attribute: "focused",
         type: Boolean,
-        reflect: true,
-        attribute: "accordion",
+      },
+      /**
+       * Whether the button is toggled
+       */
+      hovered: {
+        attribute: "hovered",
+        type: Boolean,
+      },
+      __menuItems: {
+        type: Array,
       },
     };
   }
-
   constructor() {
     super();
-    this.headingButton = false;
-    this.accordion = false;
-    this.disabled = false;
-    this.hidden = false;
-    this.expanded = false;
-    this.icon = "icons:expand-more";
-    this.label = "expand / collapse";
-    this.tooltip = "toggle expand / collapse";
+    this.__menuItems = [];
+    console.log("constructor", this);
+    this.addEventListener("keydown", this._handleKeydown);
+    this.addEventListener("click", this._handleClick);
+    this.addEventListener("focus", this._handleFocus);
+    this.addEventListener("blur", this._handleBlur);
+    this.addEventListener("mouseover", this._handleMouseover);
+    this.addEventListener("mouseout", this._handleMouseout);
+    this.addEventListener("add-a11y-menu-button-item", this._handleAddItem);
+    this.addEventListener(
+      "remove-a11y-menu-button-item",
+      this._handleRemoveItem
+    );
   }
-  static get haxProperties() {
+  get keyCode() {
     return {
-      canScale: false,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Single Expand Collapse",
-        description: "A single instance of an expand collapse.",
-        icon: "view-day",
-        color: "grey",
-        groups: ["Content", "Presentation", "Collapse"],
-      },
-      settings: {
-        configure: [
-          {
-            slot: "heading",
-            title: "Heading",
-            description: "The heading for the collapse.",
-            inputMethod: "textfield",
-          },
-          {
-            slot: "content",
-            title: "Content",
-            description: "The content for the collapse.",
-            inputMethod: "code-editor",
-          },
-          {
-            property: "headingButton",
-            title: "Heading Button",
-            description:
-              "Make entire heading clickble instead of just the icon.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "expanded",
-            title: "Expanded",
-            description: "Expand by default",
-            inputMethod: "boolean",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            inputMethod: "boolean",
-          },
-          {
-            property: "icon",
-            title: "Icon",
-            description: "The icon for the toggle expand/collapse button.",
-            inputMethod: "iconpicker",
-            options: [],
-          },
-          {
-            property: "iconExpanded",
-            title: "Icon (when expanded)",
-            description:
-              "Optional: The icon for the toggle expand/collapse button when expanded",
-            inputMethod: "iconpicker",
-            options: [],
-          },
-          {
-            property: "label",
-            title: "Label",
-            description: "The label of the toggle expand/collapse button",
-            inputMethod: "textfield",
-          },
-          {
-            property: "labelExpanded",
-            title: "Label (when expanded)",
-            description:
-              "The label of the toggle expand/collapse button when expanded.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "tooltip",
-            title: "Tooltip",
-            description: "The tooltip for the toggle expand/collapse button",
-            inputMethod: "textfield",
-          },
-          {
-            property: "tooltipExpanded",
-            title: "Tooltip (when expanded)",
-            description:
-              "The tooltip for the toggle expand/collapse button when expanded",
-            inputMethod: "textfield",
-          },
-        ],
-        advanced: [
-          {
-            property: "hidden",
-            title: "Hidden",
-            inputMethod: "boolean",
-          },
-        ],
-      },
+      TAB: 9,
+      RETURN: 13,
+      ESC: 27,
+      SPACE: 32,
+      PAGEUP: 33,
+      PAGEDOWN: 34,
+      END: 35,
+      HOME: 36,
+      LEFT: 37,
+      UP: 38,
+      RIGHT: 39,
+      DOWN: 40,
     };
   }
-  connectedCallback() {
-    super.connectedCallback();
-    setTimeout(() => {
-      /**
-       * Fires when constructed, so that parent radio group can listen for it.
-       *
-       * @event a11y-menu-button-attached
-       */
-      this.dispatchEvent(
-        new CustomEvent("a11y-menu-button-attached", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
+  focus() {
+    console.log("focus", this);
+    if (this.shadowRoot && this.shadowRoot.querySelector("#menubutton")) {
+      this.shadowRoot.querySelector("#menubutton").focus();
+    }
+  }
+  focusOn(item) {
+    console.log("focusOn", item, this.currentItem, this.expanded, this);
+    item = item || this.firstItem();
+    if (item) {
+      this.expanded = true;
+      this.focused = true;
+      this.currentItem = item;
+      item.focus();
+      console.log("focusOn", item, this.currentItem, this.expanded, this);
+    }
+  }
+  focusByCharacter(char) {
+    var start,
+      index,
+      char = char.toLowerCase(),
+      firstChars = (startIndex, char) => {
+        for (var i = startIndex; i < this.firstChars.length; i++) {
+          if (char === this.firstChars[i]) {
+            return i;
+          }
+        }
+        return -1;
+      };
+
+    // Get start index for search based on position of currentItem
+    start = this.__menuItems.indexOf(this.currentItem) + 1;
+    if (start === this.__menuItems.length) {
+      start = 0;
+    }
+
+    // Check remaining slots in the menu
+    index = firstChars(start, char);
+
+    // If not found in remaining slots, check from beginning
+    if (index === -1) {
+      index = firstChars(0, char);
+    }
+
+    // If match was found...
+    if (index > -1) {
+      this.__menuItems[index].focus();
+    }
+  }
+  firstItem() {
+    return this.querySelector("a11y-menu-button-item");
+  }
+  previousItem() {
+    return this.currentItem
+      ? this.currentItem.previousElementSibling
+      : undefined;
+  }
+  nextItem() {
+    return this.currentItem ? this.currentItem.nextElementSibling : undefined;
+  }
+  lastItem() {
+    return this.querySelector("a11y-menu-button-item:last-child");
+  }
+  _handleAddItem(event) {
+    event.stopPropagation();
+    this.__menuItems = this.querySelectorAll("a11y-menu-button-item");
+    if (event.detail) {
+      event.detail.addEventListener("keydown", (e) =>
+        this._handleItemKeydown(e, event.detail)
       );
-    }, 0);
-  }
-
-  /**
-   * Let the group know that this is gone.
-   */
-  disconnectedCallback() {
-    /**
-     * Fires when detatched, so that parent radio group will no longer listen for it.
-     *
-     * @event a11y-menu-button-detached
-     */
-    this.dispatchEvent(
-      new CustomEvent("a11y-menu-button-detached", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this,
-      })
-    );
-    super.disconnectedCallback();
-  }
-  /**
-   * Collapses the content
-   */
-  collapse() {
-    this.toggle(false);
-  }
-
-  /**
-   * Expands the content
-   */
-  expand() {
-    this.toggle(true);
-  }
-
-  /**
-   * Toggles based on mode
-   * @param {boolean} open whether to toggle open
-   */
-  toggle(open = !this.expanded) {
-    this.expanded = open;
-  }
-
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "expanded") this._fireToggleEvents();
-    });
-  }
-
-  /**
-   * Fires toggling events
-   */
-  _fireToggleEvents() {
-    /**
-     * Fires when toggled.
-     *
-     * @event toggle
-     */
-    this.dispatchEvent(
-      new CustomEvent("toggle", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this,
-      })
-    );
-    /**
-     * Fires when toggled. @deprecated Use `toggle` instead
-     *
-     * @event a11y-menu-button-toggle
-     */
-    this.dispatchEvent(
-      new CustomEvent("a11y-menu-button-toggle", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this,
-      })
-    );
-    if (this.expanded) {
-      /**
-       * Fires when expanded.
-       *
-       * @event expand
-       */
-      this.dispatchEvent(
-        new CustomEvent("expand", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
+      event.detail.addEventListener("click", this._handleItemClick.bind(this));
+      event.detail.addEventListener("focus", this._handleFocus.bind(this));
+      event.detail.addEventListener("blur", this._handleBlur.bind(this));
+      event.detail.addEventListener(
+        "mouseover",
+        this._handleMouseover.bind(this)
       );
+      event.detail.addEventListener(
+        "mouseout",
+        this._handleMouseout.bind(this)
+      );
+    }
+  }
+  _handleRemoveItem(event) {
+    event.stopPropagation();
+    this.__menuItems = this.querySelectorAll("a11y-menu-button-item");
+    if (event.detail) {
+      event.detail.removeEventListener("keydown", (e) =>
+        this._handleItemKeydown(e, event.detail)
+      );
+      event.detail.removeEventListener(
+        "click",
+        this._handleItemClick.bind(this)
+      );
+      event.detail.removeEventListener("focus", this._handleFocus.bind(this));
+      event.detail.removeEventListener("blur", this._handleItemBlur.bind(this));
+      event.detail.removeEventListener(
+        "mouseover",
+        this._handleMouseover.bind(this)
+      );
+      event.detail.removeEventListener(
+        "mouseout",
+        this._handleMouseout.bind(this)
+      );
+    }
+  }
+  _handleItemClick(event) {
+    console.log("_handleItemClick", event);
+    this.focus();
+    this.close(true);
+  }
+  _handleItemKeydown(event, item) {
+    console.log("_handleItemClick", event, item);
+    var flag = false,
+      char = event.key,
+      isPrintableCharacter = (str) => str.length === 1 && str.match(/\S/);
+
+    if (
+      event.ctrlKey ||
+      event.altKey ||
+      event.metaKey ||
+      event.keyCode === this.keyCode.SPACE ||
+      event.keyCode === this.keyCode.RETURN
+    ) {
+      return;
+    }
+
+    if (event.shiftKey) {
+      if (isPrintableCharacter(char)) {
+        this.menu.setFocusByFirstCharacter(this, char);
+        flag = true;
+      }
+
+      if (event.keyCode === this.keyCode.TAB) {
+        this.focus();
+        this.close(true);
+      }
     } else {
-      /**
-       * Fires when collapsed.
-       *
-       * @event collapse
-       */
-      this.dispatchEvent(
-        new CustomEvent("collapse", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
+      switch (event.keyCode) {
+        case this.keyCode.ESC:
+          this.focus();
+          this.close(true);
+          flag = true;
+          break;
+
+        case this.keyCode.UP:
+          this.focusOn(this.previousItem() || this.lastItem());
+          flag = true;
+          break;
+
+        case this.keyCode.DOWN:
+          this.focusOn(this.nextItem() || this.firstItem());
+          flag = true;
+          break;
+
+        case this.keyCode.HOME:
+        case this.keyCode.PAGEUP:
+          this.currentItem = this.firstItem();
+          flag = true;
+          break;
+
+        case this.keyCode.END:
+        case this.keyCode.PAGEDOWN:
+          this.currentItem = this.lastItem();
+          flag = true;
+          break;
+
+        case this.keyCode.TAB:
+          this.focus();
+          this.close(true);
+          break;
+
+        default:
+          if (isPrintableCharacter(char)) {
+            this.menu.setFocusByFirstCharacter(this, char);
+          }
+          break;
+      }
+    }
+
+    if (flag) {
+      event.stopPropagation();
+      event.preventDefault();
     }
   }
-  /**
-   * determines the property based on expanded state
-   * @param {string} defaultProp default property
-   * @param {string} expandedProp property when expanded
-   * @param {boolean} expanded whether a11y-menu-button is expanded
-   * @returns {string} property based on expanded state
-   */
-  _getExpanded(defaultProp, expandedProp, expanded) {
-    return expanded && expandedProp ? expandedProp : defaultProp;
+
+  _handleItemBlur(event) {
+    console.log("_handleItemBlur", event, this);
+    this.focused = false;
+    setTimeout(this.close(), 300);
   }
-  /**
-   * renders collapse item where only entire heading is clickable button
-   * @returns {object} html template for a heading as a clickable button
-   */
-  _makeHeadingButton() {
-    return html`
-      <div
-        id="heading"
-        aria-controls="content"
-        aria-expanded="${this.expanded ? "true" : "false"}"
-        role="button"
-        @click="${this._onClick}"
-        ?disabled="${this.disabled}"
-        .label="${this._getExpanded(
-          this.label,
-          this.labelExpanded,
-          this.expanded
-        )}"
-      >
-        <div id="text"><slot name="heading"></slot></div>
-        <simple-icon-lite
-          id="expand"
-          class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
-          .icon="${this._getExpanded(
-            this.icon || "icons:expand-more",
-            this.iconExpanded,
-            this.expanded
-          )}"
-          aria-hidden="true"
-        >
-        </simple-icon-lite>
-      </div>
-      <simple-tooltip for="heading"
-        >${this._getExpanded(
-          this.tooltip,
-          this.tooltipExpanded,
-          this.expanded
-        )}</simple-tooltip
-      >
-    `;
+  _handleKeydown(event) {
+    console.log("_handleKeydown", event);
+    var flag = false;
+
+    switch (event.keyCode) {
+      case this.keyCode.SPACE:
+      case this.keyCode.RETURN:
+      case this.keyCode.DOWN:
+        this.focusOn(this.firstItem());
+        flag = true;
+        break;
+
+      case this.keyCode.UP:
+        if (this.popupMenu) {
+          this.focusOn(this.lastItem());
+          flag = true;
+        }
+        break;
+
+      default:
+        break;
+    }
+
+    if (flag) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
   }
-  /**
-   * renders collapse item where only icon is a clickable button
-   * @returns {object} html template for a heading with an icon button
-   */
-  _makeIconButton() {
-    return html`
-      <div id="heading">
-        <div id="text"><slot name="heading"></slot></div>
-        <simple-icon-button-lite
-          id="expand"
-          class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
-          @click="${this._onClick}"
-          ?disabled="${this.disabled}"
-          .label="${this._getExpanded(
-            this.label,
-            this.labelExpanded,
-            this.expanded
-          )}"
-          .icon="${this._getExpanded(
-            this.icon || "icons:expand-more",
-            this.iconExpanded,
-            this.expanded
-          )}"
-          aria-controls="content"
-          aria-expanded="${this.expanded ? "true" : "false"}"
-        >
-        </simple-icon-button-lite>
-        <simple-tooltip for="expand"
-          >${this._getExpanded(
-            this.tooltip,
-            this.tooltipExpanded,
-            this.expanded
-          )}</simple-tooltip
-        >
-      </div>
-    `;
+  _handleClick(event) {
+    console.log("_handleClick", event);
+    if (this.expanded) {
+      this.expanded = false;
+    } else {
+      this.focusOn(this.firstItem());
+    }
+  }
+  _handleFocus(event) {
+    //console.log('_handleFocus',event);
+    this.focused = true;
+  }
+
+  _handleBlur(event) {
+    console.log("_handleBlur", event, this);
+    this.focused = false;
+  }
+  _handleMouseover(event) {
+    //console.log('_handleMouseover',event);
+    this.hovered = true;
+    this.expanded = true;
+  }
+
+  _handleMouseout(event) {
+    //console.log('_handleMouseout',event);
+    this.hovered = false;
+    setTimeout(this.close(), 300);
+  }
+  close(force) {
+    if (force || (!this.focused && !this.hovered)) this.expanded = false;
+  }
+  open() {
+    this.expanded = true;
   }
 
   /**
-   * Handle click
-   */
+   * Fires when button is clicked
+   * @event change
+   * /
   _onClick() {
-    if (!this.disabled) {
-      this.toggle();
-      /**
-       * Fires when clicked.
-       *
-       * @event a11y-menu-button-click
-       */
-      this.dispatchEvent(
-        new CustomEvent("a11y-menu-button-click", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
-    }
-  }
-  /**
-   *  @deprecated Use  {@link _makeHeadingButton} instead
-   *
-   * @memberof A11yCollapse
-   */
-  _makeAccordionButton() {
-    this._makeHeadingButton();
-  }
+    this.toggled = !this.toggled;
+    this.dispatchEvent(
+      new CustomEvent("change", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
+  }*/
 }
-window.customElements.define(A11yCollapse.tag, A11yCollapse);
-export { A11yCollapse };
+window.customElements.define(A11yMenuButton.tag, A11yMenuButton);
+export { A11yMenuButton };

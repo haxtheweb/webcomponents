@@ -1,6 +1,6 @@
 import { html } from "lit-element/lit-element.js";
-import { A11yCollapseGroup } from "@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-group.js";
-import { A11yCollapse } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
+import { A11yMenuButtonGroup } from "@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-group.js";
+import { A11yMenuButton } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import {
   withKnobs,
   withWebComponentsKnobs,
@@ -18,13 +18,13 @@ export default {
   },
 };
 const utils = new StorybookUtilities();
-export const A11yCollapseGroupStory = () => {
+export const A11yMenuButtonGroupStory = () => {
   let props = utils.getElementProperties(
-    A11yCollapseGroup.properties,
-    A11yCollapseGroup.haxProperties
+    A11yMenuButtonGroup.properties,
+    A11yMenuButtonGroup.haxProperties
   );
   return utils.makeElementFromClass(
-    A11yCollapseGroup,
+    A11yMenuButtonGroup,
     {
       id: "group",
       emptyslot: [1, 2, 3]
@@ -46,9 +46,9 @@ export const A11yCollapseGroupStory = () => {
     ]
   );
 };
-export const A11yCollapseStory = () => {
+export const A11yMenuButtonStory = () => {
   return utils.makeElementFromClass(
-    A11yCollapse,
+    A11yMenuButton,
     {
       heading: `<p>${utils.randomPhrase(1, 5)}</p>`,
       content: utils.randomParagraph(2, 7),

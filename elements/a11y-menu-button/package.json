@@ -1,34 +1,34 @@
 {
-  "name": "@lrnwebcomponents/a11y-collapse",
+  "name": "@lrnwebcomponents/a11y-menu-button",
   "wcfactory": {
-    "className": "A11yCollapse",
+    "className": "A11yMenuButton",
     "customElementClass": "LitElement",
-    "elementName": "a11y-collapse",
+    "elementName": "a11y-menu-button",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/a11y-collapse.css",
-      "scss": "src/a11y-collapse.scss",
-      "html": "src/a11y-collapse.html",
-      "js": "src/a11y-collapse.js",
-      "properties": "src/a11y-collapse-properties.json",
-      "hax": "src/a11y-collapse-hax.json"
+      "css": "src/a11y-menu-button.css",
+      "scss": "src/a11y-menu-button.scss",
+      "html": "src/a11y-menu-button.html",
+      "js": "src/a11y-menu-button.js",
+      "properties": "src/a11y-menu-button-properties.json",
+      "hax": "src/a11y-menu-button-hax.json"
     },
     "sharedStyles": []
   },
   "version": "2.8.0",
-  "description": "Start of a11y-collapse",
+  "description": "Start of a11y-menu-button",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "type": "module",
-  "main": "a11y-collapse.js",
-  "module": "a11y-collapse.js",
-  "umd": "a11y-collapse.umd.js",
+  "main": "a11y-menu-button.js",
+  "module": "a11y-menu-button.js",
+  "umd": "a11y-menu-button.umd.js",
   "scripts": {
-    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-collapse/test/",
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-menu-button/test/",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",

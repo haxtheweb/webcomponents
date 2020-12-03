@@ -2,8 +2,8 @@
   "version": "experimental",
   "tags": [
     {
-      "name": "a11y-collapse",
-      "description": "`a11y-collapse`",
+      "name": "a11y-menu-button",
+      "description": "`a11y-menu-button`",
       "attributes": [
         {
           "name": "accordion",
@@ -121,7 +121,7 @@
       ],
       "events": [
         {
-          "name": "a11y-collapse-detached",
+          "name": "a11y-menu-button-detached",
           "description": "Fires when detatched, so that parent radio group will no longer listen for it."
         },
         {
@@ -129,7 +129,7 @@
           "description": "Fires when toggled."
         },
         {
-          "name": "a11y-collapse-toggle",
+          "name": "a11y-menu-button-toggle",
           "description": "Deprecated. Fires when toggled."
         },
         {
@@ -141,14 +141,14 @@
           "description": "Fires when collapsed."
         },
         {
-          "name": "a11y-collapse-click",
+          "name": "a11y-menu-button-click",
           "description": "Fires when clicked."
         }
       ]
     },
     {
-      "name": "a11y-collapse",
-      "description": "`a11y-collapse`",
+      "name": "a11y-menu-button",
+      "description": "`a11y-menu-button`",
       "attributes": [
         {
           "name": "accordion",
@@ -266,7 +266,7 @@
       ],
       "events": [
         {
-          "name": "a11y-collapse-detached",
+          "name": "a11y-menu-button-detached",
           "description": "Fires when detatched, so that parent radio group will no longer listen for it."
         },
         {
@@ -274,7 +274,7 @@
           "description": "Fires when toggled."
         },
         {
-          "name": "a11y-collapse-toggle",
+          "name": "a11y-menu-button-toggle",
           "description": "Deprecated. Fires when toggled."
         },
         {
@@ -286,24 +286,24 @@
           "description": "Fires when collapsed."
         },
         {
-          "name": "a11y-collapse-click",
+          "name": "a11y-menu-button-click",
           "description": "Fires when clicked."
         }
       ]
     },
     {
-      "name": "a11y-collapse-group",
-      "description": "`a11y-collapse-group`",
+      "name": "a11y-menu-button-group",
+      "description": "`a11y-menu-button-group`",
       "attributes": [
         {
           "name": "global-options",
-          "description": "an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
+          "description": "an array of globalProperties to override every a11y-menu-button item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
           "type": "object",
           "default": "{}"
         },
         {
           "name": "radio",
-          "description": "is every a11y-collapse item radio button?",
+          "description": "is every a11y-menu-button item radio button?",
           "type": "boolean",
           "default": "false"
         },
@@ -348,14 +348,14 @@
         {
           "name": "globalOptions",
           "attribute": "global-options",
-          "description": "an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
+          "description": "an array of globalProperties to override every a11y-menu-button item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
           "type": "object",
           "default": "{}"
         },
         {
           "name": "radio",
           "attribute": "radio",
-          "description": "is every a11y-collapse item radio button?",
+          "description": "is every a11y-menu-button item radio button?",
           "type": "boolean",
           "default": "false"
         },
@@ -407,7 +407,7 @@
       ],
       "events": [
         {
-          "name": "a11y-collapse-detached",
+          "name": "a11y-menu-button-detached",
           "description": "Fires when detatched, so that parent radio group will no longer listen for it."
         },
         {
@@ -415,7 +415,7 @@
           "description": "Fires when toggled."
         },
         {
-          "name": "a11y-collapse-toggle",
+          "name": "a11y-menu-button-toggle",
           "description": "Deprecated. Fires when toggled."
         },
         {
@@ -427,7 +427,7 @@
           "description": "Fires when collapsed."
         },
         {
-          "name": "a11y-collapse-click",
+          "name": "a11y-menu-button-click",
           "description": "Fires when clicked."
         }
       ]
@@ -436,16 +436,16 @@
       "name": "tag",
       "events": [
         {
-          "name": "a11y-collapse-attached"
+          "name": "a11y-menu-button-attached"
         },
         {
-          "name": "a11y-collapse-detached"
+          "name": "a11y-menu-button-detached"
         },
         {
           "name": "toggle"
         },
         {
-          "name": "a11y-collapse-toggle"
+          "name": "a11y-menu-button-toggle"
         },
         {
           "name": "expand"
@@ -454,13 +454,13 @@
           "name": "collapse"
         },
         {
-          "name": "a11y-collapse-click"
+          "name": "a11y-menu-button-click"
         }
       ]
     },
     {
-      "name": "a11y-collapse",
-      "description": "`a11y-collapse`",
+      "name": "a11y-menu-button",
+      "description": "`a11y-menu-button`",
       "attributes": [
         {
           "name": "accordion",
@@ -578,7 +578,7 @@
       ],
       "events": [
         {
-          "name": "a11y-collapse-detached",
+          "name": "a11y-menu-button-detached",
           "description": "Fires when detatched, so that parent radio group will no longer listen for it."
         },
         {
@@ -586,7 +586,7 @@
           "description": "Fires when toggled."
         },
         {
-          "name": "a11y-collapse-toggle",
+          "name": "a11y-menu-button-toggle",
           "description": "Deprecated. Fires when toggled."
         },
         {
@@ -598,7 +598,7 @@
           "description": "Fires when collapsed."
         },
         {
-          "name": "a11y-collapse-click",
+          "name": "a11y-menu-button-click",
           "description": "Fires when clicked."
         }
       ]
