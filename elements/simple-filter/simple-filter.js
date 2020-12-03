@@ -122,6 +122,9 @@ export const SimpleFilterMixin = function (SuperClass) {
      * @return array} Filter results.
      */
     _computeFiltered(items, where, like, caseSensitive) {
+      if (like[0] === "\\" || like === "\\") {
+        like = "\\" + like;
+      }
       var regex = null;
       if (caseSensitive) {
         regex = new RegExp(like);

@@ -27,6 +27,11 @@
       <simple-autocomplete-text-trigger>
         <textarea value="Cool"></textarea>
       </simple-autocomplete-text-trigger>
+
+      <h2>Implementation inside of a contenteditable div</h2>
+      <simple-autocomplete-text-trigger>
+        <div contenteditable>Cool</div>
+      </simple-autocomplete-text-trigger>
     </div>
   <script>
     window.onload = (e) => {
@@ -50,8 +55,30 @@
           value: 3
         },
       ];
-      const trigger = document.querySelector("simple-autocomplete-text-trigger");
-      trigger.triggers = {
+      const trigger = document.querySelectorAll("simple-autocomplete-text-trigger");
+      for (var i in trigger) {
+        trigger[i].triggers = {
+        "#": (el) => {
+          return [
+            {
+              icon: "cancel",
+              pre: "#cccccc",
+              label: "[sdadada-autocomplete]so what is possible for in text menus and what not",
+              value: "Issue #123"
+            },
+            {
+              icon: "save",
+              pre: "#98",
+              label: "Option 2",
+              value: "Another"
+            },
+            {
+              pre: "edit-mode",
+              label: "Option 3",
+              value: 3
+            },
+          ];
+        },
         "?": (el) => {
           return [
             {
@@ -100,6 +127,7 @@
             }
           ]
       };
+      }
       window.addEventListener("value-changed", (e) => {
         console.log(e.detail.value);
       });

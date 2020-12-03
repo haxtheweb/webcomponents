@@ -4,7 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFilterMixin } from "@lrnwebcomponents/simple-filter/simple-filter.js";
+import { getRange } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
+
 /**
  * `simple-autocomplete`
  * `auto complete either from an endpoint or local json array`
@@ -100,7 +102,9 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
   }
   setValue(value) {
     this.processInput(value);
-    this.$input.innerText = value;
+    if (!this.hideInput) {
+      this.$input.innerText = value;
+    }
   }
   /**
    * Logic for processing input and ensuring list is filtered
@@ -122,15 +126,16 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
    */
   render() {
     return html`
-      <span
-        part="input"
-        id="input"
-        name="input"
-        @input="${this.inputChanged}"
-        contenteditable
-        ?hidden="${this.hideInput}"
-        @keydown="${this.a11yInputKeys}"
-      ></span>
+      ${!this.hideInput
+        ? html`<span
+            part="input"
+            id="input"
+            name="input"
+            @input="${this.inputChanged}"
+            contenteditable
+            @keydown="${this.a11yInputKeys}"
+          ></span>`
+        : ``}
       <simple-popover
         part="popover"
         auto
@@ -139,7 +144,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
         position="bottom"
         for="input"
       >
-        ${this.filtered.length > 0
+        ${this.filtered.length > 0 && this.opened
           ? html` <ul
               part="list"
               role="listbox"
@@ -178,57 +183,78 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
    * Accessibility enhancements for key presses while in the list of items
    */
   a11yListKeys(e) {
-    switch (e.key) {
-      case "ArrowDown":
-        // we are on a button actively and there is a next element (li) which has a button
-        if (
-          this.shadowRoot.activeElement.tagName === "BUTTON" &&
-          this.shadowRoot.activeElement.parentNode.nextElementSibling &&
-          this.shadowRoot.activeElement.parentNode.nextElementSibling.children
-        ) {
-          this.shadowRoot.activeElement.parentNode.nextElementSibling.children[0].focus();
-        }
-        break;
-      case "Escape":
-        // close the popover list of items and do focus clean up
-        this.resetFocusOnInput();
-        break;
-      case "ArrowUp":
-        // we are actively on a button and there is a previous element (li) which has a button
-        if (
-          this.shadowRoot.activeElement.tagName === "BUTTON" &&
-          this.shadowRoot.activeElement.parentNode.previousElementSibling &&
-          this.shadowRoot.activeElement.parentNode.previousElementSibling
-            .children
-        ) {
-          this.shadowRoot.activeElement.parentNode.previousElementSibling.children[0].focus();
-        }
-        break;
+    if (this.filtered.length > 0 && this.opened) {
+      switch (e.key) {
+        case "ArrowDown":
+          // we are on a button actively and there is a next element (li) which has a button
+          if (
+            this.shadowRoot.activeElement.tagName === "BUTTON" &&
+            this.shadowRoot.activeElement.parentNode.nextElementSibling &&
+            this.shadowRoot.activeElement.parentNode.nextElementSibling.children
+          ) {
+            this.hardStopEvent(e);
+            this.shadowRoot.activeElement.parentNode.nextElementSibling.children[0].focus();
+          }
+
+          break;
+        case "Escape":
+          this.hardStopEvent(e);
+          // close the popover list of items and do focus clean up
+          this.resetFocusOnInput();
+          break;
+        case "ArrowUp":
+          // we are actively on a button and there is a previous element (li) which has a button
+          if (
+            this.shadowRoot.activeElement.tagName === "BUTTON" &&
+            this.shadowRoot.activeElement.parentNode.previousElementSibling &&
+            this.shadowRoot.activeElement.parentNode.previousElementSibling
+              .children
+          ) {
+            this.hardStopEvent(e);
+            this.shadowRoot.activeElement.parentNode.previousElementSibling.children[0].focus();
+          }
+          break;
+      }
+    }
+  }
+  hardStopEvent(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    if (e.detail.keyboardEvent) {
+      e.detail.keyboardEvent.preventDefault();
+      e.detail.keyboardEvent.stopPropagation();
+      e.detail.keyboardEvent.stopImmediatePropagation();
     }
   }
   /**
    * Accessibility enhancements when typing in order to move to the autocomplete list easily
    */
   a11yInputKeys(e) {
-    switch (e.key) {
-      case "ArrowDown":
-        // down means from the input field, focus on the 1st button
-        if (this.shadowRoot.querySelector("button")) {
-          this.shadowRoot.querySelector("button").focus();
-        }
-        break;
-      case "Escape":
-        // close the menu, though it'll reopen when typing more
-        this.opened = false;
-        break;
-      case "ArrowUp":
-        // up implies cycling back around so focus on the last button in the list
-        if (this.shadowRoot.querySelectorAll("button")) {
-          this.shadowRoot
-            .querySelectorAll("button")
-            [this.shadowRoot.querySelectorAll("button").length - 1].focus();
-        }
-        break;
+    if (this.filtered.length > 0 && this.opened) {
+      switch (e.key) {
+        case "ArrowDown":
+          // down means from the input field, focus on the 1st button
+          if (this.shadowRoot.querySelector("button")) {
+            this.hardStopEvent(e);
+            this.shadowRoot.querySelector("button").focus();
+          }
+          break;
+        case "Escape":
+          this.hardStopEvent(e);
+          // close the menu, though it'll reopen when typing more
+          this.opened = false;
+          break;
+        case "ArrowUp":
+          // up implies cycling back around so focus on the last button in the list
+          if (this.shadowRoot.querySelectorAll("button").length) {
+            this.hardStopEvent(e);
+            this.shadowRoot
+              .querySelectorAll("button")
+              [this.shadowRoot.querySelectorAll("button").length - 1].focus();
+          }
+          break;
+      }
     }
   }
   /**
@@ -240,6 +266,7 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
     this.itemLimit = 6;
     // flag to hide input; useful if something else is implementing this tag w/ own input
     this.hideInput = false;
+    this.selectionPosition = false;
     this.value = "";
     this.opened = false;
     // click trap to ensure we don't close the popover menu by accident of clicking on it
@@ -256,7 +283,9 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
     // the popover menu automatically closes and the value is established as the contenteditable
     this.addEventListener("focusout", (e) => {
       if (!this._clicking) {
-        this.value = this.$input.innerText;
+        if (!this.hideInput) {
+          this.value = this.$input.innerText;
+        }
         this.opened = false;
       } else {
         this._clicking = false;
@@ -271,21 +300,59 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
       super.firstUpdated(changedProperties);
     }
     // store reference to input field as we use it a lot
-    this.$input = this.shadowRoot.querySelector("#input");
-    // set target for popover so it shows up on the input element
-    this.shadowRoot.querySelector("simple-popover").target = this.$input;
-    // when focusing the input area ensure we open the popover correctly
-    this.$input.addEventListener("focusin", (e) => {
-      // ensure when we optimize for a value to fill in the area that we don't accidently open the menu immediately
-      if (this.value && !this._ignoreFocusOpen) {
-        this.opened = true;
-        // this forces the filter to kick in based on what's already there
-        this.value = this.$input.innerText;
-        // "like" is the filtering value to searching against
-        this.like = this.$input.innerText;
+    if (!this.selectionPosition && this.shadowRoot.querySelector("#input")) {
+      this.$input = this.shadowRoot.querySelector("#input");
+      // set target for popover so it shows up on the input element
+      this.shadowRoot.querySelector("simple-popover").target = this.$input;
+      // when focusing the input area ensure we open the popover correctly
+      this.$input.addEventListener("focusin", (e) => {
+        // ensure when we optimize for a value to fill in the area that we don't accidently open the menu immediately
+        if (this.value && !this._ignoreFocusOpen) {
+          this.opened = true;
+          if (!this.hideInput) {
+            // this forces the filter to kick in based on what's already there
+            this.value = this.$input.innerText;
+            // "like" is the filtering value to searching against
+            this.like = this.$input.innerText;
+          }
+        }
+        this._ignoreFocusOpen = false;
+      });
+    }
+  }
+  /**
+   * Selection normalizer
+   */
+  getSelection() {
+    // try and obtain the selection from the nearest shadow
+    // which would give us the selection object when running native ShadowDOM
+    // with fallback support for the entire window which would imply Shady
+    if (this.$input) {
+      // native API
+      if (this.$input.getSelection) {
+        return this.$input.getSelection();
       }
-      this._ignoreFocusOpen = false;
-    });
+      // ponyfill from google, check that we don't already have a range
+      else if (
+        typeof this.$input.endOffset === "undefined" &&
+        getRange(this.$input)
+      ) {
+        return getRange(this.$input);
+      }
+    }
+    // missed on both, hope the normal one will work
+    return window.getSelection();
+  }
+  /**
+   * Get a normalized range based on current selection
+   */
+  getRange() {
+    let sel = this.getSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      return sel.getRangeAt(0);
+    } else if (sel) {
+      return sel;
+    } else false;
   }
   /**
    * Reset focus back on the input area while closing the popover
@@ -294,16 +361,20 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
     this.opened = false;
     // trap to ensure we don't open the popover when we mean to close it
     this._ignoreFocusOpen = true;
-    // focus the input
-    this.$input.focus();
-    // generate a fake range at the end of the input so that we can place
-    // the cursor where the user expects (end of the input area)
-    var range = document.createRange();
-    var sel = window.getSelection();
-    range.setEnd(this.$input.childNodes[0], this.$input.innerText.length);
-    range.collapse(true);
-    sel.removeAllRanges();
-    sel.addRange(range);
+    // focus the input, can't on a range though
+    if (typeof this.$input.endOffset === "undefined") {
+      this.$input.focus();
+      if (this.$input.getAttribute("contenteditable") != null) {
+        // generate a fake range at the end of the input so that we can place
+        // the cursor where the user expects (end of the input area)
+        var range = document.createRange();
+        var sel = this.getSelection();
+        range.setEnd(this.$input.childNodes[0], this.$input.innerText.length);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    }
   }
   /**
    * handle item selection and reset focus
@@ -312,11 +383,9 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
     // get value from the button selected
     this.value = e.target.parentNode.getAttribute("value");
     // inject that value into the contenteditable
-    this.$input.innerText = this.value;
-    // ensure the _clicking lock is removed as we need to close popover
-    this._clicking = false;
-    // correctly focus the input area now w/ the new value set
-    this.resetFocusOnInput();
+    if (!this.hideInput) {
+      this.$input.innerText = this.value;
+    }
     this.dispatchEvent(
       new CustomEvent(`item-selected`, {
         detail: {
@@ -324,6 +393,10 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
         },
       })
     );
+    // ensure the _clicking lock is removed as we need to close popover
+    this._clicking = false;
+    // correctly focus the input area now w/ the new value set
+    this.resetFocusOnInput();
   }
 
   /**
@@ -338,6 +411,10 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
       hideInput: {
         type: Boolean,
         attribute: "hide-input",
+      },
+      selectionPosition: {
+        type: Boolean,
+        attribute: "selection-position",
       },
       value: {
         type: String,
@@ -375,6 +452,21 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
       // when we open, force popover to position correctly
       if (propName == "opened" && this.opened) {
         this.shadowRoot.querySelector("simple-popover").updatePosition();
+        setTimeout(() => {
+          if (this.selectionPosition && this.getRange()) {
+            this.$input = this.getRange();
+            // special support for native inputs
+            if (
+              ["TEXTAREA", "INPUT"].includes(document.activeElement.tagName)
+            ) {
+              this.$input = document.activeElement;
+            }
+            this.shadowRoot.querySelector(
+              "simple-popover"
+            ).target = this.$input;
+            this.shadowRoot.querySelector("simple-popover").updatePosition();
+          }
+        }, 0);
       }
       // if we have new items do advanced processing of the items
       if (propName == "items" && this.items.length > 0 && !this._ignore) {
