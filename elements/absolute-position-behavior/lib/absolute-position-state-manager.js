@@ -155,15 +155,16 @@ class AbsolutePositionStateManager extends LitElement {
       ancestor = el;
 
     while (
-      el.for !== undefined &&
-      target === null &&
-      ancestor !== null &&
-      ancestor.parentNode !== null &&
+      !!el.for &&
+      !target &&
+      !!ancestor &&
+      !!ancestor.parentNode &&
       ancestor !== document
     ) {
       ancestor = ancestor.parentNode;
+      target = ancestor ? ancestor.querySelector(selector) : undefined;
       if (ancestor.nodeType === 11) ancestor = ancestor.host;
-      target = ancestor ? ancestor.querySelector(selector) : null;
+      target = !target && ancestor ? ancestor.querySelector(selector) : target;
     }
     return target;
   }
