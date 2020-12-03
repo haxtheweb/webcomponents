@@ -18,8 +18,7 @@ Custom property | Description | Default
 ----------------|-------------|----------
 --a11y-menu-button-vertical-padding | vertical padding for menu button | 2px
 --a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px
---a11y-menu-button-align-items | vertical alignment for menu button | center
---a11y-menu-button-justify-content | justification for menu button | unset
+--a11y-menu-button-text-align | text alignment for menu button | center
 --a11y-menu-button-bg-color | default background color | white
 --a11y-menu-button-color | default text color | black
 --a11y-menu-button-box-shadow | menu button box-shadow | unset
@@ -37,6 +36,8 @@ Custom property | Description | Default
 --a11y-menu-button-focus-border-right | menu button right-border when focused | --a11y-menu-button-border-right
 --a11y-menu-button-focus-border-bottom | menu button bottom-border when focused | --a11y-menu-button-border-bottom
 --a11y-menu-button-focus-box-shadow | menu button box-shadow when focused | --a11y-menu-button-box-shadow
+--a11y-menu-button-list-width | width of menu list | unset
+--a11y-menu-button-list-height | height of menu list | unset
 --a11y-menu-button-list-left | left position of menu list | 0
 --a11y-menu-button-list-top | top position of menu list | unset
 --a11y-menu-button-list-bottom | bottom position of menu list | unset
@@ -55,6 +56,7 @@ class A11yMenuButton extends LitElement {
         :host {
           padding: 0;
           display: inline-block;
+          position: relative;
         }
         button {
           display: block;
@@ -62,6 +64,7 @@ class A11yMenuButton extends LitElement {
           font-family: inherit;
           font-size: inherit;
           margin: 0;
+          width: 100%;
           padding: var(--a11y-menu-button-vertical-padding, 2px)
             var(--a11y-menu-button-horizontal-padding, 5px);
           text-align: var(--a11y-menu-button-text-align, center);
@@ -112,21 +115,29 @@ class A11yMenuButton extends LitElement {
             var(--a11y-menu-button-focus-box-shadow, unset)
           );
         }
-
-        ul {
-          margin: 0;
-          padding: 0;
+        absolute-position-behavior {
+          z-index: -1;
+          overflow: hidden;
+        }
+        :host([expanded]) absolute-position-behavior {
           z-index: 2;
-          list-style: none;
-          background-color: var(
-            --a11y-menu-button-bg-color,
-            var(--a11y-menu-button-list-bg-color, white)
-          );
+          width: var(--a11y-menu-button-list-width, unset);
+          height: var(--a11y-menu-button-list-height, unset);
           border: var(
             --a11y-menu-button-list-border,
             var(--a11y-menu-button-border, 1px solid #ddd)
           );
+          background-color: var(
+            --a11y-menu-button-bg-color,
+            var(--a11y-menu-button-list-bg-color, white)
+          );
           box-shadow: var(--a11y-menu-button-list-box-shadow, unset);
+        }
+
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
         }
       `,
     ];
@@ -142,11 +153,11 @@ class A11yMenuButton extends LitElement {
         <slot name="button"></slot>
       </button>
       <absolute-position-behavior
+        ?auto="${this.expanded}"
         for="menubutton"
         position="${this.position}"
         position-align="${this.positionAlign}"
         offset="${this.offset}"
-        auto
       >
         <ul
           id="menu"
@@ -238,7 +249,7 @@ class A11yMenuButton extends LitElement {
     this.__menuItems = [];
     this.position = "bottom";
     this.positionAlign = "start";
-    this.offset = 0;
+    this.offset = "0";
     this.addEventListener("keydown", this._handleKeydown);
     this.addEventListener("click", this._handleClick);
     this.addEventListener("focus", this._handleFocus);

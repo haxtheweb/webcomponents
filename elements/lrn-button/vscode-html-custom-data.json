@@ -76,7 +76,7 @@
     },
     {
       "name": "lrn-button",
-      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `show-href` {`string`} - What to display for the resource\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `icon` {`string`} - simple-icon to use (with iconset if needed)\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered.\n\n  * `icon-class` {`string`} - Icon class in the event you want it to look different from the text.\n\n  * `inner-class` {`string`} - Inner container classes.\n\n  * `color` {`string`} - materializeCSS color class\n\n  * `text-color` {`string`} - materializeCSS color class for text\n\n  * `prefetch` {`string`} - Allow for prefetch data on hover\n\n  * `alt` {`string`} - Alt via tooltip.\n\n  * `href` {`string`} - Standard href pass down\n\n  * `label` {`string`} - Label to place in the text area\n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\nProperties:\n\n  * `showHref` {`string`} - What to display for the resource\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `icon` {`string`} - simple-icon to use (with iconset if needed)\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered.\n\n  * `iconClass` {`string`} - Icon class in the event you want it to look different from the text.\n\n  * `innerClass` {`string`} - Inner container classes.\n\n  * `color` {`string`} - materializeCSS color class\n\n  * `textColor` {`string`} - materializeCSS color class for text\n\n  * `prefetch` {`string`} - Allow for prefetch data on hover\n\n  * `alt` {`string`} - Alt via tooltip.\n\n  * `href` {`string`} - Standard href pass down\n\n  * `label` {`string`} - Label to place in the text area\n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `show-href` {`string`} - What to display for the resource\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `icon` {`string`} - simple-icon to use (with iconset if needed)\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered.\n\n  * `icon-class` {`string`} - Icon class in the event you want it to look different from the text.\n\n  * `inner-class` {`string`} - Inner container classes.\n\n  * `text-color` {`boolean`} - materializeCSS color class for text\n\n  * `prefetch` {`string`} - Allow for prefetch data on hover\n\n  * `alt` {`string`} - Alt via tooltip.\n\n  * `href` {`string`} - Standard href pass down\n\n  * `label` {`string`} - Label to place in the text area\n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\n  * `color` {`string`} - materializeCSS color class\n\n  * `accent-color` {`string`} - materializeCSS color class\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `showHref` {`string`} - What to display for the resource\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `icon` {`string`} - simple-icon to use (with iconset if needed)\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered.\n\n  * `iconClass` {`string`} - Icon class in the event you want it to look different from the text.\n\n  * `innerClass` {`string`} - Inner container classes.\n\n  * `textColor` {`boolean`} - materializeCSS color class for text\n\n  * `prefetch` {`string`} - Allow for prefetch data on hover\n\n  * `alt` {`string`} - Alt via tooltip.\n\n  * `href` {`string`} - Standard href pass down\n\n  * `label` {`string`} - Label to place in the text area\n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `color` {`string`} - materializeCSS color class\n\n  * `accentColor` {`string`} - materializeCSS color class\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "show-href",
@@ -104,12 +104,9 @@
           "description": "`inner-class` {`string`} - Inner container classes.\n\nProperty: innerClass"
         },
         {
-          "name": "color",
-          "description": "`color` {`string`} - materializeCSS color class\n\nProperty: color"
-        },
-        {
           "name": "text-color",
-          "description": "`text-color` {`string`} - materializeCSS color class for text\n\nProperty: textColor"
+          "description": "`text-color` {`boolean`} - materializeCSS color class for text\n\nProperty: textColor",
+          "valueSet": "v"
         },
         {
           "name": "prefetch",
@@ -142,6 +139,19 @@
           "valueSet": "v"
         },
         {
+          "name": "color",
+          "description": "`color` {`string`} - materializeCSS color class\n\nProperty: color\n\nDefault: grey"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - materializeCSS color class\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
           "name": "onfocus-changed",
           "description": "`focus-changed` {`CustomEvent<{ focus: boolean; }>`} - "
         }
@@ -149,8 +159,17 @@
     },
     {
       "name": "lrn-button",
-      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nProperties:\n\n  * `href` {`string`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - ",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `href` {`string`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - \n\n  * `color` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
         {
           "name": "onfocus-changed",
           "description": "`focus-changed` {`CustomEvent<{ focus: boolean; }>`} - "

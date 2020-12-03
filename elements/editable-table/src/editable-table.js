@@ -160,7 +160,6 @@ class EditableTable extends displayBehaviors(LitElement) {
         }
         th {
           padding: 0;
-          position: relative;
           border-width: var(--editable-table-border-width, 1px);
           border-style: var(--editable-table-border-style, solid);
           border-color: var(--editable-table-border-color, #999);
@@ -169,14 +168,6 @@ class EditableTable extends displayBehaviors(LitElement) {
           margin: 0;
           padding: 0;
           position: relative;
-        }
-        rich-text-editor-toolbar,
-        a11y-menu-button {
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
         }
         rich-text-editor-toolbar-mini {
           width: max-content;

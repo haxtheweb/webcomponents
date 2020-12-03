@@ -1834,7 +1834,7 @@
     },
     {
       "name": "rich-text-editor",
-      "description": "`rich-text-editor`\n\nEvents:\n\n  * `register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - \n\n  * `getrange` {`CustomEvent<this>`} - \n\n  * `pastefromclipboard` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `contenteditable` {`boolean`} - Maps to contenteditable attribute\n\n  * `update-range` {`boolean`} - whether to update range\n\n  * `__canceled-edits` - contains cancelled edits\n\n  * `__connected-toolbar` - connected toolbar\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `__selection` - selection management\n\nProperties:\n\n  * `contenteditable` {`boolean`} - Maps to contenteditable attribute\n\n  * `updateRange` {`boolean`} - whether to update range\n\n  * `__canceledEdits` - contains cancelled edits\n\n  * `__connectedToolbar` - connected toolbar\n\n  * `observer` {`MutationObserver`} - mutation observer\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `__selection` - selection management",
+      "description": "`rich-text-editor`\n\nEvents:\n\n  * `focus` {`CustomEvent<any>`} - \n\n  * `register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - \n\n  * `getrange` {`CustomEvent<this>`} - \n\n  * `pastefromclipboard` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `contenteditable` {`boolean`} - Maps to contenteditable attribute\n\n  * `update-range` {`boolean`} - whether to update range\n\n  * `__canceled-edits` - contains cancelled edits\n\n  * `__connected-toolbar` - connected toolbar\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `__selection` - selection management\n\nProperties:\n\n  * `contenteditable` {`boolean`} - Maps to contenteditable attribute\n\n  * `updateRange` {`boolean`} - whether to update range\n\n  * `__canceledEdits` - contains cancelled edits\n\n  * `__connectedToolbar` - connected toolbar\n\n  * `observer` {`MutationObserver`} - mutation observer\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `__selection` - selection management",
       "attributes": [
         {
           "name": "contenteditable",
@@ -1879,6 +1879,10 @@
           "description": "`__selection` - selection management\n\nProperty: __selection"
         },
         {
+          "name": "onfocus",
+          "description": "`focus` {`CustomEvent<any>`} - "
+        },
+        {
           "name": "onregister",
           "description": "`register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - "
         },
@@ -1894,8 +1898,12 @@
     },
     {
       "name": "rich-text-editor",
-      "description": "`rich-text-editor`\n\nEvents:\n\n  * `register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - \n\n  * `getrange` {`CustomEvent<this>`} - \n\n  * `pastefromclipboard` {`CustomEvent<this>`} - \n\nProperties:\n\n  * `observer` {`MutationObserver`} - mutation observer\n\n  * `placeholder` {`string`} - \n\n  * `toolbar` {`string`} - \n\n  * `type` {`string`} - \n\n  * `id` {`string`} - \n\n  * `range` - \n\n  * `__selection` - ",
+      "description": "`rich-text-editor`\n\nEvents:\n\n  * `focus` {`CustomEvent<any>`} - \n\n  * `register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - \n\n  * `getrange` {`CustomEvent<this>`} - \n\n  * `pastefromclipboard` {`CustomEvent<this>`} - \n\nProperties:\n\n  * `observer` {`MutationObserver`} - mutation observer\n\n  * `placeholder` {`string`} - \n\n  * `toolbar` {`string`} - \n\n  * `type` {`string`} - \n\n  * `id` {`string`} - \n\n  * `range` - \n\n  * `__selection` - ",
       "attributes": [
+        {
+          "name": "onfocus",
+          "description": "`focus` {`CustomEvent<any>`} - "
+        },
         {
           "name": "onregister",
           "description": "`register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - "

@@ -234,7 +234,7 @@ class LrndesignPaperstack extends SimpleColors {
             property: "title",
             title: "Title",
             description: "Title of the cards",
-            inputMethod: "text",
+            inputMethod: "boolean",
           },
           {
             property: "accentColor",

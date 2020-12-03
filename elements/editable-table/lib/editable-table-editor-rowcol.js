@@ -7,7 +7,7 @@ import {
   cellBehaviors,
   editableTableCellStyles,
 } from "./editable-table-behaviors.js";
-import "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
+import { A11yMenuButton } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
@@ -22,7 +22,7 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * @element editable-table-editor-rowcol
  * @appliesMixin cellBehaviors
  */
-class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
+class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
   static get styles() {
     return [
       ...(super.styles || []),
@@ -31,8 +31,6 @@ class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
         :host {
           display: block;
           --paper-item-min-height: 24px;
-          margin: 0;
-          padding: 0;
           --a11y-menu-button-border: none;
           --a11y-menu-button-list-border: 1px solid
             var(--editable-table-border-color, #999);
@@ -48,12 +46,18 @@ class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
             --editable-table-heading-bg-color,
             #e8e8e8
           );
-        }
-        a11y-menu-button {
           --a11y-menu-button-list-bg-color: var(
             --editable-table-bg-color,
             #fff
           );
+        }
+        ul,
+        absolute-position-behavior {
+          width: 100%;
+        }
+        absolute-position-behavior.row,
+        absolute-position-behavior.row ul {
+          width: 150px;
         }
         a11y-menu-button-item {
           font-family: var(
@@ -70,15 +74,37 @@ class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
   }
   render() {
     return html`
-      <a11y-menu-button id="menu">
-        <span slot="button">
-          <span class="sr-only">${this.type}</span>
-          <span id="label">${this.label || ""} </span>
-          <span class="sr-only">Menu</span>
-          <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
-        </span>
-        ${this._getItem()} ${this._getItem(false, true)} ${this._getItem(true)}
-      </a11y-menu-button>
+      <button
+        id="menubutton"
+        aria-haspopup="true"
+        aria-controls="menu"
+        aria-expanded="${this.expanded ? "true" : "false"}"
+      >
+        <span class="sr-only">${this.type}</span>
+        <span id="label">${this.label || ""} </span>
+        <span class="sr-only">Menu</span>
+        <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
+      </button>
+      <absolute-position-behavior
+        ?auto="${this.expanded}"
+        class="${this.row ? "row" : "column"}"
+        for="menubutton"
+        position="${this.row ? "right" : "bottom"}"
+        position-align="${this.row ? "start" : "center"}"
+        offset="-3"
+      >
+        <ul
+          id="menu"
+          role="menu"
+          aria-labelledby="menubutton"
+          ?hidden="${!this.expanded}"
+          @mousover="${(e) => (this.hover = true)}"
+          @mousout="${(e) => (this.hover = false)}"
+        >
+          ${this._getItem()} ${this._getItem(false, true)}
+          ${this._getItem(true)}
+        </ul>
+      </absolute-position-behavior>
     `;
   }
   static get tag() {
@@ -86,6 +112,7 @@ class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
   }
   static get properties() {
     return {
+      ...super.properties,
       /**
        * Index of the row or column
        */
@@ -116,7 +143,6 @@ class EditableTableEditorRowcol extends cellBehaviors(LitElement) {
    * @memberof EditableTableEditorRowcol
    */
   get label() {
-    console.log("get label", this.row, this.column);
     return this.row
       ? this._getLabel(this.index, true)
       : this._getLabel(this.index, false);

@@ -57,6 +57,7 @@ class LrnButton extends SimpleColors {
             var(--simple-colors-default-theme-grey-12, black)
           );
         }
+
         :host([accent-color="grey"]) button,
         :host([text-color]) button,
         :host([dark][accent-color="grey"]) button,
@@ -74,13 +75,15 @@ class LrnButton extends SimpleColors {
             var(--simple-colors-default-theme-grey-12, black)
           );
         }
+
         :host([text-color]) button,
         :host([text-color][dark]) button {
           color: var(
             --lrn-button-color,
-            var(--simple-colors-default-theme-accent-8, black)
+            var(--simple-colors-default-theme-accent-9, black)
           );
         }
+
         button:focus,
         button:hover {
           background-color: var(
@@ -98,6 +101,7 @@ class LrnButton extends SimpleColors {
             )
           );
         }
+
         :host([accent-color="grey"]) button:focus,
         :host([text-color]) button:focus,
         :host([dark][accent-color="grey"]) button:focus,

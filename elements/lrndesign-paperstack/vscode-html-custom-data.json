@@ -3,11 +3,11 @@
   "tags": [
     {
       "name": "lrndesign-paperstack",
-      "description": "`lrndesign-paperstack`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `icon` {`string`} - icon\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `icon` {`string`} - icon\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrndesign-paperstack`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `icon` {`string`} - icon\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `icon` {`string`} - icon\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: "
+          "description": "`title` {`string`} - Title\n\nProperty: title"
         },
         {
           "name": "icon",
@@ -15,26 +15,22 @@
         },
         {
           "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     },
     {
       "name": "lrndesign-paperstack",
-      "description": "`lrndesign-paperstack`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `icon` {`string`} - icon\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `icon` {`string`} - icon\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrndesign-paperstack`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `icon` {`string`} - icon\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `icon` {`string`} - icon\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: "
+          "description": "`title` {`string`} - Title\n\nProperty: title"
         },
         {
           "name": "icon",
@@ -42,16 +38,12 @@
         },
         {
           "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",
           "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     }

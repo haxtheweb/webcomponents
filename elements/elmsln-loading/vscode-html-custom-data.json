@@ -3,11 +3,15 @@
   "tags": [
     {
       "name": "elmsln-loading",
-      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.\n\nAttributes:\n\n  * `color` {`string`} - color\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `color` {`string`} - color\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.\n\nAttributes:\n\n  * `color` {`string`} - color\n\n  * `contrast` {`number`} - contrast\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - dark\n\nProperties:\n\n  * `color` {`string`} - color\n\n  * `contrast` {`number`} - contrast\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - dark\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "color",
           "description": "`color` {`string`} - color\n\nProperty: color"
+        },
+        {
+          "name": "contrast",
+          "description": "`contrast` {`number`} - contrast\n\nProperty: contrast"
         },
         {
           "name": "size",
@@ -19,18 +23,22 @@
         },
         {
           "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "description": "`dark` {`boolean`} - dark\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
         }
       ]
     },
     {
       "name": "elmsln-loading",
-      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.\n\nAttributes:\n\n  * `color` {`string`} - color\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `color` {`string`} - color\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.\n\nAttributes:\n\n  * `color` {`string`} - color\n\n  * `contrast` {`number`} - contrast\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - dark\n\nProperties:\n\n  * `color` {`string`} - color\n\n  * `contrast` {`number`} - contrast\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - dark\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "color",
           "description": "`color` {`string`} - color\n\nProperty: color"
+        },
+        {
+          "name": "contrast",
+          "description": "`contrast` {`number`} - contrast\n\nProperty: contrast"
         },
         {
           "name": "size",
@@ -42,7 +50,7 @@
         },
         {
           "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "description": "`dark` {`boolean`} - dark\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
         }
       ]
