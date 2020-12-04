@@ -471,7 +471,6 @@ export const RichTextEditorToolbarMiniStory = () => {
           command: "link",
           icon: "link",
           label: "Link",
-          prompt: "href",
           toggledCommand: "unlink",
           toggledIcon: "mdextra:unlink",
           toggledLabel: "Unink",

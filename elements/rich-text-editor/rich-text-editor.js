@@ -149,6 +149,14 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         attribute: "contenteditable",
       },
       /**
+       * don't reveal toolbar on mouseover
+       */
+      disableHover: {
+        name: "disableHover",
+        type: Boolean,
+        attribute: "disable-hover",
+      },
+      /**
        * Placeholder text for empty editable regions
        */
       placeholder: {

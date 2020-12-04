@@ -516,10 +516,6 @@ export const editableTableStyles = [
       font-weight: var(--editable-table-light-weight, 200);
       color: var(--editable-table-color, #222);
       background-color: var(--editable-table-bg-color, #fff);
-      padding-top: var(--editable-table-cell-vertical-padding, 10px);
-      padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
-      padding-left: var(--editable-table-cell-horizontal-padding, 6px);
-      padding-right: var(--editable-table-cell-horizontal-padding, 6px);
     }
     caption {
       font-size: var(

@@ -90,13 +90,25 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
   }
   render() {
     return html`
-      <simple-popover id="prompt" auto for="${this.for}" ?hidden="${!this.for}">
+      <simple-popover
+        id="prompt"
+        ?auto="${!this.hidden}"
+        for="${this.for}"
+        ?hidden="${this.hidden}"
+        @focus="${(e) => (this.__focused = true)}"
+        @blur="${(e) => (this.__focused = false)}"
+        @mouseover="${(e) => (this.__hovered = true)}"
+        @mouseout="${(e) => (this.__hovered = false)}"
+        position="bottom"
+        position-align="center"
+      >
         <form id="form">
           <simple-fields
             id="formfields"
             autofocus
             hide-line-numbers
             .fields="${this.fields}"
+            @fields-ready="${(e) => e.detail.focus()}"
             .value="${this.value}"
           ></simple-fields>
           <div class="actions">
@@ -147,12 +159,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
         type: Array,
       },
       /**
-       * Is  target id.
-       */
-      for: {
-        type: String,
-      },
-      /**
        * selected text.
        */
       range: {
@@ -170,7 +176,33 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
       value: {
         type: Object,
       },
+      /**
+       * whether prompt has focus
+       */
+      __focused: {
+        type: Boolean,
+      },
+      /**
+       * whether prompt is hovered
+       */
+      __hovered: {
+        type: Boolean,
+      },
+      /**
+       * whether prompt isopen
+       */
+      __opened: {
+        type: Boolean,
+      },
     };
+  }
+
+  get for() {
+    return this.__selection && this.__opened ? this.__selection.id : "";
+  }
+
+  get hidden() {
+    return !this.__opened || !this.__selection;
   }
 
   /**
@@ -190,29 +222,42 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
       return this;
     }
   }
-
-  /**
-   * life cycle, element is afixed to DOM
-   * Makes sure there is a utility ready and listening for elements.
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (["__focused", "__hovered", "__opened"].includes(propName))
+        setTimeout(this._handleBlur.bind(this), 300);
+    });
+  }
+  _handleBlur(e) {
+    console.log(
+      "handle blur",
+      this.__focused,
+      this.__hovered,
+      !this.__focused && !this.__hovered
+    );
+    if (this.__opened && !this.__focused && !this.__hovered) this._cancel(e);
   }
   open(e) {
     if (e) {
-      this.for = this.__selection.id;
+      this.__selection.parentNode.insertBefore(this, this.__selection);
+      this.__focused = true;
+      this.__opened = true;
       this.button = e.detail;
       this.editor = this.button.editor;
       this.fields = [...e.detail.fields];
       this.value = { ...e.detail.value };
+      this.shadowRoot.querySelector("#formfields").focus();
     }
   }
   close() {
-    this.for = undefined;
+    this.__opened = false;
+    this.__focused = false;
     this.button = undefined;
     this.editor = undefined;
     this.fields = [];
     this.value = {};
+    document.body.append(this);
   }
 
   /**

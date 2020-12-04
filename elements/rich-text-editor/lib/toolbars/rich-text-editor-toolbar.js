@@ -37,9 +37,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return [
         ...super.styles,
         css`
-          :host([hidden]) {
-            display: none;
-          }
           #toolbar {
             display: flex;
             opacity: 1;
@@ -111,6 +108,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             ? "false"
             : "true"}"
           ?collapsed="${this.collapsed}"
+          ?hidden="${!this.controls && !this.alwaysVisible}"
+          @focus="${(e) => (this.__focused = true)}"
+          @blur="${(e) => (this.__focused = false)}"
+          @mouseover="${(e) => (this.__hovered = true)}"
+          @mouseout="${(e) => (this.__hovered = false)}"
           @selectnode="${(e) => this.selectNode(e.detail)}"
           @selectnodecontents="${(e) => this.selectNodeContents(e.detail)}"
           @selectrange="${(e) => this.selectRange(e.detail)}"
@@ -285,6 +287,41 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         __clickableElement: {
           name: "__clickableElement",
           type: Array,
+        },
+        /**
+         * whether editor has focus
+         */
+        __editorFocused: {
+          name: "__editorFocused",
+          type: Boolean,
+        },
+        /**
+         * whether editor is hovered
+         */
+        __editorHovered: {
+          name: "__editorHovered",
+          type: Boolean,
+        },
+        /**
+         * whether toolbar has focus
+         */
+        __focused: {
+          name: "__focused",
+          type: Boolean,
+        },
+        /**
+         * whether toolbar is hidden
+         */
+        __hidden: {
+          name: "__hidden",
+          type: Boolean,
+        },
+        /**
+         * whether toolbar is hovered
+         */
+        __hovered: {
+          name: "__hovered",
+          type: Boolean,
         },
         /**
          * selection singleton
@@ -500,11 +537,28 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.__selection = window.RichTextEditorSelection.requestAvailability();
       this.register();
     }
+    get disconnected() {
+      return (
+        !this.alwaysVisible &&
+        (!this.controls || (!this.__focused && !this.__hovered))
+      );
+    }
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "range") this._rangeChange();
         if (propName === "editor") this._editorChange();
+        if (["alwaysVisible", "controls"].includes(propName))
+          this.__hidden = this.disconnected;
+        if (
+          [
+            "__focused",
+            "__hovered",
+            "__editorFocused",
+            "__editorHovered",
+          ].includes(propName)
+        )
+          setTimeout((this.__hidden = this.disconnected), 300);
       });
     }
 

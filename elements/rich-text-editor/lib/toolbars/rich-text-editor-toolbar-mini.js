@@ -90,7 +90,6 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
             command: "link",
             icon: "link",
             label: "Link",
-            prompt: "href",
             toggledCommand: "unlink",
             toggledIcon: "mdextra:unlink",
             toggledLabel: "Unink",

@@ -27,7 +27,8 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           background-color: var(--rich-text-editor-selection-bg);
           margin: 0;
           padding: 0;
-          display: inline;
+          display: inline-block;
+          position: relative;
         }
         :host([hidden]) {
           display: none;
@@ -41,7 +42,8 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     ];
   }
   render() {
-    return html` <slot></slot> `;
+    return html` <div id="test"></div>
+      <div><slot></slot></div>`;
   }
 
   static get properties() {
@@ -428,8 +430,24 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   registerEditor(editor, remove = false) {
     let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
       handlers = {
-        focus: (e) => this.edit(editor),
-        blur: (e) => this._handleBlur(editor, e),
+        mousedown: (e) => {
+          if (!editor.disableMouseover) {
+            if (toolbar) toolbar.__editorHovered = true;
+            this.edit(editor);
+          }
+        },
+        mouseout: (e) => {
+          if (toolbar) toolbar.__editorHovered = false;
+          this._handleBlur(editor, e);
+        },
+        focus: (e) => {
+          if (toolbar) toolbar.__editorFocused = true;
+          this.edit(editor);
+        },
+        blur: (e) => {
+          if (toolbar) toolbar.__editorFocused = false;
+          this._handleBlur(editor, e);
+        },
         keydown: (e) => this._handleShortcutKeys(editor, e),
         click: (e) => this._handleEditorClick(editor, e),
         getrange: (e) => {
@@ -441,10 +459,11 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       };
     if (!remove) {
       //add event listeners
-      editor.addEventListener("mousedown", handlers.focus);
+      editor.addEventListener("mousedown", handlers.mousedown);
+      editor.addEventListener("mouseout", handlers.mouseout);
       editor.addEventListener("focus", handlers.focus);
-      editor.addEventListener("keydown", handlers.keydown);
       editor.addEventListener("blur", handlers.blur);
+      editor.addEventListener("keydown", handlers.keydown);
       editor.addEventListener("getrange", handlers.getrange);
       editor.addEventListener(
         "pastefromclipboard",
@@ -453,10 +472,11 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       editor.addEventListener("pastecontent", handlers.pastecontent);
       //editor.addEventListener("click", handlers.click);
     } else {
-      editor.removeEventListener("mousedown", handlers.focus);
+      editor.removeEventListener("mousedown", handlers.mousedown);
+      editor.removeEventListener("mouseout", handlers.mouseout);
       editor.removeEventListener("focus", handlers.focus);
-      editor.removeEventListener("keydown", handlers.keydown);
       editor.removeEventListener("blur", handlers.blur);
+      editor.removeEventListener("keydown", handlers.keydown);
       editor.removeEventListener("getrange", handlers.getrange);
       editor.removeEventListener(
         "pastefromclipboard",

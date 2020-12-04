@@ -299,6 +299,7 @@ class EditableTable extends displayBehaviors(LitElement) {
                           <rich-text-editor
                             autofocus
                             @change="${this._onValueChanged}"
+                            disable-mouseover
                             toolbar="mini"
                             id="cell-${td}-${tr}"
                             label="${this.label}"

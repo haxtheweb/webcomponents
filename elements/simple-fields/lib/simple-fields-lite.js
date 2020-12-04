@@ -528,9 +528,19 @@ class SimpleFieldsLite extends LitElement {
   updateSchema() {
     this._formFieldsChanged();
   }
+  focus() {
+    let firstField =
+      this.__formElementsArray &&
+      this.__formElementsArray[0] &&
+      this.__formElementsArray[0].field
+        ? this.__formElementsArray[0].field
+        : false;
+    if (firstField) firstField.focus();
+  }
 
   /**
-   * clears and rebuilds form
+   * clears and rebuilds form then fires event
+   * @event fields-ready
    */
   rebuildForm() {
     this._clearForm();
@@ -541,7 +551,18 @@ class SimpleFieldsLite extends LitElement {
       this.__formElementsArray[0].field
         ? this.__formElementsArray[0].field
         : false;
-    if (firstField) firstField.autofocus = !this.disableAutofocus;
+    if (firstField) {
+      firstField.autofocus = !this.disableAutofocus;
+      if (firstField.autofocus) firstField.focus();
+    }
+    this.dispatchEvent(
+      new CustomEvent("fields-ready", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
   }
 
   /**
