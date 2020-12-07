@@ -6,10 +6,13 @@ import "./simple-popover-manager.js";
 class SimplePopoverSelection extends LitElement {
   constructor() {
     super();
+    this.disabled = false;
   }
 
   openedToggle(e) {
-    this.opened = !this.opened;
+    if (!this.disabled) {
+      this.opened = !this.opened;
+    }
   }
 
   openedChanged(state) {
@@ -118,6 +121,13 @@ class SimplePopoverSelection extends LitElement {
   static get properties() {
     return {
       opened: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * disabled state
+       */
+      disabled: {
         type: Boolean,
         reflect: true,
       },

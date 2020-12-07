@@ -30,6 +30,7 @@ class HaxContextItemMenu extends LitElement {
   constructor() {
     super();
     this._blockEvent = false;
+    this.disabled = false;
     this.selectedValue = 0;
     this.action = false;
     this.direction = "top";
@@ -41,6 +42,7 @@ class HaxContextItemMenu extends LitElement {
       <hax-toolbar-menu
         id="menu"
         ?mini="${this.mini}"
+        ?disabled="${this.disabled}"
         ?action="${this.action}"
         .icon="${this.icon}"
         .tooltip="${this.label}"
@@ -80,6 +82,13 @@ class HaxContextItemMenu extends LitElement {
       },
       action: {
         type: Boolean,
+      },
+      /**
+       * disabled state
+       */
+      disabled: {
+        type: Boolean,
+        reflect: true,
       },
       /**
        * Internal flag to allow blocking the event firing if machine selects tag.

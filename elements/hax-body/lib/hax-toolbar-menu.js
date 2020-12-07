@@ -26,6 +26,7 @@ class HaxToolbarMenu extends LitElement {
     return html`
       <simple-popover-selection
         @simple-popover-selection-changed="${this.selectedChanged}"
+        ?disabled="${this.disabled}"
         auto
         orientation="tb"
       >
@@ -40,6 +41,7 @@ class HaxToolbarMenu extends LitElement {
         </style>
         <hax-toolbar-item
           ?mini="${this.mini}"
+          ?disabled="${this.disabled}"
           ?action="${this.action}"
           slot="button"
           icon="${this.icon}"
@@ -66,6 +68,7 @@ class HaxToolbarMenu extends LitElement {
     super();
     this.corner = "";
     this.action = false;
+    this.disabled = false;
     this.tooltip = "";
     this.tooltipDirection = "";
     this.selected = 0;
@@ -80,6 +83,13 @@ class HaxToolbarMenu extends LitElement {
        */
       corner: {
         type: String,
+        reflect: true,
+      },
+      /**
+       * disabled state
+       */
+      disabled: {
+        type: Boolean,
         reflect: true,
       },
       mini: {
@@ -123,7 +133,9 @@ class HaxToolbarMenu extends LitElement {
    * Ensure menu is visible / default'ed.
    */
   _menubuttonTap(e) {
-    this.selected = "";
+    if (!this.disabled) {
+      this.selected = "";
+    }
   }
 }
 window.customElements.define(HaxToolbarMenu.tag, HaxToolbarMenu);

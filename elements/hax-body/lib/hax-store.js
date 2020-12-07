@@ -1550,7 +1550,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     // prevent leaving if we are in editMode
     window.onbeforeunload = (e) => {
       if (this.editMode) {
-        console.log(e);
         var saving = "Changes you made may not be saved.";
         e.returnValue = saving;
         return saving;
@@ -1589,6 +1588,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       params: {},
     };
     this.activeNode = null;
+    this.activeEditingElement = null;
     this.haxBodies = [];
     this.activePlaceHolder = null;
     this.sessionObject = {};
@@ -1627,6 +1627,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       appList: observable,
       activeApp: observable,
       haxSelectedText: observable,
+      activeEditingElement: observable,
     });
     autorun(() => {
       this._globalPreferencesChanged(toJS(this.globalPreferences));

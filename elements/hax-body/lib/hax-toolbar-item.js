@@ -11,6 +11,7 @@ class HaxToolbarItem extends LitElement {
           box-sizing: border-box;
           height: 36px;
           width: 36px;
+          transition: 0.2s opacity ease-in-out;
           --hax-contextual-action-text-color: white;
         }
         :host([large]),
@@ -20,7 +21,8 @@ class HaxToolbarItem extends LitElement {
         }
         :host([disabled]) {
           pointer-events: none;
-          opacity: 0.8;
+          background-color: grey;
+          opacity: 0.5;
         }
         :host([danger]) {
           --hax-contextual-action-hover-color: var(
@@ -133,6 +135,11 @@ class HaxToolbarItem extends LitElement {
           width: unset;
           padding: 0px;
           border: 0px;
+        }
+        button:active,
+        button:hover,
+        button:focus {
+          cursor: pointer;
         }
         :host([mini]:not([disabled])) button:active,
         :host([mini]:not([disabled])) button:hover,

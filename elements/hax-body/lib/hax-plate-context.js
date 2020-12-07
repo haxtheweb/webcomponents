@@ -28,6 +28,14 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
         this.__updatePlatePosition(activeNode);
       }
     });
+    autorun(() => {
+      if (toJS(HAXStore.activeEditingElement)) {
+        this.hasActiveEditingElement = true;
+      } else {
+        this.hasActiveEditingElement = false;
+      }
+      this.render();
+    });
   }
   static get tag() {
     return "hax-plate-context";
@@ -90,6 +98,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
     <div class="area" id="area">
       <hax-context-item-menu
         mini
+        ${this.hasActiveEditingElement ? `disabled` : ``}
         id="drag"
         action
         icon="hax:arrow-all"
@@ -103,6 +112,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
           action
           mini
           dark
+          ${this.hasActiveEditingElement ? `disabled` : ``}
           simple
           icon="hax:keyboard-arrow-up"
           label="Move up"
@@ -113,6 +123,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
           action
           mini
           dark
+          ${this.hasActiveEditingElement ? `disabled` : ``}
           simple
           icon="hax:keyboard-arrow-down"
           label="Move down"
@@ -132,6 +143,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
         class="paddle"
         icon="hax:table-column-remove"
         label="Add column"
+        ${this.hasActiveEditingElement ? `disabled` : ``}
         event-name="hax-plate-create-right"
         data-simple-tour-stop
         data-stop-title="label"
@@ -147,6 +159,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
       class="paddle"
       icon="hax:table-column-plus-after"
       label="Remove column"
+      ${this.hasActiveEditingElement ? `disabled` : ``}
       event-name="hax-plate-remove-right"
       id="rightremove"
       data-simple-tour-stop
@@ -160,6 +173,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
   <hax-context-item
     mini
     action
+    ${this.hasActiveEditingElement ? `disabled` : ``}
     label="Duplicate"
     icon="icons:content-copy"
     event-name="hax-plate-duplicate"
@@ -174,6 +188,7 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
     mini
     danger
     action
+    ${this.hasActiveEditingElement ? `disabled` : ``}
     icon="delete"
     label="Remove"
     event-name="hax-plate-delete"

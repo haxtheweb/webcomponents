@@ -165,6 +165,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         #addincontext:active,
         #addincontext:focus {
           opacity: 1;
+          cursor: pointer;
         }
         .hax-context-menu {
           padding: 0;
@@ -424,6 +425,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     autorun(() => {
       this.activeNode = toJS(HAXStore.activeNode);
     });
+    autorun(() => {
+      const activeEditingElement = toJS(HAXStore.activeEditingElement);
+    });
   }
   /**
    * When we end dragging ensure we remove the mover class.
@@ -566,7 +570,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           this.__activeHover = null;
           this._hideContextMenu(this.contextMenus.add);
         }
-      }, 600);
+      }, 400);
     }
   }
   _mouseDown(e) {
@@ -618,7 +622,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // scope of the current browsing document. Example of
       // what can cause this is monaco-editor
       // @todo implement a possible hook here
-      if (this.__activeEditingElement) {
+      if (HAXStore.activeEditingElement) {
       }
     }
   }
@@ -845,8 +849,43 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       ) {
         mutations.forEach((mutation) => {
           if (mutation.addedNodes.length > 0) {
-            mutation.addedNodes.forEach((node) => {
+            for (var node of mutation.addedNodes) {
               if (this._validElementTest(node)) {
+                // weird edge clean up from pasting operations
+                // span tag popping up when doing keyboard based indent operations in a list
+                if (
+                  node.tagName === "LI" &&
+                  node.children.length > 0 &&
+                  node.children[0].tagName === "SPAN"
+                ) {
+                  if (
+                    this.activeNode === node.children[0] ||
+                    this.activeNode === node
+                  ) {
+                    this.activeNode = node;
+                  }
+                  unwrap(node.children[0]);
+                  continue;
+                }
+                // list tag that isn't in a list
+                if (
+                  node.tagName === "LI" &&
+                  node.parentElement &&
+                  !["UL", "OL"].includes(node.parentElement.tagName)
+                ) {
+                  unwrap(node);
+                  continue;
+                }
+                // some browsers can accidentally cause this in certain situations
+                if (
+                  node.tagName === "P" &&
+                  node.children.length > 0 &&
+                  ["P", "LI"].includes(node.children[0].tagName)
+                ) {
+                  unwrap(node.children[0]);
+                  console.log("unwrap");
+                  continue;
+                }
                 // notice the slot being set during an enter event
                 // and ensure we replicate it
                 if (this.__slot) {
@@ -918,7 +957,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   this.___moveLock = false;
                 }
               }
-            });
+            }
             if (this.__indentTrap) {
               setTimeout(() => {
                 this.__indentTrap = false;
@@ -2165,12 +2204,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       case "hax-source-view-toggle":
         if (!this.activeNode.__haxSourceView) {
           this.activeNode.__haxSourceView = true;
-          this.__activeEditingElement = document.createElement("code-editor");
-          this.__activeEditingElement.language = "html";
-          this.__activeEditingElement.title = "";
-          this.__activeEditingElement.theme = "vs";
-          this.__activeEditingElement.fontSize = 12;
-          this.__activeEditingElement.wordWrap = true;
+          HAXStore.activeEditingElement = document.createElement("code-editor");
+          HAXStore.activeEditingElement.language = "html";
+          HAXStore.activeEditingElement.title = "";
+          HAXStore.activeEditingElement.theme = "vs";
+          HAXStore.activeEditingElement.fontSize = 12;
+          HAXStore.activeEditingElement.wordWrap = true;
           // could be 1st time this shows up so ensure we import
           import("@lrnwebcomponents/code-editor/code-editor.js");
           // test for slots to match to ensure this is maintained
@@ -2178,18 +2217,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             this.activeNode.getAttribute &&
             this.activeNode.getAttribute("slot") != null
           ) {
-            this.__activeEditingElement.setAttribute(
+            HAXStore.activeEditingElement.setAttribute(
               "slot",
               this.activeNode.getAttribute("slot")
             );
           }
           this.__ignoreActive = true;
-          wrap(this.activeNode, this.__activeEditingElement);
+          wrap(this.activeNode, HAXStore.activeEditingElement);
         } else {
           this.activeNode.__haxSourceView = false;
           // run internal state hook if it exist and if we get a response
           let replacement = HAXStore.runHook(
-            this.__activeEditingElement,
+            HAXStore.activeEditingElement,
             "activeElementChanged",
             [this.activeNode, false]
           );
@@ -2226,7 +2265,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           // firing the unwrap to unpeal the element w/ the new content but
           // we need to ensure that the event binding is correctly applied
           this.__applyNodeEditableState(replacement, this.editMode);
-          unwrap(this.__activeEditingElement);
+          unwrap(HAXStore.activeEditingElement);
+          HAXStore.activeEditingElement = null;
         }
         break;
       // text based operations for primatives
@@ -3141,12 +3181,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         oldSchema.editingElement != "core" ||
         (oldValue.parentNode &&
           oldValue.parentNode.haxUIElement &&
-          oldValue.parentNode === this.__activeEditingElement)
+          oldValue.parentNode === HAXStore.activeEditingElement)
       ) {
         this.__ignoreActive = true;
         // run internal state hook if it exist and if we get a response
         let replacement = HAXStore.runHook(
-          this.__activeEditingElement,
+          HAXStore.activeEditingElement,
           "activeElementChanged",
           [oldValue, false]
         );
@@ -3180,7 +3220,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           this.__applyNodeEditableState(replacement, this.editMode);
         }
         // this effectively removes the editing element
-        unwrap(this.__activeEditingElement);
+        unwrap(HAXStore.activeEditingElement);
+        HAXStore.activeEditingElement = null;
       }
     }
     // NEW VALUE
@@ -3201,12 +3242,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           );
           await import(`${basePath}../../${newSchema.editingElement.import}`);
         }
-        this.__activeEditingElement = document.createElement(
+        HAXStore.activeEditingElement = document.createElement(
           newSchema.editingElement.tag
         );
         // test for slots to match to ensure this is maintained
         if (newValue.getAttribute && newValue.getAttribute("slot") != null) {
-          this.__activeEditingElement.setAttribute(
+          HAXStore.activeEditingElement.setAttribute(
             "slot",
             newValue.getAttribute("slot")
           );
@@ -3214,15 +3255,16 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         // support for a callback on insert to do any additional work it wants
         // this is useful for setting default properties for example
         if (newSchema.editingElement.callback) {
-          newSchema.editingElement.callback(this.__activeEditingElement);
+          newSchema.editingElement.callback(HAXStore.activeEditingElement);
         }
         this.__ignoreActive = true;
-        wrap(newValue, this.__activeEditingElement);
+        wrap(newValue, HAXStore.activeEditingElement);
         // @see haxHooks activeElementChanged, this is run on the editing element too
-        HAXStore.runHook(this.__activeEditingElement, "activeElementChanged", [
-          newValue,
-          true,
-        ]);
+        HAXStore.runHook(
+          HAXStore.activeEditingElement,
+          "activeElementChanged",
+          [newValue, true]
+        );
       }
     }
   }
