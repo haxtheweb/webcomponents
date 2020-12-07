@@ -546,7 +546,7 @@ class SimpleFieldsLite extends LitElement {
         : false;
     if (firstField) {
       firstField.focus();
-      this.delayed.focus = false;
+      this.__delayedFocus = false;
     } else {
       this.__delayedFocus = true;
     }

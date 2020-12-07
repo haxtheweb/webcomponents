@@ -672,7 +672,7 @@ class SimpleFieldsContainer extends LitElement {
   focus() {
     if (this.field) {
       this.field.focus();
-      this.delayed.focus = false;
+      this.__delayedFocus = false;
     } else {
       this.__delayedFocus = true;
     }
