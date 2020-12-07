@@ -1547,6 +1547,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-add-voice-command": "_addVoiceCommand",
     };
+    // prevent leaving if we are in editMode
+    window.onbeforeunload = (e) => {
+      if (this.editMode) {
+        console.log(e);
+        var saving = "Changes you made may not be saved.";
+        e.returnValue = saving;
+        return saving;
+      }
+    };
     // establish the tour
     SimpleTourManager.registerNewTour({
       key: "hax",
