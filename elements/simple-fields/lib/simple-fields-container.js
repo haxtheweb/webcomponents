@@ -334,6 +334,12 @@ class SimpleFieldsContainer extends LitElement {
       value: {
         type: Object,
       },
+      /**
+       * delays focus even until field is attached
+       */
+      __delayedFocus: {
+        type: Boolean,
+      },
     };
   }
   constructor() {
@@ -664,7 +670,12 @@ class SimpleFieldsContainer extends LitElement {
    * @memberof SimpleFieldsContainer
    */
   focus() {
-    if (this.field) this.field.focus();
+    if (this.field) {
+      this.field.focus();
+      this.delayed.focus = false;
+    } else {
+      this.__delayedFocus = true;
+    }
   }
 
   /**
@@ -961,6 +972,7 @@ class SimpleFieldsContainer extends LitElement {
         oldfield.removeEventListener("input", this._handleFieldChange);
       }
     }
+    if (this.field && this.__delayedFocus) this.focus();
   }
 
   /**
