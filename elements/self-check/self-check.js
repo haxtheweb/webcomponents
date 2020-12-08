@@ -115,6 +115,7 @@ class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
             var(--simple-colors-default-theme-accent-8, #444)
           );
           display: flex;
+          align-items: center;
           width: 100%;
           margin: -20px 0 0;
         }
