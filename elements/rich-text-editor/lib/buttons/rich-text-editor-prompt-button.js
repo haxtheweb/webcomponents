@@ -132,12 +132,25 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
     /**
      * override to add function to cancelled prompt
      */
-    cancel() {}
+    cancel() {
+      this.close();
+    }
+    close() {
+      this.dispatchEvent(
+        new CustomEvent("rich-text-editor-prompt-closed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
+    }
 
     /**
      * updates insertion based on fields
      */
     confirm(val) {
+      this.close();
       this.value = val;
       this.update();
       this.setToggled();
@@ -150,6 +163,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      */
     expandSelection() {
       let element = this.rangeQuery();
+      console.log("expand", element);
       if (element) this.highlightNode(element);
     }
     /**
@@ -209,8 +223,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
     open() {
       this.expandSelection();
       this.value = this.getValue();
-      this.prompt.fields = [...this.fields];
-      this.prompt.value = { ...this.value };
       this.dispatchEvent(
         new CustomEvent("rich-text-editor-prompt-open", {
           bubbles: true,

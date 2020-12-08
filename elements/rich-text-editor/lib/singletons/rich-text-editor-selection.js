@@ -28,7 +28,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           margin: 0;
           padding: 0;
           display: inline-block;
-          position: relative;
         }
         :host([hidden]) {
           display: none;
@@ -38,12 +37,14 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           color: var(--rich-text-editor-selection-bg);
           background-color: transparent;
         }
+        ::slotted(*) {
+          background-color: var(--rich-text-editor-selection-bg);
+        }
       `,
     ];
   }
   render() {
-    return html` <div id="test"></div>
-      <div><slot></slot></div>`;
+    return html`<slot></slot>`;
   }
 
   static get properties() {
@@ -326,6 +327,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   highlightNode(node, toolbar) {
+    console.log("highlightNode", node);
     this.selectNode(node, toolbar.range);
     this.highlight(toolbar);
   }
@@ -337,6 +339,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {void}
    */
   highlight(toolbar, add = true) {
+    console.log("highlight", add);
     this.toolbar = toolbar;
     let editor = toolbar.editor;
     if (add !== false) {
@@ -353,6 +356,15 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       this.range = undefined;
       document.body.append(this);
     }
+
+    this.dispatchEvent(
+      new CustomEvent("change", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: add,
+      })
+    );
   }
   /**
    * gets clipboard data and pastes into an editor's range
@@ -430,59 +442,36 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   registerEditor(editor, remove = false) {
     let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
       handlers = {
-        mousedown: (e) => {
-          if (!editor.disableMouseover) {
-            if (toolbar) toolbar.__editorHovered = true;
-            this.edit(editor);
-          }
-        },
-        mouseout: (e) => {
-          if (toolbar) toolbar.__editorHovered = false;
-          this._handleBlur(editor, e);
-        },
-        focus: (e) => {
-          if (toolbar) toolbar.__editorFocused = true;
-          this.edit(editor);
-        },
         blur: (e) => {
-          if (toolbar) toolbar.__editorFocused = false;
-          this._handleBlur(editor, e);
+          if (!toolbar.__promptOpen) this._handleBlur(editor, e);
         },
-        keydown: (e) => this._handleShortcutKeys(editor, e),
         click: (e) => this._handleEditorClick(editor, e),
+        focus: (e) => {
+          if (!toolbar.__promptOpen) this.edit(editor);
+        },
         getrange: (e) => {
           this.toolbar = toolbar;
           this.updateRange(editor, editor.range);
+        },
+        keydown: (e) => this._handleShortcutKeys(editor, e),
+        mouseover: (e) => {
+          if (!toolbar.__promptOpen) this.edit(editor);
+        },
+        mouseout: (e) => {
+          if (!toolbar.__promptOpen) this._handleBlur(editor, e);
         },
         pastefromclipboard: (e) => this.pasteFromClipboard(e.detail),
         pastecontent: (e) => this._handlePaste(e),
       };
     if (!remove) {
       //add event listeners
-      editor.addEventListener("mousedown", handlers.mousedown);
-      editor.addEventListener("mouseout", handlers.mouseout);
-      editor.addEventListener("focus", handlers.focus);
-      editor.addEventListener("blur", handlers.blur);
-      editor.addEventListener("keydown", handlers.keydown);
-      editor.addEventListener("getrange", handlers.getrange);
-      editor.addEventListener(
-        "pastefromclipboard",
-        handlers.pastefromclipboard
+      Object.keys(handlers).forEach((handler) =>
+        editor.addEventListener(handler, handlers[handler])
       );
-      editor.addEventListener("pastecontent", handlers.pastecontent);
-      //editor.addEventListener("click", handlers.click);
     } else {
-      editor.removeEventListener("mousedown", handlers.mousedown);
-      editor.removeEventListener("mouseout", handlers.mouseout);
-      editor.removeEventListener("focus", handlers.focus);
-      editor.removeEventListener("blur", handlers.blur);
-      editor.removeEventListener("keydown", handlers.keydown);
-      editor.removeEventListener("getrange", handlers.getrange);
-      editor.removeEventListener(
-        "pastefromclipboard",
-        handlers.pastefromclipboard
+      Object.keys(handlers).forEach((handler) =>
+        editor.removeEventListener(handler, handlers[handler])
       );
-      editor.removeEventListener("pastecontent", handlers.pastecontent);
     }
     return editor.__connectedToolbar;
   }
@@ -495,7 +484,11 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    */
   registerToolbar(toolbar, remove = false) {
     let handlers = {
-      exec: (e) => {
+      blur: (e) => {
+        toolbar.__focused = false;
+        //todo check blur
+      },
+      command: (e) => {
         e.stopImmediatePropagation();
         this.execCommand(
           e.detail.command,
@@ -504,6 +497,9 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           toolbar
         );
       },
+      focus: (e) => {
+        toolbar.__focused = true;
+      },
       highlight: (e) => {
         e.stopImmediatePropagation();
         this.highlight(toolbar.editor, e.detail);
@@ -511,6 +507,23 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       highlightnode: (e) => {
         e.stopImmediatePropagation();
         this.highlightNode(e.detail, toolbar);
+      },
+      mouseover: (e) => {
+        toolbar.__hovered = true;
+      },
+      mouseout: (e) => {
+        toolbar.__hovered = false;
+        //todo check blur
+      },
+      pastefromclipboard: (e) => {
+        e.stopImmediatePropagation();
+        this.pasteFromClipboard(e.detail);
+      },
+      "rich-text-editor-prompt-closed": (e) => {
+        toolbar.__promptOpen = false;
+      },
+      "rich-text-editor-prompt-open": (e) => {
+        toolbar.__promptOpen = true;
       },
       selectnode: (e) => {
         e.stopImmediatePropagation();
@@ -524,10 +537,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         e.stopImmediatePropagation();
         this.selectRange(e.detail, toolbar.editor);
       },
-      pastefromclipboard: (e) => {
-        e.stopImmediatePropagation();
-        this.pasteFromClipboard(e.detail);
-      },
       wrapselection: (e) => {
         e.stopImmediatePropagation();
         this.surroundRange(e.detail, toolbar.range);
@@ -535,35 +544,14 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     };
     if (!remove && !toolbar.registered) {
       this.__toolbars.push(toolbar);
-      toolbar.addEventListener("command", handlers.exec);
-      toolbar.addEventListener("highlight", handlers.highlight);
-      toolbar.addEventListener("highlightnode", handlers.highlightnode);
-      toolbar.addEventListener("selectnode", handlers.selectnode);
-      toolbar.addEventListener(
-        "selectnodecontents",
-        handlers.selectnodecontents
+      Object.keys(handlers).forEach((handler) =>
+        toolbar.addEventListener(handler, handlers[handler])
       );
-      toolbar.addEventListener("selectrange", handlers.selectrange);
-      toolbar.addEventListener(
-        "pastefromclipboard ",
-        handlers.pastefromclipboard
-      );
-      toolbar.addEventListener("wrapselection ", handlers.wrapselection);
       toolbar.registered = true;
     } else {
       toolbar.registered = false;
-      toolbar.removeEventListener("command", handlers.exec);
-      toolbar.removeEventListener("highlight", handlers.highlight);
-      toolbar.removeEventListener("highlightnode", handlers.highlightnode);
-      toolbar.removeEventListener("selectnode", handlers.selectnode);
-      toolbar.removeEventListener(
-        "selectnodecontents",
-        handlers.selectnodecontents
-      );
-      toolbar.removeEventListener("selectrange", handlers.selectrange);
-      toolbar.removeEventListener(
-        "pastefromclipboard ",
-        handlers.pastefromclipboard
+      Object.keys(handlers).forEach((handler) =>
+        toolbar.removeEventListener(handler, handlers[handler])
       );
       this.__toolbars = this.__toolbars.filter((bar) => bar !== toolbar);
     }
@@ -662,6 +650,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   _handleBlur(editor, e) {
+    console.log("_handleBlur");
     if (
       e.relatedTarget === null ||
       !e.relatedTarget.startsWith === "rich-text-editor"

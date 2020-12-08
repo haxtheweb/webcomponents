@@ -93,29 +93,31 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
       <simple-popover
         id="prompt"
         ?auto="${!this.hidden}"
-        for="${this.for}"
+        for="${this.selection ? this.selection.id : ""}"
         ?hidden="${this.hidden}"
-        @focus="${(e) => (this.__focused = true)}"
-        @blur="${(e) => (this.__focused = false)}"
-        @mouseover="${(e) => (this.__hovered = true)}"
-        @mouseout="${(e) => (this.__hovered = false)}"
         position="bottom"
         position-align="center"
+        .target="${this.selection}"
       >
-        <form id="form">
+        <form
+          id="form"
+          @blur="${this._handleBlur}"
+          @focus="${this._handleFocus}"
+          @mouseover="${(e) => console.log("over")}"
+          @mouseout="${(e) => console.log("out")}"
+        >
           <simple-fields
             id="formfields"
-            autofocus
             hide-line-numbers
             .fields="${this.fields}"
-            @fields-ready="${(e) => e.detail.focus()}"
+            @fields-ready="${this._handleReady}"
             .value="${this.value}"
           ></simple-fields>
           <div class="actions">
             <button
               id="cancel"
               class="rtebutton"
-              controls="${this.for}"
+              controls="${this.selection ? this.selection.id : ""}"
               @click="${this._cancel}"
               tabindex="0"
             >
@@ -127,7 +129,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
             <button
               id="confirm"
               class="rtebutton"
-              controls="${this.for}"
+              controls="${this.selection ? this.selection.id : ""}"
               @click="${this._confirm}"
               tabindex="0"
             >
@@ -165,12 +167,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
         type: Object,
       },
       /**
-       * selected node withing range
-       * /
-      selectedNode: {
-        type: Object
-      },
-      /**
        * prefilled value of prompt
        */
       value: {
@@ -197,12 +193,8 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
     };
   }
 
-  get for() {
-    return this.__selection && this.__opened ? this.__selection.id : "";
-  }
-
   get hidden() {
-    return !this.__opened || !this.__selection;
+    return !this.__opened;
   }
 
   /**
@@ -210,54 +202,62 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    */
   constructor() {
     super();
-    this.__selection = window.RichTextEditorSelection.requestAvailability();
     window.addEventListener(
       "rich-text-editor-prompt-open",
       this.open.bind(this)
     );
-
     // sets instance to current instance
     if (!window.RichTextEditorPrompt.instance) {
       window.RichTextEditorPrompt.instance = this;
       return this;
     }
   }
+  get selection() {
+    return window.RichTextEditorSelection.requestAvailability();
+  }
+  firstUpdated(changedProperties) {
+    this.selection.addEventListener("change", (e) =>
+      setTimeout(this._handleChange(e), 300)
+    );
+    this.addEventListener("focus", this._handleFocus);
+    this.addEventListener("focus", this._handleFocus);
+    this.addEventListener("blur", this._handleBlur);
+  }
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (["__focused", "__hovered", "__opened"].includes(propName))
-        setTimeout(this._handleBlur.bind(this), 300);
+        setTimeout(this._handleChange.bind(this), 300);
     });
   }
+  _handleReady(e) {
+    e.detail.focus();
+  }
+  _handleFocus(e) {
+    this.__focused = true;
+  }
   _handleBlur(e) {
-    console.log(
-      "handle blur",
-      this.__focused,
-      this.__hovered,
-      !this.__focused && !this.__hovered
-    );
-    if (this.__opened && !this.__focused && !this.__hovered) this._cancel(e);
+    this.__focused = false;
+  }
+  _handleChange(e) {
+    if (this.__opened && !this.__focused && !this.__hovered) this._cancel();
   }
   open(e) {
     if (e) {
-      this.__selection.parentNode.insertBefore(this, this.__selection);
-      this.__focused = true;
       this.__opened = true;
+      this.shadowRoot.querySelector("#cancel").focus();
       this.button = e.detail;
-      this.editor = this.button.editor;
       this.fields = [...e.detail.fields];
+      this.__selection = e.detail.__selection;
       this.value = { ...e.detail.value };
-      this.shadowRoot.querySelector("#formfields").focus();
     }
   }
   close() {
     this.__opened = false;
     this.__focused = false;
     this.button = undefined;
-    this.editor = undefined;
     this.fields = [];
     this.value = {};
-    document.body.append(this);
   }
 
   /**
@@ -266,8 +266,8 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    * @returns {void}
    */
   _cancel(e) {
-    e.preventDefault();
-    this.button.cancel();
+    if (e) e.preventDefault();
+    if (this.button) this.button.cancel();
     this.close();
   }
   /**

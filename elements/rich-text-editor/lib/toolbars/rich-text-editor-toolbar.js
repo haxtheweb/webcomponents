@@ -319,8 +319,22 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         /**
          * whether toolbar is hovered
          */
+        __focused: {
+          name: "__focused",
+          type: Boolean,
+        },
+        /**
+         * whether toolbar is hovered
+         */
         __hovered: {
           name: "__hovered",
+          type: Boolean,
+        },
+        /**
+         * whether prompt is open
+         */
+        __promptOpen: {
+          name: "__promptOpen",
           type: Boolean,
         },
         /**
