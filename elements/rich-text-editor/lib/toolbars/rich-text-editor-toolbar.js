@@ -564,14 +564,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (propName === "editor") this._editorChange();
         if (["alwaysVisible", "controls"].includes(propName))
           this.__hidden = this.disconnected;
-        if (
-          [
-            "__focused",
-            "__hovered",
-            "__editorFocused",
-            "__editorHovered",
-          ].includes(propName)
-        )
+        if (["__focused", "__hovered"].includes(propName))
           setTimeout((this.__hidden = this.disconnected), 300);
       });
     }

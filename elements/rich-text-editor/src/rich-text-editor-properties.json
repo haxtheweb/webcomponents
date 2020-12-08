@@ -86,6 +86,21 @@
   "__connectedToolbar": {
     "type": "Object"
   },
+
+  /**
+   * has focus
+   */
+  "__focused": {
+    "type": "Boolean"
+  },
+
+  /**
+   * is hovered
+   */
+  "__hovered": {
+    "type": "Boolean"
+  },
+
   /**
    * selection management
    */

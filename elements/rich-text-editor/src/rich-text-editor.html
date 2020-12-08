@@ -1,1 +1,5 @@
-<slot></slot>
+<slot
+  @focus="${(e) => (this.__focused = true)}"
+  @blur="${(e) => (this.__focused = false)}"
+  @mouseover="${(e) => (this.__hovered = true)}"
+  @mouseout="${(e) => (this.__hovered = false)}"></slot>

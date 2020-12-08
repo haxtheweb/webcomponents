@@ -86,7 +86,12 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
 
   // render function
   render() {
-    return html` <slot></slot>`;
+    return html` <slot
+      @focus="${(e) => (this.__focused = true)}"
+      @blur="${(e) => (this.__focused = false)}"
+      @mouseover="${(e) => (this.__hovered = true)}"
+      @mouseout="${(e) => (this.__hovered = false)}"
+    ></slot>`;
   }
 
   // haxProperty definition
@@ -217,6 +222,21 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
       __connectedToolbar: {
         type: Object,
       },
+
+      /**
+       * has focus
+       */
+      __focused: {
+        type: Boolean,
+      },
+
+      /**
+       * is hovered
+       */
+      __hovered: {
+        type: Boolean,
+      },
+
       /**
        * selection management
        */
