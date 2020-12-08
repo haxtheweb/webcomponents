@@ -3,6 +3,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { oneDark } from "./lib/themes/one-dark.js";
+import { render } from "lit-html/lib/render.js";
 import { hljs } from "./lib/highlightjs/highlight.js";
 import { javascript } from "./lib/highlightjs/languages/javascript.js";
 import { yaml } from "./lib/highlightjs/languages/yaml.js";
@@ -16,6 +17,7 @@ hljs.registerLanguage("css", cssLang);
 hljs.registerLanguage("php", phpLang);
 hljs.registerLanguage("yaml", yaml);
 hljs.registerLanguage("xml", xml);
+hljs.registerLanguage("html", xml);
 window["hljs"] = hljs;
 /**
  * `code-sample`
@@ -24,158 +26,162 @@ window["hljs"] = hljs;
  * @element code-sample
  */
 class CodeSample extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-        }
+:host {
+  display: block;
+}
 
-        :host([hidden]),
-        [hidden] {
-          display: none;
-        }
+:host([hidden]),
+[hidden] {
+  display: none;
+}
 
-        pre {
-          margin: 0;
-        }
+pre {
+  margin: 0;
+}
 
-        pre,
-        code {
-          font-family: var(
-            --code-sample-font-family,
-            Operator Mono,
-            Inconsolata,
-            Roboto Mono,
-            monaco,
-            consolas,
-            monospace
-          );
-          font-size: var(--code-sample-font-size, 0.875rem);
-        }
+pre, code {
+  font-family: var(--code-sample-font-family, Operator Mono, Inconsolata, Roboto Mono, monaco, consolas, monospace);
+  font-size: var(--code-sample-font-size, 0.875rem);
+}
 
-        .hljs {
-          padding: 0 1.25rem;
-          line-height: var(--code-sample-line-height, 1.3);
-        }
+.hljs {
+  padding: 0 1.25rem;
+  line-height: var(--code-sample-line-height, 1.3);
+}
 
-        .demo:not(:empty) {
-          padding: var(--code-sample-demo-padding, 0 0 1.25rem);
-        }
+.demo:not(:empty) {
+  padding: var(--code-sample-demo-padding, 0 0 1.25rem);
+}
 
-        #code-container {
-          position: relative;
-        }
+#code-container {
+  position: relative;
+}
 
-        button {
-          background: var(--code-sample-copy-button-bg-color, #e0e0e0);
-          border: none;
-          cursor: pointer;
-          display: block;
-          position: absolute;
-          right: 0;
-          top: 0;
-          text-transform: uppercase;
-        }
-      `,
+button {
+  background: var(--code-sample-copy-button-bg-color, #e0e0e0);
+  border: none;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-transform: uppercase;
+}
+      `
     ];
   }
 
-  // render function
+// render function
   render() {
-    return html` <div id="theme"></div>
-      <div id="demo" class="demo"></div>
-      <slot></slot>
-      <div id="code-container">
-        <button
-          type="button"
-          ?hidden="${!this.copyClipboardButton}"
-          id="copyButton"
-          title="Copy to clipboard"
-          @click="${this._copyToClipboard}"
-        >
-          Copy
-        </button>
-        <pre id="code"></pre>
-      </div>`;
+    return html`
+
+<div id="theme"></div>
+<div id="demo" class="demo"></div>
+<slot></slot>
+<div id="code-container">
+  <button type="button" ?hidden="${!this.copyClipboardButton}" id="copyButton" title="Copy to clipboard" @click="${this._copyToClipboard}">Copy</button>
+  <pre id="code"></pre>
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      type: "element",
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Code sample",
-        description: "A sample of code highlighted in the page",
-        icon: "icons:code",
-        color: "blue",
-        groups: ["Code", "Development"],
-        meta: {
-          author: "elmsln",
+  "type": "element",
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Code sample",
+    "description": "A sample of code highlighted in the page",
+    "icon": "icons:code",
+    "color": "blue",
+    "groups": ["Code", "Development"],
+    "meta": {
+      "author": "elmsln"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "type",
+        "title": "Code highlighting",
+        "description": "Syntax highlighting to apply to the code area",
+        "inputMethod": "select",
+        "options": {
+          "javascript": "JavaScript",
+          "css": "CSS",
+          "html": "HTML",
+          "xml": "XML",
+          "json": "JSON data",
+          "php": "PHP",
+          "yaml": "YAML"
+        }
+      },
+      {
+        "slot": "",
+        "slotWrapper": "template",
+        "slotAttributes": {
+          "preserve-content": "preserve-content"
         },
+        "title": "Source",
+        "description": "The URL for this video.",
+        "inputMethod": "code-editor"
       },
-      settings: {
-        configure: [
-          {
-            slot: "",
-            slotWrapper: "template",
-            slotAttributes: {
-              "preserve-content": "preserve-content",
-            },
-            title: "Source",
-            description: "The URL for this video.",
-            inputMethod: "code-editor",
-          },
-          {
-            property: "copyClipboardButton",
-            title: "Copy to clipboard button",
-            description: "button in top right that says copy to clipboard",
-            inputMethod: "boolean",
-          },
-        ],
-        advanced: [],
-      },
-      saveOptions: {
-        unsetAttributes: ["theme"],
-      },
-      demoSchema: [
-        {
-          tag: "code-sample",
-          content:
-            '<template preserve-content="preserve-content">const great = "example";</template>',
-          properties: {
-            "copy-clipboard-button": "copy-clipboard-button",
-          },
-        },
-      ],
-    };
+      {
+        "property": "copyClipboardButton",
+        "title": "Copy to clipboard button",
+        "description": "button in top right that says copy to clipboard",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["theme"]
+  },
+  "demoSchema": [
+    {
+      "tag": "code-sample",
+      "content": "<template preserve-content=\"preserve-content\">const great = \"example\";</template>",
+      "properties": {
+        "copy-clipboard-button": "copy-clipboard-button"
+      }
+    }
+  ]
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      // Set to true to show a copy to clipboard button.
-      copyClipboardButton: {
-        type: Boolean,
-        attribute: "copy-clipboard-button",
-      },
-      // Tagged template literal with custom styles.
-      // Only supported in Shadow DOM.
-      theme: {
-        type: Object,
-      },
-      // Code type (optional). (eg.: html, js, css)
-      // Options are the same as the available classes for `<code>` tag using highlight.js
-      type: {
-        type: String,
-        reflect: true,
-      },
-    };
+  
+  ...super.properties,
+  
+  // Set to true to show a copy to clipboard button.
+  "copyClipboardButton": {
+    "type": Boolean,
+    "attribute": "copy-clipboard-button"
+  },
+  // Tagged template literal with custom styles.
+  // Only supported in Shadow DOM.
+  "theme": {
+    "type": Object
+  },
+  // Code type (optional). (eg.: html, js, css)
+  // Options are the same as the available classes for `<code>` tag using highlight.js
+  "type": {
+    "type": String,
+    "reflect": true
+  }
+}
+;
   }
 
   /**
@@ -188,9 +194,117 @@ class CodeSample extends LitElement {
     super();
     this._observer = null;
     this.theme = oneDark;
+    this.type = "html";
     this.copyClipboardButton = false;
   }
-  firstUpdated() {
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      gizmoRegistration: "haxgizmoRegistration",
+    };
+  }
+  /**
+   * @see haxHooks: gizmoRegistration
+   */
+  haxgizmoRegistration(store) {
+    let list = [
+      "javascript",
+      "js",
+      "json",
+      "css",
+      "php",
+      "yaml",
+      "xml",
+      "html",
+    ];
+    for (var i in list) {
+      store.keyboardShortcuts["```" + list[i]] = {
+        tag: "code-sample",
+        properties: {
+          type: list[i],
+        },
+        content: `<template preserve-content="preserve-content">${this.getExample(
+          list[i]
+        )}</template>`,
+      };
+    }
+    // force the default to now be code-sample instead of code
+    store.keyboardShortcuts["```"] = store.keyboardShortcuts["```html"];
+  }
+  /**
+   * returns a very simple example of the type of data requested
+   */
+  getExample(type) {
+    switch (type) {
+      case "css":
+        return `
+  .the-cheet[is="tothelimit"] {
+    padding: 8px;
+    margin: 4px;
+  }
+`;
+        break;
+      case "html":
+        return `
+  <blockquote>
+  Dear Strongbad,
+  In 5th grade I have to watch a <em>lame hygiene movie</em>. I was thinking
+  you could make a <strong id="bad">better movie about hygiene</strong> than the cruddy school version.
+  Your friend,
+  John
+  </blockquote>
+`;
+        break;
+      case "javascript":
+      case "js":
+        return `const everyBody = "to the limit";
+  let theCheat = true;
+  if (theCheat) {
+    return \`is \${everyBody}\`;
+  }`;
+        break;
+      case "xml":
+        return `<IAmLike>
+  <ComeOn>fhqwhgads</ComeOn>
+</IAmLike>`;
+        break;
+      case "yaml":
+        return `- CaracterList:
+  - Homestar Runner
+  - Strongbad
+  - The Cheat`;
+        break;
+      case "php":
+        return `  $MrTheCheat = "wins the big race";
+if ($MrTheCheat) {
+  return "HaVe A tRoPhY";
+}`;
+        break;
+      case "json":
+        return `{
+  "mainMenu": [
+    "Characters",
+    "Games",
+    "Toons",
+    "Email",
+    "Store"
+  ]
+}`;
+        break;
+    }
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // can't allow this to be null for a number of reasons related
+    // to the tag's internals. This ensures it's not null on initial paint
+    if (this.innerHTML == "") {
+      this.innerHTML =
+        '<template preserve-content="preserve-content">const great="example";</template>';
+    }
     this._updateContent();
     setTimeout(() => {
       this._themeChanged(this.theme);
@@ -201,12 +315,6 @@ class CodeSample extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    // can't allow this to be null for a number of reasons related
-    // to the tag's internals. This ensures it's not null on initial paint
-    if (this.innerHTML == "") {
-      this.innerHTML =
-        '<template preserve-content="preserve-content">const great="example";</template>';
-    }
     if (this.querySelector("template")) {
       this._observer = new MutationObserver((mutations) => {
         if (this.shadowRoot) {
@@ -240,29 +348,20 @@ class CodeSample extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "theme") {
+      if (propName == "theme" && this.shadowRoot) {
         this._themeChanged(this[propName]);
       }
     });
   }
   _themeChanged(theme) {
-    if (theme && this._themeCanBeChanged(theme)) {
+    if (theme) {
       while (this.shadowRoot.querySelector("#theme").childNodes > 0) {
         this.shadowRoot
           .querySelector("#theme")
           .removeChild(this.shadowRoot.querySelector("#theme").firstChild);
       }
-      this.shadowRoot
-        .querySelector("#theme")
-        .appendChild(document.importNode(theme.content, true));
+      render(theme, this.shadowRoot.querySelector("#theme"));
     }
-  }
-  _themeCanBeChanged(theme) {
-    if (theme.tagName !== "TEMPLATE") {
-      console.error("<code-sample>:", "theme must be a template");
-      return false;
-    }
-    return true;
   }
   _updateContent() {
     if (this._code && this._code.parentNode) {

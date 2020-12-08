@@ -883,7 +883,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   ["P", "LI"].includes(node.children[0].tagName)
                 ) {
                   unwrap(node.children[0]);
-                  console.log("unwrap");
                   continue;
                 }
                 // notice the slot being set during an enter event
@@ -1242,28 +1241,15 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
     }
   }
+  /**
+   * Process input to see if it matches any defined keyboard shortcuts
+   */
   keyboardShortCutProcess(guess) {
-    // look for advanced detections for contextual operations
-    let map = {
-      "#": "h2",
-      "##": "h3",
-      "###": "h4",
-      "####": "h5",
-      "#####": "h6",
-      "-": "ul",
-      "1.": "ol",
-      "---": "hr",
-      "```": "code",
-      ">": "blockquote",
-    };
     // see if our map matches
-    if (map[guess.replace(" ", "")]) {
-      let el = document.createElement(map[guess.replace(" ", "")]);
-      // silly thing for contenteditable to show it as full space height
-      el.innerHTML = "<br />";
-      if (["UL", "OL"].includes(el.tagName)) {
-        el.innerHTML = "<li></li>";
-      }
+    if (HAXStore.keyboardShortcuts[guess.replace(" ", "")]) {
+      let el = haxElementToNode(
+        HAXStore.keyboardShortcuts[guess.replace(" ", "")]
+      );
       this.haxReplaceNode(this.activeNode, el);
       this.__focusLogic(el);
       // breaks should jump just PAST the break
@@ -1273,6 +1259,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         this.haxInsert("p", "", {});
       }
     }
+    // @todo handle this differently
     // look for wildcard / web component pro insert mode
     else if (guess[0] === "!") {
       let tag = guess.replace("!", "").replaceAll(/ /g, "");

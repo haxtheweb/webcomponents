@@ -1603,6 +1603,19 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.connectionRewrites = {};
     // change this in order to debug voice commands
     this.voiceDebug = false;
+    // keyboard shortcuts, implementing haxHook: gizmoRegistration can ovewrite these as needed
+    this.keyboardShortcuts = {
+      "#": { tag: "h2", content: "<br />" },
+      "##": { tag: "h3", content: "<br />" },
+      "###": { tag: "h4", content: "<br />" },
+      "####": { tag: "h5", content: "<br />" },
+      "#####": { tag: "h6", content: "<br />" },
+      "-": { tag: "ul", content: "<li></li>" },
+      "1.": { tag: "ol", content: "<li></li>" },
+      "---": { tag: "hr" },
+      "```": { tag: "code", content: "<br/>" },
+      ">": { tag: "blockquote", content: "<br/>" },
+    };
     this.validTagList = this.__validTags();
     this.validGridTagList = this.__validGridTags();
     this.validGizmoTypes = this.__validGizmoTypes();
@@ -2863,6 +2876,21 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           gizmos.push(gizmo);
           this.gizmoList = [...gizmos];
           this.write("gizmoList", gizmos, this);
+          // haxHook: gizmoRegistration - allow elements to define their own
+          // custom functionality to run when a gizmo is registered
+          if (
+            window.customElements.get(gizmo.tag) &&
+            this.testHook(
+              document.createElement(gizmo.tag),
+              "gizmoRegistration"
+            )
+          ) {
+            this.runHook(
+              document.createElement(gizmo.tag),
+              "gizmoRegistration",
+              [this]
+            );
+          }
         }
         this.elementList[e.detail.tag] = e.detail.properties;
         // only push new values on if we got something new

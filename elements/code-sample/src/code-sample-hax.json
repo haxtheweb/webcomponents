@@ -16,6 +16,21 @@
   "settings": {
     "configure": [
       {
+        "property": "type",
+        "title": "Code highlighting",
+        "description": "Syntax highlighting to apply to the code area",
+        "inputMethod": "select",
+        "options": {
+          "javascript": "JavaScript",
+          "css": "CSS",
+          "html": "HTML",
+          "xml": "XML",
+          "json": "JSON data",
+          "php": "PHP",
+          "yaml": "YAML"
+        }
+      },
+      {
         "slot": "",
         "slotWrapper": "template",
         "slotAttributes": {
