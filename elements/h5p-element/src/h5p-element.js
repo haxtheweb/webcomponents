@@ -138,9 +138,13 @@ class H5PElement extends LitElement {
       <iframe id="h5p-iframe-${id}" class="h5p-iframe" data-content-id="${id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
     </div>
     `);
-    this.querySelector(
-      '[data-content-id="wrapper-' + this.contentId + '"'
-    ).appendChild(frag);
+    if (
+      this.querySelector('[data-content-id="wrapper-' + this.contentId + '"')
+    ) {
+      this.querySelector(
+        '[data-content-id="wrapper-' + this.contentId + '"'
+      ).appendChild(frag);
+    }
 
     if (this.source) {
       let stand = new H5PStandalone(id, this.source, displayOptions);

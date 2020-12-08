@@ -173,7 +173,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
   }
   render() {
     return html`
-      <hax-toolbar ?hide-more="${!this.hasSelectedText}" id="toolbar">
+      <hax-toolbar id="toolbar">
         <simple-popover-selection
           slot="primary"
           @simple-popover-selection-changed="${this.textFormatChanged}"
@@ -275,7 +275,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           label="Bold"
           class="selected-buttons"
           event-name="text-bold"
-          ?disabled="${!this.hasSelectedText}"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -285,7 +285,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           label="Italic"
           class="selected-buttons"
           event-name="text-italic"
-          ?disabled="${!this.hasSelectedText}"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -295,7 +295,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           label="Link"
           class="selected-buttons"
           event-name="text-link"
-          ?disabled="${!this.hasSelectedText}"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -305,7 +305,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           label="Remove link"
           class="selected-buttons"
           event-name="text-unlink"
-          ?disabled="${!this.hasSelectedText}"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -315,7 +315,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           label="Remove format"
           class="selected-buttons"
           event-name="text-remove-format"
-          ?disabled="${!this.hasSelectedText}"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item
           mini
@@ -343,6 +343,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           slot="more"
           icon="mdextra:subscript"
           event-name="text-subscript"
+          ?hidden="${!this.hasSelectedText}"
           >Subscript</hax-context-item-textop
         >
         <hax-context-item-textop
@@ -351,6 +352,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           slot="more"
           icon="mdextra:superscript"
           event-name="text-superscript"
+          ?hidden="${!this.hasSelectedText}"
           >Superscript</hax-context-item-textop
         >
         <hax-context-item-textop
@@ -359,6 +361,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           slot="more"
           icon="editor:format-underlined"
           event-name="text-underline"
+          ?hidden="${!this.hasSelectedText}"
           >Underline</hax-context-item-textop
         >
         <hax-context-item-textop
@@ -367,7 +370,24 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           slot="more"
           icon="editor:format-strikethrough"
           event-name="text-strikethrough"
+          ?hidden="${!this.hasSelectedText}"
           >Cross out</hax-context-item-textop
+        >
+        <hax-context-item-textop
+          action
+          menu
+          slot="more"
+          icon="hardware:keyboard-arrow-up"
+          event-name="insert-above-active"
+          >Insert item above</hax-context-item-textop
+        >
+        <hax-context-item-textop
+          action
+          menu
+          slot="more"
+          icon="hardware:keyboard-arrow-down"
+          event-name="insert-below-active"
+          >Insert item below</hax-context-item-textop
         >
       </hax-toolbar>
     `;
@@ -496,6 +516,12 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
     let prevent = false;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
+      case "insert-above-active":
+      case "insert-below-active":
+        this.shadowRoot.querySelector(
+          "simple-popover-selection"
+        ).opened = false;
+        break;
       case "text-underline":
         document.execCommand("underline");
         prevent = true;

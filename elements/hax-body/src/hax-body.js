@@ -2188,6 +2188,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     let detail = e.detail;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
+      case "insert-above-active":
+        this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
+        break;
+      case "insert-below-active":
+        this.haxInsert("p", "", {});
+        break;
       case "hax-source-view-toggle":
         if (!this.activeNode.__haxSourceView) {
           this.activeNode.__haxSourceView = true;
@@ -2521,13 +2527,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     }
     // hide menus when state changes
     if (newValue == false) {
+      // this effectively removes the editing element
+      unwrap(HAXStore.activeEditingElement);
+      HAXStore.activeEditingElement = null;
       this.removeAttribute("contenteditable");
       this.hideContextMenus();
       // clean up for nested items we might miss
-      this.querySelectorAll("[contenteditable],.hax-active").forEach((el) => {
+      let activeKids = this.querySelectorAll("[contenteditable],.hax-active");
+      for (var i = 0; i < activeKids.length; i++) {
+        let el = activeKids[i];
         el.removeAttribute("contenteditable");
         el.classList.remove("hax-active");
-      });
+      }
     }
     // support for elements caring about the state change
     let children =
@@ -2541,9 +2552,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       children = this.shadowRoot.querySelector("#body").children;
     }
     // see if anyone cares about editMode changing; some link based things do
-    children.forEach((el) => {
-      HAXStore.runHook(el, "editModeChanged", [newValue]);
-    });
+    for (var i = 0; i < children.length; i++) {
+      HAXStore.runHook(children[i], "editModeChanged", [newValue]);
+    }
   }
   /**
    * Test if this is a HAX element or not

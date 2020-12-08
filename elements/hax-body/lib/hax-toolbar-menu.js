@@ -38,6 +38,11 @@ class HaxToolbarMenu extends LitElement {
           simple-popover-manager {
             --simple-popover-padding: 0;
           }
+          hax-context-item-textop[hidden] {
+            opacity: 0;
+            display: none;
+            visibility: hidden;
+          }
         </style>
         <hax-toolbar-item
           ?mini="${this.mini}"

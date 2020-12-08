@@ -750,7 +750,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    * Process event for simple content inserts.
    */
   _processTrayEvent(e) {
-    let detail = e.detail;
     var target = null;
     if (e.path && e.path[0]) {
       target = e.path[0];
@@ -760,7 +759,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       target = e.target;
     }
     // support a simple insert event to bubble up or everything else
-    switch (detail.eventName) {
+    switch (e.detail.eventName) {
       case "insert-stax":
         this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(
@@ -774,7 +773,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         break;
       case "insert-tag":
         let gizmo = {
-          tag: detail.value,
+          tag: e.detail.value,
         };
         let properties = JSON.parse(target.getAttribute("event-properties"));
         let innerContent = target.getAttribute("event-content");
@@ -840,15 +839,21 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         HAXStore.activeHaxBody.redo();
         break;
       case "cancel":
-        HAXStore.editMode = false;
-        this.dispatchEvent(
-          new CustomEvent("hax-cancel", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: detail,
-          })
-        );
+        if (
+          confirm(
+            "Changes have not been saved, Click OK to close HAX or Cancel to continue editing."
+          )
+        ) {
+          HAXStore.editMode = false;
+          this.dispatchEvent(
+            new CustomEvent("hax-cancel", {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: e.detail,
+            })
+          );
+        }
         break;
     }
   }

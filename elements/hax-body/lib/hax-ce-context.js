@@ -59,7 +59,7 @@ class HaxCeContext extends LitElement {
   }
   render() {
     return html`
-      <hax-toolbar hide-more>
+      <hax-toolbar>
         <hax-context-item
           mini
           action
@@ -93,6 +93,22 @@ class HaxCeContext extends LitElement {
           ?disabled="${!this.sourceView}"
           event-name="hax-source-view-toggle"
         ></hax-context-item>
+        <hax-context-item-textop
+          action
+          menu
+          slot="more"
+          icon="hardware:keyboard-arrow-up"
+          event-name="insert-above-active"
+          >Insert item above</hax-context-item-textop
+        >
+        <hax-context-item-textop
+          action
+          menu
+          slot="more"
+          icon="hardware:keyboard-arrow-down"
+          event-name="insert-below-active"
+          >Insert item below</hax-context-item-textop
+        >
       </hax-toolbar>
     `;
   }

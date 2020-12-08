@@ -45,7 +45,6 @@ export const lazyImageLoader = function (SuperClass) {
           clearTimeout(this.__debouce);
           this.__debouce = setTimeout(() => {
             this.imageLoaded = true;
-            console.log("hi");
           }, this.replacementDelay);
         }
       });

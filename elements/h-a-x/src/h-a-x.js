@@ -126,12 +126,20 @@ class HAX extends HTMLElement {
       this.render();
     }
     window.addEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.addEventListener("hax-cancel", this.cancelEvent.bind(this));
+    window.addEventListener("hax-save", this.saveEvent.bind(this));
     window.addEventListener(
       "hax-store-app-store-loaded",
       this.appStoreReady.bind(this)
     );
     // dynamically import definitions for all needed tags
     import("./lib/h-a-x-dependencies.js");
+  }
+  cancelEvent(e) {
+    this.importSlotToHaxBody();
+  }
+  saveEvent(e) {
+    this.innerHTML = HAXStore.activeHaxBody.haxToContent();
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -172,24 +180,30 @@ class HAX extends HTMLElement {
       }, 0);
     }
   }
+  // import into the active body if there's content
+  // obtain the nodes that have been assigned to the slot of our element
+  importSlotToHaxBody() {
+    var nodes = [];
+    if (this.shadowRoot.querySelector("slot")) {
+      nodes = this.shadowRoot.querySelector("slot").assignedNodes();
+    } else {
+      nodes = this.children;
+    }
+    let body = "";
+    // loop the nodes and if it has an outerHTML attribute, append as string
+    for (let i in nodes) {
+      if (typeof nodes[i].outerHTML !== typeof undefined) {
+        body += nodes[i].outerHTML;
+      }
+    }
+    HAXStore.activeHaxBody.importContent(body);
+  }
   /**
    * Appstore has been loaded, NOW we can safely do an import
    */
   appStoreReady(e) {
     if (e.detail) {
-      // import into the active body if there's content
-      // obtain the nodes that have been assigned to the slot of our element
-      if (this.shadowRoot.querySelector("slot")) {
-        const nodes = this.shadowRoot.querySelector("slot").assignedNodes();
-        let body = "";
-        // loop the nodes and if it has an outerHTML attribute, append as string
-        for (let i in nodes) {
-          if (typeof nodes[i].outerHTML !== typeof undefined) {
-            body += nodes[i].outerHTML;
-          }
-        }
-        HAXStore.activeHaxBody.importContent(body);
-      }
+      this.importSlotToHaxBody();
     }
   }
   render() {
@@ -216,6 +230,8 @@ class HAX extends HTMLElement {
   }
   disconnectedCallback() {
     window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.removeEventListener("hax-cancel", this.cancelEvent.bind(this));
+    window.removeEventListener("hax-save", this.saveEvent.bind(this));
     window.removeEventListener(
       "hax-store-ready",
       this.appStoreReady.bind(this)
