@@ -26,6 +26,7 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
     return [
       ...super.baseStyles,
       css`
+        :host,
         #floating {
           display: flex;
         }
