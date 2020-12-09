@@ -662,25 +662,15 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   }
 
   _handleEditorClick(editor, e) {
-    console.log("_handleEditorClick", editor.__focused, e);
     if (!editor.__focused) {
       editor.focus();
     } else {
       let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
-        els = !toolbar ? [] : Object.keys(toolbar._clickableElements || {}),
+        els = !toolbar ? [] : Object.keys(toolbar.__clickableElements || {}),
         el = e.path[0] || { tagName: "" },
         evt = { detail: el },
         tagname = (el.tagName || "").toLowerCase();
-      console.log(
-        "_handleEditorClick a",
-        toolbar,
-        els,
-        el,
-        evt,
-        tagname,
-        els.includes(tagname)
-      );
-      if (els.includes(tagname)) toolbar._clickableElements[tagname](evt);
+      if (els.includes(tagname)) toolbar.__clickableElements[tagname](evt);
     }
   }
   /**

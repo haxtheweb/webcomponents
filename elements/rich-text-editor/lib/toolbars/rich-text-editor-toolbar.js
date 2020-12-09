@@ -517,24 +517,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.sticky = false;
       this.__clickableElements = {};
       this.shortcutKeys = [];
+      this.addEventListener("button-register", this._registerButton);
     }
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this.buttons = this._getButtons();
-      this.buttons.forEach((button) => {
-        if (button.handleTagClick)
-          (button.tagsArray || []).forEach(
-            (tag) => (this.__clickableElements[tag] = button.handleTagClick)
-          );
-        console.log(
-          this.__clickableElements,
-          button,
-          button.tagsArray,
-          button.tagsList,
-          button.handleClick
-        );
-      });
-      console.log(this.__clickableElements);
       window.dispatchEvent(
         new CustomEvent("responsive-element", {
           detail: { element: this.shadowRoot.querySelector("#toolbar") },
@@ -821,6 +808,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.breadcrumbs.hidden = !this.controls && !this.alwaysVisible;
         }
       }
+    }
+    _registerButton(e) {
+      if (e.detail)
+        (e.detail.tags || []).forEach(
+          (tag) => (this.__clickableElements[tag] = e.detail.handler)
+        );
+      console.log("_registerButton", this.__clickableElements, e.detail);
     }
 
     /**

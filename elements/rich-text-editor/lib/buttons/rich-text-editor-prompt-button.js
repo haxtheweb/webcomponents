@@ -84,12 +84,29 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       this.prompt = window.RichTextEditorPrompt.requestAvailability();
     }
 
-    handleTagClick(e) {
-      if (e.detail) {
-        this.highlightNode(e.detail);
-        this.selectedNode = e.detail;
-        this.open();
-      }
+    firstUpdated(changedProperties) {
+      super.firstUpdated(changedProperties);
+      this.registerTagClick();
+    }
+
+    registerTagClick() {
+      this.dispatchEvent(
+        new CustomEvent("button-register", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            tags: this.tagsArray,
+            handler: (e) => {
+              if (e.detail) {
+                this.highlightNode(e.detail);
+                this.selectedNode = e.detail;
+                this.open();
+              }
+            },
+          },
+        })
+      );
     }
 
     /**
