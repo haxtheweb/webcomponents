@@ -182,6 +182,7 @@ class EditableTable extends displayBehaviors(LitElement) {
             var(--editable-table-row-vertical-padding, 10px)
               var(--editable-table-row-horizontal-padding, 6px)
           );
+          border: none !important;
         }
         td #icons {
           position: absolute;

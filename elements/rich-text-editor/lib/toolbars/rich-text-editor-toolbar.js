@@ -40,7 +40,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           #toolbar {
             display: flex;
             opacity: 1;
-            z-index: 1;
+            z-index: 2;
             margin: 0;
             align-items: stretch;
             flex-wrap: wrap;
@@ -50,7 +50,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             font-size: 12px;
             transition: all 0.5s;
           }
-          #toolbar[aria-hidden="true"] {
+          #toolbar[hidden] {
+            z-index: -1;
             visibility: hidden;
             opacity: 0;
             height: 0;
@@ -96,6 +97,265 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 
     static get styles() {
       return [...this.baseStyles, ...this.stickyStyles];
+    }
+    get defaultConfig() {
+      return [
+        {
+          label: "History",
+          type: "button-group",
+          buttons: [
+            {
+              command: "undo",
+              icon: "undo",
+              label: "Undo",
+              shortcutKeys: "ctrl+z",
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "redo",
+              icon: "redo",
+              label: "Redo",
+              shortcutKeys: "ctrl+shift+z",
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+        {
+          label: "Basic Inline Operations",
+          type: "button-group",
+          buttons: [
+            {
+              label: "Format",
+              type: "rich-text-editor-heading-picker",
+            },
+            {
+              command: "bold",
+              icon: "editor:format-bold",
+              label: "Bold",
+              shortcutKeys: "ctrl+b",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "italic",
+              icon: "editor:format-italic",
+              label: "Italics",
+              shortcutKeys: "ctrl+i",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "removeFormat",
+              icon: "editor:format-clear",
+              label: "Erase Format",
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+        {
+          label: "Links",
+          type: "button-group",
+          buttons: [
+            {
+              icon: "link",
+              label: "Link",
+              shortcutKeys: "ctrl+k",
+              type: "rich-text-editor-link",
+            },
+          ],
+        },
+        {
+          label: "Clipboard Operations",
+          type: "button-group",
+          buttons: [
+            {
+              command: "cut",
+              icon: "content-cut",
+              label: "Cut",
+              shortcutKeys: "ctrl+x",
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "copy",
+              icon: "content-copy",
+              label: "Copy",
+              shortcutKeys: "ctrl+c",
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "paste",
+              icon: "content-paste",
+              label: "Paste",
+              shortcutKeys: "ctrl+v",
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+        {
+          collapsedUntil: "md",
+          label: "Subscript and Superscript",
+          type: "button-group",
+          buttons: [
+            {
+              command: "subscript",
+              icon: "mdextra:subscript",
+              label: "Subscript",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "superscript",
+              icon: "mdextra:superscript",
+              label: "Superscript",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+        {
+          collapsedUntil: "sm",
+          icon: "editor:functions",
+          label: "Insert Symbol",
+          symbolTypes: ["symbols"],
+          type: "rich-text-editor-symbol-picker",
+        },
+        {
+          collapsedUntil: "sm",
+          label: "Lists and Indents",
+          type: "button-group",
+          buttons: [
+            {
+              command: "insertOrderedList",
+              icon: "editor:format-list-numbered",
+              label: "Ordered List",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "insertUnorderedList",
+              icon: "editor:format-list-bulleted",
+              label: "Unordered List",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              collapsedUntil: "lg",
+              command: "formatBlock",
+              commandVal: "blockquote",
+              label: "Blockquote",
+              icon: "editor:format-quote",
+              shortcutKeys: "ctrl+'",
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "indent",
+              icon: "editor:format-indent-increase",
+              event: "text-indent",
+              label: "Increase Indent",
+              shortcutKeys: "ctrl+]",
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "outdent",
+              event: "text-outdent",
+              icon: "editor:format-indent-decrease",
+              label: "Decrease Indent",
+              shortcutKeys: "ctrl+[",
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+      ];
+    }
+
+    get miniConfig() {
+      return [
+        {
+          label: "Basic Inline Operations",
+          type: "button-group",
+          buttons: [
+            {
+              command: "bold",
+              icon: "editor:format-bold",
+              label: "Bold",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "italic",
+              icon: "editor:format-italic",
+              label: "Italics",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              collapsedUntil: "md",
+              command: "removeFormat",
+              icon: "editor:format-clear",
+              label: "Erase Format",
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+        {
+          label: "Links",
+          type: "button-group",
+          buttons: [
+            {
+              command: "link",
+              icon: "link",
+              label: "Link",
+              toggledCommand: "unlink",
+              toggledIcon: "mdextra:unlink",
+              toggledLabel: "Unink",
+              toggles: true,
+              type: "rich-text-editor-link",
+            },
+          ],
+        },
+        {
+          collapsedUntil: "md",
+          label: "Subscript and Superscript",
+          type: "button-group",
+          buttons: [
+            {
+              command: "subscript",
+              icon: "mdextra:subscript",
+              label: "Subscript",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "superscript",
+              icon: "mdextra:superscript",
+              label: "Superscript",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+        {
+          collapsedUntil: "sm",
+          label: "Lists and Indents",
+          type: "button-group",
+          buttons: [
+            {
+              command: "insertOrderedList",
+              icon: "editor:format-list-numbered",
+              label: "Ordered List",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "insertUnorderedList",
+              icon: "editor:format-list-bulleted",
+              label: "Unordered List",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+      ];
     }
 
     // render function for toolbar
@@ -339,176 +599,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("@polymer/iron-icons/image-icons.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       window.ResponsiveUtility.requestAvailability();
-
       this.alwaysVisible = false;
       this.collapsed = true;
-      this.config = [
-        {
-          label: "History",
-          type: "button-group",
-          buttons: [
-            {
-              command: "undo",
-              icon: "undo",
-              label: "Undo",
-              shortcutKeys: "ctrl+z",
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "redo",
-              icon: "redo",
-              label: "Redo",
-              shortcutKeys: "ctrl+shift+z",
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
-        {
-          label: "Basic Inline Operations",
-          type: "button-group",
-          buttons: [
-            {
-              label: "Format",
-              type: "rich-text-editor-heading-picker",
-            },
-            {
-              command: "bold",
-              icon: "editor:format-bold",
-              label: "Bold",
-              shortcutKeys: "ctrl+b",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "italic",
-              icon: "editor:format-italic",
-              label: "Italics",
-              shortcutKeys: "ctrl+i",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "removeFormat",
-              icon: "editor:format-clear",
-              label: "Erase Format",
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
-        {
-          label: "Links",
-          type: "button-group",
-          buttons: [
-            {
-              icon: "link",
-              label: "Link",
-              shortcutKeys: "ctrl+k",
-              type: "rich-text-editor-link",
-            },
-          ],
-        },
-        {
-          label: "Clipboard Operations",
-          type: "button-group",
-          buttons: [
-            {
-              command: "cut",
-              icon: "content-cut",
-              label: "Cut",
-              shortcutKeys: "ctrl+x",
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "copy",
-              icon: "content-copy",
-              label: "Copy",
-              shortcutKeys: "ctrl+c",
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "paste",
-              icon: "content-paste",
-              label: "Paste",
-              shortcutKeys: "ctrl+v",
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
-        {
-          collapsedUntil: "md",
-          label: "Subscript and Superscript",
-          type: "button-group",
-          buttons: [
-            {
-              command: "subscript",
-              icon: "mdextra:subscript",
-              label: "Subscript",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "superscript",
-              icon: "mdextra:superscript",
-              label: "Superscript",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
-        {
-          collapsedUntil: "sm",
-          icon: "editor:functions",
-          label: "Insert Symbol",
-          symbolTypes: ["symbols"],
-          type: "rich-text-editor-symbol-picker",
-        },
-        {
-          collapsedUntil: "sm",
-          label: "Lists and Indents",
-          type: "button-group",
-          buttons: [
-            {
-              command: "insertOrderedList",
-              icon: "editor:format-list-numbered",
-              label: "Ordered List",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "insertUnorderedList",
-              icon: "editor:format-list-bulleted",
-              label: "Unordered List",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              collapsedUntil: "lg",
-              command: "formatBlock",
-              commandVal: "blockquote",
-              label: "Blockquote",
-              icon: "editor:format-quote",
-              shortcutKeys: "ctrl+'",
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "indent",
-              icon: "editor:format-indent-increase",
-              event: "text-indent",
-              label: "Increase Indent",
-              shortcutKeys: "ctrl+]",
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "outdent",
-              event: "text-outdent",
-              icon: "editor:format-indent-decrease",
-              label: "Decrease Indent",
-              shortcutKeys: "ctrl+[",
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
-      ];
+      this.config = this.defaultConfig;
       this.moreIcon = "more-vert";
       this.moreLabel = "More Buttons";
       this.moreLabelToggled = "Fewer Buttons";
@@ -517,6 +610,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.sticky = false;
       this.__clickableElements = {};
       this.shortcutKeys = [];
+      console.log(this.defaultConfig);
       this.addEventListener("button-register", this._registerButton);
     }
     firstUpdated(changedProperties) {
@@ -796,7 +890,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.editor &&
         this.editor.contains(this.range.commonAncestorContainer)
       ) {
-        this.buttons.forEach((button) => {
+        (this.buttons || []).forEach((button) => {
           button.range = undefined;
           button.range = this.range;
           button.selectedNode = this.selectedNode;
@@ -810,11 +904,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       }
     }
     _registerButton(e) {
+      e.stopPropagation();
       if (e.detail)
         (e.detail.tags || []).forEach(
           (tag) => (this.__clickableElements[tag] = e.detail.handler)
         );
-      console.log("_registerButton", this.__clickableElements, e.detail);
     }
 
     /**

@@ -455,9 +455,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           }
         },
         keydown: (e) => this._handleShortcutKeys(editor, e),
-        mouseover: (e) => {
-          if (!toolbar.__promptOpen) this.edit(editor);
-        },
         mouseout: (e) => {
           if (!toolbar.__promptOpen) this._handleBlur(editor, e);
         },

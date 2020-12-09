@@ -38,11 +38,20 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
           display: block;
           cursor: pointer;
           min-height: 40px;
+          outline: var(--rich-text-editor-border-width, 1px) solid transparent;
         }
 
-        :host([contenteditable="true"]) {
-          border: var(--rich-text-editor-border);
-          overflow: auto;
+        :host(:empty) {
+          outline: var(--rich-text-editor-border-width, 1px) dashed
+            var(--rich-text-editor-border-color);
+        }
+
+        :host(:hover),
+        :host([contenteditable="true"]),
+        :host([contenteditable="true"]):focus-within,
+        :host([contenteditable="true"]):focus {
+          outline: var(--rich-text-editor-border-width, 1px) solid
+            var(--rich-text-editor-border-focus-color);
         }
 
         :host([contenteditable="true"]):focus-within,
@@ -54,11 +63,6 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         :host(.heightmax[contenteditable="true"]) {
           max-height: calc(100vh - 200px);
           overflow-y: scroll;
-        }
-
-        :host(:empty) {
-          border: 1px dashed var(--rich-text-editor-border-color);
-          outline: 1px dashed var(--rich-text-editor-border-color);
         }
 
         :host(:empty):before {

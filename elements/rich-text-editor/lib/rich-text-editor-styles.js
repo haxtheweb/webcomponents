@@ -18,8 +18,9 @@ const RichTextEditorStyles = (SuperClass) => {
             --rich-text-editor-bg: #fafafa;
             --rich-text-editor-button-color: #444;
             --rich-text-editor-border-color: #ddd;
-            --rich-text-editor-border: 1px solid
-              var(--rich-text-editor-border-color, #ddd);
+            --rich-text-editor-border-focus-color: blue;
+            --rich-text-editor-border: var(--rich-text-editor-border-width, 1px)
+              solid var(--rich-text-editor-border-color, #ddd);
             --rich-text-editor-button-border: transparent;
             --rich-text-editor-button-disabled-color: #666;
             --rich-text-editor-button-disabled-bg: transparent;
