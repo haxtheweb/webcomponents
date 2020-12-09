@@ -851,6 +851,34 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           if (mutation.addedNodes.length > 0) {
             for (var node of mutation.addedNodes) {
               if (this._validElementTest(node)) {
+                // P should not be in a P; parent detects it
+                if (
+                  node.tagName === "P" &&
+                  node.children.length > 0 &&
+                  node.children[0].tagName === "P"
+                ) {
+                  unwrap(node);
+                  continue;
+                }
+                // P should not be in a P; kid detects it
+                if (
+                  node.tagName === "P" &&
+                  node.parentElement &&
+                  node.parentElement.tagName === "P"
+                ) {
+                  unwrap(node.parentElement);
+                  continue;
+                }
+                // ensure no slot issue w/ this element as parent
+                // timing issues or faulty elements being imported can trip this
+                // which should never be possible
+                if (
+                  node.getAttribute("slot") != null &&
+                  node.parentElement === this
+                ) {
+                  node.removeAttribute("slot");
+                  continue;
+                }
                 // weird edge clean up from pasting operations
                 // span tag popping up when doing keyboard based indent operations in a list
                 if (
@@ -906,6 +934,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   // we don't want BR's injected at top of body area
                   else if (node.tagName === "BR") {
                     node.remove();
+                    continue;
                   }
                 }
                 // edge case, thing is moved around in the dom so let's do the opposite
@@ -920,6 +949,22 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   this.__applyNodeEditableState(node, !this.editMode);
                 }
                 this.__applyNodeEditableState(node, this.editMode);
+                // now test for this being a grid plate element which implies
+                // we need to ensure this is applied deep into its children
+                if (HAXStore.isGridPlateElement(node)) {
+                  // more lazy selector that will pull ANYTHING in the grid plate element
+                  let grandKids = node.querySelectorAll("*");
+                  for (var j = 0; j < grandKids.length; j++) {
+                    // sanity check for being a valid element / not a "hax" element
+                    if (this._validElementTest(grandKids[j])) {
+                      // correctly add or remove listeners
+                      this.__applyNodeEditableState(
+                        grandKids[j],
+                        this.editMode
+                      );
+                    }
+                  }
+                }
                 // special support for Header tags showing up w.o. identifiers
                 // this way it's easier to anchor to them in the future
                 if (
@@ -1590,7 +1635,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           })
         : [];
     var content = "";
-    for (var i = 0, len = children.length; i < len; i++) {
+    for (var i = 0; i < children.length; i++) {
       // some mild front-end sanitization
       if (this._validElementTest(children[i])) {
         children[i].removeAttribute("data-hax-ray");
@@ -1752,7 +1797,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Reposition context menus to match an element.
    */
   positionContextMenus(node = this.activeNode) {
-    //console.log(node);
+    //console.warn(node);
     // special case for node not matching container yet it being editable
     if (node && node.tagName && this.__ready) {
       let tag = node.tagName.toLowerCase();
@@ -2216,6 +2261,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             );
           }
           this.__ignoreActive = true;
+          this.activeNode.removeAttribute("contenteditable");
+          this.activeNode.removeAttribute("data-hax-ray");
+          this.activeNode.classList.remove("hax-active");
           wrap(this.activeNode, HAXStore.activeEditingElement);
         } else {
           this.activeNode.__haxSourceView = false;
@@ -2630,6 +2678,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     status,
     target = this.shadowRoot.querySelector("#body")
   ) {
+    // this is just direct children so 1st level of the body
     let children =
       target.localName === "slot"
         ? target.assignedNodes({ flatten: true })
@@ -2638,7 +2687,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (children.length === 0) {
       children = target.children;
     }
-    for (var i = 0, len = children.length; i < len; i++) {
+    for (var i = 0; i < children.length; i++) {
       // sanity check for being a valid element / not a "hax" element
       if (this._validElementTest(children[i])) {
         // correctly add or remove listeners
@@ -2649,6 +2698,19 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             children[i].getAttribute("contenteditable") != "contenteditable")
         ) {
           this.__applyNodeEditableState(children[i], status);
+        }
+      }
+      // now test for this being a grid plate element which implies
+      // we need to ensure this is applied deep into its children
+      if (HAXStore.isGridPlateElement(children[i])) {
+        // more lazy selector that will pull ANYTHING in the grid plate element
+        let grandKids = children[i].querySelectorAll("*");
+        for (var j = 0; j < grandKids.length; j++) {
+          // sanity check for being a valid element / not a "hax" element
+          if (this._validElementTest(grandKids[j])) {
+            // correctly add or remove listeners
+            this.__applyNodeEditableState(grandKids[j], status);
+          }
         }
       }
     }
