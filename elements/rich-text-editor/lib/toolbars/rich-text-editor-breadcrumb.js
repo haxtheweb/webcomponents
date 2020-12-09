@@ -45,7 +45,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
         tabindex="0"
         part="button"
       >
-        ${this.tag}
+        ${this.label}
       </button>
     `;
   }
@@ -61,7 +61,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
       /**
        * The tag for this breadcrumb.
        */
-      tag: {
+      label: {
         type: String,
       },
       /**
@@ -75,7 +75,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
 
   constructor() {
     super();
-    this.tag = "";
+    this.label = "";
     this.addEventListener("mousedown", function (e) {
       e.preventDefault();
     });

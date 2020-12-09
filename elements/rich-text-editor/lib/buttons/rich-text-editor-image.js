@@ -61,17 +61,8 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
     this.command = "insertHTML";
     this.label = "Insert Inline Image";
     this.icon = "editor:insert-photo";
-    this.tag = "img";
+    this.tagsList = "img";
     this.value = {};
-  }
-  /**
-   * overrides default block selectors
-   *
-   * @readonly
-   * @memberof RichTextEditorLink
-   */
-  get blockSelectors() {
-    return "img";
   }
 
   /**

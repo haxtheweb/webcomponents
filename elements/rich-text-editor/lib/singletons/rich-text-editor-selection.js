@@ -37,6 +37,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           color: var(--rich-text-editor-selection-bg);
           background-color: transparent;
         }
+        :host + *,
         ::slotted(*) {
           background-color: var(--rich-text-editor-selection-bg);
         }
@@ -164,7 +165,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         let node = this.getRangeNode();
         node.innerHTML = val;
       } else if (command !== "paste") {
-        console.log("command", range, this.getRangeNode());
         document.execCommand(command, false, val);
       } else if (navigator.clipboard) {
         this.pasteFromClipboard(editor);
@@ -203,7 +203,9 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       editor.contenteditable = true;
       this.updateRange(editor);
       //editor.observeChanges(this.getRoot(editor));
-      this.getRoot(editor).onselectionchange = (e) => this.updateRange(editor);
+      this.getRoot(editor).onselectionchange = (e) => {
+        if (!toolbar.__promptOpen) this.updateRange(editor);
+      };
     }
   }
 
@@ -328,8 +330,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   highlightNode(node, toolbar) {
-    //console.log("highlightNode", node);
-    this.selectNode(node, toolbar.range);
+    this.selectNode(node, toolbar.range, toolbar.editor);
     this.highlight(toolbar);
   }
 
@@ -339,14 +340,14 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @param {boolean} [add=true] add highlight?
    * @returns {void}
    */
-  highlight(toolbar, add = true) {
-    //console.log("highlight", add);
+  highlight(toolbar, add = true, node) {
     this.toolbar = toolbar;
     let editor = toolbar.editor;
     if (add !== false) {
       if (toolbar.range) {
         this.hidden = false;
         toolbar.range.insertNode(this);
+        if (node) this.append(node);
         toolbar.range.setStartAfter(this);
         this.range = toolbar.range;
       }
@@ -448,8 +449,10 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           if (!toolbar.__promptOpen) this.edit(editor);
         },
         getrange: (e) => {
-          this.toolbar = toolbar;
-          this.updateRange(editor, editor.range);
+          if (!toolbar.__promptOpen) {
+            this.toolbar = toolbar;
+            this.updateRange(editor, editor.range);
+          }
         },
         keydown: (e) => this._handleShortcutKeys(editor, e),
         mouseover: (e) => {
@@ -542,7 +545,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     };
     if (!remove && !toolbar.registered) {
       this.__toolbars.push(toolbar);
-      console.log("add Toolbar", toolbar, this.__toolbars);
       Object.keys(handlers).forEach((handler) =>
         toolbar.addEventListener(handler, handlers[handler])
       );
@@ -553,7 +555,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         toolbar.removeEventListener(handler, handlers[handler])
       );
       //this.__toolbars = this.__toolbars.filter((bar) => bar !== toolbar);
-      console.log("remove tolbar", toolbar, this.__toolbars);
     }
   }
 
@@ -661,33 +662,26 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   }
 
   _handleEditorClick(editor, e) {
-    let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
-      target = e.path[0];
-    /*if (editor.contenteditable && e.path[0] !== editor) {
-      editor.range = editor.range;
-      let button = toolbar.buttons.filter(
-          button => button.tag === e.path[0].tagName.toLowerCase()
-        ),
-        range =
-          editor.range
-            ? editor.range
-            : false,
-        start =
-          range && range.startContainer
-            ? range.startContainer.childNodes[range.startOffset]
-            : false,
-        end =
-          range && range.endContainer
-            ? range.endContainer.childNodes[range.endOffset - 1]
-            : false;
-      if (button && button[0] && start === end && start === e.path[0]) {
-        button[0]._buttonTap(e);
-      } else if (button && button[0]) {
-        this.selectNode(e.path[0],range);
-      }
-    } else if (editor.contenteditable){
-      //this.selectNodeContents(editor);
-    }*/
+    console.log("_handleEditorClick", editor.__focused, e);
+    if (!editor.__focused) {
+      editor.focus();
+    } else {
+      let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
+        els = !toolbar ? [] : Object.keys(toolbar._clickableElements || {}),
+        el = e.path[0] || { tagName: "" },
+        evt = { detail: el },
+        tagname = (el.tagName || "").toLowerCase();
+      console.log(
+        "_handleEditorClick a",
+        toolbar,
+        els,
+        el,
+        evt,
+        tagname,
+        els.includes(tagname)
+      );
+      if (els.includes(tagname)) toolbar._clickableElements[tagname](evt);
+    }
   }
   /**
    * registers parts of the editor so that selection can manage them

@@ -51,7 +51,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
             (ancestor, i) => html`
               <rich-text-editor-breadcrumb
                 controls="${this.controls}"
-                tag="${ancestor.nodeName.toLowerCase()}"
+                label="${ancestor.nodeName.toLowerCase()}"
                 .target="${ancestor}"
                 @breadcrumb-tap="${this._handleBreadcrumb}"
               >

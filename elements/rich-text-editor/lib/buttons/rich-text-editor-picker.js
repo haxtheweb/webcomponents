@@ -148,7 +148,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
     _rangeChanged() {
       let val = this._getSelection();
       if (this.shadowRoot) {
-        if (this.blockSelectors.split(",").includes(val)) {
+        if (this.tagsArray.includes(val)) {
           this.shadowRoot.querySelector("#button").value = val;
         } else if (!this.range || this.range.collapsed) {
           this.shadowRoot.querySelector("#button").value = null;

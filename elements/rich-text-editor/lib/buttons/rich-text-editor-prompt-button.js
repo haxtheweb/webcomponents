@@ -34,25 +34,11 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
         /**
          * is element a custom inline widget element?
          */
-        inlineWidget: {
-          name: "inlineWidget",
-          type: Boolean,
-        },
-        /**
-         * is element a custom inline widget element?
-         */
         id: {
           name: "id",
           type: String,
           reflect: true,
           attribute: "id",
-        },
-        /**
-         * tag that will wrap selected range
-         */
-        tag: {
-          name: "tag",
-          type: String,
         },
         /**
          * prefilled value of prompt
@@ -86,7 +72,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.editableSelection = false;
-      this.inlineWidget = false;
       this.fields = [
         {
           property: "innerHTML",
@@ -94,9 +79,17 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           inputMethod: "textfield",
         },
       ];
-      this.tag = "span";
+      this.tagsList = "span";
       this.value = { innerHTML: undefined };
       this.prompt = window.RichTextEditorPrompt.requestAvailability();
+    }
+
+    handleTagClick(e) {
+      if (e.detail) {
+        this.highlightNode(e.detail);
+        this.selectedNode = e.detail;
+        this.open();
+      }
     }
 
     /**
@@ -158,13 +151,16 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       this.updateSelection();
     }
     /**
-     * expands selection to include this.tag
+     * expands selection to include this.tags
      *
      */
     expandSelection() {
       let element = this.rangeQuery();
       console.log("expand", element);
-      if (element) this.highlightNode(element);
+      if (element) {
+        this.highlightNode(element);
+        this.selectedNode = element;
+      }
     }
     /**
      * if selection is a node, gets node innerHTML

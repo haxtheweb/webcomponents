@@ -94,6 +94,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     });
   }
   focus() {
+    this.__focused = true;
     this.dispatchEvent(
       new CustomEvent("focus", {
         bubbles: true,

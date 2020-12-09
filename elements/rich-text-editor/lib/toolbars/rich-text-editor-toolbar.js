@@ -284,23 +284,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         /**
          * Tracks inline widgets that require selection data
          */
-        __clickableElement: {
-          name: "__clickableElement",
-          type: Array,
-        },
-        /**
-         * whether editor has focus
-         */
-        __editorFocused: {
-          name: "__editorFocused",
-          type: Boolean,
-        },
-        /**
-         * whether editor is hovered
-         */
-        __editorHovered: {
-          name: "__editorHovered",
-          type: Boolean,
+        __clickableElements: {
+          name: "__clickableElements",
+          type: Object,
         },
         /**
          * whether toolbar has focus
@@ -314,13 +300,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
          */
         __hidden: {
           name: "__hidden",
-          type: Boolean,
-        },
-        /**
-         * whether toolbar is hovered
-         */
-        __focused: {
-          name: "__focused",
           type: Boolean,
         },
         /**
@@ -536,13 +515,26 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.moreShowTextLabel = false;
       this.responsiveSize = "xs";
       this.sticky = false;
-      this.__clickableElement = [];
+      this.__clickableElements = {};
       this.shortcutKeys = [];
     }
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this.buttons = this._getButtons();
-
+      this.buttons.forEach((button) => {
+        if (button.handleTagClick)
+          (button.tagsArray || []).forEach(
+            (tag) => (this.__clickableElements[tag] = button.handleTagClick)
+          );
+        console.log(
+          this.__clickableElements,
+          button,
+          button.tagsArray,
+          button.tagsList,
+          button.handleClick
+        );
+      });
+      console.log(this.__clickableElements);
       window.dispatchEvent(
         new CustomEvent("responsive-element", {
           detail: { element: this.shadowRoot.querySelector("#toolbar") },
@@ -739,7 +731,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       button.setAttribute("class", "button");
       button.addEventListener("button-command", this._handleButton);
 
-      if (button.inlineWidget) this.push("__clickableElement", button.tag);
       parent.appendChild(button);
       return button;
     }

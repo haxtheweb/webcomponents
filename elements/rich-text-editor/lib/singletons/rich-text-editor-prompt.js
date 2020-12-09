@@ -249,6 +249,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
       this.button = e.detail;
       this.fields = [...e.detail.fields];
       this.__selection = e.detail.__selection;
+      this.selectedNode = e.detail.selectedNode;
       this.value = { ...e.detail.value };
     }
   }

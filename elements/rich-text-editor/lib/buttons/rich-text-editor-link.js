@@ -47,21 +47,14 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.toggledCommand = "unlink";
     this.toggledIcon = "mdextra:unlink";
     this.toggledLabel = "Unlink";
-    (this.toggles = "true"), (this.tag = "a");
+    this.toggles = "true";
+    this.tagsList = "a";
+    console.log(this.tagsList);
     this.value = {
       ...super.value,
       href: null,
     };
     this.shortcutKeys = "ctrl+k";
-  }
-  /**
-   * overrides default block selectors
-   *
-   * @readonly
-   * @memberof RichTextEditorLink
-   */
-  get blockSelectors() {
-    return "a";
   }
 
   /**

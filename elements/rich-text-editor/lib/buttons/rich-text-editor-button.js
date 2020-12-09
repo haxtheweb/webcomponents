@@ -140,9 +140,9 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           type: Boolean,
         },
         /**
-         * The active selected range, inherited from the toolbar
+         * tags edited by this button
          */
-        tag: {
+        tagsList: {
           type: String,
         },
 
@@ -216,10 +216,8 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       this.disabled = false;
       this.showTextLabel = false;
       this.toggles = false;
+      this.tagsList = "";
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    }
-    get blockSelectors() {
-      return "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
     }
 
     /**
@@ -268,6 +266,10 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         /* workaround because queryCommandState("underline") returns true on links */
         block = this.command === "underline" ? !!this.rangeQuery("u") : command;
       return this.toggles && !!block ? true : false;
+    }
+
+    get tagsArray() {
+      return (this.tagsList || "").replace(/\s*/g, "").toLowerCase().split(",");
     }
 
     /**
@@ -493,10 +495,10 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     /**
      * gets closest node to range that matches selectors
      *
-     * @param {string} [selectors=this.blockSelectors || this.tag]
+     * @param {string} [selectors=this.tagsList || this.tag]
      * @returns node
      */
-    rangeQuery(selectors = this.blockSelectors || this.tag) {
+    rangeQuery(selectors = this.tagsList) {
       selectors = selectors.toLowerCase().replace(/\s*/g, "");
       let start = this.rangeElement(),
         startTag =
