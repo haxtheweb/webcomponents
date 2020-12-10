@@ -191,6 +191,28 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         .hax-context-menu-active {
           margin-left: unset;
         }
+        :host([edit-mode]) #bodycontainer ::slotted() {
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted([contenteditable][data-hax-ray]:empty):before {
+          content: attr(data-hax-ray);
+          opacity: 0.2;
+          transition: 0.2s all ease-in-out;
+        }
+
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted([contenteditable][data-hax-ray]:hover:empty):before {
+          opacity: 0.4;
+          cursor: text;
+        }
+
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted([contenteditable][data-hax-ray]:empty:focus):before {
+          content: "";
+        }
         :host([edit-mode]) #bodycontainer ::slotted(p) {
           min-height: var(--hax-base-styles-p-min-height, 1rem);
           font-size: var(--hax-base-styles-p-font-size);
@@ -309,25 +331,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           -webkit-user-select: text;
           user-select: text;
         }
-        :host([edit-mode][hax-ray-mode])
-          #bodycontainer
-          ::slotted(*[contenteditable]):before {
-          content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " "
-            attr(property) " " attr(content);
-          font-size: 12px;
-          line-height: 12px;
-          left: unset;
-          right: unset;
-          top: unset;
-          background-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
-          color: #ffffff;
-          bottom: unset;
-          width: auto;
-          padding: 6px;
-          z-index: 1;
-          margin: 0;
-          float: right;
-        }
         .hax-context-menu:not(:defined) {
           display: none;
         }
@@ -390,9 +393,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.___moveLock = false;
     this.editMode = false;
     this.haxMover = false;
-    this.globalPreferences = {};
-    // xray goggles for tags visualized in context, developer thing
-    this.haxRayMode = false;
     this.activeNode = null;
     setTimeout(() => {
       import("./lib/hax-text-context.js");
@@ -416,9 +416,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.addEventListener("dragend", this.dragEndBody.bind(this));
       this.addEventListener("drop", this.dropEvent.bind(this));
     }, 0);
-    autorun(() => {
-      this.globalPreferences = toJS(HAXStore.globalPreferences);
-    });
     autorun(() => {
       this.editMode = toJS(HAXStore.editMode);
     });
@@ -544,7 +541,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 .length == 0
             ) {
               let p = document.createElement("p");
-              p.innerHTML = "<br />";
+              //p.innerHTML = "<br />";
               e.path[0]
                 .closest(".column")
                 .parentNode.parentNode.host.appendChild(p);
@@ -705,20 +702,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         attribute: "edit-mode",
       },
       /**
-       * Bust out the HAX Ray mode
-       */
-      haxRayMode: {
-        type: Boolean,
-        reflect: true,
-        attribute: "hax-ray-mode",
-      },
-      /**
-       * Access to the global properties object.
-       */
-      globalPreferences: {
-        type: Object,
-      },
-      /**
        * A reference to the active node in the slot.
        */
       activeNode: {
@@ -824,9 +807,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }
         }, 0);
       }
-      if (propName == "globalPreferences") {
-        this._globalPreferencesUpdated(this[propName], oldValue);
-      }
       if (propName == "activeNode" && this.ready) {
         this._activeNodeChanged(this[propName], oldValue);
       }
@@ -854,6 +834,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           if (mutation.addedNodes.length > 0) {
             for (var node of mutation.addedNodes) {
               if (this._validElementTest(node)) {
+                // no empty HTML primative tags w/ just a BR in it for spacing purposes
+                if (
+                  node.tagName === "BR" &&
+                  node.parentElement &&
+                  HAXStore.__validGridTags().includes(
+                    node.parentElement.tagName.toLowerCase()
+                  ) &&
+                  node.parentElement.childNodes.length === 1
+                ) {
+                  node.remove();
+                  continue;
+                }
                 // P should not be in a P; parent detects it
                 if (
                   node.tagName === "P" &&
@@ -1363,7 +1355,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (e.detail === "text") {
       // make sure text just escalates to a paragraph tag
       let p = document.createElement("p");
-      p.innerHTML = "<br/>";
+      //p.innerHTML = "<br/>";
       this.haxReplaceNode(this.activeNode, p);
       this.__focusLogic(p);
       if (this.activeNode.parentNode) {
@@ -1466,14 +1458,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
     }
     return haxElements;
-  }
-  /**
-   * Global prefs updated, let's visualize stuff from hax-ray
-   */
-  _globalPreferencesUpdated(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined && newValue != null) {
-      this.haxRayMode = newValue.haxRayMode;
-    }
   }
   /**
    * Store updated, sync.
@@ -2098,7 +2082,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (maintainContent) {
       replacement.innerHTML = node.innerHTML.trim();
     } else {
-      replacement.innerHTML = "<br />";
+      //replacement.innerHTML = "<br />";
     }
     if (tagName == "ul" || tagName == "ol") {
       if (replacement.innerHTML == "<br />") {

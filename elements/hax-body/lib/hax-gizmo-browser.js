@@ -60,6 +60,7 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
               label="${gizmo.title}"
               event-name="insert-tag"
               event-data="${gizmo.tag}"
+              data-demo-schema="true"
               icon="${gizmo.icon}"
               drag-color="${gizmo.color}"
             ></hax-tray-button>

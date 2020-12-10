@@ -775,27 +775,41 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         let gizmo = {
           tag: e.detail.value,
         };
-        let properties = JSON.parse(target.getAttribute("event-properties"));
-        let innerContent = target.getAttribute("event-content");
-        if (properties == null) {
-          properties = {};
+        let haxElement;
+        // get schema for that version of events
+        let schema = HAXStore.haxSchemaFromTag(e.detail.value);
+        if (
+          target.getAttribute("data-demo-schema") &&
+          schema &&
+          schema.demoSchema &&
+          schema.demoSchema
+        ) {
+          haxElement = schema.demoSchema[0];
+        } else {
+          // support if anything else is manually defining what to inject
+          // or a baseline if we didn't have a demonstration schema supplied
+          let properties = JSON.parse(target.getAttribute("event-properties"));
+          let innerContent = target.getAttribute("event-content");
+          if (properties == null) {
+            properties = {};
+          }
+          if (innerContent == null) {
+            innerContent = "";
+          }
+          // most likely empty values but just to be safe
+          haxElement = HAXStore.haxElementPrototype(
+            gizmo,
+            properties,
+            innerContent
+          );
         }
-        if (innerContent == null) {
-          innerContent = "";
-        }
-        // most likely empty values but just to be safe
-        let element = HAXStore.haxElementPrototype(
-          gizmo,
-          properties,
-          innerContent
-        );
         this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(
           new CustomEvent("hax-insert-content", {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: element,
+            detail: haxElement,
           })
         );
         break;

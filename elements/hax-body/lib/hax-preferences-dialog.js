@@ -56,13 +56,6 @@ class HaxPreferencesDialog extends LitElement {
     // JSON schema object needs delayed to ensure page repaints the form
     this.schema = [
       {
-        property: "haxRayMode",
-        title: "X-Ray vision",
-        description: "Visualizes the HTML tag powering the area of the page",
-        inputMethod: "boolean",
-        value: false,
-      },
-      {
         property: "haxVoiceCommands",
         title: "Voice commands",
         description: "Experimental: Voice based control system",
@@ -71,7 +64,6 @@ class HaxPreferencesDialog extends LitElement {
       },
     ];
     this.schemaValues = {
-      haxRayMode: false,
       haxVoiceCommands: false,
     };
     autorun(() => {
