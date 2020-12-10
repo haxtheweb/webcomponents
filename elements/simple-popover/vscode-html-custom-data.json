@@ -22,11 +22,16 @@
     },
     {
       "name": "simple-popover-selection",
-      "description": "Events:\n\n  * `simple-popover-selection-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\nProperties:\n\n  * `opened` {`boolean`} - ",
+      "description": "Events:\n\n  * `simple-popover-selection-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state",
       "attributes": [
         {
           "name": "opened",
           "description": "`opened` {`boolean`} - \n\nProperty: opened",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - disabled state\n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
         },
         {

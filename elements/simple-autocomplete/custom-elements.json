@@ -22,6 +22,11 @@
       ],
       "properties": [
         {
+          "name": "haxUIElement",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
           "name": "target",
           "attribute": "target",
           "type": "object"
