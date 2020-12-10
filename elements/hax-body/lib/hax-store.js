@@ -290,17 +290,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * LitElement render
    */
   render() {
-    return html`
-      <slot></slot>
-      <hal-9000
-        id="hal"
-        .responds-to="${this.voiceRespondsTo}"
-        .debug="${this.voiceDebug}"
-      ></hal-9000>
-    `;
-  }
-  __appStoreDataChanged(e) {
-    this.__appStoreData = e;
+    return html` <slot></slot> `;
   }
   /**
    * convention
@@ -456,7 +446,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       __appStoreData: {
         type: Object,
       },
-      __ready: {
+      ready: {
         type: Boolean,
       },
       /**
@@ -549,15 +539,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   _appStoreChanged(newValue, oldValue) {
     // if we have an endpoint defined, pull it
-    if (
-      typeof newValue !== typeof undefined &&
-      newValue != null &&
-      typeof oldValue !== typeof undefined
-    ) {
+    if (newValue && oldValue) {
       // support having the request or remote loading
       // depending on the integration type
-      if (typeof newValue.apps === typeof undefined && this.shadowRoot) {
-        this.loadAppStore();
+      if (newValue.url && !newValue.apps && this.shadowRoot) {
+        this.loadAppStoreFromRemote();
       } else {
         // directly injected json object into the DOM
         this.__appStoreData = newValue;
@@ -623,6 +609,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       );
       // now process the dynamic imports
       this._handleDynamicImports(items, this.haxAutoloader);
+      this.__appStoreHasLoaded = true;
     }
   }
   // simple path from a url modifier
@@ -682,6 +669,16 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this.__hal.auto = false;
       }
     }
+    // trap for very slow loading environments that might miss on initial setup timing
+    if (
+      newValue &&
+      !this.__appStoreHasLoaded &&
+      this.__appStoreData &&
+      this.haxAutoloader
+    ) {
+      clearTimeout(this.__readyToProcessAppStoreData);
+      this._loadAppStoreData(this.__appStoreData);
+    }
   }
   _globalPreferencesChanged(newValue) {
     // regardless of what it is, reflect it globally but only after setup
@@ -695,10 +692,32 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       storageData.globalPreferences = newValue;
       this.storageData = storageData;
       this._storageDataChanged(this.storageData);
-      if (newValue.haxVoiceCommands && this.editMode && this.__hal) {
-        this.__hal.auto = true;
-      } else {
-        this.__hal.auto = false;
+      // import voice command stuff in the background if used selects it
+      // this is experimental / aggressive import of tech so defer to
+      // if they activate it
+      if (newValue.haxVoiceCommands && !this.__hal) {
+        // @todo only activate if the setting to use it is in place
+        import("@lrnwebcomponents/hal-9000/hal-9000.js").then((esModule) => {
+          // initialize voice commands
+          this._initVoiceCommands();
+          // inject tag into shadowRoot after we import the definition
+          this.__hal = document.createElement("hal-9000");
+          this.__hal.respondsTo = this.voiceRespondsTo;
+          this.__hal.debug = this.voiceDebug;
+          this.__hal.auto = true;
+          this.shadowRoot.appendChild(this.__hal);
+          // establish the initial commands, even if they were captured
+          // prior to usage since we held onto them in this variable
+          this.__hal.commands = { ...this.voiceCommands };
+        });
+      }
+      // only mess w/ hal if enabled
+      if (this.__hal) {
+        if (newValue.haxVoiceCommands && this.editMode) {
+          this.__hal.auto = true;
+        } else {
+          this.__hal.auto = false;
+        }
       }
     }
   }
@@ -765,16 +784,20 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "appStore") {
+      if (propName == "appStore" && this[propName]) {
         this._appStoreChanged(this[propName], oldValue);
       }
       // composite obervation
       if (
-        ["__ready", "__appStoreData", "haxAutoloader"].includes(propName) &&
-        this.__ready &&
-        this.__appStoreData
+        ["ready", "__appStoreData", "haxAutoloader"].includes(propName) &&
+        this.ready &&
+        this.__appStoreData &&
+        this.haxAutoloader
       ) {
-        this._loadAppStoreData(this.__appStoreData);
+        clearTimeout(this.__readyToProcessAppStoreData);
+        this.__readyToProcessAppStoreData = setTimeout(() => {
+          this._loadAppStoreData(this.__appStoreData);
+        }, 0);
       }
       if (["haxAutoloader", "activeHaxBody", "haxTray"].includes(propName)) {
         // allow this to verify if everything is here or not
@@ -804,7 +827,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   /**
    * generate appstore query
    */
-  loadAppStore() {
+  loadAppStoreFromRemote() {
     const searchParams = new URLSearchParams(this.appStore.params);
     let url = this.appStore.url;
     if (searchParams) {
@@ -817,7 +840,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         if (response.ok) return response.json();
       })
       .then((json) => {
-        this.__appStoreDataChanged(json);
+        this.__appStoreData = json;
       });
   }
   /**
@@ -827,24 +850,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // import voice command stuff in the background
-    // @todo only activate if the setting to use it is in place
-    import("@lrnwebcomponents/hal-9000/hal-9000.js").then((esModule) => {
-      this.__hal = this.shadowRoot.querySelector("#hal");
-    });
-    // set this global flag so we know it's safe to start trusting data
-    // that is written to global preferences / storage bin
-    setTimeout(() => {
-      this.__storageDataProcessed = true;
-      if (this.storageData.globalPreferences) {
-        this.write(
-          "globalPreferences",
-          this.storageData.globalPreferences,
-          this
-        );
-      }
-    }, 100);
-
     // see if a global was used to prevent this check
     // this is useful when in trusted environments where the statement
     // has been consented to in the application this is utilized in
@@ -892,15 +897,21 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         } catch (e) {}
       }
     }
+    // set this global flag so we know it's safe to start trusting data
+    // that is written to global preferences / storage bin
+    setTimeout(() => {
+      this.__storageDataProcessed = true;
+      if (this.storageData.globalPreferences) {
+        this.write(
+          "globalPreferences",
+          this.storageData.globalPreferences,
+          this
+        );
+      }
+    }, 0);
   }
   _storePiecesAllHere(haxAutoloader, activeHaxBody, haxTray, haxExport) {
-    if (
-      !this.__ready &&
-      activeHaxBody &&
-      haxAutoloader &&
-      haxTray &&
-      haxExport
-    ) {
+    if (!this.ready && activeHaxBody && haxAutoloader && haxTray && haxExport) {
       // send that hax store is ready to go so now we can setup the rest
       this.dispatchEvent(
         new CustomEvent("hax-store-ready", {
@@ -910,17 +921,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           detail: true,
         })
       );
-      this.ready = true;
       // associate the export button in the tray to the dialog
       HAXStore.haxExport.shadowRoot
         .querySelector("#dialog")
         .associateEvents(haxTray.shadowRoot.querySelector("#exportbtn"));
-      this.__ready = true;
+      this.ready = true;
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
-      // initialize voice commands
-      this._initVoiceCommands();
-      this.__hal.commands = { ...this.voiceCommands };
     }
   }
   /**

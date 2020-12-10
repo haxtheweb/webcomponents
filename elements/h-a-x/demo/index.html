@@ -16,6 +16,9 @@
     </script>
     <script type="module">
       import '../h-a-x.js';
+      import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
+        esModule.setPassiveTouchGestures(true);
+      });
     </script>
     <style>
       html {

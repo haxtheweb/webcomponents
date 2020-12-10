@@ -125,15 +125,21 @@ class HAX extends HTMLElement {
     if (!delayRender) {
       this.render();
     }
-    window.addEventListener("hax-store-ready", this.storeReady.bind(this));
-    window.addEventListener("hax-cancel", this.cancelEvent.bind(this));
-    window.addEventListener("hax-save", this.saveEvent.bind(this));
+    // setup events, only run them once and remove
+    window.addEventListener("hax-store-ready", this.storeReady.bind(this), {
+      once: true,
+      passive: true,
+    });
     window.addEventListener(
       "hax-store-app-store-loaded",
-      this.appStoreReady.bind(this)
+      this.appStoreReady.bind(this),
+      { once: true, passive: true }
     );
     // dynamically import definitions for all needed tags
     import("./lib/h-a-x-dependencies.js");
+    // map events from tray
+    window.addEventListener("hax-cancel", this.cancelEvent.bind(this));
+    window.addEventListener("hax-save", this.saveEvent.bind(this));
   }
   cancelEvent(e) {
     this.importSlotToHaxBody();
@@ -178,6 +184,11 @@ class HAX extends HTMLElement {
         HAXStore.haxTray.offsetMargin = this.offsetMargin;
         HAXStore.haxTray.elementAlign = this.elementAlign;
       }, 0);
+      window.removeEventListener(
+        "hax-store-ready",
+        this.storeReady.bind(this),
+        { once: true, passive: true }
+      );
     }
   }
   // import into the active body if there's content
@@ -204,6 +215,11 @@ class HAX extends HTMLElement {
   appStoreReady(e) {
     if (e.detail) {
       this.importSlotToHaxBody();
+      window.removeEventListener(
+        "hax-store-app-store-loaded",
+        this.appStoreReady.bind(this),
+        { once: true, passive: true }
+      );
     }
   }
   render() {
@@ -229,13 +245,17 @@ class HAX extends HTMLElement {
     return true;
   }
   disconnectedCallback() {
-    window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.removeEventListener("hax-store-ready", this.storeReady.bind(this), {
+      once: true,
+      passive: true,
+    });
+    window.removeEventListener(
+      "hax-store-app-store-loaded",
+      this.appStoreReady.bind(this),
+      { once: true, passive: true }
+    );
     window.removeEventListener("hax-cancel", this.cancelEvent.bind(this));
     window.removeEventListener("hax-save", this.saveEvent.bind(this));
-    window.removeEventListener(
-      "hax-store-ready",
-      this.appStoreReady.bind(this)
-    );
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

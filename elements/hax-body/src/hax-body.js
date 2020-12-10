@@ -781,7 +781,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.editMode = HAXStore.editMode;
     // ensure this resets every append
     this.__tabTrap = false;
-    this.__ready = true;
+    this.ready = true;
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
@@ -812,19 +812,22 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "editMode") {
-        this._editModeChanged(this[propName], oldValue);
-        if (this[propName]) {
-          this._activeNodeChanged(this.activeNode, null);
-          this.activeNode.focus();
-        } else {
-          this._activeNodeChanged(null, this.activeNode);
-        }
+      if (propName == "editMode" && oldValue !== undefined) {
+        // microtask delay to allow store to establish child nodes appropriately
+        setTimeout(() => {
+          this._editModeChanged(this[propName], oldValue);
+          if (this[propName]) {
+            this._activeNodeChanged(this.activeNode, null);
+            this.activeNode.focus();
+          } else {
+            this._activeNodeChanged(null, this.activeNode);
+          }
+        }, 0);
       }
       if (propName == "globalPreferences") {
         this._globalPreferencesUpdated(this[propName], oldValue);
       }
-      if (propName == "activeNode" && this.__ready) {
+      if (propName == "activeNode" && this.ready) {
         this._activeNodeChanged(this[propName], oldValue);
       }
     });
@@ -1799,7 +1802,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   positionContextMenus(node = this.activeNode) {
     //console.warn(node);
     // special case for node not matching container yet it being editable
-    if (node && node.tagName && this.__ready) {
+    if (node && node.tagName && this.ready) {
       let tag = node.tagName.toLowerCase();
       if (
         HAXStore.elementList &&

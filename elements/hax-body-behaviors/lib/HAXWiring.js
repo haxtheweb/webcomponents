@@ -822,17 +822,18 @@ export const HAXElement = function (SuperClass) {
       if (tag == "" && typeof this.tagName !== typeof undefined) {
         tag = this.tagName.toLowerCase();
       }
-      window.addEventListener(
-        "hax-store-ready",
-        this._haxStoreReady.bind(this)
-      );
       if (
-        typeof window.HaxStore !== typeof undefined &&
+        window.HaxStore &&
         window.HaxStore.instance != null &&
         window.HaxStore.instance.ready
       ) {
         return this.HAXWiring.setHaxProperties(props, tag, context, true);
       } else {
+        // slow load environment, set listener and hold off of processing
+        window.addEventListener(
+          "hax-store-ready",
+          this._haxStoreReady.bind(this)
+        );
         return this.HAXWiring.setHaxProperties(props, tag, context, false);
       }
     }
