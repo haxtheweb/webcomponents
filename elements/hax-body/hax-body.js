@@ -1,6 +1,8 @@
 import { html, css } from "lit-element/lit-element.js";
-// LitElement based
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
+import { HAXStore } from "./lib/hax-store.js";
+import { autorun, toJS } from "mobx";
 import {
   encapScript,
   wipeSlot,
@@ -12,6 +14,8 @@ import {
   unwrap,
   ReplaceWithPolyfill,
 } from "@lrnwebcomponents/utils/utils.js";
+
+// BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
   Element.prototype.replaceWith = ReplaceWithPolyfill;
 }
@@ -21,9 +25,13 @@ if (!CharacterData.prototype.replaceWith) {
 if (!DocumentType.prototype.replaceWith) {
   DocumentType.prototype.replaceWith = ReplaceWithPolyfill;
 }
-import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
-import { HAXStore } from "./lib/hax-store.js";
-import { autorun, toJS } from "mobx";
+// polyfill for replaceAll
+if (!String.prototype.replaceAll) {
+  String.prototype.replaceAll = function (find, replace) {
+    return this.split(find).join(replace);
+  };
+}
+// END OF 1000 DEATHS
 
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
