@@ -8,7 +8,7 @@ import { SimpleToastStore } from "@lrnwebcomponents/simple-toast/simple-toast.js
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/a11y-media-play-button.js";
@@ -1632,7 +1632,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * @param {event} e slider event
    */
   _handleSpeedChanged(e) {
-    var target = getMousePath(e)[0];
+    var target = normalizeEventPath(e)[0];
     this.setPlaybackRate(target.value);
   }
 
@@ -1700,7 +1700,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * @param {event} e volume change event
    */
   _handleVolumeChanged(e) {
-    var target = getMousePath(e)[0];
+    var target = normalizeEventPath(e)[0];
     this.volume = target.value;
   }
 

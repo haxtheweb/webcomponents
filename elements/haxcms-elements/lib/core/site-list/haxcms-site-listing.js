@@ -43,7 +43,7 @@ import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `haxcms-site-listing`
@@ -1773,7 +1773,7 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   _bulkSitesConfirm(e) {
-    let target = getMousePath(e)[0];
+    let target = normalizeEventPath(e)[0];
     // resolve what got clicked on
     if (e.target.id) {
       target = e.target.id;
@@ -1784,7 +1784,7 @@ class HAXCMSSiteListing extends PolymerElement {
         target = e.originalTarget.parentElement.id;
       }
     } else {
-      let path = getMousePath(e);
+      let path = normalizeEventPath(e);
       while (!target && path && path.length > 0) {
         if (path[0].id) {
           target = path[0].id;
@@ -2043,14 +2043,7 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   lastErrorChanged(e) {
     if (e.detail.value) {
-      let target = null;
-      if (e.path && e.path[0]) {
-        target = e.path[0];
-      } else if (e.originalTarget) {
-        target = e.originalTarget;
-      } else {
-        target = e.target;
-      }
+      var target = normalizeEventPath(e)[0];
       // check for JWT needing refreshed vs busted but must be 403
       switch (parseInt(e.detail.value.status)) {
         // cookie data not found, need to go get it

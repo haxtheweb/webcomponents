@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {
   constructor() {
@@ -606,18 +608,20 @@ class GridPlate extends LitElement {
    */
   _slotMonitor(e) {
     // sanity, we have a local slot
+    var eventPath = getMousePath(e);
+
     if (
-      e.path[0] &&
-      e.path[0].assignedNodes &&
-      e.path[0].assignedNodes().length
+      eventPath[0] &&
+      eventPath[0].assignedNodes &&
+      eventPath[0].assignedNodes().length
     ) {
       // has nodes so we can make sure to track this elsewhere
       this.shadowRoot
-        .querySelector("#" + e.path[0].getAttribute("name").replace("-", ""))
+        .querySelector("#" + eventPath[0].getAttribute("name").replace("-", ""))
         .classList.add("has-nodes");
     } else {
       this.shadowRoot
-        .querySelector("#" + e.path[0].getAttribute("name").replace("-", ""))
+        .querySelector("#" + eventPath[0].getAttribute("name").replace("-", ""))
         .classList.remove("has-nodes");
     }
   }

@@ -7,7 +7,7 @@ import { getRange } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `editable-outline`
@@ -99,7 +99,7 @@ class EditableOutline extends LitElement {
     let el;
     let i = 0;
     let notFound = true;
-    var path = getMousePath(e);
+    var path = normalizeEventPath(e);
 
     while (notFound && path.length > i + 1) {
       el = path[i];

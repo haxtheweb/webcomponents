@@ -36,7 +36,7 @@ class PortalLauncher extends HTMLElement {
       });
     }
   }
-  getMousePath(e) {
+  normalizeEventPath(e) {
     if (e.composed && e.composedPath) {
       return e.composedPath();
     } else if (e.path) {
@@ -52,7 +52,7 @@ class PortalLauncher extends HTMLElement {
    */
   click(e) {
     let target = e.target;
-    var eventPath = this.getMousePath(e);
+    var eventPath = this.normalizeEventPath(e);
     // support walking the path in order to find the link clicked
     if (target.tagName !== "A") {
       eventPath.forEach((item) => {

@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
-import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `rich-text-editor-selection`
@@ -650,11 +650,11 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
 
   _handleEditorClick(editor, e) {
     let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
-      target = getMousePath(e)[0];
-    /*if (editor.contenteditable && getMousePath(e)[0] !== editor) {
+      target = normalizeEventPath(e)[0];
+    /*if (editor.contenteditable && normalizeEventPath(e)[0] !== editor) {
       editor.range = editor.range;
       let button = toolbar.buttons.filter(
-          button => button.tag === getMousePath(e)[0].tagName.toLowerCase()
+          button => button.tag === normalizeEventPath(e)[0].tagName.toLowerCase()
         ),
         range =
           editor.range
@@ -668,10 +668,10 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           range && range.endContainer
             ? range.endContainer.childNodes[range.endOffset - 1]
             : false;
-      if (button && button[0] && start === end && start === getMousePath(e)[0]) {
+      if (button && button[0] && start === end && start === normalizeEventPath(e)[0]) {
         button[0]._buttonTap(e);
       } else if (button && button[0]) {
-        this.selectNode(getMousePath(e)[0],range);
+        this.selectNode(normalizeEventPath(e)[0],range);
       }
     } else if (editor.contenteditable){
       //this.selectNodeContents(editor);

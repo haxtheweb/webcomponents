@@ -23,7 +23,7 @@ function unwrap(el) {
 }
 // resolve platform differences in mouse path
 // some platforms falling back to just the target itself
-export function getMousePath(e) {
+export function normalizeEventPath(e) {
   if (e.composed && e.composedPath) {
     return e.composedPath();
   } else if (e.path) {

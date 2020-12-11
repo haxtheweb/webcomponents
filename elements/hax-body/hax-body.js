@@ -13,7 +13,7 @@ import {
   wrap,
   unwrap,
   ReplaceWithPolyfill,
-  getMousePath,
+  normalizeEventPath,
 } from "@lrnwebcomponents/utils/utils.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
@@ -465,7 +465,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   }
   _mouseMove(e) {
     if (this.editMode && HAXStore.ready) {
-      var eventPath = getMousePath(e);
+      var eventPath = normalizeEventPath(e);
       clearTimeout(this.__mouseQuickTimer);
       this.__mouseQuickTimer = setTimeout(() => {
         if (
@@ -2811,7 +2811,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // trick the tray into forcing active to be Configure
       HAXStore.haxTray.activeTab = "item-1";
       var target = null;
-      var eventPath = getMousePath(e);
+      var eventPath = normalizeEventPath(e);
       if (
         e.target.closest("grid-plate") &&
         e.target.parentNode != e.target.closest("grid-plate")

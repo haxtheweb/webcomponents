@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "./lrndesign-gallery-zoom.js";
 import "./lrndesign-gallery-details.js";
-import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `lrndesign-gallery-masonry`
@@ -161,7 +161,7 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
     return [a, h, w].join("");
   }
   _handleImgLoad(e) {
-    var target = getMousePath(e)[0];
+    var target = normalizeEventPath(e)[0];
     if (target.naturalWidth > 0) {
       this._updateItems();
     }

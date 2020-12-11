@@ -1,7 +1,7 @@
 import { css, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 const HAXCMSUserStylesMenuMixin = function (SuperClass) {
   return class extends SuperClass {
@@ -401,7 +401,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       };
     }
     checkUserStylesMenuOpen(e) {
-      var target = getMousePath(e);
+      var target = normalizeEventPath(e);
       if (
         !this.hideUserStylesMenu &&
         !target.includes(this.toggleUserStylesMenuTarget) &&
@@ -453,11 +453,11 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       }
     }
     UserStylesFontFamilyChange(e) {
-      var target = getMousePath(e)[0];
+      var target = normalizeEventPath(e)[0];
       this.fontFamily = parseInt(target.getAttribute("data-font"));
     }
     UserStylesColorThemeChange(e) {
-      var target = getMousePath(e)[0];
+      var target = normalizeEventPath(e)[0];
       this.colorTheme = parseInt(target.getAttribute("data-theme"));
     }
   };

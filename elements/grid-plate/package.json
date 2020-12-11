@@ -36,9 +36,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^2.8.0",
     "@lrnwebcomponents/responsive-grid": "^2.8.0",
-    "@lrnwebcomponents/simple-icon": "^2.8.0",
+    "@lrnwebcomponents/utils": "^2.8.0",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

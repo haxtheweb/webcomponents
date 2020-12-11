@@ -3,7 +3,7 @@ import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `img-view-viewer`
@@ -918,7 +918,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     if (!disabled) this.goToPageXofY(e);
   }
   goToPageXofY(e) {
-    var eventPath = getMousePath(e);
+    var eventPath = normalizeEventPath(e);
     this.page = eventPath ? eventPath[0].value - 1 : e.target.value;
   }
   loadedChangedEvent(e) {

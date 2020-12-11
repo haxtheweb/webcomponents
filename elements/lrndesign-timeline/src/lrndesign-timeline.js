@@ -5,7 +5,7 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `lrndesign-timeline`
@@ -104,7 +104,7 @@ class LrndesignTimeline extends SimpleColors {
     return new MutationObserver(callback);
   }
   _setScroll(e) {
-    var el = getMousePath(e)[0];
+    var el = normalizeEventPath(e)[0];
     var parent = el.parentNode;
     parent.scroll({
       top: el.offsetTop,

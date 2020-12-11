@@ -13,6 +13,8 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./haxcms-site-dashboard.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `haxcms-site-editor`
  * `haxcms editor element that provides all editing capabilities`
@@ -364,14 +366,7 @@ class HAXCMSSiteEditor extends LitElement {
   lastErrorChanged(e) {
     if (e.detail.value) {
       console.error(e);
-      let target = null;
-      if (e.path && e.path[0]) {
-        target = e.path[0];
-      } else if (e.originalTarget) {
-        target = e.originalTarget;
-      } else {
-        target = e.target;
-      }
+      var target = normalizeEventPath(e)[0];
       // check for JWT needing refreshed vs busted but must be 403
       switch (parseInt(e.detail.value.status)) {
         // cookie data not found, need to go get it

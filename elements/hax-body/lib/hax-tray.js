@@ -5,7 +5,7 @@ import {
   wipeSlot,
   nodeToHaxElement,
   haxElementToNode,
-  getMousePath,
+  normalizeEventPath,
 } from "@lrnwebcomponents/utils/utils.js";
 import {
   HaxSchematizer,
@@ -751,7 +751,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    * Process event for simple content inserts.
    */
   _processTrayEvent(e) {
-    var target = getMousePath(e)[0];
+    var target = normalizeEventPath(e)[0];
     // support a simple insert event to bubble up or everything else
     switch (e.detail.eventName) {
       case "insert-stax":
