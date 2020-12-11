@@ -43,6 +43,8 @@ import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
+import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `haxcms-site-listing`
  * `A listing of all sites being managed by this instance.`
@@ -1771,7 +1773,7 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   _bulkSitesConfirm(e) {
-    let target = false;
+    let target = getMousePath(e)[0];
     // resolve what got clicked on
     if (e.target.id) {
       target = e.target.id;
@@ -1782,7 +1784,7 @@ class HAXCMSSiteListing extends PolymerElement {
         target = e.originalTarget.parentElement.id;
       }
     } else {
-      let path = e.path;
+      let path = getMousePath(e);
       while (!target && path && path.length > 0) {
         if (path[0].id) {
           target = path[0].id;

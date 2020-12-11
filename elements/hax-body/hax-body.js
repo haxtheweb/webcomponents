@@ -13,6 +13,7 @@ import {
   wrap,
   unwrap,
   ReplaceWithPolyfill,
+  getMousePath,
 } from "@lrnwebcomponents/utils/utils.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
@@ -464,18 +465,20 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   }
   _mouseMove(e) {
     if (this.editMode && HAXStore.ready) {
+      var eventPath = getMousePath(e);
       clearTimeout(this.__mouseQuickTimer);
       this.__mouseQuickTimer = setTimeout(() => {
         if (
           this.__activeHover &&
-          this.__activeHover != e.path[0].closest("[data-hax-ray]:not(li)") &&
-          !e.path[0].closest("#addincontext")
+          this.__activeHover !=
+            eventPath[0].closest("[data-hax-ray]:not(li)") &&
+          !eventPath[0].closest("#addincontext")
         ) {
           let keep;
-          for (var i = 0; i < e.path.length; i++) {
+          for (var i = 0; i < eventPath.length; i++) {
             if (
-              e.path[i].getAttribute &&
-              e.path[i].getAttribute("id") == "addincontext"
+              eventPath[i].getAttribute &&
+              eventPath[i].getAttribute("id") == "addincontext"
             ) {
               keep = true;
             }
@@ -489,9 +492,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       clearTimeout(this.__mouseTimer);
       this.__mouseTimer = setTimeout(() => {
         this.__addActiveVisible();
-        console.log(e.path);
-        console.log(e);
-        let target = e.path[0].closest("[data-hax-ray]:not(li)");
+        let target = eventPath[0].closest("[data-hax-ray]:not(li)");
         if (target) {
           this.__activeHover = target;
           let activeRect = this.__activeHover.getBoundingClientRect();
@@ -517,9 +518,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             height
           );
         } else if (
-          e.path[0].closest(".column") &&
-          e.path[3] &&
-          e.path[3].closest("grid-plate")
+          eventPath[0].closest(".column") &&
+          eventPath[3] &&
+          eventPath[3].closest("grid-plate")
         ) {
           let addRect = this.contextMenus.add.getBoundingClientRect();
           let height = -addRect.height - 1;
@@ -527,9 +528,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           // weird but we need the structure of grid plate here unfortunately
           // if it has nodes in the column we are active on then we need
           // to defer to the grid level because you could always force a node
-          if (!e.path[0].closest(".column:not(.has-nodes")) {
+          if (!eventPath[0].closest(".column:not(.has-nodes")) {
             // way out of a column to the host of the template
-            this.__activeHover = e.path[0].closest(
+            this.__activeHover = eventPath[0].closest(
               ".column"
             ).parentNode.parentNode.host;
             posMenuEl = this.__activeHover;
@@ -550,30 +551,32 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             // by our MO in order to automatically set __slot on a node anywhere
             // it's inserted in the body area leveraging alternative logic to
             // figure out which it should place where
-            this.__slot = e.path[0]
+            this.__slot = eventPath[0]
               .closest(".column")
               .getAttribute("id")
               .replace("col", "col-");
             // based on what we learned we don't have nodes in the path column
             // but we KNOW there MUST be an element somewhere in this
             if (
-              e.path[0].closest(".column").parentNode.parentNode.host.children
-                .length == 0
+              eventPath[0].closest(".column").parentNode.parentNode.host
+                .children.length == 0
             ) {
               let p = document.createElement("p");
               //p.innerHTML = "<br />";
-              e.path[0]
+              eventPath[0]
                 .closest(".column")
                 .parentNode.parentNode.host.appendChild(p);
             }
-            this.__activeHover = e.path[0].closest(
+            this.__activeHover = eventPath[0].closest(
               ".column"
             ).parentNode.parentNode.host.children[0];
             // we focus on the column unlike anything else
-            activeRect = e.path[0].closest(".column").getBoundingClientRect();
+            activeRect = eventPath[0]
+              .closest(".column")
+              .getBoundingClientRect();
             // right in the middle of the column
             height = activeRect.height / 2 - addRect.height / 2;
-            posMenuEl = e.path[0].closest(".column");
+            posMenuEl = eventPath[0].closest(".column");
           }
 
           // wow, we have an in context addition menu just like that
@@ -583,7 +586,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             activeRect.width / 2 - addRect.width / 2,
             height
           );
-        } else if (e.path[0].closest("#bodycontainer")) {
+        } else if (eventPath[0].closest("#bodycontainer")) {
           this.__activeHover = null;
           this._hideContextMenu(this.contextMenus.add);
         }
@@ -2808,6 +2811,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // trick the tray into forcing active to be Configure
       HAXStore.haxTray.activeTab = "item-1";
       var target = null;
+      var eventPath = getMousePath(e);
       if (
         e.target.closest("grid-plate") &&
         e.target.parentNode != e.target.closest("grid-plate")
@@ -2821,8 +2825,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         target = e.target;
       }
       // account for slot drop on a place holder
-      if (e.path[0].classList.contains("column")) {
-        this.__slot = e.path[0].getAttribute("id").replace("col", "col-");
+      if (eventPath[0].classList.contains("column")) {
+        this.__slot = eventPath[0].getAttribute("id").replace("col", "col-");
       } else if (target.getAttribute("slot")) {
         this.__slot = target.getAttribute("slot");
       }
@@ -2866,24 +2870,24 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             (local &&
               local.tagName &&
               !["GRID-PLATE", "HAX-BODY"].includes(local.tagName)) ||
-            e.path[0].tagName === "GRID-PLATE"
+            eventPath[0].tagName === "GRID-PLATE"
           ) {
             if (local.getAttribute("slot")) {
               tmp.setAttribute("slot", local.getAttribute("slot"));
-            } else if (e.path[0].classList.contains("column")) {
+            } else if (eventPath[0].classList.contains("column")) {
               tmp.setAttribute(
                 "slot",
-                e.path[0].getAttribute("id").replace("col", "col-")
+                eventPath[0].getAttribute("id").replace("col", "col-")
               );
             } else {
               tmp.removeAttribute("slot");
             }
             local.parentNode.insertBefore(tmp, local);
           } else {
-            if (e.path[0].classList.contains("column")) {
+            if (eventPath[0].classList.contains("column")) {
               tmp.setAttribute(
                 "slot",
-                e.path[0].getAttribute("id").replace("col", "col-")
+                eventPath[0].getAttribute("id").replace("col", "col-")
               );
             }
             // account for drop target of main body yet still having a slot attr
@@ -2935,24 +2939,24 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             try {
               if (
                 !["GRID-PLATE", "HAX-BODY"].includes(local.tagName) ||
-                e.path[0].tagName === "GRID-PLATE"
+                eventPath[0].tagName === "GRID-PLATE"
               ) {
                 if (local.getAttribute("slot")) {
                   target.setAttribute("slot", local.getAttribute("slot"));
-                } else if (e.path[0].classList.contains("column")) {
+                } else if (eventPath[0].classList.contains("column")) {
                   target.setAttribute(
                     "slot",
-                    e.path[0].getAttribute("id").replace("col", "col-")
+                    eventPath[0].getAttribute("id").replace("col", "col-")
                   );
                 } else {
                   target.removeAttribute("slot");
                 }
                 local.parentNode.insertBefore(target, local);
               } else {
-                if (e.path[0].classList.contains("column")) {
+                if (eventPath[0].classList.contains("column")) {
                   target.setAttribute(
                     "slot",
-                    e.path[0].getAttribute("id").replace("col", "col-")
+                    eventPath[0].getAttribute("id").replace("col", "col-")
                   );
                 }
                 // account for drop target of main body yet still having a slot attr

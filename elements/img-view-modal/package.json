@@ -47,6 +47,7 @@
     "@lrnwebcomponents/schema-behaviors": "^2.8.0",
     "@lrnwebcomponents/simple-icon": "^2.8.0",
     "@lrnwebcomponents/simple-tooltip": "^2.8.0",
+    "@lrnwebcomponents/utils": "^2.8.0",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

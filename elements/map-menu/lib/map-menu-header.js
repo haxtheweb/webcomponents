@@ -1,6 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+
 class MapMenuHeader extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -240,14 +242,7 @@ class MapMenuHeader extends LitElement {
   }
 
   __toggleEventHandler(e) {
-    var target = null;
-    if (e.path && e.path[0]) {
-      target = e.path[0];
-    } else if (e.originalTarget) {
-      target = e.originalTarget;
-    } else {
-      target = e.target;
-    }
+    var target = getMousePath(e)[0];
     if (e.originalTarget && e.originalTarget.id === "toggle") {
       this.dispatchEvent(
         new CustomEvent("toggle-header", {

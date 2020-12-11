@@ -49,6 +49,7 @@
     "@lrnwebcomponents/simple-colors": "^2.8.0",
     "@lrnwebcomponents/simple-icon": "^2.8.0",
     "@lrnwebcomponents/simple-popover": "^2.8.0",
+    "@lrnwebcomponents/utils": "^2.8.0",
     "lit-element": "2.4.0",
     "mobx": "6.0.4"
   },

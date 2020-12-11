@@ -6,6 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "./lrndesign-gallery-zoom.js";
 import "./lrndesign-gallery-details.js";
+import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `lrndesign-gallery-masonry`
  * An element that renders a collection of gallery items into a grid or a single media item into a layout.
@@ -159,14 +161,7 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
     return [a, h, w].join("");
   }
   _handleImgLoad(e) {
-    var target = null;
-    if (e.path && e.path[0]) {
-      target = e.path[0];
-    } else if (e.originalTarget) {
-      target = e.originalTarget;
-    } else {
-      target = e.target;
-    }
+    var target = getMousePath(e)[0];
     if (target.naturalWidth > 0) {
       this._updateItems();
     }

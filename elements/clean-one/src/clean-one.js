@@ -10,6 +10,7 @@ import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
+import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `clean-one`
@@ -702,14 +703,7 @@ class CleanOne extends HAXCMSThemeParts(
   }
 
   searchChanged(e) {
-    var target = null;
-    if (e.path && e.path[0]) {
-      target = e.path[0];
-    } else if (e.originalTarget) {
-      target = e.originalTarget;
-    } else {
-      target = e.target;
-    }
+    var target = getMousePath(e)[0];
     if (target.value) {
       // prettier-ignore
       import(

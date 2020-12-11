@@ -1,6 +1,7 @@
 import { css, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
 
 const HAXCMSUserStylesMenuMixin = function (SuperClass) {
   return class extends SuperClass {
@@ -400,19 +401,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       };
     }
     checkUserStylesMenuOpen(e) {
-      var target = null;
-      if (e.path && e.path[0]) {
-        target = e.path;
-      } else if (
-        e.originalTarget &&
-        e.originalTarget.tagName == "SIMPLE-ICON-BUTTON"
-      ) {
-        target = [e.originalTarget];
-      } else if (e.originalTarget && e.originalTarget.parentNode.host) {
-        target = [e.originalTarget.parentNode.host];
-      } else {
-        target = [e.target];
-      }
+      var target = getMousePath(e);
       if (
         !this.hideUserStylesMenu &&
         !target.includes(this.toggleUserStylesMenuTarget) &&
@@ -464,25 +453,11 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       }
     }
     UserStylesFontFamilyChange(e) {
-      var target = null;
-      if (e.path && e.path[0]) {
-        target = e.path[0];
-      } else if (e.originalTarget) {
-        target = e.originalTarget;
-      } else {
-        target = e.target;
-      }
+      var target = getMousePath(e)[0];
       this.fontFamily = parseInt(target.getAttribute("data-font"));
     }
     UserStylesColorThemeChange(e) {
-      var target = null;
-      if (e.path && e.path[0]) {
-        target = e.path[0];
-      } else if (e.originalTarget) {
-        target = e.originalTarget;
-      } else {
-        target = e.target;
-      }
+      var target = getMousePath(e)[0];
       this.colorTheme = parseInt(target.getAttribute("data-theme"));
     }
   };

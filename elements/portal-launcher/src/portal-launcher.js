@@ -36,14 +36,26 @@ class PortalLauncher extends HTMLElement {
       });
     }
   }
+  getMousePath(e) {
+    if (e.composed && e.composedPath) {
+      return e.composedPath();
+    } else if (e.path) {
+      return e.path;
+    } else if (e.originalTarget) {
+      return [e.originalTarget];
+    } else {
+      return [e.target];
+    }
+  }
   /**
    * Basic feature detecting event handler
    */
   click(e) {
     let target = e.target;
+    var eventPath = this.getMousePath(e);
     // support walking the path in order to find the link clicked
     if (target.tagName !== "A") {
-      e.path.forEach((item) => {
+      eventPath.forEach((item) => {
         if (item.tagName === "A") {
           target = item;
         }

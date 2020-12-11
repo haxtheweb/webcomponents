@@ -2,6 +2,7 @@ import { html, css, LitElement } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `hax-map`
@@ -201,14 +202,7 @@ class HaxMap extends LitElement {
     `;
   }
   scrollInMap(e) {
-    var target = null;
-    if (e.path && e.path[0]) {
-      target = e.path[0];
-    } else if (e.originalTarget) {
-      target = e.originalTarget;
-    } else {
-      target = e.target;
-    }
+    var target = getMousePath(e)[0];
     if (target.getAttribute("data-index")) {
       let activeChild =
         HAXStore.activeHaxBody.children[

@@ -44,6 +44,7 @@
   "dependencies": {
     "@lrnwebcomponents/haxcms-elements": "^2.8.0",
     "@lrnwebcomponents/simple-colors": "^2.8.0",
+    "@lrnwebcomponents/utils": "^2.8.0",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

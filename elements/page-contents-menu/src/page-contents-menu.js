@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `page-contents-menu`
@@ -203,14 +204,7 @@ class PageContentsMenu extends LitElement {
     }
   }
   scrollToObject(e) {
-    var target = null;
-    if (e.path && e.path[0]) {
-      target = e.path[0];
-    } else if (e.originalTarget) {
-      target = e.originalTarget;
-    } else {
-      target = e.target;
-    }
+    var target = getMousePath(e)[0];
     if (target.getAttribute("data-index")) {
       e.preventDefault();
       e.stopPropagation();
@@ -352,14 +346,7 @@ class PageContentsMenu extends LitElement {
   }
 
   checkMenuOpen(e) {
-    var target = null;
-    if (e.path && e.path[0]) {
-      target = e.path;
-    } else if (e.originalTarget) {
-      target = [e.originalTarget];
-    } else {
-      target = [e.target];
-    }
+    var target = getMousePath(e)[0];
     if (
       this.mobile &&
       !this.hideSettings &&

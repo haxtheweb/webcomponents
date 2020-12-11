@@ -21,6 +21,19 @@ function unwrap(el) {
     el.remove();
   }
 }
+// resolve platform differences in mouse path
+// some platforms falling back to just the target itself
+export function getMousePath(e) {
+  if (e.composed && e.composedPath) {
+    return e.composedPath();
+  } else if (e.path) {
+    return e.path;
+  } else if (e.originalTarget) {
+    return [e.originalTarget];
+  } else {
+    return [e.target];
+  }
+}
 // nicely formats / indents an HTML DOM tree for output
 function formatHTML(str) {
   var div = document.createElement("div");
