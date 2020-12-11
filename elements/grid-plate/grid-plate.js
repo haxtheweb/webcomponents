@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {
@@ -608,7 +608,7 @@ class GridPlate extends LitElement {
    */
   _slotMonitor(e) {
     // sanity, we have a local slot
-    var eventPath = getMousePath(e);
+    var eventPath = normalizeEventPath(e);
 
     if (
       eventPath[0] &&

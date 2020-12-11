@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/map-menu/lib/map-menu-builder.js";
 import "@lrnwebcomponents/map-menu/lib/map-menu-container.js";
-import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `map-menu`
@@ -357,7 +357,7 @@ class MapMenu extends LitElement {
    */
   __toggleUpdated(e) {
     const action = e.detail.opened ? "opened" : "closed";
-    const target = getMousePath(e)[0];
+    const target = normalizeEventPath(e)[0];
     if (typeof this.activeItem !== "undefined") {
       this.__updateActiveIndicator(this.activeItem, false);
       this.activeItem.dispatchEvent(
