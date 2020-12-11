@@ -10,7 +10,17 @@ import {
   camelToDash,
   wrap,
   unwrap,
+  ReplaceWithPolyfill,
 } from "@lrnwebcomponents/utils/utils.js";
+if (!Element.prototype.replaceWith) {
+  Element.prototype.replaceWith = ReplaceWithPolyfill;
+}
+if (!CharacterData.prototype.replaceWith) {
+  CharacterData.prototype.replaceWith = ReplaceWithPolyfill;
+}
+if (!DocumentType.prototype.replaceWith) {
+  DocumentType.prototype.replaceWith = ReplaceWithPolyfill;
+}
 import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import { HAXStore } from "./lib/hax-store.js";
 import { autorun, toJS } from "mobx";
@@ -471,6 +481,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       clearTimeout(this.__mouseTimer);
       this.__mouseTimer = setTimeout(() => {
         this.__addActiveVisible();
+        console.log(e.path);
+        console.log(e);
         let target = e.path[0].closest("[data-hax-ray]:not(li)");
         if (target) {
           this.__activeHover = target;

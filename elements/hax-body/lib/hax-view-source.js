@@ -210,7 +210,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
               content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
             />
             <title>hax-body demo</title>
-            <script>window.__appCDN="https://cdn.webcomponents.psu.edu/cdn/"; </script> <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script> 
+            <script>window.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/"; </script> <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script> 
             <style>
               body {
                 padding: 32px;

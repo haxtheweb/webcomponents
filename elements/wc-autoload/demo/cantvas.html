@@ -323,10 +323,10 @@
   </div>
   <script>
     // define our CDN
-    window.__appCDN="https://cdn.webcomponents.psu.edu/cdn/";
+    window.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/";
     // inject the build script element which self imports code
     var tag = document.createElement('script');
-    tag.src= window.__appCDN + "build.js";
+    tag.src= window.WCGlobalCDNPath + "build.js";
     document.head.appendChild(tag);
     // script to replace Cantvas hack
     function tokenHack(e) {

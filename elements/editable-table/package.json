@@ -44,6 +44,7 @@
     "@lrnwebcomponents/hax-iconset": "^2.8.0",
     "@lrnwebcomponents/responsive-utility": "^2.8.0",
     "@lrnwebcomponents/simple-icon": "^2.8.0",
+    "@lrnwebcomponents/utils": "^2.8.0",
     "@lrnwebcomponents/simple-picker": "^2.8.0",
     "@lrnwebcomponents/simple-tooltip": "^2.8.0",
     "@polymer/iron-a11y-keys": "^3.0.1",

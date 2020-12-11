@@ -5,8 +5,19 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js";
-import { formatHTML } from "@lrnwebcomponents/utils/utils.js";
-
+import {
+  formatHTML,
+  ReplaceWithPolyfill,
+} from "@lrnwebcomponents/utils/utils.js";
+if (!Element.prototype.replaceWith) {
+  Element.prototype.replaceWith = ReplaceWithPolyfill;
+}
+if (!CharacterData.prototype.replaceWith) {
+  CharacterData.prototype.replaceWith = ReplaceWithPolyfill;
+}
+if (!DocumentType.prototype.replaceWith) {
+  DocumentType.prototype.replaceWith = ReplaceWithPolyfill;
+}
 /**
  * `code-editor`
  * `Wrapper on top of a code editor`
@@ -296,7 +307,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     return {
       title: title,
       html: editorValue,
-      head: `<script>window.__appCDN="https://cdn.webcomponents.psu.edu/cdn/";</script><script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>`,
+      head: `<script>window.WCGlobalCDNPath="https://cdn.webcomponents.psu.edu/cdn/";</script><script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>`,
     };
   }
   /**
