@@ -11,6 +11,8 @@ import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import { getMousePath } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `clean-two`
  * `A 2nd clean theme`
@@ -467,14 +469,7 @@ class CleanTwo extends HAXCMSThemeParts(
     this.searchTerm = "";
   }
   searchChanged(e) {
-    var target = null;
-    if (e.path && e.path[0]) {
-      target = e.path[0];
-    } else if (e.originalTarget) {
-      target = e.originalTarget;
-    } else {
-      target = e.target;
-    }
+    var target = getMousePath(e)[0];
     if (target.value) {
       // prettier-ignore
       import(
