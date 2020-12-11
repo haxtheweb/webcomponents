@@ -71,7 +71,12 @@ class SimplePopoverSelection extends LitElement {
           window.SimplePopoverManager.requestAvailability()
             .querySelector("[data-simple-popover-selection-active]")
             .focus();
-        } else {
+        } else if (
+          window.SimplePopoverManager.requestAvailability() &&
+          window.SimplePopoverManager.requestAvailability().querySelector(
+            ":first-child"
+          )
+        ) {
           window.SimplePopoverManager.requestAvailability()
             .querySelector(":first-child")
             .focus();
