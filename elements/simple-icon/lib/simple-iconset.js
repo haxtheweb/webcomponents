@@ -2,6 +2,12 @@
  * Singleton to manage iconsets
  * @demo demo/index.html
  */
+// polyfill for replaceAll, I hate you Safari / really old stuff
+if (!String.prototype.replaceAll) {
+  String.prototype.replaceAll = function (find, replace) {
+    return this.split(find).join(replace);
+  };
+}
 class SimpleIconset extends HTMLElement {
   static get tag() {
     return "simple-iconset";

@@ -26,7 +26,7 @@ if (!CharacterData.prototype.replaceWith) {
 if (!DocumentType.prototype.replaceWith) {
   DocumentType.prototype.replaceWith = ReplaceWithPolyfill;
 }
-// polyfill for replaceAll
+// polyfill for replaceAll, I hate you Safari / really old stuff
 if (!String.prototype.replaceAll) {
   String.prototype.replaceAll = function (find, replace) {
     return this.split(find).join(replace);
