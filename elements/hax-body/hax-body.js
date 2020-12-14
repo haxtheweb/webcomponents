@@ -2522,6 +2522,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         node.scrollIntoView({
           behavior: "smooth",
           inline: "center",
+          block: "nearest",
         });
       }
     }, 0);

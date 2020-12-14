@@ -179,6 +179,7 @@ class CleanTwo extends HAXCMSThemeParts(
          text-align: right; 
         }
         site-active-title {
+          padding: 2px 0px;
           flex-wrap: wrap;
           align-items: baseline;
           flex-direction: row;
@@ -189,6 +190,9 @@ class CleanTwo extends HAXCMSThemeParts(
           flex: auto;
           margin: 0;
           display: flex;
+          background-color: white;
+          --site-active-title-font-size: 22px;
+          --site-active-title-line-height: 22px;
         }
 
         .body-wrapper {
@@ -498,8 +502,8 @@ class CleanTwo extends HAXCMSThemeParts(
                     ></site-menu-content>
                   `
                 : ``}
+              <site-active-title></site-active-title>
             </div>
-            <site-active-title></site-active-title>
             <site-search
               hide-input
               search="${this.searchTerm}"

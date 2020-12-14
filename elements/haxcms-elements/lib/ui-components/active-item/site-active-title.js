@@ -34,6 +34,8 @@ class SiteActiveTitle extends LitElement {
           color: var(--site-active-title-color);
           margin: var(--site-active-title-margin);
           padding: var(--site-active-title-padding);
+          font-size: var(--site-active-title-font-size, 18px);
+          line-height: var(--site-active-title-line-height, 18px);
         }
       </style>
       <h1>${this.__title}</h1>
