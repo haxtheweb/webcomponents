@@ -1219,59 +1219,56 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             case "ArrowDown":
             case "ArrowLeft":
             case "ArrowRight":
-              setTimeout(() => {
-                const tmp = HAXStore.getSelection();
-                HAXStore._tmpSelection = tmp;
-                HAXStore.haxSelectedText = tmp.toString();
-                const rng = HAXStore.getRange();
-                if (
-                  rng.commonAncestorContainer &&
-                  this.activeNode !== rng.commonAncestorContainer &&
-                  typeof rng.commonAncestorContainer.focus === "function"
-                ) {
-                  if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
-                    if (HAXStore.isTextElement(rng.commonAncestorContainer)) {
-                      this.setAttribute("contenteditable", true);
-                    } else {
-                      this.removeAttribute("contenteditable");
-                    }
-                    rng.commonAncestorContainer.focus();
-                    this.__focusLogic(rng.commonAncestorContainer, false);
+              const tmp = HAXStore.getSelection();
+              HAXStore._tmpSelection = tmp;
+              HAXStore.haxSelectedText = tmp.toString();
+              const rng = HAXStore.getRange();
+              if (
+                rng.commonAncestorContainer &&
+                this.activeNode !== rng.commonAncestorContainer &&
+                typeof rng.commonAncestorContainer.focus === "function"
+              ) {
+                if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
+                  if (HAXStore.isTextElement(rng.commonAncestorContainer)) {
+                    this.setAttribute("contenteditable", true);
+                  } else {
+                    this.removeAttribute("contenteditable");
                   }
+                  rng.commonAncestorContainer.focus();
+                  this.__focusLogic(rng.commonAncestorContainer, false);
                 }
-                // need to check on the parent too if this was a text node
-                else if (
-                  rng.commonAncestorContainer &&
-                  rng.commonAncestorContainer.parentNode &&
-                  this.activeNode !== rng.commonAncestorContainer.parentNode &&
-                  typeof rng.commonAncestorContainer.parentNode.focus ===
-                    "function"
+              }
+              // need to check on the parent too if this was a text node
+              else if (
+                rng.commonAncestorContainer &&
+                rng.commonAncestorContainer.parentNode &&
+                this.activeNode !== rng.commonAncestorContainer.parentNode &&
+                typeof rng.commonAncestorContainer.parentNode.focus ===
+                  "function"
+              ) {
+                if (
+                  rng.commonAncestorContainer.parentNode.tagName !== "HAX-BODY"
                 ) {
                   if (
-                    rng.commonAncestorContainer.parentNode.tagName !==
-                    "HAX-BODY"
+                    HAXStore.isTextElement(
+                      rng.commonAncestorContainer.parentNode
+                    )
                   ) {
-                    if (
-                      HAXStore.isTextElement(
-                        rng.commonAncestorContainer.parentNode
-                      )
-                    ) {
-                      this.setAttribute("contenteditable", true);
-                    } else {
-                      this.removeAttribute("contenteditable");
-                    }
-
-                    rng.commonAncestorContainer.parentNode.focus();
-                    this.__focusLogic(
-                      rng.commonAncestorContainer.parentNode,
-                      false
-                    );
+                    this.setAttribute("contenteditable", true);
                   } else {
-                    rng.commonAncestorContainer.focus();
-                    this.__focusLogic(rng.commonAncestorContainer, false);
+                    this.removeAttribute("contenteditable");
                   }
+
+                  rng.commonAncestorContainer.parentNode.focus();
+                  this.__focusLogic(
+                    rng.commonAncestorContainer.parentNode,
+                    false
+                  );
+                } else {
+                  rng.commonAncestorContainer.focus();
+                  this.__focusLogic(rng.commonAncestorContainer, false);
                 }
-              }, 0);
+              }
               break;
             default:
               // we only care about contextual ops in a paragraph

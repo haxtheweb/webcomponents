@@ -143,7 +143,9 @@ const UndoManagerBehaviors = function (SuperClass) {
      * HTMLElement
      */
     disconnectedCallback() {
-      this.undoObserver.disconnect();
+      if (this.undoStackObserver) {
+        this.undoStackObserver.disconnect();
+      }
       super.disconnectedCallback();
     }
     /**

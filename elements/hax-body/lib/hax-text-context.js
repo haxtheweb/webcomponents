@@ -459,10 +459,12 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
     let localItem = this.shadowRoot.querySelector(
       '#textformat button[value="' + this.realSelectedValue + '"]'
     );
-    localItem.setAttribute("data-simple-popover-selection-active", true);
-    this.formatIcon = localItem
-      .querySelector("simple-icon-lite")
-      .getAttribute("icon");
+    if (localItem) {
+      localItem.setAttribute("data-simple-popover-selection-active", true);
+      this.formatIcon = localItem
+        .querySelector("simple-icon-lite")
+        .getAttribute("icon");
+    }
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
