@@ -413,9 +413,14 @@ class SimpleTooltip extends LitElement {
       // Play Exit Animation
       this._onAnimationFinish();
     }
-
     this._showing = false;
     this._animationPlaying = true;
+    // force hide if we are open too long
+    // helps older platforms and the monster known as Safari
+    clearTimeout(this.__debounceCancel);
+    this.__debounceCancel = setTimeout(() => {
+      this._cancelAnimation();
+    }, 5000);
   }
 
   /**
@@ -575,11 +580,11 @@ class SimpleTooltip extends LitElement {
 
   _removeListeners() {
     if (this._target) {
-      this._target.removeEventListener("mouseenter", this.show.bind(this));
-      this._target.removeEventListener("focus", this.show.bind(this));
-      this._target.removeEventListener("mouseleave", this.hide.bind(this));
-      this._target.removeEventListener("blur", this.hide.bind(this));
-      this._target.removeEventListener("tap", this.hide.bind(this));
+      this._target.removeEventListener("mouseover", this.show.bind(this));
+      this._target.removeEventListener("focusin", this.show.bind(this));
+      this._target.removeEventListener("mouseout", this.hide.bind(this));
+      this._target.removeEventListener("focusout", this.hide.bind(this));
+      this._target.removeEventListener("click", this.hide.bind(this));
     }
   }
   /**
