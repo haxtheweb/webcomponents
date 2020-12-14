@@ -187,11 +187,17 @@ class HAXTrayButton extends SimpleColors {
           );
           background-color: var(
             --hax-tray-panel-accent,
-            var(--hax-contextual-action-color)
+            var(
+              --hax-contextual-action-color,
+              var(--simple-colors-default-theme-grey-12, #333333)
+            )
           );
           border-color: var(
             --hax-tray-panel-accent,
-            var(--hax-contextual-action-color)
+            var(
+              --hax-contextual-action-color,
+              var(--simple-colors-default-theme-grey-12, #333333)
+            )
           );
           transition: all 0.5ms ease-in-out;
         }

@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>HAX: h-a-x Demo</title>
-  </head>
-  <body>
     <script>
       window.process = window.process || {
         env: {
@@ -13,6 +11,30 @@
         }
       };
     </script>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@lrnwebcomponents/h-a-x/h-a-x.js';
+      import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
+        esModule.setPassiveTouchGestures(true);
+      });
+    </script>
+    <style>
+      html {
+        font-family: 'Noto Serif', serif;
+      }
+      body, html, :root {
+        --primary-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
+        --hax-base-styles-p-min-height: 40px;
+        --hax-base-styles-p-line-height: 40px;
+      }
+      p {
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
     <div style="padding:100px 300px 100px 100px;">
     <h-a-x app-store='{"url": "appstore.json"}' element-align="right">
       <p>
@@ -92,26 +114,5 @@
         </chartist-render-->
       </h-a-x>
     </div>
-    <script type="module">
-      import '@lrnwebcomponents/h-a-x/h-a-x.js';
-      import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
-        esModule.setPassiveTouchGestures(true);
-      });
-    </script>
-    <script defer async src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script defer async src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
-    <style>
-      html {
-        font-family: 'Noto Serif', serif;
-      }
-      body, html, :root {
-        --primary-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
-        --hax-base-styles-p-min-height: 40px;
-        --hax-base-styles-p-line-height: 40px;
-      }
-      p {
-        padding: 8px;
-      }
-    </style>
   </body>
 </html>

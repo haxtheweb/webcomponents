@@ -106,6 +106,9 @@ class JwtLogin extends LitElement {
    * LitElement life cycle - properties changed callback
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (
         ["auto", "method", "url"].includes(propName) &&

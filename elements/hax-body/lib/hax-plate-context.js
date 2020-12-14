@@ -69,19 +69,23 @@ class HaxPlateContext extends SimpleTourFinder(HTMLElement) {
       opacity: 1;
     }
     button {
-      background-color: var(--hax-contextual-action-color);
+      width: 100%;
+      text-align: left;
       -webkit-justify-content: flex-start;
       justify-content: flex-start;
-      height: 24px;
-      padding: 0 4px;
+      height: 32px;
+      padding: 4px;
+      margin: 0;
+      border-radius: 0;
+      display: block;
+      overflow: hidden;
       min-height: 24px;
       font-size: 10px;
-      color: white;
+      color: black;
     }
     #drag hax-context-item:hover,
     button:hover {
       cursor: pointer;
-      color: black;
     }
     simple-icon {
       padding: 0 2px;

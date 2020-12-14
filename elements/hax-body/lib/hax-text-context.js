@@ -181,25 +181,15 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           orientation="tb"
           id="textformat"
         >
-          <style slot="style">
-            simple-popover-manager button {
-              color: black;
-              font-size: 10px !important;
-              margin: 0;
-              padding: 2px;
-              min-height: unset;
-              width: 100%;
-              display: flex;
-              justify-content: start;
-              align-items: center;
-              border: 0;
-            }
+          <div slot="style">
+            simple-popover-manager button { color: black; font-size: 10px
+            !important; margin: 0; padding: 4px; text-align:left; overflow:
+            hidden; min-height: unset; width: 100%; display: block;
+            justify-content: start; align-items: center; border: 0; }
             simple-popover-manager button simple-icon-lite {
-              --simple-icon-height: 18px;
-              --simple-icon-width: 18px;
-              margin-right: 8px;
-            }
-          </style>
+            --simple-icon-height: 18px; --simple-icon-width: 18px; margin-right:
+            8px; }
+          </div>
           <hax-context-item
             action
             mini

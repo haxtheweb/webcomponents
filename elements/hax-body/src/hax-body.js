@@ -608,6 +608,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         target = target.closest("[data-hax-ray]");
       } else if (target.closest("[contenteditable]")) {
         target = target.closest("[contenteditable]");
+      } else if (HAXStore.validTagList.includes(target.tagName.toLowerCase())) {
+        // tagName is in the valid tag list so just let it get selected
       } else if (target.tagName !== "HAX-BODY") {
         // this is a usecase we didn't think of...
         console.warn(target);

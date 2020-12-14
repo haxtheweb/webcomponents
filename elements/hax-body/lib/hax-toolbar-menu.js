@@ -30,20 +30,12 @@ class HaxToolbarMenu extends LitElement {
         auto
         orientation="tb"
       >
-        <style slot="style">
-          simple-popover-manager hax-context-item {
-            overflow: hidden;
-            display: flex;
-          }
-          simple-popover-manager {
-            --simple-popover-padding: 0;
-          }
-          hax-context-item-textop[hidden] {
-            opacity: 0;
-            display: none;
-            visibility: hidden;
-          }
-        </style>
+        <div slot="style">
+          simple-popover-manager hax-context-item { overflow: hidden; display:
+          flex; } simple-popover-manager { --simple-popover-padding: 0; }
+          hax-context-item-textop[hidden] { opacity: 0; display: none;
+          visibility: hidden; }
+        </div>
         <hax-toolbar-item
           ?mini="${this.mini}"
           ?disabled="${this.disabled}"

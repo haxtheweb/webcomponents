@@ -459,7 +459,7 @@ function nodeToHaxElement(node, eventName = "insert-element") {
   }
   // test if a class exists, not everything scopes
   if (typeof node.attributes.class !== typeof undefined) {
-    props.class = node.attributes.class.nodeValue.replace("hax-active", "");
+    props.class = node.attributes.class.value.replace("hax-active", "");
   }
   // test if a id exists as its a special case in attributes... of course
   if (typeof node.attributes.id !== typeof undefined) {

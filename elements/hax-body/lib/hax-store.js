@@ -50,10 +50,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       if (this.activeHaxBody.parentNode.getSelection) {
         return this.activeHaxBody.parentNode.getSelection();
       }
-      // ponyfill from google
-      else if (getRange(this.activeHaxBody.parentNode)) {
-        return getRange(this.activeHaxBody.parentNode);
-      }
+      // this could fail depending on polyfills and stuff
+      try {
+        // ponyfill from google
+        if (getRange(this.activeHaxBody.parentNode)) {
+          return getRange(this.activeHaxBody.parentNode);
+        }
+      } catch (e) {}
     }
     // missed on both, hope the normal one will work
     return window.getSelection();

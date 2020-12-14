@@ -42,8 +42,9 @@ class SimplePopoverSelection extends LitElement {
       // which means you can style things that otherwise would be impossible
       // due to how shadowDOM + things at the app level / singleton would allow
       if (this.querySelector('[slot="style"]')) {
-        let style = this.querySelector('[slot="style"]').cloneNode(true);
-        style.removeAttribute("slot");
+        let styleData = this.querySelector('[slot="style"]').cloneNode(true);
+        let style = document.createElement("style");
+        style.innerHTML = styleData.innerHTML;
         content = html`${unsafeHTML(div.innerHTML)}${unsafeHTML(
           style.outerHTML
         )}`;
