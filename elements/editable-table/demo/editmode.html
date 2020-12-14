@@ -15,31 +15,6 @@
       import "@polymer/iron-demo-helpers/demo-snippet.js";
       import '../editable-table.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles">
-      .vertical-section-container {
-        width: 95%;
-        max-width: unset;
-      }
-      #buttons { 
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      button { 
-        flex: 1 1 auto;
-        margin: 5px;
-        padding: 15px;
-        border-radius: 2px;
-        background-color: #eee;
-        text-transform: none; 
-      }
-      #data {
-        width: 100%;
-        border-radius: 2px;
-        height: 150px;
-        margin: 0;
-      }
-    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
@@ -49,24 +24,67 @@
       </p>
       <demo-snippet>
         <template>
-            <div class="buttons">
-              <button 
-                id="editmode-button"
-                aria-pressed="true"
-                controls="editmode" 
-                onclick="toggleEditMode();">
-                Toggle Edit Mode 
-              </button>
-            </div>
-            <editable-table id="editmode" edit-mode></editable-table> 
-            <script>
-              toggleEditMode = function(){
-                let button = document.getElementById('editmode-button'),
-                  pressed = button.getAttribute('aria-pressed') === "true" ? "false" : "true";
-                button.setAttribute('aria-pressed',pressed);
-                document.getElementById('editmode').toggleEditMode();
-              }
-            </script>
+          <editable-table 
+            id="food-table" 
+            bordered 
+            condensed 
+            edit-mode
+            filter 
+            responsive
+            sort 
+            striped>
+              <table>
+                <caption>
+                  Is it a <em>sandwich</em>? Food classification chart.
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="row">Food</th>
+                    <th scope="col">Enclosure</th>
+                    <th scope="col">Contents</th>
+                    <th scope="col">Orientation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Hamburger</th>
+                    <td>one bun, split into two</td>
+                    <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
+                    <td>horizontal</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Hoagie</th>
+                    <td>one bun</td>
+                    <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
+                    <td>vertical</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Hot Dog</th>
+                    <td>one bun</td>
+                    <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
+                    <td>vertical</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Hot Pocket</th>
+                    <td>two crusts sealed together</td>
+                    <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
+                    <td>horizontal</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Pie</th>
+                    <td>two crusts sealed together</td>
+                    <td>fruit or meat, vegetables, <i>and/or</i> cheese</td>
+                    <td>horizontal</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Taco</th>
+                    <td>one shell</td>
+                    <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
+                    <td>vertical</td>
+                  </tr>
+                </tbody>
+              </table>
+          </editable-table> 
         </template>
       </demo-snippet> 
     </div>

@@ -25,236 +25,239 @@ import * as shadow from "shadow-selection-polyfill/shadow.js";
  * @demo ./demo/config.html custom configuration
  */
 class RichTextEditor extends RichTextEditorStyles(LitElement) {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        :host {
-          display: block;
-          cursor: pointer;
-          min-height: 40px;
-          outline: var(--rich-text-editor-border-width, 1px) solid transparent;
-        }
+:host {
+  display: block;
+  cursor: pointer;
+  min-height: 40px;
+  outline: var(--rich-text-editor-border-width, 1px) solid transparent;
+}
 
-        :host(:empty) {
-          outline: var(--rich-text-editor-border-width, 1px) dashed
-            var(--rich-text-editor-border-color);
-        }
+:host(:empty) {
+  outline: var(--rich-text-editor-border-width, 1px) dashed var(--rich-text-editor-border-color);
+}
 
-        :host(:hover),
-        :host([contenteditable="true"]),
-        :host([contenteditable="true"]):focus-within,
-        :host([contenteditable="true"]):focus {
-          outline: var(--rich-text-editor-border-width, 1px) solid
-            var(--rich-text-editor-border-focus-color);
-        }
+:host(:hover),
+:host([contenteditable="true"]),
+:host([contenteditable="true"]):focus-within,
+:host([contenteditable="true"]):focus {
+  outline: var(--rich-text-editor-border-width, 1px) solid var(--rich-text-editor-border-focus-color);
+}
 
-        :host([contenteditable="true"]):focus-within,
-        :host([contenteditable="true"]):focus {
-          padding: 2px;
-          margin-bottom: 2px;
-        }
+:host([contenteditable="true"]):focus-within,
+:host([contenteditable="true"]):focus {
+  padding: 2px;
+  margin-bottom: 2px;
+}
 
-        :host(.heightmax[contenteditable="true"]) {
-          max-height: calc(100vh - 200px);
-          overflow-y: scroll;
-        }
+:host(.heightmax[contenteditable="true"]) {
+  max-height: calc(100vh - 200px);
+  overflow-y: scroll;
+}
 
-        :host(:empty):before {
-          content: attr(placeholder);
-          padding: 0 5px;
-          display: block;
-          z-index: -1;
-          color: var(--rich-text-editor-button-disabled-color);
-        }
+:host(:empty):before {
+  content: attr(placeholder);
+  padding: 0 5px;
+  display: block;
+  z-index: -1;
+  color: var(--rich-text-editor-button-disabled-color);
+}
 
-        *::selection .rich-text-editor-selection {
-          background-color: var(--rich-text-editor-selection-bg);
-        }
+*::selection .rich-text-editor-selection {
+  background-color: var(--rich-text-editor-selection-bg);
+}
 
-        ::slotted(*:first-child) {
-          margin-top: 0;
-        }
+::slotted(*:first-child) {
+  margin-top: 0;
+}
 
-        ::slotted(*:last-child) {
-          margin-bottom: 0;
-        }
-      `,
+::slotted(*:last-child) {
+  margin-bottom: 0;
+}
+      `
     ];
   }
 
-  // render function
+// render function
   render() {
-    return html` <slot
-      @focus="${(e) => (this.__focused = true)}"
-      @blur="${(e) => (this.__focused = false)}"
-      @mouseover="${(e) => (this.__hovered = true)}"
-      @mouseout="${(e) => (this.__hovered = false)}"
-    ></slot>`;
+    return html`
+
+<slot
+  @focus="${(e) => (this.__focused = true)}"
+  @blur="${(e) => (this.__focused = false)}"
+  @mouseover="${(e) => (this.__hovered = true)}"
+  @mouseout="${(e) => (this.__hovered = false)}"></slot>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Rich text-editor",
-        description: "a standalone rich text editor",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Text"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "Penn State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "title",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android",
-          },
-        ],
-        advanced: [],
-      },
-    };
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Rich text-editor",
+    "description": "a standalone rich text editor",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Text"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "Penn State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
+  
+  ...super.properties,
+  
+  /**
+   * editor's unique id
+   */
+  "id": {
+    "name": "id",
+    "type": String,
+    "reflect": true,
+    "attribute": "id"
+  },
+  /**
+   * Maps to contenteditable attribute
+   */
+  "contenteditable": {
+    "name": "contenteditable",
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "contenteditable"
+  },
+  /**
+   * don't reveal toolbar on mouseover
+   */
+  "disableHover": {
+    "name": "disableHover",
+    "type": Boolean,
+    "attribute": "disable-hover"
+  },
+  /**
+   * Placeholder text for empty editable regions
+   */
+  "placeholder": {
+    "name": "placeholder",
+    "type": String,
+    "reflect": true,
+    "attribute": "placeholder"
+  },
 
-      /**
-       * editor's unique id
-       */
-      id: {
-        name: "id",
-        type: String,
-        reflect: true,
-        attribute: "id",
-      },
-      /**
-       * Maps to contenteditable attribute
-       */
-      contenteditable: {
-        name: "contenteditable",
-        type: Boolean,
-        reflect: true,
-        attribute: "contenteditable",
-      },
-      /**
-       * don't reveal toolbar on mouseover
-       */
-      disableHover: {
-        name: "disableHover",
-        type: Boolean,
-        attribute: "disable-hover",
-      },
-      /**
-       * Placeholder text for empty editable regions
-       */
-      placeholder: {
-        name: "placeholder",
-        type: String,
-        reflect: true,
-        attribute: "placeholder",
-      },
+  /**
+   * id for toolbar
+   */
+  "toolbar": {
+    "name": "toolbar",
+    "type": String,
+    "reflect": true,
+    "attribute": "toolbar"
+  },
 
-      /**
-       * id for toolbar
-       */
-      toolbar: {
-        name: "toolbar",
-        type: String,
-        reflect: true,
-        attribute: "toolbar",
-      },
+  /**
+   * current range
+   */
+  "range": {
+    "name": "range",
+    "type": Object,
+    "attribute": "range"
+  },
+  /**
+   * raw html
+   */
+  "rawhtml": {
+    "type": String,
+    "attribute": "rawhtml"
+  },
 
-      /**
-       * current range
-       */
-      range: {
-        name: "range",
-        type: Object,
-        attribute: "range",
-      },
+  /**
+   * type of editor toolbar, i.e.
+   * full - full for full toolbar with breadcrumb,
+   * mini - mini for mini floating toolbar, or
+   * default toolbar if neither.
+   */
+  "type": {
+    "name": "type",
+    "type": String,
+    "reflect": true,
+    "attribute": "type"
+  },
+  /**
+   * whether to update range
+   */
+  "updateRange": {
+    "type": Boolean
+  },
 
-      /**
-       * type of editor toolbar, i.e.
-       * full - full for full toolbar with breadcrumb,
-       * mini - mini for mini floating toolbar, or
-       * default toolbar if neither.
-       */
-      type: {
-        name: "type",
-        type: String,
-        reflect: true,
-        attribute: "type",
-      },
-      /**
-       * whether to update range
-       */
-      updateRange: {
-        type: Boolean,
-      },
+  /**
+   * contains cancelled edits
+   */
+  "__canceledEdits": {
+    "type": Object
+  },
 
-      /**
-       * contains cancelled edits
-       */
-      __canceledEdits: {
-        type: Object,
-      },
+  /**
+   * connected toolbar
+   */
+  "__connectedToolbar": {
+    "type": Object
+  },
 
-      /**
-       * connected toolbar
-       */
-      __connectedToolbar: {
-        type: Object,
-      },
+  /**
+   * has focus
+   */
+  "__focused": {
+    "type": Boolean
+  },
 
-      /**
-       * has focus
-       */
-      __focused: {
-        type: Boolean,
-      },
+  /**
+   * is hovered
+   */
+  "__hovered": {
+    "type": Boolean
+  },
 
-      /**
-       * is hovered
-       */
-      __hovered: {
-        type: Boolean,
-      },
-
-      /**
-       * raw html
-       */
-      __rawHTML: {
-        type: String,
-      },
-
-      /**
-       * selection management
-       */
-      __selection: {
-        type: Object,
-      },
-    };
+  /**
+   * selection management
+   */
+  "__selection": {
+    "type": Object
+  }
+}
+;
   }
 
   /**
@@ -277,15 +280,6 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     document.addEventListener(shadow.eventName, this._getRange.bind(root));
   }
 
-  _getRange() {
-    let shadowRoot = (el) => {
-      let parent = el.parentNode;
-      return parent ? shadowRoot(parent) : el;
-    };
-    this.range = shadow.getRange(shadowRoot(this));
-    this.updateRange();
-  }
-
   /**
    * mutation observer
    *
@@ -294,6 +288,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    */
   get observer() {
     return new MutationObserver(this._getRange);
+  }
+
+  get placeHolderHTML() {
+    return `<p>${this.placeholder}</p>`;
   }
 
   connectedCallback() {
@@ -321,11 +319,11 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "contenteditable") this._editableChange();
       if (propName === "range") this._rangeChange();
+      if (propName === "rawhtml") this.setHTML(this.rawhtml);
     });
   }
   disableEditing() {
     this.contenteditable = false;
-    console.log("disabled", this.innerHTML);
     this.dispatchEvent(
       new CustomEvent("editing-disabled", {
         bubbles: true,
@@ -357,17 +355,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
       })
     );
   }
-  /**
-   * gets current value minus placeholder
-   *
-   * @returns {string}
-   * @memberof RichTextEditor
-   */
-  getValue() {
-    return this.isEmpty ||
-      this.trimmerHTML(this) === `<p>${editor.placeholder}</p>`
+  getHTML() {
+    return this.isEmpty || this.isPlaceholder()
       ? ""
-      : this.innerHTML;
+      : (this.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim();
   }
   /**
    * determines if editor is empty
@@ -376,7 +367,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditor
    */
   isEmpty() {
-    return !this.innerHTML || this.trimmerHTML(this) == "";
+    return !this.innerHTML || this.trimHTML(this) == "";
+  }
+  isPlaceholder() {
+    this.trimHTML(this) === this.trimString(this.placeholderHTML);
   }
 
   /**
@@ -454,6 +448,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   rootNode() {
     return !this.__selection ? document : this.__selection.getRoot(this);
   }
+  setHTML(rawhtml = "") {
+    this.innerHTML = rawhtml.trim();
+    this.setCancelHTML(rawhtml.trim());
+  }
   /**
    * holds on to edits so cancel willwork
    *
@@ -470,8 +468,14 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns string
    * @memberof RichTextEditor
    */
-  trimmerHTML(node) {
-    return node.innerHTML.replace(/[\s\t\r\n]/gim, "");
+  trimHTML(node) {
+    let str = node ? node.innerHTML : undefined;
+    return this.trimString(str);
+  }
+  trimString(str) {
+    return (str || "")
+      .replace(/<!--[^(-->)]*-->/g, "")
+      .replace(/[\s\t\r\n]/gim, "");
   }
   updateRange(e) {
     this.dispatchEvent(
@@ -489,15 +493,23 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditor
    */
   _editableChange() {
-    let placeholder = `<p>${this.placeholder}</p>`;
     if (this.contenteditable) {
       this.setCancelHTML();
-      if (this.isEmpty()) this.innerHTML = placeholder;
+      if (this.isEmpty()) this.innerHTML = this.placeholderHTML;
     } else {
-      if (this.trimmerHTML(this) === placeholder) {
+      if (this.isPlaceholder()) {
         this.setCancelHTML("");
       }
     }
+  }
+
+  _getRange() {
+    let shadowRoot = (el) => {
+      let parent = el.parentNode;
+      return parent ? shadowRoot(parent) : el;
+    };
+    this.range = shadow.getRange(shadowRoot(this));
+    this.updateRange();
   }
 
   /**

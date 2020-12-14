@@ -47,15 +47,6 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     document.addEventListener(shadow.eventName, this._getRange.bind(root));
   }
 
-  _getRange() {
-    let shadowRoot = (el) => {
-      let parent = el.parentNode;
-      return parent ? shadowRoot(parent) : el;
-    };
-    this.range = shadow.getRange(shadowRoot(this));
-    this.updateRange();
-  }
-
   /**
    * mutation observer
    *
@@ -64,6 +55,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    */
   get observer() {
     return new MutationObserver(this._getRange);
+  }
+
+  get placeHolderHTML() {
+    return `<p>${this.placeholder}</p>`;
   }
 
   connectedCallback() {
@@ -91,11 +86,11 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "contenteditable") this._editableChange();
       if (propName === "range") this._rangeChange();
+      if (propName === "rawhtml") this.setHTML(this.rawhtml);
     });
   }
   disableEditing() {
     this.contenteditable = false;
-    console.log("disabled", this.innerHTML);
     this.dispatchEvent(
       new CustomEvent("editing-disabled", {
         bubbles: true,
@@ -127,17 +122,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
       })
     );
   }
-  /**
-   * gets current value minus placeholder
-   *
-   * @returns {string}
-   * @memberof RichTextEditor
-   */
-  getValue() {
-    return this.isEmpty ||
-      this.trimmerHTML(this) === `<p>${editor.placeholder}</p>`
+  getHTML() {
+    return this.isEmpty || this.isPlaceholder()
       ? ""
-      : this.innerHTML;
+      : (this.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim();
   }
   /**
    * determines if editor is empty
@@ -146,7 +134,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditor
    */
   isEmpty() {
-    return !this.innerHTML || this.trimmerHTML(this) == "";
+    return !this.innerHTML || this.trimHTML(this) == "";
+  }
+  isPlaceholder() {
+    this.trimHTML(this) === this.trimString(this.placeholderHTML);
   }
 
   /**
@@ -224,6 +215,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   rootNode() {
     return !this.__selection ? document : this.__selection.getRoot(this);
   }
+  setHTML(rawhtml = "") {
+    this.innerHTML = rawhtml.trim();
+    this.setCancelHTML(rawhtml.trim());
+  }
   /**
    * holds on to edits so cancel willwork
    *
@@ -240,8 +235,14 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns string
    * @memberof RichTextEditor
    */
-  trimmerHTML(node) {
-    return node.innerHTML.replace(/[\s\t\r\n]/gim, "");
+  trimHTML(node) {
+    let str = node ? node.innerHTML : undefined;
+    return this.trimString(str);
+  }
+  trimString(str) {
+    return (str || "")
+      .replace(/<!--[^(-->)]*-->/g, "")
+      .replace(/[\s\t\r\n]/gim, "");
   }
   updateRange(e) {
     this.dispatchEvent(
@@ -259,15 +260,23 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditor
    */
   _editableChange() {
-    let placeholder = `<p>${this.placeholder}</p>`;
     if (this.contenteditable) {
       this.setCancelHTML();
-      if (this.isEmpty()) this.innerHTML = placeholder;
+      if (this.isEmpty()) this.innerHTML = this.placeholderHTML;
     } else {
-      if (this.trimmerHTML(this) === placeholder) {
+      if (this.isPlaceholder()) {
         this.setCancelHTML("");
       }
     }
+  }
+
+  _getRange() {
+    let shadowRoot = (el) => {
+      let parent = el.parentNode;
+      return parent ? shadowRoot(parent) : el;
+    };
+    this.range = shadow.getRange(shadowRoot(this));
+    this.updateRange();
   }
 
   /**

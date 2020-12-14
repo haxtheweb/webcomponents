@@ -101,7 +101,7 @@ class EditableTableDisplay extends displayBehaviors(
       >
         <caption>
           <div>
-            ${this.caption}
+            ${this.getHTML(this.caption)}
             <simple-picker
               id="column"
               align-right
@@ -126,13 +126,14 @@ class EditableTableDisplay extends displayBehaviors(
                   ?xs-hidden="${this._isColHidden(index, 1)}"
                 >
                   ${!this.sort
-                    ? this._replaceBlankCell(th)
+                    ? this.getHTML(this._replaceBlankCell(th))
                     : html`
                         <editable-table-sort
                           column-index="${index}"
                           sort-column="${this.sortColumn}"
-                          text="${this._replaceBlankCell(th)}"
-                        ></editable-table-sort>
+                        >
+                          ${this.getHTML(this._replaceBlankCell(th))}
+                        </editable-table-sort>
                       `}
                 </th>
               `
@@ -371,7 +372,7 @@ class EditableTableDisplay extends displayBehaviors(
       scope="row"
       ?xs-hidden="${this._isColHidden(index, 1)}"
     >
-      ${this._replaceBlankCell(cell)}
+      ${this.getHTML(this._replaceBlankCell(cell))}
     </th>`;
   }
   _tbodyTd(cell, index, noFilter = false) {
@@ -386,17 +387,20 @@ class EditableTableDisplay extends displayBehaviors(
         ? html`
             <editable-table-filter
               column-index="${index}"
-              text="${this._replaceBlankCell(cell)}"
               ?filtered="${this._isFiltered(
                 index,
                 this.filterColumn,
                 this.filtered
               )}"
-            ></editable-table-filter>
+            >
+              ${this.getHTML(this._replaceBlankCell(cell))}
+            </editable-table-filter>
           `
         : !noFilter
-        ? html`<span class="cell">${this._replaceBlankCell(cell)}</span>`
-        : this._replaceBlankCell(cell)}
+        ? html`<span class="cell"
+            >${this.getHTML(this._replaceBlankCell(cell))}</span
+          >`
+        : this.getHTML(this._replaceBlankCell(cell))}
     </td>`;
   }
 

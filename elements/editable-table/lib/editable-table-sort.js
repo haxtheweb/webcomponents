@@ -41,7 +41,7 @@ class EditableTableSort extends LitElement {
   render() {
     return html`
       <button id="button" class="cell-button" @click="${this._onSortClicked}">
-        ${this.text}
+        <slot></slot>
         <span class="sr-only asc">(ascending)</span>
         <span class="sr-only desc">(descending)</span>
         <span class="sr-only"> Toggle sort mode.</span>

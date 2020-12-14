@@ -176,6 +176,12 @@ export const displayBehaviors = function (SuperClass) {
           .then((response) => response.text())
           .then((data) => (data = this.csvData));
     }
+    getHTML(rawhtml) {
+      this.__tempDiv = this.__tempDiv || document.createElement("template");
+      this.__tempDiv.innerHTML = rawhtml;
+      let temp = this.__tempDiv.content.cloneNode(true);
+      return temp;
+    }
 
     /**
      * converts csv string to array

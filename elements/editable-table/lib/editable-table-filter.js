@@ -42,7 +42,7 @@ class EditableTableFilter extends LitElement {
   render() {
     return html`
       <button id="button" class="cell-button" @click="${this._onFilterClicked}">
-        <span>${this.text}</span>
+        <span><slot></slot></span>
         <span class="sr-only" .hidden="${!this.filtered}"> (filtered)</span>
         <span class="sr-only"> Toggle filter.</span>
         <simple-icon-lite
@@ -55,8 +55,8 @@ class EditableTableFilter extends LitElement {
         ></simple-icon-lite>
       </button>
       <simple-tooltip for="button"
-        >Toggle Column ${this.columnIndex} filter for
-        "${this.text}"</simple-tooltip
+        >Toggle Column ${this.columnIndex} filter for "<slot
+        ></slot>"</simple-tooltip
       >
     `;
   }

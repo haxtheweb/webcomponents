@@ -53,6 +53,13 @@
     "type": "Object",
     "attribute": "range"
   },
+  /**
+   * raw html
+   */
+  "rawhtml": {
+    "type": "String",
+    "attribute": "rawhtml"
+  },
 
   /**
    * type of editor toolbar, i.e.
@@ -99,13 +106,6 @@
    */
   "__hovered": {
     "type": "Boolean"
-  },
-
-  /**
-   * raw html
-   */
-  "__rawHTML": {
-    "type": "String"
   },
 
   /**

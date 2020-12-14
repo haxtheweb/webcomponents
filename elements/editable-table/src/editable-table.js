@@ -253,7 +253,7 @@ class EditableTable extends displayBehaviors(LitElement) {
                 placeholder="Name your table by adding a caption here."
                 type="rich-text-editor-toolbar-mini"
               >
-                ${this.captionHTML}
+                ${this.getHTML(this.caption)}
               </rich-text-editor>
             </caption>
             <thead>
@@ -307,7 +307,7 @@ class EditableTable extends displayBehaviors(LitElement) {
                             label="${this.label}"
                             type="rich-text-editor-toolbar-mini"
                           >
-                            ${html`${cell}`}
+                            ${this.getHTML(cell)}
                           </rich-text-editor>
                           <div id="icons">
                             <simple-icon-lite
@@ -490,6 +490,7 @@ class EditableTable extends displayBehaviors(LitElement) {
        */
       editMode: {
         type: Boolean,
+        attribute: "edit-mode",
       },
       /**
        * Hide the borders table styles menu option
@@ -638,6 +639,10 @@ class EditableTable extends displayBehaviors(LitElement) {
         .querySelector("editable-table-display")
         .sortData("none", -1);
       this.shadowRoot.querySelector("#inner").focus();
+    } else {
+      this.shadowRoot.querySelectorAll("rich-text-editor").forEach((editor) => {
+        editor.disableEditing();
+      });
     }
     this.editMode = edit;
   }
@@ -648,12 +653,6 @@ class EditableTable extends displayBehaviors(LitElement) {
       this.loadTable();
       this.__ready = true;
     }, 0);
-  }
-  get captionHTML() {
-    return html`${this.caption}`;
-  }
-  _getHTML(str) {
-    return html`${str}`;
   }
   /**
    * Handles when the caption paper-input changed

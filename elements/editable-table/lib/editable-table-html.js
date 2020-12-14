@@ -212,48 +212,7 @@ class EditableTable extends displayBehaviors(LitElement) {
     ];
   }
   render() {
-    return html`
-      <editable-table-display
-        aria-hidden="${this.editMode ? "true" : "false"}"
-        ?bordered="${this.bordered}"
-        caption="${this.caption}"
-        ?column-header="${this.columnHeader}"
-        ?condensed="${this.condensed}"
-        .data="${this.data}"
-        ?filter="${this.filter}"
-        ?footer="${this.footer}"
-        ?hidden="${this.editMode}"
-        ?responsive="${this.responsive}"
-        ?row-header="${this.rowHeader}"
-        ?sort="${this.sort}"
-        ?striped="${this.striped}"
-      >
-      </editable-table-display>
-      <div
-        ?hidden="${!this.editMode}"
-        aria-hidden="${!this.editMode ? "true" : "false"}"
-        id="outer"
-      >
-        <div id="inner">
-          <p class="sr-only">Table Editor</p>
-          <table
-            id="table-editmode"
-            ?bordered="${this.bordered}"
-            ?condensed="${this.condensed}"
-            ?striped="${this.striped}"
-          >
-            <caption>
-              <p class="sr-only">Edit Mode for</p>
-              <rich-text-editor
-                autofocus
-                @editing-disabled="${this._captionChanged}"
-                toolbar="mini"
-                id="caption"
-                label="Caption"
-                placeholder="Name your table by adding a caption here."
-                type="rich-text-editor-toolbar-mini"
-              >
-                ${this.getHTML(this.caption)}
+    return html`${this.html}
               </rich-text-editor>
             </caption>
             <thead>
@@ -307,7 +266,7 @@ class EditableTable extends displayBehaviors(LitElement) {
                             label="${this.label}"
                             type="rich-text-editor-toolbar-mini"
                           >
-                            ${this.getHTML(cell)}
+                            ${html`${cell}`}
                           </rich-text-editor>
                           <div id="icons">
                             <simple-icon-lite
@@ -490,7 +449,6 @@ class EditableTable extends displayBehaviors(LitElement) {
        */
       editMode: {
         type: Boolean,
-        attribute: "edit-mode",
       },
       /**
        * Hide the borders table styles menu option
@@ -639,10 +597,6 @@ class EditableTable extends displayBehaviors(LitElement) {
         .querySelector("editable-table-display")
         .sortData("none", -1);
       this.shadowRoot.querySelector("#inner").focus();
-    } else {
-      this.shadowRoot.querySelectorAll("rich-text-editor").forEach((editor) => {
-        editor.disableEditing();
-      });
     }
     this.editMode = edit;
   }
@@ -653,6 +607,12 @@ class EditableTable extends displayBehaviors(LitElement) {
       this.loadTable();
       this.__ready = true;
     }, 0);
+  }
+  get captionHTML() {
+    return html`${this.caption}`;
+  }
+  _getHTML(str) {
+    return html`${str}`;
   }
   /**
    * Handles when the caption paper-input changed
