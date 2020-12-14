@@ -283,7 +283,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[contenteditable]) {
           outline: none;
-          caret-color: var(--hax-color-text);
+          caret-color: auto;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.blinkfocus) {
           outline: 4px solid var(--hax-contextual-action-hover-color);
@@ -292,18 +292,20 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           #bodycontainer
           ::slotted(*:not(grid-plate)[contenteditable]:hover) {
           outline: var(--hax-body-active-outline-hover);
-          caret-color: #000000;
+          caret-color: auto;
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[contenteditable]:hover) {
           cursor: text !important;
+          caret-color: auto;
           outline: var(--hax-body-active-outline-hover);
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not(grid-plate)[contenteditable] .hax-active:hover) {
           cursor: text !important;
+          caret-color: auto;
           outline: var(--hax-body-active-outline-hover);
         }
         :host([edit-mode])
@@ -568,7 +570,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 .children.length == 0
             ) {
               let p = document.createElement("p");
-              //p.innerHTML = "<br />";
               eventPath[0]
                 .closest(".column")
                 .parentNode.parentNode.host.appendChild(p);
@@ -867,16 +868,28 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
               if (this._validElementTest(node)) {
                 // no empty HTML primative tags w/ just a BR in it for spacing purposes
                 if (
+                  !this.__delHit &&
                   node.tagName === "BR" &&
                   node.parentElement &&
                   HAXStore.__validGridTags().includes(
                     node.parentElement.tagName.toLowerCase()
                   ) &&
-                  node.parentElement.childNodes.length === 1
+                  node ===
+                    node.parentElement.childNodes[
+                      node.parentElement.childNodes.length - 1
+                    ]
                 ) {
+                  let p = node.parentElement;
                   node.remove();
+                  // add space to end of text content if it exists
+                  if (p.childNodes.length > 0) {
+                    let txt = p.childNodes[p.childNodes.length - 1];
+                    txt.textContent += "\u200b";
+                    HAXStore._positionCursorInNode(txt, txt.length);
+                  }
                   continue;
                 }
+                this.__delHit = false;
                 // P should not be in a P; parent detects it
                 if (
                   node.tagName === "P" &&
@@ -1034,25 +1047,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
               }, 0);
             }
           }
-          // if we dropped nodes via the UI (delete event basically)
-          if (mutation.removedNodes.length > 0) {
-            // handle removing items... not sure we need to do anything here
-            mutation.removedNodes.forEach((node) => {
-              if (
-                this._validElementTest(node) &&
-                !node.classList.contains("hax-active")
-              ) {
-                this.dispatchEvent(
-                  new CustomEvent("hax-body-tag-removed", {
-                    bubbles: true,
-                    cancelable: true,
-                    composed: true,
-                    detail: { node: node },
-                  })
-                );
-              }
-            });
-          }
         });
       }
       // our undo/redo history is being applied. Make sure events
@@ -1159,13 +1153,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       document.activeElement.tagName !== "SIMPLE-MODAL"
     ) {
       // if we are NOT editing and delete key is hit, delete the element
-      if (!this.getAttribute("contenteditable")) {
-        switch (e.key) {
-          case "Delete":
-            this.haxDeleteNode(this.activeNode);
-            break;
-        }
-      } else {
+      if (this.getAttribute("contenteditable")) {
         this.__dropActiveVisible();
         this.__manageFakeEndCap(false);
         let sel = HAXStore.getSelection();
@@ -1209,7 +1197,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
               break;
             case "Enter":
               this.__slot = this.activeNode.getAttribute("slot");
-              this.setAttribute("contenteditable", true);
               if (
                 this.activeNode.tagName === "P" &&
                 ["1", "#", "`", ">", "-", "!"].includes(
@@ -1223,9 +1210,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 this.keyboardShortCutProcess(guess);
               }
               break;
+            // extra trap set for this in case we care that we are in the act of deleting
             case "Backspace":
             case "Delete":
-              this.__deleteItKey = true;
+              this.__delHit = true;
             case "ArrowUp":
             case "ArrowDown":
             case "ArrowLeft":
@@ -1360,6 +1348,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         this.activeNode &&
         HAXStore.isTextElement(this.activeNode)
       ) {
+        if (e.key === "Enter") {
+          this.activeNode = this.activeNode.nextElementSibling;
+        }
         // If the user has paused for awhile, show the menu
         clearTimeout(this.__positionContextTimer);
         this.__positionContextTimer = setTimeout(() => {
@@ -1386,7 +1377,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (e.detail === "text") {
       // make sure text just escalates to a paragraph tag
       let p = document.createElement("p");
-      //p.innerHTML = "<br/>";
       this.haxReplaceNode(this.activeNode, p);
       this.__focusLogic(p);
       if (this.activeNode.parentNode) {
@@ -2112,8 +2102,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // account for empty list and ordered list items
     if (maintainContent) {
       replacement.innerHTML = node.innerHTML.trim();
-    } else {
-      //replacement.innerHTML = "<br />";
     }
     if (tagName == "ul" || tagName == "ol") {
       if (replacement.innerHTML == "<br />") {
@@ -2252,7 +2240,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "insert-above-active":
-        this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
+        if (this.activeNode && this.activeNode.previousElementSibling) {
+          this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
+        } else {
+          // would imply top of document
+          let p = document.createElement("p");
+          this.insertBefore(p, this.activeNode);
+        }
         break;
       case "insert-below-active":
         this.haxInsert("p", "", {});
@@ -3198,6 +3192,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * React to a new node being set to active.
    */
   async _activeNodeChanged(newValue, oldValue) {
+    // close any open popover items
+    window.SimplePopoverManager.requestAvailability().opened = false;
     // remove anything currently with the active class
     await this.querySelectorAll(".hax-active").forEach((el) => {
       el.classList.remove("hax-active");

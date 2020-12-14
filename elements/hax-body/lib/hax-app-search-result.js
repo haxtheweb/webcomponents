@@ -20,7 +20,7 @@ class HaxAppSearchResult extends LitElement {
             --hax-color-bg-accent,
             var(--simple-colors-default-theme-cyan-7, #009dc7)
           );
-          color: var(--hax-color-text);
+          color: var(--hax-color-text, #000000);
         }
         button {
           margin: 0;

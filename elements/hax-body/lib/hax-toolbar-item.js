@@ -99,16 +99,16 @@ class HaxToolbarItem extends LitElement {
           background: black;
         }
         :host([dark]:not([disabled])) button {
-          background-color: var(--hax-color-text);
+          background-color: var(--hax-color-text, #000000);
           color: var(--hax-color-bg-accent);
         }
         :host([dark]:not([disabled])) button:hover {
           background-color: var(--hax-color-bg-accent);
-          color: var(--hax-color-text);
+          color: var(--hax-color-text, #000000);
         }
         :host([dark]) button:active {
           background: var(--hax-color-bg-accent);
-          color: var(--hax-color-text);
+          color: var(--hax-color-text, #000000);
         }
         simple-icon-lite {
           --simple-icon-height: 20px;

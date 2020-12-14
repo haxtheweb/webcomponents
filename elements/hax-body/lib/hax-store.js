@@ -1615,16 +1615,16 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.voiceDebug = false;
     // keyboard shortcuts, implementing haxHook: gizmoRegistration can ovewrite these as needed
     this.keyboardShortcuts = {
-      "#": { tag: "h2", content: "<br />" },
-      "##": { tag: "h3", content: "<br />" },
-      "###": { tag: "h4", content: "<br />" },
-      "####": { tag: "h5", content: "<br />" },
-      "#####": { tag: "h6", content: "<br />" },
+      "#": { tag: "h2", content: "" },
+      "##": { tag: "h3", content: "" },
+      "###": { tag: "h4", content: "" },
+      "####": { tag: "h5", content: "" },
+      "#####": { tag: "h6", content: "" },
       "-": { tag: "ul", content: "<li></li>" },
       "1.": { tag: "ol", content: "<li></li>" },
       "---": { tag: "hr" },
-      "```": { tag: "code", content: "<br/>" },
-      ">": { tag: "blockquote", content: "<br/>" },
+      "```": { tag: "code", content: "" },
+      ">": { tag: "blockquote", content: "" },
     };
     this.validTagList = this.__validTags();
     this.validGridTagList = this.__validGridTags();

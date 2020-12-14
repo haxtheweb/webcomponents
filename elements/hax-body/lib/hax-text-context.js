@@ -155,6 +155,14 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         let schema = HAXStore.haxSchemaFromTag(HAXStore.activeNode.tagName);
         this.sourceView = schema.canEditSource;
       }
+      if (
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("simple-popover-selection")
+      ) {
+        this.shadowRoot.querySelector(
+          "simple-popover-selection"
+        ).opened = false;
+      }
       // update our icon if global changes what we are pointing to
       if (
         HAXStore.isTextElement(activeNode) &&
@@ -162,11 +170,6 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           '#textformat button[value="' + activeNode.tagName.toLowerCase() + '"]'
         )
       ) {
-        if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
-          this.shadowRoot.querySelector(
-            "simple-popover-selection"
-          ).opened = false;
-        }
         this.updateTextIconSelection(activeNode.tagName.toLowerCase());
       }
     });

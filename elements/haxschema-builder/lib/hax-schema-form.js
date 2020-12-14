@@ -55,7 +55,7 @@ class HaxSchemaForm extends PolymerElement {
           padding: 0px;
           margin: 16px 0 0 0;
           box-sizing: content-box;
-          color: var(--hax-color-text);
+          color: var(--hax-color-text, #000000);
           text-align: center;
           background-color: transparent;
           border-bottom: 1px solid var(--hax-color-border-outline);

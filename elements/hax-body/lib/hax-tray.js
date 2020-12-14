@@ -135,7 +135,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           );
         }
         .wrapper {
-          color: var(--hax-color-text, black);
+          color: var(--hax-color-text, #000000);
           position: fixed;
           top: 0;
           background-color: transparent;
