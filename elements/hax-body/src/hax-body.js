@@ -210,7 +210,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         .hax-context-menu-active {
           margin-left: unset;
         }
-        :host([edit-mode]) #bodycontainer ::slotted() {
+        :host([edit-mode]) #bodycontainer ::slotted([contenteditable]) {
+          -webkit-appearance: textfield;
+          cursor: text;
+          -moz-user-select: text;
+          -khtml-user-select: text;
+          -webkit-user-select: text;
+          -o-user-select: text;
         }
         :host([edit-mode])
           #bodycontainer
