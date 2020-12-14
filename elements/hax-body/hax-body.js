@@ -1214,6 +1214,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             case "Backspace":
             case "Delete":
               this.__delHit = true;
+              break;
             case "ArrowUp":
             case "ArrowDown":
             case "ArrowLeft":
