@@ -32,7 +32,6 @@ export const displayBehaviors = function (SuperClass) {
         caption: {
           type: String,
           value: null,
-          notify: true,
         },
         /**
          * Display the first row as a column header.

@@ -37,6 +37,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return [
         ...super.styles,
         css`
+          :host {
+            outline: 1px solid red;
+          }
           #toolbar {
             display: flex;
             opacity: 1;
@@ -610,7 +613,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.sticky = false;
       this.__clickableElements = {};
       this.shortcutKeys = [];
-      console.log(this.defaultConfig);
       this.addEventListener("button-register", this._registerButton);
     }
     firstUpdated(changedProperties) {

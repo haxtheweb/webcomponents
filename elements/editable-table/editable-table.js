@@ -246,14 +246,14 @@ class EditableTable extends displayBehaviors(LitElement) {
               <p class="sr-only">Edit Mode for</p>
               <rich-text-editor
                 autofocus
-                @change=${this._captionChanged}
+                @editing-disabled="${this._captionChanged}"
                 toolbar="mini"
                 id="caption"
                 label="Caption"
                 placeholder="Name your table by adding a caption here."
                 type="rich-text-editor-toolbar-mini"
               >
-                ${this.caption}
+                ${this.captionHTML}
               </rich-text-editor>
             </caption>
             <thead>
@@ -299,14 +299,15 @@ class EditableTable extends displayBehaviors(LitElement) {
                         >
                           <rich-text-editor
                             autofocus
-                            @change="${this._onValueChanged}"
+                            @editing-disabled="${(e) =>
+                              this._onCellValueChange(e, tr, td)}"
                             disable-mouseover
                             toolbar="mini"
-                            id="cell-${td}-${tr}"
+                            id="cell-${tr}-${td}"
                             label="${this.label}"
                             type="rich-text-editor-toolbar-mini"
                           >
-                            ${cell}
+                            ${html`${cell}`}
                           </rich-text-editor>
                           <div id="icons">
                             <simple-icon-lite
@@ -614,7 +615,6 @@ class EditableTable extends displayBehaviors(LitElement) {
         ["", "", ""],
       ];
     }
-    console.log("leadTable", this.data);
   }
 
   /**
@@ -649,13 +649,17 @@ class EditableTable extends displayBehaviors(LitElement) {
       this.__ready = true;
     }, 0);
   }
+  get captionHTML() {
+    return html`${this.caption}`;
+  }
+  _getHTML(str) {
+    return html`${str}`;
+  }
   /**
    * Handles when the caption paper-input changed
    */
-  _captionChanged() {
-    this.caption = (
-      this.shadowRoot.querySelector("#caption").value || []
-    ).trim();
+  _captionChanged(e) {
+    this.caption = e.detail;
   }
 
   /**
@@ -738,9 +742,9 @@ class EditableTable extends displayBehaviors(LitElement) {
    * Updates data when cell value changes
    * @param {event} e the event
    */
-  _onCellValueChange(e) {
+  _onCellValueChange(e, row, col) {
     let temp = this.data.slice();
-    temp[e.detail.row][e.detail.column] = e.detail.value;
+    temp[row][col] = e.detail;
     this.data = temp;
   }
 

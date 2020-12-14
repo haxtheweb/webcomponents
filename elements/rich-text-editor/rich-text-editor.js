@@ -242,6 +242,13 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
       },
 
       /**
+       * raw html
+       */
+      __rawHTML: {
+        type: String,
+      },
+
+      /**
        * selection management
        */
       __selection: {
@@ -266,7 +273,8 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     this.id = "";
     this.range = undefined;
     this.__selection = window.RichTextEditorSelection.requestAvailability();
-    document.addEventListener(shadow.eventName, this._getRange.bind(this));
+    let root = this;
+    document.addEventListener(shadow.eventName, this._getRange.bind(root));
   }
 
   _getRange() {
@@ -285,8 +293,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditor
    */
   get observer() {
-    let root = this;
-    return new MutationObserver((e) => root._getRange(e));
+    return new MutationObserver(this._getRange);
   }
 
   connectedCallback() {
@@ -315,6 +322,29 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
       if (propName === "contenteditable") this._editableChange();
       if (propName === "range") this._rangeChange();
     });
+  }
+  disableEditing() {
+    this.contenteditable = false;
+    console.log("disabled", this.innerHTML);
+    this.dispatchEvent(
+      new CustomEvent("editing-disabled", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: (this.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim(),
+      })
+    );
+  }
+  enableEditing() {
+    this.contenteditable = true;
+    this.dispatchEvent(
+      new CustomEvent("editing-enabled", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: (this.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim(),
+      })
+    );
   }
   focus() {
     this.__focused = true;
@@ -370,8 +400,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    */
   observeChanges(on = true) {
     if (on) {
-      let editor = this;
-      this.observer.observe(editor, {
+      this.observer.observe(this, {
         attributes: false,
         childList: true,
         subtree: true,

@@ -102,6 +102,13 @@
   },
 
   /**
+   * raw html
+   */
+  "__rawHTML": {
+    "type": "String"
+  },
+
+  /**
    * selection management
    */
   "__selection": {

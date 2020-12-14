@@ -138,8 +138,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   disableEditing(editor) {
     if (!!editor) {
       this.getRoot(editor).onselectionchange = undefined;
-      //editor.observeChanges(false);
-      editor.contenteditable = false;
+      editor.disableEditing();
       editor.makeSticky(false);
     }
   }
@@ -200,7 +199,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     if (!!editor) {
       editor.makeSticky(toolbar.sticky);
       editor.parentNode.insertBefore(toolbar, editor);
-      editor.contenteditable = true;
+      editor.enableEditing();
       this.updateRange(editor);
       //editor.observeChanges(this.getRoot(editor));
       this.getRoot(editor).onselectionchange = (e) => {
@@ -442,7 +441,13 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
       handlers = {
         blur: (e) => {
-          if (!toolbar.__promptOpen) this._handleBlur(editor, e);
+          if (!toolbar.__promptOpen) {
+            if (editor.__rawHTML !== editor.value)
+              editor.__rawHTML = editor.innerHTML
+                .replace(/<!--[^(-->)]*-->/g, "")
+                .trim();
+            this._handleBlur(editor, e);
+          }
         },
         click: (e) => this._handleEditorClick(editor, e),
         focus: (e) => {
@@ -456,7 +461,13 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         },
         keydown: (e) => this._handleShortcutKeys(editor, e),
         mouseout: (e) => {
-          if (!toolbar.__promptOpen) this._handleBlur(editor, e);
+          if (!toolbar.__promptOpen) {
+            if (editor.__rawHTML !== editor.value)
+              editor.__rawHTML = editor.innerHTML
+                .replace(/<!--[^(-->)]*-->/g, "")
+                .trim();
+            this._handleBlur(editor, e);
+          }
         },
         pastefromclipboard: (e) => this.pasteFromClipboard(e.detail),
         pastecontent: (e) => this._handlePaste(e),
