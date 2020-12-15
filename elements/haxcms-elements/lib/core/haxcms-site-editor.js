@@ -539,17 +539,16 @@ class HAXCMSSiteEditor extends LitElement {
    * Respond to a failed request to refresh the token by killing the logout process
    */
   _tokenRefreshFailed(e) {
-    if (e.detail.value.status == 401)
-      this.dispatchEvent(
-        new CustomEvent("jwt-login-logout", {
-          composed: true,
-          bubbles: true,
-          cancelable: false,
-          detail: {
-            redirect: true,
-          },
-        })
-      );
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-logout", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: {
+          redirect: true,
+        },
+      })
+    );
   }
   /**
    * Detatched life cycle

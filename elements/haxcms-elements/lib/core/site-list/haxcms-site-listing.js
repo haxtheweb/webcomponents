@@ -1154,10 +1154,9 @@ class HAXCMSSiteListing extends PolymerElement {
    * A token refresh just failed so force to login prompt / state
    */
   _tokenRefreshFailed(e) {
-    if (e.detail.value.status == 401) {
-      this.jwt = null;
-      this.loggedIn = false;
-    }
+    this.jwt = null;
+    this.loggedIn = false;
+    window.location.reload(true);
   }
   /**
    * Request a user login if we need one or log out

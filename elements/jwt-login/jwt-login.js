@@ -237,6 +237,16 @@ class JwtLogin extends LitElement {
         if (response.ok) {
           return response.json();
         } else {
+          // prevent infinite loop if we fail on the logout endpoint
+          if (
+            this.__context == "logout" &&
+            this.__redirect &&
+            this.redirectUrl
+          ) {
+            setTimeout(() => {
+              window.location.href = this.redirectUrl;
+            }, 100);
+          }
           this.lastErrorChanged(response);
         }
       })
