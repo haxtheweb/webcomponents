@@ -1076,7 +1076,7 @@ class HAXCMSSiteEditor extends LitElement {
     );
     setTimeout(() => {
       window.location.reload();
-    }, 3000);
+    }, 2000);
   }
   /**
    * Tell the user we undid their last state of the site and trigger

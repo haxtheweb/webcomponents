@@ -1156,7 +1156,6 @@ class HAXCMSSiteListing extends PolymerElement {
   _tokenRefreshFailed(e) {
     this.jwt = null;
     this.loggedIn = false;
-    window.location.reload(true);
   }
   /**
    * Request a user login if we need one or log out
