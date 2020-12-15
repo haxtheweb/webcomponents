@@ -1560,7 +1560,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       HAXStore.activePlaceHolder = null;
     }
     // insert at active insert point if we have one
-    else if (active.parentNode != null) {
+    else if (active && active.parentNode) {
       // allow for inserting things into things but not grid plate
       if (active.parentNode.tagName === "GRID-PLATE") {
         if (active.getAttribute("slot") != null) {
@@ -2723,13 +2723,13 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     let listenerMethod;
     // create the hax-ray x ray googles thing
     let haxRay = node.tagName.replace("-", " ").toLowerCase();
-    let i = HAXStore.gizmoList.findIndex((j) => {
+    let i = toJS(HAXStore.gizmoList).findIndex((j) => {
       if (j) {
         return j.tag === node.tagName.toLowerCase();
       }
     });
     if (i !== -1) {
-      haxRay = HAXStore.gizmoList[i].title;
+      haxRay = toJS(HAXStore.gizmoList)[i].title;
     }
     // force images to NOT be draggable as we will manage D&D
     if (node.tagName == "IMG") {

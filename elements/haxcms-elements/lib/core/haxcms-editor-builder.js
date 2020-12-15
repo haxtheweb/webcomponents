@@ -121,7 +121,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
               store.cmsSiteEditorBackend.instance = document.createElement(
                 store.cmsSiteEditorBackend.tag
               );
-              document.body.append(store.cmsSiteEditorBackend.instance);
+              document.body.appendChild(store.cmsSiteEditorBackend.instance);
             }
           }
         );

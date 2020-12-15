@@ -117,7 +117,7 @@ class PortalLauncher extends HTMLElement {
             portal.activate();
           }
         });
-        document.body.append(style, portal);
+        document.body.appendChild(style, portal);
         // Waiting for the page to load.
         // using setTimeout is a suboptimal way and it's best to fade-in
         // when receiving a load complete message from the portal via postMessage

@@ -351,7 +351,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       this.hidden = true;
       this.toolbar = undefined;
       this.range = undefined;
-      document.body.append(this);
+      document.body.appendChild(this);
     }
   }
   /**

@@ -63,7 +63,7 @@ window.RichTextEditorStyleManager.requestAvailability = function () {
     window.RichTextEditorStyleManager.instance = document.createElement(
       RichTextEditorStyleManager.tag
     );
-    document.head.append(window.RichTextEditorStyleManager.instance);
+    document.head.appendChild(window.RichTextEditorStyleManager.instance);
   }
   return window.RichTextEditorStyleManager.instance;
 };

@@ -17,7 +17,7 @@ import {
   autorun,
   toJS,
 } from "mobx";
-configure({ enforceActions: false }); // strict mode off
+configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
  * @element hax-store

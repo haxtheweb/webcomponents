@@ -208,7 +208,7 @@ window.EditableTableStyleManager.requestAvailability = function () {
       "include",
       "editable-table-styles"
     );
-    document.head.append(window.EditableTableStyleManager.instance);
+    document.head.appendChild(window.EditableTableStyleManager.instance);
   }
   return window.EditableTableStyleManager.instance;
 };
