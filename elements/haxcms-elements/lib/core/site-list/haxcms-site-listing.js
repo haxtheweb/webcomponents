@@ -2050,7 +2050,6 @@ class HAXCMSSiteListing extends PolymerElement {
   lastErrorChanged(e) {
     if (e.detail.value) {
       var target = normalizeEventPath(e)[0];
-      console.log(e.detail.value.status);
       // check for JWT needing refreshed vs busted but must be 403
       switch (parseInt(e.detail.value.status)) {
         // cookie data not found, need to go get it
