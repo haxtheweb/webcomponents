@@ -20,7 +20,7 @@ class HAX extends HTMLElement {
   get html() {
     return `
     <style>
-    :host {
+    :host,h-a-x {
       display: block;
       font-size: var(--haxcms-base-styles-body-font-size);
       font-family: var(--haxcms-base-styles-body-font-family);
@@ -28,73 +28,83 @@ class HAX extends HTMLElement {
       letter-spacing: var(--haxcms-base-styles-body-letter-spacing);
     }
 
-    :host([hidden]) {
+    :host([hidden]),h-a-x([hidden]) {
       display: none;
     }
 
-    hax-body {
+    :host hax-body, h-a-x hax-body {
       font-size: var(--haxcms-base-styles-body-font-size);
       font-family: var(--haxcms-base-styles-body-font-family);
       line-height: var(--haxcms-base-styles-body-line-height);
       letter-spacing: var(--haxcms-base-styles-body-letter-spacing);
     }
 
-    img {
+    :host img, h-a-x img {
       max-width: 100%;
       max-width: -moz-available;
       max-width: -webkit-fill-available;
       max-width: fill-available;
     }
 
-    h1 {
+    :host h1, h-a-x h1 {
       font-size: var(--hax-base-styles-h1-font-size);
       line-height: var(--hax-base-styles-h1-line-height);
     }
 
-    h2 {
+    :host h2, h-a-x h2 {
       font-size: var(--hax-base-styles-h2-font-size);
     }
 
-    h3 {
+    :host h3, h-a-x h3 {
       font-size: var(--hax-base-styles-h3-font-size);
     }
 
-    h4 {
+    :host h4, h-a-x h4 {
       font-size: var(--hax-base-styles-h4-font-size);
     }
 
-    h5 {
+    :host h5, h-a-x h5 {
       font-size: var(--hax-base-styles-h5-font-size);  
     }
 
-    h6 {
+    :host h6, h-a-x h6 {
       font-size: var(--hax-base-styles-h6-font-size);
     }
 
-    p {
+    :host p, h-a-x p {
       min-height: var(--hax-base-styles-p-min-height);
       font-size: var(--hax-base-styles-p-font-size);
       line-height: var(--hax-base-styles-p-line-height);
       letter-spacing: var(--hax-base-styles-p-letter-spacing);
     }
 
-    a,
-    a:-webkit-any-link {
+    :host a,
+    :host a:-webkit-any-link,
+    h-a-x a,
+    h-a-x a:-webkit-any-link    {
       font-size: var(--hax-base-styles-a-font-size,var(--hax-base-styles-p-font-size));
     }
 
-    ol,
-    ul
-    ol li,
-    ul li {
+    :host ol,
+    :host ul
+    :host ol li,
+    :host ul li,
+    h-a-x ol,
+    h-a-x ul
+    h-a-x ol li,
+    h-a-x ul li {
       line-height: var(--hax-base-styles-list-line-height,var(--hax-base-styles-p-line-height));
       font-size: var(--hax-base-styles-list-font-size,var(--hax-base-styles-p-font-size));
     }
 
-    ul ul,
-    ul ol,
-    ol ul,
-    ol ol {
+    :host ul ul,
+    :host ul ol,
+    :host ol ul,
+    :host ol ol,
+    h-a-x ul ul,
+    h-a-x ul ol,
+    h-a-x ol ul,
+    h-a-x ol ol {
       padding-bottom: unset;
     }
     </style>

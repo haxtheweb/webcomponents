@@ -35,41 +35,61 @@ class HAXCMSSiteEditor extends LitElement {
     this.__disposer = [];
     this.method = "POST";
     this.editMode = false;
+    window.SimpleToast.requestAvailability();
+    window.SimpleModal.requestAvailability();
+    window.addEventListener(
+      "jwt-login-refresh-error",
+      this._tokenRefreshFailed.bind(this)
+    );
+    window.addEventListener("hax-store-ready", this._storeReadyToGo.bind(this));
+    window.addEventListener(
+      "json-outline-schema-active-item-changed",
+      this._newActiveItem.bind(this)
+    );
+    window.addEventListener(
+      "json-outline-schema-active-body-changed",
+      this._bodyChanged.bind(this)
+    );
+    window.addEventListener("haxcms-save-outline", this.saveOutline.bind(this));
+    window.addEventListener("haxcms-save-node", this.saveNode.bind(this));
+    window.addEventListener(
+      "haxcms-save-node-details",
+      this.saveNodeDetails.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-save-site-data",
+      this.saveManifest.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-load-node-fields",
+      this.loadNodeFields.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-load-site-dashboard",
+      this.loadSiteDashboard.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-load-user-data",
+      this.loadUserData.bind(this)
+    );
+    window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
+    window.addEventListener("haxcms-sync-site", this.syncSite.bind(this));
+    window.addEventListener(
+      "haxcms-git-revert-last-commit",
+      this.revertCommit.bind(this)
+    );
+    window.addEventListener("haxcms-create-node", this.createNode.bind(this));
+    window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
   }
   // render function
   render() {
     return html`
       <style>
-        :host {
+        haxcms-site-editor {
           display: block;
         }
-        #editbutton {
-          position: fixed;
-          bottom: 0;
-          right: 0;
-          margin: 16px;
-          padding: 2px;
-          width: 40px;
-          height: 40px;
-          visibility: visible;
-          opacity: 1;
-          transition: all 0.4s ease;
-          z-index: 1000;
-        }
-        #outlinebutton {
-          position: fixed;
-          bottom: 0;
-          right: 46px;
-          margin: 16px;
-          padding: 2px;
-          width: 40px;
-          height: 40px;
-          visibility: visible;
-          opacity: 1;
-          transition: all 0.4s ease;
-          z-index: 1000;
-        }
-        :host([edit-mode]) #editbutton {
+
+        haxcms-site-editor[edit-mode] #editbutton {
           width: 100%;
           z-index: 100;
           right: 0;
@@ -84,7 +104,7 @@ class HAXCMSSiteEditor extends LitElement {
           margin: auto;
           display: none;
         }
-        :host([edit-mode]) h-a-x {
+        haxcms-site-editor[edit-mode] h-a-x {
           display: block;
         }
       </style>
@@ -182,7 +202,7 @@ class HAXCMSSiteEditor extends LitElement {
       ></iron-ajax>
       <iron-ajax
         reject-with-request
-        headers='{"Authorization": "Bearer ${this.jwt}"}'
+        .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="getuserdata"
         url="${this.getUserDataPath}"
         method="${this.method}"
@@ -450,6 +470,10 @@ class HAXCMSSiteEditor extends LitElement {
   firstUpdated(changedProperties) {
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);
+      // force import on editMode enabled
+      if (this.editMode && toJS(HAXStore.activeHaxBody)) {
+        HAXStore.activeHaxBody.importContent(toJS(store.activeItemContent));
+      }
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
@@ -460,51 +484,6 @@ class HAXCMSSiteEditor extends LitElement {
       this.activeItem = toJS(store.activeItem);
       this.__disposer.push(reaction);
     });
-    window.SimpleToast.requestAvailability();
-    window.SimpleModal.requestAvailability();
-    window.addEventListener(
-      "jwt-login-refresh-error",
-      this._tokenRefreshFailed.bind(this)
-    );
-    window.addEventListener("hax-store-ready", this._storeReadyToGo.bind(this));
-    window.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._newActiveItem.bind(this)
-    );
-    window.addEventListener(
-      "json-outline-schema-active-body-changed",
-      this._bodyChanged.bind(this)
-    );
-    window.addEventListener("haxcms-save-outline", this.saveOutline.bind(this));
-    window.addEventListener("haxcms-save-node", this.saveNode.bind(this));
-    window.addEventListener(
-      "haxcms-save-node-details",
-      this.saveNodeDetails.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-save-site-data",
-      this.saveManifest.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-load-node-fields",
-      this.loadNodeFields.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-load-site-dashboard",
-      this.loadSiteDashboard.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-load-user-data",
-      this.loadUserData.bind(this)
-    );
-    window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
-    window.addEventListener("haxcms-sync-site", this.syncSite.bind(this));
-    window.addEventListener(
-      "haxcms-git-revert-last-commit",
-      this.revertCommit.bind(this)
-    );
-    window.addEventListener("haxcms-create-node", this.createNode.bind(this));
-    window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
 
     if (HAXStore.ready) {
       let detail = {

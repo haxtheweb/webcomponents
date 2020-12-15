@@ -1132,7 +1132,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
         // if we see it, ensure we don't have the pin
         if (el) {
-          if (this.elementMidViewport()) {
+          if (this.activeNode && this.elementMidViewport()) {
             el.classList.add("hax-context-pin-top");
             this.contextMenus.plate.classList.add("hax-context-pin-top");
           } else {
@@ -1196,8 +1196,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
               }
               break;
             case "Enter":
-              this.__slot = this.activeNode.getAttribute("slot");
+              if (this.activeNode) {
+                this.__slot = this.activeNode.getAttribute("slot");
+              }
               if (
+                this.activeNode &&
                 this.activeNode.tagName === "P" &&
                 ["1", "#", "`", ">", "-", "!"].includes(
                   this.activeNode.textContent[0]
@@ -1219,62 +1222,48 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             case "ArrowDown":
             case "ArrowLeft":
             case "ArrowRight":
-              const tmp = HAXStore.getSelection();
-              HAXStore._tmpSelection = tmp;
-              HAXStore.haxSelectedText = tmp.toString();
-              const rng = HAXStore.getRange();
-              if (
-                rng.commonAncestorContainer &&
-                this.activeNode !== rng.commonAncestorContainer &&
-                typeof rng.commonAncestorContainer.focus === "function"
-              ) {
-                if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
-                  if (HAXStore.isTextElement(rng.commonAncestorContainer)) {
-                    this.setAttribute("contenteditable", true);
-                  } else {
-                    this.removeAttribute("contenteditable");
-                  }
-                  rng.commonAncestorContainer.focus();
-                  this.__focusLogic(rng.commonAncestorContainer, false);
-                }
-              }
-              // need to check on the parent too if this was a text node
-              else if (
-                rng.commonAncestorContainer &&
-                rng.commonAncestorContainer.parentNode &&
-                this.activeNode !== rng.commonAncestorContainer.parentNode &&
-                typeof rng.commonAncestorContainer.parentNode.focus ===
-                  "function"
-              ) {
+              setTimeout(() => {
+                const tmp = HAXStore.getSelection();
+                HAXStore._tmpSelection = tmp;
+                HAXStore.haxSelectedText = tmp.toString();
+                const rng = HAXStore.getRange();
                 if (
-                  rng.commonAncestorContainer.parentNode.tagName !== "HAX-BODY"
+                  rng.commonAncestorContainer &&
+                  this.activeNode !== rng.commonAncestorContainer &&
+                  typeof rng.commonAncestorContainer.focus === "function"
+                ) {
+                  if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
+                    this.__focusLogic(rng.commonAncestorContainer, false);
+                  }
+                }
+                // need to check on the parent too if this was a text node
+                else if (
+                  rng.commonAncestorContainer &&
+                  rng.commonAncestorContainer.parentNode &&
+                  this.activeNode !== rng.commonAncestorContainer.parentNode &&
+                  typeof rng.commonAncestorContainer.parentNode.focus ===
+                    "function"
                 ) {
                   if (
-                    HAXStore.isTextElement(
-                      rng.commonAncestorContainer.parentNode
-                    )
+                    rng.commonAncestorContainer.parentNode.tagName !==
+                    "HAX-BODY"
                   ) {
-                    this.setAttribute("contenteditable", true);
+                    this.__focusLogic(
+                      rng.commonAncestorContainer.parentNode,
+                      false
+                    );
                   } else {
-                    this.removeAttribute("contenteditable");
+                    this.__focusLogic(rng.commonAncestorContainer, false);
                   }
-
-                  rng.commonAncestorContainer.parentNode.focus();
-                  this.__focusLogic(
-                    rng.commonAncestorContainer.parentNode,
-                    false
-                  );
-                } else {
-                  rng.commonAncestorContainer.focus();
-                  this.__focusLogic(rng.commonAncestorContainer, false);
                 }
-              }
+              }, 0);
               break;
             default:
               // we only care about contextual ops in a paragraph
               // delay a micro-task to ensure activenode's innerText is set
               setTimeout(() => {
                 if (
+                  this.activeNode &&
                   this.activeNode.tagName === "P" &&
                   ["1", "#", "`", ">", "-", "!"].includes(
                     this.activeNode.textContent[0]
@@ -1856,8 +1845,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             // operations shown as it only makes sense as part of something larger
             // ul / ol which I believe is the ONLY tag that works this way
             if (
-              this.activeNode.tagName === "LI" ||
-              this._HTMLInlineTextDecorationTest(this.activeNode)
+              this.activeNode &&
+              (this.activeNode.tagName === "LI" ||
+                this._HTMLInlineTextDecorationTest(this.activeNode))
             ) {
               this._hideContextMenu(this.contextMenus.plate);
             }

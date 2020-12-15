@@ -131,6 +131,7 @@ class SimpleModal extends LitElement {
         }
         web-dialog {
           --dialog-border-radius: var(--simple-modal-border-radius, 2px);
+          z-index: var(--simple-modal-z-index, 1) !important;
         }
         web-dialog::part(dialog) {
           border: 1px solid var(--simple-modal-border-color, #222);

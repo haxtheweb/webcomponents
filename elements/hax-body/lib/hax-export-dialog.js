@@ -10,7 +10,11 @@ class HaxExportDialog extends LitElement {
   static get styles() {
     return [
       css`
+        :host {
+          display: none;
+        }
         simple-modal-template {
+          display: none;
           --simple-modal-z-index: 100000001;
           --simple-modal-width: auto;
           --simple-modal-height: auto;

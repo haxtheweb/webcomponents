@@ -389,6 +389,15 @@ class HAXCMSSiteBuilder extends LitElement {
     this.activeItemLocation = "";
     import("./haxcms-site-router.js");
     window.HAXCMS.requestAvailability().storePieces.siteBuilder = this;
+    window.addEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.addEventListener(
+      "haxcms-trigger-update",
+      this._triggerUpdatedData.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-trigger-update-node",
+      this._triggerUpdatedNode.bind(this)
+    );
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -444,15 +453,6 @@ class HAXCMSSiteBuilder extends LitElement {
     evt.initUIEvent("resize", true, false, window, 0);
     window.dispatchEvent(evt);
     setTimeout(() => {
-      window.addEventListener("hax-store-ready", this.storeReady.bind(this));
-      window.addEventListener(
-        "haxcms-trigger-update",
-        this._triggerUpdatedData.bind(this)
-      );
-      window.addEventListener(
-        "haxcms-trigger-update-node",
-        this._triggerUpdatedNode.bind(this)
-      );
       autorun((reaction) => {
         this.dashboardOpened = toJS(store.dashboardOpened);
         this.__disposer.push(reaction);
@@ -489,6 +489,15 @@ class HAXCMSSiteBuilder extends LitElement {
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.removeEventListener(
+      "haxcms-trigger-update",
+      this._triggerUpdatedData.bind(this)
+    );
+    window.removeEventListener(
+      "haxcms-trigger-update-node",
+      this._triggerUpdatedNode.bind(this)
+    );
     super.disconnectedCallback();
   }
   storeReady(e) {

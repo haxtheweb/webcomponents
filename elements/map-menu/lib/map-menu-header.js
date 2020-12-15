@@ -31,7 +31,8 @@ class MapMenuHeader extends LitElement {
         #center {
           flex: 1 1 auto;
         }
-        a {
+        a,
+        a:visited {
           display: block;
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-header-a-text-decoration, none);
@@ -64,10 +65,6 @@ class MapMenuHeader extends LitElement {
           justify-content: flex-start;
           align-items: flex-start;
           flex-direction: column;
-        }
-
-        .title {
-          font-size: var(--map-menu-font-size);
         }
 
         #right simple-icon-lite {

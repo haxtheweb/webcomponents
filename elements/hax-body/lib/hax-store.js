@@ -382,12 +382,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object,
       },
       /**
-       * The hax-body that is currently active.
-       */
-      activeHaxBody: {
-        type: Object,
-      },
-      /**
        * Possible appStore endpoint for loading in things dynamically.
        */
       appStore: {
@@ -1607,6 +1601,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.elementList = {};
     this.appList = [];
     this.gizmoList = [];
+    this.activeHaxBody = null;
     this.staxList = [];
     this.globalPreferences = {};
     this.activeApp = {};
@@ -1651,6 +1646,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       activeApp: observable,
       haxSelectedText: observable,
       activeEditingElement: observable,
+      activeHaxBody: observable,
     });
     autorun(() => {
       this._globalPreferencesChanged(toJS(this.globalPreferences));

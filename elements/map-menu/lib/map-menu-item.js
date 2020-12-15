@@ -36,7 +36,8 @@ class MapMenuItem extends LitElement {
         .title {
           text-transform: none;
         }
-        a {
+        a,
+        a:visited {
           display: block;
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-item-a-text-decoration, none);

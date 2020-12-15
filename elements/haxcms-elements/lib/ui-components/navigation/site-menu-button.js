@@ -32,6 +32,8 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
         }
         a {
           display: block;
+          height: 100%;
+          width: 100%;
           color: var(--site-menu-button-link-color);
           text-decoration: var(--site-menu-button-link-decoration, underline);
         }
@@ -40,9 +42,10 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
           transition: 0.2s color linear;
           min-width: unset;
           background-color: transparent;
-          width: 100%;
           border: 0;
           border-radius: 0;
+          height: 100%;
+          width: 100%;
         }
         button:hover,
         button:focus,

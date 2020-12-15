@@ -151,8 +151,8 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       // this just forces this block to run when editMode is modified
       const editMode = toJS(HAXStore.editMode);
       const activeNode = toJS(HAXStore.activeNode);
-      if (toJS(HAXStore.activeNode) && toJS(HAXStore.activeNode).tagName) {
-        let schema = HAXStore.haxSchemaFromTag(HAXStore.activeNode.tagName);
+      if (activeNode && activeNode.tagName) {
+        let schema = HAXStore.haxSchemaFromTag(activeNode.tagName);
         this.sourceView = schema.canEditSource;
       }
       if (
@@ -165,12 +165,23 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       }
       // update our icon if global changes what we are pointing to
       if (
+        activeNode &&
         HAXStore.isTextElement(activeNode) &&
         this.shadowRoot.querySelector(
-          '#textformat button[value="' + activeNode.tagName.toLowerCase() + '"]'
+          'button[value="' + activeNode.tagName.toLowerCase() + '"]'
         )
       ) {
         this.updateTextIconSelection(activeNode.tagName.toLowerCase());
+      } else if (
+        activeNode &&
+        activeNode.tagName === "LI" &&
+        this.shadowRoot.querySelector(
+          'button[value="' + activeNode.parentNode.tagName.toLowerCase() + '"]'
+        )
+      ) {
+        this.updateTextIconSelection(
+          activeNode.parentNode.tagName.toLowerCase()
+        );
       }
     });
   }
@@ -457,7 +468,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         .removeAttribute("data-simple-popover-selection-active");
     }
     let localItem = this.shadowRoot.querySelector(
-      '#textformat button[value="' + this.realSelectedValue + '"]'
+      'button[value="' + this.realSelectedValue + '"]'
     );
     if (localItem) {
       localItem.setAttribute("data-simple-popover-selection-active", true);
