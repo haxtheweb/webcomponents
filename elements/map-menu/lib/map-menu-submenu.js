@@ -24,6 +24,7 @@ class MapMenuSubmenu extends LitElement {
         a11y-collapse {
           --a11y-collapse-border: 0;
           --a11y-collapse-horizontal-padding: 0;
+          color: var(--map-menu-item-a-color, inherit);
         }
       `,
     ];

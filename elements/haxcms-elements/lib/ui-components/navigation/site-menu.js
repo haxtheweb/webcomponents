@@ -26,7 +26,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         map-menu {
           padding: var(--site-menu-padding);
           background-color: var(--site-menu-background-color);
-          color: var(--site-menu-color);
+          color: var(--site-menu-color, inherit);
           --map-menu-container-padding: var(--site-menu-container-padding);
           --map-menu-container-background-color: var(
             --site-menu-container-background-color

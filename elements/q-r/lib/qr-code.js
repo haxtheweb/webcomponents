@@ -53,7 +53,7 @@ class QRCodeElement extends HTMLElement {
     if (fn && typeof fn === "function") {
       fn.call(this, oldValue, newValue);
     }
-    if (window.ESGlobalBridge.imports["qr"]) {
+    if (window.ESGlobalBridge && window.ESGlobalBridge.imports["qr"] === true) {
       this.generate();
     }
   }

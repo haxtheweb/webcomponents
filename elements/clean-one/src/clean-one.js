@@ -116,9 +116,11 @@ class CleanOne extends HAXCMSThemeParts(
           --scroll-button-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
         }
         simple-icon-button,
+        simple-icon-button-lite,
         site-rss-button,
         site-print-button,
         site-git-corner {
+          color: var(--site-print-button-color, black);
           --site-git-corner-background: var(--haxcms-user-styles-color-theme-color-1);
           --site-git-corner-color: var(--haxcms-user-styles-color-theme-color-2);
           --simple-icon-fill-color: var(--haxcms-user-styles-color-theme-color-1);
@@ -449,7 +451,7 @@ class CleanOne extends HAXCMSThemeParts(
             background: transparent;
           }
           :host([color-theme="1"]) .site-header .btn {
-            color: #eee8e0;
+            color: black;
           }
           :host([color-theme="1"]) .site-header .btn:hover,
           :host([color-theme="1"]) .site-header .btn:focus,
@@ -465,7 +467,7 @@ class CleanOne extends HAXCMSThemeParts(
             background: transparent;
           }
           :host([color-theme="2"]) .site-header .btn {
-            color: #3b3f54;
+            color: white;
           }
           :host([color-theme="2"]) .site-header .btn:hover,
           :host([color-theme="2"]) .site-header .btn:focus,
@@ -657,7 +659,10 @@ class CleanOne extends HAXCMSThemeParts(
                   <site-print-button
                     class="btn js-toolbar-action"
                   ></site-print-button>
-                  <site-rss-button type="rss"></site-rss-button>
+                  <site-rss-button
+                    type="rss"
+                    class="btn js-toolbar-action"
+                  ></site-rss-button>
                   <site-git-corner size="small"></site-git-corner>
                 </div>
               </div>

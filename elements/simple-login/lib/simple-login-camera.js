@@ -176,7 +176,10 @@ class SimpleLoginCamera extends HTMLElement {
   }
 
   connectedCallback() {
-    if (window.ESGlobalBridge && window.ESGlobalBridge.imports["msr"]) {
+    if (
+      window.ESGlobalBridge &&
+      window.ESGlobalBridge.imports["msr"] === true
+    ) {
       this._applyMSR();
     }
   }
@@ -184,7 +187,10 @@ class SimpleLoginCamera extends HTMLElement {
    * Try to apply when fully loaded dom
    */
   documentLoaded(e) {
-    if (window.ESGlobalBridge && window.ESGlobalBridge.imports["msr"]) {
+    if (
+      window.ESGlobalBridge &&
+      window.ESGlobalBridge.imports["msr"] === true
+    ) {
       this._applyMSR();
     }
   }

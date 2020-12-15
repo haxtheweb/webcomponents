@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
@@ -31,10 +31,9 @@ class MapMenuHeader extends LitElement {
         #center {
           flex: 1 1 auto;
         }
-        a:visited,
         a {
           display: block;
-          color: var(--map-menu-item-a-color);
+          color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-header-a-text-decoration, none);
         }
         a:hover,
@@ -42,7 +41,7 @@ class MapMenuHeader extends LitElement {
         a:focus {
           color: var(
             --map-menu-item-a-active-color,
-            var(--map-menu-item-a-color)
+            var(--map-menu-item-a-color, inherit)
           );
           text-decoration: var(
             --map-menu-header-a-text-decoration-hover,
@@ -71,18 +70,20 @@ class MapMenuHeader extends LitElement {
           font-size: var(--map-menu-font-size);
         }
 
-        #right simple-icon {
+        #right simple-icon-lite {
           display: inline-block;
           color: gray;
         }
 
-        simple-icon {
+        simple-icon-lite {
+          color: inherit;
           display: inline-block;
           --simple-icon-height: var(--map-menu-item-height);
           --simple-icon-width: var(--map-menu-item-height);
         }
 
         button {
+          color: inherit;
           background-color: transparent;
           text-transform: none;
           width: 100%;
@@ -113,7 +114,7 @@ class MapMenuHeader extends LitElement {
             `
           : ``}
         ${this.icon
-          ? html` <simple-icon icon="${this.icon}"></simple-icon> `
+          ? html` <simple-icon-lite icon="${this.icon}"></simple-icon-lite> `
           : ``}
 
         <div id="center">

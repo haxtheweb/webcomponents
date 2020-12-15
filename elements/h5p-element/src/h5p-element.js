@@ -94,7 +94,7 @@ class H5PElement extends LitElement {
    */
   firstUpdated() {
     if (
-      window.ESGlobalBridge.imports["h5p-" + this.__h5pDepsLength] &&
+      window.ESGlobalBridge.imports["h5p-" + this.__h5pDepsLength] === true &&
       this.contentId
     ) {
       this.setupH5P(this.contentId);

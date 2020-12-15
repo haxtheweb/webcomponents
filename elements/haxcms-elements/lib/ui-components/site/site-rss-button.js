@@ -4,9 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `site-rss-button`
  * `A button that references RSS feeds in a standards based way`
@@ -23,14 +23,15 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
       css`
         :host {
           display: inline-flex;
-          color: var(--site-rss-button-color, black);
+          color: var(--site-rss-button-color, inherit);
         }
         a {
           text-decoration: var(--site-rss-text-decoration);
           outline: none;
+          color: var(--site-rss-button-color, inherit);
         }
-        simple-icon-button {
-          color: var(--site-rss-button-color, black);
+        simple-icon-button-lite {
+          color: var(--site-rss-button-color, inherit);
         }
         simple-tooltip {
           --simple-tooltip-background: var(
@@ -56,7 +57,6 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
     this.type = "rss";
     this.raised = false;
     this.position = "bottom";
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   // render function
   render() {
@@ -71,13 +71,13 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
         aria-label="${this.label}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
-        <simple-icon-button
+        <simple-icon-button-lite
           icon="${this.icon}"
           @click="${this.print}"
           aria-labelledby="btn${this.type}"
           ?disabled="${this.disabled}"
           .part="${this.editMode ? `edit-mode-active` : ``}"
-        ></simple-icon-button>
+        ></simple-icon-button-lite>
       </a>
       <simple-tooltip
         .for="btn${this.type}"

@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `site-menu-button`
@@ -55,15 +55,15 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
             inherit
           );
         }
-        button:hover simple-icon,
-        button:focus simple-icon,
-        button:active simple-icon {
+        button:hover simple-icon-lite,
+        button:focus simple-icon-lite,
+        button:active simple-icon-lite {
           --simple-icon-fill-color: var(
             --site-menu-button-button-hover-color,
             black
           );
         }
-        simple-icon {
+        simple-icon-lite {
           display: block;
           margin-top: 25px;
           font-size: 16px;
@@ -129,7 +129,7 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
           .part="${this.editMode ? `edit-mode-active` : ``}"
         >
           <slot name="prefix"></slot>
-          <simple-icon icon="${this.icon}"></simple-icon>
+          <simple-icon-lite icon="${this.icon}"></simple-icon-lite>
           <slot name="suffix"></slot>
         </button>
       </a>

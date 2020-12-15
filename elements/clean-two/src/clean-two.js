@@ -278,6 +278,7 @@ class CleanTwo extends HAXCMSThemeParts(
         }
         site-menu {
           --site-menu-font-size: 15px;
+          --site-menu-color: #000000;
           --site-menu-active-color: #E6ECF1;
           --site-menu-item-active-item-color: var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
           overflow-y: auto;

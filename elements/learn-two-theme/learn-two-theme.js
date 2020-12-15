@@ -141,6 +141,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         .rss-buttons {
           justify-content: space-evenly;
           display: flex;
+          color: white;
         }
 
         site-print-button {
@@ -150,6 +151,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         simple-icon-button,
         site-rss-button,
         site-print-button {
+          color: white;
           --simple-icon-fill-color: white;
           --haxcms-tooltip-color: #f5f5f5;
           --haxcms-tooltip-background-color: #252737;
@@ -248,6 +250,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         site-title {
           position: relative;
           overflow: hidden;
+          color: white;
         }
 
         site-menu {
@@ -257,7 +260,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           overflow: scroll;
           max-height: calc(100vh - 200px);
           --site-menu-active-color: #ffffff;
-          --site-menu-item-active-item-color: #2d3237;
+          --site-menu-item-active-item-color: goldenrod;
         }
 
         app-drawer-layout {
@@ -270,6 +273,8 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         }
 
         site-menu-button {
+          display: flex;
+          align-items: center;
           position: fixed;
           top: 0;
           bottom: 0;

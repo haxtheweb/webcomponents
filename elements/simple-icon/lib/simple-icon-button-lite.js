@@ -33,8 +33,10 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
             );
             padding: 0;
             margin: 0;
+            color: inherit;
           }
           button {
+            color: inherit;
             cursor: pointer;
             opacity: var(--simple-icon-button-opacity, 1);
             border: var(--simple-icon-button-border, 0);
@@ -76,7 +78,8 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
             );
           }
 
-          simple-icon {
+          simple-icon-lite {
+            color: inherit;
             height: calc(
               var(--simple-icon-height, 24px) - 2 *
                 var(--simple-icon-button-padding, 0px)
