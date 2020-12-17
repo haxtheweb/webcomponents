@@ -226,6 +226,17 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
               </button>`
           )}
         </simple-popover-selection>
+        <!-- comment this in when rich-text-editor is viable -->
+        <!--
+        <hax-context-item
+          mini
+          action
+          hidden
+          slot="primary"
+          icon="icons:flip-to-back"
+          label="Full text editor"
+          event-name="hax-full-text-editor-toggle"
+        ></hax-context-item> -->
         <hax-context-item
           mini
           action

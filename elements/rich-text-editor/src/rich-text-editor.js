@@ -36,6 +36,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   }
   constructor() {
     super();
+    this.haxUIElement = true;
     window.RichTextEditorStyleManager.requestAvailability();
     this.placeholder = "Click to edit";
     this.toolbar = "";
@@ -92,6 +93,24 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
       if (propName === "contenteditable") this._editableChange();
       if (propName === "range") this._rangeChange();
     });
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * allow HAX to toggle edit state when activated
+   */
+  haxactiveElementChanged(el, val) {
+    // overwrite the HAX dom w/ what our editor is supplying
+    if (!val && el) {
+      el.innerHTML = this.getValue();
+    }
+    return el;
   }
   /**
    * gets current value minus placeholder

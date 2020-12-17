@@ -2233,7 +2233,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         } else {
           // would imply top of document
           let p = document.createElement("p");
-          this.insertBefore(p, this.activeNode);
+          this.insertBefore(p, this.childNodes[0]);
         }
         break;
       case "insert-below-active":
@@ -2265,6 +2265,79 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           this.activeNode.removeAttribute("data-hax-ray");
           this.activeNode.classList.remove("hax-active");
           wrap(this.activeNode, HAXStore.activeEditingElement);
+        } else {
+          this.activeNode.__haxSourceView = false;
+          // run internal state hook if it exist and if we get a response
+          let replacement = HAXStore.runHook(
+            HAXStore.activeEditingElement,
+            "activeElementChanged",
+            [this.activeNode, false]
+          );
+          let oldSchema = HAXStore.haxSchemaFromTag(
+            this.activeNode.tagName.toLowerCase()
+          );
+          // test for slots to match to ensure this is maintained
+          if (
+            this.activeNode &&
+            this.activeNode.getAttribute &&
+            this.activeNode.getAttribute("slot") != null
+          ) {
+            replacement.setAttribute(
+              "slot",
+              this.activeNode.getAttribute("slot")
+            );
+          }
+          // clean up from possible clone of settings we don't allow cloning
+          // haxProperties supports element saying what internals it needs
+          // garbage collected
+          if (
+            oldSchema.saveOptions &&
+            oldSchema.saveOptions.unsetAttributes &&
+            oldSchema.saveOptions.unsetAttributes.length
+          ) {
+            for (var i in oldSchema.saveOptions.unsetAttributes) {
+              replacement.removeAttribute(
+                oldSchema.saveOptions.unsetAttributes[i]
+              );
+            }
+          }
+          // this implies there was a replacement had AND that this response HTML object
+          // is different than what was passed in. In this instance we will end up
+          // firing the unwrap to unpeal the element w/ the new content but
+          // we need to ensure that the event binding is correctly applied
+          this.__applyNodeEditableState(replacement, this.editMode);
+          unwrap(HAXStore.activeEditingElement);
+          HAXStore.activeEditingElement = null;
+        }
+        break;
+      case "hax-full-text-editor-toggle":
+        if (!this.activeNode.__haxSourceView) {
+          this.activeNode.__haxSourceView = true;
+          // could be 1st time this shows up so ensure we import
+          import("@lrnwebcomponents/rich-text-editor/rich-text-editor.js").then(
+            () => {
+              HAXStore.activeEditingElement = document.createElement(
+                "rich-text-editor"
+              );
+              HAXStore.activeEditingElement.type =
+                "rich-text-editor-toolbar-full";
+              // test for slots to match to ensure this is maintained
+              if (
+                this.activeNode.getAttribute &&
+                this.activeNode.getAttribute("slot") != null
+              ) {
+                HAXStore.activeEditingElement.setAttribute(
+                  "slot",
+                  this.activeNode.getAttribute("slot")
+                );
+              }
+              this.__ignoreActive = true;
+              this.activeNode.removeAttribute("contenteditable");
+              this.activeNode.removeAttribute("data-hax-ray");
+              this.activeNode.classList.remove("hax-active");
+              wrap(this.activeNode, HAXStore.activeEditingElement);
+            }
+          );
         } else {
           this.activeNode.__haxSourceView = false;
           // run internal state hook if it exist and if we get a response
