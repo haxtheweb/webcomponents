@@ -73,6 +73,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
             --lrndesign-gallery-grid-backgroundPosition,
             center
           );
+          background-repeat: no-repeat;
           background-size: var(--lrndesign-gallery-grid-backgroundSize, cover);
         }
         .zoombg,
@@ -141,7 +142,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
         item.gravity || "center"
       };`,
       `--lrndesign-gallery-grid-backgroundSize: ${
-        item.sizing || this.sizing === "cover" || "contain"
+        (item.sizing || this.sizing) === "contain" ? "contain" : "cover"
       }`,
     ].join("");
   }

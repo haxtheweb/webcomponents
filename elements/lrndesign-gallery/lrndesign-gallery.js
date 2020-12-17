@@ -403,7 +403,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
     figures.forEach((figure) => {
       let id = figure.getAttribute("id"),
         img = figure.querySelector("img"),
-        sizing = figure.getAttribute("sizing"),
+        sizing = figure.getAttribute("sizing") || this.sizing,
         query = [1, 2, 3, 4, 5, 6]
           .map((num) => `h${num}:first-child`)
           .join(","),
@@ -429,7 +429,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           details && details.querySelector(query)
             ? details.querySelector(query)
             : undefined,
-        title = figheading.innerHTML;
+        title = figheading ? figheading.innerHTML : "";
       if (figheading) figheading.remove();
       sources.push({
         alt: alt,
@@ -438,7 +438,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         thumbnail: thumbnail,
         large: large,
         title: title,
-        details: details.innerHTML,
+        details: details ? details.innerHTML : "",
         sizing: sizing,
       });
     });

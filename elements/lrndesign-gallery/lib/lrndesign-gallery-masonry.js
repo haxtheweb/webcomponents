@@ -184,7 +184,6 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
       rows = Math.ceil(this.sources.length / cols);
     for (let i = 0; i < rows; i++) {
       let row = { aspect: 0, cols: [] };
-      console.log("row", i);
       for (
         let j = i * cols;
         j < Math.min(this.sources.length, (i + 1) * cols);
@@ -202,7 +201,6 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
       items.push(row);
     }
     this.__items = items;
-    console.log("this.__items", this.__items);
   }
 }
 window.customElements.define(
