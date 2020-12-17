@@ -8,7 +8,13 @@ const SimpleColorsSuper = function (SuperClass) {
   return class extends SuperClass {
     //styles function
     static get styles() {
+      let styles = css("");
+      if (super.styles) {
+        styles = super.styles;
+      }
       return [
+        styles,
+
         css`
           :host([dark]) {
             --simple-colors-default-theme-accent-1: #000000;

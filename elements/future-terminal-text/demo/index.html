@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>FutureTerminalText: future-terminal-text Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../future-terminal-text.js';
+      import '../lib/future-terminal-text-lite.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic future-terminal-text demo</h3>
+      <demo-snippet>
+        <template>
+          <div><future-terminal-text red fadein>Neo:</future-terminal-text><future-terminal-text glitch>Follow the white rabbit</future-terminal-text></div>
+          <div><future-terminal-text-lite red fadein>Trinity:</future-terminal-text-lite><future-terminal-text-lite glitch fadein>RUN NEO. The Agents are just behind you</future-terminal-text-lite></div>
+          <div><future-terminal-text red fadein>Neo:</future-terminal-text><future-terminal-text glitch>Follow the white rabbit</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Trinity:</future-terminal-text><future-terminal-text glitch fadein>RUN NEO. The Agents are just behind you</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Neo:</future-terminal-text><future-terminal-text glitch glitch-duration="10">Follow the white rabbit</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Trinity:</future-terminal-text><future-terminal-text glitch fadein glitch-duration="10">RUN NEO. The Agents are just behind you</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Neo:</future-terminal-text><future-terminal-text glitch glitch-duration="10">Follow the white rabbit</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Trinity:</future-terminal-text><future-terminal-text glitch fadein glitch-duration="10">RUN NEO. The Agents are just behind you</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Neo:</future-terminal-text><future-terminal-text glitch>Follow the white rabbit</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Trinity:</future-terminal-text><future-terminal-text glitch fadein glitch-duration="10">RUN NEO. The Agents are just behind you</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Neo:</future-terminal-text><future-terminal-text glitch glitch-duration="10">Follow the white rabbit</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Trinity:</future-terminal-text><future-terminal-text glitch fadein glitch-duration="10">RUN NEO. The Agents are just behind you</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Neo:</future-terminal-text><future-terminal-text glitch glitch-duration="10">Follow the white rabbit</future-terminal-text></div>
+          <div><future-terminal-text red fadein>Trinity:</future-terminal-text><future-terminal-text glitch fadein glitch-duration="10">RUN NEO. The Agents are just behind you</future-terminal-text></div>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "future-terminal-text",
+      "path": "./future-terminal-text.js",
+      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`"
+    },
+    {
+      "name": "future-terminal-text",
+      "path": "./src/future-terminal-text.js",
+      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`"
+    }
+  ]
+}
