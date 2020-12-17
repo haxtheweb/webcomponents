@@ -24,8 +24,7 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
-import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
+import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-cis-course-card.js";
 /**
@@ -291,115 +290,111 @@ class LrnappCis extends PolymerElement {
             </div>
           </div>
           <div id="coursedetails">
-            <responsive-grid-row gutter="5">
-              <responsive-grid-col xl="6" lg="6" md="6" sm="12" xs="12">
-                <div class="column">
-                  <h4>Details</h4>
-                  <ul>
-                    <li
-                      hidden$="[[!activeCourse.relationships.academic.attributes.name]]"
-                    >
-                      Academic unit:
-                      [[activeCourse.relationships.academic.attributes.name]]
-                    </li>
-                    <li
-                      hidden$="[[!activeCourse.relationships.program.attributes.name]]"
-                    >
-                      Program:
-                      [[activeCourse.relationships.program.attributes.name]]
-                    </li>
-                  </ul>
-                  <h4>Learning Network</h4>
-                  <template
-                    is="dom-repeat"
-                    items="[[activeCourse.topology.Network]]"
-                    as="service"
+            <grid-plate layout="1-1">
+              <div class="column" slot="col-1">
+                <h4>Details</h4>
+                <ul>
+                  <li
+                    hidden$="[[!activeCourse.relationships.academic.attributes.name]]"
                   >
-                    <template is="dom-if" if="[[!service._exists]]">
-                      <lrnsys-button
-                        raised=""
-                        on-click="_makeService"
-                        color="grey lighten-4"
-                        icon-class="grey lighten-5"
-                        icon="lrn:[[service.icon]]"
-                        data-machine-name$="[[service.machine_name]]"
-                      >
-                        <span data-machine-name$="[[service.machine_name]]"
-                          >Make the [[service.title]] service</span
-                        >
-                      </lrnsys-button>
-                    </template>
-                    <template is="dom-if" if="[[service._exists]]">
-                      <lrnsys-button
-                        raised=""
-                        href="[[service.url]]"
-                        hover-class="[[service.color]] lighten-4"
-                        icon="lrn:[[service.icon]]"
-                      >
-                        <span>[[service.title]]</span>
-                      </lrnsys-button>
-                    </template>
-                  </template>
-                </div>
-              </responsive-grid-col>
-              <responsive-grid-col xl="6" lg="6" md="6" sm="12" xs="12">
-                <div class="column">
-                  <h4>Operations</h4>
-                  <template is="dom-if" if="[[activeCourse.meta.canUpdate]]">
+                    Academic unit:
+                    [[activeCourse.relationships.academic.attributes.name]]
+                  </li>
+                  <li
+                    hidden$="[[!activeCourse.relationships.program.attributes.name]]"
+                  >
+                    Program:
+                    [[activeCourse.relationships.program.attributes.name]]
+                  </li>
+                </ul>
+                <h4>Learning Network</h4>
+                <template
+                  is="dom-repeat"
+                  items="[[activeCourse.topology.Network]]"
+                  as="service"
+                >
+                  <template is="dom-if" if="[[!service._exists]]">
                     <lrnsys-button
                       raised=""
-                      href="[[activeCourse.uris.edit]]"
-                      label="Edit"
-                      hover-class="green lighten-4"
-                      icon="create"
-                    ></lrnsys-button>
-                    <lrnsys-button
-                      raised=""
-                      href="[[activeCourse.uris.addOffering]]"
-                      label="Add offering"
-                      hover-class="amber lighten-3"
-                      icon="icons:add"
-                    ></lrnsys-button>
-                  </template>
-                  <lrnsys-button
-                    raised=""
-                    href="[[activeCourse.uris.offerings]]"
-                    label="Offerings"
-                    hover-class="amber lighten-4"
-                    icon="social:people"
-                  ></lrnsys-button>
-                  <lrnsys-button
-                    raised=""
-                    href="[[activeCourse.uris.sync]]"
-                    label="Sync Roster"
-                    hover-class="amber lighten-4"
-                    icon="notification:sync"
-                  ></lrnsys-button>
-                  <lrnsys-button
-                    raised=""
-                    href="[[activeCourse.uris.uri]]"
-                    label="Course page (legacy)"
-                    hover-class="brown lighten-4"
-                    icon="delete"
-                  ></lrnsys-button>
-                  <template is="dom-if" if="[[activeCourse.meta.canDelete]]">
-                    <div
-                      style="padding: 1em;width: 100%;margin: .5em 0;display: block;background-color:#FF2222;color:#ffffff;border: 1px solid #222222;"
+                      on-click="_makeService"
+                      color="grey lighten-4"
+                      icon-class="grey lighten-5"
+                      icon="lrn:[[service.icon]]"
+                      data-machine-name$="[[service.machine_name]]"
                     >
-                      <h4>Danger zone</h4>
-                      <lrnsys-button
-                        raised=""
-                        href="[[activeCourse.uris.delete]]"
-                        label="Delete"
-                        hover-class="red lighten-1"
-                        color="red lighten-3"
-                        icon="delete"
-                      ></lrnsys-button>
-                    </div>
+                      <span data-machine-name$="[[service.machine_name]]"
+                        >Make the [[service.title]] service</span
+                      >
+                    </lrnsys-button>
                   </template>
-                </div>
-              </responsive-grid-col>
-            </responsive-grid-row>
+                  <template is="dom-if" if="[[service._exists]]">
+                    <lrnsys-button
+                      raised=""
+                      href="[[service.url]]"
+                      hover-class="[[service.color]] lighten-4"
+                      icon="lrn:[[service.icon]]"
+                    >
+                      <span>[[service.title]]</span>
+                    </lrnsys-button>
+                  </template>
+                </template>
+              </div>
+              <div class="column" slot="col-2">
+                <h4>Operations</h4>
+                <template is="dom-if" if="[[activeCourse.meta.canUpdate]]">
+                  <lrnsys-button
+                    raised=""
+                    href="[[activeCourse.uris.edit]]"
+                    label="Edit"
+                    hover-class="green lighten-4"
+                    icon="create"
+                  ></lrnsys-button>
+                  <lrnsys-button
+                    raised=""
+                    href="[[activeCourse.uris.addOffering]]"
+                    label="Add offering"
+                    hover-class="amber lighten-3"
+                    icon="icons:add"
+                  ></lrnsys-button>
+                </template>
+                <lrnsys-button
+                  raised=""
+                  href="[[activeCourse.uris.offerings]]"
+                  label="Offerings"
+                  hover-class="amber lighten-4"
+                  icon="social:people"
+                ></lrnsys-button>
+                <lrnsys-button
+                  raised=""
+                  href="[[activeCourse.uris.sync]]"
+                  label="Sync Roster"
+                  hover-class="amber lighten-4"
+                  icon="notification:sync"
+                ></lrnsys-button>
+                <lrnsys-button
+                  raised=""
+                  href="[[activeCourse.uris.uri]]"
+                  label="Course page (legacy)"
+                  hover-class="brown lighten-4"
+                  icon="delete"
+                ></lrnsys-button>
+                <template is="dom-if" if="[[activeCourse.meta.canDelete]]">
+                  <div
+                    style="padding: 1em;width: 100%;margin: .5em 0;display: block;background-color:#FF2222;color:#ffffff;border: 1px solid #222222;"
+                  >
+                    <h4>Danger zone</h4>
+                    <lrnsys-button
+                      raised=""
+                      href="[[activeCourse.uris.delete]]"
+                      label="Delete"
+                      hover-class="red lighten-1"
+                      color="red lighten-3"
+                      icon="delete"
+                    ></lrnsys-button>
+                  </div>
+                </template>
+              </div>
+            </grid-plate>
             <p>[[activeCourse.attributes.body]]</p>
           </div>
         </div>
@@ -410,67 +405,31 @@ class LrnappCis extends PolymerElement {
           <strong>[[activeCourse.attributes.title]]</strong> network?
         </div>
         <div class="dialog-body">
-          <responsive-grid-row gutter="5">
-            <responsive-grid-col
-              xl="3"
-              lg="3"
-              md="3"
-              sm="3"
-              xs="3"
-            ></responsive-grid-col>
-            <responsive-grid-col xl="1" lg="1" md="1" sm="1" xs="1"
-              >Add</responsive-grid-col
-            >
-            <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2"
-              ><simple-icon
+          <grid-plate layout="1-1-1">
+            <div slot="col-1">Add</div>
+            <div slot="col-2">
+              <simple-icon
                 icon="lrn:[[_activeService.icon]]"
                 class$="[[_activeService.color]]-text elmsln-hover-icon service-confirm-icon"
-              ></simple-icon
-            ></responsive-grid-col>
-            <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3"
-              ><strong>[[_activeService.title]]</strong></responsive-grid-col
-            >
-            <responsive-grid-col
-              xl="3"
-              lg="3"
-              md="3"
-              sm="3"
-              xs="3"
-            ></responsive-grid-col>
-          </responsive-grid-row>
-          <responsive-grid-row gutter="5">
-            <responsive-grid-col
-              xl="3"
-              lg="3"
-              md="3"
-              sm="3"
-              xs="3"
-            ></responsive-grid-col>
-            <responsive-grid-col xl="1" lg="1" md="1" sm="1" xs="1"
-              >To</responsive-grid-col
-            >
-            <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2"
-              ><lrndesign-avatar
+              ></simple-icon>
+            </div>
+            <div slot="col-3"><strong>[[_activeService.title]]</strong></div>
+          </grid-plate>
+          <grid-plate layout="1-1-1">
+            <div slot="col-1">To</div>
+            <div slot="col-2">
+              <lrndesign-avatar
                 class="service-confirm-icon"
                 label="[[activeCourse.attributes.name]]"
                 jdenticon=""
                 color="[[activeCourse.attributes.color]] darken-4"
               >
-              </lrndesign-avatar
-            ></responsive-grid-col>
-            <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3"
-              ><strong
-                >[[activeCourse.attributes.title]]</strong
-              ></responsive-grid-col
-            >
-            <responsive-grid-col
-              xl="3"
-              lg="3"
-              md="3"
-              sm="3"
-              xs="3"
-            ></responsive-grid-col>
-          </responsive-grid-row>
+              </lrndesign-avatar>
+            </div>
+            <div slot="col-3">
+              <strong>[[activeCourse.attributes.title]]</strong>
+            </div>
+          </grid-plate>
           <div style="margin-top:1em;">This will take a few moments.</div>
         </div>
         <div class="buttons">
