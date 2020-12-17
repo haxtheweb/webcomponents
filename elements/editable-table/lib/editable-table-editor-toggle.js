@@ -10,14 +10,14 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `editable-table-editor-toggle`
- * A toggle button for an property in the editable-table interface (editable-table.html).
+ * A toggle button for an property in editable-table interface (editable-table.html).
  *
  ```<editable-table-editor-toggle
   hidden                           //Hide and disable this toggle? Default is false.
-  label="Condensed"                //The label for the toggle button
-  prop="condensed"                 //The property controlled by this toggle
+  label="Condensed"                //label for toggle button
+  prop="condensed"                 //property controlled by this toggle
   tooltip="Condense cell height."  //A tooltip for this toggle.
-  value="true">                    //The value of this toggle.
+  value="true">                    //value of this toggle.
 </editable-table-editor-toggle>```
  *  
  * @demo ./demo/editor.html
@@ -160,7 +160,7 @@ class EditableTableEditorToggle extends LitElement {
         reflect: true,
       },
       /**
-       * Button id that matches the table property to toggle
+       * Button id that matches table property to toggle
        */
       id: {
         attribute: "id",
@@ -182,7 +182,7 @@ class EditableTableEditorToggle extends LitElement {
         value: null,
       },
       /**
-       * Whether the button is toggled
+       * Whether button is toggled
        */
       toggled: {
         attribute: "toggled",

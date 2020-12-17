@@ -14,7 +14,7 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `editable-table-editor-rowcol`
- * A header label and menu for inserting and deleting a row or a column of the editable-table interface (editable-table.html).
+ * A header label and menu for inserting and deleting a row or a column of editable-table interface (editable-table.html).
  *
  * @demo ./demo/editor.html
  *
@@ -114,13 +114,13 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
     return {
       ...super.properties,
       /**
-       * Index of the row or column
+       * Index of row or column
        */
       index: {
         type: Number,
       },
       /**
-       * Whether the menu button controls a row
+       * Whether menu button controls a row
        */
       row: {
         type: Boolean,
@@ -129,7 +129,7 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
   }
   /**
    *
-   * Gets the first cell that the menu controls
+   * Gets first cell that menu controls
    * @readonly
    * @memberof EditableTableEditorRowcol
    */
@@ -168,8 +168,8 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
   /**
    * Fires when  selection is made from menu button
    * @event delete-rowcol
-   * @param {number} index the index to perform the action
-   * @param {boolean} whether the action is to insert
+   * @param {number} index index to perform action
+   * @param {boolean} whether action is to insert
    */
   rowColAction(index = this.index, insert = true) {
     this.dispatchEvent(
@@ -200,21 +200,21 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
   }
   /**
    * Handles when Delete Row/Column is clicked
-   * @param {event} e the button event
+   * @param {event} e button event
    */
   _onDelete(e) {
     this.rowColAction(this.index, false);
   }
   /**
    * Handles when Insert Row/Column is clicked
-   * @param {event} e the button event
+   * @param {event} e button event
    */
   _onInsertBefore(e) {
     this.rowColAction(this.row ? this.index - 1 : this.index);
   }
   /**
    * Handles when Insert Row/Column After is clicked
-   * @param {event} e the button event
+   * @param {event} e button event
    */
   _onInsertAfter(e) {
     this.rowColAction(this.row ? this.index : this.index + 1);

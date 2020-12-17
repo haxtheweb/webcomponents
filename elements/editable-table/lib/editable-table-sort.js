@@ -10,7 +10,7 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `editable-table-editor-sort`
- * A column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for the table-editor-display mode (table-editor-display.html).
+ * A column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for table-editor-display mode (table-editor-display.html).
  *
  * @demo ./demo/display.html
  *
@@ -62,7 +62,7 @@ class EditableTableSort extends LitElement {
         reflect: true,
       },
       /**
-       * Index of the current sort column
+       * Index of current sort column
        */
       sortColumn: {
         attribute: "sort-column",
@@ -85,7 +85,7 @@ class EditableTableSort extends LitElement {
   }
   /**
    *
-   * Whether the column is being sorted
+   * Whether column is being sorted
    * @readonly
    * @memberof EditableTableSort
    */
@@ -109,8 +109,8 @@ class EditableTableSort extends LitElement {
   }
 
   /**
-   * Changes the sort mode
-   * @param {string} mode the sort mode: `asc` for ascending or `desc` for descending;
+   * Changes sort mode
+   * @param {string} mode sort mode: `asc` for ascending or `desc` for descending;
    */
   setSortMode(mode) {
     this.sortMode = mode;

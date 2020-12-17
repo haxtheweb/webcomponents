@@ -12,7 +12,7 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `editable-table-editor-filter`
- * `Displays a cell in the editable-table-display mode (editable-table-display.html) as a filter button.`
+ * `Displays a cell in editable-table-display mode (editable-table-display.html) as a filter button.`
  *
  * @demo ./demo/display.html
  * @polymer
@@ -73,14 +73,14 @@ class EditableTableFilter extends LitElement {
   static get properties() {
     return {
       /**
-       * Index of the column
+       * Index of column
        */
       columnIndex: {
         type: Number,
         attribute: "column-index",
       },
       /**
-       * Whether the column is filtered
+       * Whether column is filtered
        */
       filtered: {
         type: Boolean,

@@ -518,6 +518,11 @@ class EditableTable extends displayBehaviors(LitElement) {
     this.hideSort = false;
     this.hideResponsive = false;
     this.hideStriped = false;
+    this.data = [
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ];
   }
   static get properties() {
     return {
@@ -587,15 +592,27 @@ class EditableTable extends displayBehaviors(LitElement) {
     };
   }
 
+  /**
+   * hides data sorting and filtering feature set
+   *
+   * @readonly
+   * @memberof EditableTable
+   */
   get hideSortFilter() {
     return this.hideSort && this.hideFilter;
   }
-
+  /**
+   * hides display feature set
+   *
+   * @readonly
+   * @memberof EditableTable
+   */
   get hideDisplay() {
     return (
       this.hideBordered &&
       this.hideCondensed &&
       this.hideStriped &&
+      this.hideNumericStyles &&
       this.hideResponsive
     );
   }
@@ -647,32 +664,6 @@ class EditableTable extends displayBehaviors(LitElement) {
     temp.splice(index + 1, 0, temp2);
     this.data = temp;
   }
-  /**
-   * loads table data from slotted HTML
-   *
-   * @memberof EditableTable
-   */
-  loadTable() {
-    let table = this.children.item(0);
-    // support wrapping editable-table-display tag or primative
-    if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
-      table = table.children.item(0);
-    }
-    if (
-      !!table &&
-      table.tagName === "TABLE" &&
-      table.children &&
-      table.children.length > 0
-    ) {
-      this.importHTML(table);
-    } else {
-      this.data = [
-        ["", "", ""],
-        ["", "", ""],
-        ["", "", ""],
-      ];
-    }
-  }
 
   /**
    * Toggles between edit-mode and display mode.
@@ -702,33 +693,11 @@ class EditableTable extends displayBehaviors(LitElement) {
     }
     this.editMode = edit;
   }
-
-  connectedCallback() {
-    super.connectedCallback();
-    setTimeout(() => {
-      this.loadTable();
-      this.__ready = true;
-    }, 0);
-  }
   /**
    * Handles when caption paper-input changed
    */
   _captionChanged(e) {
     this.caption = e.detail;
-  }
-
-  /**
-   * Fires when data changed
-   * @event change
-   * @param {event} event
-   */
-  _dataChanged(newValue, oldValue) {
-    if (
-      this.__ready &&
-      (!newValue || newValue.length < 1 || newValue[0].length < 1)
-    ) {
-      this.loadTable();
-    }
   }
 
   /**

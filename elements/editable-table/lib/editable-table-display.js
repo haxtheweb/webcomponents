@@ -148,7 +148,7 @@ class EditableTableDisplay extends displayBehaviors(
         </thead>
         <tbody class="tbody">
           ${this.tbody.map((tr) =>
-            this.isFiltered(tr) ? "" : this._tbodyTr(tr)
+            this._isRowFiltered(tr) ? "" : this._tbodyTr(tr)
           )}
         </tbody>
         ${!this.footer
@@ -204,7 +204,7 @@ class EditableTableDisplay extends displayBehaviors(
       ...displayBehaviors.properties,
       ...ResponsiveUtilityBehaviors.properties,
       /**
-       * Index of the current filter column
+       * Index of current filter column
        */
       filterColumn: {
         type: Number,
@@ -252,7 +252,7 @@ class EditableTableDisplay extends displayBehaviors(
         attribute: "sort-mode",
       },
       /**
-       * Index of the current sort column
+       * Index of current sort column
        */
       sortColumn: {
         type: Number,
@@ -269,31 +269,37 @@ class EditableTableDisplay extends displayBehaviors(
     import("./editable-table-sort.js");
     import("./editable-table-filter.js");
   }
-  isFiltered(tr) {
-    let filter = (this.filterText || "").trim(),
-      cellText = this.filterColumn && tr ? tr[this.filterColumn].trim() : "",
-      filtered;
-    if (!this.filterCaseSensitive) {
-      filter = filter.toLowerCase();
-      cellText = cellText.toLowerCase();
-    }
-    filtered = this.filterContains
-      ? !cellText.match(filter)
-      : cellText !== filter;
-    return filtered;
+  connectedCallback() {
+    super.connectedCallback();
+    setTimeout(() => {
+      this.addEventListener(
+        "change-sort-mode",
+        this._changeSortMode.bind(this)
+      );
+      this.addEventListener("toggle-filter", this.toggleFilter.bind(this));
+    }, 0);
+  }
+  disconnectedCallback() {
+    this.removeEventListener(
+      "change-sort-mode",
+      this._changeSortMode.bind(this)
+    );
+    this.removeEventListener("toggle-filter", this.toggleFilter.bind(this));
+    super.disconnectedCallback();
   }
   /**
    *
-   * Hides the table if it has no data
+   * Hides table if it has no data
    * @readonly
    * @memberof EditableTableDisplay
    */
   get hidden() {
     return !this.data || this.data.length < 1 || this.data[0].length < 1;
   }
+
   /**
    *
-   * Gets the columns in `<thead>`
+   * Gets columns in `<thead>`
    * @readonly
    * @memberof EditableTableDisplay
    */
@@ -303,165 +309,6 @@ class EditableTableDisplay extends displayBehaviors(
     });
   }
 
-  /**
-   * Fires when data changed
-   * @event change
-   * @param {event} the event
-   */
-  _dataChanged(newValue, oldValue) {
-    if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
-      let table = this.children.item(0);
-      if (
-        typeof table !== typeof undefined &&
-        table !== null &&
-        table.tagName === "TABLE"
-      ) {
-        this.importHTML(table);
-      }
-    }
-
-    this.dispatchEvent(
-      new CustomEvent("change", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: newValue,
-      })
-    );
-  }
-  /**
-   * Determines whether or not a cell is hidden in responsive mode
-   * @param {number} index the current column number
-   * @param {number} selected the selected column number
-   * @returns {boolean} whether the column is hidden (i.e. not the selected column)
-   */
-  _isColHidden(index, selected = 1) {
-    selected = selected || 1;
-    return parseInt(index) !== 0 && parseInt(index) !== parseInt(selected);
-  }
-
-  /**
-   * Sets a column's cells to filtered when in filtered mode so that filter can toggle
-   * @param {number} index the current column number
-   * @param {number} selected the filtered column number
-   * @param {boolean} filtered is the table in filtered mode
-   * @returns {boolean} whether the column is filtered
-   */
-  _isFiltered(column, filterColumn, filtered) {
-    return filterColumn !== null && filterColumn === column && filtered;
-  }
-
-  /**
-   * Calculates whether the cell is a `<th>` or `<td>`
-   * @param {boolean} rowHeader if the cell is a rowheader
-   * @param {number} index the current column number
-   * @returns {boolean} whether the cell is a `<th>` or `<td>`
-   */
-  _isRowHeader(rowHeader, index) {
-    return index === 0 && rowHeader;
-  }
-
-  /**
-   * Handles table change
-   */
-  _tableChanged() {
-    this._updateCols();
-  }
-  _tbodyTr(row = [], noFilter = false, tfoot = false) {
-    return html`
-      <tr class="tr ${tfoot ? "tfoot-tr" : "tbody-tr"}">
-        ${row.map((cell, index) =>
-          this._isRowHeader(this.rowHeader, index)
-            ? this._tbodyTh(cell, index)
-            : this._tbodyTd(cell, index, noFilter)
-        )}
-      </tr>
-    `;
-  }
-  _tbodyTh(cell, index) {
-    return html` <th
-      class="th th-or-td"
-      cell-index="${index}"
-      ?numeric="${this._isNumericColumn(index)}"
-      scope="row"
-      ?xs-hidden="${this._isColHidden(index, 1)}"
-    >
-      ${this.getHTML(this._replaceBlankCell(cell))}
-    </th>`;
-  }
-  _tbodyTd(cell, index, noFilter = false) {
-    return html` <td
-      class="td th-or-td"
-      cell-index="${index}"
-      ?numeric="${this._isNumericColumn(index)}"
-      ?negative="${this._isNegative(cell)}"
-      ?xs-hidden="${this._isColHidden(index, 1)}"
-    >
-      ${this.filter
-        ? html`
-            <editable-table-filter
-              class="cell"
-              column-index="${index}"
-              ?filtered="${this._isFiltered(
-                index,
-                this.filterColumn,
-                this.filtered
-              )}"
-            >
-              ${this.getHTML(this._replaceBlankCell(cell))}
-            </editable-table-filter>
-          `
-        : !noFilter
-        ? html`<span class="cell"
-            >${this.getHTML(this._replaceBlankCell(cell))}</span
-          >`
-        : this.getHTML(this._replaceBlankCell(cell))}
-    </td>`;
-  }
-
-  /**
-   * Handles column  selector change
-   */
-  _selectedChanged() {
-    this._updateCols();
-  }
-
-  /**
-   * Handles sort button click
-   * @param {event} e the event
-   */
-  _changeSortMode(e) {
-    if (this.sortColumn === e.detail.columnIndex && this.sortMode === "asc") {
-      this.sortMode = "desc";
-    } else if (
-      this.sortColumn === e.detail.columnIndex &&
-      this.sortMode === "desc"
-    ) {
-      this.sortMode = "none";
-    } else {
-      this.sortMode = "asc";
-      this.sortColumn = e.detail.columnIndex;
-    }
-    e.detail.setSortMode(this.sortMode);
-  }
-
-  /**
-   * update the responsive columns menu
-   */
-  _updateCols() {
-    let selected = this.shadowRoot.querySelector("#column").value,
-      cols = this.shadowRoot.querySelector("#table").querySelectorAll("th,td");
-    if (cols.length > 0) {
-      for (let i = 0; i < cols.length; i++) {
-        let col = cols[i];
-        if (this._isColHidden(col.cellIndex, selected)) {
-          col.setAttribute("xs-hidden", true);
-        } else {
-          col.removeAttribute("xs-hidden");
-        }
-      }
-    }
-  }
   /**
    * Rows in <tbody>
    */
@@ -484,7 +331,11 @@ class EditableTableDisplay extends displayBehaviors(
   }
 
   /**
-   * initialize the responsive columns menu
+   * initialize responsive columns menu
+   *
+   * @param {string} type  sort order ascending: "asc", descending: "desc", or "non"
+   * @param {number} column column number
+   * @memberof EditableTableDisplay
    */
   sortData(type, column) {
     if (type !== "none" && type !== false) {
@@ -499,6 +350,9 @@ class EditableTableDisplay extends displayBehaviors(
 
   /**
    * Handle filter button click
+   *
+   * @param {event} e event
+   * @memberof EditableTableDisplay
    */
   toggleFilter(e) {
     if (
@@ -514,23 +368,213 @@ class EditableTableDisplay extends displayBehaviors(
       this.filtered = true;
     }
   }
-  connectedCallback() {
-    super.connectedCallback();
-    setTimeout(() => {
-      this.addEventListener(
-        "change-sort-mode",
-        this._changeSortMode.bind(this)
-      );
-      this.addEventListener("toggle-filter", this.toggleFilter.bind(this));
-    }, 0);
-  }
-  disconnectedCallback() {
-    this.removeEventListener(
-      "change-sort-mode",
-      this._changeSortMode.bind(this)
+
+  /**
+   * Fires when data changed
+   * @event change
+   * @param {event} event
+   */
+  _dataChanged(newValue, oldValue) {
+    if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
+      let table = this.children.item(0);
+      if (
+        typeof table !== typeof undefined &&
+        table !== null &&
+        table.tagName === "TABLE"
+      ) {
+        this.importHTML(table);
+      }
+    }
+
+    this.dispatchEvent(
+      new CustomEvent("change", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: newValue,
+      })
     );
-    this.removeEventListener("toggle-filter", this.toggleFilter.bind(this));
-    super.disconnectedCallback();
+  }
+
+  /**
+   * Handles sort button click
+   * @param {event} e event
+   */
+  _changeSortMode(e) {
+    if (this.sortColumn === e.detail.columnIndex && this.sortMode === "asc") {
+      this.sortMode = "desc";
+    } else if (
+      this.sortColumn === e.detail.columnIndex &&
+      this.sortMode === "desc"
+    ) {
+      this.sortMode = "none";
+    } else {
+      this.sortMode = "asc";
+      this.sortColumn = e.detail.columnIndex;
+    }
+    e.detail.setSortMode(this.sortMode);
+  }
+
+  /**
+   * Determines whether or not a cell is hidden in responsive mode
+   * @param {number} index current column number
+   * @param {number} selected selected column number
+   * @returns {boolean} whether column is hidden (i.e. not selected column)
+   */
+  _isColHidden(index, selected = 1) {
+    selected = selected || 1;
+    return parseInt(index) !== 0 && parseInt(index) !== parseInt(selected);
+  }
+
+  /**
+   * Sets a column's cells to filtered when in filtered mode so that filter can toggle
+   * @param {number} index current column number
+   * @param {number} selected filtered column number
+   * @param {boolean} filtered is table in filtered mode
+   * @returns {boolean} whether column is filtered
+   */
+  _isCellFiltered(column, filterColumn, filtered) {
+    return !!filterColumn && filterColumn === column && filtered;
+  }
+
+  /**
+   * Hides a row if filtered
+   *
+   * @param {array} tr array of cells
+   * @returns {boolean} whether row is filtered
+   * @memberof EditableTableDisplay
+   */
+  _isRowFiltered(tr) {
+    let filter = (this.filterText || "").trim(),
+      cellText = this.filterColumn && tr ? tr[this.filterColumn].trim() : "",
+      filtered;
+    if (!this.filterCaseSensitive) {
+      filter = filter.toLowerCase();
+      cellText = cellText.toLowerCase();
+    }
+    filtered = this.filterContains
+      ? !cellText.match(filter)
+      : cellText !== filter;
+    return filtered;
+  }
+
+  /**
+   * Calculates whether cell is a `<th>` or `<td>`
+   * @param {boolean} rowHeader if cell is a rowheader
+   * @param {number} index current column number
+   * @returns {boolean} whether cell is a `<th>` or `<td>`
+   */
+  _isRowHeader(rowHeader, index) {
+    return index === 0 && rowHeader;
+  }
+
+  /**
+   * Handles column  selector change
+   */
+  _selectedChanged() {
+    this._updateCols();
+  }
+
+  /**
+   * Handles table change
+   */
+  _tableChanged() {
+    this._updateCols();
+  }
+  /**
+   * table row template
+   *
+   * @param {array} [row=[]] array of cells
+   * @param {boolean} [noFilter=false] has filter buttons
+   * @param {boolean} [tfoot=false] is a footer row
+   * @returns {html}
+   * @memberof EditableTableDisplay
+   */
+  _tbodyTr(row = [], noFilter = false, tfoot = false) {
+    return html`
+      <tr class="tr ${tfoot ? "tfoot-tr" : "tbody-tr"}">
+        ${row.map((cell, index) =>
+          this._isRowHeader(this.rowHeader, index)
+            ? this._tbodyTh(cell, index)
+            : this._tbodyTd(cell, index, noFilter)
+        )}
+      </tr>
+    `;
+  }
+  /**
+   * table header template
+   *
+   * @param {string} cell cell contents
+   * @param {number} index column number
+   * @returns {html}
+   * @memberof EditableTableDisplay
+   */
+  _tbodyTh(cell, index) {
+    return html` <th
+      class="th th-or-td"
+      cell-index="${index}"
+      ?numeric="${this._isNumericColumn(index)}"
+      scope="row"
+      ?xs-hidden="${this._isColHidden(index, 1)}"
+    >
+      ${this.getHTML(this._replaceBlankCell(cell))}
+    </th>`;
+  }
+  /**
+   * table cell template
+   *
+   * @param {*} cell cell contents
+   * @param {*} index column number
+   * @param {boolean} [noFilter=false] whether to include a filter button
+   * @returns {html}
+   * @memberof EditableTableDisplay
+   */
+  _tbodyTd(cell, index, noFilter = false) {
+    return html` <td
+      class="td th-or-td"
+      cell-index="${index}"
+      ?numeric="${this._isNumericColumn(index)}"
+      ?negative="${this._isNegative(cell)}"
+      ?xs-hidden="${this._isColHidden(index, 1)}"
+    >
+      ${this.filter
+        ? html`
+            <editable-table-filter
+              class="cell"
+              column-index="${index}"
+              ?filtered="${this._isCellFiltered(
+                index,
+                this.filterColumn,
+                this.filtered
+              )}"
+            >
+              ${this.getHTML(this._replaceBlankCell(cell))}
+            </editable-table-filter>
+          `
+        : !noFilter
+        ? html`<span class="cell"
+            >${this.getHTML(this._replaceBlankCell(cell))}</span
+          >`
+        : this.getHTML(this._replaceBlankCell(cell))}
+    </td>`;
+  }
+
+  /**
+   * update responsive columns menu
+   */
+  _updateCols() {
+    let selected = this.shadowRoot.querySelector("#column").value,
+      cols = this.shadowRoot.querySelector("#table").querySelectorAll("th,td");
+    if (cols.length > 0) {
+      for (let i = 0; i < cols.length; i++) {
+        let col = cols[i];
+        if (this._isColHidden(col.cellIndex, selected)) {
+          col.setAttribute("xs-hidden", true);
+        } else {
+          col.removeAttribute("xs-hidden");
+        }
+      }
+    }
   }
 }
 window.customElements.define(EditableTableDisplay.tag, EditableTableDisplay);

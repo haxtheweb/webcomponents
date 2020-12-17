@@ -10,7 +10,7 @@ import { html, css } from "lit-element/lit-element.js";
  */
 
 /**
- * behaviors needed to display the table in either mode
+ * behaviors needed to display table in either mode
  */
 export const displayBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -33,14 +33,14 @@ export const displayBehaviors = function (SuperClass) {
           value: null,
         },
         /**
-         * Display the first row as a column header.
+         * Display first row as a column header.
          */
         columnHeader: {
           attribute: "column-header",
           type: Boolean,
         },
         /**
-         * Raw data pulled in from the csv file.
+         * Raw data pulled in from csv file.
          */
         csvData: {
           type: String,
@@ -68,7 +68,7 @@ export const displayBehaviors = function (SuperClass) {
           notify: true,
         },
         /**
-         * Location of the CSV file.
+         * Location of CSV file.
          */
         dataCsv: {
           type: String,
@@ -83,7 +83,7 @@ export const displayBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
-         * Display the last row as a column footer.
+         * Display last row as a column footer.
          */
         footer: {
           attribute: "footer",
@@ -98,7 +98,7 @@ export const displayBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
-         * Display the first column as a row header.
+         * Display first column as a row header.
          */
         rowHeader: {
           attribute: "row-header",
@@ -107,7 +107,7 @@ export const displayBehaviors = function (SuperClass) {
         /**
          * When table is wider than screens,
          * users will select a column to display
-         * instead of scrolling across the table.
+         * instead of scrolling across table.
          */
         responsive: {
           attribute: "responsive",
@@ -130,6 +130,48 @@ export const displayBehaviors = function (SuperClass) {
           type: Boolean,
         },
       };
+    }
+
+    constructor() {
+      super();
+      this.bordered = false;
+      this.columnHeader = false;
+      this.condensed = false;
+      this.data = [];
+      this.filter = false;
+      this.footer = false;
+      this.rowHeader = false;
+      this.responsive = false;
+      this.sort = false;
+      this.striped = false;
+      this.dataCsv = undefined;
+      this.fetchData();
+    }
+
+    connectedCallback() {
+      super.connectedCallback();
+      this.fetchData();
+      setTimeout(() => {
+        if (!this.dataCsv) this.loadSlottedTable();
+        this.__ready = true;
+      }, 0);
+    }
+
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) super.firstUpdated(changedProperties);
+      this.fetchData();
+    }
+
+    updated(changedProperties) {
+      if (super.updated) super.updated(changedProperties);
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "dataCsv") this.fetchData();
+        if (propName === "csvData") this._loadExternalData();
+        if (propName === "striped" && this.striped) this.columnStriped = false;
+        if (propName === "columnStriped" && this.columnStriped)
+          this.striped = false;
+        if (propName == "data") this._dataChanged(this.data, oldValue);
+      });
     }
     /**
      * Rows in <thead>
@@ -155,59 +197,9 @@ export const displayBehaviors = function (SuperClass) {
         : [];
     }
 
-    constructor() {
-      super();
-      this.bordered = false;
-      this.columnHeader = false;
-      this.condensed = false;
-      this.data = [];
-      this.filter = false;
-      this.footer = false;
-      this.rowHeader = false;
-      this.responsive = false;
-      this.sort = false;
-      this.striped = false;
-      this.dataCsv = undefined;
-      this.fetchData();
-    }
-
-    firstUpdated(changedProperties) {
-      if (super.firstUpdated) super.firstUpdated(changedProperties);
-      this.fetchData();
-    }
-
-    updated(changedProperties) {
-      if (super.updated) super.updated(changedProperties);
-      changedProperties.forEach((oldValue, propName) => {
-        if (propName === "dataCsv") this.fetchData();
-        if (propName === "csvData") this._loadExternalData();
-        if (propName === "striped" && this.striped) this.columnStriped = false;
-        if (propName === "columnStriped" && this.columnStriped)
-          this.striped = false;
-        if (propName == "data") this._dataChanged(this.data, oldValue);
-      });
-    }
-
-    fetchData() {
-      if (this.dataCsv && this.dataCsv !== "")
-        fetch(this.dataCsv)
-          .then((response) => response.text())
-          .then((data) => {
-            this.csvData = data;
-          })
-          .catch((err) => console.log(err));
-    }
-
-    getHTML(rawhtml) {
-      this.__tempDiv = this.__tempDiv || document.createElement("template");
-      this.__tempDiv.innerHTML = rawhtml;
-      let temp = this.__tempDiv.content.cloneNode(true);
-      return temp;
-    }
-
     /**
      * converts csv string to array
-     * @param {string} text the CSV string
+     * @param {string} text CSV string
      * @returns {array} a multidimensional table array
      * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
      */
@@ -234,9 +226,26 @@ export const displayBehaviors = function (SuperClass) {
       }
       return ret;
     }
+
+    /**
+     * fetches data from a csv file
+     *
+     */
+    fetchData() {
+      if (this.dataCsv && this.dataCsv !== "")
+        fetch(this.dataCsv)
+          .then((response) => response.text())
+          .then((data) => {
+            this.csvData = data;
+          })
+          .catch((err) => {
+            this.loadSlottedTable();
+          });
+    }
+
     /**
      * Return table data as plain CSV
-     * @returns {string} for the CSV
+     * @returns {string} for CSV
      */
     getTableCSV() {
       return this.data
@@ -244,7 +253,7 @@ export const displayBehaviors = function (SuperClass) {
           return row
             .map((cell) => {
               cell = this._replaceBlankCell(cell);
-              return this._isNumeric(cell)
+              return this._isNumericCell(cell)
                 ? cell.replace(/,/g, "")
                 : `\"${cell.replace(/"/g, '""')}\"`;
             })
@@ -252,23 +261,23 @@ export const displayBehaviors = function (SuperClass) {
         })
         .join("\n");
     }
+
     /**
-     * return HTML object of table data
-     * @returns {object} HTML object for managed table
+     * converts str string into HTML
+     *
+     * @param {string} str html as string
+     * @returns {html}
      */
-    getTableHTMLNode() {
-      let n = document.createElement("editable-table-display");
-      // replicate values that we had previously so they get reflected back into the DOM
-      let props = this.getTableProperties();
-      for (var i in props) {
-        n[i] = props[i];
-      }
-      n.innerHTML = this.getTableHTML();
-      return n;
+    getHTML(str) {
+      this.__tempDiv = this.__tempDiv || document.createElement("template");
+      this.__tempDiv.innerHTML = str;
+      let temp = this.__tempDiv.content.cloneNode(true);
+      return temp;
     }
+
     /**
      * Return table as plain HTML
-     * @returns {string} the HTML for the table
+     * @returns {string} HTML for table
      */
     getTableHTML() {
       let headers = [],
@@ -324,20 +333,36 @@ export const displayBehaviors = function (SuperClass) {
         "\n</table>",
       ].join("");
     }
+
+    /**
+     * return HTML object of table data
+     * @returns {object} HTML object for managed table
+     */
+    getTableHTMLNode() {
+      let n = document.createElement("editable-table-display");
+      // replicate values that we had previously so they get reflected back into DOM
+      let props = this.getTableProperties();
+      for (var i in props) {
+        n[i] = props[i];
+      }
+      n.innerHTML = this.getTableHTML();
+      return n;
+    }
     /**
      * Return table data and configuration
-     * @returns {object} an object with all the table data and configurations
+     * @returns {object} an object with all table data and configurations
      */
     getTableProperties() {
       let data = {
         bordered: !this.hideBordered ? this.bordered : null,
         caption: this.caption,
         columnHeader: this.columnHeader,
+        columnStriped: this.columnStriped,
         condensed: !this.hideCondensed ? this.condensed : null,
         data: this.data,
         filter: !this.hideFilter ? this.filter : null,
         footer: this.footer,
-        "numeric-styles": this.numericStyles,
+        numericStyles: this.numericStyles,
         rowHeader: this.rowHeader,
         responsive: !this.hideResponsive ? this.responsive : null,
         sort: !this.hideSort ? this.sort : null,
@@ -348,7 +373,7 @@ export const displayBehaviors = function (SuperClass) {
     }
     /**
      * imports table HTML as data
-     * @param {HTMLElement} table the table element
+     * @param {HTMLElement} table table element
      */
     importHTML(table) {
       let data = [].slice.call(table.querySelectorAll("tr")).map((row) => {
@@ -371,28 +396,72 @@ export const displayBehaviors = function (SuperClass) {
     }
 
     /**
+     * loads table data from slotted HTML
+     *
+     * @memberof EditableTable
+     */
+    loadSlottedTable() {
+      let table = this.children.item(0);
+      // support wrapping editable-table-display tag or primative
+      if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
+        table = table.children.item(0);
+      }
+      if (
+        !!table &&
+        table.tagName === "TABLE" &&
+        table.children &&
+        table.children.length > 0
+      ) {
+        this.importHTML(table);
+      }
+    }
+
+    /**
+     * Fires when data changed
+     * @event change
+     * @param {event} event
+     */
+    _dataChanged(newValue, oldValue) {
+      if (
+        this.__ready &&
+        (!newValue || newValue.length < 1 || newValue[0].length < 1)
+      ) {
+        this.loadSlottedTable();
+      }
+    }
+
+    /**
      * Sets a cell's negative number style
-     * @param {string} cell the cell contents
+     * @param {string} cell cell contents
      * @returns {boolean} whether cell contents are numeric and negative
      */
     _isNegative(cell) {
-      return this._isNumeric(cell) && cell.trim().indexOf("-") === 0;
+      return this._isNumericCell(cell) && cell.trim().indexOf("-") === 0;
+    }
+
+    /**
+     * Sets a cell's numeric style
+     * @param {string} cell cell contents
+     * @returns {boolean} whether cell contents are numeric
+     */
+    _isNumericCell(cell) {
+      return cell !== null && !isNaN(cell.trim().replace(/\$/g, ""));
     }
 
     /**
      * Determines if an entire body column dontains numeric data
-     * @param {number} index the column index
+     * @param {number} index column index
      * @returns {boolean} if columns contents are numeric
      */
     _isNumericColumn(index) {
       let numeric = true;
       for (let i = 0; i < this.tbody.length; i++) {
-        if (!this._isNumeric(this.tbody[i][index])) numeric = false;
+        if (!this._isNumericCell(this.tbody[i][index])) numeric = false;
       }
       return numeric;
     }
     /**
-     * Convert from csv text to an array in the table function
+     * Convert from csv text to an array in table function
      */
     _loadExternalData(e) {
       let data = this.CSVtoArray(this.csvData);
@@ -400,20 +469,11 @@ export const displayBehaviors = function (SuperClass) {
     }
     /**
      * replaces a blank cell with "-" for accessibility
-     * @param {string} cell the cell contents
-     * @returns {string} the cell contents or "-" if empty
+     * @param {string} cell cell contents
+     * @returns {string} cell contents or "-" if empty
      */
     _replaceBlankCell(cell) {
       return String(cell).trim() === "" ? "-" : cell;
-    }
-
-    /**
-     * Sets a cell's numeric style
-     * @param {string} cell the cell contents
-     * @returns {boolean} whether cell contents are numeric
-     */
-    _isNumeric(cell) {
-      return cell !== null && !isNaN(cell.trim().replace(/\$/g, ""));
     }
   };
 };
@@ -424,8 +484,8 @@ export const displayBehaviors = function (SuperClass) {
 export const cellBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**
-     * Get the row or column label
-     * @param {number} index of the row or column
+     * Get row or column label
+     * @param {number} index of row or column
      * @param  {boolean} whenther it's a row
      * @returns {string} a row number or a column letter
      */
@@ -445,7 +505,7 @@ export const cellBehaviors = function (SuperClass) {
 
     /**
      * Converts index to a letter.
-     * @param {number} index of the row or column
+     * @param {number} index of row or column
      * @returns {string} a column letter
      */
     _getLetter(index) {
