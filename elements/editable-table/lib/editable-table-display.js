@@ -29,7 +29,8 @@ class EditableTableDisplay extends displayBehaviors(
       ...editableTableStyles,
       css`
         table[sort] .thead .th,
-        table[filter] .tbody .td {
+        table[filter] .tbody .td,
+        table[filter] .tfoot .td {
           padding-left: 0;
           padding-right: 0;
           padding-top: 0;
@@ -57,6 +58,9 @@ class EditableTableDisplay extends displayBehaviors(
           padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
           padding-left: var(--editable-table-cell-horizontal-padding, 6px);
           padding-right: var(--editable-table-cell-horizontal-padding, 6px);
+        }
+        span.cell {
+          display: block;
         }
         @media screen {
           :host([responsive][responsive-size="xs"]) caption {
@@ -91,10 +95,12 @@ class EditableTableDisplay extends displayBehaviors(
         ?bordered="${this.bordered}"
         class="table"
         ?column-header="${this.columnHeader}"
+        ?column-striped="${this.columnStriped}"
         ?condensed="${this.condensed}"
         ?filter="${this.filter}"
         ?footer="${this.footer}"
         ?hidden="${this.hidden}"
+        ?numeric-styles="${this.numericStyles}"
         ?row-header="${this.rowHeader}"
         ?sort="${this.sort}"
         ?striped="${this.striped}"
@@ -149,7 +155,7 @@ class EditableTableDisplay extends displayBehaviors(
           ? ""
           : html`
               <tfoot class="tfoot">
-                ${this._tbodyTr(this.tfoot[0], true)}
+                ${this._tbodyTr(this.tfoot[0], true, true)}
               </tfoot>
             `}
       </table>
@@ -195,11 +201,29 @@ class EditableTableDisplay extends displayBehaviors(
   }
   static get properties() {
     return {
+      ...displayBehaviors.properties,
+      ...ResponsiveUtilityBehaviors.properties,
       /**
        * Index of the current filter column
        */
       filterColumn: {
         type: Number,
+        attribute: "filter-column",
+      },
+      /**
+       * whether column only needs to contain filter text
+       * instead of default requiriwhich requires an exact match
+       */
+      filterContains: {
+        type: Boolean,
+        attribute: "filter-contains",
+      },
+      /**
+       * whether filter is case sensitive
+       */
+      filterCaseSensitive: {
+        type: Boolean,
+        attribute: "filter-case-sensitive",
       },
       /**
        * Whether table is filtered
@@ -212,6 +236,7 @@ class EditableTableDisplay extends displayBehaviors(
        */
       filterText: {
         type: String,
+        attribute: "filter-text",
       },
       /**
        * Selected column to display when in responsive mode
@@ -224,12 +249,14 @@ class EditableTableDisplay extends displayBehaviors(
        */
       sortMode: {
         type: String,
+        attribute: "sort-mode",
       },
       /**
        * Index of the current sort column
        */
       sortColumn: {
         type: Number,
+        attribute: "sort-column",
       },
     };
   }
@@ -238,13 +265,22 @@ class EditableTableDisplay extends displayBehaviors(
     this.selected = 1;
     this.sortMode = "none";
     this.sortColumn = -1;
+    this.filterContains = true;
     import("./editable-table-sort.js");
     import("./editable-table-filter.js");
   }
   isFiltered(tr) {
-    let filter = (this.filterText || "").toLowerCase().trim(),
-      cellText = this.filterColumn && tr ? tr[this.filterColumn] : "";
-    return cellText.toLowerCase().trim() !== filter;
+    let filter = (this.filterText || "").trim(),
+      cellText = this.filterColumn && tr ? tr[this.filterColumn].trim() : "",
+      filtered;
+    if (!this.filterCaseSensitive) {
+      filter = filter.toLowerCase();
+      cellText = cellText.toLowerCase();
+    }
+    filtered = this.filterContains
+      ? !cellText.match(filter)
+      : cellText !== filter;
+    return filtered;
   }
   /**
    *
@@ -316,28 +352,6 @@ class EditableTableDisplay extends displayBehaviors(
   }
 
   /**
-   * Sets a cell's negative number style
-   * @param {string} cell the cell contents
-   * @returns {boolean} whether cell contents are numeric and negative
-   */
-  _isNegative(cell) {
-    return this._isNumeric(cell) && cell.trim().indexOf("-") === 0;
-  }
-
-  /**
-   * Determines if an entire body column dontains numeric data
-   * @param {number} index the column index
-   * @returns {boolean} if columns contents are numeric
-   */
-  _isNumericColumn(index) {
-    let numeric = true;
-    for (let i = 0; i < this.tbody.length; i++) {
-      if (!this._isNumeric(this.tbody[i][index])) numeric = false;
-    }
-    return numeric;
-  }
-
-  /**
    * Calculates whether the cell is a `<th>` or `<td>`
    * @param {boolean} rowHeader if the cell is a rowheader
    * @param {number} index the current column number
@@ -353,9 +367,9 @@ class EditableTableDisplay extends displayBehaviors(
   _tableChanged() {
     this._updateCols();
   }
-  _tbodyTr(row = [], noFilter = false) {
+  _tbodyTr(row = [], noFilter = false, tfoot = false) {
     return html`
-      <tr class="tr tbody-tr">
+      <tr class="tr ${tfoot ? "tfoot-tr" : "tbody-tr"}">
         ${row.map((cell, index) =>
           this._isRowHeader(this.rowHeader, index)
             ? this._tbodyTh(cell, index)
@@ -366,7 +380,7 @@ class EditableTableDisplay extends displayBehaviors(
   }
   _tbodyTh(cell, index) {
     return html` <th
-      class="th cell th-or-td"
+      class="th th-or-td"
       cell-index="${index}"
       ?numeric="${this._isNumericColumn(index)}"
       scope="row"
@@ -377,7 +391,7 @@ class EditableTableDisplay extends displayBehaviors(
   }
   _tbodyTd(cell, index, noFilter = false) {
     return html` <td
-      class="td cell th-or-td"
+      class="td th-or-td"
       cell-index="${index}"
       ?numeric="${this._isNumericColumn(index)}"
       ?negative="${this._isNegative(cell)}"
@@ -386,6 +400,7 @@ class EditableTableDisplay extends displayBehaviors(
       ${this.filter
         ? html`
             <editable-table-filter
+              class="cell"
               column-index="${index}"
               ?filtered="${this._isFiltered(
                 index,
@@ -465,7 +480,6 @@ class EditableTableDisplay extends displayBehaviors(
           (this.sortMode === "desc" && aa < bb);
       return swap ? 1 : -1;
     });
-    console.log(this.sortMode, this.sortColumn, temp);
     return temp;
   }
 
@@ -492,10 +506,10 @@ class EditableTableDisplay extends displayBehaviors(
       (this.filterColumn == e.detail.columnIndex && this.filtered)
     ) {
       this.filtered = false;
-      this.filterText = null;
-      this.filterColumn = null;
+      this.filterText = undefined;
+      this.filterColumn = undefined;
     } else {
-      this.filterText = e.detail.text;
+      this.filterText = e.detail.innerHTML;
       this.filterColumn = e.detail.columnIndex;
       this.filtered = true;
     }

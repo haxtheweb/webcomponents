@@ -24,7 +24,6 @@ export const displayBehaviors = function (SuperClass) {
         bordered: {
           attribute: "bordered",
           type: Boolean,
-          notify: true,
         },
         /**
          * a table caption
@@ -39,13 +38,20 @@ export const displayBehaviors = function (SuperClass) {
         columnHeader: {
           attribute: "column-header",
           type: Boolean,
-          notify: true,
         },
         /**
          * Raw data pulled in from the csv file.
          */
         csvData: {
           type: String,
+          attribute: "csv-data",
+        },
+        /**
+         * Is striped add alternating column striping.
+         */
+        columnStriped: {
+          attribute: "column-striped",
+          type: Boolean,
         },
         /**
          * Condense height of table cells.
@@ -53,7 +59,6 @@ export const displayBehaviors = function (SuperClass) {
         condensed: {
           attribute: "condensed",
           type: Boolean,
-          notify: true,
         },
         /**
          * raw data
@@ -67,6 +72,7 @@ export const displayBehaviors = function (SuperClass) {
          */
         dataCsv: {
           type: String,
+          attribute: "data-csv",
         },
         /**
          * Enable filtering by cell value.
@@ -75,7 +81,6 @@ export const displayBehaviors = function (SuperClass) {
           attribute: "filter",
           type: Boolean,
           reflect: true,
-          notify: true,
         },
         /**
          * Display the last row as a column footer.
@@ -83,7 +88,14 @@ export const displayBehaviors = function (SuperClass) {
         footer: {
           attribute: "footer",
           type: Boolean,
-          notify: true,
+        },
+        /**
+         * Right-align numeric values and indicate negative values as red text
+         */
+        numericStyles: {
+          attribute: "numeric-styles",
+          type: Boolean,
+          reflect: true,
         },
         /**
          * Display the first column as a row header.
@@ -91,7 +103,6 @@ export const displayBehaviors = function (SuperClass) {
         rowHeader: {
           attribute: "row-header",
           type: Boolean,
-          notify: true,
         },
         /**
          * When table is wider than screens,
@@ -102,7 +113,6 @@ export const displayBehaviors = function (SuperClass) {
           attribute: "responsive",
           type: Boolean,
           reflect: true,
-          notify: true,
         },
         /**
          * Enable sorting by column header.
@@ -111,7 +121,6 @@ export const displayBehaviors = function (SuperClass) {
           attribute: "sort",
           type: Boolean,
           reflect: true,
-          notify: true,
         },
         /**
          * Add alternating row striping.
@@ -119,7 +128,6 @@ export const displayBehaviors = function (SuperClass) {
         striped: {
           attribute: "striped",
           type: Boolean,
-          notify: true,
         },
       };
     }
@@ -159,13 +167,23 @@ export const displayBehaviors = function (SuperClass) {
       this.responsive = false;
       this.sort = false;
       this.striped = false;
+      this.dataCsv = undefined;
+      this.fetchData();
+    }
+
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) super.firstUpdated(changedProperties);
+      this.fetchData();
     }
 
     updated(changedProperties) {
       if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === this.dataCsv) this.fetchData();
-        if (propName === this.csvData) this._loadExternalData();
+        if (propName === "dataCsv") this.fetchData();
+        if (propName === "csvData") this._loadExternalData();
+        if (propName === "striped" && this.striped) this.columnStriped = false;
+        if (propName === "columnStriped" && this.columnStriped)
+          this.striped = false;
         if (propName == "data") this._dataChanged(this.data, oldValue);
       });
     }
@@ -174,8 +192,12 @@ export const displayBehaviors = function (SuperClass) {
       if (this.dataCsv && this.dataCsv !== "")
         fetch(this.dataCsv)
           .then((response) => response.text())
-          .then((data) => (data = this.csvData));
+          .then((data) => {
+            this.csvData = data;
+          })
+          .catch((err) => console.log(err));
     }
+
     getHTML(rawhtml) {
       this.__tempDiv = this.__tempDiv || document.createElement("template");
       this.__tempDiv.innerHTML = rawhtml;
@@ -315,6 +337,7 @@ export const displayBehaviors = function (SuperClass) {
         data: this.data,
         filter: !this.hideFilter ? this.filter : null,
         footer: this.footer,
+        "numeric-styles": this.numericStyles,
         rowHeader: this.rowHeader,
         responsive: !this.hideResponsive ? this.responsive : null,
         sort: !this.hideSort ? this.sort : null,
@@ -346,12 +369,34 @@ export const displayBehaviors = function (SuperClass) {
           ? table.querySelector("caption").innerHTML.trim()
           : undefined;
     }
+
+    /**
+     * Sets a cell's negative number style
+     * @param {string} cell the cell contents
+     * @returns {boolean} whether cell contents are numeric and negative
+     */
+    _isNegative(cell) {
+      return this._isNumeric(cell) && cell.trim().indexOf("-") === 0;
+    }
+
+    /**
+     * Determines if an entire body column dontains numeric data
+     * @param {number} index the column index
+     * @returns {boolean} if columns contents are numeric
+     */
+    _isNumericColumn(index) {
+      let numeric = true;
+      for (let i = 0; i < this.tbody.length; i++) {
+        if (!this._isNumeric(this.tbody[i][index])) numeric = false;
+      }
+      return numeric;
+    }
     /**
      * Convert from csv text to an array in the table function
      */
     _loadExternalData(e) {
       let data = this.CSVtoArray(this.csvData);
-      if (data.length > 0 && data[0].length > 0) this.set("data", data);
+      if (data.length > 0 && data[0].length > 0) this.data = data;
     }
     /**
      * replaces a blank cell with "-" for accessibility
@@ -432,7 +477,7 @@ export const editableTableCellStyles = [
       margin: 0;
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: var(--editable-table-cell-justify, space-between);
       align-items: center;
       align-content: stretch;
       font-family: inherit;
@@ -441,6 +486,7 @@ export const editableTableCellStyles = [
       background-color: transparent;
       border: none;
       border-radius: 0;
+      color: var(--editable-table-cell-color);
     }
     .sr-only {
       position: absolute;
@@ -538,30 +584,30 @@ export const editableTableStyles = [
       );
       width: 100%;
     }
-    tr {
+    .tr {
       display: table-row;
     }
     .th-or-td {
       display: table-cell;
     }
-    table[column-header] .thead .th {
-      background-color: var(--editable-table-heading-bg-color, #e8e8e8);
+    *[column-header] .thead-tr .th {
+      background-color: var(--editable-table-heading-bg-color, #e0e0e0);
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(--editable-table-heading-color, #000);
     }
-    table[row-header] .tbody .th {
+    *[row-header] .tbody-tr .th {
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(--editable-table-heading-color, #000);
       background-color: var(--editable-table-bg-color, #fff);
       text-align: left;
     }
-    table[bordered] .th,
-    table[bordered] .td {
+    *[bordered] .th,
+    *[bordered] .td {
       border-width: var(--editable-table-border-width, 1px);
       border-style: var(--editable-table-border-style, solid);
       border-color: var(--editable-table-border-color, #999);
     }
-    table[condensed] {
+    *[condensed] {
       --editable-table-cell-vertical-padding: var(
         --editable-table-cell-vertical-padding-condensed,
         2px
@@ -571,28 +617,36 @@ export const editableTableStyles = [
         4px
       );
     }
-    table[striped] .tbody tr:nth-child(2n) .th,
-    table[striped] .tbody tr:nth-child(2n) .td {
+    *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td {
       background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
     }
-    table[footer] .tfoot .th,
-    table[footer] .tfoot .td {
-      border-top: 3px solid var(--editable-table-color, #222);
+    *[column-striped] .tbody-tr .th-or-td:nth-child(2n),
+    *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) {
+      background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
     }
-    table[footer] .tfoot .th,
-    table[footer] .tfoot .td {
+    *[footer] .tfoot-tr .th,
+    *[footer] .tfoot-tr .td {
+      border-top: 2px solid var(--editable-table-color, #222);
+    }
+    *[footer] .tfoot-tr .th,
+    *[footer] .tfoot-tr .td {
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(--editable-table-heading-color, #000);
     }
     caption,
-    table .th-or-td {
+    .th-or-td {
       text-align: left;
     }
-    table .th-or-td[numeric] {
-      text-align: var(--editable-table-numeric-text-align, unset);
+    *[numeric-styles] .thead-tr .th-or-td[numeric],
+    *[numeric-styles] .tfoot-tr .th-or-td[numeric],
+    *[numeric-styles] .th-or-td[numeric] .cell {
+      text-align: right;
+      --editable-table-cell-justify: flex-end;
     }
-    table .td[negative] .cell {
-      color: var(--editable-table-negative-color, --editable-table-color);
+    *[numeric-styles] .tfoot-tr .th-or-td[negative],
+    *[numeric-styles] .td[negative] .cell {
+      color: var(--editable-table-negative-color, red);
+      --editable-table-cell-color: var(--editable-table-negative-color, red);
     }
     editable-table-sort {
       width: 100%;

@@ -23,40 +23,40 @@ import "./lib/editable-table-display.js";
  *
 ### Styling
 
-`<editable-table>` provides the following custom properties and mixins
+`<editable-table>` provides following custom properties and mixins
 for styling:
 
 Custom property | Description | Default
 ----------------|-------------|----------
-`--editable-table-font-size` | Main size for the  table. | unset;
-`--editable-table-secondary-font-size` | Smaller font size for the table for minor UI elements. | 12px;
-`--editable-table-caption-font-size` | Font size for the table caption. | var(--editable-table-font-size);
-`--editable-table-font-family` | Main font-family for the table. | inherit;
-`--editable-table-secondary-font-family` | Secondary font-familt for the table's minor UI elements | "Roboto", "Noto", sans-serif;
-`--editable-table-light-weight` | The lightest table font-weight, for minor UI elements. | 200;
-`--editable-table-medium-weight` | The default table font-weight. | 300;
-`--editable-table-heavy-weight` | The heaviest table font-weight, for emphasis and table  caption. | 600;
-`--editable-table-color` | The table text color. | #222;
-`--editable-table-bg-color` | The table background color. | #fff;
-`--editable-table-caption-color` | The caption text color. | var(--editable-table-color);
-`--editable-table-caption-bg-color` | The caption background color. | #fff;
-`--editable-table-heading-color` | The row/column heading text color. | #000;
-`--editable-table-heading-bg-color` | The row/column heading background color. | #e8e8e8;
-`--editable-table-stripe-bg-color` | The background color for alternating row striping. | #f0f0f0;
-`--editable-table-border-width` | The border width for table. | 1px;
-`--editable-table-border-style` | The border style for table. | solid;
-`--editable-table-border-color` | The border color for table. | #999;
-`--editable-table-border` | The table border. | var(--editable-table-border-width) var(--editable-table-border-style) var(--editable-table-border-color);
-`--editable-table-button-color` | The default text color of the toggle buttons. | var(--editable-table-border-color);
-`--editable-table-button-bg-color` | The default background color of the toggle buttons. | var(--editable-table-bg-color);
-`--editable-table-button-toggled-color` | The text color of the toggle buttons when toggled. | var(--editable-table-color);
-`--editable-table-button-toggled-bg-color` | The background color of the toggle buttons when toggled. | var(--editable-table-bg-color);
-`--editable-table-button-hover-color` | The text color of the toggle buttons when hovered or focused. | var(--editable-table-button-color);
-`--editable-table-button-hover-bg-color` | The background color of the toggle buttons when hovered or focused. | var(--editable-table-heading-bg-color);
-`--editable-table-button-toggled-hover-color` | The text color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-color);
-`--editable-table-button-toggled-hover-bg-color` | The background color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-bg-color);
-`--editable-table-button-disabled-color` | The text color of the toggle buttons when disabled. | var(--editable-table-border-color);
-`--editable-table-button-disabled-bg-color` | The background color of the toggle buttons when disabled. | var(--editable-table-heading-bg-color);
+`--editable-table-font-size` | Main size for  table. | unset;
+`--editable-table-secondary-font-size` | Smaller font size for table for minor UI elements. | 12px;
+`--editable-table-caption-font-size` | Font size for table caption. | var(--editable-table-font-size);
+`--editable-table-font-family` | Main font-family for table. | inherit;
+`--editable-table-secondary-font-family` | Secondary font-familt for table's minor UI elements | "Roboto", "Noto", sans-serif;
+`--editable-table-light-weight` | lightest table font-weight, for minor UI elements. | 200;
+`--editable-table-medium-weight` | default table font-weight. | 300;
+`--editable-table-heavy-weight` | heaviest table font-weight, for emphasis and table  caption. | 600;
+`--editable-table-color` | table text color. | #222;
+`--editable-table-bg-color` | table background color. | #fff;
+`--editable-table-caption-color` | caption text color. | var(--editable-table-color);
+`--editable-table-caption-bg-color` | caption background color. | #fff;
+`--editable-table-heading-color` | row/column heading text color. | #000;
+`--editable-table-heading-bg-color` | row/column heading background color. | #e8e8e8;
+`--editable-table-stripe-bg-color` | background color for alternating row striping. | #f0f0f0;
+`--editable-table-border-width` | border width for table. | 1px;
+`--editable-table-border-style` | border style for table. | solid;
+`--editable-table-border-color` | border color for table. | #999;
+`--editable-table-border` | table border. | var(--editable-table-border-width) var(--editable-table-border-style) var(--editable-table-border-color);
+`--editable-table-button-color` | default text color of toggle buttons. | var(--editable-table-border-color);
+`--editable-table-button-bg-color` | default background color of toggle buttons. | var(--editable-table-bg-color);
+`--editable-table-button-toggled-color` | text color of toggle buttons when toggled. | var(--editable-table-color);
+`--editable-table-button-toggled-bg-color` | background color of toggle buttons when toggled. | var(--editable-table-bg-color);
+`--editable-table-button-hover-color` | text color of toggle buttons when hovered or focused. | var(--editable-table-button-color);
+`--editable-table-button-hover-bg-color` | background color of toggle buttons when hovered or focused. | var(--editable-table-heading-bg-color);
+`--editable-table-button-toggled-hover-color` | text color of toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-color);
+`--editable-table-button-toggled-hover-bg-color` | background color of toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-bg-color);
+`--editable-table-button-disabled-color` | text color of toggle buttons when disabled. | var(--editable-table-border-color);
+`--editable-table-button-disabled-bg-color` | background color of toggle buttons when disabled. | var(--editable-table-heading-bg-color);
 `--editable-table-row-horizontal-padding` | Default horizontal padding for cells. | 6px;
 `--editable-table-row-horizontal-padding-condensed` | Smaller horizontal padding for cells. | 4px;
 `--editable-table-row-vertical-padding` | Default vertical padding for cells (determines row hight and whitespace). | 10px;
@@ -68,6 +68,7 @@ Custom property | Description | Default
  *
  * @demo ./demo/index.html
  * @demo ./demo/editmode.html Edit Mode
+ * @demo ./demo/numeric.html Numeric Styles
  * @demo ./demo/display.html Display Only
  * @demo ./demo/importing.html Importing Data
  * @demo ./demo/exporting.html Exporting Data
@@ -120,10 +121,7 @@ class EditableTable extends displayBehaviors(LitElement) {
         }
         label,
         .label {
-          color: var(
-            --editable-table-secondary-text-color,
-            var(--editable-table-border-color, #999)
-          );
+          color: var(--editable-table-secondary-text-color, #444);
           font-size: var(--editable-table-secondary-font-size, 12px);
           font-family: var(
             --editable-table-secondary-font-family,
@@ -187,8 +185,8 @@ class EditableTable extends displayBehaviors(LitElement) {
         td #icons {
           position: absolute;
           right: 0;
-          width: 48px;
-          z-index: -1;
+          top: calc(50% - 12px);
+          width: 24px;
         }
         td simple-icon-lite {
           width: 24px;
@@ -203,8 +201,8 @@ class EditableTable extends displayBehaviors(LitElement) {
         .th:first-child {
           width: 96px;
         }
-        :host([responsive]) thead .th:nth-of-type(3),
-        :host([responsive]) .td:nth-of-type(2) {
+        :host([responsive]) thead th:nth-of-type(3),
+        :host([responsive]) .tr td:nth-of-type(2) {
           border-right-width: calc(var(--editable-table-border-width) + 5px);
           border-right-style: double;
         }
@@ -218,11 +216,13 @@ class EditableTable extends displayBehaviors(LitElement) {
         ?bordered="${this.bordered}"
         caption="${this.caption}"
         ?column-header="${this.columnHeader}"
+        ?column-striped="${this.columnStriped}"
         ?condensed="${this.condensed}"
         .data="${this.data}"
         ?filter="${this.filter}"
         ?footer="${this.footer}"
         ?hidden="${this.editMode}"
+        ?numeric-styles="${this.numericStyles}"
         ?responsive="${this.responsive}"
         ?row-header="${this.rowHeader}"
         ?sort="${this.sort}"
@@ -239,7 +239,15 @@ class EditableTable extends displayBehaviors(LitElement) {
           <table
             id="table-editmode"
             ?bordered="${this.bordered}"
+            ?column-header="${this.columnHeader}"
+            ?column-striped="${this.columnStriped}"
             ?condensed="${this.condensed}"
+            ?filter="${this.filter}"
+            ?footer="${this.footer}"
+            ?numeric-styles="${this.numericStyles}"
+            ?responsive="${this.responsive}"
+            ?row-header="${this.rowHeader}"
+            ?sort="${this.sort}"
             ?striped="${this.striped}"
           >
             <caption>
@@ -263,7 +271,11 @@ class EditableTable extends displayBehaviors(LitElement) {
                 </th>
                 ${(this.data[0] || []).map(
                   (cell, th) => html`
-                    <th class="col-${th}" scope="col">
+                    <th
+                      class="col-${th}"
+                      scope="col"
+                      ?numeric="${this._isNumericColumn(th)}"
+                    >
                       <editable-table-editor-rowcol
                         ?condensed="${this.condensed}"
                         index="${th}"
@@ -275,12 +287,19 @@ class EditableTable extends displayBehaviors(LitElement) {
                 )}
               </tr>
             </thead>
-            <tbody id="tbody">
+            <tbody id="tbody" class="tbody">
               ${this.data.map(
                 (row, tr) => html`
-                  <tr class="tr tbody-tr">
+                  <tr
+                    class="tr ${tr == 0 && this.columnHeader
+                      ? "thead-tr"
+                      : tr == this.data.length - 1 && this.footer
+                      ? "tfoot-tr"
+                      : "tbody-tr"}"
+                  >
                     <th scope="row">
                       <editable-table-editor-rowcol
+                        class="cell"
                         ?condensed="${this.condensed}"
                         index="${tr}"
                         row
@@ -295,12 +314,15 @@ class EditableTable extends displayBehaviors(LitElement) {
                           (tr == 0 && this.columnHeader)
                             ? "th"
                             : "td"} th-or-td"
+                          ?negative="${this._isNegative(cell)}"
+                          ?numeric="${this._isNumericColumn(td)}"
                           @click="${this._onCellClick}"
                         >
                           <rich-text-editor
                             autofocus
                             @editing-disabled="${(e) =>
                               this._onCellValueChange(e, tr, td)}"
+                            class="cell"
                             disable-mouseover
                             toolbar="mini"
                             id="cell-${tr}-${td}"
@@ -380,6 +402,16 @@ class EditableTable extends displayBehaviors(LitElement) {
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
+              id="columnStriped"
+              ?disabled="${this.hideStriped}"
+              ?hidden="${this.hideStriped}"
+              icon="editable-table:col-striped"
+              label="Alternating columns."
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.columnStriped}"
+            >
+            </editable-table-editor-toggle>
+            <editable-table-editor-toggle
               id="condensed"
               ?disabled="${this.hideCondensed}"
               ?hidden="${this.hideCondensed}"
@@ -387,6 +419,16 @@ class EditableTable extends displayBehaviors(LitElement) {
               label="Condensed rows."
               @change="${this._onTableSettingChange}"
               ?toggled="${this.condensed}"
+            >
+            </editable-table-editor-toggle>
+            <editable-table-editor-toggle
+              id="numericStyles"
+              ?disabled="${this.hideNumericStyles}"
+              ?hidden="${this.hideNumericStyles}"
+              icon="editable-table:numbers"
+              label="Style numeric cells."
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.numericStyles}"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
@@ -454,7 +496,7 @@ class EditableTable extends displayBehaviors(LitElement) {
    * allow HAX to toggle edit state when activated
    */
   haxactiveElementChanged(el, val) {
-    // overwrite the HAX dom w/ what our editor is supplying
+    // overwrite HAX dom w/ what our editor is supplying
     if (!val) {
       let replacement = this.getTableHTMLNode();
       if (el) {
@@ -462,7 +504,7 @@ class EditableTable extends displayBehaviors(LitElement) {
       }
       el = replacement;
     }
-    // aligns the state of the element w/ HAX if its available
+    // aligns state of element w/ HAX if its available
     this.toggleEditMode(val);
     return el;
   }
@@ -479,54 +521,68 @@ class EditableTable extends displayBehaviors(LitElement) {
   }
   static get properties() {
     return {
+      ...displayBehaviors.properties,
       /**
-       * Is the table in edit-mode? Default is false (display mode).
+       * Is table in edit-mode? Default is false (display mode).
        */
       config: {
         type: Object,
       },
       /**
-       * Is the table in edit-mode? Default is false (display mode).
+       * Is table in edit-mode? Default is false (display mode).
        */
       editMode: {
         type: Boolean,
         attribute: "edit-mode",
       },
       /**
-       * Hide the borders table styles menu option
+       * Hide borders table styles menu option
        */
       hideBordered: {
         type: Boolean,
+        attribute: "hide-bordered",
       },
       /**
-       * Hide the condensed table styles menu option
+       * Hide condensed table styles menu option
        */
       hideCondensed: {
         type: Boolean,
+        attribute: "hide-condensed",
       },
       /**
-       * Hide the filtering option.
+       * Hide filtering option.
        */
       hideFilter: {
         type: Boolean,
+        attribute: "hide-filter",
       },
       /**
-       * Hide the sorting option.
+       * Hide numeric styling option.
+       */
+      hideNumericStyles: {
+        type: Boolean,
+        attribute: "hide-numeric-styles",
+      },
+      /**
+       * Hide sorting option.
        */
       hideSort: {
         type: Boolean,
+        attribute: "hide-sort",
       },
       /**
-       * Hide the responsive table styles menu option
+       * Hide responsive table styles menu option
        */
       hideResponsive: {
         type: Boolean,
+        attribute: "hide-responsive",
       },
       /**
-       * Hide the striped table styles menu option
+       * Hide striped table styles menu option
        */
       hideStriped: {
         type: Boolean,
+        attribute: "hide-striped",
       },
     };
   }
@@ -545,8 +601,8 @@ class EditableTable extends displayBehaviors(LitElement) {
   }
 
   /**
-   * Delete a column at the given index
-   * @param {number} index the index of the column
+   * Delete a column at given index
+   * @param {number} index index of column
    */
   deleteColumn(index) {
     for (let i = 0; i < this.data.length; i++) {
@@ -557,8 +613,8 @@ class EditableTable extends displayBehaviors(LitElement) {
   }
 
   /**
-   * Delete a row at the given index
-   * @param {number} index the index of the row
+   * Delete a row at given index
+   * @param {number} index index of row
    */
   deleteRow(index) {
     this.splice("data", index, 1);
@@ -567,8 +623,8 @@ class EditableTable extends displayBehaviors(LitElement) {
   }
 
   /**
-   * Insert a column at the given index
-   * @param {number} index the index of the column
+   * Insert a column at given index
+   * @param {number} index index of column
    */
   insertColumn(index) {
     let temp = this.data.slice();
@@ -579,8 +635,8 @@ class EditableTable extends displayBehaviors(LitElement) {
   }
 
   /**
-   * Insert a row at the given index
-   * @param {number} index the index of the row
+   * Insert a row at given index
+   * @param {number} index index of row
    */
   insertRow(index) {
     let temp = this.data.slice(),
@@ -655,7 +711,7 @@ class EditableTable extends displayBehaviors(LitElement) {
     }, 0);
   }
   /**
-   * Handles when the caption paper-input changed
+   * Handles when caption paper-input changed
    */
   _captionChanged(e) {
     this.caption = e.detail;
@@ -664,7 +720,7 @@ class EditableTable extends displayBehaviors(LitElement) {
   /**
    * Fires when data changed
    * @event change
-   * @param {event} the event
+   * @param {event} event
    */
   _dataChanged(newValue, oldValue) {
     if (
@@ -676,9 +732,9 @@ class EditableTable extends displayBehaviors(LitElement) {
   }
 
   /**
-   * Gets the row data for a given row index
-   * @param {number} index the index of the row
-   * @param {array} data the table data
+   * Gets row data for a given row index
+   * @param {number} index index of row
+   * @param {array} data table data
    * @returns {array} row data
    */
   _getCurrentRow(index, data) {
@@ -696,7 +752,7 @@ class EditableTable extends displayBehaviors(LitElement) {
 
   /**
    * Handles row/column menu actions
-   * @param {event} e the event
+   * @param {event} e event
    */
   _handleRowColumnMenu(e) {
     if (e.detail.insert && e.detail.row) {
@@ -712,14 +768,14 @@ class EditableTable extends displayBehaviors(LitElement) {
 
   /**
    * Tests for first row of data. Workaround to restamp column headers.
-   * @param {number} index the index of the row
+   * @param {number} index index of row
    */
   _isFirstRow(index) {
     return index === 0;
   }
 
   /**
-   * Tests for whether or not to disable the sort feature.
+   * Tests for whether or not to disable sort feature.
    * @param {boolean} hideSort if sort feature be hidden
    * @param {boolean} columnHeader if table has column headers
    */
@@ -728,8 +784,8 @@ class EditableTable extends displayBehaviors(LitElement) {
   }
 
   /**
-   * Sets focus on the cell's textarea if the cell is clicked
-   * @param {event} e the event
+   * Sets focus on cell's textarea if cell is clicked
+   * @param {event} e event
    */
   _onCellClick(e) {
     if (e.model && e.model.root && e.model.root.nodeList[0]) {
@@ -739,7 +795,7 @@ class EditableTable extends displayBehaviors(LitElement) {
 
   /**
    * Updates data when cell value changes
-   * @param {event} e the event
+   * @param {event} e event
    */
   _onCellValueChange(e, row, col) {
     let temp = this.data.slice();
@@ -749,9 +805,10 @@ class EditableTable extends displayBehaviors(LitElement) {
 
   /**
    * Updates table properties when setting changes
-   * @param {event} e the event
+   * @param {event} e event
    */
   _onTableSettingChange(e) {
+    console.log("striped", this.striped, "col", this.columnStriped);
     this[e.detail.id] = e.detail.toggled;
   }
 

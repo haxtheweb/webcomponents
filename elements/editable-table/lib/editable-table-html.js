@@ -449,42 +449,49 @@ class EditableTable extends displayBehaviors(LitElement) {
        */
       editMode: {
         type: Boolean,
+        attribute: "edit-mode",
       },
       /**
        * Hide the borders table styles menu option
        */
       hideBordered: {
         type: Boolean,
+        attribute: "hide-bordered",
       },
       /**
        * Hide the condensed table styles menu option
        */
       hideCondensed: {
         type: Boolean,
+        attribute: "hide-condensed",
       },
       /**
        * Hide the filtering option.
        */
       hideFilter: {
         type: Boolean,
+        attribute: "hide-filter",
       },
       /**
        * Hide the sorting option.
        */
       hideSort: {
         type: Boolean,
+        attribute: "hide-sort",
       },
       /**
        * Hide the responsive table styles menu option
        */
       hideResponsive: {
         type: Boolean,
+        attribute: "hide-reponsive",
       },
       /**
        * Hide the striped table styles menu option
        */
       hideStriped: {
         type: Boolean,
+        attribute: "hide-striped",
       },
     };
   }

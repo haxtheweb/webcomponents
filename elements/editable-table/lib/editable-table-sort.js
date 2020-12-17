@@ -19,24 +19,7 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  */
 class EditableTableSort extends LitElement {
   static get styles() {
-    return [
-      ...(super.styles || []),
-      ...editableTableCellStyles,
-      css`
-        #asc,
-        #desc,
-        :host(:not([sort-mode="asc"])) .asc,
-        :host(:not([sort-mode="desc"])) .desc,
-        :host(:not([sort-mode="none"])) .none,
-        :host([sorting]:not([sort-mode="none"])) #none {
-          display: none;
-        }
-        :host([sorting][sort-mode="asc"]) #asc,
-        :host([sorting][sort-mode="desc"]) #desc {
-          display: flex;
-        }
-      `,
-    ];
+    return [...(super.styles || []), ...editableTableCellStyles, css``];
   }
   render() {
     return html`
@@ -45,11 +28,12 @@ class EditableTableSort extends LitElement {
         <span class="sr-only asc">(ascending)</span>
         <span class="sr-only desc">(descending)</span>
         <span class="sr-only"> Toggle sort mode.</span>
-        <simple-icon-lite id="asc" icon="arrow-drop-up"></simple-icon-lite>
-        <simple-icon-lite id="desc" icon="arrow-drop-down"></simple-icon-lite>
         <simple-icon-lite
-          id="none"
-          icon="editable-table:sortable"
+          icon="${this.sortMode == "asc"
+            ? "arrow-drop-up"
+            : this.sortMode == "desc"
+            ? "arrow-drop-down"
+            : "editable-table:sortable"}"
         ></simple-icon-lite>
       </button>
     `;
