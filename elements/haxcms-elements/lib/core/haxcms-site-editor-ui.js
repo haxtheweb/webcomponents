@@ -301,73 +301,88 @@ class HAXCMSSiteEditorUI extends LitElement {
     window.location.replace(redirectUrl);
   }
 
-  firstUpdated(changedProperties) {
-    setTimeout(() => {
-      // backText
-      if (window.appSettings && window.appSettings.backText) {
-        this.backText = window.appSettings.backText;
-      }
-      let ary = [
-        {
-          varPath: "getNodeFieldsPath",
-          selector: "#editdetails",
-        },
-        {
-          varPath: "deleteNodePath",
-          selector: "#deletebutton",
-        },
-        {
-          varPath: "saveNodePath",
-          selector: "#editbutton",
-        },
-        {
-          varPath: "createNodePath",
-          selector: "#addbutton",
-        },
-        {
-          varPath: "saveOutlinePath",
-          selector: "#outlinebutton",
-        },
-        {
-          varPath: "saveManifestPath",
-          selector: "#manifestbutton",
-          dep: "getSiteFieldsPath",
-        },
-        {
-          varPath: "getSiteFieldsPath",
-          selector: "#manifestbutton",
-          dep: "saveManifestPath",
-        },
-      ];
-      // see which features should be enabled
-      ary.forEach((pair) => {
-        if (
-          window.appSettings &&
-          window.appSettings[pair.varPath] &&
-          window.appSettings[pair.varPath] != null &&
-          window.appSettings[pair.varPath] != "" &&
-          window.appSettings[pair.varPath] != "null"
-        ) {
-          if (pair.dep) {
-            if (
-              window.appSettings[pair.dep] != null &&
-              window.appSettings[pair.dep] != "" &&
-              window.appSettings[pair.dep] != "null"
-            ) {
+  /**
+   * update buttons since these are triggered by a mix of
+   * differnet backend types we can't leverage the store
+   * since a CMS needs to just hardcode these at run time
+   * for some environments
+   */
+  updateAvailableButtons() {
+    if (this.shadowRoot) {
+      setTimeout(() => {
+        // backText
+        if (window.appSettings && window.appSettings.backText) {
+          this.backText = window.appSettings.backText;
+        }
+        let ary = [
+          {
+            varPath: "getNodeFieldsPath",
+            selector: "#editdetails",
+          },
+          {
+            varPath: "deleteNodePath",
+            selector: "#deletebutton",
+          },
+          {
+            varPath: "saveNodePath",
+            selector: "#editbutton",
+          },
+          {
+            varPath: "createNodePath",
+            selector: "#addbutton",
+          },
+          {
+            varPath: "saveOutlinePath",
+            selector: "#outlinebutton",
+          },
+          {
+            varPath: "saveManifestPath",
+            selector: "#manifestbutton",
+            dep: "getSiteFieldsPath",
+          },
+          {
+            varPath: "getSiteFieldsPath",
+            selector: "#manifestbutton",
+            dep: "saveManifestPath",
+          },
+        ];
+        // see which features should be enabled
+        ary.forEach((pair) => {
+          if (
+            window.appSettings &&
+            window.appSettings[pair.varPath] &&
+            window.appSettings[pair.varPath] != null &&
+            window.appSettings[pair.varPath] != "" &&
+            window.appSettings[pair.varPath] != "null"
+          ) {
+            if (pair.dep) {
+              if (
+                window.appSettings[pair.dep] != null &&
+                window.appSettings[pair.dep] != "" &&
+                window.appSettings[pair.dep] != "null"
+              ) {
+                this.shadowRoot
+                  .querySelector(pair.selector)
+                  .removeAttribute("hidden");
+              } else {
+                // a dependency didn't meet the requirement
+              }
+            } else {
               this.shadowRoot
                 .querySelector(pair.selector)
                 .removeAttribute("hidden");
-            } else {
-              // a dependency didn't meet the requirement
             }
-          } else {
-            this.shadowRoot
-              .querySelector(pair.selector)
-              .removeAttribute("hidden");
           }
-        }
-      });
-    }, 0);
+        });
+      }, 100);
+    }
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.updateAvailableButtons();
     // load user data
     this.dispatchEvent(
       new CustomEvent("haxcms-load-user-data", {
@@ -526,6 +541,8 @@ class HAXCMSSiteEditorUI extends LitElement {
       if (store.userData) {
         this.userName = toJS(store.userData.userName);
         this.userPicture = toJS(store.userData.userPicture);
+        // update buttons to match since we got a state response
+        this.updateAvailableButtons();
       }
       this.__disposer.push(reaction);
     });
@@ -544,6 +561,8 @@ class HAXCMSSiteEditorUI extends LitElement {
     });
     autorun((reaction) => {
       const activeItem = toJS(store.activeItem);
+      // update buttons to match since we got a state response
+      this.updateAvailableButtons();
       if (activeItem && activeItem.id) {
         this.activeTitle = activeItem.title;
         this.pageAllowed = true;
