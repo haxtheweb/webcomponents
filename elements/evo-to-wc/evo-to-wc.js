@@ -3,16 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
-import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
-import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
-import "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js";
-import "@lrnwebcomponents/a11y-figure/a11y-figure.js";
 import "@lrnwebcomponents/editable-table/editable-table.js";
 
 /**
@@ -57,37 +47,100 @@ export class EvoToWc {
     return ["h1", "h2", "h3", "h4", "h5", "h6"];
   }
   constructor() {}
+
   convert(target = document.body) {
-    Object.keys(this.courseicons).forEach((key) => {
-      target.querySelectorAll(`.coursework.${key}`).forEach((evoicon) => {
-        let child = evoicon.firstElementChild,
-          icon = document.createElement("simple-icon-lite");
-        icon.icon = this.courseicons[key];
-        icon.style.marginRight = "0.25em";
-        child.insertBefore(icon, child.firstChild);
-        evoicon.classList.remove("coursework");
-        evoicon.classList.remove(key);
+    this.convertIfNeeded(target, [
+      { selector: ".coursework", function: "convertIcons" },
+      { selector: ".graphme", function: "convertGraphmes" },
+      { selector: ".tablestyle,.tablestyle2", function: "convertTablestyles" },
+      { selector: ".tabbed-interface", function: "convertTabs" },
+      {
+        selector: ".expandable,.accordion-interface",
+        function: "convertCollapses",
+      },
+      { selector: "figure", function: "convertFigures" },
+      { selector: "img.gif-player", function: "convertGifs" },
+      {
+        selector:
+          ".image-thumbnail, .dynamic-image-group,.wcslideplayer, .clickable-list",
+        function: "convertGalleries",
+      },
+      {
+        selector: ".newcolorbox,.colorbox,.pulltext,.yellownote,.speechbubble",
+        function: "convertCards",
+      },
+    ]);
+  }
+
+  convertIfNeeded(target, conversions = []) {
+    conversions.forEach((conversion) => {
+      let nodes = target.querySelectorAll(conversion.selector);
+      if (nodes.length > 0) this[conversion.function](nodes, target);
+    });
+  }
+  convertAccordions(accordions) {
+    import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
+
+    accordions.forEach((accordion) => {
+      let group = document.createElement("a11y-collapse-group"),
+        children = [...accordion.childNodes],
+        collapse;
+      group.radio = true;
+      group.headingButton = true;
+      children.forEach((child) => {
+        if (this.isHeading(child)) {
+          collapse = document.createElement("a11y-collapse");
+          child.slot = "heading";
+          collapse.headingButton = true;
+          collapse.append(child);
+          group.append(collapse);
+        } else if (collapse) {
+          collapse.append(child);
+        }
       });
+      accordion.parentElement.insertBefore(group, accordion);
+      accordion.remove();
     });
-    target.querySelectorAll(".tablestyle,.tablestyle2").forEach((table) => {
-      let editable = document.createElement("editable-table");
-      editable.bordered =
-        table.classList.contains("dottedrows") ||
-        table.classList.contains("dottedcols") ||
-        table.classList.contains("linedrows") ||
-        table.classList.contains("linedcols");
-      editable.columnStriped = table.classList.contains("alternatecols");
-      editable.striped =
-        !editable.columnStriped && table.classList.contains("alternaterows");
-      table.parentElement.insertBefore(editable, table);
-      editable.append(table);
-      editable.loadSlottedTable();
+  }
+  convertCards(cards, target) {
+    import("@lrnwebcomponents/accent-card/accent-card.js");
+
+    this.convertIfNeeded(target, [
+      { selector: ".newcolorbox", function: "convertNewcolorboxes" },
+      { selector: ".colorbox", function: "convertColorboxes" },
+      { selector: ".pulltext", function: "convertPulltexts" },
+      { selector: ".yellownote", function: "convertYellownotes" },
+      { selector: ".speechbubble", function: "convertSpeechbubbles" },
+    ]);
+  }
+  convertCarousels(carousels) {
+    carousels.forEach((group) => {
+      let gallery = document.createElement("lrndesign-gallery"),
+        items = group.querySelectorAll("figure");
+      gallery.layout = "carousel";
+      gallery.accentColor = "light-blue";
+      items.forEach((item) => gallery.append(this.slotGallery(item)));
+      group.parentNode.insertBefore(gallery, group);
+      group.remove();
     });
-    target.querySelectorAll(".tabbed-interface").forEach((tabs) => {
-      let a11ytabs = document.createElement("a11y-tabs");
-      this.replace(tabs, a11ytabs, this.tabsSlot.bind(this));
+  }
+  convertCollapses(collapses, target) {
+    import("@lrnwebcomponents/a11y-collapse/a11y-collapse.js");
+    this.convertIfNeeded(target, [
+      { selector: ".expandable", function: "convertExpandables" },
+      { selector: ".accordion-interface", function: "convertAccordions" },
+    ]);
+  }
+  convertColorboxes(cards) {
+    cards.forEach((box) => {
+      let card = document.createElement("accent-card");
+      card.accentColor = "light-blue";
+      this.replace(box, card, this.slotAccentCard);
     });
-    target.querySelectorAll(".expandable").forEach((expandable) => {
+  }
+
+  convertExpandables(expandables) {
+    expandables.forEach((expandable) => {
       let collapse = document.createElement("a11y-collapse"),
         collapseable = expandable.querySelector(".collapseable"),
         content = collapseable
@@ -108,28 +161,11 @@ export class EvoToWc {
       expandable.parentNode.insertBefore(collapse, expandable);
       expandable.remove();
     });
-    target.querySelectorAll(".accordion-interface").forEach((accordion) => {
-      let group = document.createElement("a11y-collapse-group"),
-        children = [...accordion.childNodes],
-        collapse;
-      group.radio = true;
-      group.headingButton = true;
-      children.forEach((child) => {
-        if (this.isHeading(child)) {
-          collapse = document.createElement("a11y-collapse");
-          child.slot = "heading";
-          collapse.headingButton = true;
-          collapse.append(child);
-          group.append(collapse);
-        } else if (collapse) {
-          collapse.append(child);
-        }
-      });
-      accordion.parentElement.insertBefore(group, accordion);
-      accordion.remove();
-    });
+  }
+  convertFigures(figures) {
+    import("@lrnwebcomponents/a11y-figure/a11y-figure.js");
 
-    target.querySelectorAll("figure").forEach((figure) => {
+    figures.forEach((figure) => {
       let figcaption = figure.querySelector("figcaption"),
         a11y = document.createElement("a11y-figure"),
         image = figure.querySelector("img"),
@@ -149,8 +185,11 @@ export class EvoToWc {
       figure.parentElement.insertBefore(a11y, figure);
       a11y.append(figure);
     });
+  }
+  convertGifs(gifs) {
+    import("@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js");
 
-    target.querySelectorAll("img.gif-player").forEach((image) => {
+    gifs.forEach((image) => {
       let player = document.createElement("a11y-gif-player"),
         src = image.src || "";
       this.setSize(image, player, "height");
@@ -160,8 +199,125 @@ export class EvoToWc {
       image.parentElement.insertBefore(player, image);
       image.remove();
     });
+  }
 
-    target.querySelectorAll(".image-thumbnail").forEach((image) => {
+  convertGalleries(gallery, target) {
+    import("@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js");
+    this.convertIfNeeded(target, [
+      { selector: ".image-thumbnail", function: "convertThumbnails" },
+      {
+        selector: ".dynamic-image-group,.wcslideplayer",
+        function: "convertCarousels",
+      },
+      { selector: ".clickable-list", function: "convertImageLists" },
+    ]);
+  }
+
+  convertGraphmes(graphmes) {
+    import("@lrnwebcomponents/lrndesign-chart/lib/lrndesign-bar.js");
+    import("@lrnwebcomponents/lrndesign-chart/lib/lrndesign-line.js");
+    import("@lrnwebcomponents/lrndesign-chart/lib/lrndesign-pie.js");
+
+    graphmes.forEach((graphme) => {
+      ["bar", "line", "pie"].forEach((type) => this.slotChart(type, graphme));
+      if (!graphme.classList.contains("showtable")) graphme.remove();
+    });
+  }
+  convertIcons(icons, target) {
+    import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
+    import("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
+    import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
+
+    Object.keys(this.courseicons).forEach((key) => {
+      target.querySelectorAll(`.coursework.${key}`).forEach((evoicon) => {
+        let child = evoicon.firstElementChild,
+          icon = document.createElement("simple-icon-lite");
+        icon.icon = this.courseicons[key];
+        icon.style.marginRight = "0.25em";
+        child.insertBefore(icon, child.firstChild);
+        evoicon.classList.remove("coursework");
+        evoicon.classList.remove(key);
+      });
+    });
+  }
+
+  convertImageLists(lists) {
+    lists.forEach((list) => {
+      let gallery = document.createElement("lrndesign-gallery"),
+        items = list.querySelectorAll("li");
+      gallery.layout = "grid";
+      gallery.accentColor = "light-blue";
+      items.forEach((item) => gallery.append(this.slotGallery(item)));
+      list.parentNode.insertBefore(gallery, list);
+      list.remove();
+    });
+  }
+
+  convertNewcolorboxes(cards) {
+    cards.forEach((box) => {
+      let card = document.createElement("accent-card");
+      card.noBorder = true;
+      card.flat = true;
+      this.replace(box, card, this.slotAccentCard);
+    });
+  }
+
+  convertPulltexts(cards) {
+    cards.forEach((box) => {
+      let card = document.createElement("accent-card");
+      card.accentColor = "light-blue";
+      card.horizontal = true;
+      this.replace(box, card, this.slotAccentCard);
+    });
+  }
+
+  convertSpeechbubbles(cards) {
+    cards.forEach((box) => {
+      let card = document.createElement("accent-card"),
+        afterBox = box.nextElementSibling;
+      card.accentColor = "light-blue";
+      card.horizontal = true;
+      this.replace(box, card, this.slotAccentCard);
+      if (afterBox.classList.contains("speechbubble-caption")) {
+        afterBox.slot = "content";
+        afterBox.style.fontSize = "85%";
+        afterBox.classList.remove("speechbubble-caption");
+        card.append(afterBox);
+        afterBox.style.textAlign = "right";
+      }
+    });
+  }
+
+  convertTabs(tabbed) {
+    import("@lrnwebcomponents/a11y-tabs/a11y-tabs.js");
+
+    tabbed.forEach((tabs) => {
+      let a11ytabs = document.createElement("a11y-tabs");
+      this.replace(tabs, a11ytabs, this.slotTabs.bind(this));
+    });
+  }
+
+  convertTablestyles(tablestyles) {
+    import("@lrnwebcomponents/editable-table/editable-table.js");
+
+    tablestyles.forEach((table) => {
+      let editable = document.createElement("editable-table");
+      editable.bordered =
+        table.classList.contains("dottedrows") ||
+        table.classList.contains("dottedcols") ||
+        table.classList.contains("linedrows") ||
+        table.classList.contains("linedcols");
+      editable.columnStriped = table.classList.contains("alternatecols");
+      editable.striped =
+        !editable.columnStriped && table.classList.contains("alternaterows");
+      table.parentElement.insertBefore(editable, table);
+      editable.append(table);
+      editable.loadSlottedTable();
+    });
+  }
+
+  convertThumbnails(images) {
+    images.forEach((image) => {
       let gallery = document.createElement("lrndesign-gallery"),
         src = image.src,
         thumb = src.match("_thumb.") ? src : undefined,
@@ -195,66 +351,33 @@ export class EvoToWc {
         parent.style.alignItems = "stretch";
       }
     });
-
-    target
-      .querySelectorAll(".dynamic-image-group,.wcslideplayer")
-      .forEach((group) => {
-        let gallery = document.createElement("lrndesign-gallery"),
-          items = group.querySelectorAll("figure");
-        gallery.layout = "carousel";
-        gallery.accentColor = "light-blue";
-        items.forEach((item) => gallery.append(this.gallerySlot(item)));
-        group.parentNode.insertBefore(gallery, group);
-        group.remove();
-      });
-    target.querySelectorAll(".clickable-list").forEach((list) => {
-      let gallery = document.createElement("lrndesign-gallery"),
-        items = list.querySelectorAll("li");
-      gallery.layout = "grid";
-      gallery.accentColor = "light-blue";
-      items.forEach((item) => gallery.append(this.gallerySlot(item)));
-      list.parentNode.insertBefore(gallery, list);
-      list.remove();
-    });
-    target.querySelectorAll(".newcolorbox").forEach((box) => {
-      let card = document.createElement("accent-card");
-      card.noBorder = true;
-      card.flat = true;
-      this.replace(box, card, this.accentCardSlot);
-    });
-    target.querySelectorAll(".colorbox").forEach((box) => {
-      let card = document.createElement("accent-card");
-      card.accentColor = "light-blue";
-      this.replace(box, card, this.accentCardSlot);
-    });
-    target.querySelectorAll(".pulltext").forEach((box) => {
-      let card = document.createElement("accent-card");
-      card.accentColor = "light-blue";
-      card.horizontal = true;
-      this.replace(box, card, this.accentCardSlot);
-    });
-    target.querySelectorAll(".yellownote").forEach((box) => {
+  }
+  convertYellownotes(cards) {
+    cards.forEach((box) => {
       let card = document.createElement("accent-card");
       card.accentColor = "yellow";
       card.accentBackground = true;
       card.noBorder = true;
-      this.replace(box, card, this.accentCardSlot);
-    });
-    target.querySelectorAll(".speechbubble").forEach((box) => {
-      let card = document.createElement("accent-card"),
-        afterBox = box.nextElementSibling;
-      card.accentColor = "light-blue";
-      card.horizontal = true;
-      this.replace(box, card, this.accentCardSlot);
-      if (afterBox.classList.contains("speechbubble-caption")) {
-        afterBox.slot = "content";
-        afterBox.style.fontSize = "85%";
-        afterBox.classList.remove("speechbubble-caption");
-        card.append(afterBox);
-        afterBox.style.textAlign = "right";
-      }
+      this.replace(box, card, this.slotAccentCard);
     });
   }
+
+  isHeading(el) {
+    return el && el.tagName && this.headings.includes(el.tagName.toLowerCase());
+  }
+
+  replace(oldElem, newElem, childrenCallback) {
+    oldElem.parentElement.insertBefore(newElem, oldElem);
+    let children = [...oldElem.childNodes];
+    children.forEach((child) => {
+      //console.log(newElem,children,child);
+      child = childrenCallback ? childrenCallback(child) : child;
+      if (child) newElem.append(child);
+    });
+    oldElem.remove();
+    return newElem;
+  }
+
   setSize(image, elem, type) {
     let amt = `${image[type]}`;
     if (amt) {
@@ -262,10 +385,40 @@ export class EvoToWc {
       elem.style[type] = amt;
     }
   }
-  isHeading(el) {
-    return el && el.tagName && this.headings.includes(el.tagName.toLowerCase());
+
+  slotAccentCard(child) {
+    if (child && child.tagName) {
+      if (this.isHeading(child)) {
+        child.slot = "heading";
+      } else {
+        child.slot = "content";
+      }
+    } else {
+      let span = document.createElement("span");
+      span.append(child);
+      span.slot = "content";
+      child = span;
+    }
+    return child;
   }
-  gallerySlot(item) {
+
+  slotChart(type, table) {
+    let newTable = document.createElement("table"),
+      chart = table.classList.contains(`${type}chart`)
+        ? document.createElement(`lrndesign-${type}`)
+        : undefined;
+    if (chart) {
+      chart.scale = "ct-octave";
+      [...table.childNodes].forEach((node) =>
+        newTable.append(node.cloneNode(true))
+      );
+      chart.append(newTable);
+      if (type !== "pie") chart.showGridBackground = true;
+      if (type === "line") chart.fullWidth = true;
+      table.parentNode.insertBefore(chart, table);
+    }
+  }
+  slotGallery(item) {
     let figure = document.createElement("figure"),
       figcaption = document.createElement("figcaption"),
       img =
@@ -293,7 +446,8 @@ export class EvoToWc {
     figure.append(figcaption);
     return figure;
   }
-  tabsSlot(tab) {
+
+  slotTabs(tab) {
     if (tab && tab.tagName) {
       let a11ytab = document.createElement("a11y-tab");
       a11ytab.id = tab.id;
@@ -312,32 +466,6 @@ export class EvoToWc {
       return a11ytab;
     }
     return false;
-  }
-  accentCardSlot(child) {
-    if (child && child.tagName) {
-      if (this.isHeading(child)) {
-        child.slot = "heading";
-      } else {
-        child.slot = "content";
-      }
-    } else {
-      let span = document.createElement("span");
-      span.append(child);
-      span.slot = "content";
-      child = span;
-    }
-    return child;
-  }
-  replace(oldElem, newElem, childrenCallback) {
-    oldElem.parentElement.insertBefore(newElem, oldElem);
-    let children = [...oldElem.childNodes];
-    children.forEach((child) => {
-      //console.log(newElem,children,child);
-      child = childrenCallback ? childrenCallback(child) : child;
-      if (child) newElem.append(child);
-    });
-    oldElem.remove();
-    return newElem;
   }
 }
 // register global bridge on window if needed
