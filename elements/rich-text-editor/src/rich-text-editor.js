@@ -63,7 +63,9 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
 
   connectedCallback() {
     super.connectedCallback();
-    this.register();
+    setTimeout(() => {
+      this.register();
+    }, 10);
   }
 
   /**

@@ -143,8 +143,25 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     }
   }
   /**
+   * closes the toolbar
+   *
+   * @param {object} toolbar
+   * @param {object} editor
+   * @memberof RichTextEditorSelection
+   */
+  closeToolbar(toolbar, editor) {
+    this.disableEditing(editor);
+    toolbar.editor = undefined;
+    document.body.append(toolbar);
+  }
+  /**
    * executes button command on current range
    *
+   * @param {string} command what to do
+   * @param {*} val value for command
+   * @param {object} range editor selection
+   * @param {object} toolbar toolbar object
+   * @memberof RichTextEditorSelection
    */
   execCommand(command, val, range, toolbar) {
     console.log(
@@ -156,7 +173,12 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       !range || range.cloneContents()
     );
     let editor = toolbar.editor;
-    if (range) {
+    if (command === "cancel") {
+      toolbar.editor.revert();
+      this.closeToolbar(toolbar, editor);
+    } else if (command === "close") {
+      this.closeToolbar(toolbar, editor);
+    } else if (range) {
       this.range = editor.range;
       this.updateRange(editor, range);
       this.selectRange(range, editor);
@@ -320,18 +342,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     }
     return editor.__connectedToolbar;
   }
-  /**
-   * selects and highlights a node
-   *
-   * @param {object} node
-   * @param {object} toolbar
-   * @returns {void}
-   * @memberof RichTextEditorSelection
-   */
-  highlightNode(node, toolbar) {
-    this.selectNode(node, toolbar.range, toolbar.editor);
-    this.highlight(toolbar);
-  }
 
   /**
    * adds or removes hightlight
@@ -341,7 +351,8 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    */
   highlight(toolbar, add = true, node) {
     this.toolbar = toolbar;
-    let editor = toolbar.editor;
+    let editor = toolbar ? toolbar.editor : undefined;
+    if (!editor) return;
     if (add !== false) {
       if (toolbar.range) {
         this.hidden = false;
@@ -366,6 +377,18 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         detail: add,
       })
     );
+  }
+  /**
+   * selects and highlights a node
+   *
+   * @param {object} node
+   * @param {object} toolbar
+   * @returns {void}
+   * @memberof RichTextEditorSelection
+   */
+  highlightNode(node, toolbar) {
+    this.selectNode(node, toolbar.range, toolbar.editor);
+    this.highlight(toolbar);
   }
   /**
    * gets clipboard data and pastes into an editor's range
