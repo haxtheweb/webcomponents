@@ -8,7 +8,7 @@ import {
   editableTableStyles,
 } from "./lib/editable-table-behaviors.js";
 import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
+import { RichTextEditorToolbarMini } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -211,6 +211,10 @@ class EditableTable extends displayBehaviors(LitElement) {
   }
   render() {
     return html`
+      <rich-text-editor-toolbar-mini
+        id="mini"
+        .config="${this.config}"
+      ></rich-text-editor-toolbar-mini>
       <editable-table-display
         aria-hidden="${this.editMode ? "true" : "false"}"
         ?bordered="${this.bordered}"
@@ -259,9 +263,9 @@ class EditableTable extends displayBehaviors(LitElement) {
                 id="caption"
                 label="Caption"
                 placeholder="Name your table by adding a caption here."
+                rawhtml="${this.caption}"
                 type="rich-text-editor-toolbar-mini"
               >
-                ${this.getHTML(this.caption)}
               </rich-text-editor>
             </caption>
             <thead>
@@ -327,9 +331,10 @@ class EditableTable extends displayBehaviors(LitElement) {
                             toolbar="mini"
                             id="cell-${tr}-${td}"
                             label="${this.label}"
+                            data-cell="${cell}"
+                            rawhtml="${cell}"
                             type="rich-text-editor-toolbar-mini"
                           >
-                            ${this.getHTML(cell)}
                           </rich-text-editor>
                           <div id="icons">
                             <simple-icon-lite
@@ -474,10 +479,6 @@ class EditableTable extends displayBehaviors(LitElement) {
         </div>
       </div>
       <div id="htmlImport" hidden><slot></slot></div>
-      <rich-text-editor-mini
-        id="mini"
-        config="${this.config}"
-      ></rich-text-editor-mini>
     `;
   }
 
@@ -518,15 +519,109 @@ class EditableTable extends displayBehaviors(LitElement) {
     this.hideSort = false;
     this.hideResponsive = false;
     this.hideStriped = false;
+    this.config = [
+      {
+        command: "close",
+        icon: "close",
+        label: "Close toolbar",
+        toggles: false,
+        type: "rich-text-editor-button",
+      },
+      {
+        label: "Basic Inline Operations",
+        type: "button-group",
+        buttons: [
+          {
+            command: "bold",
+            icon: "editor:format-bold",
+            label: "Bold",
+            toggles: true,
+            type: "rich-text-editor-button",
+          },
+          {
+            command: "italic",
+            icon: "editor:format-italic",
+            label: "Italics",
+            toggles: true,
+            type: "rich-text-editor-button",
+          },
+          {
+            collapsedUntil: "md",
+            command: "removeFormat",
+            icon: "editor:format-clear",
+            label: "Erase Format",
+            type: "rich-text-editor-button",
+          },
+        ],
+      },
+      {
+        label: "Links",
+        type: "button-group",
+        buttons: [
+          {
+            command: "link",
+            icon: "link",
+            label: "Link",
+            toggledCommand: "unlink",
+            toggledIcon: "mdextra:unlink",
+            toggledLabel: "Unink",
+            toggles: true,
+            type: "rich-text-editor-link",
+          },
+        ],
+      },
+      {
+        collapsedUntil: "md",
+        label: "Subscript and Superscript",
+        type: "button-group",
+        buttons: [
+          {
+            command: "subscript",
+            icon: "mdextra:subscript",
+            label: "Subscript",
+            toggles: true,
+            type: "rich-text-editor-button",
+          },
+          {
+            command: "superscript",
+            icon: "mdextra:superscript",
+            label: "Superscript",
+            toggles: true,
+            type: "rich-text-editor-button",
+          },
+        ],
+      },
+      {
+        collapsedUntil: "sm",
+        label: "Lists and Indents",
+        type: "button-group",
+        buttons: [
+          {
+            command: "insertOrderedList",
+            icon: "editor:format-list-numbered",
+            label: "Ordered List",
+            toggles: true,
+            type: "rich-text-editor-button",
+          },
+          {
+            command: "insertUnorderedList",
+            icon: "editor:format-list-bulleted",
+            label: "Unordered List",
+            toggles: true,
+            type: "rich-text-editor-button",
+          },
+        ],
+      },
+    ];
   }
   static get properties() {
     return {
       ...displayBehaviors.properties,
       /**
-       * Is table in edit-mode? Default is false (display mode).
+       * text editor config
        */
       config: {
-        type: Object,
+        type: Array,
       },
       /**
        * Is table in edit-mode? Default is false (display mode).
@@ -617,10 +712,10 @@ class EditableTable extends displayBehaviors(LitElement) {
    * @param {number} index index of column
    */
   deleteColumn(index) {
-    for (let i = 0; i < this.data.length; i++) {
-      this.splice("data." + i, index, 1);
+    let temp = [...this.data];
+    for (let i = 0; i < temp.length; i++) {
+      temp[i].splice(index, 1);
     }
-    let temp = this.data.slice();
     this.data = temp;
   }
 
@@ -629,8 +724,8 @@ class EditableTable extends displayBehaviors(LitElement) {
    * @param {number} index index of row
    */
   deleteRow(index) {
-    this.splice("data", index, 1);
-    let temp = this.data.slice();
+    let temp = [...this.data];
+    temp.splice(index, 1);
     this.data = temp;
   }
 
@@ -639,9 +734,9 @@ class EditableTable extends displayBehaviors(LitElement) {
    * @param {number} index index of column
    */
   insertColumn(index) {
-    let temp = this.data.slice();
+    let temp = [...this.data];
     for (let i = 0; i < temp.length; i++) {
-      temp[i].splice(index, 0, "");
+      temp[i].splice(index, 0, " ");
     }
     this.data = temp;
   }
@@ -651,10 +746,10 @@ class EditableTable extends displayBehaviors(LitElement) {
    * @param {number} index index of row
    */
   insertRow(index) {
-    let temp = this.data.slice(),
+    let temp = [...this.data],
       temp2 = new Array();
     for (let i = 0; i < temp[0].length; i++) {
-      temp2.push("");
+      temp2.push(" ");
     }
     temp.splice(index + 1, 0, temp2);
     this.data = temp;
@@ -764,6 +859,7 @@ class EditableTable extends displayBehaviors(LitElement) {
   _onCellValueChange(e, row, col) {
     let temp = this.data.slice();
     temp[row][col] = e.detail;
+    this.data = [];
     this.data = temp;
   }
 
@@ -772,15 +868,14 @@ class EditableTable extends displayBehaviors(LitElement) {
    * @param {event} e event
    */
   _onTableSettingChange(e) {
-    console.log("striped", this.striped, "col", this.columnStriped);
     this[e.detail.id] = e.detail.toggled;
   }
 
   /**
    * Makes sure there is always on cell to work from
    */
-  _setMinimumData(data) {
-    if (data.length < 1 || data[0].length < 1) {
+  _dataChanged(data, oldData) {
+    if ((data && data.length < 1) || data[0].length < 1) {
       this.data = [
         ["", "", ""],
         ["", "", ""],

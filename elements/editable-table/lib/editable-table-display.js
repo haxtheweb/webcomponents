@@ -107,7 +107,7 @@ class EditableTableDisplay extends displayBehaviors(
       >
         <caption>
           <div>
-            ${this.getHTML(this.caption)}
+            <div>${this.getHTML(this.caption)}</div>
             <simple-picker
               id="column"
               align-right
@@ -304,9 +304,12 @@ class EditableTableDisplay extends displayBehaviors(
    * @memberof EditableTableDisplay
    */
   get options() {
-    return (this.thead || []).map((th, i) => {
-      return [{ alt: th, value: i }];
-    });
+    let head = this.thead || [[]],
+      cols = (head[0] || []).map((th, i) => {
+        return [{ alt: th, value: i }];
+      });
+    console.log(this.thead, cols);
+    return cols;
   }
 
   /**

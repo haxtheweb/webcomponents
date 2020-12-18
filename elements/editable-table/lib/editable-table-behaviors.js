@@ -66,6 +66,7 @@ export const displayBehaviors = function (SuperClass) {
         data: {
           type: Array,
           notify: true,
+          attribute: "data",
         },
         /**
          * Location of CSV file.
@@ -268,7 +269,7 @@ export const displayBehaviors = function (SuperClass) {
      * @param {string} str html as string
      * @returns {html}
      */
-    getHTML(str) {
+    getHTML(str = " ") {
       this.__tempDiv = this.__tempDiv || document.createElement("template");
       this.__tempDiv.innerHTML = str;
       let temp = this.__tempDiv.content.cloneNode(true);
@@ -376,8 +377,8 @@ export const displayBehaviors = function (SuperClass) {
      * @param {HTMLElement} table table element
      */
     importHTML(table) {
-      let data = [].slice.call(table.querySelectorAll("tr")).map((row) => {
-        return [].slice.call(row.querySelectorAll("th,td")).map((cell) => {
+      let data = [...table.querySelectorAll("tr")].map((row) => {
+        return [...row.querySelectorAll("th,td")].map((cell) => {
           return typeof cell.innerHTML === "string"
             ? cell.innerHTML.trim()
             : cell.innerHTML;
@@ -393,6 +394,7 @@ export const displayBehaviors = function (SuperClass) {
         table.querySelectorAll("caption").length > 0
           ? table.querySelector("caption").innerHTML.trim()
           : undefined;
+      console.log("importHTML", table, this.data);
     }
 
     /**
@@ -401,6 +403,7 @@ export const displayBehaviors = function (SuperClass) {
      * @memberof EditableTable
      */
     loadSlottedTable() {
+      console.log("loadSlottedTable");
       let table = this.children.item(0);
       // support wrapping editable-table-display tag or primative
       if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {
@@ -422,12 +425,12 @@ export const displayBehaviors = function (SuperClass) {
      * @param {event} event
      */
     _dataChanged(newValue, oldValue) {
-      if (
+      /*if (
         this.__ready &&
         (!newValue || newValue.length < 1 || newValue[0].length < 1)
       ) {
         this.loadSlottedTable();
-      }
+      }*/
     }
 
     /**
