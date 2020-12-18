@@ -83,7 +83,7 @@ class LrnTable extends SchemaBehaviors(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "CSV table",
         description:

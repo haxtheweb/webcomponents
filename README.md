@@ -1,6 +1,5 @@
 # lrnwebcomponents
-[![Published on npm](https://img.shields.io/npm/v/@lrnwebcomponents/lrnwebcomponents.svg?style=flat)](https://www.npmjs.com/package/@lrnwebcomponents/lrnwebcomponents)
-[![Build Status](https://travis-ci.org/elmsln/lrnwebcomponents.svg?branch=master)](https://travis-ci.org/elmsln/lrnwebcomponents)
+[![Published on npm](https://img.shields.io/npm/v/@lrnwebcomponents/h-a-x?style=flat)](https://www.npmjs.com/search?q=%40lrnwebcomponents)
 [![build](https://github.com/elmsln/lrnwebcomponents/workflows/build/badge.svg?branch=master)](https://github.com/elmsln/lrnwebcomponents/actions?query=branch%3Amaster)
 [![Dependency Status](https://img.shields.io/david/elmsln/lrnwebcomponents.svg?style=flat)](https://david-dm.org/elmsln/lrnwebcomponents)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/author/elmsln)

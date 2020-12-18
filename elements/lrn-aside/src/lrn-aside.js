@@ -81,7 +81,7 @@ class LrnAside extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Sticky note",
         description:

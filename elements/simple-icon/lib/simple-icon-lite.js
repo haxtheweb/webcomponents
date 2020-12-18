@@ -146,10 +146,6 @@ class SimpleIconLite extends SimpleIconBehaviors(LitElement) {
   static get tag() {
     return "simple-icon-lite";
   }
-  constructor() {
-    super();
-    window.SimpleIconset.requestAvailability();
-  }
 }
 customElements.define(SimpleIconLite.tag, SimpleIconLite);
 export { SimpleIconLite };

@@ -133,10 +133,39 @@ class MemeMaker extends LitElement {
     };
   }
   /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+      progressiveEnhancement: "haxprogressiveEnhancement",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    let figures = this.shadowRoot.querySelectorAll("figcaption");
+    if (val) {
+      for (var i = 0; i < figures.length; i++) {
+        figures[i].setAttribute("contenteditable", true);
+      }
+    } else {
+      for (var i = 0; i < figures.length; i++) {
+        figures[i].removeAttribute("contenteditable");
+      }
+      // easy, name is flat
+      this.topText = this.shadowRoot.querySelector(".top-text").innerText;
+      this.bottomText = this.shadowRoot.querySelector(".bottom-text").innerText;
+    }
+    return false;
+  }
+  /**
    * Hook for HAX to support progressive enhancement and return a string
    * to place in the slot of this tag for RSS, bots and legacy formats
    */
-  haxProgressiveEnhancement() {
+  haxprogressiveEnhancement(el) {
     return `
     ${this.topText ? `<div>${this.topText}</div>` : ""}
       <img src="${this.imageUrl}" alt="${
@@ -151,7 +180,7 @@ class MemeMaker extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Meme",
         description: "Make a meme out of an image",

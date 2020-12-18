@@ -16,6 +16,16 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "./lib/editable-table-editor-rowcol.js";
 import "./lib/editable-table-editor-toggle.js";
 import "./lib/editable-table-display.js";
+import { ReplaceWithPolyfill } from "@lrnwebcomponents/utils/utils.js";
+if (!Element.prototype.replaceWith) {
+  Element.prototype.replaceWith = ReplaceWithPolyfill;
+}
+if (!CharacterData.prototype.replaceWith) {
+  CharacterData.prototype.replaceWith = ReplaceWithPolyfill;
+}
+if (!DocumentType.prototype.replaceWith) {
+  DocumentType.prototype.replaceWith = ReplaceWithPolyfill;
+}
 
 /**
  * `editable-table`

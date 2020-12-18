@@ -1,7 +1,7 @@
 {
   "canScale": true,
   "canPosition": true,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Relative heading",
     "description": "outputs the correct heading hierarchy based on parent's heading",

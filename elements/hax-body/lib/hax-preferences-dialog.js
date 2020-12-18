@@ -40,7 +40,7 @@ class HaxPreferencesDialog extends LitElement {
           text-align: left;
           padding: 16px;
         }
-        #reportghissue {
+        #link {
           color: #81a3a9;
           font-size: 18px;
           padding: 16px;
@@ -51,20 +51,10 @@ class HaxPreferencesDialog extends LitElement {
   }
   constructor() {
     super();
-    this.ghLink =
-      "https://github.com/elmsln/issues/issues/new?body=URL%20base:%20" +
-      window.location.pathname +
-      "&title=[hax] Bug%20report%20from%20preference%20panel";
+    this.hideLink = false;
     this.title = "Advanced settings";
     // JSON schema object needs delayed to ensure page repaints the form
     this.schema = [
-      {
-        property: "haxRayMode",
-        title: "X-Ray vision",
-        description: "Visualizes the HTML tag powering the area of the page",
-        inputMethod: "boolean",
-        value: false,
-      },
       {
         property: "haxVoiceCommands",
         title: "Voice commands",
@@ -74,7 +64,6 @@ class HaxPreferencesDialog extends LitElement {
       },
     ];
     this.schemaValues = {
-      haxRayMode: false,
       haxVoiceCommands: false,
     };
     autorun(() => {
@@ -96,9 +85,15 @@ class HaxPreferencesDialog extends LitElement {
         >
         </simple-fields>
       </div>
-      <a href="${this.ghLink}" rel="noopener" id="reportghissue" target="_blank"
-        >Report an issue with HAX</a
-      >
+      ${!this.hideLink
+        ? html`<a
+            href="https://haxtheweb.org/"
+            rel="noopener"
+            id="link"
+            target="_blank"
+            >Learn more about HAX</a
+          >`
+        : ``}
     `;
   }
   static get tag() {
@@ -107,10 +102,10 @@ class HaxPreferencesDialog extends LitElement {
   static get properties() {
     return {
       /**
-       * github link
+       * Developer prop to hide the link
        */
-      ghLink: {
-        type: String,
+      hideLink: {
+        type: Boolean,
       },
       /**
        * Title.

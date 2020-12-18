@@ -21,7 +21,7 @@ class LrndesignSidenote extends SimpleColors {
     return {
       canScale: false,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Side-Note",
         description: "A .",

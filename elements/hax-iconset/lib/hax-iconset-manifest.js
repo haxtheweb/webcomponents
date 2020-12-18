@@ -1,5 +1,4 @@
 export const HaxIconsetManifest = [
-  null,
   {
     name: "courseicons",
     icons: [

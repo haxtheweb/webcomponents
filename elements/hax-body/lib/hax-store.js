@@ -17,7 +17,7 @@ import {
   autorun,
   toJS,
 } from "mobx";
-configure({ enforceActions: false }); // strict mode off
+configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
  * @element hax-store
@@ -50,10 +50,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       if (this.activeHaxBody.parentNode.getSelection) {
         return this.activeHaxBody.parentNode.getSelection();
       }
-      // ponyfill from google
-      else if (getRange(this.activeHaxBody.parentNode)) {
-        return getRange(this.activeHaxBody.parentNode);
-      }
+      // this could fail depending on polyfills and stuff
+      try {
+        // ponyfill from google
+        if (getRange(this.activeHaxBody.parentNode)) {
+          return getRange(this.activeHaxBody.parentNode);
+        }
+      } catch (e) {}
     }
     // missed on both, hope the normal one will work
     return window.getSelection();
@@ -290,17 +293,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * LitElement render
    */
   render() {
-    return html`
-      <slot></slot>
-      <hal-9000
-        id="hal"
-        .responds-to="${this.voiceRespondsTo}"
-        .debug="${this.voiceDebug}"
-      ></hal-9000>
-    `;
-  }
-  __appStoreDataChanged(e) {
-    this.__appStoreData = e;
+    return html` <slot></slot> `;
   }
   /**
    * convention
@@ -389,12 +382,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object,
       },
       /**
-       * The hax-body that is currently active.
-       */
-      activeHaxBody: {
-        type: Object,
-      },
-      /**
        * Possible appStore endpoint for loading in things dynamically.
        */
       appStore: {
@@ -427,12 +414,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Array,
       },
       /**
-       * Available hax blox which are grid plate / layout elements
-       */
-      bloxList: {
-        type: Array,
-      },
-      /**
        * Valid tag list, tag only and including primatives for a baseline.
        */
       validTagList: {
@@ -462,7 +443,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       __appStoreData: {
         type: Object,
       },
-      __ready: {
+      ready: {
         type: Boolean,
       },
       /**
@@ -555,15 +536,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   _appStoreChanged(newValue, oldValue) {
     // if we have an endpoint defined, pull it
-    if (
-      typeof newValue !== typeof undefined &&
-      newValue != null &&
-      typeof oldValue !== typeof undefined
-    ) {
+    if (newValue && oldValue) {
       // support having the request or remote loading
       // depending on the integration type
-      if (typeof newValue.apps === typeof undefined && this.shadowRoot) {
-        this.loadAppStore();
+      if (newValue.url && !newValue.apps && this.shadowRoot) {
+        this.loadAppStoreFromRemote();
       } else {
         // directly injected json object into the DOM
         this.__appStoreData = newValue;
@@ -619,15 +596,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.appendChild(stax);
         }
       }
-      // load in blox dynamically
-      if (typeof appDataResponse.blox !== typeof undefined) {
-        var bloxs = appDataResponse.blox;
-        for (var i = 0; i < bloxs.length; i++) {
-          let blox = document.createElement("hax-blox");
-          blox.data = bloxs[i];
-          this.appendChild(blox);
-        }
-      }
       this.dispatchEvent(
         new CustomEvent("hax-store-app-store-loaded", {
           bubbles: true,
@@ -638,6 +606,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       );
       // now process the dynamic imports
       this._handleDynamicImports(items, this.haxAutoloader);
+      this.__appStoreHasLoaded = true;
     }
   }
   // simple path from a url modifier
@@ -697,6 +666,16 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this.__hal.auto = false;
       }
     }
+    // trap for very slow loading environments that might miss on initial setup timing
+    if (
+      newValue &&
+      !this.__appStoreHasLoaded &&
+      this.__appStoreData &&
+      this.haxAutoloader
+    ) {
+      clearTimeout(this.__readyToProcessAppStoreData);
+      this._loadAppStoreData(this.__appStoreData);
+    }
   }
   _globalPreferencesChanged(newValue) {
     // regardless of what it is, reflect it globally but only after setup
@@ -710,10 +689,32 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       storageData.globalPreferences = newValue;
       this.storageData = storageData;
       this._storageDataChanged(this.storageData);
-      if (newValue.haxVoiceCommands && this.editMode && this.__hal) {
-        this.__hal.auto = true;
-      } else {
-        this.__hal.auto = false;
+      // import voice command stuff in the background if used selects it
+      // this is experimental / aggressive import of tech so defer to
+      // if they activate it
+      if (newValue.haxVoiceCommands && !this.__hal) {
+        // @todo only activate if the setting to use it is in place
+        import("@lrnwebcomponents/hal-9000/hal-9000.js").then((esModule) => {
+          // initialize voice commands
+          this._initVoiceCommands();
+          // inject tag into shadowRoot after we import the definition
+          this.__hal = document.createElement("hal-9000");
+          this.__hal.respondsTo = this.voiceRespondsTo;
+          this.__hal.debug = this.voiceDebug;
+          this.__hal.auto = true;
+          this.shadowRoot.appendChild(this.__hal);
+          // establish the initial commands, even if they were captured
+          // prior to usage since we held onto them in this variable
+          this.__hal.commands = { ...this.voiceCommands };
+        });
+      }
+      // only mess w/ hal if enabled
+      if (this.__hal) {
+        if (newValue.haxVoiceCommands && this.editMode) {
+          this.__hal.auto = true;
+        } else {
+          this.__hal.auto = false;
+        }
       }
     }
   }
@@ -756,7 +757,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           break;
       }
       if (changed) {
-        setTimeout(() => {
+        clearTimeout(this.__repositionMenu);
+        this.__repositionMenu = setTimeout(() => {
           this.activeHaxBody.positionContextMenus();
         }, 0);
       }
@@ -779,16 +781,20 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "appStore") {
+      if (propName == "appStore" && this[propName]) {
         this._appStoreChanged(this[propName], oldValue);
       }
       // composite obervation
       if (
-        ["__ready", "__appStoreData", "haxAutoloader"].includes(propName) &&
-        this.__ready &&
-        this.__appStoreData
+        ["ready", "__appStoreData", "haxAutoloader"].includes(propName) &&
+        this.ready &&
+        this.__appStoreData &&
+        this.haxAutoloader
       ) {
-        this._loadAppStoreData(this.__appStoreData);
+        clearTimeout(this.__readyToProcessAppStoreData);
+        this.__readyToProcessAppStoreData = setTimeout(() => {
+          this._loadAppStoreData(this.__appStoreData);
+        }, 0);
       }
       if (["haxAutoloader", "activeHaxBody", "haxTray"].includes(propName)) {
         // allow this to verify if everything is here or not
@@ -818,7 +824,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   /**
    * generate appstore query
    */
-  loadAppStore() {
+  loadAppStoreFromRemote() {
     const searchParams = new URLSearchParams(this.appStore.params);
     let url = this.appStore.url;
     if (searchParams) {
@@ -831,7 +837,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         if (response.ok) return response.json();
       })
       .then((json) => {
-        this.__appStoreDataChanged(json);
+        this.__appStoreData = json;
       });
   }
   /**
@@ -841,24 +847,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // import voice command stuff in the background
-    // @todo only activate if the setting to use it is in place
-    import("@lrnwebcomponents/hal-9000/hal-9000.js").then((esModule) => {
-      this.__hal = this.shadowRoot.querySelector("#hal");
-    });
-    // set this global flag so we know it's safe to start trusting data
-    // that is written to global preferences / storage bin
-    setTimeout(() => {
-      this.__storageDataProcessed = true;
-      if (this.storageData.globalPreferences) {
-        this.write(
-          "globalPreferences",
-          this.storageData.globalPreferences,
-          this
-        );
-      }
-    }, 100);
-
     // see if a global was used to prevent this check
     // this is useful when in trusted environments where the statement
     // has been consented to in the application this is utilized in
@@ -906,15 +894,21 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         } catch (e) {}
       }
     }
+    // set this global flag so we know it's safe to start trusting data
+    // that is written to global preferences / storage bin
+    setTimeout(() => {
+      this.__storageDataProcessed = true;
+      if (this.storageData.globalPreferences) {
+        this.write(
+          "globalPreferences",
+          this.storageData.globalPreferences,
+          this
+        );
+      }
+    }, 0);
   }
   _storePiecesAllHere(haxAutoloader, activeHaxBody, haxTray, haxExport) {
-    if (
-      !this.__ready &&
-      activeHaxBody &&
-      haxAutoloader &&
-      haxTray &&
-      haxExport
-    ) {
+    if (!this.ready && activeHaxBody && haxAutoloader && haxTray && haxExport) {
       // send that hax store is ready to go so now we can setup the rest
       this.dispatchEvent(
         new CustomEvent("hax-store-ready", {
@@ -924,17 +918,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           detail: true,
         })
       );
-      this.ready = true;
       // associate the export button in the tray to the dialog
       HAXStore.haxExport.shadowRoot
         .querySelector("#dialog")
         .associateEvents(haxTray.shadowRoot.querySelector("#exportbtn"));
-      this.__ready = true;
+      this.ready = true;
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
-      // initialize voice commands
-      this._initVoiceCommands();
-      this.__hal.commands = { ...this.voiceCommands };
     }
   }
   /**
@@ -1554,13 +1544,20 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       paste: "_onPaste",
       "hax-register-app": "_haxStoreRegisterApp",
       "hax-register-stax": "_haxStoreRegisterStax",
-      "hax-register-blox": "_haxStoreRegisterBlox",
       "hax-store-write": "_writeHaxStore",
       "hax-register-core-piece": "_haxStorePieceRegistrationManager",
       "hax-register-body": "_haxStoreRegisterBody",
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-add-voice-command": "_addVoiceCommand",
+    };
+    // prevent leaving if we are in editMode
+    window.onbeforeunload = (e) => {
+      if (this.editMode) {
+        var saving = "Changes you made may not be saved.";
+        e.returnValue = saving;
+        return saving;
+      }
     };
     // establish the tour
     SimpleTourManager.registerNewTour({
@@ -1595,6 +1592,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       params: {},
     };
     this.activeNode = null;
+    this.activeEditingElement = null;
     this.haxBodies = [];
     this.activePlaceHolder = null;
     this.sessionObject = {};
@@ -1603,20 +1601,33 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.elementList = {};
     this.appList = [];
     this.gizmoList = [];
+    this.activeHaxBody = null;
     this.staxList = [];
-    this.bloxList = [];
     this.globalPreferences = {};
     this.activeApp = {};
     this.connectionRewrites = {};
     // change this in order to debug voice commands
     this.voiceDebug = false;
+    // keyboard shortcuts, implementing haxHook: gizmoRegistration can ovewrite these as needed
+    this.keyboardShortcuts = {
+      "#": { tag: "h2", content: "" },
+      "##": { tag: "h3", content: "" },
+      "###": { tag: "h4", content: "" },
+      "####": { tag: "h5", content: "" },
+      "#####": { tag: "h6", content: "" },
+      "-": { tag: "ul", content: "<li></li>" },
+      "1.": { tag: "ol", content: "<li></li>" },
+      "---": { tag: "hr" },
+      "```": { tag: "code", content: "" },
+      ">": { tag: "blockquote", content: "" },
+    };
     this.validTagList = this.__validTags();
     this.validGridTagList = this.__validGridTags();
     this.validGizmoTypes = this.__validGizmoTypes();
     // test for sandboxed env
     let test = document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
-    // imports app, blox, stax definitions
+    // imports app, stax definitions
     import("./hax-app.js");
     import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
       window.SimpleToast.requestAvailability();
@@ -1634,6 +1645,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       appList: observable,
       activeApp: observable,
       haxSelectedText: observable,
+      activeEditingElement: observable,
+      activeHaxBody: observable,
     });
     autorun(() => {
       this._globalPreferencesChanged(toJS(this.globalPreferences));
@@ -1655,7 +1668,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         editingElement: "core",
         canScale: true,
         canPosition: true,
-        canEditSource: false,
+        canEditSource: true,
         settings: {
           configure: [
             {
@@ -1830,6 +1843,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       canScale: false,
       canPosition: false,
       canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Basic link",
         description: "A basic a tag",
@@ -1896,9 +1910,17 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     let p = {
       type: "element",
       editingElement: "core",
+      // comment back in when ready to keep cleaning up shadowRoot resolution of focus
+      /*editingElement: {
+        tag: "simple-autocomplete-text-trigger",
+        import:
+          "@lrnwebcomponents/simple-autocomplete/lib/simple-autocomplete-text-trigger.js",
+        callback: this.setupAutocomplete.bind(this),
+      },*/
       canScale: false,
       canPosition: false,
       canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Paragraph",
         description: "A basic text area",
@@ -2080,6 +2102,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           canScale: false,
           canPosition: false,
           canEditSource: true,
+          contentEditable: true,
           gizmo: {
             title: prims[tag].title,
             icon: prims[tag].icon,
@@ -2111,6 +2134,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       editingElement: "core",
       canPosition: false,
       canEditSource: false,
+      contentEditable: true,
       gizmo: {
         title: "Horizontal line",
         icon: "hax:hr",
@@ -2149,6 +2173,26 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
 
+  /**
+   * set up the autocomplete contextual settings
+   */
+  setupAutocomplete(editor) {
+    editor.triggers = {
+      "!": (el) => {
+        let triggers = [];
+        this.gizmoList.forEach((item) => {
+          triggers.push({
+            groups:
+              item.groups && item.groups.length ? item.groups.join(" ") : "",
+            icon: item.icon,
+            label: item.title,
+            value: item.tag,
+          });
+        });
+        return triggers;
+      },
+    };
+  }
   /**
    * Insert content in the body.
    */
@@ -2396,24 +2440,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       e.detail.index = this.staxList.length;
       this.staxList = [...this.staxList, e.detail];
       this.write("staxList", this.staxList, this);
-      // we don't care about this after it's launched
-      if (
-        typeof e.target.parentElement !== typeof undefined &&
-        e.target.parentElement.tagName === "HAX-STORE"
-      ) {
-        e.target.parentElement.removeChild(e.target);
-      }
-    }
-  }
-
-  /**
-   * Notice that a blox was set in HAX; register it
-   */
-  _haxStoreRegisterBlox(e) {
-    if (e.detail) {
-      e.detail.index = this.bloxList.length;
-      this.bloxList = [...this.bloxList, e.detail];
-      this.write("bloxList", this.bloxList, this);
       // we don't care about this after it's launched
       if (
         typeof e.target.parentElement !== typeof undefined &&
@@ -2690,9 +2716,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         }
       }
     }
-    // optional support for intentional progressive enhancement
-    if (typeof node.haxProgressiveEnhancement === "function") {
-      content += node.haxProgressiveEnhancement();
+    // @see haxHooks: progressiveEnhancement
+    if (this.testHook(node, "progressiveEnhancement")) {
+      content += this.runHook(node, "progressiveEnhancement", [node]);
     }
     // don't put return for span since it's an inline tag
     if (tag === "span") {
@@ -2856,6 +2882,21 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           gizmos.push(gizmo);
           this.gizmoList = [...gizmos];
           this.write("gizmoList", gizmos, this);
+          // haxHook: gizmoRegistration - allow elements to define their own
+          // custom functionality to run when a gizmo is registered
+          if (
+            window.customElements.get(gizmo.tag) &&
+            this.testHook(
+              document.createElement(gizmo.tag),
+              "gizmoRegistration"
+            )
+          ) {
+            this.runHook(
+              document.createElement(gizmo.tag),
+              "gizmoRegistration",
+              [this]
+            );
+          }
         }
         this.elementList[e.detail.tag] = e.detail.properties;
         // only push new values on if we got something new

@@ -7,6 +7,10 @@
       "description": "`simple-cta`\n`Simple call to action button`",
       "attributes": [
         {
+          "name": "editMode",
+          "type": "boolean"
+        },
+        {
           "name": "link",
           "type": "string",
           "default": "\"#\""
@@ -29,6 +33,11 @@
         }
       ],
       "properties": [
+        {
+          "name": "editMode",
+          "attribute": "editMode",
+          "type": "boolean"
+        },
         {
           "name": "link",
           "attribute": "link",

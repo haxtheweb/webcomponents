@@ -59,7 +59,7 @@ class HaxCeContext extends LitElement {
   }
   render() {
     return html`
-      <hax-toolbar hide-more>
+      <hax-toolbar>
         <hax-context-item
           mini
           action
@@ -84,6 +84,31 @@ class HaxCeContext extends LitElement {
         <div slot="primary">
           <slot></slot>
         </div>
+        <hax-context-item
+          mini
+          action
+          slot="primary"
+          icon="icons:code"
+          label="Modify HTML source"
+          ?disabled="${!this.sourceView}"
+          event-name="hax-source-view-toggle"
+        ></hax-context-item>
+        <hax-context-item-textop
+          action
+          menu
+          slot="more"
+          icon="hardware:keyboard-arrow-up"
+          event-name="insert-above-active"
+          >Insert item above</hax-context-item-textop
+        >
+        <hax-context-item-textop
+          action
+          menu
+          slot="more"
+          icon="hardware:keyboard-arrow-down"
+          event-name="insert-below-active"
+          >Insert item below</hax-context-item-textop
+        >
       </hax-toolbar>
     `;
   }
@@ -100,6 +125,9 @@ class HaxCeContext extends LitElement {
         type: Boolean,
         attribute: "on-screen",
         reflect: true,
+      },
+      sourceView: {
+        type: Boolean,
       },
       activeTagIcon: {
         type: String,
@@ -149,20 +177,16 @@ class HaxCeContext extends LitElement {
     // reset buttons in-case this element has new ones
     this.ceButtons = [];
     if (HAXStore.activeHaxBody && this.activeNode != null) {
+      let schema = HAXStore.haxSchemaFromTag(this.activeNode.tagName);
+      this.sourceView = schema.canEditSource;
       if (!HAXStore.isTextElement(this.activeNode)) {
-        if (this.activeNode.tagName == "GRID-PLATE") {
-          this.disableTransform = true;
-          this.activeTagName = "Grid";
-          this.activeTagIcon = "hax:3-3-3-3";
-        } else {
-          // detect if this can be transformed into anything else
-          this.disableTransform = !HAXStore.activeHaxBody.canTansformNode(
-            this.activeNode
-          );
-          if (HAXStore.activeGizmo) {
-            this.activeTagName = HAXStore.activeGizmo.title;
-            this.activeTagIcon = HAXStore.activeGizmo.icon;
-          }
+        // detect if this can be transformed into anything else
+        this.disableTransform = !HAXStore.activeHaxBody.canTansformNode(
+          this.activeNode
+        );
+        if (HAXStore.activeGizmo) {
+          this.activeTagName = HAXStore.activeGizmo.title;
+          this.activeTagIcon = HAXStore.activeGizmo.icon;
         }
       }
     } else {

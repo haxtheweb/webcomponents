@@ -131,10 +131,20 @@ class SimpleModal extends LitElement {
         }
         web-dialog {
           --dialog-border-radius: var(--simple-modal-border-radius, 2px);
+          z-index: var(--simple-modal-z-index, 1) !important;
         }
         web-dialog::part(dialog) {
           border: 1px solid var(--simple-modal-border-color, #222);
           padding: 0;
+        }
+        web-dialog.style-scope.simple-modal {
+          display: none !important;
+        }
+        web-dialog[open].style-scope.simple-modal {
+          display: flex !important;
+          position: fixed !important;
+          top: 25vh;
+          left: 25vw;
         }
       `,
     ];
@@ -388,9 +398,31 @@ class SimpleModal extends LitElement {
    */
   close() {
     this.opened = false;
+    if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
+      this.shadowRoot
+        .querySelector("web-dialog")
+        .shadowRoot.querySelector("#backdrop").style.position = "relative";
+    }
   }
   open() {
     this.opened = true;
+    if (window.ShadyCSS && !window.ShadyCSS.nativeShadow) {
+      this.shadowRoot
+        .querySelector("web-dialog")
+        .shadowRoot.querySelector("#backdrop").style.position = "fixed";
+      this.shadowRoot
+        .querySelector("web-dialog")
+        .shadowRoot.querySelector("#backdrop").style.top = 0;
+      this.shadowRoot
+        .querySelector("web-dialog")
+        .shadowRoot.querySelector("#backdrop").style.bottom = 0;
+      this.shadowRoot
+        .querySelector("web-dialog")
+        .shadowRoot.querySelector("#backdrop").style.left = 0;
+      this.shadowRoot
+        .querySelector("web-dialog")
+        .shadowRoot.querySelector("#backdrop").style.right = 0;
+    }
   }
   // Observer opened for changes
   _openedChanged(newValue) {

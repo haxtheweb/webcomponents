@@ -36,14 +36,26 @@ class PortalLauncher extends HTMLElement {
       });
     }
   }
+  normalizeEventPath(e) {
+    if (e.composed && e.composedPath) {
+      return e.composedPath();
+    } else if (e.path) {
+      return e.path;
+    } else if (e.originalTarget) {
+      return [e.originalTarget];
+    } else {
+      return [e.target];
+    }
+  }
   /**
    * Basic feature detecting event handler
    */
   click(e) {
     let target = e.target;
+    var eventPath = this.normalizeEventPath(e);
     // support walking the path in order to find the link clicked
     if (target.tagName !== "A") {
-      e.path.forEach((item) => {
+      eventPath.forEach((item) => {
         if (item.tagName === "A") {
           target = item;
         }
@@ -105,7 +117,7 @@ class PortalLauncher extends HTMLElement {
             portal.activate();
           }
         });
-        document.body.append(style, portal);
+        document.body.appendChild(style, portal);
         // Waiting for the page to load.
         // using setTimeout is a suboptimal way and it's best to fade-in
         // when receiving a load complete message from the portal via postMessage

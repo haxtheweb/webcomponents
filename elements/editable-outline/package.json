@@ -44,6 +44,7 @@
     "@lrnwebcomponents/json-outline-schema": "^2.8.0",
     "@lrnwebcomponents/simple-icon": "^2.8.0",
     "@polymer/iron-a11y-keys": "^3.0.1",
+    "@lrnwebcomponents/utils": "^2.8.0",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

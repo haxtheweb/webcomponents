@@ -26,11 +26,11 @@ class HaxAppSearchInputs extends LitElement {
           display: block;
         }
         simple-fields {
-          color: var(--hax-color-text);
+          color: var(--hax-color-text, #000000);
         }
         .search-label {
           font-size: 24px;
-          color: var(--hax-color-text);
+          color: var(--hax-color-text, #000000);
           font-weight: bold;
           margin: 0;
           padding: 0;

@@ -233,7 +233,7 @@ class CMSEntity extends PolymerElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "CMS Entity",
         description: "CMS entity rendered on the backend",

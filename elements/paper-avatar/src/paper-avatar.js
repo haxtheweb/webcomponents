@@ -107,7 +107,7 @@ class PaperAvatar extends LitElement {
           fill: var(--paper-avatar-text-color, #ffffff);
           opacity: 0.8;
         }
-        ::slotted(*) {
+        :host #jdenticon ::slotted(*) {
           fill: var(--paper-avatar-text-color, #ffffff);
           opacity: 0.8;
         }

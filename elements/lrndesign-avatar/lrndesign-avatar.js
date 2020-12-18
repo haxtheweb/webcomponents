@@ -77,7 +77,7 @@ class LrndesignAvatar extends SimpleColors {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Avatar",
         description:

@@ -108,14 +108,20 @@ class LunrSearch extends LitElement {
     window.ESGlobalBridge.instance.load("lunr", location);
     if (
       window.ESGlobalBridge.imports &&
-      window.ESGlobalBridge.imports["lunr"]
+      window.ESGlobalBridge.imports["lunr"] === true
     ) {
-      this.__lunrLoaded = true;
+      setTimeout(() => {
+        this.__lunrLoaded = true;
+      }, 0);
     }
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (["dataSource", "__auto", "method"].includes(propName)) {
+      if (
+        ["dataSource", "__auto", "method"].includes(propName) &&
+        this.dataSource &&
+        this.method
+      ) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
           fetch(this.dataSource, {
@@ -182,6 +188,10 @@ class LunrSearch extends LitElement {
   _lunrLoaded(e) {
     // callback when loaded
     this.__lunrLoaded = true;
+    window.removeEventListener(
+      "es-bridge-lunr-loaded",
+      this._lunrLoaded.bind(this)
+    );
   }
   /**
    * Store the tag name to make it easier to obtain directly.

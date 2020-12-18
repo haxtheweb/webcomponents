@@ -23,12 +23,15 @@ class SiteTitle extends LitElement {
           display: block;
           text-rendering: optimizelegibility;
           position: relative;
+          color: inherit;
         }
         a {
+          color: inherit;
           display: var(--site-title-link-display, block);
           text-decoration: var(--site-title-link-text-decoration);
         }
         a h1 {
+          color: inherit;
           text-rendering: optimizelegibility;
           font-family: var(--site-title-heading-font-family);
           font-size: var(--site-title-heading-font-size);
@@ -52,7 +55,7 @@ class SiteTitle extends LitElement {
     this.__disposer = [];
     this.label = "Home";
     this.notitle = false;
-    import("@lrnwebcomponents/simple-icon/simple-icon.js");
+    import("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
     import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
     autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
@@ -73,10 +76,10 @@ class SiteTitle extends LitElement {
         title="${this.label}"
         ?disabled="${this.disabled}"
       >
-        <simple-icon
+        <simple-icon-lite
           ?hidden="${this.icon ? false : true}"
           icon="${this.icon}"
-        ></simple-icon>
+        ></simple-icon-lite>
         ${this.notitle ? html`` : html` <h1>${this.siteTitle}</h1> `}
       </a>
     `;

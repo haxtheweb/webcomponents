@@ -8,7 +8,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `haxor-slevin`
@@ -185,7 +185,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           pointer-events: none;
           opacity: 0 !important;
         }
-        simple-icon {
+        simple-icon-lite {
           height: 40px;
           width: 40px;
           --simple-icon-height: 40px;
@@ -193,7 +193,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           display: flex;
           padding-right: 20px;
         }
-        .annoy-user simple-icon {
+        .annoy-user simple-icon-lite {
           color: black;
         }
         .annoy-user span {
@@ -228,6 +228,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         site-rss-button {
           margin: 0 4px;
           padding: 0;
+          color: black;
           --site-rss-color: #000000;
           --site-rss-bg-color: var(--haxcms-color, rgba(255, 0, 116, 1));
           --site-rss-simple-icon-button-padding: 0 4px;
@@ -311,10 +312,10 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             @click="${this._goBack}"
             title="Back to blog post list"
           >
-            <simple-icon
-              accent-color="${this.accentColor}"
+            <simple-icon-lite
               icon="${this.icon}"
-            ></simple-icon>
+              style="color:white;"
+            ></simple-icon-lite>
             <span class="hide-small">${this.title}</span>
           </button>
         </div>
@@ -511,10 +512,11 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             </div>
             <div class="annoy-user ${this.stateClass}">
               <div class="annoy-inner">
-                <simple-icon
+                <simple-icon-lite
                   icon="${this.icon}"
                   class="hide-small"
-                ></simple-icon>
+                  style="color:black;"
+                ></simple-icon-lite>
                 <span class="hide-small">
                   Never miss a story from <strong>${this.title}</strong> use RSS
                   today!
@@ -600,6 +602,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
   }
   constructor() {
     super();
+    // to avoid error
+    this.icon = "icons:search";
     this.__disposer = [];
     this.__mainPosts = [];
     this.__extraPosts = [];

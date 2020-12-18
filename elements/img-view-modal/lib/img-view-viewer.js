@@ -3,6 +3,8 @@ import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `img-view-viewer`
  * Combines img-pan-zoom and simple-modal for an easy image zoom solution
@@ -916,7 +918,8 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     if (!disabled) this.goToPageXofY(e);
   }
   goToPageXofY(e) {
-    this.page = e.path ? e.path[0].value - 1 : e.target.value;
+    var eventPath = normalizeEventPath(e);
+    this.page = eventPath ? eventPath[0].value - 1 : e.target.value;
   }
   loadedChangedEvent(e) {
     this.loaded = e.detail.value;

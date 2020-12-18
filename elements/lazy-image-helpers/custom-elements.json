@@ -1,0 +1,393 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lazy-image-helpers",
+      "path": "./lazy-image-helpers.js",
+      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for image.",
+          "type": "string"
+        },
+        {
+          "name": "described-by",
+          "description": "Aria-describedby data passed down to appropriate tag",
+          "type": "string"
+        },
+        {
+          "name": "image-loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text for image.",
+          "type": "string"
+        },
+        {
+          "name": "describedBy",
+          "attribute": "described-by",
+          "description": "Aria-describedby data passed down to appropriate tag",
+          "type": "string"
+        },
+        {
+          "name": "replacementDelay",
+          "type": "number",
+          "default": "1000"
+        },
+        {
+          "name": "imageLoaded",
+          "attribute": "image-loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loadingImg",
+          "type": "string",
+          "default": "\"loading:bars\""
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.1,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.1"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
+        }
+      ]
+    },
+    {
+      "name": "lazy-image",
+      "path": "./lazy-image-helpers.js",
+      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for image.",
+          "type": "string"
+        },
+        {
+          "name": "described-by",
+          "description": "Aria-describedby data passed down to appropriate tag",
+          "type": "string"
+        },
+        {
+          "name": "image-loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text for image.",
+          "type": "string"
+        },
+        {
+          "name": "describedBy",
+          "attribute": "described-by",
+          "description": "Aria-describedby data passed down to appropriate tag",
+          "type": "string"
+        },
+        {
+          "name": "replacementDelay",
+          "type": "number",
+          "default": "1000"
+        },
+        {
+          "name": "imageLoaded",
+          "attribute": "image-loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loadingImg",
+          "type": "string",
+          "default": "\"loading:bars\""
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.1,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.1"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
+        }
+      ]
+    },
+    {
+      "name": "lazy-image-helpers",
+      "path": "./src/lazy-image-helpers.js",
+      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for image.",
+          "type": "string"
+        },
+        {
+          "name": "described-by",
+          "description": "Aria-describedby data passed down to appropriate tag",
+          "type": "string"
+        },
+        {
+          "name": "image-loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text for image.",
+          "type": "string"
+        },
+        {
+          "name": "describedBy",
+          "attribute": "described-by",
+          "description": "Aria-describedby data passed down to appropriate tag",
+          "type": "string"
+        },
+        {
+          "name": "replacementDelay",
+          "type": "number",
+          "default": "1000"
+        },
+        {
+          "name": "imageLoaded",
+          "attribute": "image-loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loadingImg",
+          "type": "string",
+          "default": "\"loading:bars\""
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.1,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.1"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
+        }
+      ]
+    },
+    {
+      "name": "lazy-image",
+      "path": "./src/lazy-image-helpers.js",
+      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for image.",
+          "type": "string"
+        },
+        {
+          "name": "described-by",
+          "description": "Aria-describedby data passed down to appropriate tag",
+          "type": "string"
+        },
+        {
+          "name": "image-loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text for image.",
+          "type": "string"
+        },
+        {
+          "name": "describedBy",
+          "attribute": "described-by",
+          "description": "Aria-describedby data passed down to appropriate tag",
+          "type": "string"
+        },
+        {
+          "name": "replacementDelay",
+          "type": "number",
+          "default": "1000"
+        },
+        {
+          "name": "imageLoaded",
+          "attribute": "image-loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loadingImg",
+          "type": "string",
+          "default": "\"loading:bars\""
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.1,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.1"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
+        }
+      ]
+    }
+  ]
+}

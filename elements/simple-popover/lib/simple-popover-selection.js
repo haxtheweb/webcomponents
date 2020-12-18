@@ -6,10 +6,13 @@ import "./simple-popover-manager.js";
 class SimplePopoverSelection extends LitElement {
   constructor() {
     super();
+    this.disabled = false;
   }
 
   openedToggle(e) {
-    this.opened = !this.opened;
+    if (!this.disabled) {
+      this.opened = !this.opened;
+    }
   }
 
   openedChanged(state) {
@@ -39,8 +42,9 @@ class SimplePopoverSelection extends LitElement {
       // which means you can style things that otherwise would be impossible
       // due to how shadowDOM + things at the app level / singleton would allow
       if (this.querySelector('[slot="style"]')) {
-        let style = this.querySelector('[slot="style"]').cloneNode(true);
-        style.removeAttribute("slot");
+        let styleData = this.querySelector('[slot="style"]').cloneNode(true);
+        let style = document.createElement("style");
+        style.innerHTML = styleData.innerHTML;
         content = html`${unsafeHTML(div.innerHTML)}${unsafeHTML(
           style.outerHTML
         )}`;
@@ -68,7 +72,12 @@ class SimplePopoverSelection extends LitElement {
           window.SimplePopoverManager.requestAvailability()
             .querySelector("[data-simple-popover-selection-active]")
             .focus();
-        } else {
+        } else if (
+          window.SimplePopoverManager.requestAvailability() &&
+          window.SimplePopoverManager.requestAvailability().querySelector(
+            ":first-child"
+          )
+        ) {
           window.SimplePopoverManager.requestAvailability()
             .querySelector(":first-child")
             .focus();
@@ -118,6 +127,13 @@ class SimplePopoverSelection extends LitElement {
   static get properties() {
     return {
       opened: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * disabled state
+       */
+      disabled: {
         type: Boolean,
         reflect: true,
       },

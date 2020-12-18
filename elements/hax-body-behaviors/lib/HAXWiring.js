@@ -28,6 +28,8 @@
  *    "canPosition": true,
  *    // can you edit the source of this element directly? (allows code editor option)
  *    "canEditSource": true,
+ *    // should the entire element be contenteditable? (allows editing slot via contenteditable operations)
+ *    "contentEditable": false,
  *    // how to visualize / if this is visualized for the user when adding to the page
  *    "gizmo": {},
  *    // how HAX presents configuration options in it's side tray
@@ -212,7 +214,7 @@ export class HAXWiring {
       editingElement: "core",
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       settings: {
         configure: [],
         advanced: [],
@@ -337,6 +339,9 @@ export class HAXWiring {
         }
         if (typeof props.canEditSource === typeof undefined) {
           props.canEditSource = false;
+        }
+        if (typeof props.contentEditable === typeof undefined) {
+          props.contentEditable = false;
         }
         if (typeof props.gizmo === typeof undefined) {
           props.gizmo = false;
@@ -688,7 +693,8 @@ export class HAXWiring {
         api: "1",
         canScale: true,
         canPosition: true,
-        canEditSource: false,
+        canEditSource: true,
+        contentEditable: false,
         gizmo: {
           title: "Tag name",
           description: "",
@@ -816,17 +822,18 @@ export const HAXElement = function (SuperClass) {
       if (tag == "" && typeof this.tagName !== typeof undefined) {
         tag = this.tagName.toLowerCase();
       }
-      window.addEventListener(
-        "hax-store-ready",
-        this._haxStoreReady.bind(this)
-      );
       if (
-        typeof window.HaxStore !== typeof undefined &&
+        window.HaxStore &&
         window.HaxStore.instance != null &&
         window.HaxStore.instance.ready
       ) {
         return this.HAXWiring.setHaxProperties(props, tag, context, true);
       } else {
+        // slow load environment, set listener and hold off of processing
+        window.addEventListener(
+          "hax-store-ready",
+          this._haxStoreReady.bind(this)
+        );
         return this.HAXWiring.setHaxProperties(props, tag, context, false);
       }
     }

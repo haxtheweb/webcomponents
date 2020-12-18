@@ -216,7 +216,7 @@ class LrndesignPaperstack extends SimpleColors {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Paper stack",
         description: "A stack of papers",

@@ -4,7 +4,7 @@
     "step": 12.5
   },
   "canPosition": true,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Video player",
     "description": "This can present video in a highly accessible manner regardless of source.",

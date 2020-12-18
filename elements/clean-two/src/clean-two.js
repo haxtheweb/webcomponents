@@ -11,6 +11,8 @@ import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `clean-two`
  * `A 2nd clean theme`
@@ -177,6 +179,7 @@ class CleanTwo extends HAXCMSThemeParts(
          text-align: right; 
         }
         site-active-title {
+          padding: 2px 0px;
           flex-wrap: wrap;
           align-items: baseline;
           flex-direction: row;
@@ -187,6 +190,9 @@ class CleanTwo extends HAXCMSThemeParts(
           flex: auto;
           margin: 0;
           display: flex;
+          background-color: white;
+          --site-active-title-font-size: 22px;
+          --site-active-title-line-height: 22px;
         }
 
         .body-wrapper {
@@ -272,10 +278,12 @@ class CleanTwo extends HAXCMSThemeParts(
         }
         site-menu {
           --site-menu-font-size: 15px;
+          --site-menu-color: #000000;
           --site-menu-active-color: #E6ECF1;
           --site-menu-item-active-item-color: var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
           overflow-y: auto;
           flex: 1 1 auto;
+          height: 100vh;
           width: 300px;
           left: 0;
           margin: 32px 0 32px 0;
@@ -466,14 +474,7 @@ class CleanTwo extends HAXCMSThemeParts(
     this.searchTerm = "";
   }
   searchChanged(e) {
-    var target = null;
-    if (e.path && e.path[0]) {
-      target = e.path[0];
-    } else if (e.originalTarget) {
-      target = e.originalTarget;
-    } else {
-      target = e.target;
-    }
+    var target = normalizeEventPath(e)[0];
     if (target.value) {
       // prettier-ignore
       import(
@@ -502,8 +503,8 @@ class CleanTwo extends HAXCMSThemeParts(
                     ></site-menu-content>
                   `
                 : ``}
+              <site-active-title></site-active-title>
             </div>
-            <site-active-title></site-active-title>
             <site-search
               hide-input
               search="${this.searchTerm}"

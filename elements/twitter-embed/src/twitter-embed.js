@@ -64,7 +64,7 @@ class TwitterEmbed extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Twitter embed",
         description: "Embed a tweet from twitter in context",

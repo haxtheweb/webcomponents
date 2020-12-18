@@ -4,6 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `rich-text-editor-selection`
  * `a button for rich text editor (custom buttons can extend this)`
@@ -371,7 +373,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       this.hidden = true;
       this.toolbar = undefined;
       this.range = undefined;
-      document.body.append(this);
+      document.body.appendChild(this);
     }
 
     this.dispatchEvent(

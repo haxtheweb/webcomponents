@@ -114,6 +114,7 @@ class SocialShareLink extends LitElement {
     >
       <simple-icon
         dark
+        contrast="4"
         aria-hidden="true"
         icon="${this.__icon}"
         ?hidden="${!this.__showIcon}"

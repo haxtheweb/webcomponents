@@ -377,9 +377,9 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
   // haxProperty definition
   static get haxProperties() {
     return {
-      canEditSource: false,
+      canEditSource: true,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Accent Card",
         description: "A card with optional accent styling.",

@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleAutocomplete: simple-autocomplete Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '../simple-autocomplete.js';
+      import '../lib/simple-autocomplete-text-trigger.js';
+    </script>
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
+    <style>
+      body {
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+
+      Cool things <simple-autocomplete></simple-autocomplete> Some other stuff.
+
+      <h2>Implementation inside of a textarea</h2>
+      <simple-autocomplete-text-trigger>
+        <textarea value="Cool"></textarea>
+      </simple-autocomplete-text-trigger>
+
+      <h2>Implementation inside of a contenteditable div</h2>
+      <simple-autocomplete-text-trigger>
+        <div contenteditable>Cool</div>
+      </simple-autocomplete-text-trigger>
+    </div>
+  <script>
+    window.onload = (e) => {
+      // item example for single element
+      document.querySelector("simple-autocomplete").items = [
+        {
+          icon: "cancel",
+          pre: "#123",
+          label: "[simple-autocomplete] autocomplete while typing to provide context as to what is possible for in text menus and what not",
+          value: "Issue #123"
+        },
+        {
+          icon: "save",
+          pre: "#98",
+          label: "Option 2",
+          value: "Another"
+        },
+        {
+          pre: "edit-mode",
+          label: "Option 3",
+          value: 3
+        },
+      ];
+      const trigger = document.querySelectorAll("simple-autocomplete-text-trigger");
+      for (var i in trigger) {
+        trigger[i].triggers = {
+        "#": (el) => {
+          return [
+            {
+              icon: "cancel",
+              pre: "#cccccc",
+              label: "[sdadada-autocomplete]so what is possible for in text menus and what not",
+              value: "Issue #123"
+            },
+            {
+              icon: "save",
+              pre: "#98",
+              label: "Option 2",
+              value: "Another"
+            },
+            {
+              pre: "edit-mode",
+              label: "Option 3",
+              value: 3
+            },
+          ];
+        },
+        "?": (el) => {
+          return [
+            {
+              icon: "cancel",
+              pre: "#123",
+              label: "[simple-autocomplete] autocomplete while typing to provide context as to what is possible for in text menus and what not",
+              value: "Issue #123"
+            },
+            {
+              icon: "save",
+              pre: "#98",
+              label: "Option 2",
+              value: "Another"
+            },
+            {
+              pre: "edit-mode",
+              label: "Option 3",
+              value: 3
+            },
+          ];
+        },
+        "!": [
+            {
+              label: "Thing",
+              value: "stuff and things"
+            },
+            {
+              label: "Aooo",
+              value: "Whatever"
+            },
+            {
+              label: "Moon",
+              value: "stars"
+            },
+            {
+              label: "Water",
+              value: "stars"
+            },
+            {
+              label: "Fff0003",
+              value: "nice"
+            },
+            {
+              label: "neato",
+              value: "milk"
+            }
+          ]
+      };
+      }
+      window.addEventListener("value-changed", (e) => {
+        console.log(e.detail.value);
+      });
+    };
+  </script>
+  </body>
+</html>

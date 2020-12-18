@@ -9,7 +9,7 @@ import {
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
-configure({ enforceActions: false }); // strict mode off
+configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 class Store {
   constructor() {
     this.location = null;

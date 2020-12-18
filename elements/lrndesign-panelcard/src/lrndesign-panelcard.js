@@ -102,7 +102,7 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Note card",
         description: "A small note to offset text used for asides.",

@@ -1,7 +1,7 @@
 {
   "canScale": true,
   "canPosition": true,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Example hax-element",
     "description": "Provide an example to pick apart of a working HAX element",

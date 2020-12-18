@@ -61,7 +61,7 @@ class FigureLabel extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Figure label",
         description:

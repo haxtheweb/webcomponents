@@ -5,6 +5,7 @@ import {
   wipeSlot,
   nodeToHaxElement,
   haxElementToNode,
+  normalizeEventPath,
 } from "@lrnwebcomponents/utils/utils.js";
 import {
   HaxSchematizer,
@@ -23,7 +24,6 @@ import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "./hax-tray-upload.js";
 import "./hax-gizmo-browser.js";
 import "./hax-app-browser.js";
-import "./hax-blox-browser.js";
 import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-preferences-dialog.js";
@@ -50,6 +50,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
     };
+    this._initial = true;
     this.activeValue = {
       settings: {
         layout: {
@@ -134,7 +135,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           );
         }
         .wrapper {
-          color: var(--hax-color-text, black);
+          color: var(--hax-color-text, #000000);
           position: fixed;
           top: 0;
           background-color: transparent;
@@ -193,20 +194,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           --simple-fields-accent-color: var(
             --simple-colors-default-theme-cyan-8,
             #007999
-          );
-        }
-        #templateslayouts {
-          --hax-tray-panel-accent-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --hax-tray-panel-accent: var(
-            --simple-colors-default-theme-pink-8,
-            #b80042
-          );
-          --simple-fields-accent-color: var(
-            --simple-colors-default-theme-pink-8,
-            #b80042
           );
         }
         :host([edit-mode][collapsed]) a11y-collapse-group {
@@ -681,22 +668,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         </div>
         <a11y-collapse-group accordion radio>
           <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse id="addcollapse" accordion data-simple-tour-stop>
-            <div slot="heading" data-stop-title>
-              <simple-icon-lite icon="hax:add"></simple-icon-lite> Add Content
-            </div>
-            <div slot="tour" data-stop-content>
-              When you want to add any content to the page from text, to images,
-              to anything more advanced; you can always find items to add under
-              the Add content menu. Click to expand, then either drag and drop
-              items into the page or click and have them placed near whatever
-              you are actively working on.
-            </div>
-            <div slot="content">
-              <hax-tray-upload></hax-tray-upload>
-              <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
-            </div>
-          </a11y-collapse>
           <a11y-collapse id="settingscollapse" accordion data-simple-tour-stop>
             <div slot="heading" data-stop-title>
               <simple-icon-lite icon="${this.activeTagIcon}"></simple-icon-lite>
@@ -716,10 +687,32 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               ></simple-fields>
             </div>
           </a11y-collapse>
+          <a11y-collapse
+            id="addcollapse"
+            accordion
+            data-simple-tour-stop
+            @expand="${this._refreshAddData}"
+          >
+            <div slot="heading" data-stop-title>
+              <simple-icon-lite icon="hax:add"></simple-icon-lite> Add Content
+            </div>
+            <div slot="tour" data-stop-content>
+              When you want to add any content to the page from text, to images,
+              to anything more advanced; you can always find items to add under
+              the Add content menu. Click to expand, then either drag and drop
+              items into the page or click and have them placed near whatever
+              you are actively working on.
+            </div>
+            <div slot="content">
+              <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
+              <h5>Templates</h5>
+              <hax-stax-browser id="staxbrowser"></hax-stax-browser>
+            </div>
+          </a11y-collapse>
           <a11y-collapse id="searchapps" accordion data-simple-tour-stop>
             <div slot="heading" data-stop-title>
               <simple-icon-lite icon="hax:search-clear"></simple-icon-lite>
-              Search
+              Media browser
             </div>
             <div slot="tour" data-stop-content>
               Search for media and content anywhere that your copy of HAX has
@@ -727,27 +720,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               or drag the item into the contnet.
             </div>
             <div slot="content">
+              <hax-tray-upload></hax-tray-upload>
               <hax-app-browser id="appbrowser"></hax-app-browser>
-            </div>
-          </a11y-collapse>
-          <a11y-collapse
-            id="templateslayouts"
-            accordion
-            @expand="${this._refreshLists}"
-            data-simple-tour-stop
-          >
-            <div slot="heading" data-stop-title>
-              <simple-icon-lite icon="hax:templates"></simple-icon-lite
-              >Templates & Layouts
-            </div>
-            <div slot="tour" data-stop-content>
-              Predefined layouts and templated areas. use this to rapidly create
-              page content which you can then move around and break apart as
-              needed.
-            </div>
-            <div slot="content">
-              <hax-blox-browser id="bloxbrowser"></hax-blox-browser>
-              <hax-stax-browser id="staxbrowser"></hax-stax-browser>
             </div>
           </a11y-collapse>
           <slot name="tray-collapse-post"></slot>
@@ -765,29 +739,21 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       this.activeTab = "item-0";
     }
   }
-  _refreshLists(e) {
-    this.shadowRoot.querySelector("#bloxbrowser").bloxList = [
-      ...HAXStore.bloxList,
-    ];
+  _refreshAddData(e) {
+    this.shadowRoot
+      .querySelector("#gizmobrowser")
+      .resetList(toJS(HAXStore.gizmoList));
     this.shadowRoot.querySelector("#staxbrowser").staxList = [
-      ...HAXStore.staxList,
+      ...toJS(HAXStore.staxList),
     ];
   }
   /**
    * Process event for simple content inserts.
    */
   _processTrayEvent(e) {
-    let detail = e.detail;
-    var target = null;
-    if (e.path && e.path[0]) {
-      target = e.path[0];
-    } else if (e.originalTarget) {
-      target = e.originalTarget;
-    } else {
-      target = e.target;
-    }
+    var target = normalizeEventPath(e)[0];
     // support a simple insert event to bubble up or everything else
-    switch (detail.eventName) {
+    switch (e.detail.eventName) {
       case "insert-stax":
         this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(
@@ -799,59 +765,45 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           })
         );
         break;
-      case "insert-blox":
-        let content = "";
-        for (var i = 0; i < target.blox.length; i++) {
-          let node = haxElementToNode({
-            tag: target.blox[i].tag,
-            content: target.blox[i].content,
-            properties: target.blox[i].properties,
-          });
-          content += HAXStore.nodeToContent(node);
-        }
-        // generate a hax element
-        let blox = {
-          tag: "grid-plate",
-          properties: {
-            layout: target.layout,
-          },
-          content: content,
-        };
-        this.shadowRoot.querySelector("#settingscollapse").expand();
-        this.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: blox,
-          })
-        );
-        break;
       case "insert-tag":
         let gizmo = {
-          tag: detail.value,
+          tag: e.detail.value,
         };
-        let properties = JSON.parse(target.getAttribute("event-properties"));
-        let innerContent = target.getAttribute("event-content");
-        if (properties == null) {
-          properties = {};
+        let haxElement;
+        // get schema for that version of events
+        let schema = HAXStore.haxSchemaFromTag(e.detail.value);
+        if (
+          target.getAttribute("data-demo-schema") &&
+          schema &&
+          schema.demoSchema &&
+          schema.demoSchema
+        ) {
+          haxElement = schema.demoSchema[0];
+        } else {
+          // support if anything else is manually defining what to inject
+          // or a baseline if we didn't have a demonstration schema supplied
+          let properties = JSON.parse(target.getAttribute("event-properties"));
+          let innerContent = target.getAttribute("event-content");
+          if (properties == null) {
+            properties = {};
+          }
+          if (innerContent == null) {
+            innerContent = "";
+          }
+          // most likely empty values but just to be safe
+          haxElement = HAXStore.haxElementPrototype(
+            gizmo,
+            properties,
+            innerContent
+          );
         }
-        if (innerContent == null) {
-          innerContent = "";
-        }
-        // most likely empty values but just to be safe
-        let element = HAXStore.haxElementPrototype(
-          gizmo,
-          properties,
-          innerContent
-        );
         this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(
           new CustomEvent("hax-insert-content", {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: element,
+            detail: haxElement,
           })
         );
         break;
@@ -895,15 +847,21 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         HAXStore.activeHaxBody.redo();
         break;
       case "cancel":
-        HAXStore.editMode = false;
-        this.dispatchEvent(
-          new CustomEvent("hax-cancel", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: detail,
-          })
-        );
+        if (
+          confirm(
+            "Changes have not been saved, Click OK to close HAX or Cancel to continue editing."
+          )
+        ) {
+          HAXStore.editMode = false;
+          this.dispatchEvent(
+            new CustomEvent("hax-cancel", {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: e.detail,
+            })
+          );
+        }
         break;
     }
   }
@@ -1107,20 +1065,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           },
         })
       );
-      this.dispatchEvent(
-        new CustomEvent("hax-add-voice-command", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: {
-            command: ":name: (collapse)(open)(expand)(toggle) templates (menu)",
-            context: this.shadowRoot.querySelector(
-              '#templateslayouts div[slot="heading"]'
-            ),
-            callback: "click",
-          },
-        })
-      );
     }
   }
   /**
@@ -1132,8 +1076,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
-        HAXStore.refreshActiveNodeForm();
-        this._editModeChanged(this[propName]);
+        if (this.editMode) {
+          HAXStore.refreshActiveNodeForm();
+        }
+        this._editModeChanged(this.editMode);
       }
       if (propName == "offsetMargin") {
         setTimeout(() => {
@@ -1202,7 +1148,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
           this.shadowRoot.querySelector("#settingscollapse").disabled = false;
-          HAXStore.refreshActiveNodeForm();
+          if (this.editMode) {
+            HAXStore.refreshActiveNodeForm();
+          }
         } else {
           this.activeTagName = "Select an element to configure";
           this.activeTagIcon = "icons:settings";
@@ -1216,6 +1164,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   _setupForm() {
     let activeNode = this.activeNode;
+    this._initial = true;
     this.activeValue = {
       settings: {
         layout: {
@@ -1491,36 +1440,40 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             // this is a special internal held "property" for layout stuff
             else if (key === "layout" && prop === "__position") {
               setAhead = true;
-              clearTimeout(this.__contextValueDebounce);
-              this.__contextValueDebounce = setTimeout(() => {
-                this.dispatchEvent(
-                  new CustomEvent("hax-context-item-selected", {
-                    bubbles: true,
-                    composed: true,
-                    detail: {
-                      eventName: settings[key][prop],
-                      value: settings[key][prop],
-                    },
-                  })
-                );
-              }, 50);
+              if (!this._initial) {
+                clearTimeout(this.__contextValueDebounce);
+                this.__contextValueDebounce = setTimeout(() => {
+                  this.dispatchEvent(
+                    new CustomEvent("hax-context-item-selected", {
+                      bubbles: true,
+                      composed: true,
+                      detail: {
+                        eventName: settings[key][prop],
+                        value: settings[key][prop],
+                      },
+                    })
+                  );
+                }, 50);
+              }
             }
             // this is a special internal held "property" for layout stuff
             else if (key === "layout" && prop === "__scale") {
               setAhead = true;
-              clearTimeout(this.__contextSizeDebounce);
-              this.__contextSizeDebounce = setTimeout(() => {
-                this.dispatchEvent(
-                  new CustomEvent("hax-context-item-selected", {
-                    bubbles: true,
-                    composed: true,
-                    detail: {
-                      eventName: "hax-size-change",
-                      value: settings[key][prop],
-                    },
-                  })
-                );
-              }, 50);
+              if (!this._initial) {
+                clearTimeout(this.__contextSizeDebounce);
+                this.__contextSizeDebounce = setTimeout(() => {
+                  this.dispatchEvent(
+                    new CustomEvent("hax-context-item-selected", {
+                      bubbles: true,
+                      composed: true,
+                      detail: {
+                        eventName: "hax-size-change",
+                        value: settings[key][prop],
+                      },
+                    })
+                  );
+                }, 50);
+              }
             }
             // try and set the pop directly if it is a prop already set
             // check on prototype, then in properties object if it has one
@@ -1636,6 +1589,11 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
       }
     }
+    setTimeout(() => {
+      if (this._initial) {
+        this._initial = false;
+      }
+    }, 51);
   }
 
   /**

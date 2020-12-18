@@ -21,6 +21,42 @@ function unwrap(el) {
     el.remove();
   }
 }
+// resolve platform differences in mouse path
+// some platforms falling back to just the target itself
+export function normalizeEventPath(e) {
+  if (e.composed && e.composedPath) {
+    return e.composedPath();
+  } else if (e.path) {
+    return e.path;
+  } else if (e.originalTarget) {
+    return [e.originalTarget];
+  } else {
+    return [e.target];
+  }
+}
+// nicely formats / indents an HTML DOM tree for output
+function formatHTML(str) {
+  var div = document.createElement("div");
+  div.innerHTML = str.trim();
+
+  return formatHTMLInternals(div, 0).innerHTML;
+}
+// HTML internals of the DOM tree
+function formatHTMLInternals(node, level) {
+  let indentBefore = new Array(level++ + 1).join("  "),
+    indentAfter = new Array(level - 1).join("  "),
+    textNode;
+  for (var i = 0; i < node.children.length; i++) {
+    textNode = document.createTextNode("\n" + indentBefore);
+    node.insertBefore(textNode, node.children[i]);
+    formatHTMLInternals(node.children[i], level);
+    if (node.lastElementChild == node.children[i]) {
+      textNode = document.createTextNode("\n" + indentAfter);
+      node.appendChild(textNode);
+    }
+  }
+  return node;
+}
 
 // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 function validURL(str) {
@@ -423,7 +459,7 @@ function nodeToHaxElement(node, eventName = "insert-element") {
   }
   // test if a class exists, not everything scopes
   if (typeof node.attributes.class !== typeof undefined) {
-    props.class = node.attributes.class.nodeValue.replace("hax-active", "");
+    props.class = node.attributes.class.value.replace("hax-active", "");
   }
   // test if a id exists as its a special case in attributes... of course
   if (typeof node.attributes.id !== typeof undefined) {
@@ -572,6 +608,7 @@ export const winEventsElement = function (SuperClass) {
 export {
   wrap,
   unwrap,
+  formatHTML,
   validURL,
   valueMapTransform,
   haxElementToNode,
@@ -925,6 +962,9 @@ export function internalGetShadowSelection(root) {
 
   const measure = () => s.toString().length;
   const initialSelectionContent = s.toString();
+  if (s.type === "None") {
+    return null;
+  }
   if (!(s.type === "Caret" || s.type === "Range")) {
     throw new TypeError("unexpected type: " + s.type);
   }
@@ -944,9 +984,17 @@ export function internalGetShadowSelection(root) {
     s.extend(leftNode, 0);
     const at = measure();
     s.collapseToEnd();
-
-    range.setStart(leftNode, at);
-    range.setEnd(leftNode, at);
+    if (
+      leftNode.nodeType === 1 &&
+      leftNode.childNodes &&
+      leftNode.childNodes.length > 0
+    ) {
+      range.setStart(leftNode.childNodes[0], at);
+      range.setEnd(leftNode.childNodes[0], at);
+    } else {
+      range.setStart(leftNode, at);
+      range.setEnd(leftNode, at);
+    }
     return { range, mode: "caret" };
   } else if (isNaturalDirection === undefined) {
     if (s.type !== "Range") {
@@ -955,7 +1003,7 @@ export function internalGetShadowSelection(root) {
     // This occurs when we can't move because we can't extend left or right to measure the
     // direction we're moving in. Good news though: we don't need to _change_ the selection
     // to measure it, so just return immediately.
-    range.setStart(leftNode, 0);
+    range.setStart(leftNode.childNodes[0], 0);
     range.setEnd(rightNode, rightNode.length);
     return { range, mode: "all" };
   }
@@ -1008,4 +1056,31 @@ export function internalGetShadowSelection(root) {
     mode: isNaturalDirection ? "right" : "left",
     range,
   };
+}
+
+// polyfill from https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/replaceWith
+export function ReplaceWithPolyfill() {
+  "use-strict"; // For safari, and IE > 10
+  var parent = this.parentNode,
+    i = arguments.length,
+    currentNode;
+  if (!parent) return;
+  if (!i)
+    // if there are no arguments
+    parent.removeChild(this);
+  while (i--) {
+    // i-- decrements i and returns the value of i before the decrement
+    currentNode = arguments[i];
+    if (typeof currentNode !== "object") {
+      currentNode = this.ownerDocument.createTextNode(currentNode);
+    } else if (currentNode.parentNode) {
+      currentNode.parentNode.removeChild(currentNode);
+    }
+    // the value of "i" below is after the decrement
+    if (!i)
+      // if currentNode is the first argument (currentNode === arguments[0])
+      parent.replaceChild(currentNode, this);
+    // if currentNode isn't the first
+    else parent.insertBefore(currentNode, this.nextSibling);
+  }
 }

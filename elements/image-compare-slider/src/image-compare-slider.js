@@ -132,7 +132,7 @@ class ImageCompareSlider extends SchemaBehaviors(SimpleColors) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Image comparison",
         description:

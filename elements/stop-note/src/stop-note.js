@@ -12,6 +12,12 @@ SimpleIconsetStore.registerIconset(
   `${pathResolver(import.meta.url)}lib/svgs/stopnoteicons/`
 );
 
+const iconObj = {
+  "stopnoteicons:stop-icon": "Stop",
+  "stopnoteicons:warning-icon": "Warning",
+  "stopnoteicons:confirm-icon": "Confirmation",
+  "stopnoteicons:book-icon": "Notice",
+};
 /**
  * `stop-note`
  * `A note that directs people to an action item of different warning levels`
@@ -112,7 +118,7 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
           </div>
         </div>
         <div class="message_wrap">
-          <div class="main_message">${this.title}</div>
+          <div class="main_message" id="title">${this.title}</div>
           <div class="secondary_message"><slot name="message"></slot></div>
           ${this.url
             ? html`
@@ -131,6 +137,7 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
   constructor() {
     super();
     this.url = null;
+    this.title = "";
     this.icon = "stopnoteicons:stop-icon";
   }
   static get properties() {
@@ -140,6 +147,7 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
        */
       title: {
         type: String,
+        reflect: true,
       },
       /**
        * url to additional resources
@@ -152,6 +160,7 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
        */
       icon: {
         type: String,
+        reflect: true,
       },
     };
   }
@@ -171,11 +180,57 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
     }
     this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
   }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+      inlineContextMenu: "haxinlineContextMenu",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    // flag for HAX to not trigger active on changes
+    let container = this.shadowRoot.querySelector("#title");
+    let svgWrap = this.shadowRoot.querySelector(".svg_wrap");
+    if (val) {
+      svgWrap.addEventListener("click", this.haxtoggleIcon.bind(this));
+      container.setAttribute("contenteditable", true);
+    } else {
+      svgWrap.removeEventListener("click", this.haxtoggleIcon.bind(this));
+      container.removeAttribute("contenteditable");
+      this.title = container.innerText;
+    }
+    return false;
+  }
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "image:style",
+        callback: "haxtoggleIcon",
+        label: "Toggle icon",
+      },
+    ];
+  }
+  haxtoggleIcon(e) {
+    const iconAry = Object.keys(iconObj);
+    let icon = iconAry[0];
+    if (iconAry.lastIndexOf(this.icon) != iconAry.length - 1) {
+      icon = iconAry[iconAry.lastIndexOf(this.icon) + 1];
+    }
+    this.icon = icon;
+    return true;
+  }
   static get haxProperties() {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Stop Note",
         description: "A message to alert readers to specific directions.",
@@ -209,23 +264,11 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
             required: true,
           },
           {
-            slot: "message",
-            title: "Message",
-            description: "Enter a message for stop-note.",
-            inputMethod: "code-editor",
-            required: true,
-          },
-          {
             property: "icon",
             title: "Action Icon",
             description: "Icon used for stop-note",
             inputMethod: "select",
-            options: {
-              "stopnoteicons:stop-icon": "Stop",
-              "stopnoteicons:warning-icon": "Warning",
-              "stopnoteicons:confirm-icon": "Confirmation",
-              "stopnoteicons:book-icon": "Notice",
-            },
+            options: iconObj,
           },
         ],
         advanced: [],
@@ -240,7 +283,7 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
             title: "Hold up there",
           },
           content:
-            '<span slot="message"><strong>Read these important things!</strong>\n</span>\n',
+            '<p slot="message"><strong>Read these important things!</strong>\n</p>\n',
         },
         {
           tag: "stop-note",
@@ -249,7 +292,7 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
             icon: "stopnoteicons:warning-icon",
           },
           content:
-            '<span slot="message">You can write any warning message you want here.</span>\n',
+            '<p slot="message">You can write any warning message you want here.</p>\n',
         },
       ],
     };

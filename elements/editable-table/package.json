@@ -45,6 +45,7 @@
     "@lrnwebcomponents/responsive-utility": "^2.8.0",
     "@lrnwebcomponents/rich-text-editor": "^2.8.0",
     "@lrnwebcomponents/simple-icon": "^2.8.0",
+    "@lrnwebcomponents/utils": "^2.8.0",
     "@lrnwebcomponents/simple-picker": "^2.8.0",
     "@lrnwebcomponents/simple-tooltip": "^2.8.0",
     "@lrnwebcomponents/a11y-menu-button": "^2.8.0",

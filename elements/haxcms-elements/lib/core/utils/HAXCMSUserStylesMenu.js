@@ -1,6 +1,7 @@
 import { css, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 const HAXCMSUserStylesMenuMixin = function (SuperClass) {
   return class extends SuperClass {
@@ -148,7 +149,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
             font-size: var(--haxcms-base-styles-body-font-size, 1em);
             color: var(--haxcms-user-styles-color-theme-color-color);
           }
-          simple-icon-button:not(:defined),
+          simple-icon-button-lite:not(:defined),
           simple-popover:not(:defined) {
             display: none;
           }
@@ -284,23 +285,26 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
           :host([color-theme="2"]) .hcusm .hcusm-button:active {
             color: #f4f4f5;
           }
+          simple-icon-button-lite {
+            color: inherit;
+          }
         `,
       ];
     }
     HAXCMSUserStylesMenu() {
       import("@lrnwebcomponents/simple-icon/simple-icon.js");
       import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
       import("@lrnwebcomponents/simple-popover/simple-popover.js");
       return html`
-        <simple-icon-button
+        <simple-icon-button-lite
           .part="${this.editMode ? `edit-mode-active` : ``}"
           class="btn"
           aria-label="Text settings"
           icon="editor:format-size"
           @click="${this.toggleUserStylesMenu}"
           id="haxcmsuserstylesmenupopover"
-        ></simple-icon-button>
+        ></simple-icon-button-lite>
         <simple-tooltip for="haxcmsuserstylesmenupopover">
           Text settings
         </simple-tooltip>
@@ -400,19 +404,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       };
     }
     checkUserStylesMenuOpen(e) {
-      var target = null;
-      if (e.path && e.path[0]) {
-        target = e.path;
-      } else if (
-        e.originalTarget &&
-        e.originalTarget.tagName == "SIMPLE-ICON-BUTTON"
-      ) {
-        target = [e.originalTarget];
-      } else if (e.originalTarget && e.originalTarget.parentNode.host) {
-        target = [e.originalTarget.parentNode.host];
-      } else {
-        target = [e.target];
-      }
+      var target = normalizeEventPath(e);
       if (
         !this.hideUserStylesMenu &&
         !target.includes(this.toggleUserStylesMenuTarget) &&
@@ -464,25 +456,11 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       }
     }
     UserStylesFontFamilyChange(e) {
-      var target = null;
-      if (e.path && e.path[0]) {
-        target = e.path[0];
-      } else if (e.originalTarget) {
-        target = e.originalTarget;
-      } else {
-        target = e.target;
-      }
+      var target = normalizeEventPath(e)[0];
       this.fontFamily = parseInt(target.getAttribute("data-font"));
     }
     UserStylesColorThemeChange(e) {
-      var target = null;
-      if (e.path && e.path[0]) {
-        target = e.path[0];
-      } else if (e.originalTarget) {
-        target = e.originalTarget;
-      } else {
-        target = e.target;
-      }
+      var target = normalizeEventPath(e)[0];
       this.colorTheme = parseInt(target.getAttribute("data-theme"));
     }
   };

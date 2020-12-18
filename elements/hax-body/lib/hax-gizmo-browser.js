@@ -60,6 +60,7 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
               label="${gizmo.title}"
               event-name="insert-tag"
               event-data="${gizmo.tag}"
+              data-demo-schema="true"
               icon="${gizmo.icon}"
               drag-color="${gizmo.color}"
             ></hax-tray-button>
@@ -130,30 +131,29 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
       super.firstUpdated(changedProperties);
     }
     autorun(() => {
-      this.resetBrowser(toJS(HAXStore.gizmoList));
+      this.resetList(toJS(HAXStore.gizmoList));
     });
   }
-
   /**
    * Reset this browser.
    */
-  resetBrowser(list) {
-    this.items = [
-      ...list.filter((gizmo, i) => {
-        // remove inline and hidden references
-        if (
-          gizmo &&
-          gizmo.meta &&
-          (gizmo.meta.inlineOnly || gizmo.meta.hidden)
-        ) {
-          return false;
-        }
-        return true;
-      }),
-    ];
-    this.where = "title";
-    this.value = "";
-    this.like = "";
+  resetList(list) {
+    super.resetList(list);
+    if (list) {
+      this.items = [
+        ...list.filter((gizmo, i) => {
+          // remove inline and hidden references
+          if (
+            gizmo &&
+            gizmo.meta &&
+            (gizmo.meta.inlineOnly || gizmo.meta.hidden)
+          ) {
+            return false;
+          }
+          return true;
+        }),
+      ];
+    }
   }
 }
 window.customElements.define(HaxGizmoBrowser.tag, HaxGizmoBrowser);

@@ -1,7 +1,7 @@
 {
   "canScale": true,
   "canPosition": true,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Figure label",
     "description": "Figure label element to mark media assets within content.",

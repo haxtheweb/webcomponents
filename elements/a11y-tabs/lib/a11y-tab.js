@@ -63,7 +63,7 @@ class A11yTab extends LitElement {
     return {
       canScale: false,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Tab",
         description: "A single tab.",

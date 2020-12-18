@@ -5,9 +5,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `site-print-button`
  * `Dynamic print button to request and generate what to print`
@@ -26,10 +26,10 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
           display: inline-flex;
           text-rendering: optimizelegibility;
           position: relative;
-          color: var(--site-print-button-color, black);
+          color: var(--site-print-button-color, inherit);
         }
         simple-icon-button {
-          color: var(--site-print-button-color, black);
+          color: var(--site-print-button-color, inherit);
         }
         simple-tooltip {
           --simple-tooltip-background: var(
@@ -55,19 +55,18 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
     this.icon = "icons:print";
     this.position = "bottom";
     this.type = "page";
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   // render function
   render() {
     return html`
-      <simple-icon-button
+      <simple-icon-button-lite
         .id="btn${this.type}"
         icon="${this.icon}"
         @click="${this.print}"
         aria-label="${this.label}"
         ?disabled="${this.disabled}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
-      ></simple-icon-button>
+      ></simple-icon-button-lite>
       <simple-tooltip
         .for="btn${this.type}"
         position="${this.position}"

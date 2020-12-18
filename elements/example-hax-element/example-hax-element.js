@@ -33,7 +33,7 @@ class ExampleHaxElement extends HTMLElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Example hax-element",
         description:

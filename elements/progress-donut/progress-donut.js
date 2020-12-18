@@ -48,7 +48,7 @@ class ProgressDonut extends LrndesignPie {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Progress Donut",
         description: "Progression donut",

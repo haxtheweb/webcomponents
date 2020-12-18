@@ -107,7 +107,7 @@ class A11yCollapseGroup extends LitElement {
     return {
       canScale: false,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Expand Collapse Group",
         description: "A group of expand collapse elements.",

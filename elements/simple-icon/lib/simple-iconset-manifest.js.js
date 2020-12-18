@@ -824,6 +824,10 @@ export const SimpleIconsetManifest = [
     ],
   },
   {
+    name: "loading",
+    icons: ["bars"],
+  },
+  {
     name: "maps",
     icons: [
       "add-location",

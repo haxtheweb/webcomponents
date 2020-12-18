@@ -149,7 +149,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "3D player",
         description: "A 3D file / augmented reality player.",

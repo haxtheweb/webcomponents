@@ -97,6 +97,7 @@ site-menu::-webkit-scrollbar-thumb {
 .rss-buttons {
   justify-content: space-evenly;
   display: flex;
+  color: white;
 }
 
 site-print-button {
@@ -106,6 +107,7 @@ site-print-button {
 simple-icon-button,
 site-rss-button,
 site-print-button {
+  color: white;
   --simple-icon-fill-color: white;
   --haxcms-tooltip-color: #F5F5F5;
   --haxcms-tooltip-background-color: #252737;
@@ -202,6 +204,7 @@ site-menu-button[type="next"] {
 site-title {
   position: relative;
   overflow: hidden;
+  color: white;
 }
 
 site-menu {
@@ -211,7 +214,7 @@ site-menu {
   overflow: scroll;
   max-height: calc(100vh - 200px);
   --site-menu-active-color: #ffffff;
-  --site-menu-item-active-item-color: #2d3237;
+  --site-menu-item-active-item-color: goldenrod;
 }
 
 app-drawer-layout {
@@ -224,6 +227,8 @@ app-drawer-layout {
 }
 
 site-menu-button {
+  display: flex;
+  align-items: center;
   position: fixed;
   top: 0;
   bottom: 0;

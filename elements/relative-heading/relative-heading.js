@@ -94,7 +94,7 @@ class RelativeHeading extends RelativeHeadingLite {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Relative heading",
         description:

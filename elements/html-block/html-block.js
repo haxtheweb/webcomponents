@@ -28,7 +28,7 @@ class HtmlBlock extends HTMLElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Html block",
         description: "A basic HTML block that provides HAXschema wiring",

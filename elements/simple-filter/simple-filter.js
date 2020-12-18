@@ -14,11 +14,18 @@ export const SimpleFilterMixin = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
-      this.items = [];
-      this.like = "";
-      this.where = "name";
       this.caseSensitive = false;
       this.filtered = [];
+      this.resetList();
+    }
+    /**
+     * Reset this browser.
+     */
+    resetList(list = []) {
+      this.items = [...list];
+      this.where = "title";
+      this.value = "";
+      this.like = "";
     }
     static get properties() {
       return {
@@ -115,6 +122,9 @@ export const SimpleFilterMixin = function (SuperClass) {
      * @return array} Filter results.
      */
     _computeFiltered(items, where, like, caseSensitive) {
+      if (like[0] === "\\" || like === "\\") {
+        like = "\\" + like;
+      }
       var regex = null;
       if (caseSensitive) {
         regex = new RegExp(like);

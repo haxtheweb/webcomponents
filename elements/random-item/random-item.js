@@ -33,7 +33,7 @@ class RandomItem extends HTMLElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Random item",
         description: "Show a random item from a list of items",

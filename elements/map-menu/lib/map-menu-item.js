@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 class MapMenuItem extends LitElement {
   /**
@@ -13,7 +13,6 @@ class MapMenuItem extends LitElement {
           transition: 0.1s all ease-in-out;
           font-size: var(--map-menu-item-font-size);
           --map-menu-item-height: 24px;
-          --map-menu-item-a-color: inherit;
         }
         :host([active]) {
           background: var(--map-menu-active-color);
@@ -29,7 +28,7 @@ class MapMenuItem extends LitElement {
           border: none;
           border-radius: 0;
         }
-        simple-icon {
+        simple-icon-lite {
           display: inline-block;
           --simple-icon-height: var(--map-menu-item-height);
           --simple-icon-width: var(--map-menu-item-height);
@@ -37,10 +36,10 @@ class MapMenuItem extends LitElement {
         .title {
           text-transform: none;
         }
-        a:visited,
-        a {
+        a,
+        a:visited {
           display: block;
-          color: var(--map-menu-item-a-color);
+          color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-item-a-text-decoration, none);
         }
         a:hover,
@@ -48,7 +47,7 @@ class MapMenuItem extends LitElement {
         a:focus {
           color: var(
             --map-menu-item-a-active-color,
-            var(--map-menu-item-a-color)
+            var(--map-menu-item-a-color, inherit)
           );
           text-decoration: var(
             --map-menu-item-a-text-decoration-hover,
@@ -74,6 +73,7 @@ class MapMenuItem extends LitElement {
           opacity: 1;
         }
         button {
+          color: inherit;
           background-color: transparent;
           text-transform: none;
           width: 100%;
@@ -96,12 +96,17 @@ class MapMenuItem extends LitElement {
       <a tabindex="-1" href="${this.url}">
         <button id="wrapper" role="link" noink>
           ${this.__icon
-            ? html` <simple-icon icon="${this.__icon}"></simple-icon> `
+            ? html`
+                <simple-icon-lite icon="${this.__icon}"></simple-icon-lite>
+              `
             : ``}
           <span class="title">${this.title}</span>
           ${this.trackIcon
             ? html`
-                <simple-icon id="track" icon="${this.trackIcon}"></simple-icon>
+                <simple-icon-lite
+                  id="track"
+                  icon="${this.trackIcon}"
+                ></simple-icon-lite>
               `
             : ``}
         </button>

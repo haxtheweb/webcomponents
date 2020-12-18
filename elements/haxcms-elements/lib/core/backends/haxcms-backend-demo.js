@@ -64,7 +64,7 @@ class HAXCMSBackendDemo extends LitElement {
    */
   constructor() {
     super();
-    this.jwt = "demo";
+    this.jwt = false;
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
     autorun((reaction) => {

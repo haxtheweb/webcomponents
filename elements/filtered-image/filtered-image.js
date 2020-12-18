@@ -52,7 +52,7 @@ class FilteredImage extends SimpleColors {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Filtered image",
         description:

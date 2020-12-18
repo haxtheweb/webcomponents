@@ -1,6 +1,15 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { render } from "lit-html/lib/render.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { ReplaceWithPolyfill } from "@lrnwebcomponents/utils/utils.js";
+if (!Element.prototype.replaceWith) {
+  Element.prototype.replaceWith = ReplaceWithPolyfill;
+}
+if (!CharacterData.prototype.replaceWith) {
+  CharacterData.prototype.replaceWith = ReplaceWithPolyfill;
+}
+if (!DocumentType.prototype.replaceWith) {
+  DocumentType.prototype.replaceWith = ReplaceWithPolyfill;
+}
 /**
  * `task-list`
  * Visual listing of tasks with different design components that is
@@ -72,6 +81,20 @@ class TaskList extends SchemaBehaviors(LitElement) {
     }
     this.editMode = val;
     return ignoreAlign;
+  }
+  alignState() {
+    // make a clone so we can completely clean up the state here
+    const clone = this.cloneNode();
+    // easy, name is flat
+    clone.name = this.shadowRoot.querySelector("#name").innerText;
+    const tasks = this.shadowRoot.querySelector("#tasks");
+    // update tasks
+    clone.tasks = this.getChildOutline(tasks);
+    // there are no longer changes
+    clone.__thereAreChanges = false;
+    clone.editMode = false;
+    this.replaceWith(clone);
+    this.remove();
   }
   haxinlineContextMenu(ceMenu) {
     ceMenu.ceButtons = [
@@ -233,7 +256,7 @@ class TaskList extends SchemaBehaviors(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Task list",
         description: "A list of tasks which is an ordered list",

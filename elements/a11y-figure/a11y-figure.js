@@ -132,7 +132,7 @@ class A11yFigure extends A11yDetails {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Accessible Figure",
         description: "Accessible figure with long description",

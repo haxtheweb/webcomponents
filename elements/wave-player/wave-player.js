@@ -474,7 +474,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Audio player",
         description: "Audio that is just like spotify.",

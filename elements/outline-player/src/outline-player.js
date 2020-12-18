@@ -168,7 +168,6 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         site-active-title {
           --site-active-title-margin: 0px;
           --site-active-title-padding: 0px;
-          margin: 10px;
           padding: 10px;
           display: block;
         }

@@ -6,7 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `site-modal`
  * `A basic site dialog`
@@ -23,7 +24,7 @@ class SiteModal extends LitElement {
         :host {
           display: block;
         }
-        simple-icon-button {
+        simple-icon-button-lite {
           color: var(--site-modal-icon-color);
         }
       `,
@@ -38,25 +39,20 @@ class SiteModal extends LitElement {
   constructor() {
     super();
     this.title = "Dialog";
-    this.dark = false;
-    this.accentColor = null;
     this.icon = "icons:menu";
     this.buttonLabel = "Open dialog";
     this.position = "bottom";
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   // render function
   render() {
     return html`
-      <simple-icon-button
+      <simple-icon-button-lite
         ?disabled="${this.editMode}"
         id="btn"
-        ?dark="${this.dark}"
-        accent-color="${this.accentColor}"
         @click="${this.fireEvent}"
         .icon="${this.icon}"
         .title="${this.buttonLabel}"
-      ></simple-icon-button>
+      ></simple-icon-button-lite>
       <simple-tooltip for="btn" .position="${this.position}" offset="14">
         ${this.buttonLabel}
       </simple-tooltip>

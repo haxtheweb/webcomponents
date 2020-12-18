@@ -45,23 +45,26 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
           :host([responsive-size="sm"][menu-open]) {
             overflow: hidden;
           }
+          simple-icon-button-lite {
+            color: inherit;
+          }
         `,
       ];
     }
     HAXCMSMobileMenuButton() {
       import("@lrnwebcomponents/simple-icon/simple-icon.js");
       import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
-      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
+      import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       return html`
-        <simple-icon-button
+        <simple-icon-button-lite
           class="btn"
           icon="icons:menu"
           aria-label="Toggle menu"
           id="haxcmsmobilemenubutton"
           .part="${this.editMode ? `edit-mode-active` : ``}"
           @click="${this.__HAXCMSMobileMenuToggle}"
-        ></simple-icon-button>
+        ></simple-icon-button-lite>
         <simple-tooltip for="haxcmsmobilemenubutton">
           Toggle menu
         </simple-tooltip>

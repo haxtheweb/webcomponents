@@ -51,6 +51,7 @@
     "@lrnwebcomponents/simple-fields": "^2.8.0",
     "@lrnwebcomponents/simple-icon": "^2.8.0",
     "@lrnwebcomponents/simple-range-input": "^2.8.0",
+    "@lrnwebcomponents/utils": "^2.8.0",
     "@lrnwebcomponents/simple-search": "^2.8.0",
     "@lrnwebcomponents/simple-toast": "^2.8.0",
     "@lrnwebcomponents/simple-tooltip": "^2.8.0",

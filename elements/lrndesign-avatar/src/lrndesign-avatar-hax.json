@@ -1,7 +1,7 @@
 {
   "canScale": false,
   "canPosition": false,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Avatar",
     "description": "Visualize a user account either with an image, icon, initials, or as abstract art.",

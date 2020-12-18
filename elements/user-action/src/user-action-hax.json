@@ -1,7 +1,7 @@
 {
   "canScale": true,
   "canPosition": true,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "User action",
     "description": "track user actions and allow them to talk to xAPI stores easily",

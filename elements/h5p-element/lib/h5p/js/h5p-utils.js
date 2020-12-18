@@ -1,6 +1,8 @@
 /* global H5PAdminIntegration*/
 var H5PUtils = H5PUtils || {};
-
+if (!Element.prototype.replaceWith){Element.prototype.replaceWith = ReplaceWithPolyfill;}
+if (!CharacterData.prototype.replaceWith){CharacterData.prototype.replaceWith = ReplaceWithPolyfill;}
+if (!DocumentType.prototype.replaceWith){DocumentType.prototype.replaceWith = ReplaceWithPolyfill;}
 (function($) {
   /**
    * Generic function for creating a table including the headers

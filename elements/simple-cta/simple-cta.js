@@ -78,17 +78,24 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
 
   // Template return function
   render() {
-    return html` <a href="${this.link}" role="button" part="simple-cta-link">
-      <span><slot>${this.title}</slot></span>
+    return html` <a
+      href="${this.link}"
+      role="button"
+      part="simple-cta-link"
+      @click="${this._clickCard}"
+      ?contenteditable="${this.editMode}"
+    >
+      <span><span id="title">${this.title}</span><slot></slot></span>
     </a>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
+      type: "element",
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Call to action",
         description: "A simple button with a link to take action.",
@@ -162,6 +169,9 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
       title: {
         type: String,
       },
+      editMode: {
+        type: Boolean,
+      },
     };
   }
 
@@ -185,6 +195,48 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
       this.title = this.querySelector("a").innerText;
       this.innerHTML = null;
     }
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    this.editMode = val;
+  }
+  /**
+   * special support for HAX since the whole card is selectable
+   */
+  _clickCard(e) {
+    if (this.editMode) {
+      // do not do default
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    // flag for HAX to not trigger active on changes
+    this.alignState();
+    this.editMode = val;
+    return false;
+  }
+  alignState() {
+    // easy, name is flat
+    this.title = this.shadowRoot.querySelector("#title").innerText;
   }
   /**
    * LitElement ready

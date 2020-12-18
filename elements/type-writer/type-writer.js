@@ -101,7 +101,7 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Type writer",
         description: "typewritter effect",

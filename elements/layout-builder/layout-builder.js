@@ -57,7 +57,7 @@ class LayoutBuilder extends PolymerElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Layout builder",
         description: "A new UI for adding content to layouts",

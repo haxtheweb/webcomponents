@@ -1074,7 +1074,7 @@ window.SimpleColorsSharedStyles.requestAvailability = () => {
       "style"
     );
     window.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
-    document.head.append(window.SimpleColorsSharedStyles.stylesheet);
+    document.head.appendChild(window.SimpleColorsSharedStyles.stylesheet);
   }
   return window.SimpleColorsSharedStyles.instance;
 };

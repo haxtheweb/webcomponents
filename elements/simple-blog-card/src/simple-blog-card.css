@@ -18,6 +18,11 @@ simple-popover {
 
 div.card {
   height: auto !important;
+  overflow: hidden;
+}
+
+img {
+  max-height: 200px;
 }
 
 .card-content a{

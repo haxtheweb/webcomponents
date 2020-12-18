@@ -63,13 +63,13 @@
         window.SimpleTourManager.requestAvailability().startTour('hax2');
       });
       // say what bubbled up
-      document.getElementById('popover').addEventListener('simple-popover-selection-value', (e) => {
+      document.getElementById('popover').addEventListener('simple-popover-selection-changed', (e) => {
         alert(e.detail);
       });
-      document.getElementById('popover2').addEventListener('simple-popover-selection-value', (e) => {
+      document.getElementById('popover2').addEventListener('simple-popover-selection-changed', (e) => {
         alert(e.detail);
       });
-      document.getElementById('popover3').addEventListener('simple-popover-selection-value', (e) => {
+      document.getElementById('popover3').addEventListener('simple-popover-selection-changed', (e) => {
         alert(e.detail);
       });
     </script>

@@ -57,7 +57,7 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Count up",
         description: "count up js wrapper with minimal styling",

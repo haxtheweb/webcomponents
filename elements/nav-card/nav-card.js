@@ -67,7 +67,7 @@ class NavCard extends AccentCard {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Nav card",
         description: "an accent card of link lists",

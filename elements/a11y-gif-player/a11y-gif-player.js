@@ -330,7 +330,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Accessible GIF",
         description: "Makes animated GIFs accessible.",

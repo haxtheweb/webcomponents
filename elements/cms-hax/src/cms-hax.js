@@ -64,7 +64,7 @@ class CmsHax extends LitElement {
   }
   static get properties() {
     return {
-      __ready: {
+      ready: {
         type: Boolean,
       },
       /**
@@ -249,7 +249,7 @@ class CmsHax extends LitElement {
    */
   firstUpdated() {
     this.__applyMO();
-    this.__ready = true;
+    this.ready = true;
   }
   /**
    * Set certain data bound values to the store once it's ready
@@ -307,8 +307,8 @@ class CmsHax extends LitElement {
       if (propName == "redirectLocation") {
         this.redirectOnSave = this._computeRedirectOnSave(this[propName]);
       }
-      if (propName == "activeHaxBody" || propName == "__ready") {
-        this._activeHaxBodyUpdated(this.activeHaxBody, this.__ready);
+      if (propName == "activeHaxBody" || propName == "ready") {
+        this._activeHaxBodyUpdated(this.activeHaxBody, this.ready);
       }
       if (propName == "appStoreConnection") {
         this._makeAppStore(this[propName]);

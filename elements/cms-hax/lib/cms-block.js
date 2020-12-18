@@ -225,7 +225,7 @@ class CMSBlock extends PolymerElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "CMS Block",
         description: "CMS block rendered on the backend",

@@ -2,6 +2,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
+import { HAXStore } from "./hax-store.js";
+import { autorun, toJS } from "mobx";
 
 class HaxToolbarMenu extends LitElement {
   static get styles() {
@@ -26,20 +28,19 @@ class HaxToolbarMenu extends LitElement {
     return html`
       <simple-popover-selection
         @simple-popover-selection-changed="${this.selectedChanged}"
+        ?disabled="${this.disabled}"
         auto
         orientation="tb"
       >
-        <style slot="style">
-          simple-popover-manager hax-context-item {
-            overflow: hidden;
-            display: flex;
-          }
-          simple-popover-manager {
-            --simple-popover-padding: 0;
-          }
-        </style>
+        <div slot="style">
+          simple-popover-manager hax-context-item { overflow: hidden; display:
+          flex; } simple-popover-manager { --simple-popover-padding: 0; }
+          hax-context-item-textop[hidden] { opacity: 0; display: none;
+          visibility: hidden; }
+        </div>
         <hax-toolbar-item
           ?mini="${this.mini}"
+          ?disabled="${this.disabled}"
           ?action="${this.action}"
           slot="button"
           icon="${this.icon}"
@@ -66,12 +67,26 @@ class HaxToolbarMenu extends LitElement {
     super();
     this.corner = "";
     this.action = false;
+    this.disabled = false;
     this.tooltip = "";
     this.tooltipDirection = "";
     this.selected = 0;
     setTimeout(() => {
       this.addEventListener("click", this._menubuttonTap.bind(this));
     }, 0);
+    autorun(() => {
+      // this just forces this block to run when editMode is modified
+      const editMode = toJS(HAXStore.editMode);
+      const activeNode = toJS(HAXStore.activeNode);
+      if (
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("simple-popover-selection")
+      ) {
+        this.shadowRoot.querySelector(
+          "simple-popover-selection"
+        ).opened = false;
+      }
+    });
   }
   static get properties() {
     return {
@@ -80,6 +95,13 @@ class HaxToolbarMenu extends LitElement {
        */
       corner: {
         type: String,
+        reflect: true,
+      },
+      /**
+       * disabled state
+       */
+      disabled: {
+        type: Boolean,
         reflect: true,
       },
       mini: {
@@ -123,7 +145,9 @@ class HaxToolbarMenu extends LitElement {
    * Ensure menu is visible / default'ed.
    */
   _menubuttonTap(e) {
-    this.selected = "";
+    if (!this.disabled) {
+      this.selected = "";
+    }
   }
 }
 window.customElements.define(HaxToolbarMenu.tag, HaxToolbarMenu);

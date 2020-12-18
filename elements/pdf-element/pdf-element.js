@@ -284,7 +284,7 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "PDF viewer",
         descrption:

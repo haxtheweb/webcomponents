@@ -94,7 +94,7 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
     return {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Abbreviation",
         description: "Simple abbreviation with tooltip of full word",

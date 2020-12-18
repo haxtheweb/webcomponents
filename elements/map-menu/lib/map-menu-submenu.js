@@ -16,6 +16,7 @@ class MapMenuSubmenu extends LitElement {
           display: block;
         }
         #container {
+          margin: 0;
           margin-left: 16px;
         }
         #container ::slotted(map-menu-item) {
@@ -24,6 +25,8 @@ class MapMenuSubmenu extends LitElement {
         a11y-collapse {
           --a11y-collapse-border: 0;
           --a11y-collapse-horizontal-padding: 0;
+          --a11y-collapse-vertical-padding: 0;
+          color: var(--map-menu-item-a-color, inherit);
         }
       `,
     ];

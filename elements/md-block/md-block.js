@@ -43,7 +43,7 @@ class MdBlock extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Markdown",
         description: "A block of markdown content directly or remote loaded",

@@ -120,7 +120,7 @@ class HaxAppBrowser extends LitElement {
         this._activeAppChanged(this[propName], oldValue);
       }
       if (propName == "appList" && this[propName] && this.shadowRoot) {
-        this.resetBrowser();
+        this.searching = false;
       }
     });
   }
@@ -141,14 +141,7 @@ class HaxAppBrowser extends LitElement {
     }
     // app list registers early and has no imports so on
     // fast environments it's alreayd loaded
-    this.resetBrowser();
-  }
-  /**
-   * Reset this browser.
-   */
-  resetBrowser() {
     this.searching = false;
-    //this.appList = [...HAXStore.appList];
   }
 }
 window.customElements.define(HaxAppBrowser.tag, HaxAppBrowser);

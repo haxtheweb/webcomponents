@@ -294,7 +294,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Styled image",
         descrption:

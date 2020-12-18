@@ -393,7 +393,6 @@ class HaxElementListSelector extends LitElement {
         pk: value.haxcore.providers["haxcore-providers-pk"],
       },
       apps: {},
-      blox: value.haxcore.templates["haxcore-templates-templates"],
       stax: value.haxcore.templates["haxcore-templates-layouts"],
       autoloader: value.haxcore.search["haxcore-search-autoloader"],
     };

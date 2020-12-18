@@ -114,14 +114,14 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           );
           --a11y-tabs-content-background: var(--a11y-tabs-background, white);
           --a11y-tabs-content-padding: 16px;
-          --a11y-tabs-button-padding: 8px;
+          --a11y-tabs-button-padding: 4px;
           --a11y-tabs-vertical-button-padding: var(
             --a11y-tabs-button-padding,
-            8px
+            4px
           );
           --a11y-tabs-horizontal-button-padding: var(
             --a11y-tabs-button-padding,
-            8px
+            4px
           );
           --a11y-tabs-width: auto;
         }
@@ -184,6 +184,10 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           align-items: stretch;
         }
 
+        :host([full-width]) #tabs li {
+          width: 100%;
+        }
+
         :host([vertical]) #tabs li {
           flex-direction: column;
         }
@@ -213,6 +217,8 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         }
 
         #tabs button {
+          width: 100%;
+          min-width: unset;
           margin: 0;
           text-transform: unset;
           color: var(--a11y-tabs-faded-color);
@@ -346,7 +352,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     return {
       canScale: false,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Tabs",
         description: "A set of tabs.",
@@ -426,6 +432,14 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         type: String,
         reflect: true,
         attribute: "active-tab",
+      },
+      /**
+       * if tabs should be full width or not
+       */
+      fullWidth: {
+        type: Boolean,
+        reflect: true,
+        attribute: "full-width",
       },
       /**
        * whether tabbed interface is disabled
@@ -516,6 +530,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.fullWidth = false;
     this.disableResponsive = false;
     this.disabled = false;
     this.hidden = false;

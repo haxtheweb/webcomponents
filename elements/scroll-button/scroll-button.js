@@ -96,7 +96,7 @@ class ScrollButton extends LitElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Scroll button",
         description: "button to scroll to an area or back to top",

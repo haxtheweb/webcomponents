@@ -81,6 +81,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
   }
   constructor() {
     super();
+    this.sourceView = false;
     this.haxUIElement = true;
     this.tourName = "hax";
     setTimeout(() => {
@@ -147,27 +148,46 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       this.hasSelectedText = toJS(HAXStore.haxSelectedText).length > 0;
     });
     autorun(() => {
+      // this just forces this block to run when editMode is modified
       const editMode = toJS(HAXStore.editMode);
       const activeNode = toJS(HAXStore.activeNode);
+      if (activeNode && activeNode.tagName) {
+        let schema = HAXStore.haxSchemaFromTag(activeNode.tagName);
+        this.sourceView = schema.canEditSource;
+      }
+      if (
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("simple-popover-selection")
+      ) {
+        this.shadowRoot.querySelector(
+          "simple-popover-selection"
+        ).opened = false;
+      }
       // update our icon if global changes what we are pointing to
       if (
+        activeNode &&
         HAXStore.isTextElement(activeNode) &&
         this.shadowRoot.querySelector(
-          '#textformat button[value="' + activeNode.tagName.toLowerCase() + '"]'
+          'button[value="' + activeNode.tagName.toLowerCase() + '"]'
         )
       ) {
-        if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
-          this.shadowRoot.querySelector(
-            "simple-popover-selection"
-          ).opened = false;
-        }
         this.updateTextIconSelection(activeNode.tagName.toLowerCase());
+      } else if (
+        activeNode &&
+        activeNode.tagName === "LI" &&
+        this.shadowRoot.querySelector(
+          'button[value="' + activeNode.parentNode.tagName.toLowerCase() + '"]'
+        )
+      ) {
+        this.updateTextIconSelection(
+          activeNode.parentNode.tagName.toLowerCase()
+        );
       }
     });
   }
   render() {
     return html`
-      <hax-toolbar ?hide-more="${!this.hasSelectedText}" id="toolbar">
+      <hax-toolbar id="toolbar">
         <simple-popover-selection
           slot="primary"
           @simple-popover-selection-changed="${this.textFormatChanged}"
@@ -175,25 +195,15 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           orientation="tb"
           id="textformat"
         >
-          <style slot="style">
-            simple-popover-manager button {
-              color: black;
-              font-size: 10px !important;
-              margin: 0;
-              padding: 2px;
-              min-height: unset;
-              width: 100%;
-              display: flex;
-              justify-content: start;
-              align-items: center;
-              border: 0;
-            }
+          <div slot="style">
+            simple-popover-manager button { color: black; font-size: 10px
+            !important; margin: 0; padding: 4px; text-align:left; overflow:
+            hidden; min-height: unset; width: 100%; display: block;
+            justify-content: start; align-items: center; border: 0; }
             simple-popover-manager button simple-icon-lite {
-              --simple-icon-height: 18px;
-              --simple-icon-width: 18px;
-              margin-right: 8px;
-            }
-          </style>
+            --simple-icon-height: 18px; --simple-icon-width: 18px; margin-right:
+            8px; }
+          </div>
           <hax-context-item
             action
             mini
@@ -216,6 +226,26 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
               </button>`
           )}
         </simple-popover-selection>
+        <!-- comment this in when rich-text-editor is viable -->
+        <!--
+        <hax-context-item
+          mini
+          action
+          hidden
+          slot="primary"
+          icon="icons:flip-to-back"
+          label="Full text editor"
+          event-name="hax-full-text-editor-toggle"
+        ></hax-context-item> -->
+        <hax-context-item
+          mini
+          action
+          slot="primary"
+          icon="icons:code"
+          label="Modify HTML source"
+          ?hidden="${!this.sourceView}"
+          event-name="hax-source-view-toggle"
+        ></hax-context-item>
         <hax-context-item-textop
           mini
           action
@@ -260,7 +290,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           label="Bold"
           class="selected-buttons"
           event-name="text-bold"
-          ?disabled="${!this.hasSelectedText}"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -270,7 +300,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           label="Italic"
           class="selected-buttons"
           event-name="text-italic"
-          ?disabled="${!this.hasSelectedText}"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -280,7 +310,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           label="Link"
           class="selected-buttons"
           event-name="text-link"
-          ?disabled="${!this.hasSelectedText}"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -290,7 +320,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           label="Remove link"
           class="selected-buttons"
           event-name="text-unlink"
-          ?disabled="${!this.hasSelectedText}"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -300,7 +330,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           label="Remove format"
           class="selected-buttons"
           event-name="text-remove-format"
-          ?disabled="${!this.hasSelectedText}"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item
           mini
@@ -328,6 +358,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           slot="more"
           icon="mdextra:subscript"
           event-name="text-subscript"
+          ?hidden="${!this.hasSelectedText}"
           >Subscript</hax-context-item-textop
         >
         <hax-context-item-textop
@@ -336,6 +367,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           slot="more"
           icon="mdextra:superscript"
           event-name="text-superscript"
+          ?hidden="${!this.hasSelectedText}"
           >Superscript</hax-context-item-textop
         >
         <hax-context-item-textop
@@ -344,6 +376,7 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           slot="more"
           icon="editor:format-underlined"
           event-name="text-underline"
+          ?hidden="${!this.hasSelectedText}"
           >Underline</hax-context-item-textop
         >
         <hax-context-item-textop
@@ -352,7 +385,24 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
           slot="more"
           icon="editor:format-strikethrough"
           event-name="text-strikethrough"
+          ?hidden="${!this.hasSelectedText}"
           >Cross out</hax-context-item-textop
+        >
+        <hax-context-item-textop
+          action
+          menu
+          slot="more"
+          icon="hardware:keyboard-arrow-up"
+          event-name="insert-above-active"
+          >Insert item above</hax-context-item-textop
+        >
+        <hax-context-item-textop
+          action
+          menu
+          slot="more"
+          icon="hardware:keyboard-arrow-down"
+          event-name="insert-below-active"
+          >Insert item below</hax-context-item-textop
         >
       </hax-toolbar>
     `;
@@ -370,6 +420,9 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
       },
       realSelectedValue: {
         type: String,
+      },
+      sourceView: {
+        type: Boolean,
       },
       formattingList: {
         type: Array,
@@ -426,12 +479,14 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
         .removeAttribute("data-simple-popover-selection-active");
     }
     let localItem = this.shadowRoot.querySelector(
-      '#textformat button[value="' + this.realSelectedValue + '"]'
+      'button[value="' + this.realSelectedValue + '"]'
     );
-    localItem.setAttribute("data-simple-popover-selection-active", true);
-    this.formatIcon = localItem
-      .querySelector("simple-icon-lite")
-      .getAttribute("icon");
+    if (localItem) {
+      localItem.setAttribute("data-simple-popover-selection-active", true);
+      this.formatIcon = localItem
+        .querySelector("simple-icon-lite")
+        .getAttribute("icon");
+    }
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -478,6 +533,12 @@ class HaxTextContext extends SimpleTourFinder(LitElement) {
     let prevent = false;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
+      case "insert-above-active":
+      case "insert-below-active":
+        this.shadowRoot.querySelector(
+          "simple-popover-selection"
+        ).opened = false;
+        break;
       case "text-underline":
         document.execCommand("underline");
         prevent = true;

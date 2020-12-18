@@ -175,7 +175,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
                     name="${index}"
                     .value="${answer.userGuess}"
                     @value-changed="${this.checkedEvent}"
-                    label="${answer.label}"
+                    label="${answer.label ? answer.label : ""}"
                   ></simple-fields-field>
                 `
               )}
@@ -190,7 +190,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
                         property="oer:answer"
                         name="${index}"
                         type="checkbox"
-                        label="${answer.label}"
+                        label="${answer.label ? answer.label : ""}"
                         .value="${answer.userGuess}"
                         @value-changed="${this.checkedEvent}"
                       ></simple-fields-field>
@@ -482,7 +482,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Multiple choice",
         description: "Multiple choice self check",

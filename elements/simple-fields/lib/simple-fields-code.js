@@ -1,6 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsContainer } from "./simple-fields-container.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  *`simple-fields-code`
  * HTML inputs (excluding submit, reset, button, and image)
@@ -158,9 +160,10 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
    * @memberof SimpleFieldsCode
    */
   _onChange(e) {
-    if (!e.path[0]) return;
-    if (this.value !== e.path[0].value) this.value = e.path[0].value;
-    //this.autoGrow(e.path[0]);
+    var target = normalizeEventPath(e)[0];
+    if (!target) return;
+    if (this.value !== target.value) this.value = target.value;
+    //this.autoGrow(target);
   }
 
   /**
