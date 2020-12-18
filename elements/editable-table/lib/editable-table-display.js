@@ -308,7 +308,6 @@ class EditableTableDisplay extends displayBehaviors(
       cols = (head[0] || []).map((th, i) => {
         return [{ alt: th, value: i }];
       });
-    console.log(this.thead, cols);
     return cols;
   }
 

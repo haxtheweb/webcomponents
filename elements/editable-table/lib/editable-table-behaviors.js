@@ -394,7 +394,6 @@ export const displayBehaviors = function (SuperClass) {
         table.querySelectorAll("caption").length > 0
           ? table.querySelector("caption").innerHTML.trim()
           : undefined;
-      console.log("importHTML", table, this.data);
     }
 
     /**
@@ -403,7 +402,6 @@ export const displayBehaviors = function (SuperClass) {
      * @memberof EditableTable
      */
     loadSlottedTable() {
-      console.log("loadSlottedTable");
       let table = this.children.item(0);
       // support wrapping editable-table-display tag or primative
       if (table && table.tagName === "EDITABLE-TABLE-DISPLAY") {

@@ -129,6 +129,20 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     editor.revert();
     this.edit(editor, false);
   }
+
+  /**
+   * closes the toolbar
+   *
+   * @param {object} toolbar
+   * @param {object} editor
+   * @memberof RichTextEditorSelection
+   */
+  closeToolbar(toolbar, editor) {
+    if (editor) this.disableEditing(editor);
+    toolbar.editor = undefined;
+    document.body.append(toolbar);
+  }
+
   /**
    * disables contenteditable
    *
@@ -142,18 +156,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       editor.makeSticky(false);
     }
   }
-  /**
-   * closes the toolbar
-   *
-   * @param {object} toolbar
-   * @param {object} editor
-   * @memberof RichTextEditorSelection
-   */
-  closeToolbar(toolbar, editor) {
-    this.disableEditing(editor);
-    toolbar.editor = undefined;
-    document.body.append(toolbar);
-  }
+
   /**
    * executes button command on current range
    *
@@ -201,13 +204,15 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {void}
    */
   edit(editor, editable = true) {
-    let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
-      oldEditor = editable ? toolbar.editor : undefined;
-    this.highlight(editor, false);
-    if (toolbar && oldEditor !== editor) {
-      this.disableEditing(oldEditor);
-      toolbar.editor = editor;
-      this.enableEditing(editor, toolbar);
+    if (!!editor) {
+      let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
+        oldEditor = editable ? toolbar.editor : undefined;
+      this.highlight(editor, false);
+      if (toolbar && oldEditor !== editor) {
+        if (!!oldEditor) this.disableEditing(oldEditor);
+        toolbar.editor = editor;
+        this.enableEditing(editor, toolbar);
+      }
     }
   }
   /**
@@ -352,8 +357,10 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   highlight(toolbar, add = true, node) {
     this.toolbar = toolbar;
     let editor = toolbar ? toolbar.editor : undefined;
+    console.log("highlight a", editor, !editor || editor.innerHTML);
     if (!editor) return;
     if (add !== false) {
+      console.log("highlight b", editor, !editor || editor.innerHTML);
       if (toolbar.range) {
         this.hidden = false;
         toolbar.range.insertNode(this);
@@ -361,12 +368,15 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         toolbar.range.setStartAfter(this);
         this.range = toolbar.range;
       }
+      console.log("highlight b", editor, !editor || editor.innerHTML);
     } else {
+      console.log("highlight c", editor, !editor || editor.innerHTML);
       this.updateRange(toolbar.editor, toolbar.range);
       this.hidden = true;
       this.toolbar = undefined;
       this.range = undefined;
       document.body.append(this);
+      console.log("highlight d", editor, !editor || editor.innerHTML);
     }
 
     this.dispatchEvent(
@@ -377,6 +387,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         detail: add,
       })
     );
+    console.log("highlight e", editor, !editor || editor.innerHTML);
   }
   /**
    * selects and highlights a node

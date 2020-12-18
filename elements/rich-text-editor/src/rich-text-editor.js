@@ -65,7 +65,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     super.connectedCallback();
     setTimeout(() => {
       this.register();
-    }, 10);
+    }, 1);
   }
 
   /**
@@ -79,6 +79,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
 
   firstUpdated() {
     if (super.firstUpdated) super.firstUpdated();
+    if (this.isEmpty() && !!this.rawhtml) this.setHTML(this.rawhtml);
     if (this.isEmpty()) this.innerHTML = "";
     this._editableChange();
   }
@@ -88,10 +89,11 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "contenteditable") this._editableChange();
       if (propName === "range") this._rangeChange();
-      if (propName === "rawhtml") this.setHTML(this.rawhtml);
+      if (propName === "rawhtml" && !!this.rawhtml) this.setHTML(this.rawhtml);
     });
   }
   disableEditing() {
+    console.log("disableEditing", !this.innerHTML, this.trimHTML(this));
     this.contenteditable = false;
     this.dispatchEvent(
       new CustomEvent("editing-disabled", {
@@ -101,8 +103,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         detail: (this.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim(),
       })
     );
+    console.log("disableEditing 2", !this.innerHTML, this.trimHTML(this));
   }
   enableEditing() {
+    console.log("enableEditing", !this.innerHTML, this.trimHTML(this));
     this.contenteditable = true;
     this.dispatchEvent(
       new CustomEvent("editing-enabled", {
@@ -112,8 +116,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         detail: (this.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim(),
       })
     );
+    console.log("enableEditing 2", !this.innerHTML, this.trimHTML(this));
   }
   focus() {
+    console.log("focus", !this.innerHTML, this.trimHTML(this));
     this.__focused = true;
     this.dispatchEvent(
       new CustomEvent("focus", {
@@ -123,9 +129,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         detail: this.querySelector("*"),
       })
     );
+    console.log("focus", !this.innerHTML, this.trimHTML(this));
   }
   getHTML() {
-    return this.isEmpty || this.isPlaceholder()
+    return this.isEmpty() || this.isPlaceholder()
       ? ""
       : (this.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim();
   }
@@ -136,9 +143,15 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditor
    */
   isEmpty() {
+    console.log("isEmpty", !this.innerHTML, this.trimHTML(this));
     return !this.innerHTML || this.trimHTML(this) == "";
   }
   isPlaceholder() {
+    console.log(
+      "isPlaceholder",
+      this.trimHTML(this),
+      this.trimString(this.placeholderHTML)
+    );
     this.trimHTML(this) === this.trimString(this.placeholderHTML);
   }
 
@@ -218,6 +231,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     return !this.__selection ? document : this.__selection.getRoot(this);
   }
   setHTML(rawhtml = "") {
+    console.log("setHTML", rawhtml);
     this.innerHTML = rawhtml.trim();
     this.setCancelHTML(rawhtml.trim());
   }
