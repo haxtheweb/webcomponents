@@ -103,8 +103,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
           id="form"
           @blur="${this._handleBlur}"
           @focus="${this._handleFocus}"
-          @mouseover="${(e) => console.log("over")}"
-          @mouseout="${(e) => console.log("out")}"
         >
           <simple-fields
             id="formfields"

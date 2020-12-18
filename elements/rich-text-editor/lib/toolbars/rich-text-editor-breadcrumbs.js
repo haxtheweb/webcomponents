@@ -127,10 +127,8 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
    * @returns {void}
    */
   _handleBreadcrumb(e) {
-    console.log("_handleBreadcrumbs", e.detail.target);
     if (e.detail.target) {
       this.selectNode(e.detail.target);
-      console.log("_handleBreadcrumbs 2", e.detail.target, this.range);
     }
   }
 }

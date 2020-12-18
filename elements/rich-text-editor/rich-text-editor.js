@@ -275,6 +275,9 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     this.type = "rich-text-editor-toolbar";
     this.id = "";
     this.range = undefined;
+    this.__focused = false;
+    this.__hovered = false;
+    this.contenteditable = false;
     this.__selection = window.RichTextEditorSelection.requestAvailability();
     let root = this;
     document.addEventListener(shadow.eventName, this._getRange.bind(root));
@@ -312,9 +315,12 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
 
   firstUpdated() {
     if (super.firstUpdated) super.firstUpdated();
-    if (this.isEmpty() && !!this.rawhtml) this.setHTML(this.rawhtml);
-    if (this.isEmpty()) this.innerHTML = "";
-    this._editableChange();
+    if (this.isEmpty() && !!this.rawhtml) {
+      this.setHTML(this.rawhtml);
+    } else {
+      if (this.isEmpty()) this.innerHTML = "";
+      this._editableChange();
+    }
   }
 
   updated(changedProperties) {
@@ -324,9 +330,9 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
       if (propName === "range") this._rangeChange();
       if (propName === "rawhtml" && !!this.rawhtml) this.setHTML(this.rawhtml);
     });
+    if (!this.innerHTML) this.innerHTML = "";
   }
   disableEditing() {
-    console.log("disableEditing", !this.innerHTML, this.trimHTML(this));
     this.contenteditable = false;
     this.dispatchEvent(
       new CustomEvent("editing-disabled", {
@@ -336,10 +342,8 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         detail: (this.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim(),
       })
     );
-    console.log("disableEditing 2", !this.innerHTML, this.trimHTML(this));
   }
   enableEditing() {
-    console.log("enableEditing", !this.innerHTML, this.trimHTML(this));
     this.contenteditable = true;
     this.dispatchEvent(
       new CustomEvent("editing-enabled", {
@@ -349,10 +353,8 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         detail: (this.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim(),
       })
     );
-    console.log("enableEditing 2", !this.innerHTML, this.trimHTML(this));
   }
   focus() {
-    console.log("focus", !this.innerHTML, this.trimHTML(this));
     this.__focused = true;
     this.dispatchEvent(
       new CustomEvent("focus", {
@@ -362,7 +364,6 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         detail: this.querySelector("*"),
       })
     );
-    console.log("focus", !this.innerHTML, this.trimHTML(this));
   }
   getHTML() {
     return this.isEmpty() || this.isPlaceholder()
@@ -376,15 +377,9 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditor
    */
   isEmpty() {
-    console.log("isEmpty", !this.innerHTML, this.trimHTML(this));
     return !this.innerHTML || this.trimHTML(this) == "";
   }
   isPlaceholder() {
-    console.log(
-      "isPlaceholder",
-      this.trimHTML(this),
-      this.trimString(this.placeholderHTML)
-    );
     this.trimHTML(this) === this.trimString(this.placeholderHTML);
   }
 
@@ -464,9 +459,10 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     return !this.__selection ? document : this.__selection.getRoot(this);
   }
   setHTML(rawhtml = "") {
-    console.log("setHTML", rawhtml);
     this.innerHTML = rawhtml.trim();
     this.setCancelHTML(rawhtml.trim());
+    if (this.isEmpty()) this.innerHTML = "";
+    this._editableChange();
   }
   /**
    * holds on to edits so cancel willwork
@@ -475,7 +471,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditor
    */
   setCancelHTML(html = this.innerHTML) {
-    this.__canceledEdits = html;
+    this.__canceledEdits = html || "";
   }
   /**
    * gets trimmed version of innerHTML
@@ -511,7 +507,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   _editableChange() {
     if (this.contenteditable) {
       this.setCancelHTML();
-      if (this.isEmpty()) this.innerHTML = this.placeholderHTML;
+      if (this.isEmpty()) this.innerHTML = this.placeholderHTML || "";
     } else {
       if (this.isPlaceholder()) {
         this.setCancelHTML("");

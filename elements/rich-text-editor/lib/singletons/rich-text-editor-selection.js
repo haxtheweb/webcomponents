@@ -96,7 +96,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     this.__clipboard.style.height = "0px";
     this.id = this._generateUUID();
     document.body.appendChild(this.__clipboard);
-    window.addEventListener("paste", (e) => console.log("paste", e));
+    //window.addEventListener("paste", (e) => console.log("paste", e));
     window.addEventListener("register", this._handleRegistration.bind(sel));
     /*
     extendForward.addEventListener('click', () => {
@@ -167,14 +167,14 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   execCommand(command, val, range, toolbar) {
-    console.log(
+    /*console.log(
       ">>>>>>>> execCommand",
       command,
       val,
       range,
       toolbar,
       !range || range.cloneContents()
-    );
+    );*/
     let editor = toolbar.editor;
     if (command === "cancel") {
       toolbar.editor.revert();
@@ -357,10 +357,8 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   highlight(toolbar, add = true, node) {
     this.toolbar = toolbar;
     let editor = toolbar ? toolbar.editor : undefined;
-    console.log("highlight a", editor, !editor || editor.innerHTML);
     if (!editor) return;
     if (add !== false) {
-      console.log("highlight b", editor, !editor || editor.innerHTML);
       if (toolbar.range) {
         this.hidden = false;
         toolbar.range.insertNode(this);
@@ -368,15 +366,12 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         toolbar.range.setStartAfter(this);
         this.range = toolbar.range;
       }
-      console.log("highlight b", editor, !editor || editor.innerHTML);
     } else {
-      console.log("highlight c", editor, !editor || editor.innerHTML);
       this.updateRange(toolbar.editor, toolbar.range);
       this.hidden = true;
       this.toolbar = undefined;
       this.range = undefined;
       document.body.append(this);
-      console.log("highlight d", editor, !editor || editor.innerHTML);
     }
 
     this.dispatchEvent(
@@ -387,7 +382,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         detail: add,
       })
     );
-    console.log("highlight e", editor, !editor || editor.innerHTML);
   }
   /**
    * selects and highlights a node
@@ -712,6 +706,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         el = e.path[0] || { tagName: "" },
         evt = { detail: el },
         tagname = (el.tagName || "").toLowerCase();
+      console.log("clickable", e, el, evt, toolbar.range);
       if (els.includes(tagname)) toolbar.__clickableElements[tagname](evt);
     }
   }

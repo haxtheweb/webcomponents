@@ -546,7 +546,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * Handles button tap
      */
     _buttonTap(e) {
-      console.log("_buttonTap", this.range);
       e.preventDefault();
       this.sendCommand();
     }

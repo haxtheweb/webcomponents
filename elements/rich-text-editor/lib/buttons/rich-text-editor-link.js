@@ -49,7 +49,6 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.toggledLabel = "Unlink";
     this.toggles = "true";
     this.tagsList = "a";
-    console.log(this.tagsList);
     this.value = {
       ...super.value,
       href: null,
@@ -77,8 +76,8 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   /**
    * updates prompt fields with selected range data
    */
-  getValue() {
-    let target = this.rangeElement();
+  getValue(node) {
+    let target = node || this.rangeElement();
     return {
       ...super.getValue(),
       href:

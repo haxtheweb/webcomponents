@@ -101,7 +101,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
               if (e.detail) {
                 this.highlightNode(e.detail);
                 this.selectedNode = e.detail;
-                this.open();
+                this.open(e.detail);
               }
             },
           },
@@ -173,7 +173,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      */
     expandSelection() {
       let element = this.rangeQuery();
-      console.log("expand", element);
       if (element) {
         this.highlightNode(element);
         this.selectedNode = element;
@@ -226,16 +225,16 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * gets value for prompt based on current selection
      * (can be overriden for custom prompt field values)
      */
-    getValue() {
+    getValue(node) {
       return { innerHTML: this.getInnerHTML() || "" };
     }
 
     /**
      * Handles selecting text and opening prompt
      */
-    open() {
-      this.expandSelection();
-      this.value = this.getValue();
+    open(node) {
+      node || this.expandSelection();
+      this.value = this.getValue(node);
       this.dispatchEvent(
         new CustomEvent("rich-text-editor-prompt-open", {
           bubbles: true,

@@ -330,8 +330,7 @@ class EditableTable extends displayBehaviors(LitElement) {
                             disable-mouseover
                             toolbar="mini"
                             id="cell-${tr}-${td}"
-                            label="${this.label}"
-                            data-cell="${cell}"
+                            label="${`Cell ${this._getLabel(td, false)}${tr}`}"
                             rawhtml="${cell}"
                             type="rich-text-editor-toolbar-mini"
                           >
@@ -882,6 +881,40 @@ class EditableTable extends displayBehaviors(LitElement) {
         ["", "", ""],
       ];
     }
+  }
+  /**
+   * Get row or column label
+   * @param {number} index of row or column
+   * @param  {boolean} whenther it's a row
+   * @returns {string} a row number or a column letter
+   */
+  _getLabel(index) {
+    let numerals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+      results = this._getLetter(index).split("-").reverse(),
+      label = "";
+    for (let i = 0; i < results.length; i++) {
+      if (results[i] !== "") label += numerals[results[i]];
+    }
+    return label;
+  }
+
+  /**
+   * Converts index to a letter.
+   * @param {number} index of row or column
+   * @returns {string} a column letter
+   */
+  _getLetter(index) {
+    let place = Math.floor(index / 26),
+      multiplier = 26 * place,
+      remainder = index - multiplier,
+      letters = "";
+    letters += remainder + "-";
+    if (place > 0 && place < 26) {
+      letters += place - 1 + "-";
+    } else if (place >= 26) {
+      letters += this._getLetter(place - 1);
+    }
+    return letters;
   }
 }
 window.customElements.define(EditableTable.tag, EditableTable);

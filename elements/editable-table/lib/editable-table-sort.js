@@ -69,18 +69,11 @@ class EditableTableSort extends LitElement {
         type: Number,
         reflect: true,
       },
-      /**
-       * Column header text
-       */
-      text: {
-        type: String,
-      },
     };
   }
   constructor() {
     super();
     this.sortMode = "none";
-    this.text = "";
     this.sortColumn = -1;
   }
   /**
