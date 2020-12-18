@@ -705,7 +705,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     } else {
       let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
         els = !toolbar ? [] : Object.keys(toolbar.__clickableElements || {}),
-        el = e.path[0] || { tagName: "" },
+        el = normalizeEventPath(e)[0] || { tagName: "" },
         evt = { detail: el },
         tagname = (el.tagName || "").toLowerCase();
       console.log("clickable", e, el, evt, toolbar.range);
