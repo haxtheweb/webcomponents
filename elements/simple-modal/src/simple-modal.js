@@ -371,7 +371,7 @@ class SimpleModal extends LitElement {
         "--simple-modal-button-color",
         "--simple-modal-button-background",
       ].forEach((prop) => {
-        this.style.setProperty(prop, styles[prop] || "unset");
+        this.style.setProperty(prop, styles[prop] || "inherit");
       });
     }
     if (modalClass) {
