@@ -126,6 +126,12 @@ class LrnappStudioDashboard extends PolymerElement {
       },
     };
   }
+  ready() {
+    super.ready();
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 0);
+  }
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
