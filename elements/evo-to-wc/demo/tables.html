@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>evo-to-wc Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import { EvoToWcConverter } from "../evo-to-wc.js";
+    </script>
+    <style>
+      table {
+        width: 100%;
+      }
+      table th[scope="row"]{
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>evo-to-wc demo</h1>
+      <demo-snippet id="demo">
+        <script>
+        window.onload=()=>{
+          let converter = window.EvoToWc.requestAvailability();
+          console.log(converter,document.getElementById('demo'));
+          converter.convert(document.getElementById('demo'));
+        };
+        </script>
+        <template>
+          <table border="1" cellpadding="3" cellspacing="0" class="tablestyle2 dottedrows linedcols" style="max-width: 100%;"><caption>Table Style 2A</caption>
+            <thead>
+              <tr><th>Columns</th><th>Row Header A</th><th>Row Header B</th><th>Row Header C</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Column 1</th><td>Cell A1</td><td>Cell B1</td><td>Cell C1</td>
+              </tr>
+              <tr><th>Column 2</th><td>Cell A2</td><td>Cell B2</td><td>Cell C2</td>
+              </tr>
+              <tr><th>Column 3</th><td>Cell A3</td><td>Cell B3</td><td>Cell C3</td>
+              </tr>
+            </tbody>
+          </table>
+          <table border="1" cellpadding="3" cellspacing="0" class="tablestyle alternaterows dottedrows linedcols" style="max-width: 100%;"><caption>Table Style 1B</caption>
+            <tbody>
+              <tr><th>Column 1</th><td>Cell A1</td><td>Cell B1</td><td>Cell C1</td>
+              </tr>
+              <tr><th>Column 2</th><td>Cell A2</td><td>Cell B2</td><td>Cell C2</td>
+              </tr>
+              <tr><th>Column 3</th><td>Cell A3</td><td>Cell B3</td><td>Cell C3</td>
+              </tr>
+              <tr><th>Column 4</th><td>Cell A4</td><td>Cell B4</td><td>Cell C4</td>
+              </tr>
+            </tbody>
+          </table>
+          <table border="1" cellpadding="3" cellspacing="0" class="tablestyle2 alternaterows" style="max-width: 100%;"><caption>Table Style 2B</caption>
+            <thead>
+              <tr><th>Row Header A</th><th>Row Header B</th><th>Row Header C</th><th>Row Header D</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Cell A1</td><td>Cell B1</td><td>Cell C1</td><td>Cell D1</td>
+              </tr>
+              <tr><td>Cell A2</td><td>Cell B2</td><td>Cell C2</td><td>Cell D2</td>
+              </tr>
+              <tr><td>Cell A3</td><td>Cell B3</td><td>Cell C3</td><td>Cell D3</td>
+              </tr>
+            </tbody>
+          </table>
+          <table border="1" cellpadding="3" cellspacing="0" class="tablestyle alternatecols dottedcols linedrows" style="max-width: 100%;"><caption>Table Style 1C</caption>
+            <tbody>
+              <tr><td>Cell A1</td><td>Cell B1</td><td>Cell C1</td><td>Cell D1</td>
+              </tr>
+              <tr><td>Cell A2</td><td>Cell B2</td><td>Cell C2</td><td>Cell D2</td>
+              </tr>
+              <tr><td>Cell A3</td><td>Cell B3</td><td>Cell C3</td><td>Cell D3</td>
+              </tr>
+              <tr><td>Cell A4</td><td>Cell B4</td><td>Cell C4</td><td>Cell D4</td>
+              </tr>
+            </tbody>
+          </table>
+          <table border="1" cellpadding="3" cellspacing="0" class="tablestyle2 alternatecols" style="max-width: 100%;"><caption>Table Style 2C</caption>
+            <thead>
+              <tr><th>Row Header A</th><th>Row Header B</th><th>Row Header C</th><th>Row Header D</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Cell A1</td><td>Cell B1</td><td>Cell C1</td><td>Cell D1</td>
+              </tr>
+              <tr><td>Cell A2</td><td>Cell B2</td><td>Cell C2</td><td>Cell D2</td>
+              </tr>
+              <tr><td>Cell A3</td><td>Cell B3</td><td>Cell C3</td><td>Cell D3</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr><td>Footer A</td><td>Footer B</td><td>Footer c</td><td>Footer D</td>
+              </tr>
+            </tfoot>
+          </table>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
