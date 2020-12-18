@@ -13,6 +13,7 @@ import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
 import "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js";
 import "@lrnwebcomponents/a11y-figure/a11y-figure.js";
+import "@lrnwebcomponents/editable-table/editable-table.js";
 
 /**
  * evo-to-wc
@@ -20,6 +21,7 @@ import "@lrnwebcomponents/a11y-figure/a11y-figure.js";
  *
  *
  * @demo ./demo/index.html Course Icons
+ * @demo ./demo/tables.html Tables
  * @demo ./demo/callouts.html Callouts
  * @demo ./demo/images.html Images
  * @demo ./demo/nav.html Navigation
@@ -66,6 +68,20 @@ export class EvoToWc {
         evoicon.classList.remove("coursework");
         evoicon.classList.remove(key);
       });
+    });
+    target.querySelectorAll(".tablestyle,.tablestyle2").forEach((table) => {
+      let editable = document.createElement("editable-table");
+      editable.bordered =
+        table.classList.contains("dottedrows") ||
+        table.classList.contains("dottedcols") ||
+        table.classList.contains("linedrows") ||
+        table.classList.contains("linedcols");
+      editable.columnStriped = table.classList.contains("alternatecols");
+      editable.striped =
+        !editable.columnStriped && table.classList.contains("alternaterows");
+      table.parentElement.insertBefore(editable, table);
+      editable.append(table);
+      editable.loadSlottedTable();
     });
     target.querySelectorAll(".tabbed-interface").forEach((tabs) => {
       let a11ytabs = document.createElement("a11y-tabs");
