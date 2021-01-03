@@ -43,6 +43,7 @@
   "dependencies": {
     "@lrnwebcomponents/materializecss-styles": "^2.8.0",
     "@lrnwebcomponents/paper-fab-speed-dial": "^2.8.0",
+    "@lrnwebcomponents/simple-icon": "^2.8.0",
     "@polymer/iron-flex-layout": "^3.0.1",
     "@polymer/paper-fab": "^3.0.1",
     "@polymer/polymer": "^3.3.1"
@@ -50,7 +51,6 @@
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.7.7",
     "@lrnwebcomponents/hax-iconset": "^2.8.0",
-    "@lrnwebcomponents/simple-icon": "^2.8.0",
     "@lrnwebcomponents/storybook-utilities": "^2.8.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
