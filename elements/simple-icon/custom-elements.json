@@ -655,7 +655,6 @@
     {
       "name": "simple-iconset",
       "path": "./lib/simple-iconset.js",
-      "description": "Singleton to manage iconsets",
       "properties": [
         {
           "name": "iconsets",

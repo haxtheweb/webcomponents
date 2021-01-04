@@ -660,6 +660,7 @@ class GridPlate extends LitElement {
                     // dropping in without a slot set in anyway
                     // validate slot name, otherwise force it to col-1
                     if (
+                      node.parentElement &&
                       node.parentElement.tagName !== "HAX-BODY" &&
                       !this.validateElementSlot(node)
                     ) {

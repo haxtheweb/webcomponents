@@ -41,7 +41,7 @@
       "attributes": [
         {
           "name": "jwt",
-          "description": "`jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperty: jwt\n\nDefault: demo"
+          "description": "`jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperty: jwt\n\nDefault: false"
         }
       ]
     },
@@ -573,7 +573,7 @@
     },
     {
       "name": "haxcms-site-listing",
-      "description": "`haxcms-site-listing`\n`A listing of all sites being managed by this instance.`\n\nEvents:\n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `jwt-login-logout` {`CustomEvent<{}>`} - \n\n  * `jwt-login-login` {`CustomEvent<any>`} - \n\n  * `sites-listing-refresh-data` {`CustomEvent<boolean>`} - \n\n  * `jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - \n\nAttributes:\n\n  * `__loading` {`boolean`} - \n\n  * `sites-response` - Object, JSON Outline Schema format\n\n  * `method` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `sites` {`any[]`} - \n\n  * `base-path` {`string`} - Base path of where this is located.\n\n  * `hide-login` {`boolean`} - If we should hide the login button all the time or not\n\n  * `hide-global-settings` {`boolean`} - If we should hide the login button all the time or not\n\n  * `data-source` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\n  * `jwt` {`string`} - JSON Web token\n\n  * `user-data` - \n\n  * `create-params` - Request params for creating a new site\n\n  * `download-params` - \n\n  * `delete-params` - \n\n  * `clone-params` - \n\n  * `publish-params` - \n\n  * `sync-params` - \n\n  * `archive-params` - \n\n  * `config-params` - \n\n  * `set-config-params` - \n\n  * `get-user-data-params` - \n\n  * `active-opertion` {`string`} - \n\n  * `selected-items` {`any[]`} - \n\n  * `active-item` - Active item that's being reviewed / has bubbled up.\n\n  * `logged-in` {`boolean`} - Logged in state\n\n  * `edit-mode` {`boolean`} - Edit mode\n\n  * `hide-camera` {`boolean`} - \n\n  * `logout-photo` {`string`} - \n\n  * `-hax-schematizer` - \n\n  * `-hax-elementizer` - \n\nProperties:\n\n  * `__loading` {`boolean`} - \n\n  * `sitesResponse` - Object, JSON Outline Schema format\n\n  * `method` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `sites` {`any[]`} - \n\n  * `basePath` {`string`} - Base path of where this is located.\n\n  * `hideLogin` {`boolean`} - If we should hide the login button all the time or not\n\n  * `hideGlobalSettings` {`boolean`} - If we should hide the login button all the time or not\n\n  * `dataSource` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\n  * `jwt` {`string`} - JSON Web token\n\n  * `userData` - \n\n  * `createParams` - Request params for creating a new site\n\n  * `downloadParams` - \n\n  * `deleteParams` - \n\n  * `cloneParams` - \n\n  * `publishParams` - \n\n  * `syncParams` - \n\n  * `archiveParams` - \n\n  * `configParams` - \n\n  * `setConfigParams` - \n\n  * `getUserDataParams` - \n\n  * `activeOpertion` {`string`} - \n\n  * `selectedItems` {`any[]`} - \n\n  * `activeItem` - Active item that's being reviewed / has bubbled up.\n\n  * `loggedIn` {`boolean`} - Logged in state\n\n  * `editMode` {`boolean`} - Edit mode\n\n  * `hideCamera` {`boolean`} - \n\n  * `logoutPhoto` {`string`} - \n\n  * `SimpleColors` - \n\n  * `HaxSchematizer` - \n\n  * `HaxElementizer` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`haxcms-site-listing`\n`A listing of all sites being managed by this instance.`\n\nEvents:\n\n  * `jwt-login-logout` {`CustomEvent<{}>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `jwt-login-login` {`CustomEvent<any>`} - \n\n  * `sites-listing-refresh-data` {`CustomEvent<boolean>`} - \n\n  * `jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - \n\nAttributes:\n\n  * `__loading` {`boolean`} - \n\n  * `sites-response` - Object, JSON Outline Schema format\n\n  * `method` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `sites` {`any[]`} - \n\n  * `base-path` {`string`} - Base path of where this is located.\n\n  * `hide-login` {`boolean`} - If we should hide the login button all the time or not\n\n  * `hide-global-settings` {`boolean`} - If we should hide the login button all the time or not\n\n  * `data-source` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\n  * `jwt` {`string`} - JSON Web token\n\n  * `user-data` - \n\n  * `create-params` - Request params for creating a new site\n\n  * `download-params` - \n\n  * `delete-params` - \n\n  * `clone-params` - \n\n  * `publish-params` - \n\n  * `sync-params` - \n\n  * `archive-params` - \n\n  * `config-params` - \n\n  * `set-config-params` - \n\n  * `get-user-data-params` - \n\n  * `active-opertion` {`string`} - \n\n  * `selected-items` {`any[]`} - \n\n  * `active-item` - Active item that's being reviewed / has bubbled up.\n\n  * `logged-in` {`boolean`} - Logged in state\n\n  * `edit-mode` {`boolean`} - Edit mode\n\n  * `hide-camera` {`boolean`} - \n\n  * `logout-photo` {`string`} - \n\n  * `-hax-schematizer` - \n\n  * `-hax-elementizer` - \n\nProperties:\n\n  * `__loading` {`boolean`} - \n\n  * `sitesResponse` - Object, JSON Outline Schema format\n\n  * `method` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `sites` {`any[]`} - \n\n  * `basePath` {`string`} - Base path of where this is located.\n\n  * `hideLogin` {`boolean`} - If we should hide the login button all the time or not\n\n  * `hideGlobalSettings` {`boolean`} - If we should hide the login button all the time or not\n\n  * `dataSource` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\n  * `jwt` {`string`} - JSON Web token\n\n  * `userData` - \n\n  * `createParams` - Request params for creating a new site\n\n  * `downloadParams` - \n\n  * `deleteParams` - \n\n  * `cloneParams` - \n\n  * `publishParams` - \n\n  * `syncParams` - \n\n  * `archiveParams` - \n\n  * `configParams` - \n\n  * `setConfigParams` - \n\n  * `getUserDataParams` - \n\n  * `activeOpertion` {`string`} - \n\n  * `selectedItems` {`any[]`} - \n\n  * `activeItem` - Active item that's being reviewed / has bubbled up.\n\n  * `loggedIn` {`boolean`} - Logged in state\n\n  * `editMode` {`boolean`} - Edit mode\n\n  * `hideCamera` {`boolean`} - \n\n  * `logoutPhoto` {`string`} - \n\n  * `SimpleColors` - \n\n  * `HaxSchematizer` - \n\n  * `HaxElementizer` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "__loading",
@@ -702,12 +702,12 @@
           "description": "`-hax-elementizer` - \n\nProperty: HaxElementizer\n\nDefault: [object Object]"
         },
         {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
-        },
-        {
           "name": "onjwt-login-logout",
           "description": "`jwt-login-logout` {`CustomEvent<{}>`} - "
+        },
+        {
+          "name": "onsimple-toast-show",
+          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
         },
         {
           "name": "onjwt-login-login",
@@ -1292,7 +1292,7 @@
     },
     {
       "name": "site-modal",
-      "description": "`site-modal`\n`A basic site dialog`\n\nEvents:\n\n  * `site-modal-click` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `accent-color` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `button-label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `accentColor` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `position` {`string`} - ",
+      "description": "`site-modal`\n`A basic site dialog`\n\nEvents:\n\n  * `site-modal-click` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `dark` {`boolean`} - \n\n  * `accent-color` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `button-label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `dark` {`boolean`} - \n\n  * `accentColor` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `position` {`string`} - ",
       "attributes": [
         {
           "name": "disabled",
@@ -1300,17 +1300,17 @@
           "valueSet": "v"
         },
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Dialog"
-        },
-        {
           "name": "dark",
-          "description": "`dark` {`boolean`} - \n\nProperty: dark\n\nDefault: false",
+          "description": "`dark` {`boolean`} - \n\nProperty: dark",
           "valueSet": "v"
         },
         {
           "name": "accent-color",
-          "description": "`accent-color` {`string`} - \n\nProperty: accentColor\n\nDefault: null"
+          "description": "`accent-color` {`string`} - \n\nProperty: accentColor"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Dialog"
         },
         {
           "name": "icon",

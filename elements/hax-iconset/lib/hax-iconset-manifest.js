@@ -1,4 +1,5 @@
 export const HaxIconsetManifest = [
+  null,
   {
     name: "courseicons",
     icons: [
@@ -19,10 +20,12 @@ export const HaxIconsetManifest = [
   {
     name: "editable-table",
     icons: [
+      "col-striped",
       "column-headers",
       "filter-off",
       "filter",
       "footer",
+      "numbers",
       "row-condensed",
       "row-headers",
       "row-striped",
@@ -168,6 +171,7 @@ export const HaxIconsetManifest = [
       "icor",
       "inbox",
       "info",
+      "innovate",
       "input",
       "instructor",
       "interact",

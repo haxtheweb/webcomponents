@@ -1,1 +1,186 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports,require("@polymer/polymer/polymer-element.js"),require("@polymer/paper-styles/paper-styles.js"),require("@polymer/iron-flex-layout/iron-flex-layout.js"),require("@polymer/iron-resizable-behavior/iron-resizable-behavior.js"),require("@polymer/polymer/lib/legacy/class.js")):"function"==typeof define&&define.amd?define(["exports","@polymer/polymer/polymer-element.js","@polymer/paper-styles/paper-styles.js","@polymer/iron-flex-layout/iron-flex-layout.js","@polymer/iron-resizable-behavior/iron-resizable-behavior.js","@polymer/polymer/lib/legacy/class.js"],r):r((e=e||self).CircleProgress={},e.polymerElement_js,null,null,e.ironResizableBehavior_js,e.class_js)}(this,function(e,r,t,n,o,i){"use strict";function s(e,r){for(var t=0;t<r.length;t++){var n=r[t];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}function c(e,r,t){return r&&s(e.prototype,r),t&&s(e,t),e}function a(e,r,t){return r in e?Object.defineProperty(e,r,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[r]=t,e}function l(e,r){var t=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);r&&(n=n.filter(function(r){return Object.getOwnPropertyDescriptor(e,r).enumerable})),t.push.apply(t,n)}return t}function u(e){for(var r=1;r<arguments.length;r++){var t=null!=arguments[r]?arguments[r]:{};r%2?l(Object(t),!0).forEach(function(r){a(e,r,t[r])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(t)):l(Object(t)).forEach(function(r){Object.defineProperty(e,r,Object.getOwnPropertyDescriptor(t,r))})}return e}function f(e){return(f=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function p(e,r){return(p=Object.setPrototypeOf||function(e,r){return e.__proto__=r,e})(e,r)}function y(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function m(e){var r=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],function(){})),!0}catch(e){return!1}}();return function(){var t,n,o,i=f(e);if(r){var s=f(this).constructor;t=Reflect.construct(i,arguments,s)}else t=i.apply(this,arguments);return n=this,!(o=t)||"object"!=typeof o&&"function"!=typeof o?y(n):o}}function h(e,r,t){return(h="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,r,t){var n=function(e,r){for(;!Object.prototype.hasOwnProperty.call(e,r)&&null!==(e=f(e)););return e}(e,r);if(n){var o=Object.getOwnPropertyDescriptor(n,r);return o.get?o.get.call(t):o.value}})(e,r,t||e)}function d(){var e,r,t=(e=['\n      <style include="paper-material-styles">\n        :host {\n          @apply --layout-vertical;\n          @apply --layout-center-center;\n          position: relative;\n          width: var(--circle-progress-width, 64px);\n          height: var(--circle-progress-height, 64px);\n          margin: 24px;\n          border-radius: 50%;\n        }\n        svg {\n          position: absolute;\n          top: 0;\n          left: 0;\n          display: none;\n        }\n        .circle-background {\n          stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);\n        }\n        .circle-foreground {\n          transition: stroke-dashoffset var(--circle-progress-transition, 150ms);\n          stroke: var(--circle-progress-stroke-color, blue);\n          stroke-linecap: var(--circle-progress-stroke-linecap, round);\n        }\n      </style>\n\n      <svg id="circle" width="100%" height="100%">\n        <circle\n          class="circle-background"\n          r$="[[_radius]]"\n          cx$="[[_cx]]"\n          cy$="[[_cy]]"\n          fill="transparent"\n          stroke-width$="[[strokeWidth]]"\n        ></circle>\n        <circle\n          class="circle-foreground"\n          r$="[[_radius]]"\n          cx$="[[_cx]]"\n          cy$="[[_cy]]"\n          fill="transparent"\n          stroke-width$="[[strokeWidth]]"\n          stroke-dasharray$="[[_dasharray]]"\n          stroke-dashoffset$="[[_dashoffset]]"\n          transform$="[[_transform]]"\n        ></circle>\n      </svg>\n      <slot></slot>\n    '],r||(r=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(r)}})));return d=function(){return t},t}var b=function(e){!function(e,r){if("function"!=typeof r&&null!==r)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(r&&r.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),r&&p(e,r)}(n,i.mixinBehaviors([o.IronResizableBehavior],r.PolymerElement));var t=m(n);function n(){var e;return function(e,r){if(!(e instanceof r))throw new TypeError("Cannot call a class as a function")}(this,n),e=t.call(this),setTimeout(function(){e.addEventListener("iron-resize",e._onIronResize.bind(y(e)))},0),e}return c(n,null,[{key:"template",get:function(){return r.html(d())}},{key:"tag",get:function(){return"circle-progress"}},{key:"properties",get:function(){return u(u({},h(f(n),"properties",this)),{},{value:{name:"value",type:Number,value:0},max:{name:"max",type:Number,value:100},strokeWidth:{name:"strokeWidth",type:Number,value:4},angle:{name:"angle",type:Number,value:-90},_cx:{name:"_cx",type:Number,value:null},_cy:{name:"_cy",type:Number,value:null},_radius:{name:"_radius",type:Number,computed:"_computeRadius(_cx, _cy, strokeWidth)"},_transform:{name:"_transform",type:String,computed:"_computeTransform(angle, _cx, _cy)"},_dasharray:{name:"_dasharray",type:Number,computed:"_computeDashArray(_radius)"},_dashoffset:{name:"_dashoffset",type:Number,computed:"_computeDashOffset(value, max, _dasharray)"}})}}]),c(n,[{key:"_computeDashArray",value:function(e){return 2*Math.PI*e}},{key:"_computeDashOffset",value:function(e,r,t){return(1-e/r)*t}},{key:"_computeRadius",value:function(e,r,t){return e&&r?Math.max(0,Math.min(e,r)-t/2):0}},{key:"_computeTransform",value:function(e,r,t){return r&&t?"rotate("+e+", "+r+", "+t+")":""}},{key:"_onIronResize",value:function(){this.offsetWidth&&this.offsetHeight&&(this._cx=this.offsetWidth/2,this._cy=this.offsetHeight/2,this.shadowRoot.querySelector("#circle").style.display="block")}}]),n}();window.customElements.define(b.tag,b),e.CircleProgress=b,Object.defineProperty(e,"__esModule",{value:!0})});
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/paper-styles/paper-styles.js";
+import "@polymer/iron-flex-layout/iron-flex-layout.js";
+import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
+/**
+ * `circle-progress`
+ * `Polymer-based web component displaying a circular progress bar.`
+ *
+ * @demo demo/index.html
+ * @element circle-progress
+ */
+class CircleProgress extends mixinBehaviors(
+  [IronResizableBehavior],
+  PolymerElement
+) {
+  static get template() {
+    return html`
+      <style include="paper-material-styles">
+        :host {
+          @apply --layout-vertical;
+          @apply --layout-center-center;
+          position: relative;
+          width: var(--circle-progress-width, 64px);
+          height: var(--circle-progress-height, 64px);
+          margin: 24px;
+          border-radius: 50%;
+        }
+        svg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: none;
+        }
+        .circle-background {
+          stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);
+        }
+        .circle-foreground {
+          transition: stroke-dashoffset var(--circle-progress-transition, 150ms);
+          stroke: var(--circle-progress-stroke-color, blue);
+          stroke-linecap: var(--circle-progress-stroke-linecap, round);
+        }
+      </style>
+
+      <svg id="circle" width="100%" height="100%">
+        <circle
+          class="circle-background"
+          r$="[[_radius]]"
+          cx$="[[_cx]]"
+          cy$="[[_cy]]"
+          fill="transparent"
+          stroke-width$="[[strokeWidth]]"
+        ></circle>
+        <circle
+          class="circle-foreground"
+          r$="[[_radius]]"
+          cx$="[[_cx]]"
+          cy$="[[_cy]]"
+          fill="transparent"
+          stroke-width$="[[strokeWidth]]"
+          stroke-dasharray$="[[_dasharray]]"
+          stroke-dashoffset$="[[_dashoffset]]"
+          transform$="[[_transform]]"
+        ></circle>
+      </svg>
+      <slot></slot>
+    `;
+  }
+
+  static get tag() {
+    return "circle-progress";
+  }
+
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * Value of circular progress bar.
+       */
+      value: {
+        name: "value",
+        type: Number,
+        value: 0,
+      },
+
+      /**
+       * Maximum of value.
+       */
+      max: {
+        name: "max",
+        type: Number,
+        value: 100,
+      },
+
+      /**
+       * Stroke width of circle.
+       */
+      strokeWidth: {
+        name: "strokeWidth",
+        type: Number,
+        value: 4,
+      },
+
+      /**
+       * Starting angle of the progress.
+       */
+      angle: {
+        name: "angle",
+        type: Number,
+        value: -90,
+      },
+
+      _cx: {
+        name: "_cx",
+        type: Number,
+        value: null,
+      },
+
+      _cy: {
+        name: "_cy",
+        type: Number,
+        value: null,
+      },
+
+      _radius: {
+        name: "_radius",
+        type: Number,
+        computed: "_computeRadius(_cx, _cy, strokeWidth)",
+      },
+
+      _transform: {
+        name: "_transform",
+        type: String,
+        computed: "_computeTransform(angle, _cx, _cy)",
+      },
+
+      _dasharray: {
+        name: "_dasharray",
+        type: Number,
+        computed: "_computeDashArray(_radius)",
+      },
+
+      _dashoffset: {
+        name: "_dashoffset",
+        type: Number,
+        computed: "_computeDashOffset(value, max, _dasharray)",
+      },
+    };
+  }
+  constructor() {
+    super();
+    setTimeout(() => {
+      this.addEventListener("iron-resize", this._onIronResize.bind(this));
+    }, 0);
+  }
+  _computeDashArray(radius) {
+    return 2 * Math.PI * radius;
+  }
+
+  _computeDashOffset(value, max, dasharray) {
+    return (1 - value / max) * dasharray;
+  }
+
+  _computeRadius(cx, cy, strokeWidth) {
+    return cx && cy ? Math.max(0, Math.min(cx, cy) - strokeWidth / 2) : 0;
+  }
+
+  _computeTransform(angle, cx, cy) {
+    return cx && cy ? "rotate(" + angle + ", " + cx + ", " + cy + ")" : "";
+  }
+
+  _onIronResize() {
+    if (this.offsetWidth && this.offsetHeight) {
+      this._cx = this.offsetWidth / 2;
+      this._cy = this.offsetHeight / 2;
+      this.shadowRoot.querySelector("#circle").style.display = "block";
+    }
+  }
+}
+window.customElements.define(CircleProgress.tag, CircleProgress);
+export { CircleProgress };
