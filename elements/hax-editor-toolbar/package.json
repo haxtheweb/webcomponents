@@ -1,0 +1,62 @@
+{
+  "name": "@lrnwebcomponents/hax-editor-toolbar",
+  "wcfactory": {
+    "className": "HaxEditorToolbar",
+    "customElementClass": "LitElement",
+    "elementName": "hax-editor-toolbar",
+    "generator-wcfactory-version": "0.8.7",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/hax-editor-toolbar.css",
+      "scss": "src/hax-editor-toolbar.scss",
+      "html": "src/hax-editor-toolbar.html",
+      "js": "src/hax-editor-toolbar.js",
+      "properties": "src/hax-editor-toolbar-properties.json",
+      "hax": "src/hax-editor-toolbar-hax.json"
+    },
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": ["super.baseStyles","super.miniStyles"]
+  },
+  "version": "2.8.0",
+  "description": "A customized toolbar (with buttons) for HAX",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "hax-editor-toolbar.js",
+  "module": "hax-editor-toolbar.js",
+  "umd": "hax-editor-toolbar.umd.js",
+  "scripts": {
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-text-editor/test/",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "nikkimk"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/lrn-math": "^2.8.0",
+    "@lrnwebcomponents/lrn-vocab": "^2.8.0",
+    "@lrnwebcomponents/oer-schema": "^2.8.0",
+    "@lrnwebcomponents/rich-text-editor": "^2.8.0",
+    "lit-element":"2.0.1"
+  },
+  "devDependencies": {
+    "web-animations-js":"2.3.1","@lrnwebcomponents/deduping-fix":"2.0.5","@polymer/iron-demo-helpers":"3.1.0","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.2.7","concurrently":"4.1.0","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.5","lodash":"4.17.11","polymer-cli":"1.9.7","polymer-build":"3.1.2","wct-browser-legacy":"1.0.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}
