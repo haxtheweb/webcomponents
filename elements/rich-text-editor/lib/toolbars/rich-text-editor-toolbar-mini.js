@@ -23,18 +23,7 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
   }
 
   static get styles() {
-    return [
-      ...super.baseStyles,
-      css`
-        :host,
-        #floating {
-          display: flex;
-        }
-        #toolbar[collapsed] {
-          width: max-content;
-        }
-      `,
-    ];
+    return [...super.baseStyles, ...super.miniStyles];
   }
 
   // properties available to the custom element for data binding

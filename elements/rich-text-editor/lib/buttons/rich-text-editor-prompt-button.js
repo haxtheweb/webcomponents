@@ -122,14 +122,14 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
     }
 
     /**
-     * determaines commandVal based on values passed from prompt
+     * determines commandVal based on values passed from prompt
      * (can be overriden for custom prompt command values)
      */
     get promptCommandVal() {
       return this.commandVal;
     }
     /**
-     * determaines if prompt also sets innerHTML of range
+     * determines if prompt also sets innerHTML of range
      * (can be overriden for custom prompts)
      */
     get setsInnerHTML() {

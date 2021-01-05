@@ -37,9 +37,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return [
         ...super.styles,
         css`
-          :host {
-            outline: 1px solid red;
-          }
           #toolbar {
             display: flex;
             opacity: 1;
@@ -93,6 +90,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           #toolbar[responsive-size="md"][collapsed] *[collapsed-until*="l"],
           #toolbar[responsive-size="lg"][collapsed] *[collapsed-until="xl"] {
             display: none;
+          }
+        `,
+      ];
+    }
+
+    static get miniStyles() {
+      return [
+        css`
+          :host,
+          #floating {
+            display: flex;
+          }
+          #toolbar[collapsed] {
+            width: max-content;
           }
         `,
       ];
