@@ -11,7 +11,7 @@
       "js": "src/iframe-loader.js"
     }
   },
-  "version": "2.7.10",
+  "version": "3.0.0",
   "description": "Adds a loading indicator for iframes.",
   "repository": {
     "type": "git",

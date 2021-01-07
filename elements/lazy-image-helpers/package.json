@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "2.8.0",
+  "version": "3.0.0",
   "description": "helpers for building lazy loading images",
   "repository": {
     "type": "git",
@@ -30,18 +30,34 @@
   "umd": "lazy-image-helpers.umd.js",
   "scripts": {
     "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lazy-image-helpers/test/",
-    "start":"yarn run dev","build":"gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"gulp dev --gulpfile=gulpfile.cjs","serve":"es-dev-server -c ../../es-dev-server.config.js","lighthouse":"gulp lighthouse --gulpfile=gulpfile.cjs"
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
     "name": "btopro"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-icon": "^2.8.0",
+    "@lrnwebcomponents/simple-icon": "^3.0.0",
     "lit-element": "2.4.0"
   },
   "devDependencies": {
-    "web-animations-js":"2.3.2","@lrnwebcomponents/deduping-fix":"2.7.7","@polymer/iron-demo-helpers":"3.1.0","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.4.4","gulp-babel":"8.0.0","lodash":"4.17.20","polymer-cli":"1.9.11","es-dev-server":"1.57.8","concurrently":"5.3.0","polymer-build":"3.1.4","wct-browser-legacy":"1.0.2"
+    "@lrnwebcomponents/deduping-fix": "^3.0.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.4.4",
+    "concurrently": "5.3.0",
+    "es-dev-server": "1.57.8",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.20",
+    "polymer-build": "3.1.4",
+    "polymer-cli": "1.9.11",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
   },
   "private": false,
   "publishConfig": {

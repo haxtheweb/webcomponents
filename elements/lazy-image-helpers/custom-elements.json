@@ -21,6 +21,11 @@
           "type": "string"
         },
         {
+          "name": "loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "image-loaded",
           "type": "boolean",
           "default": "false"
@@ -48,6 +53,12 @@
           "attribute": "described-by",
           "description": "Aria-describedby data passed down to appropriate tag",
           "type": "string"
+        },
+        {
+          "name": "loaded",
+          "attribute": "loaded",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "replacementDelay",
@@ -118,6 +129,11 @@
           "type": "string"
         },
         {
+          "name": "loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "image-loaded",
           "type": "boolean",
           "default": "false"
@@ -145,6 +161,12 @@
           "attribute": "described-by",
           "description": "Aria-describedby data passed down to appropriate tag",
           "type": "string"
+        },
+        {
+          "name": "loaded",
+          "attribute": "loaded",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "replacementDelay",
@@ -215,6 +237,11 @@
           "type": "string"
         },
         {
+          "name": "loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "image-loaded",
           "type": "boolean",
           "default": "false"
@@ -242,6 +269,12 @@
           "attribute": "described-by",
           "description": "Aria-describedby data passed down to appropriate tag",
           "type": "string"
+        },
+        {
+          "name": "loaded",
+          "attribute": "loaded",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "replacementDelay",
@@ -312,6 +345,11 @@
           "type": "string"
         },
         {
+          "name": "loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
           "name": "image-loaded",
           "type": "boolean",
           "default": "false"
@@ -339,6 +377,12 @@
           "attribute": "described-by",
           "description": "Aria-describedby data passed down to appropriate tag",
           "type": "string"
+        },
+        {
+          "name": "loaded",
+          "attribute": "loaded",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "replacementDelay",

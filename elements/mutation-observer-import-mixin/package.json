@@ -16,7 +16,7 @@
       "hax": "src/mutation-observer-import-mixin-hax.json"
     }
   },
-  "version": "2.7.10",
+  "version": "3.0.0",
   "description": "a SuperClass mixin that dynamically imports undefined custom element definitions",
   "repository": {
     "type": "git",
@@ -39,10 +39,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/dynamic-import-registry": "^2.7.10"
+    "@lrnwebcomponents/dynamic-import-registry": "^3.0.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.7.7",
+    "@lrnwebcomponents/deduping-fix": "^3.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.4",

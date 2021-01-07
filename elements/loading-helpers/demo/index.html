@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>LoadingHelpers: loading-helpers Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <link rel="stylesheet" type="text/css" crossorigin="anonymous" href="../lib/loading-styles.css"/>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      #loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 100000000;
+        color: black;
+        background-color: white;
+      }
+      word-count[laser-loader]:not(:defined) {
+        display: block;
+        height: 46px;
+        width: 854px;
+      }
+      other-count[laser-loader]:not(:defined) {
+        width: max-content;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic loading-helpers demo</h3>
+      <demo-snippet>
+        <template>
+          <word-count laser-loader>will replace</word-count>
+          <word-count laser-loader>will replace</word-count>
+          <word-count laser-loader>will replace and will scale as it wants to</word-count>
+          <word-count laser-loader popup-loader>will replace</word-count>
+          <word-count laser-loader>will replace</word-count>
+          <other-count laser-loader>This wont replace</other-count>
+        </template>
+      </demo-snippet>
+    </div>
+    <h2 id="loading"></h2>
+  </body>
+  <script type="module" async>
+    import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+    import '@polymer/iron-demo-helpers/demo-snippet.js';
+    import '../loading-helpers.js';
+    window.globalElCount = 0;
+    window.globalElTotal = 0;
+    // for the demo use case
+    // load all undefined tags
+    setTimeout(() => {
+      const undefinedElements = document.body.querySelectorAll('*[laser-loader]:not(:defined)');
+      // resolve their promise
+      const promises = [...undefinedElements].map(
+        el => {
+          el.style.setProperty("--laserEdgeAni-width", Math.round(el.getBoundingClientRect().width) + "px");
+          el.style.setProperty("--laserEdgeAni-height", Math.round(el.getBoundingClientRect().height) + "px");
+          customElements.whenDefined(el.localName).then((response) => {
+            // this would be a way of doing loading state on ANYTHING without definition
+            el.setAttribute("loaded", true);
+            window.globalElCount++;
+            document.getElementById("loading").innerHTML = window.globalElCount + "/" + window.globalElTotal + " elements loaded";
+          });
+        }
+      );
+      window.globalElTotal = undefinedElements.length;
+      document.getElementById("loading").innerHTML = window.globalElCount + "/" + window.globalElTotal + " elements loaded";
+    }, 0);
+    setTimeout(() => {
+      import("@lrnwebcomponents/word-count/word-count.js");
+    }, 2000);
+  </script>
+</html>
