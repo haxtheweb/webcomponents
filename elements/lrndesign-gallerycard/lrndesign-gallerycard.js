@@ -106,7 +106,6 @@ class LrndesignGallerycard extends LitElement {
 
         .title {
           color: #222;
-          font-family: Arial, Helvetica, sans-serif;
           font-size: 12.8px;
           font-weight: 600;
           line-height: 20px;

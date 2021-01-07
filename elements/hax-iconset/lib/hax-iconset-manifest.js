@@ -168,6 +168,7 @@ export const HaxIconsetManifest = [
       "icor",
       "inbox",
       "info",
+      "innovate",
       "input",
       "instructor",
       "interact",
