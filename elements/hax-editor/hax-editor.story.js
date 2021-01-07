@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import { HaxEditorToolbar } from "./hax-editor-toolbar.js";
+import { HaxEditor } from "./hax-editor.js";
 import "@polymer/iron-demo-helpers/demo-snippet.js";
 // need to account for polymer goofiness when webpack rolls this up
 var template = require("raw-loader!./demo/index.html");
@@ -10,24 +10,24 @@ var array_matches = pattern.exec(template);
 template = array_matches[1];
 const stories = storiesOf("Editor", module);
 stories.addDecorator(storybookBridge.withKnobs);
-stories.add("hax-editor-toolbar", () => {
+stories.add("hax-editor", () => {
   var binding = {};
   // start of tag for demo
-  let elementDemo = `<hax-editor-toolbar`;
+  let elementDemo = `<hax-editor`;
   // mix in properties defined on the class
-  for (var key in HaxEditorToolbar.properties) {
+  for (var key in HaxEditor.properties) {
     // skip prototype
-    if (!HaxEditorToolbar.properties.hasOwnProperty(key)) continue;
+    if (!HaxEditor.properties.hasOwnProperty(key)) continue;
     // convert typed props
-    if (HaxEditorToolbar.properties[key].type.name) {
+    if (HaxEditor.properties[key].type.name) {
       let method = "text";
-      switch (HaxEditorToolbar.properties[key].type.name) {
+      switch (HaxEditor.properties[key].type.name) {
         case "Boolean":
         case "Number":
         case "Object":
         case "Array":
         case "Date":
-          method = HaxEditorToolbar.properties[key].type.name.toLowerCase();
+          method = HaxEditor.properties[key].type.name.toLowerCase();
           break;
         default:
           method = "text";
@@ -35,7 +35,7 @@ stories.add("hax-editor-toolbar", () => {
       }
       binding[key] = storybookBridge[method](
         key,
-        HaxEditorToolbar.properties[key].value
+        HaxEditor.properties[key].value
       );
       // ensure ke-bab case
       let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function (
@@ -47,7 +47,7 @@ stories.add("hax-editor-toolbar", () => {
     }
   }
   const innerText = storybookBridge.text("Inner contents", "Editor");
-  elementDemo += `> ${innerText}</hax-editor-toolbar>`;
+  elementDemo += `> ${innerText}</hax-editor>`;
   return `
   <h1>Live demo</h1>
   ${elementDemo}

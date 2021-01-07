@@ -1,26 +1,26 @@
-# &lt;hax-editor-toolbar&gt;
+# &lt;hax-editor&gt;
 
 Editor
-> A customized toolbar (with buttons) for HAX
+> HAX-specific implementation of rich-text-editor
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/hax-editor-toolbar/hax-editor-toolbar.js';
+import '@lrnwebcomponents/hax-editor/hax-editor.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/hax-editor-toolbar/hax-editor-toolbar.js"></script>
+<script type="module" src="@lrnwebcomponents/hax-editor/hax-editor.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/hax-editor-toolbar/hax-editor-toolbar.js';
+  import '@lrnwebcomponents/hax-editor/hax-editor.js';
   // imperative form
-  import {HaxEditorToolbar} from '@lrnwebcomponents/hax-editor-toolbar';
+  import {HaxEditor} from '@lrnwebcomponents/hax-editor';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/hax-editor-toolbar/hax-editor-toolbar.js';
+  import './node_modules/@lrnwebcomponents/hax-editor/hax-editor.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/hax-editor-toolbar/hax-editor-toolbar.js"></script>
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/hax-editor/hax-editor.js"></script>
 ```
 
 ## Develop / Demo

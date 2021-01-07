@@ -2,13 +2,12 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit-element";
+import { LitElement, html, css } from "lit-element";
 import { RichTextEditorToolbarBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
 import { LrnVocab } from "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 import { LrnMath } from "@lrnwebcomponents/lrn-math/lrn-math.js";
 import { OerSchemaElement } from "@lrnwebcomponents/oer-schema/oer-schema.js";
-import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import { HaxEditorButton } from "./lib/hax-editor-button.js";
+import { HaxEditorButton } from "./hax-editor-button.js";
 
 /**
  * `hax-editor-toolbar`
@@ -20,42 +19,41 @@ import { HaxEditorButton } from "./lib/hax-editor-button.js";
  * @demo demo/index.html
  */
 class HaxEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
-  
   //styles function
   static get styles() {
-    return  [
-      super.baseStyles,super.miniStyles,
+    return [
+      super.baseStyles,
+      super.miniStyles,
       css`
-:host {
-  display: block;
-}
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
-      `
+        :host([hidden]) {
+          display: none;
+        }
+      `,
     ];
   }
 
-// render function
+  // render function
   render() {
-    return html`
-
-<absolute-position-behavior
-  auto
-  id="floating"
-  fit-to-visible-bounds
-  for="${this.controls}"
-  position="top"
-  >
-  ${super.render()}
-</absolute-position-behavior>`;
+    return html` <absolute-position-behavior
+      auto
+      id="floating"
+      fit-to-visible-bounds
+      for="${this.controls}"
+      position="top"
+    >
+      ${super.render()}
+    </absolute-position-behavior>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {...super.properties}
-;
+    return {
+      ...super.properties,
+    };
   }
 
   /**

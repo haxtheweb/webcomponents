@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../hax-editor-toolbar.js"></script>
+    <script type="module" src="../hax-editor.js"></script>
   </head>
   <body>
 
-    <hax-editor-toolbar>
+    <hax-editor>
       This is the element content.
-    </hax-editor-toolbar>
+    </hax-editor>
 <test-fixture id="BasicTestFixture">
   <template>
-    <hax-editor-toolbar></hax-editor-toolbar>
+    <hax-editor></hax-editor>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <hax-editor-toolbar></hax-editor-toolbar>
+    <hax-editor></hax-editor>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<hax-editor-toolbar>', () => {
+  suite('<hax-editor>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('hax-editor-toolbar'), customElements.get("hax-editor-toolbar", 'hax-editor-toolbar should be an instance of haxEditorToolbar'));
+      assert.instanceOf(document.querySelector('hax-editor'), customElements.get("hax-editor", 'hax-editor should be an instance of haxEditor'));
     });
 
     /*test('setting a property on the element works', () => {

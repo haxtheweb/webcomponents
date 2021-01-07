@@ -1,35 +1,35 @@
 {
-  "name": "@lrnwebcomponents/hax-editor-toolbar",
+  "name": "@lrnwebcomponents/hax-editor",
   "wcfactory": {
-    "className": "HaxEditorToolbar",
+    "className": "HaxEditor",
     "customElementClass": "LitElement",
-    "elementName": "hax-editor-toolbar",
+    "elementName": "hax-editor",
     "generator-wcfactory-version": "0.8.7",
     "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/hax-editor-toolbar.css",
-      "scss": "src/hax-editor-toolbar.scss",
-      "html": "src/hax-editor-toolbar.html",
-      "js": "src/hax-editor-toolbar.js",
-      "properties": "src/hax-editor-toolbar-properties.json",
-      "hax": "src/hax-editor-toolbar-hax.json"
+      "css": "src/hax-editor.css",
+      "scss": "src/hax-editor.scss",
+      "html": "src/hax-editor.html",
+      "js": "src/hax-editor.js",
+      "properties": "src/hax-editor-properties.json",
+      "hax": "src/hax-editor-hax.json"
     },
     "sharedHaxProps": [],
     "sharedProps": [],
-    "sharedStyles": ["super.baseStyles","super.miniStyles"]
+    "sharedStyles": []
   },
   "version": "2.8.0",
-  "description": "A customized toolbar (with buttons) for HAX",
+  "description": "HAX-specific implementation of rich-text-editor",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "hax-editor-toolbar.js",
-  "module": "hax-editor-toolbar.js",
-  "umd": "hax-editor-toolbar.umd.js",
+  "main": "hax-editor.js",
+  "module": "hax-editor.js",
+  "umd": "hax-editor.umd.js",
   "scripts": {
-    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-text-editor/test/",
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-editor/test/",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
@@ -42,10 +42,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-math": "^2.8.0",
-    "@lrnwebcomponents/lrn-vocab": "^2.8.0",
-    "@lrnwebcomponents/oer-schema": "^2.8.0",
-    "@lrnwebcomponents/rich-text-editor": "^2.8.0",
     "lit-element":"2.0.1"
   },
   "devDependencies": {

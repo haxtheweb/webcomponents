@@ -3,27 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>HaxEditorToolbar: hax-editor-toolbar Demo</title>
+    <title>HaxEditor: hax-editor Demo</title>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../hax-editor-toolbar.js';
-      import "../lib/hax-editor-button.js";
+      import '../hax-editor.js';
       import { LrnMath } from "@lrnwebcomponents/lrn-math/lrn-math.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic hax-editor-toolbar demo</h3>
+      <h3>Basic hax-editor demo</h3>
       <demo-snippet>
         <template>
-          <rich-text-editor type="hax-editor-toolbar">
+          <hax-editor>
             Edit the <lrn-vocab term="kitten"><img src="//placekitten.com/200/200"></lrn-vocab>.
-          </rich-text-editor>
+          </hax-editor>
         </template>
       </demo-snippet>
     </div>
