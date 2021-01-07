@@ -156,9 +156,6 @@ class GridPlate extends LitElement {
       css`
         :host {
           display: block;
-          --grid-plate-row-margin: 0px;
-          --grid-plate-row-padding: 0px;
-          --grid-plate-item-margin: 15px;
         }
         :host .row {
           width: 100%;
@@ -167,8 +164,8 @@ class GridPlate extends LitElement {
           flex-wrap: wrap;
           justify-content: space-between;
           align-items: stretch;
-          margin: var(--grid-plate-row-margin);
-          padding: var(--grid-plate-row-padding);
+          margin: var(--grid-plate-row-margin, 0px);
+          padding: var(--grid-plate-row-padding, 0px);
         }
         .column.active {
           outline: 2px solid var(--simple-colors-default-theme-grey-12, #009dc7) !important;
@@ -240,8 +237,8 @@ class GridPlate extends LitElement {
           width: 124px;
         }
         :host .column ::slotted(*) {
-          margin: var(--grid-plate-item-margin);
-          padding: var(--grid-plate-item-margin);
+          margin: var(--grid-plate-item-margin, 15px);
+          padding: var(--grid-plate-item-padding, 15px);
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
         }
@@ -252,6 +249,7 @@ class GridPlate extends LitElement {
             0.5s background-color ease-in-out
           );
         }
+        /** this implies hax editing state is available **/
         :host([data-hax-ray]) .column ::slotted(*) {
           outline: 1px solid var(--simple-colors-default-theme-grey-2, #eeeeee);
           outline-offset: -2px;
@@ -660,6 +658,7 @@ class GridPlate extends LitElement {
                     // dropping in without a slot set in anyway
                     // validate slot name, otherwise force it to col-1
                     if (
+                      node.parentElement &&
                       node.parentElement.tagName !== "HAX-BODY" &&
                       !this.validateElementSlot(node)
                     ) {

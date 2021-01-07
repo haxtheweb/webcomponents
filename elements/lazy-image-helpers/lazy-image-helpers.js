@@ -6,6 +6,7 @@ import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-ico
 import { LitElement, html, css, svg } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { LoadingHelper } from "@lrnwebcomponents/loading-helpers/lib/LoadingHelper.js";
 // lazy image loading part of an element
 export const lazyImageLoader = function (SuperClass) {
   return class extends IntersectionObserverMixin(SuperClass) {
@@ -130,7 +131,7 @@ export const lazyImageLoader = function (SuperClass) {
  * @demo demo/index.html
  * @element lazy-image-helpers
  */
-class lazyImage extends lazyImageLoader(LitElement) {
+class lazyImage extends LoadingHelper(lazyImageLoader(LitElement)) {
   static get tag() {
     return "lazy-image";
   }
@@ -173,7 +174,7 @@ class lazyImage extends lazyImageLoader(LitElement) {
     ];
   }
   render() {
-    return html` <div class="image-wrap">
+    return html`<div class="image-wrap">
       ${this.renderSVGLoader()}
       <img
         src="${this.src}"

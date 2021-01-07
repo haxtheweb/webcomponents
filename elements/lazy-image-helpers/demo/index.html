@@ -4,25 +4,119 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>LazyImageHelpers: lazy-image-helpers Demo</title>
+    <link rel="stylesheet" type="text/css" crossorigin="anonymous" href="../../loading-helpers/lib/loading-styles.css"/>
+    <style>
+      lazy-image:not(:defined) {
+        display: block;
+        max-width: 300px;
+        min-height: 200px;
+      }
+      lazy-image:not([loaded]) {
+        max-width: 300px;
+        min-height: 200px;
+      }
+      grid-plate:not(:defined) {
+        display: grid;
+        grid-template-rows: 1fr;
+        gap: 15px 15px;
+      }
+      grid-plate[layout="1-1"]:not(:defined) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "col-1 col-2";
+      }
+      grid-plate[layout="1-1-1"]:not(:defined) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: "col-1 col-2 col-3 col-4";
+      }
+      grid-plate[layout="1-1-1-1"]:not(:defined) {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: "col-1 col-2 col-3 col-4";
+      }
+      grid-plate[layout="1-1-1-1-1"]:not(:defined) {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas: "col-1 col-2 col-3 col-4 col-5";
+      }
+      grid-plate[layout="1-1-1-1-1-1"]:not(:defined) {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-areas: "col-1 col-2 col-3 col-4 col-5 col-6";
+      }
+      grid-plate:not(:defined) *[slot] {
+        max-width: -webkit-fill-available;
+      }
+      grid-plate:not(:defined) *[slot="col-1"] {
+        grid-area: "col-1";
+      }
+      grid-plate:not(:defined) *[slot="col-2"] {
+        grid-area: col-2;
+      }
+      grid-plate:not(:defined) *[slot="col-3"] {
+        grid-area: col-3;
+      }
+      grid-plate:not(:defined) *[slot="col-4"] {
+        grid-area: col-4;
+      }
+      grid-plate:not(:defined) *[slot="col-5"] {
+        grid-area: col-5;
+      }
+      grid-plate:not(:defined) *[slot="col-6"] {
+        grid-area: col-6;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h3>Basic lazy-image-helpers demo</h3>
+      <grid-plate laser-loader layout="1-1-1-1" disable-responsive>
+        <lazy-image slot="col-1" popup-loader laser-loader src="https://kids.nationalgeographic.com/content/dam/kids/photos/animals/Fish/A-G/great-white-shark-teeth.ngsversion.1396530884408.adapt.1900.1.jpg"></lazy-image>
+        <lazy-image slot="col-2" popup-loader laser-loader src="http://placekitten.com/g/200/3500"></lazy-image>
+        <lazy-image slot="col-3" laser-loader src="http://placekitten.com/g/20/3020"></lazy-image>
+        <lazy-image slot="col-4" laser-loader popup-loader src="http://placekitten.com/g/200/530"></lazy-image>
+      </grid-plate>
+    </div>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
-    <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lazy-image-helpers.js';
+    <script>
+      window.WCRegistryLoaderCSS = function() {
+        // resolve their promise
+        const promises = [...document.body.querySelectorAll('*[laser-loader]:not(:defined)')].map(
+          el => {
+            const d = el.getBoundingClientRect();            
+            el.style.setProperty("--laserEdgeAni-width", d.width + "px");
+            el.style.setProperty("--laserEdgeAni-innerWidth", d.width-2 + "px");
+            el.style.setProperty("--laserEdgeAni-innerHeight", d.height-2 + "px");
+            el.style.setProperty("--laserEdgeAni-height", d.height + "px");
+            customElements.whenDefined(el.localName).then((response) => {
+              // this would be a way of doing loading state on ANYTHING without definition
+              el.setAttribute("loaded", true);
+              el.removeAttribute("laser-loader");
+              el.style.setProperty("--laserEdgeAni-width", null);
+              el.style.setProperty("--laserEdgeAni-innerWidth", null);
+              el.style.setProperty("--laserEdgeAni-height", null);
+              el.style.setProperty("--laserEdgeAni-innerHeight", null);
+              // delay this bc if it has the pop up loader on it it needs to wait to finish the animation
+              setTimeout(() => {
+                el.removeAttribute("popup-loader");                
+              }, 1000);
+            });
+          }
+        );
+      };
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic lazy-image-helpers demo</h3>
-      <demo-snippet>
-        <template>
-          <lazy-image src="https://kids.nationalgeographic.com/content/dam/kids/photos/animals/Fish/A-G/great-white-shark-teeth.ngsversion.1396530884408.adapt.1900.1.jpg">
-          </lazy-image>
-        </template>
-      </demo-snippet>
-    </div>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      setTimeout(() => {
+        window.WCRegistryLoaderCSS();
+        import('../lazy-image-helpers.js');        
+        import('@lrnwebcomponents/grid-plate/grid-plate.js');        
+      }, 0);
+      
+      window.addEventListener('resize', function() {
+        clearTimeout(window.__debounce);
+        window.__debounce = setTimeout(() => {
+          window.WCRegistryLoaderCSS();
+        }, 100);
+    }, true);
+    </script>
   </body>
 </html>
