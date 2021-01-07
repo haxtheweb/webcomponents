@@ -169,14 +169,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   execCommand(command, val, range, toolbar) {
-    /*console.log(
-      ">>>>>>>> execCommand",
-      command,
-      val,
-      range,
-      toolbar,
-      !range || range.cloneContents()
-    );*/
     let editor = toolbar.editor;
     if (command === "cancel") {
       toolbar.editor.revert();
@@ -209,7 +201,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     if (!!editor) {
       let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
         oldEditor = editable ? toolbar.editor : undefined;
-      this.highlight(editor, false);
+      this.highlight(toolbar, false);
       if (toolbar && oldEditor !== editor) {
         if (!!oldEditor) this.disableEditing(oldEditor);
         toolbar.editor = editor;
@@ -470,15 +462,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   registerEditor(editor, remove = false) {
     let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
       handlers = {
-        blur: (e) => {
-          if (!toolbar.__promptOpen) {
-            if (editor.__rawHTML !== editor.value)
-              editor.__rawHTML = editor.innerHTML
-                .replace(/<!--[^(-->)]*-->/g, "")
-                .trim();
-            this._handleBlur(editor, e);
-          }
-        },
         click: (e) => this._handleEditorClick(editor, e),
         focus: (e) => {
           if (!toolbar.__promptOpen) this.edit(editor);
@@ -490,15 +473,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           }
         },
         keydown: (e) => this._handleShortcutKeys(editor, e),
-        mouseout: (e) => {
-          if (!toolbar.__promptOpen) {
-            if (editor.__rawHTML !== editor.value)
-              editor.__rawHTML = editor.innerHTML
-                .replace(/<!--[^(-->)]*-->/g, "")
-                .trim();
-            this._handleBlur(editor, e);
-          }
-        },
         pastefromclipboard: (e) => this.pasteFromClipboard(e.detail),
         pastecontent: (e) => this._handlePaste(e),
       };
@@ -523,10 +497,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    */
   registerToolbar(toolbar, remove = false) {
     let handlers = {
-      blur: (e) => {
-        toolbar.__focused = false;
-        //todo check blur
-      },
       command: (e) => {
         e.stopImmediatePropagation();
         this.execCommand(
@@ -536,23 +506,13 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           toolbar
         );
       },
-      focus: (e) => {
-        toolbar.__focused = true;
-      },
       highlight: (e) => {
         e.stopImmediatePropagation();
-        this.highlight(toolbar.editor, e.detail);
+        this.highlight(toolbar, e.detail);
       },
       highlightnode: (e) => {
         e.stopImmediatePropagation();
         this.highlightNode(e.detail, toolbar);
-      },
-      mouseover: (e) => {
-        toolbar.__hovered = true;
-      },
-      mouseout: (e) => {
-        toolbar.__hovered = false;
-        //todo check blur
       },
       pastefromclipboard: (e) => {
         e.stopImmediatePropagation();
@@ -695,7 +655,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     ) {
       this.edit(editor, true);
     } else if (editor) {
-      this.highlight(editor);
+      this.highlight(editor.toolbar);
     }
   }
 
@@ -705,11 +665,13 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     } else {
       let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
         els = !toolbar ? [] : Object.keys(toolbar.__clickableElements || {}),
-        el = normalizeEventPath(e)[0] || { tagName: "" },
+        el = e.target || e.srcElement || { tagName: "" },
         evt = { detail: el },
         tagname = (el.tagName || "").toLowerCase();
-      console.log("clickable", e, el, evt, toolbar.range);
-      if (els.includes(tagname)) toolbar.__clickableElements[tagname](evt);
+      if (els.includes(tagname)) {
+        e.preventDefault();
+        toolbar.__clickableElements[tagname](evt);
+      }
     }
   }
   /**

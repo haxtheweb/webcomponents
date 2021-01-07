@@ -922,6 +922,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         (e.detail.tags || []).forEach(
           (tag) => (this.__clickableElements[tag] = e.detail.handler)
         );
+      console.log(this.__clickableElements);
     }
 
     /**
