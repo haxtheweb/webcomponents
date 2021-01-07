@@ -21,7 +21,7 @@ export class EvoToWc {
    *
    * @memberof EvoToWc
    */
-  static get courseicons() {
+  get courseicons() {
     return {
       assessment: "assessment",
       brainstorm: "lightbulb-outline",
@@ -53,9 +53,11 @@ export class EvoToWc {
    * @static
    * @memberof EvoToWc
    */
-  static get headings() {
+  get headings() {
     return ["h1", "h2", "h3", "h4", "h5", "h6"];
   }
+  constructor() {}
+
   /**
    * Conversion function
    *
@@ -132,10 +134,11 @@ export class EvoToWc {
   /**
    * Conversions to accent-card
    *
+   * @param {array} [nodes=[]] macthing nodes to convert
    * @param {object} target node to convert
    * @memberof EvoToWc
    */
-  convertCards(target) {
+  convertCards(nodes = [], target) {
     import("@lrnwebcomponents/accent-card/accent-card.js");
 
     this.convertIfNeeded(target, [
@@ -166,10 +169,11 @@ export class EvoToWc {
   /**
    * Converts Evo expandables and accordions to a11y-collapse
    *
+   * @param {array} [nodes=[]] macthing nodes to convert
    * @param {object} target node to convert
    * @memberof EvoToWc
    */
-  convertCollapses(target) {
+  convertCollapses(nodes = [], target) {
     import("@lrnwebcomponents/a11y-collapse/a11y-collapse.js");
     this.convertIfNeeded(target, [
       { selector: ".expandable", function: "convertExpandables" },
@@ -243,6 +247,7 @@ export class EvoToWc {
         details.append(summary);
         nodes.forEach((node) => details.append(node));
         figcaption.append(details);
+        figure.classList.remove("image-info");
       }
       figure.parentElement.insertBefore(a11y, figure);
       a11y.append(figure);
@@ -271,10 +276,11 @@ export class EvoToWc {
   /**
    * Conversions to lrndesign-gallery
    *
+   * @param {array} [nodes=[]] macthing nodes to convert
    * @param {object} target node to convert
    * @memberof EvoToWc
    */
-  convertGalleries(target) {
+  convertGalleries(nodes = [], target) {
     import("@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js");
     this.convertIfNeeded(target, [
       { selector: ".image-thumbnail", function: "convertThumbnails" },
@@ -308,7 +314,7 @@ export class EvoToWc {
    * @param {object} target node to convert
    * @memberof EvoToWc
    */
-  convertIcons(target) {
+  convertIcons(nodes, target) {
     import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
     import("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
     import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
@@ -430,8 +436,9 @@ export class EvoToWc {
       editable.striped =
         !editable.columnStriped && table.classList.contains("alternaterows");
       table.parentElement.insertBefore(editable, table);
+      table.classList.remove("tablestyle");
+      table.classList.remove("tablestyle2");
       editable.append(table);
-      editable.loadSlottedTable();
     });
   }
 
@@ -538,7 +545,6 @@ export class EvoToWc {
     oldElem.parentElement.insertBefore(newElem, oldElem);
     let children = [...oldElem.childNodes];
     children.forEach((child) => {
-      //console.log(newElem,children,child);
       child = childrenCallback ? childrenCallback(child) : child;
       if (child) newElem.append(child);
     });
@@ -652,7 +658,7 @@ window.EvoToWc.requestAvailability = () => {
   if (!window.EvoToWc.instance) {
     window.EvoToWc.instance = new EvoToWc();
   }
-  this.dispatchEvent(
+  window.dispatchEvent(
     new CustomEvent("register-hax-converter", {
       bubbles: true,
       composed: true,
