@@ -1,0 +1,53 @@
+{
+  "name": "@lrnwebcomponents/bootstrap-to-hax",
+  "wcfactory": {
+    "className": "BootstrapToHax",
+    "customElementClass": "HTMLElement",
+    "elementName": "bootstrap-to-hax",
+    "generator-wcfactory-version": "0.8.7",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/bootstrap-to-hax.css",
+      "scss": "src/bootstrap-to-hax.scss",
+      "html": "src/bootstrap-to-hax.html",
+      "js": "src/bootstrap-to-hax.js",
+      "properties": "src/bootstrap-to-hax-properties.json",
+      "hax": "src/bootstrap-to-hax-hax.json"
+    },
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "2.8.0",
+  "description": "converts Bootstrap classes tro HAX web components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "bootstrap-to-hax.js",
+  "module": "bootstrap-to-hax.js",
+  "umd": "bootstrap-to-hax.umd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/bootstrap-to-hax/test/",
+    "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "nikkimk"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+    "web-animations-js":"2.3.1","@lrnwebcomponents/deduping-fix":"2.0.5","@polymer/iron-demo-helpers":"3.1.0","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.2.7","concurrently":"4.1.0","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.5","lodash":"4.17.11","polymer-cli":"1.9.7","polymer-build":"3.1.2","wct-browser-legacy":"1.0.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}
