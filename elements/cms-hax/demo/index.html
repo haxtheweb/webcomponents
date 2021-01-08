@@ -4,19 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>CmsHax: cms-hax Demo</title>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>    
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../cms-hax.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <article class="view-mode-full"><cms-hax 
       element-align="left" 
       end-point="/dmd100/hax-node-save/1848/VXfGSpbA2T_bCl31L3E5k8YDlnqf30fvTUu2cP5Y-n8" 
-      app-store-connection="{&quot;url&quot;:&quot;\/dmd100\/hax-app-store\/VXfGSpbA2T_bCl31L3E5k8YDlnqf30fvTUu2cP5Y-n8&quot;}" 
+      app-store-connection="{&quot;url&quot;:&quot;sample-store.json&quot;}" 
       redirect-location="/dmd100/node/1848" 
       allowed-tags="[&quot;video-player&quot;,&quot;grid-plate&quot;,&quot;license-element&quot;,&quot;md-block&quot;,&quot;meme-maker&quot;,&quot;stop-note&quot;,&quot;wikipedia-query&quot;,&quot;cms-token&quot;,&quot;lrn-math-controller&quot;,&quot;retro-card&quot;,&quot;rss-items&quot;,&quot;self-check&quot;,&quot;team-member&quot;,&quot;a11y-gif-player&quot;,&quot;citation-element&quot;,&quot;a11y-collapse&quot;,&quot;figure-label&quot;,&quot;flash-card&quot;,&quot;full-width-image&quot;,&quot;glossary-term&quot;,&quot;hero-banner&quot;,&quot;lrn-aside&quot;,&quot;lrn-vocab&quot;,&quot;lrndesign-abbreviation&quot;,&quot;lrndesign-blockquote&quot;,&quot;lrndesign-paperstack&quot;,&quot;media-image&quot;,&quot;multiple-choice&quot;,&quot;parallax-image&quot;,&quot;person-testimonial&quot;,&quot;q-r&quot;,&quot;task-list&quot;]"
       open-default="open-default"><template><p>Feedback can come in various forms, including advice, compliments, ambiguous remarks, big picture insights, etc. Learn how to listen carefully and diligently to what is being said so you can translate the feedback to be understandable, useful, and ultimately actionable. If someone gives you ambiguous feedback, this means that they can intuitively see a weakness but might not know why something isn't working. You should follow up with their comments with probing questions to better understand their perspective.</p>

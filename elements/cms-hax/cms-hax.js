@@ -136,14 +136,6 @@ class CmsHax extends LitElement {
         type: String,
       },
       /**
-       * State of the panel
-       */
-      editMode: {
-        type: Boolean,
-        reflect: true,
-        attribute: "edit-mode",
-      },
-      /**
        * syncBody
        */
       syncBody: {
@@ -178,12 +170,6 @@ class CmsHax extends LitElement {
         type: Boolean,
         attribute: "redirect-on-save",
       },
-      /**
-       * Reference to activeBody.
-       */
-      activeHaxBody: {
-        type: Object,
-      },
       __imported: {
         type: Boolean,
       },
@@ -193,16 +179,16 @@ class CmsHax extends LitElement {
   /**
    * Ensure we've imported our content on initial setup
    */
-  _activeHaxBodyUpdated(bodyElement, ready) {
+  _activeHaxBodyUpdated(ready) {
     // ensure we import our content once we get an initial registration of active body
-    if (bodyElement != null && ready && !this.__imported) {
+    if (!this.__imported) {
       this.__imported = true;
       // see what's inside of this, in a template tag
       let children = this.querySelector("template");
       // convert this template content into the real thing
       // this helps with correctly preserving everything on the way down
       if (children != null) {
-        bodyElement.importContent(children.innerHTML);
+        HAXStore.activeHaxBody.importContent(children.innerHTML);
       }
     }
   }
@@ -245,13 +231,6 @@ class CmsHax extends LitElement {
     }
   }
   /**
-   * LitElement ready
-   */
-  firstUpdated() {
-    this.__applyMO();
-    this.ready = true;
-  }
-  /**
    * Set certain data bound values to the store once it's ready
    */
   _storeReady(e) {
@@ -267,6 +246,21 @@ class CmsHax extends LitElement {
         this.elementAlign
       );
       this.__applyMO();
+      window.removeEventListener(
+        "hax-store-ready",
+        this._storeReady.bind(this),
+        { once: true, passive: true }
+      );
+    }, 0);
+  }
+  _appstoreLoaded(e) {
+    setTimeout(() => {
+      this.ready = true;
+      window.removeEventListener(
+        "hax-store-app-store-loaded",
+        this._appstoreLoaded.bind(this),
+        { once: true, passive: true }
+      );
     }, 0);
   }
   /**
@@ -274,11 +268,16 @@ class CmsHax extends LitElement {
    */
   constructor() {
     super();
+    this.ready = false;
+    window.addEventListener("hax-store-ready", this._storeReady.bind(this), {
+      once: true,
+      passive: true,
+    });
     window.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
+      "hax-store-app-store-loaded",
+      this._appstoreLoaded.bind(this),
+      { once: true, passive: true }
     );
-    window.addEventListener("hax-store-ready", this._storeReady.bind(this));
     window.addEventListener("hax-save", this._saveFired.bind(this));
     this.__lock = false;
     this.endPoint = null;
@@ -291,24 +290,26 @@ class CmsHax extends LitElement {
     this.bodyValue = "";
     this.hideMessage = false;
     this.__imported = false;
-    import("@lrnwebcomponents/cms-hax/lib/cms-token.js");
-    import("@lrnwebcomponents/cms-hax/lib/cms-block.js");
-    import("@lrnwebcomponents/cms-hax/lib/cms-views.js");
-    import("@lrnwebcomponents/cms-hax/lib/cms-entity.js");
-    import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
-      window.SimpleToast.requestAvailability();
-    });
+    setTimeout(() => {
+      import("@lrnwebcomponents/cms-hax/lib/cms-token.js");
+      import("@lrnwebcomponents/cms-hax/lib/cms-block.js");
+      import("@lrnwebcomponents/cms-hax/lib/cms-views.js");
+      import("@lrnwebcomponents/cms-hax/lib/cms-entity.js");
+    }, 0);
   }
   _makeAppStore(val) {
     this.__appStore = this.decodeHTMLEntities(val);
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "redirectLocation") {
         this.redirectOnSave = this._computeRedirectOnSave(this[propName]);
       }
-      if (propName == "activeHaxBody" || propName == "ready") {
-        this._activeHaxBodyUpdated(this.activeHaxBody, this.ready);
+      if (propName == "ready" && this.ready && this.shadowRoot) {
+        this._activeHaxBodyUpdated(this.ready);
       }
       if (propName == "appStoreConnection") {
         this._makeAppStore(this[propName]);
@@ -344,14 +345,7 @@ class CmsHax extends LitElement {
     }
     super.disconnectedCallback();
   }
-  /**
-   * Attached to the DOM; now we can fire event to the store that
-   * we exist and are the thing being edited.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.__applyMO();
-  }
+
   __applyMO() {
     // notice ANY change to body and bubble up, only when we are attached though
     if (!this._observer && this.syncBody && HAXStore.activeHaxBody) {
@@ -375,21 +369,6 @@ class CmsHax extends LitElement {
         childList: true,
         subtree: true,
       });
-    }
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      if (typeof e.detail.value === "object") {
-        this[e.detail.property] = {};
-      }
-      this[e.detail.property] = e.detail.value;
     }
   }
 

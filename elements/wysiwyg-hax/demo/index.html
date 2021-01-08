@@ -5,9 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
   <title>wysiwyg-hax demo</title>
-  
-  <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+  <script>
+    window.process = window.process || {
+      env: {
+        NODE_ENV: "production"
+      }
+    };
+  </script>
+  <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>    
   <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+  <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
   <script type="module">
     import "../wysiwyg-hax.js";
   </script>
@@ -23,7 +30,9 @@
   </div>
   <script async defer>
     document.querySelector('button.button[type="submit"]').addEventListener('click', (e) => {
-      alert('would have saved');
+      setTimeout(() => {
+        alert('would have saved: ' + document.querySelector('wysiwyg-hax').bodyValue);        
+      }, 0);
     });
     var haxThePress = document.createElement('wysiwyg-hax');
     var temp = document.createElement('template');
