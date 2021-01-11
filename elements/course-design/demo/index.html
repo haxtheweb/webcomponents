@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>CourseDesign: course-design Demo</title>
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/block-quote.js';
+      import '../lib/ebook-button.js';
+      import '../lib/lrn-h5p.js';
+      import '../lib/worksheet-download.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic course-design demo of assets</h3>
+      <demo-snippet>
+        <template>
+          <block-quote citation="Albert Einstein">
+            <span slot="quote">
+              I was sitting in a chair in the patent office at Bern, when all of a sudden
+              a thought occurred to me: ‘If a person falls freely, he will not feel his
+              own weight.
+            </span>
+          </block-quote>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <worksheet-download title="Download site schema" link="https://btopro.com/site.json"></worksheet-download>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <ebook-button title="Check out the website text" link="https://btopro.com/"></ebook-button>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <lrn-h5p><iframe src="https://h5p.org/h5p/embed/612" width="1090" height="639" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe></lrn-h5p>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
