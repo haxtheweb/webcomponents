@@ -69,7 +69,7 @@ export const lazyImageLoader = function (SuperClass) {
         this._lazyImageLoadComplete();
       } else {
         img.addEventListener("load", this._lazyImageLoadComplete.bind(this));
-        img.addEventListener("error", function () {
+        img.addEventListener("error", () => {
           this._lazyImageLoadComplete.bind(this);
         });
       }
