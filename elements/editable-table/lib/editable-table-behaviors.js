@@ -377,14 +377,49 @@ export const displayBehaviors = function (SuperClass) {
      * @param {HTMLElement} table table element
      */
     importHTML(table) {
-      let data = [...table.querySelectorAll("tr")].map((row) => {
-        return [...row.querySelectorAll("th,td")].map((cell) => {
-          return typeof cell.innerHTML === "string"
-            ? cell.innerHTML.trim()
-            : cell.innerHTML;
+      let spans = [],
+        data = [...table.querySelectorAll("tr")].map((row, rownum) => {
+          return [...row.querySelectorAll("th,td")].map((cell, colnum) => {
+            let celltype = cell.matches("th") ? "th" : "td",
+              colspan = cell.matches("[colspan]")
+                ? cell.getAttribute("colspan")
+                : false,
+              rowspan = cell.matches("[rowspan]")
+                ? cell.getAttribute("rowspan")
+                : false;
+            if (colspan || rowspan) {
+              spans.push({
+                type: celltype,
+                row: rownum,
+                col: colnum,
+                rows:
+                  rowspan && rowspan.trim() !== ""
+                    ? parseInt(rowspan.trim())
+                    : undefined,
+                cols:
+                  colspan && colspan.trim() !== ""
+                    ? parseInt(colspan.trim())
+                    : undefined,
+              });
+            }
+            return typeof cell.innerHTML === "string"
+              ? cell.innerHTML.trim()
+              : cell.innerHTML;
+          });
         });
+      //removes colspans and row spans
+      spans.forEach((span) => {
+        if (span.cols)
+          for (let i = 1; i < span.cols; i++) {
+            data[span.row].splice(span.col + 1, 0, "&nbsp;");
+          }
+        if (span.rows)
+          for (let i = 1; i < span.rows; i++)
+            data[span.row + 1].splice(span.col, 0, "&nbsp;");
       });
+      console.log(data);
       if (data.length > 0 && data[0].length > 0) this.data = data;
+
       this.columnHeader =
         this.columnHeader || table.querySelectorAll("thead").length > 0;
       this.rowHeader =
@@ -446,7 +481,7 @@ export const displayBehaviors = function (SuperClass) {
      * @returns {boolean} whether cell contents are numeric
      */
     _isNumericCell(cell) {
-      return cell !== null && !isNaN(cell.trim().replace(/\$/g, ""));
+      return !!cell && !isNaN(cell.trim().replace(/\$/g, ""));
     }
 
     /**
