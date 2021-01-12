@@ -68,7 +68,10 @@ export class EvoToWc {
     this.convertIfNeeded(target, [
       { selector: ".coursework", function: "convertIcons" },
       { selector: ".graphme", function: "convertGraphmes" },
-      { selector: ".tablestyle,.tablestyle2", function: "convertTablestyles" },
+      {
+        selector: ".tablestyle,.tablestyle2,.tablestyle3",
+        function: "convertTablestyles",
+      },
       { selector: ".tabbed-interface", function: "convertTabs" },
       {
         selector: ".expandable,.accordion-interface",
@@ -438,6 +441,7 @@ export class EvoToWc {
       table.parentElement.insertBefore(editable, table);
       table.classList.remove("tablestyle");
       table.classList.remove("tablestyle2");
+      table.classList.remove("tablestyle3");
       editable.append(table);
     });
   }
