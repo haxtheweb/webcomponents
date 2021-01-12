@@ -39,6 +39,8 @@ class SiteBreadcrumb extends LitElement {
           min-width: unset;
           display: inline-flex;
           text-transform: unset;
+          background-color: transparent;
+          border: none;
         }
         button:hover,
         button:focus,
