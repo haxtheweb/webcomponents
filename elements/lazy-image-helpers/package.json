@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.0",
+  "version": "3.0.2",
   "description": "helpers for building lazy loading images",
   "repository": {
     "type": "git",

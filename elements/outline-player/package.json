@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.0",
+  "version": "3.0.2",
   "description": "Automated conversion of outline-player/",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-iconset": "^3.0.0",
-    "@lrnwebcomponents/haxcms-elements": "^3.0.0",
+    "@lrnwebcomponents/haxcms-elements": "^3.0.2",
     "@lrnwebcomponents/map-menu": "^3.0.0",
     "@lrnwebcomponents/schema-behaviors": "^3.0.0",
     "@lrnwebcomponents/simple-colors": "^3.0.0",

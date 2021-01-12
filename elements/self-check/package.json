@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.0",
+  "version": "3.0.2",
   "description": "Automated conversion of self-check/",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/a11y-behaviors": "^3.0.0",
-    "@lrnwebcomponents/lazy-image-helpers": "^3.0.0",
+    "@lrnwebcomponents/lazy-image-helpers": "^3.0.2",
     "@lrnwebcomponents/schema-behaviors": "^3.0.0",
     "@lrnwebcomponents/simple-colors": "^3.0.0",
     "@lrnwebcomponents/simple-icon": "^3.0.0",

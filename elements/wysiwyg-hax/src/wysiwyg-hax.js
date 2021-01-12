@@ -55,9 +55,9 @@ class WysiwygHax extends LitElement {
   constructor() {
     super();
     // import child nodes before things start deleting whats in there
-    let children = this.querySelector("template");
-    if (children) {
-      this.__importContent = children.innerHTML;
+    let template = this.querySelector("template");
+    if (template) {
+      this.__importContent = template.cloneNode(true);
     }
     this.openDefault = false;
     this.elementAlign = "right";
@@ -65,15 +65,11 @@ class WysiwygHax extends LitElement {
     this.fieldName = "data[content]";
     this.endPoint = null;
     this.allowedTags = [];
-    this.__imported = false;
     this.redirectLocation = "";
     this.updatePageData = "";
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "activeHaxBody") {
-        this._activeHaxBodyUpdated(this[propName]);
-      }
       if (propName == "saveButtonSelector" && this[propName].tagName) {
         this.saveButtonSelector.addEventListener(
           "click",
@@ -178,14 +174,6 @@ class WysiwygHax extends LitElement {
         reflect: true,
       },
       /**
-       * State of the panel
-       */
-      editMode: {
-        type: Boolean,
-        reflect: true,
-        attribute: "edit-mode",
-      },
-      /**
        * Location to save content to.
        */
       endPoint: {
@@ -199,31 +187,16 @@ class WysiwygHax extends LitElement {
         type: String,
         attribute: "update-page-data",
       },
-      /**
-       * Reference to activeBody.
-       */
-      activeHaxBody: {
-        type: Object,
-      },
-      __imported: {
-        type: Boolean,
-      },
     };
   }
+  /**
+   * forces the creation of a light dom node
+   */
   createRenderRoot() {
     return this;
   }
-  /**
-   * Ensure we've imported our content on initial setup
-   */
-  _activeHaxBodyUpdated(newValue) {
-    // ensure we import our content once we get an initial registration of active body
-    if (newValue != null && !this.__imported) {
-      this.__imported = true;
-      if (this.__importContent) {
-        newValue.importContent(this.__importContent);
-      }
-    }
+  firstUpdated() {
+    this.querySelector("cms-hax").appendChild(this.__importContent);
   }
   /**
    * HTMLElement
@@ -231,20 +204,12 @@ class WysiwygHax extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener("hax-save", this._bodyContentUpdated.bind(this));
-    window.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
   }
   /**
    * HTMLElement
    */
   disconnectedCallback() {
     window.removeEventListener("hax-save", this._bodyContentUpdated.bind(this));
-    window.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
     if (this.saveButtonSelector && this.saveButtonSelector.tagName) {
       this.saveButtonSelector.removeEventListener(
         "click",
@@ -256,6 +221,9 @@ class WysiwygHax extends LitElement {
   __saveClicked(e) {
     // will attempt to set this right before save goes out the door
     this.bodyValue = HAXStore.activeHaxBody.haxToContent();
+    if (HAXStore.editMode) {
+      HAXStore.editMode = false;
+    }
   }
   /**
    * Store updated, sync.
@@ -269,6 +237,7 @@ class WysiwygHax extends LitElement {
       if (typeof e.detail.value === "object") {
         this[e.detail.property] = null;
       }
+      console.log(e.detail.property);
       this[e.detail.property] = e.detail.value;
     }
   }

@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "course-design",
+      "path": "./course-design.js",
+      "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`"
+    },
+    {
+      "name": "course-design",
+      "path": "./src/course-design.js",
+      "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`"
+    }
+  ]
+}

@@ -16,7 +16,7 @@
       "hax": "src/product-card-hax.json"
     }
   },
-  "version": "3.0.0",
+  "version": "3.0.2",
   "description": "basic display of a product with advanced data driven helpers",
   "repository": {
     "type": "git",
@@ -83,7 +83,7 @@
     "@lrnwebcomponents/random-item": "^3.0.0",
     "@lrnwebcomponents/retro-card": "^3.0.0",
     "@lrnwebcomponents/rss-items": "^3.0.0",
-    "@lrnwebcomponents/self-check": "^3.0.0",
+    "@lrnwebcomponents/self-check": "^3.0.2",
     "@lrnwebcomponents/simple-icon": "^3.0.0",
     "@lrnwebcomponents/stop-note": "^3.0.0",
     "@lrnwebcomponents/tab-list": "^3.0.0",
