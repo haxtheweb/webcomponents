@@ -410,7 +410,9 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                                   href="${link.url}"
                                   target="_blank"
                                   ?disabled="${this.submissionFilter !== s.id &&
-                                  this.comment}"
+                                  this.comment
+                                    ? true
+                                    : false}"
                                 >
                                   <simple-icon-lite
                                     aria-hidden="true"
@@ -477,6 +479,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           </div>
         </aside>
       </div>
+      ${this.nav}
     `;
   }
 
@@ -484,23 +487,41 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * all submissions that match a specified student id and project id
+       */
       portfolio: {
         type: Object,
       },
+      /**
+       * all feedback on submissions that match a specified student id and project id
+       */
       feedback: {
         type: Object,
       },
+      /**
+       * comment id
+       */
       comment: {
         type: String,
         attribute: "comment",
       },
+      /**
+       * all submissions
+       */
       submissions: {
         type: Array,
       },
+      /**
+       * submission id to select submission and filter feedback
+       */
       submissionFilter: {
         type: String,
         attribute: "submission-filter",
       },
+      /**
+       * sort submissions latest first instead of oldest first
+       */
       sortLatest: {
         type: Boolean,
         attribute: "sort-latest",
@@ -532,26 +553,15 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     console.log("updated", this.submissions, this.portfolios, this.discussion);
   }
   get nav() {
-    let prevHref,
-      nextHref,
-      portfolio = this.portfolio || {},
-      getLink = (s) => {
-        let assignmentId = this.submissionFilter
-            ? this.submissionFilter.replace(/-\w+$/, "")
-            : portfolio.assignmentId,
-          submissionId = `${assignmentId}-${s.userId}`,
-          submissions =
-            !assignmentId || !s.submissions
-              ? []
-              : s.submissions.filter((sub) => sub.id === submissionId),
-          submission = submissions.length > 0 ? submissions[0] : {};
-        submission.activity = "submission";
-        return this.getActivityLink(submission, !this.comment, this.sortLatest);
-      },
+    console.log("nav");
+    let portfolio = this.portfolio || {},
       prevLabel = !portfolio.prev ? "" : this.fullName(portfolio.prev),
-      nextLabel = !portfolio.next ? "" : this.fullName(portfolio.next);
-    (prevHref = portfolio.prev ? getLink(portfolio.prev) : undefined),
-      (nextHref = portfolio.next ? getLink(portfolio.next) : undefined);
+      nextLabel = !portfolio.next ? "" : this.fullName(portfolio.next),
+      prevHref = !portfolio.prev
+        ? undefined
+        : this._getNavLink(portfolio, true),
+      nextHref = !portfolio.next ? undefined : this._getNavLink(portfolio);
+    console.log(prevLabel, prevHref, nextLabel, nextHref);
     return this.prevNextNav(prevLabel, prevHref, nextLabel, nextHref);
   }
   get sortedSubmissions() {
@@ -571,6 +581,20 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
+  }
+  _getNavLink(portfolio, prev = false) {
+    let s = prev ? portfolio.prev : portfolio.next,
+      assignmentId = this.submissionFilter
+        ? this.submissionFilter.replace(/-\w+$/, "")
+        : portfolio.assignmentId,
+      submissionId = `${assignmentId}-${s.userId}`,
+      submissions =
+        !assignmentId || !s.submissions
+          ? []
+          : s.submissions.filter((sub) => sub.id === submissionId),
+      submission = submissions.length > 0 ? submissions[0] : {};
+    submission.activity = "submission";
+    return this.getActivityLink(submission, !this.comment, this.sortLatest);
   }
 }
 customElements.define("elmsln-studio-portfolio", ElmslnStudioPortfolio);

@@ -209,9 +209,15 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * all lessons with projects and assignments
+       */
       lessons: {
         type: Object,
       },
+      /**
+       * specific data about student and assignments submitted
+       */
       profile: {
         type: Object,
       },

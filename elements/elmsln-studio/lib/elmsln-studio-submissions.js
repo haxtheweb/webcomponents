@@ -446,29 +446,50 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * assignment id to filter by assignment
+       */
       assignmentFilter: {
         type: String,
         attribute: "assignment-filter",
       },
+      /**
+       * select all comments
+       */
       comments: {
         type: Array,
       },
+      /**
+       * number of comments that will be rendered
+       */
       commentLoad: {
         type: Number,
         attribute: "comment-load",
       },
+      /**
+       * display submissions as list instead of grid
+       */
       list: {
         type: Boolean,
         attribute: "list",
       },
+      /**
+       * project id to filter by project
+       */
       projectFilter: {
         type: String,
         attribute: "project-filter",
       },
+      /**
+       * student id to filter by student
+       */
       studentFilter: {
         type: String,
         attribute: "student-filter",
       },
+      /**
+       * select all submissions
+       */
       submissions: {
         type: Array,
       },
