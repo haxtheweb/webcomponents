@@ -528,12 +528,12 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
       assets = [...(submission.sources || []), ...(submission.links || [])],
       img = assets.filter((asset) => images.includes(asset.type || "file")),
       files = assets.filter((asset) => icons.includes(asset.type || "file")),
-      cover = new URL(`svg/file.svg`, import.meta.url).pathname;
+      cover = new URL(`svgs/file.svg`, import.meta.url).pathname;
 
     if (img && img[0]) {
       cover = img[0].src;
     } else if (files && files[0]) {
-      cover = new URL(`svg/${files[0].type}.svg`, import.meta.url).pathname;
+      cover = new URL(`svgs/${files[0].type}.svg`, import.meta.url).pathname;
     }
     return cover;
   }
