@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Tech blogger theme",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-iconset": "^3.0.0",
-    "@lrnwebcomponents/haxcms-elements": "^3.0.2",
+    "@lrnwebcomponents/haxcms-elements": "^3.0.3",
     "@lrnwebcomponents/simple-blog-card": "^3.0.0",
     "@lrnwebcomponents/simple-colors": "^3.0.0",
     "@lrnwebcomponents/simple-icon": "^3.0.0",
