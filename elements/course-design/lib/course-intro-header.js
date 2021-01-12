@@ -12,9 +12,19 @@ class CourseIntroHeader extends LitElement {
     super();
     this.title = "";
     this.description = "";
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this._disposer = autorun(() => {
       this.title = toJS(store.manifest.title);
       this.description = toJS(store.manifest.description);
+      this.shadowRoot.querySelector(
+        "header"
+      ).style.backgroundImage = `url(${toJS(
+        store.manifest.metadata.theme.variables.image
+      )})`;
     });
   }
   render() {
@@ -41,7 +51,6 @@ class CourseIntroHeader extends LitElement {
           overflow: hidden;
           background: rgba(var(--course-intro-bg-color), 1);
           width: 100%;
-          background-image: url("files/phys211.png");
           background-size: contain;
           background-repeat: no-repeat;
           background-position: top center;

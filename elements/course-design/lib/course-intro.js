@@ -13,7 +13,6 @@ class CourseIntro extends LitElement {
           --course-intro-bg-color: 0, 0, 0;
           display: block;
           min-height: 100vh;
-          background: rgb(var(--course-intro-bg-color));
           padding-bottom: 30vh;
         }
       `,

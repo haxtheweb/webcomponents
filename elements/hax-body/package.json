@@ -52,6 +52,7 @@
     "@lrnwebcomponents/paper-input-flagged": "^3.0.0",
     "@lrnwebcomponents/responsive-grid": "^3.0.0",
     "@lrnwebcomponents/responsive-utility": "^3.0.0",
+    "@lrnwebcomponents/simple-popover": "^3.0.0",
     "@lrnwebcomponents/schema-behaviors": "^3.0.0",
     "@lrnwebcomponents/simple-colors": "^3.0.0",
     "@lrnwebcomponents/simple-drawer": "^3.0.0",
