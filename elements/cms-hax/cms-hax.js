@@ -378,6 +378,10 @@ class CmsHax extends LitElement {
   _saveFired(e) {
     // generate sanitized content
     if (this.endPoint) {
+      HAXStore.skipExitTrap = true;
+      if (HAXStore.editMode) {
+        HAXStore.editMode = false;
+      }
       this.shadowRoot.querySelector(
         "#pageupdateajax"
       ).body = HAXStore.activeHaxBody.haxToContent();

@@ -1553,8 +1553,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     };
     // prevent leaving if we are in editMode
     window.onbeforeunload = (e) => {
-      if (this.editMode) {
-        var saving = "Changes you made may not be saved.";
+      if (!this.skipExitTrap && this.editMode) {
+        var saving =
+          "Are you sure you want to leave? Your work will not be saved!";
         e.returnValue = saving;
         return saving;
       }
@@ -1647,6 +1648,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       haxSelectedText: observable,
       activeEditingElement: observable,
       activeHaxBody: observable,
+      saving: observable,
     });
     autorun(() => {
       this._globalPreferencesChanged(toJS(this.globalPreferences));
