@@ -14,8 +14,7 @@
     "@polymer/iron-list": "^3.0.2",
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
-    "@lrnwebcomponents/simple-icon": "^2.7.10",
-    
+    "@lrnwebcomponents/simple-icon": "^3.0.0",
     "@polymer/paper-card": "^3.0.0"
   },
   "devDependencies": {}
