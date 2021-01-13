@@ -56,21 +56,22 @@ class H5PElement extends LitElement {
   async H5PDepsLoader() {
     window.ESGlobalBridge.requestAvailability();
     const basePath =
-      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/h5p/";
+      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/";
     this.h5pJSDeps = [
-      basePath + "js/jquery.js",
-      basePath + "js/h5p.js",
-      basePath + "js/h5p-event-dispatcher.js",
-      basePath + "js/h5p-content-type.js",
-      basePath + "js/h5p-action-bar.js",
-      basePath + "js/h5p-confirmation-dialog.js",
-      basePath + "js/h5p-x-api-event.js",
-      basePath + "js/h5p-x-api.js",
+      basePath + "h5p-resizer.js",
+      basePath + "h5p/js/jquery.js",
+      basePath + "h5p/js/h5p.js",
+      basePath + "h5p/js/h5p-event-dispatcher.js",
+      basePath + "h5p/js/h5p-content-type.js",
+      basePath + "h5p/js/h5p-action-bar.js",
+      basePath + "h5p/js/h5p-confirmation-dialog.js",
+      basePath + "h5p/js/h5p-x-api-event.js",
+      basePath + "h5p/js/h5p-x-api.js",
     ];
     this.__h5pDepsLength = this.h5pJSDeps.length - 1;
     await window.ESGlobalBridge.instance.load(
       "h5p-jquery",
-      basePath + "js/jquery.js"
+      basePath + "h5p/js/jquery.js"
     );
     window.addEventListener(
       "es-bridge-h5p-jquery-loaded",
@@ -123,13 +124,13 @@ class H5PElement extends LitElement {
       export: (displayOptions.export = false),
     });
     const basePath =
-      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/h5p/";
+      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/";
 
     H5PIntegration.core = {
       styles: [
-        basePath + "styles/h5p.css",
-        basePath + "styles/h5p-confirmation-dialog.css",
-        basePath + "styles/h5p-core-button.css",
+        basePath + "h5p/styles/h5p.css",
+        basePath + "h5p/styles/h5p-confirmation-dialog.css",
+        basePath + "h5p/styles/h5p-core-button.css",
       ],
       scripts: this.h5pJSDeps,
     };
