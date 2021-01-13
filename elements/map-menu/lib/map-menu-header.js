@@ -116,7 +116,7 @@ class MapMenuHeader extends LitElement {
 
         <div id="center">
           <a tabindex="-1" href="${this.url}">
-            <button class="title" noink>
+            <button class="title">
               <div id="label">${this.label}</div>
               <div class="title">${this.title}</div>
             </button>
@@ -216,6 +216,16 @@ class MapMenuHeader extends LitElement {
   }
   __selectedChanged(selected, id) {
     if (selected === id) {
+      if (!this.parentNode.expanded) {
+        this.dispatchEvent(
+          new CustomEvent("toggle-header", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: true,
+          })
+        );
+      }
       this.dispatchEvent(
         new CustomEvent("active-item", {
           bubbles: true,
@@ -240,17 +250,7 @@ class MapMenuHeader extends LitElement {
   }
 
   __toggleEventHandler(e) {
-    var target = normalizeEventPath(e)[0];
-    if (e.originalTarget && e.originalTarget.id === "toggle") {
-      this.dispatchEvent(
-        new CustomEvent("toggle-header", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: true,
-        })
-      );
-    } else if (target && target.id === "toggle") {
+    if (!this.parentNode.expanded) {
       this.dispatchEvent(
         new CustomEvent("toggle-header", {
           bubbles: true,

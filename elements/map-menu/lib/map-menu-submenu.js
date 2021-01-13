@@ -10,17 +10,19 @@ class MapMenuSubmenu extends LitElement {
       css`
         :host {
           display: block;
+          overflow: hidden;
         }
-        :host([collapsable]) > map-menu-header {
+        :host([collapsable]) > map-menu-builder {
           cursor: pointer;
           display: block;
         }
         #container {
           margin: 0;
-          margin-left: 16px;
         }
-        #container ::slotted(map-menu-item) {
-          margin-top: 0.4em;
+        #container ::slotted(map-menu-builder) {
+          display: block;
+          cursor: pointer;
+          margin-left: 20px;
         }
         a11y-collapse {
           --a11y-collapse-border: 0;
@@ -59,7 +61,7 @@ class MapMenuSubmenu extends LitElement {
    */
   render() {
     return html`
-      <a11y-collapse id="container">
+      <a11y-collapse id="container" ?expanded="${this.opened}">
         <map-menu-header
           .avatar-label="${this.avatarLabel}"
           id="${this.id}"
@@ -129,9 +131,6 @@ class MapMenuSubmenu extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "opened") {
-        this._openedChanged(this[propName], oldValue);
-      }
       if (propName == "published") {
         if (this.published === false) {
           this.__icon = "visibility-off";
@@ -141,17 +140,6 @@ class MapMenuSubmenu extends LitElement {
         }
       }
     });
-  }
-
-  _openedChanged(opened) {
-    var target = this.shadowRoot.querySelector("#container");
-    if (target) {
-      if (opened && typeof target.show === "function") {
-        target.show();
-      } else if (typeof target.hide === "function") {
-        target.hide();
-      }
-    }
   }
 
   _headerClickHandler(e) {

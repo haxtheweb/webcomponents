@@ -1648,7 +1648,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       haxSelectedText: observable,
       activeEditingElement: observable,
       activeHaxBody: observable,
-      saving: observable,
     });
     autorun(() => {
       this._globalPreferencesChanged(toJS(this.globalPreferences));
