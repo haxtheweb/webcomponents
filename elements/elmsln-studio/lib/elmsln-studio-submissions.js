@@ -86,9 +86,12 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           align-items: stretch;
           justify-content: stretch;
           width: auto;
+          cursor: pointer;
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px))
             calc(0.5 * var(--elmsln-studio-margin, 20px));
           flex: 1 1 calc(100% - var(--elmsln-studio-margin, 20px));
+          --accent-card-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.28),
+            0 1px 5px 0 rgba(0, 0, 0, 0.24), 0 3px 1px -2px rgba(0, 0, 0, 0.4);
           --accent-card-padding: 0;
           --accent-card-image-width: 33.33333%;
           --accent-card-image-height: 200px;
@@ -133,6 +136,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           --accent-card-image-padding-right: calc(
             0.5 * var(--elmsln-studio-margin, 20px)
           );
+        }
+        accent-card-clickable:hover {
+          --accent-card-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+            0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1.5px 1px -1px rgba(0, 0, 0, 0.2);
         }
         accent-card-clickable [slot="heading"] {
           font-weight: var(--elmsln-studio-FontWeightLight, 300);
@@ -334,21 +341,21 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                       no-border
                     >
                       <elmsln-studio-link
-                        id="student-${s.id}"
+                        data-clickable
+                        href="${this.getActivityLink(s, true)}"
+                        id="assignment-${s.id}"
                         slot="heading"
+                      >
+                        ${s.assignment}
+                      </elmsln-studio-link>
+                      <elmsln-studio-link
+                        id="student-${s.id}"
                         href="/submissions${!s.userId
                           ? ""
                           : `?student=${s.userId}`}"
+                        slot="subheading"
                       >
                         ${[s.firstName, s.lastName].join(" ")}
-                      </elmsln-studio-link>
-                      <elmsln-studio-link
-                        data-clickable
-                        id="assignment-${s.id}"
-                        slot="subheading"
-                        href="${this.getActivityLink(s, true)}"
-                      >
-                        ${s.assignment}
                       </elmsln-studio-link>
                       <local-time
                         slot="corner"

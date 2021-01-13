@@ -39,8 +39,7 @@ class ElmslnStudio extends router(
           >Dashboard</elmsln-studio-link
         >
         <elmsln-studio-link
-          ?active="${this.route === "submissions" ||
-          this.route === "portfolios"}"
+          ?active="${this.route === "submissions" || this.route === "project"}"
           href="/submissions"
           >Submissions</elmsln-studio-link
         >
@@ -92,6 +91,7 @@ class ElmslnStudio extends router(
           route="project"
           ?sort-latest="${this.query.sort === "latest"}"
           submission-filter="${this.query.submission || ""}"
+          .navigation="${this.prevNextSubmission}"
         >
         </elmsln-studio-portfolio>
         <elmsln-studio-assignments
@@ -207,7 +207,7 @@ class ElmslnStudio extends router(
   constructor() {
     super();
     window.ElmslnStudioPath = "";
-
+    this.baseUrl = "/";
     this.route = "";
     this.params = {};
     this.query = {};
@@ -267,6 +267,19 @@ class ElmslnStudio extends router(
               (assignment) => assignment.id === projectId
             );
     return projects ? projects[0] : undefined;
+  }
+  get feedbackPercentile() {
+    let score =
+        !this.profile || !this.profile.given ? undefined : this.profile.length,
+      scores = !this.profiles
+        ? undefined
+        : this.profiles
+            .map((p) => (p.given ? p.given.length : undefined))
+            .filter((p) => !!p);
+    console.log("feedbackPercentile", score, scores);
+    return !score || scores.length < 2
+      ? undefined
+      : this.getPercentile(scores, score);
   }
   get recentDiscussions() {
     if (this.discussion) {
@@ -333,6 +346,48 @@ class ElmslnStudio extends router(
           .filter((key) => !!this.submissions[key].date)
           .map((key) => this.submissions[key]);
   }
+  /**
+   * given a student submission gets peer submissions
+   *
+   * @readonly
+   * @memberof ElmslnStudio
+   */
+  get peerSubmissions() {
+    return !this.completedSubmissions || !this.query.submission
+      ? undefined
+      : this.completedSubmissions.filter(
+          (s) => s.assignmentId === this.query.submission.replace(/\-\w+$/, "")
+        );
+  }
+  /**
+   * gets the previous and next submission data for a given submission
+   *
+   * @readonly
+   * @memberof ElmslnStudio
+   */
+  get prevNextSubmission() {
+    let nav = {};
+    for (let i = 0; i < (this.peerSubmissions || []).length; i++) {
+      console.log(this.peerSubmissions[i], this.query.submission);
+      if (this.peerSubmissions[i].id === this.query.submission) {
+        nav.prev = !this.peerSubmissions[i - 1]
+          ? undefined
+          : { ...this.peerSubmissions[i - 1], activity: "submission" };
+        nav.next = !this.peerSubmissions[i + 1]
+          ? undefined
+          : { ...this.peerSubmissions[i + 1], activity: "submission" };
+        i = this.peerSubmissions.length;
+      }
+    }
+    console.log(
+      "prevNextSubmission",
+      nav,
+      nav !== {},
+      nav !== {} ? nav : undefined,
+      this.peerSubmissions
+    );
+    return nav !== {} ? nav : undefined;
+  }
 
   get submission() {
     let submissions =
@@ -349,6 +404,18 @@ class ElmslnStudio extends router(
       : undefined;
   }
   get submissionFeedback() {
+    console.log(
+      "submissionFeedback",
+      this.query.submission,
+      !this.query.submission || !this.discussion
+        ? undefined
+        : Object.keys(this.discussion || {})
+            .filter(
+              (key) =>
+                this.discussion[key].submissionId == this.query.submission
+            )
+            .map((key) => this.discussion[key])
+    );
     return !this.query.submission || !this.discussion
       ? undefined
       : Object.keys(this.discussion || {})

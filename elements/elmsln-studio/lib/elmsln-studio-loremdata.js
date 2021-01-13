@@ -12,6 +12,7 @@ import "@lrnwebcomponents/lorem-data/lorem-data.js";
  *
  * @customElement elmsln-studio-loremdata
  * @demo demo/loremdata.html
+ * @demo demo/loremdata2.html Advanced
  * @lit-html
  * @lit-element
  */
@@ -405,6 +406,28 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     this.students.forEach(
       (student) => (this.profiles[student.id] = this._profile(student, lorem))
     );
+
+    let feedbackGiven = Object.keys(this.profiles)
+      .map((key) => {
+        let p = this.profiles[key];
+        return !p.given ? undefined : p.given.length;
+      })
+      .filter((p) => !!p)
+      .sort((a, b) => b - a);
+
+    Object.keys(this.profiles).forEach((key) => {
+      let p = this.profiles[key],
+        score = !p.given ? undefined : p.given.length,
+        index =
+          !score || feedbackGiven < 2
+            ? undefined
+            : feedbackGiven.indexOf(score);
+      if (index)
+        this.profiles[key].feedbackPercentile = Math.round(
+          (index * 100) / feedbackGiven.length
+        );
+    });
+
     this.profile = this.profiles[
       lorem.randomOption(Object.keys(this.profiles)) || 0
     ];

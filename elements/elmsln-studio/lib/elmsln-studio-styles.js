@@ -202,7 +202,6 @@ const ElmslnStudioStyles = function (SuperClass) {
             position: absolute;
             bottom: 5px;
             right: 5px;
-            z-index: 2;
           }
           .thumbnail-grid {
             display: flex;

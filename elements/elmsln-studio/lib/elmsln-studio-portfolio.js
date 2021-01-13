@@ -472,7 +472,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             <threaded-discussion
               comment-icon="send"
               ?demo="${this.demoMode}"
-              .data="${this.submission || []}"
+              .data="${this.feedback || []}"
               latest
             >
             </threaded-discussion>
@@ -507,10 +507,11 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         attribute: "comment",
       },
       /**
-       * all submissions
+       * gets submission previous next navigation
        */
-      submissions: {
-        type: Array,
+      navigation: {
+        type: Object,
+        attribute: "navigation",
       },
       /**
        * submission id to select submission and filter feedback
@@ -550,18 +551,36 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     this.fetchData("submissions");
     this.fetchData("portfolios");
     this.fetchData("discussion");
-    console.log("updated", this.submissions, this.portfolios, this.discussion);
+    console.log("updated", this.navigation, this.portfolios, this.feedback);
+  }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "feedback") console.log("updated", this.feedback);
+    });
   }
   get nav() {
-    console.log("nav");
-    let portfolio = this.portfolio || {},
-      prevLabel = !portfolio.prev ? "" : this.fullName(portfolio.prev),
-      nextLabel = !portfolio.next ? "" : this.fullName(portfolio.next),
-      prevHref = !portfolio.prev
+    if (!this.navigation) return;
+    let prevLabel = !this.navigation.prev
+        ? ""
+        : this.fullName(this.navigation.prev),
+      nextLabel = !this.navigation.next
+        ? ""
+        : this.fullName(this.navigation.next),
+      prevHref = !this.navigation.prev
         ? undefined
-        : this._getNavLink(portfolio, true),
-      nextHref = !portfolio.next ? undefined : this._getNavLink(portfolio);
-    console.log(prevLabel, prevHref, nextLabel, nextHref);
+        : this.getActivityLink(
+            this.navigation.prev,
+            !this.comment,
+            this.sortLatest
+          ),
+      nextHref = !this.navigation.next
+        ? undefined
+        : this.getActivityLink(
+            this.navigation.next,
+            !this.comment,
+            this.sortLatest
+          );
     return this.prevNextNav(prevLabel, prevHref, nextLabel, nextHref);
   }
   get sortedSubmissions() {
@@ -577,24 +596,6 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             (s) => !this.submissionFilter || s.id === this.submissionFilter
           );
     return !filter ? false : filter[0];
-  }
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
-  }
-  _getNavLink(portfolio, prev = false) {
-    let s = prev ? portfolio.prev : portfolio.next,
-      assignmentId = this.submissionFilter
-        ? this.submissionFilter.replace(/-\w+$/, "")
-        : portfolio.assignmentId,
-      submissionId = `${assignmentId}-${s.userId}`,
-      submissions =
-        !assignmentId || !s.submissions
-          ? []
-          : s.submissions.filter((sub) => sub.id === submissionId),
-      submission = submissions.length > 0 ? submissions[0] : {};
-    submission.activity = "submission";
-    return this.getActivityLink(submission, !this.comment, this.sortLatest);
   }
 }
 customElements.define("elmsln-studio-portfolio", ElmslnStudioPortfolio);
