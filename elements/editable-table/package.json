@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.0",
+  "version": "3.0.5",
   "description": "A table that's editable",
   "repository": {
     "type": "git",
@@ -41,11 +41,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^3.0.0",
-    "@lrnwebcomponents/responsive-utility": "^3.0.0",
-    "@lrnwebcomponents/simple-icon": "^3.0.0",
-    "@lrnwebcomponents/simple-picker": "^3.0.0",
-    "@lrnwebcomponents/simple-tooltip": "^3.0.0",
+    "@lrnwebcomponents/hax-iconset": "^3.0.5",
+    "@lrnwebcomponents/responsive-utility": "^3.0.5",
+    "@lrnwebcomponents/simple-icon": "^3.0.5",
+    "@lrnwebcomponents/simple-picker": "^3.0.5",
+    "@lrnwebcomponents/simple-tooltip": "^3.0.5",
     "@lrnwebcomponents/utils": "^3.0.0",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.0",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^3.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^3.0.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.5.0",

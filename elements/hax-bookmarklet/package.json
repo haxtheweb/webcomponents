@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.3",
+  "version": "3.0.5",
   "description": "HAX as a bookmarklet script",
   "repository": {
     "type": "git",
@@ -41,15 +41,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/cms-hax": "^3.0.3",
-    "@lrnwebcomponents/hax-body-behaviors": "^3.0.0",
+    "@lrnwebcomponents/cms-hax": "^3.0.5",
+    "@lrnwebcomponents/hax-body-behaviors": "^3.0.5",
     "@polymer/iron-resizable-behavior": "^3.0.0",
     "@polymer/iron-selector": "^3.0.0",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^3.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^3.0.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.5.0",

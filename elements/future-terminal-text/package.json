@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.0",
+  "version": "3.0.5",
   "description": "this is to provide a futuristic terminal text type of environment",
   "repository": {
     "type": "git",

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "some different elements specific to the design of educational materials. Lots of small elements and a catch all repo",
   "repository": {
     "type": "git",

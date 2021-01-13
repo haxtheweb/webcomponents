@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.0",
+  "version": "3.0.5",
   "description": "Start of paper-search",
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^3.0.0",
-    "@lrnwebcomponents/simple-icon": "^3.0.0",
+    "@lrnwebcomponents/hax-iconset": "^3.0.5",
+    "@lrnwebcomponents/simple-icon": "^3.0.5",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-a11y-keys-behavior": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^3.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^3.0.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.5.0",

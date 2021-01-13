@@ -21,7 +21,7 @@
       "...super.styles"
     ]
   },
-  "version": "3.0.0",
+  "version": "3.0.5",
   "description": "Simple call to action button",
   "repository": {
     "type": "git",
