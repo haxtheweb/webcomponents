@@ -50,7 +50,7 @@
         "@open-wc/storybook": "0.2.8",
         "@open-wc/webpack-import-meta-loader": "0.4.7",
         "@rollup/plugin-commonjs": "^11.0.2",
-        "@webcomponents/webcomponentsjs": "2.4.4",
+        "@webcomponents/webcomponentsjs": "2.5.0",
         "babel-loader": "^7.0.0",
         "babel-plugin-external-helpers": "6.22.0",
         "babel-plugin-transform-custom-element-classes": "0.1.0",
