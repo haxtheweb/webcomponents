@@ -21,7 +21,7 @@ class ScrollButton extends LitElement {
   constructor() {
     super();
     this.icon = "icons:expand-less";
-    this.label = "Scroll to top";
+    this.label = "Backt to top";
     this.position = "top";
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
