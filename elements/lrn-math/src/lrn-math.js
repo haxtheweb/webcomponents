@@ -146,7 +146,7 @@ function update(elem) {
   if (check !== elem._private.check) {
     while (sdom.firstChild) sdom.removeChild(sdom.firstChild);
     elem._private.check = check;
-    if (math.length) {
+    if (math.length && handler) {
       handler.typeset(math, isBlock, function (melem, styleNode) {
         sdom.appendChild(styleNode.cloneNode(true));
         sdom.appendChild(melem);

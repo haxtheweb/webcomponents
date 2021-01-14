@@ -2,6 +2,24 @@
   "version": 1,
   "tags": [
     {
+      "name": "lrn-math",
+      "description": "lrn-math\nA mathjax wrapper tag in vanillaJS\n\nAttributes:\n\n  * `math-text` {} - ",
+      "attributes": [
+        {
+          "name": "math-text",
+          "description": "`math-text` {} - \n\n"
+        }
+      ]
+    },
+    {
+      "name": "lrn-math-controller",
+      "attributes": []
+    },
+    {
+      "name": "lrn-math",
+      "attributes": []
+    },
+    {
       "name": "lrn-math-controller",
       "attributes": []
     },
@@ -18,20 +36,6 @@
     {
       "name": "lrn-math-controller",
       "attributes": []
-    },
-    {
-      "name": "lrn-math-controller",
-      "attributes": []
-    },
-    {
-      "name": "lrn-math",
-      "description": "lrn-math\nA mathjax wrapper tag in vanillaJS\n\nAttributes:\n\n  * `math-text` {} - ",
-      "attributes": [
-        {
-          "name": "math-text",
-          "description": "`math-text` {} - \n\n"
-        }
-      ]
     }
   ],
   "globalAttributes": [],
