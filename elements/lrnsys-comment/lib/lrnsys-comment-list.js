@@ -218,14 +218,6 @@ class LrnsysCommentList extends PolymerElement {
         this.shadowRoot.querySelector("#filteredcomments").like =
           e.target.value;
       });
-    this.shadowRoot
-      .querySelector("#filtertype")
-      .addEventListener("change", (e) => {
-        this.shadowRoot.querySelector("#filtercomments").value = "";
-        this.shadowRoot.querySelector("#filteredcomments").where =
-          e.detail.value;
-        this.shadowRoot.querySelector("#filteredcomments").like = "";
-      });
   }
   /**
    * detached life cycle
@@ -236,14 +228,6 @@ class LrnsysCommentList extends PolymerElement {
       .removeEventListener("value-changed", (e) => {
         this.shadowRoot.querySelector("#filteredcomments").like =
           e.target.value;
-      });
-    this.shadowRoot
-      .querySelector("#filtertype")
-      .removeEventListener("change", (e) => {
-        this.shadowRoot.querySelector("#filtercomments").value = "";
-        this.shadowRoot.querySelector("#filteredcomments").where =
-          e.detail.value;
-        this.shadowRoot.querySelector("#filteredcomments").like = "";
       });
     super.disconnectedCallback();
   }
