@@ -1525,6 +1525,9 @@
     }
   ],
   "autoloader": {
+    "block-quote": "@lrnwebcomponents/course-design/lib/block-quote.js",
+    "ebook-button": "@lrnwebcomponents/course-design/lib/ebook-button.js",
+    "worksheet-download": "@lrnwebcomponents/course-design/lib/worksheet-download.js",
     "a11y-figure": "@lrnwebcomponents/a11y-figure/a11y-figure.js",
     "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",
     "music-player": "@lrnwebcomponents/music-player/music-player.js",
