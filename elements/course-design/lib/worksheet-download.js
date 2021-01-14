@@ -15,14 +15,15 @@ class WorksheetDownload extends LitElement {
 
   static get haxProperties() {
     return {
-      canScale: false,
+      canScale: true,
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Worksheet-Download",
+        title: "Worksheet Download",
         description: "A button for displaying files available for download.",
         icon: "icons:file-download",
         color: "blue",
+        groups: ["education", "link"],
         meta: {
           author: "LRNWebComponents",
         },
@@ -46,9 +47,54 @@ class WorksheetDownload extends LitElement {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "worksheet-download",
+          properties: {
+            title: "Download worksheet",
+          },
+          content: "",
+        },
+      ],
     };
   }
-
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    if (val) {
+      this._haxstate = val;
+    }
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    this._haxstate = val;
+  }
+  /**
+   * special support for HAX since the whole card is selectable
+   */
+  _clickLink(e) {
+    if (this._haxstate) {
+      // do not do default
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }
   constructor() {
     super();
     this.title = "";
@@ -99,6 +145,7 @@ class WorksheetDownload extends LitElement {
           target="_blank"
           download
           rel="noopener noreferrer"
+          @click="${this._clickLink}"
         >
           <button>
             <simple-icon-lite icon="icons:file-download"></simple-icon-lite
