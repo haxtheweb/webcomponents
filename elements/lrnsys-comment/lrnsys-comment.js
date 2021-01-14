@@ -297,23 +297,25 @@ class LrnsysComment extends PolymerElement {
                 <lrnsys-button
                   on-click="actionHandler"
                   id="reply"
+                  raised
                   data-commentid="[[comment.id]]"
-                  alt="Reply"
                   icon="reply"
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.reply]]"
-                ></lrnsys-button>
+                  >Reply</lrnsys-button
+                >
                 <lrnsys-button
                   on-click="actionHandler"
                   id="like"
+                  raised
                   data-commentid="[[comment.id]]"
-                  alt="Like"
                   icon="thumb-up"
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.like]]"
-                ></lrnsys-button>
+                  >Like</lrnsys-button
+                >
               </div>
               <div class="comment-actions-group right-actions">
                 <lrnsys-button
@@ -321,21 +323,23 @@ class LrnsysComment extends PolymerElement {
                   id="edit"
                   data-commentid="[[comment.id]]"
                   icon="create"
-                  alt="Edit"
+                  raised
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.edit]]"
-                ></lrnsys-button>
+                  >Edit</lrnsys-button
+                >
                 <lrnsys-button
                   on-click="actionHandler"
                   id="delete"
                   data-commentid="[[comment.id]]"
                   icon="delete-forever"
-                  alt="Delete"
+                  raised
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.delete]]"
-                ></lrnsys-button>
+                  >Delete</lrnsys-button
+                >
               </div>
             </div>
           </div>
@@ -495,7 +499,7 @@ class LrnsysComment extends PolymerElement {
         // simple icon toggle
         if (this.editform) {
           this.shadowRoot.querySelector("#edit").icon = "save";
-          this.shadowRoot.querySelector("#edit").alt = "Save";
+          this.shadowRoot.querySelector("#edit").innerText = "Save";
           this.shadowRoot.querySelector("#reply").disabled = true;
           this.shadowRoot.querySelector("#editcomment").focus();
           this.dispatchEvent(
@@ -521,7 +525,7 @@ class LrnsysComment extends PolymerElement {
             this.blockFirstState = false;
           }
           this.shadowRoot.querySelector("#edit").icon = "create";
-          this.shadowRoot.querySelector("#edit").alt = "Edit";
+          this.shadowRoot.querySelector("#edit").innerText = "Edit";
           this.shadowRoot.querySelector("#reply").disabled = false;
         }
       });

@@ -73,7 +73,7 @@ class LrnappOpenStudio extends PolymerElement {
           flex-direction: column;
         }
         lrnsys-button {
-          --lrnsys-button-height: 26px;
+          --lrnsys-button-height: 48px;
         }
         iron-list {
           flex: 1 1 auto;

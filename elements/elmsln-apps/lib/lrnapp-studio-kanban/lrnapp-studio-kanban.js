@@ -127,10 +127,14 @@ class LrnappStudioKanban extends PolymerElement {
           max-height: 300px;
           overflow: scroll;
         }
+        .project-container:hover .project-operations {
+          display: block;
+        }
         .project-operations {
           position: absolute;
-          top: 0;
-          right: 0;
+          top: 22px;
+          right: 0px;
+          display: none;
         }
         .project-operations .operation {
           display: inline-flex;
@@ -382,14 +386,14 @@ class LrnappStudioKanban extends PolymerElement {
                 class="comment-box"
                 hidden$="[[!activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
               >
-                <button
+                <div
                   id$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
                   style="margin:0;padding:.25em;text-transform:none;"
                 >
                   <simple-icon icon="communication:forum"></simple-icon>
                   [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.count]]
                   Comments
-                </button>
+                </div>
                 <paper-badge
                   hidden$="[[displayNewBadge(activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.new)]]"
                   for$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
