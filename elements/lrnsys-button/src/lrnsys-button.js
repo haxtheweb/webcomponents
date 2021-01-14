@@ -54,7 +54,7 @@ class LrnsysButton extends LitElement {
         button:hover {
           cursor: pointer;
         }
-        .no-padding {
+        :host([no-padding]) button div.inner {
           padding: 0;
         }
         button simple-icon {

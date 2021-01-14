@@ -156,6 +156,8 @@ class LrnsysComment extends PolymerElement {
         }
         .comment-actions lrnsys-button {
           display: inline-flex;
+          --lrnsys-button-height: 30px;
+          padding: 1px;
         }
         .comment-actions .comment-actions-group {
           margin: 0;
@@ -297,6 +299,7 @@ class LrnsysComment extends PolymerElement {
                 <lrnsys-button
                   on-click="actionHandler"
                   id="reply"
+                  no-padding
                   raised
                   data-commentid="[[comment.id]]"
                   icon="reply"
@@ -308,6 +311,7 @@ class LrnsysComment extends PolymerElement {
                 <lrnsys-button
                   on-click="actionHandler"
                   id="like"
+                  no-padding
                   raised
                   data-commentid="[[comment.id]]"
                   icon="thumb-up"
@@ -324,6 +328,7 @@ class LrnsysComment extends PolymerElement {
                   data-commentid="[[comment.id]]"
                   icon="create"
                   raised
+                  no-padding
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
                   hidden$="[[!comment.actions.edit]]"
@@ -332,6 +337,7 @@ class LrnsysComment extends PolymerElement {
                 <lrnsys-button
                   on-click="actionHandler"
                   id="delete"
+                  no-padding
                   data-commentid="[[comment.id]]"
                   icon="delete-forever"
                   raised
