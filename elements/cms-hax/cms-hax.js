@@ -189,10 +189,12 @@ class CmsHax extends LitElement {
       // this helps with correctly preserving everything on the way down
       if (children != null) {
         HAXStore.activeHaxBody.importContent(children.innerHTML);
-        // NOW we have the data imported
-        if (this.openDefault) {
-          HAXStore.editMode = this.openDefault;
-        }
+        setTimeout(() => {
+          // NOW we have the data imported
+          if (this.openDefault) {
+            HAXStore.editMode = true;
+          }
+        }, 500);
       }
     }
   }
@@ -227,6 +229,12 @@ class CmsHax extends LitElement {
         HAXStore.haxTray.offsetMargin = offsetMargin;
         HAXStore.haxTray.hidePreferencesButton = hidePreferencesButton;
         HAXStore.haxTray.elementAlign = elementAlign;
+        setTimeout(() => {
+          // NOW we have the data imported
+          if (this.openDefault) {
+            HAXStore.editMode = true;
+          }
+        }, 500);
       }, 0);
     }
   }
