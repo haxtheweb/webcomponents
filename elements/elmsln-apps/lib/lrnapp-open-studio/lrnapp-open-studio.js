@@ -53,6 +53,8 @@ class LrnappOpenStudio extends PolymerElement {
         lrndesign-gallerycard {
           padding: 0;
           margin: 16px;
+          width: 300px;
+          height: 300px;
         }
         app-toolbar {
           height: 64px;
