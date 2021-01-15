@@ -375,9 +375,18 @@ class LrnappOpenStudio extends PolymerElement {
       },
     };
   }
+  ready() {
+    super.ready();
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 0);
+  }
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener("route-change", this._routeChange.bind(this));
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 1000);
   }
   disconnectedCallback() {
     this.removeEventListener("route-change", this._routeChange.bind(this));
@@ -459,6 +468,7 @@ class LrnappOpenStudio extends PolymerElement {
     // delay and repaint, can help with refresh issues
     setTimeout(() => {
       this.$.ironlist.fire("iron-resize");
+      window.dispatchEvent(new Event("resize"));
     }, 200);
     return filteredSubmissions;
   }
