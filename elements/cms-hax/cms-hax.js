@@ -189,6 +189,10 @@ class CmsHax extends LitElement {
       // this helps with correctly preserving everything on the way down
       if (children != null) {
         HAXStore.activeHaxBody.importContent(children.innerHTML);
+        // NOW we have the data imported
+        if (this.openDefault) {
+          HAXStore.editMode = this.openDefault;
+        }
       }
     }
   }
@@ -206,7 +210,6 @@ class CmsHax extends LitElement {
    * Set certain data bound values to the store once it's ready
    */
   _noticeTagChanges(
-    openDefault,
     allowedTags,
     hidePanelOps,
     offsetMargin,
@@ -225,9 +228,6 @@ class CmsHax extends LitElement {
         HAXStore.haxTray.hidePreferencesButton = hidePreferencesButton;
         HAXStore.haxTray.elementAlign = elementAlign;
       }, 0);
-      if (openDefault) {
-        HAXStore.editMode = openDefault;
-      }
     }
   }
   /**
@@ -238,7 +238,6 @@ class CmsHax extends LitElement {
     setTimeout(() => {
       // trigger the update of different parts of the global state
       this._noticeTagChanges(
-        this.openDefault,
         this.allowedTags,
         this.hidePanelOps,
         this.offsetMargin,
@@ -316,7 +315,6 @@ class CmsHax extends LitElement {
       }
       if (
         [
-          "openDefault",
           "allowedTags",
           "hidePanelOps",
           "offsetMargin",
@@ -325,7 +323,6 @@ class CmsHax extends LitElement {
         ].includes(propName)
       ) {
         this._noticeTagChanges(
-          this.openDefault,
           this.allowedTags,
           this.hidePanelOps,
           this.offsetMargin,
