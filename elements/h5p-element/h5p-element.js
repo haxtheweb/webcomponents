@@ -35,11 +35,12 @@ class H5PElement extends LitElement {
 
   // render function
   render() {
-    return html` <div
-        class="h5p-container"
-        data-content-id="wrapper-${this.contentId}"
-      ></div>
-      <slot></slot>`;
+    return html` ${!this.source
+      ? html`<h5p-wrapped-element><slot></slot></h5p-wrapped-element>`
+      : html`<div
+          class="h5p-container"
+          data-content-id="wrapper-${this.contentId}"
+        ></div>`}`;
   }
 
   // haxProperty definition
@@ -112,7 +113,10 @@ class H5PElement extends LitElement {
    * This breaks shadowRoot in LitElement
    */
   createRenderRoot() {
-    return this;
+    if (this.source) {
+      return this;
+    }
+    return super.createRenderRoot();
   }
   // simple path from a url modifier
   pathFromUrl(url) {
@@ -163,10 +167,15 @@ class H5PElement extends LitElement {
    */
   firstUpdated() {
     if (
+      this.source &&
       window.ESGlobalBridge.imports["h5p-" + this.__h5pDepsLength] === true &&
       this.contentId
     ) {
       this.setupH5P(this.contentId);
+    }
+    // no source, try to make use of the wrapped element methodology
+    if (!this.source) {
+      import("./lib/h5p-wrapped-element.js");
     }
   }
   async h5pJqueryReady(e) {
