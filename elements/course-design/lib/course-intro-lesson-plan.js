@@ -38,10 +38,14 @@ class CourseIntroLessonPlan extends LitElement {
           align-items: center;
           justify-content: center;
           text-align: center;
-          font-size: 48px;
+          font-size: var(
+            --course-intro-lesson-plan--container--font-size,
+            28px
+          );
           font-family: "Lato";
           color: rgba(77, 87, 104, 0.4);
           font-weight: 100;
+          cursor: pointer;
         }
         #title {
           font-family: "Lato";
