@@ -10,13 +10,24 @@ class CourseIntro extends LitElement {
     return [
       css`
         :host {
-          --course-intro-bg-color: 0, 0, 0;
           display: block;
           min-height: 100vh;
           padding-bottom: 30vh;
+          background-color: rgba(var(--course-intro-bg-color), 1);
         }
       `,
     ];
+  }
+  constructor() {
+    super();
+    // Add the included Lato font-family
+    let link = document.createElement("link");
+    link.setAttribute(
+      "href",
+      "https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+    );
+    link.setAttribute("rel", "stylesheet");
+    document.head.appendChild(link);
   }
   render() {
     return html`

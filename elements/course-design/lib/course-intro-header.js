@@ -49,11 +49,23 @@ class CourseIntroHeader extends LitElement {
           flex-wrap: wrap;
           align-content: flex-end;
           overflow: hidden;
-          background: rgba(var(--course-intro-bg-color), 1);
           width: 100%;
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: top center;
+          background-image: var(
+            --course-intro-header--header--background-image
+          );
+          background-size: var(
+            --course-intro-header--header--background-size,
+            contain
+          );
+          background-repeat: var(
+            --course-intro-header--header--background-repeat,
+            no-repeat
+          );
+          background-position: var(
+            --course-intro-header--header--background-position,
+            top center
+          );
+          background-color: rgba(var(--course-intro-bg-color), 1);
           min-height: 50vw;
           min-height: 60vh;
           color: white;
@@ -76,14 +88,14 @@ class CourseIntroHeader extends LitElement {
         #title {
           margin: 0;
           font-family: Lato;
-          font-size: 56px;
+          font-size: var(--course-intro-header--title--FontSize, 56px);
           line-height: 1.2;
           flex: 1 1 auto;
         }
         #sub-heading {
           margin: 0;
           font-family: Lato;
-          font-size: 40px;
+          font-size: var(--course-intro-header--sub-heading--FontSize, 40px);
           text-transform: uppercase;
           color: rgba(255, 255, 255, 0.5);
           font-weight: 300;
