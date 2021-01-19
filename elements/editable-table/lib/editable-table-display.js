@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import {
   displayBehaviors,
-  editableTableStyles,
+  editableTableDisplayStyles,
 } from "./editable-table-behaviors.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
@@ -24,69 +24,7 @@ class EditableTableDisplay extends displayBehaviors(
   ResponsiveUtilityBehaviors(LitElement)
 ) {
   static get styles() {
-    return [
-      ...(super.styles || []),
-      ...editableTableStyles,
-      css`
-        table[sort] .thead .th,
-        table[filter] .tbody .td,
-        table[filter] .tfoot .td {
-          padding-left: 0;
-          padding-right: 0;
-          padding-top: 0;
-          padding-bottom: 0;
-        }
-        caption {
-          padding-top: var(--editable-table-cell-vertical-padding, 10px);
-          padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
-        }
-        #column {
-          width: calc(var(--simple-picker-option-size) + 6px);
-          overflow: visible;
-          display: none;
-          margin-left: 10px;
-          --simple-picker-border-width: 1px;
-          --simple-picker-focus-border-width: 1px;
-          --simple-picker-border-color: var(
-            --editable-table-border-color,
-            #999
-          );
-        }
-        .th,
-        .td {
-          padding-top: var(--editable-table-cell-vertical-padding, 10px);
-          padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
-          padding-left: var(--editable-table-cell-horizontal-padding, 6px);
-          padding-right: var(--editable-table-cell-horizontal-padding, 6px);
-        }
-        span.cell {
-          display: block;
-        }
-        @media screen {
-          :host([responsive][responsive-size="xs"]) caption {
-            padding: 0;
-          }
-          :host([responsive][responsive-size="xs"])
-            caption
-            > div
-            > *:not(#column) {
-            padding: 0 0 5px;
-          }
-          :host([responsive][responsive-size="xs"]) caption > div {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-          }
-          :host([responsive][responsive-size="xs"]) #column {
-            display: inline-flex;
-          }
-          :host([responsive][responsive-size="xs"]) .th[xs-hidden],
-          :host([responsive][responsive-size="xs"]) .td[xs-hidden] {
-            display: none;
-          }
-        }
-      `,
-    ];
+    return [...(super.styles || []), ...editableTableDisplayStyles];
   }
   render() {
     return html`
@@ -118,6 +56,34 @@ class EditableTableDisplay extends displayBehaviors(
               .value="${this.selected}"
             >
             </simple-picker>
+            ${!this.downloadable
+              ? ""
+              : html`
+                  <button id="download" @click="${this.download}">
+                    <span class="sr-only">Download as CSV.</span>
+                    <simple-icon-lite icon="file-download"></simple-icon-lite>
+                  </button>
+                  <simple-tooltip
+                    id="download-tooltip"
+                    for="download"
+                    aria-hidden="true"
+                    >Download as CSV.
+                  </simple-tooltip>
+                `}
+            ${!this.printable
+              ? ""
+              : html`
+                  <button id="print" @click="${this.print}">
+                    <span class="sr-only">Print table.</span>
+                    <simple-icon-lite icon="print"></simple-icon-lite>
+                  </button>
+                  <simple-tooltip
+                    id="print-tooltip"
+                    for="print"
+                    aria-hidden="true"
+                    >Print table.
+                  </simple-tooltip>
+                `}
           </div>
         </caption>
         <thead ?hidden="${!this.columnHeader}" class="thead">
@@ -312,27 +278,6 @@ class EditableTableDisplay extends displayBehaviors(
   }
 
   /**
-   * Rows in <tbody>
-   */
-  get tbody() {
-    let data = (this.data || []).slice(
-        this.columnHeader ? 1 : 0,
-        this.footer ? (this.data || []).length - 1 : (this.data || []).length
-      ),
-      temp;
-    if (!this.sortMode || this.sortMode === "none") return data;
-    temp = data.sort((a, b) => {
-      let aa = a[this.sortColumn || 0],
-        bb = b[this.sortColumn || 0],
-        swap =
-          (this.sortMode === "asc" && aa > bb) ||
-          (this.sortMode === "desc" && aa < bb);
-      return swap ? 1 : -1;
-    });
-    return temp;
-  }
-
-  /**
    * initialize responsive columns menu
    *
    * @param {string} type  sort order ascending: "asc", descending: "desc", or "non"
@@ -440,37 +385,6 @@ class EditableTableDisplay extends displayBehaviors(
   }
 
   /**
-   * Hides a row if filtered
-   *
-   * @param {array} tr array of cells
-   * @returns {boolean} whether row is filtered
-   * @memberof EditableTableDisplay
-   */
-  _isRowFiltered(tr) {
-    let filter = (this.filterText || "").trim(),
-      cellText = this.filterColumn && tr ? tr[this.filterColumn].trim() : "",
-      filtered;
-    if (!this.filterCaseSensitive) {
-      filter = filter.toLowerCase();
-      cellText = cellText.toLowerCase();
-    }
-    filtered = this.filterContains
-      ? !cellText.match(filter)
-      : cellText !== filter;
-    return filtered;
-  }
-
-  /**
-   * Calculates whether cell is a `<th>` or `<td>`
-   * @param {boolean} rowHeader if cell is a rowheader
-   * @param {number} index current column number
-   * @returns {boolean} whether cell is a `<th>` or `<td>`
-   */
-  _isRowHeader(rowHeader, index) {
-    return index === 0 && rowHeader;
-  }
-
-  /**
    * Handles column  selector change
    */
   _selectedChanged() {
@@ -512,7 +426,7 @@ class EditableTableDisplay extends displayBehaviors(
    * @memberof EditableTableDisplay
    */
   _tbodyTh(cell, index) {
-    return html` <th
+    return html`<th
       class="th th-or-td"
       cell-index="${index}"
       ?numeric="${this._isNumericColumn(index)}"
@@ -532,7 +446,7 @@ class EditableTableDisplay extends displayBehaviors(
    * @memberof EditableTableDisplay
    */
   _tbodyTd(cell, index, noFilter = false) {
-    return html` <td
+    return html`<td
       class="td th-or-td"
       cell-index="${index}"
       ?numeric="${this._isNumericColumn(index)}"

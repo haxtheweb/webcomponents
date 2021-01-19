@@ -232,11 +232,13 @@ class EditableTable extends displayBehaviors(LitElement) {
         ?column-header="${this.columnHeader}"
         ?column-striped="${this.columnStriped}"
         ?condensed="${this.condensed}"
+        ?downloadable="${this.downloadable}"
         .data="${this.data}"
         ?filter="${this.filter}"
         ?footer="${this.footer}"
         ?hidden="${this.editMode}"
         ?numeric-styles="${this.numericStyles}"
+        ?printable="${this.printable}"
         ?responsive="${this.responsive}"
         ?row-header="${this.rowHeader}"
         ?sort="${this.sort}"
@@ -256,9 +258,11 @@ class EditableTable extends displayBehaviors(LitElement) {
             ?column-header="${this.columnHeader}"
             ?column-striped="${this.columnStriped}"
             ?condensed="${this.condensed}"
+            ?downloadable="${this.downloadable}"
             ?filter="${this.filter}"
             ?footer="${this.footer}"
             ?numeric-styles="${this.numericStyles}"
+            ?printable="${this.printable}"
             ?responsive="${this.responsive}"
             ?row-header="${this.rowHeader}"
             ?sort="${this.sort}"
@@ -484,6 +488,26 @@ class EditableTable extends displayBehaviors(LitElement) {
               ?toggled="${this.filter}"
             >
             </editable-table-editor-toggle>
+            <editable-table-editor-toggle
+              id="downloadable"
+              ?disabled="${this.hideDownloadable}"
+              ?hidden="${this.hideDownloadable}"
+              icon="file-download"
+              label="Allow downloading as CSV."
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.downloadable}"
+            >
+            </editable-table-editor-toggle>
+            <editable-table-editor-toggle
+              id="printable"
+              ?disabled="${this.hidePrintable}"
+              ?hidden="${this.hidePrintable}"
+              icon="print"
+              label="Allow printing."
+              @change="${this._onTableSettingChange}"
+              ?toggled="${this.printable}"
+            >
+            </editable-table-editor-toggle>
           </div>
         </div>
       </div>
@@ -524,9 +548,11 @@ class EditableTable extends displayBehaviors(LitElement) {
     this.editMode = false;
     this.hideBordered = false;
     this.hideCondensed = false;
+    this.hideDownloadable = false;
     this.hideFilter = false;
-    this.hideSort = false;
     this.hideResponsive = false;
+    this.hidePrintable = false;
+    this.hideSort = false;
     this.hideStriped = false;
     this.config = [
       {
@@ -654,6 +680,13 @@ class EditableTable extends displayBehaviors(LitElement) {
         attribute: "hide-condensed",
       },
       /**
+       * Hide downloadable menu option
+       */
+      hideDownloadable: {
+        type: Boolean,
+        attribute: "hide-downloadable",
+      },
+      /**
        * Hide filtering option.
        */
       hideFilter: {
@@ -668,11 +701,11 @@ class EditableTable extends displayBehaviors(LitElement) {
         attribute: "hide-numeric-styles",
       },
       /**
-       * Hide sorting option.
+       * Hide printable menu option
        */
-      hideSort: {
+      hidePrintable: {
         type: Boolean,
-        attribute: "hide-sort",
+        attribute: "hide-printable",
       },
       /**
        * Hide responsive table styles menu option
@@ -680,6 +713,13 @@ class EditableTable extends displayBehaviors(LitElement) {
       hideResponsive: {
         type: Boolean,
         attribute: "hide-responsive",
+      },
+      /**
+       * Hide sorting option.
+       */
+      hideSort: {
+        type: Boolean,
+        attribute: "hide-sort",
       },
       /**
        * Hide striped table styles menu option
@@ -737,7 +777,6 @@ class EditableTable extends displayBehaviors(LitElement) {
     temp.splice(index, 1);
     this.data = temp;
   }
-
   /**
    * Insert a column at given index
    * @param {number} index index of column

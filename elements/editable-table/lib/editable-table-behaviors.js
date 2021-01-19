@@ -10,6 +10,272 @@ import { html, css } from "lit-element/lit-element.js";
  */
 
 /**
+ * styling for table cells
+ */
+export const editableTableCellStyles = [
+  css`
+    .cell-button {
+      padding-top: var(--editable-table-cell-vertical-padding, 10px);
+      padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
+      padding-left: var(--editable-table-cell-horizontal-padding, 6px);
+      padding-right: var(--editable-table-cell-horizontal-padding, 6px);
+      margin: 0;
+      width: 100%;
+      display: flex;
+      justify-content: var(--editable-table-cell-justify, space-between);
+      align-items: center;
+      align-content: stretch;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+      color: var(--editable-table-cell-color);
+    }
+    .sr-only {
+      position: absolute;
+      left: -9999px;
+      font-size: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+  `,
+];
+
+/**
+ * styling for table
+ */
+export const editableTableStyles = [
+  css`
+    :host {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 15px 0;
+      font-size: var(--editable-table-font-size, unset);
+      font-family: var(--editable-table-font-family, inherit);
+      font-weight: var(--editable-table-medium-weight, 300);
+      color: var(--editable-table-color, #222);
+      background-color: var(--editable-table-bg-color, #fff);
+
+      --simple-picker-font-family: var(
+        --editable-table-secondary-font-family,
+        "Roboto",
+        "Noto",
+        sans-serif
+      );
+      --simple-picker-font-size: var(
+        --editable-table-secondary-font-size,
+        12px
+      );
+      --simple-picker-color: var(--editable-table-color, #222);
+      --simple-picker-background-color: var(--editable-table-bg-color, #fff);
+      --paper-font-caption: {
+        font-family: var(
+          --editable-table-secondary-font-family,
+          "Roboto",
+          "Noto",
+          sans-serif
+        );
+      }
+    }
+    :host([hidden]) {
+      display: none;
+    }
+    .sr-only {
+      position: absolute;
+      left: -9999px;
+      font-size: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    table {
+      width: calc(100% - 2 * var(--editable-table-border-width, 1px));
+      display: table;
+      border-collapse: collapse;
+      border-width: var(--editable-table-border-width, 1px);
+      border-style: var(--editable-table-border-style, solid);
+      border-color: var(--editable-table-border-color, #999);
+      font-weight: var(--editable-table-light-weight, 200);
+      color: var(--editable-table-color, #222);
+      background-color: var(--editable-table-bg-color, #fff);
+    }
+    .th,
+    .td {
+      font-weight: var(--editable-table-light-weight, 200);
+      color: var(--editable-table-color, #222);
+      background-color: var(--editable-table-bg-color, #fff);
+    }
+    caption {
+      font-size: var(
+        --editable-table-caption-font-size,
+        var(--editable-table-font-size, unset)
+      );
+      font-weight: var(--editable-table-heavy-weight, 600);
+      color: var(
+        --editable-table-caption-color,
+        var(--editable-table-color, #222)
+      );
+      background-color: var(
+        --editable-table-caption-bg-color,
+        var(--editable-table-bg-color, #fff)
+      );
+      width: 100%;
+    }
+    .tr {
+      display: table-row;
+    }
+    .th-or-td {
+      display: table-cell;
+    }
+    *[column-header] .thead-tr .th {
+      background-color: var(--editable-table-heading-bg-color, #e0e0e0);
+      font-weight: var(--editable-table-heavy-weight, 600);
+      color: var(--editable-table-heading-color, #000);
+    }
+    *[row-header] .tbody-tr .th {
+      font-weight: var(--editable-table-heavy-weight, 600);
+      color: var(--editable-table-heading-color, #000);
+      background-color: var(--editable-table-bg-color, #fff);
+      text-align: left;
+    }
+    *[bordered] .th,
+    *[bordered] .td {
+      border-width: var(--editable-table-border-width, 1px);
+      border-style: var(--editable-table-border-style, solid);
+      border-color: var(--editable-table-border-color, #999);
+    }
+    *[condensed] {
+      --editable-table-cell-vertical-padding: var(
+        --editable-table-cell-vertical-padding-condensed,
+        2px
+      );
+      --editable-table-cell-horizontal-padding: var(
+        --editable-table-cell-horizontal-padding-condensed,
+        4px
+      );
+    }
+    *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td {
+      background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
+    }
+    *[column-striped] .tbody-tr .th-or-td:nth-child(2n),
+    *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) {
+      background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
+    }
+    *[footer] .tfoot-tr .th,
+    *[footer] .tfoot-tr .td {
+      border-top: 2px solid var(--editable-table-color, #222);
+    }
+    *[footer] .tfoot-tr .th,
+    *[footer] .tfoot-tr .td {
+      font-weight: var(--editable-table-heavy-weight, 600);
+      color: var(--editable-table-heading-color, #000);
+    }
+    caption,
+    .th-or-td {
+      text-align: left;
+    }
+    *[numeric-styles] .thead-tr .th-or-td[numeric],
+    *[numeric-styles] .tfoot-tr .th-or-td[numeric],
+    *[numeric-styles] .th-or-td[numeric] .cell {
+      text-align: right;
+      --editable-table-cell-justify: flex-end;
+    }
+    *[numeric-styles] .tfoot-tr .th-or-td[negative],
+    *[numeric-styles] .td[negative] .cell {
+      color: var(--editable-table-negative-color, red);
+      --editable-table-cell-color: var(--editable-table-negative-color, red);
+    }
+    editable-table-sort {
+      width: 100%;
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+    }
+    ::slotted(table) {
+      display: none;
+    }
+    @media screen {
+      :host {
+        overflow-x: auto;
+        width: 100%;
+        max-width: 100%;
+      }
+      :host([responsive]) {
+        overflow-x: visible;
+      }
+    }
+  `,
+];
+
+/**
+ * styling for table in display mode
+ */
+export const editableTableDisplayStyles = [
+  ...editableTableStyles,
+  css`
+    table[sort] .thead .th,
+    table[filter] .tbody .td,
+    table[filter] .tfoot .td {
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    caption {
+      padding-top: var(--editable-table-cell-vertical-padding, 10px);
+      padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
+      padding: 0;
+    }
+    caption > div {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    caption > div > *:not(:last-child) {
+      padding: 0 0 5px;
+    }
+    #column {
+      width: calc(var(--simple-picker-option-size) + 6px);
+      overflow: visible;
+      display: none;
+      margin-left: 10px;
+      --simple-picker-border-width: 1px;
+      --simple-picker-focus-border-width: 1px;
+      --simple-picker-border-color: var(--editable-table-border-color, #999);
+    }
+    .th,
+    .td {
+      padding-top: var(--editable-table-cell-vertical-padding, 10px);
+      padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
+      padding-left: var(--editable-table-cell-horizontal-padding, 6px);
+      padding-right: var(--editable-table-cell-horizontal-padding, 6px);
+    }
+    span.cell {
+      display: block;
+    }
+    @media screen {
+      :host([responsive][responsive-size="xs"]) #column {
+        display: inline-flex;
+      }
+      :host([responsive][responsive-size="xs"]) .th[xs-hidden],
+      :host([responsive][responsive-size="xs"]) .td[xs-hidden] {
+        display: none;
+      }
+    }
+  `,
+];
+
+/**
  * behaviors needed to display table in either mode
  */
 export const displayBehaviors = function (SuperClass) {
@@ -76,6 +342,14 @@ export const displayBehaviors = function (SuperClass) {
           attribute: "data-csv",
         },
         /**
+         * Allow table to be downloaded as CSV
+         */
+        downloadable: {
+          attribute: "downloadable",
+          type: Boolean,
+          reflect: true,
+        },
+        /**
          * Enable filtering by cell value.
          */
         filter: {
@@ -95,6 +369,14 @@ export const displayBehaviors = function (SuperClass) {
          */
         numericStyles: {
           attribute: "numeric-styles",
+          type: Boolean,
+          reflect: true,
+        },
+        /**
+         * Allow table to be printed
+         */
+        printable: {
+          attribute: "printable",
           type: Boolean,
           reflect: true,
         },
@@ -138,6 +420,7 @@ export const displayBehaviors = function (SuperClass) {
       this.bordered = false;
       this.columnHeader = false;
       this.condensed = false;
+      this.downloadable = false;
       this.data = [];
       this.filter = false;
       this.footer = false;
@@ -226,6 +509,169 @@ export const displayBehaviors = function (SuperClass) {
         p = l;
       }
       return ret;
+    }
+    /**
+     * gets table CSV as download
+     * @param {string} the title of the media
+     */
+    download() {
+      let a = document.createElement("a"),
+        title =
+          this.downloadable && this.caption.trim() != ""
+            ? `Table as CSV`
+            : `${this.caption} CSV`,
+        filename = title.replace(/[^\w\d]/g, ""),
+        data = this.getTableCSV();
+      a.setAttribute(
+        "href",
+        "data:text/plain;charset=UTF-8," + encodeURIComponent(data)
+      );
+      a.setAttribute("download", filename + ".txt");
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      /**
+       * Fires when transcript is printed
+       * @event csv-downloaded
+       */
+      this.dispatchEvent(
+        new CustomEvent("csv-downloaded", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            table: this,
+            data: data,
+            filename: filename,
+          },
+        })
+      );
+    }
+
+    /**
+     * prints the active transcript
+     * @param {string} the title of the media
+     */
+    print() {
+      let table = !this.shadowRoot
+          ? false
+          : this.shadowRoot.querySelector("table"),
+        print = !table
+          ? false
+          : window.open(
+              "",
+              "",
+              "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
+            );
+      if (print) {
+        print.document.body.innerHTML = `
+          <style>
+            ${editableTableDisplayStyles.join(" ")}
+            body > *:not(table) { display: none; }
+          </style>
+        
+          <table
+            id="table"
+            ${this.bordered ? " bordered" : ""}
+            class="table"
+            ${this.bordered ? " bordered" : ""}
+            ${this.columnHeader ? " column-header" : ""}
+            ${this.columnStriped ? " column-striped" : ""}
+            ${this.condensed ? " condensed" : ""}
+            ${this.footer ? " footer" : ""}
+            ${this.numericStyles ? " numeric-styles" : ""}
+            ${this.rowHeader ? " row-header" : ""}
+            ${this.striped ? " striped" : ""}
+          >
+          <caption>${this.caption}</caption>
+          ${
+            !this.columnHeader
+              ? ""
+              : `
+            <thead class="thead">
+              <tr class="tr thead-tr">
+                ${(this.thead[0] || []).map(
+                  (th, index) => `
+                    <th
+                      class="th th-or-td"
+                      ${this._isNumericColumn(index) ? " numeric" : ""}
+                      scope="col"
+                    >
+                      ${!this.sort ? "" : th}
+                    </th>`
+                )}
+              </tr>
+            </thead>
+          `
+          }
+          <tbody class="tbody">
+            ${this.tbody.map((tr) =>
+              this._isRowFiltered(tr)
+                ? ""
+                : `<tr class="tr tbody-tr">
+                ${tr.map((cell, index) =>
+                  this._isRowHeader(this.rowHeader, index)
+                    ? `<th
+                    class="th th-or-td"
+                    ${this._isNumericColumn(index) ? " numeric" : ""}
+                    scope="row">${cell}</th>`
+                    : `<td
+                      class="td th-or-td"
+                      ${this._isNumericColumn(index) ? " numeric" : ""}
+                      ${this._isNegative(cell) ? " negative" : ""}
+                      >${cell}</td>`
+                )}
+              </tr>`
+            )}
+          </tbody>
+          ${
+            !this.footer
+              ? ""
+              : `
+                <tfoot class="tfoot">
+                  ${this.tfoot.map((tr) =>
+                    this._isRowFiltered(tr)
+                      ? ""
+                      : `<tr class="tr tfoot-tr">
+                      ${tr.map((cell, index) =>
+                        this._isRowHeader(this.rowHeader, index)
+                          ? `<th
+                          class="th th-or-td"
+                          ${this._isNumericColumn(index) ? " numeric" : ""}
+                          scope="row">${cell}</th>`
+                          : `<td
+                            class="td th-or-td"
+                            ${this._isNumericColumn(index) ? " numeric" : ""}
+                            ${this._isNegative(cell) ? " negative" : ""}
+                            >${cell}</td>`
+                      )}
+                    </tr>`
+                  )}
+                </tfoot>
+              `
+          }
+        </table>
+        `;
+        print.document.close();
+        print.focus();
+        /*print.print();
+        print.close();*/
+      }
+
+      /**
+       * Fires when transcript is printed
+       * @event transcript-printed
+       */
+      this.dispatchEvent(
+        new CustomEvent("table-printed", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this,
+        })
+      );
     }
 
     /**
@@ -496,12 +942,44 @@ export const displayBehaviors = function (SuperClass) {
       }
       return numeric;
     }
+
+    /**
+     * Hides a row if filtered
+     *
+     * @param {array} tr array of cells
+     * @returns {boolean} whether row is filtered
+     * @memberof EditableTableDisplay
+     */
+    _isRowFiltered(tr) {
+      let filter = (this.filterText || "").trim(),
+        cellText = this.filterColumn && tr ? tr[this.filterColumn].trim() : "",
+        filtered;
+      if (!this.filterCaseSensitive) {
+        filter = filter.toLowerCase();
+        cellText = cellText.toLowerCase();
+      }
+      filtered = this.filterContains
+        ? !cellText.match(filter)
+        : cellText !== filter;
+      return filtered;
+    }
+
+    /**
+     * Calculates whether cell is a `<th>` or `<td>`
+     * @param {boolean} rowHeader if cell is a rowheader
+     * @param {number} index current column number
+     * @returns {boolean} whether cell is a `<th>` or `<td>`
+     */
+    _isRowHeader(rowHeader, index) {
+      return index === 0 && rowHeader;
+    }
     /**
      * Convert from csv text to an array in table function
      */
     _loadExternalData(e) {
       let data = this.CSVtoArray(this.csvData);
       if (data.length > 0 && data[0].length > 0) this.data = data;
+      this.columnHeader = true;
     }
     /**
      * replaces a blank cell with "-" for accessibility
@@ -559,211 +1037,3 @@ export const cellBehaviors = function (SuperClass) {
     }
   };
 };
-
-/**
- * behaviors needed for table cells, row headers, and columns
- */
-export const editableTableCellStyles = [
-  css`
-    .cell-button {
-      padding-top: var(--editable-table-cell-vertical-padding, 10px);
-      padding-bottom: var(--editable-table-cell-vertical-padding, 10px);
-      padding-left: var(--editable-table-cell-horizontal-padding, 6px);
-      padding-right: var(--editable-table-cell-horizontal-padding, 6px);
-      margin: 0;
-      width: 100%;
-      display: flex;
-      justify-content: var(--editable-table-cell-justify, space-between);
-      align-items: center;
-      align-content: stretch;
-      font-family: inherit;
-      font-size: inherit;
-      font-weight: inherit;
-      background-color: transparent;
-      border: none;
-      border-radius: 0;
-      color: var(--editable-table-cell-color);
-    }
-    .sr-only {
-      position: absolute;
-      left: -9999px;
-      font-size: 0;
-      height: 0;
-      width: 0;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-    }
-  `,
-];
-
-/**
- * behaviors needed for table cells, row headers, and columns
- */
-export const editableTableStyles = [
-  css`
-    :host {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      margin: 15px 0;
-      font-size: var(--editable-table-font-size, unset);
-      font-family: var(--editable-table-font-family, inherit);
-      font-weight: var(--editable-table-medium-weight, 300);
-      color: var(--editable-table-color, #222);
-      background-color: var(--editable-table-bg-color, #fff);
-
-      --simple-picker-font-family: var(
-        --editable-table-secondary-font-family,
-        "Roboto",
-        "Noto",
-        sans-serif
-      );
-      --simple-picker-font-size: var(
-        --editable-table-secondary-font-size,
-        12px
-      );
-      --simple-picker-color: var(--editable-table-color, #222);
-      --simple-picker-background-color: var(--editable-table-bg-color, #fff);
-      --paper-font-caption: {
-        font-family: var(
-          --editable-table-secondary-font-family,
-          "Roboto",
-          "Noto",
-          sans-serif
-        );
-      }
-    }
-    :host([hidden]) {
-      display: none;
-    }
-    .sr-only {
-      position: absolute;
-      left: -9999px;
-      font-size: 0;
-      height: 0;
-      width: 0;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-    }
-    table {
-      width: calc(100% - 2 * var(--editable-table-border-width, 1px));
-      display: table;
-      border-collapse: collapse;
-      border-width: var(--editable-table-border-width, 1px);
-      border-style: var(--editable-table-border-style, solid);
-      border-color: var(--editable-table-border-color, #999);
-      font-weight: var(--editable-table-light-weight, 200);
-      color: var(--editable-table-color, #222);
-      background-color: var(--editable-table-bg-color, #fff);
-    }
-    .th,
-    .td {
-      font-weight: var(--editable-table-light-weight, 200);
-      color: var(--editable-table-color, #222);
-      background-color: var(--editable-table-bg-color, #fff);
-    }
-    caption {
-      font-size: var(
-        --editable-table-caption-font-size,
-        var(--editable-table-font-size, unset)
-      );
-      font-weight: var(--editable-table-heavy-weight, 600);
-      color: var(
-        --editable-table-caption-color,
-        var(--editable-table-color, #222)
-      );
-      background-color: var(
-        --editable-table-caption-bg-color,
-        var(--editable-table-bg-color, #fff)
-      );
-      width: 100%;
-    }
-    .tr {
-      display: table-row;
-    }
-    .th-or-td {
-      display: table-cell;
-    }
-    *[column-header] .thead-tr .th {
-      background-color: var(--editable-table-heading-bg-color, #e0e0e0);
-      font-weight: var(--editable-table-heavy-weight, 600);
-      color: var(--editable-table-heading-color, #000);
-    }
-    *[row-header] .tbody-tr .th {
-      font-weight: var(--editable-table-heavy-weight, 600);
-      color: var(--editable-table-heading-color, #000);
-      background-color: var(--editable-table-bg-color, #fff);
-      text-align: left;
-    }
-    *[bordered] .th,
-    *[bordered] .td {
-      border-width: var(--editable-table-border-width, 1px);
-      border-style: var(--editable-table-border-style, solid);
-      border-color: var(--editable-table-border-color, #999);
-    }
-    *[condensed] {
-      --editable-table-cell-vertical-padding: var(
-        --editable-table-cell-vertical-padding-condensed,
-        2px
-      );
-      --editable-table-cell-horizontal-padding: var(
-        --editable-table-cell-horizontal-padding-condensed,
-        4px
-      );
-    }
-    *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td {
-      background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
-    }
-    *[column-striped] .tbody-tr .th-or-td:nth-child(2n),
-    *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) {
-      background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
-    }
-    *[footer] .tfoot-tr .th,
-    *[footer] .tfoot-tr .td {
-      border-top: 2px solid var(--editable-table-color, #222);
-    }
-    *[footer] .tfoot-tr .th,
-    *[footer] .tfoot-tr .td {
-      font-weight: var(--editable-table-heavy-weight, 600);
-      color: var(--editable-table-heading-color, #000);
-    }
-    caption,
-    .th-or-td {
-      text-align: left;
-    }
-    *[numeric-styles] .thead-tr .th-or-td[numeric],
-    *[numeric-styles] .tfoot-tr .th-or-td[numeric],
-    *[numeric-styles] .th-or-td[numeric] .cell {
-      text-align: right;
-      --editable-table-cell-justify: flex-end;
-    }
-    *[numeric-styles] .tfoot-tr .th-or-td[negative],
-    *[numeric-styles] .td[negative] .cell {
-      color: var(--editable-table-negative-color, red);
-      --editable-table-cell-color: var(--editable-table-negative-color, red);
-    }
-    editable-table-sort {
-      width: 100%;
-    }
-    button {
-      background-color: transparent;
-      border: none;
-      border-radius: 0;
-    }
-    ::slotted(table) {
-      display: none;
-    }
-    @media screen {
-      :host {
-        overflow-x: auto;
-        width: 100%;
-        max-width: 100%;
-      }
-      :host([responsive]) {
-        overflow-x: visible;
-      }
-    }
-  `,
-];
