@@ -185,11 +185,8 @@ class EditableTable extends displayBehaviors(LitElement) {
         rich-text-editor {
           margin-bottom: 1px;
           min-height: 12px;
-          padding: var(
-            --editable-table-row-padding,
-            var(--editable-table-row-vertical-padding, 10px)
-              var(--editable-table-row-horizontal-padding, 6px)
-          );
+          padding: var(--editable-table-cell-vertical-padding, 10px)
+            var(--editable-table-cell-horizontal-padding, 6px);
           border: none !important;
         }
         td #icons {
