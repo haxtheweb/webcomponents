@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.0",
+  "version": "3.0.5",
   "description": "this is to provide a futuristic terminal text type of environment",
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@webcomponents/webcomponentsjs": "2.4.4",
+    "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",

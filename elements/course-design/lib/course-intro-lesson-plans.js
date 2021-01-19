@@ -57,8 +57,7 @@ class CourseIntroLessonPlans extends LitElement {
         ${this.items.map(
           (plan) =>
             html`<course-intro-lesson-plan
-              title=${plan.title}
-              position=${plan.metadata.courselist.position}
+              title="${plan.title}"
               description=${plan.metadata.courselist.description
                 ? plan.metadata.courselist.description
                 : ""}

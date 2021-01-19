@@ -21,6 +21,9 @@ class LrnsysButton extends LitElement {
           display: block;
           --lrnsys-button-height: 48px;
         }
+        :host([raised]) {
+          border: 2px solid black;
+        }
         :host([disabled]) {
           pointer-events: none;
         }
@@ -48,7 +51,10 @@ class LrnsysButton extends LitElement {
           background-color: transparent;
           border: none;
         }
-        .no-padding {
+        button:hover {
+          cursor: pointer;
+        }
+        :host([no-padding]) button div.inner {
           padding: 0;
         }
         button simple-icon {

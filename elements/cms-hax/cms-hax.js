@@ -189,6 +189,12 @@ class CmsHax extends LitElement {
       // this helps with correctly preserving everything on the way down
       if (children != null) {
         HAXStore.activeHaxBody.importContent(children.innerHTML);
+        setTimeout(() => {
+          // NOW we have the data imported
+          if (this.openDefault) {
+            HAXStore.editMode = true;
+          }
+        }, 500);
       }
     }
   }
@@ -206,7 +212,6 @@ class CmsHax extends LitElement {
    * Set certain data bound values to the store once it's ready
    */
   _noticeTagChanges(
-    openDefault,
     allowedTags,
     hidePanelOps,
     offsetMargin,
@@ -224,10 +229,13 @@ class CmsHax extends LitElement {
         HAXStore.haxTray.offsetMargin = offsetMargin;
         HAXStore.haxTray.hidePreferencesButton = hidePreferencesButton;
         HAXStore.haxTray.elementAlign = elementAlign;
+        setTimeout(() => {
+          // NOW we have the data imported
+          if (this.openDefault) {
+            HAXStore.editMode = true;
+          }
+        }, 500);
       }, 0);
-      if (openDefault) {
-        HAXStore.editMode = openDefault;
-      }
     }
   }
   /**
@@ -238,7 +246,6 @@ class CmsHax extends LitElement {
     setTimeout(() => {
       // trigger the update of different parts of the global state
       this._noticeTagChanges(
-        this.openDefault,
         this.allowedTags,
         this.hidePanelOps,
         this.offsetMargin,
@@ -316,7 +323,6 @@ class CmsHax extends LitElement {
       }
       if (
         [
-          "openDefault",
           "allowedTags",
           "hidePanelOps",
           "offsetMargin",
@@ -325,7 +331,6 @@ class CmsHax extends LitElement {
         ].includes(propName)
       ) {
         this._noticeTagChanges(
-          this.openDefault,
           this.allowedTags,
           this.hidePanelOps,
           this.offsetMargin,
@@ -378,6 +383,10 @@ class CmsHax extends LitElement {
   _saveFired(e) {
     // generate sanitized content
     if (this.endPoint) {
+      HAXStore.skipExitTrap = true;
+      if (HAXStore.editMode) {
+        HAXStore.editMode = false;
+      }
       this.shadowRoot.querySelector(
         "#pageupdateajax"
       ).body = HAXStore.activeHaxBody.haxToContent();

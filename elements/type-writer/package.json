@@ -16,7 +16,7 @@
       "hax": "src/type-writer-hax.json"
     }
   },
-  "version": "3.0.0",
+  "version": "3.0.5",
   "description": "typewritter effect",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@webcomponents/webcomponentsjs": "2.4.4",
+    "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "es-dev-server": "1.57.4",
     "gulp-babel": "8.0.0",
@@ -62,6 +62,7 @@
   },
   "keywords": [
     "web-components",
-    "html"
+    "html",
+    "haxtheweb"
   ]
 }

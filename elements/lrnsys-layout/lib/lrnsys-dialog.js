@@ -25,6 +25,9 @@ class LrnsysDialog extends SimpleColors {
           );
           --lrnsys-dialog-secondary-background-color: rgba(255, 255, 255, 0.7);
         }
+        :host([raised]) #dialogtrigger {
+          border: 2px solid black;
+        }
         :host([dark]) {
           --lrnsys-dialog-toolbar-background-color: var(
             --simple-colors-background1
@@ -35,10 +38,14 @@ class LrnsysDialog extends SimpleColors {
         #dialogtrigger {
           display: inline-block;
           min-width: unset;
+          height: var(--lrnsys-button-height);
           margin: var(--lrnsys-dialog-button-margin);
           padding: var(--lrnsys-dialog-button-padding);
           border: none;
           background: transparent;
+        }
+        #dialogtrigger:hover {
+          cursor: pointer;
         }
       `,
     ];

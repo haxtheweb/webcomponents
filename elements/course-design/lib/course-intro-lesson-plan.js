@@ -38,12 +38,14 @@ class CourseIntroLessonPlan extends LitElement {
           align-items: center;
           justify-content: center;
           text-align: center;
-        }
-        #position {
-          font-size: 48px;
+          font-size: var(
+            --course-intro-lesson-plan--container--font-size,
+            28px
+          );
           font-family: "Lato";
           color: rgba(77, 87, 104, 0.4);
           font-weight: 100;
+          cursor: pointer;
         }
         #title {
           font-family: "Lato";
@@ -57,13 +59,6 @@ class CourseIntroLessonPlan extends LitElement {
           #container {
             flex-direction: row;
           }
-          #left {
-            width: 150px;
-          }
-          #right {
-            flex: 1 1 auto;
-            text-align: left;
-          }
         }
       `,
     ];
@@ -71,13 +66,8 @@ class CourseIntroLessonPlan extends LitElement {
   render() {
     return html`
       <a id="container" href="${this.link}">
-        <div id="left">
-          <div id="position">${this.position}</div>
-        </div>
-        <div id="right">
-          <div id="title">${this.title}</div>
-          <div id="description">${this.description}</div>
-        </div>
+        <div id="title">${this.title}</div>
+        <div id="description">${this.description}</div>
       </a>
     `;
   }

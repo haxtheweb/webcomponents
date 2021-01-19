@@ -103,6 +103,14 @@ class LrndesignGallerycard extends LitElement {
         .text-left {
           text-align: left;
         }
+        .author {
+          text-align: left;
+          font-size: 12px;
+          line-height: 12px;
+          color: black;
+          display: block;
+          padding: 8px;
+        }
 
         .title {
           color: #222;
@@ -118,6 +126,8 @@ class LrndesignGallerycard extends LitElement {
         .comments {
           font-size: 12px;
           float: right;
+          color: black;
+          line-height: 12px;
         }
 
         .divider {
@@ -202,7 +212,7 @@ class LrndesignGallerycard extends LitElement {
             src="${this.author.avatar}"
           ></lrndesign-avatar>
           <div class="card-action-details">
-            <span class="text-left author">${this.author.display_name}</span>
+            <div class="author">${this.author.display_name}</div>
             <span class="comments text-right">Comments: ${this.comments}</span>
           </div>
         </div>

@@ -18,10 +18,14 @@ class LrnappStudioSubmissionButton extends PolymerElement {
         :host {
           display: block;
         }
+        lrnsys-button {
+          border: 2px solid black;
+          --lrnsys-button-height: auto;
+          background-color: lightgray;
+        }
       </style>
       <template is="dom-if" if="[[!submissionId]]">
         <lrnsys-button
-          raised
           on-click="_createSubmission"
           label="Create submission"
         ></lrnsys-button>
@@ -36,7 +40,6 @@ class LrnappStudioSubmissionButton extends PolymerElement {
       </template>
       <template is="dom-if" if="[[submissionId]]">
         <lrnsys-button
-          raised=""
           label="View submission"
           show-href="[[_submissionUrl(submissionId)]]"
           href="[[_submissionUrl(submissionId)]]"

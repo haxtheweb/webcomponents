@@ -13,23 +13,15 @@ class BlockQuote extends LitElement {
 
   static get haxProperties() {
     return {
-      canScale: false,
+      canScale: true,
       canPosition: true,
       canEditSource: true,
       gizmo: {
-        title: "Block-Quote",
+        title: "Blockquote",
         description: "Designed Quote",
         icon: "editor:format-quote",
         color: "blue",
-        groups: ["Image"],
-        handles: [
-          {
-            type: "image",
-            source: "image",
-            title: "question",
-            description: "answer",
-          },
-        ],
+        groups: ["text", "education"],
         meta: {
           author: "LRNWebComponents",
         },
@@ -59,7 +51,7 @@ class BlockQuote extends LitElement {
             icon: "editor:insert-photo",
           },
           {
-            slot: "quote",
+            slot: "",
             title: "Quote",
             description: "This is where you enter a quote.",
             inputMethod: "code-editor",
@@ -68,6 +60,15 @@ class BlockQuote extends LitElement {
         ],
         advanced: [],
       },
+      demoSchema: [
+        {
+          tag: "block-quote",
+          properties: {
+            citation: "",
+          },
+          content: "<p></p>",
+        },
+      ],
     };
   }
 
@@ -97,6 +98,7 @@ class BlockQuote extends LitElement {
                 id="iconflip"
                 icon="editor:format-quote"
               ></simple-icon-lite>
+              <slot></slot>
               <slot name="quote"></slot>
               <simple-icon-lite icon="editor:format-quote"></simple-icon-lite>
             </div>

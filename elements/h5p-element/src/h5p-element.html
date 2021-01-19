@@ -1,1 +1,1 @@
-<div class="h5p-container" data-content-id="wrapper-${this.contentId}"></div>
+${!this.source ? html`<h5p-wrapped-element><slot></slot></h5p-wrapped-element>` : html`<div class="h5p-container" data-content-id="wrapper-${this.contentId}"></div>`}

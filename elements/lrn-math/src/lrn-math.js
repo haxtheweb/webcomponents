@@ -102,9 +102,6 @@ class LrnMathController extends HTMLElement {
   }
 }
 
-export { LrnMathController };
-
-window.customElements.define("lrn-math-controller", LrnMathController);
 /*
 Typesets math written in (La)TeX, using [MathJax](http://mathjax.org).
 ##### Example
@@ -149,7 +146,7 @@ function update(elem) {
   if (check !== elem._private.check) {
     while (sdom.firstChild) sdom.removeChild(sdom.firstChild);
     elem._private.check = check;
-    if (math.length) {
+    if (math.length && handler) {
       handler.typeset(math, isBlock, function (melem, styleNode) {
         sdom.appendChild(styleNode.cloneNode(true));
         sdom.appendChild(melem);
@@ -291,5 +288,8 @@ class LrnMath extends HTMLElement {
   }
 }
 
-window.customElements.define(LrnMath.tag, LrnMath);
+window.customElements.define("lrn-math", LrnMath);
 export { LrnMath };
+
+window.customElements.define("lrn-math-controller", LrnMathController);
+export { LrnMathController };

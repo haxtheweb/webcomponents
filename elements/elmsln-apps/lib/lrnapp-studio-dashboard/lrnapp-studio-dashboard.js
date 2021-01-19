@@ -136,7 +136,7 @@ class LrnappStudioDashboard extends PolymerElement {
     super.connectedCallback();
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
-    }, 2000);
+    }, 1000);
   }
   _getEndPoint(basePath) {
     return basePath + "lrnapp-studio-dashboard/blocks";

@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.2",
+  "version": "3.0.5",
   "description": "Learn2 theme for HAXcms",
   "repository": {
     "type": "git",
@@ -41,12 +41,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^3.0.0",
-    "@lrnwebcomponents/haxcms-elements": "^3.0.2",
-    "@lrnwebcomponents/map-menu": "^3.0.0",
-    "@lrnwebcomponents/simple-colors": "^3.0.0",
-    "@lrnwebcomponents/simple-icon": "^3.0.0",
-    "@lrnwebcomponents/simple-tooltip": "^3.0.0",
+    "@lrnwebcomponents/hax-iconset": "^3.0.5",
+    "@lrnwebcomponents/haxcms-elements": "^3.0.5",
+    "@lrnwebcomponents/map-menu": "^3.0.5",
+    "@lrnwebcomponents/simple-colors": "^3.0.5",
+    "@lrnwebcomponents/simple-icon": "^3.0.5",
+    "@lrnwebcomponents/simple-tooltip": "^3.0.5",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/polymer": "^3.3.1"
   },
@@ -54,7 +54,7 @@
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@webcomponents/webcomponentsjs": "2.4.4",
+    "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",

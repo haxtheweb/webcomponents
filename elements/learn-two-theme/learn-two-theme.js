@@ -6,7 +6,6 @@ import { html, css } from "lit-element/lit-element.js";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
@@ -311,16 +310,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
   render() {
     return html` <custom-style>
         <style>
-          site-active-title {
-            font-family: var(--__learn-two-theme-default-font-family);
-            font-size: 52px;
-            line-height: 78px;
-            margin-bottom: 27.2px;
-            margin-top: 13.6px;
-            text-align: center;
-            text-rendering: optimizelegibility;
-            font-weight: 100;
-          }
           site-title {
             color: #fafafa;
             --site-title-link-display: inline-block;
@@ -431,7 +420,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           <div id="contentcontainer">
             <site-git-corner></site-git-corner>
             <site-breadcrumb></site-breadcrumb>
-            <site-active-title></site-active-title>
             <div id="slot">
               <slot></slot>
             </div>

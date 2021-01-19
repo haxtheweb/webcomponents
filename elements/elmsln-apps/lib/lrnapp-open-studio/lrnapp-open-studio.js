@@ -52,9 +52,9 @@ class LrnappOpenStudio extends PolymerElement {
         }
         lrndesign-gallerycard {
           padding: 0;
-          margin: 1em;
-          height: 16em;
-          width: 14em;
+          margin: 16px;
+          width: 300px;
+          height: 300px;
         }
         app-toolbar {
           height: 64px;
@@ -73,7 +73,7 @@ class LrnappOpenStudio extends PolymerElement {
           flex-direction: column;
         }
         lrnsys-button {
-          --lrnsys-button-height: 26px;
+          --lrnsys-button-height: 48px;
         }
         iron-list {
           flex: 1 1 auto;
@@ -377,9 +377,18 @@ class LrnappOpenStudio extends PolymerElement {
       },
     };
   }
+  ready() {
+    super.ready();
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 0);
+  }
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener("route-change", this._routeChange.bind(this));
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 1000);
   }
   disconnectedCallback() {
     this.removeEventListener("route-change", this._routeChange.bind(this));
@@ -461,6 +470,7 @@ class LrnappOpenStudio extends PolymerElement {
     // delay and repaint, can help with refresh issues
     setTimeout(() => {
       this.$.ironlist.fire("iron-resize");
+      window.dispatchEvent(new Event("resize"));
     }, 200);
     return filteredSubmissions;
   }

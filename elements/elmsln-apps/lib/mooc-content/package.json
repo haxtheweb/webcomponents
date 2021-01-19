@@ -6,7 +6,7 @@
   "dependencies": {
     "@polymer/polymer": "^3.2.0",
     "@polymer/iron-ajax": "^3.0.0",
-    "@lrnwebcomponents/simple-icon": "^2.7.10",
+    "@lrnwebcomponents/simple-icon": "^3.0.0",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/paper-styles": "^3.0.0",
     "@polymer/app-route": "^3.0.0",

@@ -219,27 +219,12 @@ class WysiwygHax extends LitElement {
     super.disconnectedCallback();
   }
   __saveClicked(e) {
-    // will attempt to set this right before save goes out the door
-    this.bodyValue = HAXStore.activeHaxBody.haxToContent();
+    HAXStore.skipExitTrap = true;
     if (HAXStore.editMode) {
       HAXStore.editMode = false;
     }
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      if (typeof e.detail.value === "object") {
-        this[e.detail.property] = null;
-      }
-      console.log(e.detail.property);
-      this[e.detail.property] = e.detail.value;
-    }
+    // will attempt to set this right before save goes out the door
+    this.bodyValue = HAXStore.activeHaxBody.haxToContent();
   }
 
   /**

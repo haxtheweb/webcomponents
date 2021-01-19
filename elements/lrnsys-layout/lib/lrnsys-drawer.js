@@ -23,6 +23,9 @@ class LrnsysDrawer extends SimpleColors {
           --lrnsys-drawer-color: var(--simple-colors-foreground1);
           --lrnsys-drawer-background-color: var(--simple-colors-background1);
         }
+        :host([raised]) button {
+          border: 2px solid black;
+        }
         button {
           display: inline-block;
           min-width: unset;
@@ -30,6 +33,9 @@ class LrnsysDrawer extends SimpleColors {
           padding: var(--lrnsys-drawer-button-padding);
           border: none;
           background: transparent;
+        }
+        button:hover {
+          cursor: pointer;
         }
       `,
     ];

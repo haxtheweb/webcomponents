@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.0",
+  "version": "3.0.5",
   "description": "The applications of ELMSLN in one place to make it easier to work on",
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "serve": "polymer serve --npm --module-resolution=node --open --root=../../ --open-path=elements/elmsln-apps",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
@@ -41,8 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/elmsln-loading": "^3.0.0",
-    "@lrnwebcomponents/materializecss-styles": "^3.0.0",
+    "@lrnwebcomponents/elmsln-loading": "^3.0.5",
+    "@lrnwebcomponents/materializecss-styles": "^3.0.5",
     "@polymer/app-route": "^3.0.2",
     "@polymer/iron-scroll-threshold": "^3.0.1",
     "@polymer/paper-dialog": "3.0.1",
@@ -53,10 +53,10 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^3.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^3.0.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@webcomponents/webcomponentsjs": "2.4.4",
+    "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",

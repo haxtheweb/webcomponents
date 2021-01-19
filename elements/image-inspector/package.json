@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.0",
+  "version": "3.0.5",
   "description": "Inspector tools on an image wrapping open seadragon library",
   "repository": {
     "type": "git",
@@ -41,20 +41,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^3.0.0",
-    "@lrnwebcomponents/img-pan-zoom": "^3.0.0",
-    "@lrnwebcomponents/lrnsys-button": "^3.0.0",
-    "@lrnwebcomponents/materializecss-styles": "^3.0.0",
-    "@lrnwebcomponents/simple-icon": "^3.0.0",
+    "@lrnwebcomponents/hax-iconset": "^3.0.5",
+    "@lrnwebcomponents/img-pan-zoom": "^3.0.5",
+    "@lrnwebcomponents/lrnsys-button": "^3.0.5",
+    "@lrnwebcomponents/materializecss-styles": "^3.0.5",
+    "@lrnwebcomponents/simple-icon": "^3.0.5",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^3.0.0",
+    "@lrnwebcomponents/storybook-utilities": "^3.0.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@webcomponents/webcomponentsjs": "2.4.4",
+    "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",

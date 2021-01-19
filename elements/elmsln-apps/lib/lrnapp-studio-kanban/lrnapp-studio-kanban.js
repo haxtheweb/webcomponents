@@ -105,32 +105,35 @@ class LrnappStudioKanban extends PolymerElement {
         }
         .project-card {
           width: 100%;
-          min-width: 20em;
-          max-width: 20em;
+          width: 400px;
           margin: 0;
           height: 100%;
           min-height: 10em;
         }
         .project-card h3.header {
           max-width: 60%;
+          font-size: 16px;
           word-break: break-all;
         }
         div.card {
           box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
         }
         .project-container {
-          padding: 1em;
+          padding: 16px;
         }
         .project-card .card-content {
-          height: 100%;
-          min-height: 288px;
-          max-height: 300px;
+          height: 400px;
           overflow: scroll;
+          padding: 4px;
+        }
+        .project-container:hover .project-operations {
+          display: block;
         }
         .project-operations {
           position: absolute;
-          top: 0;
-          right: 0;
+          top: 22px;
+          right: 0px;
+          display: none;
         }
         .project-operations .operation {
           display: inline-flex;
@@ -149,7 +152,7 @@ class LrnappStudioKanban extends PolymerElement {
         .assignment-row:hover .assignment-operations {
           display: block;
           overflow: visible;
-          margin: 0.2em;
+          margin: 8px;
         }
         .assignment-row-button {
           width: 100%;
@@ -161,8 +164,8 @@ class LrnappStudioKanban extends PolymerElement {
           padding: 0.5em;
           margin: 0 0.5em 0 0;
           display: inline-flex;
-          line-height: 2em;
-          height: 2em;
+          line-height: 40px;
+          height: 40px;
           justify-content: center;
           align-items: center;
         }
@@ -183,8 +186,8 @@ class LrnappStudioKanban extends PolymerElement {
         }
         .assignment-operations .operation {
           display: inline-flex;
-          width: 2.5em;
-          height: 2.5em;
+          width: 40px;
+          height: 40px;
           margin: -4px 4px 0 0;
         }
         .assignment-operations .operation[hidden] {
@@ -382,14 +385,14 @@ class LrnappStudioKanban extends PolymerElement {
                 class="comment-box"
                 hidden$="[[!activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
               >
-                <button
+                <div
                   id$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
                   style="margin:0;padding:.25em;text-transform:none;"
                 >
                   <simple-icon icon="communication:forum"></simple-icon>
                   [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.count]]
                   Comments
-                </button>
+                </div>
                 <paper-badge
                   hidden$="[[displayNewBadge(activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.new)]]"
                   for$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
@@ -800,6 +803,9 @@ class LrnappStudioKanban extends PolymerElement {
     this.$.toast.text = "Project added";
     this.$.toast.toggle();
     this.$.projectbackend.generateRequest();
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 100);
   }
 
   /**
@@ -809,6 +815,9 @@ class LrnappStudioKanban extends PolymerElement {
     this.$.toast.text = "Assignment added";
     this.$.toast.toggle();
     this.$.projectbackend.generateRequest();
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 100);
   }
 
   /*

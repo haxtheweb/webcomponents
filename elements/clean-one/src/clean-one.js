@@ -405,7 +405,7 @@ class CleanOne extends HAXCMSThemeParts(
           position: fixed;
           top: 50px;
           bottom: 0;
-          margin: 0;
+          margin: 0 20px;
           max-width: 150px;
           min-width: 90px;
           display: flex;
@@ -421,8 +421,8 @@ class CleanOne extends HAXCMSThemeParts(
           .navigation {
             position: static;
             top: auto;
-            max-width: 50%;
-            width: 50%;
+            max-width: calc(50vw - 70px);
+            width: calc(50vw - 70px);
             display: inline-block;
             float: left;
           }

@@ -88,6 +88,7 @@ class LrnsysCommentList extends PolymerElement {
       ></iron-ajax>
       <app-toolbar>
         <lrnsys-button
+          icon="add"
           class="comment-button"
           raised
           on-click="handleTopReply"
@@ -95,18 +96,8 @@ class LrnsysCommentList extends PolymerElement {
           hover-class="blue white-text"
           label="Add Comment"
         ></lrnsys-button>
-        <simple-fields-container
-          id="filtertype"
-          label="Filter Comments by"
-          value="attributes.body"
-        >
-          <select>
-            <option value="attributes.body">Body</option>
-            <option value="relationships.author.data.name">User Name</option>
-          </select>
-        </simple-fields-container>
         <paper-input
-          label="Filter Text"
+          label="Filter comments by text"
           id="filtercomments"
           aria-controls="filteredcomments"
           value=""
@@ -116,7 +107,7 @@ class LrnsysCommentList extends PolymerElement {
       <grafitto-filter
         id="filteredcomments"
         items$="[[_toArray(comments.data)]]"
-        where=""
+        where="attributes.body"
         as="filtered"
         like=""
       >
@@ -227,14 +218,6 @@ class LrnsysCommentList extends PolymerElement {
         this.shadowRoot.querySelector("#filteredcomments").like =
           e.target.value;
       });
-    this.shadowRoot
-      .querySelector("#filtertype")
-      .addEventListener("change", (e) => {
-        this.shadowRoot.querySelector("#filtercomments").value = "";
-        this.shadowRoot.querySelector("#filteredcomments").where =
-          e.detail.value;
-        this.shadowRoot.querySelector("#filteredcomments").like = "";
-      });
   }
   /**
    * detached life cycle
@@ -245,14 +228,6 @@ class LrnsysCommentList extends PolymerElement {
       .removeEventListener("value-changed", (e) => {
         this.shadowRoot.querySelector("#filteredcomments").like =
           e.target.value;
-      });
-    this.shadowRoot
-      .querySelector("#filtertype")
-      .removeEventListener("change", (e) => {
-        this.shadowRoot.querySelector("#filtercomments").value = "";
-        this.shadowRoot.querySelector("#filteredcomments").where =
-          e.detail.value;
-        this.shadowRoot.querySelector("#filteredcomments").like = "";
       });
     super.disconnectedCallback();
   }
@@ -297,7 +272,7 @@ class LrnsysCommentList extends PolymerElement {
     // content of dialog
     let c = document.createElement("p");
     let t = document.createTextNode(
-      "Are you sure you want to delete your comment?"
+      "Are you sure you want to delete your comment? This cannot be undone."
     );
     c.appendChild(t);
     // buttons
@@ -306,17 +281,24 @@ class LrnsysCommentList extends PolymerElement {
     // close button
     let pb = document.createElement("button");
     pb.setAttribute("dialog-dismiss", "dialog-dismiss");
-    t = document.createTextNode("Decline");
+    pb.style.padding = "16px";
+    pb.style.margin = "16px";
+    t = document.createTextNode("Keep comment");
     pb.appendChild(t);
-    b.appendChild(pb);
     // confirm button
     let pb2 = document.createElement("button");
     pb2.setAttribute("dialog-confirm", "dialog-confirm");
     pb2.setAttribute("autofocus", "autofocus");
     pb2.addEventListener("click", this._handleDeleteConfirm.bind(this));
-    t = document.createTextNode("Accept");
+    pb2.style.color = "white";
+    pb2.style.backgroundColor = "red";
+    pb2.style.padding = "16px";
+    pb2.style.margin = "16px";
+    t = document.createTextNode("Delete the comment");
     pb2.appendChild(t);
+    // append buttons
     b.appendChild(pb2);
+    b.appendChild(pb);
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,

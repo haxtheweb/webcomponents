@@ -782,13 +782,21 @@ class LrnappCis extends PolymerElement {
   _confirmBuild(e) {
     this.$.makeservice.generateRequest();
   }
+  ready() {
+    super.ready();
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 0);
+  }
   /**
    * lifecycle
    */
-
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener("route-change", this._routeChange.bind(this));
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 1000);
   }
   /**
    * lifecycle
@@ -870,6 +878,7 @@ class LrnappCis extends PolymerElement {
 
     setTimeout(() => {
       this.$.ironlist.fire("iron-resize");
+      window.dispatchEvent(new Event("resize"));
     }, 200);
     return filteredCourses;
   }

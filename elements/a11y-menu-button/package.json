@@ -17,8 +17,8 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.0",
-  "description": "Start of a11y-menu-button",
+  "version": "3.0.5",
+  "description": "Accessible menu button",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
@@ -41,17 +41,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-math": "^3.0.0",
-    "@lrnwebcomponents/lrn-vocab": "^3.0.0",
-    "@lrnwebcomponents/oer-schema": "^3.0.0",
-    "@lrnwebcomponents/rich-text-editor": "^3.0.0",
+    "@lrnwebcomponents/lrn-math": "^3.0.5",
+    "@lrnwebcomponents/lrn-vocab": "^3.0.5",
+    "@lrnwebcomponents/oer-schema": "^3.0.5",
+    "@lrnwebcomponents/rich-text-editor": "^3.0.5",
     "lit-element": "2.4.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@webcomponents/webcomponentsjs": "2.4.4",
+    "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",
