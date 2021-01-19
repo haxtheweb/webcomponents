@@ -135,12 +135,12 @@ export const editableTableStyles = [
     .th-or-td {
       display: table-cell;
     }
-    *[column-header] .thead-tr .th {
+    .thead-tr .th {
       background-color: var(--editable-table-heading-bg-color, #e0e0e0);
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(--editable-table-heading-color, #000);
     }
-    *[row-header] .tbody-tr .th {
+    .tbody-tr .th {
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(--editable-table-heading-color, #000);
       background-color: var(--editable-table-bg-color, #fff);
@@ -169,12 +169,9 @@ export const editableTableStyles = [
     *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) {
       background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
     }
-    *[footer] .tfoot-tr .th,
-    *[footer] .tfoot-tr .td {
+    .tfoot-tr .th,
+    .tfoot-tr .td {
       border-top: 2px solid var(--editable-table-color, #222);
-    }
-    *[footer] .tfoot-tr .th,
-    *[footer] .tfoot-tr .td {
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(--editable-table-heading-color, #000);
     }
@@ -274,6 +271,94 @@ export const editableTableDisplayStyles = [
     }
   `,
 ];
+/**
+ * List of display-only properties
+ */
+export const displayProperties = {
+  /**
+   * Add borders to table and table cells.
+   */
+  bordered: {
+    attribute: "bordered",
+    type: Boolean,
+  },
+  /**
+   * Is striped add alternating column striping.
+   */
+  columnStriped: {
+    attribute: "column-striped",
+    type: Boolean,
+  },
+  /**
+   * Condense height of table cells.
+   */
+  condensed: {
+    attribute: "condensed",
+    type: Boolean,
+  },
+  /**
+   * Right-align numeric values and indicate negative values as red text
+   */
+  numericStyles: {
+    attribute: "numeric-styles",
+    type: Boolean,
+    reflect: true,
+  },
+  /**
+   * When table is wider than screens,
+   * users will select a column to display
+   * instead of scrolling across table.
+   */
+  responsive: {
+    attribute: "responsive",
+    type: Boolean,
+    reflect: true,
+  },
+  /**
+   * Add alternating row striping.
+   */
+  striped: {
+    attribute: "striped",
+    type: Boolean,
+  },
+};
+/**
+ * List of data manipulation properties
+ */
+export const dataProperties = {
+  /**
+   * Allow table to be downloaded as CSV
+   */
+  downloadable: {
+    attribute: "downloadable",
+    type: Boolean,
+    reflect: true,
+  },
+  /**
+   * Enable filtering by cell value.
+   */
+  filter: {
+    attribute: "filter",
+    type: Boolean,
+    reflect: true,
+  },
+  /**
+   * Allow table to be printed
+   */
+  printable: {
+    attribute: "printable",
+    type: Boolean,
+    reflect: true,
+  },
+  /**
+   * Enable sorting by column header.
+   */
+  sort: {
+    attribute: "sort",
+    type: Boolean,
+    reflect: true,
+  },
+};
 
 /**
  * behaviors needed to display table in either mode
@@ -283,14 +368,8 @@ export const displayBehaviors = function (SuperClass) {
     static get properties() {
       return {
         ...super.properties,
-
-        /**
-         * Add borders to table and table cells.
-         */
-        bordered: {
-          attribute: "bordered",
-          type: Boolean,
-        },
+        ...displayProperties,
+        ...dataProperties,
         /**
          * a table caption
          */
@@ -313,20 +392,6 @@ export const displayBehaviors = function (SuperClass) {
           attribute: "csv-data",
         },
         /**
-         * Is striped add alternating column striping.
-         */
-        columnStriped: {
-          attribute: "column-striped",
-          type: Boolean,
-        },
-        /**
-         * Condense height of table cells.
-         */
-        condensed: {
-          attribute: "condensed",
-          type: Boolean,
-        },
-        /**
          * raw data
          */
         data: {
@@ -342,43 +407,11 @@ export const displayBehaviors = function (SuperClass) {
           attribute: "data-csv",
         },
         /**
-         * Allow table to be downloaded as CSV
-         */
-        downloadable: {
-          attribute: "downloadable",
-          type: Boolean,
-          reflect: true,
-        },
-        /**
-         * Enable filtering by cell value.
-         */
-        filter: {
-          attribute: "filter",
-          type: Boolean,
-          reflect: true,
-        },
-        /**
          * Display last row as a column footer.
          */
         footer: {
           attribute: "footer",
           type: Boolean,
-        },
-        /**
-         * Right-align numeric values and indicate negative values as red text
-         */
-        numericStyles: {
-          attribute: "numeric-styles",
-          type: Boolean,
-          reflect: true,
-        },
-        /**
-         * Allow table to be printed
-         */
-        printable: {
-          attribute: "printable",
-          type: Boolean,
-          reflect: true,
         },
         /**
          * Display first column as a row header.
@@ -387,48 +420,22 @@ export const displayBehaviors = function (SuperClass) {
           attribute: "row-header",
           type: Boolean,
         },
-        /**
-         * When table is wider than screens,
-         * users will select a column to display
-         * instead of scrolling across table.
-         */
-        responsive: {
-          attribute: "responsive",
-          type: Boolean,
-          reflect: true,
-        },
-        /**
-         * Enable sorting by column header.
-         */
-        sort: {
-          attribute: "sort",
-          type: Boolean,
-          reflect: true,
-        },
-        /**
-         * Add alternating row striping.
-         */
-        striped: {
-          attribute: "striped",
-          type: Boolean,
-        },
       };
     }
 
     constructor() {
       super();
-      this.bordered = false;
       this.columnHeader = false;
-      this.condensed = false;
       this.downloadable = false;
       this.data = [];
       this.filter = false;
       this.footer = false;
       this.rowHeader = false;
-      this.responsive = false;
       this.sort = false;
-      this.striped = false;
       this.dataCsv = undefined;
+      Object.keys(displayProperties).forEach((key) => {
+        this[key] = false;
+      });
       this.fetchData();
     }
 
@@ -566,98 +573,20 @@ export const displayBehaviors = function (SuperClass) {
               "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
             );
       if (print) {
-        print.document.body.innerHTML = `
-          <style>
-            ${editableTableDisplayStyles.join(" ")}
-            body > *:not(table) { display: none; }
-          </style>
-        
-          <table
-            id="table"
-            ${this.bordered ? " bordered" : ""}
-            class="table"
-            ${this.bordered ? " bordered" : ""}
-            ${this.columnHeader ? " column-header" : ""}
-            ${this.columnStriped ? " column-striped" : ""}
-            ${this.condensed ? " condensed" : ""}
-            ${this.footer ? " footer" : ""}
-            ${this.numericStyles ? " numeric-styles" : ""}
-            ${this.rowHeader ? " row-header" : ""}
-            ${this.striped ? " striped" : ""}
-          >
-          <caption>${this.caption}</caption>
-          ${
-            !this.columnHeader
-              ? ""
-              : `
-            <thead class="thead">
-              <tr class="tr thead-tr">
-                ${(this.thead[0] || []).map(
-                  (th, index) => `
-                    <th
-                      class="th th-or-td"
-                      ${this._isNumericColumn(index) ? " numeric" : ""}
-                      scope="col"
-                    >
-                      ${!this.sort ? "" : th}
-                    </th>`
-                )}
-              </tr>
-            </thead>
-          `
+        print.document.head.innerHTML += `<style>
+          ${editableTableDisplayStyles
+            .map((s) => s.cssText.replace(/:host/g, "table"))
+            .join(" ")}
+          table {
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
           }
-          <tbody class="tbody">
-            ${this.tbody.map((tr) =>
-              this._isRowFiltered(tr)
-                ? ""
-                : `<tr class="tr tbody-tr">
-                ${tr.map((cell, index) =>
-                  this._isRowHeader(this.rowHeader, index)
-                    ? `<th
-                    class="th th-or-td"
-                    ${this._isNumericColumn(index) ? " numeric" : ""}
-                    scope="row">${cell}</th>`
-                    : `<td
-                      class="td th-or-td"
-                      ${this._isNumericColumn(index) ? " numeric" : ""}
-                      ${this._isNegative(cell) ? " negative" : ""}
-                      >${cell}</td>`
-                )}
-              </tr>`
-            )}
-          </tbody>
-          ${
-            !this.footer
-              ? ""
-              : `
-                <tfoot class="tfoot">
-                  ${this.tfoot.map((tr) =>
-                    this._isRowFiltered(tr)
-                      ? ""
-                      : `<tr class="tr tfoot-tr">
-                      ${tr.map((cell, index) =>
-                        this._isRowHeader(this.rowHeader, index)
-                          ? `<th
-                          class="th th-or-td"
-                          ${this._isNumericColumn(index) ? " numeric" : ""}
-                          scope="row">${cell}</th>`
-                          : `<td
-                            class="td th-or-td"
-                            ${this._isNumericColumn(index) ? " numeric" : ""}
-                            ${this._isNegative(cell) ? " negative" : ""}
-                            >${cell}</td>`
-                      )}
-                    </tr>`
-                  )}
-                </tfoot>
-              `
-          }
-        </table>
-        `;
+        </style>`;
+        print.document.body.innerHTML = this.getTableHTML(true);
         print.document.close();
         print.focus();
-        /*print.print();
-        print.close();*/
+        print.print();
+        print.close();
       }
 
       /**
@@ -726,30 +655,32 @@ export const displayBehaviors = function (SuperClass) {
      * Return table as plain HTML
      * @returns {string} HTML for table
      */
-    getTableHTML() {
+    getTableHTML(addStyleClasses = false) {
       let headers = [],
         body = [],
         footer = [];
-      let getTR = (tr, open = "td", close = "td") => {
+      let getTR = (tr, open = "td", close = "td", type = "tbody") => {
         let th = this.rowHeader ? tr.slice(0, 1) : [],
           td = this.rowHeader ? tr.slice(1) : tr;
-        return `\n\t\t<tr>${th
+        return `\n\t\t<tr${
+          !addStyleClasses ? "" : ` class="${type}-tr tr"`
+        }>${th
           .map((cell) => {
-            return `\n\t\t\t<th scope="row">${this._replaceBlankCell(
-              cell
-            )}</th>`;
+            return `\n\t\t\t<th scope="row"${
+              !addStyleClasses ? "" : ` class="${close} th-or-td"`
+            }>${this._replaceBlankCell(cell)}</th>`;
           })
           .join("")}${td
           .map((cell) => {
-            return `\n\t\t\t<${open}>${this._replaceBlankCell(
-              cell
-            )}</${close}>`;
+            return `\n\t\t\t<${open}${
+              !addStyleClasses ? "" : ` class="${close} th-or-td"`
+            }>${this._replaceBlankCell(cell)}</${close}>`;
           })
           .join("")}\n\t\t</tr>`;
       };
       if (this.thead) {
         headers = this.thead.map((tr) => {
-          return getTR(tr, `th scope="col"`, `th`);
+          return getTR(tr, `th scope="col"`, `th`, "thead");
         });
       }
       if (this.tbody) {
@@ -759,24 +690,48 @@ export const displayBehaviors = function (SuperClass) {
       }
       if (this.tfoot) {
         footer = this.tfoot.map((tr) => {
-          return getTR(tr);
+          return getTR(tr, "td", "td", "tfoot");
         });
       }
       let props = this.getTableProperties();
       let attr = "";
-      ["bordered", "striped", "condensed"].forEach((i) => {
-        if (props[i]) {
-          attr += `${i} `;
+      Object.keys(this.getTableProperties()).forEach((i) => {
+        if (props[i] && Object.keys(displayProperties).includes(i)) {
+          let kebabize = (str) => {
+            return str
+              .split("")
+              .map((letter, idx) => {
+                return letter.toUpperCase() === letter
+                  ? `${idx !== 0 ? "-" : ""}${letter.toLowerCase()}`
+                  : letter;
+              })
+              .join("");
+          };
+          attr += `${kebabize(i)} `;
         }
       });
       return [
         `<table ${attr}>`,
         this.caption !== "" && this.caption !== null && this.caption !== "null"
-          ? `\n\t<caption>\n\t\t${this.caption}\n\t</caption>`
+          ? `\n\t<caption${!addStyleClasses ? "" : ` class="caption"`}>\n\t\t${
+              this.caption
+            }\n\t</caption>`
           : "",
-        headers.length > 0 ? `\n\t<thead>${headers.join("")}\n\t</thead>` : "",
-        body.length > 0 ? `\n\t<tbody>${body.join("")}\n\t</tbody>` : "",
-        footer.length > 0 ? `\n\t<tfoot>${footer.join("")}\n\t</tfoot>` : "",
+        headers.length > 0
+          ? `\n\t<thead${
+              !addStyleClasses ? "" : ` class="thead"`
+            }">${headers.join("")}\n\t</thead>`
+          : "",
+        body.length > 0
+          ? `\n\t<tbody${!addStyleClasses ? "" : ` class="tbody"`}>${body.join(
+              ""
+            )}\n\t</tbody>`
+          : "",
+        footer.length > 0
+          ? `\n\t<tfoot${
+              !addStyleClasses ? "" : ` class="tfoot"`
+            }>${footer.join("")}\n\t</tfoot>`
+          : "",
         "\n</table>",
       ].join("");
     }
@@ -801,19 +756,21 @@ export const displayBehaviors = function (SuperClass) {
      */
     getTableProperties() {
       let data = {
-        bordered: !this.hideBordered ? this.bordered : null,
+        bordered: !this.hideBordered && this.bordered,
         caption: this.caption,
         columnHeader: this.columnHeader,
         columnStriped: this.columnStriped,
-        condensed: !this.hideCondensed ? this.condensed : null,
+        condensed: !this.hideCondensed && this.condensed,
         data: this.data,
-        filter: !this.hideFilter ? this.filter : null,
+        downloadable: this.downloadable,
+        filter: !this.hideFilter && this.filter,
         footer: this.footer,
         numericStyles: this.numericStyles,
+        printable: this.printable,
         rowHeader: this.rowHeader,
-        responsive: !this.hideResponsive ? this.responsive : null,
-        sort: !this.hideSort ? this.sort : null,
-        striped: !this.hideStriped ? this.striped : null,
+        responsive: !this.hideResponsive && this.responsive,
+        sort: !this.hideSort && this.sort,
+        striped: !this.hideStriped && this.striped,
         summary: this.summary,
       };
       return data;
@@ -863,7 +820,6 @@ export const displayBehaviors = function (SuperClass) {
           for (let i = 1; i < span.rows; i++)
             data[span.row + 1].splice(span.col, 0, "&nbsp;");
       });
-      console.log(data);
       if (data.length > 0 && data[0].length > 0) this.data = data;
 
       this.columnHeader =
@@ -875,6 +831,11 @@ export const displayBehaviors = function (SuperClass) {
         table.querySelectorAll("caption").length > 0
           ? table.querySelector("caption").innerHTML.trim()
           : undefined;
+
+      Object.keys(displayProperties).forEach((key) => {
+        if (table.matches(`.${displayProperties[key].attribute || key}`))
+          this[key] = true;
+      });
     }
 
     /**
