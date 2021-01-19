@@ -3,6 +3,8 @@
  * @license MIT, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `github-preview`
  * `A simple element that displays information about a github repository.`
@@ -83,10 +85,6 @@ class GithubPreview extends LitElement {
         .stats-text {
           margin: 0px 5px 0px 5px;
         }
-
-        .inverted-icon {
-          filter: invert(100%);
-        }
       `,
     ];
   }
@@ -107,10 +105,7 @@ class GithubPreview extends LitElement {
       >
         <div class="container">
           <div class="header-container">
-            <span class="inverted-icon"
-              ><img
-                src="https://img.icons8.com/fluent-systems-regular/24/000000/book.png"
-            /></span>
+            <simple-icon-lite icon="book"></simple-icon-lite>
             <div>${this.repo}</div>
           </div>
 
@@ -119,14 +114,9 @@ class GithubPreview extends LitElement {
           <div class="stats-container">
             <span class="lang-circle"></span>
             <div class="stats-text">${this.__language}</div>
-            <span class="inverted-icon"
-              ><img src="https://img.icons8.com/android/24/000000/star.png"
-            /></span>
+            <simple-icon-lite icon="star"></simple-icon-lite>
             <div class="stats-text">${this.__stars}</div>
-            <span class="inverted-icon"
-              ><img
-                src="https://img.icons8.com/fluent-systems-regular/24/000000/code-fork.png"
-            /></span>
+            <simple-icon-lite icon="social:share"></simple-icon-lite>
             <div class="stats-text">${this.__forks}</div>
           </div>
         </div>
@@ -157,7 +147,6 @@ class GithubPreview extends LitElement {
   }
 
   handleResponse(response) {
-    console.log(response);
     if (typeof response !== typeof undefined && response) {
       this.__description = response.description;
       this.__language = response.language;
@@ -177,6 +166,9 @@ class GithubPreview extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "repo" || propName === "org") {
+        this.fetchRepo(this.repo, this.org);
+      }
       /* notify example
       // notify
       if (propName == 'format') {
