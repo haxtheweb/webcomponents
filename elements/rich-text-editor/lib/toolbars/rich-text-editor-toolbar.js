@@ -98,8 +98,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     static get miniStyles() {
       return [
         css`
-          :host,
-          #floating {
+          :host {
             display: flex;
           }
           #toolbar[collapsed] {
