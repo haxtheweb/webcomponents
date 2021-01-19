@@ -98,7 +98,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     this.__clipboard.style.height = "0px";
     this.id = this._generateUUID();
     document.body.appendChild(this.__clipboard);
-    //window.addEventListener("paste", (e) => console.log("paste", e));
     window.addEventListener("register", this._handleRegistration.bind(sel));
     /*
     extendForward.addEventListener('click', () => {

@@ -235,6 +235,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
     open(node) {
       node || this.expandSelection();
       this.value = this.getValue(node);
+      this.highlight();
       this.dispatchEvent(
         new CustomEvent("rich-text-editor-prompt-open", {
           bubbles: true,
