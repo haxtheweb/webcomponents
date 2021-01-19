@@ -19,9 +19,9 @@
   <body>
     <div class="vertical-section-container centered">
       <h1>Configuring rich-text-editor toolbar</h1>
-      <demo-snippet>
+      <!--demo-snippet>
         <template>
-          <rich-text-editor-toolbar-full id="editor" always-visible sticky controls="content"></rich-text-editor-toolbar-full>
+          <rich-text-editor-toolbar-full id="editor" show="always" sticky controls="content"></rich-text-editor-toolbar-full>
           <rich-text-editor id="content" toolbar="editor">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -227,6 +227,19 @@
               }
             ]; 
           </script>
+        </template>
+      </demo-snippet-->
+      <demo-snippet>
+        <template>          
+          <rich-text-editor-toolbar-mini id="editor" show="selection" sticky controls="content"></rich-text-editor-toolbar-mini>
+          <figure>
+            <img src="https://www.meme-arsenal.com/memes/f9a06925e8174f91b521be71f240eba1.jpg">
+            <figcaption>
+              <rich-text-editor type="rich-text-editor-toolbar-mini">
+                <p>Select this text to caption the image below. (Toolbar will only show if you select text.)</p>
+              </rich-text-editor>
+            </figcaption>
+          </figure>
         </template>
       </demo-snippet>
     </div>

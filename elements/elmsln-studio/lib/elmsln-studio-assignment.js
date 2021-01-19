@@ -533,7 +533,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
               ? body
               : html`
                   <rich-text-editor-toolbar-full
-                    always-visible
+                    show="always"
                     id="toolbar"
                     controls="editor"
                     .config="${this.__editorConfig}"

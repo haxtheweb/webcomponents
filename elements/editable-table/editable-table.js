@@ -224,6 +224,7 @@ class EditableTable extends displayBehaviors(LitElement) {
       <rich-text-editor-toolbar-mini
         id="mini"
         .config="${this.config}"
+        show="selection"
       ></rich-text-editor-toolbar-mini>
       <editable-table-display
         aria-hidden="${this.editMode ? "true" : "false"}"

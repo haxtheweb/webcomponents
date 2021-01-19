@@ -378,11 +378,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         <div
           id="toolbar"
           aria-live="polite"
-          aria-hidden="${!!this.controls || !!this.alwaysVisible
-            ? "false"
-            : "true"}"
+          aria-hidden="${!this.disconnected ? "false" : "true"}"
           ?collapsed="${this.collapsed}"
-          ?hidden="${!this.controls && !this.alwaysVisible}"
+          ?hidden="${this.disconnected}"
           @focus="${(e) => (this.__focused = true)}"
           @blur="${(e) => (this.__focused = false)}"
           @mouseover="${(e) => (this.__hovered = true)}"
@@ -415,14 +413,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     // properties available to custom element for data binding
     static get properties() {
       return {
-        /**
-         * keep toolbar visible even when not editor not focused
-         */
-        alwaysVisible: {
-          type: Boolean,
-          attribute: "always-visible",
-          reflect: true,
-        },
         /**
          * raw array of buttons
          */
@@ -547,6 +537,17 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           type: Array,
         },
         /**
+         * when to make toolbar visible:
+         * "always" to keep it visible,
+         * "selection" when there is an active selection,
+         * or defaults to only when connected to an
+         */
+        show: {
+          type: String,
+          attribute: "show",
+          reflect: true,
+        },
+        /**
          * Should toolbar stick to top so that it is always visible?
          */
         sticky: {
@@ -567,13 +568,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
          */
         __focused: {
           name: "__focused",
-          type: Boolean,
-        },
-        /**
-         * whether toolbar is hidden
-         */
-        __hidden: {
-          name: "__hidden",
           type: Boolean,
         },
         /**
@@ -613,7 +607,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("@polymer/iron-icons/image-icons.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       window.ResponsiveUtility.requestAvailability();
-      this.alwaysVisible = false;
       this.collapsed = true;
       this.config = this.defaultConfig;
       this.moreIcon = "more-vert";
@@ -637,21 +630,22 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.__selection = window.RichTextEditorSelection.requestAvailability();
       this.register();
     }
+
     get disconnected() {
-      return (
-        !this.alwaysVisible &&
-        (!this.controls || (!this.__focused && !this.__hovered))
-      );
+      return this.show == "always"
+        ? false
+        : this.show != "selection"
+        ? !this.editor
+        : this.noSelection;
+    }
+    get noSelection() {
+      return !this.range || this.range.collapsed;
     }
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "range") this._rangeChange();
         if (propName === "editor") this._editorChange();
-        if (["alwaysVisible", "controls"].includes(propName))
-          this.__hidden = this.disconnected;
-        if (["__focused", "__hovered"].includes(propName))
-          setTimeout((this.__hidden = this.disconnected), 300);
       });
     }
 
@@ -883,7 +877,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.breadcrumbs.controls = this.controls;
         this.breadcrumbs.sticky = this.sticky;
         this.breadcrumbs.controls = this.controls;
-        this.breadcrumbs.hidden = !this.controls && !this.alwaysVisible;
+        this.breadcrumbs.hidden = this.disconnected;
         if (!!this.editor)
           this.editor.parentNode.insertBefore(
             this.breadcrumbs,
@@ -912,7 +906,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (this.breadcrumbs) {
           this.breadcrumbs.controls = this.controls;
           this.breadcrumbs.selectionAncestors = this.selectionAncestors;
-          this.breadcrumbs.hidden = !this.controls && !this.alwaysVisible;
+          this.breadcrumbs.hidden = this.disconnected;
         }
       }
     }
