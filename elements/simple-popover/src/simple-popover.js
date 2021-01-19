@@ -24,6 +24,7 @@ Custom property | Description | Default
  *
  * @element simple-popover
  * @demo ./demo/index.html
+ * @demo ./demo/tour.html Tour
  */
 class SimplePopover extends AbsolutePositionBehavior {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
