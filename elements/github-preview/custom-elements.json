@@ -1,0 +1,30 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "github-preview",
+      "path": "./github-preview.js",
+      "description": "`github-preview`\n`A simple element that displays information about a github repository.`",
+      "attributes": [
+        {
+          "name": "uri",
+          "type": "string",
+          "default": "\"https://github.com/elmsln/lrnwebcomponents\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "uri",
+          "attribute": "uri",
+          "type": "string",
+          "default": "\"https://github.com/elmsln/lrnwebcomponents\""
+        }
+      ]
+    },
+    {
+      "name": "github-preview",
+      "path": "./src/github-preview.js",
+      "description": "`github-preview`\n`A simple element that displays information about a github repository.`"
+    }
+  ]
+}
