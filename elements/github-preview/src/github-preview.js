@@ -3,7 +3,6 @@
  * @license MIT, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/simple-icon";
 /**
  * `github-preview`
  * `A simple element that displays information about a github repository.`
@@ -101,7 +100,11 @@ class GithubPreview extends LitElement {
 
   render() {
     return html`
-      <a href="https://github.com/${this.org}/${this.repo}" target="_blank">
+      <a
+        href="https://github.com/${this.org}/${this.repo}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div class="container">
           <div class="header-container">
             <span class="inverted-icon"
@@ -109,11 +112,22 @@ class GithubPreview extends LitElement {
                 src="https://img.icons8.com/fluent-systems-regular/24/000000/book.png"
             /></span>
             <div>${this.repo}</div>
-            <simple-icon
-              icon="hax:remix"
-              accent-color="white"
-              contrast="1"
-            ></simple-icon>
+          </div>
+
+          <div>${this.__description}</div>
+
+          <div class="stats-container">
+            <span class="lang-circle"></span>
+            <div class="stats-text">${this.__language}</div>
+            <span class="inverted-icon"
+              ><img src="https://img.icons8.com/android/24/000000/star.png"
+            /></span>
+            <div class="stats-text">${this.__stars}</div>
+            <span class="inverted-icon"
+              ><img
+                src="https://img.icons8.com/fluent-systems-regular/24/000000/code-fork.png"
+            /></span>
+            <div class="stats-text">${this.__forks}</div>
           </div>
         </div>
       </a>
