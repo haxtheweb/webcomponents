@@ -28,8 +28,10 @@ class GithubPreview extends LitElement {
       __description: {
         type: String,
       },
-      __language: {
+      repoLang: {
         type: String,
+        attribute: "repo-lang",
+        reflect: true,
       },
       __stars: {
         type: Number,
@@ -43,6 +45,98 @@ class GithubPreview extends LitElement {
   static get styles() {
     return [
       css`
+        :host([repo-lang="JavaScript"]) .lang-circle {
+          background-color: #f1e05a;
+        }
+
+        :host([repo-lang="C"]) .lang-circle {
+          background-color: #555555;
+        }
+
+        :host([repo-lang="C#"]) .lang-circle {
+          background-color: #178600;
+        }
+
+        :host([repo-lang="C++"]) .lang-circle {
+          background-color: #f34b7d;
+        }
+
+        :host([repo-lang="CSS"]) .lang-circle {
+          background-color: #563d7c;
+        }
+
+        :host([repo-lang="Dart"]) .lang-circle {
+          background-color: #00b4ab;
+        }
+
+        :host([repo-lang="Go"]) .lang-circle {
+          background-color: #00add8;
+        }
+
+        :host([repo-lang="Java"]) .lang-circle {
+          background-color: #b07219;
+        }
+
+        :host([repo-lang="Kotlin"]) .lang-circle {
+          background-color: #f18e33;
+        }
+
+        :host([repo-lang="Markdown"]) .lang-circle {
+          background-color: #083fa1;
+        }
+
+        :host([repo-lang="Python"]) .lang-circle {
+          background-color: #3572a5;
+        }
+
+        :host([repo-lang="Sass"]) .lang-circle {
+          background-color: #a53b70;
+        }
+
+        :host([repo-lang="Scala"]) .lang-circle {
+          background-color: #c22d40;
+        }
+
+        :host([repo-lang="SCSS"]) .lang-circle {
+          background-color: #c6538c;
+        }
+
+        :host([repo-lang="Rust"]) .lang-circle {
+          background-color: #dea584;
+        }
+
+        :host([repo-lang="Swift"]) .lang-circle {
+          background-color: #ffac45;
+        }
+
+        :host([repo-lang="TypeScript"]) .lang-circle {
+          background-color: #2b7489;
+        }
+
+        :host([repo-lang="Vue"]) .lang-circle {
+          background-color: #2c3e50;
+        }
+
+        :host([repo-lang="Sass"]) .lang-circle {
+          background-color: #a53b70;
+        }
+
+        :host([repo-lang="Sass"]) .lang-circle {
+          background-color: #a53b70;
+        }
+
+        :host([repo-lang="PHP"]) .lang-circle {
+          background-color: #4f5d95;
+        }
+
+        :host([repo-lang="HTML"]) .lang-circle {
+          background-color: #e34c26;
+        }
+
+        :host([repo-lang="Lua"]) .lang-circle {
+          background-color: #000080;
+        }
+
         a {
           text-decoration: none;
         }
@@ -73,7 +167,7 @@ class GithubPreview extends LitElement {
         .lang-circle {
           height: 15px;
           width: 15px;
-          background-color: #ffd500;
+          background-color: grey;
           border-radius: 50%;
           margin: 0px 5px 0px 5px;
         }
@@ -113,7 +207,7 @@ class GithubPreview extends LitElement {
 
           <div class="stats-container">
             <span class="lang-circle"></span>
-            <div class="stats-text">${this.__language}</div>
+            <div class="stats-text">${this.repoLang}</div>
             <simple-icon-lite icon="star"></simple-icon-lite>
             <div class="stats-text">${this.__stars}</div>
             <simple-icon-lite icon="social:share"></simple-icon-lite>
@@ -147,9 +241,9 @@ class GithubPreview extends LitElement {
   }
 
   handleResponse(response) {
-    if (typeof response !== typeof undefined && response) {
+    if (response) {
       this.__description = response.description;
-      this.__language = response.language;
+      this.repoLang = response.language;
       this.__stars = response.stargazers_count;
       this.__forks = response.forks;
     }
@@ -159,7 +253,9 @@ class GithubPreview extends LitElement {
    * LitElement ready
    */
   firstUpdated(changedProperties) {
-    this.fetchRepo(this.repo, this.org);
+    if (this.repo && this.org) {
+      this.fetchRepo(this.repo, this.org);
+    }
   }
   /**
    * LitElement life cycle - property changed
