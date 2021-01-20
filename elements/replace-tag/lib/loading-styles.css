@@ -56,10 +56,14 @@
 
 /** pop up effect, not loaded **/
 *[popup-loader]:defined:not([loaded]) {
-  opacity: .2;
+  opacity: .4;
   visibility: visible;
   transform-style: preserve-3d;
   perspective: 1600px;
+}
+
+replace-tag[popup-loader]:defined {
+  opacity: .8 !important;
 }
 
 /** loaded, so fire the pop up animation **/

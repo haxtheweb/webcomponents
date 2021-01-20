@@ -1,6 +1,10 @@
 <!doctype html>
 <html>
   <head>
+    <script>
+      // not needed in most production scenarios but definitely locally because of tooling
+      window.WCAutoloadBasePath = "/node_modules/";
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>LoadingHelpers: replace-tag Demo</title>
@@ -25,38 +29,84 @@
         display: block;
       }
     </style>
-  </head>
-  <body>
+    </head>
+    <body>
     <div class="vertical-section-container centered">
       <h3>Basic replace-tag demo</h3>
       <demo-snippet>
         <template>
-          <word-count>will replace</word-count>
-          <word-count>will replace</word-count>
-          <word-count>will replace and will scale as it wants to</word-count>
-          <word-count popup-loader>will replace</word-count>
-          <word-count popup-loader>will replace</word-count>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count">will replace</replace-tag>
+          <replace-tag with="word-count" with-method="performance" popup-loader>
+            <p>this is what we'll be looking for the word count on</p>
+          </replace-tag>
           <other-count laser-loader popup-loader>This wont replace</other-count>
-          <meme-maker></meme-maker>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <p>ijdsijdsijad sijad sijads ijad sijadsijadsijad sijad sijadsijad sijijad sija ds</p>
+          <replace-tag with="meme-maker" top-text="Cool" bottom-text="Stuff bro" image-url="https://oer.hax.psu.edu/bto108/sites/ist210/files/headshot78769.48500000071.jpg"></replace-tag>
         </template>
       </demo-snippet>
     </div>
     <h2 id="loading"></h2>
+    <wc-registry>
+      <template>
+        {
+          "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+          "word-count": "@lrnwebcomponents/word-count/word-count.js"
+        }
+      </template>
+    </wc-registry>
   </body>
-    <script src="../../replace-tag/lib/loading-styles.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
-  <script type="module" async>
+  <script type="module" async defer>
     import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
     import '@polymer/iron-demo-helpers/demo-snippet.js';
-    window.WCRegistryLoaderCSS(true);
-    setTimeout(() => {
-      import("@lrnwebcomponents/word-count/word-count.js");
-      setTimeout(() => {
-        import("@lrnwebcomponents/meme-maker/meme-maker.js");
-      }, 1000);
-    }, 1000);
+    import "../replace-tag.js";
 
     // purely for the demo to visualize the tag counts as loaded vs total
     window.globalElCount = 0;
