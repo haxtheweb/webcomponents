@@ -1,19 +1,19 @@
 {
-  "name": "@lrnwebcomponents/loading-helpers",
+  "name": "@lrnwebcomponents/replace-tag",
   "wcfactory": {
     "className": "LoadingHelpers",
     "customElementClass": "LitElement",
-    "elementName": "loading-helpers",
+    "elementName": "replace-tag",
     "generator-wcfactory-version": "0.8.7",
     "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/loading-helpers.css",
-      "scss": "src/loading-helpers.scss",
-      "html": "src/loading-helpers.html",
-      "js": "src/loading-helpers.js",
-      "properties": "src/loading-helpers-properties.json",
-      "hax": "src/loading-helpers-hax.json"
+      "css": "src/replace-tag.css",
+      "scss": "src/replace-tag.scss",
+      "html": "src/replace-tag.html",
+      "js": "src/replace-tag.js",
+      "properties": "src/replace-tag-properties.json",
+      "hax": "src/replace-tag-hax.json"
     },
     "iconset": {},
     "sharedHaxProps": [],
@@ -26,9 +26,9 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "loading-helpers.js",
-  "module": "loading-helpers.js",
-  "umd": "loading-helpers.umd.js",
+  "main": "replace-tag.js",
+  "module": "replace-tag.js",
+  "umd": "replace-tag.umd.js",
   "scripts": {
     "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/<%= elementName %>/test/",
     "start": "yarn run dev",

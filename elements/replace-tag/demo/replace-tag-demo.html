@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>LoadingHelpers: loading-helpers Demo</title>
+    <title>LoadingHelpers: replace-tag Demo</title>
     <link rel="stylesheet" type="text/css" crossorigin="anonymous" href="../lib/loading-styles.css"/>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
     <style>
@@ -20,36 +20,27 @@
         height: 46px;
         width: 854px;
       }
-      other-count:not(:defined) {
-        width: max-content;
-        display: block;
-      }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic loading-helpers demo</h3>
+      <h3>Basic replace-tag demo</h3>
       <demo-snippet>
         <template>
-          <word-count>will replace</word-count>
-          <word-count>will replace</word-count>
-          <word-count>will replace and will scale as it wants to</word-count>
-          <word-count popup-loader>will replace</word-count>
-          <word-count popup-loader>will replace</word-count>
+          <replace-tag with="word-count">This is what the inner text of that new tag will be too!</replace-tag>
+          <replace-tag with="word-count" popup-loader>This is what the inner text of that new tag will be too!</replace-tag>
           <other-count laser-loader popup-loader>This wont replace</other-count>
-          <meme-maker></meme-maker>
         </template>
       </demo-snippet>
     </div>
     <h2 id="loading"></h2>
   </body>
-    <script src="../../loading-helpers/lib/loading-styles.js"></script>
+    <script src="../../replace-tag/lib/loading-styles.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script src="../../wc-autoload/demo/index.html"></script>
   <script type="module" async>
-    import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-    import '@polymer/iron-demo-helpers/demo-snippet.js';
     window.WCRegistryLoaderCSS(true);
     setTimeout(() => {
       import("@lrnwebcomponents/word-count/word-count.js");

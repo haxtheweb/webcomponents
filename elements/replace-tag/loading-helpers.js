@@ -4,10 +4,10 @@
  */
 
 /**
- * `loading-helpers`
+ * `replace-tag`
  * `Loading helpers and css`
  * @demo demo/index.html
- * @element loading-helpers
+ * @element replace-tag
  */
 const ReplaceTagSuper = function (SuperClass) {
   return class extends SuperClass {

@@ -1,4 +1,4 @@
-# &lt;loading-helpers&gt;
+# &lt;replace-tag&gt;
 
 Helpers
 > Loading helpers and css
@@ -8,19 +8,19 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/loading-helpers/loading-helpers.js';
+import '@lrnwebcomponents/replace-tag/replace-tag.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/loading-helpers/loading-helpers.js"></script>
+<script type="module" src="@lrnwebcomponents/replace-tag/replace-tag.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/loading-helpers/loading-helpers.js';
+  import '@lrnwebcomponents/replace-tag/replace-tag.js';
   // imperative form
-  import {LoadingHelpers} from '@lrnwebcomponents/loading-helpers';
+  import {LoadingHelpers} from '@lrnwebcomponents/replace-tag';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/loading-helpers/loading-helpers.js';
+  import './node_modules/@lrnwebcomponents/replace-tag/replace-tag.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/loading-helpers/loading-helpers.js"></script>
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/replace-tag/replace-tag.js"></script>
 ```
 
 ## Develop / Demo

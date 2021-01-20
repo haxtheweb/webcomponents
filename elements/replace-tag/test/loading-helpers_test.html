@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../loading-helpers.js"></script>
+    <script type="module" src="../replace-tag.js"></script>
   </head>
   <body>
 
-    <loading-helpers>
+    <replace-tag>
       This is the element content.
-    </loading-helpers>
+    </replace-tag>
 <test-fixture id="BasicTestFixture">
   <template>
-    <loading-helpers></loading-helpers>
+    <replace-tag></replace-tag>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <loading-helpers></loading-helpers>
+    <replace-tag></replace-tag>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<loading-helpers>', () => {
+  suite('<replace-tag>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('loading-helpers'), customElements.get("loading-helpers", 'loading-helpers should be an instance of loadingHelpers'));
+      assert.instanceOf(document.querySelector('replace-tag'), customElements.get("replace-tag", 'replace-tag should be an instance of loadingHelpers'));
     });
 
     /*test('setting a property on the element works', () => {

@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "replace-tag",
+      "path": "./replace-tag.js",
+      "description": "`replace-tag`\n`Loading helpers and css`"
+    },
+    {
+      "name": "replace-tag",
+      "path": "./src/replace-tag.js",
+      "description": "`replace-tag`\n`Loading helpers and css`"
+    }
+  ]
+}

@@ -6,12 +6,12 @@ import {
   boolean,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { LoadingHelpers } from "./loading-helpers.js";
+import { LoadingHelpers } from "./replace-tag.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
   title: "Helpers|LoadingHelpers",
-  component: "loading-helpers",
+  component: "replace-tag",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
