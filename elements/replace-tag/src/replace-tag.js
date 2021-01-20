@@ -48,35 +48,65 @@ const ReplaceTagSuper = function (SuperClass) {
     evaluateReplaceMethod() {
       // ensure that ANY replace-tag gets this applied
       window.WCRegistryLoaderCSS();
-      switch (this.getAttribute("with-method")) {
-        case "performance":
-          let crappy = true;
-          if (navigator) {
-            if (navigator.deviceMemory && navigator.deviceMemory > 4) {
-            }
+      let crappy = false;
+      if (this.getAttribute("with-method") != "view") {
+        if (navigator) {
+          // if less than a gig we know its bad
+          if (navigator.deviceMemory && navigator.deviceMemory < 1) {
+            crappy = true;
           }
-          // look at browser performance
-          // if below a threashold display message to replace on tap
-          if (crappy) {
-            this.loadingStatement = "Click / Tap to load";
-            this.addEventListener("click", this.performanceBasedReplacement);
+          // even phones have multi-core processors so another sign
+          if (
+            navigator.hardwareConcurrency &&
+            navigator.hardwareConcurrency < 2
+          ) {
+            crappy = true;
           }
-          break;
-        case "visible":
-        default:
-          this.setAttribute("laser-loader", "laser-loader");
-          this.loadingStatement = "Loading...";
-          this.intersectionObserver = new IntersectionObserver(
-            this.handleIntersectionCallback.bind(this),
-            {
-              root: document.rootElement,
-              rootMargin: "0px",
-              threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
-              delay: 250,
-            }
-          );
-          this.intersectionObserver.observe(this);
-          break;
+          // some platforms support getting the battery status
+          if (navigator.getBattery) {
+            navigator.getBattery().then(function (battery) {
+              // if we are not charging AND we have under 25% be kind
+              if (!battery.charging && battery.level < 0.25) {
+                crappy = true;
+              }
+            });
+          }
+          // some things report the "type" of internet connection speed
+          // for terrible connections lets save frustration
+          if (
+            navigator.connection &&
+            navigator.connection.effectiveType &&
+            ["slow-2g", "2g", "3g"].includes(navigator.connection.effectiveType)
+          ) {
+            crappy = true;
+          }
+          // see if they said "hey, save me data"
+          if (navigator.connection && navigator.connection.saveData) {
+            crappy = true;
+          }
+        }
+        // look at browser performance
+        // if below a threashold display message to replace on tap
+        if (crappy) {
+          this.loadingStatement = "Click / Tap to load";
+          this.addEventListener("click", this.performanceBasedReplacement);
+        }
+      }
+      // if we don't have a poor device or another setting is used, then we are
+      // expected to use lazy loading as it comes into the viewport like the rest
+      if (!crappy) {
+        this.setAttribute("laser-loader", "laser-loader");
+        this.loadingStatement = "Loading...";
+        this.intersectionObserver = new IntersectionObserver(
+          this.handleIntersectionCallback.bind(this),
+          {
+            root: document.rootElement,
+            rootMargin: "0px",
+            threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
+            delay: 250,
+          }
+        );
+        this.intersectionObserver.observe(this);
       }
       this.render();
     }
@@ -141,7 +171,13 @@ const ReplaceTagSuper = function (SuperClass) {
                   "--laserEdgeAni-innerHeight",
                   null
                 );
-              }, 300);
+                // we resolved 1 definition so now we know it's safe to do all of them
+                document
+                  .querySelectorAll('replace-tag[with="' + props.with + '"]')
+                  .forEach((el) => {
+                    el.runReplacement();
+                  });
+              }, 250);
             });
         }, 250);
       } else {
@@ -177,7 +213,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       opacity: .8;
       transition: .3s linear all;
     }
-    :host([with-method="performance"]:hover) {
+    :host(:not([with-method="view"]):hover) {
       opacity: 1 !important;
       outline: 1px solid black;
       cursor: pointer;
