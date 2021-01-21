@@ -55,6 +55,12 @@ class GithubPreview extends LitElement {
   static get styles() {
     return [
       css`
+        :host {
+          display: inline-flex;
+        }
+        :host([hidden]) {
+          display: none;
+        }
         :host([repo-lang="JavaScript"]) .lang-circle {
           background-color: #f1e05a;
         }
@@ -148,19 +154,20 @@ class GithubPreview extends LitElement {
         }
 
         a {
+          display: inline-flex;
           text-decoration: none;
         }
 
-        :host([extended="true"]) .container {
-          width: var(--github-preview-container, 800px);
-          padding: 10px;
+        :host([extended]) .container {
+          width: var(--github-preview-container-width, 800px);
+          padding: var(--github-preview-container-padding, 10px);
         }
 
         .container {
           background-color: black;
-          border-radius: 10px;
-          width: var(--github-preview-container, 400px);
-          padding: 5px;
+          border-radius: var(--github-preview-container-border-radius, 10px);
+          width: var(--github-preview-container-width, 400px);
+          padding: var(--github-preview-container-padding, 5px);
         }
 
         .header-container {
@@ -234,7 +241,11 @@ class GithubPreview extends LitElement {
 
                 <hr />
 
-                <div>${this.__readmeDesc}</div>
+                <wc-markdown>
+                  <script type="wc-content">
+                    ${this.__readmeDesc}
+                  </script>
+                </wc-markdown>
 
                 <div class="stats-container">
                   <span class="lang-circle"></span>
@@ -284,6 +295,7 @@ class GithubPreview extends LitElement {
    */
   constructor() {
     super();
+    this.extended = false;
   }
 
   fetchRepo(repoName, orgName) {
@@ -341,9 +353,10 @@ class GithubPreview extends LitElement {
    * LitElement ready
    */
   firstUpdated(changedProperties) {
-    if (this.repo && this.org) {
-      this.fetchRepo(this.repo, this.org);
-    } else {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    if (!this.repo || !this.org) {
       this.__assetAvailable = false;
     }
   }
@@ -352,8 +365,14 @@ class GithubPreview extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "repo" || propName === "org") {
-        this.fetchRepo(this.repo, this.org);
+      if (["repo", "org"].includes(propName) && this[propName]) {
+        clearTimeout(this.__debounce);
+        this.__debounce = setTimeout(() => {
+          this.fetchRepo(this.repo, this.org);
+        }, 0);
+      }
+      if (this.extended && propName === "extended") {
+        import("./lib/wc-markdown.js");
       }
       /* notify example
       // notify
