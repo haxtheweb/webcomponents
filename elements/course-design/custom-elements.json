@@ -7,6 +7,231 @@
       "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`"
     },
     {
+      "name": "block-quote",
+      "path": "./lib/block-quote.js",
+      "attributes": [
+        {
+          "name": "citation",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "citation",
+          "attribute": "citation",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "course-intro-header",
+      "path": "./lib/course-intro-header.js",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "attribute": "description",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "course-intro-lesson-plan",
+      "path": "./lib/course-intro-lesson-plan.js",
+      "attributes": [
+        {
+          "name": "position",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "link",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "position",
+          "attribute": "position",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "attribute": "description",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "link",
+          "attribute": "link",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "course-intro-lesson-plans",
+      "path": "./lib/course-intro-lesson-plans.js",
+      "attributes": [
+        {
+          "name": "items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "course-intro",
+      "path": "./lib/course-intro.js"
+    },
+    {
+      "name": "ebook-button",
+      "path": "./lib/ebook-button.js",
+      "attributes": [
+        {
+          "name": "link",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"icons:book\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "link",
+          "attribute": "link",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"icons:book\""
+        }
+      ]
+    },
+    {
+      "name": "lrn-h5p",
+      "path": "./lib/lrn-h5p.js"
+    },
+    {
+      "name": "responsive-iframe",
+      "path": "./lib/responsive-iframe.js"
+    },
+    {
+      "name": "worksheet-download",
+      "path": "./lib/worksheet-download.js",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "link",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "link",
+          "attribute": "link",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
       "name": "course-design",
       "path": "./src/course-design.js",
       "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`"

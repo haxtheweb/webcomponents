@@ -12,7 +12,16 @@
       ]
     },
     {
+      "name": "h5p-wrapped-element",
+      "attributes": []
+    },
+    {
       "name": "h5p-element",
+      "attributes": []
+    },
+    {
+      "name": "h5p-wrapped-element",
+      "description": "Properties:\n\n  * `__editLink` {`string`} - \n\n  * `__editMode` {`boolean`} - \n\n  * `src` {`string`} - \n\n  * `__disposer` - ",
       "attributes": []
     },
     {

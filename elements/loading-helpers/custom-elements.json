@@ -2,14 +2,12 @@
   "version": "experimental",
   "tags": [
     {
-      "name": "loading-helpers",
-      "path": "./loading-helpers.js",
-      "description": "`loading-helpers`\n`Loading helpers and css`"
+      "name": "replace-tag",
+      "path": "./loading-helpers.js"
     },
     {
-      "name": "loading-helpers",
-      "path": "./src/loading-helpers.js",
-      "description": "`loading-helpers`\n`Loading helpers and css`"
+      "name": "replace-tag",
+      "path": "./src/loading-helpers.js"
     }
   ]
 }

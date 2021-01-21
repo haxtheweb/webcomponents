@@ -2,8 +2,6 @@
  * Copyright 2018 Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/editable-table/editable-table.js";
 
 /**
  * evo-to-wc
@@ -18,6 +16,11 @@ import "@lrnwebcomponents/editable-table/editable-table.js";
  * @element evo-to-wc
  */
 export class EvoToWc {
+  /**
+   * icon conversions
+   *
+   * @memberof EvoToWc
+   */
   get courseicons() {
     return {
       assessment: "assessment",
@@ -43,16 +46,32 @@ export class EvoToWc {
       yammer: "lrn:assessment",
     };
   }
+  /**
+   * list of headings to simplify selectors
+   *
+   * @readonly
+   * @static
+   * @memberof EvoToWc
+   */
   get headings() {
     return ["h1", "h2", "h3", "h4", "h5", "h6"];
   }
   constructor() {}
 
+  /**
+   * Conversion function
+   *
+   * @param {object} [target=document.body] node to convert
+   * @memberof EvoToWc
+   */
   convert(target = document.body) {
     this.convertIfNeeded(target, [
       { selector: ".coursework", function: "convertIcons" },
       { selector: ".graphme", function: "convertGraphmes" },
-      { selector: ".tablestyle,.tablestyle2", function: "convertTablestyles" },
+      {
+        selector: ".tablestyle,.tablestyle2,.tablestyle3",
+        function: "convertTablestyles",
+      },
       { selector: ".tabbed-interface", function: "convertTabs" },
       {
         selector: ".expandable,.accordion-interface",
@@ -72,13 +91,26 @@ export class EvoToWc {
     ]);
   }
 
+  /**
+   * runs conversion function on each matching element
+   *
+   * @param {object} target node to convert
+   * @param {array} [conversions=[]] matching objects to convert
+   * @memberof EvoToWc
+   */
   convertIfNeeded(target, conversions = []) {
     conversions.forEach((conversion) => {
       let nodes = target.querySelectorAll(conversion.selector);
       if (nodes.length > 0) this[conversion.function](nodes, target);
     });
   }
-  convertAccordions(accordions) {
+  /**
+   * Converts Evo .accordion-interface to a11y-collapse-group
+   *
+   * @param {array} [accordions = []] array of accordions
+   * @memberof EvoToWc
+   */
+  convertAccordions(accordions = []) {
     import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
 
     accordions.forEach((accordion) => {
@@ -102,7 +134,14 @@ export class EvoToWc {
       accordion.remove();
     });
   }
-  convertCards(cards, target) {
+  /**
+   * Conversions to accent-card
+   *
+   * @param {array} [nodes=[]] macthing nodes to convert
+   * @param {object} target node to convert
+   * @memberof EvoToWc
+   */
+  convertCards(nodes = [], target) {
     import("@lrnwebcomponents/accent-card/accent-card.js");
 
     this.convertIfNeeded(target, [
@@ -113,7 +152,13 @@ export class EvoToWc {
       { selector: ".speechbubble", function: "convertSpeechbubbles" },
     ]);
   }
-  convertCarousels(carousels) {
+  /**
+   * Converts Evo carousels to lrndesign-gallery carousels
+   *
+   * @param {array} [carousels=[]]
+   * @memberof EvoToWc
+   */
+  convertCarousels(carousels = []) {
     carousels.forEach((group) => {
       let gallery = document.createElement("lrndesign-gallery"),
         items = group.querySelectorAll("figure");
@@ -124,22 +169,40 @@ export class EvoToWc {
       group.remove();
     });
   }
-  convertCollapses(collapses, target) {
+  /**
+   * Converts Evo expandables and accordions to a11y-collapse
+   *
+   * @param {array} [nodes=[]] macthing nodes to convert
+   * @param {object} target node to convert
+   * @memberof EvoToWc
+   */
+  convertCollapses(nodes = [], target) {
     import("@lrnwebcomponents/a11y-collapse/a11y-collapse.js");
     this.convertIfNeeded(target, [
       { selector: ".expandable", function: "convertExpandables" },
       { selector: ".accordion-interface", function: "convertAccordions" },
     ]);
   }
-  convertColorboxes(cards) {
+  /**
+   * Converts Evo .colorbox to accent-card
+   *
+   * @param {array} [cards=[]] array of colorboxes
+   * @memberof EvoToWc
+   */
+  convertColorboxes(cards = []) {
     cards.forEach((box) => {
       let card = document.createElement("accent-card");
       card.accentColor = "light-blue";
       this.replace(box, card, this.slotAccentCard);
     });
   }
-
-  convertExpandables(expandables) {
+  /**
+   * Converts Evo .expandable to a11y-collapse
+   *
+   * @param {*} [expandables=[]] array fo expandables
+   * @memberof EvoToWc
+   */
+  convertExpandables(expandables = []) {
     expandables.forEach((expandable) => {
       let collapse = document.createElement("a11y-collapse"),
         collapseable = expandable.querySelector(".collapseable"),
@@ -162,7 +225,13 @@ export class EvoToWc {
       expandable.remove();
     });
   }
-  convertFigures(figures) {
+  /**
+   * Converts Evo figure and .image-info to a11y-figure
+   *
+   * @param {*} [figures=[]] array of figures
+   * @memberof EvoToWc
+   */
+  convertFigures(figures = []) {
     import("@lrnwebcomponents/a11y-figure/a11y-figure.js");
 
     figures.forEach((figure) => {
@@ -174,34 +243,47 @@ export class EvoToWc {
         summary;
       if (figcaption && figure.classList.contains("image-info")) {
         nodes = [...figcaption.childNodes];
-        this.setSize(image, a11y, "width");
+        this.setSize(image, a11y);
         details = document.createElement("details");
         summary = document.createElement("summary");
         summary.innerHTML = "info";
         details.append(summary);
         nodes.forEach((node) => details.append(node));
         figcaption.append(details);
+        figure.classList.remove("image-info");
       }
       figure.parentElement.insertBefore(a11y, figure);
       a11y.append(figure);
     });
   }
-  convertGifs(gifs) {
+  /**
+   * Converts Evo .gif-player into a11y-gif-player
+   *
+   * @param {*} [gifs=[]] array of gif players
+   * @memberof EvoToWc
+   */
+  convertGifs(gifs = []) {
     import("@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js");
 
     gifs.forEach((image) => {
       let player = document.createElement("a11y-gif-player"),
         src = image.src || "";
+      this.setSize(image, player);
       this.setSize(image, player, "height");
-      this.setSize(image, player, "width");
       player.src = src;
       player.srcWithoutAnimation = src.replace(/\.\w+$/, ".gif");
       image.parentElement.insertBefore(player, image);
       image.remove();
     });
   }
-
-  convertGalleries(gallery, target) {
+  /**
+   * Conversions to lrndesign-gallery
+   *
+   * @param {array} [nodes=[]] macthing nodes to convert
+   * @param {object} target node to convert
+   * @memberof EvoToWc
+   */
+  convertGalleries(nodes = [], target) {
     import("@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js");
     this.convertIfNeeded(target, [
       { selector: ".image-thumbnail", function: "convertThumbnails" },
@@ -212,18 +294,30 @@ export class EvoToWc {
       { selector: ".clickable-list", function: "convertImageLists" },
     ]);
   }
-
-  convertGraphmes(graphmes) {
+  /**
+   * Converts Evo .graphme to lrndesign-charts
+   *
+   * @param {*} [graphmes=[]] array of graphmes
+   * @memberof EvoToWc
+   */
+  convertGraphmes(graphmes = []) {
     import("@lrnwebcomponents/lrndesign-chart/lib/lrndesign-bar.js");
     import("@lrnwebcomponents/lrndesign-chart/lib/lrndesign-line.js");
     import("@lrnwebcomponents/lrndesign-chart/lib/lrndesign-pie.js");
 
     graphmes.forEach((graphme) => {
-      ["bar", "line", "pie"].forEach((type) => this.slotChart(type, graphme));
+      ["bar", "line", "pie"].forEach((type) => this.insertChart(graphme, type));
       if (!graphme.classList.contains("showtable")) graphme.remove();
+      graphme.classList.remove("graphme");
     });
   }
-  convertIcons(icons, target) {
+  /**
+   * Converts Evo .courseicon to simple-icon-lite
+   *
+   * @param {object} target node to convert
+   * @memberof EvoToWc
+   */
+  convertIcons(nodes, target) {
     import("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
     import("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
     import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
@@ -240,8 +334,13 @@ export class EvoToWc {
       });
     });
   }
-
-  convertImageLists(lists) {
+  /**
+   * Converts Evo .clickable-list to .lrndesign-gallery
+   *
+   * @param {*} [lists=[]]
+   * @memberof EvoToWc
+   */
+  convertImageLists(lists = []) {
     lists.forEach((list) => {
       let gallery = document.createElement("lrndesign-gallery"),
         items = list.querySelectorAll("li");
@@ -253,7 +352,13 @@ export class EvoToWc {
     });
   }
 
-  convertNewcolorboxes(cards) {
+  /**
+   * Converts Evo .newcolorbox to accent-card
+   *
+   * @param {array} [cards=[]] array of newcolorboxes
+   * @memberof EvoToWc
+   */
+  convertNewcolorboxes(cards = []) {
     cards.forEach((box) => {
       let card = document.createElement("accent-card");
       card.noBorder = true;
@@ -262,7 +367,13 @@ export class EvoToWc {
     });
   }
 
-  convertPulltexts(cards) {
+  /**
+   * Converts Evo .pulltext to accent-card
+   *
+   * @param {array} [cards=[]] array of pulltexts
+   * @memberof EvoToWc
+   */
+  convertPulltexts(cards = []) {
     cards.forEach((box) => {
       let card = document.createElement("accent-card");
       card.accentColor = "light-blue";
@@ -271,7 +382,12 @@ export class EvoToWc {
     });
   }
 
-  convertSpeechbubbles(cards) {
+  /**
+   * Converts Evo .speechbubble to accent-card
+   *
+   * @param {array} [cards=[]] array of speechbubbles
+   */
+  convertSpeechbubbles(cards = []) {
     cards.forEach((box) => {
       let card = document.createElement("accent-card"),
         afterBox = box.nextElementSibling;
@@ -279,7 +395,7 @@ export class EvoToWc {
       card.horizontal = true;
       this.replace(box, card, this.slotAccentCard);
       if (afterBox.classList.contains("speechbubble-caption")) {
-        afterBox.slot = "content";
+        afterBox.slot = "footer";
         afterBox.style.fontSize = "85%";
         afterBox.classList.remove("speechbubble-caption");
         card.append(afterBox);
@@ -288,7 +404,13 @@ export class EvoToWc {
     });
   }
 
-  convertTabs(tabbed) {
+  /**
+   * Converts Evo .tabbed-interface to a11y-tabs
+   *
+   * @param {array} [tabbed=[]] array of tabbed interfaces
+   * @memberof EvoToWc
+   */
+  convertTabs(tabbed = []) {
     import("@lrnwebcomponents/a11y-tabs/a11y-tabs.js");
 
     tabbed.forEach((tabs) => {
@@ -297,6 +419,12 @@ export class EvoToWc {
     });
   }
 
+  /**
+   * Converts Evo .tablestyle to editable-table
+   *
+   * @param {array} [tabbed=[]] array of tables
+   * @memberof EvoToWc
+   */
   convertTablestyles(tablestyles) {
     import("@lrnwebcomponents/editable-table/editable-table.js");
 
@@ -311,11 +439,19 @@ export class EvoToWc {
       editable.striped =
         !editable.columnStriped && table.classList.contains("alternaterows");
       table.parentElement.insertBefore(editable, table);
+      table.classList.remove("tablestyle");
+      table.classList.remove("tablestyle2");
+      table.classList.remove("tablestyle3");
       editable.append(table);
-      editable.loadSlottedTable();
     });
   }
 
+  /**
+   * Converts Evo .image-thumbnail to lrndesign-gallery
+   *
+   * @param {array} [images=[]] array of images
+   * @memberof EvoToWc
+   */
   convertThumbnails(images) {
     images.forEach((image) => {
       let gallery = document.createElement("lrndesign-gallery"),
@@ -352,6 +488,12 @@ export class EvoToWc {
       }
     });
   }
+
+  /**
+   * Converts Evo .yellownote to accent-card
+   *
+   * @param {array} [cards=[]] array of yellow notes
+   */
   convertYellownotes(cards) {
     cards.forEach((box) => {
       let card = document.createElement("accent-card");
@@ -361,48 +503,14 @@ export class EvoToWc {
       this.replace(box, card, this.slotAccentCard);
     });
   }
-
-  isHeading(el) {
-    return el && el.tagName && this.headings.includes(el.tagName.toLowerCase());
-  }
-
-  replace(oldElem, newElem, childrenCallback) {
-    oldElem.parentElement.insertBefore(newElem, oldElem);
-    let children = [...oldElem.childNodes];
-    children.forEach((child) => {
-      //console.log(newElem,children,child);
-      child = childrenCallback ? childrenCallback(child) : child;
-      if (child) newElem.append(child);
-    });
-    oldElem.remove();
-    return newElem;
-  }
-
-  setSize(image, elem, type) {
-    let amt = `${image[type]}`;
-    if (amt) {
-      if (amt.match(/\d$/)) amt = `${amt}px`;
-      elem.style[type] = amt;
-    }
-  }
-
-  slotAccentCard(child) {
-    if (child && child.tagName) {
-      if (this.isHeading(child)) {
-        child.slot = "heading";
-      } else {
-        child.slot = "content";
-      }
-    } else {
-      let span = document.createElement("span");
-      span.append(child);
-      span.slot = "content";
-      child = span;
-    }
-    return child;
-  }
-
-  slotChart(type, table) {
+  /**
+   * Inserts an lnmdesign-chart based on table
+   *
+   * @param {object} table
+   * @param {string} [type="bar"] chart type
+   * @memberof EvoToWc
+   */
+  insertChart(table, type = "bar") {
     let newTable = document.createElement("table"),
       chart = table.classList.contains(`${type}chart`)
         ? document.createElement(`lrndesign-${type}`)
@@ -418,6 +526,79 @@ export class EvoToWc {
       table.parentNode.insertBefore(chart, table);
     }
   }
+  /**
+   * determines if a node is a heading
+   *
+   * @param {object} el node
+   * @returns {boolean}
+   * @memberof EvoToWc
+   */
+  isHeading(el) {
+    return el && el.tagName && this.headings.includes(el.tagName.toLowerCase());
+  }
+  /**
+   * replaces an Evo Element with a Hax Element
+   *
+   * @param {*} oldElem
+   * @param {*} newElem
+   * @param {*} childrenCallback
+   * @returns
+   * @memberof EvoToWc
+   */
+  replace(oldElem, newElem, childrenCallback) {
+    oldElem.parentElement.insertBefore(newElem, oldElem);
+    let children = [...oldElem.childNodes];
+    children.forEach((child) => {
+      child = childrenCallback ? childrenCallback(child) : child;
+      if (child) newElem.append(child);
+    });
+    oldElem.remove();
+    return newElem;
+  }
+  /**
+   * sets size of one element based on image size
+   *
+   * @param {object} image
+   * @param {object} elem
+   * @param {string} type "width" or "height"
+   * @memberof EvoToWc
+   */
+  setSize(image, elem, type = "width") {
+    let amt = `${image[type]}`;
+    if (amt) {
+      if (amt.match(/\d$/)) amt = `${amt}px`;
+      elem.style[type] = amt;
+    }
+  }
+  /**
+   * gets a slot on an accent card node
+   *
+   * @param {object} node
+   * @returns {object}
+   * @memberof EvoToWc
+   */
+  slotAccentCard(node) {
+    if (node && node.tagName) {
+      if (this.isHeading(node)) {
+        node.slot = "heading";
+      } else {
+        node.slot = "content";
+      }
+    } else {
+      let span = document.createElement("span");
+      span.append(node);
+      span.slot = "content";
+      node = span;
+    }
+    return node;
+  }
+  /**
+   * gets slotted figure to lrndesign-gallery
+   *
+   * @param {object} item node containing an image
+   * @returns {object}
+   * @memberof EvoToWc
+   */
   slotGallery(item) {
     let figure = document.createElement("figure"),
       figcaption = document.createElement("figcaption"),
@@ -446,7 +627,13 @@ export class EvoToWc {
     figure.append(figcaption);
     return figure;
   }
-
+  /**
+   * gets a tab for a11y-tabs
+   *
+   * @param {object} tab
+   * @returns {object}
+   * @memberof EvoToWc
+   */
   slotTabs(tab) {
     if (tab && tab.tagName) {
       let a11ytab = document.createElement("a11y-tab");
@@ -475,6 +662,15 @@ window.EvoToWc.requestAvailability = () => {
   if (!window.EvoToWc.instance) {
     window.EvoToWc.instance = new EvoToWc();
   }
+  window.dispatchEvent(
+    new CustomEvent("register-hax-converter", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: window.EvoToWc.instance.convert,
+    })
+  );
+
   return window.EvoToWc.instance;
 };
 export const EvoToWcConverter = window.EvoToWc.requestAvailability();

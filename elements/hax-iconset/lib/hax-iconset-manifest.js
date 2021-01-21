@@ -153,6 +153,7 @@ export const HaxIconsetManifest = [
       "content",
       "courses",
       "cpr",
+      "data_usage",
       "dino",
       "discuss",
       "done",
