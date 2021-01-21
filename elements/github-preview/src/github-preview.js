@@ -42,6 +42,13 @@ class GithubPreview extends LitElement {
       __assetAvailable: {
         type: Boolean,
       },
+      extended: {
+        type: Boolean,
+        reflect: true,
+      },
+      __readmeDesc: {
+        type: String,
+      },
     };
   }
 
@@ -144,6 +151,11 @@ class GithubPreview extends LitElement {
           text-decoration: none;
         }
 
+        :host([extended="true"]) .container {
+          width: var(--github-preview-container, 800px);
+          padding: 10px;
+        }
+
         .container {
           background-color: black;
           border-radius: 10px;
@@ -179,6 +191,10 @@ class GithubPreview extends LitElement {
           color: white;
         }
 
+        .description {
+          padding: 8px 0px 8px 0px;
+        }
+
         .stats-text {
           margin: 0px 5px 0px 5px;
         }
@@ -195,31 +211,67 @@ class GithubPreview extends LitElement {
 
   render() {
     return this.__assetAvailable
-      ? html`
-          <a
-            href="https://github.com/${this.org}/${this.repo}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="container">
-              <div class="header-container">
-                <simple-icon-lite icon="book"></simple-icon-lite>
-                <div>${this.repo}</div>
-              </div>
+      ? this.extended
+        ? html`
+            <a
+              href="https://github.com/${this.org}/${this.repo}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="container">
+                <div class="header-container">
+                  <simple-icon-lite icon="book"></simple-icon-lite>
+                  <div>${this.org}/${this.repo}</div>
+                </div>
 
-              <div>${this.__description}</div>
+                <hr />
 
-              <div class="stats-container">
-                <span class="lang-circle"></span>
-                <div class="stats-text">${this.repoLang}</div>
-                <simple-icon-lite icon="star"></simple-icon-lite>
-                <div class="stats-text">${this.__stars}</div>
-                <simple-icon-lite icon="social:share"></simple-icon-lite>
-                <div class="stats-text">${this.__forks}</div>
+                <div>${this.__description}</div>
+
+                <hr />
+
+                <h1>${this.repo}</h1>
+
+                <hr />
+
+                <div>${this.__readmeDesc}</div>
+
+                <div class="stats-container">
+                  <span class="lang-circle"></span>
+                  <div class="stats-text">${this.repoLang}</div>
+                  <simple-icon-lite icon="star"></simple-icon-lite>
+                  <div class="stats-text">${this.__stars}</div>
+                  <simple-icon-lite icon="social:share"></simple-icon-lite>
+                  <div class="stats-text">${this.__forks}</div>
+                </div>
               </div>
-            </div>
-          </a>
-        `
+            </a>
+          `
+        : html`
+            <a
+              href="https://github.com/${this.org}/${this.repo}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="container">
+                <div class="header-container">
+                  <simple-icon-lite icon="book"></simple-icon-lite>
+                  <div>${this.repo}</div>
+                </div>
+
+                <div class="description">${this.__description}</div>
+
+                <div class="stats-container">
+                  <span class="lang-circle"></span>
+                  <div class="stats-text">${this.repoLang}</div>
+                  <simple-icon-lite icon="star"></simple-icon-lite>
+                  <div class="stats-text">${this.__stars}</div>
+                  <simple-icon-lite icon="social:share"></simple-icon-lite>
+                  <div class="stats-text">${this.__forks}</div>
+                </div>
+              </div>
+            </a>
+          `
       : html`
           <div class="container">
             <h1>Asset not found</h1>
@@ -235,6 +287,22 @@ class GithubPreview extends LitElement {
   }
 
   fetchRepo(repoName, orgName) {
+    if (this.extended) {
+      fetch(
+        `https://raw.githubusercontent.com/${orgName}/${repoName}/master/README.md`
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.text();
+          }
+        })
+        .then((responseText) => {
+          this.__readmeDesc = this.handleReadmeText(responseText);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
     fetch(`https://api.github.com/repos/${orgName}/${repoName}`)
       .then((response) => {
         if (response.ok) {
@@ -248,6 +316,15 @@ class GithubPreview extends LitElement {
         this.__assetAvailable = false;
         console.error(error);
       });
+  }
+
+  handleReadmeText(readmeText) {
+    let lineArray = readmeText.split("\n");
+    let finalStr = "";
+    for (let i = 1; i < 15; i++) {
+      finalStr += lineArray[i] + "\n";
+    }
+    return finalStr;
   }
 
   handleResponse(response) {
