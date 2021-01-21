@@ -39,6 +39,9 @@ class GithubPreview extends LitElement {
       __forks: {
         type: Number,
       },
+      __assetAvailable: {
+        type: Boolean,
+      },
     };
   }
 
@@ -191,31 +194,37 @@ class GithubPreview extends LitElement {
   }
 
   render() {
-    return html`
-      <a
-        href="https://github.com/${this.org}/${this.repo}"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <div class="container">
-          <div class="header-container">
-            <simple-icon-lite icon="book"></simple-icon-lite>
-            <div>${this.repo}</div>
-          </div>
+    return this.__assetAvailable
+      ? html`
+          <a
+            href="https://github.com/${this.org}/${this.repo}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="container">
+              <div class="header-container">
+                <simple-icon-lite icon="book"></simple-icon-lite>
+                <div>${this.repo}</div>
+              </div>
 
-          <div>${this.__description}</div>
+              <div>${this.__description}</div>
 
-          <div class="stats-container">
-            <span class="lang-circle"></span>
-            <div class="stats-text">${this.repoLang}</div>
-            <simple-icon-lite icon="star"></simple-icon-lite>
-            <div class="stats-text">${this.__stars}</div>
-            <simple-icon-lite icon="social:share"></simple-icon-lite>
-            <div class="stats-text">${this.__forks}</div>
+              <div class="stats-container">
+                <span class="lang-circle"></span>
+                <div class="stats-text">${this.repoLang}</div>
+                <simple-icon-lite icon="star"></simple-icon-lite>
+                <div class="stats-text">${this.__stars}</div>
+                <simple-icon-lite icon="social:share"></simple-icon-lite>
+                <div class="stats-text">${this.__forks}</div>
+              </div>
+            </div>
+          </a>
+        `
+      : html`
+          <div class="container">
+            <h1>Asset not found</h1>
           </div>
-        </div>
-      </a>
-    `;
+        `;
   }
 
   /**
@@ -236,12 +245,14 @@ class GithubPreview extends LitElement {
         this.handleResponse(json);
       })
       .catch((error) => {
+        this.__assetAvailable = false;
         console.error(error);
       });
   }
 
   handleResponse(response) {
     if (response) {
+      this.__assetAvailable = true;
       this.__description = response.description;
       this.repoLang = response.language;
       this.__stars = response.stargazers_count;
@@ -255,6 +266,8 @@ class GithubPreview extends LitElement {
   firstUpdated(changedProperties) {
     if (this.repo && this.org) {
       this.fetchRepo(this.repo, this.org);
+    } else {
+      this.__assetAvailable = false;
     }
   }
   /**
