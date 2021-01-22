@@ -247,7 +247,6 @@ class AbsolutePositionStateManager extends LitElement {
           : align + "px"; //if element size > parent, align where parent begins
       },
       getCoord = (pos = el.position) => {
-        console.log("display");
         let pxToNum = (px) => parseFloat(px.replace("px", "")),
           adjust = vertical(pos)
             ? pxToNum(el.style.top) - e.top
@@ -260,12 +259,6 @@ class AbsolutePositionStateManager extends LitElement {
             window.getComputedStyle(el, null).overflowX == "visible"
               ? Math.max(e.width, el.scrollWidth)
               : e.width;
-        console.log(
-          el,
-          window.getComputedStyle(el, null).overflowY,
-          e.height,
-          el.scrollHeight
-        );
         return pos === "top"
           ? t.top + adjust - eh - offset + "px"
           : pos === "left"
