@@ -295,7 +295,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.onmouseover = (e) => (this.__hovered = true);
       this.onmouseout = (e) => (this.__hovered = false);
       if (super.firstUpdated) super.firstUpdated(changedProperties);
-      this.updateToolbar();
     }
     updated(changedProperties) {
       if (super.updated) super.updated(changedProperties);
@@ -429,9 +428,10 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     _renderButton(config) {
       let button = document.createElement(config.type);
-      console.log(config, Object.keys(config));
-      Object.keys(config).forEach((key) => (button[key] = config[key]));
-      console.log(button);
+      Object.keys(config).forEach((key) => {
+        button[key] = config[key];
+        button.setAttribute(key, config[key]);
+      });
       button.addEventListener("button-command", this._handleButton);
       return button;
     }

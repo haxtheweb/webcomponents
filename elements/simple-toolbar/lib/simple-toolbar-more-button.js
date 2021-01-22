@@ -27,7 +27,6 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
     this.toggles = true;
     this.label = "More buttons";
     this.labelToggled = "Fewer buttons";
-    console.log("constructor");
   }
 
   // properties available to the custom element for data binding

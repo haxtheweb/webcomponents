@@ -3,28 +3,23 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextStyles } from "./lib/buttons/rich-text-editor-button.js";
+import * as shadow from "shadow-selection-polyfill/shadow.js";
 import "./lib/singletons/rich-text-editor-selection.js";
-import { RichTextEditorStyles } from "@lrnwebcomponents/rich-text-editor/lib/rich-text-editor-styles.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
-import * as shadow from "shadow-selection-polyfill/shadow.js";
 /**
  * `rich-text-editor`
  * @element rich-text-editor
- * `a standalone rich text editor`
+ * a standalone rich text editor
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo ./demo/index.html demo
  * @demo ./demo/mini.html mini floating toolbar
  * @demo ./demo/full.html toolbar with breadcrumb
  * @demo ./demo/config.html custom configuration
  */
-class RichTextEditor extends RichTextEditorStyles(LitElement) {
+class RichTextEditor extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -34,10 +29,12 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   static get tag() {
     return "rich-text-editor";
   }
+  static get styles() {
+    return [...RichTextStyles];
+  }
   constructor() {
     super();
     this.haxUIElement = true;
-    window.RichTextEditorStyleManager.requestAvailability();
     this.placeholder = "Click to edit";
     this.toolbar = "";
     this.type = "rich-text-editor-toolbar";

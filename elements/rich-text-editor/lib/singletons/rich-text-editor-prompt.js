@@ -3,8 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
-import { RichTextEditorButtonStyles } from "../buttons/rich-text-editor-button-styles.js";
+import { RichTextStyles } from "../buttons/rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "./rich-text-editor-selection.js";
@@ -14,12 +13,10 @@ import "./rich-text-editor-selection.js";
  *
  * @element rich-text-editor-prompt
  */
-class RichTextEditorPrompt extends RichTextEditorButtonStyles(
-  RichTextEditorStyles(LitElement)
-) {
+class RichTextEditorPrompt extends LitElement {
   static get styles() {
     return [
-      ...super.styles,
+      ...RichTextStyles,
       css`
         :host {
           --simple-fields-color: var(--rich-text-editor-focus-color, #000);

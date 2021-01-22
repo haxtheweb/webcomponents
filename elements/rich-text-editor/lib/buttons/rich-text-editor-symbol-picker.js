@@ -23,30 +23,26 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
     return "rich-text-editor-symbol-picker";
   }
 
-  static get styles() {
-    return [...super.styles];
-  }
-
   // render function for template
   render() {
     return html`
+      <label id="listLabel" for="button"> ${this.labelTemplate} </label>
       <simple-symbol-picker
         id="button"
         ?allow-null="${this.allowNull}"
-        class="rtebutton ${this.toggled ? "toggled" : ""}"
-        ?disabled="${this.disabled}"
+        aria-labeledby="listlabel"
         controls="${super.controls}"
-        @mouseover="${this._pickerFocus}"
+        ?disabled="${this.disabled}"
         @keydown="${this._pickerFocus}"
-        @value-changed="${this._pickerChange}"
+        @mouseover="${this._pickerFocus}"
+        .symbol-types="${this.symbolTypes}"
         tabindex="0"
-        ?title-as-html="${this.titleAsHtml}"
+        title-as-html
+        ?toggled="${this.toggled}"
+        @value-changed="${this._pickerChange}"
       >
-        <span id="label" class="${super.labelStyle}">${this.currentLabel}</span>
       </simple-symbol-picker>
-      <simple-tooltip id="tooltip" for="button"
-        >${this.currentLabel}</simple-tooltip
-      >
+      ${super.tooltipTemplate}
     `;
   }
 
@@ -61,6 +57,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
       symbolTypes: {
         name: "symbolTypes",
         type: Array,
+        attribute: "symbol-types",
       },
     };
   }
@@ -70,16 +67,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
     this.icon = "editor:functions";
     this.label = "Insert symbol";
     this.symbolTypes = ["symbols", "math", "characters", "greek", "misc"];
-    this.titleAsHtml = true;
     this.command = "insertHTML";
-  }
-
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "titleAsHtml" && !this.titleAsHtml)
-        this.titleAsHtml = true;
-    });
   }
 
   /**

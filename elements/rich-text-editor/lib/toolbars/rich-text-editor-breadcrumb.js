@@ -3,15 +3,14 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorButtonStyles } from "../buttons/rich-text-editor-button-styles.js";
-import "../buttons/rich-text-editor-button-styles.js";
+import { RichTextStyles } from "../buttons/rich-text-editor-button.js";
 /**
  * `rich-text-editor-breadcrumb`
  * `a button for rich text editor breadcrumbs`
  *
  *  @element rich-text-editor-breadcrumb
  */
-class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
+class RichTextEditorBreadcrumb extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -21,7 +20,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
 
   static get styles() {
     return [
-      ...super.styles,
+      ...RichTextStyles,
       css`
         #button {
           font-family: monospace;

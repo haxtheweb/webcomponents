@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
+import { RichTextStyles } from "../buttons/rich-text-editor-button.js";
 import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
 import "./rich-text-editor-breadcrumb.js";
 
@@ -13,7 +13,7 @@ import "./rich-text-editor-breadcrumb.js";
  *
  *  @element rich-text-editor-breadcrumbs
  */
-class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
+class RichTextEditorBreadcrumbs extends LitElement {
   /**
    * Store tag name to make it easier to obtain directly.
    */
@@ -23,7 +23,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
 
   static get styles() {
     return [
-      ...super.styles,
+      ...RichTextStyles,
       css`
         :host {
           display: block;

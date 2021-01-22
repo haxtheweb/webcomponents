@@ -36,7 +36,7 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
         for="${this.controls}"
         position="top"
       >
-        ${super.render()}
+        ${super.toolbarTemplate}
       </absolute-position-behavior>
     `;
   }
