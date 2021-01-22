@@ -40,7 +40,7 @@ class RichTextEditorBreadcrumb extends LitElement {
         id="button"
         class="rtebutton rtebreadcrumb"
         aria-controls="${this.controls}"
-        @click="${this._buttonTap}"
+        @click="${this._handleClick}"
         tabindex="0"
         part="button"
       >
@@ -90,7 +90,7 @@ class RichTextEditorBreadcrumb extends LitElement {
     this.__a11y.addEventListener("keypress", (e) => {
       switch (e.key) {
         case "Enter":
-          this._buttonTap(e);
+          this._handleClick(e);
           break;
       }
     });
@@ -100,7 +100,7 @@ class RichTextEditorBreadcrumb extends LitElement {
    * @param {event} e the button tab event
    * @returns {void}
    */
-  _buttonTap(e) {
+  _handleClick(e) {
     e.preventDefault();
     this.dispatchEvent(
       new CustomEvent("breadcrumb-tap", {

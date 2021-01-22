@@ -71,7 +71,7 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
   /**
    * Fires a button tap event
    */
-  _buttonTap() {
+  _handleClick() {
     return true;
   }
 }

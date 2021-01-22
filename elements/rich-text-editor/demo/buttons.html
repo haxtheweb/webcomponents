@@ -28,8 +28,8 @@
         align-items: stretch;
         flex-wrap: wrap;
         justify-content: flex-start;
-        background-color: var(--rich-text-editor-bg);
-        border: var(--rich-text-editor-border);
+        background-color: var(--simple-toolbar-bg);
+        border: var(--simple-toolbar-border);
         font-size: 12px;
         transition: all 0.5s;
       }
@@ -47,7 +47,7 @@
       }
       #toolbar .group:not(:last-of-type) {
         margin-right: 3px;
-        border-right: var(--rich-text-editor-border);
+        border-right: var(--simple-toolbar-border);
       }
       #toolbar .group > * {
         display: flex;
@@ -93,7 +93,7 @@
                   {"label": "Section Subheading", "tag": "h5"}
                 ]'>
               </rich-text-editor-heading-picker>
-              <!--rich-text-editor-symbol-picker 
+              <!--simple-toolbar-symbol-picker 
                 id="symbol"
                 label="Insert Symbol"
                 icon="editor:functions">

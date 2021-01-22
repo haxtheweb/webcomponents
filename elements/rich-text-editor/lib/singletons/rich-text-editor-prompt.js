@@ -19,9 +19,9 @@ class RichTextEditorPrompt extends LitElement {
       ...RichTextStyles,
       css`
         :host {
-          --simple-fields-color: var(--rich-text-editor-focus-color, #000);
+          --simple-fields-color: var(--simple-toolbar-focus-color, #000);
           --simple-fields-invalid-color: var(
-            --rich-text-editor-error-color,
+            --simple-toolbar-error-color,
             #800
           );
         }
@@ -55,22 +55,22 @@ class RichTextEditorPrompt extends LitElement {
           min-width: unset;
         }
         #cancel {
-          color: var(--rich-text-editor-button-color);
-          background-color: var(--rich-text-editor-button-bg);
+          color: var(--simple-toolbar-button-color);
+          background-color: var(--simple-toolbar-button-bg);
         }
         #cancel:focus,
         #cancel:hover {
-          color: var(--rich-text-editor-button-hover-color);
-          background-color: var(--rich-text-editor-button-hover-bg);
+          color: var(--simple-toolbar-button-hover-color);
+          background-color: var(--simple-toolbar-button-hover-bg);
         }
         #confirm {
-          color: var(--rich-text-editor-button-color);
-          background-color: var(--rich-text-editor-button-bg);
+          color: var(--simple-toolbar-button-color);
+          background-color: var(--simple-toolbar-button-bg);
         }
         #confirm:focus,
         #confirm:hover {
-          color: var(--rich-text-editor-button-hover-color);
-          background-color: var(--rich-text-editor-button-hover-bg);
+          color: var(--simple-toolbar-button-hover-color);
+          background-color: var(--simple-toolbar-button-hover-bg);
         }
         .actions {
           width: 100%;
@@ -109,30 +109,24 @@ class RichTextEditorPrompt extends LitElement {
             .value="${this.value}"
           ></simple-fields>
           <div class="actions">
-            <button
+            <rich-text-editor-button
               id="cancel"
-              class="rtebutton"
               controls="${this.selection ? this.selection.id : ""}"
+              label="Cancel"
+              icon="clear"
               @click="${this._cancel}"
               tabindex="0"
             >
-              <simple-icon-lite id="icon" aria-hidden="true" icon="clear">
-              </simple-icon-lite>
-              <span id="label" class="offscreen">Cancel</span>
-            </button>
-            <simple-tooltip id="tooltip" for="cancel">Cancel</simple-tooltip>
-            <button
+            </rich-text-editor-button>
+            <rich-text-editor-button
               id="confirm"
-              class="rtebutton"
               controls="${this.selection ? this.selection.id : ""}"
               @click="${this._confirm}"
+              icon="check"
+              label="OK"
               tabindex="0"
             >
-              <simple-icon-lite id="icon" aria-hidden="true" icon="check">
-              </simple-icon-lite>
-              <span id="label" class="offscreen">OK</span>
-            </button>
-            <simple-tooltip id="tooltip" for="confirm">OK</simple-tooltip>
+            </rich-text-editor-button>
           </div>
         </form>
       </simple-popover>

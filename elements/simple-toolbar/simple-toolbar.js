@@ -484,10 +484,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     _renderButton(config) {
       let button = document.createElement(config.type);
-      Object.keys(config).forEach((key) => {
-        button[key] = config[key];
-        button.setAttribute(key, config[key]);
-      });
+      Object.keys(config).forEach((key) => (button[key] = config[key]));
       button.addEventListener("button-command", this._handleButton);
       return button;
     }

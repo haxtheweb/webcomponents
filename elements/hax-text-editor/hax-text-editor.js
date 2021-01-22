@@ -23,7 +23,8 @@ class HaxTextEditor extends LitElement {
   static get styles() {
     return [
       css`
-        :host {
+        :host,
+        rich-text-editor {
           display: block;
         }
 
@@ -37,9 +38,6 @@ class HaxTextEditor extends LitElement {
   // render function
   render() {
     return html` <rich-text-editor
-      ?disableHover="${this.disableHover}"
-      .placeholder="${this.placeholder}"
-      .toolbar="${this.toolbar}"
       type="${this.type || "hax-text-editor-toolbar"}"
     >
       <slot></slot>

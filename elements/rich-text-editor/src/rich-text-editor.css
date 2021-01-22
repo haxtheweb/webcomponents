@@ -3,30 +3,46 @@
 }
 
 :host {
+  --simple-toolbar-border-color: #ddd;
+  --simple-toolbar-border-width: 1px;
+  --simple-toolbar-button-opacity: 1;
+  --simple-toolbar-button-color: #444;
+  --simple-toolbar-bg: #ffffff;
+  --simple-toolbar-button-bg: #ffffff;
+  --simple-toolbar-button-border-color: transparent;
+  --simple-toolbar-button-toggled-opacity: 1;
+  --simple-toolbar-button-toggled-color: #222;
+  --simple-toolbar-button-toggled-bg: #ddd;
+  --simple-toolbar-button-toggled-border-color: transparent;
+  --simple-toolbar-button-hover-opacity: 1;
+  --simple-toolbar-button-hover-color: #000;
+  --simple-toolbar-button-hover-bg: #f0f0f0;
+  --simple-toolbar-button-hover-border-color: unset;
+  --simple-toolbar-button-disabled-opacity: 1;
+  --simple-toolbar-button-disabled-color: #666;
+  --simple-toolbar-button-disabled-bg: transparent;
+  --simple-toolbar-button-disabled-border-color: transparent;
+}
+
+:host {
   display: block;
   cursor: pointer;
   min-height: 40px;
-  outline: var(--rich-text-editor-border-width, 1px) solid transparent;
+  outline: var(--rich-text-editor--border-width, 2px) solid transparent;
 }
 
 :host(:empty) {
-  outline: var(--rich-text-editor-border-width, 1px) dashed var(--rich-text-editor-border-color);
+  outline: var(--rich-text-editor-border-width, 2px) dashed var(--simple-toolbar-border-color);
 }
 
 :host(:hover),
-:host([contenteditable="true"]),
-:host([contenteditable="true"]):focus-within,
-:host([contenteditable="true"]):focus {
-  outline: var(--rich-text-editor-border-width, 1px) solid var(--rich-text-editor-border-focus-color);
-}
-
-:host([contenteditable="true"]):focus-within,
-:host([contenteditable="true"]):focus {
+:host([contenteditable]){
+  outline: var(--rich-text-editor-border-width, 2px) solid var(--rich-text-editor-focus-color,blue);
   padding: 2px;
   margin-bottom: 2px;
 }
 
-:host(.heightmax[contenteditable="true"]) {
+:host(.heightmax[contenteditable]) {
   max-height: calc(100vh - 200px);
   overflow-y: scroll;
 }
@@ -36,11 +52,11 @@
   padding: 0 5px;
   display: block;
   z-index: -1;
-  color: var(--rich-text-editor-button-disabled-color);
+  color: var(--simple-toolbar-button-disabled-color);
 }
 
 *::selection .rich-text-editor-selection {
-  background-color: var(--rich-text-editor-selection-bg);
+  background-color: var(--rich-text-editor-selection-bg, rgb(146, 197, 255));
 }
 
 ::slotted(*:first-child) {

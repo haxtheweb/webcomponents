@@ -29,9 +29,6 @@ class RichTextEditor extends LitElement {
   static get tag() {
     return "rich-text-editor";
   }
-  static get styles() {
-    return [...RichTextStyles];
-  }
   constructor() {
     super();
     this.haxUIElement = true;

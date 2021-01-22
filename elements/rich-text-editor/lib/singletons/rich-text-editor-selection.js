@@ -26,7 +26,7 @@ class RichTextEditorSelection extends LitElement {
       ...RichTextStyles,
       css`
         :host {
-          background-color: var(--rich-text-editor-selection-bg);
+  background-color: var(--rich-text-editor-selection-bg, rgb(146, 197, 255));
           margin: 0;
           padding: 0;
           display: inline-block;
@@ -36,12 +36,12 @@ class RichTextEditorSelection extends LitElement {
         }
         :host([collapsed]):after {
           content: '|';
-          color: var(--rich-text-editor-selection-bg);
+          color: var(--simple-toolbar-selection-bg);
           background-color: transparent;
         }
         :host + *,
         ::slotted(*) {
-          background-color: var(--rich-text-editor-selection-bg);
+  background-color: var(--rich-text-editor-selection-bg, rgb(146, 197, 255));
         }
       `,
     ];

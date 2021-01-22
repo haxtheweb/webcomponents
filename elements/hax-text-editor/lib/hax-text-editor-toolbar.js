@@ -21,32 +21,12 @@ import { HaxTextEditorButton } from "./hax-text-editor-button.js";
 class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
   //styles function
   static get styles() {
-    return [
-      super.baseStyles,
-      super.miniStyles,
-      css`
-        :host {
-          display: block;
-        }
-
-        :host([hidden]) {
-          display: none;
-        }
-      `,
-    ];
+    return [super.baseStyles, super.miniStyles];
   }
 
   // render function
   render() {
-    return html` <absolute-position-behavior
-      auto
-      id="floating"
-      fit-to-visible-bounds
-      for="${this.controls}"
-      position="top"
-    >
-      ${super.render()}
-    </absolute-position-behavior>`;
+    return super.miniTemplate;
   }
 
   // properties available to the custom element for data binding
@@ -70,12 +50,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
 
     this.tag = HaxTextEditorToolbar.tag;
     this.sticky = false;
-    console.log(
-      HaxTextEditorButton,
-      document.createElement("hax-text-editor-button")
-    );
     this.config = [
-      /*{
+      {
         label: "Basic Inline Operations",
         type: "button-group",
         buttons: [
@@ -94,14 +70,13 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
             type: "rich-text-editor-button",
           },
           {
-            collapsedUntil: "md",
             command: "removeFormat",
             icon: "editor:format-clear",
             label: "Erase Format",
             type: "rich-text-editor-button",
           },
         ],
-      },*/
+      },
       {
         label: "Links",
         type: "button-group",
@@ -119,7 +94,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
         ],
       } /*
       {
-        collapsedUntil: "md",
         label: "Subscript and Superscript",
         type: "button-group",
         buttons: [
@@ -140,7 +114,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
         ],
       },*/,
       {
-        collapsedUntil: "xs",
         label: "Hax Widgets",
         type: "button-group",
         buttons: [
@@ -159,7 +132,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
         ],
       },
       {
-        collapsedUntil: "sm",
         label: "Lists and Indents",
         type: "button-group",
         buttons: [
@@ -180,30 +152,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
         ],
       },
     ];
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
-
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      //disable sticky for mini
-      if (propName === "sticky" && this.sticky) this.sticky = false;
-    });
-  }
-
-  static get styles() {
-    return [...super.baseStyles, ...super.miniStyles];
   }
 }
 customElements.define("hax-text-editor-toolbar", HaxTextEditorToolbar);

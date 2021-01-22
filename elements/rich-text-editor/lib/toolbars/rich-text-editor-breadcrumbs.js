@@ -27,9 +27,9 @@ class RichTextEditorBreadcrumbs extends LitElement {
       css`
         :host {
           display: block;
-          background-color: var(--rich-text-editor-bg);
-          color: var(--rich-text-editor-button-color);
-          border: var(--rich-text-editor-border);
+          background-color: var(--simple-toolbar-bg);
+          color: var(--simple-toolbar-button-color);
+          border: var(--simple-toolbar-border);
           padding: 3px 10px;
         }
         :host([sticky]) {
@@ -37,7 +37,7 @@ class RichTextEditorBreadcrumbs extends LitElement {
           bottom: 0;
         }
         .selectednode {
-          background-color: var(--rich-text-editor-bg);
+          background-color: var(--simple-toolbar-bg);
         }
       `,
     ];

@@ -279,7 +279,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * Handles button tap
      * @param {event} e button tap event
      */
-    _buttonTap(e) {
+    _handleClick(e) {
       e.preventDefault();
       this.open();
     }

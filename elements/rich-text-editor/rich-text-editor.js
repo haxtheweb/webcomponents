@@ -20,239 +20,253 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  * @demo ./demo/config.html custom configuration
  */
 class RichTextEditor extends LitElement {
-  
   //styles function
   static get styles() {
-    return  [
+    return [
       ...RichTextStyles,
       css`
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
+        :host {
+          --simple-toolbar-border-color: #ddd;
+          --simple-toolbar-border-width: 1px;
+          --simple-toolbar-button-opacity: 1;
+          --simple-toolbar-button-color: #444;
+          --simple-toolbar-bg: #ffffff;
+          --simple-toolbar-button-bg: #ffffff;
+          --simple-toolbar-button-border-color: transparent;
+          --simple-toolbar-button-toggled-opacity: 1;
+          --simple-toolbar-button-toggled-color: #222;
+          --simple-toolbar-button-toggled-bg: #ddd;
+          --simple-toolbar-button-toggled-border-color: transparent;
+          --simple-toolbar-button-hover-opacity: 1;
+          --simple-toolbar-button-hover-color: #000;
+          --simple-toolbar-button-hover-bg: #f0f0f0;
+          --simple-toolbar-button-hover-border-color: unset;
+          --simple-toolbar-button-disabled-opacity: 1;
+          --simple-toolbar-button-disabled-color: #666;
+          --simple-toolbar-button-disabled-bg: transparent;
+          --simple-toolbar-button-disabled-border-color: transparent;
+        }
 
-:host {
-  display: block;
-  cursor: pointer;
-  min-height: 40px;
-  outline: var(--rich-text-editor-border-width, 1px) solid transparent;
-}
+        :host {
+          display: block;
+          cursor: pointer;
+          min-height: 40px;
+          outline: var(--rich-text-editor--border-width, 2px) solid transparent;
+        }
 
-:host(:empty) {
-  outline: var(--rich-text-editor-border-width, 1px) dashed var(--rich-text-editor-border-color);
-}
+        :host(:empty) {
+          outline: var(--rich-text-editor-border-width, 2px) dashed
+            var(--simple-toolbar-border-color);
+        }
 
-:host(:hover),
-:host([contenteditable="true"]),
-:host([contenteditable="true"]):focus-within,
-:host([contenteditable="true"]):focus {
-  outline: var(--rich-text-editor-border-width, 1px) solid var(--rich-text-editor-border-focus-color);
-}
+        :host(:hover),
+        :host([contenteditable]) {
+          outline: var(--rich-text-editor-border-width, 2px) solid
+            var(--rich-text-editor-focus-color, blue);
+          padding: 2px;
+          margin-bottom: 2px;
+        }
 
-:host([contenteditable="true"]):focus-within,
-:host([contenteditable="true"]):focus {
-  padding: 2px;
-  margin-bottom: 2px;
-}
+        :host(.heightmax[contenteditable]) {
+          max-height: calc(100vh - 200px);
+          overflow-y: scroll;
+        }
 
-:host(.heightmax[contenteditable="true"]) {
-  max-height: calc(100vh - 200px);
-  overflow-y: scroll;
-}
+        :host(:empty):before {
+          content: attr(placeholder);
+          padding: 0 5px;
+          display: block;
+          z-index: -1;
+          color: var(--simple-toolbar-button-disabled-color);
+        }
 
-:host(:empty):before {
-  content: attr(placeholder);
-  padding: 0 5px;
-  display: block;
-  z-index: -1;
-  color: var(--rich-text-editor-button-disabled-color);
-}
+        *::selection .rich-text-editor-selection {
+          background-color: var(
+            --rich-text-editor-selection-bg,
+            rgb(146, 197, 255)
+          );
+        }
+        ::slotted(*:first-child) {
+          margin-top: 0;
+        }
 
-*::selection .rich-text-editor-selection {
-  background-color: var(--rich-text-editor-selection-bg);
-}
-
-::slotted(*:first-child) {
-  margin-top: 0;
-}
-
-::slotted(*:last-child) {
-  margin-bottom: 0;
-}
-      `
+        ::slotted(*:last-child) {
+          margin-bottom: 0;
+        }
+      `,
     ];
   }
 
-// render function
+  // render function
   render() {
-    return html`
-
-<slot
-  @focus="${(e) => (this.__focused = true)}"
-  @blur="${(e) => (this.__focused = false)}"
-  @mouseover="${(e) => (this.__hovered = true)}"
-  @mouseout="${(e) => (this.__hovered = false)}"></slot>`;
+    return html` <slot
+      @focus="${(e) => (this.__focused = true)}"
+      @blur="${(e) => (this.__focused = false)}"
+      @mouseover="${(e) => (this.__hovered = true)}"
+      @mouseout="${(e) => (this.__hovered = false)}"
+    ></slot>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": true,
-  "gizmo": {
-    "title": "Rich text-editor",
-    "description": "a standalone rich text editor",
-    "icon": "icons:android",
-    "color": "green",
-    "groups": ["Text"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
-      }
-    ],
-    "meta": {
-      "author": "nikkimk",
-      "owner": "Penn State University"
-    }
-  },
-  "settings": {
-    "configure": [
-      {
-        "property": "title",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": false,
-        "icon": "icons:android"
-      }
-    ],
-    "advanced": []
-  }
-}
-;
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Rich text-editor",
+        description: "a standalone rich text editor",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Text"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage",
+          },
+        ],
+        meta: {
+          author: "nikkimk",
+          owner: "Penn State University",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "title",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android",
+          },
+        ],
+        advanced: [],
+      },
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  /**
-   * editor's unique id
-   */
-  "id": {
-    "name": "id",
-    "type": String,
-    "reflect": true,
-    "attribute": "id"
-  },
-  /**
-   * Maps to contenteditable attribute
-   */
-  "contenteditable": {
-    "name": "contenteditable",
-    "type": Boolean,
-    "reflect": true,
-    "attribute": "contenteditable"
-  },
-  /**
-   * don't reveal toolbar on mouseover
-   */
-  "disableHover": {
-    "name": "disableHover",
-    "type": Boolean,
-    "attribute": "disable-hover"
-  },
-  /**
-   * Placeholder text for empty editable regions
-   */
-  "placeholder": {
-    "name": "placeholder",
-    "type": String,
-    "reflect": true,
-    "attribute": "placeholder"
-  },
+      ...super.properties,
 
-  /**
-   * id for toolbar
-   */
-  "toolbar": {
-    "name": "toolbar",
-    "type": String,
-    "reflect": true,
-    "attribute": "toolbar"
-  },
+      /**
+       * editor's unique id
+       */
+      id: {
+        name: "id",
+        type: String,
+        reflect: true,
+        attribute: "id",
+      },
+      /**
+       * Maps to contenteditable attribute
+       */
+      contenteditable: {
+        name: "contenteditable",
+        type: Boolean,
+        reflect: true,
+        attribute: "contenteditable",
+      },
+      /**
+       * don't reveal toolbar on mouseover
+       */
+      disableHover: {
+        name: "disableHover",
+        type: Boolean,
+        attribute: "disable-hover",
+      },
+      /**
+       * Placeholder text for empty editable regions
+       */
+      placeholder: {
+        name: "placeholder",
+        type: String,
+        reflect: true,
+        attribute: "placeholder",
+      },
 
-  /**
-   * current range
-   */
-  "range": {
-    "name": "range",
-    "type": Object,
-    "attribute": "range"
-  },
-  /**
-   * raw html
-   */
-  "rawhtml": {
-    "type": String,
-    "attribute": "rawhtml"
-  },
+      /**
+       * id for toolbar
+       */
+      toolbar: {
+        name: "toolbar",
+        type: String,
+        reflect: true,
+        attribute: "toolbar",
+      },
 
-  /**
-   * type of editor toolbar, i.e.
-   * full - full for full toolbar with breadcrumb,
-   * mini - mini for mini floating toolbar, or
-   * default toolbar if neither.
-   */
-  "type": {
-    "name": "type",
-    "type": String,
-    "reflect": true,
-    "attribute": "type"
-  },
-  /**
-   * whether to update range
-   */
-  "updateRange": {
-    "type": Boolean
-  },
+      /**
+       * current range
+       */
+      range: {
+        name: "range",
+        type: Object,
+        attribute: "range",
+      },
+      /**
+       * raw html
+       */
+      rawhtml: {
+        type: String,
+        attribute: "rawhtml",
+      },
 
-  /**
-   * contains cancelled edits
-   */
-  "__canceledEdits": {
-    "type": Object
-  },
+      /**
+       * type of editor toolbar, i.e.
+       * full - full for full toolbar with breadcrumb,
+       * mini - mini for mini floating toolbar, or
+       * default toolbar if neither.
+       */
+      type: {
+        name: "type",
+        type: String,
+        reflect: true,
+        attribute: "type",
+      },
+      /**
+       * whether to update range
+       */
+      updateRange: {
+        type: Boolean,
+      },
 
-  /**
-   * connected toolbar
-   */
-  "__connectedToolbar": {
-    "type": Object
-  },
+      /**
+       * contains cancelled edits
+       */
+      __canceledEdits: {
+        type: Object,
+      },
 
-  /**
-   * has focus
-   */
-  "__focused": {
-    "type": Boolean
-  },
+      /**
+       * connected toolbar
+       */
+      __connectedToolbar: {
+        type: Object,
+      },
 
-  /**
-   * is hovered
-   */
-  "__hovered": {
-    "type": Boolean
-  },
+      /**
+       * has focus
+       */
+      __focused: {
+        type: Boolean,
+      },
 
-  /**
-   * selection management
-   */
-  "__selection": {
-    "type": Object
-  }
-}
-;
+      /**
+       * is hovered
+       */
+      __hovered: {
+        type: Boolean,
+      },
+
+      /**
+       * selection management
+       */
+      __selection: {
+        type: Object,
+      },
+    };
   }
 
   /**
@@ -261,9 +275,6 @@ class RichTextEditor extends LitElement {
    */
   static get tag() {
     return "rich-text-editor";
-  }
-  static get styles() {
-    return [...RichTextStyles];
   }
   constructor() {
     super();
