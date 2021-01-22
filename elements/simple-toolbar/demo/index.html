@@ -21,7 +21,7 @@
         <template>
           <simple-toolbar>
             <div class="group">
-              <simple-toolbar-button class="button" icon="save" label="Save" shortcut-keys="ctrl+s" toggles></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="save" label="Save" shortcut-keys="ctrl+s"></simple-toolbar-button>
               <simple-toolbar-button class="button" icon="cancel" label="Cancel"></simple-toolbar-button>
             </div>
             <div class="group">
@@ -32,8 +32,8 @@
               <simple-toolbar-button class="button" icon="editor:format-bold" label="Bold" shortcut-keys="ctrl+b" toggles></simple-toolbar-button>
               <simple-toolbar-button class="button" icon="editor:format-italic" label="Italics" shortcut-keys="ctrl+i" toggles></simple-toolbar-button>
             </div>
+            <simple-toolbar-button class="button" icon="star" label="Favorite" toggles></simple-toolbar-button>
           </simple-toolbar>
-          
         </template>
       </demo-snippet>
       <h3>Loading from a config object</h3>
@@ -42,7 +42,7 @@
           <simple-toolbar id="load-from-config"></simple-toolbar>
           <script>
             window.onload = () => {
-              let toolbar = document.querySelector('simple-toolbar');
+              let toolbar = document.getElementById('load-from-config');
               toolbar.config = [
                 {
                   label: "Saving",
@@ -66,7 +66,8 @@
                     {command: "undo",icon: "undo",label: "Undo",shortcutKeys: "ctrl+z",type: "simple-toolbar-button",},
                     {command: "redo",icon: "redo",label: "Redo",shortcutKeys: "ctrl+shift+z",type: "simple-toolbar-button",}
                   ]
-                }
+                },
+                { icon: "star",label: "Favorite",type: "simple-toolbar-button"},
               ];
             }
           </script>

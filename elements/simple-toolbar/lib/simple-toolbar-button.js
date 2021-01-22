@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 
 const SimpleToolbarButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -37,6 +36,8 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
          */
         icon: {
           type: String,
+          attribute: "icon",
+          reflect: true,
         },
 
         /**
@@ -116,8 +117,8 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     get button() {
       if (!this.__button)
         this.__button =
-          this.shadowRoot && this.shadowRoot.querySelector("#toolbar")
-            ? this.shadowRoot.querySelector("#toolbar")
+          this.shadowRoot && this.shadowRoot.querySelector("#button")
+            ? this.shadowRoot.querySelector("#button")
             : undefined;
       return this.__button;
     }
@@ -174,7 +175,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       changedProperties.forEach((oldValue, propName) => {
         if (propName == "shortcutKeys")
           this.dispatchEvent(
-            new CustomEvent("change-shortcut-keys", {
+            new CustomEvent("update-button-registry", {
               bubbles: true,
               cancelable: true,
               composed: true,
@@ -237,6 +238,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     _handleClick(e) {
       this.toggle();
     }
+    /**
+     * handles keypress
+     *
+     * @param {event} e event
+     */
+    _handleKeys(e) {}
 
     toggle() {
       if (this.toggles) this.toggled = !this.toggled;
@@ -268,6 +275,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ?disabled="${this.disabled}"
               ?controls="${this.controls}"
               @click="${this._handleClick}"
+              @keypress="${this._handleKeys}"
               tabindex="0"
             >
               ${this.iconTemplate} ${this.labelTemplate}
@@ -279,6 +287,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               ?disabled="${this.disabled}"
               ?controls="${this.controls}"
               @click="${this._handleClick}"
+              @keypress="${this._handleKeys}"
               tabindex="0"
             >
               ${this.iconTemplate} ${this.labelTemplate}
@@ -288,10 +297,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     render() {
       return html`${this.buttonTemplate}`;
     }
-    static get labelStyles() {
+    static get offScreenStyles() {
       return [
         css`
-          #label {
+          .offscreen {
             position: absolute;
             left: -999999px;
             top: 0;
@@ -308,6 +317,14 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           #icon:not([icon]) {
             display: none;
           }
+          #icon[icon] {
+            width: var(
+              --simple-toolbar-button-min-width,
+              var(--simple-toolbar-button-height, 24px)
+            );
+            height: var(--simple-toolbar-button-height, 24px);
+            flex: 0 0 auto;
+          }
         `,
       ];
     }
@@ -323,50 +340,72 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     static get buttonStyles() {
       return [
         css`
+          :host {
+            margin: 0;
+            padding: 0;
+            flex: 0 1 auto;
+            white-space: nowrap;
+            min-width: 0;
+          }
           :host([hidden]) {
             display: none;
           }
           #button {
-            min-width: var(--simple-toolbar-button-min-width, 24px);
-            height: var(--simple-toolbar-button-height, 24px);
-            margin: var(--simple-toolbar-button-margin, 3px);
+            min-width: var(
+              --simple-toolbar-button-min-width,
+              var(--simple-toolbar-button-height, 24px)
+            );
+            min-height: var(--simple-toolbar-button-height, 24px);
+            margin: 0;
             padding: var(--simple-toolbar-button-padding, 0);
             color: var(--simple-toolbar-button-color);
-            border-color: var(--simple-toolbar-border-color, transparent);
+            border-color: var(
+              --simple-toolbar-button-border-color,
+              var(--simple-toolbar-border-color, transparent)
+            );
             background-color: var(--simple-toolbar-button-bg, transparent);
-            border-width: 0px;
+            opacity: var(--simple-toolbar-button-opacity, 1);
+            border-width: var(
+              --simple-toolbar-button-border-width,
+              var(--simple-toolbar-border-width, 1px)
+            );
+            border-radius: var(--simple-toolbar-border-radius, 3px);
             border-style: solid;
             text-transform: unset;
+            display: flex;
+            flex: 0 1 auto;
+            white-space: nowrap;
+            align-items: stretch;
             transition: all 0.5s;
           }
           #button[aria-pressed="true"] {
             color: var(--simple-toolbar-button-toggled-color);
-            border-color: var(--simple-toolbar-toggled-border-color, #ddd);
-            background-color: var(
-              --simple-toolbar-button-toggled-bg,
-              rgba(0, 0, 0, 0.1)
-            );
+            border-color: var(--simple-toolbar-toggled-border-color);
+            background-color: var(--simple-toolbar-button-toggled-bg);
+            opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);
           }
           #button:focus,
           #button:hover {
             color: var(--simple-toolbar-button-hover-color);
             background-color: var(--simple-toolbar-button-hover-bg);
+            border-color: var(--simple-toolbar-hover-border-color);
+            opacity: var(--simple-toolbar-button-hover-opacity, 0.8);
           }
           #button[disabled] {
             cursor: not-allowed;
             color: var(--simple-toolbar-button-disabled-color, unset);
             background-color: var(--simple-toolbar-button-disabled-bg, unset);
+            opacity: var(--simple-toolbar-button-disabled-opacity, 0.5);
           }
         `,
       ];
     }
     static get styles() {
-      console.log(this.buttonStyles);
       return [
         ...(super.styles || []),
         ...this.buttonStyles,
         ...this.iconStyles,
-        ...this.labelStyles,
+        ...this.offScreenStyles,
         ...this.tooltipStyles,
       ];
     }
@@ -376,6 +415,35 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
  * `simple-toolbar-button`
  * a button for rich text editor (custom buttons can extend this)
  *
+### Styling
+
+`<simple-toolbar-button>` provides following custom properties and mixins
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+--simple-toolbar-button-height | button height | 24px
+--simple-toolbar-button-min-width | button min-width | --simple-toolbar-button-height
+--simple-toolbar-button-padding | button padding | 0
+--simple-toolbar-button-opacity | button opacity | 1
+--simple-toolbar-button-color | button text color | unset
+--simple-toolbar-button-bg | button background color | transparent
+--simple-toolbar-button-border-color | button border color | --simple-toolbar-border-color
+--simple-toolbar-button-border-width | button border width | --simple-toolbar-border-width
+--simple-toolbar-button-border-radius | button border radius | 3px
+--simple-toolbar-button-toggled-opacity | button opacity when toggled | 0.8
+--simple-toolbar-button-toggled-color | button text color when toggled | unset
+--simple-toolbar-button-toggled-bg | button background color when toggled | unset
+--simple-toolbar-button-toggled-border-color | button border color when toggled | unset
+--simple-toolbar-button-hover-opacity | button opacity when hovered | 0.8
+--simple-toolbar-button-hover-color | button text color when hovered | unset
+--simple-toolbar-button-hover-bg | button background color when hovered | unset
+--simple-toolbar-button-hover-border-color | button border color when hovered | unset
+--simple-toolbar-button-disabled-opacity | button opacity when disabled | 0.5
+--simple-toolbar-button-disabled-color | button text color when disabled | unset
+--simple-toolbar-button-disabled-bg | button background color when disabled | unset
+--simple-toolbar-button-disabled-border-color | button border color when disabled | unset
+ * 
  * @element simple-toolbar-button
  * @demo ./demo/buttons.html
  */

@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/simple-toolbar-more-button.js";
 
 const SimpleToolbarBehaviors = function (SuperClass) {
@@ -17,20 +16,34 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     }
 
     // render function for styles
+    static get stickyStyles() {
+      return [
+        css`
+          :host([sticky]) {
+            position: sticky;
+            top: 0;
+          }
+        `,
+      ];
+    }
+
+    // render function for styles
     static get baseStyles() {
       return [
         css`
           :host {
+            position: relative;
             display: flex;
             align-items: flex-start;
             opacity: 1;
             z-index: 2;
             margin: 0;
             justify-content: space-between;
-            background-color: var(--rich-text-editor-bg);
-            border: var(--rich-text-editor-border);
+            background-color: var(--simple-toolbar-border-bg);
             font-size: 12px;
             transition: all 0.5s;
+            margin: 0;
+            padding: 0;
           }
           :host([hidden]) {
             z-index: -1;
@@ -38,48 +51,51 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             opacity: 0;
             height: 0;
           }
-          :host([sticky]) {
-            position: sticky;
-            top: 0;
-          }
           #buttons {
-            display: flex;
-            align-items: stretch;
             flex-wrap: wrap;
+            display: flex;
             justify-content: flex-start;
-            max-height: unset;
             flex: 1 1 auto;
+            overflow-y: visible;
           }
           #buttons.collapsed {
-            max-height: calc(2px + var(--simple-toolbar-button-height, 24px));
-            overflow: hidden;
+            flex-wrap: nowrap;
+            flex: 0 1 auto;
+            max-width: calc(100% - 40px);
           }
           #morebutton {
             flex: 0 0 auto;
             justify-content: flex-end;
           }
-          .group {
+          ::slotted(.group) {
+            min-width: 0;
             display: flex;
             flex-wrap: nowrap;
             justify-content: space-evenly;
             align-items: stretch;
-            padding: 0 3px;
+            padding: var(--simple-toolbar-group-padding, 0 3px);
+            margin: 0;
+            flex: 0 1 auto;
+            overflow-y: visible;
+            white-space: nowrap;
           }
-          .group:not(:last-of-type) {
-            margin-right: 3px;
-            border-right: var(--rich-text-editor-border);
-          }
-          .button {
-            display: flex;
-            flex: 0 0 auto;
-            align-items: stretch;
+          ::slotted(.group:not(:last-child)) {
+            border-right: var(
+                --simple-toolbar-group-border-width,
+                var(--simple-toolbar-border-width, 1px)
+              )
+              solid
+              var(
+                --simple-toolbar-border-color,
+                var(--simple-toolbar-group-border-color, transparent)
+              );
           }
         `,
       ];
     }
 
     static get styles() {
-      return [...this.baseStyles];
+      return [...this.baseStyles, ...this.stickyStyles];
     }
 
     // properties available to custom element for data binding
@@ -146,15 +162,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           attribute: "more-show-text-label",
         },
         /**
-         * size of editor.
-         */
-        responsiveSize: {
-          name: "responsiveSize",
-          type: String,
-          attribute: "responsive-size",
-          reflect: true,
-        },
-        /**
          * Optional space-sperated list of keyboard shortcuts for editor
          * to fire this button, see iron-a11y-keys for more info.
          */
@@ -197,7 +204,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
 
     // render function for template
     render() {
-      console.log("render");
       return this.toolbarTemplate;
     }
     /**
@@ -235,7 +241,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     get moreButton() {
-      console.log("moreButton");
       return html` <simple-toolbar-more-button
         id="morebutton"
         aria-controls="buttons"
@@ -257,7 +262,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     get toolbarTemplate() {
-      console.log("toolbarTemplate");
       return html`
         <div id="buttons" class="${this.collapsed ? "collapsed" : ""}">
           <slot></slot>
@@ -269,39 +273,27 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     // life cycle
     constructor() {
       super();
-      window.ResponsiveUtility.requestAvailability();
       this.collapsed = true;
       this.config = [];
+      this.__buttons = [];
       this.__focused = false;
       this.__hovered = false;
       this.moreIcon = "more-vert";
       this.moreLabel = "More Buttons";
       this.moreLabelToggled = "Fewer Buttons";
       this.moreShowTextLabel = false;
-      this.responsiveSize = "xs";
       this.sticky = false;
       this.shortcutKeys = [];
+      this.addEventListener("register-button", this._handleButtonRegister);
+      this.addEventListener("deregister-button", this._handleButtonDeregister);
+      this.addEventListener("update-button-registry", this._handleButtonUpdate);
+    }
+    firstUpdated(changedProperties) {
       this.setAttribute("aria-live", "polite");
       this.onfocus = (e) => (this.__focused = true);
       this.onblur = (e) => (this.__focused = false);
       this.onmouseover = (e) => (this.__hovered = true);
       this.onmouseout = (e) => (this.__hovered = false);
-      this.addEventListener("register-button", (e) =>
-        this._registerButtonShortcuts(e.detail)
-      );
-      this.addEventListener("deregister-button", (e) =>
-        this._deregisterButtonShortcuts(e.detail)
-      );
-      this.addEventListener("change-shortcut-keys", (e) =>
-        this._updateButtonShortcuts(
-          e.detail,
-          e.detail ? e.detail.button : undefined
-        )
-      );
-      this.updateToolbar();
-    }
-    firstUpdated(changedProperties) {
-      console.log("firstUpdated");
       if (super.firstUpdated) super.firstUpdated(changedProperties);
       this.updateToolbar();
     }
@@ -322,7 +314,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     addButton(config, div) {
-      console.log("add", config, div);
       let button = this._renderButton(config);
       div = div || this;
       div.appendChild(button);
@@ -337,9 +328,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     addButtonGroup(config, parent) {
-      console.log("addButtonGroup", config, parent);
       let group = this._renderButtonGroup(config);
-      console.log("add group", config.buttons, parent, group);
       (parent || this).appendChild(group);
       config.buttons.forEach((buttonConfig) =>
         this.addButton(buttonConfig, group)
@@ -358,14 +347,44 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.__buttons = [];
     }
     /**
+     * removes registered button when moved/removed
+     *
+     * @param {object} button button node
+     * @memberof SimpleToolbar
+     */
+    deregisterButton(button) {
+      if (button.shortcutKeys) delete this.shortcutKeys[button.shortcutKeys];
+      this.__buttons = this.__buttons.filter((b) => b !== button);
+    }
+    /**
+     * registers button when appended
+     *
+     * @param {object} button button node
+     * @memberof SimpleToolbar
+     */
+    registerButton(button) {
+      if (button.shortcutKeys) this.shortcutKeys[button.shortcutKeys] = button;
+      this.__buttons.push(button);
+      this.__buttons = [...new Set(this.__buttons)];
+    }
+    /**
+     * updates registered button when shortcut keys change
+     *
+     * @param {object} button button node
+     * @memberof SimpleToolbar
+     */
+    updateButtonShortcuts(oldValue, button) {
+      if (oldValue) this.deregisterButton(oldValue);
+      if (button) this.registerButton(button);
+    }
+    /**
      * updates buttons based on change in config
      */
     updateToolbar() {
-      if (!this) return;
+      if (!this || this.config.length == 0) return;
       this.clearToolbar();
       if (typeof this.config != typeof []) this.config = JSON.parse(config);
       this.config.forEach((config) => {
-        console.log("foreach", config.type);
         if (config.type === "button-group") {
           this.addButtonGroup(config, this);
         } else {
@@ -374,37 +393,32 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       });
     }
     /**
-     * registers shortcut keys
+     * handles appended button
      *
-     * @param {object} button button node
-     * @memberof SimpleToolbar
+     * @param {event} e
      */
-    _registerButtonShortcuts(button) {
-      if (button.shortcutKeys) this.shortcutKeys[button.shortcutKeys] = button;
-      this.__buttons.push(button);
-      this.__buttons = [...new Set(this.__buttons)];
-      console.log(this, this.buttons, this.shortcutKeys);
+    _handleButtonRegister(e) {
+      e.stopPropagation();
+      this.registerButton(e.detail);
     }
     /**
-     * registers shortcut keys
+     * handles moved/removed button
      *
-     * @param {object} button button node
-     * @memberof SimpleToolbar
+     * @param {event} e
      */
-    _updateButtonShortcuts(oldValue, button) {
-      if (oldValue) this._deregisterButtonShortcuts(oldValue);
-      if (button) this._registerButtonShortcuts(button);
+    _handleButtonDeregister(e) {
+      e.stopPropagation();
+      this.deregisterButton(e.detail);
     }
     /**
-     * registers shortcut keys
+     * handles updated button
      *
-     * @param {object} button button node
-     * @memberof SimpleToolbar
+     * @param {event} e
      */
-    _deregisterButtonShortcuts(button) {
-      if (button.shortcutKeys) delete this.shortcutKeys[button.shortcutKeys];
-      this.__buttons = this.__buttons.filter((b) => b !== button);
-      console.log(this, this.buttons, this.shortcutKeys);
+    _handleButtonUpdate(e) {
+      e.stopPropagation();
+      if (e.detail && e.detail.button && e.detail.shortcutKeys)
+        this.updateButtonShortcuts(e.detail, e.detail.button);
     }
     /**
      * creates a button element based on config object
@@ -415,8 +429,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     _renderButton(config) {
       let button = document.createElement(config.type);
+      console.log(config, Object.keys(config));
       Object.keys(config).forEach((key) => (button[key] = config[key]));
-      button.setAttribute("class", "button");
+      console.log(button);
       button.addEventListener("button-command", this._handleButton);
       return button;
     }
@@ -428,7 +443,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     _renderButtonGroup(config) {
-      console.log("_renderButtonGroup", config);
       let group = document.createElement("div");
       group.setAttribute("class", "group");
       Object.keys(config).forEach((key) => (group[key] = config[key]));
@@ -439,11 +453,21 @@ const SimpleToolbarBehaviors = function (SuperClass) {
 
 /**
  * `simple-toolbar`
- * `a customizable toolbar`
+ * a customizable toolbar
  *
- * @microcopy - language worth noting:
- *  -
- *
+### Styling
+
+`<simple-toolbar>` provides following custom properties and mixins
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+--simple-toolbar-border-color | default border color | transparent
+--simple-toolbar-border-width | default border width | 1px
+--simple-toolbar-group-border-color | border color for button groups | --simple-toolbar-border-color
+--simple-toolbar-group-border-width | border width for button groups | --simple-toolbar-border-width
+--simple-toolbar-group-padding | padding for button groups | 0 3px
+ * 
  * @customElement
  * @lit-html
  * @lit-element
@@ -451,4 +475,4 @@ const SimpleToolbarBehaviors = function (SuperClass) {
  */
 class SimpleToolbar extends SimpleToolbarBehaviors(LitElement) {}
 customElements.define("simple-toolbar", SimpleToolbar);
-export { SimpleToolbar };
+export { SimpleToolbar, SimpleToolbarBehaviors };
