@@ -21,7 +21,17 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return [
         css`
           :host {
+            display: block;
+            border: none;
+          }
+          #floating {
             display: flex;
+            background-color: var(--simple-toolbar-button-bg, #ffffff);
+            border: var(--simple-toolbar-border-width, 1px) solid
+              var(--simple-toolbar-border-color, #ddd);
+          }
+          #floating[hidden] {
+            display: none;
           }
           #buttons[collapsed] {
             width: max-content;
@@ -36,8 +46,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         ...RichTextStyles,
         css`
           :host {
-            border: var(--rich-text-editor-border-width, 1px) solid
-              var(--rich-text-editor-border-color, #ddd);
+            border: var(--simple-toolbar-border-width, 1px) solid
+              var(--simple-toolbar-border-color, #ddd);
           }
         `,
       ];
@@ -297,6 +307,24 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           ],
         },
       ];
+    }
+
+    get miniTemplate() {
+      import(
+        "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js"
+      );
+      return html`
+        <absolute-position-behavior
+          ?auto="${this.controls}"
+          id="floating"
+          fit-to-visible-bounds
+          for="${this.controls}"
+          ?hidden="${!this.controls}"
+          position="top"
+        >
+          ${super.toolbarTemplate}
+        </absolute-position-behavior>
+      `;
     }
 
     // render function for toolbar

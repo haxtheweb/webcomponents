@@ -28,17 +28,7 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
 
   // properties available to the custom element for data binding
   render() {
-    return html`
-      <absolute-position-behavior
-        auto
-        id="floating"
-        fit-to-visible-bounds
-        for="${this.controls}"
-        position="top"
-      >
-        ${super.toolbarTemplate}
-      </absolute-position-behavior>
-    `;
+    return html` ${super.miniTemplate} `;
   }
 
   constructor() {
