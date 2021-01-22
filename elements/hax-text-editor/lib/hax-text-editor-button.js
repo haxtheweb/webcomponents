@@ -8,18 +8,20 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-code.js";
 import "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js";
 /**
- * `hax-editor-button`
- * @element hax-editor-button
+ * `hax-text-editor-button`
+ * @element hax-text-editor-button
  * `a custom-element button for hax text editor (custom buttons can extend this)`
  *
  */
-class HaxEditorButton extends RichTextEditorPromptButtonBehaviors(LitElement) {
+class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "hax-editor-button";
+    return "hax-text-editor-button";
   }
 
   // properties available to the custom element for data binding
@@ -35,7 +37,7 @@ class HaxEditorButton extends RichTextEditorPromptButtonBehaviors(LitElement) {
 
   constructor() {
     super();
-    this.tag = HaxEditorButton.tag;
+    this.tag = HaxTextEditorButton.tag;
     this.toggles = true;
     this.value = {};
     this.command = "insertHTML";
@@ -117,5 +119,5 @@ class HaxEditorButton extends RichTextEditorPromptButtonBehaviors(LitElement) {
   }
 }
 
-window.customElements.define(HaxEditorButton.tag, HaxEditorButton);
-export { HaxEditorButton };
+window.customElements.define(HaxTextEditorButton.tag, HaxTextEditorButton);
+export { HaxTextEditorButton };

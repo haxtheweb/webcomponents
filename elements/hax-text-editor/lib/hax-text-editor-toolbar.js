@@ -7,10 +7,10 @@ import { RichTextEditorToolbarBehaviors } from "@lrnwebcomponents/rich-text-edit
 import { LrnVocab } from "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 import { LrnMath } from "@lrnwebcomponents/lrn-math/lrn-math.js";
 import { OerSchemaElement } from "@lrnwebcomponents/oer-schema/oer-schema.js";
-import { HaxEditorButton } from "./hax-editor-button.js";
+import { HaxTextEditorButton } from "./hax-text-editor-button.js";
 
 /**
- * `hax-editor-toolbar`
+ * `hax-text-editor-toolbar`
  * `A customized toolbar (with buttons) for HAX`
  *
  * @customElement
@@ -18,7 +18,7 @@ import { HaxEditorButton } from "./hax-editor-button.js";
  * @lit-element
  * @demo demo/index.html
  */
-class HaxEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
+class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
   //styles function
   static get styles() {
     return [
@@ -61,16 +61,19 @@ class HaxEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
    * @notice function name must be here for tooling to operate correctly
    */
   tag() {
-    return "hax-editor-toolbar";
+    return "hax-text-editor-toolbar";
   }
 
   // life cycle
   constructor() {
     super();
 
-    this.tag = HaxEditorToolbar.tag;
+    this.tag = HaxTextEditorToolbar.tag;
     this.sticky = false;
-    console.log(HaxEditorButton, document.createElement("hax-editor-button"));
+    console.log(
+      HaxTextEditorButton,
+      document.createElement("hax-text-editor-button")
+    );
     this.config = [
       /*{
         label: "Basic Inline Operations",
@@ -143,15 +146,15 @@ class HaxEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
         buttons: [
           {
             element: LrnVocab,
-            type: "hax-editor-button",
+            type: "hax-text-editor-button",
           },
           {
             element: LrnMath,
-            type: "hax-editor-button",
+            type: "hax-text-editor-button",
           },
           {
             element: OerSchemaElement,
-            type: "hax-editor-button",
+            type: "hax-text-editor-button",
           },
         ],
       },
@@ -203,5 +206,5 @@ class HaxEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
     return [...super.baseStyles, ...super.miniStyles];
   }
 }
-customElements.define("hax-editor-toolbar", HaxEditorToolbar);
-export { HaxEditorToolbar };
+customElements.define("hax-text-editor-toolbar", HaxTextEditorToolbar);
+export { HaxTextEditorToolbar };

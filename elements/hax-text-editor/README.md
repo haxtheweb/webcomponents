@@ -1,26 +1,26 @@
-# &lt;hax-editor&gt;
+# &lt;hax-text-editor&gt;
 
-Editor
-> HAX-specific implementation of rich-text-editor
+Text
+> text editor, toolbar, and toolbar buttons for HAX
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/hax-editor/hax-editor.js';
+import '@lrnwebcomponents/hax-text-editor/hax-text-editor.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/hax-editor/hax-editor.js"></script>
+<script type="module" src="@lrnwebcomponents/hax-text-editor/hax-text-editor.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/hax-editor/hax-editor.js';
+  import '@lrnwebcomponents/hax-text-editor/hax-text-editor.js';
   // imperative form
-  import {HaxEditor} from '@lrnwebcomponents/hax-editor';
+  import {HaxTextEditor} from '@lrnwebcomponents/hax-text-editor';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/hax-editor/hax-editor.js';
+  import './node_modules/@lrnwebcomponents/hax-text-editor/hax-text-editor.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/hax-editor/hax-editor.js"></script>
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/hax-text-editor/hax-text-editor.js"></script>
 ```
 
 ## Develop / Demo
@@ -52,7 +52,7 @@ $ yarn run build
 
 ## Code style
 
-Editor (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Text (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

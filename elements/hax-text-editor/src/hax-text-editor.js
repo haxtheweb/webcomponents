@@ -3,11 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import "./lib/hax-editor-toolbar.js";
+import { RichTextEditor } from "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
+import "./lib/hax-text-editor-toolbar.js";
 
 /**
- * `hax-editor`
+ * `hax-text-editor`
  * `HAX-specific implementation of rich-text-editor`
  *
  * @microcopy - language worth noting:
@@ -18,7 +18,7 @@ import "./lib/hax-editor-toolbar.js";
  * @lit-element
  * @demo demo/index.html
  */
-class HaxEditor extends LitElement {
+class HaxTextEditor extends LitElement {
   //styles function
   static get styles() {
     return [
@@ -40,7 +40,7 @@ class HaxEditor extends LitElement {
       ?disableHover="${this.disableHover}"
       .placeholder="${this.placeholder}"
       .toolbar="${this.toolbar}"
-      type="${this.type || "hax-editor-toolbar"}"
+      type="${this.type || "hax-text-editor-toolbar"}"
     >
       <slot></slot>
     </rich-text-editor>`;
@@ -49,56 +49,7 @@ class HaxEditor extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-      /**
-       * editor's unique id
-       */
-      id: {
-        name: "id",
-        type: String,
-        reflect: true,
-        attribute: "id",
-      },
-      /**
-       * don't reveal toolbar on mouseover
-       */
-      disableHover: {
-        name: "disableHover",
-        type: Boolean,
-        attribute: "disable-hover",
-      },
-      /**
-       * Placeholder text for empty editable regions
-       */
-      placeholder: {
-        name: "placeholder",
-        type: String,
-        reflect: true,
-        attribute: "placeholder",
-      },
-
-      /**
-       * id for toolbar
-       */
-      toolbar: {
-        name: "toolbar",
-        type: String,
-        reflect: true,
-        attribute: "toolbar",
-      },
-
-      /**
-       * type of editor toolbar, i.e.
-       * full - full for full toolbar with breadcrumb,
-       * mini - mini for mini floating toolbar, or
-       * default toolbar if neither.
-       */
-      type: {
-        name: "type",
-        type: String,
-        reflect: true,
-        attribute: "type",
-      },
+      ...RichTextEditor.properties,
     };
   }
 
@@ -107,19 +58,19 @@ class HaxEditor extends LitElement {
    * @notice function name must be here for tooling to operate correctly
    */
   tag() {
-    return "hax-editor";
+    return "hax-text-editor";
   }
 
   // life cycle
   constructor() {
     super();
 
-    this.tag = HaxEditor.tag;
-    this.type = "hax-editor-toolbar";
+    this.tag = HaxTextEditor.tag;
+    this.type = "hax-text-editor-toolbar";
     // map our imported properties json to real props on the element
     // @notice static getter of properties is built via tooling
-    // to edit modify src/hax-editor-properties.json
-    let obj = HaxEditor.properties;
+    // to edit modify src/hax-text-editor-properties.json
+    let obj = HaxTextEditor.properties;
     for (let p in obj) {
       if (obj.hasOwnProperty(p)) {
         if (this.hasAttribute(p)) {
@@ -144,5 +95,5 @@ class HaxEditor extends LitElement {
 
   // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define("hax-editor", HaxEditor);
-export { HaxEditor };
+customElements.define("hax-text-editor", HaxTextEditor);
+export { HaxTextEditor };

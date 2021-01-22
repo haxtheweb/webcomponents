@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../hax-editor.js"></script>
+    <script type="module" src="../hax-text-editor.js"></script>
   </head>
   <body>
 
-    <hax-editor>
+    <hax-text-editor>
       This is the element content.
-    </hax-editor>
+    </hax-text-editor>
 <test-fixture id="BasicTestFixture">
   <template>
-    <hax-editor></hax-editor>
+    <hax-text-editor></hax-text-editor>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <hax-editor></hax-editor>
+    <hax-text-editor></hax-text-editor>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<hax-editor>', () => {
+  suite('<hax-text-editor>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('hax-editor'), customElements.get("hax-editor", 'hax-editor should be an instance of haxEditor'));
+      assert.instanceOf(document.querySelector('hax-text-editor'), customElements.get("hax-text-editor", 'hax-text-editor should be an instance of haxTextEditor'));
     });
 
     /*test('setting a property on the element works', () => {
