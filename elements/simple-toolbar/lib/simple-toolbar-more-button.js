@@ -22,26 +22,10 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
   constructor() {
     super();
     this.icon = "more-vert";
-    this.collapseMax = "xs";
     this.toggled = false;
     this.toggles = true;
     this.label = "More buttons";
     this.labelToggled = "Fewer buttons";
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      ...super.properties,
-      /**
-       * The maximum size where all of the buttons display
-       */
-      collapseMax: {
-        attribute: "collapse-max",
-        type: String,
-        reflect: true,
-      },
-    };
   }
 }
 window.customElements.define(

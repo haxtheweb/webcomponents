@@ -34,6 +34,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
         controls="${super.controls}"
         ?disabled="${this.disabled}"
         @keydown="${this._pickerFocus}"
+        label=""
         @mouseover="${this._pickerFocus}"
         .symbol-types="${this.symbolTypes}"
         tabindex="0"

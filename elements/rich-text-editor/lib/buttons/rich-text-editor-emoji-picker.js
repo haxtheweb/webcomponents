@@ -42,6 +42,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
         ?disabled="${this.disabled}"
         .emoji-types="${this.emojiTypes}"
         @keydown="${this._pickerFocus}"
+        label=""
         @mouseover="${this._pickerFocus}"
         tabindex="0"
         title-as-html

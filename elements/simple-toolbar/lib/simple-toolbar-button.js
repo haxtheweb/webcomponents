@@ -22,6 +22,8 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
          */
         controls: {
           type: String,
+          attribute: "controls",
+          reflect: true,
         },
 
         /**
@@ -29,6 +31,8 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
          */
         disabled: {
           type: Boolean,
+          attribute: "disabled",
+          reflect: true,
         },
 
         /**
@@ -341,11 +345,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       return [
         css`
           :host {
-            margin: 0;
-            padding: 0;
             flex: 0 1 auto;
+            min-width: var(
+              --simple-toolbar-button-min-width,
+              var(--simple-toolbar-button-height, 24px)
+            );
             white-space: nowrap;
-            min-width: 0;
           }
           :host([hidden]) {
             display: none;

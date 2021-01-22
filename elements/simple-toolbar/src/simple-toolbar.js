@@ -58,17 +58,11 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             flex: 1 1 auto;
             overflow-y: visible;
           }
-          #buttons.collapsed {
-            flex-wrap: nowrap;
-            flex: 0 1 auto;
-            max-width: calc(100% - 40px);
-          }
           #morebutton {
             flex: 0 0 auto;
             justify-content: flex-end;
           }
           ::slotted(.group) {
-            min-width: 0;
             display: flex;
             flex-wrap: nowrap;
             justify-content: space-evenly;
@@ -77,7 +71,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             margin: 0;
             flex: 0 1 auto;
             overflow-y: visible;
-            white-space: nowrap;
           }
           ::slotted(.group:not(:last-child)) {
             border-right: var(
@@ -89,6 +82,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
                 --simple-toolbar-border-color,
                 var(--simple-toolbar-group-border-color, transparent)
               );
+          }
+          :host([collapsed]) ::slotted(*[collapse-hide]) {
+            display: none !important;
           }
         `,
       ];
@@ -186,6 +182,12 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           type: Array,
         },
         /**
+         * whether there is no need to collapse
+         */
+        __collapseDisabled: {
+          type: Boolean,
+        },
+        /**
          * whether toolbar has focus
          */
         __focused: {
@@ -246,6 +248,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         aria-controls="buttons"
         class="button"
         @click="${(e) => (this.collapsed = !this.collapsed)}"
+        ?disabled=${this.__collapseDisabled}
         icon="${this.moreIcon}"
         label="${this.moreLabel}"
         ?label-toggled="${this.moreLabelToggled}"
@@ -276,6 +279,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.collapsed = true;
       this.config = [];
       this.__buttons = [];
+      this.__collapseDisabled = false;
       this.__focused = false;
       this.__hovered = false;
       this.moreIcon = "more-vert";
@@ -287,6 +291,25 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.addEventListener("register-button", this._handleButtonRegister);
       this.addEventListener("deregister-button", this._handleButtonDeregister);
       this.addEventListener("update-button-registry", this._handleButtonUpdate);
+    }
+    /**
+     * Called every time the element is inserted into the DOM. Useful for
+     * running setup code, such as fetching resources or rendering.
+     * Generally, you should try to delay work until this time.
+     */
+    connectedCallback() {
+      super.connectedCallback();
+      if (this.collapsed)
+        window.addEventListener("resize", this._handleResize.bind(this));
+    }
+    /**
+     * Called every time the element is removed from the DOM. Useful for
+     * running clean up code (removing event listeners, etc.).
+     */
+    disconnectedCallback() {
+      if (this.collapsed)
+        window.removeEventListener("resize", this._handleResize.bind(this));
+      super.disconnectedCallback();
     }
     firstUpdated(changedProperties) {
       this.setAttribute("aria-live", "polite");
@@ -300,8 +323,17 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "config") this.updateToolbar();
+        if (propName === "collapsed") {
+          if (this.collapsed) {
+            this.resizeToolbar();
+            window.addEventListener("resize", this._handleResize.bind(this));
+          } else {
+            window.removeEventListener("resize", this._handleResize.bind(this));
+          }
+        }
         if (propName === "hidden")
           this.setAttribute("aria-hidden", this.hidden ? "true" : "false");
+        this.resizeToolbar();
       });
     }
     /**
@@ -366,6 +398,20 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.__buttons.push(button);
       this.__buttons = [...new Set(this.__buttons)];
     }
+
+    resizeToolbar() {
+      if (!this.collapsed) return;
+      let items = [...(this.childNodes || [])],
+        shown = true;
+      items.forEach((item) => {
+        item.removeAttribute("collapse-hide");
+        if (item.offsetTop && item.offsetTop > 0) {
+          item.setAttribute("collapse-hide", true);
+          shown = false;
+        }
+      });
+      this.__collapseDisabled = shown;
+    }
     /**
      * updates registered button when shortcut keys change
      *
@@ -390,6 +436,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           this.addButton(config, this);
         }
       });
+      this.resizeToolbar();
     }
     /**
      * handles appended button
@@ -399,6 +446,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     _handleButtonRegister(e) {
       e.stopPropagation();
       this.registerButton(e.detail);
+      this.resizeToolbar();
     }
     /**
      * handles moved/removed button
@@ -408,6 +456,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     _handleButtonDeregister(e) {
       e.stopPropagation();
       this.deregisterButton(e.detail);
+      this.resizeToolbar();
     }
     /**
      * handles updated button
@@ -418,6 +467,13 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       e.stopPropagation();
       if (e.detail && e.detail.button && e.detail.shortcutKeys)
         this.updateButtonShortcuts(e.detail, e.detail.button);
+    }
+    /**
+     * resizes toolbar on window resize
+     *
+     */
+    _handleResize(e) {
+      this.resizeToolbar();
     }
     /**
      * creates a button element based on config object
