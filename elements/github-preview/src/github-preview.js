@@ -5,13 +5,14 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 /**
  * `github-preview`
  * `A simple element that displays information about a github repository.`
  * @demo demo/index.html
  * @element github-preview
  */
-class GithubPreview extends LitElement {
+class GithubPreview extends IntersectionObserverMixin(LitElement) {
   static get properties() {
     let props = {};
     if (super.properties) {
@@ -46,7 +47,11 @@ class GithubPreview extends LitElement {
         type: Boolean,
         reflect: true,
       },
-      __readmeDesc: {
+      readmeExtended: {
+        type: Boolean,
+        reflect: true,
+      },
+      __readmeText: {
         type: String,
       },
     };
@@ -58,9 +63,11 @@ class GithubPreview extends LitElement {
         :host {
           display: inline-flex;
         }
+
         :host([hidden]) {
           display: none;
         }
+
         :host([repo-lang="JavaScript"]) .lang-circle {
           background-color: #f1e05a;
         }
@@ -156,7 +163,7 @@ class GithubPreview extends LitElement {
         a {
           display: inline-flex;
           text-decoration: none;
-          color: white;
+          color: var(--github-preview-link-text-color, white);
         }
 
         :host([extended]) .container {
@@ -165,7 +172,7 @@ class GithubPreview extends LitElement {
         }
 
         .container {
-          background-color: black;
+          background-color: var(--github-preview-bg-color, black);
           border-radius: var(--github-preview-container-border-radius, 10px);
           width: var(--github-preview-container-width, 400px);
           padding: var(--github-preview-container-padding, 5px);
@@ -178,7 +185,7 @@ class GithubPreview extends LitElement {
 
         .header-container div {
           margin-left: 10px;
-          font-size: 22px;
+          font-size: var(--github-preview-header-font-size, 22px);
           font-weight: bold;
         }
 
@@ -200,7 +207,7 @@ class GithubPreview extends LitElement {
         }
 
         div {
-          color: white;
+          color: var(--github-preview-div-text-color, white);
         }
 
         .description {
@@ -211,17 +218,29 @@ class GithubPreview extends LitElement {
           margin: 0px 5px 0px 5px;
         }
         
-        .readme-container-show {
+        :host([readmeExtended]) .readme-container{
           overflow-y: scroll;
-          overflow-x: hidden;
-          max-height: var(--github-preview-readme-container-max-height, 300px);
         }
 
-        .readme-container-hide {
+        .readme-container {
           overflow-y: hidden;
           overflow-x: hidden;
           max-height: var(--github-preview-readme-container-max-height, 300px);
         }
+
+        .readme-btn {
+          display: inline-block;
+          padding: 0.3em 2em;
+          border-radius: 2em;
+          box-sizing: border-box;
+          text-align: center; 
+        }
+
+        .readme-btn-container {
+          display: flex;
+          justify-content: center;
+        }
+        
       `,
     ];
   }
@@ -234,7 +253,7 @@ class GithubPreview extends LitElement {
   }
 
   render() {
-    return this.__assetAvailable
+    return (this.__assetAvailable && this.elementVisible)
       ? this.extended
         ? html`
             <div class="container">
@@ -257,17 +276,19 @@ class GithubPreview extends LitElement {
 
               <hr />
               
-              <div class="readme-container-hide">
+              <div class="readme-container">
                 <wc-markdown>
                   <script type="wc-content">
-                    ${this.__readmeDesc}
+                    ${this.__readmeText}
                   </script>
                 </wc-markdown>
               </div>
 
-              <button @click=${this.readmeViewMoreHandler} class="readme-btn">
-                  View More
-              </button>
+              <div class="readme-btn-container">
+                <button @click=${this.readmeViewMoreHandler} class="readme-btn">
+                    View More
+                </button>
+              </div>
 
               <div class="stats-container">
                 <span class="lang-circle"></span>
@@ -330,7 +351,7 @@ class GithubPreview extends LitElement {
           }
         })
         .then((responseText) => {
-          this.__readmeDesc = this.handleReadmeText(responseText);
+          this.__readmeText = responseText;
         })
         .catch((error) => {
           console.error(error);
@@ -351,19 +372,13 @@ class GithubPreview extends LitElement {
       });
   }
 
-  handleReadmeText(readmeText) {
-    let lineArray = readmeText.split("\n");
-    let finalStr = "";
-    for (let i = 0; i < lineArray.length; i++) {
-      finalStr += lineArray[i] + "\n";
-    }
-    return finalStr;
-  }
-
-  readmeViewMoreHandler(event){
-    let readmeContainer = this.shadowRoot.querySelector(".readme-container-hide");
-    readmeContainer.classList.remove("readme-container-hide");
-    readmeContainer.classList.add("readme-container-show");
+  /*
+  * enables overflow-y property by setting readmeExtended to true
+  * removes 'show more' button from the dom
+  */
+  readmeViewMoreHandler(event) {
+    this.readmeExtended = true;
+    this.shadowRoot.querySelector('.readme-btn').remove();
   }
 
   handleResponse(response) {
@@ -401,30 +416,9 @@ class GithubPreview extends LitElement {
       if (this.extended && propName === "extended") {
         import("./lib/wc-markdown.js");
       }
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
-      }
-      */
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
     });
   }
 }
+
 customElements.define(GithubPreview.tag, GithubPreview);
 export { GithubPreview };
