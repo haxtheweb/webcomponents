@@ -156,6 +156,7 @@ class GithubPreview extends LitElement {
         a {
           display: inline-flex;
           text-decoration: none;
+          color: white;
         }
 
         :host([extended]) .container {
@@ -179,6 +180,10 @@ class GithubPreview extends LitElement {
           margin-left: 10px;
           font-size: 22px;
           font-weight: bold;
+        }
+
+        .header-container div a:hover {
+          font-size: 24px;
         }
 
         .stats-container {
@@ -205,6 +210,18 @@ class GithubPreview extends LitElement {
         .stats-text {
           margin: 0px 5px 0px 5px;
         }
+        
+        .readme-container-show {
+          overflow-y: scroll;
+          overflow-x: hidden;
+          max-height: var(--github-preview-readme-container-max-height, 300px);
+        }
+
+        .readme-container-hide {
+          overflow-y: hidden;
+          overflow-x: hidden;
+          max-height: var(--github-preview-readme-container-max-height, 300px);
+        }
       `,
     ];
   }
@@ -220,43 +237,47 @@ class GithubPreview extends LitElement {
     return this.__assetAvailable
       ? this.extended
         ? html`
-            <a
-              href="https://github.com/${this.org}/${this.repo}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="container">
-                <div class="header-container">
-                  <simple-icon-lite icon="book"></simple-icon-lite>
-                  <div>${this.org}/${this.repo}</div>
+            <div class="container">
+              <div class="header-container">
+                <simple-icon-lite icon="book"></simple-icon-lite>
+                <div>
+                  <a href="https://github.com/${this.org}" target="_blank" rel="noopener noreferrer">
+                    ${this.org}
+                  </a>
+                  /
+                  <a href="https://github.com/${this.org}/${this.repo}" target="_blank" rel="noopener noreferrer">
+                    ${this.repo}
+                  </a>
                 </div>
+              </div>
 
-                <hr />
+              <hr />
 
-                <div>${this.__description}</div>
+              <div>${this.__description}</div>
 
-                <hr />
-
-                <h1>${this.repo}</h1>
-
-                <hr />
-
+              <hr />
+              
+              <div class="readme-container-hide">
                 <wc-markdown>
                   <script type="wc-content">
                     ${this.__readmeDesc}
                   </script>
                 </wc-markdown>
-
-                <div class="stats-container">
-                  <span class="lang-circle"></span>
-                  <div class="stats-text">${this.repoLang}</div>
-                  <simple-icon-lite icon="star"></simple-icon-lite>
-                  <div class="stats-text">${this.__stars}</div>
-                  <simple-icon-lite icon="social:share"></simple-icon-lite>
-                  <div class="stats-text">${this.__forks}</div>
-                </div>
               </div>
-            </a>
+
+              <button @click=${this.readmeViewMoreHandler} class="readme-btn">
+                  View More
+              </button>
+
+              <div class="stats-container">
+                <span class="lang-circle"></span>
+                <div class="stats-text">${this.repoLang}</div>
+                <simple-icon-lite icon="star"></simple-icon-lite>
+                <div class="stats-text">${this.__stars}</div>
+                <simple-icon-lite icon="social:share"></simple-icon-lite>
+                <div class="stats-text">${this.__forks}</div>
+              </div>
+            </div>
           `
         : html`
             <a
@@ -333,10 +354,16 @@ class GithubPreview extends LitElement {
   handleReadmeText(readmeText) {
     let lineArray = readmeText.split("\n");
     let finalStr = "";
-    for (let i = 1; i < 15; i++) {
+    for (let i = 0; i < lineArray.length; i++) {
       finalStr += lineArray[i] + "\n";
     }
     return finalStr;
+  }
+
+  readmeViewMoreHandler(event){
+    let readmeContainer = this.shadowRoot.querySelector(".readme-container-hide");
+    readmeContainer.classList.remove("readme-container-hide");
+    readmeContainer.classList.add("readme-container-show");
   }
 
   handleResponse(response) {
