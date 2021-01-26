@@ -1525,6 +1525,7 @@
     }
   ],
   "autoloader": {
+    "github-preview": "@lrnwebcomponents/github-preview/github-preview.js",
     "activity-box": "@lrnwebcomponents/course-design/lib/activity-box.js",
     "block-quote": "@lrnwebcomponents/course-design/lib/block-quote.js",
     "ebook-button": "@lrnwebcomponents/course-design/lib/ebook-button.js",

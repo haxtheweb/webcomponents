@@ -58,11 +58,42 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       // used for enabling a scrollable readme
       readmeExtended: {
         type: Boolean,
+        attribute: "readme-extended",
         reflect: true,
+      },
+      // headers for advanced cache handling to reduce calls to the API
+      headers: {
+        type: Object,
+      },
+      viewMoreText: {
+        type: String,
+        attribute: "view-more-text",
+      },
+      notFoundText: {
+        type: String,
+        attribute: "not-found-text",
       },
       // raw readme text from github api
       __readmeText: {
         type: String,
+      },
+      branch: {
+        type: String,
+      },
+      url: {
+        type: String,
+      },
+      apiUrl: {
+        type: String,
+        attribute: "api-url",
+      },
+      rawUrl: {
+        type: String,
+        attribute: "raw-url",
+      },
+      readMe: {
+        type: String,
+        attribute: "read-me",
       },
     };
   }
@@ -78,7 +109,6 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           display: none;
         }
 
-        
         :host([repo-lang="JavaScript"]) .lang-circle {
           background-color: #f1e05a;
         }
@@ -151,14 +181,6 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           background-color: #2c3e50;
         }
 
-        :host([repo-lang="Sass"]) .lang-circle {
-          background-color: #a53b70;
-        }
-
-        :host([repo-lang="Sass"]) .lang-circle {
-          background-color: #a53b70;
-        }
-
         :host([repo-lang="PHP"]) .lang-circle {
           background-color: #4f5d95;
         }
@@ -228,8 +250,8 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         .stats-text {
           margin: 0px 5px 0px 5px;
         }
-        
-        :host([readmeExtended]) .readme-container{
+
+        :host([readme-extended]) .readme-container {
           overflow-y: scroll;
         }
 
@@ -244,18 +266,63 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           padding: 0.3em 2em;
           border-radius: 2em;
           box-sizing: border-box;
-          text-align: center; 
+          text-align: center;
         }
 
         .readme-btn-container {
           display: flex;
           justify-content: center;
         }
-        
       `,
     ];
   }
 
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      gizmo: {
+        title: "Github Preview",
+        description: "Accessible figure with long description",
+        icon: "mdi-social:github-circle",
+        color: "grey",
+        groups: ["developer", "code"],
+        handles: [],
+        meta: {
+          author: "collinkleest",
+          owner: "ELMS:LN",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "org",
+            title: "Organization",
+            description: "Github organization machine name",
+            inputMethod: "textfield",
+          },
+          {
+            property: "repo",
+            title: "Repository",
+            description: "Repo machine name",
+            inputMethod: "textfield",
+          },
+        ],
+        advanced: [],
+      },
+      demoSchema: [
+        {
+          tag: "github-preview",
+          properties: {
+            org: "elmsln",
+            repo: "lrnwebcomponents",
+          },
+          content: "",
+        },
+      ],
+    };
+  }
   /**
    * Convention we use
    */
@@ -264,29 +331,33 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
   }
 
   render() {
-    return (this.__assetAvailable && this.elementVisible)
+    return this.__assetAvailable && this.elementVisible
       ? this.extended
         ? html`
             <div class="container">
               <div class="header-container">
                 <simple-icon-lite icon="book"></simple-icon-lite>
                 <div>
-                  <a href="https://github.com/${this.org}" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="${this.url}/${this.org}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     ${this.org}
                   </a>
                   /
-                  <a href="https://github.com/${this.org}/${this.repo}" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="${this.url}/${this.org}/${this.repo}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     ${this.repo}
                   </a>
                 </div>
               </div>
-
               <hr />
-
               <div>${this.__description}</div>
-
               <hr />
-              
               <div class="readme-container">
                 <wc-markdown>
                   <script type="wc-content">
@@ -294,15 +365,16 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
                   </script>
                 </wc-markdown>
               </div>
-
               <div class="readme-btn-container">
                 <button @click=${this.readmeViewMoreHandler} class="readme-btn">
-                    View More
+                  ${this.viewMoreText}
                 </button>
               </div>
-
               <div class="stats-container">
-                <span class="lang-circle"></span>
+                <span
+                  class="lang-circle"
+                  part="github-preview-lang-circle"
+                ></span>
                 <div class="stats-text">${this.repoLang}</div>
                 <simple-icon-lite icon="star"></simple-icon-lite>
                 <div class="stats-text">${this.__stars}</div>
@@ -313,7 +385,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           `
         : html`
             <a
-              href="https://github.com/${this.org}/${this.repo}"
+              href="${this.url}/${this.org}/${this.repo}"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -338,7 +410,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           `
       : html`
           <div class="container">
-            <h1>Asset not found</h1>
+            <h1>${this.notFoundText}</h1>
           </div>
         `;
   }
@@ -348,18 +420,35 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
    */
   constructor() {
     super();
+    this.url = "https://github.com";
+    this.apiUrl = "https://api.github.com";
+    this.rawUrl = "https://raw.githubusercontent.com";
     this.extended = false;
+    this.readMe = "README.md";
+    this.branch = "master";
+    this.viewMoreText = "View More";
+    this.notFoundText = "Asset not found";
+    this.headers = {
+      cache: "force-cache",
+    };
   }
 
   /*
-  * If element is in extended form, fetch repo readme text and repo information
-  * If element is not in extended form just fetch the repo information for the smaller card
-  */
-  fetchGithubData(repoName, orgName) {
-    if (this.extended) {
-      fetch(
-        `https://raw.githubusercontent.com/${orgName}/${repoName}/master/README.md`
-      )
+   * If element is in extended form, fetch repo readme text and repo information
+   * If element is not in extended form just fetch the repo information for the smaller card
+   */
+  fetchGithubData(
+    repo,
+    org,
+    headers,
+    branch,
+    rawUrl,
+    apiUrl,
+    readMe,
+    extended
+  ) {
+    if (extended) {
+      fetch(`${rawUrl}/${org}/${repo}/${branch}/${readMe}`, headers)
         .then((response) => {
           if (response.ok) {
             return response.text();
@@ -372,7 +461,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           console.error(error);
         });
     }
-    fetch(`https://api.github.com/repos/${orgName}/${repoName}`)
+    fetch(`${apiUrl}/repos/${org}/${repo}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -388,17 +477,17 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
   }
 
   /*
-  * enables overflow-y property by setting readmeExtended to true
-  * removes 'show more' button from the dom
-  */
+   * enables overflow-y property by setting readmeExtended to true
+   * removes 'show more' button from the dom
+   */
   readmeViewMoreHandler(event) {
     this.readmeExtended = true;
-    this.shadowRoot.querySelector('.readme-btn').remove();
+    this.shadowRoot.querySelector(".readme-btn").remove();
   }
 
   /*
-  * Takes fetched repo information and element properties
-  */
+   * Takes fetched repo information and element properties
+   */
   handleResponse(response) {
     if (response) {
       this.__assetAvailable = true;
@@ -416,7 +505,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    if (!this.repo || !this.org) {
+    if (!this.repo || !this.org || !this.url) {
       this.__assetAvailable = false;
     }
   }
@@ -425,12 +514,35 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (["repo", "org"].includes(propName) && this[propName]) {
+      // only make the fetch after we get everything setup
+      if (
+        [
+          "repo",
+          "org",
+          "headers",
+          "branch",
+          "rawUrl",
+          "apiUrl",
+          "readMe",
+          "extended",
+        ].includes(propName) &&
+        this[propName]
+      ) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
-          this.fetchGithubData(this.repo, this.org);
+          this.fetchGithubData(
+            this.repo,
+            this.org,
+            this.headers,
+            this.branch,
+            this.rawUrl,
+            this.apiUrl,
+            this.readMe,
+            this.extended
+          );
         }, 0);
       }
+      // if extended is set them import wc-markdown
       if (this.extended && propName === "extended") {
         import("./lib/wc-markdown.js");
       }
