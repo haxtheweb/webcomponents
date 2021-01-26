@@ -20,37 +20,47 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     }
     return {
       ...props,
+      // The target repository
       repo: {
         type: String,
       },
+      // The target github organization or user
       org: {
         type: String,
       },
+      // data from the github api, short summary of the repository
       __description: {
         type: String,
       },
+      // The most used language in the repository, this gets fetched from the github api
       repoLang: {
         type: String,
         attribute: "repo-lang",
         reflect: true,
       },
+      // amount of stars a repository has, this is fetched from the github api
       __stars: {
         type: Number,
       },
+      // amount of forks a repository has, this is fetched from the github api
       __forks: {
         type: Number,
       },
+      // used for error handling in api calls
       __assetAvailable: {
         type: Boolean,
       },
+      // allows for an extended card that previews the repository readme
       extended: {
         type: Boolean,
         reflect: true,
       },
+      // used for enabling a scrollable readme
       readmeExtended: {
         type: Boolean,
         reflect: true,
       },
+      // raw readme text from github api
       __readmeText: {
         type: String,
       },
@@ -68,6 +78,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           display: none;
         }
 
+        
         :host([repo-lang="JavaScript"]) .lang-circle {
           background-color: #f1e05a;
         }
@@ -190,7 +201,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         }
 
         .header-container div a:hover {
-          font-size: 24px;
+          font-size: var(--github-preview-header-hover-font-size, 24px);
         }
 
         .stats-container {
@@ -340,7 +351,11 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     this.extended = false;
   }
 
-  fetchRepo(repoName, orgName) {
+  /*
+  * If element is in extended form, fetch repo readme text and repo information
+  * If element is not in extended form just fetch the repo information for the smaller card
+  */
+  fetchGithubData(repoName, orgName) {
     if (this.extended) {
       fetch(
         `https://raw.githubusercontent.com/${orgName}/${repoName}/master/README.md`
@@ -381,6 +396,9 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     this.shadowRoot.querySelector('.readme-btn').remove();
   }
 
+  /*
+  * Takes fetched repo information and element properties
+  */
   handleResponse(response) {
     if (response) {
       this.__assetAvailable = true;
@@ -410,7 +428,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       if (["repo", "org"].includes(propName) && this[propName]) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
-          this.fetchRepo(this.repo, this.org);
+          this.fetchGithubData(this.repo, this.org);
         }, 0);
       }
       if (this.extended && propName === "extended") {
