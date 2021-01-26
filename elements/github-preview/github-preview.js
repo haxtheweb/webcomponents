@@ -5,13 +5,14 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 /**
  * `github-preview`
  * `A simple element that displays information about a github repository.`
  * @demo demo/index.html
  * @element github-preview
  */
-class GithubPreview extends LitElement {
+class GithubPreview extends IntersectionObserverMixin(LitElement) {
   static get properties() {
     let props = {};
     if (super.properties) {
@@ -19,34 +20,48 @@ class GithubPreview extends LitElement {
     }
     return {
       ...props,
+      // The target repository
       repo: {
         type: String,
       },
+      // The target github organization or user
       org: {
         type: String,
       },
+      // data from the github api, short summary of the repository
       __description: {
         type: String,
       },
+      // The most used language in the repository, this gets fetched from the github api
       repoLang: {
         type: String,
         attribute: "repo-lang",
         reflect: true,
       },
+      // amount of stars a repository has, this is fetched from the github api
       __stars: {
         type: Number,
       },
+      // amount of forks a repository has, this is fetched from the github api
       __forks: {
         type: Number,
       },
+      // used for error handling in api calls
       __assetAvailable: {
         type: Boolean,
       },
+      // allows for an extended card that previews the repository readme
       extended: {
         type: Boolean,
         reflect: true,
       },
-      __readmeDesc: {
+      // used for enabling a scrollable readme
+      readmeExtended: {
+        type: Boolean,
+        reflect: true,
+      },
+      // raw readme text from github api
+      __readmeText: {
         type: String,
       },
     };
@@ -58,9 +73,12 @@ class GithubPreview extends LitElement {
         :host {
           display: inline-flex;
         }
+
         :host([hidden]) {
           display: none;
         }
+
+        
         :host([repo-lang="JavaScript"]) .lang-circle {
           background-color: #f1e05a;
         }
@@ -156,6 +174,7 @@ class GithubPreview extends LitElement {
         a {
           display: inline-flex;
           text-decoration: none;
+          color: var(--github-preview-link-text-color, white);
         }
 
         :host([extended]) .container {
@@ -164,7 +183,7 @@ class GithubPreview extends LitElement {
         }
 
         .container {
-          background-color: black;
+          background-color: var(--github-preview-bg-color, black);
           border-radius: var(--github-preview-container-border-radius, 10px);
           width: var(--github-preview-container-width, 400px);
           padding: var(--github-preview-container-padding, 5px);
@@ -177,8 +196,12 @@ class GithubPreview extends LitElement {
 
         .header-container div {
           margin-left: 10px;
-          font-size: 22px;
+          font-size: var(--github-preview-header-font-size, 22px);
           font-weight: bold;
+        }
+
+        .header-container div a:hover {
+          font-size: var(--github-preview-header-hover-font-size, 24px);
         }
 
         .stats-container {
@@ -195,7 +218,7 @@ class GithubPreview extends LitElement {
         }
 
         div {
-          color: white;
+          color: var(--github-preview-div-text-color, white);
         }
 
         .description {
@@ -205,6 +228,30 @@ class GithubPreview extends LitElement {
         .stats-text {
           margin: 0px 5px 0px 5px;
         }
+        
+        :host([readmeExtended]) .readme-container{
+          overflow-y: scroll;
+        }
+
+        .readme-container {
+          overflow-y: hidden;
+          overflow-x: hidden;
+          max-height: var(--github-preview-readme-container-max-height, 300px);
+        }
+
+        .readme-btn {
+          display: inline-block;
+          padding: 0.3em 2em;
+          border-radius: 2em;
+          box-sizing: border-box;
+          text-align: center; 
+        }
+
+        .readme-btn-container {
+          display: flex;
+          justify-content: center;
+        }
+        
       `,
     ];
   }
@@ -217,46 +264,52 @@ class GithubPreview extends LitElement {
   }
 
   render() {
-    return this.__assetAvailable
+    return (this.__assetAvailable && this.elementVisible)
       ? this.extended
         ? html`
-            <a
-              href="https://github.com/${this.org}/${this.repo}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="container">
-                <div class="header-container">
-                  <simple-icon-lite icon="book"></simple-icon-lite>
-                  <div>${this.org}/${this.repo}</div>
-                </div>
-
-                <hr />
-
-                <div>${this.__description}</div>
-
-                <hr />
-
-                <h1>${this.repo}</h1>
-
-                <hr />
-
-                <wc-markdown>
-                  <script type="wc-content">
-                    ${this.__readmeDesc}
-                  </script>
-                </wc-markdown>
-
-                <div class="stats-container">
-                  <span class="lang-circle"></span>
-                  <div class="stats-text">${this.repoLang}</div>
-                  <simple-icon-lite icon="star"></simple-icon-lite>
-                  <div class="stats-text">${this.__stars}</div>
-                  <simple-icon-lite icon="social:share"></simple-icon-lite>
-                  <div class="stats-text">${this.__forks}</div>
+            <div class="container">
+              <div class="header-container">
+                <simple-icon-lite icon="book"></simple-icon-lite>
+                <div>
+                  <a href="https://github.com/${this.org}" target="_blank" rel="noopener noreferrer">
+                    ${this.org}
+                  </a>
+                  /
+                  <a href="https://github.com/${this.org}/${this.repo}" target="_blank" rel="noopener noreferrer">
+                    ${this.repo}
+                  </a>
                 </div>
               </div>
-            </a>
+
+              <hr />
+
+              <div>${this.__description}</div>
+
+              <hr />
+              
+              <div class="readme-container">
+                <wc-markdown>
+                  <script type="wc-content">
+                    ${this.__readmeText}
+                  </script>
+                </wc-markdown>
+              </div>
+
+              <div class="readme-btn-container">
+                <button @click=${this.readmeViewMoreHandler} class="readme-btn">
+                    View More
+                </button>
+              </div>
+
+              <div class="stats-container">
+                <span class="lang-circle"></span>
+                <div class="stats-text">${this.repoLang}</div>
+                <simple-icon-lite icon="star"></simple-icon-lite>
+                <div class="stats-text">${this.__stars}</div>
+                <simple-icon-lite icon="social:share"></simple-icon-lite>
+                <div class="stats-text">${this.__forks}</div>
+              </div>
+            </div>
           `
         : html`
             <a
@@ -298,7 +351,11 @@ class GithubPreview extends LitElement {
     this.extended = false;
   }
 
-  fetchRepo(repoName, orgName) {
+  /*
+  * If element is in extended form, fetch repo readme text and repo information
+  * If element is not in extended form just fetch the repo information for the smaller card
+  */
+  fetchGithubData(repoName, orgName) {
     if (this.extended) {
       fetch(
         `https://raw.githubusercontent.com/${orgName}/${repoName}/master/README.md`
@@ -309,7 +366,7 @@ class GithubPreview extends LitElement {
           }
         })
         .then((responseText) => {
-          this.__readmeDesc = this.handleReadmeText(responseText);
+          this.__readmeText = responseText;
         })
         .catch((error) => {
           console.error(error);
@@ -330,15 +387,18 @@ class GithubPreview extends LitElement {
       });
   }
 
-  handleReadmeText(readmeText) {
-    let lineArray = readmeText.split("\n");
-    let finalStr = "";
-    for (let i = 1; i < 15; i++) {
-      finalStr += lineArray[i] + "\n";
-    }
-    return finalStr;
+  /*
+  * enables overflow-y property by setting readmeExtended to true
+  * removes 'show more' button from the dom
+  */
+  readmeViewMoreHandler(event) {
+    this.readmeExtended = true;
+    this.shadowRoot.querySelector('.readme-btn').remove();
   }
 
+  /*
+  * Takes fetched repo information and element properties
+  */
   handleResponse(response) {
     if (response) {
       this.__assetAvailable = true;
@@ -368,36 +428,15 @@ class GithubPreview extends LitElement {
       if (["repo", "org"].includes(propName) && this[propName]) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
-          this.fetchRepo(this.repo, this.org);
+          this.fetchGithubData(this.repo, this.org);
         }, 0);
       }
       if (this.extended && propName === "extended") {
         import("./lib/wc-markdown.js");
       }
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
-      }
-      */
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
     });
   }
 }
+
 customElements.define(GithubPreview.tag, GithubPreview);
 export { GithubPreview };
