@@ -28,7 +28,7 @@
   display: block;
   cursor: pointer;
   min-height: 40px;
-  outline: var(--rich-text-editor--border-width, 2px) solid transparent;
+  outline: var(--rich-text-editor-border-width, 2px) solid transparent;
 }
 
 :host(:empty) {
@@ -39,7 +39,7 @@
 :host([contenteditable]){
   outline: var(--rich-text-editor-border-width, 2px) solid var(--rich-text-editor-focus-color,blue);
   padding: 2px;
-  margin-bottom: 2px;
+  margin: 2px 0;
 }
 
 :host(.heightmax[contenteditable]) {

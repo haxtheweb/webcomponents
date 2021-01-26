@@ -310,9 +310,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     get miniTemplate() {
-      import(
-        "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js"
-      );
       return html`
         <absolute-position-behavior
           ?auto="${this.controls}"
@@ -440,6 +437,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("../buttons/rich-text-editor-underline.js");
       import("../buttons/rich-text-editor-image.js");
       import("../buttons/rich-text-editor-link.js");
+      import(
+        "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js"
+      );
       this.config = this.defaultConfig;
       this.__clickableElements = {};
     }

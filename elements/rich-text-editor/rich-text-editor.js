@@ -18,6 +18,7 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  * @demo ./demo/mini.html mini floating toolbar
  * @demo ./demo/full.html toolbar with breadcrumb
  * @demo ./demo/config.html custom configuration
+ * @demo ./demo/rawhtml.html raw HTML
  */
 class RichTextEditor extends LitElement {
   //styles function
@@ -28,6 +29,7 @@ class RichTextEditor extends LitElement {
         :host([hidden]) {
           display: none;
         }
+
         :host {
           --simple-toolbar-border-color: #ddd;
           --simple-toolbar-border-width: 1px;
@@ -54,7 +56,7 @@ class RichTextEditor extends LitElement {
           display: block;
           cursor: pointer;
           min-height: 40px;
-          outline: var(--rich-text-editor--border-width, 2px) solid transparent;
+          outline: var(--rich-text-editor-border-width, 2px) solid transparent;
         }
 
         :host(:empty) {
@@ -67,7 +69,7 @@ class RichTextEditor extends LitElement {
           outline: var(--rich-text-editor-border-width, 2px) solid
             var(--rich-text-editor-focus-color, blue);
           padding: 2px;
-          margin-bottom: 2px;
+          margin: 2px 0;
         }
 
         :host(.heightmax[contenteditable]) {
@@ -89,6 +91,7 @@ class RichTextEditor extends LitElement {
             rgb(146, 197, 255)
           );
         }
+
         ::slotted(*:first-child) {
           margin-top: 0;
         }
@@ -406,6 +409,7 @@ class RichTextEditor extends LitElement {
   isEmpty() {
     return !this.innerHTML || this.trimHTML(this) == "";
   }
+
   isPlaceholder() {
     this.trimHTML(this) === this.trimString(this.placeholderHTML);
   }

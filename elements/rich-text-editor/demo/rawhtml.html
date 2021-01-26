@@ -3,25 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>HaxTextEditor: hax-text-editor Demo</title>
-    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <title>RichTextEditor: rich-text-editor Demo</title>
+    
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../hax-text-editor.js';
+      import '../rich-text-editor.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic hax-text-editor demo</h3>
+    <div class="vertical-section-container centered"> 
+      <h3>Basic rich-text-editor demo</h3>
       <demo-snippet>
         <template>
-          <hax-text-editor>
-            <p>This is hax-text-editor</p>
-          </hax-text-editor>
+          <rich-text-editor rawhtml="<p>I'm the <a href='#top'>easiest</a> way to implement editable rich text.</p>">
+          </rich-text-editor>
         </template>
       </demo-snippet>
     </div>

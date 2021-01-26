@@ -18,6 +18,7 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  * @demo ./demo/mini.html mini floating toolbar
  * @demo ./demo/full.html toolbar with breadcrumb
  * @demo ./demo/config.html custom configuration
+ * @demo ./demo/rawhtml.html raw HTML
  */
 class RichTextEditor extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -159,6 +160,7 @@ class RichTextEditor extends LitElement {
   isEmpty() {
     return !this.innerHTML || this.trimHTML(this) == "";
   }
+
   isPlaceholder() {
     this.trimHTML(this) === this.trimString(this.placeholderHTML);
   }

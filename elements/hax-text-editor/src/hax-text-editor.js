@@ -26,10 +26,13 @@ class HaxTextEditor extends LitElement {
         :host,
         rich-text-editor {
           display: block;
+          margin: 0;
         }
 
         :host([hidden]) {
           display: none;
+          margin: 0;
+          padding: 0;
         }
       `,
     ];
@@ -38,12 +41,11 @@ class HaxTextEditor extends LitElement {
   // render function
   render() {
     return html` <rich-text-editor
+      id="editor"
       type="${this.type || "hax-text-editor-toolbar"}"
-    >
-      <slot></slot>
-    </rich-text-editor>`;
+      rawhtml="${this.rawhtml}"
+    ></rich-text-editor>`;
   }
-
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -65,6 +67,8 @@ class HaxTextEditor extends LitElement {
 
     this.tag = HaxTextEditor.tag;
     this.type = "hax-text-editor-toolbar";
+    this.editable = false;
+    this.rawhtml = "";
     // map our imported properties json to real props on the element
     // @notice static getter of properties is built via tooling
     // to edit modify src/hax-text-editor-properties.json
@@ -80,16 +84,40 @@ class HaxTextEditor extends LitElement {
       }
     }
   }
+
+  /**
+   * mutation observer
+   *
+   * @readonly
+   * @memberof RichTextEditor
+   */
+  get observer() {
+    return new MutationObserver(this.updateEditor);
+  }
+
+  updateEditor() {
+    this.rawhtml = this.innerHTML;
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    this.updateEditor();
+  }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    super.connectedCallback();
+    if (super.connectedCallback) super.connectedCallback();
+    this.observer.observe(this, {
+      attributes: false,
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
   }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
+  disconnectedCallback() {
+    if (super.disconnectedCallback) super.disconnectedCallback();
+    if (this.observer) this.observer.disconnect;
+  }
 
   // attributeChangedCallback(attr, oldValue, newValue) {}
 }

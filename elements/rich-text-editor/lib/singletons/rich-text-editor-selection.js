@@ -169,6 +169,7 @@ class RichTextEditorSelection extends LitElement {
    */
   execCommand(command, val, range, toolbar) {
     let editor = toolbar.editor;
+    console.log("execCommand", command, val, range, toolbar, editor);
     if (command === "cancel") {
       toolbar.editor.revert();
       this.closeToolbar(toolbar, editor);
@@ -178,10 +179,18 @@ class RichTextEditorSelection extends LitElement {
       this.range = editor.range;
       this.updateRange(editor, range);
       this.selectRange(range, editor);
+      console.log("execCommand 2", this.range, editor.range);
       if (command === "replaceHTML") {
         let node = this.getRangeNode();
         node.innerHTML = val;
       } else if (command !== "paste") {
+        console.log(
+          "execCommand 3",
+          window.getSelection(),
+          command,
+          false,
+          val
+        );
         document.execCommand(command, false, val);
       } else if (navigator.clipboard) {
         this.pasteFromClipboard(editor);
@@ -606,6 +615,7 @@ class RichTextEditorSelection extends LitElement {
       }
       if (editor) this.updateRange(editor);
     }
+    console.log("selectRange", range, select, window.getSelection());
     return range;
   }
   surroundRange(node, range) {
@@ -627,6 +637,7 @@ class RichTextEditorSelection extends LitElement {
         toolbar.selectionAncestors = editor.selectionAncestors;
         toolbar.range = range;
       }
+      console.log("updateRange", editor, range, toolbar.range);
     }
   }
 
