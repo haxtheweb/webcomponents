@@ -52,7 +52,9 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   // LitElement render function
   render() {
     return html` ${this.elementVisible
-      ? html` <h3 .hidden="${this.hideTitle}">${this._title}</h3>
+      ? html` <h3 .hidden="${this.hideTitle}" part="heading-3">
+            ${this._title}
+          </h3>
           <div id="result"></div>
           <citation-element
             creator="{Wikipedia contributors}"
