@@ -38,6 +38,9 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   constructor() {
     super();
     this.hideTitle = false;
+    this.headers = {
+      cache: "force-cache",
+    };
     let date = new Date(Date.now());
     this.__now =
       date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
@@ -66,9 +69,10 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
           ></citation-element>`
       : ``}`;
   }
-  updateArticle(search) {
+  updateArticle(search, headers) {
     fetch(
-      `https://en.wikipedia.org/w/api.php?origin=*&action=query&titles=${search}&prop=extracts&format=json`
+      `https://en.wikipedia.org/w/api.php?origin=*&action=query&titles=${search}&prop=extracts&format=json`,
+      headers
     )
       .then((response) => {
         if (response.ok) return response.json();
@@ -87,14 +91,15 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         import("@lrnwebcomponents/citation-element/citation-element.js");
       }
       if (
-        ["elementVisible", "search"].includes(propName) &&
+        ["elementVisible", "search", "headers"].includes(propName) &&
         this.search &&
+        this.headers &&
         this.elementVisible
       ) {
         clearTimeout(this._debounce);
         this._debounce = setTimeout(() => {
-          this.updateArticle(this.search);
-        }, 25);
+          this.updateArticle(this.search, this.headers);
+        }, 10);
       }
       if (propName == "search") {
         if (this.title) {
@@ -125,6 +130,9 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
       },
       _title: {
         type: String,
+      },
+      headers: {
+        type: Object,
       },
       /**
        * hideTitle
