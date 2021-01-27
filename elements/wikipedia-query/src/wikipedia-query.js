@@ -150,6 +150,98 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
     };
   }
   /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      gizmoRegistration: "haxgizmoRegistration",
+    };
+  }
+  /**
+   * @see haxHooks: gizmoRegistration
+   */
+  haxgizmoRegistration(store) {
+    if (
+      store.appList.filter((el, i) => {
+        // ensure we don't double load the endpoint if already defined
+        if (el.connection.url === "en.wikipedia.org") {
+          return true;
+        }
+        return false;
+      }).length === 0
+    ) {
+      window.dispatchEvent(
+        new CustomEvent("hax-register-app", {
+          bubbles: false,
+          composed: false,
+          cancelable: false,
+          detail: this.haxAppDetails,
+        })
+      );
+    }
+  }
+  // return valid appStore spec for how to connect to the wikipedia API
+  get haxAppDetails() {
+    return {
+      details: {
+        title: "Wikipedia",
+        icon: "account-balance",
+        color: "grey",
+        author: "Wikimedia",
+        description: "Encyclopedia of the world.",
+        status: "available",
+        tags: ["content", "encyclopedia", "wiki"],
+      },
+      connection: {
+        protocol: "https",
+        url: "en.wikipedia.org",
+        data: {
+          action: "query",
+          list: "search",
+          format: "json",
+          origin: "*",
+        },
+        operations: {
+          browse: {
+            method: "GET",
+            endPoint: "w/api.php",
+            pagination: {
+              style: "offset",
+              props: {
+                offset: "sroffset",
+              },
+            },
+            search: {
+              srsearch: {
+                title: "Search",
+                type: "string",
+              },
+            },
+            data: {},
+            resultMap: {
+              image:
+                "https://en.wikipedia.org/static/images/project-logos/enwiki.png",
+              defaultGizmoType: "wikipedia",
+              items: "query.search",
+              preview: {
+                title: "title",
+                details: "snippet",
+                id: "title",
+              },
+              gizmo: {
+                _url_source: "https://en.wikipedia.org/wiki/<%= id %>",
+                id: "title",
+                title: "title",
+                caption: "snippet",
+                description: "snippet",
+              },
+            },
+          },
+        },
+      },
+    };
+  }
+  /**
    * HAXproperties
    */
   static get haxProperties() {
