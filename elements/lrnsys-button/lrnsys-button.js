@@ -145,7 +145,7 @@ class LrnsysButton extends LitElement {
           ?disabled="${this.disabled}"
           @focus-changed="${this.focusToggle}"
         >
-          <div class="inner ${this.innerClass}">
+          <div class="inner ${this.innerClass}" part="lrnsys-button-inner-div">
             <slot name="prefix"></slot>
             <simple-icon
               icon="${this.icon}"
