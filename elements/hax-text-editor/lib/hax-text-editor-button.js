@@ -91,6 +91,12 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
         })
         .join("");
 
+    console.log(
+      "promptCommandVal",
+      !this.value.innerHTML
+        ? ""
+        : `<${this.element.tag}${attrs}>${slots}${this.value.innerHTML}</${this.element.tag}>`
+    );
     return !this.value.innerHTML
       ? ""
       : `<${this.element.tag}${attrs}>${slots}${this.value.innerHTML}</${this.element.tag}>`;
@@ -116,6 +122,38 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     }
     console.log("get value", el, val);
     return !el ? undefined : val;
+  }
+  setToggled() {
+    this.toggled = !!this.value;
+  }
+  /**
+   * sends a command to the selection manager
+   *
+   * @param {string} [command=this.operationCommand]
+   * @param {string} [commandVal=this.operationCommandVal]
+   * @param {object} [range=this.range]
+   */
+  sendCommand(
+    command = this.operationCommand,
+    commandVal = this.operationCommandVal,
+    range = this.range
+  ) {
+    let node = document.createElement(this.element.tag);
+    node.innerHTML = this.value.innerHTML;
+    super.sendCommand(command, "", range);
+    range.insertNode(node);
+    /*this.dispatchEvent(
+      new CustomEvent("command", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          command: command,
+          commandVal: commandVal,
+          range: range,
+        },
+      })
+    );*/
   }
 }
 
