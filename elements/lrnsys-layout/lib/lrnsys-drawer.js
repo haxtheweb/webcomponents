@@ -64,6 +64,7 @@ class LrnsysDrawer extends SimpleColors {
     return html`
       <button
         class="${this.class}"
+        part="lrnsys-drawer-button"
         id="flyouttrigger"
         @click="${this.toggleDrawer}"
         ?raised="${this.raised}"
@@ -71,6 +72,7 @@ class LrnsysDrawer extends SimpleColors {
         title="${this.alt}"
       >
         <lrnsys-button-inner
+          part="lrnsys-drawer-lrnsys-button-inner"
           avatar="${this.avatar}"
           icon="${this.icon}"
           text="${this.text}"
@@ -78,7 +80,10 @@ class LrnsysDrawer extends SimpleColors {
           <slot name="button"></slot>
         </lrnsys-button-inner>
       </button>
-      <simple-tooltip for="flyouttrigger" animation-delay="0"
+      <simple-tooltip
+        part="lrnsys-drawer-simple-tooltip"
+        for="flyouttrigger"
+        animation-delay="0"
         >${this.alt}</simple-tooltip
       >
     `;

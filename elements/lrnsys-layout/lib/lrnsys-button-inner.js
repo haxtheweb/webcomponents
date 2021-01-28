@@ -42,11 +42,17 @@ class LrnsysButtonInner extends LitElement {
     return html`
       <div>
         ${this.avatar != ""
-          ? html` <paper-avatar src="${this.avatar}"></paper-avatar> `
+          ? html`
+              <paper-avatar
+                part="lrnsys-button-inner-paper-avatar"
+                src="${this.avatar}"
+              ></paper-avatar>
+            `
           : ""}
         ${this.icon != ""
           ? html`
               <simple-icon
+                part="lrnsys-button-inner-simple-icon"
                 icon="${this.icon}"
                 accent-color="grey"
                 contrast="4"
@@ -55,7 +61,9 @@ class LrnsysButtonInner extends LitElement {
           : ""}
         ${this.text != ""
           ? html`
-              <span class="${this._getTextLabelClass(this.avatar, this.icon)}"
+              <span
+                class="${this._getTextLabelClass(this.avatar, this.icon)}"
+                part="lrnsys-button-inner-text-label"
                 >${this.text}</span
               >
             `
