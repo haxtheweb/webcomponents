@@ -81,9 +81,25 @@
   },
 
   /**
+   * whether editor is view source code mode
+   */
+  "viewSource": {
+    "type": "Boolean",
+    "attribute": "view-source",
+    "reflect": true
+  },
+
+  /**
    * contains cancelled edits
    */
   "__canceledEdits": {
+    "type": "Object"
+  },
+
+  /**
+   * code-editor for view source
+   */
+  "__codeEditor": {
     "type": "Object"
   },
 

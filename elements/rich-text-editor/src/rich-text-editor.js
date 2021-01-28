@@ -43,6 +43,7 @@ class RichTextEditor extends LitElement {
     this.contenteditable = false;
     this.__selection = window.RichTextEditorSelection.requestAvailability();
     let root = this;
+    import("@lrnwebcomponents/code-editor/code-editor.js");
     document.addEventListener(shadow.eventName, this._getRange.bind(root));
   }
 
@@ -54,6 +55,13 @@ class RichTextEditor extends LitElement {
    */
   get observer() {
     return new MutationObserver(this._getRange);
+  }
+
+  get codeEditor() {
+    if (!this.__codeEditor)
+      this.__codeEditor = document.createElement("code-editor");
+    this.__codeEditor.language = "html";
+    return this.__codeEditor;
   }
 
   get placeHolderHTML() {
@@ -92,6 +100,15 @@ class RichTextEditor extends LitElement {
       if (propName === "contenteditable") this._editableChange();
       if (propName === "range") this._rangeChange();
       if (propName === "rawhtml" && !!this.rawhtml) this.setHTML(this.rawhtml);
+      if (propName === "viewSource") {
+        console.log(this.codeEditor, this.viewSource);
+        if (this.viewSource) {
+          this._showSource();
+          console.log(this.codeEditor);
+        } else {
+          this._hideSource();
+        }
+      }
     });
     if (!this.innerHTML) this.innerHTML = "";
   }
@@ -113,6 +130,7 @@ class RichTextEditor extends LitElement {
     }
     return el;
   }
+
   disableEditing() {
     this.contenteditable = false;
     this.dispatchEvent(
@@ -150,6 +168,14 @@ class RichTextEditor extends LitElement {
     return this.isEmpty() || this.isPlaceholder()
       ? ""
       : (this.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim();
+  }
+  _hideSource() {
+    this.codeEditor.removeEventListener(
+      "value-changed",
+      this._handleSourceChange
+    );
+    this.codeEditor.remove();
+    //this.toolbar.show = true;
   }
   /**
    * determines if editor is empty
@@ -240,6 +266,26 @@ class RichTextEditor extends LitElement {
   rootNode() {
     return !this.__selection ? document : this.__selection.getRoot(this);
   }
+
+  /**
+   * sanitizesHTML
+   * override this function to make your own filters
+   *
+   * @param {string} html html to be pasted
+   * @returns {string} filtered html as string
+   */
+  sanitizeHTML(html) {
+    let regex = "<body(.*\n)*>(.*\n)*</body>";
+    if (html.match(regex) && html.match(regex).length > 0)
+      html = html.match(regex)[0].replace(/<\?body(.*\n)*\>/i);
+    return html;
+  }
+  /**
+   * sets html of editor
+   *
+   * @param {string} [rawhtml=""]
+   * @memberof RichTextEditor
+   */
   setHTML(rawhtml = "") {
     this.innerHTML = rawhtml.trim();
     this.setCancelHTML(rawhtml.trim());
@@ -254,6 +300,12 @@ class RichTextEditor extends LitElement {
    */
   setCancelHTML(html = this.innerHTML) {
     this.__canceledEdits = html || "";
+  }
+  _showSource() {
+    this.parentNode.insertBefore(this.codeEditor, this.nextElementSibling);
+    this.codeEditor.value = this.innerHTML;
+    this.codeEditor.addEventListener("value-changed", this._handleSourceChange);
+    //this.toolbar.show = false;
   }
   /**
    * gets trimmed version of innerHTML
@@ -329,6 +381,16 @@ class RichTextEditor extends LitElement {
       })
     );
     e.preventDefault();
+  }
+  /**
+   * updates editor content to code-editor value
+   *
+   * @param {event} e code-editor's value change event
+   * @memberof RichTextEditor
+   */
+  _handleSourceChange(e) {
+    if (this.codeEditor.value != this.innerHTML)
+      this.innerHTML = this.codeEditor.value;
   }
   _rangeChange(e) {}
 }

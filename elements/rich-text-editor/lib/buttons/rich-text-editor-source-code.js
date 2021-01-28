@@ -5,20 +5,20 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 /**
- * `rich-text-editor-more-button`
+ * `rich-text-editor-source-code`
  * a more button to toggle collapsed buttons in the rich text editor
  *
- * @element rich-text-editor-more-button
+ * @element rich-text-editor-source-code
  * @demo ./demo/buttons.html
  */
-class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
+class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
   LitElement
 ) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
-    return "rich-text-editor-more-button";
+    return "rich-text-editor-source-code";
   }
 
   // render function for template
@@ -28,10 +28,13 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
 
   constructor() {
     super();
-    this.icon = "more-vert";
+    this.icon = "code";
     this.toggled = false;
-    this.label = "More buttons";
-    this.labelToggled = "Fewer buttons";
+    this.label = "Source Code";
+    this.labelToggled = "Rich Text";
+    this.command = "viewSource";
+    this.commandVal = true;
+    this.toggledCommandVal = false;
   }
 
   // properties available to the custom element for data binding
@@ -60,14 +63,16 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
   }
 
   /**
-   * Fires a button tap event
+   * Handles button tap
    */
-  _handleClick() {
-    return true;
+  _handleClick(e) {
+    this.toggled = !this.isToggled;
+    console.log(this.toggled);
+    super._handleClick(e);
   }
 }
 window.customElements.define(
-  RichTextEditorMoreButton.tag,
-  RichTextEditorMoreButton
+  RichTextEditorSourceCode.tag,
+  RichTextEditorSourceCode
 );
-export { RichTextEditorMoreButton };
+export { RichTextEditorSourceCode };

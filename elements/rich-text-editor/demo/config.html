@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>RichTextEditor: Configuring rich-text-editor toolbar</title>
-    
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
@@ -19,7 +19,7 @@
   <body>
     <div class="vertical-section-container centered">
       <h1>Configuring rich-text-editor toolbar</h1>
-      <!--demo-snippet>
+      <demo-snippet>
         <template>
           <rich-text-editor-toolbar-full id="editor" show="always" sticky controls="content"></rich-text-editor-toolbar-full>
           <rich-text-editor id="content" toolbar="editor">
@@ -68,41 +68,12 @@
             </p>
           </rich-text-editor>
           <script>
-            document.getElementById('editor').config = [
+            let editor =
+            document.getElementById('editor');
+            editor.config = [
+              editor.saveCloseButtonGroup,
+              editor.historyButtonGroup,
               {
-                "label": "Close Editor",
-                "type": "button-group",
-                "buttons": [
-                  {
-                    "command": "save",
-                    "icon": "save",
-                    "label": "Save",
-                    "type": "rich-text-editor-button"
-                  },{
-                    "command": "cancel",
-                    "icon": "close",
-                    "label": "Cancel",
-                    "type": "rich-text-editor-button"
-                  }
-                ]
-              },{
-                "label": "History",
-                "type": "button-group",
-                "buttons": [
-                  {
-                    "command": "undo",
-                    "icon": "undo",
-                    "label": "Undo",
-                    "type": "rich-text-editor-button"
-                  },{
-                    "command": "redo",
-                    "icon": "redo",
-                    "label": "Redo",
-                    "type": "rich-text-editor-button"
-                  }
-                ]
-              },{
-                "label": "Basic Inline Operations",
                 "type": "button-group",
                 "buttons": [
                   {
@@ -117,112 +88,30 @@
                     ],
                     "type": "rich-text-editor-heading-picker" 
                   },
-                  {
-                    "command": "bold",
-                    "icon": "editor:format-bold",
-                    "label": "Bold",
-                    "toggles": true,
-                    "type": "rich-text-editor-button"
-                  },{
-                    "command": "italic",
-                    "icon": "editor:format-italic",
-                    "label": "Italics",
-                    "toggles": true,
-                    "type": "rich-text-editor-button"
-                  },{
-                    "type": "rich-text-editor-underline"
-                  },{
-                    "command": "removeFormat",
-                    "icon": "editor:format-clear",
-                    "label": "Erase Format",
-                    "type": "rich-text-editor-button"
-                  }
+                  editor.boldButton,
+                  editor.italicButton,
+                  editor.removeFormatButton
                 ]
-              },{
-                "label": "Links",
-                "type": "button-group",
-                "buttons": [{ "type": "rich-text-editor-link" }
-                ]
-              },{
-                "label": "Clipboard Operations",
+              },
+              editor.linkButtonGroup,
+              editor.clipboardButtonGroup,
+              {
                 "type": "button-group",
                 "buttons": [
-                  {
-                    "command": "cut",
-                    "icon": "content-cut",
-                    "label": "Cut",
-                    "type": "rich-text-editor-button"
-                  },
-                  {
-                    "command": "copy",
-                    "icon": "content-copy",
-                    "label": "Copy",
-                    "type": "rich-text-editor-button"
-                  },
-                  {
-                    "command": "paste",
-                    "icon": "content-paste",
-                    "label": "Paste",
-                    "type": "rich-text-editor-button"
-                  }
-                ]
-              },{
-                "label": "Insertions",
-                "type": "button-group",
-                "buttons": [
-                  {
-                    "type": "rich-text-editor-image"
-                  },{ 
-                    "icon": "editor:functions",
-                    "label": "Insert Symbol", 
-                    "type": "rich-text-editor-symbol-picker" 
-                  },{ 
+                  ...(editopr.insertButtonGroup || {buttons: []}).buttons,
+                  { 
                     "icon": "image:tag-faces",
                     "label": "Insert Emoji", 
                     "type": "rich-text-editor-emoji-picker" 
                   }
                 ]
-              },{
-                "label": "Lists and Indents",
-                "type": "button-group",
-                "buttons": [
-                  {
-                    "command": "insertOrderedList",
-                    "icon": "editor:format-list-numbered",
-                    "label": "Ordered List",
-                    "toggles": true,
-                    "type": "rich-text-editor-button"
-                  },{
-                    "command": "insertUnorderedList",
-                    "icon": "editor:format-list-bulleted",
-                    "label": "Unordered List",
-                    "toggles": true,
-                    "type": "rich-text-editor-button"
-                  },{ 
-                    "command": "formatBlock",
-                    "commandVal": "<blockquote>",
-                    "label": "Blockquote", 
-                    "icon": "editor:format-quote",
-                    "type": "rich-text-editor-button" 
-                  },{
-                    "label": "Increase Indent",
-                    "icon": "editor:format-indent-increase",
-                    "event": "text-indent",
-                    "command": "indent",
-                    "type": "rich-text-editor-button"
-                  },{
-                    "label": "Decrease Indent",
-                    "icon": "editor:format-indent-decrease",
-                    "event": "text-outdent",
-                    "command": "outdent",
-                    "type": "rich-text-editor-button"
-                  }
-                ]
-              }
+              },
+              editor.listIndentButtonGroup,
+              editor.sourceButton,
             ]; 
           </script>
         </template>
-      </demo-snippet-->
+      </demo-snippet>
       <demo-snippet>
         <template>          
           <rich-text-editor-toolbar-mini id="editor" show="selection" sticky controls="content"></rich-text-editor-toolbar-mini>

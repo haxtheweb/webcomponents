@@ -53,6 +53,13 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     static get properties() {
       return {
         ...super.properties,
+        /**
+         * Optional callback function, ex: (toolbar,editor,selection) => {}.
+         */
+        callback: {
+          type: Object,
+          attribute: "callback",
+        },
 
         /**
          * The command used for document.execCommand.
@@ -131,6 +138,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       super();
       this.__selection = window.RichTextEditorSelection.requestAvailability();
       this.tagsList = "";
+      this.callback = (toolbar, editor, selection) => {};
     }
 
     /**
@@ -170,51 +178,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
 
     get tagsArray() {
       return (this.tagsList || "").replace(/\s*/g, "").toLowerCase().split(",");
-    }
-
-    /**
-     * gets valid commands list
-     *
-     * @readonly
-     * @memberof RichTextEditorButton
-     */
-    get validCommands() {
-      return [
-        "backColor",
-        "bold",
-        "createLink",
-        "copy",
-        "cut",
-        "defaultParagraphSeparator",
-        "delete",
-        "fontName",
-        "fontSize",
-        "foreColor",
-        "formatBlock",
-        "forwardDelete",
-        "insertHorizontalRule",
-        "insertHTML",
-        "insertImage",
-        "insertLineBreak",
-        "insertOrderedList",
-        "insertParagraph",
-        "insertText",
-        "insertUnorderedList",
-        "justifyCenter",
-        "justifyFull",
-        "justifyLeft",
-        "justifyRight",
-        "outdent",
-        "paste",
-        "redo",
-        "selectAll",
-        "strikethrough",
-        "styleWithCss",
-        "superscript",
-        "undo",
-        "unlink",
-        "useCSS",
-      ];
     }
     firstUpdated(changedProperties) {
       if (super.firstUpdated) {
@@ -425,6 +388,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
             command: command,
             commandVal: commandVal,
             range: range,
+            button: this,
           },
         })
       );

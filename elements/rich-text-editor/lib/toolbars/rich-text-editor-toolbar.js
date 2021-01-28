@@ -56,255 +56,289 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     static get styles() {
       return [...this.baseStyles, ...super.stickyStyles];
     }
+    get undoButton() {
+      return {
+        command: "undo",
+        icon: "undo",
+        label: "Undo",
+        shortcutKeys: "ctrl+z",
+        type: "rich-text-editor-button",
+      };
+    }
+    get redoButton() {
+      return {
+        command: "redo",
+        icon: "redo",
+        label: "Redo",
+        shortcutKeys: "ctrl+shift+z",
+        type: "rich-text-editor-button",
+      };
+    }
+    get historyButtonGroup() {
+      return {
+        type: "button-group",
+        buttons: [this.undoButton, this.redoButton],
+      };
+    }
+    get formatButton() {
+      return {
+        label: "Format",
+        type: "rich-text-editor-heading-picker",
+      };
+    }
+    get boldButton() {
+      return {
+        command: "bold",
+        icon: "editor:format-bold",
+        label: "Bold",
+        shortcutKeys: "ctrl+b",
+        toggles: true,
+        type: "rich-text-editor-button",
+      };
+    }
+    get italicButton() {
+      return {
+        command: "italic",
+        icon: "editor:format-italic",
+        label: "Italics",
+        shortcutKeys: "ctrl+i",
+        toggles: true,
+        type: "rich-text-editor-button",
+      };
+    }
+    get underlineButton() {
+      return { type: "rich-text-editor-underline" };
+    }
+    get removeFormatButton() {
+      return {
+        command: "removeFormat",
+        icon: "editor:format-clear",
+        label: "Erase Format",
+        type: "rich-text-editor-button",
+      };
+    }
+    get basicInlineButtonGroup() {
+      return {
+        type: "button-group",
+        buttons: [
+          this.formatButton,
+          this.boldButton,
+          this.italicButton,
+          this.removeFormatButton,
+        ],
+      };
+    }
+    get linkButton() {
+      return {
+        icon: "link",
+        label: "Link",
+        shortcutKeys: "ctrl+k",
+        type: "rich-text-editor-link",
+      };
+    }
+    get linkButtonGroup() {
+      return {
+        type: "button-group",
+        buttons: [this.linkButton],
+      };
+    }
+    get cutButton() {
+      return {
+        command: "cut",
+        icon: "content-cut",
+        label: "Cut",
+        shortcutKeys: "ctrl+x",
+        type: "rich-text-editor-button",
+      };
+    }
+    get copyButton() {
+      return {
+        command: "copy",
+        icon: "content-copy",
+        label: "Copy",
+        shortcutKeys: "ctrl+c",
+        type: "rich-text-editor-button",
+      };
+    }
+    get pasteButton() {
+      return {
+        command: "paste",
+        icon: "content-paste",
+        label: "Paste",
+        shortcutKeys: "ctrl+v",
+        type: "rich-text-editor-button",
+      };
+    }
+    get clipboardButtonGroup() {
+      return {
+        type: "button-group",
+        buttons: [this.cutButton, this.copyButton, this.pasteButton],
+      };
+    }
+    get subscriptButton() {
+      return {
+        command: "subscript",
+        icon: "mdextra:subscript",
+        label: "Subscript",
+        toggles: true,
+        type: "rich-text-editor-button",
+      };
+    }
+    get superscriptButton() {
+      return {
+        command: "superscript",
+        icon: "mdextra:superscript",
+        label: "Superscript",
+        toggles: true,
+        type: "rich-text-editor-button",
+      };
+    }
+    get scriptButtonGroup() {
+      return {
+        type: "button-group",
+        buttons: [this.subscriptButton, this.superscriptButton],
+      };
+    }
+    get symbolButton() {
+      return {
+        symbolTypes: ["symbols"],
+        type: "rich-text-editor-symbol-picker",
+      };
+    }
+    get emojiButton() {
+      return {
+        type: "rich-text-editor-emoji-picker",
+      };
+    }
+    get imageButton() {
+      return {
+        type: "rich-text-editor-image",
+      };
+    }
+    get insertButtonGroup() {
+      return {
+        type: "button-group",
+        buttons: [this.imageButton, this.symbolButton],
+      };
+    }
+    get orderedListButton() {
+      return {
+        command: "insertOrderedList",
+        icon: "editor:format-list-numbered",
+        label: "Ordered List",
+        toggles: true,
+        type: "rich-text-editor-button",
+      };
+    }
+    get unorderedListButton() {
+      return {
+        command: "insertUnorderedList",
+        icon: "editor:format-list-bulleted",
+        label: "Unordered List",
+        toggles: true,
+        type: "rich-text-editor-button",
+      };
+    }
+    get blockquoteButton() {
+      return {
+        command: "formatBlock",
+        commandVal: "blockquote",
+        label: "Blockquote",
+        icon: "editor:format-quote",
+        shortcutKeys: "ctrl+'",
+        type: "rich-text-editor-button",
+      };
+    }
+    get indentButton() {
+      return {
+        command: "indent",
+        icon: "editor:format-indent-increase",
+        event: "text-indent",
+        label: "Increase Indent",
+        shortcutKeys: "ctrl+]",
+        type: "rich-text-editor-button",
+      };
+    }
+    get outdentButton() {
+      return {
+        command: "outdent",
+        event: "text-outdent",
+        icon: "editor:format-indent-decrease",
+        label: "Decrease Indent",
+        shortcutKeys: "ctrl+[",
+        type: "rich-text-editor-button",
+      };
+    }
+    get listIndentButtonGroup() {
+      return {
+        type: "button-group",
+        buttons: [
+          this.orderedListButton,
+          this.unorderedListButton,
+          this.blockquoteButton,
+          this.indentButton,
+          this.outdentButton,
+        ],
+      };
+    }
+    get saveButton() {
+      return {
+        command: "save",
+        icon: "save",
+        label: "Save",
+        type: "rich-text-editor-button",
+      };
+    }
+    get closeButton() {
+      return {
+        command: "cancel",
+        icon: "close",
+        label: "Cancel",
+        type: "rich-text-editor-button",
+      };
+    }
+    get saveCloseButtonGroup() {
+      return {
+        type: "button-group",
+        buttons: [this.saveButton],
+      };
+    }
+    get sourceButton() {
+      return { type: "rich-text-editor-source-code" };
+    }
+    get sourceButtonGroup() {
+      return {
+        type: "button-group",
+        buttons: [this.sourceButton],
+      };
+    }
     get defaultConfig() {
       return [
-        {
-          label: "History",
-          type: "button-group",
-          buttons: [
-            {
-              command: "undo",
-              icon: "undo",
-              label: "Undo",
-              shortcutKeys: "ctrl+z",
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "redo",
-              icon: "redo",
-              label: "Redo",
-              shortcutKeys: "ctrl+shift+z",
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
-        {
-          label: "Basic Inline Operations",
-          type: "button-group",
-          buttons: [
-            {
-              label: "Format",
-              type: "rich-text-editor-heading-picker",
-            },
-            {
-              command: "bold",
-              icon: "editor:format-bold",
-              label: "Bold",
-              shortcutKeys: "ctrl+b",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "italic",
-              icon: "editor:format-italic",
-              label: "Italics",
-              shortcutKeys: "ctrl+i",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "removeFormat",
-              icon: "editor:format-clear",
-              label: "Erase Format",
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
-        {
-          label: "Links",
-          type: "button-group",
-          buttons: [
-            {
-              icon: "link",
-              label: "Link",
-              shortcutKeys: "ctrl+k",
-              type: "rich-text-editor-link",
-            },
-          ],
-        },
-        {
-          label: "Clipboard Operations",
-          type: "button-group",
-          buttons: [
-            {
-              command: "cut",
-              icon: "content-cut",
-              label: "Cut",
-              shortcutKeys: "ctrl+x",
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "copy",
-              icon: "content-copy",
-              label: "Copy",
-              shortcutKeys: "ctrl+c",
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "paste",
-              icon: "content-paste",
-              label: "Paste",
-              shortcutKeys: "ctrl+v",
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
-        {
-          label: "Subscript and Superscript",
-          type: "button-group",
-          buttons: [
-            {
-              command: "subscript",
-              icon: "mdextra:subscript",
-              label: "Subscript",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "superscript",
-              icon: "mdextra:superscript",
-              label: "Superscript",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
-        {
-          icon: "editor:functions",
-          label: "Insert Symbol",
-          symbolTypes: ["symbols"],
-          type: "rich-text-editor-symbol-picker",
-        },
-        {
-          label: "Lists and Indents",
-          type: "button-group",
-          buttons: [
-            {
-              command: "insertOrderedList",
-              icon: "editor:format-list-numbered",
-              label: "Ordered List",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "insertUnorderedList",
-              icon: "editor:format-list-bulleted",
-              label: "Unordered List",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "formatBlock",
-              commandVal: "blockquote",
-              label: "Blockquote",
-              icon: "editor:format-quote",
-              shortcutKeys: "ctrl+'",
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "indent",
-              icon: "editor:format-indent-increase",
-              event: "text-indent",
-              label: "Increase Indent",
-              shortcutKeys: "ctrl+]",
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "outdent",
-              event: "text-outdent",
-              icon: "editor:format-indent-decrease",
-              label: "Decrease Indent",
-              shortcutKeys: "ctrl+[",
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
+        this.historyButtonGroup,
+        this.basicInlineButtonGroup,
+        this.linkButtonGroup,
+        this.clipboardButtonGroup,
+        this.scriptButtonGroup,
+        this.insertButtonGroup,
+        this.listIndentButtonGroup,
       ];
     }
 
     get miniConfig() {
       return [
         {
-          label: "Basic Inline Operations",
           type: "button-group",
           buttons: [
-            {
-              command: "bold",
-              icon: "editor:format-bold",
-              label: "Bold",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "italic",
-              icon: "editor:format-italic",
-              label: "Italics",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "removeFormat",
-              icon: "editor:format-clear",
-              label: "Erase Format",
-              type: "rich-text-editor-button",
-            },
+            this.boldButton,
+            this.italicButton,
+            this.removeFormatButton,
           ],
         },
+        this.linkButtonGroup,
+        this.scriptButtonGroup,
         {
-          label: "Links",
           type: "button-group",
-          buttons: [
-            {
-              command: "link",
-              icon: "link",
-              label: "Link",
-              toggledCommand: "unlink",
-              toggledIcon: "mdextra:unlink",
-              toggledLabel: "Unink",
-              toggles: true,
-              type: "rich-text-editor-link",
-            },
-          ],
-        },
-        {
-          label: "Subscript and Superscript",
-          type: "button-group",
-          buttons: [
-            {
-              command: "subscript",
-              icon: "mdextra:subscript",
-              label: "Subscript",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "superscript",
-              icon: "mdextra:superscript",
-              label: "Superscript",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-          ],
-        },
-        {
-          label: "Lists and Indents",
-          type: "button-group",
-          buttons: [
-            {
-              command: "insertOrderedList",
-              icon: "editor:format-list-numbered",
-              label: "Ordered List",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-            {
-              command: "insertUnorderedList",
-              icon: "editor:format-list-bulleted",
-              label: "Unordered List",
-              toggles: true,
-              type: "rich-text-editor-button",
-            },
-          ],
+          buttons: [this.orderedListButton, this.unorderedListButton],
         },
       ];
     }
@@ -432,6 +466,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     constructor() {
       super();
       import("../buttons/rich-text-editor-button.js");
+      import("../buttons/rich-text-editor-source-code.js");
       import("../buttons/rich-text-editor-heading-picker.js");
       import("../buttons/rich-text-editor-symbol-picker.js");
       import("../buttons/rich-text-editor-underline.js");
@@ -503,6 +538,23 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       );
     }
     /**
+     * closes toolbar
+     *
+     * @param {object} editor connected rich-text-editor
+     */
+    close() {
+      this.dispatchEvent(
+        new CustomEvent("disableediting", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      ); //if (editor) this.disableEditing(editor);
+      this.editor = undefined;
+      document.body.append(this);
+    }
+    /**
      * uses selection to create a range placeholder that keeps range highlighted
      *
      * @param {boolean} [add=true] add highlight?
@@ -532,6 +584,25 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           detail: {
             remove: remove,
             toolbar: this,
+          },
+        })
+      );
+    }
+    /**
+     * selects a given node inside connected editor
+     *
+     * @param {object} node
+     * @returns {void}
+     */
+    setRange(range) {
+      this.dispatchEvent(
+        new CustomEvent("setrange", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            editor: this.editor,
+            range: range,
           },
         })
       );
