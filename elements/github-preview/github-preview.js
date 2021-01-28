@@ -308,6 +308,12 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
             description: "Repo machine name",
             inputMethod: "textfield",
           },
+          {
+            property: "extended",
+            title: "Extended View",
+            description: "Includes readme in element",
+            inputMethod: "boolean"
+          }
         ],
         advanced: [],
       },
@@ -342,6 +348,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
                     href="${this.url}/${this.org}"
                     target="_blank"
                     rel="noopener noreferrer"
+                    @click="${this._clickLink}"
                   >
                     ${this.org}
                   </a>
@@ -350,6 +357,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
                     href="${this.url}/${this.org}/${this.repo}"
                     target="_blank"
                     rel="noopener noreferrer"
+                    @click="${this._clickLink}"
                   >
                     ${this.repo}
                   </a>
@@ -388,6 +396,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
               href="${this.url}/${this.org}/${this.repo}"
               target="_blank"
               rel="noopener noreferrer"
+              @click="${this._clickLink}"
             >
               <div class="container">
                 <div class="header-container">
@@ -495,6 +504,31 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       this.repoLang = response.language;
       this.__stars = response.stargazers_count;
       this.__forks = response.forks;
+    }
+  }
+
+  haxHooks(){
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    }
+  }
+
+  haxactiveElementChanged(element, value){
+    if (value){
+      this._haxstate = value;
+    }
+  }
+
+  haxeditModeChanged(value) {
+    this._haxstate = value;
+  }
+
+  _clickLink(event){
+    if (this._haxstate){
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
     }
   }
 
