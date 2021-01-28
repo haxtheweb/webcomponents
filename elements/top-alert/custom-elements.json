@@ -1,0 +1,29 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "top-alert",
+      "path": "./src/top-alert.js",
+      "description": "`top-alert`\n`A full width alert that has an important message for the website viewer`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "top-alert",
+      "path": "./top-alert.js",
+      "description": "`top-alert`\n`A full width alert that has an important message for the website viewer`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

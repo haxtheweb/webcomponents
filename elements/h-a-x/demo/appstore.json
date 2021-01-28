@@ -900,63 +900,6 @@
           }
         }
       }
-    },
-    {
-      "details": {
-        "title": "Wikipedia",
-        "icon": "account-balance",
-        "color": "grey",
-        "author": "Wikimedia",
-        "description": "Encyclopedia of the world.",
-        "status": "available",
-        "tags": ["content", "encyclopedia", "wiki"]
-      },
-      "connection": {
-        "protocol": "https",
-        "url": "en.wikipedia.org",
-        "data": {
-          "action": "query",
-          "list": "search",
-          "format": "json",
-          "origin": "*"
-        },
-        "operations": {
-          "browse": {
-            "method": "GET",
-            "endPoint": "w/api.php",
-            "pagination": {
-              "style": "offset",
-              "props": {
-                "offset": "sroffset"
-              }
-            },
-            "search": {
-              "srsearch": {
-                "title": "Search",
-                "type": "string"
-              }
-            },
-            "data": {},
-            "resultMap": {
-              "image": "https://en.wikipedia.org/static/images/project-logos/enwiki.png",
-              "defaultGizmoType": "wikipedia",
-              "items": "query.search",
-              "preview": {
-                "title": "title",
-                "details": "snippet",
-                "id": "title"
-              },
-              "gizmo": {
-                "_url_source": "https://en.wikipedia.org/wiki/<%= id %>",
-                "id": "title",
-                "title": "title",
-                "caption": "snippet",
-                "description": "snippet"
-              }
-            }
-          }
-        }
-      }
     }
   ],
   "stax": [
@@ -1525,6 +1468,8 @@
     }
   ],
   "autoloader": {
+    "github-preview": "@lrnwebcomponents/github-preview/github-preview.js",
+    "activity-box": "@lrnwebcomponents/course-design/lib/activity-box.js",
     "block-quote": "@lrnwebcomponents/course-design/lib/block-quote.js",
     "ebook-button": "@lrnwebcomponents/course-design/lib/ebook-button.js",
     "worksheet-download": "@lrnwebcomponents/course-design/lib/worksheet-download.js",

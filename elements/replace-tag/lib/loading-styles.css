@@ -1,0 +1,82 @@
+/** laser loading effect **/
+*[laser-loader]:not([loaded])::before, *[laser-loader]:not([loaded])::after {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  color: var(--laserEdgeAni-color1, #75cf6e);
+  box-shadow: inset 0 0 0 2px;
+  animation: laserEdge 10s linear infinite;
+}
+
+/** base, inset line **/
+*[laser-loader]:not([loaded]) {
+  opacity: 1;
+  visibility: visible;
+  transform-style: preserve-3d;
+  box-shadow: inset 0 0 0 1px rgba(105, 202, 98, 0.2);
+}
+
+/** this makees it so that 2 animations kick off in each direction **/
+*[laser-loader]:not([loaded])::before {
+  animation-delay: -5s;
+}
+
+/** debug laser spacing / styles **/
+/*[laser-loader]:not([loaded]):hover::after,
+[laser-loader]:not([loaded]):hover::before {
+  background-color: rgba(255, 0, 0, 0.6);
+}*/
+/** Laser chasing edge **/
+@keyframes laserEdge {
+  0%,100% {
+    clip: rect(0px, var(--laserEdgeAni-width, 300px), 2px, 0px);
+    color: var(--laserEdgeAni-color1, #75cf6e);
+  }
+
+  25% {
+    clip: rect(0px, 2px, var(--laserEdgeAni-height, 200px), 0px);
+    color: var(--laserEdgeAni-color2, #2bff00aa);
+  }
+
+  50% {
+    clip: rect(var(--laserEdgeAni-innerHeight, 198px), var(--laserEdgeAni-width, 300px), var(--laserEdgeAni-height, 200px), 0px);
+    color: var(--laserEdgeAni-color1, #75cf6e);
+  }
+
+  75% {
+    clip: rect(0px, var(--laserEdgeAni-width, 300px), var(--laserEdgeAni-height, 200px), var(--laserEdgeAni-innerWidth, 298px));
+    color: var(--laserEdgeAni-color2, #2bff00aa);
+  }
+}
+
+/** pop up effect, not loaded **/
+*[popup-loader]:defined:not([loaded]) {
+  opacity: .4;
+  visibility: visible;
+  transform-style: preserve-3d;
+  perspective: 1600px;
+}
+
+replace-tag[popup-loader]:defined {
+  opacity: .8 !important;
+}
+
+/** loaded, so fire the pop up animation **/
+*[popup-loader][loaded]:defined {
+  opacity: 1;
+  visibility: visible;
+  animation: popup .4s ease-in forwards;
+}
+
+@keyframes popup {
+  0% { opacity: .2; transform: scale(.25);}
+
+  70% { transform: scale(1.1); opacity: .8; animation-timing-function: ease-out; }
+
+  100% { transform: scale(1); opacity: 1; }
+}

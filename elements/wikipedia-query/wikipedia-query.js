@@ -38,6 +38,9 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   constructor() {
     super();
     this.hideTitle = false;
+    this.headers = {
+      cache: "force-cache",
+    };
     let date = new Date(Date.now());
     this.__now =
       date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
@@ -52,7 +55,9 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   // LitElement render function
   render() {
     return html` ${this.elementVisible
-      ? html` <h3 .hidden="${this.hideTitle}">${this._title}</h3>
+      ? html` <h3 .hidden="${this.hideTitle}" part="heading-3">
+            ${this._title}
+          </h3>
           <div id="result"></div>
           <citation-element
             creator="{Wikipedia contributors}"
@@ -64,9 +69,10 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
           ></citation-element>`
       : ``}`;
   }
-  updateArticle(search) {
+  updateArticle(search, headers) {
     fetch(
-      `https://en.wikipedia.org/w/api.php?origin=*&action=query&titles=${search}&prop=extracts&format=json`
+      `https://en.wikipedia.org/w/api.php?origin=*&action=query&titles=${search}&prop=extracts&format=json`,
+      headers
     )
       .then((response) => {
         if (response.ok) return response.json();
@@ -85,14 +91,15 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         import("@lrnwebcomponents/citation-element/citation-element.js");
       }
       if (
-        ["elementVisible", "search"].includes(propName) &&
+        ["elementVisible", "search", "headers"].includes(propName) &&
         this.search &&
+        this.headers &&
         this.elementVisible
       ) {
         clearTimeout(this._debounce);
         this._debounce = setTimeout(() => {
-          this.updateArticle(this.search);
-        }, 25);
+          this.updateArticle(this.search, this.headers);
+        }, 10);
       }
       if (propName == "search") {
         if (this.title) {
@@ -124,6 +131,9 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
       _title: {
         type: String,
       },
+      headers: {
+        type: Object,
+      },
       /**
        * hideTitle
        */
@@ -136,6 +146,97 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
        */
       search: {
         type: String,
+      },
+    };
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      gizmoRegistration: "haxgizmoRegistration",
+    };
+  }
+  /**
+   * @see haxHooks: gizmoRegistration
+   */
+  haxgizmoRegistration(store) {
+    if (
+      store.appList.filter((el, i) => {
+        // ensure we don't double load the endpoint
+        if (el.connection.url === "en.wikipedia.org") {
+          return true;
+        }
+        return false;
+      }).length === 0
+    ) {
+      window.dispatchEvent(
+        new CustomEvent("hax-register-app", {
+          bubbles: false,
+          composed: false,
+          cancelable: false,
+          detail: this.haxAppDetails,
+        })
+      );
+    }
+  }
+  get haxAppDetails() {
+    return {
+      details: {
+        title: "Wikipedia",
+        icon: "account-balance",
+        color: "grey",
+        author: "Wikimedia",
+        description: "Encyclopedia of the world.",
+        status: "available",
+        tags: ["content", "encyclopedia", "wiki"],
+      },
+      connection: {
+        protocol: "https",
+        url: "en.wikipedia.org",
+        data: {
+          action: "query",
+          list: "search",
+          format: "json",
+          origin: "*",
+        },
+        operations: {
+          browse: {
+            method: "GET",
+            endPoint: "w/api.php",
+            pagination: {
+              style: "offset",
+              props: {
+                offset: "sroffset",
+              },
+            },
+            search: {
+              srsearch: {
+                title: "Search",
+                type: "string",
+              },
+            },
+            data: {},
+            resultMap: {
+              image:
+                "https://en.wikipedia.org/static/images/project-logos/enwiki.png",
+              defaultGizmoType: "wikipedia",
+              items: "query.search",
+              preview: {
+                title: "title",
+                details: "snippet",
+                id: "title",
+              },
+              gizmo: {
+                _url_source: "https://en.wikipedia.org/wiki/<%= id %>",
+                id: "title",
+                title: "title",
+                caption: "snippet",
+                description: "snippet",
+              },
+            },
+          },
+        },
       },
     };
   }

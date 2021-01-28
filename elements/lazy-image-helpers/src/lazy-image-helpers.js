@@ -6,7 +6,7 @@ import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-ico
 import { LitElement, html, css, svg } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-import { LoadingHelper } from "@lrnwebcomponents/loading-helpers/lib/LoadingHelper.js";
+import { LoadingHelper } from "@lrnwebcomponents/replace-tag/lib/LoadingHelper.js";
 // lazy image loading part of an element
 export const lazyImageLoader = function (SuperClass) {
   return class extends IntersectionObserverMixin(SuperClass) {
