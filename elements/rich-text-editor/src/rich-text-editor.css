@@ -26,33 +26,68 @@
 
 :host {
   display: block;
-  cursor: pointer;
-  min-height: 40px;
-  outline: var(--rich-text-editor-border-width, 2px) solid transparent;
 }
 
-:host(:empty) {
-  outline: var(--rich-text-editor-border-width, 2px) dashed var(--simple-toolbar-border-color);
-}
-
-:host(:hover),
-:host([contenteditable]){
-  outline: var(--rich-text-editor-border-width, 2px) solid var(--rich-text-editor-focus-color,blue);
-  padding: 2px;
-  margin: 2px 0;
-}
-
-:host(.heightmax[contenteditable]) {
+:host(.heightmax[editing]) {
   max-height: calc(100vh - 200px);
   overflow-y: scroll;
 }
 
-:host(:empty):before {
-  content: attr(placeholder);
-  padding: 0 5px;
+#container {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#placeholder {
+  display: none;
+  width: 100%;
+}
+
+#source, #wysiwyg {
+  margin: 0;
+  padding: 0;
+  min-height: 40px;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+}
+
+:host(:empty) #placeholder {
+  outline: var(--rich-text-editor-border-width, 1px) dashed var(--simple-toolbar-border-color);
+  margin: 10px;
+  width: calc(100% - 10px);
+}
+
+:host(:empty) #source:focus #placeholder,
+:host(:empty) #source:hover #placeholder {
   display: block;
-  z-index: -1;
-  color: var(--simple-toolbar-button-disabled-color);
+  margin: 0;
+  padding: 0;
+}
+
+#source:hover,
+#source:focus-within,
+:host(:not([editing][view-source])) #wysiwyg:hover,
+:host(:not([editing][view-source])) #wysiwyg:focus {
+  outline: var(--rich-text-editor-border-width, 2px) solid var(--rich-text-editor-focus-color,blue);
+}
+
+:host([editing][view-source]) #source, 
+:host([editing][view-source]) #wysiwyg {
+  resize: horizontal;
+  overflow: auto;
+  min-width: 5%;
+  max-width: 95%;
+  flex: 1 1 auto;
+  width: 50%;
+}
+
+:host([editing][view-source]) #wysiwyg {
+  cursor: not-allowed;
+  margin-right: 10px;
+  width: calc(50% - 10px);
 }
 
 *::selection .rich-text-editor-selection {

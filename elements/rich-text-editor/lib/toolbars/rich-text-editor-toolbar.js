@@ -7,6 +7,7 @@ import { SimpleToolbarBehaviors } from "@lrnwebcomponents/simple-toolbar/simple-
 import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import { RichTextStyles } from "../buttons/rich-text-editor-button.js";
 import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
+import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 
 const RichTextEditorToolbarBehaviors = function (SuperClass) {
   return class extends SimpleToolbarBehaviors(SuperClass) {
@@ -23,6 +24,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           :host {
             display: block;
             border: none;
+            background-color: transparent;
           }
           #floating {
             display: flex;
@@ -48,6 +50,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           :host {
             border: var(--simple-toolbar-border-width, 1px) solid
               var(--simple-toolbar-border-color, #ddd);
+            background-color: var(--simple-toolbar-button-bg, #ffffff);
           }
         `,
       ];
@@ -373,7 +376,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return {
         ...super.properties,
         /**
-         * `rich-text-editor` element that is currently in `contenteditable` mode
+         * `rich-text-editor` element that is currently in `editing` mode
          */
         editor: {
           name: "editor",
@@ -472,9 +475,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("../buttons/rich-text-editor-underline.js");
       import("../buttons/rich-text-editor-image.js");
       import("../buttons/rich-text-editor-link.js");
-      import(
-        "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js"
-      );
       this.config = this.defaultConfig;
       this.__clickableElements = {};
     }
@@ -703,11 +703,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     registerButton(button) {
       if (super.registerButton) super.registerButton(button);
-      //firefox doesn't allow for clipboard button
-      if (button.command === "paste" && !navigator.clipboard) button.remove();
       (button.tags || []).forEach(
         (tag) => (this.__clickableElements[tag] = button.handler)
       );
+      button.disabled = !this.editor;
+      //firefox doesn't allow for clipboard button
+      if (button.command === "paste" && !navigator.clipboard) button.remove();
     }
     /**
      * registers button when appended to toolbar
@@ -727,7 +728,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     _editorChange() {
       this.range = undefined;
-      if (this.c) {
+      if (this.breadcrumbs) {
         this.breadcrumbs.controls = this.controls;
         this.breadcrumbs.sticky = this.sticky;
         this.breadcrumbs.controls = this.controls;
@@ -738,6 +739,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             this.editor.nextSibling
           );
       }
+      this.buttons.forEach((button) => {
+        if (button.command !== "close") button.disabled = !this.editor;
+      });
+      console.log("editor change", !this.editor);
     }
 
     /**

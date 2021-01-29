@@ -24,9 +24,10 @@ class RichTextEditorSelection extends LitElement {
     return [
       "backColor",
       "bold",
-      "createLink",
       "copy",
+      "createLink",
       "cut",
+      "decreaseFontSize",
       "defaultParagraphSeparator",
       "delete",
       "fontName",
@@ -34,14 +35,19 @@ class RichTextEditorSelection extends LitElement {
       "foreColor",
       "formatBlock",
       "forwardDelete",
+      "hiliteColor",
+      "increaseFontSize",
+      "indent",
+      "insertBrOnReturn",
       "insertHorizontalRule",
       "insertHTML",
       "insertImage",
       "insertLineBreak",
       "insertOrderedList",
+      "insertUnorderedList",
       "insertParagraph",
       "insertText",
-      "insertUnorderedList",
+      "italic",
       "justifyCenter",
       "justifyFull",
       "justifyLeft",
@@ -49,9 +55,11 @@ class RichTextEditorSelection extends LitElement {
       "outdent",
       "paste",
       "redo",
+      "removeFormat",
       "selectAll",
       "strikethrough",
       "styleWithCss",
+      "subscript",
       "superscript",
       "undo",
       "unlink",
@@ -122,7 +130,7 @@ class RichTextEditorSelection extends LitElement {
   }
 
   /**
-   * disables contenteditable
+   * disables editing
    *
    * @param {object} editor
    * @memberof RichTextEditorSelection
@@ -130,6 +138,7 @@ class RichTextEditorSelection extends LitElement {
   disableEditing(editor) {
     if (!!editor) {
       this.getRoot(editor).onselectionchange = undefined;
+      editor.viewSource = false;
       editor.disableEditing();
       editor.makeSticky(false);
     }
@@ -352,7 +361,7 @@ class RichTextEditorSelection extends LitElement {
         div = document.createElement("div"),
         parent = range.commonAncestorContainer.parentNode,
         closest = parent.closest(
-          "[contenteditable=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])"
+          "[editing=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])"
         );
       if ((editor = closest)) {
         div.innerHTML = editor.sanitizeHTML(pasteContent);
@@ -402,6 +411,11 @@ class RichTextEditorSelection extends LitElement {
         editor.removeEventListener(handler, handlers[handler])
       );
     }
+    if (
+      (editor.__connectedToolbar.show =
+        "always" && !editor.__connectedToolbar.editor)
+    )
+      this.edit(editor);
     return editor.__connectedToolbar;
   }
   /**
@@ -415,16 +429,12 @@ class RichTextEditorSelection extends LitElement {
     let handlers = {
       command: (e) => {
         e.stopImmediatePropagation();
-        e.detail = e.detail || {};
-        this._handleCommand(
-          toolbar,
-          e.detail.command,
-          e.detail.commandVal,
-          e.detail.range
-        );
-        //optional callback so that custom buttons can perform custom toolbar and/or editor opperations
-        if (e.detail.button && e.detail.button.callback)
-          e.detail.button.callback(editor, toolbar, this).bind(e.detail.button);
+        let d = e.detail || {};
+        this._handleCommand(toolbar, d.command, d.commandVal, d.range);
+        // optional callback so that custom buttons can perform
+        // custom toolbar and/or editor opperations
+        if (d.button && d.button.commandCallback)
+          d.button.commandCallback(toolbar.editor, toolbar, this);
       },
       disableediting: (e) => this.disableEditing((e.detail || {}).editor),
       highlight: (e) => {
@@ -533,7 +543,7 @@ class RichTextEditorSelection extends LitElement {
       }
       if (editor) this.updateRange(editor);
     }
-    console.log("selectRange", range, select, window.getSelection());
+    //console.log("selectRange", range, select, window.getSelection());
     return range;
   }
   surroundRange(node, range) {
@@ -555,7 +565,7 @@ class RichTextEditorSelection extends LitElement {
         toolbar.selectionAncestors = editor.selectionAncestors;
         toolbar.range = range;
       }
-      console.log("updateRange", editor, range, toolbar.range);
+      //console.log("updateRange", editor, range, toolbar.range);
     }
   }
 
@@ -596,9 +606,9 @@ class RichTextEditorSelection extends LitElement {
    * @memberof RichTextEditorSelection
    */
   _handleCommand(toolbar, command, commandVal, range) {
-    let editor = toolbar.editor,
-      commandVal = editor.sanitizeHTML(commandVal);
+    let editor = toolbar.editor;
     if (this.validCommands.includes(command)) {
+      commandVal = editor ? editor.sanitizeHTML(commandVal) : commandVal;
       this.range = editor.range;
       this.updateRange(editor, range);
       this.selectRange(range, editor);
@@ -627,7 +637,7 @@ class RichTextEditorSelection extends LitElement {
         el = e.target || e.srcElement || { tagName: "" },
         evt = { detail: el },
         tagname = (el.tagName || "").toLowerCase();
-      if (els.includes(tagname)) {
+      if (tagname && els.includes(tagname)) {
         e.preventDefault();
         toolbar.__clickableElements[tagname](evt);
       }
@@ -656,7 +666,7 @@ class RichTextEditorSelection extends LitElement {
 
   _handleShortcutKeys(editor, e) {
     let toolbar = !editor ? undefined : this.getConnectedToolbar(editor);
-    if (editor.contenteditable) {
+    if (editor.editing) {
       let key = e.key;
       if (e.shiftKey) key = "shift+" + key;
       if (e.altKey) key = "alt+" + key;

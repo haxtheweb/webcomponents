@@ -9,13 +9,13 @@
     "attribute": "id"
   },
   /**
-   * Maps to contenteditable attribute
+   * Maps to editing attribute
    */
-  "contenteditable": {
-    "name": "contenteditable",
+  "editing": {
+    "name": "editing",
     "type": "Boolean",
     "reflect": true,
-    "attribute": "contenteditable"
+    "attribute": "editing"
   },
   /**
    * don't reveal toolbar on mouseover
@@ -97,17 +97,24 @@
   },
 
   /**
-   * code-editor for view source
-   */
-  "__codeEditor": {
-    "type": "Object"
-  },
-
-  /**
    * connected toolbar
    */
   "__connectedToolbar": {
     "type": "Object"
+  },
+
+  /**
+   * code-editor for view source
+   */
+  "__codeEditorValue": {
+    "type": "String"
+  },
+
+  /**
+   * has focus
+   */
+  "__needsUpdate": {
+    "type": "Boolean"
   },
 
   /**

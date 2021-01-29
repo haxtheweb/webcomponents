@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import { RichTextEditor } from "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
+import { RichTextEditorBehaviors } from "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
 import "./lib/hax-text-editor-toolbar.js";
 
 /**
@@ -18,38 +18,16 @@ import "./lib/hax-text-editor-toolbar.js";
  * @lit-element
  * @demo demo/index.html
  */
-class HaxTextEditor extends LitElement {
+class HaxTextEditor extends RichTextEditorBehaviors(LitElement) {
   //styles function
   static get styles() {
-    return [
-      css`
-        :host,
-        rich-text-editor {
-          display: block;
-          margin: 0;
-        }
-
-        :host([hidden]) {
-          display: none;
-          margin: 0;
-          padding: 0;
-        }
-      `,
-    ];
+    return [...(super.styles || [])];
   }
 
-  // render function
-  render() {
-    return html` <rich-text-editor
-      id="editor"
-      type="${this.type || "hax-text-editor-toolbar"}"
-      rawhtml="${this.rawhtml}"
-    ></rich-text-editor>`;
-  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...RichTextEditor.properties,
+      ...super.properties,
     };
   }
 
@@ -64,59 +42,27 @@ class HaxTextEditor extends LitElement {
   // life cycle
   constructor() {
     super();
-
+    this.haxUIElement = true;
     this.tag = HaxTextEditor.tag;
     this.type = "hax-text-editor-toolbar";
-    this.editable = false;
-    this.rawhtml = "";
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/hax-text-editor-properties.json
-    let obj = HaxTextEditor.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        } else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * allow HAX to toggle edit state when activated
+   */
+  haxactiveElementChanged(el, val) {
+    // overwrite the HAX dom w/ what our editor is supplying
+    if (!val && el) {
+      el.innerHTML = this.getValue();
     }
-  }
-
-  /**
-   * mutation observer
-   *
-   * @readonly
-   * @memberof RichTextEditor
-   */
-  get observer() {
-    return new MutationObserver(this.updateEditor);
-  }
-
-  updateEditor() {
-    this.rawhtml = this.innerHTML;
-  }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) super.firstUpdated(changedProperties);
-    this.updateEditor();
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    if (super.connectedCallback) super.connectedCallback();
-    this.observer.observe(this, {
-      attributes: false,
-      childList: true,
-      subtree: true,
-      characterData: true,
-    });
-  }
-  disconnectedCallback() {
-    if (super.disconnectedCallback) super.disconnectedCallback();
-    if (this.observer) this.observer.disconnect;
+    return el;
   }
 
   // attributeChangedCallback(attr, oldValue, newValue) {}

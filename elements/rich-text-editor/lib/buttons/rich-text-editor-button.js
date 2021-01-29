@@ -56,7 +56,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         /**
          * Optional callback function, ex: (toolbar,editor,selection) => {}.
          */
-        callback: {
+        commandCallback: {
           type: Object,
           attribute: "callback",
         },
@@ -138,7 +138,9 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       super();
       this.__selection = window.RichTextEditorSelection.requestAvailability();
       this.tagsList = "";
-      this.callback = (toolbar, editor, selection) => {};
+      this.commandCallback = (toolbar, editor, selection) => {
+        console.log(this);
+      };
     }
 
     /**

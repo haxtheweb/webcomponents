@@ -47,111 +47,52 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
   // life cycle
   constructor() {
     super();
-
     this.tag = HaxTextEditorToolbar.tag;
     this.sticky = false;
-    this.config = [
-      {
-        label: "Basic Inline Operations",
-        type: "button-group",
-        buttons: [
-          {
-            command: "bold",
-            icon: "editor:format-bold",
-            label: "Bold",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "italic",
-            icon: "editor:format-italic",
-            label: "Italics",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "removeFormat",
-            icon: "editor:format-clear",
-            label: "Erase Format",
-            type: "rich-text-editor-button",
-          },
-        ],
-      },
-      {
-        label: "Links",
-        type: "button-group",
-        buttons: [
-          {
-            command: "link",
-            icon: "link",
-            label: "Link",
-            toggledCommand: "unlink",
-            toggledIcon: "mdextra:unlink",
-            toggledLabel: "Unink",
-            toggles: true,
-            type: "rich-text-editor-link",
-          },
-        ],
-      } /*
-      {
-        label: "Subscript and Superscript",
-        type: "button-group",
-        buttons: [
-          {
-            command: "subscript",
-            icon: "mdextra:subscript",
-            label: "Subscript",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "superscript",
-            icon: "mdextra:superscript",
-            label: "Superscript",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-        ],
-      },*/,
-      {
-        label: "Hax Widgets",
-        type: "button-group",
-        buttons: [
-          {
-            element: LrnVocab,
-            type: "hax-text-editor-button",
-          },
-          {
-            element: LrnMath,
-            type: "hax-text-editor-button",
-          },
-          {
-            element: OerSchemaElement,
-            type: "hax-text-editor-button",
-          },
-        ],
-      },
-      {
-        label: "Lists and Indents",
-        type: "button-group",
-        buttons: [
-          {
-            command: "insertOrderedList",
-            icon: "editor:format-list-numbered",
-            label: "Ordered List",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "insertUnorderedList",
-            icon: "editor:format-list-bulleted",
-            label: "Unordered List",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-        ],
-      },
+    this.config = this.HaxEditConfig;
+  }
+
+  get HaxEditConfig() {
+    return [
+      this.basicInlineButtonGroup,
+      this.linkButtonGroup,
+      this.scriptButtonGroup,
+      this.listIndentButtonGroup,
+      this.widgetButtonGroup,
+      this.sourceButtonGroup,
     ];
+  }
+
+  get lrnVocabButton() {
+    return {
+      element: LrnVocab,
+      type: "hax-text-editor-button",
+    };
+  }
+
+  get LrnMathButton() {
+    return {
+      element: LrnMath,
+      type: "hax-text-editor-button",
+    };
+  }
+
+  get OerSchemaElementButton() {
+    return {
+      element: OerSchemaElement,
+      type: "hax-text-editor-button",
+    };
+  }
+
+  get widgetButtonGroup() {
+    return {
+      type: "button-group",
+      buttons: [
+        this.lrnVocabButton,
+        this.LrnMathButton,
+        this.OerSchemaElementButton,
+      ],
+    };
   }
 }
 customElements.define("hax-text-editor-toolbar", HaxTextEditorToolbar);

@@ -1,5 +1,18 @@
-<slot
+<div
+  id="container"
   @focus="${(e) => (this.__focused = true)}"
   @blur="${(e) => (this.__focused = false)}"
   @mouseover="${(e) => (this.__hovered = true)}"
-  @mouseout="${(e) => (this.__hovered = false)}"></slot>
+  @mouseout="${(e) => (this.__hovered = false)}">
+  <div id="wysiwyg">
+    <div id="placeholder" aria-placeholder="${this.placeholder}">${this.placeholder}</div>
+    <slot></slot>
+  </div>
+  <code-editor 
+    id="source"
+    font-size="13"
+    ?hidden="${!(this.viewSource && this.editing)}" 
+    language="html" 
+    @value-changed="${this._handleSourceChange}">
+  </code-editor>
+</div>

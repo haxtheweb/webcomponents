@@ -33,6 +33,7 @@ class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
     this.label = "Source Code";
     this.labelToggled = "Rich Text";
     this.command = "viewSource";
+    this.toggledCommand = "viewSource";
     this.commandVal = true;
     this.toggledCommandVal = false;
   }
