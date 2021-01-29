@@ -36,6 +36,13 @@ class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
     this.toggledCommand = "viewSource";
     this.commandVal = true;
     this.toggledCommandVal = false;
+    this.shortcutKeys = "cmd+<";
+    this.commandCallback = (editor, toolbar, selection) => {
+      if (editor) {
+        editor.viewSource = this.operationCommandVal;
+        this.toggled = editor.viewSource;
+      }
+    };
   }
 
   // properties available to the custom element for data binding
@@ -61,15 +68,6 @@ class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
    */
   get isToggled() {
     return this.toggled;
-  }
-
-  /**
-   * Handles button tap
-   */
-  _handleClick(e) {
-    this.toggled = !this.isToggled;
-    console.log(this.toggled);
-    super._handleClick(e);
   }
 }
 window.customElements.define(

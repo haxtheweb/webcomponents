@@ -591,7 +591,6 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
               return {
                 command: "indent",
                 icon: "editor:format-indent-increase",
-                event: "text-indent",
                 label: "Increase Indent",
                 shortcutKeys: "ctrl+]",
                 type: "rich-text-editor-button",
@@ -603,7 +602,6 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return {
                 command: "outdent",
-                event: "text-outdent",
                 icon: "editor:format-indent-decrease",
                 label: "Decrease Indent",
                 shortcutKeys: "ctrl+[",
@@ -1159,7 +1157,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
                 composed: true,
                 detail: range,
               })
-            ); //if (this.__selection) this.__selection.selectRange(range, this.editor);
+            );
           },
           /**
            * make an new editable element
@@ -1221,21 +1219,45 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
         {
           key: "registerButton",
           value: function registerButton(button) {
-            var _this3 = this;
-
+            console.log(button);
             if (_get(_getPrototypeOf(_class.prototype), "registerButton", this))
               _get(
                 _getPrototypeOf(_class.prototype),
                 "registerButton",
                 this
               ).call(this, button);
-            (button.tags || []).forEach(function (tag) {
-              return (_this3.__clickableElements[tag] = button.handler);
-            });
             button.disabled = !this.editor; //firefox doesn't allow for clipboard button
 
             if (button.command === "paste" && !navigator.clipboard)
               button.remove();
+          },
+          /**
+           * handles updated button
+           *
+           * @param {event} e
+           */
+        },
+        {
+          key: "_handleButtonUpdate",
+          value: function _handleButtonUpdate(e) {
+            var _this3 = this;
+
+            if (
+              _get(
+                _getPrototypeOf(_class.prototype),
+                "_handleButtonUpdate",
+                this
+              )
+            )
+              _get(
+                _getPrototypeOf(_class.prototype),
+                "_handleButtonUpdate",
+                this
+              ).call(this, e);
+            if (e.detail)
+              (e.detail.tags || []).forEach(function (tag) {
+                return (_this3.__clickableElements[tag] = e.detail.handler);
+              });
           },
           /**
            * registers button when appended to toolbar
@@ -1288,7 +1310,6 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             this.buttons.forEach(function (button) {
               if (button.command !== "close") button.disabled = !_this5.editor;
             });
-            console.log("editor change", !this.editor);
           },
           /**
            * Gets updated selected range.

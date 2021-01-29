@@ -618,8 +618,8 @@ const RichTextEditorBehaviors = function (SuperClass) {
      */
     _handleSourceChange(e) {
       if (!this.__needsUpdate) {
-        let code = !!e.detail.value ? e.detail.value : this.innerHTML,
-          html = this.innerHTML,
+        let html = `${this.innerHTML}`,
+          code = !!e.detail.value ? `${e.detail.value}` : html,
           cleanCode = this._outdentHTML(code).replace(/\s+/gm, ""),
           cleanHTML = this._outdentHTML(html).replace(/\s+/gm, "");
         this.__needsUpdate = cleanCode.localeCompare(cleanHTML);
@@ -627,21 +627,22 @@ const RichTextEditorBehaviors = function (SuperClass) {
           this.__needsUpdate = false;
           this.innerHTML = e.detail.value;
         };
-        if (this.__needsUpdate) setTimeout(update.bind(this), 500);
+        if (this.__needsUpdate) setTimeout(update.bind(this), 300);
       }
     }
     _outdentHTML(str = "") {
-      let match = this.sanitizeHTML(str)
-          .replace(/^[[\n\r]*/, "")
-          .replace(/[[\n\r]+/gm, "\n")
-          .match(/^\s+/),
+      str = this.sanitizeHTML(str)
+        .replace(/[\s]*$/, "")
+        .replace(/^[\n\r]*/, "")
+        .replace(/[\n\r]+/gm, "\n");
+      let match = str.match(/^\s+/),
         find = match ? match[0] : false,
-        regex = !find ? false : new RegExp(`\\n${find}`, "gm"),
-        clean = regex ? str.replace(/^\s+/, "").replace(regex, "\n ") : str;
-      return clean;
+        regex = !find ? false : new RegExp(`\\n${find}`, "gm");
+      str = str.replace(/^\s+/, "");
+      str = regex ? str.replace(regex, "\n ") : str;
+      return str;
     }
     _handleViewSourceChange() {
-      console.log(this, this.viewSource, this.innerHTML);
       let code = this.shadowRoot
         ? this.shadowRoot.querySelector("#source")
         : undefined;

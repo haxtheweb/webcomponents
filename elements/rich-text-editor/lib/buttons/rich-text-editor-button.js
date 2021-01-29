@@ -138,9 +138,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       super();
       this.__selection = window.RichTextEditorSelection.requestAvailability();
       this.tagsList = "";
-      this.commandCallback = (toolbar, editor, selection) => {
-        console.log(this);
-      };
+      this.commandCallback = (editor, toolbar, selection) => {};
     }
 
     /**
@@ -408,7 +406,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * Handles button tap
      */
     _handleClick(e) {
-      if (this.command == "bold") console.log("click", this, this.range);
       e.preventDefault();
       this.sendCommand();
     }
@@ -480,10 +477,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @param {object} newVal new range
      * @param {object} oldVal old range
      */
-    _rangeChanged(newVal, oldVal) {
-      if (this.command == "bold")
-        console.log("_rangeChanged", this, newVal, oldVal);
-    }
+    _rangeChanged(newVal, oldVal) {}
   };
 };
 /**

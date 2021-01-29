@@ -1036,13 +1036,14 @@ var RichTextEditorSelection =
             } else if (command === "close") {
               toolbar.close(editor);
             } else if (command === "viewSource") {
-              if (editor) editor.viewSource = commandVal;
             }
           },
         },
         {
           key: "_handleEditorClick",
           value: function _handleEditorClick(editor, e) {
+            console.log(editor.__focused);
+
             if (!editor.__focused) {
               editor.focus();
             } else {
@@ -1060,6 +1061,7 @@ var RichTextEditorSelection =
                   detail: el,
                 },
                 tagname = (el.tagName || "").toLowerCase();
+              console.log(tagname, els);
 
               if (tagname && els.includes(tagname)) {
                 e.preventDefault();

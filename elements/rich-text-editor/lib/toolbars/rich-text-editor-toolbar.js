@@ -256,7 +256,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return {
         command: "indent",
         icon: "editor:format-indent-increase",
-        event: "text-indent",
         label: "Increase Indent",
         shortcutKeys: "ctrl+]",
         type: "rich-text-editor-button",
@@ -265,7 +264,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get outdentButton() {
       return {
         command: "outdent",
-        event: "text-outdent",
         icon: "editor:format-indent-decrease",
         label: "Decrease Indent",
         shortcutKeys: "ctrl+[",
@@ -655,7 +653,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           detail: range,
         })
       );
-      //if (this.__selection) this.__selection.selectRange(range, this.editor);
     }
 
     /**
@@ -702,14 +699,25 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     registerButton(button) {
+      console.log(button);
       if (super.registerButton) super.registerButton(button);
-      (button.tags || []).forEach(
-        (tag) => (this.__clickableElements[tag] = button.handler)
-      );
       button.disabled = !this.editor;
       //firefox doesn't allow for clipboard button
       if (button.command === "paste" && !navigator.clipboard) button.remove();
     }
+    /**
+     * handles updated button
+     *
+     * @param {event} e
+     */
+    _handleButtonUpdate(e) {
+      if (super._handleButtonUpdate) super._handleButtonUpdate(e);
+      if (e.detail)
+        (e.detail.tags || []).forEach(
+          (tag) => (this.__clickableElements[tag] = e.detail.handler)
+        );
+    }
+
     /**
      * registers button when appended to toolbar
      *
@@ -742,7 +750,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.buttons.forEach((button) => {
         if (button.command !== "close") button.disabled = !this.editor;
       });
-      console.log("editor change", !this.editor);
     }
 
     /**

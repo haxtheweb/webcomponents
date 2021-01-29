@@ -91,13 +91,15 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
 
     registerTagClick() {
       this.dispatchEvent(
-        new CustomEvent("button-register", {
+        new CustomEvent("update-button-registry", {
           bubbles: true,
           cancelable: true,
           composed: true,
           detail: {
+            button: this,
             tags: this.tagsArray,
             handler: (e) => {
+              console.log(e);
               if (e.detail) {
                 this.highlightNode(e.detail);
                 this.selectedNode = e.detail;

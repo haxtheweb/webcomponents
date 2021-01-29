@@ -382,9 +382,7 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
         _this.__selection = window.RichTextEditorSelection.requestAvailability();
         _this.tagsList = "";
 
-        _this.commandCallback = function (toolbar, editor, selection) {
-          console.log(_assertThisInitialized(_this));
-        };
+        _this.commandCallback = function (editor, toolbar, selection) {};
 
         return _this;
       }
@@ -711,7 +709,6 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
         {
           key: "_handleClick",
           value: function _handleClick(e) {
-            if (this.command == "bold") console.log("click", this, this.range);
             e.preventDefault();
             this.sendCommand();
           },
@@ -802,10 +799,7 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
         },
         {
           key: "_rangeChanged",
-          value: function _rangeChanged(newVal, oldVal) {
-            if (this.command == "bold")
-              console.log("_rangeChanged", this, newVal, oldVal);
-          },
+          value: function _rangeChanged(newVal, oldVal) {},
         },
         {
           key: "isToggled",

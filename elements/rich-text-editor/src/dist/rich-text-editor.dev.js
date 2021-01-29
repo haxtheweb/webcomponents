@@ -135,7 +135,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n  :host([hidden]) {\n    display: none;\n  }\n  \n  :host {\n    --simple-toolbar-border-color: #ddd;\n    --simple-toolbar-border-width: 1px;\n    --simple-toolbar-button-opacity: 1;\n    --simple-toolbar-button-color: #444;\n    --simple-toolbar-bg: #ffffff;\n    --simple-toolbar-button-bg: #ffffff;\n    --simple-toolbar-button-border-color: transparent;\n    --simple-toolbar-button-toggled-opacity: 1;\n    --simple-toolbar-button-toggled-color: #222;\n    --simple-toolbar-button-toggled-bg: #ddd;\n    --simple-toolbar-button-toggled-border-color: transparent;\n    --simple-toolbar-button-hover-opacity: 1;\n    --simple-toolbar-button-hover-color: #000;\n    --simple-toolbar-button-hover-bg: #f0f0f0;\n    --simple-toolbar-button-hover-border-color: unset;\n    --simple-toolbar-button-disabled-opacity: 1;\n    --simple-toolbar-button-disabled-color: #666;\n    --simple-toolbar-button-disabled-bg: transparent;\n    --simple-toolbar-button-disabled-border-color: transparent;\n  }\n  \n  :host {\n    display: block;\n  }\n  \n  :host(.heightmax[editing]) {\n    max-height: calc(100vh - 200px);\n    overflow-y: scroll;\n  }\n  \n  #container {\n    display: flex;\n    align-items: stretch;\n    justify-content: space-between;\n    width: 100%;\n  }\n  #placeholder {\n    display: none;\n    width: 100%;\n  }\n  #source, #wysiwyg {\n    margin: 0;\n    padding: 0;\n    min-height: 40px;\n    cursor: pointer;\n    outline: none;\n    width: 100%;\n  }\n  :host(:empty) #placeholder {\n    outline: var(--rich-text-editor-border-width, 1px) dashed var(--simple-toolbar-border-color);\n    margin: 10px;\n    width: calc(100% - 10px);\n  }\n  \n  :host(:empty) #source:focus #placeholder,\n  :host(:empty) #source:hover #placeholder {\n    display: block;\n    margin: 0;\n    padding: 0;\n  }\n  \n  #source:hover,\n  #source:focus-within,\n  :host(:not([editing][view-source])) #wysiwyg:hover,\n  :host(:not([editing][view-source])) #wysiwyg:focus {\n    outline: var(--rich-text-editor-border-width, 2px) solid var(--rich-text-editor-focus-color,blue);\n  }\n  \n  :host([editing][view-source]) #source, \n  :host([editing][view-source]) #wysiwyg {\n    resize: horizontal;\n    overflow: auto;\n    min-width: 5%;\n    max-width: 95%;\n    flex: 1 1 auto;\n    width: 50%;\n  }\n  :host([editing][view-source]) #wysiwyg {\n    cursor: not-allowed;\n    margin-right: 10px;\n    width: calc(50% - 10px);\n  }\n  \n  *::selection .rich-text-editor-selection {\n    background-color: var(--rich-text-editor-selection-bg, rgb(146, 197, 255));\n  }\n  \n  ::slotted(*:first-child) {\n    margin-top: 0;\n  }\n  \n  ::slotted(*:last-child) {\n    margin-bottom: 0;\n  }\n        ",
+    "\n          :host([hidden]) {\n            display: none;\n          }\n\n          :host {\n            --simple-toolbar-border-color: #ddd;\n            --simple-toolbar-border-width: 1px;\n            --simple-toolbar-button-opacity: 1;\n            --simple-toolbar-button-color: #444;\n            --simple-toolbar-bg: #ffffff;\n            --simple-toolbar-button-bg: #ffffff;\n            --simple-toolbar-button-border-color: transparent;\n            --simple-toolbar-button-toggled-opacity: 1;\n            --simple-toolbar-button-toggled-color: #222;\n            --simple-toolbar-button-toggled-bg: #ddd;\n            --simple-toolbar-button-toggled-border-color: transparent;\n            --simple-toolbar-button-hover-opacity: 1;\n            --simple-toolbar-button-hover-color: #000;\n            --simple-toolbar-button-hover-bg: #f0f0f0;\n            --simple-toolbar-button-hover-border-color: unset;\n            --simple-toolbar-button-disabled-opacity: 1;\n            --simple-toolbar-button-disabled-color: #666;\n            --simple-toolbar-button-disabled-bg: transparent;\n            --simple-toolbar-button-disabled-border-color: transparent;\n          }\n\n          :host {\n            display: block;\n          }\n\n          :host(.heightmax[editing]) {\n            max-height: calc(100vh - 200px);\n            overflow-y: scroll;\n          }\n\n          #container {\n            display: flex;\n            align-items: stretch;\n            justify-content: space-between;\n            width: 100%;\n          }\n          #placeholder {\n            display: none;\n            width: 100%;\n          }\n          #source,\n          #wysiwyg {\n            margin: 0;\n            padding: 0;\n            min-height: 40px;\n            cursor: pointer;\n            outline: none;\n            width: 100%;\n          }\n          :host(:empty) #placeholder {\n            outline: var(--rich-text-editor-border-width, 1px) dashed\n              var(--simple-toolbar-border-color);\n            margin: 10px;\n            width: calc(100% - 10px);\n          }\n\n          :host(:empty) #source:focus #placeholder,\n          :host(:empty) #source:hover #placeholder {\n            display: block;\n            margin: 0;\n            padding: 0;\n          }\n\n          #source:hover,\n          #source:focus-within,\n          :host(:not([editing][view-source])) #wysiwyg:hover,\n          :host(:not([editing][view-source])) #wysiwyg:focus {\n            outline: var(--rich-text-editor-border-width, 2px) solid\n              var(--rich-text-editor-focus-color, blue);\n          }\n\n          :host([editing][view-source]) #source,\n          :host([editing][view-source]) #wysiwyg {\n            resize: horizontal;\n            overflow: auto;\n            min-width: 5%;\n            max-width: 95%;\n            flex: 1 1 auto;\n            width: 50%;\n          }\n          :host([editing][view-source]) #wysiwyg {\n            cursor: not-allowed;\n            margin-right: 10px;\n            width: calc(50% - 10px);\n          }\n\n          *::selection .rich-text-editor-selection {\n            background-color: var(\n              --rich-text-editor-selection-bg,\n              rgb(146, 197, 255)\n            );\n          }\n\n          ::slotted(*:first-child) {\n            margin-top: 0;\n          }\n\n          ::slotted(*:last-child) {\n            margin-bottom: 0;\n          }\n        ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -174,15 +174,15 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n  \n  <div\n    id="container"\n    @focus="',
-    '"\n    @blur="',
-    '"\n    @mouseover="',
-    '"\n    @mouseout="',
-    '">\n    <div id="wysiwyg">\n      <div id="placeholder" aria-placeholder="',
-    '">',
-    '</div>\n      <slot></slot>\n    </div>\n    <code-editor \n      id="source"\n      font-size="13"\n      ?hidden="',
-    '" \n      language="html" \n      @value-changed="',
-    '">\n    </code-editor>\n  </div>',
+    ' <div\n        id="container"\n        @focus="',
+    '"\n        @blur="',
+    '"\n        @mouseover="',
+    '"\n        @mouseout="',
+    '"\n      >\n        <div id="wysiwyg">\n          <div id="placeholder" aria-placeholder="',
+    '">\n            ',
+    '\n          </div>\n          <slot></slot>\n        </div>\n        <code-editor\n          id="source"\n          font-size="13"\n          ?hidden="',
+    '"\n          language="html"\n          @value-changed="',
+    '"\n        >\n        </code-editor>\n      </div>',
   ]);
 
   _templateObject = function _templateObject() {
@@ -959,8 +959,8 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
             var _this5 = this;
 
             if (!this.__needsUpdate) {
-              var code = !!e.detail.value ? e.detail.value : this.innerHTML,
-                _html = this.innerHTML,
+              var _html = "".concat(this.innerHTML),
+                code = !!e.detail.value ? "".concat(e.detail.value) : _html,
                 cleanCode = this._outdentHTML(code).replace(/\s+/gm, ""),
                 cleanHTML = this._outdentHTML(_html).replace(/\s+/gm, "");
 
@@ -971,7 +971,7 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
                 _this5.innerHTML = e.detail.value;
               };
 
-              if (this.__needsUpdate) setTimeout(update.bind(this), 500);
+              if (this.__needsUpdate) setTimeout(update.bind(this), 300);
             }
           },
         },
@@ -982,22 +982,21 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
               arguments.length > 0 && arguments[0] !== undefined
                 ? arguments[0]
                 : "";
-            var match = this.sanitizeHTML(str)
-                .replace(/^[[\n\r]*/, "")
-                .replace(/[[\n\r]+/gm, "\n")
-                .match(/^\s+/),
+            str = this.sanitizeHTML(str)
+              .replace(/[\s]*$/, "")
+              .replace(/^[\n\r]*/, "")
+              .replace(/[\n\r]+/gm, "\n");
+            var match = str.match(/^\s+/),
               find = match ? match[0] : false,
-              regex = !find ? false : new RegExp("\\n".concat(find), "gm"),
-              clean = regex
-                ? str.replace(/^\s+/, "").replace(regex, "\n ")
-                : str;
-            return clean;
+              regex = !find ? false : new RegExp("\\n".concat(find), "gm");
+            str = str.replace(/^\s+/, "");
+            str = regex ? str.replace(regex, "\n ") : str;
+            return str;
           },
         },
         {
           key: "_handleViewSourceChange",
           value: function _handleViewSourceChange() {
-            console.log(this, this.viewSource, this.innerHTML);
             var code = this.shadowRoot
               ? this.shadowRoot.querySelector("#source")
               : undefined;

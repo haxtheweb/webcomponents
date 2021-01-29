@@ -226,29 +226,21 @@ var RichTextEditorSourceCode =
       _this.toggledCommand = "viewSource";
       _this.commandVal = true;
       _this.toggledCommandVal = false;
+      _this.shortcutKeys = "cmd+<";
+
+      _this.commandCallback = function (editor, toolbar, selection) {
+        if (editor) {
+          editor.viewSource = _this.operationCommandVal;
+          _this.toggled = editor.viewSource;
+        }
+      };
+
       return _this;
     } // properties available to the custom element for data binding
 
     _createClass(
       RichTextEditorSourceCode,
       [
-        {
-          key: "_handleClick",
-
-          /**
-           * Handles button tap
-           */
-          value: function _handleClick(e) {
-            this.toggled = !this.isToggled;
-            console.log(this.toggled);
-
-            _get(
-              _getPrototypeOf(RichTextEditorSourceCode.prototype),
-              "_handleClick",
-              this
-            ).call(this, e);
-          },
-        },
         {
           key: "isToggled",
 
