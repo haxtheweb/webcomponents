@@ -65,7 +65,7 @@ class SimpleIcon extends SimpleIconBehaviors(SimpleColors) {
   }
   get feFlood() {
     return !this.noColorize
-      ? svg`<feFlood class="contrast-${this.contrast}" result="COLOR" />`
+      ? svg`<feFlood class="contrast-${this.contrast}" part="simple-icon-svg" result="COLOR" />`
       : ``;
   }
   // properties available to the custom element for data binding
