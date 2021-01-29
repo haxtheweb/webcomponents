@@ -121,21 +121,17 @@ const TAG_NAME = "lrn-math",
     subtree: true,
   };
 let handler;
-
-function check_handler() {
+function check_handler(el) {
   if (handler) return;
   handler =
     document.querySelector(CONTROLLER_TAG_NAME) ||
     document.createElement(CONTROLLER_TAG_NAME);
-  handler.setAttribute("lazy", "lazy");
-  if (!handler || typeof handler.typeset !== "function") {
-    console.warn(
-      "no %s element defined; %s element will not work",
-      CONTROLLER_TAG_NAME,
-      TAG_NAME
-    );
-    handler = undefined;
-  } else if (!document.contains(handler)) document.head.appendChild(handler);
+  if (!document.contains(handler)) {
+    document.head.appendChild(handler);
+  }
+  setTimeout(() => {
+    el.refresh();
+  }, 0);
 }
 
 function update(elem) {
@@ -190,14 +186,14 @@ class LrnMath extends HTMLElement {
 
   connectedCallback() {
     const elem = this;
-    check_handler();
+    check_handler(elem);
     window.requestAnimationFrame(function () {
       elem._private = {
         check: "",
         observer: new MutationObserver(
           debounce(function () {
             update(elem);
-          }, 300)
+          }, 500)
         ),
       };
       update(elem);
