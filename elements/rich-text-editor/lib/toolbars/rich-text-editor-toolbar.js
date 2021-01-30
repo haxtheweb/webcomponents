@@ -436,8 +436,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         /**
          * Tracks inline widgets that require selection data
          */
-        __clickableElements: {
-          name: "__clickableElements",
+        clickableElements: {
+          name: "clickableElements",
           type: Object,
         },
         /**
@@ -474,7 +474,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("../buttons/rich-text-editor-image.js");
       import("../buttons/rich-text-editor-link.js");
       this.config = this.defaultConfig;
-      this.__clickableElements = {};
+      this.clickableElements = {};
     }
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
@@ -690,7 +690,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     clearToolbar() {
       if (super.clearToolbar) super.clearToolbar();
-      this.__clickableElements = {};
+      this.clickableElements = {};
     }
     /**
      * registers button when appended to toolbar
@@ -699,11 +699,17 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     registerButton(button) {
-      console.log(button);
       if (super.registerButton) super.registerButton(button);
-      button.disabled = !this.editor;
       //firefox doesn't allow for clipboard button
-      if (button.command === "paste" && !navigator.clipboard) button.remove();
+      if (button.command === "paste" && !navigator.clipboard) {
+        button.remove();
+        return;
+      }
+      button.disabled = !this.editor;
+      (button.tagsArray || []).forEach(
+        (tag) =>
+          (this.clickableElements[tag] = (e) => button.tagClickCallback(e))
+      );
     }
     /**
      * handles updated button
@@ -712,10 +718,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     _handleButtonUpdate(e) {
       if (super._handleButtonUpdate) super._handleButtonUpdate(e);
-      if (e.detail)
-        (e.detail.tags || []).forEach(
-          (tag) => (this.__clickableElements[tag] = e.detail.handler)
-        );
     }
 
     /**
@@ -726,8 +728,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     deregisterButton(button) {
       if (super.deregisterButton) super.deregisterButton(button);
-      (button.tags || []).forEach(
-        (tag) => delete this.__clickableElements[tag]
+      (button.tagsArray || []).forEach(
+        (tag) => delete this.clickableElements[tag]
       );
     }
     /**

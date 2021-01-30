@@ -300,37 +300,6 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
               this,
               changedProperties
             );
-
-            this.registerTagClick();
-          },
-        },
-        {
-          key: "registerTagClick",
-          value: function registerTagClick() {
-            var _this2 = this;
-
-            this.dispatchEvent(
-              new CustomEvent("update-button-registry", {
-                bubbles: true,
-                cancelable: true,
-                composed: true,
-                detail: {
-                  button: this,
-                  tags: this.tagsArray,
-                  handler: function handler(e) {
-                    console.log(e);
-
-                    if (e.detail) {
-                      _this2.highlightNode(e.detail);
-
-                      _this2.selectedNode = e.detail;
-
-                      _this2.open(e.detail);
-                    }
-                  },
-                },
-              })
-            );
           },
           /**
            * determines which command based on values passed from prompt
@@ -340,11 +309,27 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
            */
         },
         {
-          key: "cancel",
+          key: "tagClickCallback",
 
+          /**
+           * override this custom function to perform a
+           * custom operation when an element that matches the tags list is clicked
+           *
+           * @param {event} e click event
+           */
+          value: function tagClickCallback(e) {
+            if (e.detail) {
+              this.highlightNode(e.detail);
+              this.selectedNode = e.detail;
+              this.open(e.detail);
+            }
+          },
           /**
            * override to add function to cancelled prompt
            */
+        },
+        {
+          key: "cancel",
           value: function cancel() {
             this.close();
           },

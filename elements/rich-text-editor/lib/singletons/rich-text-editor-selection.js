@@ -543,7 +543,6 @@ class RichTextEditorSelection extends LitElement {
       }
       if (editor) this.updateRange(editor);
     }
-    //console.log("selectRange", range, select, window.getSelection());
     return range;
   }
   surroundRange(node, range) {
@@ -565,7 +564,6 @@ class RichTextEditorSelection extends LitElement {
         toolbar.selectionAncestors = editor.selectionAncestors;
         toolbar.range = range;
       }
-      //console.log("updateRange", editor, range, toolbar.range);
     }
   }
 
@@ -628,19 +626,17 @@ class RichTextEditorSelection extends LitElement {
   }
 
   _handleEditorClick(editor, e) {
-    console.log(editor.__focused);
     if (!editor.__focused) {
       editor.focus();
     } else {
       let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
-        els = !toolbar ? [] : Object.keys(toolbar.__clickableElements || {}),
+        els = !toolbar ? [] : Object.keys(toolbar.clickableElements || {}),
         el = e.target || e.srcElement || { tagName: "" },
         evt = { detail: el },
         tagname = (el.tagName || "").toLowerCase();
-      console.log(tagname, els);
       if (tagname && els.includes(tagname)) {
         e.preventDefault();
-        toolbar.__clickableElements[tagname](evt);
+        toolbar.clickableElements[tagname](evt);
       }
     }
   }
@@ -667,18 +663,7 @@ class RichTextEditorSelection extends LitElement {
 
   _handleShortcutKeys(editor, e) {
     let toolbar = !editor ? undefined : this.getConnectedToolbar(editor);
-    if (editor.editing) {
-      let key = e.key;
-      if (e.shiftKey) key = "shift+" + key;
-      if (e.altKey) key = "alt+" + key;
-      if (
-        (window.navigator.platform === "MacIntel" && e.metaKey) ||
-        e.ctrlKey
-      ) {
-        key = "ctrl+" + key;
-      }
-      if (toolbar.shortcutKeys[key]) toolbar.shortcutKeys[key]._keysPressed(e);
-    }
+    if (editor.editing) toolbar._handleShortcutKeys(e);
   }
   /**
    * Store tag name to make it easier to obtain directly.

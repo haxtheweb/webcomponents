@@ -935,7 +935,7 @@ var RichTextEditorSelection =
               }
 
               if (editor) this.updateRange(editor);
-            } //console.log("selectRange", range, select, window.getSelection());
+            }
 
             return range;
           },
@@ -964,7 +964,7 @@ var RichTextEditorSelection =
                 toolbar.selectedNode = editor.selectedNode;
                 toolbar.selectionAncestors = editor.selectionAncestors;
                 toolbar.range = range;
-              } //console.log("updateRange", editor, range, toolbar.range);
+              }
             }
           },
           /**
@@ -1042,8 +1042,6 @@ var RichTextEditorSelection =
         {
           key: "_handleEditorClick",
           value: function _handleEditorClick(editor, e) {
-            console.log(editor.__focused);
-
             if (!editor.__focused) {
               editor.focus();
             } else {
@@ -1052,7 +1050,7 @@ var RichTextEditorSelection =
                   : this.getConnectedToolbar(editor),
                 els = !toolbar
                   ? []
-                  : Object.keys(toolbar.__clickableElements || {}),
+                  : Object.keys(toolbar.clickableElements || {}),
                 el = e.target ||
                   e.srcElement || {
                     tagName: "",
@@ -1061,12 +1059,10 @@ var RichTextEditorSelection =
                   detail: el,
                 },
                 tagname = (el.tagName || "").toLowerCase();
-              console.log(tagname, els);
 
               if (tagname && els.includes(tagname)) {
                 e.preventDefault();
-
-                toolbar.__clickableElements[tagname](evt);
+                toolbar.clickableElements[tagname](evt);
               }
             }
           },
@@ -1099,22 +1095,7 @@ var RichTextEditorSelection =
             var toolbar = !editor
               ? undefined
               : this.getConnectedToolbar(editor);
-
-            if (editor.editing) {
-              var key = e.key;
-              if (e.shiftKey) key = "shift+" + key;
-              if (e.altKey) key = "alt+" + key;
-
-              if (
-                (window.navigator.platform === "MacIntel" && e.metaKey) ||
-                e.ctrlKey
-              ) {
-                key = "ctrl+" + key;
-              }
-
-              if (toolbar.shortcutKeys[key])
-                toolbar.shortcutKeys[key]._keysPressed(e);
-            }
+            if (editor.editing) toolbar._handleShortcutKeys(e);
           },
           /**
            * Store tag name to make it easier to obtain directly.

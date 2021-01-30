@@ -158,6 +158,14 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           attribute: "more-show-text-label",
         },
         /**
+         * show text label for more button.
+         */
+        moreShortcut: {
+          name: "moreShortcut",
+          type: Boolean,
+          attribute: "more-shortcut",
+        },
+        /**
          * Optional space-sperated list of keyboard shortcuts for editor
          * to fire this button, see iron-a11y-keys for more info.
          */
@@ -559,10 +567,12 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             .map((key) => (!!uppercase ? key.toUpperCase() : key)),
           key = filter[0],
           match =
-            keyEvt.altKey === altKey &&
-            keyEvt.ctrlKey === ctrlKey &&
-            keyEvt.metaKey === metaKey &&
-            keyEvt.shiftKey === shiftKey &&
+            altKey === keyEvt.altKey &&
+            (ctrlKey === keyEvt.ctrlKey ||
+              ((ctrlKey === window.navigator.platform) === "MacIntel" &&
+                e.metaKey)) &&
+            metaKey === keyEvt.metaKey &&
+            shiftKey === keyEvt.shiftKey &&
             (keyEvt.key ? keyEvt.key === key : !key);
         if (match) shortcutKey = shortcut;
         return;

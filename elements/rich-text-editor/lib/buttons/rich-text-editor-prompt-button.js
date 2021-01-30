@@ -86,29 +86,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
 
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
-      this.registerTagClick();
-    }
-
-    registerTagClick() {
-      this.dispatchEvent(
-        new CustomEvent("update-button-registry", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: {
-            button: this,
-            tags: this.tagsArray,
-            handler: (e) => {
-              console.log(e);
-              if (e.detail) {
-                this.highlightNode(e.detail);
-                this.selectedNode = e.detail;
-                this.open(e.detail);
-              }
-            },
-          },
-        })
-      );
     }
 
     /**
@@ -139,6 +116,19 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
         (field) => field.property === "innerHTML"
       );
       return innerHTML && innerHTML.length > 0;
+    }
+    /**
+     * override this custom function to perform a
+     * custom operation when an element that matches the tags list is clicked
+     *
+     * @param {event} e click event
+     */
+    tagClickCallback(e) {
+      if (e.detail) {
+        this.highlightNode(e.detail);
+        this.selectedNode = e.detail;
+        this.open(e.detail);
+      }
     }
 
     /**

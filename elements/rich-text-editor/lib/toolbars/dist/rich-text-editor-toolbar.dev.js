@@ -848,8 +848,8 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
                   /**
                    * Tracks inline widgets that require selection data
                    */
-                  __clickableElements: {
-                    name: "__clickableElements",
+                  clickableElements: {
+                    name: "clickableElements",
                     type: Object,
                   },
 
@@ -929,7 +929,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
           );
         });
         _this.config = _this.defaultConfig;
-        _this.__clickableElements = {};
+        _this.clickableElements = {};
         return _this;
       }
 
@@ -1207,7 +1207,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
                 "clearToolbar",
                 this
               ).call(this);
-            this.__clickableElements = {};
+            this.clickableElements = {};
           },
           /**
            * registers button when appended to toolbar
@@ -1219,17 +1219,26 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
         {
           key: "registerButton",
           value: function registerButton(button) {
-            console.log(button);
+            var _this3 = this;
+
             if (_get(_getPrototypeOf(_class.prototype), "registerButton", this))
               _get(
                 _getPrototypeOf(_class.prototype),
                 "registerButton",
                 this
-              ).call(this, button);
-            button.disabled = !this.editor; //firefox doesn't allow for clipboard button
+              ).call(this, button); //firefox doesn't allow for clipboard button
 
-            if (button.command === "paste" && !navigator.clipboard)
+            if (button.command === "paste" && !navigator.clipboard) {
               button.remove();
+              return;
+            }
+
+            button.disabled = !this.editor;
+            (button.tagsArray || []).forEach(function (tag) {
+              return (_this3.clickableElements[tag] = function (e) {
+                return button.tagClickCallback(e);
+              });
+            });
           },
           /**
            * handles updated button
@@ -1240,8 +1249,6 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
         {
           key: "_handleButtonUpdate",
           value: function _handleButtonUpdate(e) {
-            var _this3 = this;
-
             if (
               _get(
                 _getPrototypeOf(_class.prototype),
@@ -1254,10 +1261,6 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
                 "_handleButtonUpdate",
                 this
               ).call(this, e);
-            if (e.detail)
-              (e.detail.tags || []).forEach(function (tag) {
-                return (_this3.__clickableElements[tag] = e.detail.handler);
-              });
           },
           /**
            * registers button when appended to toolbar
@@ -1279,8 +1282,8 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
                 "deregisterButton",
                 this
               ).call(this, button);
-            (button.tags || []).forEach(function (tag) {
-              return delete _this4.__clickableElements[tag];
+            (button.tagsArray || []).forEach(function (tag) {
+              return delete _this4.clickableElements[tag];
             });
           },
           /**

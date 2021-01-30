@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextEditorSourceCode = void 0;
+exports.RichTextEditorLink = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _richTextEditorButton = require("./rich-text-editor-button.js");
+var _richTextEditorPromptButton = require("./rich-text-editor-prompt-button.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -25,6 +25,33 @@ function _typeof(obj) {
     };
   }
   return _typeof(obj);
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
 }
 
 function ownKeys(object, enumerableOnly) {
@@ -169,30 +196,30 @@ function _getPrototypeOf(o) {
 }
 
 /**
- * `rich-text-editor-source-code`
- * a more button to toggle collapsed buttons in the rich text editor
+ * `rich-text-editor-link`
+ * a button for rich text editor (custom buttons can extend this)
  *
- * @element rich-text-editor-source-code
+ * @element rich-text-editor-link
  * @demo ./demo/buttons.html
  */
-var RichTextEditorSourceCode =
+var RichTextEditorLink =
   /*#__PURE__*/
-  (function (_RichTextEditorButton) {
-    _inherits(RichTextEditorSourceCode, _RichTextEditorButton);
+  (function (_RichTextEditorPrompt) {
+    _inherits(RichTextEditorLink, _RichTextEditorPrompt);
 
     _createClass(
-      RichTextEditorSourceCode,
+      RichTextEditorLink,
       [
         {
           key: "render",
           // render function for template
           value: function render() {
             return _get(
-              _getPrototypeOf(RichTextEditorSourceCode.prototype),
+              _getPrototypeOf(RichTextEditorLink.prototype),
               "render",
               this
             ).call(this);
-          },
+          }, // properties available to the custom element for data binding
         },
       ],
       [
@@ -203,101 +230,130 @@ var RichTextEditorSourceCode =
            * Store the tag name to make it easier to obtain directly.
            */
           get: function get() {
-            return "rich-text-editor-source-code";
+            return "rich-text-editor-link";
           },
         },
-      ]
-    );
-
-    function RichTextEditorSourceCode() {
-      var _this;
-
-      _classCallCheck(this, RichTextEditorSourceCode);
-
-      _this = _possibleConstructorReturn(
-        this,
-        _getPrototypeOf(RichTextEditorSourceCode).call(this)
-      );
-      _this.icon = "code";
-      _this.toggled = false;
-      _this.label = "Source Code";
-      _this.labelToggled = "Rich Text";
-      _this.command = "viewSource";
-      _this.toggledCommand = "viewSource";
-      _this.commandVal = true;
-      _this.toggledCommandVal = false;
-      _this.shortcutKeys = "cmd+<";
-      return _this;
-    } // properties available to the custom element for data binding
-
-    _createClass(
-      RichTextEditorSourceCode,
-      [
-        {
-          key: "commandCallback",
-
-          /**
-           * toggles editor source code when clicked
-           *
-           * @memberof RichTextEditorSourceCode
-           */
-          value: function commandCallback(editor, toolbar, selection) {
-            if (editor) {
-              editor.viewSource = this.operationCommandVal;
-              this.toggled = editor.viewSource;
-            }
-          },
-        },
-        {
-          key: "isToggled",
-
-          /**
-           * whether button is toggled
-           *
-           * @readonly
-           * @memberof RichTextEditorButton
-           */
-          get: function get() {
-            return this.toggled;
-          },
-        },
-      ],
-      [
         {
           key: "properties",
           get: function get() {
             return _objectSpread(
               {},
-              _get(
-                _getPrototypeOf(RichTextEditorSourceCode),
-                "properties",
-                this
-              ),
-              {
-                /**
-                 * Can this button toggle?
-                 */
-                toggled: {
-                  attribute: "toggled",
-                  type: Boolean,
-                  reflect: true,
-                },
-              }
+              _get(_getPrototypeOf(RichTextEditorLink), "properties", this)
             );
           },
         },
       ]
     );
 
-    return RichTextEditorSourceCode;
+    function RichTextEditorLink() {
+      var _this;
+
+      _classCallCheck(this, RichTextEditorLink);
+
+      _this = _possibleConstructorReturn(
+        this,
+        _getPrototypeOf(RichTextEditorLink).call(this)
+      );
+      _this.fields = [].concat(
+        _toConsumableArray(
+          _get(
+            _getPrototypeOf(RichTextEditorLink.prototype),
+            "fields",
+            _assertThisInitialized(_this)
+          )
+        ),
+        [
+          {
+            property: "href",
+            title: "Link",
+            inputMethod: "url",
+            autoValidate: true,
+          },
+        ]
+      );
+      _this.command = "CreateLink";
+      _this.icon = "link";
+      _this.label = "Link";
+      _this.toggledCommand = "unlink";
+      _this.toggledIcon = "mdextra:unlink";
+      _this.toggledLabel = "Unlink";
+      _this.toggles = "true";
+      _this.tagsList = "a";
+      _this.value = _objectSpread(
+        {},
+        _get(
+          _getPrototypeOf(RichTextEditorLink.prototype),
+          "value",
+          _assertThisInitialized(_this)
+        ),
+        {
+          href: null,
+        }
+      );
+      _this.shortcutKeys = "ctrl+k";
+      return _this;
+    }
+    /**
+     * determaines commandVal based on values passed from prompt
+     */
+
+    _createClass(RichTextEditorLink, [
+      {
+        key: "getValue",
+
+        /**
+         * updates prompt fields with selected range data
+         */
+        value: function getValue(node) {
+          var target = node || this.rangeElement();
+          return _objectSpread(
+            {},
+            _get(
+              _getPrototypeOf(RichTextEditorLink.prototype),
+              "getValue",
+              this
+            ).call(this),
+            {
+              href:
+                target && target.getAttribute
+                  ? target.getAttribute("href")
+                  : undefined,
+            }
+          );
+        },
+      },
+      {
+        key: "setToggled",
+        value: function setToggled() {
+          this.toggled = !!this.getPropValue("href");
+        },
+      },
+      {
+        key: "promptCommandVal",
+        get: function get() {
+          return this.getPropValue("href") || undefined;
+        },
+        /**
+         * whether button is toggled
+         *
+         * @readonly
+         * @memberof RichTextEditorButton
+         */
+      },
+      {
+        key: "isToggled",
+        get: function get() {
+          return this.toggled;
+        },
+      },
+    ]);
+
+    return RichTextEditorLink;
   })(
-    (0, _richTextEditorButton.RichTextEditorButtonBehaviors)(
+    (0, _richTextEditorPromptButton.RichTextEditorPromptButtonBehaviors)(
       _litElement.LitElement
     )
   );
 
-exports.RichTextEditorSourceCode = RichTextEditorSourceCode;
-window.customElements.define(
-  RichTextEditorSourceCode.tag,
-  RichTextEditorSourceCode
-);
+exports.RichTextEditorLink = RichTextEditorLink;
+window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);

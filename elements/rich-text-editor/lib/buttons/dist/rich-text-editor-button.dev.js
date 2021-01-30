@@ -281,14 +281,6 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
                 _get(_getPrototypeOf(_class), "properties", this),
                 {
                   /**
-                   * Optional callback function, ex: (toolbar,editor,selection) => {}.
-                   */
-                  commandCallback: {
-                    type: Object,
-                    attribute: "callback",
-                  },
-
-                  /**
                    * The command used for document.execCommand.
                    */
                   command: {
@@ -381,9 +373,6 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
         );
         _this.__selection = window.RichTextEditorSelection.requestAvailability();
         _this.tagsList = "";
-
-        _this.commandCallback = function (editor, toolbar, selection) {};
-
         return _this;
       }
       /**
@@ -429,6 +418,10 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
                 _this2._editorChanged(_this2.controls, oldValue);
               if (propName === "range")
                 _this2._rangeChanged(_this2.range, oldValue);
+              if (
+                ["shortcutKeys", "tags", "tagClickCallback"].includes(propName)
+              )
+                _this2.updateButtonRegistry();
             });
           },
           /**
@@ -444,6 +437,18 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
               this
             ).call(this);
           },
+          /**
+           * override this custom function to perform a
+           * custom operation after button is clicked
+           *
+           * @param {object} editor current editor
+           * @param {object} toolbar parent toolbar
+           * @param {object} selection range/selection manager
+           */
+        },
+        {
+          key: "commandCallback",
+          value: function commandCallback(editor, toolbar, selection) {},
           /**
            * indicates how highlight should be toggled
            * @event highlight
@@ -538,6 +543,16 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
               })
             );
           },
+          /**
+           * override this custom function to perform a
+           * custom operation when an element that matches the tags list is clicked
+           *
+           * @param {event} e click event
+           */
+        },
+        {
+          key: "tagClickCallback",
+          value: function tagClickCallback(e) {},
           /**
            * indicates range should be wrapped in given element
            * @event wrapselection
@@ -837,6 +852,11 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
               ? this.toggledCommandVal || ""
               : this.commandVal;
           },
+          /**
+           * tagslist as an array
+           *
+           * @readonly
+           */
         },
         {
           key: "tagsArray",
