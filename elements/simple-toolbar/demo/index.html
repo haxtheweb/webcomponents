@@ -19,7 +19,7 @@
       <h3>Basic simple-toolbar demo</h3>
       <demo-snippet>
         <template>
-          <simple-toolbar>
+          <simple-toolbar style="width:200px;border:1px solid #ddd">
             <div class="group">
               <simple-toolbar-button class="button" icon="save" label="Save" shortcut-keys="ctrl+s"></simple-toolbar-button>
               <simple-toolbar-button class="button" icon="cancel" label="Cancel"></simple-toolbar-button>
@@ -39,7 +39,7 @@
       <h3>Loading from a config object</h3>
       <demo-snippet>
         <template>
-          <simple-toolbar id="load-from-config"></simple-toolbar>
+          <simple-toolbar id="load-from-config" style="width:200px;border:1px solid #ddd"></simple-toolbar></simple-toolbar>
           <script>
             window.onload = () => {
               let toolbar = document.getElementById('load-from-config');
@@ -69,6 +69,7 @@
                 },
                 { icon: "star",label: "Favorite",type: "simple-toolbar-button"},
               ];
+              toolbar.addEventListener('shortcut-key-pressed',e=>console.log('button-event',e));
             }
           </script>
         </template>

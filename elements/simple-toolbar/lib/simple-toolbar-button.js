@@ -52,7 +52,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         },
 
         /**
-         * Optional space-sperated list of keyboard shortcuts for the editor
+         * Optional space-separated list of shortcut keys
          */
         shortcutKeys: {
           attribute: "shortcut-keys",
@@ -110,6 +110,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.disabled = false;
       this.showTextLabel = false;
       this.toggles = false;
+      this.shortcutKeys = "";
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }
     /**
@@ -176,20 +177,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
 
     updated(changedProperties) {
       super.updated(changedProperties);
-      changedProperties.forEach((oldValue, propName) => {
-        if (propName == "shortcutKeys")
-          this.dispatchEvent(
-            new CustomEvent("update-button-registry", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: {
-                button: this,
-                shortcutKeys: oldValue,
-              },
-            })
-          );
-      });
+      changedProperties.forEach((oldValue, propName) => {});
     }
     /**
      * Called every time the element is inserted into the DOM. Useful for
@@ -243,14 +231,30 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.toggle();
     }
     /**
-     * handles keypress
+     * customizable event for when shortcut keys are pressed
      *
-     * @param {event} e event
+     * @param {string} key
      */
-    _handleKeys(e) {}
+    _handleShortcutKeys(e, key) {}
 
     toggle() {
       if (this.toggles) this.toggled = !this.toggled;
+    }
+    /**
+     * updates toolbar buttonregistry as needed
+     *
+     */
+    updateButtonRegistry() {
+      this.dispatchEvent(
+        new CustomEvent("update-button-registry", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            button: this,
+          },
+        })
+      );
     }
 
     get iconTemplate() {

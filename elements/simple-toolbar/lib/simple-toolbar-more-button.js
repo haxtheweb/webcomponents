@@ -27,6 +27,26 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
     this.label = "More buttons";
     this.labelToggled = "Fewer buttons";
   }
+  /**
+   * toggles button if shortcutKey is pressed
+   *
+   * @param {string} key
+   * @event toggle
+   */
+  _handleShortcutKeys(e, key) {
+    this.dispatchEvent(
+      new CustomEvent("toggle", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          ...e.detail,
+          button: this,
+          shortcutKey: this,
+        },
+      })
+    );
+  }
 }
 window.customElements.define(
   SimpleToolbarMoreButton.tag,

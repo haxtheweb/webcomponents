@@ -163,6 +163,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
          */
         shortcutKeys: {
           name: "shortcutKeys",
+          attribute: "shoertcut-keys",
           type: Object,
         },
         /**
@@ -248,6 +249,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         aria-controls="buttons"
         class="button"
         @click="${(e) => (this.collapsed = !this.collapsed)}"
+        @toggle="${(e) => (this.collapsed = !this.collapsed)}"
         ?disabled=${this.__collapseDisabled}
         icon="${this.moreIcon}"
         label="${this.moreLabel}"
@@ -286,8 +288,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.moreLabel = "More Buttons";
       this.moreLabelToggled = "Fewer Buttons";
       this.moreShowTextLabel = false;
+      this.moreShortcut = "ctrl+shift+;";
       this.sticky = false;
-      this.shortcutKeys = [];
+      this.shortcutKeys = {};
       this.addEventListener("register-button", this._handleButtonRegister);
       this.addEventListener("deregister-button", this._handleButtonDeregister);
       this.addEventListener("update-button-registry", this._handleButtonUpdate);
@@ -301,6 +304,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       super.connectedCallback();
       if (this.collapsed)
         window.addEventListener("resize", this._handleResize.bind(this));
+      this.addEventListener("keypress", this._handleShortcutKeys);
     }
     /**
      * Called every time the element is removed from the DOM. Useful for
@@ -310,6 +314,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       if (this.collapsed)
         window.removeEventListener("resize", this._handleResize.bind(this));
       super.disconnectedCallback();
+      this.addEventListener("keypress", this._handleShortcutKeys);
     }
     firstUpdated(changedProperties) {
       this.setAttribute("aria-live", "polite");
@@ -333,8 +338,8 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         }
         if (propName === "hidden")
           this.setAttribute("aria-hidden", this.hidden ? "true" : "false");
-        this.resizeToolbar();
       });
+      this.resizeToolbar();
     }
     /**
      * adds a button to a div
@@ -367,15 +372,18 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       return group;
     }
     /**
-     * clears toolbar and resets shortcuts
+     * empties toolbar and registered buttons
      *
      * @returns
      * @memberof SimpleToolbar
      */
     clearToolbar() {
       this.innerHTML = "";
-      this.shortcutKeys = {};
       this.__buttons = [];
+      this.shortcutKeys = {};
+      this.shortcutKeys[this.moreShortcut] = this.shadowRoot
+        ? this.shadowRoot.querySelector("#morebutton")
+        : undefined;
     }
     /**
      * removes registered button when moved/removed
@@ -384,8 +392,10 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     deregisterButton(button) {
-      if (button.shortcutKeys) delete this.shortcutKeys[button.shortcutKeys];
       this.__buttons = this.__buttons.filter((b) => b !== button);
+      (button.shortcutKeys || "")
+        .split(" ")
+        .forEach((key) => delete this.shortcutKeys[key]);
     }
     /**
      * registers button when appended
@@ -394,31 +404,35 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @memberof SimpleToolbar
      */
     registerButton(button) {
-      if (button.shortcutKeys) this.shortcutKeys[button.shortcutKeys] = button;
       this.__buttons.push(button);
       this.__buttons = [...new Set(this.__buttons)];
+      (button.shortcutKeys || "")
+        .split(" ")
+        .forEach((key) => (this.shortcutKeys[key] = button));
     }
 
     resizeToolbar() {
       if (!this.collapsed) return;
-      let items = [...(this.childNodes || [])],
+      let items = [...(this.children || [])],
         shown = true;
       items.forEach((item) => {
-        item.removeAttribute("collapse-hide");
+        if (item.removeAttribute) item.removeAttribute("collapse-hide");
         if (item.offsetTop && item.offsetTop > 0) {
           item.setAttribute("collapse-hide", true);
           shown = false;
+        } else if (!shown) {
+          item.setAttribute("collapse-hide", true);
         }
       });
       this.__collapseDisabled = shown;
     }
     /**
-     * updates registered button when shortcut keys change
+     * updates registered button, it needed
      *
      * @param {object} button button node
      * @memberof SimpleToolbar
      */
-    updateButtonShortcuts(oldValue, button) {
+    updateButton(oldValue, button) {
       if (oldValue) this.deregisterButton(oldValue);
       if (button) this.registerButton(button);
     }
@@ -465,8 +479,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     _handleButtonUpdate(e) {
       e.stopPropagation();
-      if (e.detail && e.detail.button && e.detail.shortcutKeys)
-        this.updateButtonShortcuts(e.detail, e.detail.button);
+      this.updateButton(e.detail);
     }
     /**
      * resizes toolbar on window resize
@@ -474,6 +487,31 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     _handleResize(e) {
       this.resizeToolbar();
+    }
+    /**
+     * handles shortcut keys for buttons
+     *
+     * @param {event} e
+     * @event shortcut-key-pressed
+     */
+    _handleShortcutKeys(e) {
+      let key = this._shortcutKeysMatch(e);
+      if (key) {
+        e.preventDefault();
+        this.shortcutKeys[key]._handleShortcutKeys(e, key);
+        this.dispatchEvent(
+          new CustomEvent("shortcut-key-pressed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              ...e.detail,
+              button: this,
+              shortcutKey: this,
+            },
+          })
+        );
+      }
     }
     /**
      * creates a button element based on config object
@@ -500,6 +538,36 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       group.setAttribute("class", "group");
       Object.keys(config).forEach((key) => (group[key] = config[key]));
       return group;
+    }
+    /**
+     * determines if a keyup event matches a shortcut
+     *
+     * @param {*} keyEvt
+     * @returns
+     */
+    _shortcutKeysMatch(keyEvt) {
+      let shortcutKey = false;
+      Object.keys(this.shortcutKeys || {}).forEach((shortcut) => {
+        let keys = (shortcut || "").toLowerCase().split("+"),
+          altKey = keys.includes("alt"),
+          ctrlKey = keys.includes("ctrl"),
+          metaKey = keys.includes("meta") || keys.includes("cmd"),
+          shiftKey = keys.includes("shift"),
+          uppercase = keyEvt.shiftKey && keyEvt.code > 65 && keyEvt.code < 91,
+          filter = keys
+            .filter((key) => key.length == 1)
+            .map((key) => (!!uppercase ? key.toUpperCase() : key)),
+          key = filter[0],
+          match =
+            keyEvt.altKey === altKey &&
+            keyEvt.ctrlKey === ctrlKey &&
+            keyEvt.metaKey === metaKey &&
+            keyEvt.shiftKey === shiftKey &&
+            (keyEvt.key ? keyEvt.key === key : !key);
+        if (match) shortcutKey = shortcut;
+        return;
+      });
+      return shortcutKey;
     }
   };
 };
