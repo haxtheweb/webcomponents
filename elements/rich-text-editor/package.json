@@ -44,14 +44,14 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/absolute-position-behavior": "^3.0.6",
-    "@lrnwebcomponents/code-editor-iconset": "^3.0.6",
+    "@lrnwebcomponents/code-editor": "^3.0.6",
     "@lrnwebcomponents/md-extra-icons": "^3.0.6",
     "@lrnwebcomponents/simple-fields": "^3.0.6",
     "@lrnwebcomponents/simple-icon": "^3.0.6",
     "@lrnwebcomponents/simple-picker": "^3.0.6",
     "@lrnwebcomponents/simple-popover": "^3.0.6",
     "@lrnwebcomponents/simple-toolbar": "^3.0.6",
-    "@lrnwebcomponents/util;s": "^3.0.6",
+    "@lrnwebcomponents/utils": "^3.0.6",
     "@polymer/iron-icons": "^3.0.1",
     "lit-element": "2.4.0",
     "shadow-selection-polyfill": "^1.1.0"

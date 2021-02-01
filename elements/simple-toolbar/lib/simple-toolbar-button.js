@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-tooltip/simple-toolti[].js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 const SimpleToolbarButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
