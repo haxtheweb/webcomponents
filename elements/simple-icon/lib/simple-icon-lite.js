@@ -28,6 +28,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
             width: var(--simple-icon-width, 24px);
             max-height: var(--simple-icon-height, 24px);
             max-width: var(--simple-icon-width, 24px);
+            filter: var(--simple-icon-color, initial);
           }
           feFlood {
             flood-color: var(--simple-icon-color, currentColor);
