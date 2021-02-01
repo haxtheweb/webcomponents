@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "A simple element that displays information about a github repository.",
   "repository": {
     "type": "git",
