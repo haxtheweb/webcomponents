@@ -57,7 +57,7 @@
         },
         {
           "name": "config",
-          "description": "`config` {`any[]`} - text editor config\n\nProperty: config\n\nDefault: [object Object],[object Object],[object Object],[object Object],[object Object]"
+          "description": "`config` {`any[]`} - text editor config\n\nProperty: config\n\nDefault: [object Object],[object Object],[object Object],[object Object]"
         },
         {
           "name": "caption",
@@ -473,7 +473,7 @@
         },
         {
           "name": "config",
-          "description": "`config` {`any[]`} - text editor config\n\nProperty: config\n\nDefault: [object Object],[object Object],[object Object],[object Object],[object Object]"
+          "description": "`config` {`any[]`} - text editor config\n\nProperty: config\n\nDefault: [object Object],[object Object],[object Object],[object Object]"
         },
         {
           "name": "ontoggle-edit-mode",
