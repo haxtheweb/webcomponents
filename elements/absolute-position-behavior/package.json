@@ -41,7 +41,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/iron-resizable-behavior": "^3.0.0",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

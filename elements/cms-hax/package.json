@@ -37,14 +37,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/h-a-x": "^3.0.5",
-    "@lrnwebcomponents/hax-body": "^3.0.5",
-    "@lrnwebcomponents/hax-body-behaviors": "^3.0.5",
-    "@lrnwebcomponents/simple-toast": "^3.0.5",
     "@polymer/iron-ajax": "^3.0.0",
-    "@polymer/iron-resizable-behavior": "^3.0.0",
-    "@polymer/iron-selector": "^3.0.0",
-    "@polymer/paper-spinner": "^3.0.0",
-    "@polymer/paper-toast": "^3.0.1",
+    "@polymer/paper-spinner": "3.0.2",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
