@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "R coder interface for the r-service backend.",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/code-editor": "^3.0.5",
+    "@lrnwebcomponents/code-editor": "^3.0.6",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

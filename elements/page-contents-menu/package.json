@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Links that jump you to the right place in the page&#39;s content",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-popover": "^3.0.5",
+    "@lrnwebcomponents/simple-popover": "^3.0.6",
     "@lrnwebcomponents/simple-tooltip": "^3.0.5",
     "@lrnwebcomponents/utils": "^3.0.0",
     "lit-element": "2.4.0"

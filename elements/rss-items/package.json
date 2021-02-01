@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "visualize RSS items",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^3.0.0",
-    "@lrnwebcomponents/simple-icon": "^3.0.5",
+    "@lrnwebcomponents/simple-icon": "^3.0.6",
     "lit-element": "2.4.0"
   },
   "devDependencies": {
