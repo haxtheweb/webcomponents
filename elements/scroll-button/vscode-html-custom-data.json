@@ -15,7 +15,7 @@
         },
         {
           "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Scroll to top"
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Backt to top"
         },
         {
           "name": "position",

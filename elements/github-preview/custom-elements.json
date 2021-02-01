@@ -7,24 +7,383 @@
       "description": "`github-preview`\n`A simple element that displays information about a github repository.`",
       "attributes": [
         {
-          "name": "uri",
+          "name": "repo",
+          "type": "string"
+        },
+        {
+          "name": "org",
+          "type": "string"
+        },
+        {
+          "name": "repo-lang",
+          "type": "string"
+        },
+        {
+          "name": "readme-extended",
+          "type": "boolean"
+        },
+        {
+          "name": "url",
           "type": "string",
-          "default": "\"https://github.com/elmsln/lrnwebcomponents\""
+          "default": "\"https://github.com\""
+        },
+        {
+          "name": "api-url",
+          "type": "string",
+          "default": "\"https://api.github.com\""
+        },
+        {
+          "name": "raw-url",
+          "type": "string",
+          "default": "\"https://raw.githubusercontent.com\""
+        },
+        {
+          "name": "extended",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "read-me",
+          "type": "string",
+          "default": "\"README.md\""
+        },
+        {
+          "name": "branch",
+          "type": "string",
+          "default": "\"master\""
+        },
+        {
+          "name": "view-more-text",
+          "type": "string",
+          "default": "\"View More\""
+        },
+        {
+          "name": "not-found-text",
+          "type": "string",
+          "default": "\"Asset not found\""
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "default": "{\"cache\":\"force-cache\"}"
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "uri",
-          "attribute": "uri",
+          "name": "repo",
+          "attribute": "repo",
+          "type": "string"
+        },
+        {
+          "name": "org",
+          "attribute": "org",
+          "type": "string"
+        },
+        {
+          "name": "repoLang",
+          "attribute": "repo-lang",
+          "type": "string"
+        },
+        {
+          "name": "readmeExtended",
+          "attribute": "readme-extended",
+          "type": "boolean"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
           "type": "string",
-          "default": "\"https://github.com/elmsln/lrnwebcomponents\""
+          "default": "\"https://github.com\""
+        },
+        {
+          "name": "apiUrl",
+          "attribute": "api-url",
+          "type": "string",
+          "default": "\"https://api.github.com\""
+        },
+        {
+          "name": "rawUrl",
+          "attribute": "raw-url",
+          "type": "string",
+          "default": "\"https://raw.githubusercontent.com\""
+        },
+        {
+          "name": "extended",
+          "attribute": "extended",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "readMe",
+          "attribute": "read-me",
+          "type": "string",
+          "default": "\"README.md\""
+        },
+        {
+          "name": "branch",
+          "attribute": "branch",
+          "type": "string",
+          "default": "\"master\""
+        },
+        {
+          "name": "viewMoreText",
+          "attribute": "view-more-text",
+          "type": "string",
+          "default": "\"View More\""
+        },
+        {
+          "name": "notFoundText",
+          "attribute": "not-found-text",
+          "type": "string",
+          "default": "\"Asset not found\""
+        },
+        {
+          "name": "headers",
+          "attribute": "headers",
+          "type": "object",
+          "default": "{\"cache\":\"force-cache\"}"
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
+        }
+      ]
+    },
+    {
+      "name": "wc-markdown",
+      "path": "./github-preview.umd.js"
+    },
+    {
+      "name": "wc-markdown",
+      "path": "./lib/wc-markdown.js",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string | null"
         }
       ]
     },
     {
       "name": "github-preview",
       "path": "./src/github-preview.js",
-      "description": "`github-preview`\n`A simple element that displays information about a github repository.`"
+      "description": "`github-preview`\n`A simple element that displays information about a github repository.`",
+      "attributes": [
+        {
+          "name": "repo",
+          "type": "string"
+        },
+        {
+          "name": "org",
+          "type": "string"
+        },
+        {
+          "name": "repo-lang",
+          "type": "string"
+        },
+        {
+          "name": "readme-extended",
+          "type": "boolean"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "default": "\"https://github.com\""
+        },
+        {
+          "name": "api-url",
+          "type": "string",
+          "default": "\"https://api.github.com\""
+        },
+        {
+          "name": "raw-url",
+          "type": "string",
+          "default": "\"https://raw.githubusercontent.com\""
+        },
+        {
+          "name": "extended",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "read-me",
+          "type": "string",
+          "default": "\"README.md\""
+        },
+        {
+          "name": "branch",
+          "type": "string",
+          "default": "\"master\""
+        },
+        {
+          "name": "view-more-text",
+          "type": "string",
+          "default": "\"View More\""
+        },
+        {
+          "name": "not-found-text",
+          "type": "string",
+          "default": "\"Asset not found\""
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "default": "{\"cache\":\"force-cache\"}"
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "repo",
+          "attribute": "repo",
+          "type": "string"
+        },
+        {
+          "name": "org",
+          "attribute": "org",
+          "type": "string"
+        },
+        {
+          "name": "repoLang",
+          "attribute": "repo-lang",
+          "type": "string"
+        },
+        {
+          "name": "readmeExtended",
+          "attribute": "readme-extended",
+          "type": "boolean"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string",
+          "default": "\"https://github.com\""
+        },
+        {
+          "name": "apiUrl",
+          "attribute": "api-url",
+          "type": "string",
+          "default": "\"https://api.github.com\""
+        },
+        {
+          "name": "rawUrl",
+          "attribute": "raw-url",
+          "type": "string",
+          "default": "\"https://raw.githubusercontent.com\""
+        },
+        {
+          "name": "extended",
+          "attribute": "extended",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "readMe",
+          "attribute": "read-me",
+          "type": "string",
+          "default": "\"README.md\""
+        },
+        {
+          "name": "branch",
+          "attribute": "branch",
+          "type": "string",
+          "default": "\"master\""
+        },
+        {
+          "name": "viewMoreText",
+          "attribute": "view-more-text",
+          "type": "string",
+          "default": "\"View More\""
+        },
+        {
+          "name": "notFoundText",
+          "attribute": "not-found-text",
+          "type": "string",
+          "default": "\"Asset not found\""
+        },
+        {
+          "name": "headers",
+          "attribute": "headers",
+          "type": "object",
+          "default": "{\"cache\":\"force-cache\"}"
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
+        }
+      ]
     }
   ]
 }
