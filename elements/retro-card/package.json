@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Simple card in a cool retro design",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^3.0.5",
+    "@lrnwebcomponents/simple-colors": "^3.0.6",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

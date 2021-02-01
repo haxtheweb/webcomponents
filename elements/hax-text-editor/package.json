@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "text editor, toolbar, and toolbar buttons for HAX",
   "repository": {
     "type": "git",
@@ -42,7 +42,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element":"2.0.1"
+    "lit-element":"2.0.1",
+    "@lrnwebcomponents/lrn-math": "^3.0.6",
+    "@lrnwebcomponents/lrn-vocab": "^3.0.6",
+    "@lrnwebcomponents/oer-schema": "^3.0.6",
+    "@lrnwebcomponents/rich-text-editor": "^3.0.6"
   },
   "devDependencies": {
     "web-animations-js":"2.3.1","@lrnwebcomponents/deduping-fix":"2.0.5","@polymer/iron-demo-helpers":"3.1.0","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.2.7","concurrently":"4.1.0","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.5","lodash":"4.17.11","polymer-cli":"1.9.7","polymer-build":"3.1.2","wct-browser-legacy":"1.0.2"

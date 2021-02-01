@@ -163,7 +163,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   haxgizmoRegistration(store) {
     if (
       store.appList.filter((el, i) => {
-        // ensure we don't double load the endpoint
+        // ensure we don't double load the endpoint if already defined
         if (el.connection.url === "en.wikipedia.org") {
           return true;
         }
@@ -180,6 +180,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
       );
     }
   }
+  // return valid appStore spec for how to connect to the wikipedia API
   get haxAppDetails() {
     return {
       details: {

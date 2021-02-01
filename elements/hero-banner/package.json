@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "The evil yet always requested hero banner",
   "repository": {
     "type": "git",
@@ -41,13 +41,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-behaviors": "^3.0.5",
-    "@lrnwebcomponents/simple-colors": "^3.0.5",
+    "@lrnwebcomponents/a11y-behaviors": "^3.0.6",
+    "@lrnwebcomponents/simple-colors": "^3.0.6",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^3.0.5",
+    "@lrnwebcomponents/storybook-utilities": "^3.0.6",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.5.0",

@@ -4,6 +4,7 @@ import {
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
@@ -46,6 +47,9 @@ class HaxPreferencesDialog extends LitElement {
           padding: 16px;
           font-style: italic;
         }
+        simple-icon-button {
+          float: right;
+        }
       `,
     ];
   }
@@ -71,11 +75,29 @@ class HaxPreferencesDialog extends LitElement {
       this.schemaValues = toJS(HAXStore.globalPreferences);
     });
   }
+  closeBtn(e) {
+    this.dispatchEvent(
+      new CustomEvent("hax-tray-button-click", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          eventName: "open-preferences",
+          index: 0,
+          value: true,
+        },
+      })
+    );
+  }
   render() {
     return html`
       <h3 class="title">
         <simple-icon-lite icon="hax:settings"></simple-icon-lite>
         ${this.title}
+        <simple-icon-button
+          icon="close"
+          @click="${this.closeBtn}"
+        ></simple-icon-button>
       </h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <simple-fields

@@ -1,5 +1,6 @@
 import { html, css, LitElement } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
@@ -80,6 +81,9 @@ class HaxMap extends LitElement {
           font-weight: bold;
           outline: 2px solid black;
         }
+        simple-icon-button {
+          float: right;
+        }
       `,
     ];
   }
@@ -156,11 +160,29 @@ class HaxMap extends LitElement {
       }
     }
   }
+  closeBtn(e) {
+    this.dispatchEvent(
+      new CustomEvent("hax-tray-button-click", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          eventName: "open-map",
+          index: 0,
+          value: true,
+        },
+      })
+    );
+  }
   render() {
     return html`
       <h3 class="title">
         <simple-icon-lite icon="hax:map"></simple-icon-lite>
         ${this.title}
+        <simple-icon-button
+          icon="close"
+          @click="${this.closeBtn}"
+        ></simple-icon-button>
       </h3>
       <div class="container">
         <table>

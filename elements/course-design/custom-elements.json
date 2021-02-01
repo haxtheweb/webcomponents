@@ -7,6 +7,25 @@
       "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`"
     },
     {
+      "name": "activity-box",
+      "path": "./lib/activity-box.js",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"bulb\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"bulb\""
+        }
+      ]
+    },
+    {
       "name": "block-quote",
       "path": "./lib/block-quote.js",
       "attributes": [
