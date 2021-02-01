@@ -1314,7 +1314,6 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             } else if (e.detail.selectAll) {
               this.selectNodeContents(this.editor);
             } else {
-              console.log(e);
               this.selectNode(e.detail);
             }
           },

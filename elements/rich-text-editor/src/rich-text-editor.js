@@ -21,6 +21,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           }
 
           :host {
+            display: block;
             --simple-toolbar-border-color: #ddd;
             --simple-toolbar-border-width: 1px;
             --simple-toolbar-button-opacity: 1;
@@ -42,8 +43,8 @@ const RichTextEditorBehaviors = function (SuperClass) {
             --simple-toolbar-button-disabled-border-color: transparent;
           }
 
-          :host {
-            display: block;
+          :host(:focus) {
+            outline: none;
           }
 
           :host(.heightmax[editing]) {
@@ -88,7 +89,8 @@ const RichTextEditorBehaviors = function (SuperClass) {
           #source:hover,
           #source:focus-within,
           :host(:not([editing][view-source])) #wysiwyg:hover,
-          :host(:not([editing][view-source])) #wysiwyg:focus {
+          :host(:not([editing][view-source])) #wysiwyg:focus,
+          :host(:not([editing][view-source])) #wysiwyg:focus-within {
             outline: var(--rich-text-editor-border-width, 2px) solid
               var(--rich-text-editor-focus-color, blue);
           }
@@ -582,7 +584,9 @@ const RichTextEditorBehaviors = function (SuperClass) {
         let parent = el.parentNode;
         return parent ? shadowRoot(parent) : el;
       };
-      this.range = shadow.getRange(shadowRoot(this));
+      this.range = shadowRoot(this)
+        ? shadow.getRange(shadowRoot(this))
+        : undefined;
       if (this.updateRange) this.updateRange();
     }
 

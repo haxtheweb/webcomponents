@@ -8,7 +8,7 @@ import {
   editableTableStyles,
 } from "./lib/editable-table-behaviors.js";
 import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import { RichTextEditorToolbarMini } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
+import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -177,8 +177,7 @@ class EditableTable extends displayBehaviors(LitElement) {
           padding: 0;
           position: relative;
         }
-        rich-text-editor-toolbar-mini {
-          width: max-content;
+        rich-text-editor-toolbar {
           position: relative;
           margin: 0;
         }
@@ -218,11 +217,11 @@ class EditableTable extends displayBehaviors(LitElement) {
   }
   render() {
     return html`
-      <rich-text-editor-toolbar-mini
-        id="mini"
+      <rich-text-editor-toolbar
+        id="toolbar"
         .config="${this.config}"
         show="selection"
-      ></rich-text-editor-toolbar-mini>
+      ></rich-text-editor-toolbar>
       <editable-table-display
         aria-hidden="${this.editMode ? "true" : "false"}"
         ?bordered="${this.bordered}"
@@ -271,12 +270,12 @@ class EditableTable extends displayBehaviors(LitElement) {
               <rich-text-editor
                 autofocus
                 @editing-disabled="${this._captionChanged}"
-                toolbar="mini"
+                toolbar="toolbar"
                 id="caption"
                 label="Caption"
                 placeholder="Name your table by adding a caption here."
                 rawhtml="${this.caption}"
-                type="rich-text-editor-toolbar-mini"
+                type="rich-text-editor-toolbar"
               >
               </rich-text-editor>
             </caption>
@@ -344,7 +343,7 @@ class EditableTable extends displayBehaviors(LitElement) {
                             id="cell-${tr}-${td}"
                             label="${`Cell ${this._getLabel(td, false)}${tr}`}"
                             rawhtml="${cell}"
-                            type="rich-text-editor-toolbar-mini"
+                            type="rich-text-editor-toolbar"
                           >
                           </rich-text-editor>
                           <div id="icons">
@@ -554,14 +553,18 @@ class EditableTable extends displayBehaviors(LitElement) {
     this.hideStriped = false;
     this.config = [
       {
-        command: "close",
-        icon: "close",
-        label: "Close toolbar",
-        toggles: false,
-        type: "rich-text-editor-button",
+        type: "button-group",
+        buttons: [
+          {
+            command: "close",
+            icon: "close",
+            label: "Close toolbar",
+            toggles: false,
+            type: "rich-text-editor-button",
+          },
+        ],
       },
       {
-        label: "Basic Inline Operations",
         type: "button-group",
         buttons: [
           {
@@ -579,7 +582,6 @@ class EditableTable extends displayBehaviors(LitElement) {
             type: "rich-text-editor-button",
           },
           {
-            collapsedUntil: "md",
             command: "removeFormat",
             icon: "editor:format-clear",
             label: "Erase Format",
@@ -588,7 +590,6 @@ class EditableTable extends displayBehaviors(LitElement) {
         ],
       },
       {
-        label: "Links",
         type: "button-group",
         buttons: [
           {
@@ -604,9 +605,7 @@ class EditableTable extends displayBehaviors(LitElement) {
         ],
       },
       {
-        collapsedUntil: "md",
         label: "Subscript and Superscript",
-        type: "button-group",
         buttons: [
           {
             command: "subscript",
@@ -619,27 +618,6 @@ class EditableTable extends displayBehaviors(LitElement) {
             command: "superscript",
             icon: "mdextra:superscript",
             label: "Superscript",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-        ],
-      },
-      {
-        collapsedUntil: "sm",
-        label: "Lists and Indents",
-        type: "button-group",
-        buttons: [
-          {
-            command: "insertOrderedList",
-            icon: "editor:format-list-numbered",
-            label: "Ordered List",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "insertUnorderedList",
-            icon: "editor:format-list-bulleted",
-            label: "Unordered List",
             toggles: true,
             type: "rich-text-editor-button",
           },
