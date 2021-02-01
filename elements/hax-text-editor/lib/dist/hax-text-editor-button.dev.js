@@ -11,10 +11,6 @@ var _richTextEditorPromptButton = require("@lrnwebcomponents/rich-text-editor/li
 
 require("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
 
-require("@lrnwebcomponents/simple-fields/lib/simple-fields-code.js");
-
-require("@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");
-
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {

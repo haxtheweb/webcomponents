@@ -11,6 +11,8 @@ require("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
 
 require("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
 
+require("@lrnwebcomponents/simple-tooltip/simple-toolti[].js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {

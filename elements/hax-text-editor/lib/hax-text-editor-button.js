@@ -5,8 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPromptButtonBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-fields/lib/simple-fields-code.js";
-import "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js";
 /**
  * `hax-text-editor-button`
  * @element hax-text-editor-button
