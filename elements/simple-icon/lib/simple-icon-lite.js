@@ -41,7 +41,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
     // render function
     render() {
       return svg`
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+        <svg xmlns="http://www.w3.org/2000/svg" part="simple-icon-svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
           <filter
             color-interpolation-filters="sRGB"
             x="0"
