@@ -4,8 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextStyles } from "../buttons/rich-text-editor-button.js";
-import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
-import "./rich-text-editor-breadcrumb.js";
 
 /**
  * `rich-text-editor-breadcrumbs`
@@ -19,49 +17,6 @@ class RichTextEditorBreadcrumbs extends LitElement {
    */
   static get tag() {
     return "rich-text-editor-breadcrumbs";
-  }
-
-  static get styles() {
-    return [
-      ...RichTextStyles,
-      css`
-        :host {
-          display: block;
-          background-color: var(--simple-toolbar-bg);
-          color: var(--simple-toolbar-button-color);
-          border: var(--simple-toolbar-border);
-          padding: 3px 10px;
-        }
-        :host([sticky]) {
-          position: sticky;
-          bottom: 0;
-        }
-        .selectednode {
-          background-color: var(--simple-toolbar-bg);
-        }
-      `,
-    ];
-  }
-  render() {
-    return html`
-      ${this.label}
-      ${!this.selectionAncestors
-        ? ""
-        : (this.selectionAncestors || []).map(
-            (ancestor, i) => html`
-              <rich-text-editor-breadcrumb
-                controls="${this.controls}"
-                label="${ancestor.nodeName.toLowerCase()}"
-                .target="${ancestor}"
-                @breadcrumb-tap="${this._handleBreadcrumb}"
-              >
-              </rich-text-editor-breadcrumb>
-              ${i + 1 >= (this.selectionAncestors || []).length
-                ? ""
-                : html` <span class="divider"> &gt; </span> `}
-            `
-          )}
-    `;
   }
 
   static get properties() {
@@ -106,30 +61,76 @@ class RichTextEditorBreadcrumbs extends LitElement {
     super();
     this.hidden = true;
     this.sticky = false;
-    this.label = `Expand selection: `;
+    this.label = "Select";
   }
-
-  selectNode(node) {
+  /**
+   * Handles button tap;
+   * @param {event} e the button tab event
+   * @returns {void}
+   */
+  _handleClick(ancestor) {
     this.dispatchEvent(
-      new CustomEvent("selectnode", {
+      new CustomEvent("breadcrumb-click", {
         bubbles: true,
-        composed: true,
         cancelable: true,
-        detail: node,
+        composed: true,
+        detail: ancestor,
       })
     );
   }
+  render() {
+    return html`
+      ${this.label}:
+      ${!this.selectionAncestors
+        ? ""
+        : (this.selectionAncestors || []).map(
+            (ancestor, i) => html`
+              <button
+                class="${ancestor.selectAll ? "" : "selectnode"}"
+                controls="${this.controls}"
+                @click="${(e) => this._handleClick(ancestor)}"
+                tabindex="0"
+              >
+                ${ancestor.nodeName.toLowerCase()}
+              </button>
+              ${i + 1 >= (this.selectionAncestors || []).length
+                ? ""
+                : html` <span class="divider"> &gt; </span> `}
+            `
+          )}
+    `;
+  }
 
-  /**
-   * handle a breadcrumb tap by updating the selected text
-   *
-   * @param {object} e the breadcrumb tap event
-   * @returns {void}
-   */
-  _handleBreadcrumb(e) {
-    if (e.detail.target) {
-      this.selectNode(e.detail.target);
-    }
+  static get styles() {
+    return [
+      ...RichTextStyles,
+      css`
+        :host {
+          display: block;
+          background-color: var(--simple-toolbar-button-bg, #ffffff);
+          color: var(--simple-toolbar-button-color #444);
+          border: var(--simple-toolbar-border-width, 1px) solid var(--simple-toolbar-border-color, #ddd);
+          padding: 3px 10px;
+        }
+        :host([sticky]) {
+          position: sticky;
+          bottom: 0;
+        }
+        .selectednode {
+          background-color: var(--simple-toolbar-button-bg, #ffffff);
+        }
+        button {
+          display: inline-block;
+          text-align: center;
+          min-width: 25px;
+          margin: 0;
+          padding: 2px 5px;
+        }
+        .selectNode {
+          font-family: monospace;
+        }
+      `,
+    ];
   }
 }
 window.customElements.define(

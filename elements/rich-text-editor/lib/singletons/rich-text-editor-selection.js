@@ -462,11 +462,11 @@ class RichTextEditorSelection extends LitElement {
       },
       selectnode: (e) => {
         e.stopImmediatePropagation();
-        this.selectNode(e.detail, toolbar.range);
+        this.selectNode(e.detail, toolbar.range, toolbar.editor);
       },
       selectnodecontents: (e) => {
         e.stopImmediatePropagation();
-        this.selectNode(e.detail, toolbar.range);
+        this.selectNodeContents(e.detail, toolbar.range, toolbar.editor);
       },
       selectrange: (e) => {
         e.stopImmediatePropagation();
@@ -514,7 +514,7 @@ class RichTextEditorSelection extends LitElement {
    * @param {object} node node to select
    * @returns {void}
    */
-  selectNodeContents(node, range, editor = this.toolbar.editor) {
+  selectNodeContents(node, range, editor) {
     if (node) {
       if (!range) {
         let sel = window.getSelection();
@@ -522,7 +522,10 @@ class RichTextEditorSelection extends LitElement {
         sel.removeAllRanges();
         sel.addRange(range);
       }
-      if (editor) this.updateRange(editor);
+      if (range) {
+        range.selectNodeContents(node);
+        if (editor) this.updateRange(editor, range);
+      }
     }
   }
   /**

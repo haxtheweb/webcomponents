@@ -68,6 +68,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
             min-height: 40px;
             cursor: pointer;
             outline: none;
+            flex: 1 1 100%;
             width: 100%;
           }
           :host(:empty) #placeholder {
@@ -146,6 +147,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           ?hidden="${!(this.viewSource && this.editing)}"
           language="html"
           @value-changed="${this._handleSourceChange}"
+          word-wrap
         >
         </code-editor>
       </div>`;

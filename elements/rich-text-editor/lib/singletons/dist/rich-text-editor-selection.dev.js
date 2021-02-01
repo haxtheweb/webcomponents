@@ -824,12 +824,16 @@ var RichTextEditorSelection =
               selectnode: function selectnode(e) {
                 e.stopImmediatePropagation();
 
-                _this5.selectNode(e.detail, toolbar.range);
+                _this5.selectNode(e.detail, toolbar.range, toolbar.editor);
               },
               selectnodecontents: function selectnodecontents(e) {
                 e.stopImmediatePropagation();
 
-                _this5.selectNode(e.detail, toolbar.range);
+                _this5.selectNodeContents(
+                  e.detail,
+                  toolbar.range,
+                  toolbar.editor
+                );
               },
               selectrange: function selectrange(e) {
                 e.stopImmediatePropagation();
@@ -891,12 +895,7 @@ var RichTextEditorSelection =
         },
         {
           key: "selectNodeContents",
-          value: function selectNodeContents(node, range) {
-            var editor =
-              arguments.length > 2 && arguments[2] !== undefined
-                ? arguments[2]
-                : this.toolbar.editor;
-
+          value: function selectNodeContents(node, range, editor) {
             if (node) {
               if (!range) {
                 var sel = window.getSelection();
@@ -905,7 +904,10 @@ var RichTextEditorSelection =
                 sel.addRange(range);
               }
 
-              if (editor) this.updateRange(editor);
+              if (range) {
+                range.selectNodeContents(node);
+                if (editor) this.updateRange(editor, range);
+              }
             }
           },
           /**

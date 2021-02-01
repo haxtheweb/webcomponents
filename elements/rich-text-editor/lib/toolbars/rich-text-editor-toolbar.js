@@ -59,6 +59,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     static get styles() {
       return [...this.baseStyles, ...super.stickyStyles];
     }
+    get hasBreadcrumbs() {
+      return false;
+    }
     get undoButton() {
       return {
         command: "undo",
@@ -374,6 +377,22 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return {
         ...super.properties,
         /**
+         * The label for the breadcrums area.
+         */
+        breadcrumbsLabel: {
+          name: "breadcrumbsLabel",
+          type: String,
+          attribute: "breadcrumbs-label",
+        },
+        /**
+         * The label for the breadcrums area.
+         */
+        breadcrumbsSelectAllLabel: {
+          name: "breadcrumbsSelectAllLabel",
+          type: String,
+          attribute: "breadcrumbs-select-all-label",
+        },
+        /**
          * `rich-text-editor` element that is currently in `editing` mode
          */
         editor: {
@@ -475,17 +494,22 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("../buttons/rich-text-editor-link.js");
       this.config = this.defaultConfig;
       this.clickableElements = {};
+      this.breadcrumbsLabel = "Select";
+      this.breadcrumbsSelectAllLabel = "All";
     }
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this.__selection = window.RichTextEditorSelection.requestAvailability();
       this.register();
+      if (this.hasBreadcrumbs) this._addBreadcrumbs();
     }
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "range") this._rangeChange();
         if (propName === "editor") this._editorChange();
+        if (["breadcrumbs", "sticky"].includes(propName) && !!this.breadcrumbs)
+          this.breadcrumbs.sticky = this.sticky;
       });
     }
 
@@ -636,7 +660,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           detail: node,
         })
       );
-      //if (this.__selection) this.__selection.selectNodeContents(node, this.editor);
     }
     /**
      * selects a given node inside connected editor
@@ -712,6 +735,39 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       );
     }
     /**
+     * adds breadcrumbfeature
+     *
+     */
+    _addBreadcrumbs() {
+      if (!this.breadcrumbs) {
+        this.breadcrumbs = document.createElement(
+          "rich-text-editor-breadcrumbs"
+        );
+        this.breadcrumbs.onselectnode = (e) => this._selectNode(e.detail);
+        document.body.appendChild(this.breadcrumbs);
+        this.breadcrumbs.addEventListener(
+          "breadcrumb-click",
+          this._handleBreadcrumb.bind(this)
+        );
+      }
+      this.breadcrumbs.label = this.breadcrumbsLabel;
+    }
+    /**
+     * click handle for breadcrumb buttons
+     *
+     * @param {*} e
+     */
+    _handleBreadcrumb(e) {
+      if (!this.editor || !this.range) {
+        this._rangeChange();
+      } else if (e.detail.selectAll) {
+        this.selectNodeContents(this.editor);
+      } else {
+        console.log(e);
+        this.selectNode(e.detail);
+      }
+    }
+    /**
      * handles updated button
      *
      * @param {event} e
@@ -737,12 +793,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     _editorChange() {
-      this.range = undefined;
       if (this.breadcrumbs) {
         this.breadcrumbs.controls = this.controls;
-        this.breadcrumbs.sticky = this.sticky;
-        this.breadcrumbs.controls = this.controls;
-        this.breadcrumbs.hidden = this.disconnected;
         if (!!this.editor)
           this.editor.parentNode.insertBefore(
             this.breadcrumbs,
@@ -752,6 +804,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.buttons.forEach((button) => {
         if (button.command !== "close") button.disabled = !this.editor;
       });
+      this.range = undefined;
     }
 
     /**
@@ -765,6 +818,23 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.editor &&
         this.editor.contains(this.range.commonAncestorContainer)
       ) {
+        let ancestor = this.range.commonAncestorContainer,
+          ancestorNode =
+            ancestor.nodeType == 1 ? ancestor : ancestor.parentNode,
+          nodes = [],
+          getParentNode = (node) => {
+            nodes.push(node);
+            if (node.parentNode && node.parentNode !== this.editor)
+              getParentNode(node.parentNode);
+          };
+        if (ancestorNode !== this.editor) getParentNode(ancestorNode);
+        nodes.push({
+          nodeName: this.breadcrumbsSelectAllLabel,
+          selectAll: true,
+        });
+        this.selectedNode = nodes[0];
+        this.selectionAncestors = nodes.reverse();
+
         (this.buttons || []).forEach((button) => {
           button.range = undefined;
           button.range = this.range;
@@ -772,7 +842,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           button.selectionAncestors = this.selectionAncestors;
         });
         if (this.breadcrumbs) {
-          this.breadcrumbs.controls = this.controls;
           this.breadcrumbs.selectionAncestors = this.selectionAncestors;
           this.breadcrumbs.hidden = this.disconnected;
         }
