@@ -66,13 +66,15 @@ class SimpleDrawer extends SimpleColors {
           position: absolute;
           right: 8px;
           top: 8px;
-          padding: 4px;
-          margin: 0;
+          padding: 4px 6px 4px 4px;
+          margin: 11px 5px 0px 0px;
           text-transform: none;
           float: right;
-          font-size: 12px;
+          font-size: var(--simple-drawer-close-font-size, 12px);
           color: var(--simple-drawer-header-color, #ffffff);
-          background-color: transparent;
+          background-color: var(--simple-drawer-close-background, transparent);
+          border: var(--simple-drawer-close-border);
+          cursor: pointer;
           min-width: unset;
         }
 
@@ -80,6 +82,7 @@ class SimpleDrawer extends SimpleColors {
           display: inline-block;
           --simple-icon-width: 16px;
           --simple-icon-height: 16px;
+          margin-top: -2px;
           margin-right: 2px;
         }
 
@@ -101,7 +104,7 @@ class SimpleDrawer extends SimpleColors {
           color: var(--simple-drawer-header-color, #ffffff);
           font-size: 24px;
           padding: 0;
-          line-height: 32px;
+          line-height: 45px;
           margin: 8px;
         }
       `,

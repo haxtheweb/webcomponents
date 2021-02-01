@@ -140,7 +140,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           top: 0;
           background-color: transparent;
           font-size: 20px;
-          width: var(---hax-tray-width, 300px);
+          width: var(--hax-tray-width, 300px);
           transition: 0.2s all ease-in-out;
           opacity: 0;
           visibility: hidden;
@@ -276,7 +276,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           font-size: 12px;
           font-weight: normal;
           --a11y-tabs-content-padding: 0;
-          width: calc(var(---hax-tray-width, 300px) - 2px);
+          width: calc(var(--hax-tray-width, 300px) - 2px);
           --a11y-collapse-heading-color: var(
             --simple-colors-default-theme-grey-7,
             #666
@@ -360,7 +360,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           margin-right: 8px;
         }
         .quick-buttons {
-          width: var(---hax-tray-width, 300px);
+          width: var(--hax-tray-width, 300px);
           display: flex;
           color: var(--simple-colors-default-theme-grey-12, #000);
           background-color: var(--simple-colors-default-theme-grey-4, #bbb);
@@ -516,7 +516,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               label="${this.__tipText}"
             ></hax-tray-button>
           `}
-      <div class="wrapper">
+      <div class="wrapper" part="hax-tray-wrapper">
         <div class="quick-buttons">
           <div class="ops">
             ${this.hidePanelOps
@@ -668,7 +668,12 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         </div>
         <a11y-collapse-group accordion radio>
           <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse id="settingscollapse" accordion data-simple-tour-stop>
+          <a11y-collapse
+            id="settingscollapse"
+            accordion
+            data-simple-tour-stop
+            part="hax-tray-settingscollapse"
+          >
             <div slot="heading" data-stop-title>
               <simple-icon-lite icon="${this.activeTagIcon}"></simple-icon-lite>
               ${this.activeTagName}
