@@ -117,7 +117,14 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
         node.append(div);
       }
     });
-    super.sendCommand(command, "", range);
+    if (!!this.selectedNode) {
+      //make sure old inline widgets are clear
+      this.selectedNode.remove();
+    } else {
+      //empties inline text nodes
+      super.sendCommand(command, "", range);
+    }
+    //inserts new updated widget
     range.insertNode(node);
   }
 }

@@ -378,11 +378,17 @@ var HaxTextEditorButton =
             }
           });
 
-          _get(
-            _getPrototypeOf(HaxTextEditorButton.prototype),
-            "sendCommand",
-            this
-          ).call(this, command, "", range);
+          if (!!this.selectedNode) {
+            //make sure old inline widgets are clear
+            this.selectedNode.remove();
+          } else {
+            //empties inline text nodes
+            _get(
+              _getPrototypeOf(HaxTextEditorButton.prototype),
+              "sendCommand",
+              this
+            ).call(this, command, "", range);
+          } //inserts new updated widget
 
           range.insertNode(node);
         },
