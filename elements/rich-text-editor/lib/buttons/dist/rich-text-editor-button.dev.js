@@ -419,7 +419,9 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
               if (propName === "range")
                 _this2._rangeChanged(_this2.range, oldValue);
               if (
-                ["shortcutKeys", "tags", "tagClickCallback"].includes(propName)
+                ["shortcutKeys", "tagsList", "tagClickCallback"].includes(
+                  propName
+                )
               )
                 _this2.updateButtonRegistry();
             });

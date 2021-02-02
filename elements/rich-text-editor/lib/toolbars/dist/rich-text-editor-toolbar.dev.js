@@ -1249,9 +1249,33 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
            */
         },
         {
+          key: "deregisterButton",
+          value: function deregisterButton(button) {
+            var _this3 = this;
+
+            if (
+              _get(_getPrototypeOf(_class.prototype), "deregisterButton", this)
+            )
+              _get(
+                _getPrototypeOf(_class.prototype),
+                "deregisterButton",
+                this
+              ).call(this, button);
+            (button.tagsArray || []).forEach(function (tag) {
+              return delete _this3.clickableElements[tag];
+            });
+          },
+          /**
+           * registers button when appended to toolbar
+           *
+           * @param {object} button button node
+           * @memberof SimpleToolbar
+           */
+        },
+        {
           key: "registerButton",
           value: function registerButton(button) {
-            var _this3 = this;
+            var _this4 = this;
 
             if (_get(_getPrototypeOf(_class.prototype), "registerButton", this))
               _get(
@@ -1267,7 +1291,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
 
             button.disabled = !this.editor;
             (button.tagsArray || []).forEach(function (tag) {
-              return (_this3.clickableElements[tag] = function (e) {
+              return (_this4.clickableElements[tag] = function (e) {
                 return button.tagClickCallback(e);
               });
             });
@@ -1280,7 +1304,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
         {
           key: "_addBreadcrumbs",
           value: function _addBreadcrumbs() {
-            var _this4 = this;
+            var _this5 = this;
 
             if (!this.breadcrumbs) {
               this.breadcrumbs = document.createElement(
@@ -1288,7 +1312,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
               );
 
               this.breadcrumbs.onselectnode = function (e) {
-                return _this4._selectNode(e.detail);
+                return _this5._selectNode(e.detail);
               };
 
               document.body.appendChild(this.breadcrumbs);
@@ -1338,30 +1362,6 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
                 "_handleButtonUpdate",
                 this
               ).call(this, e);
-          },
-          /**
-           * registers button when appended to toolbar
-           *
-           * @param {object} button button node
-           * @memberof SimpleToolbar
-           */
-        },
-        {
-          key: "deregisterButton",
-          value: function deregisterButton(button) {
-            var _this5 = this;
-
-            if (
-              _get(_getPrototypeOf(_class.prototype), "deregisterButton", this)
-            )
-              _get(
-                _getPrototypeOf(_class.prototype),
-                "deregisterButton",
-                this
-              ).call(this, button);
-            (button.tagsArray || []).forEach(function (tag) {
-              return delete _this5.clickableElements[tag];
-            });
           },
           /**
            * sets up breadcrumbs when editor changes

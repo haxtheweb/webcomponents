@@ -195,7 +195,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         if (propName === "controls")
           this._editorChanged(this.controls, oldValue);
         if (propName === "range") this._rangeChanged(this.range, oldValue);
-        if (["shortcutKeys", "tags", "tagClickCallback"].includes(propName))
+        if (["shortcutKeys", "tagsList", "tagClickCallback"].includes(propName))
           this.updateButtonRegistry();
       });
     }

@@ -9,9 +9,7 @@ var _litElement = require("lit-element");
 
 var _richTextEditor = require("@lrnwebcomponents/rich-text-editor/rich-text-editor.js");
 
-require("./lib/hax-text-editor-toolbar.js");
-
-var _haxStore = require("@lrnwebcomponents/hax-body/hax-store.js");
+require("./hax-text-editor-toolbar.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -265,7 +263,6 @@ var HaxTextEditor =
       _this.haxUIElement = true;
       _this.tag = HaxTextEditor.tag;
       _this.type = "hax-text-editor-toolbar";
-      console.log(_haxStore.HAXStore.elementList);
       return _this;
     }
     /**

@@ -715,6 +715,19 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (super.clearToolbar) super.clearToolbar();
       this.clickableElements = {};
     }
+
+    /**
+     * registers button when appended to toolbar
+     *
+     * @param {object} button button node
+     * @memberof SimpleToolbar
+     */
+    deregisterButton(button) {
+      if (super.deregisterButton) super.deregisterButton(button);
+      (button.tagsArray || []).forEach(
+        (tag) => delete this.clickableElements[tag]
+      );
+    }
     /**
      * registers button when appended to toolbar
      *
@@ -773,19 +786,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     _handleButtonUpdate(e) {
       if (super._handleButtonUpdate) super._handleButtonUpdate(e);
-    }
-
-    /**
-     * registers button when appended to toolbar
-     *
-     * @param {object} button button node
-     * @memberof SimpleToolbar
-     */
-    deregisterButton(button) {
-      if (super.deregisterButton) super.deregisterButton(button);
-      (button.tagsArray || []).forEach(
-        (tag) => delete this.clickableElements[tag]
-      );
     }
     /**
      * sets up breadcrumbs when editor changes

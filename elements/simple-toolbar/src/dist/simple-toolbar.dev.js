@@ -801,8 +801,8 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
         },
         {
           key: "updateButton",
-          value: function updateButton(oldValue, button) {
-            if (oldValue) this.deregisterButton(oldValue);
+          value: function updateButton(button) {
+            if (button) this.deregisterButton(button);
             if (button) this.registerButton(button);
           },
           /**
@@ -814,7 +814,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
           value: function updateToolbar() {
             var _this8 = this;
 
-            if (!this || this.config.length == 0) return;
+            if (!this || !this.config || this.config.length == 0) return;
             this.clearToolbar();
             if (_typeof(this.config) != _typeof([]))
               this.config = JSON.parse(config);

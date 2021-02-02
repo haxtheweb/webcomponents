@@ -251,9 +251,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: {
-            button: this,
-          },
+          detail: this,
         })
       );
     }

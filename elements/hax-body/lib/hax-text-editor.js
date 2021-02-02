@@ -4,8 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { RichTextEditorBehaviors } from "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import "./lib/hax-text-editor-toolbar.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/hax-store.js";
+import "./hax-text-editor-toolbar.js";
 
 /**
  * `hax-text-editor`
@@ -46,7 +45,6 @@ class HaxTextEditor extends RichTextEditorBehaviors(LitElement) {
     this.haxUIElement = true;
     this.tag = HaxTextEditor.tag;
     this.type = "hax-text-editor-toolbar";
-    console.log(HAXStore.elementList);
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.
