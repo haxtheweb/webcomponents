@@ -1522,7 +1522,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "archive",
       "markdown",
       "html",
-      "wikipedia",
       "content",
       "text",
       "inline",
