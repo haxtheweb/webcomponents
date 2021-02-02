@@ -123,6 +123,9 @@ class SimpleIconPicker extends SimplePicker {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    // @todo replace this with the metadata.js method that's in the works
+    // for discovering what icons exist and using tooling to access this as
+    // opposed to the overly bloated / aggressive method of polymer
     const iconSets = new IronMeta({ type: "iconset" });
     if (
       this.icons.length === 0 &&

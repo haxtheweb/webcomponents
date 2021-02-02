@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "iframe-loader",
-      "description": "Attributes:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - ",
+      "description": "Attributes:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeLoaded` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - ",
       "attributes": [
         {
           "name": "loading",
@@ -18,7 +18,7 @@
     },
     {
       "name": "iframe-loader",
-      "description": "Attributes:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - ",
+      "description": "Attributes:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeLoaded` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - ",
       "attributes": [
         {
           "name": "loading",
@@ -36,8 +36,12 @@
       "attributes": []
     },
     {
+      "name": "loading-indicator",
+      "attributes": []
+    },
+    {
       "name": "iframe-loader",
-      "description": "Attributes:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - ",
+      "description": "Attributes:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeLoaded` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - ",
       "attributes": [
         {
           "name": "loading",

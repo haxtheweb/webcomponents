@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "wikipedia-query",
-      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - ",
+      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nEvents:\n\n  * `hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `headers` - \n\n  * `__now` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `haxAppDetails` {`{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }`} - \n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `headers` - \n\n  * `__now` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - ",
       "attributes": [
         {
           "name": "title",
@@ -23,6 +23,10 @@
           "valueSet": "v"
         },
         {
+          "name": "headers",
+          "description": "`headers` - \n\nProperty: headers\n\nDefault: [object Object]"
+        },
+        {
           "name": "__now",
           "description": "`__now` {`string`} - \n\nProperty: __now"
         },
@@ -30,12 +34,16 @@
           "name": "element-visible",
           "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "onhax-register-app",
+          "description": "`hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }>`} - "
         }
       ]
     },
     {
       "name": "wikipedia-query",
-      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - ",
+      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nEvents:\n\n  * `hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `headers` - \n\n  * `__now` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `haxAppDetails` {`{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }`} - \n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `headers` - \n\n  * `__now` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - ",
       "attributes": [
         {
           "name": "title",
@@ -55,6 +63,10 @@
           "valueSet": "v"
         },
         {
+          "name": "headers",
+          "description": "`headers` - \n\nProperty: headers\n\nDefault: [object Object]"
+        },
+        {
           "name": "__now",
           "description": "`__now` {`string`} - \n\nProperty: __now"
         },
@@ -62,6 +74,10 @@
           "name": "element-visible",
           "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "onhax-register-app",
+          "description": "`hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }>`} - "
         }
       ]
     }

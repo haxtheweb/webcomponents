@@ -14,7 +14,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "auto complete either from an endpoint or local json array",
   "repository": {
     "type": "git",
@@ -38,8 +38,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/simple-filter": "^3.0.5",
-    "@lrnwebcomponents/simple-icon": "^3.0.5",
-    "@lrnwebcomponents/simple-popover": "^3.0.5",
+    "@lrnwebcomponents/simple-icon": "^3.0.6",
+    "@lrnwebcomponents/simple-popover": "^3.0.6",
     "@lrnwebcomponents/utils": "^3.0.0",
     "lit-element": "2.4.0"
   },
