@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>ShadowStyle: shadow-style Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@lrnwebcomponents/meme-maker/meme-maker.js';
+      // this will still style correctly!
+      setTimeout(() => {
+        import('@lrnwebcomponents/github-preview/github-preview.js');        
+      }, 500);
+      import '../shadow-style.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic shadow-style demo</h3>
+      <demo-snippet>
+        <template>
+          <github-preview repo="haxcms" org="elmsln"></github-preview>
+          <shadow-style>
+            github-preview::shadow(.stats-container) {
+              padding: 16px;
+              font-size: 20px;
+            }
+            meme-maker::shadow(figure) {
+              padding: 10px;
+              background-color: yellow;
+            }
+            meme-maker::shadow(figure figcaption) {
+              font-size: 60px !important;
+            }
+            meme-maker::shadow(figcaption){ color: orange; }
+          </shadow-style>
+          <meme-maker
+            image-url="https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg"
+            top-text="TOTALLY"
+            bottom-text="NORMAL"
+          >
+            <div>TOTALLY</div>
+              <img src="https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg" alt="" preload="lazy" aria-describedby="">
+            <div>NORMAL</div>
+          </meme-maker>
+          <meme-maker
+          image-url="https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg"
+          top-text="TOTALLY"
+          bottom-text="NORMAL"
+        >
+          <div>TOTALLY</div>
+            <img src="https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg" alt="" preload="lazy" aria-describedby="">
+          <div>NORMAL</div>
+        </meme-maker>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
