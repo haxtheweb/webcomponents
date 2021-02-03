@@ -8,7 +8,7 @@ import {
   editableTableStyles,
 } from "./lib/editable-table-behaviors.js";
 import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
+import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -177,16 +177,17 @@ class EditableTable extends displayBehaviors(LitElement) {
           padding: 0;
           position: relative;
         }
-        rich-text-editor-toolbar {
-          position: relative;
-          margin: 0;
+        rich-text-editor-toolbar-mini {
+          position: absolute;
+          min-width: 200px;
+          height: 0;
         }
         rich-text-editor {
           margin-bottom: 1px;
-          min-height: 12px;
           padding: var(--editable-table-row-vertical-padding, 10px)
             var(--editable-table-row-horizontal-padding, 6px);
           border: none !important;
+          --rich-text-editor-min-height: 12px;
         }
         td #icons {
           position: absolute;
@@ -217,11 +218,11 @@ class EditableTable extends displayBehaviors(LitElement) {
   }
   render() {
     return html`
-      <rich-text-editor-toolbar
+      <rich-text-editor-toolbar-mini
         id="toolbar"
         .config="${this.config}"
         show="selection"
-      ></rich-text-editor-toolbar>
+      ></rich-text-editor-toolbar-mini>
       <editable-table-display
         aria-hidden="${this.editMode ? "true" : "false"}"
         ?bordered="${this.bordered}"
@@ -275,7 +276,7 @@ class EditableTable extends displayBehaviors(LitElement) {
                 label="Caption"
                 placeholder="Name your table by adding a caption here."
                 rawhtml="${this.caption}"
-                type="rich-text-editor-toolbar"
+                type="rich-text-editor-toolbar-mini"
               >
               </rich-text-editor>
             </caption>
