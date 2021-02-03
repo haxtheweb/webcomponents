@@ -170,7 +170,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            display: block;\n            border: none;\n            background-color: transparent;\n          }\n          #floating {\n            display: flex;\n            background-color: var(--simple-toolbar-button-bg, #ffffff);\n            border: var(--simple-toolbar-border-width, 1px) solid\n              var(--simple-toolbar-border-color, #ddd);\n          }\n          #floating[hidden] {\n            display: none;\n          }\n          #buttons[collapsed] {\n            width: max-content;\n          }\n        ",
+    "\n          :host {\n            position: relative;\n            height: 0;\n            margin: 0 auto;\n            padding: 0;\n            border: none;\n            background-color: none;\n          }\n          #container {\n            display: flex;\n            position: absolute;\n            bottom: 0;\n            margin: 0 auto;\n            padding: 0;\n            border: var(--simple-toolbar-border-width, 1px) solid\n              var(--simple-toolbar-border-color, #ddd);\n            background-color: var(--simple-toolbar-bg, var(--simple-toolbar-button-bg, #ffffff));\n          }\n        ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -182,11 +182,8 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n        <absolute-position-behavior\n          ?auto="',
-    '"\n          id="floating"\n          fit-to-visible-bounds\n          for="',
-    '"\n          ?hidden="',
-    '"\n          position="top"\n        >\n          ',
-    "\n        </absolute-position-behavior>\n      ",
+    '\n        <div id="container">\n          ',
+    "\n        </div>\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -718,9 +715,6 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             get: function get() {
               return (0, _litElement.html)(
                 _templateObject(),
-                this.controls,
-                this.controls,
-                !this.controls,
                 _get(_getPrototypeOf(_class.prototype), "toolbarTemplate", this)
               );
             }, // render function for toolbar
@@ -861,7 +855,7 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
                    * when to make toolbar visible:
                    * "always" to keep it visible,
                    * "selection" when there is an active selection,
-                   * or defaults to only when connected to an
+                   * or defaults to only when connected to a toolbar
                    */
                   show: {
                     type: String,
@@ -986,6 +980,8 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
             changedProperties.forEach(function (oldValue, propName) {
               if (propName === "range") _this2._rangeChange();
               if (propName === "editor") _this2._editorChange();
+              if (["editor", "show", "range"].includes(propName))
+                _this2.hidden = _this2.disconnected;
               if (
                 ["breadcrumbs", "sticky"].includes(propName) &&
                 !!_this2.breadcrumbs
@@ -1439,6 +1435,11 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
           get: function get() {
             return !this.editor ? undefined : this.editor.getAttribute("id");
           },
+          /**
+           * determines if the toolbar is hidden
+           *
+           * @readonly
+           */
         },
         {
           key: "disconnected",
@@ -1449,6 +1450,11 @@ var RichTextEditorToolbarBehaviors = function RichTextEditorToolbarBehaviors(
               ? !this.editor
               : this.noSelection;
           },
+          /**
+           * determines if the toolbar has an extive selection
+           *
+           * @readonly
+           */
         },
         {
           key: "noSelection",
@@ -1473,7 +1479,13 @@ for styling:
 
 Custom property | Description | Default
 ----------------|-------------|----------
+--simple-toolbar-border-width | width of toolbar's border | 1px
+--simple-toolbar-border-color | color of toolbar's border | #ddd
+--simple-toolbar-button | background-color of toolbar | --simple-toolbar-button-bg
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-toolbar
  * @demo ./demo/toolbar.html
  */

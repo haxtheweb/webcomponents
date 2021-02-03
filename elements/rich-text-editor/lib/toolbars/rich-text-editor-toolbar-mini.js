@@ -9,6 +9,9 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
  * `rich-text-editor-toolbar-mini`
  * `a mini floating toolbar for the rich text editor`
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-toolbar-mini
  * @demo ./demo/mini.html mini floating toolbar
  */

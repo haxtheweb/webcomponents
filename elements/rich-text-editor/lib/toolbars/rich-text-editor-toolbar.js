@@ -22,21 +22,25 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return [
         css`
           :host {
-            display: block;
+            position: relative;
+            height: 0;
+            margin: 0 auto;
+            padding: 0;
             border: none;
-            background-color: transparent;
+            background-color: none;
           }
-          #floating {
+          #container {
             display: flex;
-            background-color: var(--simple-toolbar-button-bg, #ffffff);
+            position: absolute;
+            bottom: 0;
+            margin: 0 auto;
+            padding: 0;
             border: var(--simple-toolbar-border-width, 1px) solid
               var(--simple-toolbar-border-color, #ddd);
-          }
-          #floating[hidden] {
-            display: none;
-          }
-          #buttons[collapsed] {
-            width: max-content;
+            background-color: var(
+              --simple-toolbar-bg,
+              var(--simple-toolbar-button-bg, #ffffff)
+            );
           }
         `,
       ];
@@ -348,18 +352,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     get miniTemplate() {
-      return html`
-        <absolute-position-behavior
-          ?auto="${this.controls}"
-          id="floating"
-          fit-to-visible-bounds
-          for="${this.controls}"
-          ?hidden="${!this.controls}"
-          position="top"
-        >
-          ${super.toolbarTemplate}
-        </absolute-position-behavior>
-      `;
+      return html` <div id="container">${super.toolbarTemplate}</div> `;
     }
 
     // render function for toolbar
@@ -445,7 +438,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
          * when to make toolbar visible:
          * "always" to keep it visible,
          * "selection" when there is an active selection,
-         * or defaults to only when connected to an
+         * or defaults to only when connected to a toolbar
          */
         show: {
           type: String,
@@ -508,6 +501,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "range") this._rangeChange();
         if (propName === "editor") this._editorChange();
+        if (["editor", "show", "range"].includes(propName))
+          this.hidden = this.disconnected;
         if (["breadcrumbs", "sticky"].includes(propName) && !!this.breadcrumbs)
           this.breadcrumbs.sticky = this.sticky;
       });
@@ -533,7 +528,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     get controls() {
       return !this.editor ? undefined : this.editor.getAttribute("id");
     }
-
+    /**
+     * determines if the toolbar is hidden
+     *
+     * @readonly
+     */
     get disconnected() {
       return this.show == "always"
         ? false
@@ -541,6 +540,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         ? !this.editor
         : this.noSelection;
     }
+    /**
+     * determines if the toolbar has an extive selection
+     *
+     * @readonly
+     */
     get noSelection() {
       return !this.range || this.range.collapsed;
     }
@@ -833,7 +837,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         });
         this.selectedNode = nodes[0];
         this.selectionAncestors = nodes.reverse();
-
         (this.buttons || []).forEach((button) => {
           button.range = undefined;
           button.range = this.range;
@@ -859,7 +862,13 @@ for styling:
 
 Custom property | Description | Default
 ----------------|-------------|----------
+--simple-toolbar-border-width | width of toolbar's border | 1px
+--simple-toolbar-border-color | color of toolbar's border | #ddd
+--simple-toolbar-button | background-color of toolbar | --simple-toolbar-button-bg
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-toolbar
  * @demo ./demo/toolbar.html
  */

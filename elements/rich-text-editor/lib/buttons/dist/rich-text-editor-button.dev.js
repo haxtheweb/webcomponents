@@ -800,19 +800,11 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
               : this._getSelectedHtml();
           },
           /**
-         * Handles keys the same way a button is handled
-         * @param {event} e the  event
-         * /
-        _handleKeys(e) {
-          e.preventDefault();
-          this._handleClick(e);
-        }
-         /**
-         * handles range change
-         *
-         * @param {object} newVal new range
-         * @param {object} oldVal old range
-         */
+           * handles range change
+           *
+           * @param {object} newVal new range
+           * @param {object} oldVal old range
+           */
         },
         {
           key: "_rangeChanged",

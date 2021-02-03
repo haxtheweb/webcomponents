@@ -3,13 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextEditorToolbarFull = void 0;
+exports.RichTextEditorToolbarMini = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
 var _richTextEditorToolbar = require("./rich-text-editor-toolbar.js");
 
-require("./rich-text-editor-breadcrumbs.js");
+require("@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -27,55 +27,6 @@ function _typeof(obj) {
     };
   }
   return _typeof(obj);
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly)
-      symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-    keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    if (i % 2) {
-      ownKeys(source, true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(source).forEach(function (key) {
-        Object.defineProperty(
-          target,
-          key,
-          Object.getOwnPropertyDescriptor(source, key)
-        );
-      });
-    }
-  }
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
 }
 
 function _toConsumableArray(arr) {
@@ -103,6 +54,25 @@ function _arrayWithoutHoles(arr) {
     }
     return arr2;
   }
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([" ", " "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+  return Object.freeze(
+    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
+  );
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -198,34 +168,36 @@ function _getPrototypeOf(o) {
 }
 
 /**
- * `rich-text-editor-toolbar-full`
- * `a full toolbar with breadcrumbs for the rich text editor`
+ * `rich-text-editor-toolbar-mini`
+ * `a mini floating toolbar for the rich text editor`
  *
  * @customElement
  * @lit-html
  * @lit-element
- * @element rich-text-editor-toolbar-full
- * @demo ./demo/index.html demo
- * @demo ./demo/full.html toolbar with breadcrumb
+ * @element rich-text-editor-toolbar-mini
+ * @demo ./demo/mini.html mini floating toolbar
  */
-var RichTextEditorToolbarFull =
+var RichTextEditorToolbarMini =
   /*#__PURE__*/
   (function (_RichTextEditorToolba) {
-    _inherits(RichTextEditorToolbarFull, _RichTextEditorToolba);
+    _inherits(RichTextEditorToolbarMini, _RichTextEditorToolba);
 
     _createClass(
-      RichTextEditorToolbarFull,
+      RichTextEditorToolbarMini,
       [
         {
           key: "render",
-          // render function for template
+          // properties available to the custom element for data binding
           value: function render() {
-            return _get(
-              _getPrototypeOf(RichTextEditorToolbarFull.prototype),
-              "render",
-              this
-            ).call(this);
-          }, // properties available to the custom element for data binding
+            return (0, _litElement.html)(
+              _templateObject(),
+              _get(
+                _getPrototypeOf(RichTextEditorToolbarMini.prototype),
+                "miniTemplate",
+                this
+              )
+            );
+          },
         },
       ],
       [
@@ -236,7 +208,7 @@ var RichTextEditorToolbarFull =
            * Store the tag name to make it easier to obtain directly.
            */
           get: function get() {
-            return "rich-text-editor-toolbar-full";
+            return "rich-text-editor-toolbar-mini";
           },
         },
         {
@@ -245,30 +217,17 @@ var RichTextEditorToolbarFull =
             return [].concat(
               _toConsumableArray(
                 _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
+                  _getPrototypeOf(RichTextEditorToolbarMini),
                   "baseStyles",
                   this
                 )
               ),
               _toConsumableArray(
                 _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "stickyStyles",
+                  _getPrototypeOf(RichTextEditorToolbarMini),
+                  "miniStyles",
                   this
                 )
-              )
-            );
-          },
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return _objectSpread(
-              {},
-              _get(
-                _getPrototypeOf(RichTextEditorToolbarFull),
-                "properties",
-                this
               )
             );
           },
@@ -276,33 +235,49 @@ var RichTextEditorToolbarFull =
       ]
     );
 
-    function RichTextEditorToolbarFull() {
-      _classCallCheck(this, RichTextEditorToolbarFull);
+    function RichTextEditorToolbarMini() {
+      var _this;
 
-      return _possibleConstructorReturn(
+      _classCallCheck(this, RichTextEditorToolbarMini);
+
+      _this = _possibleConstructorReturn(
         this,
-        _getPrototypeOf(RichTextEditorToolbarFull).call(this)
+        _getPrototypeOf(RichTextEditorToolbarMini).call(this)
       );
+      _this.sticky = false;
+      _this.config = _this.miniConfig;
+      return _this;
     }
 
-    _createClass(RichTextEditorToolbarFull, [
+    _createClass(RichTextEditorToolbarMini, [
       {
-        key: "hasBreadcrumbs",
-        get: function get() {
-          return true;
+        key: "updated",
+        value: function updated(changedProperties) {
+          var _this2 = this;
+
+          _get(
+            _getPrototypeOf(RichTextEditorToolbarMini.prototype),
+            "updated",
+            this
+          ).call(this, changedProperties);
+
+          changedProperties.forEach(function (oldValue, propName) {
+            //disable sticky for mini
+            if (propName === "sticky" && _this2.sticky) _this2.sticky = false;
+          });
         },
       },
     ]);
 
-    return RichTextEditorToolbarFull;
+    return RichTextEditorToolbarMini;
   })(
     (0, _richTextEditorToolbar.RichTextEditorToolbarBehaviors)(
       _litElement.LitElement
     )
   );
 
-exports.RichTextEditorToolbarFull = RichTextEditorToolbarFull;
+exports.RichTextEditorToolbarMini = RichTextEditorToolbarMini;
 window.customElements.define(
-  RichTextEditorToolbarFull.tag,
-  RichTextEditorToolbarFull
+  RichTextEditorToolbarMini.tag,
+  RichTextEditorToolbarMini
 );

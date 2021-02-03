@@ -165,7 +165,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      */
     expandSelection() {
       let element = this.rangeQuery();
-      if (element) {
+      if (!!element) {
         this.highlightNode(element);
         this.selectedNode = element;
       }
@@ -262,9 +262,45 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      */
     updateSelection() {
       let range = this.range.cloneRange();
+      let rangeInfo = (range) => {
+        let contents = !range ? undefined : range.cloneContents(),
+          ancestor = !range ? undefined : range.commonAncestorContainer,
+          innerHTML = !contents ? undefined : contents.textContent,
+          child = !contents ? undefined : contents.firstElementChild;
+        return {
+          range: range,
+          ancestor: ancestor,
+          child: child,
+          innerHTML: innerHTML,
+        };
+      };
+      console.log(
+        this.promptCommand,
+        this.promptCommandVal,
+        rangeInfo(this.range),
+        rangeInfo(range)
+      );
       this.sendCommand(this.promptCommand, this.promptCommandVal);
-      this.selectRange(range);
-      if (this.setsInnerHTML) this.setInnerHTML(this.getPropValue("innerHTML"));
+      console.log(
+        this.promptCommand,
+        this.promptCommandVal,
+        rangeInfo(this.range),
+        rangeInfo(range)
+      );
+      //this.selectRange(range);
+      console.log(
+        this.promptCommand,
+        this.promptCommandVal,
+        rangeInfo(this.range),
+        rangeInfo(range)
+      );
+      //if (this.setsInnerHTML) this.setInnerHTML(this.getPropValue("innerHTML"));
+      console.log(
+        this.promptCommand,
+        this.promptCommandVal,
+        rangeInfo(this.range),
+        rangeInfo(range)
+      );
     }
 
     /**

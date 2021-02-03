@@ -16,33 +16,18 @@ const RichTextEditorBehaviors = function (SuperClass) {
       return [
         ...RichTextStyles,
         css`
+          :host {
+            display: block;
+          }
           :host([hidden]) {
             display: none;
           }
-
-          :host {
-            display: block;
-            --simple-toolbar-border-color: #ddd;
-            --simple-toolbar-border-width: 1px;
-            --simple-toolbar-button-opacity: 1;
-            --simple-toolbar-button-color: #444;
-            --simple-toolbar-bg: #ffffff;
-            --simple-toolbar-button-bg: #ffffff;
-            --simple-toolbar-button-border-color: transparent;
-            --simple-toolbar-button-toggled-opacity: 1;
-            --simple-toolbar-button-toggled-color: #222;
-            --simple-toolbar-button-toggled-bg: #ddd;
-            --simple-toolbar-button-toggled-border-color: transparent;
-            --simple-toolbar-button-hover-opacity: 1;
-            --simple-toolbar-button-hover-color: #000;
-            --simple-toolbar-button-hover-bg: #f0f0f0;
-            --simple-toolbar-button-hover-border-color: unset;
-            --simple-toolbar-button-disabled-opacity: 1;
-            --simple-toolbar-button-disabled-color: #666;
-            --simple-toolbar-button-disabled-bg: transparent;
-            --simple-toolbar-button-disabled-border-color: transparent;
+          :host([disabled]) {
+            cursor: not-allowed;
           }
-
+          :host(:empty) {
+            opacity: 0.7;
+          }
           :host(:focus) {
             outline: none;
           }
@@ -52,57 +37,57 @@ const RichTextEditorBehaviors = function (SuperClass) {
             overflow-y: scroll;
           }
 
-          #container {
-            display: flex;
-            align-items: stretch;
-            justify-content: space-between;
-            width: 100%;
-          }
-          #placeholder {
-            display: none;
+          #container,
+          #wysiwyg {
+            display: block;
             width: 100%;
           }
           #source,
           #wysiwyg {
             margin: 0;
             padding: 0;
-            min-height: 40px;
+            min-height: var(--rich-text-editor-min-height, 20px);
             cursor: pointer;
             outline: none;
             flex: 1 1 100%;
             width: 100%;
           }
-          :host(:empty) #placeholder {
-            outline: var(--rich-text-editor-border-width, 1px) dashed
-              var(--simple-toolbar-border-color);
-            margin: 10px;
-            width: calc(100% - 10px);
-          }
-
-          :host(:empty) #source:focus #placeholder,
-          :host(:empty) #source:hover #placeholder {
+          :host(:empty) #wysiwyg::after {
             display: block;
-            margin: 0;
-            padding: 0;
+            content: attr(aria-placeholder);
           }
 
-          #source:hover,
-          #source:focus-within,
-          :host(:not([editing][view-source])) #wysiwyg:hover,
-          :host(:not([editing][view-source])) #wysiwyg:focus,
-          :host(:not([editing][view-source])) #wysiwyg:focus-within {
+          :host(:hover),
+          :host(:focus-within) {
+            opacity: 1;
             outline: var(--rich-text-editor-border-width, 2px) solid
               var(--rich-text-editor-focus-color, blue);
           }
+          :host([disabled]),
+          :host([view-source]) {
+            outline: none !important;
+          }
 
+          #source:hover,
+          #source:focus-within {
+            outline: var(--rich-text-editor-border-width, 2px) solid
+              var(--rich-text-editor-focus-color, blue);
+          }
+          :host([editing][view-source]) #container {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            width: 100%;
+          }
           :host([editing][view-source]) #source,
           :host([editing][view-source]) #wysiwyg {
             resize: horizontal;
             overflow: auto;
-            min-width: 5%;
-            max-width: 95%;
             flex: 1 1 auto;
             width: 50%;
+          }
+          :host([editing][view-source]) #source {
+            min-width: 300px;
           }
           :host([editing][view-source]) #wysiwyg {
             cursor: not-allowed;
@@ -115,14 +100,6 @@ const RichTextEditorBehaviors = function (SuperClass) {
               --rich-text-editor-selection-bg,
               rgb(146, 197, 255)
             );
-          }
-
-          ::slotted(*:first-child) {
-            margin-top: 0;
-          }
-
-          ::slotted(*:last-child) {
-            margin-bottom: 0;
           }
         `,
       ];
@@ -137,10 +114,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
         @mouseover="${(e) => (this.__hovered = true)}"
         @mouseout="${(e) => (this.__hovered = false)}"
       >
-        <div id="wysiwyg">
-          <div id="placeholder" aria-placeholder="${this.placeholder}">
-            ${this.placeholder}
-          </div>
+        <div id="wysiwyg" aria-placeholder="${this.placeholder}">
           <slot></slot>
         </div>
         <code-editor
@@ -176,6 +150,15 @@ const RichTextEditorBehaviors = function (SuperClass) {
           type: Boolean,
           reflect: true,
           attribute: "editing",
+        },
+        /**
+         * don't reveal toolbar on mouseover
+         */
+        disabled: {
+          name: "disabled",
+          type: Boolean,
+          attribute: "disabled",
+          reflect: true,
         },
         /**
          * don't reveal toolbar on mouseover
@@ -314,12 +297,14 @@ const RichTextEditorBehaviors = function (SuperClass) {
       this.type = "rich-text-editor-toolbar";
       this.id = "";
       this.range = undefined;
+      this.disabled = false;
       this.__focused = false;
       this.__hovered = false;
       this.editing = false;
       this.__selection = window.RichTextEditorSelection.requestAvailability();
       let root = this;
       import("@lrnwebcomponents/code-editor/code-editor.js");
+      this.setAttribute("tabindex", 1);
       document.addEventListener(shadow.eventName, this._getRange.bind(root));
     }
 
@@ -337,7 +322,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
       super.connectedCallback();
       setTimeout(() => {
         this.register();
-      }, 1);
+      }, 500);
     }
 
     /**
@@ -363,6 +348,10 @@ const RichTextEditorBehaviors = function (SuperClass) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "editing") this._editableChange();
+        if (propName === "disabled") {
+          this.disableEditing();
+          this.setAttribute("tabindex", this.disabled ? -1 : 0);
+        }
         if (propName === "range") this._rangeChange();
         if (propName === "rawhtml" && !!this.rawhtml)
           this.setHTML(this.rawhtml);
@@ -527,8 +516,9 @@ const RichTextEditorBehaviors = function (SuperClass) {
      * @memberof RichTextEditor
      */
     setHTML(rawhtml = "") {
-      this.innerHTML = rawhtml.trim();
-      this.setCancelHTML(rawhtml.trim());
+      let html = this.sanitizeHTML(rawhtml).trim();
+      this.innerHTML = html;
+      this.setCancelHTML(html);
       if (this.isEmpty()) this.innerHTML = "";
       this._editableChange();
     }
@@ -568,14 +558,27 @@ const RichTextEditorBehaviors = function (SuperClass) {
       );
     }
     /**
-     * updates editor placeholder and watches for range changes
+     * watches for range changes
      *
      * @memberof RichTextEditor
      */
     _editableChange() {
+      let keyPress = (e) => {
+        if (this.isEmpty() && e.key) {
+          this.innerHTML = e.key
+            .replace(">", "&gt;")
+            .replace("<", "&lt;")
+            .replace("&", "&amp;");
+          let range = this._getRange();
+          this.range.selectNodeContents(this);
+          this.range.collapse();
+        }
+      };
       if (this.editing) {
+        this.addEventListener("keypress", keyPress);
         this.setCancelHTML();
-        if (this.isEmpty()) this.innerHTML = "";
+      } else {
+        this.removeEventListener("keypress", keyPress);
       }
     }
 
@@ -588,6 +591,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
         ? shadow.getRange(shadowRoot(this))
         : undefined;
       if (this.updateRange) this.updateRange();
+      return this.range;
     }
 
     /**
@@ -672,7 +676,21 @@ const RichTextEditorBehaviors = function (SuperClass) {
  * `rich-text-editor`
  * @element rich-text-editor
  * a standalone rich text editor
+### Styling
+
+`<rich-text-editor` provides following custom properties and mixins
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+--rich-text-editor-min-height | minimum height of editor | 20px
+--rich-text-editor-outline-width | width of editor's outline when focused | 1px
+--rich-text-editor-focus-color | color of editor's outline when focused | blue 
+--rich-text-editor-selection-bg | color of hiighlighted selection | rgb(146, 197, 255)
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @demo ./demo/index.html demo
  * @demo ./demo/mini.html mini floating toolbar
  * @demo ./demo/full.html toolbar with breadcrumb

@@ -389,7 +389,7 @@ class RichTextEditorSelection extends LitElement {
       handlers = {
         click: (e) => this._handleEditorClick(editor, e),
         focus: (e) => {
-          if (!toolbar.__promptOpen) this.edit(editor);
+          if (!toolbar.__promptOpen && !editor.disabled) this.edit(editor);
         },
         getrange: (e) => {
           if (!toolbar.__promptOpen) {
@@ -438,11 +438,9 @@ class RichTextEditorSelection extends LitElement {
       },
       disableediting: (e) => this.disableEditing((e.detail || {}).editor),
       highlight: (e) => {
-        e.stopImmediatePropagation();
         this.highlight(toolbar, e.detail);
       },
       highlightnode: (e) => {
-        e.stopImmediatePropagation();
         this.highlightNode(e.detail, toolbar);
       },
       pastefromclipboard: (e) => {
@@ -461,20 +459,15 @@ class RichTextEditorSelection extends LitElement {
         this.selectRange(this.range, (e.detail || {}).editor);
       },
       selectnode: (e) => {
-        console.log(node);
-        e.stopImmediatePropagation();
         this.selectNode(e.detail, toolbar.range, toolbar.editor);
       },
       selectnodecontents: (e) => {
-        e.stopImmediatePropagation();
         this.selectNodeContents(e.detail, toolbar.range, toolbar.editor);
       },
       selectrange: (e) => {
-        e.stopImmediatePropagation();
         this.selectRange(e.detail, toolbar.editor);
       },
       wrapselection: (e) => {
-        e.stopImmediatePropagation();
         this.surroundRange(e.detail, toolbar.range);
       },
     };
@@ -630,11 +623,13 @@ class RichTextEditorSelection extends LitElement {
   }
 
   _handleEditorClick(editor, e) {
-    if (!editor.__focused) {
-      editor.focus();
-    } else {
-      let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
-        els = !toolbar ? [] : Object.keys(toolbar.clickableElements || {}),
+    if (!editor || editor.disabled) return;
+    let toolbar = this.getConnectedToolbar(editor),
+      focused = editor.__focused;
+    if (!toolbar || toolbar.editor !== editor) this.edit(editor);
+    editor.focus();
+    if (focused) {
+      let els = !toolbar ? [] : Object.keys(toolbar.clickableElements || {}),
         el = e.target || e.srcElement || { tagName: "" },
         evt = { detail: el },
         tagname = (el.tagName || "").toLowerCase();

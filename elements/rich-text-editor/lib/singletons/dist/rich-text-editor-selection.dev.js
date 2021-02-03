@@ -716,7 +716,8 @@ var RichTextEditorSelection =
                   return _this4._handleEditorClick(editor, e);
                 },
                 focus: function focus(e) {
-                  if (!toolbar.__promptOpen) _this4.edit(editor);
+                  if (!toolbar.__promptOpen && !editor.disabled)
+                    _this4.edit(editor);
                 },
                 getrange: function getrange(e) {
                   if (!toolbar.__promptOpen) {
@@ -791,13 +792,9 @@ var RichTextEditorSelection =
                 return _this5.disableEditing((e.detail || {}).editor);
               },
               highlight: function highlight(e) {
-                e.stopImmediatePropagation();
-
                 _this5.highlight(toolbar, e.detail);
               },
               highlightnode: function highlightnode(e) {
-                e.stopImmediatePropagation();
-
                 _this5.highlightNode(e.detail, toolbar);
               },
               pastefromclipboard: function pastefromclipboard(e) {
@@ -822,14 +819,9 @@ var RichTextEditorSelection =
                 _this5.selectRange(_this5.range, (e.detail || {}).editor);
               },
               selectnode: function selectnode(e) {
-                console.log(node);
-                e.stopImmediatePropagation();
-
                 _this5.selectNode(e.detail, toolbar.range, toolbar.editor);
               },
               selectnodecontents: function selectnodecontents(e) {
-                e.stopImmediatePropagation();
-
                 _this5.selectNodeContents(
                   e.detail,
                   toolbar.range,
@@ -837,13 +829,9 @@ var RichTextEditorSelection =
                 );
               },
               selectrange: function selectrange(e) {
-                e.stopImmediatePropagation();
-
                 _this5.selectRange(e.detail, toolbar.editor);
               },
               wrapselection: function wrapselection(e) {
-                e.stopImmediatePropagation();
-
                 _this5.surroundRange(e.detail, toolbar.range);
               },
             };
@@ -1045,13 +1033,14 @@ var RichTextEditorSelection =
         {
           key: "_handleEditorClick",
           value: function _handleEditorClick(editor, e) {
-            if (!editor.__focused) {
-              editor.focus();
-            } else {
-              var toolbar = !editor
-                  ? undefined
-                  : this.getConnectedToolbar(editor),
-                els = !toolbar
+            if (!editor || editor.disabled) return;
+            var toolbar = this.getConnectedToolbar(editor),
+              focused = editor.__focused;
+            if (!toolbar || toolbar.editor !== editor) this.edit(editor);
+            editor.focus();
+
+            if (focused) {
+              var els = !toolbar
                   ? []
                   : Object.keys(toolbar.clickableElements || {}),
                 el = e.target ||
