@@ -271,7 +271,7 @@ var RichTextEditorLink =
           },
         ]
       );
-      _this.command = "CreateLink";
+      _this.command = "createLink";
       _this.icon = "link";
       _this.label = "Link";
       _this.toggledCommand = "unlink";

@@ -73,8 +73,8 @@ class RichTextEditorPrompt extends LitElement {
           background-color: var(--simple-toolbar-button-hover-bg);
         }
         .actions {
-          width: 100%;
-          padding-bottom: 3px;
+          width: calc(100% - 20px);
+          padding: 0 10px 3px;
           display: flex;
           align-items: center;
           justify-content: flex-end;

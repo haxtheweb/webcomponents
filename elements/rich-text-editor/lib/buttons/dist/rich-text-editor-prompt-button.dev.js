@@ -370,7 +370,7 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
           value: function expandSelection() {
             var element = this.rangeQuery();
 
-            if (element) {
+            if (!!element) {
               this.highlightNode(element);
               this.selectedNode = element;
             }
@@ -489,10 +489,47 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
           key: "updateSelection",
           value: function updateSelection() {
             var range = this.range.cloneRange();
+
+            var rangeInfo = function rangeInfo(range) {
+              var contents = !range ? undefined : range.cloneContents(),
+                ancestor = !range ? undefined : range.commonAncestorContainer,
+                innerHTML = !contents ? undefined : contents.textContent,
+                child = !contents ? undefined : contents.firstElementChild;
+              return {
+                range: range,
+                ancestor: ancestor,
+                child: child,
+                innerHTML: innerHTML,
+              };
+            };
+
+            console.log(
+              this.promptCommand,
+              this.promptCommandVal,
+              rangeInfo(this.range),
+              rangeInfo(range)
+            );
             this.sendCommand(this.promptCommand, this.promptCommandVal);
-            this.selectRange(range);
-            if (this.setsInnerHTML)
-              this.setInnerHTML(this.getPropValue("innerHTML"));
+            console.log(
+              this.promptCommand,
+              this.promptCommandVal,
+              rangeInfo(this.range),
+              rangeInfo(range)
+            ); //this.selectRange(range);
+
+            console.log(
+              this.promptCommand,
+              this.promptCommandVal,
+              rangeInfo(this.range),
+              rangeInfo(range)
+            ); //if (this.setsInnerHTML) this.setInnerHTML(this.getPropValue("innerHTML"));
+
+            console.log(
+              this.promptCommand,
+              this.promptCommandVal,
+              rangeInfo(this.range),
+              rangeInfo(range)
+            );
           },
           /**
            * Handles button tap

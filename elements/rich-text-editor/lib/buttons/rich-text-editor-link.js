@@ -41,7 +41,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
         autoValidate: true,
       },
     ];
-    this.command = "CreateLink";
+    this.command = "createLink";
     this.icon = "link";
     this.label = "Link";
     this.toggledCommand = "unlink";
