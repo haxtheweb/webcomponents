@@ -61,17 +61,8 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
     this.command = "insertHTML";
     this.label = "Insert Inline Image";
     this.icon = "editor:insert-photo";
-    this.tag = "img";
+    this.tagsList = "img";
     this.value = {};
-  }
-  /**
-   * overrides default block selectors
-   *
-   * @readonly
-   * @memberof RichTextEditorLink
-   */
-  get blockSelectors() {
-    return "img";
   }
 
   /**
@@ -102,15 +93,15 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
   /**
    * updates prompt fields with selected range data
    */
-  getValue() {
-    let img = this.rangeQuery();
+  getValue(node) {
+    let img = node || this.rangeQuery();
     return !img
       ? undefined
       : {
-          alt: img.getAttribute("alt"),
-          src: img.getAttribute("src"),
-          width: img.getAttribute("width"),
-          height: img.getAttribute("height"),
+          alt: !img ? undefined : img.getAttribute("alt"),
+          src: !img ? undefined : img.getAttribute("src"),
+          width: !img ? undefined : img.getAttribute("width"),
+          height: !img ? undefined : img.getAttribute("height"),
         };
   }
   setToggled() {

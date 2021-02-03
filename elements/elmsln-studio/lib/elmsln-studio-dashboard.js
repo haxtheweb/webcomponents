@@ -223,7 +223,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                             <tr>
                               <th scope="row">
                                 <simple-icon-lite
-                                  icon="star"
+                                  icon="icons:favorite"
                                 ></simple-icon-lite>
                                 Submissions Featured
                               </th>
@@ -240,11 +240,50 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                             icon="communication:forum"
                           ></simple-icon-lite>
                           Peer Reviews Written
+                          ${!this.profile || !this.profile.given
+                            ? " (0)"
+                            : ` (${this.profile.given.length})`}
                         </th>
                         <td>
-                          ${!this.profile || !this.profile.given
-                            ? "0"
-                            : html` ${this.profile.given.length} `}
+                          <div id="rating">
+                            ${this.profile.feedbackPercentile < 25
+                              ? ""
+                              : html`<simple-icon
+                                  icon="star"
+                                  accent-color="purple"
+                                ></simple-icon>`}
+                            ${this.profile.feedbackPercentile < 50
+                              ? ""
+                              : html`<simple-icon
+                                  icon="star"
+                                  accent-color="purple"
+                                ></simple-icon>`}
+                            ${this.profile.feedbackPercentile < 75
+                              ? ""
+                              : html`<simple-icon
+                                  icon="star"
+                                  accent-color="purple"
+                                ></simple-icon>`}
+                            ${this.profile.feedbackPercentile < 90
+                              ? ""
+                              : html`<simple-icon
+                                  icon="star"
+                                  accent-color="purple"
+                                ></simple-icon>`}
+                            ${this.profile.feedbackPercentile < 95
+                              ? ""
+                              : html`<simple-icon
+                                  icon="star"
+                                  accent-color="purple"
+                                ></simple-icon>`}
+                          </div>
+                          <simple-tooltip
+                            for="rating"
+                            ?hidden="${!this.profile.feedbackPercentile}"
+                            >Given peer reviews than
+                            ${this.profile.feedbackPercentile}% of
+                            classmates.</simple-tooltip
+                          >
                         </td>
                       </tr>
                     </tbody>

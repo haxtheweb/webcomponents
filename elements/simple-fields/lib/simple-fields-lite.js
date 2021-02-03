@@ -291,6 +291,12 @@ class SimpleFieldsLite extends LitElement {
       value: {
         type: Object,
       },
+      /**
+       * delays focus even until field is attached
+       */
+      __delayedFocus: {
+        type: Boolean,
+      },
       /*
        * form elements by id and config data in schema
        */
@@ -528,9 +534,27 @@ class SimpleFieldsLite extends LitElement {
   updateSchema() {
     this._formFieldsChanged();
   }
+  /**
+   * focus on first field
+   */
+  focus() {
+    let firstField =
+      this.__formElementsArray &&
+      this.__formElementsArray[0] &&
+      this.__formElementsArray[0].field
+        ? this.__formElementsArray[0].field
+        : false;
+    if (firstField) {
+      firstField.focus();
+      this.__delayedFocus = false;
+    } else {
+      this.__delayedFocus = true;
+    }
+  }
 
   /**
-   * clears and rebuilds form
+   * clears and rebuilds form then fires event
+   * @event fields-ready
    */
   rebuildForm() {
     this._clearForm();
@@ -542,6 +566,15 @@ class SimpleFieldsLite extends LitElement {
         ? this.__formElementsArray[0].field
         : false;
     if (firstField) firstField.autofocus = !this.disableAutofocus;
+    if (this.__delayedFocus || !this.disableAutofocus) this.focus();
+    this.dispatchEvent(
+      new CustomEvent("fields-ready", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
   }
 
   /**

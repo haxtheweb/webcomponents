@@ -30,7 +30,7 @@ export const Studio = () => {
       "rtf",
       "url",
       "xls",
-    ].map((i) => `./lib/svg/${i}.svg`),
+    ].map((i) => `./lib/svgs/${i}.svg`),
   ].map((f) => new URL(f, import.meta.url));
   return utils.makeElementFromClass(
     ElmslnStudio,

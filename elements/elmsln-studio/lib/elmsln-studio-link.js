@@ -141,7 +141,6 @@ class ElmslnStudioLink extends navigator(LitElement) {
   linkClick(event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log("ElmslnStudioPath", this.href);
     if (!this.disabled) this.navigate(this.href);
   }
 }

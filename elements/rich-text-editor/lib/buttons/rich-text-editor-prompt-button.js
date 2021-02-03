@@ -34,25 +34,11 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
         /**
          * is element a custom inline widget element?
          */
-        inlineWidget: {
-          name: "inlineWidget",
-          type: Boolean,
-        },
-        /**
-         * is element a custom inline widget element?
-         */
         id: {
           name: "id",
           type: String,
           reflect: true,
           attribute: "id",
-        },
-        /**
-         * tag that will wrap selected range
-         */
-        tag: {
-          name: "tag",
-          type: String,
         },
         /**
          * prefilled value of prompt
@@ -86,7 +72,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.editableSelection = false;
-      this.inlineWidget = false;
       this.fields = [
         {
           property: "innerHTML",
@@ -94,9 +79,13 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           inputMethod: "textfield",
         },
       ];
-      this.tag = "span";
+      this.tagsList = "span";
       this.value = { innerHTML: undefined };
       this.prompt = window.RichTextEditorPrompt.requestAvailability();
+    }
+
+    firstUpdated(changedProperties) {
+      super.firstUpdated(changedProperties);
     }
 
     /**
@@ -112,14 +101,14 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
     }
 
     /**
-     * determaines commandVal based on values passed from prompt
+     * determines commandVal based on values passed from prompt
      * (can be overriden for custom prompt command values)
      */
     get promptCommandVal() {
       return this.commandVal;
     }
     /**
-     * determaines if prompt also sets innerHTML of range
+     * determines if prompt also sets innerHTML of range
      * (can be overriden for custom prompts)
      */
     get setsInnerHTML() {
@@ -128,16 +117,42 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       );
       return innerHTML && innerHTML.length > 0;
     }
+    /**
+     * override this custom function to perform a
+     * custom operation when an element that matches the tags list is clicked
+     *
+     * @param {event} e click event
+     */
+    tagClickCallback(e) {
+      if (e.detail) {
+        this.highlightNode(e.detail);
+        this.selectedNode = e.detail;
+        this.open(e.detail);
+      }
+    }
 
     /**
      * override to add function to cancelled prompt
      */
-    cancel() {}
+    cancel() {
+      this.close();
+    }
+    close() {
+      this.dispatchEvent(
+        new CustomEvent("rich-text-editor-prompt-closed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
+    }
 
     /**
      * updates insertion based on fields
      */
     confirm(val) {
+      this.close();
       this.value = val;
       this.update();
       this.setToggled();
@@ -145,12 +160,15 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       this.updateSelection();
     }
     /**
-     * expands selection to include this.tag
+     * expands selection to include this.tags
      *
      */
     expandSelection() {
       let element = this.rangeQuery();
-      if (element) this.highlightNode(element);
+      if (element) {
+        this.highlightNode(element);
+        this.selectedNode = element;
+      }
     }
     /**
      * if selection is a node, gets node innerHTML
@@ -199,18 +217,17 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * gets value for prompt based on current selection
      * (can be overriden for custom prompt field values)
      */
-    getValue() {
+    getValue(node) {
       return { innerHTML: this.getInnerHTML() || "" };
     }
 
     /**
      * Handles selecting text and opening prompt
      */
-    open() {
-      this.expandSelection();
-      this.value = this.getValue();
-      this.prompt.fields = [...this.fields];
-      this.prompt.value = { ...this.value };
+    open(node) {
+      node || this.expandSelection();
+      this.value = this.getValue(node);
+      this.highlight();
       this.dispatchEvent(
         new CustomEvent("rich-text-editor-prompt-open", {
           bubbles: true,
@@ -254,7 +271,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * Handles button tap
      * @param {event} e button tap event
      */
-    _buttonTap(e) {
+    _handleClick(e) {
       e.preventDefault();
       this.open();
     }

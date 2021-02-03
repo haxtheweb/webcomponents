@@ -29,7 +29,6 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
   constructor() {
     super();
     this.icon = "more-vert";
-    this.collapseMax = "xs";
     this.toggled = false;
     this.label = "More buttons";
     this.labelToggled = "Fewer buttons";
@@ -45,14 +44,6 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
       toggled: {
         attribute: "toggled",
         type: Boolean,
-        reflect: true,
-      },
-      /**
-       * The maximum size where all of the buttons display
-       */
-      collapseMax: {
-        attribute: "collapse-max",
-        type: String,
         reflect: true,
       },
     };
@@ -71,7 +62,7 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
   /**
    * Fires a button tap event
    */
-  _buttonTap() {
+  _handleClick() {
     return true;
   }
 }

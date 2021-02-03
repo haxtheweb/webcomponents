@@ -37,13 +37,10 @@ Custom property | Description | Default
 class A11yGifPlayer extends SchemaBehaviors(LitElement) {
   constructor() {
     super();
-    this.alt = null;
     this.disabled = false;
-    this.src = null;
     this.tooltip = "Toggle animation";
-    this.tooltipPlaying = null;
-    this.srcWithoutAnimation = null;
     this.__playing = false;
+    this._updateFromSlot();
   }
   /**
    * LitElement render styles
@@ -68,9 +65,11 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
           padding: 0;
           margin: 0;
           position: relative;
-          width: min-content;
           border: var(--a11y-gif-player-border, none);
           border-radius: var(--a11y-gif-player-border-radius, 0);
+        }
+        img {
+          width: 100%;
         }
         button {
           position: absolute;
@@ -136,6 +135,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
   render() {
     return html`
       <div id="container">
+        <slot hidden></slot>
         <img
           id="gif"
           src="${this.src}"
@@ -259,6 +259,28 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
       },
     };
   }
+
+  /**
+   * mutation observer for a11y-details
+   * @readonly
+   * @returns {object}
+   */
+  get observer() {
+    let callback = () => this._updateFromSlot();
+    return new MutationObserver(callback);
+  }
+  connectedCallback() {
+    if (super.connectedCallback) super.connectedCallback();
+    this.observer.observe(this, {
+      attributes: false,
+      childList: true,
+      subtree: false,
+    });
+  }
+  disconnectedCallback() {
+    if (super.disconnectedCallback) super.disconnectedCallback();
+    this.observer.disconnect();
+  }
   /**
    * plays the animation regarless of previous state
    */
@@ -290,6 +312,16 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     } else {
       this.play();
     }
+  }
+  /**
+   * when slot changes update with animated gif
+   */
+  _updateFromSlot() {
+    let img = this.querySelector("img"),
+      src = img ? img.src : undefined,
+      alt = img ? img.alt : undefined;
+    if (src) this.srcWithoutAnimation = src;
+    if (alt) this.alt = alt;
   }
   /**
    * HAX

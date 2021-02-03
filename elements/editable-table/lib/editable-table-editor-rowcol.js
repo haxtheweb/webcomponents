@@ -2,21 +2,19 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-listbox/paper-listbox.js";
-import "@polymer/paper-item/paper-item.js";
-import "@polymer/paper-menu-button/paper-menu-button.js";
-import "@polymer/paper-listbox/paper-listbox.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import {
+  cellBehaviors,
+  editableTableCellStyles,
+} from "./editable-table-behaviors.js";
+import { A11yMenuButton } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import { cellBehaviors } from "./editable-table-behaviors.js";
 
 /**
  * `editable-table-editor-rowcol`
- * A header label and menu for inserting and deleting a row or a column of the editable-table interface (editable-table.html).
+ * A header label and menu for inserting and deleting a row or a column of editable-table interface (editable-table.html).
  *
  * @demo ./demo/editor.html
  *
@@ -24,88 +22,89 @@ import { cellBehaviors } from "./editable-table-behaviors.js";
  * @element editable-table-editor-rowcol
  * @appliesMixin cellBehaviors
  */
-class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
-  static get template() {
-    return html`
-      <style>
+class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
+  static get styles() {
+    return [
+      ...(super.styles || []),
+      ...editableTableCellStyles,
+      css`
         :host {
           display: block;
           --paper-item-min-height: 24px;
+          --a11y-menu-button-border: none;
+          --a11y-menu-button-list-border: 1px solid
+            var(--editable-table-border-color, #999);
+          --a11y-menu-button-vertical-padding: var(
+            --editable-table-cell-vertical-padding,
+            10px
+          );
+          --a11y-menu-button-horizontal-padding: var(
+            --editable-table-cell-horizontal-padding,
+            6px
+          );
+          --a11y-menu-button-item-focus-bg-color: var(
+            --editable-table-heading-bg-color,
+            #e8e8e8
+          );
+          --a11y-menu-button-list-bg-color: var(
+            --editable-table-bg-color,
+            #fff
+          );
         }
-        :host .sr-only {
-          position: absolute;
-          left: -9999px;
-          font-size: 0;
-          height: 0;
-          width: 0;
-          overflow: hidden;
-        }
-        :host #label {
-          margin: 0;
-          padding: 0;
-        }
-        :host paper-menu-button {
-          margin: 0;
-          padding: 0;
+        ul,
+        absolute-position-behavior {
           width: 100%;
         }
-        :host paper-listbox {
-          padding: 0;
-          background-color: var(--editable-table-bg-color);
+        absolute-position-behavior.row,
+        absolute-position-behavior.row ul {
+          width: 150px;
         }
-        :host button,
-        :host paper-item {
-          margin: 0;
-          text-transform: none;
-          background-color: transparent;
-          text-align: left;
-          font-family: var(--editable-table-secondary-font-family);
-          color: var(--editable-table-color);
+        a11y-menu-button-item {
+          font-family: var(
+            --editable-table-secondary-font-family,
+            "Roboto",
+            "Noto",
+            sans-serif
+          );
+          color: var(--editable-table-color, #222);
+          font-size: var(--editable-table-secondary-font-size, 12px);
         }
-        :host paper-item {
-          font-size: var(--editable-table-secondary-font-size);
-        }
-        :host button {
-          display: block;
-          padding-top: var(--editable-table-row-vertical-padding);
-          padding-bottom: var(--editable-table-row-vertical-padding);
-          background-color: transparent;
-          border: none;
-          border-radius: 0;
-        }
-        :host([condensed]) button {
-          padding-top: var(--editable-table-row-vertical-padding-condensed);
-          padding-bottom: var(--editable-table-row-vertical-padding-condensed);
-        }
-      </style>
-      <paper-menu-button id="menu">
-        <button slot="dropdown-trigger">
-          <span class="sr-only">[[_getType(row)]]</span>
-          <span id="label">[[label]]</span>
-          <span class="sr-only">Menu</span>
-          <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
-        </button>
-        <paper-listbox
-          slot="dropdown-content"
-          label="[_getType(row)]] [[label]] Menu"
-        >
-          <paper-item role="button" on-click="_onInsertBefore">
-            Insert [[_getType(row)]] Before
-            <span class="sr-only">[[label]]]</span>
-          </paper-item>
-          <paper-item role="button" on-click="_onInsertAfter">
-            Insert [[_getType(row)]] After
-            <span class="sr-only">[[label]]]</span>
-          </paper-item>
-          <paper-item role="button" on-click="_onDelete">
-            Delete [[_getType(row)]]
-            <span class="sr-only">[[label]]]</span>
-          </paper-item>
-        </paper-listbox>
-      </paper-menu-button>
-      <simple-tooltip for="menu"
-        >[[_getType(row)]] [[label]] Menu</simple-tooltip
+      `,
+    ];
+  }
+  render() {
+    return html`
+      <button
+        id="menubutton"
+        aria-haspopup="true"
+        aria-controls="menu"
+        aria-expanded="${this.expanded ? "true" : "false"}"
       >
+        <span class="sr-only">${this.type}</span>
+        <span id="label">${this.label || ""} </span>
+        <span class="sr-only">Menu</span>
+        <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
+      </button>
+      <absolute-position-behavior
+        ?auto="${this.expanded}"
+        class="${this.row ? "row" : "column"}"
+        for="menubutton"
+        position="${this.row ? "right" : "bottom"}"
+        position-align="${this.row ? "start" : "center"}"
+        offset="-3"
+      >
+        <ul
+          id="menu"
+          role="menu"
+          aria-labelledby="menubutton"
+          ?hidden="${!this.expanded}"
+          @mousover="${(e) => (this.hover = true)}"
+          @mousout="${(e) => (this.hover = false)}"
+        >
+          ${this._getItem()} ${this._getItem(false, true)}
+          ${this._getItem(true)}
+        </ul>
+      </absolute-position-behavior>
     `;
   }
   static get tag() {
@@ -113,50 +112,64 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
   }
   static get properties() {
     return {
+      ...super.properties,
       /**
-       * The cell that the menu controls
-       */
-      controls: {
-        type: String,
-        computed: "_getMenuControls(index,row)",
-        reflectToAttribute: true,
-      },
-      /**
-       * Index of the row or column
+       * Index of row or column
        */
       index: {
         type: Number,
-        value: null,
       },
       /**
-       * Label of the row or column
-       */
-      label: {
-        type: String,
-        computed: "_getLabel(index,row)",
-      },
-      /**
-       * Whether the menu button controls a row
+       * Whether menu button controls a row
        */
       row: {
         type: Boolean,
-        value: false,
       },
     };
   }
   /**
-   * Fires Delete Row/Column is clicked
-   * @param {boolean} row whether it's row
-   * @returns {string} "Row of "Column""
+   *
+   * Gets first cell that menu controls
+   * @readonly
+   * @memberof EditableTableEditorRowcol
    */
-  _getType(row) {
-    return row ? "Row" : "Column";
+  get controls() {
+    return this.row ? `cell-0-${this.index}` : `cell-${this.index}-0`;
+  }
+  /**
+   *
+   * Gets row or column label based on type
+   * @readonly
+   * @memberof EditableTableEditorRowcol
+   */
+  get label() {
+    return this.row
+      ? this._getLabel(this.index, true)
+      : this._getLabel(this.index, false);
+  }
+  /**
+   *
+   * get cell label
+   * @readonly
+   * @memberof EditableTableEditorRowcol
+   */
+  get labelInfo() {
+    return html`<span class="sr-only">${this.label}</span>`;
+  }
+  /**
+   *
+   * Gets row or column type
+   * @readonly
+   * @memberof EditableTableEditorRowcol
+   */
+  get type() {
+    return this.row ? "Row" : "Column";
   }
   /**
    * Fires when  selection is made from menu button
    * @event delete-rowcol
-   * @param {number} index the index to perform the action
-   * @param {boolean} whether the action is to insert
+   * @param {number} index index to perform action
+   * @param {boolean} whether action is to insert
    */
   rowColAction(index = this.index, insert = true) {
     this.dispatchEvent(
@@ -172,32 +185,36 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
       })
     );
   }
-  /**
-   * Gets the first cell that the menu controls
-   * @param {number} index the index of thee row or column
-   * @param {boolean} row is this menu for a row
-   * @returns {string} the id of the first cell that the menu controls
-   */
-  _getMenuControls(index, row) {
-    return row ? `cell-0-${index}` : `cell-${index}-0`;
+  _getItem(deleteItem = false, after = false) {
+    return html` <a11y-menu-button-item
+      @click="${deleteItem
+        ? this._onDelete
+        : after
+        ? this._onInsertAfter
+        : this._onInsertBefore}"
+    >
+      ${deleteItem ? "Delete" : "Insert"}
+      ${this.type}${deleteItem ? " " : after ? " After " : " Before "}
+      ${this.labelInfo}
+    </a11y-menu-button-item>`;
   }
   /**
    * Handles when Delete Row/Column is clicked
-   * @param {event} e the button event
+   * @param {event} e button event
    */
   _onDelete(e) {
     this.rowColAction(this.index, false);
   }
   /**
    * Handles when Insert Row/Column is clicked
-   * @param {event} e the button event
+   * @param {event} e button event
    */
   _onInsertBefore(e) {
     this.rowColAction(this.row ? this.index - 1 : this.index);
   }
   /**
    * Handles when Insert Row/Column After is clicked
-   * @param {event} e the button event
+   * @param {event} e button event
    */
   _onInsertAfter(e) {
     this.rowColAction(this.row ? this.index : this.index + 1);

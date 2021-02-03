@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "lorem-data",
-      "description": "Attributes:\n\n  * `schemas` - \n\n  * `__demo` - \n\nProperties:\n\n  * `data` - \n\n  * `schemas` - \n\n  * `__demo` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `icons` {`any[]`} - \n\n  * `text` {`string`} - \n\n  * `words` {`string[]`} - ",
+      "description": "`lorem-data`\na threaded discussions component\n\n### Styling\n\n`<lorem-data>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--lorem-data-FontSize` | default font-size | 14px\n\nAttributes:\n\n  * `schemas` - \n\n  * `__demo` - \n\nProperties:\n\n  * `data` - \n\n  * `schemas` - \n\n  * `__demo` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `icons` {`any[]`} - \n\n  * `text` {`string`} - \n\n  * `words` {`string[]`} - ",
       "attributes": [
         {
           "name": "schemas",
@@ -17,15 +17,11 @@
     },
     {
       "name": "lorem-data",
-      "description": "Attributes:\n\n  * `schemas` - \n\n  * `__demo` - \n\nProperties:\n\n  * `data` - \n\n  * `schemas` - \n\n  * `__demo` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `icons` {`any[]`} - \n\n  * `text` {`string`} - \n\n  * `words` {`string[]`} - ",
+      "description": "`lorem-data`\na threaded discussions component\n\n### Styling\n\n`<lorem-data>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--lorem-data-FontSize` | default font-size | 14px\n\nAttributes:\n\n  * `schemas` - \n\nProperties:\n\n  * `data` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `schemas` - ",
       "attributes": [
         {
           "name": "schemas",
           "description": "`schemas` - \n\nProperty: schemas\n\nDefault: [object Object]"
-        },
-        {
-          "name": "__demo",
-          "description": "`__demo` - \n\nProperty: __demo"
         }
       ]
     }

@@ -86,9 +86,12 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           align-items: stretch;
           justify-content: stretch;
           width: auto;
+          cursor: pointer;
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px))
             calc(0.5 * var(--elmsln-studio-margin, 20px));
           flex: 1 1 calc(100% - var(--elmsln-studio-margin, 20px));
+          --accent-card-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.28),
+            0 1px 5px 0 rgba(0, 0, 0, 0.24), 0 3px 1px -2px rgba(0, 0, 0, 0.4);
           --accent-card-padding: 0;
           --accent-card-image-width: 33.33333%;
           --accent-card-image-height: 200px;
@@ -133,6 +136,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           --accent-card-image-padding-right: calc(
             0.5 * var(--elmsln-studio-margin, 20px)
           );
+        }
+        accent-card-clickable:hover {
+          --accent-card-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+            0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1.5px 1px -1px rgba(0, 0, 0, 0.2);
         }
         accent-card-clickable [slot="heading"] {
           font-weight: var(--elmsln-studio-FontWeightLight, 300);
@@ -334,21 +341,21 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                       no-border
                     >
                       <elmsln-studio-link
-                        id="student-${s.id}"
+                        data-clickable
+                        href="${this.getActivityLink(s, true)}"
+                        id="assignment-${s.id}"
                         slot="heading"
+                      >
+                        ${s.assignment}
+                      </elmsln-studio-link>
+                      <elmsln-studio-link
+                        id="student-${s.id}"
                         href="/submissions${!s.userId
                           ? ""
                           : `?student=${s.userId}`}"
+                        slot="subheading"
                       >
                         ${[s.firstName, s.lastName].join(" ")}
-                      </elmsln-studio-link>
-                      <elmsln-studio-link
-                        data-clickable
-                        id="assignment-${s.id}"
-                        slot="subheading"
-                        href="${this.getActivityLink(s, true)}"
-                      >
-                        ${s.assignment}
                       </elmsln-studio-link>
                       <local-time
                         slot="corner"
@@ -446,29 +453,50 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * assignment id to filter by assignment
+       */
       assignmentFilter: {
         type: String,
         attribute: "assignment-filter",
       },
+      /**
+       * select all comments
+       */
       comments: {
         type: Array,
       },
+      /**
+       * number of comments that will be rendered
+       */
       commentLoad: {
         type: Number,
         attribute: "comment-load",
       },
+      /**
+       * display submissions as list instead of grid
+       */
       list: {
         type: Boolean,
         attribute: "list",
       },
+      /**
+       * project id to filter by project
+       */
       projectFilter: {
         type: String,
         attribute: "project-filter",
       },
+      /**
+       * student id to filter by student
+       */
       studentFilter: {
         type: String,
         attribute: "student-filter",
       },
+      /**
+       * select all submissions
+       */
       submissions: {
         type: Array,
       },
@@ -528,12 +556,12 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
       assets = [...(submission.sources || []), ...(submission.links || [])],
       img = assets.filter((asset) => images.includes(asset.type || "file")),
       files = assets.filter((asset) => icons.includes(asset.type || "file")),
-      cover = new URL(`svg/file.svg`, import.meta.url).pathname;
+      cover = new URL(`svgs/file.svg`, import.meta.url).pathname;
 
     if (img && img[0]) {
       cover = img[0].src;
     } else if (files && files[0]) {
-      cover = new URL(`svg/${files[0].type}.svg`, import.meta.url).pathname;
+      cover = new URL(`svgs/${files[0].type}.svg`, import.meta.url).pathname;
     }
     return cover;
   }

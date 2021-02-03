@@ -23,122 +23,18 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
   }
 
   static get styles() {
-    return [
-      ...super.baseStyles,
-      css`
-        :host #floating {
-          display: flex;
-        }
-      `,
-    ];
+    return [...super.baseStyles, ...super.miniStyles];
   }
 
   // properties available to the custom element for data binding
   render() {
-    return html`
-      <absolute-position-behavior
-        auto
-        id="floating"
-        fit-to-visible-bounds
-        for="${this.controls}"
-        position="top"
-      >
-        ${super.render()}
-      </absolute-position-behavior>
-    `;
+    return html` ${super.miniTemplate} `;
   }
 
   constructor() {
     super();
     this.sticky = false;
-    this.config = [
-      {
-        label: "Basic Inline Operations",
-        type: "button-group",
-        buttons: [
-          {
-            command: "bold",
-            icon: "editor:format-bold",
-            label: "Bold",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "italic",
-            icon: "editor:format-italic",
-            label: "Italics",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            collapsedUntil: "md",
-            command: "removeFormat",
-            icon: "editor:format-clear",
-            label: "Erase Format",
-            type: "rich-text-editor-button",
-          },
-        ],
-      },
-      {
-        label: "Links",
-        type: "button-group",
-        buttons: [
-          {
-            command: "link",
-            icon: "link",
-            label: "Link",
-            prompt: "href",
-            toggledCommand: "unlink",
-            toggledIcon: "mdextra:unlink",
-            toggledLabel: "Unink",
-            toggles: true,
-            type: "rich-text-editor-link",
-          },
-        ],
-      },
-      {
-        collapsedUntil: "md",
-        label: "Subscript and Superscript",
-        type: "button-group",
-        buttons: [
-          {
-            command: "subscript",
-            icon: "mdextra:subscript",
-            label: "Subscript",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "superscript",
-            icon: "mdextra:superscript",
-            label: "Superscript",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-        ],
-      },
-      {
-        collapsedUntil: "sm",
-        label: "Lists and Indents",
-        type: "button-group",
-        buttons: [
-          {
-            command: "insertOrderedList",
-            icon: "editor:format-list-numbered",
-            label: "Ordered List",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "insertUnorderedList",
-            icon: "editor:format-list-bulleted",
-            label: "Unordered List",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-        ],
-      },
-    ];
+    this.config = this.miniConfig;
   }
   updated(changedProperties) {
     super.updated(changedProperties);

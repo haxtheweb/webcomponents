@@ -43,7 +43,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
         inputMethod: "boolean",
       },
     ];
-    this.tag = "u";
+    this.tagsList = "u";
     this.icon = "editor:format-underlined";
     this.label = "Underline (not recommended)";
     this.toggles = true;
@@ -52,9 +52,6 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
     this.value = {
       confirm: false,
     };
-  }
-  get blockSelectors() {
-    return "u";
   }
 
   /**

@@ -5,7 +5,7 @@ details {
 }
 
 :host([hidden]) {
-  display: none;
+  display: none !important;
 }
 
 summary {
@@ -16,7 +16,7 @@ summary {
   font-size: var(--a11y-details-summary-fontSize, 0.8em);
   color: var(--a11y-details-summary-color, #000);
   background-color: var(--a11y-details-summary-backgroundColor, #fff);
-  border-color: var(--a11y-details-summary-borderColor, #000);
+  border-color: var(--a11y-details-summary-borderColor, #ddd);
   border-width: var(--a11y-details-summary-borderWidth, 1px);
   border-style: var(--a11y-details-summary-borderStyle, solid);
   border-radius: var(--a11y-details-summary-borderRadius, 3px);
@@ -27,7 +27,7 @@ summary:focus {
   outline: var(--a11y-details-summary-focus-outline,1px solid #006688);
   color: var(--a11y-details-summary-focus-color, var(--a11y-details-summary-color,#000));
   background-color: var(--a11y-details-summary-focus-backgroundColor, var(--a11y-details-summary-backgroundColor,#fff));
-  border-color: var(--a11y-details-summary-focus-borderColor, var(--a11y-details-borderColor,#000));
+  border-color: var(--a11y-details-summary-focus-borderColor, var(--a11y-details-borderColor,#999));
   border-width: var(--a11y-details-summary-focus-borderWidth, var(--a11y-details-summary-borderWidth,1px));
   border-style: var(--a11y-details-summary-focus-borderStyle, var(--a11y-details-summary-borderStyle, dotted));
   border-radius: var(--a11y-details-summary-focus-borderRadius, var(--a11y-details-summary-borderRadius, 3px));
@@ -43,7 +43,7 @@ summary:focus {
   font-size: var(--a11y-details-fontSize, 0.8em);
   color: var(--a11y-details-color,#000);
   background-color: var(--a11y-details-backgroundColor, rgba(255,255,255,0.8));
-  border-color: var(--a11y-details-borderColor,#000);
+  border-color: var(--a11y-details-borderColor,#999);
   border-width: var(--a11y-details-borderWidth,1px);
   border-style: var(--a11y-details-borderStyle, solid);
   border-radius: var(--a11y-details-borderRadius, 3px);
@@ -80,9 +80,11 @@ details[open] ::slotted([slot="details"]) {
 details[open] #details-inner {
   z-index: 9999999999;
   display: block;
-  left: 0;
+  left: var(--a11y-details-left, unset);
+  right: var(--a11y-details-right, unset);
   padding: var(--a11y-details-padding, 0.5em);
   max-height: var(--a11y-details-maxHeight,400px);
   padding: var(--a11y-details-padding, 0.5em);
+  width: calc(auto - 2 * var(--a11y-details-padding, 0.5em));
   transition: all 0.7s ease-in-out 0.2s;
 }

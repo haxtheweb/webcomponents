@@ -155,15 +155,16 @@ class AbsolutePositionStateManager extends LitElement {
       ancestor = el;
 
     while (
-      el.for !== undefined &&
-      target === null &&
-      ancestor !== null &&
-      ancestor.parentNode !== null &&
+      !!el.for &&
+      !target &&
+      !!ancestor &&
+      !!ancestor.parentNode &&
       ancestor !== document
     ) {
       ancestor = ancestor.parentNode;
+      target = ancestor ? ancestor.querySelector(selector) : undefined;
       if (ancestor.nodeType === 11) ancestor = ancestor.host;
-      target = ancestor ? ancestor.querySelector(selector) : null;
+      target = !target && ancestor ? ancestor.querySelector(selector) : target;
     }
     return target;
   }
@@ -249,11 +250,19 @@ class AbsolutePositionStateManager extends LitElement {
         let pxToNum = (px) => parseFloat(px.replace("px", "")),
           adjust = vertical(pos)
             ? pxToNum(el.style.top) - e.top
-            : pxToNum(el.style.left) - e.left;
+            : pxToNum(el.style.left) - e.left,
+          eh =
+            window.getComputedStyle(el, null).overflowY == "visible"
+              ? Math.max(e.height, el.scrollHeight)
+              : e.height,
+          ew =
+            window.getComputedStyle(el, null).overflowX == "visible"
+              ? Math.max(e.width, el.scrollWidth)
+              : e.width;
         return pos === "top"
-          ? t.top + adjust - e.height - offset + "px"
+          ? t.top + adjust - eh - offset + "px"
           : pos === "left"
-          ? t.left + adjust - e.width - offset + "px"
+          ? t.left + adjust - ew - offset + "px"
           : t[pos] + adjust + offset + "px";
       },
       isFit = (pos = el.position) => {

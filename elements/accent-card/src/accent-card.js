@@ -249,10 +249,6 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           display: flex;
           justify-content: space-between;
           align-items: var(--accent-card-heading-align, unset);
-          padding-top: var(
-            --accent-card-heading-padding-top,
-            var(--accent-card-padding, 20px)
-          );
           padding-left: var(
             --accent-card-heading-padding-left,
             var(--accent-card-padding, 20px)
@@ -263,6 +259,12 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           );
           padding-bottom: var(--accent-card-heading-padding-bottom, 0px);
           margin: 0;
+        }
+        ::slotted(*[slot="heading"]) {
+          padding-top: var(
+            --accent-card-heading-padding-top,
+            var(--accent-card-padding, 20px)
+          );
         }
         #heading h1 {
           margin: 0;
@@ -311,6 +313,10 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             var(--accent-card-padding, 20px)
           );
           flex: 1 1 auto;
+        }
+        ::slotted(*[slot="content"]:last-ot-type) {
+          margin-bottom: 0;
+          margin-block-end: 0;
         }
         #footer {
           flex: 0 0 auto;

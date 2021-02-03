@@ -47,21 +47,13 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.toggledCommand = "unlink";
     this.toggledIcon = "mdextra:unlink";
     this.toggledLabel = "Unlink";
-    (this.toggles = "true"), (this.tag = "a");
+    this.toggles = "true";
+    this.tagsList = "a";
     this.value = {
       ...super.value,
       href: null,
     };
     this.shortcutKeys = "ctrl+k";
-  }
-  /**
-   * overrides default block selectors
-   *
-   * @readonly
-   * @memberof RichTextEditorLink
-   */
-  get blockSelectors() {
-    return "a";
   }
 
   /**
@@ -84,8 +76,8 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   /**
    * updates prompt fields with selected range data
    */
-  getValue() {
-    let target = this.rangeElement();
+  getValue(node) {
+    let target = node || this.rangeElement();
     return {
       ...super.getValue(),
       href:

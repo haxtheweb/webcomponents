@@ -1,48 +1,71 @@
 /**
- * Copyright 2019 The Pennsylvania State University
+ * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { RichTextEditor } from "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
+import { LitElement, html, css } from "lit-element";
+import { RichTextEditorBehaviors } from "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
 import "./lib/hax-text-editor-toolbar.js";
 
 /**
  * `hax-text-editor`
- * @element hax-text-editor
- * `rich-text-editor configured for HAX`
+ * `HAX-specific implementation of rich-text-editor`
  *
  * @microcopy - language worth noting:
  *  -
  *
-
- * @polymer
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @demo demo/index.html
  */
-class HaxTextEditor extends RichTextEditor {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
-  constructor() {
-    super();
-    this.type = "hax-text-editor-toolbar";
+class HaxTextEditor extends RichTextEditorBehaviors(LitElement) {
+  //styles function
+  static get styles() {
+    return [...(super.styles || [])];
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+    };
   }
 
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  static get tag() {
+  tag() {
     return "hax-text-editor";
   }
+
+  // life cycle
+  constructor() {
+    super();
+    this.haxUIElement = true;
+    this.tag = HaxTextEditor.tag;
+    this.type = "hax-text-editor-toolbar";
+  }
   /**
-   * life cycle, element is afixed to the DOM
+   * Implements haxHooks to tie into life-cycle if hax exists.
    */
-  connectedCallback() {
-    super.connectedCallback();
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * allow HAX to toggle edit state when activated
+   */
+  haxactiveElementChanged(el, val) {
+    // overwrite the HAX dom w/ what our editor is supplying
+    if (!val && el) {
+      el.innerHTML = this.getValue();
+    }
+    return el;
   }
 
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
+  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-window.customElements.define(HaxTextEditor.tag, HaxTextEditor);
+customElements.define("hax-text-editor", HaxTextEditor);
 export { HaxTextEditor };

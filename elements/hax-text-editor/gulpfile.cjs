@@ -104,7 +104,6 @@ ${haxString}
     )
     .pipe(gulp.dest("./"));
 });
-
 // run polymer analyze to generate documentation
 gulp.task("analyze", () => {
   var exec = require("child_process").exec;
@@ -119,7 +118,6 @@ gulp.task("analyze", () => {
 });
 // copy from the built locations pulling them together
 gulp.task("compile", () => {
-
   return gulp
     .src("./" + packageJson.wcfactory.elementName + ".js")
     .pipe(
@@ -140,7 +138,9 @@ gulp.task("watch", () => {
   return gulp.watch("./src/*", gulp.series("merge", "analyze"));
 });
 
-// simple developer flow
 gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
-gulp.task("default", gulp.series("merge", "analyze", "compile"));
+gulp.task(
+  "default",
+  gulp.series("merge", "analyze", "compile")
+);

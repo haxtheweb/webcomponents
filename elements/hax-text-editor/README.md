@@ -1,7 +1,7 @@
 # &lt;hax-text-editor&gt;
 
 Text
-> rich-text-editor configured for HAX
+> text editor, toolbar, and toolbar buttons for HAX
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.

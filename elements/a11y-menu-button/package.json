@@ -1,0 +1,72 @@
+{
+  "name": "@lrnwebcomponents/a11y-menu-button",
+  "wcfactory": {
+    "className": "A11yMenuButton",
+    "customElementClass": "LitElement",
+    "elementName": "a11y-menu-button",
+    "generator-wcfactory-version": "0.3.2",
+    "useHAX": true,
+    "useSass": false,
+    "files": {
+      "css": "src/a11y-menu-button.css",
+      "scss": "src/a11y-menu-button.scss",
+      "html": "src/a11y-menu-button.html",
+      "js": "src/a11y-menu-button.js",
+      "properties": "src/a11y-menu-button-properties.json",
+      "hax": "src/a11y-menu-button-hax.json"
+    },
+    "sharedStyles": []
+  },
+  "version": "3.0.6",
+  "description": "Accessible menu button",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "type": "module",
+  "main": "a11y-menu-button.js",
+  "module": "a11y-menu-button.js",
+  "umd": "a11y-menu-button.umd.js",
+  "scripts": {
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-menu-button/test/",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "nikkimk"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/lrn-math": "^3.0.5",
+    "@lrnwebcomponents/lrn-vocab": "^3.0.5",
+    "@lrnwebcomponents/oer-schema": "^3.0.5",
+    "@lrnwebcomponents/rich-text-editor": "^3.0.5",
+    "lit-element": "2.4.0"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "^3.0.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.5.0",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.19",
+    "polymer-build": "3.1.4",
+    "polymer-cli": "1.9.11",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ],
+  "gitHead": "e38751e6f76a812e00ae87ef826fafcdbfec4083"
+}

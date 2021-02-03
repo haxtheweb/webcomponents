@@ -1,0 +1,639 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "elmsln-studio",
+      "description": "`elmsln-studio`\nStudio App for ELMS:LN\n\nEvents:\n\n  * `submit-data` {`CustomEvent<{ type: any; data: any; }>`} - \n\n  * `fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked\n\n  * `link-button-click` {`CustomEvent<string>`} - Fires when button is clicked\n\nAttributes:\n\n  * `assignments` - \n\n  * `assignments-source` {`string`} - \n\n  * `discussion` - \n\n  * `discussion-source` {`string`} - \n\n  * `lessons` - \n\n  * `lessons-source` {`string`} - \n\n  * `portfolios` - \n\n  * `portfolios-source` {`string`} - \n\n  * `profile` - \n\n  * `profile-source` {`string`} - \n\n  * `profiles` - \n\n  * `profiles-source` {`string`} - \n\n  * `source-path` {`string`} - \n\n  * `submissions` - \n\n  * `submissions-source` {`string`} - \n\n  * `users` - \n\n  * `users-source` {`string`} - \n\n  * `route` {`string`} - \n\n  * `params` - \n\n  * `query` - \n\n  * `data` - \n\n  * `demo-mode` {`boolean`} - \n\nProperties:\n\n  * `assignments` - \n\n  * `assignmentsSource` {`string`} - \n\n  * `discussion` - \n\n  * `discussionSource` {`string`} - \n\n  * `lessons` - \n\n  * `lessonsSource` {`string`} - \n\n  * `portfolios` - \n\n  * `portfoliosSource` {`string`} - \n\n  * `profile` - \n\n  * `profileSource` {`string`} - \n\n  * `profiles` - \n\n  * `profilesSource` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `submissions` - \n\n  * `submissionsSource` {`string`} - \n\n  * `users` - \n\n  * `usersSource` {`string`} - \n\n  * `assignment` - \n\n  * `lesson` - \n\n  * `project` - \n\n  * `feedbackPercentile` - \n\n  * `recentDiscussions` - \n\n  * `filteredPortfolios` - \n\n  * `recentSubmissions` - \n\n  * `completedSubmissions` {`any[] | undefined`} - \n\n  * `peerSubmissions` {`any[] | undefined`} - given a student submission gets peer submissions\n\n  * `prevNextSubmission` {`{ prev: any; next: any; } | undefined`} - gets the previous and next submission data for a given submission\n\n  * `submission` - \n\n  * `portfolio` - \n\n  * `submissionFeedback` {`any[] | undefined`} - \n\n  * `baseUrl` {`string`} - \n\n  * `route` {`string`} - \n\n  * `params` - \n\n  * `query` - \n\n  * `data` - \n\n  * `refreshDates` - \n\n  * `routes` {`Routes`} - \n\n  * `defaultModalToolbars` - default toolbar config object,\nwhere \"top\" contains config for toolbar above image(s),\nand \"bottom\" contains config for toolbar above image(s)\n\n  * `demoMode` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "assignments",
+          "description": "`assignments` - \n\nProperty: assignments"
+        },
+        {
+          "name": "assignments-source",
+          "description": "`assignments-source` {`string`} - \n\nProperty: assignmentsSource"
+        },
+        {
+          "name": "discussion",
+          "description": "`discussion` - \n\nProperty: discussion"
+        },
+        {
+          "name": "discussion-source",
+          "description": "`discussion-source` {`string`} - \n\nProperty: discussionSource"
+        },
+        {
+          "name": "lessons",
+          "description": "`lessons` - \n\nProperty: lessons"
+        },
+        {
+          "name": "lessons-source",
+          "description": "`lessons-source` {`string`} - \n\nProperty: lessonsSource"
+        },
+        {
+          "name": "portfolios",
+          "description": "`portfolios` - \n\nProperty: portfolios"
+        },
+        {
+          "name": "portfolios-source",
+          "description": "`portfolios-source` {`string`} - \n\nProperty: portfoliosSource"
+        },
+        {
+          "name": "profile",
+          "description": "`profile` - \n\nProperty: profile"
+        },
+        {
+          "name": "profile-source",
+          "description": "`profile-source` {`string`} - \n\nProperty: profileSource"
+        },
+        {
+          "name": "profiles",
+          "description": "`profiles` - \n\nProperty: profiles"
+        },
+        {
+          "name": "profiles-source",
+          "description": "`profiles-source` {`string`} - \n\nProperty: profilesSource"
+        },
+        {
+          "name": "source-path",
+          "description": "`source-path` {`string`} - \n\nProperty: sourcePath"
+        },
+        {
+          "name": "submissions",
+          "description": "`submissions` - \n\nProperty: submissions"
+        },
+        {
+          "name": "submissions-source",
+          "description": "`submissions-source` {`string`} - \n\nProperty: submissionsSource"
+        },
+        {
+          "name": "users",
+          "description": "`users` - \n\nProperty: users"
+        },
+        {
+          "name": "users-source",
+          "description": "`users-source` {`string`} - \n\nProperty: usersSource"
+        },
+        {
+          "name": "route",
+          "description": "`route` {`string`} - \n\nProperty: route\n\nDefault: "
+        },
+        {
+          "name": "params",
+          "description": "`params` - \n\nProperty: params\n\nDefault: [object Object]"
+        },
+        {
+          "name": "query",
+          "description": "`query` - \n\nProperty: query\n\nDefault: [object Object]"
+        },
+        {
+          "name": "data",
+          "description": "`data` - \n\nProperty: data\n\nDefault: [object Object]"
+        },
+        {
+          "name": "demo-mode",
+          "description": "`demo-mode` {`boolean`} - \n\nProperty: demoMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsubmit-data",
+          "description": "`submit-data` {`CustomEvent<{ type: any; data: any; }>`} - "
+        },
+        {
+          "name": "onfetch-data",
+          "description": "`fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked"
+        },
+        {
+          "name": "onlink-button-click",
+          "description": "`link-button-click` {`CustomEvent<string>`} - Fires when button is clicked"
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio-link",
+      "attributes": []
+    },
+    {
+      "name": "elmsln-studio-button",
+      "attributes": []
+    },
+    {
+      "name": "elmsln-studio-portfolio",
+      "attributes": []
+    },
+    {
+      "name": "elmsln-studio-assignment",
+      "attributes": []
+    },
+    {
+      "name": "elmsln-studio-assignments",
+      "attributes": []
+    },
+    {
+      "name": "elmsln-studio-submission-card",
+      "attributes": []
+    },
+    {
+      "name": "elmsln-studio-submissions",
+      "attributes": []
+    },
+    {
+      "name": "elmsln-studio-dashboard",
+      "attributes": []
+    },
+    {
+      "name": "elmsln-studio-main",
+      "attributes": []
+    },
+    {
+      "name": "elmsln-studio-assignment",
+      "description": "`elmsln-studio-assignment`\nStudio App for ELMS:LN\n\nEvents:\n\n  * `submit-data` {`CustomEvent<{ type: any; data: any; }>`} - \n\n  * `fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked\n\n  * `link-button-click` {`CustomEvent<string>`} - Fires when button is clicked\n\nAttributes:\n\n  * `assignments` - all assignments\n\n  * `assignment` - assignment by id\n\n  * `submission` - submission by id\n\n  * `__newLinkUrl` {`string`} - \n\n  * `__newLinkText` {`string`} - \n\n  * `__sources` {`any[]`} - \n\n  * `__links` {`any[]`} - \n\n  * `__editorConfig` {`any[]`} - rich text editor toolbar config\n\n  * `demo-mode` {`boolean`} - \n\nProperties:\n\n  * `assignments` - all assignments\n\n  * `assignment` - assignment by id\n\n  * `submission` - submission by id\n\n  * `__newLinkUrl` {`string`} - \n\n  * `__newLinkText` {`string`} - \n\n  * `actions` {`TemplateResult`} - \n\n  * `alert` - \n\n  * `assignmentStatus` - \n\n  * `bodytext` {`\"\" | TemplateResult`} - \n\n  * `breadcrumb` {`TemplateResult`} - \n\n  * `editable` {`boolean`} - \n\n  * `links` {`\"\" | TemplateResult`} - \n\n  * `nav` {`TemplateResult`} - \n\n  * `newLinkType` {`string | undefined`} - \n\n  * `nextAssign` - \n\n  * `prevAssign` - \n\n  * `sources` {`\"\" | TemplateResult`} - \n\n  * `tooEarly` {`boolean`} - \n\n  * `submittedLate` {`boolean`} - \n\n  * `tooLate` {`boolean`} - \n\n  * `__sources` {`any[]`} - \n\n  * `__links` {`any[]`} - \n\n  * `__editorConfig` {`any[]`} - rich text editor toolbar config\n\n  * `tag` {`string`} - \n\n  * `defaultModalToolbars` - default toolbar config object,\nwhere \"top\" contains config for toolbar above image(s),\nand \"bottom\" contains config for toolbar above image(s)\n\n  * `demoMode` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "assignments",
+          "description": "`assignments` - all assignments\n\nProperty: assignments"
+        },
+        {
+          "name": "assignment",
+          "description": "`assignment` - assignment by id\n\nProperty: assignment"
+        },
+        {
+          "name": "submission",
+          "description": "`submission` - submission by id\n\nProperty: submission"
+        },
+        {
+          "name": "__newLinkUrl",
+          "description": "`__newLinkUrl` {`string`} - \n\nProperty: __newLinkUrl"
+        },
+        {
+          "name": "__newLinkText",
+          "description": "`__newLinkText` {`string`} - \n\nProperty: __newLinkText"
+        },
+        {
+          "name": "__sources",
+          "description": "`__sources` {`any[]`} - \n\nProperty: __sources\n\nDefault: "
+        },
+        {
+          "name": "__links",
+          "description": "`__links` {`any[]`} - \n\nProperty: __links\n\nDefault: "
+        },
+        {
+          "name": "__editorConfig",
+          "description": "`__editorConfig` {`any[]`} - rich text editor toolbar config\n\nProperty: __editorConfig\n\nDefault: [object Object],[object Object],[object Object]"
+        },
+        {
+          "name": "demo-mode",
+          "description": "`demo-mode` {`boolean`} - \n\nProperty: demoMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsubmit-data",
+          "description": "`submit-data` {`CustomEvent<{ type: any; data: any; }>`} - "
+        },
+        {
+          "name": "onfetch-data",
+          "description": "`fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked"
+        },
+        {
+          "name": "onlink-button-click",
+          "description": "`link-button-click` {`CustomEvent<string>`} - Fires when button is clicked"
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio-assignments",
+      "description": "`elmsln-studio-assignments`\nStudio App for ELMS:LN\n\nEvents:\n\n  * `submit-data` {`CustomEvent<{ type: any; data: any; }>`} - \n\n  * `fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked\n\n  * `link-button-click` {`CustomEvent<string>`} - Fires when button is clicked\n\nAttributes:\n\n  * `lessons` - all lessons with projects and assignments\n\n  * `profile` - specific data about student and assignments submitted\n\n  * `demo-mode` {`boolean`} - \n\nProperties:\n\n  * `lessons` - all lessons with projects and assignments\n\n  * `profile` - specific data about student and assignments submitted\n\n  * `tag` {`string`} - \n\n  * `defaultModalToolbars` - default toolbar config object,\nwhere \"top\" contains config for toolbar above image(s),\nand \"bottom\" contains config for toolbar above image(s)\n\n  * `demoMode` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "lessons",
+          "description": "`lessons` - all lessons with projects and assignments\n\nProperty: lessons"
+        },
+        {
+          "name": "profile",
+          "description": "`profile` - specific data about student and assignments submitted\n\nProperty: profile"
+        },
+        {
+          "name": "demo-mode",
+          "description": "`demo-mode` {`boolean`} - \n\nProperty: demoMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsubmit-data",
+          "description": "`submit-data` {`CustomEvent<{ type: any; data: any; }>`} - "
+        },
+        {
+          "name": "onfetch-data",
+          "description": "`fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked"
+        },
+        {
+          "name": "onlink-button-click",
+          "description": "`link-button-click` {`CustomEvent<string>`} - Fires when button is clicked"
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio-button",
+      "description": "`elmsln-studio-button`\nNavigation Link for ELMS:LN Studio\n\nAttributes:\n\n  * `path` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `path` {`string`} - \n\n  * `icon` {`string`} - ",
+      "attributes": [
+        {
+          "name": "path",
+          "description": "`path` {`string`} - \n\nProperty: path\n\nDefault: "
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio-dashboard",
+      "description": "`elmsln-studio-dashboard`\nStudio App for ELMS:LN\n\nEvents:\n\n  * `submit-data` {`CustomEvent<{ type: any; data: any; }>`} - \n\n  * `fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked\n\n  * `link-button-click` {`CustomEvent<string>`} - Fires when button is clicked\n\nAttributes:\n\n  * `discussion` {`any[]`} - \n\n  * `submissions` {`any[]`} - \n\n  * `profile` - \n\n  * `demo-mode` {`boolean`} - \n\nProperties:\n\n  * `discussion` {`any[]`} - \n\n  * `submissions` {`any[]`} - \n\n  * `profileName` {`string`} - \n\n  * `profile` - \n\n  * `tag` {`string`} - \n\n  * `defaultModalToolbars` - default toolbar config object,\nwhere \"top\" contains config for toolbar above image(s),\nand \"bottom\" contains config for toolbar above image(s)\n\n  * `demoMode` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "discussion",
+          "description": "`discussion` {`any[]`} - \n\nProperty: discussion"
+        },
+        {
+          "name": "submissions",
+          "description": "`submissions` {`any[]`} - \n\nProperty: submissions"
+        },
+        {
+          "name": "profile",
+          "description": "`profile` - \n\nProperty: profile\n\nDefault: [object Object]"
+        },
+        {
+          "name": "demo-mode",
+          "description": "`demo-mode` {`boolean`} - \n\nProperty: demoMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsubmit-data",
+          "description": "`submit-data` {`CustomEvent<{ type: any; data: any; }>`} - "
+        },
+        {
+          "name": "onfetch-data",
+          "description": "`fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked"
+        },
+        {
+          "name": "onlink-button-click",
+          "description": "`link-button-click` {`CustomEvent<string>`} - Fires when button is clicked"
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio-link",
+      "description": "`elmsln-studio-link`\nNavigation Link for ELMS:LN Studio\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `href` {`string`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `href` {`string`} - ",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon"
+        },
+        {
+          "name": "href",
+          "description": "`href` {`string`} - \n\nProperty: href\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio-loremdata",
+      "description": "`elmsln-studio-loremdata`\nGenerates fake data for ELMS:LN Studio\n\nEvents:\n\n  * `submit-data` {`CustomEvent<{ type: any; data: any; }>`} - \n\n  * `fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked\n\n  * `link-button-click` {`CustomEvent<string>`} - Fires when button is clicked\n\nAttributes:\n\n  * `source-path` {`string`} - \n\n  * `endDate` - \n\n  * `lorem` - \n\n  * `startDate` - \n\n  * `__demoImages` {`any[]`} - \n\n  * `__prevAssignment` {`string`} - \n\n  * `__imgCtr` {`number`} - \n\n  * `users` - \n\n  * `lessonData` {`any[]`} - \n\n  * `activity` {`any[]`} - \n\n  * `profile` - \n\n  * `profiles` - \n\n  * `projects` - \n\n  * `lessons` - \n\n  * `assignments` - \n\n  * `portfolios` - \n\n  * `submissions` - \n\n  * `discussions` - \n\n  * `demo-mode` {`boolean`} - \n\nProperties:\n\n  * `sourcePath` {`string`} - \n\n  * `endDate` - \n\n  * `lorem` - \n\n  * `startDate` - \n\n  * `students` {`any[]`} - \n\n  * `instructors` {`any[]`} - \n\n  * `schemas` {`{ \"users.json\": { type: string; data: { ixp23: { id: string; lastName: string; firstName: string; instructor: boolean; image: string; }; hxb5122: { id: string; lastName: string; firstName: string; }; tmn823: { ...; }; ... 5 more ...; srf325: { ...; }; }; }; ... 8 more ...; \"discussion.json\": { ...; }; }`} - \n\n  * `__demoImages` {`any[]`} - \n\n  * `__prevAssignment` {`string`} - \n\n  * `__imgCtr` {`number`} - \n\n  * `users` - \n\n  * `lessonData` {`any[]`} - \n\n  * `activity` {`any[]`} - \n\n  * `profile` - \n\n  * `profiles` - \n\n  * `projects` - \n\n  * `lessons` - \n\n  * `assignments` - \n\n  * `portfolios` - \n\n  * `submissions` - \n\n  * `discussions` - \n\n  * `defaultModalToolbars` - default toolbar config object,\nwhere \"top\" contains config for toolbar above image(s),\nand \"bottom\" contains config for toolbar above image(s)\n\n  * `demoMode` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "source-path",
+          "description": "`source-path` {`string`} - \n\nProperty: sourcePath"
+        },
+        {
+          "name": "endDate",
+          "description": "`endDate` - \n\nProperty: endDate"
+        },
+        {
+          "name": "lorem",
+          "description": "`lorem` - \n\nProperty: lorem"
+        },
+        {
+          "name": "startDate",
+          "description": "`startDate` - \n\nProperty: startDate"
+        },
+        {
+          "name": "__demoImages",
+          "description": "`__demoImages` {`any[]`} - \n\nProperty: __demoImages\n\nDefault: "
+        },
+        {
+          "name": "__prevAssignment",
+          "description": "`__prevAssignment` {`string`} - \n\nProperty: __prevAssignment\n\nDefault: undefined"
+        },
+        {
+          "name": "__imgCtr",
+          "description": "`__imgCtr` {`number`} - \n\nProperty: __imgCtr\n\nDefault: 0"
+        },
+        {
+          "name": "users",
+          "description": "`users` - \n\nProperty: users\n\nDefault: [object Object]"
+        },
+        {
+          "name": "lessonData",
+          "description": "`lessonData` {`any[]`} - \n\nProperty: lessonData\n\nDefault: [object Object],[object Object],[object Object]"
+        },
+        {
+          "name": "activity",
+          "description": "`activity` {`any[]`} - \n\nProperty: activity\n\nDefault: "
+        },
+        {
+          "name": "profile",
+          "description": "`profile` - \n\nProperty: profile\n\nDefault: [object Object]"
+        },
+        {
+          "name": "profiles",
+          "description": "`profiles` - \n\nProperty: profiles\n\nDefault: [object Object]"
+        },
+        {
+          "name": "projects",
+          "description": "`projects` - \n\nProperty: projects\n\nDefault: [object Object]"
+        },
+        {
+          "name": "lessons",
+          "description": "`lessons` - \n\nProperty: lessons\n\nDefault: [object Object]"
+        },
+        {
+          "name": "assignments",
+          "description": "`assignments` - \n\nProperty: assignments\n\nDefault: [object Object]"
+        },
+        {
+          "name": "portfolios",
+          "description": "`portfolios` - \n\nProperty: portfolios\n\nDefault: [object Object]"
+        },
+        {
+          "name": "submissions",
+          "description": "`submissions` - \n\nProperty: submissions\n\nDefault: [object Object]"
+        },
+        {
+          "name": "discussions",
+          "description": "`discussions` - \n\nProperty: discussions\n\nDefault: [object Object]"
+        },
+        {
+          "name": "demo-mode",
+          "description": "`demo-mode` {`boolean`} - \n\nProperty: demoMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsubmit-data",
+          "description": "`submit-data` {`CustomEvent<{ type: any; data: any; }>`} - "
+        },
+        {
+          "name": "onfetch-data",
+          "description": "`fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked"
+        },
+        {
+          "name": "onlink-button-click",
+          "description": "`link-button-click` {`CustomEvent<string>`} - Fires when button is clicked"
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio-main",
+      "description": "`elmsln-studio-main`\nMain Content for ELMS:LN Studio\n\nEvents:\n\n  * `submit-data` {`CustomEvent<{ type: any; data: any; }>`} - \n\n  * `fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked\n\n  * `link-button-click` {`CustomEvent<string>`} - Fires when button is clicked\n\nAttributes:\n\n  * `demo-mode` {`boolean`} - \n\nProperties:\n\n  * `defaultModalToolbars` - default toolbar config object,\nwhere \"top\" contains config for toolbar above image(s),\nand \"bottom\" contains config for toolbar above image(s)\n\n  * `demoMode` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "demo-mode",
+          "description": "`demo-mode` {`boolean`} - \n\nProperty: demoMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsubmit-data",
+          "description": "`submit-data` {`CustomEvent<{ type: any; data: any; }>`} - "
+        },
+        {
+          "name": "onfetch-data",
+          "description": "`fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked"
+        },
+        {
+          "name": "onlink-button-click",
+          "description": "`link-button-click` {`CustomEvent<string>`} - Fires when button is clicked"
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio-portfolio",
+      "description": "`elmsln-studio-portfolio`\nStudio App for ELMS:LN\n\nEvents:\n\n  * `submit-data` {`CustomEvent<{ type: any; data: any; }>`} - \n\n  * `fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked\n\n  * `link-button-click` {`CustomEvent<string>`} - Fires when button is clicked\n\nAttributes:\n\n  * `portfolio` - all submissions that match a specified student id and project id\n\n  * `navigation` - gets submission previous next navigation\n\n  * `submission-filter` {`string`} - submission id to select submission and filter feedback\n\n  * `sort-latest` {`boolean`} - sort submissions latest first instead of oldest first\n\n  * `feedback` - all feedback on submissions that match a specified student id and project id\n\n  * `comment` {`string`} - comment id\n\n  * `demo-mode` {`boolean`} - \n\nProperties:\n\n  * `portfolio` - all submissions that match a specified student id and project id\n\n  * `navigation` - gets submission previous next navigation\n\n  * `submissionFilter` {`string`} - submission id to select submission and filter feedback\n\n  * `sortLatest` {`boolean`} - sort submissions latest first instead of oldest first\n\n  * `nav` {`TemplateResult | undefined`} - \n\n  * `sortedSubmissions` {`any[]`} - \n\n  * `assignment` - \n\n  * `feedback` - all feedback on submissions that match a specified student id and project id\n\n  * `comment` {`string`} - comment id\n\n  * `tag` {`string`} - \n\n  * `defaultModalToolbars` - default toolbar config object,\nwhere \"top\" contains config for toolbar above image(s),\nand \"bottom\" contains config for toolbar above image(s)\n\n  * `demoMode` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "portfolio",
+          "description": "`portfolio` - all submissions that match a specified student id and project id\n\nProperty: portfolio"
+        },
+        {
+          "name": "navigation",
+          "description": "`navigation` - gets submission previous next navigation\n\nProperty: navigation"
+        },
+        {
+          "name": "submission-filter",
+          "description": "`submission-filter` {`string`} - submission id to select submission and filter feedback\n\nProperty: submissionFilter"
+        },
+        {
+          "name": "sort-latest",
+          "description": "`sort-latest` {`boolean`} - sort submissions latest first instead of oldest first\n\nProperty: sortLatest",
+          "valueSet": "v"
+        },
+        {
+          "name": "feedback",
+          "description": "`feedback` - all feedback on submissions that match a specified student id and project id\n\nProperty: feedback\n\nDefault: [object Object]"
+        },
+        {
+          "name": "comment",
+          "description": "`comment` {`string`} - comment id\n\nProperty: comment\n\nDefault: "
+        },
+        {
+          "name": "demo-mode",
+          "description": "`demo-mode` {`boolean`} - \n\nProperty: demoMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsubmit-data",
+          "description": "`submit-data` {`CustomEvent<{ type: any; data: any; }>`} - "
+        },
+        {
+          "name": "onfetch-data",
+          "description": "`fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked"
+        },
+        {
+          "name": "onlink-button-click",
+          "description": "`link-button-click` {`CustomEvent<string>`} - Fires when button is clicked"
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio-submission-card",
+      "description": "`elmsln-studio-submission-card`\nStudio App for ELMS:LN\n\nAttributes:\n\n  * `image-src` {`string`} - \n\n  * `image-alt` {`string`} - \n\n  * `image-align` {`string`} - \n\n  * `image-valign` {`string`} - \n\n  * `horizontal` {`boolean`} - \n\nProperties:\n\n  * `imageSrc` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `imageAlign` {`string`} - \n\n  * `imageValign` {`string`} - \n\n  * `horizontal` {`boolean`} - \n\n  * `tag` {`string`} - ",
+      "attributes": [
+        {
+          "name": "image-src",
+          "description": "`image-src` {`string`} - \n\nProperty: imageSrc"
+        },
+        {
+          "name": "image-alt",
+          "description": "`image-alt` {`string`} - \n\nProperty: imageAlt"
+        },
+        {
+          "name": "image-align",
+          "description": "`image-align` {`string`} - \n\nProperty: imageAlign"
+        },
+        {
+          "name": "image-valign",
+          "description": "`image-valign` {`string`} - \n\nProperty: imageValign"
+        },
+        {
+          "name": "horizontal",
+          "description": "`horizontal` {`boolean`} - \n\nProperty: horizontal\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio-submissions",
+      "description": "`elmsln-studio-submissions`\nStudio App for ELMS:LN\n\nEvents:\n\n  * `submit-data` {`CustomEvent<{ type: any; data: any; }>`} - \n\n  * `fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked\n\n  * `link-button-click` {`CustomEvent<string>`} - Fires when button is clicked\n\nAttributes:\n\n  * `assignment-filter` {`string`} - assignment id to filter by assignment\n\n  * `comments` {`any[]`} - select all comments\n\n  * `project-filter` {`string`} - project id to filter by project\n\n  * `student-filter` {`string`} - student id to filter by student\n\n  * `submissions` {`any[]`} - select all submissions\n\n  * `list` {`boolean`} - display submissions as list instead of grid\n\n  * `comment-load` {`number`} - number of comments that will be rendered\n\n  * `demo-mode` {`boolean`} - \n\nProperties:\n\n  * `assignmentFilter` {`string`} - assignment id to filter by assignment\n\n  * `comments` {`any[]`} - select all comments\n\n  * `projectFilter` {`string`} - project id to filter by project\n\n  * `studentFilter` {`string`} - student id to filter by student\n\n  * `submissions` {`any[]`} - select all submissions\n\n  * `filteredComments` - \n\n  * `isFiltered` {`boolean`} - \n\n  * `studentOptions` {`{ \"\": string; }`} - \n\n  * `assignmentOptions` {`{ \"\": string; }`} - \n\n  * `projectOptions` {`{ \"\": string; }`} - \n\n  * `filteredSubmissions` - \n\n  * `modalTitle` {`string`} - \n\n  * `list` {`boolean`} - display submissions as list instead of grid\n\n  * `commentLoad` {`number`} - number of comments that will be rendered\n\n  * `tag` {`string`} - \n\n  * `defaultModalToolbars` - default toolbar config object,\nwhere \"top\" contains config for toolbar above image(s),\nand \"bottom\" contains config for toolbar above image(s)\n\n  * `demoMode` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "assignment-filter",
+          "description": "`assignment-filter` {`string`} - assignment id to filter by assignment\n\nProperty: assignmentFilter"
+        },
+        {
+          "name": "comments",
+          "description": "`comments` {`any[]`} - select all comments\n\nProperty: comments"
+        },
+        {
+          "name": "project-filter",
+          "description": "`project-filter` {`string`} - project id to filter by project\n\nProperty: projectFilter"
+        },
+        {
+          "name": "student-filter",
+          "description": "`student-filter` {`string`} - student id to filter by student\n\nProperty: studentFilter"
+        },
+        {
+          "name": "submissions",
+          "description": "`submissions` {`any[]`} - select all submissions\n\nProperty: submissions"
+        },
+        {
+          "name": "list",
+          "description": "`list` {`boolean`} - display submissions as list instead of grid\n\nProperty: list\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "comment-load",
+          "description": "`comment-load` {`number`} - number of comments that will be rendered\n\nProperty: commentLoad\n\nDefault: 15"
+        },
+        {
+          "name": "demo-mode",
+          "description": "`demo-mode` {`boolean`} - \n\nProperty: demoMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsubmit-data",
+          "description": "`submit-data` {`CustomEvent<{ type: any; data: any; }>`} - "
+        },
+        {
+          "name": "onfetch-data",
+          "description": "`fetch-data` {`CustomEvent<{ type: any; refresh: boolean; }>`} - Fires when button is clicked"
+        },
+        {
+          "name": "onlink-button-click",
+          "description": "`link-button-click` {`CustomEvent<string>`} - Fires when button is clicked"
+        }
+      ]
+    },
+    {
+      "name": "elmsln-studio",
+      "description": "`elmsln-studio`\nStudio App for ELMS:LN\n\nAttributes:\n\n  * `assignments` - \n\n  * `assignments-source` {`string`} - \n\n  * `discussion` - \n\n  * `discussion-source` {`string`} - \n\n  * `lessons` - \n\n  * `lessons-source` {`string`} - \n\n  * `portfolios` - \n\n  * `portfolios-source` {`string`} - \n\n  * `profile` - \n\n  * `profile-source` {`string`} - \n\n  * `profiles` - \n\n  * `profiles-source` {`string`} - \n\n  * `source-path` {`string`} - \n\n  * `submissions` - \n\n  * `submissions-source` {`string`} - \n\n  * `users` - \n\n  * `users-source` {`string`} - \n\n  * `route` {`string`} - \n\n  * `params` - \n\n  * `query` - \n\n  * `data` - \n\nProperties:\n\n  * `assignments` - \n\n  * `assignmentsSource` {`string`} - \n\n  * `discussion` - \n\n  * `discussionSource` {`string`} - \n\n  * `lessons` - \n\n  * `lessonsSource` {`string`} - \n\n  * `portfolios` - \n\n  * `portfoliosSource` {`string`} - \n\n  * `profile` - \n\n  * `profileSource` {`string`} - \n\n  * `profiles` - \n\n  * `profilesSource` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `submissions` - \n\n  * `submissionsSource` {`string`} - \n\n  * `users` - \n\n  * `usersSource` {`string`} - \n\n  * `assignment` - \n\n  * `lesson` - \n\n  * `project` - \n\n  * `feedbackPercentile` - \n\n  * `recentDiscussions` - \n\n  * `filteredPortfolios` - \n\n  * `recentSubmissions` - \n\n  * `completedSubmissions` {`any[] | undefined`} - \n\n  * `peerSubmissions` {`any[] | undefined`} - given a student submission gets peer submissions\n\n  * `prevNextSubmission` {`{ prev: any; next: any; } | undefined`} - gets the previous and next submission data for a given submission\n\n  * `submission` - \n\n  * `portfolio` - \n\n  * `submissionFeedback` {`any[] | undefined`} - \n\n  * `baseUrl` {`string`} - \n\n  * `route` {`string`} - \n\n  * `params` - \n\n  * `query` - \n\n  * `data` - \n\n  * `refreshDates` - \n\n  * `routes` {`Routes`} - ",
+      "attributes": [
+        {
+          "name": "assignments",
+          "description": "`assignments` - \n\nProperty: assignments"
+        },
+        {
+          "name": "assignments-source",
+          "description": "`assignments-source` {`string`} - \n\nProperty: assignmentsSource"
+        },
+        {
+          "name": "discussion",
+          "description": "`discussion` - \n\nProperty: discussion"
+        },
+        {
+          "name": "discussion-source",
+          "description": "`discussion-source` {`string`} - \n\nProperty: discussionSource"
+        },
+        {
+          "name": "lessons",
+          "description": "`lessons` - \n\nProperty: lessons"
+        },
+        {
+          "name": "lessons-source",
+          "description": "`lessons-source` {`string`} - \n\nProperty: lessonsSource"
+        },
+        {
+          "name": "portfolios",
+          "description": "`portfolios` - \n\nProperty: portfolios"
+        },
+        {
+          "name": "portfolios-source",
+          "description": "`portfolios-source` {`string`} - \n\nProperty: portfoliosSource"
+        },
+        {
+          "name": "profile",
+          "description": "`profile` - \n\nProperty: profile"
+        },
+        {
+          "name": "profile-source",
+          "description": "`profile-source` {`string`} - \n\nProperty: profileSource"
+        },
+        {
+          "name": "profiles",
+          "description": "`profiles` - \n\nProperty: profiles"
+        },
+        {
+          "name": "profiles-source",
+          "description": "`profiles-source` {`string`} - \n\nProperty: profilesSource"
+        },
+        {
+          "name": "source-path",
+          "description": "`source-path` {`string`} - \n\nProperty: sourcePath"
+        },
+        {
+          "name": "submissions",
+          "description": "`submissions` - \n\nProperty: submissions"
+        },
+        {
+          "name": "submissions-source",
+          "description": "`submissions-source` {`string`} - \n\nProperty: submissionsSource"
+        },
+        {
+          "name": "users",
+          "description": "`users` - \n\nProperty: users"
+        },
+        {
+          "name": "users-source",
+          "description": "`users-source` {`string`} - \n\nProperty: usersSource"
+        },
+        {
+          "name": "route",
+          "description": "`route` {`string`} - \n\nProperty: route\n\nDefault: "
+        },
+        {
+          "name": "params",
+          "description": "`params` - \n\nProperty: params\n\nDefault: [object Object]"
+        },
+        {
+          "name": "query",
+          "description": "`query` - \n\nProperty: query\n\nDefault: [object Object]"
+        },
+        {
+          "name": "data",
+          "description": "`data` - \n\nProperty: data\n\nDefault: [object Object]"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -1,0 +1,607 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "a11y-menu-button",
+      "description": "`a11y-menu-button`",
+      "attributes": [
+        {
+          "name": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "expanded",
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
+        },
+        {
+          "name": "icon-expanded",
+          "description": "icon when expanded",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
+        },
+        {
+          "name": "label-expanded",
+          "description": "optional label for the button when expanded",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "accordion",
+          "attribute": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "expanded",
+          "attribute": "expanded",
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
+        },
+        {
+          "name": "iconExpanded",
+          "attribute": "icon-expanded",
+          "description": "icon when expanded",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
+        },
+        {
+          "name": "labelExpanded",
+          "attribute": "label-expanded",
+          "description": "optional label for the button when expanded",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
+          "name": "tooltipExpanded",
+          "attribute": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "a11y-menu-button-detached",
+          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "toggle",
+          "description": "Fires when toggled."
+        },
+        {
+          "name": "a11y-menu-button-toggle",
+          "description": "Deprecated. Fires when toggled."
+        },
+        {
+          "name": "expand",
+          "description": "Fires when expanded."
+        },
+        {
+          "name": "collapse",
+          "description": "Fires when collapsed."
+        },
+        {
+          "name": "a11y-menu-button-click",
+          "description": "Fires when clicked."
+        }
+      ]
+    },
+    {
+      "name": "a11y-menu-button",
+      "description": "`a11y-menu-button`",
+      "attributes": [
+        {
+          "name": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "expanded",
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
+        },
+        {
+          "name": "icon-expanded",
+          "description": "icon when expanded",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
+        },
+        {
+          "name": "label-expanded",
+          "description": "optional label for the button when expanded",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "accordion",
+          "attribute": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "expanded",
+          "attribute": "expanded",
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
+        },
+        {
+          "name": "iconExpanded",
+          "attribute": "icon-expanded",
+          "description": "icon when expanded",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
+        },
+        {
+          "name": "labelExpanded",
+          "attribute": "label-expanded",
+          "description": "optional label for the button when expanded",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
+          "name": "tooltipExpanded",
+          "attribute": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "a11y-menu-button-detached",
+          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "toggle",
+          "description": "Fires when toggled."
+        },
+        {
+          "name": "a11y-menu-button-toggle",
+          "description": "Deprecated. Fires when toggled."
+        },
+        {
+          "name": "expand",
+          "description": "Fires when expanded."
+        },
+        {
+          "name": "collapse",
+          "description": "Fires when collapsed."
+        },
+        {
+          "name": "a11y-menu-button-click",
+          "description": "Fires when clicked."
+        }
+      ]
+    },
+    {
+      "name": "a11y-menu-button-group",
+      "description": "`a11y-menu-button-group`",
+      "attributes": [
+        {
+          "name": "global-options",
+          "description": "an array of globalProperties to override every a11y-menu-button item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "radio",
+          "description": "is every a11y-menu-button item radio button?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon."
+        },
+        {
+          "name": "disabled",
+          "description": "is disabled?"
+        },
+        {
+          "name": "expanded",
+          "description": "icon when expanded"
+        },
+        {
+          "name": "icon",
+          "description": "icon for the button"
+        },
+        {
+          "name": "icon-expanded",
+          "description": "icon when expanded"
+        },
+        {
+          "name": "label",
+          "description": "label for the button"
+        },
+        {
+          "name": "label-expanded",
+          "description": "optional label for the button when expanded"
+        },
+        {
+          "name": "tooltip",
+          "description": "tooltip for the button"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded"
+        }
+      ],
+      "properties": [
+        {
+          "name": "globalOptions",
+          "attribute": "global-options",
+          "description": "an array of globalProperties to override every a11y-menu-button item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "radio",
+          "attribute": "radio",
+          "description": "is every a11y-menu-button item radio button?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accordion",
+          "attribute": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon."
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "is disabled?"
+        },
+        {
+          "name": "expanded",
+          "attribute": "expanded",
+          "description": "icon when expanded"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "icon for the button"
+        },
+        {
+          "name": "iconExpanded",
+          "attribute": "icon-expanded",
+          "description": "icon when expanded"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "label for the button"
+        },
+        {
+          "name": "labelExpanded",
+          "attribute": "label-expanded",
+          "description": "optional label for the button when expanded"
+        },
+        {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "tooltip for the button"
+        },
+        {
+          "name": "tooltipExpanded",
+          "attribute": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded"
+        }
+      ],
+      "events": [
+        {
+          "name": "a11y-menu-button-detached",
+          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "toggle",
+          "description": "Fires when toggled."
+        },
+        {
+          "name": "a11y-menu-button-toggle",
+          "description": "Deprecated. Fires when toggled."
+        },
+        {
+          "name": "expand",
+          "description": "Fires when expanded."
+        },
+        {
+          "name": "collapse",
+          "description": "Fires when collapsed."
+        },
+        {
+          "name": "a11y-menu-button-click",
+          "description": "Fires when clicked."
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "a11y-menu-button-attached"
+        },
+        {
+          "name": "a11y-menu-button-detached"
+        },
+        {
+          "name": "toggle"
+        },
+        {
+          "name": "a11y-menu-button-toggle"
+        },
+        {
+          "name": "expand"
+        },
+        {
+          "name": "collapse"
+        },
+        {
+          "name": "a11y-menu-button-click"
+        }
+      ]
+    },
+    {
+      "name": "a11y-menu-button",
+      "description": "`a11y-menu-button`",
+      "attributes": [
+        {
+          "name": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "expanded",
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
+        },
+        {
+          "name": "icon-expanded",
+          "description": "icon when expanded",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
+        },
+        {
+          "name": "label-expanded",
+          "description": "optional label for the button when expanded",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "accordion",
+          "attribute": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "expanded",
+          "attribute": "expanded",
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
+        },
+        {
+          "name": "iconExpanded",
+          "attribute": "icon-expanded",
+          "description": "icon when expanded",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
+        },
+        {
+          "name": "labelExpanded",
+          "attribute": "label-expanded",
+          "description": "optional label for the button when expanded",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
+          "name": "tooltipExpanded",
+          "attribute": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "a11y-menu-button-detached",
+          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "toggle",
+          "description": "Fires when toggled."
+        },
+        {
+          "name": "a11y-menu-button-toggle",
+          "description": "Deprecated. Fires when toggled."
+        },
+        {
+          "name": "expand",
+          "description": "Fires when expanded."
+        },
+        {
+          "name": "collapse",
+          "description": "Fires when collapsed."
+        },
+        {
+          "name": "a11y-menu-button-click",
+          "description": "Fires when clicked."
+        }
+      ]
+    }
+  ]
+}

@@ -20,27 +20,30 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
         ...super.styles,
         css`
           :host {
-            margin: 0 var(--rich-text-editor-button-margin);
-          }
-          .rtebutton {
-            margin-top: 0;
-            margin-bottom: 0;
-            --simple-picker-border-radius: 0px;
-            --simple-picker-color: var(--rich-text-editor-button-color);
+            --simple-picker-background-color: var(--simple-toolbar-button-bg);
             --simple-picker-color-active: var(
-              --rich-text-editor-button-hover-color
+              --simple-toolbar-button-hover-color
+            );
+            --simple-picker-background-color-active: var(
+              --simple-toolbar-button-hover-bg
             );
             --simple-picker-color-disabled: var(
-              --rich-text-editor-border-color
+              --simple-toolbar-button-disabled-color
             );
-            --simple-picker-background-color: var(--rich-text-editor-bg);
             --simple-picker-background-color-disabled: var(
-              --rich-text-editor-border-color
+              --simple-toolbar-button-disabled-bg
             );
+            --simple-picker-border-radius: 0px;
             --simple-picker-border-width: 0px;
-            --simple-picker-option-size: 24px;
+            --simple-picker-option-size: calc(
+              24px - 2 * var(--simple-picker-sample-padding, 2px)
+            );
             --simple-picker-icon-size: 16px;
             --simple-picker-options-border-width: 1px;
+          }
+          #button {
+            margin-top: 0;
+            margin-bottom: 0;
           }
         `,
       ];
@@ -61,13 +64,9 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
           tabindex="0"
           ?title-as-html="${this.titleAsHtml}"
         >
-          <span id="label" class="${super.labelStyle}"
-            >${this.currentLabel}</span
-          >
+          ${super.labelTemplate}
         </simple-picker>
-        <simple-tooltip id="tooltip" for="button"
-          >${this.currentLabel}</simple-tooltip
-        >
+        ${super.tooltopTemplate}
       `;
     }
 
@@ -148,7 +147,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
     _rangeChanged() {
       let val = this._getSelection();
       if (this.shadowRoot) {
-        if (this.blockSelectors.split(",").includes(val)) {
+        if (this.tagsArray.includes(val)) {
           this.shadowRoot.querySelector("#button").value = val;
         } else if (!this.range || this.range.collapsed) {
           this.shadowRoot.querySelector("#button").value = null;

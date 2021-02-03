@@ -37,6 +37,7 @@ class SimpleSymbolPicker extends SimplePicker {
       symbolTypes: {
         name: "symbolTypes",
         type: Array,
+        attribute: "symbol-types",
       },
     };
   }

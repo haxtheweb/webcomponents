@@ -36,23 +36,14 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
   static get properties() {
     return {
       ...super.properties,
-      /**
-       * The label for the breadcrums area.
-       */
-      breadcrumbsLabel: {
-        name: "breadcrumbsLabel",
-        type: String,
-        attribute: "breadcrumbs-label",
-      },
     };
   }
 
   constructor() {
     super();
-    this.breadcrumbsLabel = "Expand selection: ";
-    this.breadcrumbs = document.createElement("rich-text-editor-breadcrumbs");
-    this.breadcrumbs.onselectnode = (e) => this._selectNode(e.detail);
-    document.body.appendChild(this.breadcrumbs);
+  }
+  get hasBreadcrumbs() {
+    return true;
   }
 }
 
