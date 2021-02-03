@@ -822,6 +822,7 @@ var RichTextEditorSelection =
                 _this5.selectRange(_this5.range, (e.detail || {}).editor);
               },
               selectnode: function selectnode(e) {
+                console.log(node);
                 e.stopImmediatePropagation();
 
                 _this5.selectNode(e.detail, toolbar.range, toolbar.editor);

@@ -461,6 +461,7 @@ class RichTextEditorSelection extends LitElement {
         this.selectRange(this.range, (e.detail || {}).editor);
       },
       selectnode: (e) => {
+        console.log(node);
         e.stopImmediatePropagation();
         this.selectNode(e.detail, toolbar.range, toolbar.editor);
       },
