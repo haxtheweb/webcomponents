@@ -147,7 +147,11 @@ function _setPrototypeOf(o, p) {
  * `simple-toolbar-more-button`
  * a more button to toggle collapsed buttons in the rich text editor
  *
- * @element simple-toolbar-more-button
+ * @customElement
+ * @extends SimpleToolbarButtonBehaviors
+ * @extends LitElement
+ * @lit-html
+ * @lit-element
  * @demo ./demo/buttons.html
  */
 var SimpleToolbarMoreButton =

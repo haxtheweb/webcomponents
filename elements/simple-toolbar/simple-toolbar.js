@@ -4,7 +4,10 @@
  */
 import { LitElement, html, css } from "lit-element";
 import "./lib/simple-toolbar-more-button.js";
-
+/**
+ * @customElement
+ * @class
+ */
 const SimpleToolbarBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**
@@ -600,6 +603,8 @@ Custom property | Description | Default
 --simple-toolbar-group-padding | padding for button groups | 0 3px
  * 
  * @customElement
+ * @extends SimpleToolbarBehaviors
+ * @extends LitElement
  * @lit-html
  * @lit-element
  * @demo demo/index.html

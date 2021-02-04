@@ -262,6 +262,10 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+/**
+ * @customElement
+ * @class
+ */
 var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
   return (
     /*#__PURE__*/
@@ -1006,6 +1010,8 @@ Custom property | Description | Default
 --simple-toolbar-group-padding | padding for button groups | 0 3px
  * 
  * @customElement
+ * @extends SimpleToolbarBehaviors
+ * @extends LitElement
  * @lit-html
  * @lit-element
  * @demo demo/index.html

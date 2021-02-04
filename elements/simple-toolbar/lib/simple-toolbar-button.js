@@ -7,6 +7,10 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
+/**
+ * @customElement
+ * @class
+ */
 const SimpleToolbarButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**
@@ -171,6 +175,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * determines if button is toggled
      *
      * @readonly
+     * @memberof SimpleToolbarButton
      */
     get isToggled() {
       return this.toggles & this.toggled;
@@ -255,7 +260,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         })
       );
     }
-
+    /**
+     * template for button icon
+     *
+     * @readonly
+     */
     get iconTemplate() {
       return html`<simple-icon-lite
         id="icon"
@@ -263,16 +272,31 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         icon="${this.currentIcon}"
       ></simple-icon-lite>`;
     }
+    /**
+     * template for button label
+     *
+     * @readonly
+     */
     get labelTemplate() {
       return html`<span id="label" class="${this.labelStyle}"
         >${this.currentLabel}</span
       >`;
     }
+    /**
+     * template for button tooltip
+     *
+     * @readonly
+     */
     get tooltipTemplate() {
       return html`<simple-tooltip id="tooltip" for="button"
         >${this.currentLabel}</simple-tooltip
       >`;
     }
+    /**
+     * template for button, based on whether or not the button toggles
+     *
+     * @readonly
+     */
     get buttonTemplate() {
       return this.toggles
         ? html` <button
@@ -304,6 +328,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     render() {
       return html`${this.buttonTemplate}`;
     }
+    /**
+     * styles for offscreen elements
+     *
+     * @readonly
+     * @static
+     */
     static get offScreenStyles() {
       return [
         css`
@@ -318,6 +348,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         `,
       ];
     }
+    /**
+     * styles for button icon
+     *
+     * @readonly
+     * @static
+     */
     static get iconStyles() {
       return [
         css`
@@ -335,6 +371,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         `,
       ];
     }
+    /**
+     * styles for button tooltip
+     *
+     * @readonly
+     * @static
+     */
     static get tooltipStyles() {
       return [
         css`
@@ -344,6 +386,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         `,
       ];
     }
+    /**
+     * styles for button
+     *
+     * @readonly
+     * @static
+     */
     static get buttonStyles() {
       return [
         css`
@@ -452,7 +500,11 @@ Custom property | Description | Default
 --simple-toolbar-button-disabled-bg | button background color when disabled | unset
 --simple-toolbar-button-disabled-border-color | button border color when disabled | unset
  * 
- * @element simple-toolbar-button
+ * @customElement
+ * @extends SimpleToolbarButtonBehaviors
+ * @extends LitElement
+ * @lit-html
+ * @lit-element
  * @demo ./demo/buttons.html
  */
 class SimpleToolbarButton extends SimpleToolbarButtonBehaviors(LitElement) {}

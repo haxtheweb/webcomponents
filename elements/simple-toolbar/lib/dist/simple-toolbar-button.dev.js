@@ -341,6 +341,10 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+/**
+ * @customElement
+ * @class
+ */
 var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
   SuperClass
 ) {
@@ -600,6 +604,11 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                 })
               );
             },
+            /**
+             * template for button icon
+             *
+             * @readonly
+             */
           },
           {
             key: "render",
@@ -609,6 +618,12 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                 this.buttonTemplate
               );
             },
+            /**
+             * styles for offscreen elements
+             *
+             * @readonly
+             * @static
+             */
           },
           {
             key: "button",
@@ -672,6 +687,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
              * determines if button is toggled
              *
              * @readonly
+             * @memberof SimpleToolbarButton
              */
           },
           {
@@ -688,6 +704,11 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                 this.currentIcon
               );
             },
+            /**
+             * template for button label
+             *
+             * @readonly
+             */
           },
           {
             key: "labelTemplate",
@@ -698,6 +719,11 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                 this.currentLabel
               );
             },
+            /**
+             * template for button tooltip
+             *
+             * @readonly
+             */
           },
           {
             key: "tooltipTemplate",
@@ -707,6 +733,11 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                 this.currentLabel
               );
             },
+            /**
+             * template for button, based on whether or not the button toggles
+             *
+             * @readonly
+             */
           },
           {
             key: "buttonTemplate",
@@ -742,18 +773,36 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
             get: function get() {
               return [(0, _litElement.css)(_templateObject7())];
             },
+            /**
+             * styles for button icon
+             *
+             * @readonly
+             * @static
+             */
           },
           {
             key: "iconStyles",
             get: function get() {
               return [(0, _litElement.css)(_templateObject8())];
             },
+            /**
+             * styles for button tooltip
+             *
+             * @readonly
+             * @static
+             */
           },
           {
             key: "tooltipStyles",
             get: function get() {
               return [(0, _litElement.css)(_templateObject9())];
             },
+            /**
+             * styles for button
+             *
+             * @readonly
+             * @static
+             */
           },
           {
             key: "buttonStyles",
@@ -815,7 +864,11 @@ Custom property | Description | Default
 --simple-toolbar-button-disabled-bg | button background color when disabled | unset
 --simple-toolbar-button-disabled-border-color | button border color when disabled | unset
  * 
- * @element simple-toolbar-button
+ * @customElement
+ * @extends SimpleToolbarButtonBehaviors
+ * @extends LitElement
+ * @lit-html
+ * @lit-element
  * @demo ./demo/buttons.html
  */
 
