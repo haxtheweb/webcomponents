@@ -84,10 +84,11 @@ Custom property | Description | Default
  * @demo ./demo/exporting.html Exporting Data
  * @demo ./demo/advanced.html Advanced Features
  * 
- * @polymer
+ * @customElement
  * @element editable-table
- * @appliesMixin displayBehaviors
- * @appliesMixin EditBehaviors
+ * @extends displayBehaviors
+ * @extends ResponsiveUtilityBehaviors
+ * @extends editableTableStyles
  */
 class EditableTable extends displayBehaviors(LitElement) {
   static get styles() {

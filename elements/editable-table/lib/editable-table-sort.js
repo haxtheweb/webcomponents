@@ -13,9 +13,9 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * A column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for table-editor-display mode (table-editor-display.html).
  *
  * @demo ./demo/display.html
- *
- * @polymer
- * @element editable-table-editor-sort
+ * @customElement
+ * @extends LitElement
+ * @extends editableTableCellStyles
  */
 class EditableTableSort extends LitElement {
   static get styles() {
