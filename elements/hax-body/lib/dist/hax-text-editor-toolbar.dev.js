@@ -201,11 +201,11 @@ function _getPrototypeOf(o) {
 
 /**
  * `hax-text-editor-toolbar`
- * `A customized toolbar (with buttons) for HAX`
+ * a customized toolbar (with buttons) for HAX
  *
+ * @extends RichTextEditorToolbarBehaviors
+ * @extends LitElement
  * @customElement
- * @lit-html
- * @lit-element
  * @demo demo/index.html
  */
 var HaxTextEditorToolbar =
@@ -313,6 +313,13 @@ var HaxTextEditorToolbar =
             this._handleElementRegister.bind(this)
           );
         },
+        /**
+         * when an element is registered,
+         * check its properties
+         *
+         * @param {event} e
+         * @memberof HaxTextEditorToolbar
+         */
       },
       {
         key: "_handleElementRegister",
@@ -323,6 +330,13 @@ var HaxTextEditorToolbar =
 
           this._setInlineElement(tag, props);
         },
+        /**
+         * when hax-store is ready,
+         * check its registered elements
+         *
+         * @param {event} e
+         * @memberof HaxTextEditorToolbar
+         */
       },
       {
         key: "_handleHaxStoreReady",
@@ -335,6 +349,15 @@ var HaxTextEditorToolbar =
             return _this2._setInlineElement(key, elemets[key]);
           });
         },
+        /**
+         * if an an element is inline,
+         * adds it to list of inline elements
+         *
+         * @param {*} tag
+         * @param {*} props
+         * @returns
+         * @memberof HaxTextEditorToolbar
+         */
       },
       {
         key: "_setInlineElement",
@@ -361,6 +384,13 @@ var HaxTextEditorToolbar =
             setTimeout(this.updateToolbarElements.bind(this), 500);
           }
         },
+        /**
+         * updates the toolbar buttons
+         * to include custom inline element buttons
+         *
+         * @returns
+         * @memberof HaxTextEditorToolbar
+         */
       },
       {
         key: "updateToolbarElements",

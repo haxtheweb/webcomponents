@@ -353,7 +353,7 @@ var RichTextEditorLink =
           });
         },
         /**
-         * overrides RichTextEditorPickerBehaviors
+         * overrides RichTextEditorPromptButtonBehaviors
          * so that href property determines
          * whether or not to link or unlink
          *
@@ -365,7 +365,7 @@ var RichTextEditorLink =
         key: "getValue",
 
         /**
-         * overrides RichTextEditorPickerBehaviors
+         * overrides RichTextEditorPromptButtonBehaviors
          * to customize for getting link innerHTML & href properties
          *
          * @param {object} node selected node
@@ -393,7 +393,7 @@ var RichTextEditorLink =
           );
         },
         /**
-         * overrides RichTextEditorPickerBehaviors
+         * overrides RichTextEditorPromptButtonBehaviors
          * sets toggle based on whether the selected node has a href
          *
          * @memberof RichTextEditorLink
@@ -411,7 +411,7 @@ var RichTextEditorLink =
           return this.getPropValue("href") || undefined;
         },
         /**
-         * overrides RichTextEditorPickerBehaviors
+         * overrides RichTextEditorPromptButtonBehaviors
          * so that isToggled is based on toggled property
          *
          * @readonly

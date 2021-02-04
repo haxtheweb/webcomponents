@@ -9,11 +9,11 @@ import { HAXStore } from "./hax-store.js";
 
 /**
  * `hax-text-editor-toolbar`
- * `A customized toolbar (with buttons) for HAX`
+ * a customized toolbar (with buttons) for HAX
  *
+ * @extends RichTextEditorToolbarBehaviors
+ * @extends LitElement
  * @customElement
- * @lit-html
- * @lit-element
  * @demo demo/index.html
  */
 class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
@@ -77,17 +77,40 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
       this._handleElementRegister.bind(this)
     );
   }
+  /**
+   * when an element is registered,
+   * check its properties
+   *
+   * @param {event} e
+   * @memberof HaxTextEditorToolbar
+   */
   _handleElementRegister(e) {
     let detail = e.detail || {},
       tag = detail.tag || {},
       props = detail.properties || {};
     this._setInlineElement(tag, props);
   }
+  /**
+   * when hax-store is ready,
+   * check its registered elements
+   *
+   * @param {event} e
+   * @memberof HaxTextEditorToolbar
+   */
   _handleHaxStoreReady(e) {
     let elements = HAXStore.elementList || {},
       keys = Object.keys(elements);
     keys.forEach((key) => this._setInlineElement(key, elemets[key]));
   }
+  /**
+   * if an an element is inline,
+   * adds it to list of inline elements
+   *
+   * @param {*} tag
+   * @param {*} props
+   * @returns
+   * @memberof HaxTextEditorToolbar
+   */
   _setInlineElement(tag, props) {
     if (
       !tag ||
@@ -108,6 +131,13 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(LitElement) {
       setTimeout(this.updateToolbarElements.bind(this), 500);
     }
   }
+  /**
+   * updates the toolbar buttons
+   * to include custom inline element buttons
+   *
+   * @returns
+   * @memberof HaxTextEditorToolbar
+   */
   updateToolbarElements() {
     if (this.__updated) return;
     this.__updated = true;

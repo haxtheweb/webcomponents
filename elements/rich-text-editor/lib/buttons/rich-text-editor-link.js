@@ -97,7 +97,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * overrides RichTextEditorPickerBehaviors
+   * overrides RichTextEditorPromptButtonBehaviors
    * so that href property determines
    * whether or not to link or unlink
    *
@@ -109,7 +109,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * overrides RichTextEditorPickerBehaviors
+   * overrides RichTextEditorPromptButtonBehaviors
    * so that isToggled is based on toggled property
    *
    * @readonly
@@ -120,7 +120,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * overrides RichTextEditorPickerBehaviors
+   * overrides RichTextEditorPromptButtonBehaviors
    * to customize for getting link innerHTML & href properties
    *
    * @param {object} node selected node
@@ -139,7 +139,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     };
   }
   /**
-   * overrides RichTextEditorPickerBehaviors
+   * overrides RichTextEditorPromptButtonBehaviors
    * sets toggle based on whether the selected node has a href
    *
    * @memberof RichTextEditorLink

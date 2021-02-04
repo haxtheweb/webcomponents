@@ -265,7 +265,7 @@ var RichTextEditorImage =
       return _this;
     }
     /**
-     * overrides RichTextEditorPickerBehaviors
+     * overrides RichTextEditorPromptButtonBehaviors
      * so that isToggled is based on toggled property
      *
      * @readonly
@@ -277,7 +277,7 @@ var RichTextEditorImage =
         key: "getValue",
 
         /**
-         * overrides RichTextEditorPickerBehaviors
+         * overrides RichTextEditorPromptButtonBehaviors
          * to customize for getting selected image properties
          *
          * @param {object} node selected node
@@ -313,7 +313,7 @@ var RichTextEditorImage =
           return this.toggled;
         },
         /**
-         * overrides RichTextEditorPickerBehaviors
+         * overrides RichTextEditorPromptButtonBehaviors
          * to customize for setting image properties
          *
          * @param {object} node selected node

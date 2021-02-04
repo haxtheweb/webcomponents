@@ -199,14 +199,11 @@ function _getPrototypeOf(o) {
 
 /**
  * `hax-text-editor`
- * `HAX-specific implementation of rich-text-editor`
+ * HAX-specific implementation of rich-text-editor
  *
- * @microcopy - language worth noting:
- *  -
- *
+ * @extends RichTextEditorBehaviors
+ * @extends LitElement
  * @customElement
- * @lit-html
- * @lit-element
  * @demo demo/index.html
  */
 var HaxTextEditor =

@@ -8,14 +8,11 @@ import "./hax-text-editor-toolbar.js";
 
 /**
  * `hax-text-editor`
- * `HAX-specific implementation of rich-text-editor`
+ * HAX-specific implementation of rich-text-editor
  *
- * @microcopy - language worth noting:
- *  -
- *
+ * @extends RichTextEditorBehaviors
+ * @extends LitElement
  * @customElement
- * @lit-html
- * @lit-element
  * @demo demo/index.html
  */
 class HaxTextEditor extends RichTextEditorBehaviors(LitElement) {

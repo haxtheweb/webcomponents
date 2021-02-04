@@ -71,7 +71,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * overrides RichTextEditorPickerBehaviors
+   * overrides RichTextEditorPromptButtonBehaviors
    * so that isToggled is based on toggled property
    *
    * @readonly
@@ -82,7 +82,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * overrides RichTextEditorPickerBehaviors
+   * overrides RichTextEditorPromptButtonBehaviors
    * to customize for setting image properties
    *
    * @param {object} node selected node
@@ -101,7 +101,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * overrides RichTextEditorPickerBehaviors
+   * overrides RichTextEditorPromptButtonBehaviors
    * to customize for getting selected image properties
    *
    * @param {object} node selected node

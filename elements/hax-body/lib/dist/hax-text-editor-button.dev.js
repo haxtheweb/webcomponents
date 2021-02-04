@@ -199,9 +199,12 @@ function _getPrototypeOf(o) {
 
 /**
  * `hax-text-editor-button`
- * @element hax-text-editor-button
- * `a custom-element button for hax text editor (custom buttons can extend this)`
+ * a custom-element button for hax text editor (custom buttons can extend this)
  *
+ * @extends RichTextEditorPromptButtonBehaviors
+ * @extends LitElement
+ * @customElement
+ * @demo demo/index.html
  */
 var HaxTextEditorButton =
   /*#__PURE__*/
@@ -269,6 +272,12 @@ var HaxTextEditorButton =
               _this2.updateElement();
           });
         },
+        /**
+         * overrides RichTextEditorPromptButtonBehaviors
+         * to set custom gizmo property and slot values
+         *
+         * @memberof HaxTextEditorButton
+         */
       },
       {
         key: "updateElement",
@@ -302,14 +311,20 @@ var HaxTextEditorButton =
           this.updateButton();
         },
         /**
-         * determines commandVal based on values passed from prompt
+         * overriden from RichTextEditorPromptButtonBehaviors:
+         * to determin if gizmo will be inserted
+         * @memberof HaxTextEditorButton
          */
       },
       {
         key: "getValue",
 
         /**
-         * updates prompt fields with selected range data
+         * overrides RichTextEditorPromptButtonBehaviors
+         * to get custom gizmo property and slot values
+         *
+         * @param {object} node selected node
+         * @memberof HaxTextEditorButton
          */
         value: function getValue(node) {
           var el = node || this.rangeElement(),
@@ -340,11 +355,13 @@ var HaxTextEditorButton =
           this.toggled = !!this.value;
         },
         /**
-         * sends a command to the selection manager
+         * overrides RichTextEditorPromptButtonBehaviors
+         * to perform a custom gizmo insert
          *
          * @param {string} [command=this.operationCommand]
          * @param {string} [commandVal=this.operationCommandVal]
          * @param {object} [range=this.range]
+         * @memberof HaxTextEditorButton
          */
       },
       {
