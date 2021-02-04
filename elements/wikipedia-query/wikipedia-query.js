@@ -161,6 +161,10 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
    * @see haxHooks: gizmoRegistration
    */
   haxgizmoRegistration(store) {
+    // ensure that this is a valid type of gizmo for endpoints
+    // this is nessecary because wikipedia-query wants to be the sole
+    // provider of display for things coming off the API
+    store.validGizmoTypes.push("wikipedia");
     if (
       store.appList.filter((el, i) => {
         // ensure we don't double load the endpoint if already defined
