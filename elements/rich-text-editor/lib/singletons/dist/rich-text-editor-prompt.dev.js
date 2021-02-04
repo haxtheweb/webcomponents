@@ -84,7 +84,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          --simple-fields-color: var(--simple-toolbar-focus-color, #000);\n          --simple-fields-invalid-color: var(\n            --simple-toolbar-error-color,\n            #800\n          );\n        }\n        #prompt {\n          display: block;\n          width: 300px;\n          max-width: 300px;\n          --simple-popover-padding: 0px;\n          z-index: 2;\n        }\n        #prompt[hidden] {\n          display: none;\n        }\n        #prompt #form {\n          display: flex;\n          flex-direction: column;\n          align-items: center;\n          justify-content: space-between;\n          z-index: 2;\n        }\n        #formfields {\n          width: calc(100% - 20px);\n          padding: 10px 10px 0;\n          overflow: visible;\n        }\n        #prompt simple-fields-field {\n          padding: 0;\n        }\n        #confirm,\n        #cancel {\n          min-width: unset;\n        }\n        #cancel {\n          color: var(--simple-toolbar-button-color);\n          background-color: var(--simple-toolbar-button-bg);\n        }\n        #cancel:focus,\n        #cancel:hover {\n          color: var(--simple-toolbar-button-hover-color);\n          background-color: var(--simple-toolbar-button-hover-bg);\n        }\n        #confirm {\n          color: var(--simple-toolbar-button-color);\n          background-color: var(--simple-toolbar-button-bg);\n        }\n        #confirm:focus,\n        #confirm:hover {\n          color: var(--simple-toolbar-button-hover-color);\n          background-color: var(--simple-toolbar-button-hover-bg);\n        }\n        .actions {\n          width: calc(100% - 20px);\n          padding: 0 10px 3px;\n          display: flex;\n          align-items: center;\n          justify-content: flex-end;\n        }\n        .confirm-or-cancel {\n          min-width: 40px;\n        }\n      ",
+    "\n        #prompt {\n          display: block;\n          width: 300px;\n          max-width: 300px;\n          --simple-popover-padding: 0px;\n          z-index: 2;\n        }\n        #prompt[hidden] {\n          display: none;\n        }\n        #prompt #form {\n          display: flex;\n          flex-direction: column;\n          align-items: center;\n          justify-content: space-between;\n          z-index: 2;\n        }\n        #formfields {\n          width: calc(100% - 20px);\n          padding: 10px 10px 0;\n          overflow: visible;\n        }\n        #prompt simple-fields-field {\n          padding: 0;\n        }\n        #confirm,\n        #cancel {\n          min-width: unset;\n        }\n        #cancel {\n          color: var(--rich-text-editor-button-color);\n          background-color: var(--rich-text-editor-button-bg);\n        }\n        #cancel:focus,\n        #cancel:hover {\n          color: var(--rich-text-editor-button-hover-color);\n          background-color: var(--rich-text-editor-button-hover-bg);\n        }\n        #confirm {\n          color: var(--rich-text-editor-button-color);\n          background-color: var(--rich-text-editor-button-bg);\n        }\n        #confirm:focus,\n        #confirm:hover {\n          color: var(--rich-text-editor-button-hover-color);\n          background-color: var(--rich-text-editor-button-hover-bg);\n        }\n        .actions {\n          width: calc(100% - 20px);\n          padding: 0 10px 3px;\n          display: flex;\n          align-items: center;\n          justify-content: flex-end;\n        }\n        .confirm-or-cancel {\n          min-width: 40px;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -251,6 +251,9 @@ function _setPrototypeOf(o, p) {
  * `rich-text-editor-prompt`
  * `A utility that manages state of multiple rich-text-prompts on one page.`
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-prompt
  */
 var RichTextEditorPrompt =
@@ -285,22 +288,13 @@ var RichTextEditorPrompt =
            * Store tag name to make it easier to obtain directly.
            */
         },
-        {
-          key: "hidden",
-          get: function get() {
-            return !this.__opened;
-          },
-          /**
-           * Makes sure there is a utility ready and listening for elements.
-           */
-        },
       ],
       [
         {
           key: "styles",
           get: function get() {
             return [].concat(
-              _toConsumableArray(_richTextEditorButton.RichTextStyles),
+              _toConsumableArray(_richTextEditorButton.RichTextToolbarStyles),
               [(0, _litElement.css)(_templateObject2())]
             );
           },
@@ -358,6 +352,9 @@ var RichTextEditorPrompt =
               },
             };
           },
+          /**
+           * Makes sure there is a utility ready and listening for elements.
+           */
         },
       ]
     );
@@ -383,6 +380,12 @@ var RichTextEditorPrompt =
 
       return _this;
     }
+    /**
+     * hides prompt when not open
+     *
+     * @readonly
+     * @memberof RichTextEditorPrompt
+     */
 
     _createClass(RichTextEditorPrompt, [
       {
@@ -414,24 +417,51 @@ var RichTextEditorPrompt =
               setTimeout(_this3._handleChange.bind(_this3), 300);
           });
         },
+        /**
+         * sets focus when prompt is ready
+         *
+         * @param {event} e
+         * @memberof RichTextEditorPrompt
+         */
       },
       {
         key: "_handleReady",
         value: function _handleReady(e) {
           e.detail.focus();
         },
+        /**
+         * handles focus so that RichTextEditorSelection
+         * can track whether prompt has focus
+         *
+         * @param {event} e
+         * @memberof RichTextEditorPrompt
+         */
       },
       {
         key: "_handleFocus",
         value: function _handleFocus(e) {
           this.__focused = true;
         },
+        /**
+         * handles blur so that RichTextEditorSelection
+         * can track whether prompt has focus
+         *
+         * @param {event} e
+         * @memberof RichTextEditorPrompt
+         */
       },
       {
         key: "_handleBlur",
         value: function _handleBlur(e) {
           this.__focused = false;
         },
+        /**
+         * handles changes in open, focus, or hover status
+         * to cancel prompt if needed
+         *
+         * @param {event} e
+         * @memberof RichTextEditorPrompt
+         */
       },
       {
         key: "_handleChange",
@@ -439,6 +469,12 @@ var RichTextEditorPrompt =
           if (this.__opened && !this.__focused && !this.__hovered)
             this._cancel();
         },
+        /**
+         * opens prompt and generates for fields
+         *
+         * @param {event} e event that opens the prompt
+         * @memberof RichTextEditorPrompt
+         */
       },
       {
         key: "open",
@@ -453,6 +489,11 @@ var RichTextEditorPrompt =
             this.value = _objectSpread({}, e.detail.value);
           }
         },
+        /**
+         * closes prompt
+         *
+         * @memberof RichTextEditorPrompt
+         */
       },
       {
         key: "close",
@@ -464,7 +505,7 @@ var RichTextEditorPrompt =
           this.value = {};
         },
         /**
-         * Handles cancel button
+         * handles cancel button
          * @param {event} e event
          * @returns {void}
          */
@@ -489,6 +530,18 @@ var RichTextEditorPrompt =
           this.button.confirm(this.value);
           this.close();
         },
+      },
+      {
+        key: "hidden",
+        get: function get() {
+          return !this.__opened;
+        },
+        /**
+         * gets RichTextEditorSelection singleton for range management
+         *
+         * @readonly
+         * @memberof RichTextEditorPrompt
+         */
       },
       {
         key: "selection",

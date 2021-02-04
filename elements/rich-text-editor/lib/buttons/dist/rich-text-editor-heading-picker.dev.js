@@ -3,13 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextEditorToolbarFull = void 0;
+exports.RichTextEditorHeadingPicker = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _richTextEditorToolbar = require("./rich-text-editor-toolbar.js");
-
-require("./rich-text-editor-breadcrumbs.js");
+var _richTextEditorPicker = require("./rich-text-editor-picker.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -198,36 +196,35 @@ function _getPrototypeOf(o) {
 }
 
 /**
- * `rich-text-editor-toolbar-full`
- * `a full toolbar with breadcrumbs for the rich text editor`
+ * `rich-text-editor-heading-picker`
+ * a heading picker for the rich-text-editor
  *
  * @customElement
- * @extends RichTextEditorToolbarBehaviors
- * @extends LitElement
  * @lit-html
  * @lit-element
- * @element rich-text-editor-toolbar-full
- * @demo ./demo/index.html demo
- * @demo ./demo/full.html toolbar with breadcrumb
+ * @extends RichTextEditorPickerBehaviors
+ * @extends LitElement
+ * @element rich-text-editor-heading-picker
+ * @demo ./demo/buttons.html
  */
-var RichTextEditorToolbarFull =
+var RichTextEditorHeadingPicker =
   /*#__PURE__*/
-  (function (_RichTextEditorToolba) {
-    _inherits(RichTextEditorToolbarFull, _RichTextEditorToolba);
+  (function (_RichTextEditorPicker) {
+    _inherits(RichTextEditorHeadingPicker, _RichTextEditorPicker);
 
     _createClass(
-      RichTextEditorToolbarFull,
+      RichTextEditorHeadingPicker,
       [
         {
           key: "render",
           // render function for template
           value: function render() {
             return _get(
-              _getPrototypeOf(RichTextEditorToolbarFull.prototype),
+              _getPrototypeOf(RichTextEditorHeadingPicker.prototype),
               "render",
               this
             ).call(this);
-          }, // properties available to the custom element for data binding
+          },
         },
       ],
       [
@@ -238,79 +235,147 @@ var RichTextEditorToolbarFull =
            * Store the tag name to make it easier to obtain directly.
            */
           get: function get() {
-            return "rich-text-editor-toolbar-full";
+            return "rich-text-editor-heading-picker";
           },
         },
         {
           key: "styles",
           get: function get() {
-            return [].concat(
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "baseStyles",
-                  this
-                )
-              ),
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "stickyStyles",
-                  this
-                )
-              )
-            );
-          },
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return _objectSpread(
-              {},
-              _get(
-                _getPrototypeOf(RichTextEditorToolbarFull),
-                "properties",
-                this
-              )
+            return _toConsumableArray(
+              _get(_getPrototypeOf(RichTextEditorHeadingPicker), "styles", this)
             );
           },
         },
       ]
     );
 
-    function RichTextEditorToolbarFull() {
-      _classCallCheck(this, RichTextEditorToolbarFull);
+    function RichTextEditorHeadingPicker() {
+      var _this;
 
-      return _possibleConstructorReturn(
+      _classCallCheck(this, RichTextEditorHeadingPicker);
+
+      _this = _possibleConstructorReturn(
         this,
-        _getPrototypeOf(RichTextEditorToolbarFull).call(this)
+        _getPrototypeOf(RichTextEditorHeadingPicker).call(this)
       );
-    }
-    /**
-     * overriden default to enable breadcrums
-     *
-     * @readonly
-     * @memberof RichTextEditorToolbarFull
-     */
-
-    _createClass(RichTextEditorToolbarFull, [
-      {
-        key: "hasBreadcrumbs",
-        get: function get() {
-          return true;
+      _this.allowNull = true;
+      _this.blocks = [
+        {
+          label: "Paragraph",
+          tag: "p",
         },
-      },
-    ]);
+        {
+          label: "Heading 1",
+          tag: "h1",
+        },
+        {
+          label: "Heading 2",
+          tag: "h2",
+        },
+        {
+          label: "Heading 3",
+          tag: "h3",
+        },
+        {
+          label: "Heading 4",
+          tag: "h4",
+        },
+        {
+          label: "Heading 5",
+          tag: "h5",
+        },
+        {
+          label: "Heading 6",
+          tag: "h6",
+        },
+        {
+          label: "Preformatted",
+          tag: "pre",
+        },
+      ];
+      _this.command = "formatBlock";
+      _this.icon = null;
+      _this.label = "Block format";
+      _this.tagsList = "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
+      return _this;
+    } // properties available to the custom element for data binding
 
-    return RichTextEditorToolbarFull;
+    _createClass(
+      RichTextEditorHeadingPicker,
+      [
+        {
+          key: "_setOptions",
+
+          /**
+           * overrides RichTextEditorPickerBehaviors
+           * to populate picker with allowable blocks
+           *
+           * @memberof RichTextEditorHeadingPicker
+           */
+          value: function _setOptions() {
+            this.tagsList = this.blocks
+              .map(function (block) {
+                return block.tag;
+              })
+              .join(",");
+            this.options = [
+              [
+                {
+                  alt: this.label,
+                  value: null,
+                },
+              ],
+            ].concat(
+              _toConsumableArray(
+                this.blocks.map(function (block) {
+                  return [
+                    {
+                      alt: block.label,
+                      value: block.tag,
+                    },
+                  ];
+                })
+              )
+            );
+          },
+        },
+      ],
+      [
+        {
+          key: "properties",
+          get: function get() {
+            var props = _get(
+              _getPrototypeOf(RichTextEditorHeadingPicker),
+              "properties",
+              this
+            );
+
+            delete props.block;
+            return _objectSpread({}, props, {
+              /**
+               * block element options as array of objects,
+               * eg. [ { label: "Paragraph", tag: "p" }, { label: "Heading 1", tag: "h1" }, ...]
+               *
+               */
+              blocks: {
+                name: "blocks",
+                type: Array,
+              },
+            });
+          },
+        },
+      ]
+    );
+
+    return RichTextEditorHeadingPicker;
   })(
-    (0, _richTextEditorToolbar.RichTextEditorToolbarBehaviors)(
+    (0, _richTextEditorPicker.RichTextEditorPickerBehaviors)(
       _litElement.LitElement
     )
   );
 
-exports.RichTextEditorToolbarFull = RichTextEditorToolbarFull;
+exports.RichTextEditorHeadingPicker = RichTextEditorHeadingPicker;
 window.customElements.define(
-  RichTextEditorToolbarFull.tag,
-  RichTextEditorToolbarFull
+  RichTextEditorHeadingPicker.tag,
+  RichTextEditorHeadingPicker
 );

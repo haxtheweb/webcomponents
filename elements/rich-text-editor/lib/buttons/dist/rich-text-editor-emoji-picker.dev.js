@@ -3,13 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextEditorToolbarFull = void 0;
+exports.RichTextEditorEmojiPicker = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _richTextEditorToolbar = require("./rich-text-editor-toolbar.js");
+var _richTextEditorPicker = require("./rich-text-editor-picker.js");
 
-require("./rich-text-editor-breadcrumbs.js");
+require("@lrnwebcomponents/simple-picker/lib/simple-emoji-picker.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -78,6 +78,16 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _toConsumableArray(arr) {
   return (
     _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
@@ -103,6 +113,37 @@ function _arrayWithoutHoles(arr) {
     }
     return arr2;
   }
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([
+    '\n      <label id="listLabel" for="button"> ',
+    ' </label>\n      <simple-emoji-picker\n        id="button"\n        id="button"\n        ?allow-null="',
+    '"\n        aria-labeledby="listlabel"\n        controls="',
+    '"\n        ?disabled="',
+    '"\n        .emoji-types="',
+    '"\n        @keydown="',
+    '"\n        label=""\n        @mouseover="',
+    '"\n        tabindex="0"\n        title-as-html\n        ?toggled="',
+    '"\n        @value-changed="',
+    '"\n      >\n      </simple-emoji-picker>\n      ',
+    "\n    ",
+  ]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+  return Object.freeze(
+    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
+  );
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -198,35 +239,51 @@ function _getPrototypeOf(o) {
 }
 
 /**
- * `rich-text-editor-toolbar-full`
- * `a full toolbar with breadcrumbs for the rich text editor`
+ * `rich-text-editor-emoji-picker`
+ * an emoji picker for the rich-text-editor
  *
  * @customElement
- * @extends RichTextEditorToolbarBehaviors
- * @extends LitElement
  * @lit-html
  * @lit-element
- * @element rich-text-editor-toolbar-full
- * @demo ./demo/index.html demo
- * @demo ./demo/full.html toolbar with breadcrumb
+ * @extends RichTextEditorPickerBehaviors
+ * @extends LitElement
+ * @element rich-text-editor-emoji-picker
+ * @demo ./demo/buttons.html
  */
-var RichTextEditorToolbarFull =
+var RichTextEditorEmojiPicker =
   /*#__PURE__*/
-  (function (_RichTextEditorToolba) {
-    _inherits(RichTextEditorToolbarFull, _RichTextEditorToolba);
+  (function (_RichTextEditorPicker) {
+    _inherits(RichTextEditorEmojiPicker, _RichTextEditorPicker);
 
     _createClass(
-      RichTextEditorToolbarFull,
+      RichTextEditorEmojiPicker,
       [
         {
           key: "render",
           // render function for template
+          // render function for template
           value: function render() {
-            return _get(
-              _getPrototypeOf(RichTextEditorToolbarFull.prototype),
-              "render",
-              this
-            ).call(this);
+            return (0, _litElement.html)(
+              _templateObject(),
+              this.labelTemplate,
+              this.allowNull,
+              _get(
+                _getPrototypeOf(RichTextEditorEmojiPicker.prototype),
+                "controls",
+                this
+              ),
+              this.disabled,
+              this.emojiTypes,
+              this._pickerFocus,
+              this._pickerFocus,
+              this.toggled,
+              this._pickerChange,
+              _get(
+                _getPrototypeOf(RichTextEditorEmojiPicker.prototype),
+                "tooltipTemplate",
+                this
+              )
+            );
           }, // properties available to the custom element for data binding
         },
       ],
@@ -236,9 +293,10 @@ var RichTextEditorToolbarFull =
 
           /**
            * Store the tag name to make it easier to obtain directly.
+           *
            */
           get: function get() {
-            return "rich-text-editor-toolbar-full";
+            return "rich-text-editor-emoji-picker";
           },
         },
         {
@@ -246,19 +304,9 @@ var RichTextEditorToolbarFull =
           get: function get() {
             return [].concat(
               _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "baseStyles",
-                  this
-                )
+                _get(_getPrototypeOf(RichTextEditorEmojiPicker), "styles", this)
               ),
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "stickyStyles",
-                  this
-                )
-              )
+              [(0, _litElement.css)(_templateObject2())]
             );
           },
         },
@@ -268,49 +316,91 @@ var RichTextEditorToolbarFull =
             return _objectSpread(
               {},
               _get(
-                _getPrototypeOf(RichTextEditorToolbarFull),
+                _getPrototypeOf(RichTextEditorEmojiPicker),
                 "properties",
                 this
-              )
+              ),
+              {
+                /**
+                 * Emoji types types to include
+                 */
+                emojiTypes: {
+                  name: "emojiTypes",
+                  type: Array,
+                  attribute: "emoji-types",
+                },
+              }
             );
           },
         },
       ]
     );
 
-    function RichTextEditorToolbarFull() {
-      _classCallCheck(this, RichTextEditorToolbarFull);
+    function RichTextEditorEmojiPicker() {
+      var _this;
 
-      return _possibleConstructorReturn(
+      _classCallCheck(this, RichTextEditorEmojiPicker);
+
+      _this = _possibleConstructorReturn(
         this,
-        _getPrototypeOf(RichTextEditorToolbarFull).call(this)
+        _getPrototypeOf(RichTextEditorEmojiPicker).call(this)
       );
+      _this.emojiTypes = [
+        "emotions",
+        "people",
+        "nature",
+        "food",
+        "travel",
+        "activities",
+        "objects",
+        "symbols",
+        "flags",
+      ];
+      _this.icon = "editor:insert-emoticon";
+      _this.label = "Insert emoji";
+      _this.command = "insertHTML";
+      return _this;
     }
-    /**
-     * overriden default to enable breadcrums
-     *
-     * @readonly
-     * @memberof RichTextEditorToolbarFull
-     */
 
-    _createClass(RichTextEditorToolbarFull, [
+    _createClass(RichTextEditorEmojiPicker, [
       {
-        key: "hasBreadcrumbs",
-        get: function get() {
-          return true;
+        key: "updated",
+        value: function updated(changedProperties) {
+          var _this2 = this;
+
+          _get(
+            _getPrototypeOf(RichTextEditorEmojiPicker.prototype),
+            "updated",
+            this
+          ).call(this, changedProperties);
+
+          changedProperties.forEach(function (oldValue, propName) {
+            if (propName === "titleAsHtml" && !_this2.titleAsHtml)
+              _this2.titleAsHtml = true;
+          });
         },
+        /**
+         * overrides RichTextEditorPickerBehaviors
+         * since simple-symbol-picker already handles options
+         *
+         * @memberof RichTextEditorSymbolPicker
+         */
+      },
+      {
+        key: "_setOptions",
+        value: function _setOptions() {},
       },
     ]);
 
-    return RichTextEditorToolbarFull;
+    return RichTextEditorEmojiPicker;
   })(
-    (0, _richTextEditorToolbar.RichTextEditorToolbarBehaviors)(
+    (0, _richTextEditorPicker.RichTextEditorPickerBehaviors)(
       _litElement.LitElement
     )
   );
 
-exports.RichTextEditorToolbarFull = RichTextEditorToolbarFull;
+exports.RichTextEditorEmojiPicker = RichTextEditorEmojiPicker;
 window.customElements.define(
-  RichTextEditorToolbarFull.tag,
-  RichTextEditorToolbarFull
+  RichTextEditorEmojiPicker.tag,
+  RichTextEditorEmojiPicker
 );

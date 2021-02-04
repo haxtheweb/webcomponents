@@ -3,12 +3,21 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextStyles } from "./lib/buttons/rich-text-editor-button.js";
 import * as shadow from "shadow-selection-polyfill/shadow.js";
-import "./lib/singletons/rich-text-editor-selection.js";
+import { RichTextStyles } from "./lib/buttons/rich-text-editor-button.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
+import "./lib/singletons/rich-text-editor-selection.js";
+/**
+ * RichTextEditorBehaviors
+ * @extends RichTextStyles
+ *
+ * @customElement
+ * @class
+ * @lit-html
+ * @lit-element
+ */
 const RichTextEditorBehaviors = function (SuperClass) {
   return class extends SuperClass {
     //styles function
@@ -60,7 +69,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           :host(:hover),
           :host(:focus-within) {
             opacity: 1;
-            outline: var(--rich-text-editor-border-width, 2px) solid
+            outline: var(--rich-text-editor-border-width, 1px) solid
               var(--rich-text-editor-focus-color, blue);
           }
           :host([disabled]),
@@ -70,7 +79,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
 
           #source:hover,
           #source:focus-within {
-            outline: var(--rich-text-editor-border-width, 2px) solid
+            outline: var(--rich-text-editor-border-width, 1px) solid
               var(--rich-text-editor-focus-color, blue);
           }
           :host([editing][view-source]) #container {
@@ -93,13 +102,6 @@ const RichTextEditorBehaviors = function (SuperClass) {
             cursor: not-allowed;
             margin-right: 10px;
             width: calc(50% - 10px);
-          }
-
-          *::selection .rich-text-editor-selection {
-            background-color: var(
-              --rich-text-editor-selection-bg,
-              rgb(146, 197, 255)
-            );
           }
         `,
       ];
@@ -128,7 +130,6 @@ const RichTextEditorBehaviors = function (SuperClass) {
         </code-editor>
       </div>`;
     }
-    // properties available to the custom element for data binding
     static get properties() {
       return {
         ...super.properties,
@@ -366,7 +367,12 @@ const RichTextEditorBehaviors = function (SuperClass) {
       });
       if (!this.innerHTML) this.innerHTML = "";
     }
-
+    /**
+     * removes contenteditable and cleans HTML
+     *
+     * @event editing-disabled
+     * @memberof RichTextEditor
+     */
     disableEditing() {
       this.editing = false;
       this.dispatchEvent(
@@ -380,6 +386,13 @@ const RichTextEditorBehaviors = function (SuperClass) {
         })
       );
     }
+    /**
+     * adds contenteditable and cleans HTML
+     *
+     * @event editing-endabled
+     * @memberof RichTextEditor
+     *
+     */
     enableEditing() {
       this.editing = true;
       this.dispatchEvent(
@@ -393,8 +406,12 @@ const RichTextEditorBehaviors = function (SuperClass) {
         })
       );
     }
+    /**
+     * focuses on the contenteditable region
+     * @memberof RichTextEditor
+     */
     focus() {
-      this.__focused = true;
+      if (!this.disabled) this.__focused = true;
       this.dispatchEvent(
         new CustomEvent("focus", {
           bubbles: true,
@@ -404,6 +421,12 @@ const RichTextEditorBehaviors = function (SuperClass) {
         })
       );
     }
+    /**
+     * gets cleaned HTML from the editor
+     *
+     * @returns {string}
+     * @memberof RichTextEditor
+     */
     getHTML() {
       return this.isEmpty()
         ? ""
@@ -459,6 +482,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
     paste(pasteContent, sanitized = true) {
       this._handlePaste(pasteContent);
     }
+
     /**
      * handles registration to selection singleton's toolbars list
      * @param {boolean} remove whether to remove
@@ -510,7 +534,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
       return html;
     }
     /**
-     *
+     * sets editor HTML
      *
      * @param {string} [rawhtml=""]
      * @memberof RichTextEditor
@@ -535,13 +559,19 @@ const RichTextEditorBehaviors = function (SuperClass) {
      * gets trimmed version of innerHTML
      *
      * @param {obj} node
-     * @returns string
+     * @returns {string}
      * @memberof RichTextEditor
      */
     trimHTML(node) {
       let str = node ? node.innerHTML : undefined;
       return this.trimString(str);
     }
+    /**
+     * cleans and trims a string of HTML so that it has no extra spaces
+     *
+     * @param {string} str
+     * @returns {string}
+     */
     trimString(str) {
       return (str || "")
         .replace(/<!--[^(-->)]*-->/g, "")
@@ -581,7 +611,11 @@ const RichTextEditorBehaviors = function (SuperClass) {
         this.removeEventListener("keypress", keyPress);
       }
     }
-
+    /**
+     * gets range from shadowDOM
+     *
+     * @returns {range}
+     */
     _getRange() {
       let shadowRoot = (el) => {
         let parent = el.parentNode;
@@ -640,6 +674,12 @@ const RichTextEditorBehaviors = function (SuperClass) {
         if (this.__needsUpdate) setTimeout(update.bind(this), 300);
       }
     }
+    /**
+     * cleans up indents and extra spaces in HTML string for source code editor
+     *
+     * @param {string} [str=""]
+     * @returns {string}
+     */
     _outdentHTML(str = "") {
       str = this.sanitizeHTML(str)
         .replace(/[\s]*$/, "")
@@ -652,7 +692,12 @@ const RichTextEditorBehaviors = function (SuperClass) {
       str = regex ? str.replace(regex, "\n ") : str;
       return str;
     }
-    _handleViewSourceChange() {
+    /**
+     * hangles show/hide view source
+     *
+     * @param {event} e
+     */
+    _handleViewSourceChange(e) {
       let code = this.shadowRoot
         ? this.shadowRoot.querySelector("#source")
         : undefined;
@@ -669,26 +714,31 @@ const RichTextEditorBehaviors = function (SuperClass) {
         );
       }
     }
+    /**
+     * handles range changes (can be overridden)
+     *
+     * @param {event} e
+     */
     _rangeChange(e) {}
   };
 };
 /**
  * `rich-text-editor`
- * @element rich-text-editor
  * a standalone rich text editor
+ * (can customize by extending RichTextEditorBehaviors)
 ### Styling
 
-`<rich-text-editor` provides following custom properties and mixins
-for styling:
+`<rich-text-editor>`  uses RichTextStyles variables, 
+as well as an additional style:
 
 Custom property | Description | Default
 ----------------|-------------|----------
 --rich-text-editor-min-height | minimum height of editor | 20px
---rich-text-editor-outline-width | width of editor's outline when focused | 1px
---rich-text-editor-focus-color | color of editor's outline when focused | blue 
---rich-text-editor-selection-bg | color of hiighlighted selection | rgb(146, 197, 255)
  *
+ * @extends RichTextEditorBehaviors
+ * @extends LitElement
  * @customElement
+ * @element rich-text-editor
  * @lit-html
  * @lit-element
  * @demo ./demo/index.html demo

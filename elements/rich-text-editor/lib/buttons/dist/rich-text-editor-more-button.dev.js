@@ -3,13 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextEditorToolbarFull = void 0;
+exports.RichTextEditorMoreButton = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _richTextEditorToolbar = require("./rich-text-editor-toolbar.js");
-
-require("./rich-text-editor-breadcrumbs.js");
+var _richTextEditorButton = require("./rich-text-editor-button.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -76,33 +74,6 @@ function _defineProperty(obj, key, value) {
     obj[key] = value;
   }
   return obj;
-}
-
-function _toConsumableArray(arr) {
-  return (
-    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
-  );
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (
-    Symbol.iterator in Object(iter) ||
-    Object.prototype.toString.call(iter) === "[object Arguments]"
-  )
-    return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  }
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -198,36 +169,33 @@ function _getPrototypeOf(o) {
 }
 
 /**
- * `rich-text-editor-toolbar-full`
- * `a full toolbar with breadcrumbs for the rich text editor`
+ * `rich-text-editor-more-button`
+ * a more button to toggle collapsed buttons in the rich text editor
  *
  * @customElement
- * @extends RichTextEditorToolbarBehaviors
- * @extends LitElement
  * @lit-html
  * @lit-element
- * @element rich-text-editor-toolbar-full
- * @demo ./demo/index.html demo
- * @demo ./demo/full.html toolbar with breadcrumb
+ * @element rich-text-editor-more-button
+ * @demo ./demo/buttons.html
  */
-var RichTextEditorToolbarFull =
+var RichTextEditorMoreButton =
   /*#__PURE__*/
-  (function (_RichTextEditorToolba) {
-    _inherits(RichTextEditorToolbarFull, _RichTextEditorToolba);
+  (function (_RichTextEditorButton) {
+    _inherits(RichTextEditorMoreButton, _RichTextEditorButton);
 
     _createClass(
-      RichTextEditorToolbarFull,
+      RichTextEditorMoreButton,
       [
         {
           key: "render",
           // render function for template
           value: function render() {
             return _get(
-              _getPrototypeOf(RichTextEditorToolbarFull.prototype),
+              _getPrototypeOf(RichTextEditorMoreButton.prototype),
               "render",
               this
             ).call(this);
-          }, // properties available to the custom element for data binding
+          },
         },
       ],
       [
@@ -238,79 +206,91 @@ var RichTextEditorToolbarFull =
            * Store the tag name to make it easier to obtain directly.
            */
           get: function get() {
-            return "rich-text-editor-toolbar-full";
+            return "rich-text-editor-more-button";
+          },
+        },
+      ]
+    );
+
+    function RichTextEditorMoreButton() {
+      var _this;
+
+      _classCallCheck(this, RichTextEditorMoreButton);
+
+      _this = _possibleConstructorReturn(
+        this,
+        _getPrototypeOf(RichTextEditorMoreButton).call(this)
+      );
+      _this.icon = "more-vert";
+      _this.toggled = false;
+      _this.label = "More buttons";
+      _this.labelToggled = "Fewer buttons";
+      return _this;
+    } // properties available to the custom element for data binding
+
+    _createClass(
+      RichTextEditorMoreButton,
+      [
+        {
+          key: "_handleClick",
+
+          /**
+           * Fires a button tap event
+           */
+          value: function _handleClick() {
+            return true;
           },
         },
         {
-          key: "styles",
+          key: "isToggled",
+
+          /**
+           * whether button is toggled
+           *
+           * @readonly
+           * @memberof RichTextEditorButton
+           */
           get: function get() {
-            return [].concat(
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "baseStyles",
-                  this
-                )
-              ),
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "stickyStyles",
-                  this
-                )
-              )
-            );
+            return this.toggled;
           },
         },
+      ],
+      [
         {
           key: "properties",
           get: function get() {
             return _objectSpread(
               {},
               _get(
-                _getPrototypeOf(RichTextEditorToolbarFull),
+                _getPrototypeOf(RichTextEditorMoreButton),
                 "properties",
                 this
-              )
+              ),
+              {
+                /**
+                 * Can this button toggle?
+                 */
+                toggled: {
+                  attribute: "toggled",
+                  type: Boolean,
+                  reflect: true,
+                },
+              }
             );
           },
         },
       ]
     );
 
-    function RichTextEditorToolbarFull() {
-      _classCallCheck(this, RichTextEditorToolbarFull);
-
-      return _possibleConstructorReturn(
-        this,
-        _getPrototypeOf(RichTextEditorToolbarFull).call(this)
-      );
-    }
-    /**
-     * overriden default to enable breadcrums
-     *
-     * @readonly
-     * @memberof RichTextEditorToolbarFull
-     */
-
-    _createClass(RichTextEditorToolbarFull, [
-      {
-        key: "hasBreadcrumbs",
-        get: function get() {
-          return true;
-        },
-      },
-    ]);
-
-    return RichTextEditorToolbarFull;
+    return RichTextEditorMoreButton;
   })(
-    (0, _richTextEditorToolbar.RichTextEditorToolbarBehaviors)(
+    (0, _richTextEditorButton.RichTextEditorButtonBehaviors)(
       _litElement.LitElement
     )
   );
 
-exports.RichTextEditorToolbarFull = RichTextEditorToolbarFull;
+exports.RichTextEditorMoreButton = RichTextEditorMoreButton;
 window.customElements.define(
-  RichTextEditorToolbarFull.tag,
-  RichTextEditorToolbarFull
+  RichTextEditorMoreButton.tag,
+  RichTextEditorMoreButton
 );

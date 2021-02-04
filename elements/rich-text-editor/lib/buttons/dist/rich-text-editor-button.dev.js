@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextStyles = exports.RichTextEditorButtonBehaviors = exports.RichTextEditorButton = void 0;
+exports.RichTextToolbarStyles = exports.RichTextStyles = exports.RichTextEditorButtonBehaviors = exports.RichTextEditorButton = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
@@ -205,9 +205,21 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([
+    "\n    :host {\n      --simple-toolbar-border-color: var(--rich-text-editor-border-color, #ddd);\n      --simple-toolbar-border-width: var(--rich-text-editor-border-width, 1px);\n      --simple-toolbar-button-opacity: var(--rich-text-editor-button-opacity, 1);\n      --simple-toolbar-button-color: var(--rich-text-editor-button-color, #444);\n      --simple-toolbar-button-bg: var(--rich-text-editor-button-bg, #ffffff);\n      --simple-toolbar-button-border-color: var(--rich-text-editor-button-border-color, transparent);\n      --simple-toolbar-button-toggled-opacity: var(--rich-text-editor-button-toggled-opacity, 1);\n      --simple-toolbar-button-toggled-color: var(--rich-text-editor-button-toggled-color, #222);\n      --simple-toolbar-button-toggled-bg: var(--rich-text-editor-button-toggled-bg, #ddd);\n      --simple-toolbar-button-toggled-border-color: var(--rich-text-editor-button-toggled-border-color, transparent);\n      --simple-toolbar-button-hover-opacity: var(--rich-text-editor-button-hover-opacity, 1);\n      --simple-toolbar-button-hover-color: var(--rich-text-editor-button-hover-color, #000);\n      --simple-toolbar-button-hover-bg: var(--rich-text-editor-button-hover-bg, #f0f0f0);\n      --simple-toolbar-button-hover-border-color: var(--rich-text-editor-button-hover-border-color, unset);\n      --simple-toolbar-button-disabled-opacity: var(--rich-text-editor-button-disabled-opacity, 1);\n      --simple-toolbar-button-disabled-color: var(--rich-text-editor-button-disabled-color, #666);\n      --simple-toolbar-button-disabled-bg: var(--rich-text-editor-button-disabled-bg, transparent);\n      --simple-toolbar-button-disabled-border-color: var(--rich-text-editor-button-disabled-border-color, transparent);\n    }\n  ",
+  ]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n    :host {\n      --simple-toolbar-border-color: #ddd;\n      --simple-toolbar-border-width: 1px;\n      --simple-toolbar-button-opacity: 1;\n      --simple-toolbar-button-color: #444;\n      --simple-toolbar-button-bg: #ffffff;\n      --simple-toolbar-button-border-color: transparent;\n      --simple-toolbar-button-toggled-opacity: 1;\n      --simple-toolbar-button-toggled-color: #222;\n      --simple-toolbar-button-toggled-bg: #ddd;\n      --simple-toolbar-button-toggled-border-color: transparent;\n      --simple-toolbar-button-hover-opacity: 1;\n      --simple-toolbar-button-hover-color: #000;\n      --simple-toolbar-button-hover-bg: #f0f0f0;\n      --simple-toolbar-button-hover-border-color: unset;\n      --simple-toolbar-button-disabled-opacity: 1;\n      --simple-toolbar-button-disabled-color: #666;\n      --simple-toolbar-button-disabled-bg: transparent;\n      --simple-toolbar-button-disabled-border-color: transparent;\n    }\n  ",
+    "\n    :host {\n      --simple-toolbar-border-color: var(--rich-text-editor-border-color, #ddd);\n      --simple-toolbar-border-width: var(--rich-text-editor-border-width, 1px);\n      --simple-toolbar-button-bg: var(--rich-text-editor-bg, #ffffff);\n      --simple-fields-focus-color: var(--rich-text-editor-focus-color, blue);\n      --simple-fields-invalid-color: var(--rich-text-editor-error-color, #800);\n    }\n  ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -226,8 +238,42 @@ function _taggedTemplateLiteral(strings, raw) {
   );
 }
 
+/**
+ * RichTextStyles
+ *
+ * @lit-html
+ * @lit-element
+ * @const
+ * @default
+ * @type {array}
+ */
 var RichTextStyles = [(0, _litElement.css)(_templateObject())];
+/**
+ * RichTextStyles
+ *
+ * @lit-html
+ * @lit-element
+ * @const
+ * @default
+ * @type {array}
+ * @extends RichTextStyles
+ */
+
 exports.RichTextStyles = RichTextStyles;
+var RichTextToolbarStyles = [].concat(RichTextStyles, [
+  (0, _litElement.css)(_templateObject2()),
+]);
+/**
+ * RichTextEditorButtonBehaviors
+ *
+ * @extends SimpleToolbarButtonBehaviors
+ * @customElement
+ * @class
+ * @lit-html
+ * @lit-element
+ */
+
+exports.RichTextToolbarStyles = RichTextToolbarStyles;
 
 var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
   SuperClass
@@ -269,7 +315,7 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
                 _toConsumableArray(
                   _get(_getPrototypeOf(_class), "styles", this)
                 ),
-                RichTextStyles
+                _toConsumableArray(RichTextToolbarStyles)
               );
             },
           },
@@ -393,14 +439,6 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
                 this
               ).call(this, changedProperties);
             }
-            /*this.__a11y = this.shadowRoot.querySelector("#button");
-          this.__a11y.addEventListener("keypress", (e) => {
-            switch (e.key) {
-              case "Enter":
-                this._handleClick(e);
-                break;
-            }
-          });*/
           },
         },
         {
@@ -869,8 +907,41 @@ var RichTextEditorButtonBehaviors = function RichTextEditorButtonBehaviors(
 };
 /**
  * `rich-text-editor-button`
- * a button for rich text editor (custom buttons can extend this)
- *
+ * is a basic button for rich text editor (custom buttons can extend RichTextEditorButtonBehaviors)
+ * 
+ * ### Styling
+`<rich-text-editor-button>` uses RichTextToolbarStyles constant to set 
+SimpleToolbarBehaviors's simple-toolbar/simple-toolbar-button variables.
+
+To further customize a toolbar and its buttons:
+
+Custom property | Description | Default
+----------------|-------------|----------
+--rich-text-editor-border-color | default border color | #ddd
+--rich-text-editor-border-width | default border width | 1px
+--rich-text-editor-bg | default toolbar background | #ffffff
+--rich-text-editor-button-opacity | default button opacity | 1
+--rich-text-editor-button-color | default button color | #444
+--rich-text-editor-button-bg | default button background | #ffffff
+--rich-text-editor-button-border-color | overrides default border-color for buttons | transparent
+--rich-text-editor-button-toggled-opacity | overrides default opacity when button is toggled | 1
+--rich-text-editor-button-toggled-color | overrides default text color when button is toggled | #222
+--rich-text-editor-button-toggled-bg | overrides default background when button is toggled | #ddd
+--rich-text-editor-button-toggled-border-color | overrides default border-color when button is toggled | transparent
+--rich-text-editor-button-hover-opacity | overrides default opacity when button is hovered or focused | 1
+--rich-text-editor-button-hover-color | overrides default text color when button is hovered or focused  | #000
+--rich-text-editor-button-hover-bg | overrides default background when button is hovered or focused | #f0f0f0
+--rich-text-editor-button-hover-border-color | overrides default border-color when button is hovered or focused | unset
+--rich-text-editor-button-disabled-opacity | overrides default opacity when button is disabled | 1
+--rich-text-editor-button-disabled-color | overrides default text color when button is disabled | #666
+--rich-text-editor-button-disabled-bg | overrides default background when button is disabled | transparent
+--rich-text-editor-button-disabled-border-color | overrides default border-color when button is toggled | transparent
+ * 
+ * 
+ * @extends RichTextEditorButtonBehaviors
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-button
  * @demo ./demo/buttons.html
  */

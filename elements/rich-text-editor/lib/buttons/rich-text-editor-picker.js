@@ -6,6 +6,15 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
+/**
+ * RichTextEditorPickerBehaviors
+ *
+ * @customElement
+ * @class
+ * @lit-html
+ * @lit-element
+ * @extends RichTextEditorButtonBehaviors
+ */
 const RichTextEditorPickerBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonBehaviors(SuperClass) {
     /**
@@ -123,7 +132,8 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
     }
 
     /**
-     * determines value of picker based on selected range
+     * overrides RichTextEditorButtonBehaviors
+     * toggle button behaviors
      *
      * @param {object} text selected range
      * @returns {boolean} whether button is toggled
@@ -134,7 +144,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
     }
 
     /**
-     * Handles button tap
+     * handles picker focus
      * @param {event} e the button tap event
      */
     _pickerFocus(e) {
@@ -202,8 +212,13 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
 };
 /**
  * `rich-text-editor-picker`
- * a picker for rich text editor (custom buttons can extend this)
+ * a picker for rich text editor (custom buttons can RichTextEditorPickerBehaviors)
  *
+ * @extends RichTextEditorPickerBehaviors
+ * @extends LitElement
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-picker
  * @demo ./demo/buttons.html
  */

@@ -172,6 +172,15 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+/**
+ * RichTextEditorPromptButtonBehaviors
+ *
+ * @customElement
+ * @class
+ * @lit-html
+ * @lit-element
+ * @extends RichTextEditorButtonBehaviors
+ */
 var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBehaviors(
   SuperClass
 ) {
@@ -317,15 +326,19 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
            *
            * @param {event} e click event
            */
-          value: function tagClickCallback(e) {
+          value: function tagClickCallback() {
+            var e =
+              arguments.length > 0 && arguments[0] !== undefined
+                ? arguments[0]
+                : {};
+
             if (e.detail) {
-              this.highlightNode(e.detail);
-              this.selectedNode = e.detail;
+              this.selectNode(e.detail);
               this.open(e.detail);
             }
           },
           /**
-           * override to add function to cancelled prompt
+           * closes without updates
            */
         },
         {
@@ -333,6 +346,11 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
           value: function cancel() {
             this.close();
           },
+          /**
+           * closes prompt
+           * @event rich-text-editor-prompt-closed
+           *
+           */
         },
         {
           key: "close",
@@ -437,14 +455,16 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
           },
           /**
            * Handles selecting text and opening prompt
+           * @param {object} node optional node to select instead of range
+           * @event rich-text-editor-prompt-open
            */
         },
         {
           key: "open",
-          value: function open(node) {
-            node || this.expandSelection();
-            this.value = this.getValue(node);
+          value: function open() {
+            this.expandSelection();
             this.highlight();
+            this.value = this.getValue();
             this.dispatchEvent(
               new CustomEvent("rich-text-editor-prompt-open", {
                 bubbles: true,
@@ -468,7 +488,7 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
             if (target && this.rangeIsElement()) {
               target.innerHTML = html;
             } else if (this.range) {
-              this.sendCommand("insertHtml", html);
+              this.sendCommand("insertHTML", html);
             }
           },
           /**
@@ -488,48 +508,20 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
         {
           key: "updateSelection",
           value: function updateSelection() {
-            var range = this.range.cloneRange();
+            var parent = this.range.commonAncestorContainer;
 
-            var rangeInfo = function rangeInfo(range) {
-              var contents = !range ? undefined : range.cloneContents(),
-                ancestor = !range ? undefined : range.commonAncestorContainer,
-                innerHTML = !contents ? undefined : contents.textContent,
-                child = !contents ? undefined : contents.firstElementChild;
-              return {
-                range: range,
-                ancestor: ancestor,
-                child: child,
-                innerHTML: innerHTML,
-              };
-            };
+            if (this.rangeIsElement()) {
+              if (this.setsInnerHTML)
+                this.setInnerHTML(this.getPropValue("innerHTML"));
+              this.sendCommand(this.promptCommand, this.promptCommandVal);
+            } else {
+              this.sendCommand(this.promptCommand, this.promptCommandVal);
+              if (this.setsInnerHTML)
+                this.setInnerHTML(this.getPropValue("innerHTML"));
+            }
 
-            console.log(
-              this.promptCommand,
-              this.promptCommandVal,
-              rangeInfo(this.range),
-              rangeInfo(range)
-            );
-            this.sendCommand(this.promptCommand, this.promptCommandVal);
-            console.log(
-              this.promptCommand,
-              this.promptCommandVal,
-              rangeInfo(this.range),
-              rangeInfo(range)
-            ); //this.selectRange(range);
-
-            console.log(
-              this.promptCommand,
-              this.promptCommandVal,
-              rangeInfo(this.range),
-              rangeInfo(range)
-            ); //if (this.setsInnerHTML) this.setInnerHTML(this.getPropValue("innerHTML"));
-
-            console.log(
-              this.promptCommand,
-              this.promptCommandVal,
-              rangeInfo(this.range),
-              rangeInfo(range)
-            );
+            this.range.collapse();
+            parent.normalize();
           },
           /**
            * Handles button tap
@@ -593,8 +585,14 @@ var RichTextEditorPromptButtonBehaviors = function RichTextEditorPromptButtonBeh
 };
 /**
  * `rich-text-editor-prompt-button`
- * a button that prompts for more information for rich text editor (custom buttons can extend this)
+ * prompts for more information for rich text editor
+ * (custom buttons can extend RichTextEditorPromptButtonBehaviors)
  *
+ * @extends RichTextEditorPromptButtonBehaviors
+ * @extends LitElement
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-prompt-button
  * @demo ./demo/buttons.html
  */

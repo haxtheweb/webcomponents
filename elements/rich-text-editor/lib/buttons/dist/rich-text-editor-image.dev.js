@@ -3,13 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextEditorToolbarFull = void 0;
+exports.RichTextEditorImage = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _richTextEditorToolbar = require("./rich-text-editor-toolbar.js");
-
-require("./rich-text-editor-breadcrumbs.js");
+var _richTextEditorPromptButton = require("./rich-text-editor-prompt-button.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -76,33 +74,6 @@ function _defineProperty(obj, key, value) {
     obj[key] = value;
   }
   return obj;
-}
-
-function _toConsumableArray(arr) {
-  return (
-    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
-  );
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (
-    Symbol.iterator in Object(iter) ||
-    Object.prototype.toString.call(iter) === "[object Arguments]"
-  )
-    return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  }
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -198,32 +169,31 @@ function _getPrototypeOf(o) {
 }
 
 /**
- * `rich-text-editor-toolbar-full`
- * `a full toolbar with breadcrumbs for the rich text editor`
+ * `rich-text-editor-image`
+ * an inline image button for rich text editor
  *
  * @customElement
- * @extends RichTextEditorToolbarBehaviors
- * @extends LitElement
  * @lit-html
  * @lit-element
- * @element rich-text-editor-toolbar-full
- * @demo ./demo/index.html demo
- * @demo ./demo/full.html toolbar with breadcrumb
+ * @extends RichTextEditorPromptButtonBehaviors
+ * @extends LitElement
+ * @element rich-text-editor-image
+ * @demo ./demo/buttons.html
  */
-var RichTextEditorToolbarFull =
+var RichTextEditorImage =
   /*#__PURE__*/
-  (function (_RichTextEditorToolba) {
-    _inherits(RichTextEditorToolbarFull, _RichTextEditorToolba);
+  (function (_RichTextEditorPrompt) {
+    _inherits(RichTextEditorImage, _RichTextEditorPrompt);
 
     _createClass(
-      RichTextEditorToolbarFull,
+      RichTextEditorImage,
       [
         {
           key: "render",
           // render function for template
           value: function render() {
             return _get(
-              _getPrototypeOf(RichTextEditorToolbarFull.prototype),
+              _getPrototypeOf(RichTextEditorImage.prototype),
               "render",
               this
             ).call(this);
@@ -238,28 +208,7 @@ var RichTextEditorToolbarFull =
            * Store the tag name to make it easier to obtain directly.
            */
           get: function get() {
-            return "rich-text-editor-toolbar-full";
-          },
-        },
-        {
-          key: "styles",
-          get: function get() {
-            return [].concat(
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "baseStyles",
-                  this
-                )
-              ),
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "stickyStyles",
-                  this
-                )
-              )
-            );
+            return "rich-text-editor-image";
           },
         },
         {
@@ -267,50 +216,134 @@ var RichTextEditorToolbarFull =
           get: function get() {
             return _objectSpread(
               {},
-              _get(
-                _getPrototypeOf(RichTextEditorToolbarFull),
-                "properties",
-                this
-              )
+              _get(_getPrototypeOf(RichTextEditorImage), "properties", this)
             );
           },
         },
       ]
     );
 
-    function RichTextEditorToolbarFull() {
-      _classCallCheck(this, RichTextEditorToolbarFull);
+    function RichTextEditorImage() {
+      var _this;
 
-      return _possibleConstructorReturn(
+      _classCallCheck(this, RichTextEditorImage);
+
+      _this = _possibleConstructorReturn(
         this,
-        _getPrototypeOf(RichTextEditorToolbarFull).call(this)
+        _getPrototypeOf(RichTextEditorImage).call(this)
       );
+      _this.fields = [
+        {
+          property: "src",
+          title: "Image URL",
+          description: "The image URL. (Leave blank to remove.)",
+          inputMethod: "textfield",
+        },
+        {
+          property: "alt",
+          title: "Alt Text",
+          inputMethod: "textfield",
+        },
+        {
+          property: "width",
+          title: "Width",
+          inputMethod: "textfield",
+          inline: true,
+        },
+        {
+          property: "height",
+          title: "Height",
+          inputMethod: "textfield",
+          inline: true,
+        },
+      ];
+      _this.command = "insertHTML";
+      _this.label = "Insert Inline Image";
+      _this.icon = "editor:insert-photo";
+      _this.tagsList = "img";
+      _this.value = {};
+      return _this;
     }
     /**
-     * overriden default to enable breadcrums
+     * overrides RichTextEditorPickerBehaviors
+     * so that isToggled is based on toggled property
      *
      * @readonly
-     * @memberof RichTextEditorToolbarFull
+     * @memberof RichTextEditorImage
      */
 
-    _createClass(RichTextEditorToolbarFull, [
+    _createClass(RichTextEditorImage, [
       {
-        key: "hasBreadcrumbs",
+        key: "getValue",
+
+        /**
+         * overrides RichTextEditorPickerBehaviors
+         * to customize for getting selected image properties
+         *
+         * @param {object} node selected node
+         * @memberof RichTextEditorImage
+         */
+        value: function getValue(node) {
+          var img = node || this.rangeQuery();
+          return !img
+            ? undefined
+            : {
+                alt: !img ? undefined : img.getAttribute("alt"),
+                src: !img ? undefined : img.getAttribute("src"),
+                width: !img ? undefined : img.getAttribute("width"),
+                height: !img ? undefined : img.getAttribute("height"),
+              };
+        },
+        /**
+         * overrides RichTextEditorPickerBehaviors
+         * sets toggle based on whether an image is selected
+         *
+         * @memberof RichTextEditorLink
+         */
+      },
+      {
+        key: "setToggled",
+        value: function setToggled() {
+          this.toggled = !!this.value;
+        },
+      },
+      {
+        key: "isToggled",
         get: function get() {
-          return true;
+          return this.toggled;
+        },
+        /**
+         * overrides RichTextEditorPickerBehaviors
+         * to customize for setting image properties
+         *
+         * @param {object} node selected node
+         * @memberof RichTextEditorImage
+         */
+      },
+      {
+        key: "promptCommandVal",
+        get: function get() {
+          var alt = this.getPropValue("alt"),
+            src = this.getPropValue("src"),
+            width = this.getPropValue("width"),
+            height = this.getPropValue("height");
+          return !src
+            ? ""
+            : '<img src="'
+                .concat(src, '"')
+                .concat(!alt ? "" : ' alt="'.concat(alt, '"'))
+                .concat(!width ? "" : ' width="'.concat(width, '"'))
+                .concat(!height ? "" : ' width="'.concat(height, '"'), ">");
         },
       },
     ]);
 
-    return RichTextEditorToolbarFull;
+    return RichTextEditorImage;
   })(
-    (0, _richTextEditorToolbar.RichTextEditorToolbarBehaviors)(
+    (0, _richTextEditorPromptButton.RichTextEditorPromptButtonBehaviors)(
       _litElement.LitElement
     )
   );
 
-exports.RichTextEditorToolbarFull = RichTextEditorToolbarFull;
-window.customElements.define(
-  RichTextEditorToolbarFull.tag,
-  RichTextEditorToolbarFull
-);
+exports.RichTextEditorImage = RichTextEditorImage;
+window.customElements.define(RichTextEditorImage.tag, RichTextEditorImage);

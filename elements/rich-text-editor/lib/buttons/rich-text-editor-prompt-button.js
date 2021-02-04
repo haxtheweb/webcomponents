@@ -7,6 +7,15 @@ import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
 import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 
+/**
+ * RichTextEditorPromptButtonBehaviors
+ *
+ * @customElement
+ * @class
+ * @lit-html
+ * @lit-element
+ * @extends RichTextEditorButtonBehaviors
+ */
 const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonBehaviors(SuperClass) {
     /**
@@ -123,20 +132,24 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      *
      * @param {event} e click event
      */
-    tagClickCallback(e) {
+    tagClickCallback(e = {}) {
       if (e.detail) {
-        this.highlightNode(e.detail);
-        this.selectedNode = e.detail;
+        this.selectNode(e.detail);
         this.open(e.detail);
       }
     }
 
     /**
-     * override to add function to cancelled prompt
+     * closes without updates
      */
     cancel() {
       this.close();
     }
+    /**
+     * closes prompt
+     * @event rich-text-editor-prompt-closed
+     *
+     */
     close() {
       this.dispatchEvent(
         new CustomEvent("rich-text-editor-prompt-closed", {
@@ -223,11 +236,13 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
 
     /**
      * Handles selecting text and opening prompt
+     * @param {object} node optional node to select instead of range
+     * @event rich-text-editor-prompt-open
      */
-    open(node) {
-      node || this.expandSelection();
-      this.value = this.getValue(node);
+    open() {
+      this.expandSelection();
       this.highlight();
+      this.value = this.getValue();
       this.dispatchEvent(
         new CustomEvent("rich-text-editor-prompt-open", {
           bubbles: true,
@@ -247,7 +262,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       if (target && this.rangeIsElement()) {
         target.innerHTML = html;
       } else if (this.range) {
-        this.sendCommand("insertHtml", html);
+        this.sendCommand("insertHTML", html);
       }
     }
     /**
@@ -261,46 +276,18 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * updates selection based on values passed from prompt
      */
     updateSelection() {
-      let range = this.range.cloneRange();
-      let rangeInfo = (range) => {
-        let contents = !range ? undefined : range.cloneContents(),
-          ancestor = !range ? undefined : range.commonAncestorContainer,
-          innerHTML = !contents ? undefined : contents.textContent,
-          child = !contents ? undefined : contents.firstElementChild;
-        return {
-          range: range,
-          ancestor: ancestor,
-          child: child,
-          innerHTML: innerHTML,
-        };
-      };
-      console.log(
-        this.promptCommand,
-        this.promptCommandVal,
-        rangeInfo(this.range),
-        rangeInfo(range)
-      );
-      this.sendCommand(this.promptCommand, this.promptCommandVal);
-      console.log(
-        this.promptCommand,
-        this.promptCommandVal,
-        rangeInfo(this.range),
-        rangeInfo(range)
-      );
-      //this.selectRange(range);
-      console.log(
-        this.promptCommand,
-        this.promptCommandVal,
-        rangeInfo(this.range),
-        rangeInfo(range)
-      );
-      //if (this.setsInnerHTML) this.setInnerHTML(this.getPropValue("innerHTML"));
-      console.log(
-        this.promptCommand,
-        this.promptCommandVal,
-        rangeInfo(this.range),
-        rangeInfo(range)
-      );
+      let parent = this.range.commonAncestorContainer;
+      if (this.rangeIsElement()) {
+        if (this.setsInnerHTML)
+          this.setInnerHTML(this.getPropValue("innerHTML"));
+        this.sendCommand(this.promptCommand, this.promptCommandVal);
+      } else {
+        this.sendCommand(this.promptCommand, this.promptCommandVal);
+        if (this.setsInnerHTML)
+          this.setInnerHTML(this.getPropValue("innerHTML"));
+      }
+      this.range.collapse();
+      parent.normalize();
     }
 
     /**
@@ -324,8 +311,14 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
 };
 /**
  * `rich-text-editor-prompt-button`
- * a button that prompts for more information for rich text editor (custom buttons can extend this)
+ * prompts for more information for rich text editor
+ * (custom buttons can extend RichTextEditorPromptButtonBehaviors)
  *
+ * @extends RichTextEditorPromptButtonBehaviors
+ * @extends LitElement
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-prompt-button
  * @demo ./demo/buttons.html
  */

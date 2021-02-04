@@ -3,13 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextEditorToolbarFull = void 0;
+exports.RichTextEditorUnderline = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _richTextEditorToolbar = require("./rich-text-editor-toolbar.js");
-
-require("./rich-text-editor-breadcrumbs.js");
+var _richTextEditorPromptButton = require("./rich-text-editor-prompt-button.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -76,33 +74,6 @@ function _defineProperty(obj, key, value) {
     obj[key] = value;
   }
   return obj;
-}
-
-function _toConsumableArray(arr) {
-  return (
-    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
-  );
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (
-    Symbol.iterator in Object(iter) ||
-    Object.prototype.toString.call(iter) === "[object Arguments]"
-  )
-    return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  }
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -198,32 +169,31 @@ function _getPrototypeOf(o) {
 }
 
 /**
- * `rich-text-editor-toolbar-full`
- * `a full toolbar with breadcrumbs for the rich text editor`
+ * `rich-text-editor-underline`
+ * a button for rich text editor (custom buttons can extend this)
  *
  * @customElement
- * @extends RichTextEditorToolbarBehaviors
- * @extends LitElement
  * @lit-html
  * @lit-element
- * @element rich-text-editor-toolbar-full
- * @demo ./demo/index.html demo
- * @demo ./demo/full.html toolbar with breadcrumb
+ * @extends RichTextEditorPromptButtonBehaviors
+ * @extends LitElement
+ * @element rich-text-editor-underline
+ * @demo ./demo/buttons.html
  */
-var RichTextEditorToolbarFull =
+var RichTextEditorUnderline =
   /*#__PURE__*/
-  (function (_RichTextEditorToolba) {
-    _inherits(RichTextEditorToolbarFull, _RichTextEditorToolba);
+  (function (_RichTextEditorPrompt) {
+    _inherits(RichTextEditorUnderline, _RichTextEditorPrompt);
 
     _createClass(
-      RichTextEditorToolbarFull,
+      RichTextEditorUnderline,
       [
         {
           key: "render",
           // render function for template
           value: function render() {
             return _get(
-              _getPrototypeOf(RichTextEditorToolbarFull.prototype),
+              _getPrototypeOf(RichTextEditorUnderline.prototype),
               "render",
               this
             ).call(this);
@@ -238,28 +208,7 @@ var RichTextEditorToolbarFull =
            * Store the tag name to make it easier to obtain directly.
            */
           get: function get() {
-            return "rich-text-editor-toolbar-full";
-          },
-        },
-        {
-          key: "styles",
-          get: function get() {
-            return [].concat(
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "baseStyles",
-                  this
-                )
-              ),
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "stickyStyles",
-                  this
-                )
-              )
-            );
+            return "rich-text-editor-underline";
           },
         },
         {
@@ -267,50 +216,92 @@ var RichTextEditorToolbarFull =
           get: function get() {
             return _objectSpread(
               {},
-              _get(
-                _getPrototypeOf(RichTextEditorToolbarFull),
-                "properties",
-                this
-              )
+              _get(_getPrototypeOf(RichTextEditorUnderline), "properties", this)
             );
           },
         },
       ]
     );
 
-    function RichTextEditorToolbarFull() {
-      _classCallCheck(this, RichTextEditorToolbarFull);
+    function RichTextEditorUnderline() {
+      var _this;
 
-      return _possibleConstructorReturn(
+      _classCallCheck(this, RichTextEditorUnderline);
+
+      _this = _possibleConstructorReturn(
         this,
-        _getPrototypeOf(RichTextEditorToolbarFull).call(this)
+        _getPrototypeOf(RichTextEditorUnderline).call(this)
       );
+      _this.fields = [
+        {
+          property: "confirm",
+          title: "Underline (not recommended)",
+          description:
+            "Underlines can be confused with links. Use italics instead.",
+          inputMethod: "boolean",
+        },
+      ];
+      _this.tagsList = "u";
+      _this.icon = "editor:format-underlined";
+      _this.label = "Underline (not recommended)";
+      _this.toggles = true;
+      _this.command = "underline";
+      _this.shortcutKeys = "ctrl+u";
+      _this.value = {
+        confirm: false,
+      };
+      return _this;
     }
     /**
-     * overriden default to enable breadcrums
-     *
-     * @readonly
-     * @memberof RichTextEditorToolbarFull
+     * overriden from RichTextEditorPromptButtonBehaviors:
+     * keeps prompt command value undefined
+     * @memberof RichTextEditorUnderline
      */
 
-    _createClass(RichTextEditorToolbarFull, [
+    _createClass(RichTextEditorUnderline, [
       {
-        key: "hasBreadcrumbs",
+        key: "getValue",
+
+        /**
+         * overriden from RichTextEditorPromptButtonBehaviors:
+         * creates a confirm checkbox to force user
+         * to acknowledge usability issues with underline
+         * @memberof RichTextEditorUnderline
+         */
+        value: function getValue() {
+          return {
+            confirm: !!this.toggled,
+          };
+        },
+        /**
+         * overriden from RichTextEditorPromptButtonBehaviors:
+         * sets toggled to whether users has confirmed
+         * @memberof RichTextEditorUnderline
+         */
+      },
+      {
+        key: "setToggled",
+        value: function setToggled() {
+          this.toggled = !!this.getPropValue("confirm");
+        },
+      },
+      {
+        key: "promptCommandVal",
         get: function get() {
-          return true;
+          this.commandVal = undefined;
         },
       },
     ]);
 
-    return RichTextEditorToolbarFull;
+    return RichTextEditorUnderline;
   })(
-    (0, _richTextEditorToolbar.RichTextEditorToolbarBehaviors)(
+    (0, _richTextEditorPromptButton.RichTextEditorPromptButtonBehaviors)(
       _litElement.LitElement
     )
   );
 
-exports.RichTextEditorToolbarFull = RichTextEditorToolbarFull;
+exports.RichTextEditorUnderline = RichTextEditorUnderline;
 window.customElements.define(
-  RichTextEditorToolbarFull.tag,
-  RichTextEditorToolbarFull
+  RichTextEditorUnderline.tag,
+  RichTextEditorUnderline
 );

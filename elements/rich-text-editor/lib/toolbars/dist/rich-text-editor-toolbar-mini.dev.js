@@ -172,6 +172,8 @@ function _getPrototypeOf(o) {
  * `a mini floating toolbar for the rich text editor`
  *
  * @customElement
+ * @extends RichTextEditorToolbarBehaviors
+ * @extends LitElement
  * @lit-html
  * @lit-element
  * @element rich-text-editor-toolbar-mini

@@ -7,8 +7,6 @@ exports.RichTextEditorSelection = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _richTextEditorButton = require("../buttons/rich-text-editor-button.js");
-
 var _utils = require("@lrnwebcomponents/utils/utils.js");
 
 function _typeof(obj) {
@@ -39,33 +37,6 @@ function _templateObject2() {
   };
 
   return data;
-}
-
-function _toConsumableArray(arr) {
-  return (
-    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
-  );
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (
-    Symbol.iterator in Object(iter) ||
-    Object.prototype.toString.call(iter) === "[object Arguments]"
-  )
-    return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  }
 }
 
 function _templateObject() {
@@ -181,8 +152,11 @@ function _setPrototypeOf(o, p) {
 
 /**
  * `rich-text-editor-selection`
- * `a button for rich text editor (custom buttons can extend this)`
+ * singleton to manage selections, clipboards, ranges, and associations between all editors and toolbars
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-selection
  * @demo ./demo/selection.html
  */
@@ -199,7 +173,6 @@ var RichTextEditorSelection =
          * gets valid commands list
          *
          * @readonly
-         * @memberof RichTextEditorButton
          */
         get: function get() {
           return [
@@ -930,6 +903,14 @@ var RichTextEditorSelection =
 
             return range;
           },
+          /**
+           * sets range to content within a node
+           *
+           * @param {object} node
+           * @param {range} range
+           * @returns
+           * @memberof RichTextEditorSelection
+           */
         },
         {
           key: "surroundRange",
@@ -941,6 +922,13 @@ var RichTextEditorSelection =
 
             return range;
           },
+          /**
+           * maintains consistent range info across toolbar and editor
+           *
+           * @param {object} editor
+           * @param {range} range
+           * @memberof RichTextEditorSelection
+           */
         },
         {
           key: "updateRange",
@@ -992,7 +980,7 @@ var RichTextEditorSelection =
             }
           },
           /**
-           *
+           * handles commands sent from toolbar
            *
            * @param {object} toolbar toolbar element
            * @param {string} command command string
@@ -1029,6 +1017,15 @@ var RichTextEditorSelection =
             } else if (command === "viewSource") {
             }
           },
+          /**
+           * handles clicking on an editor
+           * so that some elements can be clicked to open an edit prompt
+           *
+           * @param {object} editor
+           * @param {event} e
+           * @returns
+           * @memberof RichTextEditorSelection
+           */
         },
         {
           key: "_handleEditorClick",
@@ -1053,6 +1050,7 @@ var RichTextEditorSelection =
                 tagname = (el.tagName || "").toLowerCase();
 
               if (tagname && els.includes(tagname)) {
+                console.log(el);
                 e.preventDefault();
                 toolbar.clickableElements[tagname](evt);
               }
@@ -1141,10 +1139,7 @@ var RichTextEditorSelection =
         {
           key: "styles",
           get: function get() {
-            return [].concat(
-              _toConsumableArray(_richTextEditorButton.RichTextStyles),
-              [(0, _litElement.css)(_templateObject2())]
-            );
+            return [(0, _litElement.css)(_templateObject2())];
           },
         },
       ]

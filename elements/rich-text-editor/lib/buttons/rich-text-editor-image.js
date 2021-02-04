@@ -8,6 +8,11 @@ import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-b
  * `rich-text-editor-image`
  * an inline image button for rich text editor
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
+ * @extends RichTextEditorPromptButtonBehaviors
+ * @extends LitElement
  * @element rich-text-editor-image
  * @demo ./demo/buttons.html
  */
@@ -66,17 +71,22 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * whether button is toggled
+   * overrides RichTextEditorPickerBehaviors
+   * so that isToggled is based on toggled property
    *
    * @readonly
-   * @memberof RichTextEditorButton
+   * @memberof RichTextEditorImage
    */
   get isToggled() {
     return this.toggled;
   }
 
   /**
-   * determaines commandVal based on values passed from prompt
+   * overrides RichTextEditorPickerBehaviors
+   * to customize for setting image properties
+   *
+   * @param {object} node selected node
+   * @memberof RichTextEditorImage
    */
   get promptCommandVal() {
     let alt = this.getPropValue("alt"),
@@ -91,7 +101,11 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * updates prompt fields with selected range data
+   * overrides RichTextEditorPickerBehaviors
+   * to customize for getting selected image properties
+   *
+   * @param {object} node selected node
+   * @memberof RichTextEditorImage
    */
   getValue(node) {
     let img = node || this.rangeQuery();
@@ -104,6 +118,12 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
           height: !img ? undefined : img.getAttribute("height"),
         };
   }
+  /**
+   * overrides RichTextEditorPickerBehaviors
+   * sets toggle based on whether an image is selected
+   *
+   * @memberof RichTextEditorLink
+   */
   setToggled() {
     this.toggled = !!this.value;
   }

@@ -3,13 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.RichTextEditorToolbarFull = void 0;
+exports.RichTextEditorSymbolPicker = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _richTextEditorToolbar = require("./rich-text-editor-toolbar.js");
+var _richTextEditorPicker = require("./rich-text-editor-picker.js");
 
-require("./rich-text-editor-breadcrumbs.js");
+require("@lrnwebcomponents/simple-picker/lib/simple-symbol-picker.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -78,31 +78,35 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _toConsumableArray(arr) {
-  return (
-    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
-  );
+function _templateObject() {
+  var data = _taggedTemplateLiteral([
+    '\n      <label id="listLabel" for="button"> ',
+    ' </label>\n      <simple-symbol-picker\n        id="button"\n        ?allow-null="',
+    '"\n        aria-labeledby="listlabel"\n        controls="',
+    '"\n        ?disabled="',
+    '"\n        @keydown="',
+    '"\n        label=""\n        @mouseover="',
+    '"\n        .symbol-types="',
+    '"\n        tabindex="0"\n        title-as-html\n        ?toggled="',
+    '"\n        @value-changed="',
+    '"\n      >\n      </simple-symbol-picker>\n      ',
+    "\n    ",
+  ]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
 }
 
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (
-    Symbol.iterator in Object(iter) ||
-    Object.prototype.toString.call(iter) === "[object Arguments]"
-  )
-    return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
   }
+  return Object.freeze(
+    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
+  );
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -198,35 +202,50 @@ function _getPrototypeOf(o) {
 }
 
 /**
- * `rich-text-editor-toolbar-full`
- * `a full toolbar with breadcrumbs for the rich text editor`
+ * `rich-text-editor-symbol-picker`
+ * a symbol picker for the rich-text-editor
  *
  * @customElement
- * @extends RichTextEditorToolbarBehaviors
- * @extends LitElement
  * @lit-html
  * @lit-element
- * @element rich-text-editor-toolbar-full
- * @demo ./demo/index.html demo
- * @demo ./demo/full.html toolbar with breadcrumb
+ * @extends RichTextEditorPickerBehaviors
+ * @extends LitElement
+ * @element rich-text-editor-symbol-picker
+ * @demo ./demo/buttons.html
  */
-var RichTextEditorToolbarFull =
+var RichTextEditorSymbolPicker =
   /*#__PURE__*/
-  (function (_RichTextEditorToolba) {
-    _inherits(RichTextEditorToolbarFull, _RichTextEditorToolba);
+  (function (_RichTextEditorPicker) {
+    _inherits(RichTextEditorSymbolPicker, _RichTextEditorPicker);
 
     _createClass(
-      RichTextEditorToolbarFull,
+      RichTextEditorSymbolPicker,
       [
         {
           key: "render",
           // render function for template
           value: function render() {
-            return _get(
-              _getPrototypeOf(RichTextEditorToolbarFull.prototype),
-              "render",
-              this
-            ).call(this);
+            return (0, _litElement.html)(
+              _templateObject(),
+              this.labelTemplate,
+              this.allowNull,
+              _get(
+                _getPrototypeOf(RichTextEditorSymbolPicker.prototype),
+                "controls",
+                this
+              ),
+              this.disabled,
+              this._pickerFocus,
+              this._pickerFocus,
+              this.symbolTypes,
+              this.toggled,
+              this._pickerChange,
+              _get(
+                _getPrototypeOf(RichTextEditorSymbolPicker.prototype),
+                "tooltipTemplate",
+                this
+              )
+            );
           }, // properties available to the custom element for data binding
         },
       ],
@@ -236,30 +255,10 @@ var RichTextEditorToolbarFull =
 
           /**
            * Store the tag name to make it easier to obtain directly.
+           *
            */
           get: function get() {
-            return "rich-text-editor-toolbar-full";
-          },
-        },
-        {
-          key: "styles",
-          get: function get() {
-            return [].concat(
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "baseStyles",
-                  this
-                )
-              ),
-              _toConsumableArray(
-                _get(
-                  _getPrototypeOf(RichTextEditorToolbarFull),
-                  "stickyStyles",
-                  this
-                )
-              )
-            );
+            return "rich-text-editor-symbol-picker";
           },
         },
         {
@@ -268,49 +267,64 @@ var RichTextEditorToolbarFull =
             return _objectSpread(
               {},
               _get(
-                _getPrototypeOf(RichTextEditorToolbarFull),
+                _getPrototypeOf(RichTextEditorSymbolPicker),
                 "properties",
                 this
-              )
+              ),
+              {
+                /**
+                 * Symbol types to include
+                 */
+                symbolTypes: {
+                  name: "symbolTypes",
+                  type: Array,
+                  attribute: "symbol-types",
+                },
+              }
             );
           },
         },
       ]
     );
 
-    function RichTextEditorToolbarFull() {
-      _classCallCheck(this, RichTextEditorToolbarFull);
+    function RichTextEditorSymbolPicker() {
+      var _this;
 
-      return _possibleConstructorReturn(
+      _classCallCheck(this, RichTextEditorSymbolPicker);
+
+      _this = _possibleConstructorReturn(
         this,
-        _getPrototypeOf(RichTextEditorToolbarFull).call(this)
+        _getPrototypeOf(RichTextEditorSymbolPicker).call(this)
       );
+      _this.icon = "editor:functions";
+      _this.label = "Insert symbol";
+      _this.symbolTypes = ["symbols", "math", "characters", "greek", "misc"];
+      _this.command = "insertHTML";
+      return _this;
     }
     /**
-     * overriden default to enable breadcrums
+     * overrides RichTextEditorPickerBehaviors
+     * since simple-symbol-picker already handles options
      *
-     * @readonly
-     * @memberof RichTextEditorToolbarFull
+     * @memberof RichTextEditorSymbolPicker
      */
 
-    _createClass(RichTextEditorToolbarFull, [
+    _createClass(RichTextEditorSymbolPicker, [
       {
-        key: "hasBreadcrumbs",
-        get: function get() {
-          return true;
-        },
+        key: "_setOptions",
+        value: function _setOptions() {},
       },
     ]);
 
-    return RichTextEditorToolbarFull;
+    return RichTextEditorSymbolPicker;
   })(
-    (0, _richTextEditorToolbar.RichTextEditorToolbarBehaviors)(
+    (0, _richTextEditorPicker.RichTextEditorPickerBehaviors)(
       _litElement.LitElement
     )
   );
 
-exports.RichTextEditorToolbarFull = RichTextEditorToolbarFull;
+exports.RichTextEditorSymbolPicker = RichTextEditorSymbolPicker;
 window.customElements.define(
-  RichTextEditorToolbarFull.tag,
-  RichTextEditorToolbarFull
+  RichTextEditorSymbolPicker.tag,
+  RichTextEditorSymbolPicker
 );

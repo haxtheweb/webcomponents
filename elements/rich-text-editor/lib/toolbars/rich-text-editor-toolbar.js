@@ -5,10 +5,23 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleToolbarBehaviors } from "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
 import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import { RichTextStyles } from "../buttons/rich-text-editor-button.js";
+import {
+  RichTextStyles,
+  RichTextToolbarStyles,
+} from "../buttons/rich-text-editor-button.js";
 import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 
+/**
+ * RichTextEditorToolbarBehaviors
+ *
+ * @extends SimpleToolbarBehaviors
+ * @extends RichTextToolbarStyles
+ * @customElement
+ * @class
+ * @lit-html
+ * @lit-element
+ */
 const RichTextEditorToolbarBehaviors = function (SuperClass) {
   return class extends SimpleToolbarBehaviors(SuperClass) {
     /**
@@ -17,7 +30,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     static get tag() {
       return "rich-text-editor-toolbar";
     }
-
+    /**
+     * styles for small floating toolbar
+     *
+     * @readonly
+     * @static
+     */
     static get miniStyles() {
       return [
         css`
@@ -35,37 +53,60 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             bottom: 0;
             margin: 0 auto;
             padding: 0;
-            border: var(--simple-toolbar-border-width, 1px) solid
-              var(--simple-toolbar-border-color, #ddd);
+            border: var(--rich-text-editor-border-width, 1px) solid
+              var(--rich-text-editor-border-color, #ddd);
             background-color: var(
-              --simple-toolbar-bg,
-              var(--simple-toolbar-button-bg, #ffffff)
+              --rich-text-editor-bg,
+              var(--rich-text-editor-bg, #ffffff)
             );
           }
         `,
       ];
     }
 
+    /**
+     * base styles toolbar: simple toolbar base styles + custom styles for rich text
+     *
+     * @readonly
+     * @static
+     */
     static get baseStyles() {
       return [
         ...super.baseStyles,
         ...RichTextStyles,
         css`
           :host {
-            border: var(--simple-toolbar-border-width, 1px) solid
-              var(--simple-toolbar-border-color, #ddd);
-            background-color: var(--simple-toolbar-button-bg, #ffffff);
+            border: var(--rich-text-editor-border-width, 1px) solid
+              var(--rich-text-editor-border-color, #ddd);
+            background-color: var(--rich-text-editor-bg, #ffffff);
           }
         `,
       ];
     }
 
+    /**
+     * default styles for toolbar: base + simple-toolbar sticky styles
+     *
+     * @readonly
+     * @static
+     */
     static get styles() {
       return [...this.baseStyles, ...super.stickyStyles];
     }
+    /**
+     * whether or not toolbar breadcrumbs
+     * (override to force a toolbar to always use or not use them)
+     *
+     * @readonly
+     */
     get hasBreadcrumbs() {
       return false;
     }
+    /**
+     * default config for an undo button
+     *
+     * @readonly
+     */
     get undoButton() {
       return {
         command: "undo",
@@ -75,6 +116,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a redo button
+     *
+     * @readonly
+     */
     get redoButton() {
       return {
         command: "redo",
@@ -84,18 +130,33 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a history button group: undo + redo
+     *
+     * @readonly
+     */
     get historyButtonGroup() {
       return {
         type: "button-group",
         buttons: [this.undoButton, this.redoButton],
       };
     }
+    /**
+     * default config for a format button
+     *
+     * @readonly
+     */
     get formatButton() {
       return {
         label: "Format",
         type: "rich-text-editor-heading-picker",
       };
     }
+    /**
+     * default config for a bold button
+     *
+     * @readonly
+     */
     get boldButton() {
       return {
         command: "bold",
@@ -106,6 +167,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for an italic button
+     *
+     * @readonly
+     */
     get italicButton() {
       return {
         command: "italic",
@@ -116,9 +182,19 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for an underline button
+     *
+     * @readonly
+     */
     get underlineButton() {
       return { type: "rich-text-editor-underline" };
     }
+    /**
+     * default config for a remove format button
+     *
+     * @readonly
+     */
     get removeFormatButton() {
       return {
         command: "removeFormat",
@@ -127,6 +203,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a style button group: format, bold, italic, and remove format
+     *
+     * @readonly
+     */
     get basicInlineButtonGroup() {
       return {
         type: "button-group",
@@ -138,6 +219,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         ],
       };
     }
+    /**
+     * default config for a link button
+     *
+     * @readonly
+     */
     get linkButton() {
       return {
         icon: "link",
@@ -146,12 +232,22 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-link",
       };
     }
+    /**
+     * default config for a link button group: link
+     *
+     * @readonly
+     */
     get linkButtonGroup() {
       return {
         type: "button-group",
         buttons: [this.linkButton],
       };
     }
+    /**
+     * default config for a cut button
+     *
+     * @readonly
+     */
     get cutButton() {
       return {
         command: "cut",
@@ -161,6 +257,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a copy button
+     *
+     * @readonly
+     */
     get copyButton() {
       return {
         command: "copy",
@@ -170,6 +271,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a paste button
+     *
+     * @readonly
+     */
     get pasteButton() {
       return {
         command: "paste",
@@ -179,12 +285,22 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a clipboard button group: cut, copy, and paste
+     *
+     * @readonly
+     */
     get clipboardButtonGroup() {
       return {
         type: "button-group",
         buttons: [this.cutButton, this.copyButton, this.pasteButton],
       };
     }
+    /**
+     * default config for a subscript button
+     *
+     * @readonly
+     */
     get subscriptButton() {
       return {
         command: "subscript",
@@ -194,6 +310,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a superscript button
+     *
+     * @readonly
+     */
     get superscriptButton() {
       return {
         command: "superscript",
@@ -203,34 +324,64 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a script button group: subscript & superscript
+     *
+     * @readonly
+     */
     get scriptButtonGroup() {
       return {
         type: "button-group",
         buttons: [this.subscriptButton, this.superscriptButton],
       };
     }
+    /**
+     * default config for a symbol button
+     *
+     * @readonly
+     */
     get symbolButton() {
       return {
         symbolTypes: ["symbols"],
         type: "rich-text-editor-symbol-picker",
       };
     }
+    /**
+     * default config for an emoji button
+     *
+     * @readonly
+     */
     get emojiButton() {
       return {
         type: "rich-text-editor-emoji-picker",
       };
     }
+    /**
+     * default config for an image button
+     *
+     * @readonly
+     */
     get imageButton() {
       return {
         type: "rich-text-editor-image",
       };
     }
+    /**
+     * default config for an insert button group: image
+     *
+     * @readonly
+     */
     get insertButtonGroup() {
       return {
         type: "button-group",
         buttons: [this.imageButton, this.symbolButton],
       };
     }
+    /**
+     * default config for an ordered list button
+     *
+     * @readonly
+     */
     get orderedListButton() {
       return {
         command: "insertOrderedList",
@@ -240,6 +391,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for an unordered list button
+     *
+     * @readonly
+     */
     get unorderedListButton() {
       return {
         command: "insertUnorderedList",
@@ -249,6 +405,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a blockquote button
+     *
+     * @readonly
+     */
     get blockquoteButton() {
       return {
         command: "formatBlock",
@@ -259,6 +420,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for an indent button
+     *
+     * @readonly
+     */
     get indentButton() {
       return {
         command: "indent",
@@ -268,6 +434,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for an outdent button
+     *
+     * @readonly
+     */
     get outdentButton() {
       return {
         command: "outdent",
@@ -277,6 +448,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a list and indent button group:
+     * ordered, unordered, blockquote, indent, outdent
+     *
+     * @readonly
+     */
     get listIndentButtonGroup() {
       return {
         type: "button-group",
@@ -289,6 +466,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         ],
       };
     }
+    /**
+     * default config for an save button
+     *
+     * @readonly
+     */
     get saveButton() {
       return {
         command: "save",
@@ -297,6 +479,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a close button
+     *
+     * @readonly
+     */
     get closeButton() {
       return {
         command: "cancel",
@@ -305,21 +492,42 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         type: "rich-text-editor-button",
       };
     }
+    /**
+     * default config for a save and close button group: save and close
+     *
+     * @readonly
+     */
     get saveCloseButtonGroup() {
       return {
         type: "button-group",
         buttons: [this.saveButton],
       };
     }
+    /**
+     * default config for a view source button
+     *
+     * @readonly
+     */
     get sourceButton() {
       return { type: "rich-text-editor-source-code" };
     }
+    /**
+     * default config for a source button group: view source
+     *
+     * @readonly
+     */
     get sourceButtonGroup() {
       return {
         type: "button-group",
         buttons: [this.sourceButton],
       };
     }
+    /**
+     * default config for toolbar with
+     * default history, style, link, clipboard, script, insert, and list button groups
+     *
+     * @readonly
+     */
     get defaultConfig() {
       return [
         this.historyButtonGroup,
@@ -332,6 +540,15 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       ];
     }
 
+    /**
+     * default config for toolbar with
+     * default a custom group of style buttons,
+     * default link button group,
+     * default script button group,
+     * and a custom list button groups
+     *
+     * @readonly
+     */
     get miniConfig() {
       return [
         {
@@ -350,12 +567,21 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         },
       ];
     }
-
+    /**
+     * a template that places toolbar in a container
+     * so that it can be positioned absolutely
+     *
+     * @readonly
+     */
     get miniTemplate() {
       return html` <div id="container">${super.toolbarTemplate}</div> `;
     }
 
-    // render function for toolbar
+    /**
+     * default toolbar template uses simple-toolbar
+     *
+     * @readonly
+     */
     get toolbarTemplate() {
       return super.toolbarTemplate;
     }
@@ -524,6 +750,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     /**
      * id of editor currently being controlled
      * @readonly
+     * @returns {string}
      */
     get controls() {
       return !this.editor ? undefined : this.editor.getAttribute("id");
@@ -532,6 +759,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * determines if the toolbar is hidden
      *
      * @readonly
+     * @returns {boolean}
      */
     get disconnected() {
       return this.show == "always"
@@ -544,6 +772,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * determines if the toolbar has an extive selection
      *
      * @readonly
+     * @returns {boolean}
      */
     get noSelection() {
       return !this.range || this.range.collapsed;
@@ -552,6 +781,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     /**
      * cancels edits to active editor
      * @returns {void}
+     * @event cancel
      */
     cancel() {
       this.dispatchEvent(
@@ -565,8 +795,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
     /**
      * closes toolbar
+     * @returns {void}
+     * @event disableediting
      *
-     * @param {object} editor connected rich-text-editor
      */
     close() {
       this.dispatchEvent(
@@ -585,6 +816,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @param {boolean} [add=true] add highlight?
      * @returns {void}
+     * @event highlight
      */
     highlight(add = true) {
       this.dispatchEvent(
@@ -599,6 +831,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     /**
      * handles registration to selection singleton's toolbars list
      * @param {boolean} remove whether to remove
+     * @returns {void}
      * @event register
      */
     register(remove = false) {
@@ -617,8 +850,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     /**
      * selects a given node inside connected editor
      *
-     * @param {object} node
+     * @param {range} range
      * @returns {void}
+     * @event setrange
      */
     setRange(range) {
       this.dispatchEvent(
@@ -638,6 +872,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @param {object} node
      * @returns {void}
+     * @event selectnode
      */
     selectNode(node) {
       this.dispatchEvent(
@@ -654,6 +889,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @param {object} node
      * @returns {void}
+     * @event selectnodecontents
      */
     selectNodeContents(node) {
       this.dispatchEvent(
@@ -668,8 +904,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     /**
      * selects a given node inside connected editor
      *
-     * @param {object} node
+     * @param {range} range
      * @returns {void}
+     * @event selectrange
      */
     selectRange(range) {
       this.dispatchEvent(
@@ -853,19 +1090,39 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 };
 /**
  * `rich-text-editor-toolbar`
- * default toolbar for rich text editor
+ * is a default toolbar for rich text editor 
+ * (can customize by extending RichTextEditorToolbarBehaviors)
  *
-### Styling
+ * ### Styling
+`<rich-text-editor-toolbar>` uses RichTextToolbarStyles constant to set 
+SimpleToolbarBehaviors's simple-toolbar/simple-toolbar-button variables.
 
-`<rich-text-editor-toolbar` provides following custom properties and mixins
-for styling:
+To further customize a toolbar and its buttons:
 
 Custom property | Description | Default
 ----------------|-------------|----------
---simple-toolbar-border-width | width of toolbar's border | 1px
---simple-toolbar-border-color | color of toolbar's border | #ddd
---simple-toolbar-button | background-color of toolbar | --simple-toolbar-button-bg
+--rich-text-editor-border-color | default border color | #ddd
+--rich-text-editor-border-width | default border width | 1px
+--rich-text-editor-bg | default toolbar background | #ffffff
+--rich-text-editor-button-opacity | default button opacity | 1
+--rich-text-editor-button-color | default button color | #444
+--rich-text-editor-button-bg | default button background | #ffffff
+--rich-text-editor-button-border-color | overrides default border-color for buttons | transparent
+--rich-text-editor-button-toggled-opacity | overrides default opacity when button is toggled | 1
+--rich-text-editor-button-toggled-color | overrides default text color when button is toggled | #222
+--rich-text-editor-button-toggled-bg | overrides default background when button is toggled | #ddd
+--rich-text-editor-button-toggled-border-color | overrides default border-color when button is toggled | transparent
+--rich-text-editor-button-hover-opacity | overrides default opacity when button is hovered or focused | 1
+--rich-text-editor-button-hover-color | overrides default text color when button is hovered or focused  | #000
+--rich-text-editor-button-hover-bg | overrides default background when button is hovered or focused | #f0f0f0
+--rich-text-editor-button-hover-border-color | overrides default border-color when button is hovered or focused | unset
+--rich-text-editor-button-disabled-opacity | overrides default opacity when button is disabled | 1
+--rich-text-editor-button-disabled-color | overrides default text color when button is disabled | #666
+--rich-text-editor-button-disabled-bg | overrides default background when button is disabled | transparent
+--rich-text-editor-button-disabled-border-color | overrides default border-color when button is toggled | transparent
  *
+ * @extends RichTextEditorToolbarBehaviors
+ * @extends LitElement
  * @customElement
  * @lit-html
  * @lit-element
