@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/video-player/video-player";
 import "@lrnwebcomponents/lrn-button/lrn-button";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button";
 
 /**
  * `check-it-out`
@@ -21,13 +22,11 @@ class CheckItOut extends LitElement {
         attribute: "checked-out",
         reflect: true,
       },
-      sourceUri: {
+      source: {
         type: String,
-        attribute: "source-uri",
       },
-      contentType: {
+      type: {
         type: String,
-        attribute: "content-type",
         reflect: true,
       },
     };
@@ -116,21 +115,21 @@ class CheckItOut extends LitElement {
 
   render() {
     return html`
-      ${this.contentType === "code"
+      ${this.type === "code"
         ? html`<lrn-button
             class="check-it-out-btn"
             icon="code"
             label="Check it out"
             @click="${this._handleClick}"
           ></lrn-button>`
-        : this.contentType === "pdf"
+        : this.type === "pdf"
         ? html`<lrn-button
             class="check-it-out-btn"
             icon="book"
             label="Check it out"
             @click="${this._handleClick}"
           ></lrn-button>`
-        : this.contentType === "video"
+        : this.type === "video"
         ? html`<lrn-button
             class="check-it-out-btn"
             icon="av:play-arrow"
@@ -138,24 +137,24 @@ class CheckItOut extends LitElement {
             @click="${this._handleClick}"
           ></lrn-button>`
         : html`<p>None of the above</p>`}
-      ${["code", "pdf"].includes(this.contentType)
+      ${["code", "pdf"].includes(this.type)
         ? html`<div class="container">
             <span class="close-btn" @click="${this._handleClick}"></span>
-            <iframe class="iframe-container" src=${this.sourceUri}></iframe>
+            <iframe class="iframe-container" src=${this.source}></iframe>
           </div>`
         : html`
             <div class="container">
               <span class="close-btn" @click="${this._handleClick}"></span>
               <video-player
                 class="video-player"
-                source=${this.sourceUri}
+                source=${this.source}
               ></video-player>
             </div>
           `}
     `;
 
     // more readable? preferred approach?
-    if (this.contentType === "video") {
+    if (this.type === "video") {
       return html`
         <lrn-button
           class="check-it-out-btn"
@@ -167,11 +166,11 @@ class CheckItOut extends LitElement {
           <span class="close-btn" @click="${this._handleClick}"></span>
           <video-player
             class="video-player"
-            source=${this.sourceUri}
+            source=${this.source}
           ></video-player>
         </div>
       `;
-    } else if (this.contentType === "pdf") {
+    } else if (this.type === "pdf") {
       return html`
         <lrn-button
           class="check-it-out-btn"
@@ -181,10 +180,10 @@ class CheckItOut extends LitElement {
         ></lrn-button>
         <div class="container">
           <span class="close-btn" @click="${this._handleClick}"></span>
-          <iframe class="iframe-container" src=${this.sourceUri}></iframe>
+          <iframe class="iframe-container" src=${this.source}></iframe>
         </div>
       `;
-    } else if (this.contentType === "code") {
+    } else if (this.type === "code") {
       return html`
         <lrn-button
           class="check-it-out-btn"
@@ -194,7 +193,7 @@ class CheckItOut extends LitElement {
         ></lrn-button>
         <div class="container">
           <span class="close-btn" @click="${this._handleClick}"></span>
-          <iframe class="iframe-container" src=${this.sourceUri}></iframe>
+          <iframe class="iframe-container" src=${this.source}></iframe>
         </div>
       `;
     } else {
@@ -208,7 +207,7 @@ class CheckItOut extends LitElement {
   constructor() {
     super();
     this.checkedOut = false;
-    this.contentType = "";
+    this.type = "";
   }
 
   _handleClick() {
@@ -219,13 +218,13 @@ class CheckItOut extends LitElement {
     }
   }
 
-  checkContentType(sourceStr) {
+  checktype(sourceStr) {
     if (sourceStr.endsWith(".mp4") || sourceStr.includes("youtube.com")) {
-      this.contentType = "video";
+      this.type = "video";
     } else if (sourceStr.endsWith(".pdf")) {
-      this.contentType = "pdf";
+      this.type = "pdf";
     } else if (sourceStr.includes("stackblitz.com")) {
-      this.contentType = "code";
+      this.type = "code";
       if (!sourceStr.includes("embed=1")) {
         if (sourceStr.includes("?")) {
           sourceStr += "&embed=1";
@@ -234,7 +233,7 @@ class CheckItOut extends LitElement {
         }
       }
     } else if (sourceStr.includes("codepen.io")) {
-      this.contentType = "code";
+      this.type = "code";
       if (!sourceStr.includes("embed")) {
         sourceStr = sourceStr.replace("/pen/", "/embed/");
       }
@@ -252,10 +251,10 @@ class CheckItOut extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "sourceUri" && this[propName]) {
+      if (propName === "source" && this[propName]) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
-          this.sourceUri = this.checkContentType(this.sourceUri);
+          this.source = this.checktype(this.source);
         }, 0);
       }
     });
