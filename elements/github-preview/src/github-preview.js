@@ -290,9 +290,11 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         groups: ["developer", "code"],
         handles: [
           {
-            type: "content",
-            title: "search",
-          },
+            type: "github",
+            type_exclusive: true,
+            repo: "repo",
+            org: "org",
+          }
         ],
         meta: {
           author: "collinkleest",
@@ -368,7 +370,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
             data: {},
             resultMap: {
               image: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-              defaultGizmoType: "iframe",
+              defaultGizmoType: "github",
               items: "items",
               preview: {
                 title: "name",
@@ -377,10 +379,8 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
               },
               gizmo: {
                 id: "id",
-                title: "name",
-                caption: "description",
-                description: "description",
-                _url_source: "https://github.com/<%= owner.login %>/<%= name %>",
+                repo: "name",
+                org: "owner.login",
               },
             },
           },
@@ -576,6 +576,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
   }
 
   haxgizmoRegistration(store) {
+    store.validGizmoTypes.push("github");
     if (
       store.appList.filter((el, i) => {
         // ensure we don't double load the endpoint if already defined
