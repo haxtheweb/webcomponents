@@ -4,7 +4,10 @@
  */
 import { LitElement, html, css } from "lit-element";
 import "./lib/simple-toolbar-more-button.js";
-
+/**
+ * @customElement
+ * @class
+ */
 const SimpleToolbarBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**
@@ -440,15 +443,15 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      * @param {object} button button node
      * @memberof SimpleToolbar
      */
-    updateButton(oldValue, button) {
-      if (oldValue) this.deregisterButton(oldValue);
+    updateButton(button) {
+      if (button) this.deregisterButton(button);
       if (button) this.registerButton(button);
     }
     /**
      * updates buttons based on change in config
      */
     updateToolbar() {
-      if (!this || this.config.length == 0) return;
+      if (!this || !this.config || this.config.length == 0) return;
       this.clearToolbar();
       if (typeof this.config != typeof []) this.config = JSON.parse(config);
       this.config.forEach((config) => {
@@ -600,6 +603,8 @@ Custom property | Description | Default
 --simple-toolbar-group-padding | padding for button groups | 0 3px
  * 
  * @customElement
+ * @extends SimpleToolbarBehaviors
+ * @extends LitElement
  * @lit-html
  * @lit-element
  * @demo demo/index.html

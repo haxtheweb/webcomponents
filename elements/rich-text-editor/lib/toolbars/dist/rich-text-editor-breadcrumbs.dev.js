@@ -29,7 +29,7 @@ function _typeof(obj) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n          background-color: var(--simple-toolbar-button-bg, #ffffff);\n          color: var(--simple-toolbar-button-color #444);\n          border: var(--simple-toolbar-border-width, 1px) solid var(--simple-toolbar-border-color, #ddd);\n          padding: 3px 10px;\n        }\n        :host([sticky]) {\n          position: sticky;\n          bottom: 0;\n        }\n        .selectednode {\n          background-color: var(--simple-toolbar-button-bg, #ffffff);\n        }\n        button {\n          display: inline-block;\n          text-align: center;\n          min-width: 25px;\n          margin: 0;\n          padding: 2px 5px;\n        }\n        .selectNode {\n          font-family: monospace;\n        }\n\xA0\xA0\xA0\xA0\xA0\xA0",
+    "\n        :host {\n          display: block;\n          background-color: var(--rich-text-editor-bg, #ffffff);\n          color: var(--rich-text-editor-button-color #444);\n          border: var(--rich-text-editor-border-width, 1px) solid var(--rich-text-editor-border-color, #ddd);\n          padding: 3px 10px;\n        }\n        :host([sticky]) {\n          position: sticky;\n          bottom: 0;\n        }\n        .selectednode {\n          background-color: var(--rich-text-editor-button-bg, #ffffff);\n        }\n        button {\n          display: inline-block;\n          text-align: center;\n          min-width: 25px;\n          margin: 0;\n          padding: 2px 5px;\n        }\n        .selectNode {\n          font-family: monospace;\n        }\n\xA0\xA0\xA0\xA0\xA0\xA0",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -94,7 +94,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n      ", ": \n      ", "\n    "]);
+  var data = _taggedTemplateLiteral(["\n      ", ":\n      ", "\n    "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -181,8 +181,18 @@ function _setPrototypeOf(o, p) {
 
 /**
  * `rich-text-editor-breadcrumbs`
- * `A utility that manages state of multiple rich-text-prompts on one page.`
+ * a toolbar of selection's ancestor breadcrumbs
  *
+ * ### Styling
+`<rich-text-editor-breadcrumbs>` uses RichTextToolbarStyles constant 
+from rich-text-editor-toolbar to set SimpleToolbarBehaviors's 
+simple-toolbar/simple-toolbar-button variables.
+ *
+ * @customElement
+ * @extends LitElement
+ * @extends RichTextToolbarStyles
+ * @lit-html
+ * @lit-element
  *  @element rich-text-editor-breadcrumbs
  */
 var RichTextEditorBreadcrumbs =
@@ -316,7 +326,7 @@ var RichTextEditorBreadcrumbs =
           key: "styles",
           get: function get() {
             return [].concat(
-              _toConsumableArray(_richTextEditorButton.RichTextStyles),
+              _toConsumableArray(_richTextEditorButton.RichTextToolbarStyles),
               [(0, _litElement.css)(_templateObject4())]
             );
           },

@@ -3,12 +3,22 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextStyles } from "../buttons/rich-text-editor-button.js";
+import { RichTextToolbarStyles } from "../buttons/rich-text-editor-button.js";
 
 /**
  * `rich-text-editor-breadcrumbs`
- * `A utility that manages state of multiple rich-text-prompts on one page.`
+ * a toolbar of selection's ancestor breadcrumbs
  *
+ * ### Styling
+`<rich-text-editor-breadcrumbs>` uses RichTextToolbarStyles constant 
+from rich-text-editor-toolbar to set SimpleToolbarBehaviors's 
+simple-toolbar/simple-toolbar-button variables.
+ *
+ * @customElement
+ * @extends LitElement
+ * @extends RichTextToolbarStyles
+ * @lit-html
+ * @lit-element
  *  @element rich-text-editor-breadcrumbs
  */
 class RichTextEditorBreadcrumbs extends LitElement {
@@ -103,13 +113,13 @@ class RichTextEditorBreadcrumbs extends LitElement {
 
   static get styles() {
     return [
-      ...RichTextStyles,
+      ...RichTextToolbarStyles,
       css`
         :host {
           display: block;
-          background-color: var(--simple-toolbar-button-bg, #ffffff);
-          color: var(--simple-toolbar-button-color #444);
-          border: var(--simple-toolbar-border-width, 1px) solid var(--simple-toolbar-border-color, #ddd);
+          background-color: var(--rich-text-editor-bg, #ffffff);
+          color: var(--rich-text-editor-button-color #444);
+          border: var(--rich-text-editor-border-width, 1px) solid var(--rich-text-editor-border-color, #ddd);
           padding: 3px 10px;
         }
         :host([sticky]) {
@@ -117,7 +127,7 @@ class RichTextEditorBreadcrumbs extends LitElement {
           bottom: 0;
         }
         .selectednode {
-          background-color: var(--simple-toolbar-button-bg, #ffffff);
+          background-color: var(--rich-text-editor-button-bg, #ffffff);
         }
         button {
           display: inline-block;

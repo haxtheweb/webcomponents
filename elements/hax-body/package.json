@@ -47,6 +47,7 @@
     "@lrnwebcomponents/hexagon-loader": "^3.0.6",
     "@lrnwebcomponents/media-behaviors": "^3.0.6",
     "@lrnwebcomponents/paper-input-flagged": "^3.0.6",
+    "@lrnwebcomponents/rich-text-editor": "^3.0.6",
     "@lrnwebcomponents/simple-colors": "^3.0.6",
     "@lrnwebcomponents/simple-fields": "^3.0.6",
     "@lrnwebcomponents/simple-filter": "^3.0.5",

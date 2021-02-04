@@ -9,6 +9,11 @@ import "@lrnwebcomponents/simple-picker/lib/simple-symbol-picker.js";
  * `rich-text-editor-symbol-picker`
  * a symbol picker for the rich-text-editor
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
+ * @extends RichTextEditorPickerBehaviors
+ * @extends LitElement
  * @element rich-text-editor-symbol-picker
  * @demo ./demo/buttons.html
  */
@@ -72,7 +77,10 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
   }
 
   /**
-   * Handles default options loaded from an external js file
+   * overrides RichTextEditorPickerBehaviors
+   * since simple-symbol-picker already handles options
+   *
+   * @memberof RichTextEditorSymbolPicker
    */
   _setOptions() {}
 }

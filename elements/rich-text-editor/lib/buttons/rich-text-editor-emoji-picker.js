@@ -9,6 +9,11 @@ import "@lrnwebcomponents/simple-picker/lib/simple-emoji-picker.js";
  * `rich-text-editor-emoji-picker`
  * an emoji picker for the rich-text-editor
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
+ * @extends RichTextEditorPickerBehaviors
+ * @extends LitElement
  * @element rich-text-editor-emoji-picker
  * @demo ./demo/buttons.html
  */
@@ -94,6 +99,13 @@ class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
         this.titleAsHtml = true;
     });
   }
+  /**
+   * overrides RichTextEditorPickerBehaviors
+   * since simple-symbol-picker already handles options
+   *
+   * @memberof RichTextEditorSymbolPicker
+   */
+  _setOptions() {}
 }
 window.customElements.define(
   RichTextEditorEmojiPicker.tag,

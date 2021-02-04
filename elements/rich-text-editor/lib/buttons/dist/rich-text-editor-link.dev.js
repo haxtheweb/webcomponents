@@ -197,8 +197,13 @@ function _getPrototypeOf(o) {
 
 /**
  * `rich-text-editor-link`
- * a button for rich text editor (custom buttons can extend this)
+ * a link button for rich text editor
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
+ * @extends RichTextEditorPromptButtonBehaviors
+ * @extends LitElement
  * @element rich-text-editor-link
  * @demo ./demo/buttons.html
  */
@@ -238,7 +243,15 @@ var RichTextEditorLink =
           get: function get() {
             return _objectSpread(
               {},
-              _get(_getPrototypeOf(RichTextEditorLink), "properties", this)
+              _get(_getPrototypeOf(RichTextEditorLink), "properties", this),
+              {
+                /**
+                 * allow user to set a target attribute for link
+                 */
+                allowTarget: {
+                  type: Boolean,
+                },
+              }
             );
           },
         },
@@ -271,7 +284,7 @@ var RichTextEditorLink =
           },
         ]
       );
-      _this.command = "CreateLink";
+      _this.command = "createLink";
       _this.icon = "link";
       _this.label = "Link";
       _this.toggledCommand = "unlink";
@@ -293,16 +306,70 @@ var RichTextEditorLink =
       _this.shortcutKeys = "ctrl+k";
       return _this;
     }
-    /**
-     * determaines commandVal based on values passed from prompt
-     */
 
     _createClass(RichTextEditorLink, [
+      {
+        key: "updated",
+        value: function updated(changedProperties) {
+          var _this2 = this;
+
+          if (
+            _get(_getPrototypeOf(RichTextEditorLink.prototype), "updated", this)
+          )
+            _get(
+              _getPrototypeOf(RichTextEditorLink.prototype),
+              "updated",
+              this
+            ).call(this, changedProperties);
+          changedProperties.forEach(function (oldValue, propName) {
+            if (propName === "allowTarget") {
+              var fields = [].concat(
+                _toConsumableArray(
+                  _get(
+                    _getPrototypeOf(RichTextEditorLink.prototype),
+                    "fields",
+                    _this2
+                  )
+                ),
+                [
+                  {
+                    property: "href",
+                    title: "Link",
+                    inputMethod: "url",
+                    autoValidate: true,
+                  },
+                ]
+              );
+              _this2.fields = _this2.allowTarget
+                ? _objectSpread({}, fields)
+                : _objectSpread({}, fields, {
+                    allowTarget: {
+                      property: "target",
+                      title: "Target",
+                      inputMethod: "textfield",
+                    },
+                  });
+            }
+          });
+        },
+        /**
+         * overrides RichTextEditorPromptButtonBehaviors
+         * so that href property determines
+         * whether or not to link or unlink
+         *
+         * @readonly
+         * @memberof RichTextEditorLink
+         */
+      },
       {
         key: "getValue",
 
         /**
-         * updates prompt fields with selected range data
+         * overrides RichTextEditorPromptButtonBehaviors
+         * to customize for getting link innerHTML & href properties
+         *
+         * @param {object} node selected node
+         * @memberof RichTextEditorLink
          */
         value: function getValue(node) {
           var target = node || this.rangeElement();
@@ -314,6 +381,10 @@ var RichTextEditorLink =
               this
             ).call(this),
             {
+              target:
+                this.allowTarget && target.getAttribute
+                  ? target.getAttribute("target")
+                  : undefined,
               href:
                 target && target.getAttribute
                   ? target.getAttribute("href")
@@ -321,6 +392,12 @@ var RichTextEditorLink =
             }
           );
         },
+        /**
+         * overrides RichTextEditorPromptButtonBehaviors
+         * sets toggle based on whether the selected node has a href
+         *
+         * @memberof RichTextEditorLink
+         */
       },
       {
         key: "setToggled",
@@ -334,10 +411,11 @@ var RichTextEditorLink =
           return this.getPropValue("href") || undefined;
         },
         /**
-         * whether button is toggled
+         * overrides RichTextEditorPromptButtonBehaviors
+         * so that isToggled is based on toggled property
          *
          * @readonly
-         * @memberof RichTextEditorButton
+         * @memberof RichTextEditorLink
          */
       },
       {

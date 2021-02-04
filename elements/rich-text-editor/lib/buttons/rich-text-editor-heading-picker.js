@@ -8,6 +8,11 @@ import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
  * `rich-text-editor-heading-picker`
  * a heading picker for the rich-text-editor
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
+ * @extends RichTextEditorPickerBehaviors
+ * @extends LitElement
  * @element rich-text-editor-heading-picker
  * @demo ./demo/buttons.html
  */
@@ -68,7 +73,10 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
   }
 
   /**
-   * populates the picker
+   * overrides RichTextEditorPickerBehaviors
+   * to populate picker with allowable blocks
+   *
+   * @memberof RichTextEditorHeadingPicker
    */
   _setOptions() {
     this.tagsList = this.blocks.map((block) => block.tag).join(",");

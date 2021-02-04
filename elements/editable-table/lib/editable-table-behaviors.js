@@ -11,6 +11,10 @@ import { html, css } from "lit-element/lit-element.js";
 
 /**
  * styling for table cells
+ * @const
+ * @default
+ * @type {array}
+ *
  */
 export const editableTableCellStyles = [
   css`
@@ -48,6 +52,9 @@ export const editableTableCellStyles = [
 
 /**
  * styling for table
+ * @const
+ * @default
+ * @type {array}
  */
 export const editableTableStyles = [
   css`
@@ -216,6 +223,9 @@ export const editableTableStyles = [
 
 /**
  * styling for table in display mode
+ * @const
+ * @default
+ * @type {array}
  */
 export const editableTableDisplayStyles = [
   ...editableTableStyles,
@@ -273,6 +283,9 @@ export const editableTableDisplayStyles = [
 ];
 /**
  * List of display-only properties
+ * @const
+ * @default
+ * @type {object}
  */
 export const displayProperties = {
   /**
@@ -324,6 +337,9 @@ export const displayProperties = {
 };
 /**
  * List of data manipulation properties
+ * @const
+ * @default
+ * @type {object}
  */
 export const dataProperties = {
   /**
@@ -362,6 +378,8 @@ export const dataProperties = {
 
 /**
  * behaviors needed to display table in either mode
+ * @class
+ * @customElement
  */
 export const displayBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -955,6 +973,8 @@ export const displayBehaviors = function (SuperClass) {
 
 /**
  * behaviors needed for table cells, row headers, and columns
+ * @class
+ * @customElement
  */
 export const cellBehaviors = function (SuperClass) {
   return class extends SuperClass {

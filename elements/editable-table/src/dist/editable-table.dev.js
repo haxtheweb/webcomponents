@@ -11,7 +11,7 @@ var _editableTableBehaviors = require("./lib/editable-table-behaviors.js");
 
 require("@lrnwebcomponents/rich-text-editor/rich-text-editor.js");
 
-require("@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js");
+require("@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js");
 
 require("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
 
@@ -98,7 +98,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject5() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          --paper-listbox-background-color: var(\n            --editable-table-rowcol-bg-color\n          );\n        }\n        .filter-icon,\n        .sortable-icon {\n          display: none;\n          opacity: 0.4;\n          width: 24px;\n          height: 24px;\n        }\n        :host([sort]) tbody .tr:first-child .sortable-icon,\n        :host([filter]) tbody .tr:not(:first-of-type) .filter-icon {\n          display: inline-block;\n          opacity: 0.25;\n        }\n        table {\n          min-width: calc(100% - 2.3px);\n          width: unset;\n        }\n        caption {\n          width: 100%;\n          padding: 0;\n          margin: 0;\n          color: var(\n            --editable-table-caption-color,\n            var(--editable-table-color, #222)\n          );\n        }\n        caption,\n        .th-or-td {\n          border: 1px solid #ddd;\n        }\n        label,\n        .label {\n          color: var(--editable-table-secondary-text-color, #444);\n          font-size: var(--editable-table-secondary-font-size, 12px);\n          font-family: var(\n            --editable-table-secondary-font-family,\n            "Roboto",\n            "Noto",\n            sans-serif\n          );\n        }\n        .field-group {\n          width: 100%;\n          padding: 0;\n          margin: 0;\n          transition: all 2s;\n          color: var(\n            --editable-table-caption-color,\n            var(--editable-table-color, #222)\n          );\n        }\n        .field-group:not([hidden]) {\n          display: flex;\n          flex-wrap: wrap;\n          justify-content: space-between;\n          align-items: center;\n        }\n        caption > *,\n        .field-group > * {\n          margin: 0 2.5px;\n        }\n        caption {\n          position: relative;\n        }\n        .field-group .field-group {\n          width: unset;\n        }\n        th {\n          padding: 0;\n          border-width: var(--editable-table-border-width, 1px);\n          border-style: var(--editable-table-border-style, solid);\n          border-color: var(--editable-table-border-color, #999);\n        }\n        td {\n          margin: 0;\n          padding: 0;\n          position: relative;\n        }\n        rich-text-editor-toolbar {\n          position: relative;\n          margin: 0;\n        }\n        rich-text-editor {\n          margin-bottom: 1px;\n          min-height: 12px;\n          padding: var(--editable-table-row-vertical-padding, 10px)\n            var(--editable-table-row-horizontal-padding, 6px);\n          border: none !important;\n        }\n        td #icons {\n          position: absolute;\n          right: 0;\n          top: calc(50% - 12px);\n          width: 24px;\n        }\n        td simple-icon-lite {\n          width: 24px;\n        }\n        th:hover,\n        th:focus-within {\n          background-color: var(\n            --editable-table-rowcol-hover-bg-color,\n            var(--editable-table-heading-bg-color, #e8e8e8)\n          );\n        }\n        .th:first-child {\n          width: 96px;\n        }\n        :host([responsive]) thead th:nth-of-type(3),\n        :host([responsive]) .tr td:nth-of-type(2) {\n          border-right-width: calc(var(--editable-table-border-width) + 5px);\n          border-right-style: double;\n        }\n      ',
+    '\n        :host {\n          --paper-listbox-background-color: var(\n            --editable-table-rowcol-bg-color\n          );\n        }\n        .filter-icon,\n        .sortable-icon {\n          display: none;\n          opacity: 0.4;\n          width: 24px;\n          height: 24px;\n        }\n        :host([sort]) tbody .tr:first-child .sortable-icon,\n        :host([filter]) tbody .tr:not(:first-of-type) .filter-icon {\n          display: inline-block;\n          opacity: 0.25;\n        }\n        table {\n          min-width: calc(100% - 2.3px);\n          width: unset;\n        }\n        caption {\n          width: 100%;\n          padding: 0;\n          margin: 0;\n          color: var(\n            --editable-table-caption-color,\n            var(--editable-table-color, #222)\n          );\n        }\n        caption,\n        .th-or-td {\n          border: 1px solid #ddd;\n        }\n        label,\n        .label {\n          color: var(--editable-table-secondary-text-color, #444);\n          font-size: var(--editable-table-secondary-font-size, 12px);\n          font-family: var(\n            --editable-table-secondary-font-family,\n            "Roboto",\n            "Noto",\n            sans-serif\n          );\n        }\n        .field-group {\n          width: 100%;\n          padding: 0;\n          margin: 0;\n          transition: all 2s;\n          color: var(\n            --editable-table-caption-color,\n            var(--editable-table-color, #222)\n          );\n        }\n        .field-group:not([hidden]) {\n          display: flex;\n          flex-wrap: wrap;\n          justify-content: space-between;\n          align-items: center;\n        }\n        caption > *,\n        .field-group > * {\n          margin: 0 2.5px;\n        }\n        caption {\n          position: relative;\n        }\n        .field-group .field-group {\n          width: unset;\n        }\n        th {\n          padding: 0;\n          border-width: var(--editable-table-border-width, 1px);\n          border-style: var(--editable-table-border-style, solid);\n          border-color: var(--editable-table-border-color, #999);\n        }\n        td {\n          margin: 0;\n          padding: 0;\n          position: relative;\n        }\n        rich-text-editor-toolbar-mini {\n          position: absolute;\n          min-width: 200px;\n          height: 0;\n        }\n        rich-text-editor {\n          margin-bottom: 1px;\n          padding: var(--editable-table-row-vertical-padding, 10px)\n            var(--editable-table-row-horizontal-padding, 6px);\n          border: none !important;\n          --rich-text-editor-min-height: 12px;\n        }\n        td #icons {\n          position: absolute;\n          right: 0;\n          top: calc(50% - 12px);\n          width: 24px;\n        }\n        td simple-icon-lite {\n          width: 24px;\n        }\n        th:hover,\n        th:focus-within {\n          background-color: var(\n            --editable-table-rowcol-hover-bg-color,\n            var(--editable-table-heading-bg-color, #e8e8e8)\n          );\n        }\n        .th:first-child {\n          width: 96px;\n        }\n        :host([responsive]) thead th:nth-of-type(3),\n        :host([responsive]) .tr td:nth-of-type(2) {\n          border-right-width: calc(var(--editable-table-border-width) + 5px);\n          border-right-style: double;\n        }\n      ',
   ]);
 
   _templateObject5 = function _templateObject5() {
@@ -192,8 +192,8 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <rich-text-editor-toolbar\n        id="toolbar"\n        .config="',
-    '"\n        show="selection"\n      ></rich-text-editor-toolbar>\n      <editable-table-display\n        aria-hidden="',
+    '\n      <rich-text-editor-toolbar-mini\n        id="toolbar"\n        .config="',
+    '"\n        show="selection"\n      ></rich-text-editor-toolbar-mini>\n      <editable-table-display\n        aria-hidden="',
     '"\n        ?bordered="',
     '"\n        caption="',
     '"\n        ?column-header="',
@@ -227,7 +227,7 @@ function _templateObject() {
     '"\n            ?striped="',
     '"\n          >\n            <caption>\n              <p class="sr-only">Edit Mode for</p>\n              <rich-text-editor\n                autofocus\n                @editing-disabled="',
     '"\n                toolbar="toolbar"\n                id="caption"\n                label="Caption"\n                placeholder="Name your table by adding a caption here."\n                rawhtml="',
-    '"\n                type="rich-text-editor-toolbar"\n              >\n              </rich-text-editor>\n            </caption>\n            <thead>\n              <tr class="tr">\n                <th scope="col">\n                  <span class="sr-only">Row Operations</span>\n                </th>\n                ',
+    '"\n                type="rich-text-editor-toolbar-mini"\n              >\n              </rich-text-editor>\n            </caption>\n            <thead>\n              <tr class="tr">\n                <th scope="col">\n                  <span class="sr-only">Row Operations</span>\n                </th>\n                ',
     '\n              </tr>\n            </thead>\n            <tbody id="tbody" class="tbody">\n              ',
     '\n            </tbody>\n          </table>\n        </div>\n        <div class="field-group">\n          <div class="field-group">\n            <div class="label">Headers and footers</div>\n            <editable-table-editor-toggle\n              id="columnHeader"\n              icon="editable-table:column-headers"\n              label="First row has column headers."\n              @change="',
     '"\n              ?toggled="',
@@ -456,10 +456,11 @@ Custom property | Description | Default
  * @demo ./demo/exporting.html Exporting Data
  * @demo ./demo/advanced.html Advanced Features
  * 
- * @polymer
+ * @customElement
  * @element editable-table
- * @appliesMixin displayBehaviors
- * @appliesMixin EditBehaviors
+ * @extends displayBehaviors
+ * @extends ResponsiveUtilityBehaviors
+ * @extends editableTableStyles
  */
 
 var EditableTable =

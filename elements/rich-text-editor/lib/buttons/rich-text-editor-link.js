@@ -6,8 +6,13 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-button.js";
 /**
  * `rich-text-editor-link`
- * a button for rich text editor (custom buttons can extend this)
+ * a link button for rich text editor
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
+ * @extends RichTextEditorPromptButtonBehaviors
+ * @extends LitElement
  * @element rich-text-editor-link
  * @demo ./demo/buttons.html
  */
@@ -28,7 +33,15 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
 
   // properties available to the custom element for data binding
   static get properties() {
-    return { ...super.properties };
+    return {
+      ...super.properties,
+      /**
+       * allow user to set a target attribute for link
+       */
+      allowTarget: {
+        type: Boolean,
+      },
+    };
   }
   constructor() {
     super();
@@ -41,7 +54,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
         autoValidate: true,
       },
     ];
-    this.command = "CreateLink";
+    this.command = "createLink";
     this.icon = "link";
     this.label = "Link";
     this.toggledCommand = "unlink";
@@ -56,34 +69,81 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.shortcutKeys = "ctrl+k";
   }
 
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "allowTarget") {
+        let fields = [
+          ...super.fields,
+          {
+            property: "href",
+            title: "Link",
+            inputMethod: "url",
+            autoValidate: true,
+          },
+        ];
+        this.fields = this.allowTarget
+          ? { ...fields }
+          : {
+              ...fields,
+              allowTarget: {
+                property: "target",
+                title: "Target",
+                inputMethod: "textfield",
+              },
+            };
+      }
+    });
+  }
+
   /**
-   * determaines commandVal based on values passed from prompt
+   * overrides RichTextEditorPromptButtonBehaviors
+   * so that href property determines
+   * whether or not to link or unlink
+   *
+   * @readonly
+   * @memberof RichTextEditorLink
    */
   get promptCommandVal() {
     return this.getPropValue("href") || undefined;
   }
 
   /**
-   * whether button is toggled
+   * overrides RichTextEditorPromptButtonBehaviors
+   * so that isToggled is based on toggled property
    *
    * @readonly
-   * @memberof RichTextEditorButton
+   * @memberof RichTextEditorLink
    */
   get isToggled() {
     return this.toggled;
   }
 
   /**
-   * updates prompt fields with selected range data
+   * overrides RichTextEditorPromptButtonBehaviors
+   * to customize for getting link innerHTML & href properties
+   *
+   * @param {object} node selected node
+   * @memberof RichTextEditorLink
    */
   getValue(node) {
     let target = node || this.rangeElement();
     return {
       ...super.getValue(),
+      target:
+        this.allowTarget && target.getAttribute
+          ? target.getAttribute("target")
+          : undefined,
       href:
         target && target.getAttribute ? target.getAttribute("href") : undefined,
     };
   }
+  /**
+   * overrides RichTextEditorPromptButtonBehaviors
+   * sets toggle based on whether the selected node has a href
+   *
+   * @memberof RichTextEditorLink
+   */
   setToggled() {
     this.toggled = !!this.getPropValue("href");
   }

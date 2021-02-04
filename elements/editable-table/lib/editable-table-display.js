@@ -12,13 +12,14 @@ import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
 /**
  * `editable-table-display`
- * ` An editor interface for editable-table`
- * @demo ./demo/editor.html
+ * `An editor interface for editable-table
  *
- * @polymer
- * @appliesMixin displayBehaviors
- * @element editable-table-display
- * @appliesMixin ResponsiveUtilityBehaviors
+ * @demo ./demo/editor.html
+ * @customElement
+ * @extends displayBehaviors
+ * @extends editableTableDisplayStyles
+ * @extends ResponsiveUtilityBehaviors
+ * @extends LitElement
  */
 class EditableTableDisplay extends displayBehaviors(
   ResponsiveUtilityBehaviors(LitElement)

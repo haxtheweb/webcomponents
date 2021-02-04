@@ -6,8 +6,11 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 /**
  * `rich-text-editor-source-code`
- * a more button to toggle collapsed buttons in the rich text editor
+ * a button to toggle source code on rich text editor
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-source-code
  * @demo ./demo/buttons.html
  */
@@ -44,7 +47,7 @@ class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
     return {
       ...super.properties,
       /**
-       * Can this button toggle?
+       * Is this button toggle?
        */
       toggled: {
         attribute: "toggled",
@@ -55,17 +58,20 @@ class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
   }
 
   /**
-   * whether button is toggled
-   *
+   * whether not button is toggled based on toggled property
+   * overriden from RichTextEditorButtonBehaviors
    * @readonly
-   * @memberof RichTextEditorButton
+   * @memberof RichTextEditorSourceCode
    */
   get isToggled() {
     return this.toggled;
   }
   /**
-   * toggles editor source code when clicked
    *
+   * callback frunction after button is clicked
+   * toggles editor view source mode
+   * (overriden from RichTextEditorButtonBehaviors)
+   * @param {object} editor
    * @memberof RichTextEditorSourceCode
    */
   commandCallback(editor, toolbar, selection) {

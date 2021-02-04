@@ -7,19 +7,19 @@ exports.RichTextEditorBehaviors = exports.RichTextEditor = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _richTextEditorButton = require("./lib/buttons/rich-text-editor-button.js");
-
 var shadow = _interopRequireWildcard(
   require("shadow-selection-polyfill/shadow.js")
 );
 
-require("./lib/singletons/rich-text-editor-selection.js");
+var _richTextEditorButton = require("./lib/buttons/rich-text-editor-button.js");
 
 require("./lib/toolbars/rich-text-editor-toolbar.js");
 
 require("./lib/toolbars/rich-text-editor-toolbar-mini.js");
 
 require("./lib/toolbars/rich-text-editor-toolbar-full.js");
+
+require("./lib/singletons/rich-text-editor-selection.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -135,7 +135,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n          :host([hidden]) {\n            display: none;\n          }\n\n          :host {\n            display: block;\n            --simple-toolbar-border-color: #ddd;\n            --simple-toolbar-border-width: 1px;\n            --simple-toolbar-button-opacity: 1;\n            --simple-toolbar-button-color: #444;\n            --simple-toolbar-bg: #ffffff;\n            --simple-toolbar-button-bg: #ffffff;\n            --simple-toolbar-button-border-color: transparent;\n            --simple-toolbar-button-toggled-opacity: 1;\n            --simple-toolbar-button-toggled-color: #222;\n            --simple-toolbar-button-toggled-bg: #ddd;\n            --simple-toolbar-button-toggled-border-color: transparent;\n            --simple-toolbar-button-hover-opacity: 1;\n            --simple-toolbar-button-hover-color: #000;\n            --simple-toolbar-button-hover-bg: #f0f0f0;\n            --simple-toolbar-button-hover-border-color: unset;\n            --simple-toolbar-button-disabled-opacity: 1;\n            --simple-toolbar-button-disabled-color: #666;\n            --simple-toolbar-button-disabled-bg: transparent;\n            --simple-toolbar-button-disabled-border-color: transparent;\n          }\n\n          :host(:focus) {\n            outline: none;\n          }\n\n          :host(.heightmax[editing]) {\n            max-height: calc(100vh - 200px);\n            overflow-y: scroll;\n          }\n\n          #container {\n            display: flex;\n            align-items: stretch;\n            justify-content: space-between;\n            width: 100%;\n          }\n          #placeholder {\n            display: none;\n            width: 100%;\n          }\n          #source,\n          #wysiwyg {\n            margin: 0;\n            padding: 0;\n            min-height: 40px;\n            cursor: pointer;\n            outline: none;\n            flex: 1 1 100%;\n            width: 100%;\n          }\n          :host(:empty) #placeholder {\n            outline: var(--rich-text-editor-border-width, 1px) dashed\n              var(--simple-toolbar-border-color);\n            margin: 10px;\n            width: calc(100% - 10px);\n          }\n\n          :host(:empty) #source:focus #placeholder,\n          :host(:empty) #source:hover #placeholder {\n            display: block;\n            margin: 0;\n            padding: 0;\n          }\n\n          #source:hover,\n          #source:focus-within,\n          :host(:not([editing][view-source])) #wysiwyg:hover,\n          :host(:not([editing][view-source])) #wysiwyg:focus,\n          :host(:not([editing][view-source])) #wysiwyg:focus-within {\n            outline: var(--rich-text-editor-border-width, 2px) solid\n              var(--rich-text-editor-focus-color, blue);\n          }\n\n          :host([editing][view-source]) #source,\n          :host([editing][view-source]) #wysiwyg {\n            resize: horizontal;\n            overflow: auto;\n            min-width: 5%;\n            max-width: 95%;\n            flex: 1 1 auto;\n            width: 50%;\n          }\n          :host([editing][view-source]) #wysiwyg {\n            cursor: not-allowed;\n            margin-right: 10px;\n            width: calc(50% - 10px);\n          }\n\n          *::selection .rich-text-editor-selection {\n            background-color: var(\n              --rich-text-editor-selection-bg,\n              rgb(146, 197, 255)\n            );\n          }\n\n          ::slotted(*:first-child) {\n            margin-top: 0;\n          }\n\n          ::slotted(*:last-child) {\n            margin-bottom: 0;\n          }\n        ",
+    "\n          :host {\n            display: block;\n          }\n          :host([hidden]) {\n            display: none;\n          }\n          :host([disabled]) {\n            cursor: not-allowed;\n          }\n          :host(:empty) {\n            opacity: 0.7;\n          }\n          :host(:focus) {\n            outline: none;\n          }\n\n          :host(.heightmax[editing]) {\n            max-height: calc(100vh - 200px);\n            overflow-y: scroll;\n          }\n\n          #container,\n          #wysiwyg {\n            display: block;\n            width: 100%;\n          }\n          #source,\n          #wysiwyg {\n            margin: 0;\n            padding: 0;\n            min-height: var(--rich-text-editor-min-height, 20px);\n            cursor: pointer;\n            outline: none;\n            flex: 1 1 100%;\n            width: 100%;\n          }\n          :host(:empty) #wysiwyg::after {\n            display: block;\n            content: attr(aria-placeholder);\n          }\n\n          :host(:hover),\n          :host(:focus-within) {\n            opacity: 1;\n            outline: var(--rich-text-editor-border-width, 1px) solid\n              var(--rich-text-editor-focus-color, blue);\n          }\n          :host([disabled]),\n          :host([view-source]) {\n            outline: none !important;\n          }\n\n          #source:hover,\n          #source:focus-within {\n            outline: var(--rich-text-editor-border-width, 1px) solid\n              var(--rich-text-editor-focus-color, blue);\n          }\n          :host([editing][view-source]) #container {\n            display: flex;\n            align-items: stretch;\n            justify-content: space-between;\n            width: 100%;\n          }\n          :host([editing][view-source]) #source,\n          :host([editing][view-source]) #wysiwyg {\n            resize: horizontal;\n            overflow: auto;\n            flex: 1 1 auto;\n            width: 50%;\n          }\n          :host([editing][view-source]) #source {\n            min-width: 300px;\n          }\n          :host([editing][view-source]) #wysiwyg {\n            cursor: not-allowed;\n            margin-right: 10px;\n            width: calc(50% - 10px);\n          }\n        ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -178,9 +178,8 @@ function _templateObject() {
     '"\n        @blur="',
     '"\n        @mouseover="',
     '"\n        @mouseout="',
-    '"\n      >\n        <div id="wysiwyg">\n          <div id="placeholder" aria-placeholder="',
-    '">\n            ',
-    '\n          </div>\n          <slot></slot>\n        </div>\n        <code-editor\n          id="source"\n          font-size="13"\n          ?hidden="',
+    '"\n      >\n        <div id="wysiwyg" aria-placeholder="',
+    '">\n          <slot></slot>\n        </div>\n        <code-editor\n          id="source"\n          font-size="13"\n          ?hidden="',
     '"\n          language="html"\n          @value-changed="',
     '"\n          word-wrap\n        >\n        </code-editor>\n      </div>',
   ]);
@@ -293,6 +292,15 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+/**
+ * RichTextEditorBehaviors
+ * @extends RichTextStyles
+ *
+ * @customElement
+ * @class
+ * @lit-html
+ * @lit-element
+ */
 var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
   return (
     /*#__PURE__*/
@@ -323,11 +331,10 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
                   return (_this2.__hovered = false);
                 },
                 this.placeholder,
-                this.placeholder,
                 !(this.viewSource && this.editing),
                 this._handleSourceChange
               );
-            }, // properties available to the custom element for data binding
+            },
           },
         ],
         [
@@ -366,6 +373,16 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
                     type: Boolean,
                     reflect: true,
                     attribute: "editing",
+                  },
+
+                  /**
+                   * don't reveal toolbar on mouseover
+                   */
+                  disabled: {
+                    name: "disabled",
+                    type: Boolean,
+                    attribute: "disabled",
+                    reflect: true,
                   },
 
                   /**
@@ -522,6 +539,7 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
         _this.type = "rich-text-editor-toolbar";
         _this.id = "";
         _this.range = undefined;
+        _this.disabled = false;
         _this.__focused = false;
         _this.__hovered = false;
         _this.editing = false;
@@ -534,6 +552,9 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
             require("@lrnwebcomponents/code-editor/code-editor.js")
           );
         });
+
+        _this.setAttribute("tabindex", 1);
+
         document.addEventListener(shadow.eventName, _this._getRange.bind(root));
         return _this;
       }
@@ -558,7 +579,7 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
 
             setTimeout(function () {
               _this3.register();
-            }, 1);
+            }, 500);
           },
           /**
            * life cycle, element is disconnected
@@ -608,6 +629,13 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
 
             changedProperties.forEach(function (oldValue, propName) {
               if (propName === "editing") _this4._editableChange();
+
+              if (propName === "disabled") {
+                _this4.disableEditing();
+
+                _this4.setAttribute("tabindex", _this4.disabled ? -1 : 0);
+              }
+
               if (propName === "range") _this4._rangeChange();
               if (propName === "rawhtml" && !!_this4.rawhtml)
                 _this4.setHTML(_this4.rawhtml);
@@ -623,6 +651,12 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
             });
             if (!this.innerHTML) this.innerHTML = "";
           },
+          /**
+           * removes contenteditable and cleans HTML
+           *
+           * @event editing-disabled
+           * @memberof RichTextEditor
+           */
         },
         {
           key: "disableEditing",
@@ -639,6 +673,13 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
               })
             );
           },
+          /**
+           * adds contenteditable and cleans HTML
+           *
+           * @event editing-endabled
+           * @memberof RichTextEditor
+           *
+           */
         },
         {
           key: "enableEditing",
@@ -655,11 +696,15 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
               })
             );
           },
+          /**
+           * focuses on the contenteditable region
+           * @memberof RichTextEditor
+           */
         },
         {
           key: "focus",
           value: function focus() {
-            this.__focused = true;
+            if (!this.disabled) this.__focused = true;
             this.dispatchEvent(
               new CustomEvent("focus", {
                 bubbles: true,
@@ -669,6 +714,12 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
               })
             );
           },
+          /**
+           * gets cleaned HTML from the editor
+           *
+           * @returns {string}
+           * @memberof RichTextEditor
+           */
         },
         {
           key: "getHTML",
@@ -820,7 +871,7 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
             return html;
           },
           /**
-           *
+           * sets editor HTML
            *
            * @param {string} [rawhtml=""]
            * @memberof RichTextEditor
@@ -833,8 +884,9 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
               arguments.length > 0 && arguments[0] !== undefined
                 ? arguments[0]
                 : "";
-            this.innerHTML = rawhtml.trim();
-            this.setCancelHTML(rawhtml.trim());
+            var html = this.sanitizeHTML(rawhtml).trim();
+            this.innerHTML = html;
+            this.setCancelHTML(html);
             if (this.isEmpty()) this.innerHTML = "";
 
             this._editableChange();
@@ -859,7 +911,7 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
            * gets trimmed version of innerHTML
            *
            * @param {obj} node
-           * @returns string
+           * @returns {string}
            * @memberof RichTextEditor
            */
         },
@@ -869,6 +921,12 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
             var str = node ? node.innerHTML : undefined;
             return this.trimString(str);
           },
+          /**
+           * cleans and trims a string of HTML so that it has no extra spaces
+           *
+           * @param {string} str
+           * @returns {string}
+           */
         },
         {
           key: "trimString",
@@ -891,7 +949,7 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
             );
           },
           /**
-           * updates editor placeholder and watches for range changes
+           * watches for range changes
            *
            * @memberof RichTextEditor
            */
@@ -899,11 +957,35 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
         {
           key: "_editableChange",
           value: function _editableChange() {
+            var _this5 = this;
+
+            var keyPress = function keyPress(e) {
+              if (_this5.isEmpty() && e.key) {
+                _this5.innerHTML = e.key
+                  .replace(">", "&gt;")
+                  .replace("<", "&lt;")
+                  .replace("&", "&amp;");
+
+                var range = _this5._getRange();
+
+                _this5.range.selectNodeContents(_this5);
+
+                _this5.range.collapse();
+              }
+            };
+
             if (this.editing) {
+              this.addEventListener("keypress", keyPress);
               this.setCancelHTML();
-              if (this.isEmpty()) this.innerHTML = "";
+            } else {
+              this.removeEventListener("keypress", keyPress);
             }
           },
+          /**
+           * gets range from shadowDOM
+           *
+           * @returns {range}
+           */
         },
         {
           key: "_getRange",
@@ -917,6 +999,7 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
               ? shadow.getRange(shadowRoot(this))
               : undefined;
             if (this.updateRange) this.updateRange();
+            return this.range;
           },
           /**
            * Handles paste.
@@ -958,7 +1041,7 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
         {
           key: "_handleSourceChange",
           value: function _handleSourceChange(e) {
-            var _this5 = this;
+            var _this6 = this;
 
             if (!this.__needsUpdate) {
               var _html = "".concat(this.innerHTML),
@@ -969,13 +1052,19 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
               this.__needsUpdate = cleanCode.localeCompare(cleanHTML);
 
               var update = function update() {
-                _this5.__needsUpdate = false;
-                _this5.innerHTML = e.detail.value;
+                _this6.__needsUpdate = false;
+                _this6.innerHTML = e.detail.value;
               };
 
               if (this.__needsUpdate) setTimeout(update.bind(this), 300);
             }
           },
+          /**
+           * cleans up indents and extra spaces in HTML string for source code editor
+           *
+           * @param {string} [str=""]
+           * @returns {string}
+           */
         },
         {
           key: "_outdentHTML",
@@ -995,10 +1084,15 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
             str = regex ? str.replace(regex, "\n ") : str;
             return str;
           },
+          /**
+           * hangles show/hide view source
+           *
+           * @param {event} e
+           */
         },
         {
           key: "_handleViewSourceChange",
-          value: function _handleViewSourceChange() {
+          value: function _handleViewSourceChange(e) {
             var code = this.shadowRoot
               ? this.shadowRoot.querySelector("#source")
               : undefined;
@@ -1016,6 +1110,11 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
               );
             }
           },
+          /**
+           * handles range changes (can be overridden)
+           *
+           * @param {event} e
+           */
         },
         {
           key: "_rangeChange",
@@ -1035,9 +1134,23 @@ var RichTextEditorBehaviors = function RichTextEditorBehaviors(SuperClass) {
 };
 /**
  * `rich-text-editor`
- * @element rich-text-editor
  * a standalone rich text editor
+ * (can customize by extending RichTextEditorBehaviors)
+### Styling
+
+`<rich-text-editor>`  uses RichTextStyles variables, 
+as well as an additional style:
+
+Custom property | Description | Default
+----------------|-------------|----------
+--rich-text-editor-min-height | minimum height of editor | 20px
  *
+ * @extends RichTextEditorBehaviors
+ * @extends LitElement
+ * @customElement
+ * @element rich-text-editor
+ * @lit-html
+ * @lit-element
  * @demo ./demo/index.html demo
  * @demo ./demo/mini.html mini floating toolbar
  * @demo ./demo/full.html toolbar with breadcrumb

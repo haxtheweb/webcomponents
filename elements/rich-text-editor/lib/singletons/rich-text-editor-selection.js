@@ -3,13 +3,15 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextStyles } from "../buttons/rich-text-editor-button.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `rich-text-editor-selection`
- * `a button for rich text editor (custom buttons can extend this)`
+ * singleton to manage selections, clipboards, ranges, and associations between all editors and toolbars
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-selection
  * @demo ./demo/selection.html
  */
@@ -18,7 +20,6 @@ class RichTextEditorSelection extends LitElement {
    * gets valid commands list
    *
    * @readonly
-   * @memberof RichTextEditorButton
    */
   get validCommands() {
     return [
@@ -389,7 +390,7 @@ class RichTextEditorSelection extends LitElement {
       handlers = {
         click: (e) => this._handleEditorClick(editor, e),
         focus: (e) => {
-          if (!toolbar.__promptOpen) this.edit(editor);
+          if (!toolbar.__promptOpen && !editor.disabled) this.edit(editor);
         },
         getrange: (e) => {
           if (!toolbar.__promptOpen) {
@@ -438,11 +439,9 @@ class RichTextEditorSelection extends LitElement {
       },
       disableediting: (e) => this.disableEditing((e.detail || {}).editor),
       highlight: (e) => {
-        e.stopImmediatePropagation();
         this.highlight(toolbar, e.detail);
       },
       highlightnode: (e) => {
-        e.stopImmediatePropagation();
         this.highlightNode(e.detail, toolbar);
       },
       pastefromclipboard: (e) => {
@@ -461,19 +460,15 @@ class RichTextEditorSelection extends LitElement {
         this.selectRange(this.range, (e.detail || {}).editor);
       },
       selectnode: (e) => {
-        e.stopImmediatePropagation();
         this.selectNode(e.detail, toolbar.range, toolbar.editor);
       },
       selectnodecontents: (e) => {
-        e.stopImmediatePropagation();
         this.selectNodeContents(e.detail, toolbar.range, toolbar.editor);
       },
       selectrange: (e) => {
-        e.stopImmediatePropagation();
         this.selectRange(e.detail, toolbar.editor);
       },
       wrapselection: (e) => {
-        e.stopImmediatePropagation();
         this.surroundRange(e.detail, toolbar.range);
       },
     };
@@ -548,6 +543,14 @@ class RichTextEditorSelection extends LitElement {
     }
     return range;
   }
+  /**
+   * sets range to content within a node
+   *
+   * @param {object} node
+   * @param {range} range
+   * @returns
+   * @memberof RichTextEditorSelection
+   */
   surroundRange(node, range) {
     if (range) {
       range.surroundContents(node);
@@ -555,7 +558,13 @@ class RichTextEditorSelection extends LitElement {
     }
     return range;
   }
-
+  /**
+   * maintains consistent range info across toolbar and editor
+   *
+   * @param {object} editor
+   * @param {range} range
+   * @memberof RichTextEditorSelection
+   */
   updateRange(editor, range) {
     if (editor) {
       let toolbar = this.getConnectedToolbar(editor);
@@ -598,7 +607,7 @@ class RichTextEditorSelection extends LitElement {
     }
   }
   /**
-   *
+   * handles commands sent from toolbar
    *
    * @param {object} toolbar toolbar element
    * @param {string} command command string
@@ -627,17 +636,28 @@ class RichTextEditorSelection extends LitElement {
     } else if (command === "viewSource") {
     }
   }
-
+  /**
+   * handles clicking on an editor
+   * so that some elements can be clicked to open an edit prompt
+   *
+   * @param {object} editor
+   * @param {event} e
+   * @returns
+   * @memberof RichTextEditorSelection
+   */
   _handleEditorClick(editor, e) {
-    if (!editor.__focused) {
-      editor.focus();
-    } else {
-      let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
-        els = !toolbar ? [] : Object.keys(toolbar.clickableElements || {}),
+    if (!editor || editor.disabled) return;
+    let toolbar = this.getConnectedToolbar(editor),
+      focused = editor.__focused;
+    if (!toolbar || toolbar.editor !== editor) this.edit(editor);
+    editor.focus();
+    if (focused) {
+      let els = !toolbar ? [] : Object.keys(toolbar.clickableElements || {}),
         el = e.target || e.srcElement || { tagName: "" },
         evt = { detail: el },
         tagname = (el.tagName || "").toLowerCase();
       if (tagname && els.includes(tagname)) {
+        console.log(el);
         e.preventDefault();
         toolbar.clickableElements[tagname](evt);
       }
@@ -712,7 +732,6 @@ class RichTextEditorSelection extends LitElement {
 
   static get styles() {
     return [
-      ...RichTextStyles,
       css`
         :host {
   background-color: var(--rich-text-editor-selection-bg, rgb(146, 197, 255));

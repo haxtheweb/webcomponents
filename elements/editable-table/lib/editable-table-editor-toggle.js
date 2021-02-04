@@ -12,18 +12,9 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * `editable-table-editor-toggle`
  * A toggle button for an property in editable-table interface (editable-table.html).
  *
- ```<editable-table-editor-toggle
-  hidden                           //Hide and disable this toggle? Default is false.
-  label="Condensed"                //label for toggle button
-  prop="condensed"                 //property controlled by this toggle
-  tooltip="Condense cell height."  //A tooltip for this toggle.
-  value="true">                    //value of this toggle.
-</editable-table-editor-toggle>```
- *  
  * @demo ./demo/editor.html
- * 
- * @polymer
- * @element editable-table-editor-toggle
+ * @customElement
+ * @extends LitElement
  */
 class EditableTableEditorToggle extends LitElement {
   static get styles() {

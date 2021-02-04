@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextStyles } from "../buttons/rich-text-editor-button.js";
+import { RichTextToolbarStyles } from "../buttons/rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "./rich-text-editor-selection.js";
@@ -11,20 +11,16 @@ import "./rich-text-editor-selection.js";
  * `rich-text-editor-prompt`
  * `A utility that manages state of multiple rich-text-prompts on one page.`
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-prompt
  */
 class RichTextEditorPrompt extends LitElement {
   static get styles() {
     return [
-      ...RichTextStyles,
+      ...RichTextToolbarStyles,
       css`
-        :host {
-          --simple-fields-color: var(--simple-toolbar-focus-color, #000);
-          --simple-fields-invalid-color: var(
-            --simple-toolbar-error-color,
-            #800
-          );
-        }
         #prompt {
           display: block;
           width: 300px;
@@ -55,26 +51,26 @@ class RichTextEditorPrompt extends LitElement {
           min-width: unset;
         }
         #cancel {
-          color: var(--simple-toolbar-button-color);
-          background-color: var(--simple-toolbar-button-bg);
+          color: var(--rich-text-editor-button-color);
+          background-color: var(--rich-text-editor-button-bg);
         }
         #cancel:focus,
         #cancel:hover {
-          color: var(--simple-toolbar-button-hover-color);
-          background-color: var(--simple-toolbar-button-hover-bg);
+          color: var(--rich-text-editor-button-hover-color);
+          background-color: var(--rich-text-editor-button-hover-bg);
         }
         #confirm {
-          color: var(--simple-toolbar-button-color);
-          background-color: var(--simple-toolbar-button-bg);
+          color: var(--rich-text-editor-button-color);
+          background-color: var(--rich-text-editor-button-bg);
         }
         #confirm:focus,
         #confirm:hover {
-          color: var(--simple-toolbar-button-hover-color);
-          background-color: var(--simple-toolbar-button-hover-bg);
+          color: var(--rich-text-editor-button-hover-color);
+          background-color: var(--rich-text-editor-button-hover-bg);
         }
         .actions {
-          width: 100%;
-          padding-bottom: 3px;
+          width: calc(100% - 20px);
+          padding: 0 10px 3px;
           display: flex;
           align-items: center;
           justify-content: flex-end;
@@ -182,10 +178,6 @@ class RichTextEditorPrompt extends LitElement {
     };
   }
 
-  get hidden() {
-    return !this.__opened;
-  }
-
   /**
    * Makes sure there is a utility ready and listening for elements.
    */
@@ -201,6 +193,21 @@ class RichTextEditorPrompt extends LitElement {
       return this;
     }
   }
+  /**
+   * hides prompt when not open
+   *
+   * @readonly
+   * @memberof RichTextEditorPrompt
+   */
+  get hidden() {
+    return !this.__opened;
+  }
+  /**
+   * gets RichTextEditorSelection singleton for range management
+   *
+   * @readonly
+   * @memberof RichTextEditorPrompt
+   */
   get selection() {
     return window.RichTextEditorSelection.requestAvailability();
   }
@@ -219,18 +226,51 @@ class RichTextEditorPrompt extends LitElement {
         setTimeout(this._handleChange.bind(this), 300);
     });
   }
+  /**
+   * sets focus when prompt is ready
+   *
+   * @param {event} e
+   * @memberof RichTextEditorPrompt
+   */
   _handleReady(e) {
     e.detail.focus();
   }
+  /**
+   * handles focus so that RichTextEditorSelection
+   * can track whether prompt has focus
+   *
+   * @param {event} e
+   * @memberof RichTextEditorPrompt
+   */
   _handleFocus(e) {
     this.__focused = true;
   }
+  /**
+   * handles blur so that RichTextEditorSelection
+   * can track whether prompt has focus
+   *
+   * @param {event} e
+   * @memberof RichTextEditorPrompt
+   */
   _handleBlur(e) {
     this.__focused = false;
   }
+  /**
+   * handles changes in open, focus, or hover status
+   * to cancel prompt if needed
+   *
+   * @param {event} e
+   * @memberof RichTextEditorPrompt
+   */
   _handleChange(e) {
     if (this.__opened && !this.__focused && !this.__hovered) this._cancel();
   }
+  /**
+   * opens prompt and generates for fields
+   *
+   * @param {event} e event that opens the prompt
+   * @memberof RichTextEditorPrompt
+   */
   open(e) {
     if (e) {
       this.__opened = true;
@@ -242,6 +282,11 @@ class RichTextEditorPrompt extends LitElement {
       this.value = { ...e.detail.value };
     }
   }
+  /**
+   * closes prompt
+   *
+   * @memberof RichTextEditorPrompt
+   */
   close() {
     this.__opened = false;
     this.__focused = false;
@@ -251,7 +296,7 @@ class RichTextEditorPrompt extends LitElement {
   }
 
   /**
-   * Handles cancel button
+   * handles cancel button
    * @param {event} e event
    * @returns {void}
    */

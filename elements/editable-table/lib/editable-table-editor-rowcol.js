@@ -17,10 +17,9 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * A header label and menu for inserting and deleting a row or a column of editable-table interface (editable-table.html).
  *
  * @demo ./demo/editor.html
- *
- * @polymer
- * @element editable-table-editor-rowcol
- * @appliesMixin cellBehaviors
+ * @customElement
+ * @extends cellBehaviors
+ * @extends A11yMenuButton
  */
 class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
   static get styles() {

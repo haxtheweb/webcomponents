@@ -9,6 +9,11 @@ import "./rich-text-editor-breadcrumbs.js";
  * `rich-text-editor-toolbar-full`
  * `a full toolbar with breadcrumbs for the rich text editor`
  *
+ * @customElement
+ * @extends RichTextEditorToolbarBehaviors
+ * @extends LitElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-toolbar-full
  * @demo ./demo/index.html demo
  * @demo ./demo/full.html toolbar with breadcrumb
@@ -42,6 +47,12 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
   constructor() {
     super();
   }
+  /**
+   * overriden default to enable breadcrums
+   *
+   * @readonly
+   * @memberof RichTextEditorToolbarFull
+   */
   get hasBreadcrumbs() {
     return true;
   }

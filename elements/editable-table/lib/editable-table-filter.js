@@ -15,8 +15,8 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
  * `Displays a cell in editable-table-display mode (editable-table-display.html) as a filter button.`
  *
  * @demo ./demo/display.html
- * @polymer
- * @element editable-table-editor-filter
+ * @customElement
+ * @extends LitElement
  */
 class EditableTableFilter extends LitElement {
   static get styles() {
