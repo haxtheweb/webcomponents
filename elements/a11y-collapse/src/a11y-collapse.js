@@ -29,8 +29,9 @@ Custom property | Description | Default
 `--a11y-collapse-overflow-y` | override default overflow behavior | hidden
 `--a11y-collapse-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works
  *
- * @element a11y-collapse
- * @demo ./demo/index.html demo
+ * @customElement
+ * @extends LitElement
+ * @demo demo/index.html
  * @demo ./demo/group.html collapse groups
  */
 class A11yCollapse extends LitElement {

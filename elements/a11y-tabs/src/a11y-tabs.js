@@ -76,11 +76,13 @@ Custom property | Description | Default
 `--a11y-tabs-content-padding` | padding for content of tab | 16px
 `--a11y-tabs-content-background` | background color for content of tab | `--a11y-tabs-background`
  *
+ * @customElement
+ * @extends LitElement
+ * @extends ResponsiveUtilityBehaviors
  * @demo ./demo/index.html
  * @demo ./demo/vertical.html Always Vertical
  * @demo ./demo/breakpoints.html Breakpoints
  * @demo ./demo/sticky.html Sticky Tabs
- * @element a11y-tabs
  */
 class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -220,7 +222,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         filtered = enabled.filter((tabid) => tabid === id),
         selected = filtered[0] || enabled[0];
       tabs.forEach((tab) => {
-        tab.hidden = tab.id !== selected;
+        tab.inactive = tab.id !== selected;
       });
       this.activeTab = selected;
     }
