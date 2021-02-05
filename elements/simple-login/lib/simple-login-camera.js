@@ -223,22 +223,21 @@ class SimpleLoginCamera extends HTMLElement {
     return `
       <style>
         :host {
-          width: var(--simple-login-camera-width, 200px);
-          height: var(--simple-login-camera-height, 200px);
+          display: flex;
         }
         #wrapper {
+          overflow: hidden;
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
+          flex-wrap: wrap;
           position: relative;
           background-color: var(--simple-login-camera-background, var(--background-color, #ccc));
-          width: var(--simple-login-camera-width, 200px);
-          height: var(--simple-login-camera-height, 200px);
         }
         video {
-          width: calc(var(--simple-login-camera-height, 200px) * 16 / 9);
-          height: var(--simple-login-camera-height, 200px);
+          margin-left: calc(100% * var(--simple-login-camera-aspect, 1) / 2 - 177.77777777777% / 2);
+          width: calc(177.77777777777% / var(--simple-login-camera-aspect, 1));
           background-color: rgba(0, 0, 0, 0);
         }
         .error {
