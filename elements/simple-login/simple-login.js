@@ -32,8 +32,6 @@ class SimpleLogin extends SimpleColors {
           height: var(--login-form-height, auto);
           --simple-camera-snap-color: var(--login-form-color, #36bed4);
           --simple-camera-snap-error: var(--login-form-error, red);
-          --simple-camera-snap-width: var(--login-form-image-width, 200px);
-          --simple-camera-snap-height: var(--login-form-image-height, 200px);
           --simple-camera-snap-background: var(--login-form-background, white);
           --simple-camera-snap-border-radius: var(
             --login-form-image-bnorder-radius,

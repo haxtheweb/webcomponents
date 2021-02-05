@@ -31,24 +31,26 @@ class SimpleCameraSnap extends HTMLElement {
     return `
     <style>
       :host {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
         /* style simple-login-camera according to simple-login-snap styles */
         --simple-login-camera-background: var(--simple-camera-snap-color, #36bed4);
         --simple-login-camera-error: var(--simple-camera-snap-error, red);
         --simple-login-avatar-color: var(--simple-camera-snap-color, #36bed4);
-        --simple-login-camera-width: var(--simple-camera-snap-width, 200px);
-        --simple-login-camera-height: var(--simple-camera-snap-height, 200px);
+        --simple-login-camera-size: var(--simple-camera-snap-height, calc(var(--simple-camera-snap-width, unset) * 16/9));
 
         /* style simple-login-avatar according to simple-login-snap styles */
         --simple-login-avatar-background: var(--simple-camera-snap-background, white);
         --simple-login-avatar-border-radius: var(--simple-camera-snap-border-radius,100%);
-        --simple-login-avatar-width: var(--simple-camera-snap-width, 200px);
-        --simple-login-avatar-height: var(--simple-camera-snap-height, 200px);
+      }
+      :host([hidden]) {
+        display: none !important;
       }
       #selfie {
         position: absolute;
         margin: 0;
-        width: var(--simple-camera-snap-width, 200px);
-        height: var(--simple-camera-snap-height, 200px);
         display: flex;
         justify-content: center;
       }
@@ -65,13 +67,11 @@ class SimpleCameraSnap extends HTMLElement {
       #selfie img {
         z-index: 2;
         position: absolute;
-        width: calc(var(--simple-camera-snap-height, 200px) * 16 / 9);
-        height: var(--simple-camera-snap-height, 200px);
       }
       .buttons {
         display: flex;
-        width: var(--simple-camera-snap-width, 200px);
-        justify-content: space-evenly;
+        width: 100%;
+        justify-content: space-around;
         position: var(--simple-camera-snap-button-container-position);
         bottom: var(--simple-camera-snap-button-container-bottom);
         z-index: var(--simple-camera-snap-button-container-z-index);
