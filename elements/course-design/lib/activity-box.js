@@ -38,6 +38,27 @@ class ActivityBox extends LitElement {
         :host([icon="sop"]) simple-icon {
           left: var(--activity-box-icon-sop-left, 0px);
         }
+        .tag {
+          padding: var(--activity-box-content-padding, 0px 0px 0px 85px);
+        }
+        .tag > span {
+          background-color: #fff;
+          color: var(--elmsln-system-color-dark);
+          padding: 3px 10px;
+          line-height: 10px;
+          font-weight: bold;
+        }
+        .tag > span > simple-icon {
+          display: inline;
+          left: 0px !important;
+          --simple-icon-height: 23px;
+          --simple-icon-width: 23px;
+          --simple-icon-color: var(--elmsln-system-color-dark);
+          display: inline;
+          position: inherit;
+          float: none;
+          line-height: 17px;
+        }
         .pullout {
           padding-left: 48px;
           color: white;
@@ -90,6 +111,12 @@ class ActivityBox extends LitElement {
               sop: "Standard Operating Procedure",
             },
           },
+          {
+            property: "tag",
+            title: "Activity box tag",
+            description: "The tag to be displayed within the activity box",
+            inputMethod: "textfield",
+          },
         ],
         advanced: [],
       },
@@ -112,6 +139,11 @@ class ActivityBox extends LitElement {
         type: String,
         reflect: true,
       },
+      /* Tag to be shown above the slotted content */
+      tag: {
+        type: String,
+        reflect: true,
+      },
       /* The variable used for passing the icon to the simple-icon component */
       _simpleIcon: {
         type: String,
@@ -128,6 +160,7 @@ class ActivityBox extends LitElement {
   constructor() {
     super();
     this.icon = "bulb";
+    this.tag = "";
     this._simpleIcon = this.icon;
     this._simpleIconSource = "";
   }
@@ -180,6 +213,14 @@ class ActivityBox extends LitElement {
                 ?no-colorize=${this._simpleIconSource}
               ></simple-icon>
             `
+          : html``}
+        ${this.tag
+          ? html`<div class="tag">
+              <span
+                ><simple-icon icon="check-circle"></simple-icon>${this
+                  .tag}</span
+              >
+            </div>`
           : html``}
         <div class="pullout"><slot></slot></div>
       </div>
