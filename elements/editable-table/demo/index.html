@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
     <title>editable-table demo</title>
-
-    
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
 
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
     <script type="module">
       import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
       import "@polymer/iron-demo-helpers/demo-snippet.js";
@@ -63,12 +62,13 @@
               bordered 
               condensed 
               filter 
+              printable
               responsive
               sort 
               striped>
                 <table>
                   <caption>
-                    Is it a sandwich? Food classification chart.
+                    Is it a <em>sandwich</em>? Food classification chart.
                   </caption>
                   <thead>
                     <tr>
@@ -82,37 +82,37 @@
                     <tr>
                       <th scope="row">Hamburger</th>
                       <td>one bun, split into two</td>
-                      <td>meat, vegetables, cheese, and/or condiments</td>
+                      <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
                       <td>horizontal</td>
                     </tr>
                     <tr>
                       <th scope="row">Hoagie</th>
                       <td>one bun</td>
-                      <td>meat, vegetables, cheese, and/or condiments</td>
+                      <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
                       <td>vertical</td>
                     </tr>
                     <tr>
                       <th scope="row">Hot Dog</th>
                       <td>one bun</td>
-                      <td>meat, vegetables, cheese, and/or condiments</td>
+                      <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
                       <td>vertical</td>
                     </tr>
                     <tr>
                       <th scope="row">Hot Pocket</th>
                       <td>two crusts sealed together</td>
-                      <td>meat, vegetables, cheese, and/or condiments</td>
+                      <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
                       <td>horizontal</td>
                     </tr>
                     <tr>
                       <th scope="row">Pie</th>
                       <td>two crusts sealed together</td>
-                      <td>fruit or meat, vegetables, and/or cheese</td>
+                      <td>fruit or meat, vegetables, <i>and/or</i> cheese</td>
                       <td>horizontal</td>
                     </tr>
                     <tr>
                       <th scope="row">Taco</th>
                       <td>one shell</td>
-                      <td>meat, vegetables, cheese, and/or condiments</td>
+                      <td>meat, vegetables, cheese, <i>and/or</i> condiments</td>
                       <td>vertical</td>
                     </tr>
                   </tbody>

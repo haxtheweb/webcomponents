@@ -3,8 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
-import { RichTextEditorButtonStyles } from "../buttons/rich-text-editor-button-styles.js";
+import { RichTextToolbarStyles } from "../buttons/rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "./rich-text-editor-selection.js";
@@ -12,22 +11,16 @@ import "./rich-text-editor-selection.js";
  * `rich-text-editor-prompt`
  * `A utility that manages state of multiple rich-text-prompts on one page.`
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-prompt
  */
-class RichTextEditorPrompt extends RichTextEditorButtonStyles(
-  RichTextEditorStyles(LitElement)
-) {
+class RichTextEditorPrompt extends LitElement {
   static get styles() {
     return [
-      ...super.styles,
+      ...RichTextToolbarStyles,
       css`
-        :host {
-          --simple-fields-color: var(--rich-text-editor-focus-color, #000);
-          --simple-fields-invalid-color: var(
-            --rich-text-editor-error-color,
-            #800
-          );
-        }
         #prompt {
           display: block;
           width: 300px;
@@ -76,8 +69,8 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
           background-color: var(--rich-text-editor-button-hover-bg);
         }
         .actions {
-          width: 100%;
-          padding-bottom: 3px;
+          width: calc(100% - 20px);
+          padding: 0 10px 3px;
           display: flex;
           align-items: center;
           justify-content: flex-end;
@@ -90,40 +83,46 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
   }
   render() {
     return html`
-      <simple-popover id="prompt" auto for="${this.for}" ?hidden="${!this.for}">
-        <form id="form">
+      <simple-popover
+        id="prompt"
+        ?auto="${!this.hidden}"
+        for="${this.selection ? this.selection.id : ""}"
+        ?hidden="${this.hidden}"
+        position="bottom"
+        position-align="center"
+        .target="${this.selection}"
+      >
+        <form
+          id="form"
+          @blur="${this._handleBlur}"
+          @focus="${this._handleFocus}"
+        >
           <simple-fields
             id="formfields"
-            autofocus
             hide-line-numbers
             .fields="${this.fields}"
+            @fields-ready="${this._handleReady}"
             .value="${this.value}"
           ></simple-fields>
           <div class="actions">
-            <button
+            <rich-text-editor-button
               id="cancel"
-              class="rtebutton"
-              controls="${this.for}"
+              controls="${this.selection ? this.selection.id : ""}"
+              label="Cancel"
+              icon="clear"
               @click="${this._cancel}"
               tabindex="0"
             >
-              <simple-icon-lite id="icon" aria-hidden="true" icon="clear">
-              </simple-icon-lite>
-              <span id="label" class="offscreen">Cancel</span>
-            </button>
-            <simple-tooltip id="tooltip" for="cancel">Cancel</simple-tooltip>
-            <button
+            </rich-text-editor-button>
+            <rich-text-editor-button
               id="confirm"
-              class="rtebutton"
-              controls="${this.for}"
+              controls="${this.selection ? this.selection.id : ""}"
               @click="${this._confirm}"
+              icon="check"
+              label="OK"
               tabindex="0"
             >
-              <simple-icon-lite id="icon" aria-hidden="true" icon="check">
-              </simple-icon-lite>
-              <span id="label" class="offscreen">OK</span>
-            </button>
-            <simple-tooltip id="tooltip" for="confirm">OK</simple-tooltip>
+            </rich-text-editor-button>
           </div>
         </form>
       </simple-popover>
@@ -147,28 +146,34 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
         type: Array,
       },
       /**
-       * Is  target id.
-       */
-      for: {
-        type: String,
-      },
-      /**
        * selected text.
        */
       range: {
         type: Object,
       },
       /**
-       * selected node withing range
-       * /
-      selectedNode: {
-        type: Object
-      },
-      /**
        * prefilled value of prompt
        */
       value: {
         type: Object,
+      },
+      /**
+       * whether prompt has focus
+       */
+      __focused: {
+        type: Boolean,
+      },
+      /**
+       * whether prompt is hovered
+       */
+      __hovered: {
+        type: Boolean,
+      },
+      /**
+       * whether prompt isopen
+       */
+      __opened: {
+        type: Boolean,
       },
     };
   }
@@ -178,51 +183,126 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    */
   constructor() {
     super();
-    this.__selection = window.RichTextEditorSelection.requestAvailability();
     window.addEventListener(
       "rich-text-editor-prompt-open",
       this.open.bind(this)
     );
-
     // sets instance to current instance
     if (!window.RichTextEditorPrompt.instance) {
       window.RichTextEditorPrompt.instance = this;
       return this;
     }
   }
-
   /**
-   * life cycle, element is afixed to DOM
-   * Makes sure there is a utility ready and listening for elements.
+   * hides prompt when not open
+   *
+   * @readonly
+   * @memberof RichTextEditorPrompt
    */
-  connectedCallback() {
-    super.connectedCallback();
+  get hidden() {
+    return !this.__opened;
   }
+  /**
+   * gets RichTextEditorSelection singleton for range management
+   *
+   * @readonly
+   * @memberof RichTextEditorPrompt
+   */
+  get selection() {
+    return window.RichTextEditorSelection.requestAvailability();
+  }
+  firstUpdated(changedProperties) {
+    this.selection.addEventListener("change", (e) =>
+      setTimeout(this._handleChange(e), 300)
+    );
+    this.addEventListener("focus", this._handleFocus);
+    this.addEventListener("focus", this._handleFocus);
+    this.addEventListener("blur", this._handleBlur);
+  }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (["__focused", "__hovered", "__opened"].includes(propName))
+        setTimeout(this._handleChange.bind(this), 300);
+    });
+  }
+  /**
+   * sets focus when prompt is ready
+   *
+   * @param {event} e
+   * @memberof RichTextEditorPrompt
+   */
+  _handleReady(e) {
+    e.detail.focus();
+  }
+  /**
+   * handles focus so that RichTextEditorSelection
+   * can track whether prompt has focus
+   *
+   * @param {event} e
+   * @memberof RichTextEditorPrompt
+   */
+  _handleFocus(e) {
+    this.__focused = true;
+  }
+  /**
+   * handles blur so that RichTextEditorSelection
+   * can track whether prompt has focus
+   *
+   * @param {event} e
+   * @memberof RichTextEditorPrompt
+   */
+  _handleBlur(e) {
+    this.__focused = false;
+  }
+  /**
+   * handles changes in open, focus, or hover status
+   * to cancel prompt if needed
+   *
+   * @param {event} e
+   * @memberof RichTextEditorPrompt
+   */
+  _handleChange(e) {
+    if (this.__opened && !this.__focused && !this.__hovered) this._cancel();
+  }
+  /**
+   * opens prompt and generates for fields
+   *
+   * @param {event} e event that opens the prompt
+   * @memberof RichTextEditorPrompt
+   */
   open(e) {
     if (e) {
-      this.for = this.__selection.id;
+      this.__opened = true;
+      this.shadowRoot.querySelector("#cancel").focus();
       this.button = e.detail;
-      this.editor = this.button.editor;
       this.fields = [...e.detail.fields];
+      this.__selection = e.detail.__selection;
+      this.selectedNode = e.detail.selectedNode;
       this.value = { ...e.detail.value };
     }
   }
+  /**
+   * closes prompt
+   *
+   * @memberof RichTextEditorPrompt
+   */
   close() {
-    this.for = undefined;
+    this.__opened = false;
+    this.__focused = false;
     this.button = undefined;
-    this.editor = undefined;
     this.fields = [];
     this.value = {};
   }
 
   /**
-   * Handles cancel button
+   * handles cancel button
    * @param {event} e event
    * @returns {void}
    */
   _cancel(e) {
-    e.preventDefault();
-    this.button.cancel();
+    if (e) e.preventDefault();
+    if (this.button) this.button.cancel();
     this.close();
   }
   /**

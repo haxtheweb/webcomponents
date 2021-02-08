@@ -47,8 +47,6 @@ class SimpleLoginAvatar extends HTMLElement {
       :host {
         margin: 0;
         display: block;
-        width: var(--simple-login-avatar-width, 200px);
-        height: var(--simple-login-avatar-height, 200px);
         @apply --simple-login-avatar;
       }
       :host([hidden]){ 
@@ -56,15 +54,15 @@ class SimpleLoginAvatar extends HTMLElement {
       } 
       #svg {
         position: absolute;
-        width: var(--simple-login-avatar-width, 200px);
-        height: var(--simple-login-avatar-height, 200px);
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
         fill: var(--simple-login-avatar-background, white);
       }
       .avatar {
         position:relative;
         margin: 0 auto;
-        width: var(--simple-login-avatar-width, 200px);
-        height: var(--simple-login-avatar-height, 200px);
         display: block;
         overflow: hidden;
         text-decoration: none;

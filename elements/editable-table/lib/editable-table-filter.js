@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { editableTableCellStyles } from "./editable-table-behaviors.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -11,45 +12,18 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `editable-table-editor-filter`
- * `Displays a cell in the editable-table-display mode (editable-table-display.html) as a filter button.`
+ * `Displays a cell in editable-table-display mode (editable-table-display.html) as a filter button.`
  *
  * @demo ./demo/display.html
- * @polymer
- * @element editable-table-editor-filter
+ * @customElement
+ * @extends LitElement
  */
 class EditableTableFilter extends LitElement {
   static get styles() {
     return [
+      ...(super.styles || []),
+      ...editableTableCellStyles,
       css`
-        button {
-          padding: var(--editable-table-cell-padding, 0);
-          margin: 0;
-          width: auto;
-          min-width: unset;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          align-content: stretch;
-          text-transform: unset;
-          font-family: var(--editable-table-font-family);
-          background-color: transparent;
-          border: none;
-          border-radius: 0;
-        }
-        button > div {
-          flex-grow: 1;
-        }
-        simple-icon-lite {
-          min-width: 24px;
-        }
-        .sr-only {
-          position: absolute;
-          left: -9999px;
-          font-size: 0;
-          height: 0;
-          width: 0;
-          overflow: hidden;
-        }
         #filter-off {
           opacity: 0.25;
         }
@@ -67,8 +41,8 @@ class EditableTableFilter extends LitElement {
   }
   render() {
     return html`
-      <button id="button" class="container" @click="${this._onFilterClicked}">
-        <span>${this.text}</span>
+      <button id="button" class="cell-button" @click="${this._onFilterClicked}">
+        <span><slot></slot></span>
         <span class="sr-only" .hidden="${!this.filtered}"> (filtered)</span>
         <span class="sr-only"> Toggle filter.</span>
         <simple-icon-lite
@@ -81,8 +55,8 @@ class EditableTableFilter extends LitElement {
         ></simple-icon-lite>
       </button>
       <simple-tooltip for="button"
-        >Toggle Column ${this.columnIndex} filter for
-        "${this.text}"</simple-tooltip
+        >Toggle Column ${this.columnIndex} filter for "<slot
+        ></slot>"</simple-tooltip
       >
     `;
   }
@@ -99,14 +73,14 @@ class EditableTableFilter extends LitElement {
   static get properties() {
     return {
       /**
-       * Index of the column
+       * Index of column
        */
       columnIndex: {
         type: Number,
         attribute: "column-index",
       },
       /**
-       * Whether the column is filtered
+       * Whether column is filtered
        */
       filtered: {
         type: Boolean,

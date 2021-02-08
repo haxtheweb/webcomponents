@@ -102,6 +102,9 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           );
           object-fit: cover;
         }
+        :host([responsive-size*="s"]) #carouselimage img.image {
+          width: 100%;
+        }
         #carouselimage,
         #carouseltext,
         #thumbnails,
@@ -120,7 +123,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           flex: var(--carousel-image-flex);
           position: relative;
         }
-        :host([responsive-size*="s"]) #carouselimage,
         :host([extra-wide]) #carouselimage {
           width: 100%;
           padding-top: var(--lrndesign-gallery-image-height, 75%);

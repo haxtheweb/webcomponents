@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>a11y-menu-button Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import "../a11y-menu-button.js";
+      import "../lib/a11y-menu-button-item.js";
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>a11y-menu-button demo</h1>
+      <p>By default, the clicking the icon button triggers expand/collapse.</p>
+      <demo-snippet>
+        <template>
+          <a11y-menu-button>
+            <span slot="button">Menu</span>
+            <a11y-menu-button-item href="#top">Anchor</a11y-menu-button-item>
+            <a11y-menu-button-item>Button</a11y-menu-button-item>
+            <a11y-menu-button-item href="../">Link</a11y-menu-button-item>
+          </a11y-menu-button> 
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

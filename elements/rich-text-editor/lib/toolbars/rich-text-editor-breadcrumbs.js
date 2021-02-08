@@ -3,65 +3,30 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
-import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
-import "./rich-text-editor-breadcrumb.js";
+import { RichTextToolbarStyles } from "../buttons/rich-text-editor-button.js";
 
 /**
  * `rich-text-editor-breadcrumbs`
- * `A utility that manages state of multiple rich-text-prompts on one page.`
+ * a toolbar of selection's ancestor breadcrumbs
  *
+ * ### Styling
+`<rich-text-editor-breadcrumbs>` uses RichTextToolbarStyles constant 
+from rich-text-editor-toolbar to set SimpleToolbarBehaviors's 
+simple-toolbar/simple-toolbar-button variables.
+ *
+ * @customElement
+ * @extends LitElement
+ * @extends RichTextToolbarStyles
+ * @lit-html
+ * @lit-element
  *  @element rich-text-editor-breadcrumbs
  */
-class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
+class RichTextEditorBreadcrumbs extends LitElement {
   /**
    * Store tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "rich-text-editor-breadcrumbs";
-  }
-
-  static get styles() {
-    return [
-      ...super.styles,
-      css`
-        :host {
-          display: block;
-          background-color: var(--rich-text-editor-bg);
-          color: var(--rich-text-editor-button-color);
-          border: var(--rich-text-editor-border);
-          padding: 3px 10px;
-        }
-        :host([sticky]) {
-          position: sticky;
-          bottom: 0;
-        }
-        .selectednode {
-          background-color: var(--rich-text-editor-bg);
-        }
-      `,
-    ];
-  }
-  render() {
-    return html`
-      ${this.label}
-      ${!this.selectionAncestors
-        ? ""
-        : (this.selectionAncestors || []).map(
-            (ancestor, i) => html`
-              <rich-text-editor-breadcrumb
-                controls="${this.controls}"
-                tag="${ancestor.nodeName.toLowerCase()}"
-                .target="${ancestor}"
-                @breadcrumb-tap="${this._handleBreadcrumb}"
-              >
-              </rich-text-editor-breadcrumb>
-              ${i + 1 >= (this.selectionAncestors || []).length
-                ? ""
-                : html` <span class="divider"> &gt; </span> `}
-            `
-          )}
-    `;
   }
 
   static get properties() {
@@ -106,32 +71,76 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
     super();
     this.hidden = true;
     this.sticky = false;
-    this.label = `Expand selection: `;
+    this.label = "Select";
   }
-
-  selectNode(node) {
+  /**
+   * Handles button tap;
+   * @param {event} e the button tab event
+   * @returns {void}
+   */
+  _handleClick(ancestor) {
     this.dispatchEvent(
-      new CustomEvent("selectnode", {
+      new CustomEvent("breadcrumb-click", {
         bubbles: true,
-        composed: true,
         cancelable: true,
-        detail: node,
+        composed: true,
+        detail: ancestor,
       })
     );
   }
+  render() {
+    return html`
+      ${this.label}:
+      ${!this.selectionAncestors
+        ? ""
+        : (this.selectionAncestors || []).map(
+            (ancestor, i) => html`
+              <button
+                class="${ancestor.selectAll ? "" : "selectnode"}"
+                controls="${this.controls}"
+                @click="${(e) => this._handleClick(ancestor)}"
+                tabindex="0"
+              >
+                ${ancestor.nodeName.toLowerCase()}
+              </button>
+              ${i + 1 >= (this.selectionAncestors || []).length
+                ? ""
+                : html` <span class="divider"> &gt; </span> `}
+            `
+          )}
+    `;
+  }
 
-  /**
-   * handle a breadcrumb tap by updating the selected text
-   *
-   * @param {object} e the breadcrumb tap event
-   * @returns {void}
-   */
-  _handleBreadcrumb(e) {
-    console.log("_handleBreadcrumbs", e.detail.target);
-    if (e.detail.target) {
-      this.selectNode(e.detail.target);
-      console.log("_handleBreadcrumbs 2", e.detail.target, this.range);
-    }
+  static get styles() {
+    return [
+      ...RichTextToolbarStyles,
+      css`
+        :host {
+          display: block;
+          background-color: var(--rich-text-editor-bg, #ffffff);
+          color: var(--rich-text-editor-button-color #444);
+          border: var(--rich-text-editor-border-width, 1px) solid var(--rich-text-editor-border-color, #ddd);
+          padding: 3px 10px;
+        }
+        :host([sticky]) {
+          position: sticky;
+          bottom: 0;
+        }
+        .selectednode {
+          background-color: var(--rich-text-editor-button-bg, #ffffff);
+        }
+        button {
+          display: inline-block;
+          text-align: center;
+          min-width: 25px;
+          margin: 0;
+          padding: 2px 5px;
+        }
+        .selectNode {
+          font-family: monospace;
+        }
+      `,
+    ];
   }
 }
 window.customElements.define(

@@ -16,69 +16,17 @@
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       simple-popover {
-        width: 50px;
-      }
-      [part="simple-tour-active"] {
-        transition: .25s ease-in-out all;
-        outline: 3px solid red;
+        width: 150px;
       }
     </style>
   </head>
   <body>
-    <button id="tourbtn">Start tour 1</button>
-    <button id="tourbtn2">Start tour 2</button>
-    <simple-popover-selection id="popover" position="bottom">
-      <button slot="button">Selection area</button>
-      <button slot="options" value="1">Option 1</button>
-      <button slot="options" value="cool">Option 2</button>
-      <button slot="options" value="stuff">Option 3</button>
-    </simple-popover-selection>
-    <simple-popover-selection id="popover2" position="bottom">
-      <button slot="button">Selection area</button>
-      <button slot="options" value="1">Option 3</button>
-      <button slot="options" value="cool">Option 4</button>
-      <button slot="options" value="stuff">Option 5</button>
-    </simple-popover-selection>
-    <simple-popover-selection id="popover3" position="bottom">
-      <button slot="button">Selection area</button>
-      <button slot="options" value="1">Option 5</button>
-      <button slot="options" value="cool">Option 6</button>
-      <button slot="options" value="stuff">Option 7</button>
-    </simple-popover-selection>
-    <script>
-      document.getElementById('tourbtn').addEventListener('click', (e) => {
-        let tour = window.SimpleTourManager.requestAvailability();
-        tour.registerNewTour({key:'hax', name: "Learn hax"});
-        tour.createTourStop('hax', document.getElementById('p1'), "bottom", "Paragraph 1", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
-        tour.createTourStop('hax', document.getElementById('p2'), "bottom", "Paragraph 2", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
-        tour.createTourStop('hax', document.getElementById('p3'), "bottom", "Paragraph 3", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
-        window.SimpleTourManager.requestAvailability().startTour('hax');
-      });
-      document.getElementById('tourbtn2').addEventListener('click', (e) => {
-        let tour = window.SimpleTourManager.requestAvailability();
-        tour.registerNewTour({key:'hax2', name: "Learn hax again"});
-        tour.createTourStop('hax2', document.getElementById('p3'),"bottom", "Whatevers 1", "<p>YOU MONSTER</p>");
-        tour.createTourStop('hax2', document.getElementById('p3'),"bottom", "Cool 2", "<p>You did this</p>");
-        tour.createTourStop('hax2', document.getElementById('p1'),"bottom", "SHings", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
-        window.SimpleTourManager.requestAvailability().startTour('hax2');
-      });
-      // say what bubbled up
-      document.getElementById('popover').addEventListener('simple-popover-selection-changed', (e) => {
-        alert(e.detail);
-      });
-      document.getElementById('popover2').addEventListener('simple-popover-selection-changed', (e) => {
-        alert(e.detail);
-      });
-      document.getElementById('popover3').addEventListener('simple-popover-selection-changed', (e) => {
-        alert(e.detail);
-      });
-    </script>
     <div class="vertical-section-container centered">
       <h3>Basic simple-popover demo</h3>
       <demo-snippet>
         <template>
           <div contenteditable="true">
-            <p id="p1">
+            <p >
               Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
               Pellentesque magna velit, tincidunt quis pharetra id, gravida 
               placerat erat. <em id="em">Maecenas</em> id dui pretium risus pulvinar feugiat 
@@ -87,7 +35,7 @@
               Nunc convallis justo sed nibh consectetur, at pharetra nulla 
               accumsan.
             </p>
-            <p id="p2">
+            <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Quisque porta, dolor at pharetra condimentum, elit tellus 
               scelerisque lacus, ut placerat lectus quam in massa. 
@@ -100,7 +48,7 @@
               leo bibendum faucibus. Etiam aliquam neque sit amet maximus 
               lacinia. Duis ut libero eget augue egestas suscipit. 
             </p>
-            <p id="p3">
+            <p>
               Stuff and things happen here
             </p>
             <simple-popover for="em" auto>

@@ -23,6 +23,7 @@ if (!DocumentType.prototype.replaceWith) {
  * `Wrapper on top of a code editor`
  *
  * @demo demo/index.html
+ * @demo demo/updating.html Update contents
  * @microcopy - the mental model for this element
  * - monaco is the VS code editor
  * @element code-editor

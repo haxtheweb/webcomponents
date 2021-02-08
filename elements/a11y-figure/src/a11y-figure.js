@@ -61,31 +61,42 @@ class A11yFigure extends A11yDetails {
     return [
       css`
         :host {
-          display: block;
+          display: inline-block;
+          padding: 5px;
+          border: 1px solid #ddd;
         }
         :host([hidden]) {
           display: none;
         }
         figure {
+          display: inline-table;
           position: relative;
+          margin: 0;
         }
         figcaption {
-          display: flex;
-          width: 100%;
-          align-items: center;
-          justify-content: space-between;
+          display: table-caption;
+          caption-side: bottom;
+          position: relative;
           margin: var(--a11y-figure-figcaption-margin, 0);
           padding: var(--a11y-figure-figcaption-padding, 0);
           font-size: var(--a11y-figure-figcaption-fontSize, unset);
           background-color: var(--a11y-figure-figcaption-backgroundColor, #fff);
           color: var(--a11y-figure-figcaption-color, #000);
+          --a11y-details-left: var(--a11y-figure-details-left, 0);
+          --a11y-details-right: var(--a11y-figure-details-right, 0);
+          --a11y-details-fontSize: var(--a11y-figure-details-fontSize, 0.8em);
         }
         ::slotted([slot="figcaption"]) {
           margin: 0;
+          flex: 1 1 auto;
         }
         img,
         ::slotted([slot="image"]) {
           width: 100%;
+        }
+        a11y-details:not([hidden]) {
+          display: flex;
+          justify-content: flex-end;
         }
       `,
     ];
@@ -104,6 +115,7 @@ class A11yFigure extends A11yDetails {
           <a11y-details
             open-text="${this.openText}"
             close-text="${this.closeText}"
+            ?hidden="${!this.__hasDetail}"
           >
             <div slot="summary"><slot name="summary"></slot></div>
             <div slot="details"><slot name="details"></slot></div>
@@ -218,6 +230,9 @@ class A11yFigure extends A11yDetails {
         type: String,
         attribute: "img-alt",
       },
+      __hasDetail: {
+        type: Boolean,
+      },
     };
   }
 
@@ -271,6 +286,14 @@ class A11yFigure extends A11yDetails {
       image.slot = "image";
       this.appendChild(image);
     }
+    this.__hasDetail =
+      !!this.querySelector("summary") ||
+      !!this.querySelector("*[slot=summary]");
+    console.log(
+      this.querySelector("summary"),
+      this.querySelector("*[slot=summary]"),
+      !!this.querySelector("summary") || !!this.querySelector("*[slot=summary]")
+    );
     if (figcaption) {
       this._copyAndFilter(figcaption.cloneNode(true), [
         "figcaption",

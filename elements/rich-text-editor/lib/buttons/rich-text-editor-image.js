@@ -8,6 +8,11 @@ import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-b
  * `rich-text-editor-image`
  * an inline image button for rich text editor
  *
+ * @customElement
+ * @lit-html
+ * @lit-element
+ * @extends RichTextEditorPromptButtonBehaviors
+ * @extends LitElement
  * @element rich-text-editor-image
  * @demo ./demo/buttons.html
  */
@@ -61,31 +66,27 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
     this.command = "insertHTML";
     this.label = "Insert Inline Image";
     this.icon = "editor:insert-photo";
-    this.tag = "img";
+    this.tagsList = "img";
     this.value = {};
-  }
-  /**
-   * overrides default block selectors
-   *
-   * @readonly
-   * @memberof RichTextEditorLink
-   */
-  get blockSelectors() {
-    return "img";
   }
 
   /**
-   * whether button is toggled
+   * overrides RichTextEditorPromptButtonBehaviors
+   * so that isToggled is based on toggled property
    *
    * @readonly
-   * @memberof RichTextEditorButton
+   * @memberof RichTextEditorImage
    */
   get isToggled() {
     return this.toggled;
   }
 
   /**
-   * determaines commandVal based on values passed from prompt
+   * overrides RichTextEditorPromptButtonBehaviors
+   * to customize for setting image properties
+   *
+   * @param {object} node selected node
+   * @memberof RichTextEditorImage
    */
   get promptCommandVal() {
     let alt = this.getPropValue("alt"),
@@ -100,19 +101,29 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
   }
 
   /**
-   * updates prompt fields with selected range data
+   * overrides RichTextEditorPromptButtonBehaviors
+   * to customize for getting selected image properties
+   *
+   * @param {object} node selected node
+   * @memberof RichTextEditorImage
    */
-  getValue() {
-    let img = this.rangeQuery();
+  getValue(node) {
+    let img = node || this.rangeQuery();
     return !img
       ? undefined
       : {
-          alt: img.getAttribute("alt"),
-          src: img.getAttribute("src"),
-          width: img.getAttribute("width"),
-          height: img.getAttribute("height"),
+          alt: !img ? undefined : img.getAttribute("alt"),
+          src: !img ? undefined : img.getAttribute("src"),
+          width: !img ? undefined : img.getAttribute("width"),
+          height: !img ? undefined : img.getAttribute("height"),
         };
   }
+  /**
+   * overrides RichTextEditorPickerBehaviors
+   * sets toggle based on whether an image is selected
+   *
+   * @memberof RichTextEditorLink
+   */
   setToggled() {
     this.toggled = !!this.value;
   }

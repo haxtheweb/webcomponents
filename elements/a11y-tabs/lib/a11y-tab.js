@@ -3,6 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
  * `a11y-tab`
  * a single tab within `a11y-tabs`
@@ -17,7 +19,8 @@ Custom property | Description | Default
 `--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
 `--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`
  *
- * @element a11y-tab
+ * @customElement
+ * @extends LitElement
  * @see ../a11y-tabs.js
  */
 class A11yTab extends LitElement {
@@ -26,11 +29,9 @@ class A11yTab extends LitElement {
       css`
         :host {
           display: block;
-          height: var(--a11y-tabs-tab-height, --a11y-tabs-height);
-          overflow: var(--a11y-tabs-tab-overflow, --a11y-tabs-overflow);
-        }
-        :host([hidden]) {
-          display: none;
+          margin-bottom: var(--a11y-tabs-content-padding);
+          border: 1px solid var(--a11y-tabs-border-color);
+          padding: var(--a11y-tabs-content-padding);
         }
         .sr-only {
           position: absolute;
@@ -38,12 +39,38 @@ class A11yTab extends LitElement {
           height: 0;
           overflow: hidden;
         }
-        #content-inner {
-          max-width: 100%;
-          overflow: auto;
+        .label-heading {
+          display: flex;
+          align-items: center;
+          color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));
+          background-color: var(--a11y-tabs-background);
+          font-weight: var(--a11y-tabs-selected-font-weight, normal);
+          border-bottom: 1px solid var(--a11y-tabs-border-color);
+          margin: 0 0 calc(var(--a11y-tabs-content-padding) / 2);
+          padding: 0 0 calc(var(--a11y-tabs-content-padding) / 2);
+          border-radius: var(--a11y-tabs-horizontal-border-radius, 2px)
+            var(--a11y-tabs-horizontal-border-radius, 2px) 0 0;
         }
-        ::slotted(*[slot="label"]) {
-          display: none;
+        simple-icon-lite {
+          margin-right: 1em;
+        }
+        @media screen {
+          :host {
+            border: none;
+            height: var(--a11y-tabs-tab-height, --a11y-tabs-height);
+            overflow: var(--a11y-tabs-tab-overflow, --a11y-tabs-overflow);
+            margin-bottom: unset;
+          }
+          :host([inactive]) {
+            display: none;
+          }
+          #content-inner {
+            max-width: 100%;
+            overflow: auto;
+          }
+          .label-heading {
+            display: none;
+          }
         }
       `,
     ];
@@ -51,7 +78,16 @@ class A11yTab extends LitElement {
   render() {
     return html`
       <span class="sr-only">Tab ${this.xOfY}</span>
-      <slot name="label"></slot>
+      <div class="label-heading">
+        <simple-icon-lite
+          class="icon"
+          ?hidden="${!this.icon}"
+          .icon="${this.icon}"
+        >
+        </simple-icon-lite>
+        <slot name="label" ?hidden="${!this.label}"></slot>
+        <div class="label">${this.label}</div>
+      </div>
       <div id="content-inner"><slot></slot></div>
       <span class="sr-only">
         End of tab ${this.xOfY}. Back to <a href="#${this.id}">tabs</a>.
@@ -146,14 +182,6 @@ class A11yTab extends LitElement {
         attribute: "disabled",
       },
       /**
-       * whether the tab is hidden
-       */
-      hidden: {
-        type: Boolean,
-        reflect: true,
-        attribute: "hidden",
-      },
-      /**
        * icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`
        */
       icon: {
@@ -166,6 +194,14 @@ class A11yTab extends LitElement {
         type: String,
         reflect: true,
         attribute: "id",
+      },
+      /**
+       * whether the tab is hidden
+       */
+      inactive: {
+        type: Boolean,
+        reflect: true,
+        attribute: "inactive",
       },
       /**
        * label for the tab

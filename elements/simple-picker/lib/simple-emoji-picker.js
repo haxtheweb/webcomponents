@@ -37,6 +37,7 @@ class SimpleEmojiPicker extends SimplePicker {
       emojiTypes: {
         name: "emojiTypes",
         type: Array,
+        attribute: "emoji-types",
       },
     };
   }

@@ -585,6 +585,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           ?autofocus="${this.autofocus}"
           aria-descrbedby="${this.describedBy || ""}"
           .aria-invalid="${this.error ? "true" : "false"}"
+          @blur="${this._onFocusout}"
           @change="${this._handleFieldChange}"
           ?checked="${checked}"
           class="field ${[
@@ -598,7 +599,6 @@ class SimpleFieldsField extends SimpleFieldsContainer {
             : "box-input"}"
           ?disabled="${this.disabled}"
           @focus="${this._onFocusin}"
-          @blur="${this._onFocusout}"
           ?hidden="${this.hidden}"
           id="${!option ? this.id : option.value}"
           @input="${this._handleFieldChange}"
@@ -606,6 +606,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           .placeholder="${this.placeholder || ""}"
           ?readonly="${this.readonly}"
           ?required="${this.required}"
+          tabindex="0"
           type="${this.type}"
           value="${!option ? this.value : (option || {}).value}"
         />
@@ -691,17 +692,18 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?autofocus="${this.autofocus}"
         aria-descrbedby="${this.describedBy}"
         aria-invalid="${this.error ? "true" : "false"}"
+        @blur="${this._onFocusout}"
         @change="${this._handleFieldChange}"
         class="field"
         ?disabled="${this.disabled}"
         @focus="${this._onFocusin}"
-        @blur="${this._onFocusout}"
         ?hidden="${this.hidden}"
         id="${this.id}"
         ?multiple="${this.multiple}"
         name="${this.id}"
         ?readonly="${this.readonly}"
         ?required="${this.required}"
+        tabindex="0"
       >
         ${(this.sortedOptions || []).map(
           (option) => html`
@@ -740,12 +742,12 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       <textarea
         aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
+        @blur="${this._onFocusout}"
         class="field box-input"
         @change="${this._handleFieldChange}"
         @keydown="${(e) => e.stopPropagation()}"
         ?disabled="${this.disabled}"
         @focus="${this._onFocusin}"
-        @blur="${this._onFocusout}"
         ?hidden="${this.hidden}"
         id="${this.id}"
         @input="${this._handleFieldChange}"
@@ -753,6 +755,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?readonly="${this.readonly}"
         ?required="${this.required}"
         rows="1"
+        tabindex="0"
       >
 ${this.value || ""}</textarea
       >
@@ -912,6 +915,7 @@ ${this.value || ""}</textarea
       this._updateAttribute(attr)
     );
     if (this.type !== "select" && this.field) this._updateAttribute("value");
+    if (this.field && this.__delayedFocus) this.focus();
   }
 }
 window.customElements.define(SimpleFieldsField.tag, SimpleFieldsField);

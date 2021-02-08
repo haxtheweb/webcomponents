@@ -3,28 +3,121 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
+import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
-const RichTextEditorButtonBehaviors = function (SuperClass) {
-  return class extends RichTextEditorButtonStyles(SuperClass) {
-    firstUpdated(changedProperties) {
-      if (super.firstUpdated) {
-        super.firstUpdated(changedProperties);
-      }
-      this.__a11y = this.shadowRoot.querySelector("#button");
-      this.__a11y.addEventListener("keypress", (e) => {
-        switch (e.key) {
-          case "Enter":
-            this._buttonTap(e);
-            break;
-        }
-      });
+/**
+ * RichTextStyles
+ *
+ * @lit-html
+ * @lit-element
+ * @const
+ * @default
+ * @type {array}
+ */
+const RichTextStyles = [
+  css`
+    :host {
+      --simple-toolbar-border-color: var(--rich-text-editor-border-color, #ddd);
+      --simple-toolbar-border-width: var(--rich-text-editor-border-width, 1px);
+      --simple-toolbar-button-bg: var(--rich-text-editor-bg, #ffffff);
+      --simple-fields-focus-color: var(--rich-text-editor-focus-color, blue);
+      --simple-fields-invalid-color: var(--rich-text-editor-error-color, #800);
     }
+  `,
+];
+/**
+ * RichTextStyles
+ *
+ * @lit-html
+ * @lit-element
+ * @const
+ * @default
+ * @type {array}
+ * @extends RichTextStyles
+ */
+const RichTextToolbarStyles = [
+  ...RichTextStyles,
+  css`
+    :host {
+      --simple-toolbar-border-color: var(--rich-text-editor-border-color, #ddd);
+      --simple-toolbar-border-width: var(--rich-text-editor-border-width, 1px);
+      --simple-toolbar-button-opacity: var(
+        --rich-text-editor-button-opacity,
+        1
+      );
+      --simple-toolbar-button-color: var(--rich-text-editor-button-color, #444);
+      --simple-toolbar-button-bg: var(--rich-text-editor-button-bg, #ffffff);
+      --simple-toolbar-button-border-color: var(
+        --rich-text-editor-button-border-color,
+        transparent
+      );
+      --simple-toolbar-button-toggled-opacity: var(
+        --rich-text-editor-button-toggled-opacity,
+        1
+      );
+      --simple-toolbar-button-toggled-color: var(
+        --rich-text-editor-button-toggled-color,
+        #222
+      );
+      --simple-toolbar-button-toggled-bg: var(
+        --rich-text-editor-button-toggled-bg,
+        #ddd
+      );
+      --simple-toolbar-button-toggled-border-color: var(
+        --rich-text-editor-button-toggled-border-color,
+        transparent
+      );
+      --simple-toolbar-button-hover-opacity: var(
+        --rich-text-editor-button-hover-opacity,
+        1
+      );
+      --simple-toolbar-button-hover-color: var(
+        --rich-text-editor-button-hover-color,
+        #000
+      );
+      --simple-toolbar-button-hover-bg: var(
+        --rich-text-editor-button-hover-bg,
+        #f0f0f0
+      );
+      --simple-toolbar-button-hover-border-color: var(
+        --rich-text-editor-button-hover-border-color,
+        unset
+      );
+      --simple-toolbar-button-disabled-opacity: var(
+        --rich-text-editor-button-disabled-opacity,
+        1
+      );
+      --simple-toolbar-button-disabled-color: var(
+        --rich-text-editor-button-disabled-color,
+        #666
+      );
+      --simple-toolbar-button-disabled-bg: var(
+        --rich-text-editor-button-disabled-bg,
+        transparent
+      );
+      --simple-toolbar-button-disabled-border-color: var(
+        --rich-text-editor-button-disabled-border-color,
+        transparent
+      );
+    }
+  `,
+];
+/**
+ * RichTextEditorButtonBehaviors
+ *
+ * @extends SimpleToolbarButtonBehaviors
+ * @customElement
+ * @class
+ * @lit-html
+ * @lit-element
+ */
+const RichTextEditorButtonBehaviors = function (SuperClass) {
+  return class extends SimpleToolbarButtonBehaviors(SuperClass) {
     /**
      * Store the tag name to make it easier to obtain directly.
      */
@@ -33,59 +126,23 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     }
 
     static get styles() {
-      return [
-        ...super.styles,
-        css`
-          .rtebutton {
-            min-width: var(--rich-text-editor-button-min-width);
-            height: var(--rich-text-editor-button-height);
-            margin: var(--rich-text-editor-button-margin);
-            padding: var(--rich-text-editor-button-padding);
-          }
-        `,
-      ];
+      return [...super.styles, ...RichTextToolbarStyles];
     }
     render() {
-      return html`
-        <button
-          id="button"
-          class="rtebutton"
-          ?disabled="${this.disabled}"
-          ?controls="${this.controls}"
-          @click="${this._buttonTap}"
-          tabindex="0"
-          ?toggled="${this.isToggled}"
-        >
-          <simple-icon-lite
-            id="icon"
-            aria-hidden="true"
-            icon="${this.currentIcon}"
-          >
-          </simple-icon-lite>
-          <span id="label" class="${this.labelStyle}"
-            >${this.currentLabel}</span
-          >
-        </button>
-        <simple-tooltip id="tooltip" for="button"
-          >${this.currentLabel}</simple-tooltip
-        >
-      `;
+      return super.render();
     }
 
     static get properties() {
       return {
-        /**
-         * The `id` of the `rich-text-editor` that the toolbar controls.
-         */
-        controls: {
-          type: String,
-        },
+        ...super.properties,
 
         /**
          * The command used for document.execCommand.
          */
         command: {
           type: String,
+          reflect: true,
+          attribute: "command",
         },
 
         /**
@@ -97,55 +154,17 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         },
 
         /**
-         * Is the button disabled? Default is false.
-         */
-        disabled: {
-          type: Boolean,
-        },
-
-        /**
-         * Optional iron icon name for the button.
-         */
-        icon: {
-          type: String,
-        },
-
-        /**
-         * Label for the icon.
-         */
-        label: {
-          type: String,
-        },
-
-        /**
          * The active selected range, inherited from the toolbar
          */
         range: {
           type: Object,
         },
-
         /**
-         * Optional space-sperated list of keyboard shortcuts for the editor
+         * tags edited by this button
          */
-        shortcutKeys: {
-          attribute: "shortcut-keys",
+        tagsList: {
           type: String,
         },
-
-        /**
-         * Show text label even if an icon is named?
-         */
-        showTextLabel: {
-          attribute: "show-text-label",
-          type: Boolean,
-        },
-        /**
-         * The active selected range, inherited from the toolbar
-         */
-        tag: {
-          type: String,
-        },
-
         /**
          * The active selected range, inherited from the toolbar
          */
@@ -159,6 +178,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         toggledCommand: {
           attribute: "toggled-command",
           type: String,
+          reflect: true,
         },
         /**
          * Optional parameter for the command when toggled.
@@ -166,22 +186,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         toggledCommandVal: {
           attribute: "toggled-command-val",
           type: Object,
-        },
-
-        /**
-         * Optional iron icon name for the button if it is toggled.
-         */
-        toggledIcon: {
-          attribute: "toggled-icon",
-          type: String,
-        },
-
-        /**
-         * Label for the icon, if button is toggled.
-         */
-        toggledLabel: {
-          attribute: "toggled-label",
-          type: String,
         },
         /**
          * currently selected node
@@ -196,12 +200,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           type: Array,
         },
         /**
-         * Can this button toggle?
-         */
-        toggles: {
-          type: Boolean,
-        },
-        /**
          * highlight surrounding selected range
          */
         __selection: {
@@ -213,45 +211,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.__selection = window.RichTextEditorSelection.requestAvailability();
-      this.disabled = false;
-      this.showTextLabel = false;
-      this.toggles = false;
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    }
-    get blockSelectors() {
-      return "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
-    }
-
-    /**
-     * current label based on toggled state
-     *
-     * @readonly
-     * @memberof RichTextEditorButton
-     */
-    get currentLabel() {
-      return this._regOrToggled(this.label, this.toggledLabel, this.isToggled);
-    }
-
-    /**
-     * current icon based on toggled state
-     *
-     * @readonly
-     * @memberof RichTextEditorButton
-     */
-    get currentIcon() {
-      return this._regOrToggled(this.icon, this.toggledIcon, this.isToggled);
-    }
-
-    /**
-     * label is offscreen (screenreader-only)
-     *
-     * @readonly
-     * @memberof RichTextEditorButton
-     */
-    get labelStyle() {
-      return !!this.icon && this.icon !== "" && this.showTextLabel === false
-        ? "offscreen"
-        : null;
+      this.tagsList = "";
     }
 
     /**
@@ -268,66 +228,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         /* workaround because queryCommandState("underline") returns true on links */
         block = this.command === "underline" ? !!this.rangeQuery("u") : command;
       return this.toggles && !!block ? true : false;
-    }
-
-    /**
-     * gets valid commands list
-     *
-     * @readonly
-     * @memberof RichTextEditorButton
-     */
-    get validCommands() {
-      return [
-        "backColor",
-        "bold",
-        "createLink",
-        "copy",
-        "cut",
-        "defaultParagraphSeparator",
-        "delete",
-        "fontName",
-        "fontSize",
-        "foreColor",
-        "formatBlock",
-        "forwardDelete",
-        "insertHorizontalRule",
-        "insertHTML",
-        "insertImage",
-        "insertLineBreak",
-        "insertOrderedList",
-        "insertParagraph",
-        "insertText",
-        "insertUnorderedList",
-        "justifyCenter",
-        "justifyFull",
-        "justifyLeft",
-        "justifyRight",
-        "outdent",
-        "paste",
-        "redo",
-        "selectAll",
-        "strikethrough",
-        "styleWithCss",
-        "superscript",
-        "undo",
-        "unlink",
-        "useCSS",
-      ];
-    }
-
-    updated(changedProperties) {
-      super.updated(changedProperties);
-      changedProperties.forEach((oldValue, propName) => {
-        if (propName === "controls")
-          this._editorChanged(this.controls, oldValue);
-        if (propName === "range") this._rangeChanged(this.range, oldValue);
-      });
-    }
-    /**
-     * life cycle, element is detatched
-     */
-    disconnectedCallback() {
-      super.disconnectedCallback();
     }
 
     /**
@@ -348,6 +248,46 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         ? this.toggledCommandVal || ""
         : this.commandVal;
     }
+    /**
+     * tagslist as an array
+     *
+     * @readonly
+     */
+    get tagsArray() {
+      return (this.tagsList || "").replace(/\s*/g, "").toLowerCase().split(",");
+    }
+
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) {
+        super.firstUpdated(changedProperties);
+      }
+    }
+
+    updated(changedProperties) {
+      super.updated(changedProperties);
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "controls")
+          this._editorChanged(this.controls, oldValue);
+        if (propName === "range") this._rangeChanged(this.range, oldValue);
+        if (["shortcutKeys", "tagsList", "tagClickCallback"].includes(propName))
+          this.updateButtonRegistry();
+      });
+    }
+    /**
+     * life cycle, element is detatched
+     */
+    disconnectedCallback() {
+      super.disconnectedCallback();
+    }
+    /**
+     * override this custom function to perform a
+     * custom operation after button is clicked
+     *
+     * @param {object} editor current editor
+     * @param {object} toolbar parent toolbar
+     * @param {object} selection range/selection manager
+     */
+    commandCallback(editor, toolbar, selection) {}
     /**
      * indicates how highlight should be toggled
      * @event highlight
@@ -427,6 +367,13 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       );
     }
     /**
+     * override this custom function to perform a
+     * custom operation when an element that matches the tags list is clicked
+     *
+     * @param {event} e click event
+     */
+    tagClickCallback(e) {}
+    /**
      * indicates range should be wrapped in given element
      * @event wrapselection
      * @param {object} element html element
@@ -493,10 +440,10 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     /**
      * gets closest node to range that matches selectors
      *
-     * @param {string} [selectors=this.blockSelectors || this.tag]
+     * @param {string} [selectors=this.tagsList || this.tag]
      * @returns node
      */
-    rangeQuery(selectors = this.blockSelectors || this.tag) {
+    rangeQuery(selectors = this.tagsList) {
       selectors = selectors.toLowerCase().replace(/\s*/g, "");
       let start = this.rangeElement(),
         startTag =
@@ -513,10 +460,12 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      *
      * @param {string} [command=this.operationCommand]
      * @param {string} [commandVal=this.operationCommandVal]
+     * @param {object} [range=this.range]
      */
     sendCommand(
       command = this.operationCommand,
-      commandVal = this.operationCommandVal
+      commandVal = this.operationCommandVal,
+      range = this.range
     ) {
       this.dispatchEvent(
         new CustomEvent("command", {
@@ -526,7 +475,8 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
           detail: {
             command: command,
             commandVal: commandVal,
-            range: this.range,
+            range: range,
+            button: this,
           },
         })
       );
@@ -543,8 +493,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     /**
      * Handles button tap
      */
-    _buttonTap(e) {
-      console.log("_buttonTap", this.range);
+    _handleClick(e) {
       e.preventDefault();
       this.sendCommand();
     }
@@ -600,16 +549,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         ? this._getSelectedTag()
         : this._getSelectedHtml();
     }
-
-    /**
-     * Handles keys the same way a button is handled
-     * @param {event} e the  event
-     */
-    _keysPressed(e) {
-      e.preventDefault();
-      this._buttonTap(e);
-    }
-
     /**
      * handles range change
      *
@@ -617,28 +556,53 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @param {object} oldVal old range
      */
     _rangeChanged(newVal, oldVal) {}
-
-    /**
-     * updates a button value based on whether or not button is toggled
-     *
-     * @param {string} the value when toggled off
-     * @param {string} the value when toggled on
-     * @param {boolean} whether the button is toggled
-     * @returns {string} the correct value based on
-     * whether or not the button is toggled
-     */
-    _regOrToggled(toggledOff, toggledOn, toggled) {
-      return !!toggledOn && toggled ? toggledOn : toggledOff;
-    }
   };
 };
 /**
  * `rich-text-editor-button`
- * a button for rich text editor (custom buttons can extend this)
- *
+ * is a basic button for rich text editor (custom buttons can extend RichTextEditorButtonBehaviors)
+ * 
+ * ### Styling
+`<rich-text-editor-button>` uses RichTextToolbarStyles constant to set 
+SimpleToolbarBehaviors's simple-toolbar/simple-toolbar-button variables.
+
+To further customize a toolbar and its buttons:
+
+Custom property | Description | Default
+----------------|-------------|----------
+--rich-text-editor-border-color | default border color | #ddd
+--rich-text-editor-border-width | default border width | 1px
+--rich-text-editor-bg | default toolbar background | #ffffff
+--rich-text-editor-button-opacity | default button opacity | 1
+--rich-text-editor-button-color | default button color | #444
+--rich-text-editor-button-bg | default button background | #ffffff
+--rich-text-editor-button-border-color | overrides default border-color for buttons | transparent
+--rich-text-editor-button-toggled-opacity | overrides default opacity when button is toggled | 1
+--rich-text-editor-button-toggled-color | overrides default text color when button is toggled | #222
+--rich-text-editor-button-toggled-bg | overrides default background when button is toggled | #ddd
+--rich-text-editor-button-toggled-border-color | overrides default border-color when button is toggled | transparent
+--rich-text-editor-button-hover-opacity | overrides default opacity when button is hovered or focused | 1
+--rich-text-editor-button-hover-color | overrides default text color when button is hovered or focused  | #000
+--rich-text-editor-button-hover-bg | overrides default background when button is hovered or focused | #f0f0f0
+--rich-text-editor-button-hover-border-color | overrides default border-color when button is hovered or focused | unset
+--rich-text-editor-button-disabled-opacity | overrides default opacity when button is disabled | 1
+--rich-text-editor-button-disabled-color | overrides default text color when button is disabled | #666
+--rich-text-editor-button-disabled-bg | overrides default background when button is disabled | transparent
+--rich-text-editor-button-disabled-border-color | overrides default border-color when button is toggled | transparent
+ * 
+ * 
+ * @extends RichTextEditorButtonBehaviors
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @element rich-text-editor-button
  * @demo ./demo/buttons.html
  */
 class RichTextEditorButton extends RichTextEditorButtonBehaviors(LitElement) {}
 window.customElements.define(RichTextEditorButton.tag, RichTextEditorButton);
-export { RichTextEditorButton, RichTextEditorButtonBehaviors };
+export {
+  RichTextEditorButton,
+  RichTextEditorButtonBehaviors,
+  RichTextStyles,
+  RichTextToolbarStyles,
+};

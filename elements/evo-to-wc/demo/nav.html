@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>evo-to-wc Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import { EvoToWcConverter } from "../evo-to-wc.js";
+    </script>
+    <style>
+      table {
+        width: 100%;
+      }
+      table th[scope="row"]{
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>evo-to-wc demo</h1>
+      <demo-snippet id="demo">
+        <script>
+        window.onload=()=>{
+          let converter = window.EvoToWc.requestAvailability();
+          console.log(converter,document.getElementById('demo'));
+          converter.convert(document.getElementById('demo'));
+        };
+        </script>
+        <template>
+          <h2>Tabs</h2>
+          <div class="tabbed-interface">
+            <div class="tab-section" id="example">
+              <h4>Tabbed Interface Example
+              </h4>
+              <p>What you are using to navigate between the example tab and the instruction tab (above) is an example of a tabbed interface.
+              </p>
+            </div>
+            <div class="tab-section" id="instructions">
+              <h4>Tabbed Interface Instructions
+              </h4>
+              <p>Nothing to see here...</p>
+            </div>
+          </div>
+          <h2>Accordion</h2>
+          <div class="accordion-interface">
+            <h3>Lorem Ipsem
+            </h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis viverra sem sit amet feugiat. Donec fermentum lacus a dolor lacinia et imperdiet mi volutpat. Aliquam erat volutpat. Aliquam a nibh vitae urna sagittis mollis et ut odio. Pellentesque imperdiet aliquam nisi eu dapibus. Sed non erat ac lacus tincidunt auctor. Aenean nec tellus eget risus vulputate vehicula quis a neque.
+            </p>
+            <h3>In Tempor Dapibus
+            </h3>
+            <p>In tempor dapibus dapibus. Nam mollis posuere volutpat. Nam elementum nibh lorem. Curabitur dictum tincidunt sem sit amet cursus. Ut ligula magna, pellentesque non posuere sed, semper sed lacus. Donec consequat sem et mi lacinia id ultrices mauris pulvinar. Praesent non nibh ipsum. Nulla sit amet neque quis diam laoreet elementum id in eros.
+            </p>
+            <h3>Nulla Placerat
+            </h3>
+            <p>Nulla placerat consequat velit, non tristique ante consectetur ut. Mauris pretium leo ut dui vehicula malesuada vel ac nibh. Cras in velit at odio sodales congue vel nec tellus. Maecenas at elit lacus. Aenean adipiscing pulvinar sapien. Nunc placerat fringilla eros vitae congue. Vivamus luctus nisi eu enim porta non auctor sem sollicitudin.
+            </p>
+          </div>
+          <h2>Show/Hide</h2>
+          <div class="expandable">
+            <p>What do you get when you mix yellow and blue? <a class="button3d expandcollapse" href="#">Answer </a>
+            </p>
+            <div class="collapseable newcolorbox">
+              <p>Yellow and blue make <strong>green</strong>.
+              </p>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

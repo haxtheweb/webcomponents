@@ -16,27 +16,9 @@
       import '../lib/buttons/rich-text-editor-heading-picker.js';
       import '../lib/buttons/rich-text-editor-emoji-picker.js';
       import '../lib/buttons/rich-text-editor-symbol-picker.js';
-      import '../lib/buttons/rich-text-editor-more-button.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
     <style>
-      :host, html {
-        font-family: sans-serif;
-        --rich-text-editor-bg: #fafafa;
-        --rich-text-editor-button-color: #444;
-        --rich-text-editor-border-color: #ddd;
-        --rich-text-editor-border: 1px solid
-          var(--rich-text-editor-border-color, #ddd);
-        --rich-text-editor-button-border: transparent;
-        --rich-text-editor-button-disabled-color: #666;
-        --rich-text-editor-button-disabled-bg: transparent;
-        --rich-text-editor-button-toggled-color: #222;
-        --rich-text-editor-button-toggled-bg: #ddd;
-        --rich-text-editor-button-hover-color: #000;
-        --rich-text-editor-button-hover-bg: #f0f0f0;
-        --rich-text-editor-picker-border: #fafafa;
-        --rich-text-editor-selection-bg: #b3d9ff;
-      }
       #toolbar {
         display: flex;
         opacity: 1;
@@ -46,8 +28,8 @@
         align-items: stretch;
         flex-wrap: wrap;
         justify-content: flex-start;
-        background-color: var(--rich-text-editor-bg);
-        border: var(--rich-text-editor-border);
+        background-color: var(--simple-toolbar-bg);
+        border: var(--simple-toolbar-border);
         font-size: 12px;
         transition: all 0.5s;
       }
@@ -65,7 +47,7 @@
       }
       #toolbar .group:not(:last-of-type) {
         margin-right: 3px;
-        border-right: var(--rich-text-editor-border);
+        border-right: var(--simple-toolbar-border);
       }
       #toolbar .group > * {
         display: flex;
@@ -85,7 +67,7 @@
       <demo-snippet>
         <template>
           <div id="toolbar">
-            <!--div class="group">
+            <div class="group">
               <rich-text-editor-button 
                 id="bold"
                 command="bold" 
@@ -98,7 +80,7 @@
               <rich-text-editor-underline id="underline">
               </rich-text-editor-underline>
             </div>
-            <div class="group"-->
+            <div class="group">
               <rich-text-editor-heading-picker 
                 id="heading"
                 label="Heading"
@@ -111,7 +93,7 @@
                   {"label": "Section Subheading", "tag": "h5"}
                 ]'>
               </rich-text-editor-heading-picker>
-              <!--rich-text-editor-symbol-picker 
+              <simple-toolbar-symbol-picker 
                 id="symbol"
                 label="Insert Symbol"
                 icon="editor:functions">
@@ -122,8 +104,8 @@
                 icon="image:tag-faces">
               </rich-text-editor-emoji-picker>
             </div>
-            <rich-text-editor-more-button id="more"></rich-text-editor-more-button-->
           </div>
+          <br><br>
         </template>
       </demo-snippet>
     </div>

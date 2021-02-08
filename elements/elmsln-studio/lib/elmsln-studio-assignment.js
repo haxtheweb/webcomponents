@@ -146,7 +146,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         }
         #uploadlist li {
           flex: 0 0 150px;
-          height: 150px;
+          height: calc(32px + 150px);
           background-position: center;
           background-size: cover;
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px));
@@ -305,12 +305,21 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * all assignments
+       */
       assignments: {
         type: Object,
       },
+      /**
+       * assignment by id
+       */
       assignment: {
         type: Object,
       },
+      /**
+       * submission by id
+       */
       submission: {
         type: Object,
       },
@@ -326,6 +335,9 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
       __newLinkText: {
         type: String,
       },
+      /**
+       * rich text editor toolbar config
+       */
       __editorConfig: {
         type: Array,
       },
@@ -373,7 +385,15 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         ],
       },
       {
-        collapsedUntil: "lg",
+        label: "Links",
+        type: "button-group",
+        buttons: [
+          {
+            type: "rich-text-editor-link",
+          },
+        ],
+      },
+      {
         label: "Lists and Indents",
         type: "button-group",
         buttons: [
@@ -513,6 +533,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
               ? body
               : html`
                   <rich-text-editor-toolbar-full
+                    show="always"
                     id="toolbar"
                     controls="editor"
                     .config="${this.__editorConfig}"

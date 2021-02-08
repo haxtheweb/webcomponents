@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -10,29 +10,21 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `editable-table-editor-toggle`
- * A toggle button for an property in the editable-table interface (editable-table.html).
+ * A toggle button for an property in editable-table interface (editable-table.html).
  *
- ```<editable-table-editor-toggle
-  hidden                           //Hide and disable this toggle? Default is false.
-  label="Condensed"                //The label for the toggle button
-  prop="condensed"                 //The property controlled by this toggle
-  tooltip="Condense cell height."  //A tooltip for this toggle.
-  value="true">                    //The value of this toggle.
-</editable-table-editor-toggle>```
- *  
  * @demo ./demo/editor.html
- * 
- * @polymer
- * @element editable-table-editor-toggle
+ * @customElement
+ * @extends LitElement
  */
-class EditableTableEditorToggle extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class EditableTableEditorToggle extends LitElement {
+  static get styles() {
+    return [
+      ...(super.styles || []),
+      css`
         :host([hidden]) {
           display: none;
         }
-        :host button {
+        button {
           padding: 2px;
           margin: 0;
           width: 100%;
@@ -42,37 +34,63 @@ class EditableTableEditorToggle extends PolymerElement {
           align-items: center;
           align-content: stretch;
           text-transform: unset;
-          font-family: var(--editable-table-secondary-font-family);
-          background-color: var(--editable-table-button-bg-color);
-          color: var(--editable-table-button-color);
+          font-family: var(
+            --editable-table-secondary-font-family,
+            "Roboto",
+            "Noto",
+            sans-serif
+          );
+          background-color: var(
+            --editable-table-button-bg-color,
+            var(--editable-table-bg-color, #fff)
+          );
+          color: var(--editable-table-border-color, #999);
           border: none;
           border-radius: 0;
         }
         :host([toggled]) button {
           background-color: var(--editable-table-button-toggled-bg-color);
-          color: var(--editable-table-button-toggled-color);
+          color: var(
+            --editable-table-button-toggled-color,
+            var(--editable-table-color, #222)
+          );
         }
         :host(:not([disabled])) button:focus,
         :host(:not([disabled])) button:hover {
-          background-color: var(--editable-table-button-hover-bg-color);
-          color: var(--editable-table-button-hover-color);
+          background-color: var(
+            --editable-table-button-hover-bg-color,
+            var(--editable-table-heading-bg-color, #e8e8e8)
+          );
+          color: var(
+            --editable-table-button-hover-color,
+            var(--editable-table-border-color, #999)
+          );
           cursor: pointer;
         }
         :host([toggled]:not([disabled])) button:focus,
         :host([toggled]:not([disabled])) button:hover {
-          background-color: var(--editable-table-button-toggled-hover-bg-color);
-          color: var(--editable-table-button-toggled-hover-color);
+          background-color: var(
+            --editable-table-button-toggled-hover-bg-color,
+            var(--editable-table-heading-bg-color, #e8e8e8)
+          );
+          color: var(
+            --editable-table-button-toggled-hover-color,
+            var(--editable-table-heading-color)
+          );
           cursor: pointer;
         }
         :host([disabled]) button {
-          background-color: var(--editable-table-button-disabled-bg-color);
+          background-color: var(
+            --editable-table-button-disabled-bg-color,
+            var(--editable-table-bg-color, #fff)
+          );
           color: var(--editable-table-button-disabled-color);
           cursor: not-allowed;
         }
-        :host button > div {
+        button > div {
           flex-grow: 1;
         }
-        :host .sr-only {
+        .sr-only {
           position: absolute;
           left: -9999px;
           font-size: 0;
@@ -80,26 +98,30 @@ class EditableTableEditorToggle extends PolymerElement {
           width: 0;
           overflow: hidden;
         }
-        :host #filter-off {
+        #filter-off {
           opacity: 0.25;
         }
-      </style>
+      `,
+    ];
+  }
+  render() {
+    return html`
       <button
         id="button"
-        active$="[[toggled]]"
-        disabled$="[[disabled]]"
-        label="[[label]]"
+        ?active="${this.toggled}"
+        ?disabled="${this.disabled}"
+        label="${this.label}"
         toggles
-        on-click="_onClick"
+        @click="${this._onClick}"
       >
-        <span class="sr-only">[[label]]</span>
+        <span class="sr-only">${this.label}</span>
         <simple-icon-lite
-          icon$="[[icon]]"
+          icon="${this.icon}"
           aria-hidden="true"
         ></simple-icon-lite>
       </button>
-      <simple-tooltip id="tooltip" for="button" aria-hidden
-        >[[label]]</simple-tooltip
+      <simple-tooltip id="tooltip" for="button" aria-hidden="true"
+        >${this.label}</simple-tooltip
       >
     `;
   }
@@ -113,23 +135,26 @@ class EditableTableEditorToggle extends PolymerElement {
        * Whether toggle is disabled
        */
       disabled: {
+        attribute: "disabled",
         type: Boolean,
         value: false,
-        reflectToAttribute: true,
+        reflect: true,
       },
       /**
        * Table id for accessibility
        */
       controls: {
+        attribute: "controls",
         type: String,
         value: "table",
         readOnly: true,
-        reflectToAttribute: true,
+        reflect: true,
       },
       /**
-       * Button id that matches the table property to toggle
+       * Button id that matches table property to toggle
        */
       id: {
+        attribute: "id",
         type: String,
         value: null,
       },
@@ -148,12 +173,13 @@ class EditableTableEditorToggle extends PolymerElement {
         value: null,
       },
       /**
-       * Whether the button is toggled
+       * Whether button is toggled
        */
       toggled: {
+        attribute: "toggled",
         type: Boolean,
         value: false,
-        reflectToAttribute: true,
+        reflect: true,
       },
     };
   }

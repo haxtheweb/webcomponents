@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>RichTextEditor: rich-text-editor Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/buttons/rich-text-editor-button.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered"> 
+      <h3>Basic rich-text-editor-toolbar demo</h3>
+      <demo-snippet>
+        <template>
+          <rich-text-editor-button 
+            icon="save" 
+            label="Save" >
+          </rich-text-editor-button>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

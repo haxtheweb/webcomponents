@@ -75,7 +75,7 @@ class ElmslnStudioButton extends navigator(LitElement) {
   }
 
   buttonClick(event) {
-    this.navigate(`${window.ElmslnStudioPath || ""}${this.path}`);
+    if (!this.disabled) this.navigate(this.path);
   }
 }
 customElements.define("elmsln-studio-button", ElmslnStudioButton);
