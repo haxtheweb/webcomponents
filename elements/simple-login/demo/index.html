@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>SimpleLogin: simple-login Demo</title>
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
     
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
@@ -27,7 +28,6 @@
       }
       simple-camera-snap {
         --simple-camera-snap-color: black;
-        display: inline-block;
       }
     </style>
   </head>
@@ -42,12 +42,27 @@
         </template>
       </demo-snippet>
     </div>
+    <h3>Basic simple-login-camera demo</h3>
+    <demo-snippet>
+      <template>
+        <simple-login-camera id="logincamera" autoplay style="width:200px;"></simple-login-camera>
+        <simple-login-camera id="logincamera" autoplay style="--simple-login-camera-aspect:1.777777777777;"></simple-login-camera>
+      </template>
+    </demo-snippet>
+    <h3>Basic simple-login-camera demo</h3>
+    <demo-snippet>
+      <template>
+        <simple-camera-snap id="logincamera" autoplay style="width:200px;"></simple-camera-snap>
+        <simple-camera-snap id="logincamera" autoplay style="width:200px;--simple-login-camera-aspect:1.777777777777;--simple-camera-snap-border-radius:3px;"></simple-camera-snap>
+      </template>
+    </demo-snippet>
+  </div>
     <div class="vertical-section-container centered">
       <h3>Webcam simple-login demo</h3>
       <demo-snippet>
         <template>
           <simple-login>
-            <simple-login-avatar>
+            <simple-login-avatar style="width:200px;">
               <div id="selfie"></div>
               <simple-login-camera id="logincamera" autoplay></simple-login-camera>
             </simple-login-avatar>

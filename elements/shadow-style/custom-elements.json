@@ -1,0 +1,29 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "shadow-style",
+      "path": "./shadow-style.js",
+      "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "shadow-style",
+      "path": "./src/shadow-style.js",
+      "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

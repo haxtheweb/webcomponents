@@ -29,8 +29,9 @@ Custom property | Description | Default
 `--a11y-collapse-overflow-y` | override default overflow behavior | hidden
 `--a11y-collapse-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works
  *
- * @element a11y-collapse
- * @demo ./demo/index.html demo
+ * @customElement
+ * @extends LitElement
+ * @demo demo/index.html
  * @demo ./demo/group.html collapse groups
  */
 class A11yCollapse extends LitElement {
@@ -94,32 +95,7 @@ class A11yCollapse extends LitElement {
           transition: transform 0.75s ease;
           padding: (--a11y-collapse-icon-padding, unset);
         }
-        #expand.rotated {
-          transform: rotate(-90deg);
-          transition: transform 0.75s ease;
-        }
         #content {
-          padding: 0
-            var(
-              --a11y-collapse-padding-right,
-              var(--a11y-collapse-horizontal-padding, 16px)
-            )
-            0
-            var(
-              --a11y-collapse-padding-left,
-              var(--a11y-collapse-horizontal-padding, 16px)
-            );
-          border-top: 0px solid;
-          border-color: var(--a11y-collapse-border-color, inherit);
-          max-height: 0;
-          transition: all 0.75s ease;
-          overflow-y: hidden;
-        }
-        :host #content-inner {
-          max-height: 0;
-          overflow-y: var(--a11y-collapse-overflow-y, hidden);
-        }
-        :host([expanded]) #content {
           padding: var(
               --a11y-collapse-padding-top,
               var(--a11y-collapse-vertical-padding, 16px)
@@ -138,11 +114,58 @@ class A11yCollapse extends LitElement {
             );
           border-top: var(--a11y-collapse-border, 1px solid);
           border-color: var(--a11y-collapse-border-color, inherit);
-          max-height: 200000000000vh;
         }
-        :host([expanded]) #content-inner {
-          max-height: var(--a11y-collapse-max-height, 200000000000vh);
-          transition: max-height 0.75s ease;
+        @media screen {
+          #expand.rotated {
+            transform: rotate(-90deg);
+            transition: transform 0.75s ease;
+          }
+          :host #content {
+            padding: 0
+              var(
+                --a11y-collapse-padding-right,
+                var(--a11y-collapse-horizontal-padding, 16px)
+              )
+              0
+              var(
+                --a11y-collapse-padding-left,
+                var(--a11y-collapse-horizontal-padding, 16px)
+              );
+            border-top: 0px solid;
+            border-color: var(--a11y-collapse-border-color, inherit);
+            max-height: 0;
+            transition: all 0.75s ease;
+            overflow-y: hidden;
+          }
+          :host #content-inner {
+            max-height: 0;
+            overflow-y: var(--a11y-collapse-overflow-y, hidden);
+          }
+          :host([expanded]) #content {
+            padding: var(
+                --a11y-collapse-padding-top,
+                var(--a11y-collapse-vertical-padding, 16px)
+              )
+              var(
+                --a11y-collapse-padding-right,
+                var(--a11y-collapse-horizontal-padding, 16px)
+              )
+              var(
+                --a11y-collapse-padding-bottom,
+                var(--a11y-collapse-vertical-padding, 16px)
+              )
+              var(
+                --a11y-collapse-padding-left,
+                var(--a11y-collapse-horizontal-padding, 16px)
+              );
+            border-top: var(--a11y-collapse-border, 1px solid);
+            border-color: var(--a11y-collapse-border-color, inherit);
+            max-height: 200000000000vh;
+          }
+          :host([expanded]) #content-inner {
+            max-height: var(--a11y-collapse-max-height, 200000000000vh);
+            transition: max-height 0.75s ease;
+          }
         }
       `,
     ];

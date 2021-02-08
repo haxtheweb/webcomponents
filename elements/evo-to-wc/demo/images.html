@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>evo-to-wc Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import { EvoToWcConverter } from "../evo-to-wc.js";
+    </script>
+    <style>
+      table {
+        width: 100%;
+      }
+      table th[scope="row"]{
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>evo-to-wc demo</h1>
+      <demo-snippet id="demo">
+        <script>
+        window.onload=()=>{
+          let converter = window.EvoToWc.requestAvailability();
+          console.log(converter,document.getElementById('demo'));
+          converter.convert(document.getElementById('demo'));
+        };
+        </script>
+        <template>
+          <h2>Thumbnails</h2>
+          <img alt="Banner" class="image-thumbnail right" height="33" src="./images/banner_thumb.jpg" width="200" />
+          <figure>
+            <img alt="Cannoli Cake" class="image-thumbnail right" height="33" src="./images/cannolicake.jpg" width="200" />
+            <figcaption>This is the figure caption.</figcaption>
+          </figure>
+          <h2>Caption Toggle</h2>
+          <figure class="image-info">
+            <img alt="Cannoli Cake" height="450" id="cannolicake" src="./images/cannolicake.jpg" width="600" />
+            <figcaption>This is a caption about the Cannoli Cake picture.
+            </figcaption>
+          </figure>
+          <h2>GIFs</h2>
+          <img alt="Forklift unloading raw materials into storage area." class="gif-player" height="305" src="./images/jobcost01.jpg" width="500" />
+          <h2>Image Lists</h2>
+          <ul class="clickable-list horizontal-layout radio-mode">
+            <li>
+              <p><img alt="Placeholder image of people" height="auto" src="//placeimg.com/100/100/people" width="100" />
+              </p>
+              <div>Image of people
+              </div>
+            </li>
+            <li>
+              <p><img alt="Placeholder image of technology" height="auto" src="//placeimg.com/100/100/tech" width="100" />
+              </p>
+              <div>Image of technology
+              </div>
+            </li>
+            <li>
+              <p><img alt="Placeholder image of nature" height="auto" src="//placeimg.com/100/100/nature" width="100" />
+              </p>
+              <div>Image of nature
+              </div>
+            </li>
+          </ul>
+          <h2>Dynamic Images</h2>
+          <div class="dynamic-image-group inline-links col-xs-12 col-md-6">
+            <p contenteditable="true">Click the following links to see the 4 Ps in the image below:
+            </p>
+            <figure class="image"><img alt="The 4 Ps" height="333" src="./images/4Ps.jpg" width="500" />
+              <figcaption>The 4 Ps
+              </figcaption>
+            </figure>
+            <figure class="image"><img alt="Product" height="333" src="./images/4Pproduct.jpg" width="500" />
+              <figcaption>Product: The car
+              </figcaption>
+            </figure>
+            <figure class="image"><img alt="Place" height="333" src="./images/4Pplace.jpg" width="500" />
+              <figcaption>Place: The Car lot
+              </figcaption>
+            </figure>
+            <figure class="image"><img alt="Price" height="333" src="./images/4Pprice.jpg" width="500" />
+              <figcaption>Price: The price of the car, $15,500
+              </figcaption>
+            </figure>
+            <figure class="image"><img alt="Promotion" height="333" src="./images/4Ppromotion.jpg" width="500" />
+              <figcaption>Promotion: The words &#34;loaded luxury&#34;&#34;
+              </figcaption>
+            </figure>
+          </div>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

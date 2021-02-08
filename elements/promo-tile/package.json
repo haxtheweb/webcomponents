@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Start of promo-tile",
   "repository": {
     "type": "git",
@@ -41,14 +41,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^3.0.5",
-    "@lrnwebcomponents/schema-behaviors": "^3.0.5",
-    "@lrnwebcomponents/simple-icon": "^3.0.5",
+    "@lrnwebcomponents/hax-iconset": "^3.0.6",
+    "@lrnwebcomponents/schema-behaviors": "^3.0.6",
+    "@lrnwebcomponents/simple-icon": "^3.0.6",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
-    "@lrnwebcomponents/storybook-utilities": "^3.0.5",
+    "@lrnwebcomponents/storybook-utilities": "^3.0.6",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.5.0",

@@ -243,6 +243,12 @@ class CleanOne extends HAXCMSThemeParts(
         :host([responsive-size="sm"]) .main-content {
           overflow-x: hidden;
         }
+        :host([responsive-size="xs"]) .site-inner {
+          max-width: 100vw;
+        }
+        :host([responsive-size="xs"]) .page-inner {
+          overflow-x: auto;
+        }
         h1 {
           font-size: 2em;
           margin: .67em 0;

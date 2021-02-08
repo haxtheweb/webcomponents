@@ -611,7 +611,7 @@
     },
     {
       "name": "hax-map",
-      "description": "`hax-map`\n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.",
+      "description": "`hax-map`\n\nEvents:\n\n  * `hax-tray-button-click` {`CustomEvent<{ eventName: string; index: number; value: boolean; }>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.",
       "attributes": [
         {
           "name": "opened",
@@ -645,6 +645,10 @@
         {
           "name": "title",
           "description": "`title` {`string`} - Title when open.\n\nProperty: title\n\nDefault: Content map"
+        },
+        {
+          "name": "onhax-tray-button-click",
+          "description": "`hax-tray-button-click` {`CustomEvent<{ eventName: string; index: number; value: boolean; }>`} - "
         }
       ]
     },
@@ -691,7 +695,7 @@
     },
     {
       "name": "hax-preferences-dialog",
-      "description": "`hax-preferences-dialog`\n\nAttributes:\n\n  * `globalPreferences` - Preferences managed for everything global about HAX.\n\n  * `hideLink` {`boolean`} - Developer prop to hide the link\n\n  * `title` {`string`} - Title.\n\n  * `schema` - Schema that has all of inputs / manages state\n\nProperties:\n\n  * `globalPreferences` - Preferences managed for everything global about HAX.\n\n  * `hideLink` {`boolean`} - Developer prop to hide the link\n\n  * `title` {`string`} - Title.\n\n  * `schema` - Schema that has all of inputs / manages state\n\n  * `schemaValues` - ",
+      "description": "`hax-preferences-dialog`\n\nEvents:\n\n  * `hax-tray-button-click` {`CustomEvent<{ eventName: string; index: number; value: boolean; }>`} - \n\nAttributes:\n\n  * `globalPreferences` - Preferences managed for everything global about HAX.\n\n  * `hideLink` {`boolean`} - Developer prop to hide the link\n\n  * `title` {`string`} - Title.\n\n  * `schema` - Schema that has all of inputs / manages state\n\nProperties:\n\n  * `globalPreferences` - Preferences managed for everything global about HAX.\n\n  * `hideLink` {`boolean`} - Developer prop to hide the link\n\n  * `title` {`string`} - Title.\n\n  * `schema` - Schema that has all of inputs / manages state\n\n  * `schemaValues` - ",
       "attributes": [
         {
           "name": "globalPreferences",
@@ -709,6 +713,10 @@
         {
           "name": "schema",
           "description": "`schema` - Schema that has all of inputs / manages state\n\nProperty: schema\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onhax-tray-button-click",
+          "description": "`hax-tray-button-click` {`CustomEvent<{ eventName: string; index: number; value: boolean; }>`} - "
         }
       ]
     },

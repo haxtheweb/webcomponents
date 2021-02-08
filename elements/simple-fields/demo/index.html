@@ -23,7 +23,8 @@
       <demo-snippet>
         <style>#submission {width: 100%;}</style>
         <template>
-          <form id="form"><simple-fields id="schema"></simple-fields></form>
+          <button id="focus" onclick="document.getElementById('schema').focus()">Focus</button>
+          <form id="form"><simple-fields id="schema" autofocus></simple-fields></form>
             <p>
               <input onclick="setErrors()" value="Add fake errors" type="button">
               <input onclick="getValues()" value="Get Values" id="getvals" type="button">
@@ -33,7 +34,8 @@
           <textarea id="submission" rows="15"></textarea>
           <script>
             window.onload = () => {
-              let schema = document.getElementById('schema'),
+              let focus = document.getElementById('focus'),
+                schema = document.getElementById('schema'),
                 schemaError = {
                   "settings.basic-input.name": "That's not your real name.",
                   "settings.arrays.phoneNumbers.0.phoneNumber": "That's not your real phone number.",

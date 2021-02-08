@@ -1,0 +1,53 @@
+{
+  "name": "@lrnwebcomponents/shadow-style",
+  "wcfactory": {
+    "className": "ShadowStyle",
+    "customElementClass": "HTMLElement",
+    "elementName": "shadow-style",
+    "generator-wcfactory-version": "0.10.0",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/shadow-style.css",
+      "scss": "src/shadow-style.scss",
+      "html": "src/shadow-style.html",
+      "js": "src/shadow-style.js",
+      "properties": "src/shadow-style-properties.json",
+      "hax": "src/shadow-style-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "3.0.7",
+  "description": "write css that is for piercing shadow roots and applying CSS automatically",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "shadow-style.js",
+  "module": "shadow-style.js",
+  "umd": "shadow-style.umd.js",
+  "scripts": {
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/shadow-style/test/",
+    "start":"yarn run dev","build":"gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"gulp dev --gulpfile=gulpfile.cjs","serve":"es-dev-server -c ../../es-dev-server.config.js","lighthouse":"gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "@lrnwebcomponents/meme-maker": "^3.0.6",
+    "web-animations-js":"2.3.2","@lrnwebcomponents/deduping-fix":"2.7.7","@polymer/iron-demo-helpers":"3.1.0","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.5.0","gulp-babel":"8.0.0","lodash":"4.17.20","polymer-cli":"1.9.11","es-dev-server":"1.60.1","concurrently":"5.3.0","polymer-build":"3.1.4","wct-browser-legacy":"1.0.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

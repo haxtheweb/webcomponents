@@ -21,12 +21,27 @@
       import '../lib/block-quote.js';
       import '../lib/ebook-button.js';
       import '../lib/lrn-h5p.js';
+      import '../lib/activity-box.js';
       import '../lib/worksheet-download.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
+      <h3>Basic usage of activity-box</h3>
+      <demo-snippet>
+        <template>
+          <activity-box icon="cog">
+            Drag &amp; drop - drag the icons to the matching descriptions.
+          </activity-box>
+          <activity-box>
+            Drag &amp; drop - drag the icons to the matching descriptions.
+          </activity-box>
+          <activity-box icon="bulb">
+            Drag &amp; drop - drag the icons to the matching descriptions.
+          </activity-box>
+        </template>
+      </demo-snippet>
       <h3>Basic course-design demo of assets</h3>
       <demo-snippet>
         <template>

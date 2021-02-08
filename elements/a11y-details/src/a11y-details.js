@@ -40,6 +40,8 @@ Custom property | Description | Default
 --a11y-details-borderStyle | border-style | solid
 --a11y-details-borderRadius | border-radius | 3px
 --a11y-details-padding | padding | 0.5em
+--a11y-details-left | left position | 0
+--a11y-details-right | right position | 0
 --a11y-details-maxHeight | max-height | 400px
 
  *

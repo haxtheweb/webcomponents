@@ -1,7 +1,9 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 /**
  * `simple-fields-upload` takes in a JSON schema of type array and builds a form,
@@ -29,8 +31,7 @@ class SimpleFieldsUpload extends SimpleColors {
           pointer-events: all;
           overflow: visible;
           font-family: var(--simple-fields-font-family, sans-serif);
-          --simple-camera-snap-width: 100px;
-          --simple-camera-snap-height: calc(100px * 9 / 16);
+          --simple-login-camera-aspect: 1.777777777777;
           --simple-camera-snap-color: var(--simple-fields-color, black);
           --simple-camera-snap-background: var(
             --simple-fields-background-color,
@@ -46,12 +47,13 @@ class SimpleFieldsUpload extends SimpleColors {
             #fff
           );
           --lumo-primary-color: var(--simple-fields-color, black);
-          --lumo-dark-primary-color: ar(--simple-fields-color, black);
+          --lumo-dark-primary-color: var(--simple-fields-color, black);
           --lumo-light-primary-color: var(--simple-fields-color, black);
           --lumo-primary-text-color: var(--simple-fields-color, black);
           --lumo-body-text-color: var(--simple-fields-color, black);
           --lumo-header-text-color: var(--simple-fields-color, black);
           --lumo-secondary-text-color: var(--simple-fields-color, black);
+          --lumo-contrast-20pct: transparent;
           --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
           color: var(--simple-fields-color, black);
           background-color: var(--simple-fields-background-color, #fff);
@@ -71,22 +73,12 @@ class SimpleFieldsUpload extends SimpleColors {
           line-height: var(--simple-fields-detail-line-height, 22px);
         }
         fieldset {
-          padding: var(--simple-fields-margin-small, 8px)
-            var(--simple-fields-margin, 16px);
+          padding: 0;
           margin: var(--simple-fields-margin-small, 8px) 0
             var(--simple-fields-margin, 16px);
           border: 1px solid var(--simple-fields-border-color-light, #ccc);
           border-radius: var(--simple-fields-border-radius, 2px);
           transition: all 0.3s ease-in-out;
-        }
-        fieldset > div {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: space-between;
-        }
-        fieldset > div > *:not(#picker) {
-          flex: 1 1 auto;
         }
         #label {
           font-family: var(--simple-fields-font-family, sans-serif);
@@ -97,17 +89,35 @@ class SimpleFieldsUpload extends SimpleColors {
           color: var(--simple-fields-error-color, #dd2c00);
           transition: all 0.3s ease-in-out;
         }
-        #picker {
-          margin-bottom: 0;
-          margin-right: 5px;
+        #options {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          flex: 1 1 auto;
+          float: right;
+          margin: -5px 5px 5px;
+        }
+        simple-icon-button {
+          opacity: 0.8;
+          border-radius: 3px;
+          margin: 0 2px;
+        }
+        simple-icon-button[aria-pressed="true"],
+        simple-icon-button:focus-within,
+        simple-icon-button:hover {
+          outline: 1px solid var(--simple-fields-border-color, #999);
+          opacity: 1;
+        }
+        #uploads {
+          clear: both;
+          padding: 0 var(--simple-fields-margin-small, 8px)
+            var(--simple-fields-margin, 16px);
         }
         vaadin-upload {
-          padding: 5px;
-          margin: 0;
+          padding: 0;
+          margin: 0 calc(0px - var(--lumo-space-s)) 0 0;
         }
         simple-camera-snap {
-          position: relative;
-          --simple-camera-snap-button-container-position: absolute;
           --simple-camera-snap-button-container-bottom: 2px;
           --simple-camera-snap-button-container-z-index: 5;
           --simple-camera-snap-button-border-radius: 100%;
@@ -134,17 +144,30 @@ class SimpleFieldsUpload extends SimpleColors {
   render() {
     return html`
       <fieldset id="fieldset">
-        <legend id="label" ?hidden="${!this.label}">${this.label}</legend>
-        <div>
-          <simple-picker
-            id="picker"
-            aria-label="Source..."
-            required
-            value="${this.option}"
-            @value-changed="${this.optionChanged}"
-            .options="${this.options}"
-          >
-          </simple-picker>
+        <legend id="label" ?hidden="${!this.label}">${this.label}:</legend>
+        <div id="options">
+          ${!this.options || !this.options.map
+            ? ""
+            : this.options.map((option) =>
+                !option[0]
+                  ? ""
+                  : html`
+                      <simple-icon-button
+                        aria-hidden="true"
+                        icon="${option[0].icon}"
+                        label=${option[0].alt}
+                        aria-pressed="${this.option == option[0].value
+                          ? "true"
+                          : "false"}"
+                        @click="${(e) =>
+                          this.optionChanged(option[0].value, e)}"
+                        controls="${option[0].value}"
+                      >
+                      </simple-icon-button>
+                    `
+              )}
+        </div>
+        <div id="uploads">
           <simple-fields-field
             id="url"
             ?hidden="${this.option !== "url"}"
@@ -171,10 +194,10 @@ class SimpleFieldsUpload extends SimpleColors {
       </fieldset>
     `;
   }
-  optionChanged(e) {
-    this.option = e.detail.value;
+  optionChanged(option, e) {
+    this.option = option;
     // make sure there's not null here, possible when dynamically  built
-    if (e.detail.value == null || e.detail.value == "null") {
+    if (!option) {
       if (
         this.options &&
         this.options[0] &&
@@ -184,6 +207,9 @@ class SimpleFieldsUpload extends SimpleColors {
         this.option = this.options[0][0].value;
       }
     }
+    console.log(option, e, this.option);
+    if (option === "selfie") this._takeSelfie(e);
+    if (option === "audio") this._voiceRecorder(e);
   }
   valueChanged(e) {
     this.value = e.detail.value;
@@ -281,16 +307,16 @@ class SimpleFieldsUpload extends SimpleColors {
     let options = [
       [
         {
-          alt: "URL",
-          icon: "icons:link",
-          value: "url",
+          alt: "Upload",
+          icon: "icons:file-upload",
+          value: "fileupload",
         },
       ],
       [
         {
-          alt: "Upload",
-          icon: "icons:file-upload",
-          value: "fileupload",
+          alt: "URL",
+          icon: "icons:link",
+          value: "url",
         },
       ],
     ];
@@ -316,6 +342,7 @@ class SimpleFieldsUpload extends SimpleColors {
         }
       ]);*/
     }
+    console.log(options);
     return options;
   }
   /**
@@ -327,16 +354,13 @@ class SimpleFieldsUpload extends SimpleColors {
     }
     // test on load for if we have a media device
     this.options = [...this._setInputOptions()];
+    console.log(this.options);
     // default to URL if we have a value of any kind
     if (this.value) {
       this.option = "url";
     } else {
       this.option = "fileupload";
     }
-    this.shadowRoot.querySelector("#picker").addEventListener("change", (e) => {
-      if (e && e.detail && e.detail.value === "selfie") this._takeSelfie(e);
-      if (e && e.detail && e.detail.value === "audio") this._voiceRecorder(e);
-    });
   }
   /**
    * We got a new photo

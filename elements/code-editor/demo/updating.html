@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>CodeEditor: code-editor Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
+    <script type="module" async defer>
+      import '../code-editor.js';
+      import "@polymer/paper-button/paper-button.js";
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Updating code-editor demo</h3>
+      <div id="div" contenteditable="true"><h2>Edit <i>me!</i></h2>
+        <p>Edit this text and the code updates.</p>
+      </div>
+      <code-editor autofocus id="code" language="html" show-code-pen title="With template (recommended)">
+        <template>
+          <p>
+            Things and stuff
+          </p>
+        </template>
+      </code-editor>
+      <script>
+        let code = document.getElementById('code'),
+        div = document.getElementById('div');
+        code.editorValue = div.innerHTML;
+        div.addEventListener('input',e=>{
+          if(code.editorValue != div.innerHTML) code.editorValue = div.innerHTML;
+        });
+        code.addEventListener('value-changed',e=>{
+          if(code.value != div.innerHTML) div.innerHTML = code.value;
+        })
+      </script>
+  </body>
+</html>

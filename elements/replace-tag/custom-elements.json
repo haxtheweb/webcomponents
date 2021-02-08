@@ -1,0 +1,31 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "replace-tag",
+      "path": "./replace-tag.js",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "replace-tag",
+      "path": "./src/replace-tag.js",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

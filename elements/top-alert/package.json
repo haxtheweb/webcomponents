@@ -1,0 +1,70 @@
+{
+  "name": "@lrnwebcomponents/top-alert",
+  "wcfactory": {
+    "className": "TopAlert",
+    "customElementClass": "HTMLElement",
+    "elementName": "top-alert",
+    "generator-wcfactory-version": "0.10.0",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/top-alert.css",
+      "scss": "src/top-alert.scss",
+      "html": "src/top-alert.html",
+      "js": "src/top-alert.js",
+      "properties": "src/top-alert-properties.json",
+      "hax": "src/top-alert-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "3.0.6",
+  "description": "A full width alert that has an important message for the website viewer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "top-alert.js",
+  "module": "top-alert.js",
+  "umd": "top-alert.umd.js",
+  "scripts": {
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/top-alert/test/",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "lit-element": "2.4.0"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "2.7.7",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.5.0",
+    "concurrently": "5.3.0",
+    "es-dev-server": "1.60.1",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.20",
+    "polymer-build": "3.1.4",
+    "polymer-cli": "1.9.11",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

@@ -40,6 +40,8 @@ Custom property | Description | Default
 --a11y-details-borderStyle | border-style | solid
 --a11y-details-borderRadius | border-radius | 3px
 --a11y-details-padding | padding | 0.5em
+--a11y-details-left | left position | 0
+--a11y-details-right | right position | 0
 --a11y-details-maxHeight | max-height | 400px
 
  *
@@ -63,7 +65,7 @@ class A11yDetails extends LitElement {
         }
 
         :host([hidden]) {
-          display: none;
+          display: none !important;
         }
 
         summary {
@@ -74,7 +76,7 @@ class A11yDetails extends LitElement {
           font-size: var(--a11y-details-summary-fontSize, 0.8em);
           color: var(--a11y-details-summary-color, #000);
           background-color: var(--a11y-details-summary-backgroundColor, #fff);
-          border-color: var(--a11y-details-summary-borderColor, #000);
+          border-color: var(--a11y-details-summary-borderColor, #ddd);
           border-width: var(--a11y-details-summary-borderWidth, 1px);
           border-style: var(--a11y-details-summary-borderStyle, solid);
           border-radius: var(--a11y-details-summary-borderRadius, 3px);
@@ -93,7 +95,7 @@ class A11yDetails extends LitElement {
           );
           border-color: var(
             --a11y-details-summary-focus-borderColor,
-            var(--a11y-details-borderColor, #000)
+            var(--a11y-details-borderColor, #999)
           );
           border-width: var(
             --a11y-details-summary-focus-borderWidth,
@@ -122,7 +124,7 @@ class A11yDetails extends LitElement {
             --a11y-details-backgroundColor,
             rgba(255, 255, 255, 0.8)
           );
-          border-color: var(--a11y-details-borderColor, #000);
+          border-color: var(--a11y-details-borderColor, #999);
           border-width: var(--a11y-details-borderWidth, 1px);
           border-style: var(--a11y-details-borderStyle, solid);
           border-radius: var(--a11y-details-borderRadius, 3px);
@@ -159,10 +161,12 @@ class A11yDetails extends LitElement {
         details[open] #details-inner {
           z-index: 9999999999;
           display: block;
-          left: 0;
+          left: var(--a11y-details-left, unset);
+          right: var(--a11y-details-right, unset);
           padding: var(--a11y-details-padding, 0.5em);
           max-height: var(--a11y-details-maxHeight, 400px);
           padding: var(--a11y-details-padding, 0.5em);
+          width: calc(auto - 2 * var(--a11y-details-padding, 0.5em));
           transition: all 0.7s ease-in-out 0.2s;
         }
       `,
