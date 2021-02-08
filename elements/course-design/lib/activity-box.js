@@ -16,24 +16,27 @@ class ActivityBox extends LitElement {
           padding: var(--activity-box-container-padding, 7px);
           padding-top: var(--activity-box-container-padding-top, 14px);
           margin-bottom: var(--activity-box-container-margin-bottom, 20px);
+          position: relative;
         }
-        .icon {
-          width: 80px;
-          height: 80px;
-          background-repeat: no-repeat;
-          background-size: contain;
+        simple-icon {
+          --simple-icon-height: 80px;
+          --simple-icon-width: 80px;
+          --simple-icon-color: white;
           float: left;
+          position: absolute;
+          top: 0px;
         }
-        :host([icon="cog"]) .icon {
-          background-image: url(https://media.buttercupstraining.co.uk/sites/media/bc/files/cog-icon.png);
-          margin-left: -33px;
-          margin-top: -24px;
+        :host([icon="settings"]) simple-icon {
+          left: var(--activity-box-icon-settings-left, 0px);
         }
-
-        :host([icon="bulb"]) .icon {
-          background-image: url(https://media.buttercupstraining.co.uk/sites/media/bc/files/lightbulb-icon.png);
-          margin-left: -39px;
-          margin-top: -27px;
+        :host([icon="bulb"]) simple-icon {
+          left: var(--activity-box-icon-bulb-left, 0px);
+        }
+        :host([icon="pencil"]) simple-icon {
+          left: var(--activity-box-icon-pencil-left, 0px);
+        }
+        :host([icon="sop"]) simple-icon {
+          left: var(--activity-box-icon-sop-left, 0px);
         }
         .pullout {
           padding-left: 48px;
@@ -44,9 +47,12 @@ class ActivityBox extends LitElement {
           margin-bottom: 10px;
           font-size: 126%;
           line-height: 28px;
-          padding-left: 63px;
+          padding: var(--activity-box-content-padding, 0px 0px 0px 85px);
           margin-bottom: 13px !important;
           max-width: 100%;
+        }
+        :host([icon="none"]) .pullout {
+          padding-left: 10px;
         }
       `,
     ];
@@ -66,7 +72,7 @@ class ActivityBox extends LitElement {
         color: "blue",
         groups: ["text", "education"],
         meta: {
-          author: "ButtercupsUK",
+          author: "Buttercups Training Ltd",
         },
       },
       settings: {
@@ -74,11 +80,14 @@ class ActivityBox extends LitElement {
           {
             property: "icon",
             title: "Icon",
-            description: "The citation of the element",
+            description: "The icon to be displayed alongside the activity box",
             inputMethod: "select",
             options: {
-              cog: "Cog",
+              none: "None",
+              settings: "Settings",
               bulb: "Bulb",
+              pencil: "Pencil",
+              sop: "Standard Operating Procedure",
             },
           },
         ],
@@ -88,7 +97,7 @@ class ActivityBox extends LitElement {
         {
           tag: "activity-box",
           properties: {
-            icon: "cog",
+            icon: "settings",
           },
           content:
             "<p>Drag &amp; drop - drag the icons to the matching descriptions.</p>",
@@ -98,9 +107,20 @@ class ActivityBox extends LitElement {
   }
   static get properties() {
     return {
+      /* The icon to use for the activity box */
       icon: {
         type: String,
         reflect: true,
+      },
+      /* The variable used for passing the icon to the simple-icon component */
+      _simpleIcon: {
+        type: String,
+        reflect: false,
+      },
+      /* The variable used for passing a source href to the simple-icon component */
+      _simpleIconSource: {
+        type: String,
+        reflect: false,
       },
     };
   }
@@ -108,11 +128,59 @@ class ActivityBox extends LitElement {
   constructor() {
     super();
     this.icon = "bulb";
+    this._simpleIcon = this.icon;
+    this._simpleIconSource = "";
   }
+
+  updateIconSource(context, icon, source) {
+    this._simpleIcon = icon;
+    this._simpleIconSource = source;
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "icon") {
+        var customIcon = getComputedStyle(this)
+          .getPropertyValue("--activity-box-icon-" + `${this[propName]}`)
+          .slice(5, -1)
+          .replace(/\\/g, "");
+        if (customIcon) {
+          this.updateIconSource(this, "", customIcon);
+        } else {
+          /* For certain icons, we need to switch from the friendly name to the actual name of the default icon */
+          var icon = `${this[propName]}`;
+          switch (this[propName]) {
+            case "pencil":
+              icon = "editor:mode-edit";
+              break;
+            case "sop":
+              icon = "editor:format-list-bulleted";
+              break;
+            case "bulb":
+              icon = "lightbulb-outline";
+              break;
+          }
+          this.updateIconSource(this, icon, "");
+        }
+      }
+    });
+  }
+
   render() {
     return html`
       <div class="container">
-        <div class="icon"></div>
+        ${this._simpleIcon !== "none"
+          ? html`
+              <simple-icon
+                icon="${this._simpleIcon}"
+                src="${this._simpleIconSource}"
+                ?no-colorize=${this._simpleIconSource}
+              ></simple-icon>
+            `
+          : html``}
         <div class="pullout"><slot></slot></div>
       </div>
     `;
