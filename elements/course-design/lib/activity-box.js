@@ -64,7 +64,7 @@ class ActivityBox extends LitElement {
           padding-left: 48px;
           color: white;
           margin-top: 0;
-          font-family: "Roboto Slab", Arial, Sans-Serif;
+          font-family: var(--activity-box-content-font-family, inherit);
           font-weight: 400;
           margin-bottom: 10px;
           font-size: 126%;
