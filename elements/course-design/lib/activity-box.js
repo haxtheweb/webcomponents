@@ -46,7 +46,8 @@ class ActivityBox extends LitElement {
           color: var(--elmsln-system-color-dark);
           padding: 3px 10px;
           line-height: 10px;
-          font-weight: bold;
+          font-weight: var(--activity-box-tag-font-weight, bold);
+          font-size: var(--activity-box-tag-font-size, 16px);
         }
         .tag > span > simple-icon {
           display: inline;
