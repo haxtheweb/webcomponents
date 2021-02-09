@@ -512,6 +512,28 @@ class HAXCMSSiteBuilder extends LitElement {
     }
   }
   /**
+   * Find custom element tags and replace with replace-tag for performance gains based on device context
+   */
+  /*replaceTagReplacement(html) {
+    var myRegexp = /(\<.*?\>)(.*?)(\<\/.*?\>)/igm;
+    // execute 1st match
+    var match = myRegexp.exec(html);
+    console.log(match);
+    var replacement;
+    while (match != null) {
+      // replace 1st occurance, which will mesh w/ order it was found
+      if (match[2].endsWith('/')) {
+        // capture group has tag name as match 1, attributes as match 2
+        replacement = '<' + match[1] + ' ' + match[2] + '></' + match[1] + '>';
+        // replace 1st occurance, which will mesh w/ order it was found
+        html = html.replace(match[0], replacement);
+      }
+      // execute again, which processes the next tag
+      match = myRegexp.exec(html);
+    }
+    return html;
+  }*/
+  /**
    * React to content being loaded from a page.
    */
   _activeItemContentChanged(newValue, oldValue) {
