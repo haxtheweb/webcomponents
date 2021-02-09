@@ -25,17 +25,25 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       source: {
         type: String,
       },
-      __computedSource: {
-        type: String
+      // icon for button
+      icon: {
+        type: String,
       },
+      // modified source depending on media type
+      __computedSource: {
+        type: String,
+      },
+      // type of media (i.e. pdf, video, codepen, stackblitz)
       type: {
         type: String,
         reflect: true,
       },
+      // button text
       label: {
         type: String,
         reflect: true,
       },
+      // forces content into a modal
       modal: {
         type: Boolean,
         reflect: true,
@@ -49,7 +57,15 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       hideExplorer: {
         type: Boolean,
         attribute: "hide-explorer",
-      }
+      },
+      // require user to click to load stackblitz embed
+      ctl: {
+        type: Boolean,
+      },
+      // stackblitz "editor", "preview" or "both" open by default
+      view: {
+        type: String,
+      },
     };
   }
 
@@ -78,11 +94,14 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
           display: none;
         }
 
-        .close-btn {
+        /* .close-btn {
           display: none;
           position: absolute;
-          top: 0px;
-          right: 0px;
+          border-radius: 10px;
+          border: solid 2px black;
+          background-color: white;
+          top: -10px;
+          right: -10px;
           width: 32px;
           height: 32px;
           opacity: 0.6;
@@ -108,10 +127,52 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
 
         .close-btn:after {
           transform: rotate(-45deg);
-        }
+        } */
 
         :host([checked-out]) .close-btn {
           display: flex;
+        }
+
+        .close-btn {
+          display: none;
+          border-radius: 50%;
+          padding: 0.5em;
+          width: 30px;
+          height: 30px;
+          border: 2px solid black;
+          color: grey;
+          position: relative;
+          top: 20px;
+          right: -12px;
+          float: right;
+        }
+
+        .close-btn:hover {
+          border: 2px solid black;
+          background-color: grey;
+          color: #ffffff;
+        }
+
+        .close-btn::before {
+          content: " ";
+          position: absolute;
+          background-color: black;
+          width: 2px;
+          left: 12px;
+          top: 5px;
+          bottom: 5px;
+          transform: rotate(45deg);
+        }
+
+        .close-btn::after {
+          content: " ";
+          position: absolute;
+          background-color: black;
+          height: 2px;
+          top: 12px;
+          left: 5px;
+          right: 5px;
+          transform: rotate(45deg);
         }
 
         .iframe-container {
@@ -135,36 +196,52 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
   }
 
   render() {
-    let icon = "";
-    if (this.type === "code"){icon = "code"}
-    else if (this.type === "pdf"){icon = "book"}
-    else if (this.type === "video"){icon = "av:play-arrow"}
-    return  html` ${this.elementVisible ? html`
-        <button class="check-it-out-btn" @click="${this._handleClick}">
-          <simple-icon-lite  icon="${icon}">
-          </simple-icon-lite>
-          ${this.label}
-          <slot></slot>
-        </button>
-      <!-- <simple-modal opened=${this.checkedOut}> -->
-      ${["code", "pdf"].includes(this.type)
-        ? html`<div class="container">
-            <iframe-loader>
-              <span class="close-btn" @click="${this._handleClick}"></span>
-              <iframe class="iframe-container" src=${this.__computedSource} loading="lazy"></iframe>
-            </iframe-loader>
-          </div>`
-        : html`
-            <div class="container">
-              <span class="close-btn" @click="${this._handleClick}" sandbox></span>
-              <video-player
-                class="video-player"
-                source=${this.__computedSource}
-              ></video-player>
-            </div>
-          `}
-        <!-- </simple-modal> -->
-    ` : ``}`;
+    this.icon
+      ? (this.icon = this.icon)
+      : (this.icon = this.typeIconObj[this.type]);
+    return html` ${this.elementVisible
+      ? html`
+          <button
+            class="check-it-out-btn"
+            controls="m1"
+            @click="${this._handleClick}"
+          >
+            <simple-icon-lite icon="${this.icon}"> </simple-icon-lite>
+            ${this.label}
+            <slot></slot>
+          </button>
+          <!-- <simple-modal-template modal-id="m1" opened=${this
+            .checkedOut}> -->
+          ${["code", "pdf"].includes(this.type)
+            ? html`<div class="container">
+                <iframe-loader>
+                  <button
+                    class="close-btn"
+                    @click="${this._handleClick}"
+                  ></button>
+                  <iframe
+                    class="iframe-container"
+                    src=${this.__computedSource}
+                    loading="lazy"
+                  ></iframe>
+                </iframe-loader>
+              </div>`
+            : html`
+                <div class="container">
+                  <button
+                    class="close-btn"
+                    @click="${this._handleClick}"
+                    sandbox
+                  ></button>
+                  <video-player
+                    class="video-player"
+                    source=${this.__computedSource}
+                  ></video-player>
+                </div>
+              `}
+          <!-- </simple-modal-template> -->
+        `
+      : ``}`;
   }
 
   /**
@@ -172,9 +249,17 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
    */
   constructor() {
     super();
+    this.typeIconObj = {
+      code: "code",
+      pdf: "book",
+      video: "av:play-arrow",
+    };
+    this.icon = "";
     this.checkedOut = false;
     this.type = "";
     this.hideExplorer = false;
+    this.ctl = false;
+    this.view = "both";
   }
 
   _handleClick() {
@@ -187,8 +272,11 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
 
   checkType(sourceStr) {
     // if (this.type){return sourceStr;}
-    let videoTypes = [".mp4", ".mkv", ".flv", ".wmv"];
-    if (videoTypes.filter(type => sourceStr.endsWith(type)).length > 0 || sourceStr.includes("youtube.com")) {
+    let videoTypes = [".mp4", ".mkv", ".flv", ".wmv", ".ovg", ".webm", ".mov"];
+    if (
+      videoTypes.filter((type) => sourceStr.endsWith(type)).length > 0 ||
+      sourceStr.includes("youtube.com")
+    ) {
       this.type = "video";
       import("@lrnwebcomponents/video-player/video-player");
     } else if (sourceStr.endsWith(".pdf")) {
@@ -215,14 +303,17 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
     return sourceStr;
   }
 
-  checkStackblitzProps(sourceStr){
+  checkStackblitzProps(sourceStr) {
     if (this.filePath) {
       sourceStr += "&file=" + this.filePath;
     }
-    console.log(this.hideExplorer);
     if (this.hideExplorer) {
       sourceStr += "&hideExplorer=1";
     }
+    if (this.ctl) {
+      sourceStr += "&ctl=1";
+    }
+    sourceStr += `&view=${this.view}`;
     return sourceStr;
   }
 
@@ -230,7 +321,7 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
-    if (super.updated){
+    if (super.updated) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
@@ -239,9 +330,8 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
         this.__debounce = setTimeout(() => {
           this.__computedSource = this.checkType(this.source);
         }, 0);
-      }
-      else if (propName === "modal" && this[propName]){
-        import("@lrnwebcomponents/simple-modal/simple-modal");
+      } else if (propName === "modal" && this[propName]) {
+        import("@lrnwebcomponents/simple-modal/lib/simple-modal-template");
       }
     });
   }
