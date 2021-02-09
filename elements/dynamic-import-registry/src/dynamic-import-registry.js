@@ -33,6 +33,9 @@ class DynamicImportRegistry extends HTMLElement {
     this.__loaded = {};
     this.basePath =
       this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
+    if (window.WCAutoloadBasePath) {
+      this.basePath = window.WCAutoloadBasePath;
+    }
   }
   connectedCallback() {
     window.addEventListener(
