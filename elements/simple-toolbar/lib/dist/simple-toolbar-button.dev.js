@@ -60,7 +60,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject10() {
   var data = _taggedTemplateLiteral([
-    '\n          :host {\n            flex: 0 1 auto;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(--simple-toolbar-button-height, 24px)\n            );\n            white-space: nowrap;\n          }\n          :host([hidden]) {\n            display: none;\n          }\n          #button {\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(--simple-toolbar-button-height, 24px)\n            );\n            min-height: var(--simple-toolbar-button-height, 24px);\n            margin: 0;\n            padding: var(--simple-toolbar-button-padding, 0);\n            color: var(--simple-toolbar-button-color);\n            border-color: var(\n              --simple-toolbar-button-border-color,\n              var(--simple-toolbar-border-color, transparent)\n            );\n            background-color: var(--simple-toolbar-button-bg, transparent);\n            opacity: var(--simple-toolbar-button-opacity, 1);\n            border-width: var(\n              --simple-toolbar-button-border-width,\n              var(--simple-toolbar-border-width, 1px)\n            );\n            border-radius: var(--simple-toolbar-border-radius, 3px);\n            border-style: solid;\n            text-transform: unset;\n            display: flex;\n            flex: 0 1 auto;\n            white-space: nowrap;\n            align-items: stretch;\n            transition: all 0.5s;\n          }\n          #button[aria-pressed="true"] {\n            color: var(--simple-toolbar-button-toggled-color);\n            border-color: var(--simple-toolbar-toggled-border-color);\n            background-color: var(--simple-toolbar-button-toggled-bg);\n            opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);\n          }\n          #button:focus,\n          #button:hover {\n            color: var(--simple-toolbar-button-hover-color);\n            background-color: var(--simple-toolbar-button-hover-bg);\n            border-color: var(--simple-toolbar-hover-border-color);\n            opacity: var(--simple-toolbar-button-hover-opacity, 0.8);\n          }\n          #button[disabled] {\n            cursor: not-allowed;\n            color: var(--simple-toolbar-button-disabled-color, unset);\n            background-color: var(--simple-toolbar-button-disabled-bg, unset);\n            opacity: var(--simple-toolbar-button-disabled-opacity, 0.5);\n          }\n        ',
+    '\n          :host {\n            flex: 0 1 auto;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n              --simple-toolbar-button-width,\n              var(--simple-toolbar-button-height, 24px)\n            )\n            );\n            white-space: nowrap;\n          }\n          :host([hidden]) {\n            display: none;\n          }\n          #button {\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n              --simple-toolbar-button-width,\n              var(--simple-toolbar-button-height, 24px)\n            )\n            );\n            min-height: var(--simple-toolbar-button-height, 24px);\n            margin: 0;\n            padding: var(--simple-toolbar-button-padding, 0);\n            color: var(--simple-toolbar-button-color);\n            border-color: var(\n              --simple-toolbar-button-border-color,\n              var(--simple-toolbar-border-color, transparent)\n            );\n            background-color: var(--simple-toolbar-button-bg, transparent);\n            opacity: var(--simple-toolbar-button-opacity, 1);\n            border-width: var(\n              --simple-toolbar-button-border-width,\n              var(--simple-toolbar-border-width, 1px)\n            );\n            border-radius: var(--simple-toolbar-border-radius, 3px);\n            border-style: solid;\n            text-transform: unset;\n            display: flex;\n            flex: 0 1 auto;\n            white-space: nowrap;\n            align-items: center;\n            transition: all 0.5s;\n          }\n          #button[aria-pressed="true"] {\n            color: var(--simple-toolbar-button-toggled-color);\n            border-color: var(--simple-toolbar-toggled-border-color);\n            background-color: var(--simple-toolbar-button-toggled-bg);\n            opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);\n          }\n          #button:focus,\n          #button:hover {\n            color: var(--simple-toolbar-button-hover-color);\n            background-color: var(--simple-toolbar-button-hover-bg);\n            border-color: var(--simple-toolbar-hover-border-color);\n            opacity: var(--simple-toolbar-button-hover-opacity, 0.8);\n          }\n          #button[disabled] {\n            cursor: not-allowed;\n            color: var(--simple-toolbar-button-disabled-color, unset);\n            background-color: var(--simple-toolbar-button-disabled-bg, unset);\n            opacity: var(--simple-toolbar-button-disabled-opacity, 0.5);\n          }\n        ',
   ]);
 
   _templateObject10 = function _templateObject10() {
@@ -84,7 +84,7 @@ function _templateObject9() {
 
 function _templateObject8() {
   var data = _taggedTemplateLiteral([
-    "\n          #icon:not([icon]) {\n            display: none;\n          }\n          #icon[icon] {\n            width: var(\n              --simple-toolbar-button-min-width,\n              var(--simple-toolbar-button-height, 24px)\n            );\n            height: var(--simple-toolbar-button-height, 24px);\n            flex: 0 0 auto;\n          }\n        ",
+    "\n          #icon:not([icon]) {\n            display: none;\n          }\n          #icon[icon] {\n            width: var(\n              --simple-toolbar-button-width,\n              var(--simple-toolbar-button-height, 24px)\n            );\n            height: var(--simple-toolbar-button-height, 24px);\n            flex: 0 0 auto;\n          }\n        ",
   ]);
 
   _templateObject8 = function _templateObject8() {
@@ -96,7 +96,7 @@ function _templateObject8() {
 
 function _templateObject7() {
   var data = _taggedTemplateLiteral([
-    "\n          .offscreen {\n            position: absolute;\n            left: -999999px;\n            top: 0;\n            height: 0;\n            width: 0;\n            overflow: hidden;\n          }\n        ",
+    "\n          #label {\n            padding: 0 var(--simple-toolbar-button-label-padding, 2px);\n          }\n          .offscreen {\n            position: absolute;\n            left: -999999px;\n            top: 0;\n            height: 0;\n            width: 0;\n            overflow: hidden;\n          }\n        ",
   ]);
 
   _templateObject7 = function _templateObject7() {
@@ -341,10 +341,6 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
-/**
- * @customElement
- * @class
- */
 var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
   SuperClass
 ) {
@@ -416,6 +412,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
               showTextLabel: {
                 attribute: "show-text-label",
                 type: Boolean,
+                reflect: true,
               },
 
               /**
@@ -769,7 +766,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
         ],
         [
           {
-            key: "offScreenStyles",
+            key: "labelStyles",
             get: function get() {
               return [(0, _litElement.css)(_templateObject7())];
             },
@@ -819,7 +816,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                 ),
                 _toConsumableArray(this.buttonStyles),
                 _toConsumableArray(this.iconStyles),
-                _toConsumableArray(this.offScreenStyles),
+                _toConsumableArray(this.labelStyles),
                 _toConsumableArray(this.tooltipStyles)
               );
             },

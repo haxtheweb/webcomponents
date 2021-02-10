@@ -411,6 +411,16 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                 },
 
                 /**
+                 * is toolbar collapsed?
+                 */
+                hidden: {
+                  name: "hidden",
+                  type: Boolean,
+                  attribute: "hidden",
+                  reflect: true,
+                },
+
+                /**
                  * Custom configuration of toolbar groups and buttons.
                  * (See default value for example using default configuration.)
                  */
