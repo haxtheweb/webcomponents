@@ -1468,6 +1468,7 @@
     }
   ],
   "autoloader": {
+    "check-it-out": "@lrnwebcomponents/check-it-out/check-it-out.js",
     "github-preview": "@lrnwebcomponents/github-preview/github-preview.js",
     "activity-box": "@lrnwebcomponents/course-design/lib/activity-box.js",
     "block-quote": "@lrnwebcomponents/course-design/lib/block-quote.js",

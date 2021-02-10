@@ -6,22 +6,24 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin";
+import "@lrnwebcomponents/simple-modal/lib/simple-modal-template";
 
 /**
- * `check-it-out`
- * `View codepen or stackblitz demos`
- * @demo demo/index.html
- * @element check-it-out
+ * `check-it-out-modal`
+ * `View codepen, stackblitz, pdf, and videos in a modal`
+ * @demo demo/modal.html
+ * @element check-it-out-modal
  */
-class CheckItOut extends IntersectionObserverMixin(LitElement) {
+class CheckItOutModal extends IntersectionObserverMixin(LitElement) {
   static get haxProperties() {
     return {
       canScale: false,
       canPosition: false,
       canEditSource: true,
       gizmo: {
-        title: "Check it out",
-        description: "Clickable button for media and code previews",
+        title: "Check it out modal",
+        description:
+          "Clickable button for media and code previews in modal form",
         icon: "check-circle",
         color: "grey",
         groups: ["developer", "code", "video", "pdf"],
@@ -91,12 +93,18 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
               both: "Both",
             },
           },
+          {
+            property: "modalTitle",
+            title: "Modal Title",
+            description: "Title at the top of modal",
+            inputMethod: "textfield",
+          },
         ],
         advanced: [],
       },
       demoSchema: [
         {
-          tag: "check-it-out",
+          tag: "check-it-out-modal",
           properties: {
             org: "elmsln",
             repo: "lrnwebcomponents",
@@ -110,11 +118,6 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-      checkedOut: {
-        type: Boolean,
-        attribute: "checked-out",
-        reflect: true,
-      },
       source: {
         type: String,
       },
@@ -154,6 +157,11 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       view: {
         type: String,
       },
+      // modal header
+      modalTitle: {
+        type: String,
+        attribute: "modal-title",
+      },
     };
   }
 
@@ -164,10 +172,20 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
           display: inline-flex;
         }
 
+        simple-modal-template[modal-id="m1"] {
+          --simple-modal-width: var(--check-it-out-modal-width, 900px);
+          --simple-modal-height: var(--check-it-out-modal-height, 550px);
+          --simple-modal-min-width: var(--check-it-out-modal-min-width, 900px);
+          --simple-modal-min-height: var(
+            --check-it-out-modal-min-heihgt,
+            550px
+          );
+        }
+
         .container {
           display: none;
           position: relative;
-          width: var(--check-it-out-container-width, 800px);
+          width: var(--check-it-out-modal-container-width, 800px);
         }
 
         :host([checked-out]) .container {
@@ -187,54 +205,8 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
           border: 3px solid var(--check-it-out-button-border-color, #000);
         }
 
-        :host([checked-out]) .check-it-out-btn {
-          display: none;
-        }
-
         :host([checked-out]) .close-btn {
           display: flex;
-        }
-
-        .close-btn {
-          display: none;
-          border-radius: 50%;
-          padding: 0.5em;
-          width: 30px;
-          height: 30px;
-          border: 2px solid black;
-          color: grey;
-          position: absolute;
-          top: -10px;
-          right: -10px;
-          z-index: 2;
-        }
-
-        .close-btn:hover {
-          border: 2px solid black;
-          background-color: grey;
-          color: #ffffff;
-        }
-
-        .close-btn::before {
-          content: " ";
-          position: absolute;
-          background-color: black;
-          width: 2px;
-          left: 12px;
-          top: 5px;
-          bottom: 5px;
-          transform: rotate(45deg);
-        }
-
-        .close-btn::after {
-          content: " ";
-          position: absolute;
-          background-color: black;
-          height: 2px;
-          top: 12px;
-          left: 5px;
-          right: 5px;
-          transform: rotate(45deg);
         }
 
         .iframe-container {
@@ -254,46 +226,47 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
    * Convention we use
    */
   static get tag() {
-    return "check-it-out";
+    return "check-it-out-modal";
   }
 
   render() {
     this.icon = this.icon ? this.icon : this.typeIconObj[this.type];
     return html` ${this.elementVisible
       ? html`
-          <button class="check-it-out-btn" @click="${this._handleClick}">
+          <button
+            class="check-it-out-btn"
+            controls="m1"
+            @click="${this._handleClick}"
+          >
             <simple-icon-lite icon="${this.icon}"> </simple-icon-lite>
             ${this.label}
             <slot></slot>
           </button>
-          ${["code", "pdf"].includes(this.type)
-            ? html`<div class="container">
-                <iframe-loader style="text-align: center;">
-                  <iframe
-                    class="iframe-container"
-                    src=${this.__computedSource}
-                    loading="lazy"
-                    style="width: 800px; height: 500px;"
-                  ></iframe>
-                  <button
-                    class="close-btn"
-                    @click="${this._handleClick}"
-                  ></button>
-                </iframe-loader>
-              </div>`
-            : html`
-                <div class="container">
-                  <video-player
-                    class="video-player"
-                    source=${this.__computedSource}
-                  >
-                  </video-player>
-                  <button
-                    class="close-btn"
-                    @click="${this._handleClick}"
-                  ></button>
-                </div>
-              `}
+          <simple-modal-template
+            title=${this.modalTitle}
+            @click="${this._handleClick}"
+            modal-id="m1"
+          >
+            ${["code", "pdf"].includes(this.type)
+              ? html`<div class="container" slot="content">
+                  <iframe-loader style="text-align: center;">
+                    <iframe
+                      class="iframe-container"
+                      src=${this.__computedSource}
+                      loading="lazy"
+                      style="width: 800px; height: 500px;"
+                    ></iframe>
+                  </iframe-loader>
+                </div>`
+              : html`
+                  <div class="container" slot="content">
+                    <video-player
+                      class="video-player"
+                      source=${this.__computedSource}
+                    ></video-player>
+                  </div>
+                `}
+          </simple-modal-template>
         `
       : ``}`;
   }
@@ -309,20 +282,18 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       video: "av:play-arrow",
     };
     this.icon = "";
-    this.checkedOut = false;
     this.type = "";
     this.hideExplorer = false;
     this.ctl = false;
     this.view = "both";
+    this.modalTitle = "";
   }
 
-  _handleClick() {
-    if (!this._haxstate) {
-      if (this.checkedOut) {
-        this.checkedOut = false;
-      } else {
-        this.checkedOut = true;
-      }
+  _handleClick(event) {
+    if (this._haxstate) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
     }
   }
 
@@ -410,7 +381,10 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
         }, 0);
       }
     });
+    this.shadowRoot
+      .querySelector('[modal-id="m1"]')
+      .associateEvents(this.shadowRoot.querySelector('[controls="m1"]'));
   }
 }
-customElements.define(CheckItOut.tag, CheckItOut);
-export { CheckItOut };
+customElements.define(CheckItOutModal.tag, CheckItOutModal);
+export { CheckItOutModal };
