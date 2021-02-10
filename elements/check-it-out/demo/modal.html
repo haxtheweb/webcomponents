@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>CheckItOutModal: check-it-out-modal Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/check-it-out-modal.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic check-it-out-modal demo</h3>
+      <demo-snippet>
+        <template>
+          <center>
+            <h1>stackblitz demo</h1>
+            <check-it-out-modal type="code" ctl view="both" source="https://stackblitz.com/edit/react-brwwcr?embed=1&file=src/App.js">
+              Click me
+            </check-it-out-modal>
+            <h1>another stackblitz demo</h1>
+            <check-it-out-modal  file-path="src/index.js" source="https://stackblitz.com/edit/react-brwwcr"></check-it-out-modal>
+            <h1>PDF Demo</h1>
+            <check-it-out-modal source="https://codepen.io/collinkleest/pen/wvoBjKx">
+              Check it out
+            </check-it-out-modal>
+            <h1>Pdf demo</h1>
+            <check-it-out-modal modal-title="pdf demo" type="pdf" source="https://behrend.psu.edu/sites/behrend/files/campus/Lab%2520and%2520Research%2520Safety%2520Plan.pdf"></check-it-out-modal>
+            <h1>YT Demo</h1>
+            <check-it-out-modal label="Click to watch" source="https://www.youtube.com/watch?v=8gMDhXWMxRg&t=281s">
+            </check-it-out-modal> 
+          </center>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

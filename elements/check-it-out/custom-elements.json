@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "check-it-out",
+      "path": "./check-it-out.js",
+      "description": "`check-it-out`\n`View codepen or stackblitz demos`"
+    },
+    {
+      "name": "check-it-out",
+      "path": "./src/check-it-out.js",
+      "description": "`check-it-out`\n`View codepen or stackblitz demos`"
+    }
+  ]
+}
