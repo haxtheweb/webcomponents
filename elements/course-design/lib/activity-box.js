@@ -74,11 +74,35 @@ class ActivityBox extends LitElement {
   static get tag() {
     return "activity-box";
   }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    // flag for HAX to not trigger active on changes
+    let container = this.shadowRoot.querySelector(".tag");
+    if (val) {
+      container.setAttribute("contenteditable", true);
+    } else {
+      container.removeAttribute("contenteditable");
+      this.tag = container.innerText;
+    }
+    return false;
+  }
   static get haxProperties() {
     return {
       canScale: false,
       canPosition: false,
       canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Activity Box",
         description: "A small designed heading",
