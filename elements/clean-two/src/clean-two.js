@@ -10,7 +10,6 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
@@ -134,9 +133,6 @@ class CleanTwo extends HAXCMSThemeParts(
         site-menu-button[edit-mode][disabled] {
           display: block;
         }
-        site-menu-button[disabled] {
-          display: none;
-        }
         site-menu-button[type="prev"] {
           grid-area: previous;
         }
@@ -193,6 +189,8 @@ class CleanTwo extends HAXCMSThemeParts(
           background-color: white;
           --site-active-title-font-size: 22px;
           --site-active-title-line-height: 22px;
+          font-size: 22px;
+          line-height: 22px;
         }
 
         .body-wrapper {
@@ -497,12 +495,15 @@ class CleanTwo extends HAXCMSThemeParts(
               ${this.HAXCMSMobileMenuButton()}
               ${this.responsiveSize != "xl"
                 ? html`
+                    <replace-tag with="site-menu-content" import></replace-tag>
                     <site-menu-content
+                      loading-text="Heading Menu"
                       .part="${this.editMode ? `edit-mode-active` : ``}"
                       mobile
                     ></site-menu-content>
                   `
                 : ``}
+              <replace-tag with="site-active-title" import></replace-tag>
               <site-active-title></site-active-title>
             </div>
             <site-search
@@ -521,6 +522,7 @@ class CleanTwo extends HAXCMSThemeParts(
             </div>
             <div class="link-actions">
               <div class="inner">
+                <replace-tag with="site-menu-button" import></replace-tag>
                 <site-menu-button
                   hide-label
                   type="prev"
@@ -550,6 +552,7 @@ class CleanTwo extends HAXCMSThemeParts(
             <div class="footer">
               <div class="footer-left">
                 Last updated
+                <replace-tag with="simple-datetime" import></replace-tag>
                 <simple-datetime
                   unix
                   .timestamp="${this.pageTimestamp}"
@@ -569,7 +572,9 @@ class CleanTwo extends HAXCMSThemeParts(
           ? html`
               <div class="right-col">
                 <div class="site-menu-content-wrapper">
+                  <replace-tag with="site-menu-content" import></replace-tag>
                   <site-menu-content
+                    loading-text="Heading Menu"
                     .part="${this.editMode ? `edit-mode-active` : ``}"
                   ></site-menu-content>
                 </div>
@@ -635,24 +640,6 @@ class CleanTwo extends HAXCMSThemeParts(
       }
       this.__disposer.push(reaction);
     });
-
-    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
-    );
     // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"

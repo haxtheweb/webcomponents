@@ -6,9 +6,8 @@ import {
   varExists,
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
-import { store } from "./haxcms-site-store.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
+import { store, HAXcmsStore } from "./haxcms-site-store.js";
+//import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
 /**
  * `haxcms-site-builder`
@@ -387,8 +386,9 @@ class HAXCMSSiteBuilder extends LitElement {
     this.themeLoaded = false;
     this.outlineLocation = "";
     this.activeItemLocation = "";
-    import("./haxcms-site-router.js");
-    window.HAXCMS.requestAvailability().storePieces.siteBuilder = this;
+    import("./haxcms-site-router.js").then(() => {
+      HAXcmsStore.storePieces.siteBuilder = this;
+    });
     window.addEventListener("hax-store-ready", this.storeReady.bind(this));
     window.addEventListener(
       "haxcms-trigger-update",
@@ -432,12 +432,13 @@ class HAXCMSSiteBuilder extends LitElement {
       "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js"
     )
       .then((response) => {
+        import("@lrnwebcomponents/simple-toast/simple-toast.js");
         this.editorBuilder = document.createElement("haxcms-editor-builder");
         // attach editor builder after we've appended to the screen
         document.body.appendChild(this.editorBuilder);
         // get fresh data if not published / demo which is a form of published
         if (
-          window.HAXCMS.requestAvailability().getApplicationContext() !==
+          HAXcmsStore.getApplicationContext() !==
           "published"
         ) {
           this._timeStamp = Math.floor(Date.now() / 1000);
@@ -505,34 +506,39 @@ class HAXCMSSiteBuilder extends LitElement {
     if (
       store.cmsSiteEditor &&
       store.cmsSiteEditor.instance &&
-      HAXStore.activeHaxBody &&
+      window.HaxStore.requestAvailability().activeHaxBody &&
       store.activeItemContent
     ) {
-      HAXStore.activeHaxBody.importContent(store.activeItemContent);
+      window.HaxStore.requestAvailability().activeHaxBody.importContent(
+        store.activeItemContent
+      );
     }
   }
   /**
    * Find custom element tags and replace with replace-tag for performance gains based on device context
    */
-  /*replaceTagReplacement(html) {
-    var myRegexp = /(\<.*?\>)(.*?)(\<\/.*?\>)/igm;
+  replaceTagReplacement(html) {
+    // all closing tags
+    var myRegexp = /\<(\w+?\-\w*.*)\s*?\>/gim;
     // execute 1st match
     var match = myRegexp.exec(html);
-    console.log(match);
-    var replacement;
     while (match != null) {
-      // replace 1st occurance, which will mesh w/ order it was found
-      if (match[2].endsWith('/')) {
-        // capture group has tag name as match 1, attributes as match 2
-        replacement = '<' + match[1] + ' ' + match[2] + '></' + match[1] + '>';
-        // replace 1st occurance, which will mesh w/ order it was found
-        html = html.replace(match[0], replacement);
+      let tag = match[1].replace("<", "").replace(">", "");
+      if (tag.indexOf(" ")) {
+        tag = tag.split(" ")[0];
+      }
+      // replace the matching custom element tag name with replace-tag
+      if (tag.indexOf("-") != -1) {
+        // shift the replacement over to with; leave everything else the same
+        html = html.replace("<" + tag, '<replace-tag with="' + tag + '" ');
+        // ensure a matching closing tag is also updated
+        html = html.replace("</" + tag + ">", "</replace-tag>");
       }
       // execute again, which processes the next tag
       match = myRegexp.exec(html);
     }
     return html;
-  }*/
+  }
   /**
    * React to content being loaded from a page.
    */
@@ -548,7 +554,9 @@ class HAXCMSSiteBuilder extends LitElement {
         // insert the content as quickly as possible, then work on the dynamic imports
         setTimeout(() => {
           if (store.themeElement.childNodes.length === 0) {
-            let frag = document.createRange().createContextualFragment(html);
+            let frag = document
+              .createRange()
+              .createContextualFragment(this.replaceTagReplacement(html));
             store.themeElement.appendChild(frag);
             this.dispatchEvent(
               new CustomEvent("json-outline-schema-active-body-changed", {

@@ -36,8 +36,7 @@ const fetch_retry = async (url, options, n) => {
  */
 window.WCAutoload.process = (e) => {
   return new Promise((resolve, reject) => {
-    clearTimeout(window.WCAutoload.debouncer);
-    window.WCAutoload.debouncer = setTimeout(() => {
+    setTimeout(() => {
       // find the loader
       var loader = window.WCAutoload.requestAvailability();
       loader.loaded = true;
