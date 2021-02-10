@@ -16,37 +16,57 @@ class ActivityBox extends LitElement {
           padding: var(--activity-box-container-padding, 7px);
           padding-top: var(--activity-box-container-padding-top, 14px);
           margin-bottom: var(--activity-box-container-margin-bottom, 20px);
+          position: relative;
         }
-        .icon {
-          width: 80px;
-          height: 80px;
-          background-repeat: no-repeat;
-          background-size: contain;
+        simple-icon {
+          --simple-icon-height: 80px;
+          --simple-icon-width: 80px;
+          --simple-icon-color: white;
           float: left;
+          position: absolute;
+          top: 0px;
+          left: var(--activity-box-icon-left, 0px);
         }
-        :host([icon="cog"]) .icon {
-          background-image: url(https://media.buttercupstraining.co.uk/sites/media/bc/files/cog-icon.png);
-          margin-left: -33px;
-          margin-top: -24px;
+        .tag {
+          padding: var(--activity-box-content-padding, 0px 0px 0px 85px);
         }
-
-        :host([icon="bulb"]) .icon {
-          background-image: url(https://media.buttercupstraining.co.uk/sites/media/bc/files/lightbulb-icon.png);
-          margin-left: -39px;
-          margin-top: -27px;
+        .tag > span {
+          background-color: #fff;
+          color: var(--elmsln-system-color-dark);
+          padding: 3px 10px;
+          line-height: 10px;
+          font-weight: var(--activity-box-tag-font-weight, bold);
+          font-size: var(--activity-box-tag-font-size, 16px);
+        }
+        .tag > span > simple-icon {
+          display: inline;
+          left: 0px !important;
+          --simple-icon-height: 23px;
+          --simple-icon-width: 23px;
+          --simple-icon-color: var(--elmsln-system-color-dark);
+          display: inline;
+          position: inherit;
+          float: none;
+          line-height: 17px;
         }
         .pullout {
           padding-left: 48px;
           color: white;
           margin-top: 0;
-          font-family: "Roboto Slab", Arial, Sans-Serif;
+          font-family: var(--activity-box-content-font-family, inherit);
           font-weight: 400;
           margin-bottom: 10px;
           font-size: 126%;
           line-height: 28px;
-          padding-left: 63px;
+          padding: var(--activity-box-content-padding, 0px 0px 0px 85px);
           margin-bottom: 13px !important;
           max-width: 100%;
+        }
+        :host([icon="null"]) .pullout,
+        :host([icon="null"]) .tag,
+        :host([icon=""]) .pullout,
+        :host([icon=""]) .tag {
+          padding-left: 10px;
         }
       `,
     ];
@@ -66,7 +86,7 @@ class ActivityBox extends LitElement {
         color: "blue",
         groups: ["text", "education"],
         meta: {
-          author: "ButtercupsUK",
+          author: "Buttercups Training Ltd",
         },
       },
       settings: {
@@ -74,12 +94,20 @@ class ActivityBox extends LitElement {
           {
             property: "icon",
             title: "Icon",
-            description: "The citation of the element",
-            inputMethod: "select",
-            options: {
-              cog: "Cog",
-              bulb: "Bulb",
-            },
+            description: "The icon to be displayed alongside the activity box",
+            inputMethod: "textfield",
+          },
+          {
+            property: "tag",
+            title: "Activity box tag",
+            description: "The tag to be displayed within the activity box",
+            inputMethod: "textfield",
+          },
+          {
+            property: "nocolourize",
+            title: "No Colorize",
+            description: "Check to stop any colors being applied to the icon",
+            inputMethod: "boolean",
           },
         ],
         advanced: [],
@@ -88,7 +116,7 @@ class ActivityBox extends LitElement {
         {
           tag: "activity-box",
           properties: {
-            icon: "cog",
+            icon: "settings",
           },
           content:
             "<p>Drag &amp; drop - drag the icons to the matching descriptions.</p>",
@@ -98,21 +126,49 @@ class ActivityBox extends LitElement {
   }
   static get properties() {
     return {
+      /* The icon to use for the activity box */
       icon: {
         type: String,
         reflect: true,
+      },
+      /* Tag to be shown above the slotted content */
+      tag: {
+        type: String,
+        reflect: true,
+      },
+      /* Whether or not the icon should have color applied */
+      nocolourize: {
+        type: Boolean,
+        reflect: false,
       },
     };
   }
 
   constructor() {
     super();
-    this.icon = "bulb";
+    this.icon = "";
+    this.tag = "";
   }
+
   render() {
     return html`
       <div class="container">
-        <div class="icon"></div>
+        ${this.icon
+          ? html`
+              <simple-icon
+                icon="${this.icon}"
+                ?no-colorize=${this.nocolourize}
+              ></simple-icon>
+            `
+          : html``}
+        ${this.tag
+          ? html`<div class="tag">
+              <span
+                ><simple-icon icon="check-circle"></simple-icon>${this
+                  .tag}</span
+              >
+            </div>`
+          : html``}
         <div class="pullout"><slot></slot></div>
       </div>
     `;

@@ -583,7 +583,7 @@ window.HAXCMS.requestAvailability = () => {
   return window.HAXCMS.instance;
 };
 // weird, but self appending
-window.HAXCMS.requestAvailability();
+export const HAXcmsStore = window.HAXCMS.requestAvailability();
 /**
  * HTMLElement
  */

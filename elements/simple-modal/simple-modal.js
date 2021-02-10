@@ -136,6 +136,12 @@ class SimpleModal extends LitElement {
         web-dialog::part(dialog) {
           border: 1px solid var(--simple-modal-border-color, #222);
           padding: 0;
+          width: var(--simple-modal-width, auto);
+          min-width: var(--simple-modal-min-width, auto);
+          max-width: var(--simple-modal-max-width, auto);
+          height: var(--simple-modal-height, auto);
+          min-height: var(--simple-modal-min-height, auto);
+          max-height: var(--simple-modal-max-height, auto);
         }
         web-dialog.style-scope.simple-modal {
           display: none !important;

@@ -350,6 +350,7 @@ class PageContentsMenu extends LitElement {
     if (
       this.mobile &&
       !this.hideSettings &&
+      target.includes &&
       !target.includes(this.__toggleTarget) &&
       !target.includes(this.shadowRoot.querySelector("simple-popover"))
     ) {
