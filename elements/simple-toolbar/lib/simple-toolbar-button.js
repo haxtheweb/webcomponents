@@ -7,10 +7,6 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
-/**
- * @customElement
- * @class
- */
 const SimpleToolbarButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**
@@ -70,6 +66,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         showTextLabel: {
           attribute: "show-text-label",
           type: Boolean,
+          reflect: true,
         },
 
         /**
@@ -334,9 +331,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      * @static
      */
-    static get offScreenStyles() {
+    static get labelStyles() {
       return [
         css`
+          #label {
+            padding: 0 var(--simple-toolbar-button-label-padding, 2px);
+          }
           .offscreen {
             position: absolute;
             left: -999999px;
@@ -362,7 +362,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           }
           #icon[icon] {
             width: var(
-              --simple-toolbar-button-min-width,
+              --simple-toolbar-button-width,
               var(--simple-toolbar-button-height, 24px)
             );
             height: var(--simple-toolbar-button-height, 24px);
@@ -399,7 +399,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             flex: 0 1 auto;
             min-width: var(
               --simple-toolbar-button-min-width,
-              var(--simple-toolbar-button-height, 24px)
+              var(
+                --simple-toolbar-button-width,
+                var(--simple-toolbar-button-height, 24px)
+              )
             );
             white-space: nowrap;
           }
@@ -409,7 +412,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           #button {
             min-width: var(
               --simple-toolbar-button-min-width,
-              var(--simple-toolbar-button-height, 24px)
+              var(
+                --simple-toolbar-button-width,
+                var(--simple-toolbar-button-height, 24px)
+              )
             );
             min-height: var(--simple-toolbar-button-height, 24px);
             margin: 0;
@@ -431,7 +437,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             display: flex;
             flex: 0 1 auto;
             white-space: nowrap;
-            align-items: stretch;
+            align-items: center;
             transition: all 0.5s;
           }
           #button[aria-pressed="true"] {
@@ -461,7 +467,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         ...(super.styles || []),
         ...this.buttonStyles,
         ...this.iconStyles,
-        ...this.offScreenStyles,
+        ...this.labelStyles,
         ...this.tooltipStyles,
       ];
     }
