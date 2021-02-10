@@ -17,6 +17,7 @@
     <script type="module">
       import '@lrnwebcomponents/h-a-x/h-a-x.js';
       import '../lib/hax-text-editor.js';
+      import '../lib/hax-text-editor-toolbar.js';
       import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
         esModule.setPassiveTouchGestures(true);
       });
@@ -37,6 +38,251 @@
   </head>
   <body>
     <div style="padding:100px 300px 100px 100px;">
+    <h2>HAX Toolbar</h2><hax-toolbar>
+      <hax-context-item
+        mini
+        action
+        more
+        slot="prefix"
+        icon="image:image"
+        label="$activeTagName, click to change"
+        event-name="hax-transform-node"
+      ></hax-context-item>
+      <div slot="primary">
+        <slot></slot>
+      </div>
+      <hax-context-item
+        mini
+        action
+        slot="primary"
+        icon="icons:code"
+        label="Modify HTML source"
+        event-name="hax-source-view-toggle"
+      ></hax-context-item>
+      <hax-context-item-textop
+        action
+        menu
+        slot="more"
+        icon="hardware:keyboard-arrow-up"
+        event-name="insert-above-active"
+        >Insert item above</hax-context-item-textop
+      >
+      <hax-context-item-textop
+        action
+        menu
+        slot="more"
+        icon="hardware:keyboard-arrow-down"
+        event-name="insert-below-active"
+        >Insert item below</hax-context-item-textop
+      >
+    </hax-toolbar>
+    <hax-toolbar id="toolbar">
+      <simple-popover-selection
+        slot="primary"
+        @simple-popover-selection-changed="${this.textFormatChanged}"
+        auto
+        orientation="tb"
+        id="textformat"
+      >
+        <div slot="style">
+          simple-popover-manager button { color: black; font-size: 10px
+          !important; margin: 0; padding: 4px; text-align:left; overflow:
+          hidden; min-height: unset; width: 100%; display: block;
+          justify-content: start; align-items: center; border: 0; }
+          simple-popover-manager button simple-icon-lite {
+          --simple-icon-height: 18px; --simple-icon-width: 18px; margin-right:
+          8px; }
+        </div>
+        <hax-context-item
+          action
+          mini
+          slot="button"
+          id="formatsize"
+          icon="text-format"
+          label="Text format"
+          data-simple-tour-stop
+          data-stop-title="label"
+        >
+          <div slot="tour" data-stop-content>
+            Change how the text is structured and visualized in the page.
+          </div>
+        </hax-context-item>
+        <button slot="options" value="${val.value}">
+          <simple-icon-lite icon="help"></simple-icon-lite>
+          text
+        </button>
+      </simple-popover-selection>
+      <hax-context-item
+        mini
+        action
+        slot="primary"
+        icon="icons:code"
+        label="Modify HTML source"
+        event-name="hax-source-view-toggle"
+      ></hax-context-item>
+      <hax-context-item-textop
+        mini
+        action
+        slot="primary"
+        icon="editor:format-list-bulleted"
+        event-name="text-tag-ul"
+        label="Bulleted list"
+        .hidden="${!this._showLists}"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        mini
+        action
+        slot="primary"
+        icon="editor:format-list-numbered"
+        label="Numbered list"
+        event-name="text-tag-ol"
+        .hidden="${!this._showLists}"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        mini
+        action
+        slot="primary"
+        icon="editor:format-indent-decrease"
+        label="Outdent"
+        event-name="text-outdent"
+        .hidden="${!this._showIndent}"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        mini
+        action
+        slot="primary"
+        icon="editor:format-indent-increase"
+        label="Indent"
+        event-name="text-indent"
+        .hidden="${!this._showIndent}"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        mini
+        action
+        slot="primary"
+        icon="editor:format-bold"
+        label="Bold"
+        class="selected-buttons"
+        event-name="text-bold"
+        ?hidden="${!this.hasSelectedText}"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        mini
+        action
+        slot="primary"
+        icon="editor:format-italic"
+        label="Italic"
+        class="selected-buttons"
+        event-name="text-italic"
+        ?hidden="${!this.hasSelectedText}"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        mini
+        action
+        slot="primary"
+        icon="editor:insert-link"
+        label="Link"
+        class="selected-buttons"
+        event-name="text-link"
+        ?hidden="${!this.hasSelectedText}"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        mini
+        action
+        slot="primary"
+        icon="mdextra:unlink"
+        label="Remove link"
+        class="selected-buttons"
+        event-name="text-unlink"
+        ?hidden="${!this.hasSelectedText}"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        mini
+        action
+        slot="primary"
+        icon="editor:format-clear"
+        label="Remove format"
+        class="selected-buttons"
+        event-name="text-remove-format"
+        ?hidden="${!this.hasSelectedText}"
+      ></hax-context-item-textop>
+      <hax-context-item
+        mini
+        action
+        slot="primary"
+        icon="hax:add-brick"
+        label="Add element to selection"
+        class="selected-buttons"
+        event-name="insert-inline-gizmo"
+        ?hidden="${this.isSafari || !this.hasSelectedText}"
+      ></hax-context-item>
+      <hax-context-item-textop
+        mini
+        action
+        slot="primary"
+        icon="hax:add-brick"
+        label="Add element to selection"
+        class="selected-buttons"
+        event-name="insert-inline-gizmo"
+        ?hidden="${!this.isSafari || !this.hasSelectedText}"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        action
+        menu
+        slot="more"
+        icon="mdextra:subscript"
+        event-name="text-subscript"
+        ?hidden="${!this.hasSelectedText}"
+        >Subscript</hax-context-item-textop
+      >
+      <hax-context-item-textop
+        action
+        menu
+        slot="more"
+        icon="mdextra:superscript"
+        event-name="text-superscript"
+        ?hidden="${!this.hasSelectedText}"
+        >Superscript</hax-context-item-textop
+      >
+      <hax-context-item-textop
+        action
+        menu
+        slot="more"
+        icon="editor:format-underlined"
+        event-name="text-underline"
+        ?hidden="${!this.hasSelectedText}"
+        >Underline</hax-context-item-textop
+      >
+      <hax-context-item-textop
+        action
+        menu
+        slot="more"
+        icon="editor:format-strikethrough"
+        event-name="text-strikethrough"
+        ?hidden="${!this.hasSelectedText}"
+        >Cross out</hax-context-item-textop
+      >
+      <hax-context-item-textop
+        action
+        menu
+        slot="more"
+        icon="hardware:keyboard-arrow-up"
+        event-name="insert-above-active"
+        >Insert item above</hax-context-item-textop
+      >
+      <hax-context-item-textop
+        action
+        menu
+        slot="more"
+        icon="hardware:keyboard-arrow-down"
+        event-name="insert-below-active"
+        >Insert item below</hax-context-item-textop
+      >
+    </hax-toolbar>
+
+    <h2>HAX Text Editor (plus toolbar and buttons)</h2>
+    <hax-text-editor-toolbar show="selection"></hax-text-editor-toolbar>
+    <hax-text-editor><p>Click to edit <lrn-math>a+b=c</lrn-math>.</p></hax-text-editor>
     <h-a-x app-store='{"url": "appstore.json"}' element-align="right">
       <p>
         stuff and things

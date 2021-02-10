@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
+import { HaxToolbarItemBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 /**
  * `hax-context-item-textop`
  * @element hax-context-item-textop
@@ -8,118 +8,28 @@ import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
  * - context - menu in the page the user can select an item from, this being 1 option in that list
  * - button - an item that expresses what interaction you will have with the content.
  */
-class HaxContextItemTextop extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: inline-flex;
-          box-sizing: border-box;
-        }
-        :host([menu]) {
-          display: flex;
-          width: 100%;
-        }
-      `,
-    ];
-  }
+class HaxContextItemTextop extends HaxToolbarItemBehaviors(LitElement) {
   constructor() {
     super();
-    this.label = "";
     this.action = false;
-    this.disabled = false;
-    this.light = false;
-    this.mini = false;
-    this.menu = false;
-    this.direction = "top";
-    this.icon = "editor:text-fields";
     this.eventName = "button";
     this.inputMethod = null;
     this.propertyToBind = null;
     this.slotToBind = null;
     this.value = "";
   }
-  render() {
-    return html`
-      <hax-toolbar-item
-        id="button"
-        ?disabled="${this.disabled}"
-        icon="${this.icon}"
-        ?hidden="${!this.icon}"
-        tooltip-direction="${this.direction}"
-        tooltip="${this.label}"
-        @mousedown="${this._fireEvent}"
-        ?mini="${this.mini}"
-        ?action="${this.action}"
-        ?menu="${this.menu}"
-        ?light="${this.light}"
-      >
-        <slot></slot>
-      </hax-toolbar-item>
-    `;
-  }
   static get tag() {
     return "hax-context-item-textop";
   }
   static get properties() {
     return {
-      /**
-       * Light theme for toolbar item.
-       */
-      light: {
-        type: Boolean,
-        value: false,
-      },
-      /**
-       * disabled state
-       */
-      disabled: {
-        type: Boolean,
-        reflect: true,
-      },
+      ...super.properties,
       /**
        * an optional value to send along in the press. Allows for
        * reusing events more easily
        */
       value: {
         type: String,
-      },
-      /**
-       * Mini theme for making things small and round.
-       */
-      mini: {
-        type: Boolean,
-        value: false,
-      },
-      /**
-       * Style to be presented in a menu
-       */
-      menu: {
-        type: Boolean,
-        value: false,
-      },
-      /**
-       * Direction for the tooltip
-       */
-      direction: {
-        type: String,
-      },
-      /**
-       * Icon for the button.
-       */
-      icon: {
-        type: String,
-        reflect: true,
-      },
-      /**
-       * Label for the button.
-       */
-      label: {
-        type: String,
-        reflect: true,
       },
       action: {
         type: Boolean,
@@ -168,24 +78,19 @@ class HaxContextItemTextop extends LitElement {
       },
     };
   }
-
-  /**
-   * attached life cycle
-   */
-  firstUpdated(changedProperties) {
-    // bind keyboard to button press
-    this.shadowRoot
-      .querySelector("#button")
-      .addEventListener("keydown", (e) => {
-        if (e.key == "Enter") {
-          this._fireEvent();
-        }
-      });
-  }
   /**
    * Fire an event that includes the eventName of what was just pressed.
    */
-  _fireEvent(e) {
+  _handleKeys(e) {
+    if (e.key == "Enter") this._fireEvent();
+  }
+  /**
+   * Store the selection object. This helps fix issues with safari
+   * and holding focus on non-text elements actually stealing
+   * the selection priority, making it impossible to know what's
+   * been selected if clicking a button to try and apply something to.
+   */
+  _handleMousedown(e) {
     if (!this.disabled) {
       this.dispatchEvent(
         new CustomEvent("hax-context-item-selected", {

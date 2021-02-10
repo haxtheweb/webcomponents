@@ -1,8 +1,10 @@
 import { LitElement, css, html } from "lit-element/lit-element.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
+import { HaxToolbarBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-context-item-menu.js";
 import "./hax-context-item.js";
+import "./hax-context-item-menu-li";
 import { autorun, toJS } from "mobx";
 /**
  * `hax-plate-context`
@@ -11,71 +13,12 @@ import { autorun, toJS } from "mobx";
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  * - grid plate - the container / full HTML tag which can have operations applied to it.
  */
-class HaxPlateContext extends SimpleTourFinder(LitElement) {
+class HaxPlateContext extends SimpleTourFinder(
+  HaxToolbarBehaviors(LitElement)
+) {
   /**
    * LitElement constructable styles enhancement
    */
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-          margin-top: -2px;
-          background-color: white;
-        }
-        hax-context-item {
-          display: block;
-        }
-        hax-context-item[large] {
-          display: inline-block;
-          margin: 0;
-          padding: 0;
-        }
-        hax-context-item-menu {
-          --hax-context-item-menu-height: 28px;
-        }
-        .area {
-          display: flex;
-          visibility: visible;
-          opacity: 0.8;
-          transition: 0.2s all ease-in-out;
-        }
-        .area:hover {
-          opacity: 1;
-        }
-        button {
-          width: 100%;
-          text-align: left;
-          -webkit-justify-content: flex-start;
-          justify-content: flex-start;
-          height: 32px;
-          padding: 4px;
-          margin: 0;
-          border-radius: 0;
-          display: block;
-          overflow: hidden;
-          min-height: 24px;
-          font-size: 10px;
-          color: black;
-        }
-        #drag hax-context-item:hover,
-        button:hover {
-          cursor: pointer;
-        }
-        simple-icon {
-          padding: 0 2px;
-          --simple-icon-height: 16px;
-          --simple-icon-width: 16px;
-        }
-        :host(.hax-context-pin-top) .area {
-          position: fixed;
-          top: 28px;
-          margin-left: -2px;
-          flex-direction: column;
-        }
-      `,
-    ];
-  }
   constructor() {
     super();
     this.hasActiveEditingElement = false;
@@ -85,11 +28,23 @@ class HaxPlateContext extends SimpleTourFinder(LitElement) {
   static get tag() {
     return "hax-plate-context";
   }
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host,
+        #buttons {
+          flex-wrap: nowrap;
+          flex: 0 0 auto;
+          align-self: flex-end;
+        }
+      `,
+    ];
+  }
   render() {
     return html`
-      <div class="area" id="area">
+      <div class="area" id="buttons">
         <hax-context-item-menu
-          mini
           ?disabled="${this.hasActiveEditingElement}"
           id="drag"
           action
@@ -101,28 +56,30 @@ class HaxPlateContext extends SimpleTourFinder(LitElement) {
           data-simple-tour-stop
           data-stop-title="label"
         >
-          <hax-context-item
-            action
-            mini
-            dark
-            ?disabled="${this.hasActiveEditingElement}"
-            simple
-            icon="hax:keyboard-arrow-up"
-            label="Move up"
-            event-name="hax-plate-up"
-            direction="left"
-          ></hax-context-item>
-          <hax-context-item
-            action
-            mini
-            dark
-            ?disabled="${this.hasActiveEditingElement}"
-            simple
-            icon="hax:keyboard-arrow-down"
-            label="Move down"
-            event-name="hax-plate-down"
-            direction="left"
-          ></hax-context-item>
+          <hax-context-item-menu-li slot="menuitem">
+            <hax-context-item
+              action
+              ?disabled="${this.hasActiveEditingElement}"
+              show-text-label
+              role="menuitem"
+              icon="hax:keyboard-arrow-up"
+              label="Move up"
+              event-name="hax-plate-up"
+              direction="left"
+            ></hax-context-item>
+          </hax-context-item-menu-li>
+          <hax-context-item-menu-li slot="menuitem">
+            <hax-context-item
+              action
+              ?disabled="${this.hasActiveEditingElement}"
+              role="menuitem"
+              show-text-label
+              icon="hax:keyboard-arrow-down"
+              label="Move down"
+              event-name="hax-plate-down"
+              direction="left"
+            ></hax-context-item>
+          </hax-context-item-menu-li>
           <div slot="tour" data-stop-content>
             Click the drag handle once to show a menu to just move up or down
             one item in the content OR click and drag to place the item exactly
@@ -130,7 +87,6 @@ class HaxPlateContext extends SimpleTourFinder(LitElement) {
           </div>
         </hax-context-item-menu>
         <hax-context-item
-          mini
           action
           id="right"
           class="paddle"
@@ -148,7 +104,6 @@ class HaxPlateContext extends SimpleTourFinder(LitElement) {
           </div>
         </hax-context-item>
         <hax-context-item
-          mini
           action
           class="paddle"
           icon="hax:table-column-plus-after"
@@ -165,7 +120,6 @@ class HaxPlateContext extends SimpleTourFinder(LitElement) {
           </div>
         </hax-context-item>
         <hax-context-item
-          mini
           action
           ?disabled="${this.hasActiveEditingElement}"
           label="Duplicate"
@@ -180,7 +134,6 @@ class HaxPlateContext extends SimpleTourFinder(LitElement) {
           </div>
         </hax-context-item>
         <hax-context-item
-          mini
           danger
           action
           ?disabled="${this.hasActiveEditingElement}"
@@ -266,6 +219,7 @@ class HaxPlateContext extends SimpleTourFinder(LitElement) {
    */
   static get properties() {
     return {
+      ...super.properties,
       hasActiveEditingElement: {
         type: Boolean,
       },

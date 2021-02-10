@@ -1,8 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HAXStore } from "./hax-store.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu-li.js";
+import { HaxToolbarBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { wipeSlot } from "@lrnwebcomponents/utils/utils";
 /**
  * `hax-ce-context`
@@ -11,30 +12,7 @@ import { wipeSlot } from "@lrnwebcomponents/utils/utils";
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
  * @element hax-ce-context
  */
-class HaxCeContext extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-        }
-        hax-context-item {
-          margin: 0;
-        }
-        :host(.hax-context-pin-top) hax-toolbar {
-          position: fixed;
-          top: 0px;
-          flex-direction: column;
-        }
-        div[slot="primary"] {
-          display: inline-flex;
-        }
-      `,
-    ];
-  }
+class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
   constructor() {
     super();
     this.haxUIElement = true;
@@ -57,14 +35,15 @@ class HaxCeContext extends LitElement {
       }
     });
   }
+  static get styles() {
+    return [...super.styles, css``];
+  }
   render() {
     return html`
-      <hax-toolbar>
+      <div id="buttons">
         <hax-context-item
-          mini
           action
           more
-          slot="prefix"
           icon="${this.activeTagIcon}"
           label="${this.activeTagName}, click to change"
           ?disabled="${this.disableTransform}"
@@ -72,44 +51,45 @@ class HaxCeContext extends LitElement {
         ></hax-context-item>
         ${this.ceButtons.map((el) => {
           return html` <hax-context-item
-            mini
             action
-            slot="prefix"
             icon="${el.icon}"
             label="${el.label}"
             event-name="hax-ce-custom-button"
             value="${el.callback}"
           ></hax-context-item>`;
         })}
-        <div slot="primary">
-          <slot></slot>
-        </div>
         <hax-context-item
           mini
           action
-          slot="primary"
           icon="icons:code"
           label="Modify HTML source"
           ?disabled="${!this.sourceView}"
           event-name="hax-source-view-toggle"
         ></hax-context-item>
-        <hax-context-item-textop
-          action
-          menu
-          slot="more"
-          icon="hardware:keyboard-arrow-up"
-          event-name="insert-above-active"
-          >Insert item above</hax-context-item-textop
-        >
-        <hax-context-item-textop
-          action
-          menu
-          slot="more"
-          icon="hardware:keyboard-arrow-down"
-          event-name="insert-below-active"
-          >Insert item below</hax-context-item-textop
-        >
-      </hax-toolbar>
+        <hax-context-item-menu icon="add" label="Insert item above or below">
+          <hax-context-item-menu-li slot="menuitem">
+            <hax-context-item
+              action
+              show-text-label
+              role="menuitem"
+              icon="hardware:keyboard-arrow-up"
+              event-name="insert-above-active"
+              label="Insert item above"
+            ></hax-context-item>
+          </hax-context-item-menu-li>
+          <hax-context-item-menu-li slot="menuitem">
+            <hax-context-item
+              action
+              show-text-label
+              role="menuitem"
+              icon="hardware:keyboard-arrow-down"
+              event-name="insert-below-active"
+              label="Insert item below"
+            ></hax-context-item>
+          </hax-context-item-menu-li>
+        </hax-context-item-menu>
+      </div>
+      ${this.moreButton}
     `;
   }
 
@@ -118,6 +98,7 @@ class HaxCeContext extends LitElement {
   }
   static get properties() {
     return {
+      ...super.properties,
       disableTransform: {
         type: Boolean,
       },

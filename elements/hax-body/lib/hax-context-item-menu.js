@@ -1,28 +1,51 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import { A11yMenuButtonBehaviors } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 /**
  * `hax-context-item-menu`
  * `An icon / button that has support for multiple options via drop down.`
+ *
  * @microcopy - the mental model for this element
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.
+ *
+ * Eextends A11yMenuButtonBehaviors
  * @element hax-context-item-menu
+ *
  */
-class HaxContextItemMenu extends LitElement {
+class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      ...super.styles,
       css`
-        :host {
-          display: inline-flex;
-          box-sizing: border-box;
+        .sr-only {
+          position: absolute;
+          left: -99999999px;
+          width: 0;
+          height: 0;
+          overflow: hidden;
         }
-        :host(mini) {
-          height: unset;
-          width: unset;
+        :host([disabled]) {
+          pointer-events: none;
+        }
+        :host([danger]) {
+          --a11y-menu-button-focus-color: var(
+            --hax-toolbar-button-danger-color,
+            #882222
+          );
+          --a11y-menu-button-focus-border: 1px solid
+            var(--hax-toolbar-button-danger-color, #882222);
+        }
+        #dropdownicon {
+          --simple-icon-height: 18px;
+          --simple-icon-width: 18px;
+        }
+        absolute-position-behavior {
+          --a11y-menu-button-border: 1px solid
+            var(--hax-toolbar-button-hover-border-color, #000);
         }
       `,
     ];
@@ -37,22 +60,38 @@ class HaxContextItemMenu extends LitElement {
     this.icon = "editor:text-fields";
     this.label = "";
   }
-  render() {
+
+  get buttonTemplate() {
     return html`
-      <hax-toolbar-menu
-        id="menu"
-        ?mini="${this.mini}"
-        ?disabled="${this.disabled}"
-        ?action="${this.action}"
-        .icon="${this.icon}"
-        .tooltip="${this.label}"
-        .tooltip-direction="${this.direction}"
-        @selected-changed="${this.selectedValueChanged}"
-        .selected="${this.selectedValue}"
+      <button
+        id="menubutton"
+        aria-haspopup="true"
+        aria-controls="menu"
+        aria-expanded="${this.expanded ? "true" : "false"}"
       >
-        <slot></slot>
-      </hax-toolbar-menu>
+        <simple-icon-lite
+          icon="${this.icon}"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <span class="${!this.icon ? "" : "sr-only"}">${this.label}</span>
+        <simple-icon-lite
+          id="dropdownicon"
+          icon="arrow-drop-down"
+          aria-hidden="true"
+        ></simple-icon-lite>
+      </button>
+      <simple-tooltip for="menubutton" ?hidden="${!this.icon}"
+        >${this.label}</simple-tooltip
+      >
     `;
+  }
+  /**
+   * template for slotted list items
+   *
+   * @readonly
+   */
+  get listItemTemplate() {
+    return html`<slot name="menuitem"></slot>`;
   }
   selectedValueChanged(e) {
     this.selectedValue = e.detail;
@@ -76,10 +115,7 @@ class HaxContextItemMenu extends LitElement {
   }
   static get properties() {
     return {
-      mini: {
-        type: Boolean,
-        reflect: true,
-      },
+      ...super.properties,
       action: {
         type: Boolean,
       },
