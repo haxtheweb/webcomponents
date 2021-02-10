@@ -215,7 +215,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             @mousover="${(e) => (this.hover = true)}"
             @mousout="${(e) => (this.hover = false)}"
           >
-            <slot></slot>
+            ${this.listItemTemplate}
           </ul>
         </absolute-position-behavior>
       `;
@@ -236,6 +236,14 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           <slot name="button"></slot>
         </button>
       `;
+    }
+    /**
+     * template for slotted list items
+     *
+     * @readonly
+     */
+    get listItemTemplate() {
+      return html`<slot></slot>`;
     }
     /**
      * key code translations as object
