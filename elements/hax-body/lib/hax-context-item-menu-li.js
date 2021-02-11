@@ -36,6 +36,21 @@ class HaxContextItemMenuLi extends A11yMenuButtonItemBehaviors(LitElement) {
             0
           );
         }
+        :host ::slotted([danger]) {
+          --simple-toolbar-button-hover-bg: var(
+            --hax-toolbar-button-danger-color,
+            #882222
+          );
+          --simple-toolbar-button-hover-border-color: var(
+            --hax-toolbar-button-danger-color,
+            #882222
+          );
+          --simple-toolbar-button-hover-color: var(
+            --hax-toolbar-button-bg,
+            #fff
+          );
+          z-index: 1001;
+        }
       `,
     ];
   }

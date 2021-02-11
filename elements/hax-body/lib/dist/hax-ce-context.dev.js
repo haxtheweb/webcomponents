@@ -87,7 +87,7 @@ function _defineProperty(obj, key, value) {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n      "]);
+  var data = _taggedTemplateLiteral([""]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -125,10 +125,10 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    ' <hax-context-item\n          action\n          icon="',
-    '"\n          label="',
-    '"\n          event-name="hax-ce-custom-button"\n          value="',
-    '"\n        ></hax-context-item>',
+    ' <hax-context-item\n            action\n            icon="',
+    '"\n            label="',
+    '"\n            event-name="hax-ce-custom-button"\n            value="',
+    '"\n          ></hax-context-item>',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -140,12 +140,12 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n    <div id="buttons">\n      <hax-context-item\n        action\n        more\n        icon="',
-    '"\n        label="',
-    ', click to change"\n        ?disabled="',
-    '"\n        event-name="hax-transform-node"\n      ></hax-context-item>\n      ',
-    '\n      <hax-context-item\n        mini\n        action\n        icon="icons:code"\n        label="Modify HTML source"\n        ?disabled="',
-    '"\n        event-name="hax-source-view-toggle"\n      ></hax-context-item>\n      <hax-context-item-menu\n          icon="add"\n          label="Insert item above or below">\n        <hax-context-item-menu-li slot="menuitem">\n          <hax-context-item\n            action\n            show-text-label\n            role="menuitem"\n            icon="hardware:keyboard-arrow-up"\n            event-name="insert-above-active"\n            label="Insert item above"\n            ></hax-context-item\n          >\n        </hax-context-item-menu-li>\n        <hax-context-item-menu-li slot="menuitem">\n          <hax-context-item\n            action\n            show-text-label\n            role="menuitem"\n            icon="hardware:keyboard-arrow-down"\n            event-name="insert-below-active"\n            label="Insert item below"\n            ></hax-context-item\n          >\n        </hax-context-item-menu-li>\n      </hax-context-item-menu>\n    </div>\n    ',
+    '\n      <div id="buttons">\n        <hax-context-item\n          action\n          more\n          icon="',
+    '"\n          label="',
+    ', click to change"\n          ?disabled="',
+    '"\n          event-name="hax-transform-node"\n        ></hax-context-item>\n        ',
+    '\n        <slot name="primary"></slot>\n        <hax-context-item\n          mini\n          action\n          icon="icons:code"\n          label="Modify HTML source"\n          ?disabled="',
+    '"\n          event-name="hax-source-view-toggle"\n        ></hax-context-item>\n        <hax-context-item-menu icon="add" label="Insert item above or below">\n          <hax-context-item-menu-li slot="menuitem">\n            <hax-context-item\n              action\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-up"\n              event-name="insert-above-active"\n              label="Insert item above"\n            ></hax-context-item>\n          </hax-context-item-menu-li>\n          <hax-context-item-menu-li slot="menuitem">\n            <hax-context-item\n              action\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-down"\n              event-name="insert-below-active"\n              label="Insert item below"\n            ></hax-context-item>\n          </hax-context-item-menu-li>\n        </hax-context-item-menu>\n        <slot name="secondary"></slot>\n        <slot name="more"></slot>\n      </div>\n      ',
     "\n    ",
   ]);
 

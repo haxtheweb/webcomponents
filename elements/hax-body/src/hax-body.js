@@ -179,6 +179,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         #topcontext {
           z-index: 3;
         }
+        #bottomcontext {
+          z-index: 1;
+        }
         :host([edit-mode]) #bodycontainer ::slotted([contenteditable]) {
           -webkit-appearance: textfield;
           cursor: text;

@@ -56,6 +56,7 @@ class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
         absolute-position-behavior {
           --a11y-menu-button-border: 1px solid
             var(--hax-toolbar-button-hover-border-color, #000);
+          z-index: 1001;
         }
       `,
     ];
@@ -83,7 +84,9 @@ class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
           icon="${this.icon}"
           aria-hidden="true"
         ></simple-icon-lite>
-        <span class="${!this.icon ? "label" : "sr-only"}">${this.label}</span>
+        <span class="${!this.icon || this.showTextLabel ? "label" : "sr-only"}"
+          >${this.label}</span
+        >
         <simple-icon-lite
           id="dropdownicon"
           icon="arrow-drop-down"
@@ -149,6 +152,15 @@ class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
         type: Number,
         reflect: true,
         attribute: "selected-value",
+      },
+
+      /**
+       * Show text label even if an icon is named?
+       */
+      showTextLabel: {
+        attribute: "show-text-label",
+        type: Boolean,
+        reflect: true,
       },
       /**
        * Direction for the tooltip

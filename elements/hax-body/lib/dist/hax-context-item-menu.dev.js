@@ -108,7 +108,7 @@ function _typeof(obj) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        .sr-only {\n          position: absolute;\n          left: -99999999px;\n          width: 0;\n          height: 0;\n          overflow: hidden;\n        }\n        :host([disabled]) {\n          pointer-events: none;\n        }\n        :host([danger]) {\n          --a11y-menu-button-focus-color: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --a11y-menu-button-focus-border: 1px solid\n            var(--hax-toolbar-button-danger-color, #882222);\n        }\n        button {\n          display: flex;\n          flex-wrap: none;\n          align-items: center;\n          min-width: 42px;\n        }\n        .label {\n          padding: 0 5px;\n        }\n        #dropdownicon {\n          --simple-icon-height: 18px;\n          --simple-icon-width: 18px;\n          margin-left: -2px;\n        }\n        absolute-position-behavior {\n          --a11y-menu-button-border: 1px solid\n            var(--hax-toolbar-button-hover-border-color, #000);\n        }\n      ",
+    "\n        .sr-only {\n          position: absolute;\n          left: -99999999px;\n          width: 0;\n          height: 0;\n          overflow: hidden;\n        }\n        :host([disabled]) {\n          pointer-events: none;\n        }\n        :host([danger]) {\n          --a11y-menu-button-focus-color: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --a11y-menu-button-focus-border: 1px solid\n            var(--hax-toolbar-button-danger-color, #882222);\n        }\n        button {\n          display: flex;\n          flex-wrap: none;\n          align-items: center;\n          min-width: 42px;\n        }\n        .label {\n          padding: 0 5px;\n        }\n        #dropdownicon {\n          --simple-icon-height: 18px;\n          --simple-icon-width: 18px;\n          margin-left: -2px;\n        }\n        absolute-position-behavior {\n          --a11y-menu-button-border: 1px solid\n            var(--hax-toolbar-button-hover-border-color, #000);\n            z-index: 1001;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -411,7 +411,7 @@ var HaxContextItemMenu =
               _templateObject2(),
               this.expanded ? "true" : "false",
               this.icon,
-              !this.icon ? "label" : "sr-only",
+              !this.icon || this.showTextLabel ? "label" : "sr-only",
               this.label,
               !this.icon,
               this.label
@@ -470,6 +470,15 @@ var HaxContextItemMenu =
                   type: Number,
                   reflect: true,
                   attribute: "selected-value",
+                },
+
+                /**
+                 * Show text label even if an icon is named?
+                 */
+                showTextLabel: {
+                  attribute: "show-text-label",
+                  type: Boolean,
+                  reflect: true,
                 },
 
                 /**

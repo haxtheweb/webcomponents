@@ -65,7 +65,6 @@ class HaxPlateContext extends SimpleTourFinder(
               icon="hax:keyboard-arrow-up"
               label="Move up"
               event-name="hax-plate-up"
-              direction="left"
             ></hax-context-item>
           </hax-context-item-menu-li>
           <hax-context-item-menu-li slot="menuitem">
@@ -77,7 +76,6 @@ class HaxPlateContext extends SimpleTourFinder(
               icon="hax:keyboard-arrow-down"
               label="Move down"
               event-name="hax-plate-down"
-              direction="left"
             ></hax-context-item>
           </hax-context-item-menu-li>
           <div slot="tour" data-stop-content>
@@ -133,21 +131,34 @@ class HaxPlateContext extends SimpleTourFinder(
             item.
           </div>
         </hax-context-item>
-        <hax-context-item
+        <hax-context-item-menu
+          id="drag"
           danger
           action
           ?disabled="${this.hasActiveEditingElement}"
           icon="delete"
           label="Remove"
-          event-name="hax-plate-delete"
+          reset-on-select
           data-simple-tour-stop
           data-stop-title="label"
         >
+          <hax-context-item-menu-li slot="menuitem">
+            <hax-context-item
+              action
+              danger
+              ?disabled="${this.hasActiveEditingElement}"
+              show-text-label
+              role="menuitem"
+              icon="delete"
+              label="Confirm Delete"
+              event-name="hax-plate-delete"
+            ></hax-context-item>
+          </hax-context-item-menu-li>
           <div slot="tour" data-stop-content>
             Delete the current item. You can always use the undo arrow to bring
             this back.
           </div>
-        </hax-context-item>
+        </hax-context-item-menu>
       </div>
     `;
   }

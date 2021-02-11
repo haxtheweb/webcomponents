@@ -31,7 +31,7 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          --simple-toolbar-button-min-width: 100% !important;\n          --simple-toolbar-button-border-color: var(--hax-toolbar-button-bg,  #fff) !important;\n          --simple-toolbar-button-hover-bg: var(--hax-toolbar-menu-button-hover-bg, #c4ecff);\n          --simple-toolbar-button-border-radius: var(--hax-toolbar-menu-button-border-radius, 0);\n        }\n      ",
+    "\n        :host {\n          --simple-toolbar-button-min-width: 100% !important;\n          --simple-toolbar-button-border-color: var(\n            --hax-toolbar-button-bg,\n            #fff\n          ) !important;\n          --simple-toolbar-button-hover-bg: var(\n            --hax-toolbar-menu-button-hover-bg,\n            #c4ecff\n          );\n          --simple-toolbar-button-border-radius: var(\n            --hax-toolbar-menu-button-border-radius,\n            0\n          );\n        }\n        :host ::slotted([danger]){\n          --simple-toolbar-button-hover-bg: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --simple-toolbar-button-hover-color: var(\n            --hax-toolbar-button-bg,\n            #fff\n          );\n            z-index: 1001;\n\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -70,7 +70,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <li role="none">\n          <slot></slot>\n      </li>\n    ',
+    '\n      <li role="none">\n        <slot></slot>\n      </li>\n    ',
   ]);
 
   _templateObject = function _templateObject() {

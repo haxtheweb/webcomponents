@@ -36,38 +36,47 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
     this.formattingList = [
       {
         value: "p",
-        text: "Paragraph (p)",
+        icon: "hax:paragraph",
+        text: "Paragraph",
       },
       {
         value: "ul",
+        icon: "editor:format-list-bulleted",
         text: "Bulleted list",
       },
       {
         value: "ol",
+        icon: "editor:format-list-numbered",
         text: "Numbered list",
       },
       {
         value: "h2",
-        text: "Title (h2)",
+        icon: "hax:h2",
+        text: "Title",
       },
       {
         value: "h3",
-        text: "Content heading (h3)",
+        icon: "hax:h3",
+        text: "Content heading",
       },
       {
         value: "h4",
-        text: "Subheading (h4)",
+        icon: "hax:h4",
+        text: "Subheading",
       },
       {
         value: "h5",
-        text: "Deep subheading (h5)",
+        icon: "hax:h5",
+        text: "Deep subheading",
       },
       {
         value: "blockquote",
+        icon: "editor:format-quote",
         text: "Blockquote",
       },
       {
         value: "code",
+        icon: "icons:code",
         text: "Code",
       },
     ];
@@ -115,6 +124,13 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
       }
     });
   }
+  get textFormatLookup() {
+    let lookup = {};
+    this.formattingList.forEach((item) => {
+      lookup[item.value] = item.icon;
+    });
+    return lookup;
+  }
   static get styles() {
     return [...super.styles, css``];
   }
@@ -131,25 +147,26 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
         <div class="group">
           <hax-context-item-menu
             id="textformat"
-            icon="${this.formatIcon}"
-            label="Text format"
+            icon="${this._formatIcon(
+              this.realSelectedValue || this.formatIcon
+            )}"
+            label="Format"
             show-text-label
             data-simple-tour-stop
             data-stop-title="label"
-            @simple-popover-selection-changed="${this.textFormatChanged}"
           >
             ${this.formattingList.map(
               (val) =>
                 html` <hax-context-item-menu-li slot="menuitem">
-                  <hax-context-item
+                  <hax-context-item-textop
                     action
                     role="menuitem"
                     label="${val.text}"
                     show-text-label
                     ?hidden="${!this.sourceView}"
                     event-name="${val.value}"
-                    @click="${this.textFormatChanged}"
-                  ></hax-context-item>
+                    @click="${(e) => this.textFormatChanged(val.value)}"
+                  ></hax-context-item-textop>
                 </hax-context-item-menu-li>`
             )}
             <div slot="tour" data-stop-content>
@@ -375,10 +392,10 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
       },
     };
   }
-  textFormatChanged(e) {
+  textFormatChanged(tag) {
     // set internally
-    this.shadowRoot.querySelector("simple-popover-selection").opened = false;
-    this.updateTextIconSelection(e.detail.getAttribute("value"));
+    this.shadowRoot.querySelector("#textformat").collapsed = true;
+    this.updateTextIconSelection(tag);
     // notify up above that we want to change the tag
     this.dispatchEvent(
       new CustomEvent("hax-context-item-selected", {
@@ -394,23 +411,11 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
   }
   updateTextIconSelection(tag) {
     this.realSelectedValue = tag;
-    // clear active if there is one
-    if (
-      this.shadowRoot.querySelector("[data-simple-popover-selection-active]")
-    ) {
-      this.shadowRoot
-        .querySelector("[data-simple-popover-selection-active]")
-        .removeAttribute("data-simple-popover-selection-active");
-    }
-    let localItem = this.shadowRoot.querySelector(
-      'button[value="' + this.realSelectedValue + '"]'
-    );
-    if (localItem) {
-      localItem.setAttribute("data-simple-popover-selection-active", true);
-      this.formatIcon = localItem
-        .querySelector("simple-icon-lite")
-        .getAttribute("icon");
-    }
+  }
+
+  _formatIcon(tag = this.realSelectedValue || "p") {
+    let icon = this.textFormatLookup[tag] || {};
+    return icon || "hax:paragraph";
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

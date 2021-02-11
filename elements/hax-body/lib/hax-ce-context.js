@@ -58,6 +58,7 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
             value="${el.callback}"
           ></hax-context-item>`;
         })}
+        <slot name="primary"></slot>
         <hax-context-item
           mini
           action
@@ -88,6 +89,8 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
             ></hax-context-item>
           </hax-context-item-menu-li>
         </hax-context-item-menu>
+        <slot name="secondary"></slot>
+        <slot name="more"></slot>
       </div>
       ${this.moreButton}
     `;
