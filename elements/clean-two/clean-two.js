@@ -122,6 +122,7 @@ class CleanTwo extends HAXCMSThemeParts(
           -ms-grid-column-align: stretch;
           -webkit-box-direction: normal;
         }
+        replace-tag[with="site-git-corner"],
         site-git-corner {
           height: 40px;
           width: 40px;
@@ -459,6 +460,8 @@ class CleanTwo extends HAXCMSThemeParts(
         }
         simple-icon-button,
         site-rss-button,
+        replace-tag[with="site-rss-button"],
+        replace-tag[with="site-print-button"],
         site-print-button {
           color: black;
           --haxcms-tooltip-color: #F5F5F5;
@@ -559,11 +562,22 @@ class CleanTwo extends HAXCMSThemeParts(
                 ></simple-datetime>
               </div>
               <div class="footer-right">
-                <site-print-button
+                <replace-tag
+                  with="site-print-button"
                   class="btn js-toolbar-action"
-                ></site-print-button>
-                <site-rss-button type="rss"></site-rss-button>
-                <site-git-corner size="small" circle></site-git-corner>
+                  with-method="view"
+                ></replace-tag>
+                <replace-tag
+                  with="site-rss-button"
+                  type="rss"
+                  with-method="view"
+                ></replace-tag>
+                <replace-tag
+                  with="site-git-corner"
+                  size="small"
+                  circle
+                  with-method="view"
+                ></replace-tag>
               </div>
             </div>
           </div>
@@ -640,18 +654,6 @@ class CleanTwo extends HAXCMSThemeParts(
       }
       this.__disposer.push(reaction);
     });
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
-    );
   }
   /**
    * life cycle, element is removed from the DOM

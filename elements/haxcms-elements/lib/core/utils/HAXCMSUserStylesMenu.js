@@ -1,6 +1,4 @@
 import { css, html } from "lit-element/lit-element.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 const HAXCMSUserStylesMenuMixin = function (SuperClass) {
@@ -296,6 +294,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
       import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
       import("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
       import("@lrnwebcomponents/simple-popover/simple-popover.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       return html`
         <simple-icon-button-lite
           .part="${this.editMode ? `edit-mode-active` : ``}"

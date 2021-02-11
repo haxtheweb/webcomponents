@@ -73,12 +73,12 @@
         <lazy-image slot="col-4" laser-loader popup-loader src="http://placekitten.com/g/200/530"></lazy-image>
       </grid-plate>
     </div>
-    <script src="../../replace-tag/lib/loading-styles.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module" defer>
-      window.WCRegistryLoaderCSS(true);
+      import { WCRegistryLoaderCSS } from "../../replace-tag/lib/loading-styles.js";
+      WCRegistryLoaderCSS(true);
       import('@lrnwebcomponents/grid-plate/grid-plate.js');
       import('../lazy-image-helpers.js');        
     </script>
