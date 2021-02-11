@@ -176,27 +176,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           );
           --hax-body-possible-target-background-color: inherit;
         }
-        #addincontext {
-          opacity: 0.5;
-          transition: 0.2s opacity ease-in-out;
-        }
-        #addincontext:hover,
-        #addincontext:active,
-        #addincontext:focus {
-          opacity: 1;
-          cursor: pointer;
-        }
-        .hax-context-menus {
-          visibility: hidden;
-          opacity: 0;
-          pointer-events: none;
-          z-index: 1000;
-          transition: 0.2s top ease-in-out, 0.2s left ease-in-out;
-        }
-        .hax-context-visibles {
-          visibility: visible;
-          pointer-events: all;
-          opacity: 1;
+        #topcontext {
+          z-index: 3;
         }
         :host([edit-mode]) #bodycontainer ::slotted([contenteditable]) {
           -webkit-appearance: textfield;
@@ -511,7 +492,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           this._positionContextMenu(
             this.contextMenus.add,
             this.__activeHover,
-            activeRect.width / 2 - addRect.width / 2,
             height
           );
         } else if (
@@ -576,12 +556,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }
 
           // wow, we have an in context addition menu just like that
-          this._positionContextMenu(
-            this.contextMenus.add,
-            posMenuEl,
-            activeRect.width / 2 - addRect.width / 2,
-            height
-          );
+          this._positionContextMenu(this.contextMenus.add, height);
         } else if (eventPath[0].closest("#bodycontainer")) {
           this.__activeHover = null;
           this._hideContextMenu(this.contextMenus.add);
@@ -694,13 +669,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           class="hax-context-menu ignore-activation"
         ></hax-plate-context>
       </hax-context-container>
-      <hax-context-container id="bottomcontext" bottom>
+      <hax-context-container id="bottomcontext" below>
         <hax-context-item
           id="addincontext"
           class="hax-context-menu ignore-activation"
           icon="icons:add"
-          label="Click to Add"
+          label="Insert Content"
           show-text-label
+          feature
         >
         </hax-context-item>
       </hax-context-container>
@@ -1124,13 +1100,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
         // if we see it, ensure we don't have the pin
         if (el) {
-          if (this.activeNode && this.elementMidViewport()) {
-            el.classList.add("hax-context-pin-top");
-            this.contextMenus.plate.classList.add("hax-context-pin-top");
-          } else {
-            el.classList.remove("hax-context-pin-top");
-            this.contextMenus.plate.classList.remove("hax-context-pin-top");
-          }
+          this._setSticky(el);
           this.positionContextMenus();
         }
       }, 100);
@@ -1853,6 +1823,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
               }
             }, 250);
           }
+          this._setSticky(this.contextMenus.plate);
         }
       }, 50);
     }
@@ -3395,31 +3366,62 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Handle display and position of the context menu
    */
-  _positionContextMenu(menu, target) {
+  _positionContextMenu(menu, target, offsetY = 0) {
     // make it account for the offset if it's floated over to one side
     // or inside of something that's over that way
-    console.log(menu.parentNode);
+    let container = this._getContextContainer(menu);
     if (target != null) {
-      let pos = this._getPosition(target);
-      menu.parentNode.style["left"] = pos.x + "px";
-      menu.parentNode.style["top"] = pos.y + "px";
+      let pos = this._getPosition(target),
+        body = this.getBoundingClientRect();
+      container.style.setProperty(
+        "--hax-context-container-top",
+        pos.y + offsetY + "px"
+      );
+      container.style.setProperty(
+        "--hax-context-container-width",
+        this.clientWidth ? this.clientWidth + "px" : "100%"
+      );
+      container.style.setProperty(
+        "--hax-context-container-left",
+        body && body.left ? body.left + "px" : "0px"
+      );
     }
-    menu.parentNode.menusVisible = true;
+    if (container) container.menusVisible = true;
     menu.setAttribute("on-screen", "on-screen");
     menu.classList.add("hax-context-visible", "hax-context-menu-active");
+  }
+  /**
+   * gets context container
+   */
+  _getContextContainer(el) {
+    let parent = !el || !el.parentNode ? undefined : el.parentNode,
+      container =
+        !parent || !parent.nodeType
+          ? undefined
+          : parent.nodeType == 1
+          ? parent
+          : parent.host;
+    return container;
+  }
+  /**
+   * sets stickiness of container
+   */
+  _setSticky(el, on = true) {
+    if (!el || !this._getContextContainer(el)) return;
+    let container = this._getContextContainer(el),
+      sticky = on && this.activeNode && this.elementMidViewport();
+    container.menuSticky = sticky;
   }
   /**
    * Simple hide / reset of whatever menu it's handed.
    */
   _hideContextMenu(menu) {
+    let container = this._getContextContainer(menu);
     menu.removeAttribute("on-screen");
     menu.visible = false;
-    menu.classList.remove(
-      "hax-context-visible",
-      "hax-context-pin-top",
-      "hax-context-menu-active"
-    );
-    menu.parentNode.menusVisible = false;
+    menu.classList.remove("hax-context-visible", "hax-context-menu-active");
+    this._setSticky(menu);
+    if (container) container.menusVisible = false;
   }
   /**
    * Find the next thing to tab forward to.

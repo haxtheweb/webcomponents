@@ -39,7 +39,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          padding: 0;\n          position: fixed;\n          visibility: hidden;\n          opacity: 0;\n          z-index: 1000;\n          display: block;\n          transition: 0.2s all ease-in-out;\n          width: 100%;\n        }\n        :host([menus-visible]) {\n          position: absolute;\n          visibility: visible;\n          opacity: 1;\n        }\n        :host([sticky]) {\n          position: fixed;\n          top: 0;\n        }\n        :host([sticky][below]) {\n          bottom: 0;\n        }\n        #inner {\n          width: 100%;\n          position: absolute;\n          bottom: 0;\n          display: flex;\n          align-items: flex-end;\n          justify-content: space-between;\n        }\n        :host([sticky]) #inner,\n        :host([below]) #inner {\n          bottom: unset;\n          top: 0;\n        }\n        :host([sticky][below]) #inner {\n          bottom: 0;\n          top: unset;\n        }\n      ",
+    "\n        :host {\n          padding: 0;\n          position: absolute;\n          visibility: hidden;\n          opacity: 0;\n          z-index: 1000;\n          display: block;\n          transition: 0.2s opacity ease-in-out;\n          width: 100%;\n          top: var(--hax-context-container-top, 0px);\n        }\n        :host([menus-visible]) {\n          position: absolute;\n          visibility: visible;\n          opacity: 1;\n        }\n        :host([menu-sticky]) {\n          position: fixed;\n          top: 0;\n          left: var(--hax-context-container-left, 0px);\n          max-width: var(--hax-context-container-width, 100%);\n        }\n        #inner {\n          width: 100%;\n          position: absolute;\n          bottom: 0;\n          display: flex;\n          align-items: flex-end;\n          justify-content: space-between;\n          top: unset;\n        }\n        :host([below]) #inner {\n          bottom: unset;\n          top: 0;\n        }\n        :host([menu-sticky]) #inner {\n          bottom: unset;\n          top: var(--hax-context-container-target-top, 0px);\n        }\n        :host([below]) ::slotted(*){\n          --simple-toolbar-button-border-color: var(\n              --hax-toolbar-button-hover-border-color,\n              #000\n            );\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -180,9 +180,9 @@ var HaxContextContainer =
                 attribute: "menus-visible",
                 reflect: true,
               },
-              sticky: {
+              menuSticky: {
                 type: Boolean,
-                attribute: "sticky",
+                attribute: "menu-sticky",
                 reflect: true,
               },
               below: {

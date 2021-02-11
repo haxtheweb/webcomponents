@@ -35,7 +35,7 @@ function _typeof(obj) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    "\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          :host([danger]){\n            --simple-toolbar-button-hover-color: var(--hax-toolbar-button-danger-color,  #882222); \n            --simple-toolbar-button-hover-border-color: var(--hax-toolbar-button-danger-color,  #882222);\n          }\n        ",
+    "\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          :host([danger]) {\n            --simple-toolbar-button-hover-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n            --simple-toolbar-button-hover-border-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n          }\n          :host([feature]){\n            --simple-toolbar-button-bg: var(--hax-toolbar-button-feature-color, #009dc7);\n            --simple-toolbar-button-hover-bg: var(--hax-toolbar-button-feature-color, #009dc7);\n            --simple-toolbar-button-border-color: var(--hax-toolbar-button-feature-color, #009dc7);\n            --simple-toolbar-button-hover-border-color: var(--hax-toolbar-button-feature-color, #009dc7);\n            --simple-toolbar-button-color: #eee;\n            --simple-toolbar-button-hover-color: #fff;\n          }\n        ",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -74,7 +74,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '<simple-tooltip id="tooltip" for="button"\n        ?hidden="',
+    '<simple-tooltip\n        id="tooltip"\n        for="button"\n        ?hidden="',
     '"\n        position="',
     '"\n        >',
     "</simple-tooltip\n      >",
@@ -95,7 +95,7 @@ function _templateObject2() {
     '"\n              @keydown="',
     '"\n              @mousedown="',
     '"\n              tabindex="0"\n            >\n              ',
-    " ",
+    "\n              ",
     "\n            </button>\n            ",
     "",
   ]);
@@ -255,6 +255,7 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
         );
         _this.dark = false;
         _this.danger = false;
+        _this.feature = false;
         _this.menu = false;
         return _this;
       }
@@ -354,6 +355,10 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
                   reflect: true,
                 },
                 danger: {
+                  type: Boolean,
+                  reflect: true,
+                },
+                feature: {
                   type: Boolean,
                   reflect: true,
                 },

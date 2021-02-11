@@ -13,6 +13,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
       super();
       this.dark = false;
       this.danger = false;
+      this.feature = false;
       this.menu = false;
     }
     static get properties() {
@@ -25,6 +26,10 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
           reflect: true,
         },
         danger: {
+          type: Boolean,
+          reflect: true,
+        },
+        feature: {
           type: Boolean,
           reflect: true,
         },
@@ -127,6 +132,26 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               --hax-toolbar-button-danger-color,
               #882222
             );
+          }
+          :host([feature]) {
+            --simple-toolbar-button-bg: var(
+              --hax-toolbar-button-feature-color,
+              #009dc7
+            );
+            --simple-toolbar-button-hover-bg: var(
+              --hax-toolbar-button-feature-color,
+              #009dc7
+            );
+            --simple-toolbar-button-border-color: var(
+              --hax-toolbar-button-feature-color,
+              #009dc7
+            );
+            --simple-toolbar-button-hover-border-color: var(
+              --hax-toolbar-button-feature-color,
+              #009dc7
+            );
+            --simple-toolbar-button-color: #eee;
+            --simple-toolbar-button-hover-color: #fff;
           }
         `,
       ];
