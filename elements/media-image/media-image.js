@@ -143,6 +143,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         modal-title="${this.modalTitle}"
         alt="${this.alt}"
         .described-by="${this.describedBy}"
+        @click="${this._handleClick}"
       ></media-image-image>
       <media-image-citation>
         <slot name="citation"> ${this.citation} </slot>
@@ -155,6 +156,27 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           `
         : ``}
     `;
+  }
+  haxHooks() {
+    return {
+      editModeChanged: "haxEditModeChanged",
+      activeElementChanged: "haxActiveElementChanged",
+    };
+  }
+  _handleClick(event) {
+    if (this._haxState) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+    }
+  }
+  haxEditModeChanged(value) {
+    this._haxState = value;
+  }
+  haxActiveElementChanged(element, value) {
+    if (value) {
+      this._haxState = value;
+    }
   }
   static get tag() {
     return "media-image";
