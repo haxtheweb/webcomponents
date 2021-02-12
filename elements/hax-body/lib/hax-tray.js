@@ -15,18 +15,15 @@ import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTou
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "@lrnwebcomponents/simple-popover/simple-popover.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "./hax-tray-upload.js";
 import "./hax-gizmo-browser.js";
 import "./hax-app-browser.js";
 import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-preferences-dialog.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -67,8 +64,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     this.canUndo = false;
     this.canRedo = false;
     this.elementAlign = "right";
-    this.activeTagName = "Select an element to configure";
-    this.activeTagIcon = "icons:settings";
+    this.trayDetail = "content-edit";
+    this.activeTagName = "";
     this.traySizeIcon = "hax:arrow-expand-right";
     this.__setup = false;
     this.__tipText = "Edit";
@@ -93,7 +90,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     });
   }
   _expandSettingsPanel(e) {
-    this.shadowRoot.querySelector("#settingscollapse").expand();
+    this.shadowRoot.querySelector("#content-edit").click();
   }
   _redoChanged(e) {
     this.canRedo = e.detail.value;
@@ -106,6 +103,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   static get styles() {
     return [
+      ...(super.styles || []),
       css`
         :host {
           font-family: var(--simple-fields-font-family, sans-serif);
@@ -113,91 +111,34 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           z-index: 100000000;
           position: absolute;
           transition: 0.2s all ease-in-out;
-          --hax-contextual-action-text-color: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --hax-contextual-action-color: var(
-            --simple-colors-default-theme-grey-12,
-            #009dc7
-          );
-          --hax-contextual-action-hover-color: var(
-            --simple-colors-default-theme-grey-8,
-            #009dc7
-          );
-          --simple-fields-accent-color: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
-          );
-          --a11y-tabs-focus-color: var(
-            --hax-contextual-action-hover-color,
-            var(--simple-colors-default-theme-grey-8, #009dc7)
-          );
+          height: 100vh;
+          overflow: auto;
         }
         .wrapper {
-          color: var(--hax-color-text, #000000);
           position: fixed;
           top: 0;
-          background-color: transparent;
-          font-size: 20px;
+          background-color: var(--hax-toolbar-button-bg, #fff);
+          border: 1px solid var(--hax-toolbar-border-color, #ddd);
           width: var(--hax-tray-width, 300px);
+          --simple-fields-margin: var(--hax-tray-margin-sm, 4px);
+          --simple-fields-font-size: var(--hax-tray-font-size-sm, 12px);
+          --tray-detail-accent-color: #000;
           transition: 0.2s all ease-in-out;
           opacity: 0;
           visibility: hidden;
           pointer-events: none;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          height: 100%;
+          max-height: 100%;
+          overflow: auto;
         }
         :host([edit-mode]) .wrapper {
           opacity: 1;
           visibility: visible;
           right: 0;
           pointer-events: all;
-        }
-        #addcollapse {
-          --hax-tray-panel-accent-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --hax-tray-panel-accent: var(
-            --simple-colors-default-theme-purple-8,
-            #8a009b
-          );
-          --simple-fields-accent-color: var(
-            --simple-colors-default-theme-purple-8,
-            #8a009b
-          );
-        }
-        #settingscollapse {
-          --hax-tray-panel-accent-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --hax-tray-panel-accent: var(
-            --simple-colors-default-theme-green-8,
-            #00762e
-          );
-          --simple-fields-accent-color: var(
-            --simple-colors-default-theme-green-8,
-            #00762e
-          );
-          --simple-fields-margin: 4px;
-          --simple-fields-font-size: 12px;
-        }
-        #searchapps {
-          --hax-tray-panel-accent-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --hax-tray-panel-accent: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
-          );
-          --simple-fields-accent-color: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
-          );
-        }
-        :host([edit-mode][collapsed]) a11y-collapse-group {
-          right: -100vw;
         }
         :host([element-align="left"]) .wrapper {
           left: -1000px;
@@ -211,40 +152,13 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         :host([edit-mode][element-align="right"]) .wrapper {
           right: 0;
         }
-        :host([edit-mode][element-align="left"]) #toggle-tray-size {
-          --hax-tray-button-rotate: rotate(-180deg);
-        }
-        /** default is right so lets support left too */
-        :host([edit-mode][element-align="left"][collapsed])
-          a11y-collapse-group {
-          right: unset;
-          left: -100vw;
-        }
-        :host([edit-mode][element-align="left"]) .ops,
-        :host([edit-mode][element-align="left"]) .quick,
-        :host([edit-mode][element-align="left"]) .quick-buttons {
-          flex-direction: row-reverse;
-        }
-        :host([element-align="left"]) #toggle-element-align {
-          --hax-tray-button-rotate: rotate(-90deg) scaleX(-1) !important;
-        }
-        :host([element-align="right"]) #toggle-element-align {
-          --hax-tray-button-rotate: rotate(90deg) !important;
-        }
-        simple-popover {
-          --simple-popover-max-height: 50vh;
-        }
         hax-tray-button,
-        a11y-collapse,
-        a11y-collapse-group,
         hax-app-browser,
         hax-gizmo-browser {
           transition: 0.2s all ease-in-out;
           visibility: visible;
         }
         hax-tray-button:not(:defined),
-        a11y-collapse:not(:defined),
-        a11y-collapse-group:not(:defined),
         hax-app-browser:not(:defined),
         hax-gizmo-browser:not(:defined) {
           visibility: hidden;
@@ -252,176 +166,18 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         *[hidden] {
           display: none;
         }
-        :host([element-align="right"]) a11y-collapse-group {
-          margin: 0 -350px 0 0;
-          right: 0;
-        }
-        :host([element-align="left"]) a11y-collapse-group {
-          margin: 0 0 0 -350px;
-          left: 0;
-        }
-        :host([edit-mode][element-align="left"]) a11y-collapse-group,
-        :host([edit-mode][element-align="right"]) a11y-collapse-group {
-          position: absolute;
-          margin: 0;
-          top: 32;
-        }
-        a11y-collapse-group {
-          position: fixed;
-          font-size: 16px;
-          margin: 0;
-          background-color: var(--simple-colors-default-theme-grey-1, #fff);
-        }
-        a11y-collapse {
-          font-size: 12px;
-          font-weight: normal;
-          --a11y-tabs-content-padding: 0;
-          width: calc(var(--hax-tray-width, 300px) - 2px);
-          --a11y-collapse-heading-color: var(
-            --simple-colors-default-theme-grey-7,
-            #666
-          );
-          --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-grey-2,
-            #eee
-          );
-          --a11y-collapse-padding-top: 0px;
-          --a11y-collapse-padding-right: 0px;
-          --a11y-collapse-padding-bottom: 0px;
-          --a11y-collapse-padding-left: 0px;
-          --a11y-collapse-border: 1px solid
-            var(--simple-colors-default-theme-grey-3, #dddddd);
-          --a11y-collapse-border-between: 1px solid
-            var(--simple-colors-default-theme-grey-3, #dddddd);
-          transition: all 0.5ms ease-in-out;
-          border-left: 3px solid
-            var(--simple-colors-default-theme-grey-3, #dddddd);
-        }
-        a11y-collapse:not([expanded]) div[slot="content"] {
-          display: none;
-        }
-        a11y-collapse div[slot="heading"] {
-          cursor: pointer;
-          font-size: 16px;
-        }
-        a11y-collapse:hover {
-          --a11y-collapse-heading-color: var(
-            --hax-tray-panel-accent,
-            var(--simple-colors-default-theme-grey-12, #000)
-          );
-          --a11y-collapse-heading-background-color: var(
-            --hax-tray-panel-accent-text,
-            var(--simple-colors-default-theme-grey-1, #fff)
-          );
-        }
-        a11y-collapse:hover {
-          border-left: 3px solid
-            var(
-              --hax-tray-panel-accent,
-              var(--hax-contextual-action-hover-color)
-            );
-        }
-        a11y-collapse[expanded],
-        a11y-collapse[expanded]:hover {
-          --a11y-collapse-heading-color: var(
-            --hax-tray-panel-accent,
-            var(--hax-contextual-action-hover-color)
-          );
-          --a11y-collapse-heading-background-color: var(
-            --hax-tray-panel-accent-text,
-            var(--simple-colors-default-theme-grey-1)
-          );
-        }
-        a11y-collapse[disabled] {
-          --a11y-collapse-heading-color: var(
-            --simple-colors-default-theme-grey-7,
-            #666
-          ) !important;
-          --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-grey-2,
-            #eee
-          ) !important;
-          cursor: not-allowed;
-        }
-        a11y-collapse[disabled] div[slot="heading"] {
-          cursor: not-allowed !important;
-          opacity: 0.6;
-        }
         #settingscollapse div[slot="content"] {
           padding: 0;
           margin: 0;
         }
-        a11y-collapse[expanded] div[slot="content"] {
-          min-height: 300px;
-          max-height: 70vh;
-          overflow: auto;
-        }
-        simple-icon-lite {
-          margin-right: 8px;
-        }
         .quick-buttons {
           width: var(--hax-tray-width, 300px);
-          display: flex;
-          color: var(--simple-colors-default-theme-grey-12, #000);
-          background-color: var(--simple-colors-default-theme-grey-4, #bbb);
-          justify-content: space-between;
           transition: all 0.5ms ease-in-out;
         }
-        .quick-buttons hax-tray-button {
-          --hax-tray-panel-accent-text: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
-          );
-          --hax-tray-panel-accent: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-        }
-
-        #button,
-        .quick-buttons #haxsavebutton {
-          --hax-quick-button-accent: var(
-            --simple-colors-default-theme-cyan-8,
-            #007999
-          );
-          --hax-tray-panel-accent: var(
-            --simple-colors-default-theme-cyan-7,
-            #009dc7
-          );
-          --hax-quick-button-accent-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --hax-tray-panel-accent-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-        }
-        .quick-buttons #haxcancelbutton {
-          --hax-quick-button-accent: var(
-            --simple-colors-default-theme-red-8,
-            #ac0000
-          );
-          --hax-tray-panel-accent: var(
-            --simple-colors-default-theme-red-7,
-            #ee0000
-          );
-          --hax-quick-button-accent-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --hax-tray-panel-accent-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-        }
-        .quick-buttons .ops {
-          display: flex;
-          justify-content: flex-start;
-        }
+        .quick-buttons,
+        .quick-buttons .ops,
         .quick-buttons .quick {
           display: flex;
-          justify-content: flex-end;
         }
         div[slot="heading"] {
           margin: 0;
@@ -450,23 +206,104 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         #button:hover {
           opacity: 1;
         }
-        .active-op-name {
-          display: inline-flex;
-          vertical-align: text-bottom;
-          padding: 4px 2px;
-          max-width: 60px;
-          font-size: 11px;
-          overflow: hidden;
-          text-align: center;
-          color: white;
+        hax-toolbar {
+          flex: 0 0 auto;
+          background-color: var(--hax-toolbar-button-bg, #fff);
+        }
+        .group { 
+          margin: 0; 
+          padding: 0;
+          justify-content: space-around;
+          border-right: 1px solid var(--hax-toolbar-border-color, #ddd);
+        }
+        .group > * {
+          flex: 1 1 auto;
+        }
+        .collapse-menu {
+          z-index: 2000;
+        }
+        #tray-detail {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          width: 100%;
+          outline:1px solid purple;
+          flex: 0 1 auto;
+          transition: height 0.6s linear;
+          border-top: 3px solid var(--tray-detail-accent-color,
+            #000
+          );
+          overflow: auto;
+          margin: 0 var(--hax-tray-margin-sm, 4px) var(--hax-tray-margin-sm, 4px);
+          --simple-fields-accent-color: var(--tray-detail-accent-color, #000);
+        }
+        #tray-detail[hidden]{
+          height: 0px;
+          transition: height 0.6s linear;
+        }
+        #content-add,
+        #tray-detail[selected-detail=content-add] {
+          --tray-detail-accent-color: var(
+            --simple-colors-default-theme-pink-8,
+            #b80042
+          );
+        }
+        #content-edit,
+        #tray-detail[selected-detail=content-edit] {
+          --tray-detail-accent-color: var(
+            --simple-colors-default-theme-purple-8,
+            #8a009b
+          );
+        }
+        #media-search,
+        #tray-detail[selected-detail=media-search] {
+          --tray-detail-accent-color: var(
+            --simple-colors-default-theme-indigo-8,
+            #2801b0
+          );
+        }
+        #content-map,
+        #tray-detail[selected-detail=content-map] {
+          --tray-detail-accent-color: var(
+            --simple-colors-default-theme-light-blue-8,
+            #007999
+          );
+        }
+        #advanced-settings,
+        #tray-detail[selected-detail=advanced-settings] {
+          --tray-detail-accent-color: var(
+            --simple-colors-default-theme-teal-8,
+            #007658
+          );
+        }
+        #advanced-settings,
+        #tray-detail[selected-detail=advanced-settings] {
+          --tray-detail-accent-color: var(
+            --simple-colors-default-theme-green-8,
+            #00762e
+          );
+        }
+        #tray-detail h4,
+        #tray-detail h5,
+        #tray-detail h6 {
+          color: var(--tray-detail-accent-color,
+            #000
+          );
+          margin: calc(2 * var(--hax-tray-margin-sm, 4px)) 0 var(--hax-tray-margin-sm, 4px);
+        }
+        #content-add,
+        #content-edit,
+        #media-search,
+        #content-map,
+        #advanced-settings {
+          --simple-toolbar-button-hover-color: var(--tray-detail-accent-color,#000);
+          --simple-toolbar-button-hover-border-color: var(--tray-detail-accent-color,#000);
+          --simple-toolbar-button-hover-toggled-border-color: var(--tray-detail-accent-color,#000);
+          --simple-toolbar-button-toggled-color: var(--tray-detail-accent-color,#000);
+          --simple-fields-accent-color: : var(--tray-detail-accent-color,#000);
         }
         /** This is mobile layout for controls */
         @media screen and (max-width: 800px) {
-          .ops,
-          .quick,
-          .quick-buttons {
-            flex-direction: row-reverse;
-          }
           .wrapper {
             top: 0;
             left: 0;
@@ -479,9 +316,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           }
           #toggle-element-align {
             display: none;
-          }
-          #toggle-tray-size {
-            --hax-tray-button-rotate: rotate(-90deg) !important;
           }
           :host([edit-mode][collapsed]) a11y-collapse-group {
             top: -200vh;
@@ -511,93 +345,42 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               @click="${this._clickEditButton}"
               icon="create"
               id="button"
-              dark
-              accent-color="white"
+              feature
+              show-text-label
               label="${this.__tipText}"
             ></hax-tray-button>
           `}
       <div class="wrapper" part="hax-tray-wrapper">
-        <div class="quick-buttons">
-          <div class="ops">
+        <hax-toolbar class="quick-buttons collapse-menu ">
+          <div class="ops group">
             ${this.hidePanelOps
               ? ``
               : html`
-                  <hax-tray-button
-                    mini
-                    @click="${this._clickSaveButton}"
-                    icon="save"
-                    id="haxsavebutton"
-                    label="${this.__tipText}"
-                    event-name="save"
-                    accent-color="white"
-                    voice-command="save (content)(page)"
-                    color-meaning
-                  ></hax-tray-button>
-                  <hax-tray-button
-                    mini
-                    icon="cancel"
-                    id="haxcancelbutton"
-                    accent-color="white"
-                    label="Cancel"
-                    event-name="cancel"
-                    voice-command="cancel"
-                    color-meaning
-                  ></hax-tray-button>
+                <hax-tray-button
+                  feature
+                  @click="${this._clickSaveButton}"
+                  icon="save"
+                  id="haxsavebutton"
+                  label="${this.__tipText}"
+                  event-name="save"
+                  voice-command="save (content)(page)"
+                  tooltip-direction="right"
+                ></hax-tray-button>
+              </div>
+              <div class="group">
+                <hax-tray-button
+                  danger
+                  icon="close"
+                  id="haxcancelbutton"
+                  label="Cancel"
+                  event-name="cancel"
+                  voice-command="cancel"
+                  tooltip-direction="right"
+                ></hax-tray-button>
                 `}
-            <hax-tray-button
-              mini
-              voice-command="toggle menu"
-              id="toggle-tray-size"
-              event-name="toggle-tray-size"
-              icon="${this.traySizeIcon}"
-              label="${this.traySizeText}"
-              data-simple-tour-stop
-            >
-              <div data-stop-title>Menu placement</div>
-              <div data-stop-content>Expand or collapse the menu visually.</div>
-            </hax-tray-button>
-            <hax-tray-button
-              mini
-              voice-command="toggle alignment"
-              id="toggle-element-align"
-              event-name="toggle-element-align"
-              icon="image:photo-size-select-small"
-              label="${this.menuAlignName}"
-              data-simple-tour-stop
-            >
-              <div data-stop-title>Menu alignment</div>
-              <div data-stop-content>
-                Change which side of the screen the menu is affixed to visually.
-              </div>
-            </hax-tray-button>
           </div>
-          <div class="quick">
-            <slot name="tray-buttons-pre"></slot>
+          <div class="group">
             <hax-tray-button
-              mini
-              id="exportbtn"
-              icon="code"
-              label="View page source"
-              voice-command="view (page) source"
-              data-simple-tour-stop
-              data-stop-title="label"
-            >
-              <div data-stop-content>
-                Every change you make in HAX is ultimately writing HTML. Know
-                HTML? Awesome, pop open the source view and make any changes you
-                like. HTML is always behind the scenes ensuring that content is
-                portable, well formatted and easy to read.
-              </div>
-            </hax-tray-button>
-            <hax-tray-button
-              mini
-              event-name="start-tour"
-              icon="help"
-              label="Take a tour"
-              voice-command="start tour"
-            ></hax-tray-button>
-            <hax-tray-button
-              mini
               icon="icons:undo"
               ?disabled="${!this.canUndo}"
               label="Undo previous action"
@@ -613,7 +396,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               </div>
             </hax-tray-button>
             <hax-tray-button
-              mini
               icon="icons:redo"
               ?disabled="${!this.canRedo}"
               label="Redo previous action"
@@ -627,15 +409,154 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
                 Redo the last action that you hit Undo on.
               </div>
             </hax-tray-button>
+          </div>
+          <div class="group collapse-menu ">
+            <slot name="tray-buttons-pre"></slot>
+            <hax-context-item-menu
+              label="Position"
+              icon="av:web"
+              direction="left"
+            >
+              <hax-context-item-menu-li slot="menuitem">
+                <hax-tray-button
+                  role="menuitem"
+                  voice-command="toggle menu"
+                  id="toggle-tray-size"
+                  event-name="toggle-tray-size"
+                  label="${this.collpased ? "Expand Menu" : "Collapse Menu"}"
+                  data-simple-tour-stop
+                >
+                  <div data-stop-title>Menu placement</div>
+                  <div data-stop-content>
+                    Expand or collapse the menu visually.
+                  </div>
+                </hax-tray-button>
+              </hax-context-item-menu-li>
+              <hax-context-item-menu-li slot="menuitem">
+                <hax-tray-button
+                  voice-command="toggle alignment"
+                  id="toggle-element-align"
+                  event-name="toggle-element-align"
+                  label="${this.elementAlign == "left"
+                    ? "Left Menu"
+                    : "Right Menu"}"
+                  data-simple-tour-stop
+                >
+                  <div data-stop-title>Menu alignment</div>
+                  <div data-stop-content>
+                    Change which side of the screen the menu is affixed to
+                    visually.
+                  </div>
+                </hax-tray-button>
+              </hax-context-item-menu-li>
+            </hax-context-item-menu>
+          </div>
+          <div class="group">
             <hax-tray-button
-              mini
-              event-name="open-map"
+              id="exportbtn"
+              icon="code"
+              label="View page source"
+              voice-command="view (page) source"
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              <div data-stop-content>
+                Every change you make in HAX is ultimately writing HTML. Know
+                HTML? Awesome, pop open the source view and make any changes you
+                like. HTML is always behind the scenes ensuring that content is
+                portable, well formatted and easy to read.
+              </div>
+            </hax-tray-button>
+          </div>
+          <div class="group">
+            <hax-tray-button
+              event-name="start-tour"
+              icon="help"
+              label="Take a tour"
+              voice-command="start tour"
+              tooltip-direction="left"
+            ></hax-tray-button>
+          </div>
+        </hax-toolbar>
+        <hax-toolbar class="quick-buttons">
+          <div class="group">
+            <hax-tray-button
+              event-name="content-add"
+              icon="add-box"
+              id="content-add"
+              label="Add Content"
+              voice-command="add content"
+              data-simple-tour-stop
+              data-stop-title="label"
+              controls="tray-detail"
+              toggles
+              ?toggled="${this.trayDetail === "content-add"}"
+            >
+              <div slot="tour" data-stop-content>
+                When you want to add any content to the page from text, to
+                images, to anything more advanced; you can always find items to
+                add under the Add content menu. Click to expand, then either
+                drag and drop items into the page or click and have them placed
+                near whatever you are actively working on.
+              </div>
+            </hax-tray-button>
+            <hax-tray-button
+              event-name="content-edit"
+              icon="build"
+              id="content-edit"
+              label="${this.activeTagName}"
+              ?disabled="${!this.activeTagName ||
+              this.activeTagName == "" ||
+              !this.activeNode ||
+              !this.activeNode.tagName}"
+              voice-command="(modify)(configure)(edit) selected"
+              data-simple-tour-stop
+              data-stop-title="label"
+              controls="tray-detail"
+              show-text-label
+              tooltip="Modify Selected ${this.activeTagName}"
+              toggles
+              ?toggled="${this.trayDetail === "content-edit"}"
+            >
+              <div slot="tour" data-stop-content>
+                When you want to add any content to the page from text, to
+                images, to anything more advanced; you can always find items to
+                add under the Add content menu. Click to expand, then either
+                drag and drop items into the page or click and have them placed
+                near whatever you are actively working on.
+              </div>
+            </hax-tray-button>
+            <hax-tray-button
+              event-name="media-search"
+              icon="hax:search-clear"
+              id="media-search"
+              label="Search Media"
+              voice-command="search media"
+              data-simple-tour-stop
+              data-stop-title="label"
+              controls="tray-detail"
+              toggles
+              ?toggled="${this.trayDetail === "media-search"}"
+            >
+              <div slot="tour" data-stop-content>
+                Search for media and content anywhere that your copy of HAX has
+                access to. Pick what to search, perform the search and then
+                click or drag the item into the contnet.
+              </div>
+            </hax-tray-button>
+          </div>
+          <div class="group">
+            <hax-tray-button
+              event-name="content-map"
               icon="maps:map"
-              id="mapbtn"
+              id="content-map"
               label="Content map"
               voice-command="open map"
               data-simple-tour-stop
               data-stop-title="label"
+              controls="tray-detail"
+              toggles
+              ?toggled="${this.trayDetail === "content-map"}"
             >
               <div data-stop-content>
                 This is a simple list of all the block areas of the page that
@@ -643,94 +564,67 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
                 some simple overview stats.
               </div>
             </hax-tray-button>
-            <simple-popover for="mapbtn" auto hidden>
-              <hax-map></hax-map>
-            </simple-popover>
+          </div>
+          <div class="group">
             <hax-tray-button
-              mini
               ?hidden="${this.hidePreferencesButton}"
-              id="prefbtn"
-              event-name="open-preferences"
+              id="advanced-settings"
+              event-name="advanced-settings"
               icon="settings"
-              label="Advanced settings"
+              label="Advanced Settings"
               voice-command="open preferences"
+              tooltip-direction="left"
               data-simple-tour-stop
               data-stop-title="label"
+              controls="tray-detail"
+              toggles
+              ?toggled="${this.trayDetail === "advanced-settings"}"
             >
               <div data-stop-content>
                 Some advanced options for developers and experimental purposes.
               </div>
             </hax-tray-button>
-            <simple-popover for="prefbtn" auto hidden>
-              <hax-preferences-dialog></hax-preferences-dialog>
-            </simple-popover>
           </div>
+        </hax-toolbar>
+        <div
+          id="tray-detail"
+          aria-live="polite"
+          aria-disabled="${this.collapsed ? "true" : "false"}"
+          tabindex="${this.collapsed ? "-1" : "0"}"
+          selected-detail="${this.trayDetail}"
+        >
+          <h4>${this.trayLabel || `Modify Selected ${this.activeTagName}`}</h4>
+          <hax-preferences-dialog
+            id="advanced-settings-tray"
+            ?hidden="${this.trayDetail !== "advanced-settings"}"
+          ></hax-preferences-dialog>
+          <hax-map
+            controls="content-map-tray"
+            ?hidden="${this.trayDetail !== "content-map"}"
+          ></hax-map>
+          <simple-fields
+            id="settingsform"
+            ?hidden="${this.trayDetail !== "content-edit"}"
+            disable-responsive
+          >
+          </simple-fields>
+          <hax-gizmo-browser
+            id="gizmobrowser"
+            ?hidden="${this.trayDetail !== "content-add"}"
+          ></hax-gizmo-browser>
+          <h5 ?hidden="${this.trayDetail !== "content-add"}">Templates</h5>
+          <hax-stax-browser
+            id="staxbrowser"
+            ?hidden="${this.trayDetail !== "content-add"}"
+          ></hax-stax-browser>
+          <hax-tray-upload
+            ?hidden="${this.trayDetail !== "media-search"}"
+          ></hax-tray-upload>
+          <hax-app-browser
+            id="appbrowser"
+            ?hidden="${this.trayDetail !== "media-search"}"
+          ></hax-app-browser>
         </div>
-        <a11y-collapse-group accordion radio>
-          <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse
-            id="settingscollapse"
-            accordion
-            data-simple-tour-stop
-            part="hax-tray-settingscollapse"
-          >
-            <div slot="heading" data-stop-title>
-              <simple-icon-lite icon="${this.activeTagIcon}"></simple-icon-lite>
-              ${this.activeTagName}
-            </div>
-            <div slot="tour" data-stop-content>
-              Settings panel changes contextually based on the item you are
-              currently working on. If you select a paragraph in the page, it
-              will change to a P tag and show settings specific to that element.
-              Same for video-player's, meme's, images, tables; litereally
-              anything!
-            </div>
-            <div slot="content">
-              <simple-fields
-                id="settingsform"
-                disable-responsive
-              ></simple-fields>
-            </div>
-          </a11y-collapse>
-          <a11y-collapse
-            id="addcollapse"
-            accordion
-            data-simple-tour-stop
-            @expand="${this._refreshAddData}"
-          >
-            <div slot="heading" data-stop-title>
-              <simple-icon-lite icon="hax:add"></simple-icon-lite> Add Content
-            </div>
-            <div slot="tour" data-stop-content>
-              When you want to add any content to the page from text, to images,
-              to anything more advanced; you can always find items to add under
-              the Add content menu. Click to expand, then either drag and drop
-              items into the page or click and have them placed near whatever
-              you are actively working on.
-            </div>
-            <div slot="content">
-              <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
-              <h5>Templates</h5>
-              <hax-stax-browser id="staxbrowser"></hax-stax-browser>
-            </div>
-          </a11y-collapse>
-          <a11y-collapse id="searchapps" accordion data-simple-tour-stop>
-            <div slot="heading" data-stop-title>
-              <simple-icon-lite icon="hax:search-clear"></simple-icon-lite>
-              Media browser
-            </div>
-            <div slot="tour" data-stop-content>
-              Search for media and content anywhere that your copy of HAX has
-              access to. Pick what to search, perform the search and then click
-              or drag the item into the contnet.
-            </div>
-            <div slot="content">
-              <hax-tray-upload></hax-tray-upload>
-              <hax-app-browser id="appbrowser"></hax-app-browser>
-            </div>
-          </a11y-collapse>
-          <slot name="tray-collapse-post"></slot>
-        </a11y-collapse-group>
       </div>
     `;
   }
@@ -744,7 +638,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       this.activeTab = "item-0";
     }
   }
-  _refreshAddData(e) {
+  _refreshAddData() {
     this.shadowRoot
       .querySelector("#gizmobrowser")
       .resetList(toJS(HAXStore.gizmoList));
@@ -757,10 +651,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   _processTrayEvent(e) {
     var target = normalizeEventPath(e)[0];
+    console.log("_processTrayEvent", e.detail.eventName);
     // support a simple insert event to bubble up or everything else
     switch (e.detail.eventName) {
       case "insert-stax":
-        this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(
           new CustomEvent("hax-insert-content-array", {
             bubbles: true,
@@ -802,7 +696,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             innerContent
           );
         }
-        this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(
           new CustomEvent("hax-insert-content", {
             bubbles: true,
@@ -812,18 +705,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           })
         );
         break;
-      case "open-preferences":
-        this.shadowRoot.querySelector(
-          "simple-popover[for='mapbtn']"
-        ).hidden = true;
-        this.shadowRoot.querySelector(
-          "simple-popover[for='prefbtn']"
-        ).hidden = !this.shadowRoot.querySelector(
-          "simple-popover[for='prefbtn']"
-        ).hidden;
-        this.shadowRoot
-          .querySelector("hax-preferences-dialog")
-          .reloadPreferencesForm();
+      case "advanced-settings":
+        this.trayDetail = e.detail.eventName;
         break;
       case "toggle-element-align":
         this.elementAlign = this.elementAlign === "right" ? "left" : "right";
@@ -831,16 +714,17 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       case "toggle-tray-size":
         this.collapsed = !this.collapsed;
         break;
-      case "open-map":
-        this.shadowRoot.querySelector(
-          "simple-popover[for='prefbtn']"
-        ).hidden = true;
-        this.shadowRoot.querySelector(
-          "simple-popover[for='mapbtn']"
-        ).hidden = !this.shadowRoot.querySelector(
-          "simple-popover[for='mapbtn']"
-        ).hidden;
-        this.shadowRoot.querySelector("hax-map").updateHAXMap();
+      case "content-map":
+        this.trayDetail = e.detail.eventName;
+        break;
+      case "content-edit":
+        this.trayDetail = e.detail.eventName;
+        break;
+      case "content-add":
+        this.trayDetail = e.detail.eventName;
+        break;
+      case "media-search":
+        this.trayDetail = e.detail.eventName;
         break;
       case "start-tour":
         window.SimpleTourManager.requestAvailability().startTour("hax");
@@ -879,9 +763,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       __tipText: {
         type: String,
       },
-      menuAlignName: {
-        type: String,
-      },
       offsetMargin: {
         type: String,
         attribute: "offset-margin",
@@ -891,9 +772,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         reflect: true,
       },
       traySizeIcon: {
-        type: String,
-      },
-      traySizeText: {
         type: String,
       },
       /**
@@ -967,11 +845,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         type: Object,
       },
       /**
-       * Tag name / what to display based on active element
+       * Element name / what to display based on active element
        */
-      activeTagIcon: {
-        type: String,
-      },
       activeTagName: {
         type: String,
       },
@@ -985,6 +860,18 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         type: Boolean,
         reflect: true,
         attribute: "edit-mode",
+      },
+      /**
+       * id of toggled section in tray
+       */
+      trayDetail: {
+        type: String,
+      },
+      /**
+       * heading of toggled section in tray
+       */
+      trayLabel: {
+        type: String,
       },
     };
   }
@@ -1034,9 +921,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           detail: {
             command:
               ":name: (collapse)(open)(expand)(toggle) add content (menu)",
-            context: this.shadowRoot.querySelector(
-              '#addcollapse div[slot="heading"]'
-            ),
+            context: this.shadowRoot.querySelector("#content-add"),
             callback: "click",
           },
         })
@@ -1049,9 +934,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           detail: {
             command:
               ":name: (collapse)(open)(expand)(toggle) element settings (menu)",
-            context: this.shadowRoot.querySelector(
-              '#settingscollapse div[slot="heading"]'
-            ),
+            context: this.shadowRoot.querySelector("#advanced-settings"),
             callback: "click",
           },
         })
@@ -1063,9 +946,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           cancelable: false,
           detail: {
             command: ":name: (collapse)(open)(expand)(toggle) search (menu)",
-            context: this.shadowRoot.querySelector(
-              '#searchapps div[slot="heading"]'
-            ),
+            context: this.shadowRoot.querySelector("#media-search"),
             callback: "click",
           },
         })
@@ -1093,73 +974,40 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           ).style.margin = this.offsetMargin;
         }, 0);
       }
+      // change tray detail
+      if (propName == "trayDetail") this._updateTrayDetail(oldValue);
       // collaped menu state change
-      if (propName == "collapsed") {
-        if (this[propName]) {
-          this.traySizeIcon = "hax:arrow-expand-left";
-          this.traySizeText = "Expand";
-          // accessibility to disable entering panels that are not visible
-          this.shadowRoot
-            .querySelector("a11y-collapse-group")
-            .setAttribute("aria-disabled", "true");
-          this.shadowRoot
-            .querySelector("a11y-collapse-group")
-            .setAttribute("tabindex", "-1");
-          this._editModeChanged(this.editMode);
-        } else {
-          this.traySizeIcon = "hax:arrow-expand-right";
-          this.traySizeText = "Collapse";
-          // a11y clean up to match state
-          this.shadowRoot
-            .querySelector("a11y-collapse-group")
-            .removeAttribute("aria-disabled");
-          this.shadowRoot
-            .querySelector("a11y-collapse-group")
-            .removeAttribute("tabindex");
-        }
-      }
-      //
-      if (propName == "elementAlign") {
-        if (this[propName] == "left") {
-          this.menuAlignName = "Right align menu";
-        } else {
-          this.menuAlignName = "Left align menu";
-        }
+      if (propName == "collapsed" && this[propName]) {
+        this._editModeChanged(this.editMode);
       }
       // active Gizmo changed
       if (propName == "activeGizmo") {
         if (this.activeGizmo) {
-          this.activeTagName = this.activeGizmo.title + " Settings";
-          this.activeTagIcon = this.activeGizmo.icon;
+          this.activeTagName = this.activeGizmo.title;
+          console.log(this.activeGizmo, this.activeTagName, oldValue);
           if (
-            !oldValue &&
-            !this.shadowRoot.querySelector("#settingscollapse").expanded
+            (!oldValue || this.trayDetail !== "content-edit") &&
+            this.trayDetail !== "content-map"
           ) {
-            this.shadowRoot
-              .querySelector('#settingscollapse div[slot="heading"]')
-              .click();
+            console.log(this.activeGizmo, oldValue, this.trayDetail);
+            this.trayDetail = "content-edit";
           }
         } else {
-          this.activeTagName = "Select an element";
-          this.activeTagIcon = "icons:settings";
-          if (!this.shadowRoot.querySelector("#addcollapse").expanded) {
-            this.shadowRoot
-              .querySelector('#addcollapse div[slot="heading"]')
-              .click();
+          console.log(this.activeGizmo, this.trayDetail);
+          this.activeTagName = "";
+          if (this.trayDetail !== "content-add") {
+            this.trayDetail = "content-add";
           }
         }
       }
       // active node changed
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
-          this.shadowRoot.querySelector("#settingscollapse").disabled = false;
           if (this.editMode) {
             HAXStore.refreshActiveNodeForm();
           }
         } else {
-          this.activeTagName = "Select an element to configure";
-          this.activeTagIcon = "icons:settings";
-          this.shadowRoot.querySelector("#settingscollapse").disabled = true;
+          this.activeTagName = "";
         }
       }
     });
@@ -1420,6 +1268,33 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     return Object.keys(obj).map(function (key) {
       return obj[key];
     });
+  }
+  _updateTrayDetail(oldValue) {
+    console.log("_updateTrayDetail", oldValue, this.trayDetail);
+    if (this.trayDetail == "content-add") {
+      this.trayLabel = "Add Content";
+      this._refreshAddData();
+    } else if (this.trayDetail == "content-map") {
+      this.trayLabel = "Content Map";
+      this.shadowRoot.querySelector("hax-map").updateHAXMap();
+    } else if (this.trayDetail == "advanced-settings") {
+      this.trayLabel = "Advanced Settings";
+      this.shadowRoot
+        .querySelector("hax-preferences-dialog")
+        .reloadPreferencesForm();
+    } else if (
+      this.trayDetail == "content-edit" &&
+      (!this.activeTagName ||
+        this.activeTagName == "" ||
+        !this.activeNode ||
+        !this.activeNode.tagName)
+    ) {
+      this.trayDetail = "content-add";
+    } else if (!this.trayDetail || this.trayDetail == "") {
+      this.trayDetail = "content-edit";
+    } else {
+      this.trayLabel = undefined;
+    }
   }
   /**
    * Notice change in values from below

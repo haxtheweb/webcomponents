@@ -19,17 +19,9 @@ var _mobx = require("mobx");
 
 require("@lrnwebcomponents/simple-fields/simple-fields.js");
 
-require("@lrnwebcomponents/simple-popover/simple-popover.js");
-
-require("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
-
 require("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
 
 require("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
-
-require("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
-
-require("@lrnwebcomponents/a11y-collapse/a11y-collapse.js");
 
 require("./hax-tray-upload.js");
 
@@ -43,9 +35,11 @@ require("./hax-map.js");
 
 require("./hax-preferences-dialog.js");
 
+require("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
+
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          display: block;\n          z-index: 100000000;\n          position: absolute;\n          transition: 0.2s all ease-in-out;\n          --hax-contextual-action-text-color: var(\n            --simple-colors-default-theme-grey-1,\n            #fff\n          );\n          --hax-contextual-action-color: var(\n            --simple-colors-default-theme-grey-12,\n            #009dc7\n          );\n          --hax-contextual-action-hover-color: var(\n            --simple-colors-default-theme-grey-8,\n            #009dc7\n          );\n          --simple-fields-accent-color: var(\n            --simple-colors-default-theme-cyan-8,\n            #007999\n          );\n          --a11y-tabs-focus-color: var(\n            --hax-contextual-action-hover-color,\n            var(--simple-colors-default-theme-grey-8, #009dc7)\n          );\n        }\n        .wrapper {\n          color: var(--hax-color-text, #000000);\n          position: fixed;\n          top: 0;\n          background-color: transparent;\n          font-size: 20px;\n          width: var(--hax-tray-width, 300px);\n          transition: 0.2s all ease-in-out;\n          opacity: 0;\n          visibility: hidden;\n          pointer-events: none;\n        }\n        :host([edit-mode]) .wrapper {\n          opacity: 1;\n          visibility: visible;\n          right: 0;\n          pointer-events: all;\n        }\n        #addcollapse {\n          --hax-tray-panel-accent-text: var(\n            --simple-colors-default-theme-grey-1,\n            #fff\n          );\n          --hax-tray-panel-accent: var(\n            --simple-colors-default-theme-purple-8,\n            #8a009b\n          );\n          --simple-fields-accent-color: var(\n            --simple-colors-default-theme-purple-8,\n            #8a009b\n          );\n        }\n        #settingscollapse {\n          --hax-tray-panel-accent-text: var(\n            --simple-colors-default-theme-grey-1,\n            #fff\n          );\n          --hax-tray-panel-accent: var(\n            --simple-colors-default-theme-green-8,\n            #00762e\n          );\n          --simple-fields-accent-color: var(\n            --simple-colors-default-theme-green-8,\n            #00762e\n          );\n          --simple-fields-margin: 4px;\n          --simple-fields-font-size: 12px;\n        }\n        #searchapps {\n          --hax-tray-panel-accent-text: var(\n            --simple-colors-default-theme-grey-1,\n            #fff\n          );\n          --hax-tray-panel-accent: var(\n            --simple-colors-default-theme-cyan-8,\n            #007999\n          );\n          --simple-fields-accent-color: var(\n            --simple-colors-default-theme-cyan-8,\n            #007999\n          );\n        }\n        :host([edit-mode][collapsed]) a11y-collapse-group {\n          right: -100vw;\n        }\n        :host([element-align="left"]) .wrapper {\n          left: -1000px;\n        }\n        :host([element-align="right"]) .wrapper {\n          right: -1000px;\n        }\n        :host([edit-mode][element-align="left"]) .wrapper {\n          left: 0;\n        }\n        :host([edit-mode][element-align="right"]) .wrapper {\n          right: 0;\n        }\n        :host([edit-mode][element-align="left"]) #toggle-tray-size {\n          --hax-tray-button-rotate: rotate(-180deg);\n        }\n        /** default is right so lets support left too */\n        :host([edit-mode][element-align="left"][collapsed])\n          a11y-collapse-group {\n          right: unset;\n          left: -100vw;\n        }\n        :host([edit-mode][element-align="left"]) .ops,\n        :host([edit-mode][element-align="left"]) .quick,\n        :host([edit-mode][element-align="left"]) .quick-buttons {\n          flex-direction: row-reverse;\n        }\n        :host([element-align="left"]) #toggle-element-align {\n          --hax-tray-button-rotate: rotate(-90deg) scaleX(-1) !important;\n        }\n        :host([element-align="right"]) #toggle-element-align {\n          --hax-tray-button-rotate: rotate(90deg) !important;\n        }\n        simple-popover {\n          --simple-popover-max-height: 50vh;\n        }\n        hax-tray-button,\n        a11y-collapse,\n        a11y-collapse-group,\n        hax-app-browser,\n        hax-gizmo-browser {\n          transition: 0.2s all ease-in-out;\n          visibility: visible;\n        }\n        hax-tray-button:not(:defined),\n        a11y-collapse:not(:defined),\n        a11y-collapse-group:not(:defined),\n        hax-app-browser:not(:defined),\n        hax-gizmo-browser:not(:defined) {\n          visibility: hidden;\n        }\n        *[hidden] {\n          display: none;\n        }\n        :host([element-align="right"]) a11y-collapse-group {\n          margin: 0 -350px 0 0;\n          right: 0;\n        }\n        :host([element-align="left"]) a11y-collapse-group {\n          margin: 0 0 0 -350px;\n          left: 0;\n        }\n        :host([edit-mode][element-align="left"]) a11y-collapse-group,\n        :host([edit-mode][element-align="right"]) a11y-collapse-group {\n          position: absolute;\n          margin: 0;\n          top: 32;\n        }\n        a11y-collapse-group {\n          position: fixed;\n          font-size: 16px;\n          margin: 0;\n          background-color: var(--simple-colors-default-theme-grey-1, #fff);\n        }\n        a11y-collapse {\n          font-size: 12px;\n          font-weight: normal;\n          --a11y-tabs-content-padding: 0;\n          width: calc(var(--hax-tray-width, 300px) - 2px);\n          --a11y-collapse-heading-color: var(\n            --simple-colors-default-theme-grey-7,\n            #666\n          );\n          --a11y-collapse-heading-background-color: var(\n            --simple-colors-default-theme-grey-2,\n            #eee\n          );\n          --a11y-collapse-padding-top: 0px;\n          --a11y-collapse-padding-right: 0px;\n          --a11y-collapse-padding-bottom: 0px;\n          --a11y-collapse-padding-left: 0px;\n          --a11y-collapse-border: 1px solid\n            var(--simple-colors-default-theme-grey-3, #dddddd);\n          --a11y-collapse-border-between: 1px solid\n            var(--simple-colors-default-theme-grey-3, #dddddd);\n          transition: all 0.5ms ease-in-out;\n          border-left: 3px solid\n            var(--simple-colors-default-theme-grey-3, #dddddd);\n        }\n        a11y-collapse:not([expanded]) div[slot="content"] {\n          display: none;\n        }\n        a11y-collapse div[slot="heading"] {\n          cursor: pointer;\n          font-size: 16px;\n        }\n        a11y-collapse:hover {\n          --a11y-collapse-heading-color: var(\n            --hax-tray-panel-accent,\n            var(--simple-colors-default-theme-grey-12, #000)\n          );\n          --a11y-collapse-heading-background-color: var(\n            --hax-tray-panel-accent-text,\n            var(--simple-colors-default-theme-grey-1, #fff)\n          );\n        }\n        a11y-collapse:hover {\n          border-left: 3px solid\n            var(\n              --hax-tray-panel-accent,\n              var(--hax-contextual-action-hover-color)\n            );\n        }\n        a11y-collapse[expanded],\n        a11y-collapse[expanded]:hover {\n          --a11y-collapse-heading-color: var(\n            --hax-tray-panel-accent,\n            var(--hax-contextual-action-hover-color)\n          );\n          --a11y-collapse-heading-background-color: var(\n            --hax-tray-panel-accent-text,\n            var(--simple-colors-default-theme-grey-1)\n          );\n        }\n        a11y-collapse[disabled] {\n          --a11y-collapse-heading-color: var(\n            --simple-colors-default-theme-grey-7,\n            #666\n          ) !important;\n          --a11y-collapse-heading-background-color: var(\n            --simple-colors-default-theme-grey-2,\n            #eee\n          ) !important;\n          cursor: not-allowed;\n        }\n        a11y-collapse[disabled] div[slot="heading"] {\n          cursor: not-allowed !important;\n          opacity: 0.6;\n        }\n        #settingscollapse div[slot="content"] {\n          padding: 0;\n          margin: 0;\n        }\n        a11y-collapse[expanded] div[slot="content"] {\n          min-height: 300px;\n          max-height: 70vh;\n          overflow: auto;\n        }\n        simple-icon-lite {\n          margin-right: 8px;\n        }\n        .quick-buttons {\n          width: var(--hax-tray-width, 300px);\n          display: flex;\n          color: var(--simple-colors-default-theme-grey-12, #000);\n          background-color: var(--simple-colors-default-theme-grey-4, #bbb);\n          justify-content: space-between;\n          transition: all 0.5ms ease-in-out;\n        }\n        .quick-buttons hax-tray-button {\n          --hax-tray-panel-accent-text: var(\n            --simple-colors-default-theme-cyan-8,\n            #007999\n          );\n          --hax-tray-panel-accent: var(\n            --simple-colors-default-theme-grey-1,\n            #fff\n          );\n        }\n\n        #button,\n        .quick-buttons #haxsavebutton {\n          --hax-quick-button-accent: var(\n            --simple-colors-default-theme-cyan-8,\n            #007999\n          );\n          --hax-tray-panel-accent: var(\n            --simple-colors-default-theme-cyan-7,\n            #009dc7\n          );\n          --hax-quick-button-accent-text: var(\n            --simple-colors-default-theme-grey-1,\n            #fff\n          );\n          --hax-tray-panel-accent-text: var(\n            --simple-colors-default-theme-grey-1,\n            #fff\n          );\n        }\n        .quick-buttons #haxcancelbutton {\n          --hax-quick-button-accent: var(\n            --simple-colors-default-theme-red-8,\n            #ac0000\n          );\n          --hax-tray-panel-accent: var(\n            --simple-colors-default-theme-red-7,\n            #ee0000\n          );\n          --hax-quick-button-accent-text: var(\n            --simple-colors-default-theme-grey-1,\n            #fff\n          );\n          --hax-tray-panel-accent-text: var(\n            --simple-colors-default-theme-grey-1,\n            #fff\n          );\n        }\n        .quick-buttons .ops {\n          display: flex;\n          justify-content: flex-start;\n        }\n        .quick-buttons .quick {\n          display: flex;\n          justify-content: flex-end;\n        }\n        div[slot="heading"] {\n          margin: 0;\n          padding: 10px;\n        }\n        :host([element-align="right"]) #button {\n          right: 0;\n        }\n        :host([element-align="left"]) #button {\n          left: 0;\n        }\n\n        #button {\n          position: fixed;\n          top: 0;\n          border: 1px solid black;\n          box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.2);\n          visibility: visible;\n          z-index: 1000;\n          margin: 0;\n        }\n        :host([edit-mode]) #button {\n          visibility: hidden;\n          opacity: 0;\n        }\n        #button:hover {\n          opacity: 1;\n        }\n        .active-op-name {\n          display: inline-flex;\n          vertical-align: text-bottom;\n          padding: 4px 2px;\n          max-width: 60px;\n          font-size: 11px;\n          overflow: hidden;\n          text-align: center;\n          color: white;\n        }\n        /** This is mobile layout for controls */\n        @media screen and (max-width: 800px) {\n          .ops,\n          .quick,\n          .quick-buttons {\n            flex-direction: row-reverse;\n          }\n          .wrapper {\n            top: 0;\n            left: 0;\n            right: 0;\n            margin: 0 !important;\n          }\n          .quick-buttons {\n            position: relative;\n            z-index: 1;\n          }\n          #toggle-element-align {\n            display: none;\n          }\n          #toggle-tray-size {\n            --hax-tray-button-rotate: rotate(-90deg) !important;\n          }\n          :host([edit-mode][collapsed]) a11y-collapse-group {\n            top: -200vh;\n            left: unset !important;\n            right: unset !important;\n          }\n        }\n        @media screen and (max-width: 600px) {\n          :host([edit-mode]) .hide-small {\n            display: none;\n          }\n        }\n      ',
+    '\n        :host {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          display: block;\n          z-index: 100000000;\n          position: absolute;\n          transition: 0.2s all ease-in-out;\n          height: 100vh;\n          overflow: auto;\n        }\n        .wrapper {\n          position: fixed;\n          top: 0;\n          background-color: var(--hax-toolbar-button-bg, #fff);\n          border: 1px solid var(--hax-toolbar-border-color, #ddd);\n          width: var(--hax-tray-width, 300px);\n          --simple-fields-margin: var(--hax-tray-margin-sm, 4px);\n          --simple-fields-font-size: var(--hax-tray-font-size-sm, 12px);\n          --tray-detail-accent-color: #000;\n          transition: 0.2s all ease-in-out;\n          opacity: 0;\n          visibility: hidden;\n          pointer-events: none;\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          height: 100%;\n          max-height: 100%;\n          overflow: auto;\n        }\n        :host([edit-mode]) .wrapper {\n          opacity: 1;\n          visibility: visible;\n          right: 0;\n          pointer-events: all;\n        }\n        :host([element-align="left"]) .wrapper {\n          left: -1000px;\n        }\n        :host([element-align="right"]) .wrapper {\n          right: -1000px;\n        }\n        :host([edit-mode][element-align="left"]) .wrapper {\n          left: 0;\n        }\n        :host([edit-mode][element-align="right"]) .wrapper {\n          right: 0;\n        }\n        hax-tray-button,\n        hax-app-browser,\n        hax-gizmo-browser {\n          transition: 0.2s all ease-in-out;\n          visibility: visible;\n        }\n        hax-tray-button:not(:defined),\n        hax-app-browser:not(:defined),\n        hax-gizmo-browser:not(:defined) {\n          visibility: hidden;\n        }\n        *[hidden] {\n          display: none;\n        }\n        #settingscollapse div[slot="content"] {\n          padding: 0;\n          margin: 0;\n        }\n        .quick-buttons {\n          width: var(--hax-tray-width, 300px);\n          transition: all 0.5ms ease-in-out;\n        }\n        .quick-buttons,\n        .quick-buttons .ops,\n        .quick-buttons .quick {\n          display: flex;\n        }\n        div[slot="heading"] {\n          margin: 0;\n          padding: 10px;\n        }\n        :host([element-align="right"]) #button {\n          right: 0;\n        }\n        :host([element-align="left"]) #button {\n          left: 0;\n        }\n\n        #button {\n          position: fixed;\n          top: 0;\n          border: 1px solid black;\n          box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.2);\n          visibility: visible;\n          z-index: 1000;\n          margin: 0;\n        }\n        :host([edit-mode]) #button {\n          visibility: hidden;\n          opacity: 0;\n        }\n        #button:hover {\n          opacity: 1;\n        }\n        hax-toolbar {\n          flex: 0 0 auto;\n          background-color: var(--hax-toolbar-button-bg, #fff);\n        }\n        .group { \n          margin: 0; \n          padding: 0;\n          justify-content: space-around;\n          border-right: 1px solid var(--hax-toolbar-border-color, #ddd);\n        }\n        .group > * {\n          flex: 1 1 auto;\n        }\n        .collapse-menu {\n          z-index: 2000;\n        }\n        #tray-detail {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          width: 100%;\n          outline:1px solid purple;\n          flex: 0 1 auto;\n          transition: height 0.6s linear;\n          border-top: 3px solid var(--tray-detail-accent-color,\n            #000\n          );\n          overflow: auto;\n          margin: 0 var(--hax-tray-margin-sm, 4px) var(--hax-tray-margin-sm, 4px);\n          --simple-fields-accent-color: var(--tray-detail-accent-color, #000);\n        }\n        #tray-detail[hidden]{\n          height: 0px;\n          transition: height 0.6s linear;\n        }\n        #content-add,\n        #tray-detail[selected-detail=content-add] {\n          --tray-detail-accent-color: var(\n            --simple-colors-default-theme-pink-8,\n            #b80042\n          );\n        }\n        #content-edit,\n        #tray-detail[selected-detail=content-edit] {\n          --tray-detail-accent-color: var(\n            --simple-colors-default-theme-purple-8,\n            #8a009b\n          );\n        }\n        #media-search,\n        #tray-detail[selected-detail=media-search] {\n          --tray-detail-accent-color: var(\n            --simple-colors-default-theme-indigo-8,\n            #2801b0\n          );\n        }\n        #content-map,\n        #tray-detail[selected-detail=content-map] {\n          --tray-detail-accent-color: var(\n            --simple-colors-default-theme-light-blue-8,\n            #007999\n          );\n        }\n        #advanced-settings,\n        #tray-detail[selected-detail=advanced-settings] {\n          --tray-detail-accent-color: var(\n            --simple-colors-default-theme-teal-8,\n            #007658\n          );\n        }\n        #advanced-settings,\n        #tray-detail[selected-detail=advanced-settings] {\n          --tray-detail-accent-color: var(\n            --simple-colors-default-theme-green-8,\n            #00762e\n          );\n        }\n        #tray-detail h4,\n        #tray-detail h5,\n        #tray-detail h6 {\n          color: var(--tray-detail-accent-color,\n            #000\n          );\n          margin: calc(2 * var(--hax-tray-margin-sm, 4px)) 0 var(--hax-tray-margin-sm, 4px);\n        }\n        #content-add,\n        #content-edit,\n        #media-search,\n        #content-map,\n        #advanced-settings {\n          --simple-toolbar-button-hover-color: var(--tray-detail-accent-color,#000);\n          --simple-toolbar-button-hover-border-color: var(--tray-detail-accent-color,#000);\n          --simple-toolbar-button-hover-toggled-border-color: var(--tray-detail-accent-color,#000);\n          --simple-toolbar-button-toggled-color: var(--tray-detail-accent-color,#000);\n          --simple-fields-accent-color: : var(--tray-detail-accent-color,#000);\n        }\n        /** This is mobile layout for controls */\n        @media screen and (max-width: 800px) {\n          .wrapper {\n            top: 0;\n            left: 0;\n            right: 0;\n            margin: 0 !important;\n          }\n          .quick-buttons {\n            position: relative;\n            z-index: 1;\n          }\n          #toggle-element-align {\n            display: none;\n          }\n          :host([edit-mode][collapsed]) a11y-collapse-group {\n            top: -200vh;\n            left: unset !important;\n            right: unset !important;\n          }\n        }\n        @media screen and (max-width: 600px) {\n          :host([edit-mode]) .hide-small {\n            display: none;\n          }\n        }\n      ',
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -151,9 +145,9 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n                  <hax-tray-button\n                    mini\n                    @click="',
-    '"\n                    icon="save"\n                    id="haxsavebutton"\n                    label="',
-    '"\n                    event-name="save"\n                    accent-color="white"\n                    voice-command="save (content)(page)"\n                    color-meaning\n                  ></hax-tray-button>\n                  <hax-tray-button\n                    mini\n                    icon="cancel"\n                    id="haxcancelbutton"\n                    accent-color="white"\n                    label="Cancel"\n                    event-name="cancel"\n                    voice-command="cancel"\n                    color-meaning\n                  ></hax-tray-button>\n                ',
+    '\n                <hax-tray-button\n                  feature\n                  @click="',
+    '"\n                  icon="save"\n                  id="haxsavebutton"\n                  label="',
+    '"\n                  event-name="save"\n                  voice-command="save (content)(page)"\n                  tooltip-direction="right"\n                ></hax-tray-button>\n              </div>\n              <div class="group">\n                <hax-tray-button\n                  danger\n                  icon="close"\n                  id="haxcancelbutton"\n                  label="Cancel"\n                  event-name="cancel"\n                  voice-command="cancel"\n                  tooltip-direction="right"\n                ></hax-tray-button>\n                ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -167,7 +161,7 @@ function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n            <hax-tray-button\n              voice-command="edit page"\n              .data-opened="',
     '"\n              @click="',
-    '"\n              icon="create"\n              id="button"\n              dark\n              accent-color="white"\n              label="',
+    '"\n              icon="create"\n              id="button"\n              feature\n              show-text-label\n              label="',
     '"\n            ></hax-tray-button>\n          ',
   ]);
 
@@ -181,17 +175,33 @@ function _templateObject2() {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     "\n      ",
-    '\n      <div class="wrapper" part="hax-tray-wrapper">\n        <div class="quick-buttons">\n          <div class="ops">\n            ',
-    '\n            <hax-tray-button\n              mini\n              voice-command="toggle menu"\n              id="toggle-tray-size"\n              event-name="toggle-tray-size"\n              icon="',
-    '"\n              label="',
-    '"\n              data-simple-tour-stop\n            >\n              <div data-stop-title>Menu placement</div>\n              <div data-stop-content>Expand or collapse the menu visually.</div>\n            </hax-tray-button>\n            <hax-tray-button\n              mini\n              voice-command="toggle alignment"\n              id="toggle-element-align"\n              event-name="toggle-element-align"\n              icon="image:photo-size-select-small"\n              label="',
-    '"\n              data-simple-tour-stop\n            >\n              <div data-stop-title>Menu alignment</div>\n              <div data-stop-content>\n                Change which side of the screen the menu is affixed to visually.\n              </div>\n            </hax-tray-button>\n          </div>\n          <div class="quick">\n            <slot name="tray-buttons-pre"></slot>\n            <hax-tray-button\n              mini\n              id="exportbtn"\n              icon="code"\n              label="View page source"\n              voice-command="view (page) source"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div data-stop-content>\n                Every change you make in HAX is ultimately writing HTML. Know\n                HTML? Awesome, pop open the source view and make any changes you\n                like. HTML is always behind the scenes ensuring that content is\n                portable, well formatted and easy to read.\n              </div>\n            </hax-tray-button>\n            <hax-tray-button\n              mini\n              event-name="start-tour"\n              icon="help"\n              label="Take a tour"\n              voice-command="start tour"\n            ></hax-tray-button>\n            <hax-tray-button\n              mini\n              icon="icons:undo"\n              ?disabled="',
-    '"\n              label="Undo previous action"\n              event-name="undo"\n              voice-command="undo"\n              class="hide-small"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Undo the previous operation in the content, whether typing or\n                adding a widget.\n              </div>\n            </hax-tray-button>\n            <hax-tray-button\n              mini\n              icon="icons:redo"\n              ?disabled="',
-    '"\n              label="Redo previous action"\n              event-name="redo"\n              voice-command="redo"\n              class="hide-small"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Redo the last action that you hit Undo on.\n              </div>\n            </hax-tray-button>\n            <hax-tray-button\n              mini\n              event-name="open-map"\n              icon="maps:map"\n              id="mapbtn"\n              label="Content map"\n              voice-command="open map"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div data-stop-content>\n                This is a simple list of all the block areas of the page that\n                are clickable to jump through items quickly as well as review\n                some simple overview stats.\n              </div>\n            </hax-tray-button>\n            <simple-popover for="mapbtn" auto hidden>\n              <hax-map></hax-map>\n            </simple-popover>\n            <hax-tray-button\n              mini\n              ?hidden="',
-    '"\n              id="prefbtn"\n              event-name="open-preferences"\n              icon="settings"\n              label="Advanced settings"\n              voice-command="open preferences"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div data-stop-content>\n                Some advanced options for developers and experimental purposes.\n              </div>\n            </hax-tray-button>\n            <simple-popover for="prefbtn" auto hidden>\n              <hax-preferences-dialog></hax-preferences-dialog>\n            </simple-popover>\n          </div>\n        </div>\n        <a11y-collapse-group accordion radio>\n          <slot name="tray-collapse-pre"></slot>\n          <a11y-collapse\n            id="settingscollapse"\n            accordion\n            data-simple-tour-stop\n            part="hax-tray-settingscollapse"\n          >\n            <div slot="heading" data-stop-title>\n              <simple-icon-lite icon="',
-    '"></simple-icon-lite>\n              ',
-    '\n            </div>\n            <div slot="tour" data-stop-content>\n              Settings panel changes contextually based on the item you are\n              currently working on. If you select a paragraph in the page, it\n              will change to a P tag and show settings specific to that element.\n              Same for video-player\'s, meme\'s, images, tables; litereally\n              anything!\n            </div>\n            <div slot="content">\n              <simple-fields\n                id="settingsform"\n                disable-responsive\n              ></simple-fields>\n            </div>\n          </a11y-collapse>\n          <a11y-collapse\n            id="addcollapse"\n            accordion\n            data-simple-tour-stop\n            @expand="',
-    '"\n          >\n            <div slot="heading" data-stop-title>\n              <simple-icon-lite icon="hax:add"></simple-icon-lite> Add Content\n            </div>\n            <div slot="tour" data-stop-content>\n              When you want to add any content to the page from text, to images,\n              to anything more advanced; you can always find items to add under\n              the Add content menu. Click to expand, then either drag and drop\n              items into the page or click and have them placed near whatever\n              you are actively working on.\n            </div>\n            <div slot="content">\n              <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>\n              <h5>Templates</h5>\n              <hax-stax-browser id="staxbrowser"></hax-stax-browser>\n            </div>\n          </a11y-collapse>\n          <a11y-collapse id="searchapps" accordion data-simple-tour-stop>\n            <div slot="heading" data-stop-title>\n              <simple-icon-lite icon="hax:search-clear"></simple-icon-lite>\n              Media browser\n            </div>\n            <div slot="tour" data-stop-content>\n              Search for media and content anywhere that your copy of HAX has\n              access to. Pick what to search, perform the search and then click\n              or drag the item into the contnet.\n            </div>\n            <div slot="content">\n              <hax-tray-upload></hax-tray-upload>\n              <hax-app-browser id="appbrowser"></hax-app-browser>\n            </div>\n          </a11y-collapse>\n          <slot name="tray-collapse-post"></slot>\n        </a11y-collapse-group>\n      </div>\n    ',
+    '\n      <div class="wrapper" part="hax-tray-wrapper">\n        <hax-toolbar class="quick-buttons collapse-menu ">\n          <div class="ops group">\n            ',
+    '\n          </div>\n          <div class="group">\n            <hax-tray-button\n              icon="icons:undo"\n              ?disabled="',
+    '"\n              label="Undo previous action"\n              event-name="undo"\n              voice-command="undo"\n              class="hide-small"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Undo the previous operation in the content, whether typing or\n                adding a widget.\n              </div>\n            </hax-tray-button>\n            <hax-tray-button\n              icon="icons:redo"\n              ?disabled="',
+    '"\n              label="Redo previous action"\n              event-name="redo"\n              voice-command="redo"\n              class="hide-small"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Redo the last action that you hit Undo on.\n              </div>\n            </hax-tray-button>\n          </div>\n          <div class="group collapse-menu ">\n            <slot name="tray-buttons-pre"></slot>\n            <hax-context-item-menu label="Position" icon="av:web" direction="left">\n              <hax-context-item-menu-li slot="menuitem">\n                  <hax-tray-button\n                    role="menuitem"\n                    voice-command="toggle menu"\n                    id="toggle-tray-size"\n                    event-name="toggle-tray-size"\n                    label="',
+    '"\n                    data-simple-tour-stop\n                  >\n                    <div data-stop-title>Menu placement</div>\n                    <div data-stop-content>Expand or collapse the menu visually.</div>\n                  </hax-tray-button>\n              </hax-context-item-menu-li>\n              <hax-context-item-menu-li slot="menuitem">\n                <hax-tray-button\n                  voice-command="toggle alignment"\n                  id="toggle-element-align"\n                  event-name="toggle-element-align"\n                  label="',
+    '"\n                  data-simple-tour-stop\n                >\n                <div data-stop-title>Menu alignment</div>\n                <div data-stop-content>\n                  Change which side of the screen the menu is affixed to visually.\n                </div>\n              </hax-tray-button>\n              </hax-context-item-menu-li>\n            </hax-context-item-menu>\n          </div>\n          <div class="group">\n            <hax-tray-button\n              id="exportbtn"\n              icon="code"\n              label="View page source"\n              voice-command="view (page) source"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div data-stop-content>\n                Every change you make in HAX is ultimately writing HTML. Know\n                HTML? Awesome, pop open the source view and make any changes you\n                like. HTML is always behind the scenes ensuring that content is\n                portable, well formatted and easy to read.\n              </div>\n            </hax-tray-button>\n          </div>\n          <div class="group">\n            <hax-tray-button\n              event-name="start-tour"\n              icon="help"\n              label="Take a tour"\n              voice-command="start tour"\n              tooltip-direction="left"\n            ></hax-tray-button>\n          </div>\n        </hax-toolbar>\n        <hax-toolbar class="quick-buttons">\n          <div class="group">\n            <hax-tray-button\n              event-name="content-add"\n              icon="add-box" \n              id="content-add" \n              label="Add Content"\n              voice-command="add content"\n              data-simple-tour-stop\n              data-stop-title="label"\n              controls="tray-detail"\n              toggles\n              ?toggled="',
+    '"\n            >\n              <div slot="tour" data-stop-content>\n                When you want to add any content to the page from text, to images,\n                to anything more advanced; you can always find items to add under\n                the Add content menu. Click to expand, then either drag and drop\n                items into the page or click and have them placed near whatever\n                you are actively working on.\n              </div>\n            </hax-tray-button>\n            <hax-tray-button\n              event-name="content-edit"\n              icon="build" \n              id="content-edit" \n              label="',
+    '"\n              ?disabled="',
+    '"\n              voice-command="(modify)(configure)(edit) selected"\n              data-simple-tour-stop\n              data-stop-title="label"\n              controls="tray-detail"\n              show-text-label\n              tooltip="Modify Selected ',
+    '"\n              toggles\n              ?toggled="',
+    '"\n            >\n              <div slot="tour" data-stop-content>\n                When you want to add any content to the page from text, to images,\n                to anything more advanced; you can always find items to add under\n                the Add content menu. Click to expand, then either drag and drop\n                items into the page or click and have them placed near whatever\n                you are actively working on.\n              </div>\n            </hax-tray-button>\n            <hax-tray-button\n              event-name="media-search"\n              icon="hax:search-clear" \n              id="media-search" \n              label="Search Media"\n              voice-command="search media"\n              data-simple-tour-stop\n              data-stop-title="label"\n              controls="tray-detail"\n              toggles\n              ?toggled="',
+    '"\n            >\n              <div slot="tour" data-stop-content>\n                Search for media and content anywhere that your copy of HAX has\n                access to. Pick what to search, perform the search and then click\n                or drag the item into the contnet.\n              </div>\n            </hax-tray-button>\n          </div>\n          <div class="group">\n            <hax-tray-button\n              event-name="content-map"\n              icon="maps:map"\n              id="content-map"\n              label="Content map"\n              voice-command="open map"\n              data-simple-tour-stop\n              data-stop-title="label"\n              controls="tray-detail"\n              toggles\n              ?toggled="',
+    '"\n            >\n              <div data-stop-content>\n                This is a simple list of all the block areas of the page that\n                are clickable to jump through items quickly as well as review\n                some simple overview stats.\n              </div>\n            </hax-tray-button>\n          </div>\n          <div class="group">\n            <hax-tray-button\n              ?hidden="',
+    '"\n              id="advanced-settings"\n              event-name="advanced-settings"\n              icon="settings"\n              label="Advanced Settings"\n              voice-command="open preferences"\n              tooltip-direction="left"\n              data-simple-tour-stop\n              data-stop-title="label"\n              controls="tray-detail"\n              toggles\n              ?toggled="',
+    '"\n            >\n              <div data-stop-content>\n                Some advanced options for developers and experimental purposes.\n              </div>\n            </hax-tray-button>\n          </div>\n        </hax-toolbar>\n        <div id="tray-detail" \n          aria-live="polite" \n          aria-disabled="',
+    '"\n          tabindex="',
+    '"\n          selected-detail="',
+    '">\n          <h4>',
+    '</h4>\n          <hax-preferences-dialog id="advanced-settings-tray" ?hidden="',
+    '"></hax-preferences-dialog>\n          <hax-map controls="content-map-tray" ?hidden="',
+    '"></hax-map>\n          <simple-fields \n            id="settingsform" \n            ?hidden="',
+    '" \n            disable-responsive>\n          </simple-fields>\n          <hax-gizmo-browser id="gizmobrowser" ?hidden="',
+    '"></hax-gizmo-browser>\n          <h5 ?hidden="',
+    '">Templates</h5>\n          <hax-stax-browser id="staxbrowser" ?hidden="',
+    '"></hax-stax-browser>\n          <hax-tray-upload ?hidden="',
+    '"></hax-tray-upload>\n          <hax-app-browser id="appbrowser" ?hidden="',
+    '"></hax-app-browser>\n        </div>\n      </div>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -405,8 +415,8 @@ var HaxTray =
       _this.canUndo = false;
       _this.canRedo = false;
       _this.elementAlign = "right";
-      _this.activeTagName = "Select an element to configure";
-      _this.activeTagIcon = "icons:settings";
+      _this.trayDetail = "content-edit";
+      _this.activeTagName = "";
       _this.traySizeIcon = "hax:arrow-expand-right";
       _this.__setup = false;
       _this.__tipText = "Edit";
@@ -443,7 +453,7 @@ var HaxTray =
         {
           key: "_expandSettingsPanel",
           value: function _expandSettingsPanel(e) {
-            this.shadowRoot.querySelector("#settingscollapse").expand();
+            this.shadowRoot.querySelector("#content-edit").click();
           },
         },
         {
@@ -485,15 +495,34 @@ var HaxTray =
                     this._clickSaveButton,
                     this.__tipText
                   ),
-              this.traySizeIcon,
-              this.traySizeText,
-              this.menuAlignName,
               !this.canUndo,
               !this.canRedo,
-              this.hidePreferencesButton,
-              this.activeTagIcon,
+              this.collpased ? "Expand Menu" : "Collapse Menu",
+              this.elementAlign == "left" ? "Left Menu" : "Right Menu",
+              this.trayDetail === "content-add",
               this.activeTagName,
-              this._refreshAddData
+              !this.activeTagName ||
+                this.activeTagName == "" ||
+                !this.activeNode ||
+                !this.activeNode.tagName,
+              this.activeTagName,
+              this.trayDetail === "content-edit",
+              this.trayDetail === "media-search",
+              this.trayDetail === "content-map",
+              this.hidePreferencesButton,
+              this.trayDetail === "advanced-settings",
+              this.collapsed ? "true" : "false",
+              this.collapsed ? "-1" : "0",
+              this.trayDetail,
+              this.trayLabel || "Modify Selected ".concat(this.activeTagName),
+              this.trayDetail !== "advanced-settings",
+              this.trayDetail !== "content-map",
+              this.trayDetail !== "content-edit",
+              this.trayDetail !== "content-add",
+              this.trayDetail !== "content-add",
+              this.trayDetail !== "content-add",
+              this.trayDetail !== "media-search",
+              this.trayDetail !== "media-search"
             );
           },
         },
@@ -512,7 +541,7 @@ var HaxTray =
         },
         {
           key: "_refreshAddData",
-          value: function _refreshAddData(e) {
+          value: function _refreshAddData() {
             this.shadowRoot
               .querySelector("#gizmobrowser")
               .resetList((0, _mobx.toJS)(_haxStore.HAXStore.gizmoList));
@@ -529,11 +558,11 @@ var HaxTray =
         {
           key: "_processTrayEvent",
           value: function _processTrayEvent(e) {
-            var target = (0, _utils.normalizeEventPath)(e)[0]; // support a simple insert event to bubble up or everything else
+            var target = (0, _utils.normalizeEventPath)(e)[0];
+            console.log("_processTrayEvent", e.detail.eventName); // support a simple insert event to bubble up or everything else
 
             switch (e.detail.eventName) {
               case "insert-stax":
-                this.shadowRoot.querySelector("#settingscollapse").expand();
                 this.dispatchEvent(
                   new CustomEvent("hax-insert-content-array", {
                     bubbles: true,
@@ -584,7 +613,6 @@ var HaxTray =
                   );
                 }
 
-                this.shadowRoot.querySelector("#settingscollapse").expand();
                 this.dispatchEvent(
                   new CustomEvent("hax-insert-content", {
                     bubbles: true,
@@ -595,18 +623,8 @@ var HaxTray =
                 );
                 break;
 
-              case "open-preferences":
-                this.shadowRoot.querySelector(
-                  "simple-popover[for='mapbtn']"
-                ).hidden = true;
-                this.shadowRoot.querySelector(
-                  "simple-popover[for='prefbtn']"
-                ).hidden = !this.shadowRoot.querySelector(
-                  "simple-popover[for='prefbtn']"
-                ).hidden;
-                this.shadowRoot
-                  .querySelector("hax-preferences-dialog")
-                  .reloadPreferencesForm();
+              case "advanced-settings":
+                this.trayDetail = e.detail.eventName;
                 break;
 
               case "toggle-element-align":
@@ -618,16 +636,20 @@ var HaxTray =
                 this.collapsed = !this.collapsed;
                 break;
 
-              case "open-map":
-                this.shadowRoot.querySelector(
-                  "simple-popover[for='prefbtn']"
-                ).hidden = true;
-                this.shadowRoot.querySelector(
-                  "simple-popover[for='mapbtn']"
-                ).hidden = !this.shadowRoot.querySelector(
-                  "simple-popover[for='mapbtn']"
-                ).hidden;
-                this.shadowRoot.querySelector("hax-map").updateHAXMap();
+              case "content-map":
+                this.trayDetail = e.detail.eventName;
+                break;
+
+              case "content-edit":
+                this.trayDetail = e.detail.eventName;
+                break;
+
+              case "content-add":
+                this.trayDetail = e.detail.eventName;
+                break;
+
+              case "media-search":
+                this.trayDetail = e.detail.eventName;
                 break;
 
               case "start-tour":
@@ -726,9 +748,7 @@ var HaxTray =
                   detail: {
                     command:
                       ":name: (collapse)(open)(expand)(toggle) add content (menu)",
-                    context: this.shadowRoot.querySelector(
-                      '#addcollapse div[slot="heading"]'
-                    ),
+                    context: this.shadowRoot.querySelector("#content-add"),
                     callback: "click",
                   },
                 })
@@ -742,7 +762,7 @@ var HaxTray =
                     command:
                       ":name: (collapse)(open)(expand)(toggle) element settings (menu)",
                     context: this.shadowRoot.querySelector(
-                      '#settingscollapse div[slot="heading"]'
+                      "#advanced-settings"
                     ),
                     callback: "click",
                   },
@@ -756,9 +776,7 @@ var HaxTray =
                   detail: {
                     command:
                       ":name: (collapse)(open)(expand)(toggle) search (menu)",
-                    context: this.shadowRoot.querySelector(
-                      '#searchapps div[slot="heading"]'
-                    ),
+                    context: this.shadowRoot.querySelector("#media-search"),
                     callback: "click",
                   },
                 })
@@ -795,87 +813,51 @@ var HaxTray =
                   _this3.shadowRoot.querySelector(".wrapper").style.margin =
                     _this3.offsetMargin;
                 }, 0);
-              } // collaped menu state change
+              } // change tray detail
 
-              if (propName == "collapsed") {
-                if (_this3[propName]) {
-                  _this3.traySizeIcon = "hax:arrow-expand-left";
-                  _this3.traySizeText = "Expand"; // accessibility to disable entering panels that are not visible
+              if (propName == "trayDetail") _this3._updateTrayDetail(oldValue); // collaped menu state change
 
-                  _this3.shadowRoot
-                    .querySelector("a11y-collapse-group")
-                    .setAttribute("aria-disabled", "true");
-
-                  _this3.shadowRoot
-                    .querySelector("a11y-collapse-group")
-                    .setAttribute("tabindex", "-1");
-
-                  _this3._editModeChanged(_this3.editMode);
-                } else {
-                  _this3.traySizeIcon = "hax:arrow-expand-right";
-                  _this3.traySizeText = "Collapse"; // a11y clean up to match state
-
-                  _this3.shadowRoot
-                    .querySelector("a11y-collapse-group")
-                    .removeAttribute("aria-disabled");
-
-                  _this3.shadowRoot
-                    .querySelector("a11y-collapse-group")
-                    .removeAttribute("tabindex");
-                }
-              } //
-
-              if (propName == "elementAlign") {
-                if (_this3[propName] == "left") {
-                  _this3.menuAlignName = "Right align menu";
-                } else {
-                  _this3.menuAlignName = "Left align menu";
-                }
+              if (propName == "collapsed" && _this3[propName]) {
+                _this3._editModeChanged(_this3.editMode);
               } // active Gizmo changed
 
               if (propName == "activeGizmo") {
                 if (_this3.activeGizmo) {
-                  _this3.activeTagName = _this3.activeGizmo.title + " Settings";
-                  _this3.activeTagIcon = _this3.activeGizmo.icon;
+                  _this3.activeTagName = _this3.activeGizmo.title;
+                  console.log(
+                    _this3.activeGizmo,
+                    _this3.activeTagName,
+                    oldValue
+                  );
 
                   if (
-                    !oldValue &&
-                    !_this3.shadowRoot.querySelector("#settingscollapse")
-                      .expanded
+                    (!oldValue || _this3.trayDetail !== "content-edit") &&
+                    _this3.trayDetail !== "content-map"
                   ) {
-                    _this3.shadowRoot
-                      .querySelector('#settingscollapse div[slot="heading"]')
-                      .click();
+                    console.log(
+                      _this3.activeGizmo,
+                      oldValue,
+                      _this3.trayDetail
+                    );
+                    _this3.trayDetail = "content-edit";
                   }
                 } else {
-                  _this3.activeTagName = "Select an element";
-                  _this3.activeTagIcon = "icons:settings";
+                  console.log(_this3.activeGizmo, _this3.trayDetail);
+                  _this3.activeTagName = "";
 
-                  if (
-                    !_this3.shadowRoot.querySelector("#addcollapse").expanded
-                  ) {
-                    _this3.shadowRoot
-                      .querySelector('#addcollapse div[slot="heading"]')
-                      .click();
+                  if (_this3.trayDetail !== "content-add") {
+                    _this3.trayDetail = "content-add";
                   }
                 }
               } // active node changed
 
               if (propName == "activeNode") {
                 if (_this3.activeNode && _this3.activeNode.tagName) {
-                  _this3.shadowRoot.querySelector(
-                    "#settingscollapse"
-                  ).disabled = false;
-
                   if (_this3.editMode) {
                     _haxStore.HAXStore.refreshActiveNodeForm();
                   }
                 } else {
-                  _this3.activeTagName = "Select an element to configure";
-                  _this3.activeTagIcon = "icons:settings";
-                  _this3.shadowRoot.querySelector(
-                    "#settingscollapse"
-                  ).disabled = true;
+                  _this3.activeTagName = "";
                 }
               }
             });
@@ -1170,6 +1152,38 @@ var HaxTray =
             return Object.keys(obj).map(function (key) {
               return obj[key];
             });
+          },
+        },
+        {
+          key: "_updateTrayDetail",
+          value: function _updateTrayDetail(oldValue) {
+            console.log("_updateTrayDetail", oldValue, this.trayDetail);
+
+            if (this.trayDetail == "content-add") {
+              this.trayLabel = "Add Content";
+
+              this._refreshAddData();
+            } else if (this.trayDetail == "content-map") {
+              this.trayLabel = "Content Map";
+              this.shadowRoot.querySelector("hax-map").updateHAXMap();
+            } else if (this.trayDetail == "advanced-settings") {
+              this.trayLabel = "Advanced Settings";
+              this.shadowRoot
+                .querySelector("hax-preferences-dialog")
+                .reloadPreferencesForm();
+            } else if (
+              this.trayDetail == "content-edit" &&
+              (!this.activeTagName ||
+                this.activeTagName == "" ||
+                !this.activeNode ||
+                !this.activeNode.tagName)
+            ) {
+              this.trayDetail = "content-add";
+            } else if (!this.trayDetail || this.trayDetail == "") {
+              this.trayDetail = "content-edit";
+            } else {
+              this.trayLabel = undefined;
+            }
           },
           /**
            * Notice change in values from below
@@ -1476,7 +1490,12 @@ var HaxTray =
         {
           key: "styles",
           get: function get() {
-            return [(0, _litElement.css)(_templateObject4())];
+            return [].concat(
+              _toConsumableArray(
+                _get(_getPrototypeOf(HaxTray), "styles", this) || []
+              ),
+              [(0, _litElement.css)(_templateObject4())]
+            );
           },
         },
         {
@@ -1489,9 +1508,6 @@ var HaxTray =
                 __tipText: {
                   type: String,
                 },
-                menuAlignName: {
-                  type: String,
-                },
                 offsetMargin: {
                   type: String,
                   attribute: "offset-margin",
@@ -1501,9 +1517,6 @@ var HaxTray =
                   reflect: true,
                 },
                 traySizeIcon: {
-                  type: String,
-                },
-                traySizeText: {
                   type: String,
                 },
 
@@ -1588,11 +1601,8 @@ var HaxTray =
                 },
 
                 /**
-                 * Tag name / what to display based on active element
+                 * Element name / what to display based on active element
                  */
-                activeTagIcon: {
-                  type: String,
-                },
                 activeTagName: {
                   type: String,
                 },
@@ -1607,6 +1617,20 @@ var HaxTray =
                   type: Boolean,
                   reflect: true,
                   attribute: "edit-mode",
+                },
+
+                /**
+                 * id of toggled section in tray
+                 */
+                trayDetail: {
+                  type: String,
+                },
+
+                /**
+                 * heading of toggled section in tray
+                 */
+                trayLabel: {
+                  type: String,
                 },
               }
             );

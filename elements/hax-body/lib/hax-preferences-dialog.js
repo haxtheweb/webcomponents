@@ -42,10 +42,8 @@ class HaxPreferencesDialog extends LitElement {
           padding: 16px;
         }
         #link {
-          color: #81a3a9;
           font-size: 18px;
-          padding: 16px;
-          font-style: italic;
+          margin: 0 auto;
         }
         simple-icon-button {
           float: right;
@@ -91,14 +89,6 @@ class HaxPreferencesDialog extends LitElement {
   }
   render() {
     return html`
-      <h3 class="title">
-        <simple-icon-lite icon="hax:settings"></simple-icon-lite>
-        ${this.title}
-        <simple-icon-button
-          icon="close"
-          @click="${this.closeBtn}"
-        ></simple-icon-button>
-      </h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <simple-fields
           id="settingsform"

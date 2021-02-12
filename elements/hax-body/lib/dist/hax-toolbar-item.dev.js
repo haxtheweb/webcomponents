@@ -35,7 +35,7 @@ function _typeof(obj) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    "\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          :host([danger]) {\n            --simple-toolbar-button-hover-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n            --simple-toolbar-button-hover-border-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n          }\n          :host([feature]){\n            --simple-toolbar-button-bg: var(--hax-toolbar-button-feature-color, #009dc7);\n            --simple-toolbar-button-hover-bg: var(--hax-toolbar-button-feature-color, #009dc7);\n            --simple-toolbar-button-border-color: var(--hax-toolbar-button-feature-color, #009dc7);\n            --simple-toolbar-button-hover-border-color: var(--hax-toolbar-button-feature-color, #009dc7);\n            --simple-toolbar-button-color: #eee;\n            --simple-toolbar-button-hover-color: #fff;\n          }\n        ",
+    "\n          :host {\n            --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          }\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          :host([danger]) {\n            --simple-toolbar-button-hover-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n            --simple-toolbar-button-hover-border-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n          }\n          :host([feature]) {\n            --simple-toolbar-button-bg: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-hover-bg: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-border-color: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-hover-border-color: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-color: #eee;\n            --simple-toolbar-button-hover-color: #fff;\n          }\n        ",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -253,7 +253,6 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
           this,
           _getPrototypeOf(_class).call(this)
         );
-        _this.dark = false;
         _this.danger = false;
         _this.feature = false;
         _this.menu = false;
@@ -336,7 +335,7 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
               return (0, _litElement.html)(
                 _templateObject3(),
                 !this.currentTooltip && !this.currentLabel,
-                this.tooltipDirection,
+                this.tooltipDirection || "bottom",
                 this.currentTooltip || this.currentLabel
               );
             },
@@ -348,16 +347,27 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
             get: function get() {
               return {
                 /**
-                 * Inverted display mode
+                 * red warning
                  */
-                dark: {
-                  type: Boolean,
-                  reflect: true,
-                },
                 danger: {
                   type: Boolean,
                   reflect: true,
                 },
+
+                /**
+                 * Name of the event to bubble up as being tapped.
+                 * This can be used to tell other elements what was
+                 * clicked so it can take action appropriately.
+                 */
+                eventName: {
+                  type: String,
+                  reflect: true,
+                  attribute: "event-name",
+                },
+
+                /**
+                 * Inverted display mode
+                 */
                 feature: {
                   type: Boolean,
                   reflect: true,
@@ -375,14 +385,6 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
                  */
                 tooltip: {
                   type: String,
-                },
-
-                /**
-                 * Direction that the tooltip should flow
-                 */
-                tooltipDirection: {
-                  type: String,
-                  attribute: "tooltip-direction",
                 },
               };
             },

@@ -68,7 +68,6 @@ class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
     this.selectedValue = 0;
     this.action = false;
     this.direction = "top";
-    this.icon = "editor:text-fields";
     this.label = "";
   }
 
@@ -83,6 +82,7 @@ class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
         <simple-icon-lite
           icon="${this.icon}"
           aria-hidden="true"
+          ?hidden=${!this.icon}
         ></simple-icon-lite>
         <span class="${!this.icon || this.showTextLabel ? "label" : "sr-only"}"
           >${this.label}</span

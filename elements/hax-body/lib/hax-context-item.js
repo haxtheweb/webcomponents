@@ -50,16 +50,6 @@ class HaxContextItem extends HaxToolbarItemBehaviors(LitElement) {
         reflect: true,
       },
       /**
-       * Name of the event to bubble up as being tapped.
-       * This can be used to tell other elements what was
-       * clicked so it can take action appropriately.
-       */
-      eventName: {
-        type: String,
-        reflect: true,
-        attribute: "event-name",
-      },
-      /**
        * Method of input to display when activated. This is
        * only used when triggered as part of haxProperties
        */

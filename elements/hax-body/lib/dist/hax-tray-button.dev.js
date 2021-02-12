@@ -3,15 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.HaxContextItem = void 0;
+exports.HAXTrayButton = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
+var _simpleColors = require("@lrnwebcomponents/simple-colors/simple-colors.js");
+
+require("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+
 var _haxToolbarItem = require("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
-
-require("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
-
-var _haxStore = require("./hax-store.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -86,22 +86,6 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
@@ -152,6 +136,22 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function");
@@ -173,56 +173,45 @@ function _setPrototypeOf(o, p) {
 }
 
 /**
- * `hax-context-item`
- * A single button in the hax context menu for consistency.
- *
- * @element hax-context-item
- * @extends HaxToolbarItemBehaviors
- *
- * @microcopy - the mental model for this element
- * - context - menu in the page the user can select an item from, this being 1 option in that list
- * - button - an item that expresses what interaction you will have with the content.
+ * `hax-tray-button`
+ * `A button in the tray`
  */
-var HaxContextItem =
+var HAXTrayButton =
   /*#__PURE__*/
   (function (_HaxToolbarItemBehavi) {
-    _inherits(HaxContextItem, _HaxToolbarItemBehavi);
+    _inherits(HAXTrayButton, _HaxToolbarItemBehavi);
 
-    function HaxContextItem() {
+    _createClass(HAXTrayButton, null, [
+      {
+        key: "tag",
+        get: function get() {
+          return "hax-tray-button";
+        },
+      },
+    ]);
+
+    function HAXTrayButton() {
       var _this;
 
-      _classCallCheck(this, HaxContextItem);
+      _classCallCheck(this, HAXTrayButton);
 
       _this = _possibleConstructorReturn(
         this,
-        _getPrototypeOf(HaxContextItem).call(this)
+        _getPrototypeOf(HAXTrayButton).call(this)
       );
-      _this.haxUIElement = true;
-      _this.action = false;
-      _this.more = false;
-      _this.eventName = "button";
-      _this.inputMethod = null;
-      _this.propertyToBind = null;
-      _this.slotToBind = null;
-      _this.value = "";
+      _this.eventData = null;
       return _this;
     }
 
     _createClass(
-      HaxContextItem,
+      HAXTrayButton,
       [
         {
-          key: "_handleMousedown",
+          key: "_voiceEvent",
+          value: function _voiceEvent(e) {
+            this._handleClick(e);
 
-          /**
-           * Store the selection object. This helps fix issues with safari
-           * and holding focus on non-text elements actually stealing
-           * the selection priority, making it impossible to know what's
-           * been selected if clicking a button to try and apply something to.
-           */
-          value: function _handleMousedown(e) {
-            if (!this.disabled)
-              _haxStore.HAXStore._tmpSelection = _haxStore.HAXStore.getSelection();
+            this.click();
           },
           /**
            * Fire an event that includes the eventName of what was just pressed.
@@ -231,105 +220,91 @@ var HaxContextItem =
         {
           key: "_handleClick",
           value: function _handleClick(e) {
-            if (!this.disabled) {
-              this.dispatchEvent(
-                new CustomEvent("hax-context-item-selected", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: {
-                    target: this,
-                    eventName: this.eventName,
-                    value: this.value,
-                  },
-                })
-              );
+            console.log("hax-tray-button-click", e, {
+              eventName: this.eventName,
+              index: this.index,
+              value: this.eventData,
+            });
+            this.dispatchEvent(
+              new CustomEvent("hax-tray-button-click", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: {
+                  eventName: this.eventName,
+                  index: this.index,
+                  value: this.eventData,
+                },
+              })
+            );
+          },
+          /**
+           * LitElement life cycle - properties changed
+           */
+        },
+        {
+          key: "updated",
+          value: function updated(changedProperties) {
+            var _this2 = this;
+
+            if (
+              _get(_getPrototypeOf(HAXTrayButton.prototype), "updated", this)
+            ) {
+              _get(
+                _getPrototypeOf(HAXTrayButton.prototype),
+                "updated",
+                this
+              ).call(this, changedProperties);
             }
+
+            changedProperties.forEach(function (oldValue, propName) {
+              if (propName == "voiceCommand") {
+                _this2.dispatchEvent(
+                  new CustomEvent("hax-add-voice-command", {
+                    bubbles: true,
+                    composed: true,
+                    cancelable: false,
+                    detail: {
+                      command: ":name: " + _this2[propName],
+                      context: _this2,
+                      callback: "_voiceEvent",
+                    },
+                  })
+                );
+              }
+            });
           },
         },
       ],
       [
         {
-          key: "tag",
-          get: function get() {
-            return "hax-context-item";
-          },
-        },
-        {
           key: "properties",
           get: function get() {
             return _objectSpread(
               {},
-              _get(_getPrototypeOf(HaxContextItem), "properties", this),
+              _get(_getPrototypeOf(HAXTrayButton), "properties", this),
               {
                 /**
-                 * more implies there's an action after pressing the button
-                 * so it'll put a visual indicator as such
+                 * Voice command to append for things that support data-voicecommand.
                  */
-                more: {
+                voiceCommand: {
+                  type: String,
+                  attribute: "voice-command",
+                },
+                wide: {
                   type: Boolean,
-                },
-                action: {
-                  type: Boolean,
-                },
-
-                /**
-                 * Label for the button.
-                 */
-                label: {
-                  type: String,
                   reflect: true,
                 },
 
                 /**
-                 * Method of input to display when activated. This is
-                 * only used when triggered as part of haxProperties
+                 * Index position in the original list of imports
                  */
-                inputMethod: {
-                  type: String,
-                  reflect: true,
-                  attribute: "input-method",
+                index: {
+                  type: Number,
                 },
-
-                /**
-                 * Optional slot to bind this value to.
-                 */
-                propertyToBind: {
+                eventData: {
                   type: String,
-                  reflect: true,
-                  attribute: "property-to-bind",
-                },
-
-                /**
-                 * Optional slot to bind this value to.
-                 */
-                slotToBind: {
-                  type: String,
-                  reflect: true,
-                  attribute: "slot-to-bind",
-                },
-
-                /**
-                 * Optional description for this item.
-                 */
-                description: {
-                  type: String,
-                  reflect: true,
-                },
-
-                /**
-                 * Is this button concidered a primary interaction
-                 */
-                default: {
-                  type: Boolean,
-                },
-
-                /**
-                 * an optional value to send along in the press. Allows for
-                 * reusing events more easily
-                 */
-                value: {
-                  type: String,
+                  attribute: "event-data",
                 },
               }
             );
@@ -338,8 +313,8 @@ var HaxContextItem =
       ]
     );
 
-    return HaxContextItem;
+    return HAXTrayButton;
   })((0, _haxToolbarItem.HaxToolbarItemBehaviors)(_litElement.LitElement));
 
-exports.HaxContextItem = HaxContextItem;
-window.customElements.define(HaxContextItem.tag, HaxContextItem);
+exports.HAXTrayButton = HAXTrayButton;
+customElements.define(HAXTrayButton.tag, HAXTrayButton);

@@ -22,13 +22,47 @@ class HaxAppBrowser extends LitElement {
         :host *[hidden] {
           display: none;
         }
-        .toolbar-inner {
-          display: block;
-          padding: 0;
-          width: 100%;
+
+        .item-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          flex: 0 1 auto;
+          overflow-y: auto;
         }
         .item-wrapper {
-          text-align: center;
+          max-width: 100%;
+          display: grid;
+          grid-gap: var(--hax-tray-margin-sm, 4px);
+          grid-template-columns: repeat(
+            auto-fill,
+            minmax(
+              calc(25% - var(--hax-tray-margin-sm, 4px)),
+              calc(33.3333% - var(--hax-tray-margin-sm, 4px))
+            )
+          );
+          grid-auto-rows: minmax(40px, auto);
+        }
+        hax-tray-button {
+          flex: 1 1 auto;
+          font-size: 80%;
+          --simple-toolbar-button-flex: 1 1 100%;
+          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
+          --simple-toolbar-button-border-color: var(
+            --hax-toolbar-border-color,
+            #ddd
+          );
+          --simple-toolbar-button-hover-color: var(
+            --tray-detail-accent-color,
+            #000
+          );
+          --simple-toolbar-button-hover-border-color: var(
+            --tray-detail-accent-color,
+            #000
+          );
+          --simple-toolbar-button-hover-border-color: var(
+            --tray-detail-accent-color,
+            #000
+          );
         }
       `,
     ];
@@ -59,7 +93,8 @@ class HaxAppBrowser extends LitElement {
         ${this.appList.map(
           (app) => html`
             <hax-tray-button
-              dark-bg
+              icon-position="top"
+              show-text-label
               index="${app.index}"
               label="${app.details.title}"
               icon="${app.details.icon}"

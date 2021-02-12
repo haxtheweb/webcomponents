@@ -11,7 +11,6 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
     }
     constructor() {
       super();
-      this.dark = false;
       this.danger = false;
       this.feature = false;
       this.menu = false;
@@ -19,16 +18,25 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
     static get properties() {
       return {
         /**
-         * Inverted display mode
+         * red warning
          */
-        dark: {
-          type: Boolean,
-          reflect: true,
-        },
         danger: {
           type: Boolean,
           reflect: true,
         },
+        /**
+         * Name of the event to bubble up as being tapped.
+         * This can be used to tell other elements what was
+         * clicked so it can take action appropriately.
+         */
+        eventName: {
+          type: String,
+          reflect: true,
+          attribute: "event-name",
+        },
+        /**
+         * Inverted display mode
+         */
         feature: {
           type: Boolean,
           reflect: true,
@@ -44,13 +52,6 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
          */
         tooltip: {
           type: String,
-        },
-        /**
-         * Direction that the tooltip should flow
-         */
-        tooltipDirection: {
-          type: String,
-          attribute: "tooltip-direction",
         },
       };
     }
@@ -112,7 +113,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
         id="tooltip"
         for="button"
         ?hidden="${!this.currentTooltip && !this.currentLabel}"
-        position="${this.tooltipDirection}"
+        position="${this.tooltipDirection || "bottom"}"
         >${this.currentTooltip || this.currentLabel}</simple-tooltip
       >`;
     }
@@ -120,6 +121,9 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
       return [
         ...super.styles,
         css`
+          :host {
+            --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
+          }
           :host([disabled]) {
             pointer-events: none;
           }
