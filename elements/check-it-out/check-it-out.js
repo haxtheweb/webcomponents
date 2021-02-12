@@ -3,9 +3,9 @@
  * @license MIT, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
-import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 
 /**
  * `check-it-out`
@@ -141,6 +141,11 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
         type: String,
         attribute: "file-path",
       },
+      // modal header
+      modalTitle: {
+        type: String,
+        attribute: "modal-title",
+      },
       // hides stackblitz file explorer pane
       hideExplorer: {
         type: Boolean,
@@ -154,6 +159,10 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       view: {
         type: String,
       },
+      modal: {
+        type: Boolean,
+        reflect: true,
+      },
     };
   }
 
@@ -161,7 +170,12 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
     return [
       css`
         :host {
-          display: inline-flex;
+          display: block;
+          --check-it-out-content-width: var(
+            --check-it-out-container-width,
+            800px
+          );
+          --check-it-out-content-height: 500px;
         }
 
         .container {
@@ -175,7 +189,7 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
         }
 
         .check-it-out-btn {
-          display: block;
+          display: inline-flex;
           background-color: transparent;
           font-size: var(--check-it-out-modal-button-font-size, 18px);
           border: 2px solid var(--check-it-out-button-border-color, #000);
@@ -183,8 +197,11 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
           padding: 10px 25px;
         }
 
+        .check-it-out-btn:active,
+        .check-it-out-btn:focus,
         .check-it-out-btn:hover {
-          border: 3px solid var(--check-it-out-button-border-color, #000);
+          outline: 2px dashed var(--check-it-out-button-border-color, #000);
+          outline-offset: 2px;
         }
 
         :host([checked-out]) .check-it-out-btn {
@@ -236,15 +253,26 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
           right: 5px;
           transform: rotate(45deg);
         }
+        simple-modal-template[modal-id="m1"] {
+          --simple-modal-width: var(--check-it-out-modal-width, 80vw);
+          --simple-modal-height: var(--check-it-out-modal-height, 55vh);
+          --simple-modal-min-width: var(--check-it-out-modal-width, 80vw);
+          --simple-modal-min-height: var(--check-it-out-modal-height, 55vh);
+        }
 
         .iframe-container {
-          width: var(--check-it-out-iframe-width, 800px);
-          height: var(--check-it-out-iframe-height, 500px);
+          width: var(--check-it-out-content-width, 800px);
+          height: var(--check-it-out-content-height, 500px);
         }
 
         .video-player {
-          width: var(--check-it-out-video-width, 800px);
-          height: var(--check-it-out-video-height, 500px);
+          width: var(--check-it-out-content-width, 800px);
+          height: var(--check-it-out-content-height, 500px);
+        }
+        iframe-loader {
+          text-align: center;
+          display: block;
+          width: var(--check-it-out-content-width, 800px);
         }
       `,
     ];
@@ -261,43 +289,92 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
     this.icon = this.icon ? this.icon : this.typeIconObj[this.type];
     return html` ${this.elementVisible
       ? html`
-          <button class="check-it-out-btn" @click="${this._handleClick}">
+          <button
+            class="check-it-out-btn"
+            @click="${this._handleClick}"
+            controls="m1"
+          >
             <simple-icon-lite icon="${this.icon}"> </simple-icon-lite>
             ${this.label}
             <slot></slot>
           </button>
-          ${["code", "pdf"].includes(this.type)
-            ? html`<div class="container">
-                <iframe-loader style="text-align: center;">
-                  <iframe
-                    class="iframe-container"
-                    src=${this.__computedSource}
-                    loading="lazy"
-                    style="width: 800px; height: 500px;"
-                  ></iframe>
-                  <button
-                    class="close-btn"
-                    @click="${this._handleClick}"
-                  ></button>
-                </iframe-loader>
-              </div>`
-            : html`
-                <div class="container">
-                  <video-player
-                    class="video-player"
-                    source=${this.__computedSource}
-                  >
-                  </video-player>
-                  <button
-                    class="close-btn"
-                    @click="${this._handleClick}"
-                  ></button>
-                </div>
-              `}
+          ${this.modal
+            ? html`
+                <simple-modal-template
+                  title="${this.modalTitle}"
+                  @click="${this._handleClick}"
+                  modal-id="m1"
+                >
+                  <div slot="content">
+                    <!-- bandaid and a terrible one -->
+                    <style>
+                      simple-modal .container {
+                        display: block;
+                        position: relative;
+                        width: var(--check-it-out-container-width, 70vw);
+                      }
+                      simple-modal .container .iframe-container {
+                        width: var(--check-it-out-content-width, 70vw);
+                        height: var(--check-it-out-content-height, 45vh);
+                      }
+
+                      simple-modal .container .video-player {
+                        width: var(--check-it-out-content-width, 70vw);
+                        height: var(--check-it-out-content-height, 45vh);
+                      }
+                      simple-modal .container iframe-loader {
+                        text-align: center;
+                        display: block;
+                        width: var(--check-it-out-content-width, 45vh);
+                      }
+                    </style>
+                    ${this.renderLogic()}
+                  </div>
+                </simple-modal-template>
+              `
+            : html` ${this.renderLogic()} `}
         `
       : ``}`;
   }
-
+  renderLogic() {
+    return html`
+      ${["code", "pdf"].includes(this.type)
+        ? html`<div class="container">
+            <iframe-loader>
+              <iframe
+                class="iframe-container"
+                src=${this.__computedSource}
+                loading="lazy"
+              ></iframe>
+              ${!this.modal
+                ? html`
+                    <button
+                      class="close-btn"
+                      @click="${this._handleClick}"
+                    ></button>
+                  `
+                : ``}
+            </iframe-loader>
+          </div>`
+        : html`
+            <div class="container">
+              <video-player
+                class="video-player"
+                source=${this.__computedSource}
+              >
+              </video-player>
+              ${!this.modal
+                ? html`
+                    <button
+                      class="close-btn"
+                      @click="${this._handleClick}"
+                    ></button>
+                  `
+                : ``}
+            </div>
+          `}
+    `;
+  }
   /**
    * HTMLElement
    */
@@ -317,7 +394,7 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
   }
 
   _handleClick() {
-    if (!this._haxstate) {
+    if (!this._haxstate && !this.modal) {
       if (this.checkedOut) {
         this.checkedOut = false;
       } else {
@@ -353,13 +430,11 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       sourceStr.includes("youtube.com")
     ) {
       this.type = "video";
-      import("@lrnwebcomponents/video-player/video-player");
+      import("@lrnwebcomponents/video-player/video-player.js");
     } else if (sourceStr.endsWith(".pdf")) {
       this.type = "pdf";
-      import("@lrnwebcomponents/iframe-loader/iframe-loader");
     } else if (sourceStr.includes("stackblitz.com")) {
       this.type = "code";
-      import("@lrnwebcomponents/iframe-loader/iframe-loader");
       if (!sourceStr.includes("embed=1")) {
         if (sourceStr.includes("?")) {
           sourceStr += "&embed=1";
@@ -370,10 +445,12 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       sourceStr = this.checkStackblitzProps(sourceStr);
     } else if (sourceStr.includes("codepen.io")) {
       this.type = "code";
-      import("@lrnwebcomponents/iframe-loader/iframe-loader");
       if (!sourceStr.includes("embed")) {
         sourceStr = sourceStr.replace("/pen/", "/embed/");
       }
+    }
+    if (this.type != "video") {
+      import("@lrnwebcomponents/iframe-loader/iframe-loader.js");
     }
     return sourceStr;
   }
@@ -403,6 +480,20 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      // import modal if we need it only when we actually leverage it
+      if (propName === "modal" && this[propName]) {
+        import(
+          "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js"
+        ).then(() => {
+          if (this.shadowRoot) {
+            this.shadowRoot
+              .querySelector('[modal-id="m1"]')
+              .associateEvents(
+                this.shadowRoot.querySelector('[controls="m1"]')
+              );
+          }
+        });
+      }
       if (propName === "source" && this[propName]) {
         clearTimeout(this.__debounce);
         this.__debounce = setTimeout(() => {
