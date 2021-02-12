@@ -53,6 +53,15 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         },
 
         /**
+         * Optionally place icon at top, bottom, or right of label
+         */
+        iconPosition: {
+          type: String,
+          attribute: "icon-position",
+          reflect: true,
+        },
+
+        /**
          * Optional space-separated list of shortcut keys
          */
         shortcutKeys: {
@@ -103,6 +112,14 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         toggled: {
           attribute: "toggled",
           type: Boolean,
+        },
+        /**
+         * Direction that the tooltip should flow
+         */
+        tooltipDirection: {
+          type: String,
+          attribute: "tooltip-direction",
+          reflect: true,
         },
       };
     }
@@ -223,7 +240,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * whether or not the button is toggled
      */
     _defaultOrToggled(toggledOff, toggledOn) {
-      return !!toggledOn && this.isToggled ? toggledOn : toggledOff;
+      return (!!toggledOn || toggledOn == "") && this.isToggled
+        ? toggledOn
+        : toggledOff;
     }
     /**
      * handles button click
@@ -242,6 +261,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
 
     toggle() {
       if (this.toggles) this.toggled = !this.toggled;
+    }
+
+    click(e) {
+      this._handleClick(e);
     }
     /**
      * updates toolbar buttonregistry as needed
@@ -285,7 +308,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get tooltipTemplate() {
-      return html`<simple-tooltip id="tooltip" for="button"
+      return html`<simple-tooltip
+        id="tooltip"
+        for="button"
+        position="${this.tooltipDirection || "bottom"}"
         >${this.currentLabel}</simple-tooltip
       >`;
     }
@@ -336,6 +362,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         css`
           #label {
             padding: 0 var(--simple-toolbar-button-label-padding, 2px);
+            white-space: var(--simple-toolbar-button-label-white-space, normal);
           }
           .offscreen {
             position: absolute;
@@ -435,10 +462,26 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             border-style: solid;
             text-transform: unset;
             display: flex;
-            flex: 0 1 auto;
+            flex: var(--simple-toolbar-button-flex, 0 0 auto);
             white-space: nowrap;
             align-items: center;
             transition: all 0.5s;
+            width: 100%;
+            height: 100%;
+            justify-content: space-around;
+          }
+          :host([icon-position="top"]) #button,
+          :host([icon-position="bottom"]) #button {
+            justify-content: space-evenly;
+          }
+          :host([icon-position="top"]) #button {
+            flex-direction: column;
+          }
+          :host([icon-position="bottom"]) #button {
+            flex-direction: column-reverse;
+          }
+          :host([icon-position="right"]) #button {
+            flex-direction: row-reverse;
           }
           #button[aria-pressed="true"] {
             color: var(--simple-toolbar-button-toggled-color);
@@ -485,6 +528,7 @@ for styling:
 Custom property | Description | Default
 ----------------|-------------|----------
 --simple-toolbar-button-height | button height | 24px
+--simple-toolbar-button-flex | flex for button in a toolbar | 0 0 auto
 --simple-toolbar-button-min-width | button min-width | --simple-toolbar-button-height
 --simple-toolbar-button-padding | button padding | 0
 --simple-toolbar-button-opacity | button opacity | 1
