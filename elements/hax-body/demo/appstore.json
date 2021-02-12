@@ -1530,6 +1530,8 @@
   ],
   "autoloader": {
     "block-quote": "@lrnwebcomponents/course-design/lib/block-quote.js",
+    "github-preview": "@lrnwebcomponents/github-preview/github-preview.js",
+    "check-it-out": "@lrnwebcomponents/check-it-out/check-it-out.js",
     "ebook-button": "@lrnwebcomponents/course-design/lib/ebook-button.js",
     "worksheet-download": "@lrnwebcomponents/course-design/lib/worksheet-download.js",
     "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
