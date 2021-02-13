@@ -952,9 +952,9 @@
       "slots": []
     },
     {
-      "name": "hax-context-item-menu\n`An icon / button that has support for multiple options via drop down.`",
-      "description": "`hax-context-item-menu`",
-      "jsDoc": "/**\n * `hax-context-item-menu`\n * @customElement hax-context-item-menu\n * `An icon / button that has support for multiple options via drop down.`\n * @microcopy - the mental model for this element\n * - panel - the flyout from left or right side that has elements that can be placed\n * - button - an item that expresses what interaction you will have with the content.\n */",
+      "name": "hax-button-menu\n`An icon / button that has support for multiple options via drop down.`",
+      "description": "`hax-button-menu`",
+      "jsDoc": "/**\n * `hax-button-menu`\n * @customElement hax-button-menu\n * `An icon / button that has support for multiple options via drop down.`\n * @microcopy - the mental model for this element\n * - panel - the flyout from left or right side that has elements that can be placed\n * - button - an item that expresses what interaction you will have with the content.\n */",
       "attributes": [
         {
           "name": "reset-on-select",
