@@ -34,7 +34,7 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
           overflow-y: auto;
         }
         hax-tray-button {
-          font-size: 80%;
+          font-size: 11px !important;
           --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
           --simple-toolbar-button-border-color: var(
             --hax-toolbar-border-color,
@@ -70,7 +70,7 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           aria-controls="filter"
-          label="Filter"
+          label="Filter Content Types"
           type="text"
           auto-validate=""
         ></simple-fields-field>

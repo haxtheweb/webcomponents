@@ -86,7 +86,7 @@ function _templateObject3() {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <div class="toolbar-inner">\n        <simple-fields-field\n          id="inputfilter"\n          @value-changed="',
-    '"\n          aria-controls="filter"\n          label="Filter"\n          type="text"\n          auto-validate=""\n        ></simple-fields-field>\n      </div>\n      <simple-button-grid \n        columns="3" \n        always-expanded\n      >\n        ',
+    '"\n          aria-controls="filter"\n          label="Filter Content Types"\n          type="text"\n          auto-validate=""\n        ></simple-fields-field>\n      </div>\n      <simple-button-grid columns="3" always-expanded>\n        ',
     "\n      </simple-button-grid>\n    ",
   ]);
 
@@ -99,7 +99,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          flex: 0 1 auto;\n          overflow-y: auto;\n        }\n        .toolbar-inner {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          width: 100%;\n          flex: 0 0 auto;\n          overflow-y: auto;\n        }\n        simple-button-grid {\n          overflow-y: auto;\n        }\n        hax-tray-button {\n          font-size: 80%;\n          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          --simple-toolbar-button-border-color: var(--hax-toolbar-border-color, #ddd);\n          --simple-toolbar-button-hover-color: var(--tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(--tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(--tray-detail-accent-color,\n            #000\n          );\n        }\n        simple-fields-field {\n          margin-top: 0;\n        }\n      ",
+    "\n        :host {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          flex: 0 1 auto;\n          overflow-y: auto;\n        }\n        .toolbar-inner {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          width: 100%;\n          flex: 0 0 auto;\n          overflow-y: auto;\n        }\n        simple-button-grid {\n          overflow-y: auto;\n        }\n        hax-tray-button {\n          font-size: 11px!important;\n          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          --simple-toolbar-button-border-color: var(\n            --hax-toolbar-border-color,\n            #ddd\n          );\n          --simple-toolbar-button-hover-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n        }\n        simple-fields-field {\n          margin-top: 0;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {

@@ -7,6 +7,8 @@ exports.HaxStaxBrowser = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
+require("@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -42,7 +44,7 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <simple-button-grid \n        columns="3" \n        rows="1"\n        always-expanded\n      >\n        ',
+    '\n      <simple-button-grid columns="3" rows="1" always-expanded>\n        ',
     "\n      </simple-button-grid>\n    ",
   ]);
 
@@ -55,7 +57,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          flex: 0 0 auto;\n          overflow-y: auto;\n        }\n        simple-button-grid {\n          overflow: auto;\n        }\n        hax-tray-button {\n          font-size: 80%;\n          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          --simple-toolbar-button-border-color: var(--hax-toolbar-border-color, #ddd);\n          --simple-toolbar-button-hover-color: var(--tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(--tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(--tray-detail-accent-color,\n            #000\n          );\n        }\n      ",
+    "\n        :host {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          flex: 0 0 auto;\n          overflow-y: auto;\n        }\n        simple-button-grid {\n          overflow: auto;\n        }\n        hax-tray-button {\n          font-size: 11px!important;\n          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          --simple-toolbar-button-border-color: var(\n            --hax-toolbar-border-color,\n            #ddd\n          );\n          --simple-toolbar-button-hover-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {

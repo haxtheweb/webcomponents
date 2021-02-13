@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 /**
  * `hax-stax-browser`
  * @element hax-stax-browser
@@ -21,7 +22,7 @@ class HaxStaxBrowser extends LitElement {
           overflow: auto;
         }
         hax-tray-button {
-          font-size: 80%;
+          font-size: 11px !important;
           --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
           --simple-toolbar-button-border-color: var(
             --hax-toolbar-border-color,
