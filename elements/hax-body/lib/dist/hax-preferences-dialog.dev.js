@@ -142,7 +142,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          display: block;\n        }\n        .title {\n          position: relative;\n          padding: 16px;\n          outline: 0;\n          font-weight: 600;\n          text-align: left;\n          margin: 0;\n          background-color: var(--hax-color-menu-heading-bg, #eeeeee);\n          color: var(--hax-color-menu-heading-color, black);\n          font-size: 18px;\n          line-height: 18px;\n          font-family: "Noto Serif", serif;\n        }\n        .pref-container {\n          text-align: left;\n          padding: 16px;\n        }\n        #link {\n          font-size: 18px;\n          margin: 0 auto;\n        }\n        simple-icon-button {\n          float: right;\n        }\n      ',
+    '\n        :host {\n          display: block;\n        }\n        .title {\n          position: relative;\n          padding: 16px;\n          outline: 0;\n          font-weight: 600;\n          text-align: left;\n          margin: 0;\n          background-color: var(--hax-color-menu-heading-bg, #eeeeee);\n          color: var(--hax-color-menu-heading-color, black);\n          font-size: 18px;\n          line-height: 18px;\n          font-family: "Noto Serif", serif;\n        }\n        .pref-container {\n          text-align: left;\n        }\n        #link {\n          font-size: 18px;\n          margin: 0 auto;\n        }\n        simple-icon-button {\n          float: right;\n        }\n      ',
   ]);
 
   _templateObject = function _templateObject() {

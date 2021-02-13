@@ -39,7 +39,6 @@ class HaxPreferencesDialog extends LitElement {
         }
         .pref-container {
           text-align: left;
-          padding: 16px;
         }
         #link {
           font-size: 18px;
