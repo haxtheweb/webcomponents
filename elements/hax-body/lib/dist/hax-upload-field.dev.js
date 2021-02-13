@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HaxUploadField = void 0;
 
+var _litElement = require("lit-element/lit-element.js");
+
 var _simpleFieldsUpload = require("@lrnwebcomponents/simple-fields/lib/simple-fields-upload.js");
 
 var _utils = require("@lrnwebcomponents/utils/utils.js");
@@ -114,19 +116,25 @@ var HaxUploadField =
         _getPrototypeOf(HaxUploadField).call(this)
       );
       _this.__winEvents = {
-        "hax-app-picker-selection": "_haxAppPickerSelection",
+        "hax-app-picker-selection": "_haxAppPickerSelection", //TODO
       };
       return _this;
     }
-    /**
-     * Respond to uploading a file
-     */
 
     _createClass(HaxUploadField, [
       {
+        key: "_canUpload",
+        value: function _canUpload() {
+          return !this.__allowUpload && _haxStore.HAXStore;
+        },
+        /**
+         * Respond to uploading a file
+         */
+      },
+      {
         key: "_fileAboutToUpload",
         value: function _fileAboutToUpload(e) {
-          if (!this.__allowUpload && _haxStore.HAXStore) {
+          if (this._canUpload()) {
             // cancel the event so we can jump in
             e.preventDefault();
             e.stopPropagation(); // look for a match as to what gizmo types it supports
@@ -162,6 +170,59 @@ var HaxUploadField =
           } else {
             this.__allowUpload = false;
           }
+        },
+        /**
+         * Event for an app being selected from a picker
+         * This happens when multiple upload targets support the given type
+         */
+      },
+      {
+        key: "_haxAppPickerSelection",
+        value: function _haxAppPickerSelection(e) {
+          // details for where to upload the file
+          var connection = e.detail.connection;
+          this.__appUsed = e.detail;
+          this.shadowRoot.querySelector("#fileupload").method =
+            connection.operations.add.method;
+          var requestEndPoint = connection.protocol + "://" + connection.url; // ensure we build a url correctly
+
+          if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
+            requestEndPoint += "/";
+          } // support local end point modification
+
+          if (
+            _typeof(connection.operations.add.endPoint) !==
+            (typeof undefined === "undefined"
+              ? "undefined"
+              : _typeof(undefined))
+          ) {
+            requestEndPoint += connection.operations.add.endPoint;
+          } // implementation specific tweaks to talk to things like HAXcms and other CMSs
+          // that have per load token based authentication
+
+          if (
+            _haxStore.HAXStore.connectionRewrites.appendUploadEndPoint != null
+          ) {
+            requestEndPoint +=
+              "?" + _haxStore.HAXStore.connectionRewrites.appendUploadEndPoint;
+          }
+
+          if (_haxStore.HAXStore.connectionRewrites.appendJwt != null) {
+            requestEndPoint +=
+              "&" +
+              _haxStore.HAXStore.connectionRewrites.appendJwt +
+              "=" +
+              localStorage.getItem(
+                _haxStore.HAXStore.connectionRewrites.appendJwt
+              );
+          }
+
+          this.shadowRoot.querySelector("#fileupload").headers =
+            connection.headers;
+          this.shadowRoot.querySelector("#fileupload").target = requestEndPoint; // invoke file uploading...
+
+          this.__allowUpload = true;
+          this.shadowRoot.querySelector("#fileupload").uploadFiles();
         },
         /**
          * Respond to successful file upload, now inject url into url field and
@@ -221,59 +282,6 @@ var HaxUploadField =
           } // set the value of the url which will update our URL and notify
 
           this.shadowRoot.querySelector("#url").value = item.url;
-        },
-        /**
-         * Event for an app being selected from a picker
-         * This happens when multiple upload targets support the given type
-         */
-      },
-      {
-        key: "_haxAppPickerSelection",
-        value: function _haxAppPickerSelection(e) {
-          // details for where to upload the file
-          var connection = e.detail.connection;
-          this.__appUsed = e.detail;
-          this.shadowRoot.querySelector("#fileupload").method =
-            connection.operations.add.method;
-          var requestEndPoint = connection.protocol + "://" + connection.url; // ensure we build a url correctly
-
-          if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
-            requestEndPoint += "/";
-          } // support local end point modification
-
-          if (
-            _typeof(connection.operations.add.endPoint) !==
-            (typeof undefined === "undefined"
-              ? "undefined"
-              : _typeof(undefined))
-          ) {
-            requestEndPoint += connection.operations.add.endPoint;
-          } // implementation specific tweaks to talk to things like HAXcms and other CMSs
-          // that have per load token based authentication
-
-          if (
-            _haxStore.HAXStore.connectionRewrites.appendUploadEndPoint != null
-          ) {
-            requestEndPoint +=
-              "?" + _haxStore.HAXStore.connectionRewrites.appendUploadEndPoint;
-          }
-
-          if (_haxStore.HAXStore.connectionRewrites.appendJwt != null) {
-            requestEndPoint +=
-              "&" +
-              _haxStore.HAXStore.connectionRewrites.appendJwt +
-              "=" +
-              localStorage.getItem(
-                _haxStore.HAXStore.connectionRewrites.appendJwt
-              );
-          }
-
-          this.shadowRoot.querySelector("#fileupload").headers =
-            connection.headers;
-          this.shadowRoot.querySelector("#fileupload").target = requestEndPoint; // invoke file uploading...
-
-          this.__allowUpload = true;
-          this.shadowRoot.querySelector("#fileupload").uploadFiles();
         },
       },
     ]);
