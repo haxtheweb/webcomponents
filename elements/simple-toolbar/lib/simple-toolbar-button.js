@@ -437,6 +437,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             display: none;
           }
           #button {
+            font-size: inherit;
             min-width: var(
               --simple-toolbar-button-min-width,
               var(
