@@ -44,6 +44,7 @@ class HaxButtonMenu extends A11yMenuButtonBehaviors(LitElement) {
           flex-wrap: none;
           align-items: center;
           min-width: 42px;
+          padding: var(--hax-menu-button-menu-padding);
         }
         .label {
           padding: 0 5px;
@@ -52,6 +53,10 @@ class HaxButtonMenu extends A11yMenuButtonBehaviors(LitElement) {
           --simple-icon-height: 18px;
           --simple-icon-width: 18px;
           margin-left: -2px;
+        }
+        #menu {
+          width: var(--hax-menu-button-menu-width);
+          min-width: var(--hax-menu-button-menu-min-idth);
         }
         absolute-position-behavior {
           --a11y-menu-button-border: 1px solid

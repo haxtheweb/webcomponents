@@ -24,6 +24,8 @@ import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-preferences-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "@lrnwebcomponents/hax-body/lib/hax-button-menu.js";
+import "@lrnwebcomponents/hax-body/lib/hax-button-menu-item.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -121,6 +123,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           width: var(--hax-tray-width, 300px);
           --simple-fields-margin: var(--hax-tray-margin-sm, 4px);
           --simple-fields-font-size: var(--hax-tray-font-size-sm, 12px);
+          --simple-fields-font-size-xs: var(--hax-tray-font-size-xs, 10px);
           --tray-detail-accent-color: #000;
           transition: 0.2s all ease-in-out;
           opacity: 0;
@@ -157,7 +160,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           pointer-events: all;
         }
         #tray-detail {
-          flex: 0 1 auto;
+          flex: 1 1 auto;
           transition: height 0.6s linear;
           border: 1px solid var(--hax-toolbar-border-color, #ddd);
           border-top: 3px solid var(--tray-detail-accent-color,
@@ -674,7 +677,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   _processTrayEvent(e) {
     var target = normalizeEventPath(e)[0];
-    console.log("_processTrayEvent", e.detail.eventName);
     // support a simple insert event to bubble up or everything else
     switch (e.detail.eventName) {
       case "insert-stax":
@@ -1007,16 +1009,13 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       if (propName == "activeGizmo") {
         if (this.activeGizmo) {
           this.activeTagName = this.activeGizmo.title;
-          console.log(this.activeGizmo, this.activeTagName, oldValue);
           if (
             (!oldValue || this.trayDetail !== "content-edit") &&
             this.trayDetail !== "content-map"
           ) {
-            console.log(this.activeGizmo, oldValue, this.trayDetail);
             this.trayDetail = "content-edit";
           }
         } else {
-          console.log(this.activeGizmo, this.trayDetail);
           this.activeTagName = "";
           if (this.trayDetail !== "content-add") {
             this.trayDetail = "content-add";
@@ -1293,7 +1292,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     });
   }
   _updateTrayDetail(oldValue) {
-    console.log("_updateTrayDetail", oldValue, this.trayDetail);
     if (this.trayDetail == "content-add") {
       this.trayLabel = "Add Content";
       this._refreshAddData();

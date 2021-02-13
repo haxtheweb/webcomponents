@@ -220,11 +220,6 @@ var HAXTrayButton =
         {
           key: "_handleClick",
           value: function _handleClick(e) {
-            console.log("hax-tray-button-click", e, {
-              eventName: this.eventName,
-              index: this.index,
-              value: this.eventData,
-            });
             this.dispatchEvent(
               new CustomEvent("hax-tray-button-click", {
                 bubbles: true,

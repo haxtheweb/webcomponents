@@ -13,54 +13,47 @@ class HaxAppSearchResult extends LitElement {
     return [
       css`
         :host {
-          display: inline-block;
-          width: 47%;
-          margin: 1%;
-          background-color: var(
-            --hax-color-bg-accent,
-            var(--simple-colors-default-theme-cyan-7, #009dc7)
-          );
-          color: var(--hax-color-text, #000000);
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: space-evenly;
+          height: 100%;
         }
         button {
           margin: 0;
           padding: 0;
-          display: block;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
           border-radius: 0;
           border: none;
           width: 100%;
           outline: 1px solid black;
-          text-align: unset;
           opacity: 0.8;
+          background-color: var(--hax-toolbar-button-bg, #fff);
           transition: 0.2s opacity ease-in-out, 0.2s outline-color ease-in-out;
+          flex: 1 0 auto;
         }
         button:hover,
         button:focus,
         button:active {
           background-color: #eeeeee;
-          outline-color: var(--simple-colors-default-theme-purple-8, #8a009b);
+          outline-color: var(--tray-detail-accent-color, #000);
           outline-width: 4px;
           outline-style: solid;
           opacity: 1;
         }
         .detail-wrapper {
-          padding: 0px;
+          flex: 1 0 auto;
+          max-height: 30px;
           overflow: hidden;
-          font-family: "Noto Serif", serif;
-        }
-        .title {
-          font-size: 12px;
-          overflow: hidden;
-          font-weight: bold;
-          text-transform: none;
-          padding: 0;
-          height: 30px;
           text-align: center;
+          text-overflow: ellipsis;
         }
         .image {
-          height: 150px;
+          flex: 0 0 auto;
           width: 100%;
-          background-color: var(--simple-colors-default-theme-cyan-7, #009dc7);
+          background-color: var(--hax-toolbar-border-color, #ddd);
         }
         @media screen and (max-width: 1000px) {
           :host {
@@ -84,9 +77,7 @@ class HaxAppSearchResult extends LitElement {
         title="${this.details}"
       >
         <img loading="lazy" class="image" src="${this.image}" />
-        <div class="detail-wrapper">
-          <div class="title">${this.title.substr(0, 40)}</div>
-        </div>
+        <div class="detail-wrapper">${this.title.substr(0, 40)}<</div>
       </button>
     `;
   }

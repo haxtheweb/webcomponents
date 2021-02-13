@@ -15,9 +15,9 @@ var _haxStore = require("./hax-store.js");
 
 require("./hax-button-menu.js");
 
-require("./hax-context-item.js");
+require("./hax-button-menu-item.js");
 
-require("./hax-button-menu-item");
+require("./hax-context-item.js");
 
 var _mobx = require("mobx");
 

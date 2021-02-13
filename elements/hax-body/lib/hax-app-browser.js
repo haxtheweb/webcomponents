@@ -1,7 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./hax-tray-button.js";
-import "./hax-button-menu.js";
-import "./hax-button-menu-item.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 
@@ -20,8 +18,24 @@ class HaxAppBrowser extends LitElement {
       css`
         :host {
           overflow-y: auto;
+          position: relative;
+        }
+        simple-button-grid {
+          overflow: auto;
+        }
+        simple-button-grid.collapse-hide {
+          max-height: 0 !important;
+          transition: all 0.5s;
+        }
+        .visibility-hidden {
+          z-index: -1;
+          visibility: hidden;
+          opacity: 0;
+          height: 0;
+          transition: all 0.5s;
         }
         hax-tray-button {
+          font-size: 11px !important;
           --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
           --simple-toolbar-button-border-color: var(
             --hax-toolbar-border-color,
@@ -49,6 +63,8 @@ class HaxAppBrowser extends LitElement {
       if (e.detail.eventName === "search-selected") {
         this.searching = true;
         HAXStore.activeApp = toJS(this.appList[e.detail.index]);
+      } else if (e.detail.eventName === "cancel-search") {
+        this.searching = false;
       }
     });
     this.searching = false;
@@ -56,6 +72,7 @@ class HaxAppBrowser extends LitElement {
     this.activeApp = null;
     this.hasActive = false;
     import("@lrnwebcomponents/hax-body/lib/hax-app-search.js");
+    import("@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js");
     autorun(() => {
       this.appList = toJS(HAXStore.appList);
     });
@@ -65,28 +82,31 @@ class HaxAppBrowser extends LitElement {
   }
   render() {
     return html`
-      <hax-button-menu label="Choose Resource">
+      <simple-button-grid
+        class="${this.searching ? "collapse-hide" : ""}"
+        always-expanded
+        columns="3"
+      >
         ${this.appList.map(
           (app) => html`
-            <hax-button-menu-item
-             slot="menuitem">
-              <hax-tray-button
-                show-text-label
-                role="menuitem"
-                index="${app.index}"
-                label="${app.details.title}"
-                icon="${app.details.icon}"
-                color="${app.details.color}"
-                event-name="search-selected"
-                event-data="${app.index}"
-              ></simple-button-grid>
-            </hax-button-menu-item>
+            <hax-tray-button
+              class="${this.searching ? "visibility-hidden" : ""}"
+              show-text-label
+              icon-position="top"
+              index="${app.index}"
+              label="${app.details.title}"
+              icon="${app.details.icon}"
+              color="${app.details.color}"
+              event-name="search-selected"
+              event-data="${app.index}"
+            >
+            </hax-tray-button>
           `
         )}
-      </hax-menu-button>
+      </simple-button-grid>
       <hax-app-search
         id="haxappsearch"
-        .hidden="${!this.searching}"
+        class="${!this.searching ? "visibility-hidden" : ""}"
       ></hax-app-search>
       <slot></slot>
     `;
@@ -143,6 +163,7 @@ class HaxAppBrowser extends LitElement {
    * Active app updated, so scroll it into view
    */
   _activeAppChanged(newValue, oldValue) {
+    console.log(newValue, oldValue);
     if (typeof oldValue !== typeof undefined && newValue != null) {
       this.hasActive = true;
     } else {

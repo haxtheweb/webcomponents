@@ -9,10 +9,6 @@ var _litElement = require("lit-element/lit-element.js");
 
 require("./hax-tray-button.js");
 
-require("./hax-button-menu.js");
-
-require("./hax-button-menu-item.js");
-
 var _haxStore = require("./hax-store.js");
 
 var _mobx = require("mobx");
@@ -37,12 +33,13 @@ function _typeof(obj) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n            <hax-button-menu-item\n             slot="menuitem">\n              <hax-tray-button\n                show-text-label\n                role="menuitem"\n                index="',
+    '\n              <hax-tray-button\n                class="',
+    '" \n                show-text-label\n                icon-position="top"\n                index="',
     '"\n                label="',
     '"\n                icon="',
     '"\n                color="',
     '"\n                event-name="search-selected"\n                event-data="',
-    '"\n              ></simple-button-grid>\n            </hax-button-menu-item>\n          ',
+    '"\n              >\n          </hax-tray-button>\n          ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -54,9 +51,10 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <hax-button-menu label="Choose Resource">\n        ',
-    '\n      </hax-menu-button>\n      <hax-app-search\n        id="haxappsearch"\n        .hidden="',
-    '"\n      ></hax-app-search>\n      <slot></slot>\n    ',
+    '\n      <simple-button-grid \n        class="',
+    '" \n        always-expanded\n        columns="3">\n        ',
+    '\n      </simple-button-grid>\n      <hax-app-search\n        id="haxappsearch"\n        class="',
+    '" \n      ></hax-app-search>\n      <slot></slot>\n    ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -113,7 +111,7 @@ function _interopRequireWildcard(obj) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n      :host {\n        overflow-y: auto;\n      }\n      hax-tray-button {\n        --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n        --simple-toolbar-button-border-color: var(\n          --hax-toolbar-border-color,\n          #ddd\n        );\n        --simple-toolbar-button-hover-color: var(\n          --tray-detail-accent-color,\n          #000\n        );\n        --simple-toolbar-button-hover-border-color: var(\n          --tray-detail-accent-color,\n          #000\n        );\n        --simple-toolbar-button-hover-border-color: var(\n          --tray-detail-accent-color,\n          #000\n        );\n      }\n      ",
+    "\n        :host {\n          overflow-y: auto;\n          position: relative;\n        }\n        simple-button-grid {\n          overflow: auto;\n        }\n        simple-button-grid.collapse-hide {\n          max-height: 0 !important;\n          transition: all 0.5s;\n        }\n        .visibility-hidden {\n          z-index: -1;\n          visibility: hidden;\n          opacity: 0;\n          height: 0;\n          transition: all 0.5s;\n        }\n        hax-tray-button {\n          font-size: 11px !important;\n          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          --simple-toolbar-button-border-color: var(\n            --hax-toolbar-border-color,\n            #ddd\n          );\n          --simple-toolbar-button-hover-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -263,6 +261,8 @@ var HaxAppBrowser =
           _haxStore.HAXStore.activeApp = (0, _mobx.toJS)(
             _this.appList[e.detail.index]
           );
+        } else if (e.detail.eventName === "cancel-search") {
+          _this.searching = false;
         }
       });
 
@@ -273,6 +273,11 @@ var HaxAppBrowser =
       Promise.resolve().then(function () {
         return _interopRequireWildcard(
           require("@lrnwebcomponents/hax-body/lib/hax-app-search.js")
+        );
+      });
+      Promise.resolve().then(function () {
+        return _interopRequireWildcard(
+          require("@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js")
         );
       });
       (0, _mobx.autorun)(function () {
@@ -290,32 +295,35 @@ var HaxAppBrowser =
         {
           key: "render",
           value: function render() {
+            var _this2 = this;
+
             return (0, _litElement.html)(
               _templateObject2(),
+              this.searching ? "collapse-hide" : "",
               this.appList.map(function (app) {
                 return (0,
-                _litElement.html)(_templateObject3(), app.index, app.details.title, app.details.icon, app.details.color, app.index);
+                _litElement.html)(_templateObject3(), _this2.searching ? "visibility-hidden" : "", app.index, app.details.title, app.details.icon, app.details.color, app.index);
               }),
-              !this.searching
+              !this.searching ? "visibility-hidden" : ""
             );
           },
         },
         {
           key: "updated",
           value: function updated(changedProperties) {
-            var _this2 = this;
+            var _this3 = this;
 
             changedProperties.forEach(function (oldValue, propName) {
-              if (propName == "activeApp" && _this2[propName]) {
-                _this2._activeAppChanged(_this2[propName], oldValue);
+              if (propName == "activeApp" && _this3[propName]) {
+                _this3._activeAppChanged(_this3[propName], oldValue);
               }
 
               if (
                 propName == "appList" &&
-                _this2[propName] &&
-                _this2.shadowRoot
+                _this3[propName] &&
+                _this3.shadowRoot
               ) {
-                _this2.searching = false;
+                _this3.searching = false;
               }
             });
           },
@@ -326,6 +334,8 @@ var HaxAppBrowser =
         {
           key: "_activeAppChanged",
           value: function _activeAppChanged(newValue, oldValue) {
+            console.log(newValue, oldValue);
+
             if (
               _typeof(oldValue) !==
                 (typeof undefined === "undefined"

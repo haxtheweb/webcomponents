@@ -3,8 +3,8 @@ import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTou
 import { HaxToolbarBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-button-menu.js";
+import "./hax-button-menu-item.js";
 import "./hax-context-item.js";
-import "./hax-button-menu-item";
 import { autorun, toJS } from "mobx";
 /**
  * `hax-plate-context`

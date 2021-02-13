@@ -25,37 +25,38 @@ class HaxAppSearchInputs extends LitElement {
         :host {
           display: block;
         }
-        simple-fields {
-          color: var(--hax-color-text, #000000);
-        }
         .search-label {
-          font-size: 24px;
-          color: var(--hax-color-text, #000000);
-          font-weight: bold;
-          margin: 0;
-          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+        }
+        #cancel {
+          flex: 0 0 auto;
+        }
+        h5 {
+          margin: var(--hax-tray-margin-sm, 4px) 0;
         }
       `,
     ];
   }
-  updated(changedProperties) {
-    if (super.updated()) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "label") {
-        // hack, rebuild values bute force
-        this.shadowRoot.querySelector("#form").value = {};
-      }
-    });
-  }
+
   constructor() {
     super();
-    this.label = "app";
   }
   render() {
     return html`
-      <div class="search-label">Search ${this.label}</div>
+      <h5 class="search-label">
+        ${this.label}
+        <hax-tray-button
+          id="cancel"
+          class="${!this.searching ? "visibility-hidden" : ""}"
+          icon="close"
+          label="Cancel Search"
+          event-name="cancel-search"
+        >
+        </hax-tray-button>
+      </h5>
       <simple-fields
         id="form"
         .schema="${this.schema}"
@@ -81,12 +82,6 @@ class HaxAppSearchInputs extends LitElement {
 
   static get properties() {
     return {
-      /**
-       * Title.
-       */
-      label: {
-        type: String,
-      },
       /**
        * Schema used to generate the input types.
        */

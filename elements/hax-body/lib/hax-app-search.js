@@ -1,5 +1,4 @@
-import { html, css } from "lit-element/lit-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { html, css, LitElement } from "lit-element/lit-element.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 
@@ -11,31 +10,28 @@ import { autorun, toJS } from "mobx";
  * - hax-body - the text are ultimately we are trying to insert this item into
  * @element hax-app-search
  */
-class HaxAppSearch extends SimpleColors {
+class HaxAppSearch extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
-      ...super.styles,
       css`
         :host {
           display: block;
         }
         hexagon-loader {
           display: none;
-          justify-content: center;
-          width: 100%;
+          margin: 0 auto;
           z-index: 1000;
-          position: absolute;
-          --hexagon-color: var(--hax-color-bg-accent, #0085ba);
+          --hexagon-color: var(--tray-detail-accent-color, #000);
         }
         hexagon-loader[loading] {
           display: block;
           opacity: 0.8;
         }
         .card-content {
-          padding: 16px;
+          padding: 0;
         }
         .card-content p {
           padding: 0;
@@ -48,11 +44,11 @@ class HaxAppSearch extends SimpleColors {
         }
         hax-app-search-inputs {
           min-height: 80px;
-          padding: 0 16px;
+          padding: 0;
         }
         hax-app-pagination {
           min-height: 32px;
-          font-size: 12.8px;
+          font-size: var(--hax-tray-font-size-sm, 12px);
           display: none;
           justify-content: flex-end;
           justify-content: center;
@@ -61,18 +57,18 @@ class HaxAppSearch extends SimpleColors {
           font-size: 12px;
         }
         .tos-text ul {
-          padding: 4px;
-          margin: 0 16px;
+          padding: 0;
+          margin: 0;
         }
         .tos-text a {
-          font-size: 12px;
-          color: blue;
+          font-size: var(--hax-tray-font-size-sm, 12px);
+          color: var(--tray-detail-accent-color, #000);
           text-decoration: underline;
         }
         .tos-text a:hover,
         .tos-text a:focus,
         .tos-text a:active {
-          outline: 2px solid blue;
+          outline: 2px solid var(--tray-detail-accent-color, #000);
         }
       `,
     ];
@@ -92,6 +88,8 @@ class HaxAppSearch extends SimpleColors {
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
+    import("@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js");
     autorun(() => {
       this.activeApp = toJS(HAXStore.activeApp);
     });
@@ -137,7 +135,11 @@ class HaxAppSearch extends SimpleColors {
         ?loading="${this.loading}"
         aria-roledescription="Loading"
       ></hexagon-loader>
-      <div id="itemlist">
+      <simple-button-grid
+        class="${this.searching ? "collapse-hide" : ""}"
+        always-expanded
+        columns="2"
+      >
         ${this.media.map(
           (resultData) => html`
             <hax-app-search-result
@@ -149,7 +151,7 @@ class HaxAppSearch extends SimpleColors {
             ></hax-app-search-result>
           `
         )}
-      </div>
+      </simple-button-grid>
     `;
   }
   /**

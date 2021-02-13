@@ -48,11 +48,6 @@ class HAXTrayButton extends HaxToolbarItemBehaviors(LitElement) {
    * Fire an event that includes the eventName of what was just pressed.
    */
   _handleClick(e) {
-    console.log("hax-tray-button-click", e, {
-      eventName: this.eventName,
-      index: this.index,
-      value: this.eventData,
-    });
     this.dispatchEvent(
       new CustomEvent("hax-tray-button-click", {
         bubbles: true,
