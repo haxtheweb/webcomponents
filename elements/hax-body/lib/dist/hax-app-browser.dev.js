@@ -9,6 +9,10 @@ var _litElement = require("lit-element/lit-element.js");
 
 require("./hax-tray-button.js");
 
+require("./hax-button-menu.js");
+
+require("./hax-button-menu-item.js");
+
 var _haxStore = require("./hax-store.js");
 
 var _mobx = require("mobx");
@@ -33,12 +37,12 @@ function _typeof(obj) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n            <hax-tray-button\n              icon-position="top"\n              show-text-label\n              index="',
-    '"\n              label="',
-    '"\n              icon="',
-    '"\n              color="',
-    '"\n              event-name="search-selected"\n              event-data="',
-    '"\n            ></hax-tray-button>\n          ',
+    '\n            <hax-button-menu-item\n             slot="menuitem">\n              <hax-tray-button\n                show-text-label\n                role="menuitem"\n                index="',
+    '"\n                label="',
+    '"\n                icon="',
+    '"\n                color="',
+    '"\n                event-name="search-selected"\n                event-data="',
+    '"\n              ></simple-button-grid>\n            </hax-button-menu-item>\n          ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -50,8 +54,8 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <div class="item-wrapper">\n        ',
-    '\n      </div>\n      <hax-app-search\n        id="haxappsearch"\n        .hidden="',
+    '\n      <hax-button-menu label="Choose Resource">\n        ',
+    '\n      </hax-menu-button>\n      <hax-app-search\n        id="haxappsearch"\n        .hidden="',
     '"\n      ></hax-app-search>\n      <slot></slot>\n    ',
   ]);
 
@@ -109,7 +113,7 @@ function _interopRequireWildcard(obj) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n        }\n        :host *[hidden] {\n          display: none;\n        }\n\n        .item-wrapper {\n          display: flex;\n          flex-wrap: wrap;\n          flex: 0 1 auto;\n          overflow-y: auto;\n        }\n        .item-wrapper {\n          max-width: 100%;\n          display: grid;\n          grid-gap: var(--hax-tray-margin-sm, 4px);\n          grid-template-columns: repeat(auto-fill, minmax(calc(25% - var(--hax-tray-margin-sm, 4px)), calc(33.3333% - var(--hax-tray-margin-sm, 4px))));\n          grid-auto-rows: minmax(40px, auto);\n        }\n        hax-tray-button {\n          flex: 1 1 auto;\n          font-size: 80%;\n          --simple-toolbar-button-flex: 1 1 100%;\n          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          --simple-toolbar-button-border-color: var(--hax-toolbar-border-color, #ddd);\n          --simple-toolbar-button-hover-color: var(--tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(--tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(--tray-detail-accent-color,\n            #000\n          );\n        }\n      ",
+    "\n      :host {\n        overflow-y: auto;\n      }\n      hax-tray-button {\n        --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n        --simple-toolbar-button-border-color: var(\n          --hax-toolbar-border-color,\n          #ddd\n        );\n        --simple-toolbar-button-hover-color: var(\n          --tray-detail-accent-color,\n          #000\n        );\n        --simple-toolbar-button-hover-border-color: var(\n          --tray-detail-accent-color,\n          #000\n        );\n        --simple-toolbar-button-hover-border-color: var(\n          --tray-detail-accent-color,\n          #000\n        );\n      }\n      ",
   ]);
 
   _templateObject = function _templateObject() {

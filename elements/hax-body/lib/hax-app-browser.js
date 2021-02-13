@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./hax-tray-button.js";
+import "./hax-button-menu.js";
+import "./hax-button-menu-item.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 
@@ -17,35 +19,9 @@ class HaxAppBrowser extends LitElement {
     return [
       css`
         :host {
-          display: block;
-        }
-        :host *[hidden] {
-          display: none;
-        }
-
-        .item-wrapper {
-          display: flex;
-          flex-wrap: wrap;
-          flex: 0 1 auto;
           overflow-y: auto;
         }
-        .item-wrapper {
-          max-width: 100%;
-          display: grid;
-          grid-gap: var(--hax-tray-margin-sm, 4px);
-          grid-template-columns: repeat(
-            auto-fill,
-            minmax(
-              calc(25% - var(--hax-tray-margin-sm, 4px)),
-              calc(33.3333% - var(--hax-tray-margin-sm, 4px))
-            )
-          );
-          grid-auto-rows: minmax(40px, auto);
-        }
         hax-tray-button {
-          flex: 1 1 auto;
-          font-size: 80%;
-          --simple-toolbar-button-flex: 1 1 100%;
           --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
           --simple-toolbar-button-border-color: var(
             --hax-toolbar-border-color,
@@ -89,22 +65,25 @@ class HaxAppBrowser extends LitElement {
   }
   render() {
     return html`
-      <div class="item-wrapper">
+      <hax-button-menu label="Choose Resource">
         ${this.appList.map(
           (app) => html`
-            <hax-tray-button
-              icon-position="top"
-              show-text-label
-              index="${app.index}"
-              label="${app.details.title}"
-              icon="${app.details.icon}"
-              color="${app.details.color}"
-              event-name="search-selected"
-              event-data="${app.index}"
-            ></hax-tray-button>
+            <hax-button-menu-item
+             slot="menuitem">
+              <hax-tray-button
+                show-text-label
+                role="menuitem"
+                index="${app.index}"
+                label="${app.details.title}"
+                icon="${app.details.icon}"
+                color="${app.details.color}"
+                event-name="search-selected"
+                event-data="${app.index}"
+              ></simple-button-grid>
+            </hax-button-menu-item>
           `
         )}
-      </div>
+      </hax-menu-button>
       <hax-app-search
         id="haxappsearch"
         .hidden="${!this.searching}"
