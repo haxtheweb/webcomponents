@@ -432,9 +432,13 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               )
             );
             white-space: nowrap;
+            transition: all 0.5s;
           }
           :host([hidden]) {
-            display: none;
+            z-index: -1;
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
           }
           #button {
             font-size: inherit;
@@ -469,7 +473,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             transition: all 0.5s;
             width: 100%;
             height: 100%;
-            justify-content: space-around;
+            justify-content: var(--simple-toolbar-button-justify, space-around);
           }
           :host([icon-position="top"]) #button,
           :host([icon-position="bottom"]) #button {

@@ -39,6 +39,13 @@ const SimpleButtonGridBehaviors = function (SuperClass) {
                 var(--simple-toolbar-button-height, 24px)
               )
             );
+            transition: all 0.5s;
+          }
+          :host([hidden]) {
+            z-index: -1;
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
           }
           #grid {
             flex: 1 1 auto;

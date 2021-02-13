@@ -78,7 +78,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            padding: 0;\n            margin: 0;\n            max-width: 100%;\n            display: flex;\n            overflow: hidden;\n            flex-direction: column;\n            align-items: stretch;\n            overflow: hidden !important;\n            --simple-button-grid-cols: var(--simple-toolbar-button-min-width,\n                var(--simple-toolbar-button-width,\n                  var(--simple-toolbar-button-height, 24px)\n                )\n              );\n          }\n          #grid {\n            flex: 1 1 auto;\n            max-width: 100%;\n            overflow: auto;\n          }\n\n          #buttons {\n            flex: 0 1 100%;\n            max-width: 100%;\n            display: flex;\n            flex-wrap: wrap;\n            --simple-toolbar-button-flex: var(--simple-toolbar-button-grid-flex, 1 1 100%);\n          }\n          #buttons {\n            display: grid;\n            overflow: visible;\n            grid-gap: var(--simple-button-grid-margin, 4px);\n            grid-template-columns: repeat(auto-fill, minmax(calc(var(--simple-button-grid-cols) - 2 * var(--simple-button-grid-margin, 4px)), 1fr));\n          }\n          :host([collapsed]:not([always-expanded])) ::slotted(*[collapse-hide]) {\n            display: none !important;\n          }\n        ",
+    "\n          :host {\n            padding: 0;\n            margin: 0;\n            max-width: 100%;\n            display: flex;\n            overflow: hidden;\n            flex-direction: column;\n            align-items: stretch;\n            overflow: hidden !important;\n            --simple-button-grid-cols: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n            transition: all 0.5s;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          #grid {\n            flex: 1 1 auto;\n            max-width: 100%;\n            overflow: auto;\n          }\n\n          #buttons {\n            flex: 0 1 100%;\n            max-width: 100%;\n            display: flex;\n            flex-wrap: wrap;\n            --simple-toolbar-button-flex: var(\n              --simple-toolbar-button-grid-flex,\n              1 1 100%\n            );\n          }\n          #buttons {\n            display: grid;\n            overflow: visible;\n            grid-gap: var(--simple-button-grid-margin, 4px);\n            grid-template-columns: repeat(\n              auto-fill,\n              minmax(\n                calc(\n                  var(--simple-button-grid-cols) - 2 *\n                    var(--simple-button-grid-margin, 4px)\n                ),\n                1fr\n              )\n            );\n          }\n          :host([collapsed]:not([always-expanded]))\n            ::slotted(*[collapse-hide]) {\n            display: none !important;\n          }\n        ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -90,9 +90,9 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n        <div id="grid">\n          <div id="buttons" class="',
-    '"  style="',
-    '">\n            <slot></slot>\n            ',
+    '\n        <div id="grid">\n          <div\n            id="buttons"\n            class="',
+    '"\n            style="',
+    '"\n          >\n            <slot></slot>\n            ',
     "\n          </div>\n        </div>\n      ",
   ]);
 
