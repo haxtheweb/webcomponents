@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.HaxContextItemMenuLi = void 0;
+exports.HaxButtonMenuItem = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
@@ -31,7 +31,7 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          --simple-toolbar-button-min-width: 100% !important;\n          --simple-toolbar-button-border-color: var(\n            --hax-toolbar-button-bg,\n            #fff\n          ) !important;\n          --simple-toolbar-button-hover-bg: var(\n            --hax-toolbar-menu-button-hover-bg,\n            #c4ecff\n          );\n          --simple-toolbar-button-border-radius: var(\n            --hax-toolbar-menu-button-border-radius,\n            0\n          );\n        }\n        :host ::slotted([danger]){\n          --simple-toolbar-button-hover-bg: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --simple-toolbar-button-hover-color: var(\n            --hax-toolbar-button-bg,\n            #fff\n          );\n            z-index: 1001;\n\n        }\n      ",
+    "\n        :host {\n          --simple-toolbar-button-min-width: 100% !important;\n          --simple-toolbar-button-border-color: var(\n            --hax-toolbar-button-bg,\n            #fff\n          ) !important;\n          --simple-toolbar-button-hover-bg: var(\n            --hax-toolbar-menu-button-hover-bg,\n            #c4ecff\n          );\n          --simple-toolbar-button-border-radius: var(\n            --hax-toolbar-menu-button-border-radius,\n            0\n          );\n        }\n        :host ::slotted([danger]) {\n          --simple-toolbar-button-hover-bg: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --simple-toolbar-button-hover-color: var(\n            --hax-toolbar-button-bg,\n            #fff\n          );\n          z-index: 1001;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -182,32 +182,32 @@ function _setPrototypeOf(o, p) {
 }
 
 /**
- * `hax-context-item-menu`
+ * `hax-button-menu`
  * `An icon / button that has support for multiple options via drop down.`
  *
  * @microcopy - the mental model for this element
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.
  *
- * @element hax-context-item-menu
+ * @element hax-button-menu-item
  * @extends A11yMenuButtonItemBehaviors
  */
-var HaxContextItemMenuLi =
+var HaxButtonMenuItem =
   /*#__PURE__*/
   (function (_A11yMenuButtonItemBe) {
-    _inherits(HaxContextItemMenuLi, _A11yMenuButtonItemBe);
+    _inherits(HaxButtonMenuItem, _A11yMenuButtonItemBe);
 
-    function HaxContextItemMenuLi() {
-      _classCallCheck(this, HaxContextItemMenuLi);
+    function HaxButtonMenuItem() {
+      _classCallCheck(this, HaxButtonMenuItem);
 
       return _possibleConstructorReturn(
         this,
-        _getPrototypeOf(HaxContextItemMenuLi).call(this)
+        _getPrototypeOf(HaxButtonMenuItem).call(this)
       );
     }
 
     _createClass(
-      HaxContextItemMenuLi,
+      HaxButtonMenuItem,
       [
         {
           key: "render",
@@ -234,7 +234,7 @@ var HaxContextItemMenuLi =
           get: function get() {
             return [].concat(
               _toConsumableArray(
-                _get(_getPrototypeOf(HaxContextItemMenuLi), "styles", this)
+                _get(_getPrototypeOf(HaxButtonMenuItem), "styles", this)
               ),
               [(0, _litElement.css)(_templateObject2())]
             );
@@ -243,16 +243,16 @@ var HaxContextItemMenuLi =
         {
           key: "tag",
           get: function get() {
-            return "hax-context-item-menu-li";
+            return "hax-button-menu-item";
           },
         },
       ]
     );
 
-    return HaxContextItemMenuLi;
+    return HaxButtonMenuItem;
   })(
     (0, _a11yMenuButtonItem.A11yMenuButtonItemBehaviors)(_litElement.LitElement)
   );
 
-exports.HaxContextItemMenuLi = HaxContextItemMenuLi;
-window.customElements.define(HaxContextItemMenuLi.tag, HaxContextItemMenuLi);
+exports.HaxButtonMenuItem = HaxButtonMenuItem;
+window.customElements.define(HaxButtonMenuItem.tag, HaxButtonMenuItem);

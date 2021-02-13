@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import { A11yMenuButtonBehaviors } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 /**
- * `hax-context-item-menu`
+ * `hax-button-menu`
  * `An icon / button that has support for multiple options via drop down.`
  *
  * @microcopy - the mental model for this element
@@ -10,10 +10,10 @@ import { A11yMenuButtonBehaviors } from "@lrnwebcomponents/a11y-menu-button/a11y
  * - button - an item that expresses what interaction you will have with the content.
  *
  * Eextends A11yMenuButtonBehaviors
- * @element hax-context-item-menu
+ * @element hax-button-menu
  *
  */
-class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
+class HaxButtonMenu extends A11yMenuButtonBehaviors(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -65,8 +65,6 @@ class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
     super();
     this._blockEvent = false;
     this.disabled = false;
-    this.selectedValue = 0;
-    this.action = false;
     this.direction = "top";
     this.label = "";
   }
@@ -110,28 +108,11 @@ class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
     this.selectedValue = e.detail;
   }
   static get tag() {
-    return "hax-context-item-menu";
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "selectedValue") {
-        // observer
-        this._selectedUpdated(this[propName], oldValue);
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("selected-value-changed", {
-            detail: this[propName],
-          })
-        );
-      }
-    });
+    return "hax-button-menu";
   }
   static get properties() {
     return {
       ...super.properties,
-      action: {
-        type: Boolean,
-      },
       /**
        * disabled state
        */
@@ -144,14 +125,6 @@ class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
        */
       _blockEvent: {
         type: Boolean,
-      },
-      /**
-       * Value.
-       */
-      selectedValue: {
-        type: Number,
-        reflect: true,
-        attribute: "selected-value",
       },
 
       /**
@@ -193,66 +166,6 @@ class HaxContextItemMenu extends A11yMenuButtonBehaviors(LitElement) {
       },
     };
   }
-
-  /**
-   * Notice the selected value has changed.
-   */
-  _selectedUpdated(newValue, oldValue) {
-    if (
-      typeof newValue !== typeof null &&
-      typeof oldValue !== typeof undefined &&
-      typeof oldValue !== typeof null
-    ) {
-      let children = this.children;
-      var item = new Object();
-      var j = 0;
-      // check for tag match since we have to filter out text nodes
-      for (var i = 0, len = children.length; i < len; i++) {
-        if (children[i].tagName === "BUTTON") {
-          if (j === newValue) {
-            item = children[i];
-            len = i;
-            continue;
-          }
-          j++;
-        }
-      }
-      // ensure we have a value; if so, this becomes the event to look for
-      // also use our flag to ensure machine setting the tag default doesn't
-      // equate to firing off a selected event.
-      if (
-        !this._blockEvent &&
-        typeof item.attributes !== typeof undefined &&
-        typeof item.attributes.value !== typeof undefined &&
-        typeof item.attributes.value.value !== typeof undefined
-      ) {
-        // weird but this makes the menu close when we send up an event
-        // that indicates something higher should do something. This
-        // avoids an annoying UX error where the menu stays open for
-        // no reason.
-        this.shadowRoot.querySelector("#menu").hideMenu();
-        // only emit if we have an event name
-        if (this.eventName) {
-          this.dispatchEvent(
-            new CustomEvent("hax-context-item-selected", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: {
-                target: item,
-                eventName: this.eventName,
-                value: item.attributes.value.value,
-              },
-            })
-          );
-        }
-      }
-      // we only block 1 time if it's available
-      if (this._blockEvent) {
-        this._blockEvent = false;
-      }
-    }
-  }
 }
-window.customElements.define(HaxContextItemMenu.tag, HaxContextItemMenu);
-export { HaxContextItemMenu };
+window.customElements.define(HaxButtonMenu.tag, HaxButtonMenu);
+export { HaxButtonMenu };

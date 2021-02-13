@@ -2,17 +2,17 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import { A11yMenuButtonItemBehaviors } from "@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-item.js";
 /**
- * `hax-context-item-menu`
+ * `hax-button-menu`
  * `An icon / button that has support for multiple options via drop down.`
  *
  * @microcopy - the mental model for this element
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.
  *
- * @element hax-context-item-menu
+ * @element hax-button-menu-item
  * @extends A11yMenuButtonItemBehaviors
  */
-class HaxContextItemMenuLi extends A11yMenuButtonItemBehaviors(LitElement) {
+class HaxButtonMenuItem extends A11yMenuButtonItemBehaviors(LitElement) {
   constructor() {
     super();
   }
@@ -72,8 +72,8 @@ class HaxContextItemMenuLi extends A11yMenuButtonItemBehaviors(LitElement) {
       this.querySelector("[role=menuitem]").focus();
   }
   static get tag() {
-    return "hax-context-item-menu-li";
+    return "hax-button-menu-item";
   }
 }
-window.customElements.define(HaxContextItemMenuLi.tag, HaxContextItemMenuLi);
-export { HaxContextItemMenuLi };
+window.customElements.define(HaxButtonMenuItem.tag, HaxButtonMenuItem);
+export { HaxButtonMenuItem };
