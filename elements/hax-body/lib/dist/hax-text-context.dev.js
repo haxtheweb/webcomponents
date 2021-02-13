@@ -11,9 +11,9 @@ require("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
 
 require("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
 
-require("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
+require("@lrnwebcomponents/hax-body/lib/hax-button-menu.js");
 
-require("@lrnwebcomponents/hax-body/lib/hax-context-item-menu-li.js");
+require("@lrnwebcomponents/hax-body/lib/hax-button-menu-item.js");
 
 require("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
 
@@ -133,11 +133,11 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    ' <hax-context-item-menu-li slot="menuitem">\n                  <hax-context-item-textop\n                    action\n                    role="menuitem"\n                    label="',
+    ' <hax-button-menu-item slot="menuitem">\n                  <hax-context-item-textop\n                    action\n                    role="menuitem"\n                    label="',
     '"\n                    show-text-label\n                    ?hidden="',
     '"\n                    event-name="',
     '"\n                    @click="',
-    '"\n                  ></hax-context-item-textop>\n                </hax-context-item-menu-li>',
+    '"\n                  ></hax-context-item-textop>\n                </hax-button-menu-item>',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -149,9 +149,9 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <div id="buttons">\n        <div class="group">\n          <hax-context-item-menu\n            id="textformat"\n            icon="',
-    '"\n            label="Format"\n                    show-text-label\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            ',
-    '\n            <div slot="tour" data-stop-content>\n              Change how the text is structured and visualized in the page.\n            </div>\n          </hax-context-item-menu>\n          <!-- comment this in when rich-text-editor is viable -->\n          <!--\n          <hax-context-item\n            action\n            hidden\n            icon="icons:flip-to-back"\n            label="Full text editor"\n            event-name="hax-full-text-editor-toggle"\n          ></hax-context-item> -->\n          <slot name="primary"></slot>\n          <hax-context-item\n            mini\n            action\n            icon="icons:code"\n            label="Modify HTML source"\n            ?hidden="',
+    '\n      <div id="buttons">\n        <div class="group">\n          <hax-button-menu\n            id="textformat"\n            icon="',
+    '"\n            label="Format"\n            show-text-label\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            ',
+    '\n            <div slot="tour" data-stop-content>\n              Change how the text is structured and visualized in the page.\n            </div>\n          </hax-button-menu>\n          <!-- comment this in when rich-text-editor is viable -->\n          <!--\n          <hax-context-item\n            action\n            hidden\n            icon="icons:flip-to-back"\n            label="Full text editor"\n            event-name="hax-full-text-editor-toggle"\n          ></hax-context-item> -->\n          <slot name="primary"></slot>\n          <hax-context-item\n            mini\n            action\n            icon="icons:code"\n            label="Modify HTML source"\n            ?hidden="',
     '"\n            event-name="hax-source-view-toggle"\n          ></hax-context-item>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-list-bulleted"\n            event-name="text-tag-ul"\n            label="Bulleted list"\n            .hidden="',
     '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-list-numbered"\n            label="Numbered list"\n            event-name="text-tag-ol"\n            .hidden="',
     '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-indent-decrease"\n            label="Outdent"\n            event-name="text-outdent"\n            .hidden="',
@@ -167,7 +167,7 @@ function _templateObject() {
     '"\n            label="Subscript"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="mdextra:superscript"\n            event-name="text-superscript"\n            ?hidden="',
     '"\n            label="Superscript"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="editor:format-underlined"\n            label="Underline"\n            event-name="text-underline"\n            ?hidden="',
     '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="editor:format-strikethrough"\n            event-name="text-strikethrough"\n            ?hidden="',
-    '"\n            label="Cross out"\n          ></hax-context-item-textop>\n          <hax-context-item-menu icon="add" label="Insert item above or below">\n            <hax-context-item-menu-li slot="menuitem">\n              <hax-context-item\n                action\n                role="menuitem"\n                show-text-label\n                icon="hardware:keyboard-arrow-up"\n                event-name="insert-above-active"\n                label="Insert item above"\n              ></hax-context-item>\n            </hax-context-item-menu-li>\n            <hax-context-item-menu-li slot="menuitem">\n              <hax-context-item\n                action\n                role="menuitem"\n                show-text-label\n                icon="hardware:keyboard-arrow-down"\n                event-name="insert-below-active"\n                label="Insert item below"\n              ></hax-context-item>\n            </hax-context-item-menu-li>\n          </hax-context-item-menu>\n          <slot name="secondary"></slot>\n          <slot name="more"></slot>\n        </div>\n      </div>\n      ',
+    '"\n            label="Cross out"\n          ></hax-context-item-textop>\n          <hax-button-menu icon="add" label="Insert item above or below">\n            <hax-button-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                role="menuitem"\n                show-text-label\n                icon="hardware:keyboard-arrow-up"\n                event-name="insert-above-active"\n                label="Insert item above"\n              ></hax-context-item>\n            </hax-button-menu-item>\n            <hax-button-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                role="menuitem"\n                show-text-label\n                icon="hardware:keyboard-arrow-down"\n                event-name="insert-below-active"\n                label="Insert item below"\n              ></hax-context-item>\n            </hax-button-menu-item>\n          </hax-button-menu>\n          <slot name="secondary"></slot>\n          <slot name="more"></slot>\n        </div>\n      </div>\n      ',
     "\n    ",
   ]);
 

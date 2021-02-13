@@ -11,7 +11,7 @@ require("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
 
 require("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
 
-require("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
+require("@lrnwebcomponents/hax-body/lib/hax-button-menu.js");
 
 require("@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-item.js");
 

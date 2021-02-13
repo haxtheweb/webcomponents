@@ -11,9 +11,9 @@ var _haxStore = require("./hax-store.js");
 
 require("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
 
-require("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
+require("@lrnwebcomponents/hax-body/lib/hax-button-menu.js");
 
-require("@lrnwebcomponents/hax-body/lib/hax-context-item-menu-li.js");
+require("@lrnwebcomponents/hax-body/lib/hax-button-menu-item.js");
 
 var _haxToolbar = require("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
 
@@ -145,7 +145,7 @@ function _templateObject() {
     ', click to change"\n          ?disabled="',
     '"\n          event-name="hax-transform-node"\n        ></hax-context-item>\n        ',
     '\n        <slot name="primary"></slot>\n        <hax-context-item\n          mini\n          action\n          icon="icons:code"\n          label="Modify HTML source"\n          ?disabled="',
-    '"\n          event-name="hax-source-view-toggle"\n        ></hax-context-item>\n        <hax-context-item-menu icon="add" label="Insert item above or below">\n          <hax-context-item-menu-li slot="menuitem">\n            <hax-context-item\n              action\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-up"\n              event-name="insert-above-active"\n              label="Insert item above"\n            ></hax-context-item>\n          </hax-context-item-menu-li>\n          <hax-context-item-menu-li slot="menuitem">\n            <hax-context-item\n              action\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-down"\n              event-name="insert-below-active"\n              label="Insert item below"\n            ></hax-context-item>\n          </hax-context-item-menu-li>\n        </hax-context-item-menu>\n        <slot name="secondary"></slot>\n        <slot name="more"></slot>\n      </div>\n      ',
+    '"\n          event-name="hax-source-view-toggle"\n        ></hax-context-item>\n        <hax-button-menu icon="add" label="Insert item above or below">\n          <hax-button-menu-item slot="menuitem">\n            <hax-context-item\n              action\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-up"\n              event-name="insert-above-active"\n              label="Insert item above"\n            ></hax-context-item>\n          </hax-button-menu-item>\n          <hax-button-menu-item slot="menuitem">\n            <hax-context-item\n              action\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-down"\n              event-name="insert-below-active"\n              label="Insert item below"\n            ></hax-context-item>\n          </hax-button-menu-item>\n        </hax-button-menu>\n        <slot name="secondary"></slot>\n        <slot name="more"></slot>\n      </div>\n      ',
     "\n    ",
   ]);
 

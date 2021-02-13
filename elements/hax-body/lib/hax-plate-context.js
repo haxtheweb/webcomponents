@@ -2,9 +2,9 @@ import { LitElement, css, html } from "lit-element/lit-element.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 import { HaxToolbarBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { HAXStore } from "./hax-store.js";
-import "./hax-context-item-menu.js";
+import "./hax-button-menu.js";
 import "./hax-context-item.js";
-import "./hax-context-item-menu-li";
+import "./hax-button-menu-item";
 import { autorun, toJS } from "mobx";
 /**
  * `hax-plate-context`
@@ -44,19 +44,18 @@ class HaxPlateContext extends SimpleTourFinder(
   render() {
     return html`
       <div class="area" id="buttons">
-        <hax-context-item-menu
+        <hax-button-menu
           ?disabled="${this.hasActiveEditingElement}"
           id="drag"
           action
           icon="hax:arrow-all"
           label="Drag handle"
           draggable="true"
-          selected-value="0"
           reset-on-select
           data-simple-tour-stop
           data-stop-title="label"
         >
-          <hax-context-item-menu-li slot="menuitem">
+          <hax-button-menu-item slot="menuitem">
             <hax-context-item
               action
               ?disabled="${this.hasActiveEditingElement}"
@@ -66,8 +65,8 @@ class HaxPlateContext extends SimpleTourFinder(
               label="Move up"
               event-name="hax-plate-up"
             ></hax-context-item>
-          </hax-context-item-menu-li>
-          <hax-context-item-menu-li slot="menuitem">
+          </hax-button-menu-item>
+          <hax-button-menu-item slot="menuitem">
             <hax-context-item
               action
               ?disabled="${this.hasActiveEditingElement}"
@@ -77,13 +76,13 @@ class HaxPlateContext extends SimpleTourFinder(
               label="Move down"
               event-name="hax-plate-down"
             ></hax-context-item>
-          </hax-context-item-menu-li>
+          </hax-button-menu-item>
           <div slot="tour" data-stop-content>
             Click the drag handle once to show a menu to just move up or down
             one item in the content OR click and drag to place the item exactly
             where you want it to go.
           </div>
-        </hax-context-item-menu>
+        </hax-button-menu>
         <hax-context-item
           action
           id="right"
@@ -131,7 +130,7 @@ class HaxPlateContext extends SimpleTourFinder(
             item.
           </div>
         </hax-context-item>
-        <hax-context-item-menu
+        <hax-button-menu
           id="drag"
           danger
           action
@@ -142,7 +141,7 @@ class HaxPlateContext extends SimpleTourFinder(
           data-simple-tour-stop
           data-stop-title="label"
         >
-          <hax-context-item-menu-li slot="menuitem">
+          <hax-button-menu-item slot="menuitem">
             <hax-context-item
               action
               danger
@@ -153,12 +152,12 @@ class HaxPlateContext extends SimpleTourFinder(
               label="Confirm Delete"
               event-name="hax-plate-delete"
             ></hax-context-item>
-          </hax-context-item-menu-li>
+          </hax-button-menu-item>
           <div slot="tour" data-stop-content>
             Delete the current item. You can always use the undo arrow to bring
             this back.
           </div>
-        </hax-context-item-menu>
+        </hax-button-menu>
       </div>
     `;
   }
