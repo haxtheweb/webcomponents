@@ -33,7 +33,7 @@ class SimplePopoverManager extends LitElement {
           flex: 0 0 auto;
           background-color: var(
             --simple-tour-titlebar-background-color,
-            #f0f8ff
+            #f0f4f8
           );
           border-bottom: 1px solid var(--simple-tour-border-color, #ddd);
           line-height: 130%;

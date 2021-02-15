@@ -3,6 +3,7 @@ import { render } from "lit-html/lib/render.js";
 import { unsafeHTML } from "lit-html/directives/unsafe-html.js";
 import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./simple-popover-manager.js";
 
 class SimpleTour extends LitElement {
@@ -125,13 +126,16 @@ class SimpleTour extends LitElement {
         >
       </h1>
       <simple-icon-button-lite
+        id="close"
         slot="heading"
         @click="${this.stopTour.bind(this)}"
         label="Stop Tour"
         icon="close"
       >
       </simple-icon-button-lite>
+      <simple-tooltip for="close" slot="heading"> Stop Tour </simple-tooltip>
       <simple-icon-button-lite
+        id="prev"
         slot="nav"
         @click="${this.prevStop.bind(this)}"
         ?disabled="${!this.hasPrev()}"
@@ -140,7 +144,11 @@ class SimpleTour extends LitElement {
         show-text-label
       >
       </simple-icon-button-lite>
+      <simple-tooltip for="prev" position="top" slot="nav">
+        Previous Item
+      </simple-tooltip>
       <simple-icon-button-lite
+        id="next"
         slot="nav"
         @click="${this.nextStop.bind(this)}"
         ?disabled="${!this.hasNext()}"
@@ -148,7 +156,10 @@ class SimpleTour extends LitElement {
         icon="arrow-forward"
         show-text-label
       >
-      </simple-icon-button-lite>`;
+      </simple-icon-button-lite>
+      <simple-tooltip for="next" position="top" slot="nav">
+        Next Item
+      </simple-tooltip>`;
   }
   /**
    * Simple utility to do nice scrolling or only scroll if we can't see it

@@ -15,6 +15,8 @@ require("@lrnwebcomponents/simple-toolbar/simple-toolbar.js");
 
 require("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
 
+require("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+
 require("./simple-popover-manager.js");
 
 function _typeof(obj) {
@@ -53,15 +55,15 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '<h1 class="title" slot="heading">\n          ',
-    ',\n        <span class="xofy">',
+    '<h1 class="title" slot="heading">\n        ',
+    ',\n        <span class="xofy"\n          >',
     "/",
-    '</span\n        >\n      </h1>\n      <simple-icon-button-lite\n        slot="heading"\n        @click="',
-    '"\n        label="Stop Tour"\n        icon="close">\n      </simple-icon-button-lite>\n      <simple-icon-button-lite\n        slot="nav"\n        @click="',
+    '</span\n        >\n      </h1>\n      <simple-icon-button-lite\n        id="close"\n        slot="heading"\n        @click="',
+    '"\n        label="Stop Tour"\n        icon="close"\n      >\n      </simple-icon-button-lite>\n      <simple-tooltip\n        for="close"\n        slot="heading">\n        Stop Tour\n      </simple-tooltip>\n      <simple-icon-button-lite\n        id="prev"\n        slot="nav"\n        @click="',
     '"\n        ?disabled="',
-    '"\n        label="Prev"\n        icon="arrow-back"\n        show-text-label>\n      </simple-icon-button-lite>\n      <simple-icon-button-lite\n        slot="nav"\n        @click="',
+    '"\n        label="Prev"\n        icon="arrow-back"\n        show-text-label\n      >\n      </simple-icon-button-lite>\n      <simple-tooltip\n        for="prev"\n        position="top"\n        slot="nav">\n        Previous Item\n      </simple-tooltip>\n      <simple-icon-button-lite\n        id="next"\n        slot="nav"\n        @click="',
     '"\n        ?disabled="',
-    '"\n        label="Next"\n        icon="arrow-forward"\n        show-text-label>\n      </simple-icon-button-lite>',
+    '"\n        label="Next"\n        icon="arrow-forward"\n        show-text-label\n      >\n      </simple-icon-button-lite>\n      <simple-tooltip\n        for="next"\n        position="top"\n        slot="nav">\n        Next Item\n      </simple-tooltip>',
   ]);
 
   _templateObject = function _templateObject() {
