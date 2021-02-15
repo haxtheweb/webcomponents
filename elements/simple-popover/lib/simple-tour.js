@@ -1,6 +1,8 @@
 import { html, LitElement } from "lit-element/lit-element.js";
 import { render } from "lit-html/lib/render.js";
 import { unsafeHTML } from "lit-html/directives/unsafe-html.js";
+import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "./simple-popover-manager.js";
 
 class SimpleTour extends LitElement {
@@ -90,7 +92,7 @@ class SimpleTour extends LitElement {
    * Move ahead or back in the stack
    */
   nextStop(e) {
-    if (this.stop < this.stacks[this.active].length) {
+    if (this.stop < this.stacks[this.active].length - 1) {
       this.stop += 1;
     }
   }
@@ -116,24 +118,37 @@ class SimpleTour extends LitElement {
    * Render tour buttons as block
    */
   tourButtons() {
-    return html` <h3>
-        ${this.tourInfo[this.active].name}
-        <span style="margin-left:16px"
+    return html`<h1 class="title" slot="heading">
+        ${this.tourInfo[this.active].name},
+        <span class="xofy"
           >${this.stop + 1}/${this.stacks[this.active].length}</span
         >
-      </h3>
-      <button
+      </h1>
+      <simple-icon-button-lite
+        slot="heading"
+        @click="${this.stopTour.bind(this)}"
+        label="Stop Tour"
+        icon="close"
+      >
+      </simple-icon-button-lite>
+      <simple-icon-button-lite
+        slot="nav"
         @click="${this.prevStop.bind(this)}"
         ?disabled="${!this.hasPrev()}"
+        label="Prev"
+        icon="arrow-back"
+        show-text-label
       >
-        Previous
-      </button>
-      <button
+      </simple-icon-button-lite>
+      <simple-icon-button-lite
+        slot="nav"
         @click="${this.nextStop.bind(this)}"
         ?disabled="${!this.hasNext()}"
+        label="Next"
+        icon="arrow-forward"
+        show-text-label
       >
-        Next</button
-      ><button @click="${this.stopTour.bind(this)}">Stop tour</button>`;
+      </simple-icon-button-lite>`;
   }
   /**
    * Simple utility to do nice scrolling or only scroll if we can't see it
@@ -178,13 +193,15 @@ class SimpleTour extends LitElement {
           window.SimplePopoverManager.requestAvailability()
         );
         let content = html`${this.tourButtons()}
-          <h3>
+          <h2 class="subheading" slot="body">
             ${unsafeHTML(
               "<span>" + this.stacks[this.active][this.stop].title + "</span>"
             )}
-          </h3>
+          </h2>
           ${unsafeHTML(
-            "<p>" + this.stacks[this.active][this.stop].description + "</p>"
+            '<p slot="body">' +
+              this.stacks[this.active][this.stop].description +
+              "</p>"
           )}${this.tourInfo[this.active].style
             ? unsafeHTML(
                 "<style>" + this.tourInfo[this.active].style + "</style>"
