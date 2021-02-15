@@ -24,8 +24,8 @@ import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-preferences-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import "@lrnwebcomponents/hax-body/lib/hax-button-menu.js";
-import "@lrnwebcomponents/hax-body/lib/hax-button-menu-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu-item.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -171,10 +171,11 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           padding: 0 var(--hax-tray-margin-sm, 4px) var(--hax-tray-margin-sm, 4px);
           --simple-fields-accent-color: var(--tray-detail-accent-color, #000);
           transition: 0.2s all ease-in-out;
+          max-height: 100vh;
         }
         :host([edit-mode][collapsed]) #tray-detail {
           position: absolute;
-          top: -200vh;
+          top: -100vh;
           left: unset !important;
           right: unset !important;
         }
@@ -251,6 +252,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           display: flex;
           width: var(--hax-tray-width, 300px);
           transition: all 0.5ms ease-in-out;
+        }
+        :host([edit-mode][collapsed]) hax-toolbar.tray-detail-ops {
+          border-bottom: 1px solid var(--hax-toolbar-border-color, #ddd);
         }
         .group { 
           margin: 0; 
@@ -342,14 +346,14 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   render() {
     return html`
-      ${this.panelOpeTemplate}
+      ${this.panelOpsTemplate}
       <div class="wrapper" part="hax-tray-wrapper">
-        ${this.panelOpeTemplate} ${this.opsToolbarTemplate}
+        ${this.panelOpsTemplate} ${this.opsToolbarTemplate}
         ${this.trayToolbarTemplate} ${this.trayDetailTemplate}
       </div>
     `;
   }
-  get panelOpeTemplate() {
+  get panelOpsTemplate() {
     return this.hidePanelOps
       ? ``
       : html`
@@ -366,7 +370,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         `;
   }
   get opsToolbarTemplate() {
-    return html` <hax-toolbar class="quick-buttons collapse-menu ">
+    return html` <hax-toolbar class="quick-buttons collapse-menu">
       <div class="ops group">
         ${this.hidePanelOps
           ? ``
@@ -427,8 +431,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       </div>
       <div class="group collapse-menu ">
         <slot name="tray-buttons-pre"></slot>
-        <hax-button-menu label="Position" icon="av:web" direction="left">
-          <hax-button-menu-item slot="menuitem">
+        <hax-toolbar-menu label="Position" icon="av:web" direction="left">
+          <hax-toolbar-menu-item slot="menuitem">
             <hax-tray-button
               role="menuitem"
               voice-command="toggle menu"
@@ -442,8 +446,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               <div data-stop-title>Menu placement</div>
               <div data-stop-content>Expand or collapse the menu visually.</div>
             </hax-tray-button>
-          </hax-button-menu-item>
-          <hax-button-menu-item slot="menuitem">
+          </hax-toolbar-menu-item>
+          <hax-toolbar-menu-item slot="menuitem">
             <hax-tray-button
               voice-command="toggle alignment"
               id="toggle-element-align"
@@ -462,8 +466,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
                 Change which side of the screen the menu is affixed to visually.
               </div>
             </hax-tray-button>
-          </hax-button-menu-item>
-        </hax-button-menu>
+          </hax-toolbar-menu-item>
+        </hax-toolbar-menu>
       </div>
       <div class="group">
         <hax-tray-button
@@ -494,7 +498,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     </hax-toolbar>`;
   }
   get trayToolbarTemplate() {
-    return html` <hax-toolbar class="quick-buttons">
+    return html` <hax-toolbar class="quick-buttons tray-detail-ops">
       <div class="group">
         <hax-tray-button
           event-name="content-edit"
@@ -732,6 +736,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         break;
       case "advanced-settings":
         this.trayDetail = e.detail.eventName;
+        this.collapsed = false;
         break;
       case "toggle-element-align":
         this.elementAlign = this.elementAlign === "right" ? "left" : "right";
@@ -741,15 +746,19 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         break;
       case "content-map":
         this.trayDetail = e.detail.eventName;
+        this.collapsed = false;
         break;
       case "content-edit":
         this.trayDetail = e.detail.eventName;
+        this.collapsed = false;
         break;
       case "content-add":
         this.trayDetail = e.detail.eventName;
+        this.collapsed = false;
         break;
       case "media-add":
         this.trayDetail = e.detail.eventName;
+        this.collapsed = false;
         break;
       case "start-tour":
         window.SimpleTourManager.requestAvailability().startTour("hax");

@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
-import "@lrnwebcomponents/hax-body/lib/hax-button-menu.js";
-import "@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu-item.js";
 import { SimpleToolbarBehaviors } from "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
 
 const HaxToolbarBehaviors = function (SuperClass) {

@@ -11,9 +11,9 @@ require("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
 
 require("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
 
-require("@lrnwebcomponents/hax-body/lib/hax-button-menu.js");
+require("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
 
-require("@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-item.js");
+require("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu-item.js");
 
 var _simpleToolbar = require("@lrnwebcomponents/simple-toolbar/simple-toolbar.js");
 

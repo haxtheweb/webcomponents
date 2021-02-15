@@ -395,8 +395,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.activeNode = null;
     setTimeout(() => {
       import("./lib/hax-context-container.js");
-      import("./lib/hax-text-context.js");
       import("./lib/hax-ce-context.js");
+      import("./lib/hax-text-context.js");
       import("./lib/hax-plate-context.js");
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
       this.polyfillSafe = HAXStore.computePolyfillSafe();

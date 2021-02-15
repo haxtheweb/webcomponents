@@ -43,6 +43,14 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         :host([hidden]) {
           display: none !important;
         }
+        :host([theme="vs"]) #loading {
+          background-color: white;
+          color: #000;
+        }
+        :host([theme="vs-dark"]) #loading {
+          background-color: #1e1e1e;
+          color: #c6c6c6;
+        }
         .code-pen-container:not([hidden]) {
           width: 100%;
           display: flex;
@@ -74,11 +82,19 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           );
         }
 
+        #loading {
+          width: calc(100% - 2 * 74px);
+          padding: 0 74px;
+          height: 100%;
+        }
         #codeeditor {
           height: 100%;
           display: flex;
           border: var(--code-editor-code-border);
           border-radius: var(--code-editor-code-border-radius);
+        }
+        #codeeditor[data-hidden] {
+          height: 0px;
         }
 
         :host([focused]) #codeeditor {
@@ -129,6 +145,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       <label for="codeeditor" ?hidden="${!this.title}">${this.title}</label>
       <monaco-element
         id="codeeditor"
+        ?data-hidden="${!this.ready}"
         ?autofocus="${this.autofocus}"
         ?hide-line-numbers="${this.hideLineNumbers}"
         lib-path="${this.libPath}"
@@ -141,8 +158,16 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         ?read-only="${this.readOnly}"
         @code-editor-focus="${this._handleFocus}"
         @code-editor-blur="${this._handleBlur}"
+        @monaco-element-ready="${(e) => (this.ready = true)}"
       >
       </monaco-element>
+      <pre
+        id="loading"
+        ?hidden="${this.ready}"
+        style="font-size:${this.fontSize}px"
+      >
+${this.placeholder}</pre
+      >
       <slot hidden></slot>
       ${this.showCodePen
         ? html`<div class="code-pen-container">
@@ -151,6 +176,10 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           </div>`
         : ``}
     `;
+  }
+  get placeholder() {
+    let content = `${this.editorValue || this.innerHTML}`;
+    return content.replace(/\s*<\/?template.*>\s*/gm, "");
   }
 
   static get tag() {
@@ -210,6 +239,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
        */
       theme: {
         type: String,
+        reflect: true,
       },
       /**
        * Mode / language for editor
@@ -261,6 +291,9 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       tabSize: {
         type: Number,
         attribute: "tab-size",
+      },
+      ready: {
+        type: Boolean,
       },
     };
   }

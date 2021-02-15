@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.HaxButtonMenu = void 0;
+exports.HaxToolbarMenu = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
@@ -255,16 +255,16 @@ function _getPrototypeOf(o) {
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.
  *
- * Eextends A11yMenuButtonBehaviors
+ * @extends A11yMenuButtonBehaviors
  * @element hax-toolbar-menu
  *
  */
-var HaxButtonMenu =
+var HaxToolbarMenu =
   /*#__PURE__*/
   (function (_A11yMenuButtonBehavi) {
-    _inherits(HaxButtonMenu, _A11yMenuButtonBehavi);
+    _inherits(HaxToolbarMenu, _A11yMenuButtonBehavi);
 
-    _createClass(HaxButtonMenu, null, [
+    _createClass(HaxToolbarMenu, null, [
       {
         key: "styles",
 
@@ -274,7 +274,7 @@ var HaxButtonMenu =
         get: function get() {
           return [].concat(
             _toConsumableArray(
-              _get(_getPrototypeOf(HaxButtonMenu), "styles", this)
+              _get(_getPrototypeOf(HaxToolbarMenu), "styles", this)
             ),
             [(0, _litElement.css)(_templateObject())]
           );
@@ -282,14 +282,14 @@ var HaxButtonMenu =
       },
     ]);
 
-    function HaxButtonMenu() {
+    function HaxToolbarMenu() {
       var _this;
 
-      _classCallCheck(this, HaxButtonMenu);
+      _classCallCheck(this, HaxToolbarMenu);
 
       _this = _possibleConstructorReturn(
         this,
-        _getPrototypeOf(HaxButtonMenu).call(this)
+        _getPrototypeOf(HaxToolbarMenu).call(this)
       );
       _this._blockEvent = false;
       _this.disabled = false;
@@ -299,7 +299,7 @@ var HaxButtonMenu =
     }
 
     _createClass(
-      HaxButtonMenu,
+      HaxToolbarMenu,
       [
         {
           key: "selectedValueChanged",
@@ -346,7 +346,7 @@ var HaxButtonMenu =
           get: function get() {
             return _objectSpread(
               {},
-              _get(_getPrototypeOf(HaxButtonMenu), "properties", this),
+              _get(_getPrototypeOf(HaxToolbarMenu), "properties", this),
               {
                 /**
                  * disabled state
@@ -411,8 +411,8 @@ var HaxButtonMenu =
       ]
     );
 
-    return HaxButtonMenu;
+    return HaxToolbarMenu;
   })((0, _a11yMenuButton.A11yMenuButtonBehaviors)(_litElement.LitElement));
 
-exports.HaxButtonMenu = HaxButtonMenu;
-window.customElements.define(HaxButtonMenu.tag, HaxButtonMenu);
+exports.HaxToolbarMenu = HaxToolbarMenu;
+window.customElements.define(HaxToolbarMenu.tag, HaxToolbarMenu);

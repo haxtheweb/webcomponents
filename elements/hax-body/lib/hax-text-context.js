@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/hax-body/lib/hax-button-menu.js";
-import "@lrnwebcomponents/hax-body/lib/hax-button-menu-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js";
 import { HaxToolbarBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
@@ -145,7 +145,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
     return html`
       <div id="buttons">
         <div class="group">
-          <hax-button-menu
+          <hax-toolbar-menu
             id="textformat"
             icon="${this._formatIcon(
               this.realSelectedValue || this.formatIcon
@@ -157,7 +157,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
           >
             ${this.formattingList.map(
               (val) =>
-                html` <hax-button-menu-item slot="menuitem">
+                html` <hax-toolbar-menu-item slot="menuitem">
                   <hax-context-item-textop
                     action
                     role="menuitem"
@@ -167,12 +167,12 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
                     event-name="${val.value}"
                     @click="${(e) => this.textFormatChanged(val.value)}"
                   ></hax-context-item-textop>
-                </hax-button-menu-item>`
+                </hax-toolbar-menu-item>`
             )}
             <div slot="tour" data-stop-content>
               Change how the text is structured and visualized in the page.
             </div>
-          </hax-button-menu>
+          </hax-toolbar-menu>
           <!-- comment this in when rich-text-editor is viable -->
           <!--
           <hax-context-item
@@ -318,8 +318,8 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
             ?hidden="${!this.hasSelectedText}"
             label="Cross out"
           ></hax-context-item-textop>
-          <hax-button-menu icon="add" label="Insert item above or below">
-            <hax-button-menu-item slot="menuitem">
+          <hax-toolbar-menu icon="add" label="Insert item above or below">
+            <hax-toolbar-menu-item slot="menuitem">
               <hax-context-item
                 action
                 role="menuitem"
@@ -328,8 +328,8 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
                 event-name="insert-above-active"
                 label="Insert item above"
               ></hax-context-item>
-            </hax-button-menu-item>
-            <hax-button-menu-item slot="menuitem">
+            </hax-toolbar-menu-item>
+            <hax-toolbar-menu-item slot="menuitem">
               <hax-context-item
                 action
                 role="menuitem"
@@ -338,8 +338,8 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
                 event-name="insert-below-active"
                 label="Insert item below"
               ></hax-context-item>
-            </hax-button-menu-item>
-          </hax-button-menu>
+            </hax-toolbar-menu-item>
+          </hax-toolbar-menu>
           <slot name="secondary"></slot>
           <slot name="more"></slot>
         </div>

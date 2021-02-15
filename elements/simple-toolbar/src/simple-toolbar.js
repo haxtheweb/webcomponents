@@ -86,6 +86,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
                 var(--simple-toolbar-group-border-color, transparent)
               );
           }
+          ::slotted(*:hover) ::slotted(*:focus-wthin) {
+            z-index: var(--simple-toolbar-focus-z-index, 100);
+          }
           :host([collapsed]:not([always-expanded]))
             ::slotted(*[collapse-hide]) {
             display: none !important;

@@ -434,6 +434,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             white-space: nowrap;
             transition: all 0.5s;
           }
+          :host(:hover),
+          :host(:focus-wthin) {
+            z-index: var(--simple-toolbar-focus-z-index, 100);
+          }
           :host([hidden]) {
             z-index: -1;
             visibility: hidden;
