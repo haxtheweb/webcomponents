@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "../simple-modal.js";
+import { SimpleModalCssVars } from "../simple-modal.js";
 /**
  * `simple-modal-template`
  * `A simple modal that ensures accessibility and stack order context appropriately`
@@ -19,25 +19,6 @@ class SimpleModalTemplate extends LitElement {
       css`
         :host {
           display: none;
-          --simple-modal-width: auto;
-          --simple-modal-height: auto;
-          --simple-modal-min-width: unset;
-          --simple-modal-z-index: 1000;
-          --simple-modal-min-height: unset;
-          --simple-modal-max-width: unset;
-          --simple-modal-max-height: unset;
-          --simple-modal-titlebar-color: #444;
-          --simple-modal-titlebar-background: #ddd;
-          --simple-modal-header-color: #222;
-          --simple-modal-header-background: #ccc;
-          --simple-modal-content-container-color: #222;
-          --simple-modal-content-container-background: #fff;
-          --simple-modal-buttons-color: blue;
-          --simple-modal-buttons-background: #fff;
-          --simple-modal-button-color: var(--simple-modal-buttons-color);
-          --simple-modal-button-background: var(
-            --simple-modal-buttons-background-color
-          );
         }
       `,
     ];
@@ -103,31 +84,7 @@ class SimpleModalTemplate extends LitElement {
   openModal(target, bubbles = true, cancelable = true) {
     let tplStyles = getComputedStyle(this),
       styles = {};
-    [
-      "--simple-modal-width",
-      "--simple-modal-height",
-      "--simple-modal-min-width",
-      "--simple-modal-z-index",
-      "--simple-modal-min-height",
-      "--simple-modal-max-width",
-      "--simple-modal-max-height",
-      "--simple-modal-titlebar-color",
-      "--simple-modal-titlebar-background",
-      "--simple-modal-header-color",
-      "--simple-modal-header-background",
-      "--simple-modal-content-container-color",
-      "--simple-modal-content-container-background",
-      "--simple-modal-buttons-color",
-      "--simple-modal-buttons-background",
-      "--simple-modal-button-color",
-      "--simple-modal-button-background",
-      "--simple-modal-titlebar-button-border",
-      "--simple-modal-titlebar-button-padding",
-      "--simple-modal-titlebar-button-outline",
-      "--simple-modal-titlebar-button-outline-offset",
-      "--simple-modal-titlebar-icon-width",
-      "--simple-modal-titlebar-icon-height",
-    ].forEach((prop) => {
+    SimpleModalCssVars.forEach((prop) => {
       styles[prop] = tplStyles.getPropertyValue(prop);
       // support mosterously large values
       if (prop == "--simple-modal-z-index") {
@@ -145,6 +102,7 @@ class SimpleModalTemplate extends LitElement {
           content: this._getSlot("content"),
           buttons: this._getSlot("buttons"),
         },
+        resize: this.resize,
         invokedBy: target,
         modalClass: this.getAttribute("class"),
         styles: styles,

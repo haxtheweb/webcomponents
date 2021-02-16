@@ -23,16 +23,17 @@
         <template>
             <style>
               simple-modal-template[modal-id="smt1"] {
-                  --simple-modal-width: 300px;
-                  --simple-modal-height: 300px;
+                --simple-modal-resize: both;
+                --simple-modal-width: 300px;
+                --simple-modal-height: 300px;
+                --simple-modal-min-width: 300px;
+                --simple-modal-min-height: 300px;
               }
-              simple-modal-template.wide {
-                  --simple-modal-width: 90vw;
-                  --simple-modal-height: 90vh;
-                  --simple-modal-min-width: unset;
-                  --simple-modal-min-height: unset;
-                  --simple-modal-max-width: 90vw;
-                  --simple-modal-max-height: 90vh;
+              simple-modal.wide {
+                --simple-modal-width: 75vw;
+                --simple-modal-height: 75vh;
+                --simple-modal-max-width: 90vw;
+                --simple-modal-max-height: 90vh;
               }
             </style>
           <button controls="smt1">Button 1</button>
