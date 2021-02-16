@@ -376,7 +376,12 @@ class MoocContent extends PolymerElement {
       // and menu items throughout the UI
       var urlAlias = route.path.replace("/" + this.elmslnCourse + "/", "");
       if (route.path.startsWith("/" + this.elmslnCourse + "/node/")) {
-        var tmp = route.path.split("/");
+        // ensure we dont end with a slash
+        var routePath = route.path;
+        if (routePath.endsWith("/")) {
+          routePath = routePath.substring(0, routePath.length - 1);
+        }
+        var tmp = routePath.split("/");
         // ensure this is a number so we know what we're doing
         if (
           !isNaN(parseFloat(tmp[tmp.length - 1])) &&
