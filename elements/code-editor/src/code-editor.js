@@ -39,15 +39,13 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           display: block;
           font-family: unset;
           margin: var(--code-pen-margin, 16px 0);
+          background-color: white;
+          color: #000;
         }
         :host([hidden]) {
           display: none !important;
         }
-        :host([theme="vs"]) #loading {
-          background-color: white;
-          color: #000;
-        }
-        :host([theme="vs-dark"]) #loading {
+        :host([theme="vs-dark"]) {
           background-color: #1e1e1e;
           color: #c6c6c6;
         }
@@ -86,6 +84,11 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           width: calc(100% - 2 * 74px);
           padding: 0 74px;
           height: 100%;
+          overflow-x: auto;
+          overflow-y: auto;
+          white-space: pre-wrap;
+          text-overflow: ellipsis;
+          font-family: monospace;
         }
         #codeeditor {
           height: 100%;
@@ -142,7 +145,9 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
    */
   render() {
     return html`
-      <label for="codeeditor" ?hidden="${!this.title}">${this.title}</label>
+      <label for="codeeditor" ?hidden="${!this.title}" part="label"
+        >${this.title}</label
+      >
       <monaco-element
         id="codeeditor"
         ?data-hidden="${!this.ready}"
@@ -159,18 +164,19 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         @code-editor-focus="${this._handleFocus}"
         @code-editor-blur="${this._handleBlur}"
         @monaco-element-ready="${(e) => (this.ready = true)}"
+        part="monaco"
       >
       </monaco-element>
       <pre
         id="loading"
         ?hidden="${this.ready}"
         style="font-size:${this.fontSize}px"
-      >
-${this.placeholder}</pre
-      >
+        part="preview"
+      ><code>
+${this.placeholder}</code></pre>
       <slot hidden></slot>
       ${this.showCodePen
-        ? html`<div class="code-pen-container">
+        ? html`<div class="code-pen-container" part="code-pen">
             <span>Check it out on code pen: </span
             ><code-pen-button .data="${this.codePenData}"></code-pen-button>
           </div>`
@@ -379,8 +385,10 @@ ${this.placeholder}</pre
   updateEditorValue() {
     var content = "";
     var children = this.children;
-    if (this.children[0] && this.children[0].tagName !== "TEMPLATE") {
+    console.log(this, children);
+    if (this.childNodes[0] && this.childNodes[0].tagName !== "TEMPLATE") {
       children = this.childNodes;
+      console.log(this, children);
       if (children.length > 0) {
         // loop through everything found in the slotted area and put it back in
         for (var j = 0, len2 = children.length; j < len2; j++) {
@@ -391,9 +399,11 @@ ${this.placeholder}</pre
           }
         }
       }
-    } else {
-      content = children.innerHTML;
+    } else if (children[0]) {
+      console.log(this, children);
+      content = children[0].innerHTML;
     }
+    console.log(this, children, content);
     if (content) {
       if (this.language === "html") {
         content = formatHTML(content);
