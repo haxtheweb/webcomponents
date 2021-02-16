@@ -194,14 +194,11 @@ class ActivityBox extends LitElement {
               ></simple-icon>
             `
           : html``}
-        ${this.tag
-          ? html`<div class="tag">
-              <span
-                ><simple-icon icon="check-circle"></simple-icon>${this
-                  .tag}</span
-              >
-            </div>`
-          : html``}
+        <div class="tag" ?hidden=${!this.tag}>
+          <span
+            ><simple-icon icon="check-circle"></simple-icon>${this.tag}</span
+          >
+        </div>
         <div class="pullout"><slot></slot></div>
       </div>
     `;
