@@ -112,7 +112,7 @@ function _templateObject6() {
     '"\n              ?controls="',
     '"\n              @click="',
     '"\n              @keypress="',
-    '"\n              tabindex="0"\n            >\n              ',
+    '"\n              tabindex="0"\n              part="button"\n            >\n              ',
     " ",
     "\n            </button>\n            ",
     "",
@@ -132,7 +132,7 @@ function _templateObject5() {
     '"\n              ?controls="',
     '"\n              @click="',
     '"\n              @keypress="',
-    '"\n              tabindex="0"\n            >\n              ',
+    '"\n              tabindex="0"\n              part="button"\n            >\n              ',
     " ",
     "\n            </button>\n            ",
     "",
@@ -148,7 +148,7 @@ function _templateObject5() {
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
     '<simple-tooltip\n        id="tooltip"\n        for="button"\n        position="',
-    '"\n        >',
+    '"\n        part="tooltip"\n        >',
     "</simple-tooltip\n      >",
   ]);
 
@@ -162,7 +162,7 @@ function _templateObject4() {
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
     '<span id="label" class="',
-    '"\n        >',
+    '" part="label"\n        >',
     "</span\n      >",
   ]);
 
@@ -176,7 +176,7 @@ function _templateObject3() {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '<simple-icon-lite\n        id="icon"\n        aria-hidden="true"\n        icon="',
-    '"\n      ></simple-icon-lite>',
+    '" \n        part="icon"\n      ></simple-icon-lite>',
   ]);
 
   _templateObject2 = function _templateObject2() {

@@ -290,6 +290,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         id="icon"
         aria-hidden="true"
         icon="${this.currentIcon}"
+        part="icon"
       ></simple-icon-lite>`;
     }
     /**
@@ -298,7 +299,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get labelTemplate() {
-      return html`<span id="label" class="${this.labelStyle}"
+      return html`<span id="label" class="${this.labelStyle}" part="label"
         >${this.currentLabel}</span
       >`;
     }
@@ -312,6 +313,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         id="tooltip"
         for="button"
         position="${this.tooltipDirection || "bottom"}"
+        part="tooltip"
         >${this.currentLabel}</simple-tooltip
       >`;
     }
@@ -331,6 +333,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
               tabindex="0"
+              part="button"
             >
               ${this.iconTemplate} ${this.labelTemplate}
             </button>
@@ -343,6 +346,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
               tabindex="0"
+              part="button"
             >
               ${this.iconTemplate} ${this.labelTemplate}
             </button>

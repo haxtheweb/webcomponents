@@ -126,6 +126,7 @@ const SimpleButtonGridBehaviors = function (SuperClass) {
             id="buttons"
             class="${!this.alwaysExpanded && this.collapsed ? "collapsed" : ""}"
             style="${this.gridStyles}"
+            part="buttons"
           >
             <slot></slot>
             ${this.alwaysExpanded ? "" : this.moreButton}

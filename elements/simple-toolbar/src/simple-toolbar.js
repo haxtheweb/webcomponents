@@ -315,6 +315,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         toggled-icon="${this.moreToggledIcon || ""}"
         toggled-label="${this.moreToggledLabel || ""}"
         tooltip-direction="${this.moreTooltipDirection || ""}"
+        part="morebutton"
       >
       </simple-toolbar-more-button>`;
     }
@@ -330,6 +331,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         <div
           id="buttons"
           class="${!this.alwaysExpanded && this.collapsed ? "collapsed" : ""}"
+          part="buttons"
         >
           <slot></slot>
         </div>

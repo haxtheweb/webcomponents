@@ -92,7 +92,7 @@ function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n        <div id="grid">\n          <div\n            id="buttons"\n            class="',
     '"\n            style="',
-    '"\n          >\n            <slot></slot>\n            ',
+    '" \n            part="buttons"\n          >\n            <slot></slot>\n            ',
     "\n          </div>\n        </div>\n      ",
   ]);
 

@@ -105,7 +105,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            position: relative;\n            display: flex;\n            align-items: flex-start;\n            opacity: 1;\n            z-index: 2;\n            margin: 0;\n            justify-content: space-between;\n            background-color: var(--simple-toolbar-border-bg);\n            font-size: 12px;\n            transition: all 0.5s;\n            margin: 0;\n            padding: 0;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          #buttons {\n            flex-wrap: wrap;\n            display: flex;\n            justify-content: flex-start;\n            flex: 1 1 auto;\n            overflow-y: visible;\n          }\n          #morebutton {\n            flex: 0 0 auto;\n            justify-content: flex-end;\n          }\n          ::slotted(.group) {\n            display: flex;\n            flex-wrap: nowrap;\n            justify-content: space-evenly;\n            align-items: stretch;\n            padding: var(--simple-toolbar-group-padding, 0 3px);\n            margin: 0;\n            flex: 0 1 auto;\n            overflow-y: visible;\n          }\n          ::slotted(.group:not(:last-child)) {\n            border-right: var(\n                --simple-toolbar-group-border-width,\n                var(--simple-toolbar-border-width, 1px)\n              )\n              solid\n              var(\n                --simple-toolbar-border-color,\n                var(--simple-toolbar-group-border-color, transparent)\n              );\n          }\n          ::slotted(*:hover)\n          ::slotted(*:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100);\n          }\n          :host([collapsed]:not([always-expanded]))\n            ::slotted(*[collapse-hide]) {\n            display: none !important;\n          }\n        ",
+    "\n          :host {\n            position: relative;\n            display: flex;\n            align-items: flex-start;\n            opacity: 1;\n            z-index: 2;\n            margin: 0;\n            justify-content: space-between;\n            background-color: var(--simple-toolbar-border-bg);\n            font-size: 12px;\n            transition: all 0.5s;\n            margin: 0;\n            padding: 0;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          #buttons {\n            flex-wrap: wrap;\n            display: flex;\n            justify-content: flex-start;\n            flex: 1 1 auto;\n            overflow-y: visible;\n          }\n          #morebutton {\n            flex: 0 0 auto;\n            justify-content: flex-end;\n          }\n          ::slotted(.group) {\n            display: flex;\n            flex-wrap: nowrap;\n            justify-content: space-evenly;\n            align-items: stretch;\n            padding: var(--simple-toolbar-group-padding, 0 3px);\n            margin: 0;\n            flex: 0 1 auto;\n            overflow-y: visible;\n          }\n          ::slotted(.group:not(:last-child)) {\n            border-right: var(\n                --simple-toolbar-group-border-width,\n                var(--simple-toolbar-border-width, 1px)\n              )\n              solid\n              var(\n                --simple-toolbar-border-color,\n                var(--simple-toolbar-group-border-color, transparent)\n              );\n          }\n          ::slotted(*:hover) ::slotted(*:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100);\n          }\n          :host([collapsed]:not([always-expanded]))\n            ::slotted(*[collapse-hide]) {\n            display: none !important;\n          }\n        ",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -130,7 +130,7 @@ function _templateObject3() {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n        <div\n          id="buttons"\n          class="',
-    '"\n        >\n          <slot></slot>\n        </div>\n        ',
+    '" part="buttons"\n        >\n          <slot></slot>\n        </div>\n        ',
     "\n      ",
   ]);
 
@@ -154,7 +154,7 @@ function _templateObject() {
     '"\n        toggled-icon="',
     '"\n        toggled-label="',
     '"\n        tooltip-direction="',
-    '"\n      >\n      </simple-toolbar-more-button>',
+    '"\n        part="morebutton"\n      >\n      </simple-toolbar-more-button>',
   ]);
 
   _templateObject = function _templateObject() {
