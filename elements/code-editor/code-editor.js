@@ -36,11 +36,14 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     return [
       css`
         :host {
-          display: block;
+          display: flex;
+          flex-direction: column;
           font-family: unset;
+          align-items: stretch;
           margin: var(--code-pen-margin, 16px 0);
           background-color: white;
           color: #000;
+          width: 100%;
         }
         :host([hidden]) {
           display: none !important;
@@ -67,10 +70,12 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         code-pen-button {
           float: right;
           height: 40px;
+          flex: 0 0 40px;
         }
         label {
           color: var(--code-editor-label-color, #888);
           transition: all 0.5s;
+          flex: 0 0 auto;
         }
 
         :host([focused]) label {
@@ -81,18 +86,16 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         }
 
         #loading {
-          width: calc(100% - 2 * 74px);
           padding: 0 74px;
-          height: 100%;
-          overflow-x: auto;
-          overflow-y: auto;
+          flex: 1 1 auto;
+          overflow: hidden;
           white-space: pre-wrap;
           text-overflow: ellipsis;
           font-family: monospace;
         }
         #codeeditor {
+          flex: 1 1 auto;
           height: 100%;
-          display: flex;
           border: var(--code-editor-code-border);
           border-radius: var(--code-editor-code-border-radius);
         }
@@ -164,7 +167,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         @code-editor-focus="${this._handleFocus}"
         @code-editor-blur="${this._handleBlur}"
         @monaco-element-ready="${(e) => (this.ready = true)}"
-        part="monaco"
+        part="code"
       >
       </monaco-element>
       <pre
@@ -173,7 +176,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         style="font-size:${this.fontSize}px"
         part="preview"
       ><code>
-${this.placeholder}</code></pre>
+  ${this.placeholder}</code></pre>
       <slot hidden></slot>
       ${this.showCodePen
         ? html`<div class="code-pen-container" part="code-pen">

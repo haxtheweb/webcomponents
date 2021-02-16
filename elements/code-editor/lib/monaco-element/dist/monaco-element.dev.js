@@ -344,7 +344,7 @@ var MonacoElement =
                 .concat(this.wordWrap, ",\n          readOnly: ")
                 .concat(
                   this.readOnly,
-                  ",\n          minimap: {\n            enabled: true\n          },\n          tabSize: "
+                  ",\n          automaticLayout: true,\n          minimap: {\n            enabled: true\n          },\n          tabSize: "
                 )
                 .concat(
                   this.tabSize,

@@ -216,6 +216,7 @@ class MonacoElement extends LitElement {
           fontSize: ${this.fontSize},
           wordWrap: ${this.wordWrap},
           readOnly: ${this.readOnly},
+          automaticLayout: true,
           minimap: {
             enabled: true
           },
