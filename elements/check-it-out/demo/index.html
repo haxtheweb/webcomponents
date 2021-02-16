@@ -11,16 +11,25 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../check-it-out.js';
-      import '../lib/check-it-out-modal.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      check-it-out {
+        --check-it-out-container-width: 100%;
+      }
+    </style>
+
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic check-it-out demo</h3>
       <demo-snippet>
         <template>
-          <center>
+          <div style="text-align: center;">
+            <h1>stackblitz modal demo</h1>
+            <check-it-out modal type="code" modal-title="React ew" ctl view="both" source="https://stackblitz.com/edit/react-brwwcr?embed=1&file=src/App.js">
+              Click me
+            </check-it-out>
             <h1>stackblitz demo</h1>
             <check-it-out  type="code" ctl view="both" source="https://stackblitz.com/edit/react-brwwcr?embed=1&file=src/App.js">
               Click me
@@ -36,7 +45,7 @@
             <h1>YT video demo</h1>
             <check-it-out   label="Click to watch" source="https://www.youtube.com/watch?v=8gMDhXWMxRg&t=281s">
             </check-it-out>
-          </center> 
+          </div> 
         </template>
       </demo-snippet>
     </div>
