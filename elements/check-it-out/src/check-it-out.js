@@ -63,6 +63,18 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
             inputMethod: "textfield",
           },
           {
+            property: "modal",
+            title: "Enable Modal Mode",
+            description: "Puts content inside a popup modal",
+            inputMethod: "boolean",
+          },
+          {
+            property: "modal-title",
+            title: "Popup Modal Title",
+            description: "Puts a title at the top of popup modal",
+            inputMethod: "textfield",
+          },
+          {
             property: "filePath",
             title: "File Path",
             description: "File path for stackblitz embed",
@@ -385,7 +397,8 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
       pdf: "book",
       video: "av:play-arrow",
     };
-    this.icon = "";
+    this.icon = "code";
+    this.modalTitle = "";
     this.checkedOut = false;
     this.type = "";
     this.hideExplorer = false;
@@ -393,8 +406,12 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
     this.view = "both";
   }
 
-  _handleClick() {
-    if (!this._haxstate && !this.modal) {
+  _handleClick(event) {
+    if (this._haxstate && this.modal) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+    } else if (!this._haxstate && !this.modal) {
       if (this.checkedOut) {
         this.checkedOut = false;
       } else {
