@@ -44,26 +44,28 @@ class SimpleFieldsFieldset extends LitElement {
   }
   render() {
     return html`
-      <fieldset>${this.legend} ${this.desc} ${this.fields}</fieldset>
+      <fieldset part="fieldset">
+        ${this.legend} ${this.desc} ${this.fields}
+      </fieldset>
     `;
   }
   get legend() {
     return html`
-      <legend id="label" ?hidden="${!this.label}">
+      <legend id="label" ?hidden="${!this.label}" part="legend">
         ${this.label}${this.error ? "*" : ""}
       </legend>
     `;
   }
   get desc() {
     return html`
-      <div id="description" ?hidden="${!this.description}">
+      <div id="description" ?hidden="${!this.description}" part="description">
         ${this.description}
       </div>
     `;
   }
   get fields() {
     return html`
-      <div id="item-fields">
+      <div id="item-fields" part="fields">
         <slot></slot>
       </div>
     `;

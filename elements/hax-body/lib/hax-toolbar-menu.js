@@ -1,102 +1,125 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
-import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
-import { HAXStore } from "./hax-store.js";
-import { autorun, toJS } from "mobx";
-
-class HaxToolbarMenu extends LitElement {
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import { A11yMenuButtonBehaviors } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
+/**
+ * `hax-toolbar-menu`
+ * `An icon / button that has support for multiple options via drop down.`
+ *
+ * @microcopy - the mental model for this element
+ * - panel - the flyout from left or right side that has elements that can be placed
+ * - button - an item that expresses what interaction you will have with the content.
+ *
+ * @extends A11yMenuButtonBehaviors
+ * @element hax-toolbar-menu
+ *
+ */
+class HaxToolbarMenu extends A11yMenuButtonBehaviors(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
   static get styles() {
     return [
+      ...super.styles,
       css`
-        :host {
-          display: block;
-          box-sizing: border-box;
+        .sr-only {
+          position: absolute;
+          left: -99999999px;
+          width: 0;
+          height: 0;
+          overflow: hidden;
         }
-        simple-icon-lite {
-          --simple-icon-height: 10px;
-          --simple-icon-width: 10px;
+        :host([disabled]) {
+          pointer-events: none;
+        }
+        :host([danger]) {
+          --a11y-menu-button-focus-color: var(
+            --hax-toolbar-button-danger-color,
+            #882222
+          );
+          --a11y-menu-button-focus-border: 1px solid
+            var(--hax-toolbar-button-danger-color, #882222);
+        }
+        button {
+          display: flex;
+          flex-wrap: none;
+          align-items: center;
+          min-width: 42px;
+          padding: var(--hax-menu-button-menu-padding);
+          font-family: var(--simple-fields-font-family, sans-serif);
+          text-transform: capitalize;
+        }
+        .label {
+          padding: 0 5px;
+        }
+        #dropdownicon {
+          --simple-icon-height: 18px;
+          --simple-icon-width: 18px;
           margin-left: -2px;
         }
-        .flip-icon {
-          transform: rotateY(180deg);
+        #menu {
+          width: var(--hax-menu-button-menu-width);
+          min-width: var(--hax-menu-button-menu-min-idth);
+        }
+        absolute-position-behavior {
+          --a11y-menu-button-border: 1px solid
+            var(--hax-toolbar-button-hover-border-color, #000);
+          z-index: 1001;
         }
       `,
     ];
   }
-  render() {
+  constructor() {
+    super();
+    this._blockEvent = false;
+    this.disabled = false;
+    this.direction = "top";
+    this.label = "";
+  }
+
+  get buttonTemplate() {
     return html`
-      <simple-popover-selection
-        @simple-popover-selection-changed="${this.selectedChanged}"
-        ?disabled="${this.disabled}"
-        auto
-        orientation="tb"
+      <button
+        id="menubutton"
+        aria-haspopup="true"
+        aria-controls="menu"
+        aria-expanded="${this.expanded ? "true" : "false"}"
       >
-        <div slot="style">
-          simple-popover-manager hax-context-item { overflow: hidden; display:
-          flex; } simple-popover-manager { --simple-popover-padding: 0; }
-          hax-context-item-textop[hidden] { opacity: 0; display: none;
-          visibility: hidden; }
-        </div>
-        <hax-toolbar-item
-          ?mini="${this.mini}"
-          ?disabled="${this.disabled}"
-          ?action="${this.action}"
-          slot="button"
+        <simple-icon-lite
           icon="${this.icon}"
-          .hidden="${!this.icon}"
-          .class="${this.iconClass}"
-          tooltip="${this.tooltip}"
+          aria-hidden="true"
+          ?hidden=${!this.icon}
+        ></simple-icon-lite>
+        <span class="${!this.icon || this.showTextLabel ? "label" : "sr-only"}"
+          >${this.label}</span
         >
-          <simple-icon-lite icon="hax:expand-more"></simple-icon-lite>
-        </hax-toolbar-item>
-        <div slot="options">
-          <slot></slot>
-        </div>
-      </simple-popover-selection>
+        <simple-icon-lite
+          id="dropdownicon"
+          icon="arrow-drop-down"
+          aria-hidden="true"
+        ></simple-icon-lite>
+      </button>
+      <simple-tooltip for="menubutton" ?hidden="${!this.icon}"
+        >${this.label}</simple-tooltip
+      >
     `;
   }
-  selectedChanged(e) {
-    this.shadowRoot.querySelector("simple-popover-selection").opened = false;
-    this.selected = e.detail.value;
+  /**
+   * template for slotted list items
+   *
+   * @readonly
+   */
+  get listItemTemplate() {
+    return html`<slot name="menuitem"></slot>`;
+  }
+  selectedValueChanged(e) {
+    this.selectedValue = e.detail;
   }
   static get tag() {
     return "hax-toolbar-menu";
   }
-  constructor() {
-    super();
-    this.corner = "";
-    this.action = false;
-    this.disabled = false;
-    this.tooltip = "";
-    this.tooltipDirection = "";
-    this.selected = 0;
-    setTimeout(() => {
-      this.addEventListener("click", this._menubuttonTap.bind(this));
-    }, 0);
-    autorun(() => {
-      // this just forces this block to run when editMode is modified
-      const editMode = toJS(HAXStore.editMode);
-      const activeNode = toJS(HAXStore.activeNode);
-      if (
-        this.shadowRoot &&
-        this.shadowRoot.querySelector("simple-popover-selection")
-      ) {
-        this.shadowRoot.querySelector(
-          "simple-popover-selection"
-        ).opened = false;
-      }
-    });
-  }
   static get properties() {
     return {
-      /**
-       * corner
-       */
-      corner: {
-        type: String,
-        reflect: true,
-      },
+      ...super.properties,
       /**
        * disabled state
        */
@@ -104,50 +127,51 @@ class HaxToolbarMenu extends LitElement {
         type: Boolean,
         reflect: true,
       },
-      mini: {
+      /**
+       * Internal flag to allow blocking the event firing if machine selects tag.
+       */
+      _blockEvent: {
+        type: Boolean,
+      },
+
+      /**
+       * Show text label even if an icon is named?
+       */
+      showTextLabel: {
+        attribute: "show-text-label",
         type: Boolean,
         reflect: true,
       },
-      action: {
-        type: Boolean,
+      /**
+       * Direction for the tooltip
+       */
+      direction: {
+        type: String,
       },
+      /**
+       * Icon for the button.
+       */
       icon: {
         type: String,
+        reflect: true,
       },
-      tooltip: {
+      /**
+       * Label for the button.
+       */
+      label: {
         type: String,
+        reflect: true,
       },
-      tooltipDirection: {
+      /**
+       * Name of the event to bubble up as being tapped.
+       * This can be used to tell other elements what was
+       * clicked so it can take action appropriately.
+       */
+      eventName: {
         type: String,
-        attribute: "tooltip-direction",
-      },
-      selected: {
-        type: Number,
+        attribute: "event-name",
       },
     };
-  }
-  /**
-   * property changed callback
-   */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "selected") {
-        // fire an event that this is a core piece of the system
-        this.dispatchEvent(
-          new CustomEvent("selected-changed", {
-            detail: this[propName],
-          })
-        );
-      }
-    });
-  }
-  /**
-   * Ensure menu is visible / default'ed.
-   */
-  _menubuttonTap(e) {
-    if (!this.disabled) {
-      this.selected = "";
-    }
   }
 }
 window.customElements.define(HaxToolbarMenu.tag, HaxToolbarMenu);

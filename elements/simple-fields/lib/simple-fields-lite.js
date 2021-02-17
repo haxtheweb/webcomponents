@@ -232,7 +232,7 @@ class SimpleFieldsLite extends LitElement {
   // render function
   render() {
     return html`
-      <div id="schema-fields" aria-live="polite">
+      <div id="schema-fields" aria-live="polite" part="fields-list">
         <slot></slot>
       </div>
     `;

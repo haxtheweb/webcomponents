@@ -60,7 +60,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject10() {
   var data = _taggedTemplateLiteral([
-    '\n          :host {\n            flex: 0 1 auto;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(--simple-toolbar-button-height, 24px)\n            );\n            white-space: nowrap;\n          }\n          :host([hidden]) {\n            display: none;\n          }\n          #button {\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(--simple-toolbar-button-height, 24px)\n            );\n            min-height: var(--simple-toolbar-button-height, 24px);\n            margin: 0;\n            padding: var(--simple-toolbar-button-padding, 0);\n            color: var(--simple-toolbar-button-color);\n            border-color: var(\n              --simple-toolbar-button-border-color,\n              var(--simple-toolbar-border-color, transparent)\n            );\n            background-color: var(--simple-toolbar-button-bg, transparent);\n            opacity: var(--simple-toolbar-button-opacity, 1);\n            border-width: var(\n              --simple-toolbar-button-border-width,\n              var(--simple-toolbar-border-width, 1px)\n            );\n            border-radius: var(--simple-toolbar-border-radius, 3px);\n            border-style: solid;\n            text-transform: unset;\n            display: flex;\n            flex: 0 1 auto;\n            white-space: nowrap;\n            align-items: stretch;\n            transition: all 0.5s;\n          }\n          #button[aria-pressed="true"] {\n            color: var(--simple-toolbar-button-toggled-color);\n            border-color: var(--simple-toolbar-toggled-border-color);\n            background-color: var(--simple-toolbar-button-toggled-bg);\n            opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);\n          }\n          #button:focus,\n          #button:hover {\n            color: var(--simple-toolbar-button-hover-color);\n            background-color: var(--simple-toolbar-button-hover-bg);\n            border-color: var(--simple-toolbar-hover-border-color);\n            opacity: var(--simple-toolbar-button-hover-opacity, 0.8);\n          }\n          #button[disabled] {\n            cursor: not-allowed;\n            color: var(--simple-toolbar-button-disabled-color, unset);\n            background-color: var(--simple-toolbar-button-disabled-bg, unset);\n            opacity: var(--simple-toolbar-button-disabled-opacity, 0.5);\n          }\n        ',
+    '\n          :host {\n            flex: 0 1 auto;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n            white-space: nowrap;\n            transition: all 0.5s;\n          }\n          :host(:hover),\n          :host(:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100);\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          #button {\n            font-size: inherit;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n            min-height: var(--simple-toolbar-button-height, 24px);\n            margin: 0;\n            padding: var(--simple-toolbar-button-padding, 0);\n            color: var(--simple-toolbar-button-color);\n            border-color: var(\n              --simple-toolbar-button-border-color,\n              var(--simple-toolbar-border-color, transparent)\n            );\n            background-color: var(--simple-toolbar-button-bg, transparent);\n            opacity: var(--simple-toolbar-button-opacity, 1);\n            border-width: var(\n              --simple-toolbar-button-border-width,\n              var(--simple-toolbar-border-width, 1px)\n            );\n            border-radius: var(--simple-toolbar-border-radius, 3px);\n            border-style: solid;\n            text-transform: unset;\n            display: flex;\n            flex: var(--simple-toolbar-button-flex, 0 0 auto);\n            white-space: nowrap;\n            align-items: center;\n            transition: all 0.5s;\n            width: 100%;\n            height: 100%;\n            justify-content: var(--simple-toolbar-button-justify, space-around);\n          }\n          :host([icon-position="top"]) #button,\n          :host([icon-position="bottom"]) #button {\n            justify-content: space-evenly;\n          }\n          :host([icon-position="top"]) #button {\n            flex-direction: column;\n          }\n          :host([icon-position="bottom"]) #button {\n            flex-direction: column-reverse;\n          }\n          :host([icon-position="right"]) #button {\n            flex-direction: row-reverse;\n          }\n          #button[aria-pressed="true"] {\n            color: var(--simple-toolbar-button-toggled-color);\n            border-color: var(--simple-toolbar-button-toggled-border-color);\n            background-color: var(--simple-toolbar-button-toggled-bg);\n            opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);\n          }\n          #button:focus,\n          #button:hover {\n            color: var(--simple-toolbar-button-hover-color);\n            background-color: var(--simple-toolbar-button-hover-bg);\n            border-color: var(--simple-toolbar-button-hover-border-color);\n            opacity: var(--simple-toolbar-button-hover-opacity, 0.8);\n          }\n          #button[disabled] {\n            cursor: not-allowed;\n            color: var(--simple-toolbar-button-disabled-color, unset);\n            background-color: var(--simple-toolbar-button-disabled-bg, unset);\n            border-color: var(--simple-toolbar-button-disabled-border-color, unset);\n            opacity: var(--simple-toolbar-button-disabled-opacity, 0.5);\n          }\n        ',
   ]);
 
   _templateObject10 = function _templateObject10() {
@@ -84,7 +84,7 @@ function _templateObject9() {
 
 function _templateObject8() {
   var data = _taggedTemplateLiteral([
-    "\n          #icon:not([icon]) {\n            display: none;\n          }\n          #icon[icon] {\n            width: var(\n              --simple-toolbar-button-min-width,\n              var(--simple-toolbar-button-height, 24px)\n            );\n            height: var(--simple-toolbar-button-height, 24px);\n            flex: 0 0 auto;\n          }\n        ",
+    "\n          #icon:not([icon]) {\n            display: none;\n          }\n          #icon[icon] {\n            width: var(\n              --simple-toolbar-button-width,\n              var(--simple-toolbar-button-height, 24px)\n            );\n            height: var(--simple-toolbar-button-height, 24px);\n            flex: 0 0 auto;\n          }\n        ",
   ]);
 
   _templateObject8 = function _templateObject8() {
@@ -96,7 +96,7 @@ function _templateObject8() {
 
 function _templateObject7() {
   var data = _taggedTemplateLiteral([
-    "\n          .offscreen {\n            position: absolute;\n            left: -999999px;\n            top: 0;\n            height: 0;\n            width: 0;\n            overflow: hidden;\n          }\n        ",
+    "\n          #label {\n            padding: 0 var(--simple-toolbar-button-label-padding, 2px);\n            white-space: var(--simple-toolbar-button-label-white-space, normal);\n          }\n          .offscreen {\n            position: absolute;\n            left: -999999px;\n            top: 0;\n            height: 0;\n            width: 0;\n            overflow: hidden;\n          }\n        ",
   ]);
 
   _templateObject7 = function _templateObject7() {
@@ -112,7 +112,7 @@ function _templateObject6() {
     '"\n              ?controls="',
     '"\n              @click="',
     '"\n              @keypress="',
-    '"\n              tabindex="0"\n            >\n              ',
+    '"\n              tabindex="0"\n              part="button"\n            >\n              ',
     " ",
     "\n            </button>\n            ",
     "",
@@ -132,7 +132,7 @@ function _templateObject5() {
     '"\n              ?controls="',
     '"\n              @click="',
     '"\n              @keypress="',
-    '"\n              tabindex="0"\n            >\n              ',
+    '"\n              tabindex="0"\n              part="button"\n            >\n              ',
     " ",
     "\n            </button>\n            ",
     "",
@@ -147,7 +147,8 @@ function _templateObject5() {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    '<simple-tooltip id="tooltip" for="button"\n        >',
+    '<simple-tooltip\n        id="tooltip"\n        for="button"\n        position="',
+    '"\n        part="tooltip"\n        >',
     "</simple-tooltip\n      >",
   ]);
 
@@ -161,7 +162,7 @@ function _templateObject4() {
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
     '<span id="label" class="',
-    '"\n        >',
+    '" part="label"\n        >',
     "</span\n      >",
   ]);
 
@@ -175,7 +176,7 @@ function _templateObject3() {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '<simple-icon-lite\n        id="icon"\n        aria-hidden="true"\n        icon="',
-    '"\n      ></simple-icon-lite>',
+    '"\n        part="icon"\n      ></simple-icon-lite>',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -341,10 +342,6 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
-/**
- * @customElement
- * @class
- */
 var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
   SuperClass
 ) {
@@ -403,6 +400,15 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
               },
 
               /**
+               * Optionally place icon at top, bottom, or right of label
+               */
+              iconPosition: {
+                type: String,
+                attribute: "icon-position",
+                reflect: true,
+              },
+
+              /**
                * Optional space-separated list of shortcut keys
                */
               shortcutKeys: {
@@ -416,6 +422,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
               showTextLabel: {
                 attribute: "show-text-label",
                 type: Boolean,
+                reflect: true,
               },
 
               /**
@@ -454,6 +461,15 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
               toggled: {
                 attribute: "toggled",
                 type: Boolean,
+              },
+
+              /**
+               * Direction that the tooltip should flow
+               */
+              tooltipDirection: {
+                type: String,
+                attribute: "tooltip-direction",
+                reflect: true,
               },
             };
           },
@@ -559,7 +575,9 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
           {
             key: "_defaultOrToggled",
             value: function _defaultOrToggled(toggledOff, toggledOn) {
-              return !!toggledOn && this.isToggled ? toggledOn : toggledOff;
+              return (!!toggledOn || toggledOn == "") && this.isToggled
+                ? toggledOn
+                : toggledOff;
             },
             /**
              * handles button click
@@ -586,6 +604,12 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
             key: "toggle",
             value: function toggle() {
               if (this.toggles) this.toggled = !this.toggled;
+            },
+          },
+          {
+            key: "click",
+            value: function click(e) {
+              this._handleClick(e);
             },
             /**
              * updates toolbar buttonregistry as needed
@@ -715,7 +739,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
             get: function get() {
               return (0, _litElement.html)(
                 _templateObject3(),
-                this.labelStyle,
+                this.labelStyle || "",
                 this.currentLabel
               );
             },
@@ -730,6 +754,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
             get: function get() {
               return (0, _litElement.html)(
                 _templateObject4(),
+                this.tooltipDirection || "bottom",
                 this.currentLabel
               );
             },
@@ -769,7 +794,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
         ],
         [
           {
-            key: "offScreenStyles",
+            key: "labelStyles",
             get: function get() {
               return [(0, _litElement.css)(_templateObject7())];
             },
@@ -819,7 +844,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                 ),
                 _toConsumableArray(this.buttonStyles),
                 _toConsumableArray(this.iconStyles),
-                _toConsumableArray(this.offScreenStyles),
+                _toConsumableArray(this.labelStyles),
                 _toConsumableArray(this.tooltipStyles)
               );
             },
@@ -843,6 +868,7 @@ for styling:
 Custom property | Description | Default
 ----------------|-------------|----------
 --simple-toolbar-button-height | button height | 24px
+--simple-toolbar-button-flex | flex for button in a toolbar | 0 0 auto
 --simple-toolbar-button-min-width | button min-width | --simple-toolbar-button-height
 --simple-toolbar-button-padding | button padding | 0
 --simple-toolbar-button-opacity | button opacity | 1

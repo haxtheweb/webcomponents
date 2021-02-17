@@ -492,9 +492,10 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ["checkbox", "color", "radio"].includes(this.type || "text")
           ? "field-main inline"
           : "field-main"}"
+        part="field-main"
       >
         ${this.labelTemplate}
-        <div>
+        <div part="field-main-inner">
           ${this.prefixTemplate}
           ${this.fieldElementTag === "input"
             ? this.inputTemplate
@@ -517,7 +518,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get fieldMeta() {
-    return html` <div id="fieldmeta" aria-live="polite"></div> `;
+    return html`
+      <div id="fieldmeta" aria-live="polite" part="field-meta"></div>
+    `;
   }
 
   /**
@@ -529,15 +532,22 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    */
   get fieldsetTemplate() {
     return html`
-      <fieldset>
-        <legend class="label-main" ?hidden="${!this.label}">
+      <fieldset part="fieldset">
+        <legend
+          class="label-main"
+          ?hidden="${!this.label}"
+          part="fieldset-legend"
+        >
           ${this.label}${this.error || this.required ? "*" : ""}
         </legend>
-        <div id="options">
+        <div id="options" part="fieldset-options">
           ${(this.sortedOptions || []).map(
             (option) => html`
-              <div class="option inline">
-                <label for="${this.id}.${option.value}" class="radio-label"
+              <div class="option inline" part="option">
+                <label
+                  for="${this.id}.${option.value}"
+                  class="radio-label"
+                  part="option-label"
                   >${option.text}</label
                 >${this.getInput(option)}
               </div>
@@ -580,7 +590,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         : (this.value || []).includes((option || {}).value),
       icon = this.getOptionIcon(checked);
     return html`
-      <span class="input-option">
+      <span class="input-option" part="option-inner">
         <input
           ?autofocus="${this.autofocus}"
           aria-descrbedby="${this.describedBy || ""}"
@@ -609,6 +619,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           tabindex="0"
           type="${this.type}"
           value="${!option ? this.value : (option || {}).value}"
+          part="option-input"
         />
         ${this.type !== "checkbox" && this.type !== "radio"
           ? ""
@@ -616,6 +627,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
               <simple-icon-lite
                 icon="${icon}"
                 @click="${(e) => this._handleIconClick(checked, option)}"
+                part="option-icon"
               >
               </simple-icon-lite>
             `}
@@ -704,10 +716,12 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?readonly="${this.readonly}"
         ?required="${this.required}"
         tabindex="0"
+        part="select"
       >
         ${(this.sortedOptions || []).map(
           (option) => html`
             <option
+              part="select-option"
               .id="${this.id}.${option.value}"
               ?selected="${this.multiple
                 ? this.value && this.value.includes(option.value)
@@ -756,6 +770,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?required="${this.required}"
         rows="1"
         tabindex="0"
+        part="textarea"
       >
 ${this.value || ""}</textarea
       >

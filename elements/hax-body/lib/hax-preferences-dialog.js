@@ -24,28 +24,12 @@ class HaxPreferencesDialog extends LitElement {
         :host {
           display: block;
         }
-        .title {
-          position: relative;
-          padding: 16px;
-          outline: 0;
-          font-weight: 600;
-          text-align: left;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-          font-size: 18px;
-          line-height: 18px;
-          font-family: "Noto Serif", serif;
-        }
         .pref-container {
           text-align: left;
-          padding: 16px;
         }
         #link {
-          color: #81a3a9;
-          font-size: 18px;
-          padding: 16px;
-          font-style: italic;
+          font-size: 125%;
+          margin: calc(2 * var(--hax-tray-margin, 4px)) auto;
         }
         simple-icon-button {
           float: right;
@@ -91,14 +75,6 @@ class HaxPreferencesDialog extends LitElement {
   }
   render() {
     return html`
-      <h3 class="title">
-        <simple-icon-lite icon="hax:settings"></simple-icon-lite>
-        ${this.title}
-        <simple-icon-button
-          icon="close"
-          @click="${this.closeBtn}"
-        ></simple-icon-button>
-      </h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <simple-fields
           id="settingsform"
@@ -107,6 +83,7 @@ class HaxPreferencesDialog extends LitElement {
         >
         </simple-fields>
       </div>
+      <br />
       ${!this.hideLink
         ? html`<a
             href="https://haxtheweb.org/"

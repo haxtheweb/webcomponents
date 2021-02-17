@@ -11,21 +11,107 @@ require("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
 
 require("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
 
-require("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
+require("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
+
+require("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu-item.js");
 
 require("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
 
 require("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
 
-require("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
-
-require("@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js");
+var _haxToolbar = require("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
 
 var _SimpleTourFinder2 = require("@lrnwebcomponents/simple-popover/lib/SimpleTourFinder");
 
 var _haxStore = require("./hax-store.js");
 
 var _mobx = require("mobx");
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
+}
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -45,43 +131,13 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
-function _templateObject3() {
-  var data = _taggedTemplateLiteral([
-    ' <button slot="options" value="',
-    '">\n                <simple-icon-lite icon="',
-    '"></simple-icon-lite>\n                ',
-    "\n              </button>",
-  ]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <hax-toolbar id="toolbar">\n        <simple-popover-selection\n          slot="primary"\n          @simple-popover-selection-changed="',
-    '"\n          auto\n          orientation="tb"\n          id="textformat"\n        >\n          <div slot="style">\n            simple-popover-manager button { color: black; font-size: 10px\n            !important; margin: 0; padding: 4px; text-align:left; overflow:\n            hidden; min-height: unset; width: 100%; display: block;\n            justify-content: start; align-items: center; border: 0; }\n            simple-popover-manager button simple-icon-lite {\n            --simple-icon-height: 18px; --simple-icon-width: 18px; margin-right:\n            8px; }\n          </div>\n          <hax-context-item\n            action\n            mini\n            slot="button"\n            id="formatsize"\n            icon="',
-    '"\n            label="Text format"\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            <div slot="tour" data-stop-content>\n              Change how the text is structured and visualized in the page.\n            </div>\n          </hax-context-item>\n          ',
-    '\n        </simple-popover-selection>\n        <!-- comment this in when rich-text-editor is viable -->\n        <!--\n        <hax-context-item\n          mini\n          action\n          hidden\n          slot="primary"\n          icon="icons:flip-to-back"\n          label="Full text editor"\n          event-name="hax-full-text-editor-toggle"\n        ></hax-context-item> -->\n        <hax-context-item\n          mini\n          action\n          slot="primary"\n          icon="icons:code"\n          label="Modify HTML source"\n          ?hidden="',
-    '"\n          event-name="hax-source-view-toggle"\n        ></hax-context-item>\n        <hax-context-item-textop\n          mini\n          action\n          slot="primary"\n          icon="editor:format-list-bulleted"\n          event-name="text-tag-ul"\n          label="Bulleted list"\n          .hidden="',
-    '"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          mini\n          action\n          slot="primary"\n          icon="editor:format-list-numbered"\n          label="Numbered list"\n          event-name="text-tag-ol"\n          .hidden="',
-    '"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          mini\n          action\n          slot="primary"\n          icon="editor:format-indent-decrease"\n          label="Outdent"\n          event-name="text-outdent"\n          .hidden="',
-    '"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          mini\n          action\n          slot="primary"\n          icon="editor:format-indent-increase"\n          label="Indent"\n          event-name="text-indent"\n          .hidden="',
-    '"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          mini\n          action\n          slot="primary"\n          icon="editor:format-bold"\n          label="Bold"\n          class="selected-buttons"\n          event-name="text-bold"\n          ?hidden="',
-    '"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          mini\n          action\n          slot="primary"\n          icon="editor:format-italic"\n          label="Italic"\n          class="selected-buttons"\n          event-name="text-italic"\n          ?hidden="',
-    '"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          mini\n          action\n          slot="primary"\n          icon="editor:insert-link"\n          label="Link"\n          class="selected-buttons"\n          event-name="text-link"\n          ?hidden="',
-    '"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          mini\n          action\n          slot="primary"\n          icon="mdextra:unlink"\n          label="Remove link"\n          class="selected-buttons"\n          event-name="text-unlink"\n          ?hidden="',
-    '"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          mini\n          action\n          slot="primary"\n          icon="editor:format-clear"\n          label="Remove format"\n          class="selected-buttons"\n          event-name="text-remove-format"\n          ?hidden="',
-    '"\n        ></hax-context-item-textop>\n        <hax-context-item\n          mini\n          action\n          slot="primary"\n          icon="hax:add-brick"\n          label="Add element to selection"\n          class="selected-buttons"\n          event-name="insert-inline-gizmo"\n          ?hidden="',
-    '"\n        ></hax-context-item>\n        <hax-context-item-textop\n          mini\n          action\n          slot="primary"\n          icon="hax:add-brick"\n          label="Add element to selection"\n          class="selected-buttons"\n          event-name="insert-inline-gizmo"\n          ?hidden="',
-    '"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          action\n          menu\n          slot="more"\n          icon="mdextra:subscript"\n          event-name="text-subscript"\n          ?hidden="',
-    '"\n          >Subscript</hax-context-item-textop\n        >\n        <hax-context-item-textop\n          action\n          menu\n          slot="more"\n          icon="mdextra:superscript"\n          event-name="text-superscript"\n          ?hidden="',
-    '"\n          >Superscript</hax-context-item-textop\n        >\n        <hax-context-item-textop\n          action\n          menu\n          slot="more"\n          icon="editor:format-underlined"\n          event-name="text-underline"\n          ?hidden="',
-    '"\n          >Underline</hax-context-item-textop\n        >\n        <hax-context-item-textop\n          action\n          menu\n          slot="more"\n          icon="editor:format-strikethrough"\n          event-name="text-strikethrough"\n          ?hidden="',
-    '"\n          >Cross out</hax-context-item-textop\n        >\n        <hax-context-item-textop\n          action\n          menu\n          slot="more"\n          icon="hardware:keyboard-arrow-up"\n          event-name="insert-above-active"\n          >Insert item above</hax-context-item-textop\n        >\n        <hax-context-item-textop\n          action\n          menu\n          slot="more"\n          icon="hardware:keyboard-arrow-down"\n          event-name="insert-below-active"\n          >Insert item below</hax-context-item-textop\n        >\n      </hax-toolbar>\n    ',
+    ' <hax-toolbar-menu-item slot="menuitem">\n                  <hax-context-item-textop\n                    action\n                    role="menuitem"\n                    label="',
+    '"\n                    show-text-label\n                    ?hidden="',
+    '"\n                    event-name="',
+    '"\n                    @click="',
+    '"\n                  ></hax-context-item-textop>\n                </hax-toolbar-menu-item>',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -93,7 +149,28 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n          pointer-events: none;\n        }\n        :host [hidden] {\n          display: none;\n        }\n        simple-popover-selection {\n          display: flex;\n        }\n        .selected-buttons {\n          transition: 0.1s all ease-in-out;\n          width: 0;\n        }\n        :host([has-selected-text]) .selected-buttons {\n          width: 100%;\n        }\n        #toolbar {\n          overflow: hidden;\n        }\n        button {\n          color: black;\n          -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n          font-size: 11px;\n          line-height: 24px;\n          margin: 0;\n          padding: 0 4px;\n          min-height: 24px;\n        }\n        button:hover {\n          cursor: pointer;\n          color: black;\n        }\n        simple-icon-lite {\n          --simple-icon-height: 20px;\n          --simple-icon-width: 20px;\n          padding: 4px;\n        }\n        hax-context-item-textop,\n        hax-context-item {\n          transition: all 0.2s linear;\n          visibility: visible;\n          opacity: 1;\n        }\n        hax-context-item-textop[hidden],\n        hax-context-item[hidden] {\n          visibility: hidden;\n          opacity: 0;\n        }\n        :host(.hax-context-pin-top) hax-toolbar {\n          position: fixed;\n          top: 0px;\n          flex-direction: column;\n        }\n      ",
+    '\n      <div id="buttons">\n        <div class="group">\n          <hax-toolbar-menu\n            id="textformat"\n            icon="',
+    '"\n            label="Format"\n            show-text-label\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            ',
+    '\n            <div slot="tour" data-stop-content>\n              Change how the text is structured and visualized in the page.\n            </div>\n          </hax-toolbar-menu>\n          <!-- comment this in when rich-text-editor is viable -->\n          <!--\n          <hax-context-item\n            action\n            hidden\n            icon="icons:flip-to-back"\n            label="Full text editor"\n            event-name="hax-full-text-editor-toggle"\n          ></hax-context-item> -->\n          <slot name="primary"></slot>\n          <hax-context-item\n            action\n            icon="icons:code"\n            label="Modify HTML source"\n            ?hidden="',
+    '"\n            event-name="hax-source-view-toggle"\n            toggles \n            ?toggled="',
+    '"\n            @click="',
+    '"\n          ></hax-context-item>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-list-bulleted"\n            event-name="text-tag-ul"\n            label="Bulleted list"\n            .hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-list-numbered"\n            label="Numbered list"\n            event-name="text-tag-ol"\n            .hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-indent-decrease"\n            label="Outdent"\n            event-name="text-outdent"\n            .hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-indent-increase"\n            label="Indent"\n            event-name="text-indent"\n            .hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-bold"\n            label="Bold"\n            class="selected-buttons"\n            event-name="text-bold"\n            ?hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-italic"\n            label="Italic"\n            class="selected-buttons"\n            event-name="text-italic"\n            ?hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:insert-link"\n            label="Link"\n            class="selected-buttons"\n            event-name="text-link"\n            ?hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="mdextra:unlink"\n            label="Remove link"\n            class="selected-buttons"\n            event-name="text-unlink"\n            ?hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-clear"\n            label="Remove format"\n            class="selected-buttons"\n            event-name="text-remove-format"\n            ?hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item\n            mini\n            action\n            icon="hax:add-brick"\n            label="Add element to selection"\n            class="selected-buttons"\n            event-name="insert-inline-gizmo"\n            ?hidden="',
+    '"\n          ></hax-context-item>\n          <hax-context-item-textop\n            mini\n            action\n            icon="hax:add-brick"\n            label="Add element to selection"\n            class="selected-buttons"\n            event-name="insert-inline-gizmo"\n            ?hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="mdextra:subscript"\n            event-name="text-subscript"\n            ?hidden="',
+    '"\n            label="Subscript"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="mdextra:superscript"\n            event-name="text-superscript"\n            ?hidden="',
+    '"\n            label="Superscript"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="editor:format-underlined"\n            label="Underline"\n            event-name="text-underline"\n            ?hidden="',
+    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="editor:format-strikethrough"\n            event-name="text-strikethrough"\n            ?hidden="',
+    '"\n            label="Cross out"\n          ></hax-context-item-textop>\n          <hax-toolbar-menu icon="add" label="Insert item above or below">\n            <hax-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                role="menuitem"\n                show-text-label\n                icon="hardware:keyboard-arrow-up"\n                event-name="insert-above-active"\n                label="Insert item above"\n              ></hax-context-item>\n            </hax-toolbar-menu-item>\n            <hax-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                role="menuitem"\n                show-text-label\n                icon="hardware:keyboard-arrow-down"\n                event-name="insert-below-active"\n                label="Insert item below"\n              ></hax-context-item>\n            </hax-toolbar-menu-item>\n          </hax-toolbar-menu>\n          <slot name="secondary"></slot>\n          <slot name="more"></slot>\n        </div>\n      </div>\n      ',
+    "\n    ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -116,6 +193,22 @@ function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
 }
 
 function _possibleConstructorReturn(self, call) {
@@ -168,22 +261,6 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function");
@@ -215,15 +292,6 @@ var HaxTextContext =
   /*#__PURE__*/
   (function (_SimpleTourFinder) {
     _inherits(HaxTextContext, _SimpleTourFinder);
-
-    _createClass(HaxTextContext, null, [
-      {
-        key: "styles",
-        get: function get() {
-          return [(0, _litElement.css)(_templateObject())];
-        },
-      },
-    ]);
 
     function HaxTextContext() {
       var _this;
@@ -296,7 +364,7 @@ var HaxTextContext =
         },
       ];
       _this.realSelectedValue = "p";
-      _this.formatIcon = "hax:format-textblock";
+      _this.formatIcon = "hax:paragraph";
       _this.isSafari = _this._isSafari();
       (0, _mobx.autorun)(function () {
         _this.hasSelectedText =
@@ -306,6 +374,7 @@ var HaxTextContext =
         // this just forces this block to run when editMode is modified
         var editMode = (0, _mobx.toJS)(_haxStore.HAXStore.editMode);
         var activeNode = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode);
+        _this.viewSource = false;
 
         if (activeNode && activeNode.tagName) {
           var schema = _haxStore.HAXStore.haxSchemaFromTag(activeNode.tagName);
@@ -352,16 +421,31 @@ var HaxTextContext =
       [
         {
           key: "render",
+
+          /**
+     *
+          
+     *
+     * @returns
+     * @memberof HaxTextContext
+     */
           value: function render() {
+            var _this2 = this;
+
             return (0, _litElement.html)(
-              _templateObject2(),
-              this.textFormatChanged,
-              this.formatIcon,
+              _templateObject(),
+              this._formatIcon(this.realSelectedValue || this.formatIcon),
               this.formattingList.map(function (val) {
                 return (0,
-                _litElement.html)(_templateObject3(), val.value, val.icon, val.text);
+                _litElement.html)(_templateObject2(), val.text, !_this2.sourceView, val.value, function (e) {
+                  return _this2.textFormatChanged(val.value);
+                });
               }),
               !this.sourceView,
+              this.viewSource,
+              function (e) {
+                return (_this2.viewSource = !_this2.viewSource);
+              },
               !this._showLists,
               !this._showLists,
               !this._showIndent,
@@ -376,18 +460,17 @@ var HaxTextContext =
               !this.hasSelectedText,
               !this.hasSelectedText,
               !this.hasSelectedText,
-              !this.hasSelectedText
+              !this.hasSelectedText,
+              this.moreButton
             );
           },
         },
         {
           key: "textFormatChanged",
-          value: function textFormatChanged(e) {
+          value: function textFormatChanged(tag) {
             // set internally
-            this.shadowRoot.querySelector(
-              "simple-popover-selection"
-            ).opened = false;
-            this.updateTextIconSelection(e.detail.getAttribute("value")); // notify up above that we want to change the tag
+            this.shadowRoot.querySelector("#textformat").collapsed = true;
+            this.updateTextIconSelection(tag); // notify up above that we want to change the tag
 
             this.dispatchEvent(
               new CustomEvent("hax-context-item-selected", {
@@ -405,49 +488,36 @@ var HaxTextContext =
         {
           key: "updateTextIconSelection",
           value: function updateTextIconSelection(tag) {
-            this.realSelectedValue = tag; // clear active if there is one
-
-            if (
-              this.shadowRoot.querySelector(
-                "[data-simple-popover-selection-active]"
-              )
-            ) {
-              this.shadowRoot
-                .querySelector("[data-simple-popover-selection-active]")
-                .removeAttribute("data-simple-popover-selection-active");
-            }
-
-            var localItem = this.shadowRoot.querySelector(
-              'button[value="' + this.realSelectedValue + '"]'
-            );
-
-            if (localItem) {
-              localItem.setAttribute(
-                "data-simple-popover-selection-active",
-                true
-              );
-              this.formatIcon = localItem
-                .querySelector("simple-icon-lite")
-                .getAttribute("icon");
-            }
+            this.realSelectedValue = tag;
+          },
+        },
+        {
+          key: "_formatIcon",
+          value: function _formatIcon() {
+            var tag =
+              arguments.length > 0 && arguments[0] !== undefined
+                ? arguments[0]
+                : this.realSelectedValue || "p";
+            var icon = this.textFormatLookup[tag] || {};
+            return icon || "hax:paragraph";
           },
         },
         {
           key: "updated",
           value: function updated(changedProperties) {
-            var _this2 = this;
+            var _this3 = this;
 
             changedProperties.forEach(function (oldValue, propName) {
               // computed based on these changing
               if (propName == "realSelectedValue") {
-                _this2._showIndent = _this2._computeShowIndent(
-                  _this2.realSelectedValue
+                _this3._showIndent = _this3._computeShowIndent(
+                  _this3.realSelectedValue
                 );
 
-                if (_this2.realSelectedValue == "p") {
-                  _this2._showLists = true;
+                if (_this3.realSelectedValue == "p") {
+                  _this3._showLists = true;
                 } else {
-                  _this2._showLists = false;
+                  _this3._showLists = false;
                 }
               }
             });
@@ -721,8 +791,29 @@ var HaxTextContext =
             return false;
           },
         },
+        {
+          key: "textFormatLookup",
+          get: function get() {
+            var lookup = {};
+            this.formattingList.forEach(function (item) {
+              lookup[item.value] = item.icon;
+            });
+            return lookup;
+          },
+        },
       ],
       [
+        {
+          key: "styles",
+          get: function get() {
+            return [].concat(
+              _toConsumableArray(
+                _get(_getPrototypeOf(HaxTextContext), "styles", this)
+              ),
+              [(0, _litElement.css)(_templateObject3())]
+            );
+          },
+        },
         {
           key: "tag",
           get: function get() {
@@ -732,55 +823,66 @@ var HaxTextContext =
         {
           key: "properties",
           get: function get() {
-            return {
-              _showIndent: {
-                type: Boolean,
-              },
-              _showLists: {
-                type: Boolean,
-              },
-              realSelectedValue: {
-                type: String,
-              },
-              sourceView: {
-                type: Boolean,
-              },
-              formattingList: {
-                type: Array,
-              },
+            return _objectSpread(
+              {},
+              _get(_getPrototypeOf(HaxTextContext), "properties", this),
+              {
+                _showIndent: {
+                  type: Boolean,
+                },
+                _showLists: {
+                  type: Boolean,
+                },
+                realSelectedValue: {
+                  type: String,
+                },
+                sourceView: {
+                  type: Boolean,
+                },
+                formattingList: {
+                  type: Array,
+                },
 
-              /**
-               * calculated boolean off of if there is currently text
-               */
-              hasSelectedText: {
-                type: Boolean,
-                attribute: "has-selected-text",
-                reflect: true,
-              },
+                /**
+                 * calculated boolean off of if there is currently text
+                 */
+                hasSelectedText: {
+                  type: Boolean,
+                  attribute: "has-selected-text",
+                  reflect: true,
+                },
 
-              /**
-               * Selected item icon
-               */
-              formatIcon: {
-                type: String,
-                attribute: "format-icon",
-              },
+                /**
+                 * Selected item icon
+                 */
+                formatIcon: {
+                  type: String,
+                  attribute: "format-icon",
+                },
 
-              /**
-               * Is this safari
-               */
-              isSafari: {
-                type: Boolean,
-                attribute: "is-safari",
-              },
-            };
+                /**
+                 * Is this safari
+                 */
+                isSafari: {
+                  type: Boolean,
+                  attribute: "is-safari",
+                },
+                viewSource: {
+                  type: Boolean,
+                },
+              }
+            );
           },
         },
       ]
     );
 
     return HaxTextContext;
-  })((0, _SimpleTourFinder2.SimpleTourFinder)(_litElement.LitElement));
+  })(
+    (0, _SimpleTourFinder2.SimpleTourFinder)(
+      (0, _haxToolbar.HaxToolbarBehaviors)(_litElement.LitElement)
+    )
+  );
 
 exports.HaxTextContext = HaxTextContext;
 window.customElements.define(HaxTextContext.tag, HaxTextContext);

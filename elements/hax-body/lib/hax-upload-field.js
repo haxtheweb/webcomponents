@@ -1,3 +1,4 @@
+import { html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsUpload } from "@lrnwebcomponents/simple-fields/lib/simple-fields-upload.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
@@ -9,14 +10,17 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
   constructor() {
     super();
     this.__winEvents = {
-      "hax-app-picker-selection": "_haxAppPickerSelection",
+      "hax-app-picker-selection": "_haxAppPickerSelection", //TODO
     };
+  }
+  _canUpload() {
+    return !this.__allowUpload && HAXStore;
   }
   /**
    * Respond to uploading a file
    */
   _fileAboutToUpload(e) {
-    if (!this.__allowUpload && HAXStore) {
+    if (this._canUpload()) {
       // cancel the event so we can jump in
       e.preventDefault();
       e.stopPropagation();
@@ -50,6 +54,43 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
     } else {
       this.__allowUpload = false;
     }
+  }
+  /**
+   * Event for an app being selected from a picker
+   * This happens when multiple upload targets support the given type
+   */
+  _haxAppPickerSelection(e) {
+    // details for where to upload the file
+    let connection = e.detail.connection;
+    this.__appUsed = e.detail;
+    this.shadowRoot.querySelector("#fileupload").method =
+      connection.operations.add.method;
+    let requestEndPoint = connection.protocol + "://" + connection.url;
+    // ensure we build a url correctly
+    if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
+      requestEndPoint += "/";
+    }
+    // support local end point modification
+    if (typeof connection.operations.add.endPoint !== typeof undefined) {
+      requestEndPoint += connection.operations.add.endPoint;
+    }
+    // implementation specific tweaks to talk to things like HAXcms and other CMSs
+    // that have per load token based authentication
+    if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
+      requestEndPoint += "?" + HAXStore.connectionRewrites.appendUploadEndPoint;
+    }
+    if (HAXStore.connectionRewrites.appendJwt != null) {
+      requestEndPoint +=
+        "&" +
+        HAXStore.connectionRewrites.appendJwt +
+        "=" +
+        localStorage.getItem(HAXStore.connectionRewrites.appendJwt);
+    }
+    this.shadowRoot.querySelector("#fileupload").headers = connection.headers;
+    this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
+    // invoke file uploading...
+    this.__allowUpload = true;
+    this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
   /**
    * Respond to successful file upload, now inject url into url field and
@@ -91,43 +132,6 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
     }
     // set the value of the url which will update our URL and notify
     this.shadowRoot.querySelector("#url").value = item.url;
-  }
-  /**
-   * Event for an app being selected from a picker
-   * This happens when multiple upload targets support the given type
-   */
-  _haxAppPickerSelection(e) {
-    // details for where to upload the file
-    let connection = e.detail.connection;
-    this.__appUsed = e.detail;
-    this.shadowRoot.querySelector("#fileupload").method =
-      connection.operations.add.method;
-    let requestEndPoint = connection.protocol + "://" + connection.url;
-    // ensure we build a url correctly
-    if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
-      requestEndPoint += "/";
-    }
-    // support local end point modification
-    if (typeof connection.operations.add.endPoint !== typeof undefined) {
-      requestEndPoint += connection.operations.add.endPoint;
-    }
-    // implementation specific tweaks to talk to things like HAXcms and other CMSs
-    // that have per load token based authentication
-    if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
-      requestEndPoint += "?" + HAXStore.connectionRewrites.appendUploadEndPoint;
-    }
-    if (HAXStore.connectionRewrites.appendJwt != null) {
-      requestEndPoint +=
-        "&" +
-        HAXStore.connectionRewrites.appendJwt +
-        "=" +
-        localStorage.getItem(HAXStore.connectionRewrites.appendJwt);
-    }
-    this.shadowRoot.querySelector("#fileupload").headers = connection.headers;
-    this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
-    // invoke file uploading...
-    this.__allowUpload = true;
-    this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
 }
 

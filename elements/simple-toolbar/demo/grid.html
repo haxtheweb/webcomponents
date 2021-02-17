@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleToolbar: simple-toolbar Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/simple-button-grid.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-button-grid demo</h3>
+      <demo-snippet>
+        <template>
+          <simple-button-grid style="border:1px solid #ddd" more-show-text-label more-icon-position="top" columns="3" rows="2">
+              <simple-toolbar-button class="button" icon="save" label="Save" show-text-label icon-position="top"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="cancel" label="Cancel" show-text-label icon-position="top"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="undo" label="Undo" show-text-label icon-position="top"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="redo" label="Redo" show-text-label icon-position="top"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="editor:format-bold" label="Bold" show-text-label icon-position="top"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="editor:format-italic" label="Italics" toggles show-text-label icon-position="top"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="star" label="Favorite" toggles show-text-label icon-position="top"></simple-toolbar-button>
+          </simple-button-grid>
+        </template>
+      </demo-snippet>
+      <h3>simple-toolbar demo when always-expanded</h3>
+      <demo-snippet>
+        <template>
+          <simple-button-grid style="width:200px;border:1px solid #ddd" always-expanded columns="3" rows="1">
+              <simple-toolbar-button class="button" icon="save" label="Save"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="cancel" label="Cancel"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="undo" label="Undo"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="redo" label="Redo"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="editor:format-bold" label="Bold" shortcut-keys="ctrl+b"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="editor:format-italic" label="Italics" shortcut-keys="ctrl+i"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="star" label="Favorite" toggles></simple-toolbar-button>
+          </simple-button-grid>
+        </template>
+      </demo-snippet>
+      <h3>simple-toolbar demo constrained by height</h3>
+      <demo-snippet>
+        <template>
+          <simple-button-grid style="max-height:60px;border:1px solid #ddd" more-show-text-label more-icon-position="bottom" columns="2">
+            <simple-toolbar-button class="button" icon="save" label="Save" show-text-label icon-position="bottom"></simple-toolbar-button>
+            <simple-toolbar-button class="button" icon="cancel" label="Cancel" show-text-label icon-position="bottom"></simple-toolbar-button>
+            <simple-toolbar-button class="button" icon="undo" label="Undo" show-text-label icon-position="bottom"></simple-toolbar-button>
+            <simple-toolbar-button class="button" icon="redo" label="Redo" show-text-label icon-position="bottom"></simple-toolbar-button>
+            <simple-toolbar-button class="button" icon="editor:format-bold" label="Bold" shortcut-keys="ctrl+b" show-text-label icon-position="bottom"></simple-toolbar-button>
+            <simple-toolbar-button class="button" icon="editor:format-italic" label="Italics" shortcut-keys="ctrl+i" show-text-label icon-position="bottom"></simple-toolbar-button>
+            <simple-toolbar-button class="button" icon="star" label="Favorite" toggles show-text-label icon-position="bottom"></simple-toolbar-button>
+          </simple-button-grid>
+        </template>
+      </demo-snippet>
+      <h3>Loading simple-toolbar from a config object</h3>
+      <demo-snippet>
+        <template>
+          <simple-button-grid id="load-from-config" style="width:200px;border:1px solid #ddd" columns="3" rows="2"></simple-button-grid>
+          <script>
+            window.onload = () => {
+              let toolbar = document.getElementById('load-from-config');
+              toolbar.config = [
+                { icon: "save",label: "Save",shortcutKeys: "ctrl+s",type: "simple-toolbar-button"},
+                { icon: "cancel",label: "Cancel",type: "simple-toolbar-button"},
+                {icon: "editor:format-bold",label: "Bold",shortcutKeys: "ctrl+b",toggles: true,type: "simple-toolbar-button",},
+                {icon: "editor:format-italic",label: "Italics",shortcutKeys: "ctrl+i",toggles: true,type: "simple-toolbar-button",},{command: "removeFormat",icon: "editor:format-clear",label: "Erase Format",type: "simple-toolbar-button",},
+                {command: "undo",icon: "undo",label: "Undo",shortcutKeys: "ctrl+z",type: "simple-toolbar-button",},
+                {command: "redo",icon: "redo",label: "Redo",shortcutKeys: "ctrl+shift+z",type: "simple-toolbar-button",},
+                { icon: "star",label: "Favorite",type: "simple-toolbar-button"},
+              ];
+              toolbar.addEventListener('shortcut-key-pressed',e=>console.log('button-event',e));
+            }
+          </script>
+        </template>
+      </demo-snippet-->
+    </div>
+  </body>
+</html>

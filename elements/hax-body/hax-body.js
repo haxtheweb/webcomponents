@@ -176,39 +176,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           );
           --hax-body-possible-target-background-color: inherit;
         }
-        #addincontext {
-          opacity: 0.5;
-          transition: 0.2s opacity ease-in-out;
+        #topcontext {
+          z-index: 3;
         }
-        #addincontext:hover,
-        #addincontext:active,
-        #addincontext:focus {
-          opacity: 1;
-          cursor: pointer;
-        }
-        .hax-context-menu {
-          padding: 0;
-          margin-left: -5000px;
-          position: fixed;
-          visibility: hidden;
-          opacity: 0;
-          z-index: 1000;
-          float: left;
-          display: block;
-          pointer-events: none;
-          transition: 0.2s top ease-in-out, 0.2s left ease-in-out;
-        }
-        #textcontextmenu.hax-context-menu {
-          z-index: 1000;
-        }
-        .hax-context-visible {
-          position: absolute;
-          visibility: visible;
-          pointer-events: all;
-          opacity: 1;
-        }
-        .hax-context-menu-active {
-          margin-left: unset;
+        #bottomcontext {
+          z-index: 1;
         }
         :host([edit-mode]) #bodycontainer ::slotted([contenteditable]) {
           -webkit-appearance: textfield;
@@ -422,8 +394,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.haxMover = false;
     this.activeNode = null;
     setTimeout(() => {
-      import("./lib/hax-text-context.js");
+      import("./lib/hax-context-container.js");
       import("./lib/hax-ce-context.js");
+      import("./lib/hax-text-context.js");
       import("./lib/hax-plate-context.js");
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
       this.polyfillSafe = HAXStore.computePolyfillSafe();
@@ -522,7 +495,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           this._positionContextMenu(
             this.contextMenus.add,
             this.__activeHover,
-            activeRect.width / 2 - addRect.width / 2,
             height
           );
         } else if (
@@ -587,12 +559,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }
 
           // wow, we have an in context addition menu just like that
-          this._positionContextMenu(
-            this.contextMenus.add,
-            posMenuEl,
-            activeRect.width / 2 - addRect.width / 2,
-            height
-          );
+          this._positionContextMenu(this.contextMenus.add, height);
         } else if (eventPath[0].closest("#bodycontainer")) {
           this.__activeHover = null;
           this._hideContextMenu(this.contextMenus.add);
@@ -691,27 +658,31 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       <div id="bodycontainer" class="ignore-activation">
         <slot id="body"></slot>
       </div>
-      <hax-text-context
-        id="textcontextmenu"
-        class="hax-context-menu ignore-activation"
-      ></hax-text-context>
-      <hax-ce-context
-        id="cecontextmenu"
-        class="hax-context-menu ignore-activation"
-      ></hax-ce-context>
-      <hax-plate-context
-        id="platecontextmenu"
-        class="hax-context-menu ignore-activation"
-      ></hax-plate-context>
-      <hax-context-item
-        id="addincontext"
-        class="hax-context-menu ignore-activation"
-        icon="icons:add-circle"
-        label="Add here"
-        mini
-        circle
-      >
-      </hax-context-item>
+      <hax-context-container id="topcontext">
+        <hax-text-context
+          id="textcontextmenu"
+          class="hax-context-menu ignore-activation"
+        ></hax-text-context>
+        <hax-ce-context
+          id="cecontextmenu"
+          class="hax-context-menu ignore-activation"
+        ></hax-ce-context>
+        <hax-plate-context
+          id="platecontextmenu"
+          class="hax-context-menu ignore-activation"
+        ></hax-plate-context>
+      </hax-context-container>
+      <hax-context-container id="bottomcontext" below>
+        <hax-context-item
+          id="addincontext"
+          class="hax-context-menu ignore-activation"
+          icon="icons:add"
+          label="Insert Content"
+          show-text-label
+          feature
+        >
+        </hax-context-item>
+      </hax-context-container>
     `;
   }
   /**
@@ -1132,13 +1103,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
         // if we see it, ensure we don't have the pin
         if (el) {
-          if (this.activeNode && this.elementMidViewport()) {
-            el.classList.add("hax-context-pin-top");
-            this.contextMenus.plate.classList.add("hax-context-pin-top");
-          } else {
-            el.classList.remove("hax-context-pin-top");
-            this.contextMenus.plate.classList.remove("hax-context-pin-top");
-          }
+          this._setSticky(el);
           this.positionContextMenus();
         }
       }, 100);
@@ -1810,7 +1775,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.__positionContextTimer = setTimeout(() => {
         if (!HAXStore._lockContextPosition) {
           // menu width starts out w/ the plate context which is a set size
-          let menuWidth = 140;
           let tag = node.tagName.toLowerCase();
           if (HAXStore._isSandboxed && tag === "webview") {
             tag = "iframe";
@@ -1826,17 +1790,15 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             // check for core editing element OR it providing it's own experience entirely
             // otherwise we'll pick it up in the specific element via activeNode change hooks
             if (props.editingElement == "core") {
-              this._positionContextMenu(this.contextMenus.ce, node, 0, -28);
+              this._positionContextMenu(this.contextMenus.ce, node);
             } else {
               this._hideContextMenu(this.contextMenus.ce);
             }
-            menuWidth += 28;
           } else {
             this._hideContextMenu(this.contextMenus.ce);
-            this._positionContextMenu(this.contextMenus.text, node, 0, -28);
+            this._positionContextMenu(this.contextMenus.text, node);
             // text menu can expand based on selection
             let textRect = this.contextMenus.text.getBoundingClientRect();
-            menuWidth += textRect.width;
           }
           if (!props || props.editingElement == "core") {
             let activeRect = node.getBoundingClientRect();
@@ -1850,19 +1812,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 this._HTMLInlineTextDecorationTest(this.activeNode))
             ) {
               this._hideContextMenu(this.contextMenus.plate);
-            }
-            // need to account for the item being small than the menu
-            else if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
-              this._positionContextMenu(this.contextMenus.plate, node, 0, -56);
             } else {
-              this._positionContextMenu(
-                this.contextMenus.plate,
-                node,
-                activeRect.width -
-                  this.contextMenus.plate.getBoundingClientRect().width +
-                  1,
-                -26
-              );
+              this._positionContextMenu(this.contextMenus.plate, node);
             }
           } else {
             setTimeout(() => {
@@ -1870,15 +1821,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 let activeRect = node.parentNode.getBoundingClientRect();
                 this._positionContextMenu(
                   this.contextMenus.plate,
-                  node.parentNode,
-                  activeRect.width -
-                    this.contextMenus.plate.getBoundingClientRect().width +
-                    1,
-                  -26
+                  node.parentNode
                 );
               }
             }, 250);
           }
+          this._setSticky(this.contextMenus.plate);
         }
       }, 50);
     }
@@ -3421,36 +3369,62 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Handle display and position of the context menu
    */
-  _positionContextMenu(menu, target, xoffset, yoffset) {
+  _positionContextMenu(menu, target, offsetY = 0) {
     // make it account for the offset if it's floated over to one side
     // or inside of something that's over that way
+    let container = this._getContextContainer(menu);
     if (target != null) {
-      let pos = this._getPosition(target);
-      if (xoffset != null) {
-        menu.style["left"] = pos.x + xoffset + "px";
-      } else {
-        menu.style["left"] = pos.x + "px";
-      }
-      if (yoffset != null) {
-        menu.style["top"] = pos.y + yoffset + "px";
-      } else {
-        menu.style["top"] = pos.y + "px";
-      }
+      let pos = this._getPosition(target),
+        body = this.getBoundingClientRect();
+      container.style.setProperty(
+        "--hax-context-container-top",
+        pos.y + offsetY + "px"
+      );
+      container.style.setProperty(
+        "--hax-context-container-width",
+        this.clientWidth ? this.clientWidth + "px" : "100%"
+      );
+      container.style.setProperty(
+        "--hax-context-container-left",
+        body && body.left ? body.left + "px" : "0px"
+      );
     }
+    if (container) container.menusVisible = true;
     menu.setAttribute("on-screen", "on-screen");
     menu.classList.add("hax-context-visible", "hax-context-menu-active");
+  }
+  /**
+   * gets context container
+   */
+  _getContextContainer(el) {
+    let parent = !el || !el.parentNode ? undefined : el.parentNode,
+      container =
+        !parent || !parent.nodeType
+          ? undefined
+          : parent.nodeType == 1
+          ? parent
+          : parent.host;
+    return container;
+  }
+  /**
+   * sets stickiness of container
+   */
+  _setSticky(el, on = true) {
+    if (!el || !this._getContextContainer(el)) return;
+    let container = this._getContextContainer(el),
+      sticky = on && this.activeNode && this.elementMidViewport();
+    container.menuSticky = sticky;
   }
   /**
    * Simple hide / reset of whatever menu it's handed.
    */
   _hideContextMenu(menu) {
+    let container = this._getContextContainer(menu);
     menu.removeAttribute("on-screen");
     menu.visible = false;
-    menu.classList.remove(
-      "hax-context-visible",
-      "hax-context-pin-top",
-      "hax-context-menu-active"
-    );
+    menu.classList.remove("hax-context-visible", "hax-context-menu-active");
+    this._setSticky(menu);
+    if (container) container.menusVisible = false;
   }
   /**
    * Find the next thing to tab forward to.

@@ -47,6 +47,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
             );
             padding: var(--simple-icon-button-padding, 0px);
             margin: 0px;
+            width: 100%;
           }
           button[aria-pressed] {
             opacity: var(--simple-icon-button-toggled-opacity, 1);
@@ -76,6 +77,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
             --simple-icon-button-background-color: var(
               --simple-icon-button-disabled-background-color
             );
+            cursor: not-allowed;
           }
 
           simple-icon-lite {

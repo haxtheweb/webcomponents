@@ -36,12 +36,21 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     return [
       css`
         :host {
-          display: block;
+          display: flex;
+          flex-direction: column;
           font-family: unset;
+          align-items: stretch;
           margin: var(--code-pen-margin, 16px 0);
+          background-color: white;
+          color: #000;
+          width: 100%;
         }
         :host([hidden]) {
           display: none !important;
+        }
+        :host([theme="vs-dark"]) {
+          background-color: #1e1e1e;
+          color: #c6c6c6;
         }
         .code-pen-container:not([hidden]) {
           width: 100%;
@@ -61,10 +70,12 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         code-pen-button {
           float: right;
           height: 40px;
+          flex: 0 0 40px;
         }
         label {
           color: var(--code-editor-label-color, #888);
           transition: all 0.5s;
+          flex: 0 0 auto;
         }
 
         :host([focused]) label {
@@ -74,11 +85,22 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           );
         }
 
+        #loading {
+          padding: 0 74px;
+          flex: 1 1 auto;
+          overflow: hidden;
+          white-space: pre-wrap;
+          text-overflow: ellipsis;
+          font-family: monospace;
+        }
         #codeeditor {
+          flex: 1 1 auto;
           height: 100%;
-          display: flex;
           border: var(--code-editor-code-border);
           border-radius: var(--code-editor-code-border-radius);
+        }
+        #codeeditor[data-hidden] {
+          height: 0px;
         }
 
         :host([focused]) #codeeditor {
@@ -126,9 +148,12 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
    */
   render() {
     return html`
-      <label for="codeeditor" ?hidden="${!this.title}">${this.title}</label>
+      <label for="codeeditor" ?hidden="${!this.title}" part="label"
+        >${this.title}</label
+      >
       <monaco-element
         id="codeeditor"
+        ?data-hidden="${!this.ready}"
         ?autofocus="${this.autofocus}"
         ?hide-line-numbers="${this.hideLineNumbers}"
         lib-path="${this.libPath}"
@@ -141,16 +166,29 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         ?read-only="${this.readOnly}"
         @code-editor-focus="${this._handleFocus}"
         @code-editor-blur="${this._handleBlur}"
+        @monaco-element-ready="${(e) => (this.ready = true)}"
+        part="code"
       >
       </monaco-element>
+      <pre
+        id="loading"
+        ?hidden="${this.ready}"
+        style="font-size:${this.fontSize}px"
+        part="preview"
+      ><code>
+  ${this.placeholder}</code></pre>
       <slot hidden></slot>
       ${this.showCodePen
-        ? html`<div class="code-pen-container">
+        ? html`<div class="code-pen-container" part="code-pen">
             <span>Check it out on code pen: </span
             ><code-pen-button .data="${this.codePenData}"></code-pen-button>
           </div>`
         : ``}
     `;
+  }
+  get placeholder() {
+    let content = `${this.editorValue || this.innerHTML}`;
+    return content.replace(/\s*<\/?template.*>\s*/gm, "");
   }
 
   static get tag() {
@@ -210,6 +248,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
        */
       theme: {
         type: String,
+        reflect: true,
       },
       /**
        * Mode / language for editor
@@ -261,6 +300,9 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       tabSize: {
         type: Number,
         attribute: "tab-size",
+      },
+      ready: {
+        type: Boolean,
       },
     };
   }
@@ -346,7 +388,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   updateEditorValue() {
     var content = "";
     var children = this.children;
-    if (this.children[0] && this.children[0].tagName !== "TEMPLATE") {
+    if (this.childNodes[0] && this.childNodes[0].tagName !== "TEMPLATE") {
       children = this.childNodes;
       if (children.length > 0) {
         // loop through everything found in the slotted area and put it back in
@@ -358,8 +400,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           }
         }
       }
-    } else {
-      content = children.innerHTML;
+    } else if (children[0]) {
+      content = children[0].innerHTML;
     }
     if (content) {
       if (this.language === "html") {

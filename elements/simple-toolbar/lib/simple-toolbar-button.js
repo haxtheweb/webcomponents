@@ -7,10 +7,6 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
-/**
- * @customElement
- * @class
- */
 const SimpleToolbarButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**
@@ -57,6 +53,15 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         },
 
         /**
+         * Optionally place icon at top, bottom, or right of label
+         */
+        iconPosition: {
+          type: String,
+          attribute: "icon-position",
+          reflect: true,
+        },
+
+        /**
          * Optional space-separated list of shortcut keys
          */
         shortcutKeys: {
@@ -70,6 +75,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         showTextLabel: {
           attribute: "show-text-label",
           type: Boolean,
+          reflect: true,
         },
 
         /**
@@ -106,6 +112,14 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         toggled: {
           attribute: "toggled",
           type: Boolean,
+        },
+        /**
+         * Direction that the tooltip should flow
+         */
+        tooltipDirection: {
+          type: String,
+          attribute: "tooltip-direction",
+          reflect: true,
         },
       };
     }
@@ -226,7 +240,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * whether or not the button is toggled
      */
     _defaultOrToggled(toggledOff, toggledOn) {
-      return !!toggledOn && this.isToggled ? toggledOn : toggledOff;
+      return (!!toggledOn || toggledOn == "") && this.isToggled
+        ? toggledOn
+        : toggledOff;
     }
     /**
      * handles button click
@@ -245,6 +261,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
 
     toggle() {
       if (this.toggles) this.toggled = !this.toggled;
+    }
+
+    click(e) {
+      this._handleClick(e);
     }
     /**
      * updates toolbar buttonregistry as needed
@@ -270,6 +290,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         id="icon"
         aria-hidden="true"
         icon="${this.currentIcon}"
+        part="icon"
       ></simple-icon-lite>`;
     }
     /**
@@ -278,7 +299,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get labelTemplate() {
-      return html`<span id="label" class="${this.labelStyle}"
+      return html`<span id="label" class="${this.labelStyle || ""}" part="label"
         >${this.currentLabel}</span
       >`;
     }
@@ -288,7 +309,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get tooltipTemplate() {
-      return html`<simple-tooltip id="tooltip" for="button"
+      return html`<simple-tooltip
+        id="tooltip"
+        for="button"
+        position="${this.tooltipDirection || "bottom"}"
+        part="tooltip"
         >${this.currentLabel}</simple-tooltip
       >`;
     }
@@ -308,6 +333,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
               tabindex="0"
+              part="button"
             >
               ${this.iconTemplate} ${this.labelTemplate}
             </button>
@@ -320,6 +346,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @click="${this._handleClick}"
               @keypress="${this._handleKeys}"
               tabindex="0"
+              part="button"
             >
               ${this.iconTemplate} ${this.labelTemplate}
             </button>
@@ -334,9 +361,13 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      * @static
      */
-    static get offScreenStyles() {
+    static get labelStyles() {
       return [
         css`
+          #label {
+            padding: 0 var(--simple-toolbar-button-label-padding, 2px);
+            white-space: var(--simple-toolbar-button-label-white-space, normal);
+          }
           .offscreen {
             position: absolute;
             left: -999999px;
@@ -362,7 +393,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           }
           #icon[icon] {
             width: var(
-              --simple-toolbar-button-min-width,
+              --simple-toolbar-button-width,
               var(--simple-toolbar-button-height, 24px)
             );
             height: var(--simple-toolbar-button-height, 24px);
@@ -399,17 +430,32 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             flex: 0 1 auto;
             min-width: var(
               --simple-toolbar-button-min-width,
-              var(--simple-toolbar-button-height, 24px)
+              var(
+                --simple-toolbar-button-width,
+                var(--simple-toolbar-button-height, 24px)
+              )
             );
             white-space: nowrap;
+            transition: all 0.5s;
+          }
+          :host(:hover),
+          :host(:focus-wthin) {
+            z-index: var(--simple-toolbar-focus-z-index, 100);
           }
           :host([hidden]) {
-            display: none;
+            z-index: -1;
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
           }
           #button {
+            font-size: inherit;
             min-width: var(
               --simple-toolbar-button-min-width,
-              var(--simple-toolbar-button-height, 24px)
+              var(
+                --simple-toolbar-button-width,
+                var(--simple-toolbar-button-height, 24px)
+              )
             );
             min-height: var(--simple-toolbar-button-height, 24px);
             margin: 0;
@@ -429,14 +475,30 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             border-style: solid;
             text-transform: unset;
             display: flex;
-            flex: 0 1 auto;
+            flex: var(--simple-toolbar-button-flex, 0 0 auto);
             white-space: nowrap;
-            align-items: stretch;
+            align-items: center;
             transition: all 0.5s;
+            width: 100%;
+            height: 100%;
+            justify-content: var(--simple-toolbar-button-justify, space-around);
+          }
+          :host([icon-position="top"]) #button,
+          :host([icon-position="bottom"]) #button {
+            justify-content: space-evenly;
+          }
+          :host([icon-position="top"]) #button {
+            flex-direction: column;
+          }
+          :host([icon-position="bottom"]) #button {
+            flex-direction: column-reverse;
+          }
+          :host([icon-position="right"]) #button {
+            flex-direction: row-reverse;
           }
           #button[aria-pressed="true"] {
             color: var(--simple-toolbar-button-toggled-color);
-            border-color: var(--simple-toolbar-toggled-border-color);
+            border-color: var(--simple-toolbar-button-toggled-border-color);
             background-color: var(--simple-toolbar-button-toggled-bg);
             opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);
           }
@@ -444,13 +506,17 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           #button:hover {
             color: var(--simple-toolbar-button-hover-color);
             background-color: var(--simple-toolbar-button-hover-bg);
-            border-color: var(--simple-toolbar-hover-border-color);
+            border-color: var(--simple-toolbar-button-hover-border-color);
             opacity: var(--simple-toolbar-button-hover-opacity, 0.8);
           }
           #button[disabled] {
             cursor: not-allowed;
             color: var(--simple-toolbar-button-disabled-color, unset);
             background-color: var(--simple-toolbar-button-disabled-bg, unset);
+            border-color: var(
+              --simple-toolbar-button-disabled-border-color,
+              unset
+            );
             opacity: var(--simple-toolbar-button-disabled-opacity, 0.5);
           }
         `,
@@ -461,7 +527,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         ...(super.styles || []),
         ...this.buttonStyles,
         ...this.iconStyles,
-        ...this.offScreenStyles,
+        ...this.labelStyles,
         ...this.tooltipStyles,
       ];
     }
@@ -479,6 +545,7 @@ for styling:
 Custom property | Description | Default
 ----------------|-------------|----------
 --simple-toolbar-button-height | button height | 24px
+--simple-toolbar-button-flex | flex for button in a toolbar | 0 0 auto
 --simple-toolbar-button-min-width | button min-width | --simple-toolbar-button-height
 --simple-toolbar-button-padding | button padding | 0
 --simple-toolbar-button-opacity | button opacity | 1

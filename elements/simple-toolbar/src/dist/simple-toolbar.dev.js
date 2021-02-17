@@ -105,7 +105,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            position: relative;\n            display: flex;\n            align-items: flex-start;\n            opacity: 1;\n            z-index: 2;\n            margin: 0;\n            justify-content: space-between;\n            background-color: var(--simple-toolbar-border-bg);\n            font-size: 12px;\n            transition: all 0.5s;\n            margin: 0;\n            padding: 0;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          #buttons {\n            flex-wrap: wrap;\n            display: flex;\n            justify-content: flex-start;\n            flex: 1 1 auto;\n            overflow-y: visible;\n          }\n          #morebutton {\n            flex: 0 0 auto;\n            justify-content: flex-end;\n          }\n          ::slotted(.group) {\n            display: flex;\n            flex-wrap: nowrap;\n            justify-content: space-evenly;\n            align-items: stretch;\n            padding: var(--simple-toolbar-group-padding, 0 3px);\n            margin: 0;\n            flex: 0 1 auto;\n            overflow-y: visible;\n          }\n          ::slotted(.group:not(:last-child)) {\n            border-right: var(\n                --simple-toolbar-group-border-width,\n                var(--simple-toolbar-border-width, 1px)\n              )\n              solid\n              var(\n                --simple-toolbar-border-color,\n                var(--simple-toolbar-group-border-color, transparent)\n              );\n          }\n          :host([collapsed]) ::slotted(*[collapse-hide]) {\n            display: none !important;\n          }\n        ",
+    "\n          :host {\n            position: relative;\n            display: flex;\n            align-items: flex-start;\n            opacity: 1;\n            z-index: 2;\n            margin: 0;\n            justify-content: space-between;\n            background-color: var(--simple-toolbar-border-bg);\n            font-size: 12px;\n            transition: all 0.5s;\n            margin: 0;\n            padding: 0;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          #buttons {\n            flex-wrap: wrap;\n            display: flex;\n            justify-content: flex-start;\n            flex: 1 1 auto;\n            overflow-y: visible;\n          }\n          #morebutton {\n            flex: 0 0 auto;\n            justify-content: flex-end;\n          }\n          ::slotted(.group) {\n            display: flex;\n            flex-wrap: nowrap;\n            justify-content: space-evenly;\n            align-items: stretch;\n            padding: var(--simple-toolbar-group-padding, 0 3px);\n            margin: 0;\n            flex: 0 1 auto;\n            overflow-y: visible;\n          }\n          ::slotted(.group:not(:last-child)) {\n            border-right: var(\n                --simple-toolbar-group-border-width,\n                var(--simple-toolbar-border-width, 1px)\n              )\n              solid\n              var(\n                --simple-toolbar-border-color,\n                var(--simple-toolbar-group-border-color, transparent)\n              );\n          }\n          ::slotted(*:hover) ::slotted(*:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100);\n          }\n          :host([collapsed]:not([always-expanded]))\n            ::slotted(*[collapse-hide]) {\n            display: none !important;\n          }\n        ",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -129,8 +129,8 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n        <div id="buttons" class="',
-    '">\n          <slot></slot>\n        </div>\n        ',
+    '\n        <div\n          id="buttons"\n          class="',
+    '" part="buttons"\n        >\n          <slot></slot>\n        </div>\n        ',
     "\n      ",
   ]);
 
@@ -145,13 +145,16 @@ function _templateObject() {
   var data = _taggedTemplateLiteral([
     ' <simple-toolbar-more-button\n        id="morebutton"\n        aria-controls="buttons"\n        class="button"\n        @click="',
     '"\n        @toggle="',
-    '"\n        ?disabled=',
+    '"\n        ?hidden=',
     '\n        icon="',
+    '"\n        icon-position="',
     '"\n        label="',
-    '"\n        ?label-toggled="',
     '"\n        ?show-text-label="',
     '"\n        ?toggled="',
-    '"\n      >\n      </simple-toolbar-more-button>',
+    '"\n        toggled-icon="',
+    '"\n        toggled-label="',
+    '"\n        tooltip-direction="',
+    '"\n        part="morebutton"\n      >\n      </simple-toolbar-more-button>',
   ]);
 
   _templateObject = function _templateObject() {
@@ -349,11 +352,14 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                   return (_this2.collapsed = !_this2.collapsed);
                 },
                 this.__collapseDisabled,
-                this.moreIcon,
-                this.moreLabel,
-                this.moreLabelToggled,
+                this.moreIcon || "",
+                this.moreIconPosition || "",
+                this.moreLabel || "",
                 this.moreShowTextLabel,
-                !this.collapsed
+                !this.collapsed,
+                this.moreToggledIcon || "",
+                this.moreToggledLabel || "",
+                this.moreTooltipDirection || ""
               );
             },
             /**
@@ -368,8 +374,8 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
             get: function get() {
               return (0, _litElement.html)(
                 _templateObject2(),
-                this.collapsed ? "collapsed" : "",
-                this.moreButton
+                !this.alwaysExpanded && this.collapsed ? "collapsed" : "",
+                this.alwaysExpanded ? "" : this.moreButton
               );
             }, // life cycle
           },
@@ -401,12 +407,32 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
             get: function get() {
               return {
                 /**
+                 * always expanded so more button is unnecessary?
+                 */
+                alwaysExpanded: {
+                  name: "alwaysExpanded",
+                  type: Boolean,
+                  attribute: "always-expanded",
+                  reflect: true,
+                },
+
+                /**
                  * is toolbar collapsed?
                  */
                 collapsed: {
                   name: "collapsed",
                   type: Boolean,
                   attribute: "collapsed",
+                  reflect: true,
+                },
+
+                /**
+                 * is toolbar collapsed?
+                 */
+                hidden: {
+                  name: "hidden",
+                  type: Boolean,
+                  attribute: "hidden",
                   reflect: true,
                 },
 
@@ -440,6 +466,24 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                 },
 
                 /**
+                 * label for more button when toggled.
+                 */
+                moreToggledIcon: {
+                  name: "moreToggledIcon",
+                  type: String,
+                  attribute: "more-icon-toggled",
+                },
+
+                /**
+                 * show text label for more button.
+                 */
+                moreIconPosition: {
+                  name: "moreIconPosition",
+                  type: String,
+                  attribute: "more-icon-position",
+                },
+
+                /**
                  * label for more button.
                  */
                 moreLabel: {
@@ -451,11 +495,10 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                 /**
                  * label for more button when toggled.
                  */
-                moreLabelToggled: {
-                  name: "moreLabelToggled",
+                moreToggledLabel: {
+                  name: "moreToggledLabel",
                   type: String,
-                  attribute: "more-label-toggled",
-                  value: "Fewer Buttons",
+                  attribute: "more-toggled-label",
                 },
 
                 /**
@@ -474,6 +517,15 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                   name: "moreShortcut",
                   type: Boolean,
                   attribute: "more-shortcut",
+                },
+
+                /**
+                 * Direction that the tooltip should flow
+                 */
+                moreTooltipDirection: {
+                  type: String,
+                  attribute: "more-tooltip-direction",
+                  reflect: true,
                 },
 
                 /**
@@ -549,7 +601,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
         _this.__hovered = false;
         _this.moreIcon = "more-vert";
         _this.moreLabel = "More Buttons";
-        _this.moreLabelToggled = "Fewer Buttons";
+        _this.moreToggledLabel = "Fewer Buttons";
         _this.moreShowTextLabel = false;
         _this.moreShortcut = "ctrl+shift+;";
         _this.sticky = false;
@@ -779,6 +831,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
         {
           key: "resizeToolbar",
           value: function resizeToolbar() {
+            if (this.alwaysExpanded) return;
             if (!this.collapsed) return;
 
             var items = _toConsumableArray(this.children || []),
@@ -1015,6 +1068,7 @@ Custom property | Description | Default
  * @lit-html
  * @lit-element
  * @demo demo/index.html
+ * @demo demo/grid.html Grid
  */
 
 exports.SimpleToolbarBehaviors = SimpleToolbarBehaviors;

@@ -294,7 +294,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
             type_exclusive: true,
             repo: "repo",
             org: "org",
-          }
+          },
         ],
         meta: {
           author: "collinkleest",
@@ -319,8 +319,8 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
             property: "extended",
             title: "Extended View",
             description: "Includes readme in element",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
         advanced: [],
       },
@@ -369,7 +369,8 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
             },
             data: {},
             resultMap: {
-              image: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+              image:
+                "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
               defaultGizmoType: "github",
               items: "items",
               preview: {
@@ -567,12 +568,12 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     }
   }
 
-  haxHooks(){
+  haxHooks() {
     return {
       editModeChanged: "haxeditModeChanged",
       activeElementChanged: "haxactiveElementChanged",
       gizmoRegistration: "haxgizmoRegistration",
-    }
+    };
   }
 
   haxgizmoRegistration(store) {
@@ -597,8 +598,8 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     }
   }
 
-  haxactiveElementChanged(element, value){
-    if (value){
+  haxactiveElementChanged(element, value) {
+    if (value) {
       this._haxstate = value;
     }
   }
@@ -607,8 +608,8 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
     this._haxstate = value;
   }
 
-  _clickLink(event){
-    if (this._haxstate){
+  _clickLink(event) {
+    if (this._haxstate) {
       event.preventDefault();
       event.stopPropagation();
       event.stopImmediatePropagation();

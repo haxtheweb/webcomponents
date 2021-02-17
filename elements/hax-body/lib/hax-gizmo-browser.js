@@ -4,6 +4,7 @@ import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 /**
  * `hax-gizmo-browser`
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
@@ -15,18 +16,45 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
     return [
       css`
         :host {
-          display: block;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          flex: 0 1 auto;
+          overflow-y: auto;
         }
         .toolbar-inner {
-          padding: 0;
-          position: sticky;
-          background-color: white;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
           width: 100%;
-          top: 0;
-          z-index: 1;
+          flex: 0 0 auto;
+          overflow-y: auto;
         }
-        .item-wrapper {
-          text-align: center;
+        simple-button-grid {
+          overflow-y: auto;
+        }
+        hax-tray-button {
+          font-size: var(--hax-tray-font-size-xs, 11px);
+          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
+          --simple-toolbar-button-border-color: var(
+            --hax-toolbar-border-color,
+            #ddd
+          );
+          --simple-toolbar-button-hover-color: var(
+            --hax-tray-accent-color,
+            #000
+          );
+          --simple-toolbar-button-hover-border-color: var(
+            --hax-tray-accent-color,
+            #000
+          );
+          --simple-toolbar-button-hover-border-color: var(
+            --hax-tray-accent-color,
+            #000
+          );
+        }
+        simple-fields-field {
+          margin-top: 0;
         }
       `,
     ];
@@ -42,16 +70,16 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           aria-controls="filter"
-          label="Filter"
+          label="Filter Content Types"
           type="text"
           auto-validate=""
         ></simple-fields-field>
       </div>
-      <div class="item-wrapper">
+      <simple-button-grid columns="3" always-expanded>
         ${this.filtered.map(
           (gizmo, i) => html`
             <hax-tray-button
-              dark-bg
+              show-text-label
               voice-command="insert ${gizmo.title}"
               draggable="true"
               @dragstart="${this._dragStart}"
@@ -61,12 +89,12 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
               event-name="insert-tag"
               event-data="${gizmo.tag}"
               data-demo-schema="true"
+              icon-position="top"
               icon="${gizmo.icon}"
-              drag-color="${gizmo.color}"
             ></hax-tray-button>
           `
         )}
-      </div>
+      </simple-button-grid>
     `;
   }
   static get tag() {

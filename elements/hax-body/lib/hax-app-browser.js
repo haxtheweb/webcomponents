@@ -17,18 +17,42 @@ class HaxAppBrowser extends LitElement {
     return [
       css`
         :host {
-          display: block;
+          overflow-y: auto;
+          position: relative;
         }
-        :host *[hidden] {
-          display: none;
+        simple-button-grid {
+          overflow: auto;
         }
-        .toolbar-inner {
-          display: block;
-          padding: 0;
-          width: 100%;
+        simple-button-grid.collapse-hide {
+          max-height: 0 !important;
+          transition: all 0.5s;
         }
-        .item-wrapper {
-          text-align: center;
+        .visibility-hidden {
+          z-index: -1;
+          visibility: hidden;
+          opacity: 0;
+          height: 0;
+          transition: all 0.5s;
+        }
+        hax-tray-button {
+          font-size: var(--hax-tray-font-size-xs, 11px);
+          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
+          --simple-toolbar-button-border-color: var(
+            --hax-toolbar-border-color,
+            #ddd
+          );
+          --simple-toolbar-button-hover-color: var(
+            --hax-tray-accent-color,
+            #000
+          );
+          --simple-toolbar-button-hover-border-color: var(
+            --hax-tray-accent-color,
+            #000
+          );
+          --simple-toolbar-button-hover-border-color: var(
+            --hax-tray-accent-color,
+            #000
+          );
         }
       `,
     ];
@@ -39,6 +63,8 @@ class HaxAppBrowser extends LitElement {
       if (e.detail.eventName === "search-selected") {
         this.searching = true;
         HAXStore.activeApp = toJS(this.appList[e.detail.index]);
+      } else if (e.detail.eventName === "cancel-search") {
+        this.searching = false;
       }
     });
     this.searching = false;
@@ -46,6 +72,7 @@ class HaxAppBrowser extends LitElement {
     this.activeApp = null;
     this.hasActive = false;
     import("@lrnwebcomponents/hax-body/lib/hax-app-search.js");
+    import("@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js");
     autorun(() => {
       this.appList = toJS(HAXStore.appList);
     });
@@ -55,24 +82,31 @@ class HaxAppBrowser extends LitElement {
   }
   render() {
     return html`
-      <div class="item-wrapper">
+      <simple-button-grid
+        class="${this.searching ? "collapse-hide" : ""}"
+        always-expanded
+        columns="3"
+      >
         ${this.appList.map(
           (app) => html`
             <hax-tray-button
-              dark-bg
+              class="${this.searching ? "visibility-hidden" : ""}"
+              show-text-label
+              icon-position="top"
               index="${app.index}"
               label="${app.details.title}"
               icon="${app.details.icon}"
               color="${app.details.color}"
               event-name="search-selected"
               event-data="${app.index}"
-            ></hax-tray-button>
+            >
+            </hax-tray-button>
           `
         )}
-      </div>
+      </simple-button-grid>
       <hax-app-search
         id="haxappsearch"
-        .hidden="${!this.searching}"
+        class="${!this.searching ? "visibility-hidden" : ""}"
       ></hax-app-search>
       <slot></slot>
     `;

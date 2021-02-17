@@ -17,7 +17,6 @@
     <script type="module">
       import '@lrnwebcomponents/h-a-x/h-a-x.js';
       import '../lib/hax-text-editor.js';
-      import '../lib/hax-text-editor-toolbar.js';
       import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
         esModule.setPassiveTouchGestures(true);
       });
@@ -38,8 +37,6 @@
   </head>
   <body>
     <div style="padding:100px 300px 100px 100px;">
-    <hax-text-editor-toolbar></hax-text-editor-toolbar>
-    <hax-text-editor><p>Click to edit <lrn-math>a+b=c</lrn-math>.</p></hax-text-editor>
     <h-a-x app-store='{"url": "appstore.json"}' element-align="right">
       <p>
         stuff and things

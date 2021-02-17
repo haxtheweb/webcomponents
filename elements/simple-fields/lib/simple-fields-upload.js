@@ -59,7 +59,10 @@ class SimpleFieldsUpload extends SimpleColors {
           background-color: var(--simple-fields-background-color, #fff);
         }
         vaadin-upload[dragover] {
-          border-color: var(--simple-colors-default-theme-accent-3, #77e2ff);
+          border-color: var(
+            --simple-fields-secondary-accent-color,
+            var(--simple-colors-default-theme-accent-3, #77e2ff)
+          );
         }
         vaadin-upload-file {
           --disabled-text-color: #var(--simple-fields-border-color, #999);
@@ -143,9 +146,11 @@ class SimpleFieldsUpload extends SimpleColors {
    */
   render() {
     return html`
-      <fieldset id="fieldset">
-        <legend id="label" ?hidden="${!this.label}">${this.label}:</legend>
-        <div id="options">
+      <fieldset id="fieldset" part="fieldset">
+        <legend id="label" ?hidden="${!this.label}" part="legend">
+          ${this.label}:
+        </legend>
+        <div id="options" part="options">
           ${!this.options || !this.options.map
             ? ""
             : this.options.map((option) =>
@@ -162,12 +167,13 @@ class SimpleFieldsUpload extends SimpleColors {
                         @click="${(e) =>
                           this.optionChanged(option[0].value, e)}"
                         controls="${option[0].value}"
+                        part="option-icon"
                       >
                       </simple-icon-button>
                     `
               )}
         </div>
-        <div id="uploads">
+        <div id="uploads" part="fields">
           <simple-fields-field
             id="url"
             ?hidden="${this.option !== "url"}"
@@ -176,6 +182,7 @@ class SimpleFieldsUpload extends SimpleColors {
             label="URL"
             type="url"
             auto-validate=""
+            part="url"
           ></simple-fields-field>
           <vaadin-upload
             capture
@@ -184,10 +191,23 @@ class SimpleFieldsUpload extends SimpleColors {
             id="fileupload"
             @upload-before="${this._fileAboutToUpload}"
             @upload-response="${this._fileUploadResponse}"
+            part="upload"
           ></vaadin-upload>
-          <div id="camerahole" ?hidden="${this.option !== "selfie"}"></div>
-          <div id="voicerecorder" ?hidden="${this.option !== "audio"}"></div>
-          <div id="description" ?hidden="${!this.description}">
+          <div
+            id="camerahole"
+            ?hidden="${this.option !== "selfie"}"
+            part="camera"
+          ></div>
+          <div
+            id="voicerecorder"
+            ?hidden="${this.option !== "audio"}"
+            part="voice"
+          ></div>
+          <div
+            id="description"
+            ?hidden="${!this.description}"
+            part="description"
+          >
             ${this.description}
           </div>
         </div>
@@ -207,7 +227,6 @@ class SimpleFieldsUpload extends SimpleColors {
         this.option = this.options[0][0].value;
       }
     }
-    console.log(option, e, this.option);
     if (option === "selfie") this._takeSelfie(e);
     if (option === "audio") this._voiceRecorder(e);
   }
@@ -342,7 +361,6 @@ class SimpleFieldsUpload extends SimpleColors {
         }
       ]);*/
     }
-    console.log(options);
     return options;
   }
   /**
@@ -354,7 +372,6 @@ class SimpleFieldsUpload extends SimpleColors {
     }
     // test on load for if we have a media device
     this.options = [...this._setInputOptions()];
-    console.log(this.options);
     // default to URL if we have a value of any kind
     if (this.value) {
       this.option = "url";

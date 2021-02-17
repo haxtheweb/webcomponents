@@ -1,325 +1,221 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-class HaxToolbarItem extends LitElement {
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: flex;
-          box-sizing: border-box;
-          height: 36px;
-          width: 36px;
-          transition: 0.2s opacity ease-in-out;
-          --hax-contextual-action-text-color: white;
-        }
-        :host([large]),
-        :host([mini]) {
-          height: unset;
-          width: unset;
-        }
-        :host([disabled]) {
-          pointer-events: none;
-          background-color: grey;
-          opacity: 0.5;
-        }
-        :host([danger]) {
-          --hax-contextual-action-hover-color: var(
-            --simple-colors-default-theme-red-8,
-            #ff7777
-          );
-        }
-        :host([menu]) {
-          width: 100%;
-          position: relative;
-          display: -ms-flexbox;
-          display: -webkit-flex;
-          display: flex;
-          -ms-flex-direction: row;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-justify-content: flex-start;
-          justify-content: flex-start;
-          -webkit-font-smoothing: antialiased;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
-        }
-        :host([menu]) button {
-          -webkit-justify-content: flex-start;
-          justify-content: flex-start;
-        }
-        #label {
-          padding-left: 5px;
-        }
-        button {
-          display: flex;
-          align-items: center;
-          min-width: 0;
-          margin: 0;
-          border: 0px;
-          text-transform: none;
-          padding: 0;
-          border-radius: 0;
-          font-size: 12px;
-          transition: 0.2s all, 0 height;
-          height: 36px;
-          width: 36px;
-          min-width: unset;
-          background-color: var(
-            --hax-contextual-action-color,
-            var(--simple-colors-default-theme-grey-12, #007999)
-          );
 
-          color: var(
-            --hax-contextual-action-text-color,
-            var(--simple-colors-default-theme-grey-1, #fff)
-          );
-        }
-        :host(:not([disabled])) button:active,
-        :host(:not([disabled])) button:hover,
-        :host(:not([disabled])) button:focus {
-          background-color: var(
-            --hax-contextual-action-hover-color,
-            var(--simple-colors-default-theme-grey-8, #009dc7)
-          );
-          color: var(
-            --hax-contextual-action-text-color,
-            var(--simple-colors-default-theme-grey-1, #fff)
-          );
-          outline: 1px solid
-            var(
-              --hax-contextual-action-color,
-              var(--simple-colors-default-theme-grey-8, #007999)
-            );
-          z-index: 2;
-        }
-        :host([default]) button {
-          background: black;
-        }
-        :host([dark]:not([disabled])) button {
-          background-color: var(--hax-color-text, #000000);
-          color: var(--hax-color-bg-accent);
-        }
-        :host([dark]:not([disabled])) button:hover {
-          background-color: var(--hax-color-bg-accent);
-          color: var(--hax-color-text, #000000);
-        }
-        :host([dark]) button:active {
-          background: var(--hax-color-bg-accent);
-          color: var(--hax-color-text, #000000);
-        }
-        simple-icon-lite {
-          --simple-icon-height: 20px;
-          --simple-icon-width: 20px;
-          padding: 0;
-          margin: 0;
-        }
-        :host([mini]) button {
-          width: 28px;
-          height: 28px;
-          padding: 1px;
-          border: 0px;
-        }
-        :host([light]) button {
-          background-color: #aaaaaa;
-          color: #ffffff;
-        }
-        :host([circle]) button {
-          border-radius: 50%;
-          display: block;
-        }
-        :host([large]) button {
-          border-radius: 0;
-          width: unset;
-          padding: 0px;
-          border: 0px;
-        }
-        button:active,
-        button:hover,
-        button:focus {
-          cursor: pointer;
-        }
-        :host([mini]:not([disabled])) button:active,
-        :host([mini]:not([disabled])) button:hover,
-        :host([mini]:not([disabled])) button:focus {
-          outline: unset;
-          border: 1px solid
-            var(--hax-color-accent1, --simple-colors-default-theme-light-blue-7);
-        }
-        :host([menu]) button {
-          padding: 0 8px;
-          width: 100%;
-          height: 36px;
-        }
-        :host([menu]:not([disabled])) button:hover {
-          color: white;
-        }
-        .flip-icon {
-          transform: rotateY(180deg);
-        }
-        simple-tooltip {
-          --simple-tooltip-background: #000000;
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: #ffffff;
-          --simple-tooltip-delay-in: 0;
-          --simple-tooltip-duration-in: 100ms;
-          --simple-tooltip-duration-out: 0;
-          --simple-tooltip-border-radius: 0;
-          --simple-tooltip-font-size: 14px;
-        }
-        simple-icon-lite {
-          --simple-colors-default-theme-accent-8: white;
-        }
-        :host([disabled]) simple-icon-lite {
-          --simple-colors-default-theme-accent-8: unset;
-        }
-      `,
-    ];
-  }
-  render() {
-    return html`
-      <button
-        .disabled="${this.disabled}"
-        id="btn"
-        tabindex="0"
-        .title="${this.tooltip}"
-      >
-        <simple-icon-lite
-          icon="${this.icon}"
-          ?hidden="${this.icon == "" ? true : false}"
-        ></simple-icon-lite>
-
-        <span id="label" ?hidden="${this.label == "" ? true : false}"
-          >${this.label}</span
-        >
-        <slot></slot>
-      </button>
-      <simple-tooltip
-        for="btn"
-        ?hidden="${this.tooltip == "" ? true : false}"
+const HaxToolbarItemBehaviors = function (SuperClass) {
+  return class extends SimpleToolbarButtonBehaviors(SuperClass) {
+    static get tag() {
+      return "hax-toolbar-item";
+    }
+    constructor() {
+      super();
+      this.danger = false;
+      this.feature = false;
+      this.menu = false;
+    }
+    static get properties() {
+      return {
+        /**
+         * red warning
+         */
+        danger: {
+          type: Boolean,
+          reflect: true,
+        },
+        /**
+         * Name of the event to bubble up as being tapped.
+         * This can be used to tell other elements what was
+         * clicked so it can take action appropriately.
+         */
+        eventName: {
+          type: String,
+          reflect: true,
+          attribute: "event-name",
+        },
+        /**
+         * Inverted display mode
+         */
+        feature: {
+          type: Boolean,
+          reflect: true,
+        },
+        /**
+         * Hover tip text
+         */
+        toggledTooltip: {
+          type: String,
+        },
+        /**
+         * Hover tip text
+         */
+        tooltip: {
+          type: String,
+        },
+      };
+    }
+    /**
+     * template for button, based on whether or not the button toggles
+     *
+     * @readonly
+     */
+    get buttonTemplate() {
+      return this.toggles
+        ? html` <button
+              id="button"
+              aria-pressed="${this.isToggled ? "true" : "false"}"
+              class="simple-toolbar-button"
+              ?disabled="${this.disabled}"
+              ?controls="${this.controls}"
+              @click="${this._handleClick}"
+              @keydown="${this._handleKeys}"
+              @mousedown="${this._handleMousedown}"
+              tabindex="0"
+              part="button"
+            >
+              ${this.iconTemplate} ${this.labelTemplate}
+            </button>
+            ${this.tooltipTemplate}`
+        : html` <button
+              id="button"
+              class="simple-toolbar-button"
+              ?disabled="${this.disabled}"
+              ?controls="${this.controls}"
+              @click="${this._handleClick}"
+              @keydown="${this._handleKeys}"
+              @mousedown="${this._handleMousedown}"
+              tabindex="0"
+              part="button"
+            >
+              ${!this.icon || this.icon == "" ? "" : this.iconTemplate}
+              ${this.labelTemplate}
+            </button>
+            ${this.showTextLabel ? "" : this.tooltipTemplate}`;
+    }
+    /**
+     * current label based on toggled state
+     *
+     * @readonly
+     */
+    get currentTooltip() {
+      return this._defaultOrToggled(
+        this.tooltip,
+        this.toggledTooltip,
+        this.isToggled
+      );
+    }
+    /**
+     * template for button tooltip
+     *
+     * @readonly
+     */
+    get tooltipTemplate() {
+      return html`<simple-tooltip
         id="tooltip"
-        offset="10"
-        position="${this.tooltipDirection}"
-      >
-        ${this.tooltip}
-      </simple-tooltip>
-    `;
-  }
-  static get tag() {
-    return "hax-toolbar-item";
-  }
-  constructor() {
-    super();
-    this.simple = false;
-    this.circle = false;
-    this.corner = "";
-    this.large = false;
-    this.disabled = false;
-    this.dark = false;
-    this.danger = false;
-    this.menu = false;
-    this.mini = false;
-    this.icon = "";
-    this.label = "";
-    this.tooltip = "";
-    this.tooltipDirection = "top";
-    this.default = false;
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "height" && this.shadowRoot) {
-        this.shadowRoot.querySelector("#btn").style.height = this[propName];
-      }
-    });
-  }
-  static get properties() {
-    return {
-      /**
-       * corner
-       */
-      corner: {
-        type: String,
-        reflect: true,
-      },
-      circle: {
-        type: Boolean,
-        reflect: true,
-      },
-      height: {
-        type: String,
-      },
-      /**
-       * disabled state
-       */
-      disabled: {
-        type: Boolean,
-        reflect: true,
-      },
-      /**
-       * Inverted display mode
-       */
-      dark: {
-        type: Boolean,
-        reflect: true,
-      },
-      danger: {
-        type: Boolean,
-        reflect: true,
-      },
-      /**
-       * Style to be presented in a menu
-       */
-      menu: {
-        type: Boolean,
-        reflect: true,
-      },
-      /**
-       * Present smaller the normal but consistent
-       */
-      mini: {
-        type: Boolean,
-        reflect: true,
-      },
-      /**
-       * Present larger then normal but consistent
-       */
-      large: {
-        type: Boolean,
-        reflect: true,
-      },
-      /**
-       * Icon to represent this button, required.
-       */
-      icon: {
-        type: String,
-      },
-      /**
-       * Text applied to the button
-       */
-      label: {
-        type: String,
-      },
-      /**
-       * Hover tip text
-       */
-      tooltip: {
-        type: String,
-      },
-      /**
-       * Direction that the tooltip should flow
-       */
-      tooltipDirection: {
-        type: String,
-        attribute: "tooltip-direction",
-      },
-      default: {
-        type: Boolean,
-        reflect: true,
-      },
-    };
-  }
-}
+        for="button"
+        ?hidden="${!this.currentTooltip && !this.currentLabel}"
+        position="${this.tooltipDirection || "bottom"}"
+        >${this.currentTooltip || this.currentLabel}</simple-tooltip
+      >`;
+    }
+    static get styles() {
+      return [
+        ...super.styles,
+        css`
+          :host {
+            text-transform: capitalize;
+          }
+          :host([disabled]) {
+            pointer-events: none;
+          }
+          :host([danger]) {
+            --simple-toolbar-button-hover-color: var(
+              --hax-toolbar-button-danger-color,
+              #882222
+            );
+            --simple-toolbar-button-hover-border-color: var(
+              --hax-toolbar-button-danger-color,
+              #882222
+            );
+          }
+          :host([feature]) {
+            --simple-toolbar-button-bg: var(
+              --hax-toolbar-button-feature-color,
+              #009dc7
+            );
+            --simple-toolbar-button-hover-bg: var(
+              --hax-toolbar-button-feature-color,
+              #009dc7
+            );
+            --simple-toolbar-button-border-color: var(
+              --hax-toolbar-button-feature-color,
+              #009dc7
+            );
+            --simple-toolbar-button-hover-border-color: var(
+              --hax-toolbar-button-feature-color,
+              #009dc7
+            );
+            --simple-toolbar-button-color: var(
+              --hax-toolbar-button-bg,
+              var(--hax-tray-background-color, #fff)
+            );
+            --simple-toolbar-button-hover-color: var(
+              --hax-toolbar-button-bg,
+              var(--hax-tray-background-color, #fff)
+            );
+          }
+          ::part(label) {
+            margin: var(--hax-tray-margin, 4px);
+          }
+        `,
+      ];
+    }
+    _handleClick(e) {}
+    _handleKeys(e) {}
+    _handleMousedown(e) {}
+  };
+};
+/**
+ * `hax-toolbar-item`
+ * a button for hax toolbar
+ *
+### Styling
+
+`<hax-toolbar-item>` provides following custom properties and mixins
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+--simple-toolbar-button-height | button height | 24px
+--simple-toolbar-button-min-width | button min-width | --simple-toolbar-button-height
+--simple-toolbar-button-padding | button padding | 0
+--simple-toolbar-button-opacity | button opacity | 1
+--simple-toolbar-button-color | button text color | unset
+--simple-toolbar-button-bg | button background color | transparent
+--simple-toolbar-button-border-color | button border color | --simple-toolbar-border-color
+--simple-toolbar-button-border-width | button border width | --simple-toolbar-border-width
+--simple-toolbar-button-border-radius | button border radius | 3px
+--simple-toolbar-button-toggled-opacity | button opacity when toggled | 0.8
+--simple-toolbar-button-toggled-color | button text color when toggled | unset
+--simple-toolbar-button-toggled-bg | button background color when toggled | unset
+--simple-toolbar-button-toggled-border-color | button border color when toggled | unset
+--simple-toolbar-button-hover-opacity | button opacity when hovered | 0.8
+--simple-toolbar-button-hover-color | button text color when hovered | unset
+--simple-toolbar-button-hover-bg | button background color when hovered | unset
+--simple-toolbar-button-hover-border-color | button border color when hovered | unset
+--simple-toolbar-button-disabled-opacity | button opacity when disabled | 0.5
+--simple-toolbar-button-disabled-color | button text color when disabled | unset
+--simple-toolbar-button-disabled-bg | button background color when disabled | unset
+--simple-toolbar-button-disabled-border-color | button border color when disabled | unset
+ * 
+ * @customElement
+ * @extends HaxToolbarItemBehaviors
+ * @extends LitElement
+ * @lit-html
+ * @lit-element
+ * @demo demo/index.html
+ */
+class HaxToolbarItem extends HaxToolbarItemBehaviors(LitElement) {}
 window.customElements.define(HaxToolbarItem.tag, HaxToolbarItem);
-export { HaxToolbarItem };
+export { HaxToolbarItem, HaxToolbarItemBehaviors };

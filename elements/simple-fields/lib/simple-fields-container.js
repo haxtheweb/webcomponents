@@ -18,12 +18,12 @@ class SimpleFieldsContainer extends LitElement {
       css`
         :host {
           display: block;
-          width: 100%;
           font-size: var(--simple-fields-detail-font-size, 12px);
           font-family: var(--simple-fields-detail-font-family, sans-serif);
-          line-height: var(--simple-fields-detail-line-height, 22px);
+          line-height: var(--simple-fields-detail-line-height, 130%);
           transition: color 0.3s ease-in-out;
-          margin: var(--simple-fields-margin, 16px) 0;
+          margin: 0 0
+            var(--simple-fields-field-margin, var(--simple-fields-margin, 16px));
         }
         :host([hidden]),
         :host([type="hidden"]) {
@@ -149,6 +149,10 @@ class SimpleFieldsContainer extends LitElement {
           display: var(--simple-fields-radio-option-display, block);
           flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
           transition: color 0.3s ease-in-out;
+        }
+        #error-desc {
+          font-size: var(--simple-fields-meta-font-size, 10px);
+          line-height: var(--simple-fields-meta-line-height, 110%);
         }
       `,
     ];
@@ -434,7 +438,7 @@ class SimpleFieldsContainer extends LitElement {
    */
   get descriptionTemplate() {
     return html`
-      <div id="description">
+      <div id="description" part="field-desc">
         <slot name="description"></slot>
         ${this.description}
       </div>
@@ -450,7 +454,12 @@ class SimpleFieldsContainer extends LitElement {
    */
   get errorTemplate() {
     return html`
-      <div id="error-message" ?hidden="${!this.error}" role="alert">
+      <div
+        id="error-message"
+        ?hidden="${!this.error}"
+        role="alert"
+        part="error-msg"
+      >
         ${this.errorMessage}
       </div>
     `;
@@ -468,8 +477,8 @@ class SimpleFieldsContainer extends LitElement {
     return html`
       <div class="border-bottom blur"></div>
       <div class="border-bottom focus"></div>
-      <div id="field-bottom">
-        <div id="error-desc">
+      <div id="field-bottom" part="field-bottom">
+        <div id="error-desc" part="field-bottom-inner">
           ${this.descriptionTemplate} ${this.errorTemplate}
         </div>
         ${this.fieldMeta}
@@ -502,9 +511,10 @@ class SimpleFieldsContainer extends LitElement {
         ["checkbox", "color", "radio"].includes(this.type || "text")
           ? "field-main inline"
           : "field-main"}"
+        part="field-main"
       >
         ${this.labelTemplate}
-        <div>
+        <div part="field-inner">
           ${this.prefixTemplate}
           <slot name="field"></slot>
           ${this.suffixTemplate}
@@ -522,7 +532,7 @@ class SimpleFieldsContainer extends LitElement {
    */
   get fieldMeta() {
     return html`
-      <div id="fieldmeta" aria-live="polite">
+      <div id="fieldmeta" aria-live="polite" part="field-meta">
         <slot name="field-meta"></slot>
       </div>
     `;
@@ -545,6 +555,7 @@ class SimpleFieldsContainer extends LitElement {
         for="${this.fieldId}"
         class="label-main"
         ?hidden="${this.type === "fieldset"}"
+        part="label"
       >
         <slot name="label-prefix"></slot>
         <slot name="label"></slot>

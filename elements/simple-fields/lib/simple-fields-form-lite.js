@@ -26,7 +26,7 @@ class SimpleFieldsFormLite extends LitElement {
   // render function
   render() {
     return html`
-      <form>
+      <form part="form">
         <slot name="before"></slot>
         <simple-fields-lite
           id="sf"
@@ -37,6 +37,7 @@ class SimpleFieldsFormLite extends LitElement {
           .elementizer="${this.elementizer}"
           .value="${this.value}"
           @value-changed="${this._valueChanged}"
+          part="fields"
         >
         </simple-fields-lite>
         <slot name="after"></slot>

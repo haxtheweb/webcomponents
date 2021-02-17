@@ -186,6 +186,7 @@ var SimpleToolbarMoreButton =
       _this.toggles = true;
       _this.label = "More buttons";
       _this.labelToggled = "Fewer buttons";
+      _this.tooltipDirection = "left";
       return _this;
     }
     /**

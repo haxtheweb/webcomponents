@@ -11,6 +11,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-toolbar.js';
+      import '../lib/simple-button-grid.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -32,11 +33,51 @@
               <simple-toolbar-button class="button" icon="editor:format-bold" label="Bold" shortcut-keys="ctrl+b" toggles></simple-toolbar-button>
               <simple-toolbar-button class="button" icon="editor:format-italic" label="Italics" shortcut-keys="ctrl+i" toggles></simple-toolbar-button>
             </div>
-            <simple-toolbar-button class="button" icon="star" label="Favorite" toggles></simple-toolbar-button>
+            <simple-toolbar-button class="button" icon="star" label="Favorite" toggles show-text-label></simple-toolbar-button>
           </simple-toolbar>
         </template>
       </demo-snippet>
-      <h3>Loading from a config object</h3>
+      <h3>simple-toolbar demo when always-expanded</h3>
+      <demo-snippet>
+        <template>
+          <simple-toolbar style="width:200px;border:1px solid #ddd" always-expanded>
+            <div class="group">
+              <simple-toolbar-button class="button" icon="save" label="Save" shortcut-keys="ctrl+s"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="cancel" label="Cancel"></simple-toolbar-button>
+            </div>
+            <div class="group">
+              <simple-toolbar-button class="button" icon="undo" label="Undo" shortcut-keys="ctrl+z"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="redo" label="Redo" shortcut-keys="ctrl+shift+z"></simple-toolbar-button>
+            </div>
+            <div class="group">
+              <simple-toolbar-button class="button" icon="editor:format-bold" label="Bold" shortcut-keys="ctrl+b" toggles></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="editor:format-italic" label="Italics" shortcut-keys="ctrl+i" toggles></simple-toolbar-button>
+            </div>
+            <simple-toolbar-button class="button" icon="star" label="Favorite" toggles show-text-label></simple-toolbar-button>
+          </simple-toolbar>
+        </template>
+      </demo-snippet>
+      <h3>simple-toolbar demo with icon-position set</h3>
+      <demo-snippet>
+        <template>
+          <simple-toolbar style="border:1px solid #ddd">
+            <div class="group">
+              <simple-toolbar-button class="button" icon="save" label="Save" shortcut-keys="ctrl+s" show-text-label icon-position="top" tooltip-direction="right"></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="cancel" label="Cancel"show-text-label icon-position="top"></simple-toolbar-button></simple-toolbar-button>
+            </div>
+            <div class="group">
+              <simple-toolbar-button class="button" icon="undo" label="Undo" shortcut-keys="ctrl+z" show-text-label icon-position="bottom"></simple-toolbar-button></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="redo" label="Redo" shortcut-keys="ctrl+shift+z"show-text-label icon-position="bottom"></simple-toolbar-button></simple-toolbar-button>
+            </div>
+            <div class="group">
+              <simple-toolbar-button class="button" icon="editor:format-bold" label="Bold" shortcut-keys="ctrl+b" toggles show-text-label></simple-toolbar-button>
+              <simple-toolbar-button class="button" icon="editor:format-italic" label="Italics" shortcut-keys="ctrl+i" toggles></simple-toolbar-button>
+            </div>
+            <simple-toolbar-button class="button" icon="star" label="Favorite" toggles tooltip-direction="left"show-text-label></simple-toolbar-button>
+          </simple-toolbar>
+        </template>
+      </demo-snippet>
+      <h3>Loading simple-toolbar from a config object</h3>
       <demo-snippet>
         <template>
           <simple-toolbar id="load-from-config" style="width:200px;border:1px solid #ddd"></simple-toolbar></simple-toolbar>

@@ -57,7 +57,6 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
             })
             .filter((f) => f.slot !== ""),
         ];
-        //console.log(this.fields, props);
         this.tagsList = el.tag || "span";
         this.icon = gizmo.icon || "add";
         this.label = gizmo.title || `Add ${el.tag}`;
@@ -89,12 +88,6 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
         })
         .join("");
 
-    /*console.log(
-      "promptCommandVal",
-      !this.value.innerHTML
-        ? ""
-        : `<${this.element.tag}${attrs}>${slots}${this.value.innerHTML}</${this.element.tag}>`
-    );*/
     return !this.value.innerHTML
       ? ""
       : `<${this.element.tag}${attrs}>${slots}${this.value.innerHTML}</${this.element.tag}>`;
@@ -106,10 +99,8 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
   getValue(node) {
     let el = node || this.rangeElement(),
       val = super.getValue();
-    //console.log("get value", el, val, node);
     if (el) {
       this.fields.forEach((field) => {
-        //console.log(field);
         if (field.property && field.property !== "innerHTML")
           val[field.property] = el[field.property];
         if (field.slot && field.slot !== "") {
@@ -118,7 +109,6 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
         }
       });
     }
-    //console.log("get value", el, val);
     return !el ? undefined : val;
   }
   setToggled() {

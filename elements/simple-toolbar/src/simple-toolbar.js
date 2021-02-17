@@ -86,7 +86,11 @@ const SimpleToolbarBehaviors = function (SuperClass) {
                 var(--simple-toolbar-group-border-color, transparent)
               );
           }
-          :host([collapsed]) ::slotted(*[collapse-hide]) {
+          ::slotted(*:hover) ::slotted(*:focus-wthin) {
+            z-index: var(--simple-toolbar-focus-z-index, 100);
+          }
+          :host([collapsed]:not([always-expanded]))
+            ::slotted(*[collapse-hide]) {
             display: none !important;
           }
         `,
@@ -101,12 +105,30 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     static get properties() {
       return {
         /**
+         * always expanded so more button is unnecessary?
+         */
+        alwaysExpanded: {
+          name: "alwaysExpanded",
+          type: Boolean,
+          attribute: "always-expanded",
+          reflect: true,
+        },
+        /**
          * is toolbar collapsed?
          */
         collapsed: {
           name: "collapsed",
           type: Boolean,
           attribute: "collapsed",
+          reflect: true,
+        },
+        /**
+         * is toolbar collapsed?
+         */
+        hidden: {
+          name: "hidden",
+          type: Boolean,
+          attribute: "hidden",
           reflect: true,
         },
         /**
@@ -136,6 +158,22 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           attribute: "more-icon",
         },
         /**
+         * label for more button when toggled.
+         */
+        moreToggledIcon: {
+          name: "moreToggledIcon",
+          type: String,
+          attribute: "more-icon-toggled",
+        },
+        /**
+         * show text label for more button.
+         */
+        moreIconPosition: {
+          name: "moreIconPosition",
+          type: String,
+          attribute: "more-icon-position",
+        },
+        /**
          * label for more button.
          */
         moreLabel: {
@@ -146,11 +184,10 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         /**
          * label for more button when toggled.
          */
-        moreLabelToggled: {
-          name: "moreLabelToggled",
+        moreToggledLabel: {
+          name: "moreToggledLabel",
           type: String,
-          attribute: "more-label-toggled",
-          value: "Fewer Buttons",
+          attribute: "more-toggled-label",
         },
         /**
          * show text label for more button.
@@ -167,6 +204,14 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           name: "moreShortcut",
           type: Boolean,
           attribute: "more-shortcut",
+        },
+        /**
+         * Direction that the tooltip should flow
+         */
+        moreTooltipDirection: {
+          type: String,
+          attribute: "more-tooltip-direction",
+          reflect: true,
         },
         /**
          * Optional space-sperated list of keyboard shortcuts for editor
@@ -261,12 +306,16 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         class="button"
         @click="${(e) => (this.collapsed = !this.collapsed)}"
         @toggle="${(e) => (this.collapsed = !this.collapsed)}"
-        ?disabled=${this.__collapseDisabled}
-        icon="${this.moreIcon}"
-        label="${this.moreLabel}"
-        ?label-toggled="${this.moreLabelToggled}"
+        ?hidden=${this.__collapseDisabled}
+        icon="${this.moreIcon || ""}"
+        icon-position="${this.moreIconPosition || ""}"
+        label="${this.moreLabel || ""}"
         ?show-text-label="${this.moreShowTextLabel}"
         ?toggled="${!this.collapsed}"
+        toggled-icon="${this.moreToggledIcon || ""}"
+        toggled-label="${this.moreToggledLabel || ""}"
+        tooltip-direction="${this.moreTooltipDirection || ""}"
+        part="morebutton"
       >
       </simple-toolbar-more-button>`;
     }
@@ -279,10 +328,14 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      */
     get toolbarTemplate() {
       return html`
-        <div id="buttons" class="${this.collapsed ? "collapsed" : ""}">
+        <div
+          id="buttons"
+          class="${!this.alwaysExpanded && this.collapsed ? "collapsed" : ""}"
+          part="buttons"
+        >
           <slot></slot>
         </div>
-        ${this.moreButton}
+        ${this.alwaysExpanded ? "" : this.moreButton}
       `;
     }
 
@@ -297,7 +350,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.__hovered = false;
       this.moreIcon = "more-vert";
       this.moreLabel = "More Buttons";
-      this.moreLabelToggled = "Fewer Buttons";
+      this.moreToggledLabel = "Fewer Buttons";
       this.moreShowTextLabel = false;
       this.moreShortcut = "ctrl+shift+;";
       this.sticky = false;
@@ -423,6 +476,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     }
 
     resizeToolbar() {
+      if (this.alwaysExpanded) return;
       if (!this.collapsed) return;
       let items = [...(this.children || [])],
         shown = true;
@@ -608,6 +662,7 @@ Custom property | Description | Default
  * @lit-html
  * @lit-element
  * @demo demo/index.html
+ * @demo demo/grid.html Grid
  */
 class SimpleToolbar extends SimpleToolbarBehaviors(LitElement) {}
 customElements.define("simple-toolbar", SimpleToolbar);
