@@ -61,9 +61,9 @@
     "@lrnwebcomponents/simple-tooltip": "^3.0.5",
     "@lrnwebcomponents/undo-manager": "^3.0.5",
     "@lrnwebcomponents/utils": "^3.0.0",
-    "@vaadin/vaadin-upload": "^4.4.1",
+    "@vaadin/vaadin-upload": "^5.0.0",
     "lit-element": "2.4.0",
-    "mobx": "6.0.4"
+    "mobx": "6.1.7"
   },
   "devDependencies": {
     "@lrnwebcomponents/a11y-gif-player": "^3.0.6",
@@ -102,7 +102,7 @@
     "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"
   },

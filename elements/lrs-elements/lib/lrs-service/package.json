@@ -11,19 +11,19 @@
   },
   "dependencies": {
     "apollo-server": "^2.4.8",
-    "graphql": "^14.1.1",
-    "graphql-type-json": "^0.2.1",
+    "graphql": "^15.0.0",
+    "graphql-type-json": "^0.3.0",
     "prisma-client-lib": "^1.28.2",
-    "nexus": "^0.11.3",
-    "nexus-prisma": "^0.3.5"
+    "nexus": "^1.0.0",
+    "nexus-prisma": "^0.16.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10",
+    "nodemon": "^2.0.0",
     "patch-package": "^6.0.5",
     "postinstall-postinstall": "^2.0.0",
     "@oclif/command": "^1.5.11",
     "@oclif/config": "^1.12.9",
-    "@oclif/plugin-help": "^2.1.6"
+    "@oclif/plugin-help": "^3.0.0"
   },
   "directories": {
     "lib": "lib",

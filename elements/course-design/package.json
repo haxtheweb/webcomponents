@@ -52,7 +52,7 @@
     "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",

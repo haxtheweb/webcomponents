@@ -51,7 +51,7 @@
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.5.0",
     "concurrently": "5.3.0",
-    "es-dev-server": "1.57.8",
+    "es-dev-server": "2.1.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.20",
     "polymer-build": "3.1.4",
