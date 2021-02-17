@@ -130,6 +130,8 @@ class CleanTwo extends HAXCMSThemeParts(
           padding:0;
           --site-git-corner-color: black;
           --site-git-corner-background: transparent;
+          background-color: transparent;
+          color: black;
         }
         site-menu-button[edit-mode][disabled] {
           display: block;
