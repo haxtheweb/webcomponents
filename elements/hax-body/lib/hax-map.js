@@ -20,19 +20,6 @@ class HaxMap extends LitElement {
         :host {
           display: block;
         }
-        .title {
-          position: relative;
-          padding: 16px;
-          outline: 0;
-          font-weight: 600;
-          text-align: left;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-          font-size: 18px;
-          line-height: 18px;
-          font-family: "Noto Serif", serif;
-        }
         .container {
           text-align: left;
         }
@@ -45,7 +32,7 @@ class HaxMap extends LitElement {
         th,
         td {
           text-align: center;
-          border: 1px solid var(--hax-toolbar-border-color, #ddd);
+          border: 1px solid var(--hax-border-color, #ddd);
         }
         caption {
         }
@@ -57,9 +44,14 @@ class HaxMap extends LitElement {
           font-size: 150%;
         }
         h5 {
-          color: var(--tray-detail-accent-color, #000);
-          margin: calc(2 * var(--hax-tray-margin-sm, 4px)) 0
-            var(--hax-tray-margin-sm, 4px);
+          color: var(--hax-tray-accent-color, #000);
+          margin: calc(2 * var(--hax-tray-margin, 4px)) 0
+            var(--hax-tray-margin, 4px);
+          font-size: var(
+            --hax-tray-font-size-lg,
+            calc(1.05 * var(--hax-tray-font-size, 16px))
+          );
+          text-transform: capitalize;
         }
         ul {
           list-style: none;
@@ -73,19 +65,19 @@ class HaxMap extends LitElement {
         hax-toolbar-item {
           --simple-toolbar-button-justify: flex-start;
           --simple-toolbar-button-hover-color: var(
-            --tray-detail-accent-color,
+            --hax-tray-accent-color,
             #000
           );
           --simple-toolbar-button-hover-border-color: var(
-            --tray-detail-accent-color,
+            --hax-tray-accent-color,
             #000
           );
           --simple-toolbar-button-hover-toggled-border-color: var(
-            --tray-detail-accent-color,
+            --hax-tray-accent-color,
             #000
           );
           --simple-toolbar-button-toggled-color: var(
-            --tray-detail-accent-color,
+            --hax-tray-accent-color,
             #000
           );
         }

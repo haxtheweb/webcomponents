@@ -35,7 +35,7 @@ function _typeof(obj) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          }\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          :host([danger]) {\n            --simple-toolbar-button-hover-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n            --simple-toolbar-button-hover-border-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n          }\n          :host([feature]) {\n            --simple-toolbar-button-bg: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-hover-bg: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-border-color: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-hover-border-color: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-color: #eee;\n            --simple-toolbar-button-hover-color: #fff;\n          }\n        ",
+    "\n          :host {\n            text-transform: capitalize;\n          }\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          :host([danger]) {\n            --simple-toolbar-button-hover-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n            --simple-toolbar-button-hover-border-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n          }\n          :host([feature]) {\n            --simple-toolbar-button-bg: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-hover-bg: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-border-color: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-hover-border-color: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-color: var(--hax-toolbar-button-bg, var(--hax-tray-background-color, #fff));\n            --simple-toolbar-button-hover-color: var(--hax-toolbar-button-bg, var(--hax-tray-background-color, #fff));\n          }\n          ::part(label) {\n            margin: var(--hax-tray-margin, 4px);\n\n          }\n        ",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -94,7 +94,7 @@ function _templateObject2() {
     '"\n              @click="',
     '"\n              @keydown="',
     '"\n              @mousedown="',
-    '"\n              tabindex="0"\n            >\n              ',
+    '"\n              tabindex="0"\n              part="button"\n            >\n              ',
     "\n              ",
     "\n            </button>\n            ",
     "",
@@ -115,7 +115,7 @@ function _templateObject() {
     '"\n              @click="',
     '"\n              @keydown="',
     '"\n              @mousedown="',
-    '"\n              tabindex="0"\n            >\n              ',
+    '"\n              tabindex="0"\n              part="button"\n            >\n              ',
     " ",
     "\n            </button>\n            ",
     "",

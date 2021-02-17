@@ -33,13 +33,13 @@ function _typeof(obj) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n              <hax-tray-button\n                class="',
-    '" \n                show-text-label\n                icon-position="top"\n                index="',
-    '"\n                label="',
-    '"\n                icon="',
-    '"\n                color="',
-    '"\n                event-name="search-selected"\n                event-data="',
-    '"\n              >\n          </hax-tray-button>\n          ',
+    '\n            <hax-tray-button\n              class="',
+    '"\n              show-text-label\n              icon-position="top"\n              index="',
+    '"\n              label="',
+    '"\n              icon="',
+    '"\n              color="',
+    '"\n              event-name="search-selected"\n              event-data="',
+    '"\n            >\n            </hax-tray-button>\n          ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -51,10 +51,10 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <simple-button-grid \n        class="',
-    '" \n        always-expanded\n        columns="3">\n        ',
+    '\n      <simple-button-grid\n        class="',
+    '"\n        always-expanded\n        columns="3"\n      >\n        ',
     '\n      </simple-button-grid>\n      <hax-app-search\n        id="haxappsearch"\n        class="',
-    '" \n      ></hax-app-search>\n      <slot></slot>\n    ',
+    '"\n      ></hax-app-search>\n      <slot></slot>\n    ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -111,7 +111,7 @@ function _interopRequireWildcard(obj) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          overflow-y: auto;\n          position: relative;\n        }\n        simple-button-grid {\n          overflow: auto;\n        }\n        simple-button-grid.collapse-hide {\n          max-height: 0 !important;\n          transition: all 0.5s;\n        }\n        .visibility-hidden {\n          z-index: -1;\n          visibility: hidden;\n          opacity: 0;\n          height: 0;\n          transition: all 0.5s;\n        }\n        hax-tray-button {\n          font-size: 11px !important;\n          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          --simple-toolbar-button-border-color: var(\n            --hax-toolbar-border-color,\n            #ddd\n          );\n          --simple-toolbar-button-hover-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --tray-detail-accent-color,\n            #000\n          );\n        }\n      ",
+    "\n        :host {\n          overflow-y: auto;\n          position: relative;\n        }\n        simple-button-grid {\n          overflow: auto;\n        }\n        simple-button-grid.collapse-hide {\n          max-height: 0 !important;\n          transition: all 0.5s;\n        }\n        .visibility-hidden {\n          z-index: -1;\n          visibility: hidden;\n          opacity: 0;\n          height: 0;\n          transition: all 0.5s;\n        }\n        hax-tray-button {\n          font-size: var(--hax-tray-font-size-xs, 11px);\n          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          --simple-toolbar-button-border-color: var(\n            --hax-toolbar-border-color,\n            #ddd\n          );\n          --simple-toolbar-button-hover-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -334,8 +334,6 @@ var HaxAppBrowser =
         {
           key: "_activeAppChanged",
           value: function _activeAppChanged(newValue, oldValue) {
-            console.log(newValue, oldValue);
-
             if (
               _typeof(oldValue) !==
                 (typeof undefined === "undefined"

@@ -151,8 +151,10 @@ function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <div id="buttons">\n        <div class="group">\n          <hax-toolbar-menu\n            id="textformat"\n            icon="',
     '"\n            label="Format"\n            show-text-label\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            ',
-    '\n            <div slot="tour" data-stop-content>\n              Change how the text is structured and visualized in the page.\n            </div>\n          </hax-toolbar-menu>\n          <!-- comment this in when rich-text-editor is viable -->\n          <!--\n          <hax-context-item\n            action\n            hidden\n            icon="icons:flip-to-back"\n            label="Full text editor"\n            event-name="hax-full-text-editor-toggle"\n          ></hax-context-item> -->\n          <slot name="primary"></slot>\n          <hax-context-item\n            mini\n            action\n            icon="icons:code"\n            label="Modify HTML source"\n            ?hidden="',
-    '"\n            event-name="hax-source-view-toggle"\n          ></hax-context-item>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-list-bulleted"\n            event-name="text-tag-ul"\n            label="Bulleted list"\n            .hidden="',
+    '\n            <div slot="tour" data-stop-content>\n              Change how the text is structured and visualized in the page.\n            </div>\n          </hax-toolbar-menu>\n          <!-- comment this in when rich-text-editor is viable -->\n          <!--\n          <hax-context-item\n            action\n            hidden\n            icon="icons:flip-to-back"\n            label="Full text editor"\n            event-name="hax-full-text-editor-toggle"\n          ></hax-context-item> -->\n          <slot name="primary"></slot>\n          <hax-context-item\n            action\n            icon="icons:code"\n            label="Modify HTML source"\n            ?hidden="',
+    '"\n            event-name="hax-source-view-toggle"\n            toggles \n            ?toggled="',
+    '"\n            @click="',
+    '"\n          ></hax-context-item>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-list-bulleted"\n            event-name="text-tag-ul"\n            label="Bulleted list"\n            .hidden="',
     '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-list-numbered"\n            label="Numbered list"\n            event-name="text-tag-ol"\n            .hidden="',
     '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-indent-decrease"\n            label="Outdent"\n            event-name="text-outdent"\n            .hidden="',
     '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-indent-increase"\n            label="Indent"\n            event-name="text-indent"\n            .hidden="',
@@ -372,6 +374,7 @@ var HaxTextContext =
         // this just forces this block to run when editMode is modified
         var editMode = (0, _mobx.toJS)(_haxStore.HAXStore.editMode);
         var activeNode = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode);
+        _this.viewSource = false;
 
         if (activeNode && activeNode.tagName) {
           var schema = _haxStore.HAXStore.haxSchemaFromTag(activeNode.tagName);
@@ -439,6 +442,10 @@ var HaxTextContext =
                 });
               }),
               !this.sourceView,
+              this.viewSource,
+              function (e) {
+                return (_this2.viewSource = !_this2.viewSource);
+              },
               !this._showLists,
               !this._showLists,
               !this._showIndent,
@@ -859,6 +866,9 @@ var HaxTextContext =
                 isSafari: {
                   type: Boolean,
                   attribute: "is-safari",
+                },
+                viewSource: {
+                  type: Boolean,
                 },
               }
             );

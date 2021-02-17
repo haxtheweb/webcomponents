@@ -35,22 +35,22 @@ class HaxAppBrowser extends LitElement {
           transition: all 0.5s;
         }
         hax-tray-button {
-          font-size: 11px !important;
+          font-size: var(--hax-tray-font-size-xs, 11px);
           --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
           --simple-toolbar-button-border-color: var(
             --hax-toolbar-border-color,
             #ddd
           );
           --simple-toolbar-button-hover-color: var(
-            --tray-detail-accent-color,
+            --hax-tray-accent-color,
             #000
           );
           --simple-toolbar-button-hover-border-color: var(
-            --tray-detail-accent-color,
+            --hax-tray-accent-color,
             #000
           );
           --simple-toolbar-button-hover-border-color: var(
-            --tray-detail-accent-color,
+            --hax-tray-accent-color,
             #000
           );
         }
@@ -163,7 +163,6 @@ class HaxAppBrowser extends LitElement {
    * Active app updated, so scroll it into view
    */
   _activeAppChanged(newValue, oldValue) {
-    console.log(newValue, oldValue);
     if (typeof oldValue !== typeof undefined && newValue != null) {
       this.hasActive = true;
     } else {

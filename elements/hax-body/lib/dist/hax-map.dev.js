@@ -37,11 +37,11 @@ function _typeof(obj) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n              <li>\n                <hax-toolbar-item \n                  @click="',
+    '\n              <li>\n                <hax-toolbar-item\n                  @click="',
     '"\n                  data-index="',
     '"\n                  icon="',
     '"\n                  label="',
-    '"\n                  show-text-label>\n\n                </hax-toolbar-item>\n              </li>\n            ',
+    '"\n                  show-text-label\n                >\n                </hax-toolbar-item>\n              </li>\n            ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -53,7 +53,7 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <div class="container">\n        <table>\n          <caption>\n            Content Statistics\n          </caption>\n          <thead>\n          <tr>\n            <th scope="col">Words</th>\n            <th scope="col">Headings</th>\n            <th scope="col">Paragraphs</th>\n            <th scope="col">Widgets</th>\n            <th scope="col">Characters</th>\n          </tr>\n          </thead>\n          <tbody>\n            <tr>\n              <td>',
+    '\n      <div class="container">\n        <table>\n          <caption>\n            Content Statistics\n          </caption>\n          <thead>\n            <tr>\n              <th scope="col">Words</th>\n              <th scope="col">Headings</th>\n              <th scope="col">Paragraphs</th>\n              <th scope="col">Widgets</th>\n              <th scope="col">Characters</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr>\n              <td>',
     "</td>\n              <td>",
     "</td>\n              <td>",
     "</td>\n              <td>",
@@ -71,7 +71,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          display: block;\n        }\n        .title {\n          position: relative;\n          padding: 16px;\n          outline: 0;\n          font-weight: 600;\n          text-align: left;\n          margin: 0;\n          background-color: var(--hax-color-menu-heading-bg, #eeeeee);\n          color: var(--hax-color-menu-heading-color, black);\n          font-size: 18px;\n          line-height: 18px;\n          font-family: "Noto Serif", serif;\n        }\n        .container {\n          text-align: left;\n        }\n        table {\n          font-size: var(--hax-tray-font-size-sm, 12px);\n          border-collapse: collapse;\n          width: 100%;\n        }\n        table,\n        th,\n        td {\n          text-align: center;\n          border: 1px solid var(--hax-toolbar-border-color, #ddd);\n        }\n        caption {\n        }\n        th {\n          font-weight: normal;\n        }\n        td {\n          font-weight: bold;\n          font-size: 150%;\n        }\n        h5 {\n          color: var(--tray-detail-accent-color, #000);\n          margin: calc( 2 * var(--hax-tray-margin-sm, 4px)) 0 var(--hax-tray-margin-sm, 4px);\n        }\n        ul {\n          list-style: none;\n          padding: 0;\n          margin: 0;\n        }\n        ul li {\n          margin: 0;\n          padding: 0;\n        }\n        hax-toolbar-item {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-hover-color: var(--tray-detail-accent-color,#000);\n          --simple-toolbar-button-hover-border-color: var(--tray-detail-accent-color,#000);\n          --simple-toolbar-button-hover-toggled-border-color: var(--tray-detail-accent-color,#000);\n          --simple-toolbar-button-toggled-color: var(--tray-detail-accent-color,#000);\n        }\n      ',
+    "\n        :host {\n          display: block;\n        }\n        .container {\n          text-align: left;\n        }\n        table {\n          font-size: var(--hax-tray-font-size-sm, 12px);\n          border-collapse: collapse;\n          width: 100%;\n        }\n        table,\n        th,\n        td {\n          text-align: center;\n          border: 1px solid var(--hax-border-color, #ddd);\n        }\n        caption {\n        }\n        th {\n          font-weight: normal;\n        }\n        td {\n          font-weight: bold;\n          font-size: 150%;\n        }\n        h5 {\n          color: var(--hax-tray-accent-color, #000);\n          margin: calc(2 * var(--hax-tray-margin, 4px)) 0\n            var(--hax-tray-margin, 4px);\n          font-size: var(--hax-tray-font-size-lg, calc(1.05 * var(--hax-tray-font-size, 16px)));\n          text-transform: capitalize;\n        }\n        ul {\n          list-style: none;\n          padding: 0;\n          margin: 0;\n        }\n        ul li {\n          margin: 0;\n          padding: 0;\n        }\n        hax-toolbar-item {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-hover-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-toggled-border-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n          --simple-toolbar-button-toggled-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {

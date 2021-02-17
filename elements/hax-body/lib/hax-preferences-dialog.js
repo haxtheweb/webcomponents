@@ -24,25 +24,12 @@ class HaxPreferencesDialog extends LitElement {
         :host {
           display: block;
         }
-        .title {
-          position: relative;
-          padding: 16px;
-          outline: 0;
-          font-weight: 600;
-          text-align: left;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-          font-size: 18px;
-          line-height: 18px;
-          font-family: "Noto Serif", serif;
-        }
         .pref-container {
           text-align: left;
         }
         #link {
-          font-size: 18px;
-          margin: 0 auto;
+          font-size: 125%;
+          margin: calc(2 * var(--hax-tray-margin, 4px)) auto;
         }
         simple-icon-button {
           float: right;
@@ -96,6 +83,7 @@ class HaxPreferencesDialog extends LitElement {
         >
         </simple-fields>
       </div>
+      <br />
       ${!this.hideLink
         ? html`<a
             href="https://haxtheweb.org/"

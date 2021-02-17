@@ -54,10 +54,7 @@ class HaxContextContainer extends LitElement {
           top: var(--hax-context-container-target-top, 0px);
         }
         :host([below]) ::slotted(*) {
-          --simple-toolbar-button-border-color: var(
-            --hax-toolbar-button-hover-border-color,
-            #000
-          );
+          --simple-toolbar-button-padding: var(--hax-tray-margin, 4px);
         }
       `,
     ];

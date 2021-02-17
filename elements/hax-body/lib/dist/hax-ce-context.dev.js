@@ -144,8 +144,10 @@ function _templateObject() {
     '"\n          label="',
     ', click to change"\n          ?disabled="',
     '"\n          event-name="hax-transform-node"\n        ></hax-context-item>\n        ',
-    '\n        <slot name="primary"></slot>\n        <hax-context-item\n          mini\n          action\n          icon="icons:code"\n          label="Modify HTML source"\n          ?disabled="',
-    '"\n          event-name="hax-source-view-toggle"\n        ></hax-context-item>\n        <hax-toolbar-menu icon="add" label="Insert item above or below">\n          <hax-toolbar-menu-item slot="menuitem">\n            <hax-context-item\n              action\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-up"\n              event-name="insert-above-active"\n              label="Insert item above"\n            ></hax-context-item>\n          </hax-toolbar-menu-item>\n          <hax-toolbar-menu-item slot="menuitem">\n            <hax-context-item\n              action\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-down"\n              event-name="insert-below-active"\n              label="Insert item below"\n            ></hax-context-item>\n          </hax-toolbar-menu-item>\n        </hax-toolbar-menu>\n        <slot name="secondary"></slot>\n        <slot name="more"></slot>\n      </div>\n      ',
+    '\n        <slot name="primary"></slot>\n        <hax-context-item\n          action\n          icon="icons:code"\n          label="Modify HTML source"\n          ?disabled="',
+    '"\n          event-name="hax-source-view-toggle"\n          toggles\n          ?toggled="',
+    '"\n          @click="',
+    '"\n        ></hax-context-item>\n        <hax-toolbar-menu icon="add" label="Insert item above or below">\n          <hax-toolbar-menu-item slot="menuitem">\n            <hax-context-item\n              action\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-up"\n              event-name="insert-above-active"\n              label="Insert item above"\n            ></hax-context-item>\n          </hax-toolbar-menu-item>\n          <hax-toolbar-menu-item slot="menuitem">\n            <hax-context-item\n              action\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-down"\n              event-name="insert-below-active"\n              label="Insert item below"\n            ></hax-context-item>\n          </hax-toolbar-menu-item>\n        </hax-toolbar-menu>\n        <slot name="secondary"></slot>\n        <slot name="more"></slot>\n      </div>\n      ',
     "\n    ",
   ]);
 
@@ -320,6 +322,8 @@ var HaxCeContext =
         {
           key: "render",
           value: function render() {
+            var _this3 = this;
+
             return (0, _litElement.html)(
               _templateObject(),
               this.activeTagIcon,
@@ -330,6 +334,10 @@ var HaxCeContext =
                 _litElement.html)(_templateObject2(), el.icon, el.label, el.callback);
               }),
               !this.sourceView,
+              this.viewSource,
+              function (e) {
+                return (_this3.viewSource = !_this3.viewSource);
+              },
               this.moreButton
             );
           },
@@ -357,7 +365,7 @@ var HaxCeContext =
         {
           key: "firstUpdated",
           value: function firstUpdated(changedProperties) {
-            var _this3 = this;
+            var _this4 = this;
 
             if (
               _get(
@@ -374,10 +382,10 @@ var HaxCeContext =
             }
 
             autorun(function () {
-              _this3.activeNode = toJS(_haxStore.HAXStore.activeNode);
+              _this4.activeNode = toJS(_haxStore.HAXStore.activeNode);
 
-              if (_this3.activeNode && _this3.activeNode.classList) {
-                _this3._resetCEMenu();
+              if (_this4.activeNode && _this4.activeNode.classList) {
+                _this4._resetCEMenu();
               }
             });
           },
@@ -393,6 +401,7 @@ var HaxCeContext =
             } // reset buttons in-case this element has new ones
 
             this.ceButtons = [];
+            this.viewSource = false;
 
             if (_haxStore.HAXStore.activeHaxBody && this.activeNode != null) {
               var schema = _haxStore.HAXStore.haxSchemaFromTag(
@@ -467,6 +476,9 @@ var HaxCeContext =
                 },
                 ceButtons: {
                   type: Array,
+                },
+                viewSource: {
+                  type: Boolean,
                 },
               }
             );

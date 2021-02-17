@@ -22,22 +22,22 @@ class HaxStaxBrowser extends LitElement {
           overflow: auto;
         }
         hax-tray-button {
-          font-size: 11px !important;
+          font-size: var(--hax-tray-font-size-xs, 11px);
           --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
           --simple-toolbar-button-border-color: var(
             --hax-toolbar-border-color,
             #ddd
           );
           --simple-toolbar-button-hover-color: var(
-            --tray-detail-accent-color,
+            --hax-tray-accent-color,
             #000
           );
           --simple-toolbar-button-hover-border-color: var(
-            --tray-detail-accent-color,
+            --hax-tray-accent-color,
             #000
           );
           --simple-toolbar-button-hover-border-color: var(
-            --tray-detail-accent-color,
+            --hax-tray-accent-color,
             #000
           );
         }

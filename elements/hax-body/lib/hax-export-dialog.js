@@ -15,24 +15,34 @@ class HaxExportDialog extends LitElement {
         }
         simple-modal-template {
           display: none;
+          --simple-modal-resize: horizontal;
           --simple-modal-z-index: 100000001;
-          --simple-modal-width: auto;
-          --simple-modal-height: auto;
-          --simple-modal-min-width: 80vw;
-          --simple-modal-min-height: 70vh;
-          --simple-modal-max-width: unset;
-          --simple-modal-max-height: unset;
-          --simple-modal-titlebar-color: black;
-          --simple-modal-titlebar-background: #ddd;
-          --simple-modal-header-color: black;
-          --simple-modal-header-background: #ccc;
-          --simple-modal-content-container-color: black;
-          --simple-modal-content-container-background: #ffffff;
-          --simple-modal-buttons-color: blue;
-          --simple-modal-buttons-background: #fff;
-          --simple-modal-button-color: var(--simple-modal-buttons-color);
-          --simple-modal-button-background: var(
-            --simple-modal-buttons-background-color
+          --simple-modal-width: 95vw;
+          --simple-modal-height: 75vh;
+          --simple-modal-min-width: 200px;
+          --simple-modal-min-height: auto;
+          --simple-modal-titlebar-color: var(--hax-tray-text-color, black);
+          --simple-modal-titlebar-background: var(
+            --hax-titlebar-background-color,
+            #f0f4f8
+          );
+          --simple-modal-titlebar-padding: var(--hax-tray-margin, 4px);
+          --simple-modal-titlebar-height: calc(
+            20px + 2 * var(--hax-tray-margin, 4px)
+          );
+          --simple-modal-content-container-color: var(
+            --hax-tray-text-color,
+            black
+          );
+          --simple-modal-content-container-background: var(
+            --hax-tray-background-color,
+            #fff
+          );
+          --simple-modal-content-padding: calc(2 * var(--hax-tray-margin, 4px))
+            0px 0px;
+          --simple-modal-buttons-background: var(
+            --hax-tray-background-color,
+            #fff
           );
         }
       `,
@@ -102,7 +112,7 @@ class HaxExportDialog extends LitElement {
 
   constructor() {
     super();
-    this.title = "View page source";
+    this.title = "View Page Source";
   }
 }
 window.customElements.define(HaxExportDialog.tag, HaxExportDialog);

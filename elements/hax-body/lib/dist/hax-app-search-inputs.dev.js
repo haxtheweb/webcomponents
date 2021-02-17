@@ -31,9 +31,9 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <h5 class="search-label">',
-    '\n        <hax-tray-button \n          id="cancel"\n          class="',
-    '" \n          icon="close"\n          label="Cancel Search"\n          event-name="cancel-search">\n        </hax-tray-button>\n      </h5>\n      <simple-fields\n        id="form"\n        .schema="',
+    '\n      <h5 class="search-label">\n        ',
+    '\n        <hax-tray-button\n          id="cancel"\n          class="',
+    '"\n          icon="close"\n          label="Cancel Search"\n          event-name="cancel-search"\n        >\n        </hax-tray-button>\n      </h5>\n      <simple-fields\n        id="form"\n        .schema="',
     '"\n        .schematizer="',
     '"\n        .elementizer="',
     '"\n        @value-changed="',
@@ -49,7 +49,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n        }\n        .search-label {\n          display: flex;\n          align-items: center;\n          justify-content: space-between;\n          width: 100%;\n        }\n        #cancel {\n          flex: 0 0 auto;\n        }\n        h5 {\n          margin: var(--hax-tray-margin-sm, 4px) 0;\n        }\n      ",
+    "\n        :host {\n          display: block;\n        }\n        .search-label {\n          display: flex;\n          align-items: center;\n          justify-content: space-between;\n          width: 100%;\n        }\n        #cancel {\n          flex: 0 0 auto;\n        }\n        h5 {\n          margin: var(--hax-tray-margin, 4px) 0;\n          font-size: var(--hax-tray-font-size-xl);\n          text-transform: capitalize;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {

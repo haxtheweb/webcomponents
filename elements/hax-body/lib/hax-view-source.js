@@ -2,42 +2,51 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
 import { stripMSWord, formatHTML } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
+import "./hax-toolbar.js";
 /**
- * `hax-export-dialog`
- * @element hax-export-dialog
+ * `hax-eview-source`
+ * @element hax-eview-source
  * `Export dialog with all export options and settings provided.`
  */
 class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
   static get styles() {
     return [
       css`
-        :host {
-          display: block;
-          text-align: left;
-        }
-        #textarea {
+        :host,
+        :host * {
           margin: 0;
           padding: 0;
-          font-size: 10px;
-          resize: none;
-          width: 100%;
-          height: 50vh;
-          width: -webkit-fill-available;
-          background-color: transparent;
-          color: #eeeeee;
-          font-family: monospace;
         }
-        .buttons {
-          margin-top: 20px;
-          display: flex;
-          justify-content: space-evenly;
+        :host {
+          position: relative;
+        }
+        #textarea {
           width: 100%;
+          height: calc(var(--simple-modal-height, 75vh) - 88px);
+          overflow: auto;
+          background-color: transparent;
+        }
+        #textarea::part(code) {
+          height: calc(var(--simple-modal-height, 75vh) - 88px);
+        }
+        hax-toolbar {
+          width: 100%;
+          position: sticky;
+          bottom: 0;
+          display: flex;
+          --simple-toolbar-button-padding: 0 var(--hax-tray-margin, 4px);
+        }
+        hax-toolbar::part(buttons) {
+          justify-content: space-between;
+          flex: 0 1 auto;
+          margin: 0 auto;
         }
       `,
     ];
   }
   render() {
     return html`
+      <div id="spacer"></div>
       <div id="wrapper">
         <textarea id="hiddentextarea" hidden></textarea>
         <code-editor
@@ -49,38 +58,49 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
           word-wrap
         ></code-editor>
       </div>
-      <div class="buttons">
+      <hax-toolbar always-expanded>
         <hax-tray-button
-          label="Update source"
-          icon="icons:code"
+          label="Update Page"
+          icon="editor:insert-drive-file"
           @click="${this.importContent.bind(this)}"
+          show-text-label
+          icon-position="top"
         >
         </hax-tray-button>
         <hax-tray-button
           @click="${this.scrubContent.bind(this)}"
           icon="editor:format-clear"
-          label="Word / GDoc clean up"
+          label="Clean Formatting"
+          tooltip="Word / Google Document Clean Up"
+          show-text-label
+          icon-position="top"
         >
         </hax-tray-button>
         <hax-tray-button
           @click="${this.selectBody.bind(this)}"
           icon="icons:content-copy"
-          label="Copy source"
+          label="Copy HTML"
+          show-text-label
+          icon-position="top"
         >
         </hax-tray-button>
         <hax-tray-button
-          label="Download"
+          label="Download HTML"
           icon="icons:file-download"
           @click="${this.download.bind(this)}"
+          show-text-label
+          icon-position="top"
         >
         </hax-tray-button>
         <hax-tray-button
           @click="${this.htmlToHaxElements.bind(this)}"
           label="HAXSchema"
           icon="hax:code-json"
+          show-text-label
+          icon-position="top"
         >
         </hax-tray-button>
-      </div>
+      </hax-toolbar>
     `;
   }
   static get tag() {
@@ -94,7 +114,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     const data = this.contentToFile(false);
     this.downloadFromData(data, "html", "my-new-code");
     HAXStore.toast("HTML content downloaded");
-    this.close();
+    //this.close();
   }
 
   /**
@@ -104,7 +124,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     const data = this.contentToFile(true);
     this.downloadFromData(data, "html", "my-new-webpage");
     HAXStore.toast("Working offline copy downloaded");
-    this.close();
+    //this.close();
   }
 
   /**
@@ -115,7 +135,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     const htmlBody = this.shadowRoot.querySelector("#textarea").value;
     HAXStore.toast("Content updated");
     HAXStore.activeHaxBody.importContent(htmlBody);
-    this.close();
+    //this.close();
   }
 
   /**
@@ -126,7 +146,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     const htmlBody = this.shadowRoot.querySelector("#textarea").value;
     HAXStore.toast("Scrubbed, Content updated");
     HAXStore.activeHaxBody.importContent(stripMSWord(htmlBody));
-    this.close();
+    //this.close();
   }
 
   close() {
@@ -158,7 +178,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     document.execCommand("copy");
     hiddenarea.setAttribute("hidden", "hidden");
     HAXStore.toast("Copied HTML content");
-    this.close();
+    //this.close();
   }
 
   /**

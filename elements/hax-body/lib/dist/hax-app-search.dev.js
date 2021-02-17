@@ -158,9 +158,9 @@ function _templateObject2() {
     '"\n      ></hax-app-search-inputs>\n      <hax-app-pagination\n        id="pagerbottom"\n        .request-data="',
     '"\n        .pagination="',
     '"\n      ></hax-app-pagination>\n      <hexagon-loader\n        size="medium"\n        item-count="4"\n        ?loading="',
-    '"\n        aria-roledescription="Loading"\n      ></hexagon-loader>\n      <simple-button-grid \n        class="',
-    '" \n        always-expanded\n        columns="2">\n        ',
-    "\n      </simple-button-grid >\n    ",
+    '"\n        aria-roledescription="Loading"\n      ></hexagon-loader>\n      <simple-button-grid\n        class="',
+    '"\n        always-expanded\n        columns="2"\n      >\n        ',
+    "\n      </simple-button-grid>\n    ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -217,7 +217,7 @@ function _interopRequireWildcard(obj) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n        }\n        hexagon-loader {\n          display: none;\n          margin: 0 auto;\n          z-index: 1000;\n          --hexagon-color: var(--tray-detail-accent-color,\n            #000\n          );\n        }\n        hexagon-loader[loading] {\n          display: block;\n          opacity: 0.8;\n        }\n        .card-content {\n          padding: 0;\n        }\n        .card-content p {\n          padding: 0;\n          margin: 0;\n        }\n        #itemlist {\n          min-height: 172px;\n          text-align: center;\n          align-items: center;\n        }\n        hax-app-search-inputs {\n          min-height: 80px;\n          padding: 0;\n        }\n        hax-app-pagination {\n          min-height: 32px;\n          font-size: var(--hax-tray-font-size-sm, 12px);\n          display: none;\n          justify-content: flex-end;\n          justify-content: center;\n        }\n        .tos-text {\n          font-size: 12px;\n        }\n        .tos-text ul {\n          padding: 0;\n          margin: 0;\n        }\n        .tos-text a {\n          font-size: var(--hax-tray-font-size-sm, 12px);\n          color: var(--tray-detail-accent-color,\n            #000\n          );\n          text-decoration: underline;\n        }\n        .tos-text a:hover,\n        .tos-text a:focus,\n        .tos-text a:active {\n          outline: 2px solid var(--tray-detail-accent-color,\n            #000\n          );;\n        }\n      ",
+    "\n        :host {\n          display: block;\n        }\n        hexagon-loader {\n          display: none;\n          margin: 0 auto;\n          z-index: 1000;\n          --hexagon-color: var(--hax-tray-accent-color, #000);\n        }\n        hexagon-loader[loading] {\n          display: block;\n          opacity: 0.8;\n        }\n        .card-content {\n          padding: 0;\n        }\n        .card-content p {\n          padding: 0;\n          margin: 0;\n        }\n        #itemlist {\n          min-height: 172px;\n          text-align: center;\n          align-items: center;\n        }\n        hax-app-search-inputs {\n          min-height: 80px;\n          padding: 0;\n        }\n        hax-app-pagination {\n          min-height: 32px;\n          font-size: var(--hax-tray-font-size-sm, 12px);\n          display: none;\n          justify-content: flex-end;\n          justify-content: center;\n        }\n        .tos-text {\n          font-size: var(--hax-tray-font-size-sm, 12px);\n        }\n        .tos-text ul {\n          padding: 0;\n          margin: 0;\n        }\n        .tos-text a {\n          font-size: var(--hax-tray-font-size-sm, 12px);\n          color: var(--hax-tray-accent-color, #000);\n          text-decoration: underline;\n        }\n        .tos-text a:hover,\n        .tos-text a:focus,\n        .tos-text a:active {\n          outline: 2px solid var(--hax-tray-accent-color, #000);\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {

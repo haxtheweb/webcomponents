@@ -72,6 +72,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               @keydown="${this._handleKeys}"
               @mousedown="${this._handleMousedown}"
               tabindex="0"
+              part="button"
             >
               ${this.iconTemplate} ${this.labelTemplate}
             </button>
@@ -85,6 +86,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               @keydown="${this._handleKeys}"
               @mousedown="${this._handleMousedown}"
               tabindex="0"
+              part="button"
             >
               ${!this.icon || this.icon == "" ? "" : this.iconTemplate}
               ${this.labelTemplate}
@@ -122,7 +124,7 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
         ...super.styles,
         css`
           :host {
-            --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
+            text-transform: capitalize;
           }
           :host([disabled]) {
             pointer-events: none;
@@ -154,8 +156,17 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               --hax-toolbar-button-feature-color,
               #009dc7
             );
-            --simple-toolbar-button-color: #eee;
-            --simple-toolbar-button-hover-color: #fff;
+            --simple-toolbar-button-color: var(
+              --hax-toolbar-button-bg,
+              var(--hax-tray-background-color, #fff)
+            );
+            --simple-toolbar-button-hover-color: var(
+              --hax-toolbar-button-bg,
+              var(--hax-tray-background-color, #fff)
+            );
+          }
+          ::part(label) {
+            margin: var(--hax-tray-margin, 4px);
           }
         `,
       ];

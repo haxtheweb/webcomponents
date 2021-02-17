@@ -35,7 +35,9 @@ class HaxAppSearchInputs extends LitElement {
           flex: 0 0 auto;
         }
         h5 {
-          margin: var(--hax-tray-margin-sm, 4px) 0;
+          margin: var(--hax-tray-margin, 4px) 0;
+          font-size: var(--hax-tray-font-size-xl);
+          text-transform: capitalize;
         }
       `,
     ];

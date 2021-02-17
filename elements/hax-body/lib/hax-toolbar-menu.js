@@ -45,6 +45,8 @@ class HaxToolbarMenu extends A11yMenuButtonBehaviors(LitElement) {
           align-items: center;
           min-width: 42px;
           padding: var(--hax-menu-button-menu-padding);
+          font-family: var(--simple-fields-font-family, sans-serif);
+          text-transform: capitalize;
         }
         .label {
           padding: 0 5px;

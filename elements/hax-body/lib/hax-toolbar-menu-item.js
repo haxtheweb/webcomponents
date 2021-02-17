@@ -51,6 +51,11 @@ class HaxToolbarMenuItem extends A11yMenuButtonItemBehaviors(LitElement) {
           );
           z-index: 1001;
         }
+        ::slotted(*) {
+          --simple-toolbar-button-justify: flex-start;
+          --simple-toolbar-button-label-white-space: nowrap;
+          --simple-toolbar-button-padding: 0 var(--hax-tray-margin, 4px);
+        }
       `,
     ];
   }

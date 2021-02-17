@@ -108,23 +108,46 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       ...(super.styles || []),
       css`
         :host {
-          font-family: var(--simple-fields-font-family, sans-serif);
+          font-family: var(--hax-tray-font-family, sans-serif);
           display: block;
           z-index: 100000000;
           position: absolute;
           transition: 0.2s all ease-in-out;
           height: 100vh;
           overflow: auto;
+          font-size: var(--hax-tray-font-size, 16px);
+          color: var(--hax-tray-text-color, #000);
+          --simple-fields-font-family: var(--hax-tray-font-family, sans-serif);
+          --simple-fields-error-color: var(--hax-tray-secondary-danger-color, #dd2c00);
+          --simple-fields-color: var(--hax-tray-text-color, #000);
+          --simple-fields-background-color: var(--hax-tray-background-color, #fff);
+          --simple-fields-secondary-accent-color: var(--hax-tray-secondary-accent-color, #ddd);
+          --simple-fields-border-color: var(--hax-tray-secondary-accent-color, #ddd);
+          --hax-toolbar-button-bg: #fff;
+          --hax-toolbar-button-danger-color: #882222;
+          --hax-toolbar-button-feature-color: #009dc7;
+          --hax-toolbar-button-color: #444;
+          --simple-fields-margin: var(--hax-tray-margin, 4px);
+          --simple-fields-field-margin: calc(2 * var(--hax-tray-font-size, 16px));
+          --simple-fields-font-size: var(--hax-tray-font-size, 16px);
+          --simple-fields-line-height: 135%;
+          --simple-fields-detail-font-size: var(--hax-tray-font-size-sm, 12px);
+          --simple-fields-detail-line-height: 120%;
+          --simple-fields-meta-font-size: var(--hax-tray-font-size-xs, 11px);
+          --simple-fields-meta-line-height: 120%;
+          --simple-toolbar-button-color: var(--hax-toolbar-button-color, #000);
+          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
+          --simple-toolbar-button-hover-bg: var( --hax-toolbar-button-hover-bg, #fff);
+          --simple-toolbar-button-toggled-bg: var( --hax-toolbar-button-toggled-bg, #fff);
+          --hax-tray-font-size-xl: calc(1.15 * var(--hax-tray-font-size, 16px));
+          --hax-tray-font-size-lg: calc(1.05 * var(--hax-tray-font-size, 16px));
         }
         .wrapper {
           position: fixed;
           top: 0;
-          background-color: var(--hax-toolbar-button-bg, #fff);
+          background-color: var(--hax-tray-background-color, #fff);
           width: var(--hax-tray-width, 300px);
-          --simple-fields-margin: var(--hax-tray-margin-sm, 4px);
-          --simple-fields-font-size: var(--hax-tray-font-size-sm, 12px);
-          --simple-fields-font-size-xs: var(--hax-tray-font-size-xs, 10px);
-          --tray-detail-accent-color: #000;
+          --hax-tray-accent-color: #000;
           transition: 0.2s all ease-in-out;
           opacity: 0;
           visibility: hidden;
@@ -162,14 +185,14 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         #tray-detail {
           flex: 1 1 auto;
           transition: height 0.6s linear;
-          border: 1px solid var(--hax-toolbar-border-color, #ddd);
-          border-top: 3px solid var(--tray-detail-accent-color,
+          border: 1px solid var(--hax-border-color, #ddd);
+          border-top: 3px solid var(--hax-tray-accent-color,
             #000
           );
-          max-width: calc(var(--hax-tray-width, 300px) - 2 * var(--hax-tray-margin-sm, 4px));
+          max-width: calc(var(--hax-tray-width, 300px) - 2 * var(--hax-tray-margin, 4px));
           overflow-y: auto;
-          padding: 0 var(--hax-tray-margin-sm, 4px) var(--hax-tray-margin-sm, 4px);
-          --simple-fields-accent-color: var(--tray-detail-accent-color, #000);
+          padding: 0 var(--hax-tray-margin, 4px) var(--hax-tray-margin, 4px);
+          --simple-fields-accent-color: var(--hax-tray-accent-color, #000);
           transition: 0.2s all ease-in-out;
           max-height: 100vh;
         }
@@ -185,92 +208,114 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
         #content-add,
         #tray-detail[selected-detail=content-add] {
-          --tray-detail-accent-color: var(
+          --hax-tray-accent-color: var(
             --simple-colors-default-theme-purple-8,
             #8a009b
+          );
+          --hax-tray-secondary-accent-color: var(
+            --simple-colors-default-theme-purple-4,
+            #f07cff
           );
         }
         #content-edit,
         #tray-detail[selected-detail=content-edit] {
-          --tray-detail-accent-color: var(
+          --hax-tray-accent-color: var(
             --simple-colors-default-theme-pink-8,
             #b80042
+          );
+          --hax-tray-secondary-accent-color: var(
+            --simple-colors-default-theme-pink-4,
+            #ff73b5
           );
         }
         #media-add,
         #tray-detail[selected-detail=media-add] {
-          --tray-detail-accent-color: var(
+          --hax-tray-accent-color: var(
             --simple-colors-default-theme-indigo-8,
             #2801b0
+          );
+          --hax-tray-secondary-accent-color: var(
+            --simple-colors-default-theme-indigo-4,
+            #9e82ff
           );
         }
         #content-map,
         #tray-detail[selected-detail=content-map] {
-          --tray-detail-accent-color: var(
+          --hax-tray-accent-color: var(
             --simple-colors-default-theme-light-blue-8,
             #007999
           );
-        }
-        #advanced-settings,
-        #tray-detail[selected-detail=advanced-settings] {
-          --tray-detail-accent-color: var(
-            --simple-colors-default-theme-teal-8,
-            #007658
+          --hax-tray-secondary-accent-color: var(
+            --simple-colors-default-theme-light-blue-4,
+            #65b3ff
           );
         }
         #advanced-settings,
         #tray-detail[selected-detail=advanced-settings] {
-          --tray-detail-accent-color: var(
+          --hax-tray-accent-color: var(
             --simple-colors-default-theme-green-8,
             #00762e
           );
+          --hax-tray-secondary-accent-color: var(
+            --simple-colors-default-theme-green-4,
+            #49ff88
+          );
+        }
+        #tray-detail h4 {
+          font-size: var(--hax-tray-font-size-xl, calc(1.15 * var(--hax-tray-font-size, 16px)));
+        }
+        #tray-detail h5 {
+          font-size: var(--hax-tray-font-size-lg, calc(1.05 * var(--hax-tray-font-size, 16px)));
         }
         #tray-detail h4,
         #tray-detail h5,
         #tray-detail h6 {
-          color: var(--tray-detail-accent-color,
+          text-transform: capitalize;
+          color: var(--hax-tray-accent-color,
             #000
           );
-          margin: calc(2 * var(--hax-tray-margin-sm, 4px)) 0 var(--hax-tray-margin-sm, 4px);
+          margin: calc(2 * var(--hax-tray-margin, 4px)) 0 var(--hax-tray-margin, 4px);
         }
         #content-add,
         #content-edit,
         #media-add,
         #content-map,
         #advanced-settings {
-          --simple-toolbar-button-hover-color: var(--tray-detail-accent-color,#000);
-          --simple-toolbar-button-hover-border-color: var(--tray-detail-accent-color,#000);
-          --simple-toolbar-button-hover-toggled-border-color: var(--tray-detail-accent-color,#000);
-          --simple-toolbar-button-toggled-color: var(--tray-detail-accent-color,#000);
-          --simple-fields-accent-color: : var(--tray-detail-accent-color,#000);
+          --simple-toolbar-button-hover-color: var(--hax-tray-accent-color,#000);
+          --simple-toolbar-button-hover-border-color: var(--hax-tray-accent-color,#000);
+          --simple-toolbar-button-hover-toggled-border-color: var(--hax-tray-accent-color,#000);
+          --simple-toolbar-button-toggled-color: var(--hax-tray-accent-color,#000);
+          --simple-fields-accent-color: : var(--hax-tray-accent-color,#000);
         }
         hax-toolbar {
           flex: 0 0 auto;
-          border: 1px solid var(--hax-toolbar-border-color, #ddd);
+          border: 1px solid var(--hax-border-color, #ddd);
           border-bottom: none;
-          background-color: var(--hax-toolbar-button-bg, #fff);
+          background-color: var(--hax-tray-background-color, #fff);
           display: flex;
           width: var(--hax-tray-width, 300px);
           transition: all 0.5ms ease-in-out;
         }
         :host([edit-mode][collapsed]) hax-toolbar.tray-detail-ops {
-          border-bottom: 1px solid var(--hax-toolbar-border-color, #ddd);
+          border-bottom: 1px solid var(--hax-border-color, #ddd);
         }
         .group { 
           margin: 0; 
           padding: 0;
           justify-content: space-around;
-          border-right: 1px solid var(--hax-toolbar-border-color, #ddd);
-          flex: 1 0 auto;
-        }
-        .group:last-child { 
+          border-right: 1px solid var(--hax-border-color, #ddd);
           flex: 0 0 auto;
         }
-        .group > * {
+        #menugroup, 
+        #menugroup > *,
+        #contentgroup,
+        #content-edit {
           flex: 1 1 auto;
+          align-items: flex-start;
         }
-        .group:last-child > * { 
-          flex: 0 0 auto;
+        #content-edit {
+          --simple-toolbar-button-justify: flex-start;
+          --simple-toolbar-button-padding: 0 var(--hax-tray-margin, 4px);
         }
         .collapse-menu {
           z-index: 2000;
@@ -308,11 +353,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         #button {
           position: fixed;
           top: 0;
-          border: 1px solid black;
-          box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.2);
+          --simple-toolbar-button-padding: var(--hax-tray-margin, 4px);
           visibility: visible;
           z-index: 1000;
-          margin: 0;
+          margin: var(--hax-tray-margin, 4px);
         }
         :host([edit-mode]) #button {
           visibility: hidden;
@@ -398,7 +442,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               ></hax-tray-button>
               `}
       </div>
-      <div class="group">
+      <div id="savegroup" class="group">
         <hax-tray-button
           icon="icons:undo"
           ?disabled="${!this.canUndo}"
@@ -429,9 +473,14 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           </div>
         </hax-tray-button>
       </div>
-      <div class="group collapse-menu ">
-        <slot name="tray-buttons-pre"></slot>
-        <hax-toolbar-menu label="Position" icon="av:web" direction="left">
+      <slot name="tray-buttons-pre"></slot>
+      <div id="menugroup" class="group collapse-menu">
+        <hax-toolbar-menu
+          label="Menu Position"
+          icon="av:web"
+          direction="left"
+          show-text-label
+        >
           <hax-toolbar-menu-item slot="menuitem">
             <hax-tray-button
               role="menuitem"
@@ -469,7 +518,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           </hax-toolbar-menu-item>
         </hax-toolbar-menu>
       </div>
-      <div class="group">
+      <div id="source" class="group">
         <hax-tray-button
           id="exportbtn"
           icon="code"
@@ -486,7 +535,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           </div>
         </hax-tray-button>
       </div>
-      <div class="group">
+      <div class="group" id="tourgroup">
         <hax-tray-button
           event-name="start-tour"
           icon="help"
@@ -499,7 +548,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   }
   get trayToolbarTemplate() {
     return html` <hax-toolbar class="quick-buttons tray-detail-ops">
-      <div class="group">
+      <div id="contentgroup" class="group">
         <hax-tray-button
           event-name="content-edit"
           icon="build"
@@ -565,7 +614,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           </div>
         </hax-tray-button>
       </div>
-      <div class="group">
+      <div id="mapgroup" class="group">
         <hax-tray-button
           event-name="content-map"
           icon="maps:map"
@@ -585,7 +634,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           </div>
         </hax-tray-button>
       </div>
-      <div class="group">
+      <div id="settingsgroup" class="group">
         <hax-tray-button
           ?hidden="${this.hidePreferencesButton}"
           id="advanced-settings"

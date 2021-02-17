@@ -15,8 +15,12 @@ const HaxToolbarBehaviors = function (SuperClass) {
         ...super.styles,
         css`
           :host {
-            background-color: var(--hax-toolbar-button-bg, #fff);
-            border: 1px solid var(--hax-toolbar-border-color, #ddd);
+            background-color: var(
+              --hax-toolbar-button-bg,
+              var(--hax-tray-background-color, #fff)
+            );
+            border: 1px solid
+              var(--hax-toolbar-border-color, var(--hax-border-color, #ddd));
             flex: 0 0 auto;
             display: none;
 
@@ -46,20 +50,26 @@ const HaxToolbarBehaviors = function (SuperClass) {
               0
             );
 
-            --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
-            --a11y-menu-button-bg-color: var(--hax-toolbar-button-bg, #fff);
+            --simple-toolbar-button-bg: var(
+              --hax-toolbar-button-bg,
+              var(--hax-tray-background-color, #fff)
+            );
+            --a11y-menu-button-bg-color: var(
+              --hax-toolbar-button-bg,
+              var(--hax-tray-background-color, #fff)
+            );
             --a11y-menu-button-item-bg-color: var(
               --hax-toolbar-button-bg,
-              #fff
+              var(--hax-secondary-background-color, #fff)
             );
 
             --simple-toolbar-button-hover-bg: var(
               --hax-toolbar-button-hover-bg,
-              #fff
+              var(--hax-tray-background-color, #fff)
             );
             --a11y-menu-button-focus-bg-color: var(
               --hax-toolbar-button-hover-bg,
-              #fff
+              var(--hax-tray-background-color, #fff)
             );
             --a11y-menu-button-item-focus-bg-color: var(
               --hax-toolbar-menu-button-hover-bg,
@@ -91,12 +101,18 @@ const HaxToolbarBehaviors = function (SuperClass) {
 
             --simple-toolbar-button-border-color: var(
               --hax-toolbar-button-border-color,
-              #fff
+              var(--hax-tray-background-color, #fff)
             );
             --a11y-menu-button-border: 1px solid
-              var(--hax-toolbar-button-border-color, #fff);
+              var(
+                --hax-toolbar-button-border-color,
+                var(--hax-tray-background-color, #fff)
+              );
             --a11y-menu-button-border: 1px solid
-              var(--hax-toolbar-button-border-color, #fff);
+              var(
+                --hax-toolbar-button-border-color,
+                var(--hax-tray-background-color, #fff)
+              );
 
             --simple-toolbar-button-hover-border-color: var(
               --hax-toolbar-button-hover-border-color,

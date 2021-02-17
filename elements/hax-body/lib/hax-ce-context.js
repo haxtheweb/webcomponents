@@ -60,12 +60,14 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
         })}
         <slot name="primary"></slot>
         <hax-context-item
-          mini
           action
           icon="icons:code"
           label="Modify HTML source"
           ?disabled="${!this.sourceView}"
           event-name="hax-source-view-toggle"
+          toggles
+          ?toggled="${this.viewSource}"
+          @click="${(e) => (this.viewSource = !this.viewSource)}"
         ></hax-context-item>
         <hax-toolbar-menu icon="add" label="Insert item above or below">
           <hax-toolbar-menu-item slot="menuitem">
@@ -122,6 +124,9 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
       ceButtons: {
         type: Array,
       },
+      viewSource: {
+        type: Boolean,
+      },
     };
   }
   handleCECustomEvent(e) {
@@ -160,6 +165,7 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
     }
     // reset buttons in-case this element has new ones
     this.ceButtons = [];
+    this.viewSource = false;
     if (HAXStore.activeHaxBody && this.activeNode != null) {
       let schema = HAXStore.haxSchemaFromTag(this.activeNode.tagName);
       this.sourceView = schema.canEditSource;

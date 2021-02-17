@@ -90,6 +90,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
       // this just forces this block to run when editMode is modified
       const editMode = toJS(HAXStore.editMode);
       const activeNode = toJS(HAXStore.activeNode);
+      this.viewSource = false;
       if (activeNode && activeNode.tagName) {
         let schema = HAXStore.haxSchemaFromTag(activeNode.tagName);
         this.sourceView = schema.canEditSource;
@@ -184,12 +185,14 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
           ></hax-context-item> -->
           <slot name="primary"></slot>
           <hax-context-item
-            mini
             action
             icon="icons:code"
             label="Modify HTML source"
             ?hidden="${!this.sourceView}"
             event-name="hax-source-view-toggle"
+            toggles
+            ?toggled="${this.viewSource}"
+            @click="${(e) => (this.viewSource = !this.viewSource)}"
           ></hax-context-item>
           <hax-context-item-textop
             mini
@@ -389,6 +392,9 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
       isSafari: {
         type: Boolean,
         attribute: "is-safari",
+      },
+      viewSource: {
+        type: Boolean,
       },
     };
   }

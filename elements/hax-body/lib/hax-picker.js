@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 /**
  `hax-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require
@@ -15,18 +16,31 @@ class HaxPicker extends LitElement {
   static get styles() {
     return [
       css`
-        :host {
-          display: block;
-        }
-        .button-list {
-          display: block;
-          text-align: left;
-          overflow-x: hidden;
+        simple-button-grid {
           overflow-y: auto;
-          display: flex;
-          flex-wrap: wrap;
-          margin: 20px 0 0 0;
-          padding: 0;
+          margin: var(--hax-tray-margin, 4px);
+          --simple-button-grid-cols: 100px;
+        }
+        hax-tray-button {
+          font-size: var(--hax-tray-font-size-xs, 11px);
+          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
+          --simple-toolbar-button-border-color: var(
+            --hax-toolbar-border-color,
+            #ddd
+          );
+          --simple-toolbar-button-hover-color: var(
+            --hax-tray-accent-color,
+            #000
+          );
+          --simple-toolbar-button-hover-border-color: var(
+            --hax-tray-accent-color,
+            #000
+          );
+          --simple-toolbar-button-hover-border-color: var(
+            --hax-tray-accent-color,
+            #000
+          );
+          --simple-toolbar-button-flex: 1 0 auto;
         }
       `,
     ];
@@ -39,22 +53,21 @@ class HaxPicker extends LitElement {
   }
   render() {
     return html`
-      <div class="button-list">
+      <simple-button-grid>
         ${this.selectionList.map(
           (element, index) => html`
             <hax-tray-button
-              dark-bg
+              show-text-label
               id="picker-item-${index}"
               @click="${this._selected}"
               data-selected="${index}"
               label="${element.title}"
               icon="${element.icon}"
-              ?color-meaning="${this.selectionList.length === 2}"
-            >
-            </hax-tray-button>
+              icon-position="top"
+            ></hax-tray-button>
           `
         )}
-      </div>
+      </simple-button-grid>
     `;
   }
   static get tag() {

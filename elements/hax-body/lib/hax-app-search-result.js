@@ -20,6 +20,7 @@ class HaxAppSearchResult extends LitElement {
           height: 100%;
         }
         button {
+          font-size: var(--hax-tray-font-size-xs, 11px);
           margin: 0;
           padding: 0;
           display: flex;
@@ -28,7 +29,7 @@ class HaxAppSearchResult extends LitElement {
           border-radius: 0;
           border: none;
           width: 100%;
-          outline: 1px solid black;
+          outline: 1px solid var(--hax-toolbar-border-color, #ddd);
           opacity: 0.8;
           background-color: var(--hax-toolbar-button-bg, #fff);
           transition: 0.2s opacity ease-in-out, 0.2s outline-color ease-in-out;
@@ -37,8 +38,7 @@ class HaxAppSearchResult extends LitElement {
         button:hover,
         button:focus,
         button:active {
-          background-color: #eeeeee;
-          outline-color: var(--tray-detail-accent-color, #000);
+          outline-color: var(--hax-tray-accent-color, #000);
           outline-width: 4px;
           outline-style: solid;
           opacity: 1;
