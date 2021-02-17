@@ -22,11 +22,8 @@ class SimpleFieldsContainer extends LitElement {
           font-family: var(--simple-fields-detail-font-family, sans-serif);
           line-height: var(--simple-fields-detail-line-height, 130%);
           transition: color 0.3s ease-in-out;
-          margin: var(
-              --simple-fields-field-margin,
-              var(--simple-fields-margin, 16px)
-            )
-            0;
+          margin: 0 0
+            var(--simple-fields-field-margin, var(--simple-fields-margin, 16px));
         }
         :host([hidden]),
         :host([type="hidden"]) {

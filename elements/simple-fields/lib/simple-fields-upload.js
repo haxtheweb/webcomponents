@@ -227,7 +227,6 @@ class SimpleFieldsUpload extends SimpleColors {
         this.option = this.options[0][0].value;
       }
     }
-    console.log(option, e, this.option);
     if (option === "selfie") this._takeSelfie(e);
     if (option === "audio") this._voiceRecorder(e);
   }
@@ -362,7 +361,6 @@ class SimpleFieldsUpload extends SimpleColors {
         }
       ]);*/
     }
-    console.log(options);
     return options;
   }
   /**
@@ -374,7 +372,6 @@ class SimpleFieldsUpload extends SimpleColors {
     }
     // test on load for if we have a media device
     this.options = [...this._setInputOptions()];
-    console.log(this.options);
     // default to URL if we have a value of any kind
     if (this.value) {
       this.option = "url";
