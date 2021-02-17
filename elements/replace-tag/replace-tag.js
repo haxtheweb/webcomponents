@@ -28,8 +28,8 @@ const ReplaceTagSuper = function (SuperClass) {
     }
     performanceBasedReplacement() {
       this.setAttribute("laser-loader", "laser-loader");
-      if (!this.loadingText) {
-        this.loadingText = "Loading...";
+      if (!this.importingText) {
+        this.importingText = "Loading...";
       }
       this.render();
       this.runReplacement();
@@ -42,14 +42,14 @@ const ReplaceTagSuper = function (SuperClass) {
       WCRegistryLoaderCSS();
       let badDevice = await DeviceDetails.badDevice();
       if (
-        this.getAttribute("with-method") != "view" &&
-        this.getAttribute("import") == null
+        this.getAttribute("import-method") != "view" &&
+        this.getAttribute("import-only") == null
       ) {
         // look at browser performance
         // if below a threashold display message to replace on click
         if (badDevice) {
-          if (!this.loadingText) {
-            this.loadingText = "Click to load";
+          if (!this.importingText) {
+            this.importingText = "Click to load";
           }
           this.addEventListener("click", this.performanceBasedReplacement);
         }
@@ -58,12 +58,12 @@ const ReplaceTagSuper = function (SuperClass) {
       // expected to use lazy loading as it comes into the viewport like the rest
       if (
         !badDevice ||
-        this.getAttribute("import") != null ||
-        this.getAttribute("with-method") == "view"
+        this.getAttribute("import-only") != null ||
+        this.getAttribute("import-method") == "view"
       ) {
         this.setAttribute("laser-loader", "laser-loader");
-        if (!this.loadingText) {
-          this.loadingText = "Loading...";
+        if (!this.importingText) {
+          this.importingText = "Loading...";
         }
         if (!this.intersectionObserver) {
           this.intersectionObserver = new IntersectionObserver(
@@ -123,13 +123,13 @@ const ReplaceTagSuper = function (SuperClass) {
 class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
   constructor() {
     super();
-    if (this.getAttribute("loading-text")) {
-      this.loadingText = this.getAttribute("loading-text");
+    if (this.getAttribute("importing-text")) {
+      this.importingText = this.getAttribute("importing-text");
     }
     // support for element being defined prior to view
     if (customElements.get(this.getAttribute("with"))) {
       let props = {};
-      if (this.getAttribute("import") != null) {
+      if (this.getAttribute("import-only") != null) {
         this.remove();
       } else {
         for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
@@ -143,14 +143,16 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
           }
         }
         replacement.removeAttribute("laser-loader");
-        replacement.removeAttribute("loading-text");
+        replacement.removeAttribute("with");
+        replacement.removeAttribute("import-method");
+        replacement.removeAttribute("importing-text");
         replacement.innerHTML = this.innerHTML;
         this.replaceWith(replacement);
       }
     } else {
       customElements.whenDefined(this.getAttribute("with")).then((response) => {
         let props = {};
-        if (this.getAttribute("import") != null) {
+        if (this.getAttribute("import-only") != null) {
           this.remove();
         } else {
           // just the props off of this for complex state
@@ -172,6 +174,9 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
           // "this" is still valid for this loop
           setTimeout(() => {
             replacement.removeAttribute("popup-loader");
+            replacement.removeAttribute("with");
+            replacement.removeAttribute("import-method");
+            replacement.removeAttribute("importing-text");
             replacement.removeAttribute("laser-loader");
             replacement.style.setProperty("--laserEdgeAni-width", null);
             replacement.style.setProperty("--laserEdgeAni-innerWidth", null);
@@ -216,7 +221,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       line-height: 2px !important;
       height:2px;
     }
-    :host(:not([with-method="click"])) {
+    :host(:not([import-method="click"])) {
       background-color: #EEEEEE;
       color: #444444;
       font-size: 16px;
@@ -224,7 +229,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       margin: 16px;
       padding: 16px;
     }
-    :host(:not([with-method="click"]):hover) {
+    :host(:not([import-method="click"]):hover) {
       opacity: 1 !important;
       outline: 1px solid black;
       cursor: pointer;
@@ -233,7 +238,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       display: none;
     }
     </style>
-<div>${this.loadingText}</div>`;
+<div>${this.importingText}</div>`;
   }
   render() {
     this.shadowRoot.innerHTML = null;

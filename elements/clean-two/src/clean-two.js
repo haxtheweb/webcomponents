@@ -498,15 +498,17 @@ class CleanTwo extends HAXCMSThemeParts(
               ${this.HAXCMSMobileMenuButton()}
               ${this.responsiveSize != "xl"
                 ? html`
-                    <replace-tag with="site-menu-content" import></replace-tag>
+                    <replace-tag
+                      with="site-menu-content"
+                      import-only
+                    ></replace-tag>
                     <site-menu-content
-                      loading-text="Heading Menu"
                       .part="${this.editMode ? `edit-mode-active` : ``}"
                       mobile
                     ></site-menu-content>
                   `
                 : ``}
-              <replace-tag with="site-active-title" import></replace-tag>
+              <replace-tag with="site-active-title" import-only></replace-tag>
               <site-active-title></site-active-title>
             </div>
             <site-search
@@ -525,7 +527,7 @@ class CleanTwo extends HAXCMSThemeParts(
             </div>
             <div class="link-actions">
               <div class="inner">
-                <replace-tag with="site-menu-button" import></replace-tag>
+                <replace-tag with="site-menu-button" import-only></replace-tag>
                 <site-menu-button
                   hide-label
                   type="prev"
@@ -555,7 +557,7 @@ class CleanTwo extends HAXCMSThemeParts(
             <div class="footer">
               <div class="footer-left">
                 Last updated
-                <replace-tag with="simple-datetime" import></replace-tag>
+                <replace-tag with="simple-datetime" import-only></replace-tag>
                 <simple-datetime
                   unix
                   .timestamp="${this.pageTimestamp}"
@@ -565,18 +567,18 @@ class CleanTwo extends HAXCMSThemeParts(
                 <replace-tag
                   with="site-print-button"
                   class="btn js-toolbar-action"
-                  with-method="view"
+                  import-method="view"
                 ></replace-tag>
                 <replace-tag
                   with="site-rss-button"
                   type="rss"
-                  with-method="view"
+                  import-method="view"
                 ></replace-tag>
                 <replace-tag
                   with="site-git-corner"
                   size="small"
                   circle
-                  with-method="view"
+                  import-method="view"
                 ></replace-tag>
               </div>
             </div>
@@ -586,9 +588,11 @@ class CleanTwo extends HAXCMSThemeParts(
           ? html`
               <div class="right-col">
                 <div class="site-menu-content-wrapper">
-                  <replace-tag with="site-menu-content" import></replace-tag>
+                  <replace-tag
+                    with="site-menu-content"
+                    import-only
+                  ></replace-tag>
                   <site-menu-content
-                    loading-text="Heading Menu"
                     .part="${this.editMode ? `edit-mode-active` : ``}"
                   ></site-menu-content>
                 </div>
