@@ -7,6 +7,10 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./simple-icons.js";
 import "./simple-icon-lite.js";
 
+/**
+ *
+ * @class SimpleIconButtonBehaviors
+ */
 export const SimpleIconButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
@@ -184,6 +188,9 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
  * @microcopy - language worth noting:
  *  -
  *
+ * @customElement
+ * @extends LitElement
+ * @extends SimpleIconButtonBehaviors
  * @demo demo/button-lite.html
  * @element simple-icon
  */

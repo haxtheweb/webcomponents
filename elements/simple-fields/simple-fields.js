@@ -525,6 +525,12 @@ class SimpleFields extends SimpleFieldsLite {
                   attributes: {
                     autofocus: true,
                   },
+                  properties: {
+                    options: "icons",
+                    exclude: "exclude",
+                    excludeSets: "excludeSets",
+                    includeSets: "includeSets",
+                  },
                 },
               },
               month: {

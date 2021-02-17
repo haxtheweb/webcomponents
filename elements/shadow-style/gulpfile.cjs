@@ -158,8 +158,14 @@ gulp.task("iconset", (done) => {
     const manifestFilename = iconset.manifestFilename || `${packageJson.wcfactory.elementName}-iconsets-manifest.js`
     const manifestPath = iconset.manifestPath || `./lib`;
     const exportName = iconset.exportName || `${packageJson.wcfactory.className}IconsetsManifest`;
-    const jsonContent = JSON.stringify(dirTree(path).icons, null, 2); 
-    const iconVar =  `export const ${exportName} = ${jsonContent};`
+    const jsonContent = JSON.stringify(dirTree(path).icons, null, 2);
+    const iconVar =  `import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+
+/**
+ * @const ${exportName} 
+ */
+export const ${exportName} = ${jsonContent};
+SimpleIconsetStore.registerManifest(SimpleIconIconsetsManifest);`
     fs.writeFile(`${manifestPath}/${manifestFilename}.js`, iconVar, 'utf8', function (err) {
         if (err) {
             console.log("An error occured while writing iconset manifest Object to File.");

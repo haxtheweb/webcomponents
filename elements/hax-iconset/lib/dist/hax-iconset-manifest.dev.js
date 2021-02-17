@@ -1,8 +1,16 @@
-import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true,
+});
+exports.HaxIconsetManifest = void 0;
+
+var _simpleIconset = require("@lrnwebcomponents/simple-icon/lib/simple-iconset.js");
+
 /**
  * @const HaxIconsetManifest
  */
-export const HaxIconsetManifest = [
+var HaxIconsetManifest = [
   null,
   {
     name: "courseicons",
@@ -259,4 +267,6 @@ export const HaxIconsetManifest = [
     icons: ["error-outline", "pause", "play-arrow", "replay"],
   },
 ];
-SimpleIconsetStore.registerManifest(SimpleIconIconsetsManifest);
+exports.HaxIconsetManifest = HaxIconsetManifest;
+
+_simpleIconset.SimpleIconsetStore.registerManifest(SimpleIconIconsetsManifest);
