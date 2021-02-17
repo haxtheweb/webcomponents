@@ -6,18 +6,18 @@ import {
   boolean,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import { ColorPicker } from "./color-picker.js";
+import { HexPicker } from "./hex-picker.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Picker|ColorPicker",
-  component: "color-picker",
+  title: "Picker|HexPicker",
+  component: "hex-picker",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" },
   },
 };
 const utils = new StorybookUtilities();
-export const ColorPickerStory = () => {
-  return utils.makeElementFromClass(ColorPicker);
+export const HexPickerStory = () => {
+  return utils.makeElementFromClass(HexPicker);
 };

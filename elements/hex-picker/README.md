@@ -1,26 +1,26 @@
-# &lt;color-picker&gt;
+# &lt;hex-picker&gt;
 
 Picker
-> Choose a color with a widget, or by entering hex/rgb code
+> Choose a color by hex or rgba code
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/color-picker/color-picker.js';
+import '@lrnwebcomponents/hex-picker/hex-picker.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/color-picker/color-picker.js"></script>
+<script type="module" src="@lrnwebcomponents/hex-picker/hex-picker.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/color-picker/color-picker.js';
+  import '@lrnwebcomponents/hex-picker/hex-picker.js';
   // imperative form
-  import {ColorPicker} from '@lrnwebcomponents/color-picker';
+  import {HexPicker} from '@lrnwebcomponents/hex-picker';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/color-picker/color-picker.js';
+  import './node_modules/@lrnwebcomponents/hex-picker/hex-picker.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/color-picker/color-picker.js"></script>
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/hex-picker/hex-picker.js"></script>
 ```
 
 ## Develop / Demo

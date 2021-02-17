@@ -3,23 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>ColorPicker: color-picker Demo</title>
+    <title>HexPicker: hex-picker Demo</title>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../color-picker.js';
+      import '../hex-picker.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic color-picker demo</h3>
+      <h3>Basic hex-picker demo</h3>
       <demo-snippet>
         <template>
-          <color-picker></color-picker>
+          <hex-picker>
+            This is hex-picker
+          </hex-picker>
         </template>
       </demo-snippet>
     </div>
