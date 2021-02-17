@@ -33,7 +33,8 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <div class="field-main" part="field-main">\n        <code-editor\n          ?autofocus="',
+    '\n      <div class="field-main" part="field-main">\n        ',
+    '\n        <code-editor\n          ?autofocus="',
     '"\n          ?disabled="',
     '"\n          font-size="',
     '"\n          editor-value="',
@@ -42,9 +43,13 @@ function _templateObject2() {
     '"\n          mode="',
     '"\n          ?read-only="',
     '"\n          @value-changed="',
+    '"\n          @focused-changed="',
+    '"\n          @code-editor-focus="',
+    '"\n          @code-editor-blur="',
     '"\n          part="editor"\n        >\n        </code-editor>\n        <input name="',
     '" type="hidden" value="',
-    '" />\n      </div>\n    ',
+    '" />\n        ',
+    "\n      </div>\n    ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -316,6 +321,14 @@ var SimpleFieldsCode =
                 },
 
                 /**
+                 * Whether the field is hidden
+                 */
+                focused: {
+                  type: Boolean,
+                  reflect: true,
+                },
+
+                /**
                  * Font-size of editor
                  */
                 fontSize: {
@@ -480,6 +493,12 @@ var SimpleFieldsCode =
             })
           );
         },
+      },
+      {
+        key: "_onFocusChange",
+        value: function _onFocusChange(e) {
+          this.focused = e.detail.focused;
+        },
         /**
          * listens for focusout
          * overridden for fields in shadow DOM
@@ -539,8 +558,11 @@ var SimpleFieldsCode =
       {
         key: "fieldMainTemplate",
         get: function get() {
+          var _this4 = this;
+
           return (0, _litElement.html)(
             _templateObject2(),
+            this.labelTemplate,
             this.autofocus,
             this.disabled,
             this.fontSize,
@@ -550,8 +572,16 @@ var SimpleFieldsCode =
             this.mode,
             this.readonly || this.disabled,
             this._onChange,
+            this._onFocusChange,
+            function (e) {
+              return _this4.focused == true;
+            },
+            function (e) {
+              return _this4.focused == false;
+            },
             this.id,
-            this.value
+            this.value,
+            this.fieldBottom
           );
         },
       },

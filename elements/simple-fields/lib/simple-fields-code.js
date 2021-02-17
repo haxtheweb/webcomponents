@@ -59,6 +59,13 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
         attribute: "editor-value",
       },
       /**
+       * Whether the field is hidden
+       */
+      focused: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
        * Font-size of editor
        */
       fontSize: {
@@ -137,6 +144,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
   get fieldMainTemplate() {
     return html`
       <div class="field-main" part="field-main">
+        ${this.labelTemplate}
         <code-editor
           ?autofocus="${this.autofocus}"
           ?disabled="${this.disabled}"
@@ -147,10 +155,14 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
           mode="${this.mode}"
           ?read-only="${this.readonly || this.disabled}"
           @value-changed="${this._onChange}"
+          @focused-changed="${this._onFocusChange}"
+          @code-editor-focus="${(e) => this.focused == true}"
+          @code-editor-blur="${(e) => this.focused == false}"
           part="editor"
         >
         </code-editor>
         <input name="${this.id}" type="hidden" value="${this.value}" />
+        ${this.fieldBottom}
       </div>
     `;
   }
@@ -201,6 +213,9 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
         detail: this,
       })
     );
+  }
+  _onFocusChange(e) {
+    this.focused = e.detail.focused;
   }
   /**
    * listens for focusout

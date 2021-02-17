@@ -52,6 +52,7 @@ class SimpleFieldsContainer extends LitElement {
         :host .label-main:after {
           content: var(--simple-fields-label-flag, "");
         }
+        :host([focused]) .label-main,
         :host(:focus-within) .label-main {
           color: var(--simple-fields-accent-color, #3f51b5);
           transition: color 0.3s ease-in-out;

@@ -228,25 +228,30 @@ class MonacoElement extends LitElement {
           const value = model.getValue();
           this.onValueChanged(value);
         });
-
         this.ready();
+      });
+    }
+
+    ready() {
+      setTimeout(root => {
+        this.postMessage(eventTypes.ready, null);
         if(${this.autofocus}) this.editor.focus();
+        this.setupEventListener(
+          eventTypes.valueChanged,
+          this.onValueChanged.bind(this)
+        );
         this.editor.onDidFocusEditorText(e=>{
           this.postMessage(eventTypes.focus, null);
         });
         this.editor.onDidBlurEditorText(e=>{
           this.postMessage(eventTypes.blur, null);
         });
-      });
-    }
-
-    ready() {
-      setTimeout(() => {
-        this.postMessage(eventTypes.ready, null);
-        this.setupEventListener(
-          eventTypes.valueChanged,
-          this.onValueChanged.bind(this)
-        );
+        this.editor.onDidFocusEditorWidget(e=>{
+          this.postMessage(eventTypes.focus, null);
+        });
+        this.editor.onDidBlurEditorWidget(e=>{
+          this.postMessage(eventTypes.blur, null);
+        });
       }, 100);
     }
 

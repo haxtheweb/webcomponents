@@ -338,6 +338,16 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           })
         );
       }
+      if (propName === "focused") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("focused-changed", {
+            detail: {
+              focused: this[propName],
+            },
+          })
+        );
+      }
       if (["title", "value"].includes(propName)) {
         this.codePenData = this._computeCodePenData(this.title, this.value);
       }
