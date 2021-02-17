@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../color-picker.js"></script>
+    <script type="module" src="../hex-picker.js"></script>
   </head>
   <body>
 
-    <color-picker>
+    <hex-picker>
       This is the element content.
-    </color-picker>
+    </hex-picker>
 <test-fixture id="BasicTestFixture">
   <template>
-    <color-picker></color-picker>
+    <hex-picker></hex-picker>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <color-picker></color-picker>
+    <hex-picker></hex-picker>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<color-picker>', () => {
+  suite('<hex-picker>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('color-picker'), customElements.get("color-picker", 'color-picker should be an instance of colorPicker'));
+      assert.instanceOf(document.querySelector('hex-picker'), customElements.get("hex-picker", 'hex-picker should be an instance of hexPicker'));
     });
 
     /*test('setting a property on the element works', () => {

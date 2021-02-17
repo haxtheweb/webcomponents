@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "hex-picker",
+      "path": "./hex-picker.js",
+      "description": "`hex-picker`\n`Choose a color by hex or rgba code`"
+    },
+    {
+      "name": "hex-picker",
+      "path": "./src/hex-picker.js",
+      "description": "`hex-picker`\n`Choose a color by hex or rgba code`"
+    }
+  ]
+}
