@@ -61,6 +61,66 @@
           </script>
         </template>
       </demo-snippet>
+
+      <h3>Using every icon</h3>
+      <demo-snippet>
+        <template>
+          <div id="icondemo">
+            <label id="iconpicker-label">Pick an Icon: </label> 
+            <simple-icon-picker 
+              id="iconpicker3" 
+              allow-null 
+              aria-labelledby="iconpicker-label" 
+              value="icons:search">
+            </simple-icon-picker>
+          </div>
+        </template>
+      </demo-snippet>
+
+      <h3>Using only 'av' icons</h3>
+      <demo-snippet>
+        <template>
+          <div id="icondemo">
+            <label id="iconpicker-label">Pick an Icon: </label> 
+            <simple-icon-picker 
+              id="iconpicker3" 
+              allow-null 
+              include-sets='["av"]'
+              aria-labelledby="iconpicker-label">
+            </simple-icon-picker>
+          </div>
+        </template>
+      </demo-snippet>
+
+      <h3>Excluding 'av' and 'image' icons</h3>
+      <demo-snippet>
+        <template>
+          <div id="icondemo">
+            <label id="iconpicker-label">Pick an Icon: </label> 
+            <simple-icon-picker 
+              id="iconpicker4" 
+              allow-null 
+              exclude-sets='["av","image"]'
+              aria-labelledby="iconpicker-label">
+            </simple-icon-picker>
+          </div>
+        </template>
+      </demo-snippet>
+
+      <h3>Excluding specific icons </h3>
+      <demo-snippet>
+        <template>
+          <div id="icondemo">
+            <label id="iconpicker-label">Pick an Icon: </label> 
+            <simple-icon-picker 
+              id="iconpicker5" 
+              allow-null 
+              exclude='["av:add-to-queue","av:airplay","av:album","av:art-track"]'
+              aria-labelledby="iconpicker-label">
+            </simple-icon-picker>
+          </div>
+        </template>
+      </demo-snippet>
     </div>
   </body>
 </html>

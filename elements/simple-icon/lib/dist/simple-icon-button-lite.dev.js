@@ -216,6 +216,10 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+/**
+ *
+ * @class SimpleIconButtonBehaviors
+ */
 var SimpleIconButtonBehaviors = function SimpleIconButtonBehaviors(SuperClass) {
   return (
     /*#__PURE__*/
@@ -344,6 +348,9 @@ var SimpleIconButtonBehaviors = function SimpleIconButtonBehaviors(SuperClass) {
  * @microcopy - language worth noting:
  *  -
  *
+ * @customElement
+ * @extends LitElement
+ * @extends SimpleIconButtonBehaviors
  * @demo demo/button-lite.html
  * @element simple-icon
  */

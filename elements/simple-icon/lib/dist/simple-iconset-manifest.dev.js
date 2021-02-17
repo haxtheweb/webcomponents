@@ -1,4 +1,16 @@
-export const SimpleIconsetManifest = [
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true,
+});
+exports.SimpleIconIconsetsManifest = void 0;
+
+var _simpleIconset = require("@lrnwebcomponents/simple-icon/lib/simple-iconset.js");
+
+/**
+ * @const SimpleIconIconsetsManifest
+ */
+var SimpleIconIconsetsManifest = [
   {
     name: "av",
     icons: [
@@ -824,10 +836,6 @@ export const SimpleIconsetManifest = [
     ],
   },
   {
-    name: "loading",
-    icons: ["bars"],
-  },
-  {
     name: "maps",
     icons: [
       "add-location",
@@ -1019,3 +1027,6 @@ export const SimpleIconsetManifest = [
     ],
   },
 ];
+exports.SimpleIconIconsetsManifest = SimpleIconIconsetsManifest;
+
+_simpleIconset.SimpleIconsetStore.registerManifest(SimpleIconIconsetsManifest);

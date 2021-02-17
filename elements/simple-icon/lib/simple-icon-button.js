@@ -8,14 +8,8 @@ import { SimpleIconButtonBehaviors } from "./simple-icon-button-lite.js";
 import "./simple-icons.js";
 import "../simple-icon.js";
 /**
- * `simple-icon`
- * `Render an SVG based icon`
  *
- * @microcopy - language worth noting:
- *  -
- *
- * @demo demo/button.html
- * @element simple-icon
+ * @class SimpleIconButtonBehaviors
  */
 class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
   /**

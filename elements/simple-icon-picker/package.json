@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/simple-picker": "^3.0.6",
-    "@polymer/iron-meta": "^3.0.1",
+    "@lrnwebcomponents/simple-icon": "^3.0.6",
     "lit-element": "2.4.0"
   },
   "devDependencies": {
@@ -55,6 +55,7 @@
     "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",
+    "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2"
