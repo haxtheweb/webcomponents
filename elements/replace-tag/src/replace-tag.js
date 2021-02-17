@@ -8,6 +8,25 @@ import { WCRegistryLoaderCSS } from "./lib/loading-styles.js";
 /**
  * `replace-tag`
  * `Loading helpers and css`
+ *
+ * This is a powerful little helper that can detect device performance
+ * and then conditionally load / import accordingly.
+ * The API has two key methods. The default, is used as <replace-tag with="new-tag"></replace-tag>
+ * This will ensure that when visible (via IntersectionObserver) that new-tag will get imported.
+ * This requires the use of the wc-registry.json setup used in unbundled-webcomponents.
+ * The second methodology is to simply do the import on visibility. This is to avoid possible layout
+ * thrashing. This looks like `<replace-tag with="new-tag" import-only></replace-tag>` which will NOT
+ * render a `new-tag` element but instead simply import the definition. This is useful when you want
+ * to avoid layout thrashing OR you want to import assets conditionally based on visibility of any kind.
+ * @api import-only     @boolean   - will trigger an import of the tag and then self removal.
+ *  This is useful for NOT replacing the tag in context but ensuring the definition loads based on
+ *  passing into the viewport
+ * @api importing-text  @string - what it says as it is visible to the user while importing.
+ *  This also is the "Click to view" on low power environments
+ * @api import-method   @string  - if it should import on view or device capabilities
+ *  (or automatic, default). View will FORCE a load even on low performance environments while
+ * things without this set (like a meme in content) would only load if it's been clicked on
+ * for low performance unless the `import-method="view"` is specifically set.
  * @element replace-tag
  * @customElement
  * @demo demo/magicDeviceMethod.html magic method 2.0
