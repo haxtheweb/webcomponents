@@ -136,7 +136,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
    */
   get fieldMainTemplate() {
     return html`
-      <div class="field-main">
+      <div class="field-main" part="field-main">
         <code-editor
           ?autofocus="${this.autofocus}"
           ?disabled="${this.disabled}"
@@ -147,6 +147,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
           mode="${this.mode}"
           ?read-only="${this.readonly || this.disabled}"
           @value-changed="${this._onChange}"
+          part="editor"
         >
         </code-editor>
         <input name="${this.id}" type="hidden" value="${this.value}" />

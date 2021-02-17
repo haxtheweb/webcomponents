@@ -129,7 +129,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   }
   render() {
     return html`
-      <div id="heading">
+      <div id="heading" part="heading">
         <simple-icon-button
           id="drag-handle"
           controls="${this.id}"
@@ -137,20 +137,22 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           label="Reorder this item"
           ?hidden="${!this.sortable}"
           ?disabled="${this.disabled}"
+          part="drag"
         >
         </simple-icon-button>
-        <div id="preview"><slot name="preview"></slot></div>
+        <div id="preview" part="preview"><slot name="preview"></slot></div>
         <simple-icon-button
           id="expand"
           controls="${this.id}"
           icon="icons:expand-more"
           label="Toggle expand"
           @click="${this.toggle}"
+          part="expand"
         >
         </simple-icon-button>
       </div>
-      <div id="content">
-        <div id="content-inner">
+      <div id="content" part="content">
+        <div id="content-inner" part="content-inner">
           <div><slot></slot></div>
           <simple-icon-button
             id="remove"
@@ -159,9 +161,12 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
             label="Remove this item"
             ?disabled="${this.disabled}"
             @click="${(e) => this._handleRemove()}"
+            part="remove"
           >
           </simple-icon-button>
-          <simple-tooltip for="remove">Remove this item</simple-tooltip>
+          <simple-tooltip for="remove" part="remove-tooltip"
+            >Remove this item</simple-tooltip
+          >
         </div>
       </div>
     `;

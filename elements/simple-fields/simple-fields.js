@@ -152,7 +152,7 @@ class SimpleFields extends SimpleFieldsLite {
 
   // render function
   render() {
-    return html` <div id="schema-fields" aria-live="polite">
+    return html` <div id="schema-fields" aria-live="polite" part="fields-list">
       <slot></slot>
     </div>`;
   }

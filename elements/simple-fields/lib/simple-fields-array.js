@@ -77,34 +77,43 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
     };
   }
   render() {
-    return html` <fieldset>${this.legend}${this.fields}</fieldset> `;
+    return html`
+      <fieldset part="fieldset">${this.legend}${this.fields}</fieldset>
+    `;
   }
   get fields() {
     return html`
-      <div id="top">
+      <div id="top" part="top">
         ${this.desc}
         <button
           id="expand"
           controls="item-fields"
           @click="${(e) => this.toggle()}"
+          part="expand"
         >
           ${this.expanded ? "Collapse All" : "Expand All"}
           <simple-icon
             class="${this.expanded ? "expanded" : "collapsed"}"
             aria-hidden="true"
             icon="expand-more"
+            part="expand-icon"
           ></simple-icon>
         </button>
       </div>
-      <div id="item-fields" aria-live="polite">
+      <div id="item-fields" aria-live="polite" part="items">
         <slot></slot>
         <button
           id="add"
           controls="item-fields"
           @click="${(e) => this._handleAdd()}"
+          part="add"
         >
           Add Item
-          <simple-icon aria-hidden="true" icon="add"></simple-icon>
+          <simple-icon
+            aria-hidden="true"
+            icon="add"
+            part="add-icon"
+          ></simple-icon>
         </button>
       </div>
     `;

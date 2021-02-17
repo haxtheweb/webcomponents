@@ -72,7 +72,7 @@ class SimpleFieldsTabs extends A11yTabs {
    */
   _tabLabel(tab) {
     return html`
-      <span class="label${tab.error ? " error" : ""}"
+      <span class="label${tab.error ? " error" : ""}" part="tab"
         >${tab.label}${tab.error ? "*" : ""}</span
       >
     `;
