@@ -2,32 +2,41 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-// pull in global styling window objects for processing
-import "./lib/loading-styles.js";
-import "@lrnwebcomponents/wc-autoload/wc-autoload.js";
+import { DeviceDetails } from "./lib/PerformanceDetect.js";
+import { WCRegistryLoaderCSS } from "./lib/loading-styles.js";
 
 /**
  * `replace-tag`
  * `Loading helpers and css`
- * @demo demo/index.html
+ *
+ * This is a powerful little helper that can detect device performance
+ * and then conditionally load / import accordingly.
+ * The API has two key methods. The default, is used as <replace-tag with="new-tag"></replace-tag>
+ * This will ensure that when visible (via IntersectionObserver) that new-tag will get imported.
+ * This requires the use of the wc-registry.json setup used in unbundled-webcomponents.
+ * The second methodology is to simply do the import on visibility. This is to avoid possible layout
+ * thrashing. This looks like `<replace-tag with="new-tag" import-only></replace-tag>` which will NOT
+ * render a `new-tag` element but instead simply import the definition. This is useful when you want
+ * to avoid layout thrashing OR you want to import assets conditionally based on visibility of any kind.
+ * @api import-only     @boolean   - will trigger an import of the tag and then self removal.
+ *  This is useful for NOT replacing the tag in context but ensuring the definition loads based on
+ *  passing into the viewport
+ * @api importing-text  @string - what it says as it is visible to the user while importing.
+ *  This also is the "Click to view" on low power environments
+ * @api import-method   @string  - if it should import on view or device capabilities
+ *  (or automatic, default). View will FORCE a load even on low performance environments while
+ * things without this set (like a meme in content) would only load if it's been clicked on
+ * for low performance unless the `import-method="view"` is specifically set.
  * @element replace-tag
+ * @customElement
+ * @demo demo/magicDeviceMethod.html magic method 2.0
+ * @demo demo/magicMethod.html magic method
+ * @demo demo/traditionalMethod.html traditional
  */
 const ReplaceTagSuper = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
-    }
-    /**
-     * HTMLElement specification
-     */
-    disconnectedCallback() {
-      // if we have an intersection observer, disconnect it
-      if (this.intersectionObserver) {
-        this.intersectionObserver.disconnect();
-      }
-      if (super.disconnectedCallback) {
-        super.disconnectedCallback();
-      }
     }
     // define the scafold for how this will self-replace when updated
     connectedCallback() {
@@ -38,75 +47,55 @@ const ReplaceTagSuper = function (SuperClass) {
     }
     performanceBasedReplacement() {
       this.setAttribute("laser-loader", "laser-loader");
-      this.loadingStatement = "Loading...";
+      if (!this.importingText) {
+        this.importingText = "Loading...";
+      }
       this.render();
       this.runReplacement();
     }
     /**
      * evaluate based on user device and other settings HOW to handle the replacement
      */
-    evaluateReplaceMethod() {
+    async evaluateReplaceMethod() {
       // ensure that ANY replace-tag gets this applied
-      window.WCRegistryLoaderCSS();
-      let crappy = false;
-      if (this.getAttribute("with-method") != "view") {
-        if (navigator) {
-          // if less than a gig we know its bad
-          if (navigator.deviceMemory && navigator.deviceMemory < 1) {
-            crappy = true;
-          }
-          // even phones have multi-core processors so another sign
-          if (
-            navigator.hardwareConcurrency &&
-            navigator.hardwareConcurrency < 2
-          ) {
-            crappy = true;
-          }
-          // some platforms support getting the battery status
-          if (navigator.getBattery) {
-            navigator.getBattery().then(function (battery) {
-              // if we are not charging AND we have under 25% be kind
-              if (!battery.charging && battery.level < 0.25) {
-                crappy = true;
-              }
-            });
-          }
-          // some things report the "type" of internet connection speed
-          // for terrible connections lets save frustration
-          if (
-            navigator.connection &&
-            navigator.connection.effectiveType &&
-            ["slow-2g", "2g", "3g"].includes(navigator.connection.effectiveType)
-          ) {
-            crappy = true;
-          }
-          // see if they said "hey, save me data"
-          if (navigator.connection && navigator.connection.saveData) {
-            crappy = true;
-          }
-        }
+      WCRegistryLoaderCSS();
+      let badDevice = await DeviceDetails.badDevice();
+      if (
+        this.getAttribute("import-method") != "view" &&
+        this.getAttribute("import-only") == null
+      ) {
         // look at browser performance
-        // if below a threashold display message to replace on tap
-        if (crappy) {
-          this.loadingStatement = "Click / Tap to load";
+        // if below a threashold display message to replace on click
+        if (badDevice) {
+          if (!this.importingText) {
+            this.importingText = "Click to load";
+          }
           this.addEventListener("click", this.performanceBasedReplacement);
         }
       }
       // if we don't have a poor device or another setting is used, then we are
       // expected to use lazy loading as it comes into the viewport like the rest
-      if (!crappy) {
+      if (
+        !badDevice ||
+        this.getAttribute("import-only") != null ||
+        this.getAttribute("import-method") == "view"
+      ) {
         this.setAttribute("laser-loader", "laser-loader");
-        this.loadingStatement = "Loading...";
-        this.intersectionObserver = new IntersectionObserver(
-          this.handleIntersectionCallback.bind(this),
-          {
-            root: document.rootElement,
-            rootMargin: "0px",
-            threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
-            delay: 250,
-          }
-        );
-        this.intersectionObserver.observe(this);
+        if (!this.importingText) {
+          this.importingText = "Loading...";
+        }
+        if (!this.intersectionObserver) {
+          this.intersectionObserver = new IntersectionObserver(
+            this.handleIntersectionCallback.bind(this),
+            {
+              root: document.rootElement,
+              rootMargin: "0px",
+              threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
+              delay: 150,
+            }
+          );
+          this.intersectionObserver.observe(this);
+        }
       }
       this.render();
     }
@@ -130,56 +119,18 @@ const ReplaceTagSuper = function (SuperClass) {
     runReplacement() {
       // ensure we have something to replace this with
       if (this.getAttribute("with")) {
-        setTimeout(() => {
-          // kicks off the definition to load from the registry if its in there
-          window.WCAutoload.requestAvailability().registry.loadDefinition(
-            this.getAttribute("with")
-          );
-          customElements
-            .whenDefined(this.getAttribute("with"))
-            .then((response) => {
-              // just the props off of this for complex state
-              let props = {};
-              for (
-                var i = 0, atts = this.attributes, n = atts.length;
-                i < n;
-                i++
-              ) {
-                props[atts[i].nodeName] = atts[i].nodeValue;
-              }
-              let replacement = document.createElement(props.with);
-              replacement.setAttribute("popup-loader", "popup-loader");
-              // set the value in the new object
-              for (var i in props) {
-                if (props[i] != null) {
-                  replacement.setAttribute(i, props[i]);
-                }
-              }
-              replacement.removeAttribute("laser-loader");
-              replacement.innerHTML = this.innerHTML;
-              this.replaceWith(replacement);
-              setTimeout(() => {
-                replacement.removeAttribute("popup-loader");
-                replacement.removeAttribute("laser-loader");
-                replacement.style.setProperty("--laserEdgeAni-width", null);
-                replacement.style.setProperty(
-                  "--laserEdgeAni-innerWidth",
-                  null
-                );
-                replacement.style.setProperty("--laserEdgeAni-height", null);
-                replacement.style.setProperty(
-                  "--laserEdgeAni-innerHeight",
-                  null
-                );
-                // we resolved 1 definition so now we know it's safe to do all of them
-                document
-                  .querySelectorAll('replace-tag[with="' + props.with + '"]')
-                  .forEach((el) => {
-                    el.runReplacement();
-                  });
-              }, 250);
-            });
-        }, 250);
+        // inject autoload tag which self appends
+        import("@lrnwebcomponents/wc-autoload/wc-autoload.js").then(() => {
+          // force a process to occur if this is the 1st time
+          window.WCAutoload.process().then(() => {
+            // kicks off the definition to load from the registry if its in there
+            // the promise ensures everyting in the registry is teed up before
+            // the DOM is asked to be processed w/ a definition
+            window.WCAutoload.requestAvailability().registry.loadDefinition(
+              this.getAttribute("with")
+            );
+          });
+        });
       } else {
         console.warn(
           "replace-tag requires use of with attribute for what to upgrade to"
@@ -191,6 +142,77 @@ const ReplaceTagSuper = function (SuperClass) {
 class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
   constructor() {
     super();
+    if (this.getAttribute("importing-text")) {
+      this.importingText = this.getAttribute("importing-text");
+    }
+    // support for element being defined prior to view
+    if (customElements.get(this.getAttribute("with"))) {
+      let props = {};
+      if (this.getAttribute("import-only") != null) {
+        this.remove();
+      } else {
+        for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
+          props[atts[i].nodeName] = atts[i].nodeValue;
+        }
+        let replacement = document.createElement(props.with);
+        // set the value in the new object
+        for (var i in props) {
+          if (props[i] != null) {
+            replacement.setAttribute(i, props[i]);
+          }
+        }
+        replacement.removeAttribute("laser-loader");
+        replacement.removeAttribute("with");
+        replacement.removeAttribute("import-method");
+        replacement.removeAttribute("importing-text");
+        replacement.innerHTML = this.innerHTML;
+        this.replaceWith(replacement);
+      }
+    } else {
+      customElements.whenDefined(this.getAttribute("with")).then((response) => {
+        let props = {};
+        if (this.getAttribute("import-only") != null) {
+          this.remove();
+        } else {
+          // just the props off of this for complex state
+          for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
+            props[atts[i].nodeName] = atts[i].nodeValue;
+          }
+          let replacement = document.createElement(props.with);
+          replacement.setAttribute("popup-loader", "popup-loader");
+          // set the value in the new object
+          for (var i in props) {
+            if (props[i] != null) {
+              replacement.setAttribute(i, props[i]);
+            }
+          }
+          replacement.removeAttribute("laser-loader");
+          replacement.innerHTML = this.innerHTML;
+          this.replaceWith(replacement);
+          // variable / attribute clean up on the element that got replaced as
+          // "this" is still valid for this loop
+          setTimeout(() => {
+            replacement.removeAttribute("popup-loader");
+            replacement.removeAttribute("with");
+            replacement.removeAttribute("import-method");
+            replacement.removeAttribute("importing-text");
+            replacement.removeAttribute("laser-loader");
+            replacement.style.setProperty("--laserEdgeAni-width", null);
+            replacement.style.setProperty("--laserEdgeAni-innerWidth", null);
+            replacement.style.setProperty("--laserEdgeAni-height", null);
+            replacement.style.setProperty("--laserEdgeAni-innerHeight", null);
+          }, 250);
+        }
+        // we resolved 1 definition so now we know it's safe to do all of them
+        setTimeout(() => {
+          document.body
+            .querySelectorAll('replace-tag[with="' + props.with + '"]')
+            .forEach((el) => {
+              el.runReplacement();
+            });
+        }, 0);
+      });
+    }
     this.template = document.createElement("template");
     this.attachShadow({ mode: "open" });
   }
@@ -205,15 +227,28 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
     <style>
     :host {
       display: block;
-      background-color: #DDDDDD;
-      color: black;
-      font-size: 16px;
-      margin:16px;
-      padding: 16px;
-      opacity: .8;
-      transition: .3s linear all;
+      opacity: .3;
+      transition: .3s linear opacity,.3s linear outline,.3s linear visibility,.3s linear display;
     }
-    :host(:not([with-method="view"]):hover) {
+    :host([import]) {
+      opacity: .1 !important;
+      background-color: transparent !important;
+      color: transparent !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      font-size: 2px !important;
+      line-height: 2px !important;
+      height:2px;
+    }
+    :host(:not([import-method="click"])) {
+      background-color: #EEEEEE;
+      color: #444444;
+      font-size: 16px;
+      opacity: .8;
+      margin: 16px;
+      padding: 16px;
+    }
+    :host(:not([import-method="click"]):hover) {
       opacity: 1 !important;
       outline: 1px solid black;
       cursor: pointer;
@@ -222,7 +257,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       display: none;
     }
     </style>
-<div>${this.loadingStatement}</div>`;
+<div>${this.importingText}</div>`;
   }
   render() {
     this.shadowRoot.innerHTML = null;

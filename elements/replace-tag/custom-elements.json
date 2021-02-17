@@ -2,6 +2,16 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "performance-detect",
+      "path": "./lib/PerformanceDetect.js",
+      "properties": [
+        {
+          "name": "details",
+          "type": "Promise<{}>"
+        }
+      ]
+    },
+    {
       "name": "replace-tag",
       "path": "./replace-tag.js",
       "properties": [

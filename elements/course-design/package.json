@@ -30,7 +30,7 @@
   "module": "course-design.js",
   "umd": "course-design.umd.js",
   "scripts": {
-    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/<%= elementName %>/test/",
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/course-design/test/",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",

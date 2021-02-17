@@ -10,7 +10,6 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 /**
@@ -123,6 +122,7 @@ class CleanTwo extends HAXCMSThemeParts(
           -ms-grid-column-align: stretch;
           -webkit-box-direction: normal;
         }
+        replace-tag[with="site-git-corner"],
         site-git-corner {
           height: 40px;
           width: 40px;
@@ -133,9 +133,6 @@ class CleanTwo extends HAXCMSThemeParts(
         }
         site-menu-button[edit-mode][disabled] {
           display: block;
-        }
-        site-menu-button[disabled] {
-          display: none;
         }
         site-menu-button[type="prev"] {
           grid-area: previous;
@@ -193,6 +190,8 @@ class CleanTwo extends HAXCMSThemeParts(
           background-color: white;
           --site-active-title-font-size: 22px;
           --site-active-title-line-height: 22px;
+          font-size: 22px;
+          line-height: 22px;
         }
 
         .body-wrapper {
@@ -461,6 +460,8 @@ class CleanTwo extends HAXCMSThemeParts(
         }
         simple-icon-button,
         site-rss-button,
+        replace-tag[with="site-rss-button"],
+        replace-tag[with="site-print-button"],
         site-print-button {
           color: black;
           --haxcms-tooltip-color: #F5F5F5;
@@ -497,12 +498,17 @@ class CleanTwo extends HAXCMSThemeParts(
               ${this.HAXCMSMobileMenuButton()}
               ${this.responsiveSize != "xl"
                 ? html`
+                    <replace-tag
+                      with="site-menu-content"
+                      import-only
+                    ></replace-tag>
                     <site-menu-content
                       .part="${this.editMode ? `edit-mode-active` : ``}"
                       mobile
                     ></site-menu-content>
                   `
                 : ``}
+              <replace-tag with="site-active-title" import-only></replace-tag>
               <site-active-title></site-active-title>
             </div>
             <site-search
@@ -521,6 +527,7 @@ class CleanTwo extends HAXCMSThemeParts(
             </div>
             <div class="link-actions">
               <div class="inner">
+                <replace-tag with="site-menu-button" import-only></replace-tag>
                 <site-menu-button
                   hide-label
                   type="prev"
@@ -550,17 +557,29 @@ class CleanTwo extends HAXCMSThemeParts(
             <div class="footer">
               <div class="footer-left">
                 Last updated
+                <replace-tag with="simple-datetime" import-only></replace-tag>
                 <simple-datetime
                   unix
                   .timestamp="${this.pageTimestamp}"
                 ></simple-datetime>
               </div>
               <div class="footer-right">
-                <site-print-button
+                <replace-tag
+                  with="site-print-button"
                   class="btn js-toolbar-action"
-                ></site-print-button>
-                <site-rss-button type="rss"></site-rss-button>
-                <site-git-corner size="small" circle></site-git-corner>
+                  import-method="view"
+                ></replace-tag>
+                <replace-tag
+                  with="site-rss-button"
+                  type="rss"
+                  import-method="view"
+                ></replace-tag>
+                <replace-tag
+                  with="site-git-corner"
+                  size="small"
+                  circle
+                  import-method="view"
+                ></replace-tag>
               </div>
             </div>
           </div>
@@ -569,6 +588,10 @@ class CleanTwo extends HAXCMSThemeParts(
           ? html`
               <div class="right-col">
                 <div class="site-menu-content-wrapper">
+                  <replace-tag
+                    with="site-menu-content"
+                    import-only
+                  ></replace-tag>
                   <site-menu-content
                     .part="${this.editMode ? `edit-mode-active` : ``}"
                   ></site-menu-content>
@@ -635,36 +658,6 @@ class CleanTwo extends HAXCMSThemeParts(
       }
       this.__disposer.push(reaction);
     });
-
-    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
-    );
   }
   /**
    * life cycle, element is removed from the DOM

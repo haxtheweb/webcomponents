@@ -4,6 +4,7 @@ import { pathResolver, SimpleIconsetStore } from "./simple-iconset.js";
   "communication",
   "device",
   "editor",
+  "elmsln-custom",
   "hardware",
   "icons",
   "image",

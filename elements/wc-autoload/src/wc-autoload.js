@@ -35,69 +35,73 @@ const fetch_retry = async (url, options, n) => {
  * better handled downstream.
  */
 window.WCAutoload.process = (e) => {
-  // find the loader
-  var loader = window.WCAutoload.requestAvailability();
-  loader.loaded = true;
-  var list = {};
-  // microtask timing to ensure window settings are accepted
-  if (window.WCAutoloadRegistryFileProcessed) {
-    // mutation observer will pick up changes after initial load
-    // but this gets us at load time with fallback support for legacy
-    let target = document;
-    if (loader.target) {
-      target = loader.target;
-      loader.processNewElement(target);
-    }
-    // hack to convert children into array
-    target.querySelectorAll("*").forEach((el) => {
-      if (el.tagName && !list[el.tagName]) {
-        loader.processNewElement(el);
-        list[el.tagName] = el.tagName;
-      }
-    });
-  } else {
-    setTimeout(async () => {
-      // set the basePath if it exists
-      if (window.WCAutoloadBasePath) {
-        loader.registry.basePath = window.WCAutoloadBasePath;
-      }
-      if (
-        window.WCAutoloadRegistryFile &&
-        !window.WCAutoloadRegistryFileProcessed
-      ) {
-        await fetch_retry(window.WCAutoloadRegistryFile, {}, 3)
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (data) {
-            window.WCAutoloadRegistryFileProcessed = true;
-            window.WCAutoloadRegistry = data;
-          });
-      }
-      // build out the registry via events translated from object
-      if (window.WCAutoloadRegistry) {
-        for (var i in window.WCAutoloadRegistry) {
-          loader.registry.register({
-            tag: i,
-            path: window.WCAutoloadRegistry[i],
-          });
-        }
-      }
+  return new Promise((resolve, reject) => {
+    // find the loader
+    var loader = window.WCAutoload.requestAvailability();
+    loader.loaded = true;
+    var list = {};
+    // microtask timing to ensure window settings are accepted
+    if (window.WCAutoloadRegistryFileProcessed) {
+      // mutation observer will pick up changes after initial load
+      // but this gets us at load time with fallback support for legacy
       let target = document;
       if (loader.target) {
         target = loader.target;
         loader.processNewElement(target);
       }
-      // mutation observer will pick up changes after initial load
-      // but this gets us at load time with fallback support for legacy
+      // hack to convert children into array
       target.querySelectorAll("*").forEach((el) => {
         if (el.tagName && !list[el.tagName]) {
           loader.processNewElement(el);
           list[el.tagName] = el.tagName;
         }
       });
-    }, 0);
-  }
+      resolve("autoloader already processed");
+    } else {
+      setTimeout(async () => {
+        // set the basePath if it exists
+        if (window.WCAutoloadBasePath) {
+          loader.registry.basePath = window.WCAutoloadBasePath;
+        }
+        if (
+          window.WCAutoloadRegistryFile &&
+          !window.WCAutoloadRegistryFileProcessed
+        ) {
+          await fetch_retry(window.WCAutoloadRegistryFile, {}, 3)
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (data) {
+              window.WCAutoloadRegistryFileProcessed = true;
+              window.WCAutoloadRegistry = data;
+            });
+        }
+        // build out the registry via events translated from object
+        if (window.WCAutoloadRegistry) {
+          for (var i in window.WCAutoloadRegistry) {
+            loader.registry.register({
+              tag: i,
+              path: window.WCAutoloadRegistry[i],
+            });
+          }
+        }
+        let target = document;
+        if (loader.target) {
+          target = loader.target;
+          loader.processNewElement(target);
+        }
+        // mutation observer will pick up changes after initial load
+        // but this gets us at load time with fallback support for legacy
+        target.querySelectorAll("*").forEach((el) => {
+          if (el.tagName && !list[el.tagName]) {
+            loader.processNewElement(el);
+            list[el.tagName] = el.tagName;
+          }
+        });
+        resolve("autoloader processed on the fly");
+      }, 0);
+    }
+  });
 };
 // forces self appending which kicks all this off but AFTER dom is loaded
 // function based allows for fallbacks due to timing on legacy browsers

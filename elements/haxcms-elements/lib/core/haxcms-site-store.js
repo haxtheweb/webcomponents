@@ -8,7 +8,6 @@ import {
 } from "mobx";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 class Store {
   constructor() {
@@ -583,7 +582,7 @@ window.HAXCMS.requestAvailability = () => {
   return window.HAXCMS.instance;
 };
 // weird, but self appending
-window.HAXCMS.requestAvailability();
+export const HAXcmsStore = window.HAXCMS.requestAvailability();
 /**
  * HTMLElement
  */
@@ -644,7 +643,11 @@ class HAXCMSSiteStore extends HTMLElement {
     autorun(() => {
       const editMode = toJS(store.editMode);
       // trap for early setup
-      if (HAXStore && HAXStore.write) {
+      if (
+        window.HaxStore &&
+        window.HaxStore.requestAvailability() &&
+        window.HaxStore.requestAvailability().write
+      ) {
         window.dispatchEvent(
           new CustomEvent("haxcms-edit-mode-changed", {
             bubbles: true,
@@ -653,11 +656,14 @@ class HAXCMSSiteStore extends HTMLElement {
             detail: editMode,
           })
         );
-        HAXStore.editMode = editMode;
+        window.HaxStore.requestAvailability().editMode = editMode;
         // @todo hack to keep voice controls active if enabled
-        if (HAXStore.globalPreferences.haxVoiceCommands) {
+        if (
+          window.HaxStore.requestAvailability().globalPreferences
+            .haxVoiceCommands
+        ) {
           setTimeout(() => {
-            HAXStore.__hal.auto = true;
+            window.HaxStore.requestAvailability().__hal.auto = true;
           }, 10);
         }
       }

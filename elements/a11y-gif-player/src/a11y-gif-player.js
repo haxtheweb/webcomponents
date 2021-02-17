@@ -276,10 +276,22 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
       childList: true,
       subtree: false,
     });
+    window.addEventListener("beforeprint", (event) => {
+      this.shadowRoot.querySelector("#longdesc").toggleOpen();
+    });
+    window.addEventListener("afterprint", (event) => {
+      this.shadowRoot.querySelector("#longdesc").toggleOpen();
+    });
   }
   disconnectedCallback() {
     if (super.disconnectedCallback) super.disconnectedCallback();
     this.observer.disconnect();
+    window.removeEventListener("beforeprint", (event) => {
+      this.shadowRoot.querySelector("#longdesc").toggleOpen();
+    });
+    window.removeEventListener("afterprint", (event) => {
+      this.shadowRoot.querySelector("#longdesc").toggleOpen();
+    });
   }
   /**
    * plays the animation regarless of previous state

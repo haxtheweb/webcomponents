@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../check-it-out.js"></script>
+  </head>
+  <body>
+
+    <check-it-out>
+      This is the element content.
+    </check-it-out>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <check-it-out></check-it-out>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <check-it-out></check-it-out>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<check-it-out>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('check-it-out'), customElements.get("check-it-out", 'check-it-out should be an instance of checkItOut'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
