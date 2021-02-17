@@ -388,10 +388,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   updateEditorValue() {
     var content = "";
     var children = this.children;
-    console.log(this, children);
     if (this.childNodes[0] && this.childNodes[0].tagName !== "TEMPLATE") {
       children = this.childNodes;
-      console.log(this, children);
       if (children.length > 0) {
         // loop through everything found in the slotted area and put it back in
         for (var j = 0, len2 = children.length; j < len2; j++) {
@@ -403,10 +401,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         }
       }
     } else if (children[0]) {
-      console.log(this, children);
       content = children[0].innerHTML;
     }
-    console.log(this, children, content);
     if (content) {
       if (this.language === "html") {
         content = formatHTML(content);
