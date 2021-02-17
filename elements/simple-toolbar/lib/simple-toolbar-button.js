@@ -299,7 +299,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get labelTemplate() {
-      return html`<span id="label" class="${this.labelStyle}" part="label"
+      return html`<span id="label" class="${this.labelStyle || ""}" part="label"
         >${this.currentLabel}</span
       >`;
     }
@@ -498,7 +498,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           }
           #button[aria-pressed="true"] {
             color: var(--simple-toolbar-button-toggled-color);
-            border-color: var(--simple-toolbar-toggled-border-color);
+            border-color: var(--simple-toolbar-button-toggled-border-color);
             background-color: var(--simple-toolbar-button-toggled-bg);
             opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);
           }
@@ -506,13 +506,17 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           #button:hover {
             color: var(--simple-toolbar-button-hover-color);
             background-color: var(--simple-toolbar-button-hover-bg);
-            border-color: var(--simple-toolbar-hover-border-color);
+            border-color: var(--simple-toolbar-button-hover-border-color);
             opacity: var(--simple-toolbar-button-hover-opacity, 0.8);
           }
           #button[disabled] {
             cursor: not-allowed;
             color: var(--simple-toolbar-button-disabled-color, unset);
             background-color: var(--simple-toolbar-button-disabled-bg, unset);
+            border-color: var(
+              --simple-toolbar-button-disabled-border-color,
+              unset
+            );
             opacity: var(--simple-toolbar-button-disabled-opacity, 0.5);
           }
         `,
