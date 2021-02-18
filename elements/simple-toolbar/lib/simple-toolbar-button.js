@@ -165,8 +165,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     get button() {
       if (!this.__button)
         this.__button =
-          this.shadowRoot && this.shadowRoot.querySelector("#button")
-            ? this.shadowRoot.querySelector("#button")
+          this.shadowRoot &&
+          this.shadowRoot.querySelector("button[part=button]")
+            ? this.shadowRoot.querySelector("button[part=button]")
             : undefined;
       return this.__button;
     }
@@ -538,7 +539,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             opacity: 0;
             height: 0;
           }
-          #button {
+          button[part="button"] {
             display: flex;
             margin: 0;
             white-space: nowrap;
@@ -567,7 +568,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               )
             );
           }
-          #button {
+          button[part="button"] {
             font-size: inherit;
             min-width: var(
               --simple-toolbar-button-min-width,
@@ -584,55 +585,69 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             justify-content: var(--simple-toolbar-button-justify, space-around);
           }
 
-          :host([icon-position="top"]) #button {
+          :host([icon-position="top"]) button[part="button"] {
             flex-direction: column;
           }
-          :host([icon-position="bottom"]) #button {
+          :host([icon-position="bottom"]) button[part="button"] {
             flex-direction: column-reverse;
           }
-          :host([icon-position="right"]) #button {
+          :host([icon-position="right"]) button[part="button"] {
             flex-direction: row-reverse;
           }
           :host([align="left"]:not([icon-position])),
           :host([align="left"][icon-position="right"]),
-          :host([align-vertical="top"][icon-position="top"]) #button,
-          :host([align-vertical="top"][icon-position="bottom"]) #button {
+          :host([align-vertical="top"][icon-position="top"])
+            button[part="button"],
+          :host([align-vertical="top"][icon-position="bottom"])
+            button[part="button"] {
             align-items: flex-start;
           }
           :host([align="right"]:not([icon-position])),
           :host([align="right"][icon-position="right"]),
-          :host([align-vertical="bottom"][icon-position="top"]) #button,
-          :host([align-vertical="bottom"][icon-position="bottom"]) #button {
+          :host([align-vertical="bottom"][icon-position="top"])
+            button[part="button"],
+          :host([align-vertical="bottom"][icon-position="bottom"])
+            button[part="button"] {
             align-items: flex-end;
           }
           :host([align="justify"]:not([icon-position])),
           :host([align="justify"][icon-position="right"]),
-          :host([align-vertical="justify"][icon-position="top"]) #button,
-          :host([align-vertical="justify"][icon-position="bottom"]) #button {
+          :host([align-vertical="justify"][icon-position="top"])
+            button[part="button"],
+          :host([align-vertical="justify"][icon-position="bottom"])
+            button[part="button"] {
             align-items: stretch;
           }
-          #button,
-          :host([icon-position="right"]:not([align-vertical])) #button,
-          :host([icon-position="top"]) #button,
-          :host([icon-position="bottom"]) #button {
+          button[part="button"],
+          :host([icon-position="right"]:not([align-vertical]))
+            button[part="button"],
+          :host([icon-position="top"]) button[part="button"],
+          :host([icon-position="bottom"]) button[part="button"] {
             justify-content: space-evenly;
           }
-          :host([align-vertical="top"]:not([icon-position])) #button,
-          :host([align-vertical="top"][icon-position="right"]) #button,
-          :host([align="left"][icon-position="top"]) #button,
-          :host([align="left"][icon-position="bottom"]) #button {
+          :host([align-vertical="top"]:not([icon-position]))
+            button[part="button"],
+          :host([align-vertical="top"][icon-position="right"])
+            button[part="button"],
+          :host([align="left"][icon-position="top"]) button[part="button"],
+          :host([align="left"][icon-position="bottom"]) button[part="button"] {
             justify-content: flex-start;
           }
-          :host([align-vertical="bottom"]:not([icon-position])) #button,
-          :host([align-vertical="bottom"][icon-position="right"]) #button,
-          :host([align="right"][icon-position="top"]) #button,
-          :host([align="right"][icon-position="bottom"]) #button {
+          :host([align-vertical="bottom"]:not([icon-position]))
+            button[part="button"],
+          :host([align-vertical="bottom"][icon-position="right"])
+            button[part="button"],
+          :host([align="right"][icon-position="top"]) button[part="button"],
+          :host([align="right"][icon-position="bottom"]) button[part="button"] {
             justify-content: flex-end;
           }
-          :host([align-vertical="justify"]:not([icon-position])) #button,
-          :host([align-vertical="justify"][icon-position="right"]) #button,
-          :host([align="justify"][icon-position="top"]) #button,
-          :host([align="justify"][icon-position="bottom"]) #button {
+          :host([align-vertical="justify"]:not([icon-position]))
+            button[part="button"],
+          :host([align-vertical="justify"][icon-position="right"])
+            button[part="button"],
+          :host([align="justify"][icon-position="top"]) button[part="button"],
+          :host([align="justify"][icon-position="bottom"])
+            button[part="button"] {
             justify-content: space-between;
           }
         `,
@@ -646,7 +661,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     get thmeingStyles() {
       return [
         css`
-          #button {
+          button[part="button"] {
             color: var(--simple-toolbar-button-color);
             border-color: var(
               --simple-toolbar-button-border-color,
@@ -662,20 +677,20 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             border-style: solid;
             text-transform: unset;
           }
-          #button[aria-pressed="true"] {
+          button[part="button"][aria-pressed="true"] {
             color: var(--simple-toolbar-button-toggled-color);
             border-color: var(--simple-toolbar-button-toggled-border-color);
             background-color: var(--simple-toolbar-button-toggled-bg);
             opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);
           }
-          #button:focus,
-          #button:hover {
+          button[part="button"]:focus,
+          button[part="button"]:hover {
             color: var(--simple-toolbar-button-hover-color);
             background-color: var(--simple-toolbar-button-hover-bg);
             border-color: var(--simple-toolbar-button-hover-border-color);
             opacity: var(--simple-toolbar-button-hover-opacity, 0.8);
           }
-          #button[disabled] {
+          button[part="button"][disabled] {
             cursor: not-allowed;
             color: var(--simple-toolbar-button-disabled-color, unset);
             background-color: var(--simple-toolbar-button-disabled-bg, unset);
