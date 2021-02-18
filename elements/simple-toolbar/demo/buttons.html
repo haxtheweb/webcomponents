@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleToolbar: simple-toolbar Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/simple-toolbar-button.js';
+      import '../lib/simple-button-grid.js';
+      import '../simple-toolbar.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-toolbar-button demo</h3>
+      <demo-snippet>
+        <template>
+          <simple-toolbar always-expanded>
+            <simple-toolbar-button icon="save" label="Save"></simple-toolbar-button>
+            <simple-toolbar-button icon="star" label="Favorite" show-text-label></simple-toolbar-button>
+            <simple-toolbar-button label="Cancel" show-text-label tooltip="Cancel without saving."></simple-toolbar-button>
+            <simple-toolbar-button icon="redo" label="Redo"></simple-toolbar-button>
+            <simple-toolbar-button icon="editor:format-bold" label="Bold" toggles></simple-toolbar-button>
+            <simple-toolbar-button icon="undo" label="Undo" show-text-label icon-position="top"></simple-toolbar-button>
+            <simple-toolbar-button icon="editor:format-italic" label="Italics" show-text-label icon-position="bottom"></simple-toolbar-button>
+            <simple-toolbar-button icon="editor:format-italic" label="Italics" show-text-label icon-position="right"></simple-toolbar-button>
+          </simple-toolbar>
+          <style>
+            simple-toolbar-button {
+              --simple-toolbar-border-color: #ddd;
+            }
+          </style>
+        </template>
+      </demo-snippet>
+      <h3>Alignment of simple-toolbar-button demo</h3>
+      <demo-snippet>
+        <template>
+        <simple-toolbar always-expanded>
+          <simple-toolbar-button icon="flag" label="Mark as important" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" align-horizontal="center" label="Mark as important" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" align-horizontal="left" label="Mark as important" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" align-horizontal="right" label="Mark as important" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" align-vertical="top" label="Mark as important" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="flag" align-vertical="bottom" label="Mark as important" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="drafts" icon-position="top" label="Send" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="middle" label="Send" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="top" label="Send" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="drafts" icon-position="top" align-vertical="bottom" label="Send" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="drafts" icon-position="top" align-horizontal="left" label="Send" show-text-label ></simple-toolbar-button>
+          <simple-toolbar-button icon="drafts" icon-position="top" align-horizontal="right" label="Send" show-text-label ></simple-toolbar-button>
+        </simple-toolbar>
+        
+          <style>
+            simple-toolbar-button[icon=flag],
+            simple-toolbar-button[icon=drafts] {
+              --simple-toolbar-border-color: #ddd;
+              --simple-toolbar-button-padding: 10px;
+              width: 280px;
+              height: 100px;
+            }
+          </style>
+        </template>
+    </demo-snippet>
+    </div>
+  </body>
+</html>

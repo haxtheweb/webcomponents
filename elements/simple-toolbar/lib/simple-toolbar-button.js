@@ -19,15 +19,15 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     static get properties() {
       return {
         /**
-         * override default centered alignment of button: "left", "right", "justify", default center
+         * override default centered alignment of button: "left", "right", "center", default center
          */
-        align: {
-          attribute: "align",
+        alignHorizontal: {
+          attribute: "align-horizontal",
           reflect: true,
           type: String,
         },
         /**
-         * override vertical alignment of button: "top", "bottom", "justify", default middle
+         * override vertical alignment of button: "top", "bottom", "middle", default middle
          */
         alignVertical: {
           attribute: "align-vertical",
@@ -510,6 +510,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       return [
         css`
           simple-tooltip {
+            z-index: -1;
+          }
+          :host(:hover) simple-tooltip,
+          :host(:focus-within) simple-tooltip {
             z-index: 2;
           }
         `,
@@ -520,11 +524,13 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * these styles are essential to how the button works
      *
      * @readonly
+     * @static
      */
-    get functionalStyles() {
+    static get functionalStyles() {
       return [
         css`
           :host {
+            display: inline-flex;
             white-space: nowrap;
             transition: all 0.5s;
             z-index: 1;
@@ -554,8 +560,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * these styles can be extended and overridden if button layout needs to change
      *
      * @readonly
+     * @static
      */
-    get layoutStyles() {
+    static get layoutStyles() {
       return [
         css`
           :host {
@@ -584,6 +591,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             transition: all 0.5s;
             justify-content: var(--simple-toolbar-button-justify, space-around);
           }
+          button[part="button"],
+          :host([icon-position="right"]:not([align-vertical]))
+            button[part="button"] {
+            justify-content: space-evenly;
+          }
 
           :host([icon-position="top"]) button[part="button"] {
             flex-direction: column;
@@ -594,61 +606,60 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           :host([icon-position="right"]) button[part="button"] {
             flex-direction: row-reverse;
           }
-          :host([align="left"]:not([icon-position])),
-          :host([align="left"][icon-position="right"]),
-          :host([align-vertical="top"][icon-position="top"])
-            button[part="button"],
-          :host([align-vertical="top"][icon-position="bottom"])
-            button[part="button"] {
-            align-items: flex-start;
-          }
-          :host([align="right"]:not([icon-position])),
-          :host([align="right"][icon-position="right"]),
-          :host([align-vertical="bottom"][icon-position="top"])
-            button[part="button"],
-          :host([align-vertical="bottom"][icon-position="bottom"])
-            button[part="button"] {
-            align-items: flex-end;
-          }
-          :host([align="justify"]:not([icon-position])),
-          :host([align="justify"][icon-position="right"]),
-          :host([align-vertical="justify"][icon-position="top"])
-            button[part="button"],
-          :host([align-vertical="justify"][icon-position="bottom"])
-            button[part="button"] {
-            align-items: stretch;
-          }
-          button[part="button"],
-          :host([icon-position="right"]:not([align-vertical]))
-            button[part="button"],
-          :host([icon-position="top"]) button[part="button"],
-          :host([icon-position="bottom"]) button[part="button"] {
-            justify-content: space-evenly;
-          }
           :host([align-vertical="top"]:not([icon-position]))
             button[part="button"],
           :host([align-vertical="top"][icon-position="right"])
             button[part="button"],
-          :host([align="left"][icon-position="top"]) button[part="button"],
-          :host([align="left"][icon-position="bottom"]) button[part="button"] {
-            justify-content: flex-start;
+          :host([align-horizontal="left"][icon-position="top"])
+            button[part="button"],
+          :host([align-horizontal="left"][icon-position="bottom"])
+            button[part="button"] {
+            align-items: flex-start;
           }
           :host([align-vertical="bottom"]:not([icon-position]))
             button[part="button"],
           :host([align-vertical="bottom"][icon-position="right"])
             button[part="button"],
-          :host([align="right"][icon-position="top"]) button[part="button"],
-          :host([align="right"][icon-position="bottom"]) button[part="button"] {
+          :host([align-horizontal="right"][icon-position="top"])
+            button[part="button"],
+          :host([align-horizontal="right"][icon-position="bottom"]) {
+            align-items: flex-end;
+          }
+          :host([align-horizontal="left"]:not([icon-position]))
+            button[part="button"],
+          :host([align-horizontal="left"][icon-position="right"])
+            button[part="button"],
+          :host([align-vertical="top"][icon-position="top"])
+            button[part="button"],
+          :host([align-vertical="top"][icon-position="bottom"]) {
+            justify-content: flex-start;
+          }
+          :host([align-horizontal="right"]:not([icon-position]))
+            button[part="button"],
+          :host([align-horizontal="right"][icon-position="right"])
+            button[part="button"],
+          :host([align-vertical="bottom"][icon-position="top"])
+            button[part="button"],
+          :host([align-vertical="bottom"][icon-position="bottom"]) {
             justify-content: flex-end;
           }
-          :host([align-vertical="justify"]:not([icon-position]))
+          :host([align-vertical="middle"]:not([icon-position]))
             button[part="button"],
-          :host([align-vertical="justify"][icon-position="right"])
+          :host([align-vertical="middle"][icon-position="right"])
             button[part="button"],
-          :host([align="justify"][icon-position="top"]) button[part="button"],
-          :host([align="justify"][icon-position="bottom"])
-            button[part="button"] {
-            justify-content: space-between;
+          :host([align-horizontal="center"][icon-position="top"])
+            button[part="button"],
+          :host([align-horizontal="center"][icon-position="bottom"]) {
+            align-items: center;
+          }
+          :host([align-horizontal="center"]:not([icon-position]))
+            button[part="button"],
+          :host([align-horizontal="center"][icon-position="right"])
+            button[part="button"],
+          :host([align-vertical="middle"][icon-position="top"])
+            button[part="button"],
+          :host([align-vertical="middle"][icon-position="bottom"]) {
+            justify-content: center;
           }
         `,
       ];
@@ -657,8 +668,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * these styles can be extended and overridden if button colors need to change
      *
      * @readonly
+     * @static
      */
-    get thmeingStyles() {
+    static get thmeingStyles() {
       return [
         css`
           button[part="button"] {
@@ -703,12 +715,18 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         `,
       ];
     }
+    /**
+     * aggregates separate styles
+     *
+     * @readonly
+     * @static
+     */
     static get styles() {
       return [
-        ...this.functionalStyles,
         ...this.iconStyles,
         ...this.labelStyles,
         ...this.tooltipStyles,
+        ...this.functionalStyles,
         ...this.layoutStyles,
         ...this.thmeingStyles,
       ];
