@@ -218,11 +218,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @memberof SimpleToolbarButton
      */
     get labelStyle() {
-      return !!this.currentIcon &&
-        this.currentIcon !== "" &&
-        this.showTextLabel === false
-        ? "offscreen"
-        : null;
+      return this.labelVisible ? "" : "offscreen";
     }
     /**
      * determines if button is toggled
@@ -279,7 +275,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * whether or not the button is toggled
      */
     _defaultOrToggled(toggledOff, toggledOn) {
-      return (!!toggledOn || toggledOn == "") && this.isToggled
+      return this._uniqueText(toggledOn) && this.isToggled
         ? toggledOn
         : toggledOff;
     }
@@ -319,18 +315,75 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         })
       );
     }
+
+    /**
+     * is label specified
+     *
+     * @readonly
+     */
+    get hasLabel() {
+      return this._uniqueText(this.currentLabel);
+    }
+    /**
+     * is icon specified
+     *
+     * @readonly
+     */
+    get hasIcon() {
+      return this._uniqueText(this.currentIcon);
+    }
+    /**
+     * is tooltip specified
+     *
+     * @readonly
+     */
+    get hasTooltip() {
+      return this._uniqueText(this.currentTooltip);
+    }
+    /**
+     * is visible label is needed or specified
+     *
+     * @readonly
+     */
+    get labelVisible() {
+      return (!this.hasIcon || this.showTextLabel) && this.hasLabel;
+    }
+    /**
+     * is tooltip needed or specified
+     *
+     * @readonly
+     */
+    get tooltipVisible() {
+      return (
+        this.hasTooltip &&
+        (!this.labelVisible ||
+          this._uniqueText(this.currentLabel, this.tooltip))
+      );
+    }
+    /**
+     * checks to see if a string is unique and not empty
+     *
+     * @param {string} [string1='']
+     * @param {string} [string2='']
+     * @returns
+     */
+    _uniqueText(string1 = "", string2 = "") {
+      return string1.trim() !== string2.trim();
+    }
     /**
      * template for button icon
      *
      * @readonly
      */
     get iconTemplate() {
-      return html`<simple-icon-lite
-        id="icon"
-        aria-hidden="true"
-        icon="${this.currentIcon}"
-        part="icon"
-      ></simple-icon-lite>`;
+      return !this.hasIcon
+        ? ""
+        : html`<simple-icon-lite
+            id="icon"
+            aria-hidden="true"
+            icon="${this.currentIcon}"
+            part="icon"
+          ></simple-icon-lite>`;
     }
     /**
      * template for button label
@@ -338,9 +391,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get labelTemplate() {
-      return html`<span id="label" class="${this.labelStyle || ""}" part="label"
-        >${this.currentLabel}</span
-      >`;
+      return !this.hasLabel
+        ? ""
+        : html`<span id="label" class="${this.labelStyle || ""}" part="label"
+            >${this.currentLabel}</span
+          >`;
     }
     /**
      * template for button tooltip
@@ -348,13 +403,16 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      */
     get tooltipTemplate() {
-      return html`<simple-tooltip
-        id="tooltip"
-        for="button"
-        position="${this.tooltipDirection || "bottom"}"
-        part="tooltip"
-        >${this.currentLabel}</simple-tooltip
-      >`;
+      return !this.tooltipVisible
+        ? ""
+        : html`<simple-tooltip
+            id="tooltip"
+            for="button"
+            position="${this.tooltipDirection || "bottom"}"
+            part="tooltip"
+            fit-to-visible-bounds
+            >${this.currentLabel}</simple-tooltip
+          >`;
     }
     /**
      * template for button, based on whether or not the button toggles
@@ -468,10 +526,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           :host {
             white-space: nowrap;
             transition: all 0.5s;
+            z-index: 1;
           }
           :host(:hover),
           :host(:focus-wthin) {
-            z-index: var(--simple-toolbar-focus-z-index, 100);
+            z-index: var(--simple-toolbar-focus-z-index, 100) !important;
           }
           :host([hidden]) {
             z-index: -1;
