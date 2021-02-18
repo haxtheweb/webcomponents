@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>WcAutoload: wc-autoload Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>
+      // support for selecting an alternative target as root to monitor
+      // useful for more targetted loading
+      /*setTimeout(() => {
+        window.WCAutoloadTarget = document.getElementById('test');
+      }, 0);*/
+      /*window.WCAutoloadOptions = {
+        childList: true
+      };*/
+      // not needed in most production scenarios but definitely locally because of tooling
+      window.WCAutoloadBasePath = "/node_modules/";
+      window.WCAutoloadRegistryFile = [
+        'https://cdn.webcomponents.psu.edu/cdn/wc-registry.json',
+        'thing2.json'
+      ];
+    </script>
+    <script type="module" src="../wc-autoload.js" defer="defer" async="async"></script>
+  </head>
+  <body>
+    <p>stuff that maybe has a full new web componetn button in it<a href="https://google.com/" target="_blank"><paper-button raised>Stuff</paper-button></a></p>
+    <div>Cool</div>
+    <grid-plate id="test" layout="1-1-1" responsive-size="xl" breakpoint-sm="900" breakpoint-md="1200" breakpoint-lg="1500" breakpoint-xl="1800" style="width: 100%;" hide-ops>
+      <a11y-gif-player slot="col-1" src="https://media0.giphy.com/media/YEongvRqe8sXC/giphy.gif" class="hax-moving" tooltip="Toggle animation" no-image></a11y-gif-player>
+      <p slot="col-3" style="width: 100%;">We'll cover user experience and generating ways of improving the platform by creating issues about any confusion you've run into when using the platform. <i>Open critique is the best way to improve! </i>
+        This is also practicing a technique called User Story Elicitation / Generation, common in the testing and development of any product.</p>
+      </grid-plate>
+  </body>
+</html>
