@@ -21,7 +21,9 @@ class LrnsysDrawer extends SimpleColors {
         :host {
           display: block;
           --lrnsys-drawer-color: var(--simple-colors-foreground1);
-          --lrnsys-drawer-background-color: var(--simple-colors-background1);
+          --lrnsys-drawer-button-background-color: var(
+            --simple-colors-background1
+          );
         }
         :host([raised]) button {
           border: 2px solid black;
@@ -32,10 +34,14 @@ class LrnsysDrawer extends SimpleColors {
           margin: var(--lrnsys-drawer-button-margin);
           padding: var(--lrnsys-drawer-button-padding);
           border: none;
-          background: transparent;
+          background: var(--lrnsys-drawer-button-background-color);
         }
         button:hover {
           cursor: pointer;
+          background: var(
+            --lrnsys-drawer-button-background-color-hover,
+            --lrnsys-drawer-button-background-color
+          );
         }
       `,
     ];
