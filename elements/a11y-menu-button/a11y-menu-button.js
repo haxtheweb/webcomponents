@@ -8,21 +8,58 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
 
 const A11yMenuButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
-    static get styles() {
+    /**
+     * the core styles needed to make a menu button
+     *
+     * @readonly
+     * @static
+     */
+    static get menuButtonCoreStyles() {
       return [
         css`
           :host {
             padding: 0;
             display: inline-block;
             position: relative;
+            z-index: 1;
           }
-          button {
+          :host([expanded]) {
+            z-index: var(--a11y-menu-button-focus-z-index, 1000);
+          }
+          button[part="button"] {
             display: block;
             text-decoration: inherit;
             font-family: inherit;
             font-size: inherit;
             margin: 0;
             width: 100%;
+          }
+          absolute-position-behavior {
+            z-index: -1;
+            overflow: hidden;
+          }
+          :host([expanded]) absolute-position-behavior {
+            z-index: 2;
+          }
+          ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+          }
+        `,
+      ];
+    }
+    /**
+     * styles that can be customized by
+     * extending and overriding this getter
+     *
+     * @readonly
+     * @static
+     */
+    static get menuButtonThemeStyles() {
+      return [
+        css`
+          button[part="button"] {
             padding: var(--a11y-menu-button-vertical-padding, 2px)
               var(--a11y-menu-button-horizontal-padding, 5px);
             text-align: var(--a11y-menu-button-text-align, center);
@@ -38,8 +75,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             box-shadow: var(--a11y-menu-button-box-shadow, unset);
             transition: all 0.25s ease-in-out;
           }
-          button:focus,
-          button:hover {
+          button[part="button"]:focus,
+          button[part="button"]:hover {
             color: var(
               --a11y-menu-button-focus-color,
               var(--a11y-menu-button-color, black)
@@ -73,12 +110,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
               var(--a11y-menu-button-focus-box-shadow, unset)
             );
           }
-          absolute-position-behavior {
-            z-index: -1;
-            overflow: hidden;
-          }
           :host([expanded]) absolute-position-behavior {
-            z-index: 2;
             width: var(--a11y-menu-button-list-width, unset);
             height: var(--a11y-menu-button-list-height, unset);
             border: var(
@@ -91,14 +123,11 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             );
             box-shadow: var(--a11y-menu-button-list-box-shadow, unset);
           }
-
-          ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-          }
         `,
       ];
+    }
+    static get styles() {
+      return [...this.menuButtonCoreStyles, ...this.menuButtonThemeStyles];
     }
     render() {
       return html` ${this.buttonTemplate} ${this.menuTemplate} `;
@@ -180,7 +209,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       this.__menuItems = [];
       this.position = "bottom";
       this.positionAlign = "start";
-      this.offset = "0";
+      this.offset = 0;
       this.addEventListener("keydown", this._handleKeydown);
       this.addEventListener("click", this._handleClick);
       this.addEventListener("focus", this._handleFocus);
@@ -205,7 +234,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           for="menubutton"
           position="${this.position}"
           position-align="${this.positionAlign}"
-          offset="${this.offset}"
+          .offset="${this.offset}"
+          part="menu-outer"
         >
           <ul
             id="menu"
@@ -214,6 +244,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             ?hidden="${!this.expanded}"
             @mousover="${(e) => (this.hover = true)}"
             @mousout="${(e) => (this.hover = false)}"
+            part="menu"
           >
             ${this.listItemTemplate}
           </ul>
