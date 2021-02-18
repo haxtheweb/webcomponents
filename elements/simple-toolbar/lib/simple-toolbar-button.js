@@ -7,6 +7,66 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
+export const SimpleToolbarGlobalProperties = {
+  /**
+   * override default centered alignment of button: "left", "right", "justify", default center
+   */
+  align: {
+    attribute: "align",
+    reflect: true,
+    type: String,
+  },
+  /**
+   * override vertical alignment of button: "top", "bottom", "justify", default middle
+   */
+  alignVertical: {
+    attribute: "align-vertical",
+    reflect: true,
+    type: String,
+  },
+  /**
+   * is toolbar collapsed?
+   */
+  disabled: {
+    name: "disabled",
+    type: Boolean,
+    attribute: "disabled",
+    reflect: true,
+  },
+  /**
+   * is toolbar collapsed?
+   */
+  hidden: {
+    name: "hidden",
+    type: Boolean,
+    attribute: "hidden",
+    reflect: true,
+  },
+  /**
+   * Optionally place icon at top, bottom, or right of label
+   */
+  iconPosition: {
+    type: String,
+    attribute: "icon-position",
+    reflect: true,
+  },
+  /**
+   * show text label for more button.
+   */
+  showTextLabel: {
+    name: "showTextLabel",
+    type: Boolean,
+    attribute: "more-show-text-label",
+  },
+  /**
+   * Direction that the tooltip should flow
+   */
+  tooltipDirection: {
+    type: String,
+    attribute: "tooltip-direction",
+    reflect: true,
+  },
+};
 const SimpleToolbarButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**
@@ -18,37 +78,13 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
 
     static get properties() {
       return {
-        /**
-         * override default centered alignment of button: "left", "right", "center", default center
-         */
-        alignHorizontal: {
-          attribute: "align-horizontal",
-          reflect: true,
-          type: String,
-        },
-        /**
-         * override vertical alignment of button: "top", "bottom", "middle", default middle
-         */
-        alignVertical: {
-          attribute: "align-vertical",
-          reflect: true,
-          type: String,
-        },
+        ...SimpleToolbarGlobalProperties,
         /**
          * The `id` of the `simple-toolbar` that the toolbar controls.
          */
         controls: {
           type: String,
           attribute: "controls",
-          reflect: true,
-        },
-
-        /**
-         * Is the button disabled? Default is false.
-         */
-        disabled: {
-          type: Boolean,
-          attribute: "disabled",
           reflect: true,
         },
 
@@ -66,15 +102,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
          */
         label: {
           type: String,
-        },
-
-        /**
-         * Optionally place icon at top, bottom, or right of label
-         */
-        iconPosition: {
-          type: String,
-          attribute: "icon-position",
-          reflect: true,
         },
 
         /**
@@ -136,14 +163,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         toggledTooltip: {
           attribute: "toggled-tooltip",
           type: String,
-        },
-        /**
-         * Direction that the tooltip should flow
-         */
-        tooltipDirection: {
-          type: String,
-          attribute: "tooltip-direction",
-          reflect: true,
         },
       };
     }
@@ -544,6 +563,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             visibility: hidden;
             opacity: 0;
             height: 0;
+          }
+          :host([disabled]) {
+            pointer-events: none;
           }
           button[part="button"] {
             display: flex;

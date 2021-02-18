@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element";
 import "./lib/simple-toolbar-more-button.js";
+import { SimpleToolbarGlobalProperties } from "./lib/simple-toolbar-more-button.js";
 /**
  * @customElement
  * @class
@@ -43,16 +44,20 @@ const SimpleToolbarBehaviors = function (SuperClass) {
             margin: 0;
             justify-content: space-between;
             background-color: var(--simple-toolbar-border-bg);
-            font-size: 12px;
-            transition: all 0.5s;
+            font-size: inherit;
             margin: 0;
             padding: 0;
+            transition: all 0.5s;
           }
           :host([hidden]) {
             z-index: -1;
             visibility: hidden;
             opacity: 0;
             height: 0;
+          }
+          :host([disabled]) {
+            opacity: 0.6;
+            pointer-events: none;
           }
           #buttons {
             flex-wrap: wrap;
@@ -63,30 +68,31 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           }
           #morebutton {
             flex: 0 0 auto;
-            justify-content: flex-end;
           }
           ::slotted(.group) {
             display: flex;
             flex-wrap: nowrap;
             justify-content: space-evenly;
             align-items: stretch;
-            padding: var(--simple-toolbar-group-padding, 0 3px);
             margin: 0;
             flex: 0 1 auto;
             overflow-y: visible;
+            border-width: 0px;
+            border-style: solid;
+            padding: var(--simple-toolbar-group-padding, 0 3px);
+            border-color: var(
+              --simple-toolbar-border-color,
+              var(--simple-toolbar-group-border-color, transparent)
+            );
           }
           ::slotted(.group:not(:last-child)) {
-            border-right: var(
-                --simple-toolbar-group-border-width,
-                var(--simple-toolbar-border-width, 1px)
-              )
-              solid
-              var(
-                --simple-toolbar-border-color,
-                var(--simple-toolbar-group-border-color, transparent)
-              );
+            border-right-width: var(
+              --simple-toolbar-group-border-width,
+              var(--simple-toolbar-border-width, 1px)
+            );
           }
-          ::slotted(*:hover) ::slotted(*:focus-wthin) {
+          ::slotted(*:hover),
+          ::slotted(*:focus-wthin) {
             z-index: var(--simple-toolbar-focus-z-index, 100);
           }
           :host([collapsed]:not([always-expanded]))
@@ -104,6 +110,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     // properties available to custom element for data binding
     static get properties() {
       return {
+        ...SimpleToolbarGlobalProperties,
         /**
          * always expanded so more button is unnecessary?
          */
@@ -120,15 +127,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           name: "collapsed",
           type: Boolean,
           attribute: "collapsed",
-          reflect: true,
-        },
-        /**
-         * is toolbar collapsed?
-         */
-        hidden: {
-          name: "hidden",
-          type: Boolean,
-          attribute: "hidden",
           reflect: true,
         },
         /**
@@ -150,68 +148,13 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
-         * icon for more button.
+         * Optional space-sperated list of keyboard shortcuts for editor
+         * to fire this button, see iron-a11y-keys for more info.
          */
-        moreIcon: {
-          name: "moreIcon",
-          type: String,
-          attribute: "more-icon",
-        },
-        /**
-         * label for more button when toggled.
-         */
-        moreToggledIcon: {
-          name: "moreToggledIcon",
-          type: String,
-          attribute: "more-icon-toggled",
-        },
-        /**
-         * show text label for more button.
-         */
-        moreIconPosition: {
-          name: "moreIconPosition",
-          type: String,
-          attribute: "more-icon-position",
-        },
-        /**
-         * label for more button.
-         */
-        moreLabel: {
-          name: "moreLabel",
-          type: String,
-          attribute: "more-label",
-        },
-        /**
-         * label for more button when toggled.
-         */
-        moreToggledLabel: {
-          name: "moreToggledLabel",
-          type: String,
-          attribute: "more-toggled-label",
-        },
-        /**
-         * show text label for more button.
-         */
-        moreShowTextLabel: {
-          name: "moreShowTextLabel",
-          type: Boolean,
-          attribute: "more-show-text-label",
-        },
-        /**
-         * show text label for more button.
-         */
-        moreShortcut: {
-          name: "moreShortcut",
-          type: Boolean,
-          attribute: "more-shortcut",
-        },
-        /**
-         * Direction that the tooltip should flow
-         */
-        moreTooltipDirection: {
-          type: String,
-          attribute: "more-tooltip-direction",
-          reflect: true,
+        moreShortcuts: {
+          name: "moreShortcuts",
+          attribute: "more-shortcuts",
+          type: Object,
         },
         /**
          * Optional space-sperated list of keyboard shortcuts for editor
@@ -219,7 +162,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
          */
         shortcutKeys: {
           name: "shortcutKeys",
-          attribute: "shoertcut-keys",
+          attribute: "shortcut-keys",
           type: Object,
         },
         /**
@@ -302,19 +245,23 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     get moreButton() {
       return html` <simple-toolbar-more-button
         id="morebutton"
+        .align-horizontal="${this.alignHorizontal}"
+        .align-vertical="${this.alignVertical}"
         aria-controls="buttons"
         class="button"
         @click="${(e) => (this.collapsed = !this.collapsed)}"
         @toggle="${(e) => (this.collapsed = !this.collapsed)}"
         ?hidden=${this.__collapseDisabled}
-        icon="${this.moreIcon || ""}"
-        icon-position="${this.moreIconPosition || ""}"
-        label="${this.moreLabel || ""}"
-        ?show-text-label="${this.moreShowTextLabel}"
+        .icon="${this.icon}"
+        .icon-position="${this.iconPosition}"
+        .label="${this.label}"
+        .shortcut="${this.shortcut}"
+        ?show-text-label="${this.showTextLabel}"
         ?toggled="${!this.collapsed}"
-        toggled-icon="${this.moreToggledIcon || ""}"
-        toggled-label="${this.moreToggledLabel || ""}"
-        tooltip-direction="${this.moreTooltipDirection || ""}"
+        .toggled-icon="${this.toggledIcon}"
+        .toggled-label="${this.toggledLabel}"
+        .toggled-tooltip="${this.toggledTooltip}"
+        .tooltip-direction="${this.tooltipDirection}"
         part="morebutton"
       >
       </simple-toolbar-more-button>`;
@@ -348,11 +295,11 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.__collapseDisabled = false;
       this.__focused = false;
       this.__hovered = false;
-      this.moreIcon = "more-vert";
-      this.moreLabel = "More Buttons";
-      this.moreToggledLabel = "Fewer Buttons";
-      this.moreShowTextLabel = false;
-      this.moreShortcut = "ctrl+shift+;";
+      this.icon = "more-vert";
+      this.label = "More Buttons";
+      this.toggledLabel = "Fewer Buttons";
+      this.showTextLabel = false;
+      this.shortcut = "ctrl+shift+;";
       this.sticky = false;
       this.shortcutKeys = {};
       this.addEventListener("register-button", this._handleButtonRegister);
@@ -445,7 +392,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       this.innerHTML = "";
       this.__buttons = [];
       this.shortcutKeys = {};
-      this.shortcutKeys[this.moreShortcut] = this.shadowRoot
+      this.shortcutKeys[this.shortcut] = this.shadowRoot
         ? this.shadowRoot.querySelector("#morebutton")
         : undefined;
     }
@@ -663,6 +610,7 @@ Custom property | Description | Default
  * @lit-element
  * @demo demo/index.html
  * @demo demo/grid.html Grid
+ * @demo ./demo/buttons.html Buttons
  */
 class SimpleToolbar extends SimpleToolbarBehaviors(LitElement) {}
 customElements.define("simple-toolbar", SimpleToolbar);
