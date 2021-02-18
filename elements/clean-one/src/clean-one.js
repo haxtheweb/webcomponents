@@ -654,7 +654,7 @@ class CleanOne extends HAXCMSThemeParts(
         <div id="body" class="site-body">
           <div id="top"></div>
           <div class="site-inner">
-            <div
+            <header
               class="site-header"
               role="navigation"
               .part="${this.editMode ? `edit-mode-active` : ``}"
@@ -673,38 +673,40 @@ class CleanOne extends HAXCMSThemeParts(
                 </div>
               </div>
               <site-active-title></site-active-title>
-            </div>
-            <div class="page-wrapper" role="main">
-              <div class="main-content page-inner">
-                <section class="normal main-section">
+            </header>
+            <main class="page-wrapper" role="main">
+              <article class="main-content page-inner">
+                <div class="normal main-section">
                   <site-search
                     hide-input
                     search="${this.searchTerm}"
                     ?hidden="${this.searchTerm != "" ? false : true}"
                   ></site-search>
-                  <div
+                  <section
                     id="contentcontainer"
                     ?hidden="${this.searchTerm != "" ? true : false}"
                   >
                     <div id="slot">
                       <slot></slot>
                     </div>
-                  </div>
-                </section>
-              </div>
-            </div>
+                  </section>
+                </div>
+              </article>
+            </main>
           </div>
-          <!-- These two buttons allow you to go left and right through the pages in the manifest -->
-          <site-menu-button
-            type="prev"
-            position="right"
-            class="navigation"
-          ></site-menu-button>
-          <site-menu-button
-            type="next"
-            position="left"
-            class="navigation"
-          ></site-menu-button>
+          <footer>
+            <!-- These two buttons allow you to go left and right through the pages in the manifest -->
+            <site-menu-button
+              type="prev"
+              position="right"
+              class="navigation"
+            ></site-menu-button>
+            <site-menu-button
+              type="next"
+              position="left"
+              class="navigation"
+            ></site-menu-button>
+          </footer>
         </div>
         <scroll-button
           .part="${this.editMode ? `edit-mode-active` : ``}"

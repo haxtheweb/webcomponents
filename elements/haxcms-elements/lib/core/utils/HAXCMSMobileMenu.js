@@ -61,7 +61,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         <simple-icon-button-lite
           class="btn"
           icon="icons:menu"
-          aria-label="Toggle menu"
+          label="Toggle menu"
           id="haxcmsmobilemenubutton"
           .part="${this.editMode ? `edit-mode-active` : ``}"
           @click="${this.__HAXCMSMobileMenuToggle}"
