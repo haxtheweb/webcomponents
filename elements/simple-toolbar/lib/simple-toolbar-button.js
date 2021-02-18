@@ -417,24 +417,16 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         `,
       ];
     }
+
     /**
-     * styles for button
+     * these styles are essential to how the button works
      *
      * @readonly
-     * @static
      */
-    static get buttonStyles() {
+    get functionalStyles() {
       return [
         css`
           :host {
-            flex: 0 1 auto;
-            min-width: var(
-              --simple-toolbar-button-min-width,
-              var(
-                --simple-toolbar-button-width,
-                var(--simple-toolbar-button-height, 24px)
-              )
-            );
             white-space: nowrap;
             transition: all 0.5s;
           }
@@ -449,6 +441,35 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             height: 0;
           }
           #button {
+            display: flex;
+            margin: 0;
+            white-space: nowrap;
+            width: 100%;
+            height: 100%;
+          }
+        `,
+      ];
+    }
+
+    /**
+     * these styles can be extended and overridden if button layout needs to change
+     *
+     * @readonly
+     */
+    get layoutStyles() {
+      return [
+        css`
+          :host {
+            flex: 0 1 auto;
+            min-width: var(
+              --simple-toolbar-button-min-width,
+              var(
+                --simple-toolbar-button-width,
+                var(--simple-toolbar-button-height, 24px)
+              )
+            );
+          }
+          #button {
             font-size: inherit;
             min-width: var(
               --simple-toolbar-button-min-width,
@@ -458,29 +479,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               )
             );
             min-height: var(--simple-toolbar-button-height, 24px);
-            margin: 0;
             padding: var(--simple-toolbar-button-padding, 0);
-            color: var(--simple-toolbar-button-color);
-            border-color: var(
-              --simple-toolbar-button-border-color,
-              var(--simple-toolbar-border-color, transparent)
-            );
-            background-color: var(--simple-toolbar-button-bg, transparent);
-            opacity: var(--simple-toolbar-button-opacity, 1);
-            border-width: var(
-              --simple-toolbar-button-border-width,
-              var(--simple-toolbar-border-width, 1px)
-            );
-            border-radius: var(--simple-toolbar-border-radius, 3px);
-            border-style: solid;
-            text-transform: unset;
-            display: flex;
             flex: var(--simple-toolbar-button-flex, 0 0 auto);
-            white-space: nowrap;
             align-items: center;
             transition: all 0.5s;
-            width: 100%;
-            height: 100%;
             justify-content: var(--simple-toolbar-button-justify, space-around);
           }
           :host([icon-position="top"]) #button,
@@ -495,6 +497,33 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           }
           :host([icon-position="right"]) #button {
             flex-direction: row-reverse;
+          }
+        `,
+      ];
+    }
+    /**
+     * these styles can be extended and overridden if button colors need to change
+     *
+     * @readonly
+     */
+    get thmeingStyles() {
+      return [
+        css`
+          #button {
+            color: var(--simple-toolbar-button-color);
+            border-color: var(
+              --simple-toolbar-button-border-color,
+              var(--simple-toolbar-border-color, transparent)
+            );
+            background-color: var(--simple-toolbar-button-bg, transparent);
+            opacity: var(--simple-toolbar-button-opacity, 1);
+            border-width: var(
+              --simple-toolbar-button-border-width,
+              var(--simple-toolbar-border-width, 1px)
+            );
+            border-radius: var(--simple-toolbar-border-radius, 3px);
+            border-style: solid;
+            text-transform: unset;
           }
           #button[aria-pressed="true"] {
             color: var(--simple-toolbar-button-toggled-color);
@@ -524,11 +553,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     }
     static get styles() {
       return [
-        ...(super.styles || []),
-        ...this.buttonStyles,
+        ...this.functionalStyles,
         ...this.iconStyles,
         ...this.labelStyles,
         ...this.tooltipStyles,
+        ...this.layoutStyles,
+        ...this.thmeingStyles,
       ];
     }
   };
