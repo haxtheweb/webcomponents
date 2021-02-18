@@ -19,6 +19,22 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     static get properties() {
       return {
         /**
+         * override default centered alignment of button: "left", "right", "justify", default center
+         */
+        align: {
+          attribute: "align",
+          reflect: true,
+          type: String,
+        },
+        /**
+         * override vertical alignment of button: "top", "bottom", "justify", default middle
+         */
+        alignVertical: {
+          attribute: "align-vertical",
+          reflect: true,
+          type: String,
+        },
+        /**
          * The `id` of the `simple-toolbar` that the toolbar controls.
          */
         controls: {
@@ -113,6 +129,14 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           attribute: "toggled",
           type: Boolean,
         },
+
+        /**
+         * Label for the icon, if button is toggled.
+         */
+        toggledTooltip: {
+          attribute: "toggled-tooltip",
+          type: String,
+        },
         /**
          * Direction that the tooltip should flow
          */
@@ -173,6 +197,19 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         this.isToggled
       );
     }
+    /**
+     * current label based on toggled state
+     *
+     * @readonly
+     * @memberof SimpleToolbarButton
+     */
+    get currentTooltip() {
+      return this._defaultOrToggled(
+        this.tooltip,
+        this.toggledTootip,
+        this.isToggled
+      );
+    }
 
     /**
      * label is offscreen (screenreader-only)
@@ -181,7 +218,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @memberof SimpleToolbarButton
      */
     get labelStyle() {
-      return !!this.icon && this.icon !== "" && this.showTextLabel === false
+      return !!this.currentIcon &&
+        this.currentIcon !== "" &&
+        this.showTextLabel === false
         ? "offscreen"
         : null;
     }
@@ -481,14 +520,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             min-height: var(--simple-toolbar-button-height, 24px);
             padding: var(--simple-toolbar-button-padding, 0);
             flex: var(--simple-toolbar-button-flex, 0 0 auto);
-            align-items: center;
+            align-items: var(--simple-toolbar-button-align, center);
             transition: all 0.5s;
             justify-content: var(--simple-toolbar-button-justify, space-around);
           }
-          :host([icon-position="top"]) #button,
-          :host([icon-position="bottom"]) #button {
-            justify-content: space-evenly;
-          }
+
           :host([icon-position="top"]) #button {
             flex-direction: column;
           }
@@ -497,6 +533,48 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           }
           :host([icon-position="right"]) #button {
             flex-direction: row-reverse;
+          }
+          :host([align="left"]:not([icon-position])),
+          :host([align="left"][icon-position="right"]),
+          :host([align-vertical="top"][icon-position="top"]) #button,
+          :host([align-vertical="top"][icon-position="bottom"]) #button {
+            align-items: flex-start;
+          }
+          :host([align="right"]:not([icon-position])),
+          :host([align="right"][icon-position="right"]),
+          :host([align-vertical="bottom"][icon-position="top"]) #button,
+          :host([align-vertical="bottom"][icon-position="bottom"]) #button {
+            align-items: flex-end;
+          }
+          :host([align="justify"]:not([icon-position])),
+          :host([align="justify"][icon-position="right"]),
+          :host([align-vertical="justify"][icon-position="top"]) #button,
+          :host([align-vertical="justify"][icon-position="bottom"]) #button {
+            align-items: stretch;
+          }
+          #button,
+          :host([icon-position="right"]:not([align-vertical])) #button,
+          :host([icon-position="top"]) #button,
+          :host([icon-position="bottom"]) #button {
+            justify-content: space-evenly;
+          }
+          :host([align-vertical="top"]:not([icon-position])) #button,
+          :host([align-vertical="top"][icon-position="right"]) #button,
+          :host([align="left"][icon-position="top"]) #button,
+          :host([align="left"][icon-position="bottom"]) #button {
+            justify-content: flex-start;
+          }
+          :host([align-vertical="bottom"]:not([icon-position])) #button,
+          :host([align-vertical="bottom"][icon-position="right"]) #button,
+          :host([align="right"][icon-position="top"]) #button,
+          :host([align="right"][icon-position="bottom"]) #button {
+            justify-content: flex-end;
+          }
+          :host([align-vertical="justify"]:not([icon-position])) #button,
+          :host([align-vertical="justify"][icon-position="right"]) #button,
+          :host([align="justify"][icon-position="top"]) #button,
+          :host([align="justify"][icon-position="bottom"]) #button {
+            justify-content: space-between;
           }
         `,
       ];
