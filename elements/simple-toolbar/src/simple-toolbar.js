@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element";
 import "./lib/simple-toolbar-more-button.js";
-import { SimpleToolbarGlobalProperties } from "./lib/simple-toolbar-more-button.js";
+import { SimpleToolbarGlobalProperties } from "./lib/simple-toolbar-button.js";
 /**
  * @customElement
  * @class
@@ -611,6 +611,7 @@ Custom property | Description | Default
  * @demo demo/index.html
  * @demo demo/grid.html Grid
  * @demo ./demo/buttons.html Buttons
+ * @demo ./demo/menu.html Menu
  */
 class SimpleToolbar extends SimpleToolbarBehaviors(LitElement) {}
 customElements.define("simple-toolbar", SimpleToolbar);

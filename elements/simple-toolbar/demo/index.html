@@ -12,6 +12,8 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-toolbar.js';
       import '../lib/simple-button-grid.js';
+      import '../lib/simple-toolbar-menu.js';
+      import '../lib/simple-toolbar-menu-item.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -30,10 +32,18 @@
               <simple-toolbar-button class="button" icon="redo" label="Redo" shortcut-keys="ctrl+shift+z"></simple-toolbar-button>
             </div>
             <div class="group">
+              </simple-toolbar-menu>
               <simple-toolbar-button class="button" icon="editor:format-bold" label="Bold" shortcut-keys="ctrl+b" toggles></simple-toolbar-button>
               <simple-toolbar-button class="button" icon="editor:format-italic" label="Italics" shortcut-keys="ctrl+i" toggles></simple-toolbar-button>
             </div>
             <simple-toolbar-button class="button" icon="star" label="Favorite" toggles show-text-label></simple-toolbar-button>
+              <simple-toolbar-menu label="Visibility" show-text-label align-horizontal="left">
+                <simple-toolbar-menu-item>
+                  <simple-toolbar-button role="menuitem" icon="visibility" label="Show" show-text-label align-horizontal="left"></simple-toolbar-button>
+                </simple-toolbar-menu-item>
+                <simple-toolbar-menu-item>
+                  <simple-toolbar-button role="menuitem" icon="visibility-off" label="Hide" show-text-label align-horizontal="left"></simple-toolbar-button>
+                </simple-toolbar-menu-item>
           </simple-toolbar>
         </template>
       </demo-snippet>

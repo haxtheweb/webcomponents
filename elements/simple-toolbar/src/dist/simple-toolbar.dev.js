@@ -7,7 +7,9 @@ exports.SimpleToolbarBehaviors = exports.SimpleToolbar = void 0;
 
 var _litElement = require("lit-element");
 
-var _simpleToolbarMoreButton = require("./lib/simple-toolbar-more-button.js");
+require("./lib/simple-toolbar-more-button.js");
+
+var _simpleToolbarButton = require("./lib/simple-toolbar-button.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -105,7 +107,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            position: relative;\n            display: flex;\n            align-items: flex-start;\n            opacity: 1;\n            z-index: 2;\n            margin: 0;\n            justify-content: space-between;\n            background-color: var(--simple-toolbar-border-bg);\n            font-size: inherit;\n            margin: 0;\n            padding: 0;\n            transition: all 0.5s;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          :host([disabled]){\n            opacity: 0.6;\n            pointer-events: none;\n          }\n          #buttons {\n            flex-wrap: wrap;\n            display: flex;\n            justify-content: flex-start;\n            flex: 1 1 auto;\n            overflow-y: visible;\n          }\n          #morebutton {\n            flex: 0 0 auto;\n          }\n          ::slotted(.group) {\n            display: flex;\n            flex-wrap: nowrap;\n            justify-content: space-evenly;\n            align-items: stretch;\n            margin: 0;\n            flex: 0 1 auto;\n            overflow-y: visible;\n            border-width: 0px;\n            border-style: solid;\n            padding: var(--simple-toolbar-group-padding, 0 3px);\n            border-color: var(\n                --simple-toolbar-border-color,\n                var(--simple-toolbar-group-border-color, transparent)\n              );\n          }\n          ::slotted(.group:not(:last-child)) {\n            border-right-width: var(\n              --simple-toolbar-group-border-width,\n              var(--simple-toolbar-border-width, 1px)\n            );\n          }\n          ::slotted(*:hover), \n          ::slotted(*:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100);\n          }\n          :host([collapsed]:not([always-expanded]))\n            ::slotted(*[collapse-hide]) {\n            display: none !important;\n          }\n        ",
+    "\n          :host {\n            position: relative;\n            display: flex;\n            align-items: flex-start;\n            opacity: 1;\n            z-index: 2;\n            margin: 0;\n            justify-content: space-between;\n            background-color: var(--simple-toolbar-border-bg);\n            font-size: inherit;\n            margin: 0;\n            padding: 0;\n            transition: all 0.5s;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          :host([disabled]) {\n            opacity: 0.6;\n            pointer-events: none;\n          }\n          #buttons {\n            flex-wrap: wrap;\n            display: flex;\n            justify-content: flex-start;\n            flex: 1 1 auto;\n            overflow-y: visible;\n          }\n          #morebutton {\n            flex: 0 0 auto;\n          }\n          ::slotted(.group) {\n            display: flex;\n            flex-wrap: nowrap;\n            justify-content: space-evenly;\n            align-items: stretch;\n            margin: 0;\n            flex: 0 1 auto;\n            overflow-y: visible;\n            border-width: 0px;\n            border-style: solid;\n            padding: var(--simple-toolbar-group-padding, 0 3px);\n            border-color: var(\n              --simple-toolbar-border-color,\n              var(--simple-toolbar-group-border-color, transparent)\n            );\n          }\n          ::slotted(.group:not(:last-child)) {\n            border-right-width: var(\n              --simple-toolbar-group-border-width,\n              var(--simple-toolbar-border-width, 1px)\n            );\n          }\n          ::slotted(*:hover),\n          ::slotted(*:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100);\n          }\n          :host([collapsed]:not([always-expanded]))\n            ::slotted(*[collapse-hide]) {\n            display: none !important;\n          }\n        ",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -415,7 +417,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
             get: function get() {
               return _objectSpread(
                 {},
-                _simpleToolbarMoreButton.SimpleToolbarGlobalProperties,
+                _simpleToolbarButton.SimpleToolbarGlobalProperties,
                 {
                   /**
                    * always expanded so more button is unnecessary?
@@ -1010,6 +1012,7 @@ Custom property | Description | Default
  * @demo demo/index.html
  * @demo demo/grid.html Grid
  * @demo ./demo/buttons.html Buttons
+ * @demo ./demo/menu.html Menu
  */
 
 exports.SimpleToolbarBehaviors = SimpleToolbarBehaviors;

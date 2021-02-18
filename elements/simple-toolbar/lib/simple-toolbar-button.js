@@ -230,16 +230,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         this.isToggled
       );
     }
-
-    /**
-     * label is offscreen (screenreader-only)
-     *
-     * @readonly
-     * @memberof SimpleToolbarButton
-     */
-    get labelStyle() {
-      return this.labelVisible ? "" : "offscreen";
-    }
     /**
      * determines if button is toggled
      *
@@ -413,7 +403,10 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     get labelTemplate() {
       return !this.hasLabel
         ? ""
-        : html`<span id="label" class="${this.labelStyle || ""}" part="label"
+        : html`<span
+            id="label"
+            class="${this.labelVisible ? "" : "offscreen"}"
+            part="label"
             >${this.currentLabel}</span
           >`;
     }
@@ -545,7 +538,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      * @static
      */
-    static get functionalStyles() {
+    static get simpleButtonCoreStyles() {
       return [
         css`
           :host {
@@ -584,10 +577,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      * @static
      */
-    static get layoutStyles() {
+    static get simpleButtonLayoutStyles() {
       return [
         css`
           :host {
+            font-family: sans-serif;
+            font-size: 13px;
             flex: 0 1 auto;
             min-width: var(
               --simple-toolbar-button-min-width,
@@ -598,6 +593,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             );
           }
           button[part="button"] {
+            font-family: inherit;
             font-size: inherit;
             min-width: var(
               --simple-toolbar-button-min-width,
@@ -607,7 +603,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               )
             );
             min-height: var(--simple-toolbar-button-height, 24px);
-            padding: var(--simple-toolbar-button-padding, 0);
+            padding: var(--simple-toolbar-button-padding, 1px);
             flex: var(--simple-toolbar-button-flex, 0 0 auto);
             align-items: var(--simple-toolbar-button-align, center);
             transition: all 0.5s;
@@ -692,7 +688,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @readonly
      * @static
      */
-    static get thmeingStyles() {
+    static get simpleButtonThemeStyles() {
       return [
         css`
           button[part="button"] {
@@ -748,9 +744,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         ...this.iconStyles,
         ...this.labelStyles,
         ...this.tooltipStyles,
-        ...this.functionalStyles,
-        ...this.layoutStyles,
-        ...this.thmeingStyles,
+        ...this.simpleButtonCoreStyles,
+        ...this.simpleButtonLayoutStyles,
+        ...this.simpleButtonThemeStyles,
       ];
     }
   };

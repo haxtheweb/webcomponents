@@ -72,7 +72,7 @@ function _templateObject12() {
 
 function _templateObject11() {
   var data = _taggedTemplateLiteral([
-    '\n          :host {\n            flex: 0 1 auto;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n          }\n          button[part="button"] {\n            font-size: inherit;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n            min-height: var(--simple-toolbar-button-height, 24px);\n            padding: var(--simple-toolbar-button-padding, 0);\n            flex: var(--simple-toolbar-button-flex, 0 0 auto);\n            align-items: var(--simple-toolbar-button-align, center);\n            transition: all 0.5s;\n            justify-content: var(--simple-toolbar-button-justify, space-around);\n          }\n          button[part="button"],\n          :host([icon-position="right"]:not([align-vertical]))\n            button[part="button"] {\n            justify-content: space-evenly;\n          }\n\n          :host([icon-position="top"]) button[part="button"] {\n            flex-direction: column;\n          }\n          :host([icon-position="bottom"]) button[part="button"] {\n            flex-direction: column-reverse;\n          }\n          :host([icon-position="right"]) button[part="button"] {\n            flex-direction: row-reverse;\n          }\n          :host([align-vertical="top"]:not([icon-position]))\n            button[part="button"],\n          :host([align-vertical="top"][icon-position="right"])\n            button[part="button"],\n          :host([align-horizontal="left"][icon-position="top"])\n            button[part="button"],\n          :host([align-horizontal="left"][icon-position="bottom"])\n            button[part="button"] {\n            align-items: flex-start;\n          }\n          :host([align-vertical="bottom"]:not([icon-position]))\n            button[part="button"],\n          :host([align-vertical="bottom"][icon-position="right"])\n            button[part="button"],\n          :host([align-horizontal="right"][icon-position="top"])\n            button[part="button"],\n          :host([align-horizontal="right"][icon-position="bottom"]) {\n            align-items: flex-end;\n          }\n          :host([align-horizontal="left"]:not([icon-position]))\n            button[part="button"],\n          :host([align-horizontal="left"][icon-position="right"])\n            button[part="button"],\n          :host([align-vertical="top"][icon-position="top"])\n            button[part="button"],\n          :host([align-vertical="top"][icon-position="bottom"]) {\n            justify-content: flex-start;\n          }\n          :host([align-horizontal="right"]:not([icon-position]))\n            button[part="button"],\n          :host([align-horizontal="right"][icon-position="right"])\n            button[part="button"],\n          :host([align-vertical="bottom"][icon-position="top"])\n            button[part="button"],\n          :host([align-vertical="bottom"][icon-position="bottom"]) {\n            justify-content: flex-end;\n          }\n          :host([align-vertical="middle"]:not([icon-position]))\n            button[part="button"],\n          :host([align-vertical="middle"][icon-position="right"])\n            button[part="button"],\n          :host([align-horizontal="center"][icon-position="top"])\n            button[part="button"],\n          :host([align-horizontal="center"][icon-position="bottom"]) {\n            align-items: center;\n          }\n          :host([align-horizontal="center"]:not([icon-position]))\n            button[part="button"],\n          :host([align-horizontal="center"][icon-position="right"])\n            button[part="button"],\n          :host([align-vertical="middle"][icon-position="top"])\n            button[part="button"],\n          :host([align-vertical="middle"][icon-position="bottom"]) {\n            justify-content: center;\n          }\n        ',
+    '\n          :host {\n            font-family: sans-serif;\n            font-size: 13px;\n            flex: 0 1 auto;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n          }\n          button[part="button"] {\n            font-family: inherit;\n            font-size: inherit;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n            min-height: var(--simple-toolbar-button-height, 24px);\n            padding: var(--simple-toolbar-button-padding, 1px);\n            flex: var(--simple-toolbar-button-flex, 0 0 auto);\n            align-items: var(--simple-toolbar-button-align, center);\n            transition: all 0.5s;\n            justify-content: var(--simple-toolbar-button-justify, space-around);\n          }\n          button[part="button"],\n          :host([icon-position="right"]:not([align-vertical]))\n            button[part="button"] {\n            justify-content: space-evenly;\n          }\n\n          :host([icon-position="top"]) button[part="button"] {\n            flex-direction: column;\n          }\n          :host([icon-position="bottom"]) button[part="button"] {\n            flex-direction: column-reverse;\n          }\n          :host([icon-position="right"]) button[part="button"] {\n            flex-direction: row-reverse;\n          }\n          :host([align-vertical="top"]:not([icon-position]))\n            button[part="button"],\n          :host([align-vertical="top"][icon-position="right"])\n            button[part="button"],\n          :host([align-horizontal="left"][icon-position="top"])\n            button[part="button"],\n          :host([align-horizontal="left"][icon-position="bottom"])\n            button[part="button"] {\n            align-items: flex-start;\n          }\n          :host([align-vertical="bottom"]:not([icon-position]))\n            button[part="button"],\n          :host([align-vertical="bottom"][icon-position="right"])\n            button[part="button"],\n          :host([align-horizontal="right"][icon-position="top"])\n            button[part="button"],\n          :host([align-horizontal="right"][icon-position="bottom"]) {\n            align-items: flex-end;\n          }\n          :host([align-horizontal="left"]:not([icon-position]))\n            button[part="button"],\n          :host([align-horizontal="left"][icon-position="right"])\n            button[part="button"],\n          :host([align-vertical="top"][icon-position="top"])\n            button[part="button"],\n          :host([align-vertical="top"][icon-position="bottom"]) {\n            justify-content: flex-start;\n          }\n          :host([align-horizontal="right"]:not([icon-position]))\n            button[part="button"],\n          :host([align-horizontal="right"][icon-position="right"])\n            button[part="button"],\n          :host([align-vertical="bottom"][icon-position="top"])\n            button[part="button"],\n          :host([align-vertical="bottom"][icon-position="bottom"]) {\n            justify-content: flex-end;\n          }\n          :host([align-vertical="middle"]:not([icon-position]))\n            button[part="button"],\n          :host([align-vertical="middle"][icon-position="right"])\n            button[part="button"],\n          :host([align-horizontal="center"][icon-position="top"])\n            button[part="button"],\n          :host([align-horizontal="center"][icon-position="bottom"]) {\n            align-items: center;\n          }\n          :host([align-horizontal="center"]:not([icon-position]))\n            button[part="button"],\n          :host([align-horizontal="center"][icon-position="right"])\n            button[part="button"],\n          :host([align-vertical="middle"][icon-position="top"])\n            button[part="button"],\n          :host([align-vertical="middle"][icon-position="bottom"]) {\n            justify-content: center;\n          }\n        ',
   ]);
 
   _templateObject11 = function _templateObject11() {
@@ -84,7 +84,7 @@ function _templateObject11() {
 
 function _templateObject10() {
   var data = _taggedTemplateLiteral([
-    '\n          :host {\n            display: inline-flex;\n            white-space: nowrap;\n            transition: all 0.5s;\n            z-index: 1;\n          }\n          :host(:hover),\n          :host(:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100) !important;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          :host([disabled]){\n            pointer-events: none;\n          }\n          button[part="button"] {\n            display: flex;\n            margin: 0;\n            white-space: nowrap;\n            width: 100%;\n            height: 100%;\n          }\n        ',
+    '\n          :host {\n            display: inline-flex;\n            white-space: nowrap;\n            transition: all 0.5s;\n            z-index: 1;\n          }\n          :host(:hover),\n          :host(:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100) !important;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          button[part="button"] {\n            display: flex;\n            margin: 0;\n            white-space: nowrap;\n            width: 100%;\n            height: 100%;\n          }\n        ',
   ]);
 
   _templateObject10 = function _templateObject10() {
@@ -858,18 +858,6 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
               );
             },
             /**
-             * label is offscreen (screenreader-only)
-             *
-             * @readonly
-             * @memberof SimpleToolbarButton
-             */
-          },
-          {
-            key: "labelStyle",
-            get: function get() {
-              return this.labelVisible ? "" : "offscreen";
-            },
-            /**
              * determines if button is toggled
              *
              * @readonly
@@ -956,7 +944,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                 ? ""
                 : (0, _litElement.html)(
                     _templateObject3(),
-                    this.labelStyle || "",
+                    this.labelVisible ? "" : "offscreen",
                     this.currentLabel
                   );
             },
@@ -1049,7 +1037,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
              */
           },
           {
-            key: "functionalStyles",
+            key: "simpleButtonCoreStyles",
             get: function get() {
               return [(0, _litElement.css)(_templateObject10())];
             },
@@ -1061,7 +1049,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
              */
           },
           {
-            key: "layoutStyles",
+            key: "simpleButtonLayoutStyles",
             get: function get() {
               return [(0, _litElement.css)(_templateObject11())];
             },
@@ -1073,7 +1061,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
              */
           },
           {
-            key: "thmeingStyles",
+            key: "simpleButtonThemeStyles",
             get: function get() {
               return [(0, _litElement.css)(_templateObject12())];
             },
@@ -1091,9 +1079,9 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                 _toConsumableArray(this.iconStyles),
                 _toConsumableArray(this.labelStyles),
                 _toConsumableArray(this.tooltipStyles),
-                _toConsumableArray(this.functionalStyles),
-                _toConsumableArray(this.layoutStyles),
-                _toConsumableArray(this.thmeingStyles)
+                _toConsumableArray(this.simpleButtonCoreStyles),
+                _toConsumableArray(this.simpleButtonLayoutStyles),
+                _toConsumableArray(this.simpleButtonThemeStyles)
               );
             },
           },

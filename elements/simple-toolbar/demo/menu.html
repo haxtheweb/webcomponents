@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleToolbar: simple-toolbar Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/simple-toolbar-menu.js';
+      import '../lib/simple-toolbar-menu-item.js';
+      import '../lib/simple-toolbar-button.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-toolbar-button demo</h3>
+      <demo-snippet>
+        <template>
+          <simple-toolbar-menu icon="editor:format-italic" label="Italics" show-text-label align-horizontal="left">
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button role="menuitem" icon="save" label="Save" show-text-label align-horizontal="left"></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button role="menuitem" icon="star" label="Favorite" show-text-label align-horizontal="left"></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button role="menuitem"label="Cancel" tooltip="Cancel without saving." align-horizontal="left"></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button role="menuitem" icon="redo" label="Redo"show-text-label align-horizontal="left"></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button role="menuitem" icon="undo" label="Undo" show-text-label align-horizontal="left"></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button role="menuitem" icon="editor:format-italic" label="Italics" show-text-label align-horizontal="left"></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+          </simple-toolbar-menu>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
