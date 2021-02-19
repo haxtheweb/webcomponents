@@ -7,6 +7,8 @@ exports.HaxContextContainer = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
+var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -39,7 +41,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          padding: 0;\n          position: absolute;\n          visibility: hidden;\n          opacity: 0;\n          z-index: 1000;\n          display: block;\n          transition: 0.2s opacity ease-in-out;\n          width: 100%;\n          top: var(--hax-context-container-top, 0px);\n        }\n        :host([menus-visible]) {\n          position: absolute;\n          visibility: visible;\n          opacity: 1;\n        }\n        :host([menu-sticky]) {\n          position: fixed;\n          top: 0;\n          left: var(--hax-context-container-left, 0px);\n          max-width: var(--hax-context-container-width, 100%);\n        }\n        #inner {\n          width: 100%;\n          position: absolute;\n          bottom: 0;\n          display: flex;\n          align-items: flex-end;\n          justify-content: space-between;\n          top: unset;\n        }\n        :host([below]) #inner {\n          bottom: unset;\n          top: 0;\n        }\n        :host([menu-sticky]) #inner {\n          bottom: unset;\n          top: var(--hax-context-container-target-top, 0px);\n        }\n        :host([below]) ::slotted(*) {\n          --simple-toolbar-button-padding: var(\n            --hax-tray-margin, 4px\n          );\n        }\n      ",
+    "\n        :host {\n          padding: 0;\n          position: absolute;\n          visibility: hidden;\n          opacity: 0;\n          z-index: 1000;\n          display: block;\n          transition: 0.2s opacity ease-in-out;\n          width: 100%;\n          top: var(--hax-context-container-top, 0px);\n        }\n        :host([menus-visible]) {\n          position: absolute;\n          visibility: visible;\n          opacity: 1;\n        }\n        :host([menu-sticky]) {\n          position: fixed;\n          top: 0;\n          left: var(--hax-context-container-left, 0px);\n          max-width: var(--hax-context-container-width, 100%);\n        }\n        #inner {\n          width: 100%;\n          position: absolute;\n          bottom: 0;\n          display: flex;\n          align-items: flex-end;\n          justify-content: space-between;\n          top: unset;\n        }\n        :host([below]) #inner {\n          bottom: unset;\n          top: 0;\n        }\n        :host([menu-sticky]) #inner {\n          bottom: unset;\n          top: var(--hax-context-container-target-top, 0px);\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -56,6 +58,33 @@ function _taggedTemplateLiteral(strings, raw) {
   return Object.freeze(
     Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
   );
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -146,7 +175,9 @@ var HaxContextContainer =
          * LitElement constructable styles enhancement
          */
         get: function get() {
-          return [(0, _litElement.css)(_templateObject())];
+          return [].concat(_toConsumableArray(_haxUiStyles.HaxTrayBaseStyles), [
+            (0, _litElement.css)(_templateObject()),
+          ]);
         },
       },
     ]);

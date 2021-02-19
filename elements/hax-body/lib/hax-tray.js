@@ -309,17 +309,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       </div>
     `;
   }
-  get toolbarsTemplate() {
-    return html`${this.opsToolbarTemplate}${this.trayToolbarTemplate}`;
-  }
-  get gridTemplate() {
-    return html`<simple-button-grid id="tray-grid" columns="4" rows="3">
-      ${this.saveButtons}${this.doButtons} ${this.sourceButton}
-      ${this.settingsButton}
-      <slot name="tray-buttons-pre"></slot>
-      ${this.contentButtons} ${this.mapButton}
-    </simple-button-grid>`;
-  }
   get panelOpsTemplate() {
     return this.hidePanelOps
       ? ``
@@ -336,6 +325,17 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             label="${this.__tipText}"
           ></hax-tray-button>
         `;
+  }
+  get toolbarsTemplate() {
+    return html`${this.opsToolbarTemplate}${this.trayToolbarTemplate}`;
+  }
+  get gridTemplate() {
+    return html`<simple-button-grid id="tray-grid" columns="4" rows="3">
+      ${this.saveButtons}${this.doButtons} ${this.sourceButton}
+      ${this.settingsButton}
+      <slot name="tray-buttons-pre"></slot>
+      ${this.contentButtons} ${this.mapButton}
+    </simple-button-grid>`;
   }
   get menuButtons() {
     return html`

@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { HaxTrayBaseStyles } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 /**
  *
  * @customElement
@@ -13,6 +14,7 @@ class HaxContextContainer extends LitElement {
    */
   static get styles() {
     return [
+      ...HaxTrayBaseStyles,
       css`
         :host {
           padding: 0;
@@ -52,9 +54,6 @@ class HaxContextContainer extends LitElement {
         :host([menu-sticky]) #inner {
           bottom: unset;
           top: var(--hax-context-container-target-top, 0px);
-        }
-        :host([below]) ::slotted(*) {
-          --simple-toolbar-button-padding: var(--hax-tray-margin, 4px);
         }
       `,
     ];

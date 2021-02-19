@@ -312,10 +312,13 @@ function _templateObject5() {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    '\n          <hax-tray-button\n            large\n            voice-command="edit page"\n            .data-opened="',
-    '"\n            @click="',
-    '"\n            icon="create"\n            id="button"\n            feature\n            show-text-label\n            label="',
-    '"\n          ></hax-tray-button>\n        ',
+    '<simple-button-grid id="tray-grid" columns="4" rows="3">\n      ',
+    "",
+    " ",
+    "\n      ",
+    '\n      <slot name="tray-buttons-pre"></slot>\n      ',
+    " ",
+    "\n    </simple-button-grid>",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -326,15 +329,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral([
-    '<simple-button-grid id="tray-grid" columns="4" rows="3">\n      ',
-    "",
-    " ",
-    "\n      ",
-    '\n      <slot name="tray-buttons-pre"></slot>\n      ',
-    " ",
-    "\n    </simple-button-grid>",
-  ]);
+  var data = _taggedTemplateLiteral(["", "", ""]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -344,7 +339,12 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["", "", ""]);
+  var data = _taggedTemplateLiteral([
+    '\n          <hax-tray-button\n            large\n            voice-command="edit page"\n            .data-opened="',
+    '"\n            @click="',
+    '"\n            icon="create"\n            id="button"\n            feature\n            show-text-label\n            label="',
+    '"\n          ></hax-tray-button>\n        ',
+  ]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -1692,10 +1692,23 @@ var HaxTray =
           },
         },
         {
+          key: "panelOpsTemplate",
+          get: function get() {
+            return this.hidePanelOps
+              ? ""
+              : (0, _litElement.html)(
+                  _templateObject2(),
+                  this.editMode,
+                  this._clickEditButton,
+                  this.__tipText
+                );
+          },
+        },
+        {
           key: "toolbarsTemplate",
           get: function get() {
             return (0, _litElement.html)(
-              _templateObject2(),
+              _templateObject3(),
               this.opsToolbarTemplate,
               this.trayToolbarTemplate
             );
@@ -1705,7 +1718,7 @@ var HaxTray =
           key: "gridTemplate",
           get: function get() {
             return (0, _litElement.html)(
-              _templateObject3(),
+              _templateObject4(),
               this.saveButtons,
               this.doButtons,
               this.sourceButton,
@@ -1713,19 +1726,6 @@ var HaxTray =
               this.contentButtons,
               this.mapButton
             );
-          },
-        },
-        {
-          key: "panelOpsTemplate",
-          get: function get() {
-            return this.hidePanelOps
-              ? ""
-              : (0, _litElement.html)(
-                  _templateObject4(),
-                  this.editMode,
-                  this._clickEditButton,
-                  this.__tipText
-                );
           },
         },
         {
