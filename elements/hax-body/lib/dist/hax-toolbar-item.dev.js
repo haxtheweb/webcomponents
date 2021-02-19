@@ -9,11 +9,7 @@ var _litElement = require("lit-element/lit-element.js");
 
 var _simpleToolbarButton = require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js");
 
-require("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-
-require("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
-
-require("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
+var _haxUiStyles = require("./hax-ui-styles.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -31,45 +27,6 @@ function _typeof(obj) {
     };
   }
   return _typeof(obj);
-}
-
-function _templateObject4() {
-  var data = _taggedTemplateLiteral([
-    "\n          :host {\n            text-transform: capitalize;\n          }\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          :host([danger]) {\n            --simple-toolbar-button-hover-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n            --simple-toolbar-button-hover-border-color: var(\n              --hax-toolbar-button-danger-color,\n              #882222\n            );\n          }\n          :host([feature]) {\n            --simple-toolbar-button-bg: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-hover-bg: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-border-color: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-hover-border-color: var(\n              --hax-toolbar-button-feature-color,\n              #009dc7\n            );\n            --simple-toolbar-button-color: var(\n              --hax-toolbar-button-bg,\n              var(--hax-tray-background-color, #fff)\n            );\n            --simple-toolbar-button-hover-color: var(\n              --hax-toolbar-button-bg,\n              var(--hax-tray-background-color, #fff)\n            );\n          }\n          ::part(label) {\n            margin: var(--hax-tray-margin, 4px);\n          }\n        ",
-  ]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _toConsumableArray(arr) {
-  return (
-    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
-  );
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (
-    Symbol.iterator in Object(iter) ||
-    Object.prototype.toString.call(iter) === "[object Arguments]"
-  )
-    return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  }
 }
 
 function _templateObject3() {
@@ -390,13 +347,18 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
             },
           },
           {
-            key: "styles",
+            key: "simpleButtonThemeStyles",
             get: function get() {
-              return [].concat(
-                _toConsumableArray(
-                  _get(_getPrototypeOf(_class), "styles", this)
-                ),
-                [(0, _litElement.css)(_templateObject4())]
+              return _haxUiStyles.HaxTrayButtonTheme;
+            },
+          },
+          {
+            key: "simpleButtonCoreStyles",
+            get: function get() {
+              return _get(
+                _getPrototypeOf(_class),
+                "simpleButtonCoreStyles",
+                this
               );
             },
           },

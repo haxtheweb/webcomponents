@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HAXStore } from "./hax-store.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu-item.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { HaxToolbarBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { wipeSlot } from "@lrnwebcomponents/utils/utils";
 /**
@@ -70,7 +70,7 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
           @click="${(e) => (this.viewSource = !this.viewSource)}"
         ></hax-context-item>
         <hax-toolbar-menu icon="add" label="Insert item above or below">
-          <hax-toolbar-menu-item slot="menuitem">
+          <simple-toolbar-menu-item slot="menuitem">
             <hax-context-item
               action
               show-text-label
@@ -79,8 +79,8 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
               event-name="insert-above-active"
               label="Insert item above"
             ></hax-context-item>
-          </hax-toolbar-menu-item>
-          <hax-toolbar-menu-item slot="menuitem">
+          </simple-toolbar-menu-item>
+          <simple-toolbar-menu-item slot="menuitem">
             <hax-context-item
               action
               show-text-label
@@ -89,7 +89,7 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
               event-name="insert-below-active"
               label="Insert item below"
             ></hax-context-item>
-          </hax-toolbar-menu-item>
+          </simple-toolbar-menu-item>
         </hax-toolbar-menu>
         <slot name="secondary"></slot>
         <slot name="more"></slot>

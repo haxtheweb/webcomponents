@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu-item.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { SimpleToolbarBehaviors } from "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
 
 const HaxToolbarBehaviors = function (SuperClass) {

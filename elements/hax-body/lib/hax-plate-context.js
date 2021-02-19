@@ -1,9 +1,9 @@
 import { LitElement, css, html } from "lit-element/lit-element.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 import { HaxToolbarBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar-menu.js";
-import "./hax-toolbar-menu-item.js";
 import "./hax-context-item.js";
 import { autorun, toJS } from "mobx";
 /**
@@ -55,7 +55,7 @@ class HaxPlateContext extends SimpleTourFinder(
           data-simple-tour-stop
           data-stop-title="label"
         >
-          <hax-toolbar-menu-item slot="menuitem">
+          <simple-toolbar-menu-item slot="menuitem">
             <hax-context-item
               action
               ?disabled="${this.hasActiveEditingElement}"
@@ -65,8 +65,8 @@ class HaxPlateContext extends SimpleTourFinder(
               label="Move up"
               event-name="hax-plate-up"
             ></hax-context-item>
-          </hax-toolbar-menu-item>
-          <hax-toolbar-menu-item slot="menuitem">
+          </simple-toolbar-menu-item>
+          <simple-toolbar-menu-item slot="menuitem">
             <hax-context-item
               action
               ?disabled="${this.hasActiveEditingElement}"
@@ -76,7 +76,7 @@ class HaxPlateContext extends SimpleTourFinder(
               label="Move down"
               event-name="hax-plate-down"
             ></hax-context-item>
-          </hax-toolbar-menu-item>
+          </simple-toolbar-menu-item>
           <div slot="tour" data-stop-content>
             Click the drag handle once to show a menu to just move up or down
             one item in the content OR click and drag to place the item exactly
@@ -141,7 +141,7 @@ class HaxPlateContext extends SimpleTourFinder(
           data-simple-tour-stop
           data-stop-title="label"
         >
-          <hax-toolbar-menu-item slot="menuitem">
+          <simple-toolbar-menu-item slot="menuitem">
             <hax-context-item
               action
               danger
@@ -152,7 +152,7 @@ class HaxPlateContext extends SimpleTourFinder(
               label="Confirm Delete"
               event-name="hax-plate-delete"
             ></hax-context-item>
-          </hax-toolbar-menu-item>
+          </simple-toolbar-menu-item>
           <div slot="tour" data-stop-content>
             Delete the current item. You can always use the undo arrow to bring
             this back.

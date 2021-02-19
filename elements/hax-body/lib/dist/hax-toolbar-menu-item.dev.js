@@ -7,9 +7,7 @@ exports.HaxToolbarMenuItem = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-require("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-
-var _a11yMenuButtonItem = require("@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-item.js");
+var _simpleToolbarMenuItem = require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -31,7 +29,7 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          --simple-toolbar-button-min-width: 100% !important;\n          --simple-toolbar-button-border-color: var(\n            --hax-toolbar-button-bg,\n            #fff\n          ) !important;\n          --simple-toolbar-button-hover-bg: var(\n            --hax-toolbar-menu-button-hover-bg,\n            #c4ecff\n          );\n          --simple-toolbar-button-border-radius: var(\n            --hax-toolbar-menu-button-border-radius,\n            0\n          );\n        }\n        :host ::slotted([danger]) {\n          --simple-toolbar-button-hover-bg: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --simple-toolbar-button-hover-color: var(\n            --hax-toolbar-button-bg,\n            #fff\n          );\n          z-index: 1001;\n        }\n        ::slotted(*) {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-label-white-space: nowrap;\n          --simple-toolbar-button-padding: 0 var(--hax-tray-margin, 4px);\n        }\n      ",
+    "\n        ::slotted(*) {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-label-white-space: nowrap;\n          --simple-toolbar-button-padding: 0 var(--hax-tray-margin, 4px);\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -194,8 +192,8 @@ function _setPrototypeOf(o, p) {
  */
 var HaxToolbarMenuItem =
   /*#__PURE__*/
-  (function (_A11yMenuButtonItemBe) {
-    _inherits(HaxToolbarMenuItem, _A11yMenuButtonItemBe);
+  (function (_SimpleToolbarMenuIte) {
+    _inherits(HaxToolbarMenuItem, _SimpleToolbarMenuIte);
 
     function HaxToolbarMenuItem() {
       _classCallCheck(this, HaxToolbarMenuItem);
@@ -251,7 +249,9 @@ var HaxToolbarMenuItem =
 
     return HaxToolbarMenuItem;
   })(
-    (0, _a11yMenuButtonItem.A11yMenuButtonItemBehaviors)(_litElement.LitElement)
+    (0, _simpleToolbarMenuItem.SimpleToolbarMenuItemBehaviors)(
+      _litElement.LitElement
+    )
   );
 
 exports.HaxToolbarMenuItem = HaxToolbarMenuItem;

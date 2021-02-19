@@ -1,8 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import { HaxTrayButtonTheme } from "./hax-ui-styles.js";
 
 const HaxToolbarItemBehaviors = function (SuperClass) {
   return class extends SimpleToolbarButtonBehaviors(SuperClass) {
@@ -119,57 +117,13 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
         >${this.currentTooltip || this.currentLabel}</simple-tooltip
       >`;
     }
-    static get styles() {
-      return [
-        ...super.styles,
-        css`
-          :host {
-            text-transform: capitalize;
-          }
-          :host([disabled]) {
-            pointer-events: none;
-          }
-          :host([danger]) {
-            --simple-toolbar-button-hover-color: var(
-              --hax-toolbar-button-danger-color,
-              #882222
-            );
-            --simple-toolbar-button-hover-border-color: var(
-              --hax-toolbar-button-danger-color,
-              #882222
-            );
-          }
-          :host([feature]) {
-            --simple-toolbar-button-bg: var(
-              --hax-toolbar-button-feature-color,
-              #009dc7
-            );
-            --simple-toolbar-button-hover-bg: var(
-              --hax-toolbar-button-feature-color,
-              #009dc7
-            );
-            --simple-toolbar-button-border-color: var(
-              --hax-toolbar-button-feature-color,
-              #009dc7
-            );
-            --simple-toolbar-button-hover-border-color: var(
-              --hax-toolbar-button-feature-color,
-              #009dc7
-            );
-            --simple-toolbar-button-color: var(
-              --hax-toolbar-button-bg,
-              var(--hax-tray-background-color, #fff)
-            );
-            --simple-toolbar-button-hover-color: var(
-              --hax-toolbar-button-bg,
-              var(--hax-tray-background-color, #fff)
-            );
-          }
-          ::part(label) {
-            margin: var(--hax-tray-margin, 4px);
-          }
-        `,
-      ];
+
+    static get simpleButtonThemeStyles() {
+      return HaxTrayButtonTheme;
+    }
+
+    static get simpleButtonCoreStyles() {
+      return super.simpleButtonCoreStyles;
     }
     _handleClick(e) {}
     _handleKeys(e) {}

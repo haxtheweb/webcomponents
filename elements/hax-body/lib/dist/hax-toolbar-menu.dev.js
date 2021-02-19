@@ -9,6 +9,8 @@ var _litElement = require("lit-element/lit-element.js");
 
 var _simpleToolbarMenu = require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js");
 
+var _haxUiStyles = require("./hax-ui-styles.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -74,6 +76,18 @@ function _defineProperty(obj, key, value) {
     obj[key] = value;
   }
   return obj;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([
+    "\n        ::slotted(*) {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-label-white-space: nowrap;\n          --simple-toolbar-button-padding: 0 var(--hax-tray-margin, 4px);\n        }\n      ",
+  ]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
 }
 
 function _templateObject() {
@@ -275,6 +289,27 @@ var HaxToolbarMenu =
         },
       ],
       [
+        {
+          key: "simpleButtonThemeStyles",
+          get: function get() {
+            return _haxUiStyles.HaxTrayButtonTheme;
+          },
+        },
+        {
+          key: "simpleButtonCoreStyles",
+          get: function get() {
+            return [].concat(
+              _toConsumableArray(
+                _get(
+                  _getPrototypeOf(HaxToolbarMenu),
+                  "simpleButtonCoreStyles",
+                  this
+                )
+              ),
+              [(0, _litElement.css)(_templateObject2())]
+            );
+          },
+        },
         {
           key: "tag",
           get: function get() {

@@ -69,6 +69,31 @@ export const HaxTrayColors = [
   `,
 ];
 
+export const HaxTrayButtonTheme = [
+  css`
+    :host {
+      text-transform: capitalize;
+    }
+    button[part="button"] {
+      color: var(--hax-tray-color-secondary);
+      background-color: var(--hax-tray-background-color-secondary);
+      border-color: transparent;
+    }
+    button[part="button"][aria-ressed="true"] {
+      color: var(--hax-tray-color);
+      background-color: var(--hax-tray-accent-color-contrast);
+    }
+    :host(:hover) button[part="button"],
+    :host(:focus-within) button[part="button"] {
+      color: var(--hax-tray-accent-color);
+      border-color: var(--hax-tray-accent-color);
+    }
+    ::part(label) {
+      margin: var(--hax-tray-margin, 4px);
+    }
+  `,
+];
+
 export const HaxTrayHexagon = [
   css`
     hexagon-loader {
