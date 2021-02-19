@@ -294,7 +294,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
   }
   render() {
     return html`
-      <div class="header-wrapper">
+      <header class="header-wrapper">
         <div>
           <site-modal
             @site-modal-click="${this.siteModalClick}"
@@ -327,7 +327,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             style="height:46px;width:100%;margin: 4px 0 2px 0;"
           />
         </div>
-      </div>
+      </header>
       <div class="wrapper">
         <iron-pages .selected="${this.selectedPage}">
           <div id="home">
@@ -411,17 +411,17 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
               )}
             </div>
           </div>
-          <div class="contentcontainer-wrapper">
-            <div id="contentcontainer">
+          <main class="contentcontainer-wrapper">
+            <article id="contentcontainer">
               <site-git-corner position="right"></site-git-corner>
               <site-active-title></site-active-title>
               <h3 class="subtitle" .hidden="${!this.subtitle}">
                 ${this.subtitle}
               </h3>
-              <div id="slot">
+              <section id="slot">
                 <slot></slot>
-              </div>
-            </div>
+              </section>
+            </article>
             <site-query
               @result-changed="${this.__followUpPostsChanged}"
               limit="3"
@@ -462,7 +462,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                 `
               )}
             </div>
-            <div class="social-float hide-small ${this.stateClass}">
+            <nav class="social-float hide-small ${this.stateClass}">
               <ul>
                 <li>
                   <social-share-link
@@ -509,8 +509,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                   </social-share-link>
                 </li>
               </ul>
-            </div>
-            <div class="annoy-user ${this.stateClass}">
+            </nav>
+            <footer class="annoy-user ${this.stateClass}">
               <div class="annoy-inner">
                 <simple-icon-lite
                   icon="${this.icon}"
@@ -529,8 +529,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                   alt="Share on social media"
                 ></site-share-widget>
               </div>
-            </div>
-          </div>
+            </footer>
+          </main>
         </iron-pages>
       </div>
     `;
