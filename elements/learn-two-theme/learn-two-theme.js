@@ -373,19 +373,19 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           @click="${this.toggleDrawer}"
           title="Toggle site menu"
         ></simple-icon-button>
-        <app-drawer
-          swipe-open
-          slot="drawer"
-          .opened="${this.opened}"
-          @opened="${this.__openedChanged}"
-        >
+          <app-drawer
+            swipe-open
+            slot="drawer"
+            .opened="${this.opened}"
+            @opened="${this.__openedChanged}"
+          >
           <simple-icon-button
             id="menubutton2"
             icon="menu"
             @click="${this.toggleDrawer}"
             title="Toggle site menu"
           ></simple-icon-button>
-          <div class="header-wrapper">
+          <header class="header-wrapper">
             <div class="header">
               <site-title ?disabled="${this.editMode}"></site-title>
               <site-modal
@@ -398,9 +398,11 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
                 <site-search></site-search>
               </site-modal>
             </div>
-          </div>
-          <site-menu></site-menu>
-          <div class="rss-buttons">
+          </header>
+          <nav>
+            <site-menu></site-menu>
+          </nav>
+          <footer class="rss-buttons">
             <site-rss-button
               ?disabled="${this.editMode}"
               type="atom"
@@ -413,19 +415,20 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
               ?disabled="${this.editMode}"
               position="top"
             ></site-print-button>
-          </div>
+          </footer>
         </app-drawer>
-        <div>
+        </nav>
+        <main>
           <site-menu-button type="prev"></site-menu-button>
-          <div id="contentcontainer">
+          <article id="contentcontainer">
             <site-git-corner></site-git-corner>
             <site-breadcrumb></site-breadcrumb>
-            <div id="slot">
+            <section id="slot">
               <slot></slot>
-            </div>
-          </div>
+            </section>
+          </article>
           <site-menu-button type="next"></site-menu-button>
-        </div>
+        </main>
       </app-drawer-layout>`;
   }
 
