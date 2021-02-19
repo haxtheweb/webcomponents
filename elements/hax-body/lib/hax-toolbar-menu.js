@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import { A11yMenuButtonBehaviors } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
+import { SimpleToolbarMenuBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
 /**
  * `hax-toolbar-menu`
  * `An icon / button that has support for multiple options via drop down.`
@@ -9,11 +8,11 @@ import { A11yMenuButtonBehaviors } from "@lrnwebcomponents/a11y-menu-button/a11y
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.
  *
- * @extends A11yMenuButtonBehaviors
+ * @extends SimpleToolbarMenuBehaviors
  * @element hax-toolbar-menu
  *
  */
-class HaxToolbarMenu extends A11yMenuButtonBehaviors(LitElement) {
+class HaxToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */

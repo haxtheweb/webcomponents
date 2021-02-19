@@ -7,9 +7,7 @@ exports.HaxToolbarMenu = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-require("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-
-var _a11yMenuButton = require("@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js");
+var _simpleToolbarMenu = require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -255,14 +253,14 @@ function _getPrototypeOf(o) {
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.
  *
- * @extends A11yMenuButtonBehaviors
+ * @extends SimpleToolbarMenuBehaviors
  * @element hax-toolbar-menu
  *
  */
 var HaxToolbarMenu =
   /*#__PURE__*/
-  (function (_A11yMenuButtonBehavi) {
-    _inherits(HaxToolbarMenu, _A11yMenuButtonBehavi);
+  (function (_SimpleToolbarMenuBeh) {
+    _inherits(HaxToolbarMenu, _SimpleToolbarMenuBeh);
 
     _createClass(HaxToolbarMenu, null, [
       {
@@ -412,7 +410,9 @@ var HaxToolbarMenu =
     );
 
     return HaxToolbarMenu;
-  })((0, _a11yMenuButton.A11yMenuButtonBehaviors)(_litElement.LitElement));
+  })(
+    (0, _simpleToolbarMenu.SimpleToolbarMenuBehaviors)(_litElement.LitElement)
+  );
 
 exports.HaxToolbarMenu = HaxToolbarMenu;
 window.customElements.define(HaxToolbarMenu.tag, HaxToolbarMenu);

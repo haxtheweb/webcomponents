@@ -14,9 +14,15 @@ import {
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
+import {
+  HaxTrayBaseStyles,
+  HaxTrayDetail,
+} from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
+import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 import "./hax-tray-upload.js";
 import "./hax-gizmo-browser.js";
 import "./hax-app-browser.js";
@@ -25,7 +31,6 @@ import "./hax-map.js";
 import "./hax-preferences-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu-item.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -106,48 +111,25 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   static get styles() {
     return [
       ...(super.styles || []),
+      ...HaxTrayBaseStyles,
+      ...HaxTrayDetail,
       css`
         :host {
-          font-family: var(--hax-tray-font-family, sans-serif);
           display: block;
           z-index: 100000000;
           position: absolute;
           transition: 0.2s all ease-in-out;
           height: 100vh;
           overflow: auto;
-          font-size: var(--hax-tray-font-size, 16px);
-          color: var(--hax-tray-text-color, #000);
-          --simple-fields-font-family: var(--hax-tray-font-family, sans-serif);
-          --simple-fields-error-color: var(--hax-tray-secondary-danger-color, #dd2c00);
-          --simple-fields-color: var(--hax-tray-text-color, #000);
-          --simple-fields-background-color: var(--hax-tray-background-color, #fff);
-          --simple-fields-secondary-accent-color: var(--hax-tray-secondary-accent-color, #ddd);
-          --simple-fields-border-color: var(--hax-tray-secondary-accent-color, #ddd);
-          --hax-toolbar-button-bg: #fff;
-          --hax-toolbar-button-danger-color: #882222;
-          --hax-toolbar-button-feature-color: #009dc7;
-          --hax-toolbar-button-color: #444;
-          --simple-fields-margin: var(--hax-tray-margin, 4px);
-          --simple-fields-field-margin: calc(2 * var(--hax-tray-font-size, 16px));
-          --simple-fields-font-size: var(--hax-tray-font-size, 16px);
-          --simple-fields-line-height: 135%;
-          --simple-fields-detail-font-size: var(--hax-tray-font-size-sm, 12px);
-          --simple-fields-detail-line-height: 120%;
-          --simple-fields-meta-font-size: var(--hax-tray-font-size-xs, 11px);
-          --simple-fields-meta-line-height: 120%;
-          --simple-toolbar-button-color: var(--hax-toolbar-button-color, #000);
-          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
-          --simple-toolbar-button-hover-bg: var( --hax-toolbar-button-hover-bg, #fff);
-          --simple-toolbar-button-toggled-bg: var( --hax-toolbar-button-toggled-bg, #fff);
-          --hax-tray-font-size-xl: calc(1.15 * var(--hax-tray-font-size, 16px));
-          --hax-tray-font-size-lg: calc(1.05 * var(--hax-tray-font-size, 16px));
+          font-family: var(--hax-tray-font-family);
+          font-size: var(--hax-tray-font-size);
+          color: var(--hax-tray-color);
         }
         .wrapper {
           position: fixed;
           top: 0;
-          background-color: var(--hax-tray-background-color, #fff);
-          width: var(--hax-tray-width, 300px);
-          --hax-tray-accent-color: #000;
+          background-color: var(--hax-tray-background-color);
+          width: var(--hax-tray-width);
           transition: 0.2s all ease-in-out;
           opacity: 0;
           visibility: hidden;
@@ -184,17 +166,16 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
         #tray-detail {
           flex: 1 1 auto;
-          transition: height 0.6s linear;
-          border: 1px solid var(--hax-border-color, #ddd);
-          border-top: 3px solid var(--hax-tray-accent-color,
-            #000
-          );
-          max-width: calc(var(--hax-tray-width, 300px) - 2 * var(--hax-tray-margin, 4px));
           overflow-y: auto;
-          padding: 0 var(--hax-tray-margin, 4px) var(--hax-tray-margin, 4px);
-          --simple-fields-accent-color: var(--hax-tray-accent-color, #000);
-          transition: 0.2s all ease-in-out;
           max-height: 100vh;
+          border: 1px solid var(--hax-tray-border-color);
+          border-top: 3px solid var(--hax-tray-accent-color);
+          max-width: calc(
+            var(--hax-tray-width) - 2 * var(--hax-tray-spacing-xs)
+          );
+          padding: 0 var(--hax-tray-spacing-xs) var(--hax-tray-spacing-xs);
+          transition: height 0.6s linear, top 0.6s linear,
+            0.2s border ease-in-out;
         }
         :host([edit-mode][collapsed]) #tray-detail {
           position: absolute;
@@ -202,123 +183,43 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           left: unset !important;
           right: unset !important;
         }
-        #tray-detail[hidden]{
+        #tray-detail[hidden] {
           height: 0px;
           transition: height 0.6s linear;
         }
-        #content-add,
-        #tray-detail[selected-detail=content-add] {
-          --hax-tray-accent-color: var(
-            --simple-colors-default-theme-purple-8,
-            #8a009b
-          );
-          --hax-tray-secondary-accent-color: var(
-            --simple-colors-default-theme-purple-4,
-            #f07cff
-          );
-        }
-        #content-edit,
-        #tray-detail[selected-detail=content-edit] {
-          --hax-tray-accent-color: var(
-            --simple-colors-default-theme-pink-8,
-            #b80042
-          );
-          --hax-tray-secondary-accent-color: var(
-            --simple-colors-default-theme-pink-4,
-            #ff73b5
-          );
-        }
-        #media-add,
-        #tray-detail[selected-detail=media-add] {
-          --hax-tray-accent-color: var(
-            --simple-colors-default-theme-indigo-8,
-            #2801b0
-          );
-          --hax-tray-secondary-accent-color: var(
-            --simple-colors-default-theme-indigo-4,
-            #9e82ff
-          );
-        }
-        #content-map,
-        #tray-detail[selected-detail=content-map] {
-          --hax-tray-accent-color: var(
-            --simple-colors-default-theme-light-blue-8,
-            #007999
-          );
-          --hax-tray-secondary-accent-color: var(
-            --simple-colors-default-theme-light-blue-4,
-            #65b3ff
-          );
-        }
-        #advanced-settings,
-        #tray-detail[selected-detail=advanced-settings] {
-          --hax-tray-accent-color: var(
-            --simple-colors-default-theme-green-8,
-            #00762e
-          );
-          --hax-tray-secondary-accent-color: var(
-            --simple-colors-default-theme-green-4,
-            #49ff88
-          );
-        }
-        #tray-detail h4 {
-          font-size: var(--hax-tray-font-size-xl, calc(1.15 * var(--hax-tray-font-size, 16px)));
-        }
-        #tray-detail h5 {
-          font-size: var(--hax-tray-font-size-lg, calc(1.05 * var(--hax-tray-font-size, 16px)));
-        }
-        #tray-detail h4,
-        #tray-detail h5,
-        #tray-detail h6 {
-          text-transform: capitalize;
-          color: var(--hax-tray-accent-color,
-            #000
-          );
-          margin: calc(2 * var(--hax-tray-margin, 4px)) 0 var(--hax-tray-margin, 4px);
-        }
-        #content-add,
-        #content-edit,
-        #media-add,
-        #content-map,
-        #advanced-settings {
-          --simple-toolbar-button-hover-color: var(--hax-tray-accent-color,#000);
-          --simple-toolbar-button-hover-border-color: var(--hax-tray-accent-color,#000);
-          --simple-toolbar-button-hover-toggled-border-color: var(--hax-tray-accent-color,#000);
-          --simple-toolbar-button-toggled-color: var(--hax-tray-accent-color,#000);
-          --simple-fields-accent-color: : var(--hax-tray-accent-color,#000);
-        }
         hax-toolbar {
           flex: 0 0 auto;
-          border: 1px solid var(--hax-border-color, #ddd);
           border-bottom: none;
-          background-color: var(--hax-tray-background-color, #fff);
           display: flex;
-          width: var(--hax-tray-width, 300px);
+          border: 1px solid var(--hax-tray-border-color);
+          border-bottom: none;
+          background-color: var(--hax-tray-background-color);
+          width: var(--hax-tray-width);
           transition: all 0.5ms ease-in-out;
         }
         :host([edit-mode][collapsed]) hax-toolbar.tray-detail-ops {
-          border-bottom: 1px solid var(--hax-border-color, #ddd);
+          border-bottom: 1px solid var(--hax-tray-border-color);
         }
-        .group { 
-          margin: 0; 
+        .group {
+          margin: 0;
           padding: 0;
           justify-content: space-around;
-          border-right: 1px solid var(--hax-border-color, #ddd);
+          border: 1px solid var(--hax-tray-border-color);
           flex: 0 0 auto;
         }
-        #menugroup, 
+        #savegroup,
+        #haxsavebutton,
+        #menugroup,
         #menugroup > *,
         #contentgroup,
-        #content-edit {
+        #contentgroup > * {
           flex: 1 1 auto;
+        }
+        #menugroup > * {
           align-items: flex-start;
         }
-        #content-edit {
-          --simple-toolbar-button-justify: flex-start;
-          --simple-toolbar-button-padding: 0 var(--hax-tray-margin, 4px);
-        }
-        .collapse-menu {
-          z-index: 2000;
+        #contentgroup > * {
+          --simple-toolbar-button-white-space: wrap;
         }
         hax-toolbar,
         hax-tray-button,
@@ -326,6 +227,19 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         hax-gizmo-browser {
           transition: 0.2s all ease-in-out;
           visibility: visible;
+        }
+        #tray-grid {
+          flex: 0 0 auto;
+          border: 1px solid var(--hax-tray-border-color);
+        }
+        #tray-grid hax-tray-button::part(button) {
+          border: 1px solid var(--hax-tray-border-color);
+        }
+        #tray-grid > hax-tray-button::part(button) {
+          --simple-toolbar-button-white-space: normal !important;
+        }
+        #tray-grid #haxsavebutton {
+          grid-column: 1 / 4;
         }
         hax-toolbar:not(:defined),
         hax-tray-button:not(:defined),
@@ -353,10 +267,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         #button {
           position: fixed;
           top: 0;
-          --simple-toolbar-button-padding: var(--hax-tray-margin, 4px);
           visibility: visible;
-          z-index: 1000;
-          margin: var(--hax-tray-margin, 4px);
+          margin: var(--hax-tray-spacing-xs);
         }
         :host([edit-mode]) #button {
           visibility: hidden;
@@ -392,16 +304,28 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     return html`
       ${this.panelOpsTemplate}
       <div class="wrapper" part="hax-tray-wrapper">
-        ${this.panelOpsTemplate} ${this.opsToolbarTemplate}
-        ${this.trayToolbarTemplate} ${this.trayDetailTemplate}
+        ${this.menuToolbarTemplate}
+        ${this.gridTemplate}${this.trayDetailTemplate}
       </div>
     `;
+  }
+  get toolbarsTemplate() {
+    return html`${this.opsToolbarTemplate}${this.trayToolbarTemplate}`;
+  }
+  get gridTemplate() {
+    return html`<simple-button-grid id="tray-grid" columns="4" rows="3">
+      ${this.saveButtons}${this.doButtons} ${this.sourceButton}
+      ${this.settingsButton}
+      <slot name="tray-buttons-pre"></slot>
+      ${this.contentButtons} ${this.mapButton}
+    </simple-button-grid>`;
   }
   get panelOpsTemplate() {
     return this.hidePanelOps
       ? ``
       : html`
           <hax-tray-button
+            large
             voice-command="edit page"
             .data-opened="${this.editMode}"
             @click="${this._clickEditButton}"
@@ -413,126 +337,67 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           ></hax-tray-button>
         `;
   }
-  get opsToolbarTemplate() {
-    return html` <hax-toolbar class="quick-buttons collapse-menu">
-      <div class="ops group">
-        ${this.hidePanelOps
-          ? ``
-          : html`
-              <hax-tray-button
-                feature
-                @click="${this._clickSaveButton}"
-                icon="save"
-                id="haxsavebutton"
-                label="${this.__tipText}"
-                event-name="save"
-                voice-command="save (content)(page)"
-                tooltip-direction="right"
-              ></hax-tray-button>
-            </div>
-            <div class="group">
-              <hax-tray-button
-                danger
-                icon="close"
-                id="haxcancelbutton"
-                label="Cancel"
-                event-name="cancel"
-                voice-command="cancel"
-                tooltip-direction="right"
-              ></hax-tray-button>
-              `}
-      </div>
-      <div id="savegroup" class="group">
-        <hax-tray-button
-          icon="icons:undo"
-          ?disabled="${!this.canUndo}"
-          label="Undo previous action"
-          event-name="undo"
-          voice-command="undo"
-          class="hide-small"
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <div slot="tour" data-stop-content>
-            Undo the previous operation in the content, whether typing or adding
-            a widget.
-          </div>
-        </hax-tray-button>
-        <hax-tray-button
-          icon="icons:redo"
-          ?disabled="${!this.canRedo}"
-          label="Redo previous action"
-          event-name="redo"
-          voice-command="redo"
-          class="hide-small"
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <div slot="tour" data-stop-content>
-            Redo the last action that you hit Undo on.
-          </div>
-        </hax-tray-button>
-      </div>
-      <slot name="tray-buttons-pre"></slot>
+  get menuButtons() {
+    return html`
+      <hax-toolbar-menu
+        ?disabled="${this.hasActiveEditingElement}"
+        id="drag"
+        action
+        icon="hax:arrow-all"
+        label="Move Menu"
+        draggable="true"
+        reset-on-select
+        data-simple-tour-stop
+        data-stop-title="Menu alignment"
+      >
+        <simple-toolbar-menu-item slot="menuitem">
+          <hax-tray-button
+            show-text-label
+            voice-command="toggle alignment"
+            id="toggle-element-align"
+            event-name="toggle-element-align"
+            icon="arrow-back"
+            text-align="left"
+            label="Move Menu Left"
+            ?disabled="${this.elementAlign == "right"}"
+            ?toggled="${this.elementAlign == "right"}"
+          >
+          </hax-tray-button>
+        </simple-toolbar-menu-item>
+        <simple-toolbar-menu-item slot="menuitem">
+          <hax-tray-button
+            show-text-label
+            voice-command="toggle alignment"
+            id="toggle-element-align"
+            event-name="toggle-element-align"
+            icon="arrow-forward"
+            label="Move Menu Right"
+            text-align="left"
+            ?disabled="${this.elementAlign == "left"}"
+            ?toggled="${this.elementAlign == "left"}"
+          >
+          </hax-tray-button>
+        </simple-toolbar-menu-item>
+        <div slot="tour" data-stop-title>Menu Position</div>
+        <div slot="tour" data-stop-content>
+          Change which side of the screen the menu is affixed to visually.
+        </div>
+      </hax-toolbar-menu>
       <div id="menugroup" class="group collapse-menu">
-        <hax-toolbar-menu
-          label="Menu Position"
-          icon="av:web"
-          direction="left"
-          show-text-label
-        >
-          <hax-toolbar-menu-item slot="menuitem">
-            <hax-tray-button
-              role="menuitem"
-              voice-command="toggle menu"
-              id="toggle-tray-size"
-              event-name="toggle-tray-size"
-              show-text-label
-              icon="${this.collapsed ? "unfold-more" : "unfold-less"}"
-              label="${this.collapsed ? "Expand Menu" : "Collapse Menu"}"
-              data-simple-tour-stop
-            >
-              <div data-stop-title>Menu placement</div>
-              <div data-stop-content>Expand or collapse the menu visually.</div>
-            </hax-tray-button>
-          </hax-toolbar-menu-item>
-          <hax-toolbar-menu-item slot="menuitem">
-            <hax-tray-button
-              voice-command="toggle alignment"
-              id="toggle-element-align"
-              event-name="toggle-element-align"
-              show-text-label
-              icon="${this.elementAlign == "left"
-                ? "arrow-forward"
-                : "arrow-back"}"
-              label="${this.elementAlign == "left"
-                ? "Move Menu Right"
-                : "Move Menu Left"}"
-              data-simple-tour-stop
-            >
-              <div data-stop-title>Menu alignment</div>
-              <div data-stop-content>
-                Change which side of the screen the menu is affixed to visually.
-              </div>
-            </hax-tray-button>
-          </hax-toolbar-menu-item>
-        </hax-toolbar-menu>
-      </div>
-      <div id="source" class="group">
         <hax-tray-button
-          id="exportbtn"
-          icon="code"
-          label="View page source"
-          voice-command="view (page) source"
+          role="menuitem"
+          voice-command="toggle menu"
+          id="toggle-tray-size"
+          event-name="toggle-tray-size"
+          show-text-label
+          icon="${this.collapsed ? "unfold-more" : "unfold-less"}"
+          label="${this.collapsed ? "Expand Menu" : "Collapse Menu"}"
           data-simple-tour-stop
-          data-stop-title="label"
+          show-text-label
+          text-align="left"
         >
-          <div data-stop-content>
-            Every change you make in HAX is ultimately writing HTML. Know HTML?
-            Awesome, pop open the source view and make any changes you like.
-            HTML is always behind the scenes ensuring that content is portable,
-            well formatted and easy to read.
-          </div>
+          <div data-stop-title>Menu Size</div>
+          <div data-stop-content>Expand or collapse the menu visually.</div>
         </hax-tray-button>
       </div>
       <div class="group" id="tourgroup">
@@ -541,119 +406,286 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           icon="help"
           label="Take a tour"
           voice-command="start tour"
-          tooltip-direction="left"
         ></hax-tray-button>
       </div>
+    `;
+  }
+  get menuButtons2() {
+    return html` <div id="menugroup" class="group">
+        <hax-tray-button
+          show-text-label
+          voice-command="move menu"
+          id="toggle-element-align"
+          event-name="toggle-element-align"
+          text-align="left"
+          icon="${this.elementAlign == "right"
+            ? "arrow-forward"
+            : "arrow-back"}"
+          label="Move Menu ${this.elementAlign == "right" ? "Left" : "Right"}"
+          show-text-label
+        >
+          <div data-stop-title>Menu placement</div>
+          <div slot="tour" data-stop-content>
+            Change which side of the screen the menu is affixed to visually.
+          </div>
+        </hax-tray-button>
+        <hax-tray-button
+          role="menuitem"
+          voice-command="toggle menu"
+          id="toggle-tray-size"
+          event-name="toggle-tray-size"
+          show-text-label
+          icon="${this.collapsed ? "unfold-more" : "unfold-less"}"
+          label="${this.collapsed ? "Expand Menu" : "Collapse Menu"}"
+          data-simple-tour-stop
+          show-text-label
+          text-align="left"
+        >
+          <div data-stop-title>Menu size</div>
+          <div data-stop-content>Expand or collapse the menu visually.</div>
+        </hax-tray-button>
+      </div>
+      <div class="group" id="tourgroup">
+        <hax-tray-button
+          event-name="start-tour"
+          icon="help"
+          label="Take a tour"
+          voice-command="start tour"
+        ></hax-tray-button>
+      </div>`;
+  }
+  get menuToolbarTemplate() {
+    return html` <hax-toolbar class="quick-buttons collapse-menu"
+      >${this.menuButtons}</hax-toolbar
+    >`;
+  }
+  get saveButtons() {
+    return this.hidePanelOps
+      ? ``
+      : html`
+          <hax-tray-button
+            feature
+            @click="${this._clickSaveButton}"
+            icon="save"
+            icon-position="top"
+            id="haxsavebutton"
+            label="${this.__tipText}"
+            event-name="save"
+            voice-command="save (content)(page)"
+            show-text-label
+          ></hax-tray-button>
+          <hax-toolbar-menu
+            icon="close"
+            id="haxcancelbutton"
+            label="Cancel"
+            icon-position="top"
+            show-text-label
+            warning
+          >
+            <simple-toolbar-menu-item slot="menuitem">
+              <hax-tray-button
+                danger
+                icon="close"
+                id="haxcancelbutton"
+                label="Cancel without saving"
+                event-name="cancel"
+                voice-command="cancel"
+                icon-position="left"
+                show-text-label
+              ></hax-tray-button>
+            </simple-toolbar-menu-item>
+          </hax-toolbar-menu>
+        `;
+  }
+  get doButtons() {
+    return html` <hax-tray-button
+        icon="icons:undo"
+        ?disabled="${!this.canUndo}"
+        label="Undo"
+        tooltip="Undo previous action"
+        event-name="undo"
+        voice-command="undo"
+        class="hide-small"
+        data-simple-tour-stop
+        data-stop-title="label"
+        icon-position="top"
+        show-text-label
+      >
+        <div slot="tour" data-stop-content>
+          Undo the previous operation in the content, whether typing or adding a
+          widget.
+        </div>
+      </hax-tray-button>
+      <hax-tray-button
+        icon="icons:redo"
+        ?disabled="${!this.canRedo}"
+        label="Redo"
+        tooltip="Redo previous action"
+        event-name="redo"
+        voice-command="redo"
+        class="hide-small"
+        data-simple-tour-stop
+        data-stop-title="label"
+        icon-position="top"
+        show-text-label
+      >
+        <div slot="tour" data-stop-content>
+          Redo the last action that you hit Undo on.
+        </div>
+      </hax-tray-button>`;
+  }
+  get sourceButton() {
+    return html` <hax-tray-button
+      id="exportbtn"
+      icon="code"
+      label="Source"
+      tooltip="View page source"
+      voice-command="view (page) source"
+      data-simple-tour-stop
+      data-stop-title="label"
+      icon-position="top"
+      show-text-label
+    >
+      <div data-stop-content>
+        Every change you make in HAX is ultimately writing HTML. Know HTML?
+        Awesome, pop open the source view and make any changes you like. HTML is
+        always behind the scenes ensuring that content is portable, well
+        formatted and easy to read.
+      </div>
+    </hax-tray-button>`;
+  }
+  get opsToolbarTemplate() {
+    return html` <hax-toolbar class="quick-buttons collapse-menu">
+      <div id="savegroup" class="ops group">${this.saveButtons}</div>
+      <div id="dogroup" class="group">${this.doButtons}</div>
+      <slot name="tray-buttons-pre"></slot>
+      <div id="source" class="group">${this.sourceButton}</div>
     </hax-toolbar>`;
+  }
+  get contentButtons() {
+    return html` <hax-tray-button
+        event-name="content-edit"
+        icon="build"
+        id="content-edit"
+        label="Edit ${this.activeTagName}"
+        ?disabled="${!this.activeTagName ||
+        this.activeTagName == "" ||
+        !this.activeNode ||
+        !this.activeNode.tagName}"
+        voice-command="(modify)(configure)(edit) selected"
+        data-simple-tour-stop
+        data-stop-title="label"
+        controls="tray-detail"
+        show-text-label
+        icon-position="top"
+        tooltip="Edit Selected ${this.activeTagName}"
+        toggles
+        ?toggled="${this.trayDetail === "content-edit"}"
+      >
+        <div slot="tour" data-stop-content>
+          When you want to add any content to the page from text, to images, to
+          anything more advanced; you can always find items to add under the Add
+          content menu. Click to expand, then either drag and drop items into
+          the page or click and have them placed near whatever you are actively
+          working on.
+        </div>
+      </hax-tray-button>
+      <hax-tray-button
+        event-name="content-add"
+        icon="add-box"
+        id="content-add"
+        label="Add Content"
+        voice-command="add content"
+        show-text-label
+        icon-position="top"
+        data-simple-tour-stop
+        data-stop-title="label"
+        controls="tray-detail"
+        toggles
+        ?toggled="${this.trayDetail === "content-add"}"
+      >
+        <div slot="tour" data-stop-content>
+          When you want to add any content to the page from text, to images, to
+          anything more advanced; you can always find items to add under the Add
+          content menu. Click to expand, then either drag and drop items into
+          the page or click and have them placed near whatever you are actively
+          working on.
+        </div>
+      </hax-tray-button>
+      <hax-tray-button
+        event-name="media-add"
+        icon="image:add-a-photo"
+        id="media-add"
+        label="Add Media"
+        show-text-label
+        icon-position="top"
+        voice-command="Add Media"
+        data-simple-tour-stop
+        data-stop-title="label"
+        controls="tray-detail"
+        toggles
+        ?toggled="${this.trayDetail === "media-add"}"
+      >
+        <div slot="tour" data-stop-content>
+          Search for media and content anywhere that your copy of HAX has access
+          to. Pick what to search, perform the search and then click or drag the
+          item into the contnet.
+        </div>
+      </hax-tray-button>`;
+  }
+  get mapButton() {
+    return html`
+      <hax-tray-button
+        event-name="content-map"
+        icon="maps:map"
+        id="content-map"
+        label="Content map"
+        show-text-label
+        icon-position="top"
+        voice-command="open map"
+        data-simple-tour-stop
+        data-stop-title="label"
+        controls="tray-detail"
+        toggles
+        ?toggled="${this.trayDetail === "content-map"}"
+      >
+        <div data-stop-content>
+          This is a simple list of all the block areas of the page that are
+          clickable to jump through items quickly as well as review some simple
+          overview stats.
+        </div>
+      </hax-tray-button>
+    `;
+  }
+  get settingsButton() {
+    return html`
+      <hax-tray-button
+        ?hidden="${this.hidePreferencesButton}"
+        id="advanced-settings"
+        event-name="advanced-settings"
+        icon="settings"
+        label="Advanced Settings"
+        voice-command="open preferences"
+        show-text-label
+        icon-position="top"
+        tooltip-direction="left"
+        data-simple-tour-stop
+        data-stop-title="label"
+        controls="tray-detail"
+        toggles
+        ?toggled="${this.trayDetail === "advanced-settings"}"
+      >
+        <div data-stop-content>
+          Some advanced options for developers and experimental purposes.
+        </div>
+      </hax-tray-button>
+    `;
   }
   get trayToolbarTemplate() {
     return html` <hax-toolbar class="quick-buttons tray-detail-ops">
-      <div id="contentgroup" class="group">
-        <hax-tray-button
-          event-name="content-edit"
-          icon="build"
-          id="content-edit"
-          label="${this.activeTagName}"
-          ?disabled="${!this.activeTagName ||
-          this.activeTagName == "" ||
-          !this.activeNode ||
-          !this.activeNode.tagName}"
-          voice-command="(modify)(configure)(edit) selected"
-          data-simple-tour-stop
-          data-stop-title="label"
-          controls="tray-detail"
-          show-text-label
-          tooltip="Modify Selected ${this.activeTagName}"
-          toggles
-          ?toggled="${this.trayDetail === "content-edit"}"
-        >
-          <div slot="tour" data-stop-content>
-            When you want to add any content to the page from text, to images,
-            to anything more advanced; you can always find items to add under
-            the Add content menu. Click to expand, then either drag and drop
-            items into the page or click and have them placed near whatever you
-            are actively working on.
-          </div>
-        </hax-tray-button>
-        <hax-tray-button
-          event-name="content-add"
-          icon="add-box"
-          id="content-add"
-          label="Add Content"
-          voice-command="add content"
-          data-simple-tour-stop
-          data-stop-title="label"
-          controls="tray-detail"
-          toggles
-          ?toggled="${this.trayDetail === "content-add"}"
-        >
-          <div slot="tour" data-stop-content>
-            When you want to add any content to the page from text, to images,
-            to anything more advanced; you can always find items to add under
-            the Add content menu. Click to expand, then either drag and drop
-            items into the page or click and have them placed near whatever you
-            are actively working on.
-          </div>
-        </hax-tray-button>
-        <hax-tray-button
-          event-name="media-add"
-          icon="image:add-a-photo"
-          id="media-add"
-          label="Add Media"
-          voice-command="Add Media"
-          data-simple-tour-stop
-          data-stop-title="label"
-          controls="tray-detail"
-          toggles
-          ?toggled="${this.trayDetail === "media-add"}"
-        >
-          <div slot="tour" data-stop-content>
-            Search for media and content anywhere that your copy of HAX has
-            access to. Pick what to search, perform the search and then click or
-            drag the item into the contnet.
-          </div>
-        </hax-tray-button>
-      </div>
-      <div id="mapgroup" class="group">
-        <hax-tray-button
-          event-name="content-map"
-          icon="maps:map"
-          id="content-map"
-          label="Content map"
-          voice-command="open map"
-          data-simple-tour-stop
-          data-stop-title="label"
-          controls="tray-detail"
-          toggles
-          ?toggled="${this.trayDetail === "content-map"}"
-        >
-          <div data-stop-content>
-            This is a simple list of all the block areas of the page that are
-            clickable to jump through items quickly as well as review some
-            simple overview stats.
-          </div>
-        </hax-tray-button>
-      </div>
-      <div id="settingsgroup" class="group">
-        <hax-tray-button
-          ?hidden="${this.hidePreferencesButton}"
-          id="advanced-settings"
-          event-name="advanced-settings"
-          icon="settings"
-          label="Advanced Settings"
-          voice-command="open preferences"
-          tooltip-direction="left"
-          data-simple-tour-stop
-          data-stop-title="label"
-          controls="tray-detail"
-          toggles
-          ?toggled="${this.trayDetail === "advanced-settings"}"
-        >
-          <div data-stop-content>
-            Some advanced options for developers and experimental purposes.
-          </div>
-        </hax-tray-button>
-      </div>
+      <div id="contentgroup" class="group">${this.contentButtons}</div>
+      <div id="mapgroup" class="group">${this.mapButton}</div>
+      <div id="settingsgroup" class="group">${this.settingsButton}</div>
     </hax-toolbar>`;
   }
   get trayDetailTemplate() {
