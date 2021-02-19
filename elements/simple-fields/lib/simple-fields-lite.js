@@ -20,7 +20,7 @@ Custom property | Description | Default
 `--simple-fields-margin-small` | smaller vertical margin above field itself | 8px
 `--simple-fields-border-radius` | default border-radius | 2px
 `--simple-fields-color` | text color | black
-`--simple-fields-background-color` | background color | white
+`--simple-fields-background-color` | background color | transparent
 `--simple-fields-error-color` | error text color | #dd2c00
 `--simple-fields-accent-color` | accent text/underline color | #3f51b5
 `--simple-fields-border-color` | border-/underline color | #999
@@ -221,7 +221,7 @@ class SimpleFieldsLite extends LitElement {
           font-family: var(--simple-fields-detail-font-family, sans-serif);
           font-size: var(--simple-fields-font-size, 16px);
           font-size: var(--simple-fields-detail-font-size, 12px);
-          background: var(--simple-fields-background-color, white);
+          background: var(--simple-fields-background-color, transparent);
         }
         :host([hidden]) {
           display: none;

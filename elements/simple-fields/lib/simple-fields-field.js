@@ -202,7 +202,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           height: 20px;
           width: 20px;
           border-radius: 50%;
-          background: var(--simple-fields-background-color, white);
+          background: var(--simple-fields-background-color, transparent);
           box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
           cursor: pointer;
           transition: all 0.5ms ease-in-out;
@@ -251,7 +251,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           height: 20px;
           width: 20px;
           border-radius: 50%;
-          background: var(--simple-fields-background-color, white);
+          background: var(--simple-fields-background-color, transparent);
           box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
           cursor: pointer;
         }

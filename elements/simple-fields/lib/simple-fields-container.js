@@ -24,6 +24,7 @@ class SimpleFieldsContainer extends LitElement {
           transition: color 0.3s ease-in-out;
           margin: 0 0
             var(--simple-fields-field-margin, var(--simple-fields-margin, 16px));
+          background-color: var(--simple-fields-background-color, transparent);
         }
         :host([hidden]),
         :host([type="hidden"]) {

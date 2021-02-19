@@ -38,7 +38,10 @@ class SimpleFieldsTabs extends A11yTabs {
             --simple-fields-accent-color,
             #3f51b5
           );
-          --a11y-tabs-background: var(--simple-fields-background-color, white);
+          --a11y-tabs-background: var(
+            --simple-fields-background-color,
+            transparent
+          );
           --a11y-tabs-border-color: var(
             --simple-fields-border-color-light,
             #ccc

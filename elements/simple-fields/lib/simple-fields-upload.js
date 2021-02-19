@@ -41,10 +41,10 @@ class SimpleFieldsUpload extends SimpleColors {
           --lumo-font-family: var(--simple-fields-font-family, sans-serif);
           --lumo-error-color: var(--simple-fields-error-color, #dd2c00);
           --lumo-primary-font-color: var(--simple-fields-color, black);
-          --lumo-base-color: var(--simple-fields-background-color, #fff);
+          --lumo-base-color: var(--simple-fields-background-color, transparent);
           --lumo-primary-contrast-color: var(
             --simple-fields-background-color,
-            #fff
+            transparent
           );
           --lumo-primary-color: var(--simple-fields-color, black);
           --lumo-dark-primary-color: var(--simple-fields-color, black);
@@ -56,7 +56,7 @@ class SimpleFieldsUpload extends SimpleColors {
           --lumo-contrast-20pct: transparent;
           --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
           color: var(--simple-fields-color, black);
-          background-color: var(--simple-fields-background-color, #fff);
+          background-color: var(--simple-fields-background-color, transparent);
         }
         vaadin-upload[dragover] {
           border-color: var(
