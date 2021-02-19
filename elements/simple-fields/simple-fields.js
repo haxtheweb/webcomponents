@@ -134,7 +134,7 @@ class SimpleFields extends SimpleFieldsLite {
           display: block;
           --simple-picker-background-color: var(
             --simple-fields-background-color,
-            white
+            transparent
           );
           --simple-picker-border-width: 0;
           --simple-picker-focus-border-width: 0;

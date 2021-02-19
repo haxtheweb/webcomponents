@@ -30,70 +30,74 @@ export const HaxTraySpacing = [
 export const HaxTrayColors = [
   css`
     :host {
-      --hax-tray-color: #000;
-      --hax-tray-color-secondary: #222;
-      --hax-tray-color-tertiary: #444;
+      --hax-tray-color: #222;
+      --hax-tray-color-focus: #000;
+      --hax-tray-color-faded: #444;
+
       --hax-tray-background-color: #fff;
       --hax-tray-background-color-secondary: #e8e8e8;
       --hax-tray-background-color-tertiary: #b0b8bb;
+      --hax-tray-background-color-accent: #ddf8ff;
+
       --hax-tray-border-color: #ddd;
 
-      --hax-tray-danger-color: #850000;
-      --hax-tray-danger-color-secondary: #ee0000;
+      --hax-tray-danger-color: #ee0000;
+      --hax-tray-danger-color-secondary: #850000;
       --hax-tray-danger-color-contrast: #ffdddd;
 
-      --hax-tray-accent-color: #007999;
-      --hax-tray-accent-color-secondary: #009dc7;
-      --hax-tray-accent-color-contrast: #ddf8ff;
+      --hax-tray-accent-color: #009dc7;
+      --hax-tray-accent-color-secondary: #007999;
     }
     @media (prefers-color-scheme: dark) {
       :host {
-        --hax-tray-color: #fff;
-        --hax-tray-color-secondary: #f1eae2;
-        --hax-tray-color-tertiary: #babbb0;
-        --hax-tray-background-color: #222;
+        --hax-tray-color: #eeeae6;
+        --hax-tray-color-focus: #fff;
+        --hax-tray-color-faded: #c5c3be;
+
+        --hax-tray-background-color: #333;
         --hax-tray-background-color-secondary: #111;
-        --hax-tray-background-color-tertiary: #000;
-        --hax-tray-border-color: #44;
-        --hax-tray-color: var(--hax-tray-text-color, #fff);
+        --hax-tray-background-color-tertiary: #222;
 
-        --hax-tray-danger-color: #ff7474;
+        --hax-tray-border-color: #000;
+
+        --hax-tray-danger-color: #ff8f8f;
         --hax-tray-danger-color-secondary: #ff2222;
-        --hax-tray-danger-color-contrast: #3f0000;
+        --hax-tray-danger-color-contrast: #000;
 
-        --hax-tray-accent-color: #33d4ff;
+        --hax-tray-accent-color: #77e2ff;
         --hax-tray-accent-color-secondary: #00c9ff;
-        --hax-tray-accent-color-contrast: #001a20;
+        --hax-tray-background-color-accent: #000;
       }
     }
   `,
 ];
-
 export const HaxTrayButtonTheme = [
   css`
     :host {
       text-transform: capitalize;
     }
-    button[part="button"] {
-      font-size: var(--hax-tray-font-size-md);
-      padding: var(--hax-tray-spacing-md);
-    }
-    absolute-position-behavior,
-    button[part="button"] {
-      color: var(--hax-tray-color-secondary);
-      background-color: var(--hax-tray-background-color);
-      border: 1px solid transparent;
-    }
     absolute-position-behavior {
+      color: var(--hax-tray-color);
+      background-color: var(--hax-tray-background-color);
       border: 1px solid var(--hax-tray-border-color);
     }
-    button[part="button"][aria-pressed="true"] {
-      color: var(--hax-tray-accent-color-secondary);
-      border: 1px solid var(--hax-tray-accent-color-secondary);
+    button[part="button"] {
+      font-size: var(--hax-tray-font-size-sm);
+      padding: var(--hax-tray-spacing);
+      color: var(--hax-tray-color);
+      background-color: var(--hax-tray-background-color);
+      border: var(--hax-tray-border-width) var(--hax-tray-border-style)
+        var(--hax-tray-border-color);
     }
     :host(:hover) button[part="button"],
     :host(:focus-within) button[part="button"] {
-      background-color: var(--hax-tray-accent-color-contrast);
+      color: var(--hax-tray-color);
+      background-color: var(--hax-tray-background-color-accent);
+      border-color: var(--hax-tray-accent-color);
+    }
+    button[part="button"][aria-pressed="true"] {
+      color: var(--hax-tray-accent-color-secondary);
+      border-color: var(--hax-tray-accent-color-secondary);
     }
     :host([feature]) button[part="button"],
     :host([danger]) button[part="button"] {
@@ -101,11 +105,11 @@ export const HaxTrayButtonTheme = [
     }
     :host([feature]) button[part="button"] {
       background-color: var(--hax-tray-accent-color);
-      border: 1px solid var(--hax-tray-accent-color);
+      border-color: var(--hax-tray-accent-color);
     }
     :host([danger]) button[part="button"] {
       background-color: var(--hax-tray-danger-color);
-      border: 1px solid var(--hax-tray-danger-color);
+      border-color: var(--hax-tray-danger-color);
     }
     :host([feature]) button[part="button"][aria-pressed="true"],
     :host([danger]) button[part="button"][aria-pressed="true"] {
@@ -113,11 +117,11 @@ export const HaxTrayButtonTheme = [
     }
     :host([feature]) button[part="button"][aria-pressed="true"] {
       background-color: var(--hax-tray-accent-color-secondary);
-      border: 1px solid var(--hax-tray-accent-color);
+      border-color: var(--hax-tray-accent-color);
     }
     :host([danger]) button[part="button"][aria-pressed="true"] {
       background-color: var(--hax-tray-danger-color-secondary);
-      border: 1px solid var(--hax-tray-danger-color);
+      border-color: var(--hax-tray-danger-color);
     }
     :host([feature]:hover) button[part="button"],
     :host([feature]:focus-within) button[part="button"],
@@ -128,12 +132,12 @@ export const HaxTrayButtonTheme = [
     :host([feature]:hover) button[part="button"],
     :host([feature]:focus-within) button[part="button"] {
       background-color: var(--hax-tray-accent-color-secondary);
-      border: 1px solid var(--hax-tray-accent-color-secondary);
+      border-color: var(--hax-tray-accent-color-secondary);
     }
     :host([danger]:hover) button[part="button"],
     :host([danger]:focus-within) button[part="button"] {
       background-color: var(--hax-tray-danger-color-secondary);
-      border: 1px solid var(--hax-tray-danger-color-secondary);
+      border-color: var(--hax-tray-danger-color-secondary);
     }
     :host([large]) button[part="button"] {
       font-size: var(--hax-tray-font-size);
@@ -142,61 +146,6 @@ export const HaxTrayButtonTheme = [
     }
     :host([disabled]) button[part="button"][disabled] {
       opacity: 0.5;
-    }
-    @media (prefers-color-scheme: dark) {
-      :host(:hover) button[part="button"],
-      :host(:focus-within) button[part="button"] {
-        background-color: var(--hax-tray-background-color-tertiary);
-      }
-      button[part="button"][aria-pressed="true"] {
-        color: var(--hax-tray-accent-color-secondary);
-        border: 1px solid var(--hax-tray-accent-color-secondary);
-      }
-      :host(:hover) button[part="button"]:not([aria-pressed="true"]),
-      :host(:focus-within) button[part="button"]:not([aria-pressed="true"]) {
-        color: var(--hax-tray-color);
-      }
-      :host([feature]) button[part="button"],
-      :host([danger]) button[part="button"] {
-        color: var(--hax-tray-background-color-secondary);
-      }
-      :host([feature]) button[part="button"] {
-        background-color: var(--hax-tray-accent-color-secondary);
-        border: 1px solid var(--hax-tray-accent-color);
-      }
-      :host([danger]) button[part="button"] {
-        background-color: var(--hax-tray-danger-color-secondary);
-        border: 1px solid var(--hax-tray-danger-color);
-      }
-      :host([feature]) button[part="button"][aria-pressed="true"],
-      :host([danger]) button[part="button"][aria-pressed="true"] {
-        color: var(--hax-tray-background-color);
-      }
-      :host([feature]) button[part="button"][aria-pressed="true"] {
-        background-color: var(--hax-tray-accent-color-secondary);
-        border: 1px solid var(--hax-tray-accent-color);
-      }
-      :host([danger]) button[part="button"][aria-pressed="true"] {
-        background-color: var(--hax-tray-danger-color-secondary);
-        border: 1px solid var(--hax-tray-danger-color);
-      }
-      :host([feature]:hover) button[part="button"],
-      :host([feature]:focus-within) button[part="button"],
-      :host([danger]:hover) button[part="button"],
-      :host([danger]:focus-within) button[part="button"] {
-        color: var(--hax-tray-background-color);
-      }
-      :host([feature]:hover) button[part="button"],
-      :host([feature]:focus-within) button[part="button"] {
-        background-color: var(--hax-tray-accent-color);
-      }
-      :host([danger]:hover) button[part="button"],
-      :host([danger]:focus-within) button[part="button"] {
-        background-color: var(--hax-tray-danger-color);
-      }
-      :host([large]) button[part="button"] {
-        border-width: 2px;
-      }
     }
 
     ::part(label) {
@@ -235,32 +184,29 @@ export const HaxTraySimpleFields = [
       --simple-fields-font-family: var(--hax-tray-font-family);
       --simple-fields-color: var(--hax-tray-text-color);
       --simple-fields-accent-color: var(--hax-tray-accent-color);
-      --simple-fields-background-color: var(--hax-tray-background-color);
       --simple-fields-error-color: var(--hax-tray-danger-color-secondary);
       --simple-fields-secondary-accent-color: var(
         --hax-tray-accent-color-secondary
       );
-      --simple-fields-border-color: var(--hax-tray-border-color);
+      --simple-fields-border-color: var(--hax-tray-color-faded);
       --simple-toolbar-focus-z-index: var(--hax-tray-focus-z-index);
-      --a11y-tabs-background: var(--hax-tray-background-color-secondary);
       --a11y-tabs-horizontal-background: var(--a11y-tabs-background);
-      --a11y-tabs-content-background: var(--a11y-tabs-background);
-      --a11y-tabs-color: var(--hax-tray-color-tertiary);
-      --a11y-tabs-focus-color: var(--hax-tray-accent-color);
-      --a11y-tabs-faded-color: var(--hax-tray-color);
-      --a11y-tabs-border-color: var(--hax-tray-border-color);
-      --a11y-tabs-faded-background: var(--hax-tray-background-color);
-      --a11y-tabs-disabled-color: var(--hax-tray-border-color);
-      --a11y-tabs-disabled-background: var(
-        --hax-tray-background-color-tertiary
-      );
+      --a11y-tabs-horizontal-button-padding: var(--hax-tray-spacing-xs);
       --a11y-tabs-border-radius: 3px;
       --a11y-tabs-horizontal-border-radius: var(--a11y-tabs-border-radius);
       --a11y-tabs-vertical-border-radius: var(--a11y-tabs-border-radius);
       --a11y-tabs-content-padding: var(--hax-tray-spacing);
       --a11y-tabs-button-padding: var(--hax-tray-spacing-xs);
       --a11y-tabs-vertical-button-padding: var(--hax-tray-spacing-xs);
-      --a11y-tabs-horizontal-button-padding: var(--hax-tray-spacing-xs);
+      --a11y-tabs-border-color: transparent;
+      --a11y-tabs-faded-background: var(--hax-tray-background-color-tertiary);
+      --a11y-tabs-faded-color: var(--hax-tray-color-focus);
+      --a11y-tabs-disabled-background: transparent;
+      --a11y-tabs-disabled-color: var(--hax-tray-border-color);
+      --a11y-tabs-border-accent: transparent;
+      /*--a11y-tabs-color: var(--hax-tray-color-faded);
+      --a11y-tabs-focus-color: var(--hax-tray-accent-color);
+      ;*/
     }
   `,
 ];
@@ -275,12 +221,6 @@ export const HaxTraySimpleTooltip = [
       --simple-tooltip-duration-out: 0;
       --simple-tooltip-border-radius: 2px;
       --simple-tooltip-font-size: var(--hax-tray-font-size-sm);
-    }
-    @media (prefers-color-scheme: dark) {
-      :host {
-        --simple-tooltip-background: var(--hax-tray-color-secondary);
-        --simple-tooltip-text-color: var(--hax-tray-background-color-tertiary);
-      }
     }
   `,
 ];
@@ -312,154 +252,96 @@ export const HaxTrayDetail = [
     }
     #content-add,
     #tray-detail[selected-detail="content-add"] {
-      --hax-tray-accent-color: var(
-        --simple-colors-default-theme-purple-8,
-        #8a009b
-      );
+      --hax-tray-accent-color: var(--simple-colors-default-theme-purple-8);
       --hax-tray-accent-color-secondary: var(
-        --simple-colors-default-theme-purple-7,
-        #a500ba
+        --simple-colors-default-theme-purple-7
       );
-      --hax-tray-accent-color-contrast: var(
-        --simple-colors-default-theme-purple-1,
-        #fce6ff
+      --hax-tray-background-color-accent: var(
+        --simple-colors-default-theme-purple-1
       );
     }
     #content-edit,
     #tray-detail[selected-detail="content-edit"] {
-      --hax-tray-accent-color: var(
-        --simple-colors-default-theme-pink-8,
-        #980036
-      );
+      --hax-tray-accent-color: var(--simple-colors-default-theme-pink-8);
       --hax-tray-accent-color-secondary: var(
-        --simple-colors-default-theme-pink-7,
-        #da004e
+        --simple-colors-default-theme-pink-7
       );
-      --hax-tray-accent-color-contrast: var(
-        --simple-colors-default-theme-pink-1,
-        #ffe6f1
+      --hax-tray-background-color-accent: var(
+        --simple-colors-default-theme-pink-1
       );
     }
     #media-add,
     #tray-detail[selected-detail="media-add"] {
-      --hax-tray-accent-color: var(
-        --simple-colors-default-theme-indigo-8,
-        #2801b0
-      );
+      --hax-tray-accent-color: var(--simple-colors-default-theme-indigo-8);
       --hax-tray-accent-color-secondary: var(
-        --simple-colors-default-theme-indigo-7,
-        #3a00ff
+        --simple-colors-default-theme-indigo-7
       );
-      --hax-tray-accent-color-contrast: var(
-        --simple-colors-default-theme-indigo-1,
-        #e5ddff
+      --hax-tray-background-color-accent: var(
+        --simple-colors-default-theme-indigo-1
       );
     }
     #content-map,
     #tray-detail[selected-detail="content-map"] {
-      --hax-tray-accent-color: var(
-        --simple-colors-default-theme-light-blue-8,
-        #0066ca
-      );
+      --hax-tray-accent-color: var(--simple-colors-default-theme-light-blue-8);
       --hax-tray-accent-color-secondary: var(
-        --simple-colors-default-theme-light-blue-7,
-        #007ffc
+        --simple-colors-default-theme-light-blue-7
       );
-      --hax-tray-accent-color-contrast: var(
-        --simple-colors-default-theme-light-blue-1,
-        #ddefff
+      --hax-tray-background-color-accent: var(
+        --simple-colors-default-theme-light-blue-1
       );
     }
     #advanced-settings,
     #tray-detail[selected-detail="advanced-settings"] {
-      --hax-tray-accent-color: var(
-        --simple-colors-default-theme-green-8,
-        #005a23
-      );
+      --hax-tray-accent-color: var(--simple-colors-default-theme-green-8);
       --hax-tray-accent-color-secondary: var(
-        --simple-colors-default-theme-green-7,
-        #00762e
+        --simple-colors-default-theme-green-7
       );
-      --hax-tray-accent-color-contrast: var(
-        --simple-colors-default-theme-green-2,
-        #acffc9
+      --hax-tray-background-color-accent: var(
+        --simple-colors-default-theme-green-2
       );
     }
     @media (prefers-color-scheme: dark) {
       #content-add,
       #tray-detail[selected-detail="content-add"] {
-        --hax-tray-accent-color: var(
-          --simple-colors-default-theme-purple-5,
-          #ed61ff
-        );
+        --hax-tray-accent-color: var(--simple-colors-default-theme-purple-5);
         --hax-tray-accent-color-secondary: var(
-          --simple-colors-default-theme-purple-6,
-          #e200ff
+          --simple-colors-default-theme-purple-3
         );
-        --hax-tray-accent-color-contrast: var(
-          --simple-colors-default-theme-purple-12,
-          #200025
-        );
+        --hax-tray-background-color-accent: #000;
       }
       #content-edit,
       #tray-detail[selected-detail="content-edit"] {
-        --hax-tray-accent-color: var(
-          --simple-colors-default-theme-pink-5,
-          #b80042
-        );
+        --hax-tray-accent-color: var(--simple-colors-default-theme-pink-5);
         --hax-tray-accent-color-secondary: var(
-          --simple-colors-default-theme-pink-6,
-          #ff3996
+          --simple-colors-default-theme-pink-3
         );
-        --hax-tray-accent-color-contrast: var(
-          --simple-colors-default-theme-pink-12,
-          #440019
-        );
+        --hax-tray-background-color-accent: #000;
       }
       #media-add,
       #tray-detail[selected-detail="media-add"] {
-        --hax-tray-accent-color: var(
-          --simple-colors-default-theme-indigo-5,
-          #9373ff
-        );
+        --hax-tray-accent-color: var(--simple-colors-default-theme-indigo-5);
         --hax-tray-accent-color-secondary: var(
-          --simple-colors-default-theme-indigo-6,
-          #835fff
+          --simple-colors-default-theme-indigo-3
         );
-        --hax-tray-accent-color-contrast: var(
-          --simple-colors-default-theme-indigo-12,
-          #0a0030
-        );
+        --hax-tray-background-color-accent: #000;
       }
       #content-map,
       #tray-detail[selected-detail="content-map"] {
         --hax-tray-accent-color: var(
-          --simple-colors-default-theme-light-blue-5,
-          #58adff
+          --simple-colors-default-theme-light-blue-5
         );
         --hax-tray-accent-color-secondary: var(
-          --simple-colors-default-theme-light-blue-6,
-          #41a1ff
+          --simple-colors-default-theme-light-blue-3
         );
-        --hax-tray-accent-color-contrast: var(
-          --simple-colors-default-theme-light-blue-12,
-          #001b36
-        );
+        --hax-tray-background-color-accent: #000;
       }
       #advanced-settings,
       #tray-detail[selected-detail="advanced-settings"] {
-        --hax-tray-accent-color: var(
-          --simple-colors-default-theme-green-5,
-          #24ff70
-        );
+        --hax-tray-accent-color: var(--simple-colors-default-theme-green-5);
         --hax-tray-accent-color-secondary: var(
-          --simple-colors-default-theme-green-6,
-          #00f961
+          --simple-colors-default-theme-green-3
         );
-        --hax-tray-accent-color-contrast: var(
-          --simple-colors-default-theme-green-12,
-          #001d0c
-        );
+        --hax-tray-background-color-accent: #000;
       }
     }
   `,
