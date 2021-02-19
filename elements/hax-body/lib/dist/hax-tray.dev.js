@@ -1924,8 +1924,8 @@ var HaxTray =
               _toConsumableArray(
                 _get(_getPrototypeOf(HaxTray), "styles", this) || []
               ),
-              _toConsumableArray(_haxUiStyles.HaxTrayBaseStyles),
               _toConsumableArray(_haxUiStyles.HaxTrayDetail),
+              _toConsumableArray(_haxUiStyles.HaxTrayBaseStyles),
               [(0, _litElement.css)(_templateObject22())]
             );
           },

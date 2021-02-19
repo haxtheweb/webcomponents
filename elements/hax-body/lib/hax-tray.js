@@ -111,8 +111,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   static get styles() {
     return [
       ...(super.styles || []),
-      ...HaxTrayBaseStyles,
       ...HaxTrayDetail,
+      ...HaxTrayBaseStyles,
       css`
         :host {
           display: block;

@@ -5,8 +5,7 @@ import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
-/**
- * `hax-gizmo-browser`
+/* `hax-gizmo-browser`
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
  * @microcopy - the mental model for this element
  * - gizmo - silly name for the general public when talking about custom elements and what it provides in the end.
@@ -32,26 +31,6 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
         }
         simple-button-grid {
           overflow-y: auto;
-        }
-        hax-tray-button {
-          font-size: var(--hax-tray-font-size-xs, 11px);
-          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
-          --simple-toolbar-button-border-color: var(
-            --hax-toolbar-border-color,
-            #ddd
-          );
-          --simple-toolbar-button-hover-color: var(
-            --hax-tray-accent-color,
-            #000
-          );
-          --simple-toolbar-button-hover-border-color: var(
-            --hax-tray-accent-color,
-            #000
-          );
-          --simple-toolbar-button-hover-border-color: var(
-            --hax-tray-accent-color,
-            #000
-          );
         }
         simple-fields-field {
           margin-top: 0;

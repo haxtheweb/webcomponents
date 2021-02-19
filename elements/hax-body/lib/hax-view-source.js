@@ -34,7 +34,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
           position: sticky;
           bottom: 0;
           display: flex;
-          --simple-toolbar-button-padding: 0 var(--hax-tray-margin, 4px);
+          --simple-toolbar-button-padding: 0 var(--hax-tray-spacing-sm);
         }
         hax-toolbar::part(buttons) {
           justify-content: space-between;

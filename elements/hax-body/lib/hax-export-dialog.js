@@ -26,9 +26,9 @@ class HaxExportDialog extends LitElement {
             --hax-titlebar-background-color,
             #f0f4f8
           );
-          --simple-modal-titlebar-padding: var(--hax-tray-margin, 4px);
+          --simple-modal-titlebar-padding: var(--hax-tray-spacing-sm);
           --simple-modal-titlebar-height: calc(
-            20px + 2 * var(--hax-tray-margin, 4px)
+            20px + 2 * var(--hax-tray-spacing-sm)
           );
           --simple-modal-content-container-color: var(
             --hax-tray-text-color,
@@ -38,7 +38,7 @@ class HaxExportDialog extends LitElement {
             --hax-tray-background-color,
             #fff
           );
-          --simple-modal-content-padding: calc(2 * var(--hax-tray-margin, 4px))
+          --simple-modal-content-padding: calc(2 * var(--hax-tray-spacing-sm))
             0px 0px;
           --simple-modal-buttons-background: var(
             --hax-tray-background-color,

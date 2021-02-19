@@ -29,7 +29,7 @@ class HaxPreferencesDialog extends LitElement {
         }
         #link {
           font-size: 125%;
-          margin: calc(2 * var(--hax-tray-margin, 4px)) auto;
+          margin: calc(2 * var(--hax-tray-spacing-sm)) auto;
         }
         simple-icon-button {
           float: right;

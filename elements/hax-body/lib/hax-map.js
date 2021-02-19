@@ -4,6 +4,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { HaxTrayDetailHeadings } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 
 /**
  * `hax-map`
@@ -16,6 +17,7 @@ class HaxMap extends LitElement {
    */
   static get styles() {
     return [
+      ...HaxTrayDetailHeadings,
       css`
         :host {
           display: block;
@@ -24,7 +26,7 @@ class HaxMap extends LitElement {
           text-align: left;
         }
         table {
-          font-size: var(--hax-tray-font-size-sm, 12px);
+          font-size: var(--hax-tray-font-size-sm);
           border-collapse: collapse;
           width: 100%;
         }
@@ -32,9 +34,7 @@ class HaxMap extends LitElement {
         th,
         td {
           text-align: center;
-          border: 1px solid var(--hax-border-color, #ddd);
-        }
-        caption {
+          border: 1px solid var(--hax-tray-border-color);
         }
         th {
           font-weight: normal;
@@ -42,16 +42,6 @@ class HaxMap extends LitElement {
         td {
           font-weight: bold;
           font-size: 150%;
-        }
-        h5 {
-          color: var(--hax-tray-accent-color, #000);
-          margin: calc(2 * var(--hax-tray-margin, 4px)) 0
-            var(--hax-tray-margin, 4px);
-          font-size: var(
-            --hax-tray-font-size-lg,
-            calc(1.05 * var(--hax-tray-font-size, 16px))
-          );
-          text-transform: capitalize;
         }
         ul {
           list-style: none;
@@ -62,24 +52,8 @@ class HaxMap extends LitElement {
           margin: 0;
           padding: 0;
         }
-        hax-toolbar-item {
-          --simple-toolbar-button-justify: flex-start;
-          --simple-toolbar-button-hover-color: var(
-            --hax-tray-accent-color,
-            #000
-          );
-          --simple-toolbar-button-hover-border-color: var(
-            --hax-tray-accent-color,
-            #000
-          );
-          --simple-toolbar-button-hover-toggled-border-color: var(
-            --hax-tray-accent-color,
-            #000
-          );
-          --simple-toolbar-button-toggled-color: var(
-            --hax-tray-accent-color,
-            #000
-          );
+        li > hax-toolbar-item {
+          width: 100%;
         }
       `,
     ];
@@ -189,6 +163,7 @@ class HaxMap extends LitElement {
             return html`
               <li>
                 <hax-toolbar-item
+                  align-horizontal="left"
                   @click="${(e) => this.goToItem(index)}"
                   data-index="${index}"
                   icon="${element.icon}"

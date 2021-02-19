@@ -9,7 +9,7 @@ var _litElement = require("lit-element/lit-element.js");
 
 var _simpleToolbarButton = require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js");
 
-var _haxUiStyles = require("./hax-ui-styles.js");
+var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {

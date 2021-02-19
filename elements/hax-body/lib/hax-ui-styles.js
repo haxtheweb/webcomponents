@@ -7,7 +7,7 @@ export const HaxTrayText = [
       --hax-tray-font-size: 16px;
       --hax-tray-font-size-sm: 13px;
       --hax-tray-font-size-xs: 12px;
-      --hax-tray-font-size-lg: calc(1.05 * var(--hax-tray-font-size, 16px));
+      --hax-tray-font-size-lg: calc(1.1 * var(--hax-tray-font-size, 16px));
       --hax-tray-font-size-xl: calc(1.2 * var(--hax-tray-font-size, 16px));
     }
   `,
@@ -200,7 +200,7 @@ export const HaxTrayButtonTheme = [
     }
 
     ::part(label) {
-      margin: var(--hax-tray-margin, 4px);
+      margin: var(--hax-tray-spacing-sm);
     }
   `,
 ];
@@ -222,7 +222,8 @@ export const HaxTrayHexagon = [
 
 export const HaxTraySimpleFields = [
   css`
-    :host {
+    simple-fields,
+    #tray-detail * {
       --simple-fields-field-margin: calc(2 * var(--hax-tray-font-size));
       --simple-fields-font-size: var(--hax-tray-font-size);
       --simple-fields-line-height: 135%;
@@ -233,6 +234,7 @@ export const HaxTraySimpleFields = [
       --simple-fields-margin: var(--hax-tray-spacing);
       --simple-fields-font-family: var(--hax-tray-font-family);
       --simple-fields-color: var(--hax-tray-text-color);
+      --simple-fields-accent-color: var(--hax-tray-accent-color);
       --simple-fields-background-color: var(--hax-tray-background-color);
       --simple-fields-error-color: var(--hax-tray-danger-color-secondary);
       --simple-fields-secondary-accent-color: var(
@@ -244,6 +246,7 @@ export const HaxTraySimpleFields = [
       --a11y-tabs-horizontal-background: var(--a11y-tabs-background);
       --a11y-tabs-content-background: var(--a11y-tabs-background);
       --a11y-tabs-color: var(--hax-tray-color-tertiary);
+      --a11y-tabs-focus-color: var(--hax-tray-accent-color);
       --a11y-tabs-faded-color: var(--hax-tray-color);
       --a11y-tabs-border-color: var(--hax-tray-border-color);
       --a11y-tabs-faded-background: var(--hax-tray-background-color);
@@ -288,6 +291,24 @@ export const HaxTrayDetail = [
       --hax-tray-detail-topic-font-size: var(--hax-tray-font-size-lg);
       --hax-tray-detail-subtopic-font-size: var(--hax-tray-font-size);
       --hax-tray-detail-heading-text-transform: capitalize;
+      --hax-tray-detail-heading-font-weight: normal;
+    }
+    #tray-detail h4 {
+      font-size: var(--hax-tray-detail-title-font-size);
+    }
+    #tray-detail h5 {
+      font-size: var(--hax-tray-detail-topic-font-size);
+    }
+    #tray-detail h6 {
+      font-size: var(--hax-tray-detail-subtopic-font-size);
+    }
+    #tray-detail h4,
+    #tray-detail h5,
+    #tray-detail h6 {
+      text-transform: var(--hax-tray-detail-heading-text-transform);
+      font-weight: var(--hax-tray-detail-heading-font-weight);
+      margin: var(--hax-tray-spacing-sm) 0 var(--hax-tray-spacing-xs);
+      color: var(--hax-tray-accent-color);
     }
     #content-add,
     #tray-detail[selected-detail="content-add"] {
@@ -345,8 +366,8 @@ export const HaxTrayDetail = [
         #007ffc
       );
       --hax-tray-accent-color-contrast: var(
-        --simple-colors-default-theme-light-blue-2,
-        #a1d1ff
+        --simple-colors-default-theme-light-blue-1,
+        #ddefff
       );
     }
     #advanced-settings,
@@ -363,22 +384,6 @@ export const HaxTrayDetail = [
         --simple-colors-default-theme-green-2,
         #acffc9
       );
-    }
-    #tray-detail h4 {
-      font-size: var(--hax-tray-detail-title-font-size);
-    }
-    #tray-detail h5 {
-      font-size: var(--hax-tray-detail-topic-font-size);
-    }
-    #tray-detail h6 {
-      font-size: var(--hax-tray-detail-subtopic-font-size);
-    }
-    #tray-detail h4,
-    #tray-detail h5,
-    #tray-detail h6 {
-      text-transform: var(--hax-tray-detail-heading-text-transform);
-      color: var(--hax-tray-accent-color);
-      margin: var(--hax-tray-spacing-sm) 0 var(--hax-tray-spacing-xs);
     }
     @media (prefers-color-scheme: dark) {
       #content-add,
@@ -473,8 +478,9 @@ export const HaxTrayDetailHeadings = [
     h4,
     h5,
     h6 {
-      text-transform: var(--hax-tray-detail-heading-text-transform);
       color: var(--hax-tray-accent-color);
+      text-transform: var(--hax-tray-detail-heading-text-transform);
+      font-weight: var(--hax-tray-detail-heading-font-weight);
       margin: var(--hax-tray-spacing-sm) 0 var(--hax-tray-spacing-xs);
     }
   `,
@@ -502,8 +508,8 @@ export const HaxTraySimpleModal = [
 export const HaxTrayBaseStyles = [
   ...HaxTrayText,
   ...HaxTraySpacing,
-  ...HaxTrayColors,
   ...HaxTraySimpleFields,
   ...HaxTraySimpleTooltip,
   ...HaxTrayHexagon,
+  ...HaxTrayColors,
 ];

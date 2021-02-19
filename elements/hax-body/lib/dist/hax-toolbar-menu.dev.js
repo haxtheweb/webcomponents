@@ -9,7 +9,7 @@ var _litElement = require("lit-element/lit-element.js");
 
 var _simpleToolbarMenu = require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js");
 
-var _haxUiStyles = require("./hax-ui-styles.js");
+var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -80,7 +80,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        ::slotted(*) {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-label-white-space: nowrap;\n          --simple-toolbar-button-padding: 0 var(--hax-tray-margin, 4px);\n        }\n      ",
+    "\n        ::slotted(*) {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-label-white-space: nowrap;\n          --simple-toolbar-button-padding: 0 var(--hax-tray-spacing-sm);\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {

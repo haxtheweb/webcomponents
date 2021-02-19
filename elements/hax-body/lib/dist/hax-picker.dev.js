@@ -73,7 +73,7 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n      <simple-button-grid>\n        ",
+    '\n      <simple-button-grid cols="100px">\n        ',
     "\n      </simple-button-grid>\n    ",
   ]);
 
@@ -86,7 +86,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n      simple-button-grid {\n        overflow-y: auto;\n        margin: var(--hax-tray-margin, 4px);\n        --simple-button-grid-cols: 100px;\n      }\n      hax-tray-button {\n        font-size: var(--hax-tray-font-size-xs, 11px);\n        --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n        --simple-toolbar-button-border-color: var(\n          --hax-toolbar-border-color,\n          #ddd\n        );\n        --simple-toolbar-button-hover-color: var(\n          --hax-tray-accent-color,\n          #000\n        );\n        --simple-toolbar-button-hover-border-color: var(\n          --hax-tray-accent-color,\n          #000\n        );\n        --simple-toolbar-button-hover-border-color: var(\n          --hax-tray-accent-color,\n          #000\n        );\n        --simple-toolbar-button-flex: 1 0 auto;\n      }\n      ",
+    "\n        simple-button-grid {\n          overflow-y: auto;\n          margin: var(--hax-tray-spacing-sm);\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {

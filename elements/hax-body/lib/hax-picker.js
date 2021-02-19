@@ -18,29 +18,7 @@ class HaxPicker extends LitElement {
       css`
         simple-button-grid {
           overflow-y: auto;
-          margin: var(--hax-tray-margin, 4px);
-          --simple-button-grid-cols: 100px;
-        }
-        hax-tray-button {
-          font-size: var(--hax-tray-font-size-xs, 11px);
-          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);
-          --simple-toolbar-button-border-color: var(
-            --hax-toolbar-border-color,
-            #ddd
-          );
-          --simple-toolbar-button-hover-color: var(
-            --hax-tray-accent-color,
-            #000
-          );
-          --simple-toolbar-button-hover-border-color: var(
-            --hax-tray-accent-color,
-            #000
-          );
-          --simple-toolbar-button-hover-border-color: var(
-            --hax-tray-accent-color,
-            #000
-          );
-          --simple-toolbar-button-flex: 1 0 auto;
+          margin: var(--hax-tray-spacing-sm);
         }
       `,
     ];
@@ -53,7 +31,7 @@ class HaxPicker extends LitElement {
   }
   render() {
     return html`
-      <simple-button-grid>
+      <simple-button-grid cols="100px">
         ${this.selectionList.map(
           (element, index) => html`
             <hax-tray-button

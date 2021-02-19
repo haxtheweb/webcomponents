@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
-import { HaxTrayButtonTheme } from "./hax-ui-styles.js";
+import { HaxTrayButtonTheme } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 
 const HaxToolbarItemBehaviors = function (SuperClass) {
   return class extends SimpleToolbarButtonBehaviors(SuperClass) {

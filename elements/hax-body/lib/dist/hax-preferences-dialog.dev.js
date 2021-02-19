@@ -129,7 +129,7 @@ function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <div style="height: 100%; overflow: auto;" class="pref-container">\n        <simple-fields\n          id="settingsform"\n          .schematizer="',
     '"\n          .elementizer="',
-    '"\n        >\n        </simple-fields>\n      </div>\n      <br>\n      ',
+    '"\n        >\n        </simple-fields>\n      </div>\n      <br />\n      ',
     "\n    ",
   ]);
 
@@ -142,7 +142,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n        }\n        .pref-container {\n          text-align: left;\n        }\n        #link {\n          font-size: 125%;\n          margin: calc(2 * var(--hax-tray-margin,4px)) auto;\n        }\n        simple-icon-button {\n          float: right;\n        }\n      ",
+    "\n        :host {\n          display: block;\n        }\n        .pref-container {\n          text-align: left;\n        }\n        #link {\n          font-size: 125%;\n          margin: calc(2 * var(--hax-tray-spacing-sm)) auto;\n        }\n        simple-icon-button {\n          float: right;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
