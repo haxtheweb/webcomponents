@@ -120,7 +120,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#001333",
       ],
       "light-blue": [
-        "#ddefff",
+        "#cde8ff",
         "#a1d1ff",
         "#92c9ff",
         "#65b3ff",

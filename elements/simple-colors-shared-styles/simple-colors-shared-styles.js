@@ -125,7 +125,7 @@ class SimpleColorsSharedStyles extends LitElement {
           --simple-colors-default-theme-blue-11: #001947;
           --simple-colors-default-theme-blue-12: #001333;
 
-          --simple-colors-default-theme-light-blue-1: #ddefff;
+          --simple-colors-default-theme-light-blue-1: #cde8ff;
           --simple-colors-default-theme-light-blue-2: #a1d1ff;
           --simple-colors-default-theme-light-blue-3: #92c9ff;
           --simple-colors-default-theme-light-blue-4: #65b3ff;
@@ -384,7 +384,7 @@ class SimpleColorsSharedStyles extends LitElement {
           --simple-colors-fixed-theme-blue-11: #001947;
           --simple-colors-fixed-theme-blue-12: #001333;
 
-          --simple-colors-fixed-theme-light-blue-1: #ddefff;
+          --simple-colors-fixed-theme-light-blue-1: #cde8ff;
           --simple-colors-fixed-theme-light-blue-2: #a1d1ff;
           --simple-colors-fixed-theme-light-blue-3: #92c9ff;
           --simple-colors-fixed-theme-light-blue-4: #65b3ff;
@@ -687,7 +687,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#001333",
       ],
       "light-blue": [
-        "#ddefff",
+        "#cde8ff",
         "#a1d1ff",
         "#92c9ff",
         "#65b3ff",

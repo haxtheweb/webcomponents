@@ -134,7 +134,7 @@ const css = html`
       --simple-colors-default-theme-light-blue-9: #65b3ff;
       --simple-colors-default-theme-light-blue-10: #92c9ff;
       --simple-colors-default-theme-light-blue-11: #a1d1ff;
-      --simple-colors-default-theme-light-blue-12: #ddefff;
+      --simple-colors-default-theme-light-blue-12: #cde8ff;
 
       --simple-colors-default-theme-cyan-1: #001a20;
       --simple-colors-default-theme-cyan-2: #002c38;
@@ -604,7 +604,7 @@ const css = html`
 
     :host([accent-color="light-blue"]),
     :host [accent-color="light-blue"] {
-      --simple-colors-default-theme-accent-1: #ddefff;
+      --simple-colors-default-theme-accent-1: #cde8ff;
       --simple-colors-default-theme-accent-2: #a1d1ff;
       --simple-colors-default-theme-accent-3: #92c9ff;
       --simple-colors-default-theme-accent-4: #65b3ff;
@@ -616,7 +616,7 @@ const css = html`
       --simple-colors-default-theme-accent-10: #003f7d;
       --simple-colors-default-theme-accent-11: #002850;
       --simple-colors-default-theme-accent-12: #001b36;
-      --simple-colors-fixed-theme-accent-1: #ddefff;
+      --simple-colors-fixed-theme-accent-1: #cde8ff;
       --simple-colors-fixed-theme-accent-2: #a1d1ff;
       --simple-colors-fixed-theme-accent-3: #92c9ff;
       --simple-colors-fixed-theme-accent-4: #65b3ff;
@@ -645,7 +645,7 @@ const css = html`
       --simple-colors-default-theme-accent-9: #65b3ff;
       --simple-colors-default-theme-accent-10: #92c9ff;
       --simple-colors-default-theme-accent-11: #a1d1ff;
-      --simple-colors-default-theme-accent-12: #ddefff;
+      --simple-colors-default-theme-accent-12: #cde8ff;
     }
 
     :host([accent-color="cyan"]),
