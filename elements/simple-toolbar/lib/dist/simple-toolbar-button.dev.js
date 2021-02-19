@@ -84,7 +84,7 @@ function _templateObject11() {
 
 function _templateObject10() {
   var data = _taggedTemplateLiteral([
-    '\n          :host {\n            display: inline-flex;\n            white-space: nowrap;\n            transition: all 0.5s;\n            z-index: 1;\n          }\n          :host(:hover),\n          :host(:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100) !important;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          button[part="button"] {\n            display: flex;\n            margin: 0;\n            white-space: nowrap;\n            width: 100%;\n            height: 100%;\n          }\n        ',
+    '\n          :host {\n            display: inline-flex;\n            white-space: nowrap;\n            transition: all 0.5s;\n            z-index: 1;\n          }\n          :host(:hover),\n          :host(:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100) !important;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n            overflow: hidden;\n          }\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          button[part="button"] {\n            display: flex;\n            margin: 0;\n            white-space: nowrap;\n            width: 100%;\n            height: 100%;\n          }\n        ',
   ]);
 
   _templateObject10 = function _templateObject10() {
@@ -185,8 +185,8 @@ function _templateObject4() {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '<span id="label" class="',
-    '" part="label"\n            >',
+    '<span\n            id="label"\n            class="',
+    '"\n            part="label"\n            >',
     "</span\n          >",
   ]);
 

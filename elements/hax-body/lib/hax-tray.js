@@ -169,7 +169,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           overflow-y: auto;
           max-height: 100vh;
           border: 1px solid var(--hax-tray-border-color);
-          border-top: 3px solid var(--hax-tray-accent-color);
           max-width: calc(
             var(--hax-tray-width) - 2 * var(--hax-tray-spacing-xs)
           );
@@ -192,7 +191,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           border-bottom: none;
           display: flex;
           border: 1px solid var(--hax-tray-border-color);
-          border-bottom: none;
           background-color: var(--hax-tray-background-color);
           width: var(--hax-tray-width);
           transition: all 0.5ms ease-in-out;

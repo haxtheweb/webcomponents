@@ -556,6 +556,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             visibility: hidden;
             opacity: 0;
             height: 0;
+            overflow: hidden;
           }
           :host([disabled]) {
             pointer-events: none;

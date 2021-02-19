@@ -235,6 +235,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           position="${this.position}"
           position-align="${this.positionAlign}"
           .offset="${this.offset}"
+          fit-to-visible-bounds
           part="menu-outer"
         >
           <ul

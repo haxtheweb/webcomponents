@@ -78,62 +78,121 @@ export const HaxTrayButtonTheme = [
       font-size: var(--hax-tray-font-size-md);
       padding: var(--hax-tray-spacing-md);
     }
-    :host([large]) button[part="button"] {
-      font-size: var(--hax-tray-font-size);
-      padding: var(--hax-tray-spacing);
-      border-width: 2px;
-    }
     absolute-position-behavior,
     button[part="button"] {
       color: var(--hax-tray-color-secondary);
       background-color: var(--hax-tray-background-color);
-      border-width: 1px;
-      border-style: solid;
-      border-color: transparent;
+      border: 1px solid transparent;
     }
     absolute-position-behavior {
-      border-color: var(--hax-tray-border-color);
+      border: 1px solid var(--hax-tray-border-color);
     }
     button[part="button"][aria-pressed="true"] {
       color: var(--hax-tray-accent-color-secondary);
-      border-color: var(--hax-tray-accent-color-secondary);
+      border: 1px solid var(--hax-tray-accent-color-secondary);
     }
     :host(:hover) button[part="button"],
     :host(:focus-within) button[part="button"] {
       background-color: var(--hax-tray-accent-color-contrast);
     }
+    :host([feature]) button[part="button"],
+    :host([danger]) button[part="button"] {
+      color: var(--hax-tray-background-color-secondary);
+    }
     :host([feature]) button[part="button"] {
       background-color: var(--hax-tray-accent-color);
-      border-color: var(--hax-tray-accent-color);
-      color: var(--hax-tray-background-color);
+      border: 1px solid var(--hax-tray-accent-color);
+    }
+    :host([danger]) button[part="button"] {
+      background-color: var(--hax-tray-danger-color);
+      border: 1px solid var(--hax-tray-danger-color);
+    }
+    :host([feature]) button[part="button"][aria-pressed="true"],
+    :host([danger]) button[part="button"][aria-pressed="true"] {
+      color: var(--hax-tray-background-color-tertiary);
     }
     :host([feature]) button[part="button"][aria-pressed="true"] {
       background-color: var(--hax-tray-accent-color-secondary);
-      border-color: var(--hax-tray-accent-color);
-      color: var(--hax-tray-background-color-secondary);
+      border: 1px solid var(--hax-tray-accent-color);
     }
-    :host([feature]):hover button[part="button"],
-    :host([feature]):focus-within button[part="button"] {
+    :host([danger]) button[part="button"][aria-pressed="true"] {
+      background-color: var(--hax-tray-danger-color-secondary);
+      border: 1px solid var(--hax-tray-danger-color);
+    }
+    :host([feature]:hover) button[part="button"],
+    :host([feature]:focus-within) button[part="button"],
+    :host([danger]:hover) button[part="button"],
+    :host([danger]:focus-within) button[part="button"] {
+      color: var(--hax-tray-background-color);
+    }
+    :host([feature]:hover) button[part="button"],
+    :host([feature]:focus-within) button[part="button"] {
       background-color: var(--hax-tray-accent-color-secondary);
-      border-color: var(--hax-tray-accent-color-secondary);
-      color: var(--hax-tray-background-color-tertiary);
+      border: 1px solid var(--hax-tray-accent-color-secondary);
+    }
+    :host([danger]:hover) button[part="button"],
+    :host([danger]:focus-within) button[part="button"] {
+      background-color: var(--hax-tray-danger-color-secondary);
+      border: 1px solid var(--hax-tray-danger-color-secondary);
+    }
+    :host([large]) button[part="button"] {
+      font-size: var(--hax-tray-font-size);
+      padding: var(--hax-tray-spacing);
+      border-width: 2px;
     }
     @media (prefers-color-scheme: dark) {
       :host(:hover) button[part="button"],
       :host(:focus-within) button[part="button"] {
         background-color: var(--hax-tray-background-color-tertiary);
       }
+      button[part="button"][aria-pressed="true"] {
+        color: var(--hax-tray-accent-color-secondary);
+        border: 1px solid var(--hax-tray-accent-color-secondary);
+      }
       :host(:hover) button[part="button"]:not([aria-pressed="true"]),
       :host(:focus-within) button[part="button"]:not([aria-pressed="true"]) {
         color: var(--hax-tray-color);
       }
-      :host([feature]) button[part="button"][aria-pressed="true"] {
+      :host([feature]) button[part="button"],
+      :host([danger]) button[part="button"] {
         color: var(--hax-tray-background-color-secondary);
       }
-      :host([feature]):hover button[part="button"],
-      :host([feature]):focus-within button[part="button"] {
+      :host([feature]) button[part="button"] {
         background-color: var(--hax-tray-accent-color-secondary);
+        border: 1px solid var(--hax-tray-accent-color);
+      }
+      :host([danger]) button[part="button"] {
+        background-color: var(--hax-tray-danger-color-secondary);
+        border: 1px solid var(--hax-tray-danger-color);
+      }
+      :host([feature]) button[part="button"][aria-pressed="true"],
+      :host([danger]) button[part="button"][aria-pressed="true"] {
         color: var(--hax-tray-background-color-tertiary);
+      }
+      :host([feature]) button[part="button"][aria-pressed="true"] {
+        background-color: var(--hax-tray-accent-color-secondary);
+        border: 1px solid var(--hax-tray-accent-color);
+      }
+      :host([danger]) button[part="button"][aria-pressed="true"] {
+        background-color: var(--hax-tray-danger-color-secondary);
+        border: 1px solid var(--hax-tray-danger-color);
+      }
+      :host([feature]:hover) button[part="button"],
+      :host([feature]:focus-within) button[part="button"],
+      :host([danger]:hover) button[part="button"],
+      :host([danger]:focus-within) button[part="button"] {
+        color: var(--hax-tray-background-color);
+      }
+      :host([feature]:hover) button[part="button"],
+      :host([feature]:focus-within) button[part="button"] {
+        background-color: var(--hax-tray-accent-color);
+      }
+      :host([danger]:hover) button[part="button"],
+      :host([danger]:focus-within) button[part="button"] {
+        background-color: var(--hax-tray-danger-color);
+      }
+      :host([large]) button[part="button"] {
+        border-width: 2px;
       }
     }
 
