@@ -23,7 +23,7 @@ export const HaxTraySpacing = [
       --hax-tray-spacing-xl: calc(4 * var(--hax-tray-spacing-xs, 4px));
       --hax-tray-focus-z-index: 100000001;
       --simple-toolbar-focus-z-index: var(--hax-tray-focus-z-index);
-      --a11y-menu-button-z-index: var(--hax-tray-focus-z-index);
+      --a11y-menu-button-focus-z-index: var(--hax-tray-focus-z-index);
     }
   `,
 ];
@@ -109,7 +109,7 @@ export const HaxTrayButtonTheme = [
     }
     :host([feature]) button[part="button"][aria-pressed="true"],
     :host([danger]) button[part="button"][aria-pressed="true"] {
-      color: var(--hax-tray-background-color-tertiary);
+      color: var(--hax-tray-background-color);
     }
     :host([feature]) button[part="button"][aria-pressed="true"] {
       background-color: var(--hax-tray-accent-color-secondary);
@@ -140,6 +140,9 @@ export const HaxTrayButtonTheme = [
       padding: var(--hax-tray-spacing);
       border-width: 2px;
     }
+    :host([disabled]) button[part="button"][disabled] {
+      opacity: 0.5;
+    }
     @media (prefers-color-scheme: dark) {
       :host(:hover) button[part="button"],
       :host(:focus-within) button[part="button"] {
@@ -167,7 +170,7 @@ export const HaxTrayButtonTheme = [
       }
       :host([feature]) button[part="button"][aria-pressed="true"],
       :host([danger]) button[part="button"][aria-pressed="true"] {
-        color: var(--hax-tray-background-color-tertiary);
+        color: var(--hax-tray-background-color);
       }
       :host([feature]) button[part="button"][aria-pressed="true"] {
         background-color: var(--hax-tray-accent-color-secondary);

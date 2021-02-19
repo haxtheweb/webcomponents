@@ -58,6 +58,7 @@ class HaxPlateContext extends SimpleTourFinder(
           <simple-toolbar-menu-item slot="menuitem">
             <hax-context-item
               action
+              align-horizontal="left"
               ?disabled="${this.hasActiveEditingElement}"
               show-text-label
               role="menuitem"
@@ -69,6 +70,7 @@ class HaxPlateContext extends SimpleTourFinder(
           <simple-toolbar-menu-item slot="menuitem">
             <hax-context-item
               action
+              align-horizontal="left"
               ?disabled="${this.hasActiveEditingElement}"
               role="menuitem"
               show-text-label
@@ -145,6 +147,7 @@ class HaxPlateContext extends SimpleTourFinder(
             <hax-context-item
               action
               danger
+              align-horizontal="left"
               ?disabled="${this.hasActiveEditingElement}"
               show-text-label
               role="menuitem"

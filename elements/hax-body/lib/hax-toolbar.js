@@ -20,6 +20,10 @@ const HaxToolbarBehaviors = function (SuperClass) {
             flex: 0 0 auto;
             display: none;
           }
+          :host(:hover),
+          :host(:focus-within) {
+            z-index: var(--hax-tray-focus-z-index);
+          }
           :host(.hax-context-visible) {
             display: flex;
           }

@@ -161,6 +161,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
                 html` <simple-toolbar-menu-item slot="menuitem">
                   <hax-context-item-textop
                     action
+                    align-horizontal="left"
                     role="menuitem"
                     label="${val.text}"
                     show-text-label
@@ -325,6 +326,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
             <simple-toolbar-menu-item slot="menuitem">
               <hax-context-item
                 action
+                align-horizontal="left"
                 role="menuitem"
                 show-text-label
                 icon="hardware:keyboard-arrow-up"
@@ -335,6 +337,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
             <simple-toolbar-menu-item slot="menuitem">
               <hax-context-item
                 action
+                align-horizontal="left"
                 role="menuitem"
                 show-text-label
                 icon="hardware:keyboard-arrow-down"

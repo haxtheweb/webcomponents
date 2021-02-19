@@ -27,6 +27,10 @@ class HaxContextContainer extends LitElement {
           width: 100%;
           top: var(--hax-context-container-top, 0px);
         }
+        :host(:hover),
+        :host(:focus-within) {
+          z-index: var(--hax-tray-focus-z-index);
+        }
         :host([menus-visible]) {
           position: absolute;
           visibility: visible;
@@ -61,6 +65,7 @@ class HaxContextContainer extends LitElement {
 
   constructor() {
     super();
+    console.log(HaxTrayBaseStyles);
   }
   render() {
     return html`

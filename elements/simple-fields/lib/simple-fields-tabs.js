@@ -33,6 +33,12 @@ class SimpleFieldsTabs extends A11yTabs {
           --a11y-tabs-font-size: var(--simple-fields-detail-font-size, 12px);
           --a11y-tabs-color: var(--simple-fields-color, black);
           --a11y-tabs-focus-color: var(--simple-fields-color, black);
+          --a11y-tabs-faded-color: var(--simple-fields-disabled-color, #999);
+          --a11y-tabs-selected-color: var(
+            --simple-fields-accent-color,
+            #3f51b5
+          );
+          --a11y-tabs-background: var(--simple-fields-background-color, white);
           --a11y-tabs-border-color: var(
             --simple-fields-border-color-light,
             #ccc

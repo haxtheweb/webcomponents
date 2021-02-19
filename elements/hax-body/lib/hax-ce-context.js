@@ -73,6 +73,7 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
           <simple-toolbar-menu-item slot="menuitem">
             <hax-context-item
               action
+              align-horizontal="left"
               show-text-label
               role="menuitem"
               icon="hardware:keyboard-arrow-up"
@@ -83,6 +84,7 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
           <simple-toolbar-menu-item slot="menuitem">
             <hax-context-item
               action
+              align-horizontal="left"
               show-text-label
               role="menuitem"
               icon="hardware:keyboard-arrow-down"

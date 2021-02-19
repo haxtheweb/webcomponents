@@ -351,6 +351,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         <simple-toolbar-menu-item slot="menuitem">
           <hax-tray-button
             show-text-label
+            align-horizontal="left"
             voice-command="toggle alignment"
             id="toggle-element-align"
             event-name="toggle-element-align"
@@ -365,6 +366,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         <simple-toolbar-menu-item slot="menuitem">
           <hax-tray-button
             show-text-label
+            align-horizontal="left"
             voice-command="toggle alignment"
             id="toggle-element-align"
             event-name="toggle-element-align"
@@ -483,6 +485,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             <simple-toolbar-menu-item slot="menuitem">
               <hax-tray-button
                 danger
+                align-horizontal="left"
                 icon="close"
                 id="haxcancelbutton"
                 label="Cancel without saving"
