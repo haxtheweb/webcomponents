@@ -166,6 +166,9 @@ class A11yCollapse extends LitElement {
             max-height: var(--a11y-collapse-max-height, 200000000000vh);
             transition: max-height 0.75s ease;
           }
+          :host(:not([expanded])) #content {
+            display: none;
+          }
         }
       `,
     ];
