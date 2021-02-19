@@ -120,6 +120,18 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
     }
   };
 };
+/**
+ *
+ *
+ * @class SimpleToolbarMenu
+ * @extends {SimpleToolbarMenuBehaviors(LitElement)}
+ * @customElement
+ * @extends SimpleToolbarButtonBehaviors
+ * @extends LitElement
+ * @lit-html
+ * @lit-element
+ * @demo ./demo/menu.html
+ */
 class SimpleToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {}
 window.customElements.define(SimpleToolbarMenu.tag, SimpleToolbarMenu);
 export { SimpleToolbarMenu, SimpleToolbarMenuBehaviors };
