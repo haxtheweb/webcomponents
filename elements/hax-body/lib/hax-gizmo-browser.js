@@ -44,7 +44,7 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
   }
   render() {
     return html`
-      <div class="toolbar-inner">
+      <div class="toolbar-inner" part="toolbar">
         <simple-fields-field
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
@@ -52,9 +52,10 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
           label="Filter Content Types"
           type="text"
           auto-validate=""
+          part="filter"
         ></simple-fields-field>
       </div>
-      <simple-button-grid columns="3" always-expanded>
+      <simple-button-grid columns="3" always-expanded part="grid">
         ${this.filtered.map(
           (gizmo, i) => html`
             <hax-tray-button
@@ -70,6 +71,7 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
               data-demo-schema="true"
               icon-position="top"
               icon="${gizmo.icon}"
+              part="grid-button"
             ></hax-tray-button>
           `
         )}

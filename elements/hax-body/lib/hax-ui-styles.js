@@ -36,17 +36,17 @@ export const HaxTrayColors = [
 
       --hax-tray-background-color: #fff;
       --hax-tray-background-color-secondary: #e8e8e8;
-      --hax-tray-background-color-tertiary: #b0b8bb;
+      --hax-tray-background-color-faded: #b0b8bb;
+
+      --hax-tray-color-accent: #009dc7;
+      --hax-tray-color-accent-secondary: #007999;
       --hax-tray-background-color-accent: #ddf8ff;
 
+      --hax-tray-color-danger: #ee0000;
+      --hax-tray-color-danger-secondary: #850000;
+      --hax-tray-background-color-danger: #ffdddd;
+
       --hax-tray-border-color: #ddd;
-
-      --hax-tray-danger-color: #ee0000;
-      --hax-tray-danger-color-secondary: #850000;
-      --hax-tray-danger-color-contrast: #ffdddd;
-
-      --hax-tray-accent-color: #009dc7;
-      --hax-tray-accent-color-secondary: #007999;
     }
     @media (prefers-color-scheme: dark) {
       :host {
@@ -56,17 +56,17 @@ export const HaxTrayColors = [
 
         --hax-tray-background-color: #333;
         --hax-tray-background-color-secondary: #111;
-        --hax-tray-background-color-tertiary: #222;
+        --hax-tray-background-color-faded: #222;
+
+        --hax-tray-color-accent: #77e2ff;
+        --hax-tray-color-accent-secondary: #00c9ff;
+        --hax-tray-background-color-accent: #000;
+
+        --hax-tray-color-danger: #ff8f8f;
+        --hax-tray-color-danger-secondary: #ff2222;
+        --hax-tray-background-color-danger: #000;
 
         --hax-tray-border-color: #000;
-
-        --hax-tray-danger-color: #ff8f8f;
-        --hax-tray-danger-color-secondary: #ff2222;
-        --hax-tray-danger-color-contrast: #000;
-
-        --hax-tray-accent-color: #77e2ff;
-        --hax-tray-accent-color-secondary: #00c9ff;
-        --hax-tray-background-color-accent: #000;
       }
     }
   `,
@@ -83,45 +83,44 @@ export const HaxTrayButtonTheme = [
     }
     button[part="button"] {
       font-size: var(--hax-tray-font-size-sm);
-      padding: var(--hax-tray-spacing);
+      padding: var(--hax-tray-spacing-sm);
       color: var(--hax-tray-color);
       background-color: var(--hax-tray-background-color);
-      border: var(--hax-tray-border-width) var(--hax-tray-border-style)
-        var(--hax-tray-border-color);
+      border: 1px solid var(--hax-tray-border-color);
     }
     :host(:hover) button[part="button"],
     :host(:focus-within) button[part="button"] {
       color: var(--hax-tray-color);
       background-color: var(--hax-tray-background-color-accent);
-      border-color: var(--hax-tray-accent-color);
+      border-color: var(--hax-tray-color-accent);
     }
     button[part="button"][aria-pressed="true"] {
-      color: var(--hax-tray-accent-color-secondary);
-      border-color: var(--hax-tray-accent-color-secondary);
+      color: var(--hax-tray-color-accent-secondary);
+      border-color: var(--hax-tray-color-accent-secondary);
     }
     :host([feature]) button[part="button"],
     :host([danger]) button[part="button"] {
       color: var(--hax-tray-background-color-secondary);
     }
     :host([feature]) button[part="button"] {
-      background-color: var(--hax-tray-accent-color);
-      border-color: var(--hax-tray-accent-color);
+      background-color: var(--hax-tray-color-accent);
+      border-color: var(--hax-tray-color-accent);
     }
     :host([danger]) button[part="button"] {
-      background-color: var(--hax-tray-danger-color);
-      border-color: var(--hax-tray-danger-color);
+      background-color: var(--hax-tray-color-danger);
+      border-color: var(--hax-tray-color-danger);
     }
     :host([feature]) button[part="button"][aria-pressed="true"],
     :host([danger]) button[part="button"][aria-pressed="true"] {
       color: var(--hax-tray-background-color);
     }
     :host([feature]) button[part="button"][aria-pressed="true"] {
-      background-color: var(--hax-tray-accent-color-secondary);
-      border-color: var(--hax-tray-accent-color);
+      background-color: var(--hax-tray-color-accent-secondary);
+      border-color: var(--hax-tray-color-accent);
     }
     :host([danger]) button[part="button"][aria-pressed="true"] {
-      background-color: var(--hax-tray-danger-color-secondary);
-      border-color: var(--hax-tray-danger-color);
+      background-color: var(--hax-tray-color-danger-secondary);
+      border-color: var(--hax-tray-color-danger);
     }
     :host([feature]:hover) button[part="button"],
     :host([feature]:focus-within) button[part="button"],
@@ -131,13 +130,13 @@ export const HaxTrayButtonTheme = [
     }
     :host([feature]:hover) button[part="button"],
     :host([feature]:focus-within) button[part="button"] {
-      background-color: var(--hax-tray-accent-color-secondary);
-      border-color: var(--hax-tray-accent-color-secondary);
+      background-color: var(--hax-tray-color-accent-secondary);
+      border-color: var(--hax-tray-color-accent-secondary);
     }
     :host([danger]:hover) button[part="button"],
     :host([danger]:focus-within) button[part="button"] {
-      background-color: var(--hax-tray-danger-color-secondary);
-      border-color: var(--hax-tray-danger-color-secondary);
+      background-color: var(--hax-tray-color-danger-secondary);
+      border-color: var(--hax-tray-color-danger-secondary);
     }
     :host([large]) button[part="button"] {
       font-size: var(--hax-tray-font-size);
@@ -146,6 +145,7 @@ export const HaxTrayButtonTheme = [
     }
     :host([disabled]) button[part="button"][disabled] {
       opacity: 0.5;
+      background-color: rgba(127, 127, 127, 0.2);
     }
 
     ::part(label) {
@@ -160,7 +160,7 @@ export const HaxTrayHexagon = [
       display: none;
       margin: 0 auto;
       z-index: 1000;
-      --hexagon-color: var(--hax-tray-accent-color);
+      --hexagon-color: var(--hax-tray-color-accent);
     }
     hexagon-loader[loading] {
       display: block;
@@ -168,6 +168,8 @@ export const HaxTrayHexagon = [
     }
   `,
 ];
+
+export const HaxTrayUploadField = [];
 
 export const HaxTraySimpleFields = [
   css`
@@ -178,35 +180,94 @@ export const HaxTraySimpleFields = [
       --simple-fields-line-height: 135%;
       --simple-fields-detail-font-size: var(--hax-tray-font-size-sm);
       --simple-fields-detail-line-height: 120%;
-      --simple-fields-meta-font-size: var(--hax-tray-font-size-xs);
-      --simple-fields-meta-line-height: 120%;
       --simple-fields-margin: var(--hax-tray-spacing);
       --simple-fields-font-family: var(--hax-tray-font-family);
       --simple-fields-color: var(--hax-tray-text-color);
-      --simple-fields-accent-color: var(--hax-tray-accent-color);
-      --simple-fields-error-color: var(--hax-tray-danger-color-secondary);
+      --simple-fields-accent-color: var(--hax-tray-color-accent);
+      --simple-fields-error-color: var(--hax-tray-color-danger-secondary);
       --simple-fields-secondary-accent-color: var(
-        --hax-tray-accent-color-secondary
+        --hax-tray-color-accent-secondary
       );
       --simple-fields-border-color: var(--hax-tray-color-faded);
       --simple-toolbar-focus-z-index: var(--hax-tray-focus-z-index);
-      --a11y-tabs-horizontal-background: var(--a11y-tabs-background);
-      --a11y-tabs-horizontal-button-padding: var(--hax-tray-spacing-xs);
-      --a11y-tabs-border-radius: 3px;
-      --a11y-tabs-horizontal-border-radius: var(--a11y-tabs-border-radius);
-      --a11y-tabs-vertical-border-radius: var(--a11y-tabs-border-radius);
-      --a11y-tabs-content-padding: var(--hax-tray-spacing);
-      --a11y-tabs-button-padding: var(--hax-tray-spacing-xs);
-      --a11y-tabs-vertical-button-padding: var(--hax-tray-spacing-xs);
-      --a11y-tabs-border-color: transparent;
-      --a11y-tabs-faded-background: var(--hax-tray-background-color-tertiary);
-      --a11y-tabs-faded-color: var(--hax-tray-color-focus);
-      --a11y-tabs-disabled-background: transparent;
-      --a11y-tabs-disabled-color: var(--hax-tray-border-color);
-      --a11y-tabs-border-accent: transparent;
-      /*--a11y-tabs-color: var(--hax-tray-color-faded);
-      --a11y-tabs-focus-color: var(--hax-tray-accent-color);
-      ;*/
+    }
+    simple-fields *::part(field-desc),
+    hax-tray-upload::part(description),
+    hax-upload-field::part(description) {
+      opacity: 0.7;
+      font-size: var(--hax-tray-font-size-xs);
+      line-height: 120%;
+    }
+    simple-fields *:focus-within::part(field-desc),
+    hax-upload-field:focus-within::part(description),
+    hax-tray-upload:focus-within::part(description) {
+      opacity: 1;
+    }
+    simple-fields-tabs::part(content) {
+      padding: var(--hax-tray-spacing-sm) 0 0;
+      border: none;
+      margin-left: calc(0 - var(--hax-tray-spacing-sm));
+      margin-right: calc(0 - var(--hax-tray-spacing-sm));
+    }
+    simple-fields-tabs::part(tab),
+    simple-fields-tabs::part(tab-active),
+    simple-fields-tabs::part(tab-disabled),
+    hax-tray-upload::part(option-icon),
+    hax-upload-field::part(option-icon),
+    hax-tray-upload::part(option-icon-selected),
+    hax-upload-field::part(option-icon-selected) {
+      border: 1px solid var(--hax-tray-border-color);
+      text-decoration: none;
+      border-radius: 3px;
+      color: var(--hax-tray-color);
+      background-color: var(--hax-tray-background-color);
+      outline: unset;
+    }
+    simple-fields-tabs::part(tab),
+    simple-fields-tabs::part(tab-active),
+    simple-fields-tabs::part(tab-disabled) {
+      text-transform: capitalize;
+      font-size: var(--hax-tray-font-size-sm);
+      padding: var(--hax-tray-spacing-xs);
+      flex: 1 1 auto;
+    }
+    simple-fields-tabs::part(tab):hover,
+    simple-fields-tabs::part(tab):focus,
+    hax-tray-upload::part(option-icon):hover,
+    hax-upload-field::part(option-icon):hover,
+    hax-tray-upload::part(option-icon):focus,
+    hax-upload-field::part(option-icon):focus {
+      color: var(--hax-tray-color);
+      background-color: var(--hax-tray-background-color-accent);
+      border-color: var(--hax-tray-color-accent);
+    }
+    simple-fields-tabs::part(tab-active),
+    hax-tray-upload::part(option-icon-selected),
+    hax-upload-field::part(option-icon-selected) {
+      background-color: var(--hax-tray-background-color);
+      color: var(--hax-tray-color-accent-secondary);
+      border-color: var(--hax-tray-color-accent-secondary);
+    }
+    simple-fields-tabs::part(tab-disabled) {
+      opacity: 0.5;
+      background-color: rgba(127, 127, 127, 0.2);
+    }
+    simple-fields-tab {
+      padding: 0;
+    }
+    simple-fields *::part(fieldset),
+    hax-tray-upload::part(fieldset),
+    hax-upload-field::part(fieldset) {
+      border-color: rgba(127, 127, 127, 0.2);
+    }
+    simple-fields *::part(legend),
+    hax-tray-upload::part(legend),
+    hax-upload-field::part(legend) {
+      font-size: var(--hax-tray-font-size-xs);
+    }
+    hax-tray-upload,
+    hax-upload-field {
+      color: var(--hax-tray-text-color);
     }
   `,
 ];
@@ -233,8 +294,17 @@ export const HaxTrayDetail = [
       --hax-tray-detail-heading-text-transform: capitalize;
       --hax-tray-detail-heading-font-weight: normal;
     }
+    #tray-detail h4,
+    #tray-detail h5,
+    #tray-detail h6 {
+      text-transform: var(--hax-tray-detail-heading-text-transform);
+      font-weight: var(--hax-tray-detail-heading-font-weight);
+      margin: var(--hax-tray-spacing-lg) 0 var(--hax-tray-spacing-xs);
+      color: var(--hax-tray-color-accent);
+    }
     #tray-detail h4 {
       font-size: var(--hax-tray-detail-title-font-size);
+      margin: var(--hax-tray-spacing-sm) 0 var(--hax-tray-spacing-lg);
     }
     #tray-detail h5 {
       font-size: var(--hax-tray-detail-topic-font-size);
@@ -242,18 +312,10 @@ export const HaxTrayDetail = [
     #tray-detail h6 {
       font-size: var(--hax-tray-detail-subtopic-font-size);
     }
-    #tray-detail h4,
-    #tray-detail h5,
-    #tray-detail h6 {
-      text-transform: var(--hax-tray-detail-heading-text-transform);
-      font-weight: var(--hax-tray-detail-heading-font-weight);
-      margin: var(--hax-tray-spacing-sm) 0 var(--hax-tray-spacing-xs);
-      color: var(--hax-tray-accent-color);
-    }
     #content-add,
     #tray-detail[selected-detail="content-add"] {
-      --hax-tray-accent-color: var(--simple-colors-default-theme-purple-8);
-      --hax-tray-accent-color-secondary: var(
+      --hax-tray-color-accent: var(--simple-colors-default-theme-purple-8);
+      --hax-tray-color-accent-secondary: var(
         --simple-colors-default-theme-purple-7
       );
       --hax-tray-background-color-accent: var(
@@ -262,8 +324,8 @@ export const HaxTrayDetail = [
     }
     #content-edit,
     #tray-detail[selected-detail="content-edit"] {
-      --hax-tray-accent-color: var(--simple-colors-default-theme-pink-8);
-      --hax-tray-accent-color-secondary: var(
+      --hax-tray-color-accent: var(--simple-colors-default-theme-pink-8);
+      --hax-tray-color-accent-secondary: var(
         --simple-colors-default-theme-pink-7
       );
       --hax-tray-background-color-accent: var(
@@ -272,8 +334,8 @@ export const HaxTrayDetail = [
     }
     #media-add,
     #tray-detail[selected-detail="media-add"] {
-      --hax-tray-accent-color: var(--simple-colors-default-theme-indigo-8);
-      --hax-tray-accent-color-secondary: var(
+      --hax-tray-color-accent: var(--simple-colors-default-theme-indigo-8);
+      --hax-tray-color-accent-secondary: var(
         --simple-colors-default-theme-indigo-7
       );
       --hax-tray-background-color-accent: var(
@@ -282,8 +344,8 @@ export const HaxTrayDetail = [
     }
     #content-map,
     #tray-detail[selected-detail="content-map"] {
-      --hax-tray-accent-color: var(--simple-colors-default-theme-light-blue-8);
-      --hax-tray-accent-color-secondary: var(
+      --hax-tray-color-accent: var(--simple-colors-default-theme-light-blue-8);
+      --hax-tray-color-accent-secondary: var(
         --simple-colors-default-theme-light-blue-7
       );
       --hax-tray-background-color-accent: var(
@@ -292,8 +354,8 @@ export const HaxTrayDetail = [
     }
     #advanced-settings,
     #tray-detail[selected-detail="advanced-settings"] {
-      --hax-tray-accent-color: var(--simple-colors-default-theme-green-8);
-      --hax-tray-accent-color-secondary: var(
+      --hax-tray-color-accent: var(--simple-colors-default-theme-green-8);
+      --hax-tray-color-accent-secondary: var(
         --simple-colors-default-theme-green-7
       );
       --hax-tray-background-color-accent: var(
@@ -303,42 +365,42 @@ export const HaxTrayDetail = [
     @media (prefers-color-scheme: dark) {
       #content-add,
       #tray-detail[selected-detail="content-add"] {
-        --hax-tray-accent-color: var(--simple-colors-default-theme-purple-5);
-        --hax-tray-accent-color-secondary: var(
+        --hax-tray-color-accent: var(--simple-colors-default-theme-purple-5);
+        --hax-tray-color-accent-secondary: var(
           --simple-colors-default-theme-purple-3
         );
         --hax-tray-background-color-accent: #000;
       }
       #content-edit,
       #tray-detail[selected-detail="content-edit"] {
-        --hax-tray-accent-color: var(--simple-colors-default-theme-pink-5);
-        --hax-tray-accent-color-secondary: var(
+        --hax-tray-color-accent: var(--simple-colors-default-theme-pink-5);
+        --hax-tray-color-accent-secondary: var(
           --simple-colors-default-theme-pink-3
         );
         --hax-tray-background-color-accent: #000;
       }
       #media-add,
       #tray-detail[selected-detail="media-add"] {
-        --hax-tray-accent-color: var(--simple-colors-default-theme-indigo-5);
-        --hax-tray-accent-color-secondary: var(
+        --hax-tray-color-accent: var(--simple-colors-default-theme-indigo-5);
+        --hax-tray-color-accent-secondary: var(
           --simple-colors-default-theme-indigo-3
         );
         --hax-tray-background-color-accent: #000;
       }
       #content-map,
       #tray-detail[selected-detail="content-map"] {
-        --hax-tray-accent-color: var(
+        --hax-tray-color-accent: var(
           --simple-colors-default-theme-light-blue-5
         );
-        --hax-tray-accent-color-secondary: var(
+        --hax-tray-color-accent-secondary: var(
           --simple-colors-default-theme-light-blue-3
         );
         --hax-tray-background-color-accent: #000;
       }
       #advanced-settings,
       #tray-detail[selected-detail="advanced-settings"] {
-        --hax-tray-accent-color: var(--simple-colors-default-theme-green-5);
-        --hax-tray-accent-color-secondary: var(
+        --hax-tray-color-accent: var(--simple-colors-default-theme-green-5);
+        --hax-tray-color-accent-secondary: var(
           --simple-colors-default-theme-green-3
         );
         --hax-tray-background-color-accent: #000;
@@ -360,10 +422,10 @@ export const HaxTrayDetailHeadings = [
     h4,
     h5,
     h6 {
-      color: var(--hax-tray-accent-color);
+      color: var(--hax-tray-color-accent);
       text-transform: var(--hax-tray-detail-heading-text-transform);
       font-weight: var(--hax-tray-detail-heading-font-weight);
-      margin: var(--hax-tray-spacing-sm) 0 var(--hax-tray-spacing-xs);
+      margin: var(--hax-tray-spacing-lg) 0 var(--hax-tray-spacing-xs);
     }
   `,
 ];

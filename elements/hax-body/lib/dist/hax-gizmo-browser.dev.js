@@ -73,7 +73,7 @@ function _templateObject3() {
     '"\n              label="',
     '"\n              event-name="insert-tag"\n              event-data="',
     '"\n              data-demo-schema="true"\n              icon-position="top"\n              icon="',
-    '"\n            ></hax-tray-button>\n          ',
+    '"\n              part="grid-button"\n            ></hax-tray-button>\n          ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -85,8 +85,8 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <div class="toolbar-inner">\n        <simple-fields-field\n          id="inputfilter"\n          @value-changed="',
-    '"\n          aria-controls="filter"\n          label="Filter Content Types"\n          type="text"\n          auto-validate=""\n        ></simple-fields-field>\n      </div>\n      <simple-button-grid columns="3" always-expanded>\n        ',
+    '\n      <div class="toolbar-inner" part="toolbar">\n        <simple-fields-field\n          id="inputfilter"\n          @value-changed="',
+    '"\n          aria-controls="filter"\n          label="Filter Content Types"\n          type="text"\n          auto-validate=""\n          part="filter"\n        ></simple-fields-field>\n      </div>\n      <simple-button-grid columns="3" always-expanded part="grid">\n        ',
     "\n      </simple-button-grid>\n    ",
   ]);
 

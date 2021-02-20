@@ -47,7 +47,7 @@ function _templateObject() {
     '"\n        title="',
     '"\n      >\n        <img loading="lazy" class="image" src="',
     '" />\n        <div class="detail-wrapper">',
-    "<</div>\n      </button>\n    ",
+    "</div>\n      </button>\n    ",
   ]);
 
   _templateObject = function _templateObject() {

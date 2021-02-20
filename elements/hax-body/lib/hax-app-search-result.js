@@ -77,7 +77,7 @@ class HaxAppSearchResult extends LitElement {
         title="${this.details}"
       >
         <img loading="lazy" class="image" src="${this.image}" />
-        <div class="detail-wrapper">${this.title.substr(0, 40)}<</div>
+        <div class="detail-wrapper">${this.title.substr(0, 40)}</div>
       </button>
     `;
   }
