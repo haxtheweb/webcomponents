@@ -3,7 +3,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 /**
  * `simple-fields-upload` takes in a JSON schema of type array and builds a form,
@@ -32,7 +32,7 @@ class SimpleFieldsUpload extends SimpleColors {
           overflow: visible;
           font-family: var(--simple-fields-font-family, sans-serif);
           --simple-login-camera-aspect: 1.777777777777;
-          --simple-camera-snap-color: var(--simple-fields-color, black);
+          --simple-camera-snap-color: var(--simple-fields-color, currentColor);
           --simple-camera-snap-background: var(
             --simple-fields-background-color,
             #fff
@@ -40,22 +40,22 @@ class SimpleFieldsUpload extends SimpleColors {
           --simple-camera-snap-border-radius: 2px;
           --lumo-font-family: var(--simple-fields-font-family, sans-serif);
           --lumo-error-color: var(--simple-fields-error-color, #dd2c00);
-          --lumo-primary-font-color: var(--simple-fields-color, black);
+          --lumo-primary-font-color: var(--simple-fields-color, currentColor);
           --lumo-base-color: var(--simple-fields-background-color, transparent);
           --lumo-primary-contrast-color: var(
             --simple-fields-background-color,
             transparent
           );
-          --lumo-primary-color: var(--simple-fields-color, black);
-          --lumo-dark-primary-color: var(--simple-fields-color, black);
-          --lumo-light-primary-color: var(--simple-fields-color, black);
-          --lumo-primary-text-color: var(--simple-fields-color, black);
-          --lumo-body-text-color: var(--simple-fields-color, black);
-          --lumo-header-text-color: var(--simple-fields-color, black);
-          --lumo-secondary-text-color: var(--simple-fields-color, black);
+          --lumo-primary-color: var(--simple-fields-color, currentColor);
+          --lumo-dark-primary-color: var(--simple-fields-color, currentColor);
+          --lumo-light-primary-color: var(--simple-fields-color, currentColor);
+          --lumo-primary-text-color: var(--simple-fields-color, currentColor);
+          --lumo-body-text-color: var(--simple-fields-color, currentColor);
+          --lumo-header-text-color: var(--simple-fields-color, currentColor);
+          --lumo-secondary-text-color: var(--simple-fields-color, currentColor);
           --lumo-contrast-20pct: transparent;
           --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
-          color: var(--simple-fields-color, black);
+          color: var(--simple-fields-color, currentColor);
           background-color: var(--simple-fields-background-color, transparent);
         }
         vaadin-upload[dragover] {
@@ -157,7 +157,7 @@ class SimpleFieldsUpload extends SimpleColors {
                 !option[0]
                   ? ""
                   : html`
-                      <simple-icon-button
+                      <simple-icon-button-lite
                         aria-hidden="true"
                         icon="${option[0].icon}"
                         label=${option[0].alt}
@@ -167,9 +167,11 @@ class SimpleFieldsUpload extends SimpleColors {
                         @click="${(e) =>
                           this.optionChanged(option[0].value, e)}"
                         controls="${option[0].value}"
-                        part="option-icon"
+                        part="${this.option == option[0].value
+                          ? "option-icon-selected"
+                          : "option-icon"}"
                       >
-                      </simple-icon-button>
+                      </simple-icon-button-lite>
                     `
               )}
         </div>

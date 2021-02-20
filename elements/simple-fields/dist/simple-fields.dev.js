@@ -243,7 +243,7 @@ Custom property | Description | Default
 `--simple-fields-margin` | vertical margin around container | 16px
 `--simple-fields-margin-small` | smaller vertical margin above field itself | 8px
 `--simple-fields-border-radus` | default border-radius | 2px
-`--simple-fields-color` | text color | black
+`--simple-fields-color` | text color | currentColor
 `--simple-fields-error-color` | error text color | #dd2c00
 `--simple-fields-accent-color` | accent text/underline color | #3f51b5
 `--simple-fields-border-color` | border-/underline color | #999

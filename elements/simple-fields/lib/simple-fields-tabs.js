@@ -31,8 +31,8 @@ class SimpleFieldsTabs extends A11yTabs {
         :host {
           --a11y-tabs-font-family: var(--simple-fields-font-family, sans-serif);
           --a11y-tabs-font-size: var(--simple-fields-detail-font-size, 12px);
-          --a11y-tabs-color: var(--simple-fields-color, black);
-          --a11y-tabs-focus-color: var(--simple-fields-color, black);
+          --a11y-tabs-color: var(--simple-fields-color, currentColor);
+          --a11y-tabs-focus-color: var(--simple-fields-color, currentColor);
           --a11y-tabs-faded-color: var(--simple-fields-disabled-color, #999);
           --a11y-tabs-selected-color: var(
             --simple-fields-accent-color,
@@ -81,7 +81,7 @@ class SimpleFieldsTabs extends A11yTabs {
    */
   _tabLabel(tab) {
     return html`
-      <span class="label${tab.error ? " error" : ""}" part="tab"
+      <span class="label${tab.error ? " error" : ""}" part="tab-label"
         >${tab.label}${tab.error ? "*" : ""}</span
       >
     `;

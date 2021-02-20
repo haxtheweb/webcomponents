@@ -78,7 +78,7 @@ class SimpleFieldsContainer extends LitElement {
         ::slotted([slot="field"]) {
           width: auto;
           border: none;
-          color: var(--simple-fields-color, black);
+          color: var(--simple-fields-color, currentColor);
           background-color: var(--simple-fields-background-color, transparent);
           transition: opacity ease-in-out;
           flex: 1 0 auto;
@@ -153,6 +153,7 @@ class SimpleFieldsContainer extends LitElement {
           transition: color 0.3s ease-in-out;
         }
         #error-desc {
+          color: var(--simple-fields-meta-color);
           font-size: var(--simple-fields-meta-font-size, 10px);
           line-height: var(--simple-fields-meta-line-height, 110%);
         }

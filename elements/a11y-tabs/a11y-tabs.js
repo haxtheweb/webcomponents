@@ -329,7 +329,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
 <ul id="tabs" role="tablist" part="tablist">
   ${this.tabs.map((tab,i) => html`
-    <li>${this._tabButton(tab,i)}</li>
+    <li part="tablist-item">${this._tabButton(tab,i)}</li>
   `)}
 </ul>
 <div id="content" part="content">
@@ -746,6 +746,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         ?disabled="${tab.disabled || this.disabled}"
         tabindex="${tab.id === this.activeTab ? 0 : -1}"
         role="tab"
+        part="${tab.id === this.activeTab && !this.disabled
+          ? "tab-active"
+          : this.disabled || tab.disabled
+          ? "tab-disabled"
+          : "tab"}"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
@@ -763,7 +768,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabFlag(tab) {
     return html`
-      <span class="flag-type" ?hidden="${!tab.flag}"> ${tab.flag} </span>
+      <span class="flag-type" ?hidden="${!tab.flag}" part="flag">
+        ${tab.flag}
+      </span>
     `;
   }
 
@@ -782,6 +789,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             ?hidden="${!tab[icon]}"
             .icon="${tab[icon]}"
             .title="${tab.flag}"
+            part="icon"
           >
           </simple-icon-lite>
         `
@@ -790,6 +798,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             class="icon"
             ?hidden="${!tab[icon]}"
             .icon="${tab[icon]}"
+            part="icon"
           >
           </simple-icon-lite>
         `;
@@ -803,7 +812,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @memberof A11yTabs
    */
   _tabLabel(tab) {
-    return html` <span class="label">${tab.label}</span> `;
+    return html` <span class="label" part="label">${tab.label}</span> `;
   }
 
   /**
@@ -816,7 +825,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabTooltip(tab) {
     return html`
-      <simple-tooltip for="${tab.id}-button"> ${tab.label} </simple-tooltip>
+      <simple-tooltip for="${tab.id}-button" part="tooltip">
+        ${tab.label}
+      </simple-tooltip>
     `;
   }
 }
