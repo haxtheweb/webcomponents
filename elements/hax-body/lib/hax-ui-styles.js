@@ -82,6 +82,7 @@ export const HaxTrayButtonTheme = [
       border: 1px solid var(--hax-tray-border-color);
     }
     button[part="button"] {
+      text-transform: capitalize;
       font-size: var(--hax-tray-font-size-sm);
       padding: var(--hax-tray-spacing-sm);
       color: var(--hax-tray-color);
@@ -149,6 +150,7 @@ export const HaxTrayButtonTheme = [
     }
 
     ::part(label) {
+      text-transform: capitalize;
       margin: var(--hax-tray-spacing-sm);
     }
   `,
@@ -271,6 +273,14 @@ export const HaxTraySimpleFields = [
     hax-tray-upload::part(fieldset),
     hax-upload-field::part(fieldset) {
       border-color: rgba(127, 127, 127, 0.2);
+    }
+    simple-fields *::part(legend),
+    hax-tray-upload::part(legend),
+    hax-upload-field::part(legend),
+    simple-fields *::part(label),
+    hax-tray-upload::part(label),
+    hax-upload-field::part(label) {
+      text-transform: capitalize;
     }
     simple-fields *::part(legend),
     hax-tray-upload::part(legend),
@@ -454,13 +464,13 @@ export const HaxTraySimpleModal = [
   css`
     simple-modal-template {
       --simple-modal-z-index: 100000001;
-      --simple-modal-titlebar-color: var(--hax-tray-text-color);
+      --simple-modal-titlebar-color: var(--hax-tray-color);
       --simple-modal-titlebar-background: var(--hax-tray-color-accent);
       --simple-modal-titlebar-padding: var(--hax-tray-spacing-xs);
       --simple-modal-titlebar-height: calc(
         20px + 2 * var(--hax-tray-spacing-xs)
       );
-      --simple-modal-content-container-color: var(--hax-tray-text-color);
+      --simple-modal-content-container-color: var(--hax-tray-color);
       --simple-modal-content-container-background: var(
         --hax-tray-background-color
       );

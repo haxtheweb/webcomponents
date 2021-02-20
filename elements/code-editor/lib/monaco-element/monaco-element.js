@@ -26,6 +26,7 @@ class MonacoElement extends LitElement {
           height: 100%;
           padding: 0;
           margin: 0;
+          resize: vertical;
         }
       `,
     ];

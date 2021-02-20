@@ -39,7 +39,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n        }\n        iframe {\n          border: none;\n          width: 100%;\n          height: 100%;\n          padding: 0;\n          margin: 0;\n        }\n      ",
+    "\n        :host {\n          display: block;\n        }\n        iframe {\n          border: none;\n          width: 100%;\n          height: 100%;\n          padding: 0;\n          margin: 0;\n          resize: vertical;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
