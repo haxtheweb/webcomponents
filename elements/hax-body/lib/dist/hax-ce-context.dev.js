@@ -142,7 +142,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <div id="buttons">\n        <hax-context-item\n          action\n          more\n          icon="',
+    '\n      <div id="buttons">\n        <hax-context-item\n          action\n          more\n          .icon="',
     '"\n          label="Change to..."\n          tooltip="',
     ', click to change"\n          ?disabled="',
     '"\n          event-name="hax-transform-node"\n          show-text-label\n        ></hax-context-item>\n        ',

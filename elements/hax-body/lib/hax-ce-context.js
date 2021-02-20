@@ -51,7 +51,7 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
         <hax-context-item
           action
           more
-          icon="${this.activeTagIcon}"
+          .icon="${this.activeTagIcon}"
           label="Change to..."
           tooltip="${this.activeTagName}, click to change"
           ?disabled="${this.disableTransform}"

@@ -24,7 +24,7 @@ class HaxContextContainer extends LitElement {
           z-index: 1000;
           display: block;
           transition: 0.2s opacity ease-in-out;
-          width: 100%;
+          width: var(--hax-context-container-width, 100%);
           top: var(--hax-context-container-top, 0px);
         }
         :host(:hover),
