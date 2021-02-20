@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "./hax-picker.js";
+import { HaxTraySimpleModal } from "./hax-ui-styles.js";
 /**
  * `hax-app-picker`
  * `app pop over + picker with options`
@@ -8,33 +9,10 @@ import "./hax-picker.js";
 class HaxAppPicker extends LitElement {
   static get styles() {
     return [
+      ...HaxTraySimpleModal,
       css`
-        simple-modal-template {
+        :host {
           display: none;
-          --simple-modal-z-index: 100000001;
-          --simple-modal-titlebar-color: var(--hax-tray-text-color, black);
-          --simple-modal-titlebar-background: var(
-            --hax-titlebar-background-color,
-            #f0f4f8
-          );
-          --simple-modal-titlebar-padding: var(--hax-tray-spacing-sm);
-          --simple-modal-titlebar-height: calc(
-            20px + 2 * var(--hax-tray-spacing-sm)
-          );
-          --simple-modal-content-container-color: var(
-            --hax-tray-text-color,
-            black
-          );
-          --simple-modal-content-container-background: var(
-            --hax-tray-background-color,
-            #fff
-          );
-          --simple-modal-content-padding: calc(2 * var(--hax-tray-spacing-sm))
-            0px 0px;
-          --simple-modal-buttons-background: var(
-            --hax-tray-background-color,
-            #fff
-          );
         }
       `,
     ];

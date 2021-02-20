@@ -3,6 +3,7 @@ import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behav
 import { stripMSWord, formatHTML } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar.js";
+import { HaxTrayBaseStyles } from "./hax-ui-styles.js";
 /**
  * `hax-eview-source`
  * @element hax-eview-source
@@ -11,6 +12,7 @@ import "./hax-toolbar.js";
 class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
   static get styles() {
     return [
+      ...HaxTrayBaseStyles,
       css`
         :host,
         :host * {
@@ -22,12 +24,12 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
         }
         #textarea {
           width: 100%;
-          height: calc(var(--simple-modal-height, 75vh) - 88px);
+          height: calc(var(--simple-modal-height, 75vh) - 95px);
           overflow: auto;
           background-color: transparent;
         }
         #textarea::part(code) {
-          height: calc(var(--simple-modal-height, 75vh) - 88px);
+          height: calc(var(--simple-modal-height, 75vh) - 95px);
         }
         hax-toolbar {
           width: 100%;

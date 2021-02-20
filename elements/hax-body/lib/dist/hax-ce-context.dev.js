@@ -88,7 +88,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    "\n        hax-context-item::part(button) {\n          --simple-toolbar-button-padding: 0;\n        }",
+    "\n        hax-context-item::part(button) {\n          --simple-toolbar-button-padding: 0;\n        }\n      ",
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -143,9 +143,9 @@ function _templateObject2() {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <div id="buttons">\n        <hax-context-item\n          action\n          more\n          icon="',
-    '"\n          label="',
+    '"\n          label="Change to..."\n          tooltip="',
     ', click to change"\n          ?disabled="',
-    '"\n          event-name="hax-transform-node"\n        ></hax-context-item>\n        ',
+    '"\n          event-name="hax-transform-node"\n          show-text-label\n        ></hax-context-item>\n        ',
     '\n        <slot name="primary"></slot>\n        <hax-context-item\n          action\n          icon="icons:code"\n          label="Modify HTML source"\n          ?disabled="',
     '"\n          event-name="hax-source-view-toggle"\n          toggles\n          ?toggled="',
     '"\n          @click="',
@@ -425,7 +425,7 @@ var HaxCeContext =
               }
             } else {
               this.activeTagName = "";
-              this.activeTagIcon = "hax:paragraph";
+              this.activeTagIcon = "";
             } // @see haxHook inlineContextMenu
 
             _haxStore.HAXStore.runHook(this.activeNode, "inlineContextMenu", [

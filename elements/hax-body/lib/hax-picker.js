@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
+import { HaxTrayBaseStyles } from "./hax-ui-styles.js";
+import { HAXStore } from "./hax-store.js";
 /**
  `hax-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require
@@ -15,10 +17,12 @@ import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 class HaxPicker extends LitElement {
   static get styles() {
     return [
+      ...HaxTrayBaseStyles,
       css`
         simple-button-grid {
           overflow-y: auto;
           margin: var(--hax-tray-spacing-sm);
+          --simple-button-grid-cols: 100px;
         }
       `,
     ];
@@ -39,6 +43,8 @@ class HaxPicker extends LitElement {
               id="picker-item-${index}"
               @click="${this._selected}"
               data-selected="${index}"
+              ?disabled="${HAXStore.activeGizmo &&
+              HAXStore.activeGizmo.tag == element.tag}"
               label="${element.title}"
               icon="${element.icon}"
               icon-position="top"
@@ -98,6 +104,7 @@ class HaxPicker extends LitElement {
             icon: elements[i].gizmo.icon,
             title: elements[i].gizmo.title,
             color: elements[i].gizmo.color,
+            tag: elements[i].gizmo.tag,
           });
         }
         break;
@@ -108,6 +115,7 @@ class HaxPicker extends LitElement {
             icon: elements[i].details.icon,
             title: elements[i].details.title,
             color: elements[i].details.color,
+            tag: elements[i].gizmo.tag,
           });
         }
         break;

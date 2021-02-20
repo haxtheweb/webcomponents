@@ -11,6 +11,8 @@ require("@lrnwebcomponents/simple-modal/lib/simple-modal-template.js");
 
 require("./hax-view-source.js");
 
+var _haxUiStyles = require("./hax-ui-styles.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -31,7 +33,7 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: none;\n        }\n        simple-modal-template {\n          display: none;\n          --simple-modal-resize: horizontal;\n          --simple-modal-z-index: 100000001;\n          --simple-modal-width: 95vw;\n          --simple-modal-height: 75vh;\n          --simple-modal-min-width: 200px;\n          --simple-modal-min-height: auto;\n          --simple-modal-titlebar-color: var(--hax-tray-text-color, black);\n          --simple-modal-titlebar-background: var(\n            --hax-titlebar-background-color,\n            #f0f4f8\n          );\n          --simple-modal-titlebar-padding: var(--hax-tray-spacing-sm);\n          --simple-modal-titlebar-height: calc(\n            20px + 2 * var(--hax-tray-spacing-sm)\n          );\n          --simple-modal-content-container-color: var(\n            --hax-tray-text-color,\n            black\n          );\n          --simple-modal-content-container-background: var(\n            --hax-tray-background-color,\n            #fff\n          );\n          --simple-modal-content-padding: calc(2 * var(--hax-tray-spacing-sm))\n            0px 0px;\n          --simple-modal-buttons-background: var(\n            --hax-tray-background-color,\n            #fff\n          );\n        }\n      ",
+    "\n        :host {\n          display: none;\n          --simple-modal-resize: both;\n          --simple-modal-height: 100vh;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -41,10 +43,37 @@ function _templateObject2() {
   return data;
 }
 
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
+}
+
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <simple-modal-template\n        modal-id="hax-export"\n        id="dialog"\n        .title="',
-    '"\n      >\n        <hax-view-source slot="content"></hax-view-source>\n      </simple-modal-template>\n    ',
+    '"\n      > \n        <hax-view-source slot="content"></hax-view-source>\n      </simple-modal-template>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -241,7 +270,10 @@ var HaxExportDialog =
         {
           key: "styles",
           get: function get() {
-            return [(0, _litElement.css)(_templateObject2())];
+            return [].concat(
+              _toConsumableArray(_haxUiStyles.HaxTraySimpleModal),
+              [(0, _litElement.css)(_templateObject2())]
+            );
           },
         },
         {

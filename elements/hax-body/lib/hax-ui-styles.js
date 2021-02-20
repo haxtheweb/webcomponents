@@ -1,4 +1,4 @@
-import { css } from "lit-element/lit-element.js";
+import { css, html, LitElement } from "lit-element/lit-element.js";
 
 export const HaxTrayText = [
   css`
@@ -441,13 +441,21 @@ export const HaxTrayDetailHeadings = [
     }
   `,
 ];
+export const HaxTrayBaseStyles = [
+  ...HaxTrayText,
+  ...HaxTraySpacing,
+  ...HaxTraySimpleFields,
+  ...HaxTraySimpleTooltip,
+  ...HaxTrayHexagon,
+  ...HaxTrayColors,
+];
 export const HaxTraySimpleModal = [
+  ...HaxTrayBaseStyles,
   css`
     simple-modal-template {
-      display: none;
       --simple-modal-z-index: 100000001;
       --simple-modal-titlebar-color: var(--hax-tray-text-color);
-      --simple-modal-titlebar-background: var(--hax-background-color-secondary);
+      --simple-modal-titlebar-background: var(--hax-tray-color-accent);
       --simple-modal-titlebar-padding: var(--hax-tray-spacing-xs);
       --simple-modal-titlebar-height: calc(
         20px + 2 * var(--hax-tray-spacing-xs)
@@ -461,11 +469,21 @@ export const HaxTraySimpleModal = [
     }
   `,
 ];
-export const HaxTrayBaseStyles = [
-  ...HaxTrayText,
-  ...HaxTraySpacing,
-  ...HaxTraySimpleFields,
-  ...HaxTraySimpleTooltip,
-  ...HaxTrayHexagon,
-  ...HaxTrayColors,
-];
+/**
+ * an empty wrapper to ensure modal content has the same base styles
+ *
+ * @class HaxBaseStylesWrapper
+ * @extends {LitElement}
+ */
+export class HaxUiStyles extends LitElement {
+  static get styles() {
+    return HaxTrayBaseStyles;
+  }
+  render() {
+    return html`<slot></slot>`;
+  }
+  static get tag() {
+    return "hax-ui-styles";
+  }
+}
+window.customElements.define(HaxUiStyles.tag, HaxUiStyles);

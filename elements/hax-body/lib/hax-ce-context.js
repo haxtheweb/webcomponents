@@ -52,9 +52,11 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
           action
           more
           icon="${this.activeTagIcon}"
-          label="${this.activeTagName}, click to change"
+          label="Change to..."
+          tooltip="${this.activeTagName}, click to change"
           ?disabled="${this.disableTransform}"
           event-name="hax-transform-node"
+          show-text-label
         ></hax-context-item>
         ${this.ceButtons.map((el) => {
           return html` <hax-context-item
@@ -190,7 +192,7 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
       }
     } else {
       this.activeTagName = "";
-      this.activeTagIcon = "hax:paragraph";
+      this.activeTagIcon = "";
     }
     // @see haxHook inlineContextMenu
     HAXStore.runHook(this.activeNode, "inlineContextMenu", [this]);

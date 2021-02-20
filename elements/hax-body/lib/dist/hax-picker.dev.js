@@ -9,6 +9,10 @@ var _litElement = require("lit-element/lit-element.js");
 
 require("@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js");
 
+var _haxUiStyles = require("./hax-ui-styles.js");
+
+var _haxStore = require("./hax-store.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -27,38 +31,12 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
-function _toConsumableArray(arr) {
-  return (
-    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
-  );
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (
-    Symbol.iterator in Object(iter) ||
-    Object.prototype.toString.call(iter) === "[object Arguments]"
-  )
-    return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  }
-}
-
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
     '\n            <hax-tray-button\n              show-text-label\n              id="picker-item-',
     '"\n              @click="',
     '"\n              data-selected="',
+    '"\n              ?disabled="',
     '"\n              label="',
     '"\n              icon="',
     '"\n              icon-position="top"\n            ></hax-tray-button>\n          ',
@@ -86,7 +64,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        simple-button-grid {\n          overflow-y: auto;\n          margin: var(--hax-tray-spacing-sm);\n        }\n      ",
+    "\n        simple-button-grid {\n          overflow-y: auto;\n          margin: var(--hax-tray-spacing-sm);\n          --simple-button-grid-cols: 100px;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -103,6 +81,33 @@ function _taggedTemplateLiteral(strings, raw) {
   return Object.freeze(
     Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
   );
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -193,7 +198,9 @@ var HaxPicker =
       {
         key: "styles",
         get: function get() {
-          return [(0, _litElement.css)(_templateObject())];
+          return [].concat(_toConsumableArray(_haxUiStyles.HaxTrayBaseStyles), [
+            (0, _litElement.css)(_templateObject()),
+          ]);
         },
       },
     ]);
@@ -225,7 +232,7 @@ var HaxPicker =
               _templateObject2(),
               this.selectionList.map(function (element, index) {
                 return (0,
-                _litElement.html)(_templateObject3(), index, _this2._selected, index, element.title, element.icon);
+                _litElement.html)(_templateObject3(), index, _this2._selected, index, _haxStore.HAXStore.activeGizmo && _haxStore.HAXStore.activeGizmo.tag == element.tag, element.title, element.icon);
               })
             );
           },
@@ -267,6 +274,7 @@ var HaxPicker =
                     icon: elements[i].gizmo.icon,
                     title: elements[i].gizmo.title,
                     color: elements[i].gizmo.color,
+                    tag: elements[i].gizmo.tag,
                   });
                 }
 
@@ -279,6 +287,7 @@ var HaxPicker =
                     icon: elements[i].details.icon,
                     title: elements[i].details.title,
                     color: elements[i].details.color,
+                    tag: elements[i].gizmo.tag,
                   });
                 }
 

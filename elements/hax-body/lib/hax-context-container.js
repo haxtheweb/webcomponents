@@ -65,7 +65,6 @@ class HaxContextContainer extends LitElement {
 
   constructor() {
     super();
-    console.log(HaxTrayBaseStyles);
   }
   render() {
     return html`

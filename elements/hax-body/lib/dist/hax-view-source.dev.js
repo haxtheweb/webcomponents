@@ -15,6 +15,8 @@ var _haxStore = require("./hax-store.js");
 
 require("./hax-toolbar.js");
 
+var _haxUiStyles = require("./hax-ui-styles.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -35,7 +37,7 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host,\n        :host * {\n          margin: 0;\n          padding: 0;\n        }\n        :host {\n          position: relative;\n        }\n        #textarea {\n          width: 100%;\n          height: calc(var(--simple-modal-height, 75vh) - 88px);\n          overflow: auto;\n          background-color: transparent;\n        }\n        #textarea::part(code) {\n          height: calc(var(--simple-modal-height, 75vh) - 88px);\n        }\n        hax-toolbar {\n          width: 100%;\n          position: sticky;\n          bottom: 0;\n          display: flex;\n          --simple-toolbar-button-padding: 0 var(--hax-tray-spacing-sm);\n        }\n        hax-toolbar::part(buttons) {\n          justify-content: space-between;\n          flex: 0 1 auto;\n          margin: 0 auto;\n        }\n      ",
+    "\n        :host,\n        :host * {\n          margin: 0;\n          padding: 0;\n        }\n        :host {\n          position: relative;\n        }\n        #textarea {\n          width: 100%;\n          height: calc(var(--simple-modal-height, 75vh) - 95px);\n          overflow: auto;\n          background-color: transparent;\n        }\n        #textarea::part(code) {\n          height: calc(var(--simple-modal-height, 75vh) - 95px);\n        }\n        hax-toolbar {\n          width: 100%;\n          position: sticky;\n          bottom: 0;\n          display: flex;\n          --simple-toolbar-button-padding: 0 var(--hax-tray-spacing-sm);\n        }\n        hax-toolbar::part(buttons) {\n          justify-content: space-between;\n          flex: 0 1 auto;\n          margin: 0 auto;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -43,6 +45,33 @@ function _templateObject2() {
   };
 
   return data;
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
 }
 
 function _getRequireWildcardCache() {
@@ -407,7 +436,10 @@ var HaxViewSource =
         {
           key: "styles",
           get: function get() {
-            return [(0, _litElement.css)(_templateObject2())];
+            return [].concat(
+              _toConsumableArray(_haxUiStyles.HaxTrayBaseStyles),
+              [(0, _litElement.css)(_templateObject2())]
+            );
           },
         },
         {

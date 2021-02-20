@@ -656,10 +656,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         <hax-text-context
           id="textcontextmenu"
           class="hax-context-menu ignore-activation"
+          .activeNode="${this.activeNode}"
         ></hax-text-context>
         <hax-ce-context
           id="cecontextmenu"
           class="hax-context-menu ignore-activation"
+          .activeNode="${this.activeNode}"
         ></hax-ce-context>
         <hax-plate-context
           id="platecontextmenu"
@@ -1415,7 +1417,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         HAXStore.haxAppPicker.presentOptions(
           haxElements,
           "__convert",
-          `Transform ${humanName} to..`,
+          `Change ${humanName} to...`,
           "gizmo"
         );
       }

@@ -183,16 +183,12 @@ var HaxContextContainer =
     ]);
 
     function HaxContextContainer() {
-      var _this;
-
       _classCallCheck(this, HaxContextContainer);
 
-      _this = _possibleConstructorReturn(
+      return _possibleConstructorReturn(
         this,
         _getPrototypeOf(HaxContextContainer).call(this)
       );
-      console.log(_haxUiStyles.HaxTrayBaseStyles);
-      return _this;
     }
 
     _createClass(
