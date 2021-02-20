@@ -49,16 +49,14 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         :host([aria-expanded="true"]) {
           padding: var(--simple-fields-margin, 16px)
             var(--simple-fields-margin-small, 8px);
-          border: 1px solid var(--simple-fields-border-color-light, #ccc);
+          outline: 1px solid var(--simple-fields-border-color-light, #ccc);
           transition: all 0.5s ease;
         }
         :host([error]) {
-          border: 1px solid var(--simple-fields-error-color, #dd2c00);
+          outline: 1px solid var(--simple-fields-error-color, #dd2c00);
           transition: border 0.5s ease;
         }
         :host(:focus-within) {
-          border: 1px solid var(--simple-fields-border-color, #999);
-          transition: border 0.5s ease;
           z-index: 2;
         }
         *[aria-controls="content"][disabled] {
@@ -103,25 +101,37 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           flex: 0 0 auto;
           color: var(--simple-fields-error-color, #ac0000);
         }
-        #expand {
-          padding: var(--simple-fields-margin-small, 8px);
-          transform: rotate(0deg);
-          transition: transform 0.5s ease-in-out;
+        #heading {
+          margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);
         }
-        :host([aria-expanded="true"]) #expand {
-          transform: rotate(-90deg);
-          transition: transform 0.5s ease-in-out;
-        }
-        simple-icon-button-lite,
         simple-tooltip {
           font-family: var(--simple-fields-detail-font-family, sans-serif);
           font-size: var(--simple-fields-detail-font-size, 12px);
           line-height: var(--simple-fields-detail-line-height, 22px);
         }
+        simple-icon-button-lite:not([hidden]) {
+          color: var(---simple-fields-color);
+          background-color: var(---simple-fields-background-color);
+          font-family: var(--simple-fields-detail-font-family, sans-serif);
+          font-size: var(--simple-fields-detail-font-size, 12px);
+          line-height: var(--simple-fields-detail-line-height, 22px);
+          margin: 0
+          z-index: 1;
+          text-transform: unset;
+          border-color: transparent;
+          border-radius: 3px;
+          display: flex;
+          align-items:center;
+        }
+        simple-icon-button-lite[aria-pressed="true"],
+        simple-icon-button-lite:focus,
+        simple-icon-button-lite:hover {
+          border: 1px solid var(--simple-fields-border-color, #999);
+        }
         ::slotted(*:first-child) {
           margin-top: 0;
         }
-        ::slotted(*:last-child) {
+        ::slotted(*:last-child){
           margin-bottom: 0;
         }
       `,
@@ -144,9 +154,10 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         <simple-icon-button-lite
           id="expand"
           controls="${this.id}"
-          icon="icons:expand-more"
+          icon="more-vert"
           label="Toggle expand"
           @click="${this.toggle}"
+          aria-pressed="${this.expanded ? "true" : "false"}"
           part="expand"
         >
         </simple-icon-button-lite>
