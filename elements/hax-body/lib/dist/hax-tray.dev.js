@@ -102,7 +102,7 @@ function _templateObject19() {
 
 function _templateObject18() {
   var data = _taggedTemplateLiteral([
-    ' <simple-fields\n      id="settingsform"\n      disable-responsive\n      ?hidden="',
+    ' <simple-fields\n      id="settingsform"\n      disable-responsive\n      watch-color-prefs\n      ?hidden="',
     '"\n    ></simple-fields>',
   ]);
 

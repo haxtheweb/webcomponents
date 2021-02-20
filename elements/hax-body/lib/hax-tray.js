@@ -713,6 +713,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     return html` <simple-fields
       id="settingsform"
       disable-responsive
+      watch-color-prefs
       ?hidden="${this.trayDetail !== "content-edit"}"
     ></simple-fields>`;
   }

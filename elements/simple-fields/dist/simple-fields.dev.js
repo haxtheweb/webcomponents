@@ -80,7 +80,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n          --simple-picker-background-color: var(\n            --simple-fields-background-color,\n            transparent\n          );\n          --simple-picker-border-width: 0;\n          --simple-picker-focus-border-width: 0;\n          --simple-picker-display: block;\n          --simple-picker-listbox-border-width: 1px;\n          --simple-picker-listbox-outline: none;\n        }\n\n        :host([hidden]) {\n          display: none;\n        }\n      ",
+    "\n:host {\n  display: block;\n  --simple-picker-background-color: var(--simple-fields-background-color,transparent);\n  --simple-picker-border-width: 0;\n  --simple-picker-focus-border-width: 0;\n  --simple-picker-display: block;\n  --simple-picker-listbox-border-width: 1px;\n  --simple-picker-listbox-outline: none;\n}\n\n:host([hidden]) {\n  display: none;\n}\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -119,7 +119,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    ' <div id="schema-fields" aria-live="polite" part="fields-list">\n      <slot></slot>\n    </div>',
+    '\n\n<div id="schema-fields" aria-live="polite" part="fields-list">\n  <slot></slot>\n</div>',
   ]);
 
   _templateObject = function _templateObject() {
@@ -243,7 +243,7 @@ Custom property | Description | Default
 `--simple-fields-margin` | vertical margin around container | 16px
 `--simple-fields-margin-small` | smaller vertical margin above field itself | 8px
 `--simple-fields-border-radus` | default border-radius | 2px
-`--simple-fields-color` | text color | currentColor
+`--simple-fields-color` | text color | black
 `--simple-fields-error-color` | error text color | #dd2c00
 `--simple-fields-accent-color` | accent text/underline color | #3f51b5
 `--simple-fields-border-color` | border-/underline color | #999
@@ -391,6 +391,16 @@ var SimpleFields =
               {},
               _get(_getPrototypeOf(SimpleFields), "properties", this),
               {
+                /** override default theme for dark mode */
+                watchColorPrefs: {
+                  type: Boolean,
+                  attribute: "watch-color-prefs",
+                },
+                disableResponsive: {
+                  type: Boolean,
+                  attribute: "disable-responsive",
+                },
+
                 /**
                  * Fields to convert to JSON Schema.
                  */
@@ -421,9 +431,8 @@ var SimpleFields =
                   type: Object,
                   attribute: "active-path",
                 },
-                disableResponsive: {
-                  type: Boolean,
-                  attribute: "disable-responsive",
+                __codeElements: {
+                  type: Array,
                 },
               }
             );
@@ -452,6 +461,7 @@ var SimpleFields =
         _getPrototypeOf(SimpleFields).call(this)
       );
       _this.activeTabs = {};
+      _this.__codeElements = [];
       _this.disableResponsive = false;
       setTimeout(function () {
         _this.addEventListener("active-tab-changed", _this._handleActiveTab);
@@ -485,6 +495,37 @@ var SimpleFields =
             if (propName === "__activeTabs" && _this2.activeTabs !== oldValue)
               _this2._handleActiveTabs();
           });
+        },
+      },
+      {
+        key: "rebuildForm",
+        value: function rebuildForm() {
+          _get(
+            _getPrototypeOf(SimpleFields.prototype),
+            "rebuildForm",
+            this
+          ).call(this);
+
+          window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addListener(function (e) {
+              //if(this.watchColorPrefs)
+              console.log(
+                "changed to ".concat(e.matches ? "dark" : "light", " mode"),
+                this.__codeElements
+              );
+              this.__codeElements;
+            });
+        },
+      },
+      {
+        key: "clearForm",
+        value: function clearForm() {
+          _get(_getPrototypeOf(SimpleFields.prototype), "clearForm", this).call(
+            this
+          );
+
+          this.__codeElements = [];
         },
         /**
          * updates the active tabs object
@@ -520,6 +561,52 @@ var SimpleFields =
 
             tabId += part;
           });
+        },
+        /**
+         * sets field or field wrapper element's slot ot property to a value
+         *
+         * @param {string} propName property name
+         * @param {string} slotName slot name if any
+         * @param {object} target element to set
+         * @param {*} value
+         * @memberof SimpleFieldsLite
+         */
+      },
+      {
+        key: "_configElement",
+        value: function _configElement(target, value, propName) {
+          var slotName =
+            arguments.length > 3 && arguments[3] !== undefined
+              ? arguments[3]
+              : false;
+
+          _get(
+            _getPrototypeOf(SimpleFields.prototype),
+            "_configElement",
+            this
+          ).call(this, target, value, propName, slotName);
+
+          this._setwatchColorPrefs(target);
+        },
+      },
+      {
+        key: "_setwatchColorPrefs",
+        value: function _setwatchColorPrefs(target) {
+          if (
+            this.watchColorPrefs &&
+            window.matchMedia &&
+            target.tagName == "SIMPLE-FIELDS-CODE"
+          ) {
+            this.__codeElements.push(target);
+
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+              target.theme = "vs-dark";
+            } else if (
+              window.matchMedia("(prefers-color-scheme: light)").matches
+            ) {
+              target.theme = "vs-light";
+            }
+          }
         },
         /**
          * matches schema property to fieldsConversion settings

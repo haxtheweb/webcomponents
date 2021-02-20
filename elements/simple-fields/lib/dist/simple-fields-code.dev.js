@@ -399,7 +399,7 @@ var SimpleFieldsCode =
       _this.language = "html";
       _this.mode = "html";
       _this.readonly = false;
-      _this.theme = "vs";
+      _this.theme = "auto";
       return _this;
     }
 

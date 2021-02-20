@@ -119,7 +119,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
     this.language = "html";
     this.mode = "html";
     this.readonly = false;
-    this.theme = "vs";
+    this.theme = "auto";
   }
   disconnectedCallback() {
     this.removeEventListener("click", (e) => this.focus());

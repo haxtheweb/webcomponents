@@ -159,7 +159,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         lib-path="${this.libPath}"
         language="${this.language}"
         tab-size="${this.tabSize}"
-        theme="${this.theme}"
+        theme="${this.adaptiveTheme}"
         @value-changed="${this._editorDataChanged}"
         font-size="${this.fontSize}"
         ?word-wrap="${this.wordWrap}"
@@ -186,6 +186,17 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         : ``}
     `;
   }
+
+  get adaptiveTheme() {
+    let watch =
+      !this.watchColorPrefs || (!window.matchMedia && this.theme !== "auto");
+    return watch && window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "vs-dark"
+      : watch && window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "vs"
+      : this.theme;
+  }
+
   get placeholder() {
     let content = `${this.editorValue || this.innerHTML}`;
     return content.replace(/\s*<\/?template.*>\s*/gm, "");

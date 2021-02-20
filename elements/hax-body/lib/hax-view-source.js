@@ -52,7 +52,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
         <code-editor
           id="textarea"
           title=""
-          theme="vs"
+          theme="auto"
           language="html"
           font-size="12"
           word-wrap

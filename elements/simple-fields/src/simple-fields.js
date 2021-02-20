@@ -137,6 +137,7 @@ class SimpleFields extends SimpleFieldsLite {
   constructor() {
     super();
     this.activeTabs = {};
+    this.__codeElements = [];
     this.disableResponsive = false;
     setTimeout(() => {
       this.addEventListener("active-tab-changed", this._handleActiveTab);

@@ -166,6 +166,10 @@ class SimpleFields extends SimpleFieldsLite {
     return {
       ...super.properties,
 
+      disableResponsive: {
+        type: Boolean,
+        attribute: "disable-responsive",
+      },
       /**
        * Fields to convert to JSON Schema.
        */
@@ -193,9 +197,11 @@ class SimpleFields extends SimpleFieldsLite {
         type: Object,
         attribute: "active-path",
       },
-      disableResponsive: {
-        type: Boolean,
-        attribute: "disable-responsive",
+      /**
+       * tracks code editors to switch to dark mode
+       */
+      __colorPrefs: {
+        type: String,
       },
     };
   }
@@ -210,6 +216,7 @@ class SimpleFields extends SimpleFieldsLite {
   constructor() {
     super();
     this.activeTabs = {};
+    this.__codeElements = [];
     this.disableResponsive = false;
     setTimeout(() => {
       this.addEventListener("active-tab-changed", this._handleActiveTab);

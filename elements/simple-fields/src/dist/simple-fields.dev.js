@@ -285,6 +285,7 @@ var SimpleFields =
         _getPrototypeOf(SimpleFields).call(this)
       );
       _this.activeTabs = {};
+      _this.__codeElements = [];
       _this.disableResponsive = false;
       setTimeout(function () {
         _this.addEventListener("active-tab-changed", _this._handleActiveTab);
