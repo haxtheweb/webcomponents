@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsContainer } from "./simple-fields-container.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 /**
  *`simple-fields-field`
  * HTML inputs (excluding submit, reset, button, and image)
@@ -78,11 +79,19 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           background-color: var(--simple-fields-background-color, transparent);
         }
         select.field {
-          width: 100%;
+          width: calc(100% - 47px);
+          padding-right: 47px;
           border: none;
           background-color: var(--simple-fields-background-color, transparent);
           border-radius: 0;
           transition: color ease-in-out;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+        :host([type="select"]) simple-icon-lite {
+          position: absolute;
+          right: 47px;
         }
         select:focus,
         select:focus-within {
@@ -733,6 +742,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           `
         )}
       </select>
+      <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
     `;
   }
 
