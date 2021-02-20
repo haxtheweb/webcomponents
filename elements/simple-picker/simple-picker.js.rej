@@ -27,7 +27,7 @@ diff a/elements/simple-picker/simple-picker.js b/elements/simple-picker/simple-p
 -:host label {
 -  padding-right: 5px;
 -  font-family: var(--simple-picker-font-family, inherit);
--  color: var(--simple-picker-label-color, #000);
+-  color: var(--simple-picker-label-color, currentColor);
 -  max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
 -  @apply --simple-picker-label;
 -}
@@ -41,7 +41,7 @@ diff a/elements/simple-picker/simple-picker.js b/elements/simple-picker/simple-p
 -
 -:host([block-label]:focus) label,
 -:host([block-label]:hover) label {
--  color: var(--simple-picker-float-label-active-color, var(--simple-picker-label-color, #000));
+-  color: var(--simple-picker-float-label-active-color, var(--simple-picker-label-color, currentColor));
 -}
 -
 -:host #sample, 
@@ -70,7 +70,7 @@ diff a/elements/simple-picker/simple-picker.js b/elements/simple-picker/simple-p
 -:host(:focus) #sample,
 -:host #listbox:focus #sample,
 -:host #sample:focus {
--  border: 1px solid var(--simple-picker-sample-focus-border-color, var(--simple-picker-label-color, #000));
+-  border: 1px solid var(--simple-picker-sample-focus-border-color, var(--simple-picker-label-color, currentColor));
 -  @apply --simple-picker-sample-focus;
 -}
 -

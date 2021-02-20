@@ -64,7 +64,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
               var(--a11y-menu-button-horizontal-padding, 5px);
             text-align: var(--a11y-menu-button-text-align, center);
             background-color: var(--a11y-menu-button-bg-color, white);
-            color: var(--a11y-menu-button-color, black);
+            color: var(--a11y-menu-button-color, currentColor);
             background-color: var(--a11y-menu-button-bg-color, white);
             border-radius: var(--a11y-menu-button-border-radius, 0);
             border-left: var(--a11y-menu-button-border-left, unset);
@@ -79,7 +79,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           button[part="button"]:hover {
             color: var(
               --a11y-menu-button-focus-color,
-              var(--a11y-menu-button-color, black)
+              var(--a11y-menu-button-color, currentColor)
             );
             background-color: var(
               --a11y-menu-button-focus-bg-color,

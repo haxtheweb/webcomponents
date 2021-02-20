@@ -31,7 +31,7 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
             text-decoration: var(--a11y-menu-button-item-text-decoration, none);
             color: var(
               --a11y-menu-button-item-color,
-              var(--a11y-menu-button-color, black)
+              var(--a11y-menu-button-color, currentColor)
             );
             width: calc(
               100% - 2 *
@@ -72,7 +72,7 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
               --a11y-menu-button-item-focus-text-decoration,
               none
             );
-            color: var(--a11y-menu-button-item-focus-color, black);
+            color: var(--a11y-menu-button-item-focus-color, currentColor);
             background-color: var(
               --a11y-menu-button-item-focus-bg-color,
               #e0e0ff
