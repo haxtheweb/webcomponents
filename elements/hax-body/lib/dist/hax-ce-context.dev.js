@@ -87,7 +87,9 @@ function _defineProperty(obj, key, value) {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral([
+    "\n        hax-context-item::part(button) {\n          --simple-toolbar-button-padding: 0;\n        }",
+  ]);
 
   _templateObject3 = function _templateObject3() {
     return data;

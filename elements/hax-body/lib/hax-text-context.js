@@ -132,8 +132,15 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
     });
     return lookup;
   }
-  static get styles() {
-    return [...super.styles, css``];
+  get styles() {
+    return [
+      ...super.styles,
+      css`
+        hax-context-item::part(button) {
+          --simple-toolbar-button-padding: 0;
+        }
+      `,
+    ];
   }
   /**
    *

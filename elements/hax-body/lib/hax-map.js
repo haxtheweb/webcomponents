@@ -28,7 +28,8 @@ class HaxMap extends LitElement {
         table {
           font-size: var(--hax-tray-font-size-sm);
           border-collapse: collapse;
-          width: 100%;
+          width: calc(100% - 2px);
+          width: calc(100% - 2px);
         }
         table,
         th,
@@ -38,6 +39,7 @@ class HaxMap extends LitElement {
         }
         th {
           font-weight: normal;
+          font-size: var(--hax-tray-font-size-xs);
         }
         td {
           font-weight: bold;
@@ -54,6 +56,10 @@ class HaxMap extends LitElement {
         }
         li > hax-toolbar-item {
           width: 100%;
+        }
+        li > hax-toolbar-item::part(button) {
+          width: 100%;
+          border: none;
         }
       `,
     ];

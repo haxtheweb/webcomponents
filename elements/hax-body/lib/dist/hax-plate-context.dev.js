@@ -90,7 +90,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host,\n        #buttons {\n          flex-wrap: nowrap;\n          flex: 0 0 auto;\n          align-self: flex-end;\n        }\n      ",
+    "\n        :host,\n        #buttons {\n          flex-wrap: nowrap;\n          flex: 0 0 auto;\n          align-self: flex-end;\n        }\n        hax-context-item::part(button) {\n          --simple-toolbar-button-padding: 0;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {

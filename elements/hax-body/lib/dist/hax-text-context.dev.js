@@ -77,7 +77,9 @@ function _defineProperty(obj, key, value) {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral([
+    "\n        hax-context-item::part(button) {\n          --simple-toolbar-button-padding: 0;\n        }",
+  ]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -801,19 +803,19 @@ var HaxTextContext =
             return lookup;
           },
         },
-      ],
-      [
         {
           key: "styles",
           get: function get() {
             return [].concat(
               _toConsumableArray(
-                _get(_getPrototypeOf(HaxTextContext), "styles", this)
+                _get(_getPrototypeOf(HaxTextContext.prototype), "styles", this)
               ),
               [(0, _litElement.css)(_templateObject3())]
             );
           },
         },
+      ],
+      [
         {
           key: "tag",
           get: function get() {

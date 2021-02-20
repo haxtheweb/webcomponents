@@ -27,10 +27,6 @@ class HaxPreferencesDialog extends LitElement {
         .pref-container {
           text-align: left;
         }
-        #link {
-          font-size: 125%;
-          margin: calc(2 * var(--hax-tray-spacing-sm)) auto;
-        }
         simple-icon-button {
           float: right;
         }
@@ -83,6 +79,8 @@ class HaxPreferencesDialog extends LitElement {
         >
         </simple-fields>
       </div>
+      <hr />
+      <br />
       <br />
       ${!this.hideLink
         ? html`<a
@@ -90,6 +88,7 @@ class HaxPreferencesDialog extends LitElement {
             rel="noopener"
             id="link"
             target="_blank"
+            part="haxlink"
             >Learn more about HAX</a
           >`
         : ``}

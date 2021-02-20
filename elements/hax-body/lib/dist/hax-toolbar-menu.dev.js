@@ -80,7 +80,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        ::slotted(*) {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-label-white-space: nowrap;\n          --simple-toolbar-button-padding: 0 var(--hax-tray-spacing-sm);\n        }\n      ",
+    "\n        ::slotted([slot=menuitem]) {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-label-white-space: nowrap;\n          --hax-tray-border-color: none;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {

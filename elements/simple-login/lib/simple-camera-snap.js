@@ -2,7 +2,7 @@ import "./simple-login-avatar.js";
 import "./simple-login-camera.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 class SimpleCameraSnap extends HTMLElement {
@@ -77,13 +77,13 @@ class SimpleCameraSnap extends HTMLElement {
         z-index: var(--simple-camera-snap-button-container-z-index);
       }
     </style>
-    <simple-login-avatar>
-      <div id="selfie"></div>
-      <simple-login-camera id="camera" autoplay></simple-login-camera>
+    <simple-login-avatar part="avatar">
+      <div id="selfie" part="selfie"></div>
+      <simple-login-camera id="camera" autoplay part="camera"></simple-login-camera>
     </simple-login-avatar>
     <div class="buttons">
-      <simple-icon-button id="snap" icon="image:camera-alt"></simple-icon-button>
-      <simple-tooltip for="snap">Take Photo</simple-tooltip>
+      <simple-icon-button-lite id="snap" icon="image:camera-alt" part="snap-button"></simple-icon-button-lite>
+      <simple-tooltip for="snap" part="snap-tooltip">Take Photo</simple-tooltip>
     </div>
     `;
   }

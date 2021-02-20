@@ -43,6 +43,8 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           float: right;
         }
         button {
+          color: var(---simple-fields-color);
+          background-color: var(---simple-fields-background-color);
           font-family: var(--simple-fields-detail-font-family, sans-serif);
           font-size: var(--simple-fields-detail-font-size, 12px);
           line-height: var(--simple-fields-detail-line-height, 22px);

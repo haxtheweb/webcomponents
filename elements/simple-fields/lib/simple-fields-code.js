@@ -162,7 +162,6 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
         >
         </code-editor>
         <input name="${this.id}" type="hidden" value="${this.value}" />
-        ${this.fieldBottom}
       </div>
     `;
   }

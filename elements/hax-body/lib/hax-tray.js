@@ -172,7 +172,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           max-width: calc(
             var(--hax-tray-width) - 2 * var(--hax-tray-spacing-xs)
           );
-          padding: 0 var(--hax-tray-spacing) var(--hax-tray-spacing);
+          padding: 0 var(--hax-tray-spacing-lg) var(--hax-tray-spacing);
           transition: height 0.6s linear, top 0.6s linear,
             0.2s border ease-in-out;
         }

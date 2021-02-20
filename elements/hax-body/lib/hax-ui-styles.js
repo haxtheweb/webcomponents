@@ -212,6 +212,7 @@ export const HaxTraySimpleFields = [
     simple-fields-tabs::part(tab),
     simple-fields-tabs::part(tab-active),
     simple-fields-tabs::part(tab-disabled),
+    hax-preferences-dialog::part(haxlink),
     hax-tray-upload::part(option-icon),
     hax-upload-field::part(option-icon),
     hax-tray-upload::part(option-icon-selected),
@@ -225,12 +226,20 @@ export const HaxTraySimpleFields = [
     }
     simple-fields-tabs::part(tab),
     simple-fields-tabs::part(tab-active),
-    simple-fields-tabs::part(tab-disabled) {
+    simple-fields-tabs::part(tab-disabled),
+    hax-preferences-dialog::part(haxlink) {
       text-transform: capitalize;
       font-size: var(--hax-tray-font-size-sm);
       padding: var(--hax-tray-spacing-xs);
       flex: 1 1 auto;
     }
+    hax-preferences-dialog::part(haxlink) {
+      font-size: var(--hax-tray-font-size-xl);
+      display: block;
+      padding: var(--hax-tray-spacing-lg);
+    }
+    hax-preferences-dialog::part(haxlink):hover,
+    hax-preferences-dialog::part(haxlink):focus,
     simple-fields-tabs::part(tab):hover,
     simple-fields-tabs::part(tab):focus,
     hax-tray-upload::part(option-icon):hover,
@@ -251,6 +260,9 @@ export const HaxTraySimpleFields = [
     simple-fields-tabs::part(tab-disabled) {
       opacity: 0.5;
       background-color: rgba(127, 127, 127, 0.2);
+    }
+    simple-fields-tabs::part(content) {
+      border: none;
     }
     simple-fields-tab {
       padding: 0;

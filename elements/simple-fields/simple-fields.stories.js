@@ -24,7 +24,7 @@ const css = [
     title: "smaller vertical margin above field itself",
   },
   { css: "--simple-fields-border-radus", title: "default border-radius" },
-  { css: "--simple-fields-color", title: "text color	black" },
+  { css: "--simple-fields-color", title: "text color" },
   { css: "--simple-fields-error-color", title: "error text color" },
   { css: "--simple-fields-accent-color", title: "accent text/underline color" },
   { css: "--simple-fields-border-color", title: "border-/underline color" },

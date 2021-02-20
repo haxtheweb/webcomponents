@@ -36,7 +36,14 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
     });
   }
   static get styles() {
-    return [...super.styles, css``];
+    return [
+      ...super.styles,
+      css`
+        hax-context-item::part(button) {
+          --simple-toolbar-button-padding: 0;
+        }
+      `,
+    ];
   }
   render() {
     return html`

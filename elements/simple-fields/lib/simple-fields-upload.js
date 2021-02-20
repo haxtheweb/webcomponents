@@ -35,7 +35,7 @@ class SimpleFieldsUpload extends SimpleColors {
           --simple-camera-snap-color: var(--simple-fields-color, currentColor);
           --simple-camera-snap-background: var(
             --simple-fields-background-color,
-            #fff
+            unset
           );
           --simple-camera-snap-border-radius: 2px;
           --lumo-font-family: var(--simple-fields-font-family, sans-serif);
@@ -55,6 +55,7 @@ class SimpleFieldsUpload extends SimpleColors {
           --lumo-secondary-text-color: var(--simple-fields-color, currentColor);
           --lumo-contrast-20pct: transparent;
           --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
+          --lumo-contrast-5pct: rgba(127, 127, 127, 0.2);
           color: var(--simple-fields-color, currentColor);
           background-color: var(--simple-fields-background-color, transparent);
         }
@@ -100,14 +101,14 @@ class SimpleFieldsUpload extends SimpleColors {
           float: right;
           margin: -5px 5px 5px;
         }
-        simple-icon-button {
+        simple-icon-button-lite {
           opacity: 0.8;
           border-radius: 3px;
           margin: 0 2px;
         }
-        simple-icon-button[aria-pressed="true"],
-        simple-icon-button:focus-within,
-        simple-icon-button:hover {
+        simple-icon-button-lite[aria-pressed="true"],
+        simple-icon-button-lite:focus-within,
+        simple-icon-button-lite:hover {
           outline: 1px solid var(--simple-fields-border-color, #999);
           opacity: 1;
         }

@@ -48,8 +48,7 @@ function _templateObject2() {
     '"\n          @code-editor-blur="',
     '"\n          part="editor"\n        >\n        </code-editor>\n        <input name="',
     '" type="hidden" value="',
-    '" />\n        ',
-    "\n      </div>\n    ",
+    '" />\n      </div>\n    ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -580,8 +579,7 @@ var SimpleFieldsCode =
               return _this4.focused == false;
             },
             this.id,
-            this.value,
-            this.fieldBottom
+            this.value
           );
         },
       },

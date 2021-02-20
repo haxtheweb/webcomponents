@@ -41,10 +41,10 @@ class HaxToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {
     return [
       ...super.simpleButtonCoreStyles,
       css`
-        ::slotted(*) {
+        ::slotted([slot="menuitem"]) {
           --simple-toolbar-button-justify: flex-start;
           --simple-toolbar-button-label-white-space: nowrap;
-          --simple-toolbar-button-padding: 0 var(--hax-tray-spacing-sm);
+          --hax-tray-border-color: none;
         }
       `,
     ];

@@ -38,6 +38,9 @@ class HaxPlateContext extends SimpleTourFinder(
           flex: 0 0 auto;
           align-self: flex-end;
         }
+        hax-context-item::part(button) {
+          --simple-toolbar-button-padding: 0;
+        }
       `,
     ];
   }

@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `simple-fields-array-item`
@@ -112,16 +112,16 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           transform: rotate(-90deg);
           transition: transform 0.5s ease-in-out;
         }
-        simple-icon-button,
+        simple-icon-button-lite,
         simple-tooltip {
           font-family: var(--simple-fields-detail-font-family, sans-serif);
           font-size: var(--simple-fields-detail-font-size, 12px);
           line-height: var(--simple-fields-detail-line-height, 22px);
         }
-        ::slotted([slot="preview"]:first-of-type) {
+        ::slotted(*:first-child) {
           margin-top: 0;
         }
-        ::slotted([slot="preview"]:last-of-type) {
+        ::slotted(*:last-child) {
           margin-bottom: 0;
         }
       `,
@@ -130,7 +130,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   render() {
     return html`
       <div id="heading" part="heading">
-        <simple-icon-button
+        <simple-icon-button-lite
           id="drag-handle"
           controls="${this.id}"
           icon="icons:open-with"
@@ -139,9 +139,9 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           ?disabled="${this.disabled}"
           part="drag"
         >
-        </simple-icon-button>
+        </simple-icon-button-lite>
         <div id="preview" part="preview"><slot name="preview"></slot></div>
-        <simple-icon-button
+        <simple-icon-button-lite
           id="expand"
           controls="${this.id}"
           icon="icons:expand-more"
@@ -149,12 +149,12 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           @click="${this.toggle}"
           part="expand"
         >
-        </simple-icon-button>
+        </simple-icon-button-lite>
       </div>
       <div id="content" part="content">
         <div id="content-inner" part="content-inner">
           <div><slot></slot></div>
-          <simple-icon-button
+          <simple-icon-button-lite
             id="remove"
             controls="${this.id}"
             icon="delete"
@@ -163,7 +163,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
             @click="${(e) => this._handleRemove()}"
             part="remove"
           >
-          </simple-icon-button>
+          </simple-icon-button-lite>
           <simple-tooltip for="remove" part="remove-tooltip"
             >Remove this item</simple-tooltip
           >
