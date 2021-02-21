@@ -15,9 +15,13 @@ require("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
 
 require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js");
 
-var _haxToolbar = require("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
+require("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
 
 var _utils = require("@lrnwebcomponents/utils/utils");
+
+var _haxContextContainer = require("./hax-context-container.js");
+
+var _mobx = require("mobx");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -86,16 +90,47 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _templateObject3() {
+function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        hax-context-item::part(button) {\n          --simple-toolbar-button-padding: 0;\n        }\n      ",
+    ' <hax-context-item\n              action\n              icon="',
+    '"\n              label="',
+    '"\n              event-name="hax-ce-custom-button"\n              value="',
+    '"\n            ></hax-context-item>',
   ]);
 
-  _templateObject3 = function _templateObject3() {
+  _templateObject2 = function _templateObject2() {
     return data;
   };
 
   return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([
+    '\n      <div id="toolbar">\n        <hax-toolbar>\n          <div class="group">\n            <hax-context-item\n              action\n              more\n              .icon="',
+    '"\n              label="Change to..."\n              tooltip="',
+    ', click to change"\n              ?disabled="',
+    '"\n              event-name="hax-transform-node"\n              show-text-label\n            ></hax-context-item>\n          </div>\n          <div class="group">\n            <slot name="primary"></slot>\n          </div>\n          <div class="group">\n          ',
+    '\n          </div>\n          <div class="group">\n            <slot name="secondary"></slot>\n          </div>\n          <div class="group">\n            <hax-context-item\n              action\n              icon="icons:code"\n              label="Modify HTML source"\n              ?disabled="',
+    '"\n              event-name="hax-source-view-toggle"\n              toggles\n              ?toggled="',
+    '"\n              @click="',
+    '"\n            ></hax-context-item>\n          </div>\n          <div class="group">\n            <slot name="more"></slot>\n          </div>\n          <div class="group">\n            <hax-toolbar-menu icon="add" label="Insert item above or below">\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-up"\n                  event-name="insert-above-active"\n                  label="Insert item above"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-down"\n                  event-name="insert-below-active"\n                  label="Insert item below"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n            </hax-toolbar-menu>\n          </div>\n        </hax-toolbar>\n      </div>\n    ',
+  ]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+  return Object.freeze(
+    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
+  );
 }
 
 function _toConsumableArray(arr) {
@@ -125,54 +160,26 @@ function _arrayWithoutHoles(arr) {
   }
 }
 
-function _templateObject2() {
-  var data = _taggedTemplateLiteral([
-    ' <hax-context-item\n            action\n            icon="',
-    '"\n            label="',
-    '"\n            event-name="hax-ce-custom-button"\n            value="',
-    '"\n          ></hax-context-item>',
-  ]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral([
-    '\n      <div id="buttons">\n        <hax-context-item\n          action\n          more\n          .icon="',
-    '"\n          label="Change to..."\n          tooltip="',
-    ', click to change"\n          ?disabled="',
-    '"\n          event-name="hax-transform-node"\n          show-text-label\n        ></hax-context-item>\n        ',
-    '\n        <slot name="primary"></slot>\n        <hax-context-item\n          action\n          icon="icons:code"\n          label="Modify HTML source"\n          ?disabled="',
-    '"\n          event-name="hax-source-view-toggle"\n          toggles\n          ?toggled="',
-    '"\n          @click="',
-    '"\n        ></hax-context-item>\n        <hax-toolbar-menu icon="add" label="Insert item above or below">\n          <simple-toolbar-menu-item slot="menuitem">\n            <hax-context-item\n              action\n              align-horizontal="left"\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-up"\n              event-name="insert-above-active"\n              label="Insert item above"\n            ></hax-context-item>\n          </simple-toolbar-menu-item>\n          <simple-toolbar-menu-item slot="menuitem">\n            <hax-context-item\n              action\n              align-horizontal="left"\n              show-text-label\n              role="menuitem"\n              icon="hardware:keyboard-arrow-down"\n              event-name="insert-below-active"\n              label="Insert item below"\n            ></hax-context-item>\n          </simple-toolbar-menu-item>\n        </hax-toolbar-menu>\n        <slot name="secondary"></slot>\n        <slot name="more"></slot>\n      </div>\n      ',
-    "\n    ",
-  ]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-  return Object.freeze(
-    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
-  );
-}
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    );
+  }
+  return self;
 }
 
 function _defineProperties(target, props) {
@@ -191,20 +198,24 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
   }
-  return _assertThisInitialized(self);
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: { value: subClass, writable: true, configurable: true },
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
 }
 
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError(
-      "this hasn't been initialised - super() hasn't been called"
-    );
-  }
-  return self;
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf =
+    Object.setPrototypeOf ||
+    function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+  return _setPrototypeOf(o, p);
 }
 
 function _get(target, property, receiver) {
@@ -241,26 +252,6 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true },
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf =
-    Object.setPrototypeOf ||
-    function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-  return _setPrototypeOf(o, p);
-}
-
 /**
  * `hax-ce-context`
  * `A context menu that provides common custom-element based authoring options.
@@ -270,8 +261,19 @@ function _setPrototypeOf(o, p) {
  */
 var HaxCeContext =
   /*#__PURE__*/
-  (function (_HaxToolbarBehaviors) {
-    _inherits(HaxCeContext, _HaxToolbarBehaviors);
+  (function (_HaxContextBehaviors) {
+    _inherits(HaxCeContext, _HaxContextBehaviors);
+
+    _createClass(HaxCeContext, null, [
+      {
+        key: "styles",
+        get: function get() {
+          return _toConsumableArray(
+            _get(_getPrototypeOf(HaxCeContext), "styles", this)
+          );
+        },
+      },
+    ]);
 
     function HaxCeContext() {
       var _this;
@@ -339,8 +341,7 @@ var HaxCeContext =
               this.viewSource,
               function (e) {
                 return (_this3.viewSource = !_this3.viewSource);
-              },
-              this.moreButton
+              }
             );
           },
         },
@@ -383,8 +384,10 @@ var HaxCeContext =
               ).call(this, changedProperties);
             }
 
-            autorun(function () {
-              _this4.activeNode = toJS(_haxStore.HAXStore.activeNode);
+            (0, _mobx.autorun)(function () {
+              _this4.activeNode = (0, _mobx.toJS)(
+                _haxStore.HAXStore.activeNode
+              );
 
               if (_this4.activeNode && _this4.activeNode.classList) {
                 _this4._resetCEMenu();
@@ -436,17 +439,6 @@ var HaxCeContext =
       ],
       [
         {
-          key: "styles",
-          get: function get() {
-            return [].concat(
-              _toConsumableArray(
-                _get(_getPrototypeOf(HaxCeContext), "styles", this)
-              ),
-              [(0, _litElement.css)(_templateObject3())]
-            );
-          },
-        },
-        {
           key: "tag",
           get: function get() {
             return "hax-ce-context";
@@ -490,7 +482,7 @@ var HaxCeContext =
     );
 
     return HaxCeContext;
-  })((0, _haxToolbar.HaxToolbarBehaviors)(_litElement.LitElement));
+  })((0, _haxContextContainer.HaxContextBehaviors)(_litElement.LitElement));
 
 exports.HaxCeContext = HaxCeContext;
 window.customElements.define(HaxCeContext.tag, HaxCeContext);

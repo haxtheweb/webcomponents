@@ -615,12 +615,12 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       </hax-tray-button>
       <hax-tray-button
         event-name="media-add"
-        icon="image:add-a-photo"
+        icon="image:collections"
         id="media-add"
-        label="Add Media"
+        label="Media"
         show-text-label
         icon-position="top"
-        voice-command="Add Media"
+        voice-command="Media"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
@@ -1388,7 +1388,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       this.trayLabel = "Add Content";
       this._refreshAddData();
     } else if (this.trayDetail == "media-add") {
-      this.trayLabel = "Add Media";
+      this.trayLabel = "Media";
     } else if (this.trayDetail == "content-map") {
       this.trayLabel = "Content Map";
       this.shadowRoot.querySelector("hax-map").updateHAXMap();

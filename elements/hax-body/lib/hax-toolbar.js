@@ -17,19 +17,6 @@ const HaxToolbarBehaviors = function (SuperClass) {
           :host {
             background-color: var(--hax-tray-background-color);
             border: 1px solid var(--hax-tray-border-color, #ddd);
-            flex: 0 0 auto;
-            display: none;
-          }
-          :host(:hover),
-          :host(:focus-within) {
-            z-index: var(--hax-tray-focus-z-index);
-          }
-          :host(.hax-context-visible) {
-            display: flex;
-          }
-          :host([hidden]),
-          :host *[hidden] {
-            display: none !important;
           }
           .selected-buttons {
             transition: 0.1s all ease-in-out;
@@ -37,26 +24,6 @@ const HaxToolbarBehaviors = function (SuperClass) {
           }
           :host([has-selected-text]) .selected-buttons {
             width: 100%;
-          }
-          hax-context-item-textop,
-          hax-context-item {
-            transition: all 0.2s linear;
-            visibility: visible;
-            opacity: 1;
-          }
-          hax-context-item-textop[hidden],
-          hax-context-item[hidden] {
-            visibility: hidden;
-            opacity: 0;
-          }
-          #buttons {
-            display: flex;
-            flex: 1 1 auto;
-          }
-          #buttons .group {
-            display: flex;
-            flex-wrap: nowrap;
-            flex: 1 1 auto;
           }
           ::slotted(*) {
             pointer-events: all;

@@ -5,10 +5,10 @@ import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js";
-import { HaxToolbarBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
+import { HaxContextBehaviors } from "./hax-context-container.js";
 
 /**
  * `hax-text-context`
@@ -17,32 +17,9 @@ import { autorun, toJS } from "mobx";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  */
-class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
+class HaxTextContext extends HaxContextBehaviors(LitElement) {
   static get styles() {
-    return [
-      ...super.styles,
-      css`
-        :host {
-          --hax-tray-spacing-sm: 1px;
-        }
-        :host,
-        hax-toolbar {
-          display: flex;
-          flex: 0 1 auto;
-          border: none;
-          background-color: var(--hax-tray-border-color);
-        }
-        hax-toolbar *[hidden] {
-          display: none !important;
-        }
-        hax-toolbar[collapse-disabled]::part(morebutton) {
-          display: none !important;
-        }
-        .group {
-          padding: 0;
-        }
-      `,
-    ];
+    return [...super.styles];
   }
   constructor() {
     super();
@@ -158,239 +135,234 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
     });
     return lookup;
   }
-  get styles() {
-    return [
-      ...super.styles,
-      css`
-        hax-context-item::part(button) {
-          --simple-toolbar-button-padding: 0;
-        }
-      `,
-    ];
-  }
   /**
    *
-        
    *
    * @returns
    * @memberof HaxTextContext
    */
   render() {
     return html`
-      <hax-toolbar>
-        <div class="group">
-          <hax-toolbar-menu
-            id="textformat"
-            icon="${this._formatIcon(
-              this.realSelectedValue || this.formatIcon
-            )}"
-            label="Format"
-            show-text-label
-            data-simple-tour-stop
-            data-stop-title="label"
-          >
-            ${this.formattingList.map(
-              (val) =>
-                html` <simple-toolbar-menu-item slot="menuitem">
-                  <hax-context-item-textop
-                    action
-                    align-horizontal="left"
-                    role="menuitem"
-                    label="${val.text}"
-                    show-text-label
-                    ?hidden="${!this.sourceView}"
-                    event-name="${val.value}"
-                    @click="${(e) => this.textFormatChanged(val.value)}"
-                  ></hax-context-item-textop>
-                </simple-toolbar-menu-item>`
-            )}
-            <div slot="tour" data-stop-content>
-              Change how the text is structured and visualized in the page.
-            </div>
-          </hax-toolbar-menu>
-          <!-- comment this in when rich-text-editor is viable -->
-          <!--
-          <hax-context-item
-            action
-            hidden
-            icon="icons:flip-to-back"
-            label="Full text editor"
-            event-name="hax-full-text-editor-toggle"
-          ></hax-context-item> -->
-        </div>
-        <div class="group more">
-          <slot name="primary"></slot>
-          <hax-context-item
-            action
-            icon="icons:code"
-            label="Modify HTML source"
-            ?hidden="${!this.sourceView}"
-            event-name="hax-source-view-toggle"
-            toggles
-            ?toggled="${this.viewSource}"
-            @click="${(e) => (this.viewSource = !this.viewSource)}"
-          ></hax-context-item>
-          <hax-context-item-textop
-            mini
-            action
-            icon="editor:format-list-bulleted"
-            event-name="text-tag-ul"
-            label="Bulleted list"
-            ?hidden="${!this._showLists}"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            mini
-            action
-            icon="editor:format-list-numbered"
-            label="Numbered list"
-            event-name="text-tag-ol"
-            ?hidden="${!this._showLists}"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            mini
-            action
-            icon="editor:format-indent-decrease"
-            label="Outdent"
-            event-name="text-outdent"
-            ?hidden="${!this._showIndent}"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            mini
-            action
-            icon="editor:format-indent-increase"
-            label="Indent"
-            event-name="text-indent"
-            ?hidden="${!this._showIndent}"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            mini
-            action
-            icon="editor:format-bold"
-            label="Bold"
-            class="selected-buttons"
-            event-name="text-bold"
-            ?hidden="${!this.hasSelectedText}"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            mini
-            action
-            icon="editor:format-italic"
-            label="Italic"
-            class="selected-buttons"
-            event-name="text-italic"
-            ?hidden="${!this.hasSelectedText}"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            mini
-            action
-            icon="editor:insert-link"
-            label="Link"
-            class="selected-buttons"
-            event-name="text-link"
-            ?hidden="${!this.hasSelectedText}"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            mini
-            action
-            icon="mdextra:unlink"
-            label="Remove link"
-            class="selected-buttons"
-            event-name="text-unlink"
-            ?hidden="${!this.hasSelectedText}"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            mini
-            action
-            icon="editor:format-clear"
-            label="Remove format"
-            class="selected-buttons"
-            event-name="text-remove-format"
-            ?hidden="${!this.hasSelectedText}"
-          ></hax-context-item-textop>
-          <hax-context-item
-            mini
-            action
-            icon="hax:add-brick"
-            label="Add element to selection"
-            class="selected-buttons"
-            event-name="insert-inline-gizmo"
-            ?hidden="${this.isSafari || !this.hasSelectedText}"
-          ></hax-context-item>
-          <hax-context-item-textop
-            mini
-            action
-            icon="hax:add-brick"
-            label="Add element to selection"
-            class="selected-buttons"
-            event-name="insert-inline-gizmo"
-            ?hidden="${!this.isSafari || !this.hasSelectedText}"
-          ></hax-context-item-textop>
-        </div>
-        <div class="group more">
-          <slot name="secondary"></slot>
-        </div>
-          <hax-context-item-textop
-            action
-            menu
-            icon="mdextra:subscript"
-            event-name="text-subscript"
-            ?hidden="${!this.hasSelectedText}"
-            label="Subscript"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            action
-            menu
-            icon="mdextra:superscript"
-            event-name="text-superscript"
-            ?hidden="${!this.hasSelectedText}"
-            label="Superscript"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            action
-            menu
-            icon="editor:format-underlined"
-            label="Underline"
-            event-name="text-underline"
-            ?hidden="${!this.hasSelectedText}"
-          ></hax-context-item-textop>
-          <hax-context-item-textop
-            action
-            menu
-            icon="editor:format-strikethrough"
-            event-name="text-strikethrough"
-            ?hidden="${!this.hasSelectedText}"
-            label="Cross out"
-          ></hax-context-item-textop>
-        </div>
-        <div class="group more">
-          <slot name="more"></slot>
-        <div class="group">
-          <hax-toolbar-menu icon="add" label="Insert item above or below">
-            <simple-toolbar-menu-item slot="menuitem">
-              <hax-context-item
-                action
-                align-horizontal="left"
-                role="menuitem"
-                show-text-label
-                icon="hardware:keyboard-arrow-up"
-                event-name="insert-above-active"
-                label="Insert item above"
-              ></hax-context-item>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item slot="menuitem">
-              <hax-context-item
-                action
-                align-horizontal="left"
-                role="menuitem"
-                show-text-label
-                icon="hardware:keyboard-arrow-down"
-                event-name="insert-below-active"
-                label="Insert item below"
-              ></hax-context-item>
-            </simple-toolbar-menu-item>
-          </hax-toolbar-menu>
-        </div>
-      </hax-toolbar>
+      <div id="toolbar">
+        <hax-toolbar>
+          <div class="group">
+            <hax-toolbar-menu
+              id="textformat"
+              icon="${this._formatIcon(
+                this.realSelectedValue || this.formatIcon
+              )}"
+              label="Format"
+              show-text-label
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              ${this.formattingList.map(
+                (val) =>
+                  html` <simple-toolbar-menu-item slot="menuitem">
+                    <hax-context-item-textop
+                      action
+                      align-horizontal="left"
+                      role="menuitem"
+                      label="${val.text}"
+                      show-text-label
+                      ?hidden="${!this.sourceView}"
+                      event-name="${val.value}"
+                      @click="${(e) => this.textFormatChanged(val.value)}"
+                    ></hax-context-item-textop>
+                  </simple-toolbar-menu-item>`
+              )}
+              <div slot="tour" data-stop-content>
+                Change how the text is structured and visualized in the page.
+              </div>
+            </hax-toolbar-menu>
+            <!-- comment this in when rich-text-editor is viable -->
+            <!--
+            <hax-context-item
+              action
+              hidden
+              icon="icons:flip-to-back"
+              label="Full text editor"
+              event-name="hax-full-text-editor-toggle"
+            ></hax-context-item> -->
+          </div>
+          <div class="group">
+            <slot name="primary"></slot>
+          </div>
+          <div class="group">
+            <hax-context-item
+              action
+              icon="icons:code"
+              label="Modify HTML source"
+              ?hidden="${!this.sourceView}"
+              event-name="hax-source-view-toggle"
+              toggles
+              ?toggled="${this.viewSource}"
+              @click="${(e) => (this.viewSource = !this.viewSource)}"
+            ></hax-context-item>
+            <hax-context-item-textop
+              mini
+              action
+              icon="editor:format-list-bulleted"
+              event-name="text-tag-ul"
+              label="Bulleted list"
+              ?hidden="${!this._showLists}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              mini
+              action
+              icon="editor:format-list-numbered"
+              label="Numbered list"
+              event-name="text-tag-ol"
+              ?hidden="${!this._showLists}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              mini
+              action
+              icon="editor:format-indent-decrease"
+              label="Outdent"
+              event-name="text-outdent"
+              ?hidden="${!this._showIndent}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              mini
+              action
+              icon="editor:format-indent-increase"
+              label="Indent"
+              event-name="text-indent"
+              ?hidden="${!this._showIndent}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              mini
+              action
+              icon="editor:format-bold"
+              label="Bold"
+              class="selected-buttons"
+              event-name="text-bold"
+              ?hidden="${!this.hasSelectedText}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              mini
+              action
+              icon="editor:format-italic"
+              label="Italic"
+              class="selected-buttons"
+              event-name="text-italic"
+              ?hidden="${!this.hasSelectedText}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              mini
+              action
+              icon="editor:insert-link"
+              label="Link"
+              class="selected-buttons"
+              event-name="text-link"
+              ?hidden="${!this.hasSelectedText}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              mini
+              action
+              icon="mdextra:unlink"
+              label="Remove link"
+              class="selected-buttons"
+              event-name="text-unlink"
+              ?hidden="${!this.hasSelectedText}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              mini
+              action
+              icon="editor:format-clear"
+              label="Remove format"
+              class="selected-buttons"
+              event-name="text-remove-format"
+              ?hidden="${!this.hasSelectedText}"
+            ></hax-context-item-textop>
+            <hax-context-item
+              mini
+              action
+              icon="hax:add-brick"
+              label="Add element to selection"
+              class="selected-buttons"
+              event-name="insert-inline-gizmo"
+              ?hidden="${this.isSafari || !this.hasSelectedText}"
+            ></hax-context-item>
+            <hax-context-item-textop
+              mini
+              action
+              icon="hax:add-brick"
+              label="Add element to selection"
+              class="selected-buttons"
+              event-name="insert-inline-gizmo"
+              ?hidden="${!this.isSafari || !this.hasSelectedText}"
+            ></hax-context-item-textop>
+          </div>
+          <div class="group">
+            <slot name="secondary"></slot>
+          </div>
+          <div class="group">
+            <hax-context-item-textop
+              action
+              menu
+              icon="mdextra:subscript"
+              event-name="text-subscript"
+              ?hidden="${!this.hasSelectedText}"
+              label="Subscript"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              action
+              menu
+              icon="mdextra:superscript"
+              event-name="text-superscript"
+              ?hidden="${!this.hasSelectedText}"
+              label="Superscript"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              action
+              menu
+              icon="editor:format-underlined"
+              label="Underline"
+              event-name="text-underline"
+              ?hidden="${!this.hasSelectedText}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              action
+              menu
+              icon="editor:format-strikethrough"
+              event-name="text-strikethrough"
+              ?hidden="${!this.hasSelectedText}"
+              label="Cross out"
+            ></hax-context-item-textop>
+          </div>
+          <div class="group more">
+            <slot name="more"></slot>
+          </div>
+          <div class="group">
+            <hax-toolbar-menu icon="add" label="Insert item above or below">
+              <simple-toolbar-menu-item slot="menuitem">
+                <hax-context-item
+                  action
+                  align-horizontal="left"
+                  role="menuitem"
+                  show-text-label
+                  icon="hardware:keyboard-arrow-up"
+                  event-name="insert-above-active"
+                  label="Insert item above"
+                ></hax-context-item>
+              </simple-toolbar-menu-item>
+              <simple-toolbar-menu-item slot="menuitem">
+                <hax-context-item
+                  action
+                  align-horizontal="left"
+                  role="menuitem"
+                  show-text-label
+                  icon="hardware:keyboard-arrow-down"
+                  event-name="insert-below-active"
+                  label="Insert item below"
+                ></hax-context-item>
+              </simple-toolbar-menu-item>
+            </hax-toolbar-menu>
+          </div>
+        </hax-toolbar>
+      </div>
     `;
   }
   static get tag() {

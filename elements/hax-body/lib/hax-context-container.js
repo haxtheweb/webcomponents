@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HaxTrayBaseStyles } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
+import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 /**
  *
  * @customElement
@@ -8,94 +9,79 @@ import { HaxTrayBaseStyles } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.
  * @lit-element
  * @demo demo/index.html
  */
-class HaxContextContainer extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      ...HaxTrayBaseStyles,
-      css`
-        :host {
-          padding: 0;
-          position: absolute;
-          visibility: hidden;
-          opacity: 0;
-          z-index: 1000;
-          display: block;
-          transition: 0.2s opacity ease-in-out;
-          width: var(--hax-context-container-width, 100%);
-          top: var(--hax-context-container-top, 0px);
-        }
-        :host(:hover),
-        :host(:focus-within) {
-          z-index: var(--hax-tray-focus-z-index);
-        }
-        :host([menus-visible]) {
-          position: absolute;
-          visibility: visible;
-          opacity: 1;
-        }
-        :host([menu-sticky]) {
-          position: fixed;
-          top: 0;
-          left: var(--hax-context-container-left, 0px);
-          max-width: var(--hax-context-container-width, 100%);
-        }
-        #inner {
-          width: 100%;
-          position: absolute;
-          bottom: 0;
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          top: unset;
-        }
-        :host([below]) #inner {
-          bottom: unset;
-          top: 0;
-        }
-        :host([menu-sticky]) #inner {
-          bottom: unset;
-          top: var(--hax-context-container-target-top, 0px);
-        }
-      `,
-    ];
-  }
+const HaxContextBehaviors = function (SuperClass) {
+  return class extends SimpleTourFinder(SuperClass) {
+    /**
+     * LitElement constructable styles enhancement
+     */
+    static get styles() {
+      return [
+        ...HaxTrayBaseStyles,
+        css`
+          :host {
+            display: block;
+            pointer-events: none;
+            --hax-tray-spacing-sm: 1px;
+          }
+          :host [hidden] {
+            display: none;
+          }
+          :host > * {
+            margin: 0 auto;
+          }
+          .selected-buttons {
+            transition: 0.1s all ease-in-out;
+            width: 0;
+          }
+          :host([has-selected-text]) .selected-buttons {
+            width: 100%;
+          }
+          :host(.hax-context-pin-top) #toolbar {
+            position: fixed;
+            top: 0px;
+          }
+          :host(:hover),
+          :host(:focus-within) {
+            z-index: var(--hax-tray-focus-z-index) !important;
+          }
+          .group {
+            padding: 0;
+          }
+          hax-toolbar {
+            flex: 0 1 auto;
+            background-color: var(--hax-tray-border-color);
+            border: none !important;
+          }
+          hax-toolbar[collapse-disabled]::part(morebutton) {
+            display: none !important;
+          }
+          hax-toolbar *[hidden] {
+            display: none !important;
+          }
+          hax-toolbar[collapse-disabled]::part(morebutton) {
+            display: none !important;
+          }
+        `,
+      ];
+    }
 
-  constructor() {
-    super();
-  }
-  render() {
-    return html`
-      <div id="inner">
-        <slot></slot>
-      </div>
-    `;
-  }
-
-  static get properties() {
-    return {
-      menusVisible: {
-        type: Boolean,
-        attribute: "menus-visible",
-        reflect: true,
-      },
-      menuSticky: {
-        type: Boolean,
-        attribute: "menu-sticky",
-        reflect: true,
-      },
-      below: {
-        type: Boolean,
-        attribute: "below",
-        reflect: true,
-      },
-    };
-  }
-  static get tag() {
-    return "hax-context-container";
-  }
-}
+    constructor() {
+      super();
+    }
+    render() {
+      return html`<slot></slot> `;
+    }
+    static get tag() {
+      return "hax-context-container";
+    }
+  };
+};
+/**
+ *
+ *
+ * @class HaxContext
+ * @extends {LitElement}
+ */
+class HaxContextContainer extends HaxContextBehaviors(LitElement) {}
 window.customElements.define(HaxContextContainer.tag, HaxContextContainer);
-export { HaxContextContainer };
+export { HaxContextContainer, HaxContextBehaviors };

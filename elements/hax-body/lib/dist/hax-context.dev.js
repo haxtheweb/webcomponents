@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.HaxContextBehaviors = exports.HaxContextContainer = void 0;
+exports.HaxContextBehaviors = exports.HaxContext = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
@@ -41,7 +41,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            display: block;\n            pointer-events: none;\n            --hax-tray-spacing-sm: 1px;\n          }\n          :host [hidden] {\n            display: none;\n          }\n          :host > * {\n            margin: 0 auto;\n          }\n          .selected-buttons {\n            transition: 0.1s all ease-in-out;\n            width: 0;\n          }\n          :host([has-selected-text]) .selected-buttons {\n            width: 100%;\n          }\n          :host(.hax-context-pin-top) #toolbar {\n            position: fixed;\n            top: 0px;\n          }\n          :host(:hover),\n          :host(:focus-within) {\n            z-index: var(--hax-tray-focus-z-index)!important;\n          }\n          .group {\n            padding: 0;\n          }\n          hax-toolbar {\n            flex: 0 1 auto;\n            background-color: var(--hax-tray-border-color);\n            border: none!important;\n          }\n          hax-toolbar[collapse-disabled]::part(morebutton) {\n            display: none !important;\n          }\n          hax-toolbar *[hidden] {\n            display: none !important;\n          }\n          hax-toolbar[collapse-disabled]::part(morebutton) {\n            display: none !important;\n          }\n        ",
+    "\n          :host {\n            display: block;\n            pointer-events: none;\n            --hax-tray-spacing-sm: 1px;\n          }\n          :host [hidden] {\n            display: none;\n          }\n          .selected-buttons {\n            transition: 0.1s all ease-in-out;\n            width: 0;\n          }\n          :host([has-selected-text]) .selected-buttons {\n            width: 100%;\n          }\n          :host(.hax-context-pin-top) #toolbar {\n            position: fixed;\n            top: 0px;\n          }\n          :host(:hover),\n          :host(:focus-within) {\n            z-index: var(--hax-tray-focus-z-index)!important;\n          }\n          .group {\n            padding: 0;\n          }\n          hax-toolbar {\n            flex: 0 1 auto;\n            background-color: var(--hax-tray-border-color);\n            border: none!important;\n          }\n          hax-toolbar[collapse-disabled]::part(morebutton) {\n            display: none !important;\n          }\n          hax-toolbar *[hidden] {\n            display: none !important;\n          }\n          hax-toolbar[collapse-disabled]::part(morebutton) {\n            display: none !important;\n          }\n        ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -207,7 +207,7 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
           {
             key: "tag",
             get: function get() {
-              return "hax-context-container";
+              return "hax-context";
             },
           },
         ]
@@ -226,22 +226,22 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
 
 exports.HaxContextBehaviors = HaxContextBehaviors;
 
-var HaxContextContainer =
+var HaxContext =
   /*#__PURE__*/
-  (function (_HaxContextBehaviors) {
-    _inherits(HaxContextContainer, _HaxContextBehaviors);
+  (function (_LitElement) {
+    _inherits(HaxContext, _LitElement);
 
-    function HaxContextContainer() {
-      _classCallCheck(this, HaxContextContainer);
+    function HaxContext() {
+      _classCallCheck(this, HaxContext);
 
       return _possibleConstructorReturn(
         this,
-        _getPrototypeOf(HaxContextContainer).apply(this, arguments)
+        _getPrototypeOf(HaxContext).apply(this, arguments)
       );
     }
 
-    return HaxContextContainer;
-  })(HaxContextBehaviors(_litElement.LitElement));
+    return HaxContext;
+  })(_litElement.LitElement);
 
-exports.HaxContextContainer = HaxContextContainer;
-window.customElements.define(HaxContextContainer.tag, HaxContextContainer);
+exports.HaxContext = HaxContext;
+window.customElements.define(HaxContext.tag, HaxContext);

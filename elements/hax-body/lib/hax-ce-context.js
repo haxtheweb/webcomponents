@@ -3,8 +3,10 @@ import { HAXStore } from "./hax-store.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
-import { HaxToolbarBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { wipeSlot } from "@lrnwebcomponents/utils/utils";
+import { HaxContextBehaviors } from "./hax-context-container.js";
+import { autorun, toJS } from "mobx";
 /**
  * `hax-ce-context`
  * `A context menu that provides common custom-element based authoring options.
@@ -12,7 +14,10 @@ import { wipeSlot } from "@lrnwebcomponents/utils/utils";
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
  * @element hax-ce-context
  */
-class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
+class HaxCeContext extends HaxContextBehaviors(LitElement) {
+  static get styles() {
+    return [...super.styles];
+  }
   constructor() {
     super();
     this.haxUIElement = true;
@@ -35,77 +40,82 @@ class HaxCeContext extends HaxToolbarBehaviors(LitElement) {
       }
     });
   }
-  static get styles() {
-    return [
-      ...super.styles,
-      css`
-        hax-context-item::part(button) {
-          --simple-toolbar-button-padding: 0;
-        }
-      `,
-    ];
-  }
   render() {
     return html`
-      <div id="buttons">
-        <hax-context-item
-          action
-          more
-          .icon="${this.activeTagIcon}"
-          label="Change to..."
-          tooltip="${this.activeTagName}, click to change"
-          ?disabled="${this.disableTransform}"
-          event-name="hax-transform-node"
-          show-text-label
-        ></hax-context-item>
-        ${this.ceButtons.map((el) => {
-          return html` <hax-context-item
-            action
-            icon="${el.icon}"
-            label="${el.label}"
-            event-name="hax-ce-custom-button"
-            value="${el.callback}"
-          ></hax-context-item>`;
-        })}
-        <slot name="primary"></slot>
-        <hax-context-item
-          action
-          icon="icons:code"
-          label="Modify HTML source"
-          ?disabled="${!this.sourceView}"
-          event-name="hax-source-view-toggle"
-          toggles
-          ?toggled="${this.viewSource}"
-          @click="${(e) => (this.viewSource = !this.viewSource)}"
-        ></hax-context-item>
-        <hax-toolbar-menu icon="add" label="Insert item above or below">
-          <simple-toolbar-menu-item slot="menuitem">
+      <div id="toolbar">
+        <hax-toolbar>
+          <div class="group">
             <hax-context-item
               action
-              align-horizontal="left"
+              more
+              .icon="${this.activeTagIcon}"
+              label="Change to..."
+              tooltip="${this.activeTagName}, click to change"
+              ?disabled="${this.disableTransform}"
+              event-name="hax-transform-node"
               show-text-label
-              role="menuitem"
-              icon="hardware:keyboard-arrow-up"
-              event-name="insert-above-active"
-              label="Insert item above"
             ></hax-context-item>
-          </simple-toolbar-menu-item>
-          <simple-toolbar-menu-item slot="menuitem">
+          </div>
+          <div class="group">
+            <slot name="primary"></slot>
+          </div>
+          <div class="group">
+            ${this.ceButtons.map((el) => {
+              return html` <hax-context-item
+                action
+                icon="${el.icon}"
+                label="${el.label}"
+                event-name="hax-ce-custom-button"
+                value="${el.callback}"
+              ></hax-context-item>`;
+            })}
+          </div>
+          <div class="group">
+            <slot name="secondary"></slot>
+          </div>
+          <div class="group">
             <hax-context-item
               action
-              align-horizontal="left"
-              show-text-label
-              role="menuitem"
-              icon="hardware:keyboard-arrow-down"
-              event-name="insert-below-active"
-              label="Insert item below"
+              icon="icons:code"
+              label="Modify HTML source"
+              ?disabled="${!this.sourceView}"
+              event-name="hax-source-view-toggle"
+              toggles
+              ?toggled="${this.viewSource}"
+              @click="${(e) => (this.viewSource = !this.viewSource)}"
             ></hax-context-item>
-          </simple-toolbar-menu-item>
-        </hax-toolbar-menu>
-        <slot name="secondary"></slot>
-        <slot name="more"></slot>
+          </div>
+          <div class="group">
+            <slot name="more"></slot>
+          </div>
+          <div class="group">
+            <hax-toolbar-menu icon="add" label="Insert item above or below">
+              <simple-toolbar-menu-item slot="menuitem">
+                <hax-context-item
+                  action
+                  align-horizontal="left"
+                  show-text-label
+                  role="menuitem"
+                  icon="hardware:keyboard-arrow-up"
+                  event-name="insert-above-active"
+                  label="Insert item above"
+                ></hax-context-item>
+              </simple-toolbar-menu-item>
+              <simple-toolbar-menu-item slot="menuitem">
+                <hax-context-item
+                  action
+                  align-horizontal="left"
+                  show-text-label
+                  role="menuitem"
+                  icon="hardware:keyboard-arrow-down"
+                  event-name="insert-below-active"
+                  label="Insert item below"
+                ></hax-context-item>
+              </simple-toolbar-menu-item>
+            </hax-toolbar-menu>
+          </div>
+        </hax-toolbar>
       </div>
-      ${this.moreButton}
     `;
   }
 

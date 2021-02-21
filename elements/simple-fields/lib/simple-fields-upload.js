@@ -3,6 +3,8 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 /**
@@ -93,24 +95,12 @@ class SimpleFieldsUpload extends SimpleColors {
           color: var(--simple-fields-error-color, #dd2c00);
           transition: all 0.3s ease-in-out;
         }
+        simple-toolbar {
+          width: 100%;
+          margin: var(--simple-fields-margin-small, 8px) 0;
+        }
         #options {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          flex: 1 1 auto;
-          float: right;
-          margin: -5px 5px 5px;
-        }
-        simple-icon-button-lite {
-          opacity: 0.8;
-          border-radius: 3px;
-          margin: 0 2px;
-        }
-        simple-icon-button-lite[aria-pressed="true"],
-        simple-icon-button-lite:focus-within,
-        simple-icon-button-lite:hover {
-          outline: 1px solid var(--simple-fields-border-color, #999);
-          opacity: 1;
+          margin: 0 auto;
         }
         #uploads {
           clear: both;
@@ -151,31 +141,34 @@ class SimpleFieldsUpload extends SimpleColors {
         <legend id="label" ?hidden="${!this.label}" part="legend">
           ${this.label}:
         </legend>
-        <div id="options" part="options">
-          ${!this.options || !this.options.map
-            ? ""
-            : this.options.map((option) =>
-                !option[0]
-                  ? ""
-                  : html`
-                      <simple-icon-button-lite
-                        aria-hidden="true"
-                        icon="${option[0].icon}"
-                        label=${option[0].alt}
-                        aria-pressed="${this.option == option[0].value
-                          ? "true"
-                          : "false"}"
-                        @click="${(e) =>
-                          this.optionChanged(option[0].value, e)}"
-                        controls="${option[0].value}"
-                        part="${this.option == option[0].value
-                          ? "option-icon-selected"
-                          : "option-icon"}"
-                      >
-                      </simple-icon-button-lite>
-                    `
-              )}
-        </div>
+        <simple-toolbar part="toolbar" always-expanded>
+          <div id="options" class="group" part="options">
+            ${!this.options || !this.options.map
+              ? ""
+              : this.options.map((option) =>
+                  !option[0]
+                    ? ""
+                    : html`
+                        <simple-toolbar-button
+                          icon="${option[0].icon}"
+                          label="${option[0].alt}"
+                          show-text-label
+                          toggles
+                          toggled="${this.option == option[0].value
+                            ? "true"
+                            : "false"}"
+                          @click="${(e) =>
+                            this.optionChanged(option[0].value, e)}"
+                          controls="${option[0].value}"
+                          part="${this.option == option[0].value
+                            ? "option-icon-selected"
+                            : "option-icon"}"
+                        >
+                        </simple-toolbar-button>
+                      `
+                )}
+          </div>
+        </simple-toolbar>
         <div id="uploads" part="fields">
           <simple-fields-field
             id="url"
