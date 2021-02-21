@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `simple-fields-array-item`
@@ -49,16 +49,14 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         :host([aria-expanded="true"]) {
           padding: var(--simple-fields-margin, 16px)
             var(--simple-fields-margin-small, 8px);
-          border: 1px solid var(--simple-fields-border-color-light, #ccc);
+          outline: 1px solid var(--simple-fields-border-color-light, #ccc);
           transition: all 0.5s ease;
         }
         :host([error]) {
-          border: 1px solid var(--simple-fields-error-color, #dd2c00);
+          outline: 1px solid var(--simple-fields-error-color, #dd2c00);
           transition: border 0.5s ease;
         }
         :host(:focus-within) {
-          border: 1px solid var(--simple-fields-border-color, #999);
-          transition: border 0.5s ease;
           z-index: 2;
         }
         *[aria-controls="content"][disabled] {
@@ -103,25 +101,37 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           flex: 0 0 auto;
           color: var(--simple-fields-error-color, #ac0000);
         }
-        #expand {
-          padding: var(--simple-fields-margin-small, 8px);
-          transform: rotate(0deg);
-          transition: transform 0.5s ease-in-out;
+        #heading {
+          margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);
         }
-        :host([aria-expanded="true"]) #expand {
-          transform: rotate(-90deg);
-          transition: transform 0.5s ease-in-out;
-        }
-        simple-icon-button,
         simple-tooltip {
           font-family: var(--simple-fields-detail-font-family, sans-serif);
           font-size: var(--simple-fields-detail-font-size, 12px);
           line-height: var(--simple-fields-detail-line-height, 22px);
         }
-        ::slotted([slot="preview"]:first-of-type) {
+        simple-icon-button-lite:not([hidden]) {
+          color: var(---simple-fields-color);
+          background-color: var(---simple-fields-background-color);
+          font-family: var(--simple-fields-detail-font-family, sans-serif);
+          font-size: var(--simple-fields-detail-font-size, 12px);
+          line-height: var(--simple-fields-detail-line-height, 22px);
+          margin: 0
+          z-index: 1;
+          text-transform: unset;
+          border-color: transparent;
+          border-radius: 3px;
+          display: flex;
+          align-items:center;
+        }
+        simple-icon-button-lite[aria-pressed="true"],
+        simple-icon-button-lite:focus,
+        simple-icon-button-lite:hover {
+          border: 1px solid var(--simple-fields-border-color, #999);
+        }
+        ::slotted(*:first-child) {
           margin-top: 0;
         }
-        ::slotted([slot="preview"]:last-of-type) {
+        ::slotted(*:last-child){
           margin-bottom: 0;
         }
       `,
@@ -130,7 +140,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   render() {
     return html`
       <div id="heading" part="heading">
-        <simple-icon-button
+        <simple-icon-button-lite
           id="drag-handle"
           controls="${this.id}"
           icon="icons:open-with"
@@ -139,22 +149,23 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           ?disabled="${this.disabled}"
           part="drag"
         >
-        </simple-icon-button>
+        </simple-icon-button-lite>
         <div id="preview" part="preview"><slot name="preview"></slot></div>
-        <simple-icon-button
+        <simple-icon-button-lite
           id="expand"
           controls="${this.id}"
-          icon="icons:expand-more"
+          icon="more-vert"
           label="Toggle expand"
           @click="${this.toggle}"
+          aria-pressed="${this.expanded ? "true" : "false"}"
           part="expand"
         >
-        </simple-icon-button>
+        </simple-icon-button-lite>
       </div>
       <div id="content" part="content">
         <div id="content-inner" part="content-inner">
           <div><slot></slot></div>
-          <simple-icon-button
+          <simple-icon-button-lite
             id="remove"
             controls="${this.id}"
             icon="delete"
@@ -163,7 +174,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
             @click="${(e) => this._handleRemove()}"
             part="remove"
           >
-          </simple-icon-button>
+          </simple-icon-button-lite>
           <simple-tooltip for="remove" part="remove-tooltip"
             >Remove this item</simple-tooltip
           >

@@ -3,6 +3,7 @@ import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behav
 import { stripMSWord, formatHTML } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar.js";
+import { HaxTrayBaseStyles } from "./hax-ui-styles.js";
 /**
  * `hax-eview-source`
  * @element hax-eview-source
@@ -11,6 +12,7 @@ import "./hax-toolbar.js";
 class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
   static get styles() {
     return [
+      ...HaxTrayBaseStyles,
       css`
         :host,
         :host * {
@@ -22,19 +24,19 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
         }
         #textarea {
           width: 100%;
-          height: calc(var(--simple-modal-height, 75vh) - 88px);
+          height: calc(var(--simple-modal-height, 75vh) - 95px);
           overflow: auto;
           background-color: transparent;
         }
         #textarea::part(code) {
-          height: calc(var(--simple-modal-height, 75vh) - 88px);
+          height: calc(var(--simple-modal-height, 75vh) - 95px);
         }
         hax-toolbar {
           width: 100%;
           position: sticky;
           bottom: 0;
           display: flex;
-          --simple-toolbar-button-padding: 0 var(--hax-tray-margin, 4px);
+          --simple-toolbar-button-padding: 0 var(--hax-tray-spacing-sm);
         }
         hax-toolbar::part(buttons) {
           justify-content: space-between;
@@ -52,7 +54,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
         <code-editor
           id="textarea"
           title=""
-          theme="vs"
+          theme="auto"
           language="html"
           font-size="12"
           word-wrap

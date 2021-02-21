@@ -82,7 +82,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host([error]) #tabs .error {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: border 0.5s ease;\n        }\n        :host {\n          --a11y-tabs-font-family: var(--simple-fields-font-family, sans-serif);\n          --a11y-tabs-font-size: var(--simple-fields-detail-font-size, 12px);\n          --a11y-tabs-color: var(--simple-fields-color, black);\n          --a11y-tabs-focus-color: var(--simple-fields-color, black);\n          --a11y-tabs-border-color: var(\n            --simple-fields-border-color-light,\n            #ccc\n          );\n          --a11y-tabs-margin: var(--simple-fields-margin, 16px) 0;\n          --a11y-tabs-border-radius: var(--simple-fields-border-radius, 2px);\n          --a11y-tabs-button-padding: var(--simple-fields-margin-small, 8px);\n          --a11y-tabs-content-padding: var(--simple-fields-margin, 16px);\n        }\n      ",
+    "\n        :host([error]) #tabs .error {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: border 0.5s ease;\n        }\n        :host {\n          --a11y-tabs-font-family: var(--simple-fields-font-family, sans-serif);\n          --a11y-tabs-font-size: var(--simple-fields-detail-font-size, 12px);\n          --a11y-tabs-color: var(--simple-fields-color, currentColor);\n          --a11y-tabs-focus-color: var(--simple-fields-color, currentColor);\n          --a11y-tabs-faded-color: var(--simple-fields-disabled-color, #999);\n          --a11y-tabs-selected-color: var(\n            --simple-fields-accent-color,\n            #3f51b5\n          );\n          --a11y-tabs-background: var(\n            --simple-fields-background-color,\n            transparent\n          );\n          --a11y-tabs-border-color: var(\n            --simple-fields-border-color-light,\n            #ccc\n          );\n          --a11y-tabs-margin: var(--simple-fields-margin, 16px) 0;\n          --a11y-tabs-border-radius: var(--simple-fields-border-radius, 2px);\n          --a11y-tabs-button-padding: var(--simple-fields-margin-small, 8px);\n          --a11y-tabs-content-padding: var(--simple-fields-margin, 16px);\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -122,7 +122,7 @@ function _arrayWithoutHoles(arr) {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <span class="label',
-    '" part="tab"\n        >',
+    '" part="tab-label"\n        >',
     "",
     "</span\n      >\n    ",
   ]);

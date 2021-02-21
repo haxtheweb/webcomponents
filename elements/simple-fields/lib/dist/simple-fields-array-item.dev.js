@@ -9,7 +9,7 @@ var _litElement = require("lit-element/lit-element.js");
 
 var _simpleFieldsFieldset = require("./simple-fields-fieldset.js");
 
-require("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
+require("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
 
 require("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
 
@@ -33,7 +33,7 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          padding: 0 var(--simple-fields-margin-small, 8px);\n          border-radius: var(--simple-fields-border-radius, 2px);\n          display: block;\n          border: none;\n          transform: rotate(0deg);\n          transition: all 0.5s ease;\n        }\n        :host([disabled]) {\n          opacity: 0.5;\n        }\n        :host([aria-expanded="true"]) {\n          padding: var(--simple-fields-margin, 16px)\n            var(--simple-fields-margin-small, 8px);\n          border: 1px solid var(--simple-fields-border-color-light, #ccc);\n          transition: all 0.5s ease;\n        }\n        :host([error]) {\n          border: 1px solid var(--simple-fields-error-color, #dd2c00);\n          transition: border 0.5s ease;\n        }\n        :host(:focus-within) {\n          border: 1px solid var(--simple-fields-border-color, #999);\n          transition: border 0.5s ease;\n          z-index: 2;\n        }\n        *[aria-controls="content"][disabled] {\n          cursor: not-allowed;\n        }\n        #drag-handle {\n          flex: 0 1 auto;\n        }\n        #preview {\n          flex: 1 0 auto;\n          margin: 0;\n        }\n        #heading,\n        .heading-inner {\n          display: flex;\n          justify-content: space-between;\n          align-items: center;\n        }\n        #content {\n          overflow: hidden;\n          max-height: 0;\n        }\n        :host #content-inner {\n          display: flex;\n          align-items: flex-end;\n          justify-content: space-between;\n          overflow: hidden;\n          max-height: 0;\n          transition: max-height 0.75s ease 0.1s;\n        }\n        :host([aria-expanded="true"]) #content {\n          max-height: 20000vh;\n          transition: max-height 0.75s ease 0.1s;\n        }\n        :host([aria-expanded="true"]) #content-inner {\n          max-height: 20000vh;\n        }\n        #content-inner > * {\n          flex: 1 1 auto;\n        }\n        #remove {\n          flex: 0 0 auto;\n          color: var(--simple-fields-error-color, #ac0000);\n        }\n        #expand {\n          padding: var(--simple-fields-margin-small, 8px);\n          transform: rotate(0deg);\n          transition: transform 0.5s ease-in-out;\n        }\n        :host([aria-expanded="true"]) #expand {\n          transform: rotate(-90deg);\n          transition: transform 0.5s ease-in-out;\n        }\n        simple-icon-button,\n        simple-tooltip {\n          font-family: var(--simple-fields-detail-font-family, sans-serif);\n          font-size: var(--simple-fields-detail-font-size, 12px);\n          line-height: var(--simple-fields-detail-line-height, 22px);\n        }\n        ::slotted([slot="preview"]:first-of-type) {\n          margin-top: 0;\n        }\n        ::slotted([slot="preview"]:last-of-type) {\n          margin-bottom: 0;\n        }\n      ',
+    '\n        :host {\n          padding: 0 var(--simple-fields-margin-small, 8px);\n          border-radius: var(--simple-fields-border-radius, 2px);\n          display: block;\n          border: none;\n          transform: rotate(0deg);\n          transition: all 0.5s ease;\n        }\n        :host([disabled]) {\n          opacity: 0.5;\n        }\n        :host([aria-expanded="true"]) {\n          padding: var(--simple-fields-margin, 16px)\n            var(--simple-fields-margin-small, 8px);\n          outline: 1px solid var(--simple-fields-border-color-light, #ccc);\n          transition: all 0.5s ease;\n        }\n        :host([error]) {\n          outline: 1px solid var(--simple-fields-error-color, #dd2c00);\n          transition: border 0.5s ease;\n        }\n        :host(:focus-within) {\n          z-index: 2;\n        }\n        *[aria-controls="content"][disabled] {\n          cursor: not-allowed;\n        }\n        #drag-handle {\n          flex: 0 1 auto;\n        }\n        #preview {\n          flex: 1 0 auto;\n          margin: 0;\n        }\n        #heading,\n        .heading-inner {\n          display: flex;\n          justify-content: space-between;\n          align-items: center;\n        }\n        #content {\n          overflow: hidden;\n          max-height: 0;\n        }\n        :host #content-inner {\n          display: flex;\n          align-items: flex-end;\n          justify-content: space-between;\n          overflow: hidden;\n          max-height: 0;\n          transition: max-height 0.75s ease 0.1s;\n        }\n        :host([aria-expanded="true"]) #content {\n          max-height: 20000vh;\n          transition: max-height 0.75s ease 0.1s;\n        }\n        :host([aria-expanded="true"]) #content-inner {\n          max-height: 20000vh;\n        }\n        #content-inner > * {\n          flex: 1 1 auto;\n        }\n        #remove {\n          flex: 0 0 auto;\n          color: var(--simple-fields-error-color, #ac0000);\n        }\n        #heading {\n          margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);\n        }\n        simple-tooltip {\n          font-family: var(--simple-fields-detail-font-family, sans-serif);\n          font-size: var(--simple-fields-detail-font-size, 12px);\n          line-height: var(--simple-fields-detail-line-height, 22px);\n        }\n        simple-icon-button-lite:not([hidden]) {\n          color: var(---simple-fields-color);\n          background-color: var(---simple-fields-background-color);\n          font-family: var(--simple-fields-detail-font-family, sans-serif);\n          font-size: var(--simple-fields-detail-font-size, 12px);\n          line-height: var(--simple-fields-detail-line-height, 22px);\n          margin: 0\n          z-index: 1;\n          text-transform: unset;\n          border-color: transparent;\n          border-radius: 3px;\n          display: flex;\n          align-items:center;\n        }\n        simple-icon-button-lite[aria-pressed="true"],\n        simple-icon-button-lite:focus,\n        simple-icon-button-lite:hover {\n          border: 1px solid var(--simple-fields-border-color, #999);\n        }\n        ::slotted(*:first-child) {\n          margin-top: 0;\n        }\n        ::slotted(*:last-child){\n          margin-bottom: 0;\n        }\n      ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -45,15 +45,16 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <div id="heading" part="heading">\n        <simple-icon-button\n          id="drag-handle"\n          controls="',
+    '\n      <div id="heading" part="heading">\n        <simple-icon-button-lite\n          id="drag-handle"\n          controls="',
     '"\n          icon="icons:open-with"\n          label="Reorder this item"\n          ?hidden="',
     '"\n          ?disabled="',
-    '"\n          part="drag"\n        >\n        </simple-icon-button>\n        <div id="preview" part="preview"><slot name="preview"></slot></div>\n        <simple-icon-button\n          id="expand"\n          controls="',
-    '"\n          icon="icons:expand-more"\n          label="Toggle expand"\n          @click="',
-    '" \n          part="expand"\n        >\n        </simple-icon-button>\n      </div>\n      <div id="content" part="content">\n        <div id="content-inner" part="content-inner">\n          <div><slot></slot></div>\n          <simple-icon-button\n            id="remove"\n            controls="',
+    '"\n          part="drag"\n        >\n        </simple-icon-button-lite>\n        <div id="preview" part="preview"><slot name="preview"></slot></div>\n        <simple-icon-button-lite\n          id="expand"\n          controls="',
+    '"\n          icon="more-vert"\n          label="Toggle expand"\n          @click="',
+    '"\n          aria-pressed="',
+    '"\n          part="expand"\n        >\n        </simple-icon-button-lite>\n      </div>\n      <div id="content" part="content">\n        <div id="content-inner" part="content-inner">\n          <div><slot></slot></div>\n          <simple-icon-button-lite\n            id="remove"\n            controls="',
     '"\n            icon="delete"\n            label="Remove this item"\n            ?disabled="',
     '"\n            @click="',
-    '" \n            part="remove"\n          >\n          </simple-icon-button>\n          <simple-tooltip for="remove" part="remove-tooltip">Remove this item</simple-tooltip>\n        </div>\n      </div>\n    ',
+    '"\n            part="remove"\n          >\n          </simple-icon-button-lite>\n          <simple-tooltip for="remove" part="remove-tooltip"\n            >Remove this item</simple-tooltip\n          >\n        </div>\n      </div>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -213,6 +214,7 @@ var SimpleFieldsArrayItem =
               this.disabled,
               this.id,
               this.toggle,
+              this.expanded ? "true" : "false",
               this.id,
               this.disabled,
               function (e) {

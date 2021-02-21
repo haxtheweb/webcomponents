@@ -20,7 +20,7 @@ class HaxAppSearchResult extends LitElement {
           height: 100%;
         }
         button {
-          font-size: var(--hax-tray-font-size-xs, 11px);
+          font-size: var(--hax-tray-font-size-xs);
           margin: 0;
           padding: 0;
           display: flex;
@@ -29,16 +29,16 @@ class HaxAppSearchResult extends LitElement {
           border-radius: 0;
           border: none;
           width: 100%;
-          outline: 1px solid var(--hax-toolbar-border-color, #ddd);
+          outline: 1px solid var(--hax-toolbar-border-color);
           opacity: 0.8;
-          background-color: var(--hax-toolbar-button-bg, #fff);
+          background-color: var(--hax-toolbar-button-bg);
           transition: 0.2s opacity ease-in-out, 0.2s outline-color ease-in-out;
           flex: 1 0 auto;
         }
         button:hover,
         button:focus,
         button:active {
-          outline-color: var(--hax-tray-accent-color, #000);
+          outline-color: var(--hax-tray-accent-color);
           outline-width: 4px;
           outline-style: solid;
           opacity: 1;
@@ -53,7 +53,7 @@ class HaxAppSearchResult extends LitElement {
         .image {
           flex: 0 0 auto;
           width: 100%;
-          background-color: var(--hax-toolbar-border-color, #ddd);
+          background-color: var(--hax-toolbar-border-color);
         }
         @media screen and (max-width: 1000px) {
           :host {
@@ -77,7 +77,7 @@ class HaxAppSearchResult extends LitElement {
         title="${this.details}"
       >
         <img loading="lazy" class="image" src="${this.image}" />
-        <div class="detail-wrapper">${this.title.substr(0, 40)}<</div>
+        <div class="detail-wrapper">${this.title.substr(0, 40)}</div>
       </button>
     `;
   }

@@ -38,7 +38,7 @@ function _typeof(obj) {
 function _templateObject6() {
   var data = _taggedTemplateLiteral([
     '\n      <simple-tooltip for="',
-    '-button"> ',
+    '-button" part="tooltip"> ',
     " </simple-tooltip>\n    ",
   ]);
 
@@ -50,7 +50,10 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral([' <span class="label">', "</span> "]);
+  var data = _taggedTemplateLiteral([
+    ' <span class="label" part="label">',
+    "</span> ",
+  ]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -63,7 +66,7 @@ function _templateObject4() {
   var data = _taggedTemplateLiteral([
     '\n          <simple-icon-lite\n            class="icon"\n            ?hidden="',
     '"\n            .icon="',
-    '"\n          >\n          </simple-icon-lite>\n        ',
+    '"\n            part="icon"\n          >\n          </simple-icon-lite>\n        ',
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -78,7 +81,7 @@ function _templateObject3() {
     '\n          <simple-icon-lite\n            class="icon"\n            ?hidden="',
     '"\n            .icon="',
     '"\n            .title="',
-    '"\n          >\n          </simple-icon-lite>\n        ',
+    '"\n            part="icon"\n          >\n          </simple-icon-lite>\n        ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -91,7 +94,7 @@ function _templateObject3() {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <span class="flag-type" ?hidden="',
-    '"> ',
+    '" part="flag"> ',
     " </span>\n    ",
   ]);
 
@@ -113,7 +116,8 @@ function _templateObject() {
     '"\n        @keydown="',
     '"\n        ?disabled="',
     '"\n        tabindex="',
-    '"\n        role="tab"\n      >\n        ',
+    '"\n        role="tab"\n        part="',
+    '"\n      >\n        ',
     " ",
     "\n        ",
     " ",
@@ -581,6 +585,11 @@ var A11yTabs =
             },
             tab.disabled || this.disabled,
             tab.id === this.activeTab ? 0 : -1,
+            tab.id === this.activeTab && !this.disabled
+              ? "tab-active"
+              : this.disabled || tab.disabled
+              ? "tab-disabled"
+              : "tab",
             this._tabIcon(tab, "flagIcon"),
             this._tabLabel(tab),
             this._tabFlag(tab),

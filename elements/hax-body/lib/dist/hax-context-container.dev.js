@@ -3,9 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.HaxContextContainer = void 0;
+exports.HaxContextBehaviors = exports.HaxContextContainer = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
+
+var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
+
+var _SimpleTourFinder2 = require("@lrnwebcomponents/simple-popover/lib/SimpleTourFinder");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -26,9 +30,7 @@ function _typeof(obj) {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral([
-    '\n      <div id="inner">\n        <slot></slot>\n      </div>\n    ',
-  ]);
+  var data = _taggedTemplateLiteral(["<slot></slot>\n      "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -39,7 +41,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          padding: 0;\n          position: absolute;\n          visibility: hidden;\n          opacity: 0;\n          z-index: 1000;\n          display: block;\n          transition: 0.2s opacity ease-in-out;\n          width: 100%;\n          top: var(--hax-context-container-top, 0px);\n        }\n        :host([menus-visible]) {\n          position: absolute;\n          visibility: visible;\n          opacity: 1;\n        }\n        :host([menu-sticky]) {\n          position: fixed;\n          top: 0;\n          left: var(--hax-context-container-left, 0px);\n          max-width: var(--hax-context-container-width, 100%);\n        }\n        #inner {\n          width: 100%;\n          position: absolute;\n          bottom: 0;\n          display: flex;\n          align-items: flex-end;\n          justify-content: space-between;\n          top: unset;\n        }\n        :host([below]) #inner {\n          bottom: unset;\n          top: 0;\n        }\n        :host([menu-sticky]) #inner {\n          bottom: unset;\n          top: var(--hax-context-container-target-top, 0px);\n        }\n        :host([below]) ::slotted(*) {\n          --simple-toolbar-button-padding: var(\n            --hax-tray-margin, 4px\n          );\n        }\n      ",
+    "\n          :host {\n            display: block;\n            pointer-events: none;\n            --hax-tray-spacing-sm: 1px;\n          }\n          :host [hidden] {\n            display: none;\n          }\n          :host > * {\n            margin: 0 auto;\n          }\n          .selected-buttons {\n            transition: 0.1s all ease-in-out;\n            width: 0;\n          }\n          :host([has-selected-text]) .selected-buttons {\n            width: 100%;\n          }\n          :host(.hax-context-pin-top) #toolbar {\n            position: fixed;\n            top: 0px;\n          }\n          :host(:hover),\n          :host(:focus-within) {\n            z-index: var(--hax-tray-focus-z-index)!important;\n          }\n          .group {\n            padding: 0;\n          }\n          hax-toolbar {\n            flex: 0 1 auto;\n            background-color: var(--hax-tray-border-color);\n            border: none!important;\n          }\n          hax-toolbar[collapse-disabled]::part(morebutton) {\n            display: none !important;\n          }\n          hax-toolbar *[hidden] {\n            display: none !important;\n          }\n          hax-toolbar[collapse-disabled]::part(morebutton) {\n            display: none !important;\n          }\n        ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -56,6 +58,33 @@ function _taggedTemplateLiteral(strings, raw) {
   return Object.freeze(
     Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
   );
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -133,77 +162,86 @@ function _setPrototypeOf(o, p) {
  * @lit-element
  * @demo demo/index.html
  */
+var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
+  return (
+    /*#__PURE__*/
+    (function (_SimpleTourFinder) {
+      _inherits(_class, _SimpleTourFinder);
+
+      _createClass(_class, null, [
+        {
+          key: "styles",
+
+          /**
+           * LitElement constructable styles enhancement
+           */
+          get: function get() {
+            return [].concat(
+              _toConsumableArray(_haxUiStyles.HaxTrayBaseStyles),
+              [(0, _litElement.css)(_templateObject())]
+            );
+          },
+        },
+      ]);
+
+      function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(
+          this,
+          _getPrototypeOf(_class).call(this)
+        );
+      }
+
+      _createClass(
+        _class,
+        [
+          {
+            key: "render",
+            value: function render() {
+              return (0, _litElement.html)(_templateObject2());
+            },
+          },
+        ],
+        [
+          {
+            key: "tag",
+            get: function get() {
+              return "hax-context-container";
+            },
+          },
+        ]
+      );
+
+      return _class;
+    })((0, _SimpleTourFinder2.SimpleTourFinder)(SuperClass))
+  );
+};
+/**
+ *
+ *
+ * @class HaxContext
+ * @extends {LitElement}
+ */
+
+exports.HaxContextBehaviors = HaxContextBehaviors;
+
 var HaxContextContainer =
   /*#__PURE__*/
-  (function (_LitElement) {
-    _inherits(HaxContextContainer, _LitElement);
-
-    _createClass(HaxContextContainer, null, [
-      {
-        key: "styles",
-
-        /**
-         * LitElement constructable styles enhancement
-         */
-        get: function get() {
-          return [(0, _litElement.css)(_templateObject())];
-        },
-      },
-    ]);
+  (function (_HaxContextBehaviors) {
+    _inherits(HaxContextContainer, _HaxContextBehaviors);
 
     function HaxContextContainer() {
       _classCallCheck(this, HaxContextContainer);
 
       return _possibleConstructorReturn(
         this,
-        _getPrototypeOf(HaxContextContainer).call(this)
+        _getPrototypeOf(HaxContextContainer).apply(this, arguments)
       );
     }
 
-    _createClass(
-      HaxContextContainer,
-      [
-        {
-          key: "render",
-          value: function render() {
-            return (0, _litElement.html)(_templateObject2());
-          },
-        },
-      ],
-      [
-        {
-          key: "properties",
-          get: function get() {
-            return {
-              menusVisible: {
-                type: Boolean,
-                attribute: "menus-visible",
-                reflect: true,
-              },
-              menuSticky: {
-                type: Boolean,
-                attribute: "menu-sticky",
-                reflect: true,
-              },
-              below: {
-                type: Boolean,
-                attribute: "below",
-                reflect: true,
-              },
-            };
-          },
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "hax-context-container";
-          },
-        },
-      ]
-    );
-
     return HaxContextContainer;
-  })(_litElement.LitElement);
+  })(HaxContextBehaviors(_litElement.LitElement));
 
 exports.HaxContextContainer = HaxContextContainer;
 window.customElements.define(HaxContextContainer.tag, HaxContextContainer);

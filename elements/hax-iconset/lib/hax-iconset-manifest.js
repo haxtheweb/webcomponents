@@ -1,3 +1,7 @@
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+/**
+ * @const HaxIconsetManifest
+ */
 export const HaxIconsetManifest = [
   null,
   {
@@ -255,3 +259,4 @@ export const HaxIconsetManifest = [
     icons: ["error-outline", "pause", "play-arrow", "replay"],
   },
 ];
+SimpleIconsetStore.registerManifest(SimpleIconIconsetsManifest);

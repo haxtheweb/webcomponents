@@ -65,7 +65,7 @@ class SimplePicker extends LitElement {
         :host {
           display: var(--simple-picker-display, inline-flex);
           align-items: center;
-          color: var(--simple-picker-color, black);
+          color: var(--simple-picker-color, currentColor);
           font-family: var(--simple-picker-font-family, inherit);
           font-size: var(--simple-picker-font-size, inherit);
           --simple-picker-height: calc(
@@ -108,7 +108,7 @@ class SimplePicker extends LitElement {
           font-family: var(--simple-picker-font-family, inherit);
           color: var(
             --simple-picker-label-color,
-            var(--simple-picker-color, black)
+            var(--simple-picker-color, currentColor)
           );
         }
 
@@ -127,7 +127,7 @@ class SimplePicker extends LitElement {
         :host([block-label]:hover) label {
           color: var(
             --simple-picker-float-label-active-color,
-            var(--simple-picker-color, black)
+            var(--simple-picker-color, currentColor)
           );
           transition: all 0.5s;
         }
@@ -165,7 +165,7 @@ class SimplePicker extends LitElement {
           );
           padding: var(--simple-picker-sample-padding, 2px);
           border-radius: var(--simple-picker-border-radius, 2px);
-          color: var(--simple-picker-sample-color, black);
+          color: var(--simple-picker-sample-color, currentColor);
           background-color: var(--simple-picker-background-color, #f0f0f0);
           border-width: var(--simple-picker-border-width, 1px);
           border-style: var(--simple-picker-border-style, solid);
@@ -313,14 +313,14 @@ class SimplePicker extends LitElement {
           min-height: var(--simple-picker-option-size, 24px);
           min-width: var(--simple-picker-option-size, 24px);
           line-height: var(--simple-picker-option-size, 24px);
-          color: var(--simple-picker-color, black);
+          color: var(--simple-picker-color, currentColor);
           background-color: var(--simple-picker-options-background-color, #fff);
           transition: max-height 2s;
         }
 
         simple-picker-option[selected] {
           z-index: 50;
-          color: var(--simple-picker-color, black);
+          color: var(--simple-picker-color, currentColor);
           background-color: var(
             --simple-picker-option-selected-background-color,
             var(--simple-picker-options-background-color, #fff)
@@ -330,7 +330,7 @@ class SimplePicker extends LitElement {
         simple-picker-option[active] {
           z-index: 100;
           cursor: pointer;
-          color: var(--simple-picker-color, black);
+          color: var(--simple-picker-color, currentColor);
           background-color: var(
             --simple-picker-option-active-background-color,
             #aaddff
@@ -338,7 +338,7 @@ class SimplePicker extends LitElement {
         }
 
         #sample simple-picker-option {
-          color: var(--simple-picker-color, black);
+          color: var(--simple-picker-color, currentColor);
           background-color: var(
             --simple-picker-sample-background-color,
             transparent
@@ -363,7 +363,7 @@ class SimplePicker extends LitElement {
         :host(:hover) #sample simple-picker-option {
           --simple-picker-color: var(
             --simple-picker-color-active,
-            var(--simple-picker-color, black)
+            var(--simple-picker-color, currentColor)
           );
         }
 

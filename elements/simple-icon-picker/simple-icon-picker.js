@@ -3,14 +3,16 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
-import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 
 /**
  * `simple-icon-picker`
- * @element simple-icon-picker
  * Uses simple-picker to create an icon picker
+ * @element simple-icon-picker
+ * @customElement
  *
-
  * @demo ./demo/index.html
  */
 class SimpleIconPicker extends SimplePicker {
@@ -35,6 +37,19 @@ class SimpleIconPicker extends SimplePicker {
       */
       icons: {
         type: Array,
+      },
+
+      includeSets: {
+        type: Array,
+        attribute: "include-sets",
+      },
+      excludeSets: {
+        type: Array,
+        attribute: "exclude-sets",
+      },
+      exclude: {
+        type: Array,
+        attribute: "exclude",
       },
 
       /**
@@ -123,25 +138,52 @@ class SimpleIconPicker extends SimplePicker {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // @todo replace this with the metadata.js method that's in the works
-    // for discovering what icons exist and using tooling to access this as
-    // opposed to the overly bloated / aggressive method of polymer
-    const iconSets = new IronMeta({ type: "iconset" });
-    if (
-      this.icons.length === 0 &&
-      typeof iconSets !== typeof undefined &&
-      iconSets.list &&
-      iconSets.list.length
-    ) {
-      var iconList = [];
-      iconSets.list.forEach(function (item) {
-        item.getIconNames().forEach((icon) => {
-          iconList.push(icon);
-        });
+  }
+  /**
+   * gets icons that are registered in SimpleIconsetStore and filters based on include/exclude lists
+   *
+   * @returns {array}
+   * @memberof SimpleIconPicker
+   */
+  _getStoredIcons() {
+    let icons =
+        SimpleIconsetStore && SimpleIconsetStore.iconlist
+          ? SimpleIconsetStore.iconlist
+          : [],
+      includeSets =
+        this.includeSets && this.includeSets.length > 0
+          ? typeof this.includeSets !== typeof []
+            ? JSON.parse(this.includeSets)
+            : this.includeSets
+          : false,
+      excludeSets =
+        this.excludeSets && this.excludeSets.length > 0
+          ? typeof this.excludeSets !== typeof []
+            ? JSON.parse(this.excludeSets)
+            : this.excludeSets
+          : false,
+      exclude =
+        this.exclude && this.exclude.length > 0
+          ? typeof this.exclude !== typeof []
+            ? JSON.parse(this.exclude)
+            : this.exclude
+          : false;
+    if (includeSets || excludeSets || exclude)
+      icons = icons.filter((icon) => {
+        let prefix = icon,
+          iconname = icon,
+          include = true;
+        (prefix = prefix.replace(/:.*/, "")), iconname.replace("icons:", "");
+        if (
+          exclude &&
+          (exclude.includes(icon) || exclude.includes(`icons:${iconname}`))
+        )
+          include = false;
+        if (includeSets && !includeSets.includes(prefix)) include = false;
+        if (excludeSets && excludeSets.includes(prefix)) include = false;
+        return include;
       });
-      this.__iconList = iconList;
-      this._setSelectedOption();
-    }
+    return icons;
   }
 
   /**
@@ -158,8 +200,7 @@ class SimpleIconPicker extends SimplePicker {
     let icons =
         typeof this.icons === "string" ? JSON.parse(this.icons) : this.icons,
       cols = this.optionsPerRow;
-    if (icons.length === 0 && this.__iconList && this.__iconList.length > 0)
-      icons = this.__iconList;
+    if (icons.length === 0) icons = this._getStoredIcons();
     let options =
         this.allowNull === false ? [] : [[{ alt: "null", value: null }]],
       h = this.allowNull === false ? 0 : 1;

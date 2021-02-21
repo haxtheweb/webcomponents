@@ -9,6 +9,10 @@ var _litElement = require("lit-element/lit-element.js");
 
 require("@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js");
 
+var _haxUiStyles = require("./hax-ui-styles.js");
+
+var _haxStore = require("./hax-store.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -25,6 +29,58 @@ function _typeof(obj) {
     };
   }
   return _typeof(obj);
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral([
+    '\n            <hax-tray-button\n              show-text-label\n              id="picker-item-',
+    '"\n              @click="',
+    '"\n              data-selected="',
+    '"\n              ?disabled="',
+    '"\n              label="',
+    '"\n              icon="',
+    '"\n              icon-position="top"\n            ></hax-tray-button>\n          ',
+  ]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([
+    '\n      <simple-button-grid cols="100px">\n        ',
+    "\n      </simple-button-grid>\n    ",
+  ]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([
+    "\n        simple-button-grid {\n          overflow-y: auto;\n          margin: var(--hax-tray-spacing-sm);\n          --simple-button-grid-cols: 100px;\n        }\n      ",
+  ]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+  return Object.freeze(
+    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
+  );
 }
 
 function _toConsumableArray(arr) {
@@ -52,57 +108,6 @@ function _arrayWithoutHoles(arr) {
     }
     return arr2;
   }
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral([
-    '\n            <hax-tray-button\n              show-text-label\n              id="picker-item-',
-    '"\n              @click="',
-    '"\n              data-selected="',
-    '"\n              label="',
-    '"\n              icon="',
-    '"\n              icon-position="top"\n            ></hax-tray-button>\n          ',
-  ]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral([
-    "\n      <simple-button-grid>\n        ",
-    "\n      </simple-button-grid>\n    ",
-  ]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral([
-    "\n      simple-button-grid {\n        overflow-y: auto;\n        margin: var(--hax-tray-margin, 4px);\n        --simple-button-grid-cols: 100px;\n      }\n      hax-tray-button {\n        font-size: var(--hax-tray-font-size-xs, 11px);\n        --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n        --simple-toolbar-button-border-color: var(\n          --hax-toolbar-border-color,\n          #ddd\n        );\n        --simple-toolbar-button-hover-color: var(\n          --hax-tray-accent-color,\n          #000\n        );\n        --simple-toolbar-button-hover-border-color: var(\n          --hax-tray-accent-color,\n          #000\n        );\n        --simple-toolbar-button-hover-border-color: var(\n          --hax-tray-accent-color,\n          #000\n        );\n        --simple-toolbar-button-flex: 1 0 auto;\n      }\n      ",
-  ]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-  return Object.freeze(
-    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
-  );
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -193,7 +198,9 @@ var HaxPicker =
       {
         key: "styles",
         get: function get() {
-          return [(0, _litElement.css)(_templateObject())];
+          return [].concat(_toConsumableArray(_haxUiStyles.HaxTrayBaseStyles), [
+            (0, _litElement.css)(_templateObject()),
+          ]);
         },
       },
     ]);
@@ -225,7 +232,7 @@ var HaxPicker =
               _templateObject2(),
               this.selectionList.map(function (element, index) {
                 return (0,
-                _litElement.html)(_templateObject3(), index, _this2._selected, index, element.title, element.icon);
+                _litElement.html)(_templateObject3(), index, _this2._selected, index, _haxStore.HAXStore.activeGizmo && _haxStore.HAXStore.activeGizmo.tag == element.tag, element.title, element.icon);
               })
             );
           },
@@ -267,6 +274,7 @@ var HaxPicker =
                     icon: elements[i].gizmo.icon,
                     title: elements[i].gizmo.title,
                     color: elements[i].gizmo.color,
+                    tag: elements[i].gizmo.tag,
                   });
                 }
 
@@ -279,6 +287,7 @@ var HaxPicker =
                     icon: elements[i].details.icon,
                     title: elements[i].details.title,
                     color: elements[i].details.color,
+                    tag: elements[i].gizmo.tag,
                   });
                 }
 

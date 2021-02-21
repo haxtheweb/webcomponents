@@ -43,21 +43,24 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           float: right;
         }
         button {
+          color: var(---simple-fields-color);
+          background-color: var(---simple-fields-background-color);
           font-family: var(--simple-fields-detail-font-family, sans-serif);
           font-size: var(--simple-fields-detail-font-size, 12px);
           line-height: var(--simple-fields-detail-line-height, 22px);
-          padding: var(--simple-fields-margin-small, 2px);
-          margin: 0 var(--simple-fields-margin-small, 2px) 0 0;
+          margin: 0 2px;
           z-index: 1;
           text-transform: unset;
+          border-width: 1px;
+          border-color: transparent;
+          border-radius: 3px;
+          display: flex;
+          align-items: center;
         }
-        .expanded {
-          transform: rotate(-90deg);
-          transition: transform 0.5s ease;
-        }
-        .collapsed {
-          transform: rotate(0deg);
-          transition: transform 0.5s ease;
+        button[aria-pressed="true"],
+        button:focus,
+        button:hover {
+          border: 1px solid var(--simple-fields-border-color, #999);
         }
       `,
     ];
@@ -89,13 +92,14 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           id="expand"
           controls="item-fields"
           @click="${(e) => this.toggle()}"
+          aria-pressed="${this.expanded ? "true" : "false"}"
           part="expand"
         >
           ${this.expanded ? "Collapse All" : "Expand All"}
           <simple-icon
             class="${this.expanded ? "expanded" : "collapsed"}"
             aria-hidden="true"
-            icon="expand-more"
+            icon="more-vert"
             part="expand-icon"
           ></simple-icon>
         </button>

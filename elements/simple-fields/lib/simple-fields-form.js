@@ -21,6 +21,7 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
         <simple-fields
           id="sf"
           .autofocus="${!this.disableAutofocus}"
+          ?watchColorPrefs="${this.watchColorPrefs}"
           language="${this.language || ""}"
           .resources="${this.resources}"
           .schema="${this.schema}"

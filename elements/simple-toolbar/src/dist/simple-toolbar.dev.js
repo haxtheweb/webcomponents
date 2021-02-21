@@ -9,6 +9,26 @@ var _litElement = require("lit-element");
 
 require("./lib/simple-toolbar-more-button.js");
 
+var _simpleToolbarButton = require("./lib/simple-toolbar-button.js");
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj &&
+        typeof Symbol === "function" &&
+        obj.constructor === Symbol &&
+        obj !== Symbol.prototype
+        ? "symbol"
+        : typeof obj;
+    };
+  }
+  return _typeof(obj);
+}
+
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -58,24 +78,6 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _typeof(obj) {
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj &&
-        typeof Symbol === "function" &&
-        obj.constructor === Symbol &&
-        obj !== Symbol.prototype
-        ? "symbol"
-        : typeof obj;
-    };
-  }
-  return _typeof(obj);
-}
-
 function _toConsumableArray(arr) {
   return (
     _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
@@ -105,7 +107,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            position: relative;\n            display: flex;\n            align-items: flex-start;\n            opacity: 1;\n            z-index: 2;\n            margin: 0;\n            justify-content: space-between;\n            background-color: var(--simple-toolbar-border-bg);\n            font-size: 12px;\n            transition: all 0.5s;\n            margin: 0;\n            padding: 0;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          #buttons {\n            flex-wrap: wrap;\n            display: flex;\n            justify-content: flex-start;\n            flex: 1 1 auto;\n            overflow-y: visible;\n          }\n          #morebutton {\n            flex: 0 0 auto;\n            justify-content: flex-end;\n          }\n          ::slotted(.group) {\n            display: flex;\n            flex-wrap: nowrap;\n            justify-content: space-evenly;\n            align-items: stretch;\n            padding: var(--simple-toolbar-group-padding, 0 3px);\n            margin: 0;\n            flex: 0 1 auto;\n            overflow-y: visible;\n          }\n          ::slotted(.group:not(:last-child)) {\n            border-right: var(\n                --simple-toolbar-group-border-width,\n                var(--simple-toolbar-border-width, 1px)\n              )\n              solid\n              var(\n                --simple-toolbar-border-color,\n                var(--simple-toolbar-group-border-color, transparent)\n              );\n          }\n          ::slotted(*:hover) ::slotted(*:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100);\n          }\n          :host([collapsed]:not([always-expanded]))\n            ::slotted(*[collapse-hide]) {\n            display: none !important;\n          }\n        ",
+    "\n          :host {\n            position: relative;\n            display: flex;\n            align-items: flex-start;\n            opacity: 1;\n            z-index: 2;\n            margin: 0;\n            justify-content: space-between;\n            background-color: var(--simple-toolbar-border-bg);\n            font-size: inherit;\n            margin: 0;\n            padding: 0;\n            transition: all 0.5s;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          :host([disabled]) {\n            opacity: 0.6;\n            pointer-events: none;\n          }\n          #buttons {\n            flex-wrap: wrap;\n            display: flex;\n            justify-content: flex-start;\n            flex: 1 1 auto;\n            overflow-y: visible;\n          }\n          #morebutton {\n            flex: 0 0 auto;\n          }\n          ::slotted(.group) {\n            display: flex;\n            flex-wrap: nowrap;\n            justify-content: space-evenly;\n            align-items: stretch;\n            margin: 0;\n            flex: 0 1 auto;\n            overflow-y: visible;\n            border-width: 0px;\n            border-style: solid;\n            padding: var(--simple-toolbar-group-padding, 0 3px);\n            border-color: var(\n              --simple-toolbar-border-color,\n              var(--simple-toolbar-group-border-color, transparent)\n            );\n          }\n          ::slotted(.group:not(:last-child)) {\n            border-right-width: var(\n              --simple-toolbar-group-border-width,\n              var(--simple-toolbar-border-width, 1px)\n            );\n          }\n          ::slotted(*:hover),\n          ::slotted(*:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100);\n          }\n          :host([collapsed]:not([always-expanded]))\n            ::slotted(*[collapse-hide]) {\n            display: none !important;\n          }\n        ",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -130,7 +132,7 @@ function _templateObject3() {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n        <div\n          id="buttons"\n          class="',
-    '" part="buttons"\n        >\n          <slot></slot>\n        </div>\n        ',
+    '"\n          part="buttons"\n        >\n          <slot></slot>\n        </div>\n        ',
     "\n      ",
   ]);
 
@@ -143,17 +145,21 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    ' <simple-toolbar-more-button\n        id="morebutton"\n        aria-controls="buttons"\n        class="button"\n        @click="',
+    ' <simple-toolbar-more-button\n        id="morebutton"\n        .align-horizontal="',
+    '"\n        .align-vertical="',
+    '"\n        aria-controls="buttons"\n        class="button"\n        @click="',
     '"\n        @toggle="',
     '"\n        ?hidden=',
-    '\n        icon="',
-    '"\n        icon-position="',
-    '"\n        label="',
+    '\n        .icon="',
+    '"\n        .icon-position="',
+    '"\n        .label="',
+    '"\n        .shortcut="',
     '"\n        ?show-text-label="',
     '"\n        ?toggled="',
-    '"\n        toggled-icon="',
-    '"\n        toggled-label="',
-    '"\n        tooltip-direction="',
+    '"\n        .toggled-icon="',
+    '"\n        .toggled-label="',
+    '"\n        .toggled-tooltip="',
+    '"\n        .tooltip-direction="',
     '"\n        part="morebutton"\n      >\n      </simple-toolbar-more-button>',
   ]);
 
@@ -345,21 +351,25 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
 
               return (0, _litElement.html)(
                 _templateObject(),
+                this.alignHorizontal,
+                this.alignVertical,
                 function (e) {
                   return (_this2.collapsed = !_this2.collapsed);
                 },
                 function (e) {
                   return (_this2.collapsed = !_this2.collapsed);
                 },
-                this.__collapseDisabled,
-                this.moreIcon || "",
-                this.moreIconPosition || "",
-                this.moreLabel || "",
-                this.moreShowTextLabel,
+                this.collapseDisabled,
+                this.icon,
+                this.iconPosition,
+                this.label,
+                this.shortcut,
+                this.showTextLabel,
                 !this.collapsed,
-                this.moreToggledIcon || "",
-                this.moreToggledLabel || "",
-                this.moreTooltipDirection || ""
+                this.toggledIcon,
+                this.toggledLabel,
+                this.toggledTooltip,
+                this.tooltipDirection
               );
             },
             /**
@@ -405,180 +415,114 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
           {
             key: "properties",
             get: function get() {
-              return {
-                /**
-                 * always expanded so more button is unnecessary?
-                 */
-                alwaysExpanded: {
-                  name: "alwaysExpanded",
-                  type: Boolean,
-                  attribute: "always-expanded",
-                  reflect: true,
-                },
+              return _objectSpread(
+                {},
+                _simpleToolbarButton.SimpleToolbarGlobalProperties,
+                {
+                  /**
+                   * always expanded so more button is unnecessary?
+                   */
+                  alwaysExpanded: {
+                    name: "alwaysExpanded",
+                    type: Boolean,
+                    attribute: "always-expanded",
+                    reflect: true,
+                  },
 
-                /**
-                 * is toolbar collapsed?
-                 */
-                collapsed: {
-                  name: "collapsed",
-                  type: Boolean,
-                  attribute: "collapsed",
-                  reflect: true,
-                },
+                  /**
+                   * is toolbar collapsed?
+                   */
+                  collapsed: {
+                    name: "collapsed",
+                    type: Boolean,
+                    attribute: "collapsed",
+                    reflect: true,
+                  },
 
-                /**
-                 * is toolbar collapsed?
-                 */
-                hidden: {
-                  name: "hidden",
-                  type: Boolean,
-                  attribute: "hidden",
-                  reflect: true,
-                },
+                  /**
+                   * Custom configuration of toolbar groups and buttons.
+                   * (See default value for example using default configuration.)
+                   */
+                  config: {
+                    name: "config",
+                    type: Array,
+                    attribute: "config",
+                  },
 
-                /**
-                 * Custom configuration of toolbar groups and buttons.
-                 * (See default value for example using default configuration.)
-                 */
-                config: {
-                  name: "config",
-                  type: Array,
-                  attribute: "config",
-                },
+                  /**
+                   * unique id
+                   */
+                  id: {
+                    name: "id",
+                    type: String,
+                    attribute: "id",
+                    reflect: true,
+                  },
 
-                /**
-                 * unique id
-                 */
-                id: {
-                  name: "id",
-                  type: String,
-                  attribute: "id",
-                  reflect: true,
-                },
+                  /**
+                   * Optional space-sperated list of keyboard shortcuts for editor
+                   * to fire this button, see iron-a11y-keys for more info.
+                   */
+                  moreShortcuts: {
+                    name: "moreShortcuts",
+                    attribute: "more-shortcuts",
+                    type: Object,
+                  },
 
-                /**
-                 * icon for more button.
-                 */
-                moreIcon: {
-                  name: "moreIcon",
-                  type: String,
-                  attribute: "more-icon",
-                },
+                  /**
+                   * Optional space-sperated list of keyboard shortcuts for editor
+                   * to fire this button, see iron-a11y-keys for more info.
+                   */
+                  shortcutKeys: {
+                    name: "shortcutKeys",
+                    attribute: "shortcut-keys",
+                    type: Object,
+                  },
 
-                /**
-                 * label for more button when toggled.
-                 */
-                moreToggledIcon: {
-                  name: "moreToggledIcon",
-                  type: String,
-                  attribute: "more-icon-toggled",
-                },
+                  /**
+                   * Should toolbar stick to top so that it is always visible?
+                   */
+                  sticky: {
+                    name: "sticky",
+                    type: Boolean,
+                    attribute: "sticky",
+                    reflect: true,
+                  },
 
-                /**
-                 * show text label for more button.
-                 */
-                moreIconPosition: {
-                  name: "moreIconPosition",
-                  type: String,
-                  attribute: "more-icon-position",
-                },
+                  /**
+                   * raw array of buttons
+                   */
+                  __buttons: {
+                    name: "__buttons",
+                    type: Array,
+                  },
 
-                /**
-                 * label for more button.
-                 */
-                moreLabel: {
-                  name: "moreLabel",
-                  type: String,
-                  attribute: "more-label",
-                },
+                  /**
+                   * whether there is no need to collapse
+                   */
+                  collapseDisabled: {
+                    type: Boolean,
+                    attribute: "collapse-disabled",
+                    reflect: true,
+                  },
 
-                /**
-                 * label for more button when toggled.
-                 */
-                moreToggledLabel: {
-                  name: "moreToggledLabel",
-                  type: String,
-                  attribute: "more-toggled-label",
-                },
+                  /**
+                   * whether toolbar has focus
+                   */
+                  __focused: {
+                    name: "__focused",
+                    type: Boolean,
+                  },
 
-                /**
-                 * show text label for more button.
-                 */
-                moreShowTextLabel: {
-                  name: "moreShowTextLabel",
-                  type: Boolean,
-                  attribute: "more-show-text-label",
-                },
-
-                /**
-                 * show text label for more button.
-                 */
-                moreShortcut: {
-                  name: "moreShortcut",
-                  type: Boolean,
-                  attribute: "more-shortcut",
-                },
-
-                /**
-                 * Direction that the tooltip should flow
-                 */
-                moreTooltipDirection: {
-                  type: String,
-                  attribute: "more-tooltip-direction",
-                  reflect: true,
-                },
-
-                /**
-                 * Optional space-sperated list of keyboard shortcuts for editor
-                 * to fire this button, see iron-a11y-keys for more info.
-                 */
-                shortcutKeys: {
-                  name: "shortcutKeys",
-                  attribute: "shoertcut-keys",
-                  type: Object,
-                },
-
-                /**
-                 * Should toolbar stick to top so that it is always visible?
-                 */
-                sticky: {
-                  name: "sticky",
-                  type: Boolean,
-                  attribute: "sticky",
-                  reflect: true,
-                },
-
-                /**
-                 * raw array of buttons
-                 */
-                __buttons: {
-                  name: "__buttons",
-                  type: Array,
-                },
-
-                /**
-                 * whether there is no need to collapse
-                 */
-                __collapseDisabled: {
-                  type: Boolean,
-                },
-
-                /**
-                 * whether toolbar has focus
-                 */
-                __focused: {
-                  name: "__focused",
-                  type: Boolean,
-                },
-
-                /**
-                 * whether toolbar is hovered
-                 */
-                __hovered: {
-                  name: "__hovered",
-                  type: Boolean,
-                },
-              };
+                  /**
+                   * whether toolbar is hovered
+                   */
+                  __hovered: {
+                    name: "__hovered",
+                    type: Boolean,
+                  },
+                }
+              );
             },
           },
         ]
@@ -594,16 +538,16 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
           _getPrototypeOf(_class).call(this)
         );
         _this.collapsed = true;
+        _this.collapseDisabled = false;
         _this.config = [];
         _this.__buttons = [];
-        _this.__collapseDisabled = false;
         _this.__focused = false;
         _this.__hovered = false;
-        _this.moreIcon = "more-vert";
-        _this.moreLabel = "More Buttons";
-        _this.moreToggledLabel = "Fewer Buttons";
-        _this.moreShowTextLabel = false;
-        _this.moreShortcut = "ctrl+shift+;";
+        _this.icon = "more-vert";
+        _this.label = "More Buttons";
+        _this.toggledLabel = "Fewer Buttons";
+        _this.showTextLabel = false;
+        _this.shortcut = "ctrl+shift+;";
         _this.sticky = false;
         _this.shortcutKeys = {};
 
@@ -785,7 +729,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
             this.innerHTML = "";
             this.__buttons = [];
             this.shortcutKeys = {};
-            this.shortcutKeys[this.moreShortcut] = this.shadowRoot
+            this.shortcutKeys[this.shortcut] = this.shadowRoot
               ? this.shadowRoot.querySelector("#morebutton")
               : undefined;
           },
@@ -847,7 +791,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                 item.setAttribute("collapse-hide", true);
               }
             });
-            this.__collapseDisabled = shown;
+            this.collapseDisabled = shown;
           },
           /**
            * updates registered button, it needed
@@ -1069,6 +1013,8 @@ Custom property | Description | Default
  * @lit-element
  * @demo demo/index.html
  * @demo demo/grid.html Grid
+ * @demo ./demo/buttons.html Buttons
+ * @demo ./demo/menu.html Menu
  */
 
 exports.SimpleToolbarBehaviors = SimpleToolbarBehaviors;

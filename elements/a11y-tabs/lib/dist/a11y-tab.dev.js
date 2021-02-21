@@ -31,7 +31,7 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n          margin-bottom: var(--a11y-tabs-content-padding);\n          border: 1px solid var(--a11y-tabs-border-color);\n          padding: var(--a11y-tabs-content-padding);\n        }\n        .sr-only {\n          position: absolute;\n          left: -99999px;\n          height: 0;\n          overflow: hidden;\n        }\n        .label-heading {\n          display: flex;\n          align-items: center;\n          color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));\n          background-color: var(--a11y-tabs-background);\n          font-weight: var(--a11y-tabs-selected-font-weight, normal);\n          border-bottom: 1px solid var(--a11y-tabs-border-color);\n          margin: 0 0 calc(var(--a11y-tabs-content-padding) / 2);\n          padding: 0 0 calc(var(--a11y-tabs-content-padding) / 2);\n          border-radius: var(--a11y-tabs-horizontal-border-radius,2px) var(--a11y-tabs-horizontal-border-radius, 2px) 0 0; \n        }\n        simple-icon-lite {\n          margin-right: 1em;\n        }\n        @media screen {\n          :host {\n            border: none;\n            height: var(--a11y-tabs-tab-height, --a11y-tabs-height);\n            overflow: var(--a11y-tabs-tab-overflow, --a11y-tabs-overflow);\n            margin-bottom: unset;\n          }\n          :host([inactive]) {\n            display: none;\n          }\n          #content-inner {\n            max-width: 100%;\n            overflow: auto;\n          }\n          .label-heading {\n            display: none;\n          }\n        }\n      ",
+    "\n        :host {\n          display: block;\n          margin-bottom: var(--a11y-tabs-content-padding);\n          border: 1px solid var(--a11y-tabs-border-color);\n          padding: var(--a11y-tabs-content-padding);\n        }\n        .sr-only {\n          position: absolute;\n          left: -99999px;\n          height: 0;\n          overflow: hidden;\n        }\n        .label-heading {\n          display: flex;\n          align-items: center;\n          color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));\n          background-color: var(--a11y-tabs-background);\n          font-weight: var(--a11y-tabs-selected-font-weight, normal);\n          border-bottom: 1px solid var(--a11y-tabs-border-color);\n          margin: 0 0 calc(var(--a11y-tabs-content-padding) / 2);\n          padding: 0 0 calc(var(--a11y-tabs-content-padding) / 2);\n          border-radius: var(--a11y-tabs-horizontal-border-radius, 2px)\n            var(--a11y-tabs-horizontal-border-radius, 2px) 0 0;\n        }\n        simple-icon-lite {\n          margin-right: 1em;\n        }\n        @media screen {\n          :host {\n            border: none;\n            height: var(--a11y-tabs-tab-height, --a11y-tabs-height);\n            overflow: var(--a11y-tabs-tab-overflow, --a11y-tabs-overflow);\n            margin-bottom: unset;\n          }\n          :host([inactive]) {\n            display: none;\n          }\n          #content-inner {\n            max-width: 100%;\n            overflow: auto;\n          }\n          .label-heading {\n            display: none;\n          }\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -44,11 +44,11 @@ function _templateObject2() {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <span class="sr-only">Tab ',
-    '</span>\n      <div class="label-heading">\n        <simple-icon-lite\n          class="icon"\n          ?hidden="',
+    '</span>\n      <div class="label-heading" part="heading">\n        <simple-icon-lite\n          class="icon"\n          ?hidden="',
     '"\n          .icon="',
-    '"\n          >\n        </simple-icon-lite>\n        <slot name="label" ?hidden="',
-    '"></slot>\n        <div class="label">',
-    '</div>\n      </div>\n      <div id="content-inner"><slot></slot></div>\n      <span class="sr-only">\n        End of tab ',
+    '" \n          part="icon"\n        >\n        </simple-icon-lite>\n        <slot name="label" ?hidden="',
+    '"></slot>\n        <div class="label" part="label">',
+    '</div>\n      </div>\n      <div id="content-inner" part="content"><slot></slot></div>\n      <span class="sr-only">\n        End of tab ',
     '. Back to <a href="#',
     '">tabs</a>.\n      </span>\n    ',
   ]);

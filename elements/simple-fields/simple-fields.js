@@ -134,7 +134,7 @@ class SimpleFields extends SimpleFieldsLite {
           display: block;
           --simple-picker-background-color: var(
             --simple-fields-background-color,
-            white
+            transparent
           );
           --simple-picker-border-width: 0;
           --simple-picker-focus-border-width: 0;
@@ -166,6 +166,10 @@ class SimpleFields extends SimpleFieldsLite {
     return {
       ...super.properties,
 
+      disableResponsive: {
+        type: Boolean,
+        attribute: "disable-responsive",
+      },
       /**
        * Fields to convert to JSON Schema.
        */
@@ -193,9 +197,11 @@ class SimpleFields extends SimpleFieldsLite {
         type: Object,
         attribute: "active-path",
       },
-      disableResponsive: {
-        type: Boolean,
-        attribute: "disable-responsive",
+      /**
+       * tracks code editors to switch to dark mode
+       */
+      __colorPrefs: {
+        type: String,
       },
     };
   }
@@ -210,6 +216,7 @@ class SimpleFields extends SimpleFieldsLite {
   constructor() {
     super();
     this.activeTabs = {};
+    this.__codeElements = [];
     this.disableResponsive = false;
     setTimeout(() => {
       this.addEventListener("active-tab-changed", this._handleActiveTab);
@@ -524,6 +531,12 @@ class SimpleFields extends SimpleFieldsLite {
                   element: "simple-icon-picker",
                   attributes: {
                     autofocus: true,
+                  },
+                  properties: {
+                    options: "icons",
+                    exclude: "exclude",
+                    excludeSets: "excludeSets",
+                    includeSets: "includeSets",
                   },
                 },
               },

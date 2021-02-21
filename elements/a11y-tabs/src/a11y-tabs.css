@@ -4,25 +4,11 @@
   overflow: var(--a11y-tabs-overflow);
   font-size: var(--a11y-tabs-font-size, unset);
   font-family: var(--a11y-tabs-font-family, unset);
-  --a11y-tabs-width: 100%;
-  --a11y-tabs-background: white;
-  --a11y-tabs-border-color: #ddd;
-  --a11y-tabs-color: #000;
-  --a11y-tabs-faded-color: #333;
-  --a11y-tabs-focus-color: var(-a11y-tabs-color);
-  --a11y-tabs-faded-background: #f8f8f8;
-  --a11y-tabs-disabled-color: #999;
-  --a11y-tabs-disabled-background: #eee;
-  --a11y-tabs-border-radius: 2px;
-  --a11y-tabs-horizontal-background: var(--a11y-tabs-background, white);
+  --a11y-tabs-focus-color: var(--a11y-tabs-color);
   --a11y-tabs-horizontal-border-radius: var(--a11y-tabs-border-radius, 2px);
   --a11y-tabs-vertical-border-radius: var(--a11y-tabs-border-radius, 2px);
-  --a11y-tabs-content-background: var(--a11y-tabs-background, white);
-  --a11y-tabs-content-padding: 16px;
-  --a11y-tabs-button-padding: 4px;
   --a11y-tabs-vertical-button-padding: var(--a11y-tabs-button-padding, 4px);
   --a11y-tabs-horizontal-button-padding: var(--a11y-tabs-button-padding, 4px);
-  --a11y-tabs-width: auto;
 }
 
 :host([hidden]) {
@@ -34,7 +20,7 @@
 }
 @media screen {
   :host([vertical]) {
-    border: 1px solid var(--a11y-tabs-border-color);
+    border: 1px solid var(--a11y-tabs-border-color,#ddd);
     border-radius: var(--a11y-tabs-vertical-border-radius,2px);
     display: flex;
     justify-content: space-between;
@@ -42,10 +28,10 @@
   }
 
   #content {
-    border: 1px solid var(--a11y-tabs-border-color);
-    padding: var(--a11y-tabs-content-padding);
+    border: 1px solid var(--a11y-tabs-border-color,#ddd);
+    padding: var(--a11y-tabs-content-padding, 16px);
     background-color: var(--a11y-tabs-content-background);
-    flex: 1 1 calc(100% - 2 * var(--a11y-tabs-content-padding));
+    flex: 1 1 calc(100% - 2 * var(--a11y-tabs-content-padding, 16px));
     overflow: auto;
   }
 
@@ -118,9 +104,9 @@
     min-width: unset;
     margin: 0;
     text-transform: unset;
-    color: var(--a11y-tabs-faded-color);
+    color: var(--a11y-tabs-faded-color, #333);
     border: 1px solid var(--a11y-tabs-border-color);
-    background-color: var(--a11y-tabs-faded-background);
+    background-color: var(--a11y-tabs-faded-background, #f8f8f8);
     padding: var(--a11y-tabs-horizontal-button-padding);
     font-weight: var(--a11y-tabs-font-weight, normal);
     border-radius: var(--a11y-tabs-horizontal-border-radius,2px) var(--a11y-tabs-horizontal-border-radius,2px) 0 0; 
@@ -190,17 +176,28 @@
   }
   
   #tabs button[disabled] {
-    color: var(--a11y-tabs-disabled-color);
-    background-color: var(--a11y-tabs-disabled-background);
-    cursor: not-allowed;
+    color: var(--a11y-tabs-disabled-color, #999);
+    background-color: var(--a11y-tabs-disabled-background, #eee);
+    pointer-events: none;
+  }
+
+  #tabs button[disabled]:focus,
+  #tabs button[disabled]:hover {
+    color: unset;
+    font-weight: unset;
+  }
+  
+  button[disabled]:focus .label,
+  button[disabled]:hover .label {
+    text-decoration: none;
   }
   
   :host(:not([vertical])) #tabs button[disabled] {
-    border-left-color: var(--a11y-tabs-disabled-border-accent);
+    border-left-color: var(--a11y-tabs-disabled-border-accent,unset);
   }
   
   :host([vertical]) #tabs button[disabled] {
-    border-top-color: var(--a11y-tabs-disabled-border-accent);
+    border-top-color: var(--a11y-tabs-disabled-border-accent,unset);
   }
   
   #tabs span.label,

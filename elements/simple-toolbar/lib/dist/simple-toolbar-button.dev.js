@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.SimpleToolbarButtonBehaviors = exports.SimpleToolbarButton = void 0;
+exports.SimpleToolbarButtonBehaviors = exports.SimpleToolbarButton = exports.SimpleToolbarGlobalProperties = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
@@ -58,9 +58,33 @@ function _arrayWithoutHoles(arr) {
   }
 }
 
+function _templateObject12() {
+  var data = _taggedTemplateLiteral([
+    '\n          button[part="button"] {\n            color: var(--simple-toolbar-button-color);\n            border-color: var(\n              --simple-toolbar-button-border-color,\n              var(--simple-toolbar-border-color, transparent)\n            );\n            background-color: var(--simple-toolbar-button-bg, transparent);\n            opacity: var(--simple-toolbar-button-opacity, 1);\n            border-width: var(\n              --simple-toolbar-button-border-width,\n              var(--simple-toolbar-border-width, 1px)\n            );\n            border-radius: var(--simple-toolbar-border-radius, 3px);\n            border-style: solid;\n            text-transform: unset;\n          }\n          button[part="button"][aria-pressed="true"] {\n            color: var(--simple-toolbar-button-toggled-color);\n            border-color: var(--simple-toolbar-button-toggled-border-color);\n            background-color: var(--simple-toolbar-button-toggled-bg);\n            opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);\n          }\n          button[part="button"]:focus,\n          button[part="button"]:hover {\n            color: var(--simple-toolbar-button-hover-color);\n            background-color: var(--simple-toolbar-button-hover-bg);\n            border-color: var(--simple-toolbar-button-hover-border-color);\n            opacity: var(--simple-toolbar-button-hover-opacity, 0.8);\n          }\n          button[part="button"][disabled] {\n            cursor: not-allowed;\n            color: var(--simple-toolbar-button-disabled-color, unset);\n            background-color: var(--simple-toolbar-button-disabled-bg, unset);\n            border-color: var(\n              --simple-toolbar-button-disabled-border-color,\n              unset\n            );\n            opacity: var(--simple-toolbar-button-disabled-opacity, 0.5);\n          }\n        ',
+  ]);
+
+  _templateObject12 = function _templateObject12() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject11() {
+  var data = _taggedTemplateLiteral([
+    '\n          :host {\n            font-family: sans-serif;\n            font-size: 13px;\n            flex: 0 1 auto;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n          }\n          button[part="button"] {\n            font-family: inherit;\n            font-size: inherit;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n            min-height: var(--simple-toolbar-button-height, 24px);\n            padding: var(--simple-toolbar-button-padding, 1px);\n            flex: var(--simple-toolbar-button-flex, 0 0 auto);\n            align-items: var(--simple-toolbar-button-align, center);\n            transition: all 0.5s;\n            justify-content: var(--simple-toolbar-button-justify, space-around);\n          }\n          button[part="button"],\n          :host([icon-position="right"]:not([align-vertical]))\n            button[part="button"] {\n            justify-content: space-evenly;\n          }\n\n          :host([icon-position="top"]) button[part="button"] {\n            flex-direction: column;\n          }\n          :host([icon-position="bottom"]) button[part="button"] {\n            flex-direction: column-reverse;\n          }\n          :host([icon-position="right"]) button[part="button"] {\n            flex-direction: row-reverse;\n          }\n          :host([align-vertical="top"]:not([icon-position]))\n            button[part="button"],\n          :host([align-vertical="top"][icon-position="right"])\n            button[part="button"],\n          :host([align-horizontal="left"][icon-position="top"])\n            button[part="button"],\n          :host([align-horizontal="left"][icon-position="bottom"])\n            button[part="button"] {\n            align-items: flex-start;\n          }\n          :host([align-vertical="bottom"]:not([icon-position]))\n            button[part="button"],\n          :host([align-vertical="bottom"][icon-position="right"])\n            button[part="button"],\n          :host([align-horizontal="right"][icon-position="top"])\n            button[part="button"],\n          :host([align-horizontal="right"][icon-position="bottom"]) {\n            align-items: flex-end;\n          }\n          :host([align-horizontal="left"]:not([icon-position]))\n            button[part="button"],\n          :host([align-horizontal="left"][icon-position="right"])\n            button[part="button"],\n          :host([align-vertical="top"][icon-position="top"])\n            button[part="button"],\n          :host([align-vertical="top"][icon-position="bottom"]) {\n            justify-content: flex-start;\n          }\n          :host([align-horizontal="right"]:not([icon-position]))\n            button[part="button"],\n          :host([align-horizontal="right"][icon-position="right"])\n            button[part="button"],\n          :host([align-vertical="bottom"][icon-position="top"])\n            button[part="button"],\n          :host([align-vertical="bottom"][icon-position="bottom"]) {\n            justify-content: flex-end;\n          }\n          :host([align-vertical="middle"]:not([icon-position]))\n            button[part="button"],\n          :host([align-vertical="middle"][icon-position="right"])\n            button[part="button"],\n          :host([align-horizontal="center"][icon-position="top"])\n            button[part="button"],\n          :host([align-horizontal="center"][icon-position="bottom"]) {\n            align-items: center;\n          }\n          :host([align-horizontal="center"]:not([icon-position]))\n            button[part="button"],\n          :host([align-horizontal="center"][icon-position="right"])\n            button[part="button"],\n          :host([align-vertical="middle"][icon-position="top"])\n            button[part="button"],\n          :host([align-vertical="middle"][icon-position="bottom"]) {\n            justify-content: center;\n          }\n        ',
+  ]);
+
+  _templateObject11 = function _templateObject11() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject10() {
   var data = _taggedTemplateLiteral([
-    '\n          :host {\n            flex: 0 1 auto;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n            white-space: nowrap;\n            transition: all 0.5s;\n          }\n          :host(:hover),\n          :host(:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100);\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n          }\n          #button {\n            font-size: inherit;\n            min-width: var(\n              --simple-toolbar-button-min-width,\n              var(\n                --simple-toolbar-button-width,\n                var(--simple-toolbar-button-height, 24px)\n              )\n            );\n            min-height: var(--simple-toolbar-button-height, 24px);\n            margin: 0;\n            padding: var(--simple-toolbar-button-padding, 0);\n            color: var(--simple-toolbar-button-color);\n            border-color: var(\n              --simple-toolbar-button-border-color,\n              var(--simple-toolbar-border-color, transparent)\n            );\n            background-color: var(--simple-toolbar-button-bg, transparent);\n            opacity: var(--simple-toolbar-button-opacity, 1);\n            border-width: var(\n              --simple-toolbar-button-border-width,\n              var(--simple-toolbar-border-width, 1px)\n            );\n            border-radius: var(--simple-toolbar-border-radius, 3px);\n            border-style: solid;\n            text-transform: unset;\n            display: flex;\n            flex: var(--simple-toolbar-button-flex, 0 0 auto);\n            white-space: nowrap;\n            align-items: center;\n            transition: all 0.5s;\n            width: 100%;\n            height: 100%;\n            justify-content: var(--simple-toolbar-button-justify, space-around);\n          }\n          :host([icon-position="top"]) #button,\n          :host([icon-position="bottom"]) #button {\n            justify-content: space-evenly;\n          }\n          :host([icon-position="top"]) #button {\n            flex-direction: column;\n          }\n          :host([icon-position="bottom"]) #button {\n            flex-direction: column-reverse;\n          }\n          :host([icon-position="right"]) #button {\n            flex-direction: row-reverse;\n          }\n          #button[aria-pressed="true"] {\n            color: var(--simple-toolbar-button-toggled-color);\n            border-color: var(--simple-toolbar-button-toggled-border-color);\n            background-color: var(--simple-toolbar-button-toggled-bg);\n            opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);\n          }\n          #button:focus,\n          #button:hover {\n            color: var(--simple-toolbar-button-hover-color);\n            background-color: var(--simple-toolbar-button-hover-bg);\n            border-color: var(--simple-toolbar-button-hover-border-color);\n            opacity: var(--simple-toolbar-button-hover-opacity, 0.8);\n          }\n          #button[disabled] {\n            cursor: not-allowed;\n            color: var(--simple-toolbar-button-disabled-color, unset);\n            background-color: var(--simple-toolbar-button-disabled-bg, unset);\n            border-color: var(--simple-toolbar-button-disabled-border-color, unset);\n            opacity: var(--simple-toolbar-button-disabled-opacity, 0.5);\n          }\n        ',
+    '\n          :host {\n            display: inline-flex;\n            white-space: nowrap;\n            transition: all 0.5s;\n            z-index: 1;\n          }\n          :host(:hover),\n          :host(:focus-wthin) {\n            z-index: var(--simple-toolbar-focus-z-index, 100) !important;\n          }\n          :host([hidden]) {\n            z-index: -1;\n            visibility: hidden;\n            opacity: 0;\n            height: 0;\n            overflow: hidden;\n          }\n          :host([disabled]) {\n            pointer-events: none;\n          }\n          button[part="button"] {\n            display: flex;\n            margin: 0;\n            white-space: nowrap;\n            width: 100%;\n            height: 100%;\n          }\n        ',
   ]);
 
   _templateObject10 = function _templateObject10() {
@@ -72,7 +96,7 @@ function _templateObject10() {
 
 function _templateObject9() {
   var data = _taggedTemplateLiteral([
-    "\n          simple-tooltip {\n            z-index: 2;\n          }\n        ",
+    "\n          simple-tooltip {\n            z-index: -1;\n          }\n          :host(:hover) simple-tooltip,\n          :host(:focus-within) simple-tooltip {\n            z-index: 2;\n          }\n        ",
   ]);
 
   _templateObject9 = function _templateObject9() {
@@ -147,9 +171,9 @@ function _templateObject5() {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    '<simple-tooltip\n        id="tooltip"\n        for="button"\n        position="',
-    '"\n        part="tooltip"\n        >',
-    "</simple-tooltip\n      >",
+    '<simple-tooltip\n            id="tooltip"\n            for="button"\n            position="',
+    '"\n            part="tooltip"\n            fit-to-visible-bounds\n            >',
+    "</simple-tooltip\n          >",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -161,9 +185,9 @@ function _templateObject4() {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '<span id="label" class="',
-    '" part="label"\n        >',
-    "</span\n      >",
+    '<span\n            id="label"\n            class="',
+    '"\n            part="label"\n            >',
+    "</span\n          >",
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -175,8 +199,8 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '<simple-icon-lite\n        id="icon"\n        aria-hidden="true"\n        icon="',
-    '"\n        part="icon"\n      ></simple-icon-lite>',
+    '<simple-icon-lite\n            id="icon"\n            aria-hidden="true"\n            icon="',
+    '"\n            part="icon"\n          ></simple-icon-lite>',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -248,6 +272,55 @@ function _interopRequireWildcard(obj) {
     cache.set(obj, newObj);
   }
   return newObj;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -342,6 +415,74 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+var SimpleToolbarGlobalProperties = {
+  /**
+   * override default centered alignment of button: "left", "right", "justify", default center
+   */
+  align: {
+    attribute: "align",
+    reflect: true,
+    type: String,
+  },
+
+  /**
+   * override vertical alignment of button: "top", "bottom", "justify", default middle
+   */
+  alignVertical: {
+    attribute: "align-vertical",
+    reflect: true,
+    type: String,
+  },
+
+  /**
+   * is toolbar collapsed?
+   */
+  disabled: {
+    name: "disabled",
+    type: Boolean,
+    attribute: "disabled",
+    reflect: true,
+  },
+
+  /**
+   * is toolbar collapsed?
+   */
+  hidden: {
+    name: "hidden",
+    type: Boolean,
+    attribute: "hidden",
+    reflect: true,
+  },
+
+  /**
+   * Optionally place icon at top, bottom, or right of label
+   */
+  iconPosition: {
+    type: String,
+    attribute: "icon-position",
+    reflect: true,
+  },
+
+  /**
+   * show text label for more button.
+   */
+  showTextLabel: {
+    name: "showTextLabel",
+    type: Boolean,
+    attribute: "more-show-text-label",
+  },
+
+  /**
+   * Direction that the tooltip should flow
+   */
+  tooltipDirection: {
+    type: String,
+    attribute: "tooltip-direction",
+    reflect: true,
+  },
+};
+exports.SimpleToolbarGlobalProperties = SimpleToolbarGlobalProperties;
+
 var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
   SuperClass
 ) {
@@ -364,22 +505,13 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
         {
           key: "properties",
           get: function get() {
-            return {
+            return _objectSpread({}, SimpleToolbarGlobalProperties, {
               /**
                * The `id` of the `simple-toolbar` that the toolbar controls.
                */
               controls: {
                 type: String,
                 attribute: "controls",
-                reflect: true,
-              },
-
-              /**
-               * Is the button disabled? Default is false.
-               */
-              disabled: {
-                type: Boolean,
-                attribute: "disabled",
                 reflect: true,
               },
 
@@ -397,15 +529,6 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                */
               label: {
                 type: String,
-              },
-
-              /**
-               * Optionally place icon at top, bottom, or right of label
-               */
-              iconPosition: {
-                type: String,
-                attribute: "icon-position",
-                reflect: true,
               },
 
               /**
@@ -464,14 +587,13 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
               },
 
               /**
-               * Direction that the tooltip should flow
+               * Label for the icon, if button is toggled.
                */
-              tooltipDirection: {
+              toggledTooltip: {
+                attribute: "toggled-tooltip",
                 type: String,
-                attribute: "tooltip-direction",
-                reflect: true,
               },
-            };
+            });
           },
         },
       ]);
@@ -575,7 +697,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
           {
             key: "_defaultOrToggled",
             value: function _defaultOrToggled(toggledOff, toggledOn) {
-              return (!!toggledOn || toggledOn == "") && this.isToggled
+              return this._uniqueText(toggledOn) && this.isToggled
                 ? toggledOn
                 : toggledOff;
             },
@@ -629,6 +751,33 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
               );
             },
             /**
+             * is label specified
+             *
+             * @readonly
+             */
+          },
+          {
+            key: "_uniqueText",
+
+            /**
+             * checks to see if a string is unique and not empty
+             *
+             * @param {string} [string1='']
+             * @param {string} [string2='']
+             * @returns
+             */
+            value: function _uniqueText() {
+              var string1 =
+                arguments.length > 0 && arguments[0] !== undefined
+                  ? arguments[0]
+                  : "";
+              var string2 =
+                arguments.length > 1 && arguments[1] !== undefined
+                  ? arguments[1]
+                  : "";
+              return string1.trim() !== string2.trim();
+            },
+            /**
              * template for button icon
              *
              * @readonly
@@ -654,8 +803,9 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
             get: function get() {
               if (!this.__button)
                 this.__button =
-                  this.shadowRoot && this.shadowRoot.querySelector("#button")
-                    ? this.shadowRoot.querySelector("#button")
+                  this.shadowRoot &&
+                  this.shadowRoot.querySelector("button[part=button]")
+                    ? this.shadowRoot.querySelector("button[part=button]")
                     : undefined;
               return this.__button;
             },
@@ -692,20 +842,20 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
               );
             },
             /**
-             * label is offscreen (screenreader-only)
+             * current label based on toggled state
              *
              * @readonly
              * @memberof SimpleToolbarButton
              */
           },
           {
-            key: "labelStyle",
+            key: "currentTooltip",
             get: function get() {
-              return !!this.icon &&
-                this.icon !== "" &&
-                this.showTextLabel === false
-                ? "offscreen"
-                : null;
+              return this._defaultOrToggled(
+                this.tooltip,
+                this.toggledTootip,
+                this.isToggled
+              );
             },
             /**
              * determines if button is toggled
@@ -721,12 +871,65 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
             },
           },
           {
+            key: "hasLabel",
+            get: function get() {
+              return this._uniqueText(this.currentLabel);
+            },
+            /**
+             * is icon specified
+             *
+             * @readonly
+             */
+          },
+          {
+            key: "hasIcon",
+            get: function get() {
+              return this._uniqueText(this.currentIcon);
+            },
+            /**
+             * is tooltip specified
+             *
+             * @readonly
+             */
+          },
+          {
+            key: "hasTooltip",
+            get: function get() {
+              return this._uniqueText(this.currentTooltip);
+            },
+            /**
+             * is visible label is needed or specified
+             *
+             * @readonly
+             */
+          },
+          {
+            key: "labelVisible",
+            get: function get() {
+              return (!this.hasIcon || this.showTextLabel) && this.hasLabel;
+            },
+            /**
+             * is tooltip needed or specified
+             *
+             * @readonly
+             */
+          },
+          {
+            key: "tooltipVisible",
+            get: function get() {
+              return (
+                this.hasTooltip &&
+                (!this.labelVisible ||
+                  this._uniqueText(this.currentLabel, this.tooltip))
+              );
+            },
+          },
+          {
             key: "iconTemplate",
             get: function get() {
-              return (0, _litElement.html)(
-                _templateObject2(),
-                this.currentIcon
-              );
+              return !this.hasIcon
+                ? ""
+                : (0, _litElement.html)(_templateObject2(), this.currentIcon);
             },
             /**
              * template for button label
@@ -737,11 +940,13 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
           {
             key: "labelTemplate",
             get: function get() {
-              return (0, _litElement.html)(
-                _templateObject3(),
-                this.labelStyle || "",
-                this.currentLabel
-              );
+              return !this.hasLabel
+                ? ""
+                : (0, _litElement.html)(
+                    _templateObject3(),
+                    this.labelVisible ? "" : "offscreen",
+                    this.currentLabel
+                  );
             },
             /**
              * template for button tooltip
@@ -752,11 +957,13 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
           {
             key: "tooltipTemplate",
             get: function get() {
-              return (0, _litElement.html)(
-                _templateObject4(),
-                this.tooltipDirection || "bottom",
-                this.currentLabel
-              );
+              return !this.tooltipVisible
+                ? ""
+                : (0, _litElement.html)(
+                    _templateObject4(),
+                    this.tooltipDirection || "bottom",
+                    this.currentLabel
+                  );
             },
             /**
              * template for button, based on whether or not the button toggles
@@ -823,29 +1030,58 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
               return [(0, _litElement.css)(_templateObject9())];
             },
             /**
-             * styles for button
+             * these styles are essential to how the button works
              *
              * @readonly
              * @static
              */
           },
           {
-            key: "buttonStyles",
+            key: "simpleButtonCoreStyles",
             get: function get() {
               return [(0, _litElement.css)(_templateObject10())];
             },
+            /**
+             * these styles can be extended and overridden if button layout needs to change
+             *
+             * @readonly
+             * @static
+             */
+          },
+          {
+            key: "simpleButtonLayoutStyles",
+            get: function get() {
+              return [(0, _litElement.css)(_templateObject11())];
+            },
+            /**
+             * these styles can be extended and overridden if button colors need to change
+             *
+             * @readonly
+             * @static
+             */
+          },
+          {
+            key: "simpleButtonThemeStyles",
+            get: function get() {
+              return [(0, _litElement.css)(_templateObject12())];
+            },
+            /**
+             * aggregates separate styles
+             *
+             * @readonly
+             * @static
+             */
           },
           {
             key: "styles",
             get: function get() {
               return [].concat(
-                _toConsumableArray(
-                  _get(_getPrototypeOf(_class), "styles", this) || []
-                ),
-                _toConsumableArray(this.buttonStyles),
                 _toConsumableArray(this.iconStyles),
                 _toConsumableArray(this.labelStyles),
-                _toConsumableArray(this.tooltipStyles)
+                _toConsumableArray(this.tooltipStyles),
+                _toConsumableArray(this.simpleButtonCoreStyles),
+                _toConsumableArray(this.simpleButtonLayoutStyles),
+                _toConsumableArray(this.simpleButtonThemeStyles)
               );
             },
           },

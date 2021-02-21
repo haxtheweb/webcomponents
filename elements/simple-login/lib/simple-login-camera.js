@@ -257,12 +257,12 @@ class SimpleLoginCamera extends HTMLElement {
           display: none;
         }
       </style>
-      <div id="wrapper">
-        <video></video>
-        <p class="error"></p>
-        <div class="custom-controls">
-          <button class="record">Record</button>
-          <button class="pause-record" hidden>Pause record</button>
+      <div id="wrapper" part="wrapper">
+        <video part="video"></video>
+        <p class="error" part="error"></p>
+        <div class="custom-controls" part="controls">
+          <button class="record" part="record">Record</button>
+          <button class="pause-record" hidden part="pause">Pause record</button>
         </div>
       </div>
     `;

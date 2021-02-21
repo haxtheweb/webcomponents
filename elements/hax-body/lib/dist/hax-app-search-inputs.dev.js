@@ -11,6 +11,8 @@ require("@lrnwebcomponents/simple-fields/simple-fields.js");
 
 var _HAXFields = require("@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js");
 
+var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -49,7 +51,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n        }\n        .search-label {\n          display: flex;\n          align-items: center;\n          justify-content: space-between;\n          width: 100%;\n        }\n        #cancel {\n          flex: 0 0 auto;\n        }\n        h5 {\n          margin: var(--hax-tray-margin, 4px) 0;\n          font-size: var(--hax-tray-font-size-xl);\n          text-transform: capitalize;\n        }\n      ",
+    "\n        :host {\n          display: block;\n        }\n        .search-label {\n          display: flex;\n          align-items: center;\n          justify-content: space-between;\n          width: 100%;\n        }\n        #cancel {\n          flex: 0 0 auto;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -66,6 +68,33 @@ function _taggedTemplateLiteral(strings, raw) {
   return Object.freeze(
     Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
   );
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -159,7 +188,10 @@ var HaxAppSearchInputs =
          * LitElement constructable styles enhancement
          */
         get: function get() {
-          return [(0, _litElement.css)(_templateObject())];
+          return [].concat(
+            _toConsumableArray(_haxUiStyles.HaxTrayDetailHeadings),
+            [(0, _litElement.css)(_templateObject())]
+          );
         },
       },
     ]);

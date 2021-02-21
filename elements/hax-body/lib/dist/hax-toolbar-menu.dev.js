@@ -7,9 +7,9 @@ exports.HaxToolbarMenu = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-require("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+var _simpleToolbarMenu = require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js");
 
-var _a11yMenuButton = require("@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js");
+var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -78,26 +78,9 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(['<slot name="menuitem"></slot>']);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <button\n        id="menubutton"\n        aria-haspopup="true"\n        aria-controls="menu"\n        aria-expanded="',
-    '"\n      >\n        <simple-icon-lite\n          icon="',
-    '"\n          aria-hidden="true"\n          ?hidden=',
-    '\n        ></simple-icon-lite>\n        <span class="',
-    '"\n          >',
-    '</span\n        >\n        <simple-icon-lite\n          id="dropdownicon"\n          icon="arrow-drop-down"\n          aria-hidden="true"\n        ></simple-icon-lite>\n      </button>\n      <simple-tooltip for="menubutton" ?hidden="',
-    '"\n        >',
-    "</simple-tooltip\n      >\n    ",
+    "\n        ::slotted([slot=menuitem]) {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-label-white-space: nowrap;\n          --hax-tray-border-color: none;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -108,9 +91,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral([
-    "\n        .sr-only {\n          position: absolute;\n          left: -99999999px;\n          width: 0;\n          height: 0;\n          overflow: hidden;\n        }\n        :host([disabled]) {\n          pointer-events: none;\n        }\n        :host([danger]) {\n          --a11y-menu-button-focus-color: var(\n            --hax-toolbar-button-danger-color,\n            #882222\n          );\n          --a11y-menu-button-focus-border: 1px solid\n            var(--hax-toolbar-button-danger-color, #882222);\n        }\n        button {\n          display: flex;\n          flex-wrap: none;\n          align-items: center;\n          min-width: 42px;\n          padding: var(--hax-menu-button-menu-padding);\n          font-family: var(--simple-fields-font-family, sans-serif);\n          text-transform: capitalize;\n        }\n        .label {\n          padding: 0 5px;\n        }\n        #dropdownicon {\n          --simple-icon-height: 18px;\n          --simple-icon-width: 18px;\n          margin-left: -2px;\n        }\n        #menu {\n          width: var(--hax-menu-button-menu-width);\n          min-width: var(--hax-menu-button-menu-min-idth);\n        }\n        absolute-position-behavior {\n          --a11y-menu-button-border: 1px solid\n            var(--hax-toolbar-button-hover-border-color, #000);\n          z-index: 1001;\n        }\n      ",
-  ]);
+  var data = _taggedTemplateLiteral(['<slot name="menuitem"></slot>']);
 
   _templateObject = function _templateObject() {
     return data;
@@ -255,14 +236,14 @@ function _getPrototypeOf(o) {
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.
  *
- * @extends A11yMenuButtonBehaviors
+ * @extends SimpleToolbarMenuBehaviors
  * @element hax-toolbar-menu
  *
  */
 var HaxToolbarMenu =
   /*#__PURE__*/
-  (function (_A11yMenuButtonBehavi) {
-    _inherits(HaxToolbarMenu, _A11yMenuButtonBehavi);
+  (function (_SimpleToolbarMenuBeh) {
+    _inherits(HaxToolbarMenu, _SimpleToolbarMenuBeh);
 
     _createClass(HaxToolbarMenu, null, [
       {
@@ -272,11 +253,8 @@ var HaxToolbarMenu =
          * LitElement constructable styles enhancement
          */
         get: function get() {
-          return [].concat(
-            _toConsumableArray(
-              _get(_getPrototypeOf(HaxToolbarMenu), "styles", this)
-            ),
-            [(0, _litElement.css)(_templateObject())]
+          return _toConsumableArray(
+            _get(_getPrototypeOf(HaxToolbarMenu), "styles", this)
           );
         },
       },
@@ -292,49 +270,46 @@ var HaxToolbarMenu =
         _getPrototypeOf(HaxToolbarMenu).call(this)
       );
       _this._blockEvent = false;
-      _this.disabled = false;
-      _this.direction = "top";
-      _this.label = "";
       return _this;
     }
+    /**
+     * template for slotted list items
+     *
+     * @readonly
+     */
 
     _createClass(
       HaxToolbarMenu,
       [
         {
-          key: "selectedValueChanged",
-          value: function selectedValueChanged(e) {
-            this.selectedValue = e.detail;
-          },
-        },
-        {
-          key: "buttonTemplate",
-          get: function get() {
-            return (0, _litElement.html)(
-              _templateObject2(),
-              this.expanded ? "true" : "false",
-              this.icon,
-              !this.icon,
-              !this.icon || this.showTextLabel ? "label" : "sr-only",
-              this.label,
-              !this.icon,
-              this.label
-            );
-          },
-          /**
-           * template for slotted list items
-           *
-           * @readonly
-           */
-        },
-        {
           key: "listItemTemplate",
           get: function get() {
-            return (0, _litElement.html)(_templateObject3());
+            return (0, _litElement.html)(_templateObject());
           },
         },
       ],
       [
+        {
+          key: "simpleButtonThemeStyles",
+          get: function get() {
+            return _haxUiStyles.HaxTrayButtonTheme;
+          },
+        },
+        {
+          key: "simpleButtonCoreStyles",
+          get: function get() {
+            return [].concat(
+              _toConsumableArray(
+                _get(
+                  _getPrototypeOf(HaxToolbarMenu),
+                  "simpleButtonCoreStyles",
+                  this
+                )
+              ),
+              [(0, _litElement.css)(_templateObject2())]
+            );
+          },
+        },
         {
           key: "tag",
           get: function get() {
@@ -349,50 +324,10 @@ var HaxToolbarMenu =
               _get(_getPrototypeOf(HaxToolbarMenu), "properties", this),
               {
                 /**
-                 * disabled state
-                 */
-                disabled: {
-                  type: Boolean,
-                  reflect: true,
-                },
-
-                /**
                  * Internal flag to allow blocking the event firing if machine selects tag.
                  */
                 _blockEvent: {
                   type: Boolean,
-                },
-
-                /**
-                 * Show text label even if an icon is named?
-                 */
-                showTextLabel: {
-                  attribute: "show-text-label",
-                  type: Boolean,
-                  reflect: true,
-                },
-
-                /**
-                 * Direction for the tooltip
-                 */
-                direction: {
-                  type: String,
-                },
-
-                /**
-                 * Icon for the button.
-                 */
-                icon: {
-                  type: String,
-                  reflect: true,
-                },
-
-                /**
-                 * Label for the button.
-                 */
-                label: {
-                  type: String,
-                  reflect: true,
                 },
 
                 /**
@@ -412,7 +347,9 @@ var HaxToolbarMenu =
     );
 
     return HaxToolbarMenu;
-  })((0, _a11yMenuButton.A11yMenuButtonBehaviors)(_litElement.LitElement));
+  })(
+    (0, _simpleToolbarMenu.SimpleToolbarMenuBehaviors)(_litElement.LitElement)
+  );
 
 exports.HaxToolbarMenu = HaxToolbarMenu;
 window.customElements.define(HaxToolbarMenu.tag, HaxToolbarMenu);

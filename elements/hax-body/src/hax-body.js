@@ -176,11 +176,39 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           );
           --hax-body-possible-target-background-color: inherit;
         }
-        #topcontext {
-          z-index: 3;
+        #addincontext {
+          opacity: 0.5;
+          transition: 0.2s opacity ease-in-out;
         }
-        #bottomcontext {
-          z-index: 1;
+        #addincontext:hover,
+        #addincontext:active,
+        #addincontext:focus {
+          opacity: 1;
+          cursor: pointer;
+        }
+        .hax-context-menu {
+          padding: 0;
+          margin-left: -5000px;
+          position: fixed;
+          visibility: hidden;
+          opacity: 0;
+          z-index: 1000;
+          float: left;
+          display: block;
+          pointer-events: none;
+          transition: 0.2s top ease-in-out, 0.2s left ease-in-out;
+        }
+        #textcontextmenu.hax-context-menu {
+          z-index: 1000;
+        }
+        .hax-context-visible {
+          position: absolute;
+          visibility: visible;
+          pointer-events: all;
+          opacity: 1;
+        }
+        .hax-context-menu-active {
+          margin-left: unset;
         }
         :host([edit-mode]) #bodycontainer ::slotted([contenteditable]) {
           -webkit-appearance: textfield;
@@ -658,28 +686,28 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       <div id="bodycontainer" class="ignore-activation">
         <slot id="body"></slot>
       </div>
-      <hax-context-container id="topcontext">
-        <hax-text-context
-          id="textcontextmenu"
-          class="hax-context-menu ignore-activation"
-        ></hax-text-context>
-        <hax-ce-context
-          id="cecontextmenu"
-          class="hax-context-menu ignore-activation"
-        ></hax-ce-context>
-        <hax-plate-context
-          id="platecontextmenu"
-          class="hax-context-menu ignore-activation"
+      <hax-text-context 
+        id="textcontextmenu"
+        class="hax-context-menu ignore-activation"
+        .activeNode="${this.activeNode}"
+      ></hax-text-context>
+      <hax-ce-context
+        id="cecontextmenu"
+        class="hax-context-menu ignore-activation"
+        .activeNode="${this.activeNode}"
+      ></hax-ce-context>
+      <hax-plate-context
+        id="platecontextmenu"
+        class="hax-context-menu ignore-activation"
         ></hax-plate-context>
       </hax-context-container>
-      <hax-context-container id="bottomcontext" below>
+      <hax-context-container
+        id="addincontext"
+        class="hax-context-menu ignore-activation">
         <hax-context-item
-          id="addincontext"
-          class="hax-context-menu ignore-activation"
           icon="icons:add"
           label="Insert Content"
           show-text-label
-          feature
         >
         </hax-context-item>
       </hax-context-container>
@@ -1421,7 +1449,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         HAXStore.haxAppPicker.presentOptions(
           haxElements,
           "__convert",
-          `Transform ${humanName} to..`,
+          `Change ${humanName} to...`,
           "gizmo"
         );
       }
@@ -1775,6 +1803,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.__positionContextTimer = setTimeout(() => {
         if (!HAXStore._lockContextPosition) {
           // menu width starts out w/ the plate context which is a set size
+          let menuWidth = 176;
           let tag = node.tagName.toLowerCase();
           if (HAXStore._isSandboxed && tag === "webview") {
             tag = "iframe";
@@ -1790,15 +1819,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             // check for core editing element OR it providing it's own experience entirely
             // otherwise we'll pick it up in the specific element via activeNode change hooks
             if (props.editingElement == "core") {
-              this._positionContextMenu(this.contextMenus.ce, node);
+              this._positionContextMenu(this.contextMenus.ce, node, 0, -30);
             } else {
               this._hideContextMenu(this.contextMenus.ce);
             }
+            menuWidth += 30;
           } else {
             this._hideContextMenu(this.contextMenus.ce);
-            this._positionContextMenu(this.contextMenus.text, node);
+            this._positionContextMenu(this.contextMenus.text, node, 0, -30);
             // text menu can expand based on selection
             let textRect = this.contextMenus.text.getBoundingClientRect();
+            menuWidth += textRect.width;
           }
           if (!props || props.editingElement == "core") {
             let activeRect = node.getBoundingClientRect();
@@ -1812,8 +1843,19 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 this._HTMLInlineTextDecorationTest(this.activeNode))
             ) {
               this._hideContextMenu(this.contextMenus.plate);
+            }
+            // need to account for the item being small than the menu
+            else if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
+              this._positionContextMenu(this.contextMenus.plate, node, 0, -56);
             } else {
-              this._positionContextMenu(this.contextMenus.plate, node);
+              this._positionContextMenu(
+                this.contextMenus.plate,
+                node,
+                activeRect.width -
+                  this.contextMenus.plate.getBoundingClientRect().width +
+                  1,
+                -26
+              );
             }
           } else {
             setTimeout(() => {
@@ -1821,12 +1863,15 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 let activeRect = node.parentNode.getBoundingClientRect();
                 this._positionContextMenu(
                   this.contextMenus.plate,
-                  node.parentNode
+                  node.parentNode,
+                  activeRect.width -
+                    this.contextMenus.plate.getBoundingClientRect().width +
+                    1,
+                  -26
                 );
               }
             }, 250);
           }
-          this._setSticky(this.contextMenus.plate);
         }
       }, 50);
     }
@@ -2181,7 +2226,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         } else {
           // would imply top of document
           let p = document.createElement("p");
-          this.insertBefore(p, this.childNodes[0]);
+          this.insertBefore(p, this.activeNode);
         }
         break;
       case "insert-below-active":
@@ -3369,27 +3414,22 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Handle display and position of the context menu
    */
-  _positionContextMenu(menu, target, offsetY = 0) {
+  _positionContextMenu(menu, target, xoffset, yoffset) {
     // make it account for the offset if it's floated over to one side
     // or inside of something that's over that way
-    let container = this._getContextContainer(menu);
     if (target != null) {
-      let pos = this._getPosition(target),
-        body = this.getBoundingClientRect();
-      container.style.setProperty(
-        "--hax-context-container-top",
-        pos.y + offsetY + "px"
-      );
-      container.style.setProperty(
-        "--hax-context-container-width",
-        this.clientWidth ? this.clientWidth + "px" : "100%"
-      );
-      container.style.setProperty(
-        "--hax-context-container-left",
-        body && body.left ? body.left + "px" : "0px"
-      );
+      let pos = this._getPosition(target);
+      if (xoffset != null) {
+        menu.style["left"] = pos.x + xoffset + "px";
+      } else {
+        menu.style["left"] = pos.x + "px";
+      }
+      if (yoffset != null) {
+        menu.style["top"] = pos.y + yoffset + "px";
+      } else {
+        menu.style["top"] = pos.y + "px";
+      }
     }
-    if (container) container.menusVisible = true;
     menu.setAttribute("on-screen", "on-screen");
     menu.classList.add("hax-context-visible", "hax-context-menu-active");
   }

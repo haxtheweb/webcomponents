@@ -81,6 +81,7 @@ function _defineProperty(obj, key, value) {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <form part="form">\n        <slot name="before"></slot>\n        <simple-fields\n          id="sf"\n          .autofocus="',
+    '"\n          ?watchColorPrefs="',
     '"\n          language="',
     '"\n          .resources="',
     '"\n          .schema="',
@@ -89,7 +90,7 @@ function _templateObject() {
     '"\n          .elementizer="',
     '"\n          .value="',
     '"\n          @value-changed="',
-    '" \n          part="fields"\n        >\n        </simple-fields>\n        <slot></slot>\n      </form>\n    ',
+    '"\n          part="fields"\n        >\n        </simple-fields>\n        <slot></slot>\n      </form>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -232,6 +233,7 @@ var SimpleFieldsForm =
             return (0, _litElement.html)(
               _templateObject(),
               !this.disableAutofocus,
+              this.watchColorPrefs,
               this.language || "",
               this.resources,
               this.schema,

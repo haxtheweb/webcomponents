@@ -29,8 +29,21 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
-function _templateObject5() {
+function _templateObject6() {
   var data = _taggedTemplateLiteral(["<slot></slot>"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral([
+    '\n        <button\n          id="menubutton"\n          aria-haspopup="true"\n          aria-controls="menu"\n          aria-expanded="',
+    '"\n        >\n          <slot name="button"></slot>\n        </button>\n      ',
+  ]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -41,8 +54,15 @@ function _templateObject5() {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    '\n        <button\n          id="menubutton"\n          aria-haspopup="true"\n          aria-controls="menu"\n          aria-expanded="',
-    '"\n        >\n          <slot name="button"></slot>\n        </button>\n      ',
+    '\n        <absolute-position-behavior\n          ?auto="',
+    '"\n          for="menubutton"\n          position="',
+    '"\n          position-align="',
+    '"\n          .offset="',
+    '"\n          fit-to-visible-bounds\n          part="menu-outer"\n        >\n          <ul\n            id="menu"\n            role="menu"\n            aria-labelledby="menubutton"\n            ?hidden="',
+    '"\n            @mousover="',
+    '"\n            @mousout="',
+    '"\n            part="menu"\n          >\n            ',
+    "\n          </ul>\n        </absolute-position-behavior>\n      ",
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -52,17 +72,36 @@ function _templateObject4() {
   return data;
 }
 
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
+}
+
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n        <absolute-position-behavior\n          ?auto="',
-    '"\n          for="menubutton"\n          position="',
-    '"\n          position-align="',
-    '"\n          offset="',
-    '"\n        >\n          <ul\n            id="menu"\n            role="menu"\n            aria-labelledby="menubutton"\n            ?hidden="',
-    '"\n            @mousover="',
-    '"\n            @mousout="',
-    '"\n          >\n            ',
-    "\n          </ul>\n        </absolute-position-behavior>\n      ",
+    '\n          button[part="button"] {\n            padding: var(--a11y-menu-button-vertical-padding, 2px)\n              var(--a11y-menu-button-horizontal-padding, 5px);\n            text-align: var(--a11y-menu-button-text-align, center);\n            background-color: var(--a11y-menu-button-bg-color, white);\n            color: var(--a11y-menu-button-color, currentColor);\n            background-color: var(--a11y-menu-button-bg-color, white);\n            border-radius: var(--a11y-menu-button-border-radius, 0);\n            border-left: var(--a11y-menu-button-border-left, unset);\n            border-top: var(--a11y-menu-button-border-top, unset);\n            border-right: var(--a11y-menu-button-border-right, unset);\n            border-bottom: var(--a11y-menu-button-border-bottom, unset);\n            border: var(--a11y-menu-button-border, 1px solid #ddd);\n            box-shadow: var(--a11y-menu-button-box-shadow, unset);\n            transition: all 0.25s ease-in-out;\n          }\n          button[part="button"]:focus,\n          button[part="button"]:hover {\n            color: var(\n              --a11y-menu-button-focus-color,\n              var(--a11y-menu-button-color, currentColor)\n            );\n            background-color: var(\n              --a11y-menu-button-focus-bg-color,\n              var(--a11y-menu-button-bg-color, white)\n            );\n            border-left: var(\n              --a11y-menu-button-focus-border-left,\n              var(--a11y-menu-button-border-left, unset)\n            );\n            border-top: var(\n              --a11y-menu-button-focus-border-top,\n              var(--a11y-menu-button-border-top, unset)\n            );\n            border-right: var(\n              --a11y-menu-button-focus-border-right,\n              var(--a11y-menu-button-border-right, unset)\n            );\n            border-bottom: var(\n              --a11y-menu-button-focus-border-bottom,\n              var(--a11y-menu-button-border-bottom, unset)\n            );\n            border: var(\n              --a11y-menu-button-focus-border,\n              var(--a11y-menu-button-border, 1px solid #ddd)\n            );\n            box-shadow: var(\n              --a11y-menu-button-box-shadow,\n              var(--a11y-menu-button-focus-box-shadow, unset)\n            );\n          }\n          :host([expanded]) absolute-position-behavior {\n            width: var(--a11y-menu-button-list-width, unset);\n            height: var(--a11y-menu-button-list-height, unset);\n            border: var(\n              --a11y-menu-button-list-border,\n              var(--a11y-menu-button-border, 1px solid #ddd)\n            );\n            background-color: var(\n              --a11y-menu-button-bg-color,\n              var(--a11y-menu-button-list-bg-color, white)\n            );\n            box-shadow: var(--a11y-menu-button-list-box-shadow, unset);\n          }\n        ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -74,7 +113,7 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            padding: 0;\n            display: inline-block;\n            position: relative;\n          }\n          button {\n            display: block;\n            text-decoration: inherit;\n            font-family: inherit;\n            font-size: inherit;\n            margin: 0;\n            width: 100%;\n            padding: var(--a11y-menu-button-vertical-padding, 2px)\n              var(--a11y-menu-button-horizontal-padding, 5px);\n            text-align: var(--a11y-menu-button-text-align, center);\n            background-color: var(--a11y-menu-button-bg-color, white);\n            color: var(--a11y-menu-button-color, black);\n            background-color: var(--a11y-menu-button-bg-color, white);\n            border-radius: var(--a11y-menu-button-border-radius, 0);\n            border-left: var(--a11y-menu-button-border-left, unset);\n            border-top: var(--a11y-menu-button-border-top, unset);\n            border-right: var(--a11y-menu-button-border-right, unset);\n            border-bottom: var(--a11y-menu-button-border-bottom, unset);\n            border: var(--a11y-menu-button-border, 1px solid #ddd);\n            box-shadow: var(--a11y-menu-button-box-shadow, unset);\n            transition: all 0.25s ease-in-out;\n          }\n          button:focus,\n          button:hover {\n            color: var(\n              --a11y-menu-button-focus-color,\n              var(--a11y-menu-button-color, black)\n            );\n            background-color: var(\n              --a11y-menu-button-focus-bg-color,\n              var(--a11y-menu-button-bg-color, white)\n            );\n            border-left: var(\n              --a11y-menu-button-focus-border-left,\n              var(--a11y-menu-button-border-left, unset)\n            );\n            border-top: var(\n              --a11y-menu-button-focus-border-top,\n              var(--a11y-menu-button-border-top, unset)\n            );\n            border-right: var(\n              --a11y-menu-button-focus-border-right,\n              var(--a11y-menu-button-border-right, unset)\n            );\n            border-bottom: var(\n              --a11y-menu-button-focus-border-bottom,\n              var(--a11y-menu-button-border-bottom, unset)\n            );\n            border: var(\n              --a11y-menu-button-focus-border,\n              var(--a11y-menu-button-border, 1px solid #ddd)\n            );\n            box-shadow: var(\n              --a11y-menu-button-box-shadow,\n              var(--a11y-menu-button-focus-box-shadow, unset)\n            );\n          }\n          absolute-position-behavior {\n            z-index: -1;\n            overflow: hidden;\n          }\n          :host([expanded]) absolute-position-behavior {\n            z-index: 2;\n            width: var(--a11y-menu-button-list-width, unset);\n            height: var(--a11y-menu-button-list-height, unset);\n            border: var(\n              --a11y-menu-button-list-border,\n              var(--a11y-menu-button-border, 1px solid #ddd)\n            );\n            background-color: var(\n              --a11y-menu-button-bg-color,\n              var(--a11y-menu-button-list-bg-color, white)\n            );\n            box-shadow: var(--a11y-menu-button-list-box-shadow, unset);\n          }\n\n          ul {\n            margin: 0;\n            padding: 0;\n            list-style: none;\n          }\n        ",
+    '\n          :host {\n            padding: 0;\n            display: inline-block;\n            position: relative;\n            z-index: 1;\n          }\n          :host([expanded]) {\n            z-index: var(--a11y-menu-button-focus-z-index, 1000);\n          }\n          button[part="button"] {\n            display: block;\n            text-decoration: inherit;\n            font-family: inherit;\n            font-size: inherit;\n            margin: 0;\n            width: 100%;\n          }\n          absolute-position-behavior {\n            z-index: -1;\n            overflow: hidden;\n          }\n          :host([expanded]) absolute-position-behavior {\n            z-index: 2;\n          }\n          ul {\n            margin: 0;\n            padding: 0;\n            list-style: none;\n          }\n        ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -192,9 +231,38 @@ var A11yMenuButtonBehaviors = function A11yMenuButtonBehaviors(SuperClass) {
         ],
         [
           {
-            key: "styles",
+            key: "menuButtonCoreStyles",
+
+            /**
+             * the core styles needed to make a menu button
+             *
+             * @readonly
+             * @static
+             */
             get: function get() {
               return [(0, _litElement.css)(_templateObject2())];
+            },
+            /**
+             * styles that can be customized by
+             * extending and overriding this getter
+             *
+             * @readonly
+             * @static
+             */
+          },
+          {
+            key: "menuButtonThemeStyles",
+            get: function get() {
+              return [(0, _litElement.css)(_templateObject3())];
+            },
+          },
+          {
+            key: "styles",
+            get: function get() {
+              return [].concat(
+                _toConsumableArray(this.menuButtonCoreStyles),
+                _toConsumableArray(this.menuButtonThemeStyles)
+              );
             },
           },
           {
@@ -297,7 +365,7 @@ var A11yMenuButtonBehaviors = function A11yMenuButtonBehaviors(SuperClass) {
         _this.__menuItems = [];
         _this.position = "bottom";
         _this.positionAlign = "start";
-        _this.offset = "0";
+        _this.offset = 0;
 
         _this.addEventListener("keydown", _this._handleKeydown);
 
@@ -824,7 +892,7 @@ var A11yMenuButtonBehaviors = function A11yMenuButtonBehaviors(SuperClass) {
             var _this5 = this;
 
             return (0, _litElement.html)(
-              _templateObject3(),
+              _templateObject4(),
               this.expanded,
               this.position,
               this.positionAlign,
@@ -849,7 +917,7 @@ var A11yMenuButtonBehaviors = function A11yMenuButtonBehaviors(SuperClass) {
           key: "buttonTemplate",
           get: function get() {
             return (0, _litElement.html)(
-              _templateObject4(),
+              _templateObject5(),
               this.expanded ? "true" : "false"
             );
           },
@@ -862,7 +930,7 @@ var A11yMenuButtonBehaviors = function A11yMenuButtonBehaviors(SuperClass) {
         {
           key: "listItemTemplate",
           get: function get() {
-            return (0, _litElement.html)(_templateObject5());
+            return (0, _litElement.html)(_templateObject6());
           },
           /**
            * key code translations as object

@@ -15,7 +15,11 @@ require("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
 
 require("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
 
-require("@lrnwebcomponents/simple-icon/lib/simple-icon-button.js");
+require("@lrnwebcomponents/simple-toolbar/simple-toolbar.js");
+
+require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js");
+
+require("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
 
 require("@vaadin/vaadin-upload/vaadin-upload.js");
 
@@ -84,12 +88,13 @@ function _interopRequireWildcard(obj) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n                      <simple-icon-button\n                        aria-hidden="true"\n                        icon="',
-    '"\n                        label=',
-    '\n                        aria-pressed="',
-    '"\n                        @click="',
-    '"\n                        controls="',
-    '"\n                        part="option-icon"\n                      >\n                      </simple-icon-button>\n                    ',
+    '\n                        <simple-toolbar-button\n                          icon="',
+    '"\n                          label="',
+    '"\n                          show-text-label\n                          toggles\n                          toggled="',
+    '"\n                          @click="',
+    '"\n                          controls="',
+    '"\n                          part="',
+    '"\n                        >\n                        </simple-toolbar-button>\n                      ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -103,8 +108,8 @@ function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <fieldset id="fieldset" part="fieldset">\n        <legend id="label" ?hidden="',
     '" part="legend">\n          ',
-    ':\n        </legend>\n        <div id="options" part="options">\n          ',
-    '\n        </div>\n        <div id="uploads" part="fields">\n          <simple-fields-field\n            id="url"\n            ?hidden="',
+    ':\n        </legend>\n        <simple-toolbar part="toolbar" always-expanded>\n          <div id="options" class="group" part="options">\n            ',
+    '\n\n          </div>\n        </simple-toolbar>\n        <div id="uploads" part="fields">\n          <simple-fields-field\n            id="url"\n            ?hidden="',
     '"\n            value="',
     '"\n            @value-changed="',
     '"\n            label="URL"\n            type="url"\n            auto-validate=""\n            part="url"\n          ></simple-fields-field>\n          <vaadin-upload\n            capture\n            form-data-name="file-upload"\n            ?hidden="',
@@ -126,7 +131,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          display: block;\n          visibility: visible;\n          transition: 0.3s all ease;\n          box-sizing: border-box;\n          pointer-events: all;\n          overflow: visible;\n          font-family: var(--simple-fields-font-family, sans-serif);\n          --simple-login-camera-aspect: 1.777777777777;\n          --simple-camera-snap-color: var(--simple-fields-color, black);\n          --simple-camera-snap-background: var(\n            --simple-fields-background-color,\n            #fff\n          );\n          --simple-camera-snap-border-radius: 2px;\n          --lumo-font-family: var(--simple-fields-font-family, sans-serif);\n          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);\n          --lumo-primary-font-color: var(--simple-fields-color, black);\n          --lumo-base-color: var(--simple-fields-background-color, #fff);\n          --lumo-primary-contrast-color: var(\n            --simple-fields-background-color,\n            #fff\n          );\n          --lumo-primary-color: var(--simple-fields-color, black);\n          --lumo-dark-primary-color: var(--simple-fields-color, black);\n          --lumo-light-primary-color: var(--simple-fields-color, black);\n          --lumo-primary-text-color: var(--simple-fields-color, black);\n          --lumo-body-text-color: var(--simple-fields-color, black);\n          --lumo-header-text-color: var(--simple-fields-color, black);\n          --lumo-secondary-text-color: var(--simple-fields-color, black);\n          --lumo-contrast-20pct: transparent;\n          --lumo-disabled-text-color: var(--simple-fields-border-color, #999);\n          color: var(--simple-fields-color, black);\n          background-color: var(--simple-fields-background-color, #fff);\n        }\n        vaadin-upload[dragover] {\n          border-color: var(\n            --simple-fields-secondary-accent-color,\n            var(--simple-colors-default-theme-accent-3, #77e2ff)\n          );\n        }\n        vaadin-upload-file {\n          --disabled-text-color: #var(--simple-fields-border-color, #999);\n        }\n        :host(:last-of-type) {\n          margin-bottom: 0;\n        }\n        #description {\n          font-family: var(--simple-fields-detail-font-family, sans-serif);\n          font-size: var(--simple-fields-detail-font-size, 12px);\n          line-height: var(--simple-fields-detail-line-height, 22px);\n        }\n        fieldset {\n          padding: 0;\n          margin: var(--simple-fields-margin-small, 8px) 0\n            var(--simple-fields-margin, 16px);\n          border: 1px solid var(--simple-fields-border-color-light, #ccc);\n          border-radius: var(--simple-fields-border-radius, 2px);\n          transition: all 0.3s ease-in-out;\n        }\n        #label {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          font-size: var(--simple-fields-font-size, 16px);\n          line-height: var(--simple-fields-line-height, 22px);\n        }\n        :host([error]) #label {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: all 0.3s ease-in-out;\n        }\n        #options {\n          display: flex;\n          flex-wrap: wrap;\n          align-items: center;\n          flex: 1 1 auto;\n          float: right;\n          margin: -5px 5px 5px;\n        }\n        simple-icon-button {\n          opacity: 0.8;\n          border-radius: 3px;\n          margin: 0 2px;\n        }\n        simple-icon-button[aria-pressed="true"],\n        simple-icon-button:focus-within,\n        simple-icon-button:hover {\n          outline: 1px solid var(--simple-fields-border-color, #999);\n          opacity: 1;\n        }\n        #uploads {\n          clear: both;\n          padding: 0 var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin, 16px);\n        }\n        vaadin-upload {\n          padding: 0;\n          margin: 0 calc(0px - var(--lumo-space-s)) 0 0;\n        }\n        simple-camera-snap {\n          --simple-camera-snap-button-container-bottom: 2px;\n          --simple-camera-snap-button-container-z-index: 5;\n          --simple-camera-snap-button-border-radius: 100%;\n          --simple-camera-snap-button-opacity: 0.7;\n        }\n      ',
+    "\n        :host {\n          display: block;\n          visibility: visible;\n          transition: 0.3s all ease;\n          box-sizing: border-box;\n          pointer-events: all;\n          overflow: visible;\n          font-family: var(--simple-fields-font-family, sans-serif);\n          --simple-login-camera-aspect: 1.777777777777;\n          --simple-camera-snap-color: var(--simple-fields-color, currentColor);\n          --simple-camera-snap-background: var(\n            --simple-fields-background-color,\n            unset\n          );\n          --simple-camera-snap-border-radius: 2px;\n          --lumo-font-family: var(--simple-fields-font-family, sans-serif);\n          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);\n          --lumo-primary-font-color: var(--simple-fields-color, currentColor);\n          --lumo-base-color: var(--simple-fields-background-color, transparent);\n          --lumo-primary-contrast-color: var(\n            --simple-fields-background-color,\n            transparent\n          );\n          --lumo-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-dark-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-light-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-primary-text-color: var(--simple-fields-color, currentColor);\n          --lumo-body-text-color: var(--simple-fields-color, currentColor);\n          --lumo-header-text-color: var(--simple-fields-color, currentColor);\n          --lumo-secondary-text-color: var(--simple-fields-color, currentColor);\n          --lumo-contrast-20pct: transparent;\n          --lumo-disabled-text-color: var(--simple-fields-border-color, #999);\n          --lumo-contrast-5pct: rgba(127, 127, 127, 0.2);\n          color: var(--simple-fields-color, currentColor);\n          background-color: var(--simple-fields-background-color, transparent);\n        }\n        vaadin-upload[dragover] {\n          border-color: var(\n            --simple-fields-secondary-accent-color,\n            var(--simple-colors-default-theme-accent-3, #77e2ff)\n          );\n        }\n        vaadin-upload-file {\n          --disabled-text-color: #var(--simple-fields-border-color, #999);\n        }\n        :host(:last-of-type) {\n          margin-bottom: 0;\n        }\n        #description {\n          font-family: var(--simple-fields-detail-font-family, sans-serif);\n          font-size: var(--simple-fields-detail-font-size, 12px);\n          line-height: var(--simple-fields-detail-line-height, 22px);\n        }\n        fieldset {\n          padding: 0;\n          margin: var(--simple-fields-margin-small, 8px) 0\n            var(--simple-fields-margin, 16px);\n          border: 1px solid var(--simple-fields-border-color-light, #ccc);\n          border-radius: var(--simple-fields-border-radius, 2px);\n          transition: all 0.3s ease-in-out;\n        }\n        #label {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          font-size: var(--simple-fields-font-size, 16px);\n          line-height: var(--simple-fields-line-height, 22px);\n        }\n        :host([error]) #label {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: all 0.3s ease-in-out;\n        }\n        simple-toolbar {\n          width: 100%;\n          margin: var(--simple-fields-margin-small, 8px) 0;\n        }\n        #options {\n          margin: 0 auto;\n        }\n        #uploads {\n          clear: both;\n          padding: 0 var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin, 16px);\n        }\n        vaadin-upload {\n          padding: 0;\n          margin: 0 calc(0px - var(--lumo-space-s)) 0 0;\n        }\n        simple-camera-snap {\n          --simple-camera-snap-button-container-bottom: 2px;\n          --simple-camera-snap-button-container-z-index: 5;\n          --simple-camera-snap-button-border-radius: 100%;\n          --simple-camera-snap-button-opacity: 0.7;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -348,7 +353,10 @@ var SimpleFieldsUpload =
                           function (e) {
                             return _this2.optionChanged(option[0].value, e);
                           },
-                          option[0].value
+                          option[0].value,
+                          _this2.option == option[0].value
+                            ? "option-icon-selected"
+                            : "option-icon"
                         );
                   }),
               this.option !== "url",

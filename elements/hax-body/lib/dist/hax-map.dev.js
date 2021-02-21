@@ -17,6 +17,8 @@ var _haxStore = require("@lrnwebcomponents/hax-body/lib/hax-store.js");
 
 var _utils = require("@lrnwebcomponents/utils/utils.js");
 
+var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -37,7 +39,7 @@ function _typeof(obj) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n              <li>\n                <hax-toolbar-item\n                  @click="',
+    '\n              <li>\n                <hax-toolbar-item\n                  align-horizontal="left"\n                  @click="',
     '"\n                  data-index="',
     '"\n                  icon="',
     '"\n                  label="',
@@ -71,7 +73,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n        }\n        .container {\n          text-align: left;\n        }\n        table {\n          font-size: var(--hax-tray-font-size-sm, 12px);\n          border-collapse: collapse;\n          width: 100%;\n        }\n        table,\n        th,\n        td {\n          text-align: center;\n          border: 1px solid var(--hax-border-color, #ddd);\n        }\n        caption {\n        }\n        th {\n          font-weight: normal;\n        }\n        td {\n          font-weight: bold;\n          font-size: 150%;\n        }\n        h5 {\n          color: var(--hax-tray-accent-color, #000);\n          margin: calc(2 * var(--hax-tray-margin, 4px)) 0\n            var(--hax-tray-margin, 4px);\n          font-size: var(--hax-tray-font-size-lg, calc(1.05 * var(--hax-tray-font-size, 16px)));\n          text-transform: capitalize;\n        }\n        ul {\n          list-style: none;\n          padding: 0;\n          margin: 0;\n        }\n        ul li {\n          margin: 0;\n          padding: 0;\n        }\n        hax-toolbar-item {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-hover-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-toggled-border-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n          --simple-toolbar-button-toggled-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n        }\n      ",
+    "\n        :host {\n          display: block;\n        }\n        .container {\n          text-align: left;\n        }\n        table {\n          font-size: var(--hax-tray-font-size-sm);\n          border-collapse: collapse;\n          width: calc(100% - 2px);\n          width: calc(100% - 2px);\n        }\n        table,\n        th,\n        td {\n          text-align: center;\n          border: 1px solid var(--hax-tray-border-color);\n        }\n        th {\n          font-weight: normal;\n          font-size: var(--hax-tray-font-size-xs);\n        }\n        td {\n          font-weight: bold;\n          font-size: 150%;\n        }\n        ul {\n          list-style: none;\n          padding: 0;\n          margin: 0;\n        }\n        ul li {\n          margin: 0;\n          padding: 0;\n        }\n        li > hax-toolbar-item {\n          width: 100%;\n        }\n        li > hax-toolbar-item::part(button) {\n          width: 100%;\n          border: none;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -88,6 +90,33 @@ function _taggedTemplateLiteral(strings, raw) {
   return Object.freeze(
     Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
   );
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -175,7 +204,10 @@ var HaxMap =
          * LitElement constructable styles enhancement
          */
         get: function get() {
-          return [(0, _litElement.css)(_templateObject())];
+          return [].concat(
+            _toConsumableArray(_haxUiStyles.HaxTrayDetailHeadings),
+            [(0, _litElement.css)(_templateObject())]
+          );
         },
       },
     ]);

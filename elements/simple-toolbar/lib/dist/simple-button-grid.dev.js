@@ -92,7 +92,7 @@ function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n        <div id="grid">\n          <div\n            id="buttons"\n            class="',
     '"\n            style="',
-    '" \n            part="buttons"\n          >\n            <slot></slot>\n            ',
+    '"\n            part="buttons"\n          >\n            <slot></slot>\n            ',
     "\n          </div>\n        </div>\n      ",
   ]);
 
@@ -303,9 +303,9 @@ var SimpleButtonGridBehaviors = function SimpleButtonGridBehaviors(SuperClass) {
                   }
                 }
               });
-              this.__collapseDisabled =
+              this.collapseDisabled =
                 shown && !(more && lastVisible && this._bottom(more) > max);
-              if (!this.__collapseDisabled && lastVisible)
+              if (!this.collapseDisabled && lastVisible)
                 lastVisible.setAttribute("collapse-hide", true);
             }, // life cycle
           },

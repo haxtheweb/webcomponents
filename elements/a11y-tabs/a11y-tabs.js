@@ -85,449 +85,430 @@ Custom property | Description | Default
  * @demo ./demo/sticky.html Sticky Tabs
  */
 class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-          height: var(--a11y-tabs-height);
-          overflow: var(--a11y-tabs-overflow);
-          font-size: var(--a11y-tabs-font-size, unset);
-          font-family: var(--a11y-tabs-font-family, unset);
-          --a11y-tabs-width: 100%;
-          --a11y-tabs-background: white;
-          --a11y-tabs-border-color: #ddd;
-          --a11y-tabs-color: #000;
-          --a11y-tabs-faded-color: #333;
-          --a11y-tabs-focus-color: var(-a11y-tabs-color);
-          --a11y-tabs-faded-background: #f8f8f8;
-          --a11y-tabs-disabled-color: #999;
-          --a11y-tabs-disabled-background: #eee;
-          --a11y-tabs-border-radius: 2px;
-          --a11y-tabs-horizontal-background: var(--a11y-tabs-background, white);
-          --a11y-tabs-horizontal-border-radius: var(
-            --a11y-tabs-border-radius,
-            2px
-          );
-          --a11y-tabs-vertical-border-radius: var(
-            --a11y-tabs-border-radius,
-            2px
-          );
-          --a11y-tabs-content-background: var(--a11y-tabs-background, white);
-          --a11y-tabs-content-padding: 16px;
-          --a11y-tabs-button-padding: 4px;
-          --a11y-tabs-vertical-button-padding: var(
-            --a11y-tabs-button-padding,
-            4px
-          );
-          --a11y-tabs-horizontal-button-padding: var(
-            --a11y-tabs-button-padding,
-            4px
-          );
-          --a11y-tabs-width: auto;
-        }
+:host {
+  display: block;
+  height: var(--a11y-tabs-height);
+  overflow: var(--a11y-tabs-overflow);
+  font-size: var(--a11y-tabs-font-size, unset);
+  font-family: var(--a11y-tabs-font-family, unset);
+  --a11y-tabs-focus-color: var(--a11y-tabs-color);
+  --a11y-tabs-horizontal-border-radius: var(--a11y-tabs-border-radius, 2px);
+  --a11y-tabs-vertical-border-radius: var(--a11y-tabs-border-radius, 2px);
+  --a11y-tabs-vertical-button-padding: var(--a11y-tabs-button-padding, 4px);
+  --a11y-tabs-horizontal-button-padding: var(--a11y-tabs-button-padding, 4px);
+}
 
-        :host([hidden]) {
-          display: none;
-        }
-        #tabs {
-          display: none;
-        }
-        @media screen {
-          :host([vertical]) {
-            border: 1px solid var(--a11y-tabs-border-color);
-            border-radius: var(--a11y-tabs-vertical-border-radius, 2px);
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-          }
+:host([hidden]) {
+  display: none;
+}
 
-          #content {
-            border: 1px solid var(--a11y-tabs-border-color);
-            padding: var(--a11y-tabs-content-padding);
-            background-color: var(--a11y-tabs-content-background);
-            flex: 1 1 calc(100% - 2 * var(--a11y-tabs-content-padding));
-            overflow: auto;
-          }
+#tabs {
+  display: none;
+}
+@media screen {
+  :host([vertical]) {
+    border: 1px solid var(--a11y-tabs-border-color,#ddd);
+    border-radius: var(--a11y-tabs-vertical-border-radius,2px);
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
 
-          #tabs {
-            align-items: stretch;
-            flex-wrap: var(--a11y-tabs-wrap, unset);
-            margin: 0;
-            display: flex;
-            list-style: none;
-            padding: 0;
-            overflow: auto;
-            max-width: 100%;
-            overflow-x: auto;
-            z-index: 1;
-            justify-content: var(--a11y-tabs-horizontal-justify-tabs);
-            background-color: var(--a11y-tabs-horizontal-background);
-            font-family: var(
-              --a11y-tabs-tab-font-family,
-              var(--a11y-tabs-font-family, unset)
-            );
-            font-size: var(
-              --a11y-tabs-tab-font-size,
-              var(--a11y-tabs-font-size, unset)
-            );
-          }
+  #content {
+    border: 1px solid var(--a11y-tabs-border-color,#ddd);
+    padding: var(--a11y-tabs-content-padding, 16px);
+    background-color: var(--a11y-tabs-content-background);
+    flex: 1 1 calc(100% - 2 * var(--a11y-tabs-content-padding, 16px));
+    overflow: auto;
+  }
 
-          :host([vertical]) #tabs {
-            border-left: none;
-            flex: 0 0 auto;
-            flex-direction: column;
-            overflow-y: auto;
-            max-width: unset;
-            overflow-x: unset;
-            z-index: unset;
-            background-color: var(--a11y-tabs-vertical-background);
-            justify-content: var(--a11y-tabs-vertical-justify-tabs);
-            flex-wrap: var(--a11y-tabs-vertical-wrap);
-          }
+  #tabs {
+    align-items: stretch;
+    flex-wrap: var(--a11y-tabs-wrap, unset);
+    margin: 0;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    overflow: auto;
+    max-width: 100%;
+    overflow-x: auto;
+    z-index: 1;
+    justify-content: var(--a11y-tabs-horizontal-justify-tabs);
+    background-color: var(--a11y-tabs-horizontal-background);
+    font-family: var(--a11y-tabs-tab-font-family, var(--a11y-tabs-font-family, unset));
+    font-size: var(--a11y-tabs-tab-font-size, var(--a11y-tabs-font-size, unset));
+  }
+  
+  :host([vertical]) #tabs {
+    border-left: none;
+    flex: 0 0 auto;
+    flex-direction: column;
+    overflow-y: auto;
+    max-width: unset;
+    overflow-x: unset;
+    z-index: unset;
+    background-color: var(--a11y-tabs-vertical-background);
+    justify-content: var(--a11y-tabs-vertical-justify-tabs);
+    flex-wrap: var(--a11y-tabs-vertical-wrap);
+  }
+  
+  :host([sticky]) #tabs {
+    position: sticky;
+    top: 0;
+  }
+  
+  #tabs li {
+    display: flex;
+    align-items: stretch;
+  }
+  
+  :host([full-width]) #tabs li {
+    width: 100%;
+  }
+  
+  :host([vertical]) #tabs li {
+    flex-direction: column;
+  }
+  
+  #tabs .flag-type {
+    position: absolute;
+    left: -99999px;
+    height: 0; 
+    overflow: hidden;
+  }
 
-          :host([sticky]) #tabs {
-            position: sticky;
-            top: 0;
-          }
+  :host([vertical]) #content {
+    border: none;
+  }
+  
+  :host(:not([vertical])) #content {
+    border-radius: var(--a11y-tabs-horizontal-border-radius,2px);
+    margin-top: -1px;
+  }
+  
+  #tabs button {
+    width: 100%;
+    min-width: unset;
+    margin: 0;
+    text-transform: unset;
+    color: var(--a11y-tabs-faded-color, #333);
+    border: 1px solid var(--a11y-tabs-border-color);
+    background-color: var(--a11y-tabs-faded-background, #f8f8f8);
+    padding: var(--a11y-tabs-horizontal-button-padding);
+    font-weight: var(--a11y-tabs-font-weight, normal);
+    border-radius: var(--a11y-tabs-horizontal-border-radius,2px) var(--a11y-tabs-horizontal-border-radius,2px) 0 0; 
+  }
+  
+  button .label {
+    text-decoration: var(--a11y-tabs-text-decoration, none);
+  }
+  
+  :host(:not([vertical])) #tabs button {
+    border-top-color: var(--a11y-tabs-border-accent);
+  }
+  
+  :host(:not([vertical])) #tabs li:not(:first-of-type) button {
+    border-left: none;
+  }
+  
+  :host([vertical]) #tabs button {
+    border-top: none;
+    border-radius: 0; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left-color: var(--a11y-tabs-border-accent);
+    padding: var(--a11y-tabs-vertical-button-padding);
+  }
+  
+  #tabs button:focus,
+  #tabs button:hover {
+    color: var(--a11y-tabs-focus-color);
+    font-weight: var(--a11y-tabs-focus-font-weight, normal);
+  }
+  
+  button:focus .label,
+  button:hover .label {
+    text-decoration: var(--a11y-tabs-focus-text-decoration, underline);
+  }
+  
+  :host(:not([vertical])) #tabs button:focus,
+  :host(:not([vertical])) #tabs button:hover {
+    border-top-color: var(--a11y-tabs-focus-border-accent);
+  }
+  
+  :host([vertical]) #tabs button:focus,
+  :host([vertical]) #tabs button:hover {
+    border-left-color: var(--a11y-tabs-focus-border-accent);
+  }
+  
+  #tabs button[aria-selected="true"] {
+    font-weight: var(--a11y-tabs-selected-font-weight, normal);
+    color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));
+    background-color: var(--a11y-tabs-background);
+  }
+  
+  button[aria-selected="true"] .label {
+    text-decoration: var(--a11y-tabs-selected-text-decoration, none);
+  }
+  
+  :host(:not([vertical])) #tabs button[aria-selected="true"] {
+    border-bottom-color: var(--a11y-tabs-background);
+    border-top-color: var(--a11y-tabs-selected-border-accent);
+  }
+  
+  :host([vertical]) #tabs button[aria-selected="true"] {
+    border-right-color: var(--a11y-tabs-background);
+    border-left-color: var(--a11y-tabs-selected-border-accent);
+  }
+  
+  #tabs button[disabled] {
+    color: var(--a11y-tabs-disabled-color, #999);
+    background-color: var(--a11y-tabs-disabled-background, #eee);
+    pointer-events: none;
+  }
 
-          #tabs li {
-            display: flex;
-            align-items: stretch;
-          }
+  #tabs button[disabled]:focus,
+  #tabs button[disabled]:hover {
+    color: unset;
+    font-weight: unset;
+  }
+  
+  button[disabled]:focus .label,
+  button[disabled]:hover .label {
+    text-decoration: none;
+  }
+  
+  :host(:not([vertical])) #tabs button[disabled] {
+    border-left-color: var(--a11y-tabs-disabled-border-accent,unset);
+  }
+  
+  :host([vertical]) #tabs button[disabled] {
+    border-top-color: var(--a11y-tabs-disabled-border-accent,unset);
+  }
+  
+  #tabs span.label,
+  #tabs .flag-icon {
+    margin-right: 8px;
+  }
+  
+  :host([icons-only]) #tabs button {
+    justify-content: center;
+  }
+  
+  :host([icons-only]) #tabs span.label {
+    display: none;
+  }
+  
+  :host(:not([icons-only])) #tabs #tabs simple-tooltip {
+    display: none;
+  }
+  
+  simple-icon-lite:not([hidden]) {
+    display: inline-block;
+  }
+  
+  simple-icon-lite[hidden] {
+    display: none;
+  }
 
-          :host([full-width]) #tabs li {
-            width: 100%;
-          }
-
-          :host([vertical]) #tabs li {
-            flex-direction: column;
-          }
-
-          #tabs .flag-type {
-            position: absolute;
-            left: -99999px;
-            height: 0;
-            overflow: hidden;
-          }
-
-          :host([vertical]) #content {
-            border: none;
-          }
-
-          :host(:not([vertical])) #content {
-            border-radius: var(--a11y-tabs-horizontal-border-radius, 2px);
-            margin-top: -1px;
-          }
-
-          #tabs button {
-            width: 100%;
-            min-width: unset;
-            margin: 0;
-            text-transform: unset;
-            color: var(--a11y-tabs-faded-color);
-            border: 1px solid var(--a11y-tabs-border-color);
-            background-color: var(--a11y-tabs-faded-background);
-            padding: var(--a11y-tabs-horizontal-button-padding);
-            font-weight: var(--a11y-tabs-font-weight, normal);
-            border-radius: var(--a11y-tabs-horizontal-border-radius, 2px)
-              var(--a11y-tabs-horizontal-border-radius, 2px) 0 0;
-          }
-
-          button .label {
-            text-decoration: var(--a11y-tabs-text-decoration, none);
-          }
-
-          :host(:not([vertical])) #tabs button {
-            border-top-color: var(--a11y-tabs-border-accent);
-          }
-
-          :host(:not([vertical])) #tabs li:not(:first-of-type) button {
-            border-left: none;
-          }
-
-          :host([vertical]) #tabs button {
-            border-top: none;
-            border-radius: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left-color: var(--a11y-tabs-border-accent);
-            padding: var(--a11y-tabs-vertical-button-padding);
-          }
-
-          #tabs button:focus,
-          #tabs button:hover {
-            color: var(--a11y-tabs-focus-color);
-            font-weight: var(--a11y-tabs-focus-font-weight, normal);
-          }
-
-          button:focus .label,
-          button:hover .label {
-            text-decoration: var(--a11y-tabs-focus-text-decoration, underline);
-          }
-
-          :host(:not([vertical])) #tabs button:focus,
-          :host(:not([vertical])) #tabs button:hover {
-            border-top-color: var(--a11y-tabs-focus-border-accent);
-          }
-
-          :host([vertical]) #tabs button:focus,
-          :host([vertical]) #tabs button:hover {
-            border-left-color: var(--a11y-tabs-focus-border-accent);
-          }
-
-          #tabs button[aria-selected="true"] {
-            font-weight: var(--a11y-tabs-selected-font-weight, normal);
-            color: var(
-              --a11y-tabs-selected-color,
-              var(--a11y-tabs-focus-color)
-            );
-            background-color: var(--a11y-tabs-background);
-          }
-
-          button[aria-selected="true"] .label {
-            text-decoration: var(--a11y-tabs-selected-text-decoration, none);
-          }
-
-          :host(:not([vertical])) #tabs button[aria-selected="true"] {
-            border-bottom-color: var(--a11y-tabs-background);
-            border-top-color: var(--a11y-tabs-selected-border-accent);
-          }
-
-          :host([vertical]) #tabs button[aria-selected="true"] {
-            border-right-color: var(--a11y-tabs-background);
-            border-left-color: var(--a11y-tabs-selected-border-accent);
-          }
-
-          #tabs button[disabled] {
-            color: var(--a11y-tabs-disabled-color);
-            background-color: var(--a11y-tabs-disabled-background);
-            cursor: not-allowed;
-          }
-
-          :host(:not([vertical])) #tabs button[disabled] {
-            border-left-color: var(--a11y-tabs-disabled-border-accent);
-          }
-
-          :host([vertical]) #tabs button[disabled] {
-            border-top-color: var(--a11y-tabs-disabled-border-accent);
-          }
-
-          #tabs span.label,
-          #tabs .flag-icon {
-            margin-right: 8px;
-          }
-
-          :host([icons-only]) #tabs button {
-            justify-content: center;
-          }
-
-          :host([icons-only]) #tabs span.label {
-            display: none;
-          }
-
-          :host(:not([icons-only])) #tabs #tabs simple-tooltip {
-            display: none;
-          }
-
-          simple-icon-lite:not([hidden]) {
-            display: inline-block;
-          }
-
-          simple-icon-lite[hidden] {
-            display: none;
-          }
-        }
-      `,
+}
+      `
     ];
   }
 
-  // render function
+// render function
   render() {
-    return html` <ul id="tabs" role="tablist">
-        ${this.tabs.map(
-          (tab, i) => html` <li>${this._tabButton(tab, i)}</li> `
-        )}
-      </ul>
-      <div id="content">
-        <slot></slot>
-      </div>`;
+    return html`
+
+<ul id="tabs" role="tablist" part="tablist">
+  ${this.tabs.map((tab,i) => html`
+    <li part="tablist-item">${this._tabButton(tab,i)}</li>
+  `)}
+</ul>
+<div id="content" part="content">
+  <slot></slot>
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: false,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Tabs",
-        description: "A set of tabs.",
-        icon: "view-day",
-        color: "grey",
-        groups: ["Content", "Presentation", "Tabs"],
+  "canScale": false,
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Tabs",
+    "description": "A set of tabs.",
+    "icon": "view-day",
+    "color": "grey",
+    "groups": ["Content", "Presentation", "Tabs"]
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "ariaLabel",
+        "title": "Label (for accesibility)",
+        "inputMethod": "textfield"
       },
-      settings: {
-        configure: [
-          {
-            property: "ariaLabel",
-            title: "Label (for accesibility)",
-            inputMethod: "textfield",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            inputMethod: "boolean",
-          },
-          {
-            property: "hidden",
-            title: "Hidden",
-            inputMethod: "boolean",
-          },
-          {
-            property: "sticky",
-            title: "Sticky.",
-            desc:
-              "Horizontal tabs stick to the top of the window when scrolling.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "layoutBreakpoint",
-            title: "Layout Breakpoint",
-            inputMethod: "Number",
-            descripton:
-              "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode.",
-          },
-          {
-            property: "iconBreakpoint",
-            title: "Icon Breakpoint",
-            inputMethod: "Number",
-            descripton:
-              "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode.",
-          },
-          {
-            slot: "",
-            title: "Tabs",
-            description: "A series of <a11y-tab/> elements.",
-            inputMethod: "code-editor",
-          },
-        ],
-        advanced: [
-          {
-            property: "id",
-            title: "Unique ID",
-            inputMethod: "textfield",
-          },
-        ],
+      {
+        "property": "disabled",
+        "title": "Disabled",
+        "inputMethod": "boolean"
       },
-    };
+      {
+        "property": "hidden",
+        "title": "Hidden",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "sticky",
+        "title": "Sticky.",
+        "desc": "Horizontal tabs stick to the top of the window when scrolling.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "layoutBreakpoint",
+        "title": "Layout Breakpoint",
+        "inputMethod": "Number",
+        "descripton": "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Icon Breakpoint",
+        "inputMethod": "Number",
+        "descripton": "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode."
+      },
+      {
+        "slot": "",
+        "title": "Tabs",
+        "description": "A series of <a11y-tab/> elements.",
+        "inputMethod": "code-editor"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "id",
+        "title": "Unique ID",
+        "inputMethod": "textfield"
+      }
+    ]
+  }
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      ariaLabel: {
-        type: String,
-        reflect: true,
-        attribute: "aria-label",
-      },
-      /**
-       * id of active tab
-       */
-      activeTab: {
-        type: String,
-        reflect: true,
-        attribute: "active-tab",
-      },
-      /**
-       * if tabs should be full width or not
-       */
-      fullWidth: {
-        type: Boolean,
-        reflect: true,
-        attribute: "full-width",
-      },
-      /**
-       * whether tabbed interface is disabled
-       */
-      disabled: {
-        type: Boolean,
-        reflect: true,
-        attribute: "disabled",
-      },
-      /**
-       * whether tabbed interface is hidden
-       */
-      hidden: {
-        type: Boolean,
-        reflect: true,
-        attribute: "hidden",
-      },
-      /**
-       * Optional minimum breakpoint for showing tab text with icons, or
-       * Default is always text with icons.
-       * `-1` forces icon-only mode.
-       */
-      iconBreakpoint: {
-        type: Number,
-        attribute: "icon-breakpoint",
-      },
-      /**
-       * unique identifier/anchor for tabbed interface
-       */
-      id: {
-        type: String,
-        reflect: true,
-      },
-      /**
-       * Optional minimum breakpoint for horizontal layout of tabs.
-       * Default is unset (always horizontal).
-       * `-1` forces vertical-only mode.
-       */
-      layoutBreakpoint: {
-        type: Number,
-        attribute: "layout-breakpoint",
-      },
-      /**
-       * size of tabs,
-       * where `xs` is smaller breakpoint
-       * and `xs` is larger breakpoint
-       */
-      responsiveSize: {
-        type: String,
-        reflect: true,
-        attribute: "responsive-size",
-      },
-      /**
-       * whether tabs are sticky
-       */
-      sticky: {
-        type: Boolean,
-        reflect: true,
-        attribute: "sticky",
-      },
-      /**
-       * an array of tab data based on slotted `a11y-tab` elements
-       */
-      __tabs: {
-        type: Array,
-      },
-      /**
-       * an array of tab buttons
-       */
-      __tabButtons: {
-        type: Array,
-      },
-      /**
-       * which tab button has ketboard focus
-       */
-      __tabFocus: {
-        type: Number,
-      },
-    };
+  
+  ...super.properties,
+  
+  "ariaLabel": {
+    "type": String,
+    "reflect": true,
+    "attribute": "aria-label"
+  },
+  /**
+   * id of active tab
+   */
+  "activeTab": {
+    "type": String,
+    "reflect": true,
+    "attribute": "active-tab"
+  },
+  /**
+   * if tabs should be full width or not
+   */
+  "fullWidth": {
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "full-width"
+  },
+  /**
+   * whether tabbed interface is disabled
+   */
+  "disabled": {
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "disabled"
+  },
+  /**
+   * whether tabbed interface is hidden
+   */
+  "hidden": {
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "hidden"
+  },
+  /**
+   * Optional minimum breakpoint for showing tab text with icons, or
+   * Default is always text with icons.
+   * `-1` forces icon-only mode.
+   */
+  "iconBreakpoint": {
+    "type": Number,
+    "attribute": "icon-breakpoint"
+  },
+  /**
+   * unique identifier/anchor for tabbed interface
+   */
+  "id": {
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * Optional minimum breakpoint for horizontal layout of tabs.
+   * Default is unset (always horizontal).
+   * `-1` forces vertical-only mode.
+   */
+  "layoutBreakpoint": {
+    "type": Number,
+    "attribute": "layout-breakpoint"
+  },
+  /**
+   * size of tabs,
+   * where `xs` is smaller breakpoint
+   * and `xs` is larger breakpoint
+   */
+  "responsiveSize": {
+    "type": String,
+    "reflect": true,
+    "attribute": "responsive-size"
+  },
+  /**
+   * whether tabs are sticky
+   */
+  "sticky": {
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "sticky"
+  },
+  /**
+   * an array of tab data based on slotted `a11y-tab` elements
+   */
+  "__tabs": {
+    "type": Array
+  },
+  /**
+   * an array of tab buttons
+   */
+  "__tabButtons": {
+    "type": Array
+  },
+  /**
+   * which tab button has ketboard focus
+   */
+  "__tabFocus": {
+    "type": Number
+  }
+}
+;
   }
 
   /**
@@ -765,6 +746,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         ?disabled="${tab.disabled || this.disabled}"
         tabindex="${tab.id === this.activeTab ? 0 : -1}"
         role="tab"
+        part="${tab.id === this.activeTab && !this.disabled
+          ? "tab-active"
+          : this.disabled || tab.disabled
+          ? "tab-disabled"
+          : "tab"}"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
@@ -782,7 +768,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabFlag(tab) {
     return html`
-      <span class="flag-type" ?hidden="${!tab.flag}"> ${tab.flag} </span>
+      <span class="flag-type" ?hidden="${!tab.flag}" part="flag">
+        ${tab.flag}
+      </span>
     `;
   }
 
@@ -801,6 +789,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             ?hidden="${!tab[icon]}"
             .icon="${tab[icon]}"
             .title="${tab.flag}"
+            part="icon"
           >
           </simple-icon-lite>
         `
@@ -809,6 +798,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             class="icon"
             ?hidden="${!tab[icon]}"
             .icon="${tab[icon]}"
+            part="icon"
           >
           </simple-icon-lite>
         `;
@@ -822,7 +812,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @memberof A11yTabs
    */
   _tabLabel(tab) {
-    return html` <span class="label">${tab.label}</span> `;
+    return html` <span class="label" part="label">${tab.label}</span> `;
   }
 
   /**
@@ -835,7 +825,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabTooltip(tab) {
     return html`
-      <simple-tooltip for="${tab.id}-button"> ${tab.label} </simple-tooltip>
+      <simple-tooltip for="${tab.id}-button" part="tooltip">
+        ${tab.label}
+      </simple-tooltip>
     `;
   }
 }

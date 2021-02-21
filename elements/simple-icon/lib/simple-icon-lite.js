@@ -136,6 +136,9 @@ export const SimpleIconBehaviors = function (SuperClass) {
  * @microcopy - language worth noting:
  *  -
  *
+ * @customElement
+ * @extends LitElement
+ * @extends SimpleIconBehaviors
  * @demo demo/lite.html
  * @demo demo/button-lite.html Button (Lite)
  * @element simple-icon-lite

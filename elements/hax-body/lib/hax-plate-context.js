@@ -1,11 +1,11 @@
 import { LitElement, css, html } from "lit-element/lit-element.js";
-import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
-import { HaxToolbarBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar-menu.js";
-import "./hax-toolbar-menu-item.js";
 import "./hax-context-item.js";
 import { autorun, toJS } from "mobx";
+import { HaxContextBehaviors } from "./hax-context-container.js";
 /**
  * `hax-plate-context`
  * `A context menu that provides common grid plate based authoring options.`
@@ -13,9 +13,7 @@ import { autorun, toJS } from "mobx";
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  * - grid plate - the container / full HTML tag which can have operations applied to it.
  */
-class HaxPlateContext extends SimpleTourFinder(
-  HaxToolbarBehaviors(LitElement)
-) {
+class HaxPlateContext extends HaxContextBehaviors(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -32,132 +30,148 @@ class HaxPlateContext extends SimpleTourFinder(
     return [
       ...super.styles,
       css`
-        :host,
-        #buttons {
-          flex-wrap: nowrap;
+        :host {
+          width: 176px;
+        }
+        hax-toolbar {
           flex: 0 0 auto;
-          align-self: flex-end;
+        }
+        #remove {
+          max-width: 44px;
+          overflow: visible;
         }
       `,
     ];
   }
   render() {
     return html`
-      <div class="area" id="buttons">
-        <hax-toolbar-menu
-          ?disabled="${this.hasActiveEditingElement}"
-          id="drag"
-          action
-          icon="hax:arrow-all"
-          label="Drag handle"
-          draggable="true"
-          reset-on-select
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <hax-toolbar-menu-item slot="menuitem">
+      <div id="toolbar" class="area">
+        <hax-toolbar always-expanded>
+          <div class="group">
+            <hax-toolbar-menu
+              ?disabled="${this.hasActiveEditingElement}"
+              id="drag"
+              action
+              icon="hax:arrow-all"
+              label="Drag handle"
+              draggable="true"
+              reset-on-select
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              <simple-toolbar-menu-item slot="menuitem">
+                <hax-context-item
+                  action
+                  align-horizontal="left"
+                  ?disabled="${this.hasActiveEditingElement}"
+                  show-text-label
+                  role="menuitem"
+                  icon="hax:keyboard-arrow-up"
+                  label="Move up"
+                  event-name="hax-plate-up"
+                ></hax-context-item>
+              </simple-toolbar-menu-item>
+              <simple-toolbar-menu-item slot="menuitem">
+                <hax-context-item
+                  action
+                  align-horizontal="left"
+                  ?disabled="${this.hasActiveEditingElement}"
+                  role="menuitem"
+                  show-text-label
+                  icon="hax:keyboard-arrow-down"
+                  label="Move down"
+                  event-name="hax-plate-down"
+                ></hax-context-item>
+              </simple-toolbar-menu-item>
+              <div slot="tour" data-stop-content>
+                Click the drag handle once to show a menu to just move up or
+                down one item in the content OR click and drag to place the item
+                exactly where you want it to go.
+              </div>
+            </hax-toolbar-menu>
+          </div>
+          <div class="group">
+            <hax-context-item
+              action
+              id="right"
+              class="paddle"
+              icon="hax:table-column-remove"
+              label="Add column"
+              ?disabled="${this.hasActiveEditingElement}"
+              event-name="hax-plate-create-right"
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              <div slot="tour" data-stop-content>
+                Add a column to split the current column into two pieces. This
+                can be done up to six pieces columns. For differnet layouts see
+                Grid settings panel.
+              </div>
+            </hax-context-item>
+            <hax-context-item
+              action
+              class="paddle"
+              icon="hax:table-column-plus-after"
+              label="Remove column"
+              ?disabled="${this.hasActiveEditingElement}"
+              event-name="hax-plate-remove-right"
+              id="rightremove"
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              <div slot="tour" data-stop-content>
+                Remove a column from the split column layout. If at two columns
+                and removing it will remove the layout split and make it 100%
+                width.
+              </div>
+            </hax-context-item>
             <hax-context-item
               action
               ?disabled="${this.hasActiveEditingElement}"
-              show-text-label
-              role="menuitem"
-              icon="hax:keyboard-arrow-up"
-              label="Move up"
-              event-name="hax-plate-up"
-            ></hax-context-item>
-          </hax-toolbar-menu-item>
-          <hax-toolbar-menu-item slot="menuitem">
-            <hax-context-item
-              action
-              ?disabled="${this.hasActiveEditingElement}"
-              role="menuitem"
-              show-text-label
-              icon="hax:keyboard-arrow-down"
-              label="Move down"
-              event-name="hax-plate-down"
-            ></hax-context-item>
-          </hax-toolbar-menu-item>
-          <div slot="tour" data-stop-content>
-            Click the drag handle once to show a menu to just move up or down
-            one item in the content OR click and drag to place the item exactly
-            where you want it to go.
+              label="Duplicate"
+              icon="icons:content-copy"
+              event-name="hax-plate-duplicate"
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              <div slot="tour" data-stop-content>
+                Duplicate the active piece of content and place it below the
+                current item.
+              </div>
+            </hax-context-item>
           </div>
-        </hax-toolbar-menu>
-        <hax-context-item
-          action
-          id="right"
-          class="paddle"
-          icon="hax:table-column-remove"
-          label="Add column"
-          ?disabled="${this.hasActiveEditingElement}"
-          event-name="hax-plate-create-right"
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <div slot="tour" data-stop-content>
-            Add a column to split the current column into two pieces. This can
-            be done up to six pieces columns. For differnet layouts see Grid
-            settings panel.
-          </div>
-        </hax-context-item>
-        <hax-context-item
-          action
-          class="paddle"
-          icon="hax:table-column-plus-after"
-          label="Remove column"
-          ?disabled="${this.hasActiveEditingElement}"
-          event-name="hax-plate-remove-right"
-          id="rightremove"
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <div slot="tour" data-stop-content>
-            Remove a column from the split column layout. If at two columns and
-            removing it will remove the layout split and make it 100% width.
-          </div>
-        </hax-context-item>
-        <hax-context-item
-          action
-          ?disabled="${this.hasActiveEditingElement}"
-          label="Duplicate"
-          icon="icons:content-copy"
-          event-name="hax-plate-duplicate"
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <div slot="tour" data-stop-content>
-            Duplicate the active piece of content and place it below the current
-            item.
-          </div>
-        </hax-context-item>
-        <hax-toolbar-menu
-          id="drag"
-          danger
-          action
-          ?disabled="${this.hasActiveEditingElement}"
-          icon="delete"
-          label="Remove"
-          reset-on-select
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <hax-toolbar-menu-item slot="menuitem">
-            <hax-context-item
-              action
+          <div class="group">
+            <hax-toolbar-menu
+              id="remove"
               danger
+              action
               ?disabled="${this.hasActiveEditingElement}"
-              show-text-label
-              role="menuitem"
               icon="delete"
-              label="Confirm Delete"
-              event-name="hax-plate-delete"
-            ></hax-context-item>
-          </hax-toolbar-menu-item>
-          <div slot="tour" data-stop-content>
-            Delete the current item. You can always use the undo arrow to bring
-            this back.
+              label="Remove"
+              reset-on-select
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              <simple-toolbar-menu-item slot="menuitem">
+                <hax-context-item
+                  action
+                  danger
+                  align-horizontal="left"
+                  ?disabled="${this.hasActiveEditingElement}"
+                  show-text-label
+                  role="menuitem"
+                  icon="delete"
+                  label="Confirm Delete"
+                  event-name="hax-plate-delete"
+                ></hax-context-item>
+              </simple-toolbar-menu-item>
+              <div slot="tour" data-stop-content>
+                Delete the current item. You can always use the undo arrow to
+                bring this back.
+              </div>
+            </hax-toolbar-menu>
           </div>
-        </hax-toolbar-menu>
+        </hax-toolbar>
       </div>
     `;
   }

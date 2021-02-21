@@ -13,19 +13,19 @@ require("@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js");
 
 require("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
 
-require("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu-item.js");
+require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js");
 
 require("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
 
 require("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
 
-var _haxToolbar = require("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
-
-var _SimpleTourFinder2 = require("@lrnwebcomponents/simple-popover/lib/SimpleTourFinder");
+require("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
 
 var _haxStore = require("./hax-store.js");
 
 var _mobx = require("mobx");
+
+var _haxContextContainer = require("./hax-context-container.js");
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -76,14 +76,79 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _templateObject3() {
-  var data = _taggedTemplateLiteral([""]);
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj &&
+        typeof Symbol === "function" &&
+        obj.constructor === Symbol &&
+        obj !== Symbol.prototype
+        ? "symbol"
+        : typeof obj;
+    };
+  }
+  return _typeof(obj);
+}
 
-  _templateObject3 = function _templateObject3() {
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([
+    ' <simple-toolbar-menu-item slot="menuitem">\n                    <hax-context-item-textop\n                      action\n                      align-horizontal="left"\n                      role="menuitem"\n                      label="',
+    '"\n                      show-text-label\n                      ?hidden="',
+    '"\n                      event-name="',
+    '"\n                      @click="',
+    '"\n                    ></hax-context-item-textop>\n                  </simple-toolbar-menu-item>',
+  ]);
+
+  _templateObject2 = function _templateObject2() {
     return data;
   };
 
   return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([
+    '\n      <div id="toolbar">\n        <hax-toolbar>\n          <div class="group">\n            <hax-toolbar-menu\n              id="textformat"\n              icon="',
+    '"\n              label="Format"\n              show-text-label\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              ',
+    '\n              <div slot="tour" data-stop-content>\n                Change how the text is structured and visualized in the page.\n              </div>\n            </hax-toolbar-menu>\n            <!-- comment this in when rich-text-editor is viable -->\n            <!--\n            <hax-context-item\n              action\n              hidden\n              icon="icons:flip-to-back"\n              label="Full text editor"\n              event-name="hax-full-text-editor-toggle"\n            ></hax-context-item> -->\n          </div>\n          <div class="group">\n            <slot name="primary"></slot>\n          </div>\n          <div class="group">\n            <hax-context-item\n              action\n              icon="icons:code"\n              label="Modify HTML source"\n              ?hidden="',
+    '"\n              event-name="hax-source-view-toggle"\n              toggles\n              ?toggled="',
+    '"\n              @click="',
+    '"\n            ></hax-context-item>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-list-bulleted"\n              event-name="text-tag-ul"\n              label="Bulleted list"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-list-numbered"\n              label="Numbered list"\n              event-name="text-tag-ol"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-indent-decrease"\n              label="Outdent"\n              event-name="text-outdent"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-indent-increase"\n              label="Indent"\n              event-name="text-indent"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-bold"\n              label="Bold"\n              class="selected-buttons"\n              event-name="text-bold"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-italic"\n              label="Italic"\n              class="selected-buttons"\n              event-name="text-italic"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:insert-link"\n              label="Link"\n              class="selected-buttons"\n              event-name="text-link"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              mini\n              action\n              icon="mdextra:unlink"\n              label="Remove link"\n              class="selected-buttons"\n              event-name="text-unlink"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-clear"\n              label="Remove format"\n              class="selected-buttons"\n              event-name="text-remove-format"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n            <hax-context-item\n              mini\n              action\n              icon="hax:add-brick"\n              label="Add element to selection"\n              class="selected-buttons"\n              event-name="insert-inline-gizmo"\n              ?hidden="',
+    '"\n            ></hax-context-item>\n            <hax-context-item-textop\n              mini\n              action\n              icon="hax:add-brick"\n              label="Add element to selection"\n              class="selected-buttons"\n              event-name="insert-inline-gizmo"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n          </div>\n          <div class="group">\n            <slot name="secondary"></slot>\n          </div>\n          <div class="group">\n            <hax-context-item-textop\n              action\n              menu\n              icon="mdextra:subscript"\n              event-name="text-subscript"\n              ?hidden="',
+    '"\n              label="Subscript"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              action\n              menu\n              icon="mdextra:superscript"\n              event-name="text-superscript"\n              ?hidden="',
+    '"\n              label="Superscript"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              action\n              menu\n              icon="editor:format-underlined"\n              label="Underline"\n              event-name="text-underline"\n              ?hidden="',
+    '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              action\n              menu\n              icon="editor:format-strikethrough"\n              event-name="text-strikethrough"\n              ?hidden="',
+    '"\n              label="Cross out"\n            ></hax-context-item-textop>\n          </div>\n          <div class="group more">\n            <slot name="more"></slot>\n          </div>\n          <div class="group">\n            <hax-toolbar-menu icon="add" label="Insert item above or below">\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  role="menuitem"\n                  show-text-label\n                  icon="hardware:keyboard-arrow-up"\n                  event-name="insert-above-active"\n                  label="Insert item above"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  role="menuitem"\n                  show-text-label\n                  icon="hardware:keyboard-arrow-down"\n                  event-name="insert-below-active"\n                  label="Insert item below"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n            </hax-toolbar-menu>\n          </div>\n        </hax-toolbar>\n      </div>\n    ',
+  ]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+  return Object.freeze(
+    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
+  );
 }
 
 function _toConsumableArray(arr) {
@@ -113,86 +178,26 @@ function _arrayWithoutHoles(arr) {
   }
 }
 
-function _typeof(obj) {
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj &&
-        typeof Symbol === "function" &&
-        obj.constructor === Symbol &&
-        obj !== Symbol.prototype
-        ? "symbol"
-        : typeof obj;
-    };
-  }
-  return _typeof(obj);
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral([
-    ' <hax-toolbar-menu-item slot="menuitem">\n                  <hax-context-item-textop\n                    action\n                    role="menuitem"\n                    label="',
-    '"\n                    show-text-label\n                    ?hidden="',
-    '"\n                    event-name="',
-    '"\n                    @click="',
-    '"\n                  ></hax-context-item-textop>\n                </hax-toolbar-menu-item>',
-  ]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral([
-    '\n      <div id="buttons">\n        <div class="group">\n          <hax-toolbar-menu\n            id="textformat"\n            icon="',
-    '"\n            label="Format"\n            show-text-label\n            data-simple-tour-stop\n            data-stop-title="label"\n          >\n            ',
-    '\n            <div slot="tour" data-stop-content>\n              Change how the text is structured and visualized in the page.\n            </div>\n          </hax-toolbar-menu>\n          <!-- comment this in when rich-text-editor is viable -->\n          <!--\n          <hax-context-item\n            action\n            hidden\n            icon="icons:flip-to-back"\n            label="Full text editor"\n            event-name="hax-full-text-editor-toggle"\n          ></hax-context-item> -->\n          <slot name="primary"></slot>\n          <hax-context-item\n            action\n            icon="icons:code"\n            label="Modify HTML source"\n            ?hidden="',
-    '"\n            event-name="hax-source-view-toggle"\n            toggles \n            ?toggled="',
-    '"\n            @click="',
-    '"\n          ></hax-context-item>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-list-bulleted"\n            event-name="text-tag-ul"\n            label="Bulleted list"\n            .hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-list-numbered"\n            label="Numbered list"\n            event-name="text-tag-ol"\n            .hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-indent-decrease"\n            label="Outdent"\n            event-name="text-outdent"\n            .hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-indent-increase"\n            label="Indent"\n            event-name="text-indent"\n            .hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-bold"\n            label="Bold"\n            class="selected-buttons"\n            event-name="text-bold"\n            ?hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-italic"\n            label="Italic"\n            class="selected-buttons"\n            event-name="text-italic"\n            ?hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:insert-link"\n            label="Link"\n            class="selected-buttons"\n            event-name="text-link"\n            ?hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="mdextra:unlink"\n            label="Remove link"\n            class="selected-buttons"\n            event-name="text-unlink"\n            ?hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            mini\n            action\n            icon="editor:format-clear"\n            label="Remove format"\n            class="selected-buttons"\n            event-name="text-remove-format"\n            ?hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item\n            mini\n            action\n            icon="hax:add-brick"\n            label="Add element to selection"\n            class="selected-buttons"\n            event-name="insert-inline-gizmo"\n            ?hidden="',
-    '"\n          ></hax-context-item>\n          <hax-context-item-textop\n            mini\n            action\n            icon="hax:add-brick"\n            label="Add element to selection"\n            class="selected-buttons"\n            event-name="insert-inline-gizmo"\n            ?hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="mdextra:subscript"\n            event-name="text-subscript"\n            ?hidden="',
-    '"\n            label="Subscript"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="mdextra:superscript"\n            event-name="text-superscript"\n            ?hidden="',
-    '"\n            label="Superscript"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="editor:format-underlined"\n            label="Underline"\n            event-name="text-underline"\n            ?hidden="',
-    '"\n          ></hax-context-item-textop>\n          <hax-context-item-textop\n            action\n            menu\n            icon="editor:format-strikethrough"\n            event-name="text-strikethrough"\n            ?hidden="',
-    '"\n            label="Cross out"\n          ></hax-context-item-textop>\n          <hax-toolbar-menu icon="add" label="Insert item above or below">\n            <hax-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                role="menuitem"\n                show-text-label\n                icon="hardware:keyboard-arrow-up"\n                event-name="insert-above-active"\n                label="Insert item above"\n              ></hax-context-item>\n            </hax-toolbar-menu-item>\n            <hax-toolbar-menu-item slot="menuitem">\n              <hax-context-item\n                action\n                role="menuitem"\n                show-text-label\n                icon="hardware:keyboard-arrow-down"\n                event-name="insert-below-active"\n                label="Insert item below"\n              ></hax-context-item>\n            </hax-toolbar-menu-item>\n          </hax-toolbar-menu>\n          <slot name="secondary"></slot>\n          <slot name="more"></slot>\n        </div>\n      </div>\n      ',
-    "\n    ",
-  ]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-  return Object.freeze(
-    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
-  );
-}
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    );
+  }
+  return self;
 }
 
 function _defineProperties(target, props) {
@@ -211,20 +216,24 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
   }
-  return _assertThisInitialized(self);
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: { value: subClass, writable: true, configurable: true },
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
 }
 
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError(
-      "this hasn't been initialised - super() hasn't been called"
-    );
-  }
-  return self;
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf =
+    Object.setPrototypeOf ||
+    function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+  return _setPrototypeOf(o, p);
 }
 
 function _get(target, property, receiver) {
@@ -261,26 +270,6 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true },
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf =
-    Object.setPrototypeOf ||
-    function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-  return _setPrototypeOf(o, p);
-}
-
 /**
  * `hax-text-context`
  * @element hax-text-context
@@ -290,8 +279,19 @@ function _setPrototypeOf(o, p) {
  */
 var HaxTextContext =
   /*#__PURE__*/
-  (function (_SimpleTourFinder) {
-    _inherits(HaxTextContext, _SimpleTourFinder);
+  (function (_HaxContextBehaviors) {
+    _inherits(HaxTextContext, _HaxContextBehaviors);
+
+    _createClass(HaxTextContext, null, [
+      {
+        key: "styles",
+        get: function get() {
+          return _toConsumableArray(
+            _get(_getPrototypeOf(HaxTextContext), "styles", this)
+          );
+        },
+      },
+    ]);
 
     function HaxTextContext() {
       var _this;
@@ -423,12 +423,11 @@ var HaxTextContext =
           key: "render",
 
           /**
-     *
-          
-     *
-     * @returns
-     * @memberof HaxTextContext
-     */
+           *
+           *
+           * @returns
+           * @memberof HaxTextContext
+           */
           value: function render() {
             var _this2 = this;
 
@@ -460,8 +459,7 @@ var HaxTextContext =
               !this.hasSelectedText,
               !this.hasSelectedText,
               !this.hasSelectedText,
-              !this.hasSelectedText,
-              this.moreButton
+              !this.hasSelectedText
             );
           },
         },
@@ -804,17 +802,6 @@ var HaxTextContext =
       ],
       [
         {
-          key: "styles",
-          get: function get() {
-            return [].concat(
-              _toConsumableArray(
-                _get(_getPrototypeOf(HaxTextContext), "styles", this)
-              ),
-              [(0, _litElement.css)(_templateObject3())]
-            );
-          },
-        },
-        {
           key: "tag",
           get: function get() {
             return "hax-text-context";
@@ -878,11 +865,7 @@ var HaxTextContext =
     );
 
     return HaxTextContext;
-  })(
-    (0, _SimpleTourFinder2.SimpleTourFinder)(
-      (0, _haxToolbar.HaxToolbarBehaviors)(_litElement.LitElement)
-    )
-  );
+  })((0, _haxContextContainer.HaxContextBehaviors)(_litElement.LitElement));
 
 exports.HaxTextContext = HaxTextContext;
 window.customElements.define(HaxTextContext.tag, HaxTextContext);

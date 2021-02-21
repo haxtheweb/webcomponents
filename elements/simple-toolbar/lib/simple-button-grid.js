@@ -172,9 +172,9 @@ const SimpleButtonGridBehaviors = function (SuperClass) {
           }
         }
       });
-      this.__collapseDisabled =
+      this.collapseDisabled =
         shown && !(more && lastVisible && this._bottom(more) > max);
-      if (!this.__collapseDisabled && lastVisible)
+      if (!this.collapseDisabled && lastVisible)
         lastVisible.setAttribute("collapse-hide", true);
     }
 

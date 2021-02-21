@@ -1,4 +1,8 @@
 {
+  "disableResponsive": {
+    "type": "Boolean",
+    "attribute": "disable-responsive"
+  },
   /**
    * Fields to convert to JSON Schema.
    */
@@ -26,8 +30,10 @@
     "type": "Object",
     "attribute": "active-path"
   },
-  "disableResponsive": {
-    "type": "Boolean",
-    "attribute": "disable-responsive"
+  /**
+   * tracks code editors to switch to dark mode
+   */
+  "__colorPrefs": {
+    "type": "String"
   }
 }

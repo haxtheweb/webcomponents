@@ -57,7 +57,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          flex: 0 0 auto;\n          overflow-y: auto;\n        }\n        simple-button-grid {\n          overflow: auto;\n        }\n        hax-tray-button {\n          font-size: var(--hax-tray-font-size-xs, 11px);\n          --simple-toolbar-button-bg: var(--hax-toolbar-button-bg, #fff);\n          --simple-toolbar-button-border-color: var(\n            --hax-toolbar-border-color,\n            #ddd\n          );\n          --simple-toolbar-button-hover-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n          --simple-toolbar-button-hover-border-color: var(\n            --hax-tray-accent-color,\n            #000\n          );\n        }\n      ",
+    "\n        :host {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          flex: 0 0 auto;\n          overflow-y: auto;\n        }\n        simple-button-grid {\n          overflow: auto;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
