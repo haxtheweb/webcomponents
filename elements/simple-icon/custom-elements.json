@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "simple-icon",
-      "path": "./lib/simple-icon-button-lite.js",
+      "path": "./lib\\simple-icon-button-lite.js",
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
@@ -122,7 +122,7 @@
     },
     {
       "name": "simple-icon-button-lite",
-      "path": "./lib/simple-icon-button-lite.js",
+      "path": "./lib\\simple-icon-button-lite.js",
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
@@ -241,7 +241,7 @@
     },
     {
       "name": "simple-icon",
-      "path": "./lib/simple-icon-button.js",
+      "path": "./lib\\simple-icon-button.js",
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
@@ -399,7 +399,7 @@
     },
     {
       "name": "simple-icon-button",
-      "path": "./lib/simple-icon-button.js",
+      "path": "./lib\\simple-icon-button.js",
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
@@ -557,7 +557,7 @@
     },
     {
       "name": "simple-icon-lite",
-      "path": "./lib/simple-icon-lite.js",
+      "path": "./lib\\simple-icon-lite.js",
       "description": "`simple-icon-lite`\n`Render an SVG based icon`",
       "attributes": [
         {
@@ -599,7 +599,7 @@
     },
     {
       "name": "simple-iconset-demo",
-      "path": "./lib/simple-iconset-demo.js",
+      "path": "./lib\\simple-iconset-demo.js",
       "description": "`simple-iconset-demo`",
       "attributes": [
         {
@@ -654,7 +654,7 @@
     },
     {
       "name": "simple-iconset",
-      "path": "./lib/simple-iconset.js",
+      "path": "./lib\\simple-iconset.js",
       "properties": [
         {
           "name": "iconsets",
@@ -753,7 +753,7 @@
     },
     {
       "name": "simple-icon",
-      "path": "./src/simple-icon.js",
+      "path": "./src\\simple-icon.js",
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {

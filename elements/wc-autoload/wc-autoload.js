@@ -1,10 +1,12 @@
 /**
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
+ *
  */
 import "@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js";
 // register globally so we can make sure there is only one
 window.WCAutoload = window.WCAutoload || {};
+window.WCAutoloadRegistry = window.WCAutoloadRegistry || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
@@ -36,73 +38,80 @@ const fetch_retry = async (url, options, n) => {
  */
 window.WCAutoload.process = (e) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      // find the loader
-      var loader = window.WCAutoload.requestAvailability();
-      loader.loaded = true;
-      var list = {};
-      // microtask timing to ensure window settings are accepted
-      if (window.WCAutoloadRegistryFileProcessed) {
-        // mutation observer will pick up changes after initial load
-        // but this gets us at load time with fallback support for legacy
+    // find the loader
+    var loader = window.WCAutoload.requestAvailability();
+    loader.loaded = true;
+    var list = {};
+    // microtask timing to ensure window settings are accepted
+    if (window.WCAutoloadRegistryFileProcessed) {
+      // mutation observer will pick up changes after initial load
+      // but this gets us at load time with fallback support for legacy
+      let target = document;
+      if (loader.target) {
+        target = loader.target;
+        loader.processNewElement(target);
+      }
+      // hack to convert children into array
+      target.querySelectorAll("*").forEach((el) => {
+        if (el.tagName && !list[el.tagName]) {
+          loader.processNewElement(el);
+          list[el.tagName] = el.tagName;
+        }
+      });
+      resolve("autoloader already processed");
+    } else {
+      setTimeout(async () => {
+        // set the basePath if it exists
+        if (window.WCAutoloadBasePath) {
+          loader.registry.basePath = window.WCAutoloadBasePath;
+        }
+        if (
+          window.WCAutoloadRegistryFile &&
+          !window.WCAutoloadRegistryFileProcessed
+        ) {
+          // support single string or multiple registries
+          if (typeof window.WCAutoloadRegistryFile === "string") {
+            window.WCAutoloadRegistryFile = [window.WCAutoloadRegistryFile];
+          }
+          for (var i = 0; i < window.WCAutoloadRegistryFile.length; i++) {
+            await fetch_retry(window.WCAutoloadRegistryFile[i], {}, 3)
+              .then(function (response) {
+                return response.json();
+              })
+              .then(function (data) {
+                window.WCAutoloadRegistryFileProcessed = true;
+                window.WCAutoloadRegistry = {
+                  ...window.WCAutoloadRegistry,
+                  ...data,
+                };
+              });
+          }
+        }
+        // build out the registry via events translated from object
+        if (window.WCAutoloadRegistry) {
+          for (var i in window.WCAutoloadRegistry) {
+            loader.registry.register({
+              tag: i,
+              path: window.WCAutoloadRegistry[i],
+            });
+          }
+        }
         let target = document;
         if (loader.target) {
           target = loader.target;
           loader.processNewElement(target);
         }
-        // hack to convert children into array
+        // mutation observer will pick up changes after initial load
+        // but this gets us at load time with fallback support for legacy
         target.querySelectorAll("*").forEach((el) => {
           if (el.tagName && !list[el.tagName]) {
             loader.processNewElement(el);
             list[el.tagName] = el.tagName;
           }
         });
-        resolve("autoloader already processed");
-      } else {
-        setTimeout(async () => {
-          // set the basePath if it exists
-          if (window.WCAutoloadBasePath) {
-            loader.registry.basePath = window.WCAutoloadBasePath;
-          }
-          if (
-            window.WCAutoloadRegistryFile &&
-            !window.WCAutoloadRegistryFileProcessed
-          ) {
-            await fetch_retry(window.WCAutoloadRegistryFile, {}, 3)
-              .then(function (response) {
-                return response.json();
-              })
-              .then(function (data) {
-                window.WCAutoloadRegistryFileProcessed = true;
-                window.WCAutoloadRegistry = data;
-              });
-          }
-          // build out the registry via events translated from object
-          if (window.WCAutoloadRegistry) {
-            for (var i in window.WCAutoloadRegistry) {
-              loader.registry.register({
-                tag: i,
-                path: window.WCAutoloadRegistry[i],
-              });
-            }
-          }
-          let target = document;
-          if (loader.target) {
-            target = loader.target;
-            loader.processNewElement(target);
-          }
-          // mutation observer will pick up changes after initial load
-          // but this gets us at load time with fallback support for legacy
-          target.querySelectorAll("*").forEach((el) => {
-            if (el.tagName && !list[el.tagName]) {
-              loader.processNewElement(el);
-              list[el.tagName] = el.tagName;
-            }
-          });
-          resolve("autoloader processed on the fly");
-        }, 0);
-      }
-    }, 0);
+        resolve("autoloader processed on the fly");
+      }, 0);
+    }
   });
 };
 // forces self appending which kicks all this off but AFTER dom is loaded
@@ -129,7 +138,11 @@ window.addEventListener(
 /**
  * `wc-registry`
  * `optionally build the registry from the innerHTML of an element`
- * @demo demo/index.html
+ *
+ * @demo demo/index.html Baseline example
+ * @demo demo/elmsln.html ELMS:LN integration
+ * @demo demo/cantvas.html Cantvas integration example (token)
+ * @demo demo/multiple-registries.html Multiple registries
  * @element wc-registry
  */
 class WcRegistry extends HTMLElement {

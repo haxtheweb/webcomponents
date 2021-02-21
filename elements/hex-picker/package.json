@@ -1,19 +1,19 @@
 {
-  "name": "@lrnwebcomponents/color-picker",
+  "name": "@lrnwebcomponents/hex-picker",
   "wcfactory": {
-    "className": "ColorPicker",
+    "className": "HexPicker",
     "customElementClass": "LitElement",
-    "elementName": "color-picker",
+    "elementName": "hex-picker",
     "generator-wcfactory-version": "0.10.0",
-    "useHAX": false,
+    "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/color-picker.css",
-      "scss": "src/color-picker.scss",
-      "html": "src/color-picker.html",
-      "js": "src/color-picker.js",
-      "properties": "src/color-picker-properties.json",
-      "hax": "src/color-picker-hax.json"
+      "css": "src/hex-picker.css",
+      "scss": "src/hex-picker.scss",
+      "html": "src/hex-picker.html",
+      "js": "src/hex-picker.js",
+      "properties": "src/hex-picker-properties.json",
+      "hax": "src/hex-picker-hax.json"
     },
     "iconset": {},
     "sharedHaxProps": [],
@@ -21,16 +21,16 @@
     "sharedStyles": []
   },
   "version": "3.0.7",
-  "description": "Choose a color with a widget, or by entering hex/rgb code",
+  "description": "Choose a color by hex or rgba code",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "color-picker.js",
-  "module": "color-picker.js",
-  "umd": "color-picker.umd.js",
+  "main": "hex-picker.js",
+  "module": "hex-picker.js",
+  "umd": "hex-picker.umd.js",
   "scripts": {
-    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/color-picker/test/",
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hex-picker/test/",
     "test":"wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/<%= elementName %>/test/","start":"yarn run dev","build":"gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"gulp dev --gulpfile=gulpfile.cjs","serve":"es-dev-server -c ../../es-dev-server.config.js","lighthouse":"gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {

@@ -21,7 +21,9 @@ class LrnsysDrawer extends SimpleColors {
         :host {
           display: block;
           --lrnsys-drawer-color: var(--simple-colors-foreground1);
-          --lrnsys-drawer-background-color: var(--simple-colors-background1);
+          --lrnsys-drawer-button-background-color: var(
+            --simple-colors-background1
+          );
         }
         :host([raised]) button {
           border: 2px solid black;
@@ -32,10 +34,14 @@ class LrnsysDrawer extends SimpleColors {
           margin: var(--lrnsys-drawer-button-margin);
           padding: var(--lrnsys-drawer-button-padding);
           border: none;
-          background: transparent;
+          background: var(--lrnsys-drawer-button-background-color);
         }
         button:hover {
           cursor: pointer;
+          background: var(
+            --lrnsys-drawer-button-background-color-hover,
+            --lrnsys-drawer-button-background-color
+          );
         }
       `,
     ];
@@ -64,6 +70,7 @@ class LrnsysDrawer extends SimpleColors {
     return html`
       <button
         class="${this.class}"
+        part="lrnsys-drawer-button"
         id="flyouttrigger"
         @click="${this.toggleDrawer}"
         ?raised="${this.raised}"
@@ -71,6 +78,7 @@ class LrnsysDrawer extends SimpleColors {
         title="${this.alt}"
       >
         <lrnsys-button-inner
+          part="lrnsys-drawer-lrnsys-button-inner"
           avatar="${this.avatar}"
           icon="${this.icon}"
           text="${this.text}"
@@ -78,7 +86,10 @@ class LrnsysDrawer extends SimpleColors {
           <slot name="button"></slot>
         </lrnsys-button-inner>
       </button>
-      <simple-tooltip for="flyouttrigger" animation-delay="0"
+      <simple-tooltip
+        part="lrnsys-drawer-simple-tooltip"
+        for="flyouttrigger"
+        animation-delay="0"
         >${this.alt}</simple-tooltip
       >
     `;

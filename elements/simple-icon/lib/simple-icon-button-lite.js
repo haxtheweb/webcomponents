@@ -15,6 +15,14 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      this.ariaLabelledby = "";
+      this.controls = "";
+      this.disabled = false;
+      this.form = "";
+      this.label = "";
+      this.fieldName = "";
+      this.type = "";
+      this.value = "";
     }
 
     static get styles() {
@@ -113,8 +121,9 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
           ?disabled="${this.disabled}"
           form="${this.form}"
           label="${this.label}"
+          aria-label="${this.label}"
           name="${this.fieldName}"
-          type="${this.type}"
+          .type="${this.type}"
           value="${this.value}"
         >
           <simple-icon-lite icon=${this.icon}> </simple-icon-lite>

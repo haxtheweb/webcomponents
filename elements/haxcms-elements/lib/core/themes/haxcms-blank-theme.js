@@ -7,7 +7,15 @@ import { CleanTwo } from "@lrnwebcomponents/clean-two/clean-two.js";
 
 class HAXCMSBlankTheme extends CleanTwo {
   render() {
-    return html`<slot></slot>`;
+    return html`
+      <main>
+        <article>
+          <section>
+            <slot></slot>
+          </section>
+        </article>
+      </main>
+    `;
   }
   static get styles() {
     return css``;

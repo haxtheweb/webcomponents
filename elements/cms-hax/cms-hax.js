@@ -286,6 +286,7 @@ class CmsHax extends LitElement {
       { once: true, passive: true }
     );
     window.addEventListener("hax-save", this._saveFired.bind(this));
+    window.addEventListener("hax-cancel", this._cancelFired.bind(this));
     this.__lock = false;
     this.endPoint = null;
     this.openDefault = false;
@@ -374,6 +375,21 @@ class CmsHax extends LitElement {
         childList: true,
         subtree: true,
       });
+    }
+  }
+  /**
+   * _cancelFired
+   */
+  _cancelFired(e) {
+    // cancel
+    HAXStore.skipExitTrap = true;
+    HAXStore.editMode = false;
+    // if there's a redirect on save, then redirect to it bc of the cancel event
+    if (this.redirectOnSave) {
+      setTimeout(() => {
+        // trigger redirect
+        window.location = this.redirectLocation;
+      }, 0);
     }
   }
 

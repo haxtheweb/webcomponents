@@ -49,6 +49,9 @@ class MoocContent extends PolymerElement {
         visibility: visible;
         transition: all .4s ease;
       }
+      #block-mooc-nav-block-mooc-nav-nav {
+        z-index: 1;
+      }
     </style>
     <div id="hackycontainer"><style id="hackycsspotterhates"></style></div>
     <iron-ajax
@@ -101,14 +104,14 @@ class MoocContent extends PolymerElement {
           </div>
           <div class="elmsln-content-wrap" role="main">
           <responsive-grid-row gutter="4">
-            <responsive-grid-col xl="3" lg="3" md="3" sm="4" xs="12">
+            <responsive-grid-col xl="2" lg="2" md="3" sm="3" xs="12">
               <section id="block-mooc-nav-block-mooc-nav-nav" class="mooc-nav-block-left block block-mooc-nav-block contextual-links-region block-mooc-nav-block-mooc-nav column" role="navigation" aria-label$="[[outlineTitle]]">
                 <div class="block-mooc-nav-block-mooc-title black white-text">[[outlineTitle]]</div>
                 <div id="outline"><slot name="outline"></slot></div>
               </section>
               <div id="blocks"><slot name="blocks"></slot></div>
             </responsive-grid-col>
-            <responsive-grid-col xl="8" lg="8" md="9" sm="7" xs="12">
+            <responsive-grid-col xl="9" lg="9" md="9" sm="9" xs="12">
               <a id="main-content" class="scrollspy" data-scrollspy="scrollspy"></a>
               <div class="column">
                 <div id="content" data-loading$="[[loading]]"><slot name="content"></slot></div>

@@ -195,12 +195,12 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   // render function
   render() {
     return html`
-      <div class="active-slide">
-        <div id="contentcontainer">
-          <div id="slot"><slot></slot></div>
-        </div>
-      </div>
-      <div class="bottom-wrapper">
+      <main class="active-slide">
+        <article id="contentcontainer">
+          <section id="slot"><slot></slot></section>
+        </article>
+      </main>
+      <footer class="bottom-wrapper">
         <div class="controls">
           <site-menu-button
             type="prev"
@@ -231,7 +231,7 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           ></site-print-button>
           <site-active-title></site-active-title>
         </div>
-      </div>
+      </footer>
     `;
   }
   static get properties() {
