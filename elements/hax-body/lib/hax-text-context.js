@@ -18,6 +18,32 @@ import { autorun, toJS } from "mobx";
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  */
 class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host {
+          --hax-tray-spacing-sm: 1px;
+        }
+        :host,
+        hax-toolbar {
+          display: flex;
+          flex: 0 1 auto;
+          border: none;
+          background-color: var(--hax-tray-border-color);
+        }
+        hax-toolbar *[hidden] {
+          display: none !important;
+        }
+        hax-toolbar[collapse-disabled]::part(morebutton) {
+          display: none !important;
+        }
+        .group {
+          padding: 0;
+        }
+      `,
+    ];
+  }
   constructor() {
     super();
     this.sourceView = false;
@@ -151,7 +177,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
    */
   render() {
     return html`
-      <div id="buttons">
+      <hax-toolbar>
         <div class="group">
           <hax-toolbar-menu
             id="textformat"
@@ -191,6 +217,8 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
             label="Full text editor"
             event-name="hax-full-text-editor-toggle"
           ></hax-context-item> -->
+        </div>
+        <div class="group more">
           <slot name="primary"></slot>
           <hax-context-item
             action
@@ -208,7 +236,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
             icon="editor:format-list-bulleted"
             event-name="text-tag-ul"
             label="Bulleted list"
-            .hidden="${!this._showLists}"
+            ?hidden="${!this._showLists}"
           ></hax-context-item-textop>
           <hax-context-item-textop
             mini
@@ -216,7 +244,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
             icon="editor:format-list-numbered"
             label="Numbered list"
             event-name="text-tag-ol"
-            .hidden="${!this._showLists}"
+            ?hidden="${!this._showLists}"
           ></hax-context-item-textop>
           <hax-context-item-textop
             mini
@@ -224,7 +252,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
             icon="editor:format-indent-decrease"
             label="Outdent"
             event-name="text-outdent"
-            .hidden="${!this._showIndent}"
+            ?hidden="${!this._showIndent}"
           ></hax-context-item-textop>
           <hax-context-item-textop
             mini
@@ -232,7 +260,7 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
             icon="editor:format-indent-increase"
             label="Indent"
             event-name="text-indent"
-            .hidden="${!this._showIndent}"
+            ?hidden="${!this._showIndent}"
           ></hax-context-item-textop>
           <hax-context-item-textop
             mini
@@ -297,6 +325,10 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
             event-name="insert-inline-gizmo"
             ?hidden="${!this.isSafari || !this.hasSelectedText}"
           ></hax-context-item-textop>
+        </div>
+        <div class="group more">
+          <slot name="secondary"></slot>
+        </div>
           <hax-context-item-textop
             action
             menu
@@ -329,6 +361,10 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
             ?hidden="${!this.hasSelectedText}"
             label="Cross out"
           ></hax-context-item-textop>
+        </div>
+        <div class="group more">
+          <slot name="more"></slot>
+        <div class="group">
           <hax-toolbar-menu icon="add" label="Insert item above or below">
             <simple-toolbar-menu-item slot="menuitem">
               <hax-context-item
@@ -353,11 +389,8 @@ class HaxTextContext extends SimpleTourFinder(HaxToolbarBehaviors(LitElement)) {
               ></hax-context-item>
             </simple-toolbar-menu-item>
           </hax-toolbar-menu>
-          <slot name="secondary"></slot>
-          <slot name="more"></slot>
         </div>
-      </div>
-      ${this.moreButton}
+      </hax-toolbar>
     `;
   }
   static get tag() {

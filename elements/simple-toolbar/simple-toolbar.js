@@ -184,8 +184,10 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         /**
          * whether there is no need to collapse
          */
-        __collapseDisabled: {
+        collapseDisabled: {
           type: Boolean,
+          attribute: "collapse-disabled",
+          reflect: true,
         },
         /**
          * whether toolbar has focus
@@ -251,7 +253,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         class="button"
         @click="${(e) => (this.collapsed = !this.collapsed)}"
         @toggle="${(e) => (this.collapsed = !this.collapsed)}"
-        ?hidden=${this.__collapseDisabled}
+        ?hidden=${this.collapseDisabled}
         .icon="${this.icon}"
         .icon-position="${this.iconPosition}"
         .label="${this.label}"
@@ -290,9 +292,9 @@ const SimpleToolbarBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.collapsed = true;
+      this.collapseDisabled = false;
       this.config = [];
       this.__buttons = [];
-      this.__collapseDisabled = false;
       this.__focused = false;
       this.__hovered = false;
       this.icon = "more-vert";
@@ -436,7 +438,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           item.setAttribute("collapse-hide", true);
         }
       });
-      this.__collapseDisabled = shown;
+      this.collapseDisabled = shown;
     }
     /**
      * updates registered button, it needed

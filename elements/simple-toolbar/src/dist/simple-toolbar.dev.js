@@ -359,7 +359,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                 function (e) {
                   return (_this2.collapsed = !_this2.collapsed);
                 },
-                this.__collapseDisabled,
+                this.collapseDisabled,
                 this.icon,
                 this.iconPosition,
                 this.label,
@@ -500,8 +500,10 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                   /**
                    * whether there is no need to collapse
                    */
-                  __collapseDisabled: {
+                  collapseDisabled: {
                     type: Boolean,
+                    attribute: "collapse-disabled",
+                    reflect: true,
                   },
 
                   /**
@@ -536,9 +538,9 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
           _getPrototypeOf(_class).call(this)
         );
         _this.collapsed = true;
+        _this.collapseDisabled = false;
         _this.config = [];
         _this.__buttons = [];
-        _this.__collapseDisabled = false;
         _this.__focused = false;
         _this.__hovered = false;
         _this.icon = "more-vert";
@@ -789,7 +791,7 @@ var SimpleToolbarBehaviors = function SimpleToolbarBehaviors(SuperClass) {
                 item.setAttribute("collapse-hide", true);
               }
             });
-            this.__collapseDisabled = shown;
+            this.collapseDisabled = shown;
           },
           /**
            * updates registered button, it needed

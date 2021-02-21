@@ -32,139 +32,161 @@ class HaxPlateContext extends SimpleTourFinder(
     return [
       ...super.styles,
       css`
-        :host,
-        #buttons {
-          flex-wrap: nowrap;
-          flex: 0 0 auto;
-          align-self: flex-end;
+        :host {
+          --hax-tray-spacing-sm: 1px;
+          border: none;
+          background-color: var(--hax-tray-border-color);
+          width: 176px;
         }
-        hax-context-item::part(button) {
-          --simple-toolbar-button-padding: 0;
+        hax-toolbar {
+          display: flex;
+          flex: 0 1 auto;
+          border: none;
+        }
+        hax-toolbar *[hidden] {
+          display: none !important;
+        }
+        hax-toolbar[collapse-disabled]::part(morebutton) {
+          display: none !important;
+        }
+        .group {
+          padding: 0;
+        }
+        #remove {
+          max-width: 44px;
+          overflow: visible;
         }
       `,
     ];
   }
   render() {
     return html`
-      <div class="area" id="buttons">
-        <hax-toolbar-menu
-          ?disabled="${this.hasActiveEditingElement}"
-          id="drag"
-          action
-          icon="hax:arrow-all"
-          label="Drag handle"
-          draggable="true"
-          reset-on-select
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <simple-toolbar-menu-item slot="menuitem">
-            <hax-context-item
-              action
-              align-horizontal="left"
-              ?disabled="${this.hasActiveEditingElement}"
-              show-text-label
-              role="menuitem"
-              icon="hax:keyboard-arrow-up"
-              label="Move up"
-              event-name="hax-plate-up"
-            ></hax-context-item>
-          </simple-toolbar-menu-item>
-          <simple-toolbar-menu-item slot="menuitem">
-            <hax-context-item
-              action
-              align-horizontal="left"
-              ?disabled="${this.hasActiveEditingElement}"
-              role="menuitem"
-              show-text-label
-              icon="hax:keyboard-arrow-down"
-              label="Move down"
-              event-name="hax-plate-down"
-            ></hax-context-item>
-          </simple-toolbar-menu-item>
-          <div slot="tour" data-stop-content>
-            Click the drag handle once to show a menu to just move up or down
-            one item in the content OR click and drag to place the item exactly
-            where you want it to go.
-          </div>
-        </hax-toolbar-menu>
-        <hax-context-item
-          action
-          id="right"
-          class="paddle"
-          icon="hax:table-column-remove"
-          label="Add column"
-          ?disabled="${this.hasActiveEditingElement}"
-          event-name="hax-plate-create-right"
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <div slot="tour" data-stop-content>
-            Add a column to split the current column into two pieces. This can
-            be done up to six pieces columns. For differnet layouts see Grid
-            settings panel.
-          </div>
-        </hax-context-item>
-        <hax-context-item
-          action
-          class="paddle"
-          icon="hax:table-column-plus-after"
-          label="Remove column"
-          ?disabled="${this.hasActiveEditingElement}"
-          event-name="hax-plate-remove-right"
-          id="rightremove"
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <div slot="tour" data-stop-content>
-            Remove a column from the split column layout. If at two columns and
-            removing it will remove the layout split and make it 100% width.
-          </div>
-        </hax-context-item>
-        <hax-context-item
-          action
-          ?disabled="${this.hasActiveEditingElement}"
-          label="Duplicate"
-          icon="icons:content-copy"
-          event-name="hax-plate-duplicate"
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <div slot="tour" data-stop-content>
-            Duplicate the active piece of content and place it below the current
-            item.
-          </div>
-        </hax-context-item>
-        <hax-toolbar-menu
-          id="drag"
-          danger
-          action
-          ?disabled="${this.hasActiveEditingElement}"
-          icon="delete"
-          label="Remove"
-          reset-on-select
-          data-simple-tour-stop
-          data-stop-title="label"
-        >
-          <simple-toolbar-menu-item slot="menuitem">
-            <hax-context-item
-              action
-              danger
-              align-horizontal="left"
-              ?disabled="${this.hasActiveEditingElement}"
-              show-text-label
-              role="menuitem"
-              icon="delete"
-              label="Confirm Delete"
-              event-name="hax-plate-delete"
-            ></hax-context-item>
-          </simple-toolbar-menu-item>
-          <div slot="tour" data-stop-content>
-            Delete the current item. You can always use the undo arrow to bring
-            this back.
-          </div>
-        </hax-toolbar-menu>
-      </div>
+      <hax-toolbar class="area" always-expanded>
+        <div class="group">
+          <hax-toolbar-menu
+            ?disabled="${this.hasActiveEditingElement}"
+            id="drag"
+            action
+            icon="hax:arrow-all"
+            label="Drag handle"
+            draggable="true"
+            reset-on-select
+            data-simple-tour-stop
+            data-stop-title="label"
+          >
+            <simple-toolbar-menu-item slot="menuitem">
+              <hax-context-item
+                action
+                align-horizontal="left"
+                ?disabled="${this.hasActiveEditingElement}"
+                show-text-label
+                role="menuitem"
+                icon="hax:keyboard-arrow-up"
+                label="Move up"
+                event-name="hax-plate-up"
+              ></hax-context-item>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item slot="menuitem">
+              <hax-context-item
+                action
+                align-horizontal="left"
+                ?disabled="${this.hasActiveEditingElement}"
+                role="menuitem"
+                show-text-label
+                icon="hax:keyboard-arrow-down"
+                label="Move down"
+                event-name="hax-plate-down"
+              ></hax-context-item>
+            </simple-toolbar-menu-item>
+            <div slot="tour" data-stop-content>
+              Click the drag handle once to show a menu to just move up or down
+              one item in the content OR click and drag to place the item
+              exactly where you want it to go.
+            </div>
+          </hax-toolbar-menu>
+        </div>
+        <div class="group">
+          <hax-context-item
+            action
+            id="right"
+            class="paddle"
+            icon="hax:table-column-remove"
+            label="Add column"
+            ?disabled="${this.hasActiveEditingElement}"
+            event-name="hax-plate-create-right"
+            data-simple-tour-stop
+            data-stop-title="label"
+          >
+            <div slot="tour" data-stop-content>
+              Add a column to split the current column into two pieces. This can
+              be done up to six pieces columns. For differnet layouts see Grid
+              settings panel.
+            </div>
+          </hax-context-item>
+          <hax-context-item
+            action
+            class="paddle"
+            icon="hax:table-column-plus-after"
+            label="Remove column"
+            ?disabled="${this.hasActiveEditingElement}"
+            event-name="hax-plate-remove-right"
+            id="rightremove"
+            data-simple-tour-stop
+            data-stop-title="label"
+          >
+            <div slot="tour" data-stop-content>
+              Remove a column from the split column layout. If at two columns
+              and removing it will remove the layout split and make it 100%
+              width.
+            </div>
+          </hax-context-item>
+          <hax-context-item
+            action
+            ?disabled="${this.hasActiveEditingElement}"
+            label="Duplicate"
+            icon="icons:content-copy"
+            event-name="hax-plate-duplicate"
+            data-simple-tour-stop
+            data-stop-title="label"
+          >
+            <div slot="tour" data-stop-content>
+              Duplicate the active piece of content and place it below the
+              current item.
+            </div>
+          </hax-context-item>
+        </div>
+        <div class="group">
+          <hax-toolbar-menu
+            id="remove"
+            danger
+            action
+            ?disabled="${this.hasActiveEditingElement}"
+            icon="delete"
+            label="Remove"
+            reset-on-select
+            data-simple-tour-stop
+            data-stop-title="label"
+          >
+            <simple-toolbar-menu-item slot="menuitem">
+              <hax-context-item
+                action
+                danger
+                align-horizontal="left"
+                ?disabled="${this.hasActiveEditingElement}"
+                show-text-label
+                role="menuitem"
+                icon="delete"
+                label="Confirm Delete"
+                event-name="hax-plate-delete"
+              ></hax-context-item>
+            </simple-toolbar-menu-item>
+            <div slot="tour" data-stop-content>
+              Delete the current item. You can always use the undo arrow to
+              bring this back.
+            </div>
+          </hax-toolbar-menu>
+        </div>
+      </hax-toolbar>
     `;
   }
   __updatePlatePosition(active) {
