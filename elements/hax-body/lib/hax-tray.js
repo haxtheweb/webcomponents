@@ -119,20 +119,25 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           z-index: 1000;
           position: absolute;
           transition: 0.2s all ease-in-out;
-          height: 100vh;
+          height: calc(100vh - var(--hax-tray-top, 0px));
+          top: var(--hax-tray-top, 0px);
           overflow: auto;
           font-family: var(--hax-ui-font-family);
           font-size: var(--hax-ui-font-size);
           color: var(--hax-ui-color);
+          transition-delay: 0.3s;
         }
         :host(:focus-within),
         :host(:hover) {
           z-index: var(--hax-ui-focus-z-index);
         }
+        :host([collapsed]) {
+          height: unset;
+          transition-delay: 0.3s;
+        }
         .wrapper {
           position: fixed;
           top: 0;
-          background-color: var(--hax-ui-background-color);
           width: var(--hax-tray-width);
           transition: 0.2s all ease-in-out;
           opacity: 0;
@@ -140,7 +145,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           pointer-events: none;
           display: flex;
           flex-direction: column;
-          height: 100%;
           max-height: 100%;
           margin: 0;
           padding: 0;
@@ -150,17 +154,32 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           overflow-x: hidden;
           overflow-y: auto;
         }
-        :host([element-align="left"]) .wrapper {
+        :host([element-align="left"]) .wrapper,
+        :host([element-align="bottom-left"]) .wrapper {
           left: -1000px;
         }
-        :host([element-align="right"]) .wrapper {
+        :host([element-align="right"]) .wrapper,
+        :host([element-align="bottom-right"]) .wrapper {
           right: -1000px;
         }
-        :host([edit-mode][element-align="left"]) .wrapper {
+        :host([edit-mode][element-align="left"]) .wrapper,
+        :host([edit-mode][element-align="bottom-left"]) .wrapper {
           left: 0;
         }
-        :host([edit-mode][element-align="right"]) .wrapper {
+        :host([edit-mode][element-align="right"])
+          .wrapper
+          :host([edit-mode][element-align="bottom-right"])
+          .wrapper {
           right: 0;
+        }
+        :host([edit-mode][element-align="bottom-left"]) .wrapper,
+        :host([edit-mode][element-align="bottom-right"]) .wrapper {
+          top: unset;
+          bottom: 0;
+        }
+        :host([edit-mode][element-align="custom"]) .wrapper {
+          top: var(--hax-tray-custom-y);
+          left: var(--hax-tray-custom-x);
         }
         :host([edit-mode]) .wrapper {
           opacity: 1;
@@ -174,6 +193,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           max-height: 100vh;
           border: 1px solid var(--hax-ui-border-color);
           max-width: calc(var(--hax-tray-width) - 2 * var(--hax-ui-spacing-xs));
+          background-color: var(--hax-ui-background-color);
           padding: 0 var(--hax-ui-spacing-lg) var(--hax-ui-spacing);
           transition: all 0.3s linear;
         }
@@ -199,6 +219,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           width: var(--hax-tray-width);
           transition: all 0.5s ease-in-out;
         }
+        simple-button-grid {
+          background-color: var(--hax-ui-background-color);
+        }
         :host([edit-mode][collapsed]) hax-toolbar.tray-detail-ops {
           border-bottom: 1px solid var(--hax-ui-border-color);
         }
@@ -222,6 +245,14 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
         #contentgroup > * {
           --simple-toolbar-button-white-space: wrap;
+        }
+        #top-left::part(icon),
+        #bottom-right::part(icon) {
+          transform: rotate(45deg);
+        }
+        #top-right::part(icon),
+        #bottom-left::part(icon) {
+          transform: rotate(-45deg);
         }
         hax-toolbar,
         hax-tray-button,
@@ -355,17 +386,20 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           data-simple-tour-stop
           data-stop-title="Menu alignment"
           show-text-label
+          @dragstart="${this._dragStart}"
+          @dragend="${this._dragEnd}"
         >
           <simple-toolbar-menu-item slot="menuitem">
             <hax-tray-button
               show-text-label
               align-horizontal="left"
               voice-command="toggle alignment"
-              id="toggle-element-align"
+              id="top-left"
               event-name="toggle-element-align"
               icon="arrow-back"
               text-align="left"
-              label="Move Menu Left"
+              label="Left"
+              index="0"
               ?disabled="${this.elementAlign == "left"}"
               ?toggled="${this.elementAlign == "left"}"
             >
@@ -376,13 +410,45 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               show-text-label
               align-horizontal="left"
               voice-command="toggle alignment"
-              id="toggle-element-align"
+              id="top-right"
               event-name="toggle-element-align"
               icon="arrow-forward"
-              label="Move Menu Right"
+              label="Right"
               text-align="left"
+              index="1"
               ?disabled="${this.elementAlign == "right"}"
               ?toggled="${this.elementAlign == "right"}"
+            >
+              >
+            </hax-tray-button>
+            <hax-tray-button
+              show-text-label
+              align-horizontal="left"
+              voice-command="toggle alignment"
+              id="bottom-left"
+              event-name="toggle-element-align"
+              icon="arrow-back"
+              text-align="left"
+              label="Bottom Left"
+              ?disabled="${this.elementAlign == "bottom-left"}"
+              ?toggled="${this.elementAlign == "bottom-left"}"
+              index="2"
+            >
+            </hax-tray-button>
+          </simple-toolbar-menu-item>
+          <simple-toolbar-menu-item slot="menuitem">
+            <hax-tray-button
+              show-text-label
+              align-horizontal="left"
+              voice-command="toggle alignment"
+              id="bottom-right"
+              event-name="toggle-element-align"
+              icon="arrow-forward"
+              label="Bottom Right"
+              text-align="left"
+              ?disabled="${this.elementAlign == "bottom-right"}"
+              ?toggled="${this.elementAlign == "bottom-right"}"
+              index="3"
             >
               >
             </hax-tray-button>
@@ -419,52 +485,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         ></hax-tray-button>
       </div>
     `;
-  }
-  get menuButtons2() {
-    return html` <div id="menugroup" class="group" show-text-label>
-        <hax-tray-button
-          class="toolbar"
-          show-text-label
-          voice-command="move menu"
-          id="toggle-element-align"
-          event-name="toggle-element-align"
-          text-align="left"
-          icon="${this.elementAlign == "right"
-            ? "arrow-forward"
-            : "arrow-back"}"
-          label="Move Menu ${this.elementAlign == "right" ? "Left" : "Right"}"
-        >
-          <div data-stop-title>Menu placement</div>
-          <div slot="tour" data-stop-content>
-            Change which side of the screen the menu is affixed to visually.
-          </div>
-        </hax-tray-button>
-        <hax-tray-button
-          class="toolbar"
-          role="menuitem"
-          voice-command="toggle menu"
-          id="toggle-tray-size"
-          event-name="toggle-tray-size"
-          show-text-label
-          icon="${this.collapsed ? "unfold-more" : "unfold-less"}"
-          label="${this.collapsed ? "Expand Menu" : "Collapse Menu"}"
-          data-simple-tour-stop
-          show-text-label
-          text-align="left"
-        >
-          <div data-stop-title>Menu size</div>
-          <div data-stop-content>Expand or collapse the menu visually.</div>
-        </hax-tray-button>
-      </div>
-      <div class="group" id="tourgroup">
-        <hax-tray-button
-          class="toolbar"
-          event-name="start-tour"
-          icon="help"
-          label="Take a tour"
-          voice-command="start tour"
-        ></hax-tray-button>
-      </div>`;
   }
   get menuToolbarTemplate() {
     return html` <hax-toolbar id="menubar" class="quick-buttons collapse-menu"
@@ -834,7 +854,14 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         this.collapsed = false;
         break;
       case "toggle-element-align":
-        this.elementAlign = this.elementAlign === "right" ? "left" : "right";
+        let directions = ["left", "right", "bottom-left", "bottom-right"],
+          direction = !!directions[e.detail.index]
+            ? directions[e.detail.index]
+            : "right";
+        if (e.detail.index > 1) this.collapsed = true;
+        this.style.setProperty("--hax-tray-custom-y", null);
+        this.style.setProperty("--hax-tray-custom-x", null);
+        this.elementAlign = direction;
         break;
       case "toggle-tray-size":
         this.collapsed = !this.collapsed;
@@ -1137,6 +1164,26 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
       }
     });
+  }
+  /**
+   * When we end dragging ensure we remove the mover class.
+   */
+  _dragEnd(e) {
+    let menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
+    if (menu) menu.close(true);
+    console.log(this, this.host, e, e.x, e.y);
+    this.style.setProperty("--hax-tray-custom-y", e.clientY + "px");
+    this.style.setProperty("--hax-tray-custom-x", e.clientX + "px");
+    this.elementAlign = "custom";
+  }
+  /**
+   * Drag start so we know what target to set
+   */
+  _dragStart(e) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    let menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
+    if (menu) menu.close(true);
   }
   /**
    * When the preview node is updated, pull schema associated with it
