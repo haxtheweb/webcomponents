@@ -41,8 +41,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           font-family: unset;
           align-items: stretch;
           margin: var(--code-pen-margin, 16px 0);
-          background-color: white;
-          color: #000;
+          background-color: transparent;
+          color: currentColor;
           width: 100%;
         }
         :host([hidden]) {
@@ -81,7 +81,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         :host([focused]) label {
           color: var(
             --code-editor-float-label-active-color,
-            var(--code-editor-label-color, #000)
+            var(--code-editor-label-color, currentColor)
           );
         }
 
