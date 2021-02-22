@@ -21,7 +21,7 @@ export const HaxTraySpacing = [
       --hax-tray-spacing: calc(2 * var(--hax-tray-spacing-xs, 4px));
       --hax-tray-spacing-lg: calc(3 * var(--hax-tray-spacing-xs, 4px));
       --hax-tray-spacing-xl: calc(4 * var(--hax-tray-spacing-xs, 4px));
-      --hax-tray-focus-z-index: 100000001;
+      --hax-tray-focus-z-index: 1001;
       --simple-toolbar-focus-z-index: var(--hax-tray-focus-z-index);
       --a11y-menu-button-focus-z-index: var(--hax-tray-focus-z-index);
     }
@@ -79,6 +79,9 @@ export const HaxTrayButtonTheme = [
     absolute-position-behavior {
       color: var(--hax-tray-color);
       background-color: var(--hax-tray-background-color);
+      border: 1px solid transparent;
+    }
+    :host[aria-expanded="true"] {
       border: 1px solid var(--hax-tray-border-color);
     }
     button[part="button"] {
@@ -88,6 +91,9 @@ export const HaxTrayButtonTheme = [
       color: var(--hax-tray-color);
       background-color: var(--hax-tray-background-color);
       border: 1px solid var(--hax-tray-border-color);
+    }
+    :host(.toolbar) button[part="button"] {
+      background-color: var(--hax-tray-background-color-accent);
     }
     :host(:hover) button[part="button"],
     :host(:focus-within) button[part="button"] {
@@ -334,100 +340,6 @@ export const HaxTrayDetail = [
     #tray-detail h6 {
       font-size: var(--hax-tray-detail-subtopic-font-size);
     }
-    #content-add,
-    #tray-detail[selected-detail="content-add"] {
-      --hax-tray-color-accent: var(--simple-colors-default-theme-purple-8);
-      --hax-tray-color-accent-secondary: var(
-        --simple-colors-default-theme-purple-7
-      );
-      --hax-tray-background-color-accent: var(
-        --simple-colors-default-theme-purple-1
-      );
-    }
-    #content-edit,
-    #tray-detail[selected-detail="content-edit"] {
-      --hax-tray-color-accent: var(--simple-colors-default-theme-pink-8);
-      --hax-tray-color-accent-secondary: var(
-        --simple-colors-default-theme-pink-7
-      );
-      --hax-tray-background-color-accent: var(
-        --simple-colors-default-theme-pink-1
-      );
-    }
-    #media-add,
-    #tray-detail[selected-detail="media-add"] {
-      --hax-tray-color-accent: var(--simple-colors-default-theme-indigo-8);
-      --hax-tray-color-accent-secondary: var(
-        --simple-colors-default-theme-indigo-7
-      );
-      --hax-tray-background-color-accent: var(
-        --simple-colors-default-theme-indigo-1
-      );
-    }
-    #content-map,
-    #tray-detail[selected-detail="content-map"] {
-      --hax-tray-color-accent: var(--simple-colors-default-theme-light-blue-8);
-      --hax-tray-color-accent-secondary: var(
-        --simple-colors-default-theme-light-blue-7
-      );
-      --hax-tray-background-color-accent: var(
-        --simple-colors-default-theme-light-blue-1
-      );
-    }
-    #advanced-settings,
-    #tray-detail[selected-detail="advanced-settings"] {
-      --hax-tray-color-accent: var(--simple-colors-default-theme-green-8);
-      --hax-tray-color-accent-secondary: var(
-        --simple-colors-default-theme-green-7
-      );
-      --hax-tray-background-color-accent: var(
-        --simple-colors-default-theme-green-2
-      );
-    }
-    @media (prefers-color-scheme: dark) {
-      #content-add,
-      #tray-detail[selected-detail="content-add"] {
-        --hax-tray-color-accent: var(--simple-colors-default-theme-purple-5);
-        --hax-tray-color-accent-secondary: var(
-          --simple-colors-default-theme-purple-3
-        );
-        --hax-tray-background-color-accent: #000;
-      }
-      #content-edit,
-      #tray-detail[selected-detail="content-edit"] {
-        --hax-tray-color-accent: var(--simple-colors-default-theme-pink-5);
-        --hax-tray-color-accent-secondary: var(
-          --simple-colors-default-theme-pink-3
-        );
-        --hax-tray-background-color-accent: #000;
-      }
-      #media-add,
-      #tray-detail[selected-detail="media-add"] {
-        --hax-tray-color-accent: var(--simple-colors-default-theme-indigo-5);
-        --hax-tray-color-accent-secondary: var(
-          --simple-colors-default-theme-indigo-3
-        );
-        --hax-tray-background-color-accent: #000;
-      }
-      #content-map,
-      #tray-detail[selected-detail="content-map"] {
-        --hax-tray-color-accent: var(
-          --simple-colors-default-theme-light-blue-5
-        );
-        --hax-tray-color-accent-secondary: var(
-          --simple-colors-default-theme-light-blue-3
-        );
-        --hax-tray-background-color-accent: #000;
-      }
-      #advanced-settings,
-      #tray-detail[selected-detail="advanced-settings"] {
-        --hax-tray-color-accent: var(--simple-colors-default-theme-green-5);
-        --hax-tray-color-accent-secondary: var(
-          --simple-colors-default-theme-green-3
-        );
-        --hax-tray-background-color-accent: #000;
-      }
-    }
   `,
 ];
 export const HaxTrayDetailHeadings = [
@@ -463,8 +375,10 @@ export const HaxTraySimpleModal = [
   ...HaxTrayBaseStyles,
   css`
     simple-modal-template {
-      --simple-modal-z-index: 100000001;
-      --simple-modal-titlebar-color: var(--hax-tray-color);
+      --simple-modal-z-index: 100000000;
+      --simple-modal-height: 70vh;
+      --simple-modal-width: 70vw;
+      --simple-modal-titlebar-color: var(--hax-tray-background-color);
       --simple-modal-titlebar-background: var(--hax-tray-color-accent);
       --simple-modal-titlebar-padding: var(--hax-tray-spacing-xs);
       --simple-modal-titlebar-height: calc(

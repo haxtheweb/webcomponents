@@ -29,7 +29,7 @@ class HaxMap extends LitElement {
           font-size: var(--hax-tray-font-size-sm);
           border-collapse: collapse;
           width: calc(100% - 2px);
-          width: calc(100% - 2px);
+          max-width: calc(100% - 2px);
         }
         table,
         th,

@@ -15,6 +15,7 @@ import {
   ReplaceWithPolyfill,
   normalizeEventPath,
 } from "@lrnwebcomponents/utils/utils.js";
+import { HaxTrayText, HaxTraySpacing } from "./lib/hax-ui-styles.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
@@ -122,6 +123,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   static get styles() {
     return [
       ...super.styles,
+      ...HaxTrayText,
+      ...HaxTraySpacing,
       css`
         :host([edit-mode]),
         :host([edit-mode]) * ::slotted(*) {
@@ -198,8 +201,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           pointer-events: none;
           transition: 0.2s top ease-in-out, 0.2s left ease-in-out;
         }
-        #textcontextmenu.hax-context-menu {
-          z-index: 1000;
+        .hax-context-menu:hover,
+        .hax-context-menu:focus-within {
+          z-index: var(--hax-tray-focus-z-index);
         }
         .hax-context-visible {
           position: absolute;

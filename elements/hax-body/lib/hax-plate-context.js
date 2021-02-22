@@ -143,7 +143,6 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
           <div class="group">
             <hax-toolbar-menu
               id="remove"
-              danger
               action
               ?disabled="${this.hasActiveEditingElement}"
               icon="delete"

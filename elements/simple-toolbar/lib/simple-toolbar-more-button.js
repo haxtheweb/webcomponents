@@ -22,6 +22,16 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
   static get tag() {
     return "simple-toolbar-more-button";
   }
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host([hidden]) {
+          display: none !important;
+        }
+      `,
+    ];
+  }
 
   constructor() {
     super();

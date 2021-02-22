@@ -116,7 +116,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       css`
         :host {
           display: block;
-          z-index: 100000000;
+          z-index: 1000;
           position: absolute;
           transition: 0.2s all ease-in-out;
           height: 100vh;
@@ -124,6 +124,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           font-family: var(--hax-tray-font-family);
           font-size: var(--hax-tray-font-size);
           color: var(--hax-tray-color);
+        }
+        :host(:focus-within),
+        :host(:hover) {
+          z-index: var(--hax-tray-focus-z-index);
         }
         .wrapper {
           position: fixed;
@@ -173,18 +177,20 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             var(--hax-tray-width) - 2 * var(--hax-tray-spacing-xs)
           );
           padding: 0 var(--hax-tray-spacing-lg) var(--hax-tray-spacing);
-          transition: height 0.6s linear, top 0.6s linear,
-            0.2s border ease-in-out;
+          transition: all 0.3s linear;
         }
         :host([edit-mode][collapsed]) #tray-detail {
-          position: absolute;
-          top: -100vh;
           left: unset !important;
           right: unset !important;
+          transition: all 0.6s linear;
+          max-height: 0vh;
+          border-top: 0px solid var(--hax-tray-border-color);
+          border-bottom: 0px solid var(--hax-tray-border-color);
+          padding: 0 var(--hax-tray-spacing-lg) 0;
+          transition: all 0.3s linear;
         }
         #tray-detail[hidden] {
           height: 0px;
-          transition: height 0.6s linear;
         }
         hax-toolbar {
           flex: 0 0 auto;
@@ -193,7 +199,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           border: 1px solid var(--hax-tray-border-color);
           background-color: var(--hax-tray-background-color);
           width: var(--hax-tray-width);
-          transition: all 0.5ms ease-in-out;
+          transition: all 0.5s ease-in-out;
         }
         :host([edit-mode][collapsed]) hax-toolbar.tray-detail-ops {
           border-bottom: 1px solid var(--hax-tray-border-color);
@@ -337,61 +343,66 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   }
   get menuButtons() {
     return html`
-      <hax-toolbar-menu
-        ?disabled="${this.hasActiveEditingElement}"
-        id="drag"
-        action
-        icon="hax:arrow-all"
-        label="Move Menu"
-        draggable="true"
-        reset-on-select
-        data-simple-tour-stop
-        data-stop-title="Menu alignment"
-      >
-        <simple-toolbar-menu-item slot="menuitem">
-          <hax-tray-button
-            show-text-label
-            align-horizontal="left"
-            voice-command="toggle alignment"
-            id="toggle-element-align"
-            event-name="toggle-element-align"
-            icon="arrow-back"
-            text-align="left"
-            label="Move Menu Left"
-            ?disabled="${this.elementAlign == "right"}"
-            ?toggled="${this.elementAlign == "right"}"
-          >
-          </hax-tray-button>
-        </simple-toolbar-menu-item>
-        <simple-toolbar-menu-item slot="menuitem">
-          <hax-tray-button
-            show-text-label
-            align-horizontal="left"
-            voice-command="toggle alignment"
-            id="toggle-element-align"
-            event-name="toggle-element-align"
-            icon="arrow-forward"
-            label="Move Menu Right"
-            text-align="left"
-            ?disabled="${this.elementAlign == "left"}"
-            ?toggled="${this.elementAlign == "left"}"
-          >
-          </hax-tray-button>
-        </simple-toolbar-menu-item>
-        <div slot="tour" data-stop-title>Menu Position</div>
-        <div slot="tour" data-stop-content>
-          Change which side of the screen the menu is affixed to visually.
-        </div>
-      </hax-toolbar-menu>
       <div id="menugroup" class="group collapse-menu">
+        <hax-toolbar-menu
+          ?disabled="${this.hasActiveEditingElement}"
+          id="drag"
+          class="toolbar"
+          action
+          icon="hax:arrow-all"
+          label="Move"
+          label="Move Menu"
+          draggable="true"
+          reset-on-select
+          data-simple-tour-stop
+          data-stop-title="Menu alignment"
+          show-text-label
+        >
+          <simple-toolbar-menu-item slot="menuitem">
+            <hax-tray-button
+              show-text-label
+              align-horizontal="left"
+              voice-command="toggle alignment"
+              id="toggle-element-align"
+              event-name="toggle-element-align"
+              icon="arrow-back"
+              text-align="left"
+              label="Move Menu Left"
+              ?disabled="${this.elementAlign == "left"}"
+              ?toggled="${this.elementAlign == "left"}"
+            >
+            </hax-tray-button>
+          </simple-toolbar-menu-item>
+          <simple-toolbar-menu-item slot="menuitem">
+            <hax-tray-button
+              show-text-label
+              align-horizontal="left"
+              voice-command="toggle alignment"
+              id="toggle-element-align"
+              event-name="toggle-element-align"
+              icon="arrow-forward"
+              label="Move Menu Right"
+              text-align="left"
+              ?disabled="${this.elementAlign == "right"}"
+              ?toggled="${this.elementAlign == "right"}"
+            >
+              >
+            </hax-tray-button>
+          </simple-toolbar-menu-item>
+          <div slot="tour" data-stop-title>Menu Position</div>
+          <div slot="tour" data-stop-content>
+            Change which side of the screen the menu is affixed to visually.
+          </div>
+        </hax-toolbar-menu>
         <hax-tray-button
-          role="menuitem"
+          class="toolbar"
           voice-command="toggle menu"
           id="toggle-tray-size"
           event-name="toggle-tray-size"
           show-text-label
           icon="${this.collapsed ? "unfold-more" : "unfold-less"}"
-          label="${this.collapsed ? "Expand Menu" : "Collapse Menu"}"
+          label="${this.collapsed ? "Expand" : "Collapse"}"
+          tooltip="${this.collapsed ? "Expand Menu" : "Collapse Menu"}"
           data-simple-tour-stop
           show-text-label
           text-align="left"
@@ -402,6 +413,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       </div>
       <div class="group" id="tourgroup">
         <hax-tray-button
+          class="toolbar"
           event-name="start-tour"
           icon="help"
           label="Take a tour"
@@ -411,8 +423,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     `;
   }
   get menuButtons2() {
-    return html` <div id="menugroup" class="group">
+    return html` <div id="menugroup" class="group" show-text-label>
         <hax-tray-button
+          class="toolbar"
           show-text-label
           voice-command="move menu"
           id="toggle-element-align"
@@ -422,7 +435,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             ? "arrow-forward"
             : "arrow-back"}"
           label="Move Menu ${this.elementAlign == "right" ? "Left" : "Right"}"
-          show-text-label
         >
           <div data-stop-title>Menu placement</div>
           <div slot="tour" data-stop-content>
@@ -430,6 +442,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           </div>
         </hax-tray-button>
         <hax-tray-button
+          class="toolbar"
           role="menuitem"
           voice-command="toggle menu"
           id="toggle-tray-size"
@@ -447,6 +460,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       </div>
       <div class="group" id="tourgroup">
         <hax-tray-button
+          class="toolbar"
           event-name="start-tour"
           icon="help"
           label="Take a tour"
@@ -455,7 +469,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       </div>`;
   }
   get menuToolbarTemplate() {
-    return html` <hax-toolbar class="quick-buttons collapse-menu"
+    return html` <hax-toolbar id="menubar" class="quick-buttons collapse-menu"
       >${this.menuButtons}</hax-toolbar
     >`;
   }

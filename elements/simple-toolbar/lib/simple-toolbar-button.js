@@ -11,8 +11,8 @@ export const SimpleToolbarGlobalProperties = {
   /**
    * override default centered alignment of button: "left", "right", "justify", default center
    */
-  align: {
-    attribute: "align",
+  alignHorizontal: {
+    attribute: "align-horizontal",
     reflect: true,
     type: String,
   },
@@ -169,6 +169,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
 
     constructor() {
       super();
+      this.iconsPosition = "left";
+      this.alignVertical = "center";
+      this.alignHorizontal = "center";
       this.disabled = false;
       this.showTextLabel = false;
       this.toggles = false;
@@ -606,14 +609,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             min-height: var(--simple-toolbar-button-height, 24px);
             padding: var(--simple-toolbar-button-padding, 1px);
             flex: var(--simple-toolbar-button-flex, 0 0 auto);
-            align-items: var(--simple-toolbar-button-align, center);
             transition: all 0.5s;
-            justify-content: var(--simple-toolbar-button-justify, space-around);
-          }
-          button[part="button"],
-          :host([icon-position="right"]:not([align-vertical]))
-            button[part="button"] {
-            justify-content: space-evenly;
+            align-items: var(--simple-toolbar-button-align, center);
+            justify-content: var(--simple-toolbar-button-justify, center);
           }
 
           :host([icon-position="top"]) button[part="button"] {
@@ -625,7 +623,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           :host([icon-position="right"]) button[part="button"] {
             flex-direction: row-reverse;
           }
-          :host([align-vertical="top"]:not([icon-position]))
+          :host([align-vertical="top"][icon-position="left"])
             button[part="button"],
           :host([align-vertical="top"][icon-position="right"])
             button[part="button"],
@@ -635,7 +633,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             button[part="button"] {
             align-items: flex-start;
           }
-          :host([align-vertical="bottom"]:not([icon-position]))
+          :host([align-vertical="bottom"][icon-position="left"])
             button[part="button"],
           :host([align-vertical="bottom"][icon-position="right"])
             button[part="button"],
@@ -644,7 +642,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           :host([align-horizontal="right"][icon-position="bottom"]) {
             align-items: flex-end;
           }
-          :host([align-horizontal="left"]:not([icon-position]))
+          :host([align-horizontal="left"][icon-position="left"])
             button[part="button"],
           :host([align-horizontal="left"][icon-position="right"])
             button[part="button"],
@@ -653,7 +651,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           :host([align-vertical="top"][icon-position="bottom"]) {
             justify-content: flex-start;
           }
-          :host([align-horizontal="right"]:not([icon-position]))
+          :host([align-horizontal="right"][icon-position="left"])
             button[part="button"],
           :host([align-horizontal="right"][icon-position="right"])
             button[part="button"],
@@ -661,24 +659,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             button[part="button"],
           :host([align-vertical="bottom"][icon-position="bottom"]) {
             justify-content: flex-end;
-          }
-          :host([align-vertical="middle"]:not([icon-position]))
-            button[part="button"],
-          :host([align-vertical="middle"][icon-position="right"])
-            button[part="button"],
-          :host([align-horizontal="center"][icon-position="top"])
-            button[part="button"],
-          :host([align-horizontal="center"][icon-position="bottom"]) {
-            align-items: center;
-          }
-          :host([align-horizontal="center"]:not([icon-position]))
-            button[part="button"],
-          :host([align-horizontal="center"][icon-position="right"])
-            button[part="button"],
-          :host([align-vertical="middle"][icon-position="top"])
-            button[part="button"],
-          :host([align-vertical="middle"][icon-position="bottom"]) {
-            justify-content: center;
           }
         `,
       ];

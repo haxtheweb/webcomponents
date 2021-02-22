@@ -14,27 +14,36 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     return [
       ...HaxTrayBaseStyles,
       css`
-        :host,
-        :host * {
+        :host {
+          margin: 0;
+          padding: 0;
+          flex: 0 1 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+        :host > *,
+        #textarea {
           margin: 0;
           padding: 0;
         }
-        :host {
+        #hiddentextarea,
+        #spacer {
+          flex: 0 1 0px;
+        }
+        #wrapper {
+          flex: 1 0 calc(70vh - 94px);
           position: relative;
         }
         #textarea {
-          width: 100%;
-          height: calc(var(--simple-modal-height, 75vh) - 95px);
-          overflow: auto;
-          background-color: transparent;
-        }
-        #textarea::part(code) {
-          height: calc(var(--simple-modal-height, 75vh) - 95px);
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
         }
         hax-toolbar {
+          flex: 0 0 auto;
           width: 100%;
-          position: sticky;
-          bottom: 0;
           display: flex;
           --simple-toolbar-button-padding: 0 var(--hax-tray-spacing-sm);
         }
