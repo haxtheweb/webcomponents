@@ -21,7 +21,7 @@ const HaxContextBehaviors = function (SuperClass) {
           :host {
             display: block;
             pointer-events: none;
-            --hax-tray-spacing-sm: 1px;
+            --hax-ui-spacing-sm: 1px;
           }
           :host [hidden] {
             display: none;
@@ -42,14 +42,14 @@ const HaxContextBehaviors = function (SuperClass) {
           }
           :host(:hover),
           :host(:focus-within) {
-            z-index: var(--hax-tray-focus-z-index) !important;
+            z-index: var(--hax-ui-focus-z-index) !important;
           }
           .group {
             padding: 0;
           }
           hax-toolbar {
             flex: 0 1 auto;
-            background-color: var(--hax-tray-border-color);
+            background-color: var(--hax-ui-border-color);
             border: none !important;
           }
           hax-toolbar[collapse-disabled]::part(morebutton) {

@@ -121,18 +121,18 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           transition: 0.2s all ease-in-out;
           height: 100vh;
           overflow: auto;
-          font-family: var(--hax-tray-font-family);
-          font-size: var(--hax-tray-font-size);
-          color: var(--hax-tray-color);
+          font-family: var(--hax-ui-font-family);
+          font-size: var(--hax-ui-font-size);
+          color: var(--hax-ui-color);
         }
         :host(:focus-within),
         :host(:hover) {
-          z-index: var(--hax-tray-focus-z-index);
+          z-index: var(--hax-ui-focus-z-index);
         }
         .wrapper {
           position: fixed;
           top: 0;
-          background-color: var(--hax-tray-background-color);
+          background-color: var(--hax-ui-background-color);
           width: var(--hax-tray-width);
           transition: 0.2s all ease-in-out;
           opacity: 0;
@@ -172,11 +172,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           flex: 1 1 auto;
           overflow-y: auto;
           max-height: 100vh;
-          border: 1px solid var(--hax-tray-border-color);
-          max-width: calc(
-            var(--hax-tray-width) - 2 * var(--hax-tray-spacing-xs)
-          );
-          padding: 0 var(--hax-tray-spacing-lg) var(--hax-tray-spacing);
+          border: 1px solid var(--hax-ui-border-color);
+          max-width: calc(var(--hax-tray-width) - 2 * var(--hax-ui-spacing-xs));
+          padding: 0 var(--hax-ui-spacing-lg) var(--hax-ui-spacing);
           transition: all 0.3s linear;
         }
         :host([edit-mode][collapsed]) #tray-detail {
@@ -184,9 +182,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           right: unset !important;
           transition: all 0.6s linear;
           max-height: 0vh;
-          border-top: 0px solid var(--hax-tray-border-color);
-          border-bottom: 0px solid var(--hax-tray-border-color);
-          padding: 0 var(--hax-tray-spacing-lg) 0;
+          border-top: 0px solid var(--hax-ui-border-color);
+          border-bottom: 0px solid var(--hax-ui-border-color);
+          padding: 0 var(--hax-ui-spacing-lg) 0;
           transition: all 0.3s linear;
         }
         #tray-detail[hidden] {
@@ -196,19 +194,19 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           flex: 0 0 auto;
           border-bottom: none;
           display: flex;
-          border: 1px solid var(--hax-tray-border-color);
-          background-color: var(--hax-tray-background-color);
+          border: 1px solid var(--hax-ui-border-color);
+          background-color: var(--hax-ui-background-color);
           width: var(--hax-tray-width);
           transition: all 0.5s ease-in-out;
         }
         :host([edit-mode][collapsed]) hax-toolbar.tray-detail-ops {
-          border-bottom: 1px solid var(--hax-tray-border-color);
+          border-bottom: 1px solid var(--hax-ui-border-color);
         }
         .group {
           margin: 0;
           padding: 0;
           justify-content: space-around;
-          border: 1px solid var(--hax-tray-border-color);
+          border: 1px solid var(--hax-ui-border-color);
           flex: 0 0 auto;
         }
         #savegroup,
@@ -234,10 +232,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
         #tray-grid {
           flex: 0 0 auto;
-          border: 1px solid var(--hax-tray-border-color);
+          border: 1px solid var(--hax-ui-border-color);
         }
         #tray-grid hax-tray-button::part(button) {
-          border: 1px solid var(--hax-tray-border-color);
+          border: 1px solid var(--hax-ui-border-color);
         }
         #tray-grid > hax-tray-button::part(button) {
           --simple-toolbar-button-white-space: normal !important;
@@ -272,7 +270,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           position: fixed;
           top: 0;
           visibility: visible;
-          margin: var(--hax-tray-spacing-xs);
+          margin: var(--hax-ui-spacing-xs);
         }
         :host([edit-mode]) #button {
           visibility: hidden;

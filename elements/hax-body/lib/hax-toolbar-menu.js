@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleToolbarMenuBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
-import { HaxTrayButtonTheme } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
+import { HaxTrayButton } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 /**
  * `hax-toolbar-menu`
  * `An icon / button that has support for multiple options via drop down.`
@@ -34,7 +34,7 @@ class HaxToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {
   }
 
   static get simpleButtonThemeStyles() {
-    return HaxTrayButtonTheme;
+    return HaxTrayButton;
   }
 
   static get simpleButtonCoreStyles() {
@@ -44,7 +44,7 @@ class HaxToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {
         ::slotted([slot="menuitem"]) {
           --simple-toolbar-button-justify: flex-start;
           --simple-toolbar-button-label-white-space: nowrap;
-          --hax-tray-border-color: none;
+          --hax-ui-border-color: none;
         }
       `,
     ];

@@ -349,7 +349,7 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
           {
             key: "simpleButtonThemeStyles",
             get: function get() {
-              return _haxUiStyles.HaxTrayButtonTheme;
+              return _haxUiStyles.HaxTrayButton;
             },
           },
           {

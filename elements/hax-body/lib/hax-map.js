@@ -26,7 +26,7 @@ class HaxMap extends LitElement {
           text-align: left;
         }
         table {
-          font-size: var(--hax-tray-font-size-sm);
+          font-size: var(--hax-ui-font-size-sm);
           border-collapse: collapse;
           width: calc(100% - 2px);
           max-width: calc(100% - 2px);
@@ -35,11 +35,11 @@ class HaxMap extends LitElement {
         th,
         td {
           text-align: center;
-          border: 1px solid var(--hax-tray-border-color);
+          border: 1px solid var(--hax-ui-border-color);
         }
         th {
           font-weight: normal;
-          font-size: var(--hax-tray-font-size-xs);
+          font-size: var(--hax-ui-font-size-xs);
         }
         td {
           font-weight: bold;

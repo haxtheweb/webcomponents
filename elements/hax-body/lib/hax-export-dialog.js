@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "./hax-view-source.js";
-import { HaxTraySimpleModal } from "./hax-ui-styles.js";
+import { HaxUiSimpleModal } from "./hax-ui-styles.js";
 /**
  * `hax-export-dialog`
  * @element hax-export-dialog
@@ -10,7 +10,7 @@ import { HaxTraySimpleModal } from "./hax-ui-styles.js";
 class HaxExportDialog extends LitElement {
   static get styles() {
     return [
-      ...HaxTraySimpleModal,
+      ...HaxUiSimpleModal,
       css`
         :host {
           display: none;

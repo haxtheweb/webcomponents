@@ -48,20 +48,20 @@ class HaxAppSearch extends LitElement {
         }
         hax-app-pagination {
           min-height: 32px;
-          font-size: var(--hax-tray-font-size-sm);
+          font-size: var(--hax-ui-font-size-sm);
           display: none;
           justify-content: flex-end;
           justify-content: center;
         }
         .tos-text {
-          font-size: var(--hax-tray-font-size-sm);
+          font-size: var(--hax-ui-font-size-sm);
         }
         .tos-text ul {
           padding: 0;
           margin: 0;
         }
         .tos-text a {
-          font-size: var(--hax-tray-font-size-sm);
+          font-size: var(--hax-ui-font-size-sm);
           color: var(--hax-tray-accent-color);
           text-decoration: underline;
         }

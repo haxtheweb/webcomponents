@@ -15,7 +15,7 @@ import {
   ReplaceWithPolyfill,
   normalizeEventPath,
 } from "@lrnwebcomponents/utils/utils.js";
-import { HaxTrayText, HaxTraySpacing } from "./lib/hax-ui-styles.js";
+import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
@@ -123,8 +123,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   static get styles() {
     return [
       ...super.styles,
-      ...HaxTrayText,
-      ...HaxTraySpacing,
+      ...HaxUiBaseStyles,
       css`
         :host([edit-mode]),
         :host([edit-mode]) * ::slotted(*) {
@@ -147,35 +146,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          --hax-contextual-action-text-color: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --hax-contextual-action-hover-color: var(
-            --simple-colors-default-theme-grey-8,
-            #009dc7
-          );
-          --hax-contextual-action-color: var(
-            --simple-colors-default-theme-grey-12,
-            #007999
-          );
+          --hax-contextual-action-text-color: var(--hax-ui-background-color);
+          --hax-contextual-action-hover-color: var(--hax-ui-color-accent);
+          --hax-contextual-action-color: var(--hax-ui-color-accent-secondary);
           --hax-body-editable-outline: 0px solid
-            var(--simple-colors-default-theme-grey-4, #eeeeee);
+            var(--hax-ui-background-color-secondary);
           --hax-body-active-outline-hover: 1px solid
-            var(--simple-colors-default-theme-grey-8, #eeeeee);
-          --hax-body-active-outline: 0px solid
-            var(
-              --hax-contextual-action-hover-color,
-              var(--simple-colors-default-theme-cyan-7, #009dc7)
-            );
-          --hax-body-active-drag-outline: 1px solid
-            var(
-              --hax-contextual-action-hover-color,
-              var(--simple-colors-default-theme-cyan-7, #009dc7)
-            );
+            var(---hax-ui-background-color-faded);
+          --hax-body-active-outline: 0px solid var(---hax-ui-color-accent);
+          --hax-body-active-drag-outline: 1px solid var(--hax-ui-color-accent);
           --hax-body-target-background-color: var(
-            --simple-colors-default-theme-grey-11,
-            #009dc7
+            --hax-ui-color-accent-secondary
           );
           --hax-body-possible-target-background-color: inherit;
         }
@@ -188,6 +169,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         #addincontext:focus {
           opacity: 1;
           cursor: pointer;
+        }
+        #textcontextmenu,
+        #cecontextmenu {
+          max-width: 280px;
         }
         .hax-context-menu {
           padding: 0;
@@ -203,7 +188,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
         .hax-context-menu:hover,
         .hax-context-menu:focus-within {
-          z-index: var(--hax-tray-focus-z-index);
+          z-index: var(--hax-ui-focus-z-index);
         }
         .hax-context-visible {
           position: absolute;
@@ -527,6 +512,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           this._positionContextMenu(
             this.contextMenus.add,
             this.__activeHover,
+            activeRect.width / 2 - addRect.width / 2,
             height
           );
         } else if (
@@ -591,7 +577,12 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }
 
           // wow, we have an in context addition menu just like that
-          this._positionContextMenu(this.contextMenus.add, height);
+          this._positionContextMenu(
+            this.contextMenus.add,
+            posMenuEl,
+            activeRect.width / 2 - addRect.width / 2,
+            height
+          );
         } else if (eventPath[0].closest("#bodycontainer")) {
           this.__activeHover = null;
           this._hideContextMenu(this.contextMenus.add);
@@ -710,7 +701,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         class="hax-context-menu ignore-activation">
         <hax-context-item
           icon="icons:add"
-          label="Insert Content"
+          label="Add Content"
           show-text-label
         >
         </hax-context-item>

@@ -21,7 +21,7 @@ class HaxPicker extends LitElement {
       css`
         simple-button-grid {
           overflow-y: auto;
-          margin: var(--hax-tray-spacing-sm);
+          margin: var(--hax-ui-spacing-sm);
           --simple-button-grid-cols: 100px;
         }
       `,

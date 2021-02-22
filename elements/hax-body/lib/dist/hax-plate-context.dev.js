@@ -21,6 +21,8 @@ var _mobx = require("mobx");
 
 var _haxContextContainer = require("./hax-context-container.js");
 
+var _utils = require("@lrnwebcomponents/utils/utils.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -354,6 +356,10 @@ var HaxPlateContext =
         {
           key: "_dragEnd",
           value: function _dragEnd(e) {
+            var menu = (0, _utils.normalizeEventPath)(e)
+              ? (0, _utils.normalizeEventPath)(e)[0]
+              : undefined;
+            if (menu) menu.close(true);
             _haxStore.HAXStore._lockContextPosition = false;
           },
           /**
@@ -363,7 +369,11 @@ var HaxPlateContext =
         {
           key: "_dragStart",
           value: function _dragStart(e) {
-            var target = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode);
+            var target = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode),
+              menu = (0, _utils.normalizeEventPath)(e)
+                ? (0, _utils.normalizeEventPath)(e)[0]
+                : undefined;
+            if (menu) menu.close(true);
             _haxStore.HAXStore.__dragTarget = target;
             _haxStore.HAXStore._lockContextPosition = true; // wipe the add context menu for motion
 

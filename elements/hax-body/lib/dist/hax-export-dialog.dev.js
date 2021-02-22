@@ -73,7 +73,7 @@ function _arrayWithoutHoles(arr) {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <simple-modal-template\n        modal-id="hax-export"\n        id="dialog"\n        .title="',
-    '"\n      > \n        <hax-view-source slot="content"></hax-view-source>\n      </simple-modal-template>\n    ',
+    '"\n      >\n        <hax-view-source slot="content"></hax-view-source>\n      </simple-modal-template>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -271,7 +271,7 @@ var HaxExportDialog =
           key: "styles",
           get: function get() {
             return [].concat(
-              _toConsumableArray(_haxUiStyles.HaxTraySimpleModal),
+              _toConsumableArray(_haxUiStyles.HaxUiSimpleModal),
               [(0, _litElement.css)(_templateObject2())]
             );
           },

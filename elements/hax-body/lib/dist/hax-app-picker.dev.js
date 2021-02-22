@@ -197,10 +197,9 @@ var HaxAppPicker =
       {
         key: "styles",
         get: function get() {
-          return [].concat(
-            _toConsumableArray(_haxUiStyles.HaxTraySimpleModal),
-            [(0, _litElement.css)(_templateObject())]
-          );
+          return [].concat(_toConsumableArray(_haxUiStyles.HaxUiSimpleModal), [
+            (0, _litElement.css)(_templateObject()),
+          ]);
         },
       },
     ]);

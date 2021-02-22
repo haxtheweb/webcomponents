@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "./hax-picker.js";
-import { HaxTraySimpleModal } from "./hax-ui-styles.js";
+import { HaxUiSimpleModal } from "./hax-ui-styles.js";
 /**
  * `hax-app-picker`
  * `app pop over + picker with options`
@@ -9,7 +9,7 @@ import { HaxTraySimpleModal } from "./hax-ui-styles.js";
 class HaxAppPicker extends LitElement {
   static get styles() {
     return [
-      ...HaxTraySimpleModal,
+      ...HaxUiSimpleModal,
       css`
         :host {
           display: none;
