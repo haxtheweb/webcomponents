@@ -44,7 +44,6 @@ class HaxToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {
         ::slotted([slot="menuitem"]) {
           --simple-toolbar-button-justify: flex-start;
           --simple-toolbar-button-label-white-space: nowrap;
-          --hax-ui-border-color: none;
         }
       `,
     ];

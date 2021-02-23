@@ -7,10 +7,6 @@ exports.HAXTrayButton = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _simpleColors = require("@lrnwebcomponents/simple-colors/simple-colors.js");
-
-require("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-
 var _haxToolbarItem = require("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
 
 function _typeof(obj) {

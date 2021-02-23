@@ -49,7 +49,6 @@ const HaxContextBehaviors = function (SuperClass) {
           }
           hax-toolbar {
             flex: 0 1 auto;
-            background-color: var(--hax-ui-border-color);
             border: none !important;
           }
           hax-toolbar[collapse-disabled]::part(morebutton) {

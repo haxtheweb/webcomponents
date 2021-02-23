@@ -17,6 +17,8 @@ require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js");
 
 var _simpleToolbar = require("@lrnwebcomponents/simple-toolbar/simple-toolbar.js");
 
+var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -86,7 +88,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n          :host {\n            background-color: var(--hax-ui-background-color);\n            border: 1px solid var(--hax-ui-border-color, #ddd);\n          }\n          .selected-buttons {\n            transition: 0.1s all ease-in-out;\n            width: 0;\n          }\n          :host([has-selected-text]) .selected-buttons {\n            width: 100%;\n          }\n          ::slotted(*) {\n            pointer-events: all;\n          }\n        ",
+    "\n          .selected-buttons {\n            transition: 0.1s all ease-in-out;\n            width: 0;\n          }\n          :host([has-selected-text]) .selected-buttons {\n            width: 100%;\n          }\n          ::slotted(*) {\n            pointer-events: all;\n          }\n          ::slotted(.group) {\n            border: none;\n          }\n        ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -240,6 +242,7 @@ var HaxToolbarBehaviors = function HaxToolbarBehaviors(SuperClass) {
           get: function get() {
             return [].concat(
               _toConsumableArray(_get(_getPrototypeOf(_class), "styles", this)),
+              _toConsumableArray(_haxUiStyles.HaxUiColors),
               [(0, _litElement.css)(_templateObject())]
             );
           },

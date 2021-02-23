@@ -57,10 +57,6 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
           --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
           --lumo-contrast-5pct: rgba(127, 127, 127, 0.2);*/
         }
-        :host([error]) #label {
-          color: var(--simple-fields-error-color, #dd2c00);
-          transition: all 0.3s ease-in-out;
-        }
         #url-browse,
         #drop-camera {
           width: 100%;
@@ -181,6 +177,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
             @click="${this._handleBrowse}"
             controls="fieldset"
             slot="suffix"
+            part="browse"
           >
           </simple-toolbar-button>
         </simple-fields-field>

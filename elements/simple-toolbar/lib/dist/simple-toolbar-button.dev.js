@@ -417,7 +417,7 @@ function _setPrototypeOf(o, p) {
 
 var SimpleToolbarGlobalProperties = {
   /**
-   * override default centered alignment of button: "left", "right", "justify", default center
+   * override default centered alignment of button: "left" or "right" default center
    */
   alignHorizontal: {
     attribute: "align-horizontal",
@@ -426,7 +426,7 @@ var SimpleToolbarGlobalProperties = {
   },
 
   /**
-   * override vertical alignment of button: "top", "bottom", "justify", default middle
+   * override vertical alignment of button: "top" or "bottom" default middle
    */
   alignVertical: {
     attribute: "align-vertical",
@@ -607,7 +607,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
           this,
           _getPrototypeOf(_class).call(this)
         );
-        _this.iconsPosition = "left";
+        _this.iconPosition = "left";
         _this.alignVertical = "center";
         _this.alignHorizontal = "center";
         _this.disabled = false;

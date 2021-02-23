@@ -76,12 +76,15 @@ export const HaxTrayButton = [
     :host {
       text-transform: capitalize;
     }
+    :host[aria-expanded="true"] {
+      border: 1px solid var(--hax-ui-border-color);
+    }
     absolute-position-behavior {
+      border-color: transparent;
       color: var(--hax-ui-color);
       background-color: var(--hax-ui-background-color);
-      border: 1px solid transparent;
     }
-    :host[aria-expanded="true"] {
+    :host([expanded]) absolute-position-behavior {
       border: 1px solid var(--hax-ui-border-color);
     }
     button[part="button"] {
@@ -92,8 +95,9 @@ export const HaxTrayButton = [
       background-color: var(--hax-ui-background-color);
       border: 1px solid var(--hax-ui-border-color);
     }
-    :host(.toolbar) button[part="button"] {
-      background-color: var(--hax-ui-background-color-accent);
+    :host([role="menuitem"]) button[part="button"] {
+      padding: 1px;
+      border-color: transparent;
     }
     :host(:hover) button[part="button"],
     :host(:focus-within) button[part="button"] {
@@ -102,8 +106,8 @@ export const HaxTrayButton = [
       border-color: var(--hax-ui-color-accent);
     }
     button[part="button"][aria-pressed="true"] {
-      color: var(--hax-ui-color-accent-secondary);
-      border-color: var(--hax-ui-color-accent-secondary);
+      color: var(--hax-ui-color-accent);
+      border-color: var(--hax-ui-color-accent);
     }
     :host([feature]) button[part="button"],
     :host([danger]) button[part="button"] {
@@ -184,12 +188,13 @@ export const HaxUiFields = [
     simple-fields,
     #tray-detail * {
       --simple-fields-field-margin: calc(2 * var(--hax-ui-font-size));
+      --simple-toolbar-focus-z-index: var(--hax-ui-focus-z-index);
+      --simple-fields-font-family: var(--hax-ui-font-family);
       --simple-fields-font-size: var(--hax-ui-font-size);
       --simple-fields-line-height: 135%;
       --simple-fields-detail-font-size: var(--hax-ui-font-size-sm);
       --simple-fields-detail-line-height: 120%;
       --simple-fields-margin: var(--hax-ui-spacing);
-      --simple-fields-font-family: var(--hax-ui-font-family);
       --simple-fields-color: var(--hax-tray-text-color);
       --simple-fields-accent-color: var(--hax-ui-color-accent);
       --simple-fields-error-color: var(--hax-ui-color-danger-secondary);
@@ -197,19 +202,40 @@ export const HaxUiFields = [
         --hax-ui-color-accent-secondary
       );
       --simple-fields-border-color: var(--hax-ui-color-faded);
-      --simple-toolbar-focus-z-index: var(--hax-ui-focus-z-index);
-    }
-    simple-fields *::part(field-desc),
-    hax-tray-upload::part(description),
-    hax-upload-field::part(description) {
-      opacity: 0.7;
-      font-size: var(--hax-ui-font-size-xs);
-      line-height: 120%;
-    }
-    simple-fields *:focus-within::part(field-desc),
-    hax-upload-field:focus-within::part(description),
-    hax-tray-upload:focus-within::part(description) {
-      opacity: 1;
+
+      --simple-fields-fieldset-border-color: rgba(127, 127, 127, 0.2);
+      --simple-fields-legend-text-transform: capitalize;
+      --simple-fields-legend-font-size: var(--hax-ui-font-size-xs);
+
+      --simple-fields-meta-font-size: var(--hax-ui-font-size-xs);
+      --simple-fields-meta-line-height: 120%;
+      --simple-fields-meta-opacity: 0.7;
+      --simple-fields-focus-meta-opacity: 1;
+
+      --simple-fields-button-color: var(--hax-ui-color);
+      --simple-fields-button-background-color: var(--hax-ui-background-color);
+      --simple-fields-button-border-color: var(--hax-ui-border-color);
+      --simple-fields-button-text-transform: capitalize;
+      --simple-fields-border-radius: 3px;
+      --simple-fields-button-padding-sm: var(--hax-ui-spacing-sm);
+      --simple-fields-button-padding: var(--hax-ui-spacing-sm);
+
+      --simple-fields-button-toggled-color: var(--hax-ui-color);
+      --simple-fields-button-toggled-background-color: var(
+        --hax-ui-background-color-accent
+      );
+      --simple-fields-button-toggled-border-color: var(--hax-ui-color-accent);
+
+      --simple-fields-button-focus-color: var(--hax-ui-color);
+      --simple-fields-button-focus-background-color: var(
+        --hax-ui-background-color-accent
+      );
+      --simple-fields-button-focus-border-color: var(--hax-ui-color-accent);
+
+      --simple-fields-button-disabled-color: unset;
+      --simple-fields-button-disabled-background-color: unset;
+      --simple-fields-button-disabled-border-color: unset;
+      --simple-fields-button-disabled-opacity: 0.5;
     }
     simple-fields-tabs::part(content) {
       padding: var(--hax-ui-spacing-sm) 0 0;
@@ -220,22 +246,13 @@ export const HaxUiFields = [
     simple-fields-tabs::part(tab),
     simple-fields-tabs::part(tab-active),
     simple-fields-tabs::part(tab-disabled),
-    hax-preferences-dialog::part(haxlink),
-    hax-tray-upload::part(option-icon),
-    hax-upload-field::part(option-icon),
-    hax-tray-upload::part(option-icon-selected),
-    hax-upload-field::part(option-icon-selected) {
+    hax-preferences-dialog::part(haxlink) {
       border: 1px solid var(--hax-ui-border-color);
       text-decoration: none;
       border-radius: 3px;
       color: var(--hax-ui-color);
       background-color: var(--hax-ui-background-color);
       outline: unset;
-    }
-    simple-fields-tabs::part(tab),
-    simple-fields-tabs::part(tab-active),
-    simple-fields-tabs::part(tab-disabled),
-    hax-preferences-dialog::part(haxlink) {
       text-transform: capitalize;
       font-size: var(--hax-ui-font-size-sm);
       padding: var(--hax-ui-spacing-xs);
@@ -249,21 +266,10 @@ export const HaxUiFields = [
     hax-preferences-dialog::part(haxlink):hover,
     hax-preferences-dialog::part(haxlink):focus,
     simple-fields-tabs::part(tab):hover,
-    simple-fields-tabs::part(tab):focus,
-    hax-tray-upload::part(option-icon):hover,
-    hax-upload-field::part(option-icon):hover,
-    hax-tray-upload::part(option-icon):focus,
-    hax-upload-field::part(option-icon):focus {
+    simple-fields-tabs::part(tab):focus {
       color: var(--hax-ui-color);
       background-color: var(--hax-ui-background-color-accent);
       border-color: var(--hax-ui-color-accent);
-    }
-    simple-fields-tabs::part(tab-active),
-    hax-tray-upload::part(option-icon-selected),
-    hax-upload-field::part(option-icon-selected) {
-      background-color: var(--hax-ui-background-color);
-      color: var(--hax-ui-color-accent-secondary);
-      border-color: var(--hax-ui-color-accent-secondary);
     }
     simple-fields-tabs::part(tab-disabled) {
       opacity: 0.5;
@@ -274,28 +280,6 @@ export const HaxUiFields = [
     }
     simple-fields-tab {
       padding: 0;
-    }
-    simple-fields *::part(fieldset),
-    hax-tray-upload::part(fieldset),
-    hax-upload-field::part(fieldset) {
-      border-color: rgba(127, 127, 127, 0.2);
-    }
-    simple-fields *::part(legend),
-    hax-tray-upload::part(legend),
-    hax-upload-field::part(legend),
-    simple-fields *::part(label),
-    hax-tray-upload::part(label),
-    hax-upload-field::part(label) {
-      text-transform: capitalize;
-    }
-    simple-fields *::part(legend),
-    hax-tray-upload::part(legend),
-    hax-upload-field::part(legend) {
-      font-size: var(--hax-ui-font-size-xs);
-    }
-    hax-tray-upload,
-    hax-upload-field {
-      color: var(--hax-tray-text-color);
     }
   `,
 ];
@@ -333,6 +317,7 @@ export const HaxTrayDetail = [
     #tray-detail h4 {
       font-size: var(--hax-tray-detail-title-font-size);
       margin: var(--hax-ui-spacing-sm) 0 var(--hax-ui-spacing-lg);
+      color: var(--hax-ui-color-accent-secondary);
     }
     #tray-detail h5 {
       font-size: var(--hax-tray-detail-topic-font-size);
@@ -346,6 +331,7 @@ export const HaxTrayDetailHeadings = [
   css`
     h4 {
       font-size: var(--hax-tray-detail-title-font-size);
+      color: var(--hax-ui-color-accent-secondary);
     }
     h5 {
       font-size: var(--hax-tray-detail-topic-font-size);

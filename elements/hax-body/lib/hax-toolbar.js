@@ -4,6 +4,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { SimpleToolbarBehaviors } from "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
+import { HaxUiColors } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 
 const HaxToolbarBehaviors = function (SuperClass) {
   return class extends SimpleToolbarBehaviors(SuperClass) {
@@ -13,11 +14,8 @@ const HaxToolbarBehaviors = function (SuperClass) {
     static get styles() {
       return [
         ...super.styles,
+        ...HaxUiColors,
         css`
-          :host {
-            background-color: var(--hax-ui-background-color);
-            border: 1px solid var(--hax-ui-border-color, #ddd);
-          }
           .selected-buttons {
             transition: 0.1s all ease-in-out;
             width: 0;
@@ -27,6 +25,9 @@ const HaxToolbarBehaviors = function (SuperClass) {
           }
           ::slotted(*) {
             pointer-events: all;
+          }
+          ::slotted(.group) {
+            border: none;
           }
         `,
       ];
