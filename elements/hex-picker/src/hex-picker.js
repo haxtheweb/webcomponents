@@ -11,6 +11,59 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @element hex-picker
  */
 class HexPicker extends LitElement {
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      gizmo: {
+        title: "Hex Picker",
+        description: "Hexcode color picker",
+        icon: "image:colorize",
+        color: "grey",
+        groups: ["color", "picker"],
+        handles: [],
+        meta: {
+          author: "collinkleest",
+          owner: "ELMS:LN",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "value",
+            title: "Value",
+            description: "Default hex value",
+            inputMethod: "textfield",
+          },
+          {
+            property: "disabled",
+            title: "Disabled",
+            description: "Disable the text field",
+            inputMethod: "boolean",
+          },
+          {
+            property: "largeDisplay",
+            title: "Large Display",
+            description: "Include color in large display",
+            inputMethod: "boolean",
+          },
+        ],
+        advanced: [],
+      },
+      demoSchema: [
+        {
+          tag: "hex-picker",
+          properties: {
+            org: "elmsln",
+            repo: "lrnwebcomponents",
+          },
+          content: "",
+        },
+      ],
+    };
+  }
+
   static get properties() {
     return {
       ...super.properties,
@@ -35,11 +88,10 @@ class HexPicker extends LitElement {
   static get styles() {
     return [
       css`
-        :host([disabled]) {
-          display: none;
-        }
-
         :host {
+          --color-picker-width: 200px;
+          --color-picker-input-margin: 5px;
+          --color-picker-input-padding: 5px;
           display: flex;
           flex-direction: column;
         }
@@ -48,6 +100,7 @@ class HexPicker extends LitElement {
           display: inline-flex;
           align-items: center;
           box-sizing: border-box;
+          width: var(--color-picker-width);
         }
 
         .color-square {
@@ -58,15 +111,31 @@ class HexPicker extends LitElement {
           margin-left: -35px;
         }
 
+        .slider-container {
+          width: var(--color-picker-width);
+        }
+
         fieldset {
           border: none;
           display: flex;
           align-items: center;
         }
 
-        input {
-          padding: 5px;
-          margin: 5px;
+        .text-input {
+          margin-top: var(--color-picker-input-margin);
+          margin-bottom: var(--color-picker-input-margin);
+          padding: var(--color-picker-input-padding);
+          width: calc(
+            var(--color-picker-width) - 8px - var(--color-picker-input-margin)
+          );
+        }
+
+        .large-display {
+          width: var(--color-picker-width);
+          height: var(--color-picker-lg-block-height, 100px);
+          background-color: #00000000;
+          border: 1px dotted black;
+          border-radius: 2px;
         }
       `,
     ];
@@ -94,8 +163,10 @@ class HexPicker extends LitElement {
 
   render() {
     return html`
+      ${this.largeDisplay ? html`<div class="large-display"></div>` : ``}
       <div class="input-container">
-        <input 
+        <input
+          class="text-input" 
           @input="${this._inputChanged}"
           @keydown="${this._validateInput}" 
           .disabled=${this.disabled}>
@@ -145,6 +216,11 @@ class HexPicker extends LitElement {
       ".color-square"
     ).style.backgroundColor = hexInput;
     this.value = hexInput;
+    if (this.largeDisplay) {
+      this.shadowRoot.querySelector(
+        ".large-display"
+      ).style.backgroundColor = hexInput;
+    }
     this._dispatchChange(hexInput);
     let rgb = this._hexToRgb(hexInput);
     if (rgb !== null) {
@@ -198,6 +274,11 @@ class HexPicker extends LitElement {
     let computedHex = this._computeHex();
     colorSquare.style.backgroundColor = computedHex;
     inputLabel.value = computedHex;
+    if (this.largeDisplay) {
+      this.shadowRoot.querySelector(
+        ".large-display"
+      ).style.backgroundColor = computedHex;
+    }
     this._dispatchChange(computedHex);
   }
 
@@ -230,10 +311,6 @@ class HexPicker extends LitElement {
   }
 
   /**
-   * LitElement ready
-   */
-  firstUpdated(changedProperties) {}
-  /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
@@ -243,6 +320,11 @@ class HexPicker extends LitElement {
           ".color-square"
         ).style.backgroundColor = this.value;
         this.shadowRoot.querySelector("input").value = this.value;
+        if (this.largeDisplay) {
+          this.shadowRoot.querySelector(
+            ".large-display"
+          ).style.backgroundColor = this.value;
+        }
         let rgb = this._hexToRgb(this.value);
         if (rgb !== null) {
           this._updateSliders(rgb);
