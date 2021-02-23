@@ -7,6 +7,8 @@ exports.SimpleFieldsFieldset = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
+var _simpleFieldsUi = require("./simple-fields-ui.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -27,7 +29,7 @@ function _typeof(obj) {
 
 function _templateObject5() {
   var data = _taggedTemplateLiteral([
-    "\n        fieldset {\n          padding: var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin, 16px);\n          margin: var(--simple-fields-margin-small, 8px) 0\n            var(--simple-fields-margin, 16px);\n          border: 1px solid var(--simple-fields-border-color-light, #ccc);\n          border-radius: var(--simple-fields-border-radius, 2px);\n          transition: all 0.3s ease-in-out;\n        }\n        :host(:last-of-type) {\n          margin-bottom: 0;\n        }\n        #label {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          font-size: var(--simple-fields-font-size, 16px);\n          line-height: var(--simple-fields-line-height, 22px);\n        }\n        :host([error]) #label {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: all 0.3s ease-in-out;\n        }\n        #description {\n          font-family: var(--simple-fields-detail-font-family, sans-serif);\n          font-size: var(--simple-fields-detail-font-size, 12px);\n          line-height: var(--simple-fields-detail-line-height, 22px);\n        }\n      ",
+    "\n        :host(:last-of-type) {\n          margin-bottom: 0;\n        }\n      ",
   ]);
 
   _templateObject5 = function _templateObject5() {
@@ -35,6 +37,33 @@ function _templateObject5() {
   };
 
   return data;
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
 }
 
 function _templateObject4() {
@@ -80,10 +109,10 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <fieldset part="fieldset">',
+    '\n      <fieldset part="fieldset">\n        ',
     " ",
     " ",
-    "</fieldset>\n    ",
+    "\n      </fieldset>\n    ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -242,7 +271,12 @@ var SimpleFieldsFieldset =
         {
           key: "styles",
           get: function get() {
-            return [(0, _litElement.css)(_templateObject5())];
+            return [].concat(
+              _toConsumableArray(_simpleFieldsUi.SimpleFieldsBaseStyles),
+              _toConsumableArray(_simpleFieldsUi.SimpleFieldsFieldsetStyles),
+              _toConsumableArray(_simpleFieldsUi.SimpleFieldsDescriptionStyles),
+              [(0, _litElement.css)(_templateObject5())]
+            );
           },
         },
         {

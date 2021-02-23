@@ -9,6 +9,10 @@ var _litElement = require("lit-element/lit-element.js");
 
 var _simpleFieldsFieldset = require("./simple-fields-fieldset.js");
 
+var _simpleFieldsUi = require("./simple-fields-ui.js");
+
+require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js");
+
 require("@lrnwebcomponents/simple-icon/simple-icon.js");
 
 require("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
@@ -84,7 +88,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n        fieldset {\n          padding: 0 var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin-small, 8px);\n        }\n        #item-fields {\n          margin: var(--simple-fields-margin-small, 8px) 0;\n          clear: both;\n          z-index: 3;\n        }\n        #top {\n          display: flex;\n          align-items: flex-end;\n          justify-content: flex-end;\n        }\n        #description {\n          flex: 1 1 auto;\n          padding: var(--simple-fields-margin-small, 2px) 0;\n          margin-right: var(--simple-fields-margin, 8px);\n          min-height: 24px;\n        }\n        #add {\n          float: right;\n        }\n        button {\n          color: var(---simple-fields-color);\n          background-color: var(---simple-fields-background-color);\n          font-family: var(--simple-fields-detail-font-family, sans-serif);\n          font-size: var(--simple-fields-detail-font-size, 12px);\n          line-height: var(--simple-fields-detail-line-height, 22px);\n          margin: 0 2px;\n          z-index: 1;\n          text-transform: unset;\n          border-width: 1px;\n          border-color: transparent;\n          border-radius: 3px;\n          display: flex;\n          align-items:center;\n        }\n        button[aria-pressed="true"],\n        button:focus,\n        button:hover {\n          border: 1px solid var(--simple-fields-border-color, #999);\n        }\n      ',
+    "\n        :host([expanded]) #expand::part(icon) {\n          transform: rotate(90deg);\n          transition: all 0.5s ease;\n        }\n        #item-fields {\n          margin: var(--simple-fields-margin-small, 8px) 0;\n          clear: both;\n          z-index: 3;\n        }\n        #top {\n          display: flex;\n          align-items: flex-end;\n          justify-content: flex-end;\n        }\n        #add {\n          float: right;\n        }\n      ",
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -124,12 +128,12 @@ function _arrayWithoutHoles(arr) {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <div id="top" part="top">\n        ',
-    '\n        <button\n          id="expand"\n          controls="item-fields"\n          @click="',
-    '"\n          aria-pressed="',
-    '"\n          part="expand"\n        >\n          ',
-    '\n          <simple-icon\n            class="',
-    '"\n            aria-hidden="true"\n            icon="more-vert"\n            part="expand-icon"\n          ></simple-icon>\n        </button>\n      </div>\n      <div id="item-fields" aria-live="polite" part="items">\n        <slot></slot>\n        <button\n          id="add"\n          controls="item-fields"\n          @click="',
-    '"\n          part="add"\n        >\n          Add Item\n          <simple-icon\n            aria-hidden="true"\n            icon="add"\n            part="add-icon"\n          ></simple-icon>\n        </button>\n      </div>\n    ',
+    '\n        <simple-toolbar-button\n          id="expand"\n          controls="item-fields"\n          icon="more-vert"\n          @click="',
+    '"\n          ?toggled="',
+    '"\n          toggles\n          show-text-label\n          label="',
+    '"\n          part="expand"\n        >\n        </simple-toolbar-button>\n      </div>\n      <div id="item-fields" aria-live="polite" part="items">\n        <slot></slot>\n        <simple-toolbar-button\n          id="add"\n          icon="add"\n          controls="item-fields"\n          @click="',
+    '"\n          part="add"\n          icon="more-vert"\n          ?toggled="',
+    '"\n          toggles\n          show-text-label\n          label="Add Item"\n        >\n        </simple-toolbar-button>\n      </div>\n    ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -287,16 +291,16 @@ var SimpleFieldsArray =
 
             return (0, _litElement.html)(
               _templateObject2(),
-              this.desc,
+              this.descriptionTemplate,
               function (e) {
                 return _this2.toggle();
               },
-              this.expanded ? "true" : "false",
+              this.expanded,
               this.expanded ? "Collapse All" : "Expand All",
-              this.expanded ? "expanded" : "collapsed",
               function (e) {
                 return _this2._handleAdd();
-              }
+              },
+              this.expanded
             );
           },
         },
@@ -315,6 +319,7 @@ var SimpleFieldsArray =
               _toConsumableArray(
                 _get(_getPrototypeOf(SimpleFieldsArray), "styles", this)
               ),
+              _toConsumableArray(_simpleFieldsUi.SimpleFieldsButtonStyles),
               [(0, _litElement.css)(_templateObject3())]
             );
           },
@@ -335,6 +340,7 @@ var SimpleFieldsArray =
                  */
                 expanded: {
                   type: Boolean,
+                  reflect: true,
                 },
               }
             );

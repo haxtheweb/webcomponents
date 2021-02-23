@@ -7,9 +7,11 @@ exports.SimpleFieldsUpload = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _simpleColors = require("@lrnwebcomponents/simple-colors/simple-colors.js");
-
 require("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
+
+var _simpleFieldsUi = require("./simple-fields-ui.js");
+
+var _simpleFieldsFieldset = require("./simple-fields-fieldset.js");
 
 require("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
 
@@ -18,8 +20,6 @@ require("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
 require("@lrnwebcomponents/simple-toolbar/simple-toolbar.js");
 
 require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js");
-
-require("@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js");
 
 require("@vaadin/vaadin-upload/vaadin-upload.js");
 
@@ -39,6 +39,104 @@ function _typeof(obj) {
     };
   }
   return _typeof(obj);
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral([" or "]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([
+    '\n      <div id="url-browse">\n        <simple-fields-field\n          id="url"\n          value="',
+    '"\n          @value-changed="',
+    '"\n          label="URL"\n          type="url"\n          auto-validate=""\n          part="url" \n          @click="',
+    '"\n          @mousedown="',
+    '"\n          @focus="',
+    '"\n        >\n          <simple-toolbar-button \n            id="browse"\n            label="Browse..."\n            show-text-label\n            @click="',
+    '"\n            controls="fieldset"\n            slot="suffix"\n          >\n          </simple-toolbar-button>\n        </simple-fields-field>\n      </div>\n      <div id="upload-options">\n        <vaadin-upload\n          capture \n          class="option-',
+    '"\n          form-data-name="file-upload"\n          id="fileupload"\n          @upload-before="',
+    '"\n          @upload-response="',
+    '"\n          part="upload"\n        >\n          <button id="add-hidden" slot="add-button" hidden></button>\n          <div \n            id="drop-camera" \n            slot="drop-label" \n            part="drop-area" \n            ?hidden="',
+    '">\n            <span id="drop" part="drop-area-text">\n              <simple-icon-lite icon="file-upload" part="drop-area-icon"></simple-icon-lite> Drop media here \n              ',
+    '\n            </span>\n          <simple-toolbar-button\n            icon="image:camera-alt"\n            label="Take photo"\n            show-text-label\n            @mousedown="',
+    '"\n            @focus="',
+    '"\n            @click="',
+    '"\n            controls="fieldset" \n            part="take-photo"\n            ?hidden ="',
+    '"\n          >\n          </simple-toolbar-button>\n          <simple-toolbar-button\n            icon="image:camera-alt"\n            label="Record Audio"\n            show-text-label\n            @mousedown="',
+    '"\n            @focus="',
+    '"\n            @click="',
+    '"\n            controls="fieldset" \n            part="record-audio"\n          ?hidden ="',
+    '"\n          >\n          </simple-toolbar-button>\n        </div>\n        <simple-toolbar-button\n          id="cancel-camera"\n          icon="icons:clear"\n          label="Cancel"\n          @mousedown="',
+    '"\n          @focus="',
+    '"\n          @click="',
+    '"\n          controls="fieldset" \n          slot="drop-label"\n          part="cancel-media"\n          ?hidden="',
+    '"\n        >\n        </simple-toolbar-button>\n        <div\n          id="camerahole"\n          ?hidden="',
+    '"\n          part="camera" \n          slot="drop-label"\n          part="camera-preview"\n        ></div>\n        <div\n          id="voicerecorder"\n          ?hidden="',
+    '" \n          slot="drop-label"\n          part="voice-preview"\n        ></div>\n        </vaadin-upload>\n      </div>\n      <div\n        id="description"\n        ?hidden="',
+    '"\n        part="field-desc"\n      >\n      <div id="description" part="field-desc">\n        <slot name="description"></slot>\n        ',
+    "\n      </div>\n      </div>\n    ",
+  ]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
 }
 
 function _getRequireWildcardCache() {
@@ -86,52 +184,9 @@ function _interopRequireWildcard(obj) {
   return newObj;
 }
 
-function _templateObject3() {
-  var data = _taggedTemplateLiteral([
-    '\n                        <simple-toolbar-button\n                          icon="',
-    '"\n                          label="',
-    '"\n                          show-text-label\n                          toggles\n                          toggled="',
-    '"\n                          @click="',
-    '"\n                          controls="',
-    '"\n                          part="',
-    '"\n                        >\n                        </simple-toolbar-button>\n                      ',
-  ]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral([
-    '\n      <fieldset id="fieldset" part="fieldset">\n        <legend id="label" ?hidden="',
-    '" part="legend">\n          ',
-    ':\n        </legend>\n        <simple-toolbar part="toolbar" always-expanded>\n          <div id="options" class="group" part="options">\n            ',
-    '\n\n          </div>\n        </simple-toolbar>\n        <div id="uploads" part="fields">\n          <simple-fields-field\n            id="url"\n            ?hidden="',
-    '"\n            value="',
-    '"\n            @value-changed="',
-    '"\n            label="URL"\n            type="url"\n            auto-validate=""\n            part="url"\n          ></simple-fields-field>\n          <vaadin-upload\n            capture\n            form-data-name="file-upload"\n            ?hidden="',
-    '"\n            id="fileupload"\n            @upload-before="',
-    '"\n            @upload-response="',
-    '"\n            part="upload"\n          ></vaadin-upload>\n          <div\n            id="camerahole"\n            ?hidden="',
-    '"\n            part="camera"\n          ></div>\n          <div\n            id="voicerecorder"\n            ?hidden="',
-    '"\n            part="voice"\n          ></div>\n          <div\n            id="description"\n            ?hidden="',
-    '"\n            part="description"\n          >\n            ',
-    "\n          </div>\n        </div>\n      </fieldset>\n    ",
-  ]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n          visibility: visible;\n          transition: 0.3s all ease;\n          box-sizing: border-box;\n          pointer-events: all;\n          overflow: visible;\n          font-family: var(--simple-fields-font-family, sans-serif);\n          --simple-login-camera-aspect: 1.777777777777;\n          --simple-camera-snap-color: var(--simple-fields-color, currentColor);\n          --simple-camera-snap-background: var(\n            --simple-fields-background-color,\n            unset\n          );\n          --simple-camera-snap-border-radius: 2px;\n          --lumo-font-family: var(--simple-fields-font-family, sans-serif);\n          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);\n          --lumo-primary-font-color: var(--simple-fields-color, currentColor);\n          --lumo-base-color: var(--simple-fields-background-color, transparent);\n          --lumo-primary-contrast-color: var(\n            --simple-fields-background-color,\n            transparent\n          );\n          --lumo-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-dark-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-light-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-primary-text-color: var(--simple-fields-color, currentColor);\n          --lumo-body-text-color: var(--simple-fields-color, currentColor);\n          --lumo-header-text-color: var(--simple-fields-color, currentColor);\n          --lumo-secondary-text-color: var(--simple-fields-color, currentColor);\n          --lumo-contrast-20pct: transparent;\n          --lumo-disabled-text-color: var(--simple-fields-border-color, #999);\n          --lumo-contrast-5pct: rgba(127, 127, 127, 0.2);\n          color: var(--simple-fields-color, currentColor);\n          background-color: var(--simple-fields-background-color, transparent);\n        }\n        vaadin-upload[dragover] {\n          border-color: var(\n            --simple-fields-secondary-accent-color,\n            var(--simple-colors-default-theme-accent-3, #77e2ff)\n          );\n        }\n        vaadin-upload-file {\n          --disabled-text-color: #var(--simple-fields-border-color, #999);\n        }\n        :host(:last-of-type) {\n          margin-bottom: 0;\n        }\n        #description {\n          font-family: var(--simple-fields-detail-font-family, sans-serif);\n          font-size: var(--simple-fields-detail-font-size, 12px);\n          line-height: var(--simple-fields-detail-line-height, 22px);\n        }\n        fieldset {\n          padding: 0;\n          margin: var(--simple-fields-margin-small, 8px) 0\n            var(--simple-fields-margin, 16px);\n          border: 1px solid var(--simple-fields-border-color-light, #ccc);\n          border-radius: var(--simple-fields-border-radius, 2px);\n          transition: all 0.3s ease-in-out;\n        }\n        #label {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          font-size: var(--simple-fields-font-size, 16px);\n          line-height: var(--simple-fields-line-height, 22px);\n        }\n        :host([error]) #label {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: all 0.3s ease-in-out;\n        }\n        simple-toolbar {\n          width: 100%;\n          margin: var(--simple-fields-margin-small, 8px) 0;\n        }\n        #options {\n          margin: 0 auto;\n        }\n        #uploads {\n          clear: both;\n          padding: 0 var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin, 16px);\n        }\n        vaadin-upload {\n          padding: 0;\n          margin: 0 calc(0px - var(--lumo-space-s)) 0 0;\n        }\n        simple-camera-snap {\n          --simple-camera-snap-button-container-bottom: 2px;\n          --simple-camera-snap-button-container-z-index: 5;\n          --simple-camera-snap-button-border-radius: 100%;\n          --simple-camera-snap-button-opacity: 0.7;\n        }\n      ",
+    "\n        :host {\n          pointer-events: all;\n          overflow: visible;\n          transition: 0.3s all ease;\n          --simple-login-camera-aspect: 1.777777777777;\n          --simple-camera-snap-color: var(--simple-fields-color, currentColor);\n          --simple-camera-snap-background: var(\n            --simple-fields-background-color,\n            unset\n          );\n          --simple-camera-snap-border-radius: 2px;--lumo-font-family: var(--simple-fields-font-family, sans-serif);\n          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);\n          --lumo-primary-font-color: var(--simple-fields-color, currentColor);\n          --lumo-base-color: var(--simple-fields-background-color, transparent);\n          /*\n          --lumo-primary-contrast-color: var(\n            --simple-fields-background-color,\n            transparent\n          );\n          --lumo-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-dark-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-light-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-primary-text-color: var(--simple-fields-color, currentColor);\n          --lumo-body-text-color: var(--simple-fields-color, currentColor);\n          --lumo-header-text-color: var(--simple-fields-color, currentColor);\n          --lumo-secondary-text-color: var(--simple-fields-color, currentColor);\n          --lumo-contrast-20pct: transparent;\n          --lumo-disabled-text-color: var(--simple-fields-border-color, #999);\n          --lumo-contrast-5pct: rgba(127, 127, 127, 0.2);*/\n        }\n        :host([error]) #label {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: all 0.3s ease-in-out;\n        }\n        #url-browse, \n        #drop-camera {\n          width: 100%;\n          font-family: var(--simple-fields-font-family, sans-serif);\n          font-size: var(--simple-fields-detail-font-size, 12px);\n        }\n        #drop-camera {\n          display: flex;\n          align-items: center;\n          flex-wrap: wrap;\n          align-items: center;\n          justify-content: center;\n        }\n        #browse { margin-right: 0; }\n        #url {\n          margin-bottom: var(--simple-fields-margin-small, 8px);\n        }\n        #drop, #photo {\n          white-space: nowrap;\n        }\n        #upload-options {\n          transition: height 0.3s linear;\n        }\n        #cancel-camera {\n          display: block;\n          margin: 0;\n          margin: -12px -12px 0;\n          z-index: 2;\n        }\n        #cancel-camera::part(button) {\n          width: 24px;\n        }\n        simple-toolbar-button {\n          margin: 0 5px;\n        }\n        vaadin-upload {\n          padding: 0 var(--simple-fields-margin-small, 8px) var(--simple-fields-margin-small, 8px);\n          position: relative;\n          overflow: visible;\n        }\n        vaadin-upload::part(drop-label-icon) {\n          display: none;\n        }\n        vaadin-upload::part(add-button) {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          color: var(--simple-fields-color, currentColor);\n        }\n        vaadin-upload::part(drop-label) {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          color: var(--simple-fields-color, currentColor);\n          margin-bottom: 16px;\n          display: flex;\n          align-items: center;\n          justify-content: center;\n          padding: 0 calc(1 * var(--simple-fields-margin-small, 8px));\n          width: calc(100% - 2 * var(--simple-fields-margin-small) - 2px);\n        }\n        vaadin-upload.option-selfie::part(drop-label) {\n          display: block;\n        }\n        vaadin-upload.option-selfie #drop-camera{\n          display: none;\n        }\n        vaadin-upload[dragover] {\n          border-color: var(\n            --simple-fields-secondary-accent-color,\n            var(--simple-colors-default-theme-accent-3, #77e2ff)\n          );\n        }\n        vaadin-upload-file {\n          --disabled-text-color: #var(--simple-fields-border-color, #999);\n        }\n        simple-camera-snap {\n          --simple-camera-snap-button-container-bottom: 2px;\n          --simple-camera-snap-button-container-z-index: 5;\n          --simple-camera-snap-button-border-radius: 100%;\n          --simple-camera-snap-button-opacity: 0.7;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -281,8 +336,8 @@ function _getPrototypeOf(o) {
  */
 var SimpleFieldsUpload =
   /*#__PURE__*/
-  (function (_SimpleColors) {
-    _inherits(SimpleFieldsUpload, _SimpleColors);
+  (function (_SimpleFieldsFieldset) {
+    _inherits(SimpleFieldsUpload, _SimpleFieldsFieldset);
 
     _createClass(SimpleFieldsUpload, null, [
       {
@@ -298,6 +353,7 @@ var SimpleFieldsUpload =
             _toConsumableArray(
               _get(_getPrototypeOf(SimpleFieldsUpload), "styles", this)
             ),
+            _toConsumableArray(_simpleFieldsUi.SimpleFieldsButtonStyles),
             [(0, _litElement.css)(_templateObject())]
           );
         },
@@ -316,9 +372,7 @@ var SimpleFieldsUpload =
         this,
         _getPrototypeOf(SimpleFieldsUpload).call(this)
       );
-      _this.label = null;
-      _this.noCamera = false;
-      _this.options = []; // @todo leave this off until we can do more testing
+      _this.noCamera = false; // @todo leave this off until we can do more testing
       // the wiring is all there but the UI pattern is not
 
       _this.noVoiceRecord = true;
@@ -332,70 +386,75 @@ var SimpleFieldsUpload =
       SimpleFieldsUpload,
       [
         {
-          key: "render",
-          value: function render() {
-            var _this2 = this;
+          key: "_handleCameraOption",
 
-            return (0, _litElement.html)(
-              _templateObject2(),
-              !this.label,
-              this.label,
-              !this.options || !this.options.map
-                ? ""
-                : this.options.map(function (option) {
-                    return !option[0]
-                      ? ""
-                      : (0, _litElement.html)(
-                          _templateObject3(),
-                          option[0].icon,
-                          option[0].alt,
-                          _this2.option == option[0].value ? "true" : "false",
-                          function (e) {
-                            return _this2.optionChanged(option[0].value, e);
-                          },
-                          option[0].value,
-                          _this2.option == option[0].value
-                            ? "option-icon-selected"
-                            : "option-icon"
-                        );
-                  }),
-              this.option !== "url",
-              this.value || "",
-              this.valueChanged,
-              this.option !== "fileupload",
-              this._fileAboutToUpload,
-              this._fileUploadResponse,
-              this.option !== "selfie",
-              this.option !== "audio",
-              !this.description,
-              this.description
-            );
+          /**
+           * display camera snap
+           *
+           * @param {event} e
+           * @memberof SimpleFieldsUpload
+           */
+          value: function _handleCameraOption(e) {
+            e.preventDefault();
+            this.option = "selfie";
+
+            this._takeSelfie(e);
           },
+          /**
+           * display voice recorder
+           *
+           * @param {event} e
+           * @memberof SimpleFieldsUpload
+           */
         },
         {
-          key: "optionChanged",
-          value: function optionChanged(option, e) {
-            this.option = option; // make sure there's not null here, possible when dynamically  built
+          key: "_handleAudioOption",
+          value: function _handleAudioOption(e) {
+            e.preventDefault();
+            this.option = "voice";
 
-            if (!option) {
-              if (
-                this.options &&
-                this.options[0] &&
-                this.options[0][0] &&
-                this.options[0][0].value
-              ) {
-                this.option = this.options[0][0].value;
-              }
-            }
-
-            if (option === "selfie") this._takeSelfie(e);
-            if (option === "audio") this._voiceRecorder(e);
+            this._voiceRecorder(e);
           },
+          /**
+           * cancel camera and audio / display upload options
+           *
+           * @param {event} e
+           * @memberof SimpleFieldsUpload
+           */
+        },
+        {
+          key: "_handleCancel",
+          value: function _handleCancel(e) {
+            e.preventDefault();
+            this.option = "fileupload";
+          },
+          /**
+           * when browse button is clicked trigger the hidden add button in vaadin-upload
+           *
+           * @param {event} e
+           * @memberof SimpleFieldsUpload
+           */
+        },
+        {
+          key: "_handleBrowse",
+          value: function _handleBrowse(e) {
+            e.preventDefault();
+            this.shadowRoot
+              .querySelector("#add-hidden")
+              .dispatchEvent(new CustomEvent("click", e));
+          },
+          /**
+           * update the value
+           *
+           * @param {*} e
+           * @memberof SimpleFieldsUpload
+           */
         },
         {
           key: "valueChanged",
           value: function valueChanged(e) {
             this.value = e.detail.value;
+            console.log(e.detail.value);
           },
           /**
            * LitElement life cycle - properties changed callback
@@ -404,7 +463,7 @@ var SimpleFieldsUpload =
         {
           key: "updated",
           value: function updated(changedProperties) {
-            var _this3 = this;
+            var _this2 = this;
 
             if (
               _get(
@@ -412,21 +471,19 @@ var SimpleFieldsUpload =
                 "updated",
                 this
               )
-            ) {
+            )
               _get(
                 _getPrototypeOf(SimpleFieldsUpload.prototype),
                 "updated",
                 this
               ).call(this, changedProperties);
-            }
-
             changedProperties.forEach(function (oldValue, propName) {
               // notify
               if (propName == "value") {
-                _this3.dispatchEvent(
+                _this2.dispatchEvent(
                   new CustomEvent("value-changed", {
                     detail: {
-                      value: _this3[propName],
+                      value: _this2[propName],
                     },
                   })
                 );
@@ -473,59 +530,6 @@ var SimpleFieldsUpload =
             );
           },
           /**
-           * Set the input options as far as url, upload, or webcam input
-           */
-        },
-        {
-          key: "_setInputOptions",
-          value: function _setInputOptions() {
-            // hide the button if this environment can't support it anyway
-            var options = [
-              [
-                {
-                  alt: "Upload",
-                  icon: "icons:file-upload",
-                  value: "fileupload",
-                },
-              ],
-              [
-                {
-                  alt: "URL",
-                  icon: "icons:link",
-                  value: "url",
-                },
-              ],
-            ];
-
-            if (!navigator.mediaDevices || this.noCamera) {
-              this.shadowRoot.querySelector("#camerahole").style.display =
-                "none";
-            } else {
-              options.push([
-                {
-                  alt: "Camera",
-                  icon: "image:photo-camera",
-                  value: "selfie",
-                },
-              ]);
-            }
-
-            if (!navigator.mediaDevices || this.noVoiceRecord) {
-              this.shadowRoot.querySelector("#voicerecorder").style.display =
-                "none";
-            } else {
-              /*options.push([
-          {
-            alt: "Audio",
-            icon: "hardware:keyboard-voice",
-            value: "audio"
-          }
-        ]);*/
-            }
-
-            return options;
-          },
-          /**
            * LitElement
            */
         },
@@ -545,8 +549,7 @@ var SimpleFieldsUpload =
                 this
               ).call(this, changedProperties);
             } // test on load for if we have a media device
-
-            this.options = _toConsumableArray(this._setInputOptions()); // default to URL if we have a value of any kind
+            // default to URL if we have a value of any kind
 
             if (this.value) {
               this.option = "url";
@@ -640,51 +643,101 @@ var SimpleFieldsUpload =
             }, obj || self);
           },
         },
+        {
+          key: "fields",
+          get: function get() {
+            return (0, _litElement.html)(
+              _templateObject2(),
+              this.value || "",
+              this.valueChanged,
+              function (e) {
+                return e.preventDefault();
+              },
+              function (e) {
+                return e.preventDefault();
+              },
+              function (e) {
+                return e.preventDefault();
+              },
+              this._handleBrowse,
+              this.option,
+              this._fileAboutToUpload,
+              this._fileUploadResponse,
+              this.option == "selfie" || this.option == "audio",
+              !navigator.mediaDevices
+                ? ""
+                : (0, _litElement.html)(_templateObject3()),
+              function (e) {
+                return e.preventDefault();
+              },
+              function (e) {
+                return e.preventDefault();
+              },
+              this._handleCameraOption,
+              !navigator.mediaDevices || this.noCamera,
+              function (e) {
+                return e.preventDefault();
+              },
+              function (e) {
+                return e.preventDefault();
+              },
+              this._handleAudioOption,
+              !navigator.mediaDevices || this.noVoiceRecord,
+              function (e) {
+                return e.preventDefault();
+              },
+              function (e) {
+                return e.preventDefault();
+              },
+              this._handleCancel,
+              this.option !== "selfie" && this.option !== "audio",
+              this.option !== "selfie",
+              this.option !== "audio",
+              !this.description,
+              this.description
+            );
+          },
+        },
       ],
       [
         {
           key: "properties",
           get: function get() {
-            return {
-              label: {
-                type: String,
-              },
-              description: {
-                type: String,
-              },
-              value: {
-                type: String,
-              },
-              option: {
-                type: String,
-              },
-              options: {
-                type: Array,
-              },
+            return _objectSpread(
+              {},
+              _get(_getPrototypeOf(SimpleFieldsUpload), "properties", this),
+              {
+                value: {
+                  type: String,
+                },
+                option: {
+                  type: String,
+                },
 
-              /**
-               * Used when we want to ensure there is not a web cam option like video upload.
-               */
-              noCamera: {
-                type: Boolean,
-                attribute: "no-camera",
-              },
+                /**
+                 * Used when we want to ensure there is not a web cam option like video upload.
+                 */
+                noCamera: {
+                  type: Boolean,
+                  attribute: "no-camera",
+                },
 
-              /**
-               * No Voice Recording
-               */
-              noVoiceRecord: {
-                type: Boolean,
-                attribute: "no-voice-record",
-              },
-            };
+                /**
+                 * No Voice Recording
+                 */
+                noVoiceRecord: {
+                  type: Boolean,
+                  attribute: "no-voice-record",
+                },
+              }
+            );
           },
         },
       ]
     );
 
     return SimpleFieldsUpload;
-  })(_simpleColors.SimpleColors);
+  })(_simpleFieldsFieldset.SimpleFieldsFieldset);
 
 exports.SimpleFieldsUpload = SimpleFieldsUpload;
 window.customElements.define(SimpleFieldsUpload.tag, SimpleFieldsUpload);

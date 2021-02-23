@@ -1,4 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import {
+  SimpleFieldsBaseStyles,
+  SimpleFieldsDescriptionStyles,
+} from "./simple-fields-ui.js";
 /**
  *`simple-fields-container`
  * Progressive enhanced container HTML fields
@@ -15,20 +19,12 @@ class SimpleFieldsContainer extends LitElement {
   }
   static get styles() {
     return [
+      ...SimpleFieldsBaseStyles,
+      ...SimpleFieldsDescriptionStyles,
       css`
         :host {
           display: block;
-          font-size: var(--simple-fields-detail-font-size, 12px);
-          font-family: var(--simple-fields-detail-font-family, sans-serif);
-          line-height: var(--simple-fields-detail-line-height, 130%);
           transition: color 0.3s ease-in-out;
-          margin: 0 0
-            var(--simple-fields-field-margin, var(--simple-fields-margin, 16px));
-          background-color: var(--simple-fields-background-color, transparent);
-        }
-        :host([hidden]),
-        :host([type="hidden"]) {
-          display: none;
         }
         :host([error]) {
           color: var(--simple-fields-error-color, #dd2c00);
@@ -107,6 +103,7 @@ class SimpleFieldsContainer extends LitElement {
         :host([readonly]) ::slotted([slot="field"]),
         :host([disabled]) ::slotted([slot="field"]) {
           cursor: not-allowed;
+          pointer-events: none;
         }
         .border-bottom {
           height: 0;
@@ -151,11 +148,6 @@ class SimpleFieldsContainer extends LitElement {
           display: var(--simple-fields-radio-option-display, block);
           flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
           transition: color 0.3s ease-in-out;
-        }
-        #error-desc {
-          color: var(--simple-fields-meta-color);
-          font-size: var(--simple-fields-meta-font-size, 10px);
-          line-height: var(--simple-fields-meta-line-height, 110%);
         }
       `,
     ];
