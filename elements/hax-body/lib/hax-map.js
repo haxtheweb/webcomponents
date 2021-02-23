@@ -57,9 +57,35 @@ class HaxMap extends LitElement {
         li > hax-toolbar-item {
           width: 100%;
         }
-        li > hax-toolbar-item::part(button) {
+        li > hax-toolbar-item::part(button),
+        li > hax-toolbar-item[icon="hax:h2"].heading-level-h2::part(button) {
           width: 100%;
           border: none;
+          margin-left: 0px;
+        }
+        li > hax-toolbar-item.heading-level-h2::part(button),
+        li > hax-toolbar-item[icon="hax:h3"].heading-level-h3::part(button) {
+          width: calc(100% - 26px);
+          margin-left: 26px;
+        }
+        li > hax-toolbar-item.heading-level-h3::part(button),
+        li > hax-toolbar-item[icon="hax:h4"].heading-level-h4::part(button) {
+          width: calc(100% - calc(2 * 26px));
+          margin-left: calc(2 * 26px);
+        }
+        li > hax-toolbar-item.heading-level-h4::part(button),
+        li > hax-toolbar-item[icon="hax:h5"].heading-level-h5::part(button) {
+          width: calc(100% - calc(3 * 26px));
+          margin-left: calc(3 * 26px);
+        }
+        li > hax-toolbar-item.heading-level-h5::part(button),
+        li > hax-toolbar-item[icon="hax:h6"].heading-level-h6::part(button) {
+          width: calc(100% - calc(4 * 26px));
+          margin-left: calc(4 * 26px);
+        }
+        li > hax-toolbar-item.heading-level-h6::part(button) {
+          width: calc(100% - calc(5 * 26px));
+          margin-left: calc(5 * 26px);
         }
       `,
     ];
@@ -165,11 +191,12 @@ class HaxMap extends LitElement {
         </table>
         <h5>List View</h5>
         <ul>
-          ${this.elementList.map((element, index) => {
+          ${this.indentedElements.map((element, index) => {
             return html`
               <li>
                 <hax-toolbar-item
                   align-horizontal="left"
+                  class="heading-level-${element.parent || "h1"}"
                   @click="${(e) => this.goToItem(index)}"
                   data-index="${index}"
                   icon="${element.icon}"
@@ -183,6 +210,19 @@ class HaxMap extends LitElement {
         </ul>
       </div>
     `;
+  }
+  get indentedElements() {
+    let prev = "h1";
+    return this.elementList.map((element) => {
+      let el = element;
+      el.parent = prev;
+      if (el.name == "Heading") {
+        let h = el.icon.replace("hax:", "").trim();
+        el.parent = h;
+        prev = h;
+      }
+      return el;
+    });
   }
   goToItem(index) {
     if (index) {

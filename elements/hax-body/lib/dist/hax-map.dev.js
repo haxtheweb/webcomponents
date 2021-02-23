@@ -39,7 +39,8 @@ function _typeof(obj) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n              <li>\n                <hax-toolbar-item\n                  align-horizontal="left"\n                  @click="',
+    '\n              <li>\n                <hax-toolbar-item\n                  align-horizontal="left"\n                  class="heading-level-',
+    '"\n                  @click="',
     '"\n                  data-index="',
     '"\n                  icon="',
     '"\n                  label="',
@@ -73,7 +74,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n        }\n        .container {\n          text-align: left;\n        }\n        table {\n          font-size: var(--hax-ui-font-size-sm);\n          border-collapse: collapse;\n          width: calc(100% - 2px);\n          max-width: calc(100% - 2px);\n        }\n        table,\n        th,\n        td {\n          text-align: center;\n          border: 1px solid var(--hax-ui-border-color);\n        }\n        th {\n          font-weight: normal;\n          font-size: var(--hax-ui-font-size-xs);\n        }\n        td {\n          font-weight: bold;\n          font-size: 150%;\n        }\n        ul {\n          list-style: none;\n          padding: 0;\n          margin: 0;\n        }\n        ul li {\n          margin: 0;\n          padding: 0;\n        }\n        li > hax-toolbar-item {\n          width: 100%;\n        }\n        li > hax-toolbar-item::part(button) {\n          width: 100%;\n          border: none;\n        }\n      ",
+    '\n        :host {\n          display: block;\n        }\n        .container {\n          text-align: left;\n        }\n        table {\n          font-size: var(--hax-ui-font-size-sm);\n          border-collapse: collapse;\n          width: calc(100% - 2px);\n          max-width: calc(100% - 2px);\n        }\n        table,\n        th,\n        td {\n          text-align: center;\n          border: 1px solid var(--hax-ui-border-color);\n        }\n        th {\n          font-weight: normal;\n          font-size: var(--hax-ui-font-size-xs);\n        }\n        td {\n          font-weight: bold;\n          font-size: 150%;\n        }\n        ul {\n          list-style: none;\n          padding: 0;\n          margin: 0;\n        }\n        ul li {\n          margin: 0;\n          padding: 0;\n        }\n        li > hax-toolbar-item {\n          width: 100%;\n        }\n        li > hax-toolbar-item::part(button),\n        li > hax-toolbar-item[icon="hax:h2"].heading-level-h2::part(button) {\n          width: 100%;\n          border: none;\n          margin-left: 0px;\n        }\n        li > hax-toolbar-item.heading-level-h2::part(button),\n        li > hax-toolbar-item[icon="hax:h3"].heading-level-h3::part(button) {\n          width: calc(100% - 26px);\n          margin-left: 26px;\n        }\n        li > hax-toolbar-item.heading-level-h3::part(button),\n        li > hax-toolbar-item[icon="hax:h4"].heading-level-h4::part(button) {\n          width: calc(100% - calc(2 * 26px));\n          margin-left: calc(2 * 26px);\n        }\n        li > hax-toolbar-item.heading-level-h4::part(button),\n        li > hax-toolbar-item[icon="hax:h5"].heading-level-h5::part(button) {\n          width: calc(100% - calc(3 * 26px));\n          margin-left: calc(3 * 26px);\n        }\n        li > hax-toolbar-item.heading-level-h5::part(button),\n        li > hax-toolbar-item[icon="hax:h6"].heading-level-h6::part(button) {\n          width: calc(100% - calc(4 * 26px));\n          margin-left: calc(4 * 26px);\n        }\n        li > hax-toolbar-item.heading-level-h6::part(button) {\n          width: calc(100% - calc(5 * 26px));\n          margin-left: calc(5 * 26px);\n        }\n      ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -326,9 +327,10 @@ var HaxMap =
               this.pCount,
               this.eCount,
               this.cCount,
-              this.elementList.map(function (element, index) {
+              this.indentedElements.map(function (element, index) {
                 return (0, _litElement.html)(
                   _templateObject3(),
+                  element.parent || "h1",
                   function (e) {
                     return _this2.goToItem(index);
                   },
@@ -369,6 +371,24 @@ var HaxMap =
           value: function scrollInMap() {
             var target = (0, _utils.normalizeEventPath)(e)[0];
             this.goToItem(target.getAttribute("data-index"));
+          },
+        },
+        {
+          key: "indentedElements",
+          get: function get() {
+            var prev = "h1";
+            return this.elementList.map(function (element) {
+              var el = element;
+              el.parent = prev;
+
+              if (el.name == "Heading") {
+                var h = el.icon.replace("hax:", "").trim();
+                el.parent = h;
+                prev = h;
+              }
+
+              return el;
+            });
           },
         },
       ],
