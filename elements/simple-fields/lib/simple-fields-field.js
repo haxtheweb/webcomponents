@@ -74,6 +74,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         input {
           background-color: var(--simple-fields-background-color, transparent);
         }
+        input[type="text"] {
+          padding: 0;
+        }
         textarea {
           margin: 0;
           transition: height 0.5s ease-in-out;

@@ -3,7 +3,8 @@ import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behav
 import { stripMSWord, formatHTML } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar.js";
-import { HaxTrayBaseStyles } from "./hax-ui-styles.js";
+import { HaxComponentStyles } from "./hax-ui-styles.js";
+import { autorun, toJS } from "mobx";
 /**
  * `hax-eview-source`
  * @element hax-eview-source
@@ -12,7 +13,7 @@ import { HaxTrayBaseStyles } from "./hax-ui-styles.js";
 class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
   static get styles() {
     return [
-      ...HaxTrayBaseStyles,
+      ...HaxComponentStyles,
       css`
         :host {
           margin: 0;
@@ -62,9 +63,13 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
         <code-editor
           id="textarea"
           title=""
-          theme="auto"
+          theme="${this.haxUiTheme == "hax"
+            ? "vs"
+            : this.haxUiTheme == "haxdark"
+            ? "vs-dark"
+            : "auto"}"
           language="html"
-          font-size="12"
+          font-size="13"
           word-wrap
         ></code-editor>
       </div>
@@ -256,6 +261,21 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     return content;
   }
 
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * Global preferences for HAX overall
+       */
+      globalPreferences: {
+        type: Object,
+      },
+      theme: {
+        type: String,
+      },
+    };
+  }
+
   constructor() {
     super();
     this.fileTypes = {
@@ -265,6 +285,10 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
       TXT: "text/plain",
       HTML: "text/html",
     };
+    autorun(() => {
+      this.globalPreferences = toJS(HAXStore.globalPreferences);
+      this.haxUiTheme = (this.globalPreferences || {}).haxUiTheme || "hax";
+    });
   }
 }
 window.customElements.define(HaxViewSource.tag, HaxViewSource);

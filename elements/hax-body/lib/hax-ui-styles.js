@@ -2,7 +2,7 @@ import { css, html, LitElement } from "lit-element/lit-element.js";
 
 export const HaxUiText = [
   css`
-    :host {
+    body {
       --hax-ui-font-family: sans-serif;
       --hax-ui-font-size: 16px;
       --hax-ui-font-size-sm: 13px;
@@ -14,9 +14,10 @@ export const HaxUiText = [
 ];
 export const HaxUiSpacing = [
   css`
-    :host {
+    body {
       --hax-tray-width: 300px;
       --hax-ui-spacing-xs: 4px;
+      --hax-ui-border-radius: 2px;
       --hax-ui-spacing-sm: calc(1 * var(--hax-ui-spacing-xs, 4px));
       --hax-ui-spacing: calc(2 * var(--hax-ui-spacing-xs, 4px));
       --hax-ui-spacing-lg: calc(3 * var(--hax-ui-spacing-xs, 4px));
@@ -29,7 +30,7 @@ export const HaxUiSpacing = [
 ];
 export const HaxUiColors = [
   css`
-    :host {
+    body {
       --hax-ui-color: #222;
       --hax-ui-color-focus: #000;
       --hax-ui-color-faded: #444;
@@ -48,8 +49,28 @@ export const HaxUiColors = [
 
       --hax-ui-border-color: #ddd;
     }
+    body[hax-ui-theme="haxdark"] {
+      --hax-ui-color: #eeeae6;
+      --hax-ui-color-focus: #fff;
+      --hax-ui-color-faded: #c5c3be;
+
+      --hax-ui-background-color: #333;
+      --hax-ui-background-color-secondary: #111;
+      --hax-ui-background-color-faded: #222;
+
+      --hax-ui-color-accent: #77e2ff;
+      --hax-ui-color-accent-secondary: #00c9ff;
+      --hax-ui-background-color-accent: #000;
+
+      --hax-ui-color-danger: #ff8f8f;
+      --hax-ui-color-danger-secondary: #ff2222;
+      --hax-ui-background-color-danger: #000;
+
+      --hax-ui-border-color: #000;
+    }
+
     @media (prefers-color-scheme: dark) {
-      :host {
+      body[hax-ui-theme="system"] {
         --hax-ui-color: #eeeae6;
         --hax-ui-color-focus: #fff;
         --hax-ui-color-faded: #c5c3be;
@@ -71,7 +92,102 @@ export const HaxUiColors = [
     }
   `,
 ];
-export const HaxTrayButton = [
+export const HaxUiTooltip = [
+  css`
+    body {
+      --simple-tooltip-background: var(--hax-ui-color);
+      --simple-tooltip-text-color: var(--hax-ui-background-color);
+      --simple-tooltip-opacity: 1;
+      --simple-tooltip-delay-in: 0;
+      --simple-tooltip-duration-in: 100ms;
+      --simple-tooltip-duration-out: 0;
+      --simple-tooltip-border-radius: 2px;
+      --simple-tooltip-font-size: var(--hax-ui-font-size-sm);
+    }
+  `,
+];
+export const HaxUiFields = [
+  css`
+    body {
+      --simple-fields-field-margin: calc(2 * var(--hax-ui-font-size));
+      --simple-toolbar-focus-z-index: var(--hax-ui-focus-z-index);
+      --simple-fields-font-family: var(--hax-ui-font-family);
+      --simple-fields-font-size: var(--hax-ui-font-size);
+      --simple-fields-line-height: 135%;
+      --simple-fields-detail-font-size: var(--hax-ui-font-size-sm);
+      --simple-fields-detail-line-height: 120%;
+      --simple-fields-margin: var(--hax-ui-spacing);
+      --simple-fields-color: var(--hax-tray-text-color);
+      --simple-fields-accent-color: var(--hax-ui-color-accent);
+      --simple-fields-error-color: var(--hax-ui-color-danger-secondary);
+      --simple-fields-secondary-accent-color: var(
+        --hax-ui-color-accent-secondary
+      );
+      --simple-fields-border-color: var(--hax-ui-color-faded);
+
+      --simple-fields-fieldset-border-color: rgba(127, 127, 127, 0.2);
+      --simple-fields-legend-text-transform: capitalize;
+      --simple-fields-legend-font-size: var(--hax-ui-font-size-xs);
+
+      --simple-fields-meta-font-size: var(--hax-ui-font-size-xs);
+      --simple-fields-meta-line-height: 120%;
+      --simple-fields-meta-opacity: 0.7;
+      --simple-fields-focus-meta-opacity: 1;
+
+      --simple-fields-button-color: var(--hax-ui-color);
+      --simple-fields-button-background-color: var(--hax-ui-background-color);
+      --simple-fields-button-border-color: var(--hax-ui-border-color);
+      --simple-fields-button-text-transform: capitalize;
+      --simple-fields-border-radius: var(--hax-ui-border-radius);
+      --simple-fields-button-padding-sm: var(--hax-ui-spacing-sm);
+      --simple-fields-button-padding: var(--hax-ui-spacing-sm);
+
+      --simple-fields-button-toggled-color: var(--hax-ui-color);
+      --simple-fields-button-toggled-background-color: var(
+        --hax-ui-background-color-accent
+      );
+      --simple-fields-button-toggled-border-color: var(--hax-ui-color-accent);
+
+      --simple-fields-button-focus-color: var(--hax-ui-color);
+      --simple-fields-button-focus-background-color: var(
+        --hax-ui-background-color-accent
+      );
+      --simple-fields-button-focus-border-color: var(--hax-ui-color-accent);
+
+      --simple-fields-button-disabled-color: unset;
+      --simple-fields-button-disabled-background-color: unset;
+      --simple-fields-button-disabled-border-color: unset;
+      --simple-fields-button-disabled-opacity: 0.5;
+      --hexagon-color: var(--hax-ui-color-accent);
+    }
+  `,
+];
+
+export const HaxUiTour = [css``];
+/**
+ * controls text spacing and colors throughout Hax UI (but not content)
+ */
+export const HaxUiBaseStyles = [
+  ...HaxUiText,
+  ...HaxUiSpacing,
+  ...HaxUiFields,
+  ...HaxUiTooltip,
+  ...HaxUiColors,
+];
+export const HaxHexagon = [
+  css`
+    hexagon-loader {
+      display: none;
+      margin: 0 auto;
+      z-index: 1000;
+    }
+    hexagon-loader[loading] {
+      display: block;
+      opacity: 0.8;
+    }
+  `,
+];
+export const HaxButton = [
   css`
     :host {
       text-transform: capitalize;
@@ -94,6 +210,7 @@ export const HaxTrayButton = [
       color: var(--hax-ui-color);
       background-color: var(--hax-ui-background-color);
       border: 1px solid var(--hax-ui-border-color);
+      border-radius: var(--hax-ui-border-radius);
     }
     :host([role="menuitem"]) button[part="button"] {
       padding: 1px;
@@ -156,87 +273,16 @@ export const HaxTrayButton = [
     }
     :host([disabled]) button[part="button"][disabled] {
       opacity: 0.5;
-      background-color: rgba(127, 127, 127, 0.2);
     }
 
-    ::part(label) {
+    *[show-text-label]::part(label) {
       text-transform: capitalize;
       margin: var(--hax-ui-spacing-sm);
     }
   `,
 ];
-
-export const HaxUiHexagon = [
+export const HaxFields = [
   css`
-    hexagon-loader {
-      display: none;
-      margin: 0 auto;
-      z-index: 1000;
-      --hexagon-color: var(--hax-ui-color-accent);
-    }
-    hexagon-loader[loading] {
-      display: block;
-      opacity: 0.8;
-    }
-  `,
-];
-export const HaxUiTour = [css``];
-export const HaxTrayUploadField = [];
-
-export const HaxUiFields = [
-  css`
-    simple-fields,
-    #tray-detail * {
-      --simple-fields-field-margin: calc(2 * var(--hax-ui-font-size));
-      --simple-toolbar-focus-z-index: var(--hax-ui-focus-z-index);
-      --simple-fields-font-family: var(--hax-ui-font-family);
-      --simple-fields-font-size: var(--hax-ui-font-size);
-      --simple-fields-line-height: 135%;
-      --simple-fields-detail-font-size: var(--hax-ui-font-size-sm);
-      --simple-fields-detail-line-height: 120%;
-      --simple-fields-margin: var(--hax-ui-spacing);
-      --simple-fields-color: var(--hax-tray-text-color);
-      --simple-fields-accent-color: var(--hax-ui-color-accent);
-      --simple-fields-error-color: var(--hax-ui-color-danger-secondary);
-      --simple-fields-secondary-accent-color: var(
-        --hax-ui-color-accent-secondary
-      );
-      --simple-fields-border-color: var(--hax-ui-color-faded);
-
-      --simple-fields-fieldset-border-color: rgba(127, 127, 127, 0.2);
-      --simple-fields-legend-text-transform: capitalize;
-      --simple-fields-legend-font-size: var(--hax-ui-font-size-xs);
-
-      --simple-fields-meta-font-size: var(--hax-ui-font-size-xs);
-      --simple-fields-meta-line-height: 120%;
-      --simple-fields-meta-opacity: 0.7;
-      --simple-fields-focus-meta-opacity: 1;
-
-      --simple-fields-button-color: var(--hax-ui-color);
-      --simple-fields-button-background-color: var(--hax-ui-background-color);
-      --simple-fields-button-border-color: var(--hax-ui-border-color);
-      --simple-fields-button-text-transform: capitalize;
-      --simple-fields-border-radius: 3px;
-      --simple-fields-button-padding-sm: var(--hax-ui-spacing-sm);
-      --simple-fields-button-padding: var(--hax-ui-spacing-sm);
-
-      --simple-fields-button-toggled-color: var(--hax-ui-color);
-      --simple-fields-button-toggled-background-color: var(
-        --hax-ui-background-color-accent
-      );
-      --simple-fields-button-toggled-border-color: var(--hax-ui-color-accent);
-
-      --simple-fields-button-focus-color: var(--hax-ui-color);
-      --simple-fields-button-focus-background-color: var(
-        --hax-ui-background-color-accent
-      );
-      --simple-fields-button-focus-border-color: var(--hax-ui-color-accent);
-
-      --simple-fields-button-disabled-color: unset;
-      --simple-fields-button-disabled-background-color: unset;
-      --simple-fields-button-disabled-border-color: unset;
-      --simple-fields-button-disabled-opacity: 0.5;
-    }
     simple-fields-tabs::part(content) {
       padding: var(--hax-ui-spacing-sm) 0 0;
       border: none;
@@ -258,15 +304,16 @@ export const HaxUiFields = [
       padding: var(--hax-ui-spacing-xs);
       flex: 1 1 auto;
     }
+    simple-fields-tabs::part(tab-active) {
+      color: var(--hax-ui-color-accent);
+    }
     hax-preferences-dialog::part(haxlink) {
       font-size: var(--hax-ui-font-size-xl);
       display: block;
       padding: var(--hax-ui-spacing-lg);
     }
     hax-preferences-dialog::part(haxlink):hover,
-    hax-preferences-dialog::part(haxlink):focus,
-    simple-fields-tabs::part(tab):hover,
-    simple-fields-tabs::part(tab):focus {
+    hax-preferences-dialog::part(haxlink):focus {
       color: var(--hax-ui-color);
       background-color: var(--hax-ui-background-color-accent);
       border-color: var(--hax-ui-color-accent);
@@ -281,21 +328,41 @@ export const HaxUiFields = [
     simple-fields-tab {
       padding: 0;
     }
-  `,
-];
-export const HaxUiTooltip = [
-  css`
-    :host {
-      --simple-tooltip-background: var(--hax-ui-color);
-      --simple-tooltip-text-color: var(--hax-ui-background-color);
-      --simple-tooltip-opacity: 1;
-      --simple-tooltip-delay-in: 0;
-      --simple-tooltip-duration-in: 100ms;
-      --simple-tooltip-duration-out: 0;
-      --simple-tooltip-border-radius: 2px;
-      --simple-tooltip-font-size: var(--hax-ui-font-size-sm);
+    simple-fields ::part(label) {
+      text-transform: none;
+      margin: 0;
     }
   `,
+];
+export const HaxModal = [
+  css`
+    simple-modal-template {
+      --simple-modal-z-index: 100000000;
+      --simple-modal-height: 70vh;
+      --simple-modal-width: 70vw;
+      --simple-modal-titlebar-color: var(--hax-ui-background-color);
+      --simple-modal-titlebar-background: var(--hax-ui-color-accent);
+      --simple-modal-titlebar-padding: var(--hax-ui-spacing-xs);
+      --simple-modal-titlebar-height: calc(20px + 2 * var(--hax-ui-spacing-xs));
+      --simple-modal-content-container-color: var(--hax-ui-color);
+      --simple-modal-content-container-background: var(
+        --hax-ui-background-color
+      );
+      --simple-modal-content-padding: var(--hax-ui-spacing-sm) 0px 0px;
+      --simple-modal-buttons-background: var(--hax-ui-background-color);
+    }
+  `,
+];
+export const HaxTour = [];
+
+/**
+ * styles that need to be in the shadowRoot of their parent
+ */
+export const HaxComponentStyles = [
+  ...HaxModal,
+  ...HaxButton,
+  ...HaxHexagon,
+  ...HaxFields,
 ];
 export const HaxTrayDetail = [
   css`
@@ -350,41 +417,6 @@ export const HaxTrayDetailHeadings = [
   `,
 ];
 /**
- * controls text spacing and colors throughout Hax UI (but not content)
- */
-export const HaxUiBaseStyles = [
-  ...HaxUiText,
-  ...HaxUiSpacing,
-  ...HaxUiFields,
-  ...HaxUiTooltip,
-  ...HaxUiColors,
-];
-/**
- * Hax Tray Specific Styles
- */
-export const HaxTrayBaseStyles = [...HaxUiBaseStyles, ...HaxUiHexagon];
-export const HaxTourStyles = [];
-export const HaxUiSimpleModal = [
-  ...HaxTrayBaseStyles,
-  css`
-    simple-modal-template {
-      --simple-modal-z-index: 100000000;
-      --simple-modal-height: 70vh;
-      --simple-modal-width: 70vw;
-      --simple-modal-titlebar-color: var(--hax-ui-background-color);
-      --simple-modal-titlebar-background: var(--hax-ui-color-accent);
-      --simple-modal-titlebar-padding: var(--hax-ui-spacing-xs);
-      --simple-modal-titlebar-height: calc(20px + 2 * var(--hax-ui-spacing-xs));
-      --simple-modal-content-container-color: var(--hax-ui-color);
-      --simple-modal-content-container-background: var(
-        --hax-ui-background-color
-      );
-      --simple-modal-content-padding: var(--hax-ui-spacing-sm) 0px 0px;
-      --simple-modal-buttons-background: var(--hax-ui-background-color);
-    }
-  `,
-];
-/**
  * an empty wrapper to ensure modal content has the same base styles
  *
  * @class HaxBaseStylesWrapper
@@ -392,7 +424,7 @@ export const HaxUiSimpleModal = [
  */
 export class HaxUiStyles extends LitElement {
   static get styles() {
-    return HaxTrayBaseStyles;
+    return HaxComponentStyles;
   }
   render() {
     return html`<slot></slot>`;

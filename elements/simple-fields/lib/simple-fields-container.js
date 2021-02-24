@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import {
   SimpleFieldsBaseStyles,
+  SimpleFieldsLabelStyles,
   SimpleFieldsDescriptionStyles,
 } from "./simple-fields-ui.js";
 /**
@@ -20,6 +21,7 @@ class SimpleFieldsContainer extends LitElement {
   static get styles() {
     return [
       ...SimpleFieldsBaseStyles,
+      ...SimpleFieldsLabelStyles,
       ...SimpleFieldsDescriptionStyles,
       css`
         :host {
@@ -45,30 +47,6 @@ class SimpleFieldsContainer extends LitElement {
         }
         #fieldmeta {
           text-align: right;
-        }
-        :host .label-main:after {
-          content: var(--simple-fields-label-flag, "");
-        }
-        :host([focused]) .label-main,
-        :host(:focus-within) .label-main {
-          color: var(--simple-fields-accent-color, #3f51b5);
-          transition: color 0.3s ease-in-out;
-        }
-        .inline {
-          --simple-fields-radio-option-display: flex;
-          --simple-fields-radio-option-flex-wrap: wrap;
-        }
-        .inline label {
-          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
-          flex: 0 1 var(--simple-fields-label-width, auto);
-        }
-        .inline label,
-        .field-main > div,
-        .field,
-        ::slotted([slot="field"]) {
-          font-size: var(--simple-fields-font-size, 16px);
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
         }
         .field,
         ::slotted([slot="field"]) {

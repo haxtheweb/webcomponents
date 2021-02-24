@@ -271,7 +271,7 @@ var HaxExportDialog =
           key: "styles",
           get: function get() {
             return [].concat(
-              _toConsumableArray(_haxUiStyles.HaxUiSimpleModal),
+              _toConsumableArray(_haxUiStyles.HaxComponentStyles),
               [(0, _litElement.css)(_templateObject2())]
             );
           },

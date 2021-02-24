@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { HaxTrayBaseStyles } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 /**
  *
@@ -16,7 +15,6 @@ const HaxContextBehaviors = function (SuperClass) {
      */
     static get styles() {
       return [
-        ...HaxTrayBaseStyles,
         css`
           :host {
             display: block;

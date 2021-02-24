@@ -454,7 +454,6 @@ var SimpleFieldsUpload =
           key: "valueChanged",
           value: function valueChanged(e) {
             this.value = e.detail.value;
-            console.log(e.detail.value);
           },
           /**
            * LitElement life cycle - properties changed callback

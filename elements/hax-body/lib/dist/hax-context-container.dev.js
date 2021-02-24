@@ -7,8 +7,6 @@ exports.HaxContextBehaviors = exports.HaxContextContainer = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
-
 var _SimpleTourFinder2 = require("@lrnwebcomponents/simple-popover/lib/SimpleTourFinder");
 
 function _typeof(obj) {
@@ -58,33 +56,6 @@ function _taggedTemplateLiteral(strings, raw) {
   return Object.freeze(
     Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
   );
-}
-
-function _toConsumableArray(arr) {
-  return (
-    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
-  );
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (
-    Symbol.iterator in Object(iter) ||
-    Object.prototype.toString.call(iter) === "[object Arguments]"
-  )
-    return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  }
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -176,10 +147,7 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
            * LitElement constructable styles enhancement
            */
           get: function get() {
-            return [].concat(
-              _toConsumableArray(_haxUiStyles.HaxTrayBaseStyles),
-              [(0, _litElement.css)(_templateObject())]
-            );
+            return [(0, _litElement.css)(_templateObject())];
           },
         },
       ]);

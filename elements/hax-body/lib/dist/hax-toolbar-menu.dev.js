@@ -292,7 +292,7 @@ var HaxToolbarMenu =
         {
           key: "simpleButtonThemeStyles",
           get: function get() {
-            return _haxUiStyles.HaxTrayButton;
+            return _haxUiStyles.HaxButton;
           },
         },
         {

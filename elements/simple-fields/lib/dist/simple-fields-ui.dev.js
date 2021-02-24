@@ -3,13 +3,25 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.SimpleFieldsFieldsetStyles = exports.SimpleFieldsDescriptionStyles = exports.SimpleFieldsButtonStyles = exports.SimpleFieldsTooltipStyles = exports.SimpleFieldsBaseStyles = void 0;
+exports.SimpleFieldsFieldsetStyles = exports.SimpleFieldsDescriptionStyles = exports.SimpleFieldsButtonStyles = exports.SimpleFieldsTooltipStyles = exports.SimpleFieldsLabelStyles = exports.SimpleFieldsBaseStyles = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
+function _templateObject6() {
+  var data = _taggedTemplateLiteral([
+    '\n    fieldset {\n      padding: var(--simple-fields-margin-small, 8px)\n        var(--simple-fields-margin, 16px);\n      margin: var(--simple-fields-margin-small, 8px) 0\n        var(--simple-fields-margin, 16px);\n      border-width: 1px;\n      border-style: solid;\n      border-color: var(\n        --simple-fields-fieldset-border-color,\n        var(--simple-fields-border-color-light, #ccc)\n      );\n      border-radius: var(--simple-fields-border-radius, 2px);\n      transition: all 0.3s ease-in-out;\n    }\n    :host(:last-of-type) {\n      margin-bottom: 0;\n    }\n    *[part="legend"] {\n      font-family: var(--simple-fields-font-family, sans-serif);\n      font-size: var(\n        --simple-fields-legend-font-size,\n        var(--simple-fields-font-size, 16px)\n      );\n      line-height: var(--simple-fields-line-height, 22px);\n      text-transform: var(--simple-fields-legend-text-transform, unset);\n    }\n    :host([error]) *[part="legend"] {\n      color: var(--simple-fields-error-color, #dd2c00);\n      transition: all 0.3s ease-in-out;\n    }\n  ',
+  ]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject5() {
   var data = _taggedTemplateLiteral([
-    '\n    fieldset {\n      padding: var(--simple-fields-margin-small, 8px)\n        var(--simple-fields-margin, 16px);\n      margin: var(--simple-fields-margin-small, 8px) 0\n        var(--simple-fields-margin, 16px);\n      border-width: 1px;\n      border-style: solid; \n      border-color: var(--simple-fields-fieldset-border-color, var(--simple-fields-border-color-light, #ccc));\n      border-radius: var(--simple-fields-border-radius, 2px);\n      transition: all 0.3s ease-in-out;\n    }\n    :host(:last-of-type) {\n      margin-bottom: 0;\n    }\n    *[part="legend"] {\n      font-family: var(--simple-fields-font-family, sans-serif);\n      font-size: var(--simple-fields-legend-font-size, var(--simple-fields-font-size, 16px));\n      line-height: var(--simple-fields-line-height, 22px);\n      text-transform: var(--simple-fields-legend-text-transform, unset);\n    }\n    :host([error]) *[part="legend"] {\n      color: var(--simple-fields-error-color, #dd2c00);\n      transition: all 0.3s ease-in-out;\n    }\n  ',
+    '\n    *[part="field-desc"],\n    *[part="error-desc"],\n    *[part="error-meta"] {\n      color: var(--simple-fields-meta-color);\n      font-size: var(--simple-fields-meta-font-size, 10px);\n      line-height: var(--simple-fields-meta-line-height, 110%);\n      opacity: var(--simple-fields-meta-opacity, unset);\n      text-transform: none;\n    }\n    :host:hover *[part="field-desc"],\n    :host:hover-within *[part="error-desc"],\n    :host:hover-within *[part="error-meta"],\n    :host:hover *[part="field-desc"],\n    :host:hover *[part="error-desc"],\n    :host:hover *[part="error-meta"] {\n      color: var(--simple-fields-focus-meta-color);\n      opacity: var(--simple-fields-focus-meta-opacity, unset);\n    }\n  ',
   ]);
 
   _templateObject5 = function _templateObject5() {
@@ -21,7 +33,7 @@ function _templateObject5() {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    '\n    *[part="field-desc"],\n    *[part="error-desc"],\n    *[part="error-meta"] {\n      color: var(--simple-fields-meta-color);\n      font-size: var(--simple-fields-meta-font-size, 10px);\n      line-height: var(--simple-fields-meta-line-height, 110%);\n      opacity: var(--simple-fields-meta-opacity, unset);\n    }\n    :host:hover *[part="field-desc"],\n    :host:hover-within *[part="error-desc"],\n    :host:hover-within *[part="error-meta"],\n    :host:hover *[part="field-desc"],\n    :host:hover *[part="error-desc"],\n    :host:hover *[part="error-meta"] {\n      color: var(--simple-fields-focus-meta-color);\n      opacity: var(--simple-fields-focus-meta-opacity, unset);\n    }\n  ',
+    '\n    button,\n    simple-toolbar-button::part(button) {\n      color: var(--simple-fields-button-color, var(--simple-fields-color));\n      background-color: var(\n        --simple-fields-button-background-color,\n        var(--simple-fields-background-color)\n      );\n      border-color: var(\n        --simple-fields-button-border-color,\n        var(--simple-fields-border-color, #999)\n      );\n      opacity: var(--simple-fields-button-focus-opacity, unset);\n      font-family: var(--simple-fields-detail-font-family);\n      font-size: var(--simple-fields-detail-font-size);\n      line-height: var(--simple-fields-detail-line-height);\n      text-transform: var(--simple-fields-button-text-transform, unset);\n      border-width: 1px;\n      border-radius: var(--simple-fields-border-radius, 2px);\n      padding: var(--simple-fields-button-padding-sm, 1px)\n        var(--simple-fields-button-padding, 2px);\n    }\n    button[aria-pressed="true"],\n    simple-toolbar-button[toggled]::part(button) {\n      color: var(--simple-fields-button-toggled-color, unset);\n      background-color: var(\n        --simple-fields-button-toggled-background-color,\n        unset\n      );\n      border-color: var(\n        --simple-fields-button-toggled-border-color,\n        var(--simple-fields-color, currentColor)\n      );\n      opacity: var(--simple-fields-button-toggled-opacity, unset);\n    }\n    button:focus,\n    button:hover,\n    simple-toolbar-button:focus-within::part(button),\n    simple-toolbar-button:hover::part(button) {\n      color: var(--simple-fields-button-focus-color, unset);\n      background-color: var(\n        --simple-fields-button-focus-background-color,\n        unset\n      );\n      border-color: var(\n        --simple-fields-button-focus-border-color,\n        var(--simple-fields-accent-color, #3f51b5)\n      );\n      opacity: var(--simple-fields-button-focus-opacity, unset);\n    }\n    button:disabled,\n    simple-toolbar-button[disabled] {\n      color: var(--simple-fields-button-disabled-color, unset);\n      background-color: var(\n        --simple-fields-button-disabled-background-color,\n        unset\n      );\n      border-color: var(--simple-fields-button-disabled-border-color, unset);\n      opacity: var(\n        --simple-fields-button-disabled-opacity,\n        var(--simple-fields-disabled-opacity, 0.7)\n      );\n    }\n  ',
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -33,7 +45,7 @@ function _templateObject4() {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n    button,\n    simple-toolbar-button::part(button) {\n      color: var(--simple-fields-button-color, var(--simple-fields-color));\n      background-color: var(\n        --simple-fields-button-background-color,\n        var(--simple-fields-background-color)\n      );\n      border-color: var(\n        --simple-fields-button-border-color,\n        var(--simple-fields-border-color, #999)\n      );\n      opacity: var(--simple-fields-button-focus-opacity, unset);\n      font-family: var(--simple-fields-detail-font-family);\n      font-size: var(--simple-fields-detail-font-size);\n      line-height: var(--simple-fields-detail-line-height);\n      text-transform: var(--simple-fields-button-text-transform, unset);\n      border-width: 1px;\n      border-radius: var(--simple-fields-border-radius, 2px);\n      padding: var(--simple-fields-button-padding-sm, 1px)\n        var(--simple-fields-button-padding, 2px);\n    }\n    button[aria-pressed="true"],\n    simple-toolbar-button[toggled]::part(button) {\n      color: var(--simple-fields-button-toggled-color, unset);\n      background-color: var(\n        --simple-fields-button-toggled-background-color,\n        unset\n      );\n      border-color: var(\n        --simple-fields-button-toggled-border-color,\n        var(--simple-fields-color, currentColor)\n      );\n      opacity: var(--simple-fields-button-toggled-opacity, unset);\n    }\n    button:focus,\n    button:hover,\n    simple-toolbar-button:focus-within::part(button),\n    simple-toolbar-button:hover::part(button) {\n      color: var(--simple-fields-button-focus-color, unset);\n      background-color: var(\n        --simple-fields-button-focus-background-color,\n        unset\n      );\n      border-color: var(\n        --simple-fields-button-focus-border-color,\n        var(--simple-fields-accent-color, #3f51b5)\n      );\n      opacity: var(--simple-fields-button-focus-opacity, unset);\n    }\n    button:disabled,\n    simple-toolbar-button[disabled] {\n      color: var(--simple-fields-button-disabled-color, unset);\n      background-color: var(\n        --simple-fields-button-disabled-background-color,\n        unset\n      );\n      border-color: var(--simple-fields-button-disabled-border-color, unset);\n      opacity: var(\n        --simple-fields-button-disabled-opacity,\n        var(--simple-fields-disabled-opacity, 0.7)\n      );\n    }\n  ',
+    "\n    simple-tooltip,\n    simple-toolbar-button::part(tooltip) {\n      text-transform: var(--simple-fields-tooltip-text-transform, unset);\n      font-family: var(\n        --simple-fields-detail-font-family,\n        var(--simple-fields-font-family, sans-serif)\n      );\n      font-size: var(\n        --simple-fields-tooltip-font-size,\n        var(--simple-fields-detail-font-size, 12px)\n      );\n      line-height: var(\n        --simple-fields-tooltip-line-height,\n        var(--simple-fields-detail-line-height, 22px)\n      );\n      border-radius: var(\n        --simple-fields-border-radius,\n        var(--simple-fields-tooltip-border-radius, 2px)\n      );\n    }\n  ",
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -45,7 +57,7 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n    simple-tooltip,\n    simple-toolbar-button::part(tooltip) {\n      text-transform: var(--simple-fields-tooltip-text-transform, unset);\n      font-family: var(--simple-fields-detail-font-family, \n        var(--simple-fields-font-family, sans-serif));\n      font-size: var(\n        --simple-fields-tooltip-font-size,\n        var(--simple-fields-detail-font-size, 12px)\n      );\n      line-height: var(\n        --simple-fields-tooltip-line-height,\n        var(--simple-fields-detail-line-height, 22px)\n      );\n      border-radius: var(\n        --simple-fields-border-radius,\n        var(--simple-fields-tooltip-border-radius, 2px)\n      );\n    }\n  ",
+    '\n    :host .label-main:after {\n      content: var(--simple-fields-label-flag, "");\n    }\n    :host([focused]) .label-main,\n    :host(:focus-within) .label-main {\n      color: var(--simple-fields-accent-color, #3f51b5);\n      transition: color 0.3s ease-in-out;\n    }\n    .inline {\n      --simple-fields-radio-option-display: flex;\n      --simple-fields-radio-option-flex-wrap: wrap;\n    }\n    label {\n      margin: 0 0 0 0;\n    }\n    .inline label {\n      margin: 0 var(--simple-fields-margin-small, 8px) 0 0;\n      flex: 0 1 var(--simple-fields-label-width, auto);\n    }\n    .inline label,\n    .field-main > div,\n    .field,\n    ::slotted([slot="field"]) {\n      font-size: var(--simple-fields-font-size, 16px);\n      font-family: var(--simple-fields-font-family, sans-serif);\n      line-height: var(--simple-fields-line-height, 22px);\n    }\n  ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -78,13 +90,15 @@ function _taggedTemplateLiteral(strings, raw) {
 
 var SimpleFieldsBaseStyles = [(0, _litElement.css)(_templateObject())];
 exports.SimpleFieldsBaseStyles = SimpleFieldsBaseStyles;
-var SimpleFieldsTooltipStyles = [(0, _litElement.css)(_templateObject2())];
+var SimpleFieldsLabelStyles = [(0, _litElement.css)(_templateObject2())];
+exports.SimpleFieldsLabelStyles = SimpleFieldsLabelStyles;
+var SimpleFieldsTooltipStyles = [(0, _litElement.css)(_templateObject3())];
 exports.SimpleFieldsTooltipStyles = SimpleFieldsTooltipStyles;
 var SimpleFieldsButtonStyles = [].concat(SimpleFieldsTooltipStyles, [
-  (0, _litElement.css)(_templateObject3()),
+  (0, _litElement.css)(_templateObject4()),
 ]);
 exports.SimpleFieldsButtonStyles = SimpleFieldsButtonStyles;
-var SimpleFieldsDescriptionStyles = [(0, _litElement.css)(_templateObject4())];
+var SimpleFieldsDescriptionStyles = [(0, _litElement.css)(_templateObject5())];
 exports.SimpleFieldsDescriptionStyles = SimpleFieldsDescriptionStyles;
-var SimpleFieldsFieldsetStyles = [(0, _litElement.css)(_templateObject5())];
+var SimpleFieldsFieldsetStyles = [(0, _litElement.css)(_templateObject6())];
 exports.SimpleFieldsFieldsetStyles = SimpleFieldsFieldsetStyles;

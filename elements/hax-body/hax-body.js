@@ -123,7 +123,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   static get styles() {
     return [
       ...super.styles,
-      ...HaxUiBaseStyles,
       css`
         :host([edit-mode]),
         :host([edit-mode]) * ::slotted(*) {
@@ -410,6 +409,22 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
+    if (!window.HaxUiStyles) {
+      window.HaxUiStyles = document.createElement("div");
+      let s = document.createElement("style"),
+        css = HaxUiBaseStyles.map((st) => st.cssText).join("");
+      s.setAttribute("data-hax", true);
+      s.setAttribute("type", "text/css");
+      if (s.styleSheet) {
+        // IE
+        s.styleSheet.cssText = css;
+      } else {
+        // the world
+        s.appendChild(document.createTextNode(css));
+      }
+      console.log(document.getElementsByTagName("head")[0], s);
+      document.getElementsByTagName("head")[0].appendChild(s);
+    }
     setTimeout(() => {
       import("./lib/hax-context-container.js");
       import("./lib/hax-ce-context.js");

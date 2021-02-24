@@ -198,9 +198,10 @@ var HaxPicker =
       {
         key: "styles",
         get: function get() {
-          return [].concat(_toConsumableArray(_haxUiStyles.HaxTrayBaseStyles), [
-            (0, _litElement.css)(_templateObject()),
-          ]);
+          return [].concat(
+            _toConsumableArray(_haxUiStyles.HaxComponentStyles),
+            [(0, _litElement.css)(_templateObject())]
+          );
         },
       },
     ]);

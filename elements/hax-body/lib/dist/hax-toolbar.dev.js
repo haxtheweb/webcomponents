@@ -17,8 +17,6 @@ require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js");
 
 var _simpleToolbar = require("@lrnwebcomponents/simple-toolbar/simple-toolbar.js");
 
-var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
-
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -242,7 +240,6 @@ var HaxToolbarBehaviors = function HaxToolbarBehaviors(SuperClass) {
           get: function get() {
             return [].concat(
               _toConsumableArray(_get(_getPrototypeOf(_class), "styles", this)),
-              _toConsumableArray(_haxUiStyles.HaxUiColors),
               [(0, _litElement.css)(_templateObject())]
             );
           },

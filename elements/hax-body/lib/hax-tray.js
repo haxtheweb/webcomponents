@@ -15,7 +15,7 @@ import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTou
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import {
-  HaxTrayBaseStyles,
+  HaxComponentStyles,
   HaxTrayDetail,
 } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
@@ -91,6 +91,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     });
     autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
+      this.haxUiTheme = (this.globalPreferences || {}).haxUiTheme || "hax";
+      document.body.setAttribute("hax-ui-theme", this.haxUiTheme);
     });
     autorun(() => {
       this.editMode = toJS(HAXStore.editMode);
@@ -112,7 +114,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     return [
       ...(super.styles || []),
       ...HaxTrayDetail,
-      ...HaxTrayBaseStyles,
+      ...HaxComponentStyles,
       css`
         :host {
           display: block;
@@ -206,6 +208,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           border-bottom: 0px solid var(--hax-ui-border-color);
           padding: 0 var(--hax-ui-spacing-lg) 0;
           transition: all 0.3s linear;
+          max-width: calc(100% - 2 * var(--hax-ui-spacing-lg) - 2px);
         }
         #tray-detail[hidden] {
           height: 0px;
@@ -225,6 +228,12 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         hax-toolbar .group,
         simple-button-grid .group {
           border: none;
+          margin: 0;
+          padding: 0;
+        }
+        hax-toolbar .group {
+          justify-content: space-around;
+          flex: 0 0 auto;
         }
         hax-toolbar *[feature]::part(button) {
           border: 1px solid var(--hax-ui-color-accent-secondary);
@@ -232,26 +241,15 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         :host([edit-mode][collapsed]) hax-toolbar.tray-detail-ops {
           border-bottom: 1px solid var(--hax-ui-border-color);
         }
-        .group {
-          margin: 0;
-          padding: 0;
-          justify-content: space-around;
-          border: 1px solid var(--hax-ui-border-color);
-          flex: 0 0 auto;
-        }
-        #savegroup,
-        #haxsavebutton,
         #menugroup,
-        #menugroup > *,
-        #contentgroup,
-        #contentgroup > * {
+        #menugroup > * {
           flex: 1 1 auto;
-        }
-        #haxcancelbutton::part(dropdown-icon) {
-          display: none;
         }
         #menugroup > * {
           align-items: flex-start;
+        }
+        #haxcancelbutton::part(dropdown-icon) {
+          display: none;
         }
         #contentgroup > * {
           --simple-toolbar-button-white-space: wrap;
@@ -263,6 +261,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         #top-right::part(icon),
         #bottom-left::part(icon) {
           transform: rotate(-45deg);
+        }
+        #content-map::part(icon) {
+          transform: rotate(180deg);
         }
         hax-toolbar,
         hax-tray-button,
@@ -760,7 +761,11 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     return html` <simple-fields
       id="settingsform"
       disable-responsive
-      watch-color-prefs
+      code-theme="${this.haxUiTheme == "system"
+        ? "auto"
+        : this.haxUiTheme == "haxdark"
+        ? "vs-dark"
+        : "vs"}"
       ?hidden="${this.trayDetail !== "content-edit"}"
     ></simple-fields>`;
   }
@@ -985,6 +990,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       canRedo: {
         type: Boolean,
         attribute: "can-redo",
+      },
+      haxUiTheme: {
+        type: String,
       },
       /**
        * Showing preferences area.
