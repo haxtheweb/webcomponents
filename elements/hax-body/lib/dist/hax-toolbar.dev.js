@@ -86,7 +86,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n          .selected-buttons {\n            transition: 0.1s all ease-in-out;\n            width: 0;\n          }\n          :host([has-selected-text]) .selected-buttons {\n            width: 100%;\n          }\n          ::slotted(*) {\n            pointer-events: all;\n          }\n          ::slotted(.group) {\n            border: none;\n          }\n        ",
+    "\n          :host {\n            --hax-ui-border-radius: 0px;\n          }\n          .selected-buttons {\n            transition: 0.1s all ease-in-out;\n            width: 0;\n          }\n          :host([has-selected-text]) .selected-buttons {\n            width: 100%;\n          }\n          ::slotted(*) {\n            pointer-events: all;\n          }\n          ::slotted(.group) {\n            border: none;\n          }\n        ",
   ]);
 
   _templateObject = function _templateObject() {

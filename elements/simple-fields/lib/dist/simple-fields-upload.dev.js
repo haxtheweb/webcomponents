@@ -90,21 +90,24 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _templateObject3() {
+function _templateObject4() {
   var data = _taggedTemplateLiteral([" or "]);
 
-  _templateObject3 = function _templateObject3() {
+  _templateObject4 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2() {
+function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n      <div id="url-browse">\n        <simple-fields-field\n          id="url"\n          value="',
+    '\n      <div id="url-browse">\n        <simple-fields-field\n          id="url"\n          ?autofocus="',
+    '"\n          autocomplete="',
+    '"\n          value="',
     '"\n          @value-changed="',
-    '"\n          label="URL"\n          type="url"\n          auto-validate=""\n          part="url"\n          @click="',
+    '"\n          label="URL"\n          description="',
+    '"\n          type="url"\n          auto-validate=""\n          part="url"\n          @click="',
     '"\n          @mousedown="',
     '"\n          @focus="',
     '"\n        >\n          <simple-toolbar-button\n            id="browse"\n            label="Browse..."\n            show-text-label\n            @click="',
@@ -127,12 +130,10 @@ function _templateObject2() {
     '"\n            controls="fieldset"\n            slot="drop-label"\n            part="cancel-media"\n            ?hidden="',
     '"\n          >\n          </simple-toolbar-button>\n          <div\n            id="camerahole"\n            ?hidden="',
     '"\n            part="camera"\n            slot="drop-label"\n            part="camera-preview"\n          ></div>\n          <div\n            id="voicerecorder"\n            ?hidden="',
-    '"\n            slot="drop-label"\n            part="voice-preview"\n          ></div>\n        </vaadin-upload>\n      </div>\n      <div id="description" ?hidden="',
-    '" part="field-desc">\n        <div id="description" part="field-desc">\n          <slot name="description"></slot>\n          ',
-    "\n        </div>\n      </div>\n    ",
+    '"\n            slot="drop-label"\n            part="voice-preview"\n          ></div>\n        </vaadin-upload>\n      </div>\n    ',
   ]);
 
-  _templateObject2 = function _templateObject2() {
+  _templateObject3 = function _templateObject3() {
     return data;
   };
 
@@ -184,9 +185,23 @@ function _interopRequireWildcard(obj) {
   return newObj;
 }
 
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([
+    '\n      <fieldset part="fieldset">\n        ',
+    " ",
+    " \n      </fieldset>\n    ",
+  ]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          pointer-events: all;\n          overflow: visible;\n          transition: 0.3s all ease;\n          --simple-login-camera-aspect: 1.777777777777;\n          --simple-camera-snap-color: var(--simple-fields-color, currentColor);\n          --simple-camera-snap-background: var(\n            --simple-fields-background-color,\n            unset\n          );\n          --simple-camera-snap-border-radius: 2px;\n          --lumo-font-family: var(--simple-fields-font-family, sans-serif);\n          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);\n          --lumo-primary-font-color: var(--simple-fields-color, currentColor);\n          --lumo-base-color: var(--simple-fields-background-color, transparent);\n          /*\n          --lumo-primary-contrast-color: var(\n            --simple-fields-background-color,\n            transparent\n          );\n          --lumo-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-dark-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-light-primary-color: var(--simple-fields-color, currentColor);\n          --lumo-primary-text-color: var(--simple-fields-color, currentColor);\n          --lumo-body-text-color: var(--simple-fields-color, currentColor);\n          --lumo-header-text-color: var(--simple-fields-color, currentColor);\n          --lumo-secondary-text-color: var(--simple-fields-color, currentColor);\n          --lumo-contrast-20pct: transparent;\n          --lumo-disabled-text-color: var(--simple-fields-border-color, #999);\n          --lumo-contrast-5pct: rgba(127, 127, 127, 0.2);*/\n        }\n        #url-browse,\n        #drop-camera {\n          width: 100%;\n          font-family: var(--simple-fields-font-family, sans-serif);\n          font-size: var(--simple-fields-detail-font-size, 12px);\n        }\n        #drop-camera {\n          display: flex;\n          align-items: center;\n          flex-wrap: wrap;\n          align-items: center;\n          justify-content: center;\n        }\n        #browse {\n          margin-right: 0;\n        }\n        #url {\n          margin-bottom: var(--simple-fields-margin-small, 8px);\n        }\n        #drop,\n        #photo {\n          white-space: nowrap;\n        }\n        #upload-options {\n          transition: height 0.3s linear;\n        }\n        #cancel-camera {\n          display: block;\n          margin: 0;\n          margin: -12px -12px 0;\n          z-index: 2;\n        }\n        #cancel-camera::part(button) {\n          width: 24px;\n        }\n        simple-toolbar-button {\n          margin: 0 5px;\n        }\n        vaadin-upload {\n          padding: 0 var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin-small, 8px);\n          position: relative;\n          overflow: visible;\n        }\n        vaadin-upload::part(drop-label-icon) {\n          display: none;\n        }\n        vaadin-upload::part(add-button) {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          color: var(--simple-fields-color, currentColor);\n        }\n        vaadin-upload::part(drop-label) {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          color: var(--simple-fields-color, currentColor);\n          margin-bottom: 16px;\n          display: flex;\n          align-items: center;\n          justify-content: center;\n          padding: 0 calc(1 * var(--simple-fields-margin-small, 8px));\n          width: calc(100% - 2 * var(--simple-fields-margin-small) - 2px);\n        }\n        vaadin-upload.option-selfie::part(drop-label) {\n          display: block;\n        }\n        vaadin-upload.option-selfie #drop-camera {\n          display: none;\n        }\n        vaadin-upload[dragover] {\n          border-color: var(\n            --simple-fields-secondary-accent-color,\n            var(--simple-colors-default-theme-accent-3, #77e2ff)\n          );\n        }\n        vaadin-upload-file {\n          --disabled-text-color: #var(--simple-fields-border-color, #999);\n        }\n        simple-camera-snap {\n          --simple-camera-snap-button-container-bottom: 2px;\n          --simple-camera-snap-button-container-z-index: 5;\n          --simple-camera-snap-button-border-radius: 100%;\n          --simple-camera-snap-button-opacity: 0.7;\n        }\n      ",
+    "\n        :host {\n          pointer-events: all;\n          overflow: visible;\n          transition: 0.3s all ease;\n          --simple-login-camera-aspect: 1.777777777777;\n          --simple-camera-snap-color: var(--simple-fields-color, currentColor);\n          --simple-camera-snap-background: var(\n            --simple-fields-background-color,\n            unset\n          );\n          --simple-camera-snap-border-radius: 2px;\n          --lumo-font-family: var(--simple-fields-font-family, sans-serif);\n          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);\n          --lumo-primary-font-color: var(--simple-fields-color, currentColor);\n          --lumo-base-color: var(--simple-fields-background-color, transparent);\n        }\n        #url-browse,\n        #drop-camera {\n          width: 100%;\n          font-family: var(--simple-fields-button-font-family, sans-serif);\n          font-size: var(--simple-fields-button-font-size, 14px);\n        }\n        #drop-camera {\n          display: flex;\n          align-items: center;\n          flex-wrap: wrap;\n          align-items: center;\n          justify-content: center;\n        }\n        #browse {\n          margin-right: 0;\n        }\n        #url {\n          margin-bottom: var(--simple-fields-margin-small, 8px);\n        }\n        #url::part(option-inner){\n          overflow: hidden;\n          display: flex;\n          flex-direction: column;\n          justify-content: flex-end;\n        }\n        #drop,\n        #photo {\n          white-space: nowrap;\n        }\n        #upload-options {\n          transition: height 0.3s linear;\n        }\n        #cancel-camera {\n          display: block;\n          margin: 0;\n          margin: -12px -12px 0;\n          z-index: 2;\n        }\n        #cancel-camera::part(button) {\n          width: 24px;\n        }\n        simple-toolbar-button {\n          margin: 0 5px;\n        }\n        vaadin-upload {\n          padding: 0 var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin-small, 8px);\n          position: relative;\n          overflow: visible;\n        }\n        vaadin-upload::part(drop-label-icon) {\n          display: none;\n        }\n        vaadin-upload::part(add-button) {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          color: var(--simple-fields-color, currentColor);\n        }\n        vaadin-upload::part(drop-label) {\n          font-family: var(--simple-fields-font-family, sans-serif);\n          color: var(--simple-fields-color, currentColor);\n          margin-bottom: 16px;\n          display: flex;\n          align-items: center;\n          justify-content: center;\n          padding: 0 calc(1 * var(--simple-fields-margin-small, 8px));\n          width: calc(100% - 2 * var(--simple-fields-margin-small) - 2px);\n        }\n        vaadin-upload.option-selfie::part(drop-label) {\n          display: block;\n        }\n        vaadin-upload.option-selfie #drop-camera {\n          display: none;\n        }\n        vaadin-upload[dragover] {\n          border-color: var(\n            --simple-fields-secondary-accent-color,\n            var(--simple-colors-default-theme-accent-3, #77e2ff)\n          );\n        }\n        vaadin-upload-file {\n          --disabled-text-color: #var(--simple-fields-border-color, #999);\n        }\n        simple-camera-snap {\n          --simple-camera-snap-button-container-bottom: 2px;\n          --simple-camera-snap-button-container-z-index: 5;\n          --simple-camera-snap-button-border-radius: 100%;\n          --simple-camera-snap-button-opacity: 0.7;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -378,13 +393,23 @@ var SimpleFieldsUpload =
       _this.noVoiceRecord = true;
       return _this;
     }
-    /**
-     * LitElement life cycle - render callback
-     */
 
     _createClass(
       SimpleFieldsUpload,
       [
+        {
+          key: "render",
+          value: function render() {
+            return (0, _litElement.html)(
+              _templateObject2(),
+              this.legend,
+              this.fields
+            );
+          },
+          /**
+           * LitElement life cycle - render callback
+           */
+        },
         {
           key: "_handleCameraOption",
 
@@ -488,17 +513,33 @@ var SimpleFieldsUpload =
                 );
               }
             });
+            if (this.field && this.__delayedFocus) this.focus();
           },
           /**
            * LitElement / popular convention
            */
         },
         {
-          key: "_fileAboutToUpload",
+          key: "focus",
 
+          /**
+           * focuses on field
+           * @memberof SimpleFieldsContainer
+           */
+          value: function focus() {
+            if (this.field) {
+              this.field.focus();
+              this.__delayedFocus = false;
+            } else {
+              this.__delayedFocus = true;
+            }
+          },
           /**
            * Respond to uploading a file
            */
+        },
+        {
+          key: "_fileAboutToUpload",
           value: function _fileAboutToUpload(e) {
             this.dispatchEvent(
               new CustomEvent("upload-before", {
@@ -646,9 +687,12 @@ var SimpleFieldsUpload =
           key: "fields",
           get: function get() {
             return (0, _litElement.html)(
-              _templateObject2(),
+              _templateObject3(),
+              this.autofocus,
+              this.autocomplete,
               this.value || "",
               this.valueChanged,
+              this.description,
               function (e) {
                 return e.preventDefault();
               },
@@ -665,7 +709,7 @@ var SimpleFieldsUpload =
               this.option == "selfie" || this.option == "audio",
               !navigator.mediaDevices
                 ? ""
-                : (0, _litElement.html)(_templateObject3()),
+                : (0, _litElement.html)(_templateObject4()),
               function (e) {
                 return e.preventDefault();
               },
@@ -691,10 +735,30 @@ var SimpleFieldsUpload =
               this._handleCancel,
               this.option !== "selfie" && this.option !== "audio",
               this.option !== "selfie",
-              this.option !== "audio",
-              !this.description,
-              this.description
+              this.option !== "audio"
             );
+          },
+        },
+        {
+          key: "field",
+          get: function get() {
+            if (this.shadowRoot) {
+              if (
+                this.option == "selfie" &&
+                this.shadowRoot.querySelector("#cancel")
+              ) {
+                return this.shadowRoot.querySelector("#cancel");
+              } else if (
+                this.option == "audio" &&
+                this.shadowRoot.querySelector("#cancel")
+              ) {
+                return this.shadowRoot.querySelector("#cancel");
+              } else if (this.shadowRoot.querySelector("#url")) {
+                return this.shadowRoot.querySelector("#url");
+              }
+
+              return false;
+            }
           },
         },
       ],
@@ -706,6 +770,26 @@ var SimpleFieldsUpload =
               {},
               _get(_getPrototypeOf(SimpleFieldsUpload), "properties", this),
               {
+                /**
+                 * Hint for expected file type in file upload controls
+                 */
+                accept: {
+                  type: String,
+                },
+
+                /**
+                 * Hint for form autofill feature
+                 */
+                autocomplete: {
+                  type: String,
+                },
+
+                /**
+                 * Automatically focus on field when the page is loaded
+                 */
+                autofocus: {
+                  type: Boolean,
+                },
                 value: {
                   type: String,
                 },

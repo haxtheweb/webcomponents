@@ -3,17 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.SimpleFieldsTabs = void 0;
+exports.SimpleFieldsTab = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
 var _simpleFieldsFieldset = require("./simple-fields-fieldset.js");
 
-var _a11yTabs = require("@lrnwebcomponents/a11y-tabs/a11y-tabs.js");
-
-require("./simple-fields-tab.js");
-
-var _simpleFieldsUi = require("./simple-fields-ui.js");
+var _a11yTab = require("@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -82,18 +78,6 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _templateObject2() {
-  var data = _taggedTemplateLiteral([
-    "\n        :host {\n          border: 1px solid var(--simple-fields-border-color-light, #ccc);\n          padding: var(--simple-fields-margin-small, 8px) var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin, 16px);\n          background-color: var(--simple-fields-background-color, transparent); \n          border-radius: var(--simple-fields-border-radius, 2px);\n        }\n        :host([error]) #tabs .error {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: border 0.5s ease;\n        }\n      \n      ",
-  ]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
 function _toConsumableArray(arr) {
   return (
     _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
@@ -119,30 +103,6 @@ function _arrayWithoutHoles(arr) {
     }
     return arr2;
   }
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral([
-    '\n      <span class="label',
-    '" part="tab-label"\n        >',
-    "",
-    "</span\n      >\n    ",
-  ]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-  return Object.freeze(
-    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
-  );
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -238,102 +198,58 @@ function _setPrototypeOf(o, p) {
 }
 
 /**
- * `simple-fields-tabs` takes in a JSON schema of type array and builds a form,
+ * `simple-fields-tab` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
  *
  * @group simple-fields
- * @element simple-fields-tabs
- * @extends a11y-tabs
+ * @element simple-fields-tab
+ * @extends a11y-tab
  * @extends simple-fields-fieldset
  */
-var SimpleFieldsTabs =
+var SimpleFieldsTab =
   /*#__PURE__*/
-  (function (_A11yTabs) {
-    _inherits(SimpleFieldsTabs, _A11yTabs);
+  (function (_A11yTab) {
+    _inherits(SimpleFieldsTab, _A11yTab);
 
-    function SimpleFieldsTabs() {
-      var _this;
+    function SimpleFieldsTab() {
+      _classCallCheck(this, SimpleFieldsTab);
 
-      _classCallCheck(this, SimpleFieldsTabs);
-
-      _this = _possibleConstructorReturn(
+      return _possibleConstructorReturn(
         this,
-        _getPrototypeOf(SimpleFieldsTabs).call(this)
+        _getPrototypeOf(SimpleFieldsTab).apply(this, arguments)
       );
-      _this.fullWidth = true;
-      return _this;
     }
 
-    _createClass(
-      SimpleFieldsTabs,
-      [
-        {
-          key: "_tabLabel",
+    _createClass(SimpleFieldsTab, null, [
+      {
+        key: "tag",
+        get: function get() {
+          return "simple-fields-tab";
+        },
+      },
+      {
+        key: "styles",
+        get: function get() {
+          return _toConsumableArray(
+            _get(_getPrototypeOf(SimpleFieldsTab), "styles", this)
+          );
+        },
+      },
+      {
+        key: "properties",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(_getPrototypeOf(SimpleFieldsTab), "properties", this),
+            {},
+            _simpleFieldsFieldset.SimpleFieldsFieldset.properties
+          );
+        },
+      },
+    ]);
 
-          /**
-           * makes tab label
-           *
-           * @param {string} flag tab's flag
-           * @returns object
-           * @memberof A11yTabs
-           */
-          value: function _tabLabel(tab) {
-            return (0, _litElement.html)(
-              _templateObject(),
-              tab.error ? " error" : "",
-              tab.label,
-              tab.error ? "*" : ""
-            );
-          },
-        },
-        {
-          key: "tabQuery",
+    return SimpleFieldsTab;
+  })(_a11yTab.A11yTab);
 
-          /**
-           * query selector for tabs
-           * override this for custom elements that extend a11y-tabs
-           *
-           * @readonly
-           * @memberof A11yTabs
-           */
-          get: function get() {
-            return "simple-fields-tab";
-          },
-        },
-      ],
-      [
-        {
-          key: "tag",
-          get: function get() {
-            return "simple-fields-tabs";
-          },
-        },
-        {
-          key: "styles",
-          get: function get() {
-            return [].concat(
-              _toConsumableArray(this.A11yTabsCoreStyles),
-              _toConsumableArray(_simpleFieldsUi.SimpleFieldsButtonStyles),
-              [(0, _litElement.css)(_templateObject2())]
-            );
-          },
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return _objectSpread(
-              {},
-              _get(_getPrototypeOf(SimpleFieldsTabs), "properties", this),
-              {},
-              _simpleFieldsFieldset.SimpleFieldsFieldset.properties
-            );
-          },
-        },
-      ]
-    );
-
-    return SimpleFieldsTabs;
-  })(_a11yTabs.A11yTabs);
-
-exports.SimpleFieldsTabs = SimpleFieldsTabs;
-window.customElements.define(SimpleFieldsTabs.tag, SimpleFieldsTabs);
+exports.SimpleFieldsTab = SimpleFieldsTab;
+window.customElements.define(SimpleFieldsTab.tag, SimpleFieldsTab);

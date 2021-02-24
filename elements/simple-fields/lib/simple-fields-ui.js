@@ -84,29 +84,42 @@ export const SimpleFieldsButtonStyles = [
   ...SimpleFieldsTooltipStyles,
   css`
     button,
+    button[aria-selected],
     simple-toolbar-button::part(button) {
       color: var(--simple-fields-button-color, var(--simple-fields-color));
       background-color: var(
         --simple-fields-button-background-color,
         var(--simple-fields-background-color)
       );
+      border-width: 1px;
+      border-style: solid;
       border-color: var(
         --simple-fields-button-border-color,
         var(--simple-fields-border-color, #999)
       );
-      opacity: var(--simple-fields-button-focus-opacity, unset);
-      font-family: var(--simple-fields-detail-font-family);
-      font-size: var(--simple-fields-detail-font-size);
-      line-height: var(--simple-fields-detail-line-height);
+      opacity: var(--simple-fields-button-focus-opacity, 1);
+      font-family: var(
+        --simple-fields-button-font-family,
+        var(--simple-fields-font-family, sans-serif)
+      );
+      font-size: var(--simple-fields-button-font-size, 14px);
+      line-height: var(--simple-fields-button-line-height 22px);
       text-transform: var(--simple-fields-button-text-transform, unset);
       border-width: 1px;
       border-radius: var(--simple-fields-border-radius, 2px);
       padding: var(--simple-fields-button-padding-sm, 1px)
         var(--simple-fields-button-padding, 2px);
+      min-height: calc(
+        24px + 2 * var(--simple-fields-button-padding-sm, 2px) + 2px
+      );
     }
     button[aria-pressed="true"],
+    button[aria-selected="true"],
     simple-toolbar-button[toggled]::part(button) {
-      color: var(--simple-fields-button-toggled-color, unset);
+      color: var(
+        --simple-fields-button-toggled-color,
+        var(--simple-fields-accent-color, #3f51b5)
+      );
       background-color: var(
         --simple-fields-button-toggled-background-color,
         unset
@@ -115,10 +128,12 @@ export const SimpleFieldsButtonStyles = [
         --simple-fields-button-toggled-border-color,
         var(--simple-fields-color, currentColor)
       );
-      opacity: var(--simple-fields-button-toggled-opacity, unset);
+      opacity: var(--simple-fields-button-toggled-opacity, 1);
     }
     button:focus,
     button:hover,
+    button[aria-selected="false"]:not([disabled]):focus,
+    button[aria-selected="false"]:not([disabled]):hover,
     simple-toolbar-button:focus-within::part(button),
     simple-toolbar-button:hover::part(button) {
       color: var(--simple-fields-button-focus-color, unset);
@@ -130,9 +145,11 @@ export const SimpleFieldsButtonStyles = [
         --simple-fields-button-focus-border-color,
         var(--simple-fields-accent-color, #3f51b5)
       );
-      opacity: var(--simple-fields-button-focus-opacity, unset);
+      opacity: var(--simple-fields-button-focus-opacity, 1);
+      text-decoration: var(--simple-fields-button-focus-text-decoration, unset);
     }
     button:disabled,
+    button[disabled],
     simple-toolbar-button[disabled] {
       color: var(--simple-fields-button-disabled-color, unset);
       background-color: var(

@@ -283,7 +283,7 @@ export const HaxButton = [
 ];
 export const HaxFields = [
   css`
-    simple-fields-tabs::part(content) {
+    simple-fields-tabs {
       padding: var(--hax-ui-spacing-sm) 0 0;
       border: none;
       margin-left: calc(0 - var(--hax-ui-spacing-sm));

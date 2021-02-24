@@ -41,27 +41,12 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
           --lumo-error-color: var(--simple-fields-error-color, #dd2c00);
           --lumo-primary-font-color: var(--simple-fields-color, currentColor);
           --lumo-base-color: var(--simple-fields-background-color, transparent);
-          /*
-          --lumo-primary-contrast-color: var(
-            --simple-fields-background-color,
-            transparent
-          );
-          --lumo-primary-color: var(--simple-fields-color, currentColor);
-          --lumo-dark-primary-color: var(--simple-fields-color, currentColor);
-          --lumo-light-primary-color: var(--simple-fields-color, currentColor);
-          --lumo-primary-text-color: var(--simple-fields-color, currentColor);
-          --lumo-body-text-color: var(--simple-fields-color, currentColor);
-          --lumo-header-text-color: var(--simple-fields-color, currentColor);
-          --lumo-secondary-text-color: var(--simple-fields-color, currentColor);
-          --lumo-contrast-20pct: transparent;
-          --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
-          --lumo-contrast-5pct: rgba(127, 127, 127, 0.2);*/
         }
         #url-browse,
         #drop-camera {
           width: 100%;
-          font-family: var(--simple-fields-font-family, sans-serif);
-          font-size: var(--simple-fields-detail-font-size, 12px);
+          font-family: var(--simple-fields-button-font-family, sans-serif);
+          font-size: var(--simple-fields-button-font-size, 14px);
         }
         #drop-camera {
           display: flex;
@@ -75,6 +60,12 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
         }
         #url {
           margin-bottom: var(--simple-fields-margin-small, 8px);
+        }
+        #url::part(option-inner) {
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
         }
         #drop,
         #photo {
@@ -152,6 +143,11 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
     // the wiring is all there but the UI pattern is not
     this.noVoiceRecord = true;
   }
+  render() {
+    return html`
+      <fieldset part="fieldset">${this.legend} ${this.fields}</fieldset>
+    `;
+  }
   /**
    * LitElement life cycle - render callback
    */
@@ -160,9 +156,12 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
       <div id="url-browse">
         <simple-fields-field
           id="url"
+          ?autofocus="${this.autofocus}"
+          autocomplete="${this.autocomplete}"
           value="${this.value || ""}"
           @value-changed="${this.valueChanged}"
           label="URL"
+          description="${this.description}"
           type="url"
           auto-validate=""
           part="url"
@@ -259,12 +258,6 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
           ></div>
         </vaadin-upload>
       </div>
-      <div id="description" ?hidden="${!this.description}" part="field-desc">
-        <div id="description" part="field-desc">
-          <slot name="description"></slot>
-          ${this.description}
-        </div>
-      </div>
     `;
   }
   /**
@@ -337,6 +330,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
         );
       }
     });
+    if (this.field && this.__delayedFocus) this.focus();
   }
   /**
    * LitElement / popular convention
@@ -344,6 +338,24 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * Hint for expected file type in file upload controls
+       */
+      accept: {
+        type: String,
+      },
+      /**
+       * Hint for form autofill feature
+       */
+      autocomplete: {
+        type: String,
+      },
+      /**
+       * Automatically focus on field when the page is loaded
+       */
+      autofocus: {
+        type: Boolean,
+      },
       value: {
         type: String,
       },
@@ -365,6 +377,33 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
         attribute: "no-voice-record",
       },
     };
+  }
+  get field() {
+    if (this.shadowRoot) {
+      if (this.option == "selfie" && this.shadowRoot.querySelector("#cancel")) {
+        return this.shadowRoot.querySelector("#cancel");
+      } else if (
+        this.option == "audio" &&
+        this.shadowRoot.querySelector("#cancel")
+      ) {
+        return this.shadowRoot.querySelector("#cancel");
+      } else if (this.shadowRoot.querySelector("#url")) {
+        return this.shadowRoot.querySelector("#url");
+      }
+      return false;
+    }
+  }
+  /**
+   * focuses on field
+   * @memberof SimpleFieldsContainer
+   */
+  focus() {
+    if (this.field) {
+      this.field.focus();
+      this.__delayedFocus = false;
+    } else {
+      this.__delayedFocus = true;
+    }
   }
   /**
    * Respond to uploading a file
