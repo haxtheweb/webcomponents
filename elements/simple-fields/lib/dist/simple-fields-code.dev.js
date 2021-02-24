@@ -368,7 +368,8 @@ var SimpleFieldsCode =
                  * theme of code-editor
                  */
                 theme: {
-                  type: Number,
+                  type: String,
+                  reflect: true,
                 },
 
                 /**
@@ -399,7 +400,6 @@ var SimpleFieldsCode =
       _this.language = "html";
       _this.mode = "html";
       _this.readonly = false;
-      _this.theme = "auto";
       return _this;
     }
 
@@ -566,7 +566,7 @@ var SimpleFieldsCode =
             this.disabled,
             this.fontSize,
             this.__editorValue || "",
-            this.theme,
+            this.theme || "auto",
             this.language,
             this.mode,
             this.readonly || this.disabled,
