@@ -1864,7 +1864,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 activeRect.width -
                   this.contextMenus.plate.getBoundingClientRect().width +
                   1,
-                -26
+                -30
               );
             }
           } else {
@@ -1877,7 +1877,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   activeRect.width -
                     this.contextMenus.plate.getBoundingClientRect().width +
                     1,
-                  -26
+                  -30
                 );
               }
             }, 250);

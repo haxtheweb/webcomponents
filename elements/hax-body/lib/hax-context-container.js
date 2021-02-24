@@ -19,7 +19,6 @@ const HaxContextBehaviors = function (SuperClass) {
           :host {
             display: block;
             pointer-events: none;
-            min-height: 178px;
             --hax-ui-spacing-sm: 1px;
           }
           :host [hidden] {

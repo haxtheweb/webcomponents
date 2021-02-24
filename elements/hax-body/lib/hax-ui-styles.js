@@ -273,6 +273,7 @@ export const HaxButton = [
     }
     :host([disabled]) button[part="button"][disabled] {
       opacity: 0.5;
+      border: 1px solid var(--hax-ui-border-color);
     }
 
     *[show-text-label]::part(label) {
