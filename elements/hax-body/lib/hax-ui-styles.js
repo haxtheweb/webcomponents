@@ -163,7 +163,77 @@ export const HaxUiFields = [
   `,
 ];
 
-export const HaxUiTour = [css``];
+export const HaxTour = [
+  css`
+    simple-popover-manager[mode="simple-tour"] {
+      --simple-popover-border-color: var(--hax-ui-color);
+    }
+    simple-popover-manager[mode="simple-tour"]::part(simple-popover-heading) {
+      color: var(--hax-ui-background-color);
+      background-color: var(--hax-ui-color-accent);
+      padding: var(--hax-ui-spacing-xs);
+    }
+    simple-popover-manager[mode="simple-tour"] #close {
+      color: var(--hax-ui-background-color);
+      background-color: var(--hax-ui-color-accent);
+      outline: 1px solid var(--hax-ui-color-accent);
+      --simple-icon-button-border: 0px solid transparent;
+      --simple-icon-button-border-radius: var(--hax-ui-border-radius);
+      width: 24px;
+      height: 24px;
+    }
+    simple-popover-manager[mode="simple-tour"] #close:focus,
+    simple-popover-manager[mode="simple-tour"] #close:hover {
+      background-color: var(--hax-ui-color-accent-secondary);
+      --simple-icon-button-border: 0px solid transparent;
+    }
+    simple-popover-manager[mode="simple-tour"] h1 {
+      font-family: var(--hax-ui-font-family);
+      font-size: var(--hax-ui-font-size);
+      font-weight: normal;
+    }
+    simple-popover-manager[mode="simple-tour"] h2 {
+      font-family: var(--hax-ui-font-family);
+      font-size: var(--hax-ui-font-size-lg);
+      font-weight: normal;
+      color: var(--hax-ui-color-accent-secondary);
+      margin: var(--hax-ui-spacing-sm) 0 var(--hax-ui-spacing-lg);
+    }
+    simple-popover-manager[mode="simple-tour"]::part(simple-popover-body) {
+      font-size: var(--hax-ui-font-size);
+      color: var(--hax-ui-color);
+      background-color: var(--hax-ui-background-color);
+      padding: var(--hax-ui-spacing);
+    }
+    simple-popover-manager[mode="simple-tour"]:part(simple-popover-nav) {
+      background-color: var(--hax-ui-background-color);
+    }
+    simple-popover-manager[mode="simple-tour"]
+      simple-icon-button-lite[slot="nav"]::part(button) {
+      text-transform: capitalize;
+      font-size: var(--hax-ui-font-size-sm);
+      padding: var(--hax-ui-spacing-sm);
+      color: var(--hax-ui-color);
+      background-color: var(--hax-ui-background-color);
+      border: 1px solid var(--hax-ui-border-color);
+      border-radius: var(--hax-ui-border-radius);
+      background-color: var(--hax-ui-background-color);
+    }
+    simple-popover-manager[mode="simple-tour"]
+      simple-icon-button-lite[slot="nav"]::part(button):hover,
+    simple-popover-manager[mode="simple-tour"]
+      simple-icon-button-lite[slot="nav"]::part(button):focus-within {
+      color: var(--hax-ui-color);
+      background-color: var(--hax-ui-background-color-accent);
+      border-color: var(--hax-ui-color-accent);
+    }
+    simple-popover-manager[mode="simple-tour"]
+      simple-icon-button-lite[slot="nav"][disabled]::part(button) {
+      opacity: 0.5;
+      border: 1px solid var(--hax-ui-border-color);
+    }
+  `,
+];
 /**
  * controls text spacing and colors throughout Hax UI (but not content)
  */
@@ -172,6 +242,7 @@ export const HaxUiBaseStyles = [
   ...HaxUiSpacing,
   ...HaxUiFields,
   ...HaxUiTooltip,
+  ...HaxTour,
   ...HaxUiColors,
 ];
 export const HaxHexagon = [
@@ -341,6 +412,8 @@ export const HaxModal = [
       --simple-modal-z-index: 100000000;
       --simple-modal-height: 70vh;
       --simple-modal-width: 70vw;
+      --simple-modal-titlebar-font-size: var(--hax-ui-font-size);
+      --simple-modal-titlebar-font-family: var(--hax-ui-font-family);
       --simple-modal-titlebar-color: var(--hax-ui-background-color);
       --simple-modal-titlebar-background: var(--hax-ui-color-accent);
       --simple-modal-titlebar-padding: var(--hax-ui-spacing-xs);
@@ -354,7 +427,6 @@ export const HaxModal = [
     }
   `,
 ];
-export const HaxTour = [];
 
 /**
  * styles that need to be in the shadowRoot of their parent

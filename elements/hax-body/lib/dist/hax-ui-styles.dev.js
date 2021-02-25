@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.HaxUiStyles = exports.HaxTrayDetailHeadings = exports.HaxTrayDetail = exports.HaxComponentStyles = exports.HaxTour = exports.HaxModal = exports.HaxFields = exports.HaxButton = exports.HaxHexagon = exports.HaxUiBaseStyles = exports.HaxUiTour = exports.HaxUiFields = exports.HaxUiTooltip = exports.HaxUiColors = exports.HaxUiSpacing = exports.HaxUiText = void 0;
+exports.HaxUiStyles = exports.HaxTrayDetailHeadings = exports.HaxTrayDetail = exports.HaxComponentStyles = exports.HaxModal = exports.HaxFields = exports.HaxButton = exports.HaxHexagon = exports.HaxUiBaseStyles = exports.HaxTour = exports.HaxUiFields = exports.HaxUiTooltip = exports.HaxUiColors = exports.HaxUiSpacing = exports.HaxUiText = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
@@ -128,7 +128,7 @@ function _templateObject11() {
 
 function _templateObject10() {
   var data = _taggedTemplateLiteral([
-    "\n    simple-modal-template {\n      --simple-modal-z-index: 100000000;\n      --simple-modal-height: 70vh;\n      --simple-modal-width: 70vw;\n      --simple-modal-titlebar-color: var(--hax-ui-background-color);\n      --simple-modal-titlebar-background: var(--hax-ui-color-accent);\n      --simple-modal-titlebar-padding: var(--hax-ui-spacing-xs);\n      --simple-modal-titlebar-height: calc(20px + 2 * var(--hax-ui-spacing-xs));\n      --simple-modal-content-container-color: var(--hax-ui-color);\n      --simple-modal-content-container-background: var(\n        --hax-ui-background-color\n      );\n      --simple-modal-content-padding: var(--hax-ui-spacing-sm) 0px 0px;\n      --simple-modal-buttons-background: var(--hax-ui-background-color);\n    }\n  ",
+    "\n    simple-modal-template {\n      --simple-modal-z-index: 100000000;\n      --simple-modal-height: 70vh;\n      --simple-modal-width: 70vw;\n      --simple-modal-titlebar-font-size: var(--hax-ui-font-size);\n      --simple-modal-titlebar-font-family: var(--hax-ui-font-family);\n      --simple-modal-titlebar-color: var(--hax-ui-background-color);\n      --simple-modal-titlebar-background: var(--hax-ui-color-accent);\n      --simple-modal-titlebar-padding: var(--hax-ui-spacing-xs);\n      --simple-modal-titlebar-height: calc(20px + 2 * var(--hax-ui-spacing-xs));\n      --simple-modal-content-container-color: var(--hax-ui-color);\n      --simple-modal-content-container-background: var(\n        --hax-ui-background-color\n      );\n      --simple-modal-content-padding: var(--hax-ui-spacing-sm) 0px 0px;\n      --simple-modal-buttons-background: var(--hax-ui-background-color);\n    }\n  ",
   ]);
 
   _templateObject10 = function _templateObject10() {
@@ -175,7 +175,9 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral([
+    "\n    simple-popover-manager[mode=simple-tour] {\n      --simple-popover-border-color: var(--hax-ui-color);\n    }\n    simple-popover-manager[mode=simple-tour]::part(simple-popover-heading) {\n      color: var(--hax-ui-background-color);\n      background-color: var(--hax-ui-color-accent);\n      padding: var(--hax-ui-spacing-xs);\n    }\n    simple-popover-manager[mode=simple-tour] #close {\n      color: var(--hax-ui-background-color);\n      background-color: var(--hax-ui-color-accent);\n      outline: 1px solid var(--hax-ui-color-accent);\n      --simple-icon-button-border: 0px solid transparent;\n      --simple-icon-button-border-radius: var(--hax-ui-border-radius);\n      width:24px;\n      height: 24px;\n    }\n    simple-popover-manager[mode=simple-tour] #close:focus,\n    simple-popover-manager[mode=simple-tour] #close:hover { \n      background-color: var(--hax-ui-color-accent-secondary);\n      --simple-icon-button-border: 0px solid transparent;\n    }\n    simple-popover-manager[mode=simple-tour] h1 {\n      font-family: var(--hax-ui-font-family);\n      font-size: var(--hax-ui-font-size);\n      font-weight: normal;\n    }\n    simple-popover-manager[mode=simple-tour] h2 {\n      font-family: var(--hax-ui-font-family);\n      font-size: var(--hax-ui-font-size-lg);\n      font-weight: normal;\n      color: var(--hax-ui-color-accent-secondary);\n      margin: var(--hax-ui-spacing-sm) 0 var(--hax-ui-spacing-lg);\n    }\n    simple-popover-manager[mode=simple-tour]::part(simple-popover-body) {\n      font-size: var(--hax-ui-font-size);\n      color: var(--hax-ui-color);\n      background-color: var(\n        --hax-ui-background-color\n      );\n      padding: var(--hax-ui-spacing);\n    }\n    simple-popover-manager[mode=simple-tour]:part(simple-popover-nav) {\n      background-color: var(\n        --hax-ui-background-color\n      );\n    }\n    simple-popover-manager[mode=simple-tour] simple-icon-button-lite[slot=nav]::part(button) {\n      text-transform: capitalize;\n      font-size: var(--hax-ui-font-size-sm);\n      padding: var(--hax-ui-spacing-sm);\n      color: var(--hax-ui-color);\n      background-color: var(--hax-ui-background-color);\n      border: 1px solid var(--hax-ui-border-color);\n      border-radius: var(--hax-ui-border-radius);\n      background-color: var(\n        --hax-ui-background-color\n      );\n    }\n    simple-popover-manager[mode=simple-tour] simple-icon-button-lite[slot=nav]::part(button):hover,\n    simple-popover-manager[mode=simple-tour] simple-icon-button-lite[slot=nav]::part(button):focus-within {\n      color: var(--hax-ui-color);\n      background-color: var(--hax-ui-background-color-accent);\n      border-color: var(--hax-ui-color-accent);\n    }\n    simple-popover-manager[mode=simple-tour] simple-icon-button-lite[slot=nav][disabled]::part(button) {\n      opacity: 0.5;\n      border: 1px solid var(--hax-ui-border-color);\n    }\n  ",
+  ]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -263,17 +265,18 @@ var HaxUiTooltip = [(0, _litElement.css)(_templateObject4())];
 exports.HaxUiTooltip = HaxUiTooltip;
 var HaxUiFields = [(0, _litElement.css)(_templateObject5())];
 exports.HaxUiFields = HaxUiFields;
-var HaxUiTour = [(0, _litElement.css)(_templateObject6())];
+var HaxTour = [(0, _litElement.css)(_templateObject6())];
 /**
  * controls text spacing and colors throughout Hax UI (but not content)
  */
 
-exports.HaxUiTour = HaxUiTour;
+exports.HaxTour = HaxTour;
 var HaxUiBaseStyles = [].concat(
   HaxUiText,
   HaxUiSpacing,
   HaxUiFields,
   HaxUiTooltip,
+  HaxTour,
   HaxUiColors
 );
 exports.HaxUiBaseStyles = HaxUiBaseStyles;
@@ -284,13 +287,11 @@ exports.HaxButton = HaxButton;
 var HaxFields = [(0, _litElement.css)(_templateObject9())];
 exports.HaxFields = HaxFields;
 var HaxModal = [(0, _litElement.css)(_templateObject10())];
-exports.HaxModal = HaxModal;
-var HaxTour = [];
 /**
  * styles that need to be in the shadowRoot of their parent
  */
 
-exports.HaxTour = HaxTour;
+exports.HaxModal = HaxModal;
 var HaxComponentStyles = [].concat(HaxModal, HaxButton, HaxHexagon, HaxFields);
 exports.HaxComponentStyles = HaxComponentStyles;
 var HaxTrayDetail = [(0, _litElement.css)(_templateObject11())];
