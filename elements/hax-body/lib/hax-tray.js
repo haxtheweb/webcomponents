@@ -90,6 +90,10 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       this.activeNode = toJS(HAXStore.activeNode);
     });
     autorun(() => {
+      this.tourOpened = toJS(HAXStore.tourOpened);
+      console.log("tour", this.tourOpened);
+    });
+    autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
       this.haxUiTheme = (this.globalPreferences || {}).haxUiTheme || "hax";
       document.body.setAttribute("hax-ui-theme", this.haxUiTheme);
@@ -495,10 +499,12 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       <div class="group" id="tourgroup">
         <hax-tray-button
           feature
-          event-name="start-tour"
+          event-name="${this.tourOpened ? "stop-tour" : "start-tour"}"
           icon="help"
           label="Take a tour"
           voice-command="start tour"
+          toggles
+          ?toggled="${this.tourOpened}"
         ></hax-tray-button>
       </div>
     `;
@@ -903,7 +909,11 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         this.collapsed = false;
         break;
       case "start-tour":
-        window.SimpleTourManager.requestAvailability().startTour("hax");
+        this.startTour();
+        break;
+      case "stop-tour":
+        window.SimpleTourManager.requestAvailability().stopTour("hax");
+        //window.SimpleTourManager.removeEventListener('tour-changed', e=>console.log(e));
         break;
       case "undo":
         HAXStore.activeHaxBody.undo();
@@ -929,6 +939,22 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         }
         break;
     }
+  }
+  startTour() {
+    this.__tour = this.__tour || window.SimpleTourManager.requestAvailability();
+    window.addEventListener("tour-changed", this._handleTourChanged.bind(this));
+    this.__tour.startTour("hax");
+  }
+  stopTour() {
+    this.__tour = this.__tour || window.SimpleTourManager.requestAvailability();
+    this.__tour.stopTour("hax");
+    window.removeEventListener(
+      "tour-changed",
+      this._handleTourChanged.bind(this)
+    );
+  }
+  _handleTourChanged(e) {
+    this.tourOpened = e.detail.active == this.tourName;
   }
   /**
    * LitElement / popular convention
@@ -1051,6 +1077,12 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
        */
       trayLabel: {
         type: String,
+      },
+      tourOpened: {
+        type: String,
+      },
+      __tour: {
+        type: Object,
       },
     };
   }

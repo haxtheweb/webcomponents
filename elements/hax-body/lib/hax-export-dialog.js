@@ -36,7 +36,6 @@ class HaxExportDialog extends LitElement {
    */
   modalToggle(e) {
     if (e.detail.id == "hax-export") {
-      console.log(e.detail);
       e.detail.elements.custom.openSource();
     }
   }
@@ -44,6 +43,7 @@ class HaxExportDialog extends LitElement {
     return html`
       <simple-modal-template
         modal-id="hax-export"
+        mode="hax-ui"
         id="dialog"
         .title="${this.title}"
       >

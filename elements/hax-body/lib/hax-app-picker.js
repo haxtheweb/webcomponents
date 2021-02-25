@@ -80,7 +80,11 @@ class HaxAppPicker extends LitElement {
   }
   render() {
     return html`
-      <simple-modal-template .title="${this.title}" modal-id="hax-picker">
+      <simple-modal-template
+        .title="${this.title}"
+        modal-id="hax-picker"
+        mode="hax-ui"
+      >
         <hax-picker slot="content"></hax-picker>
       </simple-modal-template>
     `;

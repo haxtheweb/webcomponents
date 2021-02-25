@@ -72,7 +72,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <simple-modal-template\n        modal-id="hax-export"\n        id="dialog"\n        .title="',
+    '\n      <simple-modal-template\n        modal-id="hax-export"\n        mode="hax-ui"\n        id="dialog"\n        .title="',
     '"\n      >\n        <hax-view-source slot="custom"></hax-view-source>\n      </simple-modal-template>\n    ',
   ]);
 
@@ -234,7 +234,6 @@ var HaxExportDialog =
           key: "modalToggle",
           value: function modalToggle(e) {
             if (e.detail.id == "hax-export") {
-              console.log(e.detail);
               e.detail.elements.custom.openSource();
             }
           },

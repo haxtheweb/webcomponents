@@ -44,17 +44,19 @@ class SimpleTour extends LitElement {
       e.detail.name,
       e.detail.target,
       e.detail.title,
-      e.detail.description
+      e.detail.description,
+      e.detail.mode
     );
   }
   /**
    * Create a tour stop, add to the stack, then return the stop object
    */
-  createTourStop(name, target, title, description) {
+  createTourStop(name, target, title, description, mode) {
     let s = new TourStop();
     s.target = target;
     s.title = title;
     s.description = description;
+    s.mode = mode;
     this.addStops(name, [s]);
     return s;
   }
@@ -104,6 +106,15 @@ class SimpleTour extends LitElement {
   }
   startTour(name) {
     this.active = name;
+
+    this.dispatchEvent(
+      new CustomEvent("tour-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
   }
   stopTour(e) {
     window.SimplePopoverManager.requestAvailability().setPopover(
@@ -114,6 +125,15 @@ class SimpleTour extends LitElement {
     );
     this.stop = -1;
     this.active = null;
+
+    this.dispatchEvent(
+      new CustomEvent("tour-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
   }
   /**
    * Render tour buttons as block
@@ -223,7 +243,8 @@ class SimpleTour extends LitElement {
           this,
           this.stacks[this.active][this.stop].target,
           true,
-          this.orientation
+          this.orientation,
+          this.active
         );
         this.scrollHere(this.stacks[this.active][this.stop].target);
         let target = this.stacks[this.active][this.stop].target;

@@ -213,7 +213,8 @@ var SimpleTour =
               e.detail.name,
               e.detail.target,
               e.detail.title,
-              e.detail.description
+              e.detail.description,
+              e.detail.mode
             );
           },
           /**
@@ -222,11 +223,18 @@ var SimpleTour =
         },
         {
           key: "createTourStop",
-          value: function createTourStop(name, target, title, description) {
+          value: function createTourStop(
+            name,
+            target,
+            title,
+            description,
+            mode
+          ) {
             var s = new TourStop();
             s.target = target;
             s.title = title;
             s.description = description;
+            s.mode = mode;
             this.addStops(name, [s]);
             return s;
           },
@@ -299,6 +307,14 @@ var SimpleTour =
           key: "startTour",
           value: function startTour(name) {
             this.active = name;
+            this.dispatchEvent(
+              new CustomEvent("tour-changed", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: this,
+              })
+            );
           },
         },
         {
@@ -312,6 +328,14 @@ var SimpleTour =
             );
             this.stop = -1;
             this.active = null;
+            this.dispatchEvent(
+              new CustomEvent("tour-changed", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: this,
+              })
+            );
           },
           /**
            * Render tour buttons as block
@@ -415,7 +439,8 @@ var SimpleTour =
                   _this3,
                   _this3.stacks[_this3.active][_this3.stop].target,
                   true,
-                  _this3.orientation
+                  _this3.orientation,
+                  _this3.active
                 );
 
                 _this3.scrollHere(

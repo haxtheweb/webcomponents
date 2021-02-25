@@ -43,7 +43,7 @@ function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <simple-popover\n        auto\n        part="simple-popover"\n        ?hidden="',
     '"\n        position="',
-    '"\n      >\n        <div class="heading" part="simple-popover-heading"><slot name="heading"></slot></div>\n        <div class="body" part="simple-popover-body"><slot name="body"></slot></div>\n        <div class="nav" part="simple-popover-nav"><slot name="nav"></slot></div>\n      </simple-popover>\n    ',
+    '"\n      >\n        <div class="heading" part="simple-popover-heading">\n          <slot name="heading"></slot>\n        </div>\n        <div class="body" part="simple-popover-body">\n          <slot name="body"></slot>\n        </div>\n        <div class="nav" part="simple-popover-nav">\n          <slot name="nav"></slot>\n        </div>\n      </simple-popover>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -199,12 +199,13 @@ var SimplePopoverManager =
               arguments.length > 3 && arguments[3] !== undefined
                 ? arguments[3]
                 : "tb";
-            console.log(context, el, opened, orientation); // this has the potential to cause 1 popover to change content and parent
+            var mode = arguments.length > 4 ? arguments[4] : undefined;
+
+            // this has the potential to cause 1 popover to change content and parent
             // in the same action. This would cause a open state change in 1 element
             // which would trigger a global state change to match.
             // The ignore flag implies we are actively switching an operation and thus
             // need to ignore the follow up change record, much like a debounce
-
             if (this.__ignore) {
               this.__ignore = false;
               setTimeout(function () {
@@ -224,12 +225,7 @@ var SimplePopoverManager =
                 }
 
                 this.context = context;
-                this.setAttribute(
-                  "mode",
-                  this.context && this.context.tagName
-                    ? this.context.tagName.toLowerCase()
-                    : ""
-                );
+                this.setAttribute("mode", mode || "");
                 this.popover.target = null;
                 this.popover.target = el;
               }

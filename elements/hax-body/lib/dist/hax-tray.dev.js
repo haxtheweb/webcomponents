@@ -291,7 +291,9 @@ function _templateObject5() {
     '"\n              index="3"\n            >\n              >\n            </hax-tray-button>\n          </simple-toolbar-menu-item>\n          <div slot="tour" data-stop-title>Menu Position</div>\n          <div slot="tour" data-stop-content>\n            Change which side of the screen the menu is affixed to visually.\n          </div>\n        </hax-toolbar-menu>\n        <hax-tray-button\n          feature\n          voice-command="toggle menu"\n          id="toggle-tray-size"\n          event-name="toggle-tray-size"\n          show-text-label\n          icon="',
     '"\n          label="',
     '"\n          tooltip="',
-    '"\n          data-simple-tour-stop\n          show-text-label\n          text-align="left"\n        >\n          <div data-stop-title>Menu Size</div>\n          <div data-stop-content>Expand or collapse the menu visually.</div>\n        </hax-tray-button>\n      </div>\n      <div class="group" id="tourgroup">\n        <hax-tray-button\n          feature\n          event-name="start-tour"\n          icon="help"\n          label="Take a tour"\n          voice-command="start tour"\n        ></hax-tray-button>\n      </div>\n    ',
+    '"\n          data-simple-tour-stop\n          show-text-label\n          text-align="left"\n        >\n          <div data-stop-title>Menu Size</div>\n          <div data-stop-content>Expand or collapse the menu visually.</div>\n        </hax-tray-button>\n      </div>\n      <div class="group" id="tourgroup">\n        <hax-tray-button\n          feature\n          event-name="',
+    '"\n          icon="help"\n          label="Take a tour"\n          voice-command="start tour"\n          toggles\n          ?toggled="',
+    '"\n        ></hax-tray-button>\n      </div>\n    ',
   ]);
 
   _templateObject5 = function _templateObject5() {
@@ -680,6 +682,10 @@ var HaxTray =
         _this.activeNode = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode);
       });
       (0, _mobx.autorun)(function () {
+        _this.tourOpened = (0, _mobx.toJS)(_haxStore.HAXStore.tourOpened);
+        console.log("tour", _this.tourOpened);
+      });
+      (0, _mobx.autorun)(function () {
         _this.globalPreferences = (0, _mobx.toJS)(
           _haxStore.HAXStore.globalPreferences
         );
@@ -874,7 +880,12 @@ var HaxTray =
                 break;
 
               case "start-tour":
-                window.SimpleTourManager.requestAvailability().startTour("hax");
+                this.startTour();
+                break;
+
+              case "stop-tour":
+                window.SimpleTourManager.requestAvailability().stopTour("hax"); //window.SimpleTourManager.removeEventListener('tour-changed', e=>console.log(e));
+
                 break;
 
               case "undo":
@@ -906,6 +917,39 @@ var HaxTray =
 
                 break;
             }
+          },
+        },
+        {
+          key: "startTour",
+          value: function startTour() {
+            this.__tour =
+              this.__tour || window.SimpleTourManager.requestAvailability();
+            window.addEventListener(
+              "tour-changed",
+              this._handleTourChanged.bind(this)
+            );
+
+            this.__tour.startTour("hax");
+          },
+        },
+        {
+          key: "stopTour",
+          value: function stopTour() {
+            this.__tour =
+              this.__tour || window.SimpleTourManager.requestAvailability();
+
+            this.__tour.stopTour("hax");
+
+            window.removeEventListener(
+              "tour-changed",
+              this._handleTourChanged.bind(this)
+            );
+          },
+        },
+        {
+          key: "_handleTourChanged",
+          value: function _handleTourChanged(e) {
+            this.tourOpened = e.detail.active == this.tourName;
           },
           /**
            * LitElement / popular convention
@@ -1780,7 +1824,9 @@ var HaxTray =
               this.elementAlign == "bottom-right",
               this.collapsed ? "unfold-more" : "unfold-less",
               this.collapsed ? "Expand" : "Collapse",
-              this.collapsed ? "Expand Menu" : "Collapse Menu"
+              this.collapsed ? "Expand Menu" : "Collapse Menu",
+              this.tourOpened ? "stop-tour" : "start-tour",
+              this.tourOpened
             );
           },
         },
@@ -2099,6 +2145,12 @@ var HaxTray =
                  */
                 trayLabel: {
                   type: String,
+                },
+                tourOpened: {
+                  type: String,
+                },
+                __tour: {
+                  type: Object,
                 },
               }
             );

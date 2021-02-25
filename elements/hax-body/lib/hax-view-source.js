@@ -46,6 +46,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
           flex: 0 0 auto;
           width: 100%;
           display: flex;
+          background-color: var(--hax-ui-background-color);
         }
         hax-toolbar::part(buttons) {
           justify-content: space-between;
