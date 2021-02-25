@@ -235,6 +235,7 @@ class SimpleModal extends LitElement {
       <div id="simple-modal-content">
         <slot name="content"></slot>
       </div>
+      <slot name="custom"></slot>
       <div class="buttons">
         <slot name="buttons"></slot>
       </div>
@@ -395,7 +396,7 @@ class SimpleModal extends LitElement {
     let element;
     // append element areas into the appropriate slots
     // ensuring they are set if it wasn't previously
-    let slots = ["header", "content", "buttons"];
+    let slots = ["header", "content", "buttons", "custom"];
     if (id) {
       this.setAttribute("id", id);
     } else {

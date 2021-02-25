@@ -106,7 +106,7 @@ function _templateObject() {
     '</h2>\n        <div></div>\n        <simple-icon-button-lite\n          id="close"\n          dark\n          icon="',
     '"\n          @click="',
     '"\n          label="',
-    '"\n        >\n        </simple-icon-button-lite>\n      </div>\n      <div id="headerbar"><slot name="header"></slot></div>\n      <div id="simple-modal-content">\n        <slot name="content"></slot>\n      </div>\n      <div class="buttons">\n        <slot name="buttons"></slot>\n      </div>\n    </web-dialog>',
+    '"\n        >\n        </simple-icon-button-lite>\n      </div>\n      <div id="headerbar"><slot name="header"></slot></div>\n      <div id="simple-modal-content">\n        <slot name="content"></slot>\n      </div>\n      <slot name="custom"></slot>\n      <div class="buttons">\n        <slot name="buttons"></slot>\n      </div>\n    </web-dialog>',
   ]);
 
   _templateObject = function _templateObject() {
@@ -553,7 +553,7 @@ var SimpleModal =
           var element; // append element areas into the appropriate slots
           // ensuring they are set if it wasn't previously
 
-          var slots = ["header", "content", "buttons"];
+          var slots = ["header", "content", "buttons", "custom"];
 
           if (id) {
             this.setAttribute("id", id);

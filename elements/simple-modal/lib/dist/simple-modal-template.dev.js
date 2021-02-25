@@ -255,6 +255,7 @@ var SimpleModalTemplate =
                   header: this._getSlot("header"),
                   content: this._getSlot("content"),
                   buttons: this._getSlot("buttons"),
+                  custom: this._getCustom(),
                 },
                 resize: this.resize,
                 invokedBy: target,
@@ -265,6 +266,13 @@ var SimpleModalTemplate =
               },
             });
             window.dispatchEvent(evt);
+          },
+        },
+        {
+          key: "_getCustom",
+          value: function _getCustom() {
+            var slot = this.querySelectorAll('[slot="custom"]');
+            return slot.length == 1 ? slot[0] : this._getSlot("custom");
           },
           /**
            * clones content in a named slot
