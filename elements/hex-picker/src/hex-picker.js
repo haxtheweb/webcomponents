@@ -104,7 +104,7 @@ class HexPicker extends LitElement {
         }
 
         .color-square {
-          background-color: #00000000;
+          background-color: #000000ff;
           border: 1px dotted black;
           width: var(--color-picker-square-width, 15px);
           height: var(--color-picker-square-height, 15px);
@@ -133,7 +133,7 @@ class HexPicker extends LitElement {
         .large-display {
           width: var(--color-picker-width);
           height: var(--color-picker-lg-block-height, 100px);
-          background-color: #00000000;
+          background-color: #000000ff;
           border: 1px dotted black;
           border-radius: 2px;
         }
@@ -153,11 +153,11 @@ class HexPicker extends LitElement {
    */
   constructor() {
     super();
-    this.value = "#00000000";
+    this.value = "#000000FF";
     this._rValue = 0;
     this._gValue = 0;
     this._bValue = 0;
-    this._oValue = 0;
+    this._oValue = 255;
     this.disabled = false;
   }
 
@@ -166,7 +166,8 @@ class HexPicker extends LitElement {
       ${this.largeDisplay ? html`<div class="large-display"></div>` : ``}
       <div class="input-container">
         <input
-          class="text-input" 
+          class="text-input"
+          maxlength="9" 
           @input="${this._inputChanged}"
           @keydown="${this._validateInput}" 
           .disabled=${this.disabled}>
@@ -184,7 +185,11 @@ class HexPicker extends LitElement {
 
   _validateInput(event) {
     let char = String.fromCharCode(event.which);
-    if (!char.match(/[0-9A-Fa-f\b]/g)) {
+    if (
+      !char.match(/[0-9A-Fa-f\b]/g) &&
+      event.which !== 39 &&
+      event.which !== 37
+    ) {
       event.preventDefault();
     }
   }
@@ -240,17 +245,42 @@ class HexPicker extends LitElement {
   }
 
   _hexToRgb(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(
-      hex
-    );
-    return result
-      ? {
-          r: parseInt(result[1], 16),
-          g: parseInt(result[2], 16),
-          b: parseInt(result[3], 16),
-          o: parseInt(result[4], 16),
-        }
-      : null;
+    if (hex.length === 4) {
+      return {
+        r: parseInt(hex[1] + "F", 16),
+        g: parseInt(hex[2] + "F", 16),
+        b: parseInt(hex[3] + "F", 16),
+        o: 0,
+      };
+    } else if (hex.length === 5) {
+      return {
+        r: parseInt(hex[1] + "F", 16),
+        g: parseInt(hex[2] + "F", 16),
+        b: parseInt(hex[3] + "F", 16),
+        o: parseInt(hex[4] + "F", 16),
+      };
+    } else if (hex.length === 7) {
+      return {
+        r: parseInt(hex[1] + hex[2], 16),
+        g: parseInt(hex[3] + hex[4], 16),
+        b: parseInt(hex[5] + hex[6], 16),
+        o: 0,
+      };
+    } else if (hex.length === 9) {
+      return {
+        r: parseInt(hex[1] + hex[2], 16),
+        g: parseInt(hex[3] + hex[4], 16),
+        b: parseInt(hex[5] + hex[6], 16),
+        o: parseInt(hex[7] + hex[8], 16),
+      };
+    } else {
+      return {
+        r: 0,
+        g: 0,
+        b: 0,
+        o: 0,
+      };
+    }
   }
 
   _fieldSetChange(event) {
@@ -282,14 +312,15 @@ class HexPicker extends LitElement {
     this._dispatchChange(computedHex);
   }
 
-  _dispatchChange(value) {
-    let customEvent = new CustomEvent("value-changed", {
-      bubbles: true,
-      cancelable: false,
-      composed: false,
-      detail: value,
-    });
-    this.dispatchEvent(customEvent);
+  _dispatchChange() {
+    this.dispatchEvent(
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        cancelable: false,
+        composed: false,
+        detail: this,
+      })
+    );
   }
 
   renderFieldSet(value) {
