@@ -97,9 +97,15 @@ class SimplePopoverManager extends LitElement {
         ?hidden="${!this.opened}"
         position="${this.position}"
       >
-        <div class="heading"><slot name="heading"></slot></div>
-        <div class="body"><slot name="body"></slot></div>
-        <div class="nav"><slot name="nav"></slot></div>
+        <div class="heading" part="simple-popover-heading">
+          <slot name="heading"></slot>
+        </div>
+        <div class="body" part="simple-popover-body">
+          <slot name="body"></slot>
+        </div>
+        <div class="nav" part="simple-popover-nav">
+          <slot name="nav"></slot>
+        </div>
       </simple-popover>
     `;
   }
@@ -157,6 +163,12 @@ class SimplePopoverManager extends LitElement {
           this.__ignore = true;
         }
         this.context = context;
+        this.setAttribute(
+          "mode",
+          this.context && this.context.tagName
+            ? this.context.tagName.toLowerCase()
+            : ""
+        );
         this.popover.target = null;
         this.popover.target = el;
       }

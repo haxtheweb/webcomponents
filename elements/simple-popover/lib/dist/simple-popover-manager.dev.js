@@ -43,7 +43,7 @@ function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <simple-popover\n        auto\n        part="simple-popover"\n        ?hidden="',
     '"\n        position="',
-    '"\n      >\n        <div class="heading"><slot name="heading"></slot></div>\n        <div class="body"><slot name="body"></slot></div>\n        <div class="nav"><slot name="nav"></slot></div>\n      </simple-popover>\n    ',
+    '"\n      >\n        <div class="heading" part="simple-popover-heading"><slot name="heading"></slot></div>\n        <div class="body" part="simple-popover-body"><slot name="body"></slot></div>\n        <div class="nav" part="simple-popover-nav"><slot name="nav"></slot></div>\n      </simple-popover>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -224,6 +224,12 @@ var SimplePopoverManager =
                 }
 
                 this.context = context;
+                this.setAttribute(
+                  "mode",
+                  this.context && this.context.tagName
+                    ? this.context.tagName.toLowerCase()
+                    : ""
+                );
                 this.popover.target = null;
                 this.popover.target = el;
               }

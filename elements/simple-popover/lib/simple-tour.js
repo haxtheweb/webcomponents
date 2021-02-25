@@ -133,7 +133,6 @@ class SimpleTour extends LitElement {
         icon="close"
       >
       </simple-icon-button-lite>
-      <simple-tooltip for="close" slot="heading"> Stop Tour </simple-tooltip>
       <simple-icon-button-lite
         id="prev"
         slot="nav"
@@ -157,6 +156,7 @@ class SimpleTour extends LitElement {
         show-text-label
       >
       </simple-icon-button-lite>
+      <simple-tooltip for="close" slot="body"> Stop Tour </simple-tooltip>
       <simple-tooltip for="next" position="top" slot="nav">
         Next Item
       </simple-tooltip>`;
