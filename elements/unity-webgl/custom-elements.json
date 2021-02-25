@@ -1,0 +1,35 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "unity-webgl",
+      "path": "./src/unity-webgl.js",
+      "description": "`unity-webgl`\n`Unity WebGL player`",
+      "properties": [
+        {
+          "name": "html",
+          "description": "This is a convention, not the standard to return HTML of the element",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "unity-webgl",
+      "path": "./unity-webgl.js",
+      "description": "`unity-webgl`\n`Unity WebGL player`",
+      "properties": [
+        {
+          "name": "html",
+          "description": "This is a convention, not the standard to return HTML of the element",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}
