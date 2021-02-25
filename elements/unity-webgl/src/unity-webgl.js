@@ -177,7 +177,7 @@ class UnityWebgl extends HTMLElement {
       gizmo: {
         title: "Unity Player",
         description: "Unity WebGL Player",
-        icon: "av:play-circle-filled",
+        icon: "av:games",
         color: "purple",
         groups: ["3D"],
         handles: [],
