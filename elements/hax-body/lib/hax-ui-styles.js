@@ -165,14 +165,22 @@ export const HaxUiFields = [
 
 export const HaxTour = [
   css`
+    simple-modal[mode="hax-ui"],
     simple-popover-manager[mode="simple-tour"] {
-      --simple-popover-border-color: var(--hax-ui-color);
+      --simple-modal-height: 70vh;
+      --simple-modal-width: 70vw;
     }
+    simple-modal[mode="hax-ui"]::part(dialog) {
+      --simple-modal-z-index: 100000000 !important;
+    }
+    simple-modal[mode="hax-ui"]::part(titlebar),
     simple-popover-manager[mode="simple-tour"]::part(simple-popover-heading) {
       color: var(--hax-ui-background-color);
       background-color: var(--hax-ui-color-accent);
       padding: var(--hax-ui-spacing-xs);
+      margin: 0;
     }
+    simple-modal[mode="hax-ui"]::part(close),
     simple-popover-manager[mode="simple-tour"] #close {
       color: var(--hax-ui-background-color);
       background-color: var(--hax-ui-color-accent);
@@ -181,16 +189,22 @@ export const HaxTour = [
       --simple-icon-button-border-radius: var(--hax-ui-border-radius);
       width: 24px;
       height: 24px;
+      padding: 0;
     }
+    simple-modal[mode="hax-ui"]:focus-within::part(close),
+    simple-modal[mode="hax-ui"]:hover::part(close),
     simple-popover-manager[mode="simple-tour"] #close:focus,
     simple-popover-manager[mode="simple-tour"] #close:hover {
       background-color: var(--hax-ui-color-accent-secondary);
       --simple-icon-button-border: 0px solid transparent;
     }
+    simple-modal[mode="hax-ui"]::part(title),
     simple-popover-manager[mode="simple-tour"] h1 {
       font-family: var(--hax-ui-font-family);
       font-size: var(--hax-ui-font-size);
       font-weight: normal;
+      margin: 0 var(--hax-ui-spacing-sm) 0 0;
+      padding: 0;
     }
     simple-popover-manager[mode="simple-tour"] h2 {
       font-family: var(--hax-ui-font-family);
@@ -199,12 +213,15 @@ export const HaxTour = [
       color: var(--hax-ui-color-accent-secondary);
       margin: var(--hax-ui-spacing-sm) 0 var(--hax-ui-spacing-lg);
     }
+    simple-modal[mode="hax-ui"]::part(content),
+    simple-modal[mode="hax-ui"]::part(custom),
     simple-popover-manager[mode="simple-tour"]::part(simple-popover-body) {
       font-size: var(--hax-ui-font-size);
       color: var(--hax-ui-color);
       background-color: var(--hax-ui-background-color);
-      padding: var(--hax-ui-spacing);
+      padding: 0 var(--hax-ui-spacing);
     }
+    simple-modal[mode="hax-ui"]::part(buttons),
     simple-popover-manager[mode="simple-tour"]:part(simple-popover-nav) {
       background-color: var(--hax-ui-background-color);
     }
@@ -431,12 +448,7 @@ export const HaxModal = [
 /**
  * styles that need to be in the shadowRoot of their parent
  */
-export const HaxComponentStyles = [
-  ...HaxModal,
-  ...HaxButton,
-  ...HaxHexagon,
-  ...HaxFields,
-];
+export const HaxComponentStyles = [...HaxButton, ...HaxHexagon, ...HaxFields];
 export const HaxTrayDetail = [
   css`
     #tray-detail {
