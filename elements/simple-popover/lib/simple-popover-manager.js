@@ -97,9 +97,15 @@ class SimplePopoverManager extends LitElement {
         ?hidden="${!this.opened}"
         position="${this.position}"
       >
-        <div class="heading"><slot name="heading"></slot></div>
-        <div class="body"><slot name="body"></slot></div>
-        <div class="nav"><slot name="nav"></slot></div>
+        <div class="heading" part="simple-popover-heading">
+          <slot name="heading"></slot>
+        </div>
+        <div class="body" part="simple-popover-body">
+          <slot name="body"></slot>
+        </div>
+        <div class="nav" part="simple-popover-nav">
+          <slot name="nav"></slot>
+        </div>
       </simple-popover>
     `;
   }
@@ -132,8 +138,7 @@ class SimplePopoverManager extends LitElement {
   /**
    * set target and optionally change content and open state
    */
-  setPopover(context, el, opened = null, orientation = "tb") {
-    console.log(context, el, opened, orientation);
+  setPopover(context, el, opened = null, orientation = "tb", mode) {
     // this has the potential to cause 1 popover to change content and parent
     // in the same action. This would cause a open state change in 1 element
     // which would trigger a global state change to match.
@@ -157,6 +162,7 @@ class SimplePopoverManager extends LitElement {
           this.__ignore = true;
         }
         this.context = context;
+        this.setAttribute("mode", mode || "");
         this.popover.target = null;
         this.popover.target = el;
       }

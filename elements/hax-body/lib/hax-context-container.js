@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { HaxTrayBaseStyles } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
 /**
  *
@@ -16,12 +15,11 @@ const HaxContextBehaviors = function (SuperClass) {
      */
     static get styles() {
       return [
-        ...HaxTrayBaseStyles,
         css`
           :host {
             display: block;
             pointer-events: none;
-            --hax-tray-spacing-sm: 1px;
+            --hax-ui-spacing-sm: 1px;
           }
           :host [hidden] {
             display: none;
@@ -42,14 +40,13 @@ const HaxContextBehaviors = function (SuperClass) {
           }
           :host(:hover),
           :host(:focus-within) {
-            z-index: var(--hax-tray-focus-z-index) !important;
+            z-index: var(--hax-ui-focus-z-index) !important;
           }
           .group {
             padding: 0;
           }
           hax-toolbar {
             flex: 0 1 auto;
-            background-color: var(--hax-tray-border-color);
             border: none !important;
           }
           hax-toolbar[collapse-disabled]::part(morebutton) {

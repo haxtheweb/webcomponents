@@ -92,10 +92,10 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    ' <hax-context-item\n              action\n              icon="',
-    '"\n              label="',
-    '"\n              event-name="hax-ce-custom-button"\n              value="',
-    '"\n            ></hax-context-item>',
+    ' <hax-context-item\n                action\n                icon="',
+    '"\n                label="',
+    '"\n                event-name="hax-ce-custom-button"\n                value="',
+    '"\n              ></hax-context-item>',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -110,11 +110,11 @@ function _templateObject() {
     '\n      <div id="toolbar">\n        <hax-toolbar>\n          <div class="group">\n            <hax-context-item\n              action\n              more\n              .icon="',
     '"\n              label="Change to..."\n              tooltip="',
     ', click to change"\n              ?disabled="',
-    '"\n              event-name="hax-transform-node"\n              show-text-label\n            ></hax-context-item>\n          </div>\n          <div class="group">\n            <slot name="primary"></slot>\n          </div>\n          <div class="group">\n          ',
-    '\n          </div>\n          <div class="group">\n            <slot name="secondary"></slot>\n          </div>\n          <div class="group">\n            <hax-context-item\n              action\n              icon="icons:code"\n              label="Modify HTML source"\n              ?disabled="',
+    '"\n              event-name="hax-transform-node"\n              show-text-label\n            ></hax-context-item>\n            <slot name="primary"></slot>\n          </div>\n          <div class="group">\n            ',
+    '\n            <slot name="secondary"></slot>\n          </div>\n          <div class="group">\n            <hax-context-item\n              action\n              icon="icons:code"\n              label="Modify HTML source"\n              ?disabled="',
     '"\n              event-name="hax-source-view-toggle"\n              toggles\n              ?toggled="',
     '"\n              @click="',
-    '"\n            ></hax-context-item>\n          </div>\n          <div class="group">\n            <slot name="more"></slot>\n          </div>\n          <div class="group">\n            <hax-toolbar-menu icon="add" label="Insert item above or below">\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-up"\n                  event-name="insert-above-active"\n                  label="Insert item above"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-down"\n                  event-name="insert-below-active"\n                  label="Insert item below"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n            </hax-toolbar-menu>\n          </div>\n        </hax-toolbar>\n      </div>\n    ',
+    '"\n            ></hax-context-item>\n            <slot name="more"></slot>\n          </div>\n          <div class="group">\n            <hax-toolbar-menu icon="add" label="Insert item above or below">\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-up"\n                  event-name="insert-above-active"\n                  label="Insert item above"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-down"\n                  event-name="insert-below-active"\n                  label="Insert item below"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n            </hax-toolbar-menu>\n          </div>\n        </hax-toolbar>\n      </div>\n    ',
   ]);
 
   _templateObject = function _templateObject() {

@@ -21,6 +21,8 @@ var _mobx = require("mobx");
 
 var _haxContextContainer = require("./hax-context-container.js");
 
+var _utils = require("@lrnwebcomponents/utils/utils.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -129,13 +131,13 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <div id="toolbar" class="area" >\n        <hax-toolbar always-expanded>\n          <div class="group">\n            <hax-toolbar-menu\n              ?disabled="',
+    '\n      <div id="toolbar" class="area">\n        <hax-toolbar always-expanded>\n          <div class="group">\n            <hax-toolbar-menu\n              ?disabled="',
     '"\n              id="drag"\n              action\n              icon="hax:arrow-all"\n              label="Drag handle"\n              draggable="true"\n              reset-on-select\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  ?disabled="',
     '"\n                  show-text-label\n                  role="menuitem"\n                  icon="hax:keyboard-arrow-up"\n                  label="Move up"\n                  event-name="hax-plate-up"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  ?disabled="',
-    '"\n                  role="menuitem"\n                  show-text-label\n                  icon="hax:keyboard-arrow-down"\n                  label="Move down"\n                  event-name="hax-plate-down"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <div slot="tour" data-stop-content>\n                Click the drag handle once to show a menu to just move up or down\n                one item in the content OR click and drag to place the item\n                exactly where you want it to go.\n              </div>\n            </hax-toolbar-menu>\n          </div>\n          <div class="group">\n            <hax-context-item\n              action\n              id="right"\n              class="paddle"\n              icon="hax:table-column-remove"\n              label="Add column"\n              ?disabled="',
-    '"\n              event-name="hax-plate-create-right"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Add a column to split the current column into two pieces. This can\n                be done up to six pieces columns. For differnet layouts see Grid\n                settings panel.\n              </div>\n            </hax-context-item>\n            <hax-context-item\n              action\n              class="paddle"\n              icon="hax:table-column-plus-after"\n              label="Remove column"\n              ?disabled="',
+    '"\n                  role="menuitem"\n                  show-text-label\n                  icon="hax:keyboard-arrow-down"\n                  label="Move down"\n                  event-name="hax-plate-down"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <div slot="tour" data-stop-content>\n                Click the drag handle once to show a menu to just move up or\n                down one item in the content OR click and drag to place the item\n                exactly where you want it to go.\n              </div>\n            </hax-toolbar-menu>\n          </div>\n          <div class="group">\n            <hax-context-item\n              action\n              id="right"\n              class="paddle"\n              icon="hax:table-column-remove"\n              label="Add column"\n              ?disabled="',
+    '"\n              event-name="hax-plate-create-right"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Add a column to split the current column into two pieces. This\n                can be done up to six pieces columns. For differnet layouts see\n                Grid settings panel.\n              </div>\n            </hax-context-item>\n            <hax-context-item\n              action\n              class="paddle"\n              icon="hax:table-column-plus-after"\n              label="Remove column"\n              ?disabled="',
     '"\n              event-name="hax-plate-remove-right"\n              id="rightremove"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Remove a column from the split column layout. If at two columns\n                and removing it will remove the layout split and make it 100%\n                width.\n              </div>\n            </hax-context-item>\n            <hax-context-item\n              action\n              ?disabled="',
-    '"\n              label="Duplicate"\n              icon="icons:content-copy"\n              event-name="hax-plate-duplicate"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Duplicate the active piece of content and place it below the\n                current item.\n              </div>\n            </hax-context-item>\n          </div>\n          <div class="group">\n            <hax-toolbar-menu\n              id="remove"\n              danger\n              action\n              ?disabled="',
+    '"\n              label="Duplicate"\n              icon="icons:content-copy"\n              event-name="hax-plate-duplicate"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Duplicate the active piece of content and place it below the\n                current item.\n              </div>\n            </hax-context-item>\n          </div>\n          <div class="group">\n            <hax-toolbar-menu\n              id="remove"\n              action\n              ?disabled="',
     '"\n              icon="delete"\n              label="Remove"\n              reset-on-select\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  danger\n                  align-horizontal="left"\n                  ?disabled="',
     '"\n                  show-text-label\n                  role="menuitem"\n                  icon="delete"\n                  label="Confirm Delete"\n                  event-name="hax-plate-delete"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <div slot="tour" data-stop-content>\n                Delete the current item. You can always use the undo arrow to\n                bring this back.\n              </div>\n            </hax-toolbar-menu>\n          </div>\n        </hax-toolbar>\n      </div>\n    ',
   ]);
@@ -354,6 +356,10 @@ var HaxPlateContext =
         {
           key: "_dragEnd",
           value: function _dragEnd(e) {
+            var menu = (0, _utils.normalizeEventPath)(e)
+              ? (0, _utils.normalizeEventPath)(e)[0]
+              : undefined;
+            if (menu) menu.close(true);
             _haxStore.HAXStore._lockContextPosition = false;
           },
           /**
@@ -363,7 +369,11 @@ var HaxPlateContext =
         {
           key: "_dragStart",
           value: function _dragStart(e) {
-            var target = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode);
+            var target = (0, _mobx.toJS)(_haxStore.HAXStore.activeNode),
+              menu = (0, _utils.normalizeEventPath)(e)
+                ? (0, _utils.normalizeEventPath)(e)[0]
+                : undefined;
+            if (menu) menu.close(true);
             _haxStore.HAXStore.__dragTarget = target;
             _haxStore.HAXStore._lockContextPosition = true; // wipe the add context menu for motion
 

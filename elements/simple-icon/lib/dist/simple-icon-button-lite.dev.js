@@ -98,14 +98,15 @@ function _templateObject() {
     '"\n          aria-labelledby="',
     '"\n          .aria-pressed="',
     '"\n          controls="',
-    '"\n          ?disabled="',
+    '"\n          part="button"\n          ?disabled="',
     '"\n          form="',
     '"\n          label="',
+    '"\n          aria-label="',
     '"\n          name="',
-    '"\n          type="',
+    '"\n          .type="',
     '"\n          value="',
     '"\n        >\n          <simple-icon-lite icon=',
-    "> </simple-icon-lite>\n        </button>\n      ",
+    ' part="icon"> </simple-icon-lite>\n        </button>\n      ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -227,12 +228,23 @@ var SimpleIconButtonBehaviors = function SimpleIconButtonBehaviors(SuperClass) {
       _inherits(_class, _SuperClass);
 
       function _class() {
+        var _this;
+
         _classCallCheck(this, _class);
 
-        return _possibleConstructorReturn(
+        _this = _possibleConstructorReturn(
           this,
           _getPrototypeOf(_class).call(this)
         );
+        _this.ariaLabelledby = "";
+        _this.controls = "";
+        _this.disabled = false;
+        _this.form = "";
+        _this.label = "";
+        _this.fieldName = "";
+        _this.type = "";
+        _this.value = "";
+        return _this;
       }
 
       _createClass(
@@ -254,6 +266,7 @@ var SimpleIconButtonBehaviors = function SimpleIconButtonBehaviors(SuperClass) {
                 this.controls,
                 this.disabled,
                 this.form,
+                this.label,
                 this.label,
                 this.fieldName,
                 this.type,
@@ -376,16 +389,16 @@ var SimpleIconButtonLite =
     ]);
 
     function SimpleIconButtonLite() {
-      var _this;
+      var _this2;
 
       _classCallCheck(this, SimpleIconButtonLite);
 
-      _this = _possibleConstructorReturn(
+      _this2 = _possibleConstructorReturn(
         this,
         _getPrototypeOf(SimpleIconButtonLite).call(this)
       );
-      _this.type = "button";
-      return _this;
+      _this2.type = "button";
+      return _this2;
     }
 
     return SimpleIconButtonLite;

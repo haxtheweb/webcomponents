@@ -13,6 +13,8 @@ var _a11yTabs = require("@lrnwebcomponents/a11y-tabs/a11y-tabs.js");
 
 require("./simple-fields-tab.js");
 
+var _simpleFieldsUi = require("./simple-fields-ui.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -82,7 +84,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host([error]) #tabs .error {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: border 0.5s ease;\n        }\n        :host {\n          --a11y-tabs-font-family: var(--simple-fields-font-family, sans-serif);\n          --a11y-tabs-font-size: var(--simple-fields-detail-font-size, 12px);\n          --a11y-tabs-color: var(--simple-fields-color, currentColor);\n          --a11y-tabs-focus-color: var(--simple-fields-color, currentColor);\n          --a11y-tabs-faded-color: var(--simple-fields-disabled-color, #999);\n          --a11y-tabs-selected-color: var(\n            --simple-fields-accent-color,\n            #3f51b5\n          );\n          --a11y-tabs-background: var(\n            --simple-fields-background-color,\n            transparent\n          );\n          --a11y-tabs-border-color: var(\n            --simple-fields-border-color-light,\n            #ccc\n          );\n          --a11y-tabs-margin: var(--simple-fields-margin, 16px) 0;\n          --a11y-tabs-border-radius: var(--simple-fields-border-radius, 2px);\n          --a11y-tabs-button-padding: var(--simple-fields-margin-small, 8px);\n          --a11y-tabs-content-padding: var(--simple-fields-margin, 16px);\n        }\n      ",
+    "\n        :host {\n          border: 1px solid var(--simple-fields-border-color-light, #ccc);\n          padding: var(--simple-fields-margin-small, 8px) var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin, 16px);\n          background-color: var(--simple-fields-background-color, transparent); \n          border-radius: var(--simple-fields-border-radius, 2px);\n        }\n        :host([error]) #tabs .error {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: border 0.5s ease;\n        }\n      \n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -310,12 +312,8 @@ var SimpleFieldsTabs =
           key: "styles",
           get: function get() {
             return [].concat(
-              _toConsumableArray(
-                _get(_getPrototypeOf(SimpleFieldsTabs), "styles", this)
-              ),
-              _toConsumableArray(
-                _simpleFieldsFieldset.SimpleFieldsFieldset.styles
-              ),
+              _toConsumableArray(this.A11yTabsCoreStyles),
+              _toConsumableArray(_simpleFieldsUi.SimpleFieldsButtonStyles),
               [(0, _litElement.css)(_templateObject2())]
             );
           },

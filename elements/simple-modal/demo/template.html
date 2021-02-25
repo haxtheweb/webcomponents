@@ -47,9 +47,17 @@
             <p slot="precontent">Button 2 opens the second simple-modal-template template.</p>
             <p slot="content">Button 2 opens the second simple-modal-template template.</p>
           </simple-modal-template>
+          <button controls="smt3">Button 3</button>
+          <simple-modal-template>
+            <pre slot="custom">
+              Button 3 opens the custom simple-modal-template template. That is not wrapped in divs. 
+              This is good for having even more control of content styling.
+            </pre>
+          </simple-modal-template>
           <script>
             document.querySelector('[modal-id="smt1"]').associateEvents(document.querySelector('[controls="smt1"]'));
             document.querySelector('[modal-id="smt2"]').associateEvents(document.querySelector('[controls="smt2"]'));
+            document.querySelector('[modal-id="smt2"]').associateEvents(document.querySelector('[controls="smt3"]'));
           </script>
         </template>
       </demo-snippet>

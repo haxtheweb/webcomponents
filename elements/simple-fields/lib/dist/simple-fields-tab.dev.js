@@ -3,11 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.SimpleToolbarMoreButton = void 0;
+exports.SimpleFieldsTab = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _simpleToolbarButton = require("./simple-toolbar-button.js");
+var _simpleFieldsFieldset = require("./simple-fields-fieldset.js");
+
+var _a11yTab = require("@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -76,27 +78,6 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral([
-    "\n        :host([hidden]) {\n          display: none!important;\n        }\n      ",
-  ]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-  return Object.freeze(
-    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
-  );
-}
-
 function _toConsumableArray(arr) {
   return (
     _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
@@ -130,22 +111,6 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError(
-      "this hasn't been initialised - super() hasn't been called"
-    );
-  }
-  return self;
-}
-
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -162,24 +127,20 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
   }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true },
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
+  return _assertThisInitialized(self);
 }
 
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf =
-    Object.setPrototypeOf ||
-    function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-  return _setPrototypeOf(o, p);
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    );
+  }
+  return self;
 }
 
 function _get(target, property, receiver) {
@@ -216,98 +177,79 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
-/**
- * `simple-toolbar-more-button`
- * a more button to toggle collapsed buttons in the rich text editor
- *
- * @customElement
- * @extends SimpleToolbarButtonBehaviors
- * @extends LitElement
- * @lit-html
- * @lit-element
- * @demo ./demo/buttons.html
- */
-var SimpleToolbarMoreButton =
-  /*#__PURE__*/
-  (function (_SimpleToolbarButtonB) {
-    _inherits(SimpleToolbarMoreButton, _SimpleToolbarButtonB);
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: { value: subClass, writable: true, configurable: true },
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
 
-    _createClass(SimpleToolbarMoreButton, null, [
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf =
+    Object.setPrototypeOf ||
+    function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+  return _setPrototypeOf(o, p);
+}
+
+/**
+ * `simple-fields-tab` takes in a JSON schema of type array and builds a form,
+ * exposing a `value` property that represents an array described by the schema.
+ *
+ * @group simple-fields
+ * @element simple-fields-tab
+ * @extends a11y-tab
+ * @extends simple-fields-fieldset
+ */
+var SimpleFieldsTab =
+  /*#__PURE__*/
+  (function (_A11yTab) {
+    _inherits(SimpleFieldsTab, _A11yTab);
+
+    function SimpleFieldsTab() {
+      _classCallCheck(this, SimpleFieldsTab);
+
+      return _possibleConstructorReturn(
+        this,
+        _getPrototypeOf(SimpleFieldsTab).apply(this, arguments)
+      );
+    }
+
+    _createClass(SimpleFieldsTab, null, [
       {
         key: "tag",
-
-        /**
-         * Store the tag name to make it easier to obtain directly.
-         */
         get: function get() {
-          return "simple-toolbar-more-button";
+          return "simple-fields-tab";
         },
       },
       {
         key: "styles",
         get: function get() {
-          return [].concat(
-            _toConsumableArray(
-              _get(_getPrototypeOf(SimpleToolbarMoreButton), "styles", this)
-            ),
-            [(0, _litElement.css)(_templateObject())]
+          return _toConsumableArray(
+            _get(_getPrototypeOf(SimpleFieldsTab), "styles", this)
           );
         },
       },
-    ]);
-
-    function SimpleToolbarMoreButton() {
-      var _this;
-
-      _classCallCheck(this, SimpleToolbarMoreButton);
-
-      _this = _possibleConstructorReturn(
-        this,
-        _getPrototypeOf(SimpleToolbarMoreButton).call(this)
-      );
-      _this.icon = "more-vert";
-      _this.toggled = false;
-      _this.toggles = true;
-      _this.label = "More buttons";
-      _this.labelToggled = "Fewer buttons";
-      _this.tooltipDirection = "left";
-      return _this;
-    }
-    /**
-     * toggles button if shortcutKey is pressed
-     *
-     * @param {string} key
-     * @event toggle
-     */
-
-    _createClass(SimpleToolbarMoreButton, [
       {
-        key: "_handleShortcutKeys",
-        value: function _handleShortcutKeys(e, key) {
-          this.dispatchEvent(
-            new CustomEvent("toggle", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: _objectSpread({}, e.detail, {
-                button: this,
-                shortcutKey: this,
-              }),
-            })
+        key: "properties",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(_getPrototypeOf(SimpleFieldsTab), "properties", this),
+            {},
+            _simpleFieldsFieldset.SimpleFieldsFieldset.properties
           );
         },
       },
     ]);
 
-    return SimpleToolbarMoreButton;
-  })(
-    (0, _simpleToolbarButton.SimpleToolbarButtonBehaviors)(
-      _litElement.LitElement
-    )
-  );
+    return SimpleFieldsTab;
+  })(_a11yTab.A11yTab);
 
-exports.SimpleToolbarMoreButton = SimpleToolbarMoreButton;
-window.customElements.define(
-  SimpleToolbarMoreButton.tag,
-  SimpleToolbarMoreButton
-);
+exports.SimpleFieldsTab = SimpleFieldsTab;
+window.customElements.define(SimpleFieldsTab.tag, SimpleFieldsTab);

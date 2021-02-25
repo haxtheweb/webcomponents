@@ -98,6 +98,7 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
             id="dropdownicon"
             icon="arrow-drop-down"
             aria-hidden="true"
+            part="dropdown-icon"
           ></simple-icon-lite>
         </button>
       `;

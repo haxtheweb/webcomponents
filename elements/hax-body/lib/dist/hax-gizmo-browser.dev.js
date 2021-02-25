@@ -99,7 +99,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          flex: 0 1 auto;\n          overflow-y: auto;\n        }\n        .toolbar-inner {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          width: 100%;\n          flex: 0 0 auto;\n          overflow-y: auto;\n        }\n        simple-button-grid {\n          overflow-y: auto;\n        }\n        simple-fields-field {\n          margin-top: 0;\n        }\n      ",
+    "\n        :host {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          flex: 0 1 auto;\n          overflow-y: auto;\n        }\n        :host > * {\n          max-width: 100%;\n        }\n        .toolbar-inner {\n          display: flex;\n          flex-direction: column;\n          align-items: stretch;\n          width: 100%;\n          flex: 0 0 auto;\n        }\n        hax-tray-button::part(button) {\n          font-size: var(hax-ui-font-size-xs);\n        }\n        simple-fields-field {\n          margin-top: 0;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {

@@ -34,7 +34,7 @@ function _typeof(obj) {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <simple-modal-template .title="',
-    '" modal-id="hax-picker">\n        <hax-picker slot="content"></hax-picker>\n      </simple-modal-template>\n    ',
+    '" modal-id="hax-picker" mode="hax-ui">\n        <hax-picker slot="content"></hax-picker>\n      </simple-modal-template>\n    ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -198,7 +198,7 @@ var HaxAppPicker =
         key: "styles",
         get: function get() {
           return [].concat(
-            _toConsumableArray(_haxUiStyles.HaxTraySimpleModal),
+            _toConsumableArray(_haxUiStyles.HaxComponentStyles),
             [(0, _litElement.css)(_templateObject())]
           );
         },

@@ -72,8 +72,8 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <simple-modal-template\n        modal-id="hax-export"\n        id="dialog"\n        .title="',
-    '"\n      > \n        <hax-view-source slot="content"></hax-view-source>\n      </simple-modal-template>\n    ',
+    '\n      <simple-modal-template\n        modal-id="hax-export"\n        mode="hax-ui"\n        id="dialog"\n        .title="',
+    '"\n      >\n        <hax-view-source slot="custom"></hax-view-source>\n      </simple-modal-template>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -234,7 +234,7 @@ var HaxExportDialog =
           key: "modalToggle",
           value: function modalToggle(e) {
             if (e.detail.id == "hax-export") {
-              e.detail.elements.content.children[0].openSource();
+              e.detail.elements.custom.openSource();
             }
           },
         },
@@ -271,7 +271,7 @@ var HaxExportDialog =
           key: "styles",
           get: function get() {
             return [].concat(
-              _toConsumableArray(_haxUiStyles.HaxTraySimpleModal),
+              _toConsumableArray(_haxUiStyles.HaxComponentStyles),
               [(0, _litElement.css)(_templateObject2())]
             );
           },

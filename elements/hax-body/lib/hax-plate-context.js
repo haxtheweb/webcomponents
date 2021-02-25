@@ -6,6 +6,7 @@ import "./hax-toolbar-menu.js";
 import "./hax-context-item.js";
 import { autorun, toJS } from "mobx";
 import { HaxContextBehaviors } from "./hax-context-container.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-plate-context`
  * `A context menu that provides common grid plate based authoring options.`
@@ -143,7 +144,6 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
           <div class="group">
             <hax-toolbar-menu
               id="remove"
-              danger
               action
               ?disabled="${this.hasActiveEditingElement}"
               icon="delete"
@@ -216,13 +216,17 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
    * When we end dragging ensure we remove the mover class.
    */
   _dragEnd(e) {
+    let menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
+    if (menu) menu.close(true);
     HAXStore._lockContextPosition = false;
   }
   /**
    * Drag start so we know what target to set
    */
   _dragStart(e) {
-    let target = toJS(HAXStore.activeNode);
+    let target = toJS(HAXStore.activeNode),
+      menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
+    if (menu) menu.close(true);
     HAXStore.__dragTarget = target;
     HAXStore._lockContextPosition = true;
     // wipe the add context menu for motion

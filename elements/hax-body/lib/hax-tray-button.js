@@ -1,12 +1,10 @@
 import { html, css, LitElement } from "lit-element/lit-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import { HaxToolbarItemBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 /**
  * `hax-tray-button`
  * `A button in the tray`
  */
-class HAXTrayButton extends HaxToolbarItemBehaviors(LitElement) {
+class HaxButton extends HaxToolbarItemBehaviors(LitElement) {
   static get tag() {
     return "hax-tray-button";
   }
@@ -86,5 +84,5 @@ class HAXTrayButton extends HaxToolbarItemBehaviors(LitElement) {
     });
   }
 }
-customElements.define(HAXTrayButton.tag, HAXTrayButton);
-export { HAXTrayButton };
+customElements.define(HaxButton.tag, HaxButton);
+export { HaxButton };

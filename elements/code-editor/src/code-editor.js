@@ -41,47 +41,68 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           font-family: unset;
           align-items: stretch;
           margin: var(--code-pen-margin, 16px 0);
-          background-color: white;
+          width: calc(100% - 2px);
+          background-color: #1e1e1e;
+          color: #c6c6c6;
+          border: var(--code-editor-code-border);
+          border-radius: var(--code-editor-code-border-radius);
+          border: 1px solid var(--code-editor-label-color, #ddd);
+        }
+        :host([theme-colors="vs-dark"]) {
+          background-color: #1e1e1e;
+          color: #c6c6c6;
+          border: 1px solid var(--code-editor-label-color, #000);
+        }
+        :host([theme-colors="vs"]) {
+          background-color: #fffffe;
           color: #000;
-          width: 100%;
+          border: 1px solid var(--code-editor-label-color, #ddd);
         }
         :host([hidden]) {
           display: none !important;
         }
-        :host([theme="vs-dark"]) {
-          background-color: #1e1e1e;
-          color: #c6c6c6;
-        }
         .code-pen-container:not([hidden]) {
-          width: 100%;
+          width: calc(100% - 2 * var(--code-editor-margin, 12px));
           display: flex;
-          background-color: var(--code-pen-button-color, #222222);
-          color: white;
           height: 40px;
           justify-content: flex-end;
           align-items: center;
+          margin: var(--code-editor-margin, 12px);
         }
         .code-pen-container span {
           display: inline-flex;
           line-height: 16px;
           font-size: 16px;
-          padding: 12px;
+          padding: 12px 0;
         }
         code-pen-button {
           float: right;
           height: 40px;
           flex: 0 0 40px;
         }
+        :host([theme-colors="vs"]) code-pen-button::part(button) {
+          filter: invert(1);
+        }
         label {
-          color: var(--code-editor-label-color, #888);
+          color: var(--code-editor-label-color, #444);
           transition: all 0.5s;
           flex: 0 0 auto;
+          margin: var(--code-editor-margin, 12px);
+        }
+        :host([theme-colors="vs"]) label {
+          color: var(--code-editor-label-color, #444);
+        }
+        :host([theme-colors="vs-dark"]) label {
+          color: var(--code-editor-label-color, #bbb);
+        }
+        :host([hidden]) {
+          display: none !important;
         }
 
         :host([focused]) label {
           color: var(
             --code-editor-float-label-active-color,
-            var(--code-editor-label-color, #000)
+            var(--code-editor-label-color, currentColor)
           );
         }
 
@@ -96,8 +117,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         #codeeditor {
           flex: 1 1 auto;
           height: 100%;
-          border: var(--code-editor-code-border);
-          border-radius: var(--code-editor-code-border-radius);
         }
         #codeeditor[data-hidden] {
           height: 0px;
@@ -159,7 +178,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         lib-path="${this.libPath}"
         language="${this.language}"
         tab-size="${this.tabSize}"
-        theme="${this.adaptiveTheme}"
+        theme="${this.getTheme(this.theme)}"
         @value-changed="${this._editorDataChanged}"
         font-size="${this.fontSize}"
         ?word-wrap="${this.wordWrap}"
@@ -187,14 +206,15 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     `;
   }
 
-  get adaptiveTheme() {
-    let watch =
-      !this.watchColorPrefs || (!window.matchMedia && this.theme !== "auto");
-    return watch && window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "vs-dark"
-      : watch && window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "vs"
-      : this.theme;
+  getTheme(theme) {
+    let watch = window.matchMedia && theme == "auto",
+      dark = watch && window.matchMedia("(prefers-color-scheme: dark)").matches,
+      light =
+        watch && window.matchMedia("(prefers-color-scheme: light)").matches,
+      other = !theme || theme == "auto" ? "vs-dark" : theme,
+      color = dark ? "vs-dark" : light ? "vs" : other;
+    this.setAttribute("theme-colors", color);
+    return color;
   }
 
   get placeholder() {
@@ -260,6 +280,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       theme: {
         type: String,
         reflect: true,
+        attribute: "theme",
       },
       /**
        * Mode / language for editor

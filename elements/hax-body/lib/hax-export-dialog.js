@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "./hax-view-source.js";
-import { HaxTraySimpleModal } from "./hax-ui-styles.js";
+import { HaxComponentStyles } from "./hax-ui-styles.js";
 /**
  * `hax-export-dialog`
  * @element hax-export-dialog
@@ -10,7 +10,7 @@ import { HaxTraySimpleModal } from "./hax-ui-styles.js";
 class HaxExportDialog extends LitElement {
   static get styles() {
     return [
-      ...HaxTraySimpleModal,
+      ...HaxComponentStyles,
       css`
         :host {
           display: none;
@@ -36,17 +36,18 @@ class HaxExportDialog extends LitElement {
    */
   modalToggle(e) {
     if (e.detail.id == "hax-export") {
-      e.detail.elements.content.children[0].openSource();
+      e.detail.elements.custom.openSource();
     }
   }
   render() {
     return html`
       <simple-modal-template
         modal-id="hax-export"
+        mode="hax-ui"
         id="dialog"
         .title="${this.title}"
       >
-        <hax-view-source slot="content"></hax-view-source>
+        <hax-view-source slot="custom"></hax-view-source>
       </simple-modal-template>
     `;
   }

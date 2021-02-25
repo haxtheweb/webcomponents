@@ -685,7 +685,7 @@ class SimpleFieldsLite extends LitElement {
           data.descriptionSlot
         );
 
-        //handle data type attributes
+        //set elemenet attributes according to schema
         Object.keys(data.attributes || {}).forEach((attr) => {
           if (
             typeof data.attributes[attr] !== undefined &&
@@ -695,14 +695,14 @@ class SimpleFieldsLite extends LitElement {
           }
         });
 
-        //handle schema properties
+        //set elemenet properties according to schema
         Object.keys(data.properties || {}).forEach((prop) => {
           if (data.properties[prop] && schemaProp[prop]) {
-            element[data.properties[prop]] = schemaProp[prop];
+            element[prop] = schemaProp[prop] || data.properties[prop];
           }
         });
 
-        //handle data type slots
+        //set elemenet slots according to schema
         Object.keys(data.slots || {}).forEach((slot) => {
           if (data.slots[slot] && schemaProp[data.slots[slot]]) {
             data.slots[slot].split(/[\s,]/).forEach((field) => {
@@ -718,12 +718,12 @@ class SimpleFieldsLite extends LitElement {
 
         target.appendChild(wrapper);
 
-        //handles arrays
+        //adds array items according to schema
         if (schemaProp.type === "array") {
           // we need to send an values or empty array to start listening for new items
           this._addArrayItems(value || [], data.child, schemaProp, element);
         }
-        //handles objects
+        //adds object items according to schema
         else if (schemaProp.properties) {
           this._addToForm(schemaProp, element, `${element.id}.`, data.child);
         } else {
@@ -741,9 +741,11 @@ class SimpleFieldsLite extends LitElement {
               data.setValueProperty,
               data.valueSlot
             );
+          //watch field for changes
           element.addEventListener(data.valueChangedProperty, (e) =>
             this._handleChange(element, data.valueProperty, e)
           );
+          //update wrapper on error
           wrapper.addEventListener(data.errorChangedProperty, (e) => {
             let error = this._deepClone(this.error || {});
             if (wrapper[data.errorProperty]) {
@@ -871,12 +873,16 @@ class SimpleFieldsLite extends LitElement {
    * @returns {object}
    */
   _convertSchema(property, conversion = this.schemaConversion, settings) {
+    //see which keys the property and the conversion have in common
     let propKeys = Object.keys(property || {}),
       convKeys = Object.keys(conversion).filter((key) =>
         propKeys.includes(key)
       );
+    //start with default conversion settings
     if (conversion.defaultSettings)
       settings = this._deepClone(conversion.defaultSettings);
+
+    //on the matching keys check for more specific conversion settings
     convKeys.forEach((key) => {
       let val = property[key],
         convData = conversion ? conversion[key] : undefined,
@@ -885,6 +891,7 @@ class SimpleFieldsLite extends LitElement {
           : Array.isArray(val)
           ? convData[val[0]]
           : convData[val];
+      //if we have more specific settings get them recursively
       if (convVal) settings = this._convertSchema(property, convVal, settings);
     });
     return settings;

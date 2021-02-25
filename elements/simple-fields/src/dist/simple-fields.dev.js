@@ -377,11 +377,14 @@ var SimpleFields =
             arguments.length > 2 && arguments[2] !== undefined
               ? arguments[2]
               : {};
+          //see which keys the field and the conversion have in common
           var fieldKeys = Object.keys(field || {}),
             convKeys = Object.keys(conversion || {}).filter(function (key) {
               return fieldKeys.includes(key);
-            });
-          if (conversion.defaultSettings) settings = conversion.defaultSettings;
+            }); //start with default conversion settings
+
+          if (conversion.defaultSettings) settings = conversion.defaultSettings; //on the matching keys check for more specific conversion settings
+
           convKeys.forEach(function (key) {
             var val = field[key],
               convData = conversion ? conversion[key] : undefined,
@@ -389,9 +392,15 @@ var SimpleFields =
                 ? undefined
                 : Array.isArray(val)
                 ? convData[val[0]]
-                : convData[val];
+                : convData[val]; //if we have more specific settings get them recursively
+
             if (convVal)
-              settings = _this4._convertField(field, convVal, settings);
+              settings = _this4._convertField(
+                field,
+                convVal,
+                convData,
+                settings
+              );
           });
           return settings;
         },
@@ -450,7 +459,10 @@ var SimpleFields =
             ) {
               schema[key] = field[key];
             }
-          });
+          }); //sets a default code-editor theme
+
+          if (schema.type == "markup" && !schema.theme)
+            schema.theme = this.codeTheme;
           return schema;
         },
         /**
@@ -660,6 +672,9 @@ var SimpleFields =
                     element: "simple-fields-code",
                     setValueProperty: "editorValue",
                     noWrap: true,
+                    properties: {
+                      theme: "theme",
+                    },
                   },
                   format: {
                     "md-block": {
@@ -982,7 +997,6 @@ var SimpleFields =
                 "md-block": {
                   defaultSettings: {
                     type: "markup",
-                    format: "md-block",
                   },
                 },
                 monthpicker: {
