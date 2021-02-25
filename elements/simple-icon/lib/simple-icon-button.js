@@ -27,8 +27,26 @@ class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
   // render function
   render() {
     return html`
-      <button>
+      <button
+        ?autofocus="${this.autofocus}"
+        aria-labelledby="${this.ariaLabelledby}"
+        .aria-pressed="${this.toggles || this.toggled
+          ? "true"
+          : this.toggles
+          ? "false"
+          : undefined}"
+        controls="${this.controls}"
+        part="button"
+        ?disabled="${this.disabled}"
+        form="${this.form}"
+        label="${this.label}"
+        aria-label="${this.label}"
+        name="${this.fieldName}"
+        .type="${this.type}"
+        value="${this.value}"
+      >
         <simple-icon
+          part="icon"
           icon="${this.icon}"
           accent-color="${this.accentColor}"
           contrast="${this.contrast}"

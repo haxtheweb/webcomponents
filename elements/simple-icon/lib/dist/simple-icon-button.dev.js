@@ -84,7 +84,18 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <button>\n        <simple-icon\n          icon="',
+    '\n      <button \n        ?autofocus="',
+    '"\n        aria-labelledby="',
+    '"\n        .aria-pressed="',
+    '"\n        controls="',
+    '"\n        part="button"\n        ?disabled="',
+    '"\n        form="',
+    '"\n        label="',
+    '"\n        aria-label="',
+    '"\n        name="',
+    '"\n        .type="',
+    '"\n        value="',
+    '">\n        <simple-icon\n          part="icon"\n          icon="',
     '"\n          accent-color="',
     '"\n          contrast="',
     '"\n          ?dark="',
@@ -244,6 +255,21 @@ var SimpleIconButton =
           value: function render() {
             return (0, _litElement.html)(
               _templateObject(),
+              this.autofocus,
+              this.ariaLabelledby,
+              this.toggles || this.toggled
+                ? "true"
+                : this.toggles
+                ? "false"
+                : undefined,
+              this.controls,
+              this.disabled,
+              this.form,
+              this.label,
+              this.label,
+              this.fieldName,
+              this.type,
+              this.value,
               this.icon,
               this.accentColor,
               this.contrast,
