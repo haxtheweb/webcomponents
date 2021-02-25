@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextToolbarStyles } from "../buttons/rich-text-editor-button.js";
+import { RichTextToolbarStyles } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
 
 /**
  * `rich-text-editor-breadcrumbs`
