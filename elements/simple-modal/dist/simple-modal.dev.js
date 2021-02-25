@@ -98,7 +98,8 @@ function _templateObject() {
   var data = _taggedTemplateLiteral([
     '<web-dialog\n      id="dialog"\n      center\n      role="dialog"\n      aria-describedby="simple-modal-content"\n      aria-label="',
     '"\n      aria-labelledby="',
-    '"\n      aria-modal="true"\n      ?open="',
+    '"\n      aria-modal="true"\n      .mode="',
+    '"\n      ?open="',
     '"\n      @open="',
     '"\n      @close="',
     '"\n    >\n      <div id="titlebar">\n        <h2 id="simple-modal-title" ?hidden="',
@@ -106,7 +107,7 @@ function _templateObject() {
     '</h2>\n        <div></div>\n        <simple-icon-button-lite\n          id="close"\n          dark\n          icon="',
     '"\n          @click="',
     '"\n          label="',
-    '"\n        >\n        </simple-icon-button-lite>\n      </div>\n      <div id="headerbar"><slot name="header"></slot></div>\n      <div id="simple-modal-content">\n        <slot name="content"></slot>\n      </div>\n      <div class="buttons">\n        <slot name="buttons"></slot>\n      </div>\n    </web-dialog>',
+    '"\n        >\n        </simple-icon-button-lite>\n      </div>\n      <div id="headerbar"><slot name="header"></slot></div>\n      <div id="simple-modal-content">\n        <slot name="content"></slot>\n      </div>\n      <slot name="custom"></slot>\n      <div class="buttons">\n        <slot name="buttons"></slot>\n      </div>\n    </web-dialog>',
   ]);
 
   _templateObject = function _templateObject() {
@@ -298,6 +299,7 @@ var SimpleModal =
               _templateObject(),
               this._getAriaLabel(this.title),
               this._getAriaLabelledby(this.title),
+              this.mode,
               this.opened,
               this.open,
               this.close,
@@ -368,6 +370,14 @@ var SimpleModal =
                  */
                 modal: {
                   type: Boolean,
+                },
+
+                /**
+                 * can add a custom string to style modal based on what is calling it
+                 */
+                mode: {
+                  type: String,
+                  reflect: true,
                 },
               }
             );
@@ -496,6 +506,7 @@ var SimpleModal =
             setTimeout(function () {
               _this4.show(
                 e.detail.title,
+                e.detail.mode,
                 e.detail.elements,
                 e.detail.invokedBy,
                 e.detail.id,
@@ -508,6 +519,7 @@ var SimpleModal =
           } else {
             this.show(
               e.detail.title,
+              e.detail.mode,
               e.detail.elements,
               e.detail.invokedBy,
               e.detail.id,
@@ -524,36 +536,37 @@ var SimpleModal =
       },
       {
         key: "show",
-        value: function show(title, elements, invokedBy) {
+        value: function show(title, mode, elements, invokedBy) {
           var _this5 = this;
 
           var id =
-            arguments.length > 3 && arguments[3] !== undefined
-              ? arguments[3]
-              : null;
-          var modalClass =
             arguments.length > 4 && arguments[4] !== undefined
               ? arguments[4]
               : null;
-          var styles =
+          var modalClass =
             arguments.length > 5 && arguments[5] !== undefined
               ? arguments[5]
               : null;
-          var clone =
+          var styles =
             arguments.length > 6 && arguments[6] !== undefined
               ? arguments[6]
-              : false;
-          var modal =
+              : null;
+          var clone =
             arguments.length > 7 && arguments[7] !== undefined
               ? arguments[7]
+              : false;
+          var modal =
+            arguments.length > 8 && arguments[8] !== undefined
+              ? arguments[8]
               : false;
           this.invokedBy = invokedBy;
           this.modal = modal;
           this.title = title;
+          this.mode = mode;
           var element; // append element areas into the appropriate slots
           // ensuring they are set if it wasn't previously
 
-          var slots = ["header", "content", "buttons"];
+          var slots = ["header", "content", "buttons", "custom"];
 
           if (id) {
             this.setAttribute("id", id);

@@ -49,6 +49,12 @@ class SimpleModalTemplate extends LitElement {
       title: {
         type: String,
       },
+      /**
+       * the modal title
+       */
+      mode: {
+        type: String,
+      },
     };
   }
   //render function
@@ -108,6 +114,7 @@ class SimpleModalTemplate extends LitElement {
         modalClass: this.getAttribute("class"),
         styles: styles,
         clone: false,
+        mode: this.mode !== null ? this.mode : false,
         title: this.title !== null ? this.title : false,
       },
     });

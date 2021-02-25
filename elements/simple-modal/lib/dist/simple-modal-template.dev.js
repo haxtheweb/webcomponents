@@ -262,6 +262,7 @@ var SimpleModalTemplate =
                 modalClass: this.getAttribute("class"),
                 styles: styles,
                 clone: false,
+                mode: this.mode !== null ? this.mode : false,
                 title: this.title !== null ? this.title : false,
               },
             });
@@ -316,6 +317,13 @@ var SimpleModalTemplate =
                * the modal title
                */
               title: {
+                type: String,
+              },
+
+              /**
+               * the modal title
+               */
+              mode: {
                 type: String,
               },
             };
