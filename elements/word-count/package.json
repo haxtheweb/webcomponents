@@ -41,7 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "2.4.0"
+    "lit-element": "2.4.0",
+    "@lrnwebcomponents/i18n-manager": "^3.0.7"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",

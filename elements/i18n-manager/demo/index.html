@@ -12,6 +12,7 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../i18n-manager.js';
       import "@lrnwebcomponents/self-check/self-check.js";
+      import "@lrnwebcomponents/word-count/word-count.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -20,17 +21,47 @@
       <h3>Basic i18n-manager demo</h3>
       <select id="changer" onchange="changeLanguage(this)">
         <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
         <option value="en-UK">English (UK)</option>
         <option value="ja">Japanese</option>
       </select>
       <demo-snippet>
         <template>
+          <word-count>
+            <marked-element>
+              <script type="text/markdown">
+              So put in some words and get a count
+              </script>
+            </marked-element>
+          </word-count>
           <self-check accent-color="light-blue" title="Sharks Self Check"
             image="https://kids.nationalgeographic.com/content/dam/kids/photos/animals/Fish/A-G/great-white-shark-teeth.ngsversion.1396530884408.adapt.1900.1.jpg"
             alt="Great White Shark">
             <span slot="question">How large can the average great white shark grow to be?</span>
             The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.
           </self-check>
+          <word-count>
+            <marked-element>
+              <script type="text/markdown">
+              So put in some words and get a count
+              </script>
+            </marked-element>
+          </word-count>
+          <word-count>
+            <marked-element>
+              <script type="text/markdown">
+              So put in some words and get a count
+              </script>
+            </marked-element>
+          </word-count>
+          <word-count>
+            <marked-element>
+              <script type="text/markdown">
+              So put in some words and get a count
+              </script>
+            </marked-element>
+          </word-count>
         </template>
       </demo-snippet>
     </div>

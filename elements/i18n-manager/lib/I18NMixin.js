@@ -5,6 +5,14 @@ export const I18NMixin = function (SuperClass) {
       super();
       this.t = {};
     }
+    static get properties() {
+      return {
+        ...super.properties,
+        t: {
+          type: Object,
+        },
+      };
+    }
     pathFromUrl(url) {
       return url.substring(0, url.lastIndexOf("/") + 1);
     }
@@ -25,7 +33,7 @@ export const I18NMixin = function (SuperClass) {
       // clean up path and force adding locales. part security thing as well
       detail.localesPath = `${this.pathFromUrl(
         decodeURIComponent(detail.basePath)
-      )}/locales`;
+      )}locales`;
       // register the translation directly
       I18NManagerStore.registerTranslation(detail);
     }

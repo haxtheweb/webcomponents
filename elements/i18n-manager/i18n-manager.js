@@ -27,7 +27,7 @@ class I18NManager extends LitElement {
    */
   constructor() {
     super();
-    this.locales = {};
+    this.fetchTargets = {};
     this.elements = [];
     // set initially based on document
     this.lang = this.documentLang;
@@ -117,41 +117,61 @@ class I18NManager extends LitElement {
       const processList = this.elements.filter((el) => {
         return el.locales.includes(lang) || el.locales.includes(langPieces[0]);
       });
+      const fallBack = this.elements.filter((el) => {
+        return (
+          !el.locales.includes(lang) && !el.locales.includes(langPieces[0])
+        );
+      });
       // no matches found, now we should fallback to defaults in the elements
-      if (processList.length === 0) {
+      if (fallBack.length !== 0) {
         // fallback to documentLanguage
-        await this.elements.forEach((el, i) => {
+        for (var i in fallBack) {
+          let el = fallBack[i];
           el.context.t = { ...el.context._t };
           // support a forced update / function to run when it finishes
           if (el.updateCallback) {
             el.context[el.updateCallback]();
           }
-        });
-      } else {
-        // run through and match exact matches
-        await processList.forEach((el, i) => {
-          var fetchTarget = "";
-          if (el.locales.includes(lang)) {
-            fetchTarget = `${el.localesPath}/${el.tagName}.${lang}.json`;
-          } else if (el.locales.includes(langPieces[0])) {
-            fetchTarget = `${el.localesPath}/${el.tagName}.${langPieces[0]}.json`;
+        }
+      }
+      // run through and match exact matches
+      for (var i in processList) {
+        let el = processList[i];
+        var fetchTarget = "";
+        if (el.locales.includes(lang)) {
+          fetchTarget = `${el.localesPath}/${el.tagName}.${lang}.json`;
+        } else if (el.locales.includes(langPieces[0])) {
+          fetchTarget = `${el.localesPath}/${el.tagName}.${langPieces[0]}.json`;
+        }
+        // see if we had this previous to avoid another request
+        if (this.fetchTargets[fetchTarget]) {
+          let data = this.fetchTargets[fetchTarget];
+          for (var id in data) {
+            el.context.t[id] = data[id];
           }
+          el.context.t = { ...el.context.t };
+          // support a forced update / function to run when it finishes
+          if (el.updateCallback) {
+            el.context[el.updateCallback]();
+          }
+        } else {
           // request the json backing, then make JSON and set the associated values
-          fetch(fetchTarget)
-            .then((response) => {
+          // @todo catch this if fetch target was previously requested
+          this.fetchTargets[fetchTarget] = await fetch(fetchTarget).then(
+            (response) => {
               if (response && response.json) return response.json();
               return false;
-            })
-            .then((data) => {
-              for (var id in data) {
-                el.context.t[id] = data[id];
-              }
-              // support a forced update / function to run when it finishes
-              if (el.updateCallback) {
-                el.context[el.updateCallback]();
-              }
-            });
-        });
+            }
+          );
+          for (var id in this.fetchTargets[fetchTarget]) {
+            el.context.t[id] = this.fetchTargets[fetchTarget][id];
+          }
+          el.context.t = { ...el.context.t };
+          // support a forced update / function to run when it finishes
+          if (el.updateCallback) {
+            el.context[el.updateCallback]();
+          }
+        }
       }
     }
   }

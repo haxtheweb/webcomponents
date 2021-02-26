@@ -50,7 +50,7 @@ class WordCount extends I18NMixin(LitElement) {
   render() {
     return html`
       <slot></slot>
-      <div class="screen-reader-text">${this.t.wordsPrefix}: ${this.words}</div>
+      <div class="screen-reader-text">${this.wordsPrefix}: ${this.words}</div>
     `;
   }
   static get tag() {
@@ -58,15 +58,15 @@ class WordCount extends I18NMixin(LitElement) {
   }
   constructor() {
     super();
+    this.wordsPrefix = "Word count";
     this.t = {
-      wordsPrefix: "Word count",
+      wordsPrefix: this.wordsPrefix,
     };
     this.registerTranslation({
       context: this,
       basePath: import.meta.url,
-      locales: ["es", "fr"],
+      locales: ["es", "fr", "ja"],
     });
-    this.wordsPrefix = this.t.wordsPrefix;
   }
   connectedCallback() {
     super.connectedCallback();
@@ -87,10 +87,14 @@ class WordCount extends I18NMixin(LitElement) {
     if (changedProperties.has("t")) {
       this.wordsPrefix = this.t.wordsPrefix;
     }
-    if (
-      changedProperties.has("wordsPrefix") ||
-      changedProperties.has("words")
-    ) {
+    if (changedProperties.has("wordsPrefix")) {
+      this.t = {
+        wordsPrefix: this.wordsPrefix,
+      };
+      [];
+      this.setAttribute("words-text", `${this.wordsPrefix}: ${this.words}`);
+    }
+    if (changedProperties.has("words")) {
       this.setAttribute("words-text", `${this.wordsPrefix}: ${this.words}`);
     }
   }
@@ -98,7 +102,7 @@ class WordCount extends I18NMixin(LitElement) {
     return {
       ...super.properties,
       words: { type: Number },
-      wordsPrefix: { type: String },
+      wordsPrefix: { type: String, attribute: "words-prefix" },
     };
   }
   /**
