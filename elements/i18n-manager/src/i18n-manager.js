@@ -45,7 +45,7 @@ class I18NManager extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener(
-      "register-i18n",
+      "i18n-manager-register-element",
       this.registerTranslationEvent.bind(this)
     );
     window.addEventListener(
@@ -56,7 +56,7 @@ class I18NManager extends LitElement {
 
   disconnectedCallback() {
     window.removeEventListener(
-      "register-i18n",
+      "i18n-manager-register-element",
       this.registerTranslationEvent.bind(this)
     );
     window.removeEventListener(
@@ -68,12 +68,35 @@ class I18NManager extends LitElement {
   changeLanguageEvent(e) {
     this.lang = e.detail;
   }
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   registerTranslationEvent(e) {
+    let detail = e.detail;
+    // ensure we have a namespace for later use
+    if (!detail.namespace) {
+      detail.namespace = detail.context.tagName.toLowerCase();
+    }
+    // support fallback calls for requestUpdate (LitElement) and render if nothing set
+    if (!detail.updateCallback) {
+      if (detail.context.requestUpdate) {
+        detail.updateCallback = "requestUpdate";
+      } else if (detail.context.render) {
+        detail.render = "render";
+      }
+    }
+    if (!detail.localesPath && detail.basePath) {
+      // clean up path and force adding locales. part security thing as well
+      detail.localesPath = `${this.pathFromUrl(
+        decodeURIComponent(detail.basePath)
+      )}locales`;
+    }
     if (
-      e.detail.import &&
-      e.detail.context &&
-      e.detail.locales &&
-      e.detail.basePath
+      detail.context &&
+      detail.namespace &&
+      detail.localesPath &&
+      detail.locales &&
+      detail.updateCallback
     ) {
       this.registerTranslation(e.detail);
     }
@@ -139,9 +162,9 @@ class I18NManager extends LitElement {
         let el = processList[i];
         var fetchTarget = "";
         if (el.locales.includes(lang)) {
-          fetchTarget = `${el.localesPath}/${el.tagName}.${lang}.json`;
+          fetchTarget = `${el.localesPath}/${el.namespace}.${lang}.json`;
         } else if (el.locales.includes(langPieces[0])) {
-          fetchTarget = `${el.localesPath}/${el.tagName}.${langPieces[0]}.json`;
+          fetchTarget = `${el.localesPath}/${el.namespace}.${langPieces[0]}.json`;
         }
         // see if we had this previous to avoid another request
         if (this.fetchTargets[fetchTarget]) {

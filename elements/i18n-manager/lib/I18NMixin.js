@@ -18,9 +18,9 @@ export const I18NMixin = function (SuperClass) {
     }
     // pass through to the manager
     registerTranslation(detail) {
-      // ensure we have a tagName for later use
-      if (!detail.tagName) {
-        detail.tagName = detail.context.tagName.toLowerCase();
+      // ensure we have a namespace for later use
+      if (!detail.namespace) {
+        detail.namespace = detail.context.tagName.toLowerCase();
       }
       // support fallback calls for requestUpdate (LitElement) and render if nothing set
       if (!detail.updateCallback) {
