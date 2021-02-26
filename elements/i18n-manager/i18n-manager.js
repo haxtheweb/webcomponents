@@ -38,6 +38,7 @@ class I18NManager extends LitElement {
       document.body.getAttribute("lang") ||
       document.documentElement.getAttribute("xml:lang") ||
       document.documentElement.getAttribute("lang") ||
+      navigator.language ||
       FALLBACK_LANG
     );
   }
@@ -47,6 +48,10 @@ class I18NManager extends LitElement {
       "register-i18n",
       this.registerTranslationEvent.bind(this)
     );
+    window.addEventListener(
+      "languagechange",
+      this.changeLanguageEvent.bind(this)
+    );
   }
 
   disconnectedCallback() {
@@ -54,7 +59,14 @@ class I18NManager extends LitElement {
       "register-i18n",
       this.registerTranslationEvent.bind(this)
     );
+    window.removeEventListener(
+      "languagechange",
+      this.changeLanguageEvent.bind(this)
+    );
     super.disconnectedCallback();
+  }
+  changeLanguageEvent(e) {
+    this.lang = e.detail;
   }
   registerTranslationEvent(e) {
     if (
@@ -75,24 +87,6 @@ class I18NManager extends LitElement {
     ) {
       this.elements.push(detail);
     }
-  }
-  /**
-   * LitElement style callback
-   */
-  static get styles() {
-    // support for using in other classes
-    let styles = [];
-    if (super.styles) {
-      styles = super.styles;
-    }
-    return [
-      ...styles,
-      css`
-        :host {
-          display: block;
-        }
-      `,
-    ];
   }
   /**
    * Convention we use
@@ -116,29 +110,56 @@ class I18NManager extends LitElement {
   /**
    * trigger an update of the language after loading everything
    */
-  async updateLanguage(lang, context = "*") {
+  async updateLanguage(lang) {
     if (lang) {
+      const langPieces = lang.split("-");
+      // get all exact matches as well as partial matches
       const processList = this.elements.filter((el) => {
-        return el.locales.includes(lang);
+        return el.locales.includes(lang) || el.locales.includes(langPieces[0]);
       });
-      await processList.forEach((el, i) => {
-        fetch(`${el.localesPath}/${el.tagName}.${lang}.json`)
-          .then((response) => {
-            if (response && response.json) return response.json();
-            return false;
-          })
-          .then((data) => {
-            console.log(data);
-            for (var id in data) {
-              el.context.elText[id] = data[id];
-            }
-            // support a forced update / function to run when it finishes
-            if (el.updateCallback) {
-              el.context[el.updateCallback]();
-            }
-          });
-      });
+      // no matches found, now we should fallback to defaults in the elements
+      if (processList.length === 0) {
+        // fallback to documentLanguage
+        await this.elements.forEach((el, i) => {
+          el.context.t = { ...el.context._t };
+          // support a forced update / function to run when it finishes
+          if (el.updateCallback) {
+            el.context[el.updateCallback]();
+          }
+        });
+      } else {
+        // run through and match exact matches
+        await processList.forEach((el, i) => {
+          var fetchTarget = "";
+          if (el.locales.includes(lang)) {
+            fetchTarget = `${el.localesPath}/${el.tagName}.${lang}.json`;
+          } else if (el.locales.includes(langPieces[0])) {
+            fetchTarget = `${el.localesPath}/${el.tagName}.${langPieces[0]}.json`;
+          }
+          // request the json backing, then make JSON and set the associated values
+          fetch(fetchTarget)
+            .then((response) => {
+              if (response && response.json) return response.json();
+              return false;
+            })
+            .then((data) => {
+              for (var id in data) {
+                el.context.t[id] = data[id];
+              }
+              // support a forced update / function to run when it finishes
+              if (el.updateCallback) {
+                el.context[el.updateCallback]();
+              }
+            });
+        });
+      }
     }
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.__ready = true;
   }
   /**
    * LitElement life cycle - property changed
@@ -161,20 +182,10 @@ class I18NManager extends LitElement {
           })
         );
         // we are NOT moving to the default from something
-        if (this[propName]) {
+        if (this[propName] && this.__ready) {
           this.updateLanguage(this[propName]);
         }
       }
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
     });
   }
 }

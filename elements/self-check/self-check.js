@@ -42,16 +42,14 @@ class SelfCheck extends I18NMixin(
     this.image = "";
     this.question = "";
     this.title = "Self-Check";
-    this.elText = {
+    this.t = {
       reveal: "Reveal Answer",
       close: "Close",
       more: "More information",
     };
     this.registerTranslation({
       context: this,
-      tagName: this.tagName.toLowerCase(),
       basePath: import.meta.url,
-      updateCallback: "requestUpdate",
       locales: ["en-UK", "ja"],
     });
   }
@@ -265,7 +263,7 @@ class SelfCheck extends I18NMixin(
             <div class="check_button">
               <simple-icon-button
                 controls="answer_wrap"
-                aria-label="${this.elText.reveal}"
+                aria-label="${this.t.reveal}"
                 id="checkBtn"
                 class="check-btn"
                 icon="icons:check-circle"
@@ -273,7 +271,7 @@ class SelfCheck extends I18NMixin(
                 @click="${this.openAnswer}"
               ></simple-icon-button>
               <simple-tooltip aria-hidden="true" for="checkBtn" position="left">
-                ${this.elText.reveal}
+                ${this.t.reveal}
               </simple-tooltip>
             </div>
           </div>
@@ -291,7 +289,7 @@ class SelfCheck extends I18NMixin(
                     <div class="more_info">
                       <user-action track="click" every
                         ><a href="${this.link}" target="_blank"
-                          >${this.elText.more}...</a
+                          >${this.t.more}...</a
                         ></user-action
                       >
                     </div>
@@ -299,7 +297,7 @@ class SelfCheck extends I18NMixin(
                 : ``}
               <div class="close_button">
                 <simple-icon-button
-                  aria-label="${this.elText.close}"
+                  aria-label="${this.t.close}"
                   id="closeBtn"
                   dark
                   icon="icons:close"
@@ -311,7 +309,7 @@ class SelfCheck extends I18NMixin(
                   for="closeBtn"
                   position="left"
                 >
-                  ${this.elText.close}
+                  ${this.t.close}
                 </simple-tooltip>
               </div>
             </div>

@@ -11,19 +11,42 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../i18n-manager.js';
+      import "@lrnwebcomponents/self-check/self-check.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
-  <body>
+  <body lang="ja">
     <div class="vertical-section-container centered">
       <h3>Basic i18n-manager demo</h3>
+      <select id="changer" onchange="changeLanguage(this)">
+        <option value="en">English</option>
+        <option value="en-UK">English (UK)</option>
+        <option value="ja">Japanese</option>
+      </select>
       <demo-snippet>
         <template>
-          <i18n-manager>
-            This is i18n-manager
-          </i18n-manager>
+          <self-check accent-color="light-blue" title="Sharks Self Check"
+            image="https://kids.nationalgeographic.com/content/dam/kids/photos/animals/Fish/A-G/great-white-shark-teeth.ngsversion.1396530884408.adapt.1900.1.jpg"
+            alt="Great White Shark">
+            <span slot="question">How large can the average great white shark grow to be?</span>
+            The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.
+          </self-check>
         </template>
       </demo-snippet>
     </div>
+    <script async defer>
+      function changeLanguage(e) {
+        window.I18NManagerStore.requestAvailability().lang = e.value;
+      }
+      var lang = (
+        document.body.getAttribute("xml:lang") ||
+        document.body.getAttribute("lang") ||
+        document.documentElement.getAttribute("xml:lang") ||
+        document.documentElement.getAttribute("lang") ||
+        navigator.language ||
+        "en"
+      );
+      document.getElementById("changer").value = lang;
+    </script>
   </body>
 </html>

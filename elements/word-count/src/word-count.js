@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+
 /**
  * `word-count`
  * `Count the words on whatever this wraps`
@@ -6,7 +8,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @demo demo/index.html
  * @element word-count
  */
-class WordCount extends LitElement {
+class WordCount extends I18NMixin(LitElement) {
   static get styles() {
     return [
       css`
@@ -48,7 +50,7 @@ class WordCount extends LitElement {
   render() {
     return html`
       <slot></slot>
-      <div class="screen-reader-text">${this.wordsPrefix} ${this.words}</div>
+      <div class="screen-reader-text">${this.t.wordsPrefix}: ${this.words}</div>
     `;
   }
   static get tag() {
@@ -56,7 +58,15 @@ class WordCount extends LitElement {
   }
   constructor() {
     super();
-    this.wordsPrefix = "Word count:";
+    this.t = {
+      wordsPrefix: "Word count",
+    };
+    this.registerTranslation({
+      context: this,
+      basePath: import.meta.url,
+      locales: ["es", "fr"],
+    });
+    this.wordsPrefix = this.t.wordsPrefix;
   }
   connectedCallback() {
     super.connectedCallback();
@@ -74,15 +84,19 @@ class WordCount extends LitElement {
   }
   update(changedProperties) {
     super.update(changedProperties);
+    if (changedProperties.has("t")) {
+      this.wordsPrefix = this.t.wordsPrefix;
+    }
     if (
       changedProperties.has("wordsPrefix") ||
       changedProperties.has("words")
     ) {
-      this.setAttribute("words-text", `${this.wordsPrefix} ${this.words}`);
+      this.setAttribute("words-text", `${this.wordsPrefix}: ${this.words}`);
     }
   }
   static get properties() {
     return {
+      ...super.properties,
       words: { type: Number },
       wordsPrefix: { type: String },
     };
