@@ -430,7 +430,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               id="top-right"
               event-name="toggle-element-align"
               icon="arrow-forward"
-              label="Bottom Right"
+              label="Top Right"
               text-align="left"
               index="1"
               ?disabled="${this.elementAlign == "right"}"
