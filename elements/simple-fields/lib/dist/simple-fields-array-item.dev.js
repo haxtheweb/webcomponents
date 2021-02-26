@@ -11,6 +11,8 @@ var _simpleFieldsFieldset = require("./simple-fields-fieldset.js");
 
 var _simpleFieldsUi = require("./simple-fields-ui.js");
 
+var _utils = require("@lrnwebcomponents/utils/utils.js");
+
 require("@lrnwebcomponents/simple-icon/simple-icon.js");
 
 require("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
@@ -37,7 +39,7 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          padding: 0;\n          border-radius: var(--simple-fields-border-radius, 2px);\n          display: block;\n          border: none;\n          transform: rotate(0deg);\n          transition: all 0.5s ease;\n        }\n        :host([disabled]) {\n          opacity: 0.5;\n        }\n        :host([aria-expanded="true"]) {\n          padding: var(--simple-fields-margin, 16px)\n            var(--simple-fields-margin-small, 8px);\n          outline: 1px solid var(--simple-fields-border-color-light, #ccc);\n          transition: all 0.5s ease;\n        }\n        :host([error]) {\n          outline: 1px solid var(--simple-fields-error-color, #dd2c00);\n          transition: border 0.5s ease;\n        }\n        :host(:focus-within) {\n          z-index: 2;\n        }\n        *[aria-controls="content"][disabled] {\n          cursor: not-allowed;\n        }\n        #drag-handle {\n          flex: 0 1 auto;\n        }\n        #preview {\n          flex: 1 0 auto;\n          margin: 0;\n        }\n        #heading,\n        .heading-inner {\n          display: flex;\n          justify-content: space-between;\n          align-items: center;\n        }\n        #content {\n          overflow: hidden;\n          max-height: 0;\n        }\n        :host #content-inner {\n          display: flex;\n          align-items: flex-end;\n          justify-content: space-between;\n          overflow: hidden;\n          max-height: 0;\n          transition: max-height 0.75s ease 0.1s;\n        }\n        :host([aria-expanded="true"]) #content {\n          max-height: 20000vh;\n          transition: max-height 0.75s ease 0.1s;\n        }\n        :host([aria-expanded="true"]) #content-inner {\n          max-height: 20000vh;\n        }\n        #content-inner > * {\n          flex: 1 1 auto;\n        }\n        #remove {\n          flex: 0 0 auto;\n          color: var(--simple-fields-error-color, #ac0000);\n        }\n        #heading {\n          margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);\n        }\n        #expand {\n          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);\n        }\n        #drag-handle {\n          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);\n        }\n        :host([aria-expanded=true]) #expand::part(icon) {\n          transform: rotate(90deg);\n          transition: all 0.5s ease;\n        }\n        ::slotted(*:first-child) {\n          margin-top: 0;\n        }\n        ::slotted(*:last-child){\n          margin-bottom: 0;\n        }\n      ',
+    '\n        :host {\n          padding: 0;\n          border-radius: var(--simple-fields-border-radius, 2px);\n          display: block;\n          border: none;\n          transform: rotate(0deg);\n          transition: all 0.5s ease;\n        }\n        :host([disabled]) {\n          opacity: 0.5;\n        }\n        :host([aria-expanded="true"]) {\n          padding: var(--simple-fields-margin, 16px)\n            var(--simple-fields-margin-small, 8px);\n          outline: 1px solid var(--simple-fields-border-color-light, #ccc);\n          transition: all 0.5s ease;\n        }\n        :host([error]) {\n          outline: 1px solid var(--simple-fields-error-color, #dd2c00);\n          transition: border 0.5s ease;\n        }\n        :host(:focus-within) {\n          z-index: 2;\n        }\n        *[aria-controls="content"][disabled] {\n          cursor: not-allowed;\n        }\n        #drag-handle {\n          flex: 0 1 auto;\n        }\n        #preview {\n          flex: 1 0 auto;\n          margin: 0;\n        }\n        #heading,\n        .heading-inner {\n          display: flex;\n          justify-content: space-between;\n          align-items: center;\n        }\n        #content {\n          overflow: hidden;\n          max-height: 0;\n        }\n        :host #content-inner {\n          display: flex;\n          align-items: flex-end;\n          justify-content: space-between;\n          overflow: hidden;\n          max-height: 0;\n          transition: max-height 0.75s ease 0.1s;\n        }\n        :host([aria-expanded="true"]) #content {\n          max-height: 20000vh;\n          transition: max-height 0.75s ease 0.1s;\n        }\n        :host([aria-expanded="true"]) #content-inner {\n          max-height: 20000vh;\n        }\n        #content-inner > * {\n          flex: 1 1 auto;\n        }\n        #remove {\n          flex: 0 0 auto;\n          color: var(--simple-fields-error-color, #ac0000);\n        }\n        #heading {\n          margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);\n        }\n        #expand {\n          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);\n        }\n        #drag-handle {\n          margin-right: calc(var(--simple-fields-margin-small, 8px) / 2);\n        }\n        :host(.dragging) #heading {\n          border: 1px solid var(--simple-fields-border-color, #999);\n          background-color: var(--simple-fields-background-color, white);\n          padding: 2px;\n          opacity: 0.5;\n        }\n        #dropzone {\n          height: 0px;\n          transition: heigh 0.3s 0s ease-in-out;\n        }\n        :host(.dropzone) #dropzone {\n          background-color: var(--simple-fields-accent-color-light, #9de1ff);\n          height: 80px;\n          transition: heigh 0.3s 0s ease-in-out;\n        }\n        :host(.dragging) #content,\n        :host(.dragging) #expand {\n          display: none;\n        }\n\n        :host([aria-expanded="true"]) #expand::part(icon) {\n          transform: rotate(90deg);\n          transition: all 0.5s ease;\n        }\n        ::slotted(*:first-child) {\n          margin-top: 0;\n        }\n        ::slotted(*:last-child) {\n          margin-bottom: 0;\n        }\n      ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -76,10 +78,16 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <div id="heading" part="heading">\n        <simple-toolbar-button\n          id="drag-handle"\n          controls="',
-    '"\n          icon="icons:open-with"\n          label="Reorder this item"\n          ?hidden="',
-    '"\n          ?disabled="',
-    '"\n          part="drag"\n        >\n        </simple-toolbar-button>\n        <div id="preview" part="preview"><slot name="preview"></slot></div>\n        <simple-toolbar-button\n          id="expand"\n          controls="',
+    '\n      <div id="dropzone"></div>\n      <div id="heading" part="heading"\n          .item="',
+    '" \n          draggable="',
+    '"\n          @dragstart="',
+    '"\n          @dragend="',
+    '">\n        <simple-toolbar-button\n          id="drag-handle"\n          controls="',
+    '"\n          icon="icons:reorder"\n          label="Reorder this item"\n          ?disabled="',
+    '"\n          part="drag"\n          @mousedown="',
+    '"\n          @mouseup="',
+    '"\n        >\n        </simple-toolbar-button>\n        <div id="drag-preview">',
+    '</div>\n        <div id="preview" part="preview"><slot name="preview"></slot></div>\n        <simple-toolbar-button\n          id="expand"\n          controls="',
     '"\n          icon="more-vert"\n          label="Toggle expand"\n          @click="',
     '"\n          toggles\n          ?toggled="',
     '"\n          part="expand"\n        >\n        </simple-toolbar-button>\n      </div>\n      <div id="content" part="content">\n        <div id="content-inner" part="content-inner">\n          <div><slot></slot></div>\n          <simple-toolbar-button\n            id="remove"\n            controls="',
@@ -240,9 +248,19 @@ var SimpleFieldsArrayItem =
 
             return (0, _litElement.html)(
               _templateObject(),
+              this,
+              this.draggable ? "true" : "false",
+              this._dragStart,
+              this._dragEnd,
               this.id,
-              !this.sortable,
               this.disabled,
+              function (e) {
+                return (_this2.draggable = true);
+              },
+              function (e) {
+                return (_this2.draggable = false);
+              },
+              this.__dragPreview,
               this.id,
               this.toggle,
               this.expanded,
@@ -297,10 +315,8 @@ var SimpleFieldsArrayItem =
               /**
                * is disabled?
                */
-              sortable: {
-                type: Boolean,
-                reflect: true,
-                attribute: "sortable",
+              draggable: {
+                type: String,
               },
 
               /**
@@ -317,6 +333,12 @@ var SimpleFieldsArrayItem =
                 type: Array,
                 reflect: true,
                 attribute: "preview-by",
+              },
+              __dragging: {
+                type: Boolean,
+              },
+              __dropAccepts: {
+                type: Object,
               },
               /**
          * fields to sort by
@@ -342,17 +364,155 @@ var SimpleFieldsArrayItem =
         _getPrototypeOf(SimpleFieldsArrayItem).call(this)
       );
       _this.disabled = false;
-      _this.sortable = false;
-      _this.previewBy = []; //this.sortBy = [];
+      _this.draggable = "truest";
+      _this.previewBy = [];
+
+      _this.addEventListener("dragenter", _this._dragEnter);
+
+      _this.addEventListener("dragleave", _this._dragLeave);
+
+      _this.addEventListener("dragover", _this._dragMoving);
+
+      _this.addEventListener("drop", _this._dragDrop);
 
       return _this;
     }
 
     _createClass(SimpleFieldsArrayItem, [
       {
+        key: "_dragMoving",
+        value: function _dragMoving(e) {
+          this.__dragMoving = true;
+          e.preventDefault();
+        },
+        /**
+         * When we end dragging ensure we remove the mover class.
+         */
+      },
+      {
+        key: "_dragEnd",
+        value: function _dragEnd(e) {
+          var heading = (0, _utils.normalizeEventPath)(e)
+              ? (0, _utils.normalizeEventPath)(e)[0]
+              : undefined,
+            item = heading ? heading.item : undefined;
+
+          this._setDragging(false);
+
+          _toConsumableArray(this.parentNode.childNodes).forEach(function (
+            item
+          ) {
+            return item._setDropzone(false);
+          });
+        },
+        /**
+         * Drag start so we know what target to set
+         */
+      },
+      {
+        key: "_dragStart",
+        value: function _dragStart(e) {
+          this._setDragging();
+
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        },
+        /**
+         * Enter an element, meaning we've over it while dragging
+         */
+      },
+      {
+        key: "_dragEnter",
+        value: function _dragEnter(e) {
+          this._setDropzone();
+        },
+        /**
+         * Leaving an element while dragging.
+         */
+      },
+      {
+        key: "_dragLeave",
+        value: function _dragLeave(e) {
+          this._setDropzone(false);
+        },
+        /**
+         * Drop an item onto another
+         */
+      },
+      {
+        key: "_dragDrop",
+        value: function _dragDrop(e) {
+          if (!this.parentNode.disabled && this.__dropAccepts) {
+            this.parentNode.insertBefore(this.__dropAccepts, this);
+
+            _toConsumableArray(this.parentNode.childNodes).forEach(function (
+              item
+            ) {
+              item._setDragging(false);
+
+              item._setDragging(false);
+            });
+
+            this.dispatchEvent(
+              new CustomEvent("reorder", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: this.parentNode,
+              })
+            );
+          }
+        },
+      },
+      {
+        key: "_setDragging",
+        value: function _setDragging() {
+          var _this3 = this;
+
+          var show =
+            arguments.length > 0 && arguments[0] !== undefined
+              ? arguments[0]
+              : true;
+          if (!this.parentNode.disabled) this.__dragging = show;
+
+          if (show) {
+            _toConsumableArray(this.parentNode.childNodes).forEach(function (
+              item
+            ) {
+              if (item !== _this3) item.__dropAccepts = _this3;
+            });
+
+            this.classList.add("dragging");
+          } else {
+            _toConsumableArray(this.parentNode.childNodes).forEach(function (
+              item
+            ) {
+              if (item !== _this3) item.__dropAccepts = undefined;
+            });
+
+            this.classList.remove("dragging");
+          }
+        },
+      },
+      {
+        key: "_setDropzone",
+        value: function _setDropzone() {
+          var show =
+            arguments.length > 0 && arguments[0] !== undefined
+              ? arguments[0]
+              : true;
+
+          if (show && !this.__dragging && this.__dropAccepts) {
+            this.classList.add("dropzone");
+          } else {
+            this.classList.remove("dropzone");
+          }
+        },
+      },
+      {
         key: "connectedCallback",
         value: function connectedCallback() {
-          var _this3 = this;
+          var _this4 = this;
 
           _get(
             _getPrototypeOf(SimpleFieldsArrayItem.prototype),
@@ -366,12 +526,12 @@ var SimpleFieldsArrayItem =
              *
              * @event add-item
              */
-            _this3.dispatchEvent(
+            _this4.dispatchEvent(
               new CustomEvent("added", {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: _this3,
+                detail: _this4,
               })
             );
           }, 0);
@@ -380,13 +540,13 @@ var SimpleFieldsArrayItem =
       {
         key: "updated",
         value: function updated(changedProperties) {
-          var _this4 = this;
+          var _this5 = this;
 
           changedProperties.forEach(function (oldValue, propName) {
-            var expanded = _this4.getAttribute("aria-expanded");
+            var expanded = _this5.getAttribute("aria-expanded");
 
             if (propName === "error")
-              _this4.setAttribute("aria-expanded", _this4.error || expanded);
+              _this5.setAttribute("aria-expanded", _this5.error || expanded);
           });
         },
       },

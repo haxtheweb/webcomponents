@@ -244,6 +244,7 @@ class SimpleFields extends SimpleFieldsLite {
                 descriptionProperty: "description",
                 properties: {
                   previewBy: "previewBy",
+                  sortable: true,
                 },
               },
             },

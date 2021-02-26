@@ -13,7 +13,7 @@ export const SimpleFieldsBaseStyles = [
       font-size: var(--simple-fields-detail-font-size, 12px);
       font-family: var(--simple-fields-detail-font-family, sans-serif);
       line-height: var(--simple-fields-detail-line-height, 130%);
-      background-color: var(--simple-fields-background-color, transparent);
+      background-color: var(--simple-fields-background-color, white);
       color: var(--simple-fields-color, currentColor);
       margin: 0 0
         var(--simple-fields-field-margin, var(--simple-fields-margin, 16px));

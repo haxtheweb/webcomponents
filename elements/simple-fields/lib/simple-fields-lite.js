@@ -842,6 +842,14 @@ class SimpleFieldsLite extends LitElement {
       this._setValue(`${parent.name}`, vals);
       parent.focus(parseInt(index) - 1);
     });
+    parent.addEventListener("reorder", (e) => {
+      let oldvals = [...(this._getValue(parent.name) || [])],
+        vals = [...parent.childNodes].map((item) => {
+          let i = parseInt(item.id.replace(/.*\./g, ""));
+          return JSON.parse(JSON.stringify(oldvals[i]));
+        });
+      this._setValue(`${parent.name}`, vals);
+    });
   }
 
   /**

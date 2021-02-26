@@ -342,6 +342,9 @@ var SimpleFieldsArray =
                   type: Boolean,
                   reflect: true,
                 },
+                __dragging: {
+                  type: Boolean,
+                },
               }
             );
           },

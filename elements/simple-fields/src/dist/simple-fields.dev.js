@@ -621,6 +621,7 @@ var SimpleFields =
                       descriptionProperty: "description",
                       properties: {
                         previewBy: "previewBy",
+                        sortable: true,
                       },
                     },
                   },

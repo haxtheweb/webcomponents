@@ -55,6 +55,9 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
         type: Boolean,
         reflect: true,
       },
+      __dragging: {
+        type: Boolean,
+      },
     };
   }
   render() {

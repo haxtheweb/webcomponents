@@ -4,6 +4,7 @@ import {
   SimpleFieldsButtonStyles,
   SimpleFieldsTooltipStyles,
 } from "./simple-fields-ui.js";
+import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
@@ -115,8 +116,28 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
         }
         #drag-handle {
-          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
+          margin-right: calc(var(--simple-fields-margin-small, 8px) / 2);
         }
+        :host(.dragging) #heading {
+          border: 1px solid var(--simple-fields-border-color, #999);
+          background-color: var(--simple-fields-background-color, white);
+          padding: 2px;
+          opacity: 0.5;
+        }
+        #dropzone {
+          height: 0px;
+          transition: heigh 0.3s 0s ease-in-out;
+        }
+        :host(.dropzone) #dropzone {
+          background-color: var(--simple-fields-accent-color-light, #9de1ff);
+          height: 80px;
+          transition: heigh 0.3s 0s ease-in-out;
+        }
+        :host(.dragging) #content,
+        :host(.dragging) #expand {
+          display: none;
+        }
+
         :host([aria-expanded="true"]) #expand::part(icon) {
           transform: rotate(90deg);
           transition: all 0.5s ease;
@@ -132,17 +153,27 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   }
   render() {
     return html`
-      <div id="heading" part="heading">
+      <div id="dropzone"></div>
+      <div
+        id="heading"
+        part="heading"
+        .item="${this}"
+        draggable="${this.draggable ? "true" : "false"}"
+        @dragstart="${this._dragStart}"
+        @dragend="${this._dragEnd}"
+      >
         <simple-toolbar-button
           id="drag-handle"
           controls="${this.id}"
-          icon="icons:open-with"
+          icon="icons:reorder"
           label="Reorder this item"
-          ?hidden="${!this.sortable}"
           ?disabled="${this.disabled}"
           part="drag"
+          @mousedown="${(e) => (this.draggable = true)}"
+          @mouseup="${(e) => (this.draggable = false)}"
         >
         </simple-toolbar-button>
+        <div id="drag-preview">${this.__dragPreview}</div>
         <div id="preview" part="preview"><slot name="preview"></slot></div>
         <simple-toolbar-button
           id="expand"
@@ -197,10 +228,8 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       /**
        * is disabled?
        */
-      sortable: {
-        type: Boolean,
-        reflect: true,
-        attribute: "sortable",
+      draggable: {
+        type: String,
       },
       /**
        * is disabled?
@@ -216,6 +245,12 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         reflect: true,
         attribute: "preview-by",
       },
+      __dragging: {
+        type: Boolean,
+      },
+      __dropAccepts: {
+        type: Object,
+      },
       /**
        * fields to sort by
        * /
@@ -230,9 +265,86 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   constructor() {
     super();
     this.disabled = false;
-    this.sortable = false;
+    this.draggable = "truest";
     this.previewBy = [];
-    //this.sortBy = [];
+    this.addEventListener("dragenter", this._dragEnter);
+    this.addEventListener("dragleave", this._dragLeave);
+    this.addEventListener("dragover", this._dragMoving);
+    this.addEventListener("drop", this._dragDrop);
+  }
+  _dragMoving(e) {
+    this.__dragMoving = true;
+    e.preventDefault();
+  }
+  /**
+   * When we end dragging ensure we remove the mover class.
+   */
+  _dragEnd(e) {
+    let heading = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined,
+      item = heading ? heading.item : undefined;
+    this._setDragging(false);
+    [...this.parentNode.childNodes].forEach((item) => item._setDropzone(false));
+  }
+  /**
+   * Drag start so we know what target to set
+   */
+  _dragStart(e) {
+    this._setDragging();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  }
+  /**
+   * Enter an element, meaning we've over it while dragging
+   */
+  _dragEnter(e) {
+    this._setDropzone();
+  }
+  /**
+   * Leaving an element while dragging.
+   */
+  _dragLeave(e) {
+    this._setDropzone(false);
+  }
+  /**
+   * Drop an item onto another
+   */
+  _dragDrop(e) {
+    if (!this.parentNode.disabled && this.__dropAccepts) {
+      this.parentNode.insertBefore(this.__dropAccepts, this);
+      [...this.parentNode.childNodes].forEach((item) => {
+        item._setDragging(false);
+        item._setDragging(false);
+      });
+      this.dispatchEvent(
+        new CustomEvent("reorder", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this.parentNode,
+        })
+      );
+    }
+  }
+  _setDragging(show = true) {
+    if (!this.parentNode.disabled) this.__dragging = show;
+    if (show) {
+      [...this.parentNode.childNodes].forEach((item) => {
+        if (item !== this) item.__dropAccepts = this;
+      });
+      this.classList.add("dragging");
+    } else {
+      [...this.parentNode.childNodes].forEach((item) => {
+        if (item !== this) item.__dropAccepts = undefined;
+      });
+      this.classList.remove("dragging");
+    }
+  }
+  _setDropzone(show = true) {
+    if (show && !this.__dragging && this.__dropAccepts) {
+      this.classList.add("dropzone");
+    } else {
+      this.classList.remove("dropzone");
+    }
   }
   connectedCallback() {
     super.connectedCallback();
