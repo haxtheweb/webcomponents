@@ -705,9 +705,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     constructor() {
       super();
       import(
-        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js"
-      );
-      import(
         "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-source-code.js"
       );
       import(
