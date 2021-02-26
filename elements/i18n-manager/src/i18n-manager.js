@@ -6,16 +6,14 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 
 // register globally so we can make sure there is only one
 window.I18NManagerStore = window.I18NManagerStore || {};
-// request if this exists. This helps invoke the element existing in the dom
-// as well as that there is only one of them. That way we can ensure everything
-// is rendered through the same modal
-export const I18NManagerStore = (window.I18NManagerStore.requestAvailability = () => {
+window.I18NManagerStore.requestAvailability = () => {
   if (!window.I18NManagerStore.instance) {
     window.I18NManagerStore.instance = document.createElement("i18n-manager");
     document.body.appendChild(window.I18NManagerStore.instance);
   }
   return window.I18NManagerStore.instance;
-});
+};
+export const I18NManagerStore = window.I18NManagerStore.requestAvailability();
 const FALLBACK_LANG = "en";
 /**
  * `i18n-manager`
@@ -59,17 +57,24 @@ class I18NManager extends LitElement {
     super.disconnectedCallback();
   }
   registerTranslationEvent(e) {
-    if (e.detail.import && e.detail.context && e.detail.locales) {
-      this.registerTranslation(
-        e.detail.importPath,
-        e.detail.context,
-        e.detail.locales,
-        e.detail.updateCallback
-      );
+    if (
+      e.detail.import &&
+      e.detail.context &&
+      e.detail.locales &&
+      e.detail.basePath
+    ) {
+      this.registerTranslation(e.detail);
     }
   }
-  registerTranslation(importPath, context, locales, updateCallback) {
-    e.detail.element;
+  registerTranslation(detail) {
+    // ensure no dual registration of context
+    if (
+      this.elements.filter((e) => {
+        return e.context === detail.context;
+      }).length === 0
+    ) {
+      this.elements.push(detail);
+    }
   }
   /**
    * LitElement style callback
@@ -88,16 +93,6 @@ class I18NManager extends LitElement {
         }
       `,
     ];
-  }
-  /**
-   * LitElement render callback
-   */
-  render() {
-    return html`
-      <div>
-        <slot></slot>
-      </div>
-    `;
   }
   /**
    * Convention we use
@@ -119,11 +114,30 @@ class I18NManager extends LitElement {
     };
   }
   /**
-   * LitElement ready
+   * trigger an update of the language after loading everything
    */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
+  async updateLanguage(lang, context = "*") {
+    if (lang) {
+      const processList = this.elements.filter((el) => {
+        return el.locales.includes(lang);
+      });
+      await processList.forEach((el, i) => {
+        fetch(`${el.localesPath}/${el.tagName}.${lang}.json`)
+          .then((response) => {
+            if (response && response.json) return response.json();
+            return false;
+          })
+          .then((data) => {
+            console.log(data);
+            for (var id in data) {
+              el.context.elText[id] = data[id];
+            }
+            // support a forced update / function to run when it finishes
+            if (el.updateCallback) {
+              el.context[el.updateCallback]();
+            }
+          });
+      });
     }
   }
   /**
@@ -146,6 +160,10 @@ class I18NManager extends LitElement {
             },
           })
         );
+        // we are NOT moving to the default from something
+        if (this[propName]) {
+          this.updateLanguage(this[propName]);
+        }
       }
       /* observer example
       if (propName == 'activeNode') {
