@@ -80,7 +80,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        ::slotted([slot=menuitem]) {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-label-white-space: nowrap;\n          --hax-tray-border-color: none;\n        }\n      ",
+    '\n        ::slotted([slot="menuitem"]) {\n          --simple-toolbar-button-justify: flex-start;\n          --simple-toolbar-button-label-white-space: nowrap;\n        }\n      ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -292,7 +292,7 @@ var HaxToolbarMenu =
         {
           key: "simpleButtonThemeStyles",
           get: function get() {
-            return _haxUiStyles.HaxTrayButtonTheme;
+            return _haxUiStyles.HaxButton;
           },
         },
         {

@@ -64,7 +64,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        simple-button-grid {\n          overflow-y: auto;\n          margin: var(--hax-tray-spacing-sm);\n          --simple-button-grid-cols: 100px;\n        }\n      ",
+    "\n        simple-button-grid {\n          overflow-y: auto;\n          margin: var(--hax-ui-spacing-sm);\n          --simple-button-grid-cols: 100px;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -198,9 +198,10 @@ var HaxPicker =
       {
         key: "styles",
         get: function get() {
-          return [].concat(_toConsumableArray(_haxUiStyles.HaxTrayBaseStyles), [
-            (0, _litElement.css)(_templateObject()),
-          ]);
+          return [].concat(
+            _toConsumableArray(_haxUiStyles.HaxComponentStyles),
+            [(0, _litElement.css)(_templateObject())]
+          );
         },
       },
     ]);

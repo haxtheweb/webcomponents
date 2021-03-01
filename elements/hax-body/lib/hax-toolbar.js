@@ -15,8 +15,7 @@ const HaxToolbarBehaviors = function (SuperClass) {
         ...super.styles,
         css`
           :host {
-            background-color: var(--hax-tray-background-color);
-            border: 1px solid var(--hax-tray-border-color, #ddd);
+            --hax-ui-border-radius: 0px;
           }
           .selected-buttons {
             transition: 0.1s all ease-in-out;
@@ -27,6 +26,9 @@ const HaxToolbarBehaviors = function (SuperClass) {
           }
           ::slotted(*) {
             pointer-events: all;
+          }
+          ::slotted(.group) {
+            border: none;
           }
         `,
       ];

@@ -28,6 +28,9 @@ for project in */ ; do
     if [ -d "lib" ]; then
       symlink-dir ../../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib
     fi
+    if [ -d "locales" ]; then
+      symlink-dir ../../../elements/${p}/locales ../../node_modules/@lrnwebcomponents/${p}/locales
+    fi
     if [ -d "build" ]; then
       symlink-dir ../../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
     fi

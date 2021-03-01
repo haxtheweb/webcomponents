@@ -21,16 +21,18 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
           flex: 0 1 auto;
           overflow-y: auto;
         }
+        :host > * {
+          max-width: 100%;
+        }
         .toolbar-inner {
           display: flex;
           flex-direction: column;
           align-items: stretch;
           width: 100%;
           flex: 0 0 auto;
-          overflow-y: auto;
         }
-        simple-button-grid {
-          overflow-y: auto;
+        hax-tray-button::part(button) {
+          font-size: var(hax-ui-font-size-xs);
         }
         simple-fields-field {
           margin-top: 0;

@@ -1,7 +1,12 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import {
+  SimpleFieldsButtonStyles,
+  SimpleFieldsTooltipStyles,
+} from "./simple-fields-ui.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 /**
  * `simple-fields-array-item`
  * an accessible expand collapse
@@ -34,9 +39,11 @@ Custom property | Description | Default
 class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   static get styles() {
     return [
+      ...super.styles,
+      ...SimpleFieldsButtonStyles,
       css`
         :host {
-          padding: 0 var(--simple-fields-margin-small, 8px);
+          padding: 0;
           border-radius: var(--simple-fields-border-radius, 2px);
           display: block;
           border: none;
@@ -104,34 +111,20 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         #heading {
           margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);
         }
-        simple-tooltip {
-          font-family: var(--simple-fields-detail-font-family, sans-serif);
-          font-size: var(--simple-fields-detail-font-size, 12px);
-          line-height: var(--simple-fields-detail-line-height, 22px);
+        #expand {
+          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
         }
-        simple-icon-button-lite:not([hidden]) {
-          color: var(---simple-fields-color);
-          background-color: var(---simple-fields-background-color);
-          font-family: var(--simple-fields-detail-font-family, sans-serif);
-          font-size: var(--simple-fields-detail-font-size, 12px);
-          line-height: var(--simple-fields-detail-line-height, 22px);
-          margin: 0
-          z-index: 1;
-          text-transform: unset;
-          border-color: transparent;
-          border-radius: 3px;
-          display: flex;
-          align-items:center;
+        #drag-handle {
+          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
         }
-        simple-icon-button-lite[aria-pressed="true"],
-        simple-icon-button-lite:focus,
-        simple-icon-button-lite:hover {
-          border: 1px solid var(--simple-fields-border-color, #999);
+        :host([aria-expanded="true"]) #expand::part(icon) {
+          transform: rotate(90deg);
+          transition: all 0.5s ease;
         }
         ::slotted(*:first-child) {
           margin-top: 0;
         }
-        ::slotted(*:last-child){
+        ::slotted(*:last-child) {
           margin-bottom: 0;
         }
       `,
@@ -140,7 +133,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   render() {
     return html`
       <div id="heading" part="heading">
-        <simple-icon-button-lite
+        <simple-toolbar-button
           id="drag-handle"
           controls="${this.id}"
           icon="icons:open-with"
@@ -149,23 +142,24 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           ?disabled="${this.disabled}"
           part="drag"
         >
-        </simple-icon-button-lite>
+        </simple-toolbar-button>
         <div id="preview" part="preview"><slot name="preview"></slot></div>
-        <simple-icon-button-lite
+        <simple-toolbar-button
           id="expand"
           controls="${this.id}"
           icon="more-vert"
           label="Toggle expand"
           @click="${this.toggle}"
-          aria-pressed="${this.expanded ? "true" : "false"}"
+          toggles
+          ?toggled="${this.expanded}"
           part="expand"
         >
-        </simple-icon-button-lite>
+        </simple-toolbar-button>
       </div>
       <div id="content" part="content">
         <div id="content-inner" part="content-inner">
           <div><slot></slot></div>
-          <simple-icon-button-lite
+          <simple-toolbar-button
             id="remove"
             controls="${this.id}"
             icon="delete"
@@ -174,10 +168,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
             @click="${(e) => this._handleRemove()}"
             part="remove"
           >
-          </simple-icon-button-lite>
-          <simple-tooltip for="remove" part="remove-tooltip"
-            >Remove this item</simple-tooltip
-          >
+          </simple-toolbar-button>
         </div>
       </div>
     `;

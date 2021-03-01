@@ -48,6 +48,7 @@
     "@lrnwebcomponents/simple-icon": "^3.0.6",
     "@lrnwebcomponents/simple-tooltip": "^3.0.5",
     "@lrnwebcomponents/user-action": "^3.0.5",
+    "@lrnwebcomponents/i18n-manager": "^3.0.7",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

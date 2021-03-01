@@ -3,13 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.HAXTrayButton = void 0;
+exports.HaxButton = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
-
-var _simpleColors = require("@lrnwebcomponents/simple-colors/simple-colors.js");
-
-require("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
 
 var _haxToolbarItem = require("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
 
@@ -176,12 +172,12 @@ function _setPrototypeOf(o, p) {
  * `hax-tray-button`
  * `A button in the tray`
  */
-var HAXTrayButton =
+var HaxButton =
   /*#__PURE__*/
   (function (_HaxToolbarItemBehavi) {
-    _inherits(HAXTrayButton, _HaxToolbarItemBehavi);
+    _inherits(HaxButton, _HaxToolbarItemBehavi);
 
-    _createClass(HAXTrayButton, null, [
+    _createClass(HaxButton, null, [
       {
         key: "tag",
         get: function get() {
@@ -190,21 +186,21 @@ var HAXTrayButton =
       },
     ]);
 
-    function HAXTrayButton() {
+    function HaxButton() {
       var _this;
 
-      _classCallCheck(this, HAXTrayButton);
+      _classCallCheck(this, HaxButton);
 
       _this = _possibleConstructorReturn(
         this,
-        _getPrototypeOf(HAXTrayButton).call(this)
+        _getPrototypeOf(HaxButton).call(this)
       );
       _this.eventData = null;
       return _this;
     }
 
     _createClass(
-      HAXTrayButton,
+      HaxButton,
       [
         {
           key: "_voiceEvent",
@@ -242,14 +238,11 @@ var HAXTrayButton =
           value: function updated(changedProperties) {
             var _this2 = this;
 
-            if (
-              _get(_getPrototypeOf(HAXTrayButton.prototype), "updated", this)
-            ) {
-              _get(
-                _getPrototypeOf(HAXTrayButton.prototype),
-                "updated",
-                this
-              ).call(this, changedProperties);
+            if (_get(_getPrototypeOf(HaxButton.prototype), "updated", this)) {
+              _get(_getPrototypeOf(HaxButton.prototype), "updated", this).call(
+                this,
+                changedProperties
+              );
             }
 
             changedProperties.forEach(function (oldValue, propName) {
@@ -277,7 +270,7 @@ var HAXTrayButton =
           get: function get() {
             return _objectSpread(
               {},
-              _get(_getPrototypeOf(HAXTrayButton), "properties", this),
+              _get(_getPrototypeOf(HaxButton), "properties", this),
               {
                 /**
                  * Voice command to append for things that support data-voicecommand.
@@ -308,8 +301,8 @@ var HAXTrayButton =
       ]
     );
 
-    return HAXTrayButton;
+    return HaxButton;
   })((0, _haxToolbarItem.HaxToolbarItemBehaviors)(_litElement.LitElement));
 
-exports.HAXTrayButton = HAXTrayButton;
-customElements.define(HAXTrayButton.tag, HAXTrayButton);
+exports.HaxButton = HaxButton;
+customElements.define(HaxButton.tag, HaxButton);

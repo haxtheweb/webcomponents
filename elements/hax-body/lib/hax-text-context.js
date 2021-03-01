@@ -184,8 +184,6 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               label="Full text editor"
               event-name="hax-full-text-editor-toggle"
             ></hax-context-item> -->
-          </div>
-          <div class="group">
             <slot name="primary"></slot>
           </div>
           <div class="group">
@@ -294,8 +292,6 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               event-name="insert-inline-gizmo"
               ?hidden="${!this.isSafari || !this.hasSelectedText}"
             ></hax-context-item-textop>
-          </div>
-          <div class="group">
             <slot name="secondary"></slot>
           </div>
           <div class="group">
@@ -331,8 +327,6 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               ?hidden="${!this.hasSelectedText}"
               label="Cross out"
             ></hax-context-item-textop>
-          </div>
-          <div class="group more">
             <slot name="more"></slot>
           </div>
           <div class="group">

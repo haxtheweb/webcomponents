@@ -3,7 +3,8 @@ import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behav
 import { stripMSWord, formatHTML } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar.js";
-import { HaxTrayBaseStyles } from "./hax-ui-styles.js";
+import { HaxComponentStyles } from "./hax-ui-styles.js";
+import { autorun, toJS } from "mobx";
 /**
  * `hax-eview-source`
  * @element hax-eview-source
@@ -12,31 +13,40 @@ import { HaxTrayBaseStyles } from "./hax-ui-styles.js";
 class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
   static get styles() {
     return [
-      ...HaxTrayBaseStyles,
+      ...HaxComponentStyles,
       css`
-        :host,
-        :host * {
+        :host {
+          margin: 0;
+          padding: 0;
+          flex: 0 1 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+        :host > *,
+        #textarea {
           margin: 0;
           padding: 0;
         }
-        :host {
+        #hiddentextarea,
+        #spacer {
+          flex: 0 1 0px;
+        }
+        #wrapper {
+          flex: 1 0 calc(70vh - 94px);
           position: relative;
         }
         #textarea {
-          width: 100%;
-          height: calc(var(--simple-modal-height, 75vh) - 95px);
-          overflow: auto;
-          background-color: transparent;
-        }
-        #textarea::part(code) {
-          height: calc(var(--simple-modal-height, 75vh) - 95px);
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
         }
         hax-toolbar {
+          flex: 0 0 auto;
           width: 100%;
-          position: sticky;
-          bottom: 0;
           display: flex;
-          --simple-toolbar-button-padding: 0 var(--hax-tray-spacing-sm);
+          background-color: var(--hax-ui-background-color);
         }
         hax-toolbar::part(buttons) {
           justify-content: space-between;
@@ -54,9 +64,13 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
         <code-editor
           id="textarea"
           title=""
-          theme="auto"
+          theme="${this.haxUiTheme == "hax"
+            ? "vs"
+            : this.haxUiTheme == "haxdark"
+            ? "vs-dark"
+            : "auto"}"
           language="html"
-          font-size="12"
+          font-size="13"
           word-wrap
         ></code-editor>
       </div>
@@ -248,6 +262,21 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     return content;
   }
 
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * Global preferences for HAX overall
+       */
+      globalPreferences: {
+        type: Object,
+      },
+      theme: {
+        type: String,
+      },
+    };
+  }
+
   constructor() {
     super();
     this.fileTypes = {
@@ -257,6 +286,10 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
       TXT: "text/plain",
       HTML: "text/html",
     };
+    autorun(() => {
+      this.globalPreferences = toJS(HAXStore.globalPreferences);
+      this.haxUiTheme = (this.globalPreferences || {}).haxUiTheme || "hax";
+    });
   }
 }
 window.customElements.define(HaxViewSource.tag, HaxViewSource);

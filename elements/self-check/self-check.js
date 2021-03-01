@@ -2,6 +2,7 @@ import { LitElement, html, css, svg } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { lazyImageLoader } from "@lrnwebcomponents/lazy-image-helpers/lazy-image-helpers.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
@@ -31,7 +32,9 @@ Custom property | Description | Default
  * @element self-check
  * 
  */
-class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
+class SelfCheck extends I18NMixin(
+  lazyImageLoader(SchemaBehaviors(SimpleColors))
+) {
   constructor() {
     super();
     this.correct = false;
@@ -39,6 +42,16 @@ class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
     this.image = "";
     this.question = "";
     this.title = "Self-Check";
+    this.t = {
+      reveal: "Reveal Answer",
+      close: "Close",
+      more: "More information",
+    };
+    this.registerTranslation({
+      context: this,
+      basePath: import.meta.url,
+      locales: ["en-UK", "ja"],
+    });
   }
   static get styles() {
     return [
@@ -250,7 +263,7 @@ class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
             <div class="check_button">
               <simple-icon-button
                 controls="answer_wrap"
-                aria-label="Reveal Answer"
+                aria-label="${this.t.reveal}"
                 id="checkBtn"
                 class="check-btn"
                 icon="icons:check-circle"
@@ -258,7 +271,7 @@ class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
                 @click="${this.openAnswer}"
               ></simple-icon-button>
               <simple-tooltip aria-hidden="true" for="checkBtn" position="left">
-                Reveal Answer
+                ${this.t.reveal}
               </simple-tooltip>
             </div>
           </div>
@@ -276,7 +289,7 @@ class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
                     <div class="more_info">
                       <user-action track="click" every
                         ><a href="${this.link}" target="_blank"
-                          >More info...</a
+                          >${this.t.more}...</a
                         ></user-action
                       >
                     </div>
@@ -284,7 +297,7 @@ class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
                 : ``}
               <div class="close_button">
                 <simple-icon-button
-                  aria-label="Close"
+                  aria-label="${this.t.close}"
                   id="closeBtn"
                   dark
                   icon="icons:close"
@@ -296,7 +309,7 @@ class SelfCheck extends lazyImageLoader(SchemaBehaviors(SimpleColors)) {
                   for="closeBtn"
                   position="left"
                 >
-                  Close
+                  ${this.t.close}
                 </simple-tooltip>
               </div>
             </div>

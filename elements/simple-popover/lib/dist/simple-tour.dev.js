@@ -59,11 +59,11 @@ function _templateObject() {
     ',\n        <span class="xofy"\n          >',
     "/",
     '</span\n        >\n      </h1>\n      <simple-icon-button-lite\n        id="close"\n        slot="heading"\n        @click="',
-    '"\n        label="Stop Tour"\n        icon="close"\n      >\n      </simple-icon-button-lite>\n      <simple-tooltip\n        for="close"\n        slot="heading">\n        Stop Tour\n      </simple-tooltip>\n      <simple-icon-button-lite\n        id="prev"\n        slot="nav"\n        @click="',
+    '"\n        label="Stop Tour"\n        icon="close"\n      >\n      </simple-icon-button-lite>\n      <simple-icon-button-lite\n        id="prev"\n        slot="nav"\n        @click="',
     '"\n        ?disabled="',
-    '"\n        label="Prev"\n        icon="arrow-back"\n        show-text-label\n      >\n      </simple-icon-button-lite>\n      <simple-tooltip\n        for="prev"\n        position="top"\n        slot="nav">\n        Previous Item\n      </simple-tooltip>\n      <simple-icon-button-lite\n        id="next"\n        slot="nav"\n        @click="',
+    '"\n        label="Prev"\n        icon="arrow-back"\n        show-text-label\n      >\n      </simple-icon-button-lite>\n      <simple-tooltip for="prev" position="top" slot="nav">\n        Previous Item\n      </simple-tooltip>\n      <simple-icon-button-lite\n        id="next"\n        slot="nav"\n        @click="',
     '"\n        ?disabled="',
-    '"\n        label="Next"\n        icon="arrow-forward"\n        show-text-label\n      >\n      </simple-icon-button-lite>\n      <simple-tooltip\n        for="next"\n        position="top"\n        slot="nav">\n        Next Item\n      </simple-tooltip>',
+    '"\n        label="Next"\n        icon="arrow-forward"\n        show-text-label\n      >\n      </simple-icon-button-lite>\n      <simple-tooltip for="close" slot="body"> Stop Tour </simple-tooltip>\n      <simple-tooltip for="next" position="top" slot="nav">\n        Next Item\n      </simple-tooltip>',
   ]);
 
   _templateObject = function _templateObject() {
@@ -213,7 +213,8 @@ var SimpleTour =
               e.detail.name,
               e.detail.target,
               e.detail.title,
-              e.detail.description
+              e.detail.description,
+              e.detail.mode
             );
           },
           /**
@@ -222,11 +223,18 @@ var SimpleTour =
         },
         {
           key: "createTourStop",
-          value: function createTourStop(name, target, title, description) {
+          value: function createTourStop(
+            name,
+            target,
+            title,
+            description,
+            mode
+          ) {
             var s = new TourStop();
             s.target = target;
             s.title = title;
             s.description = description;
+            s.mode = mode;
             this.addStops(name, [s]);
             return s;
           },
@@ -299,6 +307,14 @@ var SimpleTour =
           key: "startTour",
           value: function startTour(name) {
             this.active = name;
+            this.dispatchEvent(
+              new CustomEvent("tour-changed", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: this,
+              })
+            );
           },
         },
         {
@@ -312,6 +328,14 @@ var SimpleTour =
             );
             this.stop = -1;
             this.active = null;
+            this.dispatchEvent(
+              new CustomEvent("tour-changed", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: this,
+              })
+            );
           },
           /**
            * Render tour buttons as block
@@ -415,7 +439,8 @@ var SimpleTour =
                   _this3,
                   _this3.stacks[_this3.active][_this3.stop].target,
                   true,
-                  _this3.orientation
+                  _this3.orientation,
+                  _this3.active
                 );
 
                 _this3.scrollHere(

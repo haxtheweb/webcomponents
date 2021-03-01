@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
-import { HaxTrayBaseStyles } from "./hax-ui-styles.js";
+import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { HAXStore } from "./hax-store.js";
 /**
  `hax-picker`
@@ -17,11 +17,11 @@ import { HAXStore } from "./hax-store.js";
 class HaxPicker extends LitElement {
   static get styles() {
     return [
-      ...HaxTrayBaseStyles,
+      ...HaxComponentStyles,
       css`
         simple-button-grid {
           overflow-y: auto;
-          margin: var(--hax-tray-spacing-sm);
+          margin: var(--hax-ui-spacing-sm);
           --simple-button-grid-cols: 100px;
         }
       `,

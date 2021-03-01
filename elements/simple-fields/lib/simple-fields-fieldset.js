@@ -1,4 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import {
+  SimpleFieldsBaseStyles,
+  SimpleFieldsFieldsetStyles,
+  SimpleFieldsDescriptionStyles,
+} from "./simple-fields-ui.js";
 /**
  *`simple-fields-fieldset` takes in a JSON schema of type fieldset and builds a form,
  * exposing a `value` property that represents an array described by the schema.
@@ -12,32 +17,12 @@ class SimpleFieldsFieldset extends LitElement {
   }
   static get styles() {
     return [
+      ...SimpleFieldsBaseStyles,
+      ...SimpleFieldsFieldsetStyles,
+      ...SimpleFieldsDescriptionStyles,
       css`
-        fieldset {
-          padding: var(--simple-fields-margin-small, 8px)
-            var(--simple-fields-margin, 16px);
-          margin: var(--simple-fields-margin-small, 8px) 0
-            var(--simple-fields-margin, 16px);
-          border: 1px solid var(--simple-fields-border-color-light, #ccc);
-          border-radius: var(--simple-fields-border-radius, 2px);
-          transition: all 0.3s ease-in-out;
-        }
         :host(:last-of-type) {
           margin-bottom: 0;
-        }
-        #label {
-          font-family: var(--simple-fields-font-family, sans-serif);
-          font-size: var(--simple-fields-font-size, 16px);
-          line-height: var(--simple-fields-line-height, 22px);
-        }
-        :host([error]) #label {
-          color: var(--simple-fields-error-color, #dd2c00);
-          transition: all 0.3s ease-in-out;
-        }
-        #description {
-          font-family: var(--simple-fields-detail-font-family, sans-serif);
-          font-size: var(--simple-fields-detail-font-size, 12px);
-          line-height: var(--simple-fields-detail-line-height, 22px);
         }
       `,
     ];

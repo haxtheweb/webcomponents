@@ -118,6 +118,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
             ? "false"
             : undefined}"
           controls="${this.controls}"
+          part="button"
           ?disabled="${this.disabled}"
           form="${this.form}"
           label="${this.label}"
@@ -126,7 +127,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
           .type="${this.type}"
           value="${this.value}"
         >
-          <simple-icon-lite icon=${this.icon}> </simple-icon-lite>
+          <simple-icon-lite icon=${this.icon} part="icon"> </simple-icon-lite>
         </button>
       `;
     }

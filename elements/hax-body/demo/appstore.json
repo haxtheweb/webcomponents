@@ -1529,6 +1529,7 @@
     }
   ],
   "autoloader": {
+    "unity-webgl": "@lrnwebcomponents/unity-webgl/unity-webgl.js",
     "block-quote": "@lrnwebcomponents/course-design/lib/block-quote.js",
     "github-preview": "@lrnwebcomponents/github-preview/github-preview.js",
     "check-it-out": "@lrnwebcomponents/check-it-out/check-it-out.js",

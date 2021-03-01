@@ -35,11 +35,67 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
-function _templateObject6() {
+function _templateObject10() {
   var data = _taggedTemplateLiteral([
     '\n      <simple-tooltip for="',
-    '-button" part="tooltip"> ',
-    " </simple-tooltip>\n    ",
+    '-button" part="tooltip">\n        ',
+    "\n      </simple-tooltip>\n    ",
+  ]);
+
+  _templateObject10 = function _templateObject10() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject9() {
+  var data = _taggedTemplateLiteral([
+    ' <span class="label" part="label">',
+    "</span> ",
+  ]);
+
+  _templateObject9 = function _templateObject9() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject8() {
+  var data = _taggedTemplateLiteral([
+    '\n          <simple-icon-lite\n            class="icon"\n            ?hidden="',
+    '"\n            .icon="',
+    '"\n            part="icon"\n          >\n          </simple-icon-lite>\n        ',
+  ]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject7() {
+  var data = _taggedTemplateLiteral([
+    '\n          <simple-icon-lite\n            class="icon"\n            ?hidden="',
+    '"\n            .icon="',
+    '"\n            .title="',
+    '"\n            part="icon"\n          >\n          </simple-icon-lite>\n        ',
+  ]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral([
+    '\n      <span class="flag-type" ?hidden="',
+    '" part="flag">\n        ',
+    "\n      </span>\n    ",
   ]);
 
   _templateObject6 = function _templateObject6() {
@@ -50,62 +106,6 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral([
-    ' <span class="label" part="label">',
-    "</span> ",
-  ]);
-
-  _templateObject5 = function _templateObject5() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject4() {
-  var data = _taggedTemplateLiteral([
-    '\n          <simple-icon-lite\n            class="icon"\n            ?hidden="',
-    '"\n            .icon="',
-    '"\n            part="icon"\n          >\n          </simple-icon-lite>\n        ',
-  ]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral([
-    '\n          <simple-icon-lite\n            class="icon"\n            ?hidden="',
-    '"\n            .icon="',
-    '"\n            .title="',
-    '"\n            part="icon"\n          >\n          </simple-icon-lite>\n        ',
-  ]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral([
-    '\n      <span class="flag-type" ?hidden="',
-    '" part="flag"> ',
-    " </span>\n    ",
-  ]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <button\n        id="',
     '-button"\n        aria-selected="',
@@ -123,6 +123,132 @@ function _templateObject() {
     " ",
     "\n      </button>\n      ",
     "\n    ",
+  ]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral([
+    '\n        :host {\n          font-size: var(--a11y-tabs-font-size, unset);\n          font-family: var(--a11y-tabs-font-family, unset);\n          --a11y-tabs-focus-color: var(--a11y-tabs-color);\n          --a11y-tabs-horizontal-border-radius: var(--a11y-tabs-border-radius, 2px);\n          --a11y-tabs-vertical-border-radius: var(--a11y-tabs-border-radius, 2px);\n          --a11y-tabs-vertical-button-padding: var(--a11y-tabs-button-padding, 4px);\n          --a11y-tabs-horizontal-button-padding: var(--a11y-tabs-button-padding, 4px);\n        }\n        @media screen {\n          :host([vertical]) {\n            border-radius: var(--a11y-tabs-vertical-border-radius,2px);\n            border: 1px solid var(--a11y-tabs-border-color,#ddd);\n          }\n        \n          #content {\n            border: 1px solid var(--a11y-tabs-border-color,#ddd);\n            padding: var(--a11y-tabs-content-padding, 16px);\n            background-color: var(--a11y-tabs-content-background);\n          }\n        \n          #tabs {\n            background-color: var(--a11y-tabs-horizontal-background);\n            font-family: var(--a11y-tabs-tab-font-family, var(--a11y-tabs-font-family, unset));\n            font-size: var(--a11y-tabs-tab-font-size, var(--a11y-tabs-font-size, unset));\n          }\n          \n          :host([vertical]) #tabs {\n            border-left: none;\n            background-color: var(--a11y-tabs-vertical-background);\n            justify-content: var(--a11y-tabs-vertical-justify-tabs);\n          }\n        \n          :host([vertical]) #tabs button {\n            padding: var(--a11y-tabs-vertical-button-padding);\n            border-radius: 0; \n          }\n        \n          :host([vertical]) #content {\n            border: none;\n          }\n          :host(:not([vertical])) #content {\n            border-radius: var(--a11y-tabs-horizontal-border-radius,2px);\n          }\n          \n          #tabs button {\n            text-transform: unset;\n            color: var(--a11y-tabs-faded-color, #333);\n            border: 1px solid var(--a11y-tabs-border-color);\n            background-color: var(--a11y-tabs-faded-background, #f8f8f8);\n            padding: var(--a11y-tabs-horizontal-button-padding);\n            font-weight: var(--a11y-tabs-font-weight, normal);\n            border-radius: var(--a11y-tabs-horizontal-border-radius,2px) var(--a11y-tabs-horizontal-border-radius,2px) 0 0; \n          }\n          \n          button .label {\n            text-decoration: var(--a11y-tabs-text-decoration, none);\n          }\n          \n          :host(:not([vertical])) #tabs button {\n            border-top-color: var(--a11y-tabs-border-accent);\n          }\n          \n          :host(:not([vertical])) #tabs li:not(:first-of-type) button {\n            border-left: none;\n          }\n          \n          :host([vertical]) #tabs button {\n            border-top: none;\n            border-left-color: var(--a11y-tabs-border-accent);\n          }\n          \n          #tabs button:focus,\n          #tabs button:hover {\n            color: var(--a11y-tabs-focus-color);\n            font-weight: var(--a11y-tabs-focus-font-weight, normal);\n          }\n          \n          button:focus .label,\n          button:hover .label {\n            text-decoration: var(--a11y-tabs-focus-text-decoration, underline);\n          }\n          \n          :host(:not([vertical])) #tabs button:focus,\n          :host(:not([vertical])) #tabs button:hover {\n            border-top-color: var(--a11y-tabs-focus-border-accent);\n          }\n          \n          :host([vertical]) #tabs button:focus,\n          :host([vertical]) #tabs button:hover {\n            border-left-color: var(--a11y-tabs-focus-border-accent);\n          }\n          \n          #tabs button[aria-selected="true"] {\n            font-weight: var(--a11y-tabs-selected-font-weight, normal);\n            color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));\n            background-color: var(--a11y-tabs-background);\n          }\n          \n          button[aria-selected="true"] .label {\n            text-decoration: var(--a11y-tabs-selected-text-decoration, none);\n          }\n          \n          :host(:not([vertical])) #tabs button[aria-selected="true"] {\n            border-bottom-color: var(--a11y-tabs-background);\n            border-top-color: var(--a11y-tabs-selected-border-accent);\n          }\n          \n          :host([vertical]) #tabs button[aria-selected="true"] {\n            border-right-color: var(--a11y-tabs-background);\n            border-left-color: var(--a11y-tabs-selected-border-accent);\n          }\n          \n          #tabs button[disabled] {\n            color: var(--a11y-tabs-disabled-color, #999);\n            background-color: var(--a11y-tabs-disabled-background, #eee);\n          }\n        \n          #tabs button[disabled]:focus,\n          #tabs button[disabled]:hover {\n            color: unset;\n            font-weight: unset;\n          }\n          \n          button[disabled]:focus .label,\n          button[disabled]:hover .label {\n            text-decoration: none;\n          }\n          \n          :host(:not([vertical])) #tabs button[disabled] {\n            border-left-color: var(--a11y-tabs-disabled-border-accent,unset);\n          }\n          \n          :host([vertical]) #tabs button[disabled] {\n            border-top-color: var(--a11y-tabs-disabled-border-accent,unset);\n          }\n        }\n      ',
+  ]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral([
+    "\n        :host {\n          display: block;\n          height: var(--a11y-tabs-height);\n          overflow: var(--a11y-tabs-overflow); \n        }\n\n        :host([hidden]) {\n          display: none;\n        }\n\n        #tabs {\n          display: none;\n        }\n        @media screen {\n          :host([vertical]) {\n            border-radius: var(--a11y-tabs-vertical-border-radius,2px);\n            display: flex;\n            justify-content: space-between;\n            align-items: stretch;\n          }\n          #content {\n            flex: 1 1 calc(100% - 2 * var(--a11y-tabs-content-padding, 16px));\n            overflow: auto;\n          }\n          #tabs {\n            align-items: stretch;\n            flex-wrap: var(--a11y-tabs-wrap, unset);\n            margin: 0;\n            display: flex;\n            list-style: none;\n            padding: 0;\n            overflow: auto;\n            max-width: 100%;\n            overflow-x: auto;\n            z-index: 1;\n            justify-content: var(--a11y-tabs-horizontal-justify-tabs);\n          }\n          :host([vertical]) #tabs {\n            flex: 0 0 auto;\n            flex-direction: column;\n            overflow-y: auto;\n            max-width: unset;\n            overflow-x: unset;\n            z-index: unset;\n            flex-wrap: var(--a11y-tabs-vertical-wrap);\n          }\n          :host([sticky]) #tabs {\n            position: sticky;\n            top: 0;\n          }   \n          #tabs li {\n            display: flex;\n            align-items: stretch;\n          }\n          :host([full-width]) #tabs li {\n            width: 100%;\n          }\n          :host([vertical]) #tabs li {\n            flex-direction: column;\n          }\n          #tabs .flag-type {\n            position: absolute;\n            left: -99999px;\n            height: 0; \n            overflow: hidden;\n          }\n          :host(:not([vertical])) #content {\n            margin-top: -1px;\n          }\n          #tabs button {\n            width: 100%;\n            min-width: unset;\n            margin: 0;\n          }\n\n          :host([vertical]) #tabs button {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n          }\n  \n          #tabs button[disabled] {\n            pointer-events: none;\n          }\n    \n          #tabs span.label,\n          #tabs .flag-icon {\n            margin-right: 8px;\n          }\n          \n          :host([icons-only]) #tabs button {\n            justify-content: center;\n          }\n          \n          :host([icons-only]) #tabs span.label {\n            display: none;\n          }\n          \n          :host(:not([icons-only])) #tabs #tabs simple-tooltip {\n            display: none;\n          }\n          simple-icon-lite:not([hidden]) {\n            display: inline-block;\n          }\n          \n          simple-icon-lite[hidden] {\n            display: none;\n          }\n        }\n      ",
+  ]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([
+    '\n    <li part="tablist-item">',
+    "</li>\n  ",
+  ]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([
+    '\n\n<ul id="tabs" role="tablist" part="tablist">\n  ',
+    '\n</ul>\n<div id="content" part="content">\n  <slot></slot>\n</div>',
   ]);
 
   _templateObject = function _templateObject() {
@@ -163,40 +289,6 @@ function _assertThisInitialized(self) {
   return self;
 }
 
-function _get(target, property, receiver) {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    _get = Reflect.get;
-  } else {
-    _get = function _get(target, property, receiver) {
-      var base = _superPropBase(target, property);
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-      if (desc.get) {
-        return desc.get.call(receiver);
-      }
-      return desc.value;
-    };
-  }
-  return _get(target, property, receiver || target);
-}
-
-function _superPropBase(object, property) {
-  while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = _getPrototypeOf(object);
-    if (object === null) break;
-  }
-  return object;
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
-}
-
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -231,6 +323,40 @@ function _setPrototypeOf(o, p) {
       return o;
     };
   return _setPrototypeOf(o, p);
+}
+
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    _get = Reflect.get;
+  } else {
+    _get = function _get(target, property, receiver) {
+      var base = _superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+      return desc.value;
+    };
+  }
+  return _get(target, property, receiver || target);
+}
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = _getPrototypeOf(object);
+    if (object === null) break;
+  }
+  return object;
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf
+    ? Object.getPrototypeOf
+    : function _getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+      };
+  return _getPrototypeOf(o);
 }
 
 /**
@@ -314,21 +440,250 @@ var A11yTabs =
   (function (_ResponsiveUtilityBeh) {
     _inherits(A11yTabs, _ResponsiveUtilityBeh);
 
-    _createClass(A11yTabs, null, [
-      {
-        key: "tag",
+    _createClass(
+      A11yTabs,
+      [
+        {
+          key: "render",
+          // render function
+          value: function render() {
+            var _this2 = this;
 
-        /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
-        /**
-         * Store the tag name to make it easier to obtain directly.
-         * @notice function name must be here for tooling to operate correctly
-         */
-        get: function get() {
-          return "a11y-tabs";
+            return (0, _litElement.html)(
+              _templateObject(),
+              this.tabs.map(function (tab, i) {
+                return (0,
+                _litElement.html)(_templateObject2(), _this2._tabButton(tab, i));
+              })
+            );
+          }, // haxProperty definition
         },
-      },
-    ]);
+      ],
+      [
+        {
+          key: "A11yTabsCoreStyles",
+          get: function get() {
+            return [(0, _litElement.css)(_templateObject3())];
+          },
+        },
+        {
+          key: "A11yTabsThemeStyles",
+          get: function get() {
+            return [(0, _litElement.css)(_templateObject4())];
+          }, //styles function
+        },
+        {
+          key: "styles",
+          get: function get() {
+            return [].concat(
+              _toConsumableArray(this.A11yTabsCoreStyles),
+              _toConsumableArray(this.A11yTabsThemeStyles)
+            );
+          },
+        },
+        {
+          key: "haxProperties",
+          get: function get() {
+            return {
+              canScale: false,
+              canPosition: true,
+              canEditSource: true,
+              gizmo: {
+                title: "Tabs",
+                description: "A set of tabs.",
+                icon: "view-day",
+                color: "grey",
+                groups: ["Content", "Presentation", "Tabs"],
+              },
+              settings: {
+                configure: [
+                  {
+                    property: "ariaLabel",
+                    title: "Label (for accesibility)",
+                    inputMethod: "textfield",
+                  },
+                  {
+                    property: "disabled",
+                    title: "Disabled",
+                    inputMethod: "boolean",
+                  },
+                  {
+                    property: "hidden",
+                    title: "Hidden",
+                    inputMethod: "boolean",
+                  },
+                  {
+                    property: "sticky",
+                    title: "Sticky.",
+                    desc:
+                      "Horizontal tabs stick to the top of the window when scrolling.",
+                    inputMethod: "boolean",
+                  },
+                  {
+                    property: "layoutBreakpoint",
+                    title: "Layout Breakpoint",
+                    inputMethod: "Number",
+                    descripton:
+                      "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode.",
+                  },
+                  {
+                    property: "iconBreakpoint",
+                    title: "Icon Breakpoint",
+                    inputMethod: "Number",
+                    descripton:
+                      "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode.",
+                  },
+                  {
+                    slot: "",
+                    title: "Tabs",
+                    description: "A series of <a11y-tab/> elements.",
+                    inputMethod: "code-editor",
+                  },
+                ],
+                advanced: [
+                  {
+                    property: "id",
+                    title: "Unique ID",
+                    inputMethod: "textfield",
+                  },
+                ],
+              },
+            };
+          }, // properties available to the custom element for data binding
+        },
+        {
+          key: "properties",
+          get: function get() {
+            return _objectSpread(
+              {},
+              _get(_getPrototypeOf(A11yTabs), "properties", this),
+              {
+                ariaLabel: {
+                  type: String,
+                  reflect: true,
+                  attribute: "aria-label",
+                },
+
+                /**
+                 * id of active tab
+                 */
+                activeTab: {
+                  type: String,
+                  reflect: true,
+                  attribute: "active-tab",
+                },
+
+                /**
+                 * if tabs should be full width or not
+                 */
+                fullWidth: {
+                  type: Boolean,
+                  reflect: true,
+                  attribute: "full-width",
+                },
+
+                /**
+                 * whether tabbed interface is disabled
+                 */
+                disabled: {
+                  type: Boolean,
+                  reflect: true,
+                  attribute: "disabled",
+                },
+
+                /**
+                 * whether tabbed interface is hidden
+                 */
+                hidden: {
+                  type: Boolean,
+                  reflect: true,
+                  attribute: "hidden",
+                },
+
+                /**
+                 * Optional minimum breakpoint for showing tab text with icons, or
+                 * Default is always text with icons.
+                 * `-1` forces icon-only mode.
+                 */
+                iconBreakpoint: {
+                  type: Number,
+                  attribute: "icon-breakpoint",
+                },
+
+                /**
+                 * unique identifier/anchor for tabbed interface
+                 */
+                id: {
+                  type: String,
+                  reflect: true,
+                },
+
+                /**
+                 * Optional minimum breakpoint for horizontal layout of tabs.
+                 * Default is unset (always horizontal).
+                 * `-1` forces vertical-only mode.
+                 */
+                layoutBreakpoint: {
+                  type: Number,
+                  attribute: "layout-breakpoint",
+                },
+
+                /**
+                 * size of tabs,
+                 * where `xs` is smaller breakpoint
+                 * and `xs` is larger breakpoint
+                 */
+                responsiveSize: {
+                  type: String,
+                  reflect: true,
+                  attribute: "responsive-size",
+                },
+
+                /**
+                 * whether tabs are sticky
+                 */
+                sticky: {
+                  type: Boolean,
+                  reflect: true,
+                  attribute: "sticky",
+                },
+
+                /**
+                 * an array of tab data based on slotted `a11y-tab` elements
+                 */
+                __tabs: {
+                  type: Array,
+                },
+
+                /**
+                 * an array of tab buttons
+                 */
+                __tabButtons: {
+                  type: Array,
+                },
+
+                /**
+                 * which tab button has ketboard focus
+                 */
+                __tabFocus: {
+                  type: Number,
+                },
+              }
+            );
+          },
+          /**
+           * Store the tag name to make it easier to obtain directly.
+           * @notice function name must be here for tooling to operate correctly
+           */
+        },
+        {
+          key: "tag",
+          get: function get() {
+            return "a11y-tabs";
+          },
+        },
+      ]
+    );
 
     function A11yTabs() {
       var _this;
@@ -397,18 +752,18 @@ var A11yTabs =
       {
         key: "updated",
         value: function updated(changedProperties) {
-          var _this2 = this;
+          var _this3 = this;
 
           changedProperties.forEach(function (oldValue, propName) {
-            if (propName === "id") _this2._idChanged(_this2.id, oldValue);
-            if (propName === "activeTab" && _this2.activeTab !== oldValue)
-              _this2._activeTabChanged(_this2.activeTab, oldValue);
+            if (propName === "id") _this3._idChanged(_this3.id, oldValue);
+            if (propName === "activeTab" && _this3.activeTab !== oldValue)
+              _this3._activeTabChanged(_this3.activeTab, oldValue);
 
             if (propName === "responsiveWidth") {
-              if (_this2.vertical) {
-                _this2.setAttribute("vertical", true);
+              if (_this3.vertical) {
+                _this3.setAttribute("vertical", true);
               } else {
-                _this2.removeAttribute("vertical");
+                _this3.removeAttribute("vertical");
               }
             }
 
@@ -417,10 +772,10 @@ var A11yTabs =
                 propName
               )
             ) {
-              if (_this2.iconsOnly) {
-                _this2.setAttribute("icons-only", true);
+              if (_this3.iconsOnly) {
+                _this3.setAttribute("icons-only", true);
               } else {
-                _this2.removeAttribute("icons-only");
+                _this3.removeAttribute("icons-only");
               }
             }
           });
@@ -511,7 +866,7 @@ var A11yTabs =
       {
         key: "_handleKey",
         value: function _handleKey(i, e) {
-          var _this3 = this;
+          var _this4 = this;
 
           this.__tabFocus = i;
 
@@ -520,17 +875,17 @@ var A11yTabs =
               arguments.length > 0 && arguments[0] !== undefined
                 ? arguments[0]
                 : 1;
-            _this3.__tabFocus = _this3.__tabFocus + dir; // If we're at the end, go to the start
+            _this4.__tabFocus = _this4.__tabFocus + dir; // If we're at the end, go to the start
 
-            if (_this3.__tabFocus >= _this3.buttons.length) {
-              _this3.__tabFocus = 0; // If we're at the start, move to the end
-            } else if (_this3.__tabFocus < 0) {
-              _this3.__tabFocus = _this3.buttons.length - 1;
+            if (_this4.__tabFocus >= _this4.buttons.length) {
+              _this4.__tabFocus = 0; // If we're at the start, move to the end
+            } else if (_this4.__tabFocus < 0) {
+              _this4.__tabFocus = _this4.buttons.length - 1;
             }
 
             if (
-              _this3.buttons[_this3.__tabFocus].disabled &&
-              _this3.__tabFocus !== i
+              _this4.buttons[_this4.__tabFocus].disabled &&
+              _this4.__tabFocus !== i
             )
               focus(dir);
           }; // Move right
@@ -568,20 +923,20 @@ var A11yTabs =
       {
         key: "_tabButton",
         value: function _tabButton(tab, i) {
-          var _this4 = this;
+          var _this5 = this;
 
           return (0, _litElement.html)(
-            _templateObject(),
+            _templateObject5(),
             tab.id,
             tab.id === this.activeTab ? "true" : "false",
             tab.id,
             tab.id === this.activeTab && !this.disabled ? "active" : "",
             tab.flag,
             function (e) {
-              return _this4._handleTab(tab);
+              return _this5._handleTab(tab);
             },
             function (e) {
-              return _this4._handleKey(i, e);
+              return _this5._handleKey(i, e);
             },
             tab.disabled || this.disabled,
             tab.id === this.activeTab ? 0 : -1,
@@ -608,7 +963,7 @@ var A11yTabs =
       {
         key: "_tabFlag",
         value: function _tabFlag(tab) {
-          return (0, _litElement.html)(_templateObject2(), !tab.flag, tab.flag);
+          return (0, _litElement.html)(_templateObject6(), !tab.flag, tab.flag);
         },
         /**
          * makes tab icon
@@ -623,12 +978,12 @@ var A11yTabs =
         value: function _tabIcon(tab, icon) {
           return tab.flag
             ? (0, _litElement.html)(
-                _templateObject3(),
+                _templateObject7(),
                 !tab[icon],
                 tab[icon],
                 tab.flag
               )
-            : (0, _litElement.html)(_templateObject4(), !tab[icon], tab[icon]);
+            : (0, _litElement.html)(_templateObject8(), !tab[icon], tab[icon]);
         },
         /**
          * makes tab label
@@ -641,7 +996,7 @@ var A11yTabs =
       {
         key: "_tabLabel",
         value: function _tabLabel(tab) {
-          return (0, _litElement.html)(_templateObject5(), tab.label);
+          return (0, _litElement.html)(_templateObject9(), tab.label);
         },
         /**
          * makes tab tooltip
@@ -655,7 +1010,7 @@ var A11yTabs =
       {
         key: "_tabTooltip",
         value: function _tabTooltip(tab) {
-          return (0, _litElement.html)(_templateObject6(), tab.id, tab.label);
+          return (0, _litElement.html)(_templateObject10(), tab.id, tab.label);
         },
       },
       {
@@ -689,10 +1044,10 @@ var A11yTabs =
       {
         key: "observer",
         get: function get() {
-          var _this5 = this;
+          var _this6 = this;
 
           var callback = function callback() {
-            return _this5.updateTabs();
+            return _this6.updateTabs();
           };
 
           return new MutationObserver(callback);
@@ -719,12 +1074,12 @@ var A11yTabs =
       {
         key: "tabs",
         get: function get() {
-          var _this6 = this;
+          var _this7 = this;
 
           return Object.keys(this.__tabs || {}).map(function (i) {
-            _this6.__tabs[i].order = i + 1;
-            _this6.__tabs[i].total = _this6.__tabs.length;
-            return _this6.__tabs[i];
+            _this7.__tabs[i].order = i + 1;
+            _this7.__tabs[i].total = _this7.__tabs.length;
+            return _this7.__tabs[i];
           });
         },
         /**

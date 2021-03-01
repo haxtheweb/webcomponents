@@ -41,7 +41,6 @@ class SimpleIconset extends HTMLElement {
         });
       }
     });
-    console.log(this.manifest, this.iconlist);
   }
   /**
    * Iconsets are to register a namespace in either manner:

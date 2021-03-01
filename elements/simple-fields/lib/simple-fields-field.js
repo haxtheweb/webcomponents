@@ -26,7 +26,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           margin: 0;
           padding: 0;
           border: none;
-          background-color: var(--simple-fields-background-color, transparent);
+          background-color: transparent;
         }
         option {
           border-radius: 0;
@@ -62,6 +62,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         :host([type]) fieldset .border-bottom {
           display: block;
         }
+        .box-input {
+          width: 100%;
+        }
         .box-input:focus {
           outline: none;
         }
@@ -70,6 +73,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         }
         input {
           background-color: var(--simple-fields-background-color, transparent);
+        }
+        input[type="text"] {
+          padding: 0;
         }
         textarea {
           margin: 0;

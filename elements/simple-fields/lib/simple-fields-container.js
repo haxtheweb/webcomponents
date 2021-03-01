@@ -1,4 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import {
+  SimpleFieldsBaseStyles,
+  SimpleFieldsLabelStyles,
+  SimpleFieldsDescriptionStyles,
+} from "./simple-fields-ui.js";
 /**
  *`simple-fields-container`
  * Progressive enhanced container HTML fields
@@ -15,20 +20,13 @@ class SimpleFieldsContainer extends LitElement {
   }
   static get styles() {
     return [
+      ...SimpleFieldsBaseStyles,
+      ...SimpleFieldsLabelStyles,
+      ...SimpleFieldsDescriptionStyles,
       css`
         :host {
           display: block;
-          font-size: var(--simple-fields-detail-font-size, 12px);
-          font-family: var(--simple-fields-detail-font-family, sans-serif);
-          line-height: var(--simple-fields-detail-line-height, 130%);
           transition: color 0.3s ease-in-out;
-          margin: 0 0
-            var(--simple-fields-field-margin, var(--simple-fields-margin, 16px));
-          background-color: var(--simple-fields-background-color, transparent);
-        }
-        :host([hidden]),
-        :host([type="hidden"]) {
-          display: none;
         }
         :host([error]) {
           color: var(--simple-fields-error-color, #dd2c00);
@@ -49,30 +47,6 @@ class SimpleFieldsContainer extends LitElement {
         }
         #fieldmeta {
           text-align: right;
-        }
-        :host .label-main:after {
-          content: var(--simple-fields-label-flag, "");
-        }
-        :host([focused]) .label-main,
-        :host(:focus-within) .label-main {
-          color: var(--simple-fields-accent-color, #3f51b5);
-          transition: color 0.3s ease-in-out;
-        }
-        .inline {
-          --simple-fields-radio-option-display: flex;
-          --simple-fields-radio-option-flex-wrap: wrap;
-        }
-        .inline label {
-          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
-          flex: 0 1 var(--simple-fields-label-width, auto);
-        }
-        .inline label,
-        .field-main > div,
-        .field,
-        ::slotted([slot="field"]) {
-          font-size: var(--simple-fields-font-size, 16px);
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
         }
         .field,
         ::slotted([slot="field"]) {
@@ -107,6 +81,7 @@ class SimpleFieldsContainer extends LitElement {
         :host([readonly]) ::slotted([slot="field"]),
         :host([disabled]) ::slotted([slot="field"]) {
           cursor: not-allowed;
+          pointer-events: none;
         }
         .border-bottom {
           height: 0;
@@ -151,11 +126,6 @@ class SimpleFieldsContainer extends LitElement {
           display: var(--simple-fields-radio-option-display, block);
           flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
           transition: color 0.3s ease-in-out;
-        }
-        #error-desc {
-          color: var(--simple-fields-meta-color);
-          font-size: var(--simple-fields-meta-font-size, 10px);
-          line-height: var(--simple-fields-meta-line-height, 110%);
         }
       `,
     ];

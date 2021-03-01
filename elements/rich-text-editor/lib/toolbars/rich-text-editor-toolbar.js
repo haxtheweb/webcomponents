@@ -8,7 +8,7 @@ import { SimpleToolbarButtonBehaviors } from "@lrnwebcomponents/simple-toolbar/l
 import {
   RichTextStyles,
   RichTextToolbarStyles,
-} from "../buttons/rich-text-editor-button.js";
+} from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
 import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 
@@ -704,13 +704,24 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
     constructor() {
       super();
-      import("../buttons/rich-text-editor-button.js");
-      import("../buttons/rich-text-editor-source-code.js");
-      import("../buttons/rich-text-editor-heading-picker.js");
-      import("../buttons/rich-text-editor-symbol-picker.js");
-      import("../buttons/rich-text-editor-underline.js");
-      import("../buttons/rich-text-editor-image.js");
-      import("../buttons/rich-text-editor-link.js");
+      import(
+        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-source-code.js"
+      );
+      import(
+        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js"
+      );
+      import(
+        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js"
+      );
+      import(
+        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-underline.js"
+      );
+      import(
+        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-image.js"
+      );
+      import(
+        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js"
+      );
       this.config = this.defaultConfig;
       this.clickableElements = {};
       this.breadcrumbsLabel = "Select";

@@ -46,6 +46,19 @@ class HaxPreferencesDialog extends LitElement {
         inputMethod: "boolean",
         value: false,
       },
+      {
+        property: "haxUiTheme",
+        title: "HAX UI Theme",
+        description:
+          "Change the theme of the HAX interface (not the site's content).",
+        inputMethod: "radio",
+        options: {
+          hax: "Default (light)",
+          haxdark: "Dark",
+          system: "System Default",
+        },
+        value: "hax",
+      },
     ];
     this.schemaValues = {
       haxVoiceCommands: false,

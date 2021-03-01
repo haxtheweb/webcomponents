@@ -55,8 +55,6 @@ class HaxCeContext extends HaxContextBehaviors(LitElement) {
               event-name="hax-transform-node"
               show-text-label
             ></hax-context-item>
-          </div>
-          <div class="group">
             <slot name="primary"></slot>
           </div>
           <div class="group">
@@ -69,8 +67,6 @@ class HaxCeContext extends HaxContextBehaviors(LitElement) {
                 value="${el.callback}"
               ></hax-context-item>`;
             })}
-          </div>
-          <div class="group">
             <slot name="secondary"></slot>
           </div>
           <div class="group">
@@ -84,8 +80,6 @@ class HaxCeContext extends HaxContextBehaviors(LitElement) {
               ?toggled="${this.viewSource}"
               @click="${(e) => (this.viewSource = !this.viewSource)}"
             ></hax-context-item>
-          </div>
-          <div class="group">
             <slot name="more"></slot>
           </div>
           <div class="group">

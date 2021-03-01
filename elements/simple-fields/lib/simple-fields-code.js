@@ -101,7 +101,8 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
        * theme of code-editor
        */
       theme: {
-        type: Number,
+        type: String,
+        reflect: true,
       },
       /**
        * Current value of the form control. Submitted with the form as part of a name/value pair.
@@ -119,7 +120,6 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
     this.language = "html";
     this.mode = "html";
     this.readonly = false;
-    this.theme = "auto";
   }
   disconnectedCallback() {
     this.removeEventListener("click", (e) => this.focus());
@@ -150,7 +150,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
           ?disabled="${this.disabled}"
           font-size="${this.fontSize}"
           editor-value="${this.__editorValue || ""}"
-          theme="${this.theme}"
+          theme="${this.theme || "auto"}"
           language="${this.language}"
           mode="${this.mode}"
           ?read-only="${this.readonly || this.disabled}"

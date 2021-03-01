@@ -129,7 +129,7 @@ function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <div style="height: 100%; overflow: auto;" class="pref-container">\n        <simple-fields\n          id="settingsform"\n          .schematizer="',
     '"\n          .elementizer="',
-    '"\n        >\n        </simple-fields>\n      </div>\n      <hr/>\n      <br>\n      <br>\n      ',
+    '"\n        >\n        </simple-fields>\n      </div>\n      <hr />\n      <br />\n      <br />\n      ',
     "\n    ",
   ]);
 
@@ -270,6 +270,19 @@ var HaxPreferencesDialog =
           description: "Experimental: Voice based control system",
           inputMethod: "boolean",
           value: false,
+        },
+        {
+          property: "haxUiTheme",
+          title: "HAX UI Theme",
+          description:
+            "Change the theme of the HAX interface (not the site's content).",
+          inputMethod: "radio",
+          options: {
+            hax: "Default (light)",
+            haxdark: "Dark",
+            system: "System Default",
+          },
+          value: "hax",
         },
       ];
       _this.schemaValues = {

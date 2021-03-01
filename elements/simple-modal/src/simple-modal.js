@@ -211,6 +211,7 @@ class SimpleModal extends LitElement {
       id="dialog"
       center
       role="dialog"
+      part="dialog"
       aria-describedby="simple-modal-content"
       aria-label="${this._getAriaLabel(this.title)}"
       aria-labelledby="${this._getAriaLabelledby(this.title)}"
@@ -219,8 +220,10 @@ class SimpleModal extends LitElement {
       @open="${this.open}"
       @close="${this.close}"
     >
-      <div id="titlebar">
-        <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
+      <div id="titlebar" part="titlebar">
+        <h2 id="simple-modal-title" ?hidden="${!this.title}" part="title">
+          ${this.title}
+        </h2>
         <div></div>
         <simple-icon-button-lite
           id="close"
@@ -228,14 +231,16 @@ class SimpleModal extends LitElement {
           icon="${this.closeIcon}"
           @click="${this.close}"
           label="${this.closeLabel}"
+          part="close"
         >
         </simple-icon-button-lite>
       </div>
-      <div id="headerbar"><slot name="header"></slot></div>
-      <div id="simple-modal-content">
+      <div id="headerbar" part="headerbar"><slot name="header"></slot></div>
+      <div id="simple-modal-content" part="content">
         <slot name="content"></slot>
       </div>
-      <div class="buttons">
+      <slot name="custom" part="custom"></slot>
+      <div class="buttons" part="buttons">
         <slot name="buttons"></slot>
       </div>
     </web-dialog>`;
@@ -283,6 +288,13 @@ class SimpleModal extends LitElement {
        */
       modal: {
         type: Boolean,
+      },
+      /**
+       * can add a custom string to style modal based on what is calling it
+       */
+      mode: {
+        type: String,
+        reflect: true,
       },
     };
   }
@@ -354,6 +366,7 @@ class SimpleModal extends LitElement {
       setTimeout(() => {
         this.show(
           e.detail.title,
+          e.detail.mode,
           e.detail.elements,
           e.detail.invokedBy,
           e.detail.id,
@@ -366,6 +379,7 @@ class SimpleModal extends LitElement {
     } else {
       this.show(
         e.detail.title,
+        e.detail.mode,
         e.detail.elements,
         e.detail.invokedBy,
         e.detail.id,
@@ -381,6 +395,7 @@ class SimpleModal extends LitElement {
    */
   show(
     title,
+    mode,
     elements,
     invokedBy,
     id = null,
@@ -392,10 +407,11 @@ class SimpleModal extends LitElement {
     this.invokedBy = invokedBy;
     this.modal = modal;
     this.title = title;
+    this.mode = mode;
     let element;
     // append element areas into the appropriate slots
     // ensuring they are set if it wasn't previously
-    let slots = ["header", "content", "buttons"];
+    let slots = ["header", "content", "buttons", "custom"];
     if (id) {
       this.setAttribute("id", id);
     } else {

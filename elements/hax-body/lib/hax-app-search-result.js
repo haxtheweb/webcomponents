@@ -20,7 +20,7 @@ class HaxAppSearchResult extends LitElement {
           height: 100%;
         }
         button {
-          font-size: var(--hax-tray-font-size-xs);
+          font-size: var(--hax-ui-font-size-xs);
           margin: 0;
           padding: 0;
           display: flex;

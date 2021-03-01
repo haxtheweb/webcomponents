@@ -31,9 +31,10 @@
     "attribute": "active-path"
   },
   /**
-   * tracks code editors to switch to dark mode
+   * default theme for code editor
    */
-  "__colorPrefs": {
-    "type": "String"
+  "codeTheme": {
+    "type": "String",
+    "attribute": "code-theme"
   }
 }

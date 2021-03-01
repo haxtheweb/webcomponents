@@ -158,7 +158,7 @@ function _templateObject() {
     '\n        <button\n          id="menubutton"\n          aria-haspopup="true"\n          aria-controls="menu"\n          aria-expanded="',
     '"\n          part="button"\n        >\n          ',
     " ",
-    '\n          <simple-icon-lite\n            id="dropdownicon"\n            icon="arrow-drop-down"\n            aria-hidden="true"\n          ></simple-icon-lite>\n        </button>\n      ',
+    '\n          <simple-icon-lite\n            id="dropdownicon"\n            icon="arrow-drop-down"\n            aria-hidden="true"\n            part="dropdown-icon"\n          ></simple-icon-lite>\n        </button>\n      ',
   ]);
 
   _templateObject = function _templateObject() {

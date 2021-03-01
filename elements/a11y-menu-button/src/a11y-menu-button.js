@@ -41,6 +41,9 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           :host([expanded]) absolute-position-behavior {
             z-index: 2;
           }
+          :host(:not([expanded])) absolute-position-behavior {
+            border-color: none !important;
+          }
           ul {
             margin: 0;
             padding: 0;

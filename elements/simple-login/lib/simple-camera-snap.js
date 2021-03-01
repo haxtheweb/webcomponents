@@ -84,6 +84,7 @@ class SimpleCameraSnap extends HTMLElement {
     <div class="buttons">
       <simple-icon-button-lite id="snap" icon="image:camera-alt" part="snap-button"></simple-icon-button-lite>
       <simple-tooltip for="snap" part="snap-tooltip">Take Photo</simple-tooltip>
+      <slot></slot>
     </div>
     `;
   }

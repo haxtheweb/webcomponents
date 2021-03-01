@@ -17,6 +17,8 @@ require("./hax-toolbar.js");
 
 var _haxUiStyles = require("./hax-ui-styles.js");
 
+var _mobx = require("mobx");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -35,9 +37,58 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host,\n        :host * {\n          margin: 0;\n          padding: 0;\n        }\n        :host {\n          position: relative;\n        }\n        #textarea {\n          width: 100%;\n          height: calc(var(--simple-modal-height, 75vh) - 95px);\n          overflow: auto;\n          background-color: transparent;\n        }\n        #textarea::part(code) {\n          height: calc(var(--simple-modal-height, 75vh) - 95px);\n        }\n        hax-toolbar {\n          width: 100%;\n          position: sticky;\n          bottom: 0;\n          display: flex;\n          --simple-toolbar-button-padding: 0 var(--hax-tray-spacing-sm);\n        }\n        hax-toolbar::part(buttons) {\n          justify-content: space-between;\n          flex: 0 1 auto;\n          margin: 0 auto;\n        }\n      ",
+    "\n        :host {\n          margin: 0;\n          padding: 0;\n          flex: 0 1 100vh;\n          display: flex;\n          flex-direction: column;\n        }\n        :host > *,\n        #textarea {\n          margin: 0;\n          padding: 0;\n        }\n        #hiddentextarea,\n        #spacer {\n          flex: 0 1 0px;\n        }\n        #wrapper {\n          flex: 1 0 calc(70vh - 94px);\n          position: relative;\n        }\n        #textarea {\n          position: absolute;\n          top: 0;\n          bottom: 0;\n          left: 0;\n          right: 0;\n        }\n        hax-toolbar {\n          flex: 0 0 auto;\n          width: 100%;\n          display: flex;\n          background-color: var(--hax-ui-background-color);\n        }\n        hax-toolbar::part(buttons) {\n          justify-content: space-between;\n          flex: 0 1 auto;\n          margin: 0 auto;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -121,7 +172,8 @@ function _interopRequireWildcard(obj) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <div id="spacer"></div>\n      <div id="wrapper">\n        <textarea id="hiddentextarea" hidden></textarea>\n        <code-editor\n          id="textarea"\n          title=""\n          theme="auto"\n          language="html"\n          font-size="12"\n          word-wrap\n        ></code-editor>\n      </div>\n      <hax-toolbar always-expanded>\n        <hax-tray-button\n          label="Update Page"\n          icon="editor:insert-drive-file"\n          @click="',
+    '\n      <div id="spacer"></div>\n      <div id="wrapper">\n        <textarea id="hiddentextarea" hidden></textarea>\n        <code-editor\n          id="textarea"\n          title=""\n          theme="',
+    '"\n          language="html"\n          font-size="13"\n          word-wrap\n        ></code-editor>\n      </div>\n      <hax-toolbar always-expanded>\n        <hax-tray-button\n          label="Update Page"\n          icon="editor:insert-drive-file"\n          @click="',
     '"\n          show-text-label\n          icon-position="top"\n        >\n        </hax-tray-button>\n        <hax-tray-button\n          @click="',
     '"\n          icon="editor:format-clear"\n          label="Clean Formatting"\n          tooltip="Word / Google Document Clean Up"\n          show-text-label\n          icon-position="top"\n        >\n        </hax-tray-button>\n        <hax-tray-button\n          @click="',
     '"\n          icon="icons:content-copy"\n          label="Copy HTML"\n          show-text-label\n          icon-position="top"\n        >\n        </hax-tray-button>\n        <hax-tray-button\n          label="Download HTML"\n          icon="icons:file-download"\n          @click="',
@@ -255,6 +307,11 @@ var HaxViewSource =
           value: function render() {
             return (0, _litElement.html)(
               _templateObject(),
+              this.haxUiTheme == "hax"
+                ? "vs"
+                : this.haxUiTheme == "haxdark"
+                ? "vs-dark"
+                : "auto",
               this.importContent.bind(this),
               this.scrubContent.bind(this),
               this.selectBody.bind(this),
@@ -437,7 +494,7 @@ var HaxViewSource =
           key: "styles",
           get: function get() {
             return [].concat(
-              _toConsumableArray(_haxUiStyles.HaxTrayBaseStyles),
+              _toConsumableArray(_haxUiStyles.HaxComponentStyles),
               [(0, _litElement.css)(_templateObject2())]
             );
           },
@@ -446,6 +503,26 @@ var HaxViewSource =
           key: "tag",
           get: function get() {
             return "hax-view-source";
+          },
+        },
+        {
+          key: "properties",
+          get: function get() {
+            return _objectSpread(
+              {},
+              _get(_getPrototypeOf(HaxViewSource), "properties", this),
+              {
+                /**
+                 * Global preferences for HAX overall
+                 */
+                globalPreferences: {
+                  type: Object,
+                },
+                theme: {
+                  type: String,
+                },
+              }
+            );
           },
         },
       ]
@@ -467,6 +544,12 @@ var HaxViewSource =
         TXT: "text/plain",
         HTML: "text/html",
       };
+      (0, _mobx.autorun)(function () {
+        _this.globalPreferences = (0, _mobx.toJS)(
+          _haxStore.HAXStore.globalPreferences
+        );
+        _this.haxUiTheme = (_this.globalPreferences || {}).haxUiTheme || "hax";
+      });
       return _this;
     }
 

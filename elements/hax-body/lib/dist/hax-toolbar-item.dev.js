@@ -29,11 +29,60 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
     '<simple-tooltip\n        id="tooltip"\n        for="button"\n        ?hidden="',
     '"\n        position="',
-    '"\n        >',
+    '"\n        fit-to-visible-bounds\n        >',
     "</simple-tooltip\n      >",
   ]);
 
@@ -302,54 +351,58 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
           {
             key: "properties",
             get: function get() {
-              return {
-                /**
-                 * red warning
-                 */
-                danger: {
-                  type: Boolean,
-                  reflect: true,
-                },
+              return _objectSpread(
+                {},
+                _get(_getPrototypeOf(_class), "properties", this),
+                {
+                  /**
+                   * red warning
+                   */
+                  danger: {
+                    type: Boolean,
+                    reflect: true,
+                  },
 
-                /**
-                 * Name of the event to bubble up as being tapped.
-                 * This can be used to tell other elements what was
-                 * clicked so it can take action appropriately.
-                 */
-                eventName: {
-                  type: String,
-                  reflect: true,
-                  attribute: "event-name",
-                },
+                  /**
+                   * Name of the event to bubble up as being tapped.
+                   * This can be used to tell other elements what was
+                   * clicked so it can take action appropriately.
+                   */
+                  eventName: {
+                    type: String,
+                    reflect: true,
+                    attribute: "event-name",
+                  },
 
-                /**
-                 * Inverted display mode
-                 */
-                feature: {
-                  type: Boolean,
-                  reflect: true,
-                },
+                  /**
+                   * Inverted display mode
+                   */
+                  feature: {
+                    type: Boolean,
+                    reflect: true,
+                  },
 
-                /**
-                 * Hover tip text
-                 */
-                toggledTooltip: {
-                  type: String,
-                },
+                  /**
+                   * Hover tip text
+                   */
+                  toggledTooltip: {
+                    type: String,
+                  },
 
-                /**
-                 * Hover tip text
-                 */
-                tooltip: {
-                  type: String,
-                },
-              };
+                  /**
+                   * Hover tip text
+                   */
+                  tooltip: {
+                    type: String,
+                  },
+                }
+              );
             },
           },
           {
             key: "simpleButtonThemeStyles",
             get: function get() {
-              return _haxUiStyles.HaxTrayButtonTheme;
+              return _haxUiStyles.HaxButton;
             },
           },
           {
@@ -360,6 +413,22 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
                 "simpleButtonCoreStyles",
                 this
               );
+            },
+          },
+          {
+            key: "simpleButtonLayoutStyles",
+            get: function get() {
+              return _get(
+                _getPrototypeOf(_class),
+                "simpleButtonLayoutStyles",
+                this
+              );
+            },
+          },
+          {
+            key: "styles",
+            get: function get() {
+              return _get(_getPrototypeOf(_class), "styles", this);
             },
           },
         ]
@@ -373,35 +442,6 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
  * `hax-toolbar-item`
  * a button for hax toolbar
  *
-### Styling
-
-`<hax-toolbar-item>` provides following custom properties and mixins
-for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
---simple-toolbar-button-height | button height | 24px
---simple-toolbar-button-min-width | button min-width | --simple-toolbar-button-height
---simple-toolbar-button-padding | button padding | 0
---simple-toolbar-button-opacity | button opacity | 1
---simple-toolbar-button-color | button text color | unset
---simple-toolbar-button-bg | button background color | transparent
---simple-toolbar-button-border-color | button border color | --simple-toolbar-border-color
---simple-toolbar-button-border-width | button border width | --simple-toolbar-border-width
---simple-toolbar-button-border-radius | button border radius | 3px
---simple-toolbar-button-toggled-opacity | button opacity when toggled | 0.8
---simple-toolbar-button-toggled-color | button text color when toggled | unset
---simple-toolbar-button-toggled-bg | button background color when toggled | unset
---simple-toolbar-button-toggled-border-color | button border color when toggled | unset
---simple-toolbar-button-hover-opacity | button opacity when hovered | 0.8
---simple-toolbar-button-hover-color | button text color when hovered | unset
---simple-toolbar-button-hover-bg | button background color when hovered | unset
---simple-toolbar-button-hover-border-color | button border color when hovered | unset
---simple-toolbar-button-disabled-opacity | button opacity when disabled | 0.5
---simple-toolbar-button-disabled-color | button text color when disabled | unset
---simple-toolbar-button-disabled-bg | button background color when disabled | unset
---simple-toolbar-button-disabled-border-color | button border color when disabled | unset
- * 
  * @customElement
  * @extends HaxToolbarItemBehaviors
  * @extends LitElement
