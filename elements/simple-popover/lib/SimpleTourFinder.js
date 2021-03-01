@@ -55,7 +55,13 @@ export const SimpleTourFinder = function (SuperClass) {
           let content = el.querySelector("[data-stop-content]").innerHTML
             ? el.querySelector("[data-stop-content]").innerHTML
             : "";
-          SimpleTourManager.createTourStop(this.tourName, el, title, content);
+          SimpleTourManager.createTourStop(
+            this.tourName,
+            el,
+            title,
+            content,
+            "live"
+          );
         } catch (e) {
           console.warn(e);
         }

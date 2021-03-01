@@ -19,10 +19,12 @@ import {
 } from "mobx";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+
 /**
  * @element hax-store
  */
-class HaxStore extends winEventsElement(HAXElement(LitElement)) {
+class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * test a hook's existance in a target
    */
@@ -308,7 +310,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     message,
     duration = 2000,
     classStyle = "capsule",
-    closeText = null,
+    closeText = this.t.close,
     eventCallback = null
   ) {
     // gets it all the way to the top immediately
@@ -1533,6 +1535,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   constructor() {
     super();
+    this.t = {
+      close: "Close",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+      basePath: import.meta.url + "/../../",
+      locales: ["es"],
+    });
     this.method = "GET";
     this.haxSelectedText = "";
     this.__winEvents = {

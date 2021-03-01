@@ -72,8 +72,19 @@ class I18NManager extends LitElement {
     return url.substring(0, url.lastIndexOf("/") + 1);
   }
   registerTranslationEvent(e) {
-    let detail = e.detail;
+    let detail = this.detailNormalize(e.detail);
     // ensure we have a namespace for later use
+    if (
+      detail.context &&
+      detail.namespace &&
+      detail.localesPath &&
+      detail.locales &&
+      detail.updateCallback
+    ) {
+      this.registerTranslation(e.detail);
+    }
+  }
+  detailNormalize(detail) {
     if (!detail.namespace) {
       detail.namespace = detail.context.tagName.toLowerCase();
     }
@@ -91,24 +102,36 @@ class I18NManager extends LitElement {
         decodeURIComponent(detail.basePath)
       )}locales`;
     }
-    if (
-      detail.context &&
-      detail.namespace &&
-      detail.localesPath &&
-      detail.locales &&
-      detail.updateCallback
-    ) {
-      this.registerTranslation(e.detail);
+    // minimum requirement to operate but still
+    // should pull from other namespace if exists
+    if (detail.context && detail.namespace) {
+      let match = this.elements.filter((el) => {
+        if (el.namespace == detail.namespace && el.localesPath && el.locales) {
+          return true;
+        }
+      });
+      if (match && match.length && match[0]) {
+        detail.localesPath = match[0].localesPath;
+        detail.locales = match[0].locales;
+      }
     }
+    return detail;
   }
   registerTranslation(detail) {
-    // ensure no dual registration of context
+    // ensure no dual registration of context; meaning same object twice
     if (
       this.elements.filter((e) => {
         return e.context === detail.context;
       }).length === 0
     ) {
+      detail = this.detailNormalize(detail);
       this.elements.push(detail);
+      // timing issue, see if we are ready + a language and that it happened PRIOR
+      // to registration just now but match against locales we support
+      // and it being the set language already
+      if (this.lang && this.__ready && detail.locales.includes(this.lang)) {
+        this.updateLanguage(this.lang);
+      }
     }
   }
   /**

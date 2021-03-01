@@ -8,13 +8,14 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-preferences-dialog`
  * @element hax-preferences-dialog
  * `Export dialog with all export options and settings provided.`
  */
-class HaxPreferencesDialog extends LitElement {
+class HaxPreferencesDialog extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -36,7 +37,13 @@ class HaxPreferencesDialog extends LitElement {
   constructor() {
     super();
     this.hideLink = false;
-    this.title = "Advanced settings";
+    this.t = {
+      learnMoreAboutHAX: "Learn more about HAX",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
     // JSON schema object needs delayed to ensure page repaints the form
     this.schema = [
       {
@@ -102,7 +109,7 @@ class HaxPreferencesDialog extends LitElement {
             id="link"
             target="_blank"
             part="haxlink"
-            >Learn more about HAX</a
+            >${this.t.learnMoreAboutHAX}</a
           >`
         : ``}
     `;
@@ -117,12 +124,6 @@ class HaxPreferencesDialog extends LitElement {
        */
       hideLink: {
         type: Boolean,
-      },
-      /**
-       * Title.
-       */
-      title: {
-        type: String,
       },
       /**
        * Schema that has all of inputs / manages state

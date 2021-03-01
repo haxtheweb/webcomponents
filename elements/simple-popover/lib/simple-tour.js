@@ -223,17 +223,30 @@ class SimpleTour extends LitElement {
           document.createElement("div"),
           window.SimplePopoverManager.requestAvailability()
         );
+        let title = this.stacks[this.active][this.stop].title;
+        let description = this.stacks[this.active][this.stop].description;
+        // support for live rendering of the tour info to allow the DOM
+        // to translate or dynamicallly set this based on other stateful details
+        if (this.stacks[this.active][this.stop].mode == "live") {
+          let el = this.stacks[this.active][this.stop].target;
+          if (
+            el.getAttribute("data-stop-title") &&
+            el.getAttribute(el.getAttribute("data-stop-title"))
+          ) {
+            title = el.getAttribute(el.getAttribute("data-stop-title"));
+          } else if (el.querySelector("[data-stop-title]")) {
+            title = el.querySelector("[data-stop-title]").innerHTML;
+          }
+          description = el.querySelector("[data-stop-content]").innerHTML
+            ? el.querySelector("[data-stop-content]").innerHTML
+            : "";
+        }
         let content = html`${this.tourButtons()}
           <h2 class="subheading" slot="body">
-            ${unsafeHTML(
-              "<span>" + this.stacks[this.active][this.stop].title + "</span>"
-            )}
+            ${unsafeHTML("<span>" + title + "</span>")}
           </h2>
-          ${unsafeHTML(
-            '<p slot="body">' +
-              this.stacks[this.active][this.stop].description +
-              "</p>"
-          )}${this.tourInfo[this.active].style
+          ${unsafeHTML('<p slot="body">' + description + "</p>")}${this
+            .tourInfo[this.active].style
             ? unsafeHTML(
                 "<style>" + this.tourInfo[this.active].style + "</style>"
               )

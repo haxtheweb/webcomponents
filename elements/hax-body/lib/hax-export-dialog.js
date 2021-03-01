@@ -2,12 +2,13 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "./hax-view-source.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /**
  * `hax-export-dialog`
  * @element hax-export-dialog
  * `Export dialog with all export options and settings provided.`
  */
-class HaxExportDialog extends LitElement {
+class HaxExportDialog extends I18NMixin(LitElement) {
   static get styles() {
     return [
       ...HaxComponentStyles,
@@ -45,7 +46,7 @@ class HaxExportDialog extends LitElement {
         modal-id="hax-export"
         mode="hax-ui"
         id="dialog"
-        .title="${this.title}"
+        .title="${this.t.viewPageSource}"
       >
         <hax-view-source slot="custom"></hax-view-source>
       </simple-modal-template>
@@ -55,16 +56,6 @@ class HaxExportDialog extends LitElement {
     return "hax-export-dialog";
   }
 
-  static get properties() {
-    return {
-      /**
-       * Title
-       */
-      title: {
-        type: String,
-      },
-    };
-  }
   /**
    * Attached to the DOM, now fire that we exist.
    */
@@ -85,7 +76,13 @@ class HaxExportDialog extends LitElement {
 
   constructor() {
     super();
-    this.title = "View Page Source";
+    this.t = {
+      viewPageSource: "View Page Source",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
   }
 }
 window.customElements.define(HaxExportDialog.tag, HaxExportDialog);
