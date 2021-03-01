@@ -1,0 +1,70 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Meme",
+    "description": "Make a meme out of an image",
+    "icon": "hax:meme",
+    "color": "orange",
+    "groups": ["Media", "Funny"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "imageUrl",
+        "title": "topText",
+        "author": "bottomText",
+        "alt": "alt",
+        "ariaDescribedby": "describedBy"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "imageUrl",
+        "title": "Source",
+        "description": "The source url for the element this is citing.",
+        "inputMethod": "haxupload"
+      },
+      {
+        "property": "topText",
+        "title": "Top text",
+        "description": "Top text of the meme.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "bottomText",
+        "title": "Bottom text",
+        "description": "The date this was accessed.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "describedBy",
+        "title": "aria-describedby",
+        "description": "Space-separated list of IDs for elements that describe the image.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "wipeSlot": true
+  },
+  "demoSchema": [
+    {
+      "tag": "meme-maker",
+      "content": "",
+      "properties": {
+        "alt": "Cat stalking a small toy",
+        "imageUrl": "https://cdn2.thecatapi.com/images/9j5.jpg",
+        "topText": "I bring you",
+        "bottomText": "the death"
+      }
+    }
+  ]
+}

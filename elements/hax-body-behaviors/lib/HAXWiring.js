@@ -310,12 +310,20 @@ export class HAXWiring {
      * This is to then be implemented by the ready state of whatever is supplying the
      * properties in order to be able to bubble up the properties for a tag.
      */
-    this.setHaxProperties = (
+    this.setHaxProperties = async (
       props = {},
       tag = "",
       context = document,
       isReady = false
     ) => {
+      // support remote loading from a string
+      if (typeof props === "string") {
+        props = await fetch(props).then((response) => {
+          if (response && response.json) return response.json();
+          return false;
+        });
+        console.log(props);
+      }
       // these are a core piece of hax capabilities
       // set them in the event this got called without anything
       // so we at least won't bomb
