@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Insertar en Twitter",
+    "description": "Insertar un tweet de Twitter en contexto"
+  },
+  "settings": {
+    "configure": [
+      {
+        "description": "URL del tweet en cuestión que se incrustará"
+      },
+      {
+        "title": "Tema",
+        "description": "Versión clara u oscura de los tweets de Twitter",
+        "options": {
+          "light": "Ligera",
+          "dark": "Oscuro"
+        }
+      },
+      {
+        "title": "Evitar ventanas emergentes al hacer clic",
+        "description": "Esto impide que el usuario haga clic en el tweet y vaya a twitter.com."
+      }
+    ]
+  }
+}

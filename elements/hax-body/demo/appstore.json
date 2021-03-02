@@ -1529,6 +1529,7 @@
     }
   ],
   "autoloader": {
+    "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",
     "unity-webgl": "@lrnwebcomponents/unity-webgl/unity-webgl.js",
     "block-quote": "@lrnwebcomponents/course-design/lib/block-quote.js",
     "github-preview": "@lrnwebcomponents/github-preview/github-preview.js",

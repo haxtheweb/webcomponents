@@ -95,6 +95,7 @@ class HaxTray extends I18NMixin(
       right: "Right",
       search: "Search",
       templates: "Templates",
+      width: "Width",
     };
     this.registerTranslation({
       context: this,
@@ -1448,8 +1449,7 @@ class HaxTray extends I18NMixin(
       if (props.canScale) {
         props.settings.layout.push({
           property: "__scale",
-          title: "Width",
-          description: "Scale and resize content",
+          title: this.t.width,
           inputMethod: "slider",
           value: this.activeValue.settings.layout.__scale,
           min: props.canScale.min ? props.canScale.min : 12.5,

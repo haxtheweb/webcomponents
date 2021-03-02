@@ -9,6 +9,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import { HaxContextBehaviors } from "./hax-context-container.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-text-context`
@@ -17,12 +18,36 @@ import { HaxContextBehaviors } from "./hax-context-container.js";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  */
-class HaxTextContext extends HaxContextBehaviors(LitElement) {
+class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   static get styles() {
     return [...super.styles];
   }
   constructor() {
     super();
+    this.t = {
+      modifyHTMLSource: "Modify HTML source",
+      bulledList: "Bulleted list",
+      numberedList: "Numbered list",
+      indent: "Indent",
+      outdent: "Outdent",
+      bold: "Bold",
+      italic: "Italic",
+      link: "Link",
+      removeLink: "Remove link",
+      removeFormat: "Remove format",
+      addElementToSelection: "Add element to selection",
+      subscript: "Subscript",
+      superscript: "Superscript",
+      underline: "Underline",
+      crossOut: "Cross out",
+      insertItemAbove: "Insert item above",
+      insertItemAboveOrBelow: "Insert item above or below",
+      insertItemBelow: "Insert item below",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
     this.sourceView = false;
     this.haxUIElement = true;
     this.tourName = "hax";
@@ -190,7 +215,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
             <hax-context-item
               action
               icon="icons:code"
-              label="Modify HTML source"
+              label="${this.t.modifyHTMLSource}"
               ?hidden="${!this.sourceView}"
               event-name="hax-source-view-toggle"
               toggles
@@ -202,14 +227,14 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               action
               icon="editor:format-list-bulleted"
               event-name="text-tag-ul"
-              label="Bulleted list"
+              label="${this.t.bulledList}"
               ?hidden="${!this._showLists}"
             ></hax-context-item-textop>
             <hax-context-item-textop
               mini
               action
               icon="editor:format-list-numbered"
-              label="Numbered list"
+              label="${this.t.numberedList}"
               event-name="text-tag-ol"
               ?hidden="${!this._showLists}"
             ></hax-context-item-textop>
@@ -217,7 +242,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               mini
               action
               icon="editor:format-indent-decrease"
-              label="Outdent"
+              label="${this.t.outdent}"
               event-name="text-outdent"
               ?hidden="${!this._showIndent}"
             ></hax-context-item-textop>
@@ -225,7 +250,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               mini
               action
               icon="editor:format-indent-increase"
-              label="Indent"
+              label="${this.t.indent}"
               event-name="text-indent"
               ?hidden="${!this._showIndent}"
             ></hax-context-item-textop>
@@ -233,7 +258,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               mini
               action
               icon="editor:format-bold"
-              label="Bold"
+              label="${this.t.bold}"
               class="selected-buttons"
               event-name="text-bold"
               ?hidden="${!this.hasSelectedText}"
@@ -242,7 +267,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               mini
               action
               icon="editor:format-italic"
-              label="Italic"
+              label="${this.t.italic}"
               class="selected-buttons"
               event-name="text-italic"
               ?hidden="${!this.hasSelectedText}"
@@ -251,7 +276,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               mini
               action
               icon="editor:insert-link"
-              label="Link"
+              label="${this.t.link}"
               class="selected-buttons"
               event-name="text-link"
               ?hidden="${!this.hasSelectedText}"
@@ -260,7 +285,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               mini
               action
               icon="mdextra:unlink"
-              label="Remove link"
+              label="${this.t.removeLink}"
               class="selected-buttons"
               event-name="text-unlink"
               ?hidden="${!this.hasSelectedText}"
@@ -269,7 +294,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               mini
               action
               icon="editor:format-clear"
-              label="Remove format"
+              label="${this.t.removeFormat}"
               class="selected-buttons"
               event-name="text-remove-format"
               ?hidden="${!this.hasSelectedText}"
@@ -278,7 +303,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               mini
               action
               icon="hax:add-brick"
-              label="Add element to selection"
+              label="${this.t.addElementToSelection}"
               class="selected-buttons"
               event-name="insert-inline-gizmo"
               ?hidden="${this.isSafari || !this.hasSelectedText}"
@@ -287,7 +312,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               mini
               action
               icon="hax:add-brick"
-              label="Add element to selection"
+              label="${this.t.addElementToSelection}"
               class="selected-buttons"
               event-name="insert-inline-gizmo"
               ?hidden="${!this.isSafari || !this.hasSelectedText}"
@@ -301,7 +326,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               icon="mdextra:subscript"
               event-name="text-subscript"
               ?hidden="${!this.hasSelectedText}"
-              label="Subscript"
+              label="${this.t.subscript}"
             ></hax-context-item-textop>
             <hax-context-item-textop
               action
@@ -309,13 +334,13 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               icon="mdextra:superscript"
               event-name="text-superscript"
               ?hidden="${!this.hasSelectedText}"
-              label="Superscript"
+              label="${this.t.superscript}"
             ></hax-context-item-textop>
             <hax-context-item-textop
               action
               menu
               icon="editor:format-underlined"
-              label="Underline"
+              label="${this.t.underline}"
               event-name="text-underline"
               ?hidden="${!this.hasSelectedText}"
             ></hax-context-item-textop>
@@ -325,12 +350,15 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
               icon="editor:format-strikethrough"
               event-name="text-strikethrough"
               ?hidden="${!this.hasSelectedText}"
-              label="Cross out"
+              label="${this.t.crossOut}"
             ></hax-context-item-textop>
             <slot name="more"></slot>
           </div>
           <div class="group">
-            <hax-toolbar-menu icon="add" label="Insert item above or below">
+            <hax-toolbar-menu
+              icon="add"
+              label="${this.t.insertItemAboveOrBelow}"
+            >
               <simple-toolbar-menu-item slot="menuitem">
                 <hax-context-item
                   action
@@ -339,7 +367,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
                   show-text-label
                   icon="hardware:keyboard-arrow-up"
                   event-name="insert-above-active"
-                  label="Insert item above"
+                  label="${this.t.insertItemAbove}"
                 ></hax-context-item>
               </simple-toolbar-menu-item>
               <simple-toolbar-menu-item slot="menuitem">
@@ -350,7 +378,7 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
                   show-text-label
                   icon="hardware:keyboard-arrow-down"
                   event-name="insert-below-active"
-                  label="Insert item below"
+                  label="${this.t.insertItemBelow}"
                 ></hax-context-item>
               </simple-toolbar-menu-item>
             </hax-toolbar-menu>

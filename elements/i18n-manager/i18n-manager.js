@@ -124,7 +124,11 @@ class I18NManager extends LitElement {
       // to registration just now but match against locales we support
       // and it being the set language already
       if (this.lang && this.__ready && detail.locales.includes(this.lang)) {
-        this.updateLanguage(this.lang);
+        // prevent flooding w/ lots of translatable elements
+        clearTimeout(this._debounce);
+        this._debounce = setTimeout(() => {
+          this.updateLanguage(this.lang);
+        }, 0);
       }
     }
   }
@@ -223,15 +227,17 @@ class I18NManager extends LitElement {
           fetchTarget = `${el.localesPath}/${el.namespace}.${langPieces[0]}.json`;
         }
         // see if we had this previous to avoid another request
-        if (this.fetchTargets[fetchTarget] && el.context) {
-          let data = this.fetchTargets[fetchTarget];
-          for (var id in data) {
-            el.context.t[id] = data[id];
-          }
-          el.context.t = { ...el.context.t };
-          // support a forced update / function to run when it finishes
-          if (el.updateCallback) {
-            el.context[el.updateCallback]();
+        if (this.fetchTargets[fetchTarget]) {
+          if (el.context) {
+            let data = this.fetchTargets[fetchTarget];
+            for (var id in data) {
+              el.context.t[id] = data[id];
+            }
+            el.context.t = { ...el.context.t };
+            // support a forced update / function to run when it finishes
+            if (el.updateCallback) {
+              el.context[el.updateCallback]();
+            }
           }
         } else {
           // request the json backing, then make JSON and set the associated values

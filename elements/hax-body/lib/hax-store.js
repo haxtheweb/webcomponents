@@ -2929,7 +2929,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           }
           // settings pages
           if (e.detail.properties.settings && translationMap.settings) {
-            for (var h in ["advanced", "configure"]) {
+            let sTabs = {
+              advanced: "advanced",
+              configure: "configure",
+            };
+            for (var h in sTabs) {
               if (
                 e.detail.properties.settings[h] &&
                 translationMap.settings[h]

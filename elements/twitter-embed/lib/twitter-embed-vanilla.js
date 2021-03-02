@@ -5,6 +5,7 @@
  * @demo demo/index.html
  * @element twitter-embed-vanilla
  */
+const FALLBACK_LANG = "en";
 class TwitterEmbedVanilla extends HTMLElement {
   static get tag() {
     return "twitter-embed-vanilla";
@@ -15,9 +16,12 @@ class TwitterEmbedVanilla extends HTMLElement {
   constructor() {
     super();
     this.lang =
-      document && document.documentElement && document.documentElement.lang
-        ? document.documentElement.lang
-        : "en";
+      document.body.getAttribute("xml:lang") ||
+      document.body.getAttribute("lang") ||
+      document.documentElement.getAttribute("xml:lang") ||
+      document.documentElement.getAttribute("lang") ||
+      navigator.language ||
+      FALLBACK_LANG;
     this.dataWidth = this.getAttribute("data-width")
       ? this.getAttribute("data-width")
       : "550px";
