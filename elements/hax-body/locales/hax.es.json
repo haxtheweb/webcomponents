@@ -50,5 +50,6 @@
   "learnMoreAboutHAX": "Más información sobre HAX",
   "search": "Buscar",
   "templates": "Plantillas",
-  "filterContentTypes": "Filtrar tipos de contenido"
+  "filterContentTypes": "Filtrar tipos de contenido",
+  "dragHandle": "Manija de arrastre"
 }

@@ -267,7 +267,6 @@ export class HAXWiring {
             detail: {
               tag: tag.toLowerCase(),
               properties: props,
-              polymer: false,
             },
           });
           context.dispatchEvent(evt);
@@ -440,7 +439,6 @@ export class HAXWiring {
           detail: {
             tag: tag.toLowerCase(),
             properties: props,
-            polymer: false,
           },
         });
         context.dispatchEvent(evt);

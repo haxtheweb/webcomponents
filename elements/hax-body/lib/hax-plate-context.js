@@ -7,6 +7,7 @@ import "./hax-context-item.js";
 import { autorun, toJS } from "mobx";
 import { HaxContextBehaviors } from "./hax-context-container.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /**
  * `hax-plate-context`
  * `A context menu that provides common grid plate based authoring options.`
@@ -14,7 +15,7 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  * - grid plate - the container / full HTML tag which can have operations applied to it.
  */
-class HaxPlateContext extends HaxContextBehaviors(LitElement) {
+class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -23,6 +24,9 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
     this.tourName = "hax";
+    this.t = {
+      dragHandle: "Drag handle",
+    };
   }
   static get tag() {
     return "hax-plate-context";
@@ -54,7 +58,7 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
               id="drag"
               action
               icon="hax:arrow-all"
-              label="Drag handle"
+              label="${this.t.dragHandle}"
               draggable="true"
               reset-on-select
               data-simple-tour-stop

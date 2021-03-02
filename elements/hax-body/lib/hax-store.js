@@ -19,7 +19,10 @@ import {
 } from "mobx";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import {
+  I18NMixin,
+  I18NManagerStore,
+} from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
  * @element hax-store
@@ -34,9 +37,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * run a hook in a target if it exists
    */
-  runHook(el, op, data = []) {
+  async runHook(el, op, data = []) {
     if (this.testHook(el, op)) {
-      return el[el.haxHooks()[op]](...data);
+      return await el[el.haxHooks()[op]](...data);
     }
     return false;
   }
@@ -2893,10 +2896,65 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * Notice that a property off an element was set in HAX some place; register it here
    */
-  _haxStoreRegisterProperties(e) {
+  async _haxStoreRegisterProperties(e) {
     if (e.detail && e.detail.properties && e.detail.tag) {
       // only register tag if we don't know about it already
       if (!this.elementList[e.detail.tag]) {
+        // haxHook: gizmoRegistration - allow elements to define their own
+        // custom functionality to run when a gizmo is registered
+        if (
+          window.customElements.get(e.detail.tag) &&
+          this.testHook(
+            document.createElement(e.detail.tag),
+            "gizmoRegistration"
+          )
+        ) {
+          await this.runHook(
+            document.createElement(e.detail.tag),
+            "gizmoRegistration",
+            [this]
+          );
+        }
+        // support locales if available and not default lang
+        const translationMap = await I18NManagerStore.loadNamespaceFile(
+          e.detail.tag + ".haxProperties"
+        );
+        // if we have a map, rewrite the matching properties within the objects
+        if (translationMap) {
+          // gizmo shows user text
+          if (e.detail.properties.gizmo && translationMap.gizmo) {
+            for (var i in translationMap.gizmo) {
+              e.detail.properties.gizmo[i] = translationMap.gizmo[i];
+            }
+          }
+          // settings pages
+          if (e.detail.properties.settings && translationMap.settings) {
+            for (var h in ["advanced", "configure"]) {
+              if (
+                e.detail.properties.settings[h] &&
+                translationMap.settings[h]
+              ) {
+                for (var i in translationMap.settings[h]) {
+                  for (var j in translationMap.settings[h][i]) {
+                    e.detail.properties.settings[h][i][j] =
+                      translationMap.settings[h][i][j];
+                  }
+                }
+              }
+            }
+          }
+          // demo schema can be rewritten too
+          if (e.detail.properties.demoSchema && translationMap.demoSchema) {
+            for (var i in translationMap.demoSchema) {
+              if (translationMap.demoSchema[i].properties) {
+                for (var j in translationMap.demoSchema[i].properties) {
+                  e.detail.properties.demoSchema[i].properties[j] =
+                    translationMap.demoSchema[i].properties[j];
+                }
+              }
+            }
+          }
+        }
         // look for a gizmo; it's not required, technically.
         let gizmo = e.detail.properties.gizmo;
         if (gizmo) {
@@ -2905,21 +2963,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           gizmos.push(gizmo);
           this.gizmoList = [...gizmos];
           this.write("gizmoList", gizmos, this);
-          // haxHook: gizmoRegistration - allow elements to define their own
-          // custom functionality to run when a gizmo is registered
-          if (
-            window.customElements.get(gizmo.tag) &&
-            this.testHook(
-              document.createElement(gizmo.tag),
-              "gizmoRegistration"
-            )
-          ) {
-            this.runHook(
-              document.createElement(gizmo.tag),
-              "gizmoRegistration",
-              [this]
-            );
-          }
         }
         this.elementList[e.detail.tag] = e.detail.properties;
         // only push new values on if we got something new

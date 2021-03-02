@@ -1,4 +1,5 @@
 import { I18NManagerStore } from "../i18n-manager.js";
+export { I18NManagerStore };
 export const I18NMixin = function (SuperClass) {
   return class extends SuperClass {
     constructor() {

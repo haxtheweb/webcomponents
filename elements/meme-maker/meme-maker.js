@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+
 /**
  * `meme-maker`
  * Connects lrndesign-gallery to HAX
@@ -91,6 +92,10 @@ class MemeMaker extends LitElement {
     super();
     this.alt = "";
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   static get properties() {
     return {
       /**
@@ -139,7 +144,23 @@ class MemeMaker extends LitElement {
     return {
       activeElementChanged: "haxactiveElementChanged",
       progressiveEnhancement: "haxprogressiveEnhancement",
+      gizmoRegistration: "haxgizmoRegistration",
     };
+  }
+  /**
+   * Supply translations for the UI elements of HAX in meme-maker
+   */
+  haxgizmoRegistration(store) {
+    window.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: "meme-maker.haxProperties",
+          localesPath:
+            this.pathFromUrl(decodeURIComponent(import.meta.url)) + "locales",
+          locales: ["es", "fr"],
+        },
+      })
+    );
   }
   /**
    * double-check that we are set to inactivate click handlers
@@ -177,7 +198,10 @@ class MemeMaker extends LitElement {
    * Attached to the DOM, now fire.
    */
   static get haxProperties() {
-    return import.meta.url + "/../lib/meme-maker.haxSchema.json";
+    return (
+      decodeURIComponent(import.meta.url) +
+      "/../lib/meme-maker.haxProperties.json"
+    );
   }
 }
 window.customElements.define(MemeMaker.tag, MemeMaker);
