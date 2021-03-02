@@ -322,7 +322,6 @@ export class HAXWiring {
           if (response && response.json) return response.json();
           return false;
         });
-        console.log(props);
       }
       // these are a core piece of hax capabilities
       // set them in the event this got called without anything

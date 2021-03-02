@@ -574,6 +574,18 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             CEname = appDataResponse.autoloader[i];
             CEimport = `@lrnwebcomponents/${CEname}/${CEname}.js`;
           }
+          // support for element response shipping w/ the UI for the element
+          // this allows backends to define haxSchema at run time!
+          if (typeof CEimport !== "string") {
+            // definition over the wire
+            if (CEimport.haxProperties) {
+              this.setHaxProperties(
+                appDataResponse.autoloader[i].haxProperties,
+                CEname
+              );
+            }
+            CEimport = appDataResponse.autoloader[i].import;
+          }
           // force this into the valid tag list so early paints will
           // correctly include the tag without filtering it out incorrectly
           this.validTagList.push(CEname);
