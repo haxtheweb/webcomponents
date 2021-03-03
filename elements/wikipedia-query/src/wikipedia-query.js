@@ -71,7 +71,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   }
   updateArticle(search, headers) {
     fetch(
-      `https://en.wikipedia.org/w/api.php?origin=*&action=query&titles=${search}&prop=extracts&format=json`,
+      `https://es.wikipedia.org/w/api.php?origin=*&action=query&titles=${search}&prop=extracts&format=json`,
       headers
     )
       .then((response) => {

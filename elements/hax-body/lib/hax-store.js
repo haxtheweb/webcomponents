@@ -23,6 +23,7 @@ import {
   I18NMixin,
   I18NManagerStore,
 } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+const FALLBACK_LANG = "en";
 
 /**
  * @element hax-store
@@ -694,7 +695,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this._loadAppStoreData(this.__appStoreData);
     }
   }
-  _globalPreferencesChanged(newValue) {
+  async _globalPreferencesChanged(newValue) {
     // regardless of what it is, reflect it globally but only after setup
     if (
       this.__storageDataProcessed &&
@@ -732,6 +733,32 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         } else {
           this.__hal.auto = false;
         }
+      }
+      // only translate if we are ready, and editing, and have a language other than default
+      if (newValue.haxLang && HAXStore.editMode) {
+        clearTimeout(this._debounceLang);
+        // debounce helps prevent flooding based on this variable being updated
+        // we also don't need to instantly update language as it's an aggressive action
+        // so this 100ms delay helps quiet this down
+        this._debounceLang = setTimeout(async () => {
+          // run through language matches as nessecary to translate haxProperties definitions
+          for (var i in this.elementList) {
+            let el = this.elementList[i];
+            // run through translations to see if we have any
+            // apply as nessecary; abstract out the current translation thing to be reused
+            el = await this.attemptGizmoTranslation(i, el);
+            this.elementList[i] = el;
+          }
+          this.gizmoList.forEach((el) => {
+            // if a title / description exists; "translate" it to match what came across
+            if (this.elementList[el.tag].gizmo.title) {
+              el.title = this.elementList[el.tag].gizmo.title;
+            }
+            if (this.elementList[el.tag].gizmo.description) {
+              el.description = this.elementList[el.tag].gizmo.description;
+            }
+          });
+        }, 100);
       }
     }
   }
@@ -2915,76 +2942,38 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             [this]
           );
         }
-        // support locales if available and not default lang
-        const translationMap = await I18NManagerStore.loadNamespaceFile(
-          e.detail.tag + ".haxProperties"
+        let detail = e.detail;
+        detail.properties = await this.attemptGizmoTranslation(
+          detail.tag,
+          detail.properties
         );
-        // if we have a map, rewrite the matching properties within the objects
-        if (translationMap) {
-          // gizmo shows user text
-          if (e.detail.properties.gizmo && translationMap.gizmo) {
-            for (var i in translationMap.gizmo) {
-              e.detail.properties.gizmo[i] = translationMap.gizmo[i];
-            }
-          }
-          // settings pages
-          if (e.detail.properties.settings && translationMap.settings) {
-            let sTabs = {
-              advanced: "advanced",
-              configure: "configure",
-            };
-            for (var h in sTabs) {
-              if (
-                e.detail.properties.settings[h] &&
-                translationMap.settings[h]
-              ) {
-                for (var i in translationMap.settings[h]) {
-                  for (var j in translationMap.settings[h][i]) {
-                    e.detail.properties.settings[h][i][j] =
-                      translationMap.settings[h][i][j];
-                  }
-                }
-              }
-            }
-          }
-          // demo schema can be rewritten too
-          if (e.detail.properties.demoSchema && translationMap.demoSchema) {
-            for (var i in translationMap.demoSchema) {
-              if (translationMap.demoSchema[i].properties) {
-                for (var j in translationMap.demoSchema[i].properties) {
-                  e.detail.properties.demoSchema[i].properties[j] =
-                    translationMap.demoSchema[i].properties[j];
-                }
-              }
-            }
-          }
-        }
+
         // look for a gizmo; it's not required, technically.
-        let gizmo = e.detail.properties.gizmo;
+        let gizmo = detail.properties.gizmo;
         if (gizmo) {
-          gizmo.tag = e.detail.tag;
+          gizmo.tag = detail.tag;
           let gizmos = this.gizmoList;
           gizmos.push(gizmo);
           this.gizmoList = [...gizmos];
           this.write("gizmoList", gizmos, this);
         }
-        this.elementList[e.detail.tag] = e.detail.properties;
+        this.elementList[detail.tag] = detail.properties;
         // only push new values on if we got something new
         if (
           !this.validTagList.find((element) => {
-            return element === e.detail.tag;
+            return element === detail.tag;
           })
         ) {
-          this.validTagList.push(e.detail.tag);
+          this.validTagList.push(detail.tag);
         }
         // push to grid list IF this marks itself as a grid
         if (
-          e.detail.properties.type == "grid" &&
+          detail.properties.type == "grid" &&
           !this.validGridTagList.find((element) => {
-            return element === e.detail.tag;
+            return element === detail.tag;
           })
         ) {
-          this.validGridTagList.push(e.detail.tag);
+          this.validGridTagList.push(detail.tag);
         }
       }
       // delete this tag if it was in the autoloader as it has served it's purpose.
@@ -3000,6 +2989,64 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let gizmo = toJS(this._calculateActiveGizmo(this.activeNode));
     this.write("activeGizmo", gizmo, this);
     return gizmo;
+  }
+  async attemptGizmoTranslation(tag, properties) {
+    // support locales if available and not default lang
+    var translationMap = await I18NManagerStore.loadNamespaceFile(
+      tag + ".haxProperties"
+    );
+    // if we have a map, rewrite the matching properties within the objects
+    if (
+      !translationMap &&
+      this.globalPreferences.haxLang == FALLBACK_LANG &&
+      window.customElements.get(tag) &&
+      window.customElements.get(tag).haxProperties
+    ) {
+      translationMap = window.customElements.get(tag).haxProperties;
+      // support
+      if (typeof translationMap === "string") {
+        translationMap = await fetch(translationMap).then((response) => {
+          if (response && response.json) return response.json();
+          return false;
+        });
+      }
+    }
+    if (translationMap) {
+      // gizmo shows user text
+      if (properties.gizmo && translationMap.gizmo) {
+        for (var i in translationMap.gizmo) {
+          properties.gizmo[i] = translationMap.gizmo[i];
+        }
+      }
+      // settings pages
+      if (properties.settings && translationMap.settings) {
+        let sTabs = {
+          advanced: "advanced",
+          configure: "configure",
+        };
+        for (var h in sTabs) {
+          if (properties.settings[h] && translationMap.settings[h]) {
+            for (var i in translationMap.settings[h]) {
+              for (var j in translationMap.settings[h][i]) {
+                properties.settings[h][i][j] = translationMap.settings[h][i][j];
+              }
+            }
+          }
+        }
+      }
+      // demo schema can be rewritten too
+      if (properties.demoSchema && translationMap.demoSchema) {
+        for (var i in translationMap.demoSchema) {
+          if (translationMap.demoSchema[i].properties) {
+            for (var j in translationMap.demoSchema[i].properties) {
+              properties.demoSchema[i].properties[j] =
+                translationMap.demoSchema[i].properties[j];
+            }
+          }
+        }
+      }
+    }
+    return properties;
   }
 }
 window.customElements.define(HaxStore.tag, HaxStore);

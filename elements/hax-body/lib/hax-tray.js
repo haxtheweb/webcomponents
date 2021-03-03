@@ -100,6 +100,7 @@ class HaxTray extends I18NMixin(
     this.registerTranslation({
       context: this,
       namespace: "hax",
+      updateCallback: "_updateTrayDetail",
     });
     this._initial = true;
     this.activeValue = {
@@ -1553,6 +1554,7 @@ class HaxTray extends I18NMixin(
     } else {
       this.trayLabel = undefined;
     }
+    this.requestUpdate();
   }
   /**
    * Notice change in values from below

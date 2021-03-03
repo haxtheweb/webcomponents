@@ -8,7 +8,10 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import {
+  I18NMixin,
+  I18NManagerStore,
+} from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-preferences-dialog`
@@ -39,23 +42,42 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
     this.hideLink = false;
     this.t = {
       learnMoreAboutHAX: "Learn more about HAX",
+      voiceCommands: "Voice commands",
+      haxUITheme: "HAX UI Theme",
+      language: "Language",
+      english: "English",
+      spanish: "Spanish",
     };
+    this.udpateSchema();
     this.registerTranslation({
       context: this,
       namespace: "hax",
+      updateCallback: "udpateSchema",
     });
+    autorun(() => {
+      this.globalPreferences = toJS(HAXStore.globalPreferences);
+      if (
+        this.globalPreferences.haxLang &&
+        I18NManagerStore.lang != this.globalPreferences.haxLang
+      ) {
+        I18NManagerStore.lang = this.globalPreferences.haxLang || "en";
+        this.udpateSchema();
+      }
+    });
+  }
+  udpateSchema() {
     // JSON schema object needs delayed to ensure page repaints the form
     this.schema = [
       {
         property: "haxVoiceCommands",
-        title: "Voice commands",
+        title: this.t.voiceCommands,
         description: "Experimental: Voice based control system",
         inputMethod: "boolean",
         value: false,
       },
       {
         property: "haxUiTheme",
-        title: "HAX UI Theme",
+        title: this.t.haxUITheme,
         description:
           "Change the theme of the HAX interface (not the site's content).",
         inputMethod: "radio",
@@ -66,14 +88,27 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
         },
         value: "hax",
       },
+      {
+        property: "haxLang",
+        title: this.t.language,
+        description:
+          "Toggle between supported languages for internationalization",
+        inputMethod: "radio",
+        options: {
+          en: this.t.english,
+          es: this.t.spanish,
+        },
+        value: I18NManagerStore.lang,
+      },
     ];
     this.schemaValues = {
       haxVoiceCommands: false,
+      haxUiTheme: "hax",
+      haxLang: I18NManagerStore.lang,
     };
-    autorun(() => {
-      this.globalPreferences = toJS(HAXStore.globalPreferences);
-      this.schemaValues = toJS(HAXStore.globalPreferences);
-    });
+    if (this.shadowRoot && this.shadowRoot.querySelector("#settingsform")) {
+      this.reloadPreferencesForm();
+    }
   }
   closeBtn(e) {
     this.dispatchEvent(
@@ -141,10 +176,7 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
   }
 
   firstUpdated(changedProperties) {
-    this.shadowRoot.querySelector("#settingsform").fields = [...this.schema];
-    this.shadowRoot.querySelector("#settingsform").value = {
-      ...this.schemaValues,
-    };
+    this.reloadPreferencesForm();
     this.shadowRoot
       .querySelector("#settingsform")
       .addEventListener("value-changed", this.__valueChangedEvent.bind(this));
@@ -152,6 +184,7 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
   __valueChangedEvent(e) {
     if (e.detail.value) {
       HAXStore.globalPreferences = { ...e.detail.value };
+      this.schemaValues = { ...e.detail.value };
     }
   }
 

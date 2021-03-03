@@ -75,7 +75,7 @@ class I18NManager extends LitElement {
     let detail = this.detailNormalize(e.detail);
     // ensure we have a namespace for later use
     if (detail.namespace && detail.localesPath && detail.locales) {
-      this.registerTranslation(e.detail);
+      this.registerTranslation(detail);
     }
   }
   detailNormalize(detail) {
@@ -114,6 +114,10 @@ class I18NManager extends LitElement {
   registerTranslation(detail) {
     // ensure no dual registration of context; meaning same object twice
     if (
+      (!detail.context &&
+        this.elements.filter((e) => {
+          return e.namespace === detail.namespace;
+        }).length === 0) ||
       this.elements.filter((e) => {
         return e.context === detail.context;
       }).length === 0
