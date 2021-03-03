@@ -66,6 +66,26 @@ class BootstrapTheme extends HAXCMSLitElementTheme {
     `;
   }
 
+  _generateBootstrapLink() {
+    if (this._bootstrapLink) {
+      document.head.removeChild(this._bootstrapLink);
+    }
+    let link = document.createElement("link");
+    link.setAttribute("rel", "stylesheet");
+    link.setAttribute(
+      "href",
+      "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    );
+    document.head.appendChild(link);
+    return link;
+  }
+
+  disconnectedCallback() {
+    if (this._bootstrapLink) {
+      document.head.removeChild(this._bootstrapLink);
+    }
+  }
+
   /**
    * LitElement ready
    */
@@ -73,6 +93,7 @@ class BootstrapTheme extends HAXCMSLitElementTheme {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._bootstrapLink = this._generateBootstrapLink();
   }
 
   /**
