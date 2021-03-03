@@ -2927,7 +2927,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (e.detail && e.detail.properties && e.detail.tag) {
       // only register tag if we don't know about it already
       if (!this.elementList[e.detail.tag]) {
-        // haxHook: gizmoRegistration - allow elements to define their own
+        // @see haxHook: gizmoRegistration - allow elements to define their own
         // custom functionality to run when a gizmo is registered
         if (
           window.customElements.get(e.detail.tag) &&
