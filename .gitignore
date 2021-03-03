@@ -16,3 +16,5 @@ analysis.json
 yarn-error.log
 .cache
 test/index.html
+elements/elmsln-apps/lib/lrnapp-studio-instructor/demo/*
+elements/elmsln-apps/lib/lrnapp-studio-instructor/lrnapp-studio-submission/api/submissions/353

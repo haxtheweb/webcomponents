@@ -49,6 +49,7 @@ class LrnappStudioInstructor extends PolymerElement {
       paper-dialog {
         width: 70vw;
         min-height:50vh;
+        z-index: 1 !important;
       }
       vaadin-grid-table-body > vaadin-grid-cell-content {
         height: unset !important;
@@ -242,7 +243,7 @@ class LrnappStudioInstructor extends PolymerElement {
       [[dataTypeText]]
     </paper-toggle-button>
     <button id="statsdialogbutton" disabled><simple-icon icon="editor:show-chart"></simple-icon> Statistics (beta)</span></button>
-    <paper-dialog id="statsdialog">
+    <paper-dialog id="statsdialog" no-cancel-on-outside-click no-cancel-on-esc-key>
       <app-header>
         <app-toolbar>
           <div main-title>[[stats.header]]</div>
@@ -307,7 +308,7 @@ class LrnappStudioInstructor extends PolymerElement {
         </vaadin-grid-column>
       </template>
     </vaadin-grid>
-    <paper-dialog id="dialog" style="overflow: visible;">
+    <paper-dialog id="dialog" style="overflow: visible;" no-cancel-on-outside-click no-cancel-on-esc-key>
       <app-header>
         <app-toolbar>
           <span style="width:15em;">
@@ -322,7 +323,7 @@ class LrnappStudioInstructor extends PolymerElement {
           <button dialog-dismiss><simple-icon icon="close"></simple-icon> Close</button>
         </app-toolbar>
       </app-header>
-      <div style="height:50vh;width:100%;overflow:scroll;">
+      <div style="height:50vh;max-width:100%;overflow-y:scroll;">
         <div hidden$="[[!activeData.submission]]">
           <lrnapp-studio-submission-page base-path="[[basePath]]" route="{{tail}}" id="[[data.submission]]" end-point="[[basePath]]lrnapp-studio-submission" csrf-token="[[csrfToken]]" hide-menu-bar></lrnapp-studio-submission-page>
         </div>
