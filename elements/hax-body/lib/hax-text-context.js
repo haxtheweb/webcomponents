@@ -163,10 +163,12 @@ class HaxTextContext extends HaxContextBehaviors(LitElement) {
                       action
                       align-horizontal="left"
                       role="menuitem"
+                      icon="${val.icon}"
                       label="${val.text}"
                       show-text-label
                       ?hidden="${!this.sourceView}"
                       event-name="${val.value}"
+                      show-text-label
                       @click="${(e) => this.textFormatChanged(val.value)}"
                     ></hax-context-item-textop>
                   </simple-toolbar-menu-item>`

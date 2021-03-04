@@ -91,7 +91,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     });
     autorun(() => {
       this.tourOpened = toJS(HAXStore.tourOpened);
-      console.log("tour", this.tourOpened);
     });
     autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
@@ -124,14 +123,15 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           display: block;
           z-index: 1000;
           position: absolute;
-          transition: 0.2s all ease-in-out;
           height: calc(100vh - var(--hax-tray-top, 0px));
           top: var(--hax-tray-top, 0px);
           overflow: auto;
           font-family: var(--hax-ui-font-family);
           font-size: var(--hax-ui-font-size);
           color: var(--hax-ui-color);
+          transition: 0.2s all ease-in-out;
           transition-delay: 0.3s;
+          transition: 0s color linear !important;
         }
         :host(:focus-within),
         :host(:hover) {
@@ -203,16 +203,19 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           background-color: var(--hax-ui-background-color);
           padding: 0 var(--hax-ui-spacing-lg) var(--hax-ui-spacing);
           transition: all 0.3s linear;
+          transition: 0s background-color linear !important;
+          transition: 0s border-color linear !important;
         }
         :host([edit-mode][collapsed]) #tray-detail {
           left: unset !important;
           right: unset !important;
-          transition: all 0.6s linear;
           max-height: 0vh;
           border-bottom: 0px solid var(--hax-ui-border-color);
           padding: 0 var(--hax-ui-spacing-lg) 0;
-          transition: all 0.3s linear;
           max-width: calc(100% - 2 * var(--hax-ui-spacing-lg) - 2px);
+          transition: all 0.3s linear;
+          transition: 0s background-color linear !important;
+          transition: 0s border-color linear !important;
         }
         #tray-detail[hidden] {
           height: 0px;
@@ -223,6 +226,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           background-color: var(--hax-ui-background-color);
           width: var(--hax-tray-width);
           transition: all 0.5s ease-in-out;
+          transition: 0s color linear !important;
+          transition: 0s background-color linear !important;
+          transition: 0s border-color linear !important;
         }
         simple-button-grid {
           background-color: var(--hax-ui-background-color);
@@ -245,12 +251,12 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         :host([edit-mode][collapsed]) hax-toolbar.tray-detail-ops {
           border-bottom: 1px solid var(--hax-ui-border-color);
         }
-        #menugroup,
-        #menugroup > * {
+        #menugroup {
           flex: 1 1 auto;
         }
         #menugroup > * {
           align-items: flex-start;
+          flex: 0 0 50%;
         }
         #haxcancelbutton::part(dropdown-icon) {
           display: none;
@@ -274,6 +280,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         hax-app-browser,
         hax-gizmo-browser {
           transition: 0.2s all ease-in-out;
+          transition: 0s color linear !important;
+          transition: 0s background-color linear !important;
+          transition: 0s border-color linear !important;
           visibility: visible;
         }
         #tray-grid {
@@ -413,7 +422,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               id="top-left"
               event-name="toggle-element-align"
               icon="arrow-back"
-              text-align="left"
               label="Top Left"
               index="0"
               ?disabled="${this.elementAlign == "left"}"
@@ -431,7 +439,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               event-name="toggle-element-align"
               icon="arrow-forward"
               label="Top Right"
-              text-align="left"
               index="1"
               ?disabled="${this.elementAlign == "right"}"
               ?toggled="${this.elementAlign == "right"}"
@@ -657,6 +664,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
+        tooltip="Add Content Blocks to Page"
         toggles
         ?toggled="${this.trayDetail === "content-add"}"
       >
@@ -679,6 +687,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
+        tooltip="Add Media to Page"
         toggles
         ?toggled="${this.trayDetail === "media-add"}"
       >
@@ -702,6 +711,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
+        tooltip="View Page Structure"
         toggles
         ?toggled="${this.trayDetail === "content-map"}"
       >
@@ -721,12 +731,13 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         event-name="advanced-settings"
         icon="settings"
         label="Settings"
-        voice-command="open preferences"
+        voice-command="open (user preference) settings"
         show-text-label
         icon-position="top"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
+        tooltip="User Preference Settings"
         toggles
         ?toggled="${this.trayDetail === "advanced-settings"}"
       >
@@ -796,7 +807,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   get mediaTemplate() {
     let hidden = this.trayDetail !== "media-add";
     return html` <hax-tray-upload ?hidden="${hidden}"></hax-tray-upload>
-      <h5 ?hidden="${hidden}">Media Search</h5>
+      <h5 ?hidden="${hidden}">Search for Media</h5>
       <hax-app-browser id="appbrowser" ?hidden="${hidden}"></hax-app-browser>`;
   }
   __simpleFieldsClick(e) {
@@ -913,7 +924,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         break;
       case "stop-tour":
         window.SimpleTourManager.requestAvailability().stopTour("hax");
-        //window.SimpleTourManager.removeEventListener('tour-changed', e=>console.log(e));
         break;
       case "undo":
         HAXStore.activeHaxBody.undo();
@@ -1225,7 +1235,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   _dragEnd(e) {
     let menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
     if (menu) menu.close(true);
-    console.log(this, this.host, e, e.x, e.y);
     this.style.setProperty("--hax-tray-custom-y", e.clientY + "px");
     this.style.setProperty("--hax-tray-custom-x", e.clientX + "px");
     this.elementAlign = "custom";

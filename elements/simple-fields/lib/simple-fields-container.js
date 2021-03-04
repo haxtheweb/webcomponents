@@ -109,6 +109,9 @@ class SimpleFieldsContainer extends LitElement {
         :host([type="range"]) .border-bottom {
           display: none;
         }
+        ::slotted(input) {
+          padding: 0px;
+        }
         ::slotted(textarea[slot="field"]) {
           margin: 0;
           transition: height 0.5s ease-in-out;

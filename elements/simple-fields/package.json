@@ -50,6 +50,7 @@
     "@lrnwebcomponents/simple-icon": "^3.0.6",
     "@lrnwebcomponents/simple-icon-picker": "^3.0.6",
     "@lrnwebcomponents/simple-picker": "^3.0.6",
+    "@lrnwebcomponents/simple-toolbar": "^3.0.6",
     "@lrnwebcomponents/simple-tooltip": "^3.0.5",
     "@lrnwebcomponents/voice-recorder": "^3.0.6",
     "@vaadin/vaadin-upload": "^4.4.1",

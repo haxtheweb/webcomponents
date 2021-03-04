@@ -87,37 +87,9 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
               tabindex="0"
               part="button"
             >
-              ${!this.icon || this.icon == "" ? "" : this.iconTemplate}
-              ${this.labelTemplate}
+              ${this.iconTemplate} ${this.labelTemplate}
             </button>
-            ${this.showTextLabel ? "" : this.tooltipTemplate}`;
-    }
-    /**
-     * current label based on toggled state
-     *
-     * @readonly
-     */
-    get currentTooltip() {
-      return this._defaultOrToggled(
-        this.tooltip,
-        this.toggledTooltip,
-        this.isToggled
-      );
-    }
-    /**
-     * template for button tooltip
-     *
-     * @readonly
-     */
-    get tooltipTemplate() {
-      return html`<simple-tooltip
-        id="tooltip"
-        for="button"
-        ?hidden="${!this.currentTooltip && !this.currentLabel}"
-        position="${this.tooltipDirection || "bottom"}"
-        fit-to-visible-bounds
-        >${this.currentTooltip || this.currentLabel}</simple-tooltip
-      >`;
+            ${this.tooltipTemplate}`;
     }
 
     static get simpleButtonThemeStyles() {
@@ -132,7 +104,15 @@ const HaxToolbarItemBehaviors = function (SuperClass) {
     }
 
     static get styles() {
-      return super.styles;
+      return [
+        ...super.styles,
+        css`
+          :host(:hover),
+          :host(:focus-within) {
+            z-index: var(--hax-ui-focus-z-index, 1001) !important;
+          }
+        `,
+      ];
     }
 
     _handleClick(e) {}

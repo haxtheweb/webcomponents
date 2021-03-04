@@ -96,10 +96,11 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    ' <simple-toolbar-menu-item slot="menuitem">\n                    <hax-context-item-textop\n                      action\n                      align-horizontal="left"\n                      role="menuitem"\n                      label="',
+    ' <simple-toolbar-menu-item slot="menuitem">\n                    <hax-context-item-textop\n                      action\n                      align-horizontal="left"\n                      role="menuitem"\n                      icon="',
+    '"\n                      label="',
     '"\n                      show-text-label\n                      ?hidden="',
     '"\n                      event-name="',
-    '"\n                      @click="',
+    '"\n                      show-text-label\n                      @click="',
     '"\n                    ></hax-context-item-textop>\n                  </simple-toolbar-menu-item>',
   ]);
 
@@ -436,7 +437,7 @@ var HaxTextContext =
               this._formatIcon(this.realSelectedValue || this.formatIcon),
               this.formattingList.map(function (val) {
                 return (0,
-                _litElement.html)(_templateObject2(), val.text, !_this2.sourceView, val.value, function (e) {
+                _litElement.html)(_templateObject2(), val.icon, val.text, !_this2.sourceView, val.value, function (e) {
                   return _this2.textFormatChanged(val.value);
                 });
               }),

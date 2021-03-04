@@ -29,6 +29,45 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
+function _templateObject3() {
+  var data = _taggedTemplateLiteral([
+    "\n          :host(:hover),\n          :host(:focus-within) {\n            z-index: var(--hax-ui-focus-z-index, 1001)!important;\n          }\n        ",
+  ]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _toConsumableArray(arr) {
+  return (
+    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
+  );
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _iterableToArray(iter) {
+  if (
+    Symbol.iterator in Object(iter) ||
+    Object.prototype.toString.call(iter) === "[object Arguments]"
+  )
+    return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  }
+}
+
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -76,21 +115,6 @@ function _defineProperty(obj, key, value) {
     obj[key] = value;
   }
   return obj;
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral([
-    '<simple-tooltip\n        id="tooltip"\n        for="button"\n        ?hidden="',
-    '"\n        position="',
-    '"\n        fit-to-visible-bounds\n        >',
-    "</simple-tooltip\n      >",
-  ]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
 }
 
 function _templateObject2() {
@@ -309,41 +333,10 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
                     this._handleClick,
                     this._handleKeys,
                     this._handleMousedown,
-                    !this.icon || this.icon == "" ? "" : this.iconTemplate,
+                    this.iconTemplate,
                     this.labelTemplate,
-                    this.showTextLabel ? "" : this.tooltipTemplate
+                    this.tooltipTemplate
                   );
-            },
-            /**
-             * current label based on toggled state
-             *
-             * @readonly
-             */
-          },
-          {
-            key: "currentTooltip",
-            get: function get() {
-              return this._defaultOrToggled(
-                this.tooltip,
-                this.toggledTooltip,
-                this.isToggled
-              );
-            },
-            /**
-             * template for button tooltip
-             *
-             * @readonly
-             */
-          },
-          {
-            key: "tooltipTemplate",
-            get: function get() {
-              return (0, _litElement.html)(
-                _templateObject3(),
-                !this.currentTooltip && !this.currentLabel,
-                this.tooltipDirection || "bottom",
-                this.currentTooltip || this.currentLabel
-              );
             },
           },
         ],
@@ -428,7 +421,12 @@ var HaxToolbarItemBehaviors = function HaxToolbarItemBehaviors(SuperClass) {
           {
             key: "styles",
             get: function get() {
-              return _get(_getPrototypeOf(_class), "styles", this);
+              return [].concat(
+                _toConsumableArray(
+                  _get(_getPrototypeOf(_class), "styles", this)
+                ),
+                [(0, _litElement.css)(_templateObject3())]
+              );
             },
           },
         ]

@@ -15,7 +15,7 @@ class HaxTrayUpload extends HaxUploadField {
    */
   constructor() {
     super();
-    this.label = "Upload Source";
+    this.label = "Upload Media";
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection",
       "place-holder-file-drop": "_placeHolderFileDrop",

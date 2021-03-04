@@ -41,6 +41,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           padding-inline-start: unset;
           padding-inline-end: unset;
         }
+        #field-main-inner {
+          position: relative;
+        }
         #options {
           display: var(--simple-fields-radio-option-display, flex);
           flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
@@ -64,6 +67,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         }
         .box-input {
           width: 100%;
+          padding: 2px;
         }
         .box-input:focus {
           outline: none;
@@ -85,8 +89,8 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           background-color: var(--simple-fields-background-color, transparent);
         }
         select.field {
-          width: calc(100% - 47px);
-          padding-right: 47px;
+          width: calc(100% - 26px);
+          padding-right: 26px;
           border: none;
           background-color: var(--simple-fields-background-color, transparent);
           border-radius: 0;
@@ -96,7 +100,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         }
         :host([type="select"]) simple-icon-lite {
           position: absolute;
-          right: 47px;
+          right: 0px;
         }
         select:focus,
         select:focus-within {
@@ -509,7 +513,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         part="field-main"
       >
         ${this.labelTemplate}
-        <div part="field-main-inner">
+        <div id="field-main-inner" part="field-main-inner">
           ${this.prefixTemplate}
           ${this.fieldElementTag === "input"
             ? this.inputTemplate

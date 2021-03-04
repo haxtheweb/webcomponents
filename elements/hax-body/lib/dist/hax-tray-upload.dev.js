@@ -153,7 +153,7 @@ var HaxTrayUpload =
         this,
         _getPrototypeOf(HaxTrayUpload).call(this)
       );
-      _this.label = "Upload Source";
+      _this.label = "Upload Media";
       _this.__winEvents = {
         "hax-app-picker-selection": "_haxAppPickerSelection",
         "place-holder-file-drop": "_placeHolderFileDrop",
