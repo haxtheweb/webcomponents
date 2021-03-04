@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
+import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "./simple-fields-array-item.js";
@@ -18,10 +20,11 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
   static get styles() {
     return [
       ...super.styles,
+      ...SimpleFieldsButtonStyles,
       css`
-        fieldset {
-          padding: 0 var(--simple-fields-margin-small, 8px)
-            var(--simple-fields-margin-small, 8px);
+        :host([expanded]) #expand::part(icon) {
+          transform: rotate(90deg);
+          transition: all 0.5s ease;
         }
         #item-fields {
           margin: var(--simple-fields-margin-small, 8px) 0;
@@ -33,31 +36,8 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           align-items: flex-end;
           justify-content: flex-end;
         }
-        #description {
-          flex: 1 1 auto;
-          padding: var(--simple-fields-margin-small, 2px) 0;
-          margin-right: var(--simple-fields-margin, 8px);
-          min-height: 24px;
-        }
         #add {
           float: right;
-        }
-        button {
-          font-family: var(--simple-fields-detail-font-family, sans-serif);
-          font-size: var(--simple-fields-detail-font-size, 12px);
-          line-height: var(--simple-fields-detail-line-height, 22px);
-          padding: var(--simple-fields-margin-small, 2px);
-          margin: 0 var(--simple-fields-margin-small, 2px) 0 0;
-          z-index: 1;
-          text-transform: unset;
-        }
-        .expanded {
-          transform: rotate(-90deg);
-          transition: transform 0.5s ease;
-        }
-        .collapsed {
-          transform: rotate(0deg);
-          transition: transform 0.5s ease;
         }
       `,
     ];
@@ -73,39 +53,47 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
        */
       expanded: {
         type: Boolean,
+        reflect: true,
       },
     };
   }
   render() {
-    return html` <fieldset>${this.legend}${this.fields}</fieldset> `;
+    return html`
+      <fieldset part="fieldset">${this.legend}${this.fields}</fieldset>
+    `;
   }
   get fields() {
     return html`
-      <div id="top">
-        ${this.desc}
-        <button
+      <div id="top" part="top">
+        ${this.descriptionTemplate}
+        <simple-toolbar-button
           id="expand"
           controls="item-fields"
+          icon="more-vert"
           @click="${(e) => this.toggle()}"
+          ?toggled="${this.expanded}"
+          toggles
+          show-text-label
+          label="${this.expanded ? "Collapse All" : "Expand All"}"
+          part="expand"
         >
-          ${this.expanded ? "Collapse All" : "Expand All"}
-          <simple-icon
-            class="${this.expanded ? "expanded" : "collapsed"}"
-            aria-hidden="true"
-            icon="expand-more"
-          ></simple-icon>
-        </button>
+        </simple-toolbar-button>
       </div>
-      <div id="item-fields" aria-live="polite">
+      <div id="item-fields" aria-live="polite" part="items">
         <slot></slot>
-        <button
+        <simple-toolbar-button
           id="add"
+          icon="add"
           controls="item-fields"
           @click="${(e) => this._handleAdd()}"
+          part="add"
+          icon="more-vert"
+          ?toggled="${this.expanded}"
+          toggles
+          show-text-label
+          label="Add Item"
         >
-          Add Item
-          <simple-icon aria-hidden="true" icon="add"></simple-icon>
-        </button>
+        </simple-toolbar-button>
       </div>
     `;
   }

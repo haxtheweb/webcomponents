@@ -1,9 +1,13 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HAXStore } from "./hax-store.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import { autorun, toJS } from "mobx";
 import { wipeSlot } from "@lrnwebcomponents/utils/utils";
+import { HaxContextBehaviors } from "./hax-context-container.js";
+import { autorun, toJS } from "mobx";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /**
  * `hax-ce-context`
  * `A context menu that provides common custom-element based authoring options.
@@ -11,32 +15,24 @@ import { wipeSlot } from "@lrnwebcomponents/utils/utils";
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
  * @element hax-ce-context
  */
-class HaxCeContext extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
+class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-        }
-        hax-context-item {
-          margin: 0;
-        }
-        :host(.hax-context-pin-top) hax-toolbar {
-          position: fixed;
-          top: 0px;
-          flex-direction: column;
-        }
-        div[slot="primary"] {
-          display: inline-flex;
-        }
-      `,
-    ];
+    return [...super.styles];
   }
   constructor() {
     super();
+    this.t = {
+      changeTo: "Change to",
+      modifyHTMLSource: "Modify HTML source",
+      clickToChange: "Click to change",
+      insertItemAbove: "Insert item above",
+      insertItemAboveOrBelow: "Insert item above or below",
+      insertItemBelow: "Insert item below",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
     this.haxUIElement = true;
     this.onScreen = false;
     this.ceButtons = [];
@@ -59,57 +55,77 @@ class HaxCeContext extends LitElement {
   }
   render() {
     return html`
-      <hax-toolbar>
-        <hax-context-item
-          mini
-          action
-          more
-          slot="prefix"
-          icon="${this.activeTagIcon}"
-          label="${this.activeTagName}, click to change"
-          ?disabled="${this.disableTransform}"
-          event-name="hax-transform-node"
-        ></hax-context-item>
-        ${this.ceButtons.map((el) => {
-          return html` <hax-context-item
-            mini
-            action
-            slot="prefix"
-            icon="${el.icon}"
-            label="${el.label}"
-            event-name="hax-ce-custom-button"
-            value="${el.callback}"
-          ></hax-context-item>`;
-        })}
-        <div slot="primary">
-          <slot></slot>
-        </div>
-        <hax-context-item
-          mini
-          action
-          slot="primary"
-          icon="icons:code"
-          label="Modify HTML source"
-          ?disabled="${!this.sourceView}"
-          event-name="hax-source-view-toggle"
-        ></hax-context-item>
-        <hax-context-item-textop
-          action
-          menu
-          slot="more"
-          icon="hardware:keyboard-arrow-up"
-          event-name="insert-above-active"
-          >Insert item above</hax-context-item-textop
-        >
-        <hax-context-item-textop
-          action
-          menu
-          slot="more"
-          icon="hardware:keyboard-arrow-down"
-          event-name="insert-below-active"
-          >Insert item below</hax-context-item-textop
-        >
-      </hax-toolbar>
+      <div id="toolbar">
+        <hax-toolbar>
+          <div class="group">
+            <hax-context-item
+              action
+              more
+              .icon="${this.activeTagIcon}"
+              label="${this.t.changeTo}..."
+              tooltip="${this.activeTagName}, ${this.t.clickToChange}"
+              ?disabled="${this.disableTransform}"
+              event-name="hax-transform-node"
+              show-text-label
+            ></hax-context-item>
+            <slot name="primary"></slot>
+          </div>
+          <div class="group">
+            ${this.ceButtons.map((el) => {
+              return html` <hax-context-item
+                action
+                icon="${el.icon}"
+                label="${el.label}"
+                event-name="hax-ce-custom-button"
+                value="${el.callback}"
+              ></hax-context-item>`;
+            })}
+            <slot name="secondary"></slot>
+          </div>
+          <div class="group">
+            <hax-context-item
+              action
+              icon="icons:code"
+              label="${this.t.modifyHTMLSource}"
+              ?disabled="${!this.sourceView}"
+              event-name="hax-source-view-toggle"
+              toggles
+              ?toggled="${this.viewSource}"
+              @click="${(e) => (this.viewSource = !this.viewSource)}"
+            ></hax-context-item>
+            <slot name="more"></slot>
+          </div>
+          <div class="group">
+            <hax-toolbar-menu
+              icon="add"
+              label="${this.t.insertItemAboveOrBelow}"
+            >
+              <simple-toolbar-menu-item slot="menuitem">
+                <hax-context-item
+                  action
+                  align-horizontal="left"
+                  show-text-label
+                  role="menuitem"
+                  icon="hardware:keyboard-arrow-up"
+                  event-name="insert-above-active"
+                  label="${this.t.insertItemAbove}"
+                ></hax-context-item>
+              </simple-toolbar-menu-item>
+              <simple-toolbar-menu-item slot="menuitem">
+                <hax-context-item
+                  action
+                  align-horizontal="left"
+                  show-text-label
+                  role="menuitem"
+                  icon="hardware:keyboard-arrow-down"
+                  event-name="insert-below-active"
+                  label="${this.t.insertItemBelow}"
+                ></hax-context-item>
+              </simple-toolbar-menu-item>
+            </hax-toolbar-menu>
+          </div>
+        </hax-toolbar>
+      </div>
     `;
   }
 
@@ -118,6 +134,7 @@ class HaxCeContext extends LitElement {
   }
   static get properties() {
     return {
+      ...super.properties,
       disableTransform: {
         type: Boolean,
       },
@@ -137,6 +154,9 @@ class HaxCeContext extends LitElement {
       },
       ceButtons: {
         type: Array,
+      },
+      viewSource: {
+        type: Boolean,
       },
     };
   }
@@ -176,6 +196,7 @@ class HaxCeContext extends LitElement {
     }
     // reset buttons in-case this element has new ones
     this.ceButtons = [];
+    this.viewSource = false;
     if (HAXStore.activeHaxBody && this.activeNode != null) {
       let schema = HAXStore.haxSchemaFromTag(this.activeNode.tagName);
       this.sourceView = schema.canEditSource;
@@ -191,7 +212,7 @@ class HaxCeContext extends LitElement {
       }
     } else {
       this.activeTagName = "";
-      this.activeTagIcon = "hax:paragraph";
+      this.activeTagIcon = "";
     }
     // @see haxHook inlineContextMenu
     HAXStore.runHook(this.activeNode, "inlineContextMenu", [this]);

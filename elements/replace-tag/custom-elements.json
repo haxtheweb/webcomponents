@@ -14,7 +14,6 @@
     {
       "name": "replace-tag",
       "path": "./replace-tag.js",
-      "description": "`replace-tag`\n`Loading helpers and css`",
       "properties": [
         {
           "name": "html",
@@ -28,7 +27,6 @@
     {
       "name": "replace-tag",
       "path": "./src/replace-tag.js",
-      "description": "`replace-tag`\n`Loading helpers and css`",
       "properties": [
         {
           "name": "html",

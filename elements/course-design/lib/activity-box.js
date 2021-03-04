@@ -17,6 +17,7 @@ class ActivityBox extends LitElement {
           padding-top: var(--activity-box-container-padding-top, 14px);
           margin-bottom: var(--activity-box-container-margin-bottom, 20px);
           position: relative;
+          min-height: 60px;
         }
         simple-icon {
           --simple-icon-height: 80px;
@@ -74,11 +75,35 @@ class ActivityBox extends LitElement {
   static get tag() {
     return "activity-box";
   }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    // flag for HAX to not trigger active on changes
+    let container = this.shadowRoot.querySelector(".tag");
+    if (val) {
+      container.setAttribute("contenteditable", true);
+    } else {
+      container.removeAttribute("contenteditable");
+      this.tag = container.innerText;
+    }
+    return false;
+  }
   static get haxProperties() {
     return {
       canScale: false,
       canPosition: false,
       canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Activity Box",
         description: "A small designed heading",
@@ -108,6 +133,14 @@ class ActivityBox extends LitElement {
             title: "No Colorize",
             description: "Check to stop any colors being applied to the icon",
             inputMethod: "boolean",
+          },
+          {
+            slot: "",
+            title: "Activity Box content:",
+            description:
+              "This is where you enter the content for the activity box.",
+            inputMethod: "code-editor",
+            required: true,
           },
         ],
         advanced: [],
@@ -161,14 +194,11 @@ class ActivityBox extends LitElement {
               ></simple-icon>
             `
           : html``}
-        ${this.tag
-          ? html`<div class="tag">
-              <span
-                ><simple-icon icon="check-circle"></simple-icon>${this
-                  .tag}</span
-              >
-            </div>`
-          : html``}
+        <div class="tag" ?hidden=${!this.tag}>
+          <span
+            ><simple-icon icon="check-circle"></simple-icon>${this.tag}</span
+          >
+        </div>
         <div class="pullout"><slot></slot></div>
       </div>
     `;

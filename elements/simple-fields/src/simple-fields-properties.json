@@ -1,4 +1,8 @@
 {
+  "disableResponsive": {
+    "type": "Boolean",
+    "attribute": "disable-responsive"
+  },
   /**
    * Fields to convert to JSON Schema.
    */
@@ -26,8 +30,11 @@
     "type": "Object",
     "attribute": "active-path"
   },
-  "disableResponsive": {
-    "type": "Boolean",
-    "attribute": "disable-responsive"
+  /**
+   * default theme for code editor
+   */
+  "codeTheme": {
+    "type": "String",
+    "attribute": "code-theme"
   }
 }

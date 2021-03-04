@@ -18,12 +18,31 @@ class SimpleLoginCamera extends HTMLElement {
       this.basePath =
         this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
     }
+    this.t = {
+      record: "Record",
+      pause: "Pause record",
+      stopSave: "Stop & Save",
+    };
+    window.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          context: this,
+          namespace: "simple-login",
+          localesPath:
+            this.pathFromUrl(decodeURIComponent(import.meta.url)) +
+            "../locales",
+          updateCallback: "render",
+          locales: ["es"],
+        },
+      })
+    );
     const location = `${this.basePath}msr/MediaStreamRecorder.min.js`;
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("msr", location);
     window.addEventListener("es-bridge-msr-loaded", this._msrLoaded.bind(this));
+    this.template = document.createElement("template");
     this._shadow = this.attachShadow({ mode: "closed" });
-    this._shadow.innerHTML = this.html;
+    this.render();
     this._video = this._shadow.querySelector("video");
     this._error = this._shadow.querySelector("p");
     this._record = this._shadow.querySelector("button.record");
@@ -38,11 +57,11 @@ class SimpleLoginCamera extends HTMLElement {
     } else {
       this._record.addEventListener("click", () => {
         if (!this._record.hasAttribute("recording")) {
-          this._record.innerText = "Stop & Save";
+          this._record.innerText = this.t.stopSave;
           this._record.setAttribute("recording", "");
           return this._startRecording();
         } else {
-          this._record.innerText = "Record";
+          this._record.innerText = this.t.record;
           this._record.removeAttribute("recording");
           return this._stopRecording();
         }
@@ -59,6 +78,16 @@ class SimpleLoginCamera extends HTMLElement {
         }
       });
     }
+  }
+
+  render() {
+    this._shadow.innerHTML = null;
+    this.template.innerHTML = this.html;
+
+    if (window.ShadyCSS) {
+      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    }
+    this._shadow.appendChild(this.template.content.cloneNode(true));
   }
 
   static get observedAttributes() {
@@ -171,7 +200,6 @@ class SimpleLoginCamera extends HTMLElement {
         this._error.innerText = error.message;
         throw Error(error);
       }
-      // this._shadow.appendChild(this._error);
     }
   }
 
@@ -182,6 +210,7 @@ class SimpleLoginCamera extends HTMLElement {
     ) {
       this._applyMSR();
     }
+    this._t = { ...this.t };
   }
   /**
    * Try to apply when fully loaded dom
@@ -257,12 +286,12 @@ class SimpleLoginCamera extends HTMLElement {
           display: none;
         }
       </style>
-      <div id="wrapper">
-        <video></video>
-        <p class="error"></p>
-        <div class="custom-controls">
-          <button class="record">Record</button>
-          <button class="pause-record" hidden>Pause record</button>
+      <div id="wrapper" part="wrapper">
+        <video part="video"></video>
+        <p class="error" part="error"></p>
+        <div class="custom-controls" part="controls">
+          <button class="record" part="record">${this.t.record}</button>
+          <button class="pause-record" hidden part="pause">${this.t.pause}</button>
         </div>
       </div>
     `;

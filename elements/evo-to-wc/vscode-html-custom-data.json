@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "evo-to-wc",
+      "description": "evo-to-wc\nConverts evolution content to web component equivalents\n\nProperties:\n\n  * `courseicons` {`{ assessment: string; brainstorm: string; casestudy: string; discussion: string; email: string; game: string; group: string; handson: string; image: string; mobile: string; presentation: string; reading: string; ... 8 more ...; yammer: string; }`} - icon conversions\n\n  * `headings` {`string[]`} - list of headings to simplify selectors",
+      "attributes": []
+    },
+    {
+      "name": "evo-to-wc",
+      "description": "evo-to-wc\nConverts evolution content to web component equivalents\n\nProperties:\n\n  * `courseicons` {`{ assessment: string; brainstorm: string; casestudy: string; discussion: string; email: string; game: string; group: string; handson: string; image: string; mobile: string; presentation: string; reading: string; ... 8 more ...; yammer: string; }`} - icon conversions\n\n  * `headings` {`string[]`} - list of headings to simplify selectors",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

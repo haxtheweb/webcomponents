@@ -278,40 +278,46 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         .narrow="${this.narrow}"
         @narrow-changed="${this._narrowChanged}"
       >
-        <app-drawer
-          id="drawer"
-          swipe-open=""
-          slot="drawer"
-          .opened="${this.opened}"
-          @opened-changed="${this._openedChanged}"
-        >
-          <div id="menubuttoncontainer">
-            <site-print-button></site-print-button>
-            <site-menu-button
-              type="prev"
-              position="bottom"
-              raised
-            ></site-menu-button>
-            <site-menu-button
-              type="next"
-              position="bottom"
-              raised
-            ></site-menu-button>
-          </div>
-          <site-menu></site-menu>
-        </app-drawer>
+        <nav>
+          <app-drawer
+            id="drawer"
+            swipe-open=""
+            slot="drawer"
+            .opened="${this.opened}"
+            @opened-changed="${this._openedChanged}"
+          >
+            <div id="menubuttoncontainer">
+              <site-print-button></site-print-button>
+              <site-menu-button
+                type="prev"
+                position="bottom"
+                raised
+              ></site-menu-button>
+              <site-menu-button
+                type="next"
+                position="bottom"
+                raised
+              ></site-menu-button>
+            </div>
+            <site-menu></site-menu>
+          </app-drawer>
+        </nav>
         <div id="content">
-          <site-git-corner></site-git-corner>
-          <simple-icon-button
-            icon="menu"
-            id="menutoggle"
-            @click="${this._toggleMenu}"
-          ></simple-icon-button>
-          <site-active-title></site-active-title>
-          <div><slot name="title"></slot></div>
-          <div id="contentcontainer">
-            <div id="slot"><slot></slot></div>
-          </div>
+          <header>
+            <site-git-corner></site-git-corner>
+            <simple-icon-button
+              icon="menu"
+              id="menutoggle"
+              @click="${this._toggleMenu}"
+            ></simple-icon-button>
+            <site-active-title></site-active-title>
+            <div><slot name="title"></slot></div>
+          </header>
+          <main>
+            <article id="contentcontainer">
+              <section id="slot"><slot></slot></section>
+            </article>
+          </main>
         </div>
       </app-drawer-layout>
     `;

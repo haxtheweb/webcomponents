@@ -4,29 +4,39 @@ import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
-/**
- * `hax-gizmo-browser`
+import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+/* `hax-gizmo-browser`
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
  * @microcopy - the mental model for this element
  * - gizmo - silly name for the general public when talking about custom elements and what it provides in the end.
  */
-class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
+class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   static get styles() {
     return [
       css`
         :host {
-          display: block;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          flex: 0 1 auto;
+          overflow-y: auto;
+        }
+        :host > * {
+          max-width: 100%;
         }
         .toolbar-inner {
-          padding: 0;
-          position: sticky;
-          background-color: white;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
           width: 100%;
-          top: 0;
-          z-index: 1;
+          flex: 0 0 auto;
         }
-        .item-wrapper {
-          text-align: center;
+        hax-tray-button::part(button) {
+          font-size: var(hax-ui-font-size-xs);
+        }
+        simple-fields-field {
+          margin-top: 0;
         }
       `,
     ];
@@ -34,24 +44,32 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
   constructor() {
     super();
     this.where = "title";
+    this.t = {
+      filterContentTypes: "Filter Content Types",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
   }
   render() {
     return html`
-      <div class="toolbar-inner">
+      <div class="toolbar-inner" part="toolbar">
         <simple-fields-field
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           aria-controls="filter"
-          label="Filter"
+          label="${this.t.filterContentTypes}"
           type="text"
           auto-validate=""
+          part="filter"
         ></simple-fields-field>
       </div>
-      <div class="item-wrapper">
+      <simple-button-grid columns="3" always-expanded part="grid">
         ${this.filtered.map(
           (gizmo, i) => html`
             <hax-tray-button
-              dark-bg
+              show-text-label
               voice-command="insert ${gizmo.title}"
               draggable="true"
               @dragstart="${this._dragStart}"
@@ -61,12 +79,13 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
               event-name="insert-tag"
               event-data="${gizmo.tag}"
               data-demo-schema="true"
+              icon-position="top"
               icon="${gizmo.icon}"
-              drag-color="${gizmo.color}"
+              part="grid-button"
             ></hax-tray-button>
           `
         )}
-      </div>
+      </simple-button-grid>
     `;
   }
   static get tag() {

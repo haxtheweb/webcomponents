@@ -15,14 +15,76 @@ class SimplePopoverManager extends LitElement {
     return [
       css`
         simple-popover {
-          font-size: 14px;
-          line-height: 20px;
-          color: black;
-          --simple-popover-color: #222222;
-          --simple-popover-border-color: #222222;
-          --simple-popover-background-color: #eeeeee;
-          --simple-popover-padding: 4px;
+          font-family: var(--simple-tour-font-family, unset);
+          font-size: var(--simple-tour-font-size, 14px);
           max-width: var(--simple-popover-manager-max-width, 200px);
+          min-width: var(--simple-popover-manager-min-width, 200px);
+          display: flex;
+          --simple-popover-padding: 0;
+          --simple-icon-button-border: 1px solid
+            var(--simple-tour-border-color, #ddd);
+          --simple-icon-button-border-radius: 3px;
+        }
+        simple-popover[hidden] {
+          display: none !important;
+        }
+        .heading {
+          font-size: var(--simple-tour-titlebar-font-size, 14px);
+          flex: 0 0 auto;
+          background-color: var(
+            --simple-tour-titlebar-background-color,
+            #f0f4f8
+          );
+          border-bottom: 1px solid var(--simple-tour-border-color, #ddd);
+          line-height: 130%;
+          padding: var(--simple-tour-padding-sm, 2px)
+            var(--simple-tour-padding-sm, 2px)
+            var(--simple-tour-padding-sm, 2px)
+            var(--simple-tour-padding-lg, 10px);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          position: sticky;
+          top: 0;
+        }
+        .body {
+          flex: 1 1 auto;
+          padding: var(--simple-tour-padding-sm, 2px)
+            var(--simple-tour-padding-lg, 10px);
+          background-color: var(--simple-tour-background-color, #fff);
+        }
+        .nav {
+          flex: 0 0 auto;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          position: sticky;
+          bottom: 0;
+          background-color: var(--simple-tour-background-color, #fff);
+        }
+        ::slotted(.title) {
+          font-size: var(--simple-tour-titlebar-font-size, 14px);
+          margin: 0 calc(2 * var(--simple-tour-padding-sm, 2px)) 0 0;
+          line-height: 100%;
+        }
+        ::slotted(.subheading) {
+          font-size: var(--simple-tour-subheading-font-size, 16px);
+        }
+        ::slotted([slot="body"]) {
+          margin: var(--simple-tour-padding-sm, 2px) 0;
+        }
+        ::slotted(simple-icon-button-lite) {
+          flex: 1 1 auto;
+          background-color: var(--simple-tour-background-color, #fff);
+        }
+        ::slotted(simple-icon-button-lite[slot="heading"]) {
+          flex: 0 0 auto;
+        }
+        ::slotted(simple-icon-button-lite:focus-within),
+        ::slotted(simple-icon-button-lite:hover) {
+          --simple-icon-button-border: 1px solid #000;
         }
       `,
     ];
@@ -35,7 +97,15 @@ class SimplePopoverManager extends LitElement {
         ?hidden="${!this.opened}"
         position="${this.position}"
       >
-        <slot></slot>
+        <div class="heading" part="simple-popover-heading">
+          <slot name="heading"></slot>
+        </div>
+        <div class="body" part="simple-popover-body">
+          <slot name="body"></slot>
+        </div>
+        <div class="nav" part="simple-popover-nav">
+          <slot name="nav"></slot>
+        </div>
       </simple-popover>
     `;
   }
@@ -68,7 +138,7 @@ class SimplePopoverManager extends LitElement {
   /**
    * set target and optionally change content and open state
    */
-  setPopover(context, el, opened = null, orientation = "tb") {
+  setPopover(context, el, opened = null, orientation = "tb", mode) {
     // this has the potential to cause 1 popover to change content and parent
     // in the same action. This would cause a open state change in 1 element
     // which would trigger a global state change to match.
@@ -92,6 +162,7 @@ class SimplePopoverManager extends LitElement {
           this.__ignore = true;
         }
         this.context = context;
+        this.setAttribute("mode", mode || "");
         this.popover.target = null;
         this.popover.target = el;
       }

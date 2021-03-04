@@ -1,58 +1,50 @@
 import { html, css, LitElement } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { HaxTrayDetailHeadings } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-map`
  * @element hax-map
  * `Export dialog with all export options and settings provided.`
  */
-class HaxMap extends LitElement {
+class HaxMap extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      ...HaxTrayDetailHeadings,
       css`
         :host {
           display: block;
-        }
-        .title {
-          position: relative;
-          padding: 16px;
-          outline: 0;
-          font-weight: 600;
-          text-align: left;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-          font-size: 18px;
-          line-height: 18px;
-          font-family: "Noto Serif", serif;
         }
         .container {
           text-align: left;
         }
         table {
-          font-size: 13px;
+          font-size: var(--hax-ui-font-size-sm);
+          border-collapse: collapse;
+          width: calc(100% - 2px);
+          max-width: calc(100% - 2px);
         }
-        table caption {
-          font-weight: bold;
-        }
-        table tr th {
-          padding: 2px;
-        }
-        table td {
-          font-size: 21px;
-          font-weight: bold;
+        table,
+        th,
+        td {
           text-align: center;
+          border: 1px solid var(--hax-ui-border-color);
         }
-        h4 {
-          font-size: 14px;
-          margin: 2px 0;
+        th {
+          font-weight: normal;
+          font-size: var(--hax-ui-font-size-xs);
+        }
+        td {
+          font-weight: bold;
+          font-size: 150%;
         }
         ul {
           list-style: none;
@@ -60,29 +52,41 @@ class HaxMap extends LitElement {
           margin: 0;
         }
         ul li {
-          margin: 4px;
+          margin: 0;
           padding: 0;
         }
-        ul simple-icon-lite {
-          padding: 0 8px;
+        li > hax-toolbar-item {
+          width: 100%;
         }
-        a {
-          font-size: 24px;
-          line-height: 24px;
-          text-decoration: none;
-          color: black;
-          padding: 4px;
-          display: block;
+        li > hax-toolbar-item::part(button),
+        li > hax-toolbar-item[icon="hax:h2"].heading-level-h2::part(button) {
+          width: 100%;
+          border: none;
+          margin-left: 0px;
         }
-        a:focus,
-        a:hover,
-        a:active {
-          cursor: pointer;
-          font-weight: bold;
-          outline: 2px solid black;
+        li > hax-toolbar-item.heading-level-h2::part(button),
+        li > hax-toolbar-item[icon="hax:h3"].heading-level-h3::part(button) {
+          width: calc(100% - 26px);
+          margin-left: 26px;
         }
-        simple-icon-button {
-          float: right;
+        li > hax-toolbar-item.heading-level-h3::part(button),
+        li > hax-toolbar-item[icon="hax:h4"].heading-level-h4::part(button) {
+          width: calc(100% - calc(2 * 26px));
+          margin-left: calc(2 * 26px);
+        }
+        li > hax-toolbar-item.heading-level-h4::part(button),
+        li > hax-toolbar-item[icon="hax:h5"].heading-level-h5::part(button) {
+          width: calc(100% - calc(3 * 26px));
+          margin-left: calc(3 * 26px);
+        }
+        li > hax-toolbar-item.heading-level-h5::part(button),
+        li > hax-toolbar-item[icon="hax:h6"].heading-level-h6::part(button) {
+          width: calc(100% - calc(4 * 26px));
+          margin-left: calc(4 * 26px);
+        }
+        li > hax-toolbar-item.heading-level-h6::part(button) {
+          width: calc(100% - calc(5 * 26px));
+          margin-left: calc(5 * 26px);
         }
       `,
     ];
@@ -90,7 +94,19 @@ class HaxMap extends LitElement {
   constructor() {
     super();
     this.elementList = [];
-    this.title = "Content map";
+    this.t = {
+      contentStatistics: "Content Statistics",
+      words: "Words",
+      headings: "Headings",
+      paragraphs: "Paragraphs",
+      widgets: "Widgets",
+      characters: "Characters",
+      listView: "List view",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
   }
   updateHAXMap() {
     let list = HAXStore.htmlToHaxElements(
@@ -160,62 +176,47 @@ class HaxMap extends LitElement {
       }
     }
   }
-  closeBtn(e) {
-    this.dispatchEvent(
-      new CustomEvent("hax-tray-button-click", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          eventName: "open-map",
-          index: 0,
-          value: true,
-        },
-      })
-    );
-  }
   render() {
     return html`
-      <h3 class="title">
-        <simple-icon-lite icon="hax:map"></simple-icon-lite>
-        ${this.title}
-        <simple-icon-button
-          icon="close"
-          @click="${this.closeBtn}"
-        ></simple-icon-button>
-      </h3>
       <div class="container">
         <table>
           <caption>
-            Content statistics
+            ${this.t.contentStatistics}
           </caption>
-          <tr>
-            <th>Words</th>
-            <th>Headings</th>
-            <th>Paragraphs</th>
-            <th>Widgets</th>
-            <th>Characters</th>
-          </tr>
-          <tr>
-            <td>${this.wCount}</td>
-            <td>${this.hCount}</td>
-            <td>${this.pCount}</td>
-            <td>${this.eCount}</td>
-            <td>${this.cCount}</td>
-          </tr>
+          <thead>
+            <tr>
+              <th scope="col">${this.t.words}</th>
+              <th scope="col">${this.t.headings}</th>
+              <th scope="col">${this.t.paragraphs}</th>
+              <th scope="col">${this.t.widgets}</th>
+              <th scope="col">${this.t.characters}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${this.wCount}</td>
+              <td>${this.hCount}</td>
+              <td>${this.pCount}</td>
+              <td>${this.eCount}</td>
+              <td>${this.cCount}</td>
+            </tr>
+          </tbody>
         </table>
-        <h4>List view</h4>
+        <h5>${this.t.listView}</h5>
         <ul>
-          ${this.elementList.map((element, index) => {
+          ${this.indentedElements.map((element, index) => {
             return html`
               <li>
-                <a @click="${this.scrollInMap}" data-index="${index}"
-                  ><simple-icon-lite
-                    data-index="${index}"
-                    icon="${element.icon}"
-                  ></simple-icon-lite
-                  >${element.name}</a
+                <hax-toolbar-item
+                  align-horizontal="left"
+                  class="heading-level-${element.parent || "h1"}"
+                  @click="${(e) => this.goToItem(index)}"
+                  data-index="${index}"
+                  icon="${element.icon}"
+                  label="${element.name}"
+                  show-text-label
                 >
+                </hax-toolbar-item>
               </li>
             `;
           })}
@@ -223,13 +224,22 @@ class HaxMap extends LitElement {
       </div>
     `;
   }
-  scrollInMap(e) {
-    var target = normalizeEventPath(e)[0];
-    if (target.getAttribute("data-index")) {
-      let activeChild =
-        HAXStore.activeHaxBody.children[
-          parseInt(target.getAttribute("data-index"))
-        ];
+  get indentedElements() {
+    let prev = "h1";
+    return this.elementList.map((element) => {
+      let el = element;
+      el.parent = prev;
+      if (el.name == "Heading") {
+        let h = el.icon.replace("hax:", "").trim();
+        el.parent = h;
+        prev = h;
+      }
+      return el;
+    });
+  }
+  goToItem(index) {
+    if (index) {
+      let activeChild = HAXStore.activeHaxBody.children[parseInt(index)];
       activeChild.classList.add("blinkfocus");
       if (typeof activeChild.scrollIntoViewIfNeeded === "function") {
         activeChild.scrollIntoViewIfNeeded(true);
@@ -244,6 +254,10 @@ class HaxMap extends LitElement {
       }, 500);
     }
   }
+  scrollInMap() {
+    var target = normalizeEventPath(e)[0];
+    this.goToItem(target.getAttribute("data-index"));
+  }
   static get tag() {
     return "hax-map";
   }
@@ -252,9 +266,6 @@ class HaxMap extends LitElement {
       /**
        * Title when open.
        */
-      title: {
-        type: String,
-      },
       opened: {
         type: Boolean,
       },

@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
 import { A11yTabs } from "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import "./simple-fields-tab.js";
+import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
 /**
  * `simple-fields-tabs` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
@@ -21,26 +22,20 @@ class SimpleFieldsTabs extends A11yTabs {
   }
   static get styles() {
     return [
-      ...super.styles,
-      ...SimpleFieldsFieldset.styles,
+      ...this.A11yTabsCoreStyles,
+      ...SimpleFieldsButtonStyles,
       css`
+        :host {
+          border: 1px solid var(--simple-fields-border-color-light, #ccc);
+          padding: var(--simple-fields-margin-small, 8px)
+            var(--simple-fields-margin-small, 8px)
+            var(--simple-fields-margin, 16px);
+          background-color: var(--simple-fields-background-color, transparent);
+          border-radius: var(--simple-fields-border-radius, 2px);
+        }
         :host([error]) #tabs .error {
           color: var(--simple-fields-error-color, #dd2c00);
           transition: border 0.5s ease;
-        }
-        :host {
-          --a11y-tabs-font-family: var(--simple-fields-font-family, sans-serif);
-          --a11y-tabs-font-size: var(--simple-fields-detail-font-size, 12px);
-          --a11y-tabs-color: var(--simple-fields-color, black);
-          --a11y-tabs-focus-color: var(--simple-fields-color, black);
-          --a11y-tabs-border-color: var(
-            --simple-fields-border-color-light,
-            #ccc
-          );
-          --a11y-tabs-margin: var(--simple-fields-margin, 16px) 0;
-          --a11y-tabs-border-radius: var(--simple-fields-border-radius, 2px);
-          --a11y-tabs-button-padding: var(--simple-fields-margin-small, 8px);
-          --a11y-tabs-content-padding: var(--simple-fields-margin, 16px);
         }
       `,
     ];
@@ -72,7 +67,7 @@ class SimpleFieldsTabs extends A11yTabs {
    */
   _tabLabel(tab) {
     return html`
-      <span class="label${tab.error ? " error" : ""}"
+      <span class="label${tab.error ? " error" : ""}" part="tab-label"
         >${tab.label}${tab.error ? "*" : ""}</span
       >
     `;

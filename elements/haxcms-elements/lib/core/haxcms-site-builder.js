@@ -9,6 +9,7 @@ import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
 //import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
+import "@lrnwebcomponents/replace-tag/replace-tag.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -127,14 +128,15 @@ class HAXCMSSiteBuilder extends LitElement {
     if (this.file) {
       this.loading = true;
       let url = `${this.outlineLocation}${this.file}`;
-      if (this._timeStamp != "") {
+      if (this._timeStamp && this._timeStamp != "") {
         if (url.indexOf("?") != -1) {
           url += `&${this._timeStamp}`;
         } else {
           url += `?${this._timeStamp}`;
         }
       }
-      await fetch(url)
+      var headers = { cache: "no-cache" };
+      await fetch(url, headers)
         .then((response) => {
           return response.json();
         })
@@ -587,7 +589,7 @@ class HAXCMSSiteBuilder extends LitElement {
                   `${basePath}../../../../${this.manifest.metadata.node.dynamicElementLoader[tagName]}`
                 )
                   .then((response) => {
-                    //console.log(tagName + ' dynamic import');
+                    //console.warn(tagName + ' dynamic import');
                   })
                   .catch((error) => {
                     /* Error handling */

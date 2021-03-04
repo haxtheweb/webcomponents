@@ -134,7 +134,7 @@ class SimpleFields extends SimpleFieldsLite {
           display: block;
           --simple-picker-background-color: var(
             --simple-fields-background-color,
-            white
+            transparent
           );
           --simple-picker-border-width: 0;
           --simple-picker-focus-border-width: 0;
@@ -152,7 +152,7 @@ class SimpleFields extends SimpleFieldsLite {
 
   // render function
   render() {
-    return html` <div id="schema-fields" aria-live="polite">
+    return html` <div id="schema-fields" aria-live="polite" part="fields-list">
       <slot></slot>
     </div>`;
   }
@@ -166,6 +166,10 @@ class SimpleFields extends SimpleFieldsLite {
     return {
       ...super.properties,
 
+      disableResponsive: {
+        type: Boolean,
+        attribute: "disable-responsive",
+      },
       /**
        * Fields to convert to JSON Schema.
        */
@@ -193,9 +197,12 @@ class SimpleFields extends SimpleFieldsLite {
         type: Object,
         attribute: "active-path",
       },
-      disableResponsive: {
-        type: Boolean,
-        attribute: "disable-responsive",
+      /**
+       * default theme for code editor
+       */
+      codeTheme: {
+        type: String,
+        attribute: "code-theme",
       },
     };
   }
@@ -210,6 +217,7 @@ class SimpleFields extends SimpleFieldsLite {
   constructor() {
     super();
     this.activeTabs = {};
+    this.__codeElements = [];
     this.disableResponsive = false;
     setTimeout(() => {
       this.addEventListener("active-tab-changed", this._handleActiveTab);
@@ -367,6 +375,9 @@ class SimpleFields extends SimpleFieldsLite {
               element: "simple-fields-code",
               setValueProperty: "editorValue",
               noWrap: true,
+              properties: {
+                theme: "theme",
+              },
             },
             format: {
               "md-block": {
@@ -525,6 +536,12 @@ class SimpleFields extends SimpleFieldsLite {
                   attributes: {
                     autofocus: true,
                   },
+                  properties: {
+                    options: "icons",
+                    exclude: "exclude",
+                    excludeSets: "excludeSets",
+                    includeSets: "includeSets",
+                  },
                 },
               },
               month: {
@@ -678,7 +695,6 @@ class SimpleFields extends SimpleFieldsLite {
           "md-block": {
             defaultSettings: {
               type: "markup",
-              format: "md-block",
             },
           },
           monthpicker: {
@@ -787,11 +803,14 @@ class SimpleFields extends SimpleFieldsLite {
    * @memberof SimpleFieldsLite
    */
   _convertField(field, conversion = this.fieldsConversion, settings = {}) {
+    //see which keys the field and the conversion have in common
     let fieldKeys = Object.keys(field || {}),
       convKeys = Object.keys(conversion || {}).filter((key) =>
         fieldKeys.includes(key)
       );
+    //start with default conversion settings
     if (conversion.defaultSettings) settings = conversion.defaultSettings;
+    //on the matching keys check for more specific conversion settings
     convKeys.forEach((key) => {
       let val = field[key],
         convData = conversion ? conversion[key] : undefined,
@@ -800,7 +819,9 @@ class SimpleFields extends SimpleFieldsLite {
           : Array.isArray(val)
           ? convData[val[0]]
           : convData[val];
-      if (convVal) settings = this._convertField(field, convVal, settings);
+      //if we have more specific settings get them recursively
+      if (convVal)
+        settings = this._convertField(field, convVal, convData, settings);
     });
     return settings;
   }
@@ -849,6 +870,8 @@ class SimpleFields extends SimpleFieldsLite {
         schema[key] = field[key];
       }
     });
+    //sets a default code-editor theme
+    if (schema.type == "markup" && !schema.theme) schema.theme = this.codeTheme;
     return schema;
   }
 

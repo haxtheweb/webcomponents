@@ -14,11 +14,18 @@
       import '../simple-fields.js';
       import '../lib/simple-fields-field.js';
       import '../lib/simple-fields-form.js';
+      import '../lib/simple-fields-tag-list.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
+      <h1>Basic simple-fields-tag-list</h1>
+      <demo-snippet>
+        <template>
+          <simple-fields-tag-list></simple-fields-tag-list>
+        </template>
+      </demo-snippet>
       <h1>Basic simple-fields demo</h1>
       <demo-snippet>
         <style>#submission {width: 100%;}</style>
@@ -69,7 +76,13 @@
                     {
                       "property": "icon",
                       "title": "Pick an icon.",
-                      "inputMethod": "iconpicker"
+                      "inputMethod": "iconpicker",
+                      "options": [
+                        "icons:visibility-off",
+                        "icons:visibility",
+                        "icons:face",
+                        "image:colorize"
+                      ]
                     },
                     {
                       "property": "color",

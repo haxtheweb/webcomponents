@@ -36,49 +36,90 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     return [
       css`
         :host {
-          display: block;
+          display: flex;
+          flex-direction: column;
           font-family: unset;
+          align-items: stretch;
           margin: var(--code-pen-margin, 16px 0);
+          width: calc(100% - 2px);
+          background-color: #1e1e1e;
+          color: #c6c6c6;
+          border: var(--code-editor-code-border);
+          border-radius: var(--code-editor-code-border-radius);
+          border: 1px solid var(--code-editor-label-color, #ddd);
+        }
+        :host([theme-colors="vs-dark"]) {
+          background-color: #1e1e1e;
+          color: #c6c6c6;
+          border: 1px solid var(--code-editor-label-color, #000);
+        }
+        :host([theme-colors="vs"]) {
+          background-color: #fffffe;
+          color: #000;
+          border: 1px solid var(--code-editor-label-color, #ddd);
         }
         :host([hidden]) {
           display: none !important;
         }
         .code-pen-container:not([hidden]) {
-          width: 100%;
+          width: calc(100% - 2 * var(--code-editor-margin, 12px));
           display: flex;
-          background-color: var(--code-pen-button-color, #222222);
-          color: white;
           height: 40px;
           justify-content: flex-end;
           align-items: center;
+          margin: var(--code-editor-margin, 12px);
         }
         .code-pen-container span {
           display: inline-flex;
           line-height: 16px;
           font-size: 16px;
-          padding: 12px;
+          padding: 12px 0;
         }
         code-pen-button {
           float: right;
           height: 40px;
+          flex: 0 0 40px;
+        }
+        :host([theme-colors="vs"]) code-pen-button::part(button) {
+          filter: invert(1);
         }
         label {
-          color: var(--code-editor-label-color, #888);
+          color: var(--code-editor-label-color, #444);
           transition: all 0.5s;
+          flex: 0 0 auto;
+          margin: var(--code-editor-margin, 12px);
+        }
+        :host([theme-colors="vs"]) label {
+          color: var(--code-editor-label-color, #444);
+        }
+        :host([theme-colors="vs-dark"]) label {
+          color: var(--code-editor-label-color, #bbb);
+        }
+        :host([hidden]) {
+          display: none !important;
         }
 
         :host([focused]) label {
           color: var(
             --code-editor-float-label-active-color,
-            var(--code-editor-label-color, #000)
+            var(--code-editor-label-color, currentColor)
           );
         }
 
+        #loading {
+          padding: 0 74px;
+          flex: 1 1 auto;
+          overflow: hidden;
+          white-space: pre-wrap;
+          text-overflow: ellipsis;
+          font-family: monospace;
+        }
         #codeeditor {
+          flex: 1 1 auto;
           height: 100%;
-          display: flex;
-          border: var(--code-editor-code-border);
-          border-radius: var(--code-editor-code-border-radius);
+        }
+        #codeeditor[data-hidden] {
+          height: 0px;
         }
 
         :host([focused]) #codeeditor {
@@ -126,31 +167,59 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
    */
   render() {
     return html`
-      <label for="codeeditor" ?hidden="${!this.title}">${this.title}</label>
+      <label for="codeeditor" ?hidden="${!this.title}" part="label"
+        >${this.title}</label
+      >
       <monaco-element
         id="codeeditor"
+        ?data-hidden="${!this.ready}"
         ?autofocus="${this.autofocus}"
         ?hide-line-numbers="${this.hideLineNumbers}"
         lib-path="${this.libPath}"
         language="${this.language}"
         tab-size="${this.tabSize}"
-        theme="${this.theme}"
+        theme="${this.getTheme(this.theme)}"
         @value-changed="${this._editorDataChanged}"
         font-size="${this.fontSize}"
         ?word-wrap="${this.wordWrap}"
         ?read-only="${this.readOnly}"
         @code-editor-focus="${this._handleFocus}"
         @code-editor-blur="${this._handleBlur}"
+        @monaco-element-ready="${(e) => (this.ready = true)}"
+        part="code"
       >
       </monaco-element>
+      <pre
+        id="loading"
+        ?hidden="${this.ready}"
+        style="font-size:${this.fontSize}px"
+        part="preview"
+      ><code>
+  ${this.placeholder}</code></pre>
       <slot hidden></slot>
       ${this.showCodePen
-        ? html`<div class="code-pen-container">
+        ? html`<div class="code-pen-container" part="code-pen">
             <span>Check it out on code pen: </span
             ><code-pen-button .data="${this.codePenData}"></code-pen-button>
           </div>`
         : ``}
     `;
+  }
+
+  getTheme(theme) {
+    let watch = window.matchMedia && theme == "auto",
+      dark = watch && window.matchMedia("(prefers-color-scheme: dark)").matches,
+      light =
+        watch && window.matchMedia("(prefers-color-scheme: light)").matches,
+      other = !theme || theme == "auto" ? "vs-dark" : theme,
+      color = dark ? "vs-dark" : light ? "vs" : other;
+    this.setAttribute("theme-colors", color);
+    return color;
+  }
+
+  get placeholder() {
+    let content = `${this.editorValue || this.innerHTML}`;
+    return content.replace(/\s*<\/?template.*>\s*/gm, "");
   }
 
   static get tag() {
@@ -210,6 +279,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
        */
       theme: {
         type: String,
+        reflect: true,
+        attribute: "theme",
       },
       /**
        * Mode / language for editor
@@ -262,6 +333,9 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         type: Number,
         attribute: "tab-size",
       },
+      ready: {
+        type: Boolean,
+      },
     };
   }
 
@@ -292,6 +366,16 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           new CustomEvent("value-changed", {
             detail: {
               value: this[propName],
+            },
+          })
+        );
+      }
+      if (propName === "focused") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("focused-changed", {
+            detail: {
+              focused: this[propName],
             },
           })
         );
@@ -346,7 +430,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   updateEditorValue() {
     var content = "";
     var children = this.children;
-    if (this.children[0] && this.children[0].tagName !== "TEMPLATE") {
+    if (this.childNodes[0] && this.childNodes[0].tagName !== "TEMPLATE") {
       children = this.childNodes;
       if (children.length > 0) {
         // loop through everything found in the slotted area and put it back in
@@ -358,8 +442,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
           }
         }
       }
-    } else {
-      content = children.innerHTML;
+    } else if (children[0]) {
+      content = children[0].innerHTML;
     }
     if (content) {
       if (this.language === "html") {

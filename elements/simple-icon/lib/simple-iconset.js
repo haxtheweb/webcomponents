@@ -8,6 +8,11 @@ if (!String.prototype.replaceAll) {
     return this.split(find).join(replace);
   };
 }
+/**
+ *
+ * @class SimpleIconset
+ * @extends HTMLElement
+ */
 class SimpleIconset extends HTMLElement {
   static get tag() {
     return "simple-iconset";
@@ -15,7 +20,27 @@ class SimpleIconset extends HTMLElement {
   constructor() {
     super();
     this.iconsets = {};
+    this.iconlist = [];
+    this.manifest = {};
     this.needsHydrated = [];
+  }
+  /**
+   * Manifest.js files can register themselves to create an icon list.
+   * These files export an array of iconsets
+   * as [{name: iconsetName, icons: [ iconName,iconName2 ]}]
+   *
+   * @param {array} manifest array of iconsets
+   * @memberof SimpleIconset
+   */
+  registerManifest(manifest) {
+    (manifest || []).forEach((iconset) => {
+      if (!this.manifest[iconset.name]) {
+        this.manifest[iconset.name] = iconset.icons || [];
+        this.manifest[iconset.name].forEach((icon) => {
+          this.iconlist.push(`${iconset.name}:${icon}`);
+        });
+      }
+    });
   }
   /**
    * Iconsets are to register a namespace in either manner:

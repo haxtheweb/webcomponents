@@ -85,72 +85,33 @@ Custom property | Description | Default
  * @demo ./demo/sticky.html Sticky Tabs
  */
 class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
-  //styles function
-  static get styles() {
+  static get A11yTabsCoreStyles() {
     return [
       css`
         :host {
           display: block;
           height: var(--a11y-tabs-height);
           overflow: var(--a11y-tabs-overflow);
-          font-size: var(--a11y-tabs-font-size, unset);
-          font-family: var(--a11y-tabs-font-family, unset);
-          --a11y-tabs-width: 100%;
-          --a11y-tabs-background: white;
-          --a11y-tabs-border-color: #ddd;
-          --a11y-tabs-color: #000;
-          --a11y-tabs-faded-color: #333;
-          --a11y-tabs-focus-color: var(-a11y-tabs-color);
-          --a11y-tabs-faded-background: #f8f8f8;
-          --a11y-tabs-disabled-color: #999;
-          --a11y-tabs-disabled-background: #eee;
-          --a11y-tabs-border-radius: 2px;
-          --a11y-tabs-horizontal-background: var(--a11y-tabs-background, white);
-          --a11y-tabs-horizontal-border-radius: var(
-            --a11y-tabs-border-radius,
-            2px
-          );
-          --a11y-tabs-vertical-border-radius: var(
-            --a11y-tabs-border-radius,
-            2px
-          );
-          --a11y-tabs-content-background: var(--a11y-tabs-background, white);
-          --a11y-tabs-content-padding: 16px;
-          --a11y-tabs-button-padding: 4px;
-          --a11y-tabs-vertical-button-padding: var(
-            --a11y-tabs-button-padding,
-            4px
-          );
-          --a11y-tabs-horizontal-button-padding: var(
-            --a11y-tabs-button-padding,
-            4px
-          );
-          --a11y-tabs-width: auto;
         }
 
         :host([hidden]) {
           display: none;
         }
+
         #tabs {
           display: none;
         }
         @media screen {
           :host([vertical]) {
-            border: 1px solid var(--a11y-tabs-border-color);
             border-radius: var(--a11y-tabs-vertical-border-radius, 2px);
             display: flex;
             justify-content: space-between;
             align-items: stretch;
           }
-
           #content {
-            border: 1px solid var(--a11y-tabs-border-color);
-            padding: var(--a11y-tabs-content-padding);
-            background-color: var(--a11y-tabs-content-background);
-            flex: 1 1 calc(100% - 2 * var(--a11y-tabs-content-padding));
+            flex: 1 1 calc(100% - 2 * var(--a11y-tabs-content-padding, 16px));
             overflow: auto;
           }
-
           #tabs {
             align-items: stretch;
             flex-wrap: var(--a11y-tabs-wrap, unset);
@@ -163,6 +124,119 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             overflow-x: auto;
             z-index: 1;
             justify-content: var(--a11y-tabs-horizontal-justify-tabs);
+          }
+          :host([vertical]) #tabs {
+            flex: 0 0 auto;
+            flex-direction: column;
+            overflow-y: auto;
+            max-width: unset;
+            overflow-x: unset;
+            z-index: unset;
+            flex-wrap: var(--a11y-tabs-vertical-wrap);
+          }
+          :host([sticky]) #tabs {
+            position: sticky;
+            top: 0;
+          }
+          #tabs li {
+            display: flex;
+            align-items: stretch;
+          }
+          :host([full-width]) #tabs li {
+            width: 100%;
+          }
+          :host([vertical]) #tabs li {
+            flex-direction: column;
+          }
+          #tabs .flag-type {
+            position: absolute;
+            left: -99999px;
+            height: 0;
+            overflow: hidden;
+          }
+          :host(:not([vertical])) #content {
+            margin-top: -1px;
+          }
+          #tabs button {
+            width: 100%;
+            min-width: unset;
+            margin: 0;
+          }
+
+          :host([vertical]) #tabs button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          #tabs button[disabled] {
+            pointer-events: none;
+          }
+
+          #tabs span.label,
+          #tabs .flag-icon {
+            margin-right: 8px;
+          }
+
+          :host([icons-only]) #tabs button {
+            justify-content: center;
+          }
+
+          :host([icons-only]) #tabs span.label {
+            display: none;
+          }
+
+          :host(:not([icons-only])) #tabs #tabs simple-tooltip {
+            display: none;
+          }
+          simple-icon-lite:not([hidden]) {
+            display: inline-block;
+          }
+
+          simple-icon-lite[hidden] {
+            display: none;
+          }
+        }
+      `,
+    ];
+  }
+  static get A11yTabsThemeStyles() {
+    return [
+      css`
+        :host {
+          font-size: var(--a11y-tabs-font-size, unset);
+          font-family: var(--a11y-tabs-font-family, unset);
+          --a11y-tabs-focus-color: var(--a11y-tabs-color);
+          --a11y-tabs-horizontal-border-radius: var(
+            --a11y-tabs-border-radius,
+            2px
+          );
+          --a11y-tabs-vertical-border-radius: var(
+            --a11y-tabs-border-radius,
+            2px
+          );
+          --a11y-tabs-vertical-button-padding: var(
+            --a11y-tabs-button-padding,
+            4px
+          );
+          --a11y-tabs-horizontal-button-padding: var(
+            --a11y-tabs-button-padding,
+            4px
+          );
+        }
+        @media screen {
+          :host([vertical]) {
+            border-radius: var(--a11y-tabs-vertical-border-radius, 2px);
+            border: 1px solid var(--a11y-tabs-border-color, #ddd);
+          }
+
+          #content {
+            border: 1px solid var(--a11y-tabs-border-color, #ddd);
+            padding: var(--a11y-tabs-content-padding, 16px);
+            background-color: var(--a11y-tabs-content-background);
+          }
+
+          #tabs {
             background-color: var(--a11y-tabs-horizontal-background);
             font-family: var(
               --a11y-tabs-tab-font-family,
@@ -176,59 +250,27 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
           :host([vertical]) #tabs {
             border-left: none;
-            flex: 0 0 auto;
-            flex-direction: column;
-            overflow-y: auto;
-            max-width: unset;
-            overflow-x: unset;
-            z-index: unset;
             background-color: var(--a11y-tabs-vertical-background);
             justify-content: var(--a11y-tabs-vertical-justify-tabs);
-            flex-wrap: var(--a11y-tabs-vertical-wrap);
           }
 
-          :host([sticky]) #tabs {
-            position: sticky;
-            top: 0;
-          }
-
-          #tabs li {
-            display: flex;
-            align-items: stretch;
-          }
-
-          :host([full-width]) #tabs li {
-            width: 100%;
-          }
-
-          :host([vertical]) #tabs li {
-            flex-direction: column;
-          }
-
-          #tabs .flag-type {
-            position: absolute;
-            left: -99999px;
-            height: 0;
-            overflow: hidden;
+          :host([vertical]) #tabs button {
+            padding: var(--a11y-tabs-vertical-button-padding);
+            border-radius: 0;
           }
 
           :host([vertical]) #content {
             border: none;
           }
-
           :host(:not([vertical])) #content {
             border-radius: var(--a11y-tabs-horizontal-border-radius, 2px);
-            margin-top: -1px;
           }
 
           #tabs button {
-            width: 100%;
-            min-width: unset;
-            margin: 0;
             text-transform: unset;
-            color: var(--a11y-tabs-faded-color);
+            color: var(--a11y-tabs-faded-color, #333);
             border: 1px solid var(--a11y-tabs-border-color);
-            background-color: var(--a11y-tabs-faded-background);
+            background-color: var(--a11y-tabs-faded-background, #f8f8f8);
             padding: var(--a11y-tabs-horizontal-button-padding);
             font-weight: var(--a11y-tabs-font-weight, normal);
             border-radius: var(--a11y-tabs-horizontal-border-radius, 2px)
@@ -249,12 +291,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
           :host([vertical]) #tabs button {
             border-top: none;
-            border-radius: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             border-left-color: var(--a11y-tabs-border-accent);
-            padding: var(--a11y-tabs-vertical-button-padding);
           }
 
           #tabs button:focus,
@@ -302,56 +339,47 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           }
 
           #tabs button[disabled] {
-            color: var(--a11y-tabs-disabled-color);
-            background-color: var(--a11y-tabs-disabled-background);
-            cursor: not-allowed;
+            color: var(--a11y-tabs-disabled-color, #999);
+            background-color: var(--a11y-tabs-disabled-background, #eee);
+          }
+
+          #tabs button[disabled]:focus,
+          #tabs button[disabled]:hover {
+            color: unset;
+            font-weight: unset;
+          }
+
+          button[disabled]:focus .label,
+          button[disabled]:hover .label {
+            text-decoration: none;
           }
 
           :host(:not([vertical])) #tabs button[disabled] {
-            border-left-color: var(--a11y-tabs-disabled-border-accent);
+            border-left-color: var(--a11y-tabs-disabled-border-accent, unset);
           }
 
           :host([vertical]) #tabs button[disabled] {
-            border-top-color: var(--a11y-tabs-disabled-border-accent);
-          }
-
-          #tabs span.label,
-          #tabs .flag-icon {
-            margin-right: 8px;
-          }
-
-          :host([icons-only]) #tabs button {
-            justify-content: center;
-          }
-
-          :host([icons-only]) #tabs span.label {
-            display: none;
-          }
-
-          :host(:not([icons-only])) #tabs #tabs simple-tooltip {
-            display: none;
-          }
-
-          simple-icon-lite:not([hidden]) {
-            display: inline-block;
-          }
-
-          simple-icon-lite[hidden] {
-            display: none;
+            border-top-color: var(--a11y-tabs-disabled-border-accent, unset);
           }
         }
       `,
     ];
   }
+  //styles function
+  static get styles() {
+    return [...this.A11yTabsCoreStyles, ...this.A11yTabsThemeStyles];
+  }
 
   // render function
   render() {
-    return html` <ul id="tabs" role="tablist">
+    return html` <ul id="tabs" role="tablist" part="tablist">
         ${this.tabs.map(
-          (tab, i) => html` <li>${this._tabButton(tab, i)}</li> `
+          (tab, i) => html`
+            <li part="tablist-item">${this._tabButton(tab, i)}</li>
+          `
         )}
       </ul>
-      <div id="content">
+      <div id="content" part="content">
         <slot></slot>
       </div>`;
   }
@@ -765,6 +793,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         ?disabled="${tab.disabled || this.disabled}"
         tabindex="${tab.id === this.activeTab ? 0 : -1}"
         role="tab"
+        part="${tab.id === this.activeTab && !this.disabled
+          ? "tab-active"
+          : this.disabled || tab.disabled
+          ? "tab-disabled"
+          : "tab"}"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
@@ -782,7 +815,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabFlag(tab) {
     return html`
-      <span class="flag-type" ?hidden="${!tab.flag}"> ${tab.flag} </span>
+      <span class="flag-type" ?hidden="${!tab.flag}" part="flag">
+        ${tab.flag}
+      </span>
     `;
   }
 
@@ -801,6 +836,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             ?hidden="${!tab[icon]}"
             .icon="${tab[icon]}"
             .title="${tab.flag}"
+            part="icon"
           >
           </simple-icon-lite>
         `
@@ -809,6 +845,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
             class="icon"
             ?hidden="${!tab[icon]}"
             .icon="${tab[icon]}"
+            part="icon"
           >
           </simple-icon-lite>
         `;
@@ -822,7 +859,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @memberof A11yTabs
    */
   _tabLabel(tab) {
-    return html` <span class="label">${tab.label}</span> `;
+    return html` <span class="label" part="label">${tab.label}</span> `;
   }
 
   /**
@@ -835,7 +872,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabTooltip(tab) {
     return html`
-      <simple-tooltip for="${tab.id}-button"> ${tab.label} </simple-tooltip>
+      <simple-tooltip for="${tab.id}-button" part="tooltip">
+        ${tab.label}
+      </simple-tooltip>
     `;
   }
 }

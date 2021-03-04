@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsContainer } from "./simple-fields-container.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
 /**
  *`simple-fields-field`
  * HTML inputs (excluding submit, reset, button, and image)
@@ -25,7 +26,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           margin: 0;
           padding: 0;
           border: none;
-          background-color: var(--simple-fields-background-color, transparent);
+          background-color: transparent;
         }
         option {
           border-radius: 0;
@@ -61,6 +62,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         :host([type]) fieldset .border-bottom {
           display: block;
         }
+        .box-input {
+          width: 100%;
+        }
         .box-input:focus {
           outline: none;
         }
@@ -70,6 +74,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         input {
           background-color: var(--simple-fields-background-color, transparent);
         }
+        input[type="text"] {
+          padding: 0;
+        }
         textarea {
           margin: 0;
           transition: height 0.5s ease-in-out;
@@ -78,11 +85,19 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           background-color: var(--simple-fields-background-color, transparent);
         }
         select.field {
-          width: 100%;
+          width: calc(100% - 47px);
+          padding-right: 47px;
           border: none;
           background-color: var(--simple-fields-background-color, transparent);
           border-radius: 0;
           transition: color ease-in-out;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+        :host([type="select"]) simple-icon-lite {
+          position: absolute;
+          right: 47px;
         }
         select:focus,
         select:focus-within {
@@ -202,7 +217,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           height: 20px;
           width: 20px;
           border-radius: 50%;
-          background: var(--simple-fields-background-color, white);
+          background: var(--simple-fields-background-color, transparent);
           box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
           cursor: pointer;
           transition: all 0.5ms ease-in-out;
@@ -251,7 +266,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           height: 20px;
           width: 20px;
           border-radius: 50%;
-          background: var(--simple-fields-background-color, white);
+          background: var(--simple-fields-background-color, transparent);
           box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
           cursor: pointer;
         }
@@ -492,9 +507,10 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ["checkbox", "color", "radio"].includes(this.type || "text")
           ? "field-main inline"
           : "field-main"}"
+        part="field-main"
       >
         ${this.labelTemplate}
-        <div>
+        <div part="field-main-inner">
           ${this.prefixTemplate}
           ${this.fieldElementTag === "input"
             ? this.inputTemplate
@@ -517,7 +533,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get fieldMeta() {
-    return html` <div id="fieldmeta" aria-live="polite"></div> `;
+    return html`
+      <div id="fieldmeta" aria-live="polite" part="field-meta"></div>
+    `;
   }
 
   /**
@@ -529,15 +547,22 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    */
   get fieldsetTemplate() {
     return html`
-      <fieldset>
-        <legend class="label-main" ?hidden="${!this.label}">
+      <fieldset part="fieldset">
+        <legend
+          class="label-main"
+          ?hidden="${!this.label}"
+          part="fieldset-legend"
+        >
           ${this.label}${this.error || this.required ? "*" : ""}
         </legend>
-        <div id="options">
+        <div id="options" part="fieldset-options">
           ${(this.sortedOptions || []).map(
             (option) => html`
-              <div class="option inline">
-                <label for="${this.id}.${option.value}" class="radio-label"
+              <div class="option inline" part="option">
+                <label
+                  for="${this.id}.${option.value}"
+                  class="radio-label"
+                  part="option-label"
                   >${option.text}</label
                 >${this.getInput(option)}
               </div>
@@ -580,7 +605,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         : (this.value || []).includes((option || {}).value),
       icon = this.getOptionIcon(checked);
     return html`
-      <span class="input-option">
+      <span class="input-option" part="option-inner">
         <input
           ?autofocus="${this.autofocus}"
           aria-descrbedby="${this.describedBy || ""}"
@@ -609,6 +634,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           tabindex="0"
           type="${this.type}"
           value="${!option ? this.value : (option || {}).value}"
+          part="option-input"
         />
         ${this.type !== "checkbox" && this.type !== "radio"
           ? ""
@@ -616,6 +642,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
               <simple-icon-lite
                 icon="${icon}"
                 @click="${(e) => this._handleIconClick(checked, option)}"
+                part="option-icon"
               >
               </simple-icon-lite>
             `}
@@ -704,10 +731,12 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?readonly="${this.readonly}"
         ?required="${this.required}"
         tabindex="0"
+        part="select"
       >
         ${(this.sortedOptions || []).map(
           (option) => html`
             <option
+              part="select-option"
               .id="${this.id}.${option.value}"
               ?selected="${this.multiple
                 ? this.value && this.value.includes(option.value)
@@ -719,6 +748,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           `
         )}
       </select>
+      <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
     `;
   }
 
@@ -756,6 +786,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?required="${this.required}"
         rows="1"
         tabindex="0"
+        part="textarea"
       >
 ${this.value || ""}</textarea
       >

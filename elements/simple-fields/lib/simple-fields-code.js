@@ -59,6 +59,13 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
         attribute: "editor-value",
       },
       /**
+       * Whether the field is hidden
+       */
+      focused: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
        * Font-size of editor
        */
       fontSize: {
@@ -94,7 +101,8 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
        * theme of code-editor
        */
       theme: {
-        type: Number,
+        type: String,
+        reflect: true,
       },
       /**
        * Current value of the form control. Submitted with the form as part of a name/value pair.
@@ -112,7 +120,6 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
     this.language = "html";
     this.mode = "html";
     this.readonly = false;
-    this.theme = "vs";
   }
   disconnectedCallback() {
     this.removeEventListener("click", (e) => this.focus());
@@ -136,17 +143,22 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
    */
   get fieldMainTemplate() {
     return html`
-      <div class="field-main">
+      <div class="field-main" part="field-main">
+        ${this.labelTemplate}
         <code-editor
           ?autofocus="${this.autofocus}"
           ?disabled="${this.disabled}"
           font-size="${this.fontSize}"
           editor-value="${this.__editorValue || ""}"
-          theme="${this.theme}"
+          theme="${this.theme || "auto"}"
           language="${this.language}"
           mode="${this.mode}"
           ?read-only="${this.readonly || this.disabled}"
           @value-changed="${this._onChange}"
+          @focused-changed="${this._onFocusChange}"
+          @code-editor-focus="${(e) => this.focused == true}"
+          @code-editor-blur="${(e) => this.focused == false}"
+          part="editor"
         >
         </code-editor>
         <input name="${this.id}" type="hidden" value="${this.value}" />
@@ -200,6 +212,9 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
         detail: this,
       })
     );
+  }
+  _onFocusChange(e) {
+    this.focused = e.detail.focused;
   }
   /**
    * listens for focusout

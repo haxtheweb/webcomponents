@@ -1,0 +1,107 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "unity-webgl",
+      "path": "./src/unity-webgl.js",
+      "description": "`unity-webgl`\n`Unity WebGL player`",
+      "properties": [
+        {
+          "name": "html",
+          "description": "This is a convention, not the standard to return HTML of the element",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "string | null"
+        },
+        {
+          "name": "compression",
+          "type": "string | null"
+        },
+        {
+          "name": "streamingurl",
+          "type": "string | null"
+        },
+        {
+          "name": "companyname",
+          "type": "string | null"
+        },
+        {
+          "name": "productname",
+          "type": "string | null"
+        },
+        {
+          "name": "productversion",
+          "type": "string | null"
+        },
+        {
+          "name": "width",
+          "type": "string | null"
+        },
+        {
+          "name": "height",
+          "type": "string | null"
+        },
+        {
+          "name": "background",
+          "type": "string | null"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "unity-webgl",
+      "path": "./unity-webgl.js",
+      "description": "`unity-webgl`\n`Unity WebGL player`",
+      "properties": [
+        {
+          "name": "html",
+          "description": "This is a convention, not the standard to return HTML of the element",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "string | null"
+        },
+        {
+          "name": "compression",
+          "type": "string | null"
+        },
+        {
+          "name": "streamingurl",
+          "type": "string | null"
+        },
+        {
+          "name": "companyname",
+          "type": "string | null"
+        },
+        {
+          "name": "productname",
+          "type": "string | null"
+        },
+        {
+          "name": "productversion",
+          "type": "string | null"
+        },
+        {
+          "name": "width",
+          "type": "string | null"
+        },
+        {
+          "name": "height",
+          "type": "string | null"
+        },
+        {
+          "name": "background",
+          "type": "string | null"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import {
+  SimpleFieldsBaseStyles,
+  SimpleFieldsLabelStyles,
+  SimpleFieldsDescriptionStyles,
+} from "./simple-fields-ui.js";
 /**
  *`simple-fields-container`
  * Progressive enhanced container HTML fields
@@ -15,19 +20,13 @@ class SimpleFieldsContainer extends LitElement {
   }
   static get styles() {
     return [
+      ...SimpleFieldsBaseStyles,
+      ...SimpleFieldsLabelStyles,
+      ...SimpleFieldsDescriptionStyles,
       css`
         :host {
           display: block;
-          width: 100%;
-          font-size: var(--simple-fields-detail-font-size, 12px);
-          font-family: var(--simple-fields-detail-font-family, sans-serif);
-          line-height: var(--simple-fields-detail-line-height, 22px);
           transition: color 0.3s ease-in-out;
-          margin: var(--simple-fields-margin, 16px) 0;
-        }
-        :host([hidden]),
-        :host([type="hidden"]) {
-          display: none;
         }
         :host([error]) {
           color: var(--simple-fields-error-color, #dd2c00);
@@ -49,34 +48,11 @@ class SimpleFieldsContainer extends LitElement {
         #fieldmeta {
           text-align: right;
         }
-        :host .label-main:after {
-          content: var(--simple-fields-label-flag, "");
-        }
-        :host(:focus-within) .label-main {
-          color: var(--simple-fields-accent-color, #3f51b5);
-          transition: color 0.3s ease-in-out;
-        }
-        .inline {
-          --simple-fields-radio-option-display: flex;
-          --simple-fields-radio-option-flex-wrap: wrap;
-        }
-        .inline label {
-          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
-          flex: 0 1 var(--simple-fields-label-width, auto);
-        }
-        .inline label,
-        .field-main > div,
-        .field,
-        ::slotted([slot="field"]) {
-          font-size: var(--simple-fields-font-size, 16px);
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
-        }
         .field,
         ::slotted([slot="field"]) {
           width: auto;
           border: none;
-          color: var(--simple-fields-color, black);
+          color: var(--simple-fields-color, currentColor);
           background-color: var(--simple-fields-background-color, transparent);
           transition: opacity ease-in-out;
           flex: 1 0 auto;
@@ -105,6 +81,7 @@ class SimpleFieldsContainer extends LitElement {
         :host([readonly]) ::slotted([slot="field"]),
         :host([disabled]) ::slotted([slot="field"]) {
           cursor: not-allowed;
+          pointer-events: none;
         }
         .border-bottom {
           height: 0;
@@ -434,7 +411,7 @@ class SimpleFieldsContainer extends LitElement {
    */
   get descriptionTemplate() {
     return html`
-      <div id="description">
+      <div id="description" part="field-desc">
         <slot name="description"></slot>
         ${this.description}
       </div>
@@ -450,7 +427,12 @@ class SimpleFieldsContainer extends LitElement {
    */
   get errorTemplate() {
     return html`
-      <div id="error-message" ?hidden="${!this.error}" role="alert">
+      <div
+        id="error-message"
+        ?hidden="${!this.error}"
+        role="alert"
+        part="error-msg"
+      >
         ${this.errorMessage}
       </div>
     `;
@@ -468,8 +450,8 @@ class SimpleFieldsContainer extends LitElement {
     return html`
       <div class="border-bottom blur"></div>
       <div class="border-bottom focus"></div>
-      <div id="field-bottom">
-        <div id="error-desc">
+      <div id="field-bottom" part="field-bottom">
+        <div id="error-desc" part="field-bottom-inner">
           ${this.descriptionTemplate} ${this.errorTemplate}
         </div>
         ${this.fieldMeta}
@@ -502,9 +484,10 @@ class SimpleFieldsContainer extends LitElement {
         ["checkbox", "color", "radio"].includes(this.type || "text")
           ? "field-main inline"
           : "field-main"}"
+        part="field-main"
       >
         ${this.labelTemplate}
-        <div>
+        <div part="field-inner">
           ${this.prefixTemplate}
           <slot name="field"></slot>
           ${this.suffixTemplate}
@@ -522,7 +505,7 @@ class SimpleFieldsContainer extends LitElement {
    */
   get fieldMeta() {
     return html`
-      <div id="fieldmeta" aria-live="polite">
+      <div id="fieldmeta" aria-live="polite" part="field-meta">
         <slot name="field-meta"></slot>
       </div>
     `;
@@ -545,6 +528,7 @@ class SimpleFieldsContainer extends LitElement {
         for="${this.fieldId}"
         class="label-main"
         ?hidden="${this.type === "fieldset"}"
+        part="label"
       >
         <slot name="label-prefix"></slot>
         <slot name="label"></slot>

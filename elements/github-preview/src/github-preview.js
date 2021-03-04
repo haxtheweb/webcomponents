@@ -288,7 +288,14 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
         icon: "mdi-social:github-circle",
         color: "grey",
         groups: ["developer", "code"],
-        handles: [],
+        handles: [
+          {
+            type: "github",
+            type_exclusive: true,
+            repo: "repo",
+            org: "org",
+          },
+        ],
         meta: {
           author: "collinkleest",
           owner: "ELMS:LN",
@@ -308,6 +315,12 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
             description: "Repo machine name",
             inputMethod: "textfield",
           },
+          {
+            property: "extended",
+            title: "Extended View",
+            description: "Includes readme in element",
+            inputMethod: "boolean",
+          },
         ],
         advanced: [],
       },
@@ -323,6 +336,60 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       ],
     };
   }
+
+  get haxAppDetails() {
+    return {
+      details: {
+        title: "Github",
+        icon: "mdi-social:github-circle",
+        color: "grey",
+        description: "Preview a github repository.",
+        status: "available",
+        tags: ["developer", "code", "collaboration"],
+      },
+      connection: {
+        protocol: "https",
+        url: "api.github.com",
+        data: {
+          format: "json",
+          origin: "*",
+        },
+        operations: {
+          browse: {
+            method: "GET",
+            endPoint: "search/repositories",
+            pagination: {
+              style: "offset",
+            },
+            search: {
+              q: {
+                title: "Search",
+                type: "string",
+              },
+            },
+            data: {},
+            resultMap: {
+              image:
+                "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+              defaultGizmoType: "github",
+              items: "items",
+              preview: {
+                title: "name",
+                details: "description",
+                id: "id",
+              },
+              gizmo: {
+                id: "id",
+                repo: "name",
+                org: "owner.login",
+              },
+            },
+          },
+        },
+      },
+    };
+  }
+
   /**
    * Convention we use
    */
@@ -342,6 +409,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
                     href="${this.url}/${this.org}"
                     target="_blank"
                     rel="noopener noreferrer"
+                    @click="${this._clickLink}"
                   >
                     ${this.org}
                   </a>
@@ -350,6 +418,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
                     href="${this.url}/${this.org}/${this.repo}"
                     target="_blank"
                     rel="noopener noreferrer"
+                    @click="${this._clickLink}"
                   >
                     ${this.repo}
                   </a>
@@ -388,6 +457,7 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
               href="${this.url}/${this.org}/${this.repo}"
               target="_blank"
               rel="noopener noreferrer"
+              @click="${this._clickLink}"
             >
               <div class="container">
                 <div class="header-container">
@@ -495,6 +565,54 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       this.repoLang = response.language;
       this.__stars = response.stargazers_count;
       this.__forks = response.forks;
+    }
+  }
+
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+      gizmoRegistration: "haxgizmoRegistration",
+    };
+  }
+
+  haxgizmoRegistration(store) {
+    store.validGizmoTypes.push("github");
+    if (
+      store.appList.filter((el, i) => {
+        // ensure we don't double load the endpoint if already defined
+        if (el.connection.url === "api.github.com") {
+          return true;
+        }
+        return false;
+      }).length === 0
+    ) {
+      window.dispatchEvent(
+        new CustomEvent("hax-register-app", {
+          bubbles: false,
+          composed: false,
+          cancelable: false,
+          detail: this.haxAppDetails,
+        })
+      );
+    }
+  }
+
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this._haxstate = value;
+    }
+  }
+
+  haxeditModeChanged(value) {
+    this._haxstate = value;
+  }
+
+  _clickLink(event) {
+    if (this._haxstate) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
     }
   }
 

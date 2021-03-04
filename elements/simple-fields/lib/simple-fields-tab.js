@@ -15,7 +15,7 @@ class SimpleFieldsTab extends A11yTab {
     return "simple-fields-tab";
   }
   static get styles() {
-    return [...super.styles, ...SimpleFieldsFieldset.styles];
+    return [...super.styles];
   }
   static get properties() {
     return {

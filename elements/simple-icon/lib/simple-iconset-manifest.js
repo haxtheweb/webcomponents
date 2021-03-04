@@ -1,3 +1,7 @@
+import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+/**
+ * @const SimpleIconIconsetsManifest
+ */
 export const SimpleIconIconsetsManifest = [
   {
     name: "av",
@@ -1015,3 +1019,4 @@ export const SimpleIconIconsetsManifest = [
     ],
   },
 ];
+SimpleIconsetStore.registerManifest(SimpleIconIconsetsManifest);

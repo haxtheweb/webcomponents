@@ -1,6 +1,9 @@
 import { html, LitElement } from "lit-element/lit-element.js";
 import { render } from "lit-html/lib/render.js";
 import { unsafeHTML } from "lit-html/directives/unsafe-html.js";
+import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./simple-popover-manager.js";
 
 class SimpleTour extends LitElement {
@@ -41,17 +44,19 @@ class SimpleTour extends LitElement {
       e.detail.name,
       e.detail.target,
       e.detail.title,
-      e.detail.description
+      e.detail.description,
+      e.detail.mode
     );
   }
   /**
    * Create a tour stop, add to the stack, then return the stop object
    */
-  createTourStop(name, target, title, description) {
+  createTourStop(name, target, title, description, mode) {
     let s = new TourStop();
     s.target = target;
     s.title = title;
     s.description = description;
+    s.mode = mode;
     this.addStops(name, [s]);
     return s;
   }
@@ -90,7 +95,7 @@ class SimpleTour extends LitElement {
    * Move ahead or back in the stack
    */
   nextStop(e) {
-    if (this.stop < this.stacks[this.active].length) {
+    if (this.stop < this.stacks[this.active].length - 1) {
       this.stop += 1;
     }
   }
@@ -101,6 +106,15 @@ class SimpleTour extends LitElement {
   }
   startTour(name) {
     this.active = name;
+
+    this.dispatchEvent(
+      new CustomEvent("tour-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
   }
   stopTour(e) {
     window.SimplePopoverManager.requestAvailability().setPopover(
@@ -111,29 +125,61 @@ class SimpleTour extends LitElement {
     );
     this.stop = -1;
     this.active = null;
+
+    this.dispatchEvent(
+      new CustomEvent("tour-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
   }
   /**
    * Render tour buttons as block
    */
   tourButtons() {
-    return html` <h3>
-        ${this.tourInfo[this.active].name}
-        <span style="margin-left:16px"
+    return html`<h1 class="title" slot="heading">
+        ${this.tourInfo[this.active].name},
+        <span class="xofy"
           >${this.stop + 1}/${this.stacks[this.active].length}</span
         >
-      </h3>
-      <button
+      </h1>
+      <simple-icon-button-lite
+        id="close"
+        slot="heading"
+        @click="${this.stopTour.bind(this)}"
+        label="Stop Tour"
+        icon="close"
+      >
+      </simple-icon-button-lite>
+      <simple-icon-button-lite
+        id="prev"
+        slot="nav"
         @click="${this.prevStop.bind(this)}"
         ?disabled="${!this.hasPrev()}"
+        label="Prev"
+        icon="arrow-back"
+        show-text-label
       >
-        Previous
-      </button>
-      <button
+      </simple-icon-button-lite>
+      <simple-tooltip for="prev" position="top" slot="nav">
+        Previous Item
+      </simple-tooltip>
+      <simple-icon-button-lite
+        id="next"
+        slot="nav"
         @click="${this.nextStop.bind(this)}"
         ?disabled="${!this.hasNext()}"
+        label="Next"
+        icon="arrow-forward"
+        show-text-label
       >
-        Next</button
-      ><button @click="${this.stopTour.bind(this)}">Stop tour</button>`;
+      </simple-icon-button-lite>
+      <simple-tooltip for="close" slot="body"> Stop Tour </simple-tooltip>
+      <simple-tooltip for="next" position="top" slot="nav">
+        Next Item
+      </simple-tooltip>`;
   }
   /**
    * Simple utility to do nice scrolling or only scroll if we can't see it
@@ -177,15 +223,30 @@ class SimpleTour extends LitElement {
           document.createElement("div"),
           window.SimplePopoverManager.requestAvailability()
         );
+        let title = this.stacks[this.active][this.stop].title;
+        let description = this.stacks[this.active][this.stop].description;
+        // support for live rendering of the tour info to allow the DOM
+        // to translate or dynamicallly set this based on other stateful details
+        if (this.stacks[this.active][this.stop].mode == "live") {
+          let el = this.stacks[this.active][this.stop].target;
+          if (
+            el.getAttribute("data-stop-title") &&
+            el.getAttribute(el.getAttribute("data-stop-title"))
+          ) {
+            title = el.getAttribute(el.getAttribute("data-stop-title"));
+          } else if (el.querySelector("[data-stop-title]")) {
+            title = el.querySelector("[data-stop-title]").innerHTML;
+          }
+          description = el.querySelector("[data-stop-content]").innerHTML
+            ? el.querySelector("[data-stop-content]").innerHTML
+            : "";
+        }
         let content = html`${this.tourButtons()}
-          <h3>
-            ${unsafeHTML(
-              "<span>" + this.stacks[this.active][this.stop].title + "</span>"
-            )}
-          </h3>
-          ${unsafeHTML(
-            "<p>" + this.stacks[this.active][this.stop].description + "</p>"
-          )}${this.tourInfo[this.active].style
+          <h2 class="subheading" slot="body">
+            ${unsafeHTML("<span>" + title + "</span>")}
+          </h2>
+          ${unsafeHTML('<p slot="body">' + description + "</p>")}${this
+            .tourInfo[this.active].style
             ? unsafeHTML(
                 "<style>" + this.tourInfo[this.active].style + "</style>"
               )
@@ -195,7 +256,8 @@ class SimpleTour extends LitElement {
           this,
           this.stacks[this.active][this.stop].target,
           true,
-          this.orientation
+          this.orientation,
+          this.active
         );
         this.scrollHere(this.stacks[this.active][this.stop].target);
         let target = this.stacks[this.active][this.stop].target;

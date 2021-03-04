@@ -29,6 +29,7 @@ class CodePenButton extends LitElement {
           height="40"
           value="Open code pen in a new window"
           class="codepen-mover-button"
+          part="button"
         />
       </form>
     `;

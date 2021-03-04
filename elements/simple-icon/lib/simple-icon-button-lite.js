@@ -7,10 +7,22 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./simple-icons.js";
 import "./simple-icon-lite.js";
 
+/**
+ *
+ * @class SimpleIconButtonBehaviors
+ */
 export const SimpleIconButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
+      this.ariaLabelledby = "";
+      this.controls = "";
+      this.disabled = false;
+      this.form = "";
+      this.label = "";
+      this.fieldName = "";
+      this.type = "";
+      this.value = "";
     }
 
     static get styles() {
@@ -47,6 +59,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
             );
             padding: var(--simple-icon-button-padding, 0px);
             margin: 0px;
+            width: 100%;
           }
           button[aria-pressed] {
             opacity: var(--simple-icon-button-toggled-opacity, 1);
@@ -76,6 +89,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
             --simple-icon-button-background-color: var(
               --simple-icon-button-disabled-background-color
             );
+            cursor: not-allowed;
           }
 
           simple-icon-lite {
@@ -104,14 +118,16 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
             ? "false"
             : undefined}"
           controls="${this.controls}"
+          part="button"
           ?disabled="${this.disabled}"
           form="${this.form}"
           label="${this.label}"
+          aria-label="${this.label}"
           name="${this.fieldName}"
-          type="${this.type}"
+          .type="${this.type}"
           value="${this.value}"
         >
-          <simple-icon-lite icon=${this.icon}> </simple-icon-lite>
+          <simple-icon-lite icon=${this.icon} part="icon"> </simple-icon-lite>
         </button>
       `;
     }
@@ -182,6 +198,9 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
  * @microcopy - language worth noting:
  *  -
  *
+ * @customElement
+ * @extends LitElement
+ * @extends SimpleIconButtonBehaviors
  * @demo demo/button-lite.html
  * @element simple-icon
  */

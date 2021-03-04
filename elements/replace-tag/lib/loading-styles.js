@@ -1,12 +1,13 @@
 // loader that uses a CSS selector and variables in order to auto generate outlines
-window.WCRegistryLoaderCSS = function (
+var WCRegistryLoaderCSSDebounce;
+export function WCRegistryLoaderCSS(
   auto = false,
   parent = "*",
   selectorBase = ":not(:defined)"
 ) {
   // debounce entire call automatically in case of spamming as new things get added to screen
-  clearTimeout(window.WCRegistryLoaderCSSDebounce);
-  window.WCRegistryLoaderCSSDebounce = setTimeout(() => {
+  clearTimeout(WCRegistryLoaderCSSDebounce);
+  WCRegistryLoaderCSSDebounce = setTimeout(() => {
     // default selector is anything that says to operate this way
     let selector = parent + "[laser-loader]" + selectorBase;
     // much more aggressive, apply loading to ANYTHING not defined
@@ -49,15 +50,16 @@ window.WCRegistryLoaderCSS = function (
       });
     });
   }, 10);
-};
+}
+var WCRegistryLoaderCSSDebounce2;
 const loadingStylesResizeEvent = function () {
-  clearTimeout(window.WCRegistryLoaderCSSDebounce2);
-  window.WCRegistryLoaderCSSDebounce2 = setTimeout(() => {
+  clearTimeout(WCRegistryLoaderCSSDebounce2);
+  WCRegistryLoaderCSSDebounce2 = setTimeout(() => {
     // ensure we have something undefind
     if (
       document.body.querySelectorAll("replace-tag,:not(:defined)").length > 0
     ) {
-      window.WCRegistryLoaderCSS();
+      WCRegistryLoaderCSS();
     } else {
       // we no longer have anything defined so remove self listening
       window.removeEventListener("resize", loadingStylesResizeEvent);

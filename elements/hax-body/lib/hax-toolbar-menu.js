@@ -1,153 +1,76 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
-import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
-import { HAXStore } from "./hax-store.js";
-import { autorun, toJS } from "mobx";
-
-class HaxToolbarMenu extends LitElement {
+import { SimpleToolbarMenuBehaviors } from "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
+import { HaxButton } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
+/**
+ * `hax-toolbar-menu`
+ * `An icon / button that has support for multiple options via drop down.`
+ *
+ * @microcopy - the mental model for this element
+ * - panel - the flyout from left or right side that has elements that can be placed
+ * - button - an item that expresses what interaction you will have with the content.
+ *
+ * @extends SimpleToolbarMenuBehaviors
+ * @element hax-toolbar-menu
+ *
+ */
+class HaxToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
   static get styles() {
+    return [...super.styles];
+  }
+  constructor() {
+    super();
+    this._blockEvent = false;
+  }
+  /**
+   * template for slotted list items
+   *
+   * @readonly
+   */
+  get listItemTemplate() {
+    return html`<slot name="menuitem"></slot>`;
+  }
+
+  static get simpleButtonThemeStyles() {
+    return HaxButton;
+  }
+
+  static get simpleButtonCoreStyles() {
     return [
+      ...super.simpleButtonCoreStyles,
       css`
-        :host {
-          display: block;
-          box-sizing: border-box;
-        }
-        simple-icon-lite {
-          --simple-icon-height: 10px;
-          --simple-icon-width: 10px;
-          margin-left: -2px;
-        }
-        .flip-icon {
-          transform: rotateY(180deg);
+        ::slotted([slot="menuitem"]) {
+          --simple-toolbar-button-justify: flex-start;
+          --simple-toolbar-button-label-white-space: nowrap;
         }
       `,
     ];
   }
-  render() {
-    return html`
-      <simple-popover-selection
-        @simple-popover-selection-changed="${this.selectedChanged}"
-        ?disabled="${this.disabled}"
-        auto
-        orientation="tb"
-      >
-        <div slot="style">
-          simple-popover-manager hax-context-item { overflow: hidden; display:
-          flex; } simple-popover-manager { --simple-popover-padding: 0; }
-          hax-context-item-textop[hidden] { opacity: 0; display: none;
-          visibility: hidden; }
-        </div>
-        <hax-toolbar-item
-          ?mini="${this.mini}"
-          ?disabled="${this.disabled}"
-          ?action="${this.action}"
-          slot="button"
-          icon="${this.icon}"
-          .hidden="${!this.icon}"
-          .class="${this.iconClass}"
-          tooltip="${this.tooltip}"
-        >
-          <simple-icon-lite icon="hax:expand-more"></simple-icon-lite>
-        </hax-toolbar-item>
-        <div slot="options">
-          <slot></slot>
-        </div>
-      </simple-popover-selection>
-    `;
-  }
-  selectedChanged(e) {
-    this.shadowRoot.querySelector("simple-popover-selection").opened = false;
-    this.selected = e.detail.value;
-  }
+
   static get tag() {
     return "hax-toolbar-menu";
   }
-  constructor() {
-    super();
-    this.corner = "";
-    this.action = false;
-    this.disabled = false;
-    this.tooltip = "";
-    this.tooltipDirection = "";
-    this.selected = 0;
-    setTimeout(() => {
-      this.addEventListener("click", this._menubuttonTap.bind(this));
-    }, 0);
-    autorun(() => {
-      // this just forces this block to run when editMode is modified
-      const editMode = toJS(HAXStore.editMode);
-      const activeNode = toJS(HAXStore.activeNode);
-      if (
-        this.shadowRoot &&
-        this.shadowRoot.querySelector("simple-popover-selection")
-      ) {
-        this.shadowRoot.querySelector(
-          "simple-popover-selection"
-        ).opened = false;
-      }
-    });
-  }
   static get properties() {
     return {
+      ...super.properties,
       /**
-       * corner
+       * Internal flag to allow blocking the event firing if machine selects tag.
        */
-      corner: {
-        type: String,
-        reflect: true,
+      _blockEvent: {
+        type: Boolean,
       },
       /**
-       * disabled state
+       * Name of the event to bubble up as being tapped.
+       * This can be used to tell other elements what was
+       * clicked so it can take action appropriately.
        */
-      disabled: {
-        type: Boolean,
-        reflect: true,
-      },
-      mini: {
-        type: Boolean,
-        reflect: true,
-      },
-      action: {
-        type: Boolean,
-      },
-      icon: {
+      eventName: {
         type: String,
-      },
-      tooltip: {
-        type: String,
-      },
-      tooltipDirection: {
-        type: String,
-        attribute: "tooltip-direction",
-      },
-      selected: {
-        type: Number,
+        attribute: "event-name",
       },
     };
-  }
-  /**
-   * property changed callback
-   */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "selected") {
-        // fire an event that this is a core piece of the system
-        this.dispatchEvent(
-          new CustomEvent("selected-changed", {
-            detail: this[propName],
-          })
-        );
-      }
-    });
-  }
-  /**
-   * Ensure menu is visible / default'ed.
-   */
-  _menubuttonTap(e) {
-    if (!this.disabled) {
-      this.selected = "";
-    }
   }
 }
 window.customElements.define(HaxToolbarMenu.tag, HaxToolbarMenu);

@@ -78,17 +78,18 @@ class A11yTab extends LitElement {
   render() {
     return html`
       <span class="sr-only">Tab ${this.xOfY}</span>
-      <div class="label-heading">
+      <div class="label-heading" part="heading">
         <simple-icon-lite
           class="icon"
           ?hidden="${!this.icon}"
           .icon="${this.icon}"
+          part="icon"
         >
         </simple-icon-lite>
         <slot name="label" ?hidden="${!this.label}"></slot>
-        <div class="label">${this.label}</div>
+        <div class="label" part="label">${this.label}</div>
       </div>
-      <div id="content-inner"><slot></slot></div>
+      <div id="content-inner" part="content"><slot></slot></div>
       <span class="sr-only">
         End of tab ${this.xOfY}. Back to <a href="#${this.id}">tabs</a>.
       </span>

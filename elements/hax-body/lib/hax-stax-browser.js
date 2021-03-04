@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 /**
  * `hax-stax-browser`
  * @element hax-stax-browser
@@ -11,11 +12,14 @@ class HaxStaxBrowser extends LitElement {
     return [
       css`
         :host {
-          display: block;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          flex: 0 0 auto;
+          overflow-y: auto;
         }
-        .stax-container {
-          text-align: center;
-          margin: 0px 16px;
+        simple-button-grid {
+          overflow: auto;
         }
       `,
     ];
@@ -26,12 +30,12 @@ class HaxStaxBrowser extends LitElement {
   }
   render() {
     return html`
-      <div class="stax-container">
+      <simple-button-grid columns="3" rows="1" always-expanded>
         ${this.staxList.map(
           (stax) => html`
             <hax-tray-button
-              wide
-              dark-bg
+              icon-position="top"
+              show-text-label
               index="${stax.index}"
               label="${stax.details.title}"
               .stax="${stax.stax}"
@@ -41,7 +45,7 @@ class HaxStaxBrowser extends LitElement {
             ></hax-tray-button>
           `
         )}
-      </div>
+      </simple-button-grid>
     `;
   }
   static get tag() {

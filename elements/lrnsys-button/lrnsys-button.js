@@ -50,6 +50,7 @@ class LrnsysButton extends LitElement {
           display: flex;
           background-color: transparent;
           border: none;
+          cursor: pointer;
         }
         button:hover {
           cursor: pointer;
@@ -130,15 +131,21 @@ class LrnsysButton extends LitElement {
   }
   render() {
     return html`
-      <a tabindex="-1" id="lrnsys-button-link" ?disabled="${this.disabled}">
+      <a
+        tabindex="-1"
+        id="lrnsys-button-link"
+        part="lrnsys-button-link"
+        ?disabled="${this.disabled}"
+      >
         <button
           id="button"
           title="${this.alt}"
           class="${this.buttonClass} ${this.color} ${this.textColor}"
+          part="lrnsys-button-button"
           ?disabled="${this.disabled}"
           @focus-changed="${this.focusToggle}"
         >
-          <div class="inner ${this.innerClass}">
+          <div class="inner ${this.innerClass}" part="lrnsys-button-inner-div">
             <slot name="prefix"></slot>
             <simple-icon
               icon="${this.icon}"
@@ -147,15 +154,23 @@ class LrnsysButton extends LitElement {
               accent-color="grey"
               contrast="4"
               class="${this.iconClass}"
+              part="lrnsys-button-icon"
               ?hidden="${!this.icon}"
             ></simple-icon>
-            <span class="label" ?hidden="${!this.label}"> ${this.label} </span>
+            <span
+              class="label"
+              part="lrnsys-button-label"
+              ?hidden="${!this.label}"
+            >
+              ${this.label}
+            </span>
             <slot></slot>
           </div>
         </button>
       </a>
       <simple-tooltip
         for="lrnsys-button-link"
+        part="lrnsys-button-tooltip"
         animation-delay="0"
         ?hidden="${!this.alt}"
         >${this.alt}</simple-tooltip

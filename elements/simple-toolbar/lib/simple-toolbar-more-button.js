@@ -22,6 +22,16 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
   static get tag() {
     return "simple-toolbar-more-button";
   }
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host([hidden]) {
+          display: none !important;
+        }
+      `,
+    ];
+  }
 
   constructor() {
     super();
@@ -30,6 +40,7 @@ class SimpleToolbarMoreButton extends SimpleToolbarButtonBehaviors(LitElement) {
     this.toggles = true;
     this.label = "More buttons";
     this.labelToggled = "Fewer buttons";
+    this.tooltipDirection = "left";
   }
   /**
    * toggles button if shortcutKey is pressed

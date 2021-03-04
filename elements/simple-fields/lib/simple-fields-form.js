@@ -16,11 +16,12 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
   // render function
   render() {
     return html`
-      <form>
+      <form part="form">
         <slot name="before"></slot>
         <simple-fields
           id="sf"
           .autofocus="${!this.disableAutofocus}"
+          ?watchColorPrefs="${this.watchColorPrefs}"
           language="${this.language || ""}"
           .resources="${this.resources}"
           .schema="${this.schema}"
@@ -29,6 +30,7 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
           .elementizer="${this.elementizer}"
           .value="${this.value}"
           @value-changed="${this._valueChanged}"
+          part="fields"
         >
         </simple-fields>
         <slot></slot>

@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 class MapMenuHeader extends LitElement {
   /**

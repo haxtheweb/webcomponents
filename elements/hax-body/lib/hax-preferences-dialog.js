@@ -8,13 +8,17 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
+import {
+  I18NMixin,
+  I18NManagerStore,
+} from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-preferences-dialog`
  * @element hax-preferences-dialog
  * `Export dialog with all export options and settings provided.`
  */
-class HaxPreferencesDialog extends LitElement {
+class HaxPreferencesDialog extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -24,28 +28,8 @@ class HaxPreferencesDialog extends LitElement {
         :host {
           display: block;
         }
-        .title {
-          position: relative;
-          padding: 16px;
-          outline: 0;
-          font-weight: 600;
-          text-align: left;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-          font-size: 18px;
-          line-height: 18px;
-          font-family: "Noto Serif", serif;
-        }
         .pref-container {
           text-align: left;
-          padding: 16px;
-        }
-        #link {
-          color: #81a3a9;
-          font-size: 18px;
-          padding: 16px;
-          font-style: italic;
         }
         simple-icon-button {
           float: right;
@@ -56,24 +40,75 @@ class HaxPreferencesDialog extends LitElement {
   constructor() {
     super();
     this.hideLink = false;
-    this.title = "Advanced settings";
+    this.t = {
+      learnMoreAboutHAX: "Learn more about HAX",
+      voiceCommands: "Voice commands",
+      haxUITheme: "HAX UI Theme",
+      language: "Language",
+      english: "English",
+      spanish: "Spanish",
+    };
+    this.udpateSchema();
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+      updateCallback: "udpateSchema",
+    });
+    autorun(() => {
+      this.globalPreferences = toJS(HAXStore.globalPreferences);
+      if (
+        this.globalPreferences.haxLang &&
+        I18NManagerStore.lang != this.globalPreferences.haxLang
+      ) {
+        I18NManagerStore.lang = this.globalPreferences.haxLang || "en";
+        this.udpateSchema();
+      }
+    });
+  }
+  udpateSchema() {
     // JSON schema object needs delayed to ensure page repaints the form
     this.schema = [
       {
         property: "haxVoiceCommands",
-        title: "Voice commands",
+        title: this.t.voiceCommands,
         description: "Experimental: Voice based control system",
         inputMethod: "boolean",
         value: false,
       },
+      {
+        property: "haxUiTheme",
+        title: this.t.haxUITheme,
+        description:
+          "Change the theme of the HAX interface (not the site's content).",
+        inputMethod: "radio",
+        options: {
+          hax: "Default (light)",
+          haxdark: "Dark",
+          system: "System Default",
+        },
+        value: "hax",
+      },
+      {
+        property: "haxLang",
+        title: this.t.language,
+        description:
+          "Toggle between supported languages for internationalization",
+        inputMethod: "radio",
+        options: {
+          en: this.t.english,
+          es: this.t.spanish,
+        },
+        value: I18NManagerStore.lang,
+      },
     ];
     this.schemaValues = {
       haxVoiceCommands: false,
+      haxUiTheme: "hax",
+      haxLang: I18NManagerStore.lang,
     };
-    autorun(() => {
-      this.globalPreferences = toJS(HAXStore.globalPreferences);
-      this.schemaValues = toJS(HAXStore.globalPreferences);
-    });
+    if (this.shadowRoot && this.shadowRoot.querySelector("#settingsform")) {
+      this.reloadPreferencesForm();
+    }
   }
   closeBtn(e) {
     this.dispatchEvent(
@@ -91,14 +126,6 @@ class HaxPreferencesDialog extends LitElement {
   }
   render() {
     return html`
-      <h3 class="title">
-        <simple-icon-lite icon="hax:settings"></simple-icon-lite>
-        ${this.title}
-        <simple-icon-button
-          icon="close"
-          @click="${this.closeBtn}"
-        ></simple-icon-button>
-      </h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <simple-fields
           id="settingsform"
@@ -107,13 +134,17 @@ class HaxPreferencesDialog extends LitElement {
         >
         </simple-fields>
       </div>
+      <hr />
+      <br />
+      <br />
       ${!this.hideLink
         ? html`<a
             href="https://haxtheweb.org/"
             rel="noopener"
             id="link"
             target="_blank"
-            >Learn more about HAX</a
+            part="haxlink"
+            >${this.t.learnMoreAboutHAX}</a
           >`
         : ``}
     `;
@@ -128,12 +159,6 @@ class HaxPreferencesDialog extends LitElement {
        */
       hideLink: {
         type: Boolean,
-      },
-      /**
-       * Title.
-       */
-      title: {
-        type: String,
       },
       /**
        * Schema that has all of inputs / manages state
@@ -151,10 +176,7 @@ class HaxPreferencesDialog extends LitElement {
   }
 
   firstUpdated(changedProperties) {
-    this.shadowRoot.querySelector("#settingsform").fields = [...this.schema];
-    this.shadowRoot.querySelector("#settingsform").value = {
-      ...this.schemaValues,
-    };
+    this.reloadPreferencesForm();
     this.shadowRoot
       .querySelector("#settingsform")
       .addEventListener("value-changed", this.__valueChangedEvent.bind(this));
@@ -162,6 +184,7 @@ class HaxPreferencesDialog extends LitElement {
   __valueChangedEvent(e) {
     if (e.detail.value) {
       HAXStore.globalPreferences = { ...e.detail.value };
+      this.schemaValues = { ...e.detail.value };
     }
   }
 

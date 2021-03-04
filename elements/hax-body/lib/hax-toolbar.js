@@ -1,129 +1,77 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
-import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
-class HaxToolbar extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: flex;
-          justify-content: flex-start;
-          visibility: visible;
-          transition: 0.2s all ease-in-out;
-          box-sizing: border-box;
-          pointer-events: all;
-          background-color: white;
-        }
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
+import { SimpleToolbarBehaviors } from "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
 
-        :host *[hidden] {
-          display: none;
-        }
-        .wrapper {
-          display: flex;
-          align-items: center;
-          transition: 0.2s all ease-in-out;
-          visibility: visible;
-          opacity: 0.8;
-        }
-        .wrapper:hover {
-          opacity: 1;
-        }
-        :host .wrapper ::slotted(*) {
-          pointer-events: all;
-        }
-        .close-cap {
-          margin: 10px 10px 0 8px;
-          display: flex;
-          padding: 0;
-        }
-        :host * ::slotted(hax-context-item:hover),
-        :host * ::slotted(hax-context-item-textop:hover),
-        :host * ::slotted(hax-context-item-menu:hover),
-        hax-context-item:hover,
-        hax-context-item-textop:hover,
-        hax-context-item-menu:hover {
-          z-index: 2;
-        }
-        #moremenu hax-context-item,
-        #moremenu ::slotted(button),
-        button {
-          height: 32px;
-          padding: 0;
-          min-width: 100px;
-          color: white !important;
-          border: 0;
-        }
+const HaxToolbarBehaviors = function (SuperClass) {
+  return class extends SimpleToolbarBehaviors(SuperClass) {
+    /**
+     * LitElement constructable styles enhancement
+     */
+    static get styles() {
+      return [
+        ...super.styles,
+        css`
+          :host {
+            --hax-ui-border-radius: 0px;
+          }
+          .selected-buttons {
+            transition: 0.1s all ease-in-out;
+            width: 0;
+          }
+          :host([has-selected-text]) .selected-buttons {
+            width: 100%;
+          }
+          ::slotted(*) {
+            pointer-events: all;
+          }
+          ::slotted(.group) {
+            border: none;
+          }
+        `,
+      ];
+    }
+    constructor() {
+      super();
+      this.selected = false;
+      this.inline = false;
+    }
+    static get tag() {
+      return "hax-toolbar";
+    }
 
-        #moremenu hax-context-item:hover,
-        :host #moremenu ::slotted(button:hover),
-        button:hover {
-          cursor: pointer;
-        }
-        .convert-button {
-          border-top: 1px solid var(--hax-color-bg-accent);
-        }
-      `,
-    ];
-  }
-  constructor() {
-    super();
-    this.selected = false;
-    this.hideMore = false;
-    this.inline = false;
-  }
-  render() {
-    return html`
-      <div class="wrapper">
-        <slot name="prefix"></slot>
-        <slot name="primary"></slot>
-        <hax-context-item-menu
-          mini
-          action
-          ?hidden="${this.hideMore}"
-          icon="icons:more-horiz"
-          label="More options"
-          id="moremenu"
-          event-name="hax-plate-op"
-          reset-on-select
-        >
-          <slot name="more"></slot>
-        </hax-context-item-menu>
-      </div>
-    `;
-  }
-  static get tag() {
-    return "hax-toolbar";
-  }
-
-  static get properties() {
-    return {
-      /**
-       * See what's selected
-       */
-      selected: {
-        type: Boolean,
-        reflect: true,
-      },
-      /**
-       * Hide the more menu.
-       */
-      hideMore: {
-        type: Boolean,
-        attribute: "hide-more",
-      },
-      /**
-       * This is an inline context menu
-       */
-      inline: {
-        type: Boolean,
-        reflect: true,
-      },
-    };
-  }
-}
+    static get properties() {
+      return {
+        ...super.properties,
+        /**
+         * See what's selected
+         */
+        selected: {
+          type: Boolean,
+          reflect: true,
+        },
+        /**
+         * This is an inline context menu
+         */
+        inline: {
+          type: Boolean,
+          reflect: true,
+        },
+      };
+    }
+  };
+};
+/**
+ *
+ * @customElement
+ * @extends HaxToolbarItemBehaviors
+ * @extends LitElement
+ * @lit-html
+ * @lit-element
+ * @demo demo/index.html
+ */
+class HaxToolbar extends HaxToolbarBehaviors(LitElement) {}
 window.customElements.define(HaxToolbar.tag, HaxToolbar);
-export { HaxToolbar };
+export { HaxToolbar, HaxToolbarBehaviors };

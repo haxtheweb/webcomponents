@@ -1,4 +1,5 @@
 import { pathResolver, SimpleIconsetStore } from "./simple-iconset.js";
+import { SimpleIconIconsetsManifest } from "./simple-iconset-manifest.js";
 [
   "av",
   "communication",

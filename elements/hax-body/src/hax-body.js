@@ -15,6 +15,8 @@ import {
   ReplaceWithPolyfill,
   normalizeEventPath,
 } from "@lrnwebcomponents/utils/utils.js";
+import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
@@ -112,7 +114,7 @@ Custom property | Description | Default
  * @LitElement
  * @element hax-body
  */
-class HaxBody extends UndoManagerBehaviors(SimpleColors) {
+class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   static get tag() {
     return "hax-body";
   }
@@ -144,35 +146,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          --hax-contextual-action-text-color: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --hax-contextual-action-hover-color: var(
-            --simple-colors-default-theme-grey-8,
-            #009dc7
-          );
-          --hax-contextual-action-color: var(
-            --simple-colors-default-theme-grey-12,
-            #007999
-          );
+          --hax-contextual-action-text-color: var(--hax-ui-background-color);
+          --hax-contextual-action-hover-color: var(--hax-ui-color-accent);
+          --hax-contextual-action-color: var(--hax-ui-color-accent-secondary);
           --hax-body-editable-outline: 0px solid
-            var(--simple-colors-default-theme-grey-4, #eeeeee);
+            var(--hax-ui-background-color-secondary);
           --hax-body-active-outline-hover: 1px solid
-            var(--simple-colors-default-theme-grey-8, #eeeeee);
-          --hax-body-active-outline: 0px solid
-            var(
-              --hax-contextual-action-hover-color,
-              var(--simple-colors-default-theme-cyan-7, #009dc7)
-            );
-          --hax-body-active-drag-outline: 1px solid
-            var(
-              --hax-contextual-action-hover-color,
-              var(--simple-colors-default-theme-cyan-7, #009dc7)
-            );
+            var(---hax-ui-background-color-faded);
+          --hax-body-active-outline: 0px solid var(---hax-ui-color-accent);
+          --hax-body-active-drag-outline: 1px solid var(--hax-ui-color-accent);
           --hax-body-target-background-color: var(
-            --simple-colors-default-theme-grey-11,
-            #009dc7
+            --hax-ui-color-accent-secondary
           );
           --hax-body-possible-target-background-color: inherit;
         }
@@ -186,6 +170,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           opacity: 1;
           cursor: pointer;
         }
+        #textcontextmenu,
+        #cecontextmenu {
+          max-width: 280px;
+        }
         .hax-context-menu {
           padding: 0;
           margin-left: -5000px;
@@ -198,8 +186,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           pointer-events: none;
           transition: 0.2s top ease-in-out, 0.2s left ease-in-out;
         }
-        #textcontextmenu.hax-context-menu {
-          z-index: 1000;
+        .hax-context-menu:hover,
+        .hax-context-menu:focus-within {
+          z-index: var(--hax-ui-focus-z-index);
         }
         .hax-context-visible {
           position: absolute;
@@ -421,9 +410,35 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
+    this.t = {
+      addContent: "Add Content",
+    };
+    // primary registration for the namespace so all tags under hax
+    // can leverage this data
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
+    if (!window.HaxUiStyles) {
+      window.HaxUiStyles = document.createElement("div");
+      let s = document.createElement("style"),
+        css = HaxUiBaseStyles.map((st) => st.cssText).join("");
+      s.setAttribute("data-hax", true);
+      s.setAttribute("type", "text/css");
+      if (s.styleSheet) {
+        // IE
+        s.styleSheet.cssText = css;
+      } else {
+        // the world
+        s.appendChild(document.createTextNode(css));
+      }
+      console.log(document.getElementsByTagName("head")[0], s);
+      document.getElementsByTagName("head")[0].appendChild(s);
+    }
     setTimeout(() => {
-      import("./lib/hax-text-context.js");
+      import("./lib/hax-context-container.js");
       import("./lib/hax-ce-context.js");
+      import("./lib/hax-text-context.js");
       import("./lib/hax-plate-context.js");
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
       this.polyfillSafe = HAXStore.computePolyfillSafe();
@@ -691,27 +706,31 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       <div id="bodycontainer" class="ignore-activation">
         <slot id="body"></slot>
       </div>
-      <hax-text-context
+      <hax-text-context 
         id="textcontextmenu"
         class="hax-context-menu ignore-activation"
+        .activeNode="${this.activeNode}"
       ></hax-text-context>
       <hax-ce-context
         id="cecontextmenu"
         class="hax-context-menu ignore-activation"
+        .activeNode="${this.activeNode}"
       ></hax-ce-context>
       <hax-plate-context
         id="platecontextmenu"
         class="hax-context-menu ignore-activation"
-      ></hax-plate-context>
-      <hax-context-item
+        ></hax-plate-context>
+      </hax-context-container>
+      <hax-context-container
         id="addincontext"
-        class="hax-context-menu ignore-activation"
-        icon="icons:add-circle"
-        label="Add here"
-        mini
-        circle
-      >
-      </hax-context-item>
+        class="hax-context-menu ignore-activation">
+        <hax-context-item
+          icon="icons:add"
+          label="${this.t.addContent}"
+          show-text-label
+        >
+        </hax-context-item>
+      </hax-context-container>
     `;
   }
   /**
@@ -1132,13 +1151,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
         // if we see it, ensure we don't have the pin
         if (el) {
-          if (this.activeNode && this.elementMidViewport()) {
-            el.classList.add("hax-context-pin-top");
-            this.contextMenus.plate.classList.add("hax-context-pin-top");
-          } else {
-            el.classList.remove("hax-context-pin-top");
-            this.contextMenus.plate.classList.remove("hax-context-pin-top");
-          }
+          this._setSticky(el);
           this.positionContextMenus();
         }
       }, 100);
@@ -1456,7 +1469,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         HAXStore.haxAppPicker.presentOptions(
           haxElements,
           "__convert",
-          `Transform ${humanName} to..`,
+          `Change ${humanName} to...`,
           "gizmo"
         );
       }
@@ -1810,7 +1823,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.__positionContextTimer = setTimeout(() => {
         if (!HAXStore._lockContextPosition) {
           // menu width starts out w/ the plate context which is a set size
-          let menuWidth = 140;
+          let menuWidth = 176;
           let tag = node.tagName.toLowerCase();
           if (HAXStore._isSandboxed && tag === "webview") {
             tag = "iframe";
@@ -1826,14 +1839,14 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             // check for core editing element OR it providing it's own experience entirely
             // otherwise we'll pick it up in the specific element via activeNode change hooks
             if (props.editingElement == "core") {
-              this._positionContextMenu(this.contextMenus.ce, node, 0, -28);
+              this._positionContextMenu(this.contextMenus.ce, node, 0, -30);
             } else {
               this._hideContextMenu(this.contextMenus.ce);
             }
-            menuWidth += 28;
+            menuWidth += 30;
           } else {
             this._hideContextMenu(this.contextMenus.ce);
-            this._positionContextMenu(this.contextMenus.text, node, 0, -28);
+            this._positionContextMenu(this.contextMenus.text, node, 0, -30);
             // text menu can expand based on selection
             let textRect = this.contextMenus.text.getBoundingClientRect();
             menuWidth += textRect.width;
@@ -1861,7 +1874,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 activeRect.width -
                   this.contextMenus.plate.getBoundingClientRect().width +
                   1,
-                -26
+                -30
               );
             }
           } else {
@@ -1874,7 +1887,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                   activeRect.width -
                     this.contextMenus.plate.getBoundingClientRect().width +
                     1,
-                  -26
+                  -30
                 );
               }
             }, 250);
@@ -2233,7 +2246,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         } else {
           // would imply top of document
           let p = document.createElement("p");
-          this.insertBefore(p, this.childNodes[0]);
+          this.insertBefore(p, this.activeNode);
         }
         break;
       case "insert-below-active":
@@ -3441,16 +3454,37 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     menu.classList.add("hax-context-visible", "hax-context-menu-active");
   }
   /**
+   * gets context container
+   */
+  _getContextContainer(el) {
+    let parent = !el || !el.parentNode ? undefined : el.parentNode,
+      container =
+        !parent || !parent.nodeType
+          ? undefined
+          : parent.nodeType == 1
+          ? parent
+          : parent.host;
+    return container;
+  }
+  /**
+   * sets stickiness of container
+   */
+  _setSticky(el, on = true) {
+    if (!el || !this._getContextContainer(el)) return;
+    let container = this._getContextContainer(el),
+      sticky = on && this.activeNode && this.elementMidViewport();
+    container.menuSticky = sticky;
+  }
+  /**
    * Simple hide / reset of whatever menu it's handed.
    */
   _hideContextMenu(menu) {
+    let container = this._getContextContainer(menu);
     menu.removeAttribute("on-screen");
     menu.visible = false;
-    menu.classList.remove(
-      "hax-context-visible",
-      "hax-context-pin-top",
-      "hax-context-menu-active"
-    );
+    menu.classList.remove("hax-context-visible", "hax-context-menu-active");
+    this._setSticky(menu);
+    if (container) container.menusVisible = false;
   }
   /**
    * Find the next thing to tab forward to.

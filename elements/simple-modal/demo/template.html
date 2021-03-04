@@ -23,16 +23,17 @@
         <template>
             <style>
               simple-modal-template[modal-id="smt1"] {
-                  --simple-modal-width: 300px;
-                  --simple-modal-height: 300px;
+                --simple-modal-resize: both;
+                --simple-modal-width: 300px;
+                --simple-modal-height: 300px;
+                --simple-modal-min-width: 300px;
+                --simple-modal-min-height: 300px;
               }
-              simple-modal-template.wide {
-                  --simple-modal-width: 90vw;
-                  --simple-modal-height: 90vh;
-                  --simple-modal-min-width: unset;
-                  --simple-modal-min-height: unset;
-                  --simple-modal-max-width: 90vw;
-                  --simple-modal-max-height: 90vh;
+              simple-modal.wide {
+                --simple-modal-width: 75vw;
+                --simple-modal-height: 75vh;
+                --simple-modal-max-width: 90vw;
+                --simple-modal-max-height: 90vh;
               }
             </style>
           <button controls="smt1">Button 1</button>
@@ -46,9 +47,17 @@
             <p slot="precontent">Button 2 opens the second simple-modal-template template.</p>
             <p slot="content">Button 2 opens the second simple-modal-template template.</p>
           </simple-modal-template>
+          <button controls="smt3">Button 3</button>
+          <simple-modal-template>
+            <pre slot="custom">
+              Button 3 opens the custom simple-modal-template template. That is not wrapped in divs. 
+              This is good for having even more control of content styling.
+            </pre>
+          </simple-modal-template>
           <script>
             document.querySelector('[modal-id="smt1"]').associateEvents(document.querySelector('[controls="smt1"]'));
             document.querySelector('[modal-id="smt2"]').associateEvents(document.querySelector('[controls="smt2"]'));
+            document.querySelector('[modal-id="smt2"]').associateEvents(document.querySelector('[controls="smt3"]'));
           </script>
         </template>
       </demo-snippet>

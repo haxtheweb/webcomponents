@@ -3,10 +3,30 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { DeviceDetails } from "./lib/PerformanceDetect.js";
+import { WCRegistryLoaderCSS } from "./lib/loading-styles.js";
 
 /**
  * `replace-tag`
  * `Loading helpers and css`
+ *
+ * This is a powerful little helper that can detect device performance
+ * and then conditionally load / import accordingly.
+ * The API has two key methods. The default, is used as <replace-tag with="new-tag"></replace-tag>
+ * This will ensure that when visible (via IntersectionObserver) that new-tag will get imported.
+ * This requires the use of the wc-registry.json setup used in unbundled-webcomponents.
+ * The second methodology is to simply do the import on visibility. This is to avoid possible layout
+ * thrashing. This looks like `<replace-tag with="new-tag" import-only></replace-tag>` which will NOT
+ * render a `new-tag` element but instead simply import the definition. This is useful when you want
+ * to avoid layout thrashing OR you want to import assets conditionally based on visibility of any kind.
+ * @api import-only     @boolean   - will trigger an import of the tag and then self removal.
+ *  This is useful for NOT replacing the tag in context but ensuring the definition loads based on
+ *  passing into the viewport
+ * @api importing-text  @string - what it says as it is visible to the user while importing.
+ *  This also is the "Click to view" on low power environments
+ * @api import-method   @string  - if it should import on view or device capabilities
+ *  (or automatic, default). View will FORCE a load even on low performance environments while
+ * things without this set (like a meme in content) would only load if it's been clicked on
+ * for low performance unless the `import-method="view"` is specifically set.
  * @element replace-tag
  * @customElement
  * @demo demo/magicDeviceMethod.html magic method 2.0
@@ -27,8 +47,8 @@ const ReplaceTagSuper = function (SuperClass) {
     }
     performanceBasedReplacement() {
       this.setAttribute("laser-loader", "laser-loader");
-      if (!this.loadingText) {
-        this.loadingText = "Loading...";
+      if (!this.importingText) {
+        this.importingText = "Loading...";
       }
       this.render();
       this.runReplacement();
@@ -41,24 +61,28 @@ const ReplaceTagSuper = function (SuperClass) {
       WCRegistryLoaderCSS();
       let badDevice = await DeviceDetails.badDevice();
       if (
-        this.getAttribute("with-method") != "view" &&
-        this.getAttribute("import") == null
+        this.getAttribute("import-method") != "view" &&
+        this.getAttribute("import-only") == null
       ) {
         // look at browser performance
         // if below a threashold display message to replace on click
         if (badDevice) {
-          if (!this.loadingText) {
-            this.loadingText = "Click to load";
+          if (!this.importingText) {
+            this.importingText = "Click to load";
           }
           this.addEventListener("click", this.performanceBasedReplacement);
         }
       }
       // if we don't have a poor device or another setting is used, then we are
       // expected to use lazy loading as it comes into the viewport like the rest
-      if (!badDevice || this.getAttribute("import") != null) {
+      if (
+        !badDevice ||
+        this.getAttribute("import-only") != null ||
+        this.getAttribute("import-method") == "view"
+      ) {
         this.setAttribute("laser-loader", "laser-loader");
-        if (!this.loadingText) {
-          this.loadingText = "Loading...";
+        if (!this.importingText) {
+          this.importingText = "Loading...";
         }
         if (!this.intersectionObserver) {
           this.intersectionObserver = new IntersectionObserver(
@@ -95,58 +119,6 @@ const ReplaceTagSuper = function (SuperClass) {
     runReplacement() {
       // ensure we have something to replace this with
       if (this.getAttribute("with")) {
-        customElements
-          .whenDefined(this.getAttribute("with"))
-          .then((response) => {
-            let props = {};
-            if (this.getAttribute("import") != null) {
-              this.remove();
-            } else {
-              // just the props off of this for complex state
-              for (
-                var i = 0, atts = this.attributes, n = atts.length;
-                i < n;
-                i++
-              ) {
-                props[atts[i].nodeName] = atts[i].nodeValue;
-              }
-              let replacement = document.createElement(props.with);
-              replacement.setAttribute("popup-loader", "popup-loader");
-              // set the value in the new object
-              for (var i in props) {
-                if (props[i] != null) {
-                  replacement.setAttribute(i, props[i]);
-                }
-              }
-              replacement.removeAttribute("laser-loader");
-              replacement.innerHTML = this.innerHTML;
-              this.replaceWith(replacement);
-              // variable / attribute clean up on the element that got replaced as
-              // "this" is still valid for this loop
-              setTimeout(() => {
-                replacement.removeAttribute("popup-loader");
-                replacement.removeAttribute("laser-loader");
-                replacement.style.setProperty("--laserEdgeAni-width", null);
-                replacement.style.setProperty(
-                  "--laserEdgeAni-innerWidth",
-                  null
-                );
-                replacement.style.setProperty("--laserEdgeAni-height", null);
-                replacement.style.setProperty(
-                  "--laserEdgeAni-innerHeight",
-                  null
-                );
-              }, 250);
-            }
-            // we resolved 1 definition so now we know it's safe to do all of them
-            setTimeout(() => {
-              document.body
-                .querySelectorAll('replace-tag[with="' + props.with + '"]')
-                .forEach((el) => {
-                  el.runReplacement();
-                });
-            }, 0);
-          });
         // inject autoload tag which self appends
         import("@lrnwebcomponents/wc-autoload/wc-autoload.js").then(() => {
           // force a process to occur if this is the 1st time
@@ -170,16 +142,13 @@ const ReplaceTagSuper = function (SuperClass) {
 class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
   constructor() {
     super();
-    if (this.getAttribute("loading-text")) {
-      this.loadingText = this.getAttribute("loading-text");
+    if (this.getAttribute("importing-text")) {
+      this.importingText = this.getAttribute("importing-text");
     }
     // support for element being defined prior to view
-    if (
-      this.getAttribute("with") &&
-      customElements.get(this.getAttribute("with"))
-    ) {
+    if (customElements.get(this.getAttribute("with"))) {
       let props = {};
-      if (this.getAttribute("import") != null) {
+      if (this.getAttribute("import-only") != null) {
         this.remove();
       } else {
         for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
@@ -193,10 +162,56 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
           }
         }
         replacement.removeAttribute("laser-loader");
-        replacement.removeAttribute("loading-text");
+        replacement.removeAttribute("with");
+        replacement.removeAttribute("import-method");
+        replacement.removeAttribute("importing-text");
         replacement.innerHTML = this.innerHTML;
         this.replaceWith(replacement);
       }
+    } else {
+      customElements.whenDefined(this.getAttribute("with")).then((response) => {
+        let props = {};
+        if (this.getAttribute("import-only") != null) {
+          this.remove();
+        } else {
+          // just the props off of this for complex state
+          for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
+            props[atts[i].nodeName] = atts[i].nodeValue;
+          }
+          let replacement = document.createElement(props.with);
+          replacement.setAttribute("popup-loader", "popup-loader");
+          // set the value in the new object
+          for (var i in props) {
+            if (props[i] != null) {
+              replacement.setAttribute(i, props[i]);
+            }
+          }
+          replacement.removeAttribute("laser-loader");
+          replacement.innerHTML = this.innerHTML;
+          this.replaceWith(replacement);
+          // variable / attribute clean up on the element that got replaced as
+          // "this" is still valid for this loop
+          setTimeout(() => {
+            replacement.removeAttribute("popup-loader");
+            replacement.removeAttribute("with");
+            replacement.removeAttribute("import-method");
+            replacement.removeAttribute("importing-text");
+            replacement.removeAttribute("laser-loader");
+            replacement.style.setProperty("--laserEdgeAni-width", null);
+            replacement.style.setProperty("--laserEdgeAni-innerWidth", null);
+            replacement.style.setProperty("--laserEdgeAni-height", null);
+            replacement.style.setProperty("--laserEdgeAni-innerHeight", null);
+          }, 250);
+        }
+        // we resolved 1 definition so now we know it's safe to do all of them
+        setTimeout(() => {
+          document.body
+            .querySelectorAll('replace-tag[with="' + props.with + '"]')
+            .forEach((el) => {
+              el.runReplacement();
+            });
+        }, 0);
+      });
     }
     this.template = document.createElement("template");
     this.attachShadow({ mode: "open" });
@@ -225,7 +240,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       line-height: 2px !important;
       height:2px;
     }
-    :host(:not([with-method="click"])) {
+    :host(:not([import-method="click"])) {
       background-color: #EEEEEE;
       color: #444444;
       font-size: 16px;
@@ -233,7 +248,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       margin: 16px;
       padding: 16px;
     }
-    :host(:not([with-method="click"]):hover) {
+    :host(:not([import-method="click"]):hover) {
       opacity: 1 !important;
       outline: 1px solid black;
       cursor: pointer;
@@ -242,7 +257,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       display: none;
     }
     </style>
-<div>${this.loadingText}</div>`;
+<div>${this.importingText}</div>`;
   }
   render() {
     this.shadowRoot.innerHTML = null;
@@ -256,73 +271,3 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
 }
 customElements.define(ReplaceTag.tag, ReplaceTag);
 export { ReplaceTag };
-
-// loading styles and utilities
-// loader that uses a CSS selector and variables in order to auto generate outlines
-function WCRegistryLoaderCSS(
-  auto = false,
-  parent = "*",
-  selectorBase = ":not(:defined)"
-) {
-  // debounce entire call automatically in case of spamming as new things get added to screen
-  clearTimeout(window.WCRegistryLoaderCSSDebounce);
-  window.WCRegistryLoaderCSSDebounce = setTimeout(() => {
-    // default selector is anything that says to operate this way
-    let selector = parent + "[laser-loader]" + selectorBase;
-    // much more aggressive, apply loading to ANYTHING not defined
-    // previously. This needs more testing but would assume everything
-    // has its box model in shape at run time w/ css fallbacks which is
-    // probably not a realistic assumption but worth trying in the end
-    if (auto) {
-      selector = parent + selectorBase;
-    }
-    // map all results of our selector
-    [...document.body.querySelectorAll("replace-tag," + selector)].map((el) => {
-      // automaticlaly set the laser loader flag if told
-      if (auto) {
-        el.setAttribute("laser-loader", "laser-loader");
-      }
-      // calc the box model's definition for height and width
-      const d = el.getBoundingClientRect();
-      el.style.setProperty("--laserEdgeAni-width", d.width + "px");
-      el.style.setProperty("--laserEdgeAni-innerWidth", d.width - 2 + "px");
-      el.style.setProperty("--laserEdgeAni-innerHeight", d.height - 2 + "px");
-      el.style.setProperty("--laserEdgeAni-height", d.height + "px");
-      customElements.whenDefined(el.localName).then((response) => {
-        if (el.localName != "replace-tag") {
-          // this would be a way of doing loading state on ANYTHING without definition
-          el.setAttribute("loaded", "loaded");
-          el.removeAttribute("laser-loader");
-          el.style.setProperty("--laserEdgeAni-width", null);
-          el.style.setProperty("--laserEdgeAni-innerWidth", null);
-          el.style.setProperty("--laserEdgeAni-height", null);
-          el.style.setProperty("--laserEdgeAni-innerHeight", null);
-          // delay this bc if it has the pop up loader on it it needs to wait to finish the animation
-          setTimeout(() => {
-            el.removeAttribute("popup-loader");
-            // clean up loaded state as if none of this ever happened
-            setTimeout(() => {
-              el.removeAttribute("loaded");
-            }, 1000);
-          }, 1000);
-        }
-      });
-    });
-  }, 10);
-}
-const loadingStylesResizeEvent = function () {
-  clearTimeout(window.WCRegistryLoaderCSSDebounce2);
-  window.WCRegistryLoaderCSSDebounce2 = setTimeout(() => {
-    // ensure we have something undefind
-    if (
-      document.body.querySelectorAll("replace-tag,:not(:defined)").length > 0
-    ) {
-      WCRegistryLoaderCSS();
-    } else {
-      // we no longer have anything defined so remove self listening
-      window.removeEventListener("resize", loadingStylesResizeEvent);
-    }
-  }, 100);
-};
-// resize function incase the screen changes shape while still loading (like phone rotating)
-window.addEventListener("resize", loadingStylesResizeEvent);

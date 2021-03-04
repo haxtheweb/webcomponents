@@ -71,6 +71,7 @@ class LrnsysDialog extends SimpleColors {
     return html`
       <button
         class="${this.class}"
+        part="lrnsys-dialog-button"
         id="dialogtrigger"
         @click="${this.openDialog}"
         @focus-changed="${this.focusToggle}"
@@ -83,6 +84,7 @@ class LrnsysDialog extends SimpleColors {
         aria-label="${this.alt}"
       >
         <lrnsys-button-inner
+          part="lrnsys-dialog-lrnsys-button-inner"
           avatar="${this.avatar}"
           icon="${this.icon}"
           text="${this.text}"
@@ -91,6 +93,7 @@ class LrnsysDialog extends SimpleColors {
         </lrnsys-button-inner>
       </button>
       <simple-tooltip
+        part="lrnsys-dialog-simple-tooltip"
         for="dialogtrigger"
         animation-delay="0"
         ?hidden="${!this.alt}"

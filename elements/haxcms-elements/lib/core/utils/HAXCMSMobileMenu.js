@@ -38,6 +38,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
           site-menu:not(:defined) {
             display: none;
           }
+          replace-tag[with="site-menu"],
           site-menu {
             height: 100vh;
           }
@@ -60,7 +61,7 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         <simple-icon-button-lite
           class="btn"
           icon="icons:menu"
-          aria-label="Toggle menu"
+          label="Toggle menu"
           id="haxcmsmobilemenubutton"
           .part="${this.editMode ? `edit-mode-active` : ``}"
           @click="${this.__HAXCMSMobileMenuToggle}"
@@ -84,17 +85,17 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       }
     }
     HAXCMSMobileMenu(e) {
-      // prettier-ignore
-      import(
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
-      );
       return html`
         <nav
           id="haxcmsmobilemenunav"
           role="navigation"
           aria-labelledby="sitemenu"
         >
-          <site-menu id="sitemenu"></site-menu>
+          <replace-tag
+            with="site-menu"
+            id="sitemenu"
+            import-method="view"
+          ></replace-tag>
         </nav>
       `;
     }

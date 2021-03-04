@@ -1,4 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
+import { HaxComponentStyles } from "./hax-ui-styles.js";
+import { HAXStore } from "./hax-store.js";
 /**
  `hax-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require
@@ -14,19 +17,12 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 class HaxPicker extends LitElement {
   static get styles() {
     return [
+      ...HaxComponentStyles,
       css`
-        :host {
-          display: block;
-        }
-        .button-list {
-          display: block;
-          text-align: left;
-          overflow-x: hidden;
+        simple-button-grid {
           overflow-y: auto;
-          display: flex;
-          flex-wrap: wrap;
-          margin: 20px 0 0 0;
-          padding: 0;
+          margin: var(--hax-ui-spacing-sm);
+          --simple-button-grid-cols: 100px;
         }
       `,
     ];
@@ -39,22 +35,23 @@ class HaxPicker extends LitElement {
   }
   render() {
     return html`
-      <div class="button-list">
+      <simple-button-grid cols="100px">
         ${this.selectionList.map(
           (element, index) => html`
             <hax-tray-button
-              dark-bg
+              show-text-label
               id="picker-item-${index}"
               @click="${this._selected}"
               data-selected="${index}"
+              ?disabled="${HAXStore.activeGizmo &&
+              HAXStore.activeGizmo.tag == element.tag}"
               label="${element.title}"
               icon="${element.icon}"
-              ?color-meaning="${this.selectionList.length === 2}"
-            >
-            </hax-tray-button>
+              icon-position="top"
+            ></hax-tray-button>
           `
         )}
-      </div>
+      </simple-button-grid>
     `;
   }
   static get tag() {
@@ -107,6 +104,7 @@ class HaxPicker extends LitElement {
             icon: elements[i].gizmo.icon,
             title: elements[i].gizmo.title,
             color: elements[i].gizmo.color,
+            tag: elements[i].gizmo.tag,
           });
         }
         break;
@@ -117,6 +115,7 @@ class HaxPicker extends LitElement {
             icon: elements[i].details.icon,
             title: elements[i].details.title,
             color: elements[i].details.color,
+            tag: elements[i].gizmo.tag,
           });
         }
         break;

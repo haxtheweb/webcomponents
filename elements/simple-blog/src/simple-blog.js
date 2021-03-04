@@ -104,11 +104,11 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   render() {
     return html`
       <iron-pages .selected="${this.selectedPage}">
-        <section>
+        <header>
           <simple-blog-header></simple-blog-header>
           <simple-blog-listing></simple-blog-listing>
-        </section>
-        <section>
+        </header>
+        <main>
           <simple-icon-button
             id="backbutton"
             icon="icons:arrow-back"
@@ -121,11 +121,15 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             animation-delay="0"
             >Back to listing
           </simple-tooltip>
-          <simple-blog-post ?edit-mode="${this.editMode}"
-            ><slot></slot
-          ></simple-blog-post>
-          <simple-blog-footer id="footer"></simple-blog-footer>
-        </section>
+          <article>
+            <simple-blog-post ?edit-mode="${this.editMode}"
+              ><slot></slot
+            ></simple-blog-post>
+          </article>
+          <footer>
+            <simple-blog-footer id="footer"></simple-blog-footer>
+          </footer>
+        </main>
       </iron-pages>
     `;
   }

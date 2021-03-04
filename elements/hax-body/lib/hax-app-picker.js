@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "./hax-picker.js";
+import { HaxComponentStyles } from "./hax-ui-styles.js";
 /**
  * `hax-app-picker`
  * `app pop over + picker with options`
@@ -8,27 +9,10 @@ import "./hax-picker.js";
 class HaxAppPicker extends LitElement {
   static get styles() {
     return [
+      ...HaxComponentStyles,
       css`
-        simple-modal-template {
-          --simple-modal-z-index: 100000001;
-          --simple-modal-width: auto;
-          --simple-modal-height: auto;
-          --simple-modal-min-width: 45vw;
-          --simple-modal-min-height: 40vh;
-          --simple-modal-max-width: unset;
-          --simple-modal-max-height: unset;
-          --simple-modal-titlebar-color: black;
-          --simple-modal-titlebar-background: #ddd;
-          --simple-modal-header-color: black;
-          --simple-modal-header-background: #ccc;
-          --simple-modal-content-container-color: black;
-          --simple-modal-content-container-background: #ffffff;
-          --simple-modal-buttons-color: blue;
-          --simple-modal-buttons-background: #fff;
-          --simple-modal-button-color: var(--simple-modal-buttons-color);
-          --simple-modal-button-background: var(
-            --simple-modal-buttons-background-color
-          );
+        :host {
+          display: none;
         }
       `,
     ];
@@ -96,7 +80,11 @@ class HaxAppPicker extends LitElement {
   }
   render() {
     return html`
-      <simple-modal-template .title="${this.title}" modal-id="hax-picker">
+      <simple-modal-template
+        .title="${this.title}"
+        modal-id="hax-picker"
+        mode="hax-ui"
+      >
         <hax-picker slot="content"></hax-picker>
       </simple-modal-template>
     `;

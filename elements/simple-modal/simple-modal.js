@@ -8,20 +8,62 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "web-dialog/index.js";
 
+const SimpleModalCssVars = [
+  "--simple-modal-resize",
+  "--simple-modal-width",
+  "--simple-modal-z-index",
+  "--simple-modal-height",
+  "--simple-modal-min-width",
+  "--simple-modal-min-height",
+  "--simple-modal-max-width",
+  "--simple-modal-max-height",
+  "--simple-modal-titlebar-color",
+  "--simple-modal-titlebar-height",
+  "--simple-modal-titlebar-line-height",
+  "--simple-modal-titlebar-background",
+  "--simple-modal-titlebar-padding",
+  "--simple-modal-header-color",
+  "--simple-modal-header-background",
+  "--simple-modal-header-padding",
+  "--simple-modal-content-container-color",
+  "--simple-modal-content-container-background",
+  "--simple-modal-content-padding",
+  "--simple-modal-buttons-color",
+  "--simple-modal-buttons-background",
+  "--simple-modal-buttons-padding",
+  "--simple-modal-button-color",
+  "--simple-modal-button-background",
+];
 /**
  * `simple-modal`
  * `A simple modal that ensures accessibility and stack order context appropriately`
  * CSS Variables: ```
+ * 
+ * 
+--simple-modal-resize: unset;
 --simple-modal-titlebar-color: #444;
 --simple-modal-titlebar-background: #ddd;
+--simple-modal-titlebar-padding: 0px 16px;
+--simple-modal-titlebar-height: unset;
+--simple-modal-titlebar-line-height: unset;
 --simple-modal-header-color: #222;
 --simple-modal-header-background: #ccc;
+--simple-modal-header-padding: 0px 16px;
 --simple-modal-content-container-color: #222;
 --simple-modal-content-container-background: #fff;
+--simple-modal-content-padding: 8px 16px;
 --simple-modal-buttons-color: unset;
 --simple-modal-buttons-background: unset;
+--simple-modal-buttons-padding: 0;
 --simple-modal-button-color: var(--simple-modal-buttons-color);
 --simple-modal-button-background: var(--simple-modal-buttons-background-color);
+--simple-modal-z-index: 1000;
+--simple-modal-width: 75vw;
+--simple-modal-height: auto;
+--simple-modal-min-width: unset;
+--simple-modal-min-height: unset;
+--simple-modal-max-width: unset;
+--simple-modal-max-height: unset;
 ```
  * @demo ./demo/index.html demo
  * @demo ./demo/css.html styling simple-modal via CSS
@@ -44,7 +86,6 @@ class SimpleModal extends LitElement {
 
         :host web-dialog ::slotted(*) {
           font-size: 14px;
-          width: 100%;
         }
 
         #titlebar {
@@ -116,8 +157,8 @@ class SimpleModal extends LitElement {
           padding: 0;
           padding: var(--simple-modal-buttons-padding, 0);
           margin: 0;
-          color: var(--simple-modal-buttons-color, unset);
-          background-color: var(--simple-modal-buttons-background, unset);
+          color: var(--simple-modal-buttons-color, blue);
+          background-color: var(--simple-modal-buttons-background, #fff);
         }
 
         .buttons ::slotted(*) {
@@ -132,16 +173,19 @@ class SimpleModal extends LitElement {
         web-dialog {
           --dialog-border-radius: var(--simple-modal-border-radius, 2px);
           z-index: var(--simple-modal-z-index, 1) !important;
+          padding: 0;
         }
         web-dialog::part(dialog) {
           border: 1px solid var(--simple-modal-border-color, #222);
+          min-height: var(--simple-modal-min-height, unset);
+          min-width: var(--simple-modal-min-width, unset);
+          z-index: var(--simple-modal-z-index, 1000);
+          resize: var(--simple-modal-resize, unset);
           padding: 0;
-          width: var(--simple-modal-width, auto);
-          min-width: var(--simple-modal-min-width, auto);
-          max-width: var(--simple-modal-max-width, auto);
-          height: var(--simple-modal-height, auto);
-          min-height: var(--simple-modal-min-height, auto);
-          max-height: var(--simple-modal-max-height, auto);
+          --dialog-height: var(--simple-modal-height, auto);
+          --dialog-width: var(--simple-modal-width, 75vw);
+          --dialog-max-width: var(--simple-modal-max-width, 100vw);
+          --dialog-max-height: var(--simple-modal-max-height, 100vh);
         }
         web-dialog.style-scope.simple-modal {
           display: none !important;
@@ -149,8 +193,15 @@ class SimpleModal extends LitElement {
         web-dialog[open].style-scope.simple-modal {
           display: flex !important;
           position: fixed !important;
-          top: 25vh;
-          left: 25vw;
+          margin: auto;
+        }
+        :host([resize="none"]) web-dialog[open].style-scope.simple-modal,
+        :host([resize="horizontal"]) web-dialog[open].style-scope.simple-modal {
+          top: calc(50% - var(--simple-modal-height, auto) / 2);
+        }
+        :host([resize="none"]) web-dialog[open].style-scope.simple-modal,
+        :host([resize="vertical"]) web-dialog[open].style-scope.simple-modal {
+          left: calc(50% - var(--simple-modal-width, 75vw) / 2);
         }
       `,
     ];
@@ -160,6 +211,7 @@ class SimpleModal extends LitElement {
       id="dialog"
       center
       role="dialog"
+      part="dialog"
       aria-describedby="simple-modal-content"
       aria-label="${this._getAriaLabel(this.title)}"
       aria-labelledby="${this._getAriaLabelledby(this.title)}"
@@ -168,8 +220,10 @@ class SimpleModal extends LitElement {
       @open="${this.open}"
       @close="${this.close}"
     >
-      <div id="titlebar">
-        <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
+      <div id="titlebar" part="titlebar">
+        <h2 id="simple-modal-title" ?hidden="${!this.title}" part="title">
+          ${this.title}
+        </h2>
         <div></div>
         <simple-icon-button-lite
           id="close"
@@ -177,14 +231,16 @@ class SimpleModal extends LitElement {
           icon="${this.closeIcon}"
           @click="${this.close}"
           label="${this.closeLabel}"
+          part="close"
         >
         </simple-icon-button-lite>
       </div>
-      <div id="headerbar"><slot name="header"></slot></div>
-      <div id="simple-modal-content">
+      <div id="headerbar" part="headerbar"><slot name="header"></slot></div>
+      <div id="simple-modal-content" part="content">
         <slot name="content"></slot>
       </div>
-      <div class="buttons">
+      <slot name="custom" part="custom"></slot>
+      <div class="buttons" part="buttons">
         <slot name="buttons"></slot>
       </div>
     </web-dialog>`;
@@ -232,6 +288,13 @@ class SimpleModal extends LitElement {
        */
       modal: {
         type: Boolean,
+      },
+      /**
+       * can add a custom string to style modal based on what is calling it
+       */
+      mode: {
+        type: String,
+        reflect: true,
       },
     };
   }
@@ -303,6 +366,7 @@ class SimpleModal extends LitElement {
       setTimeout(() => {
         this.show(
           e.detail.title,
+          e.detail.mode,
           e.detail.elements,
           e.detail.invokedBy,
           e.detail.id,
@@ -315,6 +379,7 @@ class SimpleModal extends LitElement {
     } else {
       this.show(
         e.detail.title,
+        e.detail.mode,
         e.detail.elements,
         e.detail.invokedBy,
         e.detail.id,
@@ -330,6 +395,7 @@ class SimpleModal extends LitElement {
    */
   show(
     title,
+    mode,
     elements,
     invokedBy,
     id = null,
@@ -341,10 +407,11 @@ class SimpleModal extends LitElement {
     this.invokedBy = invokedBy;
     this.modal = modal;
     this.title = title;
+    this.mode = mode;
     let element;
     // append element areas into the appropriate slots
     // ensuring they are set if it wasn't previously
-    let slots = ["header", "content", "buttons"];
+    let slots = ["header", "content", "buttons", "custom"];
     if (id) {
       this.setAttribute("id", id);
     } else {
@@ -352,31 +419,7 @@ class SimpleModal extends LitElement {
     }
     this.setAttribute("style", "");
     if (styles) {
-      [
-        "--simple-modal-width",
-        "--simple-modal-z-index",
-        "--simple-modal-height",
-        "--simple-modal-min-width",
-        "--simple-modal-min-height",
-        "--simple-modal-max-width",
-        "--simple-modal-max-height",
-        "--simple-modal-titlebar-color",
-        "--simple-modal-titlebar-height",
-        "--simple-modal-titlebar-line-height",
-        "--simple-modal-titlebar-background",
-        "--simple-modal-titlebar-padding",
-        "--simple-modal-header-color",
-        "--simple-modal-header-background",
-        "--simple-modal-header-padding",
-        "--simple-modal-content-container-color",
-        "--simple-modal-content-container-background",
-        "--simple-modal-content-padding",
-        "--simple-modal-buttons-color",
-        "--simple-modal-buttons-background",
-        "--simple-modal-buttons-padding",
-        "--simple-modal-button-color",
-        "--simple-modal-button-background",
-      ].forEach((prop) => {
+      SimpleModalCssVars.forEach((prop) => {
         this.style.setProperty(prop, styles[prop] || "inherit");
       });
     }
@@ -485,7 +528,7 @@ class SimpleModal extends LitElement {
   }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);
-export { SimpleModal };
+export { SimpleModal, SimpleModalCssVars };
 
 // register globally so we can make sure there is only one
 window.SimpleModal = window.SimpleModal || {};
