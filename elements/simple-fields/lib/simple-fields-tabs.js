@@ -34,7 +34,7 @@ class SimpleFieldsTabs extends A11yTabs {
           border-radius: var(--simple-fields-border-radius, 2px);
         }
         :host([error]) #tabs .error {
-          color: var(--simple-fields-error-color, #dd2c00);
+          color: var(--simple-fields-error-color, #b40000);
           transition: border 0.5s ease;
         }
       `,

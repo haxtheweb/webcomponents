@@ -8,6 +8,8 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu.js";
+import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 /**
  * `simple-fields-array-item`
  * an accessible expand collapse
@@ -50,7 +52,10 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           border: none;
           transform: rotate(0deg);
           transition: all 0.5s ease;
+          z-index: 1;
+          position: relative;
         }
+        ::slotted(*),
         :host([disabled]) {
           opacity: 0.5;
         }
@@ -61,17 +66,16 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           transition: all 0.5s ease;
         }
         :host([error]) {
-          outline: 1px solid var(--simple-fields-error-color, #dd2c00);
+          outline: 1px solid var(--simple-fields-error-color, #b40000);
           transition: border 0.5s ease;
-        }
-        :host(:focus-within) {
-          z-index: 2;
         }
         *[aria-controls="content"][disabled] {
           cursor: not-allowed;
         }
         #drag-handle {
           flex: 0 1 auto;
+          position: relative;
+          overflow: visible;
         }
         #preview {
           flex: 1 0 auto;
@@ -81,7 +85,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         .heading-inner {
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-start;
         }
         #content {
           overflow: hidden;
@@ -105,9 +109,9 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         #content-inner > * {
           flex: 1 1 auto;
         }
+        #copy,
         #remove {
           flex: 0 0 auto;
-          color: var(--simple-fields-error-color, #ac0000);
         }
         #heading {
           margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);
@@ -116,37 +120,71 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
         }
         #drag-handle {
-          margin-right: calc(var(--simple-fields-margin-small, 8px) / 2);
+          position: absolute;
+          left: 2px;
+          top: 2px;
+          --simple-toolbar-button-white-space: normal !important;
         }
-        :host(.dragging) #heading {
-          border: 1px solid var(--simple-fields-border-color, #999);
-          background-color: var(--simple-fields-background-color, white);
-          padding: 2px;
-          opacity: 0.5;
+        :host([aria-expanded="true"]) #drag-handle {
+          top: var(--simple-fields-margin, 16px);
+        }
+        #preview {
+          margin-left: calc(46px + var(--simple-fields-margin-small, 8px) / 2);
         }
         #dropzone {
           height: 0px;
-          transition: heigh 0.3s 0s ease-in-out;
         }
-        :host(.dropzone) #dropzone {
-          background-color: var(--simple-fields-accent-color-light, #9de1ff);
-          height: 80px;
-          transition: heigh 0.3s 0s ease-in-out;
+        :host(.dragging) #heading {
+          opacity: 0.5;
         }
         :host(.dragging) #content,
         :host(.dragging) #expand {
           display: none;
+        }
+        #content:hover,
+        #content:focus-within,
+        #content:hover #content-inner,
+        #content:focus-within #content-inner {
+          overflow: visible;
+        }
+        :host(.dragging) #preview,
+        :host(.droppable) #preview {
+          margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
+        }
+        :host(.dropzone) #dropzone {
+          background-color: var(
+            --simple-fields-button-focus-background-color,
+            var(--simple-fields-accent-color-light, #d9eaff)
+          );
+          height: 80px;
+          transition: heigh 0.1s 0s ease-in-out;
         }
 
         :host([aria-expanded="true"]) #expand::part(icon) {
           transform: rotate(90deg);
           transition: all 0.5s ease;
         }
+        ::slotted([slot="preview"]),
         ::slotted(*:first-child) {
           margin-top: 0;
         }
+        ::slotted([slot="preview"]),
         ::slotted(*:last-child) {
           margin-bottom: 0;
+        }
+        :host(:hover),
+        :host(:focus),
+        :host(:focus-within) {
+          z-index: 100000;
+        }
+        :host(.dropzone) {
+          z-index: 1;
+        }
+        [hidden],
+        :host(:first-child) #move-up-outer,
+        :host(:last-child) #move-down-outer,
+        :host(:first-child):last-child #drag-handle {
+          display: none;
         }
       `,
     ];
@@ -154,26 +192,45 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   render() {
     return html`
       <div id="dropzone"></div>
-      <div
-        id="heading"
-        part="heading"
-        .item="${this}"
-        draggable="${this.draggable ? "true" : "false"}"
-        @dragstart="${this._dragStart}"
-        @dragend="${this._dragEnd}"
+      <simple-toolbar-menu
+        id="drag-handle"
+        controls="${this.id}"
+        icon="icons:reorder"
+        label="Reorder this item"
+        ?disabled="${this.disabled}"
+        ?hidden="${this.__dropAccepts || this.__dragging}"
+        part="drag"
+        @mousedown="${(e) => (this.draggable = "true")}"
+        @mouseup="${(e) => (this.draggable = "false")}"
       >
-        <simple-toolbar-button
-          id="drag-handle"
-          controls="${this.id}"
-          icon="icons:reorder"
-          label="Reorder this item"
-          ?disabled="${this.disabled}"
-          part="drag"
-          @mousedown="${(e) => (this.draggable = true)}"
-          @mouseup="${(e) => (this.draggable = false)}"
-        >
-        </simple-toolbar-button>
-        <div id="drag-preview">${this.__dragPreview}</div>
+        <simple-toolbar-menu-item id="move-up-outer">
+          <simple-toolbar-button
+            id="move-up"
+            align-horizontal="left"
+            role="menuitem"
+            icon="arrow-upward"
+            show-text-label
+            label="Up"
+            tooltip="Move Item Up"
+            @click="${this._moveUp}"
+          >
+          </simple-toolbar-button>
+        </simple-toolbar-menu-item>
+        <simple-toolbar-menu-item id="move-down-outer">
+          <simple-toolbar-button
+            align-horizontal="left"
+            id="move-up"
+            role="menuitem"
+            icon="arrow-downward"
+            show-text-label
+            label="Down"
+            tooltip="Move Item Down"
+            @click="${this._moveDown}"
+          >
+          </simple-toolbar-button>
+        </simple-toolbar-menu-item>
+      </simple-toolbar-menu>
+      <div id="heading" part="heading" .item="${this}">
         <div id="preview" part="preview"><slot name="preview"></slot></div>
         <simple-toolbar-button
           id="expand"
@@ -191,15 +248,41 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         <div id="content-inner" part="content-inner">
           <div><slot></slot></div>
           <simple-toolbar-button
+            id="copy"
+            controls="${(this.parentNode || {}).id}"
+            icon="content-copy"
+            label="Copy this item"
+            ?disabled="${this.disabled}"
+            @click="${this._handleCopy}"
+            part="copy"
+          >
+          </simple-toolbar-button>
+          <simple-toolbar-menu
             id="remove"
-            controls="${this.id}"
             icon="delete"
             label="Remove this item"
             ?disabled="${this.disabled}"
-            @click="${(e) => this._handleRemove()}"
+            fit-to-visible-bounds
             part="remove"
+            position-align="end"
           >
-          </simple-toolbar-button>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button
+                id="confirm-remove"
+                class="danger"
+                align-horizontal="left"
+                role="menuitem"
+                show-text-label
+                controls="${this.id}"
+                icon="delete"
+                label="Remove"
+                ?disabled="${this.disabled}"
+                @click="${this._handleRemove}"
+                part="confirm-remove"
+              >
+              </simple-toolbar-button>
+            </simple-toolbar-menu-item>
+          </simple-toolbar-menu>
         </div>
       </div>
     `;
@@ -230,6 +313,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
        */
       draggable: {
         type: String,
+        reflect: true,
       },
       /**
        * is disabled?
@@ -251,14 +335,12 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       __dropAccepts: {
         type: Object,
       },
-      /**
-       * fields to sort by
-       * /
-      sortBy: {
-        type: Array,
-        reflect: true,
-        attribute: "sort-by"
-      }*/
+      __prev: {
+        type: Object,
+      },
+      __next: {
+        type: Object,
+      },
     };
   }
 
@@ -270,6 +352,8 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
     this.addEventListener("dragenter", this._dragEnter);
     this.addEventListener("dragleave", this._dragLeave);
     this.addEventListener("dragover", this._dragMoving);
+    this.addEventListener("dragstart", this._dragStart);
+    this.addEventListener("dragend", this._dragEnd);
     this.addEventListener("drop", this._dragDrop);
   }
   _dragMoving(e) {
@@ -280,15 +364,16 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
    * When we end dragging ensure we remove the mover class.
    */
   _dragEnd(e) {
-    let heading = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined,
-      item = heading ? heading.item : undefined;
-    this._setDragging(false);
     [...this.parentNode.childNodes].forEach((item) => item._setDropzone(false));
+    this._setDragging(false);
   }
   /**
    * Drag start so we know what target to set
    */
   _dragStart(e) {
+    let heading = this.shadowRoot.querySelector("#heading");
+    e.dataTransfer.setDragImage(heading, 0, 0);
+
     this._setDragging();
     e.stopPropagation();
     e.stopImmediatePropagation();
@@ -309,8 +394,25 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
    * Drop an item onto another
    */
   _dragDrop(e) {
-    if (!this.parentNode.disabled && this.__dropAccepts) {
-      this.parentNode.insertBefore(this.__dropAccepts, this);
+    this._moveBefore(e, this.__dropAccepts, this);
+  }
+  _moveUp(e) {
+    let prev = this.previousElementSibling;
+    if (!prev) return;
+    this._moveBefore(e, this, prev);
+  }
+  _moveDown(e) {
+    let next = this.nextElementSibling;
+    if (!next) return;
+    this._moveBefore(e, this, next.nextElementSibling);
+  }
+  _moveBefore(e, target, ref) {
+    if (!this.parentNode.disabled && target) {
+      if (ref) {
+        this.parentNode.insertBefore(target, ref);
+      } else {
+        this.parentNode.append(target);
+      }
       [...this.parentNode.childNodes].forEach((item) => {
         item._setDragging(false);
         item._setDragging(false);
@@ -329,12 +431,18 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
     if (!this.parentNode.disabled) this.__dragging = show;
     if (show) {
       [...this.parentNode.childNodes].forEach((item) => {
-        if (item !== this) item.__dropAccepts = this;
+        if (item !== this) {
+          item.__dropAccepts = this;
+          item.classList.add("droppable");
+        }
       });
       this.classList.add("dragging");
     } else {
       [...this.parentNode.childNodes].forEach((item) => {
-        if (item !== this) item.__dropAccepts = undefined;
+        if (item !== this) {
+          item.__dropAccepts = undefined;
+          item.classList.remove("droppable");
+        }
       });
       this.classList.remove("dragging");
     }

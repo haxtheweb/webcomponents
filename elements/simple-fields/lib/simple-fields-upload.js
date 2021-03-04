@@ -38,7 +38,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
           );
           --simple-camera-snap-border-radius: 2px;
           --lumo-font-family: var(--simple-fields-font-family, sans-serif);
-          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);
+          --lumo-error-color: var(--simple-fields-error-color, #b40000);
           --lumo-primary-font-color: var(--simple-fields-color, currentColor);
           --lumo-base-color: var(--simple-fields-background-color, transparent);
         }
@@ -161,7 +161,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
           value="${this.value || ""}"
           @value-changed="${this.valueChanged}"
           label="URL"
-          description="${this.description}"
+          .description="${this.description}"
           type="url"
           auto-validate=""
           part="url"

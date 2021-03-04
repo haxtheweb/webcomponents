@@ -26,10 +26,9 @@ class SimpleFieldsContainer extends LitElement {
       css`
         :host {
           display: block;
-          transition: color 0.3s ease-in-out;
         }
         :host([error]) {
-          color: var(--simple-fields-error-color, #dd2c00);
+          color: var(--simple-fields-error-color, #b40000);
           transition: color 0.3s ease-in-out;
         }
         :host([disabled]) {
@@ -750,7 +749,7 @@ class SimpleFieldsContainer extends LitElement {
         this.error ? "*" : ""
       );
       legend.style.color = this.error
-        ? "var(--simple-fields-error-color, #dd2c00)"
+        ? "var(--simple-fields-error-color, #b40000)"
         : "";
     }
     // return true if we have no errors

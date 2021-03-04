@@ -90,7 +90,6 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           border: none;
           background-color: var(--simple-fields-background-color, transparent);
           border-radius: 0;
-          transition: color ease-in-out;
           -webkit-appearance: none;
           -moz-appearance: none;
           appearance: none;
@@ -164,7 +163,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           transition: all 0.5ms ease-in-out;
         }
         :host([error]) input[type="range"]::-webkit-slider-runnable-track {
-          background: var(--simple-fields-faded-error-color, #ff997f);
+          background: var(--simple-fields-faded-error-color, #ffc0c0);
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-webkit-slider-thumb {
@@ -187,7 +186,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           transition: all 0.5ms ease-in-out;
         }
         :host([error]) input[type="range"]::-webkit-slider-thumb {
-          background: var(--simple-fields-error-color, #dd2c00);
+          background: var(--simple-fields-error-color, #b40000);
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"][readonly]::-webkit-slider-thumb,
@@ -210,7 +209,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           cursor: not-allowed;
         }
         :host([error]) input[type="range"]::-moz-range-track {
-          background: var(--simple-fields-faded-error-color, #ff997f);
+          background: var(--simple-fields-faded-error-color, #ffc0c0);
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-moz-range-thumb {
@@ -227,7 +226,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           transition: all 0.5ms ease-in-out;
         }
         :host([error]) input[type="range"]::-moz-range-thumb {
-          background: var(--simple-fields-error-color, #dd2c00);
+          background: var(--simple-fields-error-color, #b40000);
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"][readonly]::-moz-range-thumb,
@@ -251,7 +250,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           cursor: not-allowed;
         }
         :host([error]) input[type="range"]::-ms-track {
-          background: var(--simple-fields-faded-error-color, #ff997f);
+          background: var(--simple-fields-faded-error-color, #ffc0c0);
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-ms-fill-lower {
@@ -278,7 +277,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           background: var(--simple-fields-accent-color, #3f51b5);
         }
         :host([error]) input[type="range"]::-ms-thumb {
-          background: var(--simple-fields-error-color, #dd2c00);
+          background: var(--simple-fields-error-color, #b40000);
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"][redonly]::-ms-thumb,

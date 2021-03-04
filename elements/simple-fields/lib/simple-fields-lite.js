@@ -21,7 +21,7 @@ Custom property | Description | Default
 `--simple-fields-border-radius` | default border-radius | 2px
 `--simple-fields-color` | text color | black
 `--simple-fields-background-color` | background color | transparent
-`--simple-fields-error-color` | error text color | #dd2c00
+`--simple-fields-error-color` | error text color | #b40000
 `--simple-fields-accent-color` | accent text/underline color | #3f51b5
 `--simple-fields-border-color` | border-/underline color | #999
 
@@ -821,11 +821,22 @@ class SimpleFieldsLite extends LitElement {
     (value || []).forEach((item, i) => {
       this._insertArrayItem(schema, previewBy, element, parent, item, i);
     });
-
+    //listen for item additions
     parent.addEventListener("add", (e) => {
       this._insertArrayItem(schema, previewBy, element, parent, {});
     });
-
+    //listen for changes to copy
+    parent.addEventListener("copy", (e) => {
+      let val = this._getValue(e.detail.name);
+      this._insertArrayItem(schema, previewBy, element, parent, val);
+      parent.insertBefore(parent.lastElementChild, e.detail.nextElementSibling);
+      this._reorderArrayItems(parent);
+    });
+    //listen for changes to item order
+    parent.addEventListener("reorder", (e) => {
+      this._reorderArrayItems(parent);
+    });
+    //listen for item deletions
     parent.addEventListener("remove", (e) => {
       let id = e.detail.id,
         //temp = [],
@@ -842,14 +853,27 @@ class SimpleFieldsLite extends LitElement {
       this._setValue(`${parent.name}`, vals);
       parent.focus(parseInt(index) - 1);
     });
-    parent.addEventListener("reorder", (e) => {
-      let oldvals = [...(this._getValue(parent.name) || [])],
-        vals = [...parent.childNodes].map((item) => {
-          let i = parseInt(item.id.replace(/.*\./g, ""));
-          return JSON.parse(JSON.stringify(oldvals[i]));
-        });
-      this._setValue(`${parent.name}`, vals);
+  }
+
+  _reorderArrayItems(parent) {
+    let vals = [...(this._getValue(parent.name) || [])],
+      updateIndex = (item, f, r) => {
+        if (item.id) item.id = item.id.replace(f, r);
+        if (item.name) item.name = item.name.replace(f, r);
+        [...item.childNodes].forEach((child) => updateIndex(child, f, r));
+      },
+      order = [...parent.childNodes],
+      newVals = [];
+
+    //update item IDs to match new order
+    order.forEach((item, index) => {
+      let base = item.id.replace(/\.\d+$/, ``),
+        i = parseInt(item.id.replace(/.*\./g, ""));
+      updateIndex(item, item.id, `${base}.${index}`);
+      newVals.push(JSON.parse(JSON.stringify(vals[i])));
     });
+    ///update value based on new order
+    this._setValue(`${parent.name}`, newVals);
   }
 
   /**

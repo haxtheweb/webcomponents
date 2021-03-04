@@ -84,7 +84,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          border: 1px solid var(--simple-fields-border-color-light, #ccc);\n          padding: var(--simple-fields-margin-small, 8px) var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin, 16px);\n          background-color: var(--simple-fields-background-color, transparent); \n          border-radius: var(--simple-fields-border-radius, 2px);\n        }\n        :host([error]) #tabs .error {\n          color: var(--simple-fields-error-color, #dd2c00);\n          transition: border 0.5s ease;\n        }\n      \n      ",
+    "\n        :host {\n          border: 1px solid var(--simple-fields-border-color-light, #ccc);\n          padding: var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin-small, 8px)\n            var(--simple-fields-margin, 16px);\n          background-color: var(--simple-fields-background-color, transparent);\n          border-radius: var(--simple-fields-border-radius, 2px);\n        }\n        :host([error]) #tabs .error {\n          color: var(--simple-fields-error-color, #b40000);\n          transition: border 0.5s ease;\n        }\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
