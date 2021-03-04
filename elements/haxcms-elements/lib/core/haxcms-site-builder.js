@@ -10,6 +10,7 @@ import { store, HAXcmsStore } from "./haxcms-site-store.js";
 //import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@lrnwebcomponents/replace-tag/replace-tag.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -18,7 +19,7 @@ import "@lrnwebcomponents/replace-tag/replace-tag.js";
  * - it loads a site.json file and then utilizes this data in order to construct
  *   what theme it should load (element) in order to get everything off and running
  */
-class HAXCMSSiteBuilder extends LitElement {
+class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   static get styles() {
     return [
       css`
@@ -381,6 +382,13 @@ class HAXCMSSiteBuilder extends LitElement {
    */
   constructor() {
     super();
+    this.registerTranslation({
+      context: this,
+      namespace: "haxcms",
+      localesPath:
+        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../locales",
+      locales: ["es"],
+    });
     this.__disposer = [];
     this.queryParams = {};
     this.loading = false;

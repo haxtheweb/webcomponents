@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+
 /**
  * `meme-maker`
  * Connects lrndesign-gallery to HAX
@@ -91,6 +92,10 @@ class MemeMaker extends LitElement {
     super();
     this.alt = "";
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   static get properties() {
     return {
       /**
@@ -139,7 +144,22 @@ class MemeMaker extends LitElement {
     return {
       activeElementChanged: "haxactiveElementChanged",
       progressiveEnhancement: "haxprogressiveEnhancement",
+      gizmoRegistration: "haxgizmoRegistration",
     };
+  }
+  /**
+   * Supply translations for the UI elements of HAX in meme-maker
+   */
+  haxgizmoRegistration(store) {
+    window.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: "meme-maker.haxProperties",
+          localesPath: decodeURIComponent(import.meta.url) + "/../locales",
+          locales: ["es", "fr"],
+        },
+      })
+    );
   }
   /**
    * double-check that we are set to inactivate click handlers
@@ -177,80 +197,10 @@ class MemeMaker extends LitElement {
    * Attached to the DOM, now fire.
    */
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Meme",
-        description: "Make a meme out of an image",
-        icon: "hax:meme",
-        color: "orange",
-        groups: ["Media", "Funny"],
-        handles: [
-          {
-            type: "image",
-            source: "imageUrl",
-            title: "topText",
-            author: "bottomText",
-            alt: "alt",
-            ariaDescribedby: "describedBy",
-          },
-        ],
-        meta: {
-          author: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "imageUrl",
-            title: "Source",
-            description: "The source url for the element this is citing.",
-            inputMethod: "haxupload",
-            icon: "link",
-          },
-          {
-            property: "topText",
-            title: "Top text",
-            description: "Top text of the meme.",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "bottomText",
-            title: "Bottom text",
-            description: "The date this was accessed.",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-        ],
-        advanced: [
-          {
-            property: "describedBy",
-            title: "aria-describedby",
-            description:
-              "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield",
-          },
-        ],
-      },
-      saveOptions: {
-        wipeSlot: true,
-      },
-      demoSchema: [
-        {
-          tag: "meme-maker",
-          content: "",
-          properties: {
-            alt: "Cat stalking a small toy",
-            imageUrl: "https://cdn2.thecatapi.com/images/9j5.jpg",
-            topText: "I bring you",
-            bottomText: "the death",
-          },
-        },
-      ],
-    };
+    return (
+      decodeURIComponent(import.meta.url) +
+      "/../lib/meme-maker.haxProperties.json"
+    );
   }
 }
 window.customElements.define(MemeMaker.tag, MemeMaker);

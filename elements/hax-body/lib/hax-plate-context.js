@@ -7,6 +7,7 @@ import "./hax-context-item.js";
 import { autorun, toJS } from "mobx";
 import { HaxContextBehaviors } from "./hax-context-container.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /**
  * `hax-plate-context`
  * `A context menu that provides common grid plate based authoring options.`
@@ -14,7 +15,7 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  * - grid plate - the container / full HTML tag which can have operations applied to it.
  */
-class HaxPlateContext extends HaxContextBehaviors(LitElement) {
+class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -23,6 +24,20 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
     this.tourName = "hax";
+    this.t = {
+      dragHandle: "Drag handle",
+      moveUp: "Move up",
+      moveDown: "Move down",
+      addColumn: "Add column",
+      removeColumn: "Remove column",
+      remove: "Remove",
+      duplicate: "Duplicate",
+      confirmDelete: "Confirm delete",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
   }
   static get tag() {
     return "hax-plate-context";
@@ -54,7 +69,7 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
               id="drag"
               action
               icon="hax:arrow-all"
-              label="Drag handle"
+              label="${this.t.dragHandle}"
               draggable="true"
               reset-on-select
               data-simple-tour-stop
@@ -68,7 +83,7 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
                   show-text-label
                   role="menuitem"
                   icon="hax:keyboard-arrow-up"
-                  label="Move up"
+                  label="${this.t.moveUp}"
                   event-name="hax-plate-up"
                 ></hax-context-item>
               </simple-toolbar-menu-item>
@@ -80,7 +95,7 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
                   role="menuitem"
                   show-text-label
                   icon="hax:keyboard-arrow-down"
-                  label="Move down"
+                  label="${this.t.moveDown}"
                   event-name="hax-plate-down"
                 ></hax-context-item>
               </simple-toolbar-menu-item>
@@ -97,7 +112,7 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
               id="right"
               class="paddle"
               icon="hax:table-column-remove"
-              label="Add column"
+              label="${this.t.addColumn}"
               ?disabled="${this.hasActiveEditingElement}"
               event-name="hax-plate-create-right"
               data-simple-tour-stop
@@ -113,7 +128,7 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
               action
               class="paddle"
               icon="hax:table-column-plus-after"
-              label="Remove column"
+              label="${this.t.removeColumn}"
               ?disabled="${this.hasActiveEditingElement}"
               event-name="hax-plate-remove-right"
               id="rightremove"
@@ -129,7 +144,7 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
             <hax-context-item
               action
               ?disabled="${this.hasActiveEditingElement}"
-              label="Duplicate"
+              label="${this.t.duplicate}"
               icon="icons:content-copy"
               event-name="hax-plate-duplicate"
               data-simple-tour-stop
@@ -147,7 +162,7 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
               action
               ?disabled="${this.hasActiveEditingElement}"
               icon="delete"
-              label="Remove"
+              label="${this.t.remove}"
               reset-on-select
               data-simple-tour-stop
               data-stop-title="label"
@@ -161,7 +176,7 @@ class HaxPlateContext extends HaxContextBehaviors(LitElement) {
                   show-text-label
                   role="menuitem"
                   icon="delete"
-                  label="Confirm Delete"
+                  label="${this.t.confirmDelete}"
                   event-name="hax-plate-delete"
                 ></hax-context-item>
               </simple-toolbar-menu-item>

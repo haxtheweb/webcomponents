@@ -5,12 +5,13 @@ import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /* `hax-gizmo-browser`
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
  * @microcopy - the mental model for this element
  * - gizmo - silly name for the general public when talking about custom elements and what it provides in the end.
  */
-class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
+class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   static get styles() {
     return [
       css`
@@ -43,6 +44,13 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
   constructor() {
     super();
     this.where = "title";
+    this.t = {
+      filterContentTypes: "Filter Content Types",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
   }
   render() {
     return html`
@@ -51,7 +59,7 @@ class HaxGizmoBrowser extends SimpleFilterMixin(LitElement) {
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           aria-controls="filter"
-          label="Filter Content Types"
+          label="${this.t.filterContentTypes}"
           type="text"
           auto-validate=""
           part="filter"

@@ -5,13 +5,14 @@ import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { HaxTrayDetailHeadings } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-map`
  * @element hax-map
  * `Export dialog with all export options and settings provided.`
  */
-class HaxMap extends LitElement {
+class HaxMap extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -93,7 +94,19 @@ class HaxMap extends LitElement {
   constructor() {
     super();
     this.elementList = [];
-    this.title = "Content map";
+    this.t = {
+      contentStatistics: "Content Statistics",
+      words: "Words",
+      headings: "Headings",
+      paragraphs: "Paragraphs",
+      widgets: "Widgets",
+      characters: "Characters",
+      listView: "List view",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
   }
   updateHAXMap() {
     let list = HAXStore.htmlToHaxElements(
@@ -168,15 +181,15 @@ class HaxMap extends LitElement {
       <div class="container">
         <table>
           <caption>
-            Content Statistics
+            ${this.t.contentStatistics}
           </caption>
           <thead>
             <tr>
-              <th scope="col">Words</th>
-              <th scope="col">Headings</th>
-              <th scope="col">Paragraphs</th>
-              <th scope="col">Widgets</th>
-              <th scope="col">Characters</th>
+              <th scope="col">${this.t.words}</th>
+              <th scope="col">${this.t.headings}</th>
+              <th scope="col">${this.t.paragraphs}</th>
+              <th scope="col">${this.t.widgets}</th>
+              <th scope="col">${this.t.characters}</th>
             </tr>
           </thead>
           <tbody>
@@ -189,7 +202,7 @@ class HaxMap extends LitElement {
             </tr>
           </tbody>
         </table>
-        <h5>List View</h5>
+        <h5>${this.t.listView}</h5>
         <ul>
           ${this.indentedElements.map((element, index) => {
             return html`
@@ -253,9 +266,6 @@ class HaxMap extends LitElement {
       /**
        * Title when open.
        */
-      title: {
-        type: String,
-      },
       opened: {
         type: Boolean,
       },

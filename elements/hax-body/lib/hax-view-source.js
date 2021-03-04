@@ -5,12 +5,14 @@ import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
 import { autorun, toJS } from "mobx";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+
 /**
  * `hax-eview-source`
  * @element hax-eview-source
  * `Export dialog with all export options and settings provided.`
  */
-class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
+class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   static get styles() {
     return [
       ...HaxComponentStyles,
@@ -76,7 +78,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
       </div>
       <hax-toolbar always-expanded>
         <hax-tray-button
-          label="Update Page"
+          label="${this.t.updatePage}"
           icon="editor:insert-drive-file"
           @click="${this.importContent.bind(this)}"
           show-text-label
@@ -86,8 +88,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
         <hax-tray-button
           @click="${this.scrubContent.bind(this)}"
           icon="editor:format-clear"
-          label="Clean Formatting"
-          tooltip="Word / Google Document Clean Up"
+          label="${this.t.cleanFormatting}"
           show-text-label
           icon-position="top"
         >
@@ -95,13 +96,13 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
         <hax-tray-button
           @click="${this.selectBody.bind(this)}"
           icon="icons:content-copy"
-          label="Copy HTML"
+          label="${this.t.copyHTML}"
           show-text-label
           icon-position="top"
         >
         </hax-tray-button>
         <hax-tray-button
-          label="Download HTML"
+          label="${this.t.downloadHTML}"
           icon="icons:file-download"
           @click="${this.download.bind(this)}"
           show-text-label
@@ -193,7 +194,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     hiddenarea.select();
     document.execCommand("copy");
     hiddenarea.setAttribute("hidden", "hidden");
-    HAXStore.toast("Copied HTML content");
+    HAXStore.toast(this.t.copiedToClipboard);
     //this.close();
   }
 
@@ -214,7 +215,7 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
     document.execCommand("copy");
     hiddenarea.value = val;
     hiddenarea.setAttribute("hidden", "hidden");
-    HAXStore.toast("Copied hax elements to clipboard");
+    HAXStore.toast(this.t.copiedToClipboard);
   }
 
   firstUpdated(changedProperties) {
@@ -279,6 +280,17 @@ class HaxViewSource extends MtzFileDownloadBehaviors(LitElement) {
 
   constructor() {
     super();
+    this.t = {
+      updatePage: "Update Page",
+      copyHTML: "Copy HTML",
+      downloadHTML: "Download HTML",
+      cleanFormatting: "Clean Formatting",
+      copiedToClipboard: "Copied to clipboard",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
     this.fileTypes = {
       CSV: "text/csv",
       JSON: "text/json",

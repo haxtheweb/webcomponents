@@ -4,7 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
+import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
+import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
@@ -14,7 +15,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
  *
 
  */
-class SitePrintButton extends HAXCMSThemeParts(LitElement) {
+class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -52,6 +53,11 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
   }
   constructor() {
     super();
+    this.t = {
+      printPage: "Print page",
+      printSite: "Print site",
+      printOutline: "Print outline",
+    };
     this.icon = "icons:print";
     this.position = "bottom";
     this.type = "page";
@@ -63,7 +69,7 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
         .id="btn${this.type}"
         icon="${this.icon}"
         @click="${this.print}"
-        aria-label="${this.label}"
+        .aria-label="${this.makeLabel(this.type, this.t)}"
         ?disabled="${this.disabled}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       ></simple-icon-button-lite>
@@ -72,7 +78,7 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
         position="${this.position}"
         offset="14"
       >
-        ${this.label}
+        ${this.makeLabel(this.type, this.t)}
       </simple-tooltip>
     `;
   }
@@ -81,9 +87,6 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "type") {
-        this._typeChanged(this[propName], oldValue);
-      }
       if (propName === "editMode") {
         if (this[propName]) {
           this.setAttribute("part", "edit-mode-active");
@@ -132,13 +135,17 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
   /**
    * ensure we have a label set per type if its empty
    */
-  _typeChanged(newValue) {
-    if (typeof this.label === typeof undefined) {
-      if (newValue === "page" || newValue === "site") {
-        this.label = `Print ${newValue}`;
-      } else {
-        this.label = `Print outline`;
-      }
+  makeLabel(type, t) {
+    switch (type) {
+      case "page":
+        return html`${t.printPage}`;
+        break;
+      case "site":
+        return html`${t.printSite}`;
+        break;
+      default:
+        return html`${t.printOutline}`;
+        break;
     }
   }
   /**

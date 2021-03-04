@@ -16,6 +16,7 @@ import {
   normalizeEventPath,
 } from "@lrnwebcomponents/utils/utils.js";
 import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
@@ -113,7 +114,7 @@ Custom property | Description | Default
  * @LitElement
  * @element hax-body
  */
-class HaxBody extends UndoManagerBehaviors(SimpleColors) {
+class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   static get tag() {
     return "hax-body";
   }
@@ -409,6 +410,15 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
+    this.t = {
+      addContent: "Add Content",
+    };
+    // primary registration for the namespace so all tags under hax
+    // can leverage this data
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
     if (!window.HaxUiStyles) {
       window.HaxUiStyles = document.createElement("div");
       let s = document.createElement("style"),
@@ -716,7 +726,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         class="hax-context-menu ignore-activation">
         <hax-context-item
           icon="icons:add"
-          label="Add Content"
+          label="${this.t.addContent}"
           show-text-label
         >
         </hax-context-item>

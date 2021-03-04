@@ -8,13 +8,17 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
+import {
+  I18NMixin,
+  I18NManagerStore,
+} from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `hax-preferences-dialog`
  * @element hax-preferences-dialog
  * `Export dialog with all export options and settings provided.`
  */
-class HaxPreferencesDialog extends LitElement {
+class HaxPreferencesDialog extends I18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -36,19 +40,48 @@ class HaxPreferencesDialog extends LitElement {
   constructor() {
     super();
     this.hideLink = false;
-    this.title = "Advanced settings";
+    this.t = {
+      learnMoreAboutHAX: "Learn more about HAX",
+      voiceCommands: "Voice commands",
+      haxUITheme: "HAX UI Theme",
+      language: "Language",
+      english: "English",
+      spanish: "Spanish",
+    };
+    this.udpateSchema();
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+      updateCallback: "udpateSchema",
+    });
+    autorun(() => {
+      this.globalPreferences = toJS(HAXStore.globalPreferences);
+      if (
+        this.globalPreferences.haxLang &&
+        I18NManagerStore.lang != this.globalPreferences.haxLang
+      ) {
+        I18NManagerStore.lang = this.globalPreferences.haxLang || "en";
+        this.udpateSchema();
+      }
+    });
+  }
+  udpateSchema() {
     // JSON schema object needs delayed to ensure page repaints the form
+    let lang = I18NManagerStore.lang;
+    if (lang.indexOf("-")) {
+      lang = lang.split("-")[0];
+    }
     this.schema = [
       {
         property: "haxVoiceCommands",
-        title: "Voice commands",
+        title: this.t.voiceCommands,
         description: "Experimental: Voice based control system",
         inputMethod: "boolean",
         value: false,
       },
       {
         property: "haxUiTheme",
-        title: "HAX UI Theme",
+        title: this.t.haxUITheme,
         description:
           "Change the theme of the HAX interface (not the site's content).",
         inputMethod: "radio",
@@ -59,14 +92,27 @@ class HaxPreferencesDialog extends LitElement {
         },
         value: "hax",
       },
+      {
+        property: "haxLang",
+        title: this.t.language,
+        description:
+          "Toggle between supported languages for internationalization",
+        inputMethod: "radio",
+        options: {
+          en: this.t.english,
+          es: this.t.spanish,
+        },
+        value: lang,
+      },
     ];
     this.schemaValues = {
       haxVoiceCommands: false,
+      haxUiTheme: "hax",
+      haxLang: lang,
     };
-    autorun(() => {
-      this.globalPreferences = toJS(HAXStore.globalPreferences);
-      this.schemaValues = toJS(HAXStore.globalPreferences);
-    });
+    if (this.shadowRoot && this.shadowRoot.querySelector("#settingsform")) {
+      this.reloadPreferencesForm();
+    }
   }
   closeBtn(e) {
     this.dispatchEvent(
@@ -102,7 +148,7 @@ class HaxPreferencesDialog extends LitElement {
             id="link"
             target="_blank"
             part="haxlink"
-            >Learn more about HAX</a
+            >${this.t.learnMoreAboutHAX}</a
           >`
         : ``}
     `;
@@ -117,12 +163,6 @@ class HaxPreferencesDialog extends LitElement {
        */
       hideLink: {
         type: Boolean,
-      },
-      /**
-       * Title.
-       */
-      title: {
-        type: String,
       },
       /**
        * Schema that has all of inputs / manages state
@@ -140,10 +180,7 @@ class HaxPreferencesDialog extends LitElement {
   }
 
   firstUpdated(changedProperties) {
-    this.shadowRoot.querySelector("#settingsform").fields = [...this.schema];
-    this.shadowRoot.querySelector("#settingsform").value = {
-      ...this.schemaValues,
-    };
+    this.reloadPreferencesForm();
     this.shadowRoot
       .querySelector("#settingsform")
       .addEventListener("value-changed", this.__valueChangedEvent.bind(this));
@@ -151,6 +188,7 @@ class HaxPreferencesDialog extends LitElement {
   __valueChangedEvent(e) {
     if (e.detail.value) {
       HAXStore.globalPreferences = { ...e.detail.value };
+      this.schemaValues = { ...e.detail.value };
     }
   }
 

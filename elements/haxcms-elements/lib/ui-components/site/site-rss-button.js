@@ -3,7 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
+import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
+import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
@@ -13,7 +14,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
  *
 
  */
-class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
+class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -54,6 +55,13 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
   }
   constructor() {
     super();
+    this.t = {
+      rssFeed: "RSS Feed",
+      atomFeed: "ATOM Feed",
+    };
+    this._link = {
+      title: this.t.rssFeed,
+    };
     this.type = "rss";
     this.raised = false;
     this.position = "bottom";
@@ -68,7 +76,7 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
         .id="btn${this.type}"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="${this.label}"
+        .aria-label="${this._link.title}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
         <simple-icon-button-lite
@@ -84,7 +92,7 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
         position="${this.position}"
         offset="14"
       >
-        ${this.label}
+        ${this._link.title}
       </simple-tooltip>
     `;
   }
@@ -98,8 +106,8 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
         type: Boolean,
         reflect: true,
       },
-      label: {
-        type: String,
+      _link: {
+        type: Object,
       },
       href: {
         type: String,
@@ -121,16 +129,19 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "type") {
-        this._generateLink(this[propName], oldValue);
+        this._generateLink(this[propName]);
+      }
+      if (propName == "t") {
+        this._generateLink(this.type);
       }
     });
   }
   /**
    * Generate a link when we get a new type.
    */
-  _generateLink(newValue, oldValue) {
+  _generateLink(newValue) {
     // remove existing if this is moving around
-    if (this._link) {
+    if (this._link && this._link.href) {
       document.head.removeChild(this._link);
     }
     if (newValue) {
@@ -138,16 +149,15 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
       link.rel = "alternate";
       if (newValue === "rss") {
         link.href = "rss.xml";
-        link.title = "RSS feed";
+        link.title = this.t.rssFeed;
         link.type = "application/rss+xml";
         this.icon = "communication:rss-feed";
       } else if (newValue === "atom") {
         link.href = "atom.xml";
-        link.title = "Atom feed";
+        link.title = this.t.atomFeed;
         link.type = "application/atom+xml";
         this.icon = "communication:rss-feed";
       }
-      this.label = link.title;
       this.href = link.href;
       document.head.appendChild(link);
       this._link = link;

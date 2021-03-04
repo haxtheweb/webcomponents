@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "i18n-manager",
+      "path": "./i18n-manager.js",
+      "description": "`i18n-manager`\n`internationalization management singleton and helper classes`"
+    },
+    {
+      "name": "i18n-manager",
+      "path": "./src/i18n-manager.js",
+      "description": "`i18n-manager`\n`internationalization management singleton and helper classes`"
+    }
+  ]
+}

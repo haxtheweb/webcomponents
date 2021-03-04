@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Créer un mème à partir d'une image"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "La source",
+        "description": "L'URL source de l'élément cité"
+      },
+      {
+        "title": "Texte du Haut",
+        "description": "Texte du haut du mème"
+      },
+      {
+        "title": "Texte du bas",
+        "description": "La date à laquelle cela a été consulté"
+      }
+    ],
+    "advanced": [
+      {
+        "description": "Liste d'ID séparés par des espaces pour les éléments qui décrivent l'image"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Chat traque un petit jouet",
+        "topText": "je vous apporte",
+        "bottomText": "la mort"
+      }
+    }
+  ]
+}

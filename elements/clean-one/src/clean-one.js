@@ -11,6 +11,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `clean-one`
@@ -23,8 +24,10 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
  * @demo demo/index.html
  * @element clean-one
  */
-class CleanOne extends HAXCMSThemeParts(
-  HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+class CleanOne extends I18NMixin(
+  HAXCMSThemeParts(
+    HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+  )
 ) {
   //styles function
   static get styles() {
@@ -642,8 +645,8 @@ class CleanOne extends HAXCMSThemeParts(
           <div id="site-search-input" role="search">
             <input
               type="text"
-              aria-label="Search site content"
-              placeholder="Type to search"
+              aria-label="${this.t.searchSiteContent}"
+              placeholder="${this.t.typeToSearch}"
               .value="${this.searchTerm}"
               id="search"
               @input="${this.searchChanged}"
@@ -750,6 +753,15 @@ class CleanOne extends HAXCMSThemeParts(
    */
   constructor() {
     super();
+    this.t = {
+      searchSiteContent: "Search site content",
+      typeToSearch: "Type to search",
+    };
+    this.registerTranslation({
+      context: this,
+      basePath: import.meta.url,
+      locales: ["es", "fr", "de", "ja"],
+    });
     this.HAXCMSThemeSettings.autoScroll = true;
     // prettier-ignore
     import(

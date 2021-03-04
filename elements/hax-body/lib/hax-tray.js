@@ -31,12 +31,16 @@ import "./hax-map.js";
 import "./hax-preferences-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
  * @element hax-tray
  */
-class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
+class HaxTray extends I18NMixin(
+  SimpleTourFinder(winEventsElement(LitElement))
+) {
   /**
    * Convention we use
    */
@@ -54,6 +58,50 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
     };
+    this.t = {
+      structure: "Structure",
+      editSelected: "Edit selected",
+      edit: "Edit",
+      save: "Save",
+      move: "Move",
+      moveMenu: "Move menu",
+      menuAlignment: "Menu Alignment",
+      topLeft: "Top Left",
+      topRight: "Top Right",
+      bottomLeft: "Bottom Left",
+      bottomRight: "Bottom Right",
+      menuPosition: "Menu position",
+      changeSideVisually:
+        "Change which side of the screen the menu is affixed to visually.",
+      expand: "Expand",
+      collapse: "Collapse",
+      menuSize: "Menu size",
+      menuSizeDescription: "Expand or collapse the menu visually.",
+      takeATour: "Take a Tour",
+      settings: "Settings",
+      source: "Source",
+      undo: "Undo",
+      redo: "Redo",
+      media: "Media",
+      blocks: "Blocks",
+      cancel: "Cancel",
+      cancelWithoutSaving: "Cancel without saving",
+      configure: "Configure",
+      advanced: "Advanced",
+      layout: "Layout",
+      alignment: "Alignment",
+      left: "Left",
+      center: "Center",
+      right: "Right",
+      search: "Search",
+      templates: "Templates",
+      width: "Width",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+      updateCallback: "_updateTrayDetail",
+    });
     this._initial = true;
     this.activeValue = {
       settings: {
@@ -75,7 +123,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     this.activeTagName = "";
     this.traySizeIcon = "hax:arrow-expand-right";
     this.__setup = false;
-    this.__tipText = "Edit";
     setTimeout(() => {
       import("./hax-tray-button.js");
       this.addEventListener(
@@ -379,7 +426,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             id="button"
             feature
             show-text-label
-            label="${this.__tipText}"
+            label="${this.editMode ? this.t.save : this.t.edit}"
           ></hax-tray-button>
         `;
   }
@@ -403,12 +450,11 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           feature
           action
           icon="hax:arrow-all"
-          label="Move"
-          label="Move Menu"
+          label="${this.t.moveMenu}"
           draggable="true"
           reset-on-select
           data-simple-tour-stop
-          data-stop-title="Menu alignment"
+          data-stop-title="${this.t.menuAlignment}"
           show-text-label
           @dragstart="${this._dragStart}"
           @dragend="${this._dragEnd}"
@@ -422,7 +468,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               id="top-left"
               event-name="toggle-element-align"
               icon="arrow-back"
-              label="Top Left"
+              label="${this.t.topLeft}"
               index="0"
               ?disabled="${this.elementAlign == "left"}"
               ?toggled="${this.elementAlign == "left"}"
@@ -438,7 +484,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               id="top-right"
               event-name="toggle-element-align"
               icon="arrow-forward"
-              label="Top Right"
+              label="${this.t.topRight}"
               index="1"
               ?disabled="${this.elementAlign == "right"}"
               ?toggled="${this.elementAlign == "right"}"
@@ -456,7 +502,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               event-name="toggle-element-align"
               icon="arrow-back"
               text-align="left"
-              label="Bottom Left"
+              label="${this.t.bottomLeft}"
               ?disabled="${this.elementAlign == "bottom-left"}"
               ?toggled="${this.elementAlign == "bottom-left"}"
               index="2"
@@ -472,7 +518,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               id="bottom-right"
               event-name="toggle-element-align"
               icon="arrow-forward"
-              label="Bottom Right"
+              label="${this.t.bottomRight}"
               text-align="left"
               ?disabled="${this.elementAlign == "bottom-right"}"
               ?toggled="${this.elementAlign == "bottom-right"}"
@@ -481,10 +527,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
               >
             </hax-tray-button>
           </simple-toolbar-menu-item>
-          <div slot="tour" data-stop-title>Menu Position</div>
-          <div slot="tour" data-stop-content>
-            Change which side of the screen the menu is affixed to visually.
-          </div>
+          <div slot="tour" data-stop-title>${this.t.menuPosition}</div>
+          <div slot="tour" data-stop-content>${this.t.changeSideVisually}</div>
         </hax-toolbar-menu>
         <hax-tray-button
           feature
@@ -493,14 +537,13 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           event-name="toggle-tray-size"
           show-text-label
           icon="${this.collapsed ? "unfold-more" : "unfold-less"}"
-          label="${this.collapsed ? "Expand" : "Collapse"}"
-          tooltip="${this.collapsed ? "Expand Menu" : "Collapse Menu"}"
+          label="${this.collapsed ? this.t.expand : this.t.collapse}"
           data-simple-tour-stop
           show-text-label
           text-align="left"
         >
-          <div data-stop-title>Menu Size</div>
-          <div data-stop-content>Expand or collapse the menu visually.</div>
+          <div data-stop-title>${this.t.menuSize}</div>
+          <div data-stop-content>${this.t.menuSizeDescription}</div>
         </hax-tray-button>
       </div>
       <div class="group" id="tourgroup">
@@ -508,7 +551,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           feature
           event-name="${this.tourOpened ? "stop-tour" : "start-tour"}"
           icon="help"
-          label="Take a tour"
+          label="${this.t.takeATour}"
           voice-command="start tour"
           toggles
           ?toggled="${this.tourOpened}"
@@ -530,7 +573,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
             icon="save"
             icon-position="top"
             id="haxsavebutton"
-            label="${this.__tipText}"
+            label="${this.editMode ? this.t.save : this.t.edit}"
             event-name="save"
             voice-command="save (content)(page)"
             show-text-label
@@ -538,7 +581,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
           <hax-toolbar-menu
             icon="close"
             id="haxcancelbutton"
-            label="Cancel"
+            label="${this.t.cancel}"
             icon-position="top"
             show-text-label
             warning
@@ -550,7 +593,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
                 align-horizontal="left"
                 icon="close"
                 id="haxcancelbutton"
-                label="Cancel without saving"
+                label="${this.t.cancelWithoutSaving}"
                 event-name="cancel"
                 voice-command="cancel"
                 icon-position="left"
@@ -564,8 +607,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     return html` <hax-tray-button
         icon="icons:undo"
         ?disabled="${!this.canUndo}"
-        label="Undo"
-        tooltip="Undo previous action"
+        label="${this.t.undo}"
         event-name="undo"
         voice-command="undo"
         class="hide-small"
@@ -582,8 +624,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       <hax-tray-button
         icon="icons:redo"
         ?disabled="${!this.canRedo}"
-        label="Redo"
-        tooltip="Redo previous action"
+        label="${this.t.redo}"
         event-name="redo"
         voice-command="redo"
         class="hide-small"
@@ -601,8 +642,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     return html` <hax-tray-button
       id="exportbtn"
       icon="code"
-      label="Source"
-      tooltip="View page source"
+      label="${this.t.source}"
       voice-command="view (page) source"
       data-simple-tour-stop
       data-stop-title="label"
@@ -630,7 +670,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         event-name="content-edit"
         icon="build"
         id="content-edit"
-        label="Edit"
+        label="${this.t.edit}"
         ?disabled="${!this.activeTagName ||
         this.activeTagName == "" ||
         !this.activeNode ||
@@ -641,7 +681,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         controls="tray-detail"
         show-text-label
         icon-position="top"
-        tooltip="Edit Selected ${this.activeTagName}"
+        tooltip="${this.t.editSelected} ${this.activeTagName}"
         toggles
         ?toggled="${this.trayDetail === "content-edit"}"
       >
@@ -657,7 +697,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         event-name="content-add"
         icon="add-box"
         id="content-add"
-        label="Blocks"
+        label="${this.t.blocks}"
         voice-command="blocks"
         show-text-label
         icon-position="top"
@@ -680,7 +720,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         event-name="media-add"
         icon="image:collections"
         id="media-add"
-        label="Media"
+        label="${this.t.media}"
         show-text-label
         icon-position="top"
         voice-command="Media"
@@ -704,7 +744,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         event-name="content-map"
         icon="icons:toc"
         id="content-map"
-        label="Structure"
+        label="${this.t.structure}"
         show-text-label
         icon-position="top"
         voice-command="open map"
@@ -730,8 +770,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         id="advanced-settings"
         event-name="advanced-settings"
         icon="settings"
-        label="Settings"
-        voice-command="open (user preference) settings"
+        label="${this.t.settings}"
+        voice-command="open preferences"
         show-text-label
         icon-position="top"
         data-simple-tour-stop
@@ -762,7 +802,9 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       tabindex="${this.collapsed ? "-1" : "0"}"
       selected-detail="${this.trayDetail}"
     >
-      <h4>${this.trayLabel || `Modify Selected ${this.activeTagName}`}</h4>
+      <h4>
+        ${this.trayLabel || `${this.t.editSelected} ${this.activeTagName}`}
+      </h4>
       ${this.advancedSettingsTemplate} ${this.contentMapTemplate}
       ${this.contentEditTemplate} ${this.contentAddTemplate}
       ${this.mediaTemplate}
@@ -792,7 +834,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
         id="gizmobrowser"
         ?hidden="${hidden}"
       ></hax-gizmo-browser>
-      <h5 ?hidden="${hidden}">Templates</h5>
+      <h5 ?hidden="${hidden}">${this.t.templates}</h5>
       <hax-stax-browser
         id="staxbrowser"
         ?hidden="${hidden}"
@@ -807,7 +849,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   get mediaTemplate() {
     let hidden = this.trayDetail !== "media-add";
     return html` <hax-tray-upload ?hidden="${hidden}"></hax-tray-upload>
-      <h5 ?hidden="${hidden}">Search for Media</h5>
+      <h5 ?hidden="${hidden}">${this.t.search}</h5>
       <hax-app-browser id="appbrowser" ?hidden="${hidden}"></hax-app-browser>`;
   }
   __simpleFieldsClick(e) {
@@ -972,9 +1014,6 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   static get properties() {
     return {
       ...super.properties,
-      __tipText: {
-        type: String,
-      },
       offsetMargin: {
         type: String,
         attribute: "offset-margin",
@@ -1406,14 +1445,13 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       if (props.canPosition) {
         props.settings.layout.push({
           property: "__position",
-          title: "Alignment",
-          description: "Align content relative to other content",
+          title: this.t.alignment,
           inputMethod: "select",
           value: this.activeValue.settings.layout.__position,
           options: {
-            "hax-align-left": "Left",
-            "hax-align-center": "Center",
-            "hax-align-right": "Right",
+            "hax-align-left": this.t.left,
+            "hax-align-center": this.t.center,
+            "hax-align-right": this.t.right,
           },
         });
       }
@@ -1421,8 +1459,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       if (props.canScale) {
         props.settings.layout.push({
           property: "__scale",
-          title: "Width",
-          description: "Scale and resize content",
+          title: this.t.width,
           inputMethod: "slider",
           value: this.activeValue.settings.layout.__scale,
           min: props.canScale.min ? props.canScale.min : 12.5,
@@ -1445,15 +1482,13 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       if (props.settings.configure.length > 0) {
         this.activeSchema[0].properties.push({
           property: "configure",
-          title: "Configure",
-          description: "Configure the element",
+          title: this.t.configure,
           properties: props.settings.configure,
         });
       } else {
         this.activeSchema[0].properties.push({
           property: "configure",
-          title: "Configure",
-          description: "Configure the element",
+          title: this.t.configure,
           disabled: true,
         });
       }
@@ -1461,15 +1496,13 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       if (props.settings.layout.length > 0) {
         this.activeSchema[0].properties.push({
           property: "layout",
-          title: "Layout",
-          description: "Position the element relative to other items",
+          title: this.t.layout,
           properties: props.settings.layout,
         });
       } else {
         this.activeSchema[0].properties.push({
           property: "layout",
-          title: "Layout",
-          description: "Position the element relative to other items",
+          title: this.t.layout,
           disabled: true,
         });
       }
@@ -1477,15 +1510,13 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
       if (props.settings.advanced.length > 0) {
         this.activeSchema[0].properties.push({
           property: "advanced",
-          title: "Advanced",
-          description: "Advanced element settings",
+          title: this.t.advanced,
           properties: props.settings.advanced,
         });
       } else {
         this.activeSchema[0].properties.push({
           property: "advanced",
-          title: "Advanced",
-          description: "Advanced element settings",
+          title: this.t.advanced,
           disabled: true,
         });
       }
@@ -1507,15 +1538,15 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
   }
   _updateTrayDetail(oldValue) {
     if (this.trayDetail == "content-add") {
-      this.trayLabel = "Blocks";
+      this.trayLabel = this.t.blocks;
       this._refreshAddData();
     } else if (this.trayDetail == "media-add") {
-      this.trayLabel = "Media";
+      this.trayLabel = this.t.media;
     } else if (this.trayDetail == "content-map") {
-      this.trayLabel = "Structure";
+      this.trayLabel = this.t.structure;
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
     } else if (this.trayDetail == "advanced-settings") {
-      this.trayLabel = "Settings";
+      this.trayLabel = this.t.settings;
       this.shadowRoot
         .querySelector("hax-preferences-dialog")
         .reloadPreferencesForm();
@@ -1532,6 +1563,7 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
     } else {
       this.trayLabel = undefined;
     }
+    this.requestUpdate();
   }
   /**
    * Notice change in values from below
@@ -1718,10 +1750,8 @@ class HaxTray extends SimpleTourFinder(winEventsElement(LitElement)) {
    */
   _editModeChanged(newValue) {
     if (newValue) {
-      this.__tipText = "Save";
       this.shadowRoot.querySelector("#button").icon = "save";
     } else {
-      this.__tipText = "Edit";
       this.shadowRoot.querySelector("#button").icon = "create";
     }
   }

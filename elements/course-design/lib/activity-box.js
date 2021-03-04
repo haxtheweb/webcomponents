@@ -89,7 +89,7 @@ class ActivityBox extends LitElement {
    */
   haxactiveElementChanged(el, val) {
     // flag for HAX to not trigger active on changes
-    let container = this.shadowRoot.querySelector(".tag");
+    let container = this.shadowRoot.querySelector(".tag-content");
     if (val) {
       container.setAttribute("contenteditable", true);
     } else {
@@ -195,7 +195,7 @@ class ActivityBox extends LitElement {
             `
           : html``}
         <div class="tag" ?hidden=${!this.tag}>
-          <span
+          <span class="tag-content"
             ><simple-icon icon="check-circle"></simple-icon>${this.tag}</span
           >
         </div>
