@@ -77,6 +77,8 @@ class TwitterEmbed extends LitElement {
   haxHooks() {
     return {
       gizmoRegistration: "haxgizmoRegistration",
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
     };
   }
   /**
@@ -92,6 +94,34 @@ class TwitterEmbed extends LitElement {
         },
       })
     );
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    if (val) {
+      this._haxstate = val;
+    }
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    this._haxstate = val;
+  }
+  /**
+   * special support for HAX since the whole card is selectable
+   */
+  _clickPrevent(e) {
+    if (this._haxstate) {
+      // do not do default
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
   }
   /**
    * LitElement equivalent of attributeChangedCallback
@@ -129,6 +159,7 @@ class TwitterEmbed extends LitElement {
   render() {
     return html`
       <div
+        @click="${this._clickPrevent}"
         class="twitter-tweet twitter-tweet-rendered"
         style="display: flex; max-width: ${this
           .dataWidth}; width: 100%; margin-top: 10px; margin-bottom: 10px;"
@@ -138,6 +169,7 @@ class TwitterEmbed extends LitElement {
           scrolling="no"
           frameborder="0"
           loading="lazy"
+          @click="${this._clickPrevent}"
           allowtransparency="true"
           allowfullscreen
           style="position: static; visibility: visible; width: ${this
