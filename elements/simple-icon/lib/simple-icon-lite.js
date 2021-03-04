@@ -20,6 +20,9 @@ export const SimpleIconBehaviors = function (SuperClass) {
             height: var(--simple-icon-height, 24px);
             width: var(--simple-icon-width, 24px);
           }
+          :host([dir="rtl"]) svg {
+            direction: rtl;
+          }
           :host([hidden]) {
             display: none;
           }
@@ -72,6 +75,10 @@ export const SimpleIconBehaviors = function (SuperClass) {
     static get properties() {
       return {
         ...super.properties,
+        dir: {
+          type: String,
+          reflect: true,
+        },
         src: {
           type: String,
         },
@@ -89,6 +96,16 @@ export const SimpleIconBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.noColorize = false;
+      this.dir = this.documentDir;
+    }
+    get documentDir() {
+      return (
+        document.body.getAttribute("xml:dir") ||
+        document.body.getAttribute("dir") ||
+        document.documentElement.getAttribute("xml:dir") ||
+        document.documentElement.getAttribute("dir") ||
+        "ltr"
+      );
     }
     firstUpdated(changedProperties) {
       if (super.firstUpdated) {

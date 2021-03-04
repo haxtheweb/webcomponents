@@ -67,6 +67,10 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
   }
   udpateSchema() {
     // JSON schema object needs delayed to ensure page repaints the form
+    let lang = I18NManagerStore.lang;
+    if (lang.indexOf("-")) {
+      lang = lang.split("-")[0];
+    }
     this.schema = [
       {
         property: "haxVoiceCommands",
@@ -98,13 +102,13 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
           en: this.t.english,
           es: this.t.spanish,
         },
-        value: I18NManagerStore.lang,
+        value: lang,
       },
     ];
     this.schemaValues = {
       haxVoiceCommands: false,
       haxUiTheme: "hax",
-      haxLang: I18NManagerStore.lang,
+      haxLang: lang,
     };
     if (this.shadowRoot && this.shadowRoot.querySelector("#settingsform")) {
       this.reloadPreferencesForm();

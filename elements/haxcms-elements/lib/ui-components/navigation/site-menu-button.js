@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
+import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**

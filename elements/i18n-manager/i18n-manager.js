@@ -15,6 +15,7 @@ window.I18NManagerStore.requestAvailability = () => {
 };
 export const I18NManagerStore = window.I18NManagerStore.requestAvailability();
 const FALLBACK_LANG = "en";
+const FALLBACK_DIR = "ltr";
 /**
  * `i18n-manager`
  * `internationalization management singleton and helper classes`
@@ -31,6 +32,7 @@ class I18NManager extends LitElement {
     this.elements = [];
     // set initially based on document
     this.lang = this.documentLang;
+    this.dir = this.documentDir;
   }
   get documentLang() {
     return (
@@ -40,6 +42,15 @@ class I18NManager extends LitElement {
       document.documentElement.getAttribute("lang") ||
       navigator.language ||
       FALLBACK_LANG
+    );
+  }
+  get documentDir() {
+    return (
+      document.body.getAttribute("xml:dir") ||
+      document.body.getAttribute("dir") ||
+      document.documentElement.getAttribute("xml:dir") ||
+      document.documentElement.getAttribute("dir") ||
+      FALLBACK_DIR
     );
   }
   connectedCallback() {
@@ -152,6 +163,11 @@ class I18NManager extends LitElement {
         type: String,
         reflect: true,
         attribute: "lang",
+      },
+      dir: {
+        type: String,
+        reflect: true,
+        attribute: "dir",
       },
     };
   }

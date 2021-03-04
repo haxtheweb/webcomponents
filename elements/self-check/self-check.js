@@ -43,14 +43,14 @@ class SelfCheck extends I18NMixin(
     this.question = "";
     this.title = "Self-Check";
     this.t = {
-      reveal: "Reveal Answer",
+      revealAnswer: "Reveal Answer",
       close: "Close",
-      more: "More information",
+      moreInformation: "More information",
     };
     this.registerTranslation({
       context: this,
       basePath: import.meta.url,
-      locales: ["en-UK", "ja", "es"],
+      locales: ["he", "ja", "es"],
     });
   }
   static get styles() {
@@ -263,7 +263,7 @@ class SelfCheck extends I18NMixin(
             <div class="check_button">
               <simple-icon-button
                 controls="answer_wrap"
-                aria-label="${this.t.reveal}"
+                aria-label="${this.t.revealAnswer}"
                 id="checkBtn"
                 class="check-btn"
                 icon="icons:check-circle"
@@ -271,7 +271,7 @@ class SelfCheck extends I18NMixin(
                 @click="${this.openAnswer}"
               ></simple-icon-button>
               <simple-tooltip aria-hidden="true" for="checkBtn" position="left">
-                ${this.t.reveal}
+                ${this.t.revealAnswer}
               </simple-tooltip>
             </div>
           </div>
@@ -289,7 +289,7 @@ class SelfCheck extends I18NMixin(
                     <div class="more_info">
                       <user-action track="click" every
                         ><a href="${this.link}" target="_blank"
-                          >${this.t.more}...</a
+                          >${this.t.moreInformation}...</a
                         ></user-action
                       >
                     </div>

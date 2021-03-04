@@ -31,10 +31,13 @@ export const I18NMixin = function (SuperClass) {
           detail.render = "render";
         }
       }
-      // clean up path and force adding locales. part security thing as well
-      detail.localesPath = `${this.pathFromUrl(
-        decodeURIComponent(detail.basePath)
-      )}locales`;
+      // auto-detect localePath if we have a basePath
+      if (!detail.localesPath && detail.basePath) {
+        // clean up path and force adding locales. part security thing as well
+        detail.localesPath = `${this.pathFromUrl(
+          decodeURIComponent(detail.basePath)
+        )}locales`;
+      }
       // register the translation directly
       I18NManagerStore.registerTranslation(detail);
     }
