@@ -235,6 +235,11 @@ var A11yMenuButtonItemBehaviors = function A11yMenuButtonItemBehaviors(
                   attribute: "controls",
                   type: String,
                 },
+                slot: {
+                  type: String,
+                  attribute: "menuitem",
+                  reflect: true,
+                },
               };
             },
           },

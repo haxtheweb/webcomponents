@@ -39,7 +39,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             overflow: hidden;
           }
           :host([expanded]) absolute-position-behavior {
-            z-index: 2;
+            z-index: var(--a11y-menu-button-focus-z-index, 1000);
           }
           :host(:not([expanded])) absolute-position-behavior {
             border-color: none !important;
