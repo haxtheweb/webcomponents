@@ -1846,7 +1846,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             menuWidth += 30;
           } else {
             this._hideContextMenu(this.contextMenus.ce);
-            this._positionContextMenu(this.contextMenus.text, node, 0, -30);
+            this._positionContextMenu(this.contextMenus.text, node, 0);
             // text menu can expand based on selection
             let textRect = this.contextMenus.text.getBoundingClientRect();
             menuWidth += textRect.width;

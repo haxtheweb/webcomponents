@@ -20,7 +20,20 @@ import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
  */
 class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   static get styles() {
-    return [...super.styles];
+    return [
+      ...super.styles,
+      css`
+        #toolbar {
+          position: absolute;
+          bottom: 0;
+          width: 280px;
+        }
+        .group,
+        .group > * {
+          flex: 1 1 auto;
+        }
+      `,
+    ];
   }
   constructor() {
     super();
@@ -123,20 +136,15 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         let schema = HAXStore.haxSchemaFromTag(activeNode.tagName);
         this.sourceView = schema.canEditSource;
       }
-      if (
-        this.shadowRoot &&
-        this.shadowRoot.querySelector("simple-popover-selection")
-      ) {
-        this.shadowRoot.querySelector(
-          "simple-popover-selection"
-        ).opened = false;
+      if (this.shadowRoot && this.shadowRoot.querySelector("#textformat")) {
+        this.shadowRoot.querySelector("#textformat").collapsed = true;
       }
       // update our icon if global changes what we are pointing to
       if (
         activeNode &&
         HAXStore.isTextElement(activeNode) &&
         this.shadowRoot.querySelector(
-          'button[value="' + activeNode.tagName.toLowerCase() + '"]'
+          'button[event-name="' + activeNode.tagName.toLowerCase() + '"]'
         )
       ) {
         this.updateTextIconSelection(activeNode.tagName.toLowerCase());
@@ -144,7 +152,9 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         activeNode &&
         activeNode.tagName === "LI" &&
         this.shadowRoot.querySelector(
-          'button[value="' + activeNode.parentNode.tagName.toLowerCase() + '"]'
+          'button[event-name="' +
+            activeNode.parentNode.tagName.toLowerCase() +
+            '"]'
         )
       ) {
         this.updateTextIconSelection(
@@ -169,13 +179,11 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   render() {
     return html`
       <div id="toolbar">
-        <hax-toolbar>
+        <hax-toolbar always-expanded>
           <div class="group">
             <hax-toolbar-menu
               id="textformat"
-              icon="${this._formatIcon(
-                this.realSelectedValue || this.formatIcon
-              )}"
+              icon="${this._formatIcon(this.realSelectedValue)}"
               label="Format"
               show-text-label
               data-simple-tour-stop
@@ -214,16 +222,6 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             <slot name="primary"></slot>
           </div>
           <div class="group">
-            <hax-context-item
-              action
-              icon="icons:code"
-              label="${this.t.modifyHTMLSource}"
-              ?hidden="${!this.sourceView}"
-              event-name="hax-source-view-toggle"
-              toggles
-              ?toggled="${this.viewSource}"
-              @click="${(e) => (this.viewSource = !this.viewSource)}"
-            ></hax-context-item>
             <hax-context-item-textop
               mini
               action
@@ -256,6 +254,8 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               event-name="text-indent"
               ?hidden="${!this._showIndent}"
             ></hax-context-item-textop>
+          </div>
+          <div class="group" ?hidden="${!this.hasSelectedText}">
             <hax-context-item-textop
               mini
               action
@@ -274,6 +274,8 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               event-name="text-italic"
               ?hidden="${!this.hasSelectedText}"
             ></hax-context-item-textop>
+          </div>
+          <div class="group" ?hidden="${!this.hasSelectedText}">
             <hax-context-item-textop
               mini
               action
@@ -292,6 +294,8 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               event-name="text-unlink"
               ?hidden="${!this.hasSelectedText}"
             ></hax-context-item-textop>
+          </div>
+          <div class="group" ?hidden="${!this.hasSelectedText}">
             <hax-context-item-textop
               mini
               action
@@ -301,6 +305,46 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               event-name="text-remove-format"
               ?hidden="${!this.hasSelectedText}"
             ></hax-context-item-textop>
+            <slot name="secondary"></slot>
+          </div>
+          <div class="group" ?hidden="${!this.hasSelectedText}">
+            <hax-context-item-textop
+              action
+              menu
+              icon="editor:format-underlined"
+              label="${this.t.underline}"
+              event-name="text-underline"
+              ?hidden="${!this.hasSelectedText}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              action
+              menu
+              icon="editor:format-strikethrough"
+              event-name="text-strikethrough"
+              ?hidden="${!this.hasSelectedText}"
+              label="${this.t.crossOut}"
+            ></hax-context-item-textop>
+            <slot name="more"></slot>
+          </div>
+          <div class="group" ?hidden="${!this.hasSelectedText}">
+            <hax-context-item-textop
+              action
+              menu
+              icon="mdextra:subscript"
+              event-name="text-subscript"
+              ?hidden="${!this.hasSelectedText}"
+              label="${this.t.subscript}"
+            ></hax-context-item-textop>
+            <hax-context-item-textop
+              action
+              menu
+              icon="mdextra:superscript"
+              event-name="text-superscript"
+              ?hidden="${!this.hasSelectedText}"
+              label="${this.t.superscript}"
+            ></hax-context-item-textop>
+          </div>
+          <div class="group" ?hidden="${!this.hasSelectedText}">
             <hax-context-item
               mini
               action
@@ -319,42 +363,18 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               event-name="insert-inline-gizmo"
               ?hidden="${!this.isSafari || !this.hasSelectedText}"
             ></hax-context-item-textop>
-            <slot name="secondary"></slot>
           </div>
           <div class="group">
-            <hax-context-item-textop
+            <hax-context-item
               action
-              menu
-              icon="mdextra:subscript"
-              event-name="text-subscript"
-              ?hidden="${!this.hasSelectedText}"
-              label="${this.t.subscript}"
-            ></hax-context-item-textop>
-            <hax-context-item-textop
-              action
-              menu
-              icon="mdextra:superscript"
-              event-name="text-superscript"
-              ?hidden="${!this.hasSelectedText}"
-              label="${this.t.superscript}"
-            ></hax-context-item-textop>
-            <hax-context-item-textop
-              action
-              menu
-              icon="editor:format-underlined"
-              label="${this.t.underline}"
-              event-name="text-underline"
-              ?hidden="${!this.hasSelectedText}"
-            ></hax-context-item-textop>
-            <hax-context-item-textop
-              action
-              menu
-              icon="editor:format-strikethrough"
-              event-name="text-strikethrough"
-              ?hidden="${!this.hasSelectedText}"
-              label="${this.t.crossOut}"
-            ></hax-context-item-textop>
-            <slot name="more"></slot>
+              icon="icons:code"
+              label="${this.t.modifyHTMLSource}"
+              ?hidden="${!this.sourceView}"
+              event-name="hax-source-view-toggle"
+              toggles
+              ?toggled="${this.viewSource}"
+              @click="${(e) => (this.viewSource = !this.viewSource)}"
+            ></hax-context-item>
           </div>
           <div class="group">
             <hax-toolbar-menu
@@ -456,10 +476,16 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
   updateTextIconSelection(tag) {
     this.realSelectedValue = tag;
+    let localItem = this.shadowRoot.querySelector(
+      'button[event-name="' + this.realSelectedValue + '"]'
+    );
+    if (localItem) {
+      this.formatIcon = localItem.icon;
+    }
   }
 
   _formatIcon(tag = this.realSelectedValue || "p") {
-    let icon = this.textFormatLookup[tag] || {};
+    let icon = this.textFormatLookup[tag];
     return icon || "hax:paragraph";
   }
   updated(changedProperties) {
@@ -472,6 +498,16 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         } else {
           this._showLists = false;
         }
+      }
+      if (propName == "hasSelectedText") {
+        this.dispatchEvent(
+          new CustomEvent("hax-context-menu-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this,
+          })
+        );
       }
     });
   }
