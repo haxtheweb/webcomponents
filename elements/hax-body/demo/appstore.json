@@ -1529,6 +1529,7 @@
     }
   ],
   "autoloader": {
+    "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",
     "unity-webgl": "@lrnwebcomponents/unity-webgl/unity-webgl.js",
     "block-quote": "@lrnwebcomponents/course-design/lib/block-quote.js",
     "github-preview": "@lrnwebcomponents/github-preview/github-preview.js",
@@ -1559,7 +1560,78 @@
     "lrndesign-blockquote": "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
     "lrndesign-timeline": "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
     "lrndesign-gallery": "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
-    "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+    "meme-maker": {
+      "import": "@lrnwebcomponents/meme-maker/meme-maker.js"
+    },
+    "vaadin-upload": {
+      "import": "@vaadin/vaadin-upload/vaadin-upload.js",
+      "haxProperties": {
+        "canScale": true,
+        "canPosition": true,
+        "canEditSource": true,
+        "gizmo": {
+          "title": "Vaadin upload test",
+          "icon": "hax:meme",
+          "color": "orange",
+          "groups": ["Media", "Funny"],
+          "handles": [
+            {
+              "type": "image",
+              "source": "imageUrl",
+              "title": "topText",
+              "author": "bottomText",
+              "alt": "alt",
+              "ariaDescribedby": "describedBy"
+            }
+          ],
+          "meta": {
+            "author": "ELMS:LN"
+          }
+        },
+        "settings": {
+          "configure": [
+            {
+              "property": "imageUrl",
+              "title": "Source",
+              "description": "The source url for the element this is citing.",
+              "inputMethod": "haxupload"
+            },
+            {
+              "property": "topText",
+              "title": "Top text",
+              "description": "Top text of the meme.",
+              "inputMethod": "textfield"
+            },
+            {
+              "property": "bottomText",
+              "title": "Bottom text",
+              "description": "The date this was accessed.",
+              "inputMethod": "textfield"
+            }
+          ],
+          "advanced": [
+            {
+              "property": "describedBy",
+              "title": "aria-describedby",
+              "description": "Space-separated list of IDs for elements that describe the image.",
+              "inputMethod": "textfield"
+            }
+          ]
+        },
+        "saveOptions": {
+          "wipeSlot": true
+        },
+        "demoSchema": [
+          {
+            "tag": "vaadin-upload",
+            "content": "",
+            "properties": {
+              "capture": true
+            }
+          }
+        ]
+      }
+    },
     "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
     "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
     "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",

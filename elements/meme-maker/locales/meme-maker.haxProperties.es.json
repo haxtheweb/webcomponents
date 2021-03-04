@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Memes",
+    "description": "Hacer un meme a partir de una imagen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fuente",
+        "description": "La URL de origen del elemento que está citando"
+      },
+      {
+        "title": "Cima Texto",
+        "description": "Texto cima del meme"
+      },
+      {
+        "title": "Fondo Texto",
+        "description": "Texto fondo del meme"
+      }
+    ],
+    "advanced": [
+      {
+        "description": "Lista de ID separados por espacios para los elementos que describen la imagen"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Gato acechando un juguete pequeño",
+        "topText": "te traigo",
+        "bottomText": "la muerte"
+      }
+    }
+  ]
+}

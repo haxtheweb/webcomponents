@@ -72,13 +72,18 @@ class I18NManager extends LitElement {
     return url.substring(0, url.lastIndexOf("/") + 1);
   }
   registerTranslationEvent(e) {
-    let detail = e.detail;
+    let detail = this.detailNormalize(e.detail);
     // ensure we have a namespace for later use
-    if (!detail.namespace) {
+    if (detail.namespace && detail.localesPath && detail.locales) {
+      this.registerTranslation(detail);
+    }
+  }
+  detailNormalize(detail) {
+    if (!detail.namespace && detail.context) {
       detail.namespace = detail.context.tagName.toLowerCase();
     }
     // support fallback calls for requestUpdate (LitElement) and render if nothing set
-    if (!detail.updateCallback) {
+    if (!detail.updateCallback && detail.context) {
       if (detail.context.requestUpdate) {
         detail.updateCallback = "requestUpdate";
       } else if (detail.context.render) {
@@ -91,24 +96,44 @@ class I18NManager extends LitElement {
         decodeURIComponent(detail.basePath)
       )}locales`;
     }
-    if (
-      detail.context &&
-      detail.namespace &&
-      detail.localesPath &&
-      detail.locales &&
-      detail.updateCallback
-    ) {
-      this.registerTranslation(e.detail);
+    // minimum requirement to operate but still
+    // should pull from other namespace if exists
+    if (detail.context && detail.namespace) {
+      let match = this.elements.filter((el) => {
+        if (el.namespace == detail.namespace && el.localesPath && el.locales) {
+          return true;
+        }
+      });
+      if (match && match.length && match[0]) {
+        detail.localesPath = match[0].localesPath;
+        detail.locales = match[0].locales;
+      }
     }
+    return detail;
   }
   registerTranslation(detail) {
-    // ensure no dual registration of context
+    // ensure no dual registration of context; meaning same object twice
     if (
+      (!detail.context &&
+        this.elements.filter((e) => {
+          return e.namespace === detail.namespace;
+        }).length === 0) ||
       this.elements.filter((e) => {
         return e.context === detail.context;
       }).length === 0
     ) {
+      detail = this.detailNormalize(detail);
       this.elements.push(detail);
+      // timing issue, see if we are ready + a language and that it happened PRIOR
+      // to registration just now but match against locales we support
+      // and it being the set language already
+      if (this.lang && this.__ready && detail.locales.includes(this.lang)) {
+        // prevent flooding w/ lots of translatable elements
+        clearTimeout(this._debounce);
+        this._debounce = setTimeout(() => {
+          this.updateLanguage(this.lang);
+        }, 0);
+      }
     }
   }
   /**
@@ -131,6 +156,42 @@ class I18NManager extends LitElement {
     };
   }
   /**
+   * Return language file for a specific context
+   */
+  async loadNamespaceFile(ns, lang = this.lang) {
+    const langPieces = lang.split("-");
+    let nsMatch = this.elements.filter((el) => {
+      return (
+        el.namespace === ns &&
+        (el.locales.includes(lang) || el.locales.includes(langPieces[0]))
+      );
+    });
+    if (nsMatch && nsMatch.length === 1) {
+      const el = nsMatch[0];
+      var fetchTarget = "";
+      if (el.locales.includes(lang)) {
+        fetchTarget = `${el.localesPath}/${el.namespace}.${lang}.json`;
+      } else if (el.locales.includes(langPieces[0])) {
+        fetchTarget = `${el.localesPath}/${el.namespace}.${langPieces[0]}.json`;
+      }
+      if (fetchTarget == "") {
+        return {};
+      }
+      // see if we had this previous to avoid another request
+      if (!this.fetchTargets[fetchTarget]) {
+        // request the json backing, then make JSON and set the associated values
+        // @todo catch this if fetch target was previously requested
+        this.fetchTargets[fetchTarget] = await fetch(fetchTarget).then(
+          (response) => {
+            if (response && response.json) return response.json();
+            return false;
+          }
+        );
+      }
+      return this.fetchTargets[fetchTarget];
+    }
+  }
+  /**
    * trigger an update of the language after loading everything
    */
   async updateLanguage(lang) {
@@ -150,10 +211,13 @@ class I18NManager extends LitElement {
         // fallback to documentLanguage
         for (var i in fallBack) {
           let el = fallBack[i];
-          el.context.t = { ...el.context._t };
-          // support a forced update / function to run when it finishes
-          if (el.updateCallback) {
-            el.context[el.updateCallback]();
+          // verify we have a context
+          if (el.context) {
+            el.context.t = { ...el.context._t };
+            // support a forced update / function to run when it finishes
+            if (el.updateCallback) {
+              el.context[el.updateCallback]();
+            }
           }
         }
       }
@@ -168,14 +232,16 @@ class I18NManager extends LitElement {
         }
         // see if we had this previous to avoid another request
         if (this.fetchTargets[fetchTarget]) {
-          let data = this.fetchTargets[fetchTarget];
-          for (var id in data) {
-            el.context.t[id] = data[id];
-          }
-          el.context.t = { ...el.context.t };
-          // support a forced update / function to run when it finishes
-          if (el.updateCallback) {
-            el.context[el.updateCallback]();
+          if (el.context) {
+            let data = this.fetchTargets[fetchTarget];
+            for (var id in data) {
+              el.context.t[id] = data[id];
+            }
+            el.context.t = { ...el.context.t };
+            // support a forced update / function to run when it finishes
+            if (el.updateCallback) {
+              el.context[el.updateCallback]();
+            }
           }
         } else {
           // request the json backing, then make JSON and set the associated values
@@ -186,13 +252,15 @@ class I18NManager extends LitElement {
               return false;
             }
           );
-          for (var id in this.fetchTargets[fetchTarget]) {
-            el.context.t[id] = this.fetchTargets[fetchTarget][id];
-          }
-          el.context.t = { ...el.context.t };
-          // support a forced update / function to run when it finishes
-          if (el.updateCallback) {
-            el.context[el.updateCallback]();
+          if (el.context) {
+            for (var id in this.fetchTargets[fetchTarget]) {
+              el.context.t[id] = this.fetchTargets[fetchTarget][id];
+            }
+            el.context.t = { ...el.context.t };
+            // support a forced update / function to run when it finishes
+            if (el.updateCallback && el.context) {
+              el.context[el.updateCallback]();
+            }
           }
         }
       }

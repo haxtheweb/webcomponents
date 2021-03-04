@@ -50,7 +50,7 @@ class SelfCheck extends I18NMixin(
     this.registerTranslation({
       context: this,
       basePath: import.meta.url,
-      locales: ["en-UK", "ja"],
+      locales: ["en-UK", "ja", "es"],
     });
   }
   static get styles() {
