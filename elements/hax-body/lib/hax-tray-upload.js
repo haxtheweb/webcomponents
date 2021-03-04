@@ -2,8 +2,9 @@ import { html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import { HaxUploadField } from "./hax-upload-field.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
-class HaxTrayUpload extends HaxUploadField {
+class HaxTrayUpload extends I18NMixin(HaxUploadField) {
   /**
    * Convention we use
    */
@@ -15,11 +16,23 @@ class HaxTrayUpload extends HaxUploadField {
    */
   constructor() {
     super();
-    this.label = "Upload Media";
+    this.t = {
+      uploadMedia: "Upload Media",
+    };
+    this.registerTranslation({
+      context: this,
+      namespace: "hax",
+    });
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection",
       "place-holder-file-drop": "_placeHolderFileDrop",
     };
+  }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "t") this.label = this.t.uploadMedia;
+    });
   }
   /**
    * Respond to successful file upload, now inject url into url field and

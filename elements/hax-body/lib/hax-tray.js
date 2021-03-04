@@ -60,6 +60,7 @@ class HaxTray extends I18NMixin(
     };
     this.t = {
       structure: "Structure",
+      structureTip: "View Page Structure",
       editSelected: "Edit selected",
       edit: "Edit",
       save: "Save",
@@ -704,7 +705,6 @@ class HaxTray extends I18NMixin(
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
-        tooltip="Add Content Blocks to Page"
         toggles
         ?toggled="${this.trayDetail === "content-add"}"
       >
@@ -727,7 +727,6 @@ class HaxTray extends I18NMixin(
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
-        tooltip="Add Media to Page"
         toggles
         ?toggled="${this.trayDetail === "media-add"}"
       >
@@ -751,7 +750,6 @@ class HaxTray extends I18NMixin(
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
-        tooltip="View Page Structure"
         toggles
         ?toggled="${this.trayDetail === "content-map"}"
       >
@@ -777,7 +775,6 @@ class HaxTray extends I18NMixin(
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
-        tooltip="User Preference Settings"
         toggles
         ?toggled="${this.trayDetail === "advanced-settings"}"
       >

@@ -13,6 +13,8 @@ var _haxStore = require("./hax-store.js");
 
 var _haxUploadField = require("./hax-upload-field.js");
 
+var _I18NMixin2 = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -125,8 +127,8 @@ function _setPrototypeOf(o, p) {
 
 var HaxTrayUpload =
   /*#__PURE__*/
-  (function (_HaxUploadField) {
-    _inherits(HaxTrayUpload, _HaxUploadField);
+  (function (_I18NMixin) {
+    _inherits(HaxTrayUpload, _I18NMixin);
 
     _createClass(HaxTrayUpload, null, [
       {
@@ -153,19 +155,43 @@ var HaxTrayUpload =
         this,
         _getPrototypeOf(HaxTrayUpload).call(this)
       );
-      _this.label = "Upload Media";
+      _this.t = {
+        uploadMedia: "Upload Media",
+      };
+
+      _this.registerTranslation({
+        context: _assertThisInitialized(_this),
+        namespace: "hax",
+      });
+
       _this.__winEvents = {
         "hax-app-picker-selection": "_haxAppPickerSelection",
         "place-holder-file-drop": "_placeHolderFileDrop",
       };
       return _this;
     }
-    /**
-     * Respond to successful file upload, now inject url into url field and
-     * do a gizmo guess from there!
-     */
 
     _createClass(HaxTrayUpload, [
+      {
+        key: "updated",
+        value: function updated(changedProperties) {
+          var _this2 = this;
+
+          if (_get(_getPrototypeOf(HaxTrayUpload.prototype), "updated", this))
+            _get(
+              _getPrototypeOf(HaxTrayUpload.prototype),
+              "updated",
+              this
+            ).call(this, changedProperties);
+          changedProperties.forEach(function (oldValue, propName) {
+            if (propName == "t") _this2.label = _this2.t.uploadMedia;
+          });
+        },
+        /**
+         * Respond to successful file upload, now inject url into url field and
+         * do a gizmo guess from there!
+         */
+      },
       {
         key: "_fileUploadResponse",
         value: function _fileUploadResponse(e) {
@@ -226,7 +252,7 @@ var HaxTrayUpload =
     ]);
 
     return HaxTrayUpload;
-  })(_haxUploadField.HaxUploadField);
+  })((0, _I18NMixin2.I18NMixin)(_haxUploadField.HaxUploadField));
 
 exports.HaxTrayUpload = HaxTrayUpload;
 window.customElements.define(HaxTrayUpload.tag, HaxTrayUpload);
