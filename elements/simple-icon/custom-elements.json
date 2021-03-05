@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "simple-icon",
-      "path": "./lib\\simple-icon-button-lite.js",
+      "path": "./lib/simple-icon-button-lite.js",
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
@@ -11,40 +11,7 @@
           "type": "boolean"
         },
         {
-          "name": "aria-labelledby",
-          "type": "string"
-        },
-        {
-          "name": "controls",
-          "type": "string"
-        },
-        {
-          "name": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "field-name",
-          "type": "string"
-        },
-        {
-          "name": "form",
-          "type": "string"
-        },
-        {
           "name": "icon",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "type": "string",
-          "default": "\"button\""
-        },
-        {
-          "name": "value",
           "type": "string"
         },
         {
@@ -54,6 +21,46 @@
         {
           "name": "toggled",
           "type": "boolean"
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "controls",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "field-name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "\"button\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
@@ -63,49 +70,8 @@
           "type": "boolean"
         },
         {
-          "name": "ariaLabelledby",
-          "attribute": "aria-labelledby",
-          "type": "string"
-        },
-        {
-          "name": "controls",
-          "attribute": "controls",
-          "type": "string"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "fieldName",
-          "attribute": "field-name",
-          "type": "string"
-        },
-        {
-          "name": "form",
-          "attribute": "form",
-          "type": "string"
-        },
-        {
           "name": "icon",
           "attribute": "icon",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "attribute": "type",
-          "type": "string",
-          "default": "\"button\""
-        },
-        {
-          "name": "value",
-          "attribute": "value",
           "type": "string"
         },
         {
@@ -117,12 +83,60 @@
           "name": "toggled",
           "attribute": "toggled",
           "type": "boolean"
+        },
+        {
+          "name": "ariaLabelledby",
+          "attribute": "aria-labelledby",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "controls",
+          "attribute": "controls",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "form",
+          "attribute": "form",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "fieldName",
+          "attribute": "field-name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string",
+          "default": "\"button\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
         }
       ]
     },
     {
       "name": "simple-icon-button-lite",
-      "path": "./lib\\simple-icon-button-lite.js",
+      "path": "./lib/simple-icon-button-lite.js",
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {
@@ -130,40 +144,7 @@
           "type": "boolean"
         },
         {
-          "name": "aria-labelledby",
-          "type": "string"
-        },
-        {
-          "name": "controls",
-          "type": "string"
-        },
-        {
-          "name": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "field-name",
-          "type": "string"
-        },
-        {
-          "name": "form",
-          "type": "string"
-        },
-        {
           "name": "icon",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "type": "string",
-          "default": "\"button\""
-        },
-        {
-          "name": "value",
           "type": "string"
         },
         {
@@ -172,199 +153,58 @@
         },
         {
           "name": "toggled",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
-        {
-          "name": "autofocus",
-          "attribute": "autofocus",
-          "type": "boolean"
-        },
-        {
-          "name": "ariaLabelledby",
-          "attribute": "aria-labelledby",
-          "type": "string"
-        },
-        {
-          "name": "controls",
-          "attribute": "controls",
-          "type": "string"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "fieldName",
-          "attribute": "field-name",
-          "type": "string"
-        },
-        {
-          "name": "form",
-          "attribute": "form",
-          "type": "string"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "attribute": "type",
-          "type": "string",
-          "default": "\"button\""
-        },
-        {
-          "name": "value",
-          "attribute": "value",
-          "type": "string"
-        },
-        {
-          "name": "toggles",
-          "attribute": "toggles",
-          "type": "boolean"
-        },
-        {
-          "name": "toggled",
-          "attribute": "toggled",
-          "type": "boolean"
-        }
-      ]
-    },
-    {
-      "name": "simple-icon",
-      "path": "./lib\\simple-icon-button.js",
-      "description": "`simple-icon`\n`Render an SVG based icon`",
-      "attributes": [
-        {
-          "name": "contrast",
-          "type": "number",
-          "default": "4"
-        },
-        {
-          "name": "autofocus",
           "type": "boolean"
         },
         {
           "name": "aria-labelledby",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "controls",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "field-name",
-          "type": "string"
-        },
-        {
-          "name": "form",
-          "type": "string"
-        },
-        {
-          "name": "icon",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "type": "string"
-        },
-        {
-          "name": "value",
-          "type": "string"
-        },
-        {
-          "name": "toggles",
-          "type": "boolean"
-        },
-        {
-          "name": "toggled",
-          "type": "boolean"
-        },
-        {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "field-name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "\"button\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
-        {
-          "name": "contrast",
-          "attribute": "contrast",
-          "type": "number",
-          "default": "4"
-        },
         {
           "name": "autofocus",
           "attribute": "autofocus",
           "type": "boolean"
         },
         {
-          "name": "ariaLabelledby",
-          "attribute": "aria-labelledby",
-          "type": "string"
-        },
-        {
-          "name": "controls",
-          "attribute": "controls",
-          "type": "string"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "fieldName",
-          "attribute": "field-name",
-          "type": "string"
-        },
-        {
-          "name": "form",
-          "attribute": "form",
-          "type": "string"
-        },
-        {
           "name": "icon",
           "attribute": "icon",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "attribute": "type",
-          "type": "string"
-        },
-        {
-          "name": "value",
-          "attribute": "value",
           "type": "string"
         },
         {
@@ -378,29 +218,58 @@
           "type": "boolean"
         },
         {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "name": "ariaLabelledby",
+          "attribute": "aria-labelledby",
           "type": "string",
-          "default": "\"grey\""
+          "default": "\"\""
         },
         {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
+          "name": "controls",
+          "attribute": "controls",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
           "type": "boolean",
           "default": "false"
         },
         {
-          "name": "colors",
-          "default": "\"colors\""
+          "name": "form",
+          "attribute": "form",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "fieldName",
+          "attribute": "field-name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string",
+          "default": "\"button\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
         }
       ]
     },
     {
       "name": "simple-icon-button",
-      "path": "./lib\\simple-icon-button.js",
-      "description": "`simple-icon`\n`Render an SVG based icon`",
+      "path": "./lib/simple-icon-button.js",
       "attributes": [
         {
           "name": "contrast",
@@ -412,39 +281,7 @@
           "type": "boolean"
         },
         {
-          "name": "aria-labelledby",
-          "type": "string"
-        },
-        {
-          "name": "controls",
-          "type": "string"
-        },
-        {
-          "name": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "field-name",
-          "type": "string"
-        },
-        {
-          "name": "form",
-          "type": "string"
-        },
-        {
           "name": "icon",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "type": "string"
-        },
-        {
-          "name": "value",
           "type": "string"
         },
         {
@@ -454,6 +291,46 @@
         {
           "name": "toggled",
           "type": "boolean"
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "controls",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "field-name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "accent-color",
@@ -481,48 +358,8 @@
           "type": "boolean"
         },
         {
-          "name": "ariaLabelledby",
-          "attribute": "aria-labelledby",
-          "type": "string"
-        },
-        {
-          "name": "controls",
-          "attribute": "controls",
-          "type": "string"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "fieldName",
-          "attribute": "field-name",
-          "type": "string"
-        },
-        {
-          "name": "form",
-          "attribute": "form",
-          "type": "string"
-        },
-        {
           "name": "icon",
           "attribute": "icon",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "attribute": "label",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "attribute": "type",
-          "type": "string"
-        },
-        {
-          "name": "value",
-          "attribute": "value",
           "type": "string"
         },
         {
@@ -534,6 +371,54 @@
           "name": "toggled",
           "attribute": "toggled",
           "type": "boolean"
+        },
+        {
+          "name": "ariaLabelledby",
+          "attribute": "aria-labelledby",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "controls",
+          "attribute": "controls",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "form",
+          "attribute": "form",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "fieldName",
+          "attribute": "field-name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "accentColor",
@@ -557,7 +442,7 @@
     },
     {
       "name": "simple-icon-lite",
-      "path": "./lib\\simple-icon-lite.js",
+      "path": "./lib/simple-icon-lite.js",
       "description": "`simple-icon-lite`\n`Render an SVG based icon`",
       "attributes": [
         {
@@ -572,6 +457,11 @@
           "name": "no-colorize",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "dir",
+          "type": "string",
+          "default": "\"documentDir\""
         }
       ],
       "properties": [
@@ -590,16 +480,26 @@
           "type": "string"
         },
         {
+          "name": "documentDir",
+          "type": "string"
+        },
+        {
           "name": "noColorize",
           "attribute": "no-colorize",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "dir",
+          "attribute": "dir",
+          "type": "string",
+          "default": "\"documentDir\""
         }
       ]
     },
     {
       "name": "simple-iconset-demo",
-      "path": "./lib\\simple-iconset-demo.js",
+      "path": "./lib/simple-iconset-demo.js",
       "description": "`simple-iconset-demo`",
       "attributes": [
         {
@@ -654,10 +554,20 @@
     },
     {
       "name": "simple-iconset",
-      "path": "./lib\\simple-iconset.js",
+      "path": "./lib/simple-iconset.js",
       "properties": [
         {
           "name": "iconsets",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "iconlist",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "manifest",
           "type": "object",
           "default": "{}"
         },
@@ -690,6 +600,11 @@
           "name": "no-colorize",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "dir",
+          "type": "string",
+          "default": "\"documentDir\""
         },
         {
           "name": "accent-color",
@@ -726,10 +641,20 @@
           "type": "string"
         },
         {
+          "name": "documentDir",
+          "type": "string"
+        },
+        {
           "name": "noColorize",
           "attribute": "no-colorize",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "dir",
+          "attribute": "dir",
+          "type": "string",
+          "default": "\"documentDir\""
         },
         {
           "name": "accentColor",
@@ -753,7 +678,7 @@
     },
     {
       "name": "simple-icon",
-      "path": "./src\\simple-icon.js",
+      "path": "./src/simple-icon.js",
       "description": "`simple-icon`\n`Render an SVG based icon`",
       "attributes": [
         {

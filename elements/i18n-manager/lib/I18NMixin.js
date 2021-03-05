@@ -14,7 +14,7 @@ export const I18NMixin = function (SuperClass) {
       this.t = {};
     }
     /**
-     * Enhanced support for LitElement
+     * Enhanced data reactivity for LitElement if available
      */
     static get properties() {
       return {
@@ -36,7 +36,7 @@ export const I18NMixin = function (SuperClass) {
           detail.updateCallback = "requestUpdate";
           // automatically set for common VanillaJS convention
         } else if (detail.context.render) {
-          detail.render = "render";
+          detail.updateCallback = "render";
         }
       }
       // auto-detect localePath if we have a basePath
@@ -53,15 +53,6 @@ export const I18NMixin = function (SuperClass) {
       // this also ensures that things leveraging the Mixin will never miss
       // the singleton being registered
       I18NManagerStore.registerLocalization(detail);
-    }
-    /**
-     * Life cycle
-     */
-    connectedCallback() {
-      super.connectedCallback();
-      // store this for later if language is switched back to default
-      // this allows for fallback to an undefined / assumed en language
-      this._t = { ...this.t };
     }
   };
 };

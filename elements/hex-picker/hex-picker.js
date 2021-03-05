@@ -318,7 +318,7 @@ class HexPicker extends LitElement {
         bubbles: true,
         cancelable: false,
         composed: false,
-        detail: { value: this },
+        detail: this,
       })
     );
   }

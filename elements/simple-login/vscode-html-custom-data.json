@@ -18,7 +18,7 @@
     },
     {
       "name": "simple-login-camera",
-      "description": "Inspiration from https://github.com/wanoo21/MyCamera\n\nAttributes:\n\n  * `autoplay` {} - \n\n  * `controls` {} - \n\n  * `audio` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `_shadow` - \n\n  * `_video` - \n\n  * `_error` - \n\n  * `_record` - \n\n  * `_pauseRecord` - ",
+      "description": "Inspiration from https://github.com/wanoo21/MyCamera\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `autoplay` {} - \n\n  * `controls` {} - \n\n  * `audio` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `t` - \n\n  * `template` - \n\n  * `_shadow` - \n\n  * `_video` - \n\n  * `_error` - \n\n  * `_record` - \n\n  * `_pauseRecord` - ",
       "attributes": [
         {
           "name": "autoplay",
@@ -31,6 +31,10 @@
         {
           "name": "audio",
           "description": "`audio` {} - \n\n"
+        },
+        {
+          "name": "oni18n-manager-register-element",
+          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
         }
       ]
     },

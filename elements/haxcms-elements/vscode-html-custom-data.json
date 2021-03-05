@@ -129,7 +129,7 @@
     },
     {
       "name": "haxcms-site-builder",
-      "description": "`haxcms-site-builder`\n`build the site and everything off of this`\n\nEvents:\n\n  * `outline-location-changed` {`CustomEvent<any>`} - \n\n  * `manifest-changed` {`CustomEvent<any>`} - \n\n  * `active-item-changed` {`CustomEvent<any>`} - \n\n  * `active-item-content-changed` {`CustomEvent<any>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: string; }>`} - \n\n  * `haxcms-ready` {`CustomEvent<this>`} - \n\n  * `json-outline-schema-active-body-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboard-opened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `base-uri` {`string`} - Injected by HAXcms\n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `theme-loaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outline-location` {`string`} - support for alternate locations.\n\n  * `active-item-location` {`string`} - \n\nProperties:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboardOpened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `baseURI` {`string`} - Injected by HAXcms\n\n  * `__disposer` {`never[]`} - \n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `themeLoaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outlineLocation` {`string`} - support for alternate locations.\n\n  * `activeItemLocation` {`string`} - ",
+      "description": "`haxcms-site-builder`\n`build the site and everything off of this`\n\nEvents:\n\n  * `outline-location-changed` {`CustomEvent<any>`} - \n\n  * `manifest-changed` {`CustomEvent<any>`} - \n\n  * `active-item-changed` {`CustomEvent<any>`} - \n\n  * `active-item-content-changed` {`CustomEvent<any>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: string; }>`} - \n\n  * `haxcms-ready` {`CustomEvent<this>`} - \n\n  * `json-outline-schema-active-body-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboard-opened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `base-uri` {`string`} - Injected by HAXcms\n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `theme-loaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outline-location` {`string`} - support for alternate locations.\n\n  * `active-item-location` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboardOpened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `baseURI` {`string`} - Injected by HAXcms\n\n  * `__disposer` {`never[]`} - \n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `themeLoaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outlineLocation` {`string`} - support for alternate locations.\n\n  * `activeItemLocation` {`string`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "_timeStamp",
@@ -193,6 +193,10 @@
         {
           "name": "active-item-location",
           "description": "`active-item-location` {`string`} - \n\nProperty: activeItemLocation\n\nDefault: "
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "onoutline-location-changed",
@@ -1820,7 +1824,7 @@
     },
     {
       "name": "site-print-button",
-      "description": "`site-print-button`\n`Dynamic print button to request and generate what to print`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - label for the button\n\n  * `icon` {`string`} - icon\n\n  * `position` {`string`} - label for the button\n\n  * `type` {`string`} - How much do you want to print right now\n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - label for the button\n\n  * `icon` {`string`} - icon\n\n  * `position` {`string`} - label for the button\n\n  * `type` {`string`} - How much do you want to print right now\n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - ",
+      "description": "`site-print-button`\n`Dynamic print button to request and generate what to print`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - label for the button\n\n  * `icon` {`string`} - icon\n\n  * `position` {`string`} - label for the button\n\n  * `type` {`string`} - How much do you want to print right now\n\n  * `t` - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - label for the button\n\n  * `icon` {`string`} - icon\n\n  * `position` {`string`} - label for the button\n\n  * `type` {`string`} - How much do you want to print right now\n\n  * `t` - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - ",
       "attributes": [
         {
           "name": "disabled",
@@ -1844,6 +1848,10 @@
           "description": "`type` {`string`} - How much do you want to print right now\n\nProperty: type\n\nDefault: page"
         },
         {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
           "name": "edit-mode",
           "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
           "valueSet": "v"
@@ -1852,16 +1860,12 @@
     },
     {
       "name": "site-rss-button",
-      "description": "`site-rss-button`\n`A button that references RSS feeds in a standards based way`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `href` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `position` {`string`} - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `href` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - ",
+      "description": "`site-rss-button`\n`A button that references RSS feeds in a standards based way`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `href` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `_link` - \n\n  * `type` {`string`} - \n\n  * `position` {`string`} - \n\n  * `t` - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `href` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `_link` - \n\n  * `type` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `t` - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - ",
       "attributes": [
         {
           "name": "disabled",
           "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
           "valueSet": "v"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label"
         },
         {
           "name": "href",
@@ -1872,12 +1876,20 @@
           "description": "`icon` {`string`} - \n\nProperty: icon"
         },
         {
+          "name": "_link",
+          "description": "`_link` - \n\nProperty: _link\n\nDefault: [object Object]"
+        },
+        {
           "name": "type",
           "description": "`type` {`string`} - \n\nProperty: type\n\nDefault: rss"
         },
         {
           "name": "position",
           "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: bottom"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "edit-mode",
@@ -1925,7 +1937,7 @@
     },
     {
       "name": "site-title",
-      "description": "`site-title`\n`Title of the site`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `site-title` {`string`} - Site title\n\n  * `home-link` {`string`} - HREF to the home page\n\n  * `icon` {`string`} - optional icon\n\n  * `label` {`string`} - Label\n\n  * `notitle` {`boolean`} - If the title should be displayed or not\n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `siteTitle` {`string`} - Site title\n\n  * `homeLink` {`string`} - HREF to the home page\n\n  * `icon` {`string`} - optional icon\n\n  * `__disposer` {`never[]`} - \n\n  * `label` {`string`} - Label\n\n  * `notitle` {`boolean`} - If the title should be displayed or not",
+      "description": "`site-title`\n`Title of the site`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `site-title` {`string`} - Site title\n\n  * `home-link` {`string`} - HREF to the home page\n\n  * `icon` {`string`} - optional icon\n\n  * `notitle` {`boolean`} - If the title should be displayed or not\n\n  * `t` - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `siteTitle` {`string`} - Site title\n\n  * `homeLink` {`string`} - HREF to the home page\n\n  * `icon` {`string`} - optional icon\n\n  * `__disposer` {`never[]`} - \n\n  * `notitle` {`boolean`} - If the title should be displayed or not\n\n  * `t` - ",
       "attributes": [
         {
           "name": "disabled",
@@ -1945,13 +1957,13 @@
           "description": "`icon` {`string`} - optional icon\n\nProperty: icon"
         },
         {
-          "name": "label",
-          "description": "`label` {`string`} - Label\n\nProperty: label\n\nDefault: Home"
-        },
-        {
           "name": "notitle",
           "description": "`notitle` {`boolean`} - If the title should be displayed or not\n\nProperty: notitle\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         }
       ]
     },

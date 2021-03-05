@@ -2,8 +2,85 @@
   "version": 1,
   "tags": [
     {
-      "name": "simple-toolbar-button",
-      "description": "`simple-toolbar-button`\na button for rich text editor (custom buttons can extend this)\n\n### Styling\n\n`<simple-toolbar-button>` provides following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--simple-toolbar-button-height | button height | 24px\n--simple-toolbar-button-min-width | button min-width | --simple-toolbar-button-height\n--simple-toolbar-button-padding | button padding | 0\n--simple-toolbar-button-opacity | button opacity | 1\n--simple-toolbar-button-color | button text color | unset\n--simple-toolbar-button-bg | button background color | transparent\n--simple-toolbar-button-border-color | button border color | --simple-toolbar-border-color\n--simple-toolbar-button-border-width | button border width | --simple-toolbar-border-width\n--simple-toolbar-button-border-radius | button border radius | 3px\n--simple-toolbar-button-toggled-opacity | button opacity when toggled | 0.8\n--simple-toolbar-button-toggled-color | button text color when toggled | unset\n--simple-toolbar-button-toggled-bg | button background color when toggled | unset\n--simple-toolbar-button-toggled-border-color | button border color when toggled | unset\n--simple-toolbar-button-hover-opacity | button opacity when hovered | 0.8\n--simple-toolbar-button-hover-color | button text color when hovered | unset\n--simple-toolbar-button-hover-bg | button background color when hovered | unset\n--simple-toolbar-button-hover-border-color | button border color when hovered | unset\n--simple-toolbar-button-disabled-opacity | button opacity when disabled | 0.5\n--simple-toolbar-button-disabled-color | button text color when disabled | unset\n--simple-toolbar-button-disabled-bg | button background color when disabled | unset\n--simple-toolbar-button-disabled-border-color | button border color when disabled | unset\n\nEvents:\n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<{ button: this; }>`} - \n\nAttributes:\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `iconTemplate` {`TemplateResult`} - \n\n  * `labelTemplate` {`TemplateResult`} - \n\n  * `tooltipTemplate` {`TemplateResult`} - \n\n  * `buttonTemplate` {`TemplateResult`} - \n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
+      "name": "simple-button-grid",
+      "attributes": []
+    },
+    {
+      "name": "simple-button-grid",
+      "description": "`simple-toolbar`\na customizable toolbar\n\n### Styling\n\n`<simple-toolbar>` provides following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--simple-toolbar-border-color | default border color | transparent\n--simple-toolbar-border-width | default border width | 1px\n--simple-toolbar-group-border-color | border color for button groups | --simple-toolbar-border-color\n--simple-toolbar-group-border-width | border width for button groups | --simple-toolbar-border-width\n--simple-toolbar-group-padding | padding for button groups | 0 3px\n\nEvents:\n\n  * `shortcut-key-pressed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `columns` {`number`} - \n\n  * `rows` {`number`} - \n\n  * `disable-autogrow` {`boolean`} - \n\n  * `always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - unique id\n\n  * `more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapse-disabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `columns` {`number`} - \n\n  * `rows` {`number`} - \n\n  * `disableAutogrow` {`boolean`} - \n\n  * `gridStyles` {`string`} - \n\n  * `alwaysExpanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - unique id\n\n  * `moreShortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `buttons` {`any[]`} - array of rendered buttons\n\n  * `focused` {`boolean`} - does toolbar have focus\n\n  * `hovered` {`boolean`} - is mouseover toolbar\n\n  * `moreButton` {`TemplateResult`} - more button's template\n\n  * `toolbarTemplate` {`TemplateResult`} - toolbar element's template\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `toggledLabel` {`string`} - \n\n  * `showTextLabel` {`boolean`} - \n\n  * `shortcut` {`string`} - \n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcutKeys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+      "attributes": [
+        {
+          "name": "columns",
+          "description": "`columns` {`number`} - \n\nProperty: columns"
+        },
+        {
+          "name": "rows",
+          "description": "`rows` {`number`} - \n\nProperty: rows"
+        },
+        {
+          "name": "disable-autogrow",
+          "description": "`disable-autogrow` {`boolean`} - \n\nProperty: disableAutogrow",
+          "valueSet": "v"
+        },
+        {
+          "name": "always-expanded",
+          "description": "`always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\nProperty: alwaysExpanded",
+          "valueSet": "v"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - unique id\n\nProperty: id"
+        },
+        {
+          "name": "more-shortcuts",
+          "description": "`more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: moreShortcuts"
+        },
+        {
+          "name": "collapsed",
+          "description": "`collapsed` {`boolean`} - is toolbar collapsed?\n\nProperty: collapsed\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "collapse-disabled",
+          "description": "`collapse-disabled` {`boolean`} - whether there is no need to collapse\n\nProperty: collapseDisabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "config",
+          "description": "`config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\nProperty: config\n\nDefault: "
+        },
+        {
+          "name": "__buttons",
+          "description": "`__buttons` {`any[]`} - raw array of buttons\n\nProperty: __buttons\n\nDefault: "
+        },
+        {
+          "name": "__focused",
+          "description": "`__focused` {`boolean`} - whether toolbar has focus\n\nProperty: __focused\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__hovered",
+          "description": "`__hovered` {`boolean`} - whether toolbar is hovered\n\nProperty: __hovered\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "sticky",
+          "description": "`sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\nProperty: sticky\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: shortcutKeys\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onshortcut-key-pressed",
+          "description": "`shortcut-key-pressed` {`CustomEvent<any>`} - "
+        }
+      ]
+    },
+    {
+      "name": "",
+      "description": "`simple-toolbar-button`\na button for rich text editor (custom buttons can extend this)\n\n### Styling\n\n`<simple-toolbar-button>` provides following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--simple-toolbar-button-height | button height | 24px\n--simple-toolbar-button-flex | flex for button in a toolbar | 0 0 auto\n--simple-toolbar-button-min-width | button min-width | --simple-toolbar-button-height\n--simple-toolbar-button-padding | button padding | 0\n--simple-toolbar-button-opacity | button opacity | 1\n--simple-toolbar-button-color | button text color | unset\n--simple-toolbar-button-bg | button background color | transparent\n--simple-toolbar-button-border-color | button border color | --simple-toolbar-border-color\n--simple-toolbar-button-border-width | button border width | --simple-toolbar-border-width\n--simple-toolbar-button-border-radius | button border radius | 3px\n--simple-toolbar-button-toggled-opacity | button opacity when toggled | 0.8\n--simple-toolbar-button-toggled-color | button text color when toggled | unset\n--simple-toolbar-button-toggled-bg | button background color when toggled | unset\n--simple-toolbar-button-toggled-border-color | button border color when toggled | unset\n--simple-toolbar-button-hover-opacity | button opacity when hovered | 0.8\n--simple-toolbar-button-hover-color | button text color when hovered | unset\n--simple-toolbar-button-hover-bg | button background color when hovered | unset\n--simple-toolbar-button-hover-border-color | button border color when hovered | unset\n--simple-toolbar-button-disabled-opacity | button opacity when disabled | 0.5\n--simple-toolbar-button-disabled-color | button text color when disabled | unset\n--simple-toolbar-button-disabled-bg | button background color when disabled | unset\n--simple-toolbar-button-disabled-border-color | button border color when disabled | unset\n\nEvents:\n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` {`boolean`} - is tooltip needed or specified\n\n  * `iconTemplate` {`TemplateResult | \"\"`} - template for button icon\n\n  * `labelTemplate` {`TemplateResult | \"\"`} - template for button label\n\n  * `tooltipTemplate` {`TemplateResult | \"\"`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
       "attributes": [
         {
           "name": "controls",
@@ -35,9 +112,8 @@
           "valueSet": "v"
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Is the button disabled? Default is false.\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
         },
         {
           "name": "show-text-label",
@@ -63,13 +139,162 @@
         },
         {
           "name": "onupdate-button-registry",
-          "description": "`update-button-registry` {`CustomEvent<{ button: this; }>`} - "
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "simple-toolbar-menu-item",
+      "description": "`simple-toolbar-menu`\n`An icon / button that has support for multiple options via drop down.`\n\nEvents:\n\n  * `add-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is added to dom\n\n  * `remove-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is removed from dom\n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\n  * `linkTemplate` {`TemplateResult`} - renders item as a link\n\n  * `buttonTemplate` {`TemplateResult`} - renders item as a button",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - Whether toggle is disabled\n\nProperty: hidden",
+          "valueSet": "v"
+        },
+        {
+          "name": "href",
+          "description": "`href` {`string`} - Whether toggle is disabled\n\nProperty: href"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - Whether toggle is disabled\n\nProperty: controls"
+        },
+        {
+          "name": "onadd-a11y-menu-button-item",
+          "description": "`add-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is added to dom"
+        },
+        {
+          "name": "onremove-a11y-menu-button-item",
+          "description": "`remove-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is removed from dom"
+        }
+      ]
+    },
+    {
+      "name": "",
+      "description": "Events:\n\n  * `close` {`CustomEvent<Event>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<Event>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `menuTemplate` {`TemplateResult`} - template for dropdown menu\n\n  * `listItemTemplate` {`TemplateResult`} - template for slotted list items\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `positionAlign` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` {`boolean`} - is tooltip needed or specified\n\n  * `iconTemplate` {`TemplateResult | \"\"`} - template for button icon\n\n  * `labelTemplate` {`TemplateResult | \"\"`} - template for button label\n\n  * `tooltipTemplate` {`TemplateResult | \"\"`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult`} - template for button\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
+      "attributes": [
+        {
+          "name": "currentItem",
+          "description": "`currentItem` - Whether toggle is disabled\n\nProperty: currentItem"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - Whether toggle is disabled\n\nProperty: expanded",
+          "valueSet": "v"
+        },
+        {
+          "name": "focused",
+          "description": "`focused` {`boolean`} - Whether button is toggled\n\nProperty: focused",
+          "valueSet": "v"
+        },
+        {
+          "name": "hovered",
+          "description": "`hovered` {`boolean`} - Whether button is toggled\n\nProperty: hovered",
+          "valueSet": "v"
+        },
+        {
+          "name": "__menuItems",
+          "description": "`__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\nProperty: __menuItems\n\nDefault: "
+        },
+        {
+          "name": "position",
+          "description": "`position` {`string`} - Positions list to top, right, bottom, left of its content.\n\nProperty: position\n\nDefault: bottom"
+        },
+        {
+          "name": "position-align",
+          "description": "`position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\nProperty: positionAlign\n\nDefault: start"
+        },
+        {
+          "name": "offset",
+          "description": "`offset` {`number`} - spacing between top of list and menu button\n\nProperty: offset\n\nDefault: 0"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
+          "name": "onclose",
+          "description": "`close` {`CustomEvent<Event>`} - Fires when menu is closed"
+        },
+        {
+          "name": "onopen",
+          "description": "`open` {`CustomEvent<Event>`} - Fires when menu is opened"
+        },
+        {
+          "name": "onitem-click",
+          "description": "`item-click` {`CustomEvent<Event>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "simple-toolbar-more-button",
-      "description": "`simple-toolbar-more-button`\na more button to toggle collapsed buttons in the rich text editor\n\nEvents:\n\n  * `toggle` {`CustomEvent<any>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<{ button: this; }>`} - \n\nAttributes:\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `labelToggled` {`string`} - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `labelStyle` {`\"offscreen\" | null`} - label is offscreen (screenreader-only)\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `iconTemplate` {`TemplateResult`} - \n\n  * `labelTemplate` {`TemplateResult`} - \n\n  * `tooltipTemplate` {`TemplateResult`} - \n\n  * `buttonTemplate` {`TemplateResult`} - \n\n  * `disabled` {`boolean`} - Is the button disabled? Default is false.\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
+      "description": "`simple-toolbar-more-button`\na more button to toggle collapsed buttons in the rich text editor\n\nEvents:\n\n  * `toggle` {`CustomEvent<any>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `labelToggled` {`string`} - \n\n  * `tooltipDirection` {`string`} - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` {`boolean`} - is tooltip needed or specified\n\n  * `iconTemplate` {`TemplateResult | \"\"`} - template for button icon\n\n  * `labelTemplate` {`TemplateResult | \"\"`} - template for button label\n\n  * `tooltipTemplate` {`TemplateResult | \"\"`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
       "attributes": [
         {
           "name": "controls",
@@ -101,9 +326,8 @@
           "valueSet": "v"
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Is the button disabled? Default is false.\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
         },
         {
           "name": "show-text-label",
@@ -133,21 +357,35 @@
         },
         {
           "name": "onupdate-button-registry",
-          "description": "`update-button-registry` {`CustomEvent<{ button: this; }>`} - "
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "simple-toolbar",
-      "description": "`simple-toolbar`\na customizable toolbar\n\n### Styling\n\n`<simple-toolbar>` provides following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--simple-toolbar-border-color | default border color | transparent\n--simple-toolbar-border-width | default border width | 1px\n--simple-toolbar-group-border-color | border color for button groups | --simple-toolbar-border-color\n--simple-toolbar-group-border-width | border width for button groups | --simple-toolbar-border-width\n--simple-toolbar-group-padding | padding for button groups | 0 3px\n\nEvents:\n\n  * `shortcut-key-pressed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `id` {`string`} - unique id\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `more-icon` {`string`} - icon for more button.\n\n  * `more-label` {`string`} - label for more button.\n\n  * `more-label-toggled` {`string`} - label for more button when toggled.\n\n  * `more-show-text-label` {`boolean`} - show text label for more button.\n\n  * `more-shortcut` {`boolean`} - show text label for more button.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shoertcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `id` {`string`} - unique id\n\n  * `buttons` {`any[]`} - array of rendered buttons\n\n  * `focused` {`boolean`} - does toolbar have focus\n\n  * `hovered` {`boolean`} - is mouseover toolbar\n\n  * `moreButton` {`TemplateResult`} - more button's template\n\n  * `toolbarTemplate` {`TemplateResult`} - toolbar element's template\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `moreIcon` {`string`} - icon for more button.\n\n  * `moreLabel` {`string`} - label for more button.\n\n  * `moreLabelToggled` {`string`} - label for more button when toggled.\n\n  * `moreShowTextLabel` {`boolean`} - show text label for more button.\n\n  * `moreShortcut` {`boolean`} - show text label for more button.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcutKeys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+      "description": "`simple-toolbar`\na customizable toolbar\n\n### Styling\n\n`<simple-toolbar>` provides following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--simple-toolbar-border-color | default border color | transparent\n--simple-toolbar-border-width | default border width | 1px\n--simple-toolbar-group-border-color | border color for button groups | --simple-toolbar-border-color\n--simple-toolbar-group-border-width | border width for button groups | --simple-toolbar-border-width\n--simple-toolbar-group-padding | padding for button groups | 0 3px\n\nEvents:\n\n  * `shortcut-key-pressed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - unique id\n\n  * `more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapse-disabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `alwaysExpanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - unique id\n\n  * `moreShortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `buttons` {`any[]`} - array of rendered buttons\n\n  * `focused` {`boolean`} - does toolbar have focus\n\n  * `hovered` {`boolean`} - is mouseover toolbar\n\n  * `moreButton` {`TemplateResult`} - more button's template\n\n  * `toolbarTemplate` {`TemplateResult`} - toolbar element's template\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `toggledLabel` {`string`} - \n\n  * `showTextLabel` {`boolean`} - \n\n  * `shortcut` {`string`} - \n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcutKeys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
       "attributes": [
+        {
+          "name": "always-expanded",
+          "description": "`always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\nProperty: alwaysExpanded",
+          "valueSet": "v"
+        },
         {
           "name": "id",
           "description": "`id` {`string`} - unique id\n\nProperty: id"
         },
         {
+          "name": "more-shortcuts",
+          "description": "`more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: moreShortcuts"
+        },
+        {
           "name": "collapsed",
           "description": "`collapsed` {`boolean`} - is toolbar collapsed?\n\nProperty: collapsed\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "collapse-disabled",
+          "description": "`collapse-disabled` {`boolean`} - whether there is no need to collapse\n\nProperty: collapseDisabled\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -157,11 +395,6 @@
         {
           "name": "__buttons",
           "description": "`__buttons` {`any[]`} - raw array of buttons\n\nProperty: __buttons\n\nDefault: "
-        },
-        {
-          "name": "__collapseDisabled",
-          "description": "`__collapseDisabled` {`boolean`} - whether there is no need to collapse\n\nProperty: __collapseDisabled\n\nDefault: false",
-          "valueSet": "v"
         },
         {
           "name": "__focused",
@@ -174,35 +407,13 @@
           "valueSet": "v"
         },
         {
-          "name": "more-icon",
-          "description": "`more-icon` {`string`} - icon for more button.\n\nProperty: moreIcon\n\nDefault: more-vert"
-        },
-        {
-          "name": "more-label",
-          "description": "`more-label` {`string`} - label for more button.\n\nProperty: moreLabel\n\nDefault: More Buttons"
-        },
-        {
-          "name": "more-label-toggled",
-          "description": "`more-label-toggled` {`string`} - label for more button when toggled.\n\nProperty: moreLabelToggled\n\nDefault: Fewer Buttons"
-        },
-        {
-          "name": "more-show-text-label",
-          "description": "`more-show-text-label` {`boolean`} - show text label for more button.\n\nProperty: moreShowTextLabel\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "more-shortcut",
-          "description": "`more-shortcut` {`boolean`} - show text label for more button.\n\nProperty: moreShortcut\n\nDefault: ctrl+shift+;",
-          "valueSet": "v"
-        },
-        {
           "name": "sticky",
           "description": "`sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\nProperty: sticky\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "shoertcut-keys",
-          "description": "`shoertcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: shortcutKeys\n\nDefault: [object Object]"
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: shortcutKeys\n\nDefault: [object Object]"
         },
         {
           "name": "onshortcut-key-pressed",
@@ -220,15 +431,29 @@
     },
     {
       "name": "simple-toolbar",
-      "description": "`simple-toolbar`\na customizable toolbar\n\n### Styling\n\n`<simple-toolbar>` provides following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--simple-toolbar-border-color | default border color | transparent\n--simple-toolbar-border-width | default border width | 1px\n--simple-toolbar-group-border-color | border color for button groups | --simple-toolbar-border-color\n--simple-toolbar-group-border-width | border width for button groups | --simple-toolbar-border-width\n--simple-toolbar-group-padding | padding for button groups | 0 3px\n\nEvents:\n\n  * `shortcut-key-pressed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `id` {`string`} - unique id\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `more-icon` {`string`} - icon for more button.\n\n  * `more-label` {`string`} - label for more button.\n\n  * `more-label-toggled` {`string`} - label for more button when toggled.\n\n  * `more-show-text-label` {`boolean`} - show text label for more button.\n\n  * `more-shortcut` {`boolean`} - show text label for more button.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shoertcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `id` {`string`} - unique id\n\n  * `buttons` {`any[]`} - array of rendered buttons\n\n  * `focused` {`boolean`} - does toolbar have focus\n\n  * `hovered` {`boolean`} - is mouseover toolbar\n\n  * `moreButton` {`TemplateResult`} - more button's template\n\n  * `toolbarTemplate` {`TemplateResult`} - toolbar element's template\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `moreIcon` {`string`} - icon for more button.\n\n  * `moreLabel` {`string`} - label for more button.\n\n  * `moreLabelToggled` {`string`} - label for more button when toggled.\n\n  * `moreShowTextLabel` {`boolean`} - show text label for more button.\n\n  * `moreShortcut` {`boolean`} - show text label for more button.\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcutKeys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+      "description": "`simple-toolbar`\na customizable toolbar\n\n### Styling\n\n`<simple-toolbar>` provides following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--simple-toolbar-border-color | default border color | transparent\n--simple-toolbar-border-width | default border width | 1px\n--simple-toolbar-group-border-color | border color for button groups | --simple-toolbar-border-color\n--simple-toolbar-group-border-width | border width for button groups | --simple-toolbar-border-width\n--simple-toolbar-group-padding | padding for button groups | 0 3px\n\nEvents:\n\n  * `shortcut-key-pressed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - unique id\n\n  * `more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapse-disabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `alwaysExpanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - unique id\n\n  * `moreShortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `buttons` {`any[]`} - array of rendered buttons\n\n  * `focused` {`boolean`} - does toolbar have focus\n\n  * `hovered` {`boolean`} - is mouseover toolbar\n\n  * `moreButton` {`TemplateResult`} - more button's template\n\n  * `toolbarTemplate` {`TemplateResult`} - toolbar element's template\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `toggledLabel` {`string`} - \n\n  * `showTextLabel` {`boolean`} - \n\n  * `shortcut` {`string`} - \n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcutKeys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
       "attributes": [
+        {
+          "name": "always-expanded",
+          "description": "`always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\nProperty: alwaysExpanded",
+          "valueSet": "v"
+        },
         {
           "name": "id",
           "description": "`id` {`string`} - unique id\n\nProperty: id"
         },
         {
+          "name": "more-shortcuts",
+          "description": "`more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: moreShortcuts"
+        },
+        {
           "name": "collapsed",
           "description": "`collapsed` {`boolean`} - is toolbar collapsed?\n\nProperty: collapsed\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "collapse-disabled",
+          "description": "`collapse-disabled` {`boolean`} - whether there is no need to collapse\n\nProperty: collapseDisabled\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -238,11 +463,6 @@
         {
           "name": "__buttons",
           "description": "`__buttons` {`any[]`} - raw array of buttons\n\nProperty: __buttons\n\nDefault: "
-        },
-        {
-          "name": "__collapseDisabled",
-          "description": "`__collapseDisabled` {`boolean`} - whether there is no need to collapse\n\nProperty: __collapseDisabled\n\nDefault: false",
-          "valueSet": "v"
         },
         {
           "name": "__focused",
@@ -255,35 +475,13 @@
           "valueSet": "v"
         },
         {
-          "name": "more-icon",
-          "description": "`more-icon` {`string`} - icon for more button.\n\nProperty: moreIcon\n\nDefault: more-vert"
-        },
-        {
-          "name": "more-label",
-          "description": "`more-label` {`string`} - label for more button.\n\nProperty: moreLabel\n\nDefault: More Buttons"
-        },
-        {
-          "name": "more-label-toggled",
-          "description": "`more-label-toggled` {`string`} - label for more button when toggled.\n\nProperty: moreLabelToggled\n\nDefault: Fewer Buttons"
-        },
-        {
-          "name": "more-show-text-label",
-          "description": "`more-show-text-label` {`boolean`} - show text label for more button.\n\nProperty: moreShowTextLabel\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "more-shortcut",
-          "description": "`more-shortcut` {`boolean`} - show text label for more button.\n\nProperty: moreShortcut\n\nDefault: ctrl+shift+;",
-          "valueSet": "v"
-        },
-        {
           "name": "sticky",
           "description": "`sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\nProperty: sticky\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "shoertcut-keys",
-          "description": "`shoertcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: shortcutKeys\n\nDefault: [object Object]"
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: shortcutKeys\n\nDefault: [object Object]"
         },
         {
           "name": "onshortcut-key-pressed",

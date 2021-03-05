@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "hax-body",
-      "description": "`hax-body`\nManager of the body area that can be modified\n\n### Styling\n`<hax-bodys>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n--haxcms-base-styles-body-font-size |   | 16px\n--haxcms-base-styles-body-font-family, 'Noto Serif' |   | serif\n--haxcms-base-styles-body-line-height |   | 1.8\n--haxcms-base-styles-body-letter-spacing |   | .5px\n--hax-ui-headings |   | #d4ff77;\n--hax-color-text | default text color | #000\n--hax-contextual-action-text-color |  | --simple-colors-default-theme-grey-1\n--hax-contextual-action-color |  | --simple-colors-default-theme-cyan-7\n--hax-contextual-action-hover-color |  | \n--hax-body-target-background-color: --simple-colors-default-theme-cyan-2\n--hax-body-possible-target-background-color: --simple-colors-default-theme-grey-2\n\n####Outlines\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-body-editable-outline |   | 1px solid --simple-colors-default-theme-deep-orange\n--hax-body-active-outline-hover: 1px solid --hax-contextual-action-color\n--hax-body-active-outline: 3px solid  --hax-contextual-action-color\n\n####Headings\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-h1-font-size |   | 2.5em\n--hax-base-styles-h1-line-height |   | 2.5em\n--hax-base-styles-h2-font-size |   | 2em\n--hax-base-styles-h3-font-size |   | 1.75em\n--hax-base-styles-h4-font-size |   | 1.5em\n--hax-base-styles-h5-font-size |   | 1.25em\n--hax-base-styles-h6-font-size |   | 1.25em\n--hax-base-styles-p-min-height |   | 43px\n--hax-base-styles-p-font-size |   | 24px\n--hax-base-styles-p-line-height |   | 1.8\n--hax-base-styles-p-letter-spacing |   | 0.5px\n\n####Links\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-a-color |  | --simple-colors-default-theme-grey-12\n--hax-base-styles-a-font-size |   | 24px\n--hax-base-styles-a-font-weight |   | normal\n--hax-base-styles-a-color-visited |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-color-active |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-font-weight-active |   | normal\n\n####Lists\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-list-padding-bottom |   | 1.5em\n--hax-base-styles-list-line-height |   | 40px\n--hax-base-styles-list-font-size |   | 24px\n--hax-base-styles-list-last-child-padding-bottom |   | 1em\n--hax-base-styles-list-padding-left |   | 20px\n--hax-base-styles-list-margin-left |   | 20px\n\nEvents:\n\n  * `hax-register-body` {`CustomEvent<this>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-drop-focus-event` {`CustomEvent<any>`} - \n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - State of if we are editing or not.\n\n  * `hax-mover` {`boolean`} - \n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__ignoreActive` {`boolean`} - \n\n  * `__dragMoving` {`boolean`} - \n\n  * `___moveLock` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of if we are editing or not.\n\n  * `haxMover` {`boolean`} - \n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`hax-body`\nManager of the body area that can be modified\n\n### Styling\n`<hax-bodys>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n--haxcms-base-styles-body-font-size |   | 16px\n--haxcms-base-styles-body-font-family, 'Noto Serif' |   | serif\n--haxcms-base-styles-body-line-height |   | 1.8\n--haxcms-base-styles-body-letter-spacing |   | .5px\n--hax-ui-headings |   | #d4ff77;\n--hax-color-text | default text color | #000\n--hax-contextual-action-text-color |  | --simple-colors-default-theme-grey-1\n--hax-contextual-action-color |  | --simple-colors-default-theme-cyan-7\n--hax-contextual-action-hover-color |  | \n--hax-body-target-background-color: --simple-colors-default-theme-cyan-2\n--hax-body-possible-target-background-color: --simple-colors-default-theme-grey-2\n\n####Outlines\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-body-editable-outline |   | 1px solid --simple-colors-default-theme-deep-orange\n--hax-body-active-outline-hover: 1px solid --hax-contextual-action-color\n--hax-body-active-outline: 3px solid  --hax-contextual-action-color\n\n####Headings\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-h1-font-size |   | 2.5em\n--hax-base-styles-h1-line-height |   | 2.5em\n--hax-base-styles-h2-font-size |   | 2em\n--hax-base-styles-h3-font-size |   | 1.75em\n--hax-base-styles-h4-font-size |   | 1.5em\n--hax-base-styles-h5-font-size |   | 1.25em\n--hax-base-styles-h6-font-size |   | 1.25em\n--hax-base-styles-p-min-height |   | 43px\n--hax-base-styles-p-font-size |   | 24px\n--hax-base-styles-p-line-height |   | 1.8\n--hax-base-styles-p-letter-spacing |   | 0.5px\n\n####Links\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-a-color |  | --simple-colors-default-theme-grey-12\n--hax-base-styles-a-font-size |   | 24px\n--hax-base-styles-a-font-weight |   | normal\n--hax-base-styles-a-color-visited |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-color-active |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-font-weight-active |   | normal\n\n####Lists\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-list-padding-bottom |   | 1.5em\n--hax-base-styles-list-line-height |   | 40px\n--hax-base-styles-list-font-size |   | 24px\n--hax-base-styles-list-last-child-padding-bottom |   | 1em\n--hax-base-styles-list-padding-left |   | 20px\n--hax-base-styles-list-margin-left |   | 20px\n\nEvents:\n\n  * `hax-register-body` {`CustomEvent<this>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-drop-focus-event` {`CustomEvent<any>`} - \n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - State of if we are editing or not.\n\n  * `hax-mover` {`boolean`} - \n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `t` - \n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__ignoreActive` {`boolean`} - \n\n  * `__dragMoving` {`boolean`} - \n\n  * `___moveLock` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of if we are editing or not.\n\n  * `haxMover` {`boolean`} - \n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `t` - \n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "edit-mode",
@@ -18,6 +18,10 @@
         {
           "name": "activeNode",
           "description": "`activeNode` - A reference to the active node in the slot.\n\nProperty: activeNode\n\nDefault: null"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "can-undo",
@@ -77,6 +81,20 @@
       ]
     },
     {
+      "name": "hax-text-editor-toolbar",
+      "description": "`hax-text-editor-toolbar`\na customized toolbar (with buttons) for HAX\n\n",
+      "attributes": []
+    },
+    {
+      "name": "hax-text-editor",
+      "description": "`hax-text-editor`\nHAX-specific implementation of rich-text-editor\n\n",
+      "attributes": []
+    },
+    {
+      "name": "hax-upload-field",
+      "attributes": []
+    },
+    {
       "name": "hax-app-browser",
       "description": "`hax-app-browser`\n\nAttributes:\n\n  * `search` {`string`} - Search term\n\n  * `searching` {`boolean`} - Searching mode\n\n  * `appList` {`any[]`} - \n\n  * `activeApp` - Global activeApp object.\n\n  * `has-active` {`boolean`} - If we have an active, scale everything\n\nProperties:\n\n  * `search` {`string`} - Search term\n\n  * `searching` {`boolean`} - Searching mode\n\n  * `appList` {`any[]`} - \n\n  * `activeApp` - Global activeApp object.\n\n  * `hasActive` {`boolean`} - If we have an active, scale everything",
       "attributes": [
@@ -120,15 +138,11 @@
     },
     {
       "name": "hax-app-search-inputs",
-      "description": "`hax-app-search-inputs`\nAn element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that we can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.\n\nEvents:\n\n  * `search-values-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `schema` - Schema used to generate the input types.\n\n  * `label` {`string`} - Title.\n\nProperties:\n\n  * `schema` - Schema used to generate the input types.\n\n  * `label` {`string`} - Title.",
+      "description": "`hax-app-search-inputs`\nAn element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that we can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.\n\nEvents:\n\n  * `search-values-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `schema` - Schema used to generate the input types.\n\nProperties:\n\n  * `schema` - Schema used to generate the input types.",
       "attributes": [
         {
           "name": "schema",
           "description": "`schema` - Schema used to generate the input types.\n\nProperty: schema"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Title.\n\nProperty: label\n\nDefault: app"
         },
         {
           "name": "onsearch-values-changed",
@@ -198,7 +212,7 @@
     },
     {
       "name": "hax-app-search",
-      "description": "`hax-app-search`\n`An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that we can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`\n\nAttributes:\n\n  * `activeApp` - Active app globally bound based on previous selection.\n\n  * `searchSchema` - Search schema for presenting a form of input.\n\n  * `requestEndPoint` {`string`} - \n\n  * `requestParams` - \n\n  * `auto` {`boolean`} - Immediatley perform a request.\n\n  * `headers` - Custom headers for data binding from the App feed.\n\n  * `method` {`string`} - Custom method for requesting data (almost always will be GET)\n\n  * `loading` {`boolean`} - loading\n\n  * `requestData` - Media request data updated\n\n  * `media` {`any[]`} - Media object, normalized.\n\n  * `tos` {`any[]`} - Terms of service object\n\n  * `resultMap` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeApp` - Active app globally bound based on previous selection.\n\n  * `searchSchema` - Search schema for presenting a form of input.\n\n  * `requestEndPoint` {`string`} - \n\n  * `requestParams` - \n\n  * `auto` {`boolean`} - Immediatley perform a request.\n\n  * `headers` - Custom headers for data binding from the App feed.\n\n  * `method` {`string`} - Custom method for requesting data (almost always will be GET)\n\n  * `loading` {`boolean`} - loading\n\n  * `requestData` - Media request data updated\n\n  * `media` {`any[]`} - Media object, normalized.\n\n  * `tos` {`any[]`} - Terms of service object\n\n  * `resultMap` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`hax-app-search`\n`An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that we can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`\n\nAttributes:\n\n  * `activeApp` - Active app globally bound based on previous selection.\n\n  * `searchSchema` - Search schema for presenting a form of input.\n\n  * `requestEndPoint` {`string`} - \n\n  * `requestParams` - \n\n  * `auto` {`boolean`} - Immediatley perform a request.\n\n  * `headers` - Custom headers for data binding from the App feed.\n\n  * `method` {`string`} - Custom method for requesting data (almost always will be GET)\n\n  * `loading` {`boolean`} - loading\n\n  * `requestData` - Media request data updated\n\n  * `media` {`any[]`} - Media object, normalized.\n\n  * `tos` {`any[]`} - Terms of service object\n\n  * `resultMap` - \n\nProperties:\n\n  * `activeApp` - Active app globally bound based on previous selection.\n\n  * `searchSchema` - Search schema for presenting a form of input.\n\n  * `requestEndPoint` {`string`} - \n\n  * `requestParams` - \n\n  * `auto` {`boolean`} - Immediatley perform a request.\n\n  * `headers` - Custom headers for data binding from the App feed.\n\n  * `method` {`string`} - Custom method for requesting data (almost always will be GET)\n\n  * `loading` {`boolean`} - loading\n\n  * `requestData` - Media request data updated\n\n  * `media` {`any[]`} - Media object, normalized.\n\n  * `tos` {`any[]`} - Terms of service object\n\n  * `resultMap` - ",
       "attributes": [
         {
           "name": "activeApp",
@@ -249,15 +263,6 @@
         {
           "name": "resultMap",
           "description": "`resultMap` - \n\nProperty: resultMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
         }
       ]
     },
@@ -295,7 +300,7 @@
     },
     {
       "name": "hax-ce-context",
-      "description": "`hax-ce-context`\n`A context menu that provides common custom-element based authoring options.\n\nAttributes:\n\n  * `disableTransform` {`boolean`} - \n\n  * `sourceView` {`boolean`} - \n\n  * `on-screen` {`boolean`} - \n\n  * `ceButtons` {`any[]`} - \n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - \n\nProperties:\n\n  * `disableTransform` {`boolean`} - \n\n  * `sourceView` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `onScreen` {`boolean`} - \n\n  * `ceButtons` {`any[]`} - \n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - ",
+      "description": "`hax-ce-context`\n`A context menu that provides common custom-element based authoring options.\n\nAttributes:\n\n  * `disableTransform` {`boolean`} - \n\n  * `sourceView` {`boolean`} - \n\n  * `viewSource` {`boolean`} - \n\n  * `on-screen` {`boolean`} - \n\n  * `ceButtons` {`any[]`} - \n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `disableTransform` {`boolean`} - \n\n  * `sourceView` {`boolean`} - \n\n  * `viewSource` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `onScreen` {`boolean`} - \n\n  * `ceButtons` {`any[]`} - \n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - \n\n  * `t` - \n\n  * `tourName` {`string`} - ",
       "attributes": [
         {
           "name": "disableTransform",
@@ -305,6 +310,11 @@
         {
           "name": "sourceView",
           "description": "`sourceView` {`boolean`} - \n\nProperty: sourceView",
+          "valueSet": "v"
+        },
+        {
+          "name": "viewSource",
+          "description": "`viewSource` {`boolean`} - \n\nProperty: viewSource",
           "valueSet": "v"
         },
         {
@@ -323,111 +333,25 @@
         {
           "name": "activeTagIcon",
           "description": "`activeTagIcon` {`string`} - \n\nProperty: activeTagIcon\n\nDefault: hax:paragraph"
-        }
-      ]
-    },
-    {
-      "name": "hax-context-item-menu",
-      "description": "`hax-context-item-menu`\n`An icon / button that has support for multiple options via drop down.`\n\nEvents:\n\n  * `selected-value-changed` {`CustomEvent<any>`} - \n\n  * `hax-context-item-selected` {`CustomEvent<{ target: Object; eventName: any; value: any; }>`} - \n\nAttributes:\n\n  * `mini` {`boolean`} - \n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `_blockEvent` {`boolean`} - Internal flag to allow blocking the event firing if machine selects tag.\n\n  * `disabled` {`boolean`} - disabled state\n\n  * `selected-value` {`number`} - Value.\n\n  * `action` {`boolean`} - \n\n  * `direction` {`string`} - Direction for the tooltip\n\n  * `icon` {`string`} - Icon for the button.\n\n  * `label` {`string`} - Label for the button.\n\nProperties:\n\n  * `mini` {`boolean`} - \n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `_blockEvent` {`boolean`} - Internal flag to allow blocking the event firing if machine selects tag.\n\n  * `disabled` {`boolean`} - disabled state\n\n  * `selectedValue` {`number`} - Value.\n\n  * `action` {`boolean`} - \n\n  * `direction` {`string`} - Direction for the tooltip\n\n  * `icon` {`string`} - Icon for the button.\n\n  * `label` {`string`} - Label for the button.",
-      "attributes": [
-        {
-          "name": "mini",
-          "description": "`mini` {`boolean`} - \n\nProperty: mini",
-          "valueSet": "v"
         },
         {
-          "name": "event-name",
-          "description": "`event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\nProperty: eventName"
-        },
-        {
-          "name": "_blockEvent",
-          "description": "`_blockEvent` {`boolean`} - Internal flag to allow blocking the event firing if machine selects tag.\n\nProperty: _blockEvent\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - disabled state\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "selected-value",
-          "description": "`selected-value` {`number`} - Value.\n\nProperty: selectedValue\n\nDefault: 0"
-        },
-        {
-          "name": "action",
-          "description": "`action` {`boolean`} - \n\nProperty: action\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "direction",
-          "description": "`direction` {`string`} - Direction for the tooltip\n\nProperty: direction\n\nDefault: top"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - Icon for the button.\n\nProperty: icon\n\nDefault: editor:text-fields"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Label for the button.\n\nProperty: label\n\nDefault: "
-        },
-        {
-          "name": "onselected-value-changed",
-          "description": "`selected-value-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onhax-context-item-selected",
-          "description": "`hax-context-item-selected` {`CustomEvent<{ target: Object; eventName: any; value: any; }>`} - "
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         }
       ]
     },
     {
       "name": "hax-context-item-textop",
-      "description": "`hax-context-item-textop`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ target: this; eventName: string; value: string; }>`} - \n\nAttributes:\n\n  * `description` {`string`} - Optional description for this item.\n\n  * `label` {`string`} - Label for the button.\n\n  * `action` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `light` {`boolean`} - Light theme for toolbar item.\n\n  * `mini` {`boolean`} - Mini theme for making things small and round.\n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `direction` {`string`} - Direction for the tooltip\n\n  * `icon` {`string`} - Icon for the button.\n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `input-method` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `property-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `slot-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily\n\nProperties:\n\n  * `description` {`string`} - Optional description for this item.\n\n  * `label` {`string`} - Label for the button.\n\n  * `action` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `light` {`boolean`} - Light theme for toolbar item.\n\n  * `mini` {`boolean`} - Mini theme for making things small and round.\n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `direction` {`string`} - Direction for the tooltip\n\n  * `icon` {`string`} - Icon for the button.\n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `inputMethod` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `propertyToBind` {`string`} - Optional slot to bind this value to.\n\n  * `slotToBind` {`string`} - Optional slot to bind this value to.\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily",
+      "description": "`hax-context-item-textop`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ target: this; eventName: string; value: string; }>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `description` {`string`} - Optional description for this item.\n\n  * `action` {`boolean`} - \n\n  * `input-method` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `property-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `slot-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily\n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `danger` {`boolean`} - red warning\n\n  * `feature` {`boolean`} - Inverted display mode\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Hover tip text\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `description` {`string`} - Optional description for this item.\n\n  * `action` {`boolean`} - \n\n  * `inputMethod` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `propertyToBind` {`string`} - Optional slot to bind this value to.\n\n  * `slotToBind` {`string`} - Optional slot to bind this value to.\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily\n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `danger` {`boolean`} - red warning\n\n  * `feature` {`boolean`} - Inverted display mode\n\n  * `menu` {`boolean`} - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Hover tip text\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` {`boolean`} - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult`} - template for button label\n\n  * `tooltipTemplate` {`TemplateResult`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
       "attributes": [
         {
           "name": "description",
           "description": "`description` {`string`} - Optional description for this item.\n\nProperty: description"
         },
         {
-          "name": "label",
-          "description": "`label` {`string`} - Label for the button.\n\nProperty: label\n\nDefault: "
-        },
-        {
           "name": "action",
           "description": "`action` {`boolean`} - \n\nProperty: action\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - disabled state\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "light",
-          "description": "`light` {`boolean`} - Light theme for toolbar item.\n\nProperty: light\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "mini",
-          "description": "`mini` {`boolean`} - Mini theme for making things small and round.\n\nProperty: mini\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "menu",
-          "description": "`menu` {`boolean`} - Style to be presented in a menu\n\nProperty: menu\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "direction",
-          "description": "`direction` {`string`} - Direction for the tooltip\n\nProperty: direction\n\nDefault: top"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - Icon for the button.\n\nProperty: icon\n\nDefault: editor:text-fields"
-        },
-        {
-          "name": "event-name",
-          "description": "`event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\nProperty: eventName\n\nDefault: button"
         },
         {
           "name": "input-method",
@@ -446,56 +370,104 @@
           "description": "`value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily\n\nProperty: value\n\nDefault: "
         },
         {
+          "name": "event-name",
+          "description": "`event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\nProperty: eventName\n\nDefault: button"
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` {`string`} - Hover tip text\n\nProperty: tooltip"
+        },
+        {
+          "name": "danger",
+          "description": "`danger` {`boolean`} - red warning\n\nProperty: danger\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "feature",
+          "description": "`feature` {`boolean`} - Inverted display mode\n\nProperty: feature\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggledTooltip",
+          "description": "`toggledTooltip` {`string`} - Hover tip text\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
           "name": "onhax-context-item-selected",
           "description": "`hax-context-item-selected` {`CustomEvent<{ target: this; eventName: string; value: string; }>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "hax-context-item",
-      "description": "`hax-context-item`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ target: this; eventName: string; value: string; }>`} - \n\nAttributes:\n\n  * `circle` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `description` {`string`} - Optional description for this item.\n\n  * `simple` {`boolean`} - use simple-icon for performance / transition off iron\n\n  * `danger` {`boolean`} - color shift for dangerous operation\n\n  * `light` {`boolean`} - Light theme for toolbar item.\n\n  * `action` {`boolean`} - \n\n  * `large` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `more` {`boolean`} - more implies there's an action after pressing the button\nso it'll put a visual indicator as such\n\n  * `mini` {`boolean`} - Mini theme for making things small and round.\n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `direction` {`string`} - Direction for the tooltip\n\n  * `icon` {`string`} - Icon for the button.\n\n  * `icon-class` {`string`} - Icon for the button.\n\n  * `label` {`string`} - Label for the button.\n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `input-method` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `property-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `slot-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `default` {`boolean`} - Is this button concidered a primary interaction\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily\n\nProperties:\n\n  * `circle` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `description` {`string`} - Optional description for this item.\n\n  * `haxUIElement` {`boolean`} - \n\n  * `simple` {`boolean`} - use simple-icon for performance / transition off iron\n\n  * `danger` {`boolean`} - color shift for dangerous operation\n\n  * `light` {`boolean`} - Light theme for toolbar item.\n\n  * `action` {`boolean`} - \n\n  * `large` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `more` {`boolean`} - more implies there's an action after pressing the button\nso it'll put a visual indicator as such\n\n  * `mini` {`boolean`} - Mini theme for making things small and round.\n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `direction` {`string`} - Direction for the tooltip\n\n  * `icon` {`string`} - Icon for the button.\n\n  * `iconClass` {`string`} - Icon for the button.\n\n  * `label` {`string`} - Label for the button.\n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `inputMethod` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `propertyToBind` {`string`} - Optional slot to bind this value to.\n\n  * `slotToBind` {`string`} - Optional slot to bind this value to.\n\n  * `default` {`boolean`} - Is this button concidered a primary interaction\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily",
+      "description": "`hax-context-item`\nA single button in the hax context menu for consistency.\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ target: this; eventName: string; value: string; }>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `description` {`string`} - Optional description for this item.\n\n  * `default` {`boolean`} - Is this button concidered a primary interaction\n\n  * `action` {`boolean`} - \n\n  * `more` {`boolean`} - more implies there's an action after pressing the button\nso it'll put a visual indicator as such\n\n  * `input-method` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `property-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `slot-to-bind` {`string`} - Optional slot to bind this value to.\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily\n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `danger` {`boolean`} - red warning\n\n  * `feature` {`boolean`} - Inverted display mode\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the button.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Hover tip text\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `description` {`string`} - Optional description for this item.\n\n  * `default` {`boolean`} - Is this button concidered a primary interaction\n\n  * `haxUIElement` {`boolean`} - \n\n  * `action` {`boolean`} - \n\n  * `more` {`boolean`} - more implies there's an action after pressing the button\nso it'll put a visual indicator as such\n\n  * `inputMethod` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\n  * `propertyToBind` {`string`} - Optional slot to bind this value to.\n\n  * `slotToBind` {`string`} - Optional slot to bind this value to.\n\n  * `value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily\n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `danger` {`boolean`} - red warning\n\n  * `feature` {`boolean`} - Inverted display mode\n\n  * `menu` {`boolean`} - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the button.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Hover tip text\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` {`boolean`} - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult`} - template for button label\n\n  * `tooltipTemplate` {`TemplateResult`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
       "attributes": [
-        {
-          "name": "circle",
-          "description": "`circle` {`boolean`} - \n\nProperty: circle",
-          "valueSet": "v"
-        },
-        {
-          "name": "height",
-          "description": "`height` {`string`} - \n\nProperty: height"
-        },
         {
           "name": "description",
           "description": "`description` {`string`} - Optional description for this item.\n\nProperty: description"
         },
         {
-          "name": "simple",
-          "description": "`simple` {`boolean`} - use simple-icon for performance / transition off iron\n\nProperty: simple\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "danger",
-          "description": "`danger` {`boolean`} - color shift for dangerous operation\n\nProperty: danger\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "light",
-          "description": "`light` {`boolean`} - Light theme for toolbar item.\n\nProperty: light\n\nDefault: false",
+          "name": "default",
+          "description": "`default` {`boolean`} - Is this button concidered a primary interaction\n\nProperty: default",
           "valueSet": "v"
         },
         {
           "name": "action",
           "description": "`action` {`boolean`} - \n\nProperty: action\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "large",
-          "description": "`large` {`boolean`} - \n\nProperty: large\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - disabled state\n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -504,36 +476,6 @@
           "valueSet": "v"
         },
         {
-          "name": "mini",
-          "description": "`mini` {`boolean`} - Mini theme for making things small and round.\n\nProperty: mini\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "menu",
-          "description": "`menu` {`boolean`} - Style to be presented in a menu\n\nProperty: menu\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "direction",
-          "description": "`direction` {`string`} - Direction for the tooltip\n\nProperty: direction\n\nDefault: top"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - Icon for the button.\n\nProperty: icon\n\nDefault: editor:text-fields"
-        },
-        {
-          "name": "icon-class",
-          "description": "`icon-class` {`string`} - Icon for the button.\n\nProperty: iconClass\n\nDefault: "
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Label for the button.\n\nProperty: label\n\nDefault: "
-        },
-        {
-          "name": "event-name",
-          "description": "`event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\nProperty: eventName\n\nDefault: button"
-        },
-        {
           "name": "input-method",
           "description": "`input-method` {`string`} - Method of input to display when activated. This is\nonly used when triggered as part of haxProperties\n\nProperty: inputMethod\n\nDefault: null"
         },
@@ -546,27 +488,99 @@
           "description": "`slot-to-bind` {`string`} - Optional slot to bind this value to.\n\nProperty: slotToBind\n\nDefault: null"
         },
         {
-          "name": "default",
-          "description": "`default` {`boolean`} - Is this button concidered a primary interaction\n\nProperty: default\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
           "name": "value",
           "description": "`value` {`string`} - an optional value to send along in the press. Allows for\nreusing events more easily\n\nProperty: value\n\nDefault: "
         },
         {
+          "name": "event-name",
+          "description": "`event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\nProperty: eventName\n\nDefault: button"
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` {`string`} - Hover tip text\n\nProperty: tooltip"
+        },
+        {
+          "name": "danger",
+          "description": "`danger` {`boolean`} - red warning\n\nProperty: danger\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "feature",
+          "description": "`feature` {`boolean`} - Inverted display mode\n\nProperty: feature\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the button.\n\nProperty: label"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggledTooltip",
+          "description": "`toggledTooltip` {`string`} - Hover tip text\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
           "name": "onhax-context-item-selected",
           "description": "`hax-context-item-selected` {`CustomEvent<{ target: this; eventName: string; value: string; }>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "hax-export-dialog",
-      "description": "`hax-export-dialog`\n\nEvents:\n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\nProperties:\n\n  * `title` {`string`} - Title",
+      "description": "`hax-export-dialog`\n\nEvents:\n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\nAttributes:\n\n  * `t` - \n\nProperties:\n\n  * `t` - ",
       "attributes": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: View page source"
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "onhax-register-core-piece",
@@ -576,8 +590,12 @@
     },
     {
       "name": "hax-gizmo-browser",
-      "description": "`hax-gizmo-browser`\n`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n\nEvents:\n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\nProperties:\n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items",
+      "description": "`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n\nEvents:\n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `t` - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\nProperties:\n\n  * `t` - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items",
       "attributes": [
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
         {
           "name": "items",
           "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items"
@@ -611,11 +629,11 @@
     },
     {
       "name": "hax-map",
-      "description": "`hax-map`\n\nEvents:\n\n  * `hax-tray-button-click` {`CustomEvent<{ eventName: string; index: number; value: boolean; }>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `title` {`string`} - Title when open.",
+      "description": "`hax-map`\n\nAttributes:\n\n  * `opened` {`boolean`} - Title when open.\n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `t` - \n\nProperties:\n\n  * `indentedElements` {`any[]`} - \n\n  * `opened` {`boolean`} - Title when open.\n\n  * `cCount` {`string`} - \n\n  * `wCount` {`string`} - \n\n  * `hCount` {`string`} - \n\n  * `pCount` {`string`} - \n\n  * `eCount` {`string`} - \n\n  * `elementList` {`any[]`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened",
+          "description": "`opened` {`boolean`} - Title when open.\n\nProperty: opened",
           "valueSet": "v"
         },
         {
@@ -643,12 +661,8 @@
           "description": "`elementList` {`any[]`} - \n\nProperty: elementList\n\nDefault: "
         },
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title when open.\n\nProperty: title\n\nDefault: Content map"
-        },
-        {
-          "name": "onhax-tray-button-click",
-          "description": "`hax-tray-button-click` {`CustomEvent<{ eventName: string; index: number; value: boolean; }>`} - "
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         }
       ]
     },
@@ -684,19 +698,27 @@
     },
     {
       "name": "hax-plate-context",
-      "description": "`hax-plate-context`\n`A context menu that provides common grid plate based authoring options.`\n\nAttributes:\n\n  * `hasActiveEditingElement` {`boolean`} - \n\nProperties:\n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `tourName` {`string`} - ",
+      "description": "`hax-plate-context`\n`A context menu that provides common grid plate based authoring options.`\n\nAttributes:\n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `t` - \n\nProperties:\n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `t` - \n\n  * `tourName` {`string`} - ",
       "attributes": [
         {
           "name": "hasActiveEditingElement",
           "description": "`hasActiveEditingElement` {`boolean`} - \n\nProperty: hasActiveEditingElement\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         }
       ]
     },
     {
       "name": "hax-preferences-dialog",
-      "description": "`hax-preferences-dialog`\n\nEvents:\n\n  * `hax-tray-button-click` {`CustomEvent<{ eventName: string; index: number; value: boolean; }>`} - \n\nAttributes:\n\n  * `globalPreferences` - Preferences managed for everything global about HAX.\n\n  * `hideLink` {`boolean`} - Developer prop to hide the link\n\n  * `title` {`string`} - Title.\n\n  * `schema` - Schema that has all of inputs / manages state\n\nProperties:\n\n  * `globalPreferences` - Preferences managed for everything global about HAX.\n\n  * `hideLink` {`boolean`} - Developer prop to hide the link\n\n  * `title` {`string`} - Title.\n\n  * `schema` - Schema that has all of inputs / manages state\n\n  * `schemaValues` - ",
+      "description": "`hax-preferences-dialog`\n\nEvents:\n\n  * `hax-tray-button-click` {`CustomEvent<{ eventName: string; index: number; value: boolean; }>`} - \n\nAttributes:\n\n  * `schema` - Schema that has all of inputs / manages state\n\n  * `globalPreferences` - Preferences managed for everything global about HAX.\n\n  * `hideLink` {`boolean`} - Developer prop to hide the link\n\n  * `t` - \n\nProperties:\n\n  * `schema` - Schema that has all of inputs / manages state\n\n  * `globalPreferences` - Preferences managed for everything global about HAX.\n\n  * `hideLink` {`boolean`} - Developer prop to hide the link\n\n  * `t` - ",
       "attributes": [
+        {
+          "name": "schema",
+          "description": "`schema` - Schema that has all of inputs / manages state\n\nProperty: schema"
+        },
         {
           "name": "globalPreferences",
           "description": "`globalPreferences` - Preferences managed for everything global about HAX.\n\nProperty: globalPreferences"
@@ -707,12 +729,8 @@
           "valueSet": "v"
         },
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title.\n\nProperty: title\n\nDefault: Advanced settings"
-        },
-        {
-          "name": "schema",
-          "description": "`schema` - Schema that has all of inputs / manages state\n\nProperty: schema\n\nDefault: [object Object]"
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "onhax-tray-button-click",
@@ -732,7 +750,7 @@
     },
     {
       "name": "hax-store",
-      "description": "Events:\n\n  * `hax-insert-content` {`CustomEvent<{ tag: any; properties: any; content: string; gizmo: any; }>`} - \n\n  * `hax-store-write` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: any; duration: number; classStyle: string; closeText: any; eventCallback: any; }>`} - \n\n  * `hax-store-app-store-loaded` {`CustomEvent<boolean>`} - \n\n  * `hax-store-ready` {`CustomEvent<boolean>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-store-property-updated` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\nAttributes:\n\n  * `haxTray` - Hax tray\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `ready` {`boolean`} - \n\n  * `voice-responses-to` {`string`} - \n\n  * `skip-hax-confirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voice-debug` {`boolean`} - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGridTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `haxProperties` - haxProperties\n\nProperties:\n\n  * `haxTray` - Hax tray\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `ready` {`boolean`} - \n\n  * `activeGizmo` - \n\n  * `method` {`string`} - \n\n  * `haxSelectedText` {`string`} - \n\n  * `__winEvents` - \n\n  * `voiceRespondsTo` {`string`} - \n\n  * `voiceCommands` - \n\n  * `skipHAXConfirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `activeNode` - \n\n  * `activeEditingElement` - \n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `editMode` {`boolean`} - \n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `appList` {`never[]`} - \n\n  * `gizmoList` {`never[]`} - \n\n  * `activeHaxBody` - \n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `globalPreferences` - \n\n  * `activeApp` - \n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voiceDebug` {`boolean`} - \n\n  * `keyboardShortcuts` - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGridTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `haxProperties` - haxProperties\n\n  * `HAXWiring` - ",
+      "description": "Events:\n\n  * `hax-insert-content` {`CustomEvent<{ tag: any; properties: any; content: string; gizmo: any; }>`} - \n\n  * `hax-store-write` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: any; duration: number; classStyle: string; closeText: string; eventCallback: any; }>`} - \n\n  * `hax-store-app-store-loaded` {`CustomEvent<boolean>`} - \n\n  * `hax-store-ready` {`CustomEvent<boolean>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-store-property-updated` {`CustomEvent<{ property: any; value: any; owner: any; }>`} - \n\nAttributes:\n\n  * `haxTray` - Hax tray\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `ready` {`boolean`} - \n\n  * `voice-responses-to` {`string`} - \n\n  * `skip-hax-confirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voice-debug` {`boolean`} - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGridTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `t` - \n\n  * `haxProperties` - haxProperties\n\nProperties:\n\n  * `haxTray` - Hax tray\n\n  * `haxAutoloader` - Hax autoloader element.\n\n  * `__appStoreData` - Internal app store data property after request\n\n  * `ready` {`boolean`} - \n\n  * `activeGizmo` - \n\n  * `method` {`string`} - \n\n  * `haxSelectedText` {`string`} - \n\n  * `__winEvents` - \n\n  * `voiceRespondsTo` {`string`} - \n\n  * `voiceCommands` - \n\n  * `skipHAXConfirmation` {`boolean`} - skipHAXConfirmation\n\n  * `storageData` - Local storage bridge\n\n  * `appStore` - Possible appStore endpoint for loading in things dynamically.\n\n  * `activeNode` - \n\n  * `activeEditingElement` - \n\n  * `haxBodies` {`any[]`} - A list of all haxBodies that exist\n\n  * `activePlaceHolder` - An active place holder item reference. This is used\nfor inline drag and drop event detection so that we\nknow what element replace in context.\n\n  * `sessionObject` - Session object bridged in from a session method of some kind\n\n  * `editMode` {`boolean`} - \n\n  * `skipExitTrap` {`boolean`} - skip the exit trap to prevent losing data\n\n  * `elementList` - Available elements keyed by tagName and with\ntheir haxProperties centrally registered.\n\n  * `appList` {`never[]`} - \n\n  * `gizmoList` {`never[]`} - \n\n  * `activeHaxBody` - \n\n  * `staxList` {`any[]`} - Available hax stax which are just re-usable templates\n\n  * `globalPreferences` - \n\n  * `activeApp` - \n\n  * `connectionRewrites` - Support for deploy specific rewriting for things like JWTs\n\n  * `voiceDebug` {`boolean`} - \n\n  * `keyboardShortcuts` - \n\n  * `validTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGridTagList` {`any[]`} - Valid tag list, tag only and including primatives for a baseline.\n\n  * `validGizmoTypes` {`any[]`} - Gizmo types which can be used to bridge apps to gizmos.\n\n  * `_isSandboxed` {`boolean`} - Sandboxed environment test\n\n  * `t` - \n\n  * `haxProperties` - haxProperties\n\n  * `HAXWiring` - ",
       "attributes": [
         {
           "name": "haxTray",
@@ -820,6 +838,10 @@
           "valueSet": "v"
         },
         {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
           "name": "haxProperties",
           "description": "`haxProperties` - haxProperties\n\nProperty: haxProperties"
         },
@@ -833,7 +855,7 @@
         },
         {
           "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` {`CustomEvent<{ text: any; duration: number; classStyle: string; closeText: any; eventCallback: any; }>`} - "
+          "description": "`simple-toast-show` {`CustomEvent<{ text: any; duration: number; classStyle: string; closeText: string; eventCallback: any; }>`} - "
         },
         {
           "name": "onhax-store-app-store-loaded",
@@ -855,7 +877,7 @@
     },
     {
       "name": "hax-text-context",
-      "description": "`hax-text-context`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: string; value: string; }>`} - \n\nAttributes:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `has-selected-text` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `sourceView` {`boolean`} - \n\n  * `formattingList` {`any[]`} - \n\n  * `realSelectedValue` {`string`} - \n\n  * `format-icon` {`string`} - Selected item icon\n\n  * `is-safari` {`boolean`} - Is this safari\n\nProperties:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `hasSelectedText` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `sourceView` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `formattingList` {`any[]`} - \n\n  * `realSelectedValue` {`string`} - \n\n  * `formatIcon` {`string`} - Selected item icon\n\n  * `isSafari` {`boolean`} - Is this safari\n\n  * `tourName` {`string`} - ",
+      "description": "`hax-text-context`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: string; value: string; }>`} - \n\nAttributes:\n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `has-selected-text` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `viewSource` {`boolean`} - \n\n  * `sourceView` {`boolean`} - \n\n  * `formattingList` {`any[]`} - \n\n  * `realSelectedValue` {`string`} - \n\n  * `format-icon` {`string`} - Selected item icon\n\n  * `is-safari` {`boolean`} - Is this safari\n\n  * `t` - \n\nProperties:\n\n  * `textFormatLookup` - \n\n  * `_showIndent` {`boolean`} - \n\n  * `_showLists` {`boolean`} - \n\n  * `hasSelectedText` {`boolean`} - calculated boolean off of if there is currently text\n\n  * `viewSource` {`boolean`} - \n\n  * `sourceView` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `formattingList` {`any[]`} - \n\n  * `realSelectedValue` {`string`} - \n\n  * `formatIcon` {`string`} - Selected item icon\n\n  * `isSafari` {`boolean`} - Is this safari\n\n  * `t` - \n\n  * `tourName` {`string`} - ",
       "attributes": [
         {
           "name": "_showIndent",
@@ -873,6 +895,11 @@
           "valueSet": "v"
         },
         {
+          "name": "viewSource",
+          "description": "`viewSource` {`boolean`} - \n\nProperty: viewSource",
+          "valueSet": "v"
+        },
+        {
           "name": "sourceView",
           "description": "`sourceView` {`boolean`} - \n\nProperty: sourceView\n\nDefault: false",
           "valueSet": "v"
@@ -887,12 +914,16 @@
         },
         {
           "name": "format-icon",
-          "description": "`format-icon` {`string`} - Selected item icon\n\nProperty: formatIcon\n\nDefault: hax:format-textblock"
+          "description": "`format-icon` {`string`} - Selected item icon\n\nProperty: formatIcon\n\nDefault: hax:paragraph"
         },
         {
           "name": "is-safari",
           "description": "`is-safari` {`boolean`} - Is this safari\n\nProperty: isSafari",
           "valueSet": "v"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "onhax-context-item-selected",
@@ -901,123 +932,652 @@
       ]
     },
     {
-      "name": "hax-toolbar-item",
-      "description": "Attributes:\n\n  * `height` {`string`} - \n\n  * `circle` {`boolean`} - \n\n  * `corner` {`string`} - corner\n\n  * `large` {`boolean`} - Present larger then normal but consistent\n\n  * `disabled` {`boolean`} - disabled state\n\n  * `dark` {`boolean`} - Inverted display mode\n\n  * `danger` {`boolean`} - \n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `mini` {`boolean`} - Present smaller the normal but consistent\n\n  * `icon` {`string`} - Icon to represent this button, required.\n\n  * `label` {`string`} - Text applied to the button\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `tooltip-direction` {`string`} - Direction that the tooltip should flow\n\n  * `default` {`boolean`} - \n\nProperties:\n\n  * `height` {`string`} - \n\n  * `simple` {`boolean`} - \n\n  * `circle` {`boolean`} - \n\n  * `corner` {`string`} - corner\n\n  * `large` {`boolean`} - Present larger then normal but consistent\n\n  * `disabled` {`boolean`} - disabled state\n\n  * `dark` {`boolean`} - Inverted display mode\n\n  * `danger` {`boolean`} - \n\n  * `menu` {`boolean`} - Style to be presented in a menu\n\n  * `mini` {`boolean`} - Present smaller the normal but consistent\n\n  * `icon` {`string`} - Icon to represent this button, required.\n\n  * `label` {`string`} - Text applied to the button\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `tooltipDirection` {`string`} - Direction that the tooltip should flow\n\n  * `default` {`boolean`} - ",
+      "name": "hax-text-editor-button",
+      "description": "`hax-text-editor-button`\na custom-element button for hax text editor (custom buttons can extend this)\n\nEvents:\n\n  * `rich-text-editor-prompt-closed` {`CustomEvent<this>`} - \n\n  * `rich-text-editor-prompt-open` {`CustomEvent<this>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `highlightnode` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodeccontents` {`CustomEvent<any>`} - \n\n  * `wrapselection` {`CustomEvent<any>`} - \n\n  * `command` {`CustomEvent<{ command: string; commandVal: string; range: any; button: this; }>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `element` - \n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `fields` {`any[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `command-val` - Optional parameter for the command.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggled-command-val` - Optional parameter for the command when toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `__selection` - highlight surrounding selected range\n\n  * `tagsList` {`string`} - tags edited by this button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `element` - \n\n  * `tag` {`string`} - \n\n  * `id` {`string`} - is element a custom inline widget element?\n\n  * `__wrap` - contents node inside selected range\n\n  * `__oldValue` - contents node inside selected range\n\n  * `promptCommand` - determines which command based on values passed from prompt\n(can be overriden for custom prompt  commands)\n\n  * `promptCommandVal` - overriden from RichTextEditorPromptButtonBehaviors:\nto determin if gizmo will be inserted\n\n  * `setsInnerHTML` {`boolean`} - determines if prompt also sets innerHTML of range\n(can be overriden for custom prompts)\n\n  * `editableSelection` {`boolean`} - \n\n  * `fields` {`any[]`} - fields for prompt popover.\n\n  * `value` - prefilled value of prompt\n\n  * `prompt` - prompt that pops up when button is pressed\n\n  * `command` {`string`} - The command used for document.execCommand.\n\n  * `commandVal` - Optional parameter for the command.\n\n  * `range` - The active selected range, inherited from the toolbar\n\n  * `toggledCommand` {`string`} - The command used for document.execCommand when toggled.\n\n  * `toggledCommandVal` - Optional parameter for the command when toggled.\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `operationCommand` - gets command param for document.execCommand\n\n  * `operationCommandVal` - gets value param for document.execCommand\n\n  * `tagsArray` {`string[]`} - tagslist as an array\n\n  * `__selection` - highlight surrounding selected range\n\n  * `tagsList` {`string`} - tags edited by this button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`boolean`} - whether button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` {`boolean`} - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
       "attributes": [
         {
-          "name": "height",
-          "description": "`height` {`string`} - \n\nProperty: height"
+          "name": "element",
+          "description": "`element` - \n\nProperty: element"
         },
         {
-          "name": "circle",
-          "description": "`circle` {`boolean`} - \n\nProperty: circle\n\nDefault: false",
-          "valueSet": "v"
+          "name": "id",
+          "description": "`id` {`string`} - is element a custom inline widget element?\n\nProperty: id"
         },
         {
-          "name": "corner",
-          "description": "`corner` {`string`} - corner\n\nProperty: corner\n\nDefault: "
+          "name": "__wrap",
+          "description": "`__wrap` - contents node inside selected range\n\nProperty: __wrap"
         },
         {
-          "name": "large",
-          "description": "`large` {`boolean`} - Present larger then normal but consistent\n\nProperty: large\n\nDefault: false",
-          "valueSet": "v"
+          "name": "__oldValue",
+          "description": "`__oldValue` - contents node inside selected range\n\nProperty: __oldValue"
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - disabled state\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
+          "name": "fields",
+          "description": "`fields` {`any[]`} - fields for prompt popover.\n\nProperty: fields\n\nDefault: [object Object]"
         },
         {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - Inverted display mode\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "name": "value",
+          "description": "`value` - prefilled value of prompt\n\nProperty: value\n\nDefault: [object Object]"
         },
         {
-          "name": "danger",
-          "description": "`danger` {`boolean`} - \n\nProperty: danger\n\nDefault: false",
-          "valueSet": "v"
+          "name": "prompt",
+          "description": "`prompt` - prompt that pops up when button is pressed\n\nProperty: prompt"
         },
         {
-          "name": "menu",
-          "description": "`menu` {`boolean`} - Style to be presented in a menu\n\nProperty: menu\n\nDefault: false",
-          "valueSet": "v"
+          "name": "command",
+          "description": "`command` {`string`} - The command used for document.execCommand.\n\nProperty: command\n\nDefault: insertHTML"
         },
         {
-          "name": "mini",
-          "description": "`mini` {`boolean`} - Present smaller the normal but consistent\n\nProperty: mini\n\nDefault: false",
-          "valueSet": "v"
+          "name": "command-val",
+          "description": "`command-val` - Optional parameter for the command.\n\nProperty: commandVal"
+        },
+        {
+          "name": "range",
+          "description": "`range` - The active selected range, inherited from the toolbar\n\nProperty: range"
+        },
+        {
+          "name": "toggled-command",
+          "description": "`toggled-command` {`string`} - The command used for document.execCommand when toggled.\n\nProperty: toggledCommand"
+        },
+        {
+          "name": "toggled-command-val",
+          "description": "`toggled-command-val` - Optional parameter for the command when toggled.\n\nProperty: toggledCommandVal"
+        },
+        {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
+          "name": "__selection",
+          "description": "`__selection` - highlight surrounding selected range\n\nProperty: __selection"
+        },
+        {
+          "name": "tagsList",
+          "description": "`tagsList` {`string`} - tags edited by this button\n\nProperty: tagsList\n\nDefault: span"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
         },
         {
           "name": "icon",
-          "description": "`icon` {`string`} - Icon to represent this button, required.\n\nProperty: icon\n\nDefault: "
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon"
         },
         {
           "name": "label",
-          "description": "`label` {`string`} - Text applied to the button\n\nProperty: label\n\nDefault: "
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
+          "name": "onrich-text-editor-prompt-closed",
+          "description": "`rich-text-editor-prompt-closed` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onrich-text-editor-prompt-open",
+          "description": "`rich-text-editor-prompt-open` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onhighlightnode",
+          "description": "`highlightnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodeccontents",
+          "description": "`selectnodeccontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onwrapselection",
+          "description": "`wrapselection` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "oncommand",
+          "description": "`command` {`CustomEvent<{ command: string; commandVal: string; range: any; button: this; }>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "hax-text-editor-toolbar",
+      "description": "`hax-text-editor-toolbar`\na customized toolbar (with buttons) for HAX\n\nEvents:\n\n  * `cancel` {`CustomEvent<this>`} - \n\n  * `disableediting` {`CustomEvent<this>`} - \n\n  * `highlight` {`CustomEvent<boolean>`} - \n\n  * `register` {`CustomEvent<{ remove: boolean; toolbar: this; }>`} - \n\n  * `setrange` {`CustomEvent<{ editor: any; range: any; }>`} - \n\n  * `selectnode` {`CustomEvent<any>`} - \n\n  * `selectnodecontents` {`CustomEvent<any>`} - \n\n  * `selectrange` {`CustomEvent<any>`} - \n\n  * `pastefromclipboard` {`CustomEvent<any>`} - \n\n  * `shortcut-key-pressed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `__registeredElements` - \n\n  * `__updated` {`boolean`} - \n\n  * `editor` - `rich-text-editor` element that is currently in `editing` mode\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `show` {`string`} - when to make toolbar visible:\n\"always\" to keep it visible,\n\"selection\" when there is an active selection,\nor defaults to only when connected to a toolbar\n\n  * `paste-disabled` {`boolean`} - hides paste button in Firefox\n\n  * `__promptOpen` {`boolean`} - whether prompt is open\n\n  * `__selection` - selection singleton\n\n  * `clickableElements` - Tracks inline widgets that require selection data\n\n  * `breadcrumbs-label` {`string`} - The label for the breadcrums area.\n\n  * `breadcrumbs-select-all-label` {`string`} - The label for the breadcrums area.\n\n  * `always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapse-disabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `tag` - \n\n  * `__registeredElements` - \n\n  * `__updated` {`boolean`} - \n\n  * `hasBreadcrumbs` {`boolean`} - whether or not toolbar breadcrumbs\n(override to force a toolbar to always use or not use them)\n\n  * `undoButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for an undo button\n\n  * `redoButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a redo button\n\n  * `historyButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; shortcutKeys: string; type: string; }[]; }`} - default config for a history button group: undo + redo\n\n  * `formatButton` {`{ label: string; type: string; }`} - default config for a format button\n\n  * `boldButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; toggles: boolean; type: string; }`} - default config for a bold button\n\n  * `italicButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; toggles: boolean; type: string; }`} - default config for an italic button\n\n  * `underlineButton` {`{ type: string; }`} - default config for an underline button\n\n  * `removeFormatButton` {`{ command: string; icon: string; label: string; type: string; }`} - default config for a remove format button\n\n  * `basicInlineButtonGroup` {`{ type: string; buttons: { label: string; type: string; }[]; }`} - default config for a style button group: format, bold, italic, and remove format\n\n  * `linkButton` {`{ icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a link button\n\n  * `linkButtonGroup` {`{ type: string; buttons: { icon: string; label: string; shortcutKeys: string; type: string; }[]; }`} - default config for a link button group: link\n\n  * `cutButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a cut button\n\n  * `copyButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a copy button\n\n  * `pasteButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for a paste button\n\n  * `clipboardButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; shortcutKeys: string; type: string; }[]; }`} - default config for a clipboard button group: cut, copy, and paste\n\n  * `subscriptButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for a subscript button\n\n  * `superscriptButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for a superscript button\n\n  * `scriptButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; toggles: boolean; type: string; }[]; }`} - default config for a script button group: subscript & superscript\n\n  * `symbolButton` {`{ symbolTypes: string[]; type: string; }`} - default config for a symbol button\n\n  * `emojiButton` {`{ type: string; }`} - default config for an emoji button\n\n  * `imageButton` {`{ type: string; }`} - default config for an image button\n\n  * `insertButtonGroup` {`{ type: string; buttons: { type: string; }[]; }`} - default config for an insert button group: image\n\n  * `orderedListButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for an ordered list button\n\n  * `unorderedListButton` {`{ command: string; icon: string; label: string; toggles: boolean; type: string; }`} - default config for an unordered list button\n\n  * `blockquoteButton` {`{ command: string; commandVal: string; label: string; icon: string; shortcutKeys: string; type: string; }`} - default config for a blockquote button\n\n  * `indentButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for an indent button\n\n  * `outdentButton` {`{ command: string; icon: string; label: string; shortcutKeys: string; type: string; }`} - default config for an outdent button\n\n  * `listIndentButtonGroup` {`{ type: string; buttons: ({ command: string; icon: string; label: string; toggles: boolean; type: string; } | { command: string; icon: string; label: string; shortcutKeys: string; type: string; })[]; }`} - default config for a list and indent button group:\nordered, unordered, blockquote, indent, outdent\n\n  * `saveButton` {`{ command: string; icon: string; label: string; type: string; }`} - default config for an save button\n\n  * `closeButton` {`{ command: string; icon: string; label: string; type: string; }`} - default config for a close button\n\n  * `saveCloseButtonGroup` {`{ type: string; buttons: { command: string; icon: string; label: string; type: string; }[]; }`} - default config for a save and close button group: save and close\n\n  * `sourceButton` {`{ type: string; }`} - default config for a view source button\n\n  * `sourceButtonGroup` {`{ type: string; buttons: { type: string; }[]; }`} - default config for a source button group: view source\n\n  * `defaultConfig` {`any[]`} - default config for toolbar with\ndefault history, style, link, clipboard, script, insert, and list button groups\n\n  * `miniConfig` {`({ type: string; buttons: { icon: string; label: string; shortcutKeys: string; type: string; }[]; } | { type: string; buttons: { command: string; icon: string; label: string; type: string; }[]; })[]`} - default config for toolbar with\ndefault a custom group of style buttons,\ndefault link button group,\ndefault script button group,\nand a custom list button groups\n\n  * `miniTemplate` {`TemplateResult`} - a template that places toolbar in a container\nso that it can be positioned absolutely\n\n  * `editor` - `rich-text-editor` element that is currently in `editing` mode\n\n  * `savedSelection` - current text selected range.\n\n  * `range` - current text selected range, which is actually a range.\n\n  * `registered` {`boolean`} - selection singleton\n\n  * `selectedNode` - currently selected node\n\n  * `selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\n  * `show` {`string`} - when to make toolbar visible:\n\"always\" to keep it visible,\n\"selection\" when there is an active selection,\nor defaults to only when connected to a toolbar\n\n  * `__pasteDisabled` {`boolean`} - hides paste button in Firefox\n\n  * `__promptOpen` {`boolean`} - whether prompt is open\n\n  * `__selection` - selection singleton\n\n  * `controls` {`string`} - id of editor currently being controlled\n\n  * `disconnected` {`boolean`} - determines if the toolbar is hidden\n\n  * `noSelection` {`boolean`} - determines if the toolbar has an extive selection\n\n  * `clickableElements` - Tracks inline widgets that require selection data\n\n  * `breadcrumbsLabel` {`string`} - The label for the breadcrums area.\n\n  * `breadcrumbsSelectAllLabel` {`string`} - The label for the breadcrums area.\n\n  * `alwaysExpanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - `rich-text-editor` unique id\n\n  * `moreShortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `buttons` {`any[]`} - array of rendered buttons\n\n  * `focused` {`boolean`} - does toolbar have focus\n\n  * `hovered` {`boolean`} - is mouseover toolbar\n\n  * `moreButton` {`TemplateResult`} - more button's template\n\n  * `toolbarTemplate` - default toolbar template uses simple-toolbar\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `toggledLabel` {`string`} - \n\n  * `showTextLabel` {`boolean`} - \n\n  * `shortcut` {`string`} - \n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcutKeys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+      "attributes": [
+        {
+          "name": "__registeredElements",
+          "description": "`__registeredElements` - \n\nProperty: __registeredElements\n\nDefault: "
+        },
+        {
+          "name": "__updated",
+          "description": "`__updated` {`boolean`} - \n\nProperty: __updated\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "editor",
+          "description": "`editor` - `rich-text-editor` element that is currently in `editing` mode\n\nProperty: editor"
+        },
+        {
+          "name": "savedSelection",
+          "description": "`savedSelection` - current text selected range.\n\nProperty: savedSelection"
+        },
+        {
+          "name": "range",
+          "description": "`range` - current text selected range, which is actually a range.\n\nProperty: range"
+        },
+        {
+          "name": "registered",
+          "description": "`registered` {`boolean`} - selection singleton\n\nProperty: registered",
+          "valueSet": "v"
+        },
+        {
+          "name": "selectedNode",
+          "description": "`selectedNode` - currently selected node\n\nProperty: selectedNode"
+        },
+        {
+          "name": "selectionAncestors",
+          "description": "`selectionAncestors` {`any[]`} - array of ancestors of currently selected node\n\nProperty: selectionAncestors"
+        },
+        {
+          "name": "show",
+          "description": "`show` {`string`} - when to make toolbar visible:\n\"always\" to keep it visible,\n\"selection\" when there is an active selection,\nor defaults to only when connected to a toolbar\n\nProperty: show"
+        },
+        {
+          "name": "paste-disabled",
+          "description": "`paste-disabled` {`boolean`} - hides paste button in Firefox\n\nProperty: __pasteDisabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "__promptOpen",
+          "description": "`__promptOpen` {`boolean`} - whether prompt is open\n\nProperty: __promptOpen",
+          "valueSet": "v"
+        },
+        {
+          "name": "__selection",
+          "description": "`__selection` - selection singleton\n\nProperty: __selection"
+        },
+        {
+          "name": "clickableElements",
+          "description": "`clickableElements` - Tracks inline widgets that require selection data\n\nProperty: clickableElements\n\nDefault: [object Object]"
+        },
+        {
+          "name": "breadcrumbs-label",
+          "description": "`breadcrumbs-label` {`string`} - The label for the breadcrums area.\n\nProperty: breadcrumbsLabel\n\nDefault: Select"
+        },
+        {
+          "name": "breadcrumbs-select-all-label",
+          "description": "`breadcrumbs-select-all-label` {`string`} - The label for the breadcrums area.\n\nProperty: breadcrumbsSelectAllLabel\n\nDefault: All"
+        },
+        {
+          "name": "always-expanded",
+          "description": "`always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\nProperty: alwaysExpanded",
+          "valueSet": "v"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - `rich-text-editor` unique id\n\nProperty: id"
+        },
+        {
+          "name": "more-shortcuts",
+          "description": "`more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: moreShortcuts"
+        },
+        {
+          "name": "collapsed",
+          "description": "`collapsed` {`boolean`} - is toolbar collapsed?\n\nProperty: collapsed\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "collapse-disabled",
+          "description": "`collapse-disabled` {`boolean`} - whether there is no need to collapse\n\nProperty: collapseDisabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "config",
+          "description": "`config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\nProperty: config\n\nDefault: basicInlineButtonGroup,linkButtonGroup,scriptButtonGroup,listIndentButtonGroup"
+        },
+        {
+          "name": "__buttons",
+          "description": "`__buttons` {`any[]`} - raw array of buttons\n\nProperty: __buttons\n\nDefault: "
+        },
+        {
+          "name": "__focused",
+          "description": "`__focused` {`boolean`} - whether toolbar has focus\n\nProperty: __focused\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__hovered",
+          "description": "`__hovered` {`boolean`} - whether toolbar is hovered\n\nProperty: __hovered\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "sticky",
+          "description": "`sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\nProperty: sticky\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: shortcutKeys\n\nDefault: [object Object]"
+        },
+        {
+          "name": "oncancel",
+          "description": "`cancel` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "ondisableediting",
+          "description": "`disableediting` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onhighlight",
+          "description": "`highlight` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onregister",
+          "description": "`register` {`CustomEvent<{ remove: boolean; toolbar: this; }>`} - "
+        },
+        {
+          "name": "onsetrange",
+          "description": "`setrange` {`CustomEvent<{ editor: any; range: any; }>`} - "
+        },
+        {
+          "name": "onselectnode",
+          "description": "`selectnode` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectnodecontents",
+          "description": "`selectnodecontents` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onselectrange",
+          "description": "`selectrange` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onpastefromclipboard",
+          "description": "`pastefromclipboard` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onshortcut-key-pressed",
+          "description": "`shortcut-key-pressed` {`CustomEvent<any>`} - "
+        }
+      ]
+    },
+    {
+      "name": "hax-text-editor",
+      "description": "`hax-text-editor`\nHAX-specific implementation of rich-text-editor\n\nEvents:\n\n  * `editing-disabled` {`CustomEvent<any>`} - \n\n  * `editing-enabled` {`CustomEvent<any>`} - \n\n  * `focus` {`CustomEvent<any>`} - \n\n  * `register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - \n\n  * `getrange` {`CustomEvent<this>`} - \n\n  * `pastefromclipboard` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `disable-hover` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `rawhtml` {`string`} - raw html\n\n  * `updateRange` {`boolean`} - whether to update range\n\n  * `view-source` {`boolean`} - whether editor is view source code mode\n\n  * `__canceledEdits` - contains cancelled edits\n\n  * `__connectedToolbar` - connected toolbar\n\n  * `__codeEditorValue` {`string`} - code-editor for view source\n\n  * `__needsUpdate` {`boolean`} - has focus\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `disabled` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `__focused` {`boolean`} - has focus\n\n  * `__hovered` {`boolean`} - is hovered\n\n  * `editing` {`boolean`} - Maps to editing attribute\n\n  * `__selection` - selection management\n\nProperties:\n\n  * `haxUIElement` {`boolean`} - \n\n  * `tag` - \n\n  * `disableHover` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `rawhtml` {`string`} - raw html\n\n  * `updateRange` {`boolean`} - whether to update range\n\n  * `viewSource` {`boolean`} - whether editor is view source code mode\n\n  * `__canceledEdits` - contains cancelled edits\n\n  * `__connectedToolbar` - connected toolbar\n\n  * `__codeEditorValue` {`string`} - code-editor for view source\n\n  * `__needsUpdate` {`boolean`} - has focus\n\n  * `observer` {`MutationObserver`} - mutation observer\n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `disabled` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `__focused` {`boolean`} - has focus\n\n  * `__hovered` {`boolean`} - is hovered\n\n  * `editing` {`boolean`} - Maps to editing attribute\n\n  * `__selection` - selection management",
+      "attributes": [
+        {
+          "name": "disable-hover",
+          "description": "`disable-hover` {`boolean`} - don't reveal toolbar on mouseover\n\nProperty: disableHover",
+          "valueSet": "v"
+        },
+        {
+          "name": "rawhtml",
+          "description": "`rawhtml` {`string`} - raw html\n\nProperty: rawhtml"
+        },
+        {
+          "name": "updateRange",
+          "description": "`updateRange` {`boolean`} - whether to update range\n\nProperty: updateRange",
+          "valueSet": "v"
+        },
+        {
+          "name": "view-source",
+          "description": "`view-source` {`boolean`} - whether editor is view source code mode\n\nProperty: viewSource",
+          "valueSet": "v"
+        },
+        {
+          "name": "__canceledEdits",
+          "description": "`__canceledEdits` - contains cancelled edits\n\nProperty: __canceledEdits"
+        },
+        {
+          "name": "__connectedToolbar",
+          "description": "`__connectedToolbar` - connected toolbar\n\nProperty: __connectedToolbar"
+        },
+        {
+          "name": "__codeEditorValue",
+          "description": "`__codeEditorValue` {`string`} - code-editor for view source\n\nProperty: __codeEditorValue"
+        },
+        {
+          "name": "__needsUpdate",
+          "description": "`__needsUpdate` {`boolean`} - has focus\n\nProperty: __needsUpdate",
+          "valueSet": "v"
+        },
+        {
+          "name": "placeholder",
+          "description": "`placeholder` {`string`} - Placeholder text for empty editable regions\n\nProperty: placeholder\n\nDefault: Click to edit"
+        },
+        {
+          "name": "toolbar",
+          "description": "`toolbar` {`string`} - id for toolbar\n\nProperty: toolbar\n\nDefault: "
+        },
+        {
+          "name": "type",
+          "description": "`type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\nProperty: type\n\nDefault: hax-text-editor-toolbar"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - editor's unique id\n\nProperty: id\n\nDefault: "
+        },
+        {
+          "name": "range",
+          "description": "`range` - current range\n\nProperty: range\n\nDefault: undefined"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - don't reveal toolbar on mouseover\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__focused",
+          "description": "`__focused` {`boolean`} - has focus\n\nProperty: __focused\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__hovered",
+          "description": "`__hovered` {`boolean`} - is hovered\n\nProperty: __hovered\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "editing",
+          "description": "`editing` {`boolean`} - Maps to editing attribute\n\nProperty: editing\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__selection",
+          "description": "`__selection` - selection management\n\nProperty: __selection"
+        },
+        {
+          "name": "onediting-disabled",
+          "description": "`editing-disabled` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onediting-enabled",
+          "description": "`editing-enabled` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onfocus",
+          "description": "`focus` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onregister",
+          "description": "`register` {`CustomEvent<{ remove: boolean; editor: this; }>`} - "
+        },
+        {
+          "name": "ongetrange",
+          "description": "`getrange` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onpastefromclipboard",
+          "description": "`pastefromclipboard` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "",
+      "description": "`hax-toolbar-item`\na button for hax toolbar\n\nEvents:\n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `danger` {`boolean`} - red warning\n\n  * `feature` {`boolean`} - Inverted display mode\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Hover tip text\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `danger` {`boolean`} - red warning\n\n  * `feature` {`boolean`} - Inverted display mode\n\n  * `menu` {`boolean`} - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Hover tip text\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` {`boolean`} - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult`} - template for button label\n\n  * `tooltipTemplate` {`TemplateResult`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
+      "attributes": [
+        {
+          "name": "event-name",
+          "description": "`event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\nProperty: eventName"
         },
         {
           "name": "tooltip",
-          "description": "`tooltip` {`string`} - Hover tip text\n\nProperty: tooltip\n\nDefault: "
+          "description": "`tooltip` {`string`} - Hover tip text\n\nProperty: tooltip"
         },
         {
-          "name": "tooltip-direction",
-          "description": "`tooltip-direction` {`string`} - Direction that the tooltip should flow\n\nProperty: tooltipDirection\n\nDefault: top"
-        },
-        {
-          "name": "default",
-          "description": "`default` {`boolean`} - \n\nProperty: default\n\nDefault: false",
+          "name": "danger",
+          "description": "`danger` {`boolean`} - red warning\n\nProperty: danger\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "feature",
+          "description": "`feature` {`boolean`} - Inverted display mode\n\nProperty: feature\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggledTooltip",
+          "description": "`toggledTooltip` {`string`} - Hover tip text\n\nProperty: toggledTooltip"
+        },
+        {
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "hax-toolbar-menu",
-      "description": "Events:\n\n  * `selected-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `mini` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `corner` {`string`} - corner\n\n  * `action` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `tooltip` {`string`} - \n\n  * `tooltip-direction` {`string`} - \n\n  * `selected` {`number`} - \n\nProperties:\n\n  * `mini` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `corner` {`string`} - corner\n\n  * `action` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `tooltip` {`string`} - \n\n  * `tooltipDirection` {`string`} - \n\n  * `selected` {`number`} - ",
+      "description": "`hax-toolbar-menu`\n`An icon / button that has support for multiple options via drop down.`\n\nEvents:\n\n  * `close` {`CustomEvent<Event>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<Event>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `_blockEvent` {`boolean`} - Internal flag to allow blocking the event firing if machine selects tag.\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `_blockEvent` {`boolean`} - Internal flag to allow blocking the event firing if machine selects tag.\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `menuTemplate` {`TemplateResult`} - template for dropdown menu\n\n  * `listItemTemplate` {`TemplateResult`} - template for slotted list items\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `positionAlign` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Label for the icon, if button is toggled.\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` {`boolean`} - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult`} - template for button label\n\n  * `tooltipTemplate` {`\"\" | TemplateResult`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult`} - template for button\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
       "attributes": [
         {
-          "name": "mini",
-          "description": "`mini` {`boolean`} - \n\nProperty: mini",
+          "name": "event-name",
+          "description": "`event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\nProperty: eventName"
+        },
+        {
+          "name": "_blockEvent",
+          "description": "`_blockEvent` {`boolean`} - Internal flag to allow blocking the event firing if machine selects tag.\n\nProperty: _blockEvent\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "currentItem",
+          "description": "`currentItem` - Whether toggle is disabled\n\nProperty: currentItem"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - Whether toggle is disabled\n\nProperty: expanded",
+          "valueSet": "v"
+        },
+        {
+          "name": "focused",
+          "description": "`focused` {`boolean`} - Whether button is toggled\n\nProperty: focused",
+          "valueSet": "v"
+        },
+        {
+          "name": "hovered",
+          "description": "`hovered` {`boolean`} - Whether button is toggled\n\nProperty: hovered",
+          "valueSet": "v"
+        },
+        {
+          "name": "__menuItems",
+          "description": "`__menuItems` {`any[]`} - menu items in array form to move from prev to next\n\nProperty: __menuItems\n\nDefault: "
+        },
+        {
+          "name": "position",
+          "description": "`position` {`string`} - Positions list to top, right, bottom, left of its content.\n\nProperty: position\n\nDefault: bottom"
+        },
+        {
+          "name": "position-align",
+          "description": "`position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\nProperty: positionAlign\n\nDefault: start"
+        },
+        {
+          "name": "offset",
+          "description": "`offset` {`number`} - spacing between top of list and menu button\n\nProperty: offset\n\nDefault: 0"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
         },
         {
           "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon"
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon"
         },
         {
-          "name": "corner",
-          "description": "`corner` {`string`} - corner\n\nProperty: corner\n\nDefault: "
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label"
         },
         {
-          "name": "action",
-          "description": "`action` {`boolean`} - \n\nProperty: action\n\nDefault: false",
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
           "valueSet": "v"
+        },
+        {
+          "name": "toggled-tooltip",
+          "description": "`toggled-tooltip` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledTooltip"
         },
         {
           "name": "disabled",
-          "description": "`disabled` {`boolean`} - disabled state\n\nProperty: disabled\n\nDefault: false",
+          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "tooltip",
-          "description": "`tooltip` {`string`} - \n\nProperty: tooltip\n\nDefault: "
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "tooltip-direction",
-          "description": "`tooltip-direction` {`string`} - \n\nProperty: tooltipDirection\n\nDefault: "
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "selected",
-          "description": "`selected` {`number`} - \n\nProperty: selected\n\nDefault: 0"
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
         },
         {
-          "name": "onselected-changed",
-          "description": "`selected-changed` {`CustomEvent<any>`} - "
+          "name": "onclose",
+          "description": "`close` {`CustomEvent<Event>`} - Fires when menu is closed"
+        },
+        {
+          "name": "onopen",
+          "description": "`open` {`CustomEvent<Event>`} - Fires when menu is opened"
+        },
+        {
+          "name": "onitem-click",
+          "description": "`item-click` {`CustomEvent<Event>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
-      "name": "hax-toolbar",
-      "description": "Attributes:\n\n  * `selected` {`boolean`} - See what's selected\n\n  * `hide-more` {`boolean`} - Hide the more menu.\n\n  * `inline` {`boolean`} - This is an inline context menu\n\nProperties:\n\n  * `selected` {`boolean`} - See what's selected\n\n  * `hideMore` {`boolean`} - Hide the more menu.\n\n  * `inline` {`boolean`} - This is an inline context menu",
+      "name": "",
+      "description": "Events:\n\n  * `shortcut-key-pressed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `selected` {`boolean`} - See what's selected\n\n  * `inline` {`boolean`} - This is an inline context menu\n\n  * `always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - unique id\n\n  * `more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapse-disabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperties:\n\n  * `selected` {`boolean`} - See what's selected\n\n  * `inline` {`boolean`} - This is an inline context menu\n\n  * `alwaysExpanded` {`boolean`} - always expanded so more button is unnecessary?\n\n  * `id` {`string`} - unique id\n\n  * `moreShortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\n  * `buttons` {`any[]`} - array of rendered buttons\n\n  * `focused` {`boolean`} - does toolbar have focus\n\n  * `hovered` {`boolean`} - is mouseover toolbar\n\n  * `moreButton` {`TemplateResult`} - more button's template\n\n  * `toolbarTemplate` {`TemplateResult`} - toolbar element's template\n\n  * `collapsed` {`boolean`} - is toolbar collapsed?\n\n  * `collapseDisabled` {`boolean`} - whether there is no need to collapse\n\n  * `config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\n  * `__buttons` {`any[]`} - raw array of buttons\n\n  * `__focused` {`boolean`} - whether toolbar has focus\n\n  * `__hovered` {`boolean`} - whether toolbar is hovered\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `toggledLabel` {`string`} - \n\n  * `showTextLabel` {`boolean`} - \n\n  * `shortcut` {`string`} - \n\n  * `sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\n  * `shortcutKeys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
       "attributes": [
         {
           "name": "selected",
@@ -1025,28 +1585,77 @@
           "valueSet": "v"
         },
         {
-          "name": "hide-more",
-          "description": "`hide-more` {`boolean`} - Hide the more menu.\n\nProperty: hideMore\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
           "name": "inline",
           "description": "`inline` {`boolean`} - This is an inline context menu\n\nProperty: inline\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "always-expanded",
+          "description": "`always-expanded` {`boolean`} - always expanded so more button is unnecessary?\n\nProperty: alwaysExpanded",
+          "valueSet": "v"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - unique id\n\nProperty: id"
+        },
+        {
+          "name": "more-shortcuts",
+          "description": "`more-shortcuts` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: moreShortcuts"
+        },
+        {
+          "name": "collapsed",
+          "description": "`collapsed` {`boolean`} - is toolbar collapsed?\n\nProperty: collapsed\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "collapse-disabled",
+          "description": "`collapse-disabled` {`boolean`} - whether there is no need to collapse\n\nProperty: collapseDisabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "config",
+          "description": "`config` {`any[]`} - Custom configuration of toolbar groups and buttons.\n(See default value for example using default configuration.)\n\nProperty: config\n\nDefault: "
+        },
+        {
+          "name": "__buttons",
+          "description": "`__buttons` {`any[]`} - raw array of buttons\n\nProperty: __buttons\n\nDefault: "
+        },
+        {
+          "name": "__focused",
+          "description": "`__focused` {`boolean`} - whether toolbar has focus\n\nProperty: __focused\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__hovered",
+          "description": "`__hovered` {`boolean`} - whether toolbar is hovered\n\nProperty: __hovered\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "sticky",
+          "description": "`sticky` {`boolean`} - Should toolbar stick to top so that it is always visible?\n\nProperty: sticky\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` - Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.\n\nProperty: shortcutKeys\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onshortcut-key-pressed",
+          "description": "`shortcut-key-pressed` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "hax-tray-button",
-      "description": "`hax-tray-button`\n`A button in the tray`\n\nEvents:\n\n  * `hax-tray-button-click` {`CustomEvent<{ eventName: any; index: any; value: any; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: this; callback: string; }>`} - \n\nAttributes:\n\n  * `voice-command` {`string`} - Voice command to append for things that support data-voicecommand.\n\n  * `iconDark` {`boolean`} - \n\n  * `index` {`number`} - Index position in the original list of imports\n\n  * `label` {`string`} - label\n\n  * `dark-bg` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `mini` {`boolean`} - \n\n  * `wide` {`boolean`} - \n\n  * `event-data` {`string`} - \n\n  * `event-name` {`string`} - \n\n  * `icon` {`string`} - Icon for the button, optional.\n\n  * `color-meaning` {`boolean`} - \n\n  * `hover-accent-color` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `voiceCommand` {`string`} - Voice command to append for things that support data-voicecommand.\n\n  * `iconDark` {`boolean`} - \n\n  * `index` {`number`} - Index position in the original list of imports\n\n  * `label` {`string`} - label\n\n  * `darkBg` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `mini` {`boolean`} - \n\n  * `wide` {`boolean`} - \n\n  * `eventData` {`string`} - \n\n  * `eventName` {`string`} - \n\n  * `icon` {`string`} - Icon for the button, optional.\n\n  * `colorMeaning` {`boolean`} - \n\n  * `_defaultHoverColor` {`string`} - \n\n  * `_defaultColor` {`string`} - \n\n  * `hoverAccentColor` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`hax-tray-button`\n`A button in the tray`\n\nEvents:\n\n  * `hax-tray-button-click` {`CustomEvent<{ eventName: any; index: any; value: any; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: this; callback: string; }>`} - \n\n  * `register-button` {`CustomEvent<this>`} - \n\n  * `deregister-button` {`CustomEvent<this>`} - \n\n  * `update-button-registry` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `voice-command` {`string`} - Voice command to append for things that support data-voicecommand.\n\n  * `wide` {`boolean`} - \n\n  * `index` {`number`} - Index position in the original list of imports\n\n  * `event-data` {`string`} - \n\n  * `event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `danger` {`boolean`} - red warning\n\n  * `feature` {`boolean`} - Inverted display mode\n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggled-label` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Hover tip text\n\n  * `show-text-label` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperties:\n\n  * `voiceCommand` {`string`} - Voice command to append for things that support data-voicecommand.\n\n  * `wide` {`boolean`} - \n\n  * `index` {`number`} - Index position in the original list of imports\n\n  * `eventData` {`string`} - \n\n  * `eventName` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\n  * `tooltip` {`string`} - Hover tip text\n\n  * `danger` {`boolean`} - red warning\n\n  * `feature` {`boolean`} - Inverted display mode\n\n  * `menu` {`boolean`} - \n\n  * `controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\n  * `icon` {`string`} - Optional iron icon name for the button.\n\n  * `label` {`string`} - Label for the icon.\n\n  * `target` - The active selected range, inherited from the toolbar\n\n  * `toggledIcon` {`string`} - Optional iron icon name for the button if it is toggled.\n\n  * `toggledLabel` {`string`} - Label for the icon, if button is toggled.\n\n  * `toggled` {`boolean`} - Can this button toggle?\n\n  * `toggledTooltip` {`string`} - Hover tip text\n\n  * `button` - gets button element\n\n  * `currentLabel` {`string`} - current label based on toggled state\n\n  * `currentIcon` {`string`} - current icon based on toggled state\n\n  * `currentTooltip` {`string`} - current label based on toggled state\n\n  * `isToggled` {`number`} - determines if button is toggled\n\n  * `hasLabel` {`boolean`} - is label specified\n\n  * `hasIcon` {`boolean`} - is icon specified\n\n  * `hasTooltip` {`boolean`} - is tooltip specified\n\n  * `labelVisible` {`boolean`} - is visible label is needed or specified\n\n  * `tooltipVisible` {`boolean`} - is tooltip needed or specified\n\n  * `iconTemplate` {`\"\" | TemplateResult`} - template for button icon\n\n  * `labelTemplate` {`\"\" | TemplateResult`} - template for button label\n\n  * `tooltipTemplate` {`TemplateResult`} - template for button tooltip\n\n  * `buttonTemplate` {`TemplateResult`} - template for button, based on whether or not the button toggles\n\n  * `iconPosition` {`string`} - \n\n  * `alignVertical` {`string`} - \n\n  * `alignHorizontal` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `showTextLabel` {`boolean`} - Show text label even if an icon is named?\n\n  * `toggles` {`boolean`} - Can this button toggle?\n\n  * `shortcutKeys` {`string`} - Optional space-separated list of shortcut keys",
       "attributes": [
         {
           "name": "voice-command",
           "description": "`voice-command` {`string`} - Voice command to append for things that support data-voicecommand.\n\nProperty: voiceCommand"
         },
         {
-          "name": "iconDark",
-          "description": "`iconDark` {`boolean`} - \n\nProperty: iconDark",
+          "name": "wide",
+          "description": "`wide` {`boolean`} - \n\nProperty: wide",
           "valueSet": "v"
         },
         {
@@ -1054,58 +1663,73 @@
           "description": "`index` {`number`} - Index position in the original list of imports\n\nProperty: index"
         },
         {
-          "name": "label",
-          "description": "`label` {`string`} - label\n\nProperty: label"
-        },
-        {
-          "name": "dark-bg",
-          "description": "`dark-bg` {`boolean`} - \n\nProperty: darkBg\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "mini",
-          "description": "`mini` {`boolean`} - \n\nProperty: mini\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "wide",
-          "description": "`wide` {`boolean`} - \n\nProperty: wide\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
           "name": "event-data",
           "description": "`event-data` {`string`} - \n\nProperty: eventData\n\nDefault: null"
         },
         {
           "name": "event-name",
-          "description": "`event-name` {`string`} - \n\nProperty: eventName\n\nDefault: null"
+          "description": "`event-name` {`string`} - Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.\n\nProperty: eventName"
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` {`string`} - Hover tip text\n\nProperty: tooltip"
+        },
+        {
+          "name": "danger",
+          "description": "`danger` {`boolean`} - red warning\n\nProperty: danger\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "feature",
+          "description": "`feature` {`boolean`} - Inverted display mode\n\nProperty: feature\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The `id` of the `simple-toolbar` that the toolbar controls.\n\nProperty: controls"
         },
         {
           "name": "icon",
-          "description": "`icon` {`string`} - Icon for the button, optional.\n\nProperty: icon\n\nDefault: null"
+          "description": "`icon` {`string`} - Optional iron icon name for the button.\n\nProperty: icon"
         },
         {
-          "name": "color-meaning",
-          "description": "`color-meaning` {`boolean`} - \n\nProperty: colorMeaning\n\nDefault: false",
+          "name": "label",
+          "description": "`label` {`string`} - Label for the icon.\n\nProperty: label"
+        },
+        {
+          "name": "target",
+          "description": "`target` - The active selected range, inherited from the toolbar\n\nProperty: target"
+        },
+        {
+          "name": "toggled-icon",
+          "description": "`toggled-icon` {`string`} - Optional iron icon name for the button if it is toggled.\n\nProperty: toggledIcon"
+        },
+        {
+          "name": "toggled-label",
+          "description": "`toggled-label` {`string`} - Label for the icon, if button is toggled.\n\nProperty: toggledLabel"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Can this button toggle?\n\nProperty: toggled",
           "valueSet": "v"
         },
         {
-          "name": "hover-accent-color",
-          "description": "`hover-accent-color` {`string`} - \n\nProperty: hoverAccentColor\n\nDefault: _defaultColor"
+          "name": "toggledTooltip",
+          "description": "`toggledTooltip` {`string`} - Hover tip text\n\nProperty: toggledTooltip"
         },
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: "
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "name": "show-text-label",
+          "description": "`show-text-label` {`boolean`} - Show text label even if an icon is named?\n\nProperty: showTextLabel\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "toggles",
+          "description": "`toggles` {`boolean`} - Can this button toggle?\n\nProperty: toggles\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "shortcut-keys",
+          "description": "`shortcut-keys` {`string`} - Optional space-separated list of shortcut keys\n\nProperty: shortcutKeys\n\nDefault: "
         },
         {
           "name": "onhax-tray-button-click",
@@ -1114,34 +1738,122 @@
         {
           "name": "onhax-add-voice-command",
           "description": "`hax-add-voice-command` {`CustomEvent<{ command: string; context: this; callback: string; }>`} - "
+        },
+        {
+          "name": "onregister-button",
+          "description": "`register-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onderegister-button",
+          "description": "`deregister-button` {`CustomEvent<this>`} - "
+        },
+        {
+          "name": "onupdate-button-registry",
+          "description": "`update-button-registry` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "hax-tray-upload",
-      "description": "Properties:\n\n  * `__winEvents` - ",
-      "attributes": []
+      "description": "Events:\n\n  * `click` {`CustomEvent<any>`} - \n\n  * `value-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `upload-before` {`CustomEvent<any>`} - \n\n  * `upload-response` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `no-voice-record` {`boolean`} - No Voice Recording\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `error` {`boolean`} - whether fieldset has fields with errors\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `readonly` {`boolean`} - whether the tabbed interface is hidden\n\n  * `label` {`string`} - fieldset legend\n\n  * `name` {`string`} - unique name\n\n  * `description` {`string`} - optional description\n\nProperties:\n\n  * `__winEvents` - \n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `field` - \n\n  * `noCamera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `noVoiceRecord` {`boolean`} - No Voice Recording\n\n  * `legend` {`TemplateResult`} - \n\n  * `desc` {`TemplateResult`} - \n\n  * `fields` {`TemplateResult`} - LitElement life cycle - render callback\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `error` {`boolean`} - whether fieldset has fields with errors\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `readonly` {`boolean`} - whether the tabbed interface is hidden\n\n  * `label` {`string`} - fieldset legend\n\n  * `name` {`string`} - unique name\n\n  * `description` {`string`} - optional description",
+      "attributes": [
+        {
+          "name": "accept",
+          "description": "`accept` {`string`} - Hint for expected file type in file upload controls\n\nProperty: accept"
+        },
+        {
+          "name": "autocomplete",
+          "description": "`autocomplete` {`string`} - Hint for form autofill feature\n\nProperty: autocomplete"
+        },
+        {
+          "name": "autofocus",
+          "description": "`autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\nProperty: autofocus",
+          "valueSet": "v"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - \n\nProperty: value"
+        },
+        {
+          "name": "option",
+          "description": "`option` {`string`} - \n\nProperty: option"
+        },
+        {
+          "name": "no-camera",
+          "description": "`no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\nProperty: noCamera\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "no-voice-record",
+          "description": "`no-voice-record` {`boolean`} - No Voice Recording\n\nProperty: noVoiceRecord\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - whether the tabbed interface is disabled\n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "error",
+          "description": "`error` {`boolean`} - whether fieldset has fields with errors\n\nProperty: error",
+          "valueSet": "v"
+        },
+        {
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - whether the tabbed interface is hidden\n\nProperty: hidden",
+          "valueSet": "v"
+        },
+        {
+          "name": "readonly",
+          "description": "`readonly` {`boolean`} - whether the tabbed interface is hidden\n\nProperty: readonly",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - fieldset legend\n\nProperty: label\n\nDefault: Upload Source"
+        },
+        {
+          "name": "name",
+          "description": "`name` {`string`} - unique name\n\nProperty: name"
+        },
+        {
+          "name": "description",
+          "description": "`description` {`string`} - optional description\n\nProperty: description"
+        },
+        {
+          "name": "onclick",
+          "description": "`click` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onvalue-changed",
+          "description": "`value-changed` {`CustomEvent<{ value: any; }>`} - "
+        },
+        {
+          "name": "onupload-before",
+          "description": "`upload-before` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onupload-response",
+          "description": "`upload-response` {`CustomEvent<any>`} - "
+        }
+      ]
     },
     {
       "name": "hax-tray",
-      "description": "`hax-tray`\n`The tray / dashboard area which allows for customization of all major settings`\n\nEvents:\n\n  * `hax-insert-content-array` {`CustomEvent<any>`} - \n\n  * `hax-insert-content` {`CustomEvent<any>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: any; callback: string; }>`} - \n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: any; value: any; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `hax-save` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `menuAlignName` {`string`} - \n\n  * `offset-margin` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hide-preferences-button` {`boolean`} - Showing preferences area.\n\n  * `hide-panel-ops` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `element-align` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `traySizeIcon` {`string`} - \n\n  * `__tipText` {`string`} - \n\nProperties:\n\n  * `menuAlignName` {`string`} - \n\n  * `offsetMargin` {`string`} - \n\n  * `traySizeText` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `hidePreferencesButton` {`boolean`} - Showing preferences area.\n\n  * `hidePanelOps` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `__winEvents` - \n\n  * `_initial` {`boolean`} - \n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeTab` {`string`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `elementAlign` {`string`} - Alignment of the initial edit button\n\n  * `activeTagName` {`string`} - \n\n  * `activeTagIcon` {`string`} - Tag name / what to display based on active element\n\n  * `traySizeIcon` {`string`} - \n\n  * `__setup` {`boolean`} - \n\n  * `__tipText` {`string`} - \n\n  * `tourName` {`string`} - ",
+      "description": "`hax-tray`\n`The tray / dashboard area which allows for customization of all major settings`\n\nEvents:\n\n  * `hax-insert-content-array` {`CustomEvent<any>`} - \n\n  * `hax-insert-content` {`CustomEvent<any>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `hax-register-core-piece` {`CustomEvent<{ piece: string; object: this; }>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: any; callback: string; }>`} - \n\n  * `hax-context-item-selected` {`CustomEvent<{ eventName: any; value: any; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `hax-save` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `offset-margin` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `haxUiTheme` {`string`} - \n\n  * `hide-preferences-button` {`boolean`} - Showing preferences area.\n\n  * `hide-panel-ops` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `trayLabel` {`string`} - heading of toggled section in tray\n\n  * `tourOpened` {`string`} - \n\n  * `__tour` - \n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `element-align` {`string`} - Alignment of the initial edit button\n\n  * `trayDetail` {`string`} - id of toggled section in tray\n\n  * `activeTagName` {`string`} - Element name / what to display based on active element\n\n  * `traySizeIcon` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `panelOpsTemplate` {`\"\" | TemplateResult`} - \n\n  * `toolbarsTemplate` {`TemplateResult`} - \n\n  * `gridTemplate` {`TemplateResult`} - \n\n  * `menuButtons` {`TemplateResult`} - \n\n  * `menuToolbarTemplate` {`TemplateResult`} - \n\n  * `saveButtons` {`\"\" | TemplateResult`} - \n\n  * `doButtons` {`TemplateResult`} - \n\n  * `sourceButton` {`TemplateResult`} - \n\n  * `opsToolbarTemplate` {`TemplateResult`} - \n\n  * `contentButtons` {`TemplateResult`} - \n\n  * `mapButton` {`TemplateResult`} - \n\n  * `settingsButton` {`TemplateResult`} - \n\n  * `trayToolbarTemplate` {`TemplateResult`} - \n\n  * `trayDetailTemplate` {`TemplateResult`} - \n\n  * `advancedSettingsTemplate` {`TemplateResult`} - \n\n  * `contentEditTemplate` {`TemplateResult`} - \n\n  * `contentAddTemplate` {`TemplateResult`} - \n\n  * `contentMapTemplate` {`TemplateResult`} - \n\n  * `mediaTemplate` {`TemplateResult`} - \n\n  * `offsetMargin` {`string`} - \n\n  * `light` {`boolean`} - Light variant for save button\n\n  * `haxUiTheme` {`string`} - \n\n  * `hidePreferencesButton` {`boolean`} - Showing preferences area.\n\n  * `hidePanelOps` {`boolean`} - Showing button area at all a well as internal\nstate managing buttons like cancel and save\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `activeNode` - Global active node so we know if we need to disable contextual settings\n\n  * `activeGizmo` - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `trayLabel` {`string`} - heading of toggled section in tray\n\n  * `tourOpened` {`string`} - \n\n  * `__tour` - \n\n  * `__winEvents` - \n\n  * `_initial` {`boolean`} - \n\n  * `activeValue` - Form values for active node\n\n  * `collapsed` {`boolean`} - \n\n  * `activeTab` {`string`} - \n\n  * `activeSchema` - Form schema for active node\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `elementAlign` {`string`} - Alignment of the initial edit button\n\n  * `trayDetail` {`string`} - id of toggled section in tray\n\n  * `activeTagName` {`string`} - Element name / what to display based on active element\n\n  * `traySizeIcon` {`string`} - \n\n  * `__setup` {`boolean`} - \n\n  * `t` - \n\n  * `tourName` {`string`} - ",
       "attributes": [
-        {
-          "name": "menuAlignName",
-          "description": "`menuAlignName` {`string`} - \n\nProperty: menuAlignName"
-        },
         {
           "name": "offset-margin",
           "description": "`offset-margin` {`string`} - \n\nProperty: offsetMargin"
         },
         {
-          "name": "traySizeText",
-          "description": "`traySizeText` {`string`} - \n\nProperty: traySizeText"
-        },
-        {
           "name": "light",
           "description": "`light` {`boolean`} - Light variant for save button\n\nProperty: light",
           "valueSet": "v"
+        },
+        {
+          "name": "haxUiTheme",
+          "description": "`haxUiTheme` {`string`} - \n\nProperty: haxUiTheme"
         },
         {
           "name": "hide-preferences-button",
@@ -1171,6 +1883,18 @@
           "valueSet": "v"
         },
         {
+          "name": "trayLabel",
+          "description": "`trayLabel` {`string`} - heading of toggled section in tray\n\nProperty: trayLabel"
+        },
+        {
+          "name": "tourOpened",
+          "description": "`tourOpened` {`string`} - \n\nProperty: tourOpened"
+        },
+        {
+          "name": "__tour",
+          "description": "`__tour` - \n\nProperty: __tour"
+        },
+        {
           "name": "activeValue",
           "description": "`activeValue` - Form values for active node\n\nProperty: activeValue\n\nDefault: [object Object]"
         },
@@ -1198,20 +1922,20 @@
           "description": "`element-align` {`string`} - Alignment of the initial edit button\n\nProperty: elementAlign\n\nDefault: right"
         },
         {
-          "name": "activeTagName",
-          "description": "`activeTagName` {`string`} - \n\nProperty: activeTagName\n\nDefault: Select an element to configure"
+          "name": "trayDetail",
+          "description": "`trayDetail` {`string`} - id of toggled section in tray\n\nProperty: trayDetail\n\nDefault: content-edit"
         },
         {
-          "name": "activeTagIcon",
-          "description": "`activeTagIcon` {`string`} - Tag name / what to display based on active element\n\nProperty: activeTagIcon\n\nDefault: icons:settings"
+          "name": "activeTagName",
+          "description": "`activeTagName` {`string`} - Element name / what to display based on active element\n\nProperty: activeTagName\n\nDefault: "
         },
         {
           "name": "traySizeIcon",
           "description": "`traySizeIcon` {`string`} - \n\nProperty: traySizeIcon\n\nDefault: hax:arrow-expand-right"
         },
         {
-          "name": "__tipText",
-          "description": "`__tipText` {`string`} - \n\nProperty: __tipText\n\nDefault: Edit"
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "onhax-insert-content-array",
@@ -1248,12 +1972,26 @@
       ]
     },
     {
+      "name": "hax-ui-styles",
+      "description": "an empty wrapper to ensure modal content has the same base styles\n\n",
+      "attributes": []
+    },
+    {
       "name": "hax-upload-field",
-      "description": "Events:\n\n  * `value-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `upload-before` {`CustomEvent<any>`} - \n\n  * `upload-response` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `description` {`string`} - \n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `label` {`string`} - \n\n  * `no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `options` {`any[]`} - \n\n  * `no-voice-record` {`boolean`} - No Voice Recording\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__winEvents` - \n\n  * `description` {`string`} - \n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `label` {`string`} - \n\n  * `noCamera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `options` {`any[]`} - \n\n  * `noVoiceRecord` {`boolean`} - No Voice Recording\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "Events:\n\n  * `click` {`CustomEvent<any>`} - \n\n  * `value-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `upload-before` {`CustomEvent<any>`} - \n\n  * `upload-response` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `no-voice-record` {`boolean`} - No Voice Recording\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `error` {`boolean`} - whether fieldset has fields with errors\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `readonly` {`boolean`} - whether the tabbed interface is hidden\n\n  * `label` {`string`} - fieldset legend\n\n  * `name` {`string`} - unique name\n\n  * `description` {`string`} - optional description\n\nProperties:\n\n  * `__winEvents` - \n\n  * `accept` {`string`} - Hint for expected file type in file upload controls\n\n  * `autocomplete` {`string`} - Hint for form autofill feature\n\n  * `autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\n  * `value` {`string`} - \n\n  * `option` {`string`} - \n\n  * `field` - \n\n  * `noCamera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\n  * `noVoiceRecord` {`boolean`} - No Voice Recording\n\n  * `legend` {`TemplateResult`} - \n\n  * `desc` {`TemplateResult`} - \n\n  * `fields` {`TemplateResult`} - LitElement life cycle - render callback\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `error` {`boolean`} - whether fieldset has fields with errors\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `readonly` {`boolean`} - whether the tabbed interface is hidden\n\n  * `label` {`string`} - fieldset legend\n\n  * `name` {`string`} - unique name\n\n  * `description` {`string`} - optional description",
       "attributes": [
         {
-          "name": "description",
-          "description": "`description` {`string`} - \n\nProperty: description"
+          "name": "accept",
+          "description": "`accept` {`string`} - Hint for expected file type in file upload controls\n\nProperty: accept"
+        },
+        {
+          "name": "autocomplete",
+          "description": "`autocomplete` {`string`} - Hint for form autofill feature\n\nProperty: autocomplete"
+        },
+        {
+          "name": "autofocus",
+          "description": "`autofocus` {`boolean`} - Automatically focus on field when the page is loaded\n\nProperty: autofocus",
+          "valueSet": "v"
         },
         {
           "name": "value",
@@ -1264,17 +2002,9 @@
           "description": "`option` {`string`} - \n\nProperty: option"
         },
         {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: null"
-        },
-        {
           "name": "no-camera",
           "description": "`no-camera` {`boolean`} - Used when we want to ensure there is not a web cam option like video upload.\n\nProperty: noCamera\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "options",
-          "description": "`options` {`any[]`} - \n\nProperty: options\n\nDefault: "
         },
         {
           "name": "no-voice-record",
@@ -1282,13 +2012,40 @@
           "valueSet": "v"
         },
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - whether the tabbed interface is disabled\n\nProperty: disabled",
+          "valueSet": "v"
         },
         {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "name": "error",
+          "description": "`error` {`boolean`} - whether fieldset has fields with errors\n\nProperty: error",
           "valueSet": "v"
+        },
+        {
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - whether the tabbed interface is hidden\n\nProperty: hidden",
+          "valueSet": "v"
+        },
+        {
+          "name": "readonly",
+          "description": "`readonly` {`boolean`} - whether the tabbed interface is hidden\n\nProperty: readonly",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - fieldset legend\n\nProperty: label"
+        },
+        {
+          "name": "name",
+          "description": "`name` {`string`} - unique name\n\nProperty: name"
+        },
+        {
+          "name": "description",
+          "description": "`description` {`string`} - optional description\n\nProperty: description"
+        },
+        {
+          "name": "onclick",
+          "description": "`click` {`CustomEvent<any>`} - "
         },
         {
           "name": "onvalue-changed",
@@ -1305,9 +2062,21 @@
       ]
     },
     {
-      "name": "hax-export-dialog",
-      "description": "`hax-export-dialog`\n\nEvents:\n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nProperties:\n\n  * `fileTypes` - ",
+      "name": "hax-eview-source",
+      "description": "`hax-eview-source`\n\nEvents:\n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `theme` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `theme` {`string`} - \n\n  * `fileTypes` - \n\n  * `t` - ",
       "attributes": [
+        {
+          "name": "globalPreferences",
+          "description": "`globalPreferences` - Global preferences for HAX overall\n\nProperty: globalPreferences"
+        },
+        {
+          "name": "theme",
+          "description": "`theme` {`string`} - \n\nProperty: theme"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
         {
           "name": "onsimple-modal-hide",
           "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
@@ -1316,8 +2085,20 @@
     },
     {
       "name": "hax-view-source",
-      "description": "`hax-export-dialog`\n\nEvents:\n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nProperties:\n\n  * `fileTypes` - ",
+      "description": "`hax-eview-source`\n\nEvents:\n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `theme` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `globalPreferences` - Global preferences for HAX overall\n\n  * `theme` {`string`} - \n\n  * `fileTypes` - \n\n  * `t` - ",
       "attributes": [
+        {
+          "name": "globalPreferences",
+          "description": "`globalPreferences` - Global preferences for HAX overall\n\nProperty: globalPreferences"
+        },
+        {
+          "name": "theme",
+          "description": "`theme` {`string`} - \n\nProperty: theme"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
         {
           "name": "onsimple-modal-hide",
           "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
@@ -1326,7 +2107,7 @@
     },
     {
       "name": "hax-body",
-      "description": "`hax-body`\nManager of the body area that can be modified\n\n### Styling\n`<hax-bodys>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n--haxcms-base-styles-body-font-size |   | 16px\n--haxcms-base-styles-body-font-family, 'Noto Serif' |   | serif\n--haxcms-base-styles-body-line-height |   | 1.8\n--haxcms-base-styles-body-letter-spacing |   | .5px\n--hax-ui-headings |   | #d4ff77;\n--hax-color-text | default text color | #000\n--hax-contextual-action-text-color |  | --simple-colors-default-theme-grey-1\n--hax-contextual-action-color |  | --simple-colors-default-theme-cyan-7\n--hax-contextual-action-hover-color |  | \n--hax-body-target-background-color: --simple-colors-default-theme-cyan-2\n--hax-body-possible-target-background-color: --simple-colors-default-theme-grey-2\n\n####Outlines\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-body-editable-outline |   | 1px solid --simple-colors-default-theme-deep-orange\n--hax-body-active-outline-hover: 1px solid --hax-contextual-action-color\n--hax-body-active-outline: 3px solid  --hax-contextual-action-color\n\n####Headings\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-h1-font-size |   | 2.5em\n--hax-base-styles-h1-line-height |   | 2.5em\n--hax-base-styles-h2-font-size |   | 2em\n--hax-base-styles-h3-font-size |   | 1.75em\n--hax-base-styles-h4-font-size |   | 1.5em\n--hax-base-styles-h5-font-size |   | 1.25em\n--hax-base-styles-h6-font-size |   | 1.25em\n--hax-base-styles-p-min-height |   | 43px\n--hax-base-styles-p-font-size |   | 24px\n--hax-base-styles-p-line-height |   | 1.8\n--hax-base-styles-p-letter-spacing |   | 0.5px\n\n####Links\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-a-color |  | --simple-colors-default-theme-grey-12\n--hax-base-styles-a-font-size |   | 24px\n--hax-base-styles-a-font-weight |   | normal\n--hax-base-styles-a-color-visited |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-color-active |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-font-weight-active |   | normal\n\n####Lists\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-list-padding-bottom |   | 1.5em\n--hax-base-styles-list-line-height |   | 40px\n--hax-base-styles-list-font-size |   | 24px\n--hax-base-styles-list-last-child-padding-bottom |   | 1em\n--hax-base-styles-list-padding-left |   | 20px\n--hax-base-styles-list-margin-left |   | 20px\n\nEvents:\n\n  * `hax-register-body` {`CustomEvent<this>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-drop-focus-event` {`CustomEvent<any>`} - \n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - State of if we are editing or not.\n\n  * `hax-mover` {`boolean`} - \n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__ignoreActive` {`boolean`} - \n\n  * `__dragMoving` {`boolean`} - \n\n  * `___moveLock` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of if we are editing or not.\n\n  * `haxMover` {`boolean`} - \n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`hax-body`\nManager of the body area that can be modified\n\n### Styling\n`<hax-bodys>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n--haxcms-base-styles-body-font-size |   | 16px\n--haxcms-base-styles-body-font-family, 'Noto Serif' |   | serif\n--haxcms-base-styles-body-line-height |   | 1.8\n--haxcms-base-styles-body-letter-spacing |   | .5px\n--hax-ui-headings |   | #d4ff77;\n--hax-color-text | default text color | #000\n--hax-contextual-action-text-color |  | --simple-colors-default-theme-grey-1\n--hax-contextual-action-color |  | --simple-colors-default-theme-cyan-7\n--hax-contextual-action-hover-color |  | \n--hax-body-target-background-color: --simple-colors-default-theme-cyan-2\n--hax-body-possible-target-background-color: --simple-colors-default-theme-grey-2\n\n####Outlines\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-body-editable-outline |   | 1px solid --simple-colors-default-theme-deep-orange\n--hax-body-active-outline-hover: 1px solid --hax-contextual-action-color\n--hax-body-active-outline: 3px solid  --hax-contextual-action-color\n\n####Headings\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-h1-font-size |   | 2.5em\n--hax-base-styles-h1-line-height |   | 2.5em\n--hax-base-styles-h2-font-size |   | 2em\n--hax-base-styles-h3-font-size |   | 1.75em\n--hax-base-styles-h4-font-size |   | 1.5em\n--hax-base-styles-h5-font-size |   | 1.25em\n--hax-base-styles-h6-font-size |   | 1.25em\n--hax-base-styles-p-min-height |   | 43px\n--hax-base-styles-p-font-size |   | 24px\n--hax-base-styles-p-line-height |   | 1.8\n--hax-base-styles-p-letter-spacing |   | 0.5px\n\n####Links\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-a-color |  | --simple-colors-default-theme-grey-12\n--hax-base-styles-a-font-size |   | 24px\n--hax-base-styles-a-font-weight |   | normal\n--hax-base-styles-a-color-visited |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-color-active |   | --simple-colors-default-theme-light-blue\n--hax-base-styles-a-font-weight-active |   | normal\n\n####Lists\nCustom property | Description | Default\n----------------|-------------|--------\n--hax-base-styles-list-padding-bottom |   | 1.5em\n--hax-base-styles-list-line-height |   | 40px\n--hax-base-styles-list-font-size |   | 24px\n--hax-base-styles-list-last-child-padding-bottom |   | 1em\n--hax-base-styles-list-padding-left |   | 20px\n--hax-base-styles-list-margin-left |   | 20px\n\nEvents:\n\n  * `hax-register-body` {`CustomEvent<this>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\n  * `hax-drop-focus-event` {`CustomEvent<any>`} - \n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - State of if we are editing or not.\n\n  * `hax-mover` {`boolean`} - \n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `t` - \n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__ignoreActive` {`boolean`} - \n\n  * `__dragMoving` {`boolean`} - \n\n  * `___moveLock` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of if we are editing or not.\n\n  * `haxMover` {`boolean`} - \n\n  * `activeNode` - A reference to the active node in the slot.\n\n  * `t` - \n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "edit-mode",
@@ -1341,6 +2122,10 @@
         {
           "name": "activeNode",
           "description": "`activeNode` - A reference to the active node in the slot.\n\nProperty: activeNode\n\nDefault: null"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         },
         {
           "name": "can-undo",

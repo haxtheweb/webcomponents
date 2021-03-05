@@ -132,6 +132,10 @@ class I18NManager extends HTMLElement {
     // minimum requirement to operate but still
     // should pull from other namespace if exists
     if (detail.context && detail.namespace) {
+      // establish the fallback automatically if we are supplied defaults
+      if (detail.context.t) {
+        detail.context._t = { ...detail.context.t };
+      }
       let match = this.elements.filter((el) => {
         if (el.namespace == detail.namespace && el.localesPath && el.locales) {
           return true;

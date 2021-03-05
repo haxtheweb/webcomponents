@@ -4,12 +4,328 @@
     {
       "name": "check-it-out",
       "path": "./check-it-out.js",
-      "description": "`check-it-out`\n`View codepen or stackblitz demos`"
+      "description": "`check-it-out`\n`View codepen or stackblitz demos`",
+      "attributes": [
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "file-path",
+          "type": "string"
+        },
+        {
+          "name": "modal",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"code\""
+        },
+        {
+          "name": "modal-title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "checked-out",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hide-explorer",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "ctl",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "view",
+          "type": "string",
+          "default": "\"both\""
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "filePath",
+          "attribute": "file-path",
+          "type": "string"
+        },
+        {
+          "name": "modal",
+          "attribute": "modal",
+          "type": "boolean"
+        },
+        {
+          "name": "typeIconObj",
+          "type": "object",
+          "default": "{\"code\":\"code\",\"pdf\":\"book\",\"video\":\"av:play-arrow\"}"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"code\""
+        },
+        {
+          "name": "modalTitle",
+          "attribute": "modal-title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "checkedOut",
+          "attribute": "checked-out",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hideExplorer",
+          "attribute": "hide-explorer",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "ctl",
+          "attribute": "ctl",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "view",
+          "attribute": "view",
+          "type": "string",
+          "default": "\"both\""
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
+        }
+      ]
     },
     {
       "name": "check-it-out",
       "path": "./src/check-it-out.js",
-      "description": "`check-it-out`\n`View codepen or stackblitz demos`"
+      "description": "`check-it-out`\n`View codepen or stackblitz demos`",
+      "attributes": [
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "file-path",
+          "type": "string"
+        },
+        {
+          "name": "modal",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"code\""
+        },
+        {
+          "name": "modal-title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "checked-out",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hide-explorer",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "ctl",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "view",
+          "type": "string",
+          "default": "\"both\""
+        },
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "filePath",
+          "attribute": "file-path",
+          "type": "string"
+        },
+        {
+          "name": "modal",
+          "attribute": "modal",
+          "type": "boolean"
+        },
+        {
+          "name": "typeIconObj",
+          "type": "object",
+          "default": "{\"code\":\"code\",\"pdf\":\"book\",\"video\":\"av:play-arrow\"}"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"code\""
+        },
+        {
+          "name": "modalTitle",
+          "attribute": "modal-title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "checkedOut",
+          "attribute": "checked-out",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hideExplorer",
+          "attribute": "hide-explorer",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "ctl",
+          "attribute": "ctl",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "view",
+          "attribute": "view",
+          "type": "string",
+          "default": "\"both\""
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
+        }
+      ]
     }
   ]
 }

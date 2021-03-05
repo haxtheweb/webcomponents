@@ -4,7 +4,6 @@
     {
       "name": "twitter-embed-vanilla",
       "path": "./lib/twitter-embed-vanilla.js",
-      "description": "`twitter-embed-vanilla`\n`A simple way to embed tweets from twitter without their whole API.",
       "attributes": [
         {
           "name": "lang",
@@ -137,6 +136,11 @@
           "type": "string",
           "default": "\"allow-popups\""
         }
+      ],
+      "events": [
+        {
+          "name": "i18n-manager-register-element"
+        }
       ]
     },
     {
@@ -214,6 +218,11 @@
           "attribute": "allowPopups",
           "type": "string",
           "default": "\"allow-popups\""
+        }
+      ],
+      "events": [
+        {
+          "name": "i18n-manager-register-element"
         }
       ]
     }
