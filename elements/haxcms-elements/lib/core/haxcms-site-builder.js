@@ -382,7 +382,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "haxcms",
       localesPath:

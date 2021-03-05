@@ -62,7 +62,7 @@ class WordCount extends I18NMixin(LitElement) {
     this.t = {
       wordsPrefix: this.wordsPrefix,
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       basePath: import.meta.url,
       locales: ["es", "fr", "ja"],

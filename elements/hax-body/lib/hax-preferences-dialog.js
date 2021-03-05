@@ -49,7 +49,7 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
       spanish: "Spanish",
     };
     this.udpateSchema();
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "hax",
       updateCallback: "udpateSchema",

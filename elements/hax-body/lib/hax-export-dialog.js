@@ -79,7 +79,7 @@ class HaxExportDialog extends I18NMixin(LitElement) {
     this.t = {
       viewPageSource: "View Page Source",
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "hax",
     });

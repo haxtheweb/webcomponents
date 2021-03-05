@@ -103,7 +103,7 @@ class HaxMap extends I18NMixin(LitElement) {
       characters: "Characters",
       listView: "List view",
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "hax",
     });

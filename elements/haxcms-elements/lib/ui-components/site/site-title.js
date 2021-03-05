@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 /**
  * `site-title`
  * `Title of the site`
@@ -12,7 +13,7 @@ import { autorun, toJS } from "mobx";
 
  * @demo demo/index.html
  */
-class SiteTitle extends LitElement {
+class SiteTitle extends HAXCMSI18NMixin(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -53,7 +54,9 @@ class SiteTitle extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
-    this.label = "Home";
+    this.t = {
+      home: "Home",
+    };
     this.notitle = false;
     import("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
     import("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
@@ -73,7 +76,7 @@ class SiteTitle extends LitElement {
     return html`
       <a
         href="${this.homeLink}"
-        title="${this.label}"
+        title="${this.t.home}"
         ?disabled="${this.disabled}"
       >
         <simple-icon-lite
@@ -106,12 +109,6 @@ class SiteTitle extends LitElement {
       homeLink: {
         type: String,
         attribute: "home-link",
-      },
-      /**
-       * Label
-       */
-      label: {
-        type: String,
       },
       /**
        * optional icon

@@ -72,6 +72,7 @@
       function changeLanguage(e) {
         window.I18NManagerStore.requestAvailability().lang = e.value;
       }
+      // this is the same way I18NManager obtains this for defaults
       var lang = (
         document.body.getAttribute("xml:lang") ||
         document.body.getAttribute("lang") ||
@@ -80,6 +81,7 @@
         navigator.language ||
         "en"
       );
+      // set default to match document language
       document.getElementById("changer").value = lang;
     </script>
   </body>

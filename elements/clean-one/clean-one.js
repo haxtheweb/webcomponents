@@ -757,7 +757,7 @@ class CleanOne extends I18NMixin(
       searchSiteContent: "Search site content",
       typeToSearch: "Type to search",
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       basePath: import.meta.url,
       locales: ["es", "fr", "de", "ja"],

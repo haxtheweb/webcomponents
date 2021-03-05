@@ -8,8 +8,8 @@ export const HAXCMSI18NMixin = function (SuperClass) {
     constructor() {
       super();
       // register a centralized namespace so that everything in HAXcms
-      // can leverage the same translation bucket
-      this.registerTranslation({
+      // can leverage the same localization bucket
+      this.registerLocalization({
         context: this,
         namespace: "haxcms",
       });

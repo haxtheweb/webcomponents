@@ -47,7 +47,7 @@ class SelfCheck extends I18NMixin(
       close: "Close",
       moreInformation: "More information",
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       basePath: import.meta.url,
       locales: ["he", "ja", "es"],

@@ -1580,7 +1580,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.t = {
       close: "Close",
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "hax",
       basePath: import.meta.url + "/../../",

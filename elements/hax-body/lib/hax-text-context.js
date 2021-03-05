@@ -44,7 +44,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       insertItemAboveOrBelow: "Insert item above or below",
       insertItemBelow: "Insert item below",
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "hax",
     });

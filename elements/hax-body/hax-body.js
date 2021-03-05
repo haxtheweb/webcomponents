@@ -415,7 +415,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     };
     // primary registration for the namespace so all tags under hax
     // can leverage this data
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "hax",
     });
