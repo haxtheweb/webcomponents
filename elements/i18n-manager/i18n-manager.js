@@ -315,14 +315,14 @@ class I18NManager extends HTMLElement {
       this.dispatchEvent(
         new CustomEvent(`${attr}-changed`, {
           detail: {
-            value: this[attr],
+            value: newValue,
           },
         })
       );
     }
     // we are NOT moving to the default from something
-    if (attr == "lang" && this[attr] && this.__ready) {
-      this.updateLanguage(this[attr]);
+    if (attr == "lang" && newValue && this.__ready) {
+      this.updateLanguage(newValue);
     }
   }
   // getters and setters to map props to attributes
