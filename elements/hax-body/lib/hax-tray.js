@@ -232,8 +232,16 @@ class HaxTray extends I18NMixin(
           bottom: 0;
         }
         :host([edit-mode][element-align="custom"]) .wrapper {
-          top: var(--hax-tray-custom-y);
           left: var(--hax-tray-custom-x);
+          left: clamp(
+            0px,
+            var(--hax-tray-custom-x),
+            calc(100vw - var(--hax-tray-width))
+          );
+        }
+        :host([edit-mode][collapsed][element-align="custom"]) .wrapper {
+          top: var(--hax-tray-custom-y);
+          top: clamp(0px, var(--hax-tray-custom-y), calc(100vh - 34px));
         }
         :host([edit-mode]) .wrapper {
           opacity: 1;
@@ -1271,6 +1279,7 @@ class HaxTray extends I18NMixin(
   _dragEnd(e) {
     let menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
     if (menu) menu.close(true);
+    this.collapsed = true;
     this.style.setProperty("--hax-tray-custom-y", e.clientY + "px");
     this.style.setProperty("--hax-tray-custom-x", e.clientX + "px");
     this.elementAlign = "custom";
@@ -1282,6 +1291,7 @@ class HaxTray extends I18NMixin(
     e.stopPropagation();
     e.stopImmediatePropagation();
     let menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
+    this.collapsed = true;
     if (menu) menu.close(true);
   }
   /**
