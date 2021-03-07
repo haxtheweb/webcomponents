@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsContainer } from "./simple-fields-container.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { SimpleFieldsField } from "./simple-fields-field.js";
 import "./simple-tag.js";
 
 /**
@@ -14,13 +13,12 @@ import "./simple-tag.js";
  * @element simple-fields-code
  * @demo ./demo/field.html
  */
-class SimpleFieldsTagList extends SimpleFieldsContainer {
+class SimpleFieldsTagList extends SimpleFieldsField {
   static get tag() {
     return "simple-fields-tag-list";
   }
   static get styles() {
     return [
-      ...super.styles,
       css`
         :host {
           display: block;
@@ -89,7 +87,7 @@ class SimpleFieldsTagList extends SimpleFieldsContainer {
           (tag) => html`
             <simple-tag
               value="${tag}"
-              @simple-tag-remove-clicked="${this.removeTag}"
+              @simple-tag-clicked="${this.removeTag}"
             ></simple-tag>
           `
         )}
