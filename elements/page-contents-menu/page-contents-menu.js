@@ -120,9 +120,9 @@ class PageContentsMenu extends LitElement {
         .indent-6 {
           padding-left: 32px;
         }
-
         .active {
           font-weight: bold;
+          border-left: black 1px solid;
         }
       `,
     ];
@@ -457,32 +457,59 @@ class PageContentsMenu extends LitElement {
       this.isEmpty = false;
     }
     this.items = [...items];
+    this.activeItems = [];
+    this.sideItems = new Map();
+    this.items.forEach((item) => {
+      let href = '[href*="' + item.link + '"]';
+      this.sideItems.set(item.link, this.shadowRoot.querySelector(href));
+    });
     // this.items is a listin of top to bottom
     // on load, 5 items show up, sort them NOT by when the intersection observer is met
     // but by their order in the items array
     items.forEach((item) => {
       item.object._observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.intersectionRatio > 0) {
-            entry.target.classList.add("active");
-          } else if (
-            entry.target.classList.contains("active") &&
-            !(entry.intersectionRatio > 0)
-          ) {
-            entry.target.classList.remove("active");
+          if (entry.isIntersecting) {
+            if (!this.activeItems.includes(entry.target)) {
+              this.activeItems.push(entry.target);
+            }
+            if (this.activeItems.length > 1) {
+              this.sideItems
+                .get(`#${this.activeItems[0].id}`)
+                .classList.remove("active");
+              this.activeItems.splice(0, 1);
+            }
+            this.activeItems.forEach((activeItem) => {
+              this.sideItems.get(`#${activeItem.id}`).classList.add("active");
+            });
+          } else if (!entry.isIntersecting && this.activeItems > 0) {
+            this.sideItems
+              .get(`#${entry.target.id}`)
+              .classList.remove("active");
           }
         });
       });
       item.object._observer.observe(item.object);
     });
   }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.items.forEach((item) => {
+      item.object._observer.unobserve(item.target);
+    });
+  }
+
   /**
    * When our content container changes, process the hierarchy in question
    */
   _contentContainerChanged(newValue) {
     // simple test that this has content in it to parse
     if (newValue && newValue.childNodes && newValue.childNodes.length > 0) {
-      this.updateMenu();
+      clearTimeout(this.__debounce);
+      this.__debounce = setTimeout(() => {
+        this.updateMenu();
+      }, 0);
     }
   }
 }
