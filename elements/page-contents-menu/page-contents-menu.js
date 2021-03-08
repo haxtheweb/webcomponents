@@ -120,6 +120,10 @@ class PageContentsMenu extends LitElement {
         .indent-6 {
           padding-left: 32px;
         }
+
+        .active {
+          font-weight: bold;
+        }
       `,
     ];
   }
@@ -453,6 +457,24 @@ class PageContentsMenu extends LitElement {
       this.isEmpty = false;
     }
     this.items = [...items];
+    // this.items is a listin of top to bottom
+    // on load, 5 items show up, sort them NOT by when the intersection observer is met
+    // but by their order in the items array
+    items.forEach((item) => {
+      item.object._observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio > 0) {
+            entry.target.classList.add("active");
+          } else if (
+            entry.target.classList.contains("active") &&
+            !(entry.intersectionRatio > 0)
+          ) {
+            entry.target.classList.remove("active");
+          }
+        });
+      });
+      item.object._observer.observe(item.object);
+    });
   }
   /**
    * When our content container changes, process the hierarchy in question

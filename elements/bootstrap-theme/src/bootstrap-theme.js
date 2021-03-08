@@ -289,6 +289,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                     ?hidden="${this.searchTerm != "" ? false : true}"
                   ></site-search>
                   <section
+                    class="card bg-white p-4"
                     id="contentcontainer"
                     ?hidden="${this.searchTerm != "" ? true : false}"
                   >
@@ -313,7 +314,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     link.setAttribute("rel", "stylesheet");
     link.setAttribute(
       "href",
-      "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+      import.meta.url + "/../../../bootstrap/dist/css/bootstrap.min.css"
     );
     document.head.appendChild(link);
     return link;
@@ -323,6 +324,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     if (this._bootstrapLink) {
       document.head.removeChild(this._bootstrapLink);
     }
+    super.disconnectedCallback();
   }
 
   /**
@@ -347,6 +349,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {});
   }
 }
