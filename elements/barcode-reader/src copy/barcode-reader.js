@@ -34,18 +34,18 @@ class BarcodeReader extends LitElement {
     return [
       ...styles,
       /**css`
-       :host {
+      :host {
         display: block;
         position: relative;
       }
-       canvas {
+      canvas {
         display:none;
       }
-       video {
+      video {
         width: 100%;
         height: 100%;
       }
-       #overlay {
+      #overlay {
         position: absolute;
         top: 0;
         left: 0;
@@ -58,7 +58,7 @@ class BarcodeReader extends LitElement {
         z-index: 20;
         border-width: 2em;
       }
-       #scanline {
+      #scanline {
         position: absolute;
         top: 0;
         left: 0;
@@ -67,7 +67,7 @@ class BarcodeReader extends LitElement {
         visibility: visible;
         background: linear-gradient(to bottom, transparent 51%, red 51%, transparent 52%)
       }
-       `,**/
+    `,**/
     ];
   }
   /**
@@ -77,18 +77,18 @@ class BarcodeReader extends LitElement {
   render() {
     return html`<p>Test</p>`;
     /**return html`
-     <div id="overlay">
-     <div id="scanline"></div>
-     </div>
-     <canvas width="640" height="480"></canvas>
-     <video width="640" height="480" muted autoplay playsinline/>
-     <div id="app">Barcode: <span id="barcode-title">...</span></div>
-     <div>
-     <input type="text" id="result-code"><br>
-     <input type="submit" id="submit-code" value="Submit">
-     <input type="reset">
-     </div>
-     `;*/
+      <div id="overlay">
+        <div id="scanline"></div>
+      </div>
+      <canvas width="640" height="480"></canvas>
+      <video width="640" height="480" muted autoplay playsinline/>
+      <div id="app">Barcode: <span id="barcode-title">...</span></div>
+      <div>
+        <input type="text" id="result-code"><br>
+        <input type="submit" id="submit-code" value="Submit">
+        <input type="reset">
+      </div>
+    `;*/
   }
   /**
    * Convention we use
