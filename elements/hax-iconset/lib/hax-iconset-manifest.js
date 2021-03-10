@@ -1,9 +1,9 @@
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+
 /**
  * @const HaxIconsetManifest
  */
 export const HaxIconsetManifest = [
-  null,
   {
     name: "courseicons",
     icons: [

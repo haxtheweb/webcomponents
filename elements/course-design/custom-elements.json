@@ -11,17 +11,37 @@
       "path": "./lib/activity-box.js",
       "attributes": [
         {
+          "name": "nocolourize",
+          "type": "boolean"
+        },
+        {
           "name": "icon",
           "type": "string",
-          "default": "\"bulb\""
+          "default": "\"\""
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
+          "name": "nocolourize",
+          "attribute": "nocolourize",
+          "type": "boolean"
+        },
+        {
           "name": "icon",
           "attribute": "icon",
           "type": "string",
-          "default": "\"bulb\""
+          "default": "\"\""
+        },
+        {
+          "name": "tag",
+          "attribute": "tag",
+          "type": "string",
+          "default": "\"\""
         }
       ]
     },

@@ -499,9 +499,8 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       // import modal if we need it only when we actually leverage it
       if (propName === "modal" && this[propName]) {
-        import(
-          "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js"
-        ).then(() => {
+        // prettier-ignore
+        import("@lrnwebcomponents/simple-modal/lib/simple-modal-template.js").then(() => {
           if (this.shadowRoot) {
             this.shadowRoot
               .querySelector('[modal-id="m1"]')

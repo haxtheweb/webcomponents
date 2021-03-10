@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldBehaviors } from "./simple-fields-field.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import "./simple-tag.js";
 
 /**
@@ -23,7 +22,6 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
   }
   static get styles() {
     return [
-      ...super.styles,
       css`
         :host {
           display: block;
@@ -101,7 +99,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
         (tag) => html`
           <simple-tag
             value="${tag}"
-            @simple-tag-remove-clicked="${this.removeTag}"
+            @simple-tag-clicked="${this.removeTag}"
           ></simple-tag>
         `
       )}

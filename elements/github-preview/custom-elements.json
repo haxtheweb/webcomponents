@@ -95,6 +95,10 @@
           "type": "boolean"
         },
         {
+          "name": "haxAppDetails",
+          "type": "{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }"
+        },
+        {
           "name": "url",
           "attribute": "url",
           "type": "string",
@@ -178,6 +182,11 @@
           "name": "IODelay",
           "type": "number",
           "default": "100"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-register-app"
         }
       ]
     },
@@ -299,6 +308,10 @@
           "type": "boolean"
         },
         {
+          "name": "haxAppDetails",
+          "type": "{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }"
+        },
+        {
           "name": "url",
           "attribute": "url",
           "type": "string",
@@ -382,6 +395,11 @@
           "name": "IODelay",
           "type": "number",
           "default": "100"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-register-app"
         }
       ]
     }

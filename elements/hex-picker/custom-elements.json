@@ -4,12 +4,92 @@
     {
       "name": "hex-picker",
       "path": "./hex-picker.js",
-      "description": "`hex-picker`\n`Choose a color by hex or rgba code`"
+      "description": "`hex-picker`\n`Choose a color by hex or rgba code`",
+      "attributes": [
+        {
+          "name": "large-display",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"#000000FF\""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "largeDisplay",
+          "attribute": "large-display",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"#000000FF\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
     },
     {
       "name": "hex-picker",
       "path": "./src/hex-picker.js",
-      "description": "`hex-picker`\n`Choose a color by hex or rgba code`"
+      "description": "`hex-picker`\n`Choose a color by hex or rgba code`",
+      "attributes": [
+        {
+          "name": "large-display",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"#000000FF\""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "largeDisplay",
+          "attribute": "large-display",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"#000000FF\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
     }
   ]
 }

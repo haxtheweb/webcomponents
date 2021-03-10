@@ -295,7 +295,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       cleanFormatting: "Clean Formatting",
       copiedToClipboard: "Copied to clipboard",
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "hax",
     });

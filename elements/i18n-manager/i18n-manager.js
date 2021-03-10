@@ -2,7 +2,6 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
 
 // register globally so we can make sure there is only one
 window.I18NManagerStore = window.I18NManagerStore || {};
@@ -22,18 +21,25 @@ const FALLBACK_DIR = "ltr";
  * @demo demo/index.html
  * @element i18n-manager
  */
-class I18NManager extends LitElement {
+class I18NManager extends HTMLElement {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    // fetch caching to reduce calls for json files
     this.fetchTargets = {};
+    // reference to all elements that care about localization
     this.elements = [];
+    // quick set of all locales
+    this.locales = new Set([]);
     // set initially based on document
     this.lang = this.documentLang;
     this.dir = this.documentDir;
   }
+  /**
+   * Set document language from these common sources
+   */
   get documentLang() {
     return (
       document.body.getAttribute("xml:lang") ||
@@ -44,6 +50,9 @@ class I18NManager extends LitElement {
       FALLBACK_LANG
     );
   }
+  /**
+   * Set document direction from these common sources
+   */
   get documentDir() {
     return (
       document.body.getAttribute("xml:dir") ||
@@ -53,42 +62,57 @@ class I18NManager extends LitElement {
       FALLBACK_DIR
     );
   }
+  /**
+   * Life cycle
+   */
   connectedCallback() {
-    super.connectedCallback();
+    this.__ready = true;
     window.addEventListener(
       "i18n-manager-register-element",
-      this.registerTranslationEvent.bind(this)
+      this.registerLocalizationEvent.bind(this)
     );
     window.addEventListener(
       "languagechange",
       this.changeLanguageEvent.bind(this)
     );
   }
-
+  /**
+   * Life cycle
+   */
   disconnectedCallback() {
     window.removeEventListener(
       "i18n-manager-register-element",
-      this.registerTranslationEvent.bind(this)
+      this.registerLocalizationEvent.bind(this)
     );
     window.removeEventListener(
       "languagechange",
       this.changeLanguageEvent.bind(this)
     );
-    super.disconnectedCallback();
   }
+  /**
+   * Browser level languagechange event
+   */
   changeLanguageEvent(e) {
+    // will trigger the language to update in all related elements
+    // @see attributeChangedCallback
     this.lang = e.detail;
   }
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
-  registerTranslationEvent(e) {
+  /**
+   * Register a localization via event; this allow for a 0 dependency solution!
+   */
+  registerLocalizationEvent(e) {
     let detail = this.detailNormalize(e.detail);
     // ensure we have a namespace for later use
     if (detail.namespace && detail.localesPath && detail.locales) {
-      this.registerTranslation(detail);
+      this.registerLocalization(detail);
     }
   }
+  /**
+   * Apply normalization to all details bubbling up to improve
+   * flexibility and patching to how other people implement our
+   * API. This also can improve DX downstream by making educated
+   * guesses as to intent (like namespace, localesPath, updateCallback)
+   */
   detailNormalize(detail) {
     if (!detail.namespace && detail.context) {
       detail.namespace = detail.context.tagName.toLowerCase();
@@ -98,18 +122,20 @@ class I18NManager extends LitElement {
       if (detail.context.requestUpdate) {
         detail.updateCallback = "requestUpdate";
       } else if (detail.context.render) {
-        detail.render = "render";
+        detail.updateCallback = "render";
       }
     }
     if (!detail.localesPath && detail.basePath) {
       // clean up path and force adding locales. part security thing as well
-      detail.localesPath = `${this.pathFromUrl(
-        decodeURIComponent(detail.basePath)
-      )}locales`;
+      detail.localesPath = `${decodeURIComponent(detail.basePath)}/../locales`;
     }
     // minimum requirement to operate but still
     // should pull from other namespace if exists
     if (detail.context && detail.namespace) {
+      // establish the fallback automatically if we are supplied defaults
+      if (detail.context.t) {
+        detail.context._t = { ...detail.context.t };
+      }
       let match = this.elements.filter((el) => {
         if (el.namespace == detail.namespace && el.localesPath && el.locales) {
           return true;
@@ -122,7 +148,10 @@ class I18NManager extends LitElement {
     }
     return detail;
   }
-  registerTranslation(detail) {
+  /**
+   * Register a localization with the manager
+   */
+  registerLocalization(detail) {
     // ensure no dual registration of context; meaning same object twice
     if (
       (!detail.context &&
@@ -135,6 +164,8 @@ class I18NManager extends LitElement {
     ) {
       detail = this.detailNormalize(detail);
       this.elements.push(detail);
+      // store in this.locales for quick "do we support this" look up
+      detail.locales.forEach(this.locales.add, this.locales);
       // timing issue, see if we are ready + a language and that it happened PRIOR
       // to registration just now but match against locales we support
       // and it being the set language already
@@ -152,24 +183,6 @@ class I18NManager extends LitElement {
    */
   static get tag() {
     return "i18n-manager";
-  }
-  /**
-   * LitElement convention
-   */
-  static get properties() {
-    return {
-      ...super.properties,
-      lang: {
-        type: String,
-        reflect: true,
-        attribute: "lang",
-      },
-      dir: {
-        type: String,
-        reflect: true,
-        attribute: "dir",
-      },
-    };
   }
   /**
    * Return language file for a specific context
@@ -229,6 +242,7 @@ class I18NManager extends LitElement {
           let el = fallBack[i];
           // verify we have a context
           if (el.context) {
+            // reset to the fallback language t value
             el.context.t = { ...el.context._t };
             // support a forced update / function to run when it finishes
             if (el.updateCallback) {
@@ -269,9 +283,13 @@ class I18NManager extends LitElement {
             }
           );
           if (el.context) {
+            // set values
             for (var id in this.fetchTargets[fetchTarget]) {
               el.context.t[id] = this.fetchTargets[fetchTarget][id];
             }
+            // spread can generate notify statements in downstream elements
+            // this probably makes updateCallback irrelevant in reactive
+            // projects like LitElement but just to be double sure
             el.context.t = { ...el.context.t };
             // support a forced update / function to run when it finishes
             if (el.updateCallback && el.context) {
@@ -282,38 +300,51 @@ class I18NManager extends LitElement {
       }
     }
   }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.__ready = true;
+  /**
+   * Life cycle
+   */
+  static get observedAttributes() {
+    return ["lang", "dir"];
   }
   /**
-   * LitElement life cycle - property changed
+   * Life cycle
    */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
+  attributeChangedCallback(attr, oldValue, newValue) {
+    // notify of attr change
+    if (attr == "lang" || attr == "dir") {
+      this.dispatchEvent(
+        new CustomEvent(`${attr}-changed`, {
+          detail: {
+            value: newValue,
+          },
+        })
+      );
     }
-    changedProperties.forEach((oldValue, propName) => {
-      // notify
-      if (propName == "lang") {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            composed: true,
-            bubbles: true,
-            cancelable: false,
-            detail: {
-              value: this[propName],
-            },
-          })
-        );
-        // we are NOT moving to the default from something
-        if (this[propName] && this.__ready) {
-          this.updateLanguage(this[propName]);
-        }
-      }
-    });
+    // we are NOT moving to the default from something
+    if (attr == "lang" && newValue && this.__ready) {
+      this.updateLanguage(newValue);
+    }
+  }
+  // getters and setters to map props to attributes
+  get lang() {
+    return this.getAttribute("lang");
+  }
+  set lang(val) {
+    if (!val) {
+      this.removeAttribute("lang");
+    } else {
+      this.setAttribute("lang", val);
+    }
+  }
+  get dir() {
+    return this.getAttribute("dir");
+  }
+  set dir(val) {
+    if (!val) {
+      this.removeAttribute("dir");
+    } else {
+      this.setAttribute("dir", val);
+    }
   }
 }
 customElements.define(I18NManager.tag, I18NManager);

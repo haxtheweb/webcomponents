@@ -4,12 +4,112 @@
     {
       "name": "i18n-manager",
       "path": "./i18n-manager.js",
-      "description": "`i18n-manager`\n`internationalization management singleton and helper classes`"
+      "description": "`i18n-manager`\n`internationalization management singleton and helper classes`",
+      "attributes": [
+        {
+          "name": "lang",
+          "type": "string | null",
+          "default": "\"documentLang\""
+        },
+        {
+          "name": "dir",
+          "type": "string | null",
+          "default": "\"documentDir\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "documentLang",
+          "description": "Set document language from these common sources",
+          "type": "string"
+        },
+        {
+          "name": "documentDir",
+          "description": "Set document direction from these common sources",
+          "type": "string"
+        },
+        {
+          "name": "fetchTargets",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "elements",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "locales",
+          "type": "Set<never>"
+        },
+        {
+          "name": "lang",
+          "attribute": "lang",
+          "type": "string | null",
+          "default": "\"documentLang\""
+        },
+        {
+          "name": "dir",
+          "attribute": "dir",
+          "type": "string | null",
+          "default": "\"documentDir\""
+        }
+      ]
     },
     {
       "name": "i18n-manager",
       "path": "./src/i18n-manager.js",
-      "description": "`i18n-manager`\n`internationalization management singleton and helper classes`"
+      "description": "`i18n-manager`\n`internationalization management singleton and helper classes`",
+      "attributes": [
+        {
+          "name": "lang",
+          "type": "string | null",
+          "default": "\"documentLang\""
+        },
+        {
+          "name": "dir",
+          "type": "string | null",
+          "default": "\"documentDir\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "documentLang",
+          "description": "Set document language from these common sources",
+          "type": "string"
+        },
+        {
+          "name": "documentDir",
+          "description": "Set document direction from these common sources",
+          "type": "string"
+        },
+        {
+          "name": "fetchTargets",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "elements",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "locales",
+          "type": "Set<never>"
+        },
+        {
+          "name": "lang",
+          "attribute": "lang",
+          "type": "string | null",
+          "default": "\"documentLang\""
+        },
+        {
+          "name": "dir",
+          "attribute": "dir",
+          "type": "string | null",
+          "default": "\"documentDir\""
+        }
+      ]
     }
   ]
 }

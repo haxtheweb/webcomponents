@@ -135,7 +135,7 @@ class DragNDrop extends HTMLElement {
     return ["editing"];
   }
   get editing() {
-    this.getAttribute("editing");
+    return this.getAttribute("editing");
   }
   set editing(val) {
     if (!val) {

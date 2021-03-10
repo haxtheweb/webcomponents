@@ -3,8 +3,12 @@
   "tags": [
     {
       "name": "simple-modal-template",
-      "description": "`simple-modal-template`\n`A simple modal that ensures accessibility and stack order context appropriately`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ id: string | null; elements: { header: any; content: any; buttons: any; }; invokedBy: any; modalClass: string | null; styles: {}; clone: boolean; title: string | boolean; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal\n\nProperties:\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal",
+      "description": "`simple-modal-template`\n`A simple modal that ensures accessibility and stack order context appropriately`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ id: string | null; elements: { header: any; content: any; buttons: any; custom: any; }; resize: any; invokedBy: any; modalClass: string | null; styles: {}; clone: boolean; mode: any; title: string | boolean; }>`} - \n\nAttributes:\n\n  * `mode` {`string`} - the modal title\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal\n\nProperties:\n\n  * `mode` {`string`} - the modal title\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal",
       "attributes": [
+        {
+          "name": "mode",
+          "description": "`mode` {`string`} - the modal title\n\nProperty: mode"
+        },
         {
           "name": "title",
           "description": "`title` {`string`} - the modal title\n\nProperty: title\n\nDefault: "
@@ -15,17 +19,21 @@
         },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ id: string | null; elements: { header: any; content: any; buttons: any; }; invokedBy: any; modalClass: string | null; styles: {}; clone: boolean; title: string | boolean; }>`} - "
+          "description": "`simple-modal-show` {`CustomEvent<{ id: string | null; elements: { header: any; content: any; buttons: any; custom: any; }; resize: any; invokedBy: any; modalClass: string | null; styles: {}; clone: boolean; mode: any; title: string | boolean; }>`} - "
         }
       ]
     },
     {
       "name": "simple-modal",
-      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `close-label` {`string`} - Close label\n\n  * `close-icon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag",
+      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n\n\n--simple-modal-resize: unset;\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-titlebar-padding: 0px 16px;\n--simple-modal-titlebar-height: unset;\n--simple-modal-titlebar-line-height: unset;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-header-padding: 0px 16px;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-content-padding: 8px 16px;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-buttons-padding: 0;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n--simple-modal-z-index: 1000;\n--simple-modal-width: 75vw;\n--simple-modal-height: auto;\n--simple-modal-min-width: unset;\n--simple-modal-min-height: unset;\n--simple-modal-max-width: unset;\n--simple-modal-max-height: unset;\n```\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `mode` {`string`} - can add a custom string to style modal based on what is calling it\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `close-label` {`string`} - Close label\n\n  * `close-icon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `mode` {`string`} - can add a custom string to style modal based on what is calling it\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag",
       "attributes": [
         {
           "name": "invokedBy",
           "description": "`invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\nProperty: invokedBy"
+        },
+        {
+          "name": "mode",
+          "description": "`mode` {`string`} - can add a custom string to style modal based on what is calling it\n\nProperty: mode"
         },
         {
           "name": "title",
@@ -65,11 +73,15 @@
     },
     {
       "name": "simple-modal",
-      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `close-label` {`string`} - Close label\n\n  * `close-icon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag",
+      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n\n\n--simple-modal-resize: unset;\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-titlebar-padding: 0px 16px;\n--simple-modal-titlebar-height: unset;\n--simple-modal-titlebar-line-height: unset;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-header-padding: 0px 16px;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-content-padding: 8px 16px;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-buttons-padding: 0;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n--simple-modal-z-index: 1000;\n--simple-modal-width: 75vw;\n--simple-modal-height: auto;\n--simple-modal-min-width: unset;\n--simple-modal-min-height: unset;\n--simple-modal-max-width: unset;\n--simple-modal-max-height: unset;\n```\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `mode` {`string`} - can add a custom string to style modal based on what is calling it\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `close-label` {`string`} - Close label\n\n  * `close-icon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `mode` {`string`} - can add a custom string to style modal based on what is calling it\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag",
       "attributes": [
         {
           "name": "invokedBy",
           "description": "`invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\nProperty: invokedBy"
+        },
+        {
+          "name": "mode",
+          "description": "`mode` {`string`} - can add a custom string to style modal based on what is calling it\n\nProperty: mode"
         },
         {
           "name": "title",

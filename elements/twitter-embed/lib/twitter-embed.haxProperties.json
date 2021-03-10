@@ -38,7 +38,10 @@
         "inputMethod": "boolean"
       }
     ],
-    "advanced": []
+    "advanced": [],
+    "saveOptions": {
+      "unsetAttributes": ["_haxstate"]
+    }
   },
   "demoSchema": [
     {

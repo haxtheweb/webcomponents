@@ -3,29 +3,37 @@
   "tags": [
     {
       "name": "word-count",
-      "description": "`word-count`\n`Count the words on whatever this wraps`\n\nAttributes:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - \n\nProperties:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - ",
+      "description": "`word-count`\n`Count the words on whatever this wraps`\n\nAttributes:\n\n  * `words` {`number`} - \n\n  * `words-prefix` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "words",
           "description": "`words` {`number`} - \n\nProperty: words"
         },
         {
-          "name": "wordsPrefix",
-          "description": "`wordsPrefix` {`string`} - \n\nProperty: wordsPrefix\n\nDefault: Word count:"
+          "name": "words-prefix",
+          "description": "`words-prefix` {`string`} - \n\nProperty: wordsPrefix\n\nDefault: Word count"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         }
       ]
     },
     {
       "name": "word-count",
-      "description": "`word-count`\n`Count the words on whatever this wraps`\n\nAttributes:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - \n\nProperties:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - ",
+      "description": "`word-count`\n`Count the words on whatever this wraps`\n\nAttributes:\n\n  * `words` {`number`} - \n\n  * `words-prefix` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "words",
           "description": "`words` {`number`} - \n\nProperty: words"
         },
         {
-          "name": "wordsPrefix",
-          "description": "`wordsPrefix` {`string`} - \n\nProperty: wordsPrefix\n\nDefault: Word count:"
+          "name": "words-prefix",
+          "description": "`words-prefix` {`string`} - \n\nProperty: wordsPrefix\n\nDefault: Word count"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
         }
       ]
     }

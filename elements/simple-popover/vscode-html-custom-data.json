@@ -3,6 +3,14 @@
   "tags": [
     {
       "name": "simple-popover-manager",
+      "attributes": []
+    },
+    {
+      "name": "simple-tour",
+      "attributes": []
+    },
+    {
+      "name": "simple-popover-manager",
       "description": "Attributes:\n\n  * `opened` {`boolean`} - \n\n  * `orientation` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `popover` - \n\n  * `opened` {`boolean`} - \n\n  * `context` - \n\n  * `orientation` {`string`} - \n\n  * `position` {`string`} - \n\n  * `__ignore` {`boolean`} - ",
       "attributes": [
         {
@@ -42,7 +50,7 @@
     },
     {
       "name": "simple-tour",
-      "description": "Attributes:\n\n  * `stacks` - \n\n  * `active` {`string`} - \n\n  * `activeElementDelay` {`number`} - \n\n  * `stop` {`number`} - \n\nProperties:\n\n  * `stacks` - \n\n  * `orientation` {`string`} - \n\n  * `active` {`string`} - \n\n  * `tourInfo` - \n\n  * `activeElementDelay` {`number`} - \n\n  * `stop` {`number`} - ",
+      "description": "Events:\n\n  * `tour-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `stacks` - \n\n  * `active` {`string`} - \n\n  * `activeElementDelay` {`number`} - \n\n  * `stop` {`number`} - \n\nProperties:\n\n  * `stacks` - \n\n  * `orientation` {`string`} - \n\n  * `active` {`string`} - \n\n  * `tourInfo` - \n\n  * `activeElementDelay` {`number`} - \n\n  * `stop` {`number`} - ",
       "attributes": [
         {
           "name": "stacks",
@@ -59,6 +67,10 @@
         {
           "name": "stop",
           "description": "`stop` {`number`} - \n\nProperty: stop\n\nDefault: -1"
+        },
+        {
+          "name": "ontour-changed",
+          "description": "`tour-changed` {`CustomEvent<this>`} - "
         }
       ]
     },

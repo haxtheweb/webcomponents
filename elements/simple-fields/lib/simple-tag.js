@@ -22,10 +22,15 @@ export class SimpleTag extends LitElement {
       value: {
         type: String,
       },
+      cancelButton: {
+        type: Boolean,
+        attribute: "cancel-button",
+      },
     };
   }
   constructor() {
     super();
+    this.cancelButton = false;
     this.disabled = false;
     this.readonly = false;
   }
@@ -63,6 +68,9 @@ export class SimpleTag extends LitElement {
           --simple-icon-height: var(--simple-fields-font-size, 16px);
           --simple-icon-width: var(--simple-fields-font-size, 16px);
         }
+        :host([hidden]) {
+          display: none;
+        }
         :host([disabled]):not([readonly]) {
           opacity: 0.5;
         }
@@ -78,15 +86,16 @@ export class SimpleTag extends LitElement {
             <simple-icon-button-lite
               icon="cancel"
               label="Remove ${this.value}"
-              @click="${this.removeClick}"
+              ?hidden="${this.cancelButton}"
+              @click="${this.clickEvent}"
               ?disabled="${this.disabled}"
             ></simple-icon-button-lite>
           `}
     `;
   }
-  removeClick(e) {
+  clickEvent(e) {
     this.dispatchEvent(
-      new CustomEvent("simple-tag-remove-clicked", {
+      new CustomEvent("simple-tag-clicked", {
         composed: false,
         bubbles: false,
         cancelable: false,

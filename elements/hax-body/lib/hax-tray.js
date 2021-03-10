@@ -98,7 +98,7 @@ class HaxTray extends I18NMixin(
       templates: "Templates",
       width: "Width",
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "hax",
       updateCallback: "_updateTrayDetail",

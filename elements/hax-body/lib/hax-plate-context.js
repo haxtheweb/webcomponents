@@ -34,7 +34,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       duplicate: "Duplicate",
       confirmDelete: "Confirm delete",
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "hax",
     });

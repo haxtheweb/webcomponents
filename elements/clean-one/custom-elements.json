@@ -11,6 +11,11 @@
           "type": "string"
         },
         {
+          "name": "t",
+          "type": "object",
+          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
+        },
+        {
           "name": "hideUserStylesMenu",
           "type": "boolean",
           "default": "true"
@@ -103,6 +108,12 @@
           "name": "searchTerm",
           "attribute": "searchTerm",
           "type": "string"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
         },
         {
           "name": "hideUserStylesMenu",
@@ -258,6 +269,11 @@
           "type": "string"
         },
         {
+          "name": "t",
+          "type": "object",
+          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
+        },
+        {
           "name": "hideUserStylesMenu",
           "type": "boolean",
           "default": "true"
@@ -350,6 +366,12 @@
           "name": "searchTerm",
           "attribute": "searchTerm",
           "type": "string"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"searchSiteContent\":\"Search site content\",\"typeToSearch\":\"Type to search\"}"
         },
         {
           "name": "hideUserStylesMenu",

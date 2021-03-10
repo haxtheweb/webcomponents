@@ -7,11 +7,9 @@
       "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`",
       "properties": [
         {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "template"
+          "name": "cssMap",
+          "type": "object",
+          "default": "{}"
         }
       ]
     },
@@ -21,7 +19,9 @@
       "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`",
       "properties": [
         {
-          "name": "template"
+          "name": "cssMap",
+          "type": "object",
+          "default": "{}"
         }
       ]
     }

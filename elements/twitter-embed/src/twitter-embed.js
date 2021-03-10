@@ -38,6 +38,9 @@ class TwitterEmbed extends LitElement {
       tweet: {
         type: String,
       },
+      _haxstate: {
+        type: Boolean,
+      },
       lang: {
         type: String,
       },
@@ -144,15 +147,6 @@ class TwitterEmbed extends LitElement {
       }
     });
   }
-  static get styles() {
-    return [
-      css`
-        :host([contenteditable]) iframe {
-          pointer-events: none;
-        }
-      `,
-    ];
-  }
   /**
    * Popular convention / LitElement
    */
@@ -162,14 +156,16 @@ class TwitterEmbed extends LitElement {
         @click="${this._clickPrevent}"
         class="twitter-tweet twitter-tweet-rendered"
         style="display: flex; max-width: ${this
-          .dataWidth}; width: 100%; margin-top: 10px; margin-bottom: 10px;"
+          .dataWidth}; width: 100%; margin-top: 10px; margin-bottom: 10px; pointer-events:${this
+          ._haxstate
+          ? "none"
+          : "inherit"}"
       >
         <iframe
           .sandbox="allow-same-origin allow-scripts ${this.allowPopups}"
           scrolling="no"
           frameborder="0"
           loading="lazy"
-          @click="${this._clickPrevent}"
           allowtransparency="true"
           allowfullscreen
           style="position: static; visibility: visible; width: ${this
