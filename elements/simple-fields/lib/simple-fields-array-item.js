@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
+import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import {
   SimpleFieldsButtonStyles,
   SimpleFieldsTooltipStyles,
@@ -34,12 +34,15 @@ Custom property | Description | Default
 `--simple-fields-array-item-heading-color` | text color for simple-fields-array-item heading | unset
 `--simple-fields-array-item-heading-background-color` | background-color for simple-fields-array-item heading | unset
  *
+ * @customElement
  * @group simple-fields
  * @element simple-fields-array-item
  * @demo ./demo/schema.html Schema
  * @demo ./demo/form.html Form
+ * @class SimpleFieldsArrayItem
+ * @extends {SimpleFieldsFieldsetBehaviors(LitElement)}
  */
-class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
+class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
   static get styles() {
     return [
       ...super.styles,
@@ -55,7 +58,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           z-index: 1;
           position: relative;
         }
-        ::slotted(*),
         :host([disabled]) {
           opacity: 0.5;
         }
@@ -80,6 +82,11 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         #preview {
           flex: 1 0 auto;
           margin: 0;
+          margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);
+          margin-left: calc(50px + var(--simple-fields-margin-small, 8px) / 2);
+          max-width: calc(
+            100% - 72px - 2 * var(--simple-fields-margin-small, 8px) / 2
+          );
         }
         #heading,
         .heading-inner {
@@ -95,6 +102,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           display: flex;
           align-items: flex-end;
           justify-content: space-between;
+          flex-wrap: wrap;
           overflow: hidden;
           max-height: 0;
           transition: max-height 0.75s ease 0.1s;
@@ -109,12 +117,15 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         #content-inner > * {
           flex: 1 1 auto;
         }
+        #copy-delete {
+          display: flex;
+          align-items: stretch;
+          justify-content: flex-end;
+          flex: 1 0 auto;
+        }
         #copy,
         #remove {
           flex: 0 0 auto;
-        }
-        #heading {
-          margin-right: calc(0 - var(--simple-fields-margin-small, 8px) / 2);
         }
         #expand {
           margin-left: calc(var(--simple-fields-margin-small, 8px) / 2);
@@ -127,9 +138,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         }
         :host([aria-expanded="true"]) #drag-handle {
           top: var(--simple-fields-margin, 16px);
-        }
-        #preview {
-          margin-left: calc(46px + var(--simple-fields-margin-small, 8px) / 2);
+          left: var(--simple-fields-margin-small, 8px);
         }
         #dropzone {
           height: 0px;
@@ -200,6 +209,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         ?disabled="${this.disabled}"
         ?hidden="${this.__dropAccepts || this.__dragging}"
         part="drag"
+        tooltip-direction="right"
         @mousedown="${(e) => (this.draggable = "true")}"
         @mouseup="${(e) => (this.draggable = "false")}"
       >
@@ -211,7 +221,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
             icon="arrow-upward"
             show-text-label
             label="Up"
-            tooltip="Move Item Up"
             @click="${this._moveUp}"
           >
           </simple-toolbar-button>
@@ -224,7 +233,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
             icon="arrow-downward"
             show-text-label
             label="Down"
-            tooltip="Move Item Down"
             @click="${this._moveDown}"
           >
           </simple-toolbar-button>
@@ -241,48 +249,53 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           toggles
           ?toggled="${this.expanded}"
           part="expand"
+          tooltip-direction="left"
         >
         </simple-toolbar-button>
       </div>
       <div id="content" part="content">
         <div id="content-inner" part="content-inner">
           <div><slot></slot></div>
-          <simple-toolbar-button
-            id="copy"
-            controls="${(this.parentNode || {}).id}"
-            icon="content-copy"
-            label="Copy this item"
-            ?disabled="${this.disabled}"
-            @click="${this._handleCopy}"
-            part="copy"
-          >
-          </simple-toolbar-button>
-          <simple-toolbar-menu
-            id="remove"
-            icon="delete"
-            label="Remove this item"
-            ?disabled="${this.disabled}"
-            fit-to-visible-bounds
-            part="remove"
-            position-align="end"
-          >
-            <simple-toolbar-menu-item>
-              <simple-toolbar-button
-                id="confirm-remove"
-                class="danger"
-                align-horizontal="left"
-                role="menuitem"
-                show-text-label
-                controls="${this.id}"
-                icon="delete"
-                label="Remove"
-                ?disabled="${this.disabled}"
-                @click="${this._handleRemove}"
-                part="confirm-remove"
-              >
-              </simple-toolbar-button>
-            </simple-toolbar-menu-item>
-          </simple-toolbar-menu>
+          <div id="copy-delete">
+            <simple-toolbar-button
+              id="copy"
+              controls="${(this.parentNode || {}).id}"
+              icon="content-copy"
+              label="Copy this item"
+              ?disabled="${this.disabled}"
+              @click="${this._handleCopy}"
+              part="copy"
+              tooltip-direction="left"
+            >
+            </simple-toolbar-button>
+            <simple-toolbar-menu
+              id="remove"
+              icon="delete"
+              label="Remove this item"
+              ?disabled="${this.disabled}"
+              fit-to-visible-bounds
+              part="remove"
+              position-align="end"
+              tooltip-direction="left"
+            >
+              <simple-toolbar-menu-item>
+                <simple-toolbar-button
+                  id="confirm-remove"
+                  class="danger"
+                  align-horizontal="left"
+                  role="menuitem"
+                  show-text-label
+                  controls="${this.id}"
+                  icon="delete"
+                  label="Remove"
+                  ?disabled="${this.disabled}"
+                  @click="${this._handleRemove}"
+                  part="confirm-remove"
+                >
+                </simple-toolbar-button>
+              </simple-toolbar-menu-item>
+            </simple-toolbar-menu>
+          </div>
         </div>
       </div>
     `;
