@@ -166,7 +166,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
             var(--simple-fields-accent-color-light, #d9eaff)
           );
           height: 80px;
-          transition: heigh 0.1s 0s ease-in-out;
         }
 
         :host([aria-expanded="true"]) #expand::part(icon) {
