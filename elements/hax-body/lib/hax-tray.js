@@ -1543,6 +1543,10 @@ class HaxTray extends I18NMixin(
       return obj[key];
     });
   }
+  updateMap() {
+    if (this.shadowRoot && this.shadowRoot.querySelector("hax-map"))
+      this.shadowRoot.querySelector("hax-map").updateHAXMap();
+  }
   _updateTrayDetail(oldValue) {
     if (this.trayDetail == "content-add") {
       this.trayLabel = this.t.blocks;

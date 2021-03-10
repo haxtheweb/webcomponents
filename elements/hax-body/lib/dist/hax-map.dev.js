@@ -19,6 +19,8 @@ var _utils = require("@lrnwebcomponents/utils/utils.js");
 
 var _haxUiStyles = require("@lrnwebcomponents/hax-body/lib/hax-ui-styles.js");
 
+var _I18NMixin2 = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -56,12 +58,19 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <div class="container">\n        <table>\n          <caption>\n            Content Statistics\n          </caption>\n          <thead>\n            <tr>\n              <th scope="col">Words</th>\n              <th scope="col">Headings</th>\n              <th scope="col">Paragraphs</th>\n              <th scope="col">Widgets</th>\n              <th scope="col">Characters</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr>\n              <td>',
+    '\n      <div class="container">\n        <table>\n          <caption>\n            ',
+    '\n          </caption>\n          <thead>\n            <tr>\n              <th scope="col">',
+    '</th>\n              <th scope="col">',
+    '</th>\n              <th scope="col">',
+    '</th>\n              <th scope="col">',
+    '</th>\n              <th scope="col">',
+    "</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr>\n              <td>",
     "</td>\n              <td>",
     "</td>\n              <td>",
     "</td>\n              <td>",
     "</td>\n              <td>",
-    "</td>\n            </tr>\n          </tbody>\n        </table>\n        <h5>List View</h5>\n        <ul>\n          ",
+    "</td>\n            </tr>\n          </tbody>\n        </table>\n        <h5>",
+    "</h5>\n        <ul>\n          ",
     "\n        </ul>\n      </div>\n    ",
   ]);
 
@@ -133,15 +142,6 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError(
-      "this hasn't been initialised - super() hasn't been called"
-    );
-  }
-  return self;
-}
-
 function _getPrototypeOf(o) {
   _getPrototypeOf = Object.setPrototypeOf
     ? Object.getPrototypeOf
@@ -149,6 +149,15 @@ function _getPrototypeOf(o) {
         return o.__proto__ || Object.getPrototypeOf(o);
       };
   return _getPrototypeOf(o);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    );
+  }
+  return self;
 }
 
 function _defineProperties(target, props) {
@@ -194,8 +203,8 @@ function _setPrototypeOf(o, p) {
  */
 var HaxMap =
   /*#__PURE__*/
-  (function (_LitElement) {
-    _inherits(HaxMap, _LitElement);
+  (function (_I18NMixin) {
+    _inherits(HaxMap, _I18NMixin);
 
     _createClass(HaxMap, null, [
       {
@@ -223,7 +232,21 @@ var HaxMap =
         _getPrototypeOf(HaxMap).call(this)
       );
       _this.elementList = [];
-      _this.title = "Content map";
+      _this.t = {
+        contentStatistics: "Content Statistics",
+        words: "Words",
+        headings: "Headings",
+        paragraphs: "Paragraphs",
+        widgets: "Widgets",
+        characters: "Characters",
+        listView: "List view",
+      };
+
+      _this.registerTranslation({
+        context: _assertThisInitialized(_this),
+        namespace: "hax",
+      });
+
       return _this;
     }
 
@@ -232,7 +255,7 @@ var HaxMap =
       [
         {
           key: "updateHAXMap",
-          value: function updateHAXMap() {
+          value: function updateHAXMap(e) {
             var list = _haxStore.HAXStore.htmlToHaxElements(
               _haxStore.HAXStore.activeHaxBody.haxToContent()
             );
@@ -322,11 +345,18 @@ var HaxMap =
 
             return (0, _litElement.html)(
               _templateObject2(),
+              this.t.contentStatistics,
+              this.t.words,
+              this.t.headings,
+              this.t.paragraphs,
+              this.t.widgets,
+              this.t.characters,
               this.wCount,
               this.hCount,
               this.pCount,
               this.eCount,
               this.cCount,
+              this.t.listView,
               this.indentedElements.map(function (element, index) {
                 return (0, _litElement.html)(
                   _templateObject3(),
@@ -406,9 +436,6 @@ var HaxMap =
               /**
                * Title when open.
                */
-              title: {
-                type: String,
-              },
               opened: {
                 type: Boolean,
               },
@@ -437,7 +464,7 @@ var HaxMap =
     );
 
     return HaxMap;
-  })(_litElement.LitElement);
+  })((0, _I18NMixin2.I18NMixin)(_litElement.LitElement));
 
 exports.HaxMap = HaxMap;
 window.customElements.define(HaxMap.tag, HaxMap);
