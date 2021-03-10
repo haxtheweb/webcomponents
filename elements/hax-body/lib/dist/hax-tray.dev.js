@@ -1501,11 +1501,18 @@ var HaxTray =
               return obj[key];
             });
           },
+          /**
+           * update hax map
+           */
         },
         {
           key: "updateMap",
           value: function updateMap() {
-            if (this.shadowRoot && this.shadowRoot.querySelector("hax-map"))
+            if (
+              this.shadowRoot &&
+              this.shadowRoot.querySelector("hax-map") &&
+              this.trayDetail == "content-map"
+            )
               this.shadowRoot.querySelector("hax-map").updateHAXMap();
           },
         },

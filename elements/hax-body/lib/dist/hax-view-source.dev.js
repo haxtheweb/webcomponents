@@ -19,6 +19,8 @@ var _haxUiStyles = require("./hax-ui-styles.js");
 
 var _mobx = require("mobx");
 
+var _I18NMixin2 = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -173,10 +175,14 @@ function _interopRequireWildcard(obj) {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <div id="spacer"></div>\n      <div id="wrapper">\n        <textarea id="hiddentextarea" hidden></textarea>\n        <code-editor\n          id="textarea"\n          title=""\n          theme="',
-    '"\n          language="html"\n          font-size="13"\n          word-wrap\n        ></code-editor>\n      </div>\n      <hax-toolbar always-expanded>\n        <hax-tray-button\n          label="Update Page"\n          icon="editor:insert-drive-file"\n          @click="',
+    '"\n          language="html"\n          font-size="13"\n          word-wrap\n        ></code-editor>\n      </div>\n      <hax-toolbar always-expanded>\n        <hax-tray-button\n          label="',
+    '"\n          icon="editor:insert-drive-file"\n          @click="',
     '"\n          show-text-label\n          icon-position="top"\n        >\n        </hax-tray-button>\n        <hax-tray-button\n          @click="',
-    '"\n          icon="editor:format-clear"\n          label="Clean Formatting"\n          tooltip="Word / Google Document Clean Up"\n          show-text-label\n          icon-position="top"\n        >\n        </hax-tray-button>\n        <hax-tray-button\n          @click="',
-    '"\n          icon="icons:content-copy"\n          label="Copy HTML"\n          show-text-label\n          icon-position="top"\n        >\n        </hax-tray-button>\n        <hax-tray-button\n          label="Download HTML"\n          icon="icons:file-download"\n          @click="',
+    '"\n          icon="editor:format-clear"\n          label="',
+    '"\n          show-text-label\n          icon-position="top"\n        >\n        </hax-tray-button>\n        <hax-tray-button\n          @click="',
+    '"\n          icon="icons:content-copy"\n          label="',
+    '"\n          show-text-label\n          icon-position="top"\n        >\n        </hax-tray-button>\n        <hax-tray-button\n          label="',
+    '"\n          icon="icons:file-download"\n          @click="',
     '"\n          show-text-label\n          icon-position="top"\n        >\n        </hax-tray-button>\n        <hax-tray-button\n          @click="',
     '"\n          label="HAXSchema"\n          icon="hax:code-json"\n          show-text-label\n          icon-position="top"\n        >\n        </hax-tray-button>\n      </hax-toolbar>\n    ',
   ]);
@@ -296,8 +302,8 @@ function _getPrototypeOf(o) {
  */
 var HaxViewSource =
   /*#__PURE__*/
-  (function (_MtzFileDownloadBehav) {
-    _inherits(HaxViewSource, _MtzFileDownloadBehav);
+  (function (_I18NMixin) {
+    _inherits(HaxViewSource, _I18NMixin);
 
     _createClass(
       HaxViewSource,
@@ -312,9 +318,13 @@ var HaxViewSource =
                 : this.haxUiTheme == "haxdark"
                 ? "vs-dark"
                 : "auto",
+              this.t.updatePage,
               this.importContent.bind(this),
               this.scrubContent.bind(this),
+              this.t.cleanFormatting,
               this.selectBody.bind(this),
+              this.t.copyHTML,
+              this.t.downloadHTML,
               this.download.bind(this),
               this.htmlToHaxElements.bind(this)
             );
@@ -400,6 +410,7 @@ var HaxViewSource =
                 require("@lrnwebcomponents/code-editor/code-editor.js")
               );
             });
+            this.updateEditor();
           },
           /**
            * selectBody
@@ -416,7 +427,7 @@ var HaxViewSource =
             document.execCommand("copy");
             hiddenarea.setAttribute("hidden", "hidden");
 
-            _haxStore.HAXStore.toast("Copied HTML content"); //this.close();
+            _haxStore.HAXStore.toast(this.t.copiedToClipboard); //this.close();
           },
           /**
            * HTML to HAX Elements
@@ -440,7 +451,7 @@ var HaxViewSource =
             hiddenarea.value = val;
             hiddenarea.setAttribute("hidden", "hidden");
 
-            _haxStore.HAXStore.toast("Copied hax elements to clipboard");
+            _haxStore.HAXStore.toast(this.t.copiedToClipboard);
           },
         },
         {
@@ -460,7 +471,17 @@ var HaxViewSource =
               ).call(this, changedProperties);
             }
 
-            if (_haxStore.HAXStore.activeHaxBody) {
+            this.updateEditor();
+          },
+        },
+        {
+          key: "updateEditor",
+          value: function updateEditor() {
+            if (
+              _haxStore.HAXStore.activeHaxBody &&
+              this.shadowRoot &&
+              this.shadowRoot.querySelector("#textarea")
+            ) {
               this.shadowRoot.querySelector("#textarea").editorValue = (0,
               _utils.formatHTML)(
                 _haxStore.HAXStore.activeHaxBody.haxToContent()
@@ -537,6 +558,19 @@ var HaxViewSource =
         this,
         _getPrototypeOf(HaxViewSource).call(this)
       );
+      _this.t = {
+        updatePage: "Update Page",
+        copyHTML: "Copy HTML",
+        downloadHTML: "Download HTML",
+        cleanFormatting: "Clean Formatting",
+        copiedToClipboard: "Copied to clipboard",
+      };
+
+      _this.registerTranslation({
+        context: _assertThisInitialized(_this),
+        namespace: "hax",
+      });
+
       _this.fileTypes = {
         CSV: "text/csv",
         JSON: "text/json",
@@ -554,7 +588,11 @@ var HaxViewSource =
     }
 
     return HaxViewSource;
-  })((0, _dlBehavior.MtzFileDownloadBehaviors)(_litElement.LitElement));
+  })(
+    (0, _I18NMixin2.I18NMixin)(
+      (0, _dlBehavior.MtzFileDownloadBehaviors)(_litElement.LitElement)
+    )
+  );
 
 exports.HaxViewSource = HaxViewSource;
 window.customElements.define(HaxViewSource.tag, HaxViewSource);

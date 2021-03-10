@@ -13,6 +13,8 @@ require("./hax-view-source.js");
 
 var _haxUiStyles = require("./hax-ui-styles.js");
 
+var _I18NMixin2 = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -191,8 +193,8 @@ function _getPrototypeOf(o) {
  */
 var HaxExportDialog =
   /*#__PURE__*/
-  (function (_LitElement) {
-    _inherits(HaxExportDialog, _LitElement);
+  (function (_I18NMixin) {
+    _inherits(HaxExportDialog, _I18NMixin);
 
     _createClass(
       HaxExportDialog,
@@ -241,7 +243,10 @@ var HaxExportDialog =
         {
           key: "render",
           value: function render() {
-            return (0, _litElement.html)(_templateObject(), this.title);
+            return (0, _litElement.html)(
+              _templateObject(),
+              this.t.viewPageSource
+            );
           },
         },
         {
@@ -282,19 +287,6 @@ var HaxExportDialog =
             return "hax-export-dialog";
           },
         },
-        {
-          key: "properties",
-          get: function get() {
-            return {
-              /**
-               * Title
-               */
-              title: {
-                type: String,
-              },
-            };
-          },
-        },
       ]
     );
 
@@ -307,12 +299,20 @@ var HaxExportDialog =
         this,
         _getPrototypeOf(HaxExportDialog).call(this)
       );
-      _this.title = "View Page Source";
+      _this.t = {
+        viewPageSource: "View Page Source",
+      };
+
+      _this.registerTranslation({
+        context: _assertThisInitialized(_this),
+        namespace: "hax",
+      });
+
       return _this;
     }
 
     return HaxExportDialog;
-  })(_litElement.LitElement);
+  })((0, _I18NMixin2.I18NMixin)(_litElement.LitElement));
 
 exports.HaxExportDialog = HaxExportDialog;
 window.customElements.define(HaxExportDialog.tag, HaxExportDialog);
