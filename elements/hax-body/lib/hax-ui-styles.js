@@ -41,7 +41,7 @@ export const HaxUiColors = [
 
       --hax-ui-color-accent: #009dc7;
       --hax-ui-color-accent-secondary: #007999;
-      --hax-ui-background-color-accent: #ddf8ff;
+      --hax-ui-background-color-accent: #ccf3fd;
 
       --hax-ui-color-danger: #ee0000;
       --hax-ui-color-danger-secondary: #850000;
@@ -120,6 +120,7 @@ export const HaxUiFields = [
       --simple-fields-background-color: var(--hax-ui-background-color);
       --simple-fields-color: var(--hax-tray-text-color);
       --simple-fields-accent-color: var(--hax-ui-color-accent);
+      --simple-fields-accent-color-light: var(--hax-ui-background-color-faded);
       --simple-fields-error-color: var(--hax-ui-color-danger-secondary);
       --simple-fields-button-danger-background-color: var(
         --hax-ui-color-danger
