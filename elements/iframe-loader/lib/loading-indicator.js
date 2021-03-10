@@ -49,9 +49,15 @@ class LoadingIndicator extends LitElement {
       }
     `;
   }
-
+  static get properties() {
+    return { loading: { type: Boolean } };
+  }
+  constructor() {
+    super();
+    this.loading = true;
+  }
   render() {
-    return html` <div class="progress-line"></div> `;
+    return html`${this.loading ? html`<div class="progress-line"></div>` : ``}`;
   }
   static get tag() {
     return "loading-indicator";

@@ -31,7 +31,9 @@ function _typeof(obj) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    '\n          <simple-tag\n            value="',
+    "\n          <simple-tag\n            cancel-button\n            .data=",
+    '\n            value="',
+    '"\n            accent-color="',
     '"\n            @simple-tag-clicked="',
     '"\n          ></simple-tag>\n        ',
   ]);
@@ -55,7 +57,12 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <span class="input-option" part="option-inner">\n        <input\n          ?autofocus="',
+    '\n      <span class="input-option" part="option-inner">\n        <input\n          @keydown="',
+    '"\n          @keyup="',
+    '"\n          @dragleave="',
+    '"\n          @dragover="',
+    '"\n          @drop="',
+    '"\n          ?autofocus="',
     '"\n          aria-descrbedby="',
     '"\n          .aria-invalid="',
     '"\n          @blur="',
@@ -65,14 +72,11 @@ function _templateObject2() {
     '"\n          ?hidden="',
     '"\n          id="',
     '"\n          @input="',
-    '"\n          @keydown="',
-    '"\n          @keyup="',
     '"\n          name="',
     '"\n          .placeholder="',
     '"\n          ?readonly="',
     '"\n          ?required="',
-    '"\n          tabindex="0"\n          type="',
-    '"\n          value="',
+    '"\n          tabindex="0"\n          type="text"\n          value="',
     '"\n          part="option-input"\n        />\n      </span>\n    ',
   ]);
 
@@ -134,7 +138,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n        }\n        #field-main-inner {\n          align-items: center;\n          flex-wrap: wrap;\n        }\n        simple-tag {\n          flex: 0 1 auto;\n          margin: calc(0.5 * var(--simple-fields-button-padding, 2px))\n            var(--simple-fields-button-padding, 2px);\n        }\n      ",
+    "\n        :host {\n          display: block;\n        }\n        #field-main-inner {\n          align-items: center;\n          flex-wrap: wrap;\n        }\n        simple-tag {\n          flex: 0 1 auto;\n          margin: calc(0.5 * var(--simple-fields-button-padding, 2px))\n            var(--simple-fields-button-padding, 2px);\n        }\n        .drag-focus {\n          background-color: var(--simple-fields-accent-color, #3f51b5);\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -292,73 +296,56 @@ var SimpleFieldsTagList =
   (function (_SimpleFieldsFieldBeh) {
     _inherits(SimpleFieldsTagList, _SimpleFieldsFieldBeh);
 
-    _createClass(
-      SimpleFieldsTagList,
-      [
-        {
-          key: "render",
-          value: function render() {
-            return !this.hasFieldSet
-              ? _get(
-                  _getPrototypeOf(SimpleFieldsTagList.prototype),
-                  "render",
-                  this
-                ).call(this)
-              : this.fieldsetTemplate;
-          },
+    _createClass(SimpleFieldsTagList, null, [
+      {
+        key: "tag",
+        get: function get() {
+          return "simple-fields-tag-list";
         },
-      ],
-      [
-        {
-          key: "tag",
-          get: function get() {
-            return "simple-fields-tag-list";
-          },
+      },
+      {
+        key: "styles",
+        get: function get() {
+          return [].concat(
+            _toConsumableArray(
+              _get(_getPrototypeOf(SimpleFieldsTagList), "styles", this)
+            ),
+            [(0, _litElement.css)(_templateObject())]
+          );
         },
-        {
-          key: "styles",
-          get: function get() {
-            return [].concat(
-              _toConsumableArray(
-                _get(_getPrototypeOf(SimpleFieldsTagList), "styles", this)
-              ),
-              [(0, _litElement.css)(_templateObject())]
-            );
-          },
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return _objectSpread(
-              {},
-              _get(_getPrototypeOf(SimpleFieldsTagList), "properties", this),
-              {
-                /**
-                 * error message when field is required and has no value
-                 */
-                requiredMessage: {
-                  type: String,
-                },
-                tagList: {
-                  type: Array,
-                  attribute: "tag-list",
-                },
+      },
+      {
+        key: "properties",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(_getPrototypeOf(SimpleFieldsTagList), "properties", this),
+            {
+              /**
+               * error message when field is required and has no value
+               */
+              requiredMessage: {
+                type: String,
+              },
+              tagList: {
+                type: Array,
+                attribute: "tag-list",
+              },
 
-                /**
-                 * Current value of the form control. Submitted with the form as part of a name/value pair.
-                 */
-                value: {
-                  reflect: true,
-                },
-                label: {
-                  type: String,
-                },
-              }
-            );
-          },
+              /**
+               * Current value of the form control. Submitted with the form as part of a name/value pair.
+               */
+              value: {
+                reflect: true,
+              },
+              label: {
+                type: String,
+              },
+            }
+          );
         },
-      ]
-    );
+      },
+    ]);
 
     function SimpleFieldsTagList() {
       var _this;
@@ -417,6 +404,11 @@ var SimpleFieldsTagList =
         value: function getInput() {
           return (0, _litElement.html)(
             _templateObject2(),
+            this._handleKeydown,
+            this._handleKeyup,
+            this._handleDragLeave,
+            this._handleDragEnter,
+            this._handleDragDrop,
             this.autofocus,
             this.describedBy || "",
             this.error ? "true" : "false",
@@ -427,13 +419,10 @@ var SimpleFieldsTagList =
             this.hidden,
             this.id,
             this._handleFieldChange,
-            this._handleKeydown,
-            this._handleKeyup,
             this.id,
             this.placeholder || "",
             this.readonly,
             this.required,
-            this.type,
             this.value
           );
         },
@@ -443,13 +432,56 @@ var SimpleFieldsTagList =
         value: function removeTag(e) {
           this.tagList = _toConsumableArray(
             this.tagList.filter(function (i) {
-              if (i === e.detail.value) {
+              if (i.term === e.detail.value) {
                 return false;
               }
 
               return true;
             })
           );
+        },
+      },
+      {
+        key: "_handleDragLeave",
+        value: function _handleDragLeave(e) {
+          this.shadowRoot
+            .querySelector("simple-fields-field")
+            .classList.remove("drag-focus");
+        },
+      },
+      {
+        key: "_handleDragEnter",
+        value: function _handleDragEnter(e) {
+          e.preventDefault();
+          this.shadowRoot
+            .querySelector("simple-fields-field")
+            .classList.add("drag-focus");
+        },
+      },
+      {
+        key: "_handleDragDrop",
+        value: function _handleDragDrop(e) {
+          e.preventDefault();
+          this.shadowRoot
+            .querySelector("simple-fields-field")
+            .classList.remove("drag-focus"); // sanity check we have text here; this HAS to have been set by
+
+          if (JSON.parse(e.dataTransfer.getData("text"))) {
+            var tmp = JSON.parse(e.dataTransfer.getData("text")); // ensure there is no duplicate value / term
+
+            this.tagList = _toConsumableArray(
+              this.tagList.filter(function (i) {
+                if (i.term === tmp.term) {
+                  return false;
+                }
+
+                return true;
+              })
+            );
+            var tagList = this.tagList;
+            tagList.push(tmp);
+            this.tagList = _toConsumableArray(tagList);
+          }
         },
       },
       {
@@ -477,10 +509,25 @@ var SimpleFieldsTagList =
       {
         key: "_updateTaglist",
         value: function _updateTaglist() {
-          // @todo prevent same tag from being added twice
-          var tagList = this.tagList,
-            tag = this.shadowRoot.querySelector("input").value;
-          tagList.push(tag.replace(/,$/, "").trim());
+          var _this4 = this;
+
+          var tag = this.shadowRoot.querySelector("input").value;
+          tag = tag.replace(/,$/, "").trim(); // ensure there is no duplicate value / term
+
+          this.tagList = _toConsumableArray(
+            this.tagList.filter(function (i) {
+              if (i.term === _this4.shadowRoot.querySelector("input").value) {
+                return false;
+              }
+
+              return true;
+            })
+          );
+          var tagList = this.tagList;
+          tagList.push({
+            term: tag,
+            color: "grey",
+          });
           this.tagList = _toConsumableArray(tagList);
           this.shadowRoot.querySelector("input").value = "";
         },
@@ -552,7 +599,7 @@ var SimpleFieldsTagList =
       {
         key: "prefixTemplate",
         get: function get() {
-          var _this4 = this;
+          var _this5 = this;
 
           return (0, _litElement.html)(
             _templateObject3(),
@@ -563,7 +610,7 @@ var SimpleFieldsTagList =
             ),
             this.tagList.map(function (tag) {
               return (0,
-              _litElement.html)(_templateObject4(), tag, _this4.removeTag);
+              _litElement.html)(_templateObject4(), tag, tag.term, tag.color, _this5.removeTag);
             })
           );
         },

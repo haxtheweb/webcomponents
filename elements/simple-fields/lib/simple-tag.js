@@ -22,12 +22,16 @@ export class SimpleTag extends LitElement {
         type: Boolean,
         reflect: true,
       },
+      icon: { type: String },
       disabled: {
         type: Boolean,
         reflect: true,
       },
       value: {
         type: String,
+      },
+      data: {
+        type: Object,
       },
       cancelButton: {
         type: Boolean,
@@ -37,6 +41,8 @@ export class SimpleTag extends LitElement {
   }
   constructor() {
     super();
+    this.data = {};
+    this.icon = "cancel";
     this.cancelButton = false;
     this.disabled = false;
     this.readonly = false;
@@ -71,6 +77,7 @@ export class SimpleTag extends LitElement {
           );
         }
         simple-icon-button-lite {
+          cursor: pointer;
           margin-left: 4px;
           --simple-icon-height: var(--simple-fields-font-size, 16px);
           --simple-icon-width: var(--simple-fields-font-size, 16px);
@@ -91,7 +98,7 @@ export class SimpleTag extends LitElement {
         ? ""
         : html`
             <simple-icon-button-lite
-              icon="cancel"
+              icon="${this.icon}"
               label="Remove ${this.value}"
               ?hidden="${this.cancelButton}"
               @click="${this.clickEvent}"

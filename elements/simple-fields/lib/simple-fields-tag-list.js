@@ -37,11 +37,11 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
           margin: calc(0.5 * var(--simple-fields-button-padding, 2px))
             var(--simple-fields-button-padding, 2px);
         }
+        .drag-focus {
+          background-color: var(--simple-fields-accent-color, #3f51b5);
+        }
       `,
     ];
-  }
-  render() {
-    return !this.hasFieldSet ? super.render() : this.fieldsetTemplate;
   }
 
   static get properties() {
@@ -100,7 +100,10 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
       ${this.tagList.map(
         (tag) => html`
           <simple-tag
-            value="${tag}"
+            cancel-button
+            .data=${tag}
+            value="${tag.term}"
+            accent-color="${tag.color}"
             @simple-tag-clicked="${this.removeTag}"
           ></simple-tag>
         `
@@ -111,6 +114,11 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
     return html`
       <span class="input-option" part="option-inner">
         <input
+          @keydown="${this._handleKeydown}"
+          @keyup="${this._handleKeyup}"
+          @dragleave="${this._handleDragLeave}"
+          @dragover="${this._handleDragEnter}"
+          @drop="${this._handleDragDrop}"
           ?autofocus="${this.autofocus}"
           aria-descrbedby="${this.describedBy || ""}"
           .aria-invalid="${this.error ? "true" : "false"}"
@@ -122,14 +130,12 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
           ?hidden="${this.hidden}"
           id="${this.id}"
           @input="${this._handleFieldChange}"
-          @keydown="${this._handleKeydown}"
-          @keyup="${this._handleKeyup}"
           name="${this.id}"
           .placeholder="${this.placeholder || ""}"
           ?readonly="${this.readonly}"
           ?required="${this.required}"
           tabindex="0"
-          type="${this.type}"
+          type="text"
           value="${this.value}"
           part="option-input"
         />
@@ -139,12 +145,45 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
   removeTag(e) {
     this.tagList = [
       ...this.tagList.filter((i) => {
-        if (i === e.detail.value) {
+        if (i.term === e.detail.value) {
           return false;
         }
         return true;
       }),
     ];
+  }
+  _handleDragLeave(e) {
+    this.shadowRoot
+      .querySelector("simple-fields-field")
+      .classList.remove("drag-focus");
+  }
+  _handleDragEnter(e) {
+    e.preventDefault();
+    this.shadowRoot
+      .querySelector("simple-fields-field")
+      .classList.add("drag-focus");
+  }
+  _handleDragDrop(e) {
+    e.preventDefault();
+    this.shadowRoot
+      .querySelector("simple-fields-field")
+      .classList.remove("drag-focus");
+    // sanity check we have text here; this HAS to have been set by
+    if (JSON.parse(e.dataTransfer.getData("text"))) {
+      let tmp = JSON.parse(e.dataTransfer.getData("text"));
+      // ensure there is no duplicate value / term
+      this.tagList = [
+        ...this.tagList.filter((i) => {
+          if (i.term === tmp.term) {
+            return false;
+          }
+          return true;
+        }),
+      ];
+      let tagList = this.tagList;
+      tagList.push(tmp);
+      this.tagList = [...tagList];
+    }
   }
   _handleKeydown(e) {
     if (
@@ -160,10 +199,22 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
     }
   }
   _updateTaglist() {
-    // @todo prevent same tag from being added twice
-    let tagList = this.tagList,
-      tag = this.shadowRoot.querySelector("input").value;
-    tagList.push(tag.replace(/,$/, "").trim());
+    let tag = this.shadowRoot.querySelector("input").value;
+    tag = tag.replace(/,$/, "").trim();
+    // ensure there is no duplicate value / term
+    this.tagList = [
+      ...this.tagList.filter((i) => {
+        if (i.term === this.shadowRoot.querySelector("input").value) {
+          return false;
+        }
+        return true;
+      }),
+    ];
+    let tagList = this.tagList;
+    tagList.push({
+      term: tag,
+      color: "grey",
+    });
     this.tagList = [...tagList];
     this.shadowRoot.querySelector("input").value = "";
   }
