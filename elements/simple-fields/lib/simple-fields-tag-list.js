@@ -15,6 +15,7 @@ import "./simple-tag.js";
  * @class SimpleFieldsTagList
  * @extends {class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
 (LitElement)}
+ * @demo ./demo/tags.html Demo
  */
 class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
   static get tag() {
@@ -22,6 +23,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
   }
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;

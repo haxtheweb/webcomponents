@@ -9,8 +9,6 @@ var _litElement = require("lit-element/lit-element.js");
 
 var _simpleFieldsField = require("./simple-fields-field.js");
 
-var _utils = require("@lrnwebcomponents/utils/utils.js");
-
 require("./simple-tag.js");
 
 function _typeof(obj) {
@@ -34,7 +32,7 @@ function _typeof(obj) {
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
     '\n          <simple-tag\n            value="',
-    '"\n            @simple-tag-remove-clicked="',
+    '"\n            @simple-tag-clicked="',
     '"\n          ></simple-tag>\n        ',
   ]);
 
@@ -75,7 +73,7 @@ function _templateObject2() {
     '"\n          ?required="',
     '"\n          tabindex="0"\n          type="',
     '"\n          value="',
-    '"\n          part="option-input"\n        />\n    ',
+    '"\n          part="option-input"\n        />\n      </span>\n    ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -136,7 +134,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: block;\n        }\n        #field-main-inner {\n          align-items: center;\n          flex-wrap: wrap;\n        }\n        simple-tag {\n          flex: 0 1 auto;\n          margin: calc(0.5 * var(--simple-fields-button-padding, 2px)) var(--simple-fields-button-padding, 2px);\n        }\n      ",
+    "\n        :host {\n          display: block;\n        }\n        #field-main-inner {\n          align-items: center;\n          flex-wrap: wrap;\n        }\n        simple-tag {\n          flex: 0 1 auto;\n          margin: calc(0.5 * var(--simple-fields-button-padding, 2px))\n            var(--simple-fields-button-padding, 2px);\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -287,6 +285,7 @@ function _getPrototypeOf(o) {
  * @class SimpleFieldsTagList
  * @extends {class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
 (LitElement)}
+ * @demo ./demo/tags.html Demo
  */
 var SimpleFieldsTagList =
   /*#__PURE__*/

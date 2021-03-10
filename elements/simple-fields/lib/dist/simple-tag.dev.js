@@ -31,7 +31,7 @@ function _typeof(obj) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    "\n        :host {\n          display: inline-flex;\n          align-items: center;\n          background-color: var(--simple-fields-button-color, var(--simple-fields-color));\n          color: var(\n            --simple-fields-button-background-color,\n            var(--simple-fields-background-color)\n          );\n          font-size: var(--simple-fields-font-size, 16px);\n          font-family: var(--simple-fields-font-family, sans-serif);\n          line-height: var(--simple-fields-line-height, 22px);\n          border-radius: var(--simple-fields-tag-border-radius, 4px);\n          padding: var(--simple-fields-button-padding, 2px) calc(2 * var(--simple-fields-button-padding, 2px));\n          border-width: 1px;\n          border-style: solid;\n          border-color: var(\n            --simple-fields-fieldset-border-color,\n            var(--simple-fields-border-color-light, #ccc)\n          );\n        }\n        simple-icon-button-lite {\n          margin-left: 4px;\n          --simple-icon-height: var(--simple-fields-font-size, 16px);\n          --simple-icon-width: var(--simple-fields-font-size, 16px);\n        }\n        :host([disabled]):not([readonly]) {\n          opacity: 0.5;\n        }\n      ",
+    "\n        :host {\n          display: inline-flex;\n          align-items: center;\n          background-color: var(\n            --simple-fields-button-color,\n            var(--simple-fields-color)\n          );\n          color: var(\n            --simple-fields-button-background-color,\n            var(--simple-fields-background-color)\n          );\n          font-size: var(--simple-fields-font-size, 16px);\n          font-family: var(--simple-fields-font-family, sans-serif);\n          line-height: var(--simple-fields-line-height, 22px);\n          border-radius: var(--simple-fields-tag-border-radius, 4px);\n          padding: var(--simple-fields-button-padding, 2px)\n            calc(2 * var(--simple-fields-button-padding, 2px));\n          border-width: 1px;\n          border-style: solid;\n          border-color: var(\n            --simple-fields-fieldset-border-color,\n            var(--simple-fields-border-color-light, #ccc)\n          );\n        }\n        simple-icon-button-lite {\n          margin-left: 4px;\n          --simple-icon-height: var(--simple-fields-font-size, 16px);\n          --simple-icon-width: var(--simple-fields-font-size, 16px);\n        }\n        :host([hidden]) {\n          display: none;\n        }\n        :host([disabled]):not([readonly]) {\n          opacity: 0.5;\n        }\n      ",
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -43,10 +43,11 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n        <simple-icon-button-lite\n          icon="cancel"\n          label="Remove ',
-    '"\n          @click="',
-    '"\n          ?disabled="',
-    '"\n          ></simple-icon-button-lite>\n      ',
+    '\n            <simple-icon-button-lite\n              icon="cancel"\n              label="Remove ',
+    '"\n              ?hidden="',
+    '"\n              @click="',
+    '"\n              ?disabled="',
+    '"\n            ></simple-icon-button-lite>\n          ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -146,6 +147,14 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+/**
+ *
+ * @customElement
+ * @element simple-tag
+ * @class SimpleTag
+ * @extends {LitElement}
+ * @demo ./demo/tags.html Demo
+ */
 var SimpleTag =
   /*#__PURE__*/
   (function (_LitElement) {
@@ -173,6 +182,10 @@ var SimpleTag =
             value: {
               type: String,
             },
+            cancelButton: {
+              type: Boolean,
+              attribute: "cancel-button",
+            },
           };
         },
       },
@@ -187,6 +200,7 @@ var SimpleTag =
         this,
         _getPrototypeOf(SimpleTag).call(this)
       );
+      _this.cancelButton = false;
       _this.disabled = false;
       _this.readonly = false;
       return _this;
@@ -206,17 +220,18 @@ var SimpleTag =
                 : (0, _litElement.html)(
                     _templateObject2(),
                     this.value,
-                    this.removeClick,
+                    this.cancelButton,
+                    this.clickEvent,
                     this.disabled
                   )
             );
           },
         },
         {
-          key: "removeClick",
-          value: function removeClick(e) {
+          key: "clickEvent",
+          value: function clickEvent(e) {
             this.dispatchEvent(
-              new CustomEvent("simple-tag-remove-clicked", {
+              new CustomEvent("simple-tag-clicked", {
                 composed: false,
                 bubbles: false,
                 cancelable: false,

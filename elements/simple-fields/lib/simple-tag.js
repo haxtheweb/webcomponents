@@ -4,7 +4,14 @@ import {
   SimpleFieldsButtonStyles,
   SimpleFieldsTooltipStyles,
 } from "./simple-fields-ui.js";
-
+/**
+ *
+ * @customElement
+ * @element simple-tag
+ * @class SimpleTag
+ * @extends {LitElement}
+ * @demo ./demo/tags.html Demo
+ */
 export class SimpleTag extends LitElement {
   static get tag() {
     return "simple-tag";
