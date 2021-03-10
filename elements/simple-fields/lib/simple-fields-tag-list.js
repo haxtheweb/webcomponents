@@ -74,6 +74,9 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
     this.value = "";
     this.tagList = [];
     this.id = this._generateUUID();
+    this.addEventListener("dragleave", this._handleDragLeave);
+    this.addEventListener("dragover", this._handleDragEnter);
+    this.addEventListener("drop", this._handleDragDrop);
   }
   disconnectedCallback() {
     this.removeEventListener("click", (e) => this.focus());
@@ -97,17 +100,19 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
   get prefixTemplate() {
     return html`
       ${super.prefixTemplate}
-      ${this.tagList.map(
-        (tag) => html`
-          <simple-tag
-            cancel-button
-            .data=${tag}
-            value="${tag.term}"
-            accent-color="${tag.color}"
-            @simple-tag-clicked="${this.removeTag}"
-          ></simple-tag>
-        `
-      )}
+      <slot name="taglist">
+        ${this.tagList.map(
+          (tag) => html`
+            <simple-tag
+              cancel-button
+              .data=${tag}
+              value="${tag.term}"
+              accent-color="${tag.color}"
+              @simple-tag-clicked="${this.removeTag}"
+            ></simple-tag>
+          `
+        )}
+      </slot>
     `;
   }
   getInput() {
@@ -116,9 +121,6 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
         <input
           @keydown="${this._handleKeydown}"
           @keyup="${this._handleKeyup}"
-          @dragleave="${this._handleDragLeave}"
-          @dragover="${this._handleDragEnter}"
-          @drop="${this._handleDragDrop}"
           ?autofocus="${this.autofocus}"
           aria-descrbedby="${this.describedBy || ""}"
           .aria-invalid="${this.error ? "true" : "false"}"
@@ -153,21 +155,15 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
     ];
   }
   _handleDragLeave(e) {
-    this.shadowRoot
-      .querySelector("simple-fields-field")
-      .classList.remove("drag-focus");
+    this.classList.remove("drag-focus");
   }
   _handleDragEnter(e) {
     e.preventDefault();
-    this.shadowRoot
-      .querySelector("simple-fields-field")
-      .classList.add("drag-focus");
+    this.classList.add("drag-focus");
   }
   _handleDragDrop(e) {
     e.preventDefault();
-    this.shadowRoot
-      .querySelector("simple-fields-field")
-      .classList.remove("drag-focus");
+    this.classList.remove("drag-focus");
     // sanity check we have text here; this HAS to have been set by
     if (JSON.parse(e.dataTransfer.getData("text"))) {
       let tmp = JSON.parse(e.dataTransfer.getData("text"));

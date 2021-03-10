@@ -31,11 +31,11 @@ function _typeof(obj) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    "\n          <simple-tag\n            cancel-button\n            .data=",
-    '\n            value="',
-    '"\n            accent-color="',
-    '"\n            @simple-tag-clicked="',
-    '"\n          ></simple-tag>\n        ',
+    "\n            <simple-tag\n              cancel-button\n              .data=",
+    '\n              value="',
+    '"\n              accent-color="',
+    '"\n              @simple-tag-clicked="',
+    '"\n            ></simple-tag>\n          ',
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -46,7 +46,11 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n      ", "\n      ", "\n    "]);
+  var data = _taggedTemplateLiteral([
+    "\n      ",
+    '\n      <slot name="taglist">\n        ',
+    "\n      </slot>\n    ",
+  ]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -59,9 +63,6 @@ function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <span class="input-option" part="option-inner">\n        <input\n          @keydown="',
     '"\n          @keyup="',
-    '"\n          @dragleave="',
-    '"\n          @dragover="',
-    '"\n          @drop="',
     '"\n          ?autofocus="',
     '"\n          aria-descrbedby="',
     '"\n          .aria-invalid="',
@@ -360,6 +361,13 @@ var SimpleFieldsTagList =
       _this.value = "";
       _this.tagList = [];
       _this.id = _this._generateUUID();
+
+      _this.addEventListener("dragleave", _this._handleDragLeave);
+
+      _this.addEventListener("dragover", _this._handleDragEnter);
+
+      _this.addEventListener("drop", _this._handleDragDrop);
+
       return _this;
     }
 
@@ -406,9 +414,6 @@ var SimpleFieldsTagList =
             _templateObject2(),
             this._handleKeydown,
             this._handleKeyup,
-            this._handleDragLeave,
-            this._handleDragEnter,
-            this._handleDragDrop,
             this.autofocus,
             this.describedBy || "",
             this.error ? "true" : "false",
@@ -444,27 +449,21 @@ var SimpleFieldsTagList =
       {
         key: "_handleDragLeave",
         value: function _handleDragLeave(e) {
-          this.shadowRoot
-            .querySelector("simple-fields-field")
-            .classList.remove("drag-focus");
+          this.classList.remove("drag-focus");
         },
       },
       {
         key: "_handleDragEnter",
         value: function _handleDragEnter(e) {
           e.preventDefault();
-          this.shadowRoot
-            .querySelector("simple-fields-field")
-            .classList.add("drag-focus");
+          this.classList.add("drag-focus");
         },
       },
       {
         key: "_handleDragDrop",
         value: function _handleDragDrop(e) {
           e.preventDefault();
-          this.shadowRoot
-            .querySelector("simple-fields-field")
-            .classList.remove("drag-focus"); // sanity check we have text here; this HAS to have been set by
+          this.classList.remove("drag-focus"); // sanity check we have text here; this HAS to have been set by
 
           if (JSON.parse(e.dataTransfer.getData("text"))) {
             var tmp = JSON.parse(e.dataTransfer.getData("text")); // ensure there is no duplicate value / term
