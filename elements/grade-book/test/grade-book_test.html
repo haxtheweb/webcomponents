@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../grade-book.js"></script>
+  </head>
+  <body>
+
+    <grade-book>
+      This is the element content.
+    </grade-book>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <grade-book></grade-book>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <grade-book></grade-book>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<grade-book>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('grade-book'), customElements.get("grade-book", 'grade-book should be an instance of gradeBook'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>

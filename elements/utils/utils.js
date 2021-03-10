@@ -10,6 +10,18 @@ function wrap(el, wrapper) {
   }
 }
 
+/**
+ * Wrap an array of items all at once
+ */
+function wrapAll(ary, wrapper) {
+  if (ary && ary.length) {
+    ary[0].parentNode.insertBefore(wrapper, ary[0]);
+    for (var i in ary) {
+      wrapper.appendChild(ary[i]);
+    }
+  }
+}
+
 // unwrap away from an element; super basic but makes it consistent across our apps
 function unwrap(el) {
   if (el && el.parentNode) {
@@ -607,6 +619,7 @@ export const winEventsElement = function (SuperClass) {
 
 export {
   wrap,
+  wrapAll,
   unwrap,
   formatHTML,
   validURL,

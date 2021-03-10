@@ -123,91 +123,89 @@ inputMethod: {                //for fields in "this.fields", define elements bas
  * @demo ./demo/conditional.html Conditional Logic
  * @demo ./demo/subschema.html Subschemas
  * @demo ./demo/form.html Form
+ * @demo ./demo/tags.html Tagging tags
  */
 class SimpleFields extends SimpleFieldsLite {
-  
   //styles function
   static get styles() {
-    return  [
+    return [
       ...super.styles,
       css`
-:host {
-  display: block;
-  --simple-picker-background-color: var(--simple-fields-background-color,transparent);
-  --simple-picker-border-width: 0;
-  --simple-picker-focus-border-width: 0;
-  --simple-picker-display: block;
-  --simple-picker-listbox-border-width: 1px;
-  --simple-picker-listbox-outline: none;
-}
+        :host {
+          display: block;
+          --simple-picker-background-color: var(
+            --simple-fields-background-color,
+            transparent
+          );
+          --simple-picker-border-width: 0;
+          --simple-picker-focus-border-width: 0;
+          --simple-picker-display: block;
+          --simple-picker-listbox-border-width: 1px;
+          --simple-picker-listbox-outline: none;
+        }
 
-:host([hidden]) {
-  display: none;
-}
-      `
+        :host([hidden]) {
+          display: none;
+        }
+      `,
     ];
   }
 
-// render function
+  // render function
   render() {
-    return html`
-
-<div id="schema-fields" aria-live="polite" part="fields-list">
-  <slot></slot>
-</div>`;
+    return html` <div id="schema-fields" aria-live="polite" part="fields-list">
+      <slot></slot>
+    </div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {}
-;
+    return {};
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  "disableResponsive": {
-    "type": Boolean,
-    "attribute": "disable-responsive"
-  },
-  /**
-   * Fields to convert to JSON Schema.
-   */
-  "fields": {
-    "type": Array
-  },
-  /**
-   * Conversion from fields array with inputMethods to JSON schema types and formats.
-   * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
-   */
-  "schematizer": {
-    "type": Object,
-    "attribute": "schematizer"
-  },
-  /**
-   * Schema label
-   */
-  "label": {
-    "type": String
-  },
-  /**
-   * tracks all activeTabs as an object
-   */
-  "__activeTabs": {
-    "type": Object,
-    "attribute": "active-path"
-  },
-  /**
-   * default theme for code editor
-   */
-  "codeTheme": {
-    "type": String,
-    "attribute": "code-theme"
-  }
-}
-;
+      ...super.properties,
+
+      disableResponsive: {
+        type: Boolean,
+        attribute: "disable-responsive",
+      },
+      /**
+       * Fields to convert to JSON Schema.
+       */
+      fields: {
+        type: Array,
+      },
+      /**
+       * Conversion from fields array with inputMethods to JSON schema types and formats.
+       * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
+       */
+      schematizer: {
+        type: Object,
+        attribute: "schematizer",
+      },
+      /**
+       * Schema label
+       */
+      label: {
+        type: String,
+      },
+      /**
+       * tracks all activeTabs as an object
+       */
+      __activeTabs: {
+        type: Object,
+        attribute: "active-path",
+      },
+      /**
+       * default theme for code editor
+       */
+      codeTheme: {
+        type: String,
+        attribute: "code-theme",
+      },
+    };
   }
 
   /**

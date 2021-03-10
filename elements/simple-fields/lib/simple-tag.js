@@ -9,12 +9,16 @@ export class SimpleTag extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
+      icon: { type: String },
       disabled: {
         type: Boolean,
         reflect: true,
       },
       value: {
         type: String,
+      },
+      data: {
+        type: Object,
       },
       cancelButton: {
         type: Boolean,
@@ -24,6 +28,8 @@ export class SimpleTag extends SimpleColors {
   }
   constructor() {
     super();
+    this.data = {};
+    this.icon = "cancel";
     this.cancelButton = false;
     this.disabled = false;
   }
@@ -53,8 +59,8 @@ export class SimpleTag extends SimpleColors {
         simple-icon-button-lite {
           cursor: pointer;
           color: var(--simple-colors-default-theme-accent-11, #aaaaaa);
-          --simple-icon-height: 16px;
-          --simple-icon-width: 16px;
+          --simple-icon-height: 14px;
+          --simple-icon-width: 14px;
         }
         simple-icon-button-lite:hover,
         simple-icon-button-lite:active,
@@ -69,8 +75,8 @@ export class SimpleTag extends SimpleColors {
       <div>
         <span>${this.value}<slot></slot></span>
         <simple-icon-button-lite
-          icon="cancel"
-          ?hidden="${this.cancelButton}"
+          icon="${this.icon}"
+          ?hidden="${!this.cancelButton}"
           @click="${this.clickEvent}"
         ></simple-icon-button-lite>
       </div>

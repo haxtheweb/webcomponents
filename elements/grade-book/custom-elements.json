@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "grade-book",
+      "path": "./grade-book.js",
+      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`"
+    },
+    {
+      "name": "grade-book",
+      "path": "./src/grade-book.js",
+      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`"
+    }
+  ]
+}

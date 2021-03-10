@@ -23,6 +23,12 @@ class SimpleFieldsTagList extends SimpleFieldsField {
         :host {
           display: block;
         }
+        .drag-focus {
+          background-color: var(
+            --simple-colors-default-theme-accent-2,
+            #aaaaaa
+          );
+        }
       `,
     ];
   }
@@ -83,44 +89,99 @@ class SimpleFieldsTagList extends SimpleFieldsField {
   get fieldMainTemplate() {
     return html`
       <div class="field-main" part="field-main">
-        ${this.tagList.map(
-          (tag) => html`
-            <simple-tag
-              value="${tag}"
-              @simple-tag-clicked="${this.removeTag}"
-            ></simple-tag>
-          `
-        )}
         <simple-fields-field
           @keydown="${this._handleKeydown}"
+          @dragleave="${this._handleDragLeave}"
+          @dragover="${this._handleDragEnter}"
+          @drop="${this._handleDragDrop}"
           ?disabled="${this.disabled}"
           name="${this.id}"
           value="${this.value}"
           type="text"
           label="${this.label}"
           required
-        ></simple-fields-field>
+        >
+          ${this.tagList.map(
+            (tag) => html`
+              <simple-tag
+                cancel-button
+                slot="prefix"
+                .data=${tag}
+                value="${tag.term}"
+                accent-color="${tag.color}"
+                @simple-tag-clicked="${this.removeTag}"
+              ></simple-tag>
+            `
+          )}
+        </simple-fields-field>
       </div>
     `;
   }
   removeTag(e) {
     this.tagList = [
       ...this.tagList.filter((i) => {
-        if (i === e.detail.value) {
+        if (i.term === e.detail.value) {
           return false;
         }
         return true;
       }),
     ];
   }
+  _handleDragLeave(e) {
+    this.shadowRoot
+      .querySelector("simple-fields-field")
+      .classList.remove("drag-focus");
+  }
+  _handleDragEnter(e) {
+    e.preventDefault();
+    this.shadowRoot
+      .querySelector("simple-fields-field")
+      .classList.add("drag-focus");
+  }
+  _handleDragDrop(e) {
+    e.preventDefault();
+    this.shadowRoot
+      .querySelector("simple-fields-field")
+      .classList.remove("drag-focus");
+    // sanity check we have text here; this HAS to have been set by
+    if (JSON.parse(e.dataTransfer.getData("text"))) {
+      let tmp = JSON.parse(e.dataTransfer.getData("text"));
+      // ensure there is no duplicate value / term
+      this.tagList = [
+        ...this.tagList.filter((i) => {
+          if (i.term === tmp.term) {
+            return false;
+          }
+          return true;
+        }),
+      ];
+      let tagList = this.tagList;
+      tagList.push(tmp);
+      this.tagList = [...tagList];
+    }
+  }
   _handleKeydown(e) {
     if (
       e.key === "Enter" &&
       this.shadowRoot.querySelector("simple-fields-field").value != ""
     ) {
-      // @todo prevent same tag from being added twice
+      // ensure there is no duplicate value / term
+      this.tagList = [
+        ...this.tagList.filter((i) => {
+          if (
+            i.term ===
+            this.shadowRoot.querySelector("simple-fields-field").value
+          ) {
+            return false;
+          }
+          return true;
+        }),
+      ];
       let tagList = this.tagList;
-      tagList.push(this.shadowRoot.querySelector("simple-fields-field").value);
+      tagList.push({
+        term: this.shadowRoot.querySelector("simple-fields-field").value,
+        color: "grey",
+      });
       this.tagList = [...tagList];
       this.shadowRoot.querySelector("simple-fields-field").value = "";
     }
