@@ -106,7 +106,6 @@ export const SimpleFieldsButtonStyles = [
       font-size: var(--simple-fields-button-font-size, 14px);
       line-height: var(--simple-fields-button-line-height 22px);
       text-transform: var(--simple-fields-button-text-transform, unset);
-      border-width: 1px;
       border-radius: var(--simple-fields-border-radius, 2px);
       padding: var(--simple-fields-button-padding-sm, 1px)
         var(--simple-fields-button-padding, 2px);
@@ -240,6 +239,7 @@ export const SimpleFieldsFieldsetStyles = [
       );
       border-radius: var(--simple-fields-border-radius, 2px);
       transition: all 0.3s ease-in-out;
+      max-width: calc(100% - 2 * var(--simple-fields-margin, 16px) - 2px);
     }
     :host(:last-of-type) {
       margin-bottom: 0;

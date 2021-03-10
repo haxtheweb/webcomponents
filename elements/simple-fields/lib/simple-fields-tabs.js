@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
+import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import { A11yTabs } from "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import "./simple-fields-tab.js";
 import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
@@ -7,10 +7,12 @@ import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
  * `simple-fields-tabs` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
  *
+ * @customElement
  * @group simple-fields
  * @element simple-fields-tabs
- * @extends a11y-tabs
  * @extends simple-fields-fieldset
+ * @class SimpleFieldsTabs
+ * @extends {A11yTabs}
  */
 class SimpleFieldsTabs extends A11yTabs {
   constructor() {
@@ -43,7 +45,7 @@ class SimpleFieldsTabs extends A11yTabs {
   static get properties() {
     return {
       ...super.properties,
-      ...SimpleFieldsFieldset.properties,
+      ...SimpleFieldsFieldsetBehaviors.properties,
     };
   }
 
