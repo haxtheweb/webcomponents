@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsContainer } from "./simple-fields-container.js";
+import { SimpleFieldsFieldBehaviors } from "./simple-fields-field.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import "./simple-tag.js";
 
@@ -9,12 +9,15 @@ import "./simple-tag.js";
  * can return as a string or object based on
  * requirements of the implementing element
  *
+ * @customElement
  * @group simple-fields
- * @extends simple-fields-container
  * @element simple-fields-code
  * @demo ./demo/field.html
+ * @class SimpleFieldsTagList
+ * @extends {class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
+(LitElement)}
  */
-class SimpleFieldsTagList extends SimpleFieldsContainer {
+class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
   static get tag() {
     return "simple-fields-tag-list";
   }
@@ -24,6 +27,15 @@ class SimpleFieldsTagList extends SimpleFieldsContainer {
       css`
         :host {
           display: block;
+        }
+        #field-main-inner {
+          align-items: center;
+          flex-wrap: wrap;
+        }
+        simple-tag {
+          flex: 0 1 auto;
+          margin: calc(0.5 * var(--simple-fields-button-padding, 2px))
+            var(--simple-fields-button-padding, 2px);
         }
       `,
     ];
@@ -76,33 +88,52 @@ class SimpleFieldsTagList extends SimpleFieldsContainer {
   }
 
   /**
-   * template label and field
+   * template for slotted or shadow DOM prefix
    *
    * @readonly
    * @returns {object}
    * @memberof SimpleFieldsContainer
    */
-  get fieldMainTemplate() {
+  get prefixTemplate() {
     return html`
-      <div class="field-main" part="field-main">
-        ${this.tagList.map(
-          (tag) => html`
-            <simple-tag
-              value="${tag}"
-              @simple-tag-remove-clicked="${this.removeTag}"
-            ></simple-tag>
-          `
-        )}
-        <simple-fields-field
-          @keydown="${this._handleKeydown}"
+      ${super.prefixTemplate}
+      ${this.tagList.map(
+        (tag) => html`
+          <simple-tag
+            value="${tag}"
+            @simple-tag-remove-clicked="${this.removeTag}"
+          ></simple-tag>
+        `
+      )}
+    `;
+  }
+  getInput() {
+    return html`
+      <span class="input-option" part="option-inner">
+        <input
+          ?autofocus="${this.autofocus}"
+          aria-descrbedby="${this.describedBy || ""}"
+          .aria-invalid="${this.error ? "true" : "false"}"
+          @blur="${this._onFocusout}"
+          @change="${this._handleFieldChange}"
+          class="field box-input"
           ?disabled="${this.disabled}"
+          @focus="${this._onFocusin}"
+          ?hidden="${this.hidden}"
+          id="${this.id}"
+          @input="${this._handleFieldChange}"
+          @keydown="${this._handleKeydown}"
+          @keyup="${this._handleKeyup}"
           name="${this.id}"
+          .placeholder="${this.placeholder || ""}"
+          ?readonly="${this.readonly}"
+          ?required="${this.required}"
+          tabindex="0"
+          type="${this.type}"
           value="${this.value}"
-          type="text"
-          label="${this.label}"
-          required
-        ></simple-fields-field>
-      </div>
+          part="option-input"
+        />
+      </span>
     `;
   }
   removeTag(e) {
@@ -118,20 +149,29 @@ class SimpleFieldsTagList extends SimpleFieldsContainer {
   _handleKeydown(e) {
     if (
       e.key === "Enter" &&
-      this.shadowRoot.querySelector("simple-fields-field").value != ""
+      this.shadowRoot.querySelector("input").value != ""
     ) {
-      // @todo prevent same tag from being added twice
-      let tagList = this.tagList;
-      tagList.push(this.shadowRoot.querySelector("simple-fields-field").value);
-      this.tagList = [...tagList];
-      this.shadowRoot.querySelector("simple-fields-field").value = "";
+      this._updateTaglist();
     }
+  }
+  _handleKeyup(e) {
+    if (e.key === "," && this.shadowRoot.querySelector("input").value != "") {
+      this._updateTaglist();
+    }
+  }
+  _updateTaglist() {
+    // @todo prevent same tag from being added twice
+    let tagList = this.tagList,
+      tag = this.shadowRoot.querySelector("input").value;
+    tagList.push(tag.replace(/,$/, "").trim());
+    this.tagList = [...tagList];
+    this.shadowRoot.querySelector("input").value = "";
   }
   /**
    * overridden mutation observer
    *
    * @readonly
-   * @memberof SimpleFieldsContainer
+   * @memberof SimpleFieldsContainerBehaviors
    */
   get slottedFieldObserver() {}
 
@@ -167,7 +207,6 @@ class SimpleFieldsTagList extends SimpleFieldsContainer {
    * overridden for fields in shadow DOM
    *
    * @param {boolean} [init=true] whether to start observing or disconnect observer
-   * @memberof SimpleFieldsContainer
    */
   _observeAndListen(init = true) {
     if (init) {
@@ -179,18 +218,6 @@ class SimpleFieldsTagList extends SimpleFieldsContainer {
       this.removeEventListener("focusout", this._onFocusout);
       this.removeEventListener("focusin", this._onFocusin);
     }
-  }
-  /**
-   * generates a unique id
-   * @returns {string } unique id
-   */
-  _generateUUID() {
-    return "ss-s-s-s-sss".replace(
-      /s/g,
-      Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1)
-    );
   }
 }
 window.customElements.define(SimpleFieldsTagList.tag, SimpleFieldsTagList);
