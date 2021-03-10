@@ -12,6 +12,8 @@ import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
+import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
+import "@lrnwebcomponents/editable-table/lib/editable-table-display.js";
 import "./lib/grade-book-student-block.js";
 /**
  * `grade-book`
@@ -30,6 +32,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       assignments: 540222065,
       roster: 118800528,
       grades: 2130903440,
+      gradeScale: 980501320,
     };
     // what is tapped to get data
     this.activeSheetPage = "tags";
@@ -55,6 +58,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       assignments: [],
       roster: [],
       grades: [],
+      gradeScale: [],
     };
     this.disabled = false;
     this.loading = false;
@@ -219,9 +223,14 @@ class GradeBook extends I18NMixin(SimpleColors) {
     console.log(headings);
     console.log(table);
   }
+  processgradeScaleData(table, headings) {
+    console.log(headings);
+    console.log(table);
+  }
   static get properties() {
     return {
       ...super.properties,
+      loading: { type: Boolean },
       debug: { type: Boolean },
       sheet: { type: String },
       source: { type: String },
@@ -251,6 +260,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
   }
   render() {
     return html`
+      <loading-indicator ?loading="${this.loading}"></loading-indicator>
       <grid-plate layout="3-1">
         <a11y-tabs full-width slot="col-1">
           <a11y-tab icon="assignment-ind" label="Active student">
@@ -274,13 +284,62 @@ class GradeBook extends I18NMixin(SimpleColors) {
       </grid-plate>
       <grid-plate layout="3-1">
         <div slot="col-1">
-          ${this.rubricCategories.map(
-            (rubric) => html`
-              <simple-fields-tag-list
-                label="${rubric.title}"
-              ></simple-fields-tag-list>
-            `
-          )}
+          <editable-table-display
+            accent-color="${this.accentColor}"
+            bordered
+            captio="Exercise Rubric"
+            column-header
+            height="200px"
+            row-header
+            condensed
+            scroll
+            striped
+          >
+            <table>
+              <caption>
+                Exercise Rubric
+              </caption>
+              <tbody>
+                <tr>
+                  <td>Criteria</td>
+                  <td>Description</td>
+                  <td>Assessment Weight</td>
+                </tr>
+                <tr>
+                  <td>Concept Development</td>
+                  <td>Description of whatever here</td>
+                  <td>40%</td>
+                </tr>
+                <tr>
+                  ${this.rubricCategories.map(
+                    (rubric) => html`
+                      <td>
+                        <simple-fields-tag-list
+                          label="${rubric.title}"
+                        ></simple-fields-tag-list>
+                      </td>
+                    `
+                  )}
+                </tr>
+                <tr>
+                  <td>Technical Mastery</td>
+                  <td>Description of whatever here</td>
+                  <td>40%</td>
+                </tr>
+                <tr>
+                  ${this.rubricCategories.map(
+                    (rubric) => html`
+                      <td>
+                        <simple-fields-tag-list
+                          label="${rubric.title}"
+                        ></simple-fields-tag-list>
+                      </td>
+                    `
+                  )}
+                </tr>
+              </tbody>
+            </table>
+          </editable-table-display>
         </div>
         <a11y-collapse-group heading-button slot="col-2">
           ${this.debug
