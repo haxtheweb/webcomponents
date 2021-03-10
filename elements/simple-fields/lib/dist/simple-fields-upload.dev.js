@@ -343,11 +343,13 @@ function _getPrototypeOf(o) {
  * `simple-fields-upload` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
  *
+ * @customElement
  * @group simple-fields
  * @element simple-fields-upload
- * @extends a11y-tab
  * @extends simple-fields-fieldset
  * @demo ./demo/upload.html
+ * @class SimpleFieldsUpload
+ * @extends {SimpleFieldsFieldsetBehaviors(LitElement)}
  */
 var SimpleFieldsUpload =
   /*#__PURE__*/
@@ -524,7 +526,6 @@ var SimpleFieldsUpload =
 
           /**
            * focuses on field
-           * @memberof SimpleFieldsContainer
            */
           value: function focus() {
             if (this.field) {
@@ -820,7 +821,11 @@ var SimpleFieldsUpload =
     );
 
     return SimpleFieldsUpload;
-  })(_simpleFieldsFieldset.SimpleFieldsFieldset);
+  })(
+    (0, _simpleFieldsFieldset.SimpleFieldsFieldsetBehaviors)(
+      _litElement.LitElement
+    )
+  );
 
 exports.SimpleFieldsUpload = SimpleFieldsUpload;
 window.customElements.define(SimpleFieldsUpload.tag, SimpleFieldsUpload);

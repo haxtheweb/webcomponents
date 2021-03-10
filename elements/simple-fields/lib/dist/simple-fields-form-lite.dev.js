@@ -148,7 +148,7 @@ function _templateObject() {
     '"\n          .elementizer="',
     '"\n          .value="',
     '"\n          @value-changed="',
-    '" part="fields"\n        >\n        </simple-fields-lite>\n        <slot name="after"></slot>\n        <slot></slot>\n      </form>\n    ',
+    '"\n          part="fields"\n        >\n        </simple-fields-lite>\n        <slot name="after"></slot>\n        <slot></slot>\n      </form>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -238,10 +238,12 @@ function _setPrototypeOf(o, p) {
  * `simple-fields-form-lite`
  * binding and submission capabilities on top of simple-fields-lite
  *
+ * @customElement
  * @group simple-fields
  * @element simple-fields-form-lite
- * @extends simple-fields-lite
  * @demo ./demo/form-lite.html
+ * @class SimpleFieldsFormLite
+ * @extends {LitElement}
  */
 var SimpleFieldsFormLite =
   /*#__PURE__*/
