@@ -432,7 +432,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // the world
         s.appendChild(document.createTextNode(css));
       }
-      console.log(document.getElementsByTagName("head")[0], s);
       document.getElementsByTagName("head")[0].appendChild(s);
     }
     setTimeout(() => {
@@ -1088,6 +1087,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       } else if (this.__ignoreActive) {
         this.__ignoreActive = false;
       }
+      HAXStore.haxTray.updateMap();
     });
     this._observer.observe(this, {
       childList: true,
