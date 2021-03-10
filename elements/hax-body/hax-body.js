@@ -156,7 +156,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           --hax-body-active-outline: 0px solid var(---hax-ui-color-accent);
           --hax-body-active-drag-outline: 1px solid var(--hax-ui-color-accent);
           --hax-body-target-background-color: var(
-            --hax-ui-color-accent-secondary
+            --hax-ui-background-color-accent
           );
           --hax-body-possible-target-background-color: inherit;
         }
@@ -3086,7 +3086,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
-    if (this.editMode && e.target) {
+    if (this.editMode && e.target && HAXStore.__dragTarget) {
       this.__dragMoving = true;
       e.preventDefault();
       if (e.target && e.target.classList) {
