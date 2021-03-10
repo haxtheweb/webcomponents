@@ -283,6 +283,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           outline: var(--hax-body-active-outline-hover);
           caret-color: auto;
         }
+        :host(.hax-add-content-visible[edit-mode])
+          #bodycontainer
+          ::slotted(*.hax-active) {
+          margin-bottom: 30px;
+        }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[contenteditable]:hover) {
@@ -483,6 +488,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       clearTimeout(this.__mouseTimer);
       this.__activeHover = null;
       this._hideContextMenu(this.contextMenus.add);
+      this.classList.remove("hax-add-content-visible");
     }
   }
   _mouseMove(e) {
@@ -508,6 +514,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           if (!keep) {
             this.__activeHover = null;
             this._hideContextMenu(this.contextMenus.add);
+            this.classList.remove("hax-add-content-visible");
           }
         }
       }, 300);
@@ -539,6 +546,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             activeRect.width / 2 - addRect.width / 2,
             height
           );
+          this.classList.add("hax-add-content-visible");
         } else if (
           eventPath[0].closest(".column") &&
           eventPath[3] &&
@@ -607,9 +615,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             activeRect.width / 2 - addRect.width / 2,
             height
           );
+          this.classList.add("hax-add-content-visible");
         } else if (eventPath[0].closest("#bodycontainer")) {
           this.__activeHover = null;
           this._hideContextMenu(this.contextMenus.add);
+          this.classList.remove("hax-add-content-visible");
         }
       }, 400);
     }
@@ -839,6 +849,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // drop active hover to reset state
     this.__activeHover = null;
     this._hideContextMenu(this.contextMenus.add);
+    this.classList.remove("hax-add-content-visible");
   }
   /**
    * LitElement life cycle - properties changed callback
@@ -1795,6 +1806,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this._hideContextMenu(this.contextMenus.text);
     this._hideContextMenu(this.contextMenus.ce);
     this._hideContextMenu(this.contextMenus.add);
+    this.classList.remove("hax-add-content-visible");
     this.__activeHover = null;
     // secondary menus and clean up areas
     if (hidePlate) {
@@ -1916,6 +1928,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // force hiding add menu
     this.__activeHover = null;
     this._hideContextMenu(this.contextMenus.add);
+    this.classList.remove("hax-add-content-visible");
   }
   /**
    * Move grid plate around
