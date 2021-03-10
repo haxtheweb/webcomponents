@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsContainer } from "./simple-fields-container.js";
+import { SimpleFieldsContainerBehaviors } from "./simple-fields-container.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
@@ -9,12 +9,14 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
  * with label, description, error massage,
  * and aria-invalid functionality if needed.
  *
+ * @customElement
  * @group simple-fields
- * @extends simple-fields-container
  * @element simple-fields-code
  * @demo ./demo/field.html
+ * @class SimpleFieldsCode
+ * @extends {SimpleFieldsContainerBehaviors(LitElement)}
  */
-class SimpleFieldsCode extends SimpleFieldsContainer {
+class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
   static get tag() {
     return "simple-fields-code";
   }
@@ -139,7 +141,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
    *
    * @readonly
    * @returns {object}
-   * @memberof SimpleFieldsContainer
+   * @memberof SimpleFieldsContainerBehaviors
    */
   get fieldMainTemplate() {
     return html`
@@ -182,7 +184,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
    * overridden mutation observer
    *
    * @readonly
-   * @memberof SimpleFieldsContainer
+   * @memberof SimpleFieldsContainerBehaviors
    */
   get slottedFieldObserver() {}
 
@@ -221,7 +223,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
    * overridden for fields in shadow DOM
    *
    * @param {boolean} [init=true] whether to start observing or disconnect observer
-   * @memberof SimpleFieldsContainer
+   * @memberof SimpleFieldsContainerBehaviors
    */
   _observeAndListen(init = true) {
     if (init) {

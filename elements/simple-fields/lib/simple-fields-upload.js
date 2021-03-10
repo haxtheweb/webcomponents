@@ -1,7 +1,7 @@
 import { html, css, LitElement } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
-import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
+import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
@@ -11,13 +11,15 @@ import "@vaadin/vaadin-upload/vaadin-upload.js";
  * `simple-fields-upload` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
  *
+ * @customElement
  * @group simple-fields
  * @element simple-fields-upload
- * @extends a11y-tab
  * @extends simple-fields-fieldset
  * @demo ./demo/upload.html
+ * @class SimpleFieldsUpload
+ * @extends {SimpleFieldsFieldsetBehaviors(LitElement)}
  */
-class SimpleFieldsUpload extends SimpleFieldsFieldset {
+class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
   static get tag() {
     return "simple-fields-upload";
   }
@@ -395,7 +397,6 @@ class SimpleFieldsUpload extends SimpleFieldsFieldset {
   }
   /**
    * focuses on field
-   * @memberof SimpleFieldsContainer
    */
   focus() {
     if (this.field) {
