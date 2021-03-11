@@ -235,6 +235,16 @@ class EditableTableDisplay extends displayBehaviors(
     this.filterContains = true;
     import("./editable-table-sort.js");
     import("./editable-table-filter.js");
+    // notice changes and update the data to match
+    this._observer = new MutationObserver((mutations) => {
+      if (this.shadowRoot) {
+        this.importHTML(this.children.item(0));
+      }
+    });
+    this._observer.observe(this, {
+      childList: true,
+      subtree: true,
+    });
   }
   connectedCallback() {
     super.connectedCallback();
@@ -316,7 +326,6 @@ class EditableTableDisplay extends displayBehaviors(
       this.filtered = true;
     }
   }
-
   /**
    * Fires when data changed
    * @event change

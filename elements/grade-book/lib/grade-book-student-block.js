@@ -1,20 +1,12 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 class GradeBookStudentBlock extends I18NMixin(LitElement) {
   constructor() {
     super();
 
-    this.student = {
-      name: "sample student",
-      userId: "abc123",
-      email: "abc123@test.test",
-      prefName: "sample student",
-      accommodations: "gets extra time",
-      photo:
-        "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
-      interests: ["some", "interests"],
-    };
+    this.student = {};
     this.t = {
       profileImageFor: "Profile image for",
       userID: "User ID",
@@ -39,7 +31,7 @@ class GradeBookStudentBlock extends I18NMixin(LitElement) {
         display: block;
       }
       img {
-        max-width: 80%;
+        max-width: 150px;
         height: 150px;
         border-radius: 50%;
       }
@@ -48,16 +40,26 @@ class GradeBookStudentBlock extends I18NMixin(LitElement) {
         --grid-plate-item-margin: 0px;
         --grid-plate-item-padding: 4px;
       }
+      simple-icon-lite {
+        --simple-icon-height: 150px;
+        --simple-icon-width: 150px;
+      }
     `;
   }
   render() {
     return html`
       <grid-plate layout="1-2">
         <div slot="col-1" style="text-align:center;">
-          <img
-            src="${this.student.photo}"
-            alt="${this.t.photoOf} ${this.student.prefName}"
-          />
+          ${this.student.photo
+            ? html`
+                <img
+                  src="${this.student.photo}"
+                  alt="${this.t.photoOf} ${this.student.prefName}"
+                />
+              `
+            : html`
+                <simple-icon-lite icon="account-circle"></simple-icon-lite>
+              `}
         </div>
         <div slot="col-2">
           <h2>${this.student.name}</h2>

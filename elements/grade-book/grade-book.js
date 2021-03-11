@@ -28,7 +28,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
     // have to be updated to match
     this.sheetGids = {
       tags: 0,
-      rubics: 1744429439,
+      rubrics: 1744429439,
       assignments: 540222065,
       roster: 118800528,
       grades: 2130903440,
@@ -36,27 +36,15 @@ class GradeBook extends I18NMixin(SimpleColors) {
     };
     // what is tapped to get data
     this.activeSheetPage = "tags";
-    // make sure this pulls from the backend
-    this.rubricCategories = [
-      {
-        title: "Good",
-      },
-      {
-        title: "Areas for improvement",
-      },
-      {
-        title: "Considerations and oppurtunities",
-      },
-    ];
+    this.activeStudent = 0;
     this.database = {
       tags: {
-        headings: [],
         categories: [],
         data: [],
       },
-      rubics: [],
+      rubrics: [],
       assignments: [],
-      roster: [],
+      roster: [{}],
       grades: [],
       gradeScale: [],
     };
@@ -66,6 +54,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
     this.t = {
       csvURL: "CSV URL",
       debugData: "Debug data",
+      criteria: "Criteria",
+      description: "Description",
+      assessmentWeight: "Assessment Weight",
     };
     this.registerLocalization({
       context: this,
@@ -98,6 +89,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
             // this forces an update
             this.requestUpdate();
           }
+          console.log(this.database);
           this.loading = false;
         }, 100);
       }
@@ -154,82 +146,67 @@ class GradeBook extends I18NMixin(SimpleColors) {
     let table = this.CSVtoArray(text);
     let tmp = table.shift();
     let headings = {};
+    let data = [];
     for (var i in tmp) {
       headings[tmp[i]] = i;
     }
-    return this[`process${sheet}Data`](table, headings);
+    for (var i in table) {
+      let item = {};
+      for (var j in headings) {
+        item[j] = table[i][headings[j]];
+      }
+      // push data onto the database of all data we have now as objects
+      data.push(item);
+    }
+    return typeof this[`process${sheet}Data`] === "function"
+      ? this[`process${sheet}Data`](table, headings, data)
+      : data;
   }
   /**
    * Process our tagging structure for use in the rubric
    * Tag structure allows the instructor to drag and drop elements into
    * qualitative areas of a rubric
    */
-  processtagsData(table, headings) {
+  processtagsData(table, headings, data) {
     let categories = new Set([]);
     let rCategories = [];
-    let tagsData = [];
     // these must all exist as keys for us to proceed
-    if (
-      headings.term &&
-      headings.category &&
-      headings.description &&
-      headings.associatedMaterial
-    ) {
-      for (var i in table) {
-        let data = {
-          term: table[i][headings.term],
-          category: table[i][headings.category]
-            ? table[i][headings.category].split(",")
-            : [],
-          description: table[i][headings.description],
-          associatedMaterial: table[i][headings.associatedMaterial]
-            ? table[i][headings.associatedMaterial].split(",")
-            : [],
-        };
-        // trick to dedup the categories using a Set
-        data.category.forEach((item) => {
-          categories.add(item);
-        });
-        // push data onto the database of all data we have now as objects
-        tagsData.push(data);
-      }
+    for (var i in data) {
+      data[i].category = data[i].category ? data[i].category.split(",") : [];
+      data[i].associatedMaterial = data[i].associatedMaterial
+        ? data[i].associatedMaterial.split(",")
+        : [];
+      // trick to dedup the categories using a Set
+      data[i].category.forEach((item) => {
+        categories.add(item);
+      });
       // convert Set to Array for data visualization purposes
       rCategories = [...Array.from(categories)];
-    } else {
-      console.warn(
-        "Data requested needs term, category, description, and associatedMaterial as headings"
-      );
-      console.log(table);
     }
     return {
       categories: rCategories,
-      data: tagsData,
+      data: data,
     };
   }
+  processrubricsData(table, headings, data) {
+    for (var i in data) {
+      data[i].qualitative = data[i].qualitative
+        ? data[i].qualitative.split(",")
+        : [];
+    }
+    return data;
+  }
+  processrosterData(table, headings, data) {
+    for (var i in data) {
+      data[i].interests = data[i].interests ? data[i].interests.split(",") : [];
+    }
+    return data;
+  }
 
-  processrubicsData(table, headings) {
-    console.log(headings);
-    console.log(table);
-  }
-  processassignmentsData(table, headings) {
-    console.log(headings);
-    console.log(table);
-  }
-  processrosterData(table, headings) {
-    console.log(headings);
-    console.log(table);
-  }
-  processgradesData(table, headings) {
-    console.log(headings);
-    console.log(table);
-  }
-  processgradeScaleData(table, headings) {
-    console.log(headings);
-    console.log(table);
-  }
   static get properties() {
     return {
       ...super.properties,
+      activeStudent: { type: Number, attribute: "active-student" },
       loading: { type: Boolean },
       debug: { type: Boolean },
       sheet: { type: String },
@@ -240,7 +217,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
   }
   changeStudent(e) {
     if (e.target.value == "prev") {
+      this.activeStudent--;
     } else if (e.target.value == "next") {
+      this.activeStudent++;
     }
   }
   static get styles() {
@@ -264,7 +243,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
       <grid-plate layout="3-1">
         <a11y-tabs full-width slot="col-1">
           <a11y-tab icon="assignment-ind" label="Active student">
-            <grade-book-student-block></grade-book-student-block>
+            <grade-book-student-block
+              .student="${this.database.roster[this.activeStudent]}"
+            ></grade-book-student-block>
           </a11y-tab>
           <a11y-tab icon="assignment" label="Active Assignment">
             <p>This is where their work would go I guess</p>
@@ -274,10 +255,19 @@ class GradeBook extends I18NMixin(SimpleColors) {
           </a11y-tab>
         </a11y-tabs>
         <div slot="col-2">
-          <button @click="${this.changeStudent}" value="prev">
+          <button
+            @click="${this.changeStudent}"
+            value="prev"
+            ?disabled="${0 === this.activeStudent}"
+          >
             Previous student
           </button>
-          <button @click="${this.changeStudent}" value="next">
+          <button
+            @click="${this.changeStudent}"
+            value="next"
+            ?disabled="${this.database.roster.length - 1 ===
+            this.activeStudent}"
+          >
             Next student
           </button>
         </div>
@@ -301,42 +291,34 @@ class GradeBook extends I18NMixin(SimpleColors) {
               </caption>
               <tbody>
                 <tr>
-                  <td>Criteria</td>
-                  <td>Description</td>
-                  <td>Assessment Weight</td>
+                  <td>${this.t.criteria}</td>
+                  <td>${this.t.description}</td>
+                  <td>${this.t.assessmentWeight}</td>
                 </tr>
-                <tr>
-                  <td>Concept Development</td>
-                  <td>Description of whatever here</td>
-                  <td>40%</td>
-                </tr>
-                <tr>
-                  ${this.rubricCategories.map(
+                ${this.database.rubrics
+                  .filter((item) => {
+                    return item.shortName == "exercise";
+                  })
+                  .map(
                     (rubric) => html`
-                      <td>
-                        <simple-fields-tag-list
-                          label="${rubric.title}"
-                        ></simple-fields-tag-list>
-                      </td>
+                      <tr>
+                        <td>${rubric.criteria}</td>
+                        <td>${rubric.description}</td>
+                        <td>${rubric.points}${rubric.pointsSystem}</td>
+                      </tr>
+                      <tr>
+                        ${rubric.qualitative.map(
+                          (cat) => html`
+                            <td>
+                              <simple-fields-tag-list
+                                label="${cat}"
+                              ></simple-fields-tag-list>
+                            </td>
+                          `
+                        )}
+                      </tr>
                     `
                   )}
-                </tr>
-                <tr>
-                  <td>Technical Mastery</td>
-                  <td>Description of whatever here</td>
-                  <td>40%</td>
-                </tr>
-                <tr>
-                  ${this.rubricCategories.map(
-                    (rubric) => html`
-                      <td>
-                        <simple-fields-tag-list
-                          label="${rubric.title}"
-                        ></simple-fields-tag-list>
-                      </td>
-                    `
-                  )}
-                </tr>
               </tbody>
             </table>
           </editable-table-display>
