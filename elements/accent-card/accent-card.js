@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { HaxLayoutBehaviors } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXLayouts.js";
 
 /**
  * `accent-card`
@@ -67,7 +68,9 @@ Custom property | Description | Default
  * @demo ./demo/images.html image aligmnent
  * @demo ./demo/variables.html css variables
  */
-class AccentCard extends IntersectionObserverMixin(SimpleColors) {
+class AccentCard extends HaxLayoutBehaviors(
+  IntersectionObserverMixin(SimpleColors)
+) {
   /**
    * Store tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -260,11 +263,13 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           padding-bottom: var(--accent-card-heading-padding-bottom, 0px);
           margin: 0;
         }
-        ::slotted(*[slot="heading"]) {
+        :host > #card #heading ::slotted(*[slot="heading"]) {
           padding-top: var(
             --accent-card-heading-padding-top,
             var(--accent-card-padding, 20px)
           );
+          font-size: 26px;
+          font-weight: bold;
         }
         #heading h1 {
           margin: 0;
@@ -273,10 +278,10 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         #heading div {
           flex: 0 0 auto;
         }
-        :host([accent-heading][accent-color]) #heading h1 {
+        :host([accent-heading][accent-color]) #heading ::slotted(*) {
           color: var(
             --accent-card-heading-color,
-            var(--simple-colors-default-theme-accent-7, #000)
+            var(--simple-colors-default-theme-accent-7, #000) !important
           );
         }
         #subheading {
@@ -363,12 +368,45 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         </div>
         <div class="body">
           <div id="heading">
-            <h1><slot name="heading"></slot></h1>
-            <div><slot name="corner"></slot></div>
+            <div
+              data-label="Heading"
+              data-layout-order="1"
+              data-layout-slotname="heading"
+            >
+              <slot name="heading"></slot>
+            </div>
+            <div
+              data-label="Corner"
+              data-layout-order="2"
+              data-layout-slotname="Corner"
+            >
+              <slot name="corner"></slot>
+            </div>
           </div>
-          <div id="subheading"><slot name="subheading"></slot></div>
-          <div id="content"><slot name="content"></slot></div>
-          <div id="footer"><slot name="footer"></slot></div>
+          <div
+            id="subheading"
+            data-label="Subheading"
+            data-layout-order="3"
+            data-layout-slotname="subheading"
+          >
+            <slot name="subheading"></slot>
+          </div>
+          <div
+            id="content"
+            data-label="Content"
+            data-layout-order="4"
+            data-layout-slotname="content"
+          >
+            <slot name="content"></slot>
+          </div>
+          <div
+            id="footer"
+            data-label="Footer"
+            data-layout-order="5"
+            data-layout-slotname="footer"
+          >
+            <slot name="footer"></slot>
+          </div>
         </div>
       </article>
     `;
@@ -377,9 +415,11 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
   // haxProperty definition
   static get haxProperties() {
     return {
+      ...(super.haxProperties || {}),
+      canScale: true,
+      canPosition: true,
       canEditSource: true,
-      canPosition: false,
-      canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Accent Card",
         description: "A card with optional accent styling.",
@@ -393,7 +433,6 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           },
           {
             type: "image",
-            source: "imageSrc",
           },
           {
             type: "text",
@@ -412,24 +451,28 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             title: "Heading",
             description: "A heading for card.",
             inputMethod: "textfield",
+            slotWrapper: "h1",
           },
           {
             slot: "subheading",
             title: "Subheading",
             description: "An optional subheading for card.",
             inputMethod: "textfield",
+            slotWrapper: "p",
           },
           {
             slot: "content",
             title: "Content",
             description: "Content for card.",
             inputMethod: "textfield",
+            slotWrapper: "p",
           },
           {
             slot: "footer",
             title: "Footer",
             description: "An optional footer for card.",
             inputMethod: "textfield",
+            slotWrapper: "p",
           },
           {
             property: "imageSrc",
@@ -505,7 +548,15 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             inputMethod: "boolean",
           },
         ],
-        advanced: [],
+        advanced: [
+          {
+            slot: "corner",
+            title: "Corner",
+            description: "Content for card corner.",
+            inputMethod: "textfield",
+            slotWrapper: "div",
+          },
+        ],
       },
       demoSchema: [
         {
@@ -517,7 +568,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             imageSrc: "http://placekitten.com/200/600",
           },
           content:
-            '<span slot="heading">Card Heading</span>\n<p slot="content">This is the body of the card.</p>',
+            '<div slot="heading">Card Heading</div>\n<p slot="content">This is the body of the card.</p>',
         },
       ],
       saveOptions: {

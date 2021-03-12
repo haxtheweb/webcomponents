@@ -13,6 +13,55 @@ var _utils = require("@lrnwebcomponents/utils/utils.js");
 
 var _HAXLayouts = require("@lrnwebcomponents/hax-body-behaviors/lib/HAXLayouts.js");
 
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -33,14 +82,14 @@ function _typeof(obj) {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n          <div\n            class="column container ',
-    '"\n            id="col',
-    '"\n            data-label="column ',
-    '"\n            data-move-order="',
-    '"\n            data-slot-name="col-',
-    '"\n            .style="',
-    '"\n          >\n            <slot name="col-',
-    '"></slot>\n          </div>\n        ',
+    '\n            <div\n              class="column ',
+    '"\n              id="col',
+    '"\n              data-label="column ',
+    '"\n              data-layout-order="',
+    '"\n              data-layout-slotname="col-',
+    '"\n              .style="',
+    '"\n            >\n              <slot name="col-',
+    '"></slot>\n            </div>\n          ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -65,7 +114,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          display: block;\n        }\n        :host .row {\n          width: 100%;\n          overflow-wrap: break-word;\n          display: flex;\n          flex-wrap: wrap;\n          justify-content: space-between;\n          align-items: stretch;\n          margin: var(--grid-plate-row-margin, 0px);\n          padding: var(--grid-plate-row-padding, 0px);\n        }\n        :host([disable-responsive]) .column {\n          overflow: hidden;\n        }\n        :host .column {\n          width: 100%;\n          flex: 0 0 auto;\n          min-height: 50px;\n        }\n        /* make sure that animation for nothing to 2 col doesn\'t jar layout */\n        :host([layout="1-1"]) #col1 {\n          width: 50%;\n        }\n        :host([layout="1-1-1"]) #col1 {\n          width: 33.33%;\n        }\n        :host([layout="1-1-1-1"]) #col1 {\n          width: 25%;\n        }\n        :host([layout="1-1-1-1-1"]) #col1 {\n          width: 20%;\n        }\n        :host([layout="1-1-1-1-1-1"]) #col1 {\n          width: 16.66%;\n        }\n        .column.not-shown {\n          min-height: unset;\n        }\n        :host .column ::slotted(*) {\n          margin: var(--grid-plate-item-margin, 15px);\n          padding: var(--grid-plate-item-padding, 15px);\n          max-width: calc(100% - 60px);\n          max-width: -webkit-fill-available;\n        }\n      ',
+    '\n        :host {\n          display: block;\n          --hax-layout-container-outline-width: 1px;\n          --hax-layout-container-hover-outline-width: 1px;\n        }\n        :host .row {\n          width: 100%;\n          overflow-wrap: break-word;\n          display: flex;\n          flex-wrap: wrap;\n          justify-content: space-between;\n          align-items: stretch;\n          margin: var(--grid-plate-row-margin, 0px);\n          padding: var(--grid-plate-row-padding, 0px);\n        }\n        :host([disable-responsive]) .column {\n          overflow: hidden;\n        }\n        :host .column {\n          width: 100%;\n          flex: 0 0 auto;\n          min-height: 50px;\n        }\n        /* make sure that animation for nothing to 2 col doesn\'t jar layout */\n        :host([layout="1-1"]) #col1 {\n          width: 50%;\n        }\n        :host([layout="1-1-1"]) #col1 {\n          width: 33.33%;\n        }\n        :host([layout="1-1-1-1"]) #col1 {\n          width: 25%;\n        }\n        :host([layout="1-1-1-1-1"]) #col1 {\n          width: 20%;\n        }\n        :host([layout="1-1-1-1-1-1"]) #col1 {\n          width: 16.66%;\n        }\n        .column.not-shown {\n          min-height: unset;\n        }\n        :host .column ::slotted(*) {\n          margin: var(--grid-plate-item-margin, 15px);\n          padding: var(--grid-plate-item-padding, 15px);\n          max-width: calc(100% - 60px);\n          max-width: -webkit-fill-available;\n        }\n      ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -607,6 +656,10 @@ var GridPlate =
             return __columnWidths.length;
           },
         },
+        {
+          key: "haxactiveElementChanged",
+          value: function haxactiveElementChanged(el, val) {},
+        },
       ],
       [
         {
@@ -618,86 +671,90 @@ var GridPlate =
         {
           key: "haxProperties",
           get: function get() {
-            return {
-              type: "grid",
-              canScale: true,
-              canPosition: true,
-              canEditSource: true,
-              gizmo: {
-                title: "Grid layout",
-                description: "Simple card in a cool retro design",
-                icon: "hax:3-3-3-3",
-                color: "grey",
-                groups: ["Layout"],
-                handles: [],
-                meta: {
-                  author: "ELMS:LN",
-                  owner: "The Pennsylvania State University",
+            return _objectSpread(
+              {},
+              _get(_getPrototypeOf(GridPlate), "haxProperties", this) || {},
+              {
+                canScale: true,
+                canPosition: true,
+                canEditSource: true,
+                contentEditable: undefined,
+                gizmo: {
+                  title: "Grid layout",
+                  description: "Simple card in a cool retro design",
+                  icon: "hax:3-3-3-3",
+                  color: "grey",
+                  groups: ["Layout"],
+                  handles: [],
+                  meta: {
+                    author: "ELMS:LN",
+                    owner: "The Pennsylvania State University",
+                  },
                 },
-              },
-              settings: {
-                configure: [
-                  {
-                    property: "layout",
-                    title: "Column Layout",
-                    description:
-                      "Style to present these items (may change for small screens)",
-                    inputMethod: "select",
-                    options: new GridPlateLayoutOptions().options,
-                  },
-                  {
-                    property: "disableResponsive",
-                    title: "Disable responsive",
-                    description:
-                      "Check box to force layout to stick regardless of screen breakpoins",
-                    inputMethod: "boolean",
-                  },
-                ],
-                advanced: [
-                  {
-                    property: "breakpointSm",
-                    title: "Small Breakpoint",
-                    description:
-                      "Anything less than this number (in pixels) will render with the smallest version of this layout",
-                    inputMethod: "textfield",
-                    validationType: "number",
-                  },
-                  {
-                    property: "breakpointMd",
-                    title: "Medium Breakpoint",
-                    description:
-                      "Anything less than this number (in pixels) will render with the small version of this layout",
-                    inputMethod: "textfield",
-                    validationType: "number",
-                  },
-                  {
-                    property: "breakpointLg",
-                    title: "Large Breakpoint",
-                    description:
-                      "Anything less than this number (in pixels) will render with the medium version of this layout.",
-                    inputMethod: "textfield",
-                    validationType: "number",
-                  },
-                  {
-                    property: "breakpointXl",
-                    title: "Extra-Large Breakpoint",
-                    description:
-                      "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
-                    inputMethod: "textfield",
-                    validationType: "number",
-                  },
-                ],
-              },
-              saveOptions: {
-                unsetAttributes: [
-                  "ready",
-                  "layouts",
-                  "columns",
-                  "options",
-                  "responsive-width",
-                ],
-              },
-            };
+                settings: {
+                  configure: [
+                    {
+                      property: "layout",
+                      title: "Column Layout",
+                      description:
+                        "Style to present these items (may change for small screens)",
+                      inputMethod: "select",
+                      options: new GridPlateLayoutOptions().options,
+                    },
+                    {
+                      property: "disableResponsive",
+                      title: "Disable responsive",
+                      description:
+                        "Check box to force layout to stick regardless of screen breakpoins",
+                      inputMethod: "boolean",
+                    },
+                  ],
+                  advanced: [
+                    {
+                      property: "breakpointSm",
+                      title: "Small Breakpoint",
+                      description:
+                        "Anything less than this number (in pixels) will render with the smallest version of this layout",
+                      inputMethod: "textfield",
+                      validationType: "number",
+                    },
+                    {
+                      property: "breakpointMd",
+                      title: "Medium Breakpoint",
+                      description:
+                        "Anything less than this number (in pixels) will render with the small version of this layout",
+                      inputMethod: "textfield",
+                      validationType: "number",
+                    },
+                    {
+                      property: "breakpointLg",
+                      title: "Large Breakpoint",
+                      description:
+                        "Anything less than this number (in pixels) will render with the medium version of this layout.",
+                      inputMethod: "textfield",
+                      validationType: "number",
+                    },
+                    {
+                      property: "breakpointXl",
+                      title: "Extra-Large Breakpoint",
+                      description:
+                        "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
+                      inputMethod: "textfield",
+                      validationType: "number",
+                    },
+                  ],
+                },
+                saveOptions: {
+                  unsetAttributes: [
+                    "ready",
+                    "layouts",
+                    "columns",
+                    "options",
+                    "responsive-width",
+                  ],
+                },
+              }
+            );
           },
         },
         {

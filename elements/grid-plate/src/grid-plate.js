@@ -158,6 +158,8 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
       css`
         :host {
           display: block;
+          --hax-layout-container-outline-width: 1px;
+          --hax-layout-container-hover-outline-width: 1px;
         }
         :host .row {
           width: 100%;
@@ -228,13 +230,13 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
         ${[1, 2, 3, 4, 5, 6].map(
           (num) => html`
             <div
-              class="column container ${this.columns < num
+              class="column ${this.columns < num
                 ? "not-shown"
                 : "drag-enabled"}"
               id="col${num}"
               data-label="column ${num}"
-              data-move-order="${num}"
-              data-slot-name="col-${num}"
+              data-layout-order="${num}"
+              data-layout-slotname="col-${num}"
               .style="${this._getColumnWidth(num - 1, this.__columnWidths)}"
             >
               <slot name="col-${num}"></slot>
@@ -278,10 +280,11 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
    */
   static get haxProperties() {
     return {
-      type: "grid",
+      ...(super.haxProperties || {}),
       canScale: true,
       canPosition: true,
       canEditSource: true,
+      contentEditable: undefined,
       gizmo: {
         title: "Grid layout",
         description: "Simple card in a cool retro design",
@@ -548,6 +551,7 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
   _getColumns(__columnWidths) {
     return __columnWidths.length;
   }
+  haxactiveElementChanged(el, val) {}
 }
 window.customElements.define(GridPlate.tag, GridPlate);
 export { GridPlate };

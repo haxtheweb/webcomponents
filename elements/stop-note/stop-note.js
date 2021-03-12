@@ -1,11 +1,12 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
 import {
   pathResolver,
   SimpleIconsetStore,
 } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import { HaxLayoutBehaviors } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXLayouts.js";
+
 // register the iconset
 SimpleIconsetStore.registerIconset(
   "stopnoteicons",
@@ -24,12 +25,13 @@ const iconObj = {
  * @demo demo/index.html
  * @element stop-note
  */
-class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
+class StopNote extends remoteLinkBehavior(HaxLayoutBehaviors(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -80,7 +82,7 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
         .secondary_message {
           margin-top: 5px;
           font-size: 19.2px;
-          float: left;
+          width: 100%;
         }
 
         .link a {
@@ -119,7 +121,14 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
         </div>
         <div class="message_wrap">
           <div class="main_message" id="title">${this.title}</div>
-          <div class="secondary_message"><slot name="message"></slot></div>
+          <div
+            class="secondary_message"
+            data-label="Secondary Message"
+            data-layout-order="1"
+            data-layout-slotname="message"
+          >
+            <slot name="message"></slot>
+          </div>
           ${this.url
             ? html`
                 <div class="link">
@@ -142,6 +151,7 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
   }
   static get properties() {
     return {
+      ...(super.properties || {}),
       /**
        * Title Message
        */
@@ -185,15 +195,26 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
    */
   haxHooks() {
     return {
+      editModeChanged: "haxeditModeChanged",
       activeElementChanged: "haxactiveElementChanged",
-      inlineContextMenu: "haxinlineContextMenu",
     };
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    if (super.haxeditModeChanged) super.haxeditModeChanged(val);
+    //this._haxstate = val;
   }
   /**
    * double-check that we are set to inactivate click handlers
    * this is for when activated in a duplicate / adding new content state
    */
   haxactiveElementChanged(el, val) {
+    if (super.haxactiveElementChanged) super.haxactiveElementChanged(el, val);
+    console.log(el, val);
     // flag for HAX to not trigger active on changes
     let container = this.shadowRoot.querySelector("#title");
     let svgWrap = this.shadowRoot.querySelector(".svg_wrap");
@@ -227,10 +248,10 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
   }
   static get haxProperties() {
     return {
+      ...(super.haxProperties || {}),
       canScale: true,
       canPosition: true,
       canEditSource: true,
-      contentEditable: true,
       gizmo: {
         title: "Stop Note",
         description: "A message to alert readers to specific directions.",
@@ -269,6 +290,13 @@ class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
             description: "Icon used for stop-note",
             inputMethod: "select",
             options: iconObj,
+          },
+          {
+            slot: "message",
+            title: "Message",
+            description: "Additional details about note",
+            inputMethod: "textfield",
+            slotWrapper: "p",
           },
         ],
         advanced: [],

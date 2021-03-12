@@ -279,7 +279,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*:not(grid-plate)[contenteditable]:hover) {
+          ::slotted(*:not([hax-layout-container])[contenteditable]:hover) {
           outline: var(--hax-body-active-outline-hover);
           caret-color: auto;
         }
@@ -297,7 +297,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*:not(grid-plate)[contenteditable] .hax-active:hover) {
+          ::slotted(*:not([hax-layout-container])[contenteditable]
+            .hax-active:hover) {
           cursor: text !important;
           caret-color: auto;
           outline: var(--hax-body-active-outline-hover);
@@ -539,9 +540,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           );
           this.classList.add("hax-add-content-visible");
         } else if (
-          eventPath[0].closest(".column") &&
+          eventPath[0].closest("[data-move-order]") &&
           eventPath[3] &&
-          eventPath[3].closest("grid-plate")
+          eventPath[3].closest("[hax-layout-container]")
         ) {
           let addRect = this.contextMenus.add.getBoundingClientRect();
           let height = -addRect.height - 1;
@@ -549,10 +550,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // weird but we need the structure of grid plate here unfortunately
           // if it has nodes in the column we are active on then we need
           // to defer to the grid level because you could always force a node
-          if (!eventPath[0].closest(".column:not(.has-nodes")) {
+          if (!eventPath[0].closest("[data-move-order]:not(.has-nodes")) {
             // way out of a column to the host of the template
             this.__activeHover = eventPath[0].closest(
-              ".column"
+              "[data-move-order]"
             ).parentNode.parentNode.host;
             posMenuEl = this.__activeHover;
             activeRect = this.__activeHover.getBoundingClientRect();
@@ -573,30 +574,30 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // it's inserted in the body area leveraging alternative logic to
             // figure out which it should place where
             this.__slot = eventPath[0]
-              .closest(".column")
+              .closest("[data-move-order]")
               .getAttribute("id")
               .replace("col", "col-");
             // based on what we learned we don't have nodes in the path column
             // but we KNOW there MUST be an element somewhere in this
             if (
-              eventPath[0].closest(".column").parentNode.parentNode.host
-                .children.length == 0
+              eventPath[0].closest("[data-move-order]").parentNode.parentNode
+                .host.children.length == 0
             ) {
               let p = document.createElement("p");
               eventPath[0]
-                .closest(".column")
+                .closest("[data-move-order]")
                 .parentNode.parentNode.host.appendChild(p);
             }
             this.__activeHover = eventPath[0].closest(
-              ".column"
+              "[data-move-order]"
             ).parentNode.parentNode.host.children[0];
             // we focus on the column unlike anything else
             activeRect = eventPath[0]
-              .closest(".column")
+              .closest("[data-move-order]")
               .getBoundingClientRect();
             // right in the middle of the column
             height = activeRect.height / 2 - addRect.height / 2;
-            posMenuEl = eventPath[0].closest(".column");
+            posMenuEl = eventPath[0].closest("[data-move-order]");
           }
 
           // wow, we have an in context addition menu just like that
@@ -1577,7 +1578,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // insert at active insert point if we have one
     else if (active && active.parentNode) {
       // allow for inserting things into things but not grid plate
-      if (active.parentNode.tagName === "GRID-PLATE") {
+      if (!!active.parentNode.haxLayoutContainer) {
         if (active.getAttribute("slot") != null) {
           newNode.setAttribute("slot", active.getAttribute("slot"));
         }
@@ -1653,7 +1654,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         children[i].classList.remove("hax-hovered");
         children[i].contentEditable = false;
         content += HAXStore.nodeToContent(children[i]);
-        if (children[i].tagName.toLowerCase() === "grid-plate") {
+        if (!!children[i].haxLayoutContainer) {
           this._applyContentEditable(this.editMode, children[i]);
         }
       }
@@ -1808,6 +1809,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Reposition context menus to match an element.
    */
   positionContextMenus(node = this.activeNode) {
+    console.log(node, HAXStore.isTextElement(node));
     //console.warn(node);
     // special case for node not matching container yet it being editable
     if (node && node.tagName && this.ready) {
@@ -1824,6 +1826,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // sanity chekc and ensure we are not told to lock position of all menus
       clearTimeout(this.__positionContextTimer);
       this.__positionContextTimer = setTimeout(() => {
+        console.log(node, HAXStore.isTextElement(node));
         if (!HAXStore._lockContextPosition) {
           // menu width starts out w/ the plate context which is a set size
           let menuWidth = 176;
@@ -2242,6 +2245,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   _haxContextOperation(e) {
     let detail = e.detail;
+    console.log(e, detail, this.activeNode);
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "insert-above-active":
@@ -2894,10 +2898,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       var target = null;
       var eventPath = normalizeEventPath(e);
       if (
-        e.target.closest("grid-plate") &&
-        e.target.parentNode != e.target.closest("grid-plate")
+        e.target.closest("[hax-layout-container]") &&
+        e.target.parentNode != e.target.closest("[hax-layout-container]")
       ) {
-        target = e.target.closest("grid-plate");
+        target = e.target.closest("[hax-layout-container]");
       } else if (e.target.closest("[contenteditable],img")) {
         target = e.target.closest("[contenteditable],img");
       } else if (e.originalTarget) {
@@ -2917,7 +2921,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.querySelectorAll(".hax-hovered").forEach((el) => {
         el.classList.remove("hax-hovered");
       });
-      // remove grid-plate drops
+      // remove [hax-layout-container] drops
       this.querySelectorAll(".active").forEach((el) => {
         el.classList.remove("active");
       });
@@ -2940,18 +2944,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // inject a placeholder P tag which we will then immediately replace
           let tmp = document.createElement("p");
           if (
-            e.target.closest("grid-plate") &&
-            e.target.parentNode != e.target.closest("grid-plate")
+            e.target.closest("[hax-layout-container]") &&
+            e.target.parentNode != e.target.closest("[hax-layout-container]")
           ) {
-            local = e.target.closest("grid-plate");
+            local = e.target.closest("[hax-layout-container]");
           } else if (e.target.closest("[contenteditable],img")) {
             local = e.target.closest("[contenteditable],img");
           }
           if (
             (local &&
-              local.tagName &&
-              !["GRID-PLATE", "HAX-BODY"].includes(local.tagName)) ||
-            eventPath[0].tagName === "GRID-PLATE"
+              ((local.tagName && local.tagName !== "HAX-BODY") ||
+                !local.getAttribute("hax-layout-container"))) ||
+            eventPath[0].haxLayoutContainer
           ) {
             if (local.getAttribute("slot")) {
               tmp.setAttribute("slot", local.getAttribute("slot"));
@@ -3001,10 +3005,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           target = HAXStore.__dragTarget;
           local = e.target;
           if (
-            e.target.closest("grid-plate") &&
-            e.target.parentNode != e.target.closest("grid-plate")
+            e.target.closest("[hax-layout-container]") &&
+            e.target.parentNode != e.target.closest("[hax-layout-container]")
           ) {
-            local = e.target.closest("grid-plate");
+            local = e.target.closest("[hax-layout-container]");
           } else if (e.target.closest("[contenteditable],img")) {
             local = e.target.closest("[contenteditable],img");
           }
@@ -3019,8 +3023,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // incase this came from a grid plate, drop the slot so it works
             try {
               if (
-                !["GRID-PLATE", "HAX-BODY"].includes(local.tagName) ||
-                eventPath[0].tagName === "GRID-PLATE"
+                (local.tagName !== "HAX-BODY" && !local.haxLayoutContainer) ||
+                eventPath[0].haxLayoutContainer
               ) {
                 if (local.getAttribute("slot")) {
                   target.setAttribute("slot", local.getAttribute("slot"));
