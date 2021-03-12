@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { HaxLayoutBehaviors } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXLayouts.js";
 
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {
@@ -147,12 +148,13 @@ class GridPlateLayoutOptions {
  * @demo demo/index.html
  * @element grid-plate
  */
-class GridPlate extends LitElement {
+class GridPlate extends HaxLayoutBehaviors(LitElement) {
   /**
    * LitElement render styles
    */
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -167,10 +169,6 @@ class GridPlate extends LitElement {
           margin: var(--grid-plate-row-margin, 0px);
           padding: var(--grid-plate-row-padding, 0px);
         }
-        .column.active {
-          outline: 2px solid var(--simple-colors-default-theme-grey-12, #009dc7) !important;
-          outline-offset: -2px;
-        }
         :host([disable-responsive]) .column {
           overflow: hidden;
         }
@@ -178,18 +176,6 @@ class GridPlate extends LitElement {
           width: 100%;
           flex: 0 0 auto;
           min-height: 50px;
-        }
-        :host([ready]) .column {
-          transition: var(
-            --grid-plate-col-transition,
-            0.5s width ease-in-out,
-            0.5s padding ease-in-out,
-            0.5s margin ease-in-out
-          );
-        }
-        :host([data-hax-ray]) .column[style="min-height: unset;"] {
-          display: block !important;
-          opacity: 0.4;
         }
         /* make sure that animation for nothing to 2 col doesn't jar layout */
         :host([layout="1-1"]) #col1 {
@@ -207,92 +193,14 @@ class GridPlate extends LitElement {
         :host([layout="1-1-1-1-1-1"]) #col1 {
           width: 16.66%;
         }
-        :host .column[style="min-height: unset;"] {
-          display: none;
-          outline: none;
-        }
-        :host([data-hax-ray]) .column[style="min-height: unset;"] {
-          width: 0;
-        }
-
-        :host([data-hax-ray]) .column.has-nodes[style="min-height: unset;"] {
-          width: 100%;
-          transition: none;
-        }
-        :host([data-hax-ray]) .column[style="min-height: unset;"]:hover {
-          opacity: 1;
-        }
-        :host([data-hax-ray])
-          .column[style="min-height: unset;"]:hover::before {
-          content: "Hidden by column layout";
-          position: sticky;
-          display: inline-flex;
-          background-color: black;
-          color: white;
-          padding: 0px 8px;
-          font-size: 12px;
-          line-height: 16px;
-          margin: 12px 13px;
-          float: right;
-          width: 124px;
+        .column.not-shown {
+          min-height: unset;
         }
         :host .column ::slotted(*) {
           margin: var(--grid-plate-item-margin, 15px);
           padding: var(--grid-plate-item-padding, 15px);
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
-        }
-        :host([ready]) .column ::slotted(*) {
-          transition: var(
-            --grid-plate-col-transition,
-            0.5s color ease-in-out,
-            0.5s background-color ease-in-out
-          );
-        }
-        /** this implies hax editing state is available **/
-        :host([data-hax-ray]) .column ::slotted(*) {
-          outline: 1px solid var(--simple-colors-default-theme-grey-2, #eeeeee);
-          outline-offset: -2px;
-        }
-        :host([data-hax-ray]) .column ::slotted(*:hover) {
-          outline: 1px solid var(--simple-colors-default-theme-grey-8, #eeeeee);
-        }
-        :host([data-hax-ray]) .column {
-          outline: 1px solid var(--simple-colors-default-theme-grey-2, #eeeeee);
-          outline-offset: -2px;
-        }
-        :host([data-hax-ray]) .column:hover {
-          outline: 1px solid var(--simple-colors-default-theme-grey-8, #eeeeee);
-        }
-        :host([data-hax-ray]) div ::slotted(*.active):before {
-          outline: 1px var(--simple-colors-default-theme-grey-4) solid;
-          background-color: inherit;
-          content: " ";
-          width: 100%;
-          display: block;
-          position: relative;
-          margin: -10px 0 0 0;
-          z-index: 2;
-          height: 10px;
-        }
-        :host([data-hax-ray]) div ::slotted(img.active),
-        :host([data-hax-ray]) div ::slotted(*.active):before {
-          background-color: var(
-            --simple-colors-default-theme-grey-12,
-            #009dc7
-          ) !important;
-          outline: 1px solid var(--simple-colors-default-theme-grey-12, #009dc7);
-        }
-
-        @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
-          :host([data-hax-ray]) div ::slotted(*.active) {
-            background-color: var(
-              --simple-colors-default-theme-grey-12,
-              #009dc7
-            ) !important;
-            outline: 1px solid
-              var(--simple-colors-default-theme-grey-12, #009dc7);
-          }
         }
       `,
     ];
@@ -317,67 +225,27 @@ class GridPlate extends LitElement {
   render() {
     return html`
       <div class="row">
-        <div
-          class="column"
-          id="col1"
-          data-label="column 1"
-          .style="${this._getColumnWidth(0, this.__columnWidths)}"
-        >
-          <slot name="col-1"></slot>
-        </div>
-        <div
-          class="column"
-          id="col2"
-          data-label="column 2"
-          .style="${this._getColumnWidth(1, this.__columnWidths)}"
-        >
-          <slot name="col-2"></slot>
-        </div>
-        <div
-          class="column"
-          id="col3"
-          data-label="column 3"
-          .style="${this._getColumnWidth(2, this.__columnWidths)}"
-        >
-          <slot name="col-3"></slot>
-        </div>
-        <div
-          class="column"
-          id="col4"
-          data-label="column 4"
-          .style="${this._getColumnWidth(3, this.__columnWidths)}"
-        >
-          <slot name="col-4"></slot>
-        </div>
-        <div
-          class="column"
-          id="col5"
-          data-label="column 5"
-          .style="${this._getColumnWidth(4, this.__columnWidths)}"
-        >
-          <slot name="col-5"></slot>
-        </div>
-        <div
-          class="column"
-          id="col6"
-          data-label="column 6"
-          .style="${this._getColumnWidth(5, this.__columnWidths)}"
-        >
-          <slot name="col-6"></slot>
-        </div>
+        ${[1, 2, 3, 4, 5, 6].map(
+          (num) => html`
+            <div
+              class="column container ${this.columns < num
+                ? "not-shown"
+                : "drag-enabled"}"
+              id="col${num}"
+              data-label="column ${num}"
+              data-move-order="${num}"
+              data-slot-name="col-${num}"
+              .style="${this._getColumnWidth(num - 1, this.__columnWidths)}"
+            >
+              <slot name="col-${num}"></slot>
+            </div>
+          `
+        )}
       </div>
     `;
   }
   static get tag() {
     return "grid-plate";
-  }
-  /**
-   * Validate the slot name
-   */
-  validateElementSlot(node) {
-    return ["col-1", "col-2", "col-3", "col-4", "col-5", "col-6"].includes(
-      node.getAttribute("slot")
-    );
   }
   /**
    * life cycle
@@ -403,9 +271,7 @@ class GridPlate extends LitElement {
       this.layouts,
       this.disableResponsive
     );
-    setTimeout(() => {
-      this.ready = true;
-    }, 100);
+    if (super.firstUpdated) firstUpdated(changedProperties);
   }
   /**
    * Wire to HAX
@@ -494,10 +360,6 @@ class GridPlate extends LitElement {
   }
   static get properties() {
     return {
-      ready: {
-        type: Boolean,
-        reflect: true,
-      },
       /**
        * Custom small breakpoint for the layouts; only updated on attached
        */
@@ -579,121 +441,11 @@ class GridPlate extends LitElement {
       __columnWidths: {
         type: String,
       },
-      dataHaxRay: {
-        type: String,
-        reflect: true,
-        attribute: "data-hax-ray",
-      },
     };
   }
-  _dragEnter(e) {
-    e.target.classList.add("active");
-  }
-  _dragLeave(e) {
-    e.target.classList.remove("active");
-  }
-  _dropEvent(e) {
-    this.querySelectorAll(".active").forEach((el) => {
-      el.classList.remove("active");
-    });
-    this.shadowRoot.querySelectorAll(".active").forEach((el) => {
-      el.classList.remove("active");
-    });
-  }
-  /**
-   * Use slot events to track which slots have nodes and apply to the shadowRoot
-   * column wrappers. This helps with trasitions and animations
-   */
-  _slotMonitor(e) {
-    // sanity, we have a local slot
-    var eventPath = normalizeEventPath(e);
-
-    if (
-      eventPath[0] &&
-      eventPath[0].assignedNodes &&
-      eventPath[0].assignedNodes().length
-    ) {
-      // has nodes so we can make sure to track this elsewhere
-      this.shadowRoot
-        .querySelector("#" + eventPath[0].getAttribute("name").replace("-", ""))
-        .classList.add("has-nodes");
-    } else {
-      this.shadowRoot
-        .querySelector("#" + eventPath[0].getAttribute("name").replace("-", ""))
-        .classList.remove("has-nodes");
-    }
-  }
   updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "dataHaxRay" && this.shadowRoot) {
-        if (this[propName]) {
-          // apply handlers to the columns themselves
-          this.addEventListener("drop", this._dropEvent.bind(this));
-          for (var j = 1; j <= this.columns; j++) {
-            if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-              let col = this.shadowRoot.querySelector("#col" + j);
-              col.addEventListener("dragenter", this._dragEnter.bind(this));
-              col.addEventListener("dragleave", this._dragLeave.bind(this));
-            }
-          }
-          let slots = this.shadowRoot.querySelectorAll("slot");
-          for (var j = 0; j < slots.length; j++) {
-            slots[j].addEventListener(
-              "slotchange",
-              this._slotMonitor.bind(this)
-            );
-          }
-          this.observer = new MutationObserver((mutations) => {
-            if (!this.__sorting) {
-              mutations.forEach((mutation) => {
-                // this implies something was added dynamically or drag and drop
-                // from outside this element or dragging between grid plates
-                // so we need to disconnect the handlers from here and pick them
-                // up in the new plate
-                mutation.addedNodes.forEach((node) => {
-                  if (node.tagName && node !== this) {
-                    // verify this has a slot set otherwise we need to set one on the fly
-                    // otherwise this won't show up. This could be incorrectly formed HTML
-                    // DOM that was pushed in via an outside system or edge cases of things
-                    // dropping in without a slot set in anyway
-                    // validate slot name, otherwise force it to col-1
-                    if (
-                      node.parentElement &&
-                      node.parentElement.tagName !== "HAX-BODY" &&
-                      !this.validateElementSlot(node)
-                    ) {
-                      node.setAttribute("slot", "col-1");
-                    }
-                  }
-                });
-              });
-              this.__sortChildren();
-            }
-          });
-          this.observer.observe(this, {
-            childList: true,
-          });
-        } else {
-          if (this.observer) {
-            this.observer.disconnect();
-          }
-          this.removeEventListener("drop", this._dropEvent.bind(this));
-          for (var j = 1; j <= this.columns; j++) {
-            if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-              let col = this.shadowRoot.querySelector("#col" + j);
-              col.removeEventListener("dragenter", this._dragEnter.bind(this));
-              col.removeEventListener("dragleave", this._dragLeave.bind(this));
-            }
-          }
-          let slots = this.shadowRoot.querySelectorAll("slot");
-          for (var j = 0; j < slots.length; j++) {
-            slots[j].removeEventListener(
-              "slotchange",
-              this._slotMonitor.bind(this)
-            );
-          }
-        }
-      }
       // if any of these changed, update col widths
       if (
         ["responsiveSize", "layout", "layouts", "disableResponsive"].includes(
@@ -730,32 +482,6 @@ class GridPlate extends LitElement {
   }
   resize() {
     window.dispatchEvent(new Event("resize"));
-  }
-  /**
-   * Determines if the item can move a set number of slots.
-   *
-   * @param {object} the item
-   * @param {number} -1 for left or +1 for right
-   * @returns {boolean} if the item can move a set number of slots
-   */
-  canMoveSlot(item, before) {
-    let dir = before ? -1 : 1,
-      max = this.shadowRoot.querySelectorAll(".column").length,
-      col = item.getAttribute("slot").split("-"),
-      dest = parseInt(col[1]) + dir;
-    return dest >= 1 && dest <= max;
-  }
-  /**
-   * Moves an item a set number of slots.
-   *
-   * @param {object} the item
-   * @param {number} -1 for left or +1 for right
-   */
-  moveSlot(item, before) {
-    let dir = before ? -1 : 1,
-      col = item.getAttribute("slot").split("-"),
-      dest = parseInt(col[1]) + dir;
-    item.setAttribute("slot", "col-" + dest);
   }
   /**
    * gets the column widths based on selected layout and current responsive width
@@ -821,43 +547,6 @@ class GridPlate extends LitElement {
    */
   _getColumns(__columnWidths) {
     return __columnWidths.length;
-  }
-  /**
-   * Sort children based on slot name
-   */
-  async __sortChildren() {
-    this.__sorting = true;
-    try {
-      // select all direct children w/ a slot attribute and convert to an Array
-      let children = Array.prototype.reduce.call(
-        this.querySelectorAll("[slot]"),
-        function (acc, e) {
-          return acc;
-        },
-        []
-      );
-      // sort the children by slot id being low to high
-      children = children.sort(function (a, b) {
-        if (
-          parseInt(a.getAttribute("slot").split("-")[1]) <
-          parseInt(b.getAttribute("slot").split("-")[1])
-        ) {
-          return -1;
-        }
-        return 1;
-      });
-      // loop through and append these back into the grid plate.
-      // which will put them in the right order
-      await children.forEach((el) => {
-        // sanity check that we only move things that are a direct child
-        if (el.parentNode === this) {
-          this.appendChild(el);
-        }
-      });
-    } catch (error) {
-      console.warn(error);
-    }
-    this.__sorting = false;
   }
 }
 window.customElements.define(GridPlate.tag, GridPlate);
