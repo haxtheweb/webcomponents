@@ -330,10 +330,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*[contenteditable] *::-moz-selection) {
-          background-color: var(
-            --hax-body-highlight,
-            var(--simple-colors-default-theme-yellow-2, yellow)
-          );
+          background-color: var(--hax-body-highlight, #ffffac);
           color: black;
         }
         :host([edit-mode])
@@ -342,10 +339,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*[contenteditable] *::selection) {
-          background-color: var(
-            --hax-body-highlight,
-            var(--simple-colors-default-theme-yellow-2, yellow)
-          );
+          background-color: var(--hax-body-highlight, #ffffac);
           color: black;
         }
         #bodycontainer {
@@ -376,10 +370,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered) {
           border-top: 8px
-            var(
-              --hax-contextual-action-hover-color,
-              var(--simple-colors-default-theme-cyan-7, #009dc7)
-            );
+            var(--hax-contextual-action-hover-color, var(--hax-ui-color-accent));
           margin-top: -8px;
         }
 
