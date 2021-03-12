@@ -2,9 +2,8 @@ import { html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import { HaxUploadField } from "./hax-upload-field.js";
-import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
-class HaxTrayUpload extends I18NMixin(HaxUploadField) {
+class HaxTrayUpload extends HaxUploadField {
   /**
    * Convention we use
    */
@@ -17,9 +16,10 @@ class HaxTrayUpload extends I18NMixin(HaxUploadField) {
   constructor() {
     super();
     this.t = {
+      ...super.t,
       uploadMedia: "Upload Media",
     };
-    this.registerTranslation({
+    this.registerLocalization({
       context: this,
       namespace: "hax",
     });

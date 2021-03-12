@@ -13,8 +13,6 @@ var _haxStore = require("./hax-store.js");
 
 var _haxUploadField = require("./hax-upload-field.js");
 
-var _I18NMixin2 = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
-
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -31,6 +29,55 @@ function _typeof(obj) {
     };
   }
   return _typeof(obj);
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -53,40 +100,6 @@ function _assertThisInitialized(self) {
     );
   }
   return self;
-}
-
-function _get(target, property, receiver) {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    _get = Reflect.get;
-  } else {
-    _get = function _get(target, property, receiver) {
-      var base = _superPropBase(target, property);
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-      if (desc.get) {
-        return desc.get.call(receiver);
-      }
-      return desc.value;
-    };
-  }
-  return _get(target, property, receiver || target);
-}
-
-function _superPropBase(object, property) {
-  while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = _getPrototypeOf(object);
-    if (object === null) break;
-  }
-  return object;
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
 }
 
 function _defineProperties(target, props) {
@@ -125,10 +138,44 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    _get = Reflect.get;
+  } else {
+    _get = function _get(target, property, receiver) {
+      var base = _superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+      return desc.value;
+    };
+  }
+  return _get(target, property, receiver || target);
+}
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = _getPrototypeOf(object);
+    if (object === null) break;
+  }
+  return object;
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf
+    ? Object.getPrototypeOf
+    : function _getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+      };
+  return _getPrototypeOf(o);
+}
+
 var HaxTrayUpload =
   /*#__PURE__*/
-  (function (_I18NMixin) {
-    _inherits(HaxTrayUpload, _I18NMixin);
+  (function (_HaxUploadField) {
+    _inherits(HaxTrayUpload, _HaxUploadField);
 
     _createClass(HaxTrayUpload, null, [
       {
@@ -155,11 +202,19 @@ var HaxTrayUpload =
         this,
         _getPrototypeOf(HaxTrayUpload).call(this)
       );
-      _this.t = {
-        uploadMedia: "Upload Media",
-      };
+      _this.t = _objectSpread(
+        {},
+        _get(
+          _getPrototypeOf(HaxTrayUpload.prototype),
+          "t",
+          _assertThisInitialized(_this)
+        ),
+        {
+          uploadMedia: "Upload Media",
+        }
+      );
 
-      _this.registerTranslation({
+      _this.registerLocalization({
         context: _assertThisInitialized(_this),
         namespace: "hax",
       });
@@ -252,7 +307,7 @@ var HaxTrayUpload =
     ]);
 
     return HaxTrayUpload;
-  })((0, _I18NMixin2.I18NMixin)(_haxUploadField.HaxUploadField));
+  })(_haxUploadField.HaxUploadField);
 
 exports.HaxTrayUpload = HaxTrayUpload;
 window.customElements.define(HaxTrayUpload.tag, HaxTrayUpload);

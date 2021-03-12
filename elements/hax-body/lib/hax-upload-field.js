@@ -2,8 +2,9 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsUpload } from "@lrnwebcomponents/simple-fields/lib/simple-fields-upload.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
-class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
+class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   /**
    * HTMLElement life cycle
    */
@@ -12,6 +13,15 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection", //TODO
     };
+    this.t = {
+      whereUpload: "Where would you like to upload this",
+      cantHandle: "Sorry, you don't have a storage location that can handle",
+      uploads: "uploads",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "hax",
+    });
   }
   _canUpload() {
     return !this.__allowUpload && HAXStore;
@@ -40,16 +50,11 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
         HAXStore.haxAppPicker.presentOptions(
           targets,
           type,
-          "Where would you like to upload this " + type + "?",
+          `${this.t.whereUpload} ${type}?`,
           "app"
         );
       } else {
-        HAXStore.toast(
-          "Sorry, you don't have a storage location that can handle " +
-            type +
-            " uploads!",
-          5000
-        );
+        HAXStore.toast(`${this.t.cantHandle} ${type} ${this.t.uploads}!`, 5000);
       }
     } else {
       this.__allowUpload = false;
