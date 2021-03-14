@@ -6,6 +6,7 @@ import { html, css } from "lit-element/lit-element.js";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
+import { HAXCMSSideMenuHighlight } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSSideMenuHighlight.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
@@ -23,8 +24,8 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
  * @demo demo/index.html
  * @element clean-two
  */
-class CleanTwo extends HAXCMSThemeParts(
-  HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)
+class CleanTwo extends HAXCMSSideMenuHighlight(
+  HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
 ) {
   //styles function
   static get styles() {
@@ -130,6 +131,8 @@ class CleanTwo extends HAXCMSThemeParts(
           padding:0;
           --site-git-corner-color: black;
           --site-git-corner-background: transparent;
+          background-color: transparent;
+          color: black;
         }
         site-menu-button[edit-mode][disabled] {
           display: block;
@@ -494,7 +497,7 @@ class CleanTwo extends HAXCMSThemeParts(
         <div class="left-col">${this.HAXCMSMobileMenu()}</div>
         <div class="content-wrapper">
           <div class="content">
-            <div class="header">
+            <header class="header">
               ${this.HAXCMSMobileMenuButton()}
               ${this.responsiveSize != "xl"
                 ? html`
@@ -510,78 +513,85 @@ class CleanTwo extends HAXCMSThemeParts(
                 : ``}
               <replace-tag with="site-active-title" import-only></replace-tag>
               <site-active-title></site-active-title>
-            </div>
+            </header>
             <site-search
               hide-input
               search="${this.searchTerm}"
               @search-item-selected="${this.searchItemSelected}"
               ?hidden="${this.searchTerm != "" ? false : true}"
             ></site-search>
-            <div
-              id="contentcontainer"
-              ?hidden="${this.searchTerm != "" ? true : false}"
-            >
-              <div id="slot">
-                <slot></slot>
+            <main>
+              <article
+                id="contentcontainer"
+                ?hidden="${this.searchTerm != "" ? true : false}"
+              >
+                <section id="slot">
+                  <slot></slot>
+                </section>
+              </article>
+            </main>
+            <footer>
+              <div class="link-actions">
+                <div class="inner">
+                  <replace-tag
+                    with="site-menu-button"
+                    import-only
+                  ></replace-tag>
+                  <site-menu-button
+                    hide-label
+                    type="prev"
+                    position="right"
+                    class="navigation"
+                    @label-changed="${this.__prevPageLabelChanged}"
+                  >
+                    <div slot="suffix" class="wrapper">
+                      <div class="top">Previous</div>
+                      <div class="bottom">${this.prevPage}</div>
+                    </div>
+                  </site-menu-button>
+                  <site-menu-button
+                    hide-label
+                    type="next"
+                    position="left"
+                    class="navigation"
+                    @label-changed="${this.__nextPageLabelChanged}"
+                  >
+                    <div slot="prefix" class="wrapper">
+                      <div class="top">Next</div>
+                      <div class="bottom">${this.nextPage}</div>
+                    </div>
+                  </site-menu-button>
+                </div>
               </div>
-            </div>
-            <div class="link-actions">
-              <div class="inner">
-                <replace-tag with="site-menu-button" import-only></replace-tag>
-                <site-menu-button
-                  hide-label
-                  type="prev"
-                  position="right"
-                  class="navigation"
-                  @label-changed="${this.__prevPageLabelChanged}"
-                >
-                  <div slot="suffix" class="wrapper">
-                    <div class="top">Previous</div>
-                    <div class="bottom">${this.prevPage}</div>
-                  </div>
-                </site-menu-button>
-                <site-menu-button
-                  hide-label
-                  type="next"
-                  position="left"
-                  class="navigation"
-                  @label-changed="${this.__nextPageLabelChanged}"
-                >
-                  <div slot="prefix" class="wrapper">
-                    <div class="top">Next</div>
-                    <div class="bottom">${this.nextPage}</div>
-                  </div>
-                </site-menu-button>
+              <div class="footer">
+                <div class="footer-left">
+                  Last updated
+                  <replace-tag with="simple-datetime" import-only></replace-tag>
+                  <simple-datetime
+                    unix
+                    .timestamp="${this.pageTimestamp}"
+                  ></simple-datetime>
+                </div>
+                <div class="footer-right">
+                  <replace-tag
+                    with="site-print-button"
+                    class="btn js-toolbar-action"
+                    import-method="view"
+                  ></replace-tag>
+                  <replace-tag
+                    with="site-rss-button"
+                    type="rss"
+                    import-method="view"
+                  ></replace-tag>
+                  <replace-tag
+                    with="site-git-corner"
+                    size="small"
+                    circle
+                    import-method="view"
+                  ></replace-tag>
+                </div>
               </div>
-            </div>
-            <div class="footer">
-              <div class="footer-left">
-                Last updated
-                <replace-tag with="simple-datetime" import-only></replace-tag>
-                <simple-datetime
-                  unix
-                  .timestamp="${this.pageTimestamp}"
-                ></simple-datetime>
-              </div>
-              <div class="footer-right">
-                <replace-tag
-                  with="site-print-button"
-                  class="btn js-toolbar-action"
-                  import-method="view"
-                ></replace-tag>
-                <replace-tag
-                  with="site-rss-button"
-                  type="rss"
-                  import-method="view"
-                ></replace-tag>
-                <replace-tag
-                  with="site-git-corner"
-                  size="small"
-                  circle
-                  import-method="view"
-                ></replace-tag>
-              </div>
-            </div>
+            </footer>
           </div>
         </div>
         ${this.responsiveSize == "xl"

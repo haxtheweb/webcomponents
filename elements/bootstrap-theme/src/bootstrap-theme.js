@@ -9,8 +9,9 @@ import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "jquery/dist/jquery.js";
-import "bootstrap/dist/js/bootstrap.js";
+// import "jquery/dist/jquery.js";
+// import "bootstrap/dist/js/bootstrap.js";
+import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
  * `bootstrap-theme`
@@ -35,6 +36,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         :host {
           display: block;
           --haxcms-color: white !important;
+          --hax-base-styles-p-font-size: 12px;
         }
         :host([menu-open]) .menu-outline {
           left: 0;
@@ -294,7 +296,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                     ?hidden="${this.searchTerm != "" ? true : false}"
                   >
                     <div id="slot">
-                      <slot></slot>
+                      <slot id="main-content"></slot>
                     </div>
                   </section>
                 </div>
@@ -306,15 +308,37 @@ class BootstrapTheme extends HAXCMSThemeParts(
     `;
   }
 
+  _wrapSections() {
+    // setTimeout(console.log(this.shadowRoot.getElementById("main-content").assignedElements()), 0);
+  }
+
+  _applyClasses() {
+    console.log("should take 5 seconds....");
+    let bootstrapThemeElement = document.querySelector("bootstrap-theme");
+    let elements = bootstrapThemeElement.childNodes;
+
+    let mainContent = this.shadowRoot.getElementById("main-content");
+    console.log(mainContent);
+    console.log(mainContent.assignedElements());
+    console.log(
+      document
+        .querySelector("#site > bootstrap-theme")
+        .shadowRoot.querySelector("#main-content")
+        .assignedElements()
+    );
+  }
+
   _generateBootstrapLink() {
     if (this._bootstrapLink) {
       document.head.removeChild(this._bootstrapLink);
     }
+    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
+    console.log(basePath);
     let link = document.createElement("link");
     link.setAttribute("rel", "stylesheet");
     link.setAttribute(
       "href",
-      import.meta.url + "/../../../bootstrap/dist/css/bootstrap.min.css"
+      basePath + "bootstrap/dist/css/bootstrap.min.css"
     );
     document.head.appendChild(link);
     return link;
@@ -334,7 +358,53 @@ class BootstrapTheme extends HAXCMSThemeParts(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._loadScripts();
     this._bootstrapLink = this._generateBootstrapLink();
+    this._wrapSections();
+    this.delay(5000);
+    this._applyClasses();
+  }
+
+  delay(ms) {
+    new Promise((res) => setTimeout(res, ms));
+  }
+
+  /*
+   * Loads jquery first because bootstrap requires jquery to be present first
+   * Jquery callback function then loads bootstrap
+   */
+  _loadScripts() {
+    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
+    let jqueryPath = "jquery/dist/jquery.min.js";
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load("jquery", basePath + jqueryPath);
+    window.addEventListener(
+      `es-bridge-jquery-loaded`,
+      this._jqueryLoaded.bind(this)
+    );
+  }
+
+  _bootstrapLoaded(e) {
+    this._bootstrap = true;
+  }
+
+  _loadBootstrap() {
+    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
+    let bootstrapPath = "bootstrap/dist/js/bootstrap.bundle.min.js";
+    window.ESGlobalBridge.instance.load("bootstrap", basePath + bootstrapPath);
+    window.addEventListener(
+      `es-bridge-bootstrap-loaded`,
+      this._bootstrapLoaded.bind(this)
+    );
+  }
+
+  _jqueryLoaded(e) {
+    this._jquery = true;
+    this._loadBootstrap();
+  }
+
+  getBasePath(url) {
+    return url.substring(0, url.lastIndexOf("/@lrnwebcomponents/") + 1);
   }
 
   prevPage(e) {

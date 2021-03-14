@@ -6,6 +6,7 @@ import { html, css } from "lit-element/lit-element.js";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
+import { HAXCMSSideMenuHighlight } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSSideMenuHighlight.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
@@ -23,8 +24,8 @@ import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
  * @demo demo/index.html
  * @element clean-two
  */
-class CleanTwo extends HAXCMSThemeParts(
-  HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)
+class CleanTwo extends HAXCMSSideMenuHighlight(
+  HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
 ) {
   //styles function
   static get styles() {
