@@ -182,6 +182,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     // import at this time so we can delay as long as possible
     // from needing to pull in monaco
     import("@lrnwebcomponents/code-editor/code-editor.js");
+    this.updateEditor();
   }
   /**
    * selectBody
@@ -222,7 +223,14 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    if (HAXStore.activeHaxBody) {
+    this.updateEditor();
+  }
+  updateEditor() {
+    if (
+      HAXStore.activeHaxBody &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#textarea")
+    ) {
       this.shadowRoot.querySelector("#textarea").editorValue = formatHTML(
         HAXStore.activeHaxBody.haxToContent()
       );

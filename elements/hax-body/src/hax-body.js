@@ -156,7 +156,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           --hax-body-active-outline: 0px solid var(---hax-ui-color-accent);
           --hax-body-active-drag-outline: 1px solid var(--hax-ui-color-accent);
           --hax-body-target-background-color: var(
-            --hax-ui-color-accent-secondary
+            --hax-ui-background-color-accent
           );
           --hax-body-possible-target-background-color: inherit;
         }
@@ -282,6 +282,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ::slotted(*:not(grid-plate)[contenteditable]:hover) {
           outline: var(--hax-body-active-outline-hover);
           caret-color: auto;
+        }
+        :host(.hax-add-content-visible[edit-mode])
+          #bodycontainer
+          ::slotted(*.hax-active) {
+          margin-bottom: 30px;
         }
         :host([edit-mode])
           #bodycontainer
@@ -432,7 +437,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // the world
         s.appendChild(document.createTextNode(css));
       }
-      console.log(document.getElementsByTagName("head")[0], s);
       document.getElementsByTagName("head")[0].appendChild(s);
     }
     setTimeout(() => {
@@ -484,6 +488,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       clearTimeout(this.__mouseTimer);
       this.__activeHover = null;
       this._hideContextMenu(this.contextMenus.add);
+      this.classList.remove("hax-add-content-visible");
     }
   }
   _mouseMove(e) {
@@ -509,6 +514,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           if (!keep) {
             this.__activeHover = null;
             this._hideContextMenu(this.contextMenus.add);
+            this.classList.remove("hax-add-content-visible");
           }
         }
       }, 300);
@@ -540,6 +546,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             activeRect.width / 2 - addRect.width / 2,
             height
           );
+          this.classList.add("hax-add-content-visible");
         } else if (
           eventPath[0].closest(".column") &&
           eventPath[3] &&
@@ -608,9 +615,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             activeRect.width / 2 - addRect.width / 2,
             height
           );
+          this.classList.add("hax-add-content-visible");
         } else if (eventPath[0].closest("#bodycontainer")) {
           this.__activeHover = null;
           this._hideContextMenu(this.contextMenus.add);
+          this.classList.remove("hax-add-content-visible");
         }
       }, 400);
     }
@@ -840,6 +849,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // drop active hover to reset state
     this.__activeHover = null;
     this._hideContextMenu(this.contextMenus.add);
+    this.classList.remove("hax-add-content-visible");
   }
   /**
    * LitElement life cycle - properties changed callback
@@ -1088,6 +1098,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       } else if (this.__ignoreActive) {
         this.__ignoreActive = false;
       }
+      HAXStore.haxTray.updateMap();
     });
     this._observer.observe(this, {
       childList: true,
@@ -1795,6 +1806,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this._hideContextMenu(this.contextMenus.text);
     this._hideContextMenu(this.contextMenus.ce);
     this._hideContextMenu(this.contextMenus.add);
+    this.classList.remove("hax-add-content-visible");
     this.__activeHover = null;
     // secondary menus and clean up areas
     if (hidePlate) {
@@ -1846,7 +1858,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             menuWidth += 30;
           } else {
             this._hideContextMenu(this.contextMenus.ce);
-            this._positionContextMenu(this.contextMenus.text, node, 0, -30);
+            this._positionContextMenu(this.contextMenus.text, node, 0);
             // text menu can expand based on selection
             let textRect = this.contextMenus.text.getBoundingClientRect();
             menuWidth += textRect.width;
@@ -1916,6 +1928,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // force hiding add menu
     this.__activeHover = null;
     this._hideContextMenu(this.contextMenus.add);
+    this.classList.remove("hax-add-content-visible");
   }
   /**
    * Move grid plate around
@@ -3086,7 +3099,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
-    if (this.editMode && e.target) {
+    if (this.editMode && e.target && HAXStore.__dragTarget) {
       this.__dragMoving = true;
       e.preventDefault();
       if (e.target && e.target.classList) {

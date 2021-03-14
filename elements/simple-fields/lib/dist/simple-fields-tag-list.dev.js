@@ -3,15 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.SimpleFieldsCode = void 0;
+exports.SimpleFieldsTagList = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
-var _simpleFieldsContainer = require("./simple-fields-container.js");
+var _simpleFieldsField = require("./simple-fields-field.js");
 
-require("@lrnwebcomponents/code-editor/code-editor.js");
-
-var _utils = require("@lrnwebcomponents/utils/utils.js");
+require("./simple-tag.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -31,24 +29,56 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
+function _templateObject4() {
+  var data = _taggedTemplateLiteral([
+    "\n            <simple-tag\n              cancel-button\n              .data=",
+    '\n              value="',
+    '"\n              accent-color="',
+    '"\n              @simple-tag-clicked="',
+    '"\n            ></simple-tag>\n          ',
+  ]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral([
+    "\n      ",
+    '\n      <slot name="taglist">\n        ',
+    "\n      </slot>\n    ",
+  ]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <div class="field-main" part="field-main">\n        ',
-    '\n        <code-editor\n          ?autofocus="',
-    '"\n          ?disabled="',
-    '"\n          font-size="',
-    '"\n          editor-value="',
-    '"\n          theme="',
-    '"\n          language="',
-    '"\n          mode="',
-    '"\n          ?read-only="',
-    '"\n          @value-changed="',
-    '"\n          @focused-changed="',
-    '"\n          @code-editor-focus="',
-    '"\n          @code-editor-blur="',
-    '"\n          part="editor"\n        >\n        </code-editor>\n        <input name="',
-    '" type="hidden" value="',
-    '" />\n      </div>\n    ',
+    '\n      <span class="input-option" part="option-inner">\n        <input\n          @keydown="',
+    '"\n          @keyup="',
+    '"\n          ?autofocus="',
+    '"\n          aria-descrbedby="',
+    '"\n          .aria-invalid="',
+    '"\n          @blur="',
+    '"\n          @change="',
+    '"\n          class="field box-input"\n          ?disabled="',
+    '"\n          @focus="',
+    '"\n          ?hidden="',
+    '"\n          id="',
+    '"\n          @input="',
+    '"\n          name="',
+    '"\n          .placeholder="',
+    '"\n          ?readonly="',
+    '"\n          ?required="',
+    '"\n          tabindex="0"\n          type="text"\n          value="',
+    '"\n          part="option-input"\n        />\n      </span>\n    ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -109,7 +139,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        #options {\n          display: var(--simple-fields-radio-option-display, flex);\n          flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);\n        }\n        code-editor {\n          margin: 0;\n          transition: height 0.5s ease-in-out;\n          box-sizing: border-box;\n          vertical-align: bottom;\n        }\n        code-editor:focus {\n          outline: none;\n        }\n      ",
+    "\n        :host {\n          display: block;\n        }\n        #field-main-inner {\n          align-items: center;\n          flex-wrap: wrap;\n        }\n        simple-tag {\n          flex: 0 1 auto;\n          margin: calc(0.5 * var(--simple-fields-button-padding, 2px))\n            var(--simple-fields-button-padding, 2px);\n        }\n        .drag-focus {\n          background-color: var(--simple-fields-accent-color, #3f51b5);\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -248,164 +278,100 @@ function _getPrototypeOf(o) {
 }
 
 /**
- *`simple-fields-code`
- * HTML inputs (excluding submit, reset, button, and image)
- * with label, description, error massage,
- * and aria-invalid functionality if needed.
+ *`simple-fields-tag-list`
+ * input tags and validate an array of input
+ * can return as a string or object based on
+ * requirements of the implementing element
  *
  * @customElement
  * @group simple-fields
  * @element simple-fields-code
  * @demo ./demo/field.html
- * @class SimpleFieldsCode
- * @extends {SimpleFieldsContainerBehaviors(LitElement)}
+ * @class SimpleFieldsTagList
+ * @extends {class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
+(LitElement)}
+ * @demo ./demo/tags.html Demo
  */
-var SimpleFieldsCode =
+var SimpleFieldsTagList =
   /*#__PURE__*/
-  (function (_SimpleFieldsContaine) {
-    _inherits(SimpleFieldsCode, _SimpleFieldsContaine);
+  (function (_SimpleFieldsFieldBeh) {
+    _inherits(SimpleFieldsTagList, _SimpleFieldsFieldBeh);
 
-    _createClass(
-      SimpleFieldsCode,
-      [
-        {
-          key: "render",
-          value: function render() {
-            return !this.hasFieldSet
-              ? _get(
-                  _getPrototypeOf(SimpleFieldsCode.prototype),
-                  "render",
-                  this
-                ).call(this)
-              : this.fieldsetTemplate;
-          },
+    _createClass(SimpleFieldsTagList, null, [
+      {
+        key: "tag",
+        get: function get() {
+          return "simple-fields-tag-list";
         },
-      ],
-      [
-        {
-          key: "tag",
-          get: function get() {
-            return "simple-fields-code";
-          },
+      },
+      {
+        key: "styles",
+        get: function get() {
+          return [].concat(
+            _toConsumableArray(
+              _get(_getPrototypeOf(SimpleFieldsTagList), "styles", this)
+            ),
+            [(0, _litElement.css)(_templateObject())]
+          );
         },
-        {
-          key: "styles",
-          get: function get() {
-            return [].concat(
-              _toConsumableArray(
-                _get(_getPrototypeOf(SimpleFieldsCode), "styles", this)
-              ),
-              [(0, _litElement.css)(_templateObject())]
-            );
-          },
+      },
+      {
+        key: "properties",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(_getPrototypeOf(SimpleFieldsTagList), "properties", this),
+            {
+              /**
+               * error message when field is required and has no value
+               */
+              requiredMessage: {
+                type: String,
+              },
+              tagList: {
+                type: Array,
+                attribute: "tag-list",
+              },
+
+              /**
+               * Current value of the form control. Submitted with the form as part of a name/value pair.
+               */
+              value: {
+                reflect: true,
+              },
+              label: {
+                type: String,
+              },
+            }
+          );
         },
-        {
-          key: "properties",
-          get: function get() {
-            return _objectSpread(
-              {},
-              _get(_getPrototypeOf(SimpleFieldsCode), "properties", this),
-              {
-                /**
-                 * Automatically focus on field when the page is loaded
-                 */
-                autofocus: {
-                  type: Boolean,
-                },
+      },
+    ]);
 
-                /**
-                 * changes the value of the editor
-                 */
-                editorValue: {
-                  type: String,
-                  attribute: "editor-value",
-                },
-
-                /**
-                 * Whether the field is hidden
-                 */
-                focused: {
-                  type: Boolean,
-                  reflect: true,
-                },
-
-                /**
-                 * Font-size of editor
-                 */
-                fontSize: {
-                  type: Number,
-                  attribute: "font-size",
-                },
-
-                /**
-                 * language of code-editor
-                 */
-                language: {
-                  type: String,
-                },
-
-                /**
-                 * mode of code-editor
-                 */
-                mode: {
-                  type: Number,
-                },
-
-                /**
-                 * Value is not editable
-                 */
-                readonly: {
-                  type: Boolean,
-                  reflect: true,
-                },
-
-                /**
-                 * error message when field is required and has no value
-                 */
-                requiredMessage: {
-                  type: String,
-                },
-
-                /**
-                 * theme of code-editor
-                 */
-                theme: {
-                  type: String,
-                  reflect: true,
-                },
-
-                /**
-                 * Current value of the form control. Submitted with the form as part of a name/value pair.
-                 */
-                value: {
-                  reflect: true,
-                },
-              }
-            );
-          },
-        },
-      ]
-    );
-
-    function SimpleFieldsCode() {
+    function SimpleFieldsTagList() {
       var _this;
 
-      _classCallCheck(this, SimpleFieldsCode);
+      _classCallCheck(this, SimpleFieldsTagList);
 
       _this = _possibleConstructorReturn(
         this,
-        _getPrototypeOf(SimpleFieldsCode).call(this)
+        _getPrototypeOf(SimpleFieldsTagList).call(this)
       );
-      _this.autofocus = false;
-      _this.fontSize = 14;
+      _this.label = "Tags";
+      _this.value = "";
+      _this.tagList = [];
       _this.id = _this._generateUUID();
-      _this.language = "html";
-      _this.mode = "html";
-      _this.readonly = false;
+
+      _this.addEventListener("dragleave", _this._handleDragLeave);
+
+      _this.addEventListener("dragover", _this._handleDragEnter);
+
+      _this.addEventListener("drop", _this._handleDragDrop);
+
       return _this;
     }
 
-    _createClass(SimpleFieldsCode, [
+    _createClass(SimpleFieldsTagList, [
       {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
@@ -416,7 +382,7 @@ var SimpleFieldsCode =
           });
 
           _get(
-            _getPrototypeOf(SimpleFieldsCode.prototype),
+            _getPrototypeOf(SimpleFieldsTagList.prototype),
             "disconnectedCallback",
             this
           ).call(this);
@@ -430,30 +396,139 @@ var SimpleFieldsCode =
           changedProperties.forEach(function (oldValue, propName) {
             if (propName === "id" && !_this3.id)
               _this3.id = _this3._generateUUID();
-            if (propName === "field" && !_this3.field) _this3._updateField();
             if (propName === "value") _this3._fireValueChanged();
           });
         },
         /**
-         * template label and field
+         * template for slotted or shadow DOM prefix
          *
          * @readonly
          * @returns {object}
-         * @memberof SimpleFieldsContainerBehaviors
+         * @memberof SimpleFieldsContainer
          */
       },
       {
-        key: "_onChange",
+        key: "getInput",
+        value: function getInput() {
+          return (0, _litElement.html)(
+            _templateObject2(),
+            this._handleKeydown,
+            this._handleKeyup,
+            this.autofocus,
+            this.describedBy || "",
+            this.error ? "true" : "false",
+            this._onFocusout,
+            this._handleFieldChange,
+            this.disabled,
+            this._onFocusin,
+            this.hidden,
+            this.id,
+            this._handleFieldChange,
+            this.id,
+            this.placeholder || "",
+            this.readonly,
+            this.required,
+            this.value
+          );
+        },
+      },
+      {
+        key: "removeTag",
+        value: function removeTag(e) {
+          this.tagList = _toConsumableArray(
+            this.tagList.filter(function (i) {
+              if (i.term === e.detail.value) {
+                return false;
+              }
 
-        /**
-         * makes handles code-editor changes
-         *
-         * @memberof SimpleFieldsCode
-         */
-        value: function _onChange(e) {
-          var target = (0, _utils.normalizeEventPath)(e)[0];
-          if (!target) return;
-          if (this.value !== target.value) this.value = target.value; //this.autoGrow(target);
+              return true;
+            })
+          );
+        },
+      },
+      {
+        key: "_handleDragLeave",
+        value: function _handleDragLeave(e) {
+          this.classList.remove("drag-focus");
+        },
+      },
+      {
+        key: "_handleDragEnter",
+        value: function _handleDragEnter(e) {
+          e.preventDefault();
+          this.classList.add("drag-focus");
+        },
+      },
+      {
+        key: "_handleDragDrop",
+        value: function _handleDragDrop(e) {
+          e.preventDefault();
+          this.classList.remove("drag-focus"); // sanity check we have text here; this HAS to have been set by
+
+          if (JSON.parse(e.dataTransfer.getData("text"))) {
+            var tmp = JSON.parse(e.dataTransfer.getData("text")); // ensure there is no duplicate value / term
+
+            this.tagList = _toConsumableArray(
+              this.tagList.filter(function (i) {
+                if (i.term === tmp.term) {
+                  return false;
+                }
+
+                return true;
+              })
+            );
+            var tagList = this.tagList;
+            tagList.push(tmp);
+            this.tagList = _toConsumableArray(tagList);
+          }
+        },
+      },
+      {
+        key: "_handleKeydown",
+        value: function _handleKeydown(e) {
+          if (
+            e.key === "Enter" &&
+            this.shadowRoot.querySelector("input").value != ""
+          ) {
+            this._updateTaglist();
+          }
+        },
+      },
+      {
+        key: "_handleKeyup",
+        value: function _handleKeyup(e) {
+          if (
+            e.key === "," &&
+            this.shadowRoot.querySelector("input").value != ""
+          ) {
+            this._updateTaglist();
+          }
+        },
+      },
+      {
+        key: "_updateTaglist",
+        value: function _updateTaglist() {
+          var _this4 = this;
+
+          var tag = this.shadowRoot.querySelector("input").value;
+          tag = tag.replace(/,$/, "").trim(); // ensure there is no duplicate value / term
+
+          this.tagList = _toConsumableArray(
+            this.tagList.filter(function (i) {
+              if (i.term === _this4.shadowRoot.querySelector("input").value) {
+                return false;
+              }
+
+              return true;
+            })
+          );
+          var tagList = this.tagList;
+          tagList.push({
+            term: tag,
+            color: "grey",
+          });
+          this.tagList = _toConsumableArray(tagList);
+          this.shadowRoot.querySelector("input").value = "";
         },
         /**
          * overridden mutation observer
@@ -494,18 +569,11 @@ var SimpleFieldsCode =
             })
           );
         },
-      },
-      {
-        key: "_onFocusChange",
-        value: function _onFocusChange(e) {
-          this.focused = e.detail.focused;
-        },
         /**
          * listens for focusout
          * overridden for fields in shadow DOM
          *
          * @param {boolean} [init=true] whether to start observing or disconnect observer
-         * @memberof SimpleFieldsContainerBehaviors
          */
       },
       {
@@ -526,62 +594,23 @@ var SimpleFieldsCode =
             this.removeEventListener("focusin", this._onFocusin);
           }
         },
-        /**
-         * updates field an type
-         *
-         * @memberof SimpleFieldsCode
-         */
       },
       {
-        key: "_updateField",
-        value: function _updateField() {
-          this.field =
-            this.shadowRoot && this.shadowRoot.querySelector("code-editor")
-              ? this.shadowRoot.querySelector("code-editor")
-              : undefined;
-        },
-        /**
-         * generates a unique id
-         * @returns {string } unique id
-         */
-      },
-      {
-        key: "_generateUUID",
-        value: function _generateUUID() {
-          return "ss-s-s-s-sss".replace(
-            /s/g,
-            Math.floor((1 + Math.random()) * 0x10000)
-              .toString(16)
-              .substring(1)
-          );
-        },
-      },
-      {
-        key: "fieldMainTemplate",
+        key: "prefixTemplate",
         get: function get() {
-          var _this4 = this;
+          var _this5 = this;
 
           return (0, _litElement.html)(
-            _templateObject2(),
-            this.labelTemplate,
-            this.autofocus,
-            this.disabled,
-            this.fontSize,
-            this.__editorValue || "",
-            this.theme || "auto",
-            this.language,
-            this.mode,
-            this.readonly || this.disabled,
-            this._onChange,
-            this._onFocusChange,
-            function (e) {
-              return _this4.focused == true;
-            },
-            function (e) {
-              return _this4.focused == false;
-            },
-            this.id,
-            this.value
+            _templateObject3(),
+            _get(
+              _getPrototypeOf(SimpleFieldsTagList.prototype),
+              "prefixTemplate",
+              this
+            ),
+            this.tagList.map(function (tag) {
+              return (0,
+              _litElement.html)(_templateObject4(), tag, tag.term, tag.color, _this5.removeTag);
+            })
           );
         },
       },
@@ -591,12 +620,10 @@ var SimpleFieldsCode =
       },
     ]);
 
-    return SimpleFieldsCode;
+    return SimpleFieldsTagList;
   })(
-    (0, _simpleFieldsContainer.SimpleFieldsContainerBehaviors)(
-      _litElement.LitElement
-    )
+    (0, _simpleFieldsField.SimpleFieldsFieldBehaviors)(_litElement.LitElement)
   );
 
-exports.SimpleFieldsCode = SimpleFieldsCode;
-window.customElements.define(SimpleFieldsCode.tag, SimpleFieldsCode);
+exports.SimpleFieldsTagList = SimpleFieldsTagList;
+window.customElements.define(SimpleFieldsTagList.tag, SimpleFieldsTagList);

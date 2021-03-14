@@ -7,8 +7,8 @@ export const HaxUiText = [
       --hax-ui-font-size: 16px;
       --hax-ui-font-size-sm: 13px;
       --hax-ui-font-size-xs: 12px;
-      --hax-ui-font-size-lg: calc(1.1 * var(--hax-ui-font-size, 16px));
-      --hax-ui-font-size-xl: calc(1.2 * var(--hax-ui-font-size, 16px));
+      --hax-ui-font-size-lg: calc(1.05 * var(--hax-ui-font-size, 16px));
+      --hax-ui-font-size-xl: calc(1.25 * var(--hax-ui-font-size, 16px));
     }
   `,
 ];
@@ -41,7 +41,7 @@ export const HaxUiColors = [
 
       --hax-ui-color-accent: #009dc7;
       --hax-ui-color-accent-secondary: #007999;
-      --hax-ui-background-color-accent: #ddf8ff;
+      --hax-ui-background-color-accent: #ccf3fd;
 
       --hax-ui-color-danger: #ee0000;
       --hax-ui-color-danger-secondary: #850000;
@@ -117,9 +117,20 @@ export const HaxUiFields = [
       --simple-fields-detail-font-size: var(--hax-ui-font-size-sm);
       --simple-fields-detail-line-height: 120%;
       --simple-fields-margin: var(--hax-ui-spacing);
+      --simple-fields-background-color: var(--hax-ui-background-color);
       --simple-fields-color: var(--hax-tray-text-color);
       --simple-fields-accent-color: var(--hax-ui-color-accent);
+      --simple-fields-accent-color-light: var(--hax-ui-background-color-faded);
       --simple-fields-error-color: var(--hax-ui-color-danger-secondary);
+      --simple-fields-button-danger-background-color: var(
+        --hax-ui-color-danger
+      );
+      --simple-fields-button-danger-focus-color: var(
+        --hax-ui-color-danger-secondary
+      );
+      --simple-fields-button-danger-background-color: var(
+        --hax-ui-background-color
+      );
       --simple-fields-secondary-accent-color: var(
         --hax-ui-color-accent-secondary
       );
@@ -326,7 +337,7 @@ export const HaxButton = [
     }
     :host([feature]) button[part="button"],
     :host([danger]) button[part="button"] {
-      color: var(--hax-ui-background-color-secondary);
+      color: var(--hax-ui-background-color);
     }
     :host([feature]) button[part="button"] {
       background-color: var(--hax-ui-color-accent);

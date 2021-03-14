@@ -15,11 +15,24 @@ class HaxTrayUpload extends HaxUploadField {
    */
   constructor() {
     super();
-    this.label = "Upload Source";
+    this.t = {
+      ...super.t,
+      uploadMedia: "Upload Media",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "hax",
+    });
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection",
       "place-holder-file-drop": "_placeHolderFileDrop",
     };
+  }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "t") this.label = this.t.uploadMedia;
+    });
   }
   /**
    * Respond to successful file upload, now inject url into url field and

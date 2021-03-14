@@ -13,7 +13,7 @@ export const SimpleFieldsBaseStyles = [
       font-size: var(--simple-fields-detail-font-size, 12px);
       font-family: var(--simple-fields-detail-font-family, sans-serif);
       line-height: var(--simple-fields-detail-line-height, 130%);
-      background-color: var(--simple-fields-background-color, transparent);
+      background-color: var(--simple-fields-background-color, white);
       color: var(--simple-fields-color, currentColor);
       margin: 0 0
         var(--simple-fields-field-margin, var(--simple-fields-margin, 16px));
@@ -85,7 +85,8 @@ export const SimpleFieldsButtonStyles = [
   css`
     button,
     button[aria-selected],
-    simple-toolbar-button::part(button) {
+    simple-toolbar-button::part(button),
+    simple-toolbar-menu::part(button) {
       color: var(--simple-fields-button-color, var(--simple-fields-color));
       background-color: var(
         --simple-fields-button-background-color,
@@ -105,13 +106,24 @@ export const SimpleFieldsButtonStyles = [
       font-size: var(--simple-fields-button-font-size, 14px);
       line-height: var(--simple-fields-button-line-height 22px);
       text-transform: var(--simple-fields-button-text-transform, unset);
-      border-width: 1px;
       border-radius: var(--simple-fields-border-radius, 2px);
       padding: var(--simple-fields-button-padding-sm, 1px)
         var(--simple-fields-button-padding, 2px);
       min-height: calc(
         24px + 2 * var(--simple-fields-button-padding-sm, 2px) + 2px
       );
+    }
+    simple-toolbar-menu-item > simple-toolbar-button::part(button) {
+      border-color: transparent;
+      border-radius: 0 !important;
+    }
+    simple-toolbar-button.danger::part(button),
+    simple-toolbar-menu.danger::part(button) {
+      background-color: var(
+        --simple-fields-button-danger-color,
+        var(--simple-fields-error-color, #b40000)
+      );
+      color: var(--simple-fields-button-danger-background-color, white);
     }
     button[aria-pressed="true"],
     button[aria-selected="true"],
@@ -130,16 +142,32 @@ export const SimpleFieldsButtonStyles = [
       );
       opacity: var(--simple-fields-button-toggled-opacity, 1);
     }
+    simple-toolbar-menu-item
+      > simple-toolbar-button.danger:hover::part(button[aria-pressed="true"]),
+    simple-toolbar-menu-item
+      > simple-toolbar-button.danger:focus-within::part(button[aria-pressed="true"]) {
+      background-color: var(
+        --simple-fields-button-danger-color,
+        var(--simple-fields-error-color, #b40000)
+      );
+      color: var(--simple-fields-button-danger-background-color, white);
+      border-color: var(--simple-fields-button-danger-focus-color, #8a0000);
+    }
     button:focus,
     button:hover,
     button[aria-selected="false"]:not([disabled]):focus,
     button[aria-selected="false"]:not([disabled]):hover,
     simple-toolbar-button:focus-within::part(button),
-    simple-toolbar-button:hover::part(button) {
+    simple-toolbar-button:hover::part(button),
+    simple-toolbar-menu:focus-within::part(button),
+    simple-toolbar-menu:hover::part(button),
+    simple-toolbar-menu-item > simple-toolbar-button:hover::part(button),
+    simple-toolbar-menu-item
+      > simple-toolbar-button:focus-within::part(button) {
       color: var(--simple-fields-button-focus-color, unset);
       background-color: var(
         --simple-fields-button-focus-background-color,
-        unset
+        var(--simple-fields-accent-color-light, #d9eaff)
       );
       border-color: var(
         --simple-fields-button-focus-border-color,
@@ -148,9 +176,19 @@ export const SimpleFieldsButtonStyles = [
       opacity: var(--simple-fields-button-focus-opacity, 1);
       text-decoration: var(--simple-fields-button-focus-text-decoration, unset);
     }
+    simple-toolbar-menu.danger:focus-within::part(button),
+    simple-toolbar-menu.danger:hover::part(button),
+    simple-toolbar-menu-item > simple-toolbar-button.danger:hover::part(button),
+    simple-toolbar-menu-item
+      > simple-toolbar-button.danger:focus-within::part(button) {
+      background-color: var(--simple-fields-button-danger-focus-color, #8a0000);
+      color: var(--simple-fields-button-danger-background-color, white);
+      border-color: var(--simple-fields-button-danger-focus-color, #8a0000);
+    }
     button:disabled,
     button[disabled],
-    simple-toolbar-button[disabled] {
+    simple-toolbar-button[disabled],
+    simple-toolbar-menu[disabled] {
       color: var(--simple-fields-button-disabled-color, unset);
       background-color: var(
         --simple-fields-button-disabled-background-color,
@@ -201,6 +239,7 @@ export const SimpleFieldsFieldsetStyles = [
       );
       border-radius: var(--simple-fields-border-radius, 2px);
       transition: all 0.3s ease-in-out;
+      max-width: calc(100% - 2 * var(--simple-fields-margin, 16px) - 2px);
     }
     :host(:last-of-type) {
       margin-bottom: 0;
@@ -215,7 +254,7 @@ export const SimpleFieldsFieldsetStyles = [
       text-transform: var(--simple-fields-legend-text-transform, unset);
     }
     :host([error]) *[part="legend"] {
-      color: var(--simple-fields-error-color, #dd2c00);
+      color: var(--simple-fields-error-color, #b40000);
       transition: all 0.3s ease-in-out;
     }
   `,

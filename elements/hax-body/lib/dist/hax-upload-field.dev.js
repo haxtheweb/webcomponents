@@ -13,6 +13,8 @@ var _utils = require("@lrnwebcomponents/utils/utils.js");
 
 var _haxStore = require("./hax-store.js");
 
+var _I18NMixin = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -60,15 +62,6 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError(
-      "this hasn't been initialised - super() hasn't been called"
-    );
-  }
-  return self;
-}
-
 function _getPrototypeOf(o) {
   _getPrototypeOf = Object.setPrototypeOf
     ? Object.getPrototypeOf
@@ -76,6 +69,15 @@ function _getPrototypeOf(o) {
         return o.__proto__ || Object.getPrototypeOf(o);
       };
   return _getPrototypeOf(o);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    );
+  }
+  return self;
 }
 
 function _inherits(subClass, superClass) {
@@ -118,6 +120,17 @@ var HaxUploadField =
       _this.__winEvents = {
         "hax-app-picker-selection": "_haxAppPickerSelection", //TODO
       };
+      _this.t = {
+        whereUpload: "Where would you like to upload this",
+        cantHandle: "Sorry, you don't have a storage location that can handle",
+        uploads: "uploads",
+      };
+
+      _this.registerLocalization({
+        context: _assertThisInitialized(_this),
+        namespace: "hax",
+      });
+
       return _this;
     }
 
@@ -156,14 +169,15 @@ var HaxUploadField =
               _haxStore.HAXStore.haxAppPicker.presentOptions(
                 targets,
                 type,
-                "Where would you like to upload this " + type + "?",
+                "".concat(this.t.whereUpload, " ").concat(type, "?"),
                 "app"
               );
             } else {
               _haxStore.HAXStore.toast(
-                "Sorry, you don't have a storage location that can handle " +
-                  type +
-                  " uploads!",
+                ""
+                  .concat(this.t.cantHandle, " ")
+                  .concat(type, " ")
+                  .concat(this.t.uploads, "!"),
                 5000
               );
             }
@@ -287,7 +301,11 @@ var HaxUploadField =
     ]);
 
     return HaxUploadField;
-  })((0, _utils.winEventsElement)(_simpleFieldsUpload.SimpleFieldsUpload));
+  })(
+    (0, _utils.winEventsElement)(
+      (0, _I18NMixin.I18NMixin)(_simpleFieldsUpload.SimpleFieldsUpload)
+    )
+  );
 
 exports.HaxUploadField = HaxUploadField;
 window.customElements.define("hax-upload-field", HaxUploadField);

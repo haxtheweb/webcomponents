@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.SimpleFieldsFieldset = void 0;
+exports.SimpleFieldsFieldsetBehaviors = exports.SimpleFieldsFieldset = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
@@ -29,7 +29,7 @@ function _typeof(obj) {
 
 function _templateObject5() {
   var data = _taggedTemplateLiteral([
-    "\n        :host(:last-of-type) {\n          margin-bottom: 0;\n        }\n      ",
+    "\n          :host(:last-of-type) {\n            margin-bottom: 0;\n          }\n        ",
   ]);
 
   _templateObject5 = function _templateObject5() {
@@ -68,7 +68,7 @@ function _arrayWithoutHoles(arr) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    '\n      <div id="item-fields" part="fields">\n        <slot></slot>\n      </div>\n    ',
+    '\n        <div id="item-fields" part="fields">\n          <slot></slot>\n        </div>\n      ',
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -80,9 +80,9 @@ function _templateObject4() {
 
 function _templateObject3() {
   var data = _taggedTemplateLiteral([
-    '\n      <div id="description" ?hidden="',
-    '" part="description">\n        ',
-    "\n      </div>\n    ",
+    '\n        <div id="description" ?hidden="',
+    '" part="description">\n          ',
+    "\n        </div>\n      ",
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -94,10 +94,10 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <legend id="label" ?hidden="',
-    '" part="legend">\n        ',
+    '\n        <legend id="label" ?hidden="',
+    '" part="legend">\n          ',
     "",
-    "\n      </legend>\n    ",
+    "\n        </legend>\n      ",
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -109,10 +109,10 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <fieldset part="fieldset">\n        ',
+    '\n        <fieldset part="fieldset">\n          ',
     " ",
     " ",
-    "\n      </fieldset>\n    ",
+    "\n        </fieldset>\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -199,16 +199,172 @@ function _setPrototypeOf(o, p) {
 }
 
 /**
+ * @class SimpleFieldsFieldsetBehaviors
+ */
+var SimpleFieldsFieldsetBehaviors = function SimpleFieldsFieldsetBehaviors(
+  SuperClass
+) {
+  return (
+    /*#__PURE__*/
+    (function (_SuperClass) {
+      _inherits(_class, _SuperClass);
+
+      function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(
+          this,
+          _getPrototypeOf(_class).apply(this, arguments)
+        );
+      }
+
+      _createClass(
+        _class,
+        [
+          {
+            key: "render",
+            value: function render() {
+              return (0, _litElement.html)(
+                _templateObject(),
+                this.legend,
+                this.desc,
+                this.fields
+              );
+            },
+          },
+          {
+            key: "legend",
+            get: function get() {
+              return (0, _litElement.html)(
+                _templateObject2(),
+                !this.label,
+                this.label,
+                this.error ? "*" : ""
+              );
+            },
+          },
+          {
+            key: "desc",
+            get: function get() {
+              return (0, _litElement.html)(
+                _templateObject3(),
+                !this.description,
+                this.description
+              );
+            },
+          },
+          {
+            key: "fields",
+            get: function get() {
+              return (0, _litElement.html)(_templateObject4());
+            },
+          },
+        ],
+        [
+          {
+            key: "tag",
+            get: function get() {
+              return "simple-fields-fieldset";
+            },
+          },
+          {
+            key: "styles",
+            get: function get() {
+              return [].concat(
+                _toConsumableArray(_simpleFieldsUi.SimpleFieldsBaseStyles),
+                _toConsumableArray(_simpleFieldsUi.SimpleFieldsFieldsetStyles),
+                _toConsumableArray(
+                  _simpleFieldsUi.SimpleFieldsDescriptionStyles
+                ),
+                [(0, _litElement.css)(_templateObject5())]
+              );
+            },
+          },
+          {
+            key: "properties",
+            get: function get() {
+              return {
+                /**
+                 * whether the tabbed interface is disabled
+                 */
+                disabled: {
+                  type: Boolean,
+                  reflect: true,
+                },
+
+                /**
+                 * whether fieldset has fields with errors
+                 */
+                error: {
+                  type: Boolean,
+                  reflect: true,
+                },
+
+                /**
+                 * whether the tabbed interface is hidden
+                 */
+                hidden: {
+                  type: Boolean,
+                  reflect: true,
+                },
+
+                /**
+                 * whether the tabbed interface is hidden
+                 */
+                readonly: {
+                  type: Boolean,
+                  reflect: true,
+                },
+
+                /**
+                 * fieldset legend
+                 */
+                label: {
+                  type: String,
+                  reflect: true,
+                },
+
+                /**
+                 * unique name
+                 */
+                name: {
+                  type: String,
+                  reflect: true,
+                  attribute: "name",
+                },
+
+                /**
+                 * optional description
+                 */
+                description: {
+                  type: String,
+                },
+              };
+            },
+          },
+        ]
+      );
+
+      return _class;
+    })(SuperClass)
+  );
+};
+/**
  *`simple-fields-fieldset` takes in a JSON schema of type fieldset and builds a form,
  * exposing a `value` property that represents an array described by the schema.
  *
  * @group simple-fields
  * @element simple-fields-fieldset
+ * @class SimpleFieldsFieldset
+ * @extends {SimpleFieldsFieldsetBehaviors(LitElement)}
  */
+
+exports.SimpleFieldsFieldsetBehaviors = SimpleFieldsFieldsetBehaviors;
+
 var SimpleFieldsFieldset =
   /*#__PURE__*/
-  (function (_LitElement) {
-    _inherits(SimpleFieldsFieldset, _LitElement);
+  (function (_SimpleFieldsFieldset) {
+    _inherits(SimpleFieldsFieldset, _SimpleFieldsFieldset);
 
     function SimpleFieldsFieldset() {
       _classCallCheck(this, SimpleFieldsFieldset);
@@ -219,133 +375,8 @@ var SimpleFieldsFieldset =
       );
     }
 
-    _createClass(
-      SimpleFieldsFieldset,
-      [
-        {
-          key: "render",
-          value: function render() {
-            return (0, _litElement.html)(
-              _templateObject(),
-              this.legend,
-              this.desc,
-              this.fields
-            );
-          },
-        },
-        {
-          key: "legend",
-          get: function get() {
-            return (0, _litElement.html)(
-              _templateObject2(),
-              !this.label,
-              this.label,
-              this.error ? "*" : ""
-            );
-          },
-        },
-        {
-          key: "desc",
-          get: function get() {
-            return (0, _litElement.html)(
-              _templateObject3(),
-              !this.description,
-              this.description
-            );
-          },
-        },
-        {
-          key: "fields",
-          get: function get() {
-            return (0, _litElement.html)(_templateObject4());
-          },
-        },
-      ],
-      [
-        {
-          key: "tag",
-          get: function get() {
-            return "simple-fields-fieldset";
-          },
-        },
-        {
-          key: "styles",
-          get: function get() {
-            return [].concat(
-              _toConsumableArray(_simpleFieldsUi.SimpleFieldsBaseStyles),
-              _toConsumableArray(_simpleFieldsUi.SimpleFieldsFieldsetStyles),
-              _toConsumableArray(_simpleFieldsUi.SimpleFieldsDescriptionStyles),
-              [(0, _litElement.css)(_templateObject5())]
-            );
-          },
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {
-              /**
-               * whether the tabbed interface is disabled
-               */
-              disabled: {
-                type: Boolean,
-                reflect: true,
-              },
-
-              /**
-               * whether fieldset has fields with errors
-               */
-              error: {
-                type: Boolean,
-                reflect: true,
-              },
-
-              /**
-               * whether the tabbed interface is hidden
-               */
-              hidden: {
-                type: Boolean,
-                reflect: true,
-              },
-
-              /**
-               * whether the tabbed interface is hidden
-               */
-              readonly: {
-                type: Boolean,
-                reflect: true,
-              },
-
-              /**
-               * fieldset legend
-               */
-              label: {
-                type: String,
-                reflect: true,
-              },
-
-              /**
-               * unique name
-               */
-              name: {
-                type: String,
-                reflect: true,
-                attribute: "name",
-              },
-
-              /**
-               * optional description
-               */
-              description: {
-                type: String,
-              },
-            };
-          },
-        },
-      ]
-    );
-
     return SimpleFieldsFieldset;
-  })(_litElement.LitElement);
+  })(SimpleFieldsFieldsetBehaviors(_litElement.LitElement));
 
 exports.SimpleFieldsFieldset = SimpleFieldsFieldset;
 window.customElements.define(SimpleFieldsFieldset.tag, SimpleFieldsFieldset);

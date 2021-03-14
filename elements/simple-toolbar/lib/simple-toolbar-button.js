@@ -227,10 +227,12 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @memberof SimpleToolbarButton
      */
     get currentTooltip() {
-      return this._defaultOrToggled(
-        this.tooltip,
-        this.toggledTootip,
-        this.isToggled
+      return (
+        this._defaultOrToggled(
+          this.tooltip,
+          this.toggledTootip,
+          this.isToggled
+        ) || this.currentLabel
       );
     }
     /**
@@ -240,7 +242,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      * @memberof SimpleToolbarButton
      */
     get isToggled() {
-      return this.toggles & this.toggled;
+      return !!this.toggles & !!this.toggled;
     }
 
     updated(changedProperties) {
@@ -368,9 +370,9 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
      */
     get tooltipVisible() {
       return (
-        this.hasTooltip &&
+        (this.hasTooltip || this.hasLabel) &&
         (!this.labelVisible ||
-          this._uniqueText(this.currentLabel, this.tooltip))
+          this._uniqueText(this.currentLabel, this.currentTooltip))
       );
     }
     /**
@@ -427,7 +429,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             position="${this.tooltipDirection || "bottom"}"
             part="tooltip"
             fit-to-visible-bounds
-            >${this.currentLabel}</simple-tooltip
+            >${this.currentTooltip || this.currentLabel}</simple-tooltip
           >`;
     }
     /**
@@ -529,7 +531,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
           }
           :host(:hover) simple-tooltip,
           :host(:focus-within) simple-tooltip {
-            z-index: 2;
+            z-index: var(--simple-toolbar-button-z-index, 2);
           }
         `,
       ];

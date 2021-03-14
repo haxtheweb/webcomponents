@@ -262,9 +262,12 @@ function _getPrototypeOf(o) {
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
  *
- * @group simple-fields
+ * @customElement
+ * @group simple-field
  * @extends simple-fields-fieldset
  * @element simple-fields-array
+ * @class SimpleFieldsArray
+ * @extends {SimpleFieldsFieldsetBehaviors(LitElement)}
  */
 var SimpleFieldsArray =
   /*#__PURE__*/
@@ -341,6 +344,9 @@ var SimpleFieldsArray =
                 expanded: {
                   type: Boolean,
                   reflect: true,
+                },
+                __dragging: {
+                  type: Boolean,
                 },
               }
             );
@@ -543,7 +549,11 @@ var SimpleFieldsArray =
     ]);
 
     return SimpleFieldsArray;
-  })(_simpleFieldsFieldset.SimpleFieldsFieldset);
+  })(
+    (0, _simpleFieldsFieldset.SimpleFieldsFieldsetBehaviors)(
+      _litElement.LitElement
+    )
+  );
 
 exports.SimpleFieldsArray = SimpleFieldsArray;
 window.customElements.define(SimpleFieldsArray.tag, SimpleFieldsArray);

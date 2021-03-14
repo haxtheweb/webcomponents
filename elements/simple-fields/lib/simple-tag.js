@@ -1,14 +1,27 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-
-export class SimpleTag extends SimpleColors {
+import {
+  SimpleFieldsButtonStyles,
+  SimpleFieldsTooltipStyles,
+} from "./simple-fields-ui.js";
+/**
+ *
+ * @customElement
+ * @element simple-tag
+ * @class SimpleTag
+ * @extends {LitElement}
+ * @demo ./demo/tags.html Demo
+ */
+export class SimpleTag extends LitElement {
   static get tag() {
     return "simple-tag";
   }
   static get properties() {
     return {
-      ...super.properties,
+      readonly: {
+        type: Boolean,
+        reflect: true,
+      },
       icon: { type: String },
       disabled: {
         type: Boolean,
@@ -32,54 +45,66 @@ export class SimpleTag extends SimpleColors {
     this.icon = "cancel";
     this.cancelButton = false;
     this.disabled = false;
+    this.readonly = false;
   }
   static get styles() {
     return [
-      super.styles,
+      SimpleFieldsButtonStyles,
+      SimpleFieldsTooltipStyles,
       css`
         :host {
           display: inline-flex;
-          font-size: 12px;
-          margin: 2px;
-          color: var(--simple-colors-default-theme-accent-11, #aaaaaa);
-          background-color: var(--simple-colors-default-theme-accent-2, white);
-          border: 1px solid var(--simple-colors-default-theme-accent-3, #aaaaaa);
-          border-radius: 12px;
-        }
-        div {
-          padding: 2px 10px;
-          text-align: center;
-        }
-        :host(:hover),
-        :host(:active),
-        :host(:focus) {
-          color: var(--simple-colors-default-theme-accent-12, #aaaaaa);
-          background-color: var(--simple-colors-default-theme-accent-3, white);
+          align-items: center;
+          background-color: var(
+            --simple-fields-button-color,
+            var(--simple-fields-color)
+          );
+          color: var(
+            --simple-fields-button-background-color,
+            var(--simple-fields-background-color)
+          );
+          font-size: var(--simple-fields-font-size, 16px);
+          font-family: var(--simple-fields-font-family, sans-serif);
+          line-height: var(--simple-fields-line-height, 22px);
+          border-radius: var(--simple-fields-tag-border-radius, 4px);
+          padding: var(--simple-fields-button-padding, 2px)
+            calc(2 * var(--simple-fields-button-padding, 2px));
+          border-width: 1px;
+          border-style: solid;
+          border-color: var(
+            --simple-fields-fieldset-border-color,
+            var(--simple-fields-border-color-light, #ccc)
+          );
         }
         simple-icon-button-lite {
           cursor: pointer;
-          color: var(--simple-colors-default-theme-accent-11, #aaaaaa);
-          --simple-icon-height: 14px;
-          --simple-icon-width: 14px;
+          margin-left: 4px;
+          --simple-icon-height: var(--simple-fields-font-size, 16px);
+          --simple-icon-width: var(--simple-fields-font-size, 16px);
         }
-        simple-icon-button-lite:hover,
-        simple-icon-button-lite:active,
-        simple-icon-button-lite:focus {
-          color: var(--simple-colors-default-theme-accent-12, #aaaaaa);
+        :host([hidden]) {
+          display: none;
+        }
+        :host([disabled]):not([readonly]) {
+          opacity: 0.5;
         }
       `,
     ];
   }
   render() {
     return html`
-      <div>
-        <span>${this.value}<slot></slot></span>
-        <simple-icon-button-lite
-          icon="${this.icon}"
-          ?hidden="${!this.cancelButton}"
-          @click="${this.clickEvent}"
-        ></simple-icon-button-lite>
-      </div>
+      <span>${this.value}<slot></slot></span>
+      ${!!this.readonly
+        ? ""
+        : html`
+            <simple-icon-button-lite
+              icon="${this.icon}"
+              label="Remove ${this.value}"
+              ?hidden="${this.cancelButton}"
+              @click="${this.clickEvent}"
+              ?disabled="${this.disabled}"
+            ></simple-icon-button-lite>
+          `}
     `;
   }
   clickEvent(e) {

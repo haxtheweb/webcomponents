@@ -29,7 +29,7 @@ function _typeof(obj) {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n      <slot name="header"></slot> <slot name="content"></slot>\n      <slot name="buttons"></slot>\n    ',
+    '\n      <slot name="header"></slot>\n      <slot name="content"></slot>\n      <slot name="buttons"></slot>\n    ',
   ]);
 
   _templateObject2 = function _templateObject2() {
@@ -273,7 +273,9 @@ var SimpleModalTemplate =
           key: "_getCustom",
           value: function _getCustom() {
             var slot = this.querySelectorAll('[slot="custom"]');
-            return slot.length == 1 ? slot[0] : this._getSlot("custom");
+            return slot.length == 1
+              ? slot[0].cloneNode(true)
+              : this._getSlot("custom");
           },
           /**
            * clones content in a named slot

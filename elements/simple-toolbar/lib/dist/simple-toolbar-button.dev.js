@@ -96,7 +96,7 @@ function _templateObject10() {
 
 function _templateObject9() {
   var data = _taggedTemplateLiteral([
-    "\n          simple-tooltip {\n            z-index: -1;\n          }\n          :host(:hover) simple-tooltip,\n          :host(:focus-within) simple-tooltip {\n            z-index: 2;\n          }\n        ",
+    "\n          simple-tooltip {\n            z-index: -1;\n          }\n          :host(:hover) simple-tooltip,\n          :host(:focus-within) simple-tooltip {\n            z-index: var(--simple-toolbar-button-z-index, 2);\n          }\n        ",
   ]);
 
   _templateObject9 = function _templateObject9() {
@@ -854,10 +854,12 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
           {
             key: "currentTooltip",
             get: function get() {
-              return this._defaultOrToggled(
-                this.tooltip,
-                this.toggledTootip,
-                this.isToggled
+              return (
+                this._defaultOrToggled(
+                  this.tooltip,
+                  this.toggledTootip,
+                  this.isToggled
+                ) || this.currentLabel
               );
             },
             /**
@@ -870,7 +872,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
           {
             key: "isToggled",
             get: function get() {
-              return this.toggles & this.toggled;
+              return !!this.toggles & !!this.toggled;
             },
           },
           {
@@ -921,9 +923,9 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
             key: "tooltipVisible",
             get: function get() {
               return (
-                this.hasTooltip &&
+                (this.hasTooltip || this.hasLabel) &&
                 (!this.labelVisible ||
-                  this._uniqueText(this.currentLabel, this.tooltip))
+                  this._uniqueText(this.currentLabel, this.currentTooltip))
               );
             },
           },
@@ -965,7 +967,7 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
                 : (0, _litElement.html)(
                     _templateObject4(),
                     this.tooltipDirection || "bottom",
-                    this.currentLabel
+                    this.currentTooltip || this.currentLabel
                   );
             },
             /**

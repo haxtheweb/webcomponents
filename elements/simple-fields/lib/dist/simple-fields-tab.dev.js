@@ -201,10 +201,12 @@ function _setPrototypeOf(o, p) {
  * `simple-fields-tab` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
  *
+ * @customElement
  * @group simple-fields
  * @element simple-fields-tab
- * @extends a11y-tab
  * @extends simple-fields-fieldset
+ * @class SimpleFieldsTab
+ * @extends {A11yTab}
  */
 var SimpleFieldsTab =
   /*#__PURE__*/
@@ -242,7 +244,7 @@ var SimpleFieldsTab =
             {},
             _get(_getPrototypeOf(SimpleFieldsTab), "properties", this),
             {},
-            _simpleFieldsFieldset.SimpleFieldsFieldset.properties
+            _simpleFieldsFieldset.SimpleFieldsFieldsetBehaviors.properties
           );
         },
       },

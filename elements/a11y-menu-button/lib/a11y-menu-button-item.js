@@ -132,6 +132,11 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
           attribute: "controls",
           type: String,
         },
+        slot: {
+          type: String,
+          attribute: "menuitem",
+          reflect: true,
+        },
       };
     }
     constructor() {

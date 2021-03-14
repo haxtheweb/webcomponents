@@ -19,11 +19,11 @@ Custom property | Description | Default
 `--simple-fields-margin-small` | smaller vertical margin above field itself | 8px
 `--simple-fields-border-radus` | default border-radius | 2px
 `--simple-fields-color` | text color | black
-`--simple-fields-error-color` | error text color | #dd2c00
+`--simple-fields-error-color` | error text color | #b40000
 `--simple-fields-accent-color` | accent text/underline color | #3f51b5
 `--simple-fields-border-color` | border-/underline color | #999
 `--simple-fields-border-color-light` | used for range tracks | #ccc
-`--simple-fields-faded-error-color` | used for range tracks | #ff997f
+`--simple-fields-faded-error-color` | used for range tracks | #ffc0c0
 
 #### Field text
 Custom property | Description | Default
@@ -123,7 +123,6 @@ inputMethod: {                //for fields in "this.fields", define elements bas
  * @demo ./demo/conditional.html Conditional Logic
  * @demo ./demo/subschema.html Subschemas
  * @demo ./demo/form.html Form
- * @demo ./demo/tags.html Tagging tags
  */
 class SimpleFields extends SimpleFieldsLite {
   //styles function
@@ -325,6 +324,7 @@ class SimpleFields extends SimpleFieldsLite {
                 descriptionProperty: "description",
                 properties: {
                   previewBy: "previewBy",
+                  sortable: true,
                 },
               },
             },

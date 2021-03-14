@@ -60,7 +60,8 @@ class SimpleModalTemplate extends LitElement {
   //render function
   render() {
     return html`
-      <slot name="header"></slot> <slot name="content"></slot>
+      <slot name="header"></slot>
+      <slot name="content"></slot>
       <slot name="buttons"></slot>
     `;
   }
@@ -122,7 +123,7 @@ class SimpleModalTemplate extends LitElement {
   }
   _getCustom() {
     let slot = this.querySelectorAll('[slot="custom"]');
-    return slot.length == 1 ? slot[0] : this._getSlot("custom");
+    return slot.length == 1 ? slot[0].cloneNode(true) : this._getSlot("custom");
   }
   /**
    * clones content in a named slot

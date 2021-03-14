@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
+import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
 import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
@@ -9,11 +9,14 @@ import "./simple-fields-array-item.js";
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
  *
- * @group simple-fields
+ * @customElement
+ * @group simple-field
  * @extends simple-fields-fieldset
  * @element simple-fields-array
+ * @class SimpleFieldsArray
+ * @extends {SimpleFieldsFieldsetBehaviors(LitElement)}
  */
-class SimpleFieldsArray extends SimpleFieldsFieldset {
+class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
   static get tag() {
     return "simple-fields-array";
   }
@@ -54,6 +57,9 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       expanded: {
         type: Boolean,
         reflect: true,
+      },
+      __dragging: {
+        type: Boolean,
       },
     };
   }

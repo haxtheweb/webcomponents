@@ -244,11 +244,11 @@ Custom property | Description | Default
 `--simple-fields-margin-small` | smaller vertical margin above field itself | 8px
 `--simple-fields-border-radus` | default border-radius | 2px
 `--simple-fields-color` | text color | black
-`--simple-fields-error-color` | error text color | #dd2c00
+`--simple-fields-error-color` | error text color | #b40000
 `--simple-fields-accent-color` | accent text/underline color | #3f51b5
 `--simple-fields-border-color` | border-/underline color | #999
 `--simple-fields-border-color-light` | used for range tracks | #ccc
-`--simple-fields-faded-error-color` | used for range tracks | #ff997f
+`--simple-fields-faded-error-color` | used for range tracks | #ffc0c0
 
 #### Field text
 Custom property | Description | Default
@@ -391,11 +391,6 @@ var SimpleFields =
               {},
               _get(_getPrototypeOf(SimpleFields), "properties", this),
               {
-                /** override default theme for dark mode */
-                watchColorPrefs: {
-                  type: Boolean,
-                  attribute: "watch-color-prefs",
-                },
                 disableResponsive: {
                   type: Boolean,
                   attribute: "disable-responsive",
@@ -431,8 +426,13 @@ var SimpleFields =
                   type: Object,
                   attribute: "active-path",
                 },
-                __codeElements: {
-                  type: Array,
+
+                /**
+                 * default theme for code editor
+                 */
+                codeTheme: {
+                  type: String,
+                  attribute: "code-theme",
                 },
               }
             );
@@ -496,37 +496,6 @@ var SimpleFields =
               _this2._handleActiveTabs();
           });
         },
-      },
-      {
-        key: "rebuildForm",
-        value: function rebuildForm() {
-          _get(
-            _getPrototypeOf(SimpleFields.prototype),
-            "rebuildForm",
-            this
-          ).call(this);
-
-          window
-            .matchMedia("(prefers-color-scheme: dark)")
-            .addListener(function (e) {
-              //if(this.watchColorPrefs)
-              console.log(
-                "changed to ".concat(e.matches ? "dark" : "light", " mode"),
-                this.__codeElements
-              );
-              this.__codeElements;
-            });
-        },
-      },
-      {
-        key: "clearForm",
-        value: function clearForm() {
-          _get(_getPrototypeOf(SimpleFields.prototype), "clearForm", this).call(
-            this
-          );
-
-          this.__codeElements = [];
-        },
         /**
          * updates the active tabs object
          *
@@ -563,52 +532,6 @@ var SimpleFields =
           });
         },
         /**
-         * sets field or field wrapper element's slot ot property to a value
-         *
-         * @param {string} propName property name
-         * @param {string} slotName slot name if any
-         * @param {object} target element to set
-         * @param {*} value
-         * @memberof SimpleFieldsLite
-         */
-      },
-      {
-        key: "_configElement",
-        value: function _configElement(target, value, propName) {
-          var slotName =
-            arguments.length > 3 && arguments[3] !== undefined
-              ? arguments[3]
-              : false;
-
-          _get(
-            _getPrototypeOf(SimpleFields.prototype),
-            "_configElement",
-            this
-          ).call(this, target, value, propName, slotName);
-
-          this._setwatchColorPrefs(target);
-        },
-      },
-      {
-        key: "_setwatchColorPrefs",
-        value: function _setwatchColorPrefs(target) {
-          if (
-            this.watchColorPrefs &&
-            window.matchMedia &&
-            target.tagName == "SIMPLE-FIELDS-CODE"
-          ) {
-            this.__codeElements.push(target);
-
-            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-              target.theme = "vs-dark";
-            } else if (
-              window.matchMedia("(prefers-color-scheme: light)").matches
-            ) {
-              target.theme = "vs-light";
-            }
-          }
-        },
-        /**
          * matches schema property to fieldsConversion settings
          * @param {object} field fields array item
          * @param {object} conversion section of fieldsConverstion to search
@@ -630,11 +553,14 @@ var SimpleFields =
             arguments.length > 2 && arguments[2] !== undefined
               ? arguments[2]
               : {};
+          //see which keys the field and the conversion have in common
           var fieldKeys = Object.keys(field || {}),
             convKeys = Object.keys(conversion || {}).filter(function (key) {
               return fieldKeys.includes(key);
-            });
-          if (conversion.defaultSettings) settings = conversion.defaultSettings;
+            }); //start with default conversion settings
+
+          if (conversion.defaultSettings) settings = conversion.defaultSettings; //on the matching keys check for more specific conversion settings
+
           convKeys.forEach(function (key) {
             var val = field[key],
               convData = conversion ? conversion[key] : undefined,
@@ -642,9 +568,15 @@ var SimpleFields =
                 ? undefined
                 : Array.isArray(val)
                 ? convData[val[0]]
-                : convData[val];
+                : convData[val]; //if we have more specific settings get them recursively
+
             if (convVal)
-              settings = _this4._convertField(field, convVal, settings);
+              settings = _this4._convertField(
+                field,
+                convVal,
+                convData,
+                settings
+              );
           });
           return settings;
         },
@@ -703,7 +635,10 @@ var SimpleFields =
             ) {
               schema[key] = field[key];
             }
-          });
+          }); //sets a default code-editor theme
+
+          if (schema.type == "markup" && !schema.theme)
+            schema.theme = this.codeTheme;
           return schema;
         },
         /**
@@ -862,6 +797,7 @@ var SimpleFields =
                       descriptionProperty: "description",
                       properties: {
                         previewBy: "previewBy",
+                        sortable: true,
                       },
                     },
                   },
@@ -913,6 +849,9 @@ var SimpleFields =
                     element: "simple-fields-code",
                     setValueProperty: "editorValue",
                     noWrap: true,
+                    properties: {
+                      theme: "theme",
+                    },
                   },
                   format: {
                     "md-block": {
@@ -1235,7 +1174,6 @@ var SimpleFields =
                 "md-block": {
                   defaultSettings: {
                     type: "markup",
-                    format: "md-block",
                   },
                 },
                 monthpicker: {
