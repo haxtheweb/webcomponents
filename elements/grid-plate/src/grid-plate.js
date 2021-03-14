@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { HaxLayoutBehaviors } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXLayouts.js";
 
 // need to make this an object so that HAX can listen for it correctly

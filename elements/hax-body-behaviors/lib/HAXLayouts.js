@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { css } from "lit-element/lit-element.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 export const HaxLayoutBehaviors = function (SuperClass) {
