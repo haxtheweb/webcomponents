@@ -27,6 +27,7 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
       css`
         :host {
           display: block;
+          --simple-fields-tag-list-height: 24px;
         }
         #field-main-inner {
           align-items: center;
@@ -36,9 +37,14 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
           flex: 0 1 auto;
           margin: calc(0.5 * var(--simple-fields-button-padding, 2px))
             var(--simple-fields-button-padding, 2px);
+          height: var(--simple-fields-tag-list-height);
         }
-        .drag-focus {
+        :host(.drag-focus) [part="option-inner"] {
+          --simple-fields-accent-color: #eeeeee;
           background-color: var(--simple-fields-accent-color, #3f51b5);
+        }
+        [part="option-inner"] {
+          height: var(--simple-fields-tag-list-height);
         }
       `,
     ];
@@ -78,15 +84,12 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
     this.addEventListener("dragover", this._handleDragEnter);
     this.addEventListener("drop", this._handleDragDrop);
   }
-  disconnectedCallback() {
-    this.removeEventListener("click", (e) => this.focus());
-    super.disconnectedCallback();
-  }
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id" && !this.id) this.id = this._generateUUID();
       if (propName === "value") this._fireValueChanged();
+      if (propName === "tagList") this._fireTagListChanged();
     });
   }
 
@@ -242,12 +245,32 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
   _fireValueChanged() {
     this.dispatchEvent(
       new CustomEvent("value-changed", {
+        bubbles: false,
+        cancelable: false,
+        composed: false,
+        detail: this,
+      })
+    );
+  }
+  /**
+   * fires when tagList changes
+   * @event simple-fields-tag-list-changed
+   */
+  _fireTagListChanged(e) {
+    this.dispatchEvent(
+      new CustomEvent("simple-fields-tag-list-changed", {
         bubbles: true,
         cancelable: true,
         composed: true,
         detail: this,
       })
     );
+  }
+  _onFocusout(e) {
+    super._onFocusout(e);
+    if (this.shadowRoot.querySelector("input").value != "") {
+      this._updateTaglist();
+    }
   }
   /**
    * listens for focusout

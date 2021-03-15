@@ -1,123 +1,37 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
+import { css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleTagLiteSuper } from "./simple-tag-lite.js";
 import {
   SimpleFieldsButtonStyles,
   SimpleFieldsTooltipStyles,
 } from "./simple-fields-ui.js";
-/**
- *
- * @customElement
- * @element simple-tag
- * @class SimpleTag
- * @extends {LitElement}
- * @demo ./demo/tags.html Demo
- */
-export class SimpleTag extends LitElement {
-  static get tag() {
-    return "simple-tag";
-  }
-  static get properties() {
-    return {
-      readonly: {
-        type: Boolean,
-        reflect: true,
-      },
-      icon: { type: String },
-      disabled: {
-        type: Boolean,
-        reflect: true,
-      },
-      value: {
-        type: String,
-      },
-      data: {
-        type: Object,
-      },
-      cancelButton: {
-        type: Boolean,
-        attribute: "cancel-button",
-      },
-    };
-  }
-  constructor() {
-    super();
-    this.data = {};
-    this.icon = "cancel";
-    this.cancelButton = false;
-    this.disabled = false;
-    this.readonly = false;
-  }
+
+export class SimpleTag extends SimpleTagLiteSuper(SimpleColors) {
   static get styles() {
     return [
+      ...super.styles,
       SimpleFieldsButtonStyles,
       SimpleFieldsTooltipStyles,
       css`
         :host {
-          display: inline-flex;
-          align-items: center;
-          background-color: var(
-            --simple-fields-button-color,
-            var(--simple-fields-color)
+          --simple-fields-button-color: var(
+            --simple-colors-default-theme-accent-12,
+            #222222
           );
-          color: var(
-            --simple-fields-button-background-color,
-            var(--simple-fields-background-color)
+          --simple-fields-fieldset-border-color: var(
+            --simple-colors-default-theme-accent-3,
+            #eeeeee
           );
-          font-size: var(--simple-fields-font-size, 16px);
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
-          border-radius: var(--simple-fields-tag-border-radius, 4px);
-          padding: var(--simple-fields-button-padding, 2px)
-            calc(2 * var(--simple-fields-button-padding, 2px));
-          border-width: 1px;
-          border-style: solid;
-          border-color: var(
-            --simple-fields-fieldset-border-color,
-            var(--simple-fields-border-color-light, #ccc)
+          --simple-fields-button-background-color: var(
+            --simple-colors-default-theme-accent-3,
+            #eeeeee
           );
-        }
-        simple-icon-button-lite {
-          cursor: pointer;
-          margin-left: 4px;
-          --simple-icon-height: var(--simple-fields-font-size, 16px);
-          --simple-icon-width: var(--simple-fields-font-size, 16px);
-        }
-        :host([hidden]) {
-          display: none;
-        }
-        :host([disabled]):not([readonly]) {
-          opacity: 0.5;
         }
       `,
     ];
   }
-  render() {
-    return html`
-      <span>${this.value}<slot></slot></span>
-      ${!!this.readonly
-        ? ""
-        : html`
-            <simple-icon-button-lite
-              icon="${this.icon}"
-              label="Remove ${this.value}"
-              ?hidden="${this.cancelButton}"
-              @click="${this.clickEvent}"
-              ?disabled="${this.disabled}"
-            ></simple-icon-button-lite>
-          `}
-    `;
-  }
-  clickEvent(e) {
-    this.dispatchEvent(
-      new CustomEvent("simple-tag-clicked", {
-        composed: false,
-        bubbles: false,
-        cancelable: false,
-        detail: {
-          value: this.value,
-        },
-      })
-    );
+  static get tag() {
+    return "simple-tag";
   }
 }
 customElements.define(SimpleTag.tag, SimpleTag);

@@ -47,16 +47,18 @@ class EditableTableDisplay extends displayBehaviors(
         <caption>
           <div>
             <div>${this.getHTML(this.caption)}</div>
-            <simple-picker
-              id="column"
-              align-right
-              aria-label="Select Column"
-              @change="${this._selectedChanged}"
-              hide-sample
-              .options="${this.options}"
-              .value="${this.selected}"
-            >
-            </simple-picker>
+            ${!this.disableResponsive
+              ? html` <simple-picker
+                  id="column"
+                  align-right
+                  aria-label="Select Column"
+                  @change="${this._selectedChanged}"
+                  hide-sample
+                  .options="${this.options}"
+                  .value="${this.selected}"
+                >
+                </simple-picker>`
+              : ``}
             ${!this.downloadable
               ? ""
               : html`
