@@ -456,6 +456,7 @@ class PageContentsMenu extends LitElement {
       this.isEmpty = false;
     }
     this.items = [...items];
+    this._checkVisibleElements();
   }
 
   _applyScrollDetect() {
