@@ -211,6 +211,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
     this.menuOpen = true;
+    this.headerTags = ["H2", "H3", "H4", "H5", "H6"];
+    let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
+    this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
+
     // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
@@ -241,10 +245,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
   render() {
     return html`
-      <link
-        rel="stylesheet"
-        href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
-      />
+      <link rel="stylesheet" href="${this._bootstrapPath}" />
       <div class="site container-fluid">
         <div class="menu-outline">
           <div id="site-search-input" role="search">
@@ -308,24 +309,23 @@ class BootstrapTheme extends HAXCMSThemeParts(
     `;
   }
 
-  _wrapSections() {
-    // setTimeout(console.log(this.shadowRoot.getElementById("main-content").assignedElements()), 0);
+  _wrapSections() {}
+
+  _applyClasses(nodes) {
+    nodes.forEach((node) => {
+      if (this.headerTags.includes(node.nodeName)) {
+        node.classList.add("display-6");
+      }
+    });
   }
 
-  _applyClasses() {
-    console.log("should take 5 seconds....");
-    let bootstrapThemeElement = document.querySelector("bootstrap-theme");
-    let elements = bootstrapThemeElement.childNodes;
-
-    let mainContent = this.shadowRoot.getElementById("main-content");
-    console.log(mainContent);
-    console.log(mainContent.assignedElements());
-    console.log(
-      document
-        .querySelector("#site > bootstrap-theme")
-        .shadowRoot.querySelector("#main-content")
-        .assignedElements()
-    );
+  _applyMutationObserver() {
+    this._observer = new MutationObserver((mutationList, observer) => {
+      mutationList.forEach((mutationEntry) => {
+        this._applyClasses(mutationEntry.addedNodes);
+      });
+    });
+    this._observer.observe(this, { childList: true });
   }
 
   _generateBootstrapLink() {
@@ -360,13 +360,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     }
     this._loadScripts();
     this._bootstrapLink = this._generateBootstrapLink();
-    this._wrapSections();
-    this.delay(5000);
-    this._applyClasses();
-  }
-
-  delay(ms) {
-    new Promise((res) => setTimeout(res, ms));
+    this._applyMutationObserver();
   }
 
   /*
