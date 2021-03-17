@@ -545,9 +545,11 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     switch (detail.eventName) {
       case "insert-above-active":
       case "insert-below-active":
-        this.shadowRoot.querySelector(
-          "simple-popover-selection"
-        ).opened = false;
+        if (this.shadowRoot.querySelector("simple-popover-selection")) {
+          this.shadowRoot.querySelector(
+            "simple-popover-selection"
+          ).opened = false;
+        }
         break;
       case "text-underline":
         document.execCommand("underline");
@@ -567,7 +569,10 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         break;
     }
     if (prevent) {
-      if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
+      if (
+        this.shadowRoot.querySelector("simple-popover-selection") &&
+        this.shadowRoot.querySelector("simple-popover-selection").opened
+      ) {
         this.shadowRoot.querySelector(
           "simple-popover-selection"
         ).opened = false;
