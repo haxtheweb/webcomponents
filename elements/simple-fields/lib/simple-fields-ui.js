@@ -51,6 +51,7 @@ export const SimpleFieldsLabelStyles = [
     .field,
     ::slotted([slot="field"]) {
       font-size: var(--simple-fields-font-size, 16px);
+      text-align: var(--simple-fields-text-align);
       font-family: var(--simple-fields-font-family, sans-serif);
       line-height: var(--simple-fields-line-height, 22px);
     }

@@ -57,7 +57,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       },
       rubrics: [],
       assignments: [],
-      roster: [{}],
+      roster: [],
       grades: {},
       gradesDetails: {},
       gradeScale: [],
@@ -75,6 +75,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       criteria: "Criteria",
       description: "Description",
       assessmentWeight: "Assessment Weight",
+      overallFeedback: "Overall feedback",
     };
     this.registerLocalization({
       context: this,
@@ -86,6 +87,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       "simple-fields-tag-list-changed",
       this.qualitativeFeedbackUpdate.bind(this)
     );
+    this.addEventListener("drop", this._handleDragDrop);
   }
 
   getActiveRubric() {
@@ -287,15 +289,30 @@ class GradeBook extends I18NMixin(SimpleColors) {
         :host {
           display: block;
         }
+        loading-indicator {
+          --loading-indicator-background-color: var(
+            --simple-colors-default-theme-accent-2,
+            grey
+          );
+          --loading-indicator-color: var(
+            --simple-colors-default-theme-accent-10,
+            black
+          );
+        }
         grid-plate {
           --grid-plate-col-transition: none;
           --grid-plate-item-margin: 8px;
           --grid-plate-item-padding: 8px;
         }
         a11y-collapse div[slot="heading"] {
-          font-size: 14px;
+          font-size: 16px;
           font-weight: normal;
           cursor: pointer;
+          line-height: 34px;
+          display: flex;
+        }
+        a11y-collapse[expanded] div[slot="heading"] {
+          font-weight: bold;
         }
         simple-fields-tag-list.drag-focus {
           background-color: #dddddd;
@@ -314,6 +331,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
             --simple-colors-default-theme-accent-3,
             #eeeeee
           );
+        }
+        .mini-map {
+          float: right;
         }
         .student-feedback-wrap {
           display: flex;
@@ -338,6 +358,10 @@ class GradeBook extends I18NMixin(SimpleColors) {
             #eeeeee
           );
         }
+        .tag-group {
+          position: sticky;
+          top: 0;
+        }
       `,
     ];
   }
@@ -347,9 +371,13 @@ class GradeBook extends I18NMixin(SimpleColors) {
       <grid-plate layout="3-1">
         <a11y-tabs full-width slot="col-1">
           <a11y-tab icon="social:person" label="Active student">
-            <grade-book-student-block
-              .student="${this.database.roster[this.activeStudent]}"
-            ></grade-book-student-block>
+            ${this.database.roster[this.activeStudent]
+              ? html`
+                  <grade-book-student-block
+                    .student="${this.database.roster[this.activeStudent]}"
+                  ></grade-book-student-block>
+                `
+              : html`<loading-indicator></loading-indicator>`}
           </a11y-tab>
           <a11y-tab icon="assignment-ind" label="Active Assignment">
             <p>This is where their work would go I guess</p>
@@ -377,169 +405,186 @@ class GradeBook extends I18NMixin(SimpleColors) {
                     </li>
                   </ul>
                 `
-              : ``}
+              : html`<loading-indicator></loading-indicator>`}
           </a11y-tab>
           <a11y-tab icon="list" label="Past assignments">
             <p>This could be used to show past assignments</p>
           </a11y-tab>
         </a11y-tabs>
         <div slot="col-2">
-          <div>
-            <button
-              @click="${this.changeStudent}"
-              value="prev"
-              ?disabled="${0 === this.activeStudent}"
-            >
-              Previous student
-            </button>
-            <button
-              @click="${this.changeStudent}"
-              value="next"
-              ?disabled="${this.database.roster.length - 1 ===
-              this.activeStudent}"
-            >
-              Next student
-            </button>
-          </div>
-          <div>
-            <button
-              @click="${this.changeAssignment}"
-              value="prev"
-              ?disabled="${0 === this.activeAssignment}"
-            >
-              Previous assignment
-            </button>
-            <button
-              @click="${this.changeAssignment}"
-              value="next"
-              ?disabled="${this.database.assignments.length - 1 ===
-              this.activeAssignment}"
-            >
-              Next Assignment
-            </button>
-          </div>
-          <div>
-            ${this.database.roster.map(
-              (s, i) => html` <div style="height:5px">
-                ${this.database.assignments.map(
-                  (a, h) => html`
-                    <div
-                      .style="float:left;width:5px;height:5px;background-color:${this
-                        .activeStudent === i && this.activeAssignment === h
-                        ? `blue`
-                        : `yellow`};"
-                    ></div>
-                  `
-                )}
-              </div>`
-            )}
-          </div>
+          ${this.database.roster.length && this.database.assignments.length
+            ? html`
+                <h4>Active assignment controls</h4>
+                <div class="mini-map">
+                  ${this.database.roster.map(
+                    (s, i) => html` <div style="height:5px">
+                      ${this.database.assignments.map(
+                        (a, h) => html`
+                          <div
+                            .style="float:left;width:5px;height:5px;background-color:${this
+                              .activeStudent === i &&
+                            this.activeAssignment === h
+                              ? `blue`
+                              : `yellow`};"
+                          ></div>
+                        `
+                      )}
+                    </div>`
+                  )}
+                </div>
+                <div>
+                  <button
+                    @click="${this.changeStudent}"
+                    value="prev"
+                    ?disabled="${0 === this.activeStudent}"
+                  >
+                    Previous student
+                  </button>
+                  <button
+                    @click="${this.changeStudent}"
+                    value="next"
+                    ?disabled="${this.database.roster.length - 1 ===
+                    this.activeStudent}"
+                  >
+                    Next student
+                  </button>
+                </div>
+                <div>
+                  <button
+                    @click="${this.changeAssignment}"
+                    value="prev"
+                    ?disabled="${0 === this.activeAssignment}"
+                  >
+                    Previous assignment
+                  </button>
+                  <button
+                    @click="${this.changeAssignment}"
+                    value="next"
+                    ?disabled="${this.database.assignments.length - 1 ===
+                    this.activeAssignment}"
+                  >
+                    Next Assignment
+                  </button>
+                </div>
+              `
+            : html`<loading-indicator></loading-indicator>`}
         </div>
       </grid-plate>
       <grid-plate layout="3-1">
         <div slot="col-1">
           <a11y-tabs full-width>
-            <a11y-tab icon="image:style" label="Tag view">
-              <editable-table-display
-                accent-color="${this.accentColor}"
-                bordered
-                .caption="${this.activeRubric[0]
-                  ? this.activeRubric[0].name
-                  : ``}"
-                column-header
-                height="200px"
-                condensed
-                disable-responsive
-                scroll
-                striped
-              >
-                <table>
-                  <caption>
-                    ${this.activeRubric[0] ? this.activeRubric[0].name : ``}
-                  </caption>
-                  <tbody>
-                    <tr>
-                      <td>${this.t.points}</td>
-                      <td>${this.t.criteria}</td>
-                      <td>${this.t.description}</td>
-                      <td>${this.t.assessmentWeight}</td>
-                    </tr>
+            <a11y-tab icon="image:style" label="Assessment view">
+              ${this.activeRubric[0]
+                ? html`
+                    <h3>${this.activeRubric[0].name}</h3>
                     ${this.activeRubric.map(
                       (rubric) => html`
-                        <tr>
-                          <td>&nbsp;</td>
-                          <td>${rubric.criteria}</td>
-                          <td>${rubric.description}</td>
-                          <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <simple-fields-field
-                              type="number"
-                              style="width: 32px; margin: 8px 4px 0 2px; display: inline-block;"
-                              min="0"
-                              @value-changed="${this
-                                .rubricCriteriaPointsChange}"
-                              value="${this.database.settings.defaultScore ===
-                              "max"
-                                ? rubric.points
-                                : this.database.settings.defaultScore}"
-                              max="${rubric.points}"
-                              maxlength="10"
-                              data-criteria="${rubric.criteria}"
-                            ></simple-fields-field>
-                            <span style="margin-top:-28px; float:right;"
-                              >/ ${rubric.points} ${rubric.pointsSystem}</span
-                            >
-                          </td>
-                          ${rubric.qualitative.map(
-                            (cat) => html`
-                              <td>
-                                <simple-fields-tag-list
-                                  data-criteria="${rubric.criteria}"
-                                  label="${cat}"
-                                ></simple-fields-tag-list>
-                              </td>
-                            `
-                          )}
-                        </tr>
-                        <tr>
-                          <td colspan="4">Additional Criteria feedback</td>
-                        </tr>
-                        <tr>
-                          <td colspan="4">
-                            <simple-fields-field
-                              type="textarea"
-                              data-criteria="${rubric.criteria}"
-                            ></simple-fields-field>
-                          </td>
-                        </tr>
+                        <h4>${rubric.criteria}</h4>
+                        <p>${rubric.description}</p>
+                        <editable-table-display
+                          accent-color="${this.accentColor}"
+                          bordered
+                          column-header
+                          condensed
+                          disable-responsive
+                          scroll
+                          striped
+                        >
+                          <table>
+                            <tbody>
+                              <tr>
+                                ${rubric.qualitative.map(
+                                  (cat) => html` <td>${cat}</td> `
+                                )}
+                                <td>
+                                  Possible: ${rubric.points}
+                                  ${rubric.pointsSystem}
+                                </td>
+                              </tr>
+                              <tr>
+                                ${rubric.qualitative.map(
+                                  (cat) => html`
+                                    <td>
+                                      <simple-fields-tag-list
+                                        style="background-color:transparent;"
+                                        data-criteria="${rubric.criteria}"
+                                        label="${cat}"
+                                      ></simple-fields-tag-list>
+                                    </td>
+                                  `
+                                )}
+                                <td>
+                                  <div style="display:flex;line-height:32px;">
+                                    <simple-fields-field
+                                      type="number"
+                                      style="background-color:transparent;width:100px;padding:0 0 30px 0;margin:0;--simple-fields-font-size:40px;--simple-fields-text-align:center;"
+                                      min="0"
+                                      @value-changed="${this
+                                        .rubricCriteriaPointsChange}"
+                                      value="${this.database.settings
+                                        .defaultScore === "max"
+                                        ? rubric.points
+                                        : this.database.settings.defaultScore}"
+                                      max="${rubric.points}"
+                                      maxlength="10"
+                                      data-criteria="${rubric.criteria}"
+                                    ></simple-fields-field>
+                                    <div></div>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </editable-table-display>
+                        <h4>Additional ${rubric.criteria} feedback</h4>
+                        <simple-fields-field
+                          type="textarea"
+                          data-criteria="${rubric.criteria}"
+                        ></simple-fields-field>
                       `
                     )}
-                  </tbody>
-                </table>
-              </editable-table-display>
+                    <div class="student-feedback-wrap">
+                      <div class="student-feedback-text">
+                        <h3 class="heading">Overall feedback</h3>
+                        <simple-fields-field
+                          type="textarea"
+                          data-criteria="overall"
+                        ></simple-fields-field>
+                      </div>
+                      <div class="student-feedback-score">
+                        <simple-fields-field
+                          type="number"
+                          min="0"
+                          id="totalpts"
+                          maxlength="10"
+                        ></simple-fields-field>
+                        /
+                        ${this.database.assignments[this.activeAssignment]
+                          .points}
+                        ${this.database.assignments[this.activeAssignment]
+                          .pointsSystem}
+                      </div>
+                    </div>
+                  `
+                : html`<loading-indicator></loading-indicator>`}
             </a11y-tab>
             <a11y-tab icon="assignment" label="Student report">
               <div>
                 ${!this.loading
                   ? html`
                       <h2>Student feedback report</h2>
-                      ${this.database.rubrics
-                        .filter((item) => {
-                          return (
-                            item.shortName ==
-                            this.database.assignments[this.activeAssignment]
-                              .rubric
-                          );
-                        })
-                        .map(
-                          (rubric) => html`
-                            <div class="student-feedback-wrap sub-totals">
-                              <a11y-collapse
-                                heading-button
-                                class="student-feedback-text"
-                              >
+                      <a11y-collapse-group heading-button expanded>
+                        ${this.database.rubrics
+                          .filter((item) => {
+                            return (
+                              item.shortName ==
+                              this.database.assignments[this.activeAssignment]
+                                .rubric
+                            );
+                          })
+                          .map(
+                            (rubric) => html`
+                              <a11y-collapse class="student-feedback-text">
                                 <div slot="heading" class="heading">
                                   ${rubric.criteria}
                                 </div>
@@ -557,7 +602,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
                                                 rubric.criteria
                                               ][cat].map(
                                                 (tag) => html` <li>
-                                                  <strong>${tag.term}</strong
+                                                  <span>${tag.term}</span
                                                   >${tag.description
                                                     ? html` - ${tag.description}`
                                                     : ``}
@@ -587,92 +632,86 @@ class GradeBook extends I18NMixin(SimpleColors) {
                                     )}
                                   </ul>
                                   <h3>Additional Criteria feedback</h3>
-                                  <simple-fields-field
-                                    type="textarea"
-                                    data-criteria="${rubric.criteria}"
-                                  ></simple-fields-field>
+                                  <p>
+                                    @TODO PUT THE RUBRIC FEEDBACK VALUE HERE
+                                  </p>
                                 </div>
                               </a11y-collapse>
-                            </div>
-                          `
-                        )}
-                      <div class="student-feedback-wrap">
-                        <div class="student-feedback-score">
-                          <simple-fields-field
-                            type="number"
-                            min="0"
-                            id="totalpts"
-                            maxlength="10"
-                          ></simple-fields-field>
-                          /
-                          ${this.database.assignments[this.activeAssignment]
-                            .points}
-                          ${this.database.assignments[this.activeAssignment]
-                            .pointsSystem}
-                        </div>
-                        <div class="student-feedback-text">
-                          <h3 class="heading">Overall feedback</h3>
-                          <simple-fields-field
-                            type="textarea"
-                            data-criteria="overall"
-                          ></simple-fields-field>
-                        </div>
-                      </div>
+                            `
+                          )}
+                        <a11y-collapse class="student-feedback-text">
+                          <div slot="heading" class="heading">
+                            ${this.t.overallFeedback}
+                          </div>
+                          <div slot="content">
+                            <p>@TODO PUT THE OVERALL FEEDBACK HERE</p>
+                          </div>
+                        </a11y-collapse>
+                      </a11y-collapse-group>
                     `
-                  : `loading..`}
+                  : html`<loading-indicator></loading-indicator>`}
               </div>
             </a11y-tab>
           </a11y-tabs>
         </div>
-        <a11y-collapse-group heading-button slot="col-2">
-          ${this.debug
+        <div slot="col-2">
+          ${this.database.tags.categories.length > 0
             ? html`
-                <a11y-collapse>
-                  <div slot="heading">${this.t.debugData}</div>
-                  <div slot="content">
-                    <simple-fields-field
-                      ?disabled="${this.disabled}"
-                      .value="${this.source}"
-                      @value-changed="${this.sourceUpdate}"
-                      type="text"
-                      label="${this.t.csvURL}"
-                      required
-                    ></simple-fields-field>
-                    <csv-render data-source="${this.source}"></csv-render>
-                  </div>
-                </a11y-collapse>
+                <h4>Qualitative Rubric Tags</h4>
+                <a11y-collapse-group heading-button class="tag-group">
+                  ${this.debug
+                    ? html`
+                        <a11y-collapse>
+                          <div slot="heading">${this.t.debugData}</div>
+                          <div slot="content">
+                            <simple-fields-field
+                              ?disabled="${this.disabled}"
+                              .value="${this.source}"
+                              @value-changed="${this.sourceUpdate}"
+                              type="text"
+                              label="${this.t.csvURL}"
+                              required
+                            ></simple-fields-field>
+                            <csv-render
+                              data-source="${this.source}"
+                            ></csv-render>
+                          </div>
+                        </a11y-collapse>
+                      `
+                    : ``}
+                  ${this.database.tags.categories.map(
+                    (category, i) => html`
+                      <a11y-collapse>
+                        <div slot="heading">
+                          <simple-colors accent-color="${this.pickColor(i)}"
+                            ><span></span></simple-colors
+                          >${category}
+                        </div>
+                        <div slot="content">
+                          ${this.database.tags.data
+                            .filter((item) => {
+                              return item.category.includes(category);
+                            })
+                            .map(
+                              (term) =>
+                                html`<simple-tag
+                                  draggable="true"
+                                  tabindex="0"
+                                  @keypress="${this.keyDown}"
+                                  @dragstart="${this.setDragTransfer}"
+                                  accent-color="${this.pickColor(i)}"
+                                  value="${term.term}"
+                                  .data="${term}"
+                                ></simple-tag>`
+                            )}
+                        </div>
+                      </a11y-collapse>
+                    `
+                  )}
+                </a11y-collapse-group>
               `
-            : ``}
-          ${this.database.tags.categories.map(
-            (category, i) => html`
-              <a11y-collapse>
-                <div slot="heading">
-                  <simple-colors accent-color="${this.pickColor(i)}"
-                    ><span></span></simple-colors
-                  >${category}
-                </div>
-                <div slot="content">
-                  ${this.database.tags.data
-                    .filter((item) => {
-                      return item.category.includes(category);
-                    })
-                    .map(
-                      (term) =>
-                        html`<simple-tag
-                          draggable="true"
-                          tabindex="0"
-                          @keypress="${this.keyDown}"
-                          @dragstart="${this.setDragTransfer}"
-                          accent-color="${this.pickColor(i)}"
-                          value="${term.term}"
-                          .data="${term}"
-                        ></simple-tag>`
-                    )}
-                </div>
-              </a11y-collapse>
-            `
-          )}
-        </a11y-collapse-group>
+            : html`<loading-indicator></loading-indicator>`}
+        </div>
       </grid-plate>
     `;
   }
@@ -688,6 +727,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
     }, 10);
   }
   updateCurrentScore() {
+    // @todo this needs recalculated
     let criteriaPts = this.shadowRoot.querySelectorAll(
       '.student-feedback-wrap.sub-totals simple-fields-field[type="number"]'
     );
@@ -724,7 +764,23 @@ class GradeBook extends I18NMixin(SimpleColors) {
     }
     return colors[val];
   }
+  _handleDragDrop(e) {
+    window.dispatchEvent(
+      new CustomEvent("simple-tag-drop", {
+        detail: {
+          value: "drop",
+        },
+      })
+    );
+  }
   setDragTransfer(e) {
+    window.dispatchEvent(
+      new CustomEvent("simple-tag-dragstart", {
+        detail: {
+          value: e.target,
+        },
+      })
+    );
     let data = e.target.data;
     // have to add in color
     data.color = e.target.accentColor;

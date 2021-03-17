@@ -217,10 +217,14 @@ class SimpleFieldsLite extends LitElement {
       css`
         :host {
           display: block;
-          font-family: var(--simple-fields-font-family, sans-serif);
-          font-family: var(--simple-fields-detail-font-family, sans-serif);
-          font-size: var(--simple-fields-font-size, 16px);
-          font-size: var(--simple-fields-detail-font-size, 12px);
+          font-family: var(
+            --simple-fields-detail-font-family,
+            var(--simple-fields-font-family, sans-serif)
+          );
+          font-size: var(
+            --simple-fields-detail-font-size,
+            var(--simple-fields-font-size, 12px)
+          );
           background: var(--simple-fields-background-color, transparent);
         }
         :host([hidden]) {

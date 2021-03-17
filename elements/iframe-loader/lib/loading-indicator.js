@@ -12,13 +12,16 @@ class LoadingIndicator extends LitElement {
         margin: auto;
       }
       .progress-line {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: var(
+          --loading-indicator-background-color,
+          rgba(0, 0, 0, 0.05)
+        );
         display: -webkit-flex;
         display: flex;
         width: 300px;
       }
       .progress-line:before {
-        background-color: black;
+        background-color: var(--loading-indicator-color, black);
         content: "";
         animation: running-progress 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
       }

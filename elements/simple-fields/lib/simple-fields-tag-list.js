@@ -13,8 +13,7 @@ import "./simple-tag.js";
  * @element simple-fields-code
  * @demo ./demo/field.html
  * @class SimpleFieldsTagList
- * @extends {class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
-(LitElement)}
+ * @extends {SimpleFieldsFieldBehaviors(LitElement)}
  * @demo ./demo/tags.html Demo
  */
 class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
@@ -39,9 +38,17 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
             var(--simple-fields-button-padding, 2px);
           height: var(--simple-fields-tag-list-height);
         }
+        :host(.drop-possible) [part="option-inner"] {
+          --simple-fields-accent-color: #ddddff;
+          background-color: var(--simple-fields-accent-color);
+          outline: 2px dashed #222255;
+          outline-offset: 1px;
+        }
         :host(.drag-focus) [part="option-inner"] {
-          --simple-fields-accent-color: #eeeeee;
-          background-color: var(--simple-fields-accent-color, #3f51b5);
+          --simple-fields-accent-color: #44ff44;
+          background-color: var(--simple-fields-accent-color);
+          outline: 2px dashed #559955;
+          outline-offset: 1px;
         }
         [part="option-inner"] {
           height: var(--simple-fields-tag-list-height);
@@ -92,7 +99,12 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
       if (propName === "tagList") this._fireTagListChanged();
     });
   }
-
+  _handleGlobalTagDrop(e) {
+    this.classList.remove("drop-possible");
+  }
+  _handleGlobalTagDrag(e) {
+    this.classList.add("drop-possible");
+  }
   /**
    * template for slotted or shadow DOM prefix
    *
@@ -159,13 +171,16 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
   }
   _handleDragLeave(e) {
     this.classList.remove("drag-focus");
+    this.classList.add("drop-possible");
   }
   _handleDragEnter(e) {
     e.preventDefault();
     this.classList.add("drag-focus");
+    this.classList.remove("drop-possible");
   }
   _handleDragDrop(e) {
     e.preventDefault();
+    this.classList.remove("drop-possible");
     this.classList.remove("drag-focus");
     // sanity check we have text here; this HAS to have been set by
     if (JSON.parse(e.dataTransfer.getData("text"))) {
@@ -288,6 +303,30 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
       this.removeEventListener("focusout", this._onFocusout);
       this.removeEventListener("focusin", this._onFocusin);
     }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener(
+      "simple-tag-dragstart",
+      this._handleGlobalTagDrag.bind(this)
+    );
+    window.addEventListener(
+      "simple-tag-drop",
+      this._handleGlobalTagDrop.bind(this)
+    );
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener(
+      "simple-tag-dragstart",
+      this._handleGlobalTagDrag.bind(this)
+    );
+    window.removeEventListener(
+      "simple-tag-drop",
+      this._handleGlobalTagDrop.bind(this)
+    );
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SimpleFieldsTagList.tag, SimpleFieldsTagList);
