@@ -38,8 +38,8 @@ class GradeBook extends I18NMixin(SimpleColors) {
     };
     // what is tapped to get data
     this.activeSheetPage = "tags";
-    // @todo swap this for a database value
-    this.currentOverallScore = 0;
+    // storing internals of the assessmentView tab
+    this.assessmentView = this.resetAssessmentView();
     // active ID in the array of the student being reviewed
     this.activeStudent = 0;
     // active ID in the array of the assignment being reviewed
@@ -87,7 +87,17 @@ class GradeBook extends I18NMixin(SimpleColors) {
       "simple-fields-tag-list-changed",
       this.qualitativeFeedbackUpdate.bind(this)
     );
-    this.addEventListener("drop", this._handleDragDrop);
+    // value change within the rubric area
+    this.addEventListener("value-changed", this.rubricCriteriaPointsChange);
+    // drop event to remove the styling from droppable areas
+    this.addEventListener("drop", this._handleDragDrop.bind(this));
+  }
+  resetAssessmentView() {
+    return {
+      totalScore: 0,
+      qualitative: [],
+      written: [],
+    };
   }
 
   getActiveRubric() {
@@ -112,6 +122,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       }
       // set rubric based on assignment
       if (["activeAssignment", "database", "loading"].includes(propName)) {
+        this.assessmentView = this.resetAssessmentView();
         this.activeRubric = this.getActiveRubric();
       }
       // source will have to fetch ALL the pages and slowly load data as it rolls through
@@ -257,7 +268,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       activeStudent: { type: Number, attribute: "active-student" },
       activeAssignment: { type: Number, attribute: "active-assignment" },
       activeRubric: { type: Object },
-      currentOverallScore: { type: Number },
+      assessmentView: { type: Object },
       activeGrading: { type: Object },
       loading: { type: Boolean },
       sheet: { type: String },
@@ -304,6 +315,21 @@ class GradeBook extends I18NMixin(SimpleColors) {
           --grid-plate-item-margin: 8px;
           --grid-plate-item-padding: 8px;
         }
+        a11y-tabs {
+          --a11y-tabs-border-color: var(
+            --simple-colors-default-theme-accent-10,
+            black
+          );
+        }
+        a11y-collapse {
+          --a11y-collapse-border-color: var(
+            --simple-colors-default-theme-accent-10,
+            black
+          );
+        }
+        a11y-collapse:not([expanded]):hover {
+          background-color: var(--simple-colors-default-theme-accent-1, grey);
+        }
         a11y-collapse div[slot="heading"] {
           font-size: 16px;
           font-weight: normal;
@@ -332,6 +358,22 @@ class GradeBook extends I18NMixin(SimpleColors) {
             #eeeeee
           );
         }
+        simple-fields-field[type="textarea"] {
+          --simple-fields-font-size: 20px;
+        }
+        simple-fields-field[type="number"] {
+          --simple-fields-font-size: 40px;
+          line-height: 40px;
+        }
+        .score-display {
+          font-size: 40px;
+          line-height: 40px;
+          border: 1px solid black;
+          padding: 8px;
+        }
+        #totalpts {
+          width: 50%;
+        }
         .mini-map {
           float: right;
         }
@@ -346,7 +388,10 @@ class GradeBook extends I18NMixin(SimpleColors) {
           padding: 20px;
         }
         .student-feedback-wrap .student-feedback-score {
+          font-size: 40px;
+          line-height: 40px;
           padding: 8px;
+          display: flex;
         }
         simple-tag {
           margin: 2px;
@@ -472,8 +517,15 @@ class GradeBook extends I18NMixin(SimpleColors) {
       </grid-plate>
       <grid-plate layout="3-1">
         <div slot="col-1">
-          <a11y-tabs full-width>
-            <a11y-tab icon="image:style" label="Assessment view">
+          <a11y-tabs
+            full-width
+            @a11y-tabs-active-changed="${this.updateStudentReport}"
+          >
+            <a11y-tab
+              icon="image:style"
+              label="Assessment view"
+              id="assessmentview"
+            >
               ${this.activeRubric[0]
                 ? html`
                     <h3>${this.activeRubric[0].name}</h3>
@@ -496,10 +548,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
                                 ${rubric.qualitative.map(
                                   (cat) => html` <td>${cat}</td> `
                                 )}
-                                <td>
-                                  Possible: ${rubric.points}
-                                  ${rubric.pointsSystem}
-                                </td>
+                                <td>${rubric.points} ${rubric.pointsSystem}</td>
                               </tr>
                               <tr>
                                 ${rubric.qualitative.map(
@@ -519,14 +568,13 @@ class GradeBook extends I18NMixin(SimpleColors) {
                                       type="number"
                                       style="background-color:transparent;width:100px;padding:0 0 30px 0;margin:0;--simple-fields-font-size:40px;--simple-fields-text-align:center;"
                                       min="0"
-                                      @value-changed="${this
-                                        .rubricCriteriaPointsChange}"
                                       value="${this.database.settings
                                         .defaultScore === "max"
                                         ? rubric.points
                                         : this.database.settings.defaultScore}"
                                       max="${rubric.points}"
                                       maxlength="10"
+                                      data-rubric-score
                                       data-criteria="${rubric.criteria}"
                                     ></simple-fields-field>
                                     <div></div>
@@ -539,6 +587,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
                         <h4>Additional ${rubric.criteria} feedback</h4>
                         <simple-fields-field
                           type="textarea"
+                          data-rubric-written
                           data-criteria="${rubric.criteria}"
                         ></simple-fields-field>
                       `
@@ -549,6 +598,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
                         <simple-fields-field
                           type="textarea"
                           data-criteria="overall"
+                          data-rubric-written
                         ></simple-fields-field>
                       </div>
                       <div class="student-feedback-score">
@@ -591,6 +641,11 @@ class GradeBook extends I18NMixin(SimpleColors) {
                                 <div slot="content">
                                   <h3>Criteria details</h3>
                                   <p>${rubric.description}</p>
+                                  <h4>Your Score</h4>
+                                  <div class="score-display">
+                                    ${this.getCriteriaScore(rubric.criteria)} /
+                                    ${rubric.points} ${rubric.pointsSystem}
+                                  </div>
                                   <h3>Your feedback</h3>
                                   <ul>
                                     ${rubric.qualitative.map(
@@ -633,7 +688,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
                                   </ul>
                                   <h3>Additional Criteria feedback</h3>
                                   <p>
-                                    @TODO PUT THE RUBRIC FEEDBACK VALUE HERE
+                                    ${this.getCriteriaFeedback(rubric.criteria)}
                                   </p>
                                 </div>
                               </a11y-collapse>
@@ -644,7 +699,14 @@ class GradeBook extends I18NMixin(SimpleColors) {
                             ${this.t.overallFeedback}
                           </div>
                           <div slot="content">
-                            <p>@TODO PUT THE OVERALL FEEDBACK HERE</p>
+                            <p>${this.getCriteriaFeedback("overall")}</p>
+                            <div class="score-display">
+                              ${this.assessmentView.totalScore} /
+                              ${this.database.assignments[this.activeAssignment]
+                                .points}
+                              ${this.database.assignments[this.activeAssignment]
+                                .pointsSystem}
+                            </div>
                           </div>
                         </a11y-collapse>
                       </a11y-collapse-group>
@@ -654,11 +716,11 @@ class GradeBook extends I18NMixin(SimpleColors) {
             </a11y-tab>
           </a11y-tabs>
         </div>
-        <div slot="col-2">
+        <div slot="col-2" class="tag-group">
           ${this.database.tags.categories.length > 0
             ? html`
                 <h4>Qualitative Rubric Tags</h4>
-                <a11y-collapse-group heading-button class="tag-group">
+                <a11y-collapse-group heading-button>
                   ${this.debug
                     ? html`
                         <a11y-collapse>
@@ -715,30 +777,83 @@ class GradeBook extends I18NMixin(SimpleColors) {
       </grid-plate>
     `;
   }
+  /**
+   * Listen for value change coming from the fields in the active rubric
+   * and update the overall point total to match
+   */
   rubricCriteriaPointsChange(e) {
-    clearTimeout(this.__debouce);
-    this.__debouce = setTimeout(() => {
-      if (!this.loading) {
-        this.updateCurrentScore();
-        this.shadowRoot.querySelector(
-          "#totalpts"
-        ).value = this.currentOverallScore;
-      }
-    }, 10);
+    // detect score field change
+    if (e.detail.getAttribute("data-rubric-score") != null) {
+      clearTimeout(this.__debouce);
+      this.__debouce = setTimeout(() => {
+        if (!this.loading) {
+          this.updateTotalScore();
+          this.shadowRoot.querySelector(
+            "#totalpts"
+          ).value = this.assessmentView.totalScore;
+        }
+      }, 10);
+    }
   }
-  updateCurrentScore() {
-    // @todo this needs recalculated
-    let criteriaPts = this.shadowRoot.querySelectorAll(
-      '.student-feedback-wrap.sub-totals simple-fields-field[type="number"]'
-    );
+  updateTotalScore() {
     let score = 0;
+    let tables = this.shadowRoot.querySelectorAll(
+      "#assessmentview editable-table-display"
+    );
     // add the scores up based on values of the pieces
-    for (var i in Array.from(criteriaPts)) {
-      if (criteriaPts[i].value) {
-        score = score + parseInt(criteriaPts[i].value);
+    for (var i in Array.from(tables)) {
+      if (tables[i].shadowRoot.querySelector("[data-rubric-score]").value) {
+        score =
+          score +
+          parseInt(
+            tables[i].shadowRoot.querySelector("simple-fields-field").value
+          );
       }
     }
-    this.currentOverallScore = score;
+    this.assessmentView.totalScore = score;
+  }
+  /**
+   * update student report when that tab is activated
+   */
+  updateStudentReport() {
+    // force a repaint of the calculated values from the Assessment view
+    this.requestUpdate();
+  }
+  /**
+   * Return the criteria score, current value
+   */
+  getCriteriaScore(criteria) {
+    let tables = this.shadowRoot.querySelectorAll(
+      "#assessmentview editable-table-display"
+    );
+    // add the scores up based on values of the pieces
+    for (var i in Array.from(tables)) {
+      if (
+        tables[i].shadowRoot.querySelector(
+          `[data-rubric-score][data-criteria="${criteria}"]`
+        )
+      ) {
+        return tables[i].shadowRoot.querySelector(
+          `[data-rubric-score][data-criteria="${criteria}"]`
+        ).value;
+      }
+    }
+    return 0;
+  }
+  /**
+   * Return the criteria written feedback, current value
+   */
+  getCriteriaFeedback(criteria) {
+    if (
+      this.shadowRoot.querySelector(
+        `#assessmentview [data-rubric-written][data-criteria="${criteria}"]`
+      )
+    ) {
+      return this.shadowRoot.querySelector(
+        `#assessmentview [data-rubric-written][data-criteria="${criteria}"]`
+      ).value;
+    }
+    return "";
   }
   /**
    * A qualitative feedback field got a new value

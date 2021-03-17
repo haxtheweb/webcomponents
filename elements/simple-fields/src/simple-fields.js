@@ -140,7 +140,7 @@ class SimpleFields extends SimpleFieldsLite {
     this.__codeElements = [];
     this.disableResponsive = false;
     setTimeout(() => {
-      this.addEventListener("active-tab-changed", this._handleActiveTab);
+      this.addEventListener("a11y-tabs-active-changed", this._handleActiveTab);
     }, 0);
   }
 
