@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "bootstrap-theme",
+      "path": "./bootstrap-theme.js",
+      "description": "`bootstrap-theme`\n`Hax bootstrap themeing`"
+    },
+    {
+      "name": "bootstrap-theme",
+      "path": "./src/bootstrap-theme.js",
+      "description": "`bootstrap-theme`\n`Hax bootstrap themeing`"
+    }
+  ]
+}

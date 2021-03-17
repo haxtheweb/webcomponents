@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-
 /**
  * `page-contents-menu`
  * `Links that jump you to the right place in the page&#39;s content`
@@ -119,6 +118,10 @@ class PageContentsMenu extends LitElement {
         .indent-5,
         .indent-6 {
           padding-left: 32px;
+        }
+        .active {
+          font-weight: bold;
+          border-left: black 2px solid;
         }
       `,
     ];
@@ -453,7 +456,76 @@ class PageContentsMenu extends LitElement {
       this.isEmpty = false;
     }
     this.items = [...items];
+    this._checkVisibleElements();
   }
+
+  _applyScrollDetect() {
+    let scrollTimer = -1;
+    if (scrollTimer != -1) {
+      clearTimeout(scrollTimer);
+    }
+    scrollTimer = setTimeout(this.scrollFinished(), 150);
+  }
+
+  scrollFinished() {
+    if (this.items) {
+      this.items.forEach((value, i) => {
+        let item = this.items[i];
+        let itemTop = item.object.getBoundingClientRect().top;
+        let itemBottom = item.object.getBoundingClientRect().bottom;
+        let browserViewport =
+          window.innerHeight || document.documentElement.clientHeight;
+        let sideItem = this.shadowRoot.querySelector(
+          '[href*="' + item.link + '"]'
+        );
+
+        let nextItemTop;
+        if (i !== this.items.length - 1) {
+          let nextItem = this.items[i + 1];
+          nextItemTop = nextItem.object.getBoundingClientRect().top;
+        }
+
+        if (itemTop <= browserViewport && itemBottom > 0) {
+          item.isActive = true;
+          if (sideItem.getAttribute("href") === item.link) {
+            sideItem.classList.add("active");
+          }
+        } else if (
+          browserViewport + window.scrollY >=
+          document.body.offsetHeight
+        ) {
+          let lastItem = this.items[this.items.length - 1];
+          this.shadowRoot
+            .querySelector('[href*="' + lastItem.link + '"]')
+            .classList.add("active");
+        } else if (item.isActive) {
+          sideItem.classList.remove("active");
+          item.isActive = false;
+        }
+      });
+    }
+  }
+
+  _checkVisibleElements() {
+    if (this.items) {
+      this.items.forEach((item) => {
+        let position = item.object.getBoundingClientRect();
+        let viewport =
+          window.innerHeight || document.documentElement.clientHeight;
+        if (position.top <= viewport && position.bottom > 0) {
+          item.isActive = true;
+          console.log(item.link);
+          console.log(
+            this.shadowRoot.querySelector('[href*="' + item.link + '"]')
+          );
+          this.shadowRoot
+            .querySelector('[href*="' + item.link + '"]')
+            .classList.add("active");
+        }
+      });
+    }
+  }
+
   /**
    * When our content container changes, process the hierarchy in question
    */
@@ -462,6 +534,20 @@ class PageContentsMenu extends LitElement {
     if (newValue && newValue.childNodes && newValue.childNodes.length > 0) {
       this.updateMenu();
     }
+  }
+
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    document.addEventListener("scroll", this._applyScrollDetect.bind(this));
+  }
+
+  disconnectedCallback() {
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+    document.removeEventListener("scroll", this._applyScrollDetect.bind(this));
   }
 }
 customElements.define(PageContentsMenu.tag, PageContentsMenu);
