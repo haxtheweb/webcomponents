@@ -11,8 +11,8 @@ class GradeBookStudentBlock extends I18NMixin(LitElement) {
       profileImageFor: "Profile image for",
       userID: "User ID",
       preferredName: "Preferred name",
-      emailAddress: "Email address",
-      accommodations: "Accommodations",
+      emailAddress: "Email this student",
+      notes: "Notes",
       interests: "Interests",
     };
     this.registerLocalization({
@@ -65,10 +65,10 @@ class GradeBookStudentBlock extends I18NMixin(LitElement) {
           <h2>${this.student.name}</h2>
           <ul>
             ${this.student.userId
-              ? html`<li>${this.t.userID}:${this.student.userId}</li>`
+              ? html`<li>${this.t.userID}: ${this.student.userId}</li>`
               : ``}
             ${this.student.prefName
-              ? html`<li>${this.t.preferredName}:${this.student.prefName}</li>`
+              ? html`<li>${this.t.preferredName}: ${this.student.prefName}</li>`
               : ``}
             ${this.student.email
               ? html`<li>
@@ -77,14 +77,12 @@ class GradeBookStudentBlock extends I18NMixin(LitElement) {
                   >
                 </li>`
               : ``}
-            ${this.student.accommodations
-              ? html`<li>
-                  ${this.t.accommodations}:${this.student.accommodations}
-                </li>`
+            ${this.student.notes
+              ? html`<li>${this.t.notes}: ${this.student.notes}</li>`
               : ``}
             ${this.student.interests
               ? html`<li>
-                  ${this.t.interests}:${this.student.interests.join(",")}
+                  ${this.t.interests}: ${this.student.interests.join(",")}
                 </li>`
               : ``}
           </ul>

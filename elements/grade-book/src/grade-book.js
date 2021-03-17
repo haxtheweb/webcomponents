@@ -9,11 +9,11 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-tag-list.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
+import "@lrnwebcomponents/editable-table/lib/editable-table-display.js";
 import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
-import "@lrnwebcomponents/editable-table/lib/editable-table-display.js";
 import "./lib/grade-book-student-block.js";
 /**
  * `grade-book`
@@ -33,12 +33,23 @@ class GradeBook extends I18NMixin(SimpleColors) {
       rubrics: 1744429439,
       gradeScale: 980501320,
       grades: 2130903440,
+      gradesDetails: 644559151,
+      settings: 1413275461,
     };
     // what is tapped to get data
     this.activeSheetPage = "tags";
+    // @todo swap this for a database value
+    this.currentOverallScore = 0;
+    // active ID in the array of the student being reviewed
     this.activeStudent = 0;
+    // active ID in the array of the assignment being reviewed
     this.activeAssignment = 0;
-    this.gradeReport = {};
+    // active rubric data
+    this.activeRubric = [];
+    // the active grade sheet
+    this.activeGrading = {};
+    // internal data structure of the "app". This is bridging all data from the
+    // backend sheets and then informing how our application works
     this.database = {
       tags: {
         categories: [],
@@ -47,15 +58,20 @@ class GradeBook extends I18NMixin(SimpleColors) {
       rubrics: [],
       assignments: [],
       roster: [{}],
-      grades: [],
+      grades: {},
+      gradesDetails: {},
       gradeScale: [],
+      settings: {},
     };
+    // general state
     this.disabled = false;
-    this.loading = false;
+    // shows progress indicator as it loads
+    this.loading = true;
     // translatable text
     this.t = {
       csvURL: "CSV URL",
       debugData: "Debug data",
+      points: "Points",
       criteria: "Criteria",
       description: "Description",
       assessmentWeight: "Assessment Weight",
@@ -65,11 +81,24 @@ class GradeBook extends I18NMixin(SimpleColors) {
       basePath: import.meta.url,
       locales: ["es", "fr", "de"],
     });
+    // notice that a category on the active grading area responded that it changed
     this.addEventListener(
       "simple-fields-tag-list-changed",
       this.qualitativeFeedbackUpdate.bind(this)
     );
   }
+
+  getActiveRubric() {
+    return this.database.rubrics.filter((item) => {
+      return (
+        item.shortName ==
+        this.database.assignments[this.activeAssignment].rubric
+      );
+    });
+  }
+  /**
+   * LitElement life cycle for property change notification
+   */
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -78,6 +107,10 @@ class GradeBook extends I18NMixin(SimpleColors) {
       // support debugging, only import debugger element if needed
       if (propName == "debug" && this[propName]) {
         import("@lrnwebcomponents/csv-render/csv-render.js");
+      }
+      // set rubric based on assignment
+      if (["activeAssignment", "database", "loading"].includes(propName)) {
+        this.activeRubric = this.getActiveRubric();
       }
       // source will have to fetch ALL the pages and slowly load data as it rolls through
       if (propName == "source" && this[propName]) {
@@ -163,6 +196,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       // push data onto the database of all data we have now as objects
       data.push(item);
     }
+    // allow for deeper processing on the data or just return the data found
     return typeof this[`process${sheet}Data`] === "function"
       ? this[`process${sheet}Data`](table, headings, data)
       : data;
@@ -207,13 +241,22 @@ class GradeBook extends I18NMixin(SimpleColors) {
     }
     return data;
   }
+  processsettingsData(table, headings, data) {
+    let d = {};
+    for (var i in data) {
+      d[data[i].key] = data[i].value;
+    }
+    return d;
+  }
 
   static get properties() {
     return {
       ...super.properties,
       activeStudent: { type: Number, attribute: "active-student" },
       activeAssignment: { type: Number, attribute: "active-assignment" },
-      gradeReport: { type: Object },
+      activeRubric: { type: Object },
+      currentOverallScore: { type: Number },
+      activeGrading: { type: Object },
       loading: { type: Boolean },
       sheet: { type: String },
       source: { type: String },
@@ -275,20 +318,15 @@ class GradeBook extends I18NMixin(SimpleColors) {
         .student-feedback-wrap {
           display: flex;
         }
-        .student-feedback-wrap a11y-collapse {
+        .student-feedback-wrap .student-feedback-text {
           width: 80%;
           margin: 0;
         }
-        .student-feedback-wrap a11y-collapse div[slot="heading"] {
+        .student-feedback-wrap .student-feedback-text div.heading {
           padding: 20px;
         }
         .student-feedback-wrap .student-feedback-score {
           padding: 8px;
-        }
-        simple-fields-field[type="number"] {
-          width: 40px;
-          margin: 0 4px;
-          display: inline-block;
         }
         simple-tag {
           margin: 2px;
@@ -380,6 +418,22 @@ class GradeBook extends I18NMixin(SimpleColors) {
               Next Assignment
             </button>
           </div>
+          <div>
+            ${this.database.roster.map(
+              (s, i) => html` <div style="height:5px">
+                ${this.database.assignments.map(
+                  (a, h) => html`
+                    <div
+                      .style="float:left;width:5px;height:5px;background-color:${this
+                        .activeStudent === i && this.activeAssignment === h
+                        ? `blue`
+                        : `yellow`};"
+                    ></div>
+                  `
+                )}
+              </div>`
+            )}
+          </div>
         </div>
       </grid-plate>
       <grid-plate layout="3-1">
@@ -389,7 +443,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
               <editable-table-display
                 accent-color="${this.accentColor}"
                 bordered
-                caption="Exercise Rubric"
+                .caption="${this.activeRubric[0]
+                  ? this.activeRubric[0].name
+                  : ``}"
                 column-header
                 height="200px"
                 condensed
@@ -399,126 +455,172 @@ class GradeBook extends I18NMixin(SimpleColors) {
               >
                 <table>
                   <caption>
-                    Exercise Rubric
+                    ${this.activeRubric[0] ? this.activeRubric[0].name : ``}
                   </caption>
                   <tbody>
                     <tr>
+                      <td>${this.t.points}</td>
                       <td>${this.t.criteria}</td>
                       <td>${this.t.description}</td>
                       <td>${this.t.assessmentWeight}</td>
                     </tr>
-                    ${this.database.rubrics
-                      .filter((item) => {
-                        console.log(
-                          this.database.assignments[this.activeAssignment]
-                            .rubric
-                        );
-                        return (
-                          item.shortName ==
-                          this.database.assignments[this.activeAssignment]
-                            .rubric
-                        );
-                      })
-                      .map(
-                        (rubric) => html`
-                          <tr>
-                            <td>${rubric.criteria}</td>
-                            <td>${rubric.description}</td>
-                            <td>${rubric.points}${rubric.pointsSystem}</td>
-                          </tr>
-                          <tr>
-                            ${rubric.qualitative.map(
-                              (cat) => html`
-                                <td>
-                                  <simple-fields-tag-list
-                                    data-criteria="${rubric.criteria}"
-                                    label="${cat}"
-                                  ></simple-fields-tag-list>
-                                </td>
-                              `
-                            )}
-                          </tr>
-                        `
-                      )}
+                    ${this.activeRubric.map(
+                      (rubric) => html`
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>${rubric.criteria}</td>
+                          <td>${rubric.description}</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <simple-fields-field
+                              type="number"
+                              style="width: 32px; margin: 8px 4px 0 2px; display: inline-block;"
+                              min="0"
+                              @value-changed="${this
+                                .rubricCriteriaPointsChange}"
+                              value="${this.database.settings.defaultScore ===
+                              "max"
+                                ? rubric.points
+                                : this.database.settings.defaultScore}"
+                              max="${rubric.points}"
+                              maxlength="10"
+                              data-criteria="${rubric.criteria}"
+                            ></simple-fields-field>
+                            <span style="margin-top:-28px; float:right;"
+                              >/ ${rubric.points} ${rubric.pointsSystem}</span
+                            >
+                          </td>
+                          ${rubric.qualitative.map(
+                            (cat) => html`
+                              <td>
+                                <simple-fields-tag-list
+                                  data-criteria="${rubric.criteria}"
+                                  label="${cat}"
+                                ></simple-fields-tag-list>
+                              </td>
+                            `
+                          )}
+                        </tr>
+                        <tr>
+                          <td colspan="4">Additional Criteria feedback</td>
+                        </tr>
+                        <tr>
+                          <td colspan="4">
+                            <simple-fields-field
+                              type="textarea"
+                              data-criteria="${rubric.criteria}"
+                            ></simple-fields-field>
+                          </td>
+                        </tr>
+                      `
+                    )}
                   </tbody>
                 </table>
               </editable-table-display>
             </a11y-tab>
             <a11y-tab icon="assignment" label="Student report">
-              <h2>Student feedback report</h2>
-              ${this.database.rubrics
-                .filter((item) => {
-                  return (
-                    item.shortName ==
-                    this.database.assignments[this.activeAssignment].rubric
-                  );
-                })
-                .map(
-                  (rubric) => html`
-                    <div class="student-feedback-wrap">
-                      <div class="student-feedback-score">
-                        <simple-fields-field
-                          type="number"
-                          min="0"
-                          max="${rubric.points}"
-                          maxlength="10"
-                        ></simple-fields-field>
-                        / ${rubric.points} ${rubric.pointsSystem}
-                      </div>
-                      <a11y-collapse heading-button>
-                        <div slot="heading">${rubric.criteria}</div>
-                        <div slot="content">
-                          <h3>Criteria description</h3>
-                          <p>${rubric.description}</p>
-                          <h3>Feedback</h3>
-                          <ul>
-                            ${rubric.qualitative.map(
-                              (cat) => html`
-                                <h4>${cat}</h4>
-                                <ul>
-                                  ${this.gradeReport[rubric.criteria]
-                                    ? html`${this.gradeReport[rubric.criteria][
-                                        cat
-                                      ].map(
-                                        (tag) => html` <li>
-                                          <strong>${tag.term}</strong
-                                          >${tag.description
-                                            ? html` - ${tag.description}`
+              <div>
+                ${!this.loading
+                  ? html`
+                      <h2>Student feedback report</h2>
+                      ${this.database.rubrics
+                        .filter((item) => {
+                          return (
+                            item.shortName ==
+                            this.database.assignments[this.activeAssignment]
+                              .rubric
+                          );
+                        })
+                        .map(
+                          (rubric) => html`
+                            <div class="student-feedback-wrap sub-totals">
+                              <a11y-collapse
+                                heading-button
+                                class="student-feedback-text"
+                              >
+                                <div slot="heading" class="heading">
+                                  ${rubric.criteria}
+                                </div>
+                                <div slot="content">
+                                  <h3>Criteria details</h3>
+                                  <p>${rubric.description}</p>
+                                  <h3>Your feedback</h3>
+                                  <ul>
+                                    ${rubric.qualitative.map(
+                                      (cat) => html`
+                                        <h4>${cat}</h4>
+                                        <ul>
+                                          ${this.activeGrading[rubric.criteria]
+                                            ? html`${this.activeGrading[
+                                                rubric.criteria
+                                              ][cat].map(
+                                                (tag) => html` <li>
+                                                  <strong>${tag.term}</strong
+                                                  >${tag.description
+                                                    ? html` - ${tag.description}`
+                                                    : ``}
+                                                  ${tag.associatedMaterial
+                                                    ? html`
+                                                        <ul>
+                                                          ${tag.associatedMaterial.map(
+                                                            (material) => html`
+                                                              <li>
+                                                                <a
+                                                                  href="${material}"
+                                                                  target="_blank"
+                                                                  rel="noopener noreferrer"
+                                                                  >${material}</a
+                                                                >
+                                                              </li>
+                                                            `
+                                                          )}
+                                                        </ul>
+                                                      `
+                                                    : ``}
+                                                </li>`
+                                              )}`
                                             : ``}
-                                          ${tag.associatedMaterial
-                                            ? html`
-                                                <ul>
-                                                  ${tag.associatedMaterial.map(
-                                                    (material) => html`
-                                                      <li>
-                                                        <a
-                                                          href="${material}"
-                                                          target="_blank"
-                                                          rel="noopener noreferrer"
-                                                          >${material}</a
-                                                        >
-                                                      </li>
-                                                    `
-                                                  )}
-                                                </ul>
-                                              `
-                                            : ``}
-                                        </li>`
-                                      )}`
-                                    : ``}
-                                </ul>
-                              `
-                            )}
-                          </ul>
-                          <h3>Additional feedback</h3>
+                                        </ul>
+                                      `
+                                    )}
+                                  </ul>
+                                  <h3>Additional Criteria feedback</h3>
+                                  <simple-fields-field
+                                    type="textarea"
+                                    data-criteria="${rubric.criteria}"
+                                  ></simple-fields-field>
+                                </div>
+                              </a11y-collapse>
+                            </div>
+                          `
+                        )}
+                      <div class="student-feedback-wrap">
+                        <div class="student-feedback-score">
+                          <simple-fields-field
+                            type="number"
+                            min="0"
+                            id="totalpts"
+                            maxlength="10"
+                          ></simple-fields-field>
+                          /
+                          ${this.database.assignments[this.activeAssignment]
+                            .points}
+                          ${this.database.assignments[this.activeAssignment]
+                            .pointsSystem}
+                        </div>
+                        <div class="student-feedback-text">
+                          <h3 class="heading">Overall feedback</h3>
                           <simple-fields-field
                             type="textarea"
+                            data-criteria="overall"
                           ></simple-fields-field>
                         </div>
-                      </a11y-collapse>
-                    </div>
-                  `
-                )}
+                      </div>
+                    `
+                  : `loading..`}
+              </div>
             </a11y-tab>
           </a11y-tabs>
         </div>
@@ -574,15 +676,39 @@ class GradeBook extends I18NMixin(SimpleColors) {
       </grid-plate>
     `;
   }
+  rubricCriteriaPointsChange(e) {
+    clearTimeout(this.__debouce);
+    this.__debouce = setTimeout(() => {
+      if (!this.loading) {
+        this.updateCurrentScore();
+        this.shadowRoot.querySelector(
+          "#totalpts"
+        ).value = this.currentOverallScore;
+      }
+    }, 10);
+  }
+  updateCurrentScore() {
+    let criteriaPts = this.shadowRoot.querySelectorAll(
+      '.student-feedback-wrap.sub-totals simple-fields-field[type="number"]'
+    );
+    let score = 0;
+    // add the scores up based on values of the pieces
+    for (var i in Array.from(criteriaPts)) {
+      if (criteriaPts[i].value) {
+        score = score + parseInt(criteriaPts[i].value);
+      }
+    }
+    this.currentOverallScore = score;
+  }
   /**
    * A qualitative feedback field got a new value
    */
   qualitativeFeedbackUpdate(e) {
     // group grade report by criteria, then qualitative label, THEN the list of tags used
-    if (!this.gradeReport[e.detail.getAttribute("data-criteria")]) {
-      this.gradeReport[e.detail.getAttribute("data-criteria")] = {};
+    if (!this.activeGrading[e.detail.getAttribute("data-criteria")]) {
+      this.activeGrading[e.detail.getAttribute("data-criteria")] = {};
     }
-    this.gradeReport[e.detail.getAttribute("data-criteria")][e.detail.label] =
+    this.activeGrading[e.detail.getAttribute("data-criteria")][e.detail.label] =
       e.detail.tagList;
     this.requestUpdate();
   }

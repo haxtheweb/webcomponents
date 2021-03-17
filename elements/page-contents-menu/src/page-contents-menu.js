@@ -229,7 +229,7 @@ class PageContentsMenu extends LitElement {
       return html`
         <li class="item">
           <a
-            class="link indent-${item.indent}"
+            class="link indent-${item.indent} ${item.active}"
             tabindex="0"
             @click="${this.scrollToObject}"
             @keypress="${this.keyScroll}"
@@ -242,7 +242,7 @@ class PageContentsMenu extends LitElement {
     return html`
       <li class="item">
         <a
-          class="link indent-${item.indent}"
+          class="link indent-${item.indent} ${item.active}"
           href="${item.link}"
           @click="${this.scrollToObject}"
           @keypress="${this.keyScroll}"
@@ -253,35 +253,6 @@ class PageContentsMenu extends LitElement {
     `;
   }
 
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Page contents-menu",
-        description:
-          "Links that jump you to the right place in the page's content",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Contents"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [],
-        advanced: [],
-      },
-    };
-  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -338,6 +309,8 @@ class PageContentsMenu extends LitElement {
     this.hideIfEmpty = false;
     this.contentContainer = null;
     this.mobile = false;
+    // how long to wait between updating. 100ms default
+    this.scrollPolling = 100;
     // only useful with mobile
     this.hideSettings = true;
     this.label = "Contents";
@@ -381,18 +354,14 @@ class PageContentsMenu extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
+      // fire a "scroll" processing event if the list of items updated
+      // this ensures if something else changes the available items that we are
+      // still trying to mark something as active
+      if (propName == "items" && this[propName] && this[propName].length > 0) {
+        setTimeout(() => {
+          this.scrollFinished();
+        }, 0);
       }
-      */
       if (propName == "contentContainer") {
         this._contentContainerChanged(this[propName]);
       }
@@ -418,11 +387,6 @@ class PageContentsMenu extends LitElement {
           this.__toggleTarget.removeAttribute("tabindex");
         }
       }
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
     });
   }
   /**
@@ -446,6 +410,7 @@ class PageContentsMenu extends LitElement {
           link: item.id ? "#" + item.id : null,
           object: item,
           indent: parseInt(item.tagName.toLowerCase().replace("h", "")),
+          active: "",
         };
         items.push(reference);
       }
@@ -456,76 +421,58 @@ class PageContentsMenu extends LitElement {
       this.isEmpty = false;
     }
     this.items = [...items];
-    this._checkVisibleElements();
   }
-
+  /**
+   * Event listener for scrolling
+   */
   _applyScrollDetect() {
-    let scrollTimer = -1;
-    if (scrollTimer != -1) {
-      clearTimeout(scrollTimer);
-    }
-    scrollTimer = setTimeout(this.scrollFinished(), 150);
+    clearTimeout(this.__debounce);
+    this.__debounce = setTimeout(() => {
+      this.scrollFinished();
+    }, this.scrollPolling);
   }
-
+  /**
+   * Scrolling has paused, re-evaluate what's visible
+   */
   scrollFinished() {
     if (this.items) {
+      // ensure only 1 thing is active and it'll always be the 1st item found from top to bottom
+      let activeFound = false;
+      // viewport height
+      let browserViewport =
+        window.innerHeight || document.documentElement.clientHeight;
       this.items.forEach((value, i) => {
-        let item = this.items[i];
-        let itemTop = item.object.getBoundingClientRect().top;
-        let itemBottom = item.object.getBoundingClientRect().bottom;
-        let browserViewport =
-          window.innerHeight || document.documentElement.clientHeight;
-        let sideItem = this.shadowRoot.querySelector(
-          '[href*="' + item.link + '"]'
-        );
-
-        let nextItemTop;
+        let itemTop = this.items[i].object.getBoundingClientRect().top - 100;
+        let itemBottom = 0;
+        // ensure bottom is ACTUALLY set to the top of the NEXT item
         if (i !== this.items.length - 1) {
-          let nextItem = this.items[i + 1];
-          nextItemTop = nextItem.object.getBoundingClientRect().top;
+          itemBottom =
+            this.items[i + 1].object.getBoundingClientRect().top - 100;
+        } else {
+          itemBottom = browserViewport;
         }
-
-        if (itemTop <= browserViewport && itemBottom > 0) {
-          item.isActive = true;
-          if (sideItem.getAttribute("href") === item.link) {
-            sideItem.classList.add("active");
-          }
-        } else if (
-          browserViewport + window.scrollY >=
-          document.body.offsetHeight
+        // we are in viewport or at least 100 px within it and NOT past it
+        if (itemTop <= browserViewport && itemBottom > 0 && !activeFound) {
+          activeFound = true;
+          this.items[i].active = "active";
+        } else {
+          this.items[i].active = "";
+        }
+      });
+      // account for potentially not finding ANYTHING yet having a "bottom" or top element
+      if (!activeFound && this.items && this.items.length > 0) {
+        // if we are ABOVE the 1st item, assume top; otherwise it's end
+        if (
+          this.items[0].object.getBoundingClientRect().top >= browserViewport
         ) {
-          let lastItem = this.items[this.items.length - 1];
-          this.shadowRoot
-            .querySelector('[href*="' + lastItem.link + '"]')
-            .classList.add("active");
-        } else if (item.isActive) {
-          sideItem.classList.remove("active");
-          item.isActive = false;
+          this.items[0].active = "active";
+        } else {
+          this.items[this.items.length - 1].active = "active";
         }
-      });
+      }
+      this.requestUpdate();
     }
   }
-
-  _checkVisibleElements() {
-    if (this.items) {
-      this.items.forEach((item) => {
-        let position = item.object.getBoundingClientRect();
-        let viewport =
-          window.innerHeight || document.documentElement.clientHeight;
-        if (position.top <= viewport && position.bottom > 0) {
-          item.isActive = true;
-          console.log(item.link);
-          console.log(
-            this.shadowRoot.querySelector('[href*="' + item.link + '"]')
-          );
-          this.shadowRoot
-            .querySelector('[href*="' + item.link + '"]')
-            .classList.add("active");
-        }
-      });
-    }
-  }
-
   /**
    * When our content container changes, process the hierarchy in question
    */
