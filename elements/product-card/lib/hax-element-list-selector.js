@@ -63,7 +63,7 @@ class HaxElementListSelector extends LitElement {
     }
     setTimeout(() => {
       window.addEventListener(
-        "active-tab-changed",
+        "a11y-tabs-active-changed",
         this._activeTabChanged.bind(this)
       );
     }, 0);

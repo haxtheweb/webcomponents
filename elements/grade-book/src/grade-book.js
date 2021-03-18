@@ -15,6 +15,7 @@ import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 import "./lib/grade-book-student-block.js";
+import "./lib/letter-grade.js";
 /**
  * `grade-book`
  * `A headless gradebook that supports multiple backends with rubrics`
@@ -40,6 +41,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
     this.activeSheetPage = "tags";
     // storing internals of the assessmentView tab
     this.assessmentView = this.resetAssessmentView();
+    this.totalScore = 0;
     // active ID in the array of the student being reviewed
     this.activeStudent = 0;
     // active ID in the array of the assignment being reviewed
@@ -94,7 +96,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
   }
   resetAssessmentView() {
     return {
-      totalScore: 0,
       qualitative: [],
       written: [],
     };
@@ -142,6 +143,15 @@ class GradeBook extends I18NMixin(SimpleColors) {
             this.requestUpdate();
           }
           this.loading = false;
+          // ensure the letter-grade tags KNOW about the database refresh
+          setTimeout(() => {
+            if (this.database.gradeScale.length > 0) {
+              let lg = this.shadowRoot.querySelectorAll("letter-grade");
+              for (var i in Array.from(lg)) {
+                lg[i].gradeScale = this.database.gradeScale;
+              }
+            }
+          }, 0);
         }, 100);
       }
       if (propName == "sheet" && this[propName]) {
@@ -267,6 +277,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       ...super.properties,
       activeStudent: { type: Number, attribute: "active-student" },
       activeAssignment: { type: Number, attribute: "active-assignment" },
+      totalScore: { type: Number },
       activeRubric: { type: Object },
       assessmentView: { type: Object },
       activeGrading: { type: Object },
@@ -406,6 +417,10 @@ class GradeBook extends I18NMixin(SimpleColors) {
         .tag-group {
           position: sticky;
           top: 0;
+        }
+        .student-view {
+          float: right;
+          font-size: 40px;
         }
       `,
     ];
@@ -613,6 +628,12 @@ class GradeBook extends I18NMixin(SimpleColors) {
                           .points}
                         ${this.database.assignments[this.activeAssignment]
                           .pointsSystem}
+                        <letter-grade
+                          total="${this.database.assignments[
+                            this.activeAssignment
+                          ].points}"
+                          score="${this.totalScore}"
+                        ></letter-grade>
                       </div>
                     </div>
                   `
@@ -623,6 +644,14 @@ class GradeBook extends I18NMixin(SimpleColors) {
                 ${!this.loading
                   ? html`
                       <h2>Student feedback report</h2>
+                      <letter-grade
+                        class="student-view"
+                        show-scale
+                        total="${this.database.assignments[
+                          this.activeAssignment
+                        ].points}"
+                        score="${this.totalScore}"
+                      ></letter-grade>
                       <a11y-collapse-group heading-button expanded>
                         ${this.database.rubrics
                           .filter((item) => {
@@ -701,7 +730,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
                           <div slot="content">
                             <p>${this.getCriteriaFeedback("overall")}</p>
                             <div class="score-display">
-                              ${this.assessmentView.totalScore} /
+                              ${this.totalScore} /
                               ${this.database.assignments[this.activeAssignment]
                                 .points}
                               ${this.database.assignments[this.activeAssignment]
@@ -788,9 +817,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       this.__debouce = setTimeout(() => {
         if (!this.loading) {
           this.updateTotalScore();
-          this.shadowRoot.querySelector(
-            "#totalpts"
-          ).value = this.assessmentView.totalScore;
+          this.shadowRoot.querySelector("#totalpts").value = this.totalScore;
         }
       }, 10);
     }
@@ -810,7 +837,8 @@ class GradeBook extends I18NMixin(SimpleColors) {
           );
       }
     }
-    this.assessmentView.totalScore = score;
+    this.totalScore = score;
+    this.requestUpdate();
   }
   /**
    * update student report when that tab is activated
@@ -872,6 +900,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
     if (e.key === "Enter") {
     }
   }
+  // get color based on index in the object "colors" from SimpleColors
+  // this allows us to use an index in a common way and obtain a color
+  // so that our tags have a color association per category
   pickColor(val) {
     let colors = Object.keys(this.colors);
     while (val > colors.length) {
@@ -879,6 +910,8 @@ class GradeBook extends I18NMixin(SimpleColors) {
     }
     return colors[val];
   }
+  // ensure when we drop a tag onto the UI that it removes all the outlines
+  // of fields that can have items dropped into them
   _handleDragDrop(e) {
     window.dispatchEvent(
       new CustomEvent("simple-tag-drop", {
@@ -888,6 +921,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       })
     );
   }
+  // set the drag transfer data
   setDragTransfer(e) {
     window.dispatchEvent(
       new CustomEvent("simple-tag-dragstart", {
