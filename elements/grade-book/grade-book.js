@@ -47,6 +47,8 @@ class GradeBook extends I18NMixin(SimpleColors) {
     this.activeStudent = 0;
     // active ID in the array of the assignment being reviewed
     this.activeAssignment = 0;
+    // lock on score override
+    this.scoreLock = true;
     // active rubric data
     this.activeRubric = [];
     // the active grade sheet
@@ -310,6 +312,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
+      scoreLock: { type: Boolean },
       activeStudent: { type: Number, attribute: "active-student" },
       activeAssignment: { type: Number, attribute: "active-assignment" },
       totalScore: { type: Number },
@@ -737,7 +740,12 @@ class GradeBook extends I18NMixin(SimpleColors) {
                         ></simple-fields-field>
                       </div>
                       <div class="student-feedback-score">
+                        <simple-icon-button-lite
+                          icon="${this.scoreLock ? `lock` : `lock-open`}"
+                          @click="${this.toggleLock}"
+                        ></simple-icon-button-lite>
                         <simple-fields-field
+                          ?disabled="${this.scoreLock}"
                           type="number"
                           min="0"
                           id="totalpts"
@@ -963,6 +971,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
           this.updateTotalScore();
           this.shadowRoot.querySelector("#totalpts").value = this.totalScore;
         }
+        // force locking the score if this changes as we're using the rubric
+        // to modify things
+        this.scoreLock = true;
       }, 10);
     }
   }
@@ -987,6 +998,12 @@ class GradeBook extends I18NMixin(SimpleColors) {
   totalScoreChangedEvent(e) {
     this.totalScore = e.detail.value;
     this.requestUpdate();
+  }
+  /**
+   * lock toggle
+   */
+  toggleLock(e) {
+    this.scoreLock = !this.scoreLock;
   }
   /**
    * update student report when that tab is activated
