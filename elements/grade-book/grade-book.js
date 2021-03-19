@@ -5,6 +5,11 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import {
+  CSVtoArray,
+  validURL,
+  cleanVideoSource,
+} from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-tag-list.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
@@ -33,6 +38,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       roster: 118800528,
       assignments: 540222065,
       rubrics: 1744429439,
+      submissions: 2104732668,
       gradeScale: 980501320,
       grades: 2130903440,
       gradesDetails: 644559151,
@@ -47,6 +53,8 @@ class GradeBook extends I18NMixin(SimpleColors) {
     this.activeStudent = 0;
     // active ID in the array of the assignment being reviewed
     this.activeAssignment = 0;
+    // active Submission is the data itself
+    this.activeSubmission = null;
     // lock on score override
     this.scoreLock = true;
     // active rubric data
@@ -60,6 +68,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
         categories: [],
         data: [],
       },
+      submissions: [],
       rubrics: [],
       assignments: [],
       roster: [],
@@ -84,6 +93,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
       letterGrade: "Letter grade",
       highRange: "High range",
       lowRange: "Low range",
+      noSubmission: "No submission found",
+      studentSubmission: "Student submission",
+      openInNewWindow: "Open in new window",
     };
     this.registerLocalization({
       context: this,
@@ -107,6 +119,23 @@ class GradeBook extends I18NMixin(SimpleColors) {
     };
   }
 
+  // return the active submission based on student and assignment
+  getActiveSubmission() {
+    for (var i in this.database.submissions) {
+      let row = this.database.submissions[i];
+      console.log(row);
+      // look for student AND that the assignment column name is there
+      if (
+        row.student === this.database.roster[this.activeStudent].student &&
+        row[this.database.assignments[this.activeAssignment].shortName]
+      ) {
+        return row[this.database.assignments[this.activeAssignment].shortName];
+      }
+    }
+    return null;
+  }
+
+  // return the active rurbic based on active assignment
   getActiveRubric() {
     return this.database.rubrics.filter((item) => {
       return (
@@ -133,6 +162,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
           propName
         )
       ) {
+        this.activeSubmission = this.getActiveSubmission();
         this.assessmentView = this.resetAssessmentView();
         this.activeRubric = this.getActiveRubric();
         // ensure we maintain visibility of the active student / assignment
@@ -187,32 +217,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
     });
   }
   /**
-   * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
-   */
-  CSVtoArray(text) {
-    let p = "",
-      row = [""],
-      ret = [row],
-      i = 0,
-      r = 0,
-      s = !0,
-      l;
-    for (l in text) {
-      l = text[l];
-      if ('"' === l) {
-        if (s && l === p) row[i] += l;
-        s = !s;
-      } else if ("," === l && s) l = row[++i] = "";
-      else if ("\n" === l && s) {
-        if ("\r" === p) row[i] = row[i].slice(0, -1);
-        row = ret[++r] = [(l = "")];
-        i = 0;
-      } else row[i] += l;
-      p = l;
-    }
-    return ret;
-  }
-  /**
    * generate appstore query
    */
   async loadCSVData(source, sheet) {
@@ -231,7 +235,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
    */
   async handleResponse(text, sheet) {
     // Set helps performantly assemble possible collapsed areas
-    let table = this.CSVtoArray(text);
+    let table = CSVtoArray(text);
     let tmp = table.shift();
     let headings = {};
     let data = [];
@@ -312,19 +316,20 @@ class GradeBook extends I18NMixin(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
-      scoreLock: { type: Boolean },
+      disabled: { type: Boolean, reflect: true },
+      loading: { type: Boolean, reflect: true },
       activeStudent: { type: Number, attribute: "active-student" },
       activeAssignment: { type: Number, attribute: "active-assignment" },
       totalScore: { type: Number },
-      activeRubric: { type: Object },
-      assessmentView: { type: Object },
-      activeGrading: { type: Object },
-      loading: { type: Boolean },
+      scoreLock: { type: Boolean },
+      debug: { type: Boolean },
       sheet: { type: String },
       source: { type: String },
-      database: { type: Object },
-      disabled: { type: Boolean, reflect: true },
-      debug: { type: Boolean },
+      activeSubmission: { type: String, attribute: false },
+      database: { type: Object, attribute: false },
+      activeRubric: { type: Object, attribute: false },
+      assessmentView: { type: Object, attribute: false },
+      activeGrading: { type: Object, attribute: false },
     };
   }
   changeStudent(e) {
@@ -432,7 +437,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
           margin: 0px 12px;
         }
         .mini-map {
-          float: right;
           max-height: 150px;
           max-width: 150px;
           overflow: auto;
@@ -476,6 +480,16 @@ class GradeBook extends I18NMixin(SimpleColors) {
             #eeeeee
           );
         }
+        .active-submission {
+          max-height: 400px;
+          width: 60%;
+          overflow: auto;
+          margin: 0 auto;
+        }
+        .active-submission iframe {
+          height: 400px;
+          width: 60%;
+        }
         .tag-group {
           position: sticky;
           top: 0;
@@ -504,148 +518,205 @@ class GradeBook extends I18NMixin(SimpleColors) {
       `,
     ];
   }
+  // render submission; guessing game really :)
+  renderSubmission(data) {
+    let pre = html`<h3>${this.t.studentSubmission}</h3>`;
+    // test if this smells like a URL
+    if (validURL(data)) {
+      pre = html`${pre}<a
+          href="${data}"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><simple-icon-button-lite
+            label="${this.t.openInNewWindow}"
+            icon="open-in-new"
+          ></simple-icon-button-lite
+        ></a>`;
+      // see if this is a video we know about
+      if (data != cleanVideoSource(data)) {
+        // implies it was able to clean it up in some way
+        import("@lrnwebcomponents/video-player/video-player.js");
+        return html`${pre}<video-player
+            class="active-submission"
+            source="${data}"
+            width="60%"
+          ></video-player>`;
+      } else {
+        return html`${pre}
+          <div class="active-submission">
+            <iframe
+              src="${data}"
+              loading="lazy"
+              width="100%"
+              height="100%"
+            ></iframe>
+          </div>`;
+      }
+    } else {
+      // see if we can just present this as data
+      import("@lrnwebcomponents/md-block/md-block.js");
+      return html`${pre}
+        <div class="active-submission">
+          <md-block .markdown="${data}"></md-block>
+        </div>`;
+    }
+  }
+  /**
+   * LitElement render method
+   */
   render() {
     return html`
-      <loading-indicator ?loading="${this.loading}"></loading-indicator>
-      <grid-plate layout="3-1">
-        <a11y-tabs full-width slot="col-1">
-          <a11y-tab icon="social:person" label="Active student">
-            ${this.database.roster[this.activeStudent]
-              ? html`
-                  <grade-book-student-block
-                    .student="${this.database.roster[this.activeStudent]}"
-                  ></grade-book-student-block>
-                `
-              : html`<loading-indicator></loading-indicator>`}
-          </a11y-tab>
-          <a11y-tab icon="assignment-ind" label="Active Assignment">
-            <p>This is where their work would go I guess</p>
-            ${this.database.assignments.length &&
-            this.database.assignments[this.activeAssignment]
-              ? html`
-                  <h3>
-                    ${this.database.assignments[this.activeAssignment].name}
-                  </h3>
-                  <ul>
-                    <li>
-                      Due date:
-                      <local-time
-                        datetime="${this.database.assignments[
-                          this.activeAssignment
-                        ]._ISODueDate}"
-                        month="short"
-                        day="numeric"
-                        year="numeric"
-                        hour="numeric"
-                        minute="numeric"
-                        time-zone-name="short"
-                      >
-                      </local-time>
-                    </li>
-                    <li>
-                      Date submitted:
-                      ${Math.floor(
-                        this.database.assignments[this.activeAssignment]
-                          ._ISODueDate - new Date("2021-03-01T10:20:08")
-                      ) / 60e3}
-                      minutes ago
-                    </li>
-                  </ul>
-                `
-              : html`<loading-indicator></loading-indicator>`}
-          </a11y-tab>
-          <a11y-tab icon="list" label="Past assignments">
-            <p>This could be used to show past assignments</p>
-          </a11y-tab>
-          <a11y-tab icon="list" label="Grade scale">
-            <editable-table-display
-              accent-color="${this.accentColor}"
-              bordered
-              column-header
-              condensed
-              disable-responsive
-              scroll
-              striped
-            >
-              <table>
-                <tbody>
-                  <tr>
-                    <td>${this.t.letterGrade}</td>
-                    <td>${this.t.highRange}</td>
-                    <td>${this.t.lowRange}</td>
-                  </tr>
-                  ${this.database.gradeScale.map(
-                    (scale) => html`
-                      <tr>
-                        <td>${scale.letter}</td>
-                        <td>${scale.highRange}</td>
-                        <td>${scale.lowRange}</td>
-                      </tr>
-                    `
-                  )}
-                </tbody>
-              </table>
-            </editable-table-display>
-          </a11y-tab>
-        </a11y-tabs>
+      <grid-plate layout="1-1-1">
+        <div slot="col-1">
+          <button
+            @click="${this.changeStudent}"
+            value="prev"
+            ?disabled="${0 === this.activeStudent}"
+          >
+            Previous student
+          </button>
+          <button
+            @click="${this.changeStudent}"
+            value="next"
+            ?disabled="${this.database.roster.length - 1 ===
+            this.activeStudent}"
+          >
+            Next student
+          </button>
+        </div>
         <div slot="col-2">
-          ${this.database.roster.length && this.database.assignments.length
-            ? html`
-                <h4>Active assignment controls</h4>
-                <div class="mini-map">
-                  ${this.database.roster.map(
-                    (s, i) => html` <div data-pixel-row>
-                      ${this.database.assignments.map(
-                        (a, h) => html`
-                          <div
-                            data-pixel-col
-                            ?data-active-assignment-student-pixel="${this
-                              .activeStudent === i &&
-                            this.activeAssignment === h}"
-                          ></div>
-                        `
+          <button
+            @click="${this.changeAssignment}"
+            value="prev"
+            ?disabled="${0 === this.activeAssignment}"
+          >
+            Previous assignment
+          </button>
+          <button
+            @click="${this.changeAssignment}"
+            value="next"
+            ?disabled="${this.database.assignments.length - 1 ===
+            this.activeAssignment}"
+          >
+            Next Assignment
+          </button>
+        </div>
+        <loading-indicator
+          ?loading="${this.loading}"
+          slot="col-3"
+        ></loading-indicator>
+      </grid-plate>
+      <a11y-tabs full-width>
+        <a11y-tab icon="social:person" label="Active student">
+          <grid-plate layout="1-1">
+            <div slot="col-1">
+              ${this.database.roster[this.activeStudent]
+                ? html`
+                    <grade-book-student-block
+                      .student="${this.database.roster[this.activeStudent]}"
+                    ></grade-book-student-block>
+                  `
+                : html`<loading-indicator></loading-indicator>`}
+            </div>
+            <div slot="col-2">
+              ${this.database.roster.length && this.database.assignments.length
+                ? html`
+                    <h4>Active submission map</h4>
+                    <div class="mini-map">
+                      ${this.database.roster.map(
+                        (s, i) => html` <div data-pixel-row>
+                          ${this.database.assignments.map(
+                            (a, h) => html`
+                              <div
+                                data-pixel-col
+                                ?data-active-assignment-student-pixel="${this
+                                  .activeStudent === i &&
+                                this.activeAssignment === h}"
+                              ></div>
+                            `
+                          )}
+                        </div>`
                       )}
-                    </div>`
-                  )}
-                </div>
+                    </div>
+                  `
+                : html`<loading-indicator></loading-indicator>`}
+            </div>
+          </grid-plate>
+        </a11y-tab>
+        <a11y-tab icon="assignment-ind" label="Active Assessment">
+          ${this.database.assignments.length &&
+          this.database.assignments[this.activeAssignment]
+            ? html`
+                <h3>
+                  ${this.database.assignments[this.activeAssignment].name}
+                </h3>
+                <ul>
+                  <li>
+                    Due date:
+                    <local-time
+                      datetime="${this.database.assignments[
+                        this.activeAssignment
+                      ]._ISODueDate}"
+                      month="short"
+                      day="numeric"
+                      year="numeric"
+                      hour="numeric"
+                      minute="numeric"
+                      time-zone-name="short"
+                    >
+                    </local-time>
+                  </li>
+                  <li>
+                    Date submitted:
+                    ${Math.floor(
+                      this.database.assignments[this.activeAssignment]
+                        ._ISODueDate - new Date("2021-03-01T10:20:08")
+                    ) / 60e3}
+                    minutes ago
+                  </li>
+                </ul>
                 <div>
-                  <button
-                    @click="${this.changeStudent}"
-                    value="prev"
-                    ?disabled="${0 === this.activeStudent}"
-                  >
-                    Previous student
-                  </button>
-                  <button
-                    @click="${this.changeStudent}"
-                    value="next"
-                    ?disabled="${this.database.roster.length - 1 ===
-                    this.activeStudent}"
-                  >
-                    Next student
-                  </button>
-                </div>
-                <div>
-                  <button
-                    @click="${this.changeAssignment}"
-                    value="prev"
-                    ?disabled="${0 === this.activeAssignment}"
-                  >
-                    Previous assignment
-                  </button>
-                  <button
-                    @click="${this.changeAssignment}"
-                    value="next"
-                    ?disabled="${this.database.assignments.length - 1 ===
-                    this.activeAssignment}"
-                  >
-                    Next Assignment
-                  </button>
+                  ${this.activeSubmission
+                    ? this.renderSubmission(this.activeSubmission)
+                    : html`${this.t.noSubmission}`}
                 </div>
               `
             : html`<loading-indicator></loading-indicator>`}
-        </div>
-      </grid-plate>
+        </a11y-tab>
+        <a11y-tab icon="list" label="Past submissions">
+          <p>This could be used to show past assignments</p>
+        </a11y-tab>
+        <a11y-tab icon="list" label="Grade scale">
+          <editable-table-display
+            accent-color="${this.accentColor}"
+            bordered
+            column-header
+            condensed
+            disable-responsive
+            scroll
+            striped
+          >
+            <table>
+              <tbody>
+                <tr>
+                  <td>${this.t.letterGrade}</td>
+                  <td>${this.t.highRange}</td>
+                  <td>${this.t.lowRange}</td>
+                </tr>
+                ${this.database.gradeScale.map(
+                  (scale) => html`
+                    <tr>
+                      <td>${scale.letter}</td>
+                      <td>${scale.highRange}</td>
+                      <td>${scale.lowRange}</td>
+                    </tr>
+                  `
+                )}
+              </tbody>
+            </table>
+          </editable-table-display>
+        </a11y-tab>
+      </a11y-tabs>
       <grid-plate layout="3-1">
         <div slot="col-1">
           <a11y-tabs

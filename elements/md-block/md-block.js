@@ -101,6 +101,7 @@ class MdBlock extends LitElement {
       },
       markdown: {
         type: String,
+        attribute: false,
       },
     };
   }

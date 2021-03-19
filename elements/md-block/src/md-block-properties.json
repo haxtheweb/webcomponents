@@ -3,6 +3,7 @@
     "type": String
   },
   "markdown": {
-    "type": String
+    "type": String,
+    "attribute": false
   }
 }

@@ -2,6 +2,89 @@
  * A collection of utility functions exported for convenience
  */
 
+/**
+ * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
+ */
+export function CSVtoArray(text) {
+  let p = "",
+    row = [""],
+    ret = [row],
+    i = 0,
+    r = 0,
+    s = !0,
+    l;
+  for (l in text) {
+    l = text[l];
+    if ('"' === l) {
+      if (s && l === p) row[i] += l;
+      s = !s;
+    } else if ("," === l && s) l = row[++i] = "";
+    else if ("\n" === l && s) {
+      if ("\r" === p) row[i] = row[i].slice(0, -1);
+      row = ret[++r] = [(l = "")];
+      i = 0;
+    } else row[i] += l;
+    p = l;
+  }
+  return ret;
+}
+/**
+ * Check source of the video, potentially correcting bad links.
+ */
+export function cleanVideoSource(input) {
+  // strip off the ? modifier for youtube/vimeo so we can build ourselves
+  var tmp = input.split("?");
+  var v = "";
+  input = tmp[0];
+  if (tmp.length == 2) {
+    let tmp2 = tmp[1].split("&"),
+      args = tmp2[0].split("="),
+      qry = Array.isArray(tmp2.shift()) ? tmp2.shift().join("") : tmp2.shift();
+    if (args[0] == "v") {
+      let q = qry !== undefined && qry !== "" ? "?" + qry : "";
+      v = args[1] + q;
+    }
+  }
+  // link to the vimeo video instead of the embed player address
+  if (
+    input.indexOf("player.vimeo.com") == -1 &&
+    input.indexOf("vimeo.com") != -1
+  ) {
+    // normalize what the API will return since it is API based
+    // and needs cleaned up for front-end
+    if (input.indexOf("/videos/") != -1) {
+      input = input.replace("/videos/", "/");
+    }
+    return input.replace("vimeo.com/", "player.vimeo.com/video/");
+  }
+  // copy and paste from the URL
+  else if (input.indexOf("youtube.com/watch") != -1) {
+    return input.replace("youtube.com/watch", "youtube.com/embed/") + v;
+  }
+  // copy and paste from the URL
+  else if (input.indexOf("youtube-no-cookie.com/") != -1) {
+    return input.replace("youtube-no-cookie.com/", "youtube.com/") + v;
+  }
+  // weird share-ly style version
+  else if (input.indexOf("youtu.be") != -1) {
+    return input.replace("youtu.be/", "www.youtube.com/embed/") + v;
+  }
+  // copy and paste from the URL for sketchfab
+  else if (
+    input.indexOf("sketchfab.com") != -1 &&
+    input.indexOf("/embed") == -1
+  ) {
+    return input + "/embed";
+  }
+  // copy and paste from the URL for sketchfab
+  else if (
+    input.indexOf("dailymotion.com") != -1 &&
+    input.indexOf("/embed") == -1
+  ) {
+    return input.replace("/video/", "/embed/video/");
+  }
+  return input;
+}
 // wrap an element with another; super basic but makes it consistent across our apps
 function wrap(el, wrapper) {
   if (el && el.parentNode) {
