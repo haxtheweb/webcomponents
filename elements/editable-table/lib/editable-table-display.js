@@ -43,8 +43,9 @@ class EditableTableDisplay extends displayBehaviors(
         ?row-header="${this.rowHeader}"
         ?sort="${this.sort}"
         ?striped="${this.striped}"
+        part="table"
       >
-        <caption>
+        <caption part="caption">
           <div>
             <div>${this.getHTML(this.caption)}</div>
             ${!this.disableResponsive
@@ -89,8 +90,8 @@ class EditableTableDisplay extends displayBehaviors(
                 `}
           </div>
         </caption>
-        <thead ?hidden="${!this.columnHeader}" class="thead">
-          <tr class="tr thead-tr">
+        <thead ?hidden="${!this.columnHeader}" class="thead" part="thead">
+          <tr class="tr thead-tr" part="tr">
             ${(this.thead[0] || []).map(
               (th, index) => html`
                 <th
@@ -98,6 +99,7 @@ class EditableTableDisplay extends displayBehaviors(
                   cell-index="${index}"
                   ?numeric="${this._isNumericColumn(index)}"
                   scope="col"
+                  part="th"
                   ?xs-hidden="${this._isColHidden(index, 1)}"
                 >
                   ${!this.sort
@@ -115,7 +117,7 @@ class EditableTableDisplay extends displayBehaviors(
             )}
           </tr>
         </thead>
-        <tbody class="tbody">
+        <tbody class="tbody" part="tbody">
           ${this.tbody.map((tr) =>
             this._isRowFiltered(tr) ? "" : this._tbodyTr(tr)
           )}
@@ -123,7 +125,7 @@ class EditableTableDisplay extends displayBehaviors(
         ${!this.footer
           ? ""
           : html`
-              <tfoot class="tfoot">
+              <tfoot class="tfoot" part="tfoot">
                 ${this._tbodyTr(this.tfoot[0], true, true)}
               </tfoot>
             `}
@@ -459,6 +461,7 @@ class EditableTableDisplay extends displayBehaviors(
    */
   _tbodyTd(cell, index, noFilter = false) {
     return html`<td
+      part="td"
       class="td th-or-td"
       cell-index="${index}"
       ?numeric="${this._isNumericColumn(index)}"

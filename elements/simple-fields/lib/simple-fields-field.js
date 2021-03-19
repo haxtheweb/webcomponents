@@ -933,7 +933,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         this.field &&
         this[attribute] !== this.field.getAttribute(attribute)
       ) {
-        if (this[attribute]) {
+        if (this[attribute] || this[attribute] === 0) {
           this.field.setAttribute(attribute, this[attribute]);
         } else {
           this.field.removeAttribute(attribute, this[attribute]);

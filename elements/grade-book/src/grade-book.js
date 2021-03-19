@@ -16,6 +16,7 @@ import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 import "./lib/grade-book-student-block.js";
 import "./lib/letter-grade.js";
+import "@github/time-elements/dist/time-elements.js";
 /**
  * `grade-book`
  * `A headless gradebook that supports multiple backends with rubrics`
@@ -78,6 +79,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
       description: "Description",
       assessmentWeight: "Assessment Weight",
       overallFeedback: "Overall feedback",
+      letterGrade: "Letter grade",
+      highRange: "High range",
+      lowRange: "Low range",
     };
     this.registerLocalization({
       context: this,
@@ -122,9 +126,30 @@ class GradeBook extends I18NMixin(SimpleColors) {
         import("@lrnwebcomponents/csv-render/csv-render.js");
       }
       // set rubric based on assignment
-      if (["activeAssignment", "database", "loading"].includes(propName)) {
+      if (
+        ["activeAssignment", "activeStudent", "database", "loading"].includes(
+          propName
+        )
+      ) {
         this.assessmentView = this.resetAssessmentView();
         this.activeRubric = this.getActiveRubric();
+        // ensure we maintain visibility of the active student / assignment
+        // in our mini-map; delay to ensure paints pixel before visibility
+        if (
+          this.shadowRoot &&
+          this.shadowRoot.querySelector(
+            ".mini-map div[data-active-assignment-student-pixel]"
+          )
+        ) {
+          setTimeout(() => {
+            this.shadowRoot.querySelector(".mini-map").scrollTop =
+              this.shadowRoot.querySelector(
+                ".mini-map div[data-active-assignment-student-pixel]"
+              ).offsetTop -
+              120 -
+              this.shadowRoot.querySelector(".mini-map").offsetTop;
+          }, 100);
+        }
       }
       // source will have to fetch ALL the pages and slowly load data as it rolls through
       if (propName == "source" && this[propName]) {
@@ -223,6 +248,16 @@ class GradeBook extends I18NMixin(SimpleColors) {
     return typeof this[`process${sheet}Data`] === "function"
       ? this[`process${sheet}Data`](table, headings, data)
       : data;
+  }
+  /**
+   * process assignment data to normalize date string
+   */
+  processassignmentsData(table, headings, data) {
+    for (var i in data) {
+      const event = new Date(`${data[i].dueDate} ${data[i].dueTime}`);
+      data[i]._ISODueDate = event.toISOString();
+    }
+    return data;
   }
   /**
    * Process our tagging structure for use in the rubric
@@ -376,17 +411,40 @@ class GradeBook extends I18NMixin(SimpleColors) {
           --simple-fields-font-size: 40px;
           line-height: 40px;
         }
-        .score-display {
-          font-size: 40px;
-          line-height: 40px;
-          border: 1px solid black;
+
+        .student-feedback-score-heading {
+          display: flex;
+          font-size: 28px;
+          font-weight: bold;
+          line-height: 28px;
           padding: 8px;
         }
+        .student-feedback-score-heading h3 {
+          margin: 0 0 0 8px;
+          padding: 0px;
+        }
+
         #totalpts {
-          width: 50%;
+          width: 84px;
+          margin: 0px 12px;
         }
         .mini-map {
           float: right;
+          max-height: 150px;
+          max-width: 150px;
+          overflow: auto;
+        }
+        .mini-map div[data-pixel-row] {
+          height: 5px;
+        }
+        .mini-map div[data-pixel-col] {
+          background-color: yellow;
+          float: left;
+          width: 5px;
+          height: 5px;
+        }
+        .mini-map div[data-active-assignment-student-pixel] {
+          background-color: blue;
         }
         .student-feedback-wrap {
           display: flex;
@@ -400,9 +458,10 @@ class GradeBook extends I18NMixin(SimpleColors) {
         }
         .student-feedback-wrap .student-feedback-score {
           font-size: 40px;
-          line-height: 40px;
-          padding: 8px;
+          line-height: 68px;
+          padding: 34px 16px;
           display: flex;
+          width: 50%;
         }
         simple-tag {
           margin: 2px;
@@ -418,9 +477,26 @@ class GradeBook extends I18NMixin(SimpleColors) {
           position: sticky;
           top: 0;
         }
-        .student-view {
-          float: right;
-          font-size: 40px;
+        .student-report-wrap {
+          display: flex;
+          justify-content: space-evenly;
+        }
+        .student-report-score {
+          margin-top: -20px;
+        }
+        editable-table-display::part(td),
+        editable-table-display::part(th) {
+          text-align: center;
+          vertical-align: top;
+          max-width: 250px;
+        }
+        editable-table-display::part(simple-fields-field) {
+          --simple-fields-font-size: 32px;
+          --simple-fields-text-align: center;
+          background-color: transparent;
+          max-width: 100px;
+          padding: 0 0 28px 0;
+          margin: 0;
         }
       `,
     ];
@@ -441,8 +517,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
           </a11y-tab>
           <a11y-tab icon="assignment-ind" label="Active Assignment">
             <p>This is where their work would go I guess</p>
-          </a11y-tab>
-          <a11y-tab icon="assignment" label="Assignment details">
             ${this.database.assignments.length &&
             this.database.assignments[this.activeAssignment]
               ? html`
@@ -451,17 +525,27 @@ class GradeBook extends I18NMixin(SimpleColors) {
                   </h3>
                   <ul>
                     <li>
-                      Due
-                      date:${this.database.assignments[this.activeAssignment]
-                        .dueDate}
-                      ${this.database.assignments[this.activeAssignment]
-                        .dueTime}
+                      Due date:
+                      <local-time
+                        datetime="${this.database.assignments[
+                          this.activeAssignment
+                        ]._ISODueDate}"
+                        month="short"
+                        day="numeric"
+                        year="numeric"
+                        hour="numeric"
+                        minute="numeric"
+                        time-zone-name="short"
+                      >
+                      </local-time>
                     </li>
                     <li>
-                      Points:${this.database.assignments[this.activeAssignment]
-                        .points}
-                      ${this.database.assignments[this.activeAssignment]
-                        .pointsSystem}
+                      Date submitted:
+                      ${Math.floor(
+                        this.database.assignments[this.activeAssignment]
+                          ._ISODueDate - new Date("2021-03-01T10:20:08")
+                      ) / 60e3}
+                      minutes ago
                     </li>
                   </ul>
                 `
@@ -470,6 +554,36 @@ class GradeBook extends I18NMixin(SimpleColors) {
           <a11y-tab icon="list" label="Past assignments">
             <p>This could be used to show past assignments</p>
           </a11y-tab>
+          <a11y-tab icon="list" label="Grade scale">
+            <editable-table-display
+              accent-color="${this.accentColor}"
+              bordered
+              column-header
+              condensed
+              disable-responsive
+              scroll
+              striped
+            >
+              <table>
+                <tbody>
+                  <tr>
+                    <td>${this.t.letterGrade}</td>
+                    <td>${this.t.highRange}</td>
+                    <td>${this.t.lowRange}</td>
+                  </tr>
+                  ${this.database.gradeScale.map(
+                    (scale) => html`
+                      <tr>
+                        <td>${scale.letter}</td>
+                        <td>${scale.highRange}</td>
+                        <td>${scale.lowRange}</td>
+                      </tr>
+                    `
+                  )}
+                </tbody>
+              </table>
+            </editable-table-display>
+          </a11y-tab>
         </a11y-tabs>
         <div slot="col-2">
           ${this.database.roster.length && this.database.assignments.length
@@ -477,15 +591,14 @@ class GradeBook extends I18NMixin(SimpleColors) {
                 <h4>Active assignment controls</h4>
                 <div class="mini-map">
                   ${this.database.roster.map(
-                    (s, i) => html` <div style="height:5px">
+                    (s, i) => html` <div data-pixel-row>
                       ${this.database.assignments.map(
                         (a, h) => html`
                           <div
-                            .style="float:left;width:5px;height:5px;background-color:${this
+                            data-pixel-col
+                            ?data-active-assignment-student-pixel="${this
                               .activeStudent === i &&
-                            this.activeAssignment === h
-                              ? `blue`
-                              : `yellow`};"
+                            this.activeAssignment === h}"
                           ></div>
                         `
                       )}
@@ -563,7 +676,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
                                 ${rubric.qualitative.map(
                                   (cat) => html` <td>${cat}</td> `
                                 )}
-                                <td>${rubric.points} ${rubric.pointsSystem}</td>
+                                <td>${rubric.percentage} %</td>
                               </tr>
                               <tr>
                                 ${rubric.qualitative.map(
@@ -578,22 +691,29 @@ class GradeBook extends I18NMixin(SimpleColors) {
                                   `
                                 )}
                                 <td>
-                                  <div style="display:flex;line-height:32px;">
-                                    <simple-fields-field
-                                      type="number"
-                                      style="background-color:transparent;width:100px;padding:0 0 30px 0;margin:0;--simple-fields-font-size:40px;--simple-fields-text-align:center;"
-                                      min="0"
-                                      value="${this.database.settings
-                                        .defaultScore === "max"
-                                        ? rubric.points
-                                        : this.database.settings.defaultScore}"
-                                      max="${rubric.points}"
-                                      maxlength="10"
-                                      data-rubric-score
-                                      data-criteria="${rubric.criteria}"
-                                    ></simple-fields-field>
-                                    <div></div>
-                                  </div>
+                                  <simple-fields-field
+                                    type="number"
+                                    part="simple-fields-field"
+                                    min="0"
+                                    value="${this.database.settings
+                                      .defaultScore === "max"
+                                      ? Math.round(
+                                          (rubric.percentage / 100) *
+                                            this.database.assignments[
+                                              this.activeAssignment
+                                            ].points
+                                        )
+                                      : this.database.settings.defaultScore}"
+                                    max="${Math.round(
+                                      (rubric.percentage / 100) *
+                                        this.database.assignments[
+                                          this.activeAssignment
+                                        ].points
+                                    )}"
+                                    maxlength="10"
+                                    data-rubric-score
+                                    data-criteria="${rubric.criteria}"
+                                  ></simple-fields-field>
                                 </td>
                               </tr>
                             </tbody>
@@ -622,13 +742,14 @@ class GradeBook extends I18NMixin(SimpleColors) {
                           min="0"
                           id="totalpts"
                           maxlength="10"
+                          @value-changed="${this.totalScoreChangedEvent}"
                         ></simple-fields-field>
                         /
                         ${this.database.assignments[this.activeAssignment]
                           .points}
-                        ${this.database.assignments[this.activeAssignment]
-                          .pointsSystem}
+                        pts
                         <letter-grade
+                          style="margin:-8px 0 0 16px;"
                           total="${this.database.assignments[
                             this.activeAssignment
                           ].points}"
@@ -644,101 +765,124 @@ class GradeBook extends I18NMixin(SimpleColors) {
                 ${!this.loading
                   ? html`
                       <h2>Student feedback report</h2>
-                      <letter-grade
-                        class="student-view"
-                        show-scale
-                        total="${this.database.assignments[
-                          this.activeAssignment
-                        ].points}"
-                        score="${this.totalScore}"
-                      ></letter-grade>
-                      <a11y-collapse-group heading-button expanded>
-                        ${this.database.rubrics
-                          .filter((item) => {
-                            return (
-                              item.shortName ==
-                              this.database.assignments[this.activeAssignment]
-                                .rubric
-                            );
-                          })
-                          .map(
-                            (rubric) => html`
-                              <a11y-collapse class="student-feedback-text">
-                                <div slot="heading" class="heading">
-                                  ${rubric.criteria}
-                                </div>
-                                <div slot="content">
-                                  <h3>Criteria details</h3>
-                                  <p>${rubric.description}</p>
-                                  <h4>Your Score</h4>
-                                  <div class="score-display">
-                                    ${this.getCriteriaScore(rubric.criteria)} /
-                                    ${rubric.points} ${rubric.pointsSystem}
+                      <div class="student-report-wrap">
+                        <a11y-collapse-group
+                          heading-button
+                          expanded
+                          style="width:80%;"
+                        >
+                          ${this.database.rubrics
+                            .filter((item) => {
+                              return (
+                                item.shortName ==
+                                this.database.assignments[this.activeAssignment]
+                                  .rubric
+                              );
+                            })
+                            .map(
+                              (rubric) => html`
+                                <a11y-collapse class="student-feedback-text">
+                                  <div slot="heading" class="heading">
+                                    ${rubric.criteria}
                                   </div>
-                                  <h3>Your feedback</h3>
-                                  <ul>
-                                    ${rubric.qualitative.map(
-                                      (cat) => html`
-                                        <h4>${cat}</h4>
-                                        <ul>
-                                          ${this.activeGrading[rubric.criteria]
-                                            ? html`${this.activeGrading[
-                                                rubric.criteria
-                                              ][cat].map(
-                                                (tag) => html` <li>
-                                                  <span>${tag.term}</span
-                                                  >${tag.description
-                                                    ? html` - ${tag.description}`
-                                                    : ``}
-                                                  ${tag.associatedMaterial
-                                                    ? html`
-                                                        <ul>
-                                                          ${tag.associatedMaterial.map(
-                                                            (material) => html`
-                                                              <li>
-                                                                <a
-                                                                  href="${material}"
-                                                                  target="_blank"
-                                                                  rel="noopener noreferrer"
-                                                                  >${material}</a
-                                                                >
-                                                              </li>
-                                                            `
-                                                          )}
-                                                        </ul>
-                                                      `
-                                                    : ``}
-                                                </li>`
-                                              )}`
-                                            : ``}
-                                        </ul>
-                                      `
-                                    )}
-                                  </ul>
-                                  <h3>Additional Criteria feedback</h3>
-                                  <p>
-                                    ${this.getCriteriaFeedback(rubric.criteria)}
-                                  </p>
-                                </div>
-                              </a11y-collapse>
-                            `
-                          )}
-                        <a11y-collapse class="student-feedback-text">
-                          <div slot="heading" class="heading">
-                            ${this.t.overallFeedback}
-                          </div>
-                          <div slot="content">
-                            <p>${this.getCriteriaFeedback("overall")}</p>
-                            <div class="score-display">
-                              ${this.totalScore} /
-                              ${this.database.assignments[this.activeAssignment]
-                                .points}
-                              ${this.database.assignments[this.activeAssignment]
-                                .pointsSystem}
+                                  <div slot="content">
+                                    <div class="student-feedback-score-heading">
+                                      <div>
+                                        ${this.getCriteriaScore(
+                                          rubric.criteria
+                                        )}
+                                        /
+                                        ${Math.round(
+                                          (rubric.percentage / 100) *
+                                            this.database.assignments[
+                                              this.activeAssignment
+                                            ].points
+                                        )}
+                                      </div>
+                                      <h3>Criteria details</h3>
+                                    </div>
+                                    <p>${rubric.description}</p>
+                                    <h3>Your feedback</h3>
+                                    <ul>
+                                      ${rubric.qualitative.map(
+                                        (cat) => html`
+                                          <h4>${cat}</h4>
+                                          <ul>
+                                            ${this.activeGrading[
+                                              rubric.criteria
+                                            ]
+                                              ? html`${this.activeGrading[
+                                                  rubric.criteria
+                                                ][cat].map(
+                                                  (tag) => html` <li>
+                                                    <span>${tag.term}</span
+                                                    >${tag.description
+                                                      ? html` -
+                                                        ${tag.description}`
+                                                      : ``}
+                                                    ${tag.associatedMaterial
+                                                      ? html`
+                                                          <ul>
+                                                            ${tag.associatedMaterial.map(
+                                                              (
+                                                                material
+                                                              ) => html`
+                                                                <li>
+                                                                  <a
+                                                                    href="${material}"
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    >${material}</a
+                                                                  >
+                                                                </li>
+                                                              `
+                                                            )}
+                                                          </ul>
+                                                        `
+                                                      : ``}
+                                                  </li>`
+                                                )}`
+                                              : ``}
+                                          </ul>
+                                        `
+                                      )}
+                                    </ul>
+                                    <h3>Additional Criteria feedback</h3>
+                                    <p>
+                                      ${this.getCriteriaFeedback(
+                                        rubric.criteria
+                                      )}
+                                    </p>
+                                  </div>
+                                </a11y-collapse>
+                              `
+                            )}
+                          <a11y-collapse class="student-feedback-text">
+                            <div slot="heading" class="heading">
+                              ${this.t.overallFeedback}
                             </div>
-                          </div>
-                        </a11y-collapse>
-                      </a11y-collapse-group>
+                            <div slot="content">
+                              <p>${this.getCriteriaFeedback("overall")}</p>
+                              <h3>Your total Score</h3>
+                              <div class="score-display">
+                                ${this.totalScore} /
+                                ${this.database.assignments[
+                                  this.activeAssignment
+                                ].points}
+                                pts
+                              </div>
+                            </div>
+                          </a11y-collapse>
+                        </a11y-collapse-group>
+                        <letter-grade
+                          class="student-report-score"
+                          show-scale
+                          total="${this.database.assignments[
+                            this.activeAssignment
+                          ].points}"
+                          score="${this.totalScore}"
+                        ></letter-grade>
+                      </div>
                     `
                   : html`<loading-indicator></loading-indicator>`}
               </div>
@@ -838,6 +982,10 @@ class GradeBook extends I18NMixin(SimpleColors) {
       }
     }
     this.totalScore = score;
+    this.requestUpdate();
+  }
+  totalScoreChangedEvent(e) {
+    this.totalScore = e.detail.value;
     this.requestUpdate();
   }
   /**
