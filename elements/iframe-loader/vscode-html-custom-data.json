@@ -37,7 +37,14 @@
     },
     {
       "name": "loading-indicator",
-      "attributes": []
+      "description": "Attributes:\n\n  * `loading` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: true",
+          "valueSet": "v"
+        }
+      ]
     },
     {
       "name": "iframe-loader",

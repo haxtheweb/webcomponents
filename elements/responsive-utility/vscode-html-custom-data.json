@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "responsive-utility-element",
-      "description": "`responsive-utility-element`\nA simpler way to use responsive utility.\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperties:\n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
+      "description": "`responsive-utility-element`\nA simpler way to use responsive utility.\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
         {
           "name": "responsive-width",
@@ -28,6 +28,11 @@
         {
           "name": "xl",
           "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
+        },
+        {
+          "name": "disable-responsive",
+          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "onresponsive-element",

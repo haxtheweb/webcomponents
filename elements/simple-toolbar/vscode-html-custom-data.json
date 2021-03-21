@@ -145,7 +145,7 @@
     },
     {
       "name": "simple-toolbar-menu-item",
-      "description": "`simple-toolbar-menu`\n`An icon / button that has support for multiple options via drop down.`\n\nEvents:\n\n  * `add-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is added to dom\n\n  * `remove-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is removed from dom\n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\n  * `linkTemplate` {`TemplateResult`} - renders item as a link\n\n  * `buttonTemplate` {`TemplateResult`} - renders item as a button",
+      "description": "`simple-toolbar-menu`\n`An icon / button that has support for multiple options via drop down.`\n\nEvents:\n\n  * `add-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is added to dom\n\n  * `remove-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is removed from dom\n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\n  * `menuitem` {`string`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\n  * `slot` {`string`} - \n\n  * `linkTemplate` {`TemplateResult`} - renders item as a link\n\n  * `buttonTemplate` {`TemplateResult`} - renders item as a button",
       "attributes": [
         {
           "name": "disabled",
@@ -164,6 +164,10 @@
         {
           "name": "controls",
           "description": "`controls` {`string`} - Whether toggle is disabled\n\nProperty: controls"
+        },
+        {
+          "name": "menuitem",
+          "description": "`menuitem` {`string`} - \n\nProperty: slot"
         },
         {
           "name": "onadd-a11y-menu-button-item",
