@@ -209,7 +209,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty):before {
+          ::slotted([contenteditable][data-hax-ray]:empty)::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
           transition: 0.2s all ease-in-out;
@@ -217,14 +217,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:hover:empty):before {
+          ::slotted([contenteditable][data-hax-ray]:hover:empty)::before {
           opacity: 0.4;
           cursor: text;
         }
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty:focus):before {
+          ::slotted([contenteditable][data-hax-ray]:empty:focus)::before {
           content: "";
         }
         :host([edit-mode]) #bodycontainer ::slotted(p) {
@@ -356,7 +356,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           display: none;
         }
         /* drag and drop */
-        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*):before {
+        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*)::before {
           background-color: var(--hax-body-possible-target-background-color);
           content: " ";
           width: 100%;
@@ -371,7 +371,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           outline: var(--hax-body-editable-outline);
         }
         :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered),
-        :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered):before {
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered)::before {
           background-color: var(--hax-body-target-background-color) !important;
         }
         :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered) {
@@ -1095,7 +1095,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             });
           }
         });
-      } else if (this.__ignoreActive) {
+      }
+      // regardless, we just processed mutations, let's ensure we are not ignoring things
+      if (this.__ignoreActive) {
         this.__ignoreActive = false;
       }
       HAXStore.haxTray.updateMap();
@@ -3321,7 +3323,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // @see haxHooks activeElementChanged
     if (
       this.editMode &&
-      HAXStore.runHook(oldValue, "activeElementChanged", [oldValue, false])
+      (await HAXStore.runHook(oldValue, "activeElementChanged", [
+        oldValue,
+        false,
+      ]))
     ) {
       this.__ignoreActive = true;
     }
@@ -3329,7 +3334,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // @see haxHooks activeElementChanged
     if (
       this.editMode &&
-      HAXStore.runHook(newValue, "activeElementChanged", [newValue, true])
+      (await HAXStore.runHook(newValue, "activeElementChanged", [
+        newValue,
+        true,
+      ]))
     ) {
       this.__ignoreActive = true;
     }

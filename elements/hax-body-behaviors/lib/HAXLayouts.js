@@ -43,7 +43,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             opacity: 1;
           }
           :host([data-hax-ray]) .not-shown:hover::before {
-            content: "Hidden bylayout";
+            content: "Hidden by layout";
             position: sticky;
             display: inline-flex;
             background-color: black;
@@ -64,6 +64,12 @@ export const HaxLayoutBehaviors = function (SuperClass) {
                 var(--hax-layout-slotted-faded-color, #eeeeee)
               );
             outline-offset: var(--hax-layout-slotted-outline-offset, -2px);
+          }
+          :host([data-hax-ray])
+            ::slotted([contenteditable][data-hax-ray]:empty)::before {
+            content: attr(data-hax-ray);
+            opacity: 0.2;
+            transition: 0.2s all ease-in-out;
           }
           :host([data-hax-ray]) ::slotted(*:hover) {
             outline: var(--hax-layout-slotted-hover-outline-width, 1px)
@@ -90,7 +96,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
                 var(--hax-layout-slotted-faded-color, #eeeeee)
               );
           }
-          :host([data-hax-ray]) ::slotted(*.active):before {
+          :host([data-hax-ray]) ::slotted(*.active)::before {
             outline: var(--hax-layout-slotted-active-outline-width, 1px)
               var(--hax-layout-slotted-active-outline-style, solid)
               var(
@@ -107,7 +113,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             height: 10px;
           }
           :host([data-hax-ray]) ::slotted(img.active),
-          :host([data-hax-ray]) ::slotted(*.active):before {
+          :host([data-hax-ray]) ::slotted(*.active)::before {
             background-color: var(
               --hax-layout-slotted-active-outline-color,
               var(--hax-layout-accent-color, #009dc7)
@@ -285,6 +291,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
       };
     }
     _dragEnter(e) {
+      console.log(e.target);
       e.target.classList.add("active");
     }
     _dragLeave(e) {
