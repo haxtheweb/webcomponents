@@ -75,10 +75,7 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
           font-size: 16px;
           --simple-icon-width: var(--site-menu-button-icon-width, 32px);
           --simple-icon-height: var(--site-menu-button-icon-height, 32px);
-          --simple-icon-fill-color: var(
-            --site-menu-button-icon-fill-color,
-            black
-          );
+          color: var(--site-menu-button-icon-fill-color, black);
         }
         simple-tooltip {
           --simple-tooltip-background: var(
