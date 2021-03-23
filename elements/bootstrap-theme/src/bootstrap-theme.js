@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
+import { BootstrapUserStylesMenuMixin } from "@lrnwebcomponents/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js";
 import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
@@ -18,7 +19,7 @@ import { autorun, toJS } from "mobx";
  * @element bootstrap-theme
  */
 class BootstrapTheme extends HAXCMSThemeParts(
-  HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
+  BootstrapUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
 ) {
   /**
    * Convention we use
@@ -47,6 +48,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
             sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
             "Noto Color Emoji";
           --map-menu-item-a-color: var(--bootstrap-menu-item-a-color, #0d6efd);
+          --bootstrap-light-theme-color: #000000;
+          --bootstrap-light-theme-background-color: #ffffff;
+          --bootstrap-dark-theme-background-color: #000000;
+          --bootstrap-dark-theme-color: #ffffff;
+          --bootstrap-link-color: #0d6efd;
         }
         :host([hidden]) {
           display: none;
@@ -301,11 +307,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
         site-print-button,
         site-git-corner {
           color: var(--site-print-button-color, black);
-          --site-git-corner-background: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
+          --site-git-corner-background: var(--bootstrap-light-theme-color);
           --site-git-corner-color: var(
-            --haxcms-user-styles-color-theme-color-2
+            --bootstrap-light-theme-background-color
           );
           --simple-icon-fill-color: var(
             --haxcms-user-styles-color-theme-color-1
@@ -398,6 +402,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           width: auto;
           font-size: inherit;
         }
+        /* Light Theme */
         :host([color-theme="0"]) site-search {
           color: #252737;
           --site-search-result-background-color: transparent;
@@ -407,14 +412,70 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --site-search-link-color: #252737;
           --site-search-result-color: #252737;
         }
+        /* Dark Theme */
+        :host([color-theme="1"]) {
+          background-color: black;
+          --simple-fields-background-color: transparent;
+          --github-corner-background: white;
+          --map-menu-item-a-color: var(--bootstrap-dark-theme-color);
+          --haxcms-user-styles-color-theme-color-color: var(
+            --bootstrap-dark-theme-color
+          );
+          --hax-base-styles-a-color: var(--bootstrap-link-color);
+          --haxcms-tooltip-background-color: var(--bootstrap-dark-theme-color);
+          --haxcms-tooltip-color: var(--bootstrap-dark-theme-background-color);
+          --site-menu-button-icon-fill-color: white;
+        }
+
+        :host([color-theme="1"]) simple-fields-field {
+        }
+
+        :host([color-theme="1"]) site-menu-button {
+          --haxcms-tooltip-color: var(---bootstrap-dark-theme-color);
+          --haxcms-tooltip-background-color: var(--bootstrap-dark-theme-color);
+        }
+
+        :host([color-theme="1"]) .main-section {
+          color: var(--bootstrap-dark-theme-color);
+        }
+
+        :host([color-theme="1"]) #site-search-input {
+          background-color: #343a40;
+        }
+
+        :host([color-theme="1"]) site-git-corner {
+          --site-git-corner-background: var(--bootstrap-dark-theme-color);
+          --site-git-corner-color: var(--bootstrap-dark-theme-background-color);
+        }
+
+        :host([color-theme="1"]) .card {
+          background-color: #343a40;
+        }
+        :host([color-theme="1"]) .card h1 h2 h3 h4 h5 h6 p {
+          color: #fff;
+        }
+        :host([color-theme="1"]) .site-header .btn {
+          color: white;
+        }
+        :host([color-theme="1"]) .site-header .btn:hover,
+        :host([color-theme="1"]) .site-header .btn:focus,
+        :host([color-theme="1"]) .site-header .btn:active {
+          color: #fffff5;
+          background: none;
+        }
+
+        :host([color-theme="1"]) .site-header site-active-title {
+          color: #fff;
+        }
+
         :host([color-theme="1"]) site-search {
-          color: #704214;
+          color: var(--bootstrap-dark-theme-color);
           --site-search-result-background-color: transparent;
           --site-search-result-background-color-hover: transparent;
-          --site-search-link-color-hover: #704214;
-          --site-search-link-text-color: #704214;
-          --site-search-link-color: #704214;
-          --site-search-result-color: #704214;
+          --site-search-link-color-hover: var(--bootstrap-dark-theme-color);
+          --site-search-link-text-color: var(--bootstrap-dark-theme-color);
+          --site-search-link-color: var(--bootstrap-dark-theme-color);
+          --site-search-result-color: var(--bootstrap-dark-theme-color);
         }
         :host([color-theme="2"]) site-search {
           color: var(--simple-colors-default-theme-light-blue-1, #cfd4e3);
@@ -520,7 +581,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
               .part="${this.editMode ? `edit-mode-active` : ``}"
             >
               <div class="btn-container">
-                ${this.HAXCMSMobileMenuButton()} ${this.HAXCMSUserStylesMenu()}
+                ${this.HAXCMSMobileMenuButton()}
+                ${this.BootstrapUserStylesMenu()}
                 <div class="pull-right link-actions">
                   <site-print-button
                     class="btn js-toolbar-action"
@@ -543,7 +605,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                     ?hidden="${this.searchTerm != "" ? false : true}"
                   ></site-search>
                   <section
-                    class="card bg-white p-4"
+                    class="card p-4"
                     id="contentcontainer"
                     ?hidden="${this.searchTerm != "" ? true : false}"
                   >
