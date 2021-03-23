@@ -690,6 +690,7 @@ class HAXCMSSiteEditor extends LitElement {
       detail: {
         title: "Edit " + store.activeTitle + " fields",
         styles: {
+          "--simple-modal-z-index": "100000000",
           "--simple-modal-min-width": "75vw",
           "--simple-modal-min-height": "75vh",
         },

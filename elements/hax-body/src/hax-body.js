@@ -641,7 +641,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         target = target.closest("[contenteditable]");
       } else if (HAXStore.validTagList.includes(target.tagName.toLowerCase())) {
         // tagName is in the valid tag list so just let it get selected
-      } else if (target.tagName !== "HAX-BODY") {
+      } else if (target.tagName !== "HAX-BODY" && !target.haxUIElement) {
         // this is a usecase we didn't think of...
         console.warn(target);
       }
@@ -2822,6 +2822,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __applyNodeEditableState(node, status = true) {
     let listenerMethod;
+    // sanity check a dom node
+    if (!node.tagName) {
+      return false;
+    }
     // create the hax-ray x ray googles thing
     let haxRay = node.tagName.replace("-", " ").toLowerCase();
     let i = toJS(HAXStore.gizmoList).findIndex((j) => {

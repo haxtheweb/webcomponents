@@ -621,9 +621,13 @@ const RichTextEditorBehaviors = function (SuperClass) {
         let parent = el.parentNode;
         return parent ? shadowRoot(parent) : el;
       };
-      this.range = shadowRoot(this)
-        ? shadow.getRange(shadowRoot(this))
-        : undefined;
+      try {
+        this.range = shadowRoot(this)
+          ? shadow.getRange(shadowRoot(this))
+          : undefined;
+      } catch (e) {
+        this.range = undefined;
+      }
       if (this.updateRange) this.updateRange();
       return this.range;
     }

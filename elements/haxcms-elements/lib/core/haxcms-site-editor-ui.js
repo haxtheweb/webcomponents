@@ -705,6 +705,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       detail: {
         title: "Add a new page",
         styles: {
+          "--simple-modal-z-index": "100000000",
           "--simple-modal-width": "50vw",
           "--simple-modal-max-width": "50vw",
           "--simple-modal-height": "40vh",
@@ -792,6 +793,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       detail: {
         title: "Are you sure you want to delete this page?",
         styles: {
+          "--simple-modal-z-index": "100000000",
           "--simple-modal-min-width": "30vw",
           "--simple-modal-min-height": "30vh",
         },
@@ -830,6 +832,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         styles: {
           "--simple-modal-width": "70vw",
           "--simple-modal-max-width": "70vw",
+          "--simple-modal-z-index": "100000000",
           "--simple-modal-height": "70vh",
           "--simple-modal-max-height": "70vh",
         },
