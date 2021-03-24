@@ -167,6 +167,10 @@
  *   activeElementChanged : "haxactiveElementChanged", // input (activeElement, value) where value is if the element is active
  *   // @see @lrnwebcomponents/retro-card/retro-card.js
  *   editModeChanged : "haxeditModeChanged", // input (value) where value is state of body being in editMode
+ *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js
+ *   inlineContextMenu: "haxinlineContextMenu", // this allows for adding buttons dynamically to the editor in context
+ *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js
+ *   gizmoRegistration: "haxgizmoRegistration", // this lets you rewrite the store when the element is exposed to HAX
  *   // @see @lrnwebcomponents/code-editor/code-editor.js
  *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js
  *   preProcessNodeToContent : "haxpreProcessNodeToContent", // input (node) where node is the item about to be converted to content for export
