@@ -7,6 +7,7 @@ class BootstrapSearch extends LitElement {
     super();
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
+    this.searchText = "";
   }
 
   static get tag() {
@@ -19,6 +20,9 @@ class BootstrapSearch extends LitElement {
         type: String,
         reflect: true,
         attribute: "color-theme",
+      },
+      searchText: {
+        type: String,
       },
     };
   }
@@ -36,9 +40,23 @@ class BootstrapSearch extends LitElement {
           type="search"
           placeholder="Type to search"
           aria-label="Search"
+          @input=${this.inputChanged}
         />
       </form>
     `;
+  }
+
+  inputChanged(evt) {
+    if (evt.target.value) {
+      this.searchText = evt.target.value;
+      this.dispatchEvent(
+        new CustomEvent("searchChanged", {
+          bubbles: true,
+          composed: true,
+          detail: this,
+        })
+      );
+    }
   }
 
   getBasePath(url) {

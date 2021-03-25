@@ -543,6 +543,17 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
     this._themeElements = [];
     this.colorTheme = "0";
+    this.searchTerm = "";
+    // event listener for search changed
+    this.addEventListener("searchChanged", (evt) => {
+      if (evt.detail.searchText) {
+        import(
+          "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+        ).then(() => {
+          this.searchTerm = evt.detail.searchText;
+        });
+      }
+    });
     // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
@@ -620,12 +631,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
               </bootstrap-breadcrumb>
               <article class="main-content page-inner">
                 <div class="normal main-section">
-                  <!-- <site-search
+                  <site-search
                     hide-input
                     search="${this.searchTerm}"
                     ?hidden="${this.searchTerm != "" ? false : true}"
-                  ></site-search> -->
-
+                  ></site-search>
                   <section
                     class="card p-4"
                     id="contentcontainer"

@@ -35,8 +35,8 @@ class BootstrapMenu extends LitElement {
   static get styles() {
     return [
       css`
-        ul {
-          list-style-type: none;
+        :host {
+          --simple-icon-color: #007bff;
         }
 
         .indent-0 {
@@ -52,6 +52,10 @@ class BootstrapMenu extends LitElement {
         .indent-6 {
           padding-left: 32px;
         }
+
+        simple-icon-lite {
+          transform: rotate(270deg);
+        }
       `,
     ];
   }
@@ -63,13 +67,11 @@ class BootstrapMenu extends LitElement {
       ${this._manifestItems.map((item) => {
         if (item.parent === null) {
           return html`
-            <ul>
-              <li class="indent-${item.indent}">
-                <simple-icon-lite icon="arrow-drop-down"> </simple-icon-lite>
-                <a href="${item.slug}"> ${item.title} </a>
-              </li>
-              ${item.children ? this.renderChildren(item) : ``}
-            </ul>
+            <div class="indent-${item.indent}">
+              <simple-icon-lite icon="arrow-drop-down"> </simple-icon-lite>
+              <a href="${item.slug}"> ${item.title} </a>
+            </div>
+            ${item.children ? this.renderChildren(item) : ``}
           `;
         }
       })}
@@ -83,9 +85,9 @@ class BootstrapMenu extends LitElement {
           this.renderChildren(item);
         } else {
           return html`
-            <li class="indent-${item.indent}">
+            <div class="indent-${item.indent}">
               <a href="${item.slug}"> ${item.title} </a>
-            </li>
+            </div>
           `;
         }
       })}
