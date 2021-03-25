@@ -10,6 +10,11 @@ import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+// bootstrap elements imports
+import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapBreadcrumb.js";
+import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapFooter.js";
+import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapMenu.js";
+import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapSearch.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 /**
@@ -51,6 +56,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --bootstrap-light-theme-color: #000000;
           --bootstrap-light-theme-background-color: #ffffff;
           --bootstrap-dark-theme-background-color: #000000;
+          --bootstrap-dark-theme-secondary-background-color: #343a40;
           --bootstrap-dark-theme-color: #ffffff;
           --bootstrap-link-color: #0d6efd;
         }
@@ -440,7 +446,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
         }
 
         :host([color-theme="1"]) #site-search-input {
-          background-color: #343a40;
+          background-color: var(
+            --bootstrap-dark-theme-secondary-background-color
+          );
         }
 
         :host([color-theme="1"]) site-git-corner {
@@ -449,7 +457,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
         }
 
         :host([color-theme="1"]) .card {
-          background-color: #343a40;
+          background-color: var(
+            --bootstrap-dark-theme-secondary-background-color
+          );
         }
         :host([color-theme="1"]) .card h1 h2 h3 h4 h5 h6 p {
           color: #fff;
@@ -513,6 +523,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
         attribute: "menu-open",
         reflect: true,
       },
+      colorTheme: {
+        type: String,
+        attribute: "color-theme",
+        reflect: true,
+      },
     };
   }
 
@@ -527,6 +542,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
     this._themeElements = [];
+    this.colorTheme = "0";
     // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
@@ -561,15 +577,18 @@ class BootstrapTheme extends HAXCMSThemeParts(
       <div class="site container-fluid">
         <div class="menu-outline">
           <div id="site-search-input" role="search">
-            <input
+            <!-- <input
               type="text"
               aria-label="Search site content"
               placeholder="Type to search"
               .value="${this.searchTerm}"
               id="search"
               @input="${this.searchChanged}"
-            />
-            ${this.HAXCMSMobileMenu()}
+            /> -->
+            <bootstrap-search
+              color-theme="${this.colorTheme}"
+            ></bootstrap-search>
+            <bootstrap-menu color-theme="${this.colorTheme}"> </bootstrap-menu>
           </div>
         </div>
         <div id="body" class="site-body">
@@ -597,13 +616,16 @@ class BootstrapTheme extends HAXCMSThemeParts(
               <site-active-title></site-active-title>
             </header>
             <main class="page-wrapper" role="main">
+              <bootstrap-breadcrumb color-theme="${this.colorTheme}">
+              </bootstrap-breadcrumb>
               <article class="main-content page-inner">
                 <div class="normal main-section">
-                  <site-search
+                  <!-- <site-search
                     hide-input
                     search="${this.searchTerm}"
                     ?hidden="${this.searchTerm != "" ? false : true}"
-                  ></site-search>
+                  ></site-search> -->
+
                   <section
                     class="card p-4"
                     id="contentcontainer"
@@ -617,16 +639,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
               </article>
             </main>
             <footer>
-              <site-menu-button
-                type="prev"
-                position="right"
-                class="navigation"
-              ></site-menu-button>
-              <site-menu-button
-                type="next"
-                position="left"
-                class="navigation"
-              ></site-menu-button>
+              <bootstrap-footer color-theme="${this.colorTheme}">
+              </bootstrap-footer>
             </footer>
           </div>
         </div>
