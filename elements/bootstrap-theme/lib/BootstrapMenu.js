@@ -39,6 +39,11 @@ class BootstrapMenu extends LitElement {
           --simple-icon-color: #007bff;
         }
 
+        .bullet {
+          --simple-icon-height: 10px;
+          --simple-icon-width: 10px;
+        }
+
         .indent-0 {
           padding-left: 0px;
         }
@@ -56,6 +61,14 @@ class BootstrapMenu extends LitElement {
         simple-icon-lite {
           transform: rotate(270deg);
         }
+        /* dark theme */
+        :host([color-theme="1"]) {
+          --simple-icon-color: #999;
+        }
+
+        :host([color-theme="1"]) .link {
+          color: #999;
+        }
       `,
     ];
   }
@@ -68,8 +81,15 @@ class BootstrapMenu extends LitElement {
         if (item.parent === null) {
           return html`
             <div class="indent-${item.indent}">
-              <simple-icon-lite icon="arrow-drop-down"> </simple-icon-lite>
-              <a href="${item.slug}"> ${item.title} </a>
+              ${item.children
+                ? html`<simple-icon-lite
+                    icon="arrow-drop-down"
+                  ></simple-icon-lite>`
+                : html`<simple-icon-lite
+                    class="bullet"
+                    icon="radio-button-unchecked"
+                  ></simple-icon-lite>`}
+              <a class="link" href="${item.slug}"> ${item.title} </a>
             </div>
             ${item.children ? this.renderChildren(item) : ``}
           `;
@@ -86,7 +106,7 @@ class BootstrapMenu extends LitElement {
         } else {
           return html`
             <div class="indent-${item.indent}">
-              <a href="${item.slug}"> ${item.title} </a>
+              <a class="link" href="${item.slug}"> ${item.title} </a>
             </div>
           `;
         }

@@ -83,7 +83,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
         /* main content */
         .menu-outline {
-          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
           position: absolute;
           top: 0;
           left: -300px;
@@ -172,9 +172,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
           font-size: inherit;
         }
 
-        main-content h2 {
+        .main-content h2 {
           font-size: 1.75em;
+          font-family: Roboto;
         }
+
         .main-content h3 {
           font-size: 1.5em;
         }
