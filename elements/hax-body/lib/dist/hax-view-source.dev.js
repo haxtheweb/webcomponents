@@ -476,7 +476,7 @@ var HaxViewSource =
         },
         {
           key: "updateEditor",
-          value: function updateEditor() {
+          value: async function updateEditor() {
             if (
               _haxStore.HAXStore.activeHaxBody &&
               this.shadowRoot &&
@@ -484,7 +484,7 @@ var HaxViewSource =
             ) {
               this.shadowRoot.querySelector("#textarea").editorValue = (0,
               _utils.formatHTML)(
-                _haxStore.HAXStore.activeHaxBody.haxToContent()
+                await _haxStore.HAXStore.activeHaxBody.haxToContent()
               );
             }
           },
@@ -494,8 +494,8 @@ var HaxViewSource =
         },
         {
           key: "contentToFile",
-          value: function contentToFile(full) {
-            var body = _haxStore.HAXStore.activeHaxBody.haxToContent();
+          value: async function contentToFile(full) {
+            var body = await _haxStore.HAXStore.activeHaxBody.haxToContent();
 
             var content = body; // if you want full HTML headers or not
 

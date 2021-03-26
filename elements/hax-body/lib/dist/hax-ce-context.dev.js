@@ -347,7 +347,7 @@ var HaxCeContext =
         },
         {
           key: "handleCECustomEvent",
-          value: function handleCECustomEvent(e) {
+          value: async function handleCECustomEvent(e) {
             var detail = e.detail; // support a simple insert event to bubble up or everything else
 
             switch (detail.eventName) {
@@ -357,7 +357,7 @@ var HaxCeContext =
                   typeof this.activeNode[detail.value] === "function"
                 ) {
                   if (this.activeNode[detail.value](e)) {
-                    _haxStore.HAXStore.refreshActiveNodeForm();
+                    await _haxStore.HAXStore.refreshActiveNodeForm();
                   }
                 }
 
@@ -400,7 +400,7 @@ var HaxCeContext =
         },
         {
           key: "_resetCEMenu",
-          value: function _resetCEMenu() {
+          value: async function _resetCEMenu() {
             if (this.shadowRoot) {
               (0, _utils.wipeSlot)(this, "*");
             } // reset buttons in-case this element has new ones
@@ -431,9 +431,11 @@ var HaxCeContext =
               this.activeTagIcon = "";
             } // @see haxHook inlineContextMenu
 
-            _haxStore.HAXStore.runHook(this.activeNode, "inlineContextMenu", [
-              this,
-            ]);
+            await _haxStore.HAXStore.runHook(
+              this.activeNode,
+              "inlineContextMenu",
+              [this]
+            );
           },
         },
       ],

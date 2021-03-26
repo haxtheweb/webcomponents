@@ -194,14 +194,14 @@ class MemeMaker extends LitElement {
     ${this.bottomText ? `<div>${this.bottomText}</div>` : ""}`;
   }
   /**
-   * Attached to the DOM, now fire.
+   * haxProperties integration via file reference
    */
   static get haxProperties() {
     return (
       decodeURIComponent(import.meta.url) +
-      "/../lib/meme-maker.haxProperties.json"
+      `/../lib/${this.tag}.haxProperties.json`
     );
   }
 }
-window.customElements.define(MemeMaker.tag, MemeMaker);
+customElements.define(MemeMaker.tag, MemeMaker);
 export { MemeMaker };

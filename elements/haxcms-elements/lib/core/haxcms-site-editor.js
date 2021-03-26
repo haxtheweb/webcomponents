@@ -1162,10 +1162,10 @@ class HAXCMSSiteEditor extends LitElement {
    * Save node event
    */
 
-  saveNode(e) {
+  async saveNode(e) {
     // send the request
     if (this.saveNodePath) {
-      let body = HAXStore.activeHaxBody.haxToContent();
+      let body = await HAXStore.activeHaxBody.haxToContent();
       this.querySelector("#nodeupdateajax").body = {
         jwt: this.jwt,
         site: {

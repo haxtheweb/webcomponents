@@ -108,9 +108,9 @@ class HaxMap extends I18NMixin(LitElement) {
       namespace: "hax",
     });
   }
-  updateHAXMap(e) {
+  async updateHAXMap(e) {
     let list = HAXStore.htmlToHaxElements(
-      HAXStore.activeHaxBody.haxToContent()
+      await HAXStore.activeHaxBody.haxToContent()
     );
     this.calcStats(list);
     let elements = [];

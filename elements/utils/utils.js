@@ -538,7 +538,7 @@ function objectValFromStringPos(o, s, r = null) {
  * a certain level of sanitization by verifying tags and
  * properties / attributes that have values.
  */
-function nodeToHaxElement(node, eventName = "insert-element") {
+async function nodeToHaxElement(node, eventName = "insert-element") {
   if (!node) {
     return null;
   }
@@ -635,7 +635,7 @@ function nodeToHaxElement(node, eventName = "insert-element") {
   if (window.HaxStore.instance._isSandboxed && tag === "iframe") {
     tag = "webview";
   }
-  let slotContent = window.HaxStore.instance.getHAXSlot(node);
+  let slotContent = await window.HaxStore.instance.getHAXSlot(node);
   // support fallback on inner text if there were no nodes
   if (slotContent == "") {
     slotContent = node.innerText;

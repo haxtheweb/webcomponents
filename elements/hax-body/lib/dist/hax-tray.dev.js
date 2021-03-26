@@ -1135,10 +1135,10 @@ var HaxTray =
               );
             }
 
-            changedProperties.forEach(function (oldValue, propName) {
+            changedProperties.forEach(async function (oldValue, propName) {
               if (propName == "editMode") {
                 if (_this3.editMode) {
-                  _haxStore.HAXStore.refreshActiveNodeForm();
+                  await _haxStore.HAXStore.refreshActiveNodeForm();
                 }
 
                 _this3._editModeChanged(_this3.editMode);

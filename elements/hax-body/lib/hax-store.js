@@ -1151,7 +1151,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * Intercept paste event and clean it up before inserting the contents
    */
-  _onPaste(e) {
+  async _onPaste(e) {
     if (
       this.editMode &&
       document.activeElement.tagName !== "HAX-TRAY" &&
@@ -1358,7 +1358,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               .trim(),
             properties: haxElements[i].properties,
           });
-          newContent += this.nodeToContent(node);
+          newContent += await this.nodeToContent(node);
         }
       }
       // if we got here then we have HTML structures to pull together
@@ -2249,16 +2249,18 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * Insert content in the body.
    */
-  _haxStoreInsertContent(e) {
+  async _haxStoreInsertContent(e) {
     if (e.detail) {
       let details = e.detail;
       if (window.customElements.get(details.tag)) {
         let prototypeNode = document.createElement(details.tag);
         // @see haxHooks: preProcessInsertContent
         if (this.testHook(prototypeNode, "preProcessInsertContent")) {
-          details = this.runHook(prototypeNode, "preProcessInsertContent", [
-            details,
-          ]);
+          details = await this.runHook(
+            prototypeNode,
+            "preProcessInsertContent",
+            [details]
+          );
         }
       }
       var properties = {};
@@ -2513,7 +2515,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * Convert HTML into HAX Elements
    */
-  htmlToHaxElements(html) {
+  async htmlToHaxElements(html) {
     let elements = [];
     const validTags = this.validTagList;
     let fragment = document.createElement("div");
@@ -2526,7 +2528,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         typeof children[i].tagName !== typeof undefined &&
         validTags.includes(children[i].tagName.toLowerCase())
       ) {
-        elements.push(nodeToHaxElement(children[i], null));
+        elements.push(await nodeToHaxElement(children[i], null));
       }
     }
     return elements;
@@ -2535,10 +2537,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * Convert a node to the correct content object for saving.
    * This DOES NOT acccept a HAXElement which is similar
    */
-  nodeToContent(node) {
+  async nodeToContent(node) {
     // @see haxHooks: preProcessNodeToContent
     if (this.testHook(node, "preProcessNodeToContent")) {
-      node = this.runHook(node, "preProcessNodeToContent", [node]);
+      node = await this.runHook(node, "preProcessNodeToContent", [node]);
     }
     let tag = node.tagName.toLowerCase();
     // support sandboxed environments which
@@ -2746,7 +2748,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               !this.HTMLPrimativeTest(slotnodes[j].tagName) &&
               slotnodes[j].tagName !== "TEMPLATE"
             ) {
-              content += this.nodeToContent(slotnodes[j]);
+              content += await this.nodeToContent(slotnodes[j]);
             } else {
               slotnodes[j].removeAttribute("data-hax-ray");
               slotnodes[j].contentEditable = false;
@@ -2771,7 +2773,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
     // @see haxHooks: progressiveEnhancement
     if (this.testHook(node, "progressiveEnhancement")) {
-      content += this.runHook(node, "progressiveEnhancement", [node]);
+      content += await this.runHook(node, "progressiveEnhancement", [node]);
     }
     // don't put return for span since it's an inline tag
     if (tag === "span") {
@@ -2825,7 +2827,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       .join("\n");
     // @see haxHooks: postProcessNodeToContent
     if (this.testHook(node, "postProcessNodeToContent")) {
-      content = this.runHook(node, "postProcessNodeToContent", [content]);
+      content = await this.runHook(node, "postProcessNodeToContent", [content]);
     }
     return content;
   }
@@ -2862,8 +2864,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * refresh / rebuild the form based on active item
    */
-  refreshActiveNodeForm() {
-    this.haxTray.activeHaxElement = nodeToHaxElement(
+  async refreshActiveNodeForm() {
+    this.haxTray.activeHaxElement = await nodeToHaxElement(
       this.haxTray.activeNode,
       null
     );
@@ -2883,7 +2885,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * Slot content w/ support for custom elements in slot.
    */
-  getHAXSlot(node) {
+  async getHAXSlot(node) {
     // we can skip all of this if we have a text element / HTML prim!
     if (this.isTextElement(node)) {
       return node.innerHTML;
@@ -2898,7 +2900,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           // if we're a custom element, keep digging, otherwise a simple
           // self append is fine.
           if (slotnodes[j].tagName.indexOf("-") > 0) {
-            content += "  " + this.nodeToContent(slotnodes[j]) + "\n";
+            content += "  " + (await this.nodeToContent(slotnodes[j])) + "\n";
           } else {
             content += "  " + slotnodes[j].outerHTML + "\n";
           }
@@ -3112,8 +3114,8 @@ window.Hax.get = function (key) {
   return HAXStore[key];
 };
 
-window.Hax.export = function () {
-  return HAXStore.activeHaxBody.haxToContent();
+window.Hax.export = async function () {
+  return await HAXStore.activeHaxBody.haxToContent();
 };
 
 window.Hax.import = function (htmlContent = "<p></p>") {

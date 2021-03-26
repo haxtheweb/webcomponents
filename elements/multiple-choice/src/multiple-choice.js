@@ -21,6 +21,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       css`
         :host {
           display: block;
+          min-width: 160px;
           padding: 16px 16px 54px 16px;
           color: var(--simple-colors-default-theme-grey-12);
           --simple-fields-field-color: var(
@@ -97,10 +98,19 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           margin: 0;
         }
         ul li {
-          padding: 8px;
+          padding: 0;
         }
         simple-fields-field {
           padding: 8px;
+          margin: 2px;
+        }
+        simple-fields-field::part(option-inner) {
+          position: absolute;
+          right: 0px;
+          bottom: 50%;
+          top: 50%;
+          padding: 0px;
+          margin: 0px;
         }
         simple-icon {
           display: inline-flex;
@@ -129,6 +139,21 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     this.incorrectText = "Better luck next time!";
     this.incorrectIcon = "icons:thumb-down";
     this.quizName = "default";
+    // check lightdom on setup for answers to be read in
+    // this only happens on initial paint
+    if (this.children.length > 0) {
+      let inputs = Array.from(this.querySelectorAll("input"));
+      let answers = [];
+      for (var i in inputs) {
+        let answer = {
+          label: inputs[i].value,
+          correct: inputs[i].getAttribute("correct") == null ? false : true,
+        };
+        answers.push(answer);
+      }
+      this.answers = answers;
+      this.innerHTML = "";
+    }
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -149,7 +174,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           })
         );
       }
-      if (["answers", "randomize"].includes(propName)) {
+      if (propName == "answers" && this.answers.length > 0) {
         this.displayedAnswers = [
           ...this._computeDisplayedAnswers(this.answers, this.randomize),
         ];
@@ -478,147 +503,14 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       return answers;
     }
   }
+  /**
+   * Attached to the DOM, now fire.
+   */
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Multiple choice",
-        description: "Multiple choice self check",
-        icon: "hax:multiple-choice",
-        color: "purple",
-        groups: ["Instructional"],
-        handles: [],
-        meta: {
-          author: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-          },
-          {
-            property: "hideTitle",
-            title: "Hide title",
-            description: "Whether or not to display the title",
-            inputMethod: "boolean",
-          },
-          {
-            property: "question",
-            title: "Question",
-            description: "Question for users to respond to.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "randomize",
-            title: "Randomize",
-            description: "Randomize the answers dynamically",
-            inputMethod: "boolean",
-          },
-          {
-            property: "answers",
-            title: "Answer set",
-            description: "Answers in a multiple choice",
-            inputMethod: "array",
-            itemLabel: "label",
-            properties: [
-              {
-                property: "correct",
-                title: "Correct",
-                description: "If this is correct or not",
-                inputMethod: "boolean",
-              },
-              {
-                property: "label",
-                title: "Answer",
-                description: "Possible answer to the question",
-                inputMethod: "textfield",
-                required: true,
-              },
-            ],
-          },
-          {
-            property: "correctText",
-            title: "Correct feedback",
-            description: "Feedback when they get it right",
-            inputMethod: "textfield",
-          },
-          {
-            property: "correctIcon",
-            title: "Correct icon",
-            description: "Icon to display when correct answer happens",
-            inputMethod: "iconpicker",
-            options: [
-              "icons:trending-flat",
-              "icons:launch",
-              "icons:pan-tool",
-              "icons:link",
-              "icons:check",
-              "icons:favorite",
-              "icons:thumb-up",
-              "icons:thumb-down",
-              "icons:send",
-            ],
-          },
-          {
-            property: "incorrectText",
-            title: "Incorrect feedback",
-            description: "Feedback when they get it wrong",
-            inputMethod: "textfield",
-          },
-          {
-            property: "incorrectIcon",
-            title: "Incorrect icon",
-            description: "Icon to display when wrong answer happens",
-            inputMethod: "iconpicker",
-            options: [
-              "icons:trending-flat",
-              "icons:launch",
-              "icons:pan-tool",
-              "icons:link",
-              "icons:check",
-              "icons:favorite",
-              "icons:thumb-up",
-              "icons:thumb-down",
-              "icons:send",
-            ],
-          },
-          {
-            property: "quizName",
-            title: "Name of the quiz",
-            description: "Quiz name passed in",
-            inputMethod: "textfield",
-          },
-        ],
-        advanced: [
-          {
-            property: "checkLabel",
-            title: "Check answers label",
-            description: "Label for getting solution feedback",
-            inputMethod: "textfield",
-          },
-          {
-            property: "resetLabel",
-            title: "Reset label",
-            description: "label for the reset button",
-            inputMethod: "textfield",
-          },
-        ],
-      },
-      saveOptions: {
-        unsetAttributes: [
-          "__utils",
-          "displayed-answers",
-          "displayedAnswers",
-          "colors",
-        ],
-      },
-    };
+    return (
+      decodeURIComponent(import.meta.url) +
+      `/../lib/${this.tag}.haxProperties.json`
+    );
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.
@@ -627,8 +519,21 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     return {
       preProcessNodeToContent: "haxpreProcessNodeToContent",
       preProcessInsertContent: "haxpreProcessInsertContent",
+      progressiveEnhancement: "haxprogressiveEnhancement",
       inlineContextMenu: "haxinlineContextMenu",
     };
+  }
+  /**
+   * Hook for HAX to support progressive enhancement and return a string
+   * to place in the slot of this tag. This helps make it a lot easier
+   * to maintain complex data between page saves
+   */
+  haxprogressiveEnhancement(el) {
+    return `${el.answers.map((answer) => {
+      return `<input type="checkbox" value="${answer.label}" ${
+        answer.correct ? `correct` : ``
+      } />`;
+    })}`;
   }
   /**
    * add buttons when it is in context

@@ -219,20 +219,20 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     HAXStore.toast(this.t.copiedToClipboard);
   }
 
-  firstUpdated(changedProperties) {
+  async firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.updateEditor();
+    await this.updateEditor();
   }
-  updateEditor() {
+  async updateEditor() {
     if (
       HAXStore.activeHaxBody &&
       this.shadowRoot &&
       this.shadowRoot.querySelector("#textarea")
     ) {
       this.shadowRoot.querySelector("#textarea").editorValue = formatHTML(
-        HAXStore.activeHaxBody.haxToContent()
+        await HAXStore.activeHaxBody.haxToContent()
       );
     }
   }
@@ -240,8 +240,8 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   /**
    * Output entire thing as a file.
    */
-  contentToFile(full) {
-    let body = HAXStore.activeHaxBody.haxToContent();
+  async contentToFile(full) {
+    let body = await HAXStore.activeHaxBody.haxToContent();
     var content = body;
     // if you want full HTML headers or not
     if (full) {

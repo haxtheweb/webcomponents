@@ -190,7 +190,7 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   /**
    * HAX properties changed, update buttons available.
    */
-  _resetCEMenu() {
+  async _resetCEMenu() {
     if (this.shadowRoot) {
       wipeSlot(this, "*");
     }
@@ -215,7 +215,7 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       this.activeTagIcon = "";
     }
     // @see haxHook inlineContextMenu
-    HAXStore.runHook(this.activeNode, "inlineContextMenu", [this]);
+    await HAXStore.runHook(this.activeNode, "inlineContextMenu", [this]);
   }
 }
 window.customElements.define(HaxCeContext.tag, HaxCeContext);

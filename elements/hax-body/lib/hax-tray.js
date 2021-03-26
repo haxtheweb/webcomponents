@@ -3,8 +3,6 @@ import {
   winEventsElement,
   camelCaseToDash,
   wipeSlot,
-  nodeToHaxElement,
-  haxElementToNode,
   normalizeEventPath,
 } from "@lrnwebcomponents/utils/utils.js";
 import {
@@ -1220,14 +1218,14 @@ class HaxTray extends I18NMixin(
   /**
    * LitElement properties changed
    */
-  updated(changedProperties) {
+  async updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    changedProperties.forEach((oldValue, propName) => {
+    changedProperties.forEach(async (oldValue, propName) => {
       if (propName == "editMode") {
         if (this.editMode) {
-          HAXStore.refreshActiveNodeForm();
+          await HAXStore.refreshActiveNodeForm();
         }
         this._editModeChanged(this.editMode);
       }
@@ -1265,7 +1263,7 @@ class HaxTray extends I18NMixin(
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
           if (this.editMode) {
-            HAXStore.refreshActiveNodeForm();
+            await HAXStore.refreshActiveNodeForm();
           }
         } else {
           this.activeTagName = "";
