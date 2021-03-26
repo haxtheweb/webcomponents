@@ -218,20 +218,20 @@ class WysiwygHax extends LitElement {
     }
     super.disconnectedCallback();
   }
-  __saveClicked(e) {
+  async __saveClicked(e) {
     HAXStore.skipExitTrap = true;
     if (HAXStore.editMode) {
       HAXStore.editMode = false;
     }
     // will attempt to set this right before save goes out the door
-    this.bodyValue = HAXStore.activeHaxBody.haxToContent();
+    this.bodyValue = await HAXStore.activeHaxBody.haxToContent();
   }
 
   /**
    * Set the bubbled up event to the body value that just got changed
    */
-  _bodyContentUpdated(e) {
-    this.bodyValue = HAXStore.activeHaxBody.haxToContent();
+  async _bodyContentUpdated(e) {
+    this.bodyValue = await HAXStore.activeHaxBody.haxToContent();
     setTimeout(() => {
       if (this.saveButtonSelector) {
         this.saveButtonSelector.click();

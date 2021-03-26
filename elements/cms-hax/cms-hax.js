@@ -352,10 +352,10 @@ class CmsHax extends LitElement {
     super.disconnectedCallback();
   }
 
-  __applyMO() {
+  async __applyMO() {
     // notice ANY change to body and bubble up, only when we are attached though
     if (!this._observer && this.syncBody && HAXStore.activeHaxBody) {
-      this._observer = new MutationObserver((mutations) => {
+      this._observer = new MutationObserver(async (mutations) => {
         if (!this.__lock) {
           this.__lock = true;
           this.dispatchEvent(
@@ -363,7 +363,7 @@ class CmsHax extends LitElement {
               bubbles: true,
               cancelable: true,
               composed: true,
-              detail: HAXStore.activeHaxBody.haxToContent(),
+              detail: await HAXStore.activeHaxBody.haxToContent(),
             })
           );
           setTimeout(() => {
@@ -396,7 +396,7 @@ class CmsHax extends LitElement {
   /**
    * _saveFired
    */
-  _saveFired(e) {
+  async _saveFired(e) {
     // generate sanitized content
     if (this.endPoint) {
       HAXStore.skipExitTrap = true;
@@ -405,7 +405,7 @@ class CmsHax extends LitElement {
       }
       this.shadowRoot.querySelector(
         "#pageupdateajax"
-      ).body = HAXStore.activeHaxBody.haxToContent();
+      ).body = await HAXStore.activeHaxBody.haxToContent();
       // send the request
       this.shadowRoot.querySelector("#pageupdateajax").generateRequest();
     }

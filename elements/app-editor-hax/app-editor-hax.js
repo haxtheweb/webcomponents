@@ -53,9 +53,9 @@ class AppEditorHax extends LitElement {
   /**
    * Basic save event to make targetting easier.
    */
-  save() {
+  async save() {
     // convert the body area to content
-    let content = HAXStore.activeHaxBody.haxToContent();
+    let content = await HAXStore.activeHaxBody.haxToContent();
     // fire event so apps can react correctly
     this.dispatchEvent(
       new CustomEvent("app-editor-hax-save", {
