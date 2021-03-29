@@ -78,11 +78,9 @@ class BootstrapBreadcrumb extends LitElement {
     return {
       items: {
         type: Array,
-        reflect: true,
       },
       homeItem: {
         type: Object,
-        reflect: true,
       },
       colorTheme: {
         type: String,

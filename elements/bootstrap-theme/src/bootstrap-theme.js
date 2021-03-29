@@ -8,6 +8,7 @@ import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { BootstrapUserStylesMenuMixin } from "@lrnwebcomponents/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js";
 import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import "@lrnwebcomponents/map-menu/map-menu.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 // bootstrap elements imports
@@ -38,8 +39,31 @@ class BootstrapTheme extends HAXCMSThemeParts(
       ...super.styles,
       css`
         :host {
+          --map-menu-item-a-color: var(--bootstrap-menu-item-a-color, #0d6efd);
+          --bootstrap-light-theme-color: #000000;
+          --bootstrap-light-theme-background-color: #ffffff;
+          --bootstrap-light-theme-secondary-background-color: rgb(
+            242,
+            244,
+            244
+          );
+          --bootstrap-dark-theme-background-color: #000000;
+          --bootstrap-dark-theme-secondary-background-color: #343a40;
+          --bootstrap-dark-theme-color: #ffffff;
+          --bootstrap-link-color: #0d6efd;
+          --site-menu-background-color: var(
+            --bootstrap-light-theme-secondary-background-color
+          );
+          --bootstrap-theme-font-families: system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+            "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+            "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+          --bootstrap-theme-sans-serif-fonts: "Helvetica Neue", Helvetica, Arial,
+            sans-serif;
           display: block;
-          background-color: rgb(242, 244, 244);
+          background-color: var(
+            --bootstrap-light-theme-secondary-background-color
+          );
           width: 100%;
           display: flex;
           padding: 0;
@@ -52,13 +76,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
             Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
             sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
             "Noto Color Emoji";
-          --map-menu-item-a-color: var(--bootstrap-menu-item-a-color, #0d6efd);
-          --bootstrap-light-theme-color: #000000;
-          --bootstrap-light-theme-background-color: #ffffff;
-          --bootstrap-dark-theme-background-color: #000000;
-          --bootstrap-dark-theme-secondary-background-color: #343a40;
-          --bootstrap-dark-theme-color: #ffffff;
-          --bootstrap-link-color: #0d6efd;
+          --haxcms-base-styles-body-font-family: Roboto;
         }
         :host([hidden]) {
           display: none;
@@ -81,10 +99,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
           overflow-x: auto;
         }
 
-        /* main content */
         .menu-outline {
           /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
-          position: absolute;
+          position: relative;
           top: 0;
           left: -300px;
           bottom: 0;
@@ -92,12 +109,17 @@ class BootstrapTheme extends HAXCMSThemeParts(
           overflow-y: auto;
           width: 300px;
           color: #364149;
-          background: #fafafa;
+          background-color: var(
+            --bootstrap-light-theme-secondary-background-color
+          );
           border-right: 1px solid rgba(0, 0, 0, 0.07);
           transition: left 250ms ease;
         }
+        /* main content */
         .site {
-          background-color: rgb(242, 244, 244);
+          background-color: var(
+            --bootstrap-light-theme-secondary-background-color
+          );
         }
         .site-body {
           position: absolute;
@@ -382,34 +404,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         .site-header site-active-title h1:hover {
           opacity: 1;
         }
-        /* site search stuff */
-        #site-search-input {
-          padding: 6px;
-          background: 0 0;
-          transition: top 0.5s ease;
-          background: #fff;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-          border-top: 1px solid rgba(0, 0, 0, 0.07);
-          margin-bottom: 10px;
-          margin-top: -1px;
-        }
-        #site-search-input input,
-        #site-search-input input:focus,
-        #site-search-input input:hover {
-          width: 100%;
-          background: 0 0;
-          border: 1px solid transparent;
-          box-shadow: none;
-          outline: 0;
-          line-height: 22px;
-          padding: 7px 7px;
-          color: inherit;
-        }
-        site-search {
-          height: auto;
-          width: auto;
-          font-size: inherit;
-        }
+
         /* Light Theme */
         :host([color-theme="0"]) site-search {
           color: #252737;
@@ -546,6 +541,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this._themeElements = [];
     this.colorTheme = "0";
     this.searchTerm = "";
+    this.siteTitle = "";
     // event listener for search changed
     this.addEventListener("searchChanged", (evt) => {
       if (evt.detail.searchText) {
@@ -579,6 +575,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
+      this.siteTitle = toJS(store.manifest.title);
       this.searchTerm = "";
       this.__disposer.push(reaction);
     });
@@ -589,20 +586,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
       <link rel="stylesheet" href="${this._bootstrapPath}" />
       <div class="site container-fluid">
         <div class="menu-outline">
-          <div id="site-search-input" role="search">
-            <!-- <input
-              type="text"
-              aria-label="Search site content"
-              placeholder="Type to search"
-              .value="${this.searchTerm}"
-              id="search"
-              @input="${this.searchChanged}"
-            /> -->
-            <bootstrap-search
-              color-theme="${this.colorTheme}"
-            ></bootstrap-search>
-            <bootstrap-menu color-theme="${this.colorTheme}"> </bootstrap-menu>
+          <div class="site-title">
+            <h4>${this.siteTitle}</h4>
           </div>
+          ${this.HAXCMSMobileMenu()}
         </div>
         <div id="body" class="site-body">
           <div id="top"></div>
@@ -629,6 +616,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
               <site-active-title></site-active-title>
             </header>
             <main class="page-wrapper" role="main">
+              <bootstrap-search
+                color-theme="${this.colorTheme}"
+              ></bootstrap-search>
               <bootstrap-breadcrumb color-theme="${this.colorTheme}">
               </bootstrap-breadcrumb>
               <article class="main-content page-inner">

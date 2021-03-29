@@ -20,10 +20,10 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
         ...styles,
         css`
           :host([font-family="0"]) {
-            font-family: Georgia, serif;
+            font-family: var(--bootstrap-theme-sans-serif-fonts);
           }
           :host([font-family="1"]) {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: var(--bootstrap-theme-sans-serif-fonts);
           }
           :host([font-size="0"]) {
             --haxcms-base-styles-body-font-size: 1.2rem;
