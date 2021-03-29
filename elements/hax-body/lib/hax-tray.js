@@ -1765,10 +1765,16 @@ class HaxTray extends I18NMixin(
    * _editModeChanged
    */
   _editModeChanged(newValue) {
-    if (newValue) {
-      this.shadowRoot.querySelector("#button").icon = "save";
-    } else {
-      this.shadowRoot.querySelector("#button").icon = "create";
+    if (
+      !this.hidePanelOps &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#button")
+    ) {
+      if (newValue) {
+        this.shadowRoot.querySelector("#button").icon = "save";
+      } else {
+        this.shadowRoot.querySelector("#button").icon = "create";
+      }
     }
   }
   /**
