@@ -28,7 +28,17 @@ class BootstrapSearch extends LitElement {
   }
 
   static get styles() {
-    return [css``];
+    return [
+      css`
+        :host {
+          float: right;
+        }
+        input {
+          max-width: var(--bootstrap-search-max-width, 300px);
+          width: var(--bootstrap-search-width, 300px);
+        }
+      `,
+    ];
   }
 
   render() {
@@ -47,16 +57,14 @@ class BootstrapSearch extends LitElement {
   }
 
   inputChanged(evt) {
-    if (evt.target.value) {
-      this.searchText = evt.target.value;
-      this.dispatchEvent(
-        new CustomEvent("searchChanged", {
-          bubbles: true,
-          composed: true,
-          detail: this,
-        })
-      );
-    }
+    this.searchText = evt.target.value;
+    this.dispatchEvent(
+      new CustomEvent("searchChanged", {
+        bubbles: true,
+        composed: true,
+        detail: this,
+      })
+    );
   }
 
   getBasePath(url) {
