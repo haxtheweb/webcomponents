@@ -13,7 +13,6 @@ class BootstrapFooter extends LitElement {
     return [
       css`
         :host {
-          --bootstrap-dark-theme-secondary-background-color: #343a40;
           margin-bottom: 10px;
           --simple-icon-height: 18px;
           --simple-icon-width: 18px;
@@ -48,25 +47,48 @@ class BootstrapFooter extends LitElement {
         }
         /* dark theme */
         :host([color-theme="1"]) {
-          --simple-icon-color: #fff;
+          --simple-icon-color: var(--bootstrap-theme-dark-color);
         }
 
         :host([color-theme="1"]) .btn {
-          color: #fff;
+          color: var(--bootstrap-theme-dark-color);
           background-color: transparent;
           background-image: none;
           border-color: #6c757d;
         }
 
         :host([color-theme="1"]) .btn:hover {
-          color: #fff;
+          color: var(--bootstrap-theme-dark-color);
           background-color: #6c757d;
           border-color: #6c757d;
         }
 
         :host([color-theme="1"]) .container {
           background-color: var(
-            --bootstrap-dark-theme-secondary-background-color
+            --bootstrap-theme-dark-secondary-background-color
+          );
+        }
+        /* palenight theme */
+        :host([color-theme="2"]) {
+          --simple-icon-color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) .btn {
+          color: var(--bootstrap-theme-palenight-color);
+          background-color: transparent;
+          background-image: none;
+          border-color: #6c757d;
+        }
+
+        :host([color-theme="2"]) .btn:hover {
+          color: var(--bootstrap-theme-palenight-color);
+          background-color: #6c757d;
+          border-color: #6c757d;
+        }
+
+        :host([color-theme="2"]) .container {
+          background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
           );
         }
       `,

@@ -51,6 +51,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --bootstrap-theme-dark-background-color: #000000;
           --bootstrap-theme-dark-secondary-background-color: #343a40;
           --bootstrap-theme-dark-color: #ffffff;
+          --bootstrap-theme-palenight-background-color: #0d1229;
+          --bootstrap-theme-palenight-secondary-background-color: #1a1f36;
+          --bootstrap-theme-palenight-color: #ffffff;
           --site-menu-background-color: var(
             --bootstrap-theme-light-secondary-color
           );
@@ -343,28 +346,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
           color: #7e888b;
           background: 0 0;
         }
-        .site-header site-active-title h1 {
-          color: inherit;
-          text-decoration: none;
-          position: absolute;
-          z-index: 1;
-          top: 0;
-          left: 0;
-          right: 0;
-          margin: 10px 200px;
-          font-size: 20px;
-          font-weight: 200;
-          text-align: center;
-          line-height: 50px;
-          opacity: 0;
-          transition: opacity 0.2s ease;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        .site-header site-active-title h1:hover {
-          opacity: 1;
-        }
 
         /* Light Theme */
         :host([color-theme="0"]) site-search {
@@ -453,6 +434,86 @@ class BootstrapTheme extends HAXCMSThemeParts(
         :host([color-theme="1"]) .site-header site-active-title {
           color: #fff;
         }
+
+        /* Palenight Theme */
+        :host([color-theme="2"]) {
+          background-color: var(--bootstrap-theme-palenight-background-color);
+          --simple-fields-background-color: transparent;
+          --map-menu-item-a-color: var(--bootstrap-theme-palenight-color);
+          --haxcms-user-styles-color-theme-color-color: var(
+            --bootstrap-theme-palenight-color
+          );
+          --hax-base-styles-a-color: var(--bootstrap-theme-link-color);
+          --haxcms-tooltip-background-color: var(
+            --bootstrap-theme-palenight-color
+          );
+          --haxcms-tooltip-color: var(
+            --bootstrap-theme-palenight-background-color
+          );
+          --site-menu-background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+        }
+        :host([color-theme="2"]) site-search {
+          --site-search-color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) .site-title {
+          border-bottom: 1px solid var(--bootstrap-theme-palenight-color);
+          background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+        }
+
+        :host([color-theme="2"]) .site {
+          background-color: var(--bootstrap-theme-palenight-background-color);
+        }
+
+        :host([color-theme="2"]) .menu-outline {
+          background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+        }
+
+        :host([color-theme="2"]) .site-title {
+          color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) .page-title {
+          color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) .main-section {
+          color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) #site-search-input {
+          background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+        }
+
+        :host([color-theme="2"]) .card {
+          background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+        }
+        :host([color-theme="2"]) .card h1 h2 h3 h4 h5 h6 p {
+          color: var(--bootstrap-theme-palenight-color);
+        }
+        :host([color-theme="2"]) .site-header .btn {
+          color: var(--bootstrap-theme-palenight-color);
+        }
+        :host([color-theme="2"]) .site-header .btn:hover,
+        :host([color-theme="2"]) .site-header .btn:focus,
+        :host([color-theme="2"]) .site-header .btn:active {
+          color: var(--bootstrap-theme-palenight-color);
+          background: none;
+        }
+
+        :host([color-theme="2"]) .site-header site-active-title {
+          color: #fff;
+        }
       `,
     ];
   }
@@ -490,22 +551,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this.searchTerm = "";
     this._siteTitle = "";
     this._pageTitle = "";
-    // event listener for search changed
-    this.addEventListener("searchChanged", (evt) => {
-      if (evt.detail.searchText) {
-        import(
-          "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
-        ).then(() => {
-          this.searchTerm = evt.detail.searchText;
-        });
-      } else {
-        this.searchTerm = "";
-      }
-    });
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
-    );
     // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
@@ -539,17 +584,17 @@ class BootstrapTheme extends HAXCMSThemeParts(
             >
               <div class="btn-container">
                 ${this.HAXCMSMobileMenuButton()}
-                ${this.BootstrapUserStylesMenu()}
                 <site-print-button
                   class="btn js-toolbar-action"
                 ></site-print-button>
+                ${this.BootstrapUserStylesMenu()}
                 <div class="pull-right link-actions">
                   <bootstrap-search
                     color-theme="${this.colorTheme}"
+                    @search-changed=${this.searchChanged}
                   ></bootstrap-search>
                 </div>
               </div>
-              <site-active-title></site-active-title>
             </header>
             <main class="page-wrapper" role="main">
               <bootstrap-breadcrumb color-theme="${this.colorTheme}">
@@ -564,6 +609,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                       hide-input
                       search="${this.searchTerm}"
                       ?hidden="${this.searchTerm != "" ? false : true}"
+                      @search-item-selected=${this.searchItemSelected}
                     ></site-search>
                   </section>
                   <section
@@ -586,6 +632,22 @@ class BootstrapTheme extends HAXCMSThemeParts(
         </div>
       </div>
     `;
+  }
+
+  searchChanged(evt) {
+    if (evt.detail.searchText) {
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+      ).then(() => {
+        this.searchTerm = evt.detail.searchText;
+      });
+    } else {
+      this.searchTerm = "";
+    }
+  }
+
+  searchItemSelected(e) {
+    this.searchTerm = "";
   }
 
   _generateBootstrapLink() {

@@ -9,6 +9,8 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       this.fontSize = 1;
       this.fontFamily = 0;
       this.colorTheme = 0;
+      let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
+      this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
     }
     static get styles() {
@@ -262,8 +264,62 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           :host([color-theme="1"]) .hcusm .hcusm-button:active {
             color: #eee8e0;
           }
+
+          /* palenight theme */
+          :host([color-theme="2"]) .hcusm {
+            border-color: var(--bootstrap-theme-palenight-background-color);
+          }
+          :host([color-theme="2"]) simple-popover {
+            --simple-popover-color: white;
+            --simple-popover-background-color: var(
+              --bootstrap-theme-palenight-secondary-background-color
+            );
+          }
+          :host([color-theme="2"]) .hcusm .dropdown-caret .caret-inner {
+            border-bottom: 9px solid
+              var(--bootstrap-theme-palenight-secondary-background-color);
+          }
+          :host([color-theme="2"]) .hcusm .hcusm-buttons {
+            border-color: #7e888b;
+          }
+          :host([color-theme="2"]) .hcusm .hcusm-button {
+            color: white;
+          }
+          :host([color-theme="2"]) .hcusm .hcusm-button:hover,
+          :host([color-theme="2"]) .hcusm .hcusm-button:focus,
+          :host([color-theme="2"]) .hcusm .hcusm-button:active {
+            color: #eee8e0;
+          }
+
           simple-icon-button-lite {
             color: inherit;
+          }
+
+          .btn-group {
+            margin-bottom: 2px;
+          }
+
+          .open {
+            text-align: center;
+          }
+
+          .btn-palenight {
+            background-color: var(
+              --bootstrap-theme-palenight-secondary-background-color
+            );
+            color: var(--bootstrap-theme-palenight-color);
+          }
+
+          .btn-dark {
+            background-color: var(
+              --bootstrap-theme-dark-secondary-background-color
+            );
+          }
+
+          .btn-light {
+            background-color: var(
+              --bootstrap-theme-light-secondary-background-color
+            );
           }
         `,
       ];
@@ -275,6 +331,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       import("@lrnwebcomponents/simple-popover/simple-popover.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       return html`
+        <link rel="stylesheet" href="${this._bootstrapPath}" />
         <simple-icon-button-lite
           .part="${this.editMode ? `edit-mode-active` : ``}"
           class="btn"
@@ -297,46 +354,57 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               <span class="hcusm-caret-outer"></span>
               <span class="hcusm-caret-inner"></span>
             </div>
-            <div class="hcusm-buttons">
+            <div class="btn-group" role="group">
               <button
-                class="hcusm-button size-2 font-reduce"
+                type="button"
+                class="btn btn-primary"
                 @click="${this.UserStylesSizeDown}"
               >
                 A
               </button>
               <button
-                class="hcusm-button size-2 font-enlarge"
+                type="button"
+                class="btn btn-primary"
                 @click="${this.UserStylesSizeUp}"
               >
                 A
               </button>
             </div>
-            <div class="hcusm-buttons">
+            <br />
+            <div class="btn-group" role="group">
               <button
-                class="hcusm-button size-2"
+                class="btn btn-primary"
                 data-font="0"
                 @click="${this.UserStylesFontFamilyChange}"
               >
                 Sans
               </button>
               <button
-                class="hcusm-button size-2"
+                class="btn btn-primary"
                 data-font="1"
                 @click="${this.UserStylesFontFamilyChange}"
               >
                 Serif
               </button>
             </div>
-            <div class="hcusm-buttons">
+            <br />
+            <div class="btn-group">
               <button
-                class="hcusm-button size-3"
+                class="btn btn-light"
                 data-theme="0"
                 @click="${this.UserStylesColorThemeChange}"
               >
                 Light
               </button>
               <button
-                class="hcusm-button size-3"
+                class="btn btn-palenight"
+                data-theme="2"
+                @click="${this.UserStylesColorThemeChange}"
+              >
+                Palenight
+              </button>
+              <button
+                class="btn btn-dark"
                 data-theme="1"
                 @click="${this.UserStylesColorThemeChange}"
               >

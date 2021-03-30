@@ -66,6 +66,35 @@ class BootstrapBreadcrumb extends LitElement {
         :host([color-theme="1"]) a:hover {
           color: #fff;
         }
+
+        /* palenight theme */
+        :host([color-theme="2"]) {
+          --simple-icon-color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) simple-icon-lite:hover {
+          --simple-icon-color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) .breadcrumb {
+          background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+        }
+
+        :host([color-theme="2"]) .container {
+          background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+        }
+
+        :host([color-theme="2"]) a {
+          color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) a:hover {
+          color: var(--bootstrap-theme-palenight-color);
+        }
       `,
     ];
   }
