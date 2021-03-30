@@ -109,7 +109,7 @@ class BootstrapBreadcrumb extends LitElement {
       // check if we have a new active item
       // if so we clear our items array, set a new activeItem, push it to the items array
       // then check for a parent, if a parent is present call recursive function that keeps adding subsequent parents
-      if (this._activeItem !== storeActiveItem) {
+      if (storeActiveItem && this._activeItem !== storeActiveItem) {
         this.items = [];
         this._activeItem = storeActiveItem;
         this.items.push(storeActiveItem);

@@ -319,23 +319,6 @@
       ]
     },
     {
-      "name": "bootstrap-menu",
-      "path": "./lib/BootstrapMenu.js",
-      "attributes": [
-        {
-          "name": "color-theme",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "colorTheme",
-          "attribute": "color-theme",
-          "type": "string"
-        }
-      ]
-    },
-    {
       "name": "bootstrap-search",
       "path": "./lib/BootstrapSearch.js",
       "attributes": [
