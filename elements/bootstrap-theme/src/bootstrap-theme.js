@@ -483,7 +483,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
     this.menuOpen = true;
-    this.headerTags = ["H2", "H3", "H4", "H5", "H6"];
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
     this._themeElements = [];
@@ -560,11 +559,13 @@ class BootstrapTheme extends HAXCMSThemeParts(
               </div>
               <article class="main-content container card mb-3">
                 <div class="normal main-section">
-                  <site-search
-                    hide-input
-                    search="${this.searchTerm}"
-                    ?hidden="${this.searchTerm != "" ? false : true}"
-                  ></site-search>
+                  <section class="p-2">
+                    <site-search
+                      hide-input
+                      search="${this.searchTerm}"
+                      ?hidden="${this.searchTerm != "" ? false : true}"
+                    ></site-search>
+                  </section>
                   <section
                     class="p-2"
                     id="contentcontainer"
