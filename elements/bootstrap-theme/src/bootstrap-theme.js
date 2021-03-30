@@ -14,7 +14,6 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 // bootstrap elements imports
 import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapBreadcrumb.js";
 import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapFooter.js";
-import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapMenu.js";
 import "@lrnwebcomponents/bootstrap-theme/lib/BootstrapSearch.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -39,30 +38,33 @@ class BootstrapTheme extends HAXCMSThemeParts(
       ...super.styles,
       css`
         :host {
-          --map-menu-item-a-color: var(--bootstrap-menu-item-a-color, #0d6efd);
-          --bootstrap-light-theme-color: #000000;
-          --bootstrap-light-theme-background-color: #ffffff;
-          --bootstrap-light-theme-secondary-background-color: rgb(
+          --bootstrap-theme-link-color: #0d6efd;
+          --map-menu-item-a-color: var(--bootstrap-theme-link-color);
+          --bootstrap-theme-light-color: #000000;
+          --bootstrap-theme-light-background-color: #ffffff;
+          --bootstrap-theme-light-secondary-background-color: rgb(
             242,
             244,
             244
           );
-          --bootstrap-dark-theme-background-color: #000000;
-          --bootstrap-dark-theme-secondary-background-color: #343a40;
-          --bootstrap-dark-theme-color: #ffffff;
-          --bootstrap-link-color: #0d6efd;
+          --bootstrap-theme-light-secondary-color: rgb(233, 236, 239);
+          --bootstrap-theme-dark-background-color: #000000;
+          --bootstrap-theme-dark-secondary-background-color: #343a40;
+          --bootstrap-theme-dark-color: #ffffff;
           --site-menu-background-color: var(
-            --bootstrap-light-theme-secondary-background-color
+            --bootstrap-theme-light-secondary-color
           );
-          --bootstrap-theme-font-families: system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-            "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
-            "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
           --bootstrap-theme-sans-serif-fonts: "Helvetica Neue", Helvetica, Arial,
             sans-serif;
+          --bootstrap-theme-serif-fonts: Georgia, "Times New Roman", Times,
+            serif;
+          --bootstrap-theme-headings-font-weight: var(
+            --bootstrap-theme-headings-font-weight,
+            500
+          );
           display: block;
           background-color: var(
-            --bootstrap-light-theme-secondary-background-color
+            --bootstrap-theme-light-secondary-background-color
           );
           width: 100%;
           display: flex;
@@ -72,11 +74,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
           flex-direction: column;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-            Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
-            sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-            "Noto Color Emoji";
-          --haxcms-base-styles-body-font-family: Roboto;
         }
         :host([hidden]) {
           display: none;
@@ -99,8 +96,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
           overflow-x: auto;
         }
 
+        map-menu-header .container .title {
+          min-height: 34px;
+        }
+
         .menu-outline {
-          /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
           position: relative;
           top: 0;
           left: -300px;
@@ -110,15 +110,21 @@ class BootstrapTheme extends HAXCMSThemeParts(
           width: 300px;
           color: #364149;
           background-color: var(
-            --bootstrap-light-theme-secondary-background-color
+            --bootstrap-theme-light-secondary-background-color
           );
           border-right: 1px solid rgba(0, 0, 0, 0.07);
           transition: left 250ms ease;
         }
+
+        .site-title {
+          border-bottom: 1px solid black;
+          background-color: var(--bootstrap-theme-light-secondary-color);
+        }
+
         /* main content */
         .site {
           background-color: var(
-            --bootstrap-light-theme-secondary-background-color
+            --bootstrap-theme-light-secondary-background-color
           );
         }
         .site-body {
@@ -178,7 +184,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         .main-content h6 {
           margin-top: 1.275em;
           margin-bottom: 0.85em;
-          font-weight: 700;
+          font-weight: var(--bootstrap-theme-headings-font-weight);
         }
         .main-content h1,
         .main-content h2,
@@ -254,14 +260,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
           margin-bottom: 0.85em;
           padding-left: 2em;
         }
-        .main-content h2,
-        .main-content h3,
-        .main-content h4,
-        .main-content h5,
-        .main-content p {
-          orphans: 3;
-          widows: 3;
-        }
         .main-content * {
           box-sizing: border-box;
           -webkit-box-sizing: border-box;
@@ -299,48 +297,11 @@ class BootstrapTheme extends HAXCMSThemeParts(
           display: block;
         }
 
-        /* site menu navigation buttons */
-        site-menu-button:not(:defined) {
-          display: none;
-        }
-        site-menu-button {
-          --site-menu-button-icon-fill-color: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
-          --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
-          --haxcms-tooltip-background-color: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
-        }
-        site-menu-button {
-          --site-menu-button-icon-width: 64px;
-          --site-menu-button-icon-height: 64px;
-        }
-        :host([is-logged-in][menu-open]) site-menu-button[type="prev"] {
-          left: 348px;
-        }
-        :host([is-logged-in]) site-menu-button[type="prev"] {
-          left: 48px;
-        }
-        :host([menu-open]) site-menu-button[type="prev"] {
-          left: 300px;
-        }
-        site-menu-button[type="prev"] {
-          left: 0;
-        }
-        site-menu-button[type="next"] {
-          right: 0;
-        }
         simple-icon-button,
         simple-icon-button-lite,
-        site-rss-button,
-        site-print-button,
-        site-git-corner {
+        site-print-button {
           color: var(--site-print-button-color, black);
-          --site-git-corner-background: var(--bootstrap-light-theme-color);
-          --site-git-corner-color: var(
-            --bootstrap-light-theme-background-color
-          );
+          --site-git-corner-background: var(--bootstrap-theme-light-color);
           --simple-icon-fill-color: var(
             --haxcms-user-styles-color-theme-color-1
           );
@@ -415,47 +376,65 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --site-search-link-color: #252737;
           --site-search-result-color: #252737;
         }
+
         /* Dark Theme */
         :host([color-theme="1"]) {
           background-color: black;
           --simple-fields-background-color: transparent;
-          --github-corner-background: white;
-          --map-menu-item-a-color: var(--bootstrap-dark-theme-color);
+          --map-menu-item-a-color: var(--bootstrap-theme-dark-color);
           --haxcms-user-styles-color-theme-color-color: var(
-            --bootstrap-dark-theme-color
+            --bootstrap-theme-dark-color
           );
-          --hax-base-styles-a-color: var(--bootstrap-link-color);
-          --haxcms-tooltip-background-color: var(--bootstrap-dark-theme-color);
-          --haxcms-tooltip-color: var(--bootstrap-dark-theme-background-color);
-          --site-menu-button-icon-fill-color: white;
+          --hax-base-styles-a-color: var(--bootstrap-theme-link-color);
+          --haxcms-tooltip-background-color: var(--bootstrap-theme-dark-color);
+          --haxcms-tooltip-color: var(--bootstrap-theme-dark-background-color);
+          --site-menu-background-color: var(
+            --bootstrap-theme-dark-secondary-background-color
+          );
         }
 
-        :host([color-theme="1"]) simple-fields-field {
+        :host([color-theme="1"]) site-search {
+          --site-search-color: var(--bootstrap-theme-dark-color);
         }
 
-        :host([color-theme="1"]) site-menu-button {
-          --haxcms-tooltip-color: var(---bootstrap-dark-theme-color);
-          --haxcms-tooltip-background-color: var(--bootstrap-dark-theme-color);
+        :host([color-theme="1"]) .site-title {
+          border-bottom: 1px solid var(--bootstrap-theme-dark-color);
+          background-color: var(
+            --bootstrap-theme-dark-secondary-background-color
+          );
+        }
+
+        :host([color-theme="1"]) .site {
+          background-color: var(--bootstrap-theme-dark-background-color);
+        }
+
+        :host([color-theme="1"]) .menu-outline {
+          background-color: var(
+            --bootstrap-theme-dark-secondary-background-color
+          );
+        }
+
+        :host([color-theme="1"]) .site-title {
+          color: #fff;
+        }
+
+        :host([color-theme="1"]) .page-title {
+          color: #fff;
         }
 
         :host([color-theme="1"]) .main-section {
-          color: var(--bootstrap-dark-theme-color);
+          color: var(--bootstrap-theme-dark-color);
         }
 
         :host([color-theme="1"]) #site-search-input {
           background-color: var(
-            --bootstrap-dark-theme-secondary-background-color
+            --bootstrap-theme-dark-secondary-background-color
           );
-        }
-
-        :host([color-theme="1"]) site-git-corner {
-          --site-git-corner-background: var(--bootstrap-dark-theme-color);
-          --site-git-corner-color: var(--bootstrap-dark-theme-background-color);
         }
 
         :host([color-theme="1"]) .card {
           background-color: var(
-            --bootstrap-dark-theme-secondary-background-color
+            --bootstrap-theme-dark-secondary-background-color
           );
         }
         :host([color-theme="1"]) .card h1 h2 h3 h4 h5 h6 p {
@@ -473,37 +452,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
         :host([color-theme="1"]) .site-header site-active-title {
           color: #fff;
-        }
-
-        :host([color-theme="1"]) site-search {
-          color: var(--bootstrap-dark-theme-color);
-          --site-search-result-background-color: transparent;
-          --site-search-result-background-color-hover: transparent;
-          --site-search-link-color-hover: var(--bootstrap-dark-theme-color);
-          --site-search-link-text-color: var(--bootstrap-dark-theme-color);
-          --site-search-link-color: var(--bootstrap-dark-theme-color);
-          --site-search-result-color: var(--bootstrap-dark-theme-color);
-        }
-        :host([color-theme="2"]) site-search {
-          color: var(--simple-colors-default-theme-light-blue-1, #cfd4e3);
-          --site-search-result-background-color: transparent;
-          --site-search-result-background-color-hover: transparent;
-          --site-search-link-color-hover: var(
-            --simple-colors-default-theme-light-blue-1,
-            #cfd4e3
-          );
-          --site-search-link-text-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            #cfd4e3
-          );
-          --site-search-link-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            #cfd4e3
-          );
-          --site-search-result-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            #cfd4e3
-          );
         }
       `,
     ];
@@ -541,7 +489,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this._themeElements = [];
     this.colorTheme = "0";
     this.searchTerm = "";
-    this.siteTitle = "";
+    this._siteTitle = "";
+    this._pageTitle = "";
     // event listener for search changed
     this.addEventListener("searchChanged", (evt) => {
       if (evt.detail.searchText) {
@@ -550,6 +499,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
         ).then(() => {
           this.searchTerm = evt.detail.searchText;
         });
+      } else {
+        this.searchTerm = "";
       }
     });
     // prettier-ignore
@@ -558,25 +509,13 @@ class BootstrapTheme extends HAXCMSThemeParts(
     );
     // prettier-ignore
     import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
-    );
-    // prettier-ignore
-    import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
-    );
-    // prettier-ignore
-    import(
-      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
     );
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.siteTitle = toJS(store.manifest.title);
-      this.searchTerm = "";
+      this._siteTitle = toJS(store.manifest.title);
+      this._pageTitle = toJS(store.activeTitle);
       this.__disposer.push(reaction);
     });
   }
@@ -584,10 +523,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
   render() {
     return html`
       <link rel="stylesheet" href="${this._bootstrapPath}" />
-      <div class="site container-fluid">
+      <div class="site ">
         <div class="menu-outline">
           <div class="site-title">
-            <h4>${this.siteTitle}</h4>
+            <h4>${this._siteTitle}</h4>
           </div>
           ${this.HAXCMSMobileMenu()}
         </div>
@@ -602,26 +541,24 @@ class BootstrapTheme extends HAXCMSThemeParts(
               <div class="btn-container">
                 ${this.HAXCMSMobileMenuButton()}
                 ${this.BootstrapUserStylesMenu()}
+                <site-print-button
+                  class="btn js-toolbar-action"
+                ></site-print-button>
                 <div class="pull-right link-actions">
-                  <site-print-button
-                    class="btn js-toolbar-action"
-                  ></site-print-button>
-                  <site-rss-button
-                    type="rss"
-                    class="btn js-toolbar-action"
-                  ></site-rss-button>
-                  <site-git-corner size="small"></site-git-corner>
+                  <bootstrap-search
+                    color-theme="${this.colorTheme}"
+                  ></bootstrap-search>
                 </div>
               </div>
               <site-active-title></site-active-title>
             </header>
             <main class="page-wrapper" role="main">
-              <bootstrap-search
-                color-theme="${this.colorTheme}"
-              ></bootstrap-search>
               <bootstrap-breadcrumb color-theme="${this.colorTheme}">
               </bootstrap-breadcrumb>
-              <article class="main-content page-inner">
+              <div class="container p-0 page-title">
+                <h3 class="display-6">${this._pageTitle}</h3>
+              </div>
+              <article class="main-content container card mb-3">
                 <div class="normal main-section">
                   <site-search
                     hide-input
@@ -629,7 +566,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                     ?hidden="${this.searchTerm != "" ? false : true}"
                   ></site-search>
                   <section
-                    class="card p-4"
+                    class="p-2"
                     id="contentcontainer"
                     ?hidden="${this.searchTerm != "" ? true : false}"
                   >
@@ -648,38 +585,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
         </div>
       </div>
     `;
-  }
-
-  _wrapSections() {
-    if (this._themeElements) {
-      this._applyClasses(this._themeElements);
-    }
-  }
-
-  _applyClasses(nodes) {
-    nodes.forEach((node) => {
-      if (this.headerTags.includes(node.nodeName)) {
-        node.classList.add("display-6");
-      }
-    });
-  }
-
-  _applyMutationObserver() {
-    this._observer = new MutationObserver((mutationList, observer) => {
-      mutationList.forEach((mutationEntry) => {
-        if (mutationEntry.addedNodes) {
-          mutationEntry.addedNodes.forEach((item) => {
-            this._themeElements.push(item);
-          });
-          this._wrapSections();
-        } else if (mutationEntry.removedNodes) {
-          mutationEntry.removedNodes.forEach((item) => {
-            this._themeElements.splice(this._themeElements.indexOf(item), 1);
-          });
-        }
-      });
-    });
-    this._observer.observe(this, { childList: true });
   }
 
   _generateBootstrapLink() {
@@ -714,8 +619,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
     }
     this._loadScripts();
     this._bootstrapLink = this._generateBootstrapLink();
-    this._applyMutationObserver();
-    this._wrapSections();
   }
 
   /*
@@ -754,14 +657,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
   getBasePath(url) {
     return url.substring(0, url.lastIndexOf("/@lrnwebcomponents/") + 1);
-  }
-
-  prevPage(e) {
-    super.prevPage(e);
-  }
-
-  nextPage(e) {
-    super.nextPage(e);
   }
 
   /**
