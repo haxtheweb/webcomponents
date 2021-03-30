@@ -23,8 +23,6 @@ class SiteSearch extends LitElement {
           display: block;
           font-size: 16px;
           color: var(--site-search-color, #383f45);
-          height: 55vh;
-          width: 60vh;
         }
         [hidden] {
           display: none;
