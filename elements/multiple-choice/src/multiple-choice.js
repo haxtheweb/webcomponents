@@ -145,19 +145,21 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     this.quizName = "default";
     // check lightdom on setup for answers to be read in
     // this only happens on initial paint
-    if (this.children.length > 0) {
-      let inputs = Array.from(this.querySelectorAll("input"));
-      let answers = [];
-      for (var i in inputs) {
-        let answer = {
-          label: inputs[i].value,
-          correct: inputs[i].getAttribute("correct") == null ? false : true,
-        };
-        answers.push(answer);
+    setTimeout(() => {
+      if (this.children.length > 0) {
+        let inputs = Array.from(this.querySelectorAll("input"));
+        let answers = [];
+        for (var i in inputs) {
+          let answer = {
+            label: inputs[i].value,
+            correct: inputs[i].getAttribute("correct") == null ? false : true,
+          };
+          answers.push(answer);
+        }
+        this.answers = answers;
+        this.innerHTML = "";
       }
-      this.answers = answers;
-      this.innerHTML = "";
-    }
+    }, 0);
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -178,7 +180,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           })
         );
       }
-      if (propName == "answers" && this.answers.length > 0) {
+      if (propName == "answers" && this.answers && this.answers.length > 0) {
         this.displayedAnswers = [
           ...this._computeDisplayedAnswers(this.answers, this.randomize),
         ];
@@ -562,7 +564,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   /**
    * HAX preprocess Node to Content hook
    */
-  haxpreProcessNodeToContent(node) {
+  async haxpreProcessNodeToContent(node) {
     // ensure we dont accidently have the answer displayed!
     if (node.answers) {
       for (var i in node.answers) {
@@ -574,7 +576,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         }
         node.appendChild(answer);
       }
-      node.answers = [];
+      node.answers = null;
     }
     return node;
   }

@@ -1303,7 +1303,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (haxElements.length === 0 && validURL(pasteContent)) {
         // ONLY use this logic if we're on an empty container
         if (this.activeNode.innerText.trim() != "") {
-          return false;
+          inlinePaste = true;
         }
         // test for a URL since we didn't have HTML / elements of some kind
         // if it's a URL we might be able to automatically convert it into it's own element
@@ -1312,7 +1312,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           title: pasteContent,
         };
         // if we DID get a match, block default values
-        if (!this.insertLogicFromValues(values, this, false, true)) {
+        if (
+          !inlinePaste &&
+          !this.insertLogicFromValues(values, this, false, true)
+        ) {
           // prevents the text being inserted previously so that the insertLogic does it
           // for us. false only is returned if we didn't do anthing in this function
           return false;
@@ -1407,7 +1410,20 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             }
           }
           if (inlinePaste) {
-            let txt = document.createTextNode(newNodes.innerHTML);
+            let txt;
+            // we got here via an inline paste trap for a URL or other inline content
+            if (!validURL(pasteContent)) {
+              // just make a text node if this is NODE a link
+              txt = document.createTextNode(newNodes.innerHTML);
+            } else {
+              // make a link because we have something that looks like one
+              // and we passed all above checks
+              txt = document.createElement("a");
+              txt.setAttribute("href", pasteContent);
+              txt.setAttribute("rel", "noopener noreferrer");
+              txt.setAttribute("target", "_blank");
+              txt.innerText = pasteContent;
+            }
             range.insertNode(txt);
             setTimeout(() => {
               this._positionCursorInNode(txt, txt.length);

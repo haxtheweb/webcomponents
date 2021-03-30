@@ -134,7 +134,8 @@
       "__utils",
       "displayed-answers",
       "displayedAnswers",
-      "colors"
+      "colors",
+      "answers"
     ]
   },
   "demoSchema": [

@@ -1395,8 +1395,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.replaceElementWorkflow();
     }
   }
-  canTansformNode(node = null) {
-    return this.replaceElementWorkflow(node, true).length > 0 ? true : false;
+  async canTansformNode(node = null) {
+    return (await this.replaceElementWorkflow(node, true).length) > 0
+      ? true
+      : false;
   }
   /**
    * Whole workflow of replacing something in place contextually.
