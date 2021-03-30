@@ -435,8 +435,8 @@ var HaxViewSource =
         },
         {
           key: "htmlToHaxElements",
-          value: function htmlToHaxElements(e) {
-            var elements = _haxStore.HAXStore.htmlToHaxElements(
+          value: async function htmlToHaxElements(e) {
+            var elements = await _haxStore.HAXStore.htmlToHaxElements(
               this.shadowRoot.querySelector("#textarea").value
             );
 

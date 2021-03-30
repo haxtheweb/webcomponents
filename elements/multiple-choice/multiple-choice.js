@@ -60,6 +60,8 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           background-color: var(--simple-colors-default-theme-accent-8);
           color: var(--simple-colors-default-theme-grey-1);
         }
+        :host #check:focus,
+        :host #check:active,
         :host #check:hover {
           background-color: var(--simple-colors-default-theme-accent-9);
         }
@@ -78,7 +80,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           color: var(--simple-colors-default-theme-grey-12);
         }
         :host([accent-color="grey"]) #check:hover,
-        :host button:hover {
+        :host button:hover,
+        :host button:focus,
+        :host button:active {
           cursor: pointer;
           background-color: var(--simple-colors-default-theme-grey-2);
           color: var(--simple-colors-default-theme-grey-12);
@@ -519,21 +523,8 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     return {
       preProcessNodeToContent: "haxpreProcessNodeToContent",
       preProcessInsertContent: "haxpreProcessInsertContent",
-      progressiveEnhancement: "haxprogressiveEnhancement",
       inlineContextMenu: "haxinlineContextMenu",
     };
-  }
-  /**
-   * Hook for HAX to support progressive enhancement and return a string
-   * to place in the slot of this tag. This helps make it a lot easier
-   * to maintain complex data between page saves
-   */
-  haxprogressiveEnhancement(el) {
-    return `${el.answers.map((answer) => {
-      return `<input type="checkbox" value="${answer.label}" ${
-        answer.correct ? `correct` : ``
-      } />`;
-    })}`;
   }
   /**
    * add buttons when it is in context
@@ -574,16 +565,16 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   haxpreProcessNodeToContent(node) {
     // ensure we dont accidently have the answer displayed!
     if (node.answers) {
-      var answers = [];
-      for (var i = 0; i < node.answers.length; i++) {
-        let val = node.answers[i];
-        // remove userGuess if its set in the DOM
-        if (val.userGuess) {
-          delete val.userGuess;
+      for (var i in node.answers) {
+        let answer = document.createElement("input");
+        answer.setAttribute("type", "checkbox");
+        answer.value = node.answers[i].label;
+        if (node.answers[i].correct) {
+          answer.setAttribute("correct", "correct");
         }
-        answers.push(val);
+        node.appendChild(answer);
       }
-      node.answers = [...answers];
+      node.answers = [];
     }
     return node;
   }

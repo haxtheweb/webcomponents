@@ -142,7 +142,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * Simple workflow for logic from inserting based on
    * a series of criteria.
    */
-  insertLogicFromValues(values, context, failOnAnything = false) {
+  insertLogicFromValues(
+    values,
+    context,
+    failOnAnything = false,
+    linkOnMultiple = false
+  ) {
     // we have no clue what this is.. let's try and guess..
     let type = this.guessGizmoType(values);
     let typeName = type;
@@ -159,14 +164,30 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let haxElements = this.guessGizmo(type, values, false, preferExclusive);
     // see if we got anything
     if (haxElements.length > 0) {
-      if (haxElements.length === 1) {
-        if (typeof haxElements[0].tag !== typeof undefined) {
+      // if we ONLY have 1 thing or we say "make it a link if multiple"
+      // special case for pasting into the page
+      if (haxElements.length === 1 || linkOnMultiple) {
+        if (
+          haxElements.length === 1 &&
+          typeof haxElements[0].tag !== typeof undefined
+        ) {
           context.dispatchEvent(
             new CustomEvent("hax-insert-content", {
               bubbles: true,
               cancelable: true,
               composed: true,
               detail: haxElements[0],
+            })
+          );
+        } else if (linkOnMultiple) {
+          context.dispatchEvent(
+            new CustomEvent("hax-insert-content", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: haxElements.find((item) => {
+                return item.tag == "a";
+              }),
             })
           );
         }
@@ -1275,7 +1296,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
       // edges that some things preserve empty white space needlessly
-      let haxElements = this.htmlToHaxElements(pasteContent);
+      let haxElements = await this.htmlToHaxElements(pasteContent);
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
@@ -1291,7 +1312,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           title: pasteContent,
         };
         // if we DID get a match, block default values
-        if (!this.insertLogicFromValues(values, this)) {
+        if (!this.insertLogicFromValues(values, this, false, true)) {
           // prevents the text being inserted previously so that the insertLogic does it
           // for us. false only is returned if we didn't do anthing in this function
           return false;
