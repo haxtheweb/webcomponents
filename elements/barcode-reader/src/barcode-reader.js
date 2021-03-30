@@ -7,6 +7,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 //import { javascriptBarcodeReader } from "https://cdn.skypack.dev/javascript-barcode-reader";
 import { MultiFormatReader, BarcodeFormat} from '@zxing/library';
 import * as ZXing from '@zxing/library';
+import * as ZXingBrowser from '@zxing/browser';
+import { BrowserQRCodeReader } from '@zxing/browser';
 
 /**
  * `barcode-reader`
@@ -52,7 +54,7 @@ class BarcodeReader extends LitElement {
         left: 0;
         width: 100%;
         height: 100%;
-        visibility: visible;
+        visibility: hidden;
         background: linear-gradient(to bottom, transparent 51%, red 51%, transparent 52%)
       }
     `;
@@ -68,7 +70,7 @@ class BarcodeReader extends LitElement {
           <div id="scanline"></div>
         </div>
         <canvas id="canvas" width="640" height="480"></canvas>
-        <video id="video" width="640" height="480" muted autoplay playsinline />
+        <video id="video" width="640" height="480" muted autoplay playsinline/>
       </div>
       <!--<pre><code id="result"></code></pre>-->
       <div>
@@ -110,7 +112,7 @@ class BarcodeReader extends LitElement {
 
   async _onFrame() {
     const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
-    await sleep(1000) //Best delay function I could find
+    await sleep(5000) //Best delay function I could find
     if(this.__video.videoWidth > 0) {
       this._drawFrame(this.__video);
     }
@@ -122,138 +124,88 @@ class BarcodeReader extends LitElement {
     this._processFrame().then(r => console.log("Hit draw frame promise#1"));
   }
 
-  /*capture()
-  {
-    const canvas = document.getElementById('canvas');
-    const video = document.getElementById('video');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-    canvas.toBlob() = (blob) => {
-      const img = new Image();
-      img.src = window.URL.createObjectUrl(blob);
-    };
-  }*/
-
   async _processFrame() {
-
-
     console.log("Hit draw frame promise#2:");
-    console.log("Hit Process Frame"+new Date().getTime());
+    //console.log("Hit Process Frame"+new Date().getTime());
     //take an img, then process
 
-    const codeReader = new ZXing.BrowserBarcodeReader()
-    console.log('ZXing code reader initialized#Only')
-    const imgCanvas = this.shadowRoot.querySelector("#canvas");
-    const img = imgCanvas.getContext("2d");
-    this.decodeFun(img);
+    console.log('ZXing code reader initialized')
+    const codeReader = new BrowserQRCodeReader();
+    const sourceElem = this.shadowRoot.querySelector('#video');
+    //or use decodeFromVideoElement for videos
+    //console.log(sourceElem);
+    //Bad hit:ArgumentException: `callbackFn` is a required parameter, you cannot capture results without it.
+    //Unhandled Promise Rejection: TypeError: undefined is not an object (evaluating 'BrowserQRCodeReader.BrowserCodeReader.listVideoInputDevices')
+    //const videoInputDevices = await codeReader.BrowserCodeReader.listVideoInputDevices();
+    //const codeReader = new BrowserQRCodeReader();
 
-     /**let selectedDeviceId;
+    //const videoInputDevices = await ZXingBrowser.BrowserCodeReader.listVideoInputDevices();
 
-      codeReader.getVideoInputDevices()
-        .then((videoInputDevices) => {
-          const sourceSelect = this.shadowRoot.querySelector('#sourceSelect')
-          console.log('source'+sourceSelect)
-          selectedDeviceId = videoInputDevices[0].deviceId
-          if (videoInputDevices.length > 1) {
-            videoInputDevices.forEach((element) => {
-              const sourceOption = this.shadowRoot.querySelector('#option')
-              sourceOption.text = element.label
-              sourceOption.value = element.deviceId
-              sourceSelect.appendChild(sourceOption)
-            })
+    //choose your media device (webcam, frontal camera, back camera, etc.)
+    //const selectedDeviceId = videoInputDevices[0].deviceId;
+    //console.log(`Started decode from camera with id ${selectedDeviceId}`);
 
-            sourceSelect.onchange = () => {
-              selectedDeviceId = sourceSelect.value;
-            }
+    const previewElem = this.shadowRoot.querySelector('#video');
+    console.log(previewElem);
 
-            const sourceSelectPanel = this.shadowRoot.querySelector('sourceSelectPanel')
-            sourceSelectPanel.style.display = 'block'
-          }
+    // you can use the controls to stop() the scan or switchTorch() if available
+    const controls = await codeReader.decodeFromVideoElement(previewElem, (result, error, controls) => {
+      console.log(controls)
+      console.log(result);
+      console.log(error);
+    });
 
-          this.shadowRoot.querySelector('#startButton').addEventListener('click', () => {
-            codeReader.decodeOnceFromVideoDevice(false, video).then((result) => {
-              console.log(result)
-              this.shadowRoot.querySelector('#result').textContent = result.text
-            }).catch((err) => {
-              console.error(err)
-              this.shadowRoot.querySelector('#result').textContent = err
-            })
-            console.log(`Started continous decode from camera with id ${selectedDeviceId}`)
-          })
+    // stops scanning after 20 seconds
+    setTimeout(() => controls.stop(), 10000);
+    /**const devices = await navigator.mediaDevices.enumerateDevices();
+    //console.log(devices);
+    //console.log(devices[3].toString());
+    //console.log(devices[3].toString().includes("video"));
+    const videoDevices = devices.filter(device => device.kind === 'videoinput');
+    //console.log(videoDevices[0]);
+    //console.log(videoDevices[0].deviceId);
+    //console.log(videoDevices[3].toString());
+    // choose your media device (webcam, frontal camera, back camera, etc.)
+    const selectedDeviceId = videoDevices[0].deviceId;
+    //console.log("ID:"+selectedDeviceId);
 
-          this.shadowRoot.querySelector('#resetButton').addEventListener('click', () => {
-            this.shadowRoot.querySelector('#result').textContent = '';
-            codeReader.reset();
-            console.log('Reset.')
-          })
+    console.log(`Started decode from camera with id ${selectedDeviceId}`);
 
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-    /**
-    const hints = new Map();
-    const formats = [BarcodeFormat.QR_CODE, BarcodeFormat.DATA_MATRIX];
-
-    hints.set(zxing.POSSIBLE_FORMATS, formats);
-
-    const reader = new MultiFormatReader();
-
-    reader.setHints(hints);
-
-    const luminanceSource = new zxing(imgByteArray, 640, 480);
-    const binaryBitmap = new zxing(new zxing(luminanceSource));
-
-    reader.decode(binaryBitmap);
-
-
-
-
-    const codeReader = new ZXing.BrowserBarcodeReader();
-
-    console.log('ZXing code reader initialized');
-
-    const decodeFun = (e) => {
-
-      /**const parent = e.target.parentNode.parentNode;
-      const img = parent.getElementsByClassName('img')[0].cloneNode(true);
-      const resultEl = parent.getElementsByClassName('result')[0];
-      const img = this.__context.getImageData(0, 0, 640, 480);
-
-      codeReader.decodeFromImage(img)
-        .then(result => {
-          console.log(result);
-          resultEl.textContent = result.text;
-        })
-        .catch(err => {
-          console.error(err);
-          resultEl.textContent = err;
-        });
-
-      console.log(`Started decode for image from ${img.src}`)
-    };
-
-    for (const element of document.getElementsByClassName('decodeButton')) {
-      element.addEventListener('click', decodeFun, false);
-    }
-
-    /**if(!this.__jobProcessingFrame) {
-      this.__jobProcessingFrame = true;
-
-      const imageData = this.__context.getImageData(0, 0, 640, 480);
-      const data = await this.__barcodeProxy.detect(imageData); //Unhandled Promise Rejection: TypeError: undefined is not an object
-      if (data) {
-        this.dispatchEvent(new CustomEvent('barcodes-found', {
-          bubbles: true,
-          composed: true,
-          detail: {
-            barcodes: data
-          }
-        }));
+    const controls = await codeReader.decodeFromVideoDevice(selectedDeviceId, sourceElem, (result, error, controls)=>
+    {
+      console.log(result+":"+error);
+      if(typeof result != "undefined")
+      {
+        console.log("Good hit: "+result);
       }
-      this.__jobProcessingFrame = false;
-    }*/
+      else
+      {
+        console.log("Error: "+error);
+      }
+      console.log("Controls"+controls);
+    });
+      //.then(result=>{console.log("Good hit:"+result);},err=>{console.log("Bad hit:"+err);});
+
+    console.log("After process");
+    //console.log(resultVideo+":Result");
+    setTimeout(() => controls.stop(), 20000);
+
+    /**const canvas = this.shadowRoot.querySelector("canvas");
+    //const img = canvas.toDataURL("image/jpeg", 1.0);
+    const resultEl = this.shadowRoot.querySelector('#result');
+
+    const codeReader = new BrowserQRCodeReader();
+    console.log("DecodeFun")
+    codeReader.decodeFromCanvas(canvas)
+      .then(result => {
+        console.log("Result:"+result);
+        resultEl.textContent = result.text;
+      })
+      .catch(err => {
+        console.error(err);
+        resultEl.textContent = err;
+      });*/
+    console.log("After hit")
   }
 
   async start() {
@@ -262,10 +214,7 @@ class BarcodeReader extends LitElement {
       'audio': false,
       'video': {
         width: { min: 640, ideal: 640, max: 1280 },
-        height: { min: 480, ideal: 480, max: 720 },
-        facingMode: {
-          exact: 'environment',
-        }
+        height: { min: 480, ideal: 480, max: 720 }
       }
     };
 
@@ -282,21 +231,7 @@ class BarcodeReader extends LitElement {
   stop() {
     this.__stream.getTracks()[0].stop();
   }
-decodeFun(img)
-{
-  console.log("DecodeFun")
-  codeReader.decodeFromImage(img)
-    .then(result => {
-      console.log("Result:"+result);
-      resultEl.textContent = result.text;
-    })
-    .catch(err => {
-      console.error(err);
-      resultEl.textContent = err;
-    });
 
-  console.log(`Started decode for image from ${img.src}`)
-}
 
 }
 customElements.define(BarcodeReader.tag, BarcodeReader);
