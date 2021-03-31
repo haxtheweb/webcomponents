@@ -46,52 +46,17 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
             --simple-colors-default-theme-red-8
           );
         }
-        :host([accent-color="grey"]),
-        :host([accent-color="red"]),
-        :host([accent-color="green"]) {
-          --simple-fields-field-checked-color: var(
-            --simple-colors-default-theme-blue-8
-          );
-          --simple-fields-field-checked-ink-color: var(
-            --simple-colors-default-theme-blue-8
-          );
-        }
-        :host #check {
-          background-color: var(--simple-colors-default-theme-accent-8);
-          color: var(--simple-colors-default-theme-grey-1);
-        }
-        :host #check:focus,
-        :host #check:active,
-        :host #check:hover {
-          background-color: var(--simple-colors-default-theme-accent-9);
-        }
-        :host([accent-color="red"]) #check,
-        :host([accent-color="green"]) #check {
-          background-color: var(--simple-colors-default-theme-blue-8);
-          color: var(--simple-colors-default-theme-grey-1);
-        }
-        :host([accent-color="red"]) #check:hover,
-        :host([accent-color="green"]) #check:hover {
-          background-color: var(--simple-colors-default-theme-blue-9);
-        }
-        :host([accent-color="grey"]) #check,
+
         :host button {
           background-color: var(--simple-colors-default-theme-grey-1);
           color: var(--simple-colors-default-theme-grey-12);
         }
-        :host([accent-color="grey"]) #check:hover,
         :host button:hover,
         :host button:focus,
         :host button:active {
           cursor: pointer;
           background-color: var(--simple-colors-default-theme-grey-2);
           color: var(--simple-colors-default-theme-grey-12);
-        }
-        .red {
-          background-color: var(--simple-colors-default-theme-red-8);
-        }
-        .green {
-          background-color: var(--simple-colors-default-theme-green-8);
         }
         h3 {
           margin: 8px;
@@ -136,7 +101,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     this.resetLabel = "Reset";
     this.hideTitle = false;
     this.question = "";
-    this.answers = [];
     this.displayedAnswers = [];
     this.correctText = "Great job!";
     this.correctIcon = "icons:thumb-up";
@@ -145,21 +109,24 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     this.quizName = "default";
     // check lightdom on setup for answers to be read in
     // this only happens on initial paint
-    setTimeout(() => {
-      if (this.children.length > 0) {
-        let inputs = Array.from(this.querySelectorAll("input"));
-        let answers = [];
-        for (var i in inputs) {
-          let answer = {
-            label: inputs[i].value,
-            correct: inputs[i].getAttribute("correct") == null ? false : true,
-          };
-          answers.push(answer);
-        }
-        this.answers = answers;
-        this.innerHTML = "";
+    if (this.children.length > 0) {
+      let inputs = Array.from(this.querySelectorAll("input"));
+      let answers = [];
+      for (var i in inputs) {
+        let answer = {
+          label: inputs[i].value,
+          correct: inputs[i].getAttribute("correct") == null ? false : true,
+        };
+        answers.push(answer);
       }
-    }, 0);
+      this.answers = answers;
+      // wipe lightdom after reading it in for data. This makes it harder for someone
+      // to just inspect the document and get at the underlying data
+      this.innerHTML = "";
+    } else {
+      // default to nothing if we didn't get lightdom children
+      this.answers = [];
+    }
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -375,15 +342,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         type: Boolean,
         attribute: "hide-buttons",
       },
-      __toastText: {
-        type: String,
-      },
-      __toastColor: {
-        type: String,
-      },
-      __toastIcon: {
-        type: String,
-      },
     };
   }
 
@@ -478,16 +436,25 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       })
     );
   }
+  /**
+   * LitElement hook to modify shadowRoot. Minor a11y improvement on Chrome
+   */
+  createRenderRoot() {
+    return this.attachShadow({ mode: "open", delegatesFocus: true });
+  }
 
   /**
    * Figure out the order of the answers which will be displayed
    */
   _computeDisplayedAnswers(answers, randomize) {
+    // if we are editing via HAX, don't randomize the answers
+    // as we are actively editing the content and this is amazingly jarring
     if (
       typeof answers !== typeof undefined &&
       answers != null &&
       answers.length > 0 &&
-      randomize
+      randomize &&
+      !this._haxstate
     ) {
       let random = answers;
       var currentIndex = random.length,
@@ -523,10 +490,22 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    */
   haxHooks() {
     return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
       preProcessNodeToContent: "haxpreProcessNodeToContent",
       preProcessInsertContent: "haxpreProcessInsertContent",
       inlineContextMenu: "haxinlineContextMenu",
     };
+  }
+
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this._haxstate = value;
+    }
+  }
+
+  haxeditModeChanged(value) {
+    this._haxstate = value;
   }
   /**
    * add buttons when it is in context
@@ -566,6 +545,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    */
   async haxpreProcessNodeToContent(node) {
     // ensure we dont accidently have the answer displayed!
+    // this also rips the data into the lightDom for saving
+    // so that we can unset the array data on the object at save time
+    // this helps improve SEO / compatibility with CMS solutions
     if (node.answers) {
       for (var i in node.answers) {
         let answer = document.createElement("input");
@@ -576,10 +558,10 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         }
         node.appendChild(answer);
       }
-      node.answers = null;
     }
     return node;
   }
+
   /**
    * HAX preprocess insert content hook
    */

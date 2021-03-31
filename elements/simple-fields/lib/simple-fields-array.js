@@ -106,7 +106,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
   constructor() {
     super();
     this.count = 0;
-    this.expanded = false;
+    this.expanded = true;
     this.disableAdd = false;
   }
   updated(changedProperties) {
@@ -137,9 +137,6 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
   _handleAdd() {
     this.dispatchEvent(
       new CustomEvent("add", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
         detail: this,
       })
     );
@@ -154,9 +151,6 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
     e.stopImmediatePropagation();
     this.dispatchEvent(
       new CustomEvent("remove", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
         detail: e.detail,
       })
     );
@@ -226,9 +220,6 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
        */
       this.dispatchEvent(
         new CustomEvent("expand", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
           detail: this,
         })
       );
@@ -240,9 +231,6 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
        */
       this.dispatchEvent(
         new CustomEvent("collapse", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
           detail: this,
         })
       );
