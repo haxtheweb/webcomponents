@@ -109,7 +109,7 @@ class HaxMap extends I18NMixin(LitElement) {
     });
   }
   async updateHAXMap(e) {
-    let list = HAXStore.htmlToHaxElements(
+    let list = await HAXStore.htmlToHaxElements(
       await HAXStore.activeHaxBody.haxToContent()
     );
     this.calcStats(list);

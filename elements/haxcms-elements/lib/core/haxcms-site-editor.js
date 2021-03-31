@@ -1174,7 +1174,7 @@ class HAXCMSSiteEditor extends LitElement {
         node: {
           id: this.activeItem.id,
           body: body,
-          schema: HAXStore.htmlToHaxElements(body),
+          schema: await HAXStore.htmlToHaxElements(body),
         },
       };
       this.querySelector("#nodeupdateajax").generateRequest();

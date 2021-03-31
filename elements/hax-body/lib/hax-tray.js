@@ -1312,6 +1312,7 @@ class HaxTray extends I18NMixin(
     this.shadowRoot.querySelector("#settingsform").value = {};
     // see if we can get schema off of this.
     if (
+      activeNode &&
       activeNode.tagName &&
       HAXStore.elementList[activeNode.tagName.toLowerCase()]
     ) {

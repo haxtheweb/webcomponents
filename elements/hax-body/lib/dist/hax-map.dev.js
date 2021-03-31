@@ -256,7 +256,7 @@ var HaxMap =
         {
           key: "updateHAXMap",
           value: async function updateHAXMap(e) {
-            var list = _haxStore.HAXStore.htmlToHaxElements(
+            var list = await _haxStore.HAXStore.htmlToHaxElements(
               await _haxStore.HAXStore.activeHaxBody.haxToContent()
             );
 

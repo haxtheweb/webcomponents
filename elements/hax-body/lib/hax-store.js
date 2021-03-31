@@ -142,7 +142,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    * Simple workflow for logic from inserting based on
    * a series of criteria.
    */
-  insertLogicFromValues(values, context, failOnAnything = false) {
+  insertLogicFromValues(
+    values,
+    context,
+    failOnAnything = false,
+    linkOnMultiple = false
+  ) {
     // we have no clue what this is.. let's try and guess..
     let type = this.guessGizmoType(values);
     let typeName = type;
@@ -159,14 +164,30 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let haxElements = this.guessGizmo(type, values, false, preferExclusive);
     // see if we got anything
     if (haxElements.length > 0) {
-      if (haxElements.length === 1) {
-        if (typeof haxElements[0].tag !== typeof undefined) {
+      // if we ONLY have 1 thing or we say "make it a link if multiple"
+      // special case for pasting into the page
+      if (haxElements.length === 1 || linkOnMultiple) {
+        if (
+          haxElements.length === 1 &&
+          typeof haxElements[0].tag !== typeof undefined
+        ) {
           context.dispatchEvent(
             new CustomEvent("hax-insert-content", {
               bubbles: true,
               cancelable: true,
               composed: true,
               detail: haxElements[0],
+            })
+          );
+        } else if (linkOnMultiple) {
+          context.dispatchEvent(
+            new CustomEvent("hax-insert-content", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: haxElements.find((item) => {
+                return item.tag == "a";
+              }),
             })
           );
         }
@@ -1275,14 +1296,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
       // edges that some things preserve empty white space needlessly
-      let haxElements = this.htmlToHaxElements(pasteContent);
+      let haxElements = await this.htmlToHaxElements(pasteContent);
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
       if (haxElements.length === 0 && validURL(pasteContent)) {
         // ONLY use this logic if we're on an empty container
         if (this.activeNode.innerText.trim() != "") {
-          return false;
+          inlinePaste = true;
         }
         // test for a URL since we didn't have HTML / elements of some kind
         // if it's a URL we might be able to automatically convert it into it's own element
@@ -1291,7 +1312,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           title: pasteContent,
         };
         // if we DID get a match, block default values
-        if (!this.insertLogicFromValues(values, this)) {
+        if (
+          !inlinePaste &&
+          !this.insertLogicFromValues(values, this, false, true)
+        ) {
           // prevents the text being inserted previously so that the insertLogic does it
           // for us. false only is returned if we didn't do anthing in this function
           return false;
@@ -1386,7 +1410,20 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             }
           }
           if (inlinePaste) {
-            let txt = document.createTextNode(newNodes.innerHTML);
+            let txt;
+            // we got here via an inline paste trap for a URL or other inline content
+            if (!validURL(pasteContent)) {
+              // just make a text node if this is NODE a link
+              txt = document.createTextNode(newNodes.innerHTML);
+            } else {
+              // make a link because we have something that looks like one
+              // and we passed all above checks
+              txt = document.createElement("a");
+              txt.setAttribute("href", pasteContent);
+              txt.setAttribute("rel", "noopener noreferrer");
+              txt.setAttribute("target", "_blank");
+              txt.innerText = pasteContent;
+            }
             range.insertNode(txt);
             setTimeout(() => {
               this._positionCursorInNode(txt, txt.length);
