@@ -416,7 +416,7 @@ function stripMSWord(input) {
   output = output.replace(/<\!(\s|.)*?>/gim, "");
   // 3. remove tags leave content if any
   output = output.replace(
-    /<(\/)*(meta|link|html|head|body|span|font|br|\\\\?xml:|xml|st1:|o:|w:|m:|v:)(\s|.)*?>/gim,
+    /<(\/)*(meta|link|title|html|head|body|span|font|br|\\\\?xml:|xml|st1:|o:|w:|m:|v:)(\s|.)*?>/gim,
     ""
   );
   // 4. Remove everything in between and including tags '<style(.)style(.)>'
@@ -433,6 +433,18 @@ function stripMSWord(input) {
   output = output.replace(/ face="(\s|.)*?"/gim, "");
   output = output.replace(/ align=.*? /g, "");
   output = output.replace(/ start='.*?'/g, "");
+  // remove line-height; commonly set via html copy and paste in google docs
+  output = output.replace(/line-height:.*?\"/g, '"');
+  output = output.replace(/line-height:.*?;/g, "");
+  console.log(output);
+  // normal font cause... obviously
+  output = output.replace(/font-weight:normal;/g, "");
+  // text decoration in a link...
+  output = output.replace(/text-decoration:none;/g, "");
+  // margin clean up that is in point values; only machines make these
+  output = output.replace(/margin-.*?:.*?pt;/g, "");
+  // empty style tags
+  output = output.replace(/ style=""/g, "");
   // ID's wont apply meaningfully on a paste
   output = output.replace(/ id="(\s|.)*?"/gim, "");
   // Google Docs ones
@@ -444,6 +456,9 @@ function stripMSWord(input) {
   // in multiple html primatives
   output = output.replace(/ data-(\s|.)*?"(\s|.)*?"/gim, "");
   output = output.replace(/ class="(\s|.)*?"/gim, "");
+  output = output.replace(/<pstyle/gm, "<p style");
+  // HIGHLY specific to certain platforms, empty link tag
+  output = output.replace(/<a name=\"_GoBack\"><\/a>/gm, "");
   // 7. clean out empty paragraphs and endlines that cause weird spacing
   output = output.replace(/&nbsp;/gm, " ");
   // start of double, do it twice for nesting
@@ -458,9 +473,20 @@ function stripMSWord(input) {
   output = output.replace(/<br \/>/gm, "<br/>");
   output = output.replace(/<p><br \/><b>/gm, "<p><b>");
   output = output.replace(/<\/p><br \/><\/b>/gm, "</p></b>");
-  // some other things we know not to allow to wrap
+  // some other things we know not to allow to wrap and
+  // some things bold stuff like crazy for some odd reason
   output = output.replace(/<b><p>/gm, "<p>");
   output = output.replace(/<\/p><\/b>/gm, "</p>");
+  output = output.replace(/<b>/gm, "<strong>");
+  output = output.replace(/<\/b>/gm, "</strong>");
+  // clean up in lists because they get messy for no real reason...ever.
+  // tables as well
+  output = output.replace(/<p style=\".*?\">/gm, "<p>");
+  output = output.replace(/<ul style=\".*?\">/gm, "<ul>");
+  output = output.replace(/<ol style=\".*?\">/gm, "<ol>");
+  output = output.replace(/<li style=\".*?\">/gm, "<li>");
+  output = output.replace(/<td style=\".*?\">/gm, "<td>");
+  output = output.replace(/<tr style=\".*?\">/gm, "<tr>");
   // drop list wrappers
   output = output.replace(/<li><p>/gm, "<li>");
   output = output.replace(/<\/p><\/li>/gm, "</li>");

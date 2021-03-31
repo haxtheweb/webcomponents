@@ -1295,6 +1295,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
+      // we force h2 to be highest document level on pasted content
+      pasteContent = pasteContent.replace(/<h1>/g, "<h2>");
+      pasteContent = pasteContent.replace(/<\/h1>/g, "</h2>");
       // edges that some things preserve empty white space needlessly
       let haxElements = await this.htmlToHaxElements(pasteContent);
       // if interpretation as HTML fails then let's ignore this whole thing
