@@ -436,13 +436,13 @@ function stripMSWord(input) {
   // remove line-height; commonly set via html copy and paste in google docs
   output = output.replace(/line-height:.*?\"/g, '"');
   output = output.replace(/line-height:.*?;/g, "");
-  console.log(output);
   // normal font cause... obviously
   output = output.replace(/font-weight:normal;/g, "");
   // text decoration in a link...
   output = output.replace(/text-decoration:none;/g, "");
   // margin clean up that is in point values; only machines make these
-  output = output.replace(/margin-.*?:.*?pt;/g, "");
+  output = output.replace(/margin-.*?:.*?\"/g, '"');
+  output = output.replace(/margin-.*?:.*?;/g, "");
   // empty style tags
   output = output.replace(/ style=""/g, "");
   // ID's wont apply meaningfully on a paste
