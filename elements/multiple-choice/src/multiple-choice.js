@@ -94,12 +94,10 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     super();
     this.randomize = false;
     this.hideButtons = false;
-    this.title = "";
     this.disabled = false;
     this.singleOption = false;
     this.checkLabel = "Check answer";
     this.resetLabel = "Reset";
-    this.hideTitle = false;
     this.question = "";
     this.displayedAnswers = [];
     this.correctText = "Great job!";
@@ -158,10 +156,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     return html`
       <confetti-container id="confetti">
         <meta property="oer:assessing" content="${this.relatedResource}" />
-        ${!this.hideTitle
-          ? html` <h3><span property="oer:name">${this.title}</span></h3> `
-          : ``}
-        <div>${this.question}</div>
+        <h3><span property="oer:name">${this.question}</span></h3>
         ${this.singleOption
           ? html`
               ${this.displayedAnswers.map(
@@ -229,12 +224,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     return {
       ...super.properties,
       /**
-       * Title
-       */
-      title: {
-        type: String,
-      },
-      /**
        * Support disabling interaction with the entire board
        */
       disabled: {
@@ -267,13 +256,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       relatedResource: {
         type: String,
         attribute: "related-resource",
-      },
-      /**
-       * Flag to hide the title
-       */
-      hideTitle: {
-        type: Boolean,
-        attribute: "hide-title",
       },
       /**
        * Question to ask

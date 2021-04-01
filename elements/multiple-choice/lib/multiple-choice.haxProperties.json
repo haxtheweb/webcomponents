@@ -16,18 +16,6 @@
   "settings": {
     "configure": [
       {
-        "property": "title",
-        "title": "Title",
-        "description": "The title of the element",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "hideTitle",
-        "title": "Hide title",
-        "description": "Whether or not to display the title",
-        "inputMethod": "boolean"
-      },
-      {
         "property": "question",
         "title": "Question",
         "description": "Question for users to respond to.",
