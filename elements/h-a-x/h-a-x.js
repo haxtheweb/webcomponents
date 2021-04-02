@@ -19,95 +19,234 @@ class HAX extends HTMLElement {
   // render function
   get html() {
     return `
-    <style>
-    :host,h-a-x {
-      display: block;
-      font-size: var(--haxcms-base-styles-body-font-size);
-      font-family: var(--haxcms-base-styles-body-font-family);
-      line-height: var(--haxcms-base-styles-body-line-height);
-      letter-spacing: var(--haxcms-base-styles-body-letter-spacing);
-    }
+    <style>@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900|Source+Code+Pro:400,700|Lora:400,400i,700,700i|Playfair+Display:700i,900");
 
-    :host([hidden]),h-a-x([hidden]) {
-      display: none;
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      font-family: "Lora";
+      font-size: 18px;
+      letter-spacing: -0.03px;
+      line-height: 1.58;
     }
-
-    :host hax-body, h-a-x hax-body {
-      font-size: var(--haxcms-base-styles-body-font-size);
-      font-family: var(--haxcms-base-styles-body-font-family);
-      line-height: var(--haxcms-base-styles-body-line-height);
-      letter-spacing: var(--haxcms-base-styles-body-letter-spacing);
+    
+    h1,
+    h2,
+    p,
+    i,
+    a,
+    .first-letter,
+    .authorName a {
+      color: rgba(0, 0, 0, 0.84);
+      text-rendering: optimizeLegibility;
     }
-
-    :host img, h-a-x img {
-      max-width: 100%;
-      max-width: -moz-available;
-      max-width: -webkit-fill-available;
-      max-width: fill-available;
+    
+    hax-body h1,
+    hax-body h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 48px;
+      text-align: left;
+      margin-bottom: 8px;
+      letter-spacing: unset;
+      line-height: unset;
+      margin-top: 0;
     }
-
-    :host h1, h-a-x h1 {
-      font-size: var(--hax-base-styles-h1-font-size);
-      line-height: var(--hax-base-styles-h1-line-height);
+    hax-body h1 {
+      font-size: 60px;
     }
-
-    :host h2, h-a-x h2 {
-      font-size: var(--hax-base-styles-h2-font-size);
+    
+    h3 {
+      font-family: "Lato", sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      padding: 0;
+      text-align: left;
+      line-height: 34.5px;
+      letter-spacing: -0.45px;
     }
-
-    :host h3, h-a-x h3 {
-      font-size: var(--hax-base-styles-h3-font-size);
+    
+    h4 {
+      font-family: "Lato", sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #555;
     }
-
-    :host h4, h-a-x h4 {
-      font-size: var(--hax-base-styles-h4-font-size);
+    
+    h5 {
+      font-family: "Lato", sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #777;
     }
-
-    :host h5, h-a-x h5 {
-      font-size: var(--hax-base-styles-h5-font-size);  
+    
+    h6 {
+      font-family: "Lato", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #333;
     }
-
-    :host h6, h-a-x h6 {
-      font-size: var(--hax-base-styles-h6-font-size);
+    
+    p,
+    i,
+    a {
+      margin-top: 21px;
     }
-
-    :host p, h-a-x p {
-      min-height: var(--hax-base-styles-p-min-height);
-      font-size: var(--hax-base-styles-p-font-size);
-      line-height: var(--hax-base-styles-p-line-height);
-      letter-spacing: var(--hax-base-styles-p-letter-spacing);
+    a {
+      text-decoration: underline;
     }
-
-    :host a,
-    :host a:-webkit-any-link,
-    h-a-x a,
-    h-a-x a:-webkit-any-link    {
-      font-size: var(--hax-base-styles-a-font-size,var(--hax-base-styles-p-font-size));
+    
+    blockquote {
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+      font-style: italic;
+      letter-spacing: -0.36px;
+      line-height: 44.4px;
+      overflow-wrap: break-word;
+      margin: 55px 0 33px 0;
+      /* text-align: center; */
+      color: rgba(0, 0, 0, 0.68);
+      padding: 0 0 0 50px;
     }
-
-    :host ol,
-    :host ul
-    :host ol li,
-    :host ul li,
-    h-a-x ol,
-    h-a-x ul
-    h-a-x ol li,
-    h-a-x ul li {
-      line-height: var(--hax-base-styles-list-line-height,var(--hax-base-styles-p-line-height));
-      font-size: var(--hax-base-styles-list-font-size,var(--hax-base-styles-p-font-size));
+    
+    figcaption {
+      font-family: "Lato", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #666;
     }
-
-    :host ul ul,
-    :host ul ol,
-    :host ol ul,
-    :host ol ol,
-    h-a-x ul ul,
-    h-a-x ul ol,
-    h-a-x ol ul,
-    h-a-x ol ol {
-      padding-bottom: unset;
+    
+    label {
+      font-family: "Lato", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
     }
+    input, textarea, select {
+      border-radius:6px;
+      border-style:solid;
+      border-width: 2px;
+      padding:6px;
+      border-color:#333;
+    }
+    select option {
+      border-radius:6px;
+      border-style:solid;
+      border-width: 2px;
+      padding:6px;
+      border-color:#333;
+    }
+    
+    
+    
+    input[type=range] {
+      -webkit-appearance: none;
+      margin: 18px 0;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      cursor: pointer;
+      animate: 0.2s;
+      border-radius: 3px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      border: 2px solid #333333;
+      height: 36px;
+      width: 16px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -14px;
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+      background: #ccc;
+    }
+    input[type=range]::-moz-range-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      animate: 0.2s;
+      background: #ccc;
+      border: 2px solid #333;
+    }
+    input[type=range]::-moz-range-thumb {
+      border: 1px solid #333;
+      height: 36px;
+      width: 16px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+    }
+    input[type=range]::-ms-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      animate: 0.2s;
+      background: transparent;
+      border-color: transparent;
+      border-width: 16px 0;
+      color: transparent;
+    }
+    input[type=range]::-ms-fill-lower {
+      background: #ccc;
+      border: 2px solid #333;
+    }
+    input[type=range]::-ms-fill-upper {
+      background: #ccc;
+      border-radius: 2px;
+    }
+    input[type=range]::-ms-thumb {
+      border: 1px solid #333;
+      height: 36px;
+      width: 16px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+    }
+    input[type=range]:focus::-ms-fill-lower {
+      background: #ccc;
+    }
+    input[type=range]:focus::-ms-fill-upper {
+      background: #ccc;
+    }
+    
+    
+    
+    
+    ol ol {
+      list-style-type: lower-alpha;
+      font-size: 16px;
+      color: #444;
+    }
+    ol ol ol {
+      list-style-type: lower-roman;
+      font-size: 14px;
+    }
+    
+    code {
+      font-size: 18px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 2px;
+      padding: 3px 5px;
+      font-family: 'Source Code Pro', monospace;
+    }
+    pre {
+      font-family: 'Source Code Pro', monospace;
+    }
+    kbd {
+      font-family: 'Source Code Pro', monospace;
+      font-weight:700;
+    }
+    samp {
+      font-family: 'Source Code Pro', monospace;
+    }  
     </style>
+
     <hax-body>
         <slot></slot>
     </hax-body>`;

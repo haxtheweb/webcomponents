@@ -11,57 +11,6 @@ require("@lrnwebcomponents/responsive-utility/responsive-utility.js");
 
 var _utils = require("@lrnwebcomponents/utils/utils.js");
 
-var _HAXLayouts = require("@lrnwebcomponents/hax-body-behaviors/lib/HAXLayouts.js");
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly)
-      symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-    keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    if (i % 2) {
-      ownKeys(source, true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(source).forEach(function (key) {
-        Object.defineProperty(
-          target,
-          key,
-          Object.getOwnPropertyDescriptor(source, key)
-        );
-      });
-    }
-  }
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true,
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -85,9 +34,8 @@ function _templateObject3() {
     '\n            <div\n              class="column ',
     '"\n              id="col',
     '"\n              data-label="column ',
-    '"\n              data-layout-order="',
     '"\n              data-layout-slotname="col-',
-    '"\n              .style="',
+    '"\n              part="layout-container"\n              .style="',
     '"\n            >\n              <slot name="col-',
     '"></slot>\n            </div>\n          ',
   ]);
@@ -114,7 +62,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          display: block;\n          --hax-layout-container-outline-width: 1px;\n          --hax-layout-container-hover-outline-width: 1px;\n        }\n        :host .row {\n          width: 100%;\n          overflow-wrap: break-word;\n          display: flex;\n          flex-wrap: wrap;\n          justify-content: space-between;\n          align-items: stretch;\n          margin: var(--grid-plate-row-margin, 0px);\n          padding: var(--grid-plate-row-padding, 0px);\n        }\n        :host([disable-responsive]) .column {\n          overflow: hidden;\n        }\n        :host .column {\n          width: 100%;\n          flex: 0 0 auto;\n          min-height: 50px;\n        }\n        /* make sure that animation for nothing to 2 col doesn\'t jar layout */\n        :host([layout="1-1"]) #col1 {\n          width: 50%;\n        }\n        :host([layout="1-1-1"]) #col1 {\n          width: 33.33%;\n        }\n        :host([layout="1-1-1-1"]) #col1 {\n          width: 25%;\n        }\n        :host([layout="1-1-1-1-1"]) #col1 {\n          width: 20%;\n        }\n        :host([layout="1-1-1-1-1-1"]) #col1 {\n          width: 16.66%;\n        }\n        .column.not-shown {\n          min-height: unset;\n        }\n        :host .column ::slotted(*) {\n          margin: var(--grid-plate-item-margin, 15px);\n          padding: var(--grid-plate-item-padding, 15px);\n          max-width: calc(100% - 60px);\n          max-width: -webkit-fill-available;\n        }\n      ',
+    '\n        :host {\n          display: block;\n          --hax-layout-container-outline-width: 1px;\n          --hax-layout-container-hover-outline-width: 1px;\n        }\n        :host .row {\n          width: 100%;\n          overflow-wrap: break-word;\n          display: flex;\n          flex-wrap: wrap;\n          justify-content: space-between;\n          align-items: stretch;\n          margin: var(--grid-plate-row-margin, 0px);\n          padding: var(--grid-plate-row-padding, 0px);\n        }\n        :host([disable-responsive]) .column {\n          overflow: hidden;\n        }\n        :host .column {\n          width: 100%;\n          flex: 0 0 auto;\n          min-height: 50px;\n        }\n        /* make sure that animation for nothing to 2 col doesn\'t jar layout */\n        :host([layout="1-1"]) #col1 {\n          width: 50%;\n        }\n        :host([layout="1-1-1"]) #col1 {\n          width: 33.33%;\n        }\n        :host([layout="1-1-1-1"]) #col1 {\n          width: 25%;\n        }\n        :host([layout="1-1-1-1-1"]) #col1 {\n          width: 20%;\n        }\n        :host([layout="1-1-1-1-1-1"]) #col1 {\n          width: 16.66%;\n        }\n        .column.not-shown {\n          min-height: unset;\n        }\n        :host .column ::slotted(*) {\n          margin: var(--grid-plate-item-margin, 15px);\n          padding: var(--grid-plate-item-padding, 15px);\n          max-width: calc(100% - 60px);\n          max-width: -webkit-fill-available;\n        }\n          :host([ready]) [data-layout-slotname] {\n            transition: var(\n              --hax-layout-container-transition,\n              0.5s width ease-in-out,\n              0.5s padding ease-in-out,\n              0.5s margin ease-in-out\n            );\n          }\n          :host([data-hax-ray]) [data-layout-slotname].not-shown {\n            display: block;\n            opacity: 0.4;\n            width: 0;\n          }\n          :host([data-hax-ray]) [data-layout-slotname].not-shown.has-nodes {\n            width: 100%;\n            transition: none;\n          }\n          :host([data-hax-ray]) .not-shown:hover {\n            opacity: 1;\n          }\n          :host([data-hax-ray]) .not-shown:hover::before {\n            content: "Hidden bylayout";\n            position: sticky;\n            display: inline-flex;\n            background-color: black;\n            color: white;\n            padding: 0px 8px;\n            font-size: 12px;\n            line-height: 16px;\n            margin: 12px 13px;\n            float: right;\n            width: 124px;\n          }\n          /** this implies hax editing state is available **/\n          :host([data-hax-ray]) ::slotted(*) {\n            outline: var(--hax-layout-slotted-outline-width, 0px)\n              var(--hax-layout-slotted-outline-style, solid)\n              var(\n                --hax-layout-slotted-outline-color,\n                var(--hax-layout-slotted-faded-color, #eeeeee)\n              );\n            outline-offset: var(--hax-layout-slotted-outline-offset, 0px);\n          }\n          :host([data-hax-ray]) ::slotted(*:hover) {\n            outline: var(--hax-layout-slotted-hover-outline-width, 0px)\n              var(--hax-layout-slotted-hover-outline-style, solid)\n              var(\n                --hax-layout-slotted-hover-outline-color,\n                var(--hax-layout-accent-color, #009dc7)\n              );\n          }\n          :host([data-hax-ray]) ::slotted(.hax-active) {\n            outline: var(--hax-layout-slotted-active-outline-width, 1px)\n              var(--hax-layout-slotted-active-outline-style, solid)\n              var(\n                --hax-layout-slotted-active-outline-color,\n                var(--hax-layout-slotted-faded-color, #eeeeee)\n              );\n          }\n          :host([data-hax-ray]) [data-layout-slotname] {\n            outline: var(--hax-layout-container-outline-width, 0px)\n              var(--hax-layout-container-outline-style, solid)\n              var(\n                --hax-layout-container-outline-color,\n                var(--hax-layout-slotted-faded-color, #eeeeee)\n              );\n            outline-offset: var(--hax-layout-container-outline-offset, 2px);\n          }\n          :host([data-hax-ray]) [data-layout-slotname]:hover {\n            outline: var(--hax-layout-container-hover-outline-width, 0px)\n              var(--hax-layout-container-hover-outline-style, solid)\n              var(\n                --hax-layout-container-hover-outline-color,\n                var(--hax-layout-slotted-faded-color, #eeeeee)\n              );\n          }\n          :host([data-hax-ray]) ::slotted(*.active):before {\n            outline: var(--hax-layout-slotted-active-outline-width, 1px)\n              var(--hax-layout-slotted-active-outline-style, solid)\n              var(\n                --hax-layout-slotted-active-outline-color,\n                var(--hax-layout-slotted-faded-color, #eeeeee)\n              );\n            background-color: inherit;\n            content: " ";\n            width: 100%;\n            display: block;\n            position: relative;\n            margin: -10px 0 0 0;\n            z-index: 2;\n            height: 10px;\n          }\n          :host([data-hax-ray]) ::slotted(img.active),\n          :host([data-hax-ray]) ::slotted(*.active):before {\n            background-color: var(\n              --hax-layout-slotted-active-outline-color,\n              var(--hax-layout-accent-color, #009dc7)\n            ) !important;\n            outline: var(--hax-layout-slotted-active-outline-width, 1px)\n              var(--hax-layout-slotted-active-outline-style, solid)\n              var(\n                --hax-layout-slotted-active-outline-color,\n                var(--hax-layout-accent-color, #009dc7)\n              );\n          }\n\n          @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {\n            :host([data-hax-ray]) ::slotted(*.active) {\n              background-color: var(\n                --hax-layout-slotted-active-outline-color,\n                var(--hax-layout-accent-color, #009dc7)\n              ) !important;\n              outline: var(--hax-layout-slotted-active-outline-width, 1px)\n                var(--hax-layout-slotted-active-outline-style, solid)\n                var(\n                  --hax-layout-slotted-active-outline-color,\n                  var(--hax-layout-accent-color, #009dc7)\n                );\n            }\n          }\n      ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -133,33 +81,6 @@ function _taggedTemplateLiteral(strings, raw) {
   );
 }
 
-function _toConsumableArray(arr) {
-  return (
-    _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread()
-  );
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-function _iterableToArray(iter) {
-  if (
-    Symbol.iterator in Object(iter) ||
-    Object.prototype.toString.call(iter) === "[object Arguments]"
-  )
-    return Array.from(iter);
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  }
-}
-
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
@@ -174,6 +95,40 @@ function _assertThisInitialized(self) {
     );
   }
   return self;
+}
+
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    _get = Reflect.get;
+  } else {
+    _get = function _get(target, property, receiver) {
+      var base = _superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+      return desc.value;
+    };
+  }
+  return _get(target, property, receiver || target);
+}
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = _getPrototypeOf(object);
+    if (object === null) break;
+  }
+  return object;
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf
+    ? Object.getPrototypeOf
+    : function _getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+      };
+  return _getPrototypeOf(o);
 }
 
 function _defineProperties(target, props) {
@@ -210,40 +165,6 @@ function _setPrototypeOf(o, p) {
       return o;
     };
   return _setPrototypeOf(o, p);
-}
-
-function _get(target, property, receiver) {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    _get = Reflect.get;
-  } else {
-    _get = function _get(target, property, receiver) {
-      var base = _superPropBase(target, property);
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-      if (desc.get) {
-        return desc.get.call(receiver);
-      }
-      return desc.value;
-    };
-  }
-  return _get(target, property, receiver || target);
-}
-
-function _superPropBase(object, property) {
-  while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = _getPrototypeOf(object);
-    if (object === null) break;
-  }
-  return object;
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -400,8 +321,8 @@ var GridPlateLayoutOptions = function GridPlateLayoutOptions() {
 
 var GridPlate =
   /*#__PURE__*/
-  (function (_HaxLayoutBehaviors) {
-    _inherits(GridPlate, _HaxLayoutBehaviors);
+  (function (_LitElement) {
+    _inherits(GridPlate, _LitElement);
 
     _createClass(GridPlate, null, [
       {
@@ -411,12 +332,7 @@ var GridPlate =
          * LitElement render styles
          */
         get: function get() {
-          return [].concat(
-            _toConsumableArray(
-              _get(_getPrototypeOf(GridPlate), "styles", this)
-            ),
-            [(0, _litElement.css)(_templateObject())]
-          );
+          return [(0, _litElement.css)(_templateObject())];
         },
       },
     ]);
@@ -459,7 +375,7 @@ var GridPlate =
               _templateObject2(),
               [1, 2, 3, 4, 5, 6].map(function (num) {
                 return (0,
-                _litElement.html)(_templateObject3(), _this2.columns < num ? "not-shown" : "drag-enabled", num, num, num, num, _this2._getColumnWidth(num - 1, _this2.__columnWidths), num);
+                _litElement.html)(_templateObject3(), _this2.columns < num ? "not-shown" : "drag-enabled", num, num, num, _this2._getColumnWidth(num - 1, _this2.__columnWidths), num);
               })
             );
           },
@@ -470,17 +386,20 @@ var GridPlate =
           /**
            * life cycle
            */
-          value: (function (_firstUpdated) {
-            function firstUpdated(_x) {
-              return _firstUpdated.apply(this, arguments);
-            }
+          value: function firstUpdated(changedProperties) {
+            var _this3 = this;
 
-            firstUpdated.toString = function () {
-              return _firstUpdated.toString();
-            };
-
-            return firstUpdated;
-          })(function (changedProperties) {
+            if (
+              _get(_getPrototypeOf(GridPlate.prototype), "firstUpdated", this)
+            )
+              _get(
+                _getPrototypeOf(GridPlate.prototype),
+                "firstUpdated",
+                this
+              ).call(this, changedProperties);
+            setTimeout(function () {
+              _this3.ready = true;
+            }, 100);
             this.resize();
             window.dispatchEvent(
               new CustomEvent("responsive-element", {
@@ -501,11 +420,7 @@ var GridPlate =
               this.layouts,
               this.disableResponsive
             );
-            if (
-              _get(_getPrototypeOf(GridPlate.prototype), "firstUpdated", this)
-            )
-              firstUpdated(changedProperties);
-          }),
+          },
           /**
            * Wire to HAX
            */
@@ -513,7 +428,7 @@ var GridPlate =
         {
           key: "updated",
           value: function updated(changedProperties) {
-            var _this3 = this;
+            var _this4 = this;
 
             if (_get(_getPrototypeOf(GridPlate.prototype), "updated", this))
               _get(_getPrototypeOf(GridPlate.prototype), "updated", this).call(
@@ -530,13 +445,13 @@ var GridPlate =
                   "disableResponsive",
                 ].includes(propName)
               ) {
-                clearTimeout(_this3.__calcWidthLock);
-                _this3.__calcWidthLock = setTimeout(function () {
-                  _this3.__columnWidths = _this3._getColumnWidths(
-                    _this3.responsiveSize,
-                    _this3.layout,
-                    _this3.layouts,
-                    _this3.disableResponsive
+                clearTimeout(_this4.__calcWidthLock);
+                _this4.__calcWidthLock = setTimeout(function () {
+                  _this4.__columnWidths = _this4._getColumnWidths(
+                    _this4.responsiveSize,
+                    _this4.layout,
+                    _this4.layouts,
+                    _this4.disableResponsive
                   );
                 }, 0);
               }
@@ -546,15 +461,15 @@ var GridPlate =
                 case "__columnWidths":
                   // widths changed because of layout somehow, wait for the resize transition
                   // to have processed, then fire a resize event which we are listening
-                  _this3.resize();
+                  _this4.resize();
 
                   break;
 
                 case "disableResponsive":
                   // fire an event that this is a core piece of the system
-                  _this3.dispatchEvent(
+                  _this4.dispatchEvent(
                     new CustomEvent("disable-responsive-changed", {
-                      detail: _this3[propName],
+                      detail: _this4[propName],
                     })
                   );
 
@@ -671,90 +586,87 @@ var GridPlate =
         {
           key: "haxProperties",
           get: function get() {
-            return _objectSpread(
-              {},
-              _get(_getPrototypeOf(GridPlate), "haxProperties", this) || {},
-              {
-                canScale: true,
-                canPosition: true,
-                canEditSource: true,
-                contentEditable: undefined,
-                gizmo: {
-                  title: "Grid layout",
-                  description: "Simple card in a cool retro design",
-                  icon: "hax:3-3-3-3",
-                  color: "grey",
-                  groups: ["Layout"],
-                  handles: [],
-                  meta: {
-                    author: "ELMS:LN",
-                    owner: "The Pennsylvania State University",
+            return {
+              type: "grid",
+              canScale: true,
+              canPosition: true,
+              canEditSource: true,
+              contentEditable: undefined,
+              gizmo: {
+                title: "Grid layout",
+                description: "Simple card in a cool retro design",
+                icon: "hax:3-3-3-3",
+                color: "grey",
+                groups: ["Layout"],
+                handles: [],
+                meta: {
+                  author: "ELMS:LN",
+                  owner: "The Pennsylvania State University",
+                },
+              },
+              settings: {
+                configure: [
+                  {
+                    property: "layout",
+                    title: "Column Layout",
+                    description:
+                      "Style to present these items (may change for small screens)",
+                    inputMethod: "select",
+                    options: new GridPlateLayoutOptions().options,
                   },
-                },
-                settings: {
-                  configure: [
-                    {
-                      property: "layout",
-                      title: "Column Layout",
-                      description:
-                        "Style to present these items (may change for small screens)",
-                      inputMethod: "select",
-                      options: new GridPlateLayoutOptions().options,
-                    },
-                    {
-                      property: "disableResponsive",
-                      title: "Disable responsive",
-                      description:
-                        "Check box to force layout to stick regardless of screen breakpoins",
-                      inputMethod: "boolean",
-                    },
-                  ],
-                  advanced: [
-                    {
-                      property: "breakpointSm",
-                      title: "Small Breakpoint",
-                      description:
-                        "Anything less than this number (in pixels) will render with the smallest version of this layout",
-                      inputMethod: "textfield",
-                      validationType: "number",
-                    },
-                    {
-                      property: "breakpointMd",
-                      title: "Medium Breakpoint",
-                      description:
-                        "Anything less than this number (in pixels) will render with the small version of this layout",
-                      inputMethod: "textfield",
-                      validationType: "number",
-                    },
-                    {
-                      property: "breakpointLg",
-                      title: "Large Breakpoint",
-                      description:
-                        "Anything less than this number (in pixels) will render with the medium version of this layout.",
-                      inputMethod: "textfield",
-                      validationType: "number",
-                    },
-                    {
-                      property: "breakpointXl",
-                      title: "Extra-Large Breakpoint",
-                      description:
-                        "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
-                      inputMethod: "textfield",
-                      validationType: "number",
-                    },
-                  ],
-                },
-                saveOptions: {
-                  unsetAttributes: [
-                    "ready",
-                    "layouts",
-                    "columns",
-                    "options",
-                    "responsive-width",
-                  ],
-                },
-              }
-            );
+                  {
+                    property: "disableResponsive",
+                    title: "Disable responsive",
+                    description:
+                      "Check box to force layout to stick regardless of screen breakpoins",
+                    inputMethod: "boolean",
+                  },
+                ],
+                advanced: [
+                  {
+                    property: "breakpointSm",
+                    title: "Small Breakpoint",
+                    description:
+                      "Anything less than this number (in pixels) will render with the smallest version of this layout",
+                    inputMethod: "textfield",
+                    validationType: "number",
+                  },
+                  {
+                    property: "breakpointMd",
+                    title: "Medium Breakpoint",
+                    description:
+                      "Anything less than this number (in pixels) will render with the small version of this layout",
+                    inputMethod: "textfield",
+                    validationType: "number",
+                  },
+                  {
+                    property: "breakpointLg",
+                    title: "Large Breakpoint",
+                    description:
+                      "Anything less than this number (in pixels) will render with the medium version of this layout.",
+                    inputMethod: "textfield",
+                    validationType: "number",
+                  },
+                  {
+                    property: "breakpointXl",
+                    title: "Extra-Large Breakpoint",
+                    description:
+                      "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
+                    inputMethod: "textfield",
+                    validationType: "number",
+                  },
+                ],
+              },
+              saveOptions: {
+                unsetAttributes: [
+                  "ready",
+                  "layouts",
+                  "columns",
+                  "options",
+                  "responsive-width",
+                ],
+              },
+            };
           },
         },
         {
@@ -835,6 +747,10 @@ var GridPlate =
               layouts: {
                 type: Object,
               },
+              ready: {
+                type: Boolean,
+                reflect: true,
+              },
 
               /**
                * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`
@@ -858,7 +774,7 @@ var GridPlate =
     );
 
     return GridPlate;
-  })((0, _HAXLayouts.HaxLayoutBehaviors)(_litElement.LitElement));
+  })(_litElement.LitElement);
 
 exports.GridPlate = GridPlate;
 window.customElements.define(GridPlate.tag, GridPlate);

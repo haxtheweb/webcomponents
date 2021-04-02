@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-import { HaxLayoutBehaviors } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXLayouts.js";
 
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {
@@ -148,13 +147,12 @@ class GridPlateLayoutOptions {
  * @demo demo/index.html
  * @element grid-plate
  */
-class GridPlate extends HaxLayoutBehaviors(LitElement) {
+class GridPlate extends LitElement {
   /**
    * LitElement render styles
    */
   static get styles() {
     return [
-      ...super.styles,
       css`
         :host {
           display: block;
@@ -204,6 +202,126 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
         }
+        :host([ready]) [data-layout-slotname] {
+          transition: var(
+            --hax-layout-container-transition,
+            0.5s width ease-in-out,
+            0.5s padding ease-in-out,
+            0.5s margin ease-in-out
+          );
+        }
+        :host([data-hax-ray]) [data-layout-slotname].not-shown {
+          display: block;
+          opacity: 0.4;
+          width: 0;
+        }
+        :host([data-hax-ray]) [data-layout-slotname].not-shown.has-nodes {
+          width: 100%;
+          transition: none;
+        }
+        :host([data-hax-ray]) .not-shown:hover {
+          opacity: 1;
+        }
+        :host([data-hax-ray]) .not-shown:hover::before {
+          content: "Hidden bylayout";
+          position: sticky;
+          display: inline-flex;
+          background-color: black;
+          color: white;
+          padding: 0px 8px;
+          font-size: 12px;
+          line-height: 16px;
+          margin: 12px 13px;
+          float: right;
+          width: 124px;
+        }
+        /** this implies hax editing state is available **/
+        :host([data-hax-ray]) ::slotted(*) {
+          outline: var(--hax-layout-slotted-outline-width, 0px)
+            var(--hax-layout-slotted-outline-style, solid)
+            var(
+              --hax-layout-slotted-outline-color,
+              var(--hax-layout-slotted-faded-color, #eeeeee)
+            );
+          outline-offset: var(--hax-layout-slotted-outline-offset, 0px);
+        }
+        :host([data-hax-ray]) ::slotted(*:hover) {
+          outline: var(--hax-layout-slotted-hover-outline-width, 0px)
+            var(--hax-layout-slotted-hover-outline-style, solid)
+            var(
+              --hax-layout-slotted-hover-outline-color,
+              var(--hax-layout-accent-color, #009dc7)
+            );
+        }
+        :host([data-hax-ray]) ::slotted(.hax-active) {
+          outline: var(--hax-layout-slotted-active-outline-width, 1px)
+            var(--hax-layout-slotted-active-outline-style, solid)
+            var(
+              --hax-layout-slotted-active-outline-color,
+              var(--hax-layout-slotted-faded-color, #eeeeee)
+            );
+        }
+        :host([data-hax-ray]) [data-layout-slotname] {
+          outline: var(--hax-layout-container-outline-width, 0px)
+            var(--hax-layout-container-outline-style, solid)
+            var(
+              --hax-layout-container-outline-color,
+              var(--hax-layout-slotted-faded-color, #eeeeee)
+            );
+          outline-offset: var(--hax-layout-container-outline-offset, 2px);
+        }
+        :host([data-hax-ray]) [data-layout-slotname]:hover {
+          outline: var(--hax-layout-container-hover-outline-width, 0px)
+            var(--hax-layout-container-hover-outline-style, solid)
+            var(
+              --hax-layout-container-hover-outline-color,
+              var(--hax-layout-slotted-faded-color, #eeeeee)
+            );
+        }
+        :host([data-hax-ray]) ::slotted(*.active):before {
+          outline: var(--hax-layout-slotted-active-outline-width, 1px)
+            var(--hax-layout-slotted-active-outline-style, solid)
+            var(
+              --hax-layout-slotted-active-outline-color,
+              var(--hax-layout-slotted-faded-color, #eeeeee)
+            );
+          background-color: inherit;
+          content: " ";
+          width: 100%;
+          display: block;
+          position: relative;
+          margin: -10px 0 0 0;
+          z-index: 2;
+          height: 10px;
+        }
+        :host([data-hax-ray]) ::slotted(img.active),
+        :host([data-hax-ray]) ::slotted(*.active):before {
+          background-color: var(
+            --hax-layout-slotted-active-outline-color,
+            var(--hax-layout-accent-color, #009dc7)
+          ) !important;
+          outline: var(--hax-layout-slotted-active-outline-width, 1px)
+            var(--hax-layout-slotted-active-outline-style, solid)
+            var(
+              --hax-layout-slotted-active-outline-color,
+              var(--hax-layout-accent-color, #009dc7)
+            );
+        }
+
+        @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
+          :host([data-hax-ray]) ::slotted(*.active) {
+            background-color: var(
+              --hax-layout-slotted-active-outline-color,
+              var(--hax-layout-accent-color, #009dc7)
+            ) !important;
+            outline: var(--hax-layout-slotted-active-outline-width, 1px)
+              var(--hax-layout-slotted-active-outline-style, solid)
+              var(
+                --hax-layout-slotted-active-outline-color,
+                var(--hax-layout-accent-color, #009dc7)
+              );
+          }
+        }
       `,
     ];
   }
@@ -235,8 +353,8 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
                 : "drag-enabled"}"
               id="col${num}"
               data-label="column ${num}"
-              data-layout-order="${num}"
               data-layout-slotname="col-${num}"
+              part="layout-container"
               .style="${this._getColumnWidth(num - 1, this.__columnWidths)}"
             >
               <slot name="col-${num}"></slot>
@@ -253,6 +371,10 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
    * life cycle
    */
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    setTimeout(() => {
+      this.ready = true;
+    }, 100);
     this.resize();
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
@@ -273,14 +395,13 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
       this.layouts,
       this.disableResponsive
     );
-    if (super.firstUpdated) firstUpdated(changedProperties);
   }
   /**
    * Wire to HAX
    */
   static get haxProperties() {
     return {
-      ...(super.haxProperties || {}),
+      type: "grid",
       canScale: true,
       canPosition: true,
       canEditSource: true,
@@ -429,6 +550,10 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
       */
       layouts: {
         type: Object,
+      },
+      ready: {
+        type: Boolean,
+        reflect: true,
       },
       /**
        * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`

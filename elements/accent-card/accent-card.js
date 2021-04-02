@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-import { HaxLayoutBehaviors } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXLayouts.js";
 
 /**
  * `accent-card`
@@ -68,9 +67,7 @@ Custom property | Description | Default
  * @demo ./demo/images.html image aligmnent
  * @demo ./demo/variables.html css variables
  */
-class AccentCard extends HaxLayoutBehaviors(
-  IntersectionObserverMixin(SimpleColors)
-) {
+class AccentCard extends IntersectionObserverMixin(SimpleColors) {
   /**
    * Store tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -348,6 +345,14 @@ class AccentCard extends HaxLayoutBehaviors(
             var(--simple-colors-default-theme-grey-6, #666)
           );
         }
+        :host([ready]) [data-layout-slotname] {
+          transition: var(
+            --hax-layout-container-transition,
+            0.5s width ease-in-out,
+            0.5s padding ease-in-out,
+            0.5s margin ease-in-out
+          );
+        }
       `,
     ];
   }
@@ -368,43 +373,24 @@ class AccentCard extends HaxLayoutBehaviors(
         </div>
         <div class="body">
           <div id="heading">
-            <div
-              data-label="Heading"
-              data-layout-order="1"
-              data-layout-slotname="heading"
-            >
+            <div data-label="Heading" data-layout-slotname="heading">
               <slot name="heading"></slot>
             </div>
-            <div
-              data-label="Corner"
-              data-layout-order="2"
-              data-layout-slotname="Corner"
-            >
+            <div data-label="Corner" data-layout-slotname="Corner">
               <slot name="corner"></slot>
             </div>
           </div>
           <div
             id="subheading"
             data-label="Subheading"
-            data-layout-order="3"
             data-layout-slotname="subheading"
           >
             <slot name="subheading"></slot>
           </div>
-          <div
-            id="content"
-            data-label="Content"
-            data-layout-order="4"
-            data-layout-slotname="content"
-          >
+          <div id="content" data-label="Content" data-layout-slotname="content">
             <slot name="content"></slot>
           </div>
-          <div
-            id="footer"
-            data-label="Footer"
-            data-layout-order="5"
-            data-layout-slotname="footer"
-          >
+          <div id="footer" data-label="Footer" data-layout-slotname="footer">
             <slot name="footer"></slot>
           </div>
         </div>
@@ -415,7 +401,7 @@ class AccentCard extends HaxLayoutBehaviors(
   // haxProperty definition
   static get haxProperties() {
     return {
-      ...(super.haxProperties || {}),
+      type: "grid",
       canScale: true,
       canPosition: true,
       canEditSource: true,
@@ -586,12 +572,22 @@ class AccentCard extends HaxLayoutBehaviors(
     this.imageSrc = null;
     this.imageValign = null;
     this.noBorder = false;
+    this.ready = false;
+  }
+  /**
+   * life cycle
+   */
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    setTimeout(() => {
+      this.ready = true;
+    }, 100);
   }
 
   // properties available to custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
+      ...(super.properties || {}),
 
       /**
        * Apply accent color to card background
@@ -667,6 +663,10 @@ class AccentCard extends HaxLayoutBehaviors(
       noBorder: {
         type: Boolean,
         attribute: "no-border",
+        reflect: true,
+      },
+      ready: {
+        type: Boolean,
         reflect: true,
       },
     };

@@ -279,7 +279,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*:not([hax-layout-container])[contenteditable]:hover) {
+          ::slotted(*:not([data-hax-layout])[contenteditable]:hover) {
           outline: var(--hax-body-active-outline-hover);
           caret-color: auto;
         }
@@ -297,7 +297,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted(*:not([hax-layout-container])[contenteditable]
+          ::slotted(*:not([data-hax-layout])[contenteditable]
             .hax-active:hover) {
           cursor: text !important;
           caret-color: auto;
@@ -542,7 +542,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         } else if (
           eventPath[0].closest("[data-move-order]") &&
           eventPath[3] &&
-          eventPath[3].closest("[hax-layout-container]")
+          eventPath[3].closest("[data-hax-layout]")
         ) {
           let addRect = this.contextMenus.add.getBoundingClientRect();
           let height = -addRect.height - 1;
@@ -1578,7 +1578,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // insert at active insert point if we have one
     else if (active && active.parentNode) {
       // allow for inserting things into things but not grid plate
-      if (!!active.parentNode.haxLayoutContainer) {
+      if (!!this.__isLayout(active.parentNode)) {
         if (active.getAttribute("slot") != null) {
           newNode.setAttribute("slot", active.getAttribute("slot"));
         }
@@ -1649,12 +1649,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     for (var i = 0; i < children.length; i++) {
       // some mild front-end sanitization
       if (this._validElementTest(children[i])) {
-        children[i].removeAttribute("data-hax-ray");
+        this.__applyDragDropState(children[i], false);
         // remove some of the protected classes though they shouldn't leak through
         children[i].classList.remove("hax-hovered");
         children[i].contentEditable = false;
         content += HAXStore.nodeToContent(children[i]);
-        if (!!children[i].haxLayoutContainer) {
+        if (!!this.__isLayout(children[i])) {
           this._applyContentEditable(this.editMode, children[i]);
         }
       }
@@ -1826,7 +1826,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // sanity chekc and ensure we are not told to lock position of all menus
       clearTimeout(this.__positionContextTimer);
       this.__positionContextTimer = setTimeout(() => {
-        console.log(node, HAXStore.isTextElement(node));
         if (!HAXStore._lockContextPosition) {
           // menu width starts out w/ the plate context which is a set size
           let menuWidth = 176;
@@ -2245,7 +2244,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   _haxContextOperation(e) {
     let detail = e.detail;
-    console.log(e, detail, this.activeNode);
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "insert-above-active":
@@ -2283,7 +2281,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           }
           this.__ignoreActive = true;
           this.activeNode.removeAttribute("contenteditable");
-          this.activeNode.removeAttribute("data-hax-ray");
+          this.__applyDragDropState(this.activeNode, false);
           this.activeNode.classList.remove("hax-active");
           wrap(this.activeNode, HAXStore.activeEditingElement);
         } else {
@@ -2354,7 +2352,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
               this.__ignoreActive = true;
               this.activeNode.removeAttribute("contenteditable");
-              this.activeNode.removeAttribute("data-hax-ray");
+              this.__applyDragDropState(this.activeNode, false);
               this.activeNode.classList.remove("hax-active");
               wrap(this.activeNode, HAXStore.activeEditingElement);
             }
@@ -2477,6 +2475,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param autoFocus boolean - whether to auto focus / place cursor
    */
   __focusLogic(target, autoFocus = true) {
+    console.log("__focusLogic", target, autoFocus);
     let stopProp = false;
     // only worry about these when we are in edit mode
     // and there is no drawer open
@@ -2536,6 +2535,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             activeNode = containerNode;
           }
         }
+        console.log(
+          "__focusLogic 2",
+          activeNode,
+          containerNode,
+          this.activeNode
+        );
         // ensure this is a tag we care about / have support for and
         // that it is a new value
         if (
@@ -2810,6 +2815,203 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
     }
   }
+  __layoutDropEvent(e, node) {
+    [...node.querySelectorAll(".active")].forEach((el) => {
+      el.classList.remove("active");
+    });
+    [...node.shadowRoot.querySelectorAll(".active")].forEach((el) => {
+      el.classList.remove("active");
+    });
+  }
+  __layoutDragEnter(e) {
+    e.target.classList.add("active");
+  }
+  __layoutDragLeave(e) {
+    e.target.classList.remove("active");
+  }
+  __layoutMonitor(e) {
+    // sanity, we have a local slot
+    var eventPath = normalizeEventPath(e);
+
+    if (
+      eventPath[0] &&
+      eventPath[0].assignedNodes &&
+      eventPath[0].assignedNodes().length
+    ) {
+      // has nodes so we can make sure to track this elsewhere
+      eventPath[0].parentNode.classList.add("has-nodes");
+    } else {
+      eventPath[0].parentNode.classList.remove("has-nodes");
+    }
+  }
+  __getLayoutOrder(target, layout) {
+    if (!layout.shadowRoot) return false;
+    let slot = target.getAttribute("slot"),
+      container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
+      containers = [
+        ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
+      ],
+      order = containers.indexOf(container) || -1;
+    return order;
+  }
+  /**
+   * Determines if the item can move a set number of slots.
+   *
+   * @param {object} the item
+   * @param {number} -1 for left or +1 for right
+   * @returns {boolean} if the item can move a set number of slots
+   */
+  __layoutCanMove(target, layout, before) {
+    if (!layout.shadowRoot) return false;
+    let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
+      containers = [
+        ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
+      ],
+      order = containers.indexOf(container) || -1,
+      dest = order + (before ? -1 : 1);
+    return dest >= containers[0] && dest <= containers[containers.length - 1];
+  }
+  /**
+   * Moves an item a set number of slots.
+   *
+   * @param {object} the item
+   * @param {number} -1 for left or +1 for right
+   */
+  __layoutMove(target, layout, before) {
+    if (!layout.shadowRoot) return false;
+    let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
+      containers = [
+        ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
+      ],
+      order = containers.indexOf(container) || -1,
+      dest = order + (before ? -1 : 1),
+      slot = containers[dest];
+    if (slot) target.setAttribute("slot", slot);
+  }
+  async __sortLayoutChildren(layout) {
+    layout.setAttribute("hax-layour-sorting", true);
+    try {
+      // select all direct children w/ a slot attribute and convert to an Array
+      let children = Array.prototype.reduce.call(
+        layout.querySelectorAll("[slot]"),
+        function (acc, e) {
+          return acc;
+        },
+        []
+      );
+      // sort the children by slot id being low to high
+      children = children.sort(function (a, b) {
+        if (
+          this.__getLayoutOrder(a, layout) < this.__getLayoutOrder(b, layout)
+        ) {
+          return -1;
+        }
+        return 1;
+      });
+      // loop through and append these back into the grid plate.
+      // which will put them in the right order
+      await children.forEach((el) => {
+        // sanity check that we only move things that are a direct child
+        if (el.parentNode === this) {
+          layout.appendChild(el);
+        }
+      });
+    } catch (error) {
+      console.warn(error);
+    }
+    layout.removeAttribute("hax-layour-sorting");
+  }
+  /**
+   * Validate the slot name
+   */
+  __layoutSlotValid(target, layout) {
+    return this.__layoutSlots(layout).includes(target.getAttribute("slot"));
+  }
+
+  /**
+   * gets a layout's valud slots
+   */
+  __layoutSlots(layout) {
+    return layout.shadowRoot
+      ? [
+          ...layout.shadowRoot.querySelectorAll("[data-layout-slotname]"),
+        ].map((container) => container.getAttribute("data-layout-slotname"))
+      : [];
+  }
+
+  __applyDragDropState(layout, haxRay) {
+    let events = {
+      drop: (e) => this.__layoutDropEvent(e, layout).bind(this),
+      dragenter: this.__layoutDragEnter.bind(this),
+      dragleave: this.__layoutDragEnter.bind(this),
+      slotchange: this.__layoutMonitor.bind(this),
+    };
+    layout.setAttribute("data-hax-layout", true);
+    if (haxRay) layout.setAttribute("data-hax-ray", haxRay);
+    if (haxRay && layout.shadowRoot) {
+      // apply handlers to the columns themselves
+      layout.addEventListener("drop", events.drop);
+      let containers = [...layout.shadowRoot.querySelectorAll("drag-enabled")],
+        slots = [...layout.shadowRoot.querySelectorAll("slot")];
+      containers.forEach((container) => {
+        container.addEventListener("dragenter", events.dragenter);
+        container.addEventListener("dragleave", events.dragleave);
+      });
+      slots.forEach((slot) =>
+        slot.addEventListener("slotchange", events.slotchange)
+      );
+      layout.haxLayoutObserver = new MutationObserver((mutations) => {
+        if (!layout.getAttribute("hax-layour-sorting")) {
+          mutations.forEach((mutation) => {
+            // this implies something was added dynamically or drag and drop
+            // from outside this element or dragging between grid plates
+            // so we need to disconnect the handlers from here and pick them
+            // up in the new plate
+            mutation.addedNodes.forEach((node) => {
+              if (node.tagName && node !== this) {
+                // verify this has a slot set otherwise we need to set one on the fly
+                // otherwise this won't show up. This could be incorrectly formed HTML
+                // DOM that was pushed in via an outside system or edge cases of things
+                // dropping in without a slot set in anyway
+                // validate slot name, otherwise force it to col-1
+                if (
+                  node.parentElement &&
+                  node.parentElement.tagName !== "HAX-BODY" &&
+                  !this.__layoutSlotValid(node, layout) &&
+                  this.__layoutSlots(layout).length > 0
+                ) {
+                  node.setAttribute("slot", this.__layoutSlots(layout)[0]);
+                }
+              }
+            });
+          });
+          this.__sortLayoutChildren(layout);
+        }
+      });
+      layout.haxLayoutObserver.observe(this, {
+        childList: true,
+      });
+    } else if (layout.shadowRoot) {
+      if (layout.haxLayoutObserver) {
+        layout.haxLayoutObserver.disconnect();
+      }
+      this.removeEventListener("drop", events.drop);
+
+      let containers = [...layout.shadowRoot.querySelectorAll("drag-enabled")],
+        slots = [...layout.shadowRoot.querySelectorAll("slot")];
+      containers.forEach((container) => {
+        container.removeEventListener("dragenter", events.dragenter);
+        container.removeEventListener("dragleave", events.dragleave);
+      });
+      slots.forEach((slot) =>
+        slot.removeEventListener("slotchange", events.slotchange)
+      );
+      layout.removeAttribute("data-hax-ray");
+    }
+  }
+  __isLayout(el) {
+    return el && el.haxProperties && el.type == "grid";
+  }
   /**
    * Apply the node editable state correctly so we can do drag and drop / editing uniformly
    */
@@ -2831,10 +3033,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // oooooo snap, drag and drop..
     if (status) {
-      node.setAttribute("data-hax-ray", haxRay);
+      this.__applyDragDropState(node, haxRay);
       listenerMethod = "addEventListener";
     } else {
-      node.removeAttribute("data-hax-ray");
+      this.__applyDragDropState(node, false);
       listenerMethod = "removeEventListener";
     }
     node[listenerMethod]("drop", this.dropEvent.bind(this));
@@ -2898,10 +3100,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       var target = null;
       var eventPath = normalizeEventPath(e);
       if (
-        e.target.closest("[hax-layout-container]") &&
-        e.target.parentNode != e.target.closest("[hax-layout-container]")
+        e.target.closest("[data-hax-layout]") &&
+        e.target.parentNode != e.target.closest("[data-hax-layout]")
       ) {
-        target = e.target.closest("[hax-layout-container]");
+        target = e.target.closest("[data-hax-layout]");
       } else if (e.target.closest("[contenteditable],img")) {
         target = e.target.closest("[contenteditable],img");
       } else if (e.originalTarget) {
@@ -2921,7 +3123,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.querySelectorAll(".hax-hovered").forEach((el) => {
         el.classList.remove("hax-hovered");
       });
-      // remove [hax-layout-container] drops
+      // remove [data-hax-layout] drops
       this.querySelectorAll(".active").forEach((el) => {
         el.classList.remove("active");
       });
@@ -2944,18 +3146,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // inject a placeholder P tag which we will then immediately replace
           let tmp = document.createElement("p");
           if (
-            e.target.closest("[hax-layout-container]") &&
-            e.target.parentNode != e.target.closest("[hax-layout-container]")
+            e.target.closest("[data-hax-layout]") &&
+            e.target.parentNode != e.target.closest("[data-hax-layout]")
           ) {
-            local = e.target.closest("[hax-layout-container]");
+            local = e.target.closest("[data-hax-layout]");
           } else if (e.target.closest("[contenteditable],img")) {
             local = e.target.closest("[contenteditable],img");
           }
           if (
             (local &&
               ((local.tagName && local.tagName !== "HAX-BODY") ||
-                !local.getAttribute("hax-layout-container"))) ||
-            eventPath[0].haxLayoutContainer
+                !local.getAttribute("data-hax-layout"))) ||
+            this.__isLayout(eventPath[0])
           ) {
             if (local.getAttribute("slot")) {
               tmp.setAttribute("slot", local.getAttribute("slot"));
@@ -3005,10 +3207,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           target = HAXStore.__dragTarget;
           local = e.target;
           if (
-            e.target.closest("[hax-layout-container]") &&
-            e.target.parentNode != e.target.closest("[hax-layout-container]")
+            e.target.closest("[data-hax-layout]") &&
+            e.target.parentNode != e.target.closest("[data-hax-layout]")
           ) {
-            local = e.target.closest("[hax-layout-container]");
+            local = e.target.closest("[data-hax-layout]");
           } else if (e.target.closest("[contenteditable],img")) {
             local = e.target.closest("[contenteditable],img");
           }
@@ -3023,8 +3225,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // incase this came from a grid plate, drop the slot so it works
             try {
               if (
-                (local.tagName !== "HAX-BODY" && !local.haxLayoutContainer) ||
-                eventPath[0].haxLayoutContainer
+                (local.tagName !== "HAX-BODY" && !this.__isLayout(local)) ||
+                this.__isLayout(eventPath[0])
               ) {
                 if (local.getAttribute("slot")) {
                   target.setAttribute("slot", local.getAttribute("slot"));
@@ -3317,14 +3519,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (
       this.editMode &&
       HAXStore.runHook(oldValue, "activeElementChanged", [oldValue, false])
-    ) {
-      this.__ignoreActive = true;
-    }
-    // attempt new value processing on element changed
-    // @see haxHooks activeElementChanged
-    if (
-      this.editMode &&
-      HAXStore.runHook(newValue, "activeElementChanged", [newValue, true])
     ) {
       this.__ignoreActive = true;
     }
