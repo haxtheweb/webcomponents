@@ -292,6 +292,16 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
             inputMethod: "boolean",
             icon: "editor:title",
           },
+          {
+            property: "lang",
+            title: "Language",
+            description: "",
+            inputMethod: "select",
+            options: {
+              en: "En",
+              es: "Spanish",
+            },
+          },
         ],
       },
       saveOptions: {

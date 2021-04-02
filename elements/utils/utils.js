@@ -2,6 +2,89 @@
  * A collection of utility functions exported for convenience
  */
 
+/**
+ * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
+ */
+export function CSVtoArray(text) {
+  let p = "",
+    row = [""],
+    ret = [row],
+    i = 0,
+    r = 0,
+    s = !0,
+    l;
+  for (l in text) {
+    l = text[l];
+    if ('"' === l) {
+      if (s && l === p) row[i] += l;
+      s = !s;
+    } else if ("," === l && s) l = row[++i] = "";
+    else if ("\n" === l && s) {
+      if ("\r" === p) row[i] = row[i].slice(0, -1);
+      row = ret[++r] = [(l = "")];
+      i = 0;
+    } else row[i] += l;
+    p = l;
+  }
+  return ret;
+}
+/**
+ * Check source of the video, potentially correcting bad links.
+ */
+export function cleanVideoSource(input) {
+  // strip off the ? modifier for youtube/vimeo so we can build ourselves
+  var tmp = input.split("?");
+  var v = "";
+  input = tmp[0];
+  if (tmp.length == 2) {
+    let tmp2 = tmp[1].split("&"),
+      args = tmp2[0].split("="),
+      qry = Array.isArray(tmp2.shift()) ? tmp2.shift().join("") : tmp2.shift();
+    if (args[0] == "v") {
+      let q = qry !== undefined && qry !== "" ? "?" + qry : "";
+      v = args[1] + q;
+    }
+  }
+  // link to the vimeo video instead of the embed player address
+  if (
+    input.indexOf("player.vimeo.com") == -1 &&
+    input.indexOf("vimeo.com") != -1
+  ) {
+    // normalize what the API will return since it is API based
+    // and needs cleaned up for front-end
+    if (input.indexOf("/videos/") != -1) {
+      input = input.replace("/videos/", "/");
+    }
+    return input.replace("vimeo.com/", "player.vimeo.com/video/");
+  }
+  // copy and paste from the URL
+  else if (input.indexOf("youtube.com/watch") != -1) {
+    return input.replace("youtube.com/watch", "youtube.com/embed/") + v;
+  }
+  // copy and paste from the URL
+  else if (input.indexOf("youtube-no-cookie.com/") != -1) {
+    return input.replace("youtube-no-cookie.com/", "youtube.com/") + v;
+  }
+  // weird share-ly style version
+  else if (input.indexOf("youtu.be") != -1) {
+    return input.replace("youtu.be/", "www.youtube.com/embed/") + v;
+  }
+  // copy and paste from the URL for sketchfab
+  else if (
+    input.indexOf("sketchfab.com") != -1 &&
+    input.indexOf("/embed") == -1
+  ) {
+    return input + "/embed";
+  }
+  // copy and paste from the URL for sketchfab
+  else if (
+    input.indexOf("dailymotion.com") != -1 &&
+    input.indexOf("/embed") == -1
+  ) {
+    return input.replace("/video/", "/embed/video/");
+  }
+  return input;
+}
 // wrap an element with another; super basic but makes it consistent across our apps
 function wrap(el, wrapper) {
   if (el && el.parentNode) {
@@ -333,7 +416,7 @@ function stripMSWord(input) {
   output = output.replace(/<\!(\s|.)*?>/gim, "");
   // 3. remove tags leave content if any
   output = output.replace(
-    /<(\/)*(meta|link|html|head|body|span|font|br|\\\\?xml:|xml|st1:|o:|w:|m:|v:)(\s|.)*?>/gim,
+    /<(\/)*(meta|link|title|html|head|body|span|font|br|\\\\?xml:|xml|st1:|o:|w:|m:|v:)(\s|.)*?>/gim,
     ""
   );
   // 4. Remove everything in between and including tags '<style(.)style(.)>'
@@ -350,6 +433,18 @@ function stripMSWord(input) {
   output = output.replace(/ face="(\s|.)*?"/gim, "");
   output = output.replace(/ align=.*? /g, "");
   output = output.replace(/ start='.*?'/g, "");
+  // remove line-height; commonly set via html copy and paste in google docs
+  output = output.replace(/line-height:.*?\"/g, '"');
+  output = output.replace(/line-height:.*?;/g, "");
+  // normal font cause... obviously
+  output = output.replace(/font-weight:normal;/g, "");
+  // text decoration in a link...
+  output = output.replace(/text-decoration:none;/g, "");
+  // margin clean up that is in point values; only machines make these
+  output = output.replace(/margin-.*?:.*?\"/g, '"');
+  output = output.replace(/margin-.*?:.*?;/g, "");
+  // empty style tags
+  output = output.replace(/ style=""/g, "");
   // ID's wont apply meaningfully on a paste
   output = output.replace(/ id="(\s|.)*?"/gim, "");
   // Google Docs ones
@@ -361,6 +456,9 @@ function stripMSWord(input) {
   // in multiple html primatives
   output = output.replace(/ data-(\s|.)*?"(\s|.)*?"/gim, "");
   output = output.replace(/ class="(\s|.)*?"/gim, "");
+  output = output.replace(/<pstyle/gm, "<p style");
+  // HIGHLY specific to certain platforms, empty link tag
+  output = output.replace(/<a name=\"_GoBack\"><\/a>/gm, "");
   // 7. clean out empty paragraphs and endlines that cause weird spacing
   output = output.replace(/&nbsp;/gm, " ");
   // start of double, do it twice for nesting
@@ -375,9 +473,20 @@ function stripMSWord(input) {
   output = output.replace(/<br \/>/gm, "<br/>");
   output = output.replace(/<p><br \/><b>/gm, "<p><b>");
   output = output.replace(/<\/p><br \/><\/b>/gm, "</p></b>");
-  // some other things we know not to allow to wrap
+  // some other things we know not to allow to wrap and
+  // some things bold stuff like crazy for some odd reason
   output = output.replace(/<b><p>/gm, "<p>");
   output = output.replace(/<\/p><\/b>/gm, "</p>");
+  output = output.replace(/<b>/gm, "<strong>");
+  output = output.replace(/<\/b>/gm, "</strong>");
+  // clean up in lists because they get messy for no real reason...ever.
+  // tables as well
+  output = output.replace(/<p style=\".*?\">/gm, "<p>");
+  output = output.replace(/<ul style=\".*?\">/gm, "<ul>");
+  output = output.replace(/<ol style=\".*?\">/gm, "<ol>");
+  output = output.replace(/<li style=\".*?\">/gm, "<li>");
+  output = output.replace(/<td style=\".*?\">/gm, "<td>");
+  output = output.replace(/<tr style=\".*?\">/gm, "<tr>");
   // drop list wrappers
   output = output.replace(/<li><p>/gm, "<li>");
   output = output.replace(/<\/p><\/li>/gm, "</li>");
@@ -455,7 +564,7 @@ function objectValFromStringPos(o, s, r = null) {
  * a certain level of sanitization by verifying tags and
  * properties / attributes that have values.
  */
-function nodeToHaxElement(node, eventName = "insert-element") {
+async function nodeToHaxElement(node, eventName = "insert-element") {
   if (!node) {
     return null;
   }
@@ -552,7 +661,7 @@ function nodeToHaxElement(node, eventName = "insert-element") {
   if (window.HaxStore.instance._isSandboxed && tag === "iframe") {
     tag = "webview";
   }
-  let slotContent = window.HaxStore.instance.getHAXSlot(node);
+  let slotContent = await window.HaxStore.instance.getHAXSlot(node);
   // support fallback on inner text if there were no nodes
   if (slotContent == "") {
     slotContent = node.innerText;

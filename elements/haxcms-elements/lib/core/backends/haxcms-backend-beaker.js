@@ -155,7 +155,10 @@ class HAXCMSBackendBeaker extends LitElement {
     // make sure this location exists
     await this.shadowRoot
       .querySelector("#beaker")
-      .write(this.activeItem.location, HAXStore.activeHaxBody.haxToContent());
+      .write(
+        this.activeItem.location,
+        await HAXStore.activeHaxBody.haxToContent()
+      );
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
       .show("Page updated!");

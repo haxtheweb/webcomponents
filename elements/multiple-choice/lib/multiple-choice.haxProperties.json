@@ -1,0 +1,132 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Multiple choice",
+    "description": "Multiple choice self check",
+    "icon": "hax:multiple-choice",
+    "color": "purple",
+    "groups": ["Instructional"],
+    "handles": [],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "Question for users to respond to.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "randomize",
+        "title": "Randomize",
+        "description": "Randomize the answers dynamically",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "answers",
+        "title": "Answer set",
+        "description": "Answers in a multiple choice",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "properties": [
+          {
+            "property": "correct",
+            "title": "Correct",
+            "description": "If this is correct or not",
+            "inputMethod": "boolean"
+          },
+          {
+            "property": "label",
+            "title": "Answer",
+            "description": "Possible answer to the question",
+            "inputMethod": "textfield",
+            "required": true
+          }
+        ]
+      },
+      {
+        "property": "correctText",
+        "title": "Correct feedback",
+        "description": "Feedback when they get it right",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "correctIcon",
+        "title": "Correct icon",
+        "description": "Icon to display when correct answer happens",
+        "inputMethod": "iconpicker",
+        "options": [
+          "icons:trending-flat",
+          "icons:launch",
+          "icons:pan-tool",
+          "icons:link",
+          "icons:check",
+          "icons:favorite",
+          "icons:thumb-up",
+          "icons:thumb-down",
+          "icons:send"
+        ]
+      },
+      {
+        "property": "incorrectText",
+        "title": "Incorrect feedback",
+        "description": "Feedback when they get it wrong",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "incorrectIcon",
+        "title": "Incorrect icon",
+        "description": "Icon to display when wrong answer happens",
+        "inputMethod": "iconpicker",
+        "options": [
+          "icons:trending-flat",
+          "icons:launch",
+          "icons:pan-tool",
+          "icons:link",
+          "icons:check",
+          "icons:favorite",
+          "icons:thumb-up",
+          "icons:thumb-down",
+          "icons:send"
+        ]
+      }
+    ],
+    "advanced": [
+      {
+        "property": "checkLabel",
+        "title": "Check answers label",
+        "description": "Label for getting solution feedback",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "resetLabel",
+        "title": "Reset label",
+        "description": "label for the reset button",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers"]
+  },
+  "demoSchema": [
+    {
+      "tag": "multiple-choice",
+      "properties": {
+        "randomize": true
+      },
+      "content": "<input type=\"checkbox\" value=\"Option 1 - Correct answer\" correct>\n<input type=\"checkbox\" value=\"Option 2\">"
+    }
+  ]
+}

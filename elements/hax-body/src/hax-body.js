@@ -209,7 +209,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty):before {
+          ::slotted([contenteditable][data-hax-ray]:empty)::before {
           content: attr(data-hax-ray);
           opacity: 0.2;
           transition: 0.2s all ease-in-out;
@@ -217,14 +217,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:hover:empty):before {
+          ::slotted([contenteditable][data-hax-ray]:hover:empty)::before {
           opacity: 0.4;
           cursor: text;
         }
 
         :host([edit-mode])
           #bodycontainer
-          ::slotted([contenteditable][data-hax-ray]:empty:focus):before {
+          ::slotted([contenteditable][data-hax-ray]:empty:focus)::before {
           content: "";
         }
         :host([edit-mode]) #bodycontainer ::slotted(p) {
@@ -351,7 +351,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           display: none;
         }
         /* drag and drop */
-        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*):before {
+        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*)::before {
           background-color: var(--hax-body-possible-target-background-color);
           content: " ";
           width: 100%;
@@ -366,7 +366,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           outline: var(--hax-body-editable-outline);
         }
         :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered),
-        :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered):before {
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered)::before {
           background-color: var(--hax-body-target-background-color) !important;
         }
         :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered) {
@@ -633,7 +633,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         target = target.closest("[contenteditable]");
       } else if (HAXStore.validTagList.includes(target.tagName.toLowerCase())) {
         // tagName is in the valid tag list so just let it get selected
-      } else if (target.tagName !== "HAX-BODY") {
+      } else if (target.tagName !== "HAX-BODY" && !target.haxUIElement) {
         // this is a usecase we didn't think of...
         console.warn(target);
       }
@@ -846,22 +846,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * LitElement life cycle - properties changed callback
    */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
+  async updated(changedProperties) {
+    changedProperties.forEach(async (oldValue, propName) => {
       if (propName == "editMode" && oldValue !== undefined) {
         // microtask delay to allow store to establish child nodes appropriately
-        setTimeout(() => {
+        setTimeout(async () => {
           this._editModeChanged(this[propName], oldValue);
           if (this[propName]) {
-            this._activeNodeChanged(this.activeNode, null);
+            await this._activeNodeChanged(this.activeNode, null);
             this.activeNode.focus();
           } else {
-            this._activeNodeChanged(null, this.activeNode);
+            await this._activeNodeChanged(null, this.activeNode);
           }
         }, 0);
       }
       if (propName == "activeNode" && this.ready) {
-        this._activeNodeChanged(this[propName], oldValue);
+        await this._activeNodeChanged(this[propName], oldValue);
       }
     });
     if (super.updated) {
@@ -1087,7 +1087,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             });
           }
         });
-      } else if (this.__ignoreActive) {
+      }
+      // regardless, we just processed mutations, let's ensure we are not ignoring things
+      if (this.__ignoreActive) {
         this.__ignoreActive = false;
       }
       HAXStore.haxTray.updateMap();
@@ -1344,25 +1346,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   _onKeyPress(e) {
-    clearTimeout(this.__keyPress);
-    this.__keyPress = setTimeout(() => {
-      if (
-        this.editMode &&
-        this.activeNode &&
-        HAXStore.isTextElement(this.activeNode)
-      ) {
-        if (e.key === "Enter") {
-          this.activeNode = this.activeNode.nextElementSibling;
-        }
-        // If the user has paused for awhile, show the menu
-        clearTimeout(this.__positionContextTimer);
-        this.__positionContextTimer = setTimeout(() => {
-          // always on active if we were just typing
-          this.__addActiveVisible();
-          this.positionContextMenus();
-        }, 2500);
-      }
-    }, 50);
+    if (
+      this.editMode &&
+      this.activeNode &&
+      e.key === "Enter" &&
+      HAXStore.isTextElement(this.activeNode)
+    ) {
+      this.activeNode = this.activeNode.nextElementSibling;
+      // If the user has paused for awhile, show the menu
+      clearTimeout(this.__positionContextTimer);
+      this.__positionContextTimer = setTimeout(() => {
+        // always on active if we were just typing
+        this.__addActiveVisible();
+        this.positionContextMenus();
+      }, 2000);
+    }
   }
 
   /**
@@ -1389,20 +1387,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.replaceElementWorkflow();
     }
   }
-  canTansformNode(node = null) {
-    return this.replaceElementWorkflow(node, true).length > 0 ? true : false;
+  async canTansformNode(node = null) {
+    return (await this.replaceElementWorkflow(node, true).length) > 0
+      ? true
+      : false;
   }
   /**
    * Whole workflow of replacing something in place contextually.
    * This can fire for things like events needing this workflow to
    * invoke whether it's a "convert" event or a "replace placeholder" event
    */
-  replaceElementWorkflow(activeNode = null, testOnly = false) {
+  async replaceElementWorkflow(activeNode = null, testOnly = false) {
     // support for tests with things other than activeNode
     if (activeNode == null) {
       activeNode = this.activeNode;
     }
-    let element = nodeToHaxElement(activeNode, null);
+    let element = await nodeToHaxElement(activeNode, null);
     let type = "*";
     let skipPropMatch = false;
     // special support for place holder which defines exactly
@@ -1634,7 +1634,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Return the current hax content area as text that could be
    * inserted into something.
    */
-  haxToContent() {
+  async haxToContent() {
     this.hideContextMenus();
     var __active = this.activeNode;
     // null this to drop hax based classes
@@ -1653,7 +1653,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // remove some of the protected classes though they shouldn't leak through
         children[i].classList.remove("hax-hovered");
         children[i].contentEditable = false;
-        content += HAXStore.nodeToContent(children[i]);
+        content += await HAXStore.nodeToContent(children[i]);
         if (!!this.__isLayout(children[i])) {
           this._applyContentEditable(this.editMode, children[i]);
         }
@@ -1669,14 +1669,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         children[i].children &&
         children[i].children[0]
       ) {
-        let tmp = HAXStore.runHook(children[i], "activeElementChanged", [
+        let tmp = await HAXStore.runHook(children[i], "activeElementChanged", [
           this.activeNode,
           false,
         ]);
         if (tmp && tmp !== children[i]) {
-          content += HAXStore.nodeToContent(tmp);
+          content += await HAXStore.nodeToContent(tmp);
         } else {
-          content += HAXStore.nodeToContent(children[i].children[0]);
+          content += await HAXStore.nodeToContent(children[i].children[0]);
         }
       }
       // keep everything NOT an element at this point, this helps
@@ -1736,10 +1736,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Duplicate node into the local DOM below the current item if we can.
    */
-  haxDuplicateNode(node) {
+  async haxDuplicateNode(node) {
     // convert the node to a hax element
-    let haxElement = nodeToHaxElement(node, null);
+    let haxElement = await nodeToHaxElement(node, null);
     var props = HAXStore.elementList[node.tagName.toLowerCase()];
+    // @see haxHooks: preProcessInsertContent
+    if (HAXStore.testHook(node, "preProcessInsertContent")) {
+      haxElement = await HAXStore.runHook(node, "preProcessInsertContent", [
+        haxElement,
+      ]);
+    }
     // support for tag defining which properties NOT to save
     // for simplification, everything is an attribute during this
     // operation
@@ -1752,12 +1758,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           delete haxElement.properties[props.saveOptions.unsetAttributes[i]];
         }
       }
-    }
-    // @see haxHooks: preProcessInsertContent
-    if (HAXStore.testHook(node, "preProcessInsertContent")) {
-      haxElement = HAXStore.runHook(node, "preProcessInsertContent", [
-        haxElement,
-      ]);
     }
     if (haxElement.content == haxElement.properties.innerHTML) {
       delete haxElement.properties.innerHTML;
@@ -1791,7 +1791,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   hideContextMenus(hidePlate = true) {
     // clear the timeouts for anything that could cause these to reapear
     clearTimeout(gravityScrollTimer);
-    clearTimeout(this.__keyPress);
     clearTimeout(this.__contextVisibleLock);
     clearTimeout(this.__positionContextTimer);
     // primary context menus
@@ -2063,7 +2062,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }, 0);
     }
     // edge case where we need to force form to update
-    HAXStore.refreshActiveNodeForm();
+    await HAXStore.refreshActiveNodeForm();
   }
   /**
    * Convert an element from one tag to another.
@@ -2242,7 +2241,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Respond to hax operations.
    */
-  _haxContextOperation(e) {
+  async _haxContextOperation(e) {
     let detail = e.detail;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
@@ -2287,7 +2286,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         } else {
           this.activeNode.__haxSourceView = false;
           // run internal state hook if it exist and if we get a response
-          let replacement = HAXStore.runHook(
+          let replacement = await HAXStore.runHook(
             HAXStore.activeEditingElement,
             "activeElementChanged",
             [this.activeNode, false]
@@ -2360,7 +2359,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         } else {
           this.activeNode.__haxSourceView = false;
           // run internal state hook if it exist and if we get a response
-          let replacement = HAXStore.runHook(
+          let replacement = await HAXStore.runHook(
             HAXStore.activeEditingElement,
             "activeElementChanged",
             [this.activeNode, false]
@@ -2635,7 +2634,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Notice the change between states for editing.
    */
-  _editModeChanged(newValue, oldValue) {
+  async _editModeChanged(newValue, oldValue) {
     // fire above that we have changed states so things can react if needed
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
@@ -2701,7 +2700,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // see if anyone cares about editMode changing; some link based things do
     for (var i = 0; i < children.length; i++) {
-      HAXStore.runHook(children[i], "editModeChanged", [newValue]);
+      await HAXStore.runHook(children[i], "editModeChanged", [newValue]);
     }
   }
   /**
@@ -3017,6 +3016,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __applyNodeEditableState(node, status = true) {
     let listenerMethod;
+    // sanity check a dom node
+    if (!node.tagName) {
+      return false;
+    }
     // create the hax-ray x ray googles thing
     let haxRay = node.tagName.replace("-", " ").toLowerCase();
     let i = toJS(HAXStore.gizmoList).findIndex((j) => {
@@ -3518,7 +3521,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // @see haxHooks activeElementChanged
     if (
       this.editMode &&
-      HAXStore.runHook(oldValue, "activeElementChanged", [oldValue, false])
+      (await HAXStore.runHook(oldValue, "activeElementChanged", [
+        oldValue,
+        false,
+      ]))
+    ) {
+      this.__ignoreActive = true;
+    }
+    // attempt new value processing on element changed
+    // @see haxHooks activeElementChanged
+    if (
+      this.editMode &&
+      (await HAXStore.runHook(newValue, "activeElementChanged", [
+        newValue,
+        true,
+      ]))
     ) {
       this.__ignoreActive = true;
     }
@@ -3537,7 +3554,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       ) {
         this.__ignoreActive = true;
         // run internal state hook if it exist and if we get a response
-        let replacement = HAXStore.runHook(
+        let replacement = await HAXStore.runHook(
           HAXStore.activeEditingElement,
           "activeElementChanged",
           [oldValue, false]
@@ -3612,7 +3629,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         this.__ignoreActive = true;
         wrap(newValue, HAXStore.activeEditingElement);
         // @see haxHooks activeElementChanged, this is run on the editing element too
-        HAXStore.runHook(
+        await HAXStore.runHook(
           HAXStore.activeEditingElement,
           "activeElementChanged",
           [newValue, true]

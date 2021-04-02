@@ -704,24 +704,18 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
     constructor() {
       super();
-      import(
-        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-source-code.js"
-      );
-      import(
-        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js"
-      );
-      import(
-        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js"
-      );
-      import(
-        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-underline.js"
-      );
-      import(
-        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-image.js"
-      );
-      import(
-        "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js"
-      );
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-source-code.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-underline.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-image.js");
+      // prettier-ignore
+      import("@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js");
       this.config = this.defaultConfig;
       this.clickableElements = {};
       this.breadcrumbsLabel = "Select";

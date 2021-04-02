@@ -18,6 +18,10 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
       }
       return {
         ...props,
+        disableResponsive: {
+          type: Boolean,
+          attribute: "disable-responsive",
+        },
         /*
          * size for responsive styling: xs, sm, md, lg, xl
          */

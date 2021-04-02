@@ -62,7 +62,7 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               action
               more
               .icon="${this.activeTagIcon}"
-              label="${this.t.changeTo}..."
+              label="${this.t.changeTo}.."
               tooltip="${this.activeTagName}, ${this.t.clickToChange}"
               ?disabled="${this.disableTransform}"
               event-name="hax-transform-node"
@@ -190,7 +190,7 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   /**
    * HAX properties changed, update buttons available.
    */
-  _resetCEMenu() {
+  async _resetCEMenu() {
     if (this.shadowRoot) {
       wipeSlot(this, "*");
     }
@@ -202,9 +202,11 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       this.sourceView = schema.canEditSource;
       if (!HAXStore.isTextElement(this.activeNode)) {
         // detect if this can be transformed into anything else
-        this.disableTransform = !HAXStore.activeHaxBody.canTansformNode(
-          this.activeNode
+        let list = await HAXStore.activeHaxBody.replaceElementWorkflow(
+          this.activeNode,
+          true
         );
+        this.disableTransform = list.length === 0 ? true : false;
         if (HAXStore.activeGizmo) {
           this.activeTagName = HAXStore.activeGizmo.title;
           this.activeTagIcon = HAXStore.activeGizmo.icon;
@@ -215,7 +217,7 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       this.activeTagIcon = "";
     }
     // @see haxHook inlineContextMenu
-    HAXStore.runHook(this.activeNode, "inlineContextMenu", [this]);
+    await HAXStore.runHook(this.activeNode, "inlineContextMenu", [this]);
   }
 }
 window.customElements.define(HaxCeContext.tag, HaxCeContext);

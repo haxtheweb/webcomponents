@@ -101,6 +101,11 @@
           "description": "Miniumum value for extra-large breakpoint",
           "type": "number",
           "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
@@ -228,6 +233,7 @@
         },
         {
           "name": "disableResponsive",
+          "attribute": "disable-responsive",
           "type": "boolean",
           "default": "false"
         }
@@ -359,6 +365,11 @@
           "description": "Miniumum value for extra-large breakpoint",
           "type": "number",
           "default": "1500"
+        },
+        {
+          "name": "disable-responsive",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
@@ -486,6 +497,7 @@
         },
         {
           "name": "disableResponsive",
+          "attribute": "disable-responsive",
           "type": "boolean",
           "default": "false"
         }

@@ -4,12 +4,470 @@
     {
       "name": "grade-book",
       "path": "./grade-book.js",
-      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`"
+      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`",
+      "attributes": [
+        {
+          "name": "debug",
+          "type": "boolean"
+        },
+        {
+          "name": "sheet",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "totalScore",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "active-student",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "active-assignment",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "scoreLock",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "t",
+          "type": "object",
+          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\"}"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "debug",
+          "attribute": "debug",
+          "type": "boolean"
+        },
+        {
+          "name": "sheet",
+          "attribute": "sheet",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string"
+        },
+        {
+          "name": "sheetGids",
+          "type": "object",
+          "default": "{\"tags\":0,\"roster\":118800528,\"assignments\":540222065,\"rubrics\":1744429439,\"submissions\":2104732668,\"gradeScale\":980501320,\"grades\":2130903440,\"gradesDetails\":644559151,\"settings\":1413275461}"
+        },
+        {
+          "name": "activeSheetPage",
+          "type": "string",
+          "default": "\"tags\""
+        },
+        {
+          "name": "assessmentView",
+          "type": "object"
+        },
+        {
+          "name": "totalScore",
+          "attribute": "totalScore",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "activeStudent",
+          "attribute": "active-student",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "activeAssignment",
+          "attribute": "active-assignment",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "activeSubmission",
+          "type": "string"
+        },
+        {
+          "name": "scoreLock",
+          "attribute": "scoreLock",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "activeRubric",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "activeGrading",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "database",
+          "type": "object",
+          "default": "{\"tags\":{\"categories\":[],\"data\":[]},\"submissions\":[],\"rubrics\":[],\"assignments\":[],\"roster\":[],\"grades\":{},\"gradesDetails\":{},\"gradeScale\":[],\"settings\":{}}"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\"}"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-tag-drop"
+        },
+        {
+          "name": "simple-tag-dragstart"
+        }
+      ]
+    },
+    {
+      "name": "grade-book-student-block",
+      "path": "./lib/grade-book-student-block.js",
+      "attributes": [
+        {
+          "name": "student",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "t",
+          "type": "object",
+          "default": "{\"profileImageFor\":\"Profile image for\",\"userID\":\"User ID\",\"preferredName\":\"Preferred name\",\"emailAddress\":\"Email this student\",\"notes\":\"Notes\",\"interests\":\"Interests\"}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "student",
+          "attribute": "student",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"profileImageFor\":\"Profile image for\",\"userID\":\"User ID\",\"preferredName\":\"Preferred name\",\"emailAddress\":\"Email this student\",\"notes\":\"Notes\",\"interests\":\"Interests\"}"
+        }
+      ]
+    },
+    {
+      "name": "letter-grade",
+      "path": "./lib/letter-grade.js",
+      "attributes": [
+        {
+          "name": "points-system",
+          "type": "string",
+          "default": "\"pts\""
+        },
+        {
+          "name": "score",
+          "type": "number"
+        },
+        {
+          "name": "total",
+          "type": "number"
+        },
+        {
+          "name": "grade-scale",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "letter",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "show-scale",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "pointsSystem",
+          "attribute": "points-system",
+          "type": "string",
+          "default": "\"pts\""
+        },
+        {
+          "name": "score",
+          "attribute": "score",
+          "type": "number"
+        },
+        {
+          "name": "total",
+          "attribute": "total",
+          "type": "number"
+        },
+        {
+          "name": "gradeScale",
+          "attribute": "grade-scale",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "letter",
+          "attribute": "letter",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "showScale",
+          "attribute": "show-scale",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
     },
     {
       "name": "grade-book",
       "path": "./src/grade-book.js",
-      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`"
+      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`",
+      "attributes": [
+        {
+          "name": "debug",
+          "type": "boolean"
+        },
+        {
+          "name": "sheet",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "totalScore",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "active-student",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "active-assignment",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "scoreLock",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "t",
+          "type": "object",
+          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\"}"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "debug",
+          "attribute": "debug",
+          "type": "boolean"
+        },
+        {
+          "name": "sheet",
+          "attribute": "sheet",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string"
+        },
+        {
+          "name": "sheetGids",
+          "type": "object",
+          "default": "{\"tags\":0,\"roster\":118800528,\"assignments\":540222065,\"rubrics\":1744429439,\"submissions\":2104732668,\"gradeScale\":980501320,\"grades\":2130903440,\"gradesDetails\":644559151,\"settings\":1413275461}"
+        },
+        {
+          "name": "activeSheetPage",
+          "type": "string",
+          "default": "\"tags\""
+        },
+        {
+          "name": "assessmentView",
+          "type": "object"
+        },
+        {
+          "name": "totalScore",
+          "attribute": "totalScore",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "activeStudent",
+          "attribute": "active-student",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "activeAssignment",
+          "attribute": "active-assignment",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "activeSubmission",
+          "type": "string"
+        },
+        {
+          "name": "scoreLock",
+          "attribute": "scoreLock",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "activeRubric",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "activeGrading",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "database",
+          "type": "object",
+          "default": "{\"tags\":{\"categories\":[],\"data\":[]},\"submissions\":[],\"rubrics\":[],\"assignments\":[],\"roster\":[],\"grades\":{},\"gradesDetails\":{},\"gradeScale\":[],\"settings\":{}}"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "t",
+          "attribute": "t",
+          "type": "object",
+          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\"}"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-tag-drop"
+        },
+        {
+          "name": "simple-tag-dragstart"
+        }
+      ]
     }
   ]
 }

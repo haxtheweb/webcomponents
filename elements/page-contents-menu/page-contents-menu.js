@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
-
 /**
  * `page-contents-menu`
  * `Links that jump you to the right place in the page&#39;s content`
@@ -120,6 +119,10 @@ class PageContentsMenu extends LitElement {
         .indent-6 {
           padding-left: 32px;
         }
+        .active {
+          font-weight: bold;
+          border-left: black 2px solid;
+        }
       `,
     ];
   }
@@ -226,7 +229,7 @@ class PageContentsMenu extends LitElement {
       return html`
         <li class="item">
           <a
-            class="link indent-${item.indent}"
+            class="link indent-${item.indent} ${item.active}"
             tabindex="0"
             @click="${this.scrollToObject}"
             @keypress="${this.keyScroll}"
@@ -239,7 +242,7 @@ class PageContentsMenu extends LitElement {
     return html`
       <li class="item">
         <a
-          class="link indent-${item.indent}"
+          class="link indent-${item.indent} ${item.active}"
           href="${item.link}"
           @click="${this.scrollToObject}"
           @keypress="${this.keyScroll}"
@@ -250,35 +253,6 @@ class PageContentsMenu extends LitElement {
     `;
   }
 
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Page contents-menu",
-        description:
-          "Links that jump you to the right place in the page's content",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Contents"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [],
-        advanced: [],
-      },
-    };
-  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -335,6 +309,8 @@ class PageContentsMenu extends LitElement {
     this.hideIfEmpty = false;
     this.contentContainer = null;
     this.mobile = false;
+    // how long to wait between updating. 100ms default
+    this.scrollPolling = 100;
     // only useful with mobile
     this.hideSettings = true;
     this.label = "Contents";
@@ -378,18 +354,14 @@ class PageContentsMenu extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
+      // fire a "scroll" processing event if the list of items updated
+      // this ensures if something else changes the available items that we are
+      // still trying to mark something as active
+      if (propName == "items" && this[propName] && this[propName].length > 0) {
+        setTimeout(() => {
+          this.scrollFinished();
+        }, 0);
       }
-      */
       if (propName == "contentContainer") {
         this._contentContainerChanged(this[propName]);
       }
@@ -415,11 +387,6 @@ class PageContentsMenu extends LitElement {
           this.__toggleTarget.removeAttribute("tabindex");
         }
       }
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
     });
   }
   /**
@@ -443,6 +410,7 @@ class PageContentsMenu extends LitElement {
           link: item.id ? "#" + item.id : null,
           object: item,
           indent: parseInt(item.tagName.toLowerCase().replace("h", "")),
+          active: "",
         };
         items.push(reference);
       }
@@ -455,6 +423,57 @@ class PageContentsMenu extends LitElement {
     this.items = [...items];
   }
   /**
+   * Event listener for scrolling
+   */
+  _applyScrollDetect() {
+    clearTimeout(this.__debounce);
+    this.__debounce = setTimeout(() => {
+      this.scrollFinished();
+    }, this.scrollPolling);
+  }
+  /**
+   * Scrolling has paused, re-evaluate what's visible
+   */
+  scrollFinished() {
+    if (this.items) {
+      // ensure only 1 thing is active and it'll always be the 1st item found from top to bottom
+      let activeFound = false;
+      // viewport height
+      let browserViewport =
+        window.innerHeight || document.documentElement.clientHeight;
+      this.items.forEach((value, i) => {
+        let itemTop = this.items[i].object.getBoundingClientRect().top - 100;
+        let itemBottom = 0;
+        // ensure bottom is ACTUALLY set to the top of the NEXT item
+        if (i !== this.items.length - 1) {
+          itemBottom =
+            this.items[i + 1].object.getBoundingClientRect().top - 100;
+        } else {
+          itemBottom = browserViewport;
+        }
+        // we are in viewport or at least 100 px within it and NOT past it
+        if (itemTop <= browserViewport && itemBottom > 0 && !activeFound) {
+          activeFound = true;
+          this.items[i].active = "active";
+        } else {
+          this.items[i].active = "";
+        }
+      });
+      // account for potentially not finding ANYTHING yet having a "bottom" or top element
+      if (!activeFound && this.items && this.items.length > 0) {
+        // if we are ABOVE the 1st item, assume top; otherwise it's end
+        if (
+          this.items[0].object.getBoundingClientRect().top >= browserViewport
+        ) {
+          this.items[0].active = "active";
+        } else {
+          this.items[this.items.length - 1].active = "active";
+        }
+      }
+      this.requestUpdate();
+    }
+  }
+  /**
    * When our content container changes, process the hierarchy in question
    */
   _contentContainerChanged(newValue) {
@@ -462,6 +481,20 @@ class PageContentsMenu extends LitElement {
     if (newValue && newValue.childNodes && newValue.childNodes.length > 0) {
       this.updateMenu();
     }
+  }
+
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+    document.addEventListener("scroll", this._applyScrollDetect.bind(this));
+  }
+
+  disconnectedCallback() {
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+    document.removeEventListener("scroll", this._applyScrollDetect.bind(this));
   }
 }
 customElements.define(PageContentsMenu.tag, PageContentsMenu);

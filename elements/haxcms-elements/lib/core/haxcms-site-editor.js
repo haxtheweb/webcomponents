@@ -690,6 +690,7 @@ class HAXCMSSiteEditor extends LitElement {
       detail: {
         title: "Edit " + store.activeTitle + " fields",
         styles: {
+          "--simple-modal-z-index": "100000000",
           "--simple-modal-min-width": "75vw",
           "--simple-modal-min-height": "75vh",
         },
@@ -1161,10 +1162,10 @@ class HAXCMSSiteEditor extends LitElement {
    * Save node event
    */
 
-  saveNode(e) {
+  async saveNode(e) {
     // send the request
     if (this.saveNodePath) {
-      let body = HAXStore.activeHaxBody.haxToContent();
+      let body = await HAXStore.activeHaxBody.haxToContent();
       this.querySelector("#nodeupdateajax").body = {
         jwt: this.jwt,
         site: {
@@ -1173,7 +1174,7 @@ class HAXCMSSiteEditor extends LitElement {
         node: {
           id: this.activeItem.id,
           body: body,
-          schema: HAXStore.htmlToHaxElements(body),
+          schema: await HAXStore.htmlToHaxElements(body),
         },
       };
       this.querySelector("#nodeupdateajax").generateRequest();

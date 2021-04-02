@@ -796,7 +796,11 @@ class EditableTable extends displayBehaviors(LitElement) {
         detail: this,
       })
     );
-    if (edit && this.shadowRoot) {
+    if (
+      edit &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("editable-table-display")
+    ) {
       this.shadowRoot.querySelector("editable-table-display").toggleFilter();
       this.shadowRoot
         .querySelector("editable-table-display")

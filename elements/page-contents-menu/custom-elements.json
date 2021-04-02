@@ -81,6 +81,11 @@
           "default": "false"
         },
         {
+          "name": "scrollPolling",
+          "type": "number",
+          "default": "100"
+        },
+        {
           "name": "hideSettings",
           "attribute": "hideSettings",
           "type": "boolean",
@@ -177,6 +182,11 @@
           "attribute": "mobile",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "scrollPolling",
+          "type": "number",
+          "default": "100"
         },
         {
           "name": "hideSettings",

@@ -26,8 +26,12 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             color: var(--simple-fields-error-color, #b40000);
             transition: color 0.3s ease-in-out;
           }
+          :host([hovered]) {
+            background-color: var(--simple-fields-active-color, #eeeeee);
+            transition: background-color 0.3s ease-in-out;
+          }
           :host([disabled]) {
-            color: var(--simple-fields-disabled-color, #999);
+            color: var(--simple-fields-disabled-color, #999999);
           }
           .field-main.inline,
           .field-main > div,

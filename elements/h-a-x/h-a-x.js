@@ -293,8 +293,8 @@ class HAX extends HTMLElement {
   cancelEvent(e) {
     this.importSlotToHaxBody();
   }
-  saveEvent(e) {
-    this.innerHTML = HAXStore.activeHaxBody.haxToContent();
+  async saveEvent(e) {
+    this.innerHTML = await HAXStore.activeHaxBody.haxToContent();
   }
   /**
    * life cycle, element is afixed to the DOM

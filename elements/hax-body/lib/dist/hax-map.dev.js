@@ -255,9 +255,9 @@ var HaxMap =
       [
         {
           key: "updateHAXMap",
-          value: function updateHAXMap(e) {
-            var list = _haxStore.HAXStore.htmlToHaxElements(
-              _haxStore.HAXStore.activeHaxBody.haxToContent()
+          value: async function updateHAXMap(e) {
+            var list = await _haxStore.HAXStore.htmlToHaxElements(
+              await _haxStore.HAXStore.activeHaxBody.haxToContent()
             );
 
             this.calcStats(list);

@@ -116,10 +116,14 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             display: flex;
             align-items: center;
           }
+          :host([hovered][type="checkbox"]),
+          :host([hovered][type="radio"]) {
+            cursor: pointer;
+            color: var(--simple-fields-accent-color, #003f7d);
+          }
           :host([type="checkbox"]) span:focus-within,
           :host([type="radio"]) span:focus-within {
             color: var(--simple-fields-accent-color, #003f7d);
-            outline: 1px dotted var(--simple-fields-accent-color, #003f7d);
           }
           :host([type="checkbox"]) label.checkbox-label,
           :host([type="radio"]) label.radio-label {
@@ -314,6 +318,13 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       return {
         ...super.properties,
         /**
+         * hover state pegged to attribute
+         */
+        hovered: {
+          type: Boolean,
+          reflect: true,
+        },
+        /**
          * Hint for expected file type in file upload controls
          */
         accept: {
@@ -452,9 +463,35 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       this.spellcheck = false;
       this.itemsList = [];
       this.options = {};
+      this.hovered = false;
       this.wrap = false;
     }
-
+    firstUpdated() {
+      super.firstUpdated();
+      // normalize state for interaction with checkbox / radio buttons
+      if (["checkbox", "radio"].includes(this.type)) {
+        this.addEventListener("click", this._selectionShortCut.bind(this));
+        this.addEventListener("mousedown", this._hoverState.bind(this));
+        this.addEventListener("mouseover", this._hoverState.bind(this));
+        this.addEventListener("focusin", this._hoverState.bind(this));
+        this.addEventListener("focusout", this._hoverStateOff.bind(this));
+        this.addEventListener("mouseout", this._hoverStateOff.bind(this));
+      }
+    }
+    _selectionShortCut(e) {
+      let checked = true
+        ? !!this.value
+        : this.type === "radio"
+        ? this.value === (false || {}).value
+        : (this.value || []).includes((false || {}).value);
+      this._handleIconClick(checked);
+    }
+    _hoverState() {
+      this.hovered = true;
+    }
+    _hoverStateOff() {
+      this.hovered = false;
+    }
     updated(changedProperties) {
       if (!this.field) this._updateField();
       changedProperties.forEach((oldValue, propName) => {
@@ -650,7 +687,11 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             : html`
                 <simple-icon-lite
                   icon="${icon}"
-                  @click="${(e) => this._handleIconClick(checked, option)}"
+                  @click="${(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this._handleIconClick(checked, option);
+                  }}"
                   part="option-icon"
                 >
                 </simple-icon-lite>
@@ -933,7 +974,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         this.field &&
         this[attribute] !== this.field.getAttribute(attribute)
       ) {
-        if (this[attribute]) {
+        if (this[attribute] || this[attribute] === 0) {
           this.field.setAttribute(attribute, this[attribute]);
         } else {
           this.field.removeAttribute(attribute, this[attribute]);
