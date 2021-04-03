@@ -8,6 +8,9 @@ export const HaxLayoutBehaviors = function (SuperClass) {
         css`
           :host {
             display: block;
+            --hax-layout-slotted-active-outline-color: var(
+              --hax-contextual-action-hover-color
+            );
           }
           :host([ready]) .container {
             transition: var(
@@ -17,7 +20,16 @@ export const HaxLayoutBehaviors = function (SuperClass) {
               0.5s margin ease-in-out
             );
           }
-          .container.active {
+          :host(.hax-hovered) {
+            outline: var(--hax-layout-active-outline-width, 2px)
+              var(--hax-layout-active-outline-style, solid)
+              var(
+                --hax-layout-active-outline-color,
+                var(--hax-layout-accent-color, #009dc7)
+              ) !important;
+            outline-offset: var(--hax-layout-active-outline-offset, -2px);
+          }
+          .container.hax-hovered {
             outline: var(--hax-layout-active-outline-width, 2px)
               var(--hax-layout-active-outline-style, solid)
               var(
@@ -96,7 +108,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
                 var(--hax-layout-slotted-faded-color, #eeeeee)
               );
           }
-          :host([data-hax-ray]) ::slotted(*.active)::before {
+          :host([data-hax-ray]) ::slotted(*.hax-hovered)::before {
             outline: var(--hax-layout-slotted-active-outline-width, 1px)
               var(--hax-layout-slotted-active-outline-style, solid)
               var(
@@ -112,8 +124,8 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             z-index: 2;
             height: 10px;
           }
-          :host([data-hax-ray]) ::slotted(img.active),
-          :host([data-hax-ray]) ::slotted(*.active)::before {
+          :host([data-hax-ray]) ::slotted(img.hax-hovered),
+          :host([data-hax-ray]) ::slotted(*.hax-hovered)::before {
             background-color: var(
               --hax-layout-slotted-active-outline-color,
               var(--hax-layout-accent-color, #009dc7)
@@ -127,7 +139,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
           }
 
           @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
-            :host([data-hax-ray]) ::slotted(*.active) {
+            :host([data-hax-ray]) ::slotted(*.hax-hovered) {
               background-color: var(
                 --hax-layout-slotted-active-outline-color,
                 var(--hax-layout-accent-color, #009dc7)
@@ -292,17 +304,17 @@ export const HaxLayoutBehaviors = function (SuperClass) {
     }
     _dragEnter(e) {
       console.log(e.target);
-      e.target.classList.add("active");
+      e.target.classList.add("hax-hovered");
     }
     _dragLeave(e) {
-      e.target.classList.remove("active");
+      e.target.classList.remove("hax-hovered");
     }
     _dropEvent(e) {
-      this.querySelectorAll(".active").forEach((el) => {
-        el.classList.remove("active");
+      this.querySelectorAll(".hax-hovered").forEach((el) => {
+        el.classList.remove("hax-hovered");
       });
-      this.shadowRoot.querySelectorAll(".active").forEach((el) => {
-        el.classList.remove("active");
+      this.shadowRoot.querySelectorAll(".hax-hovered").forEach((el) => {
+        el.classList.remove("hax-hovered");
       });
     }
     _getSlotOrder(item) {

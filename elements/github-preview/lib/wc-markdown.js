@@ -39,6 +39,10 @@ export class WCMarkdown extends HTMLElement {
   async connectedCallback() {
     this.style.display = "block";
 
+    await this.renderSlotMD();
+  }
+
+  async renderSlotMD() {
     const scriptTag = this.getElementsByTagName("script")[0];
 
     if (scriptTag) {

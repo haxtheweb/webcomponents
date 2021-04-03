@@ -3,6 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { cache } from "lit-html/directives/cache.js";
+import { nothing } from "lit-html/lit-html.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 /**
@@ -436,43 +438,11 @@ class SimplePicker extends LitElement {
         </div>
         <div id="collapse">
           <div class="rows">
-            ${this.__options
-              ? this.__options.map(
-                  (row, rownum) => html`
-                    <div class="row">
-                      ${Array.isArray(row)
-                        ? row.map(
-                            (option, colnum) => html`
-                              <simple-picker-option
-                                @option-focus="${this._handleOptionFocus}"
-                                @set-selected-option="${this
-                                  ._handleSetSelectedOption}"
-                                ?active="${`${this.__activeDesc}` ===
-                                `option-${rownum}-${colnum}`}"
-                                ?hide-option-labels="${this.hideOptionLabels}"
-                                ?hidden="${!this.allowNull && !option.value}"
-                                ?selected="${this.value === option.value}"
-                                ?title-as-html="${this.titleAsHtml}"
-                                .data="${this.data}"
-                                .icon="${option.icon}"
-                                .id="option-${rownum}-${colnum}"
-                                .label="${option.alt}"
-                                .style=${option.style}
-                                aria-selected="${this.value === option.value
-                                  ? "true"
-                                  : "false"}"
-                                role="option"
-                                tabindex="-1"
-                                value="${option.value}"
-                              >
-                              </simple-picker-option>
-                            `
-                          )
-                        : ``}
-                    </div>
-                  `
-                )
-              : ``}
+            ${cache(
+              this.expanded && this.__options
+                ? this._renderOptions(this.__options)
+                : nothing
+            )}
           </div>
         </div>
       </div>`;
