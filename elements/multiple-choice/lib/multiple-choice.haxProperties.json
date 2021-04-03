@@ -1,7 +1,7 @@
 {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": true,
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
   "gizmo": {
     "title": "Multiple choice",
     "description": "Multiple choice self check",
@@ -15,18 +15,6 @@
   },
   "settings": {
     "configure": [
-      {
-        "property": "title",
-        "title": "Title",
-        "description": "The title of the element",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "hideTitle",
-        "title": "Hide title",
-        "description": "Whether or not to display the title",
-        "inputMethod": "boolean"
-      },
       {
         "property": "question",
         "title": "Question",
@@ -106,12 +94,6 @@
           "icons:thumb-down",
           "icons:send"
         ]
-      },
-      {
-        "property": "quizName",
-        "title": "Name of the quiz",
-        "description": "Quiz name passed in",
-        "inputMethod": "textfield"
       }
     ],
     "advanced": [
@@ -126,16 +108,17 @@
         "title": "Reset label",
         "description": "label for the reset button",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
       }
     ]
   },
   "saveOptions": {
-    "unsetAttributes": [
-      "__utils",
-      "displayed-answers",
-      "displayedAnswers",
-      "colors"
-    ]
+    "unsetAttributes": ["__utils", "displayed-answers", "colors", "answers"]
   },
   "demoSchema": [
     {

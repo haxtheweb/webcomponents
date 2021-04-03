@@ -250,6 +250,9 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
    * life cycle
    */
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.resize();
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
@@ -270,7 +273,6 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
       this.layouts,
       this.disableResponsive
     );
-    if (super.firstUpdated) firstUpdated(changedProperties);
   }
   /**
    * Wire to HAX

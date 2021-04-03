@@ -111,9 +111,7 @@ class SimpleIconPicker extends SimplePicker {
       ) {
         clearTimeout(this.__rebuild);
         this.__rebuild = setTimeout(() => {
-          setTimeout(() => {
-            this._getOptions();
-          }, 100);
+          this._getOptions();
         }, 0);
       }
       if (propName == "value") {
@@ -138,6 +136,40 @@ class SimpleIconPicker extends SimplePicker {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+  }
+  _renderOptions(options) {
+    return html`${options.map(
+      (row, rownum) => html`
+        <div class="row">
+          ${cache(Array.isArray(row) ? this._renderRow(row) : nothing)}
+        </div>
+      `
+    )}`;
+  }
+  _renderRow(row) {
+    return html`${row.map(
+      (option, colnum) => html`
+        <simple-picker-option
+          @option-focus="${this._handleOptionFocus}"
+          @set-selected-option="${this._handleSetSelectedOption}"
+          ?active="${`${this.__activeDesc}` === `option-${rownum}-${colnum}`}"
+          ?hide-option-labels="${this.hideOptionLabels}"
+          ?hidden="${!this.allowNull && !option.value}"
+          ?selected="${this.value === option.value}"
+          ?title-as-html="${this.titleAsHtml}"
+          .data="${this.data}"
+          .icon="${option.icon}"
+          .id="option-${rownum}-${colnum}"
+          .label="${option.alt}"
+          .style=${option.style}
+          aria-selected="${this.value === option.value ? "true" : "false"}"
+          role="option"
+          tabindex="-1"
+          value="${option.value}"
+        >
+        </simple-picker-option>
+      `
+    )}`;
   }
   /**
    * gets icons that are registered in SimpleIconsetStore and filters based on include/exclude lists

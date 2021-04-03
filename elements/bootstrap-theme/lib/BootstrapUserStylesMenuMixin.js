@@ -20,10 +20,10 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
         ...styles,
         css`
           :host([font-family="0"]) {
-            font-family: Georgia, serif;
+            font-family: var(--bootstrap-theme-sans-serif-fonts);
           }
           :host([font-family="1"]) {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: var(--bootstrap-theme-serif-fonts);
           }
           :host([font-size="0"]) {
             --haxcms-base-styles-body-font-size: 1.2rem;
@@ -236,17 +236,20 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
             display: none;
           }
           /*
-          * Theme 1
+          * Dark Theme
           */
           :host([color-theme="1"]) .hcusm {
             border-color: #222222;
           }
           :host([color-theme="1"]) simple-popover {
             --simple-popover-color: white;
-            --simple-popover-background-color: #111111;
+            --simple-popover-background-color: var(
+              --bootstrap-theme-dark-secondary-background-color
+            );
           }
           :host([color-theme="1"]) .hcusm .dropdown-caret .caret-inner {
-            border-bottom: 9px solid #111111;
+            border-bottom: 9px solid
+              var(--bootstrap-dark-theme-secondary-background-color);
           }
           :host([color-theme="1"]) .hcusm .hcusm-buttons {
             border-color: #7e888b;
@@ -258,30 +261,6 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           :host([color-theme="1"]) .hcusm .hcusm-button:focus,
           :host([color-theme="1"]) .hcusm .hcusm-button:active {
             color: #eee8e0;
-          }
-          /*
-          * Theme 2
-          */
-          :host([color-theme="2"]) simple-popover {
-            --simple-popover-color: #cccccc;
-            --simple-popover-background-color: #2d3143;
-          }
-          :host([color-theme="2"]) .hcusm {
-            border-color: #272a3a;
-          }
-          :host([color-theme="2"]) .hcusm .dropdown-caret .caret-inner {
-            border-bottom: 9px solid #2d3143;
-          }
-          :host([color-theme="2"]) .hcusm .hcusm-buttons {
-            border-color: #272a3a;
-          }
-          :host([color-theme="2"]) .hcusm .hcusm-button {
-            color: #cccccc;
-          }
-          :host([color-theme="2"]) .hcusm .hcusm-button:hover,
-          :host([color-theme="2"]) .hcusm .hcusm-button:focus,
-          :host([color-theme="2"]) .hcusm .hcusm-button:active {
-            color: #f4f4f5;
           }
           simple-icon-button-lite {
             color: inherit;
@@ -338,14 +317,14 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
                 data-font="0"
                 @click="${this.UserStylesFontFamilyChange}"
               >
-                Serif
+                Sans
               </button>
               <button
                 class="hcusm-button size-2"
                 data-font="1"
                 @click="${this.UserStylesFontFamilyChange}"
               >
-                Sans
+                Serif
               </button>
             </div>
             <div class="hcusm-buttons">

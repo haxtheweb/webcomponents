@@ -1312,6 +1312,7 @@ class HaxTray extends I18NMixin(
     this.shadowRoot.querySelector("#settingsform").value = {};
     // see if we can get schema off of this.
     if (
+      activeNode &&
       activeNode.tagName &&
       HAXStore.elementList[activeNode.tagName.toLowerCase()]
     ) {
@@ -1765,10 +1766,16 @@ class HaxTray extends I18NMixin(
    * _editModeChanged
    */
   _editModeChanged(newValue) {
-    if (newValue) {
-      this.shadowRoot.querySelector("#button").icon = "save";
-    } else {
-      this.shadowRoot.querySelector("#button").icon = "create";
+    if (
+      !this.hidePanelOps &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#button")
+    ) {
+      if (newValue) {
+        this.shadowRoot.querySelector("#button").icon = "save";
+      } else {
+        this.shadowRoot.querySelector("#button").icon = "create";
+      }
     }
   }
   /**

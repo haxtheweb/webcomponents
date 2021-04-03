@@ -854,22 +854,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * LitElement life cycle - properties changed callback
    */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
+  async updated(changedProperties) {
+    changedProperties.forEach(async (oldValue, propName) => {
       if (propName == "editMode" && oldValue !== undefined) {
         // microtask delay to allow store to establish child nodes appropriately
-        setTimeout(() => {
+        setTimeout(async () => {
           this._editModeChanged(this[propName], oldValue);
           if (this[propName]) {
-            this._activeNodeChanged(this.activeNode, null);
+            await this._activeNodeChanged(this.activeNode, null);
             this.activeNode.focus();
           } else {
-            this._activeNodeChanged(null, this.activeNode);
+            await this._activeNodeChanged(null, this.activeNode);
           }
         }, 0);
       }
       if (propName == "activeNode" && this.ready) {
-        this._activeNodeChanged(this[propName], oldValue);
+        await this._activeNodeChanged(this[propName], oldValue);
       }
     });
     if (super.updated) {
@@ -1354,25 +1354,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   _onKeyPress(e) {
-    clearTimeout(this.__keyPress);
-    this.__keyPress = setTimeout(() => {
-      if (
-        this.editMode &&
-        this.activeNode &&
-        HAXStore.isTextElement(this.activeNode)
-      ) {
-        if (e.key === "Enter") {
-          this.activeNode = this.activeNode.nextElementSibling;
-        }
-        // If the user has paused for awhile, show the menu
-        clearTimeout(this.__positionContextTimer);
-        this.__positionContextTimer = setTimeout(() => {
-          // always on active if we were just typing
-          this.__addActiveVisible();
-          this.positionContextMenus();
-        }, 2500);
-      }
-    }, 50);
+    if (
+      this.editMode &&
+      this.activeNode &&
+      e.key === "Enter" &&
+      HAXStore.isTextElement(this.activeNode)
+    ) {
+      this.activeNode = this.activeNode.nextElementSibling;
+      // If the user has paused for awhile, show the menu
+      clearTimeout(this.__positionContextTimer);
+      this.__positionContextTimer = setTimeout(() => {
+        // always on active if we were just typing
+        this.__addActiveVisible();
+        this.positionContextMenus();
+      }, 2000);
+    }
   }
 
   /**
@@ -1399,8 +1395,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.replaceElementWorkflow();
     }
   }
-  canTansformNode(node = null) {
-    return this.replaceElementWorkflow(node, true).length > 0 ? true : false;
+  async canTansformNode(node = null) {
+    return (await this.replaceElementWorkflow(node, true).length) > 0
+      ? true
+      : false;
   }
   /**
    * Whole workflow of replacing something in place contextually.
@@ -1801,7 +1799,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   hideContextMenus(hidePlate = true) {
     // clear the timeouts for anything that could cause these to reapear
     clearTimeout(gravityScrollTimer);
-    clearTimeout(this.__keyPress);
     clearTimeout(this.__contextVisibleLock);
     clearTimeout(this.__positionContextTimer);
     // primary context menus
@@ -1819,7 +1816,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Reposition context menus to match an element.
    */
   positionContextMenus(node = this.activeNode) {
-    //console.warn(node);
     // special case for node not matching container yet it being editable
     if (node && node.tagName && this.ready) {
       let tag = node.tagName.toLowerCase();

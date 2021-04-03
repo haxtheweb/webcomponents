@@ -99,7 +99,8 @@ class BootstrapFooter extends LitElement {
     this._backwardItem = {};
     this._activeItemIndex = -1;
     this._routerManifest = {};
-    autorun(() => {
+    this.__disposer = this.__disposer ? this.__disposer : [];
+    autorun((reaction) => {
       let storeActiveItemIndex = toJS(store.activeManifestIndex);
       let storeRouterManifest = toJS(store.routerManifest);
       if (
@@ -117,6 +118,7 @@ class BootstrapFooter extends LitElement {
             storeRouterManifest.items[storeActiveItemIndex + 1];
         }
       }
+      this.__disposer.push(reaction);
     });
   }
 

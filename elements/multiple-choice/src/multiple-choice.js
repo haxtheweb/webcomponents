@@ -46,48 +46,17 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
             --simple-colors-default-theme-red-8
           );
         }
-        :host([accent-color="grey"]),
-        :host([accent-color="red"]),
-        :host([accent-color="green"]) {
-          --simple-fields-field-checked-color: var(
-            --simple-colors-default-theme-blue-8
-          );
-          --simple-fields-field-checked-ink-color: var(
-            --simple-colors-default-theme-blue-8
-          );
-        }
-        :host #check {
-          background-color: var(--simple-colors-default-theme-accent-8);
-          color: var(--simple-colors-default-theme-grey-1);
-        }
-        :host #check:hover {
-          background-color: var(--simple-colors-default-theme-accent-9);
-        }
-        :host([accent-color="red"]) #check,
-        :host([accent-color="green"]) #check {
-          background-color: var(--simple-colors-default-theme-blue-8);
-          color: var(--simple-colors-default-theme-grey-1);
-        }
-        :host([accent-color="red"]) #check:hover,
-        :host([accent-color="green"]) #check:hover {
-          background-color: var(--simple-colors-default-theme-blue-9);
-        }
-        :host([accent-color="grey"]) #check,
+
         :host button {
           background-color: var(--simple-colors-default-theme-grey-1);
           color: var(--simple-colors-default-theme-grey-12);
         }
-        :host([accent-color="grey"]) #check:hover,
-        :host button:hover {
+        :host button:hover,
+        :host button:focus,
+        :host button:active {
           cursor: pointer;
           background-color: var(--simple-colors-default-theme-grey-2);
           color: var(--simple-colors-default-theme-grey-12);
-        }
-        .red {
-          background-color: var(--simple-colors-default-theme-red-8);
-        }
-        .green {
-          background-color: var(--simple-colors-default-theme-green-8);
         }
         h3 {
           margin: 8px;
@@ -125,14 +94,11 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     super();
     this.randomize = false;
     this.hideButtons = false;
-    this.title = "";
     this.disabled = false;
     this.singleOption = false;
     this.checkLabel = "Check answer";
     this.resetLabel = "Reset";
-    this.hideTitle = false;
     this.question = "";
-    this.answers = [];
     this.displayedAnswers = [];
     this.correctText = "Great job!";
     this.correctIcon = "icons:thumb-up";
@@ -152,7 +118,12 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         answers.push(answer);
       }
       this.answers = answers;
+      // wipe lightdom after reading it in for data. This makes it harder for someone
+      // to just inspect the document and get at the underlying data
       this.innerHTML = "";
+    } else {
+      // default to nothing if we didn't get lightdom children
+      this.answers = [];
     }
   }
   updated(changedProperties) {
@@ -174,7 +145,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           })
         );
       }
-      if (propName == "answers" && this.answers.length > 0) {
+      if (propName == "answers" && this.answers && this.answers.length > 0) {
         this.displayedAnswers = [
           ...this._computeDisplayedAnswers(this.answers, this.randomize),
         ];
@@ -185,10 +156,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     return html`
       <confetti-container id="confetti">
         <meta property="oer:assessing" content="${this.relatedResource}" />
-        ${!this.hideTitle
-          ? html` <h3><span property="oer:name">${this.title}</span></h3> `
-          : ``}
-        <div>${this.question}</div>
+        <h3><span property="oer:name">${this.question}</span></h3>
         ${this.singleOption
           ? html`
               ${this.displayedAnswers.map(
@@ -256,12 +224,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     return {
       ...super.properties,
       /**
-       * Title
-       */
-      title: {
-        type: String,
-      },
-      /**
        * Support disabling interaction with the entire board
        */
       disabled: {
@@ -294,13 +256,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       relatedResource: {
         type: String,
         attribute: "related-resource",
-      },
-      /**
-       * Flag to hide the title
-       */
-      hideTitle: {
-        type: Boolean,
-        attribute: "hide-title",
       },
       /**
        * Question to ask
@@ -368,15 +323,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       hideButtons: {
         type: Boolean,
         attribute: "hide-buttons",
-      },
-      __toastText: {
-        type: String,
-      },
-      __toastColor: {
-        type: String,
-      },
-      __toastIcon: {
-        type: String,
       },
     };
   }
@@ -472,16 +418,25 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       })
     );
   }
+  /**
+   * LitElement hook to modify shadowRoot. Minor a11y improvement on Chrome
+   */
+  createRenderRoot() {
+    return this.attachShadow({ mode: "open", delegatesFocus: true });
+  }
 
   /**
    * Figure out the order of the answers which will be displayed
    */
   _computeDisplayedAnswers(answers, randomize) {
+    // if we are editing via HAX, don't randomize the answers
+    // as we are actively editing the content and this is amazingly jarring
     if (
       typeof answers !== typeof undefined &&
       answers != null &&
       answers.length > 0 &&
-      randomize
+      randomize &&
+      !this._haxstate
     ) {
       let random = answers;
       var currentIndex = random.length,
@@ -517,23 +472,22 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    */
   haxHooks() {
     return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
       preProcessNodeToContent: "haxpreProcessNodeToContent",
       preProcessInsertContent: "haxpreProcessInsertContent",
-      progressiveEnhancement: "haxprogressiveEnhancement",
       inlineContextMenu: "haxinlineContextMenu",
     };
   }
-  /**
-   * Hook for HAX to support progressive enhancement and return a string
-   * to place in the slot of this tag. This helps make it a lot easier
-   * to maintain complex data between page saves
-   */
-  haxprogressiveEnhancement(el) {
-    return `${el.answers.map((answer) => {
-      return `<input type="checkbox" value="${answer.label}" ${
-        answer.correct ? `correct` : ``
-      } />`;
-    })}`;
+
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this._haxstate = value;
+    }
+  }
+
+  haxeditModeChanged(value) {
+    this._haxstate = value;
   }
   /**
    * add buttons when it is in context
@@ -571,22 +525,25 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   /**
    * HAX preprocess Node to Content hook
    */
-  haxpreProcessNodeToContent(node) {
+  async haxpreProcessNodeToContent(node) {
     // ensure we dont accidently have the answer displayed!
+    // this also rips the data into the lightDom for saving
+    // so that we can unset the array data on the object at save time
+    // this helps improve SEO / compatibility with CMS solutions
     if (node.answers) {
-      var answers = [];
-      for (var i = 0; i < node.answers.length; i++) {
-        let val = node.answers[i];
-        // remove userGuess if its set in the DOM
-        if (val.userGuess) {
-          delete val.userGuess;
+      for (var i in node.answers) {
+        let answer = document.createElement("input");
+        answer.setAttribute("type", "checkbox");
+        answer.value = node.answers[i].label;
+        if (node.answers[i].correct) {
+          answer.setAttribute("correct", "correct");
         }
-        answers.push(val);
+        node.appendChild(answer);
       }
-      node.answers = [...answers];
     }
     return node;
   }
+
   /**
    * HAX preprocess insert content hook
    */

@@ -78,11 +78,9 @@ class BootstrapBreadcrumb extends LitElement {
     return {
       items: {
         type: Array,
-        reflect: true,
       },
       homeItem: {
         type: Object,
-        reflect: true,
       },
       colorTheme: {
         type: String,
@@ -100,7 +98,8 @@ class BootstrapBreadcrumb extends LitElement {
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
     this._originUrl = window.location.origin + "/";
-    autorun(() => {
+    this.__disposer = this.__disposer ? this.__disposer : [];
+    autorun((reaction) => {
       let manifestHomeItem = toJS(store.manifest.items[0]);
       let storeActiveItem = toJS(store.activeItem);
       // check if home item has changed, if it has set new home item
@@ -110,7 +109,7 @@ class BootstrapBreadcrumb extends LitElement {
       // check if we have a new active item
       // if so we clear our items array, set a new activeItem, push it to the items array
       // then check for a parent, if a parent is present call recursive function that keeps adding subsequent parents
-      if (this._activeItem !== storeActiveItem) {
+      if (storeActiveItem && this._activeItem !== storeActiveItem) {
         this.items = [];
         this._activeItem = storeActiveItem;
         this.items.push(storeActiveItem);
@@ -118,13 +117,14 @@ class BootstrapBreadcrumb extends LitElement {
           this.addParentToItems(storeActiveItem);
         }
       }
+      this.__disposer.push(reaction);
     });
   }
 
   render() {
     return html`
       <link rel="stylesheet" href="${this._bootstrapPath}" />
-      <div class="container p-2 mb-3">
+      <div class="container p-0 mb-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb m-auto">
             <li
