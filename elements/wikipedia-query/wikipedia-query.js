@@ -38,6 +38,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   constructor() {
     super();
     this.hideTitle = false;
+    this.language = "en";
     this.headers = {
       cache: "force-cache",
     };
@@ -64,14 +65,15 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
             scope="sibling"
             license="by-sa"
             title="${this.search} --- {Wikipedia}{,} The Free Encyclopedia"
-            source="https://en.wikipedia.org/w/index.php?title=${this.search}"
+            source="https://${this
+              .language}.wikipedia.org/w/index.php?title=${this.search}"
             date="${this.__now}"
           ></citation-element>`
       : ``}`;
   }
-  updateArticle(search, headers) {
+  updateArticle(search, headers, language) {
     fetch(
-      `https://es.wikipedia.org/w/api.php?origin=*&action=query&titles=${search}&prop=extracts&format=json`,
+      `https://${language}.wikipedia.org/w/api.php?origin=*&action=query&titles=${search}&prop=extracts&format=json`,
       headers
     )
       .then((response) => {
@@ -91,14 +93,17 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         import("@lrnwebcomponents/citation-element/citation-element.js");
       }
       if (
-        ["elementVisible", "search", "headers"].includes(propName) &&
+        ["elementVisible", "search", "headers", "language"].includes(
+          propName
+        ) &&
         this.search &&
         this.headers &&
-        this.elementVisible
+        this.elementVisible &&
+        this.language
       ) {
         clearTimeout(this._debounce);
         this._debounce = setTimeout(() => {
-          this.updateArticle(this.search, this.headers);
+          this.updateArticle(this.search, this.headers, this.language);
         }, 10);
       }
       if (propName == "search") {
@@ -147,6 +152,13 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
       search: {
         type: String,
       },
+      /**
+       * Two letter language abbreviation used by
+       * Wikipedia (ex: Spanish = "es").
+       */
+      language: {
+        type: String,
+      },
     };
   }
   /**
@@ -168,7 +180,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
     if (
       store.appList.filter((el, i) => {
         // ensure we don't double load the endpoint if already defined
-        if (el.connection.url === "en.wikipedia.org") {
+        if (el.connection.url === this.language + ".wikipedia.org") {
           return true;
         }
         return false;
@@ -198,7 +210,7 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
       },
       connection: {
         protocol: "https",
-        url: "en.wikipedia.org",
+        url: this.language + ".wikipedia.org",
         data: {
           action: "query",
           list: "search",
@@ -224,7 +236,9 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
             data: {},
             resultMap: {
               image:
-                "https://en.wikipedia.org/static/images/project-logos/enwiki.png",
+                "https://" +
+                this.language +
+                ".wikipedia.org/static/images/project-logos/enwiki.png",
               defaultGizmoType: "wikipedia",
               items: "query.search",
               preview: {
@@ -233,7 +247,8 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
                 id: "title",
               },
               gizmo: {
-                _url_source: "https://en.wikipedia.org/wiki/<%= id %>",
+                _url_source:
+                  "https://" + this.language + ".wikipedia.org/wiki/<%= id %>",
                 id: "title",
                 title: "title",
                 caption: "snippet",
@@ -291,6 +306,19 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
             description: "Whether or not to render the title of the article.",
             inputMethod: "boolean",
             icon: "editor:title",
+          },
+          {
+            property: "language",
+            title: "Language",
+            description: "The language of the article.",
+            inputMethod: "select",
+            options: {
+              en: "English",
+              es: "Spanish",
+              fr: "French",
+              de: "German",
+              ja: "Japanese",
+            },
           },
         ],
       },
