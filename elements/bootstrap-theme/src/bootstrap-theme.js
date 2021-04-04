@@ -8,6 +8,7 @@ import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { BootstrapUserStylesMenuMixin } from "@lrnwebcomponents/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js";
 import { HAXCMSUserStylesMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";

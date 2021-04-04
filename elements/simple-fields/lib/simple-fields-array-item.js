@@ -1,10 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";
-import {
-  SimpleFieldsButtonStyles,
-  SimpleFieldsTooltipStyles,
-} from "./simple-fields-ui.js";
-import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-button.js";
@@ -119,9 +115,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         }
         #copy-delete {
           display: flex;
-          align-items: stretch;
-          justify-content: flex-end;
-          flex: 1 0 auto;
         }
         #copy,
         #remove {
@@ -311,6 +304,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
        */
       expanded: {
         type: Boolean,
+        reflect: true,
       },
       /**
        * is disabled?
@@ -361,6 +355,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
     this.disabled = false;
     this.draggable = "truest";
     this.previewBy = [];
+    this.expanded = true;
     this.addEventListener("dragenter", this._dragEnter);
     this.addEventListener("dragleave", this._dragLeave);
     this.addEventListener("dragover", this._dragMoving);
@@ -433,7 +428,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         new CustomEvent("reorder", {
           bubbles: true,
           cancelable: true,
-          composed: true,
+          composed: false,
           detail: this.parentNode,
         })
       );
@@ -478,17 +473,20 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         new CustomEvent("added", {
           bubbles: true,
           cancelable: true,
-          composed: true,
+          composed: false,
           detail: this,
         })
       );
     }, 0);
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
-      let expanded = this.getAttribute("aria-expanded");
-      if (propName === "error")
-        this.setAttribute("aria-expanded", this.error || expanded);
+      if (propName === "error" || propName === "expanded") {
+        this.setAttribute("aria-expanded", this.error || this.expanded);
+      }
     });
   }
   get slots() {
@@ -500,11 +498,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
    * handles individual toggling
    */
   toggle() {
-    if (this.getAttribute("aria-expanded") === "true") {
-      this.setAttribute("aria-expanded", "false");
-    } else {
-      this.setAttribute("aria-expanded", "true");
-    }
+    this.expanded = !this.expanded;
   }
 
   /**
@@ -516,7 +510,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
       new CustomEvent("copy", {
         bubbles: true,
         cancelable: true,
-        composed: true,
+        composed: false,
         detail: this,
       })
     );
@@ -531,7 +525,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
       new CustomEvent("remove", {
         bubbles: true,
         cancelable: true,
-        composed: true,
+        composed: false,
         detail: this,
       })
     );
@@ -550,7 +544,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
       new CustomEvent("removed", {
         bubbles: true,
         cancelable: true,
-        composed: true,
+        composed: false,
         detail: this,
       })
     );

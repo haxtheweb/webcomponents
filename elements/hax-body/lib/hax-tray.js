@@ -471,7 +471,6 @@ class HaxTray extends I18NMixin(
               role="menuitem"
               show-text-label
               align-horizontal="left"
-              voice-command="toggle alignment"
               id="top-left"
               event-name="toggle-element-align"
               icon="arrow-back"
@@ -487,7 +486,6 @@ class HaxTray extends I18NMixin(
               role="menuitem"
               show-text-label
               align-horizontal="left"
-              voice-command="toggle alignment"
               id="top-right"
               event-name="toggle-element-align"
               icon="arrow-forward"
@@ -504,7 +502,6 @@ class HaxTray extends I18NMixin(
               role="menuitem"
               show-text-label
               align-horizontal="left"
-              voice-command="toggle alignment"
               id="bottom-left"
               event-name="toggle-element-align"
               icon="arrow-back"
@@ -521,7 +518,6 @@ class HaxTray extends I18NMixin(
               role="menuitem"
               show-text-label
               align-horizontal="left"
-              voice-command="toggle alignment"
               id="bottom-right"
               event-name="toggle-element-align"
               icon="arrow-forward"
@@ -582,7 +578,7 @@ class HaxTray extends I18NMixin(
             id="haxsavebutton"
             label="${this.editMode ? this.t.save : this.t.edit}"
             event-name="save"
-            voice-command="save (content)(page)"
+            voice-command="save page"
             show-text-label
           ></hax-tray-button>
           <hax-toolbar-menu
@@ -602,7 +598,7 @@ class HaxTray extends I18NMixin(
                 id="haxcancelbutton"
                 label="${this.t.cancelWithoutSaving}"
                 event-name="cancel"
-                voice-command="cancel"
+                voice-command="cancel edit"
                 icon-position="left"
                 show-text-label
               ></hax-tray-button>
@@ -705,7 +701,7 @@ class HaxTray extends I18NMixin(
         icon="add-box"
         id="content-add"
         label="${this.t.blocks}"
-        voice-command="blocks"
+        voice-command="select blocks (menu)"
         show-text-label
         icon-position="top"
         data-simple-tour-stop
@@ -729,7 +725,7 @@ class HaxTray extends I18NMixin(
         label="${this.t.media}"
         show-text-label
         icon-position="top"
-        voice-command="Media"
+        voice-command="select media (menu)"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
@@ -752,7 +748,7 @@ class HaxTray extends I18NMixin(
         label="${this.t.structure}"
         show-text-label
         icon-position="top"
-        voice-command="open map"
+        voice-command="select structure (menu)"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
@@ -775,7 +771,7 @@ class HaxTray extends I18NMixin(
         event-name="advanced-settings"
         icon="settings"
         label="${this.t.settings}"
-        voice-command="open preferences"
+        voice-command="select settings (menu)"
         show-text-label
         icon-position="top"
         data-simple-tour-stop
