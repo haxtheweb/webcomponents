@@ -92,13 +92,51 @@ class BootstrapTheme extends HAXCMSThemeParts(
           left: 0;
         }
 
+        /* logged in responsiveness */
         :host([is-logged-in][menu-open]) .menu-outline {
-          left: 158px;
+          left: 92px;
+        }
+
+        :host([is-logged-in][menu-open][responsive-size="lg"]) .menu-outline {
+          left: 70px;
+          width: 250px;
+        }
+
+        :host([is-logged-in][menu-open][responsive-size="xs"]) .menu-outline {
+          left: 48px;
+          width: 250px;
+        }
+        :host([is-logged-in][menu-open][responsive-size="sm"]) .menu-outline {
+          left: 48px;
+          width: 250px;
+        }
+        :host([is-logged-in][menu-open][responsive-size="md"]) .menu-outline {
+          left: 48px;
+          width: 250px;
+        }
+
+        /* user not logged in */
+        :host([menu-open][responsive-size="lg"]) .menu-outline {
+          left: 70px;
+          width: 250px;
+        }
+
+        :host([menu-open][responsive-size="xs"]) .menu-outline {
+          left: 0px;
+          width: 250px;
+        }
+        :host([menu-open][responsive-size="sm"]) .menu-outline {
+          left: 0px;
+          width: 250px;
+        }
+        :host([menu-open][responsive-size="md"]) .menu-outline {
+          left: 0px;
+          width: 250px;
         }
 
         .menu-outline {
           position: fixed;
-          top: 125px;
+          top: 140px;
           left: -300px;
           bottom: 0;
           z-index: 1;
