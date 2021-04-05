@@ -38,7 +38,15 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
   constructor() {
     super();
     this.hideTitle = false;
-    this.language = "en";
+    const FALLBACK_LANG = "en";
+    const language =
+      document.body.getAttribute("xml:lang") ||
+      document.body.getAttribute("lang") ||
+      document.documentElement.getAttribute("xml:lang") ||
+      document.documentElement.getAttribute("lang") ||
+      navigator.language ||
+      FALLBACK_LANG;
+    this.language = language.split("-")[0];
     this.headers = {
       cache: "force-cache",
     };
