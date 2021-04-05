@@ -52,8 +52,12 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --bootstrap-theme-dark-background-color: #000000;
           --bootstrap-theme-dark-secondary-background-color: #343a40;
           --bootstrap-theme-dark-color: #ffffff;
-          --bootstrap-theme-palenight-background-color: #0d1229;
-          --bootstrap-theme-palenight-secondary-background-color: #1a1f36;
+          --bootstrap-theme-palenight-background-color: rgb(13, 18, 41);
+          --bootstrap-theme-palenight-secondary-background-color: rgb(
+            26,
+            31,
+            54
+          );
           --bootstrap-theme-palenight-color: #ffffff;
           --site-menu-background-color: var(
             --bootstrap-theme-light-secondary-background-color
@@ -606,7 +610,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
               <div class="container p-0 page-title">
                 <h3 class="display-6">${this._pageTitle}</h3>
               </div>
-              <article class="main-content container card mb-3">
+              <article class="shadow main-content container card mb-3">
                 <div class="normal main-section">
                   <section class="p-2">
                     <site-search
