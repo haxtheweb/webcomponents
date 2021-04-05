@@ -38,6 +38,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     return [
       ...super.styles,
       css`
+        /* var declaration and default styles */
         :host {
           --bootstrap-theme-link-color: #0d6efd;
           --map-menu-item-a-color: var(--bootstrap-theme-link-color);
@@ -49,7 +50,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
             244
           );
           --bootstrap-theme-light-secondary-color: rgb(233, 236, 239);
-          --bootstrap-theme-dark-background-color: #000000;
+          --bootstrap-theme-dark-background-color: #212121;
           --bootstrap-theme-dark-secondary-background-color: #343a40;
           --bootstrap-theme-dark-color: #ffffff;
           --bootstrap-theme-palenight-background-color: rgb(13, 18, 41);
@@ -61,14 +62,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --bootstrap-theme-palenight-color: #ffffff;
           --site-menu-background-color: var(
             --bootstrap-theme-light-secondary-background-color
-          );
-          --bootstrap-theme-sans-serif-fonts: "Helvetica Neue", Helvetica, Arial,
-            sans-serif;
-          --bootstrap-theme-serif-fonts: Georgia, "Times New Roman", Times,
-            serif;
-          --bootstrap-theme-headings-font-weight: var(
-            --bootstrap-theme-headings-font-weight,
-            500
           );
           display: block;
           background-color: var(
@@ -86,29 +79,21 @@ class BootstrapTheme extends HAXCMSThemeParts(
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
         }
+        /* hidden styles */
         :host([hidden]) {
           display: none;
         }
         [hidden] {
           display: none;
         }
+
+        /* menu styles */
         :host([menu-open]) .menu-outline {
           left: 0;
         }
+
         :host([is-logged-in][menu-open]) .menu-outline {
           left: 158px;
-        }
-
-        :host([responsive-size="xs"]) .main-content,
-        :host([responsive-size="sm"]) .main-content {
-          overflow-x: hidden;
-        }
-        :host([responsive-size="xs"]) .page-inner {
-          overflow-x: auto;
-        }
-
-        map-menu-header .container .title {
-          min-height: 34px;
         }
 
         .menu-outline {
@@ -117,20 +102,13 @@ class BootstrapTheme extends HAXCMSThemeParts(
           left: -300px;
           bottom: 0;
           z-index: 1;
-          overflow-y: none;
           width: 300px;
+          height: 100%;
           color: #364149;
           background-color: var(
             --bootstrap-theme-light-secondary-background-color
           );
           transition: left 250ms ease;
-        }
-
-        .site-title {
-          border-bottom: 1px solid black;
-          background-color: var(
-            --bootstrap-theme-light-secondary-background-color
-          );
         }
 
         #haxcmsmobilemenubutton {
@@ -139,6 +117,32 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
         #haxcmsmobilemenunav {
           margin-top: 5px;
+        }
+
+        /* site title above menu */
+        .site-title {
+          border-bottom: 1px solid black;
+          background-color: var(
+            --bootstrap-theme-light-secondary-background-color
+          );
+          display: flex;
+          align-items: center;
+        }
+
+        .site-img {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+
+        :host([responsive-size="xs"]) .main-content,
+        :host([responsive-size="sm"]) .main-content {
+          overflow-x: hidden;
+        }
+
+        :host([responsive-size="xs"]) .page-inner {
+          overflow-x: auto;
         }
 
         /* main content */
@@ -196,140 +200,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         .main-content > :first-child {
           margin-top: 0 !important;
         }
-        .main-content h1,
-        .main-content h2,
-        .main-content h3,
-        .main-content h4,
-        .main-content h5,
-        .main-content h6 {
-          margin-top: 1.275em;
-          margin-bottom: 0.85em;
-          font-weight: var(--bootstrap-theme-headings-font-weight);
-        }
-        .main-content h1,
-        .main-content h2,
-        .main-content h3,
-        .main-content h4,
-        .main-content h5 {
-          page-break-after: avoid;
-        }
-        .main-content *,
-        .main-content ::slotted(*) {
-          box-sizing: border-box;
-          -webkit-box-sizing: border-box;
-          font-size: inherit;
-        }
 
-        .main-content h2 {
-          font-size: 1.75em;
-          font-family: Roboto;
-        }
-
-        .main-content h3 {
-          font-size: 1.5em;
-        }
-        .main-content h4 {
-          font-size: 1.25em;
-        }
-        .main-content h5 {
-          font-size: 1em;
-        }
-        .main-content h6 {
-          font-size: 1em;
-          color: #777;
-        }
-        .main-content h1,
-        .main-content h2,
-        .main-content h3,
-        .main-content h4,
-        .main-content h5,
-        .main-content h6 {
-          margin-top: 1.275em;
-          margin-bottom: 0.85em;
-          font-weight: 700;
-        }
-
-        .main-content h1,
-        .main-content h2,
-        .main-content h3,
-        .main-content h4,
-        .main-content h5 {
-          page-break-after: avoid;
-        }
-        .main-content h2,
-        .main-content h3,
-        .main-content h4,
-        .main-content h5,
-        .main-content p {
-          orphans: 3;
-          widows: 3;
-        }
-        .main-content blockquote,
-        .main-content dl,
-        .main-content ol,
-        .main-content p,
-        .main-content table,
-        .main-content ul {
-          margin-top: 0;
-          margin-bottom: 0.85em;
-        }
-        .main-content ol,
-        .main-content ul {
-          padding: 0;
-          margin: 0;
-          margin-bottom: 0.85em;
-          padding-left: 2em;
-        }
-        .main-content * {
-          box-sizing: border-box;
-          -webkit-box-sizing: border-box;
-          font-size: inherit;
-        }
-        .page-inner {
-          position: relative;
-          max-width: 1000px;
-          margin: 0 auto;
-          min-height: 90vh;
-          padding: 20px 15px 40px 15px;
-        }
-        .main-section {
-          display: block;
-          word-wrap: break-word;
-          color: var(--haxcms-user-styles-color-theme-color-color);
-          line-height: 1.7;
-          text-size-adjust: 100%;
-          -ms-text-size-adjust: 100%;
-          -webkit-text-size-adjust: 100%;
-          -moz-text-size-adjust: 100%;
-        }
-        article,
-        aside,
-        details,
-        figcaption,
-        figure,
-        footer,
-        header,
-        hgroup,
-        main,
-        nav,
-        section,
-        summary {
-          display: block;
-        }
-
-        simple-icon-button,
-        simple-icon-button-lite,
-        site-print-button {
-          color: var(--site-print-button-color, black);
-          --site-git-corner-background: var(--bootstrap-theme-light-color);
-          --simple-icon-fill-color: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
-          --haxcms-tooltip-color: var(--haxcms-user-styles-color-theme-color-2);
-          --haxcms-tooltip-background-color: var(
-            --haxcms-user-styles-color-theme-color-1
-          );
-        }
         /* header */
         .pull-right {
           float: right;
@@ -354,6 +225,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
           text-align: center;
           transition: all 0.35s ease 0s;
         }
+
+        /* header */
         .site-header {
           overflow: visible;
           height: 50px;
@@ -377,7 +250,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
         /* Dark Theme */
         :host([color-theme="1"]) {
-          background-color: black;
+          background-color: var(--bootstrap-theme-dark-background-color);
           --simple-fields-background-color: transparent;
           --map-menu-item-a-color: var(--bootstrap-theme-dark-color);
           --haxcms-user-styles-color-theme-color-color: var(
@@ -389,10 +262,21 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --site-menu-background-color: var(
             --bootstrap-theme-dark-background-color
           );
+          --simple-icon-color: var(--bootstrap-theme-dark-color);
         }
 
         :host([color-theme="1"]) site-search {
-          --site-search-color: var(--bootstrap-theme-dark-color);
+          color: var(--bootstrap-theme-dark-color);
+          --site-search-result-background-color: var(
+            --bootstrap-theme-dark-secondary-background-color
+          );
+          --site-search-result-background-color-hover: var(
+            --bootstrap-theme-dark-secondary-background-color
+          );
+          --site-search-link-color-hover: var(--bootstrap-theme-dark-color);
+          --site-search-link-text-color: var(--bootstrap-theme-dark-color);
+          --site-search-link-color: var(--bootstrap-theme-dark-color);
+          --site-search-result-color: var(--bootstrap-theme-dark-color);
         }
 
         :host([color-theme="1"]) .site-title {
@@ -466,9 +350,23 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --site-menu-background-color: var(
             --bootstrap-theme-palenight-background-color
           );
+          --simple-icon-color: var(--bootstrap-theme-palenight-color);
         }
+
         :host([color-theme="2"]) site-search {
-          --site-search-color: var(--bootstrap-theme-palenight-color);
+          color: var(--bootstrap-theme-palenight-color);
+          --site-search-result-background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+          --site-search-result-background-color-hover: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+          --site-search-link-color-hover: var(
+            --bootstrap-theme-palenight-color
+          );
+          --site-search-link-text-color: var(--bootstrap-theme-palenight-color);
+          --site-search-link-color: var(--bootstrap-theme-palenight-color);
+          --site-search-result-color: var(--bootstrap-theme-palenight-color);
         }
 
         :host([color-theme="2"]) .site-title {
@@ -555,8 +453,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this._themeElements = [];
     this.colorTheme = "0";
     this.searchTerm = "";
-    this._siteTitle = "";
-    this._pageTitle = "";
+    this.__siteTitle = "";
+    this.___pageTitle = "";
+    this.__siteImage = "";
     // prettier-ignore
     import(
       "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
@@ -564,8 +463,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this._siteTitle = toJS(store.manifest.title);
-      this._pageTitle = toJS(store.activeTitle);
+      this.__siteTitle = toJS(store.manifest.title);
+      this.__siteImage = toJS(store.manifest.metadata.author.image);
+      this.__pageTitle = toJS(store.activeTitle);
       this.__disposer.push(reaction);
     });
   }
@@ -576,7 +476,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
       <div class="site ">
         <div class="menu-outline">
           <div class="site-title">
-            <h4>${this._siteTitle}</h4>
+            ${this.__siteImage
+              ? html`<img class="site-img" src=${this.__siteImage} />`
+              : ``}
+            <h4>${this.__siteTitle}</h4>
           </div>
           ${this.HAXCMSMobileMenu()}
         </div>
@@ -608,7 +511,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                 ${this.BootstrapUserStylesMenu()}
               </div>
               <div class="container p-0 page-title">
-                <h3 class="display-6">${this._pageTitle}</h3>
+                <h3 class="display-6">${this.__pageTitle}</h3>
               </div>
               <article class="shadow main-content container card mb-3">
                 <div class="normal main-section">

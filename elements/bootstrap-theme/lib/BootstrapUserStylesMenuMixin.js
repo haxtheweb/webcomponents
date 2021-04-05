@@ -8,7 +8,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       this.hideUserStylesMenu = true;
       this.fontSize = 1;
       this.fontFamily = 0;
-      this.colorTheme = 0;
+      this.colorTheme = "0";
       let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
       this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
@@ -21,11 +21,12 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       return [
         ...styles,
         css`
+          /* bootstrap defaults */
           :host([font-family="0"]) {
-            font-family: var(--bootstrap-theme-sans-serif-fonts);
+            font-family: var(--font-family-sans-serif);
           }
           :host([font-family="1"]) {
-            font-family: var(--bootstrap-theme-serif-fonts);
+            font-family: var(--font-family-monospace);
           }
           :host([font-size="0"]) {
             --haxcms-base-styles-body-font-size: 1.2rem;
@@ -107,37 +108,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
             );
             --hax-base-styles-a-color-active: #000000;
           }
-          :host([color-theme="1"]) {
-            --haxcms-user-styles-color-theme-color-color: #ffffff;
-            --haxcms-user-styles-color-theme-color-background: #343a40;
-            --haxcms-user-styles-color-theme-color-1: #ffffff;
-            --haxcms-user-styles-color-theme-color-2: #343a40;
-            --haxcms-user-styles-color-theme-color-3: #1c1c1c;
-            --haxcms-user-styles-color-theme-color-4: #eee8e0;
-            --hax-base-styles-a-color-visited: #551a8b;
-            --hax-base-styles-a-color: #704214;
-            --hax-base-styles-a-color-active: #000000;
-          }
-          :host([color-theme="2"]) {
-            --haxcms-user-styles-color-theme-color-color: var(
-              --simple-colors-default-theme-light-blue-1,
-              #cfd4e3
-            );
-            --haxcms-user-styles-color-theme-color-background: #1c1f2b;
-            --haxcms-user-styles-color-theme-color-1: #a6a6a6;
-            --haxcms-user-styles-color-theme-color-2: #252737;
-            --haxcms-user-styles-color-theme-color-3: #252737;
-            --haxcms-user-styles-color-theme-color-4: #f4f4f5;
-            --hax-base-styles-a-color-visited: var(
-              --simple-colors-default-theme-light-blue-2,
-              #3eb1d0
-            );
-            --hax-base-styles-a-color: var(
-              --simple-colors-default-theme-light-blue-2,
-              #3eb1d0
-            );
-            --hax-base-styles-a-color-active: #ffffff;
-          }
+
           :host([color-theme="0"]) .hcusm {
             border-color: #222222;
           }
@@ -156,26 +127,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           simple-popover {
             padding: 2px;
           }
-          .hcusm .hcusm-buttons .hcusm-button.size-2 {
-            width: 50%;
-          }
 
-          .hcusm .hcusm-buttons .hcusm-button {
-            border: 0;
-            background-color: transparent;
-            color: #a6a6a6;
-            width: 100%;
-            text-align: center;
-            float: left;
-            line-height: 1.42857143;
-            padding: 8px 4px;
-          }
-          .hcusm-button.size-2 {
-            width: 50%;
-          }
-          .hcusm .hcusm-buttons .hcusm-button.size-3 {
-            width: 50%;
-          }
           .hcusm.open {
             display: block;
           }
@@ -186,29 +138,6 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
             list-style: none;
             font-size: 14px;
             background-color: transparent;
-          }
-          .hcusm .hcusm-buttons:after,
-          .hcusm .hcusm-buttons:before {
-            content: " ";
-            display: table;
-            line-height: 0;
-          }
-          .hcusm-buttons:after,
-          .hcusm-buttons:before {
-            content: " ";
-            display: table;
-            line-height: 0;
-          }
-          .hcusm-button {
-            border: 0;
-            background-color: transparent;
-            background: #eee;
-            color: #666;
-            width: 100%;
-            text-align: center;
-            float: left;
-            line-height: 1.42857143;
-            padding: 8px 4px;
           }
 
           .hcusm button,
@@ -231,15 +160,46 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           .hcusm-settings-container[hidden] {
             display: none;
           }
+
+          /*
+          * Light Theme
+          */
+          .btn-size,
+          .btn-font {
+            background-color: var(
+              --bootstrap-theme-light-secondary-background-color
+            );
+            color: var(--bootstrap-theme-light-color);
+          }
+
+          .btn-size.size-2 {
+            font-size: 16px;
+          }
+
           /*
           * Dark Theme
           */
+
+          :host([color-theme="1"]) {
+            --haxcms-user-styles-color-theme-color-color: #ffffff;
+            --haxcms-user-styles-color-theme-color-background: #343a40;
+            --haxcms-user-styles-color-theme-color-1: #ffffff;
+            --haxcms-user-styles-color-theme-color-2: #343a40;
+            --haxcms-user-styles-color-theme-color-3: #1c1c1c;
+            --haxcms-user-styles-color-theme-color-4: #eee8e0;
+            --hax-base-styles-a-color-visited: #551a8b;
+            --hax-base-styles-a-color: #704214;
+            --hax-base-styles-a-color-active: #000000;
+          }
+
           :host([color-theme="1"]) .hcusm {
             border-color: #222222;
           }
 
-          :host([color-theme="1"]) .btn-group .btn[type="size"],
-          .btn[type="font"] {
+          :host([color-theme="1"])
+            .btn-group
+            .btn[type="size"]
+            .btn[type="font"] {
             background-color: var(
               --bootstrap-theme-light-secondary-background-color
             );
@@ -269,12 +229,32 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           }
 
           /* palenight theme */
+          :host([color-theme="2"]) {
+            --haxcms-user-styles-color-theme-color-color: var(
+              --simple-colors-default-theme-light-blue-1,
+              #cfd4e3
+            );
+            --haxcms-user-styles-color-theme-color-background: #1c1f2b;
+            --haxcms-user-styles-color-theme-color-1: #a6a6a6;
+            --haxcms-user-styles-color-theme-color-2: #252737;
+            --haxcms-user-styles-color-theme-color-3: #252737;
+            --haxcms-user-styles-color-theme-color-4: #f4f4f5;
+            --hax-base-styles-a-color-visited: var(
+              --simple-colors-default-theme-light-blue-2,
+              #3eb1d0
+            );
+            --hax-base-styles-a-color: var(
+              --simple-colors-default-theme-light-blue-2,
+              #3eb1d0
+            );
+            --hax-base-styles-a-color-active: #ffffff;
+          }
+
           :host([color-theme="2"]) .hcusm {
             border-color: var(--bootstrap-theme-palenight-background-color);
           }
 
-          :host([color-theme="2"]) .btn[type="size"],
-          .btn[type="font"] {
+          :host([color-theme="2"]) .btn[type="size"] .btn[type="font"] {
             background-color: var(
               --bootstrap-theme-light-secondary-background-color
             );
@@ -293,32 +273,27 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               var(--bootstrap-theme-palenight-secondary-background-color);
           }
 
-          :host([color-theme="2"]) .hcusm .hcusm-buttons {
-            border-color: #7e888b;
-          }
-
-          :host([color-theme="2"]) .hcusm .hcusm-button:hover,
-          :host([color-theme="2"]) .hcusm .hcusm-button:focus,
-          :host([color-theme="2"]) .hcusm .hcusm-button:active {
-            color: #eee8e0;
-          }
-
           simple-icon-button-lite {
             color: inherit;
-          }
-
-          .btn-group {
-            margin-bottom: 2px;
           }
 
           .open {
             text-align: center;
           }
 
+          .btn-group-title {
+            font-weight: bold;
+          }
+
           .btn-palenight {
             background-color: var(
               --bootstrap-theme-palenight-secondary-background-color
             );
+            color: var(--bootstrap-theme-palenight-color);
+          }
+
+          /* override bootstrap default */
+          .btn-palenight:hover {
             color: var(--bootstrap-theme-palenight-color);
           }
 
@@ -366,38 +341,36 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
               <span class="hcusm-caret-outer"></span>
               <span class="hcusm-caret-inner"></span>
             </div>
+            <div class="btn-group-title">Font Size</div>
             <div class="btn-group" role="group">
+              <button class="btn btn-size" @click="${this.UserStylesSizeDown}">
+                A
+              </button>
               <button
-                type="size"
-                class="btn"
-                @click="${this.UserStylesSizeDown}"
+                class="btn btn-size size-2"
+                @click="${this.UserStylesSizeUp}"
               >
                 A
               </button>
-              <button type="size" class="btn" @click="${this.UserStylesSizeUp}">
-                A
-              </button>
             </div>
-            <br />
+            <div class="btn-group-title">Font Family</div>
             <div class="btn-group" role="group">
               <button
-                class="btn"
+                class="btn btn-font"
                 data-font="0"
-                type="font"
                 @click="${this.UserStylesFontFamilyChange}"
               >
                 Sans
               </button>
               <button
-                class="btn"
+                class="btn btn-font"
                 data-font="1"
-                type="font"
                 @click="${this.UserStylesFontFamilyChange}"
               >
-                Serif
+                Monospace
               </button>
             </div>
-            <br />
+            <div class="btn-group-title">Theme Color</div>
             <div class="btn-group">
               <button
                 class="btn btn-light"
