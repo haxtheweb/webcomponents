@@ -3,9 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { nothing } from "lit-html/lit-html.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@lrnwebcomponents/a11y-details/a11y-details.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /**
  * `a11y-gif-player`
  * plays gifs in an accessible way by having the user click to play their animation
@@ -34,13 +35,24 @@ Custom property | Description | Default
  * @demo ./demo/index.html
  * @element a11y-gif-player
  */
-class A11yGifPlayer extends SchemaBehaviors(LitElement) {
+class A11yGifPlayer extends I18NMixin(
+  IntersectionObserverMixin(SchemaBehaviors(LitElement))
+) {
   constructor() {
     super();
+    this.__gifLoaded = false;
     this.disabled = false;
-    this.tooltip = "Toggle animation";
+    this.tooltip = "";
     this.__playing = false;
     this._updateFromSlot();
+    this.t = {
+      toggleAnimation: "Toggle animation",
+    };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+      locales: ["es"],
+    });
   }
   /**
    * LitElement render styles
@@ -132,60 +144,76 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
       `,
     ];
   }
+  __imageLoaded(e) {
+    this.__gifLoaded = true;
+  }
   render() {
-    return html`
-      <div id="container">
-        <slot hidden></slot>
-        <img
-          id="gif"
-          src="${this.src}"
-          alt="${this.alt}"
-          aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
-            this.describedBy || ""
-          ).trim()}"
-          ?hidden="${!this.src}"
-          slot="summary"
-        />
-        <button
-          id="button"
-          aria-controls="gif"
-          aria-pressed="${this.__playing ? "true" : "false"}"
-          @click="${this.toggle}"
-          ?disabled="${this.disabled || !this.src}"
-          style="background-image: url('${this.srcWithoutAnimation}')"
-        >
-          <svg
-            id="svg"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 200 200"
-          >
-            <g>
-              <polygon points="30,20 30,180 170,100"></polygon>
-              <text x="50" y="115" font-size="40px">GIF</text>
-            </g>
-          </svg>
-          <span class="sr-only">
+    return html`${this.elementVisible
+      ? html`
+          <div id="container">
+            <slot hidden></slot>
+            <img
+              src="${this.__gifLoaded && this.__playing
+                ? this.src
+                : this.srcWithoutAnimation}"
+              alt="${this.alt}"
+              loading="lazy"
+              aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
+                this.describedBy || ""
+              ).trim()}"
+              slot="summary"
+            />
+            ${this.__playing
+              ? html`<img
+                  src="${this.src}"
+                  alt=""
+                  hidden
+                  slot="summary"
+                  @load="${this.__imageLoaded}"
+                />`
+              : nothing}
+
+            <button
+              id="button"
+              aria-controls="gif"
+              aria-pressed="${this.__playing ? "true" : "false"}"
+              @click="${this.toggle}"
+              ?disabled="${this.disabled || !this.src}"
+              .style="background-image: url('${this.srcWithoutAnimation}')"
+            >
+              <svg
+                id="svg"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 200 200"
+              >
+                <g>
+                  <polygon points="30,20 30,180 170,100"></polygon>
+                  <text x="50" y="115" font-size="40px">GIF</text>
+                </g>
+              </svg>
+              <span class="sr-only">
+                ${this.__playing && this.tooltipPlaying
+                  ? this.tooltipPlaying
+                  : this.tooltip}
+              </span>
+            </button>
+            <a11y-details
+              id="longdesc"
+              ?hidden="${!this.src || !this.longdesc}"
+              .style="opacity:${this.__playing ? 0 : 1}"
+            >
+              <div slot="summary">info</div>
+              <div slot="details">${this.longdesc}</div>
+            </a11y-details>
+          </div>
+          <simple-tooltip for="button" offset="30" animation-delay="0">
             ${this.__playing && this.tooltipPlaying
               ? this.tooltipPlaying
               : this.tooltip}
-          </span>
-        </button>
-        <a11y-details
-          id="longdesc"
-          ?hidden="${!this.src || !this.longdesc}"
-          style="opacity:${this.__playing ? 0 : 1}"
-        >
-          <div slot="summary">info</div>
-          <div slot="details">${this.longdesc}</div>
-        </a11y-details>
-      </div>
-      <simple-tooltip for="button" offset="30" animation-delay="0">
-        ${this.__playing && this.tooltipPlaying
-          ? this.tooltipPlaying
-          : this.tooltip}
-      </simple-tooltip>
-    `;
+          </simple-tooltip>
+        `
+      : nothing} `;
   }
   /**
    * Convention
@@ -257,9 +285,27 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
       __playing: {
         type: Boolean,
       },
+      /**
+       * if the gif source is loaded to avoid jarring on load
+       */
+      __gifLoaded: {
+        type: Boolean,
+      },
     };
   }
-
+  /**
+   * LitElement updated life-cycle
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      // import on visibility
+      if (propName === "elementVisible" && this[propName]) {
+        import("@lrnwebcomponents/a11y-details/a11y-details.js");
+        import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      }
+    });
+  }
   /**
    * mutation observer for a11y-details
    * @readonly
@@ -336,92 +382,13 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     if (alt) this.alt = alt;
   }
   /**
-   * HAX
+   * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Accessible GIF",
-        description: "Makes animated GIFs accessible.",
-        icon: "gif",
-        color: "grey",
-        groups: ["Images", "Media"],
-        handles: [
-          {
-            type: "image",
-            source: "src",
-            source2: "srcWithoutAnimation",
-            alt: "alt",
-            ariaDescribedby: "describedBy",
-          },
-        ],
-        meta: {
-          author: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "src",
-            title: "Animated GIF",
-            description: "The URL to your animated GIF.",
-            inputMethod: "haxupload",
-            icon: "link",
-            validationType: "url",
-            required: true,
-          },
-          {
-            property: "srcWithoutAnimation",
-            title: "Still Image",
-            description: "The URL to a still image version of your GIF.",
-            inputMethod: "haxupload",
-            icon: "link",
-            validationType: "url",
-            required: true,
-          },
-          {
-            property: "alt",
-            title: "Alt Text",
-            description: "Alternative text for the image.",
-            inputMethod: "alt",
-            icon: "accessibility",
-            required: true,
-          },
-          {
-            property: "longdesc",
-            title: "Long Description",
-            description: "Long descriptions of the GOF for accessibiility",
-            inputMethod: "textarea",
-          },
-        ],
-        advanced: [
-          {
-            property: "describedBy",
-            title: "aria-decsribedby",
-            description:
-              "Space-separated id list for long descriptions that appear elsewhere",
-            inputMethod: "textfield",
-          },
-        ],
-      },
-      demoSchema: [
-        {
-          tag: "a11y-gif-player",
-          properties: {
-            alt: "It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs",
-            src: "https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif",
-            srcWithoutAnimation:
-              "https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg",
-            longdesc:
-              "Pepe Silvia scene from It's Always Sunny in Philadelphia. Jesus, dude, you're still making GIFs. The GIF's don't stop.",
-            style: "max-width:400px",
-          },
-        },
-      ],
-    };
+    return (
+      decodeURIComponent(import.meta.url) +
+      `/../lib/${this.tag}.haxProperties.json`
+    );
   }
 }
 window.customElements.define(A11yGifPlayer.tag, A11yGifPlayer);

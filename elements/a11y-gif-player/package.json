@@ -38,6 +38,8 @@
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^3.0.6",
     "@lrnwebcomponents/simple-tooltip": "^3.0.5",
+    "@lrnwebcomponents/a11y-details": "^3.0.6",
+    "@lrnwebcomponents/intersection-element": "^3.0.0",
     "lit-element": "2.4.0"
   },
   "devDependencies": {

@@ -10,7 +10,7 @@ import {
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
-import { HAXStore } from "./hax-store.js";
+import { HaxStore, HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import {
   HaxComponentStyles,
@@ -30,7 +30,8 @@ import "./hax-preferences-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager";
+import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
+import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -137,6 +138,9 @@ class HaxTray extends I18NMixin(
     });
     autorun(() => {
       this.tourOpened = toJS(HAXStore.tourOpened);
+    });
+    autorun(() => {
+      this.appStoreLoaded = toJS(HAXStore.appStoreLoaded);
     });
     autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
@@ -246,6 +250,16 @@ class HaxTray extends I18NMixin(
           visibility: visible;
           right: 0;
           pointer-events: all;
+        }
+        loading-indicator {
+          --loading-indicator-background-color: var(
+            --simple-colors-default-theme-accent-2,
+            grey
+          );
+          --loading-indicator-color: var(
+            --simple-colors-default-theme-accent-10,
+            black
+          );
         }
         #tray-detail {
           flex: 1 1 auto;
@@ -415,6 +429,9 @@ class HaxTray extends I18NMixin(
     return html`
       ${this.panelOpsTemplate}
       <div class="wrapper" part="hax-tray-wrapper">
+        <loading-indicator
+          ?loading="${!this.appStoreLoaded}"
+        ></loading-indicator>
         ${this.menuToolbarTemplate}
         ${this.gridTemplate}${this.trayDetailTemplate}
       </div>
@@ -1023,6 +1040,9 @@ class HaxTray extends I18NMixin(
       },
       traySizeIcon: {
         type: String,
+      },
+      appStoreLoaded: {
+        type: Boolean,
       },
       /**
        * Form values for active node

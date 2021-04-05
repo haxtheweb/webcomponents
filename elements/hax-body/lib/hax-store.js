@@ -578,7 +578,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * Load and attach items from the app store.
    */
-  _loadAppStoreData(appDataResponse) {
+  async _loadAppStoreData(appDataResponse) {
     if (appDataResponse != null) {
       var items = {};
       // autoload elements
@@ -644,8 +644,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         })
       );
       // now process the dynamic imports
-      this._handleDynamicImports(items, this.haxAutoloader);
-      this.__appStoreHasLoaded = true;
+      await this._handleDynamicImports(items, this.haxAutoloader);
+      this.appStoreLoaded = true;
     }
   }
   // simple path from a url modifier
@@ -708,7 +708,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // trap for very slow loading environments that might miss on initial setup timing
     if (
       newValue &&
-      !this.__appStoreHasLoaded &&
+      !this.appStoreLoaded &&
       this.__appStoreData &&
       this.haxAutoloader
     ) {
@@ -1700,6 +1700,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.sessionObject = {};
     this.editMode = false;
     this.skipExitTrap = false;
+    this.appStoreLoaded = false;
     this.elementList = {};
     this.appList = [];
     this.gizmoList = [];
@@ -1749,6 +1750,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       haxSelectedText: observable,
       activeEditingElement: observable,
       activeHaxBody: observable,
+      appStoreLoaded: observable,
     });
     autorun(() => {
       this._globalPreferencesChanged(toJS(this.globalPreferences));
