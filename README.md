@@ -1,13 +1,21 @@
 # lrnwebcomponents
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+[![LitElement](https://img.shields.io/badge/%3C%2F%3E-LitElement-%230074c1.svg)](https://lit-element.polymer-project.org/)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-f8bc45.svg)](https://github.com/prettier/prettier)
+
 [![Published on npm](https://img.shields.io/npm/v/@lrnwebcomponents/h-a-x?style=flat)](https://www.npmjs.com/search?q=%40lrnwebcomponents)
 [![build](https://github.com/elmsln/lrnwebcomponents/workflows/build/badge.svg?branch=master)](https://github.com/elmsln/lrnwebcomponents/actions?query=branch%3Amaster)
 [![Dependency Status](https://img.shields.io/david/elmsln/lrnwebcomponents.svg?style=flat)](https://david-dm.org/elmsln/lrnwebcomponents)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/author/elmsln)
-Welcome to the lrnwebcomponents project!
+[![Slack](https://img.shields.io/badge/chat%20on-slack-7289da.svg)](https://bit.ly/haxslack)
+[![Twitter](https://img.shields.io/twitter/follow/haxtheweb.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=haxtheweb)
+
+# Welcome to the lrnwebcomponents project!
 ELMS:LN produced web components for any project
 ## Quick-start
 
-*Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass more browsers.*
+*Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
 
 ### Install
 
