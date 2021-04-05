@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "barcode-reader",
+      "path": "./barcode-reader.js",
+      "description": "`barcode-reader`\n`Reads barcodes`"
+    },
+    {
+      "name": "barcode-reader",
+      "path": "./src/barcode-reader.js",
+      "description": "`barcode-reader`\n`Reads barcodes`"
+    }
+  ]
+}
