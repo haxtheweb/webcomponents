@@ -210,13 +210,7 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
             line-height: 1.42857143;
             padding: 8px 4px;
           }
-          .hcusm button,
-          .hcusm input[type="button"],
-          .hcusm input[type="reset"],
-          .hcusm input[type="submit"] {
-            -webkit-appearance: button;
-            cursor: pointer;
-          }
+
           .hcusm button,
           .hcusm select {
             text-transform: none;
@@ -243,6 +237,15 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           :host([color-theme="1"]) .hcusm {
             border-color: #222222;
           }
+
+          :host([color-theme="1"]) .btn-group .btn[type="size"],
+          .btn[type="font"] {
+            background-color: var(
+              --bootstrap-theme-light-secondary-background-color
+            );
+            color: var(--bootstrap-theme-dark-color) !important;
+          }
+
           :host([color-theme="1"]) simple-popover {
             --simple-popover-color: white;
             --simple-popover-background-color: var(
@@ -269,22 +272,31 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
           :host([color-theme="2"]) .hcusm {
             border-color: var(--bootstrap-theme-palenight-background-color);
           }
+
+          :host([color-theme="2"]) .btn[type="size"],
+          .btn[type="font"] {
+            background-color: var(
+              --bootstrap-theme-light-secondary-background-color
+            );
+            color: var(--bootstrap-theme-palenight-background-color);
+          }
+
           :host([color-theme="2"]) simple-popover {
             --simple-popover-color: white;
             --simple-popover-background-color: var(
               --bootstrap-theme-palenight-secondary-background-color
             );
           }
+
           :host([color-theme="2"]) .hcusm .dropdown-caret .caret-inner {
             border-bottom: 9px solid
               var(--bootstrap-theme-palenight-secondary-background-color);
           }
+
           :host([color-theme="2"]) .hcusm .hcusm-buttons {
             border-color: #7e888b;
           }
-          :host([color-theme="2"]) .hcusm .hcusm-button {
-            color: white;
-          }
+
           :host([color-theme="2"]) .hcusm .hcusm-button:hover,
           :host([color-theme="2"]) .hcusm .hcusm-button:focus,
           :host([color-theme="2"]) .hcusm .hcusm-button:active {
@@ -356,32 +368,30 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
             </div>
             <div class="btn-group" role="group">
               <button
-                type="button"
-                class="btn btn-primary"
+                type="size"
+                class="btn"
                 @click="${this.UserStylesSizeDown}"
               >
                 A
               </button>
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="${this.UserStylesSizeUp}"
-              >
+              <button type="size" class="btn" @click="${this.UserStylesSizeUp}">
                 A
               </button>
             </div>
             <br />
             <div class="btn-group" role="group">
               <button
-                class="btn btn-primary"
+                class="btn"
                 data-font="0"
+                type="font"
                 @click="${this.UserStylesFontFamilyChange}"
               >
                 Sans
               </button>
               <button
-                class="btn btn-primary"
+                class="btn"
                 data-font="1"
+                type="font"
                 @click="${this.UserStylesFontFamilyChange}"
               >
                 Serif

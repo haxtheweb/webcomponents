@@ -56,7 +56,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --bootstrap-theme-palenight-secondary-background-color: #1a1f36;
           --bootstrap-theme-palenight-color: #ffffff;
           --site-menu-background-color: var(
-            --bootstrap-theme-light-secondary-color
+            --bootstrap-theme-light-secondary-background-color
           );
           --bootstrap-theme-sans-serif-fonts: "Helvetica Neue", Helvetica, Arial,
             sans-serif;
@@ -70,6 +70,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
           background-color: var(
             --bootstrap-theme-light-secondary-background-color
           );
+          --map-menu-item-height: 24px;
+          --map-menu-button-height: 34px;
+          --map-menu-header-button-min-height: 34px;
           width: 100%;
           display: flex;
           padding: 0;
@@ -89,7 +92,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           left: 0;
         }
         :host([is-logged-in][menu-open]) .menu-outline {
-          left: 48px;
+          left: 158px;
         }
 
         :host([responsive-size="xs"]) .main-content,
@@ -105,24 +108,33 @@ class BootstrapTheme extends HAXCMSThemeParts(
         }
 
         .menu-outline {
-          position: relative;
-          top: 0;
+          position: fixed;
+          top: 125px;
           left: -300px;
           bottom: 0;
           z-index: 1;
-          overflow-y: auto;
+          overflow-y: none;
           width: 300px;
           color: #364149;
           background-color: var(
             --bootstrap-theme-light-secondary-background-color
           );
-          border-right: 1px solid rgba(0, 0, 0, 0.07);
           transition: left 250ms ease;
         }
 
         .site-title {
           border-bottom: 1px solid black;
-          background-color: var(--bootstrap-theme-light-secondary-color);
+          background-color: var(
+            --bootstrap-theme-light-secondary-background-color
+          );
+        }
+
+        #haxcmsmobilemenubutton {
+          padding-left: 0;
+        }
+
+        #haxcmsmobilemenunav {
+          margin-top: 5px;
         }
 
         /* main content */
@@ -371,7 +383,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           --haxcms-tooltip-background-color: var(--bootstrap-theme-dark-color);
           --haxcms-tooltip-color: var(--bootstrap-theme-dark-background-color);
           --site-menu-background-color: var(
-            --bootstrap-theme-dark-secondary-background-color
+            --bootstrap-theme-dark-background-color
           );
         }
 
@@ -381,9 +393,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
         :host([color-theme="1"]) .site-title {
           border-bottom: 1px solid var(--bootstrap-theme-dark-color);
-          background-color: var(
-            --bootstrap-theme-dark-secondary-background-color
-          );
+          background-color: var(--bootstrap-theme-dark-background-color);
         }
 
         :host([color-theme="1"]) .site {
@@ -391,9 +401,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         }
 
         :host([color-theme="1"]) .menu-outline {
-          background-color: var(
-            --bootstrap-theme-dark-secondary-background-color
-          );
+          background-color: var(--bootstrap-theme-dark-background-color);
         }
 
         :host([color-theme="1"]) .site-title {
@@ -452,7 +460,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
             --bootstrap-theme-palenight-background-color
           );
           --site-menu-background-color: var(
-            --bootstrap-theme-palenight-secondary-background-color
+            --bootstrap-theme-palenight-background-color
           );
         }
         :host([color-theme="2"]) site-search {
@@ -461,9 +469,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
         :host([color-theme="2"]) .site-title {
           border-bottom: 1px solid var(--bootstrap-theme-palenight-color);
-          background-color: var(
-            --bootstrap-theme-palenight-secondary-background-color
-          );
+          background-color: var(--bootstrap-theme-palenight-background-color);
+          color: var(--bootstrap-theme-palenight-color);
         }
 
         :host([color-theme="2"]) .site {
@@ -471,13 +478,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         }
 
         :host([color-theme="2"]) .menu-outline {
-          background-color: var(
-            --bootstrap-theme-palenight-secondary-background-color
-          );
-        }
-
-        :host([color-theme="2"]) .site-title {
-          color: var(--bootstrap-theme-palenight-color);
+          background-color: var(--bootstrap-theme-palenight-background-color);
         }
 
         :host([color-theme="2"]) .page-title {
@@ -584,11 +585,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
               .part="${this.editMode ? `edit-mode-active` : ``}"
             >
               <div class="btn-container">
-                ${this.HAXCMSMobileMenuButton()}
-                <site-print-button
-                  class="btn js-toolbar-action"
-                ></site-print-button>
-                ${this.BootstrapUserStylesMenu()}
                 <div class="pull-right link-actions">
                   <bootstrap-search
                     color-theme="${this.colorTheme}"
@@ -600,6 +596,13 @@ class BootstrapTheme extends HAXCMSThemeParts(
             <main class="page-wrapper" role="main">
               <bootstrap-breadcrumb color-theme="${this.colorTheme}">
               </bootstrap-breadcrumb>
+              <div class="container p-0 site-options">
+                ${this.HAXCMSMobileMenuButton()}
+                <site-print-button
+                  class="btn js-toolbar-action"
+                ></site-print-button>
+                ${this.BootstrapUserStylesMenu()}
+              </div>
               <div class="container p-0 page-title">
                 <h3 class="display-6">${this._pageTitle}</h3>
               </div>
