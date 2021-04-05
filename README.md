@@ -57,7 +57,7 @@ $ yarn install
 $ cd elements/ELEMENTNAME
 $ yarn start
 ```
-Edit files in `lib/`, `src/` and `demo/` in order to modify the element to contribute back to us via PR.
+Edit files in `lib/`, `src/`, `locales/` and `demo/` in order to modify the element to contribute back to us via PR.
 ## Scripts
 
 - `$ wcf element`
