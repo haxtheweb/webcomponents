@@ -1644,13 +1644,18 @@ Container class	Ratio
                 row: rowHeads ? data[0][0] : undefined,
                 col: rowHeads ? data[0].slice(1, data[0].length) : data[0],
               },
-          tbody = data
-            .slice(thead ? 1 : 0, data.length)
-            .map((row) =>
-              rowHeads
-                ? { th: row[0], td: row.slice(1, row.length) }
-                : { td: row }
-            );
+          tbody = data.series
+            ? data.series
+            : data
+                .slice(thead ? 1 : 0, data.length)
+                .map((row) =>
+                  rowHeads
+                    ? { th: row[0], td: row.slice(1, row.length) }
+                    : { td: row }
+                );
+        if (!thead && data.labels) {
+          thead = data.labels;
+        }
         table = table || document.createElement("table");
         if (thead)
           html += `

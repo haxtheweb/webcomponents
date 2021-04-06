@@ -12,7 +12,6 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@lrnwebcomponents/multiple-choice/multiple-choice.js';
       import '@lrnwebcomponents/chartist-render/chartist-render.js';
-      import "@polymer/paper-button/paper-button.js";
       import '../pouch-db.js';
       import '@lrnwebcomponents/data-viz/data-viz.js';   //REMOVE
 
@@ -37,7 +36,7 @@
 
 
 
-          <paper-button id="button">Click to see results</paper-button>
+          <button id="button">Click to see results</button>
           <script>
             let eventData = [""];
             eventData = {
@@ -51,7 +50,7 @@
             };
 
             const elemButton = document.getElementById('button');
-            const evt = new CustomEvent("get-data", {
+            const evt = new CustomEvent("pouch-db-get-data", {
               bubbles: true,
               composed: true,
               cancelable: false,

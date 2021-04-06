@@ -2,7 +2,6 @@
  * Copyright 2019
  * @license Apache-2.0, see License.md for full text.
  */
-import "./lib/pouchdb.min.js";
 // register globally so we can make sure there is only one
 window.PouchDb = window.PouchDb || {};
 // request if this exists. This helps invoke the element existing in the dom
@@ -29,6 +28,10 @@ export const PouchDBElement = window.PouchDb.requestAvailability();
 class PouchDb extends HTMLElement {
   constructor() {
     super();
+    this.type = "xapi";
+    import("./lib/pouchdb.min.js").then(() => {
+      this.db = new PouchDB(this.type);
+    });
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -45,7 +48,10 @@ class PouchDb extends HTMLElement {
       "user-engagement",
       this.userEngagmentFunction.bind(this)
     );
-    window.addEventListener("get-data", this.getDataFunction.bind(this));
+    window.addEventListener(
+      "pouch-db-get-data",
+      this.getDataFunction.bind(this)
+    );
   }
 
   /**
@@ -56,7 +62,10 @@ class PouchDb extends HTMLElement {
       "user-engagement",
       this.userEngagmentFunction.bind(this)
     );
-    window.removeEventListener("get-data", this.getDataFunction.bind(this));
+    window.removeEventListener(
+      "pouch-db-get-data",
+      this.getDataFunction.bind(this)
+    );
   }
 
   userEngagmentFunction(e) {
@@ -86,7 +95,6 @@ class PouchDb extends HTMLElement {
         break;
     }
 
-    var db = new PouchDB(dbType);
     var remoteCouch = false;
     ///var remoteCouch = 'http://35.164.8.64:3000/todos';
 
@@ -138,7 +146,7 @@ class PouchDb extends HTMLElement {
       completed: false,
     };
 
-    db.put(xapistatement, function callback(err, result) {
+    this.db.put(xapistatement, function callback(err, result) {
       if (!err) {
         console.log("Successfully posted a statement!");
       }
@@ -146,12 +154,15 @@ class PouchDb extends HTMLElement {
 
     if (remoteCouch) {
       var opts = { live: true };
-      db.replicate.to(remoteCouch, opts, syncError);
-      db.replicate.from(remoteCouch, opts, syncError);
+      this.db.replicate.to(remoteCouch, opts, syncError);
+      this.db.replicate.from(remoteCouch, opts, syncError);
     }
 
     //display for testing only - move to own elements
-    db.allDocs({ include_docs: true, descending: true }, function (err, doc) {
+    this.db.allDocs({ include_docs: true, descending: true }, function (
+      err,
+      doc
+    ) {
       console.log(doc.rows);
     });
     //display for testing only - move to own elements
@@ -160,7 +171,6 @@ class PouchDb extends HTMLElement {
   getDataFunction(e) {
     var eventData = e.detail;
     var whatEvent = e.target.tagName;
-
     switch (eventData.queryRequest) {
       case "all-quizzes":
         var dbType = "xapistatements"; //this needs to be changed to be more dynamic in the future
@@ -181,7 +191,6 @@ class PouchDb extends HTMLElement {
         break;
     }
 
-    var db = new PouchDB(dbType);
     var remoteCouch = false;
     ///var remoteCouch = 'http://35.164.8.64:3000/todos';
 
@@ -206,7 +215,10 @@ class PouchDb extends HTMLElement {
       callback(map);
     }
 
-    db.allDocs({ include_docs: true, descending: true }, function (err, doc) {
+    this.db.allDocs({ include_docs: true, descending: true }, function (
+      err,
+      doc
+    ) {
       processxAPI(
         doc.rows,
         function displayxAPI(mapxAPI) {
@@ -235,7 +247,7 @@ class PouchDb extends HTMLElement {
               };
 
               window.dispatchEvent(
-                new CustomEvent("show-data", {
+                new CustomEvent("pouch-db-show-data", {
                   bubbles: true,
                   composed: true,
                   cancelable: false,
@@ -251,7 +263,7 @@ class PouchDb extends HTMLElement {
       );
       //end of processxAPI
     });
-    //end of db.allDocs
+    //end of this.db.allDocs
   }
   // end of getDataFunction
 }
