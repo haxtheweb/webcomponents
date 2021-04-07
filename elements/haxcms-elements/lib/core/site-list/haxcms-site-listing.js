@@ -1811,7 +1811,6 @@ class HAXCMSSiteListing extends PolymerElement {
       }
       path.shift();
     }
-    console.log(target);
     this.activeOpertion = target;
     this.shadowRoot.querySelector("#confirm").opened = true;
   }

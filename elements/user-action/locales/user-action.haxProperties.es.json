@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Acción del usuario",
+    "description": "realizar un seguimiento de las acciones de los usuarios y permitirles hablar con las tiendas xAPI fácilmente"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Evento a seguir",
+        "description": "Acción del usuario que hace que este evento se dispare",
+        "options": {
+          "visibility": "Puede ver esto",
+          "keypress": "Presiona una tecla aquí",
+          "click": "Hace clic en esto",
+          "hover": "Pase el cursor sobre esto"
+        }
+      },
+      {
+        "title": "Seguimiento cada vez",
+        "description": "El comportamiento predeterminado es solo para realizar un seguimiento de la primera aparición"
+      }
+    ]
+  }
+}

@@ -3,40 +3,36 @@
  * but yet mirrors much of that structure and data needs.
  */
 export class UserActionBroker {
-  constructor() {
-    // set the built in events w/ support for others
-    this.eventList = {
-      click: "click",
-      mousedown: "mousedown",
-      mouseup: "mouseup",
-      visibility: "visibility",
-      keypress: "keypress",
-      keydown: "keydown",
-      keyup: "keyup",
-    };
-    this.eventname = "user-engagement";
-  }
   /**
    * See if this is a valid event
    */
   valid(event) {
-    if (this.eventList[event]) {
-      return true;
-    }
-    return false;
+    return [
+      "click",
+      "hover",
+      "mousedown",
+      "mouseup",
+      "visibility",
+      "keypress",
+      "keydown",
+      "keyup",
+      "focusin",
+      "focusout",
+    ].includes(event);
   }
   /**
    * Fire the action for the user engagement broker.
    */
-  fireAction(eventType, details, context) {
+  fire(eventName, eventType, details, context) {
     details.eventType = eventType;
     context.dispatchEvent(
-      new CustomEvent(this.eventname, {
+      new CustomEvent(eventName, {
         bubbles: true,
         composed: true,
-        cancelable: false,
+        cancelable: true,
         detail: details,
       })
     );
   }
 }
+export const UABroker = new UserActionBroker();

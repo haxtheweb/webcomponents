@@ -1,5 +1,5 @@
 /**
- * Copyright 2019
+ * Copyright 2021
  * @license Apache-2.0, see License.md for full text.
  */
 // register globally so we can make sure there is only one
@@ -145,6 +145,7 @@ class PouchDb extends HTMLElement {
       title: JSON.stringify(objectStatement),
       completed: false,
     };
+    console.log(xapistatement);
 
     this.db.put(xapistatement, function callback(err, result) {
       if (!err) {

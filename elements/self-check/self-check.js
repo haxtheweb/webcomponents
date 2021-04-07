@@ -287,7 +287,7 @@ class SelfCheck extends I18NMixin(
               ${this.link
                 ? html`
                     <div class="more_info">
-                      <user-action track="click" every
+                      <user-action track="click" every="every"
                         ><a href="${this.link}" target="_blank"
                           >${this.t.moreInformation}...</a
                         ></user-action
