@@ -3,12 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-//import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-//import { javascriptBarcodeReader } from "https://cdn.skypack.dev/javascript-barcode-reader";
-import { MultiFormatReader, BarcodeFormat} from '@zxing/library';
-import * as ZXing from '@zxing/library';
-import * as ZXingBrowser from '@zxing/browser';
-import { BrowserQRCodeReader } from '@zxing/browser';
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+//import { BrowserQRCodeReader } from '@zxing/browser';
 
 /**
  * `barcode-reader`
@@ -16,7 +12,7 @@ import { BrowserQRCodeReader } from '@zxing/browser';
  * @demo demo/index.html
  * @element barcode-reader
  * Amalgamation of https://github.com/justinribeiro/barcode-reader/blob/master/barcode-reader.js for LitElement & render
- * & https://github.com/zxing-js/library for img processing.
+ * & https://github.com/zxing-js for img processing.
  */
 class BarcodeReader extends LitElement {
   /**
@@ -65,35 +61,270 @@ class BarcodeReader extends LitElement {
    */
   render() {
     return html`
-      <div>
+      <!--<div>
         <div id="overlay">
           <div id="scanline"></div>
         </div>
         <canvas id="canvas" width="640" height="480"></canvas>
         <video id="video" width="640" height="480" muted autoplay playsinline/>
       </div>
-      <!--<pre><code id="result"></code></pre>-->
+      <pre><code id="result"></code></pre>
       <div>
         <a class="button" id="startButton">Start</a>
         <a class="button" id="resetButton">Reset</a>
         <p id="result">Result:</p>
+      </div>-->
+        <br><br><br><br><br><br>
+      <h1>Pure JS Barcode Reader</h1>
+      <div>Barcode result: <span id="dbr"></span></div>
+      <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+      </div>
+      <button id="go">Read Barcode</button>
+      <div>
+        <video muted autoplay id="video" playsinline="true"></video>
+        <canvas id="canvas" width="640" height="480" style="display: none; float: bottom;"></canvas>
       </div>
     `;
   }
 
   constructor() {
     super();
-
-    this.__context = null;
-    this.__video = null;
-    // Module scripts are not supported on DedicatedWorker yet. You can try the
-    // feature with '--enable-experimental-web-platform-features' flag (see
-    // https://crbug.com/680046)
-    //
-    // This path is also specific to the demo/index.html; have to fix
-    //this.__barcodeProxy = Comlink.proxy(new Worker('../barcode-worker.js', { type: "module" }));
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load("ZXing", decodeURIComponent(import.meta.url) + "/../lib/zxing.js");
+    window.addEventListener(
+      `es-bridge-zxing-loaded`,
+      this._control.bind(this)
+    );
   }
 
+/**_zxingLoaded(e) {
+  if (window.ZXing) {
+    this.ZXing = ZXing();
+    let decodePtr = ZXing.Runtime.addFunction(decodeCallback);
+  } else {
+    setTimeout(tick, 10);
+  }
+}*/
+
+_control()
+{
+  let videoElement = this.shadowRoot.querySelector('#video');
+  let canvas = this.shadowRoot.querySelector('#canvas');
+  let ctx = canvas.getContext('2d');
+  var videoSelect = this.shadowRoot.querySelector('select#videoSource');
+  let videoOption = this.shadowRoot.getElementById('videoOption');
+  let buttonGo = this.shadowRoot.getElementById('go');
+  let barcode_result = this.shadowRoot.getElementById('dbr');
+
+  let isPaused = false;
+  let videoWidth = 640,
+    videoHeight = 480;
+  let mobileVideoWidth = 240,
+    mobileVideoHeight = 320;
+  let isPC = true;
+
+  let ZXing = null;
+  let decodePtr = null;
+
+  var tick = function () {
+    console.log("tick");
+    if (window.ZXing) {
+      ZXing = ZXing();
+      decodePtr = ZXing.Runtime.addFunction(decodeCallback);
+    } else {
+      setTimeout(tick, 10);
+    }
+  };
+  tick();
+
+  var decodeCallback = function (ptr, len, resultIndex, resultCount) {
+    console.log("decodeCallback");
+    var result = new Uint8Array(ZXing.HEAPU8.buffer, ptr, len);
+    console.log(String.fromCharCode.apply(null, result));
+    barcode_result.textContent = String.fromCharCode.apply(null, result);
+    buttonGo.disabled = false;
+    if (isPC) {
+      canvas.style.display = 'block';
+    } else {
+      mobileCanvas.style.display = 'block';
+    }
+  };
+
+// check devices
+  function browserRedirect() {
+    console.log("browserRedirect");
+    var deviceType;
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+      deviceType = 'phone';
+    } else {
+      deviceType = 'pc';
+    }
+    return deviceType;
+  }
+
+  if (browserRedirect() == 'pc') {
+    isPC = true;
+  } else {
+    isPC = false;
+  }
+
+// stackoverflow: http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata/5100158
+  function dataURItoBlob(dataURI) {
+    console.log("dataURItoBlob");
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+      byteString = atob(dataURI.split(',')[1]);
+    else
+      byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {
+      type: mimeString
+    });
+  }
+
+// add button event
+  buttonGo.onclick = function () {
+    console.log("Click");
+    if (isPC) {
+      canvas.style.display = 'none';
+    } else {
+      mobileCanvas.style.display = 'none';
+    }
+
+    isPaused = false;
+    scanBarcode();
+    buttonGo.disabled = true;
+  };
+
+// scan barcode
+  function scanBarcode() {
+    console.log("scanBarcode");
+    barcode_result.textContent = "";
+    if (ZXing == null) {
+      buttonGo.disabled = false;
+      alert("Barcode Reader is not ready!");
+      return;
+    }
+
+    var data = null,
+      context = null,
+      width = 0,
+      height = 0,
+      dbrCanvas = null;
+
+    if (isPC) {
+      context = ctx;
+      width = videoWidth;
+      height = videoHeight;
+      dbrCanvas = canvas;
+    } else {
+      context = mobileCtx;
+      width = mobileVideoWidth;
+      height = mobileVideoHeight;
+      dbrCanvas = mobileCanvas;
+    }
+
+    context.drawImage(videoElement, 0, 0, width, height);
+
+    var vid = this.shadowRoot.getElementById("video");
+    console.log("video width: " + vid.videoWidth + ", height: " + vid.videoHeight);
+    var barcodeCanvas = document.createElement("canvas");
+    barcodeCanvas.width = vid.videoWidth;
+    barcodeCanvas.height = vid.videoHeight;
+    var barcodeContext = barcodeCanvas.getContext('2d');
+    var imageWidth = vid.videoWidth, imageHeight = vid.videoHeight;
+    barcodeContext.drawImage(videoElement, 0, 0, imageWidth, imageHeight);
+    // read barcode
+    var imageData = barcodeContext.getImageData(0, 0, imageWidth, imageHeight);
+    var idd = imageData.data;
+    var image = ZXing._resize(imageWidth, imageHeight);
+    console.time("decode barcode");
+    for (var i = 0, j = 0; i < idd.length; i += 4, j++) {
+      ZXing.HEAPU8[image + j] = idd[i];
+    }
+    var err = ZXing._decode_any(decodePtr);
+    console.timeEnd('decode barcode');
+    console.log("error code", err);
+    if (err == -2) {
+      setTimeout(scanBarcode, 30);
+    }
+  }
+// https://github.com/samdutton/simpl/tree/gh-pages/getusermedia/sources
+  var videoSelect = this.shadowRoot.querySelector('select#videoSource');
+
+  navigator.mediaDevices.enumerateDevices()
+    .then(gotDevices).then(getStream).catch(handleError);
+
+  videoSelect.onchange = getStream;
+
+  function gotDevices(deviceInfos) {
+    console.log("gotDevices");
+    for (var i = deviceInfos.length - 1; i >= 0; --i) {
+      var deviceInfo = deviceInfos[i];
+      var option = document.createElement('option');
+      option.value = deviceInfo.deviceId;
+      if (deviceInfo.kind === 'videoinput') {
+        option.text = deviceInfo.label || 'camera ' +
+          (videoSelect.length + 1);
+        videoSelect.appendChild(option);
+      } else {455
+        console.log('Found one other kind of source/device: ', deviceInfo);
+      }
+    }
+  }
+
+  function getStream() {
+    console.log("getStream");
+    buttonGo.disabled = false;
+    if (window.stream) {
+      window.stream.getTracks().forEach(function(track) {
+        track.stop();
+      });
+    }
+
+    var constraints = {
+      video: {
+        deviceId: {exact: videoSelect.value}
+      }
+    };
+
+    navigator.mediaDevices.getUserMedia(constraints).
+    then(gotStream).catch(handleError);
+  }
+
+  function gotStream(stream) {
+    console.log("gotStream");
+    window.stream = stream; // make stream available to console
+    videoElement.srcObject = stream;
+  }
+
+  function handleError(error) {
+    console.log("handleError");
+    console.log('Error: ', error);
+  }
+
+
+}
   /**
    * Convention we use
    */
@@ -125,90 +356,26 @@ class BarcodeReader extends LitElement {
   }
 
   async _processFrame() {
-    console.log("Hit draw frame promise#2:");
-    //console.log("Hit Process Frame"+new Date().getTime());
-    //take an img, then process
+    console.log("Hit Process Frame");
 
-    console.log('ZXing code reader initialized')
-    const codeReader = new BrowserQRCodeReader();
     const sourceElem = this.shadowRoot.querySelector('#video');
-    //or use decodeFromVideoElement for videos
-    //console.log(sourceElem);
-    //Bad hit:ArgumentException: `callbackFn` is a required parameter, you cannot capture results without it.
-    //Unhandled Promise Rejection: TypeError: undefined is not an object (evaluating 'BrowserQRCodeReader.BrowserCodeReader.listVideoInputDevices')
-    //const videoInputDevices = await codeReader.BrowserCodeReader.listVideoInputDevices();
-    //const codeReader = new BrowserQRCodeReader();
-
-    //const videoInputDevices = await ZXingBrowser.BrowserCodeReader.listVideoInputDevices();
-
-    //choose your media device (webcam, frontal camera, back camera, etc.)
-    //const selectedDeviceId = videoInputDevices[0].deviceId;
-    //console.log(`Started decode from camera with id ${selectedDeviceId}`);
-
-    const previewElem = this.shadowRoot.querySelector('#video');
-    console.log(previewElem);
-
-    // you can use the controls to stop() the scan or switchTorch() if available
-    const controls = await codeReader.decodeFromVideoElement(previewElem, (result, error, controls) => {
-      console.log(controls)
-      console.log(result);
-      console.log(error);
-    });
-
-    // stops scanning after 20 seconds
-    setTimeout(() => controls.stop(), 10000);
-    /**const devices = await navigator.mediaDevices.enumerateDevices();
+    //const devices = await navigator.mediaDevices.enumerateDevices();
     //console.log(devices);
     //console.log(devices[3].toString());
     //console.log(devices[3].toString().includes("video"));
-    const videoDevices = devices.filter(device => device.kind === 'videoinput');
+    //const videoDevices = devices.filter(device => device.kind === 'videoinput');
     //console.log(videoDevices[0]);
     //console.log(videoDevices[0].deviceId);
     //console.log(videoDevices[3].toString());
     // choose your media device (webcam, frontal camera, back camera, etc.)
-    const selectedDeviceId = videoDevices[0].deviceId;
+    //const selectedDeviceId = videoDevices[0].deviceId;
     //console.log("ID:"+selectedDeviceId);
 
-    console.log(`Started decode from camera with id ${selectedDeviceId}`);
-
-    const controls = await codeReader.decodeFromVideoDevice(selectedDeviceId, sourceElem, (result, error, controls)=>
-    {
-      console.log(result+":"+error);
-      if(typeof result != "undefined")
-      {
-        console.log("Good hit: "+result);
-      }
-      else
-      {
-        console.log("Error: "+error);
-      }
-      console.log("Controls"+controls);
-    });
-      //.then(result=>{console.log("Good hit:"+result);},err=>{console.log("Bad hit:"+err);});
-
-    console.log("After process");
-    //console.log(resultVideo+":Result");
-    setTimeout(() => controls.stop(), 20000);
-
-    /**const canvas = this.shadowRoot.querySelector("canvas");
-    //const img = canvas.toDataURL("image/jpeg", 1.0);
-    const resultEl = this.shadowRoot.querySelector('#result');
-
-    const codeReader = new BrowserQRCodeReader();
-    console.log("DecodeFun")
-    codeReader.decodeFromCanvas(canvas)
-      .then(result => {
-        console.log("Result:"+result);
-        resultEl.textContent = result.text;
-      })
-      .catch(err => {
-        console.error(err);
-        resultEl.textContent = err;
-      });*/
     console.log("After hit")
   }
 
   async start() {
+    this._control();
     // bigger video = more memory = more OOM on constrained devices
     const constraints = {
       'audio': false,

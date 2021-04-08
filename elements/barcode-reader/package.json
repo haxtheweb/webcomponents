@@ -41,7 +41,8 @@
     "lit-element":"2.4.0",
     "javascript-barcode-reader":"0.6.8",
     "@zxing/library": "^0.18.4",
-    "@zxing/browser": "^0.0.8"
+    "@zxing/browser": "^0.0.8",
+    "jquery": "^3.6.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix":"2.7.7","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@polymer/iron-demo-helpers":"3.1.0","@webcomponents/webcomponentsjs":"2.5.0","concurrently":"5.3.0","gulp-babel":"8.0.0","lodash":"4.17.20","polymer-build":"3.1.4","polymer-cli":"1.9.11","wct-browser-legacy":"1.0.2","web-animations-js":"2.3.2"
