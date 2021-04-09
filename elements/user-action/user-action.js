@@ -26,6 +26,7 @@ class UserAction extends HTMLElement {
    */
   constructor() {
     super();
+    this.tag = UserAction.tag;
     this.fired = false;
     this.track = "visibility";
     this.eventname = "user-engagement";
@@ -36,7 +37,9 @@ class UserAction extends HTMLElement {
     return this.getAttribute("every");
   }
   set every(val) {
-    this.setAttribute("every", val);
+    if (val) {
+      this.setAttribute("every", val);
+    }
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -102,10 +105,8 @@ class UserAction extends HTMLElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return (
-      decodeURIComponent(import.meta.url) +
-      `/../lib/${this.tag}.haxProperties.json`
-    );
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.
@@ -125,7 +126,7 @@ class UserAction extends HTMLElement {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `${this.tag}.haxProperties`,
-          localesPath: `${decodeURIComponent(import.meta.url)}/../locales`,
+          localesPath: new URL("./locales", import.meta.url).href,
           locales: ["es"],
         },
       })

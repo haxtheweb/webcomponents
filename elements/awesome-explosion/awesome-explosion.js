@@ -64,12 +64,9 @@ class AwesomeExplosion extends LitElement {
       `,
     ];
   }
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
   constructor() {
     super();
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = new URL("./", import.meta.url).href;
     this.state = "stop";
     this.image = basePath + "assets/explode.gif";
     this.sound = basePath + "assets/273320__clagnut__fireworks.mp3";

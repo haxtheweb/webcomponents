@@ -2982,6 +2982,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (!this.elementList[e.detail.tag]) {
         // @see haxHook: gizmoRegistration - allow elements to define their own
         // custom functionality to run when a gizmo is registered
+        //console.warn(e.detail.tag);
         if (
           window.customElements.get(e.detail.tag) &&
           this.testHook(
