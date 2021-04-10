@@ -111,9 +111,7 @@ class SimpleIconPicker extends SimplePicker {
       ) {
         clearTimeout(this.__rebuild);
         this.__rebuild = setTimeout(() => {
-          setTimeout(() => {
-            this._getOptions();
-          }, 100);
+          this._getOptions();
         }, 0);
       }
       if (propName == "value") {

@@ -1076,6 +1076,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }, 0);
             }
           }
+          // ensure we are never 100% empty but only if actively editing
+          // this way we can't delete... EVERYTHING
+          else if (
+            this.ready &&
+            this.editMode &&
+            HAXStore.ready &&
+            mutation.addedNodes.length === 0 &&
+            mutation.removedNodes.length > 0 &&
+            this.shadowRoot &&
+            this.shadowRoot
+              .querySelector("#body")
+              .assignedNodes({ flatten: true }).length === 0
+          ) {
+            this.appendChild(document.createElement("p"));
+          }
         });
       }
       // our undo/redo history is being applied. Make sure events
