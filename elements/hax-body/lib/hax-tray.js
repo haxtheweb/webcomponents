@@ -914,7 +914,7 @@ class HaxTray extends I18NMixin(
           target.getAttribute("data-demo-schema") &&
           schema &&
           schema.demoSchema &&
-          schema.demoSchema
+          schema.demoSchema[0]
         ) {
           haxElement = schema.demoSchema[0];
         } else {
