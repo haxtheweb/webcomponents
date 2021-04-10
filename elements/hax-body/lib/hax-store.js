@@ -1973,32 +1973,44 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             title: "Link",
             description: "The URL for this video.",
             inputMethod: "haxupload",
-            icon: "icons:link",
             required: true,
             validationType: "url",
-          },
-          {
-            attribute: "title",
-            title: "Title text",
-            description: "Useful for screen readers and improved SEO.",
-            inputMethod: "textfield",
-            icon: "icons:accessibility",
           },
           {
             attribute: "target",
             title: "Target",
             description: "Where to place the link.",
             inputMethod: "select",
-            icon: "icons:launch",
             options: {
               "": "Same window",
-              _blank: "New window",
-              _top: "Top window",
-              _parent: "Parent window",
+              _blank: "New window - _blank",
+              _top: "Top window - _top",
+              _parent: "Parent window - _parent",
+            },
+          },
+          {
+            attribute: "title",
+            title: "Title text",
+            description: "Useful for screen readers and improved SEO.",
+            inputMethod: "textfield",
+          },
+        ],
+        advanced: [
+          {
+            attribute: "rel",
+            title: "rel",
+            description:
+              "Specifies the relationship between this document and the opened document. Change as part of security or SEO policy.",
+            inputMethod: "select",
+            options: {
+              noopener: "noopener",
+              "noopener noreferrer": "noopener noreferrer",
+              "nofollow ": "nofollow",
+              "noopener noreferrer nofollow": "noopener noreferrer nofollow",
+              opener: "opener",
             },
           },
         ],
-        advanced: [],
       },
     };
     // anything can be presented as a link

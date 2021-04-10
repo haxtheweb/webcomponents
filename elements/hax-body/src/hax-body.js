@@ -1714,6 +1714,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         children[i].textContent !== "undefined"
       ) {
         content += children[i].textContent;
+      } else {
+        console.warn(children[i]);
       }
     }
     // remove the contenteditable attribute

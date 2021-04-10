@@ -1624,6 +1624,12 @@ class HaxTray extends I18NMixin(
               this.activeNode.setAttribute("prefix", settings[key][prop]);
               setAhead = true;
             }
+            // innerText is another special case since it cheats on slot content
+            // that is only a text node (like a link)
+            else if (prop === "innerText") {
+              this.activeNode.innerText = settings[key][prop];
+              setAhead = true;
+            }
             // this is a special internal held "property" for layout stuff
             else if (key === "layout" && prop === "__position") {
               setAhead = true;
