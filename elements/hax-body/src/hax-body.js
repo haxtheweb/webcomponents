@@ -1082,7 +1082,20 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               .querySelector("#body")
               .assignedNodes({ flatten: true }).length === 0
           ) {
-            this.appendChild(document.createElement("p"));
+            // we saw that we had nothing, but let's ensure the DOM really stayed empty
+            // some projects might lag 1 cycle here and really this is just to ensure
+            // that we don't end up w/ a busted UX pattern AFTER the user makes a mistake
+            // this helps ensure common operations like importing content don't accidentally
+            // activate this 0 content case
+            setTimeout(() => {
+              if (
+                this.shadowRoot
+                  .querySelector("#body")
+                  .assignedNodes({ flatten: true }).length === 0
+              ) {
+                this.appendChild(document.createElement("p"));
+              }
+            }, 100);
           }
         });
       }

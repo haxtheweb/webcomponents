@@ -8,6 +8,7 @@ import {
   haxElementToNode,
   validURL,
   camelToDash,
+  htmlEntities,
 } from "@lrnwebcomponents/utils/utils.js";
 import {
   observable,
@@ -1298,7 +1299,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // we force h2 to be highest document level on pasted content
       pasteContent = pasteContent.replace(/<h1>/g, "<h2>");
       pasteContent = pasteContent.replace(/<\/h1>/g, "</h2>");
-      // convert all images to place holders
+      // convert all images to place-holder tags and then reference the internal file system object
+      // this probably means nothing to the user but MIGHT be a real file in some cases that they
+      // could potentially paste / find
       pasteContent = pasteContent.replace(
         /<img src=\"file:(.*?)\/>/g,
         function (placeholder, part) {
@@ -1309,6 +1312,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       //console.log(pasteContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = await this.htmlToHaxElements(pasteContent);
+      // ensure that if we only have 1 element that we are wrapped correctly
+      // as some things enjoy pasted absolute nonesense like a strong tag
+      // that wraps all the rest of the content... looking at you Google Docs
+      if (
+        haxElements.length === 1 &&
+        !this.__validGridTags().includes(haxElements[0].tag)
+      ) {
+        haxElements = await this.htmlToHaxElements(haxElements[0].content);
+      }
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
@@ -1425,8 +1437,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             let txt;
             // we got here via an inline paste trap for a URL or other inline content
             if (!validURL(pasteContent)) {
-              // just make a text node if this is NODE a link
-              txt = document.createTextNode(newNodes.innerHTML);
+              // if there ARE HTML children under here, we need to resolve it as HTML
+              if (newNodes.children && newNodes.children.length > 0) {
+                while (newNodes.childNodes.length > 1) {
+                  range.insertNode(Array.from(newNodes.childNodes).pop());
+                }
+                // this should append the HTML elements / textnodes correctly
+                txt = Array.from(newNodes.childNodes).pop();
+              } else {
+                // just make a text node if this is NODE a link
+                txt = document.createTextNode(newNodes.innerHTML);
+              }
             } else {
               // make a link because we have something that looks like one
               // and we passed all above checks
@@ -2829,7 +2850,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             typeof slotnodes[j].textContent !== typeof undefined &&
             slotnodes[j].textContent !== "undefined"
           ) {
-            content += slotnodes[j].textContent;
+            content += htmlEntities(slotnodes[j].textContent);
           }
         }
       }
