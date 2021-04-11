@@ -1,7 +1,7 @@
 # &lt;barcode-reader&gt;
 
 Reader
-> Reads barcodes
+> Element to read barcodes and QR codes through a video stream
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
@@ -22,6 +22,9 @@ import '@lrnwebcomponents/barcode-reader/barcode-reader.js';
 // via unpkg CDN (good for testing)
 <script type="module" src="https://unpkg.com/@lrnwebcomponents/barcode-reader/barcode-reader.js"></script>
 ```
+## Usage after imported
+barcode-reader will give controls to show/hide and start the scanner, but the submit button to utilize the data is left up to the website.
+The id of the text input is "resultElem"
 
 ## Develop / Demo
 Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
