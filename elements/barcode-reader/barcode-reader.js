@@ -52,6 +52,14 @@ class BarcodeReader extends LitElement {
       }
     `;
   }
+  static get properties() {
+    return {
+      value: {
+        type: String,
+        reflect: true,
+      },
+    };
+  }
 
   /**
    * LitElement render callback
@@ -71,7 +79,7 @@ class BarcodeReader extends LitElement {
         </div>
       </div>
       <div>
-        Result: <span><input type="text" id="resultElem" /> </span
+        Result: <span><input type="text" .value="${this.value}" /> </span
         ><button id="render">Show scanner</button>
       </div>
       <div id="hidden2">
@@ -101,7 +109,6 @@ class BarcodeReader extends LitElement {
     var videoSelect = this.shadowRoot.querySelector("select#videoSource");
     let videoOption = this.shadowRoot.getElementById("videoOption");
     let buttonGo = this.shadowRoot.getElementById("go");
-    let barcode_result = this.shadowRoot.getElementById("resultElem");
 
     let isPaused = false;
     let videoWidth = 640,
@@ -124,10 +131,11 @@ class BarcodeReader extends LitElement {
     };
     tick();
 
-    var decodeCallback = function (ptr, len, resultIndex, resultCount) {
+    // we got a match!
+    var decodeCallback = (ptr, len, resultIndex, resultCount) => {
       var result = new Uint8Array(ZXing.HEAPU8.buffer, ptr, len);
       console.log(String.fromCharCode.apply(null, result));
-      barcode_result.value = String.fromCharCode.apply(null, result);
+      this.value = String.fromCharCode.apply(null, result);
       buttonGo.disabled = false;
       buttonGo.disabled = false;
     };
@@ -180,7 +188,7 @@ class BarcodeReader extends LitElement {
         type: mimeString,
       });
     }
-    buttonGo.onclick = function () {
+    buttonGo.onclick = () => {
       canvas.style.display = "none";
       isPaused = false;
       scanBarcode();
@@ -189,7 +197,6 @@ class BarcodeReader extends LitElement {
 
     // scan barcode
     function scanBarcode() {
-      barcode_result.textContent = "";
       if (ZXing == null) {
         buttonGo.disabled = false;
         alert("Barcode Reader is not ready!");
@@ -300,6 +307,17 @@ class BarcodeReader extends LitElement {
    */
   static get tag() {
     return "barcode-reader";
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "value") {
+        this.dispatchEvent(
+          new CustomEvent("value-changed", {
+            detail: this,
+          })
+        );
+      }
+    });
   }
   /**
    * LitElement ready
