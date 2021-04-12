@@ -13,23 +13,15 @@
     },
     {
       "name": "multiple-choice",
-      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `__toastText` {`string`} - \n\n  * `__toastColor` {`string`} - \n\n  * `__toastIcon` {`string`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `title` {`string`} - Title\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `check-label` {`string`} - Text of the label to check your answer\n\n  * `reset-label` {`string`} - Text of the reset button\n\n  * `hide-title` {`boolean`} - Flag to hide the title\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `correct-icon` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `incorrect-icon` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `__toastText` {`string`} - \n\n  * `__toastColor` {`string`} - \n\n  * `__toastIcon` {`string`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `title` {`string`} - Title\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `checkLabel` {`string`} - Text of the label to check your answer\n\n  * `resetLabel` {`string`} - Text of the reset button\n\n  * `hideTitle` {`boolean`} - Flag to hide the title\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `correctIcon` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - Incorrect answer text to display\n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `check-label` {`string`} - Text of the label to check your answer\n\n  * `reset-label` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `correct-icon` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `incorrect-icon` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `checkLabel` {`string`} - Text of the label to check your answer\n\n  * `resetLabel` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `correctIcon` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - Incorrect answer text to display\n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "related-resource",
           "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
         },
         {
-          "name": "__toastText",
-          "description": "`__toastText` {`string`} - \n\nProperty: __toastText"
-        },
-        {
-          "name": "__toastColor",
-          "description": "`__toastColor` {`string`} - \n\nProperty: __toastColor"
-        },
-        {
-          "name": "__toastIcon",
-          "description": "`__toastIcon` {`string`} - \n\nProperty: __toastIcon"
+          "name": "answers",
+          "description": "`answers` {`any[]`} - Array of possible answers\n\nProperty: answers"
         },
         {
           "name": "randomize",
@@ -40,10 +32,6 @@
           "name": "hide-buttons",
           "description": "`hide-buttons` {`boolean`} - flag to hide buttons\n\nProperty: hideButtons\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: "
         },
         {
           "name": "disabled",
@@ -64,17 +52,8 @@
           "description": "`reset-label` {`string`} - Text of the reset button\n\nProperty: resetLabel\n\nDefault: Reset"
         },
         {
-          "name": "hide-title",
-          "description": "`hide-title` {`boolean`} - Flag to hide the title\n\nProperty: hideTitle\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
           "name": "question",
           "description": "`question` {`string`} - Question to ask\n\nProperty: question\n\nDefault: "
-        },
-        {
-          "name": "answers",
-          "description": "`answers` {`any[]`} - Array of possible answers\n\nProperty: answers\n\nDefault: "
         },
         {
           "name": "displayedAnswers",
@@ -129,23 +108,15 @@
     },
     {
       "name": "multiple-choice",
-      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `__toastText` {`string`} - \n\n  * `__toastColor` {`string`} - \n\n  * `__toastIcon` {`string`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `title` {`string`} - Title\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `check-label` {`string`} - Text of the label to check your answer\n\n  * `reset-label` {`string`} - Text of the reset button\n\n  * `hide-title` {`boolean`} - Flag to hide the title\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `correct-icon` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `incorrect-icon` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `__toastText` {`string`} - \n\n  * `__toastColor` {`string`} - \n\n  * `__toastIcon` {`string`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `title` {`string`} - Title\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `checkLabel` {`string`} - Text of the label to check your answer\n\n  * `resetLabel` {`string`} - Text of the reset button\n\n  * `hideTitle` {`boolean`} - Flag to hide the title\n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `correctIcon` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - Incorrect answer text to display\n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `check-label` {`string`} - Text of the label to check your answer\n\n  * `reset-label` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correct-text` {`string`} - Correct answer text to display\n\n  * `correct-icon` {`string`} - Correct answer text to display\n\n  * `incorrect-text` {`string`} - Incorrect answer text to display\n\n  * `incorrect-icon` {`string`} - Incorrect answer text to display\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `checkLabel` {`string`} - Text of the label to check your answer\n\n  * `resetLabel` {`string`} - Text of the reset button\n\n  * `question` {`string`} - Question to ask\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - Correct answer text to display\n\n  * `correctIcon` {`string`} - Correct answer text to display\n\n  * `incorrectText` {`string`} - Incorrect answer text to display\n\n  * `incorrectIcon` {`string`} - Incorrect answer text to display\n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "related-resource",
           "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
         },
         {
-          "name": "__toastText",
-          "description": "`__toastText` {`string`} - \n\nProperty: __toastText"
-        },
-        {
-          "name": "__toastColor",
-          "description": "`__toastColor` {`string`} - \n\nProperty: __toastColor"
-        },
-        {
-          "name": "__toastIcon",
-          "description": "`__toastIcon` {`string`} - \n\nProperty: __toastIcon"
+          "name": "answers",
+          "description": "`answers` {`any[]`} - Array of possible answers\n\nProperty: answers"
         },
         {
           "name": "randomize",
@@ -156,10 +127,6 @@
           "name": "hide-buttons",
           "description": "`hide-buttons` {`boolean`} - flag to hide buttons\n\nProperty: hideButtons\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: "
         },
         {
           "name": "disabled",
@@ -180,17 +147,8 @@
           "description": "`reset-label` {`string`} - Text of the reset button\n\nProperty: resetLabel\n\nDefault: Reset"
         },
         {
-          "name": "hide-title",
-          "description": "`hide-title` {`boolean`} - Flag to hide the title\n\nProperty: hideTitle\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
           "name": "question",
           "description": "`question` {`string`} - Question to ask\n\nProperty: question\n\nDefault: "
-        },
-        {
-          "name": "answers",
-          "description": "`answers` {`any[]`} - Array of possible answers\n\nProperty: answers\n\nDefault: "
         },
         {
           "name": "displayedAnswers",

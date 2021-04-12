@@ -44,12 +44,10 @@ class BarcodeReader extends LitElement {
         border-width: 2em;
       }
 
-      #hidden
-      {
+      #hidden {
         display: none;
       }
-      #hidden2
-      {
+      #hidden2 {
         display: none;
       }
     `;
@@ -61,24 +59,28 @@ class BarcodeReader extends LitElement {
   render() {
     return html`
       <div id="hidden">
-      <div id="overlay"></div>
-      <div>
-        <video muted autoplay id="video" playsinline="true"></video>
-        <canvas
-          id="canvas"
-          width="640"
-          height="480"
-          style="display: none; float: bottom;"
-        ></canvas>
-      </div>
+        <div id="overlay"></div>
+        <div>
+          <video muted autoplay id="video" playsinline="true"></video>
+          <canvas
+            id="canvas"
+            width="640"
+            height="480"
+            style="display: none; float: bottom;"
+          ></canvas>
         </div>
-      <div>Result: <span><input type="text" id="resultElem"> </span><button id="render">Show scanner</button></div>
-          <div id="hidden2">
-            <div class="select">
-        <label for="videoSource">Video source: </label>
-        <select id="videoSource"></select>
       </div>
-      <button id="go">Scan</button></div>
+      <div>
+        Result: <span><input type="text" id="resultElem" /> </span
+        ><button id="render">Show scanner</button>
+      </div>
+      <div id="hidden2">
+        <div class="select">
+          <label for="videoSource">Video source: </label>
+          <select id="videoSource"></select>
+        </div>
+        <button id="go">Scan</button>
+      </div>
     `;
   }
 
@@ -234,9 +236,8 @@ class BarcodeReader extends LitElement {
       if (err == -2) {
         setTimeout(scanBarcode, 30);
       }
-      if (err == -3)
-      {
-        console.error("error code: ", err)
+      if (err == -3) {
+        console.error("error code: ", err);
         this._control();
       }
     }
@@ -327,29 +328,22 @@ class BarcodeReader extends LitElement {
     this._control();
   }
 
-  async _renderVideo()
-  {
-    this.shadowRoot.getElementById("render").addEventListener("click",(e) =>
-    {
+  async _renderVideo() {
+    this.shadowRoot.getElementById("render").addEventListener("click", (e) => {
       let video = this.shadowRoot.getElementById("hidden");
       let button = this.shadowRoot.getElementById("render");
       let extraButtons = this.shadowRoot.getElementById("hidden2");
-      if (video.style.display === "none")
-      {
-        video.style.display = "inline"
-        button.innerHTML = "Hide Scanner"
-        extraButtons.style.display = "inline"
-      }
-      else
-      {
-        video.style.display = "none"
-        button.innerHTML = "Show Scanner"
-        extraButtons.style.display = "none"
+      if (video.style.display === "none") {
+        video.style.display = "inline";
+        button.innerHTML = "Hide Scanner";
+        extraButtons.style.display = "inline";
+      } else {
+        video.style.display = "none";
+        button.innerHTML = "Show Scanner";
+        extraButtons.style.display = "none";
       }
     });
-
   }
-
 }
 customElements.define(BarcodeReader.tag, BarcodeReader);
 export { BarcodeReader };
