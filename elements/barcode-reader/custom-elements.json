@@ -4,12 +4,12 @@
     {
       "name": "barcode-reader",
       "path": "./barcode-reader.js",
-      "description": "`barcode-reader`\n`Reads barcodes`"
+      "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`"
     },
     {
       "name": "barcode-reader",
       "path": "./src/barcode-reader.js",
-      "description": "`barcode-reader`\n`Reads barcodes`"
+      "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`"
     }
   ]
 }
