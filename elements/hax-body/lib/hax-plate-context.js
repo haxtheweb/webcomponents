@@ -167,7 +167,6 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               data-simple-tour-stop
               data-stop-title="label"
               @dblclick=${this.__dblClickFire}
-              event-name="hax-plate-delete"
             >
               <simple-toolbar-menu-item slot="menuitem">
                 <hax-context-item
@@ -216,7 +215,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           composed: true,
           detail: {
             target: event.target,
-            eventName: event.target.eventName,
+            eventName: "hax-plate-delete",
             value: event.target.value,
           },
         })
