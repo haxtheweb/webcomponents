@@ -126,8 +126,9 @@ class BarcodeReader extends LitElement {
 
     var decodeCallback = function (ptr, len, resultIndex, resultCount) {
       var result = new Uint8Array(ZXing.HEAPU8.buffer, ptr, len);
-      //console.log(String.fromCharCode.apply(null, result));
+      console.log(String.fromCharCode.apply(null, result));
       barcode_result.value = String.fromCharCode.apply(null, result);
+      buttonGo.disabled = false;
       buttonGo.disabled = false;
     };
 
@@ -238,7 +239,7 @@ class BarcodeReader extends LitElement {
       }
       if (err == -3) {
         console.error("error code: ", err);
-        this._control();
+        buttonGo.disabled = false;
       }
     }
     var videoSelect = this.shadowRoot.querySelector("select#videoSource");
@@ -327,12 +328,12 @@ class BarcodeReader extends LitElement {
   async start() {
     this._control();
   }
-
   async _renderVideo() {
-    this.shadowRoot.getElementById("render").addEventListener("click", (e) => {
-      let video = this.shadowRoot.getElementById("hidden");
-      let button = this.shadowRoot.getElementById("render");
-      let extraButtons = this.shadowRoot.getElementById("hidden2");
+    let video = this.shadowRoot.getElementById("hidden");
+    let button = this.shadowRoot.getElementById("render");
+    let extraButtons = this.shadowRoot.getElementById("hidden2");
+    video.style.display = "none";
+    this.shadowRoot.getElementById("render").addEventListener("click", () => {
       if (video.style.display === "none") {
         video.style.display = "inline";
         button.innerHTML = "Hide Scanner";
