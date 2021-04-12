@@ -166,6 +166,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               reset-on-select
               data-simple-tour-stop
               data-stop-title="label"
+              @dblclick=${this.__dblClickFire}
+              event-name="hax-plate-delete"
             >
               <simple-toolbar-menu-item slot="menuitem">
                 <hax-context-item
@@ -202,6 +204,23 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       }
     } else {
       rightremove.disabled = true;
+    }
+  }
+
+  __dblClickFire(event) {
+    if (event.target.id === "remove") {
+      this.dispatchEvent(
+        new CustomEvent("hax-context-item-selected", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            target: event.target,
+            eventName: event.target.eventName,
+            value: event.target.value,
+          },
+        })
+      );
     }
   }
 
