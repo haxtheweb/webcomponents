@@ -828,7 +828,7 @@ class HaxTray extends I18NMixin(
   }
   get advancedSettingsTemplate() {
     return html` <hax-preferences-dialog
-      id="advanced-settings-tray"
+      id="advanced-settings"
       ?hidden="${this.trayDetail !== "advanced-settings"}"
     ></hax-preferences-dialog>`;
   }
@@ -858,7 +858,7 @@ class HaxTray extends I18NMixin(
   }
   get contentMapTemplate() {
     return html`<hax-map
-      controls="content-map-tray"
+      controls="content-map"
       ?hidden="${this.trayDetail !== "content-map"}"
     ></hax-map>`;
   }
@@ -914,7 +914,7 @@ class HaxTray extends I18NMixin(
           target.getAttribute("data-demo-schema") &&
           schema &&
           schema.demoSchema &&
-          schema.demoSchema
+          schema.demoSchema[0]
         ) {
           haxElement = schema.demoSchema[0];
         } else {
@@ -1253,7 +1253,9 @@ class HaxTray extends I18NMixin(
         }, 0);
       }
       // change tray detail
-      if (propName == "trayDetail") this._updateTrayDetail(oldValue);
+      if (propName == "trayDetail") {
+        this._updateTrayDetail(this[propName]);
+      }
       // collaped menu state change
       if (propName == "collapsed" && this[propName]) {
         this._editModeChanged(this.editMode);
@@ -1270,7 +1272,10 @@ class HaxTray extends I18NMixin(
           }
         } else {
           this.activeTagName = "";
-          if (this.trayDetail !== "content-add") {
+          // force a gizmo change (which then implies adding to the page)
+          // to select the edit tab if we just added something into the page
+          // from our two content adding panes
+          if (!["content-add", "content-map"].includes(this.trayDetail)) {
             this.trayDetail = "content-add";
           }
         }
@@ -1569,29 +1574,29 @@ class HaxTray extends I18NMixin(
     )
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
   }
-  _updateTrayDetail(oldValue) {
-    if (this.trayDetail == "content-add") {
+  _updateTrayDetail(newValue) {
+    if (newValue == "content-add") {
       this.trayLabel = this.t.blocks;
       this._refreshAddData();
-    } else if (this.trayDetail == "media-add") {
+    } else if (newValue == "media-add") {
       this.trayLabel = this.t.media;
-    } else if (this.trayDetail == "content-map") {
+    } else if (newValue == "content-map") {
       this.trayLabel = this.t.structure;
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
-    } else if (this.trayDetail == "advanced-settings") {
+    } else if (newValue == "advanced-settings") {
       this.trayLabel = this.t.settings;
       this.shadowRoot
         .querySelector("hax-preferences-dialog")
         .reloadPreferencesForm();
     } else if (
-      this.trayDetail == "content-edit" &&
+      newValue == "content-edit" &&
       (!this.activeTagName ||
         this.activeTagName == "" ||
         !this.activeNode ||
         !this.activeNode.tagName)
     ) {
       this.trayDetail = "content-add";
-    } else if (!this.trayDetail || this.trayDetail == "") {
+    } else if (!newValue || newValue == "") {
       this.trayDetail = "content-edit";
     } else {
       this.trayLabel = undefined;
@@ -1617,6 +1622,12 @@ class HaxTray extends I18NMixin(
             // prefix is a special attribute and must be handled this way
             if (prop === "prefix" && settings[key][prop] != "") {
               this.activeNode.setAttribute("prefix", settings[key][prop]);
+              setAhead = true;
+            }
+            // innerText is another special case since it cheats on slot content
+            // that is only a text node (like a link)
+            else if (prop === "innerText") {
+              this.activeNode.innerText = settings[key][prop];
               setAhead = true;
             }
             // this is a special internal held "property" for layout stuff

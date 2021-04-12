@@ -115,11 +115,7 @@ class HaxLogo extends HTMLElement {
         icon: "icons:android",
         color: "green",
         groups: ["Logo"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
+        handles: [],
         meta: {
           author: "btopro",
           owner: "The Pennsylvania State University",
@@ -146,13 +142,8 @@ class HaxLogo extends HTMLElement {
             required: false,
           },
         ],
-        advanced: [],
       },
     };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return { ...super.properties };
   }
 
   /**
@@ -165,7 +156,7 @@ class HaxLogo extends HTMLElement {
   /**
    * life cycle
    */
-  constructor(delayRender = false) {
+  constructor() {
     super();
     if (!window.__haxLogoFontLoaded) {
       let link = document.createElement("link");
@@ -183,9 +174,7 @@ class HaxLogo extends HTMLElement {
 
     this.attachShadow({ mode: "open" });
 
-    if (!delayRender) {
-      this.render();
-    }
+    this.render();
   }
   /**
    * life cycle, element is afixed to the DOM
