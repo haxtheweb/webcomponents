@@ -1515,6 +1515,75 @@
     "user-action": "@lrnwebcomponents/user-action/user-action.js",
     "rss-items": "@lrnwebcomponents/rss-items/rss-items.js",
     "date-card": "@lrnwebcomponents/date-card/date-card.js",
-    "service-card": "@lrnwebcomponents/service-card/service-card.js"
+    "service-card": "@lrnwebcomponents/service-card/service-card.js",
+    "vaadin-upload": {
+      "import": "@vaadin/vaadin-upload/vaadin-upload.js",
+      "haxProperties": {
+        "canScale": true,
+        "canPosition": true,
+        "canEditSource": true,
+        "gizmo": {
+          "title": "Vaadin upload test",
+          "icon": "hax:meme",
+          "color": "orange",
+          "groups": ["Media", "Funny"],
+          "handles": [
+            {
+              "type": "image",
+              "source": "imageUrl",
+              "title": "topText",
+              "author": "bottomText",
+              "alt": "alt",
+              "ariaDescribedby": "describedBy"
+            }
+          ],
+          "meta": {
+            "author": "ELMS:LN"
+          }
+        },
+        "settings": {
+          "configure": [
+            {
+              "property": "imageUrl",
+              "title": "Source",
+              "description": "The source url for the element this is citing.",
+              "inputMethod": "haxupload"
+            },
+            {
+              "property": "topText",
+              "title": "Top text",
+              "description": "Top text of the meme.",
+              "inputMethod": "textfield"
+            },
+            {
+              "property": "bottomText",
+              "title": "Bottom text",
+              "description": "The date this was accessed.",
+              "inputMethod": "textfield"
+            }
+          ],
+          "advanced": [
+            {
+              "property": "describedBy",
+              "title": "aria-describedby",
+              "description": "Space-separated list of IDs for elements that describe the image.",
+              "inputMethod": "textfield"
+            }
+          ]
+        },
+        "saveOptions": {
+          "wipeSlot": true
+        },
+        "demoSchema": [
+          {
+            "tag": "vaadin-upload",
+            "content": "",
+            "properties": {
+              "capture": true
+            }
+          }
+        ]
+      }
+    }
   }
 }

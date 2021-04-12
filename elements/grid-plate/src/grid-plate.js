@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import { HaxLayoutBehaviors } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXLayouts.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {
@@ -357,6 +357,15 @@ class GridPlate extends HaxLayoutBehaviors(LitElement) {
           "responsive-width",
         ],
       },
+      demoSchema: [
+        {
+          tag: "grid-plate",
+          properties: {
+            disableResponsive: true,
+          },
+          content: "",
+        },
+      ],
     };
   }
   static get properties() {

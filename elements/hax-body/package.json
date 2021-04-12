@@ -28,7 +28,7 @@
     "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "polymer serve --npm --module-resolution=node --open --root=../../ --open-path=elements/hax-body/demo/index.html",
+    "serve": "polymer serve --npm --module-resolution=node --open --root=../../ --open-path=elements/hax-body/demo/index.html --compile=never",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {

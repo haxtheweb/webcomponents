@@ -10,6 +10,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
    */
   constructor() {
     super();
+    this.autocomplete = "on";
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection", //TODO
     };

@@ -140,6 +140,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
    */
   constructor() {
     super();
+    this.autocomplete = "off";
     this.noCamera = false;
     // @todo leave this off until we can do more testing
     // the wiring is all there but the UI pattern is not

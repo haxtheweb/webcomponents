@@ -585,20 +585,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               .closest(".column")
               .getAttribute("id")
               .replace("col", "col-");
-            // based on what we learned we don't have nodes in the path column
-            // but we KNOW there MUST be an element somewhere in this
-            if (
-              eventPath[0].closest(".column").parentNode.parentNode.host
-                .children.length == 0
-            ) {
-              let p = document.createElement("p");
-              eventPath[0]
-                .closest(".column")
-                .parentNode.parentNode.host.appendChild(p);
-            }
             this.__activeHover = eventPath[0].closest(
               ".column"
-            ).parentNode.parentNode.host.children[0];
+            ).parentNode.parentNode.host;
             // we focus on the column unlike anything else
             activeRect = eventPath[0]
               .closest(".column")
@@ -606,6 +595,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // right in the middle of the column
             height = activeRect.height / 2 - addRect.height / 2;
             posMenuEl = eventPath[0].closest(".column");
+            this.__slotInGrid = true;
           }
 
           // wow, we have an in context addition menu just like that
@@ -840,12 +830,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // special case for lists nested in lists to make sure we don't get
     // stuck placing a P into a ul
     if (
+      this.__activeHover &&
+      this.__activeHover.parentNode &&
       ["ul", "ol"].includes(this.__activeHover.parentNode.tagName.toLowerCase())
     ) {
       this.__activeHover = this.__activeHover.parentNode;
     }
     // active will be set via this
-    this.haxInsert(tag, "", {}, this.__activeHover);
+    this.haxInsert(tag, "", {}, this.__activeHover, this.__slotInGrid);
+    this.__slotInGrid = false;
     // drop active hover to reset state
     this.__activeHover = null;
     this._hideContextMenu(this.contextMenus.add);
@@ -1075,6 +1068,34 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 this.__indentTrap = false;
               }, 0);
             }
+          }
+          // ensure we are never 100% empty but only if actively editing
+          // this way we can't delete... EVERYTHING
+          else if (
+            this.ready &&
+            this.editMode &&
+            HAXStore.ready &&
+            mutation.addedNodes.length === 0 &&
+            mutation.removedNodes.length > 0 &&
+            this.shadowRoot &&
+            this.shadowRoot
+              .querySelector("#body")
+              .assignedNodes({ flatten: true }).length === 0
+          ) {
+            // we saw that we had nothing, but let's ensure the DOM really stayed empty
+            // some projects might lag 1 cycle here and really this is just to ensure
+            // that we don't end up w/ a busted UX pattern AFTER the user makes a mistake
+            // this helps ensure common operations like importing content don't accidentally
+            // activate this 0 content case
+            setTimeout(() => {
+              if (
+                this.shadowRoot
+                  .querySelector("#body")
+                  .assignedNodes({ flatten: true }).length === 0
+              ) {
+                this.appendChild(document.createElement("p"));
+              }
+            }, 100);
           }
         });
       }
@@ -1520,7 +1541,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Insert new tag + content into the local DOM as a node.
    */
-  haxInsert(tag, content, properties = {}, active = this.activeNode) {
+  haxInsert(
+    tag,
+    content,
+    properties = {},
+    active = this.activeNode,
+    child = false
+  ) {
     // verify this tag is a valid one
     // create a new element fragment w/ content in it
     // if this is a custom-element it won't expand though
@@ -1586,7 +1613,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // insert at active insert point if we have one
     else if (active && active.parentNode) {
       // allow for inserting things into things but not grid plate
-      if (active.parentNode.tagName === "GRID-PLATE") {
+      if (active.tagName === "GRID-PLATE" && child) {
+        if (active.getAttribute("slot") != null) {
+          newNode.setAttribute("slot", active.getAttribute("slot"));
+        }
+        active.appendChild(newNode);
+      } else if (active.parentNode.tagName === "GRID-PLATE") {
         if (active.getAttribute("slot") != null) {
           newNode.setAttribute("slot", active.getAttribute("slot"));
         }
@@ -1695,6 +1727,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         children[i].textContent !== "undefined"
       ) {
         content += children[i].textContent;
+      } else {
+        console.warn(children[i]);
       }
     }
     // remove the contenteditable attribute
