@@ -325,10 +325,10 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
               es: "Spanish",
               fr: "French",
               de: "German",
-              ja: "Japanese"
-            }
-          }
-        ]
+              ja: "Japanese",
+            },
+          },
+        ],
       },
       saveOptions: {
         wipeSlot: true,

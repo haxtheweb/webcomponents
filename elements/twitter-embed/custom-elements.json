@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "twitter-embed-vanilla",
-      "path": "./lib\\twitter-embed-vanilla.js",
+      "path": "./lib/twitter-embed-vanilla.js",
       "attributes": [
         {
           "name": "lang",
@@ -62,7 +62,7 @@
     },
     {
       "name": "twitter-embed",
-      "path": "./src\\twitter-embed.js",
+      "path": "./src/twitter-embed.js",
       "description": "`twitter-embed`\n`A simple way to embed tweets from twitter without their whole API, with LitElement",
       "attributes": [
         {

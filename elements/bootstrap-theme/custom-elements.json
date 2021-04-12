@@ -106,11 +106,6 @@
       ],
       "properties": [
         {
-          "name": "headerTags",
-          "type": "string[]",
-          "default": "[\"H2\",\"H3\",\"H4\",\"H5\",\"H6\"]"
-        },
-        {
           "name": "searchTerm",
           "attribute": "searchTerm",
           "type": "string",
@@ -347,7 +342,7 @@
       ],
       "events": [
         {
-          "name": "searchChanged"
+          "name": "search-changed"
         }
       ]
     },
@@ -455,11 +450,6 @@
         }
       ],
       "properties": [
-        {
-          "name": "headerTags",
-          "type": "string[]",
-          "default": "[\"H2\",\"H3\",\"H4\",\"H5\",\"H6\"]"
-        },
         {
           "name": "searchTerm",
           "attribute": "searchTerm",

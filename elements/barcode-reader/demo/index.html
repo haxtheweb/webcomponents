@@ -17,12 +17,18 @@
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic barcode-reader demo</h3>
-
       <demo-snippet>
         <template>
-          <barcode-reader></barcode-reader>
+          <barcode-reader id="stuff" value="stuff"></barcode-reader>
         </template>
       </demo-snippet>
     </div>
+  <script async defer>
+    setTimeout(() => {
+      document.getElementById("stuff").addEventListener("value-changed", (e) => {
+        alert(e.detail.value);
+      });
+    }, 1000);
+  </script>
   </body>
 </html>
