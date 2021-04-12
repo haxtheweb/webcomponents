@@ -136,8 +136,7 @@ class BarcodeReader extends LitElement {
       var result = new Uint8Array(ZXing.HEAPU8.buffer, ptr, len);
       console.log(String.fromCharCode.apply(null, result));
       this.value = String.fromCharCode.apply(null, result);
-      buttonGo.disabled = false;
-      buttonGo.disabled = false;
+      buttonGo.removeAttribute("disabled");
     };
 
     // check devices
@@ -192,13 +191,13 @@ class BarcodeReader extends LitElement {
       canvas.style.display = "none";
       isPaused = false;
       scanBarcode();
-      buttonGo.disabled = true;
+      buttonGo.setAttribute("disabled", "disabled");
     };
 
     // scan barcode
     function scanBarcode() {
       if (ZXing == null) {
-        buttonGo.disabled = false;
+        buttonGo.removeAttribute("disabled");
         alert("Barcode Reader is not ready!");
         return;
       }
@@ -246,7 +245,7 @@ class BarcodeReader extends LitElement {
       }
       if (err == -3) {
         console.error("error code: ", err);
-        buttonGo.disabled = false;
+        buttonGo.removeAttribute("disabled");
       }
     }
     var videoSelect = this.shadowRoot.querySelector("select#videoSource");
@@ -274,7 +273,7 @@ class BarcodeReader extends LitElement {
     }
 
     function getStream() {
-      buttonGo.disabled = false;
+      buttonGo.removeAttribute("disabled");
       if (window.stream) {
         window.stream.getTracks().forEach(function (track) {
           track.stop();
