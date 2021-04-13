@@ -35,7 +35,10 @@
     "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
     "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
-    "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs"
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs",
+    "test:dev": "web-test-runner \"test/**/*.test.js\" --node-resolve",
+    "test:dev:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --playwright --browsers chromium firefox webkit",
+    "test:dev:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch"
   },
   "author": {
     "name": "ckleest"
@@ -45,13 +48,18 @@
     "@lrnwebcomponents/intersection-element": "^3.0.0",
     "@lrnwebcomponents/simple-icon": "^3.0.6",
     "lit-element": "^2.3.1",
-    "marked": "1.2.7",
+    "marked": "^2.0.3",
     "prism-es6": "1.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.6.16",
+    "@open-wc/testing": "^2.5.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@web/test-runner": "^0.12.19",
+    "@web/test-runner-commands": "^0.4.2",
+    "@web/test-runner-playwright": "^0.8.4",
+    "@web/test-runner-puppeteer": "^0.9.3",
     "@webcomponents/webcomponentsjs": "2.4.4",
     "concurrently": "5.0.2",
     "es-dev-server": "1.57.4",
