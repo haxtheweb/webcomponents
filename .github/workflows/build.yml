@@ -40,5 +40,4 @@ jobs:
         run: yarn lerna run build
       - name: Rebuild element README
         run: |
-          cd elements/
-          for dir in */; do head -4 $dir/README.md; done > README.md
+          cd elements && for dir in */; do head -4 $dir/README.md; done > README.md
