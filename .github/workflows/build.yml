@@ -38,4 +38,6 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn lerna run build
+      - name: Rebuild Elements README
+        run: cd elements && for dir in */; do head -4 $dir/README.md; done > README.md
 
