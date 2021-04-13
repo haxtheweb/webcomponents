@@ -79,7 +79,7 @@ class BarcodeReader extends LitElement {
         </div>
       </div>
       <div>
-        Result: <span><input type="text" .value="${this.value}"/> </span
+        Result: <span><input type="text" .value="${this.value}" /> </span
         ><button id="render">Show scanner</button>
       </div>
       <div id="hidden2">
@@ -92,6 +92,10 @@ class BarcodeReader extends LitElement {
     `;
   }
 
+  //Ask for video when show scanner button
+  // Set default for input arg
+  // Add args for screen size
+
   constructor() {
     super();
     window.ESGlobalBridge.requestAvailability();
@@ -102,7 +106,7 @@ class BarcodeReader extends LitElement {
     window.addEventListener(`es-bridge-zxing-loaded`, this._control.bind(this));
   }
 
-   _control() {
+  _control() {
     let videoElement = this.shadowRoot.querySelector("#video");
     let canvas = this.shadowRoot.querySelector("#canvas");
     let ctx = canvas.getContext("2d");
@@ -133,8 +137,9 @@ class BarcodeReader extends LitElement {
 
     // we got a match!
     var decodeCallback = async (ptr, len, resultIndex, resultCount) => {
-      const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
-      await sleep(100)
+      const sleep = (delay) =>
+        new Promise((resolve) => setTimeout(resolve, delay));
+      await sleep(100);
       var result = new Uint8Array(ZXing.HEAPU8.buffer, ptr, len);
       console.log(String.fromCharCode.apply(null, result));
       this.value = String.fromCharCode.apply(null, result);
@@ -245,20 +250,16 @@ class BarcodeReader extends LitElement {
       }
       var err = ZXing._decode_any(decodePtr);
       console.timeEnd("decode barcode");
-      console.log(err)
+      console.log(err);
       if (err == -2) {
         setTimeout(scanBarcode, 30);
-      }
-      else if (err == -3) {
+      } else if (err == -3) {
         console.error("error code: ", err);
         buttonGo.removeAttribute("disabled");
-      }
-      else if (err === 0)
-      {
+      } else if (err === 0) {
         buttonGo.removeAttribute("disabled");
-        console.log(buttonGo.attributes)
+        console.log(buttonGo.attributes);
       }
-
     }
     var videoSelect = this.shadowRoot.querySelector("select#videoSource");
     navigator.mediaDevices

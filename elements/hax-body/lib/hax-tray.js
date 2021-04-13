@@ -10,7 +10,7 @@ import {
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTourFinder";
-import { HaxStore, HAXStore } from "./hax-store.js";
+import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
 import {
   HaxComponentStyles,
