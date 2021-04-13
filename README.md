@@ -62,6 +62,7 @@ Edit files in `lib/`, `src/`, `locales/` and `demo/` in order to modify the elem
 
 - `$ wcf element`
     -  Create a new component.
+    -  Needs to be within the WCFactory (https://github.com/elmsln/WCFactory) to use.
 - `$ yarn run rebuild-wcfcache`
     - Rebuild caches as to what web component libraries can be used
 - `$ yarn test`

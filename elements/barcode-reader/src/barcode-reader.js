@@ -92,6 +92,11 @@ class BarcodeReader extends LitElement {
     `;
   }
 
+  //Ask for video when show scanner button
+  // Set default for input arg
+  // Add args for screen size
+
+
   constructor() {
     super();
     window.ESGlobalBridge.requestAvailability();
