@@ -4,12 +4,48 @@
     {
       "name": "barcode-reader",
       "path": "./barcode-reader.js",
-      "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`"
+      "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`",
+      "attributes": [
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
     },
     {
       "name": "barcode-reader",
       "path": "./src/barcode-reader.js",
-      "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`"
+      "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`",
+      "attributes": [
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
     }
   ]
 }
