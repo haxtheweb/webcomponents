@@ -211,6 +211,12 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           padding: var(--github-preview-container-padding, 5px);
         }
 
+        @media screen and (max-width: 400px) {
+          .container {
+            width: var(--github-preview-container-width, 350px);
+          }
+        }
+
         .header-container {
           display: flex;
           align-items: center;
