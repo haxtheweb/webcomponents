@@ -66,10 +66,7 @@ Editor
 
 Explosion
 > A stinking awesome, explosion.
-# &lt;barcode-reader&gt;
 
-Reader
-> Element to read barcodes and QR codes through a video stream
 # &lt;baseline-build-hax&gt;
 
 Build
