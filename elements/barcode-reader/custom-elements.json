@@ -8,7 +8,7 @@
       "attributes": [
         {
           "name": "value",
-          "type": "string"
+          "type": "string",
         }
       ],
       "properties": [

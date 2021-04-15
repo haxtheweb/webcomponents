@@ -26,15 +26,11 @@ class BarcodeReader extends LitElement {
       canvas {
         display: none;
       }
-      video {
-        width: 100%;
-        height: 100%;
-      }
       #overlay {
         position: absolute;
         top: 0;
         left: 0;
-        bottom: 70px;
+        bottom: 71px;
         right: 0;
         background-color: transparent;
         border-style: solid;
@@ -43,7 +39,6 @@ class BarcodeReader extends LitElement {
         z-index: 20;
         border-width: 2em;
       }
-
       #hidden {
         display: none;
       }
@@ -58,6 +53,10 @@ class BarcodeReader extends LitElement {
         type: String,
         reflect: true,
       },
+      scale:{
+        type: Number,
+        reflect: true
+      }
     };
   }
 
@@ -69,18 +68,16 @@ class BarcodeReader extends LitElement {
       <div id="hidden">
         <div id="overlay"></div>
         <div>
-          <video muted autoplay id="video" playsinline="true"></video>
+          <video muted autoplay id="video" playsinline="true" width="${this.scale}%" height="${this.scale}%"></video>
           <canvas
             id="canvas"
-            width="640"
-            height="480"
             style="display: none; float: bottom;"
           ></canvas>
         </div>
       </div>
       <div>
         Result: <span><input type="text" .value="${this.value}" /> </span
-        ><button id="render">Show scanner</button>
+      ><button id="render">Initialize scanner</button>
       </div>
       <div id="hidden2">
         <div class="select">
@@ -92,9 +89,10 @@ class BarcodeReader extends LitElement {
     `;
   }
 
-  //Ask for video when show scanner button
   // Set default for input arg
   // Add args for screen size
+  // Access flashlight?
+  // Search API to turn numbers below barcode into text if cannot read barcode
 
   constructor() {
     super();
@@ -115,8 +113,8 @@ class BarcodeReader extends LitElement {
     let buttonGo = this.shadowRoot.getElementById("go");
 
     let isPaused = false;
-    let videoWidth = 640,
-      videoHeight = 480;
+    let videoWidth = 480,
+      videoHeight = 640;
     let mobileVideoWidth = 240,
       mobileVideoHeight = 320;
     let isPC = true;
@@ -126,9 +124,10 @@ class BarcodeReader extends LitElement {
 
     var tick = function () {
       if (window.ZXing) {
+        setTimeout(() => {
         console.log("loaded zxing instance");
         ZXing = new window.ZXing();
-        decodePtr = ZXing.Runtime.addFunction(decodeCallback);
+        decodePtr = ZXing.Runtime.addFunction(decodeCallback);}, 100); //Slow down execution. Error when loaded before getting devices
       } else {
         setTimeout(tick, 100);
       }
@@ -335,12 +334,12 @@ class BarcodeReader extends LitElement {
    * LitElement ready
    */
   firstUpdated() {
-    this.start().then((r) => console.log());
+    this.start().then(r => {});
     this.__context = this.shadowRoot.querySelector("canvas").getContext("2d");
     this.__video = this.shadowRoot.querySelector("video");
     this.__videoInputSelector = this.shadowRoot.querySelector("#videoInput");
     vid = this.shadowRoot.getElementById("video");
-    this._renderVideo();
+    this._renderVideo().then(r => {});
   }
 
   async _onFrame() {
@@ -351,12 +350,15 @@ class BarcodeReader extends LitElement {
   }
 
   _drawFrame(frameData) {
-    this.__context.drawImage(frameData, 0, 0, 640, 480, 0, 0, 640, 480);
-    this._processFrame().then((r) => console.log());
+    this.__context.drawImage(frameData, 0, 0, this.width, this.height, 0, 0, this.width, this.height);
   }
 
   async start() {
-    this._control();
+    this.shadowRoot.getElementById("render").addEventListener("click", () => {
+      if (this.shadowRoot.getElementById("render").innerHTML === "Initialize scanner"){
+        this._control();
+      }
+    });
   }
   async _renderVideo() {
     let video = this.shadowRoot.getElementById("hidden");
@@ -364,7 +366,7 @@ class BarcodeReader extends LitElement {
     let extraButtons = this.shadowRoot.getElementById("hidden2");
     video.style.display = "none";
     this.shadowRoot.getElementById("render").addEventListener("click", () => {
-      if (video.style.display === "none") {
+      setTimeout(() => {if (video.style.display === "none") {
         video.style.display = "inline";
         button.innerHTML = "Hide Scanner";
         extraButtons.style.display = "inline";
@@ -372,7 +374,8 @@ class BarcodeReader extends LitElement {
         video.style.display = "none";
         button.innerHTML = "Show Scanner";
         extraButtons.style.display = "none";
-      }
+      }}, 100);
+
     });
   }
 }
