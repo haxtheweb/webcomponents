@@ -30,7 +30,7 @@ class BarcodeReader extends LitElement {
       {
         border-style: solid;
         border-color: rgba(0, 0, 0, 0.5);
-        border-width: 1em;
+        border-width: 5px;
       }
       #hidden {
         display: none;
