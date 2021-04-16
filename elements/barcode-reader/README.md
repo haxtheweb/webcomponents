@@ -24,7 +24,10 @@ import '@lrnwebcomponents/barcode-reader/barcode-reader.js';
 ```
 ## Usage after imported
 barcode-reader will give controls to show/hide and start the scanner, but the submit button to utilize the data is left up to the website.
-For best usage, initialize the tag with an empty value attribute.
+
+## Component Specific Attributes
+`value` Value of the result. For best usage, initialize tag with empty value attribute.
+`scale` Scale of the video as a number, no percentage sign.
 
 ## Develop / Demo
 Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.

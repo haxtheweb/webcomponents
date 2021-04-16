@@ -26,18 +26,11 @@ class BarcodeReader extends LitElement {
       canvas {
         display: none;
       }
-      #overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 71px;
-        right: 0;
-        background-color: transparent;
+      video
+      {
         border-style: solid;
         border-color: rgba(0, 0, 0, 0.5);
-        pointer-events: none;
-        z-index: 20;
-        border-width: 2em;
+        border-width: 5px;
       }
       #hidden {
         display: none;
@@ -66,9 +59,8 @@ class BarcodeReader extends LitElement {
   render() {
     return html`
       <div id="hidden">
-        <div id="overlay"></div>
         <div>
-          <video muted autoplay id="video" playsinline="true" width="${this.scale}%" height="${this.scale}%"></video>
+          <video muted autoplay id="video" width="${this.scale}%" height="${this.scale}%"></video>
           <canvas
             id="canvas"
             style="display: none; float: bottom;"
