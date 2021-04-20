@@ -3,34 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>BarcodeReader: barcode-reader Demo</title>
+    <title>BR: b-r Demo</title>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../barcode-reader.js';
+      import '../b-r.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic barcode-reader demo</h3>
+      <h3>Basic b-r demo</h3>
       <demo-snippet>
         <template>
-          <barcode-reader id="reader" value="" scale="50"></barcode-reader>
+          <b-r amount="20"></b-r>
+          <p>Testing</p>
         </template>
       </demo-snippet>
     </div>
-  <script async defer>
-    setTimeout(() => {
-      document.getElementById("reader").addEventListener("value-changed", (e) => {
-        if (e.detail.value !== ""){
-          alert(e.detail.value);
-        }
-      });
-    }, 1000);
-  </script>
   </body>
 </html>
