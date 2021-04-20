@@ -192,7 +192,9 @@ Loading
 
 Studio
 > Studio App for ELMS:LN
-# &lt;a11y-menu-button&gt;
+# ES Global bridge
+
+This project helps bridge legacy, non-ESM code with modern ESM code. It generates a Promise for adding a script tag to the page. Then when it's resolved (loaded) it generates an event that can be listened for to make sure that the global classes in that file resolve correctly.# &lt;a11y-menu-button&gt;
 
 11
 > Start of a11y-menu-button
@@ -928,7 +930,9 @@ Share
 
 Note
 > Automated conversion of stop-note/
-# &lt;tab-list&gt;
+# Storybook utilities
+
+This provides some utility functions for working with storybook and our monorepo. It is for internal purposes only though it is published for maintainability.# &lt;tab-list&gt;
 
 List
 > Automated conversion of tab-list/
