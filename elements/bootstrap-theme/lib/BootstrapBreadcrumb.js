@@ -30,6 +30,12 @@ class BootstrapBreadcrumb extends LitElement {
           border-radius: 5px;
         }
 
+        .breadcrumb {
+          -moz-box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 10%);
+          -webkit-box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 10%);
+          box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 10%);
+        }
+
         simple-icon-lite {
           margin-bottom: 5px;
         }
@@ -51,6 +57,12 @@ class BootstrapBreadcrumb extends LitElement {
           background-color: var(
             --bootstrap-dark-theme-secondary-background-color
           );
+          -moz-box-shadow: inset 0 2px 4px 0
+            rgb(var(--bootstrap-theme-light-secondary-background-color), 0.7);
+          -webkit-box-shadow: inset 0 2px 4px 0
+            rgb(var(--bootstrap-theme-light-secondary-background-color), 0.7);
+          box-shadow: inset 0 2px 4px 0
+            rgb(var(--bootstrap-theme-light-secondary-background-color), 0.7);
         }
 
         :host([color-theme="1"]) .container {
@@ -65,6 +77,41 @@ class BootstrapBreadcrumb extends LitElement {
 
         :host([color-theme="1"]) a:hover {
           color: #fff;
+        }
+
+        /* palenight theme */
+        :host([color-theme="2"]) {
+          --simple-icon-color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) simple-icon-lite:hover {
+          --simple-icon-color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) .breadcrumb {
+          background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+          -moz-box-shadow: inset 0 2px 4px 0
+            rgb(var(--bootstrap-theme-light-secondary-background-color), 0.7);
+          -webkit-box-shadow: inset 0 2px 4px 0
+            rgb(var(--bootstrap-theme-light-secondary-background-color), 0.7);
+          box-shadow: inset 0 2px 4px 0
+            rgb(var(--bootstrap-theme-light-secondary-background-color), 0.7);
+        }
+
+        :host([color-theme="2"]) .container {
+          background-color: var(
+            --bootstrap-theme-palenight-secondary-background-color
+          );
+        }
+
+        :host([color-theme="2"]) a {
+          color: var(--bootstrap-theme-palenight-color);
+        }
+
+        :host([color-theme="2"]) a:hover {
+          color: var(--bootstrap-theme-palenight-color);
         }
       `,
     ];

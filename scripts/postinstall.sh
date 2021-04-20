@@ -31,6 +31,9 @@ for project in */ ; do
     if [ -d "locales" ]; then
       symlink-dir ../../../elements/${p}/locales ../../node_modules/@lrnwebcomponents/${p}/locales
     fi
+    if [ -d "server" ]; then
+      symlink-dir ../../../elements/${p}/server ../../node_modules/@lrnwebcomponents/${p}/server
+    fi
     if [ -d "build" ]; then
       symlink-dir ../../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
     fi
@@ -50,6 +53,9 @@ for project in */ ; do
     if [ -d "locales" ]; then
       symlink-dir ../../../elements/${p}/locales ../../node_modules/@lrnwebcomponents/${p}/locales
     fi
+    if [ -d "server" ]; then
+      symlink-dir ../../../elements/${p}/server ../../node_modules/@lrnwebcomponents/${p}/server
+    fi
     if [ -d "build" ]; then
       symlink-dir ../../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
     fi
@@ -68,6 +74,9 @@ for project in */ ; do
     fi
     if [ -d "locales" ]; then
       ln -s ../../../elements/${p}/locales ../../node_modules/@lrnwebcomponents/${p}/locales
+    fi
+    if [ -d "server" ]; then
+      ln -s ../../../elements/${p}/server ../../node_modules/@lrnwebcomponents/${p}/server
     fi
     if [ -d "build" ]; then
        ln -s ../../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build

@@ -11,68 +11,24 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@lrnwebcomponents/multiple-choice/multiple-choice.js';
-      import '@lrnwebcomponents/chartist-render/chartist-render.js';
-      import "@polymer/paper-button/paper-button.js";
+      import "@lrnwebcomponents/self-check/self-check.js";
       import '../pouch-db.js';
-      import '@lrnwebcomponents/data-viz/data-viz.js';   //REMOVE
-
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic pouch-db demo</h3>
       <demo-snippet>
         <template>
-          <pouch-db></pouch-db>
-
-          <multiple-choice quiz-name="Quiz1"></multiple-choice>
-          <multiple-choice quiz-name="Quiz2"></multiple-choice>
-          <multiple-choice quiz-name="Quiz3"></multiple-choice>
-
+          <self-check title="Things" link="https://google.com/">
+            what?uff?
+          </self-check>
+          <self-check title="Stuff" link="https://google.com/">
+            Did you know stuff?
+          </self-check>
           <multiple-choice quiz-name="Quiz4" style="width: 75%; margin: 0px auto; display: block;" check-label="Check guess" reset-label="Clear" hide-title question="Who founded the ELMS:LN Platform?" correct-text="Great job!" incorrect-text="Try again" randomize typeof="oer:Assessment" resource="#97ffed48-c928-39ae-1bea" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " answers="[{&quot;correct&quot;:false,&quot;label&quot;:&quot;Michael Potter&quot;},{&quot;correct&quot;:true,&quot;label&quot;:&quot;Bryan Ollendyke&quot;},{&quot;correct&quot;:false,&quot;label&quot;:&quot;Mythic Elves&quot;},{&quot;correct&quot;:false,&quot;label&quot;:&quot;Charles Lavera&quot;},{&quot;correct&quot;:false,&quot;label&quot;:&quot;Nikki Massaro Kauffman&quot;}]" schema-resource-id="#97ffed48-c928-39ae-1bea"></multiple-choice>
 
           <multiple-choice quiz-name="Quiz5" style="width: 75%; margin: 0px auto; display: block;" title="ELMS Development team" check-label="Check your guess" reset-label="Clear answers" question="Who is responsible for ELMS:LN existing? Who improves it and wants it to be the best NGDLE solution to transform education and the world?" correct-text="Great job! You got our trick question!" incorrect-text="Try again, there's some more answers..." randomize typeof="oer:Assessment" resource="#59426af4-ecf2-f49d-06a6" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " answers="[{&quot;correct&quot;:true,&quot;label&quot;:&quot;Bryan Ollendyke&quot;},{&quot;correct&quot;:true,&quot;label&quot;:&quot;Charles Lavera&quot;},{&quot;correct&quot;:true,&quot;label&quot;:&quot;Nikki Massaro Kauffman&quot;},{&quot;correct&quot;:true,&quot;label&quot;:&quot;Anyone, ELMS:LN is an open community developed by multiple organizations!&quot;},{&quot;correct&quot;:true,&quot;label&quot;:&quot;Michael Potter&quot;}]" schema-resource-id="#59426af4-ecf2-f49d-06a6"></multiple-choice>
-
-
-
-
-          <paper-button id="button">Click to see results</paper-button>
-          <script>
-            let eventData = [""];
-            eventData = {
-              queryRequest: "all-quizzes",        //OR single
-              //queryRequest: "single-quiz",      //single use; also need objectName specified
-              //objectName: "quizName"            //e.g. Quiz2
-
-              //activityDisplay: "answered",      //KEEP for future use - verb action
-              //resultSuccess: "tester",          //KEEP for future use - pass or fail
-              //resultCompletion: true,           //KEEP for future use - complete yes or no
-            };
-
-            const elemButton = document.getElementById('button');
-            const evt = new CustomEvent("get-data", {
-              bubbles: true,
-              composed: true,
-              cancelable: false,
-              detail: eventData
-            });
-
-            elemButton.addEventListener('click', e => e.target.dispatchEvent(evt));
-            window.addEventListener("user-engagement",
-              (e) => {
-                // delay so we see the result included that kicked off the event
-                setTimeout(() => {
-                  window.dispatchEvent(evt);
-                }, 100);
-              }
-            );
-            //elemButton.addEventListener('click', e => e.window.dispatchEvent(evt));
-          </script>
-
-
-          <data-viz>
-
 
         </template>
       </demo-snippet>

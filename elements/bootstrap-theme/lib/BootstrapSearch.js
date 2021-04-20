@@ -59,7 +59,7 @@ class BootstrapSearch extends LitElement {
   inputChanged(evt) {
     this.searchText = evt.target.value;
     this.dispatchEvent(
-      new CustomEvent("searchChanged", {
+      new CustomEvent("search-changed", {
         bubbles: true,
         composed: true,
         detail: this,

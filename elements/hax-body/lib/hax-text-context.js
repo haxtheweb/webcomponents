@@ -151,6 +151,8 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       } else if (
         activeNode &&
         activeNode.tagName === "LI" &&
+        activeNode.parentNode &&
+        activeNode.parentNode.tagName &&
         this.shadowRoot.querySelector(
           'button[event-name="' +
             activeNode.parentNode.tagName.toLowerCase() +

@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "a11y-gif-player",
-      "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n\nAttributes:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `described-by` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `src` {`string`} - Source of animated gif\n\n  * `src-without-animation` {`string`} - Source of static version of image\n\n  * `tooltip-playing` {`string`} - tooltip when playing\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `describedBy` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `src` {`string`} - Source of animated gif\n\n  * `srcWithoutAnimation` {`string`} - Source of static version of image\n\n  * `tooltipPlaying` {`string`} - tooltip when playing\n\n  * `observer` - mutation observer for a11y-details\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+      "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n\nAttributes:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `described-by` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `src` {`string`} - Source of animated gif\n\n  * `src-without-animation` {`string`} - Source of static version of image\n\n  * `tooltip-playing` {`string`} - tooltip when playing\n\n  * `__gifLoaded` {`boolean`} - if the gif source is loaded to avoid jarring on load\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `t` - \n\n  * `element-visible` {`boolean`} - \n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `describedBy` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `src` {`string`} - Source of animated gif\n\n  * `srcWithoutAnimation` {`string`} - Source of static version of image\n\n  * `tooltipPlaying` {`string`} - tooltip when playing\n\n  * `observer` - mutation observer for a11y-details\n\n  * `__gifLoaded` {`boolean`} - if the gif source is loaded to avoid jarring on load\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `t` - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "alt",
@@ -30,17 +30,31 @@
           "description": "`tooltip-playing` {`string`} - tooltip when playing\n\nProperty: tooltipPlaying"
         },
         {
+          "name": "__gifLoaded",
+          "description": "`__gifLoaded` {`boolean`} - if the gif source is loaded to avoid jarring on load\n\nProperty: __gifLoaded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
           "name": "disabled",
           "description": "`disabled` {`boolean`} - Whether button is disabled\n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "tooltip",
-          "description": "`tooltip` {`string`} - default tooltip\n\nProperty: tooltip\n\nDefault: Toggle animation"
+          "description": "`tooltip` {`string`} - default tooltip\n\nProperty: tooltip\n\nDefault: "
         },
         {
           "name": "__playing",
           "description": "`__playing` {`boolean`} - whether GIF is playing\n\nProperty: __playing\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -55,7 +69,7 @@
     },
     {
       "name": "a11y-gif-player",
-      "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n\nAttributes:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `described-by` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `src` {`string`} - Source of animated gif\n\n  * `src-without-animation` {`string`} - Source of static version of image\n\n  * `tooltip-playing` {`string`} - tooltip when playing\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `describedBy` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `src` {`string`} - Source of animated gif\n\n  * `srcWithoutAnimation` {`string`} - Source of static version of image\n\n  * `tooltipPlaying` {`string`} - tooltip when playing\n\n  * `observer` - mutation observer for a11y-details\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+      "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n\nAttributes:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `described-by` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `src` {`string`} - Source of animated gif\n\n  * `src-without-animation` {`string`} - Source of static version of image\n\n  * `tooltip-playing` {`string`} - tooltip when playing\n\n  * `__gifLoaded` {`boolean`} - if the gif source is loaded to avoid jarring on load\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `t` - \n\n  * `element-visible` {`boolean`} - \n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `describedBy` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `src` {`string`} - Source of animated gif\n\n  * `srcWithoutAnimation` {`string`} - Source of static version of image\n\n  * `tooltipPlaying` {`string`} - tooltip when playing\n\n  * `observer` - mutation observer for a11y-details\n\n  * `__gifLoaded` {`boolean`} - if the gif source is loaded to avoid jarring on load\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `t` - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "alt",
@@ -82,17 +96,31 @@
           "description": "`tooltip-playing` {`string`} - tooltip when playing\n\nProperty: tooltipPlaying"
         },
         {
+          "name": "__gifLoaded",
+          "description": "`__gifLoaded` {`boolean`} - if the gif source is loaded to avoid jarring on load\n\nProperty: __gifLoaded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
           "name": "disabled",
           "description": "`disabled` {`boolean`} - Whether button is disabled\n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "tooltip",
-          "description": "`tooltip` {`string`} - default tooltip\n\nProperty: tooltip\n\nDefault: Toggle animation"
+          "description": "`tooltip` {`string`} - default tooltip\n\nProperty: tooltip\n\nDefault: "
         },
         {
           "name": "__playing",
           "description": "`__playing` {`boolean`} - whether GIF is playing\n\nProperty: __playing\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
           "valueSet": "v"
         },
         {

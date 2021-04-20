@@ -73,7 +73,10 @@ class DataViz extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("show-data", this.showDataFunction.bind(this));
+    window.addEventListener(
+      "pouch-db-show-data",
+      this.showDataFunction.bind(this)
+    );
   }
 
   /**
@@ -94,7 +97,10 @@ class DataViz extends LitElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    window.removeEventListener("show-data", this.showDataFunction.bind(this));
+    window.removeEventListener(
+      "pouch-db-show-data",
+      this.showDataFunction.bind(this)
+    );
     super.disconnectedCallback();
   }
   /**

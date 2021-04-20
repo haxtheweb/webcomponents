@@ -657,7 +657,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         property: "location",
         title: "Location",
         description:
-          "What is displayed in the bnowser bar after your site name / URL",
+          "What is displayed in the browser bar after your site name / URL",
         inputMethod: "textfield",
         required: true,
       },

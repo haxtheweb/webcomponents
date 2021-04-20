@@ -286,8 +286,6 @@ class SimpleFieldsLite extends LitElement {
        */
       elementizer: {
         type: Object,
-        attribute: "elementizer",
-        reflect: true,
       },
       /*
        * value of fields

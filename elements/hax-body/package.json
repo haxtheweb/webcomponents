@@ -28,7 +28,7 @@
     "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "polymer serve --npm --module-resolution=node --open --root=../../ --open-path=elements/hax-body/demo/index.html",
+    "serve": "polymer serve --npm --module-resolution=node --open --root=../../ --open-path=elements/hax-body/demo/index.html --compile=never",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
@@ -62,6 +62,7 @@
     "@lrnwebcomponents/undo-manager": "^3.0.5",
     "@lrnwebcomponents/i18n-manager": "^3.0.7",
     "@lrnwebcomponents/utils": "^3.0.0",
+    "@lrnwebcomponents/iframe-loader": "^3.0.6",
     "@vaadin/vaadin-upload": "^4.4.1",
     "lit-element": "2.4.0",
     "mobx": "6.0.4"

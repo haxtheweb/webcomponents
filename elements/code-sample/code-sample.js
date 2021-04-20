@@ -234,7 +234,7 @@ class CodeSample extends LitElement {
       store.keyboardShortcuts["```" + list[i]] = {
         tag: "code-sample",
         properties: {
-          type: list[i],
+          type: list[i] === "js" ? "javascript" : list[i],
         },
         content: `<template preserve-content="preserve-content">${this.getExample(
           list[i]

@@ -136,10 +136,15 @@ class HaxAutoloader extends HAXElement(LitElement) {
               decodeURIComponent(import.meta.url)
             );
             if (!window.customElements.get(name)) {
+              // fallback support since we now support import / a complex object
               let nameLocation = varGet(
                 HAXStore,
-                "__appStoreData.autoloader." + name,
-                `@lrnwebcomponents/${name}/${name}.js`
+                `__appStoreData.autoloader.${name}.import`,
+                varGet(
+                  HAXStore,
+                  `__appStoreData.autoloader.${name}`,
+                  `@lrnwebcomponents/${name}/${name}.js`
+                )
               );
               import(`${basePath}../../../${nameLocation}`)
                 .then((response) => {
@@ -158,6 +163,23 @@ class HaxAutoloader extends HAXElement(LitElement) {
                     );
                   } else if (CEClass.haxProperties) {
                     this.setHaxProperties(CEClass.haxProperties, name);
+                  }
+                  // appstore definition
+                  else if (
+                    varGet(
+                      HAXStore,
+                      `__appStoreData.autoloader.${name}.haxProperties`,
+                      false
+                    )
+                  ) {
+                    this.setHaxProperties(
+                      varGet(
+                        HAXStore,
+                        `__appStoreData.autoloader.${name}.haxProperties`,
+                        false
+                      ),
+                      name
+                    );
                   } else {
                     console.warn(`${name} didn't have hax wiring in the end`);
                   }

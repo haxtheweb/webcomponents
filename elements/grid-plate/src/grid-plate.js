@@ -480,6 +480,15 @@ class GridPlate extends LitElement {
           "responsive-width",
         ],
       },
+      demoSchema: [
+        {
+          tag: "grid-plate",
+          properties: {
+            disableResponsive: true,
+          },
+          content: "",
+        },
+      ],
     };
   }
   static get properties() {

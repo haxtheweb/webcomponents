@@ -2,24 +2,21 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { UserActionBroker } from "./lib/UserActionBroker.js";
+import { UABroker } from "./lib/UserActionBroker.js";
 /**
- * `user-action`
- * @element user-action
- * `track user actions and allow them to talk to xAPI stores easily`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @demo demo/index.html
- */
+  * `user-action`
+  * @element user-action
+  * `track user actions and allow them to talk to xAPI stores easily`
+  *
+  * @microcopy - language worth noting:
+  *  -
+  *
+ 
+  * @demo demo/index.html
+  */
 class UserAction extends HTMLElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "user-action";
@@ -27,27 +24,21 @@ class UserAction extends HTMLElement {
   /**
    * life cycle
    */
-  constructor(delayRender = false) {
+  constructor() {
     super();
-    this.UserActionBroker = new UserActionBroker();
-    // set tag for later use
     this.tag = UserAction.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/user-action-properties.json
-    let obj = UserAction.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          let val = this.getAttribute(p);
-          if (obj[p].type === "Boolean") {
-            val = true;
-          }
-          this[p] = val;
-        } else {
-          this[p] = obj[p].value;
-        }
-      }
+    this.fired = false;
+    this.track = "visibility";
+    this.eventname = "user-engagement";
+    this.every = false;
+    this.visiblelimit = 0.5;
+  }
+  get every() {
+    return this.getAttribute("every");
+  }
+  set every(val) {
+    if (val) {
+      this.setAttribute("every", val);
     }
   }
   /**
@@ -58,14 +49,10 @@ class UserAction extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["track", "eventname"];
+    return ["track", "eventname", "every"];
   }
 
   attributeChangedCallback(attr, oldValue, newValue) {
-    // allow for customized event name
-    if (attr === "eventname" && newValue) {
-      this.UserActionBroker.eventname = newValue;
-    }
     if (attr === "track" && newValue) {
       switch (newValue) {
         // visibility isn't a real event and needs a complex solution
@@ -104,15 +91,64 @@ class UserAction extends HTMLElement {
    */
   userActionEvent(e) {
     if (
+      !this._haxstate &&
       (!this.fired || this.every) &&
-      this.UserActionBroker.valid(this.track)
+      UABroker.valid(this.track)
     ) {
-      this.UserActionBroker.fireAction(this.track, e, this);
+      UABroker.fire(this.eventname, this.track, e, this);
       this.fired = true;
-    } else if (!this.UserActionBroker.valid(this.track)) {
+    } else if (!UABroker.valid(this.track)) {
       console.warn(this.track + " was not valid");
     }
   }
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+      gizmoRegistration: "haxgizmoRegistration",
+    };
+  }
+  /**
+   * Supply translations for the UI elements of HAX in meme-maker
+   */
+  haxgizmoRegistration(store) {
+    window.dispatchEvent(
+      new CustomEvent("i18n-manager-register-element", {
+        detail: {
+          namespace: `${this.tag}.haxProperties`,
+          localesPath: new URL("./locales", import.meta.url).href,
+          locales: ["es"],
+        },
+      })
+    );
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    if (val) {
+      this._haxstate = val;
+    }
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    this._haxstate = val;
+  }
 }
-window.customElements.define(UserAction.tag, UserAction);
+customElements.define(UserAction.tag, UserAction);
 export { UserAction };

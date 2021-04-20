@@ -331,7 +331,44 @@ class CleanTwo extends HAXCMSThemeParts(
           font-size: 1.5em;
           margin-right: -52px;
         }
-        @media screen and (max-width: 600px) {
+        .content {
+          flex: 1 1 auto;
+          margin: 0px 16px;
+          display: block;
+          padding: 0;
+          width: 600px;
+        }
+        @media screen and (max-width: 400px) {
+          .content {
+            width: 200px;
+          }
+          .body-wrapper {
+            overflow-x: hidden;
+          }
+          .header site-menu-content {
+            margin-right: -40px;
+          }
+          site-menu {
+            width: 250px;
+          }
+          #haxcmsmobilemenunav {
+            min-width: 250px;
+            margin-left: 0px;
+          }
+          :host([menu-open]) #haxcmsmobilemenubutton{
+            margin-left: -52px;
+          }
+          .link-actions .inner {
+            display: block;
+          }
+          site-menu-button {
+            margin: 10px 0;
+          }
+          #slot ::slotted(iframe) {
+            width: auto;
+          } 
+        }
+        @media screen and (min-width: 400px) and (max-width: 600px) {
           .header site-menu-content {
             margin-right: -40px;
           }
@@ -345,7 +382,7 @@ class CleanTwo extends HAXCMSThemeParts(
             width: auto;
           }
           .content {
-            width: 400px;
+            width: 350px;
           }
         }
         @media screen and (min-width: 1024px) {
@@ -360,13 +397,6 @@ class CleanTwo extends HAXCMSThemeParts(
           .body-wrapper .content-wrapper .content {
             padding: 32px 64px;
           }
-        }
-        .content {
-          flex: 1 1 auto;
-          margin: 0px 16px;
-          display: block;
-          padding: 0;
-          width: 600px;
         }
         .right-col {
           margin: 0;

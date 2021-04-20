@@ -3,21 +3,21 @@
   "tags": [
     {
       "name": "pouch-db",
-      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `show-data` {`CustomEvent<string[]>`} - ",
+      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `pouch-db-show-data` {`CustomEvent<string[]>`} - \n\nProperties:\n\n  * `type` {`string`} - ",
       "attributes": [
         {
-          "name": "onshow-data",
-          "description": "`show-data` {`CustomEvent<string[]>`} - "
+          "name": "onpouch-db-show-data",
+          "description": "`pouch-db-show-data` {`CustomEvent<string[]>`} - "
         }
       ]
     },
     {
       "name": "pouch-db",
-      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `show-data` {`CustomEvent<string[]>`} - ",
+      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `pouch-db-show-data` {`CustomEvent<string[]>`} - \n\nProperties:\n\n  * `type` {`string`} - ",
       "attributes": [
         {
-          "name": "onshow-data",
-          "description": "`show-data` {`CustomEvent<string[]>`} - "
+          "name": "onpouch-db-show-data",
+          "description": "`pouch-db-show-data` {`CustomEvent<string[]>`} - "
         }
       ]
     }

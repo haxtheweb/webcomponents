@@ -1,7 +1,7 @@
 {
   "canScale": false,
   "canPosition": false,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Multiple choice",
     "description": "Multiple choice self check",

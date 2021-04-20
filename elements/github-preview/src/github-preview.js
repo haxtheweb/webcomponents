@@ -211,6 +211,12 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           padding: var(--github-preview-container-padding, 5px);
         }
 
+        @media screen and (max-width: 400px) {
+          .container {
+            width: var(--github-preview-container-width, 350px);
+          }
+        }
+
         .header-container {
           display: flex;
           align-items: center;
@@ -525,7 +531,14 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
           }
         })
         .then((responseText) => {
-          this.__readmeText = responseText;
+          // don't re-render markdown if it's the same text
+          if (this.__readmeText !== responseText) {
+            this.__readmeText = responseText;
+            // if we don't have wc-markdown instance yet don't re-render wc-markdown
+            if (this.wcmarkdown) {
+              this.wcmarkdown.value = this.__readmeText;
+            }
+          }
         })
         .catch((error) => {
           console.error(error);
@@ -542,7 +555,6 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       })
       .catch((error) => {
         this.__assetAvailable = false;
-        console.error(error);
       });
   }
 
@@ -663,6 +675,16 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
       // if extended is set them import wc-markdown
       if (this.extended && propName === "extended") {
         import("./lib/wc-markdown.js");
+      }
+      // if visible and extended get wc-markdown element for re-rendering
+      if (
+        this.elementVisible &&
+        this.extended &&
+        propName === "elementVisible"
+      ) {
+        this.wcmarkdown = this.shadowRoot.querySelector(
+          "div > div.readme-container > wc-markdown"
+        );
       }
     });
   }

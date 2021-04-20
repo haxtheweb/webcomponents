@@ -174,6 +174,8 @@
  *   // @see @lrnwebcomponents/code-editor/code-editor.js
  *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js
  *   preProcessNodeToContent : "haxpreProcessNodeToContent", // input (node) where node is the item about to be converted to content for export
+ *   // @see @lrnwebcomponents/meme-maker/meme-maker.js
+ *   progressiveEnhancement : "haxprogressiveEnhancement", // works on the element ONLY in the slotted / innerHTML area. Must return content but can work against the node to generate that text
  *   // @see @lrnwebcomponents/video-player/video-player.js
  *   postProcessNodeToContent : "haxpostProcessNodeToContent", // input (content) where content is an HTML blob about to be returned for export
  *   // @see @lrnwebcomponents/multiple-choice/multiple-choice.js

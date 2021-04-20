@@ -30,7 +30,8 @@ import "./hax-preferences-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager";
+import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
+import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -137,6 +138,9 @@ class HaxTray extends I18NMixin(
     });
     autorun(() => {
       this.tourOpened = toJS(HAXStore.tourOpened);
+    });
+    autorun(() => {
+      this.appStoreLoaded = toJS(HAXStore.appStoreLoaded);
     });
     autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
@@ -246,6 +250,16 @@ class HaxTray extends I18NMixin(
           visibility: visible;
           right: 0;
           pointer-events: all;
+        }
+        loading-indicator {
+          --loading-indicator-background-color: var(
+            --simple-colors-default-theme-accent-2,
+            grey
+          );
+          --loading-indicator-color: var(
+            --simple-colors-default-theme-accent-10,
+            black
+          );
         }
         #tray-detail {
           flex: 1 1 auto;
@@ -415,6 +429,9 @@ class HaxTray extends I18NMixin(
     return html`
       ${this.panelOpsTemplate}
       <div class="wrapper" part="hax-tray-wrapper">
+        <loading-indicator
+          ?loading="${!this.appStoreLoaded}"
+        ></loading-indicator>
         ${this.menuToolbarTemplate}
         ${this.gridTemplate}${this.trayDetailTemplate}
       </div>
@@ -471,7 +488,6 @@ class HaxTray extends I18NMixin(
               role="menuitem"
               show-text-label
               align-horizontal="left"
-              voice-command="toggle alignment"
               id="top-left"
               event-name="toggle-element-align"
               icon="arrow-back"
@@ -487,7 +503,6 @@ class HaxTray extends I18NMixin(
               role="menuitem"
               show-text-label
               align-horizontal="left"
-              voice-command="toggle alignment"
               id="top-right"
               event-name="toggle-element-align"
               icon="arrow-forward"
@@ -504,7 +519,6 @@ class HaxTray extends I18NMixin(
               role="menuitem"
               show-text-label
               align-horizontal="left"
-              voice-command="toggle alignment"
               id="bottom-left"
               event-name="toggle-element-align"
               icon="arrow-back"
@@ -521,7 +535,6 @@ class HaxTray extends I18NMixin(
               role="menuitem"
               show-text-label
               align-horizontal="left"
-              voice-command="toggle alignment"
               id="bottom-right"
               event-name="toggle-element-align"
               icon="arrow-forward"
@@ -582,7 +595,7 @@ class HaxTray extends I18NMixin(
             id="haxsavebutton"
             label="${this.editMode ? this.t.save : this.t.edit}"
             event-name="save"
-            voice-command="save (content)(page)"
+            voice-command="save page"
             show-text-label
           ></hax-tray-button>
           <hax-toolbar-menu
@@ -602,7 +615,7 @@ class HaxTray extends I18NMixin(
                 id="haxcancelbutton"
                 label="${this.t.cancelWithoutSaving}"
                 event-name="cancel"
-                voice-command="cancel"
+                voice-command="cancel edit"
                 icon-position="left"
                 show-text-label
               ></hax-tray-button>
@@ -705,7 +718,7 @@ class HaxTray extends I18NMixin(
         icon="add-box"
         id="content-add"
         label="${this.t.blocks}"
-        voice-command="blocks"
+        voice-command="select blocks (menu)"
         show-text-label
         icon-position="top"
         data-simple-tour-stop
@@ -729,7 +742,7 @@ class HaxTray extends I18NMixin(
         label="${this.t.media}"
         show-text-label
         icon-position="top"
-        voice-command="Media"
+        voice-command="select media (menu)"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
@@ -752,7 +765,7 @@ class HaxTray extends I18NMixin(
         label="${this.t.structure}"
         show-text-label
         icon-position="top"
-        voice-command="open map"
+        voice-command="select structure (menu)"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
@@ -775,7 +788,7 @@ class HaxTray extends I18NMixin(
         event-name="advanced-settings"
         icon="settings"
         label="${this.t.settings}"
-        voice-command="open preferences"
+        voice-command="select settings (menu)"
         show-text-label
         icon-position="top"
         data-simple-tour-stop
@@ -815,7 +828,7 @@ class HaxTray extends I18NMixin(
   }
   get advancedSettingsTemplate() {
     return html` <hax-preferences-dialog
-      id="advanced-settings-tray"
+      id="advanced-settings"
       ?hidden="${this.trayDetail !== "advanced-settings"}"
     ></hax-preferences-dialog>`;
   }
@@ -845,7 +858,7 @@ class HaxTray extends I18NMixin(
   }
   get contentMapTemplate() {
     return html`<hax-map
-      controls="content-map-tray"
+      controls="content-map"
       ?hidden="${this.trayDetail !== "content-map"}"
     ></hax-map>`;
   }
@@ -901,7 +914,7 @@ class HaxTray extends I18NMixin(
           target.getAttribute("data-demo-schema") &&
           schema &&
           schema.demoSchema &&
-          schema.demoSchema
+          schema.demoSchema[0]
         ) {
           haxElement = schema.demoSchema[0];
         } else {
@@ -1027,6 +1040,9 @@ class HaxTray extends I18NMixin(
       },
       traySizeIcon: {
         type: String,
+      },
+      appStoreLoaded: {
+        type: Boolean,
       },
       /**
        * Form values for active node
@@ -1237,7 +1253,9 @@ class HaxTray extends I18NMixin(
         }, 0);
       }
       // change tray detail
-      if (propName == "trayDetail") this._updateTrayDetail(oldValue);
+      if (propName == "trayDetail") {
+        this._updateTrayDetail(this[propName]);
+      }
       // collaped menu state change
       if (propName == "collapsed" && this[propName]) {
         this._editModeChanged(this.editMode);
@@ -1254,7 +1272,10 @@ class HaxTray extends I18NMixin(
           }
         } else {
           this.activeTagName = "";
-          if (this.trayDetail !== "content-add") {
+          // force a gizmo change (which then implies adding to the page)
+          // to select the edit tab if we just added something into the page
+          // from our two content adding panes
+          if (!["content-add", "content-map"].includes(this.trayDetail)) {
             this.trayDetail = "content-add";
           }
         }
@@ -1553,29 +1574,29 @@ class HaxTray extends I18NMixin(
     )
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
   }
-  _updateTrayDetail(oldValue) {
-    if (this.trayDetail == "content-add") {
+  _updateTrayDetail(newValue) {
+    if (newValue == "content-add") {
       this.trayLabel = this.t.blocks;
       this._refreshAddData();
-    } else if (this.trayDetail == "media-add") {
+    } else if (newValue == "media-add") {
       this.trayLabel = this.t.media;
-    } else if (this.trayDetail == "content-map") {
+    } else if (newValue == "content-map") {
       this.trayLabel = this.t.structure;
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
-    } else if (this.trayDetail == "advanced-settings") {
+    } else if (newValue == "advanced-settings") {
       this.trayLabel = this.t.settings;
       this.shadowRoot
         .querySelector("hax-preferences-dialog")
         .reloadPreferencesForm();
     } else if (
-      this.trayDetail == "content-edit" &&
+      newValue == "content-edit" &&
       (!this.activeTagName ||
         this.activeTagName == "" ||
         !this.activeNode ||
         !this.activeNode.tagName)
     ) {
       this.trayDetail = "content-add";
-    } else if (!this.trayDetail || this.trayDetail == "") {
+    } else if (!newValue || newValue == "") {
       this.trayDetail = "content-edit";
     } else {
       this.trayLabel = undefined;
@@ -1601,6 +1622,12 @@ class HaxTray extends I18NMixin(
             // prefix is a special attribute and must be handled this way
             if (prop === "prefix" && settings[key][prop] != "") {
               this.activeNode.setAttribute("prefix", settings[key][prop]);
+              setAhead = true;
+            }
+            // innerText is another special case since it cheats on slot content
+            // that is only a text node (like a link)
+            else if (prop === "innerText") {
+              this.activeNode.innerText = settings[key][prop];
               setAhead = true;
             }
             // this is a special internal held "property" for layout stuff

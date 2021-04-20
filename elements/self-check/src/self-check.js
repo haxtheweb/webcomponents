@@ -287,7 +287,7 @@ class SelfCheck extends I18NMixin(
               ${this.link
                 ? html`
                     <div class="more_info">
-                      <user-action track="click" every
+                      <user-action track="click" every="every"
                         ><a href="${this.link}" target="_blank"
                           >${this.t.moreInformation}...</a
                         ></user-action
@@ -417,102 +417,12 @@ class SelfCheck extends I18NMixin(
   openAnswer(e) {
     this.correct = !this.correct;
   }
+  /**
+   * haxProperties integration via file reference
+   */
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      contentEditable: true,
-      gizmo: {
-        title: "Self-Check",
-        description: "The user will be able to complete a self-check.",
-        icon: "icons:check-circle",
-        color: "orange",
-        groups: ["Image", "Assessment"],
-        handles: [
-          {
-            type: "image",
-            source: "image",
-            title: "question",
-            description: "answer",
-            ariaDescribedby: "describedBy",
-          },
-        ],
-        meta: {
-          author: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-          },
-          {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "The accent color of the self-check",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            property: "dark",
-            title: "Dark Theme",
-            description: "Enable Dark Theme",
-            inputMethod: "boolean",
-            icon: "icons:invert-colors",
-          },
-          {
-            property: "image",
-            title: "Image",
-            description: "The image of the element",
-            inputMethod: "haxupload",
-            validationType: "url",
-          },
-          {
-            property: "link",
-            title: "More link",
-            description: "Link to additional information",
-            inputMethod: "haxupload",
-            validationType: "url",
-          },
-          {
-            property: "alt",
-            title: "Alt Text",
-            description: "Add alt text to the image",
-            inputMethod: "alt",
-          },
-        ],
-        advanced: [
-          {
-            property: "describedBy",
-            title: "aria-describedby",
-            description:
-              "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield",
-          },
-        ],
-      },
-      saveOptions: {
-        unsetAttributes: ["colors", "image-loaded"],
-      },
-      demoSchema: [
-        {
-          tag: "self-check",
-          properties: {
-            "accent-color": "light-blue",
-            title: "Sharks Self Check",
-            image:
-              "https://kids.nationalgeographic.com/content/dam/kids/photos/animals/Fish/A-G/great-white-shark-teeth.ngsversion.1396530884408.adapt.1900.1.jpg",
-            alt: "Great White Shark",
-          },
-          content: `<span slot="question">How large can the average great white shark grow to be?</span>
-          The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.`,
-        },
-      ],
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 window.customElements.define(SelfCheck.tag, SelfCheck);

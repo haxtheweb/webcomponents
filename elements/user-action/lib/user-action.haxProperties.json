@@ -1,0 +1,41 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "User action",
+    "description": "track user actions and allow them to talk to xAPI stores easily",
+    "icon": "icons:touch-app",
+    "color": "green",
+    "groups": ["Action"],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "attribute": "track",
+        "title": "Event to track",
+        "description": "User action that causes this event to fire",
+        "inputMethod": "select",
+        "options": {
+          "visibility": "Can see this",
+          "keypress": "Press a key here",
+          "click": "Click this",
+          "hover": "Hover over this"
+        },
+        "required": true
+      },
+      {
+        "attribute": "every",
+        "title": "Track every time",
+        "description": "Default behavior is just to track the first occurence",
+        "inputMethod": "boolean",
+        "required": false
+      }
+    ],
+    "advanced": []
+  }
+}

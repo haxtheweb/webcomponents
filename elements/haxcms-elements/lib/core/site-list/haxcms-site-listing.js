@@ -601,55 +601,79 @@ class HAXCMSSiteListing extends PolymerElement {
                 on-click="_bulkSitesConfirm"
                 id="publish"
                 raised
+                data-op="publish"
               >
-                <simple-icon icon="editor:publish"></simple-icon>
-                <span class="small-hide">Publish site</span>
+                <simple-icon
+                  icon="editor:publish"
+                  data-op="publish"
+                ></simple-icon>
+                <span class="small-hide" data-op="publish">Publish site</span>
               </button>
               <button
                 title="Sync git"
                 on-click="_bulkSitesConfirm"
                 id="sync"
+                data-op="sync"
                 raised
               >
-                <simple-icon icon="notification:sync"></simple-icon>
-                <span class="small-hide">Sync git</span>
+                <simple-icon
+                  icon="notification:sync"
+                  data-op="sync"
+                ></simple-icon>
+                <span class="small-hide" data-op="sync">Sync git</span>
               </button>
               <button
                 title="Copy site"
                 on-click="_bulkSitesConfirm"
                 id="clone"
                 raised
+                data-op="copy"
               >
-                <simple-icon icon="icons:content-copy"></simple-icon>
-                <span class="small-hide">Copy site</span>
+                <simple-icon
+                  icon="icons:content-copy"
+                  data-op="copy"
+                ></simple-icon>
+                <span class="small-hide" data-op="copy">Copy site</span>
               </button>
               <button
                 title="Download zip"
                 on-click="_bulkSitesConfirm"
                 id="download"
                 raised
+                data-op="download"
               >
-                <simple-icon icon="icons:file-download"></simple-icon>
-                <span class="small-hide">Download zip</span>
+                <simple-icon
+                  icon="icons:file-download"
+                  data-op="download"
+                ></simple-icon>
+                <span class="small-hide" data-op="download">Download zip</span>
               </button>
               <button
                 title="Archive"
                 on-click="_bulkSitesConfirm"
                 id="archive"
                 raised
+                data-op="archive"
               >
-                <simple-icon icon="icons:archive"></simple-icon>
-                <span class="small-hide">Archive site</span>
+                <simple-icon
+                  icon="icons:archive"
+                  data-op="archive"
+                ></simple-icon>
+                <span class="small-hide" data-op="archive">Archive site</span>
               </button>
               <button
                 on-click="_bulkSitesConfirm"
                 id="delete"
+                data-op="delete"
                 raised
                 class="danger"
                 title="Delete forever"
               >
-                <simple-icon icon="icons:delete-forever"></simple-icon>
-                <span class="small-hide">Delete forever</span>
+                <simple-icon
+                  icon="icons:delete-forever"
+                  data-op="delete"
+                ></simple-icon>
+                <span class="small-hide" data-op="delete">Delete forever</span>
               </button>
             </div>
             <vaadin-grid
@@ -1779,24 +1803,13 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   _bulkSitesConfirm(e) {
-    let target = normalizeEventPath(e)[0];
-    // resolve what got clicked on
-    if (e.target.id) {
-      target = e.target.id;
-    } else if (!e.path && e.originalTarget) {
-      if (e.originalTarget.id) {
-        target = e.originalTarget.id;
-      } else {
-        target = e.originalTarget.parentElement.id;
+    let path = normalizeEventPath(e);
+    let target;
+    while (!target && path && path.length > 0) {
+      if (path[0].getAttribute("data-op")) {
+        target = path[0].getAttribute("data-op");
       }
-    } else {
-      let path = normalizeEventPath(e);
-      while (!target && path && path.length > 0) {
-        if (path[0].id) {
-          target = path[0].id;
-        }
-        path.shift();
-      }
+      path.shift();
     }
     this.activeOpertion = target;
     this.shadowRoot.querySelector("#confirm").opened = true;
