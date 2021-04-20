@@ -207,6 +207,12 @@ class VideoPlayer extends IntersectionObserverMixin(
             },
           },
           {
+            property: "learningMode",
+            title: "Enable learning mode",
+            description: "Disables fast forward and rewind.",
+            inputMethod: "boolean",
+          },
+          {
             property: "darkTranscript",
             title: "Dark theme for transcript",
             description: "Enable dark theme for the transcript.",
@@ -462,6 +468,13 @@ class VideoPlayer extends IntersectionObserverMixin(
         reflect: true,
       },
       /**
+       * Learning mode
+       */
+      learningMode: {
+        type: Boolean,
+        attribute: "learningMode",
+      },
+      /**
        * Language of media
        */
       lang: {
@@ -555,6 +568,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.hideTimestamps = false;
     this.hideTranscript = false;
     this.lang = "en";
+    this.learningMode = false;
     this.linkable = false;
     this.preload = "metadata";
     this.sources = [];

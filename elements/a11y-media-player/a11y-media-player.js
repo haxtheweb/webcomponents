@@ -1577,6 +1577,13 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         type: String,
       },
       /**
+       * Learning mode
+       */
+      learningMode: {
+        attribute: "learning-mode",
+        type: Boolean,
+      },
+      /**
        * has link button
        */
       linkable: {
@@ -1817,6 +1824,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     this.hideTranscript = false;
     this.id = null;
     this.lang = "en";
+    this.learningMode = false;
     this.linkable = false;
     this.localization = {};
     this.loop = false;

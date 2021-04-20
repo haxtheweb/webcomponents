@@ -145,6 +145,13 @@
     "type": "String"
   },
   /**
+   * Learning mode
+   */
+  "learningMode": {
+    "attribute": "learning-mode",
+    "type": "Boolean"
+  },
+  /**
    * has link button
    */
   "linkable": {
