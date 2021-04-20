@@ -40,7 +40,6 @@ class BR extends LitElement {
   render() {
     return html`
       <div>
-        <br>
       </div>
     `;
   }
@@ -53,7 +52,6 @@ class BR extends LitElement {
       }
     };
   }
-
 
   /**
    * Convention we use
@@ -68,7 +66,7 @@ class BR extends LitElement {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    for (let i=1; i<this.amount; i++){
+    for (let i=0; i<this.amount; i++){
       let br = document.createElement("br");
       this.shadowRoot.querySelector("div").appendChild(br);
     }
