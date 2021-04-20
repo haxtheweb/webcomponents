@@ -15,69 +15,36 @@ class BR extends LitElement {
    */
   constructor() {
     super();
-  }
-  /**
-   * LitElement style callback
-   */
-  static get styles() {
-    // support for using in other classes
-    let styles = [];
-    if (super.styles) {
-      styles = super.styles;
-    }
-    return [
-      ...styles,
-      css`
-        :host {
-          display: block;
-        }
-      `,
-    ];
+    this.amount = 1;
   }
   /**
    * LitElement render callback
    */
   render() {
-    return html`
-      <div>
-      </div>
-    `;
+    return html`<div>${this.renderBR(this.amount)}</div>`;
   }
 
   static get properties() {
     return {
-      amount:{
+      amount: {
         type: Number,
-        reflect: true
-      }
+      },
     };
   }
-
+  renderBR(amount) {
+    let count = 0;
+    const content = [];
+    while (count < amount) {
+      content.push(html`<br />`);
+      count++;
+    }
+    return content;
+  }
   /**
    * Convention we use
    */
   static get tag() {
     return "b-r";
-  }
-  /**
-   * LitElement ready
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    for (let i=0; i<this.amount; i++){
-      let br = document.createElement("br");
-      this.shadowRoot.querySelector("div").appendChild(br);
-    }
-  }
-  /**
-   * LitElement life cycle - property changed
-   */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
   }
 }
 customElements.define(BR.tag, BR);
