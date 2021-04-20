@@ -66,6 +66,10 @@ Editor
 
 Explosion
 > A stinking awesome, explosion.
+# &lt;b-r&gt;
+
+R
+> Creates break statements to show conditional rendering
 # &lt;barcode-reader&gt;
 
 Reader
