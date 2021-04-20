@@ -1,0 +1,3 @@
+# Deduping fix
+
+This is a utility that helps fix a core issue with "the platform" in that if two things try to call window.customElements.define('tag-name',ClassName) and reference the same tag-name, it is a hard bricking issue. This problem can pop up in local development for a number of reasons (or timing with legacy platforms and dynamically imported assets) and so this little utility helps rewrite this global function to perform it's same function, but issue a warning if already defined as opposed to outright failing.
