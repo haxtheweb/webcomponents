@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "b-r",
+      "path": "./b-r.js",
+      "description": "`b-r`\n`Creates break statements to show conditional rendering`"
+    },
+    {
+      "name": "b-r",
+      "path": "./src/b-r.js",
+      "description": "`b-r`\n`Creates break statements to show conditional rendering`"
+    }
+  ]
+}
