@@ -331,10 +331,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*[contenteditable] *::-moz-selection) {
-          background-color: var(
-            --hax-body-highlight,
-            var(--simple-colors-default-theme-yellow-2, yellow)
-          );
+          background-color: var(--hax-body-highlight, #ffffac);
           color: black;
         }
         :host([edit-mode])
@@ -343,10 +340,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*[contenteditable] *::selection) {
-          background-color: var(
-            --hax-body-highlight,
-            var(--simple-colors-default-theme-yellow-2, yellow)
-          );
+          background-color: var(--hax-body-highlight, #ffffac);
           color: black;
         }
         #bodycontainer {
@@ -377,10 +371,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered) {
           border-top: 8px
-            var(
-              --hax-contextual-action-hover-color,
-              var(--simple-colors-default-theme-cyan-7, #009dc7)
-            );
+            var(--hax-contextual-action-hover-color, var(--hax-ui-color-accent));
           margin-top: -8px;
         }
 
@@ -1817,7 +1808,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Reposition context menus to match an element.
    */
   positionContextMenus(node = this.activeNode) {
-    console.log(node, HAXStore.isTextElement(node));
     //console.warn(node);
     // special case for node not matching container yet it being editable
     if (node && node.tagName && this.ready) {
@@ -2483,7 +2473,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param autoFocus boolean - whether to auto focus / place cursor
    */
   __focusLogic(target, autoFocus = true) {
-    console.log("__focusLogic", target, autoFocus);
     let stopProp = false;
     // only worry about these when we are in edit mode
     // and there is no drawer open
@@ -2543,12 +2532,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             activeNode = containerNode;
           }
         }
-        console.log(
-          "__focusLogic 2",
-          activeNode,
-          containerNode,
-          this.activeNode
-        );
         // ensure this is a tag we care about / have support for and
         // that it is a new value
         if (
