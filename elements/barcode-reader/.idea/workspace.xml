@@ -2,47 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="453cdee5-af90-4ddf-aa0f-b17dfdcad734" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/jsLinters/jshint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/lrnwebcomponents.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/elements.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/.idea/b-r.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/.npmignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/.surgeignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/LICENSE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/b-r.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/b-r.stories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/b-r.umd.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/custom-elements.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/demo/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/gulpfile.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/lib/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/polymer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/rollup.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/src/b-r.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/test/b-r_test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../b-r/test/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/demo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../simple-login/simple-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../simple-login/simple-login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b-r/demo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../b-r/demo/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +73,7 @@
       <workItem from="1618522566002" duration="1029000" />
       <workItem from="1618847100260" duration="5951000" />
       <workItem from="1618872317240" duration="1118000" />
-      <workItem from="1618929027819" duration="1591000" />
+      <workItem from="1618929027819" duration="1788000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0&#10;Working element demo.">
       <created>1618177235893</created>

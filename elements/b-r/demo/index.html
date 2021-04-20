@@ -11,6 +11,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../b-r.js';
+      import "@lrnwebcomponents/wikipedia-query/wikipedia-query.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -19,8 +20,9 @@
       <h3>Basic b-r demo</h3>
       <demo-snippet>
         <template>
-          <b-r amount="20"></b-r>
+          <b-r amount="40"></b-r>
           <p>Testing</p>
+          <wikipedia-query search="Drupal" language="ja"></wikipedia-query>
         </template>
       </demo-snippet>
     </div>
