@@ -170,6 +170,28 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
     };
   }
   /**
+   * Process response from wikipedia.
+   */
+  handleResponse(response) {
+    // the key of pages is a number so need to look for it
+    if (typeof response !== typeof undefined && response.query) {
+      for (var key in response.query.pages) {
+        // skip anything that's prototype object
+        if (!response.query.pages.hasOwnProperty(key)) continue;
+        // load object response, double check we have an extract
+        if (response.query.pages[key].extract) {
+          let html = response.query.pages[key].extract;
+          html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
+          html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
+          html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
+          html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
+          // need to innerHTML this or it won't set
+          this.shadowRoot.querySelector("#result").innerHTML = html;
+        }
+      }
+    }
+  }
+  /**
    * Implements haxHooks to tie into life-cycle if hax exists.
    */
   haxHooks() {
@@ -269,105 +291,12 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
     };
   }
   /**
-   * HAXproperties
+   * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Wikipedia article",
-        description:
-          "This can display a wikipedia article in context in a variety of formats.",
-        icon: "book",
-        color: "green",
-        groups: ["Content", "Creative Commons"],
-        handles: [
-          {
-            type: "wikipedia",
-            type_exclusive: true,
-            title: "search",
-          },
-          {
-            type: "content",
-            title: "search",
-          },
-        ],
-        meta: {
-          author: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "search",
-            title: "Article name",
-            description: "Word to search wikipedia for.",
-            inputMethod: "textfield",
-            icon: "editor:title",
-            required: true,
-          },
-          {
-            property: "hideTitle",
-            title: "Hide title",
-            description: "Whether or not to render the title of the article.",
-            inputMethod: "boolean",
-            icon: "editor:title",
-          },
-          {
-            property: "language",
-            title: "Language",
-            description: "The language of the article.",
-            inputMethod: "select",
-            options: {
-              en: "English",
-              es: "Spanish",
-              fr: "French",
-              de: "German",
-              ja: "Japanese",
-            },
-          },
-        ],
-      },
-      saveOptions: {
-        wipeSlot: true,
-        unsetAttributes: ["_title"],
-      },
-      demoSchema: [
-        {
-          tag: "wikipedia-query",
-          properties: {
-            hideTitle: false,
-            search: "Internet",
-          },
-          content: "",
-        },
-      ],
-    };
-  }
-  /**
-   * Process response from wikipedia.
-   */
-  handleResponse(response) {
-    // the key of pages is a number so need to look for it
-    if (typeof response !== typeof undefined && response.query) {
-      for (var key in response.query.pages) {
-        // skip anything that's prototype object
-        if (!response.query.pages.hasOwnProperty(key)) continue;
-        // load object response, double check we have an extract
-        if (response.query.pages[key].extract) {
-          let html = response.query.pages[key].extract;
-          html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
-          html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-          html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
-          html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
-          // need to innerHTML this or it won't set
-          this.shadowRoot.querySelector("#result").innerHTML = html;
-        }
-      }
-    }
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
-window.customElements.define(WikipediaQuery.tag, WikipediaQuery);
+customElements.define(WikipediaQuery.tag, WikipediaQuery);
 export { WikipediaQuery };
