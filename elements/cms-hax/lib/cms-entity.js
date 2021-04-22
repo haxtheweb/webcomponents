@@ -131,6 +131,7 @@ class CMSEntity extends PolymerElement {
         type: Boolean,
         value: false,
         attribute: "hax-edit-mode",
+        reflectToAttribute: true,
       },
     };
   }
