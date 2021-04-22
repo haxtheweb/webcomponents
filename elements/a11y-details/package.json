@@ -27,7 +27,8 @@
   "umd": "a11y-details.umd.js",
   "scripts": {
     "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-details/test/",
-    "start": "yarn run dev",    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "es-dev-server -c ../../es-dev-server.config.js",
