@@ -24,7 +24,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           margin: auto;
           max-width: 600px;
           max-height: 600px;
-          overflow: auto;
           --box-background-color: #f7f6ef;
         }
 
@@ -570,6 +569,8 @@ class MediaImageCitation extends LitElement {
       css`
         :host {
           display: block;
+          overflow: auto;
+          max-height: 100px;
         }
 
         .citation {
@@ -605,6 +606,8 @@ class MediaImageCaption extends LitElement {
       css`
         :host {
           display: block;
+          overflow: auto;
+          max-height: 200px;
         }
 
         .caption {
