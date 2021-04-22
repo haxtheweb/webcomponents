@@ -155,7 +155,7 @@ class MemeMaker extends LitElement {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: "meme-maker.haxProperties",
-          localesPath: decodeURIComponent(import.meta.url) + "/../locales",
+          localesPath: new URL(`./locales`, import.meta.url).href,
           locales: ["es", "fr"],
         },
       })
@@ -197,10 +197,8 @@ class MemeMaker extends LitElement {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return (
-      decodeURIComponent(import.meta.url) +
-      `/../lib/${this.tag}.haxProperties.json`
-    );
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
 }
 customElements.define(MemeMaker.tag, MemeMaker);
