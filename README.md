@@ -29,6 +29,13 @@ $ yarn global add web-component-analyzer
 $ yarn install
 ```
 
+### Syncing Your Fork
+```
+$ git remote add upstream https://github.com/elmsln/lrnwebcomponents.git
+$ git fetch upstream
+$ git pull
+```
+
 ## Windows
 
 [Cygwin command line](https://www.cygwin.com/) is lightly tested, but slower than true Bash environment.

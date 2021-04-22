@@ -4,12 +4,42 @@
     {
       "name": "b-r",
       "path": "./b-r.js",
-      "description": "`b-r`\n`Creates break statements to show conditional rendering`"
+      "description": "`b-r`\n`Creates break statements to show conditional rendering`",
+      "attributes": [
+        {
+          "name": "amount",
+          "type": "number",
+          "default": "1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "amount",
+          "attribute": "amount",
+          "type": "number",
+          "default": "1"
+        }
+      ]
     },
     {
       "name": "b-r",
       "path": "./src/b-r.js",
-      "description": "`b-r`\n`Creates break statements to show conditional rendering`"
+      "description": "`b-r`\n`Creates break statements to show conditional rendering`",
+      "attributes": [
+        {
+          "name": "amount",
+          "type": "number",
+          "default": "1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "amount",
+          "attribute": "amount",
+          "type": "number",
+          "default": "1"
+        }
+      ]
     }
   ]
 }

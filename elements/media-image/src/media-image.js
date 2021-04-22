@@ -569,6 +569,8 @@ class MediaImageCitation extends LitElement {
       css`
         :host {
           display: block;
+          overflow: auto;
+          max-height: 100px;
         }
 
         .citation {
@@ -604,6 +606,8 @@ class MediaImageCaption extends LitElement {
       css`
         :host {
           display: block;
+          overflow: auto;
+          max-height: 200px;
         }
 
         .caption {
