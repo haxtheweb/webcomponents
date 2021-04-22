@@ -26,18 +26,11 @@ class BarcodeReader extends LitElement {
       canvas {
         display: none;
       }
-      #overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 71px;
-        right: 0;
-        background-color: transparent;
+      video
+      {
         border-style: solid;
         border-color: rgba(0, 0, 0, 0.5);
-        pointer-events: none;
-        z-index: 20;
-        border-width: 2em;
+        border-width: 5px;
       }
       #hidden {
         display: none;
@@ -66,7 +59,6 @@ class BarcodeReader extends LitElement {
   render() {
     return html`
       <div id="hidden">
-        <div id="overlay"></div>
         <div>
           <video muted autoplay id="video" playsinline="true" width="${this.scale}%" height="${this.scale}%"></video>
           <canvas
@@ -113,8 +105,8 @@ class BarcodeReader extends LitElement {
     let buttonGo = this.shadowRoot.getElementById("go");
 
     let isPaused = false;
-    let videoWidth = 480,
-      videoHeight = 640;
+    let videoWidth = 640,
+      videoHeight = 480;
     let mobileVideoWidth = 240,
       mobileVideoHeight = 320;
     let isPC = true;
@@ -125,9 +117,9 @@ class BarcodeReader extends LitElement {
     var tick = function () {
       if (window.ZXing) {
         setTimeout(() => {
-        console.log("loaded zxing instance");
-        ZXing = new window.ZXing();
-        decodePtr = ZXing.Runtime.addFunction(decodeCallback);}, 100); //Slow down execution. Error when loaded before getting devices
+          console.log("loaded zxing instance");
+          ZXing = new window.ZXing();
+          decodePtr = ZXing.Runtime.addFunction(decodeCallback);}, 100); //Slow down execution. Error when loaded before getting devices
       } else {
         setTimeout(tick, 100);
       }
@@ -136,9 +128,6 @@ class BarcodeReader extends LitElement {
 
     // we got a match!
     var decodeCallback = async (ptr, len, resultIndex, resultCount) => {
-      const sleep = (delay) =>
-        new Promise((resolve) => setTimeout(resolve, delay));
-      await sleep(100);
       var result = new Uint8Array(ZXing.HEAPU8.buffer, ptr, len);
       console.log(String.fromCharCode.apply(null, result));
       this.value = String.fromCharCode.apply(null, result);
@@ -179,27 +168,14 @@ class BarcodeReader extends LitElement {
     } else {
       isPC = false;
     }
-    function dataURItoBlob(dataURI) {
-      var byteString;
-      if (dataURI.split(",")[0].indexOf("base64") >= 0)
-        byteString = atob(dataURI.split(",")[1]);
-      else byteString = unescape(dataURI.split(",")[1]);
-      var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
-      var ia = new Uint8Array(byteString.length);
-      for (var i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
-      }
-      return new Blob([ia], {
-        type: mimeString,
-      });
-    }
+
     buttonGo.onclick = () => {
       console.log("click");
       this.value = "";
       canvas.style.display = "none";
       isPaused = false;
-      scanBarcode();
       buttonGo.setAttribute("disabled", "");
+      scanBarcode();
     };
 
     // scan barcode
@@ -209,14 +185,11 @@ class BarcodeReader extends LitElement {
         alert("Barcode Reader is not ready!");
         return;
       }
-
       var data = null,
         context = null,
         width = 0,
         height = 0,
-        height = 0,
         dbrCanvas = null;
-
       if (isPC) {
         context = ctx;
         width = videoWidth;
@@ -257,8 +230,8 @@ class BarcodeReader extends LitElement {
         buttonGo.removeAttribute("disabled");
       } else if (err === 0) {
         buttonGo.removeAttribute("disabled");
-        console.log(buttonGo.attributes);
       }
+
     }
     var videoSelect = this.shadowRoot.querySelector("select#videoSource");
     navigator.mediaDevices

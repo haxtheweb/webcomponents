@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="453cdee5-af90-4ddf-aa0f-b17dfdcad734" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../b-r/demo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../b-r/demo/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectId" id="1qwh4buR4ESI318adEz5suSX5Ut" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/barcode-reader copy.js" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="453cdee5-af90-4ddf-aa0f-b17dfdcad734" name="Default Changelist" comment="" />
+      <created>1617996372672</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617996372672</updated>
+      <workItem from="1617996378538" duration="12000" />
+      <workItem from="1617996404300" duration="45000" />
+      <workItem from="1617996450534" duration="18932000" />
+      <workItem from="1618183876394" duration="943000" />
+      <workItem from="1618244546037" duration="1957000" />
+      <workItem from="1618250417588" duration="3984000" />
+      <workItem from="1618285829678" duration="24000" />
+      <workItem from="1618333732091" duration="37000" />
+      <workItem from="1618435675098" duration="12238000" />
+      <workItem from="1618502813340" duration="3366000" />
+      <workItem from="1618522566002" duration="1029000" />
+      <workItem from="1618847100260" duration="5951000" />
+      <workItem from="1618872317240" duration="1118000" />
+      <workItem from="1618929027819" duration="1788000" />
+    </task>
+    <task id="LOCAL-00001" summary="v1.0&#10;Working element demo.">
+      <created>1618177235893</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618177235893</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fixed issue with having to double clock to show video">
+      <created>1618247020546</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618247020546</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fixed scan button locking in disabled and updated README.md with usage">
+      <created>1618256435504</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618256435504</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Permissions when scanner opens now.">
+      <created>1618452340594</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618452340594</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Removed overlay div, applied border straight to video">
+      <created>1618523440140</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1618523440140</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Update README with attributes">
+      <created>1618523635191</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618523635191</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed bug with improper read">
+      <created>1618860908816</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1618860908816</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="v1.0&#10;Working element demo." />
+    <MESSAGE value="Fixed issue with having to double clock to show video" />
+    <MESSAGE value="Fixed scan button locking in disabled and updated README.md with usage" />
+    <MESSAGE value="Permissions when scanner opens now." />
+    <MESSAGE value="Removed overlay div, applied border straight to video" />
+    <MESSAGE value="Update README with attributes" />
+    <MESSAGE value="Fixed bug with improper read" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with improper read" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

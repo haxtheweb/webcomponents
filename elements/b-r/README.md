@@ -1,33 +1,27 @@
-# &lt;barcode-reader&gt;
+# &lt;b-r&gt;
 
-Reader
-> Element to read barcodes and QR codes through a video stream
+R
+> Creates break statements to show conditional rendering
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/barcode-reader/barcode-reader.js';
+import '@lrnwebcomponents/b-r/b-r.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/barcode-reader/barcode-reader.js"></script>
+<script type="module" src="@lrnwebcomponents/b-r/b-r.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/barcode-reader/barcode-reader.js';
+  import '@lrnwebcomponents/b-r/b-r.js';
   // imperative form
-  import {BarcodeReader} from '@lrnwebcomponents/barcode-reader';
+  import {BR} from '@lrnwebcomponents/b-r';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/barcode-reader/barcode-reader.js';
+  import './node_modules/@lrnwebcomponents/b-r/b-r.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/barcode-reader/barcode-reader.js"></script>
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/b-r/b-r.js"></script>
 ```
-## Usage after imported
-barcode-reader will give controls to show/hide and start the scanner, but the submit button to utilize the data is left up to the website.
-
-## Component Specific Attributes
-`value` Value of the result. For best usage, initialize tag with empty value attribute.
-`scale` Scale of the video as a number, no percentage sign.
 
 ## Develop / Demo
 Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
@@ -58,7 +52,7 @@ $ yarn run build
 
 ## Code style
 
-Reader (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+R (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

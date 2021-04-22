@@ -15,6 +15,9 @@ gulp.task("merge", () => {
       replace(
         /\/\* REQUIRED FOR TOOLING DO NOT TOUCH \*\//g,
         (classStatement, character, jsFile) => {
+          if (!packageJson.wcfactory.files.html) {
+            return false;
+          }
           // pull these off the package wcfactory files area
           let html = fs
             .readFileSync(path.join("./", packageJson.wcfactory.files.html))
@@ -29,7 +32,14 @@ gulp.task("merge", () => {
             haxString = `
   // haxProperty definition
   static get haxProperties() {
-    return ${HAXProps};
+    return ${
+      packageJson.wcfactory.sharedHaxProps &&
+      packageJson.wcfactory.sharedHaxProps.length > 0 
+      ? `{
+          ...${HAXProps}, 
+          ${packageJson.wcfactory.sharedHaxProps.join(', ')}
+        }` : HAXProps
+    };
   }`;
           }
           let rawprops = "{}";
@@ -88,7 +98,7 @@ ${cssResult}
 
           return `${litResult}
 
-// render function
+// Template return function
   render() {
     return html\`
 ${styleResult}
@@ -104,7 +114,6 @@ ${haxString}
     )
     .pipe(gulp.dest("./"));
 });
-
 // run polymer analyze to generate documentation
 gulp.task("analyze", () => {
   var exec = require("child_process").exec;
@@ -119,7 +128,6 @@ gulp.task("analyze", () => {
 });
 // copy from the built locations pulling them together
 gulp.task("compile", () => {
-
   return gulp
     .src("./" + packageJson.wcfactory.elementName + ".js")
     .pipe(
@@ -140,7 +148,33 @@ gulp.task("watch", () => {
   return gulp.watch("./src/*", gulp.series("merge", "analyze"));
 });
 
-// simple developer flow
 gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
-gulp.task("default", gulp.series("merge", "analyze", "compile"));
+// discover iconset and build json structure
+gulp.task("iconset", (done) => {
+  const iconset = packageJson.wcfactory.iconset || {};
+  if(iconset.svgsPath && iconset.svgsPath !== ''){
+    const path = iconset.svgsPath;
+    const manifestFilename = iconset.manifestFilename || `${packageJson.wcfactory.elementName}-iconsets-manifest.js`
+    const manifestPath = iconset.manifestPath || `./lib`;
+    const exportName = iconset.exportName || `${packageJson.wcfactory.className}IconsetsManifest`;
+    const jsonContent = JSON.stringify(dirTree(path).icons, null, 2); 
+    const iconVar =  `export const ${exportName} = ${jsonContent};`
+    fs.writeFile(`${manifestPath}/${manifestFilename}.js`, iconVar, 'utf8', function (err) {
+        if (err) {
+            console.log("An error occured while writing iconset manifest Object to File.");
+            return console.log(err);
+        }
+        console.log("Iconset SVGs and manifest JS file has been saved.");
+        return true;
+    });
+  } else {
+    console.log("No Iconset Manifest");
+  }
+  done();
+});
+
+gulp.task(
+  "default",
+  gulp.series("merge", "analyze", "compile")
+);
