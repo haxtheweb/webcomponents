@@ -24,6 +24,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           margin: auto;
           max-width: 600px;
           max-height: 600px;
+          overflow: auto;
           --box-background-color: #f7f6ef;
         }
 
