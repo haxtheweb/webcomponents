@@ -36,8 +36,9 @@ jobs:
             ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-
       - name: Install
         run: yarn install
+      - name: A11y Test
+        run: yarn lerna run test
       - name: Build
         run: yarn lerna run build
       - name: Rebuild Elements README
         run: cd elements && for dir in */; do head -4 $dir/README.md; done > README.md
-
