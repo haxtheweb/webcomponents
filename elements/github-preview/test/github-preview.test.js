@@ -3,72 +3,75 @@ import { setViewport } from '@web/test-runner-commands';
 import '../src/github-preview.js';
 
 
-// test custom properties
-describe('instantiation test', () => {
-  it('works', async () => {
-    const el = await fixture(html` <github-preview org="elmsln" repo="haxcms"></github-preview> `);
-    await expect(el.org).to.equal('elmsln');
-  });
-});
-
-// a11y axe test
-describe('a11y axe test', () => {
-  it('works', async () => {
-    const el = await fixture(html` <github-preview org="elmsln" repo="haxcms"></github-preview> `);
-    await expect(el).to.be.accessible();
-  });
-});
-
-it('passes axe accessible tests', async () => {
-  const el = await fixture(html`<github-preview></github-preview>`);
-  await assert.isAccessible(el);
-});
-
-it('axe negation', async () => {
-  const el = await fixture(html`<github-preview aria-labelledby="github-preview"></github-preview>`);
-  await assert.isNotAccessible(el);
-});
-
-
-describe('Test Bound Attributes', () => {
-  describe('.org', () => {
-    it('is bound to the org attribute', async () => {
-      const el = await fixture(html`<github-preview org="collinkleest" repo="lrnwebcomponents"></github-preview>`);
-      expect(el.org).to.equal('collinkleest');
-      
-      // change org and update
-      el.org = 'elmsln';
-      await elementUpdated(el);
-      expect(el).dom.to.equal(html`<github-preview org="elmsln" repo="lrnwebcomponents"></github-preview>`);
+/* 
+* Instantiation test 
+* create element and see if an attribute binds to the element
+*/
+describe('Instantiation Test', () => {
+    it('github-preview instantiates', async () => {
+      const el = await fixture(html` <github-preview title="test-title"></github-preview> `);
+      await expect(el.getAttribute("title")).to.equal("test-title");
     });
-  });
 });
 
-// responsive tests
-describe('test mobile responsiveness', () => {
-  before(async () => {
-    await setViewport({width: 375, height: 750});
-  })
-  it('sized down to 360px', async () => {
-    const el = await fixture(html`<github-preview org="elmsln" repo="lrnwebcomponents"></github-preview>`);
-    const width = getComputedStyle(el).width;
-    expect(width).to.equal('360px');
+/*
+* A11y Accessibility tests
+*/
+describe('A11y/chai axe tests', () => {
+    it('github-preview passes accessibility test', async () => {
+      const el = await fixture(html` <github-preview></github-preview> `);
+      await expect(el).to.be.accessible();
+    });
+    it('github-preview passes accessibility negation', async () => {
+        const el = await fixture(html`<github-preview aria-labelledby="github-preview"></github-preview>`);
+        await assert.isNotAccessible(el);
+    });
+});
+
+
+/*
+// Custom properties test
+describe("Custom Property Test", () => {
+  it("github-preview can instantiate a element with custom properties", async () => {
+    const el = await fixture(html`<github-preview .foo=${'bar'}></github-preview>`);
+    expect(el.foo).to.equal('bar');
   })
 })
-
-describe('test desktop responsiveness', () => {
-  before(async () => {
-    await setViewport({width: 1000, height: 1000});
-  })
-  it('sized up to 410px', async () => {
-    const el = await fixture(html`<github-preview org="elmsln" repo="lrnwebcomponents"></github-preview>`);
-    const width = getComputedStyle(el).width;
-    expect(width).to.equal('410px');
-  })
-})
+*/
 
 
-// clean up fixtures 
+/*
+// Test if element is mobile responsive
+describe('Test Mobile Responsiveness', () => {
+    before(async () => {z   
+      await setViewport({width: 375, height: 750});
+    })
+    it('sizes down to 360px', async () => {
+      const el = await fixture(html`<github-preview ></github-preview>`);
+      const width = getComputedStyle(el).width;
+      expect(width).to.equal('360px');
+    })
+}) */
+
+/*
+// Test if element sizes up for desktop behavior
+describe('Test Desktop Responsiveness', () => {
+    before(async () => {
+      await setViewport({width: 1000, height: 1000});
+    })
+    it('sizes up to 410px', async () => {
+      const el = await fixture(html`<github-preview></github-preview>`);
+      const width = getComputedStyle(el).width;
+      expect(width).to.equal('410px');
+    })
+    it('hides mobile menu', async () => {
+      const el await fixture(html`<github-preview></github-preview>`);
+      const hidden = el.getAttribute('hidden');
+      expect(hidden).to.equal(true);
+    })
+}) */
+
+// clean up fixtures after all tests are complete
 afterEach(() => {
-  fixtureCleanup();
+    fixtureCleanup();
 });
