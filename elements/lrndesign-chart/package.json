@@ -31,13 +31,15 @@
   "module": "lrndesign-chart.js",
   "umd": "lrndesign-chart.umd.js",
   "scripts": {
-    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-chart/test/",
     "start": "yarn run dev",
     "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "es-dev-server -c ../../es-dev-server.config.js",
-    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch",
+    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --playwright --browsers chromium firefox webkit"
   },
   "author": {
     "name": "btopro"
@@ -58,7 +60,12 @@
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",
-    "wct-browser-legacy": "1.0.2"
+    "wct-browser-legacy": "1.0.2",
+    "@open-wc/testing": "2.5.32",
+    "@web/test-runner": "0.12.19",
+    "@web/test-runner-commands": "0.4.2",
+    "@web/test-runner-playwright": "0.8.4",
+    "@web/test-runner-puppeteer": "0.9.3"
   },
   "private": false,
   "publishConfig": {

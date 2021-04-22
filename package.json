@@ -31,7 +31,7 @@
     "format:js": "prettier --write **/*.{js,json}",
     "format:css": "stylelint --fix **/*.css",
     "format:scss": "stylelint --syntax=scss --fix **/*.scss",
-    "test": "wct --configFile wct.conf.json test/index.html",
+    "test": "lerna run test --concurrency=1 --no-bail",
     "build": "lerna run build --no-bail",
     "publish": "echo 'NOTICE: You must run `lerna publish` manually'",
     "test-suite-inject": "node scripts/test-suite-inject.js",
@@ -152,15 +152,7 @@
     "lit-html",
     "vanillajs"
   ],
-  "private": true,
-  "npmClient": "yarn",
-  "useWorkspaces": true,
-  "workspaces": {
-    "packages": [
-      "elements/*"
-    ],
-    "nohoist": []
-  },
+  "nohoist": [],
   "husky": {
     "hooks": {
       "pre-commit": "yarn run test-suite-inject > /dev/null && lint-staged"
