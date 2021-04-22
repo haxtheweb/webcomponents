@@ -20,6 +20,9 @@ class CMSEntity extends PolymerElement {
           transition: 0.6s all ease;
           background-color: transparent;
         }
+        :host([hax-edit-mode]) #replacementcontent {
+          pointer-events: none;
+        }
         paper-spinner {
           visibility: hidden;
           opacity: 0;
@@ -124,7 +127,28 @@ class CMSEntity extends PolymerElement {
         type: String,
         observer: "]",
       },
+      haxEditMode: {
+        type: Boolean,
+        value: false,
+        attribute: "hax-edit-mode",
+      },
     };
+  }
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this.haxEditMode = value;
+    }
+  }
+
+  haxeditModeChanged(value) {
+    this.haxEditMode = value;
   }
   /**
    * Generate body data.
