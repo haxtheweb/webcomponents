@@ -3,7 +3,6 @@ test
 *.amd.js
 *.es6.js
 *.min.js
-package.json
 package-lock.json
 analysis-error.json
 code-sample/lib/highlightjs/languages/*.js
