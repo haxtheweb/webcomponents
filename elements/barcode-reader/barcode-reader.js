@@ -26,8 +26,7 @@ class BarcodeReader extends LitElement {
       canvas {
         display: none;
       }
-      video
-      {
+      video {
         border-style: solid;
         border-color: rgba(0, 0, 0, 0.5);
         border-width: 5px;
@@ -46,10 +45,10 @@ class BarcodeReader extends LitElement {
         type: String,
         reflect: true,
       },
-      scale:{
+      scale: {
         type: Number,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -60,16 +59,20 @@ class BarcodeReader extends LitElement {
     return html`
       <div id="hidden">
         <div>
-          <video muted autoplay id="video" playsinline="true" width="${this.scale}%" height="${this.scale}%"></video>
-          <canvas
-            id="canvas"
-            style="display: none; float: bottom;"
-          ></canvas>
+          <video
+            muted
+            autoplay
+            id="video"
+            playsinline="true"
+            width="${this.scale}%"
+            height="${this.scale}%"
+          ></video>
+          <canvas id="canvas" style="display: none; float: bottom;"></canvas>
         </div>
       </div>
       <div>
         Result: <span><input type="text" .value="${this.value}" /> </span
-      ><button id="render">Initialize scanner</button>
+        ><button id="render">Initialize scanner</button>
       </div>
       <div id="hidden2">
         <div class="select">
@@ -119,7 +122,8 @@ class BarcodeReader extends LitElement {
         setTimeout(() => {
           console.log("loaded zxing instance");
           ZXing = new window.ZXing();
-          decodePtr = ZXing.Runtime.addFunction(decodeCallback);}, 100); //Slow down execution. Error when loaded before getting devices
+          decodePtr = ZXing.Runtime.addFunction(decodeCallback);
+        }, 100); //Slow down execution. Error when loaded before getting devices
       } else {
         setTimeout(tick, 100);
       }
@@ -231,7 +235,6 @@ class BarcodeReader extends LitElement {
       } else if (err === 0) {
         buttonGo.removeAttribute("disabled");
       }
-
     }
     var videoSelect = this.shadowRoot.querySelector("select#videoSource");
     navigator.mediaDevices
@@ -307,12 +310,12 @@ class BarcodeReader extends LitElement {
    * LitElement ready
    */
   firstUpdated() {
-    this.start().then(r => {});
+    this.start().then((r) => {});
     this.__context = this.shadowRoot.querySelector("canvas").getContext("2d");
     this.__video = this.shadowRoot.querySelector("video");
     this.__videoInputSelector = this.shadowRoot.querySelector("#videoInput");
     vid = this.shadowRoot.getElementById("video");
-    this._renderVideo().then(r => {});
+    this._renderVideo().then((r) => {});
   }
 
   async _onFrame() {
@@ -323,12 +326,25 @@ class BarcodeReader extends LitElement {
   }
 
   _drawFrame(frameData) {
-    this.__context.drawImage(frameData, 0, 0, this.width, this.height, 0, 0, this.width, this.height);
+    this.__context.drawImage(
+      frameData,
+      0,
+      0,
+      this.width,
+      this.height,
+      0,
+      0,
+      this.width,
+      this.height
+    );
   }
 
   async start() {
     this.shadowRoot.getElementById("render").addEventListener("click", () => {
-      if (this.shadowRoot.getElementById("render").innerHTML === "Initialize scanner"){
+      if (
+        this.shadowRoot.getElementById("render").innerHTML ===
+        "Initialize scanner"
+      ) {
         this._control();
       }
     });
@@ -339,16 +355,17 @@ class BarcodeReader extends LitElement {
     let extraButtons = this.shadowRoot.getElementById("hidden2");
     video.style.display = "none";
     this.shadowRoot.getElementById("render").addEventListener("click", () => {
-      setTimeout(() => {if (video.style.display === "none") {
-        video.style.display = "inline";
-        button.innerHTML = "Hide Scanner";
-        extraButtons.style.display = "inline";
-      } else {
-        video.style.display = "none";
-        button.innerHTML = "Show Scanner";
-        extraButtons.style.display = "none";
-      }}, 100);
-
+      setTimeout(() => {
+        if (video.style.display === "none") {
+          video.style.display = "inline";
+          button.innerHTML = "Hide Scanner";
+          extraButtons.style.display = "inline";
+        } else {
+          video.style.display = "none";
+          button.innerHTML = "Show Scanner";
+          extraButtons.style.display = "none";
+        }
+      }, 100);
     });
   }
 }
