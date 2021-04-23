@@ -80,6 +80,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       settings: {},
     };
     // general state
+    this.hideGradeScale = true;
     this.disabled = false;
     // shows progress indicator as it loads
     this.loading = true;
@@ -98,6 +99,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       noSubmission: "No submission found",
       studentSubmission: "Student submission",
       openInNewWindow: "Open in new window",
+      gradingScale: "Grading Scale",
     };
     this.registerLocalization({
       context: this,
@@ -126,7 +128,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
    * has had.
    */
   getStudentSubmissions(activeStudent) {
-    console.log(activeStudent);
     let response = [];
     for (var i in this.database.submissions) {
       let row = this.database.submissions[i];
@@ -167,6 +168,20 @@ class GradeBook extends I18NMixin(SimpleColors) {
       return item[0];
     }
     return null;
+  }
+  // generate current score based on student / assignment cross-section
+  getCurrentScore(activeStudent, activeAssignment) {
+    // see if there's a score set in the grades setup
+    if (
+      this.database.grades[activeStudent][
+        this.database.assignments[activeAssignment].shortName
+      ]
+    ) {
+      return this.database.grades[activeStudent][
+        this.database.assignments[activeAssignment].shortName
+      ];
+    }
+    return 0;
   }
   // return the active submission based on student and assignment
   getActiveSubmission() {
@@ -217,7 +232,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
         this.activeStudentSubmissions = [
           ...this.getStudentSubmissions(this.activeStudent),
         ];
-        console.log(this.activeStudentSubmissions);
         // ensure we maintain visibility of the active student / assignment
         // in our mini-map; delay to ensure paints pixel before visibility
         if (
@@ -369,6 +383,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
+      hideGradeScale: { type: Boolean },
       disabled: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
       activeStudent: { type: Number, attribute: "active-student" },
@@ -426,6 +441,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
           );
         }
         grid-plate {
+          --hax-layout-container-transition: none;
           --grid-plate-col-transition: none;
           --grid-plate-item-margin: 8px;
           --grid-plate-item-padding: 8px;
@@ -653,6 +669,10 @@ class GradeBook extends I18NMixin(SimpleColors) {
     this.activeAssignment = parseInt(e.target.value);
     this.requestUpdate();
   }
+  toggleGradeScale(e) {
+    import("@lrnwebcomponents/simple-popover/simple-popover.js");
+    this.hideGradeScale = !this.hideGradeScale;
+  }
   /**
    * LitElement render method
    */
@@ -664,14 +684,14 @@ class GradeBook extends I18NMixin(SimpleColors) {
             @click="${this.changeStudent}"
             value="prev"
             ?disabled="${0 === this.activeStudent}"
-            icon="social:person"
+            icon="arrow-back"
           >
             Previous student
           </simple-icon-button-lite>
           <simple-icon-button-lite
             @click="${this.changeStudent}"
             value="next"
-            icon="social:person"
+            icon="arrow-forward"
             ?disabled="${this.database.roster.length - 1 ===
             this.activeStudent}"
           >
@@ -682,7 +702,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
           <simple-icon-button-lite
             @click="${this.changeAssignment}"
             value="prev"
-            icon="assignment"
+            icon="arrow-back"
             ?disabled="${0 === this.activeAssignment}"
           >
             Previous assignment
@@ -692,10 +712,51 @@ class GradeBook extends I18NMixin(SimpleColors) {
             value="next"
             ?disabled="${this.database.assignments.length - 1 ===
             this.activeAssignment}"
-            icon="assignment"
+            icon="arrow-forward"
           >
             Next Assignment
           </simple-icon-button-lite>
+          <simple-icon-button-lite
+            icon="list"
+            @click="${this.toggleGradeScale}"
+            id="gradescalebtn"
+          >
+            ${this.t.gradingScale}
+          </simple-icon-button-lite>
+          <simple-popover
+            ?hidden="${this.hideGradeScale}"
+            for="gradescalebtn"
+            auto
+          >
+            <editable-table-display
+              accent-color="${this.accentColor}"
+              bordered
+              column-header
+              condensed
+              disable-responsive
+              scroll
+              striped
+            >
+              <table>
+                <tbody>
+                  <tr>
+                    <td>${this.t.letterGrade}</td>
+                    <td>${this.t.highRange}</td>
+                    <td>${this.t.lowRange}</td>
+                  </tr>
+                  ${this.database.gradeScale.map(
+                    (scale) => html`
+                      <tr>
+                        <td>${scale.letter}</td>
+                        <td>${scale.highRange}</td>
+                        <td>${scale.lowRange}</td>
+                      </tr>
+                    `
+                  )}
+                </tbody>
+              </table>
+            </editable-table-display>
+          </simple-popover>
         </div>
         <loading-indicator
           ?loading="${this.loading}"
@@ -802,36 +863,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
                 </div>
               `
             : html`<loading-indicator></loading-indicator>`}
-        </a11y-tab>
-        <a11y-tab icon="list" label="Grade scale">
-          <editable-table-display
-            accent-color="${this.accentColor}"
-            bordered
-            column-header
-            condensed
-            disable-responsive
-            scroll
-            striped
-          >
-            <table>
-              <tbody>
-                <tr>
-                  <td>${this.t.letterGrade}</td>
-                  <td>${this.t.highRange}</td>
-                  <td>${this.t.lowRange}</td>
-                </tr>
-                ${this.database.gradeScale.map(
-                  (scale) => html`
-                    <tr>
-                      <td>${scale.letter}</td>
-                      <td>${scale.highRange}</td>
-                      <td>${scale.lowRange}</td>
-                    </tr>
-                  `
-                )}
-              </tbody>
-            </table>
-          </editable-table-display>
         </a11y-tab>
       </a11y-tabs>
       <grid-plate layout="3-1">
@@ -1156,7 +1187,13 @@ class GradeBook extends I18NMixin(SimpleColors) {
       clearTimeout(this.__debouce);
       this.__debouce = setTimeout(() => {
         if (!this.loading) {
+          // @todo we need to store and recall these values
           this.updateTotalScore();
+          // this will defer to whatever the "grades" db value is
+          this.totalScore = this.getCurrentScore(
+            this.activeStudent,
+            this.activeAssignment
+          );
           this.shadowRoot.querySelector("#totalpts").value = this.totalScore;
         }
         // force locking the score if this changes as we're using the rubric
@@ -1185,6 +1222,13 @@ class GradeBook extends I18NMixin(SimpleColors) {
   }
   totalScoreChangedEvent(e) {
     this.totalScore = e.detail.value;
+    this.database.grades[this.activeStudent][
+      this.database.assignments[this.activeAssignment].shortName
+    ] = this.totalScore;
+    this.activeStudentSubmissions = [];
+    this.activeStudentSubmissions = [
+      ...this.getStudentSubmissions(this.activeStudent),
+    ];
     this.requestUpdate();
   }
   /**

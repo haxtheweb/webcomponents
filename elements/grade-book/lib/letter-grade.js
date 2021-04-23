@@ -162,7 +162,6 @@ class LetterGrade extends LitElement {
    * return the letter grade based on score and gradeScale existing
    */
   calculateLetterGrade() {
-    console.log("here");
     // support no score, meaning it is not turned in / evaluated
     if (this.score === null) {
       return "/";
