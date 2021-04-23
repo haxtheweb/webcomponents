@@ -10,12 +10,18 @@ class LetterGrade extends LitElement {
     this._letterIndex = null;
     this.letter = "";
     this.showScale = false;
+    this.value = "";
+    this.mini = false;
+    this.label = "";
   }
   static get styles() {
     return [
       css`
         :host {
           display: block;
+        }
+        :host([letter="/"]) {
+          --letter-grade-default-letter-background-color: #cccccc;
         }
         :host([letter="F"]) {
           --letter-grade-default-letter-background-color: #ff4444;
@@ -41,6 +47,20 @@ class LetterGrade extends LitElement {
         :host([show-scale]) .wrap {
           height: var(--letter-grade-wrap-height, 64px);
           width: var(--letter-grade-wrap-width, 64px);
+        }
+        :host([mini]) .wrap {
+          height: var(--letter-grade-wrap-height, 16px);
+          width: var(--letter-grade-wrap-width, 16px);
+          border: 1px solid black;
+          border-radius: 0px;
+          padding: 8px;
+        }
+        :host([mini]) .letter {
+          font-size: var(--letter-grade-letter-font-size, 12px);
+          line-height: var(
+            --letter-grade-letter-line-height,
+            var(--letter-grade-letter-font-size, 12px)
+          );
         }
         .wrap {
           height: var(--letter-grade-wrap-height, 40px);
@@ -71,6 +91,17 @@ class LetterGrade extends LitElement {
           font-weight: var(--letter-grade-range-font-weight, normal);
           font-size: var(--letter-grade-range-font-size, 12px);
         }
+        simple-tooltip {
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-duration-in: 200ms;
+          --simple-tooltip-duration-out: 0;
+          --simple-tooltip-border-radius: 0;
+          --simple-tooltip-font-size: 14px;
+          --simple-tooltip-width: 145px;
+        }
       `,
     ];
   }
@@ -90,16 +121,26 @@ class LetterGrade extends LitElement {
             </div>`
           : ``}
       </div>
+      ${this.mini
+        ? html`<simple-tooltip position="top"
+            >${this.label}<br />${this.score != null
+              ? html`(${this.score}/${this.total} ${this.pointsSystem})`
+              : ``}</simple-tooltip
+          >`
+        : ``}
     `;
   }
   static get properties() {
     return {
       score: { type: Number },
       total: { type: Number },
+      value: { type: Number },
       pointsSystem: { type: String, attribute: "points-system" },
       gradeScale: { type: Array, attribute: "grade-scale" },
       letter: { type: String, reflect: true },
       showScale: { type: Boolean, reflect: true, attribute: "show-scale" },
+      mini: { type: Boolean, reflect: true },
+      label: { type: String },
     };
   }
   static get tag() {
@@ -107,15 +148,12 @@ class LetterGrade extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (
-        ["total", "score", "gradeScale"].includes(propName) &&
-        this[propName]
-      ) {
+      if (propName === "mini" && this[propName] && this.label) {
+        import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      }
+      if (["total", "score", "gradeScale"].includes(propName)) {
         if (this.gradeScale.length > 0) {
-          clearTimeout(this.__debounce);
-          this.__debounce = setTimeout(() => {
-            this.letter = this.calculateLetterGrade();
-          }, 0);
+          this.letter = this.calculateLetterGrade();
         }
       }
     });
@@ -124,6 +162,11 @@ class LetterGrade extends LitElement {
    * return the letter grade based on score and gradeScale existing
    */
   calculateLetterGrade() {
+    console.log("here");
+    // support no score, meaning it is not turned in / evaluated
+    if (this.score === null) {
+      return "/";
+    }
     let percent = (this.score / this.total) * 100;
     // account for us having MORE points than max
     if (this.gradeScale[0] && percent >= this.gradeScale[0].highRange) {

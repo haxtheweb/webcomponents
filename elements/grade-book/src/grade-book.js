@@ -55,6 +55,8 @@ class GradeBook extends I18NMixin(SimpleColors) {
     this.activeAssignment = 0;
     // active Submission is the data itself
     this.activeSubmission = null;
+    // student submission status for rendering
+    this.activeStudentSubmissions = [];
     // lock on score override
     this.scoreLock = true;
     // active rubric data
@@ -118,12 +120,58 @@ class GradeBook extends I18NMixin(SimpleColors) {
       written: [],
     };
   }
-
+  /**
+   * Return an object representing all scores on all assignments
+   * which allows us to make a visual of all submissions this student
+   * has had.
+   */
+  getStudentSubmissions(activeStudent) {
+    console.log(activeStudent);
+    let response = [];
+    for (var i in this.database.submissions) {
+      let row = this.database.submissions[i];
+      // look for student, need a match before we render anything
+      if (row.student === this.database.roster[activeStudent].student) {
+        for (var j in row) {
+          if (j !== "student") {
+            let a = this.getAssignmentByShortName(j);
+            if (a) {
+              response.push({
+                studentScore:
+                  this.database.grades[activeStudent][j] == ""
+                    ? null
+                    : this.database.grades[activeStudent][j],
+                assignmentPoints: a.points,
+                assignmentName: a.name,
+                assignmentIndex: a.index,
+              });
+            }
+          }
+        }
+        return response;
+      }
+    }
+    return response;
+  }
+  getAssignmentByShortName(name) {
+    let index;
+    let item = this.database.assignments.filter((i, ind) => {
+      if (i.shortName === name) {
+        index = ind;
+        return true;
+      }
+      return false;
+    });
+    if (item.length === 1) {
+      item[0].index = index;
+      return item[0];
+    }
+    return null;
+  }
   // return the active submission based on student and assignment
   getActiveSubmission() {
     for (var i in this.database.submissions) {
       let row = this.database.submissions[i];
-      console.log(row);
       // look for student AND that the assignment column name is there
       if (
         row.student === this.database.roster[this.activeStudent].student &&
@@ -165,6 +213,11 @@ class GradeBook extends I18NMixin(SimpleColors) {
         this.activeSubmission = this.getActiveSubmission();
         this.assessmentView = this.resetAssessmentView();
         this.activeRubric = this.getActiveRubric();
+        this.activeStudentSubmissions = [];
+        this.activeStudentSubmissions = [
+          ...this.getStudentSubmissions(this.activeStudent),
+        ];
+        console.log(this.activeStudentSubmissions);
         // ensure we maintain visibility of the active student / assignment
         // in our mini-map; delay to ensure paints pixel before visibility
         if (
@@ -330,19 +383,27 @@ class GradeBook extends I18NMixin(SimpleColors) {
       activeRubric: { type: Object, attribute: false },
       assessmentView: { type: Object, attribute: false },
       activeGrading: { type: Object, attribute: false },
+      activeStudentSubmissions: { type: Array },
     };
   }
   changeStudent(e) {
-    if (e.target.value == "prev") {
+    if (e.target.value == "prev" && 0 !== this.activeStudent) {
       this.activeStudent--;
-    } else if (e.target.value == "next") {
+    } else if (
+      e.target.value == "next" &&
+      this.database.roster.length - 1 !== this.activeStudent
+    ) {
       this.activeStudent++;
     }
+    this.requestUpdate();
   }
   changeAssignment(e) {
-    if (e.target.value == "prev") {
+    if (e.target.value == "prev" && 0 !== this.activeAssignment) {
       this.activeAssignment--;
-    } else if (e.target.value == "next") {
+    } else if (
+      e.target.value == "next" &&
+      this.database.assignments.length - 1 !== this.activeAssignment
+    ) {
       this.activeAssignment++;
     }
     this.requestUpdate();
@@ -393,6 +454,32 @@ class GradeBook extends I18NMixin(SimpleColors) {
         }
         a11y-collapse[expanded] div[slot="heading"] {
           font-weight: bold;
+        }
+        .active-student-grade-history {
+          display: flex;
+          width: 100%;
+        }
+        .active-student-grade-history letter-grade {
+          display: inline-flex;
+          margin: 2px;
+        }
+        .active-student-grade-history button {
+          opacity: 0.4;
+          background-color: transparent;
+          border: 0;
+          padding: 0;
+          margin: 0;
+        }
+        .active-student-grade-history button.activeAssignment {
+          opacity: 0.9;
+          background-color: yellow;
+        }
+        .active-student-grade-history button:focus,
+        .active-student-grade-history button:active,
+        .active-student-grade-history button:hover {
+          opacity: 1;
+          outline: 1px solid black;
+          outline-offset: 2px;
         }
         simple-fields-tag-list.drag-focus {
           background-color: #dddddd;
@@ -561,6 +648,11 @@ class GradeBook extends I18NMixin(SimpleColors) {
         </div>`;
     }
   }
+  studentLetterGradeHistoryClick(e) {
+    // ensure this is numeric
+    this.activeAssignment = parseInt(e.target.value);
+    this.requestUpdate();
+  }
   /**
    * LitElement render method
    */
@@ -568,38 +660,42 @@ class GradeBook extends I18NMixin(SimpleColors) {
     return html`
       <grid-plate layout="1-1-1">
         <div slot="col-1">
-          <button
+          <simple-icon-button-lite
             @click="${this.changeStudent}"
             value="prev"
             ?disabled="${0 === this.activeStudent}"
+            icon="social:person"
           >
             Previous student
-          </button>
-          <button
+          </simple-icon-button-lite>
+          <simple-icon-button-lite
             @click="${this.changeStudent}"
             value="next"
+            icon="social:person"
             ?disabled="${this.database.roster.length - 1 ===
             this.activeStudent}"
           >
             Next student
-          </button>
+          </simple-icon-button-lite>
         </div>
         <div slot="col-2">
-          <button
+          <simple-icon-button-lite
             @click="${this.changeAssignment}"
             value="prev"
+            icon="assignment"
             ?disabled="${0 === this.activeAssignment}"
           >
             Previous assignment
-          </button>
-          <button
+          </simple-icon-button-lite>
+          <simple-icon-button-lite
             @click="${this.changeAssignment}"
             value="next"
             ?disabled="${this.database.assignments.length - 1 ===
             this.activeAssignment}"
+            icon="assignment"
           >
             Next Assignment
-          </button>
+          </simple-icon-button-lite>
         </div>
         <loading-indicator
           ?loading="${this.loading}"
@@ -608,13 +704,37 @@ class GradeBook extends I18NMixin(SimpleColors) {
       </grid-plate>
       <a11y-tabs full-width>
         <a11y-tab icon="social:person" label="Active student">
-          <grid-plate layout="1-1">
+          <grid-plate layout="3-1">
             <div slot="col-1">
-              ${this.database.roster[this.activeStudent]
+              ${this.database.roster[this.activeStudent] &&
+              this.database.grades[this.activeStudent]
                 ? html`
                     <grade-book-student-block
                       .student="${this.database.roster[this.activeStudent]}"
                     ></grade-book-student-block>
+                    <div class="active-student-grade-history">
+                      ${this.activeStudentSubmissions.map(
+                        (sRecord) => html`
+                          <button
+                            .value="${sRecord.assignmentIndex}"
+                            @click="${this.studentLetterGradeHistoryClick}"
+                            class="${this.activeAssignment ===
+                            sRecord.assignmentIndex
+                              ? `activeAssignment`
+                              : ``}"
+                          >
+                            <letter-grade
+                              mini
+                              label="${sRecord.assignmentName}"
+                              .total="${sRecord.assignmentPoints}"
+                              .score="${sRecord.studentScore}"
+                              .value="${sRecord.assignmentIndex}"
+                            >
+                            </letter-grade>
+                          </button>
+                        `
+                      )}
+                    </div>
                   `
                 : html`<loading-indicator></loading-indicator>`}
             </div>
@@ -682,9 +802,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
                 </div>
               `
             : html`<loading-indicator></loading-indicator>`}
-        </a11y-tab>
-        <a11y-tab icon="list" label="Past submissions">
-          <p>This could be used to show past assignments</p>
         </a11y-tab>
         <a11y-tab icon="list" label="Grade scale">
           <editable-table-display
