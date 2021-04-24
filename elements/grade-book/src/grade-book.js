@@ -5,11 +5,8 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import {
-  CSVtoArray,
-  validURL,
-  cleanVideoSource,
-} from "@lrnwebcomponents/utils/utils.js";
+import { validURL, cleanVideoSource } from "@lrnwebcomponents/utils/utils.js";
+import { gSheetInterface } from "@lrnwebcomponents/utils/lib/gSheetsInterface.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-tag-list.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
@@ -33,7 +30,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
     super();
     // gid from the google sheet. technically if you add / remove sheets this would
     // have to be updated to match
-    this.sheetGids = {
+    this.gSheet = new gSheetInterface(this, {
       tags: 0,
       roster: 118800528,
       assignments: 540222065,
@@ -43,9 +40,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
       grades: 2130903440,
       gradesDetails: 644559151,
       settings: 1413275461,
-    };
-    // what is tapped to get data
-    this.activeSheetPage = "tags";
+    });
     // storing internals of the assessmentView tab
     this.assessmentView = this.resetAssessmentView();
     this.totalScore = 0;
@@ -251,23 +246,22 @@ class GradeBook extends I18NMixin(SimpleColors) {
         }
       }
       // source will have to fetch ALL the pages and slowly load data as it rolls through
-      if (propName == "source" && this[propName]) {
+      if (propName == "sheet" && this[propName]) {
         // minor debounce just in case source changes from input
         clearTimeout(this.__debouce);
         this.__debouce = setTimeout(async () => {
           this.loading = true;
-          for (var i in this.sheetGids) {
-            this.activeSheetPage = i;
-            this.database[this.activeSheetPage] = await this.loadCSVData(
-              `${this[propName]}&gid=${this.sheetGids[this.activeSheetPage]}`,
-              this.activeSheetPage
-            );
+          this.gSheet.sheet = this[propName];
+          for (var i in this.gSheet.sheetGids) {
+            this.database[i] = await this.gSheet.loadSheetData(i);
             // complex data update that I am sure will not be picked up by LitElement
             // this forces an update
             this.requestUpdate();
           }
           this.loading = false;
           // ensure the letter-grade tags KNOW about the database refresh
+          // @todo this is a mobx thing for sure, should not be passing this blob of data
+          // in constantly
           setTimeout(() => {
             if (this.database.gradeScale.length > 0) {
               let lg = this.shadowRoot.querySelectorAll("letter-grade");
@@ -276,52 +270,11 @@ class GradeBook extends I18NMixin(SimpleColors) {
               }
             }
           }, 0);
-        }, 100);
-      }
-      if (propName == "sheet" && this[propName]) {
-        this.source = `https://docs.google.com/spreadsheets/d/e/${this[propName]}/pub?output=csv`;
+        }, 0);
       }
     });
   }
-  /**
-   * generate appstore query
-   */
-  async loadCSVData(source, sheet) {
-    return await fetch(source, {
-      method: this.method,
-    })
-      .then((response) => {
-        if (response.ok) return response.text();
-      })
-      .then((text) => {
-        return this.handleResponse(text, sheet);
-      });
-  }
-  /**
-   * Convert from csv text to an array in the table function
-   */
-  async handleResponse(text, sheet) {
-    // Set helps performantly assemble possible collapsed areas
-    let table = CSVtoArray(text);
-    let tmp = table.shift();
-    let headings = {};
-    let data = [];
-    for (var i in tmp) {
-      headings[tmp[i]] = i;
-    }
-    for (var i in table) {
-      let item = {};
-      for (var j in headings) {
-        item[j] = table[i][headings[j]];
-      }
-      // push data onto the database of all data we have now as objects
-      data.push(item);
-    }
-    // allow for deeper processing on the data or just return the data found
-    return typeof this[`process${sheet}Data`] === "function"
-      ? this[`process${sheet}Data`](table, headings, data)
-      : data;
-  }
+
   /**
    * process assignment data to normalize date string
    */
@@ -392,7 +345,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
       scoreLock: { type: Boolean },
       debug: { type: Boolean },
       sheet: { type: String },
-      source: { type: String },
       activeSubmission: { type: String, attribute: false },
       database: { type: Object, attribute: false },
       activeRubric: { type: Object, attribute: false },
@@ -1121,26 +1073,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
             ? html`
                 <h4>Qualitative Rubric Tags</h4>
                 <a11y-collapse-group heading-button>
-                  ${this.debug
-                    ? html`
-                        <a11y-collapse>
-                          <div slot="heading">${this.t.debugData}</div>
-                          <div slot="content">
-                            <simple-fields-field
-                              ?disabled="${this.disabled}"
-                              .value="${this.source}"
-                              @value-changed="${this.sourceUpdate}"
-                              type="text"
-                              label="${this.t.csvURL}"
-                              required
-                            ></simple-fields-field>
-                            <csv-render
-                              data-source="${this.source}"
-                            ></csv-render>
-                          </div>
-                        </a11y-collapse>
-                      `
-                    : ``}
                   ${this.database.tags.categories.map(
                     (category, i) => html`
                       <a11y-collapse>
@@ -1331,9 +1263,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
     // have to add in color
     data.color = e.target.accentColor;
     e.dataTransfer.setData("text", JSON.stringify(data));
-  }
-  sourceUpdate(e) {
-    this.source = e.detail.value;
   }
   static get tag() {
     return "grade-book";
