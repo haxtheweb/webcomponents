@@ -37,7 +37,7 @@ jobs:
       - name: Install
         run: yarn install
       - name: A11y Test
-        run: yarn lerna run test
+        run: yarn lerna run test --no-bail
       - name: Build
         run: yarn lerna run build
       - name: Rebuild Elements README
