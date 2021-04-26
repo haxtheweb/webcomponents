@@ -171,36 +171,46 @@ class SimpleLoginCamera extends HTMLElement {
   }
   _msrLoaded(e) {
     this._applyMSR();
+    this._shadow.querySelector("video").addEventListener("click",()=>{
+      this.dispatchEvent(
+        new CustomEvent("camera-icon", {
+          detail: this,
+          bubbles: true,
+        })
+      );});
+
   }
   async _applyMSR() {
-    try {
-      this._video.srcObject = await this._cameraStream();
-      this._addVideoAtributes();
-      if (this.hasAttribute("record")) {
-        this.MediaStreamRecorder = new MediaStreamRecorder(
-          this._video.srcObject
-        );
-        // this.MediaStreamRecorder.mimeType = 'video/webm';
-        this.MediaStreamRecorder.ondataavailable = this._saveVideo.bind(this);
-      }
-      this._error.remove();
-    } catch (error) {
-      this._video.remove();
-      this._record.remove();
-      this._pauseRecord.remove();
-      if (error.name === "ConstraintNotSatisfiedError") {
-        this._error.innerText =
-          "The resolution is not supported by your device.";
-      } else if (error.name === "NotAllowedError") {
-        this._error.innerText =
-          "Permissions have not been granted to use your camera and " +
-          "microphone, you need to allow the page access to your devices in " +
-          "order for the demo to work.";
-      } else {
-        this._error.innerText = error.message;
-        throw Error(error);
-      }
-    }
+    window.addEventListener("camera-icon", async ()=>{
+      try {
+        this._video.srcObject = await this._cameraStream();
+        this._addVideoAtributes();
+        if (this.hasAttribute("record")) {
+          this.MediaStreamRecorder = new MediaStreamRecorder(
+            this._video.srcObject
+          );
+          // this.MediaStreamRecorder.mimeType = 'video/webm';
+          this.MediaStreamRecorder.ondataavailable = this._saveVideo.bind(this);
+        }
+        this._error.remove();
+      } catch (error) {
+        this._video.remove();
+        this._record.remove();
+        this._pauseRecord.remove();
+        if (error.name === "ConstraintNotSatisfiedError") {
+          this._error.innerText =
+            "The resolution is not supported by your device.";
+        } else if (error.name === "NotAllowedError") {
+          this._error.innerText =
+            "Permissions have not been granted to use your camera and " +
+            "microphone, you need to allow the page access to your devices in " +
+            "order for the demo to work.";
+        } else {
+          this._error.innerText = error.message;
+          throw Error(error);
+        }
+      }});
+
   }
 
   connectedCallback() {
