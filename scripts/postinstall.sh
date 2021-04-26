@@ -21,29 +21,7 @@ for project in */ ; do
   p="$(basename -- $project)"
   rm -rf node_modules
   mkdir ../../node_modules/@lrnwebcomponents/${p}
-  if [ $machine == "Cygwin" ]; then
-    if [ -f "${p}.js" ]; then
-      symlink-dir ../../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
-    fi
-    if [ -d "lib" ]; then
-      symlink-dir ../../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib
-    fi
-    if [ -d "locales" ]; then
-      symlink-dir ../../../elements/${p}/locales ../../node_modules/@lrnwebcomponents/${p}/locales
-    fi
-    if [ -d "server" ]; then
-      symlink-dir ../../../elements/${p}/server ../../node_modules/@lrnwebcomponents/${p}/server
-    fi
-    if [ -d "build" ]; then
-      symlink-dir ../../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
-    fi
-    if [ -d "src" ]; then
-      symlink-dir ../../../elements/${p}/src ../../node_modules/@lrnwebcomponents/${p}/src
-    fi
-    if [ -d "dist" ]; then
-      symlink-dir ../../../elements/${p}/dist ../../node_modules/@lrnwebcomponents/${p}/dist
-    fi
-  elif [ "${machine}" == "MinGw" ]; then
+  if [ "${machine}" == "MinGw" ]; then
     if [ -f "${p}.js" ]; then
       symlink-dir ../../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
     fi

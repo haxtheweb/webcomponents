@@ -17,7 +17,12 @@ ELMS:LN produced web components for any project
 
 *Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
 
-### Install
+### Quick Install
+```bash
+$ curl -fsSL https://raw.githubusercontent.com/elmsln/lrnwebcomponents/master/scripts/lrnwebcomponentsme.sh -o lrnwebcomponentsme.sh && sh lrnwebcomponentsme.sh
+```
+
+### Manual Install
 
 ```bash
 $ git clone https://github.com/elmsln/lrnwebcomponents.git
