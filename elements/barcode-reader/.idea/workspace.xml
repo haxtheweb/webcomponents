@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="453cdee5-af90-4ddf-aa0f-b17dfdcad734" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../b-r/b-r.js" beforeDir="false" afterPath="$PROJECT_DIR$/../b-r/b-r.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../b-r/demo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../b-r/demo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../b-r/src/b-r.js" beforeDir="false" afterPath="$PROJECT_DIR$/../b-r/src/b-r.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +75,7 @@
       <workItem from="1618929027819" duration="1788000" />
       <workItem from="1619110484565" duration="26000" />
       <workItem from="1619450080751" duration="9000" />
-      <workItem from="1619450210855" duration="675000" />
+      <workItem from="1619450210855" duration="856000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0&#10;Working element demo.">
       <created>1618177235893</created>
