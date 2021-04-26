@@ -22,6 +22,8 @@ import '@lrnwebcomponents/b-r/b-r.js';
 // via unpkg CDN (good for testing)
 <script type="module" src="https://unpkg.com/@lrnwebcomponents/b-r/b-r.js"></script>
 ```
+# Tag Properties
+`amount="number"` Specify the number of br tags to be inserted. No value or 0 will use the screen height to generate br tags.
 
 ## Develop / Demo
 Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.

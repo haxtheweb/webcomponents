@@ -15,13 +15,13 @@ class BR extends LitElement {
    */
   constructor() {
     super();
-    this.amount = 1;
+    this.amount = 0;
   }
   /**
    * LitElement render callback
    */
   render() {
-    return html`<div>${this.renderBR(this.amount)}</div>`;
+    return html`${this.renderBR(this.amount)}</div>`;
   }
 
   static get properties() {
@@ -34,6 +34,9 @@ class BR extends LitElement {
   renderBR(amount) {
     let count = 0;
     const content = [];
+    if (amount === 0){
+      amount = window.innerHeight / 21;
+    }
     while (count < amount) {
       content.push(html`<br />`);
       count++;
