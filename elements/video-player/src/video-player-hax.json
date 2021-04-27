@@ -87,6 +87,12 @@
         }
       },
       {
+        "property": "learningMode",
+        "title": "Enable learning mode",
+        "description": "Disables fast forward and rewind.",
+        "inputMethod": "boolean"
+      },
+      {
         "property": "darkTranscript",
         "title": "Dark theme for transcript",
         "description": "Enable dark theme for the transcript.",

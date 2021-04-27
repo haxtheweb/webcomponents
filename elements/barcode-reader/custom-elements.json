@@ -9,6 +9,10 @@
         {
           "name": "value",
           "type": "string"
+        },
+        {
+          "name": "scale",
+          "type": "number"
         }
       ],
       "properties": [
@@ -16,6 +20,11 @@
           "name": "value",
           "attribute": "value",
           "type": "string"
+        },
+        {
+          "name": "scale",
+          "attribute": "scale",
+          "type": "number"
         }
       ],
       "events": [
@@ -32,6 +41,10 @@
         {
           "name": "value",
           "type": "string"
+        },
+        {
+          "name": "scale",
+          "type": "number"
         }
       ],
       "properties": [
@@ -39,6 +52,11 @@
           "name": "value",
           "attribute": "value",
           "type": "string"
+        },
+        {
+          "name": "scale",
+          "attribute": "scale",
+          "type": "number"
         }
       ],
       "events": [

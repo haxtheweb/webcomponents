@@ -82,6 +82,10 @@ Broker
 
 Theme
 > Hax bootstrap themeing
+# &lt;b-r&gt;
+
+R
+> Creates break statements to show conditional rendering
 # &lt;chartist-render&gt;
 
 Render
@@ -138,7 +142,9 @@ Viz
 
 Card
 > A simple presentation of a date
-# &lt;dl-behavior&gt;
+# Deduping fix
+
+This is a utility that helps fix a core issue with "the platform" in that if two things try to call window.customElements.define('tag-name',ClassName) and reference the same tag-name, it is a hard bricking issue. This problem can pop up in local development for a number of reasons (or timing with legacy platforms and dynamically imported assets) and so this little utility helps rewrite this global function to perform it's same function, but issue a warning if already defined as opposed to outright failing.# &lt;dl-behavior&gt;
 
 File
 > Start of dl-behavior fork
@@ -186,18 +192,20 @@ Loading
 
 Studio
 > Studio App for ELMS:LN
-# &lt;a11y-menu-button&gt;
+# ES Global bridge
+
+This project helps bridge legacy, non-ESM code with modern ESM code. It generates a Promise for adding a script tag to the page. Then when it's resolved (loaded) it generates an event that can be listened for to make sure that the global classes in that file resolve correctly.# &lt;a11y-menu-button&gt;
 
 11
 > Start of a11y-menu-button
-# &lt;example-hax-element&gt;
-
-Hax
-> Provide an example to pick apart of a working HAX element
 # &lt;example-haxcms-theme&gt;
 
 Haxcms
 > A basic, well documented example theme for HAXcms
+# &lt;example-hax-element&gt;
+
+Hax
+> Provide an example to pick apart of a working HAX element
 # &lt;exif-data&gt;
 
 Data
@@ -218,6 +226,10 @@ Card
 
 Type
 > A simple fluid-type sizing wrapper element to apply to anything
+# &lt;simple-colors&gt;
+
+Colors
+> a utilty that provides a global set of color classes and variables based on theme and accent color attributes
 # &lt;full-screen-image&gt;
 
 Screen
@@ -226,10 +238,6 @@ Screen
 
 Width
 > full width image that flows beyond boundaries
-# &lt;simple-colors&gt;
-
-Colors
-> a utilty that provides a global set of color classes and variables based on theme and accent color attributes
 # &lt;future-terminal-text&gt;
 
 Terminal
@@ -262,10 +270,6 @@ Filter
 
 Plate
 > a grid element with 1 to 4 columns via slots
-# &lt;h-a-x&gt;
-
-A
-> Single tag to transform authoring
 # &lt;h5p-element&gt;
 
 5
@@ -274,18 +278,26 @@ A
 
 9000
 > Robot assistant tag, hopefully not evil
-# &lt;hax-body-behaviors&gt;
+# &lt;h-a-x&gt;
 
-Body
-> Wire any element up to HAX
+A
+> Single tag to transform authoring
 # &lt;hax-body&gt;
 
 # HAX
 Headless Authoring eXperience or HAX for short, is a new way of authoring content that works across platforms. Written in webcomponents, HAX allows users to effectively write HTML by touching the interface directly. Think WYSIWYG if it was built with modern and future proof tools and libraries instead of based on the work of the early 2000s.
+# &lt;hax-body-behaviors&gt;
+
+Body
+> Wire any element up to HAX
 # &lt;hax-bookmarklet&gt;
 
 Bookmarklet
 > HAX as a bookmarklet script
+# &lt;haxcms-elements&gt;
+
+Elements
+> HAX CMS series of elements to provide a full on CMS
 # &lt;hax-iconset&gt;
 
 Iconset
@@ -294,10 +306,6 @@ Iconset
 
 Logo
 > logo element for hax, obviously as a hax capable element.
-# &lt;haxcms-elements&gt;
-
-Elements
-> HAX CMS series of elements to provide a full on CMS
 # &lt;haxor-slevin&gt;
 
 Slevin
@@ -310,14 +318,14 @@ Builder
 
 Banner
 > The evil yet always requested hero banner
-# &lt;hex-picker&gt;
-
-Picker
-> Choose a color by hex or rgba code
 # &lt;hexagon-loader&gt;
 
 Loader
 > 
+# &lt;hex-picker&gt;
+
+Picker
+> Choose a color by hex or rgba code
 # &lt;html-block&gt;
 
 Block
@@ -387,6 +395,10 @@ Element
 
 11
 > Start of lorem-data
+# &lt;lrnapp-fab-menu&gt;
+
+Fab
+> Automated conversion of lrnapp-fab-menu/
 # &lt;lrn-aside&gt;
 
 Aside
@@ -403,46 +415,6 @@ Assignment
 
 Content
 > Simple content wrapper for OER Schema meta-data
-# &lt;lrn-gitgraph&gt;
-
-Gitgraph
-> Render git data in a graphing tree format
-# &lt;lrn-icon&gt;
-
-Icon
-> Some icons related to education concepts
-# &lt;lrn-icons&gt;
-
-Icons
-> Some icons related to education concepts
-# &lt;lrn-markdown-editor&gt;
-
-Markdown
-> markdown editor wrapper with preview editor
-# &lt;lrn-math&gt;
-
-Math
-> MathJAX element with HAX capabilities baked in
-# &lt;lrn-page&gt;
-
-Page
-> OER Schema wrapping for a page
-# &lt;lrn-shared-styles&gt;
-
-Shared
-> a shared set of styles for all @lrnwebcomponents
-# &lt;lrn-table&gt;
-
-Table
-> Generate a table that can be downloaded by users from a csv file
-# &lt;lrn-vocab&gt;
-
-Vocab
-> A simple vocabulary term highlighted with pop up for more details
-# &lt;lrnapp-fab-menu&gt;
-
-Fab
-> Automated conversion of lrnapp-fab-menu/
 # &lt;lrndesign-abbreviation&gt;
 
 Abbreviation
@@ -515,6 +487,34 @@ Stepper
 
 Timeline
 > an element that displays events on a timeline
+# &lt;lrn-gitgraph&gt;
+
+Gitgraph
+> Render git data in a graphing tree format
+# &lt;lrn-icon&gt;
+
+Icon
+> Some icons related to education concepts
+# &lt;lrn-icons&gt;
+
+Icons
+> Some icons related to education concepts
+# &lt;lrn-markdown-editor&gt;
+
+Markdown
+> markdown editor wrapper with preview editor
+# &lt;lrn-math&gt;
+
+Math
+> MathJAX element with HAX capabilities baked in
+# &lt;lrn-page&gt;
+
+Page
+> OER Schema wrapping for a page
+# &lt;lrn-shared-styles&gt;
+
+Shared
+> a shared set of styles for all @lrnwebcomponents
 # &lt;lrnsys-button&gt;
 
 Button
@@ -551,6 +551,14 @@ Randomimage
 
 Render
 > Automated conversion of lrnsys-render-html/
+# &lt;lrn-table&gt;
+
+Table
+> Generate a table that can be downloaded by users from a csv file
+# &lt;lrn-vocab&gt;
+
+Vocab
+> A simple vocabulary term highlighted with pop up for more details
 # &lt;lrs-elements&gt;
 
 Elements
@@ -567,6 +575,10 @@ Cover
 
 Menu
 > Automated conversion of map-menu/
+# &lt;materializecss-styles&gt;
+
+Styles
+> Materialize CSS style class names
 # &lt;material-progress&gt;
 
 Progress
@@ -575,10 +587,6 @@ Progress
 
 Word
 > Start of material-word
-# &lt;materializecss-styles&gt;
-
-Styles
-> Materialize CSS style class names
 # &lt;md-block&gt;
 
 Block
@@ -731,10 +739,6 @@ Square
 
 R
 > Automated conversion of q-r/
-# &lt;r-coder&gt;
-
-Coder
-> R coder interface for the r-service backend.
 # &lt;simple-colors&gt;
 
 Colors
@@ -747,6 +751,10 @@ Image
 
 Item
 > show a random item from a list of items
+# &lt;r-coder&gt;
+
+Coder
+> R coder interface for the r-service backend.
 # &lt;relative-heading&gt;
 
 Heading
@@ -810,22 +818,22 @@ Style
 
 Autocomplete
 > auto complete either from an endpoint or local json array
-# &lt;simple-blog-card&gt;
-
-Blog
-> a card commonly found on a blogging website
 # &lt;simple-blog&gt;
 
 Blog
 > Automated conversion of simple-blog/
-# &lt;simple-colors-shared-styles&gt;
+# &lt;simple-blog-card&gt;
 
-Colors
-> shared styles for simple-colors
+Blog
+> a card commonly found on a blogging website
 # &lt;simple-colors&gt;
 
 Colors
 > a utilty that provides a global set of color classes and variables based on theme and accent color attributes
+# &lt;simple-colors-shared-styles&gt;
+
+Colors
+> shared styles for simple-colors
 # &lt;simple-concept-network&gt;
 
 Concept
@@ -850,14 +858,14 @@ Fields
 
 Filter
 > a super class element to provide filtering capabilities
-# &lt;simple-icon-picker&gt;
-
-Icon
-> Uses simple-picker to create an icon picker
 # &lt;simple-icon&gt;
 
 Icon
 > Render an SVG based icon
+# &lt;simple-icon-picker&gt;
+
+Icon
+> Uses simple-picker to create an icon picker
 # &lt;simple-login&gt;
 
 Login
@@ -922,7 +930,9 @@ Share
 
 Note
 > Automated conversion of stop-note/
-# &lt;tab-list&gt;
+# Storybook utilities
+
+This provides some utility functions for working with storybook and our monorepo. It is for internal purposes only though it is published for maintainability.# &lt;tab-list&gt;
 
 List
 > Automated conversion of tab-list/

@@ -1,0 +1,72 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Wikipedia article",
+    "description": "This can display a wikipedia article in context in a variety of formats.",
+    "icon": "book",
+    "color": "green",
+    "groups": ["Content", "Creative Commons"],
+    "handles": [
+      {
+        "type": "wikipedia",
+        "type_exclusive": true,
+        "title": "search"
+      },
+      {
+        "type": "content",
+        "title": "search"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "search",
+        "title": "Article name",
+        "description": "Word to search wikipedia for.",
+        "inputMethod": "textfield",
+        "icon": "editor:title",
+        "required": true
+      },
+      {
+        "property": "hideTitle",
+        "title": "Hide title",
+        "description": "Whether or not to render the title of the article.",
+        "inputMethod": "boolean",
+        "icon": "editor:title"
+      },
+      {
+        "property": "language",
+        "title": "Language",
+        "description": "The language of the article.",
+        "inputMethod": "select",
+        "options": {
+          "en": "English",
+          "es": "Spanish",
+          "fr": "French",
+          "de": "German",
+          "ja": "Japanese"
+        }
+      }
+    ]
+  },
+  "saveOptions": {
+    "wipeSlot": true,
+    "unsetAttributes": ["_title"]
+  },
+  "demoSchema": [
+    {
+      "tag": "wikipedia-query",
+      "properties": {
+        "hideTitle": false,
+        "search": "Internet"
+      },
+      "content": ""
+    }
+  ]
+}

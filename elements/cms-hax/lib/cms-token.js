@@ -29,6 +29,9 @@ class CMSToken extends PolymerElement {
           transition: 0.6s all ease;
           background-color: transparent;
         }
+        :host([hax-edit-mode]) #replacementcontent {
+          pointer-events: none;
+        }
 
         paper-spinner {
           transition: 0.6s all ease;
@@ -152,6 +155,12 @@ class CMSToken extends PolymerElement {
         type: String,
         value: "full",
         observer: "_displayModeChanged",
+      },
+      haxEditMode: {
+        type: Boolean,
+        value: false,
+        attribute: "hax-edit-mode",
+        reflectToAttribute: true,
       },
     };
   }
@@ -303,6 +312,23 @@ class CMSToken extends PolymerElement {
     );
     super.disconnectedCallback();
   }
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this.haxEditMode = value;
+    }
+  }
+
+  haxeditModeChanged(value) {
+    this.haxEditMode = value;
+  }
+
   static get haxProperties() {
     return {
       canScale: true,
