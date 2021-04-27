@@ -2896,11 +2896,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     }
   }
 
-  enableLearningMode() {
-    this.learningMode = true;
-    this.disableSeek = true;
-  }
-
   /**
    * selects `captionsTrack` by key and adjusts `cc` accordingly
    */
