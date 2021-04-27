@@ -97,6 +97,7 @@ class VideoPlayer extends IntersectionObserverMixin(
               ?hide-transcript="${this.hideTranscript}"
               id="${this.playerId}"
               lang="${this.lang || "en"}"
+              ?learning-mode="${this.learningMode}"
               ?linkable="${this.linkable}"
               preload="${this.preload || "metadata"}"
               media-title="${this.mediaTitle || ""}"
@@ -472,7 +473,7 @@ class VideoPlayer extends IntersectionObserverMixin(
        */
       learningMode: {
         type: Boolean,
-        attribute: "learningMode",
+        attribute: "learning-mode",
       },
       /**
        * Language of media
