@@ -491,6 +491,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   _mouseMove(e) {
+    return;
     if (this.editMode && HAXStore.ready) {
       var eventPath = normalizeEventPath(e);
       clearTimeout(this.__mouseQuickTimer);
@@ -523,21 +524,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         let target = eventPath[0].closest("[data-hax-ray]:not(li)");
         if (target) {
           this.__activeHover = target;
-          let activeRect = this.__activeHover.getBoundingClientRect();
-          let addRect = this.contextMenus.add.getBoundingClientRect();
-          // calculate mouse position relative to the element on page
-          // and position the add above or below as a result
-          // this is bonkers :)
-          let distance =
-            (e.pageY - (activeRect.top + window.scrollY)) / activeRect.height;
-          let height = -addRect.height - 1;
-          // incentivize above
-          if (distance > 0.3) {
-            height = activeRect.height + 1;
-            this.__addAbove = false;
-          } else {
-            this.__addAbove = true;
-          }
           // wow, we have an in context addition menu just like that
           this._showContextMenu(this.contextMenus.add, this.__activeHover);
           this.classList.add("hax-add-content-visible");
@@ -546,9 +532,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           eventPath[3] &&
           eventPath[3].closest("[data-hax-layout]")
         ) {
-          let addRect = this.contextMenus.add.getBoundingClientRect();
-          let height = -addRect.height - 1;
-          let activeRect, posMenuEl;
           // weird but we need the structure of grid plate here unfortunately
           // if it has nodes in the column we are active on then we need
           // to defer to the grid level because you could always force a node
@@ -557,16 +540,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this.__activeHover = eventPath[0].closest(
               "[data-move-order]"
             ).parentNode.parentNode.host;
-            posMenuEl = this.__activeHover;
-            activeRect = this.__activeHover.getBoundingClientRect();
-            let distance =
-              (e.pageY - (activeRect.top + window.scrollY)) / activeRect.height;
-            if (distance > 0.3) {
-              height = activeRect.height + 1;
-              this.__addAbove = false;
-            } else {
-              this.__addAbove = true;
-            }
           } else {
             // to avoid a later loop, we force this to "false"
             this.__addAbove = false;
@@ -593,13 +566,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this.__activeHover = eventPath[0].closest(
               "[data-move-order]"
             ).parentNode.parentNode.host.children[0];
-            // we focus on the column unlike anything else
-            activeRect = eventPath[0]
-              .closest("[data-move-order]")
-              .getBoundingClientRect();
-            // right in the middle of the column
-            height = activeRect.height / 2 - addRect.height / 2;
-            posMenuEl = eventPath[0].closest("[data-move-order]");
           }
 
           // wow, we have an in context addition menu just like that
@@ -1610,6 +1576,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
       }
     }
+    console.log(
+      HAXStore.activePlaceHolder,
+      active,
+      active.parentNode,
+      this.__isLayout(active.parentNode)
+    );
     // special support for a drag and drop into a place-holder tag
     // as this is a more aggressive operation then the others
     if (
@@ -1897,7 +1869,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             } else {
               this._hideContextMenu(this.contextMenus.ce);
             }
-            console.log("ce", this.contextMenus.ce);
             menuWidth += 30;
           } else {
             this._hideContextMenu(this.contextMenus.ce);
@@ -1905,7 +1876,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // text menu can expand based on selection
             let textRect = this.contextMenus.text.getBoundingClientRect();
             menuWidth += textRect.width;
-            console.log("text", this.contextMenus.text);
           }
           if (!props || props.editingElement == "core") {
             let activeRect = node.getBoundingClientRect();
@@ -1934,7 +1904,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
             }, 250);
           }
-          console.log("plate", this.contextMenus.plate);
         }
       }, 50);
     }
@@ -3041,7 +3010,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
   __isLayout(el) {
-    return el && el.haxProperties && el.type == "grid";
+    return el && HAXStore.isGridPlateElement(el);
   }
   /**
    * Apply the node editable state correctly so we can do drag and drop / editing uniformly
@@ -3688,7 +3657,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   _showContextMenu(menu, target) {
     menu.setAttribute("on-screen", "on-screen");
     menu.classList.add("hax-context-visible", "hax-context-menu-active");
-    console.log("show", menu);
   }
   /**
    * gets context container
@@ -3723,7 +3691,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     menu.classList.remove("hax-context-visible", "hax-context-menu-active");
     this._setSticky(menu);
     if (container) container.menusVisible = false;
-    console.log("hide", menu);
   }
   /**
    * Find the next thing to tab forward to.
