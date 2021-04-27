@@ -198,7 +198,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           z-index: var(--hax-ui-focus-z-index);
         }
         .hax-context-visible {
-          position: absolute;
           visibility: visible;
           pointer-events: all;
           opacity: 1;
@@ -710,7 +709,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         auto
         justify
         position="top"
-        .target="${this.target || document.body}"
+        .target="${this.activeNode || document.body}"
       >
         <div id="topcontextmenu">
           <hax-text-context
@@ -730,12 +729,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         </div>
       </absolute-position-behavior>
       <absolute-position-behavior
+        id="bottomcontext"
         auto
         justify
-        position="bottomcontext"
-        .target="${this.target || document.body}"
+        position="bottom"
+        .target="${this.activeNode || document.body}"
       >
         <hax-context-item
+          id="addincontext"
           icon="icons:add"
           class="hax-context-menu ignore-activation"
           label="${this.t.addContent}"

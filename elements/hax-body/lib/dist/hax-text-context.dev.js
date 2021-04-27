@@ -117,7 +117,7 @@ function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <div id="toolbar">\n        <hax-toolbar>\n          <div class="group">\n            <hax-toolbar-menu\n              id="textformat"\n              icon="',
     '"\n              label="Format"\n              show-text-label\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              ',
-    '\n              <div slot="tour" data-stop-content>\n                Change how the text is structured and visualized in the page.\n              </div>\n            </hax-toolbar-menu>\n            <!-- comment this in when rich-text-editor is viable -->\n            <!--\n            <hax-context-item\n              action\n              hidden\n              icon="icons:flip-to-back"\n              label="Full text editor"\n              event-name="hax-full-text-editor-toggle"\n            ></hax-context-item> -->\n            <slot name="primary"></slot>\n          </div>\n          <div class="group">\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-list-bulleted"\n              event-name="text-tag-ul"\n              label="',
+    '\n              <div slot="tour" data-stop-content>\n                Change how the text is structured and visualized in the page.\n              </div>\n            </hax-toolbar-menu>\n            <!-- comment this in when rich-text-editor is viable -->\n            <!--\n            <hax-context-item\n              action\n              hidden\n              icon="icons:flip-to-back"\n              label="Full text editor"\n              event-name="hax-full-text-editor-toggle"\n            ></hax-context-item> -->\n            <slot name="primary"></slot>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-list-bulleted"\n              event-name="text-tag-ul"\n              label="',
     '"\n              ?hidden="',
     '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-list-numbered"\n              label="',
     '"\n              event-name="text-tag-ol"\n              ?hidden="',
@@ -172,7 +172,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        #toolbar {\n          position: absolute;\n          bottom: 0;\n          width: 280px;\n        }\n        .group,\n        .group > * {\n          flex: 1 1 auto;\n        }\n      ",
+    "\n        .group,\n        .group > * {\n          flex: 1 1 auto;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {

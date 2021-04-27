@@ -23,11 +23,6 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     return [
       ...super.styles,
       css`
-        #toolbar {
-          position: absolute;
-          bottom: 0;
-          width: 280px;
-        }
         .group,
         .group > * {
           flex: 1 1 auto;
@@ -222,8 +217,6 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               event-name="hax-full-text-editor-toggle"
             ></hax-context-item> -->
             <slot name="primary"></slot>
-          </div>
-          <div class="group">
             <hax-context-item-textop
               mini
               action
