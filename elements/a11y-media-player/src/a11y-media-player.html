@@ -145,8 +145,8 @@
         controls="transcript"
         icon="${this._getLocal(this.localization,'transcript','icon')}"
         label="${this._getLocal(this.localization,'transcript','label')}"
-        ?disabled="${!this.hasCaptions}"
-        ?hidden="${!this.hasCaptions || this.standAlone || (this.height && this.responsiveSize.indexOf('s') > -1) || (this.linkable && this.responsiveSize === 'md')}"
+        ?disabled="${!this.hasCaptions || this.hideTranscript}"
+        ?hidden="${!this.hasCaptions || this.standAlone || (this.height && this.responsiveSize.indexOf('s') > -1) || (this.linkable && this.responsiveSize === 'md') || this.hideTranscript}"
         ?toggle="${this.transcriptTrackKey > -1}"
         @click="${e => this.toggleTranscript()}"
       >
@@ -157,8 +157,8 @@
         class="hide-full-sm"
         icon="${this._getLocal(this.localization,'copyLink','icon')}"
         label="${this._getLocal(this.localization,'copyLink','label')}"
-        ?disabled="${!this.linkable}"
-        ?hidden="${!this.linkable}"
+        ?disabled="${!this.linkable} || this.hideTranscript"
+        ?hidden="${!this.linkable || this.hideTranscript}"
         @click="${this._handleCopyLink}"
       ></a11y-media-button>
       <a11y-media-button

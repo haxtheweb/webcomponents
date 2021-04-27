@@ -1112,11 +1112,12 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 "transcript",
                 "label"
               )}"
-              ?disabled="${!this.hasCaptions}"
+              ?disabled="${!this.hasCaptions || this.hideTranscript}"
               ?hidden="${!this.hasCaptions ||
               this.standAlone ||
               (this.height && this.responsiveSize.indexOf("s") > -1) ||
-              (this.linkable && this.responsiveSize === "md")}"
+              (this.linkable && this.responsiveSize === "md") ||
+              this.hideTranscript}"
               ?toggle="${this.transcriptTrackKey > -1}"
               @click="${(e) => this.toggleTranscript()}"
             >
@@ -1127,8 +1128,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               class="hide-full-sm"
               icon="${this._getLocal(this.localization, "copyLink", "icon")}"
               label="${this._getLocal(this.localization, "copyLink", "label")}"
-              ?disabled="${!this.linkable}"
-              ?hidden="${!this.linkable}"
+              ?disabled="${!this.linkable} || this.hideTranscript"
+              ?hidden="${!this.linkable || this.hideTranscript}"
               @click="${this._handleCopyLink}"
             ></a11y-media-button>
             <a11y-media-button
@@ -2500,6 +2501,10 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "learningMode") {
+        this.disableSeek = this[propName];
+        this.hideTranscript = this[propName];
+      }
       let change = (params) => params.includes(propName),
         mediaChange = (param) =>
           change(["__loadedTracks", "youtubeId", "media", param]),
@@ -2889,6 +2894,11 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         })
       );
     }
+  }
+
+  enableLearningMode() {
+    this.learningMode = true;
+    this.disableSeek = true;
   }
 
   /**
