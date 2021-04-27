@@ -43,7 +43,8 @@ $ git pull
 
 ## Windows
 
-[Cygwin command line](https://www.cygwin.com/) is lightly tested, but slower than true Bash environment.
+[Git bash](https://git-scm.com/) should already be installed on your Windows machine and can be found by searching through your computer's applications or by right-clicking anywhere inside of the File Explorer.
+[Cygwin command line](https://www.cygwin.com/) is lightly tested, but slower than a true Bash environment.
 
 ### Windows Install
 
