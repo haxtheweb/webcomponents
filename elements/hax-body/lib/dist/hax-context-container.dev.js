@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-exports.HaxContextBehaviors = exports.HaxContextContainer = void 0;
+exports.HaxContextBehaviors = void 0;
 
 var _litElement = require("lit-element/lit-element.js");
 
@@ -175,7 +175,7 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
           {
             key: "tag",
             get: function get() {
-              return "hax-context-container";
+              return "hax-context-behaviors";
             },
           },
         ]
@@ -185,31 +185,5 @@ var HaxContextBehaviors = function HaxContextBehaviors(SuperClass) {
     })((0, _SimpleTourFinder2.SimpleTourFinder)(SuperClass))
   );
 };
-/**
- *
- *
- * @class HaxContext
- * @extends {LitElement}
- */
 
 exports.HaxContextBehaviors = HaxContextBehaviors;
-
-var HaxContextContainer =
-  /*#__PURE__*/
-  (function (_HaxContextBehaviors) {
-    _inherits(HaxContextContainer, _HaxContextBehaviors);
-
-    function HaxContextContainer() {
-      _classCallCheck(this, HaxContextContainer);
-
-      return _possibleConstructorReturn(
-        this,
-        _getPrototypeOf(HaxContextContainer).apply(this, arguments)
-      );
-    }
-
-    return HaxContextContainer;
-  })(HaxContextBehaviors(_litElement.LitElement));
-
-exports.HaxContextContainer = HaxContextContainer;
-window.customElements.define(HaxContextContainer.tag, HaxContextContainer);

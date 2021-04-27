@@ -8,7 +8,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
-import { HaxContextBehaviors } from "./hax-context-container.js";
+import { HaxContextBehaviors } from "./hax-context-behaviors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
@@ -181,7 +181,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   render() {
     return html`
       <div id="toolbar">
-        <hax-toolbar always-expanded>
+        <hax-toolbar>
           <div class="group">
             <hax-toolbar-menu
               id="textformat"

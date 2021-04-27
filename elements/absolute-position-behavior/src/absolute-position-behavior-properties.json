@@ -56,6 +56,11 @@
     "attribute": "position-align",
     "reflect": true
   },
+  "justify": {
+    "type": "Boolean",
+    "reflect": true,
+    "attribute": "justify"
+  },
   /**
    * The actual target element
    */

@@ -17,6 +17,8 @@ require("@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js");
 
 var _simpleToolbar = require("@lrnwebcomponents/simple-toolbar/simple-toolbar.js");
 
+var _absolutePositionBehavior = require("@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -296,7 +298,11 @@ var HaxToolbarBehaviors = function HaxToolbarBehaviors(SuperClass) {
       ]);
 
       return _class;
-    })((0, _simpleToolbar.SimpleToolbarBehaviors)(SuperClass))
+    })(
+      (0, _simpleToolbar.SimpleToolbarBehaviors)(
+        (0, _absolutePositionBehavior.AbsolutePositionBehaviorClass)(SuperClass)
+      )
+    )
   );
 };
 /**

@@ -666,6 +666,15 @@ var GridPlate =
                   "responsive-width",
                 ],
               },
+              demoSchema: [
+                {
+                  tag: "grid-plate",
+                  properties: {
+                    disableResponsive: true,
+                  },
+                  content: "",
+                },
+              ],
             };
           },
         },

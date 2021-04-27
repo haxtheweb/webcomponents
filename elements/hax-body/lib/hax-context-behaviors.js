@@ -8,7 +8,7 @@ import { SimpleTourFinder } from "@lrnwebcomponents/simple-popover/lib/SimpleTou
  * @lit-element
  * @demo demo/index.html
  */
-const HaxContextBehaviors = function (SuperClass) {
+export const HaxContextBehaviors = function (SuperClass) {
   return class extends SimpleTourFinder(SuperClass) {
     /**
      * LitElement constructable styles enhancement
@@ -69,16 +69,7 @@ const HaxContextBehaviors = function (SuperClass) {
       return html`<slot></slot> `;
     }
     static get tag() {
-      return "hax-context-container";
+      return "hax-context-behaviors";
     }
   };
 };
-/**
- *
- *
- * @class HaxContext
- * @extends {LitElement}
- */
-class HaxContextContainer extends HaxContextBehaviors(LitElement) {}
-window.customElements.define(HaxContextContainer.tag, HaxContextContainer);
-export { HaxContextContainer, HaxContextBehaviors };

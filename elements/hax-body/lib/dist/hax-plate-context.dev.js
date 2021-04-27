@@ -19,7 +19,7 @@ require("./hax-context-item.js");
 
 var _mobx = require("mobx");
 
-var _haxContextContainer = require("./hax-context-container.js");
+var _haxContextBehaviors = require("./hax-context-behaviors.js");
 
 var _utils = require("@lrnwebcomponents/utils/utils.js");
 
@@ -147,7 +147,8 @@ function _templateObject() {
     '"\n              label="',
     '"\n              icon="icons:content-copy"\n              event-name="hax-plate-duplicate"\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <div slot="tour" data-stop-content>\n                Duplicate the active piece of content and place it below the\n                current item.\n              </div>\n            </hax-context-item>\n          </div>\n          <div class="group">\n            <hax-toolbar-menu\n              id="remove"\n              action\n              ?disabled="',
     '"\n              icon="delete"\n              label="',
-    '"\n              reset-on-select\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  danger\n                  align-horizontal="left"\n                  ?disabled="',
+    '"\n              reset-on-select\n              data-simple-tour-stop\n              data-stop-title="label"\n              @dblclick=',
+    '\n            >\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  danger\n                  align-horizontal="left"\n                  ?disabled="',
     '"\n                  show-text-label\n                  role="menuitem"\n                  icon="delete"\n                  label="',
     '"\n                  event-name="hax-plate-delete"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <div slot="tour" data-stop-content>\n                Delete the current item. You can always use the undo arrow to\n                bring this back.\n              </div>\n            </hax-toolbar-menu>\n          </div>\n        </hax-toolbar>\n      </div>\n    ',
   ]);
@@ -298,7 +299,7 @@ var HaxPlateContext =
         confirmDelete: "Confirm delete",
       };
 
-      _this.registerTranslation({
+      _this.registerLocalization({
         context: _assertThisInitialized(_this),
         namespace: "hax",
       });
@@ -328,6 +329,7 @@ var HaxPlateContext =
               this.t.duplicate,
               this.hasActiveEditingElement,
               this.t.remove,
+              this.__dblClickFire,
               this.hasActiveEditingElement,
               this.t.confirmDelete
             );
@@ -348,6 +350,25 @@ var HaxPlateContext =
               }
             } else {
               rightremove.disabled = true;
+            }
+          },
+        },
+        {
+          key: "__dblClickFire",
+          value: function __dblClickFire(event) {
+            if (event.target.id === "remove") {
+              this.dispatchEvent(
+                new CustomEvent("hax-context-item-selected", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: {
+                    target: event.target,
+                    eventName: "hax-plate-delete",
+                    value: event.target.value,
+                  },
+                })
+              );
             }
           },
         },
@@ -469,7 +490,7 @@ var HaxPlateContext =
     return HaxPlateContext;
   })(
     (0, _I18NMixin2.I18NMixin)(
-      (0, _haxContextContainer.HaxContextBehaviors)(_litElement.LitElement)
+      (0, _haxContextBehaviors.HaxContextBehaviors)(_litElement.LitElement)
     )
   );
 

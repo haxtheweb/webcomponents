@@ -17,6 +17,7 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { HaxUiBaseStyles } from "./lib/hax-ui-styles.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 
 // BURN A THOUSAND FIREY DEATHS SAFARI
 if (!Element.prototype.replaceWith) {
@@ -170,19 +171,25 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           opacity: 1;
           cursor: pointer;
         }
+        #topcontextmenu {
+          display: flex;
+          width: 100%;
+          align-items: bottom;
+          justify-content: space-between;
+        }
         #textcontextmenu,
         #cecontextmenu {
           max-width: 280px;
+          flex: 1 1 auto;
+        }
+        #addincontext,
+        #platecontextmenu {
+          flex: 0 0 auto;
         }
         .hax-context-menu {
-          padding: 0;
-          margin-left: -5000px;
-          position: fixed;
           visibility: hidden;
           opacity: 0;
           z-index: 1000;
-          float: left;
-          display: block;
           pointer-events: none;
           transition: 0.2s top ease-in-out, 0.2s left ease-in-out;
         }
@@ -197,7 +204,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           opacity: 1;
         }
         .hax-context-menu-active {
-          margin-left: unset;
+          opacity: 1;
         }
         :host([edit-mode]) #bodycontainer ::slotted([contenteditable]) {
           -webkit-appearance: textfield;
@@ -347,6 +354,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           -webkit-user-select: text;
           user-select: text;
         }
+        absolute-position-behavior:not(:defined),
         .hax-context-menu:not(:defined) {
           display: none;
         }
@@ -432,7 +440,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       document.getElementsByTagName("head")[0].appendChild(s);
     }
     setTimeout(() => {
-      import("./lib/hax-context-container.js");
+      import("./lib/hax-context-behaviors.js");
       import("./lib/hax-ce-context.js");
       import("./lib/hax-text-context.js");
       import("./lib/hax-plate-context.js");
@@ -532,12 +540,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this.__addAbove = true;
           }
           // wow, we have an in context addition menu just like that
-          this._positionContextMenu(
-            this.contextMenus.add,
-            this.__activeHover,
-            activeRect.width / 2 - addRect.width / 2,
-            height
-          );
+          this._showContextMenu(this.contextMenus.add, this.__activeHover);
           this.classList.add("hax-add-content-visible");
         } else if (
           eventPath[0].closest("[data-move-order]") &&
@@ -601,12 +604,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           }
 
           // wow, we have an in context addition menu just like that
-          this._positionContextMenu(
-            this.contextMenus.add,
-            posMenuEl,
-            activeRect.width / 2 - addRect.width / 2,
-            height
-          );
+          this._showContextMenu(this.contextMenus.add, posMenuEl);
           this.classList.add("hax-add-content-visible");
         } else if (eventPath[0].closest("#bodycontainer")) {
           this.__activeHover = null;
@@ -707,31 +705,44 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       <div id="bodycontainer" class="ignore-activation">
         <slot id="body"></slot>
       </div>
-      <hax-text-context 
-        id="textcontextmenu"
-        class="hax-context-menu ignore-activation"
-        .activeNode="${this.activeNode}"
-      ></hax-text-context>
-      <hax-ce-context
-        id="cecontextmenu"
-        class="hax-context-menu ignore-activation"
-        .activeNode="${this.activeNode}"
-      ></hax-ce-context>
-      <hax-plate-context
-        id="platecontextmenu"
-        class="hax-context-menu ignore-activation"
-        ></hax-plate-context>
-      </hax-context-container>
-      <hax-context-container
-        id="addincontext"
-        class="hax-context-menu ignore-activation">
+      <absolute-position-behavior
+        id="topcontext"
+        auto
+        justify
+        position="top"
+        .target="${this.target || document.body}"
+      >
+        <div id="topcontextmenu">
+          <hax-text-context
+            id="textcontextmenu"
+            class="hax-context-menu ignore-activation"
+            .activeNode="${this.activeNode}"
+          ></hax-text-context>
+          <hax-ce-context
+            id="cecontextmenu"
+            class="hax-context-menu ignore-activation"
+            .activeNode="${this.activeNode}"
+          ></hax-ce-context>
+          <hax-plate-context
+            id="platecontextmenu"
+            class="hax-context-menu ignore-activation"
+          ></hax-plate-context>
+        </div>
+      </absolute-position-behavior>
+      <absolute-position-behavior
+        auto
+        justify
+        position="bottomcontext"
+        .target="${this.target || document.body}"
+      >
         <hax-context-item
           icon="icons:add"
+          class="hax-context-menu ignore-activation"
           label="${this.t.addContent}"
           show-text-label
         >
         </hax-context-item>
-      </hax-context-container>
+      </absolute-position-behavior>
     `;
   }
   /**
@@ -1881,17 +1892,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             // check for core editing element OR it providing it's own experience entirely
             // otherwise we'll pick it up in the specific element via activeNode change hooks
             if (props.editingElement == "core") {
-              this._positionContextMenu(this.contextMenus.ce, node, 0, -30);
+              this._showContextMenu(this.contextMenus.ce, node);
             } else {
               this._hideContextMenu(this.contextMenus.ce);
             }
+            console.log("ce", this.contextMenus.ce);
             menuWidth += 30;
           } else {
             this._hideContextMenu(this.contextMenus.ce);
-            this._positionContextMenu(this.contextMenus.text, node, 0);
+            this._showContextMenu(this.contextMenus.text, node);
             // text menu can expand based on selection
             let textRect = this.contextMenus.text.getBoundingClientRect();
             menuWidth += textRect.width;
+            console.log("text", this.contextMenus.text);
           }
           if (!props || props.editingElement == "core") {
             let activeRect = node.getBoundingClientRect();
@@ -1908,32 +1921,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }
             // need to account for the item being small than the menu
             else if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
-              this._positionContextMenu(this.contextMenus.plate, node, 0, -56);
+              this._showContextMenu(this.contextMenus.plate, node);
             } else {
-              this._positionContextMenu(
-                this.contextMenus.plate,
-                node,
-                activeRect.width -
-                  this.contextMenus.plate.getBoundingClientRect().width +
-                  1,
-                -30
-              );
+              this._showContextMenu(this.contextMenus.plate, node);
             }
           } else {
             setTimeout(() => {
               if (node && node.parentNode) {
                 let activeRect = node.parentNode.getBoundingClientRect();
-                this._positionContextMenu(
-                  this.contextMenus.plate,
-                  node.parentNode,
-                  activeRect.width -
-                    this.contextMenus.plate.getBoundingClientRect().width +
-                    1,
-                  -30
-                );
+                this._showContextMenu(this.contextMenus.plate, node.parentNode);
               }
             }, 250);
           }
+          console.log("plate", this.contextMenus.plate);
         }
       }, 50);
     }
@@ -3684,24 +3684,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Handle display and position of the context menu
    */
-  _positionContextMenu(menu, target, xoffset, yoffset) {
-    // make it account for the offset if it's floated over to one side
-    // or inside of something that's over that way
-    if (target != null) {
-      let pos = this._getPosition(target);
-      if (xoffset != null) {
-        menu.style["left"] = pos.x + xoffset + "px";
-      } else {
-        menu.style["left"] = pos.x + "px";
-      }
-      if (yoffset != null) {
-        menu.style["top"] = pos.y + yoffset + "px";
-      } else {
-        menu.style["top"] = pos.y + "px";
-      }
-    }
+  _showContextMenu(menu, target) {
     menu.setAttribute("on-screen", "on-screen");
     menu.classList.add("hax-context-visible", "hax-context-menu-active");
+    console.log("show", menu);
   }
   /**
    * gets context container
@@ -3729,12 +3715,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Simple hide / reset of whatever menu it's handed.
    */
   _hideContextMenu(menu) {
+    if (!menu) return;
     let container = this._getContextContainer(menu);
     menu.removeAttribute("on-screen");
     menu.visible = false;
     menu.classList.remove("hax-context-visible", "hax-context-menu-active");
     this._setSticky(menu);
     if (container) container.menusVisible = false;
+    console.log("hide", menu);
   }
   /**
    * Find the next thing to tab forward to.
