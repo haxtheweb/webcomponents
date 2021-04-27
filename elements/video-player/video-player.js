@@ -97,6 +97,7 @@ class VideoPlayer extends IntersectionObserverMixin(
               ?hide-transcript="${this.hideTranscript}"
               id="${this.playerId}"
               lang="${this.lang || "en"}"
+              ?learning-mode="${this.learningMode}"
               ?linkable="${this.linkable}"
               preload="${this.preload || "metadata"}"
               media-title="${this.mediaTitle || ""}"
@@ -205,6 +206,12 @@ class VideoPlayer extends IntersectionObserverMixin(
               anonymous: "anonymous",
               "use-credentials": "use-credentials",
             },
+          },
+          {
+            property: "learningMode",
+            title: "Enable learning mode",
+            description: "Disables fast forward and rewind.",
+            inputMethod: "boolean",
           },
           {
             property: "darkTranscript",
@@ -462,6 +469,13 @@ class VideoPlayer extends IntersectionObserverMixin(
         reflect: true,
       },
       /**
+       * Learning mode
+       */
+      learningMode: {
+        type: Boolean,
+        attribute: "learning-mode",
+      },
+      /**
        * Language of media
        */
       lang: {
@@ -555,6 +569,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.hideTimestamps = false;
     this.hideTranscript = false;
     this.lang = "en";
+    this.learningMode = false;
     this.linkable = false;
     this.preload = "metadata";
     this.sources = [];
