@@ -698,7 +698,7 @@
     },
     {
       "name": "hax-plate-context",
-      "description": "`hax-plate-context`\n`A context menu that provides common grid plate based authoring options.`\n\nAttributes:\n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `t` - \n\nProperties:\n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `t` - \n\n  * `tourName` {`string`} - ",
+      "description": "`hax-plate-context`\n`A context menu that provides common grid plate based authoring options.`\n\nEvents:\n\n  * `hax-context-item-selected` {`CustomEvent<{ target: any; eventName: string; value: any; }>`} - \n\nAttributes:\n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `t` - \n\nProperties:\n\n  * `hasActiveEditingElement` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `t` - \n\n  * `tourName` {`string`} - ",
       "attributes": [
         {
           "name": "hasActiveEditingElement",
@@ -708,6 +708,10 @@
         {
           "name": "t",
           "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+        },
+        {
+          "name": "onhax-context-item-selected",
+          "description": "`hax-context-item-selected` {`CustomEvent<{ target: any; eventName: string; value: any; }>`} - "
         }
       ]
     },

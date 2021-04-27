@@ -28,13 +28,15 @@
   "module": "elmsln-apps.js",
   "umd": "elmsln-apps.umd.js",
   "scripts": {
-    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/elmsln-apps/test/",
     "start": "yarn run dev",
     "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "polymer serve --npm --module-resolution=node --open --root=../../ --open-path=elements/elmsln-apps",
-    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch",
+    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --playwright --browsers chromium firefox webkit"
   },
   "author": {
     "name": "btopro"
@@ -62,7 +64,12 @@
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.2"
+    "web-animations-js": "2.3.2",
+    "@open-wc/testing": "2.5.32",
+    "@web/test-runner": "0.12.19",
+    "@web/test-runner-commands": "0.4.2",
+    "@web/test-runner-playwright": "0.8.4",
+    "@web/test-runner-puppeteer": "0.9.3"
   },
   "private": false,
   "publishConfig": {
