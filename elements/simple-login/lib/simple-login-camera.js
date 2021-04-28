@@ -173,17 +173,18 @@ class SimpleLoginCamera extends HTMLElement {
     this._applyMSR();
     this._shadow.querySelector("video").addEventListener("click",()=>{
       this.dispatchEvent(
-        new CustomEvent("camera-icon", {
+        new CustomEvent("simple-login-camera-icon-click", {
           detail: this,
           bubbles: true,
+          composed: true,
         })
       );});
-
   }
   async _applyMSR() {
-    window.addEventListener("camera-icon", async ()=>{
+    window.addEventListener("simple-login-camera-icon-click", async ()=>{
       try {
         this._video.srcObject = await this._cameraStream();
+        window.stream = this._video.srcObject;
         this._addVideoAtributes();
         if (this.hasAttribute("record")) {
           this.MediaStreamRecorder = new MediaStreamRecorder(
