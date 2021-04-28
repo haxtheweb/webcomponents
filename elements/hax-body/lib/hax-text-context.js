@@ -176,7 +176,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   render() {
     return html`
       <div id="toolbar">
-        <hax-toolbar>
+        <hax-toolbar always-expanded>
           <div class="group">
             <hax-toolbar-menu
               id="textformat"
@@ -184,7 +184,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               label="Format"
               show-text-label
               data-simple-tour-stop
-              data-stop-title="label"
+              data-stop-title="Format"
             >
               ${this.formattingList.map(
                 (val) =>
