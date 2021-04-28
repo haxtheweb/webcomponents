@@ -131,6 +131,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     this.hideTranscript = false;
     this.id = null;
     this.lang = "en";
+    this.learningMode = false;
     this.linkable = false;
     this.localization = {};
     this.loop = false;
@@ -806,6 +807,10 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "learningMode") {
+        this.disableSeek = this[propName];
+        this.hideTranscript = this[propName];
+      }
       let change = (params) => params.includes(propName),
         mediaChange = (param) =>
           change(["__loadedTracks", "youtubeId", "media", param]),

@@ -17,7 +17,12 @@ ELMS:LN produced web components for any project
 
 *Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
 
-### Install
+### Quick Install
+```bash
+$ curl -fsSL https://raw.githubusercontent.com/elmsln/lrnwebcomponents/master/scripts/lrnwebcomponentsme.sh -o lrnwebcomponentsme.sh && sh lrnwebcomponentsme.sh
+```
+
+### Manual Install
 
 ```bash
 $ git clone https://github.com/elmsln/lrnwebcomponents.git
@@ -38,7 +43,8 @@ $ git pull
 
 ## Windows
 
-[Cygwin command line](https://www.cygwin.com/) is lightly tested, but slower than true Bash environment.
+[Git bash](https://git-scm.com/) should already be installed on your Windows machine and can be found by searching through your computer's applications or by right-clicking anywhere inside of the File Explorer.
+[Cygwin command line](https://www.cygwin.com/) is lightly tested, but slower than a true Bash environment.
 
 ### Windows Install
 

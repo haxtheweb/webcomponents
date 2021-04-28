@@ -48,7 +48,7 @@ class GradeBookStudentBlock extends I18NMixin(LitElement) {
   }
   render() {
     return html`
-      <grid-plate layout="1-2">
+      <grid-plate layout="1-2" disable-responsive>
         <div slot="col-1" style="text-align:center;">
           ${this.student.photo
             ? html`

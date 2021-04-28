@@ -41,6 +41,7 @@ ${this.elementVisible ? html`${!this.isA11yMedia
         ?hide-transcript="${this.hideTranscript}"
         id="${this.playerId}"
         lang="${this.lang || 'en'}"
+        ?learning-mode="${this.learningMode}"
         ?linkable="${this.linkable}"
         preload="${this.preload || 'metadata'}"
         media-title="${this.mediaTitle || ''}"
