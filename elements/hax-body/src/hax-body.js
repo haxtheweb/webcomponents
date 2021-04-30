@@ -161,26 +161,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           );
           --hax-body-possible-target-background-color: inherit;
         }
-        #addincontext {
-          opacity: 0.5;
-          transition: 0.2s opacity ease-in-out;
-          display: block;
-          margin-top: 10px;
-        }
-        #addincontext:hover,
-        #addincontext:active,
-        #addincontext:focus {
-          opacity: 1;
-          cursor: pointer;
+        #topcontext {
+          z-index: var(--hax-ui-focus-z-index) \;;
         }
         #topcontextmenu {
           display: flex;
           width: 100%;
           align-items: bottom;
           justify-content: space-between;
-          z-index: calc(var(--hax-ui-focus-z-index) + 1);
-        }
-        #bottomcontextmenu {
           z-index: var(--hax-ui-focus-z-index);
         }
         #textcontextmenu,
@@ -188,7 +176,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           max-width: 280px;
           flex: 1 1 auto;
         }
-        #addincontext,
         #platecontextmenu {
           flex: 0 0 auto;
         }
@@ -502,22 +489,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.__mouseQuickTimer = setTimeout(() => {
         if (
           this.__activeHover &&
-          this.__activeHover !=
-            eventPath[0].closest("[data-hax-ray]:not(li)") &&
-          !eventPath[0].closest("#addincontext")
+          this.__activeHover != eventPath[0].closest("[data-hax-ray]:not(li)")
         ) {
-          let keep;
-          for (var i = 0; i < eventPath.length; i++) {
-            if (
-              eventPath[i].getAttribute &&
-              eventPath[i].getAttribute("id") == "addincontext"
-            ) {
-              keep = true;
-            }
-          }
-          if (!keep) {
-            this.__activeHover = null;
-          }
+          this.__activeHover = null;
         }
       }, 300);
       clearTimeout(this.__mouseTimer);
@@ -687,14 +661,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ></hax-plate-context>
         </div>
       </absolute-position-behavior>
-      <hax-context-item
-        id="addincontext"
-        icon="icons:add"
-        class="hax-context-menu ignore-activation"
-        label="${this.t.addContent}"
-        show-text-label
-      >
-      </hax-context-item>
     `;
   }
   /**
@@ -747,13 +713,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       text: this.shadowRoot.querySelector("#textcontextmenu"),
       plate: this.shadowRoot.querySelector("#platecontextmenu"),
       ce: this.shadowRoot.querySelector("#cecontextmenu"),
-      add: this.shadowRoot.querySelector("#addincontext"),
     };
-    // wire up our in context add button
-    this.contextMenus.add.addEventListener(
-      "click",
-      this._addInContextClick.bind(this)
-    );
     // track and store range on mouse up. this helps w/ Safari focus selection
     // issues as well as any "tap" event from a phone knowing what text
     // WAS selected prior to an operation that might lose focus / selection
@@ -783,29 +743,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-  }
-  /**
-   * Handle adding an item in context based on where the context add
-   * was set to follow
-   */
-  _addInContextClick(e) {
-    // break mouse trap so we auto focus the insert
-    this.__mouseDown = false;
-    let tag = "p";
-    // special case for lists nested in lists to make sure we don't get
-    // stuck placing a P into a ul
-    if (
-      this.__activeHover &&
-      this.__activeHover.parentNode &&
-      ["ul", "ol"].includes(this.__activeHover.parentNode.tagName.toLowerCase())
-    ) {
-      this.__activeHover = this.__activeHover.parentNode;
-    }
-    // active will be set via this
-    this.haxInsert(tag, "", {}, this.__activeHover, this.__slotInGrid);
-    this.__slotInGrid = false;
-    // drop active hover to reset state
-    this.__activeHover = null;
   }
   /**
    * LitElement life cycle - properties changed callback
