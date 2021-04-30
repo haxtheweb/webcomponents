@@ -186,6 +186,9 @@ export const HaxUiSingletons = [
     simple-modal[mode="hax-ui"]::part(dialog) {
       --simple-modal-z-index: 100000001 !important;
     }
+    simple-modal[opened] {
+      z-index: 100000001 !important;
+    }
     simple-modal[mode="hax-ui"]::part(titlebar),
     simple-popover-manager[mode="hax"]::part(simple-popover-heading) {
       color: var(--hax-ui-background-color);
