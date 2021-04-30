@@ -31,10 +31,10 @@ class BarcodeReader extends LitElement {
         border-color: rgba(0, 0, 0, 0.5);
         border-width: 5px;
       }
-      #hidden {
+      .hidden {
         display: none;
       }
-      #hidden2 {
+      .hidden2 {
         display: none;
       }
     `;
@@ -49,6 +49,10 @@ class BarcodeReader extends LitElement {
         type: Number,
         reflect: true,
       },
+      input:{
+        type: Boolean,
+        reflect: true,
+      },
     };
   }
 
@@ -57,36 +61,33 @@ class BarcodeReader extends LitElement {
    */
   render() {
     return html`
-      <div id="hidden">
+      <div class="hidden">
         <div>
           <video
             muted
             autoplay
-            id="video"
+            class="video"
             playsinline="true"
             width="${this.scale}%"
             height="${this.scale}%"
           ></video>
-          <canvas id="canvas" style="display: none; float: bottom;"></canvas>
+          <canvas class="canvas" style="display: none; float: bottom;"></canvas>
         </div>
       </div>
-      <div>
+      <div class="input" .hidden="${!this.input}">
         Result: <span><input type="text" .value="${this.value}" /> </span
-        ><button id="render">Initialize scanner</button>
-      </div>
-      <div id="hidden2">
+        ></div>
+      <span>
+      <div class="hidden2" style="">
         <div class="select">
           <label for="videoSource">Video source: </label>
-          <select id="videoSource"></select>
+          <select></select>
         </div>
-        <button id="go">Scan</button>
-      </div>
+        <button class="go">Scan</button>
+      </div><button class="render">Initialize scanner</button></span>
     `;
   }
 
-  // Set default for input arg
-  // Add args for screen size
-  // Access flashlight?
   // Search API to turn numbers below barcode into text if cannot read barcode
 
   constructor() {
@@ -100,12 +101,10 @@ class BarcodeReader extends LitElement {
   }
 
   _control() {
-    let videoElement = this.shadowRoot.querySelector("#video");
-    let canvas = this.shadowRoot.querySelector("#canvas");
+    let videoElement = this.shadowRoot.querySelector(".video");
+    let canvas = this.shadowRoot.querySelector(".canvas");
     let ctx = canvas.getContext("2d");
-    var videoSelect = this.shadowRoot.querySelector("select#videoSource");
-    let videoOption = this.shadowRoot.getElementById("videoOption");
-    let buttonGo = this.shadowRoot.getElementById("go");
+    let buttonGo = this.shadowRoot.querySelector(".go");
 
     let isPaused = false;
     let videoWidth = 640,
@@ -236,7 +235,7 @@ class BarcodeReader extends LitElement {
         buttonGo.removeAttribute("disabled");
       }
     }
-    var videoSelect = this.shadowRoot.querySelector("select#videoSource");
+    var videoSelect = this.shadowRoot.querySelector("select");
     navigator.mediaDevices
       .enumerateDevices()
       .then(gotDevices)
@@ -285,6 +284,27 @@ class BarcodeReader extends LitElement {
       videoElement.srcObject = stream;
     }
 
+    this.shadowRoot.querySelector(".render").addEventListener("click", () => {
+      if (
+        this.shadowRoot.querySelector(".render").innerHTML ===
+        "Show scanner"
+      ) {
+        if (window.stream) {
+          window.stream.getTracks().forEach(function (track) {
+          });
+          let constraints = {
+            video: {
+              deviceId: { exact: videoSelect.value },
+            },
+          };
+          navigator.mediaDevices
+            .getUserMedia(constraints)
+            .then(gotStream)
+            .catch(handleError);
+        }
+      }
+    });
+
     function handleError(error) {
       console.error("Error: ", error);
     }
@@ -314,7 +334,7 @@ class BarcodeReader extends LitElement {
     this.__context = this.shadowRoot.querySelector("canvas").getContext("2d");
     this.__video = this.shadowRoot.querySelector("video");
     this.__videoInputSelector = this.shadowRoot.querySelector("#videoInput");
-    vid = this.shadowRoot.getElementById("video");
+    vid = this.shadowRoot.querySelector("video");
     this._renderVideo().then((r) => {});
   }
 
@@ -340,9 +360,9 @@ class BarcodeReader extends LitElement {
   }
 
   async start() {
-    this.shadowRoot.getElementById("render").addEventListener("click", () => {
+    this.shadowRoot.querySelector(".render").addEventListener("click", () => {
       if (
-        this.shadowRoot.getElementById("render").innerHTML ===
+        this.shadowRoot.querySelector(".render").innerHTML ===
         "Initialize scanner"
       ) {
         this._control();
@@ -350,20 +370,25 @@ class BarcodeReader extends LitElement {
     });
   }
   async _renderVideo() {
-    let video = this.shadowRoot.getElementById("hidden");
-    let button = this.shadowRoot.getElementById("render");
-    let extraButtons = this.shadowRoot.getElementById("hidden2");
+    let video = this.shadowRoot.querySelector(".hidden");
+    let button = this.shadowRoot.querySelector(".render");
+    let extraButtons = this.shadowRoot.querySelector(".hidden2");
     video.style.display = "none";
-    this.shadowRoot.getElementById("render").addEventListener("click", () => {
+    this.shadowRoot.querySelector(".render").addEventListener("click", () => {
       setTimeout(() => {
         if (video.style.display === "none") {
           video.style.display = "inline";
-          button.innerHTML = "Hide Scanner";
+          button.innerHTML = "Hide scanner";
           extraButtons.style.display = "inline";
         } else {
           video.style.display = "none";
-          button.innerHTML = "Show Scanner";
+          button.innerHTML = "Show scanner";
           extraButtons.style.display = "none";
+          if (window.stream) {
+            window.stream.getTracks().forEach(function (track) {
+              track.stop();
+            });
+          }
         }
       }, 100);
     });

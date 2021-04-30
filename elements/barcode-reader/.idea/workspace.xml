@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="453cdee5-af90-4ddf-aa0f-b17dfdcad734" name="Default Changelist" comment="">
+    <list default="true" id="453cdee5-af90-4ddf-aa0f-b17dfdcad734" name="Default Changelist" comment="Added property to hide input tag and realigned buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/barcode-reader.js" beforeDir="false" afterPath="$PROJECT_DIR$/barcode-reader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/demo/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/barcode-reader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/barcode-reader.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +80,8 @@
       <workItem from="1619110484565" duration="26000" />
       <workItem from="1619450080751" duration="9000" />
       <workItem from="1619450210855" duration="856000" />
+      <workItem from="1619708687955" duration="4874000" />
+      <workItem from="1619820915451" duration="421000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0&#10;Working element demo.">
       <created>1618177235893</created>

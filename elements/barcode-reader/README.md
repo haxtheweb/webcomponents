@@ -28,6 +28,7 @@ barcode-reader will give controls to show/hide and start the scanner, but the su
 ## Component Specific Attributes
 `value` Value of the result. For best usage, initialize tag with empty value attribute.
 `scale` Scale of the video as a number, no percentage sign.
+`input` Include value to show the input tag and result. Hidden by default.
 
 ## Develop / Demo
 Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
