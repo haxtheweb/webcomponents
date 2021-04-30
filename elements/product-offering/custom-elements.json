@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "product-offering",
+      "path": "./product-offering.js",
+      "description": "`product-offering`\n`Simple card for displaying product info`"
+    },
+    {
+      "name": "product-offering",
+      "path": "./src/product-offering.js",
+      "description": "`product-offering`\n`Simple card for displaying product info`"
+    }
+  ]
+}

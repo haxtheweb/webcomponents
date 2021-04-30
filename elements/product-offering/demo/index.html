@@ -3,31 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>BR: b-r Demo</title>
+    <title>ProductOffering: product-offering Demo</title>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../b-r.js';
-      import '../lib/star-rating.js';
-      import "@lrnwebcomponents/wikipedia-query/wikipedia-query.js";
+      import '../product-offering.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic b-r demo</h3>
+      <h3>Basic product-offering demo</h3>
       <demo-snippet>
         <template>
-          <star-rating amount="100" score="50"></star-rating>
-          <b-r></b-r>
-          <p>Testing</p>
-          <wikipedia-query search="Drupal" language="ja"></wikipedia-query>
-          <b-r amount="15"></b-r>
-          <p>Testing</p>
-          <wikipedia-query search="Drupal" language="en"></wikipedia-query>
+          <product-offering>
+            This is product-offering
+          </product-offering>
         </template>
       </demo-snippet>
     </div>
