@@ -1,4 +1,3 @@
-<!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -11,6 +10,8 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../product-offering.js';
+      import '@lrnwebcomponents/simple-icon/simple-icon.js';
+      import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       #grid-container {
@@ -34,7 +35,8 @@
         <template>
           <div id="grid-container">
             <product-offering 
-              source="../assets/Images/placeholder1.jpeg" 
+              source='lrnwebcomponents/elements/product-offering/assets/Images/placeholder2.jpeg' 
+              alt = "Alt"
               title="Real-world projects from industry experts" 
               accent-color = "cyan"
               description="With real world projects and immersive content built in partnership with top tier companies, you’ll master the tech skills companies want."

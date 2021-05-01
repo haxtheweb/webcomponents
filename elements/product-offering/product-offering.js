@@ -1,20 +1,29 @@
+import { html, css } from 'lit-element';
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
+import '@lrnwebcomponents/simple-icon/simple-icon.js';
+import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
+
 /**
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+
 /**
  * `product-offering`
  * `Simple card for displaying product info`
  * @demo demo/index.html
  * @element product-offering
  */
-class ProductOffering extends LitElement {
+class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
   /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.alt = '';
+    this.accentColor = 'blue';
+    this.dark = false;
   }
   /**
    * LitElement style callback
@@ -28,20 +37,96 @@ class ProductOffering extends LitElement {
     return [
       ...styles,
       css`
-        :host {
-          display: block;
-        }
-      `,
-    ];
+      :host {
+        display: block;
+        padding: var(--product-offering-padding, 25px);
+        color: var(--product-offering-text-color, #000);
+        font-family: Verdana, sans-serif;
+      }
+      .container {
+        padding: 5%;
+        display: grid;
+        grid-template-columns: 25% 75%;
+      }
+      .image {
+        height: 150px;
+        width: 200px;
+        border-radius: 2%;
+      }
+      #simple-icon {
+        padding: 8px;
+        height: 30px;
+        width: 30px;
+      }
+      .icon-background {
+        background-color: white;
+        border-radius: 50%;
+        padding: 2px;
+        margin: 5px;
+        margin-right: 10px;
+        box-shadow: 10px 10px 25px 0 rgb(0 0 0 / 10%);
+      }
+      .squareTitle {
+        display: flex;
+      }
+      .underline {
+        border-bottom: 5px solid orange;
+        display: inline-block;
+      }
+      .sqaureDescription {
+        color: var(--simple-colors-default-theme-grey-7);
+        font-size: 12pt;
+        padding: 20px;
+        padding-left: 60px;
+        margin: 0;
+      }
+    `,
+  ];
   }
   /**
    * LitElement render callback
    */
   render() {
     return html`
-      <div>
-        <slot></slot>
-      </div>
+      ${this.elementVisible
+        ? html` <!-- Container -->
+            <div class="container">
+              <img
+                class="image"
+                src="${this.source}"
+                alt="${this.alt}"
+                height="150px"
+                width="200px"
+              />
+
+              <div class="square">
+                <!-- Icon, Header -->
+                <div class="squareTitle">
+                  <!-- icon -->
+                  <div class="icon-background">
+                    <simple-icon
+                      id="simple-icon"
+                      accent-color="${this.accentColor}"
+                      ?dark="${this.dark}"
+                      icon="${this.icon}"
+                    ></simple-icon>
+                  </div>
+                  <!-- header -->
+                  <h4>
+                    <span class="underline">${this._titleOne}</span>&nbsp;<span
+                      >${this._titleTwo}</span
+                    >
+                  </h4>
+                </div>
+
+                <!-- descripton -->
+                <div class="sqaureDescription">
+                  <slot name="description">${this.description}</slot>
+                </div>
+              </div>
+            </div>`
+        : ``}
+    
     `;
   }
   /**
@@ -66,28 +151,15 @@ class ProductOffering extends LitElement {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
+      if (propName === 'title') {
+        if (this.title.split(' ').length > 1) {
+          const tmp = this.title.split(' ');
+          this._titleOne = tmp.shift();
+          this._titleTwo = tmp.join(' ');
+        } else {
+          this._titleOne = this.title;
+        }
       }
-      */
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
     });
   }
 }
