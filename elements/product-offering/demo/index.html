@@ -12,16 +12,66 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../product-offering.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      #grid-container {
+        display: inline-grid;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px; 
+        grid-template-columns: 50% 50%;
+        border-style: solid;
+        border-color: var(--product-offering-primary-color, #e8f4f8);
+        background-color: var(--product-offering-primary-color, #e8f4f8);
+        padding: 2%;
+        box-shadow: 10px 10px 25px 0 rgb(0 0 0 / 10%);
+        margin: 4%;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic product-offering demo</h3>
       <demo-snippet>
         <template>
-          <product-offering>
-            This is product-offering
-          </product-offering>
+          <div id="grid-container">
+            <product-offering 
+              source="../assets/Images/placeholder1.jpeg" 
+              title="Real-world projects from industry experts" 
+              accent-color = "cyan"
+              description="With real world projects and immersive content built in partnership with top tier companies, you’ll master the tech skills companies want."
+              icon="communication:business"
+              >
+              <div slot="description">With real world projects and immersive content <b>built in partnership with top tier companies, </b> you’ll master the tech skills companies want.</div>
+            </product-offering>
+        
+            <product-offering 
+              source="../assets/Images/placeholder2.jpeg" 
+              title="Technical mentor support" 
+              icon = "social:group" 
+              accent-color="pink"
+              description="With real world projects and immersive content built in partnership with top tier companies, you’ll master the tech skills companies want."
+            >
+              <div slot="description">Our knowledgeable mentors guide your learning and are focused on answering your questions, motivating you and keeping you on track.</div>
+            </product-offering>
+        
+            <product-offering 
+              source="../assets/Images/placeholder3.jpeg" 
+              title="Career services" 
+              icon = "image:wb-incandescent" 
+              description="With real world projects and immersive content built in partnership with top tier companies, you’ll master the tech skills companies want."
+              accent-color="green"
+              >
+              <div slot="description">You’ll have access to resume support, Github portfolio review and LinkedIn profile optimization to help you advance your career and land a high-paying role.</div>
+            </product-offering>
+        
+            <product-offering 
+              source="../assets/Images/placeholder4.jpeg" 
+              title="Flexible learning program" 
+              icon = "timeline"  
+              description="With real world projects and immersive content built in partnership with top tier companies, you’ll master the tech skills companies want."
+              accent-color= "blue"
+              >
+              <div slot="description">Get a custom learning plan tailored to fit your busy life. Learn at your own pace and reach your personal goals on the schedule that works best for you.</div>
+            </product-offering>
         </template>
       </demo-snippet>
     </div>
