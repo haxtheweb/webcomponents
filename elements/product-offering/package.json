@@ -45,7 +45,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "2.4.0"
+    "lit-element": "2.4.0",
+    "@lrnwebcomponents/simple-icon": "^3.0.6",
+    "@lrnwebcomponents/simple-colors": "^3.0.6",
+    "@lrnwebcomponents/intersection-element": "^3.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.7.7",

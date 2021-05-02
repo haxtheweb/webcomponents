@@ -41,7 +41,7 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
         display: block;
         padding: var(--product-offering-padding, 25px);
         color: var(--product-offering-text-color, #000);
-        font-family: Verdana, sans-serif;
+        font-family: var(--product-offering-font-family, Verdana, sans-serif);
       }
       .container {
         padding: 5%;
@@ -49,17 +49,17 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
         grid-template-columns: 25% 75%;
       }
       .image {
-        height: 150px;
-        width: 200px;
+        height: var(--product-offering-image-height, 150px);
+        width: var(--product-offering-image-width, 200px);
         border-radius: 2%;
       }
-      #simple-icon {
+      simple-icon {
         padding: 8px;
         height: 30px;
         width: 30px;
       }
       .icon-background {
-        background-color: white;
+        background-color: var(--simple-colors-default-theme-accent-12, #eeeeee);
         border-radius: 50%;
         padding: 2px;
         margin: 5px;
@@ -74,7 +74,7 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
         display: inline-block;
       }
       .sqaureDescription {
-        color: var(--simple-colors-default-theme-grey-7);
+        color: var(--simple-colors-default-theme-accent-12, #eeeeee);
         font-size: 12pt;
         padding: 20px;
         padding-left: 60px;
@@ -95,8 +95,6 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
                 class="image"
                 src="${this.source}"
                 alt="${this.alt}"
-                height="150px"
-                width="200px"
               />
 
               <div class="square">
@@ -105,10 +103,9 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
                   <!-- icon -->
                   <div class="icon-background">
                     <simple-icon
-                      id="simple-icon"
                       accent-color="${this.accentColor}"
                       ?dark="${this.dark}"
-                      icon="${this.icon}"
+                      .icon="${this.icon}"
                     ></simple-icon>
                   </div>
                   <!-- header -->
@@ -134,6 +131,18 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
    */
   static get tag() {
     return "product-offering";
+  }
+  static get properties() {
+    return {
+      ...super.properties,
+      alt: { type: String},
+      source: { type: String},
+      icon: { type: String},
+      title: { type: String},
+      _titleOne: { type: String},
+      _titleTwo: { type: String},
+      description: { type: String},
+    }
   }
   /**
    * LitElement ready
