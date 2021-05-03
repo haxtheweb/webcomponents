@@ -1,8 +1,8 @@
-import { html, css } from 'lit-element';
+import { html, css } from "lit-element";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-import '@lrnwebcomponents/simple-icon/simple-icon.js';
-import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 
 /**
  * Copyright 2021 The Pennsylvania State University
@@ -21,8 +21,8 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
    */
   constructor() {
     super();
-    this.alt = '';
-    this.accentColor = 'blue';
+    this.alt = "";
+    this.accentColor = "blue";
     this.dark = false;
   }
   /**
@@ -37,51 +37,54 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
     return [
       ...styles,
       css`
-      :host {
-        display: block;
-        padding: var(--product-offering-padding, 25px);
-        color: var(--product-offering-text-color, #000);
-        font-family: var(--product-offering-font-family, Verdana, sans-serif);
-      }
-      .container {
-        padding: 5%;
-        display: grid;
-        grid-template-columns: 25% 75%;
-      }
-      .image {
-        height: var(--product-offering-image-height, 150px);
-        width: var(--product-offering-image-width, 200px);
-        border-radius: 2%;
-      }
-      simple-icon {
-        padding: 8px;
-        height: 30px;
-        width: 30px;
-      }
-      .icon-background {
-        background-color: var(--simple-colors-default-theme-accent-12, #eeeeee);
-        border-radius: 50%;
-        padding: 2px;
-        margin: 5px;
-        margin-right: 10px;
-        box-shadow: 10px 10px 25px 0 rgb(0 0 0 / 10%);
-      }
-      .squareTitle {
-        display: flex;
-      }
-      .underline {
-        border-bottom: 5px solid orange;
-        display: inline-block;
-      }
-      .sqaureDescription {
-        color: var(--simple-colors-default-theme-accent-12, #eeeeee);
-        font-size: 12pt;
-        padding: 20px;
-        padding-left: 60px;
-        margin: 0;
-      }
-    `,
-  ];
+        :host {
+          display: block;
+          padding: var(--product-offering-padding, 25px);
+          color: var(--product-offering-text-color, #000);
+          font-family: var(--product-offering-font-family, Verdana, sans-serif);
+        }
+        .container {
+          padding: 5%;
+          display: grid;
+          grid-template-columns: 25% 75%;
+        }
+        .image {
+          height: var(--product-offering-image-height, 150px);
+          width: var(--product-offering-image-width, 200px);
+          border-radius: 2%;
+        }
+        simple-icon {
+          padding: 8px;
+          height: 30px;
+          width: 30px;
+        }
+        .icon-background {
+          background-color: var(
+            --simple-colors-default-theme-accent-12,
+            #eeeeee
+          );
+          border-radius: 50%;
+          padding: 2px;
+          margin: 5px;
+          margin-right: 10px;
+          box-shadow: 10px 10px 25px 0 rgb(0 0 0 / 10%);
+        }
+        .squareTitle {
+          display: flex;
+        }
+        .underline {
+          border-bottom: 5px solid orange;
+          display: inline-block;
+        }
+        .sqaureDescription {
+          color: var(--simple-colors-default-theme-accent-12, #eeeeee);
+          font-size: 12pt;
+          padding: 20px;
+          padding-left: 60px;
+          margin: 0;
+        }
+      `,
+    ];
   }
   /**
    * LitElement render callback
@@ -91,11 +94,7 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
       ${this.elementVisible
         ? html` <!-- Container -->
             <div class="container">
-              <img
-                class="image"
-                src="${this.source}"
-                alt="${this.alt}"
-              />
+              <img class="image" src="${this.source}" alt="${this.alt}" />
 
               <div class="square">
                 <!-- Icon, Header -->
@@ -123,7 +122,6 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
               </div>
             </div>`
         : ``}
-    
     `;
   }
   /**
@@ -135,14 +133,14 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
-      alt: { type: String},
-      source: { type: String},
-      icon: { type: String},
-      title: { type: String},
-      _titleOne: { type: String},
-      _titleTwo: { type: String},
-      description: { type: String},
-    }
+      alt: { type: String },
+      source: { type: String },
+      icon: { type: String },
+      title: { type: String },
+      _titleOne: { type: String },
+      _titleTwo: { type: String },
+      description: { type: String },
+    };
   }
   /**
    * LitElement ready
@@ -160,11 +158,11 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'title') {
-        if (this.title.split(' ').length > 1) {
-          const tmp = this.title.split(' ');
+      if (propName === "title") {
+        if (this.title.split(" ").length > 1) {
+          const tmp = this.title.split(" ");
           this._titleOne = tmp.shift();
-          this._titleTwo = tmp.join(' ');
+          this._titleTwo = tmp.join(" ");
         } else {
           this._titleOne = this.title;
         }

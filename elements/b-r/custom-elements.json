@@ -9,7 +9,7 @@
         {
           "name": "amount",
           "type": "number",
-          "default": "1"
+          "default": "0"
         }
       ],
       "properties": [
@@ -17,7 +17,59 @@
           "name": "amount",
           "attribute": "amount",
           "type": "number",
-          "default": "1"
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "star-rating",
+      "path": "./lib/star-rating.js",
+      "attributes": [
+        {
+          "name": "num-stars",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "score",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "possible",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "interactive",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "numStars",
+          "attribute": "num-stars",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "score",
+          "attribute": "score",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "possible",
+          "attribute": "possible",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "interactive",
+          "attribute": "interactive",
+          "type": "boolean",
+          "default": "false"
         }
       ]
     },
@@ -29,7 +81,7 @@
         {
           "name": "amount",
           "type": "number",
-          "default": "1"
+          "default": "0"
         }
       ],
       "properties": [
@@ -37,7 +89,7 @@
           "name": "amount",
           "attribute": "amount",
           "type": "number",
-          "default": "1"
+          "default": "0"
         }
       ]
     }

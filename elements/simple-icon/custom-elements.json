@@ -467,7 +467,7 @@
       "properties": [
         {
           "name": "feFlood",
-          "type": "SVGTemplateResult | \"\""
+          "type": "\"\" | SVGTemplateResult"
         },
         {
           "name": "src",
@@ -628,7 +628,7 @@
         },
         {
           "name": "feFlood",
-          "type": "SVGTemplateResult | \"\""
+          "type": "\"\" | SVGTemplateResult"
         },
         {
           "name": "src",
@@ -702,7 +702,7 @@
       "properties": [
         {
           "name": "feFlood",
-          "type": "SVGTemplateResult | \"\""
+          "type": "\"\" | SVGTemplateResult"
         },
         {
           "name": "contrast",

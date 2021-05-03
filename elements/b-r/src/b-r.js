@@ -34,7 +34,7 @@ class BR extends LitElement {
   renderBR(amount) {
     let count = 0;
     const content = [];
-    if (amount === 0){
+    if (amount === 0) {
       amount = window.innerHeight / 21;
     }
     while (count < amount) {
