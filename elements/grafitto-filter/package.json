@@ -57,10 +57,10 @@
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.2",
     "@open-wc/testing": "2.5.32",
-    "@web/test-runner": "0.12.19",
-    "@web/test-runner-commands": "0.4.2",
-    "@web/test-runner-playwright": "0.8.4",
-    "@web/test-runner-puppeteer": "0.9.3"
+    "@web/test-runner": "0.13.3",
+    "@web/test-runner-commands": "0.4.5",
+    "@web/test-runner-playwright": "0.8.5",
+    "@web/test-runner-puppeteer": "0.10.0"
   },
   "private": false,
   "publishConfig": {
