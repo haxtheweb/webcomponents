@@ -125,7 +125,8 @@
     "webpack": "5.4.0",
     "webpack-node-externals": "3.0.0",
     "whatwg-fetch": "3.4.1",
-    "yo": "2.0.6"
+    "yo": "2.0.6",
+    "@wcfactory/rollup-umd-build": "^0.12.1"
   },
   "dependencies": {
     "@open-wc/storybook-prebuilt": "^1.2.0",
