@@ -49,19 +49,9 @@ export class StarRating extends LitElement {
     this.numStars = 5;
     this.score = 10;
     this.possible = 100;
-    this.interactive = false;
     this.starColor = "yellow";
-    // add support for this.ineractive
   }
 
-  // there are 3 possible icons for these stars: https://webcomponents.psu.edu/styleguide/?path=/story/media-icons--simple-iconset-story
-  // star-border is an empty star
-  // star-half is a 1/2 filled in
-  // star is filled in
-  // there's a few differnet ways we could achieve this below which can make for a good discussion topic tomorrow.
-  // if you can think of how to use this code to successfully fill in the stars w/ the appropriate icon name
-  // based on the value of this._numStars then give it a shot!
-  // Conditional rendering is probably how I'd approach this
   render() {
     return html`
       <div class="wrapper">
