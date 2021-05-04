@@ -47,7 +47,7 @@ export class StarRating extends LitElement {
     super();
     this._calPercent = 0;
     this.numStars = 5;
-    this.score = 41;
+    this.score = 10;
     this.possible = 100;
     this.interactive = false;
     this.starColor = "yellow";
@@ -82,7 +82,7 @@ export class StarRating extends LitElement {
     let count = 0;
     const content = [];
     while (count < amount) {
-      if ((count+1) < (amount * this._calPercent)) {
+      if ((count+1) <= (amount * this._calPercent)) {
         content.push(html`<simple-icon-button icon="star" accent-color="${this.starColor}" dark contrast="10" class='star' ></simple-icon-button>`);
       }
       else if (((amount * this._calPercent) - (count+1)) < -0.01 && ((amount * this._calPercent) - (count+1)) >= -0.5) {
