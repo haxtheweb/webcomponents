@@ -26,23 +26,24 @@ class HaxMap extends I18NMixin(LitElement) {
         .container {
           text-align: left;
         }
-        table {
-          font-size: var(--hax-ui-font-size-sm);
-          border-collapse: collapse;
-          width: calc(100% - 2px);
-          max-width: calc(100% - 2px);
+        .stats {
+          display: flex;
+          align-items: stretch;
+          flex-wrap: wrap;
         }
-        table,
-        th,
-        td {
+        .stat {
+          flex: 1 1 auto;
           text-align: center;
           border: 1px solid var(--hax-ui-border-color);
-        }
-        th {
           font-weight: normal;
           font-size: var(--hax-ui-font-size-xs);
+          line-height: 140%;
+          padding: var(--hax-ui-spacing-sm);
         }
-        td {
+        .stat > * {
+          display: block;
+        }
+        .stat *:first-child {
           font-weight: bold;
           font-size: 150%;
         }
@@ -178,50 +179,44 @@ class HaxMap extends I18NMixin(LitElement) {
   }
   render() {
     return html`
-      <div class="container">
-        <table>
-          <caption>
-            ${this.t.contentStatistics}
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">${this.t.words}</th>
-              <th scope="col">${this.t.headings}</th>
-              <th scope="col">${this.t.paragraphs}</th>
-              <th scope="col">${this.t.widgets}</th>
-              <th scope="col">${this.t.characters}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>${this.wCount}</td>
-              <td>${this.hCount}</td>
-              <td>${this.pCount}</td>
-              <td>${this.eCount}</td>
-              <td>${this.cCount}</td>
-            </tr>
-          </tbody>
-        </table>
-        <h5>${this.t.listView}</h5>
-        <ul>
-          ${this.indentedElements.map((element, index) => {
-            return html`
-              <li>
-                <hax-toolbar-item
-                  align-horizontal="left"
-                  class="heading-level-${element.parent || "h1"}"
-                  @click="${(e) => this.goToItem(index)}"
-                  data-index="${index}"
-                  icon="${element.icon}"
-                  label="${element.name}"
-                  show-text-label
-                >
-                </hax-toolbar-item>
-              </li>
-            `;
-          })}
-        </ul>
+      <h5>${this.t.contentStatistics}</h5>
+      <div class="stats">
+        <div class="stat">
+          <span>${this.wCount}</span>
+          <span>${this.t.words}</span>
+        </div>
+        <div class="stat">
+          <span>${this.pCount}</span>
+          <span>${this.t.paragraphs}</span>
+        </div>
+        <div class="stat">
+          <span>${this.eCount}</span>
+          <span>${this.t.widgets}</span>
+        </div>
+        <div class="stat">
+          <span>${this.cCount}</span>
+          <span>${this.t.characters}</span>
+        </div>
       </div>
+      <h5>${this.t.listView}</h5>
+      <ul>
+        ${this.indentedElements.map((element, index) => {
+          return html`
+            <li>
+              <hax-toolbar-item
+                align-horizontal="left"
+                class="heading-level-${element.parent || "h1"}"
+                @click="${(e) => this.goToItem(index)}"
+                data-index="${index}"
+                icon="${element.icon}"
+                label="${element.name}"
+                show-text-label
+              >
+              </hax-toolbar-item>
+            </li>
+          `;
+        })}
+      </ul>
     `;
   }
   get indentedElements() {
