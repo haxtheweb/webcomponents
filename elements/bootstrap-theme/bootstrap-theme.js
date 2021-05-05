@@ -90,58 +90,23 @@ class BootstrapTheme extends HAXCMSThemeParts(
         /* menu styles */
         :host([menu-open]) .menu-outline {
           left: 0;
+          padding: 0 24px;
         }
 
         /* logged in responsiveness */
         :host([is-logged-in][menu-open]) .menu-outline {
-          left: 92px;
-        }
-
-        :host([is-logged-in][menu-open][responsive-size="lg"]) .menu-outline {
-          left: 70px;
-          width: 250px;
-        }
-
-        :host([is-logged-in][menu-open][responsive-size="xs"]) .menu-outline {
           left: 48px;
-          width: 250px;
-        }
-        :host([is-logged-in][menu-open][responsive-size="sm"]) .menu-outline {
-          left: 48px;
-          width: 250px;
-        }
-        :host([is-logged-in][menu-open][responsive-size="md"]) .menu-outline {
-          left: 48px;
-          width: 250px;
-        }
-
-        /* user not logged in */
-        :host([menu-open][responsive-size="lg"]) .menu-outline {
-          left: 70px;
-          width: 250px;
-        }
-
-        :host([menu-open][responsive-size="xs"]) .menu-outline {
-          left: 0px;
-          width: 250px;
-        }
-        :host([menu-open][responsive-size="sm"]) .menu-outline {
-          left: 0px;
-          width: 250px;
-        }
-        :host([menu-open][responsive-size="md"]) .menu-outline {
-          left: 0px;
-          width: 250px;
         }
 
         .menu-outline {
           position: fixed;
-          top: 140px;
+          top: 50px;
           left: -300px;
           bottom: 0;
           z-index: 1;
           width: 300px;
           height: 100%;
+          overflow: auto;
           color: #364149;
           background-color: var(
             --bootstrap-theme-light-secondary-background-color
@@ -154,7 +119,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         }
 
         #haxcmsmobilemenunav {
-          margin-top: 5px;
+          margin-top: 32px;
         }
 
         /* site title above menu */
@@ -165,6 +130,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
           );
           display: flex;
           align-items: center;
+          height: 48px;
+          display: sticky;
         }
 
         .site-img {
@@ -274,7 +241,19 @@ class BootstrapTheme extends HAXCMSThemeParts(
           color: #7e888b;
           background: 0 0;
         }
-
+        .page-title {
+          display: inline-flex;
+          margin-left: 12px;
+          overflow: hidden;
+          margin-bottom: 0px;
+          vertical-align: middle;
+          word-break: break-all;
+          max-width: 77%;
+          height: 32px;
+          line-height: 32px;
+          overflow-wrap: break-word;
+          text-overflow: ellipsis;
+        }
         /* Light Theme */
         :host([color-theme="0"]) site-search {
           color: #252737;
@@ -547,9 +526,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                   class="btn js-toolbar-action"
                 ></site-print-button>
                 ${this.BootstrapUserStylesMenu()}
-              </div>
-              <div class="container p-0 page-title">
-                <h3 class="display-6">${this.__pageTitle}</h3>
+                <h3 class="display-6 page-title">${this.__pageTitle}</h3>
               </div>
               <article class="shadow main-content container card mb-3">
                 <div class="normal main-section">
