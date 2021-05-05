@@ -178,7 +178,7 @@ class CleanTwo extends HAXCMSThemeParts(
          text-align: right; 
         }
         site-active-title {
-          padding: 2px 0px;
+          padding: 8px 0px;
           flex-wrap: wrap;
           align-items: baseline;
           flex-direction: row;
@@ -322,7 +322,8 @@ class CleanTwo extends HAXCMSThemeParts(
         }
         .header #haxcmsmobilemenubutton {
           float: left;
-          margin-left: -52px
+          margin-left: -52px;
+          padding: 8px;
         }
         .header site-menu-content {
           display: inline-flex;
@@ -336,7 +337,7 @@ class CleanTwo extends HAXCMSThemeParts(
           margin: 0px 16px;
           display: block;
           padding: 0;
-          width: 600px;
+          width: 560px;
         }
         @media screen and (max-width: 400px) {
           .content {
@@ -382,7 +383,23 @@ class CleanTwo extends HAXCMSThemeParts(
             width: auto;
           }
           .content {
-            width: 350px;
+            width: 300px;
+          }
+          #slot ::slotted(*) {
+            word-break: break-all;
+          }
+          #slot ::slotted(replace-tag) {
+            overflow: hidden;
+          }
+        }
+        @media screen and (min-width: 601px) {
+          .content {
+            width: 65vw;
+          }
+        }
+        @media screen and (min-width: 913px) {
+          .content {
+            width: 40vw;
           }
         }
         @media screen and (min-width: 1024px) {
@@ -390,12 +407,12 @@ class CleanTwo extends HAXCMSThemeParts(
             margin: 0px 88px;
           }
           .content {
-            width: 750px;
+            width: 50vw;
           }
         }
         @media screen and (min-width: 1514px) {
           .body-wrapper .content-wrapper .content {
-            padding: 32px 64px;
+            padding: 32px 0 32px 64px;
           }
         }
         .right-col {
@@ -417,8 +434,8 @@ class CleanTwo extends HAXCMSThemeParts(
           display: -ms-flexbox;
           display: -webkit-flex;
           flex: 0 0 auto;
-          min-width: 300px;
-          padding-right: calc((100vw - 1448px) / 3);
+          padding-right: 0;
+          min-width: 240px;
           flex: 1;
           margin: 0;
           display: block;
@@ -489,6 +506,7 @@ class CleanTwo extends HAXCMSThemeParts(
           -webkit-box-direction: normal;
           margin: 0px;
           padding: 0px;
+          overflow-x: hidden;
         }
         simple-icon-button,
         site-rss-button,
