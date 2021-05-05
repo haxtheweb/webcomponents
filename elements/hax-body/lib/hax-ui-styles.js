@@ -458,24 +458,43 @@ export const HaxComponentStyles = [...HaxButton, ...HaxHexagon, ...HaxFields];
 export const HaxTrayDetail = [
   css`
     #tray-detail {
-      --hax-tray-detail-title-font-size: var(--hax-ui-font-size-xl);
+      font-family: var(--hax-ui-font-family);
+      --hax-tray-detail-title-font-size: var(--hax-ui-font-size);
       --hax-tray-detail-topic-font-size: var(--hax-ui-font-size-lg);
       --hax-tray-detail-subtopic-font-size: var(--hax-ui-font-size);
       --hax-tray-detail-heading-text-transform: capitalize;
       --hax-tray-detail-heading-font-weight: normal;
     }
-    #tray-detail h4,
+    #toggle-tray-size {
+      color: var(--hax-ui-background-color);
+      background-color: var(--hax-ui-color-accent);
+      outline: 1px solid var(--hax-ui-color-accent);
+      --simple-icon-button-border: 0px solid transparent;
+      --simple-icon-button-border-radius: var(--hax-ui-border-radius);
+      width: 24px;
+      height: 24px;
+      padding: 0;
+    }
+    #toggle-tray-size:hover,
+    #toggle-tray-size:focus-within {
+      color: var(--hax-ui-color);
+      background-color: var(--hax-ui-background-color-accent);
+      border-color: var(--hax-ui-color-accent);
+    }
     #tray-detail h5,
     #tray-detail h6 {
       text-transform: var(--hax-tray-detail-heading-text-transform);
       font-weight: var(--hax-tray-detail-heading-font-weight);
       margin: var(--hax-ui-spacing-lg) 0 var(--hax-ui-spacing-xs);
-      color: var(--hax-ui-color-accent);
+      color: var(--hax-ui-color-faded);
     }
     #tray-detail h4 {
+      text-transform: var(--hax-tray-detail-heading-text-transform);
+      color: var(--hax-ui-background-color);
       font-size: var(--hax-tray-detail-title-font-size);
-      margin: var(--hax-ui-spacing-sm) 0 var(--hax-ui-spacing-lg);
-      color: var(--hax-ui-color-accent-secondary);
+      font-weight: normal;
+      margin: 0 var(--hax-ui-spacing-sm) 0 0;
+      padding: 0;
     }
     #tray-detail h5 {
       font-size: var(--hax-tray-detail-topic-font-size);
@@ -487,20 +506,15 @@ export const HaxTrayDetail = [
 ];
 export const HaxTrayDetailHeadings = [
   css`
-    h4 {
-      font-size: var(--hax-tray-detail-title-font-size);
-      color: var(--hax-ui-color-accent-secondary);
-    }
     h5 {
       font-size: var(--hax-tray-detail-topic-font-size);
     }
     h6 {
       font-size: var(--hax-tray-detail-subtopic-font-size);
     }
-    h4,
     h5,
     h6 {
-      color: var(--hax-ui-color-accent);
+      color: var(--hax-ui-color-faded);
       text-transform: var(--hax-tray-detail-heading-text-transform);
       font-weight: var(--hax-tray-detail-heading-font-weight);
       margin: var(--hax-ui-spacing-lg) 0 var(--hax-ui-spacing-xs);

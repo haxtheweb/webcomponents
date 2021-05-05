@@ -62,7 +62,6 @@ class HaxMap extends I18NMixin(LitElement) {
         li > hax-toolbar-item::part(button),
         li > hax-toolbar-item[icon="hax:h2"].heading-level-h2::part(button) {
           width: 100%;
-          border: none;
           margin-left: 0px;
         }
         li > hax-toolbar-item.heading-level-h2::part(button),

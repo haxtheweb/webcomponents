@@ -58,15 +58,15 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    "\n    <h5>",
-    '</h5>\n      <div class="stats">\n        <div class="stat">\n            <span>',
-    "</span>\n            <span>",
-    '</span>\n        </div>\n        <div class="stat">\n            <span>',
-    "</span>\n            <span>",
-    '</span>\n        </div>\n        <div class="stat">\n            <span>',
-    "</span>\n            <span>",
-    '</span>\n        </div>\n        <div class="stat">\n            <span>',
-    "</span>\n            <span>",
+    "\n      <h5>",
+    '</h5>\n      <div class="stats">\n        <div class="stat">\n          <span>',
+    "</span>\n          <span>",
+    '</span>\n        </div>\n        <div class="stat">\n          <span>',
+    "</span>\n          <span>",
+    '</span>\n        </div>\n        <div class="stat">\n          <span>',
+    "</span>\n          <span>",
+    '</span>\n        </div>\n        <div class="stat">\n          <span>',
+    "</span>\n          <span>",
     "</span>\n        </div>\n      </div>\n      <h5>",
     "</h5>\n      <ul>\n        ",
     "\n      </ul>\n    ",
@@ -81,7 +81,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          display: block;\n        }\n        .container {\n          text-align: left;\n        }\n        .stats {\n          display: flex;\n          align-items: stretch;\n          flex-wrap: wrap;\n        }\n        .stat {\n          flex: 1 1 auto;\n          text-align: center;\n          border: 1px solid var(--hax-ui-border-color);\n          font-weight: normal;\n          font-size: var(--hax-ui-font-size-xs);\n          line-height: 140%;\n          padding: var(--hax-ui-spacing-sm)\n        }\n        .stat > * {\n          display: block;\n        }\n        .stat *:first-child {\n          font-weight: bold;\n          font-size: 150%;\n        }\n        ul {\n          list-style: none;\n          padding: 0;\n          margin: 0;\n        }\n        ul li {\n          margin: 0;\n          padding: 0;\n        }\n        li > hax-toolbar-item {\n          width: 100%;\n        }\n        li > hax-toolbar-item::part(button),\n        li > hax-toolbar-item[icon="hax:h2"].heading-level-h2::part(button) {\n          width: 100%;\n          border: none;\n          margin-left: 0px;\n        }\n        li > hax-toolbar-item.heading-level-h2::part(button),\n        li > hax-toolbar-item[icon="hax:h3"].heading-level-h3::part(button) {\n          width: calc(100% - 26px);\n          margin-left: 26px;\n        }\n        li > hax-toolbar-item.heading-level-h3::part(button),\n        li > hax-toolbar-item[icon="hax:h4"].heading-level-h4::part(button) {\n          width: calc(100% - calc(2 * 26px));\n          margin-left: calc(2 * 26px);\n        }\n        li > hax-toolbar-item.heading-level-h4::part(button),\n        li > hax-toolbar-item[icon="hax:h5"].heading-level-h5::part(button) {\n          width: calc(100% - calc(3 * 26px));\n          margin-left: calc(3 * 26px);\n        }\n        li > hax-toolbar-item.heading-level-h5::part(button),\n        li > hax-toolbar-item[icon="hax:h6"].heading-level-h6::part(button) {\n          width: calc(100% - calc(4 * 26px));\n          margin-left: calc(4 * 26px);\n        }\n        li > hax-toolbar-item.heading-level-h6::part(button) {\n          width: calc(100% - calc(5 * 26px));\n          margin-left: calc(5 * 26px);\n        }\n      ',
+    '\n        :host {\n          display: block;\n        }\n        .container {\n          text-align: left;\n        }\n        .stats {\n          display: flex;\n          align-items: stretch;\n          flex-wrap: wrap;\n        }\n        .stat {\n          flex: 1 1 auto;\n          text-align: center;\n          border: 1px solid var(--hax-ui-border-color);\n          font-weight: normal;\n          font-size: var(--hax-ui-font-size-xs);\n          line-height: 140%;\n          padding: var(--hax-ui-spacing-sm);\n        }\n        .stat > * {\n          display: block;\n        }\n        .stat *:first-child {\n          font-weight: bold;\n          font-size: 150%;\n        }\n        ul {\n          list-style: none;\n          padding: 0;\n          margin: 0;\n        }\n        ul li {\n          margin: 0;\n          padding: 0;\n        }\n        li > hax-toolbar-item {\n          width: 100%;\n        }\n        li > hax-toolbar-item::part(button),\n        li > hax-toolbar-item[icon="hax:h2"].heading-level-h2::part(button) {\n          width: 100%;\n          margin-left: 0px;\n        }\n        li > hax-toolbar-item.heading-level-h2::part(button),\n        li > hax-toolbar-item[icon="hax:h3"].heading-level-h3::part(button) {\n          width: calc(100% - 26px);\n          margin-left: 26px;\n        }\n        li > hax-toolbar-item.heading-level-h3::part(button),\n        li > hax-toolbar-item[icon="hax:h4"].heading-level-h4::part(button) {\n          width: calc(100% - calc(2 * 26px));\n          margin-left: calc(2 * 26px);\n        }\n        li > hax-toolbar-item.heading-level-h4::part(button),\n        li > hax-toolbar-item[icon="hax:h5"].heading-level-h5::part(button) {\n          width: calc(100% - calc(3 * 26px));\n          margin-left: calc(3 * 26px);\n        }\n        li > hax-toolbar-item.heading-level-h5::part(button),\n        li > hax-toolbar-item[icon="hax:h6"].heading-level-h6::part(button) {\n          width: calc(100% - calc(4 * 26px));\n          margin-left: calc(4 * 26px);\n        }\n        li > hax-toolbar-item.heading-level-h6::part(button) {\n          width: calc(100% - calc(5 * 26px));\n          margin-left: calc(5 * 26px);\n        }\n      ',
   ]);
 
   _templateObject = function _templateObject() {

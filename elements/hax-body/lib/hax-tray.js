@@ -77,7 +77,7 @@ class HaxTray extends I18NMixin(
       collapse: "Collapse",
       menuSize: "Menu size",
       menuSizeDescription: "Expand or collapse the menu visually.",
-      takeATour: "Take a Tour",
+      takeATour: "Help",
       settings: "Settings",
       source: "Source",
       undo: "Undo",
@@ -176,15 +176,14 @@ class HaxTray extends I18NMixin(
           font-family: var(--hax-ui-font-family);
           font-size: var(--hax-ui-font-size);
           color: var(--hax-ui-color);
-          transition-delay: 0.3s;
-          transition: 0s color linear;
+          transition: 0s color linear 0s;
         }
         :host([edit-mode][element-align="custom"]) {
           left: var(--hax-tray-custom-x);
           left: clamp(
             0px,
             var(--hax-tray-custom-x),
-            calc(100vw - var(--hax-tray-width))
+            calc(100vw - var(--hax-tray-width, 300px))
           );
         }
         :host([element-align="left"]) {
@@ -204,20 +203,18 @@ class HaxTray extends I18NMixin(
           opacity: 0;
           visibility: visible;
           pointer-events: none;
-          width: var(--hax-tray-width);
+          width: var(--hax-tray-width, 300px);
           overflow-x: hidden;
           overflow-y: auto;
           background-color: var(--hax-ui-background-color);
-          transition: 0.2s left ease-in-out;
-          transition: 0.2s right ease-in-out;
-          transition: 0s background-color linear;
-          transition: 0s border linear;
-          border: 1px solid var(--hax-ui-border-color);
-          transition-delay: 0.3s;
+          transition: 0.7s width ease-in-out 0s, 0.5s left ease-in-out 0.3s,
+            0.5s right ease-in-out 0.3s, 0s background-color linear,
+            0s border linear;
           height: 100vh;
         }
         :host([collapsed]) .wrapper {
-          width: auto;
+          width: var(--hax-tray-menubar-max-width, 90px);
+          overflow-x: visible;
         }
         :host([element-align="left"]) .wrapper,
         :host([element-align="custom"]) .wrapper {
@@ -243,12 +240,18 @@ class HaxTray extends I18NMixin(
           display: inline-flex;
           flex-direction: column;
           align-items: stretch;
-          max-width: 46px;
+          width: var(--hax-tray-menubar-min-width, 44px);
+          overflow: visible;
           flex: 0 0 auto;
+          /*transition:0.3s width ease-in-out 0s;*/
+          z-index: 6;
+        }
+        #menubar > * {
+          background-color: var(--hax-ui-background-color);
         }
         :host([collapsed]) #menubar {
           flex-direction: column;
-          max-width: unset;
+          width: unset;
         }
         #menubar > *::part(button) {
           padding: 2px;
@@ -269,41 +272,43 @@ class HaxTray extends I18NMixin(
         }
         .detail {
           flex: 1 1 auto;
+          opacity: 1;
+          visibility: visible;
+          pointer-events: all;
+          transition: 0s opacity ease-in-out 0, 0s visibility ease-in-out 0s,
+            0s border linear;
+          border: 1px solid var(--hax-ui-border-color);
         }
         :host([collapsed]) .detail {
           width: 0px;
           overflow: hidden;
-          display: none;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
           max-height: 100vh;
           overflow-y: auto;
+          transition: 0s opacity ease-in-out 0.7s,
+            0s visibility ease-in-out 0.7s;
         }
         #tray-detail {
           position: absolute;
           top: 0;
-          max-width: calc(
-            var(--hax-tray-width) - 46px - 2 * var(--hax-ui-spacing)
+          left: 0;
+          width: calc(
+            var(--hax-tray-width) - var(--hax-tray-menubar-min-width, 44px) - 2 *
+              var(--hax-ui-spacing)
           );
           padding: 0 var(--hax-ui-spacing) var(--hax-ui-spacing);
+          height: 100vh;
+          overflow-y: auto;
+        }
+        :host([element-align="left"]) #tray-detail,
+        :host([element-align="custom"]) #tray-detail {
+          left: unset;
+          right: 0;
         }
         :host([edit-mode]:not([collapsed])) #tray-detail {
           display: block;
-        }
-        :host([edit-mode][element-align="left"]) #tray-detail {
-          right: 0px;
-        }
-        :host([edit-mode][element-align="right"]) #tray-detail,
-        :host([edit-mode][element-align="custom"]) #tray-detail {
-          left: 0px;
-        }
-        :host([collapsed][element-align="left"]) #tray-detail {
-          right: 100%;
-        }
-        :host([collapsed][element-align="right"]) #tray-detail,
-        :host([collapsed][element-align="custom"]) #tray-detail {
-          left: 100%;
-        }
-        #toggle-tray-size {
-          float: right;
         }
         #haxcancelbutton::part(dropdown-icon) {
           display: none;
@@ -318,6 +323,28 @@ class HaxTray extends I18NMixin(
           transition: 0s border-color linear !important;
           visibility: visible;
         }
+        .tray-detail-titlebar {
+          background-color: var(--hax-ui-color-accent);
+          padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing);
+          margin: 0 calc(0px - var(--hax-ui-spacing)) var(--hax-ui-spacing);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: var(--simple-modal-titlebar-height, unset);
+          line-height: var(--simple-modal-titlebar-line-height, unset);
+          position: sticky;
+          z-index: 2;
+          top: 0;
+        }
+        .tray-detail-titlebar h4 {
+          flex: 1 1 auto;
+          font-size: var(--hax-ui-font-size);
+          font-family: var(--hax-ui-font-family);
+        }
+        #toggle-tray-size {
+          flex: 0 0 auto;
+        }
+
         #tray-grid {
           flex: 0 0 auto;
           border: 1px solid var(--hax-ui-border-color);
@@ -428,7 +455,7 @@ class HaxTray extends I18NMixin(
   }
   get menuButtons() {
     return html`
-      <hax-toolbar-menu
+      <!--hax-toolbar-menu
         ?disabled="${this.hasActiveEditingElement}"
         id="drag"
         action
@@ -478,7 +505,19 @@ class HaxTray extends I18NMixin(
         </simple-toolbar-menu-item>
         <div slot="tour" data-stop-title>${this.t.menuPosition}</div>
         <div slot="tour" data-stop-content>${this.t.changeSideVisually}</div>
-      </hax-toolbar-menu>
+      </hax-toolbar-menu-->
+        <hax-tray-button
+          ?show-text-label="${this.collapsed}"
+          align-horizontal="${this.collapsed ? "left" : "center"}"
+          id="${this.elementAlign == "left" ? "right" : "left"}"
+          event-name="toggle-element-align"
+          icon="arrow-${this.elementAlign == "left" ? "forward" : "back"}"
+          label="${this.t.moveMenu} ${
+      this.elementAlign == "left" ? this.t.right : this.t.left
+    }"
+          index="${this.elementAlign == "left" ? "1" : "0"}"
+        >
+        </hax-tray-button>
     </div>
     `;
   }
@@ -712,17 +751,19 @@ class HaxTray extends I18NMixin(
       tabindex="${this.collapsed ? "-1" : "0"}"
       selected-detail="${this.trayDetail}"
     >
-      <hax-tray-button
-        voice-command="collapse menu"
-        id="toggle-tray-size"
-        event-name="toggle-tray-size"
-        icon="close"
-        label="Close"
-      >
-      </hax-tray-button>
-      <h4>
-        ${this.trayLabel || `${this.t.editSelected} ${this.activeTagName}`}
-      </h4>
+      <div class="tray-detail-titlebar">
+        <h4>
+          ${this.trayLabel || `${this.t.editSelected} ${this.activeTagName}`}
+        </h4>
+        <hax-tray-button
+          voice-command="collapse menu"
+          id="toggle-tray-size"
+          event-name="toggle-tray-size"
+          icon="close"
+          label="Close"
+        >
+        </hax-tray-button>
+      </div>
       ${this.advancedSettingsTemplate} ${this.contentMapTemplate}
       ${this.contentEditTemplate} ${this.contentAddTemplate}
       ${this.mediaTemplate}
