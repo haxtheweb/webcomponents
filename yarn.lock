@@ -2535,6 +2535,9 @@
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/intersection-element/-/intersection-element-2.7.10.tgz#2610be6dc8670b3626d3927d9c5da9bb105b0984"
   integrity sha512-Mu4IOuD5pas1T7hzd1TXCbeN+AJa0PoUX8XlkNpaX8opaojuLqiDoujklFR+ujST09f4h6Fci71NQfMpxLrFRA==
 
+"@lrnwebcomponents/intersection-element@^3.0.6":
+  version "3.0.0"
+
 "@lrnwebcomponents/lrn-calendar@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@lrnwebcomponents/lrn-calendar/-/lrn-calendar-2.3.1.tgz#7cb060f4d79851ba726e3d549b6fa13c80711365"
@@ -20045,6 +20048,11 @@ mocha@^6.2.2:
     yargs "13.3.2"
     yargs-parser "13.1.2"
     yargs-unparser "1.6.0"
+
+modern-css-reset@*:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/modern-css-reset/-/modern-css-reset-1.4.0.tgz#5bee4d11eeca2ff19b882c6e8f1769773e792d04"
+  integrity sha512-0crZmSFmrxkI7159rvQWjpDhy0u4+Awg/iOycJdlVn0RSeft/a+6BrQHR3IqvmdK25sqt0o6Z5Ap7cWgUee2rw==
 
 modify-values@^1.0.0:
   version "1.0.1"
