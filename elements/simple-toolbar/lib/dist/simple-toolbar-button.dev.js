@@ -549,6 +549,15 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
               },
 
               /**
+               * Alway show tooltip.
+               */
+              showTooltip: {
+                attribute: "show-tooltip",
+                type: Boolean,
+                reflect: true,
+              },
+
+              /**
                * The active selected range, inherited from the toolbar
                */
               target: {
@@ -924,7 +933,8 @@ var SimpleToolbarButtonBehaviors = function SimpleToolbarButtonBehaviors(
             get: function get() {
               return (
                 (this.hasTooltip || this.hasLabel) &&
-                (!this.labelVisible ||
+                (this.showTooltip ||
+                  !this.labelVisible ||
                   this._uniqueText(this.currentLabel, this.currentTooltip))
               );
             },
