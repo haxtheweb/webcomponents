@@ -1157,7 +1157,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
               break;
             case "Enter":
-              console.log("enter", this.activeNode);
               if (this.activeNode) {
                 this.__slot = this.activeNode.getAttribute("slot");
               }
@@ -1469,14 +1468,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     active = this.activeNode,
     child = false
   ) {
-    console.log(
-      "haxInsert",
-      tag,
-      content,
-      (properties = {}),
-      (active = this.activeNode),
-      (child = false)
-    );
     // verify this tag is a valid one
     // create a new element fragment w/ content in it
     // if this is a custom-element it won't expand though
@@ -1541,7 +1532,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // insert at active insert point if we have one
     else if (active && active.parentNode) {
-      console.log(active.parentNode, !!this.__isLayout(active.parentNode));
       // allow for inserting things into things but not grid plate
       if (!!this.__isLayout(active.parentNode)) {
         if (active.getAttribute("slot") != null) {
@@ -1589,7 +1579,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     this.contextMenus.text.hasSelectedText = false;
     setTimeout(() => {
-      console.log(newNode);
       this.__focusLogic(newNode);
       // wait so that the DOM can have the node to then attach to
       this.scrollHere(newNode);
@@ -2199,7 +2188,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "insert-above-active":
-        console.log("insert-above-active");
         if (this.activeNode && this.activeNode.previousElementSibling) {
           this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
         } else {
@@ -2209,7 +2197,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
       case "insert-below-active":
-        console.log("insert-below-active");
         this.haxInsert("p", "", {});
         break;
       case "hax-source-view-toggle":
@@ -2403,11 +2390,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
       case "hax-plate-up":
-        console.log("hax-plate-up");
         this.haxMoveGridPlate(this.activeNode, -1);
         break;
       case "hax-plate-down":
-        console.log("hax-plate-down");
         this.haxMoveGridPlate(this.activeNode);
         break;
     }
@@ -2432,7 +2417,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __focusLogic(target, autoFocus = true) {
     let stopProp = false;
-    //console.log("__focusLogic", target, autoFocus, this.activeNode, stopProp);
     // only worry about these when we are in edit mode
     // and there is no drawer open
     if (this.editMode && !this.__tabTrap) {
@@ -2537,7 +2521,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } else {
       this.__tabTrap = false;
     }
-    //console.log("__focusLogic", target, autoFocus, this.activeNode, stopProp);
     return stopProp;
   }
   /**
@@ -2729,7 +2712,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     status,
     target = this.shadowRoot.querySelector("#body")
   ) {
-    //console.log("_applyContentEditable", status, target);
     // this is just direct children so 1st level of the body
     let children =
       target.localName === "slot"
@@ -2814,7 +2796,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @returns {boolean} if the item can move a set number of slots
    */
   __layoutCanMove(target, layout, before) {
-    console.log("layoutCanMove", target, layout, before);
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [
@@ -2831,7 +2812,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {number} -1 for left or +1 for right
    */
   __layoutMove(target, layout, before) {
-    console.log("layoutCanMove", target, layout, before);
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [
@@ -3434,7 +3414,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * React to a new node being set to active.
    */
   async _activeNodeChanged(newValue, oldValue) {
-    console.log("_activeNodeChanged", newValue, oldValue);
     // close any open popover items
     window.SimplePopoverManager.requestAvailability().opened = false;
     // remove anything currently with the active class
