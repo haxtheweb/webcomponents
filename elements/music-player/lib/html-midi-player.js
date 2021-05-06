@@ -23646,7 +23646,11 @@
           );
         n.timeSignatures.length ||
           n.timeSignatures.push(
-            g.a.TimeSignature.create({ time: 0, numerator: 4, denominator: 4 })
+            g.a.TimeSignature.create({
+              time: 0,
+              numerator: 4,
+              denominator: 4,
+            })
           );
         for (const t of e.header.tempos)
           n.tempos.push(g.a.Tempo.create({ time: t.time, qpm: t.bpm }));
@@ -24127,7 +24131,12 @@
             }).toMaster()),
             (this.openHihat = new h.MetalSynth({
               frequency: 400,
-              envelope: { attack: 0.001, decay: 0.5, release: 0.8, sustain: 1 },
+              envelope: {
+                attack: 0.001,
+                decay: 0.5,
+                release: 0.8,
+                sustain: 1,
+              },
               harmonicity: 5.1,
               modulationIndex: 32,
               resonance: 4e3,
@@ -25936,7 +25945,11 @@
               configurable: !0,
             }),
             (t.prototype.toJSON = function () {
-              return { ticks: this.ticks, time: this.time, value: this.value };
+              return {
+                ticks: this.ticks,
+                time: this.time,
+                value: this.value,
+              };
             }),
             t
           );

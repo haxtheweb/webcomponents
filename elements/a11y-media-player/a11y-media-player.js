@@ -1112,12 +1112,12 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 "transcript",
                 "label"
               )}"
-              ?disabled="${!this.hasCaptions || this.hideTranscript}"
+              ?disabled="${!this.hasCaptions || this.learningMode}"
               ?hidden="${!this.hasCaptions ||
               this.standAlone ||
               (this.height && this.responsiveSize.indexOf("s") > -1) ||
               (this.linkable && this.responsiveSize === "md") ||
-              this.hideTranscript}"
+              this.learningMode}"
               ?toggle="${this.transcriptTrackKey > -1}"
               @click="${(e) => this.toggleTranscript()}"
             >
@@ -1128,8 +1128,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               class="hide-full-sm"
               icon="${this._getLocal(this.localization, "copyLink", "icon")}"
               label="${this._getLocal(this.localization, "copyLink", "label")}"
-              ?disabled="${!this.linkable} || this.hideTranscript"
-              ?hidden="${!this.linkable || this.hideTranscript}"
+              ?disabled="${!this.linkable || this.learningMode}"
+              ?hidden="${!this.linkable || this.learningMode}"
               @click="${this._handleCopyLink}"
             ></a11y-media-button>
             <a11y-media-button
@@ -1185,7 +1185,10 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
               >
               </simple-fields-field>
             </div>
-            <div class="setting" ?hidden="${!this.hasCaptions}">
+            <div
+              class="setting"
+              ?hidden="${!this.hasCaptions || this.learningMode}"
+            >
               <div class="setting-text">
                 ${this._getLocal(this.localization, "transcript", "label")}
               </div>
@@ -1194,15 +1197,18 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 class="setting-control"
                 .value="${this.transcriptTrackKey}"
                 .options="${this.transcriptPicker}"
-                ?hidden="${!this.hasCaptions}"
-                ?disabled="${!this.hasCaptions}"
+                ?hidden="${!this.hasCaptions || this.learningMode}"
+                ?disabled="${!this.hasCaptions || this.learningMode}"
                 @value-changed="${(e) =>
                   this.selectTranscriptByKey(e.detail.value)}"
                 type="select"
               >
               </simple-fields-field>
             </div>
-            <div class="setting" ?hidden="${!this.hasCaptions}">
+            <div
+              class="setting"
+              ?hidden="${!this.hasCaptions || this.learningMode}"
+            >
               <div id="print-label" class="setting-text">
                 ${this._getLocal(this.localization, "print", "label")}
               </div>
@@ -1212,13 +1218,16 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 aria-labelledby="print-label"
                 class="setting-control"
                 icon="${this._getLocal(this.localization, "print", "icon")}"
-                ?disabled="${this.noPrinting}"
-                ?hidden="${this.noPrinting}"
+                ?disabled="${this.noPrinting || this.learningMode}"
+                ?hidden="${this.noPrinting || this.learningMode}"
                 @click="${this.print}"
               >
               </a11y-media-button>
             </div>
-            <div class="setting" ?hidden="${!this.hasCaptions}">
+            <div
+              class="setting"
+              ?hidden="${!this.hasCaptions || this.learningMode}"
+            >
               <div id="download-label" class="setting-text">
                 ${this._getLocal(this.localization, "download", "label")}
               </div>
@@ -1228,8 +1237,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                 aria-labelledby="download-label"
                 class="setting-control"
                 icon="${this._getLocal(this.localization, "download", "icon")}"
-                ?disabled="${this.noPrinting}"
-                ?hidden="${this.noPrinting}"
+                ?disabled="${this.noPrinting || this.learningMode}"
+                ?hidden="${this.noPrinting || this.learningMode}"
                 @click="${this.download}"
               >
               </a11y-media-button>

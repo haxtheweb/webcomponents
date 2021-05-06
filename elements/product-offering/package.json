@@ -1,0 +1,74 @@
+{
+  "name": "@lrnwebcomponents/product-offering",
+  "wcfactory": {
+    "className": "ProductOffering",
+    "customElementClass": "LitElement",
+    "elementName": "product-offering",
+    "generator-wcfactory-version": "0.12.0",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/product-offering.css",
+      "scss": "src/product-offering.scss",
+      "html": "src/product-offering.html",
+      "js": "src/product-offering.js",
+      "properties": "src/product-offering-properties.json",
+      "hax": "src/product-offering-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "3.0.7",
+  "description": "Simple card for displaying product info",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "product-offering.js",
+  "module": "product-offering.js",
+  "umd": "product-offering.umd.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch",
+    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --playwright --browsers chromium firefox webkit",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "lit-element": "2.4.0",
+    "@lrnwebcomponents/simple-icon": "^3.0.6",
+    "@lrnwebcomponents/simple-colors": "^3.0.6",
+    "@lrnwebcomponents/intersection-element": "^3.0.0"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "2.7.7",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.5.0",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.20",
+    "polymer-build": "3.1.4",
+    "polymer-cli": "1.9.11",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

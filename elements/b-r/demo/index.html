@@ -11,6 +11,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../b-r.js';
+      import '../lib/star-rating.js';
       import "@lrnwebcomponents/wikipedia-query/wikipedia-query.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
@@ -20,6 +21,7 @@
       <h3>Basic b-r demo</h3>
       <demo-snippet>
         <template>
+          <star-rating amount="100" score="50"></star-rating>
           <b-r></b-r>
           <p>Testing</p>
           <wikipedia-query search="Drupal" language="ja"></wikipedia-query>

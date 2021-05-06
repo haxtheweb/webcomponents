@@ -9,9 +9,7 @@ npm-debug.log
 test/.wct-kludge
 .sass-cache
 .yo-rc.json
-yarn.lock
 *-*.tgz
-package-lock.json
 analysis.json
 yarn-error.log
 .cache

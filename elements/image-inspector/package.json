@@ -29,7 +29,7 @@
   "umd": "image-inspector.umd.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "es-dev-server -c ../../es-dev-server.config.js",
@@ -43,13 +43,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^3.0.6",
     "@lrnwebcomponents/img-pan-zoom": "^3.0.6",
-    "@lrnwebcomponents/lrnsys-button": "^3.0.6",
+    "@lrnwebcomponents/exif-data": "^3.0.5",
     "@lrnwebcomponents/materializecss-styles": "^3.0.6",
     "@lrnwebcomponents/simple-icon": "^3.0.6",
-    "@polymer/app-layout": "^3.0.2",
-    "@polymer/polymer": "^3.3.1"
+    "lit-element": "2.5.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",
@@ -63,10 +61,10 @@
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",
     "@open-wc/testing": "2.5.32",
-    "@web/test-runner": "0.12.19",
-    "@web/test-runner-commands": "0.4.2",
-    "@web/test-runner-playwright": "0.8.4",
-    "@web/test-runner-puppeteer": "0.9.3"
+    "@web/test-runner": "0.13.3",
+    "@web/test-runner-commands": "0.4.5",
+    "@web/test-runner-playwright": "0.8.5",
+    "@web/test-runner-puppeteer": "0.10.0"
   },
   "private": false,
   "publishConfig": {

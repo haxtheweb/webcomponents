@@ -24,6 +24,9 @@ class BootstrapBreadcrumb extends LitElement {
           --simple-icon-width: 18px;
           --simple-icon-color: #007bff;
         }
+        a {
+          color: #007bff;
+        }
 
         .container {
           background-color: #e9ecef;

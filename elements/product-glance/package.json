@@ -1,57 +1,79 @@
 {
-  "name": "product-glance",
-  "version": "0.0.0",
-  "description": "Webcomponent product-glance following open-wc recommendations",
-  "author": "product-glance",
-  "license": "MIT",
-  "main": "index.js",
-  "module": "index.js",
-  "scripts": {
-    "start": "web-dev-server",
-    "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
-    "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
-    "test": "web-test-runner --coverage",
-    "test:watch": "web-test-runner --watch",
-    "storybook": "web-dev-server -c .storybook/server.mjs",
-    "storybook:build": "build-storybook"
+  "name": "@lrnwebcomponents/product-glance",
+  "wcfactory": {
+    "className": "ProductGlance",
+    "customElementClass": "LitElement",
+    "elementName": "product-glance",
+    "generator-wcfactory-version": "0.12.3",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/product-glance.css",
+      "scss": "src/product-glance.scss",
+      "html": "src/product-glance.html",
+      "js": "src/product-glance.js",
+      "properties": "src/product-glance-properties.json",
+      "hax": "src/product-glance-hax.json"
+    },
+    "iconset": {},
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
   },
+  "version": "3.0.7",
+  "description": "glance / overview of a product feature",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "product-glance.js",
+  "module": "product-glance.js",
+  "umd": "product-glance.umd.js",
+  "scripts": {
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --watch",
+    "test:browsers": "web-test-runner \"test/**/*.test.js\" --node-resolve --playwright --browsers chromium firefox webkit",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && node --experimental-json-modules ../../node_modules/.bin/rollup --config && prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
   "dependencies": {
+    "lit-element": "2.4.0",
     "@lrnwebcomponents/simple-colors": "^3.0.6",
-    "@lrnwebcomponents/simple-icon": "^3.0.6",
-    "lit-element": "^2.4.0",
-    "lit-html": "^1.3.0"
+    "@lrnwebcomponents/simple-icon": "^3.0.6"
   },
   "devDependencies": {
-    "@web/dev-server": "^0.1.14",
-    "eslint": "^7.24.0",
-    "@open-wc/eslint-config": "^4.3.0",
-    "prettier": "^2.2.1",
-    "eslint-config-prettier": "^7.2.0",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.4",
-    "@web/test-runner": "^0.12.20",
-    "@open-wc/testing": "^2.5.32",
-    "@web/dev-server-storybook": "^0.3.5"
+    "@wcfactory/rollup-umd-build": "^0.12.1",
+    "@lrnwebcomponents/deduping-fix": "2.7.7",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.5.0",
+    "concurrently": "5.3.0",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.21",
+    "polymer-build": "3.1.4",
+    "polymer-cli": "1.9.11",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2",
+    "@open-wc/testing": "2.5.32",
+    "@web/test-runner": "0.12.19",
+    "@web/test-runner-commands": "0.4.2",
+    "@web/test-runner-playwright": "0.8.4",
+    "@web/test-runner-puppeteer": "0.9.3"
   },
-  "eslintConfig": {
-    "extends": [
-      "@open-wc/eslint-config",
-      "eslint-config-prettier"
-    ]
+  "private": false,
+  "publishConfig": {
+    "access": "public"
   },
-  "prettier": {
-    "singleQuote": true,
-    "arrowParens": "avoid"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  }
+  "keywords": [
+    "web-components",
+    "html"
+  ]
 }

@@ -97,7 +97,7 @@
     },
     {
       "name": "cms-block",
-      "description": "`cms-block`\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `block-module` {`string`} - Module supplying the block\n\n  * `block-delta` {`string`} - A delta value relative to the module\n\n  * `block-end-point` {`string`} - block end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just block with some encapsulation.\n\n  * `block-data` {`string`} - block data from the end point.\n\n  * `block-prefix` {`string`} - Prefix for the block to be processed\n\n  * `block-suffix` {`string`} - Suffix for the block to be processed\n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `blockModule` {`string`} - Module supplying the block\n\n  * `blockDelta` {`string`} - A delta value relative to the module\n\n  * `blockEndPoint` {`string`} - block end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just block with some encapsulation.\n\n  * `blockData` {`string`} - block data from the end point.\n\n  * `blockPrefix` {`string`} - Prefix for the block to be processed\n\n  * `blockSuffix` {`string`} - Suffix for the block to be processed\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`cms-block`\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `block-module` {`string`} - Module supplying the block\n\n  * `block-delta` {`string`} - A delta value relative to the module\n\n  * `block-end-point` {`string`} - block end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just block with some encapsulation.\n\n  * `block-data` {`string`} - block data from the end point.\n\n  * `block-prefix` {`string`} - Prefix for the block to be processed\n\n  * `block-suffix` {`string`} - Suffix for the block to be processed\n\n  * `hax-edit-mode` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `blockModule` {`string`} - Module supplying the block\n\n  * `blockDelta` {`string`} - A delta value relative to the module\n\n  * `blockEndPoint` {`string`} - block end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just block with some encapsulation.\n\n  * `blockData` {`string`} - block data from the end point.\n\n  * `blockPrefix` {`string`} - Prefix for the block to be processed\n\n  * `blockSuffix` {`string`} - Suffix for the block to be processed\n\n  * `haxEditMode` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "loading",
@@ -131,12 +131,17 @@
         {
           "name": "block-suffix",
           "description": "`block-suffix` {`string`} - Suffix for the block to be processed\n\nProperty: blockSuffix"
+        },
+        {
+          "name": "hax-edit-mode",
+          "description": "`hax-edit-mode` {`boolean`} - \n\nProperty: haxEditMode\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "cms-entity",
-      "description": "`cms-entity`\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `entity-type` {`string`} - Type of entity to load\n\n  * `entity-id` {`string`} - ID of the item to load\n\n  * `entity-display-mode` {`string`} - Display mode of the entity\n\n  * `entity-end-point` {`string`} - entity end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just entity with some encapsulation.\n\n  * `entity-data` {`string`} - entity data from the end point.\n\n  * `entity-prefix` {`string`} - Prefix for the entity to be processed\n\n  * `entity-suffix` {`string`} - Suffix for the entity to be processed\n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `entityType` {`string`} - Type of entity to load\n\n  * `entityId` {`string`} - ID of the item to load\n\n  * `entityDisplayMode` {`string`} - Display mode of the entity\n\n  * `entityEndPoint` {`string`} - entity end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just entity with some encapsulation.\n\n  * `entityData` {`string`} - entity data from the end point.\n\n  * `entityPrefix` {`string`} - Prefix for the entity to be processed\n\n  * `entitySuffix` {`string`} - Suffix for the entity to be processed\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`cms-entity`\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `entity-type` {`string`} - Type of entity to load\n\n  * `entity-id` {`string`} - ID of the item to load\n\n  * `entity-display-mode` {`string`} - Display mode of the entity\n\n  * `entity-end-point` {`string`} - entity end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just entity with some encapsulation.\n\n  * `entity-data` {`string`} - entity data from the end point.\n\n  * `entity-prefix` {`string`} - Prefix for the entity to be processed\n\n  * `entity-suffix` {`string`} - Suffix for the entity to be processed\n\n  * `hax-edit-mode` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `entityType` {`string`} - Type of entity to load\n\n  * `entityId` {`string`} - ID of the item to load\n\n  * `entityDisplayMode` {`string`} - Display mode of the entity\n\n  * `entityEndPoint` {`string`} - entity end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just entity with some encapsulation.\n\n  * `entityData` {`string`} - entity data from the end point.\n\n  * `entityPrefix` {`string`} - Prefix for the entity to be processed\n\n  * `entitySuffix` {`string`} - Suffix for the entity to be processed\n\n  * `haxEditMode` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "loading",
@@ -174,12 +179,17 @@
         {
           "name": "entity-suffix",
           "description": "`entity-suffix` {`string`} - Suffix for the entity to be processed\n\nProperty: entitySuffix"
+        },
+        {
+          "name": "hax-edit-mode",
+          "description": "`hax-edit-mode` {`boolean`} - \n\nProperty: haxEditMode\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "cms-token",
-      "description": "`cms-token`\nRender and process a shortcode / token from a content management system.\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `token` {`string`} - Token changed (somehow) do the token processing.\n\n  * `token-end-point` {`string`} - Token end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just token with some encapsulation.\n\n  * `_click-invoked` {`string`} - internal tracking for edit button being clicked in HAX presentation\n\n  * `token-data` {`string`} - Token data from the end point.\n\n  * `token-prefix` {`string`} - Prefix for the token to be processed\n\n  * `token-suffix` {`string`} - Suffix for the token to be processed\n\n  * `_display-mode` {`string`} - \n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `token` {`string`} - Token changed (somehow) do the token processing.\n\n  * `tokenEndPoint` {`string`} - Token end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just token with some encapsulation.\n\n  * `_clickInvoked` {`string`} - internal tracking for edit button being clicked in HAX presentation\n\n  * `tokenData` {`string`} - Token data from the end point.\n\n  * `tokenPrefix` {`string`} - Prefix for the token to be processed\n\n  * `tokenSuffix` {`string`} - Suffix for the token to be processed\n\n  * `_displayMode` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`cms-token`\nRender and process a shortcode / token from a content management system.\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `token` {`string`} - Token changed (somehow) do the token processing.\n\n  * `token-end-point` {`string`} - Token end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just token with some encapsulation.\n\n  * `_click-invoked` {`string`} - internal tracking for edit button being clicked in HAX presentation\n\n  * `token-data` {`string`} - Token data from the end point.\n\n  * `token-prefix` {`string`} - Prefix for the token to be processed\n\n  * `token-suffix` {`string`} - Suffix for the token to be processed\n\n  * `_display-mode` {`string`} - \n\n  * `hax-edit-mode` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `token` {`string`} - Token changed (somehow) do the token processing.\n\n  * `tokenEndPoint` {`string`} - Token end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just token with some encapsulation.\n\n  * `_clickInvoked` {`string`} - internal tracking for edit button being clicked in HAX presentation\n\n  * `tokenData` {`string`} - Token data from the end point.\n\n  * `tokenPrefix` {`string`} - Prefix for the token to be processed\n\n  * `tokenSuffix` {`string`} - Suffix for the token to be processed\n\n  * `_displayMode` {`string`} - \n\n  * `haxEditMode` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "loading",
@@ -217,12 +227,17 @@
         {
           "name": "_display-mode",
           "description": "`_display-mode` {`string`} - \n\nProperty: _displayMode\n\nDefault: full"
+        },
+        {
+          "name": "hax-edit-mode",
+          "description": "`hax-edit-mode` {`boolean`} - \n\nProperty: haxEditMode\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
       "name": "cms-views",
-      "description": "`cms-views`\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `views-name` {`string`} - Name of the views to render\n\n  * `views-display` {`string`} - Display from the views\n\n  * `views-end-point` {`string`} - views end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just views with some encapsulation.\n\n  * `views-data` {`string`} - views data from the end point.\n\n  * `views-prefix` {`string`} - Prefix for the views to be processed\n\n  * `views-suffix` {`string`} - Suffix for the views to be processed\n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `viewsName` {`string`} - Name of the views to render\n\n  * `viewsDisplay` {`string`} - Display from the views\n\n  * `viewsEndPoint` {`string`} - views end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just views with some encapsulation.\n\n  * `viewsData` {`string`} - views data from the end point.\n\n  * `viewsPrefix` {`string`} - Prefix for the views to be processed\n\n  * `viewsSuffix` {`string`} - Suffix for the views to be processed\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`cms-views`\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `views-name` {`string`} - Name of the views to render\n\n  * `views-display` {`string`} - Display from the views\n\n  * `views-end-point` {`string`} - views end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just views with some encapsulation.\n\n  * `views-data` {`string`} - views data from the end point.\n\n  * `views-prefix` {`string`} - Prefix for the views to be processed\n\n  * `views-suffix` {`string`} - Suffix for the views to be processed\n\n  * `hax-edit-mode` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `viewsName` {`string`} - Name of the views to render\n\n  * `viewsDisplay` {`string`} - Display from the views\n\n  * `viewsEndPoint` {`string`} - views end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just views with some encapsulation.\n\n  * `viewsData` {`string`} - views data from the end point.\n\n  * `viewsPrefix` {`string`} - Prefix for the views to be processed\n\n  * `viewsSuffix` {`string`} - Suffix for the views to be processed\n\n  * `haxEditMode` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "loading",
@@ -256,6 +271,11 @@
         {
           "name": "views-suffix",
           "description": "`views-suffix` {`string`} - Suffix for the views to be processed\n\nProperty: viewsSuffix"
+        },
+        {
+          "name": "hax-edit-mode",
+          "description": "`hax-edit-mode` {`boolean`} - \n\nProperty: haxEditMode\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },

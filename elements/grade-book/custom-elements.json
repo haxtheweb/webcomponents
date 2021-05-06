@@ -15,10 +15,6 @@
           "type": "string"
         },
         {
-          "name": "source",
-          "type": "string"
-        },
-        {
           "name": "totalScore",
           "type": "number",
           "default": "0"
@@ -34,7 +30,17 @@
           "default": "0"
         },
         {
+          "name": "activeStudentSubmissions",
+          "type": "array",
+          "default": "[]"
+        },
+        {
           "name": "scoreLock",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hideGradeScale",
           "type": "boolean",
           "default": "true"
         },
@@ -51,7 +57,7 @@
         {
           "name": "t",
           "type": "object",
-          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\"}"
+          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading Scale\"}"
         },
         {
           "name": "accent-color",
@@ -78,19 +84,7 @@
           "type": "string"
         },
         {
-          "name": "source",
-          "attribute": "source",
-          "type": "string"
-        },
-        {
-          "name": "sheetGids",
-          "type": "object",
-          "default": "{\"tags\":0,\"roster\":118800528,\"assignments\":540222065,\"rubrics\":1744429439,\"submissions\":2104732668,\"gradeScale\":980501320,\"grades\":2130903440,\"gradesDetails\":644559151,\"settings\":1413275461}"
-        },
-        {
-          "name": "activeSheetPage",
-          "type": "string",
-          "default": "\"tags\""
+          "name": "gSheet"
         },
         {
           "name": "assessmentView",
@@ -119,6 +113,12 @@
           "type": "string"
         },
         {
+          "name": "activeStudentSubmissions",
+          "attribute": "activeStudentSubmissions",
+          "type": "array",
+          "default": "[]"
+        },
+        {
           "name": "scoreLock",
           "attribute": "scoreLock",
           "type": "boolean",
@@ -140,6 +140,12 @@
           "default": "{\"tags\":{\"categories\":[],\"data\":[]},\"submissions\":[],\"rubrics\":[],\"assignments\":[],\"roster\":[],\"grades\":{},\"gradesDetails\":{},\"gradeScale\":[],\"settings\":{}}"
         },
         {
+          "name": "hideGradeScale",
+          "attribute": "hideGradeScale",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
           "name": "disabled",
           "attribute": "disabled",
           "type": "boolean",
@@ -155,7 +161,7 @@
           "name": "t",
           "attribute": "t",
           "type": "object",
-          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\"}"
+          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading Scale\"}"
         },
         {
           "name": "accentColor",
@@ -246,6 +252,21 @@
           "name": "show-scale",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "default": "\"\""
+        },
+        {
+          "name": "mini",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
@@ -282,6 +303,24 @@
           "attribute": "show-scale",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "number",
+          "default": "\"\""
+        },
+        {
+          "name": "mini",
+          "attribute": "mini",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
         }
       ]
     },
@@ -296,10 +335,6 @@
         },
         {
           "name": "sheet",
-          "type": "string"
-        },
-        {
-          "name": "source",
           "type": "string"
         },
         {
@@ -318,7 +353,17 @@
           "default": "0"
         },
         {
+          "name": "activeStudentSubmissions",
+          "type": "array",
+          "default": "[]"
+        },
+        {
           "name": "scoreLock",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hideGradeScale",
           "type": "boolean",
           "default": "true"
         },
@@ -335,7 +380,7 @@
         {
           "name": "t",
           "type": "object",
-          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\"}"
+          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading Scale\"}"
         },
         {
           "name": "accent-color",
@@ -362,19 +407,7 @@
           "type": "string"
         },
         {
-          "name": "source",
-          "attribute": "source",
-          "type": "string"
-        },
-        {
-          "name": "sheetGids",
-          "type": "object",
-          "default": "{\"tags\":0,\"roster\":118800528,\"assignments\":540222065,\"rubrics\":1744429439,\"submissions\":2104732668,\"gradeScale\":980501320,\"grades\":2130903440,\"gradesDetails\":644559151,\"settings\":1413275461}"
-        },
-        {
-          "name": "activeSheetPage",
-          "type": "string",
-          "default": "\"tags\""
+          "name": "gSheet"
         },
         {
           "name": "assessmentView",
@@ -403,6 +436,12 @@
           "type": "string"
         },
         {
+          "name": "activeStudentSubmissions",
+          "attribute": "activeStudentSubmissions",
+          "type": "array",
+          "default": "[]"
+        },
+        {
           "name": "scoreLock",
           "attribute": "scoreLock",
           "type": "boolean",
@@ -424,6 +463,12 @@
           "default": "{\"tags\":{\"categories\":[],\"data\":[]},\"submissions\":[],\"rubrics\":[],\"assignments\":[],\"roster\":[],\"grades\":{},\"gradesDetails\":{},\"gradeScale\":[],\"settings\":{}}"
         },
         {
+          "name": "hideGradeScale",
+          "attribute": "hideGradeScale",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
           "name": "disabled",
           "attribute": "disabled",
           "type": "boolean",
@@ -439,7 +484,7 @@
           "name": "t",
           "attribute": "t",
           "type": "object",
-          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\"}"
+          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading Scale\"}"
         },
         {
           "name": "accentColor",

@@ -1,0 +1,55 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Product glance",
+    "description": "Quick overview of a thing",
+    "icon": "communication:business",
+    "color": "blue",
+    "groups": ["Buisness", "Communication", "Education"],
+    "handles": [],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon to represent concept at a high level",
+        "inputMethod": "iconpicker"
+      },
+      {
+        "property": "title",
+        "title": "title",
+        "description": "Primary concept at a glance",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "subtitle",
+        "title": "Subtitle",
+        "description": "Additional detail",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Accent for the icon",
+        "inputMethod": "colorpicker"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "product-glance",
+      "content": "",
+      "properties": {
+        "icon": "star",
+        "title": "Simple Objectives",
+        "subtitle": "Learn on the go, anywhere"
+      }
+    }
+  ]
+}

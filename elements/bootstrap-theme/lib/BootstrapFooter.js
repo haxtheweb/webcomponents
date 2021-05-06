@@ -18,9 +18,18 @@ class BootstrapFooter extends LitElement {
           --simple-icon-width: 18px;
           --simple-icon-color: #007bff;
         }
+        .btn-outline-primary {
+          color: #007bff;
+          border-color: #007bff;
+        }
 
-        button:hover {
+        .btn-outline-primary:active,
+        .btn-outline-primary:focus,
+        .btn-outline-primary:hover {
           --simple-icon-color: white;
+          color: #fff;
+          background-color: #007bff;
+          border-color: #007bff;
         }
 
         .container {
@@ -47,6 +56,7 @@ class BootstrapFooter extends LitElement {
 
         a {
           text-decoration: none;
+          color: #007bff;
         }
         /* dark theme */
         :host([color-theme="1"]) {
@@ -114,15 +124,12 @@ class BootstrapFooter extends LitElement {
     return {
       _backwardItem: {
         type: Object,
-        reflect: true,
       },
       _forwardItem: {
         type: Object,
-        reflect: true,
       },
       colorTheme: {
         type: String,
-        reflect: true,
         attribute: "color-theme",
       },
     };

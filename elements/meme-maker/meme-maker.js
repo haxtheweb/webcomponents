@@ -28,6 +28,7 @@ class MemeMaker extends LitElement {
           margin: 0;
           padding: 0;
           font-size: 20px;
+          overflow: hidden;
         }
         img {
           width: 100%;

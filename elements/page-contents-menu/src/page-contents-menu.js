@@ -174,6 +174,7 @@ class PageContentsMenu extends LitElement {
               <simple-popover
                 class="dropdown pull-left font-settings js-toolbar-action settings-container"
                 ?hidden="${this.hideSettings}"
+                position="${this.position}"
                 auto
               >
                 <ol class="contents">
@@ -265,6 +266,9 @@ class PageContentsMenu extends LitElement {
       items: {
         type: Array,
       },
+      position: {
+        type: String,
+      },
       mobile: {
         type: Boolean,
         reflect: true,
@@ -307,6 +311,7 @@ class PageContentsMenu extends LitElement {
     this.items = [];
     this.isEmpty = true;
     this.hideIfEmpty = false;
+    this.position = "left";
     this.contentContainer = null;
     this.mobile = false;
     // how long to wait between updating. 100ms default
