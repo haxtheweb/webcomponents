@@ -1,29 +1,17 @@
-# EditorConfig helps developers define and maintain consistent
-# coding styles between different editors and IDEs
-# editorconfig.org
+# EditorConfig: http://EditorConfig.org
 
+# Top-most EditorConfig file
 root = true
 
+# Rules for JavaScript files:
 
-[*]
-
-# Change these settings to your own preference
+[*.{js,py,json,sh,html}]
+# 4 space indentation
 indent_style = space
 indent_size = 2
-
-# We recommend you to keep these unchanged
-end_of_line = lf
-charset = utf-8
+# No trailing spaces
 trim_trailing_whitespace = true
+# Unix-style newlines
+end_of_line = lf
+# Newline ending every file
 insert_final_newline = true
-
-[*.md]
-trim_trailing_whitespace = false
-
-[*.json]
-indent_size = 2
-
-[*.{html,js,md}]
-block_comment_start = /**
-block_comment = *
-block_comment_end = */

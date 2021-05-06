@@ -1,31 +1,85 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import {
+  expect,
+  fixture,
+  html,
+  assert,
+  elementUpdated,
+  fixtureCleanup,
+} from "@open-wc/testing";
+import { setViewport } from "@web/test-runner-commands";
+import "../src/product-glance.js";
 
-import '../product-glance.js';
-
-describe('ProductGlance', () => {
-  it('has a default title "Hey there" and counter 5', async () => {
-    const el = await fixture(html`<product-glance></product-glance>`);
-
-    expect(el.title).to.equal('Hey there');
-    expect(el.counter).to.equal(5);
+/*
+ * Instantiation test
+ * create element and see if an attribute binds to the element
+ */
+describe("Instantiation Test", () => {
+  it("product-glance instantiates", async () => {
+    const el = await fixture(
+      html` <product-glance title="test-title"></product-glance> `
+    );
+    await expect(el.getAttribute("title")).to.equal("test-title");
   });
+});
 
-  it('increases the counter on button click', async () => {
-    const el = await fixture(html`<product-glance></product-glance>`);
-    el.shadowRoot.querySelector('button').click();
-
-    expect(el.counter).to.equal(6);
+/*
+ * A11y Accessibility tests
+ */
+describe("A11y/chai axe tests", () => {
+  it("product-glance passes accessibility test", async () => {
+    const el = await fixture(html` <product-glance></product-glance> `);
+    await expect(el).to.be.accessible();
   });
-
-  it('can override the title via attribute', async () => {
-    const el = await fixture(html`<product-glance title="attribute title"></product-glance>`);
-
-    expect(el.title).to.equal('attribute title');
+  it("product-glance passes accessibility negation", async () => {
+    const el = await fixture(
+      html`<product-glance aria-labelledby="product-glance"></product-glance>`
+    );
+    await assert.isNotAccessible(el);
   });
+});
 
-  it('passes the a11y audit', async () => {
-    const el = await fixture(html`<product-glance></product-glance>`);
+/*
+// Custom properties test
+describe("Custom Property Test", () => {
+  it("product-glance can instantiate a element with custom properties", async () => {
+    const el = await fixture(html`<product-glance .foo=${'bar'}></product-glance>`);
+    expect(el.foo).to.equal('bar');
+  })
+})
+*/
 
-    await expect(el).shadowDom.to.be.accessible();
-  });
+/*
+// Test if element is mobile responsive
+describe('Test Mobile Responsiveness', () => {
+    before(async () => {z   
+      await setViewport({width: 375, height: 750});
+    })
+    it('sizes down to 360px', async () => {
+      const el = await fixture(html`<product-glance ></product-glance>`);
+      const width = getComputedStyle(el).width;
+      expect(width).to.equal('360px');
+    })
+}) */
+
+/*
+// Test if element sizes up for desktop behavior
+describe('Test Desktop Responsiveness', () => {
+    before(async () => {
+      await setViewport({width: 1000, height: 1000});
+    })
+    it('sizes up to 410px', async () => {
+      const el = await fixture(html`<product-glance></product-glance>`);
+      const width = getComputedStyle(el).width;
+      expect(width).to.equal('410px');
+    })
+    it('hides mobile menu', async () => {
+      const el await fixture(html`<product-glance></product-glance>`);
+      const hidden = el.getAttribute('hidden');
+      expect(hidden).to.equal(true);
+    })
+}) */
+
+// clean up fixtures after all tests are complete
+afterEach(() => {
+  fixtureCleanup();
 });
