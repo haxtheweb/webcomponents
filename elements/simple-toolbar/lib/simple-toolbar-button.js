@@ -122,6 +122,15 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
         },
 
         /**
+         * Alway show tooltip.
+         */
+        showTooltip: {
+          attribute: "show-tooltip",
+          type: Boolean,
+          reflect: true,
+        },
+
+        /**
          * The active selected range, inherited from the toolbar
          */
         target: {
@@ -371,7 +380,8 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
     get tooltipVisible() {
       return (
         (this.hasTooltip || this.hasLabel) &&
-        (!this.labelVisible ||
+        (this.showTooltip ||
+          !this.labelVisible ||
           this._uniqueText(this.currentLabel, this.currentTooltip))
       );
     }
