@@ -40,10 +40,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
       css`
         /* var declaration and default styles */
         :host {
-          --hax-base-styles-a-color-visited: var(--haxcms-color, #007bff);
-          --hax-base-styles-a-color: var(--haxcms-color, #007bff);
-          --hax-base-styles-a-color-active: #000000;
-          --bootstrap-theme-link-color: var(--haxcms-color, #007bff);
+          --bootstrap-theme-link-color: #007bff;
           --map-menu-item-a-color: var(--bootstrap-theme-link-color);
           --bootstrap-theme-light-color: #000000;
           --bootstrap-theme-light-background-color: #ffffff;
@@ -90,7 +87,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           display: none;
         }
         a {
-          color: var(--haxcms-color, #007bff);
+          color: #007bff;
         }
         /* menu styles */
         :host([menu-open]) .menu-outline {

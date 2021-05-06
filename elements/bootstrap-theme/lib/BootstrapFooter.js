@@ -16,11 +16,11 @@ class BootstrapFooter extends LitElement {
           margin-bottom: 10px;
           --simple-icon-height: 18px;
           --simple-icon-width: 18px;
-          --simple-icon-color: var(--haxcms-color, #007bff);
+          --simple-icon-color: #007bff;
         }
         .btn-outline-primary {
-          color: var(--haxcms-color, #007bff);
-          border-color: var(--haxcms-color, #007bff);
+          color: #007bff;
+          border-color: #007bff;
         }
 
         .btn-outline-primary:active,
@@ -28,8 +28,8 @@ class BootstrapFooter extends LitElement {
         .btn-outline-primary:hover {
           --simple-icon-color: white;
           color: #fff;
-          background-color: var(--haxcms-color, #007bff);
-          border-color: var(--haxcms-color, #007bff);
+          background-color: #007bff;
+          border-color: #007bff;
         }
 
         .container {
@@ -56,7 +56,7 @@ class BootstrapFooter extends LitElement {
 
         a {
           text-decoration: none;
-          color: var(--haxcms-color, #007bff);
+          color: #007bff;
         }
         /* dark theme */
         :host([color-theme="1"]) {

@@ -407,12 +407,12 @@ class CleanTwo extends HAXCMSThemeParts(
             margin: 0px 88px;
           }
           .content {
-            width: 50vw;
+            width: 48vw;
           }
         }
         @media screen and (min-width: 1514px) {
           .body-wrapper .content-wrapper .content {
-            padding: 32px 0 32px 64px;
+            padding: 32px 0 16px 32px;
           }
         }
         .right-col {
