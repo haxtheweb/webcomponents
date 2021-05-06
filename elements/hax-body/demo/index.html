@@ -21,10 +21,15 @@
       });
     </script>
     <style>
+        #bodydiv { padding:100px 300px 100px 100px; }
+        /** This is mobile layout for controls */
+        @media screen and (max-width: 800px) {
+          #bodydiv { padding:100px; }
+        }
     </style>
   </head>
   <body>
-    <div style="padding:100px 300px 100px 100px;">
+    <div id="bodydiv">
     <h-a-x app-store='{"url": "appstore.json"}' element-align="right">
       <h1>HAX Test</h1>
       <h1>Heading 2</h1>
@@ -44,7 +49,9 @@
           venenatis quis lacus. 
           Donec luctus aliquam ipsum quis sagittis.   
         </p>
-        <p slot="col-2"></p>
+        <p slot="col-2">Bird</p>
+        <p slot="col-2">Cat</p>
+        <p slot="col-3">Dog</p>
           <!--img
             slot="col-3" 
             width="100%" 

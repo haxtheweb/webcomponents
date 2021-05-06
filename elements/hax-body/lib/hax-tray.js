@@ -19,16 +19,12 @@ import {
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 import "./hax-tray-upload.js";
 import "./hax-gizmo-browser.js";
 import "./hax-app-browser.js";
 import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-preferences-dialog.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
@@ -125,6 +121,10 @@ class HaxTray extends I18NMixin(
     this.__setup = false;
     setTimeout(() => {
       import("./hax-tray-button.js");
+      import("./hax-toolbar-menu.js");
+      import(
+        "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js"
+      );
       this.addEventListener(
         "hax-tray-button-click",
         this._processTrayEvent.bind(this)
@@ -330,16 +330,6 @@ class HaxTray extends I18NMixin(
         #haxcancelbutton::part(dropdown-icon) {
           display: none;
         }
-        hax-toolbar,
-        hax-tray-button,
-        hax-app-browser,
-        hax-gizmo-browser {
-          transition: 0.2s all ease-in-out;
-          transition: 0s color linear !important;
-          transition: 0s background-color linear !important;
-          transition: 0s border-color linear !important;
-          visibility: visible;
-        }
         .tray-detail-titlebar {
           background-color: var(--hax-ui-color-accent);
           padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing);
@@ -361,21 +351,15 @@ class HaxTray extends I18NMixin(
         #toggle-tray-size {
           flex: 0 0 auto;
         }
-
-        #tray-grid {
-          flex: 0 0 auto;
-          border: 1px solid var(--hax-ui-border-color);
+        hax-tray-button,
+        hax-app-browser,
+        hax-gizmo-browser {
+          transition: 0.2s all ease-in-out;
+          transition: 0s color linear !important;
+          transition: 0s background-color linear !important;
+          transition: 0s border-color linear !important;
+          visibility: visible;
         }
-        #tray-grid hax-tray-button::part(button) {
-          border: 1px solid var(--hax-ui-border-color);
-        }
-        #tray-grid > hax-tray-button::part(button) {
-          --simple-toolbar-button-white-space: normal !important;
-        }
-        #tray-grid #haxsavebutton {
-          grid-column: 1 / 4;
-        }
-        hax-toolbar:not(:defined),
         hax-tray-button:not(:defined),
         hax-app-browser:not(:defined),
         hax-gizmo-browser:not(:defined) {
@@ -386,10 +370,6 @@ class HaxTray extends I18NMixin(
         }
         *[hidden] {
           display: none;
-        }
-        #settingscollapse div[slot="content"] {
-          padding: 0;
-          margin: 0;
         }
         :host([element-align="right"]) #button {
           right: 0;

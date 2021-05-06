@@ -1838,6 +1838,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }, 250);
           }
         }
+        this.shadowRoot.querySelector("#topcontext").updatePosition();
       }, 50);
     }
   }
@@ -1868,7 +1869,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // menu is actually in the element for render purposes
     // support moving things multiple directions
     this.___moveLock = true;
-    console.log("haxMoveGridPlate", node, direction);
     let parent = !node ? undefined : node.parentNode,
       target =
         direction > 0 ? node.nextElementSibling : node.previousElementSibling,
@@ -1877,30 +1877,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       index = slot ? slots.indexOf(slot) : -1,
       move = slots[index + direction],
       sameSlot = !!target && (!slot || slot === target.getAttribute("slot"));
-    console.log("haxMoveGridPlate 2", parent, slots, node, target, move);
     if (!!target && (!slot || slot === target.getAttribute("slot"))) {
       //move within a slot
-      console.log(
-        "haxMoveGridPlate within slot",
-        parent,
-        node,
-        target,
-        slot,
-        move
-      );
       parent.insertBefore(
         node,
         direction > 0 ? target.nextElementSibling : target
       );
     } else if (!!move) {
       //move slot
-      console.log("haxMoveGridPlate move slot", move, node);
       node.setAttribute("slot", move);
     } else if (node && parent && parent !== this) {
       //move out of layout
       (target = direction > 0 ? parent.nextElementSibling : parent),
         (move = parent.getAttribute("slot"));
-      console.log("haxMoveGridPlate move layout", parent, target, move);
       if (target) {
         parent.parentNode.insertBefore(node, target);
         if (!!move) node.setAttribute("slot", move);
