@@ -40,7 +40,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
       css`
         /* var declaration and default styles */
         :host {
-          --bootstrap-theme-link-color: #0d6efd;
+          --hax-base-styles-a-color-visited: var(--haxcms-color, #007bff);
+          --hax-base-styles-a-color: var(--haxcms-color, #007bff);
+          --hax-base-styles-a-color-active: #000000;
+          --bootstrap-theme-link-color: var(--haxcms-color, #007bff);
           --map-menu-item-a-color: var(--bootstrap-theme-link-color);
           --bootstrap-theme-light-color: #000000;
           --bootstrap-theme-light-background-color: #ffffff;
@@ -86,7 +89,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
         [hidden] {
           display: none;
         }
-
+        a {
+          color: var(--haxcms-color, #007bff);
+        }
         /* menu styles */
         :host([menu-open]) .menu-outline {
           left: 0;
@@ -144,6 +149,14 @@ class BootstrapTheme extends HAXCMSThemeParts(
         :host([responsive-size="xs"]) .main-content,
         :host([responsive-size="sm"]) .main-content {
           overflow-x: hidden;
+        }
+        :host([responsive-size="xs"]) .menu-outline,
+        :host([responsive-size="sm"]) .menu-outline {
+          top: 0;
+        }
+        :host([responsive-size="xs"]) .site-header,
+        :host([responsive-size="sm"]) .site-header {
+          display: none;
         }
 
         :host([responsive-size="xs"]) .page-inner {
