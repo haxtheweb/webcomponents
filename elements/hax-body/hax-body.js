@@ -161,34 +161,23 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           );
           --hax-body-possible-target-background-color: inherit;
         }
-        #addincontext {
-          opacity: 0.5;
-          transition: 0.2s opacity ease-in-out;
-          display: block;
-          margin-top: 10px;
-        }
-        #addincontext:hover,
-        #addincontext:active,
-        #addincontext:focus {
-          opacity: 1;
-          cursor: pointer;
+        #topcontext {
+          z-index: var(--hax-ui-focus-z-index);
         }
         #topcontextmenu {
           display: flex;
           width: 100%;
-          align-items: bottom;
+          align-items: flex-end;
           justify-content: space-between;
-          z-index: calc(var(--hax-ui-focus-z-index) + 1);
-        }
-        #bottomcontextmenu {
           z-index: var(--hax-ui-focus-z-index);
+          position: absolute;
+          bottom: 0;
         }
         #textcontextmenu,
         #cecontextmenu {
           max-width: 280px;
           flex: 1 1 auto;
         }
-        #addincontext,
         #platecontextmenu {
           flex: 0 0 auto;
         }
@@ -387,6 +376,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             var(--hax-contextual-action-hover-color, var(--hax-ui-color-accent));
           margin-top: -8px;
         }
+        /** This is mobile layout for controls */
+        @media screen and (max-width: 800px) {
+          #topcontextmenu {
+            flex-wrap: wrap-reverse;
+          }
+          .hax-context-menu {
+            height: 0px;
+          }
+          .hax-context-visible {
+            height: auto;
+          }
+        }
 
         @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
           /*
@@ -502,22 +503,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.__mouseQuickTimer = setTimeout(() => {
         if (
           this.__activeHover &&
-          this.__activeHover !=
-            eventPath[0].closest("[data-hax-ray]:not(li)") &&
-          !eventPath[0].closest("#addincontext")
+          this.__activeHover != eventPath[0].closest("[data-hax-ray]:not(li)")
         ) {
-          let keep;
-          for (var i = 0; i < eventPath.length; i++) {
-            if (
-              eventPath[i].getAttribute &&
-              eventPath[i].getAttribute("id") == "addincontext"
-            ) {
-              keep = true;
-            }
-          }
-          if (!keep) {
-            this.__activeHover = null;
-          }
+          this.__activeHover = null;
         }
       }, 300);
       clearTimeout(this.__mouseTimer);
@@ -687,14 +675,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           ></hax-plate-context>
         </div>
       </absolute-position-behavior>
-      <hax-context-item
-        id="addincontext"
-        icon="icons:add"
-        class="hax-context-menu ignore-activation"
-        label="${this.t.addContent}"
-        show-text-label
-      >
-      </hax-context-item>
     `;
   }
   /**
@@ -747,13 +727,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       text: this.shadowRoot.querySelector("#textcontextmenu"),
       plate: this.shadowRoot.querySelector("#platecontextmenu"),
       ce: this.shadowRoot.querySelector("#cecontextmenu"),
-      add: this.shadowRoot.querySelector("#addincontext"),
     };
-    // wire up our in context add button
-    this.contextMenus.add.addEventListener(
-      "click",
-      this._addInContextClick.bind(this)
-    );
     // track and store range on mouse up. this helps w/ Safari focus selection
     // issues as well as any "tap" event from a phone knowing what text
     // WAS selected prior to an operation that might lose focus / selection
@@ -783,29 +757,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-  }
-  /**
-   * Handle adding an item in context based on where the context add
-   * was set to follow
-   */
-  _addInContextClick(e) {
-    // break mouse trap so we auto focus the insert
-    this.__mouseDown = false;
-    let tag = "p";
-    // special case for lists nested in lists to make sure we don't get
-    // stuck placing a P into a ul
-    if (
-      this.__activeHover &&
-      this.__activeHover.parentNode &&
-      ["ul", "ol"].includes(this.__activeHover.parentNode.tagName.toLowerCase())
-    ) {
-      this.__activeHover = this.__activeHover.parentNode;
-    }
-    // active will be set via this
-    this.haxInsert(tag, "", {}, this.__activeHover, this.__slotInGrid);
-    this.__slotInGrid = false;
-    // drop active hover to reset state
-    this.__activeHover = null;
   }
   /**
    * LitElement life cycle - properties changed callback
@@ -1913,22 +1864,47 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Move grid plate around
    */
-  haxMoveGridPlate(direction, node) {
+  haxMoveGridPlate(node, direction = 1) {
     // menu is actually in the element for render purposes
     // support moving things multiple directions
     this.___moveLock = true;
-    switch (direction) {
-      case "up":
-        // ensure we can go up
-        if (node.previousElementSibling !== null) {
-          node.parentNode.insertBefore(node, node.previousElementSibling);
-        }
-        break;
-      case "down":
-        if (node.nextElementSibling !== null) {
-          node.parentNode.insertBefore(node.nextElementSibling, node);
-        }
-        break;
+    console.log("haxMoveGridPlate", node, direction);
+    let parent = !node ? undefined : node.parentNode,
+      target =
+        direction > 0 ? node.nextElementSibling : node.previousElementSibling,
+      slots = this.__layoutSlots(parent) || [],
+      slot = node.getAttribute("slot"),
+      index = slot ? slots.indexOf(slot) : -1,
+      move = slots[index + direction],
+      sameSlot = !!target && (!slot || slot === target.getAttribute("slot"));
+    console.log("haxMoveGridPlate 2", parent, slots, node, target, move);
+    if (!!target && (!slot || slot === target.getAttribute("slot"))) {
+      //move within a slot
+      console.log(
+        "haxMoveGridPlate within slot",
+        parent,
+        node,
+        target,
+        slot,
+        move
+      );
+      parent.insertBefore(
+        node,
+        direction > 0 ? target.nextElementSibling : target
+      );
+    } else if (!!move) {
+      //move slot
+      console.log("haxMoveGridPlate move slot", move, node);
+      node.setAttribute("slot", move);
+    } else if (node && parent && parent !== this) {
+      //move out of layout
+      (target = direction > 0 ? parent.nextElementSibling : parent),
+        (move = parent.getAttribute("slot"));
+      console.log("haxMoveGridPlate move layout", parent, target, move);
+      if (target) {
+        parent.parentNode.insertBefore(node, target);
+        if (!!move) node.setAttribute("slot", move);
+      }
     }
     this.scrollHere(node);
     this.positionContextMenus(node);
@@ -2234,6 +2210,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "insert-above-active":
+        console.log("insert-above-active");
         if (this.activeNode && this.activeNode.previousElementSibling) {
           this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
         } else {
@@ -2243,6 +2220,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
       case "insert-below-active":
+        console.log("insert-below-active");
         this.haxInsert("p", "", {});
         break;
       case "hax-source-view-toggle":
@@ -2436,10 +2414,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
       case "hax-plate-up":
-        this.haxMoveGridPlate("up", this.activeNode);
+        console.log("hax-plate-up");
+        this.haxMoveGridPlate(this.activeNode, -1);
         break;
       case "hax-plate-down":
-        this.haxMoveGridPlate("down", this.activeNode);
+        console.log("hax-plate-down");
+        this.haxMoveGridPlate(this.activeNode);
         break;
     }
   }
@@ -2463,7 +2443,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __focusLogic(target, autoFocus = true) {
     let stopProp = false;
-    console.log("__focusLogic", target, autoFocus, this.activeNode, stopProp);
+    //console.log("__focusLogic", target, autoFocus, this.activeNode, stopProp);
     // only worry about these when we are in edit mode
     // and there is no drawer open
     if (this.editMode && !this.__tabTrap) {
@@ -2568,7 +2548,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } else {
       this.__tabTrap = false;
     }
-    console.log("__focusLogic", target, autoFocus, this.activeNode, stopProp);
+    //console.log("__focusLogic", target, autoFocus, this.activeNode, stopProp);
     return stopProp;
   }
   /**
@@ -2760,7 +2740,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     status,
     target = this.shadowRoot.querySelector("#body")
   ) {
-    console.log("_applyContentEditable", status, target);
+    //console.log("_applyContentEditable", status, target);
     // this is just direct children so 1st level of the body
     let children =
       target.localName === "slot"
@@ -2845,6 +2825,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @returns {boolean} if the item can move a set number of slots
    */
   __layoutCanMove(target, layout, before) {
+    console.log("layoutCanMove", target, layout, before);
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [
@@ -2861,6 +2842,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {number} -1 for left or +1 for right
    */
   __layoutMove(target, layout, before) {
+    console.log("layoutCanMove", target, layout, before);
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [

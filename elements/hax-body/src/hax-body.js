@@ -162,14 +162,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           --hax-body-possible-target-background-color: inherit;
         }
         #topcontext {
-          z-index: var(--hax-ui-focus-z-index) \;;
+          z-index: var(--hax-ui-focus-z-index);
         }
         #topcontextmenu {
           display: flex;
           width: 100%;
-          align-items: bottom;
+          align-items: flex-end;
           justify-content: space-between;
           z-index: var(--hax-ui-focus-z-index);
+          position: absolute;
+          bottom: 0;
         }
         #textcontextmenu,
         #cecontextmenu {
@@ -373,6 +375,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           border-top: 8px
             var(--hax-contextual-action-hover-color, var(--hax-ui-color-accent));
           margin-top: -8px;
+        }
+        /** This is mobile layout for controls */
+        @media screen and (max-width: 800px) {
+          #topcontextmenu {
+            flex-wrap: wrap-reverse;
+          }
+          .hax-context-menu {
+            height: 0px;
+          }
+          .hax-context-visible {
+            height: auto;
+          }
         }
 
         @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
@@ -1850,22 +1864,47 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Move grid plate around
    */
-  haxMoveGridPlate(direction, node) {
+  haxMoveGridPlate(node, direction = 1) {
     // menu is actually in the element for render purposes
     // support moving things multiple directions
     this.___moveLock = true;
-    switch (direction) {
-      case "up":
-        // ensure we can go up
-        if (node.previousElementSibling !== null) {
-          node.parentNode.insertBefore(node, node.previousElementSibling);
-        }
-        break;
-      case "down":
-        if (node.nextElementSibling !== null) {
-          node.parentNode.insertBefore(node.nextElementSibling, node);
-        }
-        break;
+    console.log("haxMoveGridPlate", node, direction);
+    let parent = !node ? undefined : node.parentNode,
+      target =
+        direction > 0 ? node.nextElementSibling : node.previousElementSibling,
+      slots = this.__layoutSlots(parent) || [],
+      slot = node.getAttribute("slot"),
+      index = slot ? slots.indexOf(slot) : -1,
+      move = slots[index + direction],
+      sameSlot = !!target && (!slot || slot === target.getAttribute("slot"));
+    console.log("haxMoveGridPlate 2", parent, slots, node, target, move);
+    if (!!target && (!slot || slot === target.getAttribute("slot"))) {
+      //move within a slot
+      console.log(
+        "haxMoveGridPlate within slot",
+        parent,
+        node,
+        target,
+        slot,
+        move
+      );
+      parent.insertBefore(
+        node,
+        direction > 0 ? target.nextElementSibling : target
+      );
+    } else if (!!move) {
+      //move slot
+      console.log("haxMoveGridPlate move slot", move, node);
+      node.setAttribute("slot", move);
+    } else if (node && parent && parent !== this) {
+      //move out of layout
+      (target = direction > 0 ? parent.nextElementSibling : parent),
+        (move = parent.getAttribute("slot"));
+      console.log("haxMoveGridPlate move layout", parent, target, move);
+      if (target) {
+        parent.parentNode.insertBefore(node, target);
+        if (!!move) node.setAttribute("slot", move);
+      }
     }
     this.scrollHere(node);
     this.positionContextMenus(node);
@@ -2171,6 +2210,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "insert-above-active":
+        console.log("insert-above-active");
         if (this.activeNode && this.activeNode.previousElementSibling) {
           this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
         } else {
@@ -2180,6 +2220,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
       case "insert-below-active":
+        console.log("insert-below-active");
         this.haxInsert("p", "", {});
         break;
       case "hax-source-view-toggle":
@@ -2373,10 +2414,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         break;
       case "hax-plate-up":
-        this.haxMoveGridPlate("up", this.activeNode);
+        console.log("hax-plate-up");
+        this.haxMoveGridPlate(this.activeNode, -1);
         break;
       case "hax-plate-down":
-        this.haxMoveGridPlate("down", this.activeNode);
+        console.log("hax-plate-down");
+        this.haxMoveGridPlate(this.activeNode);
         break;
     }
   }
@@ -2400,7 +2443,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   __focusLogic(target, autoFocus = true) {
     let stopProp = false;
-    console.log("__focusLogic", target, autoFocus, this.activeNode, stopProp);
+    //console.log("__focusLogic", target, autoFocus, this.activeNode, stopProp);
     // only worry about these when we are in edit mode
     // and there is no drawer open
     if (this.editMode && !this.__tabTrap) {
@@ -2505,7 +2548,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } else {
       this.__tabTrap = false;
     }
-    console.log("__focusLogic", target, autoFocus, this.activeNode, stopProp);
+    //console.log("__focusLogic", target, autoFocus, this.activeNode, stopProp);
     return stopProp;
   }
   /**
@@ -2697,7 +2740,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     status,
     target = this.shadowRoot.querySelector("#body")
   ) {
-    console.log("_applyContentEditable", status, target);
+    //console.log("_applyContentEditable", status, target);
     // this is just direct children so 1st level of the body
     let children =
       target.localName === "slot"
@@ -2782,6 +2825,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @returns {boolean} if the item can move a set number of slots
    */
   __layoutCanMove(target, layout, before) {
+    console.log("layoutCanMove", target, layout, before);
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [
@@ -2798,6 +2842,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * @param {number} -1 for left or +1 for right
    */
   __layoutMove(target, layout, before) {
+    console.log("layoutCanMove", target, layout, before);
     if (!layout.shadowRoot) return false;
     let container = layout.shadowRoot.querySelector(`[slot=${slot}]`),
       containers = [
