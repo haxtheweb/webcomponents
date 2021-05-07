@@ -7,7 +7,6 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
-//import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "@lrnwebcomponents/simple-progress/simple-progress.js";
 import "@lrnwebcomponents/replace-tag/replace-tag.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";

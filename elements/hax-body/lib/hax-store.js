@@ -1765,6 +1765,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       activeNode: observable,
       globalPreferences: observable,
       activeGizmo: computed,
+      activeNodeIndex: computed,
       editMode: observable,
       appList: observable,
       activeApp: observable,
@@ -3073,6 +3074,21 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let gizmo = toJS(this._calculateActiveGizmo(this.activeNode));
     this.write("activeGizmo", gizmo, this);
     return gizmo;
+  }
+  // find node index / order based on
+  get activeNodeIndex() {
+    let nodeLookup = null;
+    if (this.activeNode) {
+      Array.from(toJS(this.activeHaxBody).children).map((el, i) => {
+        if (
+          toJS(this.activeNode) === el ||
+          toJS(this.activeNode).parentElement === el
+        ) {
+          nodeLookup = i;
+        }
+      });
+    }
+    return nodeLookup;
   }
   async attemptGizmoTranslation(tag, properties) {
     // support locales if available and not default lang

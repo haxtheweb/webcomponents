@@ -6,6 +6,7 @@ import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { HaxTrayDetailHeadings } from "@lrnwebcomponents/hax-body/lib/hax-ui-styles.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
+import { autorun, toJS } from "mobx";
 
 /**
  * `hax-map`
@@ -59,6 +60,11 @@ class HaxMap extends I18NMixin(LitElement) {
         li > hax-toolbar-item {
           width: 100%;
         }
+        hax-toolbar-item[data-active-item]::part(button) {
+          color: var(--hax-ui-color);
+          background-color: var(--hax-ui-background-color-accent);
+          border-color: var(--hax-ui-color-accent);
+        }
         li > hax-toolbar-item::part(button),
         li > hax-toolbar-item[icon="hax:h2"].heading-level-h2::part(button) {
           width: 100%;
@@ -106,6 +112,9 @@ class HaxMap extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       namespace: "hax",
+    });
+    autorun(() => {
+      this.activeNodeIndex = toJS(HAXStore.activeNodeIndex);
     });
   }
   async updateHAXMap(e) {
@@ -207,6 +216,7 @@ class HaxMap extends I18NMixin(LitElement) {
                 class="heading-level-${element.parent || "h1"}"
                 @click="${(e) => this.goToItem(index)}"
                 data-index="${index}"
+                ?data-active-item="${index === this.activeNodeIndex}"
                 icon="${element.icon}"
                 label="${element.name}"
                 show-text-label
@@ -232,8 +242,10 @@ class HaxMap extends I18NMixin(LitElement) {
     });
   }
   goToItem(index) {
-    if (index) {
+    if (index !== false) {
+      // find based on index position
       let activeChild = HAXStore.activeHaxBody.children[parseInt(index)];
+      HAXStore.activeNode = activeChild;
       activeChild.classList.add("blinkfocus");
       if (typeof activeChild.scrollIntoViewIfNeeded === "function") {
         activeChild.scrollIntoViewIfNeeded(true);
@@ -281,8 +293,11 @@ class HaxMap extends I18NMixin(LitElement) {
       eCount: {
         type: String,
       },
+      activeNodeIndex: {
+        type: Number,
+      },
     };
   }
 }
-window.customElements.define(HaxMap.tag, HaxMap);
+customElements.define(HaxMap.tag, HaxMap);
 export { HaxMap };
