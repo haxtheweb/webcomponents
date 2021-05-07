@@ -506,7 +506,7 @@ class CleanTwo extends HAXCMSThemeParts(
           -webkit-box-direction: normal;
           margin: 0px;
           padding: 0px;
-          overflow-x: hidden;
+          overflow: hidden;
         }
         simple-icon-button,
         site-rss-button,

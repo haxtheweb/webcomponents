@@ -23,7 +23,6 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
     super();
     this.alt = "";
     this.accentColor = "blue";
-    this.dark = false;
   }
   /**
    * LitElement style callback
@@ -94,7 +93,12 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
       ${this.elementVisible
         ? html` <!-- Container -->
             <div class="container">
-              <img class="image" src="${this.source}" alt="${this.alt}" />
+              <img
+                class="image"
+                src="${this.source}"
+                alt="${this.alt}"
+                loading="lazy"
+              />
 
               <div class="square">
                 <!-- Icon, Header -->
