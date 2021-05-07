@@ -19,16 +19,12 @@ import {
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
-import "@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js";
 import "./hax-tray-upload.js";
 import "./hax-gizmo-browser.js";
 import "./hax-app-browser.js";
 import "./hax-stax-browser.js";
 import "./hax-map.js";
 import "./hax-preferences-dialog.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { Undo } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
@@ -58,16 +54,16 @@ class HaxTray extends I18NMixin(
       "hax-drop-focus-event": "_expandSettingsPanel",
     };
     this.t = {
-      structure: "Structure",
+      structure: "Outline",
       structureTip: "View Page Structure",
       editSelected: "Edit selected",
       edit: "Edit",
       save: "Save",
       move: "Move",
-      moveMenu: "Move menu",
+      moveMenu: "Move",
       menuAlignment: "Menu Alignment",
-      topLeft: "Top Left",
-      topRight: "Top Right",
+      left: "Top Left",
+      right: "Top Right",
       bottomLeft: "Bottom Left",
       bottomRight: "Bottom Right",
       menuPosition: "Menu position",
@@ -77,7 +73,7 @@ class HaxTray extends I18NMixin(
       collapse: "Collapse",
       menuSize: "Menu size",
       menuSizeDescription: "Expand or collapse the menu visually.",
-      takeATour: "Take a Tour",
+      takeATour: "Help",
       settings: "Settings",
       source: "Source",
       undo: "Undo",
@@ -113,7 +109,7 @@ class HaxTray extends I18NMixin(
         advanced: {},
       },
     };
-    this.collapsed = false;
+    this.collapsed = true;
     this.activeTab = "item-0";
     this.activeSchema = [];
     this.canUndo = false;
@@ -125,6 +121,10 @@ class HaxTray extends I18NMixin(
     this.__setup = false;
     setTimeout(() => {
       import("./hax-tray-button.js");
+      import("./hax-toolbar-menu.js");
+      import(
+        "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js"
+      );
       this.addEventListener(
         "hax-tray-button-click",
         this._processTrayEvent.bind(this)
@@ -170,86 +170,112 @@ class HaxTray extends I18NMixin(
       ...HaxComponentStyles,
       css`
         :host {
-          display: block;
           z-index: 1000;
-          position: absolute;
-          height: calc(100vh - var(--hax-tray-top, 0px));
-          top: var(--hax-tray-top, 0px);
-          overflow: auto;
+          position: fixed;
+          top: 0;
           font-family: var(--hax-ui-font-family);
           font-size: var(--hax-ui-font-size);
           color: var(--hax-ui-color);
-          transition: 0.2s all ease-in-out;
-          transition-delay: 0.3s;
-          transition: 0s color linear !important;
+          transition: 0s color linear 0s;
+        }
+        :host([edit-mode][element-align="custom"]) {
+          left: var(--hax-tray-custom-x);
+          left: clamp(
+            0px,
+            var(--hax-tray-custom-x),
+            calc(100vw - var(--hax-tray-width, 300px))
+          );
+        }
+        :host([element-align="left"]) {
+          left: 0;
+        }
+        :host([element-align="right"]) {
+          right: 0;
         }
         :host(:focus-within),
         :host(:hover) {
           z-index: var(--hax-ui-focus-z-index);
         }
-        :host([collapsed]) {
-          height: unset;
-          transition-delay: 0.3s;
-        }
         .wrapper {
-          position: fixed;
-          top: 0;
-          width: var(--hax-tray-width);
-          transition: 0.2s all ease-in-out;
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
           display: flex;
-          flex-direction: column;
-          max-height: 100%;
-          margin: 0;
-          padding: 0;
-        }
-        #wrapper,
-        #wrapper > * {
+          align-items: stretch;
+          flex-direction: row-reverse;
+          opacity: 0;
+          visibility: visible;
+          pointer-events: none;
+          width: var(--hax-tray-width, 300px);
           overflow-x: hidden;
           overflow-y: auto;
+          background-color: var(--hax-ui-background-color);
+          transition: 0.2s width ease-in-out 0s, 0.5s left ease-in-out 0.3s,
+            0.5s right ease-in-out 0.3s, 0s background-color linear,
+            0s border linear;
+          height: 100vh;
+        }
+        :host([collapsed]) .wrapper {
+          overflow-x: visible;
         }
         :host([element-align="left"]) .wrapper,
-        :host([element-align="bottom-left"]) .wrapper {
+        :host([element-align="custom"]) .wrapper {
           left: -1000px;
+          flex-direction: row;
         }
-        :host([element-align="right"]) .wrapper,
-        :host([element-align="bottom-right"]) .wrapper {
+        :host([element-align="right"]) .wrapper {
           right: -1000px;
         }
         :host([edit-mode][element-align="left"]) .wrapper,
-        :host([edit-mode][element-align="bottom-left"]) .wrapper {
+        :host([edit-mode][element-align="custom"]) .wrapper {
           left: 0;
         }
-        :host([edit-mode][element-align="right"])
-          .wrapper
-          :host([edit-mode][element-align="bottom-right"])
-          .wrapper {
+        :host([edit-mode][element-align="right"]) .wrapper {
           right: 0;
-        }
-        :host([edit-mode][element-align="bottom-left"]) .wrapper,
-        :host([edit-mode][element-align="bottom-right"]) .wrapper {
-          top: unset;
-          bottom: 0;
-        }
-        :host([edit-mode][element-align="custom"]) .wrapper {
-          left: var(--hax-tray-custom-x);
-          left: clamp(
-            0px,
-            var(--hax-tray-custom-x),
-            calc(100vw - var(--hax-tray-width))
-          );
-        }
-        :host([edit-mode][collapsed][element-align="custom"]) .wrapper {
-          top: var(--hax-tray-custom-y);
-          top: clamp(0px, var(--hax-tray-custom-y), calc(100vh - 34px));
         }
         :host([edit-mode]) .wrapper {
           opacity: 1;
           visibility: visible;
-          right: 0;
           pointer-events: all;
+        }
+        #menubar {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: stretch;
+          width: var(--hax-tray-menubar-min-width, 44px);
+          overflow: visible;
+          flex: 0 0 auto;
+          /*transition:0.3s width ease-in-out 0s;*/
+          z-index: 6;
+        }
+        :host([collapsed]) #menubar {
+          width: unset;
+        }
+        #menubar > * {
+          background-color: var(--hax-ui-background-color);
+        }
+        #menubar > *::part(button) {
+          padding: 2px;
+        }
+        #menubar > *::part(label) {
+          opacity: 0;
+          margin: 0px;
+          width: 0%;
+          font-size: 10px;
+          padding: 0px;
+          visibility: hidden;
+          overflow: hidden;
+          display: inline-block;
+          text-align: left;
+          transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,
+            0.2s padding ease-in-out 0s, 0s opacity linear 0.2s,
+            0s visibility linear 0.2s;
+        }
+        :host([collapsed]) #menubar > *::part(label) {
+          opacity: 1;
+          width: 100%;
+          visibility: visible;
+          overflow: unset;
+          transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,
+            0.2s padding ease-in-out 0s, 0s opacity linear 0s,
+            0s visibility linear 0s, 0s overflow linear 0.2s;
         }
         loading-indicator {
           --loading-indicator-background-color: var(
@@ -261,89 +287,70 @@ class HaxTray extends I18NMixin(
             black
           );
         }
-        #tray-detail {
+        .detail {
           flex: 1 1 auto;
-          overflow-y: auto;
-          max-height: 100vh;
+          opacity: 1;
+          visibility: visible;
+          pointer-events: all;
+          transition: 0s opacity ease-in-out 0, 0s visibility ease-in-out 0s,
+            0s border linear;
           border: 1px solid var(--hax-ui-border-color);
-          border-top: 0px solid var(--hax-ui-border-color);
-          max-width: calc(var(--hax-tray-width) - 2 * var(--hax-ui-spacing-xs));
-          background-color: var(--hax-ui-background-color);
-          padding: 0 var(--hax-ui-spacing-lg) var(--hax-ui-spacing);
-          transition: all 0.3s linear;
-          transition: 0s background-color linear !important;
-          transition: 0s border-color linear !important;
         }
-        :host([edit-mode][collapsed]) #tray-detail {
-          left: unset !important;
-          right: unset !important;
-          max-height: 0vh;
-          border-bottom: 0px solid var(--hax-ui-border-color);
-          padding: 0 var(--hax-ui-spacing-lg) 0;
-          max-width: calc(100% - 2 * var(--hax-ui-spacing-lg) - 2px);
-          transition: all 0.3s linear;
-          transition: 0s background-color linear !important;
-          transition: 0s border-color linear !important;
+        :host([collapsed]) .detail {
+          width: 0px;
+          overflow: hidden;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          max-height: 100vh;
+          overflow-y: auto;
+          transition: 0s opacity ease-in-out 0.7s,
+            0s visibility ease-in-out 0.7s;
         }
-        #tray-detail[hidden] {
-          height: 0px;
+        #tray-detail {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: calc(
+            var(--hax-tray-width) - var(--hax-tray-menubar-min-width, 44px) - 2 *
+              var(--hax-ui-spacing)
+          );
+          padding: 0 var(--hax-ui-spacing) var(--hax-ui-spacing);
+          height: 100vh;
+          overflow-y: auto;
         }
-        hax-toolbar {
-          flex: 0 0 auto;
-          border: none;
-          background-color: var(--hax-ui-background-color);
-          width: var(--hax-tray-width);
-          transition: all 0.5s ease-in-out;
-          transition: 0s color linear !important;
-          transition: 0s background-color linear !important;
-          transition: 0s border-color linear !important;
+        :host([element-align="left"]) #tray-detail,
+        :host([element-align="custom"]) #tray-detail {
+          left: unset;
+          right: 0;
         }
-        simple-button-grid {
-          background-color: var(--hax-ui-background-color);
-          padding: var(--hax-ui-spacing-xs);
-          border-bottom: none;
-        }
-        hax-toolbar .group,
-        simple-button-grid .group {
-          border: none;
-          margin: 0;
-          padding: 0;
-        }
-        hax-toolbar .group {
-          justify-content: space-around;
-          flex: 0 0 auto;
-        }
-        hax-toolbar *[feature]::part(button) {
-          border: 1px solid var(--hax-ui-color-accent-secondary);
-        }
-        :host([edit-mode][collapsed]) hax-toolbar.tray-detail-ops {
-          border-bottom: 1px solid var(--hax-ui-border-color);
-        }
-        #menugroup {
-          flex: 1 1 auto;
-        }
-        #menugroup > * {
-          align-items: flex-start;
-          flex: 0 0 50%;
+        :host([edit-mode]:not([collapsed])) #tray-detail {
+          display: block;
         }
         #haxcancelbutton::part(dropdown-icon) {
           display: none;
         }
-        #contentgroup > * {
-          --simple-toolbar-button-white-space: wrap;
+        .tray-detail-titlebar {
+          background-color: var(--hax-ui-color-accent);
+          padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing);
+          margin: 0 calc(0px - var(--hax-ui-spacing)) var(--hax-ui-spacing);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: var(--simple-modal-titlebar-height, unset);
+          line-height: var(--simple-modal-titlebar-line-height, unset);
+          position: sticky;
+          z-index: 2;
+          top: 0;
         }
-        #top-left::part(icon),
-        #bottom-right::part(icon) {
-          transform: rotate(45deg);
+        .tray-detail-titlebar h4 {
+          flex: 1 1 auto;
+          font-size: var(--hax-ui-font-size);
+          font-family: var(--hax-ui-font-family);
         }
-        #top-right::part(icon),
-        #bottom-left::part(icon) {
-          transform: rotate(-45deg);
+        #toggle-tray-size {
+          flex: 0 0 auto;
         }
-        #content-map::part(icon) {
-          transform: rotate(180deg);
-        }
-        hax-toolbar,
         hax-tray-button,
         hax-app-browser,
         hax-gizmo-browser {
@@ -353,20 +360,6 @@ class HaxTray extends I18NMixin(
           transition: 0s border-color linear !important;
           visibility: visible;
         }
-        #tray-grid {
-          flex: 0 0 auto;
-          border: 1px solid var(--hax-ui-border-color);
-        }
-        #tray-grid hax-tray-button::part(button) {
-          border: 1px solid var(--hax-ui-border-color);
-        }
-        #tray-grid > hax-tray-button::part(button) {
-          --simple-toolbar-button-white-space: normal !important;
-        }
-        #tray-grid #haxsavebutton {
-          grid-column: 1 / 4;
-        }
-        hax-toolbar:not(:defined),
         hax-tray-button:not(:defined),
         hax-app-browser:not(:defined),
         hax-gizmo-browser:not(:defined) {
@@ -377,10 +370,6 @@ class HaxTray extends I18NMixin(
         }
         *[hidden] {
           display: none;
-        }
-        #settingscollapse div[slot="content"] {
-          padding: 0;
-          margin: 0;
         }
         :host([element-align="right"]) #button {
           right: 0;
@@ -404,14 +393,55 @@ class HaxTray extends I18NMixin(
         }
         /** This is mobile layout for controls */
         @media screen and (max-width: 800px) {
-          .wrapper {
-            top: 0;
-            left: 0;
-            right: 0;
-            margin: 0 !important;
+          :host {
+            --hax-tray-width: 100%;
+            --hax-tray-menubar-min-width: 32px;
+            width: 100%;
           }
-          #toggle-element-align {
+          .wrapper {
+            width: 100%;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            flex-direction: column;
+            align-items: stretch;
+            height: 100vh;
+            max-height: 100vh;
+            transition: background-color linear, 0s border linear;
+          }
+          :host([collapsed]) .wrapper {
+            height: auto;
+          }
+          #menubar {
+            position: sticky;
+            flex-direction: row;
+            left: 0;
+            top: 0;
+            height: auto;
+            flex: 0 0 auto;
+            width: 100%;
+          }
+          #menubar > * {
+            flex: 1 0 auto;
+            min-width: var(--hax-tray-menubar-min-width, 32px);
+          }
+          #menubar > *::part(button) {
+            min-width: var(--hax-tray-menubar-min-width, 32px);
+            justify-content: space-around;
+          }
+          #menubar > *::part(label) {
             display: none;
+          }
+          .detail {
+            width: 100%;
+            position: relative;
+            flex: 1 1 100%;
+          }
+          :host([collapsed]) .detail {
+            flex: 0 0 0px;
+          }
+          #tray-detail {
+            top: 0;
+            width: 100%;
           }
         }
         @media screen and (max-width: 600px) {
@@ -428,12 +458,14 @@ class HaxTray extends I18NMixin(
   render() {
     return html`
       ${this.panelOpsTemplate}
-      <div class="wrapper" part="hax-tray-wrapper">
-        <loading-indicator
-          ?loading="${!this.appStoreLoaded}"
-        ></loading-indicator>
+      <div class="wrapper">
         ${this.menuToolbarTemplate}
-        ${this.gridTemplate}${this.trayDetailTemplate}
+        <div class="detail">
+          <loading-indicator
+            ?loading="${!this.appStoreLoaded}"
+          ></loading-indicator>
+          ${this.trayDetailTemplate}
+        </div>
       </div>
     `;
   }
@@ -450,6 +482,7 @@ class HaxTray extends I18NMixin(
             id="button"
             feature
             show-text-label
+            show-tooltip
             label="${this.editMode ? this.t.save : this.t.edit}"
           ></hax-tray-button>
         `;
@@ -457,132 +490,32 @@ class HaxTray extends I18NMixin(
   get toolbarsTemplate() {
     return html`${this.opsToolbarTemplate}${this.trayToolbarTemplate}`;
   }
-  get gridTemplate() {
-    return html`<simple-button-grid id="tray-grid" columns="4" rows="3">
-      ${this.saveButtons}${this.doButtons} ${this.sourceButton}
-      ${this.settingsButton}
+  get menuToolbarTemplate() {
+    return html` <div id="menubar" class="collapse-menu">
+      ${this.menuButtons} ${this.saveButtons} ${this.doButtons}
+      ${this.contentButtons}
       <slot name="tray-buttons-pre"></slot>
-      ${this.contentButtons} ${this.mapButton}
-    </simple-button-grid>`;
+      ${this.moreButtons}
+    </div>`;
   }
   get menuButtons() {
     return html`
-      <div id="menugroup" class="group collapse-menu">
-        <hax-toolbar-menu
-          ?disabled="${this.hasActiveEditingElement}"
-          id="drag"
-          feature
-          action
-          icon="hax:arrow-all"
-          label="${this.t.moveMenu}"
-          draggable="true"
-          reset-on-select
-          data-simple-tour-stop
-          data-stop-title="${this.t.menuAlignment}"
-          show-text-label
-          @dragstart="${this._dragStart}"
-          @dragend="${this._dragEnd}"
-        >
-          <simple-toolbar-menu-item slot="menuitem">
-            <hax-tray-button
-              role="menuitem"
-              show-text-label
-              align-horizontal="left"
-              id="top-left"
-              event-name="toggle-element-align"
-              icon="arrow-back"
-              label="${this.t.topLeft}"
-              index="0"
-              ?disabled="${this.elementAlign == "left"}"
-              ?toggled="${this.elementAlign == "left"}"
-            >
-            </hax-tray-button>
-          </simple-toolbar-menu-item>
-          <simple-toolbar-menu-item slot="menuitem">
-            <hax-tray-button
-              role="menuitem"
-              show-text-label
-              align-horizontal="left"
-              id="top-right"
-              event-name="toggle-element-align"
-              icon="arrow-forward"
-              label="${this.t.topRight}"
-              index="1"
-              ?disabled="${this.elementAlign == "right"}"
-              ?toggled="${this.elementAlign == "right"}"
-            >
-              >
-            </hax-tray-button>
-          </simple-toolbar-menu-item>
-          <simple-toolbar-menu-item slot="menuitem">
-            <hax-tray-button
-              role="menuitem"
-              show-text-label
-              align-horizontal="left"
-              id="bottom-left"
-              event-name="toggle-element-align"
-              icon="arrow-back"
-              text-align="left"
-              label="${this.t.bottomLeft}"
-              ?disabled="${this.elementAlign == "bottom-left"}"
-              ?toggled="${this.elementAlign == "bottom-left"}"
-              index="2"
-            >
-            </hax-tray-button>
-          </simple-toolbar-menu-item>
-          <simple-toolbar-menu-item slot="menuitem">
-            <hax-tray-button
-              role="menuitem"
-              show-text-label
-              align-horizontal="left"
-              id="bottom-right"
-              event-name="toggle-element-align"
-              icon="arrow-forward"
-              label="${this.t.bottomRight}"
-              text-align="left"
-              ?disabled="${this.elementAlign == "bottom-right"}"
-              ?toggled="${this.elementAlign == "bottom-right"}"
-              index="3"
-            >
-              >
-            </hax-tray-button>
-          </simple-toolbar-menu-item>
-          <div slot="tour" data-stop-title>${this.t.menuPosition}</div>
-          <div slot="tour" data-stop-content>${this.t.changeSideVisually}</div>
-        </hax-toolbar-menu>
         <hax-tray-button
-          feature
-          voice-command="toggle menu"
-          id="toggle-tray-size"
-          event-name="toggle-tray-size"
           show-text-label
-          icon="${this.collapsed ? "unfold-more" : "unfold-less"}"
-          label="${this.collapsed ? this.t.expand : this.t.collapse}"
-          data-simple-tour-stop
-          show-text-label
-          text-align="left"
+          show-tooltip
+          align-horizontal="${this.collapsed ? "left" : "center"}"
+          id="${this.elementAlign == "left" ? "right" : "left"}"
+          event-name="toggle-element-align"
+          icon="arrow-${this.elementAlign == "left" ? "forward" : "back"}"
+          label="${this.elementAlign == "left" ? this.t.right : this.t.left}"
+          index="${this.elementAlign == "left" ? "1" : "0"}"
+          tooltip="${this.t.moveMenu} ${
+      this.elementAlign == "left" ? this.t.right : this.t.left
+    }"
         >
-          <div data-stop-title>${this.t.menuSize}</div>
-          <div data-stop-content>${this.t.menuSizeDescription}</div>
         </hax-tray-button>
-      </div>
-      <div class="group" id="tourgroup">
-        <hax-tray-button
-          feature
-          event-name="${this.tourOpened ? "stop-tour" : "start-tour"}"
-          icon="help"
-          label="${this.t.takeATour}"
-          voice-command="start tour"
-          toggles
-          ?toggled="${this.tourOpened}"
-        ></hax-tray-button>
-      </div>
+    </div>
     `;
-  }
-  get menuToolbarTemplate() {
-    return html` <hax-toolbar id="menubar" class="quick-buttons collapse-menu"
-      >${this.menuButtons}</hax-toolbar
-    >`;
   }
   get saveButtons() {
     return this.hidePanelOps
@@ -591,33 +524,38 @@ class HaxTray extends I18NMixin(
           <hax-tray-button
             @click="${this._clickSaveButton}"
             icon="save"
-            icon-position="top"
+            icon-position="left"
             id="haxsavebutton"
             label="${this.editMode ? this.t.save : this.t.edit}"
             event-name="save"
             voice-command="save page"
             show-text-label
+            show-tooltip
+            align-horizontal="${this.collapsed ? "left" : "center"}"
           ></hax-tray-button>
           <hax-toolbar-menu
-            icon="close"
+            icon="cancel"
             id="haxcancelbutton"
             label="${this.t.cancel}"
-            icon-position="top"
+            icon-position="left"
             show-text-label
-            warning
+            show-tooltip
+            align-horizontal="${this.collapsed ? "left" : "center"}"
           >
             <simple-toolbar-menu-item slot="menuitem">
               <hax-tray-button
                 role="menuitem"
                 danger
                 align-horizontal="left"
-                icon="close"
+                icon="warning"
                 id="haxcancelbutton"
                 label="${this.t.cancelWithoutSaving}"
+                warning
                 event-name="cancel"
                 voice-command="cancel edit"
                 icon-position="left"
                 show-text-label
+                show-tooltip
               ></hax-tray-button>
             </simple-toolbar-menu-item>
           </hax-toolbar-menu>
@@ -630,11 +568,12 @@ class HaxTray extends I18NMixin(
         label="${this.t.undo}"
         event-name="undo"
         voice-command="undo"
-        class="hide-small"
         data-simple-tour-stop
         data-stop-title="label"
-        icon-position="top"
+        icon-position="left"
         show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
       >
         <div slot="tour" data-stop-content>
           Undo the previous operation in the content, whether typing or adding a
@@ -647,85 +586,34 @@ class HaxTray extends I18NMixin(
         label="${this.t.redo}"
         event-name="redo"
         voice-command="redo"
-        class="hide-small"
         data-simple-tour-stop
         data-stop-title="label"
-        icon-position="top"
+        icon-position="left"
         show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
       >
         <div slot="tour" data-stop-content>
           Redo the last action that you hit Undo on.
         </div>
       </hax-tray-button>`;
   }
-  get sourceButton() {
-    return html` <hax-tray-button
-      id="exportbtn"
-      icon="code"
-      label="${this.t.source}"
-      voice-command="view (page) source"
-      data-simple-tour-stop
-      data-stop-title="label"
-      icon-position="top"
-      show-text-label
-    >
-      <div data-stop-content>
-        Every change you make in HAX is ultimately writing HTML. Know HTML?
-        Awesome, pop open the source view and make any changes you like. HTML is
-        always behind the scenes ensuring that content is portable, well
-        formatted and easy to read.
-      </div>
-    </hax-tray-button>`;
-  }
-  get opsToolbarTemplate() {
-    return html` <hax-toolbar class="quick-buttons collapse-menu">
-      <div id="savegroup" class="ops group">${this.saveButtons}</div>
-      <div id="dogroup" class="group">${this.doButtons}</div>
-      <slot name="tray-buttons-pre"></slot>
-      <div id="source" class="group">${this.sourceButton}</div>
-    </hax-toolbar>`;
-  }
   get contentButtons() {
     return html` <hax-tray-button
-        event-name="content-edit"
-        icon="build"
-        id="content-edit"
-        label="${this.t.edit}"
-        ?disabled="${!this.activeTagName ||
-        this.activeTagName == "" ||
-        !this.activeNode ||
-        !this.activeNode.tagName}"
-        voice-command="(modify)(configure)(edit) selected"
-        data-simple-tour-stop
-        data-stop-title="label"
-        controls="tray-detail"
-        show-text-label
-        icon-position="top"
-        tooltip="${this.t.editSelected} ${this.activeTagName}"
-        toggles
-        ?toggled="${this.trayDetail === "content-edit"}"
-      >
-        <div slot="tour" data-stop-content>
-          When you want to add any content to the page from text, to images, to
-          anything more advanced; you can always find items to add under the Add
-          content menu. Click to expand, then either drag and drop items into
-          the page or click and have them placed near whatever you are actively
-          working on.
-        </div>
-      </hax-tray-button>
-      <hax-tray-button
         event-name="content-add"
         icon="add-box"
         id="content-add"
         label="${this.t.blocks}"
         voice-command="select blocks (menu)"
-        show-text-label
-        icon-position="top"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
         toggles
         ?toggled="${this.trayDetail === "content-add"}"
+        icon-position="left"
+        show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
       >
         <div slot="tour" data-stop-content>
           When you want to add any content to the page from text, to images, to
@@ -740,48 +628,95 @@ class HaxTray extends I18NMixin(
         icon="image:collections"
         id="media-add"
         label="${this.t.media}"
-        show-text-label
-        icon-position="top"
         voice-command="select media (menu)"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
         toggles
         ?toggled="${this.trayDetail === "media-add"}"
+        icon-position="left"
+        show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
       >
         <div slot="tour" data-stop-content>
           Search for media and content anywhere that your copy of HAX has access
           to. Pick what to search, perform the search and then click or drag the
           item into the contnet.
         </div>
-      </hax-tray-button>`;
-  }
-  get mapButton() {
-    return html`
+      </hax-tray-button>
+      <hax-tray-button
+        event-name="content-edit"
+        icon="build"
+        id="content-edit"
+        label="${this.t.edit}"
+        ?disabled="${!this.activeTagName ||
+        this.activeTagName == "" ||
+        !this.activeNode ||
+        !this.activeNode.tagName}"
+        voice-command="(modify)(configure)(edit) selected"
+        data-simple-tour-stop
+        data-stop-title="label"
+        controls="tray-detail"
+        tooltip="${this.t.editSelected} ${this.activeTagName}"
+        toggles
+        ?toggled="${this.trayDetail === "content-edit"}"
+        icon-position="left"
+        show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
+      >
+        <div slot="tour" data-stop-content>
+          When you want to add any content to the page from text, to images, to
+          anything more advanced; you can always find items to add under the Add
+          content menu. Click to expand, then either drag and drop items into
+          the page or click and have them placed near whatever you are actively
+          working on.
+        </div>
+      </hax-tray-button>
       <hax-tray-button
         event-name="content-map"
         icon="icons:toc"
         id="content-map"
         label="${this.t.structure}"
-        show-text-label
-        icon-position="top"
         voice-command="select structure (menu)"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
         toggles
         ?toggled="${this.trayDetail === "content-map"}"
+        icon-position="left"
+        show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
       >
         <div data-stop-content>
           This is a simple list of all the block areas of the page that are
           clickable to jump through items quickly as well as review some simple
           overview stats.
         </div>
-      </hax-tray-button>
-    `;
+      </hax-tray-button>`;
   }
-  get settingsButton() {
-    return html`
+  get moreButtons() {
+    return html`<hax-tray-button
+        id="exportbtn"
+        icon="code"
+        label="${this.t.source}"
+        voice-command="view (page) source"
+        data-simple-tour-stop
+        data-stop-title="label"
+        icon-position="left"
+        show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
+      >
+        <div data-stop-content>
+          Every change you make in HAX is ultimately writing HTML. Know HTML?
+          Awesome, pop open the source view and make any changes you like. HTML
+          is always behind the scenes ensuring that content is portable, well
+          formatted and easy to read.
+        </div>
+      </hax-tray-button>
       <hax-tray-button
         ?hidden="${this.hidePreferencesButton}"
         id="advanced-settings"
@@ -789,26 +724,32 @@ class HaxTray extends I18NMixin(
         icon="settings"
         label="${this.t.settings}"
         voice-command="select settings (menu)"
-        show-text-label
-        icon-position="top"
         data-simple-tour-stop
         data-stop-title="label"
         controls="tray-detail"
         toggles
         ?toggled="${this.trayDetail === "advanced-settings"}"
+        icon-position="left"
+        show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
       >
         <div data-stop-content>
           Some advanced options for developers and experimental purposes.
         </div>
       </hax-tray-button>
-    `;
-  }
-  get trayToolbarTemplate() {
-    return html` <hax-toolbar class="quick-buttons tray-detail-ops">
-      <div id="contentgroup" class="group">${this.contentButtons}</div>
-      <div id="mapgroup" class="group">${this.mapButton}</div>
-      <div id="settingsgroup" class="group">${this.settingsButton}</div>
-    </hax-toolbar>`;
+      <hax-tray-button
+        event-name="${this.tourOpened ? "stop-tour" : "start-tour"}"
+        icon="help"
+        label="${this.t.takeATour}"
+        voice-command="start tour"
+        toggles
+        ?toggled="${this.tourOpened}"
+        icon-position="left"
+        show-text-label
+        show-tooltip
+        align-horizontal="${this.collapsed ? "left" : "center"}"
+      ></hax-tray-button> `;
   }
   get trayDetailTemplate() {
     return html` <div
@@ -818,9 +759,19 @@ class HaxTray extends I18NMixin(
       tabindex="${this.collapsed ? "-1" : "0"}"
       selected-detail="${this.trayDetail}"
     >
-      <h4>
-        ${this.trayLabel || `${this.t.editSelected} ${this.activeTagName}`}
-      </h4>
+      <div class="tray-detail-titlebar">
+        <h4>
+          ${this.trayLabel || `${this.t.editSelected} ${this.activeTagName}`}
+        </h4>
+        <hax-tray-button
+          voice-command="collapse menu"
+          id="toggle-tray-size"
+          event-name="toggle-tray-size"
+          icon="close"
+          label="Close"
+        >
+        </hax-tray-button>
+      </div>
       ${this.advancedSettingsTemplate} ${this.contentMapTemplate}
       ${this.contentEditTemplate} ${this.contentAddTemplate}
       ${this.mediaTemplate}
@@ -949,7 +900,7 @@ class HaxTray extends I18NMixin(
         this.collapsed = false;
         break;
       case "toggle-element-align":
-        let directions = ["left", "right", "bottom-left", "bottom-right"],
+        let directions = ["left", "right"],
           direction = !!directions[e.detail.index]
             ? directions[e.detail.index]
             : "right";

@@ -19,9 +19,11 @@ require("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
 
 var _utils = require("@lrnwebcomponents/utils/utils");
 
-var _haxContextContainer = require("./hax-context-container.js");
+var _haxContextBehaviors = require("./hax-context-behaviors.js");
 
 var _mobx = require("mobx");
+
+var _I18NMixin2 = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -108,13 +110,19 @@ function _templateObject2() {
 function _templateObject() {
   var data = _taggedTemplateLiteral([
     '\n      <div id="toolbar">\n        <hax-toolbar>\n          <div class="group">\n            <hax-context-item\n              action\n              more\n              .icon="',
-    '"\n              label="Change to..."\n              tooltip="',
-    ', click to change"\n              ?disabled="',
+    '"\n              label="',
+    '.."\n              tooltip="',
+    ", ",
+    '"\n              ?disabled="',
     '"\n              event-name="hax-transform-node"\n              show-text-label\n            ></hax-context-item>\n            <slot name="primary"></slot>\n          </div>\n          <div class="group">\n            ',
-    '\n            <slot name="secondary"></slot>\n          </div>\n          <div class="group">\n            <hax-context-item\n              action\n              icon="icons:code"\n              label="Modify HTML source"\n              ?disabled="',
+    '\n            <slot name="secondary"></slot>\n          </div>\n          <div class="group">\n            <hax-context-item\n              action\n              icon="icons:code"\n              label="',
+    '"\n              ?disabled="',
     '"\n              event-name="hax-source-view-toggle"\n              toggles\n              ?toggled="',
     '"\n              @click="',
-    '"\n            ></hax-context-item>\n            <slot name="more"></slot>\n          </div>\n          <div class="group">\n            <hax-toolbar-menu icon="add" label="Insert item above or below">\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-up"\n                  event-name="insert-above-active"\n                  label="Insert item above"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-down"\n                  event-name="insert-below-active"\n                  label="Insert item below"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n            </hax-toolbar-menu>\n          </div>\n        </hax-toolbar>\n      </div>\n    ',
+    '"\n            ></hax-context-item>\n            <slot name="more"></slot>\n          </div>\n          <div class="group">\n            <hax-toolbar-menu\n              icon="add"\n              label="',
+    '"\n            >\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-up"\n                  event-name="insert-above-active"\n                  label="',
+    '"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n              <simple-toolbar-menu-item slot="menuitem">\n                <hax-context-item\n                  action\n                  align-horizontal="left"\n                  show-text-label\n                  role="menuitem"\n                  icon="hardware:keyboard-arrow-down"\n                  event-name="insert-below-active"\n                  label="',
+    '"\n                ></hax-context-item>\n              </simple-toolbar-menu-item>\n            </hax-toolbar-menu>\n          </div>\n        </hax-toolbar>\n      </div>\n    ',
   ]);
 
   _templateObject = function _templateObject() {
@@ -261,8 +269,8 @@ function _getPrototypeOf(o) {
  */
 var HaxCeContext =
   /*#__PURE__*/
-  (function (_HaxContextBehaviors) {
-    _inherits(HaxCeContext, _HaxContextBehaviors);
+  (function (_I18NMixin) {
+    _inherits(HaxCeContext, _I18NMixin);
 
     _createClass(HaxCeContext, null, [
       {
@@ -284,6 +292,20 @@ var HaxCeContext =
         this,
         _getPrototypeOf(HaxCeContext).call(this)
       );
+      _this.t = {
+        changeTo: "Change to",
+        modifyHTMLSource: "Modify HTML source",
+        clickToChange: "Click to change",
+        insertItemAbove: "Insert item above",
+        insertItemAboveOrBelow: "Insert item above or below",
+        insertItemBelow: "Insert item below",
+      };
+
+      _this.registerLocalization({
+        context: _assertThisInitialized(_this),
+        namespace: "hax",
+      });
+
       _this.haxUIElement = true;
       _this.onScreen = false;
       _this.ceButtons = [];
@@ -331,23 +353,29 @@ var HaxCeContext =
             return (0, _litElement.html)(
               _templateObject(),
               this.activeTagIcon,
+              this.t.changeTo,
               this.activeTagName,
+              this.t.clickToChange,
               this.disableTransform,
               this.ceButtons.map(function (el) {
                 return (0,
                 _litElement.html)(_templateObject2(), el.icon, el.label, el.callback);
               }),
+              this.t.modifyHTMLSource,
               !this.sourceView,
               this.viewSource,
               function (e) {
                 return (_this3.viewSource = !_this3.viewSource);
-              }
+              },
+              this.t.insertItemAboveOrBelow,
+              this.t.insertItemAbove,
+              this.t.insertItemBelow
             );
           },
         },
         {
           key: "handleCECustomEvent",
-          value: async function handleCECustomEvent(e) {
+          value: function handleCECustomEvent(e) {
             var detail = e.detail; // support a simple insert event to bubble up or everything else
 
             switch (detail.eventName) {
@@ -357,7 +385,7 @@ var HaxCeContext =
                   typeof this.activeNode[detail.value] === "function"
                 ) {
                   if (this.activeNode[detail.value](e)) {
-                    await _haxStore.HAXStore.refreshActiveNodeForm();
+                    _haxStore.HAXStore.refreshActiveNodeForm();
                   }
                 }
 
@@ -400,41 +428,85 @@ var HaxCeContext =
         },
         {
           key: "_resetCEMenu",
-          value: async function _resetCEMenu() {
-            if (this.shadowRoot) {
-              (0, _utils.wipeSlot)(this, "*");
-            } // reset buttons in-case this element has new ones
+          value: function _resetCEMenu() {
+            var schema, list;
+            return regeneratorRuntime.async(
+              function _resetCEMenu$(_context) {
+                while (1) {
+                  switch ((_context.prev = _context.next)) {
+                    case 0:
+                      if (this.shadowRoot) {
+                        (0, _utils.wipeSlot)(this, "*");
+                      } // reset buttons in-case this element has new ones
 
-            this.ceButtons = [];
-            this.viewSource = false;
+                      this.ceButtons = [];
+                      this.viewSource = false;
 
-            if (_haxStore.HAXStore.activeHaxBody && this.activeNode != null) {
-              var schema = _haxStore.HAXStore.haxSchemaFromTag(
-                this.activeNode.tagName
-              );
+                      if (
+                        !(
+                          _haxStore.HAXStore.activeHaxBody &&
+                          this.activeNode != null
+                        )
+                      ) {
+                        _context.next = 14;
+                        break;
+                      }
 
-              this.sourceView = schema.canEditSource;
+                      schema = _haxStore.HAXStore.haxSchemaFromTag(
+                        this.activeNode.tagName
+                      );
+                      this.sourceView = schema.canEditSource;
 
-              if (!_haxStore.HAXStore.isTextElement(this.activeNode)) {
-                // detect if this can be transformed into anything else
-                this.disableTransform = !_haxStore.HAXStore.activeHaxBody.canTansformNode(
-                  this.activeNode
-                );
+                      if (_haxStore.HAXStore.isTextElement(this.activeNode)) {
+                        _context.next = 12;
+                        break;
+                      }
 
-                if (_haxStore.HAXStore.activeGizmo) {
-                  this.activeTagName = _haxStore.HAXStore.activeGizmo.title;
-                  this.activeTagIcon = _haxStore.HAXStore.activeGizmo.icon;
+                      _context.next = 9;
+                      return regeneratorRuntime.awrap(
+                        _haxStore.HAXStore.activeHaxBody.replaceElementWorkflow(
+                          this.activeNode,
+                          true
+                        )
+                      );
+
+                    case 9:
+                      list = _context.sent;
+                      this.disableTransform = list.length === 0 ? true : false;
+
+                      if (_haxStore.HAXStore.activeGizmo) {
+                        this.activeTagName =
+                          _haxStore.HAXStore.activeGizmo.title;
+                        this.activeTagIcon =
+                          _haxStore.HAXStore.activeGizmo.icon;
+                      }
+
+                    case 12:
+                      _context.next = 16;
+                      break;
+
+                    case 14:
+                      this.activeTagName = "";
+                      this.activeTagIcon = "";
+
+                    case 16:
+                      _context.next = 18;
+                      return regeneratorRuntime.awrap(
+                        _haxStore.HAXStore.runHook(
+                          this.activeNode,
+                          "inlineContextMenu",
+                          [this]
+                        )
+                      );
+
+                    case 18:
+                    case "end":
+                      return _context.stop();
+                  }
                 }
-              }
-            } else {
-              this.activeTagName = "";
-              this.activeTagIcon = "";
-            } // @see haxHook inlineContextMenu
-
-            await _haxStore.HAXStore.runHook(
-              this.activeNode,
-              "inlineContextMenu",
-              [this]
+              },
+              null,
+              this
             );
           },
         },
@@ -484,7 +556,11 @@ var HaxCeContext =
     );
 
     return HaxCeContext;
-  })((0, _haxContextContainer.HaxContextBehaviors)(_litElement.LitElement));
+  })(
+    (0, _I18NMixin2.I18NMixin)(
+      (0, _haxContextBehaviors.HaxContextBehaviors)(_litElement.LitElement)
+    )
+  );
 
 exports.HaxCeContext = HaxCeContext;
 window.customElements.define(HaxCeContext.tag, HaxCeContext);

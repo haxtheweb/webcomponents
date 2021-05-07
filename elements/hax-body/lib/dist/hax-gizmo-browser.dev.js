@@ -19,6 +19,8 @@ require("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
 
 require("@lrnwebcomponents/simple-toolbar/lib/simple-button-grid.js");
 
+var _I18NMixin2 = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -86,7 +88,10 @@ function _templateObject3() {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <div class="toolbar-inner" part="toolbar">\n        <simple-fields-field\n          id="inputfilter"\n          @value-changed="',
-    '"\n          aria-controls="filter"\n          label="Filter Content Types"\n          type="text"\n          auto-validate=""\n          part="filter"\n        ></simple-fields-field>\n      </div>\n      <simple-button-grid columns="3" always-expanded part="grid">\n        ',
+    '"\n          aria-controls="filter"\n          label="',
+    '"\n          type="text"\n          auto-validate=""\n          part="filter"\n        ></simple-fields-field>\n      </div>\n      <simple-button-grid .cols="',
+    '" .columns="',
+    '" always-expanded part="grid">\n        ',
     "\n      </simple-button-grid>\n    ",
   ]);
 
@@ -95,6 +100,55 @@ function _templateObject2() {
   };
 
   return data;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
 }
 
 function _templateObject() {
@@ -140,40 +194,6 @@ function _assertThisInitialized(self) {
   return self;
 }
 
-function _get(target, property, receiver) {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    _get = Reflect.get;
-  } else {
-    _get = function _get(target, property, receiver) {
-      var base = _superPropBase(target, property);
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-      if (desc.get) {
-        return desc.get.call(receiver);
-      }
-      return desc.value;
-    };
-  }
-  return _get(target, property, receiver || target);
-}
-
-function _superPropBase(object, property) {
-  while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = _getPrototypeOf(object);
-    if (object === null) break;
-  }
-  return object;
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
-}
-
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -210,6 +230,40 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    _get = Reflect.get;
+  } else {
+    _get = function _get(target, property, receiver) {
+      var base = _superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+      return desc.value;
+    };
+  }
+  return _get(target, property, receiver || target);
+}
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = _getPrototypeOf(object);
+    if (object === null) break;
+  }
+  return object;
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf
+    ? Object.getPrototypeOf
+    : function _getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+      };
+  return _getPrototypeOf(o);
+}
+
 /* `hax-gizmo-browser`
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
  * @microcopy - the mental model for this element
@@ -217,14 +271,29 @@ function _setPrototypeOf(o, p) {
  */
 var HaxGizmoBrowser =
   /*#__PURE__*/
-  (function (_SimpleFilterMixin) {
-    _inherits(HaxGizmoBrowser, _SimpleFilterMixin);
+  (function (_I18NMixin) {
+    _inherits(HaxGizmoBrowser, _I18NMixin);
 
     _createClass(HaxGizmoBrowser, null, [
       {
         key: "styles",
         get: function get() {
           return [(0, _litElement.css)(_templateObject())];
+        },
+      },
+      {
+        key: "properties",
+        get: function get() {
+          return _objectSpread(
+            {},
+            _get(_getPrototypeOf(HaxGizmoBrowser), "properties", this),
+            {
+              isModal: {
+                type: Boolean,
+                attribute: "is-modal",
+              },
+            }
+          );
         },
       },
     ]);
@@ -239,6 +308,15 @@ var HaxGizmoBrowser =
         _getPrototypeOf(HaxGizmoBrowser).call(this)
       );
       _this.where = "title";
+      _this.t = {
+        filterContentTypes: "Filter Content Types",
+      };
+
+      _this.registerLocalization({
+        context: _assertThisInitialized(_this),
+        namespace: "hax",
+      });
+
       return _this;
     }
 
@@ -253,6 +331,9 @@ var HaxGizmoBrowser =
             return (0, _litElement.html)(
               _templateObject2(),
               this.inputfilterChanged,
+              this.t.filterContentTypes,
+              this.isModal ? undefined : "100px",
+              this.isModal ? undefined : 3,
               this.filtered.map(function (gizmo, i) {
                 return (0,
                 _litElement.html)(_templateObject3(), gizmo.title, _this2._dragStart, _this2._dragEnd, i, gizmo.title, gizmo.tag, gizmo.icon);
@@ -410,7 +491,11 @@ var HaxGizmoBrowser =
     );
 
     return HaxGizmoBrowser;
-  })((0, _simpleFilter.SimpleFilterMixin)(_litElement.LitElement));
+  })(
+    (0, _I18NMixin2.I18NMixin)(
+      (0, _simpleFilter.SimpleFilterMixin)(_litElement.LitElement)
+    )
+  );
 
 exports.HaxGizmoBrowser = HaxGizmoBrowser;
 window.customElements.define(HaxGizmoBrowser.tag, HaxGizmoBrowser);

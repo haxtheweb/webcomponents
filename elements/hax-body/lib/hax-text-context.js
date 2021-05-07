@@ -8,7 +8,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";
-import { HaxContextBehaviors } from "./hax-context-container.js";
+import { HaxContextBehaviors } from "./hax-context-behaviors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 
 /**
@@ -23,11 +23,6 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     return [
       ...super.styles,
       css`
-        #toolbar {
-          position: absolute;
-          bottom: 0;
-          width: 280px;
-        }
         .group,
         .group > * {
           flex: 1 1 auto;
@@ -189,7 +184,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               label="Format"
               show-text-label
               data-simple-tour-stop
-              data-stop-title="label"
+              data-stop-title="Format"
             >
               ${this.formattingList.map(
                 (val) =>
@@ -222,8 +217,6 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               event-name="hax-full-text-editor-toggle"
             ></hax-context-item> -->
             <slot name="primary"></slot>
-          </div>
-          <div class="group">
             <hax-context-item-textop
               mini
               action

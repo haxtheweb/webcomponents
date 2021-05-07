@@ -7,6 +7,8 @@ import {
   cellBehaviors,
   editableTableCellStyles,
 } from "./editable-table-behaviors.js";
+import "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
+import "@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-item.js";
 import { A11yMenuButton } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -29,6 +31,8 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
       css`
         :host {
           display: block;
+          height: 100%;
+          width: 100%;
           --paper-item-min-height: 24px;
           --a11y-menu-button-border: none;
           --a11y-menu-button-list-border: 1px solid
@@ -50,15 +54,25 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
             #fff
           );
         }
-        ul,
-        absolute-position-behavior {
+        a11y-menu-button {
+          display: block;
+          height: 100%;
           width: 100%;
         }
-        absolute-position-behavior.row,
-        absolute-position-behavior.row ul {
-          width: 150px;
+        a11y-menu-button::part(button) {
+          font-family: var(
+            --editable-table-secondary-font-family,
+            "Roboto",
+            "Noto",
+            sans-serif
+          );
+          height: 100%;
+          width: 100%;
         }
-        a11y-menu-button-item {
+        a11y-menu-button::part(menu-outer) {
+          min-width: 150px;
+        }
+        a11y-menu-button-item::part(button) {
           font-family: var(
             --editable-table-secondary-font-family,
             "Roboto",
@@ -67,43 +81,26 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
           );
           color: var(--editable-table-color, #222);
           font-size: var(--editable-table-secondary-font-size, 12px);
+          line-height: 150%;
         }
       `,
     ];
   }
   render() {
     return html`
-      <button
-        id="menubutton"
-        aria-haspopup="true"
-        aria-controls="menu"
-        aria-expanded="${this.expanded ? "true" : "false"}"
-      >
-        <span class="sr-only">${this.type}</span>
-        <span id="label">${this.label || ""} </span>
-        <span class="sr-only">Menu</span>
-        <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>
-      </button>
-      <absolute-position-behavior
-        ?auto="${this.expanded}"
-        class="${this.row ? "row" : "column"}"
-        for="menubutton"
+      <a11y-menu-button
+        id="menubutton" 
         position="${this.row ? "right" : "bottom"}"
-        position-align="${this.row ? "start" : "center"}"
-        offset="-3"
-      >
-        <ul
-          id="menu"
-          role="menu"
-          aria-labelledby="menubutton"
-          ?hidden="${!this.expanded}"
-          @mousover="${(e) => (this.hover = true)}"
-          @mousout="${(e) => (this.hover = false)}"
-        >
-          ${this._getItem()} ${this._getItem(false, true)}
+        @open="${this._onOpen}">
+        <span class="sr-only" slot="button">${this.type}</span>
+        <span id="label" slot="button">${this.label || ""} </span>
+        <span class="sr-only" slot="button">Menu</span>
+        <simple-icon-lite icon="arrow-drop-down" slot="button"></simple-icon-lite>
+          ${this._getItem()} 
+          ${this._getItem(false, true)}
           ${this._getItem(true)}
         </ul>
-      </absolute-position-behavior>
+      </a11y-menu-button>
     `;
   }
   static get tag() {
@@ -185,7 +182,7 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
     );
   }
   _getItem(deleteItem = false, after = false) {
-    return html` <a11y-menu-button-item
+    return html`<a11y-menu-button-item
       @click="${deleteItem
         ? this._onDelete
         : after
@@ -196,6 +193,20 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
       ${this.type}${deleteItem ? " " : after ? " After " : " Before "}
       ${this.labelInfo}
     </a11y-menu-button-item>`;
+  }
+  _onOpen(e) {
+    this.dispatchEvent(
+      new CustomEvent("rowcol-menuopen", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          insert: insert,
+          row: this.row,
+          index: index,
+        },
+      })
+    );
   }
   /**
    * Handles when Delete Row/Column is clicked

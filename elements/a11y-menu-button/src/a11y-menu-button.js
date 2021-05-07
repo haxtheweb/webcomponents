@@ -19,7 +19,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         css`
           :host {
             padding: 0;
-            display: inline-block;
+            display: inline-flex;
             position: relative;
             z-index: 1;
           }
@@ -267,6 +267,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           aria-haspopup="true"
           aria-controls="menu"
           aria-expanded="${this.expanded ? "true" : "false"}"
+          part="button"
         >
           <slot name="button"></slot>
         </button>

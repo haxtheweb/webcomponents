@@ -210,12 +210,13 @@ class AbsolutePositionStateManager extends LitElement {
       el.position = "bottom";
     }
     let target = this.findTarget(el),
-      parent = el.offsetParent;
+      parent = el.offsetParent,
+      t = !target || target.getBoundingClientRect();
     if (!target || !parent) return;
+    if (el.justify) el.style.width = `${t.width}px`;
     let offset = parseFloat(el.offset),
       w = document.body.getBoundingClientRect(),
       p = parent.getBoundingClientRect(),
-      t = target.getBoundingClientRect(),
       e = el.getBoundingClientRect(),
       //place element before vertically?
       vertical = (pos = el.position) => pos !== "left" && pos !== "right",

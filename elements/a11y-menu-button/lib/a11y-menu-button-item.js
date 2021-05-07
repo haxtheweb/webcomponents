@@ -149,7 +149,12 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
      */
     get linkTemplate() {
       return html` <li role="none">
-        <a role="menuitem" href="${this.href}" ?disabled="${this.disabled}">
+        <a
+          role="menuitem"
+          href="${this.href}"
+          ?disabled="${this.disabled}"
+          part="button"
+        >
           <slot></slot>
         </a>
       </li>`;
@@ -166,6 +171,7 @@ const A11yMenuButtonItemBehaviors = function (SuperClass) {
             role="menuitem"
             controls="${this.controls}"
             ?disabled="${this.disabled}"
+            part="button"
           >
             <slot></slot>
           </button>

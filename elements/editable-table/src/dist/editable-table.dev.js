@@ -98,7 +98,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject5() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          --paper-listbox-background-color: var(\n            --editable-table-rowcol-bg-color\n          );\n        }\n        .filter-icon,\n        .sortable-icon {\n          display: none;\n          opacity: 0.4;\n          width: 24px;\n          height: 24px;\n        }\n        :host([sort]) tbody .tr:first-child .sortable-icon,\n        :host([filter]) tbody .tr:not(:first-of-type) .filter-icon {\n          display: inline-block;\n          opacity: 0.25;\n        }\n        table {\n          min-width: calc(100% - 2.3px);\n          width: unset;\n        }\n        caption {\n          width: 100%;\n          padding: 0;\n          margin: 0;\n          color: var(\n            --editable-table-caption-color,\n            var(--editable-table-color, #222)\n          );\n        }\n        caption,\n        .th-or-td {\n          border: 1px solid #ddd;\n        }\n        label,\n        .label {\n          color: var(--editable-table-secondary-text-color, #444);\n          font-size: var(--editable-table-secondary-font-size, 12px);\n          font-family: var(\n            --editable-table-secondary-font-family,\n            "Roboto",\n            "Noto",\n            sans-serif\n          );\n        }\n        .field-group {\n          width: 100%;\n          padding: 0;\n          margin: 0;\n          transition: all 2s;\n          color: var(\n            --editable-table-caption-color,\n            var(--editable-table-color, #222)\n          );\n        }\n        .field-group:not([hidden]) {\n          display: flex;\n          flex-wrap: wrap;\n          justify-content: space-between;\n          align-items: center;\n        }\n        caption > *,\n        .field-group > * {\n          margin: 0 2.5px;\n        }\n        caption {\n          position: relative;\n        }\n        .field-group .field-group {\n          width: unset;\n        }\n        th {\n          padding: 0;\n          border-width: var(--editable-table-border-width, 1px);\n          border-style: var(--editable-table-border-style, solid);\n          border-color: var(--editable-table-border-color, #999);\n        }\n        td {\n          margin: 0;\n          padding: 0;\n          position: relative;\n        }\n        rich-text-editor-toolbar-mini {\n          position: absolute;\n          min-width: 200px;\n          height: 0;\n        }\n        rich-text-editor {\n          margin-bottom: 1px;\n          padding: var(--editable-table-row-vertical-padding, 10px)\n            var(--editable-table-row-horizontal-padding, 6px);\n          border: none !important;\n          --rich-text-editor-min-height: 12px;\n        }\n        td #icons {\n          position: absolute;\n          right: 0;\n          top: calc(50% - 12px);\n          width: 24px;\n        }\n        td simple-icon-lite {\n          width: 24px;\n        }\n        th:hover,\n        th:focus-within {\n          background-color: var(\n            --editable-table-rowcol-hover-bg-color,\n            var(--editable-table-heading-bg-color, #e8e8e8)\n          );\n        }\n        .th:first-child {\n          width: 96px;\n        }\n        :host([responsive]) thead th:nth-of-type(3),\n        :host([responsive]) .tr td:nth-of-type(2) {\n          border-right-width: calc(var(--editable-table-border-width) + 5px);\n          border-right-style: double;\n        }\n      ',
+    '\n        :host {\n          --paper-listbox-background-color: var(\n            --editable-table-rowcol-bg-color\n          );\n        }\n        .filter-icon,\n        .sortable-icon {\n          display: none;\n          opacity: 0.4;\n          width: 24px;\n          height: 24px;\n        }\n        :host([sort]) tbody .tr:first-child .sortable-icon,\n        :host([filter]) tbody .tr:not(:first-of-type) .filter-icon {\n          display: inline-block;\n          opacity: 0.25;\n        }\n        table {\n          min-width: calc(100% - 2.3px);\n          width: unset;\n          height: 1px;\n        }\n        caption {\n          width: 100%;\n          padding: 0;\n          margin: 0;\n          color: var(\n            --editable-table-caption-color,\n            var(--editable-table-color, #222)\n          );\n        }\n        table *:focus,\n        table *:hover,\n        table *:focus-within {\n          z-index: 2;\n        }\n        caption,\n        .th-or-td {\n          border: 1px solid #ddd;\n        }\n        label,\n        .label {\n          color: var(--editable-table-secondary-text-color, #444);\n          font-size: var(--editable-table-secondary-font-size, 12px);\n          font-family: var(\n            --editable-table-secondary-font-family,\n            "Roboto",\n            "Noto",\n            sans-serif\n          );\n        }\n        .field-group {\n          width: 100%;\n          padding: 0;\n          margin: 0;\n          transition: all 2s;\n          color: var(\n            --editable-table-caption-color,\n            var(--editable-table-color, #222)\n          );\n        }\n        .field-group:not([hidden]) {\n          display: flex;\n          flex-wrap: wrap;\n          justify-content: space-between;\n          align-items: center;\n        }\n        caption > *,\n        .field-group > * {\n          margin: 0 2.5px;\n        }\n        caption {\n          position: relative;\n        }\n        .field-group .field-group {\n          width: unset;\n        }\n        th {\n          padding: 0;\n          border-width: var(--editable-table-border-width, 1px);\n          border-style: var(--editable-table-border-style, solid);\n          border-color: var(--editable-table-border-color, #999);\n        }\n        td {\n          margin: 0;\n          padding: 0;\n          position: relative;\n        }\n        rich-text-editor-toolbar-mini {\n          position: absolute;\n          min-width: 200px;\n          height: 0;\n        }\n        rich-text-editor {\n          margin-bottom: 1px;\n          padding: var(--editable-table-row-vertical-padding, 10px)\n            var(--editable-table-row-horizontal-padding, 6px);\n          border: none !important;\n          --rich-text-editor-min-height: 12px;\n        }\n        td #icons {\n          position: absolute;\n          right: 0;\n          top: calc(50% - 12px);\n          width: 24px;\n        }\n        td simple-icon-lite {\n          width: 24px;\n        }\n        th:hover,\n        th:focus-within {\n          background-color: var(\n            --editable-table-rowcol-hover-bg-color,\n            var(--editable-table-heading-bg-color, #e8e8e8)\n          );\n        }\n        .th:first-child {\n          width: 96px;\n        }\n        :host([responsive]) thead th:nth-of-type(3),\n        :host([responsive]) .tr td:nth-of-type(2) {\n          border-right-width: calc(var(--editable-table-border-width) + 5px);\n          border-right-style: double;\n        }\n      ',
   ]);
 
   _templateObject5 = function _templateObject5() {
@@ -180,6 +180,7 @@ function _templateObject2() {
     '"\n                    >\n                      <editable-table-editor-rowcol\n                        ?condensed="',
     '"\n                        index="',
     '"\n                        @rowcol-action="',
+    '"\n                        @rowcol-menuopen="',
     '"\n                      >\n                      </editable-table-editor-rowcol>\n                    </th>\n                  ',
   ]);
 
@@ -515,7 +516,7 @@ var EditableTable =
               this.caption,
               (this.data[0] || []).map(function (cell, th) {
                 return (0,
-                _litElement.html)(_templateObject2(), th, _this2._isNumericColumn(th), _this2.condensed, th, _this2._handleRowColumnMenu);
+                _litElement.html)(_templateObject2(), th, _this2._isNumericColumn(th), _this2.condensed, th, _this2._handleRowColumnMenu, _this2._handleMenuOpen);
               }),
               this.data.map(function (row, tr) {
                 return (0, _litElement.html)(
@@ -836,7 +837,11 @@ var EditableTable =
               })
             );
 
-            if (edit && this.shadowRoot) {
+            if (
+              edit &&
+              this.shadowRoot &&
+              this.shadowRoot.querySelector("editable-table-display")
+            ) {
               this.shadowRoot
                 .querySelector("editable-table-display")
                 .toggleFilter();
@@ -885,6 +890,12 @@ var EditableTable =
             }
 
             return row;
+          },
+        },
+        {
+          key: "_handleMenuOpen",
+          value: function _handleMenuOpen(e) {
+            console.log(e);
           },
           /**
            * Handles row/column menu actions

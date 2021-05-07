@@ -29,7 +29,7 @@ function _templateObject3() {
   var data = _taggedTemplateLiteral([
     '\n        <li role="none">\n          <button\n            role="menuitem"\n            controls="',
     '"\n            ?disabled="',
-    '"\n          >\n            <slot></slot>\n          </button>\n        </li>\n      ',
+    '"\n            part="button"\n          >\n            <slot></slot>\n          </button>\n        </li>\n      ',
   ]);
 
   _templateObject3 = function _templateObject3() {
@@ -43,7 +43,7 @@ function _templateObject2() {
   var data = _taggedTemplateLiteral([
     ' <li role="none">\n        <a role="menuitem" href="',
     '" ?disabled="',
-    '">\n          <slot></slot>\n        </a>\n      </li>',
+    '"\n            part="button">\n          <slot></slot>\n        </a>\n      </li>',
   ]);
 
   _templateObject2 = function _templateObject2() {

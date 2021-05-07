@@ -261,22 +261,24 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           margin: 0;
         }
         ::slotted(*[slot="heading"]) {
+          font-size: 26px;
+          font-weight: bold;
           padding-top: var(
             --accent-card-heading-padding-top,
             var(--accent-card-padding, 20px)
           );
         }
-        #heading h1 {
-          margin: 0;
-          flex: 1 1 auto;
-        }
         #heading div {
           flex: 0 0 auto;
         }
-        :host([accent-heading][accent-color]) #heading h1 {
+        #heading [data-layout-slotname="heading"] {
+          margin: 0;
+          flex: 1 1 auto;
+        }
+        :host([accent-heading][accent-color]) #heading ::slotted(*) {
           color: var(
             --accent-card-heading-color,
-            var(--simple-colors-default-theme-accent-7, #000)
+            var(--simple-colors-default-theme-accent-7, #000) !important
           );
         }
         #subheading {
@@ -314,7 +316,11 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           );
           flex: 1 1 auto;
         }
-        ::slotted(*[slot="content"]:last-ot-type) {
+        ::slotted(*[slot]:first-of-type) {
+          margin-top: 0;
+          margin-block-start: 0;
+        }
+        ::slotted(*[slot]:last-of-type) {
           margin-bottom: 0;
           margin-block-end: 0;
         }
@@ -343,6 +349,14 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             var(--simple-colors-default-theme-grey-6, #666)
           );
         }
+        :host([ready]) [data-layout-slotname] {
+          transition: var(
+            --hax-layout-container-transition,
+            0.5s width ease-in-out,
+            0.5s padding ease-in-out,
+            0.5s margin ease-in-out
+          );
+        }
       `,
     ];
   }
@@ -363,12 +377,26 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         </div>
         <div class="body">
           <div id="heading">
-            <h1><slot name="heading"></slot></h1>
-            <div><slot name="corner"></slot></div>
+            <div data-label="Heading" data-layout-slotname="heading">
+              <slot name="heading"></slot>
+            </div>
+            <div data-label="Corner" data-layout-slotname="Corner">
+              <slot name="corner"></slot>
+            </div>
           </div>
-          <div id="subheading"><slot name="subheading"></slot></div>
-          <div id="content"><slot name="content"></slot></div>
-          <div id="footer"><slot name="footer"></slot></div>
+          <div
+            id="subheading"
+            data-label="Subheading"
+            data-layout-slotname="subheading"
+          >
+            <slot name="subheading"></slot>
+          </div>
+          <div id="content" data-label="Content" data-layout-slotname="content">
+            <slot name="content"></slot>
+          </div>
+          <div id="footer" data-label="Footer" data-layout-slotname="footer">
+            <slot name="footer"></slot>
+          </div>
         </div>
       </article>
     `;
@@ -377,9 +405,11 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
   // haxProperty definition
   static get haxProperties() {
     return {
+      type: "grid",
+      canScale: true,
+      canPosition: true,
       canEditSource: true,
-      canPosition: false,
-      canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Accent Card",
         description: "A card with optional accent styling.",
@@ -393,7 +423,6 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           },
           {
             type: "image",
-            source: "imageSrc",
           },
           {
             type: "text",
@@ -412,24 +441,28 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             title: "Heading",
             description: "A heading for card.",
             inputMethod: "textfield",
+            slotWrapper: "h1",
           },
           {
             slot: "subheading",
             title: "Subheading",
             description: "An optional subheading for card.",
             inputMethod: "textfield",
+            slotWrapper: "p",
           },
           {
             slot: "content",
             title: "Content",
             description: "Content for card.",
             inputMethod: "textfield",
+            slotWrapper: "p",
           },
           {
             slot: "footer",
             title: "Footer",
             description: "An optional footer for card.",
             inputMethod: "textfield",
+            slotWrapper: "p",
           },
           {
             property: "imageSrc",
@@ -505,7 +538,15 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             inputMethod: "boolean",
           },
         ],
-        advanced: [],
+        advanced: [
+          {
+            slot: "corner",
+            title: "Corner",
+            description: "Content for card corner.",
+            inputMethod: "textfield",
+            slotWrapper: "div",
+          },
+        ],
       },
       demoSchema: [
         {
@@ -517,7 +558,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             imageSrc: "http://placekitten.com/200/600",
           },
           content:
-            '<span slot="heading">Card Heading</span>\n<p slot="content">This is the body of the card.</p>',
+            '<div slot="heading">Card Heading</div>\n<p slot="content">This is the body of the card.</p>',
         },
       ],
       saveOptions: {
@@ -535,12 +576,22 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
     this.imageSrc = null;
     this.imageValign = null;
     this.noBorder = false;
+    this.ready = false;
+  }
+  /**
+   * life cycle
+   */
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    setTimeout(() => {
+      this.ready = true;
+    }, 100);
   }
 
   // properties available to custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
+      ...(super.properties || {}),
 
       /**
        * Apply accent color to card background
@@ -616,6 +667,10 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       noBorder: {
         type: Boolean,
         attribute: "no-border",
+        reflect: true,
+      },
+      ready: {
+        type: Boolean,
         reflect: true,
       },
     };

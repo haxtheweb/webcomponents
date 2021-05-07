@@ -9,6 +9,10 @@ var _litElement = require("lit-element/lit-element.js");
 
 var _utils = require("@lrnwebcomponents/utils/utils.js");
 
+var _schemaBehaviors = require("@lrnwebcomponents/schema-behaviors/schema-behaviors.js");
+
+var _absolutePositionBehavior = require("@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior");
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
@@ -25,6 +29,76 @@ function _typeof(obj) {
     };
   }
   return _typeof(obj);
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly)
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(
+          target,
+          key,
+          Object.getOwnPropertyDescriptor(source, key)
+        );
+      });
+    }
+  }
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([
+    '\n          :host {\n            display: block;\n            --hax-layout-slotted-active-outline-color: var(\n              --hax-contextual-action-hover-color\n            );\n          }\n          :host([ready]) [data-layout-slotname] {\n            transition: var(\n              --hax-layout-container-transition,\n              0.5s width ease-in-out,\n              0.5s padding ease-in-out,\n              0.5s margin ease-in-out\n            );\n          }\n          :host([data-hax-ray]) [data-layout-slotname].not-shown {\n            display: block;\n            opacity: 0.4;\n            width: 0;\n          }\n          :host([data-hax-ray]) [data-layout-slotname].not-shown.has-nodes {\n            width: 100%;\n            transition: none;\n          }\n          :host([data-hax-ray]) .not-shown:hover {\n            opacity: 1;\n          }\n          :host([data-hax-ray]) .not-shown:hover::before {\n            content: "Hidden by layout";\n            position: sticky;\n            display: inline-flex;\n            background-color: black;\n            color: white;\n            padding: 0px 8px;\n            font-size: 12px;\n            line-height: 16px;\n            margin: 12px 13px;\n            float: right;\n            width: 124px;\n          }\n          /** this implies hax editing state is available **/\n          :host([data-hax-ray]) ::slotted(*) {\n            outline: var(--hax-layout-slotted-outline-width, 0px)\n              var(--hax-layout-slotted-outline-style, solid)\n              var(\n                --hax-layout-slotted-outline-color,\n                var(--hax-layout-slotted-faded-color, #eeeeee)\n              );\n            outline-offset: var(--hax-layout-slotted-outline-offset, 0px);\n          }\n          :host([data-hax-ray])\n            ::slotted([contenteditable][data-hax-ray]:empty)::before {\n            content: attr(data-hax-ray);\n            opacity: 0.2;\n            transition: 0.2s all ease-in-out;\n          }\n          :host([data-hax-ray]) ::slotted(*:hover) {\n            outline: var(--hax-layout-slotted-hover-outline-width, 0px)\n              var(--hax-layout-slotted-hover-outline-style, solid)\n              var(\n                --hax-layout-slotted-hover-outline-color,\n                var(--hax-layout-accent-color, #009dc7)\n              );\n          }\n          :host([data-hax-ray]) ::slotted(.hax-active) {\n            outline: var(--hax-layout-slotted-active-outline-width, 1px)\n              var(--hax-layout-slotted-active-outline-style, solid)\n              var(\n                --hax-layout-slotted-active-outline-color,\n                var(--hax-layout-slotted-faded-color, #eeeeee)\n              );\n          }\n          :host([data-hax-ray]) [data-layout-slotname] {\n            outline: var(--hax-layout-container-outline-width, 0px)\n              var(--hax-layout-container-outline-style, solid)\n              var(\n                --hax-layout-container-outline-color,\n                var(--hax-layout-slotted-faded-color, #eeeeee)\n              );\n            outline-offset: var(--hax-layout-container-outline-offset, 2px);\n          }\n          :host([data-hax-ray]) [data-layout-slotname]:hover {\n            outline: var(--hax-layout-container-hover-outline-width, 0px)\n              var(--hax-layout-container-hover-outline-style, solid)\n              var(\n                --hax-layout-container-hover-outline-color,\n                var(--hax-layout-slotted-faded-color, #eeeeee)\n              );\n          }\n          :host([data-hax-ray]) ::slotted(*.hax-hovered)::before {\n            outline: var(--hax-layout-slotted-active-outline-width, 1px)\n              var(--hax-layout-slotted-active-outline-style, solid)\n              var(\n                --hax-layout-slotted-active-outline-color,\n                var(--hax-layout-slotted-faded-color, #eeeeee)\n              );\n            background-color: inherit;\n            content: " ";\n            width: 100%;\n            display: block;\n            position: relative;\n            margin: -10px 0 0 0;\n            z-index: 2;\n            height: 10px;\n          }\n          :host([data-hax-ray]) ::slotted(img.hax-hovered),\n          :host([data-hax-ray]) ::slotted(*.hax-hovered)::before {\n            background-color: var(\n              --hax-layout-slotted-active-outline-color,\n              var(--hax-layout-accent-color, #009dc7)\n            ) !important;\n            outline: var(--hax-layout-slotted-active-outline-width, 1px)\n              var(--hax-layout-slotted-active-outline-style, solid)\n              var(\n                --hax-layout-slotted-active-outline-color,\n                var(--hax-layout-accent-color, #009dc7)\n              );\n          }\n\n          @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {\n            :host([data-hax-ray]) ::slotted(*.hax-hovered) {\n              background-color: var(\n                --hax-layout-slotted-active-outline-color,\n                var(--hax-layout-accent-color, #009dc7)\n              ) !important;\n              outline: var(--hax-layout-slotted-active-outline-width, 1px)\n                var(--hax-layout-slotted-active-outline-style, solid)\n                var(\n                  --hax-layout-slotted-active-outline-color,\n                  var(--hax-layout-accent-color, #009dc7)\n                );\n            }\n          }\n        ',
+  ]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+  return Object.freeze(
+    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
+  );
 }
 
 function _toConsumableArray(arr) {
@@ -54,27 +128,6 @@ function _arrayWithoutHoles(arr) {
   }
 }
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral([
-    '\n          :host {\n            display: block;\n          }\n          :host([ready]) .container {\n            transition: var(\n              --hax-layout-container-transition,\n              0.5s width ease-in-out,\n              0.5s padding ease-in-out,\n              0.5s margin ease-in-out\n            );\n          }\n          .container.active {\n            outline: var(--hax-layout-active-outline-width, 2px) \n              var(--hax-layout-active-outline-style, solid) \n              var(--hax-layout-active-outline-color, var(--hax-layout-accent-color, #009dc7)) !important;\n            outline-offset: var(--hax-layout-active-outline-offset, -2px);\n          }\n          .container.not-shown {\n            display: none;\n            outline: none;\n          }\n          :host([data-hax-ray]) .container.not-shown {\n            display: block;\n            opacity: 0.4;\n            width: 0;\n          }\n          :host([data-hax-ray]) .container.not-shown.has-nodes {\n            width: 100%;\n            transition: none;\n          }\n          :host([data-hax-ray]) .not-shown:hover {\n            opacity: 1;\n          }\n          :host([data-hax-ray]) .not-shown:hover::before {\n            content: "Hidden bylayout";\n            position: sticky;\n            display: inline-flex;\n            background-color: black;\n            color: white;\n            padding: 0px 8px;\n            font-size: 12px;\n            line-height: 16px;\n            margin: 12px 13px;\n            float: right;\n            width: 124px;\n          }\n          /** this implies hax editing state is available **/\n          :host([data-hax-ray]) ::slotted(*) {\n            outline: var(--hax-layout-slotted-outline-width, 1px) \n              var(--hax-layout-slotted-outline-style, solid) \n              var(--hax-layout-slotted-outline-color, var(--hax-layout-slotted-faded-color, #eeeeee));\n            outline-offset: var(--hax-layout-slotted-outline-offset, -2px);\n          }\n          :host([data-hax-ray]) ::slotted(*:hover) {\n            outline: var(--hax-layout-slotted-hover-outline-width, 1px) \n              var(--hax-layout-slotted-hover-outline-style, solid) \n              var(--hax-layout-slotted-hover-outline-color, var(--hax-layout-slotted-faded-color, #eeeeee));\n          }\n          :host([data-hax-ray]) .container {\n            outline: var(--hax-layout-container-outline-width, 1px) \n              var(--hax-layout-container-outline-style, solid) \n              var(--hax-layout-container-outline-color, var(--hax-layout-slotted-faded-color, #eeeeee));\n            outline-offset: var(--hax-layout-container-outline-offset, -2px);\n          }\n          :host([data-hax-ray]) .container:hover {\n            outline: var(--hax-layout-container-hover-outline-width, 1px) \n              var(--hax-layout-container-hover-outline-style, solid) \n              var(--hax-layout-container-hover-outline-color, var(--hax-layout-slotted-faded-color, #eeeeee));\n          }\n          :host([data-hax-ray]) ::slotted(*.active):before {\n            outline: var(--hax-layout-slotted-active-outline-width, 1px) \n              var(--hax-layout-slotted-active-outline-style, solid) \n              var(--hax-layout-slotted-active-outline-color, var(--hax-layout-slotted-faded-color, #eeeeee));\n            background-color: inherit;\n            content: " ";\n            width: 100%;\n            display: block;\n            position: relative;\n            margin: -10px 0 0 0;\n            z-index: 2;\n            height: 10px;\n          }\n          :host([data-hax-ray]) ::slotted(img.active),\n          :host([data-hax-ray]) ::slotted(*.active):before {\n            background-color: var(--hax-layout-slotted-active-outline-color, var(--hax-layout-accent-color, #009dc7)) !important;\n            outline: var(--hax-layout-slotted-active-outline-width, 1px) \n              var(--hax-layout-slotted-active-outline-style, solid) \n              var(--hax-layout-slotted-active-outline-color, var(--hax-layout-accent-color, #009dc7));\n          }\n  \n          @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {\n            :host([data-hax-ray]) ::slotted(*.active) {\n              background-color: var(--hax-layout-slotted-active-outline-color, var(--hax-layout-accent-color, #009dc7)) !important;\n              outline: var(--hax-layout-slotted-active-outline-width, 1px) \n                var(--hax-layout-slotted-active-outline-style, solid) \n                var(--hax-layout-slotted-active-outline-color, var(--hax-layout-accent-color, #009dc7));\n            }\n          }\n        ',
-  ]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-  return Object.freeze(
-    Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })
-  );
-}
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -95,15 +148,6 @@ function _assertThisInitialized(self) {
     );
   }
   return self;
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
 }
 
 function _defineProperties(target, props) {
@@ -142,17 +186,56 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    _get = Reflect.get;
+  } else {
+    _get = function _get(target, property, receiver) {
+      var base = _superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+      return desc.value;
+    };
+  }
+  return _get(target, property, receiver || target);
+}
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = _getPrototypeOf(object);
+    if (object === null) break;
+  }
+  return object;
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf
+    ? Object.getPrototypeOf
+    : function _getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+      };
+  return _getPrototypeOf(o);
+}
+
 var HaxLayoutBehaviors = function HaxLayoutBehaviors(SuperClass) {
   return (
     /*#__PURE__*/
-    (function (_SuperClass) {
-      _inherits(_class, _SuperClass);
+    (function (_SchemaBehaviors) {
+      _inherits(_class, _SchemaBehaviors);
 
       _createClass(_class, null, [
         {
           key: "styles",
           get: function get() {
-            return [(0, _litElement.css)(_templateObject())];
+            return [].concat(
+              _toConsumableArray(
+                _get(_getPrototypeOf(_class), "styles", this) || []
+              ),
+              [(0, _litElement.css)(_templateObject())]
+            );
           },
         },
       ]);
@@ -182,6 +265,12 @@ var HaxLayoutBehaviors = function HaxLayoutBehaviors(SuperClass) {
             value: function firstUpdated(changedProperties) {
               var _this2 = this;
 
+              if (_get(_getPrototypeOf(_class.prototype), "firstUpdated", this))
+                _get(
+                  _getPrototypeOf(_class.prototype),
+                  "firstUpdated",
+                  this
+                ).call(this, changedProperties);
               setTimeout(function () {
                 _this2.ready = true;
               }, 100);
@@ -192,6 +281,11 @@ var HaxLayoutBehaviors = function HaxLayoutBehaviors(SuperClass) {
             value: function updated(changedProperties) {
               var _this3 = this;
 
+              if (_get(_getPrototypeOf(_class.prototype), "updated", this))
+                _get(_getPrototypeOf(_class.prototype), "updated", this).call(
+                  this,
+                  changedProperties
+                );
               changedProperties.forEach(function (oldValue, propName) {
                 if (propName === "dataHaxRay" && _this3.shadowRoot) {
                   if (_this3[propName]) {
@@ -338,30 +432,32 @@ var HaxLayoutBehaviors = function HaxLayoutBehaviors(SuperClass) {
                     break;
                 }
               });
+              this.haxLayoutContainer = true;
             },
           },
           {
             key: "_dragEnter",
             value: function _dragEnter(e) {
-              e.target.classList.add("active");
+              console.log(e.target);
+              e.target.classList.add("hax-hovered");
             },
           },
           {
             key: "_dragLeave",
             value: function _dragLeave(e) {
-              e.target.classList.remove("active");
+              e.target.classList.remove("hax-hovered");
             },
           },
           {
             key: "_dropEvent",
             value: function _dropEvent(e) {
-              this.querySelectorAll(".active").forEach(function (el) {
-                el.classList.remove("active");
+              this.querySelectorAll(".hax-hovered").forEach(function (el) {
+                el.classList.remove("hax-hovered");
               });
               this.shadowRoot
-                .querySelectorAll(".active")
+                .querySelectorAll(".hax-hovered")
                 .forEach(function (el) {
-                  el.classList.remove("active");
+                  el.classList.remove("hax-hovered");
                 });
             },
           },
@@ -373,7 +469,7 @@ var HaxLayoutBehaviors = function HaxLayoutBehaviors(SuperClass) {
                   "[slot=".concat(slot, "]")
                 ),
                 order = parseInt(
-                  container.getAttribute("data-move-order") || -1
+                  container.getAttribute("data-layout-order") || -1
                 );
               return order;
             },
@@ -413,11 +509,11 @@ var HaxLayoutBehaviors = function HaxLayoutBehaviors(SuperClass) {
               var dir = before ? -1 : 1,
                 order = this["this"]._getSlotOrder(item),
                 containers = _toConsumableArray(
-                  this.shadowRoot.querySelectorAll(".container")
+                  this.shadowRoot.querySelectorAll("[data-layout-order]")
                 )
                   .map(function (container) {
                     return parseInt(
-                      container.getAttribute("data-move-order") || -1
+                      container.getAttribute("data-layout-order") || -1
                     );
                   })
                   .sort(function (a, b) {
@@ -444,9 +540,9 @@ var HaxLayoutBehaviors = function HaxLayoutBehaviors(SuperClass) {
                 order = this["this"]._getSlotOrder(item),
                 dest = order[1] + dir,
                 container = this.shadowRoot.querySelector(
-                  "[data-move-order=".concat(dest, "]")
+                  "[data-layout-order=".concat(dest, "]")
                 ),
-                slot = container.getAttribute("data-slot-name");
+                slot = container.getAttribute("data-layout-slotname");
 
               item.setAttribute("slot", slot);
             },
@@ -467,9 +563,9 @@ var HaxLayoutBehaviors = function HaxLayoutBehaviors(SuperClass) {
             value: function validElementSlots() {
               return this.shadowRoot
                 ? _toConsumableArray(
-                    this.shadowRoot.querySelectorAll(".container")
+                    this.shadowRoot.querySelectorAll("[data-layout-order]")
                   ).map(function (container) {
-                    return container.getAttribute("data-slot-name");
+                    return container.getAttribute("data-layout-slotname");
                   })
                 : [];
             },
@@ -547,29 +643,46 @@ var HaxLayoutBehaviors = function HaxLayoutBehaviors(SuperClass) {
           {
             key: "properties",
             get: function get() {
-              return {
-                ready: {
-                  type: Boolean,
-                  reflect: true,
-                },
-                dataHaxRay: {
-                  type: String,
-                  reflect: true,
-                  attribute: "data-hax-ray",
-                },
-                haxLayoutContainer: {
-                  type: Boolean,
-                  reflect: true,
-                  attribute: "hax-layout-container",
-                },
-              };
+              return _objectSpread(
+                {},
+                _get(_getPrototypeOf(_class), "properties", this) || {},
+                {
+                  ready: {
+                    type: Boolean,
+                    reflect: true,
+                  },
+                  dataHaxRay: {
+                    type: String,
+                    reflect: true,
+                    attribute: "data-hax-ray",
+                  },
+                  haxLayoutContainer: {
+                    type: Boolean,
+                    reflect: true,
+                    attribute: "hax-layout-container",
+                  },
+                }
+              );
+            },
+          },
+          {
+            key: "haxProperties",
+            get: function get() {
+              return _objectSpread(
+                {},
+                _get(_getPrototypeOf(_class), "haxProperties", this) || {},
+                {
+                  type: "grid",
+                  contentEditable: true,
+                }
+              );
             },
           },
         ]
       );
 
       return _class;
-    })(SuperClass)
+    })((0, _schemaBehaviors.SchemaBehaviors)(SuperClass))
   );
 };
 

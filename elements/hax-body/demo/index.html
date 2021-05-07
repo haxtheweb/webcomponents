@@ -21,34 +21,61 @@
       });
     </script>
     <style>
-      html {
-        font-family: 'Noto Serif', serif;
-      }
-      body, html, :root {
-        --primary-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
-        --hax-base-styles-p-min-height: 40px;
-        --hax-base-styles-p-line-height: 40px;
-      }
-      p {
-        padding: 8px;
-      }
+        #bodydiv { padding:100px 300px 100px 100px; }
+        /** This is mobile layout for controls */
+        @media screen and (max-width: 800px) {
+          #bodydiv { padding:100px; }
+        }
     </style>
   </head>
   <body>
-    <div style="padding:100px 300px 100px 100px;">
+    <div id="bodydiv">
     <h-a-x app-store='{"url": "appstore.json"}' element-align="right">
-      <p>
-        stuff and things
-        <p>
-          stuff and things
-          <p>stuff and things</p>
-          <p>stuff and things2</p>
+      <h1>HAX Test</h1>
+      <h1>Heading 2</h1>
+      <grid-plate id="grid" layout="1-1-1-1" edit-mode>
+        <!--video-player slot="col-1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
+          responsive="" source="https://www.youtube.com/watch?v=pKLPQ4ufo64" src="https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0"
+          iframed="" width="560" height="315" caption="What is ELMS:LN? Why is it fundamentally different from any other educational technology that's ever existed? What is sustainable innovation? Why is this so ..."
+          secondary-color="#fff8e1" text-color="#000000" secondary-color-class="amber lighten-5" text-color-class="black-text"
+          yt-nocookie="" yt-controls="" video-color="FF031D"></video-player>
+
+        <wikipedia-query slot="col-2" resource="#950ec72d-6c38-0ce5-41ed" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
+          show-title="" search="Drupal" render-as="content" search-response="[object Object]"></wikipedia-query-->
+
+        <p slot="col-1">
+          Praesent a luctus nibh. 
+          Vestibulum purus quam, tincidunt eget consequat ut, 
+          venenatis quis lacus. 
+          Donec luctus aliquam ipsum quis sagittis.   
         </p>
-      </p>
-      <img src="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg" alt="dmd 100 course background art"/>
-      <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover>
-        <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
-        <p>testxt</p>
+        <p slot="col-2">Bird</p>
+        <p slot="col-2">Cat</p>
+        <p slot="col-3">Dog</p>
+          <!--img
+            slot="col-3" 
+            width="100%" 
+            alt="placeholder image of animals" 
+            src="http://lorempixel.com/400/200/animals"/>
+        <img 
+          slot="col-4"
+          width="100%" 
+          alt="placeholder image of food" 
+          src="http://lorempixel.com/400/200/food"/>
+        <p slot="col-4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+          Suspendisse lacinia ut urna ut cursus. 
+          Nunc ut maximus tellus, tincidunt ullamcorper libero. 
+        </p>
+        <p slot="col-5">
+          This content is not in the layout.
+        </p-->
+      </grid-plate>
+      <h1>Heading 3</h1>
+      <stop-note title="Error Message" url="https://www.google.com">
+        <p slot="message">You can write any error message you want here.</p>
+      </stop-note>
+      <!--p>stuff and things</p>
         <image-compare-slider 
           bottom-alt="Kitten in color" 
           bottom-src="//placekitten.com/400/200" 
@@ -67,28 +94,25 @@
         </image-compare-slider>
         <task-list name="Plan for World Domination" tasks="[{&quot;name&quot;:&quot;Use HAX&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;???&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;Profit&quot;,&quot;link&quot;:&quot;&quot;}]"></task-list>
         <h3 id="header-d3827ba5-5aa8-5fb0-367b-1673f353579b">Another</h3>
-        <p>coool</p>
-        <h3 id="specific">With id</h3>
+        <p>coool</p-->
         <accent-card accent-color="cyan" accent-heading horizontal image-src="https://cdn.pixabay.com/photo/2015/08/24/12/54/banner-904887_960_720.jpg">
-          <div slot="heading">Accent Card</div>
-          <div slot="subheading">A card with optional accent stylings.</div>
-          <div slot="content">
-            <p>
-              This card is highly customizable. 
-              There are a number of options for using <tt>accent-card</tt>. 
-              See documentation for more info. 
-            </p>
-          </div>
+          <h1 slot="heading">Accent Card</h1>
+          <p slot="subheading">A card with optional accent stylings.</p>
+          <p slot="content">
+            This card is highly customizable. 
+            There are a number of options for using <tt>accent-card</tt>. 
+            See documentation for more info. 
+          </p>
         </accent-card>
-        <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
+        <!--h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
         <p>testxt</p>
         <task-list name="Plan for World Domination" tasks="[{&quot;name&quot;:&quot;Use HAX&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;???&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;Profit&quot;,&quot;link&quot;:&quot;&quot;}]"></task-list>
         <h3 id="header-d3827ba5-5aa8-5fb0-367b-1673f353579b">Another</h3>
         <p>coool</p>
         <h3 id="specific">With id</h3>
-        <marked-element>Hello</marked-element>
+        <marked-element>Hello</marked-element>-->
         <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover>
-        <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
+        <1--<h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
         <p>testxt</p>
         <h3 id="specific">With id</h3>
         <a11y-gif-player 
@@ -100,6 +124,11 @@
         <lrndesign-gallery id="gallery2" accent-color="green" dark title="Dark Carousel" sources="[{ &quot;alt&quot;: &quot;A picture of a food&quot;, &quot;details&quot;: &quot;This is a picture of <em>raspberries</em>.&quot;, &quot;id&quot;: &quot;berry&quot;, &quot;src&quot;: &quot;//picsum.photos/id/102/367/267&quot;, &quot;title&quot;: &quot;Berries&quot; }, { &quot;alt&quot;: &quot;A picture of a laptop&quot;, &quot;details&quot;: &quot;This is a picture of a <em>laptop</em>.&quot;, &quot;id&quot;: &quot;laptop&quot;, &quot;src&quot;: &quot;//picsum.photos/id/0/367/267&quot;, &quot;title&quot;: &quot;Laptop&quot; }, { &quot;alt&quot;: &quot;A picture of a nature&quot;, &quot;details&quot;: &quot;This is a picture of <em>nature</em>.&quot;, &quot;id&quot;: &quot;nature&quot;, &quot;src&quot;: &quot;https://picsum.photos/id/10/367/267&quot;, &quot;title&quot;: &quot;Nature&quot; } ]">
           <div slot="description">This is a <strong>carousel</strong> of game consoles with the <em>dark</em> theme.</div>
         </lrndesign-gallery>
+      <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
+      <p>stuff and things2</p>
+        <p>testxt</p>
+        <img src="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg" alt="dmd 100 course background art"/>
+      <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover-->
         <!--lrndesign-timeline id="mytimeline" accent-color="blue">
           This is lrndesign-timeline
         </lrndesign-timeline>
@@ -113,6 +142,7 @@
           scale="ct-square">
         </chartist-render-->
       </h-a-x>
+      <lrn-css-reset></lrn-css-reset>
     </div>
   </body>
 </html>

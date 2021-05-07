@@ -5,7 +5,7 @@ import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar-menu.js";
 import "./hax-context-item.js";
 import { autorun, toJS } from "mobx";
-import { HaxContextBehaviors } from "./hax-context-container.js";
+import { HaxContextBehaviors } from "./hax-context-behaviors.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /**

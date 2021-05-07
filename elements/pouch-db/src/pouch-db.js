@@ -160,12 +160,12 @@ class PouchDb extends HTMLElement {
     }
 
     //display for testing only - move to own elements
-    this.db.allDocs(
-      { include_docs: true, descending: true },
-      function (err, doc) {
-        console.log(doc.rows);
-      }
-    );
+    this.db.allDocs({ include_docs: true, descending: true }, function (
+      err,
+      doc
+    ) {
+      console.log(doc.rows);
+    });
     //display for testing only - move to own elements
   }
 
@@ -216,54 +216,54 @@ class PouchDb extends HTMLElement {
       callback(map);
     }
 
-    this.db.allDocs(
-      { include_docs: true, descending: true },
-      function (err, doc) {
-        processxAPI(
-          doc.rows,
-          function displayxAPI(mapxAPI) {
-            processItems(
-              mapxAPI,
-              function display(backMap) {
-                var labelsArray = [];
-                var resultsArray = [];
+    this.db.allDocs({ include_docs: true, descending: true }, function (
+      err,
+      doc
+    ) {
+      processxAPI(
+        doc.rows,
+        function displayxAPI(mapxAPI) {
+          processItems(
+            mapxAPI,
+            function display(backMap) {
+              var labelsArray = [];
+              var resultsArray = [];
 
-                for (let key of Object.keys(backMap)) {
-                  labelsArray.push(key);
-                }
-
-                for (let value of Object.values(backMap)) {
-                  resultsArray.push(value);
-                }
-
-                let queryData = [""];
-                queryData = {
-                  labels: labelsArray,
-                  series: [resultsArray],
-                  //activityDisplay: eventData.resultCompletion,    //FUTURE
-                  //objectName: eventData.objectName,               //FUTURE
-                  //resultSuccess: eventData.resultSuccess          //FUTURE
-                  //resultCompletion: eventData.resultCompletion    //FUTURE
-                };
-
-                window.dispatchEvent(
-                  new CustomEvent("pouch-db-show-data", {
-                    bubbles: true,
-                    composed: true,
-                    cancelable: false,
-                    detail: queryData,
-                  })
-                );
+              for (let key of Object.keys(backMap)) {
+                labelsArray.push(key);
               }
-              // end of display function
-            );
-            //end of processItems
-          }
-          // end of displayxAPI function
-        );
-        //end of processxAPI
-      }
-    );
+
+              for (let value of Object.values(backMap)) {
+                resultsArray.push(value);
+              }
+
+              let queryData = [""];
+              queryData = {
+                labels: labelsArray,
+                series: [resultsArray],
+                //activityDisplay: eventData.resultCompletion,    //FUTURE
+                //objectName: eventData.objectName,               //FUTURE
+                //resultSuccess: eventData.resultSuccess          //FUTURE
+                //resultCompletion: eventData.resultCompletion    //FUTURE
+              };
+
+              window.dispatchEvent(
+                new CustomEvent("pouch-db-show-data", {
+                  bubbles: true,
+                  composed: true,
+                  cancelable: false,
+                  detail: queryData,
+                })
+              );
+            }
+            // end of display function
+          );
+          //end of processItems
+        }
+        // end of displayxAPI function
+      );
+      //end of processxAPI
+    });
     //end of this.db.allDocs
   }
   // end of getDataFunction

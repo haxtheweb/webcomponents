@@ -3197,27 +3197,24 @@
      * @return {Chartist.Svg.Path} The current path object for easy call chaining.
      */
     function transform(transformFnc) {
-      forEachParam(
-        this.pathElements,
-        function (
+      forEachParam(this.pathElements, function (
+        pathElement,
+        paramName,
+        pathElementIndex,
+        paramIndex,
+        pathElements
+      ) {
+        var transformed = transformFnc(
           pathElement,
           paramName,
           pathElementIndex,
           paramIndex,
           pathElements
-        ) {
-          var transformed = transformFnc(
-            pathElement,
-            paramName,
-            pathElementIndex,
-            paramIndex,
-            pathElements
-          );
-          if (transformed || transformed === 0) {
-            pathElement[paramName] = transformed;
-          }
+        );
+        if (transformed || transformed === 0) {
+          pathElement[paramName] = transformed;
         }
-      );
+      });
       return this;
     }
 

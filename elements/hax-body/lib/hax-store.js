@@ -2398,10 +2398,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           this.activePlaceHolder = null;
         } else if (details.nextToActive && this.activeNode) {
           // special support for an active slot
-          if (
-            this.activeHaxBody.__slot &&
-            this.activeNode.tagName === "GRID-PLATE"
-          ) {
+          if (this.activeHaxBody.__slot && this.activeNode.haxLayoutContainer) {
             this.activeNode.appendChild(node);
           } else {
             this.activeNode.parentNode.insertBefore(node, this.activeNode);
@@ -2419,7 +2416,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           properties: properties,
         });
         // allow for inserting things into things but not grid plate
-        if (this.activeNode.parentNode.tagName === "GRID-PLATE") {
+        if (this.activeNode.parentNode.haxLayoutContainer) {
           // support slot if we have one on the activeNode (most likely)
           if (this.activeNode.getAttribute("slot") != null) {
             node.setAttribute("slot", this.activeNode.getAttribute("slot"));

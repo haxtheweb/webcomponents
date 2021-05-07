@@ -8,5 +8,5 @@
     "custom-elements.json"
   ],
   "cSpell.enabled": false,
-  "compile-hero.disable-compile-files-on-did-save-code": false
+  "compile-hero.disable-compile-files-on-did-save-code": true
 }

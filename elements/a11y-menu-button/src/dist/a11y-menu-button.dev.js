@@ -42,7 +42,7 @@ function _templateObject6() {
 function _templateObject5() {
   var data = _taggedTemplateLiteral([
     '\n        <button\n          id="menubutton"\n          aria-haspopup="true"\n          aria-controls="menu"\n          aria-expanded="',
-    '"\n        >\n          <slot name="button"></slot>\n        </button>\n      ',
+    '"\n          part="button"\n        >\n          <slot name="button"></slot>\n        </button>\n      ',
   ]);
 
   _templateObject5 = function _templateObject5() {
@@ -113,7 +113,7 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    '\n          :host {\n            padding: 0;\n            display: inline-block;\n            position: relative;\n            z-index: 1;\n          }\n          :host([expanded]) {\n            z-index: var(--a11y-menu-button-focus-z-index, 1000);\n          }\n          button[part="button"] {\n            display: block;\n            text-decoration: inherit;\n            font-family: inherit;\n            font-size: inherit;\n            margin: 0;\n            width: 100%;\n          }\n          absolute-position-behavior {\n            z-index: -1;\n            overflow: hidden;\n          }\n          :host([expanded]) absolute-position-behavior {\n            z-index: var(--a11y-menu-button-focus-z-index, 1000);\n          }\n          :host(:not([expanded])) absolute-position-behavior {\n            border-color: none !important;\n          }\n          ul {\n            margin: 0;\n            padding: 0;\n            list-style: none;\n          }\n        ',
+    '\n          :host {\n            padding: 0;\n            display: inline-flex;\n            position: relative;\n            z-index: 1;\n          }\n          :host([expanded]) {\n            z-index: var(--a11y-menu-button-focus-z-index, 1000);\n          }\n          button[part="button"] {\n            display: block;\n            text-decoration: inherit;\n            font-family: inherit;\n            font-size: inherit;\n            margin: 0;\n            width: 100%;\n          }\n          absolute-position-behavior {\n            z-index: -1;\n            overflow: hidden;\n          }\n          :host([expanded]) absolute-position-behavior {\n            z-index: var(--a11y-menu-button-focus-z-index, 1000);\n          }\n          :host(:not([expanded])) absolute-position-behavior {\n            border-color: none !important;\n          }\n          ul {\n            margin: 0;\n            padding: 0;\n            list-style: none;\n          }\n        ',
   ]);
 
   _templateObject2 = function _templateObject2() {

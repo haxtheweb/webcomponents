@@ -1,10 +1,13 @@
 import { css } from "lit-element/lit-element.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior";
 
 export const HaxLayoutBehaviors = function (SuperClass) {
-  return class extends SuperClass {
+  return class extends SchemaBehaviors(SuperClass) {
     static get styles() {
       return [
+        ...(super.styles || []),
         css`
           :host {
             display: block;
@@ -12,7 +15,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
               --hax-contextual-action-hover-color
             );
           }
-          :host([ready]) .container {
+          :host([ready]) [data-layout-slotname] {
             transition: var(
               --hax-layout-container-transition,
               0.5s width ease-in-out,
@@ -20,34 +23,12 @@ export const HaxLayoutBehaviors = function (SuperClass) {
               0.5s margin ease-in-out
             );
           }
-          :host(.hax-hovered) {
-            outline: var(--hax-layout-active-outline-width, 2px)
-              var(--hax-layout-active-outline-style, solid)
-              var(
-                --hax-layout-active-outline-color,
-                var(--hax-layout-accent-color, #009dc7)
-              ) !important;
-            outline-offset: var(--hax-layout-active-outline-offset, -2px);
-          }
-          .container.hax-hovered {
-            outline: var(--hax-layout-active-outline-width, 2px)
-              var(--hax-layout-active-outline-style, solid)
-              var(
-                --hax-layout-active-outline-color,
-                var(--hax-layout-accent-color, #009dc7)
-              ) !important;
-            outline-offset: var(--hax-layout-active-outline-offset, -2px);
-          }
-          .container.not-shown {
-            display: none;
-            outline: none;
-          }
-          :host([data-hax-ray]) .container.not-shown {
+          :host([data-hax-ray]) [data-layout-slotname].not-shown {
             display: block;
             opacity: 0.4;
             width: 0;
           }
-          :host([data-hax-ray]) .container.not-shown.has-nodes {
+          :host([data-hax-ray]) [data-layout-slotname].not-shown.has-nodes {
             width: 100%;
             transition: none;
           }
@@ -69,13 +50,13 @@ export const HaxLayoutBehaviors = function (SuperClass) {
           }
           /** this implies hax editing state is available **/
           :host([data-hax-ray]) ::slotted(*) {
-            outline: var(--hax-layout-slotted-outline-width, 1px)
+            outline: var(--hax-layout-slotted-outline-width, 0px)
               var(--hax-layout-slotted-outline-style, solid)
               var(
                 --hax-layout-slotted-outline-color,
                 var(--hax-layout-slotted-faded-color, #eeeeee)
               );
-            outline-offset: var(--hax-layout-slotted-outline-offset, -2px);
+            outline-offset: var(--hax-layout-slotted-outline-offset, 0px);
           }
           :host([data-hax-ray])
             ::slotted([contenteditable][data-hax-ray]:empty)::before {
@@ -84,24 +65,32 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             transition: 0.2s all ease-in-out;
           }
           :host([data-hax-ray]) ::slotted(*:hover) {
-            outline: var(--hax-layout-slotted-hover-outline-width, 1px)
+            outline: var(--hax-layout-slotted-hover-outline-width, 0px)
               var(--hax-layout-slotted-hover-outline-style, solid)
               var(
                 --hax-layout-slotted-hover-outline-color,
+                var(--hax-layout-accent-color, #009dc7)
+              );
+          }
+          :host([data-hax-ray]) ::slotted(.hax-active) {
+            outline: var(--hax-layout-slotted-active-outline-width, 1px)
+              var(--hax-layout-slotted-active-outline-style, solid)
+              var(
+                --hax-layout-slotted-active-outline-color,
                 var(--hax-layout-slotted-faded-color, #eeeeee)
               );
           }
-          :host([data-hax-ray]) .container {
-            outline: var(--hax-layout-container-outline-width, 1px)
+          :host([data-hax-ray]) [data-layout-slotname] {
+            outline: var(--hax-layout-container-outline-width, 0px)
               var(--hax-layout-container-outline-style, solid)
               var(
                 --hax-layout-container-outline-color,
                 var(--hax-layout-slotted-faded-color, #eeeeee)
               );
-            outline-offset: var(--hax-layout-container-outline-offset, -2px);
+            outline-offset: var(--hax-layout-container-outline-offset, 2px);
           }
-          :host([data-hax-ray]) .container:hover {
-            outline: var(--hax-layout-container-hover-outline-width, 1px)
+          :host([data-hax-ray]) [data-layout-slotname]:hover {
+            outline: var(--hax-layout-container-hover-outline-width, 0px)
               var(--hax-layout-container-hover-outline-style, solid)
               var(
                 --hax-layout-container-hover-outline-color,
@@ -164,11 +153,13 @@ export const HaxLayoutBehaviors = function (SuperClass) {
      * life cycle
      */
     firstUpdated(changedProperties) {
+      if (super.firstUpdated) super.firstUpdated(changedProperties);
       setTimeout(() => {
         this.ready = true;
       }, 100);
     }
     updated(changedProperties) {
+      if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "dataHaxRay" && this.shadowRoot) {
           if (this[propName]) {
@@ -283,9 +274,11 @@ export const HaxLayoutBehaviors = function (SuperClass) {
             break;
         }
       });
+      this.haxLayoutContainer = true;
     }
     static get properties() {
       return {
+        ...(super.properties || {}),
         ready: {
           type: Boolean,
           reflect: true,
@@ -320,7 +313,7 @@ export const HaxLayoutBehaviors = function (SuperClass) {
     _getSlotOrder(item) {
       let slot = item.getAttribute("slot"),
         container = this.shadowRoot.querySelector(`[slot=${slot}]`),
-        order = parseInt(container.getAttribute("data-move-order") || -1);
+        order = parseInt(container.getAttribute("data-layout-order") || -1);
       return order;
     }
     /**
@@ -352,9 +345,11 @@ export const HaxLayoutBehaviors = function (SuperClass) {
     canMoveSlot(item, before) {
       let dir = before ? -1 : 1,
         order = this.this._getSlotOrder(item),
-        containers = [...this.shadowRoot.querySelectorAll(".container")]
+        containers = [
+          ...this.shadowRoot.querySelectorAll("[data-layout-order]"),
+        ]
           .map((container) =>
-            parseInt(container.getAttribute("data-move-order") || -1)
+            parseInt(container.getAttribute("data-layout-order") || -1)
           )
           .sort((a, b) => a - b),
         dest = order[1] + dir;
@@ -370,8 +365,10 @@ export const HaxLayoutBehaviors = function (SuperClass) {
       let dir = before ? -1 : 1,
         order = this.this._getSlotOrder(item),
         dest = order[1] + dir,
-        container = this.shadowRoot.querySelector(`[data-move-order=${dest}]`),
-        slot = container.getAttribute("data-slot-name");
+        container = this.shadowRoot.querySelector(
+          `[data-layout-order=${dest}]`
+        ),
+        slot = container.getAttribute("data-layout-slotname");
       item.setAttribute("slot", slot);
     }
     /**
@@ -383,9 +380,9 @@ export const HaxLayoutBehaviors = function (SuperClass) {
 
     validElementSlots() {
       return this.shadowRoot
-        ? [...this.shadowRoot.querySelectorAll(".container")].map((container) =>
-            container.getAttribute("data-slot-name")
-          )
+        ? [
+            ...this.shadowRoot.querySelectorAll("[data-layout-order]"),
+          ].map((container) => container.getAttribute("data-layout-slotname"))
         : [];
     }
     /**
@@ -421,6 +418,13 @@ export const HaxLayoutBehaviors = function (SuperClass) {
         console.warn(error);
       }
       this.__sorting = false;
+    }
+    static get haxProperties() {
+      return {
+        ...(super.haxProperties || {}),
+        type: "grid",
+        contentEditable: true,
+      };
     }
   };
 };

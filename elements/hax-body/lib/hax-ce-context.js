@@ -5,7 +5,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import "@lrnwebcomponents/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import { wipeSlot } from "@lrnwebcomponents/utils/utils";
-import { HaxContextBehaviors } from "./hax-context-container.js";
+import { HaxContextBehaviors } from "./hax-context-behaviors.js";
 import { autorun, toJS } from "mobx";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 /**

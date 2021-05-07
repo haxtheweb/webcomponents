@@ -11,6 +11,8 @@ var _editableTableBehaviors = require("./editable-table-behaviors.js");
 
 var _a11yMenuButton = require("@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js");
 
+require("@lrnwebcomponents/a11y-menu-button/lib/a11y-menu-button-item.js");
+
 require("@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js");
 
 require("@lrnwebcomponents/simple-icon/lib/simple-icons.js");
@@ -86,7 +88,7 @@ function _defineProperty(obj, key, value) {
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral([
-    '\n        :host {\n          display: block;\n          --paper-item-min-height: 24px;\n          --a11y-menu-button-border: none;\n          --a11y-menu-button-list-border: 1px solid\n            var(--editable-table-border-color, #999);\n          --a11y-menu-button-vertical-padding: var(\n            --editable-table-cell-vertical-padding,\n            10px\n          );\n          --a11y-menu-button-horizontal-padding: var(\n            --editable-table-cell-horizontal-padding,\n            6px\n          );\n          --a11y-menu-button-item-focus-bg-color: var(\n            --editable-table-heading-bg-color,\n            #e8e8e8\n          );\n          --a11y-menu-button-list-bg-color: var(\n            --editable-table-bg-color,\n            #fff\n          );\n        }\n        ul,\n        absolute-position-behavior {\n          width: 100%;\n        }\n        absolute-position-behavior.row,\n        absolute-position-behavior.row ul {\n          width: 150px;\n        }\n        a11y-menu-button-item {\n          font-family: var(\n            --editable-table-secondary-font-family,\n            "Roboto",\n            "Noto",\n            sans-serif\n          );\n          color: var(--editable-table-color, #222);\n          font-size: var(--editable-table-secondary-font-size, 12px);\n        }\n      ',
+    '\n        :host {\n          display: block;\n          height: 100%;\n          width: 100%;\n          --paper-item-min-height: 24px;\n          --a11y-menu-button-border: none;\n          --a11y-menu-button-list-border: 1px solid\n            var(--editable-table-border-color, #999);\n          --a11y-menu-button-vertical-padding: var(\n            --editable-table-cell-vertical-padding,\n            10px\n          );\n          --a11y-menu-button-horizontal-padding: var(\n            --editable-table-cell-horizontal-padding,\n            6px\n          );\n          --a11y-menu-button-item-focus-bg-color: var(\n            --editable-table-heading-bg-color,\n            #e8e8e8\n          );\n          --a11y-menu-button-list-bg-color: var(\n            --editable-table-bg-color,\n            #fff\n          );\n        }\n        a11y-menu-button {\n          display: block;\n          height: 100%;\n          width: 100%;\n        }\n        a11y-menu-button::part(button) {\n          height: 100%;\n          width: 100%;\n        }\n        a11y-menu-button::part(menu-outer) {\n          min-width: 150px;\n        }\n        a11y-menu-button-item {\n          font-family: var(\n            --editable-table-secondary-font-family,\n            "Roboto",\n            "Noto",\n            sans-serif\n          );\n          color: var(--editable-table-color, #222);\n          font-size: var(--editable-table-secondary-font-size, 12px);\n          line-height: 150%;\n        }\n      ',
   ]);
 
   _templateObject4 = function _templateObject4() {
@@ -135,7 +137,7 @@ function _templateObject3() {
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
-    ' <a11y-menu-button-item\n      @click="',
+    '<a11y-menu-button-item\n      @click="',
     '"\n    >\n      ',
     "\n      ",
     "",
@@ -152,20 +154,14 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    '\n      <button\n        id="menubutton"\n        aria-haspopup="true"\n        aria-controls="menu"\n        aria-expanded="',
-    '"\n      >\n        <span class="sr-only">',
-    '</span>\n        <span id="label">',
-    ' </span>\n        <span class="sr-only">Menu</span>\n        <simple-icon-lite icon="arrow-drop-down"></simple-icon-lite>\n      </button>\n      <absolute-position-behavior\n        ?auto="',
-    '"\n        class="',
-    '"\n        for="menubutton"\n        position="',
-    '"\n        position-align="',
-    '"\n        offset="-3"\n      >\n        <ul\n          id="menu"\n          role="menu"\n          aria-labelledby="menubutton"\n          ?hidden="',
-    '"\n          @mousover="',
-    '"\n          @mousout="',
-    '"\n        >\n          ',
-    " ",
+    '\n      <a11y-menu-button\n        id="menubutton" \n        position="',
+    '"\n        @open="',
+    '">\n        <span class="sr-only" slot="button">',
+    '</span>\n        <span id="label" slot="button">',
+    ' </span>\n        <span class="sr-only" slot="button">Menu</span>\n        <simple-icon-lite icon="arrow-drop-down" slot="button"></simple-icon-lite>\n          ',
+    " \n          ",
     "\n          ",
-    "\n        </ul>\n      </absolute-position-behavior>\n    ",
+    "\n        </ul>\n      </a11y-menu-button>\n    ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -305,24 +301,12 @@ var EditableTableEditorRowcol =
         {
           key: "render",
           value: function render() {
-            var _this = this;
-
             return (0, _litElement.html)(
               _templateObject(),
-              this.expanded ? "true" : "false",
+              this.row ? "right" : "bottom",
+              this._onOpen,
               this.type,
               this.label || "",
-              this.expanded,
-              this.row ? "row" : "column",
-              this.row ? "right" : "bottom",
-              this.row ? "start" : "center",
-              !this.expanded,
-              function (e) {
-                return (_this.hover = true);
-              },
-              function (e) {
-                return (_this.hover = false);
-              },
               this._getItem(),
               this._getItem(false, true),
               this._getItem(true)
@@ -383,6 +367,23 @@ var EditableTableEditorRowcol =
               this.type,
               deleteItem ? " " : after ? " After " : " Before ",
               this.labelInfo
+            );
+          },
+        },
+        {
+          key: "_onOpen",
+          value: function _onOpen(e) {
+            this.dispatchEvent(
+              new CustomEvent("rowcol-menuopen", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: {
+                  insert: insert,
+                  row: this.row,
+                  index: index,
+                },
+              })
             );
           },
           /**

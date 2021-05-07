@@ -25,7 +25,7 @@ var _haxStore = require("./hax-store.js");
 
 var _mobx = require("mobx");
 
-var _haxContextContainer = require("./hax-context-container.js");
+var _haxContextBehaviors = require("./hax-context-behaviors.js");
 
 var _I18NMixin2 = require("@lrnwebcomponents/i18n-manager/lib/I18NMixin.js");
 
@@ -116,8 +116,8 @@ function _templateObject3() {
 function _templateObject2() {
   var data = _taggedTemplateLiteral([
     '\n      <div id="toolbar">\n        <hax-toolbar always-expanded>\n          <div class="group">\n            <hax-toolbar-menu\n              id="textformat"\n              icon="',
-    '"\n              label="Format"\n              show-text-label\n              data-simple-tour-stop\n              data-stop-title="label"\n            >\n              ',
-    '\n              <div slot="tour" data-stop-content>\n                Change how the text is structured and visualized in the page.\n              </div>\n            </hax-toolbar-menu>\n            <!-- comment this in when rich-text-editor is viable -->\n            <!--\n            <hax-context-item\n              action\n              hidden\n              icon="icons:flip-to-back"\n              label="Full text editor"\n              event-name="hax-full-text-editor-toggle"\n            ></hax-context-item> -->\n            <slot name="primary"></slot>\n          </div>\n          <div class="group">\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-list-bulleted"\n              event-name="text-tag-ul"\n              label="',
+    '"\n              label="Format"\n              show-text-label\n              data-simple-tour-stop\n              data-stop-title="Format"\n            >\n              ',
+    '\n              <div slot="tour" data-stop-content>\n                Change how the text is structured and visualized in the page.\n              </div>\n            </hax-toolbar-menu>\n            <!-- comment this in when rich-text-editor is viable -->\n            <!--\n            <hax-context-item\n              action\n              hidden\n              icon="icons:flip-to-back"\n              label="Full text editor"\n              event-name="hax-full-text-editor-toggle"\n            ></hax-context-item> -->\n            <slot name="primary"></slot>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-list-bulleted"\n              event-name="text-tag-ul"\n              label="',
     '"\n              ?hidden="',
     '"\n            ></hax-context-item-textop>\n            <hax-context-item-textop\n              mini\n              action\n              icon="editor:format-list-numbered"\n              label="',
     '"\n              event-name="text-tag-ol"\n              ?hidden="',
@@ -172,7 +172,7 @@ function _templateObject2() {
 
 function _templateObject() {
   var data = _taggedTemplateLiteral([
-    "\n        #toolbar {\n          position: absolute;\n          bottom: 0;\n          width: 280px;\n        }\n        .group, .group > * {\n          flex: 1 1 auto;\n        }\n      ",
+    "\n        .group,\n        .group > * {\n          flex: 1 1 auto;\n        }\n      ",
   ]);
 
   _templateObject = function _templateObject() {
@@ -366,7 +366,7 @@ var HaxTextContext =
         insertItemBelow: "Insert item below",
       };
 
-      _this.registerTranslation({
+      _this.registerLocalization({
         context: _assertThisInitialized(_this),
         namespace: "hax",
       });
@@ -466,6 +466,8 @@ var HaxTextContext =
         } else if (
           activeNode &&
           activeNode.tagName === "LI" &&
+          activeNode.parentNode &&
+          activeNode.parentNode.tagName &&
           _this.shadowRoot.querySelector(
             'button[event-name="' +
               activeNode.parentNode.tagName.toLowerCase() +
@@ -687,9 +689,12 @@ var HaxTextContext =
             switch (detail.eventName) {
               case "insert-above-active":
               case "insert-below-active":
-                this.shadowRoot.querySelector(
-                  "simple-popover-selection"
-                ).opened = false;
+                if (this.shadowRoot.querySelector("simple-popover-selection")) {
+                  this.shadowRoot.querySelector(
+                    "simple-popover-selection"
+                  ).opened = false;
+                }
+
                 break;
 
               case "text-underline":
@@ -715,6 +720,7 @@ var HaxTextContext =
 
             if (prevent) {
               if (
+                this.shadowRoot.querySelector("simple-popover-selection") &&
                 this.shadowRoot.querySelector("simple-popover-selection").opened
               ) {
                 this.shadowRoot.querySelector(
@@ -974,7 +980,7 @@ var HaxTextContext =
     return HaxTextContext;
   })(
     (0, _I18NMixin2.I18NMixin)(
-      (0, _haxContextContainer.HaxContextBehaviors)(_litElement.LitElement)
+      (0, _haxContextBehaviors.HaxContextBehaviors)(_litElement.LitElement)
     )
   );
 

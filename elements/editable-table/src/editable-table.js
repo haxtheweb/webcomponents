@@ -116,6 +116,7 @@ class EditableTable extends displayBehaviors(LitElement) {
         table {
           min-width: calc(100% - 2.3px);
           width: unset;
+          height: 1px;
         }
         caption {
           width: 100%;
@@ -125,6 +126,11 @@ class EditableTable extends displayBehaviors(LitElement) {
             --editable-table-caption-color,
             var(--editable-table-color, #222)
           );
+        }
+        table *:focus,
+        table *:hover,
+        table *:focus-within {
+          z-index: 2;
         }
         caption,
         .th-or-td {
@@ -297,6 +303,7 @@ class EditableTable extends displayBehaviors(LitElement) {
                         ?condensed="${this.condensed}"
                         index="${th}"
                         @rowcol-action="${this._handleRowColumnMenu}"
+                        @rowcol-menuopen="${this._handleMenuOpen}"
                       >
                       </editable-table-editor-rowcol>
                     </th>
@@ -837,6 +844,9 @@ class EditableTable extends displayBehaviors(LitElement) {
       row = data[index];
     }
     return row;
+  }
+  _handleMenuOpen(e) {
+    console.log(e);
   }
 
   /**
