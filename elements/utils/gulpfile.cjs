@@ -1,7 +1,6 @@
 const gulp = require("gulp");
 const fs = require("fs");
 const path = require("path");
-const _ = require("lodash");
 const rename = require("gulp-rename");
 const replace = require("gulp-replace");
 const stripCssComments = require("strip-css-comments");
