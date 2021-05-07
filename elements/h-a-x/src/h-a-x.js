@@ -46,65 +46,58 @@ class HAX extends HTMLElement {
       max-width: fill-available;
     }
 
-    :host h1, h-a-x h1 {
+    hax-body h1 {
       font-size: var(--hax-base-styles-h1-font-size);
       line-height: var(--hax-base-styles-h1-line-height);
     }
 
-    :host h2, h-a-x h2 {
+    hax-body h2 {
       font-size: var(--hax-base-styles-h2-font-size);
     }
 
-    :host h3, h-a-x h3 {
+    hax-body h3 {
       font-size: var(--hax-base-styles-h3-font-size);
     }
 
-    :host h4, h-a-x h4 {
+    hax-body h4 {
       font-size: var(--hax-base-styles-h4-font-size);
     }
 
-    :host h5, h-a-x h5 {
+    hax-body h5 {
       font-size: var(--hax-base-styles-h5-font-size);  
     }
 
-    :host h6, h-a-x h6 {
+    hax-body h6 {
       font-size: var(--hax-base-styles-h6-font-size);
     }
 
-    :host p, h-a-x p {
+    hax-body p {
       min-height: var(--hax-base-styles-p-min-height);
       font-size: var(--hax-base-styles-p-font-size);
       line-height: var(--hax-base-styles-p-line-height);
       letter-spacing: var(--hax-base-styles-p-letter-spacing);
     }
 
-    :host a,
-    :host a:-webkit-any-link,
-    h-a-x a,
-    h-a-x a:-webkit-any-link    {
+    hax-body a,
+    hax-body a:-webkit-any-link,
+    hax-body a,
+    hax-body a:-webkit-any-link    {
       font-size: var(--hax-base-styles-a-font-size,var(--hax-base-styles-p-font-size));
     }
 
-    :host ol,
-    :host ul
-    :host ol li,
-    :host ul li,
-    h-a-x ol,
-    h-a-x ul
-    h-a-x ol li,
-    h-a-x ul li {
+    hax-body ol,
+    hax-body ul
+    hax-body ol li,
+    hax-body ul li,
+    hax-body li {
       line-height: var(--hax-base-styles-list-line-height,var(--hax-base-styles-p-line-height));
       font-size: var(--hax-base-styles-list-font-size,var(--hax-base-styles-p-font-size));
     }
 
-    :host ul ul,
-    :host ul ol,
-    :host ol ul,
-    :host ol ol,
-    h-a-x ul ul,
-    h-a-x ul ol,
-    h-a-x ol ul,
-    h-a-x ol ol {
+    hax-body  ul,
+    hax-body  ul ol,
+    hax-body  ol ul,
+    hax-body  ol ol {
       padding-bottom: unset;
     }
     </style>

@@ -60,12 +60,10 @@ class HaxTray extends I18NMixin(
       edit: "Edit",
       save: "Save",
       move: "Move",
-      moveMenu: "Move",
+      moveMenu: "Toggles Menu Aligmnent",
       menuAlignment: "Menu Alignment",
-      left: "Top Left",
-      right: "Top Right",
-      bottomLeft: "Bottom Left",
-      bottomRight: "Bottom Right",
+      menuLeft: "Move",
+      menuRight: "Move",
       menuPosition: "Menu position",
       changeSideVisually:
         "Change which side of the screen the menu is affixed to visually.",
@@ -206,10 +204,7 @@ class HaxTray extends I18NMixin(
           width: var(--hax-tray-width, 300px);
           overflow-x: hidden;
           overflow-y: auto;
-          background-color: var(--hax-ui-background-color);
-          transition: 0.2s width ease-in-out 0s, 0.5s left ease-in-out 0.3s,
-            0.5s right ease-in-out 0.3s, 0s background-color linear,
-            0s border linear;
+          transition: 0.2s width ease-in-out 0s;
           height: 100vh;
         }
         :host([collapsed]) .wrapper {
@@ -244,6 +239,7 @@ class HaxTray extends I18NMixin(
           flex: 0 0 auto;
           /*transition:0.3s width ease-in-out 0s;*/
           z-index: 6;
+          background-color: var(--hax-ui-background-color);
         }
         :host([collapsed]) #menubar {
           width: unset;
@@ -252,7 +248,7 @@ class HaxTray extends I18NMixin(
           background-color: var(--hax-ui-background-color);
         }
         #menubar > *::part(button) {
-          padding: 2px;
+          padding: var(--hax-ui-spacing-xs);
         }
         #menubar > *::part(label) {
           opacity: 0;
@@ -272,6 +268,7 @@ class HaxTray extends I18NMixin(
           opacity: 1;
           width: 100%;
           visibility: visible;
+          padding: 0px var(--hax-ui-spacing-sm);
           overflow: unset;
           transition: 0.2s width ease-in-out 0s, 0.2s margin ease-in-out 0s,
             0.2s padding ease-in-out 0s, 0s opacity linear 0s,
@@ -292,9 +289,10 @@ class HaxTray extends I18NMixin(
           opacity: 1;
           visibility: visible;
           pointer-events: all;
-          transition: 0s opacity ease-in-out 0, 0s visibility ease-in-out 0s,
-            0s border linear;
+          transition: 0.2s opacity ease-in-out 0s, 0.2s width ease-in-out 0s,
+            0.2s visibility ease-in-out 0s, 0s border linear;
           border: 1px solid var(--hax-ui-border-color);
+          background-color: var(--hax-ui-background-color);
         }
         :host([collapsed]) .detail {
           width: 0px;
@@ -304,8 +302,6 @@ class HaxTray extends I18NMixin(
           pointer-events: none;
           max-height: 100vh;
           overflow-y: auto;
-          transition: 0s opacity ease-in-out 0.7s,
-            0s visibility ease-in-out 0.7s;
         }
         #tray-detail {
           position: absolute;
@@ -406,10 +402,10 @@ class HaxTray extends I18NMixin(
             align-items: stretch;
             height: 100vh;
             max-height: 100vh;
-            transition: background-color linear, 0s border linear;
           }
           :host([collapsed]) .wrapper {
             height: auto;
+            overflow-y: visible;
           }
           #menubar {
             position: sticky;
@@ -429,6 +425,9 @@ class HaxTray extends I18NMixin(
             justify-content: space-around;
           }
           #menubar > *::part(label) {
+            display: none;
+          }
+          #haxMenuAlign {
             display: none;
           }
           .detail {
@@ -492,10 +491,9 @@ class HaxTray extends I18NMixin(
   }
   get menuToolbarTemplate() {
     return html` <div id="menubar" class="collapse-menu">
-      ${this.menuButtons} ${this.saveButtons} ${this.doButtons}
-      ${this.contentButtons}
+      ${this.saveButtons} ${this.doButtons} ${this.contentButtons}
       <slot name="tray-buttons-pre"></slot>
-      ${this.moreButtons}
+      ${this.moreButtons}${this.menuButtons}
     </div>`;
   }
   get menuButtons() {
@@ -504,10 +502,12 @@ class HaxTray extends I18NMixin(
           show-text-label
           show-tooltip
           align-horizontal="${this.collapsed ? "left" : "center"}"
-          id="${this.elementAlign == "left" ? "right" : "left"}"
+          id="haxMenuAlign"
           event-name="toggle-element-align"
           icon="arrow-${this.elementAlign == "left" ? "forward" : "back"}"
-          label="${this.elementAlign == "left" ? this.t.right : this.t.left}"
+          label="${
+            this.elementAlign == "left" ? this.t.menuRight : this.t.menuLeft
+          }"
           index="${this.elementAlign == "left" ? "1" : "0"}"
           tooltip="${this.t.moveMenu} ${
       this.elementAlign == "left" ? this.t.right : this.t.left
@@ -541,6 +541,7 @@ class HaxTray extends I18NMixin(
             show-text-label
             show-tooltip
             align-horizontal="${this.collapsed ? "left" : "center"}"
+            position-align="${this.elementAlign == "left" ? "start" : "end"}"
           >
             <simple-toolbar-menu-item slot="menuitem">
               <hax-tray-button

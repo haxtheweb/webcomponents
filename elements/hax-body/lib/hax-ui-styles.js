@@ -178,6 +178,8 @@ export const HaxUiSingletons = [
   css`
     simple-modal[mode="hax-ui"],
     simple-popover-manager[mode="hax"] {
+      font-family: var(--hax-ui-font-family);
+      font-size: var(--hax-ui-font-size);
       --simple-modal-height: 70vh;
       --simple-modal-width: 70vw;
       --simple-popover-border-color: var(--hax-ui-color);
@@ -190,7 +192,8 @@ export const HaxUiSingletons = [
       z-index: 100000001 !important;
     }
     simple-modal[mode="hax-ui"]::part(titlebar),
-    simple-popover-manager[mode="hax"]::part(simple-popover-heading) {
+    simple-popover-manager[mode="hax"]::part(simple-popover-heading),
+    simple-popover-manager[mode="hax"] h1[slot="heading"] {
       color: var(--hax-ui-background-color);
       background-color: var(--hax-ui-color-accent);
       padding: var(--hax-ui-spacing-sm) var(--hax-ui-spacing);
