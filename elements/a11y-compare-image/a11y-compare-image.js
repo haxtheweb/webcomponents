@@ -211,8 +211,10 @@ class a11yCompareImage extends SimpleColors {
     // Set background images
     this.__upper = layers[active + 1]
       ? layers[active + 1].src
-      : layers[active].src;
-    this.__lower = layers[active].src;
+      : layers[active]
+      ? layers[active].src
+      : "";
+    this.__lower = layers[active] ? layers[active].src : "";
     // Adding Fake markers behind the slider.
     if (total - 1 != this.__markers.length) {
       this._updateMarkers(total);
