@@ -817,19 +817,20 @@ class GradeBook extends I18NMixin(SimpleColors) {
             : html`<loading-indicator></loading-indicator>`}
         </a11y-tab>
       </a11y-tabs>
-      <grid-plate layout="3-1">
-        <div slot="col-1">
-          <a11y-tabs
-            full-width
-            @a11y-tabs-active-changed="${this.updateStudentReport}"
+      <div>
+        <a11y-tabs
+          full-width
+          @a11y-tabs-active-changed="${this.updateStudentReport}"
+        >
+          <a11y-tab
+            icon="image:style"
+            label="Assessment view"
+            id="assessmentview"
           >
-            <a11y-tab
-              icon="image:style"
-              label="Assessment view"
-              id="assessmentview"
-            >
-              ${this.activeRubric[0]
-                ? html`
+            ${this.activeRubric[0]
+              ? html`
+                  <grid-plate layout="3-1">
+                  <div slot="col-1">
                     <h3>${this.activeRubric[0].name}</h3>
                     ${this.activeRubric.map(
                       (rubric) => html`
@@ -924,189 +925,186 @@ class GradeBook extends I18NMixin(SimpleColors) {
                           @value-changed="${this.totalScoreChangedEvent}"
                         ></simple-fields-field>
                         /
-                        ${this.database.assignments[this.activeAssignment]
-                          .points}
+                        ${
+                          this.database.assignments[this.activeAssignment]
+                            .points
+                        }
                         pts
                         <letter-grade
                           style="margin:-8px 0 0 16px;"
-                          total="${this.database.assignments[
-                            this.activeAssignment
-                          ].points}"
+                          total="${
+                            this.database.assignments[this.activeAssignment]
+                              .points
+                          }"
                           score="${this.totalScore}"
                         ></letter-grade>
                       </div>
                     </div>
+                  </div>
+                  <div slot="col-2" class="tag-group">
+          ${
+            this.database.tags.categories.length > 0
+              ? html`
+                  <h4>Qualitative Rubric Tags</h4>
+                  <a11y-collapse-group heading-button>
+                    ${this.database.tags.categories.map(
+                      (category, i) => html`
+                        <a11y-collapse>
+                          <div slot="heading">
+                            <simple-colors accent-color="${this.pickColor(i)}"
+                              ><span></span></simple-colors
+                            >${category}
+                          </div>
+                          <div slot="content">
+                            ${this.database.tags.data
+                              .filter((item) => {
+                                return item.category.includes(category);
+                              })
+                              .map(
+                                (term) =>
+                                  html`<simple-tag
+                                    draggable="true"
+                                    tabindex="0"
+                                    @keypress="${this.keyDown}"
+                                    @dragstart="${this.setDragTransfer}"
+                                    accent-color="${this.pickColor(i)}"
+                                    value="${term.term}"
+                                    .data="${term}"
+                                  ></simple-tag>`
+                              )}
+                          </div>
+                        </a11y-collapse>
+                      `
+                    )}
+                  </a11y-collapse-group>
+                `
+              : html`<loading-indicator></loading-indicator>`
+          }
+                  </div>
+                  </div>
+                  </grid-plate>
+                `
+              : html`<loading-indicator></loading-indicator>`}
+          </a11y-tab>
+          <a11y-tab icon="assignment" label="Student report">
+            <div>
+              ${!this.loading
+                ? html`
+                    <h2>Student feedback report</h2>
+                    <div class="student-report-wrap">
+                      <a11y-collapse-group
+                        heading-button
+                        expanded
+                        style="width:80%;"
+                      >
+                        ${this.database.rubrics
+                          .filter((item) => {
+                            return (
+                              item.shortName ==
+                              this.database.assignments[this.activeAssignment]
+                                .rubric
+                            );
+                          })
+                          .map(
+                            (rubric) => html`
+                              <a11y-collapse class="student-feedback-text">
+                                <div slot="heading" class="heading">
+                                  ${rubric.criteria}
+                                </div>
+                                <div slot="content">
+                                  <div class="student-feedback-score-heading">
+                                    <div>
+                                      ${this.getCriteriaScore(rubric.criteria)}
+                                      /
+                                      ${Math.round(
+                                        (rubric.percentage / 100) *
+                                          this.database.assignments[
+                                            this.activeAssignment
+                                          ].points
+                                      )}
+                                    </div>
+                                    <h3>Criteria details</h3>
+                                  </div>
+                                  <p>${rubric.description}</p>
+                                  <h3>Your feedback</h3>
+                                  <ul>
+                                    ${rubric.qualitative.map(
+                                      (cat) => html`
+                                        <h4>${cat}</h4>
+                                        <ul>
+                                          ${this.activeGrading[rubric.criteria]
+                                            ? html`${this.activeGrading[
+                                                rubric.criteria
+                                              ][cat].map(
+                                                (tag) => html` <li>
+                                                  <span>${tag.term}</span
+                                                  >${tag.description
+                                                    ? html` - ${tag.description}`
+                                                    : ``}
+                                                  ${tag.associatedMaterial
+                                                    ? html`
+                                                        <ul>
+                                                          ${tag.associatedMaterial.map(
+                                                            (material) => html`
+                                                              <li>
+                                                                <a
+                                                                  href="${material}"
+                                                                  target="_blank"
+                                                                  rel="noopener noreferrer"
+                                                                  >${material}</a
+                                                                >
+                                                              </li>
+                                                            `
+                                                          )}
+                                                        </ul>
+                                                      `
+                                                    : ``}
+                                                </li>`
+                                              )}`
+                                            : ``}
+                                        </ul>
+                                      `
+                                    )}
+                                  </ul>
+                                  <h3>Additional Criteria feedback</h3>
+                                  <p>
+                                    ${this.getCriteriaFeedback(rubric.criteria)}
+                                  </p>
+                                </div>
+                              </a11y-collapse>
+                            `
+                          )}
+                        <a11y-collapse class="student-feedback-text">
+                          <div slot="heading" class="heading">
+                            ${this.t.overallFeedback}
+                          </div>
+                          <div slot="content">
+                            <p>${this.getCriteriaFeedback("overall")}</p>
+                            <h3>Your total Score</h3>
+                            <div class="score-display">
+                              ${this.totalScore} /
+                              ${this.database.assignments[this.activeAssignment]
+                                .points}
+                              pts
+                            </div>
+                          </div>
+                        </a11y-collapse>
+                      </a11y-collapse-group>
+                      <letter-grade
+                        class="student-report-score"
+                        show-scale
+                        total="${this.database.assignments[
+                          this.activeAssignment
+                        ].points}"
+                        score="${this.totalScore}"
+                      ></letter-grade>
+                    </div>
                   `
                 : html`<loading-indicator></loading-indicator>`}
-            </a11y-tab>
-            <a11y-tab icon="assignment" label="Student report">
-              <div>
-                ${!this.loading
-                  ? html`
-                      <h2>Student feedback report</h2>
-                      <div class="student-report-wrap">
-                        <a11y-collapse-group
-                          heading-button
-                          expanded
-                          style="width:80%;"
-                        >
-                          ${this.database.rubrics
-                            .filter((item) => {
-                              return (
-                                item.shortName ==
-                                this.database.assignments[this.activeAssignment]
-                                  .rubric
-                              );
-                            })
-                            .map(
-                              (rubric) => html`
-                                <a11y-collapse class="student-feedback-text">
-                                  <div slot="heading" class="heading">
-                                    ${rubric.criteria}
-                                  </div>
-                                  <div slot="content">
-                                    <div class="student-feedback-score-heading">
-                                      <div>
-                                        ${this.getCriteriaScore(
-                                          rubric.criteria
-                                        )}
-                                        /
-                                        ${Math.round(
-                                          (rubric.percentage / 100) *
-                                            this.database.assignments[
-                                              this.activeAssignment
-                                            ].points
-                                        )}
-                                      </div>
-                                      <h3>Criteria details</h3>
-                                    </div>
-                                    <p>${rubric.description}</p>
-                                    <h3>Your feedback</h3>
-                                    <ul>
-                                      ${rubric.qualitative.map(
-                                        (cat) => html`
-                                          <h4>${cat}</h4>
-                                          <ul>
-                                            ${this.activeGrading[
-                                              rubric.criteria
-                                            ]
-                                              ? html`${this.activeGrading[
-                                                  rubric.criteria
-                                                ][cat].map(
-                                                  (tag) => html` <li>
-                                                    <span>${tag.term}</span
-                                                    >${tag.description
-                                                      ? html` -
-                                                        ${tag.description}`
-                                                      : ``}
-                                                    ${tag.associatedMaterial
-                                                      ? html`
-                                                          <ul>
-                                                            ${tag.associatedMaterial.map(
-                                                              (
-                                                                material
-                                                              ) => html`
-                                                                <li>
-                                                                  <a
-                                                                    href="${material}"
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    >${material}</a
-                                                                  >
-                                                                </li>
-                                                              `
-                                                            )}
-                                                          </ul>
-                                                        `
-                                                      : ``}
-                                                  </li>`
-                                                )}`
-                                              : ``}
-                                          </ul>
-                                        `
-                                      )}
-                                    </ul>
-                                    <h3>Additional Criteria feedback</h3>
-                                    <p>
-                                      ${this.getCriteriaFeedback(
-                                        rubric.criteria
-                                      )}
-                                    </p>
-                                  </div>
-                                </a11y-collapse>
-                              `
-                            )}
-                          <a11y-collapse class="student-feedback-text">
-                            <div slot="heading" class="heading">
-                              ${this.t.overallFeedback}
-                            </div>
-                            <div slot="content">
-                              <p>${this.getCriteriaFeedback("overall")}</p>
-                              <h3>Your total Score</h3>
-                              <div class="score-display">
-                                ${this.totalScore} /
-                                ${this.database.assignments[
-                                  this.activeAssignment
-                                ].points}
-                                pts
-                              </div>
-                            </div>
-                          </a11y-collapse>
-                        </a11y-collapse-group>
-                        <letter-grade
-                          class="student-report-score"
-                          show-scale
-                          total="${this.database.assignments[
-                            this.activeAssignment
-                          ].points}"
-                          score="${this.totalScore}"
-                        ></letter-grade>
-                      </div>
-                    `
-                  : html`<loading-indicator></loading-indicator>`}
-              </div>
-            </a11y-tab>
-          </a11y-tabs>
-        </div>
-        <div slot="col-2" class="tag-group">
-          ${this.database.tags.categories.length > 0
-            ? html`
-                <h4>Qualitative Rubric Tags</h4>
-                <a11y-collapse-group heading-button>
-                  ${this.database.tags.categories.map(
-                    (category, i) => html`
-                      <a11y-collapse>
-                        <div slot="heading">
-                          <simple-colors accent-color="${this.pickColor(i)}"
-                            ><span></span></simple-colors
-                          >${category}
-                        </div>
-                        <div slot="content">
-                          ${this.database.tags.data
-                            .filter((item) => {
-                              return item.category.includes(category);
-                            })
-                            .map(
-                              (term) =>
-                                html`<simple-tag
-                                  draggable="true"
-                                  tabindex="0"
-                                  @keypress="${this.keyDown}"
-                                  @dragstart="${this.setDragTransfer}"
-                                  accent-color="${this.pickColor(i)}"
-                                  value="${term.term}"
-                                  .data="${term}"
-                                ></simple-tag>`
-                            )}
-                        </div>
-                      </a11y-collapse>
-                    `
-                  )}
-                </a11y-collapse-group>
-              `
-            : html`<loading-indicator></loading-indicator>`}
-        </div>
-      </grid-plate>
+            </div>
+          </a11y-tab>
+        </a11y-tabs>
+      </div>
     `;
   }
   /**

@@ -200,7 +200,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           );
         }
         #prev-next-nav {
-          z-index: 10000;
+          z-index: 1;
           display: flex;
         }
         @media screen and (min-width: 600px) {
