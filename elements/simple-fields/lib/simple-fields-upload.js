@@ -44,30 +44,40 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
           --lumo-primary-font-color: var(--simple-fields-color, currentColor);
           --lumo-base-color: var(--simple-fields-background-color, transparent);
         }
-        #url-browse,
-        #drop-camera {
+        fieldset {
+          padding: 0px;
+          max-width: 100%;
+        }
+        #url-browse {
           width: 100%;
           font-family: var(--simple-fields-button-font-family, sans-serif);
           font-size: var(--simple-fields-button-font-size, 14px);
         }
-        #drop-camera {
+        vaadin-upload::part(drop-label) {
           display: flex;
           align-items: center;
           flex-wrap: wrap;
-          align-items: center;
           justify-content: center;
         }
-        #browse {
-          margin-right: 0;
+        div[slot="drop-label"] {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        div[slot="drop-label"] > * {
+          flex: 0 1 auto;
         }
         #url {
+          flex: 1 1 auto;
+        }
+        #url,
+        simple-toolbar-button {
           margin-bottom: var(--simple-fields-margin-small, 8px);
         }
-        #url::part(option-inner) {
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
+        simple-toolbar-button {
+          font-family: var(--simple-fields-font-family, sans-serif);
+          color: var(--simple-fields-color, currentColor);
         }
         #drop,
         #photo {
@@ -85,37 +95,27 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
         #cancel-camera::part(button) {
           width: 24px;
         }
-        simple-toolbar-button {
-          margin: 0 5px;
-        }
         vaadin-upload {
-          padding: 0 var(--simple-fields-margin-small, 8px)
-            var(--simple-fields-margin-small, 8px);
+          padding: var(--simple-fields-margin-small, 8px);
           position: relative;
           overflow: visible;
-        }
-        vaadin-upload::part(drop-label-icon) {
-          display: none;
-        }
-        vaadin-upload::part(add-button) {
-          font-family: var(--simple-fields-font-family, sans-serif);
-          color: var(--simple-fields-color, currentColor);
+          border: none !important;
         }
         vaadin-upload::part(drop-label) {
           font-family: var(--simple-fields-font-family, sans-serif);
           color: var(--simple-fields-color, currentColor);
-          margin-bottom: 16px;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 0 calc(1 * var(--simple-fields-margin-small, 8px));
-          width: calc(100% - 2 * var(--simple-fields-margin-small) - 2px);
+          padding: 0;
+          width: 100%;
+          margin-top: -16px;
+        }
+        vaadin-upload::part(drop-label-icon) {
+          display: none;
         }
         vaadin-upload.option-selfie::part(drop-label) {
           display: block;
-        }
-        vaadin-upload.option-selfie #drop-camera {
-          display: none;
         }
         vaadin-upload[dragover] {
           border-color: var(
@@ -156,34 +156,7 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
    */
   get fields() {
     return html`
-      <div id="url-browse">
-        <simple-fields-field
-          id="url"
-          ?autofocus="${this.autofocus}"
-          autocomplete="${this.autocomplete}"
-          value="${this.value || ""}"
-          @value-changed="${this.valueChanged}"
-          label="URL"
-          .description="${this.description}"
-          type="url"
-          auto-validate=""
-          part="url"
-          @click="${(e) => e.preventDefault()}"
-          @mousedown="${(e) => e.preventDefault()}"
-          @focus="${(e) => e.preventDefault()}"
-        >
-          <simple-toolbar-button
-            id="browse"
-            label="Browse..."
-            show-text-label
-            @click="${this._handleBrowse}"
-            controls="fieldset"
-            slot="suffix"
-            part="browse"
-          >
-          </simple-toolbar-button>
-        </simple-fields-field>
-      </div>
+      <div id="url-browse"></div>
       <div id="upload-options">
         <vaadin-upload
           capture
@@ -196,18 +169,35 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
         >
           <button id="add-hidden" slot="add-button" hidden></button>
           <div
-            id="drop-camera"
             slot="drop-label"
-            part="drop-area"
+            part="browse-area"
             ?hidden="${this.option == "selfie" || this.option == "audio"}"
           >
-            <span id="drop" part="drop-area-text">
-              <simple-icon-lite
-                icon="file-upload"
-                part="drop-area-icon"
-              ></simple-icon-lite>
-              Drop media here ${!navigator.mediaDevices ? "" : html` or `}
-            </span>
+            <simple-fields-field
+              id="url"
+              ?autofocus="${this.autofocus}"
+              autocomplete="${this.autocomplete}"
+              value="${this.value || ""}"
+              @value-changed="${this.valueChanged}"
+              label="URL"
+              .description="${this.description}"
+              type="url"
+              auto-validate=""
+              part="url"
+              @click="${(e) => e.preventDefault()}"
+              @mousedown="${(e) => e.preventDefault()}"
+              @focus="${(e) => e.preventDefault()}"
+            >
+            </simple-fields-field>
+            <simple-toolbar-button
+              id="browse"
+              label="Browse..."
+              show-text-label
+              @click="${this._handleBrowse}"
+              controls="fieldset"
+              part="browse"
+            >
+            </simple-toolbar-button>
             <simple-toolbar-button
               icon="image:camera-alt"
               label="Take photo"
@@ -232,6 +222,13 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
               ?hidden="${!navigator.mediaDevices || this.noVoiceRecord}"
             >
             </simple-toolbar-button>
+            <span id="drop" part="drop-area-text">
+              <simple-icon-lite
+                icon="file-upload"
+                part="drop-area-icon"
+              ></simple-icon-lite>
+              or drop media here
+            </span>
           </div>
           <simple-toolbar-button
             id="cancel-camera"
