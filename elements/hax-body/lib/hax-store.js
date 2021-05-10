@@ -1879,6 +1879,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "iframe",
+          content: "",
+          properties: {
+            src: "https://haxtheweb.org/",
+            loading: "lazy",
+            style: "height:50vh;width:75%;margin: 0px auto; display: block;",
+          },
+        },
+      ],
     };
     this.setHaxProperties(iframe, "iframe");
     let img = {
@@ -1961,6 +1972,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "img",
+          content: "",
+          properties: {
+            src: "https://cdn2.thecatapi.com/images/9j5.jpg",
+            loading: "lazy",
+          },
+        },
+      ],
     };
     this.setHaxProperties(img, "img");
     let ahref = {
