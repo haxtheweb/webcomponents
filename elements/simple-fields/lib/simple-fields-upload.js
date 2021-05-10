@@ -69,31 +69,30 @@ class SimpleFieldsUpload extends SimpleFieldsFieldsetBehaviors(LitElement) {
           flex: 0 1 auto;
         }
         #url {
-          flex: 1 1 auto;
-        }
-        #url,
-        simple-toolbar-button {
+          flex: 1 1 100%;
           margin-bottom: var(--simple-fields-margin-small, 8px);
         }
         simple-toolbar-button {
           font-family: var(--simple-fields-font-family, sans-serif);
           color: var(--simple-fields-color, currentColor);
+          margin: calc(0.5 * var(--simple-fields-margin-small, 8px));
         }
         #drop,
         #photo {
           white-space: nowrap;
         }
         #upload-options {
+          position: relative;
           transition: height 0.3s linear;
         }
         #cancel-camera {
-          display: block;
-          margin: 0;
-          margin: -12px -12px 0;
+          position: absolute;
+          right: 0;
+          top: 0;
           z-index: 2;
+          --simple-fields-button-padding-sm: 0;
         }
         #cancel-camera::part(button) {
-          width: 24px;
         }
         vaadin-upload {
           padding: var(--simple-fields-margin-small, 8px);
