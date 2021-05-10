@@ -672,8 +672,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           haxAutoloader.appendChild(document.createElement(i));
         }
       } else {
+        let importPath = `${basePath}../../../${items[i]}`;
+        // account for external app store reference on import
+        if (this.isExternalURLImport(items[i])) {
+          importPath = items[i];
+        }
         // we have to import and then respond to it being imported by checking again
-        await import(`${basePath}../../../${items[i]}`)
+        await import(importPath)
           .then((response) => {
             // see if it imported now
             if (
@@ -697,6 +702,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           });
       }
     }
+  }
+  isExternalURLImport(string) {
+    let url;
+
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+
+    return new URL(url).origin !== location.origin;
   }
   _editModeChanged(newValue) {
     if (this.__hal) {
