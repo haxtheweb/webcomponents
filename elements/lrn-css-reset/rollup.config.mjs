@@ -1,5 +1,5 @@
 // rollup.config.mjs
 import configFactory from "@wcfactory/rollup-umd-build";
-import rhelementPackage from "./package.json";
+import packageJson from "./package.json";
 
-export default configFactory(rhelementPackage.rhelement);
+export default configFactory(packageJson.wcfactory);

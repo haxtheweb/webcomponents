@@ -26,6 +26,11 @@
           "default": "false"
         },
         {
+          "name": "position",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
           "name": "contentContainer",
           "type": "object"
         },
@@ -68,6 +73,12 @@
           "attribute": "hide-if-empty",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "contentContainer",
@@ -129,6 +140,11 @@
           "default": "false"
         },
         {
+          "name": "position",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
           "name": "contentContainer",
           "type": "object"
         },
@@ -171,6 +187,12 @@
           "attribute": "hide-if-empty",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "contentContainer",

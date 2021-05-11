@@ -1,0 +1,41 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrn-css-reset",
+      "path": "./lrn-css-reset.js",
+      "description": "`lrn-css-reset`\n`an element that applies CSS reset and additional base styles",
+      "attributes": [
+        {
+          "name": "apply-to-head",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "applyToHead",
+          "attribute": "apply-to-head",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "lrn-css-reset",
+      "path": "./src/lrn-css-reset.js",
+      "description": "`lrn-css-reset`\n`an element that applies CSS reset and additional base styles",
+      "attributes": [
+        {
+          "name": "apply-to-head",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "applyToHead",
+          "attribute": "apply-to-head",
+          "type": "boolean"
+        }
+      ]
+    }
+  ]
+}

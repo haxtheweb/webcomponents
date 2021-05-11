@@ -7,18 +7,6 @@
       "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`",
       "attributes": [
         {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"green\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
           "name": "red",
           "type": "boolean",
           "default": "false"
@@ -47,15 +35,11 @@
       "properties": [
         {
           "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
           "default": "\"green\""
         },
         {
           "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
         },
@@ -227,32 +211,14 @@
       "name": "future-terminal-text",
       "path": "./src/future-terminal-text.js",
       "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`",
-      "attributes": [
-        {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"green\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
       "properties": [
         {
           "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
           "default": "\"green\""
         },
         {
           "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
         },
