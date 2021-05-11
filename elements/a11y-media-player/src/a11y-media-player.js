@@ -1688,7 +1688,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         this.media && this.media.currentTime && this.media.currentTime > 0
           ? this.media.currentTime
           : 0;
-      console.log(this.__currentTime);
       this.__wait = true;
       setTimeout(() => {
         this.__wait = false;
