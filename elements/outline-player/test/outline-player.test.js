@@ -1,3 +1,9 @@
+// local development and mobx
+window.process = window.process || {
+  env: {
+    NODE_ENV: "development",
+  },
+};
 import {
   expect,
   fixture,
@@ -7,7 +13,7 @@ import {
   fixtureCleanup,
 } from "@open-wc/testing";
 import { setViewport } from "@web/test-runner-commands";
-import "../src/outline-player.js";
+await import("../src/outline-player.js");
 
 /*
  * Instantiation test
