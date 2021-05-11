@@ -2491,9 +2491,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     this.__loadedTracks.addEventListener("loadedmetadata", (e) =>
       this._handleMediaLoaded(e)
     );
-    this.__loadedTracks.addEventListener("timeupdate", (e) =>
-      this._handleTimeUpdate(e)
-    );
+    this.__loadedTracks.addEventListener("timeupdate", (e) => {
+      this._handleTimeUpdate(e);
+    });
     this.__playerReady = true;
   }
 
@@ -2509,6 +2509,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * @param {map} changedProperties the properties that have changed
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "learningMode") {
         this.disableSeek = this[propName];
@@ -3382,11 +3385,18 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * handles time updates
    */
   _handleTimeUpdate() {
-    /* update current time with media's current time property */
-    this.__currentTime =
-      this.media && this.media.currentTime && this.media.currentTime > 0
-        ? this.media.currentTime
-        : 0;
+    if (!this.__wait) {
+      /* update current time with media's current time property */
+      this.__currentTime =
+        this.media && this.media.currentTime && this.media.currentTime > 0
+          ? this.media.currentTime
+          : 0;
+      console.log(this.__currentTime);
+      this.__wait = true;
+      setTimeout(() => {
+        this.__wait = false;
+      }, 1000);
+    }
   }
 
   /**
@@ -3446,7 +3456,10 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
       ? this.cues.filter((cue) => cue.track !== track)
       : [];
   }
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.style.setProperty(
       "--a11y-media-transcript-max-height",
       this.height ? "146px" : "unset"
