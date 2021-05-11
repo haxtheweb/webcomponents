@@ -819,8 +819,8 @@ class SimpleFieldsLite extends LitElement {
     let propNames = Object.keys(schema.items.properties || {}),
       previewBy =
         schema.previewBy || (propNames.length > 0 ? [propNames[0]] : undefined);
-    // verify there are values of some form
-    (value || []).forEach((item, i) => {
+    // verify there are values of some form, like an array
+    Array.from(value).forEach((item, i) => {
       this._insertArrayItem(schema, previewBy, element, parent, item, i);
     });
     //listen for item additions
@@ -858,15 +858,15 @@ class SimpleFieldsLite extends LitElement {
   }
 
   _reorderArrayItems(parent) {
-    let vals = [...(this._getValue(parent.name) || [])],
+    let tmp = Array.from(this._getValue(parent.name)) || [];
+    let vals = [...tmp],
       updateIndex = (item, f, r) => {
         if (item.id) item.id = item.id.replace(f, r);
         if (item.name) item.name = item.name.replace(f, r);
         [...item.childNodes].forEach((child) => updateIndex(child, f, r));
       },
-      order = [...parent.childNodes],
+      order = [...Array.from(parent.childNodes)],
       newVals = [];
-
     //update item IDs to match new order
     order.forEach((item, index) => {
       let base = item.id.replace(/\.\d+$/, ``),
