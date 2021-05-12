@@ -24,6 +24,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       css`
         :host {
           display: block;
+          position: relative;
         }
         :host #slot {
           background-color: var(--haxcms-color, white);
