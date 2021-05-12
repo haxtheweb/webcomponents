@@ -18,6 +18,9 @@ class Store {
     this.manifest = null;
     this.activeItemContent = "";
     this.themeElement = null;
+    this.t = {
+      close: "Close",
+    };
     this.activeId = null;
     this.userData = {};
     this.cmsSiteEditor = {
@@ -50,6 +53,34 @@ class Store {
       parentTitle: computed, // active page parent title
       ancestorTitle: computed, // active page ancestor title
     });
+  }
+  /**
+   * Global toast bridge so we don't have to keep writing custom event
+   */
+  toast(
+    message,
+    duration = 2000,
+    classStyle = "capsule",
+    closeText = this.t.close,
+    eventCallback = null,
+    slot = null
+  ) {
+    // gets it all the way to the top immediately
+    window.dispatchEvent(
+      new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: message,
+          duration: duration,
+          classStyle: classStyle,
+          closeText: closeText,
+          eventCallback: eventCallback,
+          slot: slot,
+        },
+      })
+    );
   }
   /**
    * Load a manifest / site.json / JSON outline schema
