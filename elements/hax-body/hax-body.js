@@ -141,6 +141,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode]) li {
           margin-bottom: 6px;
         }
+        :host([edit-mode]) #bodycontainer {
+          margin: 0 var(--hax-tray-width) 0 0;
+        }
+        :host([edit-mode][element-align="left"]) #bodycontainer {
+          margin: 0 0 0 var(--hax-tray-width);
+        }
+        :host([edit-mode][tray-status="full-panel"]) #bodycontainer {
+          display: none;
+        }
         :host {
           display: block;
           position: relative;
@@ -387,6 +396,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           .hax-context-visible {
             height: auto;
           }
+          :host([edit-mode]) #bodycontainer,
+          :host([edit-mode]) #bodycontainer[element-align="left"],
+          :host([edit-mode]) #bodycontainer[element-align="right"] {
+            margin: var(--hax-tray-menubar-min-height) 0 0 0;
+          }
         }
 
         @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
@@ -470,6 +484,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }, 0);
     autorun(() => {
       this.editMode = toJS(HAXStore.editMode);
+    });
+    autorun(() => {
+      this.elementAlign = toJS(HAXStore.elementAlign);
+    });
+    autorun(() => {
+      this.trayStatus = toJS(HAXStore.trayStatus);
     });
     autorun(() => {
       this.activeNode = toJS(HAXStore.activeNode);
@@ -648,7 +668,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   render() {
     return html`
-      <div id="bodycontainer" class="ignore-activation">
+      <div
+        id="bodycontainer"
+        class="ignore-activation"
+        element-align="${this.elementAlign || "right"}"
+      >
         <slot id="body"></slot>
       </div>
       <absolute-position-behavior
@@ -695,6 +719,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         type: Boolean,
         reflect: true,
         attribute: "edit-mode",
+      },
+      /**
+       * element align
+       */
+      elementAlign: {
+        type: String,
+        reflect: true,
+        attribute: "element-align",
+      },
+      /**
+       * is hax tray collapsed, side-panel, or full-panel
+       */
+      trayStatus: {
+        type: String,
+        reflect: true,
+        attribute: "tray-status",
       },
       /**
        * A reference to the active node in the slot.

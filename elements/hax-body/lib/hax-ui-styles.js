@@ -16,6 +16,8 @@ export const HaxUiSpacing = [
   css`
     body {
       --hax-tray-width: 300px;
+      --hax-tray-menubar-min-width: 44px;
+      --hax-tray-menubar-min-height: 34px;
       --hax-ui-spacing-xs: 4px;
       --hax-ui-border-radius: 2px;
       --hax-ui-spacing-sm: calc(1 * var(--hax-ui-spacing-xs, 4px));

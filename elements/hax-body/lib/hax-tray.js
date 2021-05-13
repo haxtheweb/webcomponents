@@ -113,10 +113,10 @@ class HaxTray extends I18NMixin(
     this.activeSchema = [];
     this.canUndo = false;
     this.canRedo = false;
-    this.elementAlign = "right";
     this.trayDetail = "content-edit";
     this.activeTagName = "";
     this.traySizeIcon = "hax:arrow-expand-right";
+    this.elementAlign = "right";
     this.__setup = false;
     setTimeout(() => {
       import("./hax-tray-button.js");
@@ -134,6 +134,9 @@ class HaxTray extends I18NMixin(
     });
     autorun(() => {
       this.activeNode = toJS(HAXStore.activeNode);
+    });
+    autorun(() => {
+      this.elementAlign = toJS(HAXStore.elementAlign);
     });
     autorun(() => {
       this.tourOpened = toJS(HAXStore.tourOpened);
@@ -224,7 +227,7 @@ class HaxTray extends I18NMixin(
           display: inline-flex;
           flex-direction: column;
           align-items: stretch;
-          width: var(--hax-tray-menubar-min-width, 44px);
+          width: var(--hax-tray-menubar-min-width);
           overflow: visible;
           flex: 0 0 auto;
           z-index: 6;
@@ -431,15 +434,22 @@ class HaxTray extends I18NMixin(
       `,
     ];
   }
+  get trayStatus() {
+    let status = this.collapsed
+      ? "collapsed"
+      : this.trayDetail == "view-source"
+      ? "full-panel"
+      : "side-panel";
+    HAXStore.trayStatus = status;
+    return status;
+  }
   /**
    * LitElement render
    */
   render() {
     return html`
       ${this.panelOpsTemplate}
-      <div
-        class="wrapper ${this.trayDetail == "view-source" ? "full-panel" : ""}"
-      >
+      <div class="wrapper ${this.trayStatus}">
         ${this.menuToolbarTemplate}
         <div class="detail">
           <loading-indicator
@@ -883,7 +893,7 @@ class HaxTray extends I18NMixin(
         if (e.detail.index > 1) this.collapsed = true;
         this.style.setProperty("--hax-tray-custom-y", null);
         this.style.setProperty("--hax-tray-custom-x", null);
-        this.elementAlign = direction;
+        HAXStore.elementAlign = direction;
         break;
       case "toggle-tray-size":
         this.collapsed = !this.collapsed;
@@ -1210,27 +1220,6 @@ class HaxTray extends I18NMixin(
         }
       }
     });
-  }
-  /**
-   * When we end dragging ensure we remove the mover class.
-   */
-  _dragEnd(e) {
-    let menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
-    if (menu) menu.close(true);
-    this.collapsed = true;
-    this.style.setProperty("--hax-tray-custom-y", e.clientY + "px");
-    this.style.setProperty("--hax-tray-custom-x", e.clientX + "px");
-    this.elementAlign = "custom";
-  }
-  /**
-   * Drag start so we know what target to set
-   */
-  _dragStart(e) {
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    let menu = normalizeEventPath(e) ? normalizeEventPath(e)[0] : undefined;
-    this.collapsed = true;
-    if (menu) menu.close(true);
   }
   /**
    * When the preview node is updated, pull schema associated with it

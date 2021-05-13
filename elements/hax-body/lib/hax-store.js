@@ -384,6 +384,18 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         type: Object,
       },
       /**
+       * element align
+       */
+      elementAlign: {
+        type: String,
+      },
+      /**
+       * is hax tray collapsed, side-panel, or full-panel
+       */
+      trayStatus: {
+        type: String,
+      },
+      /**
        * Hax tray
        */
       haxTray: {
@@ -1740,6 +1752,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.skipExitTrap = false;
     this.appStoreLoaded = false;
     this.elementList = {};
+    this.elementAlign = "right";
+    this.trayStatus = "collapsed";
     this.appList = [];
     this.gizmoList = [];
     this.activeHaxBody = null;
@@ -1783,6 +1797,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       globalPreferences: observable,
       activeGizmo: computed,
       editMode: observable,
+      elementAlign: observable,
+      trayStatus: observable,
       appList: observable,
       activeApp: observable,
       haxSelectedText: observable,
