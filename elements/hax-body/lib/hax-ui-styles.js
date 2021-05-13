@@ -252,6 +252,10 @@ export const HaxUiSingletons = [
     simple-popover-manager[mode="hax"]:part(simple-popover-nav) {
       background-color: var(--hax-ui-background-color);
     }
+    #hax-cancel-no,
+    #hax-cancel-yes {
+      flex: 1 1 auto;
+    }
     simple-popover-manager[mode="hax"]
       simple-icon-button-lite[slot="nav"]::part(button) {
       text-transform: capitalize;

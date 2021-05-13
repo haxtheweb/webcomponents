@@ -17,55 +17,56 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     return [
       ...HaxComponentStyles,
       css`
-        :host {
+        :host,
+        #wrapper {
           margin: 0;
           padding: 0;
-          flex: 0 1 100vh;
           display: flex;
           flex-direction: column;
-        }
-        :host > *,
-        #textarea {
-          margin: 0;
-          padding: 0;
-        }
-        #hiddentextarea,
-        #spacer {
-          flex: 0 1 0px;
-        }
-        #wrapper {
-          flex: 1 0 calc(70vh - 94px);
+          align-items: stretch;
           position: relative;
+          flex: 1 1 100%;
+        }
+        #spacer {
+          flex: 1 1 100%;
+          z-index: -1;
         }
         #textarea {
           position: absolute;
           top: 0;
           bottom: 0;
-          left: 0;
-          right: 0;
+          margin: 0;
+          padding: 0;
         }
         hax-toolbar {
           flex: 0 0 auto;
-          width: 100%;
-          display: flex;
           background-color: var(--hax-ui-background-color);
         }
         hax-toolbar::part(buttons) {
-          justify-content: space-between;
-          flex: 0 1 auto;
+          display: flex;
+          justify-content: center;
+          align-items: stretch;
           margin: 0 auto;
+        }
+        hax-tray-button {
+          flex: 1 1 auto;
+        }
+        /** This is mobile layout for controls */
+        @media screen and (max-width: 800px) {
+          hax-tray-button {
+            flex: 0 1 auto;
+          }
         }
       `,
     ];
   }
   render() {
     return html`
-      <div id="spacer"></div>
       <div id="wrapper">
+        <div id="spacer"></div>
         <textarea id="hiddentextarea" hidden></textarea>
         <code-editor
           id="textarea"
-          title=""
           theme="${this.haxUiTheme == "hax"
             ? "vs"
             : this.haxUiTheme == "haxdark"
@@ -79,6 +80,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       <hax-toolbar always-expanded>
         <hax-tray-button
           label="${this.t.updatePage}"
+          tooltip="${this.t.updatePageTooltip}"
           icon="editor:insert-drive-file"
           @click="${this.importContent.bind(this)}"
           show-text-label
@@ -89,6 +91,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           @click="${this.scrubContent.bind(this)}"
           icon="editor:format-clear"
           label="${this.t.cleanFormatting}"
+          tooltip="${this.t.cleanFormattingTooltip}"
           show-text-label
           icon-position="top"
         >
@@ -97,12 +100,14 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           @click="${this.selectBody.bind(this)}"
           icon="icons:content-copy"
           label="${this.t.copyHTML}"
+          tooltip="${this.t.copyHTMLTooltip}"
           show-text-label
           icon-position="top"
         >
         </hax-tray-button>
         <hax-tray-button
           label="${this.t.downloadHTML}"
+          tooltip="${this.t.downloadHTMLTooltip}"
           icon="icons:file-download"
           @click="${this.download.bind(this)}"
           show-text-label
@@ -111,7 +116,8 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
         </hax-tray-button>
         <hax-tray-button
           @click="${this.htmlToHaxElements.bind(this)}"
-          label="HAXSchema"
+          label="${this.t.schema}"
+          tooltip="${this.t.schemaTooltip}"
           icon="hax:code-json"
           show-text-label
           icon-position="top"
@@ -165,16 +171,6 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     HAXStore.activeHaxBody.importContent(stripMSWord(htmlBody));
     //this.close();
   }
-
-  close() {
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        cancelable: true,
-        detail: {},
-      })
-    );
-  }
   /**
    * update content of the editor area
    */
@@ -222,6 +218,18 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   async firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
+      // fire an event that this is a core piece of the system
+      this.dispatchEvent(
+        new CustomEvent("hax-register-core-piece", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            piece: "haxViewSource",
+            object: this,
+          },
+        })
+      );
     }
     await this.updateEditor();
   }
@@ -289,11 +297,17 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   constructor() {
     super();
     this.t = {
-      updatePage: "Update Page",
-      copyHTML: "Copy HTML",
-      downloadHTML: "Download HTML",
-      cleanFormatting: "Clean Formatting",
-      copiedToClipboard: "Copied to clipboard",
+      updatePage: "Update",
+      updatePageTooltip: "Update Page HTML",
+      copyHTML: "Copy",
+      copyHTMLTooltip: "Copy HTML",
+      downloadHTML: "Download",
+      downloadHTMLTooltip: "Download HTML",
+      cleanFormatting: "Clean",
+      cleanFormattingTooltip: "Clean HTML Formatting",
+      cleanFormatting: "Clean",
+      schema: "Schema",
+      schemaTooltip: "HAX Schema",
     };
     this.registerLocalization({
       context: this,
