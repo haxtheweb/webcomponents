@@ -1538,7 +1538,7 @@
     "ebook-button": "@lrnwebcomponents/course-design/lib/ebook-button.js",
     "worksheet-download": "@lrnwebcomponents/course-design/lib/worksheet-download.js",
     "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
-    "editable-table-display": "@lrnwebcomponents/editable-table/lib/editable-table-display.js",
+    "editable-table": "@lrnwebcomponents/editable-table/editable-table.js",
     "simple-cta": "@lrnwebcomponents/simple-cta/simple-cta.js",
     "a11y-collapse": "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
     "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",

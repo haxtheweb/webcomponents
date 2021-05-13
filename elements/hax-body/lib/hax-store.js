@@ -870,7 +870,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             this.haxAutoloader,
             this.activeHaxBody,
             this.haxTray,
-            this.haxExport
+            this.haxCancel
           );
         }, 0);
       }
@@ -973,8 +973,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
     }, 0);
   }
-  _storePiecesAllHere(haxAutoloader, activeHaxBody, haxTray, haxExport) {
-    if (!this.ready && activeHaxBody && haxAutoloader && haxTray && haxExport) {
+  _storePiecesAllHere(haxAutoloader, activeHaxBody, haxTray, haxCancel) {
+    if (!this.ready && activeHaxBody && haxAutoloader && haxTray && haxCancel) {
       // send that hax store is ready to go so now we can setup the rest
       this.dispatchEvent(
         new CustomEvent("hax-store-ready", {
@@ -984,14 +984,31 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           detail: true,
         })
       );
-      // associate the export button in the tray to the dialog
-      HAXStore.haxExport.shadowRoot
+      // associate the cancel button in the tray to the dialog
+      let modal = HAXStore.haxCancel.shadowRoot
         .querySelector("#dialog")
-        .associateEvents(haxTray.shadowRoot.querySelector("#exportbtn"));
+        .associateEvents(haxTray.shadowRoot.querySelector("#haxcancelbutton"));
+      if (!!modal)
+        modal.addEventListener(
+          "simple-modal-confirmed",
+          this._handleConfirmCancel
+        );
+
       this.ready = true;
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
     }
+  }
+  _handleConfirmCancel(e) {
+    this.editMode = false;
+    this.dispatchEvent(
+      new CustomEvent("hax-cancel", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: e.detail,
+      })
+    );
   }
   /**
    * Build a list of common voice commands

@@ -497,9 +497,34 @@ class SimpleModal extends LitElement {
       this.dispatchEvent(evt);
     } else if (newValue) {
       // p dialog backport; a nice, simple solution for close buttons
-      let children = this.querySelectorAll("[dialog-dismiss],[dialog-confirm]");
-      children.forEach((el) => {
+      console.log(this.invokedBy);
+      let dismiss = this.querySelectorAll("[dialog-dismiss]");
+      dismiss.forEach((el) => {
         el.addEventListener("click", (e) => {
+          const evt = new CustomEvent("simple-modal-dismissed", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              opened: false,
+              invokedBy: this.invokedBy,
+            },
+          });
+          this.dispatchEvent(evt);
+          this.close();
+        });
+      });
+      let confirm = this.querySelectorAll("[dialog-confirm]");
+      confirm.forEach((el) => {
+        el.addEventListener("click", (e) => {
+          const evt = new CustomEvent("simple-modal-confirmed", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              opened: false,
+              invokedBy: this.invokedBy,
+            },
+          });
+          this.dispatchEvent(evt);
           this.close();
         });
       });
