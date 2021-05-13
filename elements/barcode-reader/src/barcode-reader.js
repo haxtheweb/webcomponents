@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import '@lrnwebcomponents/simple-icon/lib/simple-icon-button.js';
 var vid;
 /**
  * `barcode-reader`
@@ -19,9 +20,8 @@ class BarcodeReader extends LitElement {
    */
   static get styles() {
     return css`
-      :host {
-        display: block;
-        position: relative;
+      :host([hidden]){
+        display:none;
       }
       canvas {
         display: none;
@@ -31,28 +31,19 @@ class BarcodeReader extends LitElement {
         border-color: rgba(0, 0, 0, 0.5);
         border-width: 5px;
       }
-      .hidden {
-        display: none;
-      }
-      .hidden2 {
-        display: none;
-      }
     `;
   }
+  /**      .hidden {
+        display: none;
+      }
+   .hidden2 {
+        display: none;
+      }*/
   static get properties() {
     return {
-      value: {
-        type: String,
-        reflect: true,
-      },
-      scale: {
-        type: Number,
-        reflect: true,
-      },
-      input:{
-        type: Boolean,
-        reflect: true,
-      },
+      value: {type: String, reflect: true},
+      scale: {type: Number, reflect: true},
+      hideinput: {type: Boolean}
     };
   }
 
@@ -61,37 +52,37 @@ class BarcodeReader extends LitElement {
    */
   render() {
     return html`
-      <div class="hidden">
+      <div class="hidden" hidden>
         <div>
           <video
             muted
             autoplay
-            class="video"
             playsinline="true"
             width="${this.scale}%"
             height="${this.scale}%"
           ></video>
-          <canvas class="canvas" style="display: none; float: bottom;"></canvas>
+          <canvas style="display: none; float: bottom;"></canvas>
         </div>
       </div>
-      <div class="input" .hidden="${!this.input}">
+      <div class="input" hidden="${this.hideinput}">
         Result: <span><input type="text" .value="${this.value}" /> </span
         ></div>
       <span>
-      <div class="hidden2" style="">
+      <div class="hidden2" hidden>
         <div class="select">
           <label for="videoSource">Video source: </label>
           <select></select>
         </div>
         <button class="go">Scan</button>
-      </div><button class="render">Initialize scanner</button></span>
+      </div>
+      <simple-icon-button icon="image:camera-alt" class="render">Initialize</simple-icon-button></span>
     `;
   }
 
-  // Search API to turn numbers below barcode into text if cannot read barcode
-
   constructor() {
     super();
+    this.value = "";
+    this.hideinput = false;
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load(
       "ZXing",
@@ -101,8 +92,8 @@ class BarcodeReader extends LitElement {
   }
 
   _control() {
-    let videoElement = this.shadowRoot.querySelector(".video");
-    let canvas = this.shadowRoot.querySelector(".canvas");
+    let videoElement = this.shadowRoot.querySelector("video");
+    let canvas = this.shadowRoot.querySelector("canvas");
     let ctx = canvas.getContext("2d");
     let buttonGo = this.shadowRoot.querySelector(".go");
 
@@ -287,7 +278,7 @@ class BarcodeReader extends LitElement {
     this.shadowRoot.querySelector(".render").addEventListener("click", () => {
       if (
         this.shadowRoot.querySelector(".render").innerHTML ===
-        "Show scanner"
+        "Show"
       ) {
         if (window.stream) {
           window.stream.getTracks().forEach(function (track) {
@@ -336,6 +327,9 @@ class BarcodeReader extends LitElement {
     this.__videoInputSelector = this.shadowRoot.querySelector("#videoInput");
     vid = this.shadowRoot.querySelector("video");
     this._renderVideo().then((r) => {});
+    if (!this.hideinput){
+      this.shadowRoot.querySelector(".input").removeAttribute("hidden");
+    }
   }
 
   async _onFrame() {
@@ -360,10 +354,10 @@ class BarcodeReader extends LitElement {
   }
 
   async start() {
-    this.shadowRoot.querySelector(".render").addEventListener("click", () => {
+    this.shadowRoot.querySelector("simple-icon-button").addEventListener("click", () => {
       if (
         this.shadowRoot.querySelector(".render").innerHTML ===
-        "Initialize scanner"
+        "Initialize"
       ) {
         this._control();
       }
@@ -371,24 +365,23 @@ class BarcodeReader extends LitElement {
   }
   async _renderVideo() {
     let video = this.shadowRoot.querySelector(".hidden");
-    let button = this.shadowRoot.querySelector(".render");
+    let button = this.shadowRoot.querySelector("simple-icon-button");
     let extraButtons = this.shadowRoot.querySelector(".hidden2");
     video.style.display = "none";
-    this.shadowRoot.querySelector(".render").addEventListener("click", () => {
+    this.shadowRoot.querySelector("simple-icon-button").addEventListener("click", () => {
       setTimeout(() => {
         if (video.style.display === "none") {
           video.style.display = "inline";
-          button.innerHTML = "Hide scanner";
+          button.innerHTML = "Hide";
           extraButtons.style.display = "inline";
         } else {
           video.style.display = "none";
-          button.innerHTML = "Show scanner";
+          button.innerHTML = "Show";
           extraButtons.style.display = "none";
-          if (window.stream) {
-            window.stream.getTracks().forEach(function (track) {
-              track.stop();
-            });
-          }
+          window.stream.getTracks().forEach(function (track) {
+            track.stop();
+          });
+
         }
       }, 100);
     });
