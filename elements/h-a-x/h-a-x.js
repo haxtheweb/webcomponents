@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { HAXStore } from "@lrnwebcomponents/hax-body/lib/hax-store.js";
-import { AttachStylesToHead } from "@lrnwebcomponents/lrn-css-reset/lrn-css-reset.js";
 /**
  * `h-a-x`
  * @element h-a-x
@@ -23,17 +22,17 @@ class HAX extends HTMLElement {
     <style>
     :host,h-a-x {
       display: block;
-      /*font-size: var(--haxcms-base-styles-body-font-size);
+      font-size: var(--haxcms-base-styles-body-font-size);
       font-family: var(--haxcms-base-styles-body-font-family);
       line-height: var(--haxcms-base-styles-body-line-height);
-      letter-spacing: var(--haxcms-base-styles-body-letter-spacing);*/
+      letter-spacing: var(--haxcms-base-styles-body-letter-spacing);
     }
 
     :host([hidden]),h-a-x([hidden]) {
       display: none;
     }
 
-    /*:host hax-body, h-a-x hax-body {
+    :host hax-body, h-a-x hax-body {
       font-size: var(--haxcms-base-styles-body-font-size);
       font-family: var(--haxcms-base-styles-body-font-family);
       line-height: var(--haxcms-base-styles-body-line-height);
@@ -107,21 +106,7 @@ class HAX extends HTMLElement {
     h-a-x ol ul,
     h-a-x ol ol {
       padding-bottom: unset;
-    }*/
-
-    hax-body[edit-mode] [contenteditable][data-hax-ray]:empty::before {
-      content: attr(data-hax-ray);
-      opacity: 0.2;
-      transition: 0.2s all ease-in-out;
     }
-
-    hax-body[edit-mode] [contenteditable][data-hax-ray]:hover:empty::before {
-      opacity: 0.4;
-      cursor: text;
-    }
-    hax-body[edit-mode] [contenteditable][data-hax-ray]:empty:focus::before {
-      content: "";
-    } 
     </style>
     <hax-body>
         <slot></slot>
@@ -140,7 +125,6 @@ class HAX extends HTMLElement {
    */
   constructor(delayRender = false) {
     super();
-    AttachStylesToHead();
     this.__rendered = false;
     // set tag for later use
     this.tag = HAX.tag;

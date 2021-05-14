@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>HAX: h-a-x Demo</title>
+    <script>
+      window.process = window.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.39/dist/themes/base.css">
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@lrnwebcomponents/h-a-x/h-a-x.js';
+      import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
+        esModule.setPassiveTouchGestures(true);
+      });
+    </script>
+    <style>
+        #bodydiv { padding:100px 300px 100px 100px; }
+        /** This is mobile layout for controls */
+        @media screen and (max-width: 800px) {
+          #bodydiv { padding:100px; }
+        }
+    </style>
+  </head>
+  <body>
+    <div id="bodydiv">
+    <h-a-x app-store='{"url": "shoelace.json"}' element-align="right">
+      <h1>HAX Test</h1>
+      <h1>Heading 2</h1>
+      <p>Stuff and things</p>
+      </h-a-x>
+    </div>
+  </body>
+</html>

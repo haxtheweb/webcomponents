@@ -58,18 +58,6 @@
           "name": "t",
           "type": "object",
           "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading Scale\"}"
-        },
-        {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
         }
       ],
       "properties": [
@@ -165,15 +153,11 @@
         },
         {
           "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
           "default": "\"grey\""
         },
         {
           "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
         },
@@ -381,18 +365,6 @@
           "name": "t",
           "type": "object",
           "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading Scale\"}"
-        },
-        {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
         }
       ],
       "properties": [
@@ -488,15 +460,11 @@
         },
         {
           "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
           "default": "\"grey\""
         },
         {
           "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
         },

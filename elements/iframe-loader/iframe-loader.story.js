@@ -38,11 +38,12 @@ stories.add("iframe-loader", () => {
         IframeLoader.properties[key].value
       );
       // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function (
-        match
-      ) {
-        return "-" + match.toLowerCase();
-      });
+      let kebab = key.replace(
+        /[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g,
+        function (match) {
+          return "-" + match.toLowerCase();
+        }
+      );
       elementDemo += ` ${kebab}="${binding[key]}"`;
     }
   }

@@ -1572,7 +1572,7 @@
     },
     {
       "name": "site-menu-content",
-      "description": "Attributes:\n\n  * `edit-mode` {`boolean`} - \n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `is-empty` {`boolean`} - \n\n  * `hide-if-empty` {`boolean`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - \n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `isEmpty` {`boolean`} - \n\n  * `hideIfEmpty` {`boolean`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `scrollPolling` {`number`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `hierarchyTags` {`string[]`} - ",
+      "description": "Attributes:\n\n  * `edit-mode` {`boolean`} - \n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `is-empty` {`boolean`} - \n\n  * `hide-if-empty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - \n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `isEmpty` {`boolean`} - \n\n  * `hideIfEmpty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `scrollPolling` {`number`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `hierarchyTags` {`string[]`} - ",
       "attributes": [
         {
           "name": "edit-mode",
@@ -1596,6 +1596,10 @@
           "name": "hide-if-empty",
           "description": "`hide-if-empty` {`boolean`} - \n\nProperty: hideIfEmpty\n\nDefault: true",
           "valueSet": "v"
+        },
+        {
+          "name": "position",
+          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: left"
         },
         {
           "name": "contentContainer",

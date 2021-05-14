@@ -684,8 +684,13 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           haxAutoloader.appendChild(document.createElement(i));
         }
       } else {
+        let importPath = `${basePath}../../../${items[i]}`;
+        // account for external app store reference on import
+        if (this.isExternalURLImport(items[i])) {
+          importPath = items[i];
+        }
         // we have to import and then respond to it being imported by checking again
-        await import(`${basePath}../../../${items[i]}`)
+        await import(importPath)
           .then((response) => {
             // see if it imported now
             if (
@@ -709,6 +714,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           });
       }
     }
+  }
+  isExternalURLImport(string) {
+    let url;
+
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+
+    return new URL(url).origin !== location.origin;
   }
   _editModeChanged(newValue) {
     if (this.__hal) {
@@ -1796,6 +1812,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       activeNode: observable,
       globalPreferences: observable,
       activeGizmo: computed,
+      activeNodeIndex: computed,
       editMode: observable,
       elementAlign: observable,
       trayStatus: observable,
@@ -1911,6 +1928,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "iframe",
+          content: "",
+          properties: {
+            src: "https://haxtheweb.org/",
+            loading: "lazy",
+            style: "height:50vh;width:75%;margin: 0px auto; display: block;",
+          },
+        },
+      ],
     };
     this.setHaxProperties(iframe, "iframe");
     let img = {
@@ -1993,6 +2021,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           },
         ],
       },
+      demoSchema: [
+        {
+          tag: "img",
+          content: "",
+          properties: {
+            src: "https://cdn2.thecatapi.com/images/9j5.jpg",
+            loading: "lazy",
+          },
+        },
+      ],
     };
     this.setHaxProperties(img, "img");
     let ahref = {
@@ -3106,6 +3144,21 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let gizmo = toJS(this._calculateActiveGizmo(this.activeNode));
     this.write("activeGizmo", gizmo, this);
     return gizmo;
+  }
+  // find node index / order based on
+  get activeNodeIndex() {
+    let nodeLookup = null;
+    if (this.activeNode) {
+      Array.from(toJS(this.activeHaxBody).children).map((el, i) => {
+        if (
+          toJS(this.activeNode) === el ||
+          toJS(this.activeNode).parentElement === el
+        ) {
+          nodeLookup = i;
+        }
+      });
+    }
+    return nodeLookup;
   }
   async attemptGizmoTranslation(tag, properties) {
     // support locales if available and not default lang

@@ -18,18 +18,6 @@
         {
           "name": "title",
           "type": "string"
-        },
-        {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"green\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
         }
       ],
       "properties": [
@@ -56,15 +44,11 @@
         },
         {
           "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
           "default": "\"green\""
         },
         {
           "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
         },
@@ -78,20 +62,6 @@
       "name": "simple-cta",
       "path": "./src/simple-cta.js",
       "description": "`simple-cta`\n`Simple call to action button`",
-      "attributes": [
-        {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"green\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
       "properties": [
         {
           "name": "link",
@@ -108,15 +78,11 @@
         },
         {
           "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
           "default": "\"green\""
         },
         {
           "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
         },

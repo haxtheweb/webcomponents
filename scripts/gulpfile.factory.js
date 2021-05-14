@@ -2,7 +2,6 @@ module.exports = function factory(packageJson) {
   import gulp from "gulp";
   import fs from "fs";
   import path from "path";
-  import _ from "lodash";
   import rename from "gulp-rename";
   import replace from "gulp-replace";
   import stripCssComments from "strip-css-comments";

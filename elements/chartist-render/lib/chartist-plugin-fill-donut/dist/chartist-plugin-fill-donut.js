@@ -49,11 +49,12 @@
               });
 
               [].forEach.call($clone.querySelectorAll("path"), function (el) {
-                [].forEach.call(el.querySelectorAll("animate"), function (
-                  node
-                ) {
-                  node.parentNode.removeChild(node);
-                });
+                [].forEach.call(
+                  el.querySelectorAll("animate"),
+                  function (node) {
+                    node.parentNode.removeChild(node);
+                  }
+                );
 
                 el.removeAttribute("stroke-dashoffset");
               });

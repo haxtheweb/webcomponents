@@ -641,12 +641,20 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.updateTabs();
     this.observer.observe(this, {
       attributes: false,
       childList: true,
       subtree: false,
     });
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // ensure state is accurate internally after setup
+    setTimeout(() => {
+      this.updateTabs();
+    }, 0);
   }
   /**
    * life cycle, element is removed from the DOM
@@ -746,6 +754,10 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     if (!tab.disabled) this.activeTab = tab.id;
   }
   _handleKey(i, e) {
+    // see if there are buttons loaded after the fact
+    if (this.buttons.length === 0) {
+      this.updateTabs();
+    }
     this.__tabFocus = i;
     let focus = (dir = 1) => {
       this.__tabFocus = this.__tabFocus + dir;
@@ -761,12 +773,15 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     };
     // Move right
     if (e.keyCode === 39 || e.keyCode === 37) {
-      this.buttons[i].setAttribute("tabindex", -1);
+      this.buttons[this.__tabFocus].setAttribute("tabindex", -1);
       focus(e.keyCode === 39 ? 1 : -1);
       if (!this.buttons[this.__tabFocus].disabled) {
         this.buttons[this.__tabFocus].setAttribute("tabindex", 0);
         this.buttons[this.__tabFocus].focus();
       }
+      // keyCode is something this menu is responding to, don't propagate event
+      e.preventDefault();
+      e.stopPropagation();
     }
   }
   /**

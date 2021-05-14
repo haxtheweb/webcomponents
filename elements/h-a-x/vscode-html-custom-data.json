@@ -3,6 +3,11 @@
   "tags": [
     {
       "name": "h-a-x",
+      "description": "`h-a-x`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "h-a-x",
       "description": "`h-a-x`\n\nAttributes:\n\n  * `element-align` {} - \n\n  * `offset-margin` {} - \n\n  * `app-store` {} - \n\n  * `hide-panel-ops` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `elementAlign` {`string | null`} - \n\n  * `offsetMargin` {`string | null`} - \n\n  * `hidePanelOps` {`string | null`} - \n\n  * `appStore` {`string | null`} - \n\n  * `__rendered` {`boolean`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
       "attributes": [
         {
@@ -25,6 +30,11 @@
     },
     {
       "name": "h-a-x",
+      "attributes": []
+    },
+    {
+      "name": "h-a-x",
+      "description": "`h-a-x`\n\n",
       "attributes": []
     },
     {
