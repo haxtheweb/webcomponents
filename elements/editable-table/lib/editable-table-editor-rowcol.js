@@ -200,11 +200,7 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: {
-          insert: insert,
-          row: this.row,
-          index: index,
-        },
+        detail: this,
       })
     );
   }

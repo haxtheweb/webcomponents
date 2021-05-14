@@ -115,7 +115,8 @@ export const editableTableStyles = [
       background-color: var(--editable-table-bg-color, #fff);
     }
     .th,
-    .td {
+    .td,
+    .th-or-td #icons {
       font-weight: var(--editable-table-light-weight, 200);
       color: var(--editable-table-color, #222);
       background-color: var(--editable-table-bg-color, #fff);
@@ -142,12 +143,14 @@ export const editableTableStyles = [
     .th-or-td {
       display: table-cell;
     }
-    .thead-tr .th {
+    .thead-tr .th,
+    .thead-tr .th #icons {
       background-color: var(--editable-table-heading-bg-color, #e0e0e0);
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(--editable-table-heading-color, #000);
     }
-    .tbody-tr .th {
+    .tbody-tr .th,
+    .tbody-tr .th #icons {
       font-weight: var(--editable-table-heavy-weight, 600);
       color: var(--editable-table-heading-color, #000);
       background-color: var(--editable-table-bg-color, #fff);
@@ -169,11 +172,14 @@ export const editableTableStyles = [
         4px
       );
     }
-    *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td {
+    *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td,
+    *[striped] .tbody-tr:nth-child(2n + 1) .th-or-td #icons {
       background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
     }
     *[column-striped] .tbody-tr .th-or-td:nth-child(2n),
-    *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) {
+    *[column-striped] .tbody-tr .th-or-td:nth-child(2n) #icons,
+    *[column-striped] .tfoot-tr .th-or-td:nth-child(2n),
+    *[column-striped] .tfoot-tr .th-or-td:nth-child(2n) #icons {
       background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
     }
     .tfoot-tr .th,
