@@ -1,0 +1,55 @@
+{
+  "name": "star-rating",
+  "version": "0.0.0",
+  "description": "Webcomponent star-rating following open-wc recommendations",
+  "author": "star-rating",
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.js",
+  "scripts": {
+    "start": "web-dev-server",
+    "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "test": "web-test-runner --coverage",
+    "test:watch": "web-test-runner --watch",
+    "storybook": "web-dev-server -c .storybook/server.mjs",
+    "storybook:build": "build-storybook"
+  },
+  "dependencies": {
+    "lit-element": "^2.4.0",
+    "lit-html": "^1.3.0"
+  },
+  "devDependencies": {
+    "@open-wc/eslint-config": "^4.3.0",
+    "@open-wc/testing": "^2.5.33",
+    "@web/dev-server": "^0.1.14",
+    "@web/dev-server-storybook": "^0.3.5",
+    "@web/test-runner": "^0.12.20",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^7.2.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config",
+      "eslint-config-prettier"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
