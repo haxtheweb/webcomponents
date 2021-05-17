@@ -1,33 +1,85 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import {
+  expect,
+  fixture,
+  html,
+  assert,
+  elementUpdated,
+  fixtureCleanup,
+} from "@open-wc/testing";
+import { setViewport } from "@web/test-runner-commands";
+import "../src/star-rating.js";
 
-import '../star-rating.js';
-
-describe('StarRating', () => {
-  it('has a default title "Hey there" and counter 5', async () => {
-    const el = await fixture(html`<star-rating></star-rating>`);
-
-    expect(el.title).to.equal('Hey there');
-    expect(el.counter).to.equal(5);
-  });
-
-  it('increases the counter on button click', async () => {
-    const el = await fixture(html`<star-rating></star-rating>`);
-    el.shadowRoot.querySelector('button').click();
-
-    expect(el.counter).to.equal(6);
-  });
-
-  it('can override the title via attribute', async () => {
+/*
+ * Instantiation test
+ * create element and see if an attribute binds to the element
+ */
+describe("Instantiation Test", () => {
+  it("star-rating instantiates", async () => {
     const el = await fixture(
-      html`<star-rating title="attribute title"></star-rating>`
+      html` <star-rating title="test-title"></star-rating> `
     );
-
-    expect(el.title).to.equal('attribute title');
+    await expect(el.getAttribute("title")).to.equal("test-title");
   });
+});
 
-  it('passes the a11y audit', async () => {
-    const el = await fixture(html`<star-rating></star-rating>`);
-
-    await expect(el).shadowDom.to.be.accessible();
+/*
+ * A11y Accessibility tests
+ */
+describe("A11y/chai axe tests", () => {
+  it("star-rating passes accessibility test", async () => {
+    const el = await fixture(html` <star-rating></star-rating> `);
+    await expect(el).to.be.accessible();
   });
+  it("star-rating passes accessibility negation", async () => {
+    const el = await fixture(
+      html`<star-rating aria-labelledby="star-rating"></star-rating>`
+    );
+    await assert.isNotAccessible(el);
+  });
+});
+
+/*
+// Custom properties test
+describe("Custom Property Test", () => {
+  it("star-rating can instantiate a element with custom properties", async () => {
+    const el = await fixture(html`<star-rating .foo=${'bar'}></star-rating>`);
+    expect(el.foo).to.equal('bar');
+  })
+})
+*/
+
+/*
+// Test if element is mobile responsive
+describe('Test Mobile Responsiveness', () => {
+    before(async () => {z   
+      await setViewport({width: 375, height: 750});
+    })
+    it('sizes down to 360px', async () => {
+      const el = await fixture(html`<star-rating ></star-rating>`);
+      const width = getComputedStyle(el).width;
+      expect(width).to.equal('360px');
+    })
+}) */
+
+/*
+// Test if element sizes up for desktop behavior
+describe('Test Desktop Responsiveness', () => {
+    before(async () => {
+      await setViewport({width: 1000, height: 1000});
+    })
+    it('sizes up to 410px', async () => {
+      const el = await fixture(html`<star-rating></star-rating>`);
+      const width = getComputedStyle(el).width;
+      expect(width).to.equal('410px');
+    })
+    it('hides mobile menu', async () => {
+      const el await fixture(html`<star-rating></star-rating>`);
+      const hidden = el.getAttribute('hidden');
+      expect(hidden).to.equal(true);
+    })
+}) */
+
+// clean up fixtures after all tests are complete
+afterEach(() => {
+  fixtureCleanup();
 });

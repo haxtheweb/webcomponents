@@ -1,30 +1,163 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "star-rating",
-      "description": "A component with a title and an action counter",
-      "properties": [
+      "path": "./src/star-rating.js",
+      "attributes": [
         {
-          "name": "title",
-          "type": "String",
-          "description": "The title of your component",
-          "default": "Hey there"
+          "name": "interactive",
+          "type": "boolean"
         },
         {
-          "name": "counter",
-          "type": "Number",
-          "description": "An action counter",
-          "default": 0
+          "name": "num-stars",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "score",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "possible",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"yellow\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
         }
       ],
-      "events": [],
-      "slots": [],
-      "cssProperties": [
+      "properties": [
         {
-          "name": "--star-rating-text-color",
-          "description": "Main Text Color",
-          "type": "Color"
+          "name": "interactive",
+          "attribute": "interactive",
+          "type": "boolean"
+        },
+        {
+          "name": "numStars",
+          "attribute": "num-stars",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "score",
+          "attribute": "score",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "possible",
+          "attribute": "possible",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"yellow\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "star-rating",
+      "path": "./star-rating.js",
+      "attributes": [
+        {
+          "name": "interactive",
+          "type": "boolean"
+        },
+        {
+          "name": "num-stars",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "score",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "possible",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"yellow\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "interactive",
+          "attribute": "interactive",
+          "type": "boolean"
+        },
+        {
+          "name": "numStars",
+          "attribute": "num-stars",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "score",
+          "attribute": "score",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "possible",
+          "attribute": "possible",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"yellow\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
         }
       ]
     }

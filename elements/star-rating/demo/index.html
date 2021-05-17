@@ -1,28 +1,35 @@
 <!doctype html>
-<html lang="en-GB">
-<head>
-  <meta charset="utf-8">
-  <style>
-    body {
-      background: #fafafa;
-    }
-  </style>
-</head>
-<body>
-  <div id="demo"></div>
-
-  <script type="module">
-    import { html, render } from 'lit-html';
-    import '../star-rating.js';
-
-    const title = 'Star Rating';
-    render(
-      html`
-        <star-rating>
-        </star-rating>
-      `,
-      document.querySelector('#demo')
-    );
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>StarRating: star-rating Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../star-rating.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic star-rating demo</h3>
+      <demo-snippet>
+        <template>
+          <star-rating num-stars="10"></star-rating>
+          <star-rating score="100" style="--star-rating-background-color:blue;--star-rating-color:white;"></star-rating>
+          <star-rating interactive style="--star-rating-background-color:black;"></star-rating>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+  <script>
+    window.addEventListener("star-rating-click", (e) => {
+      console.log(e.detail.value);
+      alert("e.detail.value has value " + e.detail.value)
+    });
   </script>
-</body>
 </html>
