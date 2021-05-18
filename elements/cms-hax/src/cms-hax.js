@@ -194,7 +194,7 @@ class CmsHax extends LitElement {
           if (this.openDefault) {
             HAXStore.editMode = true;
           }
-        }, 500);
+        }, 2000);
       }
     }
   }
@@ -234,7 +234,7 @@ class CmsHax extends LitElement {
           if (this.openDefault) {
             HAXStore.editMode = true;
           }
-        }, 500);
+        }, 2000);
       }, 0);
     }
   }
@@ -441,7 +441,7 @@ class CmsHax extends LitElement {
         setTimeout(() => {
           // trigger redirect
           window.location = this.redirectLocation;
-        }, 500);
+        }, 2000);
       }
     }
   }
