@@ -285,7 +285,7 @@ class CmsHax extends LitElement {
       this._appstoreLoaded.bind(this),
       { once: true, passive: true }
     );
-    window.addEventListener("hax-save", this._saveFired.bind(this));
+    window.addEventListener("hax-save-body-value", this._saveFired.bind(this));
     window.addEventListener("hax-cancel", this._cancelFired.bind(this));
     this.__lock = false;
     this.endPoint = null;
@@ -403,9 +403,7 @@ class CmsHax extends LitElement {
       if (HAXStore.editMode) {
         HAXStore.editMode = false;
       }
-      this.shadowRoot.querySelector(
-        "#pageupdateajax"
-      ).body = await HAXStore.activeHaxBody.haxToContent();
+      this.shadowRoot.querySelector("#pageupdateajax").body = e.detail.value;
       // send the request
       this.shadowRoot.querySelector("#pageupdateajax").generateRequest();
     }

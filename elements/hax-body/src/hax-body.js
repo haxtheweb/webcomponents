@@ -2224,6 +2224,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.activeNode.removeAttribute("contenteditable");
           this.__applyDragDropState(this.activeNode, false);
           this.activeNode.classList.remove("hax-active");
+          // this is converting it to HTML, even if temporarily
+          // so make sure we treat it like HTML
+          // @see haxHooks: preProcessNodeToContent
+          if (HAXStore.testHook(this.activeNode, "preProcessNodeToContent")) {
+            this.activeNode = await HAXStore.runHook(
+              this.activeNode,
+              "preProcessNodeToContent",
+              [this.activeNode]
+            );
+          }
           wrap(this.activeNode, HAXStore.activeEditingElement);
         } else {
           this.activeNode.__haxSourceView = false;

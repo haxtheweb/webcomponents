@@ -203,13 +203,19 @@ class WysiwygHax extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("hax-save", this._bodyContentUpdated.bind(this));
+    window.addEventListener(
+      "hax-save-body-value",
+      this._bodyContentUpdated.bind(this)
+    );
   }
   /**
    * HTMLElement
    */
   disconnectedCallback() {
-    window.removeEventListener("hax-save", this._bodyContentUpdated.bind(this));
+    window.removeEventListener(
+      "hax-save-body-value",
+      this._bodyContentUpdated.bind(this)
+    );
     if (this.saveButtonSelector && this.saveButtonSelector.tagName) {
       this.saveButtonSelector.removeEventListener(
         "click",
@@ -220,23 +226,29 @@ class WysiwygHax extends LitElement {
   }
   async __saveClicked(e) {
     HAXStore.skipExitTrap = true;
-    if (HAXStore.editMode) {
-      HAXStore.editMode = false;
-    }
-    // will attempt to set this right before save goes out the door
-    this.bodyValue = await HAXStore.activeHaxBody.haxToContent();
+    HAXStore.editMode = false;
+    this.dispatchEvent(
+      new CustomEvent("hax-save", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: e.detail,
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {},
+      })
+    );
   }
 
   /**
    * Set the bubbled up event to the body value that just got changed
    */
   async _bodyContentUpdated(e) {
-    this.bodyValue = await HAXStore.activeHaxBody.haxToContent();
-    setTimeout(() => {
-      if (this.saveButtonSelector) {
-        this.saveButtonSelector.click();
-      }
-    }, 100);
+    this.bodyValue = e.detail.value;
   }
 }
 window.customElements.define(WysiwygHax.tag, WysiwygHax);
