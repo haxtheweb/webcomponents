@@ -20,7 +20,10 @@ const HAXCMSRememberRoute = function (SuperClass) {
       autorun((reaction) => {
         const activePathName = toJS(store.location.pathname);
         if (activePathName && this.__evaluateRoute) {
-          window.localStorage.setItem("HAXCMSlastRoute", activePathName);
+          window.localStorage.setItem(
+            `HAXCMSlastRoute-${store.manifest.metadata.site.name}`,
+            activePathName
+          );
         }
       });
     }
@@ -30,16 +33,21 @@ const HAXCMSRememberRoute = function (SuperClass) {
       }
       setTimeout(() => {
         if (
-          window.localStorage.getItem("HAXCMSlastRoute") &&
-          window.localStorage.getItem("HAXCMSlastRoute") !=
-            toJS(store.location.pathname)
+          window.localStorage.getItem(
+            `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
+          ) &&
+          window.localStorage.getItem(
+            `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
+          ) != toJS(store.location.pathname)
         ) {
           import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
             window.SimpleToast.requestAvailability();
             let slot = document.createElement("a");
             slot.setAttribute(
               "href",
-              window.localStorage.getItem("HAXCMSlastRoute")
+              window.localStorage.getItem(
+                `HAXCMSlastRoute-${store.manifest.metadata.site.name}`
+              )
             );
             slot.addEventListener("click", this.resumeLastRoute.bind(this));
             slot.innerHTML = `<button>${this.t.resume}</button>`;
