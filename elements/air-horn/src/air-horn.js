@@ -28,16 +28,6 @@ class AirHorn extends HTMLElement {
         </style>
 <slot></slot>`;
   }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {};
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return { ...super.properties };
-  }
-
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly

@@ -206,7 +206,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                 this.setHaxProperties(CEClass.haxProperties, name);
               } else {
                 console.warn(
-                  `${name} didn't have hax wiring so HAX guessed how to work with it as best it can. See https://haxtheweb.org/hax-schema for documentation on adding custom wiring for better UX.`
+                  `${name} didn't have hax wiring so HAX guessed as best it can. See https://haxtheweb.org/documentation-1/hax-development/hax-schema for documentation on adding custom wiring for better UX.`
                 );
                 try {
                   let wiring = new HAXWiring();
@@ -256,6 +256,18 @@ class HaxAutoloader extends HAXElement(LitElement) {
                             break;
                         }
                       }
+                    }
+                  } else {
+                    let tmpProps = document
+                      .createElement(name)
+                      .getAttributeNames();
+                    for (var i = 0; i < tmpProps.length; i++) {
+                      props.settings.configure.push({
+                        attribute: tmpProps[i],
+                        title: tmpProps[i],
+                        description: "",
+                        inputMethod: "textfield",
+                      });
                     }
                   }
                   wiring.readyToFireHAXSchema(name, props, this);

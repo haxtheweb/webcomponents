@@ -670,7 +670,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           this.setHaxProperties(window.customElements.get(i).haxProperties, i);
         } else {
           // edge case of no definition
-          haxAutoloader.appendChild(document.createElement(i));
+          try {
+            let tmpEl = document.createElement(i);
+            haxAutoloader.appendChild(tmpEl);
+          } catch (e) {}
         }
       } else {
         let importPath = `${basePath}../../../${items[i]}`;
