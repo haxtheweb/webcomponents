@@ -41,6 +41,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   async runHook(el, op, data = []) {
     if (this.testHook(el, op)) {
+      //console.log('running hook: ' + op);
       return await el[el.haxHooks()[op]](...data);
     }
     return false;
@@ -2849,6 +2850,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     delete propvals.draggable;
     delete propvals.contenteditable;
     delete propvals["data-hax-ray"];
+    delete propvals["data-hax-layout"];
     if (propvals.class == "" || propvals.class == "hax-active") {
       delete propvals.class;
     }

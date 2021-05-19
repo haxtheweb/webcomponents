@@ -1743,19 +1743,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         haxElement,
       ]);
     }
-    // support for tag defining which properties NOT to save
-    // for simplification, everything is an attribute during this
-    // operation
-    if (
-      typeof props !== typeof undefined &&
-      typeof props.saveOptions.unsetAttributes !== typeof undefined
-    ) {
-      for (var i in props.saveOptions.unsetAttributes) {
-        if (haxElement.properties[props.saveOptions.unsetAttributes[i]]) {
-          delete haxElement.properties[props.saveOptions.unsetAttributes[i]];
-        }
-      }
-    }
     if (haxElement.content == haxElement.properties.innerHTML) {
       delete haxElement.properties.innerHTML;
     }
@@ -2264,6 +2251,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           this.activeNode.removeAttribute("contenteditable");
           this.__applyDragDropState(this.activeNode, false);
           this.activeNode.classList.remove("hax-active");
+          // this is converting it to HTML, even if temporarily
+          // so make sure we treat it like HTML
+          // @see haxHooks: preProcessNodeToContent
+          if (HAXStore.testHook(this.activeNode, "preProcessNodeToContent")) {
+            this.activeNode = await HAXStore.runHook(
+              this.activeNode,
+              "preProcessNodeToContent",
+              [this.activeNode]
+            );
+          }
           wrap(this.activeNode, HAXStore.activeEditingElement);
         } else {
           this.activeNode.__haxSourceView = false;

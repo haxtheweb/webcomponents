@@ -21,7 +21,7 @@ class JwtLogin extends LitElement {
    * Handle the last error rolling in
    */
   lastErrorChanged(e) {
-    if (e) {
+    if (e && this.__context != "logout") {
       // check for JWT needing refreshed vs busted but must be 403
       console.error(e);
       this.dispatchEvent(

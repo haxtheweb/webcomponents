@@ -99,32 +99,13 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     this.checkLabel = "Check answer";
     this.resetLabel = "Reset";
     this.question = "";
+    this.answers = [];
     this.displayedAnswers = [];
     this.correctText = "Great job!";
     this.correctIcon = "icons:thumb-up";
     this.incorrectText = "Better luck next time!";
     this.incorrectIcon = "icons:thumb-down";
     this.quizName = "default";
-    // check lightdom on setup for answers to be read in
-    // this only happens on initial paint
-    if (this.children.length > 0) {
-      let inputs = Array.from(this.querySelectorAll("input"));
-      let answers = [];
-      for (var i in inputs) {
-        let answer = {
-          label: inputs[i].value,
-          correct: inputs[i].getAttribute("correct") == null ? false : true,
-        };
-        answers.push(answer);
-      }
-      this.answers = answers;
-      // wipe lightdom after reading it in for data. This makes it harder for someone
-      // to just inspect the document and get at the underlying data
-      this.innerHTML = "";
-    } else {
-      // default to nothing if we didn't get lightdom children
-      this.answers = [];
-    }
   }
   updated(changedProperties) {
     if (super.updated) {
@@ -333,10 +314,10 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   resetAnswers(e) {
     SimpleToastStore.hide();
     this.displayedAnswers = [];
-    const answers = this.answers;
     this.answers.forEach((el) => {
       el.userGuess = false;
     });
+    const answers = JSON.parse(JSON.stringify(this.answers));
     this.answers = [...answers];
   }
 
@@ -531,6 +512,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     // so that we can unset the array data on the object at save time
     // this helps improve SEO / compatibility with CMS solutions
     if (node.answers) {
+      // ensure this is null before generating new answers
+      // otherwise page to page saves we could lose statefulness
+      this.innerHTML = "";
       for (var i in node.answers) {
         let answer = document.createElement("input");
         answer.setAttribute("type", "checkbox");
@@ -564,6 +548,23 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       super.firstUpdated(changedProperties);
     }
     this.setAttribute("typeof", "oer:Assessment");
+    // check lightdom on setup for answers to be read in
+    // this only happens on initial paint
+    if (this.children.length > 0) {
+      let inputs = Array.from(this.querySelectorAll("input"));
+      let answers = [];
+      for (var i in inputs) {
+        let answer = {
+          label: inputs[i].value,
+          correct: inputs[i].getAttribute("correct") == null ? false : true,
+        };
+        answers.push(answer);
+      }
+      this.answers = answers;
+      // wipe lightdom after reading it in for data. This makes it harder for someone
+      // to just inspect the document and get at the underlying data
+      this.innerHTML = "";
+    }
   }
 }
 window.customElements.define(MultipleChoice.tag, MultipleChoice);
