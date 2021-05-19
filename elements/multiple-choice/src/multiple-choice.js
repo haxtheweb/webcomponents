@@ -99,6 +99,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     this.checkLabel = "Check answer";
     this.resetLabel = "Reset";
     this.question = "";
+    this.answers = [];
     this.displayedAnswers = [];
     this.correctText = "Great job!";
     this.correctIcon = "icons:thumb-up";
@@ -313,10 +314,10 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   resetAnswers(e) {
     SimpleToastStore.hide();
     this.displayedAnswers = [];
-    const answers = JSON.parse(JSON.stringify(this.answers));
     this.answers.forEach((el) => {
       el.userGuess = false;
     });
+    const answers = JSON.parse(JSON.stringify(this.answers));
     this.answers = [...answers];
   }
 
@@ -563,9 +564,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       // wipe lightdom after reading it in for data. This makes it harder for someone
       // to just inspect the document and get at the underlying data
       this.innerHTML = "";
-    } else {
-      // default to nothing if we didn't get lightdom children
-      this.answers = [];
     }
   }
 }

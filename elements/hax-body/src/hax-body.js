@@ -1703,19 +1703,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         haxElement,
       ]);
     }
-    // support for tag defining which properties NOT to save
-    // for simplification, everything is an attribute during this
-    // operation
-    if (
-      typeof props !== typeof undefined &&
-      typeof props.saveOptions.unsetAttributes !== typeof undefined
-    ) {
-      for (var i in props.saveOptions.unsetAttributes) {
-        if (haxElement.properties[props.saveOptions.unsetAttributes[i]]) {
-          delete haxElement.properties[props.saveOptions.unsetAttributes[i]];
-        }
-      }
-    }
     if (haxElement.content == haxElement.properties.innerHTML) {
       delete haxElement.properties.innerHTML;
     }
