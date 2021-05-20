@@ -36,6 +36,15 @@ export const SimpleTagLiteSuper = function (SuperClass) {
           type: Boolean,
           attribute: "cancel-button",
         },
+        toggles: {
+          type: Boolean,
+          attribute: "toggles",
+        },
+        toggled: {
+          type: Boolean,
+          attribute: "toggled",
+        },
+        toggledIcon: { type: String, attribute: "toggled-icon" },
       };
     }
     constructor() {
@@ -103,16 +112,21 @@ export const SimpleTagLiteSuper = function (SuperClass) {
           ? ""
           : html`
               <simple-icon-button-lite
-                icon="${this.icon}"
+                icon="${!!this.toggles && !!this.toggled && !!this.toggledIcon
+                  ? this.toggledIcon
+                  : this.icon}"
                 label="Remove ${this.value}"
                 ?hidden="${!this.cancelButton}"
                 @click="${this.clickEvent}"
                 ?disabled="${this.disabled}"
+                ?toggles="${this.toggles}"
+                ?toggled="${this.toggled}"
               ></simple-icon-button-lite>
             `}
       `;
     }
     clickEvent(e) {
+      if (!!this.toggles) this.toggled = !this.toggled;
       this.dispatchEvent(
         new CustomEvent("simple-tag-clicked", {
           composed: false,
