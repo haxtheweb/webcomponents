@@ -201,9 +201,9 @@ class EditableTableEditorRowcol extends cellBehaviors(A11yMenuButton) {
         cancelable: true,
         composed: true,
         detail: {
-          insert: insert,
+          insert: true,
           row: this.row,
-          index: index,
+          index: this.index,
         },
       })
     );

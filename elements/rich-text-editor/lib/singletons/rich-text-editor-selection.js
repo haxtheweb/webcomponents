@@ -81,7 +81,10 @@ class RichTextEditorSelection extends LitElement {
     this.__clipboard.style.height = "0px";
     this.id = this._generateUUID();
     document.body.appendChild(this.__clipboard);
-    window.addEventListener("register", this._handleRegistration.bind(sel));
+    window.addEventListener(
+      "rich-text-editor-register",
+      this._handleRegistration.bind(sel)
+    );
     /*
     extendForward.addEventListener('click', () => {
       window.getSelection().modify('extend', 'forward', 'character');
@@ -657,7 +660,7 @@ class RichTextEditorSelection extends LitElement {
         evt = { detail: el },
         tagname = (el.tagName || "").toLowerCase();
       if (tagname && els.includes(tagname)) {
-        console.log(el);
+        //console.log(el);
         e.preventDefault();
         toolbar.clickableElements[tagname](evt);
       }
