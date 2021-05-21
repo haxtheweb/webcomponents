@@ -1,0 +1,35 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "file-system-broker",
+      "path": "./file-system-broker.js",
+      "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`",
+      "properties": [
+        {
+          "name": "html",
+          "description": "This is a convention, not the standard to return HTML of the element",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "file-system-broker",
+      "path": "./src/file-system-broker.js",
+      "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`",
+      "properties": [
+        {
+          "name": "html",
+          "description": "This is a convention, not the standard to return HTML of the element",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}
