@@ -1407,14 +1407,40 @@ class HAXCMSSiteListing extends PolymerElement {
         "haxcms-load-site",
         this.loadActiveSite.bind(this)
       );
+      this.permissionsListen();
       this.shadowRoot
         .querySelector("#snap")
-        .addEventListener("click", this.snapPhoto.bind(this));
+        .addEventListener("click",()=>{
+          this.dispatchEvent(
+            new CustomEvent("simple-login-camera-icon-click", {
+              detail: this,
+              bubbles: true,
+              composed: true,
+            })
+          );
+          this.snapPhoto.bind(this);
+        });
       this.shadowRoot
         .querySelector("#newsnap")
-        .addEventListener("click", this.clearPhoto.bind(this));
+        .addEventListener("click",()=>{
+          this.dispatchEvent(
+            new CustomEvent("simple-login-cancel-icon-click", {
+              detail: this,
+              bubbles: true,
+              composed: true,
+            })
+          );
+          this.clearPhoto.bind(this);
+        });
     }, 0);
   }
+
+  permissionsListen(){
+    window.addEventListener("simple-login-camera-icon-click", async ()=> {
+      await this.snapPhoto()});
+    window.addEventListener("simple-login-cancel-icon-click", async ()=> {
+      await this.clearPhoto()});
+    }
 
   async snapPhoto(e) {
     const camera = this.shadowRoot.querySelector("#camera"); // snap the photo to a blob
