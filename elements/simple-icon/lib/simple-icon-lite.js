@@ -19,6 +19,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
             vertical-align: middle;
             height: var(--simple-icon-height, 24px);
             width: var(--simple-icon-width, 24px);
+            color: var(--simple-icon-color, currentColor);
           }
           :host([dir="rtl"]) svg {
             direction: rtl;
@@ -34,7 +35,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
             filter: var(--simple-icon-color, initial);
           }
           feFlood {
-            flood-color: var(--simple-icon-color, currentColor);
+            flood-color: var(--simple-icon-color);
           }
           svg {
             pointer-events: none;
