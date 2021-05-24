@@ -19,8 +19,9 @@ class FileSystemBroker extends HTMLElement {
    */
   constructor() {
     super();
-    this.directoryHandler = null;
+    this.dirHandler = null;
     this.fileHandler = null;
+    this.files = [];
   }
   /**
    * This is a convention, not the standard
@@ -89,28 +90,55 @@ class FileSystemBroker extends HTMLElement {
     // Close the file and write the contents to disk.
     await writable.close();
   }
-  async openDirectory(
-    fileName = null,
-    op = "read",
-    recursive = false,
-    content = ""
-  ) {
-    this.directoryHandler = await window.showDirectoryPicker();
-    // need to load references found in the directory
-    for await (const entry of this.directoryHandler.values()) {
-      if (
-        fileName &&
-        typeof entry.getFile === "function" &&
-        entry.name === fileName
-      ) {
-        // read this file from the directory
-        if (op === "read") {
+  /**
+   * Open directory
+   */
+  async openDir(recursive = true) {
+    try {
+      this.dirHandler = await window.showDirectoryPicker();
+    } catch (e) {
+      console.log(e);
+    }
+    this.files = [];
+    this.files = await this.__readDir(
+      this.dirHandler,
+      recursive,
+      this.dirHandler.name + "/",
+      this.dirHandler
+    );
+    return this.files;
+  }
+  async readFileInDir(fileName) {
+    try {
+      this.dirHandler = await window.showDirectoryPicker();
+      // need to load references found in the directory
+      for await (const entry of this.dirHandler.values()) {
+        if (
+          fileName &&
+          typeof entry.getFile === "function" &&
+          entry.name === fileName
+        ) {
+          // read this file from the directory
           const file = await entry.getFile();
-          let contents = await file.text();
-          return contents;
-        } else if (op === "write") {
-          // very destructive
-          var FileSystemFileHandle = await this.directoryHandler.getFileHandle(
+          return await file.text();
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    return "";
+  }
+  async writeFileInDir(fileName, content = "") {
+    try {
+      this.dirHandler = await window.showDirectoryPicker();
+      // need to load references found in the directory
+      for await (const entry of this.dirHandler.values()) {
+        if (
+          fileName &&
+          typeof entry.getFile === "function" &&
+          entry.name === fileName
+        ) {
+          var FileSystemFileHandle = await this.dirHandler.getFileHandle(
             entry.name
           );
           const writable = await FileSystemFileHandle.createWritable();
@@ -118,13 +146,38 @@ class FileSystemBroker extends HTMLElement {
           await writable.write(content);
           // Close the file and write the contents to disk.
           await writable.close();
+          return true;
         }
       }
+    } catch (e) {
+      console.log(e);
     }
-    // we allow the 1st pass to try and find something before getting recursive in our loading
-    if (recursive) {
-      openDirectory(fileName, op, recursive, content);
+    return false;
+  }
+  /**
+   * Read contents of a directory and recursively load down from there
+   */
+  async __readDir(dirHandle, recursive, folder, parentHandler) {
+    const files = [];
+    for await (let [name, handle] of dirHandle) {
+      const { kind } = handle;
+      if (handle.kind === "directory") {
+        files.push({ name, kind, handle, folder, parentHandler });
+        if (name !== ".git" && recursive) {
+          files.push(
+            ...(await this.__readDir(
+              handle,
+              recursive,
+              folder + name + "/",
+              handle
+            ))
+          );
+        }
+      } else {
+        files.push({ name, kind, handle, folder, parentHandler });
+      }
     }
+    return files;
   }
 }
 // register globally so we can make sure there is only one

@@ -21,13 +21,18 @@
   </head>
   <body>
     <demo-snippet><template>
-    <button id="load">Load</button>
-    <button id="save">Save</button>
+      <button id="load">Load file</button>
+      <button id="save">Save file</button>
+      <button id="loaddir">Load Directory</button>
     <textarea id="textarea" rows="20" cols="40"></textarea>
     <script async defer>
       document.getElementById('load').addEventListener('click', async (e) => {
         const broker = window.FileSystemBroker.requestAvailability();
         document.getElementById('textarea').innerHTML = await broker.loadFile('markdown');
+      });
+      document.getElementById('loaddir').addEventListener('click', async (e) => {
+        const broker = window.FileSystemBroker.requestAvailability();
+        console.log(await broker.openDir(true));
       });
       document.getElementById('save').addEventListener('click', async (e) => {
         const broker = window.FileSystemBroker.requestAvailability();
