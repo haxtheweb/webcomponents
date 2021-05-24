@@ -149,9 +149,8 @@ class HAXCMSSiteListing extends PolymerElement {
         .login-prompt div#selfie img {
           z-index: 2;
           position: absolute;
-          margin: 0 0 0 -78px;
-          width: 355px;
-          height: 200px;
+          margin: 0 0 0 -138px;
+          height: 355px;
           display: block;
         }
         simple-login {
@@ -1408,21 +1407,19 @@ class HAXCMSSiteListing extends PolymerElement {
         this.loadActiveSite.bind(this)
       );
       this.permissionsListen();
-      this.shadowRoot
-        .querySelector("#snap")
-        .addEventListener("click",()=>{
-          this.dispatchEvent(
-            new CustomEvent("simple-login-camera-icon-click", {
-              detail: this,
-              bubbles: true,
-              composed: true,
-            })
-          );
-          this.snapPhoto.bind(this);
-        });
+      this.shadowRoot.querySelector("#snap").addEventListener("click", () => {
+        this.dispatchEvent(
+          new CustomEvent("simple-login-camera-icon-click", {
+            detail: this,
+            bubbles: true,
+            composed: true,
+          })
+        );
+        this.snapPhoto.bind(this);
+      });
       this.shadowRoot
         .querySelector("#newsnap")
-        .addEventListener("click",()=>{
+        .addEventListener("click", () => {
           this.dispatchEvent(
             new CustomEvent("simple-login-cancel-icon-click", {
               detail: this,
@@ -1435,12 +1432,14 @@ class HAXCMSSiteListing extends PolymerElement {
     }, 0);
   }
 
-  permissionsListen(){
-    window.addEventListener("simple-login-camera-icon-click", async ()=> {
-      await this.snapPhoto()});
-    window.addEventListener("simple-login-cancel-icon-click", async ()=> {
-      await this.clearPhoto()});
-    }
+  permissionsListen() {
+    window.addEventListener("simple-login-camera-icon-click", async () => {
+      await this.snapPhoto();
+    });
+    window.addEventListener("simple-login-cancel-icon-click", async () => {
+      await this.clearPhoto();
+    });
+  }
 
   async snapPhoto(e) {
     const camera = this.shadowRoot.querySelector("#camera"); // snap the photo to a blob
@@ -1448,7 +1447,6 @@ class HAXCMSSiteListing extends PolymerElement {
     this.__cameraBlob = await camera.takeASnap().then(camera.imageBlob); // make an img to show on screen
 
     let img = document.createElement("img"); // turn blob into a url to visualize locally
-
     img.src = URL.createObjectURL(this.__cameraBlob);
     camera.removeAttribute("autoplay");
     const selfie = this.shadowRoot.querySelector("#selfie");
