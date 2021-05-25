@@ -70,6 +70,9 @@ class SimpleIcon extends SimpleIconBehaviors(SimpleColors) {
       ? svg`<feFlood class="contrast-${this.contrast}" result="COLOR" />`
       : ``;
   }
+  get useSafariPolyfill() {
+    return false;
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
