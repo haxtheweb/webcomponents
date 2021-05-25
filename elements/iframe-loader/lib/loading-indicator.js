@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { nothing } from "lit-html/lit-html.js";
 class LoadingIndicator extends LitElement {
   static get styles() {
     return css`
@@ -11,6 +12,9 @@ class LoadingIndicator extends LitElement {
         width: 100%;
         margin: auto;
       }
+      :host([full]) .progress-line {
+        --loading-indicator-width: 100%;
+      }
       .progress-line {
         background-color: var(
           --loading-indicator-background-color,
@@ -18,7 +22,7 @@ class LoadingIndicator extends LitElement {
         );
         display: -webkit-flex;
         display: flex;
-        width: 300px;
+        width: var(--loading-indicator-width, 300px);
       }
       .progress-line:before {
         background-color: var(--loading-indicator-color, black);
@@ -53,14 +57,18 @@ class LoadingIndicator extends LitElement {
     `;
   }
   static get properties() {
-    return { loading: { type: Boolean } };
+    return {
+      full: { type: Boolean, reflect: true },
+      loading: { type: Boolean, reflect: true },
+    };
   }
   constructor() {
     super();
+    this.full = false;
     this.loading = true;
   }
   render() {
-    return html`${this.loading ? html`<div class="progress-line"></div>` : ``}`;
+    return this.loading ? html`<div class="progress-line"></div>` : nothing;
   }
   static get tag() {
     return "loading-indicator";

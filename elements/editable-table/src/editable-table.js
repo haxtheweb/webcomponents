@@ -560,6 +560,7 @@ class EditableTable extends displayBehaviors(LitElement) {
     this.hideResponsive = false;
     this.hidePrintable = false;
     this.hideSort = false;
+    this.caption = "";
     this.hideStriped = false;
     this.config = [
       {

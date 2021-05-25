@@ -80,6 +80,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
               --simple-icon-button-focus-background-color
             );
           }
+          button:disabled,
           button[disabled] {
             opacity: var(--simple-icon-button-disabled-opacity, 0.5);
             --simple-icon-button-border: var(
