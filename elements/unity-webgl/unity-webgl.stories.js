@@ -10,7 +10,7 @@ import { UnityWebgl } from "./unity-webgl.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Webgl|UnityWebgl",
+  title: "Widgets|UnityWebgl",
   component: "unity-webgl",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

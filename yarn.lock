@@ -18377,13 +18377,6 @@ lit-element-router@^2.0.3:
   resolved "https://registry.yarnpkg.com/lit-element-router/-/lit-element-router-2.0.3.tgz#6cd369d205f79421674b8ec87cb00b8a3e66aa6b"
   integrity sha512-ASaFeB5E4hsd2LYH3keY3ImuaW1+Dc3BcjauTRZhVcYmEIYDkIs/ci7Vfv/SroHhbyQ5nF/nPFBcOFipYsGwXg==
 
-lit-element@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.0.1.tgz#9ec5871d3b64487f432c7c071df80ef031d7091b"
-  integrity sha512-2bu3B2ZYUZgntvOgu3i5mRK8geo45CLUwxwJEYK54hyednoJasjiTZPB13NBg1D+hNM2JfmWTWJnh1QEUQv7zw==
-  dependencies:
-    lit-html "^1.0.0"
-
 lit-element@2.4.0, lit-element@^2.0.0, lit-element@^2.2.1, lit-element@^2.3.0, lit-element@^2.3.1:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.4.0.tgz#b22607a037a8fc08f5a80736dddf7f3f5d401452"
@@ -18395,6 +18388,13 @@ lit-element@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.5.0.tgz#218773185d30cab8cb7baabcddd9182f6e7bc14b"
   integrity sha512-SS6Bmm7FYw/RVeD6YD3gAjrT0ss6rOQHaacUnDCyVE3sDuUpEmr+Gjl0QUHnD8+0mM5apBbnA60NkFJ2kqcOMA==
+  dependencies:
+    lit-html "^1.1.1"
+
+lit-element@2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.5.1.tgz#3fa74b121a6cd22902409ae3859b7847d01aa6b6"
+  integrity sha512-ogu7PiJTA33bEK0xGu1dmaX5vhcRjBXCFexPja0e7P7jqLhTpNKYRPmE+GmiCaRVAbiQKGkUgkh/i6+bh++dPQ==
   dependencies:
     lit-html "^1.1.1"
 
@@ -19984,10 +19984,10 @@ mobius1-selectr@2.4.10:
   resolved "https://registry.yarnpkg.com/mobius1-selectr/-/mobius1-selectr-2.4.10.tgz#98f29116e9461b7be19b8f380dabd7dc1253a861"
   integrity sha512-U/pQ8jZwO7z3Mf9OYzJR6AKfleF5jSBIueKKxGMr/tgyLuTWgchgFyeaXpAIz3Cbp+7eIN1hw5D2gxc4cNnOkQ==
 
-mobx@6.0.4:
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.0.4.tgz#8fc3e3629a3346f8afddf5bd954411974744dad1"
-  integrity sha512-wT2QJT9tW19VSHo9x7RPKU3z/I2Ps6wUS8Kb1OO+kzmg7UY3n4AkcaYG6jq95Lp1R9ohjC/NGYuT2PtuvBjhFg==
+mobx@6.3.2:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.3.2.tgz#125590961f702a572c139ab69392bea416d2e51b"
+  integrity sha512-xGPM9dIE1qkK9Nrhevp0gzpsmELKU4MFUJRORW/jqxVFIHHWIoQrjDjL8vkwoJYY3C2CeVJqgvl38hgKTalTWg==
 
 mocha@^3.4.2:
   version "3.5.3"

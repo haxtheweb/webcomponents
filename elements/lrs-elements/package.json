@@ -46,8 +46,8 @@
   "dependencies": {
     "@lrnwebcomponents/haxcms-elements": "^3.0.6",
     "@lrnwebcomponents/intersection-element": "^3.0.0",
-    "lit-element": "2.4.0",
-    "mobx": "6.0.4"
+    "lit-element": "2.5.1",
+    "mobx": "6.3.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",

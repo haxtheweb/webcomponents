@@ -7,11 +7,13 @@ export const UIRenderPieces = function (SuperClass) {
       this.hideGradeScale = true;
       this.hideActiveStudentOverview = true;
       this.hideActiveAssignment = true;
+      this.hideSettings = true;
       import("./grade-book-student-block.js");
     }
     static get properties() {
       return {
         ...super.properties,
+        hideSettings: { type: Boolean },
         hideGradeScale: { type: Boolean },
         hideActiveStudentOverview: { type: Boolean },
         hideActiveAssignment: { type: Boolean },
@@ -110,6 +112,7 @@ export const UIRenderPieces = function (SuperClass) {
       import("@lrnwebcomponents/simple-popover/simple-popover.js");
       this.hideActiveStudentOverview = !this.hideActiveStudentOverview;
       if (!this.hideActiveStudentOverview) {
+        this.hideSettings = true;
         this.hideActiveAssignment = true;
         this.hideGradeScale = true;
       }
@@ -163,6 +166,59 @@ export const UIRenderPieces = function (SuperClass) {
       import("@lrnwebcomponents/simple-popover/simple-popover.js");
       this.hideGradeScale = !this.hideGradeScale;
       if (!this.hideGradeScale) {
+        this.hideSettings = true;
+        this.hideActiveAssignment = true;
+        this.hideActiveStudentOverview = true;
+      }
+    }
+    // render grading scale in a popover
+    renderSettingsBtn() {
+      return html` <simple-icon-button-lite
+          icon="settings"
+          @click="${this.toggleSettings}"
+          id="settings"
+          class="divider-left"
+        >
+          <span class="hide-900">${this.t.settings}</span>
+        </simple-icon-button-lite>
+        <simple-popover
+          ?hidden="${this.hideSettings}"
+          for="settings"
+          auto
+          @value-changed="${this.settingChanged}"
+        >
+          <simple-fields-field
+            value="${this.settings.photo}"
+            type="checkbox"
+            label="${this.t.photo}"
+            name="photo"
+          ></simple-fields-field>
+          <simple-fields-field
+            value="${this.settings.email}"
+            type="checkbox"
+            label="${this.t.email}"
+            name="email"
+          ></simple-fields-field>
+          <simple-fields-field
+            value="${this.settings.fname}"
+            type="checkbox"
+            label="${this.t.firstName}"
+            name="fname"
+          ></simple-fields-field>
+          <simple-fields-field
+            value="${this.settings.surname}"
+            type="checkbox"
+            label="${this.t.surname}"
+            name="surname"
+          ></simple-fields-field>
+        </simple-popover>`;
+    }
+    // toggle logic for button
+    toggleSettings(e) {
+      import("@lrnwebcomponents/simple-popover/simple-popover.js");
+      this.hideSettings = !this.hideSettings;
+      if (!this.hideSettings) {
+        this.hideGradeScale = true;
         this.hideActiveAssignment = true;
         this.hideActiveStudentOverview = true;
       }
@@ -204,10 +260,10 @@ export const UIRenderPieces = function (SuperClass) {
     }
     // toggle logic for button
     toggleActiveAssignment(e) {
-      console.log("click");
       import("@lrnwebcomponents/simple-popover/simple-popover.js");
       this.hideActiveAssignment = !this.hideActiveAssignment;
       if (!this.hideActiveAssignment) {
+        this.hideSettings = true;
         this.hideGradeScale = true;
         this.hideActiveStudentOverview = true;
       }

@@ -4,7 +4,7 @@ import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Layout|Card",
+  title: "Navigation|Card",
   component: "accent-card",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

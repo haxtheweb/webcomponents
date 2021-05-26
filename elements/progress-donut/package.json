@@ -49,7 +49,7 @@
     "@lrnwebcomponents/lrndesign-chart": "^3.0.6",
     "@lrnwebcomponents/schema-behaviors": "^3.0.6",
     "@lrnwebcomponents/simple-colors": "^3.0.6",
-    "lit-element": "2.4.0"
+    "lit-element": "2.5.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",

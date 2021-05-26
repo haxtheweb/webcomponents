@@ -66,8 +66,8 @@
     "@lrnwebcomponents/utils": "^3.0.0",
     "@lrnwebcomponents/iframe-loader": "^3.0.6",
     "@vaadin/vaadin-upload": "^4.4.1",
-    "lit-element": "2.4.0",
-    "mobx": "6.0.4"
+    "lit-element": "2.5.1",
+    "mobx": "6.3.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/a11y-gif-player": "^3.0.6",

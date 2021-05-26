@@ -44,7 +44,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/paper-input": "^3.0.0",
-    "lit-element": "2.4.0"
+    "lit-element": "2.5.1"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

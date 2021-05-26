@@ -46,7 +46,7 @@
     "@lrnwebcomponents/a11y-details": "^3.0.6",
     "@lrnwebcomponents/radio-behaviors": "^3.0.6",
     "@lrnwebcomponents/simple-icon": "^3.0.6",
-    "lit-element": "2.4.0"
+    "lit-element": "2.5.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",

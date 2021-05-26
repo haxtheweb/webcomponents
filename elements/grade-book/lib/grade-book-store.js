@@ -1,12 +1,5 @@
 import { LitElement } from "lit-element/lit-element.js";
-import {
-  observable,
-  makeObservable,
-  computed,
-  configure,
-  autorun,
-  toJS,
-} from "mobx";
+import { observable, makeObservable, configure } from "mobx";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 
 class GradeBookStoreClass extends LitElement {

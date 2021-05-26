@@ -11,7 +11,7 @@ import {
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Layout|Callouts",
+  title: "Widgets|Callouts",
   component: "lrndesign-paperstack",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

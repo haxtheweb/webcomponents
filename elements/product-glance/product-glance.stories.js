@@ -10,7 +10,7 @@ import { ProductGlance } from "./product-glance.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Glance|ProductGlance",
+  title: "Widgets|ProductGlance",
   component: "product-glance",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

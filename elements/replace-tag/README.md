@@ -15,7 +15,7 @@ import '@lrnwebcomponents/replace-tag/replace-tag.js';
 <script type="module">
   import '@lrnwebcomponents/replace-tag/replace-tag.js';
   // imperative form
-  import {LoadingHelpers} from '@lrnwebcomponents/replace-tag';
+  import {ReplaceTag} from '@lrnwebcomponents/replace-tag';
   // if you don't have a build routine and need to reference directly
   import './node_modules/@lrnwebcomponents/replace-tag/replace-tag.js';
 </script>

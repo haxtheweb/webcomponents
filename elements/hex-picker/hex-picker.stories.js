@@ -10,7 +10,7 @@ import { HexPicker } from "./hex-picker.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Picker|HexPicker",
+  title: "Forms|HexPicker",
   component: "hex-picker",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

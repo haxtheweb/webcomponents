@@ -50,7 +50,7 @@
     "@material/mwc-button": "0.18.0",
     "@material/mwc-formfield": "0.18.0",
     "@material/mwc-switch": "0.18.0",
-    "lit-element": "2.4.0"
+    "lit-element": "2.5.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/a11y-gif-player": "^3.0.6",

@@ -507,6 +507,17 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             --simple-colors-default-theme-accent-10,
             black
           );
+          --a11y-tabs-border-color: var(
+            --simple-colors-default-theme-accent-10,
+            black
+          );
+          color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-grey-1);
+          --a11y-tabs-faded-color: var(--simple-colors-default-theme-grey-11);
+          --a11y-tabs-focus-color: var(--simple-colors-default-theme-grey-10);
+          --a11y-tabs-faded-background: var(
+            --simple-colors-default-theme-grey-2
+          );
         }
         #studentassessment::part(content) {
           overflow: scroll;
@@ -543,7 +554,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         }
         .active-student-grade-history button.activeAssignment {
           opacity: 0.9;
-          background-color: yellow;
+          background-color: var(--simple-colors-default-theme-yellow-8);
         }
         .active-student-grade-history button:focus,
         .active-student-grade-history button:active,
@@ -659,7 +670,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         }
         #studentgrid [data-active] {
           background-color: var(
-            --simple-colors-default-theme-yellow-2
+            --simple-colors-default-theme-yellow-3
           ) !important;
         }
         #studentgrid button {
@@ -671,6 +682,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           display: block;
           padding: 0;
           margin: 0;
+          color: var(--simple-colors-default-theme-grey-12);
         }
         #studentgrid button:focus,
         #studentgrid button:hover {
@@ -733,13 +745,13 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           margin: 12px 0;
         }
         .user-right div a {
-          color: black;
+          color: var(--simple-colors-default-theme-grey-12);
           text-decoration: none;
         }
         .user-right div a:hover,
         .user-right div a:focus,
         .user-right div a:active {
-          color: blue;
+          color: var(--simple-colors-default-theme-blue-8);
           text-decoration: underline;
         }
         .user-right div {
@@ -814,7 +826,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         tr:hover th {
           transition: 0.3s ease-in-out all;
           background-color: var(
-            --simple-colors-default-theme-yellow-1
+            --simple-colors-default-theme-yellow-2
           ) !important;
         }
         table {
@@ -822,16 +834,16 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           border-collapse: collapse;
           border-width: var(--editable-table-border-width, 1px);
           border-style: var(--editable-table-border-style, solid);
-          border-color: var(--editable-table-border-color, #999);
+          border-color: var(--simple-colors-default-theme-grey-6, #999);
           font-weight: var(--editable-table-light-weight, 200);
-          color: var(--editable-table-color, #222);
-          background-color: var(--editable-table-bg-color, #fff);
+          color: var(--simple-colors-default-theme-grey-10, #222);
+          background-color: var(--simple-colors-default-theme-grey-1, #fff);
         }
         .th,
         .td {
           font-weight: var(--editable-table-light-weight, 200);
-          color: var(--editable-table-color, #222);
-          background-color: var(--editable-table-bg-color, #fff);
+          color: var(--simple-colors-default-theme-grey-10, #222);
+          background-color: var(--simple-colors-default-theme-grey-1, #fff);
         }
         caption {
           font-size: var(
@@ -841,11 +853,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           font-weight: var(--editable-table-heavy-weight, 600);
           color: var(
             --editable-table-caption-color,
-            var(--editable-table-color, #222)
+            var(--simple-colors-default-theme-grey-10, #222)
           );
           background-color: var(
             --editable-table-caption-bg-color,
-            var(--editable-table-bg-color, #fff)
+            var(--simple-colors-default-theme-grey-1, #fff)
           );
           width: 100%;
         }
@@ -861,21 +873,21 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           margin: 0;
         }
         .thead-tr .th {
-          background-color: var(--editable-table-heading-bg-color, #e0e0e0);
+          background-color: var(--simple-colors-default-theme-grey-2, #e0e0e0);
           font-weight: var(--editable-table-heavy-weight, 600);
-          color: var(--editable-table-heading-color, #000);
+          color: var(--simple-colors-default-theme-grey-12, #000);
         }
         .tbody-tr .th {
           font-weight: var(--editable-table-heavy-weight, 600);
-          color: var(--editable-table-heading-color, #000);
-          background-color: var(--editable-table-bg-color, #fff);
+          color: var(--simple-colors-default-theme-grey-12, #000);
+          background-color: var(--simple-colors-default-theme-grey-1, #fff);
           text-align: left;
         }
         table[bordered] .th,
         table[bordered] .td {
           border-width: var(--editable-table-border-width, 1px);
           border-style: var(--editable-table-border-style, solid);
-          border-color: var(--editable-table-border-color, #999);
+          border-color: var(--simple-colors-default-theme-grey-6, #999);
         }
         table[condensed] {
           --editable-table-cell-vertical-padding: var(
@@ -888,13 +900,13 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           );
         }
         table[striped] .tbody-tr:nth-child(2n + 1) .th-or-td {
-          background-color: var(--editable-table-stripe-bg-color, #f0f0f0);
+          background-color: var(--simple-colors-default-theme-grey-2, #f0f0f0);
         }
         .tfoot-tr .th,
         .tfoot-tr .td {
-          border-top: 2px solid var(--editable-table-color, #222);
+          border-top: 2px solid var(--simple-colors-default-theme-grey-10, #222);
           font-weight: var(--editable-table-heavy-weight, 600);
-          color: var(--editable-table-heading-color, #000);
+          color: var(--simple-colors-default-theme-grey-12, #000);
         }
         caption,
         .th-or-td {
@@ -910,7 +922,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         }
         table[numeric-styles] .tfoot-tr .th-or-td[negative],
         table[numeric-styles] .td[negative] {
-          color: var(--editable-table-negative-color, red);
+          color: var(--simple-colors-default-theme-red-7, red);
           --editable-table-cell-color: var(
             --editable-table-negative-color,
             red
@@ -933,7 +945,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           --simple-picker-border-width: 1px;
           --simple-picker-focus-border-width: 1px;
           --simple-picker-border-color: var(
-            --editable-table-border-color,
+            --simple-colors-default-theme-grey-6,
             #999
           );
         }
@@ -963,20 +975,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         }
         .top-controls .divider-right {
           border-right: 1px solid var(--simple-colors-default-theme-accent-1);
-        }
-        #settings {
-          position: absolute;
-          background-color: var(--simple-colors-default-theme-accent-12);
-          color: var(--simple-colors-default-theme-accent-1);
-          width: 150px;
-          z-index: 10;
-          top: 0;
-          margin: 0;
-          right: 0;
-        }
-        #settings simple-fields-field {
-          background: transparent;
-          color: var(--simple-colors-default-theme-accent-1);
         }
       `,
     ];
@@ -1191,44 +1189,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           </simple-icon-button-lite>
         </div>
         <div class="group">${this.renderGradeScaleBtn()}</div>
-        <div class="group">
-          <a11y-collapse
-            class="divider-left"
-            id="settings"
-            collapsed
-            heading-button
-            icon="settings"
-            @value-changed="${this.settingChanged}"
-          >
-            <div slot="heading" class="hide-900">${this.t.settings}</div>
-            <div slot="content">
-              <simple-fields-field
-                value="${this.settings.photo}"
-                type="checkbox"
-                label="${this.t.photo}"
-                name="photo"
-              ></simple-fields-field>
-              <simple-fields-field
-                value="${this.settings.email}"
-                type="checkbox"
-                label="${this.t.email}"
-                name="email"
-              ></simple-fields-field>
-              <simple-fields-field
-                value="${this.settings.fname}"
-                type="checkbox"
-                label="${this.t.firstName}"
-                name="fname"
-              ></simple-fields-field>
-              <simple-fields-field
-                value="${this.settings.surname}"
-                type="checkbox"
-                label="${this.t.surname}"
-                name="surname"
-              ></simple-fields-field>
-            </div>
-          </a11y-collapse>
-        </div>
+        <div class="group">${this.renderSettingsBtn()}</div>
       </div>
       <table
         id="studentgrid"
