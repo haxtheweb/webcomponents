@@ -1,5 +1,6 @@
 import { html, css, LitElement } from "lit-element/lit-element.js";
-
+import { GradeBookStore } from "./grade-book-store.js";
+import { autorun, toJS } from "mobx";
 class LetterGrade extends LitElement {
   constructor() {
     super();
@@ -13,6 +14,9 @@ class LetterGrade extends LitElement {
     this.value = "";
     this.mini = false;
     this.label = "";
+    autorun(() => {
+      this.gradeScale = toJS(GradeBookStore.gradeScale);
+    });
   }
   static get styles() {
     return [
@@ -136,7 +140,7 @@ class LetterGrade extends LitElement {
       total: { type: Number },
       value: { type: Number },
       pointsSystem: { type: String, attribute: "points-system" },
-      gradeScale: { type: Array, attribute: "grade-scale" },
+      gradeScale: { type: Array },
       letter: { type: String, reflect: true },
       showScale: { type: Boolean, reflect: true, attribute: "show-scale" },
       mini: { type: Boolean, reflect: true },

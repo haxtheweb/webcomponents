@@ -6,7 +6,11 @@ import { html, css } from "lit-element/lit-element.js";
 import { nothing } from "lit-html/lit-html.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
-import { validURL, cleanVideoSource } from "@lrnwebcomponents/utils/utils.js";
+import {
+  validURL,
+  cleanVideoSource,
+  isElementInViewport,
+} from "@lrnwebcomponents/utils/utils.js";
 import { gSheetInterface } from "@lrnwebcomponents/utils/lib/gSheetsInterface.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
@@ -18,16 +22,18 @@ import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
-import "./lib/grade-book-student-block.js";
 import "./lib/letter-grade.js";
 import "@github/time-elements/dist/time-elements.js";
+import { UIRenderPieces } from "./lib/GradeBookUIPieces.js";
+import { GradeBookStore } from "./lib/grade-book-store.js";
+import { autorun, toJS } from "mobx";
 /**
  * `grade-book`
  * `A headless gradebook that supports multiple backends with rubrics`
  * @demo demo/index.html
  * @element grade-book
  */
-class GradeBook extends I18NMixin(SimpleColors) {
+class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   constructor() {
     super();
     // gid from the google sheet. technically if you add / remove sheets this would
@@ -46,10 +52,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
     // storing internals of the assessmentView tab
     this.assessmentView = this.resetAssessmentView();
     this.totalScore = 0;
-    // active ID in the array of the student being reviewed
-    this.activeStudent = 0;
-    // active ID in the array of the assignment being reviewed
-    this.activeAssignment = 0;
     // active Submission is the data itself
     this.activeSubmission = null;
     // student submission status for rendering
@@ -83,15 +85,12 @@ class GradeBook extends I18NMixin(SimpleColors) {
       surname: true,
       email: true,
     };
-    this.hideGradeScale = true;
-    this.hideActiveStudentOverview = true;
     this.disabled = false;
     // shows progress indicator as it loads
     this.loading = true;
     // translatable text
     this.t = {
       csvURL: "CSV URL",
-      debugData: "Debug data",
       points: "Points",
       criteria: "Criteria",
       description: "Description",
@@ -105,6 +104,22 @@ class GradeBook extends I18NMixin(SimpleColors) {
       openInNewWindow: "Open in new window",
       gradingScale: "Grading scale",
       activeStudent: "Active student",
+      activeAssignment: "Active assignment",
+      minutesAgo: "minutes ago",
+      dateSubmitted: "Date submitted",
+      dueDate: "Due date",
+      firstName: "First name",
+      surname: "Surname",
+      photo: "Photo",
+      email: "Email",
+      settings: "Settings",
+      previous: "Previous",
+      next: "Next",
+      previousStudent: "Previous student",
+      nextStudent: "Next student",
+      previousAssignment: "Previous assignment",
+      nextAssignment: "Next assignment",
+      student: "Student",
     };
     this.registerLocalization({
       context: this,
@@ -120,6 +135,39 @@ class GradeBook extends I18NMixin(SimpleColors) {
     this.addEventListener("value-changed", this.rubricCriteriaPointsChange);
     // drop event to remove the styling from droppable areas
     this.addEventListener("drop", this._handleDragDrop.bind(this));
+    autorun(() => {
+      this.activeStudent = toJS(GradeBookStore.activeStudent);
+    });
+    autorun(() => {
+      this.activeAssignment = toJS(GradeBookStore.activeAssignment);
+    });
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    const resizeObserver = new ResizeObserver((entries) => {
+      clearTimeout(this.__resizer);
+      this.__resizer = setTimeout(() => {
+        var pixels = 0;
+        for (let entry of entries) {
+          if (entry.contentBoxSize) {
+            pixels = Math.round(
+              window.innerHeight - entry.contentBoxSize[0].blockSize - 122
+            );
+          } else {
+            pixels = Math.round(
+              window.innerHeight - entry.contentRect.height - 122
+            );
+          }
+        }
+        this.shadowRoot
+          .querySelector("#studentassessment")
+          .shadowRoot.querySelector("[part='content']").style.height =
+          pixels + "px";
+      }, 50);
+    });
+    resizeObserver.observe(this.shadowRoot.querySelector("#studentgrid"));
   }
   resetAssessmentView() {
     return {
@@ -144,6 +192,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
             if (a) {
               response.push({
                 studentScore:
+                  !this.database.grades[activeStudent] ||
                   this.database.grades[activeStudent][j] == ""
                     ? null
                     : this.database.grades[activeStudent][j],
@@ -178,6 +227,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
   getCurrentScore(activeStudent, activeAssignment) {
     // see if there's a score set in the grades setup
     if (
+      this.database.grades[activeStudent] &&
       this.database.grades[activeStudent][
         this.database.assignments[activeAssignment].shortName
       ]
@@ -220,49 +270,29 @@ class GradeBook extends I18NMixin(SimpleColors) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      // support debugging, only import debugger element if needed
-      if (propName == "debug" && this[propName]) {
-        import("@lrnwebcomponents/csv-render/csv-render.js");
-      }
       // set rubric based on assignment
       if (
+        !this.loading &&
         ["activeAssignment", "activeStudent", "database", "loading"].includes(
           propName
         )
       ) {
-        this.activeSubmission = this.getActiveSubmission();
-        this.assessmentView = this.resetAssessmentView();
-        this.activeRubric = this.getActiveRubric();
-        this.activeStudentSubmissions = [];
-        this.activeStudentSubmissions = [
-          ...this.getStudentSubmissions(this.activeStudent),
-        ];
-        // ensure we maintain visibility of the active student / assignment
-        // in our student-grid; delay to ensure paints before visibility
-        if (
-          this.shadowRoot &&
-          this.shadowRoot.querySelector(".student-grid [data-active]")
-        ) {
-          setTimeout(() => {
-            this.shadowRoot.querySelector(".student-grid").scrollTop =
-              this.shadowRoot.querySelector(".student-grid [data-active]")
-                .offsetTop -
-              120 -
-              this.shadowRoot.querySelector(".student-grid").offsetTop;
-            // left to right
-            this.shadowRoot.querySelector(".student-grid").scrollLeft =
-              this.shadowRoot.querySelector(".student-grid [data-active]")
-                .offsetLeft -
-              200 -
-              this.shadowRoot.querySelector(".student-grid").offsetLeft;
-          }, 100);
-        }
+        setTimeout(() => {
+          this.activeSubmission = this.getActiveSubmission();
+          this.assessmentView = this.resetAssessmentView();
+          this.activeRubric = this.getActiveRubric();
+          this.activeStudentSubmissions = [];
+          this.activeStudentSubmissions = [
+            ...this.getStudentSubmissions(this.activeStudent),
+          ];
+        }, 0);
+        this.maintainScrollPosition();
       }
       // source will have to fetch ALL the pages and slowly load data as it rolls through
       if (propName == "sheet" && this[propName]) {
         // minor debounce just in case source changes from input
-        clearTimeout(this.__debounce);
-        this.__debounce = setTimeout(async () => {
+        clearTimeout(this.__sdebounce);
+        this.__sdebounce = setTimeout(async () => {
           this.loading = true;
           this.gSheet.sheet = this[propName];
           for (var i in this.gSheet.sheetGids) {
@@ -272,15 +302,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
             this.requestUpdate();
           }
           this.loading = false;
-          // ensure the letter-grade tags KNOW about the database refresh
-          // @todo this is a mobx thing for sure, should not be passing this blob of data
-          // in constantly
           setTimeout(() => {
             if (this.database.gradeScale.length > 0) {
-              let lg = this.shadowRoot.querySelectorAll("letter-grade");
-              for (var i in Array.from(lg)) {
-                lg[i].gradeScale = this.database.gradeScale;
-              }
+              GradeBookStore.gradeScale = this.database.gradeScale;
             }
           }, 0);
         }, 0);
@@ -288,6 +312,51 @@ class GradeBook extends I18NMixin(SimpleColors) {
     });
   }
 
+  /**
+   * maintain scroll position within the table overflow scroll whenever assignment or student changes
+   */
+  maintainScrollPosition() {
+    // ensure we maintain visibility of the active student / assignment
+    // in our studentgrid; delay to ensure paints before visibility
+    if (
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#studentgrid [data-active]")
+    ) {
+      setTimeout(() => {
+        let offset = 192;
+        let isVisible = isElementInViewport(
+          this.shadowRoot.querySelector("#studentgrid [data-active]"),
+          {
+            top: 0,
+            right: window.innerWidth,
+            bottom:
+              this.shadowRoot
+                .querySelector("#studentgrid")
+                .getBoundingClientRect().height + 20,
+            left: offset,
+          }
+        );
+        if (this.activeStudent === 0) {
+          this.shadowRoot.querySelector("#studentgrid").scrollTop = 0;
+        } else if (!isVisible) {
+          this.shadowRoot.querySelector("#studentgrid").scrollTop =
+            this.shadowRoot.querySelector("#studentgrid [data-active]")
+              .offsetTop -
+            this.shadowRoot.querySelector("#studentgrid").offsetTop;
+        }
+        // left to right
+        if (this.activeAssignment === 0) {
+          this.shadowRoot.querySelector("#studentgrid").scrollLeft = 0;
+        } else if (!isVisible) {
+          this.shadowRoot.querySelector("#studentgrid").scrollLeft =
+            this.shadowRoot.querySelector("#studentgrid [data-active]")
+              .offsetLeft -
+            offset -
+            this.shadowRoot.querySelector("#studentgrid").offsetLeft;
+        }
+      }, 0);
+    }
+  }
   /**
    * process assignment data to normalize date string
    */
@@ -350,15 +419,12 @@ class GradeBook extends I18NMixin(SimpleColors) {
     return {
       ...super.properties,
       settings: { type: Object },
-      hideGradeScale: { type: Boolean },
-      hideActiveStudentOverview: { type: Boolean },
       disabled: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
       activeStudent: { type: Number, attribute: "active-student" },
       activeAssignment: { type: Number, attribute: "active-assignment" },
       totalScore: { type: Number },
       scoreLock: { type: Boolean },
-      debug: { type: Boolean },
       sheet: { type: String },
       activeSubmission: { type: String, attribute: false },
       database: { type: Object, attribute: false },
@@ -368,27 +434,38 @@ class GradeBook extends I18NMixin(SimpleColors) {
       activeStudentSubmissions: { type: Array },
     };
   }
-  changeStudent(e) {
-    if (e.target.value == "prev" && 0 !== this.activeStudent) {
+  async changeStudent(e) {
+    this.shadowRoot.querySelectorAll("#studentgrid .th-or-td").forEach((el) => {
+      el.classList.remove("col-highlight");
+    });
+    // have to possibly resolve UI click handler of span vs the button
+    if (e.target.getAttribute("value") == "prev" && 0 !== this.activeStudent) {
       this.activeStudent--;
     } else if (
-      e.target.value == "next" &&
+      e.target.getAttribute("value") == "next" &&
       this.database.roster.length - 1 !== this.activeStudent
     ) {
       this.activeStudent++;
     }
-    this.requestUpdate();
+    await this.requestUpdate();
   }
-  changeAssignment(e) {
-    if (e.target.value == "prev" && 0 !== this.activeAssignment) {
+  async changeAssignment(e) {
+    this.shadowRoot.querySelectorAll("#studentgrid .th-or-td").forEach((el) => {
+      el.classList.remove("col-highlight");
+    });
+    // have to possibly resolve UI click handler of span vs the button
+    if (
+      e.target.getAttribute("value") == "prev" &&
+      0 !== this.activeAssignment
+    ) {
       this.activeAssignment--;
     } else if (
-      e.target.value == "next" &&
+      e.target.getAttribute("value") == "next" &&
       this.database.assignments.length - 1 !== this.activeAssignment
     ) {
       this.activeAssignment++;
     }
-    this.requestUpdate();
+    await this.requestUpdate();
   }
   static get styles() {
     return [
@@ -396,6 +473,11 @@ class GradeBook extends I18NMixin(SimpleColors) {
       css`
         :host {
           display: block;
+        }
+        @media (max-width: 900px) {
+          .hide-900 {
+            display: none;
+          }
         }
         loading-indicator {
           --loading-indicator-background-color: var(
@@ -407,17 +489,27 @@ class GradeBook extends I18NMixin(SimpleColors) {
             black
           );
         }
+        loading-indicator[full] {
+          top: 0;
+          position: absolute;
+          left: 0;
+          right: 0;
+          z-index: 1;
+        }
         grid-plate {
           --hax-layout-container-transition: none;
           --grid-plate-col-transition: none;
           --grid-plate-item-margin: 8px;
           --grid-plate-item-padding: 8px;
         }
-        a11y-tabs {
+        #studentassessment {
           --a11y-tabs-border-color: var(
             --simple-colors-default-theme-accent-10,
             black
           );
+        }
+        #studentassessment::part(content) {
+          overflow: scroll;
         }
         a11y-collapse {
           --a11y-collapse-border-color: var(
@@ -437,10 +529,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
         }
         a11y-collapse[expanded] div[slot="heading"] {
           font-weight: bold;
-        }
-        .active-student-grade-history {
-          display: flex;
-          width: 100%;
         }
         .active-student-grade-history letter-grade {
           display: inline-flex;
@@ -464,14 +552,19 @@ class GradeBook extends I18NMixin(SimpleColors) {
           outline: 1px solid black;
           outline-offset: 2px;
         }
-        simple-fields-tag-list.drag-focus {
-          background-color: #dddddd;
+        simple-fields-tag-list {
+          --simple-fields-tag-list-possible: var(
+            --simple-colors-default-theme-accent-2
+          );
+          --simple-fields-tag-list-focus: var(
+            --simple-colors-default-theme-accent-10
+          );
         }
         simple-colors[accent-color] {
           display: inline-flex;
           width: 24px;
           height: 24px;
-          margin: 4px 6px 0px 0px;
+          margin: 4px 6px 0 0;
         }
         simple-colors[accent-color] span {
           display: inline-flex;
@@ -499,41 +592,96 @@ class GradeBook extends I18NMixin(SimpleColors) {
         }
         .student-feedback-score-heading h3 {
           margin: 0 0 0 8px;
-          padding: 0px;
+          padding: 0;
         }
 
         #totalpts {
           width: 84px;
-          margin: 0px 12px;
+          margin: 0 12px;
         }
-        .student-grid {
+        #studentgrid {
           display: block;
           width: 100%;
-          height: 50vh;
+          height: 52vh;
           max-height: 90vh;
-          min-height: 20vh;
+          min-height: 140px; /** exact height of a row to still be usable */
           resize: vertical;
           overflow: auto;
+          scrollbar-color: var(--simple-colors-default-theme-accent-10)
+            var(--simple-colors-default-theme-accent-1);
+          scrollbar-width: auto;
         }
-        .student-grid [data-active] {
-          background-color: rgba(250, 250, 200, 100) !important;
+        /** start scroll bar styling */
+        #studentgrid::-webkit-scrollbar-track,
+        #studentassessment::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+          border-radius: 20px;
+          background-color: var(--simple-colors-default-theme-accent-1);
         }
-        .student-grid button {
+        #studentgrid::-webkit-scrollbar,
+        #studentassessment::-webkit-scrollbar {
+          width: 16px;
+          height: 16px;
+          background-color: var(--simple-colors-default-theme-accent-1);
+        }
+        #studentgrid::-webkit-scrollbar-thumb {
+          border-radius: 20px;
+          -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+          background-color: var(--simple-colors-default-theme-accent-10);
+        }
+        #studentgrid::-webkit-scrollbar-thumb:vertical,
+        #studentassessment::-webkit-scrollbar-thumb:vertical {
+          height: 100px;
+          width: 16px;
+        }
+        #studentgrid::-webkit-scrollbar-corner {
+          -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+          background-color: var(--simple-colors-default-theme-accent-10);
+        }
+        /** end scroll bar styling */
+        .student-table-label {
+          text-align: center;
+          vertical-align: middle;
+        }
+        #studentgrid simple-fields-field.select-all {
+          background-color: transparent;
+          float: left;
+          margin: -2px 0 0 -2px;
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
+        }
+        .student-table-label div {
+          border-right: 1px solid var(--editable-table-heading-color, #000);
+          height: 32px;
+          width: 100%;
+          line-height: 32px;
+          margin-left: 3px;
+        }
+        #studentgrid [data-active] {
+          background-color: var(
+            --simple-colors-default-theme-yellow-2
+          ) !important;
+        }
+        #studentgrid button {
           background-color: transparent;
           border: none;
           border-radius: 0;
-          height: 72px;
+          height: 80px;
           width: 96px;
           display: block;
           padding: 0;
           margin: 0;
         }
-        .student-grid button:hover {
+        #studentgrid button:focus,
+        #studentgrid button:hover {
           cursor: pointer;
           outline: 2px black solid;
-          outline-offset: 2px;
+          outline-offset: -1px;
+          background-color: var(
+            --simple-colors-default-theme-yellow-4
+          ) !important;
         }
-        .student-grid .assignment-name {
+        #studentgrid .assignment-name {
           max-width: 96px;
           width: 96px;
           overflow: hidden;
@@ -571,6 +719,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
         .user-info {
           display: flex;
           font-size: 16px;
+          min-width: 140px;
           font-family: sans-serif;
           font-weight: normal;
           border-right: 1px solid black;
@@ -598,12 +747,12 @@ class GradeBook extends I18NMixin(SimpleColors) {
           text-align: center;
         }
         .user-photo {
-          --simple-icon-height: 56px;
-          --simple-icon-width: 56px;
-          width: 56px;
-          height: 56px;
+          --simple-icon-height: 48px;
+          --simple-icon-width: 48px;
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
-          margin: 12px;
+          margin: 12px 6px;
           float: left;
           vertical-align: middle;
         }
@@ -664,7 +813,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
         tr:hover td,
         tr:hover th {
           transition: 0.3s ease-in-out all;
-          background-color: #ffa !important;
+          background-color: var(
+            --simple-colors-default-theme-yellow-1
+          ) !important;
         }
         table {
           width: calc(100% - 2 * var(--editable-table-border-width, 1px));
@@ -799,35 +950,19 @@ class GradeBook extends I18NMixin(SimpleColors) {
           display: flex;
         }
         .top-controls .group {
-          margin: 0px 20px 0 0;
+          padding: 0 8px;
+        }
+        .top-controls .app-name {
+          padding: 0 24px 0 16px;
+        }
+        .top-controls simple-icon-button-lite span {
+          padding: 0 8px 0 0;
         }
         .top-controls .divider-left {
           border-left: 1px solid var(--simple-colors-default-theme-accent-1);
         }
-        .top-controls .app-name {
-          padding: 0 12px;
-        }
         .top-controls .divider-right {
           border-right: 1px solid var(--simple-colors-default-theme-accent-1);
-        }
-        .top-controls simple-icon-button-lite {
-          margin: 0 8px;
-          border-radius: 0;
-        }
-        .top-controls simple-icon-button-lite:not([disabled])::part(button) {
-          outline: none;
-          height: 36px;
-          border-radius: 0;
-          padding: 0 8px;
-        }
-        .top-controls
-          simple-icon-button-lite:not([disabled])::part(button):focus,
-        .top-controls
-          simple-icon-button-lite:not([disabled])::part(button):hover {
-          background-color: var(--simple-colors-default-theme-accent-11);
-          outline: 2px solid var(--simple-colors-default-theme-accent-1);
-          outline-offset: -2px;
-          color: var(--simple-colors-default-theme-accent-1);
         }
         #settings {
           position: absolute;
@@ -848,7 +983,21 @@ class GradeBook extends I18NMixin(SimpleColors) {
   }
   // render submission; guessing game really :)
   renderSubmission(data) {
-    let pre = html`<h3>${this.t.studentSubmission}</h3>`;
+    const height = parseInt(
+      this.shadowRoot.querySelector("#studentgrid").getBoundingClientRect()
+        .height
+    );
+    this.shadowRoot
+      .querySelector("#studentassessment")
+      .shadowRoot.querySelector("[part='content']").style.height =
+      Math.round(window.innerHeight - height - 104) + "px";
+    let pre = html`<h3>${this.t.studentSubmission}</h3>
+      ${this.t.dateSubmitted}:
+      ${Math.floor(
+        this.database.assignments[this.activeAssignment]._ISODueDate -
+          new Date("2021-03-01T10:20:08")
+      ) / 60e3}
+      ${this.t.minutesAgo} `;
     // test if this smells like a URL
     if (validURL(data)) {
       pre = html`${pre}<a
@@ -894,14 +1043,6 @@ class GradeBook extends I18NMixin(SimpleColors) {
     this.activeAssignment = parseInt(e.target.value);
     this.requestUpdate();
   }
-  toggleGradeScale(e) {
-    import("@lrnwebcomponents/simple-popover/simple-popover.js");
-    this.hideGradeScale = !this.hideGradeScale;
-  }
-  toggleActiveStudentOverview(e) {
-    import("@lrnwebcomponents/simple-popover/simple-popover.js");
-    this.hideActiveStudentOverview = !this.hideActiveStudentOverview;
-  }
   activateOption(e) {
     let target = normalizeEventPath(e);
     if (
@@ -912,16 +1053,30 @@ class GradeBook extends I18NMixin(SimpleColors) {
         target[0].getAttribute("data-assignment")
       );
       this.activeStudent = parseInt(target[0].getAttribute("data-student"));
+      // if we collapsed this but then select a specific assignment / student
+      // then let's focus the user on this
+      this.shadowRoot.querySelector("#studentgrid").style.height = "140px";
+      this.maintainScrollPosition();
+      // simulate click on this tab so it's active
+      // delay helps ensure that it's resized in the direct style setting as
+      // the tab checks for it being closed yet activated
+      setTimeout(() => {
+        this.shadowRoot.querySelector("#studentassessment").activeTab =
+          "assessment";
+      }, 0);
     }
   }
   mouseHighlight(e) {
     let active = normalizeEventPath(e)[0];
-    clearTimeout(this.__debounce);
-    this.__debounce = setTimeout(() => {
-      if (active && ["TH", "TD", "BUTTON"].includes(active.tagName)) {
+    clearTimeout(this.__mdebounce);
+    this.__mdebounce = setTimeout(() => {
+      if (
+        active &&
+        active.getAttribute("data-assignment") != this.__activeHoverAssignment
+      ) {
         this.shadowRoot
           .querySelectorAll(
-            '.student-grid .th-or-td[data-assignment="' +
+            '#studentgrid .th-or-td[data-assignment="' +
               this.__activeHoverAssignment +
               '"]'
           )
@@ -932,7 +1087,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
         this.__activeHoverAssignment = active.getAttribute("data-assignment");
         this.shadowRoot
           .querySelectorAll(
-            '.student-grid .th-or-td[data-assignment="' +
+            '#studentgrid .th-or-td[data-assignment="' +
               this.__activeHoverAssignment +
               '"]'
           )
@@ -940,16 +1095,22 @@ class GradeBook extends I18NMixin(SimpleColors) {
             el.classList.add("col-highlight");
           });
       }
-    }, 100);
+    }, 10);
   }
   mouseLeave(e) {
-    this.shadowRoot
-      .querySelectorAll(".student-grid .th-or-td")
-      .forEach((el) => {
-        el.classList.remove("col-highlight");
-      });
+    clearTimeout(this.__mdebounce);
+    this.__mdebounce = setTimeout(() => {
+      this.shadowRoot
+        .querySelectorAll("#studentgrid .th-or-td")
+        .forEach((el) => {
+          el.classList.remove("col-highlight");
+        });
+    }, 100);
   }
   settingChanged(e) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    e.preventDefault();
     this.settings[e.detail.name] = e.detail.value;
     this.settings = { ...this.settings };
   }
@@ -966,7 +1127,12 @@ class GradeBook extends I18NMixin(SimpleColors) {
   }
   checkTabHeight(e) {
     // toggle between height
-    if (this.shadowRoot.querySelector("#studentgrid").style.height == "90vh") {
+    const height = parseInt(
+      this.shadowRoot.querySelector("#studentgrid").getBoundingClientRect()
+        .height
+    );
+    // ensure small heights are expanded because it's impossible to leverage overwise
+    if (height / window.innerHeight > 0.65) {
       this.shadowRoot.querySelector("#studentgrid").style.height = null;
     }
   }
@@ -976,189 +1142,111 @@ class GradeBook extends I18NMixin(SimpleColors) {
   render() {
     return html`
       <loading-indicator full ?loading="${this.loading}"></loading-indicator>
-      ${this.database.roster.length && this.database.assignments.length
-        ? html`
-            <div class="top-controls">
-              <div class="group divider-right app-name">
-                <slot name="app-name"></slot>
-              </div>
-              <div class="group">
-                <simple-icon-button-lite
-                  @click="${this.changeStudent}"
-                  value="prev"
-                  ?disabled="${0 === this.activeStudent}"
-                  icon="arrow-upward"
-                >
-                  Previous student
-                </simple-icon-button-lite>
-                <simple-icon-button-lite
-                  @click="${this.changeStudent}"
-                  value="next"
-                  icon="arrow-downward"
-                  ?disabled="${this.database.roster.length - 1 ===
-                  this.activeStudent}"
-                >
-                  Next student
-                </simple-icon-button-lite>
-              </div>
-              <div class="group">
-                <simple-icon-button-lite
-                  @click="${this.changeAssignment}"
-                  value="prev"
-                  icon="arrow-back"
-                  ?disabled="${0 === this.activeAssignment}"
-                >
-                  Previous assignment
-                </simple-icon-button-lite>
-                <simple-icon-button-lite
-                  @click="${this.changeAssignment}"
-                  value="next"
-                  ?disabled="${this.database.assignments.length - 1 ===
-                  this.activeAssignment}"
-                  icon="arrow-forward"
-                >
-                  Next Assignment
-                </simple-icon-button-lite>
-              </div>
-              <div class="group">
-                <simple-icon-button-lite
-                  icon="social:person"
-                  @click="${this.toggleActiveStudentOverview}"
-                  id="activestudentbtn"
-                >
-                  ${this.t.activeStudent}
-                </simple-icon-button-lite>
-                <simple-popover
-                  ?hidden="${this.hideActiveStudentOverview}"
-                  for="activestudentbtn"
-                  auto
-                >
-                  <div>
-                    <grade-book-student-block
-                      .student="${this.database.roster[this.activeStudent]}"
-                    ></grade-book-student-block>
-                    <div class="active-student-grade-history">
-                      ${this.activeStudentSubmissions.map(
-                        (sRecord) => html`
-                          <button
-                            .value="${sRecord.assignmentIndex}"
-                            @click="${this.studentLetterGradeHistoryClick}"
-                            class="${this.activeAssignment ===
-                            sRecord.assignmentIndex
-                              ? `activeAssignment`
-                              : ``}"
-                          >
-                            <letter-grade
-                              mini
-                              label="${sRecord.assignmentName}"
-                              .total="${sRecord.assignmentPoints}"
-                              .score="${sRecord.studentScore}"
-                              .value="${sRecord.assignmentIndex}"
-                            >
-                            </letter-grade>
-                          </button>
-                        `
-                      )}
-                    </div>
-                  </div>
-                </simple-popover>
-                <simple-icon-button-lite
-                  icon="list"
-                  @click="${this.toggleGradeScale}"
-                  id="gradescalebtn"
-                >
-                  ${this.t.gradingScale}
-                </simple-icon-button-lite>
-                <simple-popover
-                  ?hidden="${this.hideGradeScale}"
-                  for="gradescalebtn"
-                  auto
-                >
-                  <editable-table-display
-                    accent-color="${this.accentColor}"
-                    bordered
-                    column-header
-                    condensed
-                    disable-responsive
-                    scroll
-                    striped
-                  >
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td>${this.t.letterGrade}</td>
-                          <td>${this.t.highRange}</td>
-                          <td>${this.t.lowRange}</td>
-                        </tr>
-                        ${this.database.gradeScale.map(
-                          (scale) => html`
-                            <tr>
-                              <td>${scale.letter}</td>
-                              <td>${scale.highRange}</td>
-                              <td>${scale.lowRange}</td>
-                            </tr>
-                          `
-                        )}
-                      </tbody>
-                    </table>
-                  </editable-table-display>
-                </simple-popover>
-              </div>
-              <div class="group">
-                <a11y-collapse
-                  class="divider-left"
-                  id="settings"
-                  collapsed
-                  heading-button
-                  icon="settings"
-                  @value-changed="${this.settingChanged}"
-                >
-                  <div slot="heading">Settings</div>
-                  <div slot="content">
-                    <simple-fields-field
-                      value="${this.settings.photo}"
-                      type="checkbox"
-                      label="Photo"
-                      name="photo"
-                    ></simple-fields-field>
-                    <simple-fields-field
-                      value="${this.settings.email}"
-                      type="checkbox"
-                      label="Email"
-                      name="email"
-                    ></simple-fields-field>
-                    <simple-fields-field
-                      value="${this.settings.fname}"
-                      type="checkbox"
-                      label="First name"
-                      name="fname"
-                    ></simple-fields-field>
-                    <simple-fields-field
-                      value="${this.settings.surname}"
-                      type="checkbox"
-                      label="Surname"
-                      name="surname"
-                    ></simple-fields-field>
-                  </div>
-                </a11y-collapse>
-              </div>
+      <div class="top-controls">
+        <div class="group divider-right app-name">
+          <slot name="app-name"></slot>
+        </div>
+        <div class="group divider-right">
+          ${this.renderActiveStudentBtn()}
+          <simple-icon-button-lite
+            @click="${this.changeStudent}"
+            value="prev"
+            title="${this.t.previousStudent}"
+            ?disabled="${0 === this.activeStudent}"
+            icon="arrow-upward"
+          >
+            <span class="hide-900" value="prev">${this.t.previous}</span>
+          </simple-icon-button-lite>
+          <simple-icon-button-lite
+            @click="${this.changeStudent}"
+            value="next"
+            title="${this.t.nextStudent}"
+            icon="arrow-downward"
+            ?disabled="${this.database.roster.length - 1 ===
+            this.activeStudent}"
+          >
+            <span class="hide-900" value="next">${this.t.next}</span>
+          </simple-icon-button-lite>
+        </div>
+        <div class="group divider-right">
+          ${this.renderActiveAssignmentBtn()}
+          <simple-icon-button-lite
+            @click="${this.changeAssignment}"
+            value="prev"
+            title="${this.t.previousAssignment}"
+            icon="arrow-back"
+            ?disabled="${0 === this.activeAssignment}"
+          >
+            <span class="hide-900" value="prev">${this.t.previous}</span>
+          </simple-icon-button-lite>
+          <simple-icon-button-lite
+            @click="${this.changeAssignment}"
+            value="next"
+            title="${this.t.nextAssignment}"
+            ?disabled="${this.database.assignments.length - 1 ===
+            this.activeAssignment}"
+            icon="arrow-forward"
+          >
+            <span class="hide-900" value="next">${this.t.next}</span>
+          </simple-icon-button-lite>
+        </div>
+        <div class="group">${this.renderGradeScaleBtn()}</div>
+        <div class="group">
+          <a11y-collapse
+            class="divider-left"
+            id="settings"
+            collapsed
+            heading-button
+            icon="settings"
+            @value-changed="${this.settingChanged}"
+          >
+            <div slot="heading" class="hide-900">${this.t.settings}</div>
+            <div slot="content">
+              <simple-fields-field
+                value="${this.settings.photo}"
+                type="checkbox"
+                label="${this.t.photo}"
+                name="photo"
+              ></simple-fields-field>
+              <simple-fields-field
+                value="${this.settings.email}"
+                type="checkbox"
+                label="${this.t.email}"
+                name="email"
+              ></simple-fields-field>
+              <simple-fields-field
+                value="${this.settings.fname}"
+                type="checkbox"
+                label="${this.t.firstName}"
+                name="fname"
+              ></simple-fields-field>
+              <simple-fields-field
+                value="${this.settings.surname}"
+                type="checkbox"
+                label="${this.t.surname}"
+                name="surname"
+              ></simple-fields-field>
             </div>
-            <table
-              id="studentgrid"
-              @mousemove="${this.mouseHighlight}"
-              @mouseleave="${this.mouseLeave}"
-              @click="${this.activateOption}"
-              @dblclick="${this.handleGridScaling}"
-              class="student-grid"
-              bordered
-              column-header
-              condensed
-              disable-responsive
-              scroll
-              striped
-              numeric-styles
-              sort
-            >
+          </a11y-collapse>
+        </div>
+      </div>
+      <table
+        id="studentgrid"
+        @mousemove="${this.mouseHighlight}"
+        @mouseleave="${this.mouseLeave}"
+        @click="${this.activateOption}"
+        @dblclick="${this.handleGridScaling}"
+        bordered
+        column-header
+        condensed
+        disable-responsive
+        scroll
+        striped
+        numeric-styles
+        sort
+      >
+        ${this.database.roster.length && this.database.assignments.length
+          ? html`
               <colgroup>
                 <col />
               </colgroup>
@@ -1170,8 +1258,14 @@ class GradeBook extends I18NMixin(SimpleColors) {
               )}
               <thead class="thead">
                 <tr class="tr thead-tr" part="tr">
-                  <th class="th th-or-td" data-assignment="-1">
-                    <div style="border-right: 1px solid black;">Student</div>
+                  <th
+                    class="th th-or-td student-table-label"
+                    data-assignment="-1"
+                  >
+                    <div>
+                      ${this.t.student} (${parseInt(this.activeStudent + 1)} /
+                      ${this.database.roster.length})
+                    </div>
                   </th>
                   ${this.database.assignments.map(
                     (a, h) =>
@@ -1180,6 +1274,14 @@ class GradeBook extends I18NMixin(SimpleColors) {
                         title="${a.name}"
                         data-assignment="${h}"
                       >
+                        <simple-fields-field
+                          data-assignment="${h}"
+                          type="checkbox"
+                          class="select-all"
+                          title="Select all submissions ${a.shortName}"
+                          name="select-all-submission"
+                          aria-label="${a.shortName}"
+                        ></simple-fields-field>
                         ${a.shortName}
                       </th>`
                   )}
@@ -1245,11 +1347,11 @@ class GradeBook extends I18NMixin(SimpleColors) {
                   </tr>`
                 )}
               </tbody>
-            </table>
-          `
-        : html`<loading-indicator></loading-indicator>`}
+            `
+          : nothing}
+      </table>
       <a11y-tabs
-        id="gradingdetailtabs"
+        id="studentassessment"
         full-width
         @click="${this.checkTabHeight}"
         @a11y-tabs-active-changed="${this.updateStudentReport}"
@@ -1261,41 +1363,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
         >
           ${this.database.assignments.length &&
           this.database.assignments[this.activeAssignment]
-            ? html`
-                <h3>
-                  ${this.database.assignments[this.activeAssignment].name}
-                </h3>
-                <ul>
-                  <li>
-                    Due date:
-                    <local-time
-                      datetime="${this.database.assignments[
-                        this.activeAssignment
-                      ]._ISODueDate}"
-                      month="short"
-                      day="numeric"
-                      year="numeric"
-                      hour="numeric"
-                      minute="numeric"
-                      time-zone-name="short"
-                    >
-                    </local-time>
-                  </li>
-                  <li>
-                    Date submitted:
-                    ${Math.floor(
-                      this.database.assignments[this.activeAssignment]
-                        ._ISODueDate - new Date("2021-03-01T10:20:08")
-                    ) / 60e3}
-                    minutes ago
-                  </li>
-                </ul>
-                <div>
-                  ${this.activeSubmission
-                    ? this.renderSubmission(this.activeSubmission)
-                    : html`${this.t.noSubmission}`}
-                </div>
-              `
+            ? html`${this.activeSubmission
+                ? this.renderSubmission(this.activeSubmission)
+                : html`${this.t.noSubmission}`}`
             : html`<loading-indicator></loading-indicator>`}
         </a11y-tab>
         <a11y-tab
@@ -1451,13 +1521,13 @@ class GradeBook extends I18NMixin(SimpleColors) {
                   )}
                 </a11y-collapse-group>
               `
-            : html`<loading-indicator></loading-indicator>`
+            : nothing
         }
                 </div>
                 </div>
                 </grid-plate>
               `
-            : html`<loading-indicator></loading-indicator>`}
+            : nothing}
         </a11y-tab>
         <a11y-tab id="studentreport" icon="assignment" label="Student report">
           <div>
@@ -1599,7 +1669,7 @@ class GradeBook extends I18NMixin(SimpleColors) {
         // force locking the score if this changes as we're using the rubric
         // to modify things
         this.scoreLock = true;
-      }, 10);
+      }, 0);
     }
   }
   updateTotalScore() {
@@ -1621,6 +1691,9 @@ class GradeBook extends I18NMixin(SimpleColors) {
     this.requestUpdate();
   }
   totalScoreChangedEvent(e) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    e.preventDefault();
     this.totalScore = e.detail.value;
     this.database.grades[this.activeStudent][
       this.database.assignments[this.activeAssignment].shortName
@@ -1738,3 +1811,16 @@ class GradeBook extends I18NMixin(SimpleColors) {
 }
 customElements.define(GradeBook.tag, GradeBook);
 export { GradeBook };
+window.GradeBook = window.GradeBook || {};
+window.GradeBook.requestAvailability = () => {
+  // if there is no single instance, generate one and append it to end of the document
+  if (!window.GradeBook.instance) {
+    if (document.querySelector("grade-book")) {
+      window.GradeBook.instance = document.querySelector("grade-book");
+    } else {
+      window.GradeBook.instance = document.createElement("grade-book");
+      document.body.appendChild(window.GradeBook.instance);
+    }
+  }
+  return window.GradeBook.instance;
+};

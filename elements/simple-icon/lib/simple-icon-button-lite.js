@@ -23,6 +23,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
       this.fieldName = "";
       this.type = "";
       this.value = "";
+      this.icon = "";
     }
 
     static get styles() {
@@ -30,6 +31,9 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
         ...[super.styles || []],
         css`
           :host([hidden]) {
+            display: none;
+          }
+          :host([icon=""]) simple-icon-lite {
             display: none;
           }
           :host {
@@ -128,7 +132,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
           .type="${this.type}"
           value="${this.value}"
         >
-          <simple-icon-lite icon=${this.icon} part="icon"></simple-icon-lite>
+          <simple-icon-lite icon="${this.icon}" part="icon"></simple-icon-lite>
           <slot></slot>
         </button>
       `;
