@@ -7,10 +7,8 @@
  * `file-system-broker`
  * `singleton to simplify interactions with the file system on a user&#39;s device`
  *
- * @microcopy - language worth noting:
- *  -
- *
- * @demo demo/index.html
+ * @demo demo/index.html Demo
+ * @demo demo/xlsx.html XLSX loader
  * @element file-system-broker
  */
 class FileSystemBroker extends HTMLElement {
@@ -51,11 +49,29 @@ class FileSystemBroker extends HTMLElement {
       multiple: multiple,
     });
     this.fileHandler = await fileHandle.getFile();
-    return await this.fileHandler.text();
+    return this.fileHandler;
+  }
+  /**
+   * Get contents of a file based on type
+   * @param {String} type
+   * @param {Boolean} multiple
+   * @param {Boolean} excludeAll
+   * @returns
+   */
+  async getFileContents(type, multiple = false, excludeAll = true) {
+    return await this.loadFile(type, multiple, excludeAll).text();
   }
   typeToAccept(type) {
     let accept = {};
     switch (type) {
+      case "xls":
+      case "xlsx":
+      case "ods":
+        accept = {
+          "text/csv": [".csv"],
+          "application/*": [".xls", ".xlsx", ".ods"],
+        };
+        break;
       case "csv":
         accept = { "text/*": [".csv", ".txt"] };
         break;

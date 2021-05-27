@@ -44,7 +44,10 @@
     "name": "btopro"
   },
   "license": "Apache-2.0",
-  "dependencies": {},
+  "dependencies": {
+    "@lrnwebcomponents/es-global-bridge": "^3.0.0",
+    "xlsx": "0.17.0"
+  },
   "devDependencies": {
     "@wcfactory/rollup-umd-build": "^0.12.1",
     "web-animations-js": "2.3.2",

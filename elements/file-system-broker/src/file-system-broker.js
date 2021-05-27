@@ -7,10 +7,8 @@
  * `file-system-broker`
  * `singleton to simplify interactions with the file system on a user&#39;s device`
  *
- * @microcopy - language worth noting:
- *  -
- *
- * @demo demo/index.html
+ * @demo demo/index.html Demo
+ * @demo demo/xlsx.html XLSX loader
  * @element file-system-broker
  */
 class FileSystemBroker extends HTMLElement {
