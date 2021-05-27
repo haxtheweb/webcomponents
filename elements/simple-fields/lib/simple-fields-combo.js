@@ -28,7 +28,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         :host(:hover),
         ul:hover,
         li:hover {
-          z-index: 999999999;
+          z-index: 2;
         }
         .input-option {
           display: flex;
@@ -36,10 +36,11 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
           justify-content: space-between;
           flex: 1 0 100%;
         }
-        #combo {
+        .box-input {
           flex: 1 1 auto;
         }
         ul[role="listbox"] {
+          opacity: 0;
           margin: 0;
           padding: 0;
           right: 0;
@@ -52,6 +53,10 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
           max-height: 12em;
           overflow: auto;
         }
+        :host([expanded]:hover) ul[role="listbox"],
+        :host([expanded]:focus-within) ul[role="listbox"] {
+          opacity: 1;
+        }
 
         ul[role="listbox"] li[role="option"] {
           margin: 0;
@@ -59,6 +64,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
           padding-left: 0.125em;
           border-top: 1px solid transparent;
           border-bottom: 1px solid transparent;
+          background-color: var(--simple-fields-background-color, white);
         }
 
         [role="listbox"].focus {
@@ -83,6 +89,12 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
 
         [role="listbox"] li[role="option"]:hover {
           background-color: var(--simple-fields-accent-color-light, #d9eaff);
+        }
+        ::slotted([slot="prefix"]) {
+          padding-right: 0.25em;
+        }
+        ::slotted([slot="suffix"]) {
+          padding-left: 0.25em;
         }
       `,
     ];
@@ -173,6 +185,9 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
       input: !this.input ? false : this.input.value,
     };
   }
+  get fieldElementTag() {
+    return "input";
+  }
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
@@ -192,7 +207,8 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
   }
 
   fieldValueChanged() {
-    if (this.input.value !== this.value) this.input.value = this.value;
+    if (this.input && this.input.value !== this.value)
+      this.input.value = this.value;
     this._fireValueChanged();
   }
 
@@ -220,6 +236,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
       <div class="field-main" part="field-main" ?hidden="${this.hidden}">
         ${this.labelTemplate}
         <div id="field-main-inner" part="field-main-inner">
+          ${this.prefixTemplate}
           <span class="input-option" part="option-inner">
             <input
               .aria-activedescendant="${this.activeDescendant}"
@@ -245,7 +262,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
               ?required="${this.required}"
               tabindex="0"
               type="text"
-              value="${this.value}"
+              value="${this.value || ""}"
             />
             <simple-icon-button-lite
               label="open"
@@ -286,6 +303,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
               `
             )}
           </ul>
+          ${this.suffixTemplate}
         </div>
       </div>
     `;
@@ -313,7 +331,6 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   setValue(value) {
-    console.log("setValue", value, this.stateInfo);
     this.filter = value;
     this.input.setSelectionRange(this.filter.length, this.filter.length);
     if (this.isList || this.isBoth) {
@@ -328,8 +345,6 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   setOption(option, flag = false) {
-    console.log("setOption", option, flag, this.stateInfo);
-
     if (option) {
       this.option = option;
       this.setCurrentOptionStyle(this.option);
@@ -344,21 +359,12 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
               this.option.text.length,
               this.option.text.length
             );
-            console.log("place cursor at end", flag, this.stateInfo);
           }, 0);
         } else {
           setTimeout(() => {
             this.input.setSelectionRange(
               this.filter.length,
               this.option.text.length
-            );
-            console.log(
-              "place cursor after filter",
-              flag,
-              window.getSelection(),
-              this.filter.length,
-              this.option.text.length,
-              this.stateInfo
             );
           }, 0);
         }
@@ -371,11 +377,9 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   setVisualFocusTextbox() {
-    //console.log('setVisualFocusTextbox',this.stateInfo);
     this.listFocus = false;
     this.inputFocus = true;
     this.setActiveDescendant(false);
-    console.log("unsets desc", this.stateInfo);
   }
   /**
    * switches focus to listbox
@@ -383,11 +387,9 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   setVisualFocusListbox() {
-    //console.log('setVisualFocusListbox',this.stateInfo);
     this.inputFocus = false;
     this.listFocus = true;
     this.setActiveDescendant(this.option);
-    console.log("sets desc", this.stateInfo);
   }
   /**
    * switches focus from text box and listbox
@@ -395,12 +397,10 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   removeVisualFocusAll() {
-    //console.log('removeVisualFocusAll',this.stateInfo);
     this.inputFocus = false;
     this.listFocus = true; //??
     this.option = false;
     this.setActiveDescendant(false);
-    console.log("unsets option and active desc", this.stateInfo);
   }
   /**
    * handles the dropdown button click
@@ -437,7 +437,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   _onInputBlur(event) {
-    //if(!!this.hoveredOption) return;
+    if (!!this.hoveredOption) return;
     this.listFocus = false;
     this.setCurrentOptionStyle(null);
     this.removeVisualFocusAll();
@@ -450,11 +450,9 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   _onInputFocus(event) {
-    //console.log('_onInputFocus',event,this.stateInfo);
     this.setVisualFocusTextbox();
     this.option = false;
     this.setCurrentOptionStyle(null);
-    console.log("unsets option", this.stateInfo);
   }
   /**
    * handles input keydown
@@ -463,7 +461,6 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   _onInputKeydown(event) {
-    //console.log('_onInputKeydown',event,this.stateInfo);
     var tgt = event.currentTarget,
       flag = false,
       char = event.key,
@@ -481,16 +478,13 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         break;
 
       case this.keyCode.DOWN:
-        console.log("DOWN", this.stateInfo);
         if (this.hasOptions) {
           if (this.listFocus || (this.isBoth && this.option)) {
             this.setOption(this.nextItem, true);
-            //console.log('DOWN is nextItem',this.stateInfo);
           } else {
             this.open();
             if (!altKey) {
               this.setOption(this.firstItem, true);
-              //console.log('DOWN is firstitem',this.stateInfo);
             }
           }
           this.setVisualFocusListbox();
@@ -514,13 +508,11 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         break;
 
       case this.keyCode.ESC:
-        //console.log('ESC',this.stateInfo);
         this.close(true);
         this.setVisualFocusTextbox();
         this.setValue("");
         this.option = false;
         flag = true;
-        //console.log('ESC unset option',this.stateInfo);
         break;
 
       case this.keyCode.TAB:
@@ -548,7 +540,6 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   _onInputKeyup(event) {
-    //console.log('_onInputKeyup',event,this.stateInfo);
     var tgt = event.currentTarget,
       flag = false,
       option = false,
@@ -563,9 +554,8 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     }
 
     // this is for the case when a selection in the textbox has been deleted
-    if (this.input.value.length < this.filter.length) {
-      this.filter = this.input.value;
-      //console.log('input cleared / filter reset',this.stateInfo);
+    if (this.input && (this.input.value || "").length < this.filter.length) {
+      this.filter = this.input.value || "";
       this.option = false;
     }
 
@@ -575,13 +565,11 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
 
     switch (event.keyCode) {
       case this.keyCode.BACKSPACE:
-        //console.log('BACKSPACE',this.stateInfo);
         this.setValue(this.input.value);
         this.setVisualFocusTextbox();
         this.setCurrentOptionStyle(false);
         this.option = false;
         flag = true;
-        //console.log('unsets option',this.stateInfo);
         break;
 
       case this.keyCode.LEFT:
@@ -610,16 +598,15 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     }
 
     if (event.keyCode !== this.keyCode.RETURN) {
-      //console.log('not RETURN',this.stateInfo);
-
       if (this.isList || this.isBoth) {
         option = this.filterOptions(this.filter, this.option);
-        //console.log('RETURN filtered',option,this.stateInfo);
         if (option) {
-          if (!this.expanded && this.input.value.length) this.open();
+          if (!this.expanded && (this.input.value || "").length) this.open();
 
           if (
-            option.textComparison.indexOf(this.input.value.toLowerCase()) === 0
+            option.textComparison.indexOf(
+              (this.input.value || "").toLowerCase()
+            ) === 0
           ) {
             this.option = option;
             if (this.isBoth || this.listFocus) {
@@ -628,22 +615,18 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
                 this.setOption(option);
               }
             }
-            //console.log('option matches value',this.stateInfo);
           } else {
             this.option = false;
             this.setCurrentOptionStyle(false);
-            //console.log('option does not match',this.stateInfo,this.input.value.toLowerCase(),option.textComparison);
           }
         } else {
           this.close();
           this.option = false;
           this.setActiveDescendant(false);
-          //console.log('close no option',this.stateInfo);
         }
       } else {
-        if (this.input.value.length) {
+        if (this.input && (this.input.value || "").length) {
           this.open();
-          //console.log('open with value',this.stateInfo);
         }
       }
     }
@@ -660,13 +643,6 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
    * @memberof SimpleFieldsCombo
    */
   filterOptions(filter, currentOption) {
-    console.log(
-      "filterOptions",
-      filter,
-      currentOption,
-      this.stateInfo,
-      this.sortedOptions
-    );
     if (typeof filter !== "string") {
       filter = "";
     }
@@ -685,7 +661,6 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     for (i = 0; i < this.sortedOptions.length; i++) {
       option = this.sortedOptions[i];
       option.textComparison = option.text.toLowerCase();
-      console.log("filter Option", option, filter.length);
       if (filter.length === 0 || option.textComparison.indexOf(filter) === 0) {
         this.filteredOptions.push(option);
         textContent = option.text.trim();
@@ -699,33 +674,34 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
       this.firstOption = this.filteredOptions[0];
       this.lastOption = this.filteredOptions[numItems - 1];
       let filteredText = this.filteredOptions.map((o) => o.textComparison);
-      console.log(!currentOption || currentOption.textComparison, filteredText);
       if (
         currentOption &&
         currentOption.textComparison &&
         filteredText.includes(currentOption.textComparison)
       ) {
         option = currentOption;
-        console.log("currentOption", option);
       } else {
         option = this.firstOption;
-        console.log("first", option);
       }
     } else {
       this.firstOption = false;
       option = false;
-      console.log("false", option);
       this.lastOption = false;
     }
-    console.log("filtered Options", option, this.stateInfo);
     return option;
   }
   setCurrentOptionStyle(option) {
     this._selectedOption = option;
-    if (option) this.listbox.scrollTop = option.offsetTop;
+    if (
+      option &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector(`#${this.id}.${option.textComparison}`)
+    )
+      this.listbox.scrollTop = this.shadowRoot.querySelector(
+        `#${this.id}.${option.textComparison}`
+      ).offsetTop;
   }
   _isSelected(option) {
-    //console.log('------ _isSelected',option,this._selectedOption);
     return option &&
       this._selectedOption &&
       option.textComparison === this._selectedOption.textComparison
@@ -756,7 +732,6 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
     }
   }
   _onOptionClick(e, option) {
-    console.log("_onOptionClick", e, option);
     if (option) {
       this.setOption(option);
       this.setValue(option.text);
@@ -808,11 +783,11 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
   }
   get input() {
     if (!this._input)
-      this._input =
-        this.field ||
-        (this.shadowRoot && this.shadowRoot.querySelector(`#${this.id}`))
-          ? this.shadowRoot.querySelector(`#${this.id}`)
-          : undefined;
+      this._input = this.field
+        ? this.field
+        : this.shadowRoot && this.shadowRoot.querySelector(`#${this.id}`)
+        ? this.shadowRoot.querySelector(`#${this.id}`)
+        : undefined;
     return this._input;
   }
   get keyCode() {

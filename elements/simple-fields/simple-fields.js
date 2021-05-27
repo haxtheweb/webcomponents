@@ -486,7 +486,11 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
+                    autocomplete: "both",
                   },
+                },
+                properties: {
+                  autocomplete: "autocomplete",
                 },
               },
               date: {
@@ -662,6 +666,12 @@ class SimpleFields extends SimpleFieldsLite {
             defaultSettings: {
               type: "string",
               format: "colorpicker",
+            },
+          },
+          combo: {
+            defaultSettings: {
+              type: "string",
+              format: "combo",
             },
           },
           "date-time": {
