@@ -533,6 +533,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     get labelTemplate() {
       return html`
         <label
+          id="${this.fieldId}-label"
           for="${this.fieldId}"
           class="label-main"
           ?hidden="${this.type === "fieldset"}"

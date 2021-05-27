@@ -398,6 +398,17 @@ class SimpleFields extends SimpleFieldsLite {
                   },
                 },
               },
+              combo: {
+                defaultSettings: {
+                  import:
+                    "@lrnwebcomponents/simple-fields/lib/simple-fields-combo.js",
+                  element: "simple-fields-combo",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                  },
+                },
+              },
               date: {
                 defaultSettings: {
                   element: "simple-fields-field",

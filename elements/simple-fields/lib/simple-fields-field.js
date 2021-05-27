@@ -498,10 +498,8 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
         if (propName === "id" && !this.id) this.id = this._generateUUID();
         if (this._getAttributes(this.type).includes(propName))
           this._updateAttribute(propName);
-        if (propName === "value" && this.value !== oldValue) {
-          if (this.field.value !== this.value) this.field.value = this.value;
-          this._fireValueChanged();
-        }
+        if (propName === "value" && this.value !== oldValue)
+          this.fieldValueChanged();
         if (
           ["counter", "maxlength", "type"].includes(propName) &&
           ["text", "textarea"].includes(this.type)
@@ -514,6 +512,11 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           this._updateField();
         }
       });
+    }
+
+    fieldValueChanged() {
+      if (this.field.value !== this.value) this.field.value = this.value;
+      this._fireValueChanged();
     }
 
     get hasFieldset() {
