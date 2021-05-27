@@ -225,9 +225,11 @@ class SimpleFields extends SimpleFieldsLite {
               element: "simple-picker",
               attributes: {
                 autofocus: true,
+                justify: true,
               },
               properties: {
                 options: "options",
+                justify: "justify",
               },
             },
           },
@@ -395,6 +397,10 @@ class SimpleFields extends SimpleFieldsLite {
                   element: "simple-colors-picker",
                   attributes: {
                     autofocus: true,
+                    justify: true,
+                  },
+                  properties: {
+                    justify: "justify",
                   },
                 },
               },
@@ -407,10 +413,12 @@ class SimpleFields extends SimpleFieldsLite {
                   attributes: {
                     autofocus: true,
                     autocomplete: "both",
+                    justify: true,
                   },
                 },
                 properties: {
                   autocomplete: "autocomplete",
+                  justify: "justify",
                 },
               },
               date: {
@@ -471,8 +479,10 @@ class SimpleFields extends SimpleFieldsLite {
                   element: "simple-icon-picker",
                   attributes: {
                     autofocus: true,
+                    justify: true,
                   },
                   properties: {
+                    justify: "justify",
                     options: "icons",
                     exclude: "exclude",
                     excludeSets: "excludeSets",

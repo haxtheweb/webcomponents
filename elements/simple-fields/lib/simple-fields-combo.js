@@ -34,24 +34,25 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          flex: 1 0 100%;
+          flex: 1 1 100%;
         }
         .box-input {
           flex: 1 1 auto;
         }
         ul[role="listbox"] {
           opacity: 0;
-          margin: 0;
-          padding: 0;
-          right: 0;
-          top: 100%;
           position: absolute;
           list-style: none;
-          background-color: var(--simple-fields-background-color, white);
-          color: var(--simple-fields-color, currentColor);
-          border: 2px #333 solid;
           max-height: 12em;
-          overflow: auto;
+          left: 0;
+        }
+        :host([align-right]) ul[role="listbox"] {
+          right: 0;
+          left: unset;
+        }
+        :host([justify]) ul[role="listbox"] {
+          right: 0;
+          left: 0;
         }
         :host([expanded]:hover) ul[role="listbox"],
         :host([expanded]:focus-within) ul[role="listbox"] {
@@ -65,10 +66,6 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
           border-top: 1px solid transparent;
           border-bottom: 1px solid transparent;
           background-color: var(--simple-fields-background-color, white);
-        }
-
-        [role="listbox"].focus {
-          border-color: var(--simple-fields-accent-color, #3f51b5);
         }
 
         [role="listbox"] [role="option"] {
@@ -90,11 +87,11 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         [role="listbox"] li[role="option"]:hover {
           background-color: var(--simple-fields-accent-color-light, #d9eaff);
         }
-        ::slotted([slot="prefix"]) {
-          padding-right: 0.25em;
+        ::slotted([slot="prefix"]:not(:empty)) {
+          margin-right: 0.25em;
         }
-        ::slotted([slot="suffix"]) {
-          padding-left: 0.25em;
+        ::slotted([slot="suffix"]:not(:empty)) {
+          margin: 0 0.25em;
         }
       `,
     ];
@@ -110,9 +107,24 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
         type: String,
       },
       /**
+       * whether listbox is aligned on the right edge
+       */
+      alignRight: {
+        type: Boolean,
+        reflect: true,
+        attribute: "align-right",
+      },
+      /**
        * whether listbox is expanded
        */
       expanded: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
+       * whether listbox is full-width
+       */
+      justify: {
         type: Boolean,
         reflect: true,
       },
@@ -264,6 +276,7 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
               type="text"
               value="${this.value || ""}"
             />
+            ${this.suffixTemplate}
             <simple-icon-button-lite
               label="open"
               icon="arrow-drop-down"
@@ -303,7 +316,6 @@ class SimpleFieldsCombo extends SimpleFieldsFieldBehaviors(LitElement) {
               `
             )}
           </ul>
-          ${this.suffixTemplate}
         </div>
       </div>
     `;

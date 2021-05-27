@@ -123,6 +123,7 @@ label:not([hidden]) {
   display: none;
   width: 100%;
   position: absolute;  
+  top: var(--simple-picker-options-top);
   z-index: 2;
 }
 
@@ -143,11 +144,21 @@ label:not([hidden]) {
   background-color: var(--simple-picker-options-background-color, #fff);
   max-height: var(--simple-picker-options-max-height, 250px);
   overflow-y: auto; 
+  border: var(--simple-picker-options-border);
+} 
+
+.rows:focus-within {
+  border: var(--simple-picker-options-focus-border, var(--simple-picker-options-border));
 }
 
 :host([align-right]) #collapse .rows {
   left: unset;
   right: calc(var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)) *2);
+}
+
+:host([justify]) #collapse .rows {
+  left: 0px;
+  right: 0px;
 }
 
 .row {
