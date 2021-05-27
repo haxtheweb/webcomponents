@@ -309,6 +309,7 @@ class SimplePicker extends LitElement {
               ) * 2
           );
         }
+
         :host([justify]) #collapse .rows {
           left: 0px;
           right: 0px;
