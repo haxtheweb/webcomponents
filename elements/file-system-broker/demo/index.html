@@ -28,7 +28,7 @@
     <script async defer>
       document.getElementById('load').addEventListener('click', async (e) => {
         const broker = window.FileSystemBroker.requestAvailability();
-        document.getElementById('textarea').innerHTML = await broker.loadFile('markdown');
+        document.getElementById('textarea').innerHTML = await broker.getFileContents('markdown');
       });
       document.getElementById('loaddir').addEventListener('click', async (e) => {
         const broker = window.FileSystemBroker.requestAvailability();

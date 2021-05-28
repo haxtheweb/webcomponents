@@ -66,8 +66,7 @@ class MomentElement extends LitElement {
       "es-bridge-moment-loaded",
       this._momentLoaded.bind(this)
     );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("moment", location);
+    window.ESGlobalBridge.requestAvailability().load("moment", location);
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

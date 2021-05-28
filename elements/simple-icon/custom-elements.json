@@ -11,10 +11,6 @@
           "type": "boolean"
         },
         {
-          "name": "icon",
-          "type": "string"
-        },
-        {
           "name": "toggles",
           "type": "boolean"
         },
@@ -61,6 +57,11 @@
           "name": "value",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
@@ -68,11 +69,6 @@
           "name": "autofocus",
           "attribute": "autofocus",
           "type": "boolean"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string"
         },
         {
           "name": "toggles",
@@ -129,6 +125,12 @@
         {
           "name": "value",
           "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
           "type": "string",
           "default": "\"\""
         }
@@ -144,10 +146,6 @@
           "type": "boolean"
         },
         {
-          "name": "icon",
-          "type": "string"
-        },
-        {
           "name": "toggles",
           "type": "boolean"
         },
@@ -194,6 +192,11 @@
           "name": "value",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
@@ -201,11 +204,6 @@
           "name": "autofocus",
           "attribute": "autofocus",
           "type": "boolean"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string"
         },
         {
           "name": "toggles",
@@ -262,6 +260,12 @@
         {
           "name": "value",
           "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
           "type": "string",
           "default": "\"\""
         }
@@ -281,10 +285,6 @@
           "type": "boolean"
         },
         {
-          "name": "icon",
-          "type": "string"
-        },
-        {
           "name": "toggles",
           "type": "boolean"
         },
@@ -329,6 +329,11 @@
         },
         {
           "name": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
           "type": "string",
           "default": "\"\""
         },
@@ -358,11 +363,6 @@
           "type": "boolean"
         },
         {
-          "name": "icon",
-          "attribute": "icon",
-          "type": "string"
-        },
-        {
           "name": "toggles",
           "attribute": "toggles",
           "type": "boolean"
@@ -417,6 +417,12 @@
         {
           "name": "value",
           "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
           "type": "string",
           "default": "\"\""
         },

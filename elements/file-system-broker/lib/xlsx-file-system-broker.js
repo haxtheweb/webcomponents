@@ -1,4 +1,4 @@
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import {
   FileSystemBroker,
   FileSystemBrokerSingleton,
@@ -17,9 +17,6 @@ class XLSXFileSystemBroker extends FileSystemBroker {
   constructor() {
     super();
     this.XLSX = null;
-    this.XLSXReady = false;
-    // load our bridge so we can import this
-    window.ESGlobalBridge.requestAvailability();
     // support global path value we use for resolving these on CDNs
     if (window.WCGlobalBasePath) {
       this.libPath = window.WCGlobalBasePath;
@@ -27,41 +24,27 @@ class XLSXFileSystemBroker extends FileSystemBroker {
       this.libPath = new URL(`/../../../node_modules/`, import.meta.url).href;
     }
     this.libPath += "xlsx/";
-    window.ESGlobalBridge.instance.load(
+    ESGlobalBridgeStore.load(
       "xlsx",
       this.libPath + "dist/xlsx.full.min.js"
-    );
+    ).then(() => {
+      if (window.XLSX) {
+        this.XLSX = window.XLSX;
+        // fire event in case anyone wants to react on loaded event
+        this.dispatchEvent(
+          new CustomEvent("xlsx-ready", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: this,
+          })
+        );
+      }
+    });
     this.XW = {
       msg: "xlsx",
       worker: this.libPath + "xlsxworker.js",
     };
-    window.addEventListener(
-      `es-bridge-xlsx-loaded`,
-      this.xlsxLoaded.bind(this)
-    );
-  }
-  /**
-   * Loaded so register it off of the XLSX object
-   */
-  xlsxLoaded(e) {
-    if (window.XLSX) {
-      this.XLSX = window.XLSX;
-      // store just in case
-      this.XLSXReady = true;
-      // fire event in case anyone wants to react on loaded event
-      this.dispatchEvent(
-        new CustomEvent("xlsx-ready", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: this,
-        })
-      );
-      window.removeEventListener(
-        `es-bridge-xlsx-loaded`,
-        this.xlsxLoaded.bind(this)
-      );
-    }
   }
   workbookFromJSON(data) {
     const wb = this.XLSX.utils.book_new();
@@ -77,15 +60,20 @@ class XLSXFileSystemBroker extends FileSystemBroker {
     });
   }
 
-  __toJSON(workbook) {
+  __toJSON(workbook, stringify) {
     var result = {};
     workbook.SheetNames.forEach((sheetName) => {
       var roa = this.XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {
         header: 1,
+        blankrows: false,
       });
       if (roa.length) result[sheetName] = roa;
     });
-    return JSON.stringify(result, 2, 2);
+    if (stringify) {
+      return JSON.stringify(result, null, 2);
+    } else {
+      return result;
+    }
   }
 
   __toCSV(workbook) {
@@ -140,8 +128,11 @@ class XLSXFileSystemBroker extends FileSystemBroker {
       case "html":
         output = this.__toHTML(wb);
         break;
+      case "jsonstringify":
+        output = this.__toJSON(wb, true);
+        break;
       case "json":
-        output = this.__toJSON(wb);
+        output = this.__toJSON(wb, false);
         break;
       case "xlsx":
         output = this.__toXLSX(wb, filename);
@@ -191,16 +182,6 @@ class XLSXFileSystemBroker extends FileSystemBroker {
       }
     };
     worker.postMessage({ d: data, b: "binary" });
-  }
-
-  disconnectedCallback() {
-    window.removeEventListener(
-      `es-bridge-xlsx-loaded`,
-      this.xlsxLoaded.bind(this)
-    );
-    if (super.disconnectedCallback) {
-      super.disconnectedCallback();
-    }
   }
 }
 

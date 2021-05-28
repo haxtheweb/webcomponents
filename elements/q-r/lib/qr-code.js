@@ -12,8 +12,7 @@ class QRCodeElement extends HTMLElement {
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}/qr.js`;
     window.addEventListener(`es-bridge-qr-loaded`, this._qrLoaded.bind(this));
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("qr", location);
+    window.ESGlobalBridge.requestAvailability().load("qr", location);
   }
   // simple path from a url modifier
   pathFromUrl(url) {
@@ -53,7 +52,7 @@ class QRCodeElement extends HTMLElement {
     if (fn && typeof fn === "function") {
       fn.call(this, oldValue, newValue);
     }
-    if (window.ESGlobalBridge && window.ESGlobalBridge.imports["qr"] === true) {
+    if (window.ESGlobalBridge.requestAvailability().imports["qr"] === true) {
       this.generate();
     }
   }

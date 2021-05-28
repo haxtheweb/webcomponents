@@ -24,7 +24,7 @@
       <template>
       Output Format:
       <select name="format" id="format">
-        <option value="json" selected>JSON</option>
+        <option value="jsonstringify" selected>JSON</option>
         <option value="csv">CSV</option>
         <option value="form">FORMULAE</option>
         <option value="html">HTML</option>
@@ -39,7 +39,7 @@
           document.getElementById('load').addEventListener('click', async (e) => {
             const broker = window.FileSystemBroker.requestAvailability();
             const file = await broker.loadFile('xls');
-            window.XLSXFileSystemBroker.requestAvailability().processFile(file, document.querySelector("#format").value, "output.xlsx");
+            window.XLSXFileSystemBroker.requestAvailability().processFile(file, document.querySelector("#format").value);
           });
           document.getElementById('loaddir').addEventListener('click', async (e) => {
             const broker = window.FileSystemBroker.requestAvailability();

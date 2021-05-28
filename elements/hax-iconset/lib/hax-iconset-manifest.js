@@ -260,4 +260,4 @@ export const HaxIconsetManifest = [
     icons: ["error-outline", "pause", "play-arrow", "replay"],
   },
 ];
-SimpleIconsetStore.registerManifest(HaxIconsetManifest);
+SimpleIconsetStore.registerManifest(SimpleIconIconsetsManifest);

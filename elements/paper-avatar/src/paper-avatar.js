@@ -274,8 +274,7 @@ class PaperAvatar extends LitElement {
       "es-bridge-jdenticon-loaded",
       this._jdenticonLoaded.bind(this)
     );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("jdenticon", location);
+    window.ESGlobalBridge.requestAvailability().load("jdenticon", location);
   }
   /**
    * HTMLElement life cycle

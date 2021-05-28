@@ -240,6 +240,9 @@
       ],
       "events": [
         {
+          "name": "simple-toast-hide"
+        },
+        {
           "name": "content-container-changed"
         },
         {
@@ -503,6 +506,9 @@
         }
       ],
       "events": [
+        {
+          "name": "simple-toast-hide"
+        },
         {
           "name": "content-container-changed"
         },

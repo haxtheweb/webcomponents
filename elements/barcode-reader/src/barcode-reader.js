@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import '@lrnwebcomponents/simple-icon/lib/simple-icon-button.js';
+import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js";
 var vid;
 /**
  * `barcode-reader`
@@ -20,8 +20,8 @@ class BarcodeReader extends LitElement {
    */
   static get styles() {
     return css`
-      :host([hidden]){
-        display:none;
+      :host([hidden]) {
+        display: none;
       }
       canvas {
         display: none;
@@ -41,9 +41,9 @@ class BarcodeReader extends LitElement {
       }*/
   static get properties() {
     return {
-      value: {type: String, reflect: true},
-      scale: {type: Number, reflect: true},
-      hideinput: {type: Boolean}
+      value: { type: String, reflect: true },
+      scale: { type: Number, reflect: true },
+      hideinput: { type: Boolean },
     };
   }
 
@@ -65,17 +65,20 @@ class BarcodeReader extends LitElement {
         </div>
       </div>
       <div class="input" hidden="${this.hideinput}">
-        Result: <span><input type="text" .value="${this.value}" /> </span
-        ></div>
-      <span>
-      <div class="hidden2" hidden>
-        <div class="select">
-          <label for="videoSource">Video source: </label>
-          <select></select>
-        </div>
-        <button class="go">Scan</button>
+        Result: <span><input type="text" .value="${this.value}" /> </span>
       </div>
-      <simple-icon-button icon="image:camera-alt" class="render">Initialize</simple-icon-button></span>
+      <span>
+        <div class="hidden2" hidden>
+          <div class="select">
+            <label for="videoSource">Video source: </label>
+            <select></select>
+          </div>
+          <button class="go">Scan</button>
+        </div>
+        <simple-icon-button icon="image:camera-alt" class="render"
+          >Initialize</simple-icon-button
+        ></span
+      >
     `;
   }
 
@@ -83,8 +86,7 @@ class BarcodeReader extends LitElement {
     super();
     this.value = "";
     this.hideinput = false;
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(
+    window.ESGlobalBridge.requestAvailability().load(
       "ZXing",
       decodeURIComponent(import.meta.url) + "/../lib/zxing.js"
     );
@@ -276,13 +278,9 @@ class BarcodeReader extends LitElement {
     }
 
     this.shadowRoot.querySelector(".render").addEventListener("click", () => {
-      if (
-        this.shadowRoot.querySelector(".render").innerHTML ===
-        "Show"
-      ) {
+      if (this.shadowRoot.querySelector(".render").innerHTML === "Show") {
         if (window.stream) {
-          window.stream.getTracks().forEach(function (track) {
-          });
+          window.stream.getTracks().forEach(function (track) {});
           let constraints = {
             video: {
               deviceId: { exact: videoSelect.value },
@@ -327,7 +325,7 @@ class BarcodeReader extends LitElement {
     this.__videoInputSelector = this.shadowRoot.querySelector("#videoInput");
     vid = this.shadowRoot.querySelector("video");
     this._renderVideo().then((r) => {});
-    if (!this.hideinput){
+    if (!this.hideinput) {
       this.shadowRoot.querySelector(".input").removeAttribute("hidden");
     }
   }
@@ -354,37 +352,39 @@ class BarcodeReader extends LitElement {
   }
 
   async start() {
-    this.shadowRoot.querySelector("simple-icon-button").addEventListener("click", () => {
-      if (
-        this.shadowRoot.querySelector(".render").innerHTML ===
-        "Initialize"
-      ) {
-        this._control();
-      }
-    });
+    this.shadowRoot
+      .querySelector("simple-icon-button")
+      .addEventListener("click", () => {
+        if (
+          this.shadowRoot.querySelector(".render").innerHTML === "Initialize"
+        ) {
+          this._control();
+        }
+      });
   }
   async _renderVideo() {
     let video = this.shadowRoot.querySelector(".hidden");
     let button = this.shadowRoot.querySelector("simple-icon-button");
     let extraButtons = this.shadowRoot.querySelector(".hidden2");
     video.style.display = "none";
-    this.shadowRoot.querySelector("simple-icon-button").addEventListener("click", () => {
-      setTimeout(() => {
-        if (video.style.display === "none") {
-          video.style.display = "inline";
-          button.innerHTML = "Hide";
-          extraButtons.style.display = "inline";
-        } else {
-          video.style.display = "none";
-          button.innerHTML = "Show";
-          extraButtons.style.display = "none";
-          window.stream.getTracks().forEach(function (track) {
-            track.stop();
-          });
-
-        }
-      }, 100);
-    });
+    this.shadowRoot
+      .querySelector("simple-icon-button")
+      .addEventListener("click", () => {
+        setTimeout(() => {
+          if (video.style.display === "none") {
+            video.style.display = "inline";
+            button.innerHTML = "Hide";
+            extraButtons.style.display = "inline";
+          } else {
+            video.style.display = "none";
+            button.innerHTML = "Show";
+            extraButtons.style.display = "none";
+            window.stream.getTracks().forEach(function (track) {
+              track.stop();
+            });
+          }
+        }, 100);
+      });
   }
 }
 customElements.define(BarcodeReader.tag, BarcodeReader);

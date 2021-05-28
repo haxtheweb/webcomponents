@@ -160,6 +160,21 @@ class LetterGrade extends LitElement {
           this.letter = this.calculateLetterGrade();
         }
       }
+      if (propName === "letter" && this.gradeScale[this._letterIndex]) {
+        // progressive enhancement like PDF printing
+        this.innerHTML = `
+        <div>---------------------------------------</div>
+        <div style="font-size:36px;line-height:48px;">${this.letter}</div>
+        <div style="font-size:20px;line-height:24px;">${this.score}/${
+          this.total
+        } ${this.pointsSystem}</div>
+        <div style="font-size:16px;line-height:24px;">Range: ${
+          this.gradeScale[this._letterIndex].lowRange
+        }% -
+        ${this.gradeScale[this._letterIndex].highRange}%</div>
+        <div>---------------------------------------</div>
+        `;
+      }
     });
   }
   /**

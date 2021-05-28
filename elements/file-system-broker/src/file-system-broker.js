@@ -49,11 +49,30 @@ class FileSystemBroker extends HTMLElement {
       multiple: multiple,
     });
     this.fileHandler = await fileHandle.getFile();
+    return this.fileHandler;
+  }
+  /**
+   * Get contents of a file based on type
+   * @param {String} type
+   * @param {Boolean} multiple
+   * @param {Boolean} excludeAll
+   * @returns
+   */
+  async getFileContents(type, multiple = false, excludeAll = true) {
+    await this.loadFile(type, multiple, excludeAll);
     return await this.fileHandler.text();
   }
   typeToAccept(type) {
     let accept = {};
     switch (type) {
+      case "xls":
+      case "xlsx":
+      case "ods":
+        accept = {
+          "text/csv": [".csv"],
+          "application/*": [".xls", ".xlsx", ".ods"],
+        };
+        break;
       case "csv":
         accept = { "text/*": [".csv", ".txt"] };
         break;

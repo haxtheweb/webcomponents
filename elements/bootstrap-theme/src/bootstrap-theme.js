@@ -627,8 +627,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
   _loadScripts() {
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     let jqueryPath = "jquery/dist/jquery.min.js";
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("jquery", basePath + jqueryPath);
+    window.ESGlobalBridge.requestAvailability().load(
+      "jquery",
+      basePath + jqueryPath
+    );
     window.addEventListener(
       `es-bridge-jquery-loaded`,
       this._jqueryLoaded.bind(this)
@@ -642,7 +644,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
   _loadBootstrap() {
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     let bootstrapPath = "bootstrap/dist/js/bootstrap.bundle.min.js";
-    window.ESGlobalBridge.instance.load("bootstrap", basePath + bootstrapPath);
+    window.ESGlobalBridge.requestAvailability().load(
+      "bootstrap",
+      basePath + bootstrapPath
+    );
     window.addEventListener(
       `es-bridge-bootstrap-loaded`,
       this._bootstrapLoaded.bind(this)

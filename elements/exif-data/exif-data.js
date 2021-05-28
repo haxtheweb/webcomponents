@@ -71,10 +71,7 @@ class ExifData extends HTMLElement {
         this.updateExif();
       }, 0);
     } else {
-      ESGlobalBridgeStore.instance.load(
-        "exif-js",
-        `${this.basePath}lib/exif-js.js`
-      );
+      ESGlobalBridgeStore.load("exif-js", `${this.basePath}lib/exif-js.js`);
       window.addEventListener(
         "es-bridge-exif-js-loaded",
         this._onExifJsLoaded.bind(this)

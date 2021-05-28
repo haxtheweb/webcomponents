@@ -59,7 +59,8 @@ class FileSystemBroker extends HTMLElement {
    * @returns
    */
   async getFileContents(type, multiple = false, excludeAll = true) {
-    return await this.loadFile(type, multiple, excludeAll).text();
+    await this.loadFile(type, multiple, excludeAll);
+    return await this.fileHandler.text();
   }
   typeToAccept(type) {
     let accept = {};

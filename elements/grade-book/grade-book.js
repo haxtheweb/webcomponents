@@ -13,6 +13,7 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { gSheetInterface } from "@lrnwebcomponents/utils/lib/gSheetsInterface.js";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-tag-list.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
@@ -27,6 +28,11 @@ import "@github/time-elements/dist/time-elements.js";
 import { UIRenderPieces } from "./lib/GradeBookUIPieces.js";
 import { GradeBookStore } from "./lib/grade-book-store.js";
 import { autorun, toJS } from "mobx";
+import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import {
+  XLSXFileSystemBrokerSingleton,
+  FileSystemBrokerSingleton,
+} from "@lrnwebcomponents/file-system-broker/lib/xlsx-file-system-broker.js";
 /**
  * `grade-book`
  * `A headless gradebook that supports multiple backends with rubrics`
@@ -36,19 +42,7 @@ import { autorun, toJS } from "mobx";
 class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   constructor() {
     super();
-    // gid from the google sheet. technically if you add / remove sheets this would
-    // have to be updated to match
-    this.gSheet = new gSheetInterface(this, {
-      tags: 0,
-      roster: 118800528,
-      assignments: 540222065,
-      rubrics: 1744429439,
-      submissions: 2104732668,
-      gradeScale: 980501320,
-      grades: 2130903440,
-      gradesDetails: 644559151,
-      settings: 1413275461,
-    });
+    this.ready = false;
     // storing internals of the assessmentView tab
     this.assessmentView = this.resetAssessmentView();
     this.totalScore = 0;
@@ -120,6 +114,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       previousAssignment: "Previous assignment",
       nextAssignment: "Next assignment",
       student: "Student",
+      assessmentView: "Assessment View",
+      activeAssessment: "Active assessment",
+      studentReportView: "Student report view",
+      loadGradebook: "Load gradebook",
+      saveGradebook: "Save gradebook",
     };
     this.registerLocalization({
       context: this,
@@ -289,27 +288,113 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         this.maintainScrollPosition();
       }
       // source will have to fetch ALL the pages and slowly load data as it rolls through
-      if (propName == "sheet" && this[propName]) {
-        // minor debounce just in case source changes from input
-        clearTimeout(this.__sdebounce);
-        this.__sdebounce = setTimeout(async () => {
-          this.loading = true;
-          this.gSheet.sheet = this[propName];
-          for (var i in this.gSheet.sheetGids) {
-            this.database[i] = await this.gSheet.loadSheetData(i);
-            // complex data update that I am sure will not be picked up by LitElement
-            // this forces an update
+      if (["source-data", "source"].includes(propName)) {
+        switch (this.source) {
+          case "googledocs":
+            this.loading = true;
+            // gid from the google sheet. technically if you add / remove sheets this would
+            // have to be updated to match
+            this.gSheet = new gSheetInterface(this, this.sourceData, {
+              tags: 0,
+              roster: 118800528,
+              assignments: 540222065,
+              rubrics: 1744429439,
+              submissions: 2104732668,
+              gradeScale: 980501320,
+              grades: 2130903440,
+              gradesDetails: 644559151,
+              settings: 1413275461,
+            });
+            setTimeout(async () => {
+              for (var i in this.gSheet.sheetGids) {
+                let loadedData = await this.gSheet.loadSheetData(i);
+                this.loading = true;
+                loadedData = this.transformTable(loadedData);
+                if (typeof this[`process${i}Data`] === "function") {
+                  loadedData = this[`process${i}Data`](loadedData);
+                }
+                this.database[i] = loadedData;
+                if (
+                  i === "gradeScale" &&
+                  this.database.gradeScale &&
+                  this.database.gradeScale.length > 0
+                ) {
+                  GradeBookStore.gradeScale = this.database.gradeScale;
+                }
+                this.loading = false;
+                this.requestUpdate();
+              }
+              this.ready = true;
+            }, 0);
+            break;
+          case "url":
+            this.loading = true;
+            fetch(this.sourceData)
+              .then((response) => {
+                if (response.ok) {
+                  return response.json();
+                }
+              })
+              .then((json) => {
+                this.database = json;
+                this.loading = false;
+                this.requestUpdate();
+                this.ready = true;
+              })
+              .catch((error) => {
+                console.warn(error);
+              });
+            break;
+          case "json":
+            this.database = content;
             this.requestUpdate();
-          }
-          this.loading = false;
-          setTimeout(() => {
-            if (this.database.gradeScale.length > 0) {
-              GradeBookStore.gradeScale = this.database.gradeScale;
-            }
-          }, 0);
-        }, 0);
+            this.ready = true;
+            break;
+          case "filesystem":
+            this.loading = true;
+            // this listener gets the event from the service worker
+            window.addEventListener("xlsx-file-system-data", (e) => {
+              let database = e.detail.data;
+              console.log(database);
+              for (var i in database) {
+                let loadedData = this.transformTable(database[i]);
+                if (typeof this[`process${i}Data`] === "function") {
+                  loadedData = this[`process${i}Data`](loadedData);
+                }
+                this.database[i] = loadedData;
+              }
+              this.loading = false;
+              if (
+                this.database.gradeScale &&
+                this.database.gradeScale.length > 0
+              ) {
+                GradeBookStore.gradeScale = this.database.gradeScale;
+              }
+              this.requestUpdate();
+              this.ready = true;
+            });
+            break;
+        }
       }
     });
+  }
+  transformTable(table) {
+    let tmp = table.shift();
+    let headings = {};
+    let data = [];
+    for (var i in tmp) {
+      headings[tmp[i]] = i;
+    }
+    for (var i in table) {
+      let item = {};
+      for (var j in headings) {
+        item[j] = table[i][headings[j]];
+      }
+      // push data onto the database of all data we have now as objects
+      data.push(item);
+    }
+    // allow for deeper processing on the data or just return the data found
+    return data;
   }
 
   /**
@@ -360,10 +445,14 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   /**
    * process assignment data to normalize date string
    */
-  processassignmentsData(table, headings, data) {
+  processassignmentsData(data) {
     for (var i in data) {
-      const event = new Date(`${data[i].dueDate} ${data[i].dueTime}`);
-      data[i]._ISODueDate = event.toISOString();
+      if (data[i].dueDate != "") {
+        try {
+          const event = new Date(`${data[i].dueDate} ${data[i].dueTime}`);
+          data[i]._ISODueDate = event.toISOString();
+        } catch (e) {}
+      }
     }
     return data;
   }
@@ -372,7 +461,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
    * Tag structure allows the instructor to drag and drop elements into
    * qualitative areas of a rubric
    */
-  processtagsData(table, headings, data) {
+  processtagsData(data) {
     let categories = new Set([]);
     let rCategories = [];
     // these must all exist as keys for us to proceed
@@ -393,7 +482,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       data: data,
     };
   }
-  processrubricsData(table, headings, data) {
+  processrubricsData(data) {
     for (var i in data) {
       data[i].qualitative = data[i].qualitative
         ? data[i].qualitative.split(",")
@@ -401,13 +490,13 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     }
     return data;
   }
-  processrosterData(table, headings, data) {
+  processrosterData(data) {
     for (var i in data) {
       data[i].interests = data[i].interests ? data[i].interests.split(",") : [];
     }
     return data;
   }
-  processsettingsData(table, headings, data) {
+  processsettingsData(data) {
     let d = {};
     for (var i in data) {
       d[data[i].key] = data[i].value;
@@ -425,7 +514,8 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       activeAssignment: { type: Number, attribute: "active-assignment" },
       totalScore: { type: Number },
       scoreLock: { type: Boolean },
-      sheet: { type: String },
+      source: { type: String },
+      sourceData: { type: String, attribute: "source-data" },
       activeSubmission: { type: String, attribute: false },
       database: { type: Object, attribute: false },
       activeRubric: { type: Object, attribute: false },
@@ -532,7 +622,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           background-color: var(--simple-colors-default-theme-accent-1, grey);
         }
         a11y-collapse div[slot="heading"] {
-          font-size: 16px;
+          font-size: 20px;
           font-weight: normal;
           cursor: pointer;
           line-height: 34px;
@@ -787,6 +877,8 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           justify-content: space-evenly;
         }
         .student-report-score {
+          position: absolute;
+          right: 40px;
           margin-top: -20px;
         }
         editable-table-display::part(td),
@@ -1055,13 +1147,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       // then let's focus the user on this
       this.shadowRoot.querySelector("#studentgrid").style.height = "140px";
       this.maintainScrollPosition();
-      // simulate click on this tab so it's active
-      // delay helps ensure that it's resized in the direct style setting as
-      // the tab checks for it being closed yet activated
-      setTimeout(() => {
-        this.shadowRoot.querySelector("#studentassessment").activeTab =
-          "assessment";
-      }, 0);
     }
   }
   mouseHighlight(e) {
@@ -1134,12 +1219,34 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       this.shadowRoot.querySelector("#studentgrid").style.height = null;
     }
   }
+  studentreportClick(e) {
+    ESGlobalBridgeStore.import(
+      "jspdf",
+      new URL(`./lib/`, import.meta.url).href + "jspdf.min.js"
+    ).then(() => {
+      var pdf = new jsPDF();
+      pdf.fromHTML(
+        this.shadowRoot.querySelector("#studentreport").outerHTML,
+        15,
+        15
+      );
+      const cd = new Date();
+      const dateTime = `${cd.getFullYear()}-${cd.getMonth()}-${cd.getDate()}__${cd.getHours()}-${cd.getMinutes()}-${cd.getSeconds()}`;
+      const fname = `${this.database.roster[this.activeStudent].student}--${
+        this.database.assignments[this.activeAssignment].shortName
+      }--${dateTime}.pdf`;
+      pdf.save(fname);
+    });
+  }
   /**
    * LitElement render method
    */
   render() {
     return html`
-      <loading-indicator full ?loading="${this.loading}"></loading-indicator>
+      <loading-indicator
+        full
+        ?loading="${this.sourceData && this.loading}"
+      ></loading-indicator>
       <div class="top-controls">
         <div class="group divider-right app-name">
           <slot name="app-name"></slot>
@@ -1190,6 +1297,24 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         </div>
         <div class="group">${this.renderGradeScaleBtn()}</div>
         <div class="group">${this.renderSettingsBtn()}</div>
+        <div class="group" ?hidden="${this.source != "filesystem"}">
+          <simple-icon-button-lite
+            @click="${this.loadFromFilesystem}"
+            title="${this.t.loadGradebook}"
+            ?disabled="${this.sourceData}"
+            icon="folder-shared"
+          >
+            <span class="hide-900">${this.t.loadGradebook}</span>
+          </simple-icon-button-lite>
+          <simple-icon-button-lite
+            @click="${this.saveToFilesystem}"
+            title="${this.t.saveGradebook}"
+            ?disabled="${!this.sourceData}"
+            icon="save"
+          >
+            <span class="hide-900">${this.t.saveGradebook}</span>
+          </simple-icon-button-lite>
+        </div>
       </div>
       <table
         id="studentgrid"
@@ -1320,18 +1445,18 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         <a11y-tab
           id="assessment"
           icon="assignment-ind"
-          label="Active Assessment"
+          label="${this.t.activeAssessment}"
         >
           ${this.database.assignments.length &&
           this.database.assignments[this.activeAssignment]
             ? html`${this.activeSubmission
                 ? this.renderSubmission(this.activeSubmission)
                 : html`${this.t.noSubmission}`}`
-            : html`<loading-indicator></loading-indicator>`}
+            : nothing}
         </a11y-tab>
         <a11y-tab
           icon="image:style"
-          label="Assessment view"
+          label="${this.t.assessmentView}"
           id="assessmentview"
         >
           ${this.activeRubric[0]
@@ -1490,11 +1615,31 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
               `
             : nothing}
         </a11y-tab>
-        <a11y-tab id="studentreport" icon="assignment" label="Student report">
-          <div>
-            ${!this.loading
+        <a11y-tab
+          id="studentreporttab"
+          icon="assignment"
+          label="${this.t.studentReportView}"
+        >
+          <simple-icon-button-lite
+            @click="${this.studentreportClick}"
+            title="Download PDF"
+            icon="image:picture-as-pdf"
+          >
+            <span class="hide-900" value="prev">Download PDF</span>
+          </simple-icon-button-lite>
+          <div id="studentreport">
+            ${!this.loading &&
+            this.database.assignments &&
+            this.database.assignments[this.activeAssignment]
               ? html`
-                  <h2>Student feedback report</h2>
+                  <letter-grade
+                    class="student-report-score"
+                    show-scale
+                    total="${this.database.assignments[this.activeAssignment]
+                      .points}"
+                    score="${this.totalScore}"
+                  ></letter-grade>
+                  <h2>Feedback report</h2>
                   <div class="student-report-wrap">
                     <a11y-collapse-group
                       heading-button
@@ -1513,7 +1658,9 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                           (rubric) => html`
                             <a11y-collapse class="student-feedback-text">
                               <div slot="heading" class="heading">
-                                ${rubric.criteria}
+                                <span style="font-size:20px;"
+                                  >${rubric.criteria}</span
+                                >
                               </div>
                               <div slot="content">
                                 <div class="student-feedback-score-heading">
@@ -1579,11 +1726,13 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                         )}
                       <a11y-collapse class="student-feedback-text">
                         <div slot="heading" class="heading">
-                          ${this.t.overallFeedback}
+                          <span style="font-size:20px;"
+                            >${this.t.overallFeedback}</span
+                          >
                         </div>
                         <div slot="content">
                           <p>${this.getCriteriaFeedback("overall")}</p>
-                          <h3>Your total Score</h3>
+                          <h2>Your total Score</h2>
                           <div class="score-display">
                             ${this.totalScore} /
                             ${this.database.assignments[this.activeAssignment]
@@ -1593,13 +1742,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                         </div>
                       </a11y-collapse>
                     </a11y-collapse-group>
-                    <letter-grade
-                      class="student-report-score"
-                      show-scale
-                      total="${this.database.assignments[this.activeAssignment]
-                        .points}"
-                      score="${this.totalScore}"
-                    ></letter-grade>
                   </div>
                 `
               : html`<loading-indicator></loading-indicator>`}
@@ -1607,6 +1749,30 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         </a11y-tab>
       </a11y-tabs>
     `;
+  }
+  loadFromFilesystem(e) {
+    XLSXFileSystemBrokerSingleton.loadFile("xls").then((file) => {
+      XLSXFileSystemBrokerSingleton.processFile(file, "json");
+      this.sourceData = file;
+    });
+  }
+  async saveToFilesystem(e) {
+    // return as Blob based output
+    // @todo undo the table transform on import so that we can have it as an array
+    // form that they want in xlsx files
+    // ensure we save the header row into the output based on correct key names
+    // this means we'll ahve to undo the process functions as well.
+    // MAY want to consider redoing how we look info up so that we don't transform it
+    // into complex objects and instead use complex arrays (maybe)
+    const output = XLSXFileSystemBrokerSingleton.workbookFromJSON(
+      this.database
+    );
+    // treat as a Blob and then convert to a FileReader object
+    const blob = new Blob([output], { type: "application/octet-stream" });
+    const file = new FileReader();
+    file.readAsDataURL(blob);
+    // save to file format in question!
+    await FileSystemBrokerSingleton.saveFile("xlsx", output);
   }
   /**
    * Listen for value change coming from the fields in the active rubric
@@ -1652,18 +1818,20 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     this.requestUpdate();
   }
   totalScoreChangedEvent(e) {
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    e.preventDefault();
-    this.totalScore = e.detail.value;
-    this.database.grades[this.activeStudent][
-      this.database.assignments[this.activeAssignment].shortName
-    ] = this.totalScore;
-    this.activeStudentSubmissions = [];
-    this.activeStudentSubmissions = [
-      ...this.getStudentSubmissions(this.activeStudent),
-    ];
-    this.requestUpdate();
+    if (this.ready) {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      this.totalScore = e.detail.value;
+      this.database.grades[this.activeStudent][
+        this.database.assignments[this.activeAssignment].shortName
+      ] = this.totalScore;
+      this.activeStudentSubmissions = [];
+      this.activeStudentSubmissions = [
+        ...this.getStudentSubmissions(this.activeStudent),
+      ];
+      this.requestUpdate();
+    }
   }
   /**
    * lock toggle

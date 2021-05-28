@@ -38,8 +38,7 @@ class SimpleLoginCamera extends HTMLElement {
       })
     );
     const location = `${this.basePath}msr/MediaStreamRecorder.min.js`;
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("msr", location);
+    window.ESGlobalBridge.requestAvailability().load("msr", location);
     window.addEventListener("es-bridge-msr-loaded", this._msrLoaded.bind(this));
     this.template = document.createElement("template");
     this._shadow = this.attachShadow({ mode: "closed" });
@@ -226,10 +225,7 @@ class SimpleLoginCamera extends HTMLElement {
   }
 
   connectedCallback() {
-    if (
-      window.ESGlobalBridge &&
-      window.ESGlobalBridge.imports["msr"] === true
-    ) {
+    if (window.ESGlobalBridge.requestAvailability().imports["msr"] === true) {
       this._applyMSR();
     }
     this._t = { ...this.t };
@@ -238,10 +234,7 @@ class SimpleLoginCamera extends HTMLElement {
    * Try to apply when fully loaded dom
    */
   documentLoaded(e) {
-    if (
-      window.ESGlobalBridge &&
-      window.ESGlobalBridge.imports["msr"] === true
-    ) {
+    if (window.ESGlobalBridge.requestAvailability().imports["msr"] === true) {
       this._applyMSR();
     }
   }

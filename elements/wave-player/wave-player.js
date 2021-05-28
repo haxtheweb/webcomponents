@@ -297,8 +297,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
       "es-bridge-wavesurfer-loaded",
       this._wavesurferLoaded.bind(this)
     );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("wavesurfer", location);
+    window.ESGlobalBridge.requestAvailability().load("wavesurfer", location);
   }
   disconnectedCallback() {
     window.removeEventListener(

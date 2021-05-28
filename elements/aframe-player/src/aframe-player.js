@@ -228,8 +228,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
       "es-bridge-aframePlayer-loaded",
       this._aframeLoaded.bind(this)
     );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("aframePlayer", location);
+    window.ESGlobalBridge.requestAvailability().load("aframePlayer", location);
   }
 
   _aframeLoaded(el) {

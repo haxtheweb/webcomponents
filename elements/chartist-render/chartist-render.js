@@ -1621,7 +1621,7 @@ Container class	Ratio
       let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url)),
         location = `${basePath}${path}`;
       window.addEventListener(`es-bridge-${classname}-loaded`, fnc.bind(this));
-      window.ESGlobalBridge.instance.load(classname, location);
+      window.ESGlobalBridge.requestAvailability().load(classname, location);
     }
 
     /**

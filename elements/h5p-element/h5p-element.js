@@ -126,7 +126,6 @@ class H5PElement extends LitElement {
    * load dependencies that need to be global in scope
    */
   async H5PDepsLoader() {
-    window.ESGlobalBridge.requestAvailability();
     const basePath =
       this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/";
     this.h5pJSDeps = [
@@ -141,7 +140,7 @@ class H5PElement extends LitElement {
       basePath + "h5p/js/h5p-x-api.js",
     ];
     this.__h5pDepsLength = this.h5pJSDeps.length - 1;
-    await window.ESGlobalBridge.instance.load(
+    await window.ESGlobalBridge.requestAvailability().load(
       "h5p-jquery",
       basePath + "h5p/js/jquery.js"
     );
@@ -168,7 +167,9 @@ class H5PElement extends LitElement {
   firstUpdated() {
     if (
       this.source &&
-      window.ESGlobalBridge.imports["h5p-" + this.__h5pDepsLength] === true &&
+      window.ESGlobalBridge.requestAvailability().imports[
+        "h5p-" + this.__h5pDepsLength
+      ] === true &&
       this.contentId
     ) {
       this.setupH5P(this.contentId);
@@ -180,7 +181,10 @@ class H5PElement extends LitElement {
   }
   async h5pJqueryReady(e) {
     for (var i in this.h5pJSDeps) {
-      await window.ESGlobalBridge.instance.load("h5p-" + i, this.h5pJSDeps[i]);
+      await window.ESGlobalBridge.requestAvailability().load(
+        "h5p-" + i,
+        this.h5pJSDeps[i]
+      );
     }
   }
   h5pReadyCallback(e) {

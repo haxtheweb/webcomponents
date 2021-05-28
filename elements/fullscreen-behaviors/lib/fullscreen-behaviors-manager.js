@@ -34,8 +34,10 @@ class FullscreenBehaviorsManager extends LitElement {
     } else {
       const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
       const location = `${basePath}screenfull/dist/screenfull.js`;
-      window.ESGlobalBridge.requestAvailability();
-      window.ESGlobalBridge.instance.load("screenfullLib", location);
+      window.ESGlobalBridge.requestAvailability().load(
+        "screenfullLib",
+        location
+      );
       window.addEventListener(
         "es-bridge-screenfullLib-loaded",
         this._setLoaded.bind(this)
