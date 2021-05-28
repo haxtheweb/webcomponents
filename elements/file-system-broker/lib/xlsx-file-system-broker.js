@@ -66,6 +66,8 @@ class XLSXFileSystemBroker extends FileSystemBroker {
       var roa = this.XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {
         header: 1,
         blankrows: false,
+        raw: false,
+        dateNF: "yyyy-mm-dd",
       });
       if (roa.length) result[sheetName] = roa;
     });

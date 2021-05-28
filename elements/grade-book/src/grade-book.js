@@ -99,8 +99,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       gradingScale: "Grading scale",
       activeStudent: "Active student",
       activeAssignment: "Active assignment",
-      minutesAgo: "minutes ago",
-      dateSubmitted: "Date submitted",
+      submitted: "Submitted",
       dueDate: "Due date",
       firstName: "First name",
       surname: "Surname",
@@ -288,92 +287,93 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         this.maintainScrollPosition();
       }
       // source will have to fetch ALL the pages and slowly load data as it rolls through
-      if (["source-data", "source"].includes(propName)) {
-        switch (this.source) {
-          case "googledocs":
-            this.loading = true;
-            // gid from the google sheet. technically if you add / remove sheets this would
-            // have to be updated to match
-            this.gSheet = new gSheetInterface(this, this.sourceData, {
-              tags: 0,
-              roster: 118800528,
-              assignments: 540222065,
-              rubrics: 1744429439,
-              submissions: 2104732668,
-              gradeScale: 980501320,
-              grades: 2130903440,
-              gradesDetails: 644559151,
-              settings: 1413275461,
-            });
-            setTimeout(async () => {
-              for (var i in this.gSheet.sheetGids) {
-                let loadedData = await this.gSheet.loadSheetData(i);
-                this.loading = true;
-                loadedData = this.transformTable(loadedData);
-                if (typeof this[`process${i}Data`] === "function") {
-                  loadedData = this[`process${i}Data`](loadedData);
-                }
-                this.database[i] = loadedData;
-                if (
-                  i === "gradeScale" &&
-                  this.database.gradeScale &&
-                  this.database.gradeScale.length > 0
-                ) {
-                  GradeBookStore.gradeScale = this.database.gradeScale;
-                }
-                this.loading = false;
-                this.requestUpdate();
-              }
-              this.ready = true;
-            }, 0);
-            break;
-          case "url":
-            this.loading = true;
-            fetch(this.sourceData)
-              .then((response) => {
-                if (response.ok) {
-                  return response.json();
-                }
-              })
-              .then((json) => {
-                this.database = json;
-                this.loading = false;
-                this.requestUpdate();
-                this.ready = true;
-              })
-              .catch((error) => {
-                console.warn(error);
+      if (["sourceData", "source"].includes(propName)) {
+        if (this.sourceData) {
+          switch (this.source) {
+            case "googledocs":
+              this.loading = true;
+              // gid from the google sheet. technically if you add / remove sheets this would
+              // have to be updated to match
+              this.gSheet = new gSheetInterface(this, this.sourceData, {
+                tags: 0,
+                roster: 118800528,
+                assignments: 540222065,
+                rubrics: 1744429439,
+                submissions: 2104732668,
+                gradeScale: 980501320,
+                grades: 2130903440,
+                gradesDetails: 644559151,
+                settings: 1413275461,
               });
-            break;
-          case "json":
-            this.database = content;
-            this.requestUpdate();
-            this.ready = true;
-            break;
-          case "filesystem":
-            this.loading = true;
-            // this listener gets the event from the service worker
-            window.addEventListener("xlsx-file-system-data", (e) => {
-              let database = e.detail.data;
-              console.log(database);
-              for (var i in database) {
-                let loadedData = this.transformTable(database[i]);
-                if (typeof this[`process${i}Data`] === "function") {
-                  loadedData = this[`process${i}Data`](loadedData);
+              setTimeout(async () => {
+                for (var i in this.gSheet.sheetGids) {
+                  let loadedData = await this.gSheet.loadSheetData(i);
+                  this.loading = true;
+                  loadedData = this.transformTable(loadedData);
+                  if (typeof this[`process${i}Data`] === "function") {
+                    loadedData = this[`process${i}Data`](loadedData);
+                  }
+                  this.database[i] = loadedData;
+                  if (
+                    i === "gradeScale" &&
+                    this.database.gradeScale &&
+                    this.database.gradeScale.length > 0
+                  ) {
+                    GradeBookStore.gradeScale = this.database.gradeScale;
+                  }
+                  this.loading = false;
+                  this.requestUpdate();
                 }
-                this.database[i] = loadedData;
-              }
-              this.loading = false;
-              if (
-                this.database.gradeScale &&
-                this.database.gradeScale.length > 0
-              ) {
-                GradeBookStore.gradeScale = this.database.gradeScale;
-              }
+                this.ready = true;
+              }, 0);
+              break;
+            case "url":
+              this.loading = true;
+              fetch(this.sourceData)
+                .then((response) => {
+                  if (response.ok) {
+                    return response.json();
+                  }
+                })
+                .then((json) => {
+                  this.database = json;
+                  this.loading = false;
+                  this.requestUpdate();
+                  this.ready = true;
+                })
+                .catch((error) => {
+                  console.warn(error);
+                });
+              break;
+            case "json":
+              this.database = this.sourceData;
               this.requestUpdate();
               this.ready = true;
-            });
-            break;
+              break;
+          }
+        } else if (this.source == "filesystem") {
+          this.loading = true;
+          // this listener gets the event from the service worker
+          window.addEventListener("xlsx-file-system-data", (e) => {
+            let database = e.detail.data;
+            console.log(database);
+            for (var i in database) {
+              let loadedData = this.transformTable(database[i]);
+              if (typeof this[`process${i}Data`] === "function") {
+                loadedData = this[`process${i}Data`](loadedData);
+              }
+              this.database[i] = loadedData;
+            }
+            this.loading = false;
+            if (
+              this.database.gradeScale &&
+              this.database.gradeScale.length > 0
+            ) {
+              GradeBookStore.gradeScale = this.database.gradeScale;
+            }
+            this.requestUpdate();
+            this.ready = true;
+          });
         }
       }
     });
@@ -564,6 +564,9 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         :host {
           display: block;
         }
+        :host [hidden] {
+          display: none !important;
+        }
         @media (max-width: 900px) {
           .hide-900 {
             display: none;
@@ -678,6 +681,10 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         }
         simple-fields-field[type="textarea"] {
           --simple-fields-font-size: 20px;
+        }
+        #sourcedata,
+        #sourcedatablob {
+          display: block;
         }
         simple-fields-field[type="number"] {
           --simple-fields-font-size: 40px;
@@ -1081,13 +1088,13 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       .querySelector("#studentassessment")
       .shadowRoot.querySelector("[part='content']").style.height =
       Math.round(window.innerHeight - height - 104) + "px";
+    // @todo make this actually be the submitted time, right now it's due relative time'd
     let pre = html`<h3>${this.t.studentSubmission}</h3>
-      ${this.t.dateSubmitted}:
-      ${Math.floor(
-        this.database.assignments[this.activeAssignment]._ISODueDate -
-          new Date("2021-03-01T10:20:08")
-      ) / 60e3}
-      ${this.t.minutesAgo} `;
+      ${this.t.submitted}
+      <relative-time
+        datetime="${this.database.assignments[this.activeAssignment]
+          ._ISODueDate}"
+      ></relative-time> `;
     // test if this smells like a URL
     if (validURL(data)) {
       pre = html`${pre}<a
@@ -1299,14 +1306,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         <div class="group">${this.renderSettingsBtn()}</div>
         <div class="group" ?hidden="${this.source != "filesystem"}">
           <simple-icon-button-lite
-            @click="${this.loadFromFilesystem}"
-            title="${this.t.loadGradebook}"
-            ?disabled="${this.sourceData}"
-            icon="folder-shared"
-          >
-            <span class="hide-900">${this.t.loadGradebook}</span>
-          </simple-icon-button-lite>
-          <simple-icon-button-lite
             @click="${this.saveToFilesystem}"
             title="${this.t.saveGradebook}"
             ?disabled="${!this.sourceData}"
@@ -1315,6 +1314,35 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             <span class="hide-900">${this.t.saveGradebook}</span>
           </simple-icon-button-lite>
         </div>
+      </div>
+      <div ?hidden="${this.sourceData}">
+        <label>Select gradebook source..</label>
+        <select id="source" @change="${this.selectSource}">
+          <option value="filesystem" selected>File sysem</option>
+          <option value="googledocs">Google docs</option>
+          <option value="url">URL endpoint (JSON)</option>
+          <option value="json">JSON data blob</option>
+        </select>
+        <simple-icon-button-lite
+          @click="${this.loadFromSource}"
+          title="${this.t.loadGradebook}"
+          ?disabled="${this.sourceData}"
+          icon="folder-shared"
+        >
+          <span class="hide-900">${this.t.loadGradebook}</span>
+        </simple-icon-button-lite>
+        <input
+          id="sourcedata"
+          placeholder="Source data"
+          ?hidden="${!["googledocs", "url"].includes(this.source)}"
+        />
+        <textarea
+          id="sourcedatablob"
+          rows="20"
+          cols="50"
+          placeholder="Paste valid JSON here"
+          ?hidden="${this.source != "json"}"
+        ></textarea>
       </div>
       <table
         id="studentgrid"
@@ -1330,6 +1358,10 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         striped
         numeric-styles
         sort
+        ?hidden="${!(
+          this.database.assignments &&
+          this.database.assignments[this.activeAssignment]
+        )}"
       >
         ${this.database.roster.length && this.database.assignments.length
           ? html`
@@ -1441,6 +1473,10 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         full-width
         @click="${this.checkTabHeight}"
         @a11y-tabs-active-changed="${this.updateStudentReport}"
+        ?hidden="${!(
+          this.database.assignments &&
+          this.database.assignments[this.activeAssignment]
+        )}"
       >
         <a11y-tab
           id="assessment"
@@ -1744,13 +1780,26 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                     </a11y-collapse-group>
                   </div>
                 `
-              : html`<loading-indicator></loading-indicator>`}
+              : nothing}
           </div>
         </a11y-tab>
       </a11y-tabs>
     `;
   }
-  loadFromFilesystem(e) {
+  selectSource(e) {
+    this.source = this.shadowRoot.querySelector("#source").value;
+  }
+  loadFromSource(e) {
+    this.source = this.shadowRoot.querySelector("#source").value;
+    if (this.source === "json") {
+      this.sourceData = this.shadowRoot.querySelector("#sourcedatablob").value;
+    } else if (this.source == "filesystem") {
+      this.loadFromFilesystem();
+    } else {
+      this.sourceData = this.shadowRoot.querySelector("#sourcedata").value;
+    }
+  }
+  loadFromFilesystem() {
     XLSXFileSystemBrokerSingleton.loadFile("xls").then((file) => {
       XLSXFileSystemBrokerSingleton.processFile(file, "json");
       this.sourceData = file;
