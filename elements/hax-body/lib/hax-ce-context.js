@@ -64,12 +64,11 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               .icon="${this.activeTagIcon}"
               label="${this.t.changeTo}.."
               tooltip="${this.activeTagName}, ${this.t.clickToChange}"
-              ?disabled="${this.disableTransform}"
+              ?disabled="${this.disableTransform || this.viewSource}"
               event-name="hax-transform-node"
               show-text-label
             ></hax-context-item>
             <slot name="primary"></slot>
-          </div>
           <div class="group">
             ${this.ceButtons.map((el) => {
               return html` <hax-context-item
@@ -78,6 +77,7 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                 label="${el.label}"
                 event-name="hax-ce-custom-button"
                 value="${el.callback}"
+                ?disabled="${this.viewSource}"
               ></hax-context-item>`;
             })}
             <slot name="secondary"></slot>
@@ -109,6 +109,7 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                   icon="hardware:keyboard-arrow-up"
                   event-name="insert-above-active"
                   label="${this.t.insertItemAbove}"
+                  ?disabled="${this.viewSource}"
                 ></hax-context-item>
               </simple-toolbar-menu-item>
               <simple-toolbar-menu-item slot="menuitem">
@@ -120,6 +121,7 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                   icon="hardware:keyboard-arrow-down"
                   event-name="insert-below-active"
                   label="${this.t.insertItemBelow}"
+                  ?disabled="${this.viewSource}"
                 ></hax-context-item>
               </simple-toolbar-menu-item>
             </hax-toolbar-menu>
@@ -157,8 +159,20 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       viewSource: {
         type: Boolean,
+        reflect: true,
+        attribute: "view-source",
       },
     };
+  }
+  _handleOpen(e) {
+    this.dispatchEvent(
+      new CustomEvent("ax-transform-node", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: HAXStore.elementList[el],
+      })
+    );
   }
   handleCECustomEvent(e) {
     let detail = e.detail;

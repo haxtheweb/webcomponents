@@ -91,7 +91,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         // now we can look through them
         // look for a match
         for (var gizmoposition in this.gizmoList) {
-          let gizmo = this.gizmoList[gizmoposition];
+          let gizmo = this.gizmoList[gizmoposition],
+            tags = [];
           let props = {};
           // reset match per gizmo
           let match = false;
@@ -129,6 +130,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                   if (preferExclusive && gizmo.handles[i].type_exclusive) {
                     return [this.haxElementPrototype(gizmo, props, "")];
                   } else {
+                    let keywords = {};
+                    [...gizmo.handles].forEach((i) => {
+                      if (!!i && !!i.type && i.type != "")
+                        keywords[i.type.toLowerCase()] = true;
+                    });
+                    [...gizmo.groups].forEach((i) => {
+                      if (!!i && i != "") keywords[i.toLowerCase()] = true;
+                    });
+                    gizmo.keywords = Object.keys(keywords);
                     matches.push(this.haxElementPrototype(gizmo, props, ""));
                   }
                 }
@@ -1355,7 +1365,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           return `<place-holder type=\"image\" text=\"file:${s[0]}"></place-holder>`;
         }
       );
-      //console.log(pasteContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = await this.htmlToHaxElements(pasteContent);
       // ensure that if we only have 1 element that we are wrapped correctly

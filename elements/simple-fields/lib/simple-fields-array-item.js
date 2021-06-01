@@ -115,6 +115,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldsetBehaviors(LitElement) {
         }
         #copy-delete {
           display: flex;
+          flex: 0 0 auto;
         }
         #copy,
         #remove {

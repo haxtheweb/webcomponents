@@ -185,6 +185,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               show-text-label
               data-simple-tour-stop
               data-stop-title="Format"
+              ?disabled="${this.viewSource}"
             >
               ${this.formattingList.map(
                 (val) =>
@@ -224,6 +225,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               event-name="text-tag-ul"
               label="${this.t.bulledList}"
               ?hidden="${!this._showLists}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
             <hax-context-item-textop
               mini
@@ -232,6 +234,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               label="${this.t.numberedList}"
               event-name="text-tag-ol"
               ?hidden="${!this._showLists}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
             <hax-context-item-textop
               mini
@@ -240,6 +243,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               label="${this.t.outdent}"
               event-name="text-outdent"
               ?hidden="${!this._showIndent}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
             <hax-context-item-textop
               mini
@@ -248,6 +252,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               label="${this.t.indent}"
               event-name="text-indent"
               ?hidden="${!this._showIndent}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
           </div>
           <div class="group" ?hidden="${!this.hasSelectedText}">
@@ -259,6 +264,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               class="selected-buttons"
               event-name="text-bold"
               ?hidden="${!this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
             <hax-context-item-textop
               mini
@@ -268,6 +274,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               class="selected-buttons"
               event-name="text-italic"
               ?hidden="${!this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
           </div>
           <div class="group" ?hidden="${!this.hasSelectedText}">
@@ -279,6 +286,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               class="selected-buttons"
               event-name="text-link"
               ?hidden="${!this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
             <hax-context-item-textop
               mini
@@ -288,6 +296,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               class="selected-buttons"
               event-name="text-unlink"
               ?hidden="${!this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
           </div>
           <div class="group" ?hidden="${!this.hasSelectedText}">
@@ -299,6 +308,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               class="selected-buttons"
               event-name="text-remove-format"
               ?hidden="${!this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
             <slot name="secondary"></slot>
           </div>
@@ -310,6 +320,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               label="${this.t.underline}"
               event-name="text-underline"
               ?hidden="${!this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
             <hax-context-item-textop
               action
@@ -317,6 +328,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               icon="editor:format-strikethrough"
               event-name="text-strikethrough"
               ?hidden="${!this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
               label="${this.t.crossOut}"
             ></hax-context-item-textop>
             <slot name="more"></slot>
@@ -328,6 +340,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               icon="mdextra:subscript"
               event-name="text-subscript"
               ?hidden="${!this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
               label="${this.t.subscript}"
             ></hax-context-item-textop>
             <hax-context-item-textop
@@ -336,6 +349,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               icon="mdextra:superscript"
               event-name="text-superscript"
               ?hidden="${!this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
               label="${this.t.superscript}"
             ></hax-context-item-textop>
           </div>
@@ -348,6 +362,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               class="selected-buttons"
               event-name="insert-inline-gizmo"
               ?hidden="${this.isSafari || !this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item>
             <hax-context-item-textop
               mini
@@ -357,6 +372,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               class="selected-buttons"
               event-name="insert-inline-gizmo"
               ?hidden="${!this.isSafari || !this.hasSelectedText}"
+              ?disabled="${this.viewSource}"
             ></hax-context-item-textop>
           </div>
           <div class="group">
@@ -368,7 +384,6 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               event-name="hax-source-view-toggle"
               toggles
               ?toggled="${this.viewSource}"
-              @click="${(e) => (this.viewSource = !this.viewSource)}"
             ></hax-context-item>
           </div>
           <div class="group">
@@ -385,6 +400,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                   icon="hardware:keyboard-arrow-up"
                   event-name="insert-above-active"
                   label="${this.t.insertItemAbove}"
+                  ?disabled="${this.viewSource}"
                 ></hax-context-item>
               </simple-toolbar-menu-item>
               <simple-toolbar-menu-item slot="menuitem">
@@ -396,6 +412,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                   icon="hardware:keyboard-arrow-down"
                   event-name="insert-below-active"
                   label="${this.t.insertItemBelow}"
+                  ?disabled="${this.viewSource}"
                 ></hax-context-item>
               </simple-toolbar-menu-item>
             </hax-toolbar-menu>
@@ -449,6 +466,8 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       viewSource: {
         type: Boolean,
+        reflect: true,
+        attribute: "view-source",
       },
     };
   }

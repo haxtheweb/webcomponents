@@ -387,7 +387,7 @@ class HaxTray extends I18NMixin(
             top: 0;
           }
           :host([collapsed]) .wrapper {
-            height: auto;
+            height: var(--hax-tray-menubar-min-height);
             overflow-y: visible;
           }
           :host([element-align="left"]) .wrapper {
