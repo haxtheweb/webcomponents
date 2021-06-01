@@ -484,6 +484,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     });
     autorun(() => {
       this.trayStatus = toJS(HAXStore.trayStatus);
+      this.trayDetail = toJS(HAXStore.trayDetail);
     });
     autorun(() => {
       this.activeNode = toJS(HAXStore.activeNode);
@@ -699,6 +700,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             id="platecontextmenu"
             class="hax-context-menu ignore-activation"
             .activeNode="${this.activeNode}"
+            .trayDetail="${this.trayDetail}"
+            .trayStatus="${this.trayStatus}"
           ></hax-plate-context>
         </div>
       </absolute-position-behavior>
@@ -730,6 +733,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         type: String,
         reflect: true,
         attribute: "element-align",
+      },
+      /**
+       * is hax tray collapsed, side-panel, or full-panel
+       */
+      trayDetail: {
+        type: String,
+        reflect: true,
+        attribute: "tray-detail",
       },
       /**
        * is hax tray collapsed, side-panel, or full-panel
@@ -2453,6 +2464,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         break;
       case "hax-plate-down":
         this.haxMoveGridPlate(this.activeNode);
+        break;
+      case "content-edit":
+        if (HAXStore.haxTray.trayDetail === "content-edit")
+          HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
+        HAXStore.haxTray.trayDetail = "content-edit";
         break;
     }
   }

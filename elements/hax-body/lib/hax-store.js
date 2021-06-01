@@ -407,6 +407,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         type: String,
       },
       /**
+       * which panel is active int he tray: content-edit, view-source, etc.
+       */
+      trayDetail: {
+        type: String,
+      },
+      /**
        * Hax tray
        */
       haxTray: {
@@ -1780,6 +1786,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.elementList = {};
     this.elementAlign = "right";
     this.trayStatus = "collapsed";
+    this.trayDetail = "content-edit";
     this.appList = [];
     this.gizmoList = [];
     this.activeHaxBody = null;
@@ -1826,6 +1833,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       editMode: observable,
       elementAlign: observable,
       trayStatus: observable,
+      trayDetail: observable,
       appList: observable,
       activeApp: observable,
       haxSelectedText: observable,

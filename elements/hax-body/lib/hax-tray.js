@@ -441,6 +441,7 @@ class HaxTray extends I18NMixin(
       ? "full-panel"
       : "side-panel";
     HAXStore.trayStatus = status;
+    HAXStore.trayDetail = this.trayDetail;
     return status;
   }
   /**
