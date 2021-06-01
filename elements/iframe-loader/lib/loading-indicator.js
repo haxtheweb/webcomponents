@@ -65,7 +65,7 @@ class LoadingIndicator extends LitElement {
   constructor() {
     super();
     this.full = false;
-    this.loading = true;
+    this.loading = false;
   }
   render() {
     return this.loading ? html`<div class="progress-line"></div>` : nothing;

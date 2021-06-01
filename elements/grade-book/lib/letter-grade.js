@@ -8,12 +8,14 @@ class LetterGrade extends LitElement {
     this.score = null;
     this.total = null;
     this.gradeScale = [];
+    this.displayOnly = false;
     this._letterIndex = null;
     this.letter = "";
     this.showScale = false;
     this.value = "";
     this.mini = false;
     this.label = "";
+    this.active = false;
     autorun(() => {
       this.gradeScale = toJS(GradeBookStore.gradeScale);
     });
@@ -53,8 +55,8 @@ class LetterGrade extends LitElement {
           width: var(--letter-grade-wrap-width, 64px);
         }
         :host([mini]) .wrap {
-          height: var(--letter-grade-wrap-height, 16px);
-          width: var(--letter-grade-wrap-width, 16px);
+          height: var(--letter-grade-wrap-height, 20px);
+          width: var(--letter-grade-wrap-width, 20px);
           border: 1px solid black;
           border-radius: 0px;
           padding: 8px;
@@ -63,7 +65,7 @@ class LetterGrade extends LitElement {
           font-size: var(--letter-grade-letter-font-size, 12px);
           line-height: var(
             --letter-grade-letter-line-height,
-            var(--letter-grade-letter-font-size, 12px)
+            var(--letter-grade-letter-font-size, 20px)
           );
         }
         .wrap {
@@ -88,7 +90,7 @@ class LetterGrade extends LitElement {
             --letter-grade-letter-line-height,
             var(--letter-grade-letter-font-size, 40px)
           );
-          letter-spacing: -2px;
+          letter-spacing: 2px;
         }
         .score,
         .range {
@@ -145,6 +147,8 @@ class LetterGrade extends LitElement {
       showScale: { type: Boolean, reflect: true, attribute: "show-scale" },
       mini: { type: Boolean, reflect: true },
       label: { type: String },
+      displayOnly: { type: Boolean, attribute: "display-only" },
+      active: { type: Boolean, reflect: true },
     };
   }
   static get tag() {
@@ -155,7 +159,10 @@ class LetterGrade extends LitElement {
       if (propName === "mini" && this[propName] && this.label) {
         import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       }
-      if (["total", "score", "gradeScale"].includes(propName)) {
+      if (
+        ["total", "score", "gradeScale"].includes(propName) &&
+        !this.displayOnly
+      ) {
         if (this.gradeScale.length > 0) {
           this.letter = this.calculateLetterGrade();
         }

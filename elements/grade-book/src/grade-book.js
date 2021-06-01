@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit-element/lit-element.js";
+import { render } from "lit-html/lib/render.js";
 import { nothing } from "lit-html/lit-html.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
@@ -24,15 +25,13 @@ import "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js";
 import "./lib/letter-grade.js";
+import "./lib/letter-grade-picker.js";
 import "@github/time-elements/dist/time-elements.js";
 import { UIRenderPieces } from "./lib/GradeBookUIPieces.js";
 import { GradeBookStore } from "./lib/grade-book-store.js";
 import { autorun, toJS } from "mobx";
 import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import {
-  XLSXFileSystemBrokerSingleton,
-  FileSystemBrokerSingleton,
-} from "@lrnwebcomponents/file-system-broker/lib/xlsx-file-system-broker.js";
+import { XLSXFileSystemBrokerSingleton } from "@lrnwebcomponents/file-system-broker/lib/xlsx-file-system-broker.js";
 /**
  * `grade-book`
  * `A headless gradebook that supports multiple backends with rubrics`
@@ -43,6 +42,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   constructor() {
     super();
     this.ready = false;
+    this.displayMode = 0;
     // storing internals of the assessmentView tab
     this.assessmentView = this.resetAssessmentView();
     this.totalScore = 0;
@@ -81,7 +81,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     };
     this.disabled = false;
     // shows progress indicator as it loads
-    this.loading = true;
+    this.loading = false;
     // translatable text
     this.t = {
       csvURL: "CSV URL",
@@ -118,6 +118,9 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       studentReportView: "Student report view",
       loadGradebook: "Load gradebook",
       saveGradebook: "Save gradebook",
+      selectGradebookSource: "Select gradebook source",
+      sourceData: "Source data",
+      pasteValidJSONHere: "Paste valid JSON here",
     };
     this.registerLocalization({
       context: this,
@@ -278,11 +281,19 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         setTimeout(() => {
           this.activeSubmission = this.getActiveSubmission();
           this.assessmentView = this.resetAssessmentView();
-          this.activeRubric = this.getActiveRubric();
+          this.activeRubric = [...this.getActiveRubric()];
+          this.hideRubricInfo = [
+            ...this.activeRubric.map(() => {
+              return false;
+            }),
+          ];
           this.activeStudentSubmissions = [];
           this.activeStudentSubmissions = [
             ...this.getStudentSubmissions(this.activeStudent),
           ];
+          if (this.displayMode == 2) {
+            this.renderSubmissionInWindow();
+          }
         }, 0);
         this.maintainScrollPosition();
       }
@@ -308,7 +319,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
               setTimeout(async () => {
                 for (var i in this.gSheet.sheetGids) {
                   let loadedData = await this.gSheet.loadSheetData(i);
-                  this.loading = true;
                   loadedData = this.transformTable(loadedData);
                   if (typeof this[`process${i}Data`] === "function") {
                     loadedData = this[`process${i}Data`](loadedData);
@@ -321,10 +331,9 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                   ) {
                     GradeBookStore.gradeScale = this.database.gradeScale;
                   }
-                  this.loading = false;
                   this.requestUpdate();
                 }
-                this.ready = true;
+                this.importStateCleanup();
               }, 0);
               break;
             case "url":
@@ -337,46 +346,45 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                 })
                 .then((json) => {
                   this.database = json;
-                  this.loading = false;
-                  this.requestUpdate();
-                  this.ready = true;
+                  this.importStateCleanup();
                 })
                 .catch((error) => {
                   console.warn(error);
                 });
               break;
             case "json":
-              this.database = this.sourceData;
-              this.requestUpdate();
-              this.ready = true;
+              this.database = JSON.parse(this.sourceData);
+              this.importStateCleanup();
               break;
           }
         } else if (this.source == "filesystem") {
-          this.loading = true;
-          // this listener gets the event from the service worker
-          window.addEventListener("xlsx-file-system-data", (e) => {
-            let database = e.detail.data;
-            console.log(database);
-            for (var i in database) {
-              let loadedData = this.transformTable(database[i]);
-              if (typeof this[`process${i}Data`] === "function") {
-                loadedData = this[`process${i}Data`](loadedData);
+          if (!this.__applied) {
+            this.__applied = true;
+            // this listener gets the event from the service worker
+            window.addEventListener("xlsx-file-system-data", (e) => {
+              this.loading = true;
+              let database = e.detail.data;
+              for (var i in database) {
+                let loadedData = this.transformTable(database[i]);
+                if (typeof this[`process${i}Data`] === "function") {
+                  loadedData = this[`process${i}Data`](loadedData);
+                }
+                this.database[i] = loadedData;
               }
-              this.database[i] = loadedData;
-            }
-            this.loading = false;
-            if (
-              this.database.gradeScale &&
-              this.database.gradeScale.length > 0
-            ) {
-              GradeBookStore.gradeScale = this.database.gradeScale;
-            }
-            this.requestUpdate();
-            this.ready = true;
-          });
+              this.importStateCleanup();
+            });
+          }
         }
       }
     });
+  }
+  importStateCleanup() {
+    this.loading = false;
+    if (this.database.gradeScale && this.database.gradeScale.length > 0) {
+      GradeBookStore.gradeScale = this.database.gradeScale;
+    }
+    this.requestUpdate();
+    this.ready = true;
   }
   transformTable(table) {
     let tmp = table.shift();
@@ -507,9 +515,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   static get properties() {
     return {
       ...super.properties,
+      displayMode: { type: Number },
       settings: { type: Object },
       disabled: { type: Boolean, reflect: true },
       loading: { type: Boolean, reflect: true },
+      ready: { type: Boolean, reflect: true },
       activeStudent: { type: Number, attribute: "active-student" },
       activeAssignment: { type: Number, attribute: "active-assignment" },
       totalScore: { type: Number },
@@ -589,10 +599,16 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           right: 0;
           z-index: 1;
         }
+        h1,
+        h2,
+        h3,
+        h4 {
+          margin: 0;
+        }
         grid-plate {
           --hax-layout-container-transition: none;
           --grid-plate-col-transition: none;
-          --grid-plate-item-margin: 8px;
+          --grid-plate-item-margin: 0px;
           --grid-plate-item-padding: 8px;
         }
         #studentassessment {
@@ -620,15 +636,17 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             --simple-colors-default-theme-accent-10,
             black
           );
+          --a11y-collapse-horizontal-padding: 8px;
+          --a11y-collapse-vertical-padding: 4px;
         }
         a11y-collapse:not([expanded]):hover {
           background-color: var(--simple-colors-default-theme-accent-1, grey);
         }
         a11y-collapse div[slot="heading"] {
-          font-size: 20px;
+          font-size: 18px;
           font-weight: normal;
           cursor: pointer;
-          line-height: 34px;
+          line-height: 30px;
           display: flex;
         }
         a11y-collapse[expanded] div[slot="heading"] {
@@ -682,9 +700,22 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         simple-fields-field[type="textarea"] {
           --simple-fields-font-size: 20px;
         }
+        .source-selection {
+          text-align: center;
+          margin-top: 30vh;
+          font-size: 32px;
+        }
+        .source-selection label {
+          display: block;
+        }
+        .source-selection select {
+          font-size: 18px;
+        }
         #sourcedata,
         #sourcedatablob {
           display: block;
+          margin: 16px auto;
+          font-size: 24px;
         }
         simple-fields-field[type="number"] {
           --simple-fields-font-size: 40px;
@@ -1245,15 +1276,47 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       pdf.save(fname);
     });
   }
+  // open extra window and then render content
+  openWindow(e) {
+    if (this.__openWindow && !this.__openWindow.closed) {
+      this.__openWindow.focus();
+    } else {
+      this.__openWindow = window.open(
+        "",
+        "",
+        `left=0,top=0,width=${screen.width / 2},height=${
+          screen.height / 2
+        },toolbar=0,scrollbars=0,status=0`
+      );
+      this.__openWindow.onbeforeunload = () => {
+        this.displayMode = 0;
+        this.__openWindow = null;
+      };
+    }
+    this.renderSubmissionInWindow();
+  }
+  // render submission in window area
+  renderSubmissionInWindow() {
+    if (this.__openWindow && this.displayMode === 2) {
+      render(
+        html`
+          ${this.database.assignments.length &&
+          this.database.assignments[this.activeAssignment]
+            ? html`${this.activeSubmission
+                ? this.renderSubmission(this.activeSubmission)
+                : html`${this.t.noSubmission}`}`
+            : nothing}
+        `,
+        this.__openWindow.document.body
+      );
+    }
+  }
   /**
    * LitElement render method
    */
   render() {
     return html`
-      <loading-indicator
-        full
-        ?loading="${this.sourceData && this.loading}"
-      ></loading-indicator>
+      <loading-indicator full ?loading="${this.loading}"></loading-indicator>
       <div class="top-controls">
         <div class="group divider-right app-name">
           <slot name="app-name"></slot>
@@ -1264,7 +1327,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             @click="${this.changeStudent}"
             value="prev"
             title="${this.t.previousStudent}"
-            ?disabled="${0 === this.activeStudent}"
+            ?disabled="${0 === this.activeStudent || !this.ready}"
             icon="arrow-upward"
           >
             <span class="hide-900" value="prev">${this.t.previous}</span>
@@ -1275,7 +1338,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             title="${this.t.nextStudent}"
             icon="arrow-downward"
             ?disabled="${this.database.roster.length - 1 ===
-            this.activeStudent}"
+              this.activeStudent || !this.ready}"
           >
             <span class="hide-900" value="next">${this.t.next}</span>
           </simple-icon-button-lite>
@@ -1287,7 +1350,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             value="prev"
             title="${this.t.previousAssignment}"
             icon="arrow-back"
-            ?disabled="${0 === this.activeAssignment}"
+            ?disabled="${0 === this.activeAssignment || !this.ready}"
           >
             <span class="hide-900" value="prev">${this.t.previous}</span>
           </simple-icon-button-lite>
@@ -1296,7 +1359,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             value="next"
             title="${this.t.nextAssignment}"
             ?disabled="${this.database.assignments.length - 1 ===
-            this.activeAssignment}"
+              this.activeAssignment || !this.ready}"
             icon="arrow-forward"
           >
             <span class="hide-900" value="next">${this.t.next}</span>
@@ -1315,8 +1378,8 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           </simple-icon-button-lite>
         </div>
       </div>
-      <div ?hidden="${this.sourceData}">
-        <label>Select gradebook source..</label>
+      <div ?hidden="${this.sourceData}" class="source-selection">
+        <label>${this.t.selectGradebookSource}..</label>
         <select id="source" @change="${this.selectSource}">
           <option value="filesystem" selected>File sysem</option>
           <option value="googledocs">Google docs</option>
@@ -1333,14 +1396,14 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         </simple-icon-button-lite>
         <input
           id="sourcedata"
-          placeholder="Source data"
+          placeholder="${this.t.sourceData}"
           ?hidden="${!["googledocs", "url"].includes(this.source)}"
         />
         <textarea
           id="sourcedatablob"
-          rows="20"
-          cols="50"
-          placeholder="Paste valid JSON here"
+          rows="10"
+          cols="40"
+          placeholder="${this.t.pasteValidJSONHere}"
           ?hidden="${this.source != "json"}"
         ></textarea>
       </div>
@@ -1483,170 +1546,171 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           icon="assignment-ind"
           label="${this.t.activeAssessment}"
         >
-          ${this.database.assignments.length &&
-          this.database.assignments[this.activeAssignment]
-            ? html`${this.activeSubmission
-                ? this.renderSubmission(this.activeSubmission)
-                : html`${this.t.noSubmission}`}`
-            : nothing}
-        </a11y-tab>
-        <a11y-tab
-          icon="image:style"
-          label="${this.t.assessmentView}"
-          id="assessmentview"
-        >
           ${this.activeRubric[0]
             ? html`
-                <grid-plate layout="3-1">
-                <div slot="col-1">
-                  <h3>${this.activeRubric[0].name}</h3>
-                  ${this.activeRubric.map(
-                    (rubric) => html`
-                      <h4>${rubric.criteria}</h4>
-                      <p>${rubric.description}</p>
-                      <editable-table-display
-                        accent-color="${this.accentColor}"
-                        bordered
-                        column-header
-                        condensed
-                        disable-responsive
-                        scroll
-                        striped
-                      >
-                        <table>
-                          <tbody>
-                            <tr>
-                              ${rubric.qualitative.map(
-                                (cat) => html` <td>${cat}</td> `
-                              )}
-                              <td>${rubric.percentage} %</td>
-                            </tr>
-                            <tr>
-                              ${rubric.qualitative.map(
-                                (cat) => html`
-                                  <td>
-                                    <simple-fields-tag-list
-                                      style="background-color:transparent;"
-                                      data-criteria="${rubric.criteria}"
-                                      label="${cat}"
-                                    ></simple-fields-tag-list>
-                                  </td>
-                                `
-                              )}
-                              <td>
-                                <simple-fields-field
-                                  type="number"
-                                  part="simple-fields-field"
-                                  min="0"
-                                  value="${this.database.settings
-                                    .defaultScore === "max"
-                                    ? Math.round(
-                                        (rubric.percentage / 100) *
-                                          this.database.assignments[
-                                            this.activeAssignment
-                                          ].points
-                                      )
-                                    : this.database.settings.defaultScore}"
-                                  max="${Math.round(
-                                    (rubric.percentage / 100) *
-                                      this.database.assignments[
-                                        this.activeAssignment
-                                      ].points
-                                  )}"
-                                  maxlength="10"
-                                  data-rubric-score
-                                  data-criteria="${rubric.criteria}"
-                                ></simple-fields-field>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </editable-table-display>
-                      <h4>Additional ${rubric.criteria} feedback</h4>
-                      <simple-fields-field
-                        type="textarea"
-                        data-rubric-written
-                        data-criteria="${rubric.criteria}"
-                      ></simple-fields-field>
-                    `
-                  )}
-                  <div class="student-feedback-wrap">
-                    <div class="student-feedback-text">
-                      <h3 class="heading">Overall feedback</h3>
-                      <simple-fields-field
-                        type="textarea"
-                        data-criteria="overall"
-                        data-rubric-written
-                      ></simple-fields-field>
-                    </div>
-                    <div class="student-feedback-score">
-                      <simple-icon-button-lite
-                        icon="${this.scoreLock ? `lock` : `lock-open`}"
-                        @click="${this.toggleLock}"
-                      ></simple-icon-button-lite>
-                      <simple-fields-field
-                        ?disabled="${this.scoreLock}"
-                        type="number"
-                        min="0"
-                        id="totalpts"
-                        maxlength="10"
-                        @value-changed="${this.totalScoreChangedEvent}"
-                      ></simple-fields-field>
-                      /
-                      ${this.database.assignments[this.activeAssignment].points}
-                      pts
-                      <letter-grade
-                        style="margin:-8px 0 0 16px;"
-                        total="${
-                          this.database.assignments[this.activeAssignment]
-                            .points
-                        }"
-                        score="${this.totalScore}"
-                      ></letter-grade>
+                <grid-plate
+                  disable-responsive
+                  layout="${this.displayModeData()[this.displayMode].layout}"
+                >
+                  <div slot="col-1" class="tag-group">
+                    ${this.renderDisplayModeBtn()}
+                    ${this.database.tags.categories.length > 0
+                      ? html`
+                          <a11y-collapse-group heading-button>
+                            ${this.database.tags.categories.map(
+                              (category, i) => html`
+                                <a11y-collapse>
+                                  <div slot="heading">
+                                    <simple-colors
+                                      accent-color="${this.pickColor(i)}"
+                                      ><span></span></simple-colors
+                                    >${category}
+                                  </div>
+                                  <div slot="content">
+                                    ${this.database.tags.data
+                                      .filter((item) => {
+                                        return item.category.includes(category);
+                                      })
+                                      .map(
+                                        (term) =>
+                                          html`<simple-tag
+                                            draggable="true"
+                                            tabindex="0"
+                                            @keypress="${this.keyDown}"
+                                            @dragstart="${this.setDragTransfer}"
+                                            accent-color="${this.pickColor(i)}"
+                                            value="${term.term}"
+                                            .data="${term}"
+                                          ></simple-tag>`
+                                      )}
+                                  </div>
+                                </a11y-collapse>
+                              `
+                            )}
+                          </a11y-collapse-group>
+                        `
+                      : nothing}
+                  </div>
+                  <div slot="col-2">
+                    <h3>${this.activeRubric[0].name}</h3>
+                    ${this.activeRubric.map(
+                      (rubric, index) => html`
+                        ${this.renderRubricInfoBtn(
+                          index,
+                          rubric.criteria,
+                          rubric.description
+                        )}
+                        <letter-grade-picker></letter-grade-picker>
+                        <editable-table-display
+                          accent-color="${this.accentColor}"
+                          bordered
+                          column-header
+                          condensed
+                          disable-responsive
+                          scroll
+                          striped
+                        >
+                          <table>
+                            <tbody>
+                              <tr>
+                                ${rubric.qualitative.map(
+                                  (cat) => html` <td>${cat}</td> `
+                                )}
+                                <td>${rubric.percentage} %</td>
+                              </tr>
+                              <tr>
+                                ${rubric.qualitative.map(
+                                  (cat) => html`
+                                    <td>
+                                      <simple-fields-tag-list
+                                        style="background-color:transparent;"
+                                        data-criteria="${rubric.criteria}"
+                                        label="${cat}"
+                                      ></simple-fields-tag-list>
+                                    </td>
+                                  `
+                                )}
+                                <td>
+                                  <simple-fields-field
+                                    type="number"
+                                    part="simple-fields-field"
+                                    min="0"
+                                    value="${this.database.settings
+                                      .defaultScore === "max"
+                                      ? Math.round(
+                                          (rubric.percentage / 100) *
+                                            this.database.assignments[
+                                              this.activeAssignment
+                                            ].points
+                                        )
+                                      : this.database.settings.defaultScore}"
+                                    max="${Math.round(
+                                      (rubric.percentage / 100) *
+                                        this.database.assignments[
+                                          this.activeAssignment
+                                        ].points
+                                    )}"
+                                    maxlength="10"
+                                    data-rubric-score
+                                    data-criteria="${rubric.criteria}"
+                                  ></simple-fields-field>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </editable-table-display>
+                        <h4>Additional ${rubric.criteria} feedback</h4>
+                        <simple-fields-field
+                          type="textarea"
+                          data-rubric-written
+                          data-criteria="${rubric.criteria}"
+                        ></simple-fields-field>
+                      `
+                    )}
+                    <div class="student-feedback-wrap">
+                      <div class="student-feedback-text">
+                        <h3 class="heading">Overall feedback</h3>
+                        <simple-fields-field
+                          type="textarea"
+                          data-criteria="overall"
+                          data-rubric-written
+                        ></simple-fields-field>
+                      </div>
+                      <div class="student-feedback-score">
+                        <simple-icon-button-lite
+                          icon="${this.scoreLock ? `lock` : `lock-open`}"
+                          @click="${this.toggleLock}"
+                        ></simple-icon-button-lite>
+                        <simple-fields-field
+                          ?disabled="${this.scoreLock}"
+                          type="number"
+                          min="0"
+                          id="totalpts"
+                          maxlength="10"
+                          @value-changed="${this.totalScoreChangedEvent}"
+                        ></simple-fields-field>
+                        /
+                        ${this.database.assignments[this.activeAssignment]
+                          .points}
+                        pts
+                        <letter-grade
+                          style="margin:-8px 0 0 16px;"
+                          total="${this.database.assignments[
+                            this.activeAssignment
+                          ].points}"
+                          score="${this.totalScore}"
+                        ></letter-grade>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div slot="col-2" class="tag-group">
-        ${
-          this.database.tags.categories.length > 0
-            ? html`
-                <h4>Qualitative Rubric Tags</h4>
-                <a11y-collapse-group heading-button>
-                  ${this.database.tags.categories.map(
-                    (category, i) => html`
-                      <a11y-collapse>
-                        <div slot="heading">
-                          <simple-colors accent-color="${this.pickColor(i)}"
-                            ><span></span></simple-colors
-                          >${category}
-                        </div>
-                        <div slot="content">
-                          ${this.database.tags.data
-                            .filter((item) => {
-                              return item.category.includes(category);
-                            })
-                            .map(
-                              (term) =>
-                                html`<simple-tag
-                                  draggable="true"
-                                  tabindex="0"
-                                  @keypress="${this.keyDown}"
-                                  @dragstart="${this.setDragTransfer}"
-                                  accent-color="${this.pickColor(i)}"
-                                  value="${term.term}"
-                                  .data="${term}"
-                                ></simple-tag>`
-                            )}
-                        </div>
-                      </a11y-collapse>
-                    `
-                  )}
-                </a11y-collapse-group>
-              `
-            : nothing
-        }
-                </div>
-                </div>
+                  <div slot="col-3">
+                    ${this.database.assignments.length &&
+                    this.database.assignments[this.activeAssignment]
+                      ? html`${this.activeSubmission
+                          ? this.renderSubmission(this.activeSubmission)
+                          : html`${this.t.noSubmission}`}`
+                      : nothing}
+                  </div>
                 </grid-plate>
               `
             : nothing}
@@ -1821,7 +1885,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     const file = new FileReader();
     file.readAsDataURL(blob);
     // save to file format in question!
-    await FileSystemBrokerSingleton.saveFile("xlsx", output);
+    await XLSXFileSystemBrokerSingleton.saveFile("xlsx", output);
   }
   /**
    * Listen for value change coming from the fields in the active rubric
@@ -1851,7 +1915,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   updateTotalScore() {
     let score = 0;
     let tables = this.shadowRoot.querySelectorAll(
-      "#assessmentview editable-table-display"
+      "#assessment editable-table-display"
     );
     // add the scores up based on values of the pieces
     for (var i in Array.from(tables)) {
@@ -1900,7 +1964,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
    */
   getCriteriaScore(criteria) {
     let tables = this.shadowRoot.querySelectorAll(
-      "#assessmentview editable-table-display"
+      "#assessment editable-table-display"
     );
     // add the scores up based on values of the pieces
     for (var i in Array.from(tables)) {
@@ -1922,11 +1986,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   getCriteriaFeedback(criteria) {
     if (
       this.shadowRoot.querySelector(
-        `#assessmentview [data-rubric-written][data-criteria="${criteria}"]`
+        `#assessment [data-rubric-written][data-criteria="${criteria}"]`
       )
     ) {
       return this.shadowRoot.querySelector(
-        `#assessmentview [data-rubric-written][data-criteria="${criteria}"]`
+        `#assessment [data-rubric-written][data-criteria="${criteria}"]`
       ).value;
     }
     return "";

@@ -8,6 +8,8 @@ export const UIRenderPieces = function (SuperClass) {
       this.hideActiveStudentOverview = true;
       this.hideActiveAssignment = true;
       this.hideSettings = true;
+      this.hideRubricInfo = [];
+      import("@lrnwebcomponents/simple-popover/simple-popover.js");
       import("./grade-book-student-block.js");
     }
     static get properties() {
@@ -17,6 +19,7 @@ export const UIRenderPieces = function (SuperClass) {
         hideGradeScale: { type: Boolean },
         hideActiveStudentOverview: { type: Boolean },
         hideActiveAssignment: { type: Boolean },
+        hideRubricInfo: { type: Array },
       };
     }
     static get styles() {
@@ -26,6 +29,7 @@ export const UIRenderPieces = function (SuperClass) {
           .top-controls simple-icon-button-lite {
             margin: 0;
             border-radius: 0;
+            height: 36px;
           }
           .top-controls simple-icon-button-lite:not([disabled])::part(button) {
             outline: none;
@@ -60,6 +64,7 @@ export const UIRenderPieces = function (SuperClass) {
       return html`<simple-icon-button-lite
           @click="${this.toggleActiveStudentOverview}"
           id="activestudentbtn"
+          ?disabled="${!this.ready}"
         >
           ${this.database.roster[this.activeStudent] &&
           this.database.roster[this.activeStudent].photo
@@ -109,7 +114,6 @@ export const UIRenderPieces = function (SuperClass) {
     }
     // toggle logic for active student
     toggleActiveStudentOverview(e) {
-      import("@lrnwebcomponents/simple-popover/simple-popover.js");
       this.hideActiveStudentOverview = !this.hideActiveStudentOverview;
       if (!this.hideActiveStudentOverview) {
         this.hideSettings = true;
@@ -123,6 +127,7 @@ export const UIRenderPieces = function (SuperClass) {
           icon="list"
           @click="${this.toggleGradeScale}"
           id="gradescalebtn"
+          ?disabled="${!this.ready}"
         >
           <span class="hide-900">${this.t.gradingScale}</span>
         </simple-icon-button-lite>
@@ -163,7 +168,6 @@ export const UIRenderPieces = function (SuperClass) {
     }
     // toggle logic for button
     toggleGradeScale(e) {
-      import("@lrnwebcomponents/simple-popover/simple-popover.js");
       this.hideGradeScale = !this.hideGradeScale;
       if (!this.hideGradeScale) {
         this.hideSettings = true;
@@ -177,6 +181,7 @@ export const UIRenderPieces = function (SuperClass) {
           icon="settings"
           @click="${this.toggleSettings}"
           id="settings"
+          ?disabled="${!this.ready}"
           class="divider-left"
         >
           <span class="hide-900">${this.t.settings}</span>
@@ -215,7 +220,6 @@ export const UIRenderPieces = function (SuperClass) {
     }
     // toggle logic for button
     toggleSettings(e) {
-      import("@lrnwebcomponents/simple-popover/simple-popover.js");
       this.hideSettings = !this.hideSettings;
       if (!this.hideSettings) {
         this.hideGradeScale = true;
@@ -229,6 +233,7 @@ export const UIRenderPieces = function (SuperClass) {
           icon="assignment"
           @click="${this.toggleActiveAssignment}"
           id="activeassignmentbtn"
+          ?disabled="${!this.ready}"
         >
           <span class="hide-900">${this.t.activeAssignment}</span>
         </simple-icon-button-lite>
@@ -260,12 +265,69 @@ export const UIRenderPieces = function (SuperClass) {
     }
     // toggle logic for button
     toggleActiveAssignment(e) {
-      import("@lrnwebcomponents/simple-popover/simple-popover.js");
       this.hideActiveAssignment = !this.hideActiveAssignment;
       if (!this.hideActiveAssignment) {
         this.hideSettings = true;
         this.hideGradeScale = true;
         this.hideActiveStudentOverview = true;
+      }
+    }
+
+    // RUBRICS
+
+    // render grading scale in a popover
+    renderRubricInfoBtn(index, criteria, details) {
+      return html`<simple-icon-button-lite
+          icon="info"
+          @click="${this.toggleRubricInfo}"
+          id="rubricinfo${index}"
+          data-id="${index}"
+        >
+          <span class="hide-900" data-id="${index}">${criteria}</span>
+        </simple-icon-button-lite>
+        <simple-popover
+          ?hidden="${!this.hideRubricInfo[index]}"
+          for="rubricinfo${index}"
+          auto
+        >
+          <p style="max-width:20vw;">${details}</p>
+        </simple-popover>`;
+    }
+    // toggle logic for button
+    toggleRubricInfo(e) {
+      this.hideRubricInfo[parseInt(e.target.getAttribute("data-id"))] = !this
+        .hideRubricInfo[parseInt(e.target.getAttribute("data-id"))];
+      this.requestUpdate();
+    }
+
+    // displayMode toggle button
+    renderDisplayModeBtn() {
+      return html` ${this.displayModeData().map(
+        (value, i) => html`
+          <simple-icon-button-lite
+            icon="${value.icon}"
+            @click="${this.toggleDisplayMode}"
+            data-id="${i}"
+            ?disabled="${this.displayMode === i}"
+          >
+            <span class="hide-900" data-id="${i}">${value.label}</span>
+          </simple-icon-button-lite>
+        `
+      )}`;
+    }
+    displayModeData() {
+      return [
+        { label: "Mode 1", icon: "view-array", layout: "1-1-2" },
+        { label: "Mode 2", icon: "view-carousel", layout: "1-2-1" },
+        { label: "Two windows", icon: "open-in-new", layout: "1-2" },
+      ];
+    }
+
+    toggleDisplayMode(e) {
+      this.displayMode = parseInt(e.target.getAttribute("data-id"));
+      // open in new window and drop the assignment display panel
+      if (this.displayMode == 2) {
+        this.openWindow();
       }
     }
   };
