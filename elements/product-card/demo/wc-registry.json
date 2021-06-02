@@ -140,7 +140,7 @@
   "hax-context-item-menu": "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js",
   "hax-context-item-textop": "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js",
   "hax-context-item": "@lrnwebcomponents/hax-body/lib/hax-context-item.js",
-  "hax-export-dialog": "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js",
+  "hax-export-dialog": "@lrnwebcomponents/hax-body/lib/hax-cancel-dialog.js",
   "hax-gizmo-browser": "@lrnwebcomponents/hax-body/lib/hax-gizmo-browser.js",
   "hax-panel-item": "@lrnwebcomponents/hax-body/lib/hax-panel-item.js",
   "hax-plate-context": "@lrnwebcomponents/hax-body/lib/hax-plate-context.js",

@@ -261,7 +261,7 @@ class HAX extends HTMLElement {
     tray.elementAlign = this.elementAlign;
     document.body.appendChild(tray);
     document.body.appendChild(document.createElement("hax-app-picker"));
-    document.body.appendChild(document.createElement("hax-export-dialog"));
+    document.body.appendChild(document.createElement("hax-cancel-dialog"));
     document.body.appendChild(document.createElement("hax-autoloader"));
     return true;
   }

@@ -26,10 +26,6 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             color: var(--simple-fields-error-color, #b40000);
             transition: color 0.3s ease-in-out;
           }
-          :host([hovered]) {
-            background-color: var(--simple-fields-active-color, #eeeeee);
-            transition: background-color 0.3s ease-in-out;
-          }
           :host([disabled]) {
             color: var(--simple-fields-disabled-color, #999999);
           }
@@ -111,6 +107,12 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
           :host([type="range"]) .border-bottom {
             display: none;
           }
+          ::slotted(label:hover),
+          ::slotted(label:focus),
+          ::slotted(label:focus-within) {
+            color: var(--simple-fields-accent-color, #3f51b5);
+            transition: background-color 0.3s ease-in-out;
+          }
           ::slotted(input) {
             padding: 0px;
           }
@@ -130,6 +132,12 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             display: var(--simple-fields-radio-option-display, block);
             flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
             transition: color 0.3s ease-in-out;
+          }
+          ::slotted(fieldset[slot="field"]:hover),
+          ::slotted(fieldset[slot="field"]:focus),
+          ,
+          ::slotted(fieldset[slot="field"]:focus-within) {
+            color: var(--simple-fields-accent-color, #3f51b5);
           }
         `,
       ];
@@ -533,6 +541,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     get labelTemplate() {
       return html`
         <label
+          id="${this.fieldId}-label"
           for="${this.fieldId}"
           class="label-main"
           ?hidden="${this.type === "fieldset"}"

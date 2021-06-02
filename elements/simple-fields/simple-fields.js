@@ -125,86 +125,89 @@ inputMethod: {                //for fields in "this.fields", define elements bas
  * @demo ./demo/form.html Form
  */
 class SimpleFields extends SimpleFieldsLite {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host {
-          display: block;
-          --simple-picker-background-color: var(
-            --simple-fields-background-color,
-            transparent
-          );
-          --simple-picker-border-width: 0;
-          --simple-picker-focus-border-width: 0;
-          --simple-picker-display: block;
-          --simple-picker-listbox-border-width: 1px;
-          --simple-picker-listbox-outline: none;
-        }
+:host {
+  display: block;
+  --simple-picker-background-color: var(--simple-fields-background-color,transparent);
+  --simple-picker-border-width: 0;
+  --simple-picker-focus-border-width: 0;
+  --simple-picker-display: block;
+  --simple-picker-listbox-border-width: 1px;
+  --simple-picker-listbox-outline: none;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
-      `,
+:host([hidden]) {
+  display: none;
+}
+      `
     ];
   }
 
-  // render function
+// render function
   render() {
-    return html` <div id="schema-fields" aria-live="polite" part="fields-list">
-      <slot></slot>
-    </div>`;
+    return html`
+
+<div id="schema-fields" aria-live="polite" part="fields-list">
+  <slot></slot>
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {};
+    return {}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      disableResponsive: {
-        type: Boolean,
-        attribute: "disable-responsive",
-      },
-      /**
-       * Fields to convert to JSON Schema.
-       */
-      fields: {
-        type: Array,
-      },
-      /**
-       * Conversion from fields array with inputMethods to JSON schema types and formats.
-       * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
-       */
-      schematizer: {
-        type: Object,
-        attribute: "schematizer",
-      },
-      /**
-       * Schema label
-       */
-      label: {
-        type: String,
-      },
-      /**
-       * tracks all activeTabs as an object
-       */
-      __activeTabs: {
-        type: Object,
-        attribute: "active-path",
-      },
-      /**
-       * default theme for code editor
-       */
-      codeTheme: {
-        type: String,
-        attribute: "code-theme",
-      },
-    };
+  
+  ...super.properties,
+  
+  "disableResponsive": {
+    "type": Boolean,
+    "attribute": "disable-responsive"
+  },
+  /**
+   * Fields to convert to JSON Schema.
+   */
+  "fields": {
+    "type": Array
+  },
+  /**
+   * Conversion from fields array with inputMethods to JSON schema types and formats.
+   * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
+   */
+  "schematizer": {
+    "type": Object,
+    "attribute": "schematizer"
+  },
+  /**
+   * Schema label
+   */
+  "label": {
+    "type": String
+  },
+  /**
+   * tracks all activeTabs as an object
+   */
+  "__activeTabs": {
+    "type": Object,
+    "attribute": "active-path"
+  },
+  /**
+   * default theme for code editor
+   */
+  "codeTheme": {
+    "type": String,
+    "attribute": "code-theme"
+  }
+}
+;
   }
 
   /**
@@ -305,9 +308,11 @@ class SimpleFields extends SimpleFieldsLite {
               element: "simple-picker",
               attributes: {
                 autofocus: true,
+                justify: true,
               },
               properties: {
                 options: "options",
+                justify: "justify",
               },
             },
           },
@@ -475,7 +480,28 @@ class SimpleFields extends SimpleFieldsLite {
                   element: "simple-colors-picker",
                   attributes: {
                     autofocus: true,
+                    justify: true,
                   },
+                  properties: {
+                    justify: "justify",
+                  },
+                },
+              },
+              combo: {
+                defaultSettings: {
+                  import:
+                    "@lrnwebcomponents/simple-fields/lib/simple-fields-combo.js",
+                  element: "simple-fields-combo",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    autocomplete: "both",
+                    justify: true,
+                  },
+                },
+                properties: {
+                  autocomplete: "autocomplete",
+                  justify: "justify",
                 },
               },
               date: {
@@ -536,8 +562,10 @@ class SimpleFields extends SimpleFieldsLite {
                   element: "simple-icon-picker",
                   attributes: {
                     autofocus: true,
+                    justify: true,
                   },
                   properties: {
+                    justify: "justify",
                     options: "icons",
                     exclude: "exclude",
                     excludeSets: "excludeSets",
@@ -651,6 +679,12 @@ class SimpleFields extends SimpleFieldsLite {
             defaultSettings: {
               type: "string",
               format: "colorpicker",
+            },
+          },
+          combo: {
+            defaultSettings: {
+              type: "string",
+              format: "combo",
             },
           },
           "date-time": {

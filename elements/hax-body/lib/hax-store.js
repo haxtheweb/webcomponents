@@ -91,7 +91,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         // now we can look through them
         // look for a match
         for (var gizmoposition in this.gizmoList) {
-          let gizmo = this.gizmoList[gizmoposition];
+          let gizmo = this.gizmoList[gizmoposition],
+            tags = [];
           let props = {};
           // reset match per gizmo
           let match = false;
@@ -129,6 +130,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                   if (preferExclusive && gizmo.handles[i].type_exclusive) {
                     return [this.haxElementPrototype(gizmo, props, "")];
                   } else {
+                    let keywords = {};
+                    [...gizmo.handles].forEach((i) => {
+                      if (!!i && !!i.type && i.type != "")
+                        keywords[i.type.toLowerCase()] = true;
+                    });
+                    [...gizmo.groups].forEach((i) => {
+                      if (!!i && i != "") keywords[i.toLowerCase()] = true;
+                    });
+                    gizmo.keywords = Object.keys(keywords);
                     matches.push(this.haxElementPrototype(gizmo, props, ""));
                   }
                 }
@@ -383,6 +393,24 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
        */
       storageData: {
         type: Object,
+      },
+      /**
+       * element align
+       */
+      elementAlign: {
+        type: String,
+      },
+      /**
+       * is hax tray collapsed, side-panel, or full-panel
+       */
+      trayStatus: {
+        type: String,
+      },
+      /**
+       * which panel is active int he tray: content-edit, view-source, etc.
+       */
+      trayDetail: {
+        type: String,
       },
       /**
        * Hax tray
@@ -890,7 +918,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             this.haxAutoloader,
             this.activeHaxBody,
             this.haxTray,
-            this.haxExport
+            this.haxCancel
           );
         }, 0);
       }
@@ -993,8 +1021,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
     }, 0);
   }
-  _storePiecesAllHere(haxAutoloader, activeHaxBody, haxTray, haxExport) {
-    if (!this.ready && activeHaxBody && haxAutoloader && haxTray && haxExport) {
+  _storePiecesAllHere(haxAutoloader, activeHaxBody, haxTray, haxCancel) {
+    if (!this.ready && activeHaxBody && haxAutoloader && haxTray && haxCancel) {
       // send that hax store is ready to go so now we can setup the rest
       this.dispatchEvent(
         new CustomEvent("hax-store-ready", {
@@ -1004,14 +1032,31 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           detail: true,
         })
       );
-      // associate the export button in the tray to the dialog
-      HAXStore.haxExport.shadowRoot
+      // associate the cancel button in the tray to the dialog
+      let modal = HAXStore.haxCancel.shadowRoot
         .querySelector("#dialog")
-        .associateEvents(haxTray.shadowRoot.querySelector("#exportbtn"));
+        .associateEvents(haxTray.shadowRoot.querySelector("#haxcancelbutton"));
+      if (!!modal)
+        modal.addEventListener(
+          "simple-modal-confirmed",
+          this._handleConfirmCancel
+        );
+
       this.ready = true;
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
     }
+  }
+  _handleConfirmCancel(e) {
+    this.editMode = false;
+    this.dispatchEvent(
+      new CustomEvent("hax-cancel", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: e.detail,
+      })
+    );
   }
   /**
    * Build a list of common voice commands
@@ -1329,7 +1374,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           return `<place-holder type=\"image\" text=\"file:${s[0]}"></place-holder>`;
         }
       );
-      //console.log(pasteContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = await this.htmlToHaxElements(pasteContent);
       // ensure that if we only have 1 element that we are wrapped correctly
@@ -1743,6 +1787,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.skipExitTrap = false;
     this.appStoreLoaded = false;
     this.elementList = {};
+    this.elementAlign = "right";
+    this.trayStatus = "collapsed";
+    this.trayDetail = "content-edit";
     this.appList = [];
     this.gizmoList = [];
     this.activeHaxBody = null;
@@ -1787,6 +1834,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       activeGizmo: computed,
       activeNodeIndex: computed,
       editMode: observable,
+      elementAlign: observable,
+      trayStatus: observable,
+      trayDetail: observable,
       appList: observable,
       activeApp: observable,
       haxSelectedText: observable,

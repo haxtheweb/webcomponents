@@ -45,6 +45,7 @@ class SimpleColorsPicker extends SimpleColors {
         @change="${this._handleChange}"
         @collapse="${this._handleCollapse}"
         @expand="${this._handleExpand}"
+        ?justify="${this.justify}"
         @option-focus="${this._handleOptionFocus}"
         aria-labelledby="${this.ariaLabelledby}"
         .label="${this.label}"
@@ -115,6 +116,15 @@ class SimpleColorsPicker extends SimpleColors {
       expanded: {
         type: Boolean,
         reflect: true,
+      },
+
+      /**
+       * Is it expanded?
+       */
+      justify: {
+        type: Boolean,
+        reflect: true,
+        attribute: "justify",
       },
 
       /**

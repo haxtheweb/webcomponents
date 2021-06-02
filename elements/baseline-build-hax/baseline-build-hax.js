@@ -23,7 +23,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
 import "@lrnwebcomponents/hax-body/lib/hax-tray.js";
 import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
 import "@lrnwebcomponents/hax-body/lib/hax-app.js";
-import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
+import "@lrnwebcomponents/hax-body/lib/hax-cancel-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js";
 import "@lrnwebcomponents/citation-element/citation-element.js";

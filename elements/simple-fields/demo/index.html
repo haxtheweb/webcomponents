@@ -15,6 +15,7 @@
       import '../lib/simple-fields-field.js';
       import '../lib/simple-fields-form.js';
       import '../lib/simple-fields-tag-list.js';
+      import "../lib/simple-fields-combo.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -82,6 +83,33 @@
                       "property": "color",
                       "title": "Your favorite  color.",
                       "inputMethod": "colorpicker"
+                    },
+                    {
+                      "property": "house",
+                      "title": "Your noble house.",
+                      "inputMethod": "combo",
+                      "prefix": "House ",
+                      "options": {
+                        "Arryn": "Arryn",
+                        "Baratheon": "Baratheon",
+                        "Bolton": "Bolton",
+                        "Florent": "Florent",
+                        "Frey": "Frey",
+                        "Greyjoy": "Greyjoy",
+                        "Hightower": "Hightower",
+                        "Lannister": "Lannister",
+                        "Martell": "Martell",
+                        "Mormont": "Mormont",
+                        "Redwyne": "Redwyne",
+                        "Seaworth": "Seaworth",
+                        "Selmy": "Selmy",
+                        "Stark": "Stark",
+                        "Targaryen": "Targaryen",
+                        "Tarley": "Tarley",
+                        "Tully": "Tully",
+                        "Tyrell": "Tyrell",
+                        "Umber": "Umber",
+                      }
                     },
                     {
                       "property": "sword",

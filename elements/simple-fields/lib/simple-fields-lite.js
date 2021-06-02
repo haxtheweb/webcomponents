@@ -172,6 +172,8 @@ type: {                                       //For properties in "this.schema",
         errorMessageSlot: "errorMessage"      //Optional: element's slot that contains its error message, e.g. "errorMessage"
         labelProperty: "label"                //Optional: element's property that sets its label, e.g. "label"
         labelSlot: "label"                    //Optional: element's slot that contains its label, e.g. "label"
+        prefixSlot: "prefix"                  //Optional: element's slot that contains its prefix, e.g. "prefix"
+        suffixSlot: "suffix"                  //Optional: element's slot that contains its suffix, e.g. "suffix"
         valueProperty: "value"                //Optional: element's property that gets its value, e.g. "value" or "checked"
         setValueProperty: "value"             //Optional: element's property that sets its value, e.g. "value" or "checked" (default is same as valueProperty)
         valueChangedProperty: "value-changed" //Optional: event element fires when value property changes, e.g. "value-changed" or "click"
@@ -620,6 +622,8 @@ class SimpleFieldsLite extends LitElement {
             schemaProp.title ||
             schemaProp.description ||
             key,
+          fieldPrefix = schemaProp.prefix,
+          fieldSuffix = schemaProp.suffix,
           desc =
             schemaProp.description && (schemaProp.label || schemaProp.title)
               ? schemaProp.description
@@ -630,6 +634,8 @@ class SimpleFieldsLite extends LitElement {
         data.descriptionSlot = schema.descriptionSlot || data.descriptionSlot;
         data.errorMessageSlot =
           schema.errorMessageSlot || data.errorMessageSlot;
+        data.prefixSlot = schema.prefixSlot || data.prefixSlot || "prefix";
+        data.suffixSlot = schema.suffixSlot || data.suffixSlot || "suffix";
         data.valueSlot = schema.valueSlot || data.valueSlot;
         data.labelProperty =
           schema.labelProperty || data.labelProperty || "label";
@@ -686,6 +692,8 @@ class SimpleFieldsLite extends LitElement {
           data.descriptionProperty,
           data.descriptionSlot
         );
+        this._configElement(wrapper, fieldPrefix, undefined, data.prefixSlot);
+        this._configElement(wrapper, fieldSuffix, undefined, data.suffixSlot);
 
         //set elemenet attributes according to schema
         Object.keys(data.attributes || {}).forEach((attr) => {
@@ -765,7 +773,7 @@ class SimpleFieldsLite extends LitElement {
     });
   }
   /**
-   * sets field or field wrapper element's slot ot property to a value
+   * sets field or field wrapper element's slot or property to a value
    *
    * @param {string} propName property name
    * @param {string} slotName slot name if any
@@ -783,7 +791,7 @@ class SimpleFieldsLite extends LitElement {
           .querySelectorAll(`[slot=${slotName}]`)
           .forEach((el) => el.remove());
       target.appendChild(span);
-    } else {
+    } else if (propName) {
       target[propName] = value;
     }
   }

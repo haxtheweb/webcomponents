@@ -1,29 +1,34 @@
 
-<label id="listLabel" for="listbox" .hidden="${!this.label || this.label.trim() === ''}">
+<label id="listLabel" 
+  for="listbox" 
+  .hidden="${!this.label || this.label.trim() === ''}"
+  part="label">
   ${this.label && this.label.trim() !== "" ? this.label.trim()  : "" }
 </label>
 <div id="listbox"
   .aria-activedescendant="${this.__activeDesc}" 
   .aria-labelledby="${this.ariaLabelledby}" 
   .disabled="${this.disabled}"
-  role="listbox" 
+  part="input"
+  role="option-input" 
   tabindex="0"
   @click="${this._handleListboxClick}"
   @mousedown="${this._handleListboxMousedown}"
   @keydown="${this._handleListboxKeydown}">
-  <div id="sample">
+  <div id="sample" part="sample">
     <simple-picker-option 
       ?hide-option-labels="${this.hideOptionLabels}"
       ?title-as-html="${this.titleAsHtml}"
       .icon="${this.__selectedOption ? this.__selectedOption.icon : false}"
-      .label="${this.__selectedOption ? this.__selectedOption.alt : false}"
+      .label="${this.__selectedOption ? this.__selectedOption.alt : false}" 
+      part="sample-option"
       .style=${this.__selectedOption ? this.__selectedOption.style : false}
       aria-hidden="true">
     </simple-picker-option>
     <span id="icon"><simple-icon-lite aria-hidden="true" icon="arrow-drop-down"></simple-icon-lite></span>
   </div>
-  <div id="collapse">
-    <div class="rows">
+  <div id="collapse" part="listbox">
+    <div class="rows" part="listbox-rows">
         ${cache((this.expanded && this.__options) ? this._renderOptions(this.__options) : nothing)}
     </div>
   </div>

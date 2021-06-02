@@ -17,11 +17,52 @@ export const SimpleFieldsBaseStyles = [
       color: var(--simple-fields-color, currentColor);
       margin: 0 0
         var(--simple-fields-field-margin, var(--simple-fields-margin, 16px));
+      --simple-picker-options-border: 1px solid
+        var(
+          --simple-fields-button-border-color,
+          var(--simple-fields-border-color, #999)
+        );
+      --simple-picker-options-focus-border: 1px solid
+        var(--simple-fields-accent-color, #3f51b5);
+    }
+    ::slotted([slot=field]]) {
+      --simple-picker-options-left: 0;
+      --simple-picker-options-right: 0;
+      --simple-picker-options-border: 1px
+        var(
+          --simple-fields-button-border-color,
+          var(--simple-fields-border-color, #999)
+        )
+        solid;
+      --simple-picker-options-focus-border: 1px
+        var(--simple-fields-accent-color, #3f51b5) solid;
     }
     :host([hidden]),
     :host [hidden],
     :host([type="hidden"]) {
       display: none !important;
+    }
+    ul[role="listbox"] {
+      z-index: 2;
+      opacity: 0;
+      margin: 0;
+      padding: 0;
+      top: 100%;
+      background-color: var(--simple-fields-background-color, white);
+      color: var(--simple-fields-color, currentColor);
+      border: 1px
+        var(
+          --simple-fields-button-border-color,
+          var(--simple-fields-border-color, #999)
+        )
+        solid;
+      overflow: auto;
+    }
+
+    ul[role="listbox"].focus,
+    ul[role="listbox"]:focus,
+    ul[role="listbox"]:focus-within {
+      border-color: var(--simple-fields-accent-color, #3f51b5);
     }
   `,
 ];

@@ -24,7 +24,10 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     this.hasActiveEditingElement = false;
     this.haxUIElement = true;
     this.tourName = "hax";
+    this.trayDetail = "content-edit";
+    this.trayStatus = "collapsed";
     this.t = {
+      edit: "Edit",
       dragHandle: "Drag handle",
       moveUp: "Move up",
       moveDown: "Move down",
@@ -47,7 +50,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       ...super.styles,
       css`
         :host {
-          width: 176px;
+          width: 200px;
         }
         hax-toolbar {
           flex: 0 0 auto;
@@ -187,6 +190,25 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               </div>
             </hax-toolbar-menu>
           </div>
+          <div class="group">
+            <hax-context-item
+              icon="build"
+              action
+              align-horizontal="left"
+              ?disabled="${this.hasActiveEditingElement}"
+              label="${this.t.edit}"
+              data-simple-tour-stop
+              data-stop-title="label"
+              event-name="content-edit"
+              toggles
+              ?toggled="${this.trayDetail === "content-edit" &&
+              this.trayStatus !== "collapsed"}"
+            >
+              <div slot="tour" data-stop-content>
+                Opens the Edit panel for more advanced settings.
+              </div>
+            </hax-context-item>
+          </div>
         </hax-toolbar>
       </div>
     `;
@@ -283,6 +305,22 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       ...super.properties,
       hasActiveEditingElement: {
         type: Boolean,
+      },
+      /**
+       * is hax tray collapsed, side-panel, or full-panel
+       */
+      trayDetail: {
+        type: String,
+        reflect: true,
+        attribute: "tray-detail",
+      },
+      /**
+       * is hax tray collapsed, side-panel, or full-panel
+       */
+      trayStatus: {
+        type: String,
+        reflect: true,
+        attribute: "tray-status",
       },
     };
   }

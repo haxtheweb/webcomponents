@@ -74,6 +74,15 @@
   },
 
   /**
+   * Box is 100% width of the ui
+   */
+  "justify": {
+    "type": "Boolean",
+    "reflect": true,
+    "attribute": "justify"
+  },
+
+  /**
    * Optional. Label for picker input
    */
   "label": {

@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { svg, css, LitElement } from "lit-element/lit-element.js";
+import { html, svg, css, LitElement } from "lit-element/lit-element.js";
 import { SimpleIconsetStore } from "./simple-iconset.js";
 
 export const SimpleIconBehaviors = function (SuperClass) {
@@ -19,6 +19,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
             vertical-align: middle;
             height: var(--simple-icon-height, 24px);
             width: var(--simple-icon-width, 24px);
+            color: var(--simple-icon-color, currentColor);
           }
           :host([dir="rtl"]) svg {
             direction: rtl;
@@ -26,25 +27,35 @@ export const SimpleIconBehaviors = function (SuperClass) {
           :host([hidden]) {
             display: none;
           }
+          #svg-polyfill {
+            background-color: var(--simple-icon-color, currentColor);
+            height: var(--simple-icon-height, 24px);
+            width: var(--simple-icon-width, 24px);
+          }
           svg {
             height: var(--simple-icon-height, 24px);
             width: var(--simple-icon-width, 24px);
             max-height: var(--simple-icon-height, 24px);
             max-width: var(--simple-icon-width, 24px);
             filter: var(--simple-icon-color, initial);
+            pointer-events: none;
           }
           feFlood {
             flood-color: var(--simple-icon-color, currentColor);
-          }
-          svg {
-            pointer-events: none;
           }
         `,
       ];
     }
     // render function
     render() {
-      return svg`
+      return this.useSafariPolyfill
+        ? html`
+            <div
+              id="svg-polyfill"
+              style="mask:${this.safariMask};-webkit-mask:${this.safariMask}"
+            ></div>
+          `
+        : svg`
         <svg xmlns="http://www.w3.org/2000/svg" part="simple-icon-svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
           <filter
             color-interpolation-filters="sRGB"
@@ -68,7 +79,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
     }
 
     get feFlood() {
-      return !this.noColorize ? svg`<feFlood result="COLOR" />` : ``;
+      return !this.noColorize ? svg`<feFlood result="COLOR"/>` : ``;
     }
 
     // properties available to the custom element for data binding
@@ -107,10 +118,19 @@ export const SimpleIconBehaviors = function (SuperClass) {
         "ltr"
       );
     }
+    get useSafariPolyfill() {
+      return navigator.userAgent.indexOf("Safari") > -1;
+    }
+    get safariMask() {
+      return this.src && this.useSafariPolyfill
+        ? `url(${this.src}) no-repeat center / contain`
+        : "";
+    }
     firstUpdated(changedProperties) {
       if (super.firstUpdated) {
         super.firstUpdated(changedProperties);
       }
+      if (this.useSafariPolyfill) return;
       const randomId = "f-" + Math.random().toString().slice(2, 10);
       this.shadowRoot.querySelector("image").style.filter = `url(#${randomId})`;
       this.shadowRoot.querySelector("filter").setAttribute("id", randomId);
@@ -136,7 +156,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
         }
         if (propName == "src") {
           // look this up in the registry
-          if (this[propName]) {
+          if (this[propName] && !this.useSafariPolyfill) {
             this.shadowRoot
               .querySelector("image")
               .setAttribute("xlink:href", `${this[propName]}`);

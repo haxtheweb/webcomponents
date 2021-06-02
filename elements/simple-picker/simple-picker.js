@@ -254,6 +254,7 @@ class SimplePicker extends LitElement {
           display: none;
           width: 100%;
           position: absolute;
+          top: var(--simple-picker-options-top);
           z-index: 2;
         }
 
@@ -289,6 +290,14 @@ class SimplePicker extends LitElement {
           background-color: var(--simple-picker-options-background-color, #fff);
           max-height: var(--simple-picker-options-max-height, 250px);
           overflow-y: auto;
+          border: var(--simple-picker-options-border);
+        }
+
+        .rows:focus-within {
+          border: var(
+            --simple-picker-options-focus-border,
+            var(--simple-picker-options-border)
+          );
         }
 
         :host([align-right]) #collapse .rows {
@@ -299,6 +308,11 @@ class SimplePicker extends LitElement {
                 var(--simple-picker-border-width, 1px)
               ) * 2
           );
+        }
+
+        :host([justify]) #collapse .rows {
+          left: 0px;
+          right: 0px;
         }
 
         .row {
@@ -399,6 +413,7 @@ class SimplePicker extends LitElement {
         id="listLabel"
         for="listbox"
         .hidden="${!this.label || this.label.trim() === ""}"
+        part="label"
       >
         ${this.label && this.label.trim() !== "" ? this.label.trim() : ""}
       </label>
@@ -407,13 +422,14 @@ class SimplePicker extends LitElement {
         .aria-activedescendant="${this.__activeDesc}"
         .aria-labelledby="${this.ariaLabelledby}"
         .disabled="${this.disabled}"
-        role="listbox"
+        part="input"
+        role="option-input"
         tabindex="0"
         @click="${this._handleListboxClick}"
         @mousedown="${this._handleListboxMousedown}"
         @keydown="${this._handleListboxKeydown}"
       >
-        <div id="sample">
+        <div id="sample" part="sample">
           <simple-picker-option
             ?hide-option-labels="${this.hideOptionLabels}"
             ?title-as-html="${this.titleAsHtml}"
@@ -423,6 +439,7 @@ class SimplePicker extends LitElement {
             .label="${this.__selectedOption
               ? this.__selectedOption.alt
               : false}"
+            part="sample-option"
             .style=${this.__selectedOption
               ? this.__selectedOption.style
               : false}
@@ -436,8 +453,8 @@ class SimplePicker extends LitElement {
             ></simple-icon-lite
           ></span>
         </div>
-        <div id="collapse">
-          <div class="rows">
+        <div id="collapse" part="listbox">
+          <div class="rows" part="listbox-rows">
             ${cache(
               this.expanded && this.__options
                 ? this._renderOptions(this.__options)
@@ -525,6 +542,15 @@ class SimplePicker extends LitElement {
         type: Boolean,
         reflect: true,
         attribute: "hide-sample",
+      },
+
+      /**
+       * Box is 100% width of the ui
+       */
+      justify: {
+        type: Boolean,
+        reflect: true,
+        attribute: "justify",
       },
 
       /**

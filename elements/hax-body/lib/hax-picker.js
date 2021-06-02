@@ -24,6 +24,36 @@ class HaxPicker extends LitElement {
           margin: var(--hax-ui-spacing-sm);
           --simple-button-grid-cols: 100px;
         }
+        #filters {
+          min-height: 24px;
+        }
+        simple-icon-button-lite {
+          float: right;
+          margin-left: -24px;
+        }
+        simple-fields-field::part(fieldset-legend) {
+          line-height: 24px;
+        }
+        simple-fields-field::part(fieldset-options) {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(11em, 1fr));
+        }
+        simple-fields-field::part(option) {
+          display: flex;
+          flex-wrap: no-wrap;
+          align-items: center;
+          justify-content: space-between;
+          margin: 0 var(--simple-fields-margin-small, 8px);
+          flex-direction: row-reverse;
+        }
+        simple-fields-field::part(option-inner) {
+          flex: 0 0 auto;
+          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+        }
+        simple-fields-field::part(option-label) {
+          flex: 1 1 auto;
+          margin: 0;
+        }
       `,
     ];
   }
@@ -35,21 +65,43 @@ class HaxPicker extends LitElement {
   }
   render() {
     return html`
+      ${!!this.keywords
+        ? html` <div id="filters">
+            <simple-icon-button-lite
+              icon="editable-table:filter${!this.filterOn ? "" : "-off"}"
+              label="Toggle Filters"
+              tooltip-position="right"
+              @click="${(e) => (this.filterOn = !this.filterOn)}"
+            >
+            </simple-icon-button-lite>
+            <simple-fields-field
+              ?hidden="${!this.filterOn}"
+              id="hax-gizmo-filters"
+              label="Filters"
+              type="checkbox"
+              .options="${this.keywords}"
+              @value-changed="${this._handleFilters}"
+            >
+            </simple-fields-field>
+          </div>`
+        : ""}
       <simple-button-grid cols="100px">
-        ${this.selectionList.map(
-          (element, index) => html`
-            <hax-tray-button
-              show-text-label
-              id="picker-item-${index}"
-              @click="${this._selected}"
-              data-selected="${index}"
-              ?disabled="${HAXStore.activeGizmo &&
-              HAXStore.activeGizmo.tag == element.tag}"
-              label="${element.title}"
-              icon="${element.icon}"
-              icon-position="top"
-            ></hax-tray-button>
-          `
+        ${this.selectionList.map((element, index) =>
+          !this._isFiltered(element.keywords)
+            ? ""
+            : html`
+                <hax-tray-button
+                  show-text-label
+                  id="picker-item-${index}"
+                  @click="${this._selected}"
+                  data-selected="${index}"
+                  ?disabled="${HAXStore.activeGizmo &&
+                  HAXStore.activeGizmo.tag == element.tag}"
+                  label="${element.title}"
+                  icon="${element.icon}"
+                  icon-position="top"
+                ></hax-tray-button>
+              `
         )}
       </simple-button-grid>
     `;
@@ -65,6 +117,9 @@ class HaxPicker extends LitElement {
       _elements: {
         type: Array,
       },
+      keywords: {
+        type: Object,
+      },
       /**
        * Refactored list for selection purposes
        */
@@ -77,6 +132,13 @@ class HaxPicker extends LitElement {
       pickerType: {
         type: String,
         attribute: "picker-type",
+      },
+      filters: {
+        type: Array,
+      },
+      filterOn: {
+        type: Boolean,
+        attribute: "filter-on",
       },
     };
   }
@@ -94,7 +156,15 @@ class HaxPicker extends LitElement {
   ) {
     // wipe existing
     this.pickerType = pickerType;
-    var tmp = [];
+    var tmp = [],
+      addKeywords = (i) => {
+        elements[i].gizmo.keywords.forEach((keyword) => {
+          keyword = (keyword || "").toLowerCase();
+          let sanitized = keyword.replace(/[\s\W]*/, "");
+          if (sanitized.length > 0) this.keywords[keyword] = keyword;
+        });
+      };
+    this.keywords = {};
     switch (pickerType) {
       // hax gizmo selector
       case "gizmo":
@@ -105,7 +175,9 @@ class HaxPicker extends LitElement {
             title: elements[i].gizmo.title,
             color: elements[i].gizmo.color,
             tag: elements[i].gizmo.tag,
+            keywords: elements[i].gizmo.keywords,
           });
+          addKeywords(i);
         }
         break;
       // app selector
@@ -116,7 +188,9 @@ class HaxPicker extends LitElement {
             title: elements[i].details.title,
             color: elements[i].details.color,
             tag: elements[i].gizmo.tag,
+            keywords: elements[i].gizmo.keywords,
           });
+          addKeywords(i);
         }
         break;
       // we don't know what to do with this
@@ -130,6 +204,22 @@ class HaxPicker extends LitElement {
     setTimeout(() => {
       this.shadowRoot.querySelector("#picker-item-0").focus();
     }, 50);
+  }
+  _handleFilters(e) {
+    let filters =
+      this.shadowRoot && this.shadowRoot.querySelector("#hax-gizmo-filters")
+        ? this.shadowRoot.querySelector("#hax-gizmo-filters")
+        : undefined;
+    if (filters) this.filters = filters.value;
+  }
+  _isFiltered(keywords) {
+    let i = 0,
+      filtered = !this.filterOn || !this.filters || this.filters.length < 1;
+    while (!filtered && i < this.filters.length) {
+      if (keywords.includes(this.filters[i])) filtered = true;
+      i++;
+    }
+    return filtered;
   }
   /**
    * Handle the user selecting an app.

@@ -225,9 +225,11 @@ class SimpleFields extends SimpleFieldsLite {
               element: "simple-picker",
               attributes: {
                 autofocus: true,
+                justify: true,
               },
               properties: {
                 options: "options",
+                justify: "justify",
               },
             },
           },
@@ -395,7 +397,28 @@ class SimpleFields extends SimpleFieldsLite {
                   element: "simple-colors-picker",
                   attributes: {
                     autofocus: true,
+                    justify: true,
                   },
+                  properties: {
+                    justify: "justify",
+                  },
+                },
+              },
+              combo: {
+                defaultSettings: {
+                  import:
+                    "@lrnwebcomponents/simple-fields/lib/simple-fields-combo.js",
+                  element: "simple-fields-combo",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    autocomplete: "both",
+                    justify: true,
+                  },
+                },
+                properties: {
+                  autocomplete: "autocomplete",
+                  justify: "justify",
                 },
               },
               date: {
@@ -456,8 +479,10 @@ class SimpleFields extends SimpleFieldsLite {
                   element: "simple-icon-picker",
                   attributes: {
                     autofocus: true,
+                    justify: true,
                   },
                   properties: {
+                    justify: "justify",
                     options: "icons",
                     exclude: "exclude",
                     excludeSets: "excludeSets",
@@ -571,6 +596,12 @@ class SimpleFields extends SimpleFieldsLite {
             defaultSettings: {
               type: "string",
               format: "colorpicker",
+            },
+          },
+          combo: {
+            defaultSettings: {
+              type: "string",
+              format: "combo",
             },
           },
           "date-time": {

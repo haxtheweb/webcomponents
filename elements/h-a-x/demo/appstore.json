@@ -1515,6 +1515,7 @@
     "rss-items": "@lrnwebcomponents/rss-items/rss-items.js",
     "date-card": "@lrnwebcomponents/date-card/date-card.js",
     "service-card": "@lrnwebcomponents/service-card/service-card.js",
+    "editable-table": "@lrnwebcomponents/editable-table/editable-table.js",
     "vaadin-upload": {
       "import": "@vaadin/vaadin-upload/vaadin-upload.js",
       "haxProperties": {

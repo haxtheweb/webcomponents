@@ -192,9 +192,10 @@ class EditableTable extends displayBehaviors(LitElement) {
         }
         rich-text-editor {
           margin-bottom: 1px;
-          padding: var(--editable-table-row-vertical-padding, 10px)
-            var(--editable-table-row-horizontal-padding, 6px);
+          padding: var(--editable-table-cell-vertical-padding, 10px)
+            var(--editable-table-cell-horizontal-padding, 6px);
           border: none !important;
+          margin-right: 24px;
           --rich-text-editor-min-height: 12px;
         }
         td #icons {
@@ -525,33 +526,8 @@ class EditableTable extends displayBehaviors(LitElement) {
   static get tag() {
     return "editable-table";
   }
-  /**
-   * Support being an editing interface element for HAX
-   */
-  haxHooks() {
-    return {
-      activeElementChanged: "haxactiveElementChanged",
-    };
-  }
-  /**
-   * allow HAX to toggle edit state when activated
-   */
-  haxactiveElementChanged(el, val) {
-    // overwrite HAX dom w/ what our editor is supplying
-    if (!val) {
-      let replacement = this.getTableHTMLNode();
-      if (el) {
-        el.replaceWith(replacement);
-      }
-      el = replacement;
-    }
-    // aligns state of element w/ HAX if its available
-    this.toggleEditMode(val);
-    return el;
-  }
   constructor() {
     super();
-    this.haxUIElement = true;
     this.editMode = false;
     this.hideBordered = false;
     this.hideCondensed = false;
@@ -958,6 +934,173 @@ class EditableTable extends displayBehaviors(LitElement) {
       letters += this._getLetter(place - 1);
     }
     return letters;
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    if (super.haxeditModeChanged) super.haxeditModeChanged(val);
+    this.editMode = val;
+    console.log("haxeditModeChanged", val);
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    if (super.haxactiveElementChanged) super.haxactiveElementChanged(el, val);
+    console.log("haxactiveElementChanged", el, val);
+  }
+  static get haxProperties() {
+    return {
+      type: "element",
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      editingElement: {
+        tag: "editable-table",
+        import: "@lrnwebcomponents/editable-table/editable-table.js",
+      },
+      gizmo: {
+        title: "Table",
+        description: "A table.",
+        icon: "image:grid-on",
+        color: "orange",
+        groups: ["Content", "Table", "Data"],
+        handles: [
+          {
+            type: "csv",
+            title: "CSV",
+          },
+        ],
+        meta: {
+          author: "ELMS:LN",
+        },
+      },
+      settings: {
+        configure: [
+          {
+            property: "caption",
+            title: "Table Caption",
+            inputMethod: "textfield",
+            description: "Title of table.",
+          },
+          {
+            property: "columnHeader",
+            inputMethod: "boolean",
+            title: "Column Headers",
+            description: "Display first row as a column header.",
+          },
+          {
+            property: "rowHeader",
+            inputMethod: "boolean",
+            title: "Row Headers",
+            description: "Display first column as a row header.",
+          },
+          {
+            property: "footer",
+            inputMethod: "boolean",
+            title: "Footer",
+            description: "Display last row as a footer.",
+          },
+          {
+            attribute: "bordered",
+            title: "Borders",
+            inputMethod: "boolean",
+            description: "Add borders to table and table cells.",
+          },
+          {
+            attribute: "columnStriped",
+            title: "Alternating Column Styles",
+            inputMethod: "boolean",
+            description: "Is striped add alternating column striping.",
+          },
+          {
+            attribute: "condensed",
+            title: "Condensed Row Height",
+            inputMethod: "boolean",
+            description: "Condense height of table cells.",
+          },
+          {
+            property: "striped",
+            title: "Alternating Row Styles",
+            inputMethod: "boolean",
+            description: "Add alternating row striping.",
+          },
+          {
+            attribute: "responsive",
+            title: "Mobile Friendly",
+            inputMethod: "boolean",
+            description:
+              "When table is wider than screens, users will select a column to display instead of scrolling across table.",
+          },
+          {
+            property: "printable",
+            inputMethod: "boolean",
+            title: "Allow Printing",
+            description: "Allow table to be printed",
+          },
+          {
+            property: "dataCsv",
+            inputMethod: "haxupload",
+            title: "Import CSV",
+            description: "Raw data pulled in from csv file.",
+          },
+        ],
+        advanced: [
+          {
+            property: "downloadable",
+            title: "Allow Downloading",
+            inputMethod: "boolean",
+            description: "Allow table to be downloaded as CSV",
+          },
+          {
+            property: "sort",
+            title: "Sortable Columns",
+            inputMethod: "boolean",
+            description: "Enable sorting by column header.",
+          },
+          {
+            property: "filter",
+            title: "Allow Filtering",
+            inputMethod: "boolean",
+            description: "Enable filtering by cell value.",
+          },
+          {
+            attribute: "numericStyles",
+            title: "Numeric Styles",
+            inputMethod: "boolean",
+            description:
+              "Right-align numeric values and indicate negative values as red text",
+          },
+        ],
+      },
+      saveOptions: {
+        unsetAttributes: ["config", "edit-mode"],
+      },
+      demoSchema: [
+        {
+          tag: "editable-table",
+          properties: {
+            bordered: true,
+            striped: true,
+          },
+          content:
+            "<table><caption></caption><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><th></th><td></td><td></td></tr></thead></table>",
+        },
+      ],
+    };
   }
 }
 window.customElements.define(EditableTable.tag, EditableTable);
