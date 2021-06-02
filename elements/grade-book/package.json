@@ -45,7 +45,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "2.4.0"
+    "lit-element": "2.5.1",
+    "@lrnwebcomponents/simple-colors": "^3.0.6",
+    "@lrnwebcomponents/i18n-manager": "^3.0.7",
+    "@lrnwebcomponents/utils": "^3.0.0",
+    "@lrnwebcomponents/simple-fields": "^3.0.6",
+    "@lrnwebcomponents/a11y-collapse": "^3.0.6",
+    "@lrnwebcomponents/editable-table": "^3.0.6",
+    "@lrnwebcomponents/a11y-tabs": "^3.0.6",
+    "@lrnwebcomponents/grid-plate": "^3.0.6",
+    "@lrnwebcomponents/iframe-loader": "^3.0.6",
+    "@github/time-elements": "3.1.2",
+    "mobx": "6.3.2"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.7.7",

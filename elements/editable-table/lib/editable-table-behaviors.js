@@ -632,7 +632,8 @@ export const displayBehaviors = function (SuperClass) {
      *
      */
     fetchData() {
-      if (this.dataCsv && this.dataCsv !== "")
+      if (this.dataCsv && this.dataCsv !== "") {
+        // typical use-case
         fetch(this.dataCsv)
           .then((response) => response.text())
           .then((data) => {
@@ -641,6 +642,7 @@ export const displayBehaviors = function (SuperClass) {
           .catch((err) => {
             this.loadSlottedTable();
           });
+      }
     }
 
     /**

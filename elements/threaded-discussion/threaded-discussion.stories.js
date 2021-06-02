@@ -9,7 +9,7 @@ import {
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Social|Discussion",
+  title: "Apps|Discussion",
   component: "threaded-discussion",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

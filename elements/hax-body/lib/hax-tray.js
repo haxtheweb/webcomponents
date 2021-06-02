@@ -1524,172 +1524,176 @@ class HaxTray extends I18NMixin(
         layout: "layout",
       };
       var setAhead;
-      for (let key in settingsKeys) {
-        for (let prop in settings[key]) {
-          setAhead = false;
-          if (settings[key][prop] != null && !settings[key][prop].readOnly) {
-            // prefix is a special attribute and must be handled this way
-            if (prop === "prefix" && settings[key][prop] != "") {
-              this.activeNode.setAttribute("prefix", settings[key][prop]);
-              setAhead = true;
-            }
-            // innerText is another special case since it cheats on slot content
-            // that is only a text node (like a link)
-            else if (prop === "innerText") {
-              this.activeNode.innerText = settings[key][prop];
-              setAhead = true;
-            }
-            // this is a special internal held "property" for layout stuff
-            else if (key === "layout" && prop === "__position") {
-              setAhead = true;
-              if (!this._initial) {
-                clearTimeout(this.__contextValueDebounce);
-                this.__contextValueDebounce = setTimeout(() => {
-                  this.dispatchEvent(
-                    new CustomEvent("hax-context-item-selected", {
-                      bubbles: true,
-                      composed: true,
-                      detail: {
-                        eventName: settings[key][prop],
-                        value: settings[key][prop],
-                      },
-                    })
-                  );
-                }, 50);
-              }
-            }
-            // this is a special internal held "property" for layout stuff
-            else if (key === "layout" && prop === "__scale") {
-              setAhead = true;
-              if (!this._initial) {
-                clearTimeout(this.__contextSizeDebounce);
-                this.__contextSizeDebounce = setTimeout(() => {
-                  this.dispatchEvent(
-                    new CustomEvent("hax-context-item-selected", {
-                      bubbles: true,
-                      composed: true,
-                      detail: {
-                        eventName: "hax-size-change",
-                        value: settings[key][prop],
-                      },
-                    })
-                  );
-                }, 50);
-              }
-            }
-            // try and set the pop directly if it is a prop already set
-            // check on prototype, then in properties object if it has one
-            // then by seeing if we have an array / object
-            else if (
-              this.activeNode.hasOwnProperty(prop) ||
-              (this.activeNode.properties &&
-                this.activeNode.properties.hasOwnProperty(prop)) ||
-              (settings[key][prop] != null &&
-                settings[key][prop].constructor === Array) ||
-              (settings[key][prop] != null &&
-                settings[key][prop].constructor === Object)
-            ) {
-              try {
-                if (settings[key][prop].constructor === Array) {
-                  this.activeNode[prop] = [...settings[key][prop]];
-                } else if (settings[key][prop].constructor === Object) {
-                  this.activeNode[prop] = { ...settings[key][prop] };
-                } else {
-                  this.activeNode[prop] = settings[key][prop];
-                }
+      clearTimeout(this.__contextPropDebounce);
+      this.__contextPropDebounce = setTimeout(() => {
+        for (let key in settingsKeys) {
+          for (let prop in settings[key]) {
+            setAhead = false;
+            if (settings[key][prop] != null && !settings[key][prop].readOnly) {
+              // prefix is a special attribute and must be handled this way
+              if (prop === "prefix" && settings[key][prop] != "") {
+                this.activeNode.setAttribute("prefix", settings[key][prop]);
                 setAhead = true;
-              } catch (e) {
-                console.warn(e);
-                setAhead = false;
               }
-            } else {
-              // need to specifically walk through slots if there is anything
-              // that says it has to come from a slot
-              for (var propTmp in this.__activePropSchema.settings[key]) {
-                if (
-                  this.__activePropSchema.settings[key][propTmp].slot == prop
-                ) {
-                  let slotTag = "span";
-                  if (
-                    this.__activePropSchema.settings[key][propTmp].slotWrapper
-                  ) {
-                    slotTag = this.__activePropSchema.settings[key][propTmp]
-                      .slotWrapper;
-                  } else if (
-                    this.activeNode.tagName.toLowerCase() === "code-editor"
-                  ) {
-                    slotTag = "template";
+              // innerText is another special case since it cheats on slot content
+              // that is only a text node (like a link)
+              else if (prop === "innerText") {
+                this.activeNode.innerText = settings[key][prop];
+                setAhead = true;
+              }
+              // this is a special internal held "property" for layout stuff
+              else if (key === "layout" && prop === "__position") {
+                setAhead = true;
+                if (!this._initial) {
+                  clearTimeout(this.__contextValueDebounce);
+                  this.__contextValueDebounce = setTimeout(() => {
+                    this.dispatchEvent(
+                      new CustomEvent("hax-context-item-selected", {
+                        bubbles: true,
+                        composed: true,
+                        detail: {
+                          eventName: settings[key][prop],
+                          value: settings[key][prop],
+                        },
+                      })
+                    );
+                  }, 50);
+                }
+              }
+              // this is a special internal held "property" for layout stuff
+              else if (key === "layout" && prop === "__scale") {
+                setAhead = true;
+                if (!this._initial) {
+                  clearTimeout(this.__contextSizeDebounce);
+                  this.__contextSizeDebounce = setTimeout(() => {
+                    this.dispatchEvent(
+                      new CustomEvent("hax-context-item-selected", {
+                        bubbles: true,
+                        composed: true,
+                        detail: {
+                          eventName: "hax-size-change",
+                          value: settings[key][prop],
+                        },
+                      })
+                    );
+                  }, 50);
+                }
+              }
+              // try and set the pop directly if it is a prop already set
+              // check on prototype, then in properties object if it has one
+              // then by seeing if we have an array / object
+              else if (
+                this.activeNode.hasOwnProperty(prop) ||
+                (this.activeNode.properties &&
+                  this.activeNode.properties.hasOwnProperty(prop)) ||
+                (settings[key][prop] != null &&
+                  settings[key][prop].constructor === Array) ||
+                (settings[key][prop] != null &&
+                  settings[key][prop].constructor === Object)
+              ) {
+                // in case your typing quickly don't instantly hammer a prop
+                try {
+                  if (settings[key][prop].constructor === Array) {
+                    this.activeNode[prop] = [...settings[key][prop]];
+                  } else if (settings[key][prop].constructor === Object) {
+                    this.activeNode[prop] = { ...settings[key][prop] };
+                  } else {
+                    this.activeNode[prop] = settings[key][prop];
                   }
-                  var tmpel = document.createElement(slotTag);
+                  setAhead = true;
+                } catch (e) {
+                  console.warn(e);
+                  setAhead = false;
+                }
+              } else {
+                // need to specifically walk through slots if there is anything
+                // that says it has to come from a slot
+                for (var propTmp in this.__activePropSchema.settings[key]) {
                   if (
-                    this.__activePropSchema.settings[key][propTmp]
-                      .slotAttributes
+                    this.__activePropSchema.settings[key][propTmp].slot == prop
                   ) {
-                    for (var attr in this.__activePropSchema.settings[key][
-                      propTmp
-                    ].slotAttributes) {
-                      tmpel.setAttribute(
-                        attr,
-                        this.__activePropSchema.settings[key][propTmp]
-                          .slotAttributes[attr]
+                    let slotTag = "span";
+                    if (
+                      this.__activePropSchema.settings[key][propTmp].slotWrapper
+                    ) {
+                      slotTag = this.__activePropSchema.settings[key][propTmp]
+                        .slotWrapper;
+                    } else if (
+                      this.activeNode.tagName.toLowerCase() === "code-editor"
+                    ) {
+                      slotTag = "template";
+                    }
+                    var tmpel = document.createElement(slotTag);
+                    if (
+                      this.__activePropSchema.settings[key][propTmp]
+                        .slotAttributes
+                    ) {
+                      for (var attr in this.__activePropSchema.settings[key][
+                        propTmp
+                      ].slotAttributes) {
+                        tmpel.setAttribute(
+                          attr,
+                          this.__activePropSchema.settings[key][propTmp]
+                            .slotAttributes[attr]
+                        );
+                      }
+                    }
+                    // support unnamed slots
+                    if (
+                      this.__activePropSchema.settings[key][propTmp].slot !== ""
+                    ) {
+                      tmpel.slot = this.__activePropSchema.settings[key][
+                        propTmp
+                      ].slot;
+                    }
+                    tmpel.innerHTML = settings[key][prop];
+                    const cloneIt = tmpel.cloneNode(true);
+                    setAhead = true;
+                    // inject the slotted content but use text nodes if this is a text element
+                    if (HAXStore.isTextElement(this.activeNode)) {
+                      this.activeNode.innerHTML = tmpel.innerHTML;
+                    } else {
+                      // wipe just the slot in question
+                      wipeSlot(
+                        this.activeNode,
+                        this.__activePropSchema.settings[key][propTmp].slot
                       );
+                      this.activeNode.appendChild(cloneIt);
                     }
                   }
-                  // support unnamed slots
-                  if (
-                    this.__activePropSchema.settings[key][propTmp].slot !== ""
-                  ) {
-                    tmpel.slot = this.__activePropSchema.settings[key][
-                      propTmp
-                    ].slot;
-                  }
-                  tmpel.innerHTML = settings[key][prop];
-                  const cloneIt = tmpel.cloneNode(true);
-                  setAhead = true;
-                  // inject the slotted content but use text nodes if this is a text element
-                  if (HAXStore.isTextElement(this.activeNode)) {
-                    this.activeNode.innerHTML = tmpel.innerHTML;
-                  } else {
-                    // wipe just the slot in question
-                    wipeSlot(
-                      this.activeNode,
-                      this.__activePropSchema.settings[key][propTmp].slot
+                }
+              }
+              // this will get reached often but tough to know if we had a slot
+              if (!setAhead) {
+                try {
+                  // silly but this is the spec way to do a boolean
+                  if (settings[key][prop] === true) {
+                    this.activeNode.setAttribute(
+                      camelCaseToDash(prop),
+                      camelCaseToDash(prop)
                     );
-                    this.activeNode.appendChild(cloneIt);
+                  } else if (
+                    settings[key][prop] === false ||
+                    settings[key][prop] === ""
+                  ) {
+                    this.activeNode.removeAttribute(camelCaseToDash(prop));
+                  } else {
+                    this.activeNode.setAttribute(
+                      camelCaseToDash(prop),
+                      settings[key][prop]
+                    );
                   }
+                } catch (e) {
+                  console.warn(e);
+                  console.warn(prop, settings[key][prop]);
                 }
               }
+            } else {
+              this.activeNode.removeAttribute(camelCaseToDash(prop));
             }
-            // this will get reached often but tough to know if we had a slot
-            if (!setAhead) {
-              try {
-                // silly but this is the spec way to do a boolean
-                if (settings[key][prop] === true) {
-                  this.activeNode.setAttribute(
-                    camelCaseToDash(prop),
-                    camelCaseToDash(prop)
-                  );
-                } else if (
-                  settings[key][prop] === false ||
-                  settings[key][prop] === ""
-                ) {
-                  this.activeNode.removeAttribute(camelCaseToDash(prop));
-                } else {
-                  this.activeNode.setAttribute(
-                    camelCaseToDash(prop),
-                    settings[key][prop]
-                  );
-                }
-              } catch (e) {
-                console.warn(e);
-                console.warn(prop, settings[key][prop]);
-              }
-            }
-          } else {
-            this.activeNode.removeAttribute(camelCaseToDash(prop));
           }
         }
-      }
+      }, 100);
     }
     setTimeout(() => {
       if (this._initial) {

@@ -10,7 +10,7 @@ import { StarRating } from "./star-rating.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Rating|StarRating",
+  title: "Widgets|StarRating",
   component: "star-rating",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

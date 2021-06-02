@@ -1,0 +1,80 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "file-system-broker",
+      "path": "./file-system-broker.js",
+      "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`",
+      "properties": [
+        {
+          "name": "dirHandler"
+        },
+        {
+          "name": "fileHandler"
+        },
+        {
+          "name": "files",
+          "type": "never[]",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "xlsx-file-system-broker",
+      "path": "./lib/xlsx-file-system-broker.js",
+      "description": "Web component that bridges local file system via File API and\ncombines the functionality of the XSLX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from XLSX / ODS / CSV repos",
+      "properties": [
+        {
+          "name": "XLSX"
+        },
+        {
+          "name": "libPath",
+          "type": "string",
+          "default": "\"xlsx/\""
+        },
+        {
+          "name": "XW",
+          "type": "object",
+          "default": "{\"msg\":\"xlsx\"}"
+        },
+        {
+          "name": "dirHandler"
+        },
+        {
+          "name": "fileHandler"
+        },
+        {
+          "name": "files",
+          "type": "never[]",
+          "default": "[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "xlsx-ready"
+        },
+        {
+          "name": "xlsx-file-system-data"
+        }
+      ]
+    },
+    {
+      "name": "file-system-broker",
+      "path": "./src/file-system-broker.js",
+      "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`",
+      "properties": [
+        {
+          "name": "dirHandler"
+        },
+        {
+          "name": "fileHandler"
+        },
+        {
+          "name": "files",
+          "type": "never[]",
+          "default": "[]"
+        }
+      ]
+    }
+  ]
+}

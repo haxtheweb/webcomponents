@@ -10,7 +10,7 @@ import { CourseDesign } from "./course-design.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Design|CourseDesign",
+  title: "Widgets|CourseDesign",
   component: "course-design",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

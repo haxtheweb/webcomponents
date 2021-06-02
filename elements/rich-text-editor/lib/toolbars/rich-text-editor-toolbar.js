@@ -841,7 +841,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     register(remove = false) {
       window.dispatchEvent(
-        new CustomEvent("register", {
+        new CustomEvent("rich-text-editor-register", {
           bubbles: true,
           cancelable: true,
           composed: true,

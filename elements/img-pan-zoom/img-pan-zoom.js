@@ -419,8 +419,7 @@ class ImgPanZoom extends LitElement {
       "es-bridge-openseadragon-loaded",
       this._openseadragonLoaded.bind(this)
     );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("openseadragon", location);
+    window.ESGlobalBridge.requestAvailability().load("openseadragon", location);
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("./lib/img-loader.js");
   }

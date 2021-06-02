@@ -383,75 +383,14 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         <slot></slot>
       </div>`;
   }
-
-  // haxProperty definition
+  /**
+   * haxProperties integration via file reference
+   */
   static get haxProperties() {
-    return {
-      canScale: false,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Tabs",
-        description: "A set of tabs.",
-        icon: "view-day",
-        color: "grey",
-        groups: ["Content", "Presentation", "Tabs"],
-      },
-      settings: {
-        configure: [
-          {
-            property: "ariaLabel",
-            title: "Label (for accesibility)",
-            inputMethod: "textfield",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            inputMethod: "boolean",
-          },
-          {
-            property: "hidden",
-            title: "Hidden",
-            inputMethod: "boolean",
-          },
-          {
-            property: "sticky",
-            title: "Sticky.",
-            desc:
-              "Horizontal tabs stick to the top of the window when scrolling.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "layoutBreakpoint",
-            title: "Layout Breakpoint",
-            inputMethod: "Number",
-            descripton:
-              "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode.",
-          },
-          {
-            property: "iconBreakpoint",
-            title: "Icon Breakpoint",
-            inputMethod: "Number",
-            descripton:
-              "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode.",
-          },
-          {
-            slot: "",
-            title: "Tabs",
-            description: "A series of <a11y-tab/> elements.",
-            inputMethod: "code-editor",
-          },
-        ],
-        advanced: [
-          {
-            property: "id",
-            title: "Unique ID",
-            inputMethod: "textfield",
-          },
-        ],
-      },
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {

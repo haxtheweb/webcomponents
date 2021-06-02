@@ -104,12 +104,8 @@ class LunrSearch extends LitElement {
       "es-bridge-lunr-loaded",
       this._lunrLoaded.bind(this)
     );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("lunr", location);
-    if (
-      window.ESGlobalBridge.imports &&
-      window.ESGlobalBridge.imports["lunr"] === true
-    ) {
+    window.ESGlobalBridge.requestAvailability().load("lunr", location);
+    if (window.ESGlobalBridge.requestAvailability().imports["lunr"] === true) {
       setTimeout(() => {
         this.__lunrLoaded = true;
       }, 0);

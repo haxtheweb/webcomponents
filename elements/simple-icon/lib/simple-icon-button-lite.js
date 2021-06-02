@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css, LitElement } from "lit-element/lit-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./simple-icons.js";
 import "./simple-icon-lite.js";
 
@@ -23,6 +22,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
       this.fieldName = "";
       this.type = "";
       this.value = "";
+      this.icon = "";
     }
 
     static get styles() {
@@ -30,6 +30,9 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
         ...[super.styles || []],
         css`
           :host([hidden]) {
+            display: none;
+          }
+          :host([icon=""]) simple-icon-lite {
             display: none;
           }
           :host {
@@ -80,6 +83,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
               --simple-icon-button-focus-background-color
             );
           }
+          button:disabled,
           button[disabled] {
             opacity: var(--simple-icon-button-disabled-opacity, 0.5);
             --simple-icon-button-border: var(
@@ -127,7 +131,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
           .type="${this.type}"
           value="${this.value}"
         >
-          <simple-icon-lite icon=${this.icon} part="icon"></simple-icon-lite>
+          <simple-icon-lite icon="${this.icon}" part="icon"></simple-icon-lite>
           <slot></slot>
         </button>
       `;

@@ -290,101 +290,12 @@ class A11yCollapse extends LitElement {
     this.label = "expand / collapse";
     this.tooltip = "toggle expand / collapse";
   }
+  /**
+   * haxProperties integration via file reference
+   */
   static get haxProperties() {
-    return {
-      canScale: false,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Single Expand Collapse",
-        description: "A single instance of an expand collapse.",
-        icon: "view-day",
-        color: "grey",
-        groups: ["Content", "Presentation", "Collapse"],
-      },
-      settings: {
-        configure: [
-          {
-            slot: "heading",
-            title: "Heading",
-            description: "The heading for the collapse.",
-            inputMethod: "textfield",
-          },
-          {
-            slot: "content",
-            title: "Content",
-            description: "The content for the collapse.",
-            inputMethod: "code-editor",
-          },
-          {
-            property: "headingButton",
-            title: "Heading Button",
-            description:
-              "Make entire heading clickble instead of just the icon.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "expanded",
-            title: "Expanded",
-            description: "Expand by default",
-            inputMethod: "boolean",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            inputMethod: "boolean",
-          },
-          {
-            property: "icon",
-            title: "Icon",
-            description: "The icon for the toggle expand/collapse button.",
-            inputMethod: "iconpicker",
-            options: [],
-          },
-          {
-            property: "iconExpanded",
-            title: "Icon (when expanded)",
-            description:
-              "Optional: The icon for the toggle expand/collapse button when expanded",
-            inputMethod: "iconpicker",
-            options: [],
-          },
-          {
-            property: "label",
-            title: "Label",
-            description: "The label of the toggle expand/collapse button",
-            inputMethod: "textfield",
-          },
-          {
-            property: "labelExpanded",
-            title: "Label (when expanded)",
-            description:
-              "The label of the toggle expand/collapse button when expanded.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "tooltip",
-            title: "Tooltip",
-            description: "The tooltip for the toggle expand/collapse button",
-            inputMethod: "textfield",
-          },
-          {
-            property: "tooltipExpanded",
-            title: "Tooltip (when expanded)",
-            description:
-              "The tooltip for the toggle expand/collapse button when expanded",
-            inputMethod: "textfield",
-          },
-        ],
-        advanced: [
-          {
-            property: "hidden",
-            title: "Hidden",
-            inputMethod: "boolean",
-          },
-        ],
-      },
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
   connectedCallback() {
     super.connectedCallback();

@@ -7,8 +7,12 @@
       "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`",
       "attributes": [
         {
-          "name": "debug",
-          "type": "boolean"
+          "name": "active-student",
+          "type": "number"
+        },
+        {
+          "name": "active-assignment",
+          "type": "number"
         },
         {
           "name": "sheet",
@@ -16,16 +20,6 @@
         },
         {
           "name": "totalScore",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "active-student",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "active-assignment",
           "type": "number",
           "default": "0"
         },
@@ -40,9 +34,9 @@
           "default": "true"
         },
         {
-          "name": "hideGradeScale",
-          "type": "boolean",
-          "default": "true"
+          "name": "settings",
+          "type": "object",
+          "default": "{\"photo\":true,\"fname\":true,\"surname\":true,\"email\":true}"
         },
         {
           "name": "disabled",
@@ -55,16 +49,53 @@
           "default": "true"
         },
         {
+          "name": "hideGradeScale",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hideActiveStudentOverview",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hideActiveAssignment",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hideSettings",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
           "name": "t",
           "type": "object",
-          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading Scale\"}"
+          "default": "{\"csvURL\":\"CSV URL\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading scale\",\"activeStudent\":\"Active student\",\"activeAssignment\":\"Active assignment\",\"minutesAgo\":\"minutes ago\",\"dateSubmitted\":\"Date submitted\",\"dueDate\":\"Due date\",\"firstName\":\"First name\",\"surname\":\"Surname\",\"photo\":\"Photo\",\"email\":\"Email\",\"settings\":\"Settings\",\"previous\":\"Previous\",\"next\":\"Next\",\"previousStudent\":\"Previous student\",\"nextStudent\":\"Next student\",\"previousAssignment\":\"Previous assignment\",\"nextAssignment\":\"Next assignment\",\"student\":\"Student\",\"assessmentView\":\"Assessment View\",\"activeAssessment\":\"Active assessment\",\"studentReportView\":\"Student report view\"}"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "debug",
-          "attribute": "debug",
-          "type": "boolean"
+          "name": "activeStudent",
+          "attribute": "active-student",
+          "type": "number"
+        },
+        {
+          "name": "activeAssignment",
+          "attribute": "active-assignment",
+          "type": "number"
         },
         {
           "name": "sheet",
@@ -81,18 +112,6 @@
         {
           "name": "totalScore",
           "attribute": "totalScore",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "activeStudent",
-          "attribute": "active-student",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "activeAssignment",
-          "attribute": "active-assignment",
           "type": "number",
           "default": "0"
         },
@@ -128,10 +147,10 @@
           "default": "{\"tags\":{\"categories\":[],\"data\":[]},\"submissions\":[],\"rubrics\":[],\"assignments\":[],\"roster\":[],\"grades\":{},\"gradesDetails\":{},\"gradeScale\":[],\"settings\":{}}"
         },
         {
-          "name": "hideGradeScale",
-          "attribute": "hideGradeScale",
-          "type": "boolean",
-          "default": "true"
+          "name": "settings",
+          "attribute": "settings",
+          "type": "object",
+          "default": "{\"photo\":true,\"fname\":true,\"surname\":true,\"email\":true}"
         },
         {
           "name": "disabled",
@@ -146,18 +165,46 @@
           "default": "true"
         },
         {
+          "name": "hideGradeScale",
+          "attribute": "hideGradeScale",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hideActiveStudentOverview",
+          "attribute": "hideActiveStudentOverview",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hideActiveAssignment",
+          "attribute": "hideActiveAssignment",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hideSettings",
+          "attribute": "hideSettings",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
           "name": "t",
           "attribute": "t",
           "type": "object",
-          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading Scale\"}"
+          "default": "{\"csvURL\":\"CSV URL\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading scale\",\"activeStudent\":\"Active student\",\"activeAssignment\":\"Active assignment\",\"minutesAgo\":\"minutes ago\",\"dateSubmitted\":\"Date submitted\",\"dueDate\":\"Due date\",\"firstName\":\"First name\",\"surname\":\"Surname\",\"photo\":\"Photo\",\"email\":\"Email\",\"settings\":\"Settings\",\"previous\":\"Previous\",\"next\":\"Next\",\"previousStudent\":\"Previous student\",\"nextStudent\":\"Next student\",\"previousAssignment\":\"Previous assignment\",\"nextAssignment\":\"Next assignment\",\"student\":\"Student\",\"assessmentView\":\"Assessment View\",\"activeAssessment\":\"Active assessment\",\"studentReportView\":\"Student report view\"}"
         },
         {
           "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
           "default": "\"grey\""
         },
         {
           "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
         },
@@ -172,6 +219,27 @@
         },
         {
           "name": "simple-tag-dragstart"
+        }
+      ]
+    },
+    {
+      "name": "grade-book-store",
+      "path": "./lib/grade-book-store.js",
+      "properties": [
+        {
+          "name": "gradeScale",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "activeStudent",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "activeAssignment",
+          "type": "number",
+          "default": "0"
         }
       ]
     },
@@ -206,6 +274,25 @@
       ]
     },
     {
+      "name": "grade-book-table",
+      "path": "./lib/grade-book-table.js",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
       "name": "letter-grade",
       "path": "./lib/letter-grade.js",
       "attributes": [
@@ -223,7 +310,7 @@
           "type": "number"
         },
         {
-          "name": "grade-scale",
+          "name": "gradeScale",
           "type": "array",
           "default": "[]"
         },
@@ -272,7 +359,7 @@
         },
         {
           "name": "gradeScale",
-          "attribute": "grade-scale",
+          "attribute": "gradeScale",
           "type": "array",
           "default": "[]"
         },
@@ -314,8 +401,12 @@
       "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`",
       "attributes": [
         {
-          "name": "debug",
-          "type": "boolean"
+          "name": "active-student",
+          "type": "number"
+        },
+        {
+          "name": "active-assignment",
+          "type": "number"
         },
         {
           "name": "sheet",
@@ -323,16 +414,6 @@
         },
         {
           "name": "totalScore",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "active-student",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "active-assignment",
           "type": "number",
           "default": "0"
         },
@@ -347,9 +428,9 @@
           "default": "true"
         },
         {
-          "name": "hideGradeScale",
-          "type": "boolean",
-          "default": "true"
+          "name": "settings",
+          "type": "object",
+          "default": "{\"photo\":true,\"fname\":true,\"surname\":true,\"email\":true}"
         },
         {
           "name": "disabled",
@@ -364,14 +445,31 @@
         {
           "name": "t",
           "type": "object",
-          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading Scale\"}"
+          "default": "{\"csvURL\":\"CSV URL\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading scale\",\"activeStudent\":\"Active student\",\"activeAssignment\":\"Active assignment\",\"minutesAgo\":\"minutes ago\",\"dateSubmitted\":\"Date submitted\",\"dueDate\":\"Due date\",\"firstName\":\"First name\",\"surname\":\"Surname\",\"photo\":\"Photo\",\"email\":\"Email\",\"settings\":\"Settings\",\"previous\":\"Previous\",\"next\":\"Next\",\"previousStudent\":\"Previous student\",\"nextStudent\":\"Next student\",\"previousAssignment\":\"Previous assignment\",\"nextAssignment\":\"Next assignment\",\"student\":\"Student\",\"assessmentView\":\"Assessment View\",\"activeAssessment\":\"Active assessment\",\"studentReportView\":\"Student report view\"}"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "debug",
-          "attribute": "debug",
-          "type": "boolean"
+          "name": "activeStudent",
+          "attribute": "active-student",
+          "type": "number"
+        },
+        {
+          "name": "activeAssignment",
+          "attribute": "active-assignment",
+          "type": "number"
         },
         {
           "name": "sheet",
@@ -388,18 +486,6 @@
         {
           "name": "totalScore",
           "attribute": "totalScore",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "activeStudent",
-          "attribute": "active-student",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "activeAssignment",
-          "attribute": "active-assignment",
           "type": "number",
           "default": "0"
         },
@@ -435,10 +521,10 @@
           "default": "{\"tags\":{\"categories\":[],\"data\":[]},\"submissions\":[],\"rubrics\":[],\"assignments\":[],\"roster\":[],\"grades\":{},\"gradesDetails\":{},\"gradeScale\":[],\"settings\":{}}"
         },
         {
-          "name": "hideGradeScale",
-          "attribute": "hideGradeScale",
-          "type": "boolean",
-          "default": "true"
+          "name": "settings",
+          "attribute": "settings",
+          "type": "object",
+          "default": "{\"photo\":true,\"fname\":true,\"surname\":true,\"email\":true}"
         },
         {
           "name": "disabled",
@@ -456,15 +542,19 @@
           "name": "t",
           "attribute": "t",
           "type": "object",
-          "default": "{\"csvURL\":\"CSV URL\",\"debugData\":\"Debug data\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment Weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading Scale\"}"
+          "default": "{\"csvURL\":\"CSV URL\",\"points\":\"Points\",\"criteria\":\"Criteria\",\"description\":\"Description\",\"assessmentWeight\":\"Assessment weight\",\"overallFeedback\":\"Overall feedback\",\"letterGrade\":\"Letter grade\",\"highRange\":\"High range\",\"lowRange\":\"Low range\",\"noSubmission\":\"No submission found\",\"studentSubmission\":\"Student submission\",\"openInNewWindow\":\"Open in new window\",\"gradingScale\":\"Grading scale\",\"activeStudent\":\"Active student\",\"activeAssignment\":\"Active assignment\",\"minutesAgo\":\"minutes ago\",\"dateSubmitted\":\"Date submitted\",\"dueDate\":\"Due date\",\"firstName\":\"First name\",\"surname\":\"Surname\",\"photo\":\"Photo\",\"email\":\"Email\",\"settings\":\"Settings\",\"previous\":\"Previous\",\"next\":\"Next\",\"previousStudent\":\"Previous student\",\"nextStudent\":\"Next student\",\"previousAssignment\":\"Previous assignment\",\"nextAssignment\":\"Next assignment\",\"student\":\"Student\",\"assessmentView\":\"Assessment View\",\"activeAssessment\":\"Active assessment\",\"studentReportView\":\"Student report view\"}"
         },
         {
           "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
           "default": "\"grey\""
         },
         {
           "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
           "type": "boolean",
           "default": "false"
         },

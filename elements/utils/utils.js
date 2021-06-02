@@ -854,6 +854,29 @@ addInternalListener((ev) => {
 });
 
 /**
+ * detect if an element is currently in the viewport / visible
+ * @param {Node} el
+ * @returns Boolean
+ */
+export function isElementInViewport(
+  el,
+  bounds = {
+    top: 0,
+    right: window.innerWidth,
+    bottom: window.innerHeight,
+    left: 0,
+  }
+) {
+  var rect = el.getBoundingClientRect();
+  return (
+    rect.top >= bounds.top &&
+    rect.left >= bounds.left &&
+    rect.bottom <= bounds.bottom &&
+    rect.right <= bounds.right
+  );
+}
+
+/**
  * @param {!Selection} s the window selection to use
  * @param {!Node} node the node to walk from
  * @param {boolean} walkForward should this walk in natural direction

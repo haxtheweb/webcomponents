@@ -710,15 +710,16 @@ class HAXCMSSiteStore extends HTMLElement {
     // and API might come from
     // beaker is a unique scenario
     if (typeof DatArchive !== typeof undefined) {
-      context = "beaker";
+      context = "beaker"; // implies usage of BeakerBrowser, an experimental browser for decentralization
     } else {
       switch (window.HAXCMSContext) {
-        case "published":
-        case "nodejs":
-        case "php":
-        case "11ty":
-        case "demo":
-        case "desktop":
+        case "published": // implies this is to behave as if it is completely static
+        case "nodejs": // implies nodejs based backend, tho no diff from
+        case "php": // implies php backend
+        case "11ty": // implies 11ty static site generator
+        case "demo": // demo / local development
+        case "desktop": // implies electron
+        case "local": // implies ability to use local file system
           context = window.HAXCMSContext;
           break;
         default:

@@ -46,14 +46,16 @@ class IframeLoader extends LitElement {
   }
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.__iframe.removeEventListener("load", (e) => {
-      setTimeout(() => {
-        this.loading = false;
-        if (e.path[0].height) {
-          this.__iframeHeight = e.path[0].height;
-        }
-      }, 500);
-    });
+    if (this.__iframe) {
+      this.__iframe.removeEventListener("load", (e) => {
+        setTimeout(() => {
+          this.loading = false;
+          if (e.path[0].height) {
+            this.__iframeHeight = e.path[0].height;
+          }
+        }, 500);
+      });
+    }
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {

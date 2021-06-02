@@ -1,11 +1,12 @@
 import { CSVtoArray } from "@lrnwebcomponents/utils/utils.js";
 
 export class gSheetInterface {
-  constructor(target = null, sheetGids = {}) {
+  constructor(target = null, sheet = null, sheetGids = {}) {
+    // sheet
+    this.sheet = sheet;
     // machineName you want to use => gid from google
     this.sheetGids = sheetGids;
-    // sheet
-    this.sheet = null;
+    // element target
     this.target = target;
   }
   /**
@@ -28,32 +29,7 @@ export class gSheetInterface {
         if (response.ok) return response.text();
       })
       .then((text) => {
-        return this.handleResponse(text, sheet);
+        return CSVtoArray(text);
       });
-  }
-  /**
-   * Convert from csv text to an array in the table function
-   */
-  async handleResponse(text, sheet) {
-    // Set helps performantly assemble possible collapsed areas
-    let table = CSVtoArray(text);
-    let tmp = table.shift();
-    let headings = {};
-    let data = [];
-    for (var i in tmp) {
-      headings[tmp[i]] = i;
-    }
-    for (var i in table) {
-      let item = {};
-      for (var j in headings) {
-        item[j] = table[i][headings[j]];
-      }
-      // push data onto the database of all data we have now as objects
-      data.push(item);
-    }
-    // allow for deeper processing on the data or just return the data found
-    return typeof this.target[`process${sheet}Data`] === "function"
-      ? this.target[`process${sheet}Data`](table, headings, data)
-      : data;
   }
 }

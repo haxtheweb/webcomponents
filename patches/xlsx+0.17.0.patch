@@ -1,0 +1,11 @@
+diff --git a/node_modules/xlsx/xlsxworker.js b/node_modules/xlsx/xlsxworker.js
+index 26e9e70..3b07d9d 100644
+--- a/node_modules/xlsx/xlsxworker.js
++++ b/node_modules/xlsx/xlsxworker.js
+@@ -1,5 +1,5 @@
+ /* xlsx.js (C) 2013-present SheetJS -- http://sheetjs.com */
+-importScripts('shim.js');
++importScripts('dist/shim.min.js');
+ /* uncomment the next line for encoding support */
+ importScripts('dist/cpexcel.js');
+ importScripts('jszip.js');

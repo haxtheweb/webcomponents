@@ -81,6 +81,7 @@ Custom property | Description | Default
  * @demo ./demo/numeric.html Numeric Styles
  * @demo ./demo/display.html Display Only
  * @demo ./demo/importing.html Importing Data
+ * @demo ./demo/local-import.html Local file import Data
  * @demo ./demo/exporting.html Exporting Data
  * @demo ./demo/advanced.html Advanced Features
  * 
@@ -535,6 +536,7 @@ class EditableTable extends displayBehaviors(LitElement) {
     this.hideResponsive = false;
     this.hidePrintable = false;
     this.hideSort = false;
+    this.caption = "";
     this.hideStriped = false;
     this.config = [
       {
@@ -822,7 +824,7 @@ class EditableTable extends displayBehaviors(LitElement) {
     return row;
   }
   _handleMenuOpen(e) {
-    console.log(e);
+    //console.log(e);
   }
 
   /**

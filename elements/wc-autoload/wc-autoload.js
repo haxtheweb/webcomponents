@@ -235,6 +235,7 @@ class WcAutoload extends HTMLElement {
       node.tagName &&
       node.tagName.includes("-") &&
       node.tagName != "DYNAMIC-IMPORT-REGISTRY" &&
+      node.tagName != "WC-REGISTRY" &&
       node.tagName != "WC-AUTOLOAD"
     ) {
       this.registry.loadDefinition(node.tagName);

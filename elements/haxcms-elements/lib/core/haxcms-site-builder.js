@@ -129,25 +129,34 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (this.file) {
       this.loading = true;
       let url = `${this.outlineLocation}${this.file}`;
-      if (this._timeStamp && this._timeStamp != "") {
-        if (url.indexOf("?") != -1) {
-          url += `&${this._timeStamp}`;
-        } else {
-          url += `?${this._timeStamp}`;
+      try {
+        // if this is successful it means we were handed a JSON blob of the site itself
+        let data = JSON.parse(this.file);
+        this._updateManifest(data);
+        this.loading = false;
+      } catch (e) {
+        // weird looking but this is the typical use-case in which
+        // we got a file path and try to load it because the above silently failed
+        if (this._timeStamp && this._timeStamp != "") {
+          if (url.indexOf("?") != -1) {
+            url += `&${this._timeStamp}`;
+          } else {
+            url += `?${this._timeStamp}`;
+          }
         }
+        var headers = { cache: "no-cache" };
+        await fetch(url, headers)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            this._updateManifest(data);
+            this.loading = false;
+          })
+          .catch((err) => {
+            this.lastErrorChanged(err);
+          });
       }
-      var headers = { cache: "no-cache" };
-      await fetch(url, headers)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          this._updateManifest(data);
-          this.loading = false;
-        })
-        .catch((err) => {
-          this.lastErrorChanged(err);
-        });
     }
   }
   /**

@@ -44,7 +44,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/marked-element": "3.0.1",
-    "lit-element": "2.4.0"
+    "lit-element": "2.5.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^3.0.0",

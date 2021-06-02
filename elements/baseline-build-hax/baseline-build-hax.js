@@ -49,7 +49,6 @@ import "@lrnwebcomponents/self-check/self-check.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/simple-concept-network/simple-concept-network.js";
 import "@lrnwebcomponents/stop-note/stop-note.js";
-import "@lrnwebcomponents/tab-list/tab-list.js";
 import "@lrnwebcomponents/task-list/task-list.js";
 import "@lrnwebcomponents/video-player/video-player.js";
 import "@lrnwebcomponents/wave-player/wave-player.js";

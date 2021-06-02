@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldBehaviors } from "./simple-fields-field.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./simple-tag.js";
 
 /**
@@ -16,7 +17,7 @@ import "./simple-tag.js";
  * @extends {SimpleFieldsFieldBehaviors(LitElement)}
  * @demo ./demo/tags.html Demo
  */
-class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
+class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(SimpleColors) {
   static get tag() {
     return "simple-fields-tag-list";
   }
@@ -39,15 +40,23 @@ class SimpleFieldsTagList extends SimpleFieldsFieldBehaviors(LitElement) {
           height: var(--simple-fields-tag-list-height);
         }
         :host(.drop-possible) [part="option-inner"] {
-          --simple-fields-accent-color: #ddddff;
+          --simple-fields-accent-color: var(
+            --simple-fields-tag-list-possible,
+            var(--simple-colors-default-theme-accent-2, #eeffee)
+          );
           background-color: var(--simple-fields-accent-color);
-          outline: 2px dashed #222255;
+          outline: 2px dashed
+            var(--simple-colors-default-theme-accent-12, #eeffee);
           outline-offset: 1px;
         }
         :host(.drag-focus) [part="option-inner"] {
-          --simple-fields-accent-color: #44ff44;
+          --simple-fields-accent-color: var(
+            --simple-fields-tag-list-focus,
+            var(--simple-colors-default-theme-accent-8, #44ff44)
+          );
           background-color: var(--simple-fields-accent-color);
-          outline: 2px dashed #559955;
+          outline: 2px dashed
+            var(--simple-colors-default-theme-accent-10, #44ff44);
           outline-offset: 1px;
         }
         [part="option-inner"] {

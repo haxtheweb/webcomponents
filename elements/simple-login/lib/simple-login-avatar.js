@@ -49,9 +49,9 @@ class SimpleLoginAvatar extends HTMLElement {
         display: block;
         @apply --simple-login-avatar;
       }
-      :host([hidden]){ 
+      :host([hidden]){
         display: none;
-      } 
+      }
       #svg {
         position: absolute;
         left: 0;
@@ -70,7 +70,7 @@ class SimpleLoginAvatar extends HTMLElement {
         color: var(--simple-login-avatar-background, white);
         background: var(--simple-login-avatar-color, #36bed4);
         border-radius: var(--simple-login-avatar-border-radius, 100%);
-      } 
+      }
     </style>
     <div class="avatar">
       <svg id="svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block;"><g><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></g></svg>

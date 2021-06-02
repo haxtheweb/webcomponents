@@ -629,11 +629,11 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
     template.innerHTML += el;
     demo.innerHTML += before;
     demo.appendChild(template);
-    demo.style.margin = "0 -8px 40px";
+    document.querySelector("body").style.margin = "0";
+    demo.style.margin = "0px";
     demo.style.boxShadow = "none";
     demo.style.borderBottom = "1px solid #e0e0e0";
     demo.style.padding = "0";
-    console.debug("demo", demo);
     return demo;
   }
 

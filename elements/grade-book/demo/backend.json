@@ -1,0 +1,1543 @@
+{
+  "tags": {
+    "categories": [
+      "composition and color theory",
+      "stuff",
+      "typography",
+      "visual design",
+      "human factors",
+      "concept development and creativity",
+      "story and narrative",
+      "ethics",
+      "research",
+      "writing",
+      "wayfinding",
+      "business and entrepreneurship"
+    ],
+    "data": [
+      {
+        "term": "composition",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "color choice (hue)",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "Bill",
+        "category": ["stuff", "typography", "visual design"],
+        "description": "For a new demo",
+        "associatedMaterial": ["https://haxtheweb.org"]
+      },
+      {
+        "term": "kerning",
+        "category": ["typography", "visual design"],
+        "description": "The spacing between letters or characters in text. Kerning establishes a spacial relationship between characters, controlling how condensed or expanded a word seems. Spatial relationships help support the conveyance of meaning.",
+        "associatedMaterial": [
+          "https://www.youtube.com/watch?v=vo34Vp6_vkA",
+          "https://type.method.ac/"
+        ]
+      },
+      {
+        "term": "use of white space",
+        "category": ["visual design", "composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "typeface choice",
+        "category": ["typography", "human factors", "visual design"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "ornamentation",
+        "category": ["visual design"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "visual hierarchy",
+        "category": ["composition and color theory", "visual design"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "concept",
+        "category": [
+          "concept development and creativity",
+          "story and narrative"
+        ],
+        "associatedMaterial": []
+      },
+      {
+        "term": "moral centrism",
+        "category": ["ethics"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "rule of thirds",
+        "category": ["composition and color theory", "visual design"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "color circulation",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "value range",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "complexity",
+        "category": ["visual design"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "saturation pull",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "color pull",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "spherical falloff",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "contrast",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "high key",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "middle key",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "low key",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "analogous colors",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "primary colors",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "tertiary colors",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "hue shift",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "cool",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "warm",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "cognitive load",
+        "category": ["human factors"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "mental model",
+        "category": ["human factors"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "facts",
+        "category": ["research"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "credibility",
+        "category": ["research"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "sources",
+        "category": ["research"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "writing style",
+        "category": ["writing"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "grammar and spelling",
+        "category": ["writing"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "alignment",
+        "category": ["human factors"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "cognitive dissonance",
+        "category": ["human factors"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "bias",
+        "category": ["human factors"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "navigation",
+        "category": ["wayfinding"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "contextual awareness",
+        "category": ["wayfinding"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "personas",
+        "category": ["human factors"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "interviews",
+        "category": ["human factors"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "risk taking",
+        "category": ["concept development and creativity"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "novel approaches",
+        "category": ["concept development and creativity"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "biomimicry",
+        "category": ["concept development and creativity"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "grid system",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "white space",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "negative space",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "forground",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "middleground",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "background",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "figure-ground relationship",
+        "category": ["composition and color theory"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "synectics",
+        "category": ["concept development and creativity"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "design thinking",
+        "category": ["concept development and creativity"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "business plan",
+        "category": ["business and entrepreneurship"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "business model",
+        "category": ["business and entrepreneurship"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "economic model",
+        "category": ["business and entrepreneurship"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "branching path narrative",
+        "category": ["story and narrative"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "dialogue",
+        "category": ["story and narrative"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "characters",
+        "category": ["story and narrative"],
+        "associatedMaterial": []
+      },
+      {
+        "term": "critical path",
+        "category": ["story and narrative"],
+        "associatedMaterial": []
+      }
+    ]
+  },
+  "submissions": [
+    {
+      "student": "Bryan O",
+      "docProp": "https://www.youtube.com/watch?v=_owS1mq6n8I"
+    },
+    {
+      "student": "Some one",
+      "docProp": "http://env-2868559.us.reclaim.cloud/"
+    },
+    {
+      "student": "Another Person",
+      "docProp": "https://dev.to/btopro/i18n-in-web-components-2gii"
+    },
+    {
+      "student": "Yet more",
+      "docProp": "In deciding to [build i18n-manager after fleshing out reasons in our issue queue](https://github.com/elmsln/issues/issues/141) (the solution I came up with for addressing i18n in our web components) I started where I always do with front end code: See if someone already solved this. After some searching I found four solutions that were in the web components space:\n1. [lit-translate](https://github.com/andreasbm/lit-translate)\n2. [note-list](https://github.com/RolandDreger/web-components/blob/master/note-list/src/note-list.js)\n3. [lit-element-i18n](https://github.com/hamedasemi/lit-element-i18n)\n4. [@lit/localize](https://www.npmjs.com/package/@lit/localize)\n\nThere could be full blog posts written about what's going on in each of these so I'll keep it short as to what I liked and didn't like about each, ultimately leading us to create our own. The biggest issue in all of them was either dependencies chains tied to specific project, poor DX, or assumption of building a full application and thus 1 `app-{lang}.json` data blob that our project will not handle.\n\n# lit-translate\nThis probably came the closest to what we implemented and took ideas from (except for \"one for each language you support\"). I loved that it used lit and was light weight. In it you called the `translate` function and registered your translations globally. Then as language was changed (which it ships with a nice demo) it'll toggle.\n\n```js\nimport { use, translate } from \"lit-translate\";\nimport { LitElement, html } from \"lit-element\";\n\nexport class MyApp extends LitElement {\n\n  // Construct the component\n  constructor () {\n    super();\n    this.hasLoadedStrings = false;\n  }\n\n  // Defer the first update of the component until the strings have been loaded to avoid empty strings being shown\n  shouldUpdate (changedProperties) {\n    return this.hasLoadedStrings && super.shouldUpdate(changedProperties);\n  }\n\n  // Load the initial language and mark that the strings have been loaded.\n  async connectedCallback () {\n    super.connectedCallback();\n\n    await use(\"en\");\n    this.hasLoadedStrings = true;\n  }\n\n  // Render the component\n  protected render () {\n    return html`\n      <p>${translate(\"title\")}</p>\n    `;\n  }\n}\n\ncustomElements.define(\"my-app\", MyApp);\n```\nThis example also illustrated how to toggle language using the `use` callback. This definitely got my mind running and I could see how this would be useful to build an application. A UI could toggle the implementation with `use` and then all the `translate` calls would update in all elements implementing.\n\nThis had a lot of parallels to MobX and how we use it (a thing tweaking state, all elements visualizing that tweak by opting into it).\n\n# note-list\nThis wasn't a translation library though an example I found while looking for something else. It's an interesting way of solving this in a single element though.\n\nI really liked how it figured out initial language (something we used in i18n-manager):\n```js\nget [documentLang]() {\n                return (\n                        document.body.getAttribute(\"xml:lang\") ||\n                        document.body.getAttribute(\"lang\") ||\n                        document.documentElement.getAttribute(\"xml:lang\") || \n                        document.documentElement.getAttribute(\"lang\") || \n                        FALLBACK_LANG\n                );\n        }\n```\nThis used a `Proxy` object in order to quickly make a map where users define their translation by [lang code](https://github.com/RolandDreger/web-components/blob/master/note-list/src/note-list.js#L42-L54) and then it effectively turns calls to `translate` into the appropriate text at run time. I ended up borrowing a lot of ideas from this and found it a great one-off i18n implementation.\n\n# lit-element-i18n\nThis was also close to winning out and I had a full prototype locally running with it. The DX of this was fantastic but sadly fell to my requirement for lots of small things. This also ties into i18next which is a popular open source / paid service for managing i18n at scale.\n\nHere's an example and we can see how similar the concept is to others reviewed\n```js\nimport { LitElement, html } from 'lit-element'\nimport { i18nMixin, translate } from 'lit-element-i18n'\n\nclass DemoElement extends i18nMixin(LitElement) {\n\n    constructor(){\n        super();\n        this.languageResources = '/assets/locales/{{lng}}/{{ns}}.json'\n    }\n\n    render() {\n        return html`\n            <h1>${translate('app:hi')}</h1>\n            \n            <select @change='${this.changeLanguages}'>\n                <option value='en'>EN</option>\n                <option value='sv'>SV</option>\n            </select>\n        `\n    }\n\n    changeLanguages(event) {\n        this.changeLanguage(event.target.value)\n    }\n}\n\ncustomElements.define('demo-element', DemoElement)\n```\n\nNote that `translate` is a function, sitting inside of a LitElement base class. I also enjoy the idea of the `i18nMixin` `SuperClass` which then mixes the needed data binding capability into your element. This also requires you hand `this.languageResources` a string that's using `{{lng}}` and `{{ns}}`, placeholders managed by i18next.\n\nThis had the strongest DX of any of the options I reviewed. Very easy to implement and read; however it only supported a single file per translation and thus couldn't be used. I also liked that it's the only one to have a `namespace` concept; which is seen in the example as the `app:` portion of the call to `translate('app:hi')`. This meant that you would have a file for that namespace.\n\n# @lit/localize\nThis was recommended by [Justin Fagnani](https://twitter.com/justinfagnani?lang=en), core developer of lit-html / LitElement. It's still experimental but it's a lit-html directive that will handle translation. I liked that this was something potentially planned for the future of lit-html / LitElement, which we base a lot of our projects on.\n\n```js\nimport {html} from 'lit-html';\nimport {msg} from '@lit/localize';\nrender(msg(html`Hello <b>World</b>!`), document.body);\n```\nHowever, note I said we base \" a lot of our projects on\" and not \"all projects\". This is an extremely powerful, low level helper utility, but we do not want to require people adopt it in order to participate in HAX'ing the web. Lit is never to be a barrier to adoption and if your team say likes to use Stencil, free of dependencies, we don't want you to HAVE to adopt our `msg` wrapping implementation which effectively requires `lit-html` in order to correctly manage the template and translate the string.\n\n# So where does this leave us?\nWell, I really liked all these options in different ways and took a lot of inspiration from them. Now, let's start looking at a new element we're using to manage our internationalization efforts called `@lrnwebcomponents/i18n-manager`\n"
+    },
+    {
+      "student": "Still more"
+    },
+    {
+      "student": "Another student"
+    },
+    {
+      "student": "Learning again"
+    }
+  ],
+  "rubrics": [
+    {
+      "name": "Exercise Rubric",
+      "shortName": "exercise",
+      "criteria": "Attention to detail",
+      "qualitative": [
+        "Good",
+        "Stuff for improvement",
+        "Considerations and oppurtunities"
+      ],
+      "description": "This criteria looks at if the assignment was submitted on time, if each step was completed to a high degree of accuracy, and if the file naming conventions were followed",
+      "percentage": "50"
+    },
+    {
+      "name": "Exercise Rubric",
+      "shortName": "exercise",
+      "criteria": "Learning by doing (Completed all steps)",
+      "qualitative": [
+        "Good",
+        "Areas for improvement",
+        "Considerations and oppurtunities"
+      ],
+      "description": "This criteria assess whether you completed the assignment's given set of instructions. This indirectly infers how well you acquired foundational skills and theory.",
+      "percentage": "50"
+    },
+    {
+      "name": "Project Rubric",
+      "shortName": "project",
+      "criteria": "Concept Development",
+      "qualitative": ["Good", "Needs work", "Look up info", "Line height"],
+      "description": "Stuff adnt hings",
+      "percentage": "20"
+    },
+    {
+      "name": "Project Rubric",
+      "shortName": "project",
+      "criteria": "Technical mastery",
+      "qualitative": ["Good", "Needs work", "Look up info", "Line height"],
+      "percentage": "50"
+    },
+    {
+      "name": "Project Rubric",
+      "shortName": "project",
+      "criteria": "File submissions",
+      "qualitative": ["Good", "Needs work", "Look up info", "Line height"],
+      "percentage": "30"
+    },
+    {
+      "name": "Project Rubric",
+      "shortName": "stuff",
+      "criteria": "File submissions",
+      "qualitative": ["Good", "Needs work", "Look up info", "Line height"],
+      "percentage": "100"
+    }
+  ],
+  "assignments": [
+    {
+      "name": "Documentation: Proposal",
+      "shortName": "docProp",
+      "points": "20",
+      "dueDate": "2021/03/08",
+      "dueTime": "23:59",
+      "rubric": "stuff",
+      "_ISODueDate": "2021-03-09T04:59:00.000Z",
+      "index": 0
+    },
+    {
+      "name": "Documentation: Final submission",
+      "shortName": "docFinal",
+      "points": "100",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 1
+    },
+    {
+      "name": "Documentation: Revision 1",
+      "shortName": "docRev1",
+      "points": "10",
+      "dueDate": "2021/04/05",
+      "dueTime": "23:59",
+      "rubric": "exercise",
+      "_ISODueDate": "2021-04-06T03:59:00.000Z",
+      "index": 2
+    },
+    {
+      "name": "Documentation: Revision 2",
+      "shortName": "docRev2",
+      "points": "10",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "exercise",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 3
+    },
+    {
+      "name": "Production report 1",
+      "shortName": "prodRep1",
+      "points": "10",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "exercise",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 4
+    },
+    {
+      "name": "Production report 2",
+      "shortName": "prodRep2",
+      "points": "10",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "exercise",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 5
+    },
+    {
+      "name": "Production report 3",
+      "shortName": "prodRep3",
+      "points": "10",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "exercise",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 6
+    },
+    {
+      "name": "Prompt 1 response",
+      "shortName": "prompt1",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 7
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt2",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 8
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt3",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 9
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt4",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 10
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt5",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 11
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt6",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 12
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt7",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 13
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt8",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 14
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt9",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 15
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt10",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 16
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt11",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 17
+    },
+    {
+      "name": "Prompt 2 response",
+      "shortName": "prompt12",
+      "points": "50",
+      "dueDate": "2021/03/05",
+      "dueTime": "23:59",
+      "rubric": "project",
+      "_ISODueDate": "2021-03-06T04:59:00.000Z",
+      "index": 18
+    }
+  ],
+  "roster": [
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    },
+    {
+      "student": "Bryan O",
+      "id": "bto111",
+      "email": "bto111@test.test",
+      "prefName": "btopro",
+      "notes": "2x time to finish work",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/haxcms-managed/310x310-1633609907554_48eae0bf5903e0f3b990_132.jpg",
+      "interests": ["hockey", " math"]
+    },
+    {
+      "student": "Some one",
+      "id": "abc123",
+      "email": "abc123@test.test",
+      "prefName": "sum1",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Another Person",
+      "id": "akd243",
+      "email": "akd243@test.test",
+      "prefName": "notha",
+      "interests": ["dx", " community formulation"]
+    },
+    {
+      "student": "Yet more",
+      "id": "ppl994",
+      "email": "ppl994@test.test",
+      "prefName": "YetMo",
+      "notes": "Cool kid",
+      "interests": ["ux design"]
+    },
+    {
+      "student": "Still more",
+      "id": "ffo9933",
+      "email": "ffo9933@test.test",
+      "prefName": "Still",
+      "interests": ["coding"]
+    },
+    {
+      "student": "Another student",
+      "id": "fdf123",
+      "email": "fdf123@test.test",
+      "prefName": "Another",
+      "photo": "https://oer.hax.psu.edu/bto108/sites/ist402/files/headshot61690.51500000205.jpg",
+      "interests": ["stuff"]
+    },
+    {
+      "student": "Learning again",
+      "id": "ooi998",
+      "email": "ooi998@test.test",
+      "prefName": "Learn",
+      "notes": "Took this class last semester",
+      "interests": ["other things"]
+    }
+  ],
+  "grades": [
+    {
+      "student": "Bryan O",
+      "docProp": "10",
+      "docFinal": "4",
+      "docRev1": "13",
+      "docRev2": "18",
+      "prodRep1": "10",
+      "prodRep2": "12",
+      "prodRep3": "19",
+      "prompt1": "17",
+      "prompt2": "40",
+      "prompt3": "42",
+      "prompt4": "50",
+      "prompt5": "29",
+      "prompt6": "20",
+      "prompt7": "44",
+      "prompt8": "30",
+      "prompt9": "35",
+      "prompt10": "33",
+      "prompt12": "3"
+    },
+    {
+      "student": "Some one"
+    },
+    {
+      "student": "Another Person"
+    },
+    {
+      "student": "Yet more"
+    },
+    {
+      "student": "Still more"
+    },
+    {
+      "student": "Another student"
+    },
+    {
+      "student": "Learning again"
+    }
+  ],
+  "gradesDetails": [
+    {
+      "student": "Bryan O"
+    },
+    {
+      "student": "Some one"
+    },
+    {
+      "student": "Another Person"
+    },
+    {
+      "student": "Yet more"
+    },
+    {
+      "student": "Still more"
+    },
+    {
+      "student": "Another student"
+    },
+    {
+      "student": "Learning again"
+    }
+  ],
+  "gradeScale": [
+    {
+      "letter": "A",
+      "highRange": "100",
+      "lowRange": "93"
+    },
+    {
+      "letter": "A-",
+      "highRange": "92",
+      "lowRange": "90"
+    },
+    {
+      "letter": "B+",
+      "highRange": "89",
+      "lowRange": "87"
+    },
+    {
+      "letter": "B",
+      "highRange": "86",
+      "lowRange": "83"
+    },
+    {
+      "letter": "B-",
+      "highRange": "82",
+      "lowRange": "80"
+    },
+    {
+      "letter": "C+",
+      "highRange": "79",
+      "lowRange": "77"
+    },
+    {
+      "letter": "C",
+      "highRange": "76",
+      "lowRange": "70"
+    },
+    {
+      "letter": "D",
+      "highRange": "69",
+      "lowRange": "60"
+    },
+    {
+      "letter": "F",
+      "highRange": "59",
+      "lowRange": "0"
+    }
+  ],
+  "settings": {
+    "defaultScore": "0"
+  }
+}

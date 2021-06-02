@@ -169,8 +169,7 @@ class RssItems extends LitElement {
     const name = "x2js";
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/x2js.js`;
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
+    window.ESGlobalBridge.requestAvailability().load(name, location);
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._x2jsLoaded.bind(this)

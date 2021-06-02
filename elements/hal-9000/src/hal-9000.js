@@ -46,8 +46,7 @@ class Hal9000 extends LitElement {
       "es-bridge-annyang-loaded",
       this._annyangLoaded.bind(this)
     );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("annyang", location);
+    window.ESGlobalBridge.requestAvailability().load("annyang", location);
     // check for speech synthesis API
     if (typeof window.speechSynthesis !== "undefined") {
       this.synth = window.speechSynthesis;

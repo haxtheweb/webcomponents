@@ -1505,7 +1505,6 @@
     "full-width-image": "@lrnwebcomponents/full-width-image/full-width-image.js",
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
-    "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
     "task-list": "@lrnwebcomponents/task-list/task-list.js",
     "video-player": "@lrnwebcomponents/video-player/video-player.js",
     "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",

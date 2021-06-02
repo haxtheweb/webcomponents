@@ -4,6 +4,7 @@
     {
       "name": "star-rating",
       "path": "./src/star-rating.js",
+      "description": "`star-rating`\n`Rating display widget or button to do rating`",
       "attributes": [
         {
           "name": "interactive",
@@ -34,7 +35,7 @@
           "name": "dark",
           "description": "make the default theme dark?",
           "type": "boolean",
-          "default": "false"
+          "default": "true"
         }
       ],
       "properties": [
@@ -62,6 +63,11 @@
           "default": "100"
         },
         {
+          "name": "contrast",
+          "type": "number",
+          "default": "0"
+        },
+        {
           "name": "accentColor",
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
@@ -73,17 +79,23 @@
           "attribute": "dark",
           "description": "make the default theme dark?",
           "type": "boolean",
-          "default": "false"
+          "default": "true"
         },
         {
           "name": "colors",
           "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "star-rating-click"
         }
       ]
     },
     {
       "name": "star-rating",
       "path": "./star-rating.js",
+      "description": "`star-rating`\n`Rating display widget or button to do rating`",
       "attributes": [
         {
           "name": "interactive",
@@ -114,7 +126,7 @@
           "name": "dark",
           "description": "make the default theme dark?",
           "type": "boolean",
-          "default": "false"
+          "default": "true"
         }
       ],
       "properties": [
@@ -142,6 +154,11 @@
           "default": "100"
         },
         {
+          "name": "contrast",
+          "type": "number",
+          "default": "0"
+        },
+        {
           "name": "accentColor",
           "attribute": "accent-color",
           "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
@@ -153,11 +170,16 @@
           "attribute": "dark",
           "description": "make the default theme dark?",
           "type": "boolean",
-          "default": "false"
+          "default": "true"
         },
         {
           "name": "colors",
           "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "star-rating-click"
         }
       ]
     }

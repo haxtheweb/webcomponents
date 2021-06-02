@@ -1,7 +1,7 @@
 {
   "name": "@lrnwebcomponents/replace-tag",
   "wcfactory": {
-    "className": "LoadingHelpers",
+    "className": "ReplaceTag",
     "customElementClass": "LitElement",
     "elementName": "replace-tag",
     "generator-wcfactory-version": "0.8.7",

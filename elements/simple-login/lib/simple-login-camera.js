@@ -22,6 +22,7 @@ class SimpleLoginCamera extends HTMLElement {
       record: "Record",
       pause: "Pause record",
       stopSave: "Stop & Save",
+      clickToTakePhoto: "Click to take photo",
     };
     window.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
@@ -37,8 +38,7 @@ class SimpleLoginCamera extends HTMLElement {
       })
     );
     const location = `${this.basePath}msr/MediaStreamRecorder.min.js`;
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("msr", location);
+    window.ESGlobalBridge.requestAvailability().load("msr", location);
     window.addEventListener("es-bridge-msr-loaded", this._msrLoaded.bind(this));
     this.template = document.createElement("template");
     this._shadow = this.attachShadow({ mode: "closed" });
@@ -171,43 +171,61 @@ class SimpleLoginCamera extends HTMLElement {
   }
   _msrLoaded(e) {
     this._applyMSR();
+    this._shadow.querySelector("#wrapper").addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("site-listing-video-activate", {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        })
+      );
+    });
   }
   async _applyMSR() {
-    try {
-      this._video.srcObject = await this._cameraStream();
-      this._addVideoAtributes();
-      if (this.hasAttribute("record")) {
-        this.MediaStreamRecorder = new MediaStreamRecorder(
-          this._video.srcObject
-        );
-        // this.MediaStreamRecorder.mimeType = 'video/webm';
-        this.MediaStreamRecorder.ondataavailable = this._saveVideo.bind(this);
+    window.addEventListener("site-listing-video-activate", async () => {
+      try {
+        this._video.srcObject = await this._cameraStream();
+        window.stream = this._video.srcObject;
+        this._addVideoAtributes();
+        if (this.hasAttribute("record")) {
+          this.MediaStreamRecorder = new MediaStreamRecorder(
+            this._video.srcObject
+          );
+          // this.MediaStreamRecorder.mimeType = 'video/webm';
+          this.MediaStreamRecorder.ondataavailable = this._saveVideo.bind(this);
+        }
+        setTimeout(() => {
+          this.dispatchEvent(
+            new CustomEvent("simple-login-camera-icon-click", {
+              detail: this,
+              bubbles: true,
+              composed: true,
+            })
+          );
+        }, 100);
+        this._error.remove();
+      } catch (error) {
+        this._video.remove();
+        this._record.remove();
+        this._pauseRecord.remove();
+        if (error.name === "ConstraintNotSatisfiedError") {
+          this._error.innerText =
+            "The resolution is not supported by your device.";
+        } else if (error.name === "NotAllowedError") {
+          this._error.innerText =
+            "Permissions have not been granted to use your camera and " +
+            "microphone, you need to allow the page access to your devices in " +
+            "order for the demo to work.";
+        } else {
+          this._error.innerText = error.message;
+          throw Error(error);
+        }
       }
-      this._error.remove();
-    } catch (error) {
-      this._video.remove();
-      this._record.remove();
-      this._pauseRecord.remove();
-      if (error.name === "ConstraintNotSatisfiedError") {
-        this._error.innerText =
-          "The resolution is not supported by your device.";
-      } else if (error.name === "NotAllowedError") {
-        this._error.innerText =
-          "Permissions have not been granted to use your camera and " +
-          "microphone, you need to allow the page access to your devices in " +
-          "order for the demo to work.";
-      } else {
-        this._error.innerText = error.message;
-        throw Error(error);
-      }
-    }
+    });
   }
 
   connectedCallback() {
-    if (
-      window.ESGlobalBridge &&
-      window.ESGlobalBridge.imports["msr"] === true
-    ) {
+    if (window.ESGlobalBridge.requestAvailability().imports["msr"] === true) {
       this._applyMSR();
     }
     this._t = { ...this.t };
@@ -216,10 +234,7 @@ class SimpleLoginCamera extends HTMLElement {
    * Try to apply when fully loaded dom
    */
   documentLoaded(e) {
-    if (
-      window.ESGlobalBridge &&
-      window.ESGlobalBridge.imports["msr"] === true
-    ) {
+    if (window.ESGlobalBridge.requestAvailability().imports["msr"] === true) {
       this._applyMSR();
     }
   }
@@ -266,13 +281,16 @@ class SimpleLoginCamera extends HTMLElement {
         }
         video {
           margin-left: calc(100% * var(--simple-login-camera-aspect, 1) / 2 - 177.77777777777% / 2);
-          width: calc(177.77777777777% / var(--simple-login-camera-aspect, 1));
+          height: 355px;
           background-color: rgba(0, 0, 0, 0);
         }
         .error {
-          color: var(-simple-login-camera-error, var(--color, red));
-          font-size: 1em;
+          color: black;
+          background-color: white;
+          font-size: 26px;
           text-align: center;
+          padding: 10px;
+          position: absolute;
         }
         .custom-controls {
           top: 8px;
@@ -288,7 +306,7 @@ class SimpleLoginCamera extends HTMLElement {
       </style>
       <div id="wrapper" part="wrapper">
         <video part="video"></video>
-        <p class="error" part="error"></p>
+        <p class="error" part="error">${this.t.clickToTakePhoto}</p>
         <div class="custom-controls" part="controls">
           <button class="record" part="record">${this.t.record}</button>
           <button class="pause-record" hidden part="pause">${this.t.pause}</button>

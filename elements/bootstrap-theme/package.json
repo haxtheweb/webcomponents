@@ -45,7 +45,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lit-element": "2.4.0",
+    "lit-element": "2.5.1",
     "bootstrap": "4.6.0",
     "jquery": "3.6.0"
   },

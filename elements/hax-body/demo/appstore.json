@@ -1541,6 +1541,7 @@
     "editable-table": "@lrnwebcomponents/editable-table/editable-table.js",
     "simple-cta": "@lrnwebcomponents/simple-cta/simple-cta.js",
     "a11y-collapse": "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
+    "a11y-tabs": "@lrnwebcomponents/a11y-tabs/a11y-tabs.js",
     "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
     "parallax-image": "@lrnwebcomponents/parallax-image/parallax-image.js",
@@ -1642,6 +1643,9 @@
     "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
     "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
-    "q-r": "@lrnwebcomponents/q-r/q-r.js"
+    "q-r": "@lrnwebcomponents/q-r/q-r.js",
+    "local-time": "time-elements/dist/time-elements.js",
+    "iframe-loader": "@lrnwebcomponents/iframe-loader/iframe-loader.js",
+    "loading-indicator": "@lrnwebcomponents/iframe-loader/lib/loading-indicator.js"
   }
 }

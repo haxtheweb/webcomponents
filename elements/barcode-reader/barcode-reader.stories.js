@@ -10,7 +10,7 @@ import { BarcodeReader } from "./barcode-reader.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Reader|BarcodeReader",
+  title: "Widgets|BarcodeReader",
   component: "barcode-reader",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

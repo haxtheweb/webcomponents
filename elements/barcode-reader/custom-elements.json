@@ -7,24 +7,37 @@
       "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`",
       "attributes": [
         {
-          "name": "value",
-          "type": "string"
-        },
-        {
           "name": "scale",
           "type": "number"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hideinput",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "value",
-          "attribute": "value",
-          "type": "string"
-        },
-        {
           "name": "scale",
           "attribute": "scale",
           "type": "number"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hideinput",
+          "attribute": "hideinput",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
@@ -39,24 +52,37 @@
       "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`",
       "attributes": [
         {
-          "name": "value",
-          "type": "string"
-        },
-        {
           "name": "scale",
           "type": "number"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hideinput",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "value",
-          "attribute": "value",
-          "type": "string"
-        },
-        {
           "name": "scale",
           "attribute": "scale",
           "type": "number"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hideinput",
+          "attribute": "hideinput",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [

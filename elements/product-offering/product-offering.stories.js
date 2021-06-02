@@ -10,7 +10,7 @@ import { ProductOffering } from "./product-offering.js";
 // need to account for polymer goofiness when webpack rolls this up
 
 export default {
-  title: "Offering|ProductOffering",
+  title: "Widgets|ProductOffering",
   component: "product-offering",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

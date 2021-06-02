@@ -18,6 +18,7 @@ class SimpleLogin extends SimpleColors {
   //styles function
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -246,7 +247,10 @@ class SimpleLogin extends SimpleColors {
     });
   }
 
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     setTimeout(() => {
       this.shadowRoot
         .querySelector("#loginform")
@@ -291,5 +295,5 @@ class SimpleLogin extends SimpleColors {
     }
   }
 }
-window.customElements.define(SimpleLogin.tag, SimpleLogin);
+customElements.define(SimpleLogin.tag, SimpleLogin);
 export { SimpleLogin };

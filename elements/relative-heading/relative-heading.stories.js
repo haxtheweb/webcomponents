@@ -5,7 +5,7 @@ import { RelativeHeading } from "@lrnwebcomponents/relative-heading/relative-hea
 import { RelativeHeadingLite } from "@lrnwebcomponents/relative-heading/lib/relative-heading-lite.js";
 
 export default {
-  title: "Headings|Relative Headings",
+  title: "Navigation|Relative Headings",
   component: "relative-heading",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {

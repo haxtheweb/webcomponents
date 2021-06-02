@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>editable-table Importing Data</title>
+
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
+    <script type="module">
+      import '../editable-table.js';
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>editable-table Importing Data</h1>
+      <p>The following import options work with both <a href="display.html">editable-table-display</a> and <a
+          href="index.html">editable-table</a> modes.
+      </p>
+      <h2>Using a CSV file from local file system</h2>
+      <button id="load">Load file</button>
+      <button id="save">Save file</button>
+        <editable-table
+          id="datatable"
+          column-header
+          row-header>
+        </editable-table>
+    </div>
+    <script>
+      let fileHandle;
+      let loadBtn = document.querySelector("#load");
+      let saveBtn = document.querySelector("#save");
+      loadBtn.addEventListener('click', async () => {
+        // Destructure the one-element array.
+        [fileHandle] = await window.showOpenFilePicker({
+          types: [
+            {
+              description: 'CSV data file',
+              accept: {
+                'text/*': ['.csv', '.txt']
+              }
+            },
+          ],
+          excludeAcceptAllOption: true,
+          multiple: false
+        });
+        // Do something with the file handle.
+        const file = await fileHandle.getFile();
+        var contents = await file.text();
+        document.getElementById("datatable").csvData = contents;
+        document.getElementById("datatable").editMode = true;
+      });
+      saveBtn.addEventListener('click', async () => {
+        const options = {
+          types: [
+            {
+              description: 'Save output',
+              accept: {
+                'text/csv': ['.csv'],
+                'text/plain': ['.txt'],
+              },
+            },
+          ],
+        };
+        const handle = await window.showSaveFilePicker(options);
+        // Create a FileSystemWritableFileStream to write to.
+        const writable = await handle.createWritable();
+        // Write the contents of the file to the stream.
+        await writable.write(document.getElementById("datatable").getTableCSV());
+        // Close the file and write the contents to disk.
+        await writable.close();
+      });
+    </script>
+  </body>
+</html>
