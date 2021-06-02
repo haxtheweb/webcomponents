@@ -69,6 +69,7 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               show-text-label
             ></hax-context-item>
             <slot name="primary"></slot>
+          </div>
           <div class="group">
             ${this.ceButtons.map((el) => {
               return html` <hax-context-item
@@ -156,11 +157,6 @@ class HaxCeContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       },
       ceButtons: {
         type: Array,
-      },
-      viewSource: {
-        type: Boolean,
-        reflect: true,
-        attribute: "view-source",
       },
     };
   }

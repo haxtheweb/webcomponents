@@ -200,6 +200,7 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
                       ?hidden="${!this.sourceView}"
                       event-name="${val.value}"
                       show-text-label
+                      ?disabled="${this.viewSource}"
                       @click="${(e) => this.textFormatChanged(val.value)}"
                     ></hax-context-item-textop>
                   </simple-toolbar-menu-item>`
@@ -463,11 +464,6 @@ class HaxTextContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       isSafari: {
         type: Boolean,
         attribute: "is-safari",
-      },
-      viewSource: {
-        type: Boolean,
-        reflect: true,
-        attribute: "view-source",
       },
     };
   }

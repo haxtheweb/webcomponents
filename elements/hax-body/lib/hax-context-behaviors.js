@@ -44,6 +44,7 @@ export const HaxContextBehaviors = function (SuperClass) {
           }
           .group {
             padding: 0;
+            background-color: var(--hax-ui-background-color);
           }
           hax-toolbar {
             flex: 0 1 auto;
@@ -64,12 +65,23 @@ export const HaxContextBehaviors = function (SuperClass) {
 
     constructor() {
       super();
+      this.viewSource = false;
     }
     render() {
       return html`<slot></slot> `;
     }
     static get tag() {
       return "hax-context-behaviors";
+    }
+    static get properties() {
+      return {
+        ...super.properties,
+        viewSource: {
+          type: Boolean,
+          reflect: true,
+          attribute: "view-source",
+        },
+      };
     }
   };
 };

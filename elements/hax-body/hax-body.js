@@ -688,13 +688,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             id="textcontextmenu"
             class="hax-context-menu ignore-activation"
             .activeNode="${this.activeNode}"
-            ?view-source="${this.viewSourceToggle}"
+            ?viewSource="${this.viewSourceToggle}"
           ></hax-text-context>
           <hax-ce-context
             id="cecontextmenu"
             class="hax-context-menu ignore-activation"
             .activeNode="${this.activeNode}"
-            ?view-source="${this.viewSourceToggle}"
+            ?viewSource="${this.viewSourceToggle}"
           ></hax-ce-context>
           <hax-plate-context
             id="platecontextmenu"
@@ -702,6 +702,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             .activeNode="${this.activeNode}"
             .trayDetail="${this.trayDetail}"
             .trayStatus="${this.trayStatus}"
+            ?viewSource="${this.viewSourceToggle}"
           ></hax-plate-context>
         </div>
       </absolute-position-behavior>
