@@ -29,7 +29,9 @@ import "./lib/letter-grade-picker.js";
 import "@github/time-elements/dist/time-elements.js";
 import { UIRenderPieces } from "./lib/GradeBookUIPieces.js";
 import { GradeBookStore } from "./lib/grade-book-store.js";
+import "./lib/grade-book-pop-up.js";
 import { autorun, toJS } from "mobx";
+import { get, set } from "idb-keyval";
 import { ESGlobalBridgeStore } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import { XLSXFileSystemBrokerSingleton } from "@lrnwebcomponents/file-system-broker/lib/xlsx-file-system-broker.js";
 /**
@@ -41,13 +43,19 @@ import { XLSXFileSystemBrokerSingleton } from "@lrnwebcomponents/file-system-bro
 class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   constructor() {
     super();
+    this.hasFilePicker = false;
+    this.source = "googledocs";
+    if (window.showOpenFilePicker) {
+      this.source = "filesystem";
+      this.hasFilePicker = true;
+    }
     this.ready = false;
+    // 0,1 - column splits for 3 column
+    // 2 - renders in a new popped up window
     this.displayMode = 0;
     // storing internals of the assessmentView tab
     this.assessmentView = this.resetAssessmentView();
     this.totalScore = 0;
-    // active Submission is the data itself
-    this.activeSubmission = null;
     // student submission status for rendering
     this.activeStudentSubmissions = [];
     // lock on score override
@@ -56,22 +64,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     this.activeRubric = [];
     // the active grade sheet
     this.activeGrading = {};
-    // internal data structure of the "app". This is bridging all data from the
-    // backend sheets and then informing how our application works
-    this.database = {
-      tags: {
-        categories: [],
-        data: [],
-      },
-      submissions: [],
-      rubrics: [],
-      assignments: [],
-      roster: [],
-      grades: {},
-      gradesDetails: {},
-      gradeScale: [],
-      settings: {},
-    };
     // general state
     this.settings = {
       photo: true,
@@ -117,10 +109,12 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       activeAssessment: "Active assessment",
       studentReportView: "Student report view",
       loadGradebook: "Load gradebook",
+      load: "Load",
       saveGradebook: "Save gradebook",
       selectGradebookSource: "Select gradebook source",
       sourceData: "Source data",
       pasteValidJSONHere: "Paste valid JSON here",
+      loadingFilePleaseWait: "LOADING FILE PLEASE WAIT..",
     };
     this.registerLocalization({
       context: this,
@@ -141,6 +135,12 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     });
     autorun(() => {
       this.activeAssignment = toJS(GradeBookStore.activeAssignment);
+    });
+    autorun(() => {
+      this.database = toJS(GradeBookStore.database);
+    });
+    autorun(() => {
+      this.activeSubmission = toJS(GradeBookStore.activeSubmission);
     });
   }
   firstUpdated(changedProperties) {
@@ -169,6 +169,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       }, 50);
     });
     resizeObserver.observe(this.shadowRoot.querySelector("#studentgrid"));
+    // see if we have a previous file reference
+    setTimeout(async () => {
+      this.prevLocalFileReference = await get("grade-book-prev-file");
+      this.requestUpdate();
+    }, 0);
   }
   resetAssessmentView() {
     return {
@@ -239,21 +244,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     }
     return 0;
   }
-  // return the active submission based on student and assignment
-  getActiveSubmission() {
-    for (var i in this.database.submissions) {
-      let row = this.database.submissions[i];
-      // look for student AND that the assignment column name is there
-      if (
-        row.student === this.database.roster[this.activeStudent].student &&
-        row[this.database.assignments[this.activeAssignment].shortName]
-      ) {
-        return row[this.database.assignments[this.activeAssignment].shortName];
-      }
-    }
-    return null;
-  }
-
   // return the active rurbic based on active assignment
   getActiveRubric() {
     return this.database.rubrics.filter((item) => {
@@ -279,7 +269,11 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         )
       ) {
         setTimeout(() => {
-          this.activeSubmission = this.getActiveSubmission();
+          // this will defer to whatever the "grades" db value is
+          this.totalScore = this.getCurrentScore(
+            this.activeStudent,
+            this.activeAssignment
+          );
           this.assessmentView = this.resetAssessmentView();
           this.activeRubric = [...this.getActiveRubric()];
           this.hideRubricInfo = [
@@ -345,7 +339,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                   }
                 })
                 .then((json) => {
-                  this.database = json;
+                  GradeBookStore.database = json;
                   this.importStateCleanup();
                 })
                 .catch((error) => {
@@ -353,7 +347,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                 });
               break;
             case "json":
-              this.database = JSON.parse(this.sourceData);
+              GradeBookStore.database = JSON.parse(this.sourceData);
               this.importStateCleanup();
               break;
           }
@@ -362,14 +356,13 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             this.__applied = true;
             // this listener gets the event from the service worker
             window.addEventListener("xlsx-file-system-data", (e) => {
-              this.loading = true;
               let database = e.detail.data;
               for (var i in database) {
                 let loadedData = this.transformTable(database[i]);
                 if (typeof this[`process${i}Data`] === "function") {
                   loadedData = this[`process${i}Data`](loadedData);
                 }
-                this.database[i] = loadedData;
+                GradeBookStore.database[i] = loadedData;
               }
               this.importStateCleanup();
             });
@@ -540,12 +533,12 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     });
     // have to possibly resolve UI click handler of span vs the button
     if (e.target.getAttribute("value") == "prev" && 0 !== this.activeStudent) {
-      this.activeStudent--;
+      GradeBookStore.activeStudent--;
     } else if (
       e.target.getAttribute("value") == "next" &&
       this.database.roster.length - 1 !== this.activeStudent
     ) {
-      this.activeStudent++;
+      GradeBookStore.activeStudent++;
     }
     await this.requestUpdate();
   }
@@ -558,12 +551,12 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       e.target.getAttribute("value") == "prev" &&
       0 !== this.activeAssignment
     ) {
-      this.activeAssignment--;
+      GradeBookStore.activeAssignment--;
     } else if (
       e.target.getAttribute("value") == "next" &&
       this.database.assignments.length - 1 !== this.activeAssignment
     ) {
-      this.activeAssignment++;
+      GradeBookStore.activeAssignment++;
     }
     await this.requestUpdate();
   }
@@ -1283,10 +1276,10 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     } else {
       this.__openWindow = window.open(
         "",
-        "",
+        "studentwork",
         `left=0,top=0,width=${screen.width / 2},height=${
           screen.height / 2
-        },toolbar=0,scrollbars=0,status=0`
+        },menubar=0,location=0,toolbar=0,status=0`
       );
       this.__openWindow.onbeforeunload = () => {
         this.displayMode = 0;
@@ -1299,14 +1292,10 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   renderSubmissionInWindow() {
     if (this.__openWindow && this.displayMode === 2) {
       render(
-        html`
-          ${this.database.assignments.length &&
-          this.database.assignments[this.activeAssignment]
-            ? html`${this.activeSubmission
-                ? this.renderSubmission(this.activeSubmission)
-                : html`${this.t.noSubmission}`}`
-            : nothing}
-        `,
+        html` ${this.database.assignments.length &&
+        this.database.assignments[this.activeAssignment]
+          ? html`<grade-book-pop-up></grade-book-pop-up>`
+          : html`${this.t.noSubmission}`}`,
         this.__openWindow.document.body
       );
     }
@@ -1367,22 +1356,38 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         </div>
         <div class="group">${this.renderGradeScaleBtn()}</div>
         <div class="group">${this.renderSettingsBtn()}</div>
-        <div class="group" ?hidden="${this.source != "filesystem"}">
-          <simple-icon-button-lite
-            @click="${this.saveToFilesystem}"
-            title="${this.t.saveGradebook}"
-            ?disabled="${!this.sourceData}"
-            icon="save"
-          >
-            <span class="hide-900">${this.t.saveGradebook}</span>
-          </simple-icon-button-lite>
-        </div>
+        ${this.ready && this.source === "filesystem" && this.sourceData
+          ? html`
+              <div class="group">
+                <simple-icon-button-lite
+                  @click="${this.saveToFilesystem}"
+                  title="${this.t.saveGradebook}"
+                  ?disabled="${!this.sourceData}"
+                  icon="save"
+                >
+                  <span class="hide-900">${this.t.saveGradebook}</span>
+                </simple-icon-button-lite>
+              </div>
+            `
+          : nothing}
       </div>
       <div ?hidden="${this.sourceData}" class="source-selection">
         <label>${this.t.selectGradebookSource}..</label>
         <select id="source" @change="${this.selectSource}">
-          <option value="filesystem" selected>File sysem</option>
-          <option value="googledocs">Google docs</option>
+          ${this.hasFilePicker
+            ? html`<option
+                value="filesystem"
+                ?selected="${this.source === "filesystem"}"
+              >
+                File system
+              </option>`
+            : nothing}
+          <option
+            value="googledocs"
+            ?selected="${this.source === "googledocs"}"
+          >
+            Google docs
+          </option>
           <option value="url">URL endpoint (JSON)</option>
           <option value="json">JSON data blob</option>
         </select>
@@ -1394,6 +1399,20 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
         >
           <span class="hide-900">${this.t.loadGradebook}</span>
         </simple-icon-button-lite>
+        ${this.source == "filesystem" && this.prevLocalFileReference
+          ? html`
+              <simple-icon-button-lite
+                @click="${this.loadFromExistingSource}"
+                title="${this.t.loadGradebook}"
+                ?disabled="${this.sourceData}"
+                icon="folder-shared"
+              >
+                <span class="hide-900"
+                  >${this.t.load} ${this.prevLocalFileReference.name}</span
+                >
+              </simple-icon-button-lite>
+            `
+          : nothing}
         <input
           id="sourcedata"
           placeholder="${this.t.sourceData}"
@@ -1407,6 +1426,9 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
           ?hidden="${this.source != "json"}"
         ></textarea>
       </div>
+      ${this.source === "filesystem" && this.loading
+        ? html`<p class="source-selection">${this.t.loadingFilePleaseWait}</p>`
+        : nothing}
       <table
         id="studentgrid"
         @mousemove="${this.mouseHighlight}"
@@ -1455,14 +1477,14 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                         title="${a.name}"
                         data-assignment="${h}"
                       >
-                        <simple-fields-field
+                        <!-- @todo add once we support multi-select <simple-fields-field
                           data-assignment="${h}"
                           type="checkbox"
                           class="select-all"
                           title="Select all submissions ${a.shortName}"
                           name="select-all-submission"
                           aria-label="${a.shortName}"
-                        ></simple-fields-field>
+                        ></simple-fields-field> -->
                         ${a.shortName}
                       </th>`
                   )}
@@ -1601,6 +1623,27 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                           rubric.description
                         )}
                         <letter-grade-picker></letter-grade-picker>
+                        <simple-fields-field
+                          type="number"
+                          part="simple-fields-field"
+                          min="0"
+                          value="${this.database.settings.defaultScore === "max"
+                            ? Math.round(
+                                (rubric.percentage / 100) *
+                                  this.database.assignments[
+                                    this.activeAssignment
+                                  ].points
+                              )
+                            : this.database.settings.defaultScore}"
+                          max="${Math.round(
+                            (rubric.percentage / 100) *
+                              this.database.assignments[this.activeAssignment]
+                                .points
+                          )}"
+                          maxlength="10"
+                          data-rubric-score
+                          data-criteria="${rubric.criteria}"
+                        ></simple-fields-field>
                         <editable-table-display
                           accent-color="${this.accentColor}"
                           bordered
@@ -1616,7 +1659,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                                 ${rubric.qualitative.map(
                                   (cat) => html` <td>${cat}</td> `
                                 )}
-                                <td>${rubric.percentage} %</td>
                               </tr>
                               <tr>
                                 ${rubric.qualitative.map(
@@ -1630,31 +1672,6 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                                     </td>
                                   `
                                 )}
-                                <td>
-                                  <simple-fields-field
-                                    type="number"
-                                    part="simple-fields-field"
-                                    min="0"
-                                    value="${this.database.settings
-                                      .defaultScore === "max"
-                                      ? Math.round(
-                                          (rubric.percentage / 100) *
-                                            this.database.assignments[
-                                              this.activeAssignment
-                                            ].points
-                                        )
-                                      : this.database.settings.defaultScore}"
-                                    max="${Math.round(
-                                      (rubric.percentage / 100) *
-                                        this.database.assignments[
-                                          this.activeAssignment
-                                        ].points
-                                    )}"
-                                    maxlength="10"
-                                    data-rubric-score
-                                    data-criteria="${rubric.criteria}"
-                                  ></simple-fields-field>
-                                </td>
                               </tr>
                             </tbody>
                           </table>
@@ -1703,14 +1720,18 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                       </div>
                     </div>
                   </div>
-                  <div slot="col-3">
-                    ${this.database.assignments.length &&
-                    this.database.assignments[this.activeAssignment]
-                      ? html`${this.activeSubmission
-                          ? this.renderSubmission(this.activeSubmission)
-                          : html`${this.t.noSubmission}`}`
-                      : nothing}
-                  </div>
+                  ${this.displayMode != 2
+                    ? html`
+                        <div slot="col-3">
+                          ${this.database.assignments.length &&
+                          this.database.assignments[this.activeAssignment]
+                            ? html`${this.activeSubmission
+                                ? this.renderSubmission(this.activeSubmission)
+                                : html`${this.t.noSubmission}`}`
+                            : nothing}
+                        </div>
+                      `
+                    : nothing}
                 </grid-plate>
               `
             : nothing}
@@ -1863,11 +1884,32 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       this.sourceData = this.shadowRoot.querySelector("#sourcedata").value;
     }
   }
-  loadFromFilesystem() {
-    XLSXFileSystemBrokerSingleton.loadFile("xls").then((file) => {
-      XLSXFileSystemBrokerSingleton.processFile(file, "json");
-      this.sourceData = file;
-    });
+  loadFromExistingSource(e) {
+    this.source = this.shadowRoot.querySelector("#source").value;
+    this.loadFromFilesystem(true);
+  }
+  loadFromFilesystem(existing = false) {
+    // implies they already selected a file and want to use that again
+    if (existing) {
+      this.loading = true;
+      setTimeout(() => {
+        XLSXFileSystemBrokerSingleton.processFile(
+          this.prevLocalFileReference,
+          "json"
+        );
+        this.sourceData = this.prevLocalFileReference;
+      }, 0);
+    } else {
+      XLSXFileSystemBrokerSingleton.loadFile("xls").then(async (file) => {
+        this.loading = true;
+        // store reference so we can add a button for recent
+        await set("grade-book-prev-file", file);
+        setTimeout(() => {
+          XLSXFileSystemBrokerSingleton.processFile(file, "json");
+          this.sourceData = file;
+        }, 0);
+      });
+    }
   }
   async saveToFilesystem(e) {
     // return as Blob based output
@@ -1895,15 +1937,10 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     // detect score field change
     if (e.detail.getAttribute("data-rubric-score") != null) {
       clearTimeout(this.__debounce);
-      this.__debounce = setTimeout(() => {
+      this.__debounce = setTimeout(async () => {
         if (!this.loading) {
           // @todo we need to store and recall these values
           this.updateTotalScore();
-          // this will defer to whatever the "grades" db value is
-          this.totalScore = this.getCurrentScore(
-            this.activeStudent,
-            this.activeAssignment
-          );
           this.shadowRoot.querySelector("#totalpts").value = this.totalScore;
         }
         // force locking the score if this changes as we're using the rubric
@@ -1915,19 +1952,16 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   updateTotalScore() {
     let score = 0;
     let tables = this.shadowRoot.querySelectorAll(
-      "#assessment editable-table-display"
+      "#assessment simple-fields-field[type='number']:not(#totalpts)"
     );
     // add the scores up based on values of the pieces
     for (var i in Array.from(tables)) {
-      if (tables[i].shadowRoot.querySelector("[data-rubric-score]").value) {
-        score =
-          score +
-          parseInt(
-            tables[i].shadowRoot.querySelector("simple-fields-field").value
-          );
+      if (tables[i].value) {
+        score = score + parseInt(tables[i].value);
       }
     }
     this.totalScore = score;
+    this.shadowRoot.querySelector("#totalpts").value = score;
     this.requestUpdate();
   }
   totalScoreChangedEvent(e) {

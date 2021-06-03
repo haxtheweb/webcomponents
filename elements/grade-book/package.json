@@ -56,7 +56,8 @@
     "@lrnwebcomponents/grid-plate": "^3.0.6",
     "@lrnwebcomponents/iframe-loader": "^3.0.6",
     "@github/time-elements": "3.1.2",
-    "mobx": "6.3.2"
+    "mobx": "6.3.2",
+    "idb-keyval": "5.0.6"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.7.7",

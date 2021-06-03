@@ -81,6 +81,20 @@ class LetterGradePicker extends LitElement {
   clickScore(e) {
     this.value = e.target.getAttribute("letter");
   }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "value") {
+        this.dispatchEvent(
+          new CustomEvent("value-changed", {
+            composed: false,
+            bubbles: false,
+            cancelable: true,
+            detail: this,
+          })
+        );
+      }
+    });
+  }
   static get tag() {
     return "letter-grade-picker";
   }

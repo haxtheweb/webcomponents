@@ -163,10 +163,10 @@ class XLSXFileSystemBroker extends FileSystemBroker {
           console.error(e.data.d);
           break;
         case this.XW.msg:
-          this.dispatchEvent(
+          window.dispatchEvent(
             new CustomEvent("xlsx-file-system-data", {
-              composed: true,
-              bubbles: true,
+              composed: false,
+              bubbles: false,
               cancelable: true,
               detail: {
                 filename: filename,
