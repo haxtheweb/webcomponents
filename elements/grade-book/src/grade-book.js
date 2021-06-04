@@ -37,7 +37,7 @@ import { XLSXFileSystemBrokerSingleton } from "@lrnwebcomponents/file-system-bro
 /**
  * `grade-book`
  * `A headless gradebook that supports multiple backends with rubrics`
- * @demo demo/index.html
+ * @demo demo/index.html Grade book
  * @element grade-book
  */
 class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
@@ -422,7 +422,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             left: offset,
           }
         );
-        if (this.activeStudent === 0) {
+        if (GradeBookStore.activeStudent === 0) {
           this.shadowRoot.querySelector("#studentgrid").scrollTop = 0;
         } else if (!isVisible) {
           this.shadowRoot.querySelector("#studentgrid").scrollTop =
@@ -431,7 +431,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
             this.shadowRoot.querySelector("#studentgrid").offsetTop;
         }
         // left to right
-        if (this.activeAssignment === 0) {
+        if (GradeBookStore.activeAssignment === 0) {
           this.shadowRoot.querySelector("#studentgrid").scrollLeft = 0;
         } else if (!isVisible) {
           this.shadowRoot.querySelector("#studentgrid").scrollLeft =
@@ -554,7 +554,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       GradeBookStore.activeAssignment--;
     } else if (
       e.target.getAttribute("value") == "next" &&
-      this.database.assignments.length - 1 !== this.activeAssignment
+      this.database.assignments.length - 1 !== GradeBookStore.activeAssignment
     ) {
       GradeBookStore.activeAssignment++;
     }
@@ -1161,7 +1161,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   }
   studentLetterGradeHistoryClick(e) {
     // ensure this is numeric
-    this.activeAssignment = parseInt(e.target.value);
+    GradeBookStore.activeAssignment = parseInt(e.target.value);
     this.requestUpdate();
   }
   activateOption(e) {
@@ -1170,10 +1170,12 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
       target[0].getAttribute("data-student") &&
       target[0].getAttribute("data-assignment")
     ) {
-      this.activeAssignment = parseInt(
+      GradeBookStore.activeAssignment = parseInt(
         target[0].getAttribute("data-assignment")
       );
-      this.activeStudent = parseInt(target[0].getAttribute("data-student"));
+      GradeBookStore.activeStudent = parseInt(
+        target[0].getAttribute("data-student")
+      );
       // if we collapsed this but then select a specific assignment / student
       // then let's focus the user on this
       this.shadowRoot.querySelector("#studentgrid").style.height = "140px";
@@ -1291,6 +1293,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
   // render submission in window area
   renderSubmissionInWindow() {
     if (this.__openWindow && this.displayMode === 2) {
+      this.__openWindow.document.body.style.margin = "0";
       render(
         html` ${this.database.assignments.length &&
         this.database.assignments[this.activeAssignment]
@@ -1623,27 +1626,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
                           rubric.description
                         )}
                         <letter-grade-picker></letter-grade-picker>
-                        <simple-fields-field
-                          type="number"
-                          part="simple-fields-field"
-                          min="0"
-                          value="${this.database.settings.defaultScore === "max"
-                            ? Math.round(
-                                (rubric.percentage / 100) *
-                                  this.database.assignments[
-                                    this.activeAssignment
-                                  ].points
-                              )
-                            : this.database.settings.defaultScore}"
-                          max="${Math.round(
-                            (rubric.percentage / 100) *
-                              this.database.assignments[this.activeAssignment]
-                                .points
-                          )}"
-                          maxlength="10"
-                          data-rubric-score
-                          data-criteria="${rubric.criteria}"
-                        ></simple-fields-field>
+
                         <editable-table-display
                           accent-color="${this.accentColor}"
                           bordered

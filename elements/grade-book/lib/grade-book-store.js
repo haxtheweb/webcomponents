@@ -9,6 +9,7 @@ class GradeBookStoreClass extends LitElement {
   constructor() {
     super();
     this.gradeScale = [];
+    this.activeRubric = [];
     // internal data structure of the "app". This is bridging all data from the
     // backend sheets and then informing how our application works
     this.database = {
@@ -30,6 +31,7 @@ class GradeBookStoreClass extends LitElement {
     makeObservable(this, {
       gradeScale: observable,
       activeStudent: observable,
+      activeRubric: observable,
       activeAssignment: observable,
       database: observable,
       activeSubmission: computed,
