@@ -638,10 +638,10 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
     let prevLabel = (this.prevAssign || {}).assignment || "",
       nextLabel = (this.nextAssign || {}).assignment || "",
       prevHref = (this.prevAssign || {}).id
-        ? `./${this.prevAssign.id}`
+        ? `assignments/${this.prevAssign.id}`
         : undefined,
       nextHref = (this.nextAssign || {}).id
-        ? `./${this.nextAssign.id}`
+        ? `assignments/${this.nextAssign.id}`
         : undefined;
     return this.prevNextNav(prevLabel, prevHref, nextLabel, nextHref);
   }
