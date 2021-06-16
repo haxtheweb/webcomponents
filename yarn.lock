@@ -17863,7 +17863,7 @@ listr2@^2.6.0:
     rxjs "^6.6.2"
     through "^2.3.8"
 
-lit-element-router@^2.0.3:
+lit-element-router@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/lit-element-router/-/lit-element-router-2.0.3.tgz#6cd369d205f79421674b8ec87cb00b8a3e66aa6b"
   integrity sha512-ASaFeB5E4hsd2LYH3keY3ImuaW1+Dc3BcjauTRZhVcYmEIYDkIs/ci7Vfv/SroHhbyQ5nF/nPFBcOFipYsGwXg==

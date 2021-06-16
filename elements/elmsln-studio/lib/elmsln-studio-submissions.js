@@ -350,7 +350,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                       </elmsln-studio-link>
                       <elmsln-studio-link
                         id="student-${s.id}"
-                        href="/submissions${!s.userId
+                        href="submissions${!s.userId
                           ? ""
                           : `?student=${s.userId}`}"
                         slot="subheading"

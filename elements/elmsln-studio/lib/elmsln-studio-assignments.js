@@ -176,7 +176,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
               class="assignment-link"
               aria-describedby="act-${assignment.id}-desc act-${assignment.id}-item"
               slot="label"
-              href="/assignments/${assignment.id}"
+              href="assignments/${assignment.id}"
             >
               ${assignment.assignment}
             </elmsln-studio-link>

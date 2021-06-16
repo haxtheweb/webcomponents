@@ -267,7 +267,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   render() {
     return html`
       <div id="breadcrumb">
-        <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
+        <elmsln-studio-link href="submissions">Submissions</elmsln-studio-link>
         <span> > </span>
         ${!this.portfolio
           ? ``

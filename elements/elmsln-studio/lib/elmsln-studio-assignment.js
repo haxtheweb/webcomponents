@@ -554,7 +554,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   get breadcrumb() {
     return html`
       <div id="breadcrumb">
-        <elmsln-studio-link href="/assignments">Assignments</elmsln-studio-link>
+        <elmsln-studio-link href="assignments">Assignments</elmsln-studio-link>
         <span> > </span>
         <span>
           ${!this.assignment

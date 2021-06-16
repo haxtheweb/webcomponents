@@ -35,23 +35,25 @@ class ElmslnStudio extends router(
   render() {
     return html`
       <div id="studio-nav">
-        <elmsln-studio-link ?active="${this.route === "dashboard"}" href="/"
+        <elmsln-studio-link
+          ?active="${this.route === "dashboard"}"
+          href="${this.basePath}"
           >Dashboard</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "submissions" || this.route === "project"}"
-          href="/submissions"
+          href="submissions"
           >Submissions</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "assignments" ||
           this.route === "assignment"}"
-          href="/assignments"
+          href="assignments"
           >Assignments</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "activity"}"
-          href="/activity"
+          href="activity"
           >Activity Index</elmsln-studio-link
         >
       </div>
@@ -206,8 +208,6 @@ class ElmslnStudio extends router(
 
   constructor() {
     super();
-    window.ElmslnStudioPath = "";
-    this.baseUrl = "/";
     this.route = "";
     this.params = {};
     this.query = {};
@@ -216,7 +216,7 @@ class ElmslnStudio extends router(
   }
 
   router(route, params, query, data) {
-    console.log("ElmslnStudioPath router", route);
+    console.log(route, params, query, data);
     this.route = route;
     this.params = params;
     this.query = query;
@@ -437,8 +437,8 @@ class ElmslnStudio extends router(
         return false;
       })
       .then((data) => {
-        if (data) {
-          this[propName] = data;
+        if (data.status === 200) {
+          this[propName] = data.data;
           this.refreshDates[propName] = new Date();
           console.log(
             `${propName} Loaded`,
