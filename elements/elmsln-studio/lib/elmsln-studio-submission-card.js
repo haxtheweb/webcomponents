@@ -186,7 +186,6 @@ class ElmslnStudioSubmissionCard extends LitElement {
   constructor() {
     super();
     this.horizontal = false;
-    this.tag = ElmslnStudioSubmissionCard.tag;
   }
 }
 customElements.define(

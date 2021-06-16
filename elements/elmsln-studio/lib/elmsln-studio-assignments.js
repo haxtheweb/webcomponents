@@ -227,7 +227,6 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.tag = ElmslnStudioAssignments.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);

@@ -414,7 +414,6 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         ],
       },
     ];
-    this.tag = ElmslnStudioAssignment.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);

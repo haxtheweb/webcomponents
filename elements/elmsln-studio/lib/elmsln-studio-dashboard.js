@@ -533,7 +533,6 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
   constructor() {
     super();
     this.profile = {};
-    this.tag = ElmslnStudioDashboard.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
@@ -545,12 +544,6 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
       ? `${this.profile.firstName} ${this.profile.lastName}`
       : ``;
   }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define("elmsln-studio-dashboard", ElmslnStudioDashboard);
+customElements.define(ElmslnStudioDashboard.tag, ElmslnStudioDashboard);
 export { ElmslnStudioDashboard };

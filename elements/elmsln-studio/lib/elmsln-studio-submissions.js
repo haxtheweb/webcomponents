@@ -508,7 +508,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
     super();
     this.list = false;
     this.commentLoad = 15;
-    this.tag = ElmslnStudioSubmissions.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);

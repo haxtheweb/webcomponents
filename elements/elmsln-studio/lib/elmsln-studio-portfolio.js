@@ -276,7 +276,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                 ? ``
                 : html`
                     <elmsln-studio-link
-                      href="${`/submissions?project=${this.portfolio.projectId}`}"
+                      href="${`submissions?project=${this.portfolio.projectId}`}"
                       >${this.portfolio.project ||
                       "Project"}</elmsln-studio-link
                     >
@@ -287,7 +287,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           ? html`<em>Assignment</em>`
           : html`
               <elmsln-studio-link
-                href="${`/submissions?${
+                href="${`submissions?${
                   !this.portfolio.projectId || !this.portfolio.project
                     ? ``
                     : `project=${this.portfolio.projectId}&`
@@ -544,7 +544,6 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     super();
     this.feedback = {};
     this.comment = "";
-    this.tag = ElmslnStudioPortfolio.tag;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
