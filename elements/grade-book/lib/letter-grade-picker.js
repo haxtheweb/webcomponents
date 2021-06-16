@@ -1,29 +1,59 @@
 import { html, css, LitElement } from "lit-element/lit-element.js";
 import { GradeBookStore } from "./grade-book-store.js";
+import { nothing } from "lit-html/lit-html.js";
 import { autorun, toJS } from "mobx";
 import "./letter-grade.js";
-
+/**
+ * `letter-grade-picker`
+ * `A headless gradebook that supports multiple backends with rubrics`
+ * @demo demo/letter-grade-picker.html Letter grade picker
+ * @element letter-grade-picker
+ */
 class LetterGradePicker extends LitElement {
   constructor() {
     super();
     this.value = null;
+    this.label = null;
+    this.tooltip = false;
+    this.arrow = false;
+    this.input = false;
+    this.possible = 0;
+    this.score = 0;
   }
   static get properties() {
     return {
-      value: {
-        type: String,
-      },
+      value: { type: String },
+      label: { type: String },
+      tooltip: { type: Boolean },
+      arrow: { type: Boolean },
+      input: { type: Boolean },
+      possible: { type: Number },
+      score: { type: Number },
     };
   }
   static get styles() {
     return [
       css`
         :host {
-          display: flex;
+          display: block;
+          font-size: 18px;
         }
         letter-grade {
           display: inline-flex;
           filter: brightness(80%) saturate(50%);
+        }
+        .wrapper {
+          display: flex;
+        }
+        span.prefix,
+        .wrapper ::slotted(*) {
+          margin-right: 10px;
+          width: 90px;
+          line-height: 38px;
+          display: block;
+          padding: 0;
+          text-align: end;
+          height: 38px;
         }
         button {
           background-color: transparent;
@@ -44,32 +74,81 @@ class LetterGradePicker extends LitElement {
           outline: 4px solid black;
           outline-offset: -4px;
         }
+        .score-wrapper {
+          display: flex;
+          font-size: 28px;
+          line-height: 36px;
+          word-spacing: -4px;
+        }
+        simple-fields-field {
+          width: 64px;
+          margin: 0px -8px 0px 16px;
+          --simple-fields-font-size: 28px;
+        }
+        simple-tooltip {
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
+        }
       `,
     ];
   }
   render() {
     return html`
-      ${GradeBookStore.gradeScale.map(
-        (scale) => html`
-          <button
-            ?data-selected-value="${scale.letter == this.value}"
-            letter="${scale.letter}"
-            @click="${this.clickScore}"
-            @mousedown="${this.activeEventOn}"
-            @mouseover="${this.activeEventOn}"
-            @focusin="${this.activeEventOn}"
-            @mouseout="${this.activeEventOff}"
-            @focusout="${this.activeEventOff}"
-          >
-            <letter-grade
-              interactive
-              display-only
+      <div class="wrapper">
+        <slot name="prefix"><span class="prefix">${this.label}</span></slot>
+        ${GradeBookStore.gradeScale.map(
+          (scale, index) => html`
+            <button
+              ?data-selected-value="${scale.letter == this.value}"
               letter="${scale.letter}"
-              mini
-            ></letter-grade>
-          </button>
-        `
-      )}
+              id="btn${index}"
+              @click="${this.clickScore}"
+              @mousedown="${this.activeEventOn}"
+              @mouseover="${this.activeEventOn}"
+              @focusin="${this.activeEventOn}"
+              @mouseout="${this.activeEventOff}"
+              @focusout="${this.activeEventOff}"
+            >
+              <letter-grade
+                interactive
+                display-only
+                letter="${scale.letter}"
+                mini
+              ></letter-grade>
+            </button>
+            ${this.tooltip
+              ? html` <simple-tooltip
+                  for="btn${index}"
+                  position="top"
+                  animation-delay="0"
+                >
+                  ${scale.lowRange}% - ${scale.highRange}%
+                </simple-tooltip>`
+              : nothing}
+          `
+        )}
+        ${this.input
+          ? html`
+              <span class="score-wrapper">
+                <simple-fields-field
+                  type="number"
+                  part="simple-fields-field"
+                  min="0"
+                  value="${this.score}"
+                  max="${this.possible}"
+                  @value-changed="${this.scoreUpdated}"
+                  maxlength="10"
+                ></simple-fields-field>
+                / ${this.possible}</span
+              >
+            `
+          : nothing}
+        <slot name="suffix"></slot>
+        ${this.input ? html`` : nothing}
+      </div>
     `;
   }
   activeEventOn(e) {
@@ -78,8 +157,49 @@ class LetterGradePicker extends LitElement {
   activeEventOff(e) {
     e.target.removeAttribute("active");
   }
+
   clickScore(e) {
     this.value = e.target.getAttribute("letter");
+    // Value on event can influence score
+    const scaleItem = toJS(
+      GradeBookStore.gradeScale.find((item) => {
+        return this.value === item.letter;
+      })
+    );
+    // forces it to be 2 decimal max
+    this.score =
+      Math.round((scaleItem.highRange / 100) * this.possible * 100) / 100;
+  }
+  scoreUpdated(e) {
+    // Score on input change can influence value
+    const newScore =
+      Math.round((e.detail.value / this.possible) * 100 * 100) / 100;
+    const scaleItem = toJS(
+      GradeBookStore.gradeScale.find((item) => {
+        return item.highRange >= newScore && newScore >= item.lowRange;
+      })
+    );
+    this.value = scaleItem.letter;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "input" && this[propName]) {
+        import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
+      }
+      if (propName === "tooltip" && this[propName]) {
+        import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      }
+      if (["value", "score"].includes(propName)) {
+        this.dispatchEvent(
+          new CustomEvent(`${propName}-changed`, {
+            composed: false,
+            bubbles: false,
+            cancelable: true,
+            detail: this,
+          })
+        );
+      }
+    });
   }
   static get tag() {
     return "letter-grade-picker";
