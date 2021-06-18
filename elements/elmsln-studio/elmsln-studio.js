@@ -9,6 +9,7 @@ import { ElmslnStudioStyles } from "./lib/elmsln-studio-styles.js";
 import "./lib/elmsln-studio-main.js";
 import "./lib/elmsln-studio-link.js";
 import "./lib/elmsln-studio-button.js";
+import "./lib/elmsln-studio-dashboard.js";
 /**
  * `elmsln-studio`
  * Studio App for ELMS:LN
@@ -42,18 +43,18 @@ class ElmslnStudio extends router(
         >
         <elmsln-studio-link
           ?active="${this.route === "submissions" || this.route === "project"}"
-          href="submissions"
+          href="${this.basePath}submissions"
           >Submissions</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "assignments" ||
           this.route === "assignment"}"
-          href="assignments"
+          href="${this.basePath}assignments"
           >Assignments</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "activity"}"
-          href="activity"
+          href="${this.basePath}activity"
           >Activity Index</elmsln-studio-link
         >
       </div>
@@ -224,16 +225,24 @@ class ElmslnStudio extends router(
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    import("./lib/elmsln-studio-dashboard.js");
-    import("./lib/elmsln-studio-submissions.js");
-    import("./lib/elmsln-studio-assignments.js");
-    import("./lib/elmsln-studio-assignment.js");
     import("./lib/elmsln-studio-portfolio.js");
     this.fetchData(this.usersSource, "users");
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "route") {
+        switch (this[propName]) {
+          case "assignments":
+            import("./lib/elmsln-studio-assignments.js");
+            import("./lib/elmsln-studio-assignment.js");
+            break;
+          case "submissions":
+            import("./lib/elmsln-studio-submissions.js");
+            break;
+        }
+        console.log(this[propName]);
+      }
       //if (propName === "params") console.log("params", this.params);
       //if (propName === "query") console.log("query", this.query);
     });
