@@ -107,15 +107,22 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
    * @param {object} node selected node
    * @memberof RichTextEditorImage
    */
-  getValue(node) {
-    let img = node || this.rangeQuery();
+  getValue() {
     return !img
       ? undefined
       : {
-          alt: !img ? undefined : img.getAttribute("alt"),
-          src: !img ? undefined : img.getAttribute("src"),
-          width: !img ? undefined : img.getAttribute("width"),
-          height: !img ? undefined : img.getAttribute("height"),
+          alt: !this.targetedNode
+            ? undefined
+            : this.targetedNode.getAttribute("alt"),
+          src: !this.targetedNode
+            ? undefined
+            : this.targetedNode.getAttribute("src"),
+          width: !this.targetedNode
+            ? undefined
+            : this.targetedNode.getAttribute("width"),
+          height: !this.targetedNode
+            ? undefined
+            : this.targetedNode.getAttribute("height"),
         };
   }
   /**

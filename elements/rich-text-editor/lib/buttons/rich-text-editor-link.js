@@ -58,8 +58,8 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.icon = "link";
     this.label = "Link";
     this.toggledCommand = "unlink";
-    this.toggledIcon = "mdextra:unlink";
-    this.toggledLabel = "Unlink";
+    this.toggledIcon = "link";
+    this.toggledLabel = "Edit link";
     this.toggles = "true";
     this.tagsList = "a";
     this.value = {
@@ -105,6 +105,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    * @memberof RichTextEditorLink
    */
   get promptCommandVal() {
+    console.log("promptCommandVal", this.value, this.getPropValue("href"));
     return this.getPropValue("href") || undefined;
   }
 
@@ -126,16 +127,17 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    * @param {object} node selected node
    * @memberof RichTextEditorLink
    */
-  getValue(node) {
-    let target = node || this.rangeElement();
+  getValue() {
     return {
       ...super.getValue(),
       target:
-        this.allowTarget && target.getAttribute
-          ? target.getAttribute("target")
+        this.allowTarget && this.targetedNode.getAttribute
+          ? this.targetedNode.getAttribute("target")
           : undefined,
       href:
-        target && target.getAttribute ? target.getAttribute("href") : undefined,
+        this.targetedNode && this.targetedNode.getAttribute
+          ? this.targetedNode.getAttribute("href")
+          : undefined,
     };
   }
   /**

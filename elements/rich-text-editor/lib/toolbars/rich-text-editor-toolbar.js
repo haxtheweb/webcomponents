@@ -9,9 +9,12 @@ import {
   RichTextStyles,
   RichTextToolbarStyles,
 } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
-import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
+import { RichTextEditorRangeBehaviors } from "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
+import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import * as shadow from "shadow-selection-polyfill/shadow.js";
 
+window.RichTextEditorToolbars = window.RichTextEditorToolbars || [];
 /**
  * RichTextEditorToolbarBehaviors
  *
@@ -23,7 +26,9 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
  * @lit-element
  */
 const RichTextEditorToolbarBehaviors = function (SuperClass) {
-  return class extends SimpleToolbarBehaviors(SuperClass) {
+  return class extends RichTextEditorRangeBehaviors(
+    SimpleToolbarBehaviors(SuperClass)
+  ) {
     /**
      * Store tag name to make it easier to obtain directly.
      */
@@ -92,15 +97,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     static get styles() {
       return [...this.baseStyles, ...super.stickyStyles];
-    }
-    /**
-     * whether or not toolbar breadcrumbs
-     * (override to force a toolbar to always use or not use them)
-     *
-     * @readonly
-     */
-    get hasBreadcrumbs() {
-      return false;
     }
     /**
      * default config for an undo button
@@ -614,10 +610,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         /**
          * `rich-text-editor` element that is currently in `editing` mode
          */
-        editor: {
-          name: "editor",
+        target: {
+          name: "target",
           type: Object,
-          attribute: "editor",
         },
         /**
          * `rich-text-editor` unique id
@@ -633,13 +628,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
          */
         savedSelection: {
           name: "savedSelection",
-          type: Object,
-        },
-        /**
-         * current text selected range, which is actually a range.
-         */
-        range: {
-          name: "range",
           type: Object,
         },
         /**
@@ -678,6 +666,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           name: "clickableElements",
           type: Object,
         },
+
+        /**
+         * contains cancelled edits
+         */
+        __canceledEdits: {
+          type: Object,
+        },
         /**
          * hides paste button in Firefox
          */
@@ -687,18 +682,15 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           attribute: "paste-disabled",
           reflect: true,
         },
+        __prompt: {
+          type: Object,
+        },
         /**
          * whether prompt is open
          */
         __promptOpen: {
           name: "__promptOpen",
           type: Boolean,
-        },
-        /**
-         * selection singleton
-         */
-        __selection: {
-          type: Object,
         },
       };
     }
@@ -720,28 +712,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.clickableElements = {};
       this.breadcrumbsLabel = "Select";
       this.breadcrumbsSelectAllLabel = "All";
-    }
-    firstUpdated(changedProperties) {
-      super.firstUpdated(changedProperties);
-      this.__selection = window.RichTextEditorSelection.requestAvailability();
-      this.register();
-      if (this.hasBreadcrumbs) this._addBreadcrumbs();
-    }
-    updated(changedProperties) {
-      super.updated(changedProperties);
-      changedProperties.forEach((oldValue, propName) => {
-        if (propName === "range") this._rangeChange();
-        if (propName === "editor") this._editorChange();
-        if (["editor", "show", "range"].includes(propName))
-          this.hidden = this.disconnected;
-        if (["breadcrumbs", "sticky"].includes(propName) && !!this.breadcrumbs)
-          this.breadcrumbs.sticky = this.sticky;
-      });
+      this.__toolbar = this;
+      document.addEventListener(
+        shadow.eventName,
+        this._handleTargetSelection.bind(this.__toolbar)
+      );
     }
 
     connectedCallback() {
       super.connectedCallback();
-      this.register();
+      window.RichTextEditorToolbars.push(this);
     }
 
     /**
@@ -750,16 +730,47 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     disconnectedCallback() {
       super.disconnectedCallback();
-      this.register(true);
+      window.RichTextEditorToolbars = window.RichTextEditorToolbars.filter(
+        (toolbar) => toolbar !== this
+      );
     }
+
+    firstUpdated(changedProperties) {
+      if (!this.id) this.id = this._generateUUID();
+      super.firstUpdated(changedProperties);
+      if (this.hasBreadcrumbs) this._addBreadcrumbs();
+      this.__prompt = window.RichTextEditorPrompt.requestAvailability();
+      this.__prompt.addEventListener("open", (e) => {
+        this.__promptOpen = true;
+      });
+      this.__prompt.addEventListener("close", (e) => {
+        this.__promptOpen = false;
+      });
+    }
+
+    updated(changedProperties) {
+      super.updated(changedProperties);
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "range") this._rangeChanged();
+        if (propName === "editor") this._editorChange();
+        if (["editor", "show", "range"].includes(propName))
+          this.hidden = this.disconnected;
+        if (["breadcrumbs", "sticky"].includes(propName) && !!this.breadcrumbs)
+          this.breadcrumbs.sticky = this.sticky;
+      });
+    }
+
     /**
      * id of editor currently being controlled
      * @readonly
      * @returns {string}
      */
     get controls() {
-      return !this.editor ? undefined : this.editor.getAttribute("id");
+      let controls = !this.target ? undefined : this.target.getAttribute("id");
+      this.setAttribute("controls", controls);
+      return controls;
     }
+
     /**
      * determines if the toolbar is hidden
      *
@@ -770,7 +781,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return this.show == "always"
         ? false
         : this.show != "selection"
-        ? !this.editor
+        ? !this.target
         : this.noSelection;
     }
     /**
@@ -781,6 +792,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     get noSelection() {
       return !this.range || this.range.collapsed;
+    }
+
+    /**
+     * mutation observer
+     *
+     * @readonly
+     * @memberof RichTextEditor
+     */
+    get observer() {
+      return new MutationObserver(this._handleTargetMutation);
     }
 
     /**
@@ -805,152 +826,71 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      */
     close() {
+      //if (editor) this.disableEditing(editor);
+      this.target = undefined;
+      document.body.append(this);
       this.dispatchEvent(
-        new CustomEvent("disableediting", {
+        new CustomEvent("close", {
           bubbles: true,
           cancelable: true,
           composed: true,
           detail: this,
         })
-      ); //if (editor) this.disableEditing(editor);
-      this.editor = undefined;
-      document.body.append(this);
-    }
-    /**
-     * uses selection to create a range placeholder that keeps range highlighted
-     *
-     * @param {boolean} [add=true] add highlight?
-     * @returns {void}
-     * @event highlight
-     */
-    highlight(add = true) {
-      this.dispatchEvent(
-        new CustomEvent("highlight", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: add,
-        })
       );
     }
+    /* ------- RANGES -------- */
+
     /**
-     * handles registration to selection singleton's toolbars list
-     * @param {boolean} remove whether to remove
-     * @returns {void}
-     * @event register
+     * function for getting range;
+     * can be overriden
      */
-    register(remove = false) {
-      window.dispatchEvent(
-        new CustomEvent("rich-text-editor-register", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: {
-            remove: remove,
-            toolbar: this,
-          },
-        })
-      );
+    getRange() {
+      let shadowRoot = (el) => {
+        let parent = el.parentNode;
+        return parent ? shadowRoot(parent) : el;
+      };
+      try {
+        this.range = shadowRoot(this.target)
+          ? shadow.getRange(shadowRoot(this.target))
+          : undefined;
+      } catch (e) {
+        this.range = undefined;
+      }
+      return this.range;
+    }
+    getSelection() {
+      return window, getSelection();
     }
     /**
-     * selects a given node inside connected editor
+     * maintains consistent range info across toolbar and target
      *
+     * @param {object} editor
      * @param {range} range
-     * @returns {void}
-     * @event setrange
+     * @memberof RichTextEditorManager
      */
-    setRange(range) {
-      this.dispatchEvent(
-        new CustomEvent("setrange", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: {
-            editor: this.editor,
-            range: range,
-          },
-        })
-      );
+    updateRange(target, range = this.range) {
+      if (!target) return;
+      if (!target.range) target.range = range;
+      this.range = target.range;
     }
     /**
-     * selects a given node inside connected editor
-     *
-     * @param {object} node
-     * @returns {void}
-     * @event selectnode
+     * updates buttons and fires when rane changes
+     * @event range-changed
+     * @param {event} e
      */
-    selectNode(node) {
+    _rangeChanged(e) {
+      this._updateButtonRanges();
       this.dispatchEvent(
-        new CustomEvent("selectnode", {
+        new CustomEvent("range-changed", {
           bubbles: true,
-          cancelable: true,
           composed: true,
-          detail: node,
-        })
-      );
-    }
-    /**
-     * selects a given node inside connected editor
-     *
-     * @param {object} node
-     * @returns {void}
-     * @event selectnodecontents
-     */
-    selectNodeContents(node) {
-      this.dispatchEvent(
-        new CustomEvent("selectnodecontents", {
-          bubbles: true,
           cancelable: true,
-          composed: true,
-          detail: node,
-        })
-      );
-    }
-    /**
-     * selects a given node inside connected editor
-     *
-     * @param {range} range
-     * @returns {void}
-     * @event selectrange
-     */
-    selectRange(range) {
-      this.dispatchEvent(
-        new CustomEvent("selectrange", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: range,
+          detail: this,
         })
       );
     }
 
-    /**
-     * make an new editable element
-     *
-     * @param {object} editor an HTML object that can be edited
-     * @returns {void}
-     */
-    newEditor(editor) {
-      let content = document.createElement("rich-text-editor");
-      editor.parentNode.insertBefore(content, editor);
-      content.appendChild(editor);
-    }
-
-    /**
-     * pastes sanitized clipboard contents into current editor's selected range
-     * @param {object} editor an HTML object that can be edited
-     * @returns {void}
-     */
-    pasteFromClipboard() {
-      this.dispatchEvent(
-        new CustomEvent("pastefromclipboard", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this.editor,
-        })
-      );
-    }
+    /* ------- BUTTONS AND BREADCRUMBS -------- */
     /**
      * clears toolbar and resets shortcuts
      *
@@ -987,7 +927,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         button.remove();
         return;
       }
-      button.disabled = !this.editor;
+      button.__toolbar = this;
+      button.disabled = !this.target;
       (button.tagsArray || []).forEach(
         (tag) =>
           (this.clickableElements[tag] = (e) => button.tagClickCallback(e))
@@ -1002,28 +943,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.breadcrumbs = document.createElement(
           "rich-text-editor-breadcrumbs"
         );
-        this.breadcrumbs.onselectnode = (e) => this._selectNode(e.detail);
         document.body.appendChild(this.breadcrumbs);
-        this.breadcrumbs.addEventListener(
-          "breadcrumb-click",
-          this._handleBreadcrumb.bind(this)
-        );
       }
       this.breadcrumbs.label = this.breadcrumbsLabel;
     }
+
     /**
-     * click handle for breadcrumb buttons
-     *
-     * @param {*} e
+     * Generate a UUID
+     * @returns {string} unique id
      */
-    _handleBreadcrumb(e) {
-      if (!this.editor || !this.range) {
-        this._rangeChange();
-      } else if (e.detail.selectAll) {
-        this.selectNodeContents(this.editor);
-      } else {
-        this.selectNode(e.detail);
-      }
+    _generateUUID() {
+      let hex = Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+      return "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
     }
     /**
      * handles updated button
@@ -1033,49 +966,29 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     _handleButtonUpdate(e) {
       if (super._handleButtonUpdate) super._handleButtonUpdate(e);
     }
-    /**
-     * sets up breadcrumbs when editor changes
-     * @returns {void}
-     */
-    _editorChange() {
-      if (this.breadcrumbs) {
-        this.breadcrumbs.controls = this.controls;
-        if (!!this.editor)
-          this.editor.parentNode.insertBefore(
-            this.breadcrumbs,
-            this.editor.nextSibling
-          );
-      }
-      this.buttons.forEach((button) => {
-        if (button.command !== "close") button.disabled = !this.editor;
-      });
-      this.range = undefined;
-    }
 
     /**
-     * Gets updated selected range.
+     * updates buttons with selected range
      * @returns {void}
      */
-    _rangeChange() {
+    _updateButtonRanges() {
       if (
         this.range &&
-        this.range.commonAncestorContainer &&
-        this.editor &&
-        this.editor.contains(this.range.commonAncestorContainer)
+        this.target &&
+        this.rangeNodeOrParentNode(this.range) &&
+        this.target.contains(this.rangeNodeOrParentNode(this.range))
       ) {
-        let ancestor = this.range.commonAncestorContainer,
-          ancestorNode =
-            ancestor.nodeType == 1 ? ancestor : ancestor.parentNode,
-          nodes = [],
+        let nodes = [],
           getParentNode = (node) => {
             nodes.push(node);
-            if (node.parentNode && node.parentNode !== this.editor)
+            if (node.parentNode && node.parentNode !== this.target)
               getParentNode(node.parentNode);
           };
-        if (ancestorNode !== this.editor) getParentNode(ancestorNode);
+        if (this.rangeNodeOrParentNode(this.range) !== this.target)
+          getParentNode(this.rangeNodeOrParentNode(this.range));
         nodes.push({
           nodeName: this.breadcrumbsSelectAllLabel,
-          selectAll: true,
+          selectAll: this.target,
         });
         this.selectedNode = nodes[0];
         this.selectionAncestors = nodes.reverse();
@@ -1090,6 +1003,285 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.breadcrumbs.hidden = this.disconnected;
         }
       }
+    }
+    /* ------- TARGET -------- */
+    /**
+     * undo for canceled edits
+     *
+     * @param {object} editor
+     * @memberof RichTextEditorManager
+     */
+    cancelEdits(target = this.target) {
+      this.revertTarget(target);
+      this.target(editor, false);
+    }
+
+    /**
+     * disables editing
+     *
+     * @param {object} editor
+     * @memberof RichTextEditorManager
+     */
+    enableEditing(target = this.target) {
+      if (!!target && !target.hidden && !target.disabled) {
+        target.makeSticky(this.sticky);
+        target.parentNode.insertBefore(this, target);
+        target.setAttribute("contenteditable", "true");
+        target.addEventListener("keypress", this._handleTargetKeypress);
+        this.setCanceledEdits();
+        this.updateRange(target);
+        //editor.observeChanges(this.getRoot(editor));
+        this.getRoot(target).onselectionchange = (e) => {
+          console.log(
+            "onselectionchange",
+            this.debugRange(this.range),
+            this.debugRange(this.getRange())
+          );
+          if (!this.__promptOpen) this.updateRange(target);
+        };
+        this.dispatchEvent(
+          new CustomEvent("enabled", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: (this.target.innerHTML || "")
+              .replace(/<!--[^(-->)]*-->/g, "")
+              .trim(),
+          })
+        );
+      }
+    }
+
+    _handleTargetKeypress(e) {
+      if (this.targetEmpty() && e.key) {
+        this.innerHTML = e.key
+          .replace(">", "&gt;")
+          .replace("<", "&lt;")
+          .replace("&", "&amp;");
+        this.range = this.getRange();
+        this.range.selectNodeContents(this);
+        this.range.collapse();
+      }
+    }
+
+    disableEditing(target = this.target) {
+      if (!!target) {
+        this.unsetHighlight();
+        this.getRoot(target).onselectionchange = undefined;
+        target.viewSource = false;
+        target.removeAttribute("contenteditable");
+        target.removeEventListener("keypress", this._handleTargetKeypress);
+
+        target.makeSticky(false);
+        this.dispatchEvent(
+          new CustomEvent("disabled", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: (this.target.innerHTML || "")
+              .replace(/<!--[^(-->)]*-->/g, "")
+              .trim(),
+          })
+        );
+      }
+    }
+
+    /**
+     * make an new editable element
+     *
+     * @param {object} editor an HTML object that can be edited
+     * @returns {void}
+     */
+    insertNew(target) {
+      let content = document.createElement("rich-text-editor");
+      target.parentNode.insertBefore(content, target);
+      content.appendChild(target);
+    }
+    /**
+     * set observer on or off
+     *
+     * @param {boolean} [on=true]
+     * @memberof RichTextEditor
+     */
+    observeChanges(on = true) {
+      if (on) {
+        this.observer.observe(this.target, {
+          attributes: false,
+          childList: true,
+          subtree: true,
+          characterData: false,
+        });
+      } else {
+        if (this.observer) this.observer.disconnect;
+      }
+    }
+    /**
+     * revert content to before editing=true
+     *
+     * @memberof RichTextEditor
+     */
+    revertTarget(target = this.target) {
+      if (this.target) this.target.innerHTML = this.__canceledEdits;
+    }
+
+    /**
+     * sanitizesHTML
+     * override this function to make your own filters
+     *
+     * @param {string} html html to be pasted
+     * @returns {string} filtered html as string
+     */
+    sanitizeHTML(html) {
+      if (!html) return;
+      let regex = "<body(.*\n)*>(.*\n)*</body>";
+      if (html.match(regex) && html.match(regex).length > 0)
+        html = html.match(regex)[0].replace(/<\?body(.*\n)*\>/i);
+      return html;
+    }
+    /**
+     * holds on to edits so cancel willwork
+     *
+     * @param {string} [html=this.innerHTML]
+     * @memberof RichTextEditor
+     */
+    setCanceledEdits(html) {
+      this.__canceledEdits = html
+        ? html
+        : this.target && this.target.innerHTML
+        ? this.target.innerHTML
+        : "";
+    }
+    setTarget(target) {
+      let handlers = this.targetHandlers(target);
+      if (!!target) {
+        let oldTarget = this.target;
+        if (oldTarget !== target) {
+          if (!!oldTarget) this.unsetTarget(oldTarget);
+          Object.keys(handlers).forEach((handler) =>
+            target.addEventListener(handler, handlers[handler])
+          );
+          this.getRoot(target).onselectionchange = (e) => {
+            if (!this.__promptOpen) this.updateRange(target);
+          };
+          this.target = target;
+          this.enableEditing(target);
+        }
+      }
+      this.updateRange(this.target);
+      if (this.breadcrumbs) {
+        this.breadcrumbs.controls = this.controls;
+        if (!!this.target)
+          this.target.parentNode.insertBefore(
+            this.breadcrumbs,
+            this.target.nextSibling
+          );
+      }
+      this.buttons.forEach((button) => {
+        if (button.command !== "close") button.disabled = !this.target;
+      });
+      this.range = undefined;
+      this._rangeChanged();
+    }
+    unsetTarget(target = this.target) {
+      let handlers = this.targetHandlers(target);
+      this.disableEditing(target);
+      Object.keys(handlers).forEach((handler) =>
+        target.removeEventListener(handler, handlers[handler])
+      );
+      this.target = undefined;
+    }
+    /**
+     * determines if target is empty
+     *
+     * @returns {string}
+     * @memberof RichTextEditor
+     */
+    targetEmpty() {
+      return (
+        !this.target ||
+        !this.target.innerHTML ||
+        this.trimHTML(this.target) == ""
+      );
+    }
+
+    /**
+     * list of event handlers for a given target
+     *
+     * @param {*} target
+     * @returns
+     */
+    targetHandlers(target) {
+      return {
+        click: (e) => this._handleTargetClick(target, e),
+        focus: (e) => this._handleTargetFocus(target, e),
+        keydown: (e) => this._handleShortcutKeys(e),
+        paste: (e) => this._handlePaste(e),
+      };
+    }
+    /**
+     * gets cleaned HTML from the target
+     *
+     * @returns {string}
+     * @memberof RichTextEditor
+     */
+    targetHTML() {
+      return this.targetEmpty()
+        ? ""
+        : (this.target.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim();
+    }
+
+    _handleTargetClick(target, e) {
+      console.log("_handleTargetClick", this.target, target, e);
+      if (!target || target.disabled) return;
+      if (this.target !== target) {
+        e.preventDefault();
+        this.setTarget(target);
+      } else {
+        let els = Object.keys(this.clickableElements || {}),
+          el = e.target || e.srcElement || { tagName: "" },
+          evt = { detail: el },
+          tagname = (el.tagName || "").toLowerCase();
+        if (tagname && els.includes(tagname)) {
+          e.preventDefault();
+          this.clickableElements[tagname](evt);
+        }
+      }
+      this.updateRange();
+      console.log(
+        "update",
+        this.debugRange(this.range),
+        this.debugRange(this.getRange())
+      );
+    }
+    _handleTargetFocus(target, e) {
+      if (!this.__promptOpen && !target.disabled) this.setTarget(target);
+    }
+    _handleTargetMutation(mutations = []) {
+      console.log("_handleTargetMutation", mutations);
+      this._handleTargetSelection();
+      (mutations || []).forEach((mutation) => {
+        if (mutation.type == "attributes") {
+          if ((target.disabled || target.hidden) && target.conteneditable) {
+            this.disableEditing(target);
+            target.tabindex = -1;
+          } else if (
+            !target.disabled &&
+            !target.hidden &&
+            target.conteneditable
+          ) {
+            this.enableEditing(target);
+            target.tabindex = 0;
+          }
+        }
+      });
+    }
+    _handleTargetSelection(e) {
+      console.log("_handleTargetSelection", e);
+      if (!this.__promptOpen) this.range = this.getRange();
+    }
+    _handlePaste(e) {
+      e.stopImmediatePropagation();
+      this.pasteFromClipboard();
     }
   };
 };
