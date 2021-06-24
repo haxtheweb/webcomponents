@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 class PaperIconStep extends LitElement {
   static get tag() {
     return "paper-icon-step";

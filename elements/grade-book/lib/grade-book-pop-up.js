@@ -1,4 +1,4 @@
-import { html, LitElement } from "lit-element/lit-element.js";
+import { html, LitElement } from "lit";
 import { GradeBookStore } from "./grade-book-store.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import { autorun, toJS } from "mobx";

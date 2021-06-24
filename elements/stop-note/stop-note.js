@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
 import {
   pathResolver,

@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { A11yMenuButtonBehaviors } from "@lrnwebcomponents/a11y-menu-button/a11y-menu-button.js";
 import { SimpleToolbarButtonBehaviors } from "./simple-toolbar-button.js";
 import "./simple-toolbar-menu-item.js";

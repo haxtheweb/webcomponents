@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { ReplaceWithPolyfill } from "@lrnwebcomponents/utils/utils.js";
 if (!Element.prototype.replaceWith) {

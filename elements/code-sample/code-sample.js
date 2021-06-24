@@ -1,9 +1,8 @@
 /**
  * @license MIT, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css, render } from "lit";
 import { oneDark } from "./lib/themes/one-dark.js";
-import { render } from "lit-html/lib/render.js";
 import { hljs } from "./lib/highlightjs/highlight.js";
 import { javascript } from "./lib/highlightjs/languages/javascript.js";
 import { yaml } from "./lib/highlightjs/languages/yaml.js";

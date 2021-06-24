@@ -1,6 +1,5 @@
-import { html, css, LitElement } from "lit-element/lit-element.js";
+import { LitElement, html, css, nothing } from "lit";
 import { GradeBookStore } from "./grade-book-store.js";
-import { nothing } from "lit-html/lit-html.js";
 import { autorun, toJS } from "mobx";
 import "./letter-grade.js";
 /**

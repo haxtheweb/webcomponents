@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 /**    
 `responsive-grid-col`
 A column for the responsive grid

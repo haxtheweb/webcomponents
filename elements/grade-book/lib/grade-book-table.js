@@ -1,4 +1,4 @@
-import { html, css, LitElement } from "lit-element/lit-element.js";
+import { html, css, LitElement } from "lit";
 import "@lrnwebcomponents/editable-table/editable-table.js";
 
 class GradeBookTable extends LitElement {

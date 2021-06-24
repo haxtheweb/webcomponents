@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { A11yCollapse } from "../a11y-collapse.js";
 /**
  * `a11y-collapse-group`

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EditableTableEditToolbar = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
 var _richTextEditorToolbar = require("@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js");
 

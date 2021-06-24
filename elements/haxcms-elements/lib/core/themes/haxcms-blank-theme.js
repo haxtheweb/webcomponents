@@ -2,7 +2,7 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 import { CleanTwo } from "@lrnwebcomponents/clean-two/clean-two.js";
 
 class HAXCMSBlankTheme extends CleanTwo {

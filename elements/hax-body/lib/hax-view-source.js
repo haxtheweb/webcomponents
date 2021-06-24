@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
 import { stripMSWord, formatHTML } from "@lrnwebcomponents/utils/utils.js";
 import { HAXStore } from "./hax-store.js";

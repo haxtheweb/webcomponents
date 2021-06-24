@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/a11y-compare-image/a11y-compare-image.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";

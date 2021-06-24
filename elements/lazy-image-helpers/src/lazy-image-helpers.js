@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { SimpleIconsetStore } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-import { LitElement, html, css, svg } from "lit-element/lit-element.js";
+import { LitElement, html, css, svg } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { LoadingHelper } from "@lrnwebcomponents/replace-tag/lib/LoadingHelper.js";

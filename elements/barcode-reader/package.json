@@ -45,7 +45,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "2.5.1",
+    "lit": "2.0.0-rc.2",
     "javascript-barcode-reader": "0.6.8",
     "@zxing/library": "^0.18.4",
     "@zxing/browser": "^0.0.8",

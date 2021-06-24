@@ -2,7 +2,7 @@
  * Copyright 2021 collinkleest
  * @license MIT, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";

@@ -1,4 +1,4 @@
-import { html, css, LitElement } from "lit-element";
+import { html, css, LitElement } from "lit";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button.js"; //import simpleicon
 
 export class StarRating extends LitElement {

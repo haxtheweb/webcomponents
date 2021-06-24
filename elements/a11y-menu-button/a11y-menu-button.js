@@ -2,7 +2,7 @@
  * Copyright 2018 Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "./lib/a11y-menu-button-item.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 

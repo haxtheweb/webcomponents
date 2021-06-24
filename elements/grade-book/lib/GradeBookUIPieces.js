@@ -1,5 +1,4 @@
-import { html, css } from "lit-element/lit-element.js";
-import { nothing } from "lit-html/lit-html.js";
+import { html, css, nothing } from "lit";
 export const UIRenderPieces = function (SuperClass) {
   return class extends SuperClass {
     constructor() {

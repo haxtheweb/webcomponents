@@ -1,4 +1,4 @@
-import { css } from "lit-element/lit-element.js";
+import { css } from "lit";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 const materialCssStyles = css`

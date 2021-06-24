@@ -1,4 +1,4 @@
-import { LitElement } from "lit-element/lit-element.js";
+import { LitElement } from "lit";
 import { observable, makeObservable, configure, computed, toJS } from "mobx";
 configure({ enforceActions: false, useProxies: "ifavailable" }); // strict mode off
 

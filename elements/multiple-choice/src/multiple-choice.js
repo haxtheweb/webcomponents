@@ -1,4 +1,4 @@
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";

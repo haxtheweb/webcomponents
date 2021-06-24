@@ -2,8 +2,9 @@
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
-import { unsafeHTML } from "lit-html/directives/unsafe-html.js";
+import { LitElement, html, css } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
+
 import "@polymer/paper-input/paper-input.js";
 
 /**

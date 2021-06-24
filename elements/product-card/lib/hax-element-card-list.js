@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";

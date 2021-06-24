@@ -1,4 +1,4 @@
-import { css } from "lit-element/lit-element.js";
+import { css } from "lit";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior";

@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "./hax-tray-button.js";
 import { HAXStore } from "./hax-store.js";
 import { autorun, toJS } from "mobx";

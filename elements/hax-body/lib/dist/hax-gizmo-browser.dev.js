@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HaxGizmoBrowser = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
 var _simpleFilter = require("@lrnwebcomponents/simple-filter/simple-filter.js");
 

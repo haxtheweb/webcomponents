@@ -1,4 +1,4 @@
-import { css, html } from "lit-element/lit-element.js";
+import { css, html } from "lit";
 import { normalizeEventPath } from "@lrnwebcomponents/utils/utils.js";
 
 const BootstrapUserStylesMenuMixin = function (SuperClass) {

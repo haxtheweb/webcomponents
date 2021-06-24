@@ -1,6 +1,5 @@
-import { html, LitElement } from "lit-element/lit-element.js";
-import { render } from "lit-html/lib/render.js";
-import { unsafeHTML } from "lit-html/directives/unsafe-html.js";
+import { LitElement, html, render } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "@lrnwebcomponents/simple-toolbar/simple-toolbar.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icon-button-lite.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";

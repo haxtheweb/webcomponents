@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "./course-intro-header.js";
 import "./course-intro-lesson-plans.js";
 

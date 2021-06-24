@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import "./elmsln-studio-link.js";

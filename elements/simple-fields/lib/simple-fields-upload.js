@@ -1,4 +1,4 @@
-import { html, css, LitElement } from "lit-element/lit-element.js";
+import { html, css, LitElement } from "lit";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import { SimpleFieldsButtonStyles } from "./simple-fields-ui.js";
 import { SimpleFieldsFieldsetBehaviors } from "./simple-fields-fieldset.js";

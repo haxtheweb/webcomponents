@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 /**
  * `code-pen-button`
  * `Post data to codepen to form a new pen`

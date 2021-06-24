@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html } from "lit";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * @license

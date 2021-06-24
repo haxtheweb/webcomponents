@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.AbsolutePositionStateManager = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {

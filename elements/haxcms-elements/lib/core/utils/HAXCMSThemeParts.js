@@ -1,4 +1,4 @@
-import { css } from "lit-element/lit-element.js";
+import { css } from "lit";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 

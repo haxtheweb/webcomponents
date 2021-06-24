@@ -2,9 +2,7 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
-import { render } from "lit-html/lib/render.js";
-import { nothing } from "lit-html/lit-html.js";
+import { html, css, render, nothing } from "lit";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { I18NMixin } from "@lrnwebcomponents/i18n-manager/lib/I18NMixin.js";
 import {

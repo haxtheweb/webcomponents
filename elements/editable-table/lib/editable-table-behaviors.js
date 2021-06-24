@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 /**
  * `editable-table-behaviors`
  * A set of common behaviors for editable-table web components.

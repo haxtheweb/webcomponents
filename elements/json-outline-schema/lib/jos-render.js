@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "../json-outline-schema.js";
 import { wipeSlot, valueMapTransform } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js";

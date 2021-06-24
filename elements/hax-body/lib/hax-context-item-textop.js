@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import { HaxToolbarItemBehaviors } from "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 /**
  * `hax-context-item-textop`

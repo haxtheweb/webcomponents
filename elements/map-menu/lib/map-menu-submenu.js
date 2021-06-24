@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/map-menu/lib/map-menu-header.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 class MapMenuSubmenu extends LitElement {

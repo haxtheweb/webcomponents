@@ -183,6 +183,7 @@ export const HaxIconsetManifest = [
       "interact",
       "lab",
       "labs",
+      "lecture",
       "letter",
       "media",
       "mooc",

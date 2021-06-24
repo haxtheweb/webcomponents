@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HaxButton = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
 var _haxToolbarItem = require("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
 

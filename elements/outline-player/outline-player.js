@@ -1,4 +1,4 @@
-import { html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";

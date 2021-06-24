@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit";
 import * as shadow from "shadow-selection-polyfill/shadow.js";
 import { RichTextStyles } from "./lib/buttons/rich-text-editor-button.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";

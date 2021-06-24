@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RichTextEditorPrompt = void 0;
 
-var _litElement = require("lit-element/lit-element.js");
+var _litElement = require("lit");
 
 var _richTextEditorButton = require("../buttons/rich-text-editor-button.js");
 
