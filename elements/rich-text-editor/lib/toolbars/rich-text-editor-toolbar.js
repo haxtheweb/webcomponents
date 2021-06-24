@@ -746,6 +746,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.__prompt.addEventListener("close", (e) => {
         this.__promptOpen = false;
       });
+      this.onmousedown = this._addHighlight;
+      this.onkeydown = this._addHighlight;
     }
 
     updated(changedProperties) {
@@ -801,7 +803,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @memberof RichTextEditor
      */
     get observer() {
-      return new MutationObserver(this._handleTargetMutation);
+      return new MutationObserver(this._handleTargetMutation.bind(this));
     }
 
     /**
@@ -1028,17 +1030,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         target.parentNode.insertBefore(this, target);
         target.setAttribute("contenteditable", "true");
         target.addEventListener("keypress", this._handleTargetKeypress);
+        target.addEventListener("keydown", this._removeHighlight.bind(this));
+        target.addEventListener("mousedown", this._removeHighlight.bind(this));
         this.setCanceledEdits();
         this.updateRange(target);
-        //editor.observeChanges(this.getRoot(editor));
+        this.observeChanges(true);
+
         this.getRoot(target).onselectionchange = (e) => {
-          console.log(
-            "onselectionchange",
-            this.debugRange(this.range),
-            this.debugRange(this.getRange())
-          );
           if (!this.__promptOpen) this.updateRange(target);
         };
+
         this.dispatchEvent(
           new CustomEvent("enabled", {
             bubbles: true,
@@ -1052,25 +1053,21 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       }
     }
 
-    _handleTargetKeypress(e) {
-      if (this.targetEmpty() && e.key) {
-        this.innerHTML = e.key
-          .replace(">", "&gt;")
-          .replace("<", "&lt;")
-          .replace("&", "&amp;");
-        this.range = this.getRange();
-        this.range.selectNodeContents(this);
-        this.range.collapse();
-      }
-    }
-
     disableEditing(target = this.target) {
+      let range = this.getRange();
       if (!!target) {
-        this.unsetHighlight();
+        if (range) range.collapse();
+        this.__highlight.emptyContents();
         this.getRoot(target).onselectionchange = undefined;
+        this.observeChanges(false);
         target.viewSource = false;
         target.removeAttribute("contenteditable");
         target.removeEventListener("keypress", this._handleTargetKeypress);
+        target.removeEventListener("keydown", this._removeHighlight.bind(this));
+        target.removeEventListener(
+          "mousedown",
+          this._removeHighlight.bind(this)
+        );
 
         target.makeSticky(false);
         this.dispatchEvent(
@@ -1231,7 +1228,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     _handleTargetClick(target, e) {
-      console.log("_handleTargetClick", this.target, target, e);
       if (!target || target.disabled) return;
       if (this.target !== target) {
         e.preventDefault();
@@ -1247,17 +1243,23 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         }
       }
       this.updateRange();
-      console.log(
-        "update",
-        this.debugRange(this.range),
-        this.debugRange(this.getRange())
-      );
     }
     _handleTargetFocus(target, e) {
       if (!this.__promptOpen && !target.disabled) this.setTarget(target);
     }
+
+    _handleTargetKeypress(e) {
+      if (this.targetEmpty() && e.key) {
+        this.innerHTML = e.key
+          .replace(">", "&gt;")
+          .replace("<", "&lt;")
+          .replace("&", "&amp;");
+        this.range = this.getRange();
+        this.range.selectNodeContents(this);
+        this.range.collapse();
+      }
+    }
     _handleTargetMutation(mutations = []) {
-      console.log("_handleTargetMutation", mutations);
       this._handleTargetSelection();
       (mutations || []).forEach((mutation) => {
         if (mutation.type == "attributes") {
@@ -1276,12 +1278,32 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       });
     }
     _handleTargetSelection(e) {
-      console.log("_handleTargetSelection", e);
       if (!this.__promptOpen) this.range = this.getRange();
     }
     _handlePaste(e) {
       e.stopImmediatePropagation();
       this.pasteFromClipboard();
+    }
+    _addHighlight() {
+      if (!this.__highlight.hidden) return;
+      console.log("_addHighlight 1", this.debugRange(this.range));
+      this.range = this.getRange();
+      console.log("_addHighlight 2", this.debugRange(this.range));
+      if (
+        !this.target ||
+        !this.target.getAttribute("contenteditable") == "true"
+      )
+        return;
+      console.log("_addHighlight 3", this.debugRange(this.range));
+      this.__highlight.wrap(this.range || this.getRange());
+      console.log("_addHighlight 4", this.debugRange(this.range));
+    }
+    _removeHighlight() {
+      console.log("_removeHighlight 1", this.debugRange(this.range));
+      this.__highlight.unwrap(this.range || this.getRange());
+      console.log("_removeHighlight 2", this.debugRange(this.range));
+      //this.updateRange();
+      //console.log('_removeHighlight 2',this.debugRange(this.range));
     }
   };
 };

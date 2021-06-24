@@ -175,19 +175,10 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @returns {void}
      */
     pasteFromClipboard(range = this.range) {
-      e.stopImmediatePropagation();
+      this.__clipboard.setClipboard();
       setTimeout(async () => {
-        this.__clipboard.setClipboard(range);
-        this.dispatchEvent(
-          new CustomEvent("clipboard-ready", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this.target,
-          })
-        );
-        this.paste();
-      }, 2000);
+        this.paste(this.__clipboard.value, range, true);
+      }, 100);
     }
     /**
      * pastes content into editor's selected range
@@ -196,18 +187,19 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @param {obj} pasteContent content to paste
      * @memberof RichTextEditorSelection
      */
-    paste(pasteContent = this.__clipboard.value, sanitize = true) {
+    paste(pasteContent, range = this.range, sanitize = true) {
+      console.log("paste", pasteContent, range, this.debugRange(range));
       let target = this.__toolbar.target;
       if (target) {
         let range = this.range,
           div = document.createElement("div"),
           parent = range.commonAncestorContainer.parentNode,
           closest = parent.closest(
-            "[editing=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])"
+            "[contenteditable=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])"
           );
         if ((target = closest)) {
           div.innerHTML = sanitize
-            ? this.sanitizeHTML(pasteContent)
+            ? this.sanitizeHTML(pasteContent || this.__clipboard.value)
             : pasteContent;
           if (range && range.extractContents) {
             range.extractContents();
@@ -218,6 +210,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           }
           div.parentNode.removeChild(div);
         }
+        target.normalize();
       }
       this.dispatchEvent(
         new CustomEvent("paste", {
@@ -265,9 +258,14 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         : node;
     }
     debugRange(range = this.getRange()) {
+      let contents =
+        !range || range.collapsed || !range.cloneContents
+          ? false
+          : range.cloneContents();
       return {
         range: range,
-        contents: range.collapsed ? false : range.cloneContents(),
+        contents: contents,
+        text: !contents ? false : contents.textContent,
       };
     }
     /**
@@ -316,7 +314,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       range = this.range || this.getRange()
     ) {
       let start = this.rangeElementOrParentElement(range);
-      return !start
+      return !start || cssQuery == ""
         ? undefined
         : start.matches(cssQuery)
         ? start
@@ -460,7 +458,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @returns {void}
      */
     selectNode(node, range = this.range) {
-      console.log("selectNode", node);
       if (!range) {
         let sel = this.getSelection();
         range = document.createRange();
@@ -500,33 +497,10 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @param {object} range object
      */
     highlightNode(node, range = this.range) {
-      console.log("highlightNode", node, range);
       let element = node || this.rangeOrMatchingAncestor();
-      console.log("highlightNode 2", node, range);
       if (!!element) this.selectNode(node, range);
-      console.log("highlightNode 3", node, range);
       this.__toolbar.updateRange();
-      console.log("highlightNode 4", node, range);
-      this.setHighlight(this.range);
-      console.log(
-        "keep",
-        this.debugRange(this.range),
-        this.debugRange(this.getRange())
-      );
-    }
-    /**
-     *
-     *
-     * @param {*} [range=this.range]
-     */
-    setHighlight(range = this.range || this.getRange()) {
-      console.log("set", range);
       this.__highlight.wrap(range);
-    }
-    unsetHighlight(range = this.range) {
-      this.selectNode(this.__highlight, range);
-      if (range) range.collapse();
-      this.__highlight.unwrap();
     }
     /**
      * selects or deselects(collapses) a range
@@ -586,26 +560,33 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @param {object} range
      * @memberof RichTextEditorManager
      */
-    _handleCommand(command, commandVal, range = this.range) {
-      console.log("_handleCommand", command, commandVal, (range = this.range));
+    _handleCommand(
+      command,
+      commandVal,
+      range = this.__highlight.range || this.range
+    ) {
       let toolbar = this.__toolbar,
-        editor = toolbar.target;
+        target = toolbar.target;
       if (this.validCommands.includes(command)) {
         commandVal = toolbar ? toolbar.sanitizeHTML(commandVal) : commandVal;
-        this.range = editor.range;
-        toolbar.updateRange(editor, range);
-        this.selectRange(range, editor);
+        console.log("_handleCommand 1", this.debugRange(range));
+        this.__highlight.unwrap(range);
+        console.log("_handleCommand 2", this.debugRange(this.range));
+        this.selectRange(range);
+        console.log("_handleCommand 2", this.debugRange(this.range));
         if (command != "paste") {
           document.execCommand(command, false, commandVal);
+          console.log("_handleCommand 3", this.debugRange(range));
+          target.normalize();
+          console.log("_handleCommand 4", this.debugRange(range));
         } else if (navigator.clipboard) {
-          this.pasteFromClipboard(editor);
+          this.pasteFromClipboard();
         }
-        this.unsetHighlight();
       } else if (command === "cancel") {
-        if (editor) editor.revert();
-        toolbar.close(editor);
+        if (target) target.revert();
+        toolbar.close(target);
       } else if (command === "close") {
-        toolbar.close(editor);
+        toolbar.close(target);
       } else if (command === "viewSource") {
       }
     }

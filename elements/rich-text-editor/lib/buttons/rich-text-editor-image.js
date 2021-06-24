@@ -108,7 +108,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
    * @memberof RichTextEditorImage
    */
   getValue() {
-    return !img
+    return !this.targetedNode
       ? undefined
       : {
           alt: !this.targetedNode

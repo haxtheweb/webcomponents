@@ -48,18 +48,19 @@ class RichTextEditorClipboard extends LitElement {
    * @param {obj} editor
    * @memberof RichTextEditorSelection
    */
-  setClipboard(range) {
+  setClipboard() {
+    this.__textarea =
+      this.__textarea || this.shadowRoot.querySelector("textarea");
     setTimeout(async () => {
-      let sel = window.getSelection();
       this.__textarea.value = await navigator.clipboard.readText();
       this.__textarea.focus();
       this.__textarea.select();
       document.execCommand("paste");
-      sel.removeAllRanges();
-      sel.addRange(range);
     }, 1);
   }
   get value() {
+    this.__textarea =
+      this.__textarea || this.shadowRoot.querySelector("textarea");
     return this.__textarea.value;
   }
 

@@ -145,7 +145,8 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      *
      */
     close() {
-      this.unsetHighlight();
+      this.__highlight.unwrap(this.range);
+      if (this.range) this.range.collapse();
     }
 
     /**
@@ -225,10 +226,12 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       let command = this.promptCommand,
         commandVal = this.promptCommandVal;
       this.setInnerHTML(this.getPropValue("innerHTML"));
-      this.selectNode(this.targetedNode);
+      if (this.targetedNode === this.__highlight) {
+        this.selectNodeContents(this.targetedNode);
+      } else {
+        this.selectNode(this.targetedNode);
+      }
       this._handleCommand(command, commandVal, this.range);
-      this.range.collapse();
-      this.__highlight.normalize();
     }
 
     /**

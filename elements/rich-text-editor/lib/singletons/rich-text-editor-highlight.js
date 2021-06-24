@@ -63,7 +63,6 @@ class RichTextEditorHighlight extends LitElement {
    */
   constructor() {
     super();
-    this.hidden = true;
     let hex = Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
       .substring(1);
@@ -71,34 +70,118 @@ class RichTextEditorHighlight extends LitElement {
   }
 
   firstUpdated(changedProperties) {
-    this.unwrap();
+    this.emptyContents();
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
   }
-
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "range" && this.range !== oldValue)
-        this.wrap(this.range);
+  emptyContents() {
+    let nodes = [...this.childNodes];
+    nodes.forEach((node) => {
+      this.parentNode.insertBefore(node, this);
     });
+    document.body.append(this);
+    this.hidden = true;
+    this.range = undefined;
   }
-  wrap(range = this.getRange()) {
-    console.log("wrap", range, range.cloneContents());
+  wrap(range) {
     if (!range) return;
-    this.unwrap();
-    range.surroundContents(this);
-    console.log("wrap 2", range, range.cloneContents());
+    if (!this.hidden && range !== this.range) this.emptyContents();
+    this.range = range;
+    console.log(
+      "wrap 1",
+      range,
+      !range || !range.cloneContents()
+        ? false
+        : range.cloneContents().textContent
+    );
+    let contents = range.extractContents();
+    console.log(
+      "wrap 2",
+      contents,
+      this.innerHTML,
+      range,
+      !range || !range.cloneContents()
+        ? false
+        : range.cloneContents().textContent
+    );
+    this.append(contents);
+    console.log(
+      "wrap 3",
+      this.innerHTML,
+      range,
+      !range || !range.cloneContents()
+        ? false
+        : range.cloneContents().textContent
+    );
+    try {
+      range.insertNode(this);
+    } catch (e) {}
+    console.log(
+      "wrap 4",
+      this.innerHTML,
+      range,
+      !range || !range.cloneContents()
+        ? false
+        : range.cloneContents().textContent
+    );
+    range.selectNodeContents(this);
+    console.log(
+      "wrap 5",
+      this.innerHTML,
+      range,
+      !range || !range.cloneContents()
+        ? false
+        : range.cloneContents().textContent
+    );
     this.hidden = false;
   }
-  unwrap() {
-    console.log("unwrap", this.innerHTML);
-    [...this.childNodes].forEach((node) =>
-      this.parentNode.insertBefore(node, this)
+  unwrap(range) {
+    let nodes = [...this.childNodes].reverse(),
+      collapse = nodes.length < 1;
+    console.log(
+      "unwrap 1",
+      range,
+      !range || !range.cloneContents()
+        ? false
+        : range.cloneContents().textContent,
+      nodes,
+      this.innerHTML
+    );
+    if (range) range.setStartBefore(this);
+    console.log(
+      "unwrap 2",
+      range,
+      !range || !range.cloneContents()
+        ? false
+        : range.cloneContents().textContent,
+      nodes,
+      this.innerHTML
+    );
+    nodes.forEach((node, i) => {
+      if (range) range.insertNode(node);
+    });
+    console.log(
+      "unwrap 3",
+      range,
+      !range || !range.cloneContents()
+        ? false
+        : range.cloneContents().textContent,
+      nodes,
+      this.innerHTML
     );
     document.body.append(this);
     this.hidden = true;
+    this.range = range;
+    console.log(
+      "unwrap 4",
+      range,
+      !range || !range.cloneContents()
+        ? false
+        : range.cloneContents().textContent,
+      nodes,
+      this.innerHTML
+    );
   }
 }
 window.customElements.define(
