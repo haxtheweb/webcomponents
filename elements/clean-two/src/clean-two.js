@@ -338,7 +338,7 @@ class CleanTwo extends HAXCMSRememberRoute(
           margin: 0px 16px;
           display: block;
           padding: 0;
-          width: 560px;
+          max-width: 600px;
         }
         @media screen and (max-width: 400px) {
           .content {
