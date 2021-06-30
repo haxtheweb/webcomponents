@@ -40,7 +40,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       super();
       this.__highlight = window.RichTextEditorHighlight.requestAvailability();
       this.__clipboard = window.RichTextEditorClipboard.requestAvailability();
-      this.__source = window.RichTextEditorSource.requestAvailability();
     }
 
     get commandIsToggled() {
@@ -193,7 +192,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @memberof RichTextEditorSelection
      */
     paste(pasteContent, range = this.range, sanitize = true) {
-      console.log("paste", pasteContent, range, this.debugRange(range));
       let target = this.__toolbar.target;
       if (target) {
         let range = this.range,
@@ -473,7 +471,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         range.selectNode(node);
         this._rangeChanged(range);
       }
-      console.log("selectNode", node);
     }
     /**
      * sets selection range to specified node's contents
@@ -543,7 +540,6 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       }
     }
     _rangeChanged(range) {
-      //console.log("rangechange",this,range);
       this.dispatchEvent(
         new CustomEvent("rangechange", {
           bubbles: true,
@@ -555,6 +551,14 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           },
         })
       );
+    }
+    /**
+     * only initialises view source if needed
+     *
+     */
+    initViewSource() {
+      this.__source =
+        this.__source || window.RichTextEditorSource.requestAvailability();
     }
     /**
      * handles commands sent from toolbar
@@ -574,16 +578,11 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         target = toolbar.target;
       if (this.validCommands.includes(command)) {
         commandVal = toolbar ? toolbar.sanitizeHTML(commandVal) : commandVal;
-        console.log("_handleCommand 1", this.debugRange(range));
         this.__highlight.unwrap(range);
-        console.log("_handleCommand 2", this.debugRange(this.range));
         this.selectRange(range);
-        console.log("_handleCommand 2", this.debugRange(this.range));
         if (command != "paste") {
           document.execCommand(command, false, commandVal);
-          console.log("_handleCommand 3", this.debugRange(range));
           target.normalize();
-          console.log("_handleCommand 4", this.debugRange(range));
         } else if (navigator.clipboard) {
           this.pasteFromClipboard();
         }

@@ -273,7 +273,6 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
       this.button = e.detail;
       this.fields = [...e.detail.fields];
       this.value = { ...e.detail.value };
-      console.log("open", e.detail.range, this.button, this.button.__toolbar);
       this.shadowRoot.querySelector("#cancel").focus();
     }
   }
@@ -307,7 +306,6 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
    */
   _confirm(e) {
     e.preventDefault();
-    console.log("confirm", this.button, this.button.__toolbar);
     this.button.confirm(this.value);
     this.close();
   }

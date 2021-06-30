@@ -59,7 +59,10 @@ const RichTextEditorBehaviors = function (SuperClass) {
             flex: 1 1 100%;
             width: 100%;
           }
-          :host(:empty) #wysiwyg::after {
+          :host(:empty) {
+            min-height: 20px;
+          }
+          :host(:empty)::after {
             display: block;
             content: attr(aria-placeholder);
           }
@@ -169,7 +172,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           name: "placeholder",
           type: String,
           reflect: true,
-          attribute: "placeholder",
+          attribute: "aria-placeholder",
         },
 
         /**
@@ -273,21 +276,30 @@ const RichTextEditorBehaviors = function (SuperClass) {
       this.addEventListener("click", this._handleClick);
     }
 
+    get isEmpty() {
+      return (
+        !this.innerHTML ||
+        this.innerHTML
+          .replace(/<!--[^(-->)]*-->/g, "")
+          .replace(/[\s\t\r\n]/gim, "") == ""
+      );
+    }
+
     firstUpdated() {
       if (super.firstUpdated) super.firstUpdated();
-      /*if (this.isEmpty() && !!this.rawhtml) {
-        this.setHTML(this.rawhtml);
-      } else {
-        if (this.isEmpty()) this.innerHTML = "";
-        this._editableChange();
-      }*/
+      if (this.isEmpty && !!this.rawhtml) {
+        this.innerHTML = rawhtml.trim();
+      } else if (this.isEmpty) {
+        this.innerHTML = "";
+      }
     }
 
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "rawhtml" && !!this.rawhtml)
-          this.setHTML(this.rawhtml);
+        if (propName === "rawhtml" && !!this.rawhtml) {
+          this.innerHTML = rawhtml.trim();
+        }
       });
       if (!this.innerHTML) this.innerHTML = "";
     }
@@ -330,7 +342,6 @@ const RichTextEditorBehaviors = function (SuperClass) {
     _handleClick(e) {
       e.preventDefault();
       if (!this.disabled && !this.contenteditable && !this.__toolbar) {
-        console.log(this.__toolbar, this.contenteditable);
         //get toolbar by id
         let toolbar,
           filter = !this.toolbarId

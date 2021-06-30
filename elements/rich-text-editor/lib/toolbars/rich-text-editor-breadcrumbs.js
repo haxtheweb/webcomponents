@@ -67,6 +67,12 @@ class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
       selectionAncestors: {
         type: Array,
       },
+      /**
+       * active rict-text-editor.
+       */
+      __target: {
+        type: Object,
+      },
     };
   }
 
@@ -87,7 +93,9 @@ class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
     } else {
       this.selectNode(breadcrumb);
     }
+    if (this.__target) this.__target.focus();
   }
+
   render() {
     return html`
       ${this.label}:

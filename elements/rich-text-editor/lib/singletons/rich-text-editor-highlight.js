@@ -22,7 +22,7 @@ class RichTextEditorHighlight extends LitElement {
         :host(:empty) {
           outline: none;
           border-left: 1px dotted currentColor;
-          margin-right: 0.25em;
+          margin-right: -0.2em;
         }
         :host([hidden]) {
           display: none !important;

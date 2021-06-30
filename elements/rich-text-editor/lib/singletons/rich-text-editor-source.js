@@ -56,29 +56,27 @@ class RichTextEditorSource extends LitElement {
           min-height: var(--rich-text-editor-min-height, 20px);
           cursor: pointer;
           outline: none;
-          resize: horizontal;
           overflow: auto;
-          flex: 1 1 auto;
+          resize: horizontal;
         }
         #source {
           flex: 1 1 auto;
-          width: 50%;
           min-width: 300px;
+          padding-bottom: 20px;
         }
         #wysiwyg {
+          flex: 0 1 auto;
           display: block;
-          margin-right: 10px;
-          flex: 1 1 calc(50% - 10px);
+          margin-left: 10px;
+          max-height: 70vh;
+          overflow-x: hidden;
+          resize: auto;
         }
         #source:hover,
         #source:focus-within {
           outline: var(--rich-text-editor-border-width, 1px)
             var(--rich-text-editor-focus-border-style, 1px)
             var(--rich-text-editor-focus-color, blue);
-        }
-        ::slotted(*) {
-          cursor: not-allowed;
-          pointer-events: none;
         }
       `,
     ];
@@ -87,12 +85,7 @@ class RichTextEditorSource extends LitElement {
   // render function
   render() {
     return html` <div id="container">
-      <div
-        id="wysiwyg"
-        aria-placeholder="${this.placeholder}"
-        part="wysiwyg"
-        disabled
-      >
+      <div id="wysiwyg" part="wysiwyg">
         <slot></slot>
       </div>
       <code-editor
@@ -204,7 +197,13 @@ class RichTextEditorSource extends LitElement {
       !toolbar.target ||
       (this.__toolbar && this.__toolbar === toolbar)
     ) {
-      console.log("toggle off");
+      [
+        ...document.querySelectorAll(
+          "[data-rich-text-editor-view-source-mode]"
+        ),
+      ].forEach((node) =>
+        node.removeAttribute("data-rich-text-editor-view-source-mode")
+      );
       if (this.__target) this.__target.focus();
       this.hidden = true;
       this.__toolbar = undefined;
@@ -217,9 +216,12 @@ class RichTextEditorSource extends LitElement {
       this.__toolbar = toolbar;
       this.__target = toolbar.target;
       this.disabled = this.__target.disabled;
+      this.__target.setAttribute(
+        "data-rich-text-editor-view-source-mode",
+        true
+      );
       this.__target.parentNode.insertBefore(this, this.__target);
       this.__codeEditorValue = this.__toolbar.targetHTML;
-      console.log("toggle on");
       this.innerHTML = this.__codeEditorValue;
       code.editorValue = this.__codeEditorValue;
       this.hidden = false;
@@ -261,7 +263,10 @@ window.RichTextEditorSource.requestAvailability = () => {
     window.RichTextEditorSource.instance = document.createElement(
       "rich-text-editor-source"
     );
+    window.RichTextEditorSource.stylesheet = document.createElement("style");
+    window.RichTextEditorSource.stylesheet.innerHTML = `rich-text-editor-source + [data-rich-text-editor-view-source-mode] { display: none }`;
     document.body.appendChild(window.RichTextEditorSource.instance);
+    document.head.appendChild(window.RichTextEditorSource.stylesheet);
   }
   return window.RichTextEditorSource.instance;
 };

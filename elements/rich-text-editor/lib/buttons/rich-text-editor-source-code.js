@@ -40,6 +40,7 @@ class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
     this.commandVal = true;
     this.toggledCommandVal = false;
     this.shortcutKeys = "cmd+<";
+    this.initViewSource();
   }
 
   // properties available to the custom element for data binding
@@ -75,6 +76,7 @@ class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
    * @memberof RichTextEditorSourceCode
    */
   commandCallback(editor, toolbar, selection) {
+    if (!this.toggled) this.__highlight.unwrap(this.range);
     this.toggled =
       this.__toolbar &&
       this.__source &&

@@ -1004,6 +1004,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         if (this.breadcrumbs) {
           this.breadcrumbs.selectionAncestors = this.selectionAncestors;
           this.breadcrumbs.hidden = this.disconnected;
+          this.breadcrumbs.__target = this.__target;
         }
       }
     }
@@ -1073,7 +1074,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.__highlight.emptyContents();
         this.getRoot(target).onselectionchange = undefined;
         this.observeChanges(false);
-        this.__source.toggle(false);
+        if (this.__source) this.__source.toggle(false);
         target.removeAttribute("contenteditable");
 
         Object.keys(handlers).forEach((handler) =>
@@ -1247,18 +1248,17 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     htmlMatchesTarget(html) {
-      let outdentedHTML = !!html ? this.outdentHTML(html) : undefined;
-      (cleanHTML = outdentedHTML
-        ? outdentedHTML.replace(/\s+/gm, "")
-        : undefined),
-        (cleanTarget = this.targetHTML
+      let outdentedHTML = !!html ? this.outdentHTML(html) : undefined,
+        cleanHTML = outdentedHTML
+          ? outdentedHTML.replace(/\s+/gm, "")
+          : undefined,
+        cleanTarget = this.targetHTML
           ? this.targetHTML.replace(/\s+/gm, "")
-          : undefined);
+          : undefined;
       return cleanHTML && cleanTarget && cleanTarget.localeCompare(cleanHTML);
     }
 
     _handleTargetDoubleClick(target, e) {
-      console.log("dbl", target, e);
       if (!target || target.disabled || this.target !== target) return;
       let els = Object.keys(this.clickableElements || {}),
         el = e.target || e.srcElement || { tagName: "" },
@@ -1331,24 +1331,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
     _addHighlight() {
       if (!this.__highlight.hidden) return;
-      console.log("_addHighlight 1", this.debugRange(this.range));
       this.range = this.getRange();
-      console.log("_addHighlight 2", this.debugRange(this.range));
       if (
         !this.target ||
         !this.target.getAttribute("contenteditable") == "true"
       )
         return;
-      console.log("_addHighlight 3", this.debugRange(this.range));
       this.__highlight.wrap(this.range || this.getRange());
-      console.log("_addHighlight 4", this.debugRange(this.range));
     }
     _removeHighlight() {
-      console.log("_removeHighlight 1", this.debugRange(this.range));
       this.__highlight.unwrap(this.range || this.getRange());
-      console.log("_removeHighlight 2", this.debugRange(this.range));
-      //this.updateRange();
-      //console.log('_removeHighlight 2',this.debugRange(this.range));
     }
   };
 };
