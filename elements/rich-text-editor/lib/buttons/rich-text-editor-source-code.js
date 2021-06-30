@@ -75,10 +75,10 @@ class RichTextEditorSourceCode extends RichTextEditorButtonBehaviors(
    * @memberof RichTextEditorSourceCode
    */
   commandCallback(editor, toolbar, selection) {
-    if (editor) {
-      editor.viewSource = this.operationCommandVal;
-      this.toggled = editor.viewSource;
-    }
+    this.toggled =
+      this.__toolbar &&
+      this.__source &&
+      this.__source.__toolbar == this.__toolbar;
   }
 }
 window.customElements.define(

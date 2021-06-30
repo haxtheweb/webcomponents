@@ -88,100 +88,24 @@ class RichTextEditorHighlight extends LitElement {
     if (!range) return;
     if (!this.hidden && range !== this.range) this.emptyContents();
     this.range = range;
-    console.log(
-      "wrap 1",
-      range,
-      !range || !range.cloneContents()
-        ? false
-        : range.cloneContents().textContent
-    );
     let contents = range.extractContents();
-    console.log(
-      "wrap 2",
-      contents,
-      this.innerHTML,
-      range,
-      !range || !range.cloneContents()
-        ? false
-        : range.cloneContents().textContent
-    );
     this.append(contents);
-    console.log(
-      "wrap 3",
-      this.innerHTML,
-      range,
-      !range || !range.cloneContents()
-        ? false
-        : range.cloneContents().textContent
-    );
     try {
       range.insertNode(this);
     } catch (e) {}
-    console.log(
-      "wrap 4",
-      this.innerHTML,
-      range,
-      !range || !range.cloneContents()
-        ? false
-        : range.cloneContents().textContent
-    );
     range.selectNodeContents(this);
-    console.log(
-      "wrap 5",
-      this.innerHTML,
-      range,
-      !range || !range.cloneContents()
-        ? false
-        : range.cloneContents().textContent
-    );
     this.hidden = false;
   }
   unwrap(range) {
     let nodes = [...this.childNodes].reverse(),
       collapse = nodes.length < 1;
-    console.log(
-      "unwrap 1",
-      range,
-      !range || !range.cloneContents()
-        ? false
-        : range.cloneContents().textContent,
-      nodes,
-      this.innerHTML
-    );
     if (range) range.setStartBefore(this);
-    console.log(
-      "unwrap 2",
-      range,
-      !range || !range.cloneContents()
-        ? false
-        : range.cloneContents().textContent,
-      nodes,
-      this.innerHTML
-    );
     nodes.forEach((node, i) => {
       if (range) range.insertNode(node);
     });
-    console.log(
-      "unwrap 3",
-      range,
-      !range || !range.cloneContents()
-        ? false
-        : range.cloneContents().textContent,
-      nodes,
-      this.innerHTML
-    );
     document.body.append(this);
     this.hidden = true;
     this.range = range;
-    console.log(
-      "unwrap 4",
-      range,
-      !range || !range.cloneContents()
-        ? false
-        : range.cloneContents().textContent,
-      nodes,
-      this.innerHTML
-    );
   }
 }
 window.customElements.define(

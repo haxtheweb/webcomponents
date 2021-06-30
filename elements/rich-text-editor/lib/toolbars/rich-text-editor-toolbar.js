@@ -982,7 +982,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       ) {
         let nodes = [],
           getParentNode = (node) => {
-            nodes.push(node);
+            if (node.tagName.toLowerCase() !== "rich-text-editor-highlight")
+              nodes.push(node);
             if (node.parentNode && node.parentNode !== this.target)
               getParentNode(node.parentNode);
           };
@@ -1018,6 +1019,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.target(editor, false);
     }
 
+    get enabledTargetHandlers() {
+      return {
+        keydown: this._removeHighlight.bind(this),
+        keypress: this._handleTargetKeypress.bind(this),
+        mousedown: this._removeHighlight.bind(this),
+      };
+    }
+
     /**
      * disables editing
      *
@@ -1025,13 +1034,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @memberof RichTextEditorManager
      */
     enableEditing(target = this.target) {
+      let handlers = this.enabledTargetHandlers;
       if (!!target && !target.hidden && !target.disabled) {
         target.makeSticky(this.sticky);
         target.parentNode.insertBefore(this, target);
         target.setAttribute("contenteditable", "true");
-        target.addEventListener("keypress", this._handleTargetKeypress);
-        target.addEventListener("keydown", this._removeHighlight.bind(this));
-        target.addEventListener("mousedown", this._removeHighlight.bind(this));
+
+        Object.keys(handlers).forEach((handler) =>
+          target.removeEventListener(handler, handlers[handler])
+        );
+
         this.setCanceledEdits();
         this.updateRange(target);
         this.observeChanges(true);
@@ -1054,19 +1066,18 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     disableEditing(target = this.target) {
-      let range = this.getRange();
+      let handlers = this.enabledTargetHandlers,
+        range = this.getRange();
       if (!!target) {
         if (range) range.collapse();
         this.__highlight.emptyContents();
         this.getRoot(target).onselectionchange = undefined;
         this.observeChanges(false);
-        target.viewSource = false;
+        this.__source.toggle(false);
         target.removeAttribute("contenteditable");
-        target.removeEventListener("keypress", this._handleTargetKeypress);
-        target.removeEventListener("keydown", this._removeHighlight.bind(this));
-        target.removeEventListener(
-          "mousedown",
-          this._removeHighlight.bind(this)
+
+        Object.keys(handlers).forEach((handler) =>
+          target.removeEventListener(handler, handlers[handler])
         );
 
         target.makeSticky(false);
@@ -1152,6 +1163,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       let handlers = this.targetHandlers(target);
       if (!!target) {
         let oldTarget = this.target;
+        target.setAttribute("role", "textbox");
         if (oldTarget !== target) {
           if (!!oldTarget) this.unsetTarget(oldTarget);
           Object.keys(handlers).forEach((handler) =>
@@ -1210,6 +1222,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     targetHandlers(target) {
       return {
         click: (e) => this._handleTargetClick(target, e),
+        dblclick: (e) => this._handleTargetDoubleClick(target, e),
         focus: (e) => this._handleTargetFocus(target, e),
         keydown: (e) => this._handleShortcutKeys(e),
         paste: (e) => this._handlePaste(e),
@@ -1220,11 +1233,42 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      *
      * @returns {string}
      * @memberof RichTextEditor
-     */
+     * /
     targetHTML() {
       return this.targetEmpty()
         ? ""
         : (this.target.innerHTML || "").replace(/<!--[^(-->)]*-->/g, "").trim();
+    }*/
+
+    get targetHTML() {
+      return !!this.target
+        ? this.outdentHTML(this.target.innerHTML)
+        : undefined;
+    }
+
+    htmlMatchesTarget(html) {
+      let outdentedHTML = !!html ? this.outdentHTML(html) : undefined;
+      (cleanHTML = outdentedHTML
+        ? outdentedHTML.replace(/\s+/gm, "")
+        : undefined),
+        (cleanTarget = this.targetHTML
+          ? this.targetHTML.replace(/\s+/gm, "")
+          : undefined);
+      return cleanHTML && cleanTarget && cleanTarget.localeCompare(cleanHTML);
+    }
+
+    _handleTargetDoubleClick(target, e) {
+      console.log("dbl", target, e);
+      if (!target || target.disabled || this.target !== target) return;
+      let els = Object.keys(this.clickableElements || {}),
+        el = e.target || e.srcElement || { tagName: "" },
+        evt = { detail: el },
+        tagname = (el.tagName || "").toLowerCase();
+      if (tagname && els.includes(tagname)) {
+        e.preventDefault();
+        this.clickableElements[tagname](evt);
+        this.updateRange();
+      }
     }
 
     _handleTargetClick(target, e) {
@@ -1242,6 +1286,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.clickableElements[tagname](evt);
         }
       }
+      this.range = this.getRange();
       this.updateRange();
     }
     _handleTargetFocus(target, e) {

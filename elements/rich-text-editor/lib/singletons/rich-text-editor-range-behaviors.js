@@ -4,6 +4,7 @@
  */
 import "./rich-text-editor-highlight.js";
 import "./rich-text-editor-clipboard.js";
+import "./rich-text-editor-source.js";
 
 export const RichTextEditorRangeBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -29,6 +30,9 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
         __clipboard: {
           type: Object,
         },
+        __source: {
+          type: Object,
+        },
       };
     }
 
@@ -36,6 +40,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       super();
       this.__highlight = window.RichTextEditorHighlight.requestAvailability();
       this.__clipboard = window.RichTextEditorClipboard.requestAvailability();
+      this.__source = window.RichTextEditorSource.requestAvailability();
     }
 
     get commandIsToggled() {
@@ -588,6 +593,7 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
       } else if (command === "close") {
         toolbar.close(target);
       } else if (command === "viewSource") {
+        this.__source.toggle(toolbar);
       }
     }
   };

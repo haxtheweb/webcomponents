@@ -39,7 +39,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
             outline: none;
           }
 
-          :host(.heightmax[editing]) {
+          :host(.heightmax[contenteditable="true"]) {
             max-height: calc(100vh - 200px);
             overflow-y: scroll;
           }
@@ -67,8 +67,8 @@ const RichTextEditorBehaviors = function (SuperClass) {
           :host(:hover),
           :host(:focus-within) {
             opacity: 1;
-            outline: var(--rich-text-editor-border-width, 1px) solid
-              var(--rich-text-editor-focus-color, blue);
+            outline: var(--rich-text-editor-border-width, 1px) dotted
+              var(--rich-text-editor-focus-color, currentColor);
           }
           :host([disabled]),
           :host([view-source]) {
@@ -77,29 +77,35 @@ const RichTextEditorBehaviors = function (SuperClass) {
 
           #source:hover,
           #source:focus-within {
-            outline: var(--rich-text-editor-border-width, 1px) solid
-              var(--rich-text-editor-focus-color, blue);
+            outline: var(--rich-text-editor-border-width, 1px) dotted
+              var(--rich-text-editor-focus-color, currentColor);
           }
-          :host([editing][view-source]) #container {
+          :host([contenteditable="true"][view-source]) #container {
             display: flex;
             align-items: stretch;
             justify-content: space-between;
             width: 100%;
           }
-          :host([editing][view-source]) #source,
-          :host([editing][view-source]) #wysiwyg {
+          :host([contenteditable="true"][view-source]) #source,
+          :host([contenteditable="true"][view-source]) #wysiwyg {
             resize: horizontal;
             overflow: auto;
             flex: 1 1 auto;
             width: 50%;
           }
-          :host([editing][view-source]) #source {
+          :host([contenteditable="true"][view-source]) #source {
             min-width: 300px;
           }
-          :host([editing][view-source]) #wysiwyg {
+          :host([contenteditable="true"][view-source]) #wysiwyg {
             cursor: not-allowed;
             margin-right: 10px;
             width: calc(50% - 10px);
+          }
+          ::slotted(*:first-child) {
+            margin-top: 0px;
+          }
+          ::slotted(*:last-child) {
+            margin-bottom: 0px;
           }
         `,
       ];
@@ -114,18 +120,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
         @mouseover="${(e) => (this.__hovered = true)}"
         @mouseout="${(e) => (this.__hovered = false)}"
       >
-        <div id="wysiwyg" aria-placeholder="${this.placeholder}">
-          <slot></slot>
-        </div>
-        <code-editor
-          id="source"
-          font-size="13"
-          ?hidden="${!(this.viewSource && this.editing)}"
-          language="html"
-          @value-changed="${this._handleSourceChange}"
-          word-wrap
-        >
-        </code-editor>
+        <slot></slot>
       </div>`;
     }
     static get properties() {
@@ -274,7 +269,6 @@ const RichTextEditorBehaviors = function (SuperClass) {
       this.__hovered = false;
       this.editing = false;
       this.contenteditable = false;
-      import("@lrnwebcomponents/code-editor/code-editor.js");
       this.setAttribute("tabindex", 1);
       this.addEventListener("click", this._handleClick);
     }
@@ -294,14 +288,6 @@ const RichTextEditorBehaviors = function (SuperClass) {
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "rawhtml" && !!this.rawhtml)
           this.setHTML(this.rawhtml);
-        if (propName === "viewSource") this._handleViewSourceChange();
-        if (["viewSource", "editing"].includes(propName)) {
-          if (this.editing && !this.viewSource) {
-            this.setAttribute("contenteditable", true);
-          } else {
-            this.removeAttribute("contentEditable");
-          }
-        }
       });
       if (!this.innerHTML) this.innerHTML = "";
     }
@@ -343,7 +329,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
      */
     _handleClick(e) {
       e.preventDefault();
-      if (!this.contenteditable && !this.__toolbar) {
+      if (!this.disabled && !this.contenteditable && !this.__toolbar) {
         console.log(this.__toolbar, this.contenteditable);
         //get toolbar by id
         let toolbar,
@@ -372,48 +358,6 @@ const RichTextEditorBehaviors = function (SuperClass) {
         }
         this.__toolbar = toolbar;
         if (!this.disabled) this.__toolbar.setTarget(this);
-      }
-    }
-    /**
-     * updates editor content to code-editor value
-     *
-     * @param {event} e code-editor's value change event
-     * @memberof RichTextEditor
-     */
-    _handleSourceChange(e) {
-      if (!this.__needsUpdate) {
-        let html = `${this.innerHTML}`,
-          code = !!e.detail.value ? `${e.detail.value}` : html,
-          cleanCode = this.outdentHTML(code).replace(/\s+/gm, ""),
-          cleanHTML = this.outdentHTML(html).replace(/\s+/gm, "");
-        this.__needsUpdate = cleanCode.localeCompare(cleanHTML);
-        let update = () => {
-          this.__needsUpdate = false;
-          this.innerHTML = e.detail.value;
-        };
-        if (this.__needsUpdate) setTimeout(update.bind(this), 300);
-      }
-    }
-    /**
-     * hangles show/hide view source
-     *
-     * @param {event} e
-     */
-    _handleViewSourceChange(e) {
-      let code = this.shadowRoot
-        ? this.shadowRoot.querySelector("#source")
-        : undefined;
-      if (code && this.viewSource) {
-        code.editorValue = this.outdentHTML(this.innerHTML);
-        code.addEventListener(
-          "value-changed",
-          this._handleSourceChange.bind(this)
-        );
-      } else if (code) {
-        code.removeEventListener(
-          "value-changed",
-          this._handleSourceChange.bind(this)
-        );
       }
     }
   };

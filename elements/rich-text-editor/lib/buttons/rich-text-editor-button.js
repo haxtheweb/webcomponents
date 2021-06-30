@@ -262,7 +262,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * Generally, you should try to delay work until this time.
      */
     connectedCallback() {
-      console.log("button connected");
       super.connectedCallback();
     }
     /**
@@ -308,7 +307,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @param {object} event
      */
     sendCommand(event) {
-      console.log("sendCommand", this);
       this._handleCommand(
         this.operationCommand,
         this.operationCommandVal,

@@ -256,16 +256,6 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
    * @memberof RichTextEditorPrompt
    */
   _handleChange(e) {
-    console.log(
-      "_handleChange",
-      this.innerHTML,
-      this.debugRange(this.range),
-      this.debugRange(this.getRange()),
-      this.__highlight,
-      this.__opened,
-      this.__focused,
-      this.__hovered
-    );
     setTimeout(() => {
       if (this.__opened && !this.__focused && !this.__hovered) this._cancel();
     }, 500);
