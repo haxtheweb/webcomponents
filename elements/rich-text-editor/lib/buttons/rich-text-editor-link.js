@@ -105,7 +105,6 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    * @memberof RichTextEditorLink
    */
   get promptCommandVal() {
-    console.log("promptCommandVal", this.value, this.getPropValue("href"));
     return this.getPropValue("href") || undefined;
   }
 
