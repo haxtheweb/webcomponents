@@ -288,7 +288,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
     firstUpdated() {
       if (super.firstUpdated) super.firstUpdated();
       if (this.isEmpty && !!this.rawhtml) {
-        this.innerHTML = rawhtml.trim();
+        this.innerHTML = this.rawhtml.trim();
       } else if (this.isEmpty) {
         this.innerHTML = "";
       }
@@ -298,7 +298,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "rawhtml" && !!this.rawhtml) {
-          this.innerHTML = rawhtml.trim();
+          this.innerHTML = this.rawhtml.trim();
         }
       });
       if (!this.innerHTML) this.innerHTML = "";
