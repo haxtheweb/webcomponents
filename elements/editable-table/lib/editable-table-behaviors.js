@@ -316,6 +316,22 @@ export const displayProperties = {
     type: Boolean,
   },
   /**
+   * Is table in edit-mode? Default is false (display mode).
+   */
+  disabled: {
+    type: Boolean,
+    attribute: "disabled",
+    reflect: true,
+  },
+  /**
+   * Is table in edit-mode? Default is false (display mode).
+   */
+  hidden: {
+    type: Boolean,
+    attribute: "hidden",
+    reflect: true,
+  },
+  /**
    * Right-align numeric values and indicate negative values as red text
    */
   numericStyles: {
@@ -339,6 +355,84 @@ export const displayProperties = {
   striped: {
     attribute: "striped",
     type: Boolean,
+  },
+};
+/**
+ * List of display-only properties
+ * @const
+ * @default
+ * @type {object}
+ */
+export const editProperties = {
+  /**
+   * text editor config
+   */
+  config: {
+    type: Array,
+    attribute: "config",
+  },
+  /**
+   * Hide borders table styles menu option
+   */
+  hideBordered: {
+    type: Boolean,
+    attribute: "hide-bordered",
+  },
+  /**
+   * Hide condensed table styles menu option
+   */
+  hideCondensed: {
+    type: Boolean,
+    attribute: "hide-condensed",
+  },
+  /**
+   * Hide downloadable menu option
+   */
+  hideDownloadable: {
+    type: Boolean,
+    attribute: "hide-downloadable",
+  },
+  /**
+   * Hide filtering option.
+   */
+  hideFilter: {
+    type: Boolean,
+    attribute: "hide-filter",
+  },
+  /**
+   * Hide numeric styling option.
+   */
+  hideNumericStyles: {
+    type: Boolean,
+    attribute: "hide-numeric-styles",
+  },
+  /**
+   * Hide printable menu option
+   */
+  hidePrintable: {
+    type: Boolean,
+    attribute: "hide-printable",
+  },
+  /**
+   * Hide responsive table styles menu option
+   */
+  hideResponsive: {
+    type: Boolean,
+    attribute: "hide-responsive",
+  },
+  /**
+   * Hide sorting option.
+   */
+  hideSort: {
+    type: Boolean,
+    attribute: "hide-sort",
+  },
+  /**
+   * Hide striped table styles menu option
+   */
+  hideStriped: {
+    type: Boolean,
+    attribute: "hide-striped",
   },
 };
 /**
@@ -449,6 +543,8 @@ export const displayBehaviors = function (SuperClass) {
 
     constructor() {
       super();
+      this.disabled = false;
+      this.hidden = false;
       this.columnHeader = false;
       this.downloadable = false;
       this.data = [];
@@ -975,6 +1071,111 @@ export const displayBehaviors = function (SuperClass) {
      */
     _replaceBlankCell(cell) {
       return String(cell).trim() === "" ? "-" : cell;
+    }
+  };
+};
+
+/**
+ * behaviors needed to display table in either mode
+ * @class
+ * @extends displayBehaviors
+ * @customElement
+ */
+export const editBehaviors = function (SuperClass) {
+  return class extends displayBehaviors(SuperClass) {
+    static get properties() {
+      return {
+        ...super.properties,
+        ...editProperties,
+      };
+    }
+
+    constructor() {
+      super();
+      this.hidden = false;
+      this.disabled = false;
+      this.hideBordered = false;
+      this.hideCondensed = false;
+      this.hideDownloadable = false;
+      this.hideFilter = false;
+      this.hideResponsive = false;
+      this.hidePrintable = false;
+      this.hideSort = false;
+      this.caption = "";
+      this.hideStriped = false;
+      this.config = [
+        {
+          type: "button-group",
+          buttons: [
+            {
+              command: "close",
+              icon: "close",
+              label: "Close toolbar",
+              toggles: false,
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+        {
+          type: "button-group",
+          buttons: [
+            {
+              command: "bold",
+              icon: "editor:format-bold",
+              label: "Bold",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "italic",
+              icon: "editor:format-italic",
+              label: "Italics",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "removeFormat",
+              icon: "editor:format-clear",
+              label: "Erase Format",
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+        {
+          type: "button-group",
+          buttons: [
+            {
+              command: "link",
+              icon: "link",
+              label: "Link",
+              toggledCommand: "unlink",
+              toggledIcon: "mdextra:unlink",
+              toggledLabel: "Unink",
+              toggles: true,
+              type: "rich-text-editor-link",
+            },
+          ],
+        },
+        {
+          label: "Subscript and Superscript",
+          buttons: [
+            {
+              command: "subscript",
+              icon: "mdextra:subscript",
+              label: "Subscript",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+            {
+              command: "superscript",
+              icon: "mdextra:superscript",
+              label: "Superscript",
+              toggles: true,
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
+      ];
     }
   };
 };

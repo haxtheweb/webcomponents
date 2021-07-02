@@ -4,28 +4,11 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import {
-  displayBehaviors,
+  editBehaviors,
   editableTableStyles,
 } from "./lib/editable-table-behaviors.js";
-import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js";
-import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
-import "@lrnwebcomponents/hax-iconset/lib/simple-hax-iconset.js";
-import "./lib/editable-table-editor-rowcol.js";
-import "./lib/editable-table-editor-toggle.js";
 import "./lib/editable-table-display.js";
-import { ReplaceWithPolyfill } from "@lrnwebcomponents/utils/utils.js";
-if (!Element.prototype.replaceWith) {
-  Element.prototype.replaceWith = ReplaceWithPolyfill;
-}
-if (!CharacterData.prototype.replaceWith) {
-  CharacterData.prototype.replaceWith = ReplaceWithPolyfill;
-}
-if (!DocumentType.prototype.replaceWith) {
-  DocumentType.prototype.replaceWith = ReplaceWithPolyfill;
-}
+import "./lib/editable-table-edit.js";
 
 /**
  * `editable-table`
@@ -87,163 +70,39 @@ Custom property | Description | Default
  * 
  * @customElement
  * @element editable-table
- * @extends displayBehaviors
+ * @extends editBehaviors
  * @extends ResponsiveUtilityBehaviors
  * @extends editableTableStyles
  */
-class EditableTable extends displayBehaviors(LitElement) {
+class EditableTable extends editBehaviors(LitElement) {
   static get styles() {
     return [
-      ...(super.styles || []),
-      ...editableTableStyles,
       css`
-        :host {
-          --paper-listbox-background-color: var(
-            --editable-table-rowcol-bg-color
-          );
+        :host([hidden]) {
+          display: none !important;
+          margin: 15px 0;
         }
-        .filter-icon,
-        .sortable-icon {
-          display: none;
-          opacity: 0.4;
-          width: 24px;
-          height: 24px;
-        }
-        :host([sort]) tbody .tr:first-child .sortable-icon,
-        :host([filter]) tbody .tr:not(:first-of-type) .filter-icon {
-          display: inline-block;
-          opacity: 0.25;
-        }
-        table {
-          min-width: calc(100% - 2.3px);
-          width: unset;
-          height: 1px;
-        }
-        caption {
-          width: 100%;
-          padding: 0;
-          margin: 0;
-          color: var(
-            --editable-table-caption-color,
-            var(--editable-table-color, #222)
-          );
-        }
-        table *:focus,
-        table *:hover,
-        table *:focus-within {
-          z-index: 2;
-        }
-        caption,
-        .th-or-td {
-          border: 1px solid #ddd;
-        }
-        label,
-        .label {
-          color: var(--editable-table-secondary-text-color, #444);
-          font-size: var(--editable-table-secondary-font-size, 12px);
-          font-family: var(
-            --editable-table-secondary-font-family,
-            "Roboto",
-            "Noto",
-            sans-serif
-          );
-        }
-        .field-group {
-          width: 100%;
-          padding: 0;
-          margin: 0;
-          transition: all 2s;
-          color: var(
-            --editable-table-caption-color,
-            var(--editable-table-color, #222)
-          );
-        }
-        .field-group:not([hidden]) {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-between;
-          align-items: center;
-        }
-        caption > *,
-        .field-group > * {
-          margin: 0 2.5px;
-        }
-        caption {
-          position: relative;
-        }
-        .field-group .field-group {
-          width: unset;
-        }
-        th {
-          padding: 0;
-          border-width: var(--editable-table-border-width, 1px);
-          border-style: var(--editable-table-border-style, solid);
-          border-color: var(--editable-table-border-color, #999);
-        }
-        td {
-          margin: 0;
-          padding: 0;
-          position: relative;
-        }
-        rich-text-editor-toolbar-mini {
-          position: absolute;
-          min-width: 200px;
-          height: 0;
-        }
-        rich-text-editor {
-          margin-bottom: 1px;
-          padding: var(--editable-table-cell-vertical-padding, 10px)
-            var(--editable-table-cell-horizontal-padding, 6px);
-          border: none !important;
-          margin-right: 24px;
-          --rich-text-editor-min-height: 12px;
-        }
-        td #icons {
-          position: absolute;
-          right: 0;
-          top: calc(50% - 12px);
-          width: 24px;
-        }
-        td simple-icon-lite {
-          width: 24px;
-        }
-        th:hover,
-        th:focus-within {
-          background-color: var(
-            --editable-table-rowcol-hover-bg-color,
-            var(--editable-table-heading-bg-color, #e8e8e8)
-          );
-        }
-        .th:first-child {
-          width: 96px;
-        }
-        :host([responsive]) thead th:nth-of-type(3),
-        :host([responsive]) .tr td:nth-of-type(2) {
-          border-right-width: calc(var(--editable-table-border-width) + 5px);
-          border-right-style: double;
+
+        :host > * {
+          margin: 0px;
         }
       `,
     ];
   }
   render() {
     return html`
-      <rich-text-editor-toolbar-mini
-        id="toolbar"
-        .config="${this.config}"
-        show="selection"
-      ></rich-text-editor-toolbar-mini>
       <editable-table-display
-        aria-hidden="${this.editMode ? "true" : "false"}"
         ?bordered="${this.bordered}"
         caption="${this.caption}"
         ?column-header="${this.columnHeader}"
         ?column-striped="${this.columnStriped}"
         ?condensed="${this.condensed}"
-        ?downloadable="${this.downloadable}"
         .data="${this.data}"
+        ?disabled="${this.disabled}"
+        ?hidden="${this.editMode}"
+        ?downloadable="${this.downloadable}"
         ?filter="${this.filter}"
         ?footer="${this.footer}"
-        ?hidden="${this.editMode}"
         ?numeric-styles="${this.numericStyles}"
         ?printable="${this.printable}"
         ?responsive="${this.responsive}"
@@ -251,275 +110,37 @@ class EditableTable extends displayBehaviors(LitElement) {
         ?sort="${this.sort}"
         ?striped="${this.striped}"
       >
+        <slot></slot>
       </editable-table-display>
-      <div
-        ?hidden="${!this.editMode}"
-        aria-hidden="${!this.editMode ? "true" : "false"}"
-        id="outer"
+      <editable-table-edit
+        ?bordered="${this.bordered}"
+        caption="${this.caption}"
+        .config="${this.config}"
+        ?column-header="${this.columnHeader}"
+        ?column-striped="${this.columnStriped}"
+        ?condensed="${this.condensed}"
+        .data="${this.data}"
+        ?disabled="${this.disabled}"
+        ?hidden="${!this.editMode || this.hidden}"
+        ?downloadable="${this.downloadable}"
+        ?filter="${this.filter}"
+        ?footer="${this.footer}"
+        ?hide-bordered="${this.hideBordered}"
+        ?hide-condensed="${this.hideCondensed}"
+        ?hide-downloadable="${this.hideDownloadable}"
+        ?hide-filter="${this.hideFilter}"
+        ?hide-responsive="${this.hideResponsive}"
+        ?hide-printable="${this.hidePrintable}"
+        ?hide-sort="${this.hideSort}"
+        ?hide-striped="${this.hideStriped}"
+        ?numeric-styles="${this.numericStyles}"
+        ?printable="${this.printable}"
+        ?responsive="${this.responsive}"
+        ?row-header="${this.rowHeader}"
+        ?sort="${this.sort}"
+        ?striped="${this.striped}"
       >
-        <div id="inner">
-          <p class="sr-only">Table Editor</p>
-          <table
-            id="table-editmode"
-            ?bordered="${this.bordered}"
-            ?column-header="${this.columnHeader}"
-            ?column-striped="${this.columnStriped}"
-            ?condensed="${this.condensed}"
-            ?downloadable="${this.downloadable}"
-            ?filter="${this.filter}"
-            ?footer="${this.footer}"
-            ?numeric-styles="${this.numericStyles}"
-            ?printable="${this.printable}"
-            ?responsive="${this.responsive}"
-            ?row-header="${this.rowHeader}"
-            ?sort="${this.sort}"
-            ?striped="${this.striped}"
-          >
-            <caption>
-              <p class="sr-only">Edit Mode for</p>
-              <rich-text-editor
-                autofocus
-                @editing-disabled="${this._captionChanged}"
-                toolbar="toolbar"
-                id="caption"
-                label="Caption"
-                placeholder="Name your table by adding a caption here."
-                rawhtml="${this.caption}"
-                type="rich-text-editor-toolbar-mini"
-              >
-              </rich-text-editor>
-            </caption>
-            <thead>
-              <tr class="tr">
-                <th scope="col">
-                  <span class="sr-only">Row Operations</span>
-                </th>
-                ${(this.data[0] || []).map(
-                  (cell, th) => html`
-                    <th
-                      class="col-${th}"
-                      scope="col"
-                      ?numeric="${this._isNumericColumn(th)}"
-                    >
-                      <editable-table-editor-rowcol
-                        ?condensed="${this.condensed}"
-                        index="${th}"
-                        @rowcol-action="${this._handleRowColumnMenu}"
-                        @rowcol-menuopen="${this._handleMenuOpen}"
-                      >
-                      </editable-table-editor-rowcol>
-                    </th>
-                  `
-                )}
-              </tr>
-            </thead>
-            <tbody id="tbody" class="tbody">
-              ${this.data.map(
-                (row, tr) => html`
-                  <tr
-                    class="tr ${tr == 0 && this.columnHeader
-                      ? "thead-tr"
-                      : tr == this.data.length - 1 && this.footer
-                      ? "tfoot-tr"
-                      : "tbody-tr"}"
-                  >
-                    <th scope="row">
-                      <editable-table-editor-rowcol
-                        class="cell"
-                        ?condensed="${this.condensed}"
-                        index="${tr}"
-                        row
-                        @rowcol-action="${this._handleRowColumnMenu}"
-                      >
-                      </editable-table-editor-rowcol>
-                    </th>
-                    ${(row || []).map(
-                      (cell, td) => html`
-                        <td
-                          class="${(td === 0 && this.rowHeader) ||
-                          (tr == 0 && this.columnHeader)
-                            ? "th"
-                            : "td"} th-or-td"
-                          ?negative="${this._isNegative(cell)}"
-                          ?numeric="${this._isNumericColumn(td)}"
-                          @click="${this._onCellClick}"
-                        >
-                          <rich-text-editor
-                            autofocus
-                            @editing-disabled="${(e) =>
-                              this._onCellValueChange(e, tr, td)}"
-                            class="cell"
-                            disable-mouseover
-                            toolbar="mini"
-                            id="cell-${tr}-${td}"
-                            label="${`Cell ${this._getLabel(td, false)}${tr}`}"
-                            rawhtml="${cell}"
-                            type="rich-text-editor-toolbar"
-                          >
-                          </rich-text-editor>
-                          <div id="icons">
-                            <simple-icon-lite
-                              class="sortable-icon"
-                              icon="editable-table:sortable"
-                              aria-hidden="true"
-                            ></simple-icon-lite>
-                            <simple-icon-lite
-                              class="filter-icon"
-                              icon="editable-table:filter-off"
-                            ></simple-icon-lite>
-                          </div>
-                        </td>
-                      `
-                    )}
-                  </tr>
-                `
-              )}
-            </tbody>
-          </table>
-        </div>
-        <div class="field-group">
-          <div class="field-group">
-            <div class="label">Headers and footers</div>
-            <editable-table-editor-toggle
-              id="columnHeader"
-              icon="editable-table:column-headers"
-              label="First row has column headers."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.columnHeader}"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="rowHeader"
-              icon="editable-table:row-headers"
-              @change="${this._onTableSettingChange}"
-              label="First column has row headers."
-              ?toggled="${this.rowHeader}"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="footer"
-              icon="editable-table:footer"
-              label="Last row is a footer."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.footer}"
-            >
-            </editable-table-editor-toggle>
-          </div>
-          <div class="field-group" ?hidden="${this.hideDisplay}">
-            <div class="label">Display</div>
-            <editable-table-editor-toggle
-              id="bordered"
-              ?disabled="${this.hideBordered}"
-              ?hidden="${this.hideBordered}"
-              icon="image:grid-on"
-              label="Borders."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.bordered}"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="striped"
-              ?disabled="${this.hideStriped}"
-              ?hidden="${this.hideStriped}"
-              icon="editable-table:row-striped"
-              label="Alternating rows."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.striped}"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="columnStriped"
-              ?disabled="${this.hideStriped}"
-              ?hidden="${this.hideStriped}"
-              icon="editable-table:col-striped"
-              label="Alternating columns."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.columnStriped}"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="condensed"
-              ?disabled="${this.hideCondensed}"
-              ?hidden="${this.hideCondensed}"
-              icon="editable-table:row-condensed"
-              label="Condensed rows."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.condensed}"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="numericStyles"
-              ?disabled="${this.hideNumericStyles}"
-              ?hidden="${this.hideNumericStyles}"
-              icon="editable-table:numbers"
-              label="Style numeric cells."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.numericStyles}"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="responsive"
-              ?disabled="${this.hideResponsive}"
-              ?hidden="${this.hideResponsive}"
-              icon="device:devices"
-              label="Adjust width to screen size."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.responsive}"
-            >
-            </editable-table-editor-toggle>
-          </div>
-          <div class="field-group" ?hidden="${this.hideSortFilter}">
-            <div class="label">Data</div>
-            <editable-table-editor-toggle
-              id="sort"
-              ?disabled="${this._isSortDisabled(
-                this.hideSort,
-                this.columnHeader
-              )}"
-              ?hidden="${this._isSortDisabled(
-                this.hideSort,
-                this.columnHeader
-              )}"
-              label="Column sorting (for tables with column headers)."
-              icon="editable-table:sortable"
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.sort}"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="filter"
-              ?disabled="${this.hideFilter}"
-              ?hidden="${this.hideFilter}"
-              icon="editable-table:filter"
-              label="Column filtering."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.filter}"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="downloadable"
-              ?disabled="${this.hideDownloadable}"
-              ?hidden="${this.hideDownloadable}"
-              icon="file-download"
-              label="Allow downloading as CSV."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.downloadable}"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="printable"
-              ?disabled="${this.hidePrintable}"
-              ?hidden="${this.hidePrintable}"
-              icon="print"
-              label="Allow printing."
-              @change="${this._onTableSettingChange}"
-              ?toggled="${this.printable}"
-            >
-            </editable-table-editor-toggle>
-          </div>
-        </div>
-      </div>
-      <div id="htmlImport" hidden><slot></slot></div>
+      </editable-table-edit>
     `;
   }
 
@@ -529,250 +150,39 @@ class EditableTable extends displayBehaviors(LitElement) {
   constructor() {
     super();
     this.editMode = false;
-    this.hideBordered = false;
-    this.hideCondensed = false;
-    this.hideDownloadable = false;
-    this.hideFilter = false;
-    this.hideResponsive = false;
-    this.hidePrintable = false;
-    this.hideSort = false;
-    this.caption = "";
-    this.hideStriped = false;
-    this.config = [
-      {
-        type: "button-group",
-        buttons: [
-          {
-            command: "close",
-            icon: "close",
-            label: "Close toolbar",
-            toggles: false,
-            type: "rich-text-editor-button",
-          },
-        ],
-      },
-      {
-        type: "button-group",
-        buttons: [
-          {
-            command: "bold",
-            icon: "editor:format-bold",
-            label: "Bold",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "italic",
-            icon: "editor:format-italic",
-            label: "Italics",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "removeFormat",
-            icon: "editor:format-clear",
-            label: "Erase Format",
-            type: "rich-text-editor-button",
-          },
-        ],
-      },
-      {
-        type: "button-group",
-        buttons: [
-          {
-            command: "link",
-            icon: "link",
-            label: "Link",
-            toggledCommand: "unlink",
-            toggledIcon: "mdextra:unlink",
-            toggledLabel: "Unink",
-            toggles: true,
-            type: "rich-text-editor-link",
-          },
-        ],
-      },
-      {
-        label: "Subscript and Superscript",
-        buttons: [
-          {
-            command: "subscript",
-            icon: "mdextra:subscript",
-            label: "Subscript",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-          {
-            command: "superscript",
-            icon: "mdextra:superscript",
-            label: "Superscript",
-            toggles: true,
-            type: "rich-text-editor-button",
-          },
-        ],
-      },
-    ];
   }
   static get properties() {
     return {
-      ...displayBehaviors.properties,
-      /**
-       * text editor config
-       */
-      config: {
-        type: Array,
-      },
+      ...super.properties,
       /**
        * Is table in edit-mode? Default is false (display mode).
        */
       editMode: {
         type: Boolean,
         attribute: "edit-mode",
-      },
-      /**
-       * Hide borders table styles menu option
-       */
-      hideBordered: {
-        type: Boolean,
-        attribute: "hide-bordered",
-      },
-      /**
-       * Hide condensed table styles menu option
-       */
-      hideCondensed: {
-        type: Boolean,
-        attribute: "hide-condensed",
-      },
-      /**
-       * Hide downloadable menu option
-       */
-      hideDownloadable: {
-        type: Boolean,
-        attribute: "hide-downloadable",
-      },
-      /**
-       * Hide filtering option.
-       */
-      hideFilter: {
-        type: Boolean,
-        attribute: "hide-filter",
-      },
-      /**
-       * Hide numeric styling option.
-       */
-      hideNumericStyles: {
-        type: Boolean,
-        attribute: "hide-numeric-styles",
-      },
-      /**
-       * Hide printable menu option
-       */
-      hidePrintable: {
-        type: Boolean,
-        attribute: "hide-printable",
-      },
-      /**
-       * Hide responsive table styles menu option
-       */
-      hideResponsive: {
-        type: Boolean,
-        attribute: "hide-responsive",
-      },
-      /**
-       * Hide sorting option.
-       */
-      hideSort: {
-        type: Boolean,
-        attribute: "hide-sort",
-      },
-      /**
-       * Hide striped table styles menu option
-       */
-      hideStriped: {
-        type: Boolean,
-        attribute: "hide-striped",
+        reflect: true,
       },
     };
   }
 
-  /**
-   * hides data sorting and filtering feature set
-   *
-   * @readonly
-   * @memberof EditableTable
-   */
-  get hideSortFilter() {
-    return this.hideSort && this.hideFilter;
-  }
-  /**
-   * hides display feature set
-   *
-   * @readonly
-   * @memberof EditableTable
-   */
-  get hideDisplay() {
+  get display() {
     return (
-      this.hideBordered &&
-      this.hideCondensed &&
-      this.hideStriped &&
-      this.hideNumericStyles &&
-      this.hideResponsive
+      this.shadowRoot && this.shadowRoot.querySelector("editable-table-display")
     );
   }
 
-  /**
-   * Delete a column at given index
-   * @param {number} index index of column
-   */
-  deleteColumn(index) {
-    let temp = [...this.data];
-    for (let i = 0; i < temp.length; i++) {
-      temp[i].splice(index, 1);
-    }
-    this.data = temp;
+  get editor() {
+    return (
+      this.shadowRoot && this.shadowRoot.querySelector("editable-table-edit")
+    );
   }
-
-  /**
-   * Delete a row at given index
-   * @param {number} index index of row
-   */
-  deleteRow(index) {
-    let temp = [...this.data];
-    temp.splice(index, 1);
-    this.data = temp;
-  }
-  /**
-   * Insert a column at given index
-   * @param {number} index index of column
-   */
-  insertColumn(index) {
-    let temp = [...this.data];
-    for (let i = 0; i < temp.length; i++) {
-      temp[i].splice(index, 0, " ");
-    }
-    this.data = temp;
-  }
-
-  /**
-   * Insert a row at given index
-   * @param {number} index index of row
-   */
-  insertRow(index) {
-    let temp = [...this.data],
-      temp2 = new Array();
-    for (let i = 0; i < temp[0].length; i++) {
-      temp2.push(" ");
-    }
-    temp.splice(index + 1, 0, temp2);
-    this.data = temp;
-  }
-
   /**
    * Toggles between edit-mode and display mode.
    * @event toggle-edit-mode
    * @param {boolean} edit Toggle edit mode on? Default is toggle from current mode.
    */
   toggleEditMode(edit) {
-    edit = edit !== undefined ? edit : !this.editMode;
+    this.editMode = edit !== undefined ? edit : !this.editMode;
     this.dispatchEvent(
       new CustomEvent("toggle-edit-mode", {
         bubbles: true,
@@ -781,326 +191,6 @@ class EditableTable extends displayBehaviors(LitElement) {
         detail: this,
       })
     );
-    if (
-      edit &&
-      this.shadowRoot &&
-      this.shadowRoot.querySelector("editable-table-display")
-    ) {
-      this.shadowRoot.querySelector("editable-table-display").toggleFilter();
-      this.shadowRoot
-        .querySelector("editable-table-display")
-        .sortData("none", -1);
-      this.shadowRoot.querySelector("#inner").focus();
-    } else {
-      this.shadowRoot.querySelectorAll("rich-text-editor").forEach((editor) => {
-        editor.disableEditing();
-      });
-    }
-    this.editMode = edit;
-  }
-  /**
-   * Handles when caption paper-input changed
-   */
-  _captionChanged(e) {
-    this.caption = e.detail;
-  }
-
-  /**
-   * Gets row data for a given row index
-   * @param {number} index index of row
-   * @param {array} data table data
-   * @returns {array} row data
-   */
-  _getCurrentRow(index, data) {
-    let row = null;
-    if (
-      data !== undefined &&
-      data !== null &&
-      data[index] !== undefined &&
-      data[index] !== null
-    ) {
-      row = data[index];
-    }
-    return row;
-  }
-  _handleMenuOpen(e) {
-    //console.log(e);
-  }
-
-  /**
-   * Handles row/column menu actions
-   * @param {event} e event
-   */
-  _handleRowColumnMenu(e) {
-    if (e.detail.insert && e.detail.row) {
-      this.insertRow(e.detail.index);
-    } else if (e.detail.insert && !e.detail.row) {
-      this.insertColumn(e.detail.index);
-    } else if (!e.detail.insert && e.detail.row) {
-      this.deleteRow(e.detail.index);
-    } else {
-      this.deleteColumn(e.detail.index);
-    }
-  }
-
-  /**
-   * Tests for first row of data. Workaround to restamp column headers.
-   * @param {number} index index of row
-   */
-  _isFirstRow(index) {
-    return index === 0;
-  }
-
-  /**
-   * Tests for whether or not to disable sort feature.
-   * @param {boolean} hideSort if sort feature be hidden
-   * @param {boolean} columnHeader if table has column headers
-   */
-  _isSortDisabled(hideSort, columnHeader) {
-    return hideSort || !columnHeader;
-  }
-
-  /**
-   * Sets focus on cell's textarea if cell is clicked
-   * @param {event} e event
-   */
-  _onCellClick(e) {
-    if (e.model && e.model.root && e.model.root.nodeList[0]) {
-      e.model.root.nodeList[0].focus();
-    }
-  }
-
-  /**
-   * Updates data when cell value changes
-   * @param {event} e event
-   */
-  _onCellValueChange(e, row, col) {
-    let temp = this.data.slice();
-    temp[row][col] = e.detail;
-    this.data = [];
-    this.data = temp;
-  }
-
-  /**
-   * Updates table properties when setting changes
-   * @param {event} e event
-   */
-  _onTableSettingChange(e) {
-    this[e.detail.id] = e.detail.toggled;
-  }
-
-  /**
-   * Makes sure there is always on cell to work from
-   */
-  _dataChanged(data, oldData) {
-    if ((data && data.length < 1) || data[0].length < 1) {
-      this.data = [
-        ["", "", ""],
-        ["", "", ""],
-        ["", "", ""],
-      ];
-    }
-  }
-  /**
-   * Get row or column label
-   * @param {number} index of row or column
-   * @param  {boolean} whenther it's a row
-   * @returns {string} a row number or a column letter
-   */
-  _getLabel(index) {
-    let numerals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
-      results = this._getLetter(index).split("-").reverse(),
-      label = "";
-    for (let i = 0; i < results.length; i++) {
-      if (results[i] !== "") label += numerals[results[i]];
-    }
-    return label;
-  }
-
-  /**
-   * Converts index to a letter.
-   * @param {number} index of row or column
-   * @returns {string} a column letter
-   */
-  _getLetter(index) {
-    let place = Math.floor(index / 26),
-      multiplier = 26 * place,
-      remainder = index - multiplier,
-      letters = "";
-    letters += remainder + "-";
-    if (place > 0 && place < 26) {
-      letters += place - 1 + "-";
-    } else if (place >= 26) {
-      letters += this._getLetter(place - 1);
-    }
-    return letters;
-  }
-  /**
-   * Implements haxHooks to tie into life-cycle if hax exists.
-   */
-  haxHooks() {
-    return {
-      editModeChanged: "haxeditModeChanged",
-      activeElementChanged: "haxactiveElementChanged",
-    };
-  }
-  /**
-   * Set a flag to test if we should block link clicking on the entire card
-   * otherwise when editing in hax you can't actually edit it bc its all clickable.
-   * if editMode goes off this helps ensure we also become clickable again
-   */
-  haxeditModeChanged(val) {
-    if (super.haxeditModeChanged) super.haxeditModeChanged(val);
-    this.editMode = val;
-    console.log("haxeditModeChanged", val);
-  }
-  /**
-   * double-check that we are set to inactivate click handlers
-   * this is for when activated in a duplicate / adding new content state
-   */
-  haxactiveElementChanged(el, val) {
-    if (super.haxactiveElementChanged) super.haxactiveElementChanged(el, val);
-    console.log("haxactiveElementChanged", el, val);
-  }
-  static get haxProperties() {
-    return {
-      type: "element",
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      editingElement: {
-        tag: "editable-table",
-        import: "@lrnwebcomponents/editable-table/editable-table.js",
-      },
-      gizmo: {
-        title: "Table",
-        description: "A table.",
-        icon: "image:grid-on",
-        color: "orange",
-        groups: ["Content", "Table", "Data"],
-        handles: [
-          {
-            type: "csv",
-            title: "CSV",
-          },
-        ],
-        meta: {
-          author: "ELMS:LN",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "caption",
-            title: "Table Caption",
-            inputMethod: "textfield",
-            description: "Title of table.",
-          },
-          {
-            property: "columnHeader",
-            inputMethod: "boolean",
-            title: "Column Headers",
-            description: "Display first row as a column header.",
-          },
-          {
-            property: "rowHeader",
-            inputMethod: "boolean",
-            title: "Row Headers",
-            description: "Display first column as a row header.",
-          },
-          {
-            property: "footer",
-            inputMethod: "boolean",
-            title: "Footer",
-            description: "Display last row as a footer.",
-          },
-          {
-            attribute: "bordered",
-            title: "Borders",
-            inputMethod: "boolean",
-            description: "Add borders to table and table cells.",
-          },
-          {
-            attribute: "columnStriped",
-            title: "Alternating Column Styles",
-            inputMethod: "boolean",
-            description: "Is striped add alternating column striping.",
-          },
-          {
-            attribute: "condensed",
-            title: "Condensed Row Height",
-            inputMethod: "boolean",
-            description: "Condense height of table cells.",
-          },
-          {
-            property: "striped",
-            title: "Alternating Row Styles",
-            inputMethod: "boolean",
-            description: "Add alternating row striping.",
-          },
-          {
-            attribute: "responsive",
-            title: "Mobile Friendly",
-            inputMethod: "boolean",
-            description:
-              "When table is wider than screens, users will select a column to display instead of scrolling across table.",
-          },
-          {
-            property: "printable",
-            inputMethod: "boolean",
-            title: "Allow Printing",
-            description: "Allow table to be printed",
-          },
-          {
-            property: "dataCsv",
-            inputMethod: "haxupload",
-            title: "Import CSV",
-            description: "Raw data pulled in from csv file.",
-          },
-        ],
-        advanced: [
-          {
-            property: "downloadable",
-            title: "Allow Downloading",
-            inputMethod: "boolean",
-            description: "Allow table to be downloaded as CSV",
-          },
-          {
-            property: "sort",
-            title: "Sortable Columns",
-            inputMethod: "boolean",
-            description: "Enable sorting by column header.",
-          },
-          {
-            property: "filter",
-            title: "Allow Filtering",
-            inputMethod: "boolean",
-            description: "Enable filtering by cell value.",
-          },
-          {
-            attribute: "numericStyles",
-            title: "Numeric Styles",
-            inputMethod: "boolean",
-            description:
-              "Right-align numeric values and indicate negative values as red text",
-          },
-        ],
-      },
-      saveOptions: {
-        unsetAttributes: ["config", "edit-mode"],
-      },
-      demoSchema: [
-        {
-          tag: "editable-table",
-          properties: {
-            bordered: true,
-            striped: true,
-          },
-          content:
-            "<table><caption></caption><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><th></th><td></td><td></td></tr></thead></table>",
-        },
-      ],
-    };
   }
 }
 window.customElements.define(EditableTable.tag, EditableTable);

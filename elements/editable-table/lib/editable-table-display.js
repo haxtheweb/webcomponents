@@ -25,7 +25,16 @@ class EditableTableDisplay extends displayBehaviors(
   ResponsiveUtilityBehaviors(LitElement)
 ) {
   static get styles() {
-    return [...(super.styles || []), ...editableTableDisplayStyles];
+    return [
+      ...(super.styles || []),
+      ...editableTableDisplayStyles,
+      css`
+        :host([hidden]),
+        :host([disabled]) {
+          display: none !important;
+        }
+      `,
+    ];
   }
   render() {
     return html`
@@ -38,7 +47,7 @@ class EditableTableDisplay extends displayBehaviors(
         ?condensed="${this.condensed}"
         ?filter="${this.filter}"
         ?footer="${this.footer}"
-        ?hidden="${this.hidden}"
+        ?hidden="${this.hidden || this.disabled}"
         ?numeric-styles="${this.numericStyles}"
         ?row-header="${this.rowHeader}"
         ?sort="${this.sort}"
@@ -216,6 +225,24 @@ class EditableTableDisplay extends displayBehaviors(
       subtree: true,
     });
   }
+
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "data")
+        this.disabled =
+          !this.data || this.data.length < 1 || this.data[0].length < 1;
+      if (
+        ["disabled", "hidden"].includes(propName) &&
+        !this.hidden &&
+        !this.disabled
+      ) {
+        this.toggleFilter();
+        this.sortData("none", -1);
+        this.focus();
+      }
+    });
+  }
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
@@ -233,15 +260,6 @@ class EditableTableDisplay extends displayBehaviors(
     );
     this.removeEventListener("toggle-filter", this.toggleFilter.bind(this));
     super.disconnectedCallback();
-  }
-  /**
-   *
-   * Hides table if it has no data
-   * @readonly
-   * @memberof EditableTableDisplay
-   */
-  get hidden() {
-    return !this.data || this.data.length < 1 || this.data[0].length < 1;
   }
 
   /**
