@@ -300,6 +300,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
         if (propName === "rawhtml" && !!this.rawhtml) {
           this.innerHTML = this.rawhtml.trim();
         }
+        if (propName === "contenteditable") this._contenteditableChange();
       });
       if (!this.innerHTML) this.innerHTML = "";
     }
@@ -331,6 +332,21 @@ const RichTextEditorBehaviors = function (SuperClass) {
       } else {
         this.classList.remove("heightmax");
       }
+    }
+    /**
+     * fires when contenteditable changed
+     * @event contenteditable-changed
+     *
+     */
+    _contenteditableChange() {
+      this.dispatchEvent(
+        new CustomEvent("contenteditable-change", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: this,
+        })
+      );
     }
 
     /**

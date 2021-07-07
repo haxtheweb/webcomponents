@@ -569,16 +569,15 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
      * @param {object} range
      * @memberof RichTextEditorManager
      */
-    _handleCommand(
-      command,
-      commandVal,
-      range = this.__highlight.range || this.range
-    ) {
+    _handleCommand(command, commandVal, range) {
       let toolbar = this.__toolbar,
         target = toolbar.target;
       if (this.validCommands.includes(command)) {
         commandVal = toolbar ? toolbar.sanitizeHTML(commandVal) : commandVal;
+        if (this.__highlight.parentNode === document.body)
+          this.__highlight.wrap(range);
         this.__highlight.unwrap(range);
+        range = range || this.__highlight.range || this.range;
         this.selectRange(range);
         if (command != "paste") {
           document.execCommand(command, false, commandVal);

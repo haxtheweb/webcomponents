@@ -840,6 +840,22 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         })
       );
     }
+
+    /**
+     * fires when editor changed
+     * @event editor-change
+     */
+    _editorChanged() {
+      this.dispatchEvent(
+        new CustomEvent("editor-change", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
+    }
+
     /* ------- RANGES -------- */
 
     /**

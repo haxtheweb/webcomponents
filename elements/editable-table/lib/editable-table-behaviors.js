@@ -254,14 +254,21 @@ export const editableTableDisplayStyles = [
       align-items: flex-end;
       justify-content: space-between;
     }
-    caption > div > *:not(:last-child) {
-      padding: 0 0 5px;
+    caption > div > div {
+      flex: 1 1 auto;
     }
-    #column {
+    caption > div > div:last-child {
+      flex: 0 0 auto;
+    }
+    caption button {
+      padding: 2px;
+      margin: 0;
+    }
+    .column {
       width: calc(var(--simple-picker-option-size) + 6px);
       overflow: visible;
       display: none;
-      margin-left: 10px;
+      margin-right: 0px;
       --simple-picker-border-width: 1px;
       --simple-picker-focus-border-width: 1px;
       --simple-picker-border-color: var(--editable-table-border-color, #999);
@@ -277,8 +284,16 @@ export const editableTableDisplayStyles = [
       display: block;
     }
     @media screen {
-      :host([responsive][responsive-size="xs"]) #column {
+      :host([responsive][responsive-size="xs"])
+        th:not([cell-index="0"])
+        editable-table-sort {
+        width: calc(100% - 30px);
+        float: left;
+      }
+      :host([responsive][responsive-size="xs"]) .column {
         display: inline-flex;
+        width: 30px;
+        overflow: visible;
       }
       :host([responsive][responsive-size="xs"]) .th[xs-hidden],
       :host([responsive][responsive-size="xs"]) .td[xs-hidden] {
@@ -475,6 +490,64 @@ export const dataProperties = {
     reflect: true,
   },
 };
+/**
+ * List of data table html
+ * @const
+ * @default
+ * @type {object}
+ */
+export const tableHtmlProperties = {
+  /**
+   * a table caption
+   */
+  caption: {
+    type: String,
+    value: null,
+  },
+  /**
+   * Display first row as a column header.
+   */
+  columnHeader: {
+    attribute: "column-header",
+    type: Boolean,
+  },
+  /**
+   * Raw data pulled in from csv file.
+   */
+  csvData: {
+    type: String,
+    attribute: "csv-data",
+  },
+  /**
+   * raw data
+   */
+  data: {
+    type: Array,
+    notify: true,
+    attribute: "data",
+  },
+  /**
+   * Location of CSV file.
+   */
+  dataCsv: {
+    type: String,
+    attribute: "data-csv",
+  },
+  /**
+   * Display last row as a column footer.
+   */
+  footer: {
+    attribute: "footer",
+    type: Boolean,
+  },
+  /**
+   * Display first column as a row header.
+   */
+  rowHeader: {
+    attribute: "row-header",
+    type: Boolean,
+  },
+};
 
 /**
  * behaviors needed to display table in either mode
@@ -488,56 +561,7 @@ export const displayBehaviors = function (SuperClass) {
         ...super.properties,
         ...displayProperties,
         ...dataProperties,
-        /**
-         * a table caption
-         */
-        caption: {
-          type: String,
-          value: null,
-        },
-        /**
-         * Display first row as a column header.
-         */
-        columnHeader: {
-          attribute: "column-header",
-          type: Boolean,
-        },
-        /**
-         * Raw data pulled in from csv file.
-         */
-        csvData: {
-          type: String,
-          attribute: "csv-data",
-        },
-        /**
-         * raw data
-         */
-        data: {
-          type: Array,
-          notify: true,
-          attribute: "data",
-        },
-        /**
-         * Location of CSV file.
-         */
-        dataCsv: {
-          type: String,
-          attribute: "data-csv",
-        },
-        /**
-         * Display last row as a column footer.
-         */
-        footer: {
-          attribute: "footer",
-          type: Boolean,
-        },
-        /**
-         * Display first column as a row header.
-         */
-        rowHeader: {
-          attribute: "row-header",
-          type: Boolean,
-        },
+        ...tableHtmlProperties,
       };
     }
 

@@ -70,7 +70,6 @@ class RichTextEditorHighlight extends LitElement {
   }
 
   firstUpdated(changedProperties) {
-    this.emptyContents();
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
@@ -78,7 +77,7 @@ class RichTextEditorHighlight extends LitElement {
   emptyContents() {
     let nodes = [...this.childNodes];
     nodes.forEach((node) => {
-      this.parentNode.insertBefore(node, this);
+      if (this.parentNode) this.parentNode.insertBefore(node, this);
     });
     document.body.append(this);
     this.hidden = true;

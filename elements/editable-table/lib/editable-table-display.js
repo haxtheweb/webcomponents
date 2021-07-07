@@ -57,46 +57,36 @@ class EditableTableDisplay extends displayBehaviors(
         <caption part="caption">
           <div>
             <div>${this.getHTML(this.caption)}</div>
-            ${!this.disableResponsive
-              ? html` <simple-picker
-                  id="column"
-                  align-right
-                  aria-label="Select Column"
-                  @change="${this._selectedChanged}"
-                  hide-sample
-                  .options="${this.options}"
-                  .value="${this.selected}"
-                >
-                </simple-picker>`
-              : ``}
-            ${!this.downloadable
-              ? ""
-              : html`
-                  <button id="download" @click="${this.download}">
-                    <span class="sr-only">Download as CSV.</span>
-                    <simple-icon-lite icon="file-download"></simple-icon-lite>
-                  </button>
-                  <simple-tooltip
-                    id="download-tooltip"
-                    for="download"
-                    aria-hidden="true"
-                    >Download as CSV.
-                  </simple-tooltip>
-                `}
-            ${!this.printable
-              ? ""
-              : html`
-                  <button id="print" @click="${this.print}">
-                    <span class="sr-only">Print table.</span>
-                    <simple-icon-lite icon="print"></simple-icon-lite>
-                  </button>
-                  <simple-tooltip
-                    id="print-tooltip"
-                    for="print"
-                    aria-hidden="true"
-                    >Print table.
-                  </simple-tooltip>
-                `}
+            <div>
+              ${!this.downloadable
+                ? ""
+                : html`
+                    <button id="download" @click="${this.download}">
+                      <span class="sr-only">Download as CSV.</span>
+                      <simple-icon-lite icon="file-download"></simple-icon-lite>
+                    </button>
+                    <simple-tooltip
+                      id="download-tooltip"
+                      for="download"
+                      aria-hidden="true"
+                      >Download as CSV.
+                    </simple-tooltip>
+                  `}
+              ${!this.printable
+                ? ""
+                : html`
+                    <button id="print" @click="${this.print}">
+                      <span class="sr-only">Print table.</span>
+                      <simple-icon-lite icon="print"></simple-icon-lite>
+                    </button>
+                    <simple-tooltip
+                      id="print-tooltip"
+                      for="print"
+                      aria-hidden="true"
+                      >Print table.
+                    </simple-tooltip>
+                  `}
+            </div>
           </div>
         </caption>
         <thead ?hidden="${!this.columnHeader}" class="thead" part="thead">
@@ -109,7 +99,7 @@ class EditableTableDisplay extends displayBehaviors(
                   ?numeric="${this._isNumericColumn(index)}"
                   scope="col"
                   part="th"
-                  ?xs-hidden="${this._isColHidden(index, 1)}"
+                  ?xs-hidden="${this._isColHidden(index, this.selected || 1)}"
                 >
                   ${!this.sort
                     ? this.getHTML(this._replaceBlankCell(th))
@@ -117,17 +107,41 @@ class EditableTableDisplay extends displayBehaviors(
                         <editable-table-sort
                           column-index="${index}"
                           sort-column="${this.sortColumn}"
+                          sort-mode="${this.sortColumn === index
+                            ? this.sortMode
+                            : "none"}"
                         >
                           ${this.getHTML(this._replaceBlankCell(th))}
                         </editable-table-sort>
                       `}
+                  ${!this.disableResponsive &&
+                  index > 0 &&
+                  this.selected == index
+                    ? html` <simple-picker
+                          id="simple-picker-${index}"
+                          class="column"
+                          align-right
+                          aria-label="Select Column"
+                          @change="${this._selectedChanged}"
+                          hide-sample
+                          .options="${this.options}"
+                          .value="${index}"
+                        >
+                        </simple-picker>
+                        <simple-tooltip
+                          position="top"
+                          for="simple-picker-${index}"
+                          aria-hidden="true"
+                          >Select Column</simple-tooltip
+                        >`
+                    : ``}
                 </th>
               `
             )}
           </tr>
         </thead>
         <tbody class="tbody" part="tbody">
-          ${this.tbody.map((tr) =>
+          ${this.sortedTbody.map((tr) =>
             this._isRowFiltered(tr) ? "" : this._tbodyTr(tr)
           )}
         </tbody>
@@ -238,7 +252,6 @@ class EditableTableDisplay extends displayBehaviors(
         !this.disabled
       ) {
         this.toggleFilter();
-        this.sortData("none", -1);
         this.focus();
       }
     });
@@ -276,22 +289,17 @@ class EditableTableDisplay extends displayBehaviors(
     return cols;
   }
 
-  /**
-   * initialize responsive columns menu
-   *
-   * @param {string} type  sort order ascending: "asc", descending: "desc", or "non"
-   * @param {number} column column number
-   * @memberof EditableTableDisplay
-   */
-  sortData(type, column) {
-    if (type !== "none" && type !== false) {
-      let temp = this.tbody.map((row) => [row[column], ...row]);
-      if (type === "asc") {
+  get sortedTbody() {
+    if (this.sortMode !== "none" && this.sortMode !== false) {
+      let temp = this.tbody.map((row) => [row[this.sortColumn], ...row]);
+      if (this.sortMode === "asc") {
         temp.sort();
       } else {
         temp.reverse();
       }
+      return temp.map((row) => row.slice(1, row.length));
     }
+    return this.tbody;
   }
 
   /**
@@ -357,7 +365,6 @@ class EditableTableDisplay extends displayBehaviors(
       this.sortMode = "asc";
       this.sortColumn = e.detail.columnIndex;
     }
-    e.detail.setSortMode(this.sortMode);
   }
 
   /**
@@ -385,15 +392,15 @@ class EditableTableDisplay extends displayBehaviors(
   /**
    * Handles column  selector change
    */
-  _selectedChanged() {
-    this._updateCols();
+  _selectedChanged(e) {
+    if (!!e.detail.value) this.selected = e.detail.value;
   }
 
   /**
    * Handles table change
    */
   _tableChanged() {
-    this._updateCols();
+    this.selected = 1;
   }
   /**
    * table row template
@@ -429,7 +436,7 @@ class EditableTableDisplay extends displayBehaviors(
       cell-index="${index}"
       ?numeric="${this._isNumericColumn(index)}"
       scope="row"
-      ?xs-hidden="${this._isColHidden(index, 1)}"
+      ?xs-hidden="${this._isColHidden(index, this.selected || 1)}"
     >
       ${this.getHTML(this._replaceBlankCell(cell))}
     </th>`;
@@ -450,7 +457,7 @@ class EditableTableDisplay extends displayBehaviors(
       cell-index="${index}"
       ?numeric="${this._isNumericColumn(index)}"
       ?negative="${this._isNegative(cell)}"
-      ?xs-hidden="${this._isColHidden(index, 1)}"
+      ?xs-hidden="${this._isColHidden(index, this.selected || 1)}"
     >
       ${this.filter
         ? html`
@@ -477,7 +484,7 @@ class EditableTableDisplay extends displayBehaviors(
   /**
    * update responsive columns menu
    */
-  _updateCols() {
+  _updateCols(index) {
     let selected = this.shadowRoot.querySelector("#column").value,
       cols = this.shadowRoot.querySelector("#table").querySelectorAll("th,td");
     if (cols.length > 0) {

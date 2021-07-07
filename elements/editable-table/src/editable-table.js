@@ -6,6 +6,9 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import {
   editBehaviors,
   editableTableStyles,
+  tableHtmlProperties,
+  displayProperties,
+  dataProperties,
 } from "./lib/editable-table-behaviors.js";
 import "./lib/editable-table-display.js";
 import "./lib/editable-table-edit.js";
@@ -115,6 +118,7 @@ class EditableTable extends editBehaviors(LitElement) {
       <editable-table-edit
         ?bordered="${this.bordered}"
         caption="${this.caption}"
+        @change="${this._handleSync}"
         .config="${this.config}"
         ?column-header="${this.columnHeader}"
         ?column-striped="${this.columnStriped}"
@@ -175,6 +179,14 @@ class EditableTable extends editBehaviors(LitElement) {
     return (
       this.shadowRoot && this.shadowRoot.querySelector("editable-table-edit")
     );
+  }
+
+  _handleSync(e) {
+    this.sync(e.detail);
+  }
+
+  sync(property) {
+    if (this.editor && property) this[property] = this.editor[property];
   }
   /**
    * Toggles between edit-mode and display mode.

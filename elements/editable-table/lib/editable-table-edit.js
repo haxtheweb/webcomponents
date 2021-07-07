@@ -80,10 +80,11 @@ class EditableTableEdit extends editBehaviors(LitElement) {
             var(--editable-table-color, #222)
           );
         }
-        table *:focus,
-        table *:hover,
-        table *:focus-within {
+        table *[data-expanded="true"] {
           z-index: 2;
+        }
+        rich-text-editor:not([contenteditable]) {
+          z-index: 1 !important;
         }
         caption,
         .th-or-td {
@@ -128,9 +129,6 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         }
         caption > * {
           margin: 0 2.5px;
-        }
-        thead:hover {
-          z-index: 3;
         }
         th {
           padding: 0;
@@ -452,7 +450,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         ?condensed="${this.condensed}"
         index="${colIndex}"
         @rowcol-action="${this._handleRowColumnMenu}"
-        @rowcol-menuopen="${this._handleMenuOpen}"
+        @rowcol-menu-toggle="${this._handleMenuToggle}"
       >
       </editable-table-editor-rowcol>
     `;
@@ -710,7 +708,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
     }
     this.data = temp;
 
-    this._handleChange();
+    this._handleChange("data");
 
     /**
      * Fires when column is deleted
@@ -739,7 +737,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
     temp.splice(index, 1);
     this.data = temp;
 
-    this._handleChange();
+    this._handleChange("data");
 
     /**
      * Fires when row is deleted
@@ -768,7 +766,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
       temp[i].splice(index, 0, " ");
     }
     this.data = temp;
-    this._handleChange();
+    this._handleChange("data");
 
     /**
      * Fires when column is inserted
@@ -800,7 +798,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
     }
     temp.splice(index + 1, 0, temp2);
     this.data = temp;
-    this._handleChange();
+    this._handleChange("data");
 
     /**
      * Fires cwhen row is inserted
@@ -825,7 +823,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
     temp[row][col] = val;
     this.data = [];
     this.data = temp;
-    this._handleChange();
+    this._handleChange("data");
 
     /**
      * Fires when cell value is changed
@@ -876,7 +874,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         ? undefined
         : this.shadowRoot.querySelector(`#caption`).innerHTML;
     this.caption = val;
-    this._handleChange();
+    this._handleChange("caption");
 
     /**
      * Fires caption is changed
@@ -901,7 +899,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
    */
   _onTableSettingChange(e) {
     this[e.detail.id] = e.detail.toggled;
-    this._handleChange();
+    this._handleChange(e.detail.id);
   }
 
   /**
@@ -915,10 +913,10 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         ["", "", ""],
       ];
     }
-    this._handleChange();
+    this._handleChange("data");
   }
 
-  _handleChange() {
+  _handleChange(prop) {
     /**
      * Fires this editor is disabled
      * @event change
@@ -928,7 +926,7 @@ class EditableTableEdit extends editBehaviors(LitElement) {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this,
+        detail: prop,
       })
     );
   }
@@ -947,6 +945,15 @@ class EditableTableEdit extends editBehaviors(LitElement) {
     } else {
       this.deleteColumn(e.detail.index);
     }
+  }
+
+  _handleMenuToggle(e) {
+    if (!e.detail) return;
+    e.detail
+      .closest("thead,tbody")
+      .setAttribute("data-expanded", e.detail.expanded);
+    e.detail.closest("tr").setAttribute("data-expanded", e.detail.expanded);
+    e.detail.closest("th").setAttribute("data-expanded", e.detail.expanded);
   }
 
   /**
